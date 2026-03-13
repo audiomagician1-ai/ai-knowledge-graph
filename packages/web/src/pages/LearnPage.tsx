@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDialogueStore } from '@/lib/store/dialogue';
+import { useLearningStore } from '@/lib/store/learning';
 import type { AssessmentResult } from '@/lib/store/dialogue';
 
 /**
@@ -20,12 +21,27 @@ export function LearnPage() {
     startConversation, sendMessage, requestAssessment, reset,
   } = useDialogueStore();
 
+  const { startLearning, recordAssessment } = useLearningStore();
+
   useEffect(() => {
     if (conceptId) {
       startConversation(conceptId);
+      startLearning(conceptId);
     }
     return () => reset();
   }, [conceptId]);
+
+  // When assessment completes, persist to learning store
+  useEffect(() => {
+    if (assessment && conceptId) {
+      recordAssessment(
+        conceptId,
+        conceptName || conceptId,
+        assessment.overall_score,
+        assessment.mastered,
+      );
+    }
+  }, [assessment]);
 
   // Auto-scroll to bottom
   useEffect(() => {
