@@ -112,23 +112,20 @@ def build_exe():
         "--add-data", f"{web_staging};web_dist",
         "--add-data", f"{seed_staging};seed_data",
         *(["--add-data", f"{rag_staging};rag_data"] if rag_staging.exists() else []),
-        # Hidden imports that PyInstaller misses
-        "--hidden-import", "uvicorn.logging",
-        "--hidden-import", "uvicorn.loops",
-        "--hidden-import", "uvicorn.loops.auto",
-        "--hidden-import", "uvicorn.protocols",
-        "--hidden-import", "uvicorn.protocols.http",
-        "--hidden-import", "uvicorn.protocols.http.auto",
-        "--hidden-import", "uvicorn.protocols.websockets",
-        "--hidden-import", "uvicorn.protocols.websockets.auto",
-        "--hidden-import", "uvicorn.lifespan",
-        "--hidden-import", "uvicorn.lifespan.on",
-        "--hidden-import", "uvicorn.lifespan.off",
+        # Collect all uvicorn submodules (PyInstaller misses dynamic imports)
+        "--collect-submodules", "uvicorn",
+        "--hidden-import", "uvicorn",
+        # Other hidden imports
         "--hidden-import", "httptools",
         "--hidden-import", "dotenv",
         "--hidden-import", "pydantic_settings",
         "--hidden-import", "multipart",  # for form uploads if needed
         "--hidden-import", "email_validator",
+        "--hidden-import", "webbrowser",
+        "--hidden-import", "threading",
+        # Starlette/FastAPI internals that may be missed
+        "--collect-submodules", "starlette",
+        "--collect-submodules", "fastapi",
         # Paths
         "--paths", str(API_DIR),
         # Working dirs
