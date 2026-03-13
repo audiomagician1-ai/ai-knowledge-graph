@@ -7,21 +7,20 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 0 基础设施搭建完成** | Monorepo骨架 + 前端(Vite+React19+TS5.7) + 后端(FastAPI) + Supabase(Auth+PostgreSQL+RLS) + Neo4j+Redis(Docker) + Capacitor移动端 + CI/CD
+**当前阶段**: 🟢 **Phase 0 完成** | 基础设施 + 种子图谱(221节点258边) + 后端真实查询 + 前端图谱列表页
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 
-**当前最高优先任务 — Phase 0 种子图谱构建** (待启动):
-> **目标**: 用 LLM 生成编程领域知识图谱 (~300节点 + 依赖关系)，写入 Neo4j
-> **前置**: docker compose up (Neo4j + Redis)
-> **详见**: `DEVELOPMENT_PLAN.md` Phase 0
+**当前最高优先任务 — Phase 1 图谱可视化** (待启动):
+> **目标**: Cytoscape.js 交互式图谱渲染 + 节点状态着色 + 战争迷雾
+> **详见**: `DEVELOPMENT_PLAN.md` Phase 1
 
 ### 12周里程碑
 
 | Phase | 周次 | 目标 | 状态 |
 |:---|:---|:---|:---|
-| **Phase 0** | W1-2 | 基础设施 + 种子图谱 | 🟡 骨架完成，种子图谱待构建 |
-| **Phase 1** | W3-4 | 图谱展示 + 基础交互 | ⬜ |
+| **Phase 0** | W1-2 | 基础设施 + 种子图谱 | ✅ 完成 (221节点258边, 3 commits) |
+| **Phase 1** | W3-4 | 图谱展示 + 基础交互 | 🟡 下一步 |
 | **Phase 2** | W5-7 | 费曼对话引擎 (核心) | ⬜ |
 | **Phase 3** | W8-9 | 技能树点亮 + 用户系统 | ⬜ |
 | **Phase 4** | W10-12 | 打磨 + 内测 | ⬜ |
@@ -82,14 +81,16 @@ data/seed/         — 种子图谱数据
 - ✅ Docker Compose (Neo4j 5 + Redis 7)
 - ✅ Capacitor 移动端配置
 - ✅ CI/CD (GitHub Actions: frontend + backend)
-- ✅ 环境变量示例 (.env.example)
+- ✅ GitHub 仓库: https://github.com/audiomagician1-ai/ai-knowledge-graph
+- ✅ **种子图谱**: 221概念节点 + 238先修依赖 + 20关联关系 = 258边 (12子域, 难度1-9)
+- ✅ **后端图谱查询**: 5 endpoints (data/domains/subdomains/concept/neighbors/stats), JSON fallback
+- ✅ **前端图谱列表页**: 子域Tab筛选 + 节点卡片 + 详情面板 + 学习入口
+- ✅ tsc 0 errors, vite build 1.75s, DAG无环校验通过
 
 ### 待完成 🟡
-1. 🟡 `pnpm install` 安装依赖
-2. 🟡 `docker compose up` 启动本地服务
-3. 🟡 Supabase 项目创建 + `.env` 配置
-4. 🟡 种子图谱构建 (~300 编程领域节点)
-5. 🟡 Git init + 首次提交
+1. 🟡 **Phase 1**: Cytoscape.js 图谱可视化 + 战争迷雾
+2. 🟡 本地 Docker 安装 (Neo4j + Redis)
+3. 🟡 Supabase Cloud 项目创建
 
 ---
 
