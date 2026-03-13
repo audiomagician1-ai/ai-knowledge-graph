@@ -190,3 +190,83 @@ async def get_graph_stats():
     seed = _load_seed()
     return seed["meta"]
 
+
+# ── RAG 知识库文档 API ─────────────────────────────────
+
+def _get_rag_dir() -> str:
+    """获取 RAG 文档目录路径"""
+    if getattr(sys, 'frozen', False):
+        return os.path.join(sys._MEIPASS, "rag_data")
+    return os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+        "data", "rag",
+    )
+
+
+RAG_DIR = _get_rag_dir()
+_rag_index_cache: dict | None = None
+
+
+def _load_rag_index() -> dict:
+    """懒加载 RAG 索引"""
+    global _rag_index_cache
+    if _rag_index_cache is None:
+        index_path = os.path.join(RAG_DIR, "_index.json")
+        if os.path.exists(index_path):
+            with open(index_path, "r", encoding="utf-8") as f:
+                _rag_index_cache = json.load(f)
+        else:
+            _rag_index_cache = {"documents": [], "stats": {}}
+    return _rag_index_cache
+
+
+@router.get("/rag/{concept_id}")
+async def get_rag_document(concept_id: str):
+    """获取概念的 RAG 参考文档"""
+    # 查找文档路径
+    index = _load_rag_index()
+    doc_entry = None
+    for d in index.get("documents", []):
+        if d["id"] == concept_id:
+            doc_entry = d
+            break
+
+    if not doc_entry:
+        raise HTTPException(status_code=404, detail=f"RAG 文档不存在: {concept_id}")
+
+    doc_path = os.path.join(RAG_DIR, doc_entry["file"])
+    if not os.path.exists(doc_path):
+        raise HTTPException(status_code=404, detail=f"RAG 文档文件不存在: {doc_entry['file']}")
+
+    with open(doc_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # 去掉 YAML frontmatter 只返回 Markdown 正文
+    if content.startswith("---"):
+        end = content.find("---", 3)
+        if end != -1:
+            content = content[end + 3:].strip()
+
+    return {
+        "concept_id": concept_id,
+        "name": doc_entry.get("name", concept_id),
+        "subdomain": doc_entry.get("subdomain_id", ""),
+        "difficulty": doc_entry.get("difficulty", 0),
+        "is_milestone": doc_entry.get("is_milestone", False),
+        "content": content,
+        "char_count": len(content),
+    }
+
+
+@router.get("/rag")
+async def get_rag_stats():
+    """获取 RAG 知识库统计"""
+    index = _load_rag_index()
+    return {
+        "total_docs": index.get("stats", {}).get("total_docs", 0),
+        "total_chars": index.get("stats", {}).get("total_chars", 0),
+        "by_subdomain": index.get("stats", {}).get("by_subdomain", {}),
+        "version": index.get("version", ""),
+        "generated_at": index.get("generated_at", ""),
+    }
+

@@ -93,6 +93,14 @@ def build_exe():
     shutil.copy2(SEED_JSON, seed_staging / "seed_graph.json")
     print(f"   📁 Staged seed data: {seed_staging}")
 
+    # Copy RAG knowledge base → staging/rag_data
+    rag_src = ROOT / "data" / "rag"
+    rag_staging = staging / "rag_data"
+    if rag_src.exists():
+        shutil.copytree(rag_src, rag_staging)
+        rag_count = sum(1 for _ in rag_staging.rglob("*.md"))
+        print(f"   📁 Staged RAG docs: {rag_staging} ({rag_count} files)")
+
     # PyInstaller command
     cmd = [
         sys.executable, "-m", "PyInstaller",
@@ -103,6 +111,7 @@ def build_exe():
         # Add data
         "--add-data", f"{web_staging};web_dist",
         "--add-data", f"{seed_staging};seed_data",
+        *(["--add-data", f"{rag_staging};rag_data"] if rag_staging.exists() else []),
         # Hidden imports that PyInstaller misses
         "--hidden-import", "uvicorn.logging",
         "--hidden-import", "uvicorn.loops",
