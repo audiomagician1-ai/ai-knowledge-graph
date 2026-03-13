@@ -96,13 +96,19 @@ data/seed/         — 种子图谱数据
 - ✅ **Dialogue Store**: Zustand 5 状态管理(会话/消息/流式/评估)
 - ✅ **免登录体验**: 全站开放无需登录，匿名即可使用图谱+对话
 - ✅ **用户自带 LLM Key**: 设置页面配置 (OpenRouter/OpenAI/DeepSeek) + localStorage + 请求头透传
-- ✅ tsc 0 errors, vite build 2.4s, bundle 656KB, 所有Python模块导入通过
+- ✅ **代码分割**: Cytoscape.js lazy import, 主包 656KB→219KB (-66%), graph chunk 442KB 按需加载
+- ✅ **学习进度持久化**: localStorage 存储匿名用户节点状态 (learning/mastered) + 学习历史 + 连续天数
+- ✅ **节点点亮逻辑**: 评估通过→mastered, 图谱节点实时反映学习状态 (enrichedGraphData)
+- ✅ **Dashboard 页面**: 真实统计(4 stat cards + 进度条 + 连续天数 + 最近学习记录 + 已掌握列表)
+- ✅ **图谱搜索**: 即时搜索 overlay, 快速定位概念节点
+- ✅ **Error Boundary + Toast**: 全局错误捕获 + 4类型通知系统 (success/error/info/warning)
+- ✅ tsc 0 errors, vite build 2.67s, 主包 219KB + graph 442KB (lazy), 所有Python模块导入通过
 
 ### 待完成 🟡
 1. 🟡 **LLM 端到端测试** — 配置 Key 后实际对话验证
-2. 🟡 **Phase 3**: 节点点亮逻辑 (评估通过→mastered) + 用户认证(可选)
-3. 🟡 本地 Docker 安装 (Neo4j + Redis)
-4. 🟡 代码分割 Cytoscape.js
+2. 🟡 本地 Docker 安装 (Neo4j + Redis)
+3. 🟡 UI/UX 打磨 (移动端适配、动画过渡、loading states)
+4. 🟡 API 缓存 + 离线支持
 
 ---
 
