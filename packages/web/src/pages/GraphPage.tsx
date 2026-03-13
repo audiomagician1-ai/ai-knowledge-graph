@@ -6,7 +6,7 @@ import { GRAPH_VISUAL } from '@akg/shared';
 import { ChatPanel } from '@/components/chat/ChatPanel';
 import {
   Search, X, Star, ChevronRight, Clock, BookOpen, Zap,
-  Layers, Filter, Compass, Trophy, TrendingUp,
+  Layers, Filter, Compass, Trophy,
 } from 'lucide-react';
 
 const KnowledgeGraph = lazy(() =>
@@ -20,7 +20,7 @@ export function GraphPage() {
     graphData, loading, selectedNode, activeSubdomain,
     setGraphData, selectNode, setActiveSubdomain, setLoading, setError,
   } = useGraphStore();
-  const { progress, history, computeStats, refreshStreak, streak } = useLearningStore();
+  const { progress, computeStats, refreshStreak } = useLearningStore();
   const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -88,9 +88,7 @@ export function GraphPage() {
 
   const milestoneCount = enrichedGraphData?.nodes.filter(n => n.is_milestone).length || 0;
   const masteredCount = Object.values(progress).filter(p => p.status === 'mastered').length;
-  const learningCount = Object.values(progress).filter(p => p.status === 'learning').length;
   const totalNodes = enrichedGraphData?.nodes.length || 0;
-  const recentHistory = [...history].reverse().slice(0, 5);
 
   return (
     <div className="relative flex h-full w-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-0)' }}>
@@ -333,7 +331,7 @@ export function GraphPage() {
 
       {/* ── Right Panel: Node Info + Mastery Stats + Inline Chat ── */}
       {selectedNode && (
-        <div className="absolute top-3 right-3 bottom-3 z-10 w-[420px] animate-slide-in-right">
+        <div className="absolute top-3 right-3 bottom-3 z-10 w-[680px] animate-slide-in-right">
           <div className="glass-heavy rounded-2xl h-full flex flex-col overflow-hidden">
             {/* ─ Panel Header: node info ─ */}
             <div className="px-4 pt-4 pb-3 shrink-0" style={{ borderBottom: '1px solid var(--color-border)' }}>
@@ -404,47 +402,7 @@ export function GraphPage() {
                 </button>
               </div>
 
-              {/* ── Compact mastery overview ── */}
-              <div
-                className="flex items-center gap-3 mt-3 rounded-lg px-3 py-2"
-                style={{ backgroundColor: 'var(--color-surface-3)', border: '1px solid var(--color-border-subtle)' }}
-              >
-                <div className="flex items-center gap-1.5">
-                  <TrendingUp size={13} style={{ color: 'var(--color-accent-indigo)' }} />
-                  <span className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>总体进度</span>
-                </div>
-                <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-4)' }}>
-                  <div
-                    className="h-full rounded-full transition-all duration-500"
-                    style={{
-                      width: totalNodes > 0 ? `${Math.round((masteredCount / totalNodes) * 100)}%` : '0%',
-                      background: 'linear-gradient(90deg, var(--color-accent-indigo), var(--color-accent-emerald))',
-                    }}
-                  />
-                </div>
-                <span className="text-xs font-semibold" style={{ color: 'var(--color-accent-emerald)' }}>
-                  {masteredCount}/{totalNodes}
-                </span>
-              </div>
-
-              {/* Recent mastered concepts */}
-              {recentHistory.length > 0 && (
-                <div className="mt-2 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-                  <span className="text-[10px] shrink-0" style={{ color: 'var(--color-text-tertiary)' }}>最近:</span>
-                  {recentHistory.slice(0, 3).map((h) => (
-                    <span
-                      key={h.timestamp}
-                      className="shrink-0 rounded-md px-1.5 py-0.5 text-[10px] truncate max-w-[100px]"
-                      style={{
-                        backgroundColor: h.mastered ? 'rgba(52, 211, 153, 0.1)' : 'rgba(251, 191, 36, 0.1)',
-                        color: h.mastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)',
-                      }}
-                    >
-                      {h.concept_name}
-                    </span>
-                  ))}
-                </div>
-              )}
+              {/* ── Compact mastery overview — removed, now in ChatPanel idle view ── */}
             </div>
 
             {/* ─ Panel Body: Inline Chat ─ */}

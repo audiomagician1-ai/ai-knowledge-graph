@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import type { GraphData, GraphNode } from '@akg/shared';
 import { GRAPH_VISUAL } from '@akg/shared';
@@ -116,10 +116,16 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<ForceGraph3DInstance | null>(null);
   const hoveredRef = useRef<GNode | null>(null);
+  // Use refs for callbacks to avoid re-init on every render
+  const onNodeClickRef = useRef(onNodeClick);
+  onNodeClickRef.current = onNodeClick;
+  const dataRef = useRef(data);
+  dataRef.current = data;
 
-  /* Build graph data payload */
-  const graphPayload = useCallback(() => {
-    const nodes: GNode[] = data.nodes.map((n) => ({
+  /* Build graph data payload from ref (stable) */
+  const buildPayload = () => {
+    const d = dataRef.current;
+    const nodes: GNode[] = d.nodes.map((n) => ({
       id: n.id,
       label: n.label,
       subdomain_id: n.subdomain_id,
@@ -129,18 +135,18 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       estimated_minutes: n.estimated_minutes,
       content_type: n.content_type,
     }));
-    const links: GLink[] = data.edges.map((e) => ({
+    const links: GLink[] = d.edges.map((e) => ({
       source: e.source,
       target: e.target,
       relation_type: e.relation_type,
       strength: e.strength,
     }));
     return { nodes, links };
-  }, [data]);
+  };
 
-  /* ── Init graph ── */
+  /* ── Init graph — runs ONCE, not on every data/callback change ── */
   useEffect(() => {
-    if (!containerRef.current || !data.nodes.length) return;
+    if (!containerRef.current || !dataRef.current.nodes.length) return;
 
     let destroyed = false;
 
@@ -155,7 +161,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       Graph
         .backgroundColor(BG_COLOR)
         .showNavInfo(false)
-        .graphData(graphPayload());
+        .graphData(buildPayload());
 
       /* ── Much lighter fog so labels stay visible ── */
       const scene = Graph.scene();
@@ -257,15 +263,20 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
         .linkDirectionalParticleSpeed(0.003)
         .linkDirectionalParticleColor(() => '#818cf8');
 
-      /* ── Interaction: STOP rotation on click + camera fly ── */
+      /* ── Interaction: STOP rotation + FREEZE simulation on click ── */
       Graph.onNodeClick((n: NodeObject) => {
         const node = n as GNode;
 
-        // Stop auto-rotation
+        // 1) Stop auto-rotation
         const ctrl = Graph.controls() as { autoRotate?: boolean };
         if (ctrl) ctrl.autoRotate = false;
 
-        onNodeClick({
+        // 2) Freeze the physics simulation so nodes don't scramble
+        Graph.cooldownTime(0);        // stop simulation immediately
+        Graph.d3ReheatSimulation();    // noop since cooldown = 0
+
+        // 3) Notify parent via ref (avoids re-init)
+        onNodeClickRef.current({
           id: node.id,
           label: node.label,
           domain_id: 'ai-engineering',
@@ -277,18 +288,14 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
           content_type: node.content_type,
         } as GraphNode);
 
-        // Smooth camera fly to node
-        const dist = 120;
+        // 4) Smooth camera fly to node
+        const dist = 140;
         const nx = node.x || 0, ny = node.y || 0, nz = node.z || 0;
         const len = Math.sqrt(nx * nx + ny * ny + nz * nz) || 1;
-        // Position camera along the node's radial direction (outside the sphere looking in)
-        const camX = nx + (nx / len) * dist;
-        const camY = ny + (ny / len) * dist * 0.3;
-        const camZ = nz + (nz / len) * dist;
         Graph.cameraPosition(
-          { x: camX, y: camY, z: camZ },
+          { x: nx + (nx / len) * dist, y: ny + (ny / len) * dist * 0.3, z: nz + (nz / len) * dist },
           { x: nx, y: ny, z: nz },
-          1000,
+          1200,
         );
       });
 
@@ -300,10 +307,9 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       });
 
       Graph.onBackgroundClick(() => {
-        // Resume auto-rotation on background click
         const ctrl = Graph.controls() as { autoRotate?: boolean };
         if (ctrl) ctrl.autoRotate = true;
-        onNodeClick(null as unknown as GraphNode);
+        onNodeClickRef.current(null as unknown as GraphNode);
       });
 
       /* ── Auto-rotate (slow) ── */
@@ -338,7 +344,16 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     });
 
     return () => { destroyed = true; };
-  }, [data, graphPayload, onNodeClick]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Init ONCE — data changes handled via separate effect
+
+  /* ── Update node status colors when data changes (without re-creating graph) ── */
+  useEffect(() => {
+    const G = graphRef.current;
+    if (!G) return;
+    // Update node colors to reflect new status
+    G.nodeColor((n: object) => nodeColor(n as GNode));
+  }, [data]);
 
   /* ── Fly to selected node from outside ── */
   useEffect(() => {
