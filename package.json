@@ -1,0 +1,38 @@
+{
+  "name": "ai-knowledge-graph",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI知识图谱 — 费曼对话+苏格拉底式教学+知识图谱技能树点亮学习平台",
+  "scripts": {
+    "dev": "pnpm --filter @akg/web dev",
+    "build": "pnpm --filter @akg/web build",
+    "preview": "pnpm --filter @akg/web preview",
+    "test": "pnpm --filter @akg/web test",
+    "test:e2e": "pnpm --filter @akg/web test:e2e",
+    "lint": "pnpm -r lint",
+    "type-check": "pnpm -r type-check",
+    "api:dev": "cd apps/api && python -m uvicorn main:app --reload --port 8000",
+    "api:test": "cd apps/api && python -m pytest",
+    "db:start": "cd supabase && supabase start",
+    "db:stop": "cd supabase && supabase stop",
+    "db:reset": "cd supabase && supabase db reset",
+    "db:migration:new": "cd supabase && supabase migration new",
+    "db:push": "cd supabase && supabase db push",
+    "functions:serve": "cd supabase && supabase functions serve",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "clean": "pnpm -r exec rm -rf node_modules dist .turbo && rm -rf node_modules",
+    "mobile:sync": "pnpm build && pnpm --filter @akg/mobile sync",
+    "mobile:sync:android": "pnpm build && pnpm --filter @akg/mobile sync:android",
+    "mobile:run:android": "pnpm --filter @akg/mobile run:android"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.49.0",
+    "tsx": "^4.21.0"
+  }
+}

@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Environment
+.env
+.env.local
+.env.production
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Supabase
+supabase/.temp/
+
+# Test outputs
+test_results/
+test-output/
+coverage/
+playwright-report/
+
+# Docker
+*.log
+docker-data/
+
+# Capacitor
+packages/mobile/android/
+packages/mobile/ios/
+
+# Misc
+*.tsbuildinfo
+.turbo/
+.wrangler/

@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ========================================
+   AI Knowledge Graph — Design System
+   对齐 MuseSea 深色主题优先规范
+   ======================================== */
+
+:root {
+  /* 品牌色系 — 知识宇宙主题 */
+  --color-primary: #6366f1;     /* indigo-500 */
+  --color-primary-light: #818cf8;
+  --color-primary-dark: #4f46e5;
+  --color-secondary: #8b5cf6;   /* violet-500 */
+  --color-accent: #10b981;      /* emerald-500 — 点亮色 */
+
+  /* 背景色 */
+  --bg-primary: #0f172a;        /* slate-900 */
+  --bg-secondary: #1e293b;      /* slate-800 */
+  --bg-tertiary: #334155;       /* slate-700 */
+  --bg-card: #1e293b;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+
+  /* 文字色 */
+  --text-primary: #f1f5f9;      /* slate-100 */
+  --text-secondary: #94a3b8;    /* slate-400 */
+  --text-muted: #64748b;        /* slate-500 */
+
+  /* 边框 */
+  --border-default: #334155;    /* slate-700 */
+  --border-accent: #6366f1;
+
+  /* 节点状态色 */
+  --node-locked: #374151;
+  --node-available: #6366f1;
+  --node-learning: #f59e0b;
+  --node-reviewing: #8b5cf6;
+  --node-mastered: #10b981;
+
+  /* 布局变量 */
+  --bottom-nav-height: 64px;
+  --header-height: 56px;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* 亮色主题 (预留) */
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-tertiary: #e2e8f0;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-default: #e2e8f0;
+}
+
+/* 全局重置 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100dvh;
+}
+
+/* 移动端布局规范（对齐 MuseSea） */
+@media (max-width: 375px) {
+  :root {
+    --bottom-nav-height: 56px;
+    --header-height: 48px;
+  }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* 图谱容器 — 禁止双指缩放导致的页面缩放 */
+.graph-container {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

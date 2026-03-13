@@ -1,0 +1,27 @@
+[project]
+name = "akg-api"
+version = "0.1.0"
+description = "AI Knowledge Graph — Backend API (图谱引擎 + 对话引擎 + 学习引擎)"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "neo4j>=5.25.0",
+    "redis>=5.2.0",
+    "httpx>=0.28.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.6.0",
+    "python-dotenv>=1.0.0",
+    "py-fsrs>=5.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "httpx>=0.28.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
