@@ -7,7 +7,7 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 1 完成 + Phase 2 核心完成** | 图谱可视化 + 费曼对话引擎
+**当前阶段**: 🟢 **Phase 2 完成 + Phase 3 边缘功能完成 + Code Review 修复完成** | 图谱可视化 + 费曼对话引擎 + EXE打包
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 
@@ -103,6 +103,16 @@ data/seed/         — 种子图谱数据
 - ✅ **图谱搜索**: 即时搜索 overlay, 快速定位概念节点
 - ✅ **Error Boundary + Toast**: 全局错误捕获 + 4类型通知系统 (success/error/info/warning)
 - ✅ tsc 0 errors, vite build 2.67s, 主包 219KB + graph 442KB (lazy), 所有Python模块导入通过
+- ✅ **Code Review 修复**: 24项问题全部修复 (9 critical + 9 medium + 6 minor)
+- ✅ **PyInstaller EXE 打包**: 55MB 单文件, FastAPI+前端SPA+种子数据内嵌, 双击运行自动开浏览器
+
+### EXE 打包规范
+```
+命名: {缩写}-v{version}-{commit7}-{YYYYMMDD}-{HHmm}.exe
+示例: akg-v0.1.0-e9318f2-20260313-1607.exe
+构建: python scripts/build_exe.py  (自动化全流程)
+验证: /api/health + SPA index.html + /assets/*
+```
 
 ### 待完成 🟡
 1. 🟡 **LLM 端到端测试** — 配置 Key 后实际对话验证
