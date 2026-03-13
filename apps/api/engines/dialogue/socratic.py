@@ -65,6 +65,7 @@ class SocraticEngine:
         system_prompt: str,
         messages: list[dict],
         user_message: str,
+        user_config: dict | None = None,
     ) -> AsyncIterator[str]:
         """流式对话 — 返回 AI 回复的文本 chunk"""
         full_messages = [
@@ -78,6 +79,7 @@ class SocraticEngine:
             tier="dialogue",
             temperature=0.75,
             max_tokens=512,
+            user_config=user_config,
         ):
             yield chunk
 
@@ -86,6 +88,7 @@ class SocraticEngine:
         system_prompt: str,
         messages: list[dict],
         user_message: str,
+        user_config: dict | None = None,
     ) -> str:
         """非流式对话 — 返回完整回复"""
         full_messages = [
@@ -99,6 +102,7 @@ class SocraticEngine:
             tier="dialogue",
             temperature=0.75,
             max_tokens=512,
+            user_config=user_config,
         )
 
 

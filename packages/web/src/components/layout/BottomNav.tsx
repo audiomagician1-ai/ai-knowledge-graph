@@ -1,10 +1,10 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Network, BarChart3, User } from 'lucide-react';
+import { Network, BarChart3, Settings } from 'lucide-react';
 
 const NAV_ITEMS = [
   { path: '/graph', icon: Network, label: '图谱' },
   { path: '/dashboard', icon: BarChart3, label: '进度' },
-  { path: '/profile', icon: User, label: '我的' },
+  { path: '/settings', icon: Settings, label: '设置' },
 ] as const;
 
 export function BottomNav() {
@@ -19,8 +19,8 @@ export function BottomNav() {
       className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around border-t"
       style={{
         height: 'var(--bottom-nav-height)',
-        backgroundColor: 'var(--bg-secondary)',
-        borderColor: 'var(--border-default)',
+        backgroundColor: '#1e293b',
+        borderColor: '#334155',
         paddingBottom: 'var(--safe-area-bottom)',
       }}
       data-testid="bottom-nav"
@@ -33,7 +33,7 @@ export function BottomNav() {
             onClick={() => navigate(path)}
             className="flex flex-col items-center justify-center gap-1 px-4 py-2"
             style={{
-              color: isActive ? 'var(--color-primary)' : 'var(--text-muted)',
+              color: isActive ? '#8b5cf6' : '#64748b',
               minWidth: 64,
               minHeight: 44, // 触控目标 ≥ 44px
             }}

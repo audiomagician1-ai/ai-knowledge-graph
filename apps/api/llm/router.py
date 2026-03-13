@@ -35,8 +35,21 @@ class LLMRouter:
             self._client = httpx.AsyncClient(timeout=httpx.Timeout(120.0, connect=10.0))
         return self._client
 
-    def _resolve_endpoint(self, model: str) -> tuple[str, str]:
-        """根据模型名决定 API base 和 key"""
+    def _resolve_endpoint(self, model: str, user_config: dict | None = None) -> tuple[str, str]:
+        """根据模型名决定 API base 和 key
+        优先使用用户自带的 API Key"""
+        # 用户自定义 Key 优先
+        if user_config and user_config.get("api_key"):
+            provider = user_config.get("provider", "openrouter")
+            key = user_config["api_key"]
+            if provider == "deepseek":
+                return self.DEEPSEEK_BASE, key
+            elif provider == "openai":
+                return self.OPENAI_BASE, key
+            else:
+                return self.OPENROUTER_BASE, key
+
+        # 服务端 Key fallback
         if settings.openrouter_api_key:
             return self.OPENROUTER_BASE, settings.openrouter_api_key
         if model.startswith("deepseek/") and settings.deepseek_api_key:
@@ -49,10 +62,14 @@ class LLMRouter:
         tier: str = "dialogue",
         temperature: float = 0.7,
         max_tokens: int = 2048,
+        user_config: dict | None = None,
     ) -> str:
         """非流式对话 — 用于评估等需要完整响应的场景"""
         model = self.MODEL_TIERS.get(tier, self.MODEL_TIERS["dialogue"])
-        base_url, api_key = self._resolve_endpoint(model)
+        # 用户自定义模型覆盖
+        if user_config and user_config.get("model"):
+            model = user_config["model"]
+        base_url, api_key = self._resolve_endpoint(model, user_config)
 
         # OpenRouter 用 model 原名; 直连时去掉 vendor/ 前缀
         model_name = model if "openrouter" in base_url else model.split("/")[-1]
@@ -88,10 +105,13 @@ class LLMRouter:
         tier: str = "dialogue",
         temperature: float = 0.7,
         max_tokens: int = 2048,
+        user_config: dict | None = None,
     ) -> AsyncIterator[str]:
         """流式对话 — 用于实时对话 SSE"""
         model = self.MODEL_TIERS.get(tier, self.MODEL_TIERS["dialogue"])
-        base_url, api_key = self._resolve_endpoint(model)
+        if user_config and user_config.get("model"):
+            model = user_config["model"]
+        base_url, api_key = self._resolve_endpoint(model, user_config)
         model_name = model if "openrouter" in base_url else model.split("/")[-1]
 
         client = await self._get_client()

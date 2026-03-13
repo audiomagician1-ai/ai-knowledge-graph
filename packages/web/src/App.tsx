@@ -3,21 +3,18 @@ import { AppLayout } from './components/layout/AppLayout';
 import { GraphPage } from './pages/GraphPage';
 import { LearnPage } from './pages/LearnPage';
 import { DashboardPage } from './pages/DashboardPage';
-import { LoginPage } from './pages/LoginPage';
-import { useAuthStore } from './lib/store/auth';
+import { SettingsPage } from './pages/SettingsPage';
 
 export function App() {
-  const session = useAuthStore((s) => s.session);
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
         <Route element={<AppLayout />}>
           <Route path="/" element={<Navigate to="/graph" replace />} />
-          <Route path="/graph" element={session ? <GraphPage /> : <Navigate to="/login" />} />
-          <Route path="/learn/:conceptId" element={session ? <LearnPage /> : <Navigate to="/login" />} />
-          <Route path="/dashboard" element={session ? <DashboardPage /> : <Navigate to="/login" />} />
+          <Route path="/graph" element={<GraphPage />} />
+          <Route path="/learn/:conceptId" element={<LearnPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

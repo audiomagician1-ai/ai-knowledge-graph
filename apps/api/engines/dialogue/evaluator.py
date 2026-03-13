@@ -18,12 +18,14 @@ class UnderstandingEvaluator:
         self,
         concept: dict,
         messages: list[dict],
+        user_config: dict | None = None,
     ) -> dict:
         """评估用户在对话中展示的理解程度
 
         Args:
             concept: 概念信息 (name, difficulty 等)
             messages: 对话历史 [{"role": "user/assistant", "content": "..."}]
+            user_config: 用户自定义 LLM 配置
 
         Returns:
             评估结果 dict: completeness, accuracy, depth, examples, overall_score, gaps, feedback, mastered
@@ -47,6 +49,7 @@ class UnderstandingEvaluator:
                 tier="assessment",
                 temperature=0.2,  # 评估用低温度保证稳定性
                 max_tokens=1024,
+                user_config=user_config,
             )
 
             # 提取 JSON

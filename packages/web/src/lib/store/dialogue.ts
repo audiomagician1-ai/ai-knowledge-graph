@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { getLLMHeaders } from './settings';
 
 export interface ChatMessage {
   id: string;
@@ -124,7 +125,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     try {
       const res = await fetch(`${API_BASE}/dialogue/chat`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
         body: JSON.stringify({
           conversation_id: conversationId,
           message: text,
@@ -192,7 +193,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     try {
       const res = await fetch(`${API_BASE}/dialogue/assess`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
         body: JSON.stringify({ conversation_id: conversationId }),
       });
 
