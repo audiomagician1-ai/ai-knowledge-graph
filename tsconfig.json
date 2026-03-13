@@ -12,17 +12,11 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "baseUrl": ".",
     "paths": {
       "@akg/shared": ["packages/shared/src"],
       "@akg/shared/*": ["packages/shared/src/*"]
     }
   },
-  "references": [
-    { "path": "./packages/shared" },
-    { "path": "./packages/web" }
-  ]
+  "exclude": ["node_modules", "dist", "apps"]
 }

@@ -2,6 +2,8 @@
 // Knowledge Graph Types
 // ========================================
 
+import type { ConceptStatus } from './learning';
+
 /** 领域节点 */
 export interface Domain {
   id: string;
