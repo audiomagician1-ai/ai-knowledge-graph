@@ -15,6 +15,63 @@ export interface ConceptProgress {
   last_learn_at: number; // timestamp
 }
 
+// ========================================
+// Edge map for prerequisite-based unlocking
+// ========================================
+export interface PrereqEdge {
+  source: string; // prerequisite concept
+  target: string; // dependent concept
+}
+
+/** Build a map: conceptId → list of prerequisite concept IDs */
+function buildPrereqMap(edges: PrereqEdge[]): Map<string, string[]> {
+  const map = new Map<string, string[]>();
+  for (const e of edges) {
+    const existing = map.get(e.target) || [];
+    existing.push(e.source);
+    map.set(e.target, existing);
+  }
+  return map;
+}
+
+/** Build reverse map: conceptId → list of dependent concept IDs */
+function buildDependentsMap(edges: PrereqEdge[]): Map<string, string[]> {
+  const map = new Map<string, string[]>();
+  for (const e of edges) {
+    const existing = map.get(e.source) || [];
+    existing.push(e.target);
+    map.set(e.source, existing);
+  }
+  return map;
+}
+
+/** Check if a concept's prerequisites are all mastered */
+function arePrereqsMet(
+  conceptId: string,
+  prereqMap: Map<string, string[]>,
+  progress: Record<string, ConceptProgress>,
+): boolean {
+  const prereqs = prereqMap.get(conceptId);
+  if (!prereqs || prereqs.length === 0) return true; // no prereqs = always available
+  return prereqs.every((pid) => progress[pid]?.status === 'mastered');
+}
+
+/** Get all concepts that become "recommended" after a node is mastered */
+function getNewlyUnlocked(
+  masteredId: string,
+  dependentsMap: Map<string, string[]>,
+  prereqMap: Map<string, string[]>,
+  progress: Record<string, ConceptProgress>,
+): string[] {
+  const dependents = dependentsMap.get(masteredId) || [];
+  return dependents.filter((depId) => {
+    // Only concepts not yet mastered that now have all prereqs met
+    const depStatus = progress[depId]?.status;
+    if (depStatus === 'mastered') return false;
+    return arePrereqsMet(depId, prereqMap, progress);
+  });
+}
+
 export interface LearningHistory {
   concept_id: string;
   concept_name: string;
@@ -116,17 +173,31 @@ interface LearningState {
   streak: StreakData;
   stats: LearningStats | null;
 
+  /** Edge data for prerequisite-based unlocking */
+  prereqMap: Map<string, string[]>;
+  dependentsMap: Map<string, string[]>;
+  /** Concepts that are "recommended" (all prereqs mastered, not yet mastered themselves) */
+  recommendedIds: Set<string>;
+  /** Most recently unlocked concept IDs (for animation/notification) */
+  newlyUnlockedIds: string[];
+
   // Actions
+  /** Initialize edge data from graph for prerequisite tracking */
+  initEdges: (edges: PrereqEdge[]) => void;
   /** Mark a concept as "learning" when user starts a session */
   startLearning: (conceptId: string) => void;
   /** Record an assessment result, potentially marking as mastered */
   recordAssessment: (conceptId: string, conceptName: string, score: number, mastered: boolean) => void;
   /** Get status of a single concept */
   getConceptStatus: (conceptId: string) => ConceptStatus;
+  /** Check if a concept is "recommended" (prereqs all mastered) */
+  isRecommended: (conceptId: string) => boolean;
   /** Compute real stats from progress data + total node count */
   computeStats: (totalConcepts: number) => LearningStats;
   /** Refresh streak based on today's date */
   refreshStreak: () => void;
+  /** Clear newly unlocked (after UI has shown notification) */
+  clearNewlyUnlocked: () => void;
 }
 
 export const useLearningStore = create<LearningState>((set, get) => ({
@@ -134,6 +205,28 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   history: loadHistory(),
   streak: loadStreak(),
   stats: null,
+  prereqMap: new Map(),
+  dependentsMap: new Map(),
+  recommendedIds: new Set(),
+  newlyUnlockedIds: [],
+
+  initEdges: (edges: PrereqEdge[]) => {
+    const prereqMap = buildPrereqMap(edges);
+    const dependentsMap = buildDependentsMap(edges);
+    // Compute initial recommended set
+    const { progress } = get();
+    const allTargets = new Set(edges.map((e) => e.target));
+    const allSources = new Set(edges.map((e) => e.source));
+    const allIds = new Set([...allTargets, ...allSources]);
+    const recommended = new Set<string>();
+    for (const id of allIds) {
+      if (progress[id]?.status === 'mastered') continue;
+      if (arePrereqsMet(id, prereqMap, progress)) {
+        recommended.add(id);
+      }
+    }
+    set({ prereqMap, dependentsMap, recommendedIds: recommended });
+  },
 
   startLearning: (conceptId) => {
     const { progress, streak } = get();
@@ -189,12 +282,31 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     ];
     saveHistory(newHistory);
 
-    set({ progress: newProgress, history: newHistory });
+    // Compute newly unlocked concepts if this node was just mastered
+    let newlyUnlocked: string[] = [];
+    const { dependentsMap, prereqMap, recommendedIds } = get();
+    if (mastered && dependentsMap.size > 0) {
+      newlyUnlocked = getNewlyUnlocked(conceptId, dependentsMap, prereqMap, newProgress);
+      // Update recommended set
+      const updated_recommended = new Set(recommendedIds);
+      updated_recommended.delete(conceptId); // mastered, no longer "recommended"
+      for (const uid of newlyUnlocked) {
+        updated_recommended.add(uid);
+      }
+      set({ progress: newProgress, history: newHistory, newlyUnlockedIds: newlyUnlocked, recommendedIds: updated_recommended });
+    } else {
+      set({ progress: newProgress, history: newHistory });
+    }
   },
 
   getConceptStatus: (conceptId) => {
     const { progress } = get();
     return progress[conceptId]?.status || 'not_started';
+  },
+
+  isRecommended: (conceptId) => {
+    const { recommendedIds } = get();
+    return recommendedIds.has(conceptId);
   },
 
   computeStats: (totalConcepts) => {
@@ -236,5 +348,9 @@ export const useLearningStore = create<LearningState>((set, get) => ({
         set({ streak: newStreak });
       }
     }
+  },
+
+  clearNewlyUnlocked: () => {
+    set({ newlyUnlockedIds: [] });
   },
 }));

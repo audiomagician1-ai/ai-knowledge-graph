@@ -208,14 +208,14 @@ export function DashboardPage() {
 
             {masteredNodes.length === 0 ? (
               <p className="text-[12px] py-6 text-center" style={{ color: 'var(--color-text-tertiary)' }}>
-                完成费曼对话评估后，<br />掌握的概念会出现在这里
+                完成对话学习评估后，<br />掌握的概念会出现在这里
               </p>
             ) : (
               <div className="flex flex-wrap gap-1.5">
                 {masteredNodes.map((p) => (
                   <button
                     key={p.concept_id}
-                    onClick={() => navigate(`/learn/${p.concept_id}`)}
+                    onClick={() => navigate('/graph')}
                     className="rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all"
                     style={{
                       backgroundColor: 'rgba(52, 211, 153, 0.08)',
@@ -252,7 +252,7 @@ function HistoryItem({ item, navigate }: { item: LearningHistory; navigate: (p: 
 
   return (
     <button
-      onClick={() => navigate(`/learn/${item.concept_id}`)}
+      onClick={() => navigate('/graph')}
       className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all group"
       onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
       onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}

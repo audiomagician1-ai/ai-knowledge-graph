@@ -21,6 +21,7 @@ interface GNode extends NodeObject {
   difficulty: number;
   status: string;
   is_milestone: boolean;
+  is_recommended?: boolean;
   estimated_minutes?: number;
   content_type?: string;
   x?: number; y?: number; z?: number;
@@ -47,6 +48,7 @@ function baseSize(n: GNode): number {
 function nodeColor(n: GNode): string {
   if (n.status === 'mastered') return '#34d399';
   if (n.status === 'learning') return '#fbbf24';
+  if (n.is_recommended) return '#22d3ee'; // cyan for "ready to learn"
   return SUBDOMAIN_COLORS[n.subdomain_id] || '#6366f1';
 }
 
@@ -111,6 +113,44 @@ function glowTexture(): THREE.Texture {
   return _glowTex;
 }
 
+/* ── Mastered glow (green) ── */
+let _masteredGlowTex: THREE.Texture | null = null;
+function masteredGlowTexture(): THREE.Texture {
+  if (_masteredGlowTex) return _masteredGlowTex;
+  const size = 256;
+  const canvas = document.createElement('canvas');
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext('2d')!;
+  const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  g.addColorStop(0, 'rgba(52,211,153,0.6)');
+  g.addColorStop(0.25, 'rgba(52,211,153,0.2)');
+  g.addColorStop(0.6, 'rgba(52,211,153,0.04)');
+  g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, size, size);
+  _masteredGlowTex = new THREE.CanvasTexture(canvas);
+  return _masteredGlowTex;
+}
+
+/* ── Recommended glow (cyan) ── */
+let _recommendedGlowTex: THREE.Texture | null = null;
+function recommendedGlowTexture(): THREE.Texture {
+  if (_recommendedGlowTex) return _recommendedGlowTex;
+  const size = 256;
+  const canvas = document.createElement('canvas');
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext('2d')!;
+  const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  g.addColorStop(0, 'rgba(34,211,238,0.5)');
+  g.addColorStop(0.25, 'rgba(34,211,238,0.15)');
+  g.addColorStop(0.6, 'rgba(34,211,238,0.03)');
+  g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, size, size);
+  _recommendedGlowTex = new THREE.CanvasTexture(canvas);
+  return _recommendedGlowTex;
+}
+
 /* ── Component ── */
 export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdomain }: KnowledgeGraphProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -132,6 +172,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       difficulty: n.difficulty,
       status: n.status,
       is_milestone: n.is_milestone,
+      is_recommended: n.is_recommended,
       estimated_minutes: n.estimated_minutes,
       content_type: n.content_type,
     }));
@@ -231,6 +272,38 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
             group.add(sprite);
           }
 
+          /* Glow for mastered nodes */
+          if (n.status === 'mastered') {
+            const sprite = new THREE.Sprite(
+              new THREE.SpriteMaterial({
+                map: masteredGlowTexture(),
+                transparent: true,
+                opacity: 0.7,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending,
+              })
+            );
+            const s = baseSize(n) * 10;
+            sprite.scale.set(s, s, 1);
+            group.add(sprite);
+          }
+
+          /* Glow for recommended nodes (ready to learn) */
+          if (n.is_recommended && n.status !== 'mastered') {
+            const sprite = new THREE.Sprite(
+              new THREE.SpriteMaterial({
+                map: recommendedGlowTexture(),
+                transparent: true,
+                opacity: 0.5,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending,
+              })
+            );
+            const s = baseSize(n) * 10;
+            sprite.scale.set(s, s, 1);
+            group.add(sprite);
+          }
+
           /* Label sprite — large, crisp, always visible */
           const tex = makeLabelTexture(n.label, color, n.is_milestone);
           const spriteMat = new THREE.SpriteMaterial({
@@ -284,6 +357,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
           difficulty: node.difficulty,
           status: node.status,
           is_milestone: node.is_milestone,
+          is_recommended: node.is_recommended,
           estimated_minutes: node.estimated_minutes,
           content_type: node.content_type,
         } as GraphNode);

@@ -58,6 +58,7 @@ export interface GraphNode {
   difficulty: number;
   status: ConceptStatus;
   is_milestone: boolean;
+  is_recommended?: boolean; // all prerequisites mastered, recommended to learn next
   estimated_minutes?: number;
   content_type?: string;
   tags?: string[];

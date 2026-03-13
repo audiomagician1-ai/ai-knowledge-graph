@@ -20,7 +20,7 @@ export function GraphPage() {
     graphData, loading, selectedNode, activeSubdomain,
     setGraphData, selectNode, setActiveSubdomain, setLoading, setError,
   } = useGraphStore();
-  const { progress, computeStats, refreshStreak } = useLearningStore();
+  const { progress, computeStats, refreshStreak, initEdges, recommendedIds, newlyUnlockedIds, clearNewlyUnlocked } = useLearningStore();
   const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -31,17 +31,32 @@ export function GraphPage() {
       ...graphData,
       nodes: graphData.nodes.map((n) => {
         const p = progress[n.id];
-        return p ? { ...n, status: p.status } : n;
+        const isRecommended = recommendedIds.has(n.id);
+        return {
+          ...n,
+          status: p ? p.status : n.status,
+          is_recommended: isRecommended,
+        };
       }),
     };
-  }, [graphData, progress]);
+  }, [graphData, progress, recommendedIds]);
 
   useEffect(() => {
     if (graphData) {
       refreshStreak();
       computeStats(graphData.nodes.length);
+      // Initialize prerequisite edges for unlocking logic
+      const prereqEdges = graphData.edges
+        .filter((e) => e.relation_type === 'prerequisite')
+        .map((e) => ({ source: e.source, target: e.target }));
+      initEdges(prereqEdges);
     }
-  }, [graphData, progress]);
+  }, [graphData]);
+
+  // Recompute stats when progress changes (but don't re-init edges)
+  useEffect(() => {
+    if (graphData) computeStats(graphData.nodes.length);
+  }, [progress]);
 
   useEffect(() => {
     loadGraph();
@@ -314,6 +329,10 @@ export function GraphPage() {
               <span className="text-xs font-medium" style={{ color: 'var(--color-accent-amber)' }}>里程碑</span>
             </span>
             <span className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: '#22d3ee', boxShadow: '0 0 8px rgba(34, 211, 238, 0.5)' }} />
+              <span className="text-xs" style={{ color: '#22d3ee' }}>推荐学习</span>
+            </span>
+            <span className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full" style={{ backgroundColor: 'var(--color-text-tertiary)' }} />
               <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>未学习</span>
             </span>
@@ -322,7 +341,7 @@ export function GraphPage() {
               <span className="text-xs" style={{ color: '#f59e0b' }}>学习中</span>
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: 'var(--color-accent-emerald)' }} />
+              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: 'var(--color-accent-emerald)', boxShadow: '0 0 8px rgba(52, 211, 153, 0.5)' }} />
               <span className="text-xs" style={{ color: 'var(--color-accent-emerald)' }}>已掌握</span>
             </span>
           </div>
@@ -378,17 +397,19 @@ export function GraphPage() {
                       {selectedNode.subdomain_id.replace(/-/g, ' ')}
                     </span>
                     {/* Status badge */}
-                    {progress[selectedNode.id] && (
-                      progress[selectedNode.id].status === 'mastered' ? (
-                        <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: 'var(--color-accent-emerald)' }}>
-                          <Trophy size={12} /> 已掌握
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: '#f59e0b' }}>
-                          <BookOpen size={12} /> 学习中
-                        </span>
-                      )
-                    )}
+                    {progress[selectedNode.id]?.status === 'mastered' ? (
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: 'var(--color-accent-emerald)' }}>
+                        <Trophy size={12} /> 已掌握
+                      </span>
+                    ) : progress[selectedNode.id]?.status === 'learning' ? (
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: '#f59e0b' }}>
+                        <BookOpen size={12} /> 学习中
+                      </span>
+                    ) : selectedNode.is_recommended ? (
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: '#22d3ee' }}>
+                        <Zap size={12} /> 推荐学习
+                      </span>
+                    ) : null}
                   </div>
                 </div>
                 <button
