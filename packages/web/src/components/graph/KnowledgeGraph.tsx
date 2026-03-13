@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import type { GraphData, GraphNode } from '@akg/shared';
 import { GRAPH_VISUAL } from '@akg/shared';
 import type { ForceGraph3DInstance } from '3d-force-graph';
-// NodeObject / LinkObject re-exported from 3d-force-graph
 import type { NodeObject, LinkObject } from '3d-force-graph';
 
 /* ── Props ── */
@@ -24,7 +23,6 @@ interface GNode extends NodeObject {
   is_milestone: boolean;
   estimated_minutes?: number;
   content_type?: string;
-  // force-graph injects these:
   x?: number; y?: number; z?: number;
 }
 
@@ -36,13 +34,14 @@ interface GLink extends LinkObject<GNode> {
 const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
 const BG_COLOR = '#06090f';
 
-/* ── Sphere radius for layout constraining ── */
-const SPHERE_R = 280;
+/* ── Larger sphere to spread 267 nodes ── */
+const SPHERE_R = 480;
 
-/* ── Node size helpers ── */
+/* ── Node size: MUCH smaller than before ── */
 function baseSize(n: GNode): number {
-  const s = 1.5 + n.difficulty * 0.45; // 1.5 – 5.55
-  return n.is_milestone ? s * 1.6 : s;
+  // Tiny dots: 0.6 – 1.8 base (was 1.5 – 5.55!)
+  const s = 0.6 + n.difficulty * 0.13;
+  return n.is_milestone ? s * 1.5 : s;
 }
 
 function nodeColor(n: GNode): string {
@@ -51,18 +50,61 @@ function nodeColor(n: GNode): string {
   return SUBDOMAIN_COLORS[n.subdomain_id] || '#6366f1';
 }
 
+/* ── Label texture cache to avoid re-creating every frame ── */
+const _labelCache = new Map<string, THREE.Texture>();
+
+function makeLabelTexture(text: string, color: string, isMilestone: boolean): THREE.Texture {
+  const key = `${text}|${color}|${isMilestone}`;
+  if (_labelCache.has(key)) return _labelCache.get(key)!;
+
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d')!;
+  // Use large font for crisp rendering on canvas, then scale sprite down
+  const fontSize = isMilestone ? 72 : 56;
+  const fontFamily = '"Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif';
+  ctx.font = `700 ${fontSize}px ${fontFamily}`;
+  const metrics = ctx.measureText(text);
+  const pad = 24;
+  const w = Math.ceil(metrics.width) + pad * 2;
+  const h = fontSize + pad;
+  canvas.width = w;
+  canvas.height = h;
+
+  // Re-set font after resize
+  ctx.font = `700 ${fontSize}px ${fontFamily}`;
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'center';
+
+  // Dark outline/shadow for readability
+  ctx.strokeStyle = 'rgba(6, 9, 15, 0.95)';
+  ctx.lineWidth = 6;
+  ctx.lineJoin = 'round';
+  ctx.strokeText(text, w / 2, h / 2);
+
+  // Fill text
+  ctx.fillStyle = isMilestone ? '#fde68a' : color;
+  ctx.fillText(text, w / 2, h / 2);
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.minFilter = THREE.LinearFilter;
+  tex.magFilter = THREE.LinearFilter;
+  _labelCache.set(key, tex);
+  return tex;
+}
+
 /* ── Glow sprite texture (shared) ── */
 let _glowTex: THREE.Texture | null = null;
 function glowTexture(): THREE.Texture {
   if (_glowTex) return _glowTex;
-  const size = 128;
+  const size = 256;
   const canvas = document.createElement('canvas');
   canvas.width = size; canvas.height = size;
   const ctx = canvas.getContext('2d')!;
   const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-  g.addColorStop(0, 'rgba(255,255,255,0.6)');
-  g.addColorStop(0.3, 'rgba(255,255,255,0.15)');
-  g.addColorStop(1, 'rgba(255,255,255,0)');
+  g.addColorStop(0, 'rgba(251,191,36,0.5)');
+  g.addColorStop(0.25, 'rgba(251,191,36,0.15)');
+  g.addColorStop(0.6, 'rgba(251,191,36,0.03)');
+  g.addColorStop(1, 'rgba(0,0,0,0)');
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, size, size);
   _glowTex = new THREE.CanvasTexture(canvas);
@@ -102,7 +144,6 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
 
     let destroyed = false;
 
-    // Dynamic import (3d-force-graph is ESM default export)
     import('3d-force-graph').then(({ default: ForceGraph3D }) => {
       if (destroyed || !containerRef.current) return;
 
@@ -116,49 +157,52 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
         .showNavInfo(false)
         .graphData(graphPayload());
 
-      /* ── Fog — exponential distance fade ── */
+      /* ── Much lighter fog so labels stay visible ── */
       const scene = Graph.scene();
-      scene.fog = new THREE.FogExp2(BG_COLOR, 0.0018);
+      scene.fog = new THREE.FogExp2(BG_COLOR, 0.0006);
 
-      /* ── Ambient + point lights ── */
+      /* ── Brighter lights ── */
       Graph.lights([
-        new THREE.AmbientLight(0xffffff, 0.6),
-        (() => { const l = new THREE.PointLight(0x6366f1, 1.2, 800); l.position.set(0, 0, 0); return l; })(),
-        (() => { const l = new THREE.PointLight(0x8b5cf6, 0.6, 600); l.position.set(200, 200, 200); return l; })(),
+        new THREE.AmbientLight(0xffffff, 0.9),
+        (() => { const l = new THREE.PointLight(0x6366f1, 0.8, 1200); l.position.set(0, 0, 0); return l; })(),
+        (() => { const l = new THREE.PointLight(0x8b5cf6, 0.4, 800); l.position.set(300, 300, 300); return l; })(),
       ]);
 
-      /* ── Force: constrain to sphere surface ── */
-      // @ts-ignore d3Force is dynamically available
-      Graph.d3Force('radial', null); // remove default if any
+      /* ── Forces: stronger repulsion to prevent overlap ── */
       // @ts-ignore d3Force
-      Graph.d3Force('charge')?.strength(-40);
-      // @ts-ignore d3Force
+      Graph.d3Force('radial', null);
+      // @ts-ignore d3Force — much stronger repulsion (was -40)
+      Graph.d3Force('charge')?.strength(-120);
+      // @ts-ignore d3Force — longer link distances
       Graph.d3Force('link')?.distance((link: GLink) => {
-        return link.relation_type === 'prerequisite' ? 50 : 70;
+        return link.relation_type === 'prerequisite' ? 80 : 110;
       });
 
-      // Custom sphere-surface constraining force
+      // Sphere-surface constraining force
       Graph.onEngineTick(() => {
         const nodes = Graph.graphData().nodes as GNode[];
         nodes.forEach((n) => {
           if (n.x == null || n.y == null || n.z == null) return;
           const dist = Math.sqrt(n.x * n.x + n.y * n.y + n.z * n.z) || 1;
           const scale = SPHERE_R / dist;
-          // Pull gently toward sphere surface (elastic, not rigid)
-          const pull = 0.03;
+          const pull = 0.02;
           n.x! += (n.x! * scale - n.x!) * pull;
           n.y! += (n.y! * scale - n.y!) * pull;
           n.z! += (n.z! * scale - n.z!) * pull;
         });
       });
 
-      /* ── Node visuals ── */
+      /* ── Node visuals: small spheres ── */
       Graph
-        .nodeVal((n: object) => baseSize(n as GNode) * baseSize(n as GNode))
+        .nodeVal((n: object) => {
+          const s = baseSize(n as GNode);
+          return s * s;
+        })
         .nodeColor((n: object) => nodeColor(n as GNode))
-        .nodeOpacity(0.92)
-        .nodeResolution(16)
-        .nodeLabel('')  // we show label via nodeThreeObjectExtend
+        .nodeOpacity(0.85)
+        .nodeResolution(12)
+        .nodeRelSize(3) // smaller base multiplier (was default 4)
+        .nodeLabel('') // labels via sprites
         .nodeThreeObjectExtend(true)
         .nodeThreeObject((obj: object) => {
           const n = obj as GNode;
@@ -170,71 +214,57 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
             const sprite = new THREE.Sprite(
               new THREE.SpriteMaterial({
                 map: glowTexture(),
-                color: new THREE.Color('#fbbf24'),
                 transparent: true,
-                opacity: 0.55,
+                opacity: 0.6,
                 depthWrite: false,
                 blending: THREE.AdditiveBlending,
               })
             );
-            const s = baseSize(n) * 5;
+            const s = baseSize(n) * 12;
             sprite.scale.set(s, s, 1);
             group.add(sprite);
           }
 
-          /* Label sprite (always visible, distance-scaled) */
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d')!;
-          const fontSize = n.is_milestone ? 36 : 28;
-          ctx.font = `600 ${fontSize}px "DM Sans", system-ui, sans-serif`;
-          const text = n.label;
-          const metrics = ctx.measureText(text);
-          const w = Math.ceil(metrics.width) + 12;
-          const h = fontSize + 12;
-          canvas.width = w; canvas.height = h;
-
-          ctx.font = `600 ${fontSize}px "DM Sans", system-ui, sans-serif`;
-          ctx.textBaseline = 'middle';
-          ctx.textAlign = 'center';
-          // text shadow
-          ctx.fillStyle = BG_COLOR;
-          ctx.globalAlpha = 0.7;
-          ctx.fillText(text, w / 2 + 1, h / 2 + 1);
-          ctx.globalAlpha = 1;
-          ctx.fillStyle = n.is_milestone ? '#fde68a' : color;
-          ctx.fillText(text, w / 2, h / 2);
-
-          const tex = new THREE.CanvasTexture(canvas);
-          tex.minFilter = THREE.LinearFilter;
+          /* Label sprite — large, crisp, always visible */
+          const tex = makeLabelTexture(n.label, color, n.is_milestone);
           const spriteMat = new THREE.SpriteMaterial({
             map: tex,
             transparent: true,
-            opacity: n.is_milestone ? 1 : 0.8,
+            opacity: n.is_milestone ? 1.0 : 0.9,
             depthWrite: false,
+            sizeAttenuation: true,
           });
           const labelSprite = new THREE.Sprite(spriteMat);
-          const labelScale = (n.is_milestone ? 0.35 : 0.25) * (w / h);
-          const vScale = n.is_milestone ? 0.35 : 0.25;
-          labelSprite.scale.set(labelScale * h * 0.12, vScale * h * 0.12, 1);
-          labelSprite.position.set(0, -(baseSize(n) * 1.1 + 2), 0);
+          // Scale: each canvas pixel ≈ 0.14 world units
+          const img = tex.image as { width: number; height: number };
+          const aspect = img.width / img.height;
+          const labelH = n.is_milestone ? 8 : 6;
+          labelSprite.scale.set(labelH * aspect, labelH, 1);
+          // Position below the node sphere
+          labelSprite.position.set(0, -(baseSize(n) * 2.5 + 3), 0);
           group.add(labelSprite);
 
           return group;
         });
 
-      /* ── Link visuals ── */
+      /* ── Link visuals: thicker, more visible ── */
       Graph
-        .linkWidth((l: object) => (l as GLink).relation_type === 'prerequisite' ? 0.4 : 0.15)
-        .linkOpacity(0.25)
-        .linkColor((l: object) => (l as GLink).relation_type === 'prerequisite' ? '#334177' : '#1a2540')
+        .linkWidth((l: object) => (l as GLink).relation_type === 'prerequisite' ? 1.0 : 0.5)
+        .linkOpacity(0.35)
+        .linkColor((l: object) => (l as GLink).relation_type === 'prerequisite' ? '#4a5880' : '#2a3654')
         .linkDirectionalParticles((l: object) => (l as GLink).relation_type === 'prerequisite' ? 2 : 0)
-        .linkDirectionalParticleWidth(0.8)
-        .linkDirectionalParticleSpeed(0.004)
-        .linkDirectionalParticleColor(() => '#6366f1');
+        .linkDirectionalParticleWidth(1.2)
+        .linkDirectionalParticleSpeed(0.003)
+        .linkDirectionalParticleColor(() => '#818cf8');
 
-      /* ── Interaction ── */
+      /* ── Interaction: STOP rotation on click + camera fly ── */
       Graph.onNodeClick((n: NodeObject) => {
         const node = n as GNode;
+
+        // Stop auto-rotation
+        const ctrl = Graph.controls() as { autoRotate?: boolean };
+        if (ctrl) ctrl.autoRotate = false;
+
         onNodeClick({
           id: node.id,
           label: node.label,
@@ -247,31 +277,46 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
           content_type: node.content_type,
         } as GraphNode);
 
-        // Fly camera to the clicked node
-        const dist = 100;
-        const pos = { x: (node.x || 0) + dist, y: (node.y || 0) + dist * 0.3, z: (node.z || 0) + dist };
-        Graph.cameraPosition(pos, { x: node.x || 0, y: node.y || 0, z: node.z || 0 }, 800);
+        // Smooth camera fly to node
+        const dist = 120;
+        const nx = node.x || 0, ny = node.y || 0, nz = node.z || 0;
+        const len = Math.sqrt(nx * nx + ny * ny + nz * nz) || 1;
+        // Position camera along the node's radial direction (outside the sphere looking in)
+        const camX = nx + (nx / len) * dist;
+        const camY = ny + (ny / len) * dist * 0.3;
+        const camZ = nz + (nz / len) * dist;
+        Graph.cameraPosition(
+          { x: camX, y: camY, z: camZ },
+          { x: nx, y: ny, z: nz },
+          1000,
+        );
       });
 
       Graph.onNodeHover((n: NodeObject | null) => {
         hoveredRef.current = n as GNode | null;
-        containerRef.current!.style.cursor = n ? 'pointer' : 'default';
+        if (containerRef.current) {
+          containerRef.current.style.cursor = n ? 'pointer' : 'default';
+        }
       });
 
       Graph.onBackgroundClick(() => {
+        // Resume auto-rotation on background click
+        const ctrl = Graph.controls() as { autoRotate?: boolean };
+        if (ctrl) ctrl.autoRotate = true;
         onNodeClick(null as unknown as GraphNode);
       });
 
-      /* ── Auto-rotate ── */
-      const ctrl = Graph.controls() as { autoRotate?: boolean; autoRotateSpeed?: number; enableDamping?: boolean };
+      /* ── Auto-rotate (slow) ── */
+      const ctrl = Graph.controls() as { autoRotate?: boolean; autoRotateSpeed?: number; enableDamping?: boolean; dampingFactor?: number };
       if (ctrl) {
         ctrl.autoRotate = true;
-        ctrl.autoRotateSpeed = 0.4;
+        ctrl.autoRotateSpeed = 0.3;
         ctrl.enableDamping = true;
+        ctrl.dampingFactor = 0.12;
       }
 
-      /* ── Camera start position ── */
-      Graph.cameraPosition({ x: 0, y: 80, z: 450 });
+      /* ── Camera start: further out so we see the whole sphere ── */
+      Graph.cameraPosition({ x: 0, y: 100, z: 700 });
 
       /* ── Resize handling ── */
       const ro = new ResizeObserver((entries) => {
@@ -292,7 +337,6 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       };
     });
 
-    // cleanup in case the promise never resolves
     return () => { destroyed = true; };
   }, [data, graphPayload, onNodeClick]);
 
@@ -303,35 +347,38 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     const nodes = G.graphData().nodes as GNode[];
     const node = nodes.find((n) => n.id === selectedNodeId);
     if (!node || node.x == null) return;
-    const dist = 100;
+
+    // Stop rotation when selecting
+    const ctrl = G.controls() as { autoRotate?: boolean };
+    if (ctrl) ctrl.autoRotate = false;
+
+    const dist = 120;
+    const nx = node.x || 0, ny = node.y || 0, nz = node.z || 0;
+    const len = Math.sqrt(nx * nx + ny * ny + nz * nz) || 1;
     G.cameraPosition(
-      { x: (node.x || 0) + dist, y: (node.y || 0) + dist * 0.3, z: (node.z || 0) + dist },
-      { x: node.x || 0, y: node.y || 0, z: node.z || 0 },
-      800,
+      { x: nx + (nx / len) * dist, y: ny + (ny / len) * dist * 0.3, z: nz + (nz / len) * dist },
+      { x: nx, y: ny, z: nz },
+      1000,
     );
   }, [selectedNodeId]);
 
-  /* ── Subdomain filter: change node opacity ── */
+  /* ── Subdomain filter ── */
   useEffect(() => {
     const G = graphRef.current;
     if (!G) return;
-    G.nodeOpacity(0.92); // reset
     if (activeSubdomain) {
-      G.nodeThreeObjectExtend(true);
       G.nodeColor((n: object) => {
         const gn = n as GNode;
-        if (gn.subdomain_id === activeSubdomain) return nodeColor(gn);
-        return '#1a2540';
+        return gn.subdomain_id === activeSubdomain ? nodeColor(gn) : '#1a2540';
       });
-      G.nodeOpacity(0.5);
-      G.linkOpacity(0.08);
+      G.nodeOpacity(0.4);
+      G.linkOpacity(0.06);
     } else {
       G.nodeColor((n: object) => nodeColor(n as GNode));
-      G.nodeOpacity(0.92);
-      G.linkOpacity(0.25);
+      G.nodeOpacity(0.85);
+      G.linkOpacity(0.35);
     }
-    // Refresh rendering
-    G.nodeRelSize(4);
+    G.nodeRelSize(3);
   }, [activeSubdomain]);
 
   return (

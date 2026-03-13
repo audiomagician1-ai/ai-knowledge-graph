@@ -90,8 +90,8 @@ export function LearnPage() {
                 {conceptName || conceptId}
               </h1>
             </div>
-            <p className="text-[12px] font-mono" style={{ color: 'var(--color-text-tertiary)' }}>
-              Feynman Dialogue · Round {userTurns}
+            <p className="text-[12px]" style={{ color: 'var(--color-text-tertiary)' }}>
+              对话学习 · 第 {userTurns} 轮
             </p>
           </div>
 
@@ -129,10 +129,10 @@ export function LearnPage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>
-                    费曼学习法
+                    交互式学习
                   </h3>
                   <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-                    试着用最简单的话向 AI 解释这个概念。AI 会以好奇学生的身份追问，帮你发现理解的盲区。
+                    用你自己的话向 AI 解释这个概念。AI 会追问关键细节，帮你发现理解的盲区。
                   </p>
                 </div>
               </div>

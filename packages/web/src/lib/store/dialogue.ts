@@ -19,6 +19,17 @@ export interface AssessmentResult {
   mastered: boolean;
 }
 
+/** Saved conversation record for history browsing */
+export interface SavedConversation {
+  conversationId: string;
+  conceptId: string;
+  conceptName: string;
+  messages: ChatMessage[];
+  assessment: AssessmentResult | null;
+  createdAt: number;
+  updatedAt: number;
+}
+
 interface DialogueState {
   conversationId: string | null;
   conceptId: string | null;
@@ -31,15 +42,60 @@ interface DialogueState {
   assessment: AssessmentResult | null;
   error: string | null;
 
+  /** Persisted conversation history */
+  savedConversations: SavedConversation[];
+
   // Actions
   startConversation: (conceptId: string) => Promise<void>;
   sendMessage: (text: string) => Promise<void>;
   requestAssessment: () => Promise<void>;
   cancelStream: () => void;
   reset: () => void;
+  /** Load a saved conversation into current state for viewing */
+  loadSavedConversation: (convId: string) => void;
+  /** Delete a saved conversation */
+  deleteSavedConversation: (convId: string) => void;
 }
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+const CONV_HISTORY_KEY = 'akg-conversation-history';
+
+function loadSavedConversations(): SavedConversation[] {
+  try {
+    const raw = localStorage.getItem(CONV_HISTORY_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch { /* ignore */ }
+  return [];
+}
+
+function persistConversations(convs: SavedConversation[]) {
+  try {
+    // Keep last 50 conversations
+    const trimmed = convs.slice(-50);
+    localStorage.setItem(CONV_HISTORY_KEY, JSON.stringify(trimmed));
+  } catch { /* ignore */ }
+}
+
+/** Auto-save current conversation to history */
+function autoSaveConversation(state: DialogueState) {
+  if (!state.conversationId || !state.conceptId || state.messages.length < 2) return;
+  const existing = state.savedConversations;
+  const idx = existing.findIndex(c => c.conversationId === state.conversationId);
+  const record: SavedConversation = {
+    conversationId: state.conversationId,
+    conceptId: state.conceptId,
+    conceptName: state.conceptName || state.conceptId,
+    messages: [...state.messages],
+    assessment: state.assessment,
+    createdAt: idx >= 0 ? existing[idx].createdAt : Date.now(),
+    updatedAt: Date.now(),
+  };
+  const updated = idx >= 0
+    ? existing.map((c, i) => i === idx ? record : c)
+    : [...existing, record];
+  persistConversations(updated);
+  return updated;
+}
 
 let msgCounter = 0;
 function nextId() {
@@ -79,6 +135,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
   suggestAssess: false,
   assessment: null,
   error: null,
+  savedConversations: loadSavedConversations(),
 
   startConversation: async (conceptId: string) => {
     // Cancel any in-flight SSE stream
@@ -221,9 +278,11 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       // Flush remaining buffer (fix: last SSE frame could be missed)
       flushBuffer(buffer, handlePayload);
 
-      // Ensure streaming is marked done (safety)
+      // Ensure streaming is marked done + auto-save
       if (get().conversationId === myConvId) {
         set({ isStreaming: false });
+        const saved = autoSaveConversation(get());
+        if (saved) set({ savedConversations: saved });
       }
     } catch (err) {
       // Ignore AbortError — it's intentional cancellation
@@ -277,6 +336,9 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         },
         isAssessing: false,
       });
+      // Auto-save after assessment
+      const saved = autoSaveConversation(get());
+      if (saved) set({ savedConversations: saved });
     } catch (err) {
       set({
         isAssessing: false,
@@ -291,6 +353,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
   },
 
   reset: () => {
+    // Auto-save before clearing
+    const saved = autoSaveConversation(get());
     abortCurrentStream();
     set({
       conversationId: null,
@@ -303,6 +367,33 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       suggestAssess: false,
       assessment: null,
       error: null,
+      ...(saved ? { savedConversations: saved } : {}),
     });
+  },
+
+  loadSavedConversation: (convId: string) => {
+    const { savedConversations } = get();
+    const conv = savedConversations.find(c => c.conversationId === convId);
+    if (!conv) return;
+    abortCurrentStream();
+    set({
+      conversationId: conv.conversationId,
+      conceptId: conv.conceptId,
+      conceptName: conv.conceptName,
+      isMilestone: false,
+      messages: conv.messages,
+      isStreaming: false,
+      isAssessing: false,
+      suggestAssess: false,
+      assessment: conv.assessment,
+      error: null,
+    });
+  },
+
+  deleteSavedConversation: (convId: string) => {
+    const { savedConversations } = get();
+    const updated = savedConversations.filter(c => c.conversationId !== convId);
+    persistConversations(updated);
+    set({ savedConversations: updated });
   },
 }));

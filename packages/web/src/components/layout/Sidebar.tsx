@@ -40,10 +40,10 @@ export function Sidebar() {
               AI Knowledge
             </div>
             <div
-              className="text-[11px] font-mono font-medium tracking-wider"
+              className="text-[11px] font-medium tracking-wider"
               style={{ color: 'var(--color-text-tertiary)' }}
             >
-              GRAPH v0.3
+              知识图谱 v0.3
             </div>
           </div>
         </button>
@@ -52,10 +52,10 @@ export function Sidebar() {
       {/* Navigation */}
       <nav className="flex-1 px-3 space-y-1">
         <div
-          className="px-3 mb-3 text-[10px] font-mono font-semibold uppercase tracking-[0.15em]"
+          className="px-3 mb-3 text-[10px] font-semibold uppercase tracking-[0.15em]"
           style={{ color: 'var(--color-text-tertiary)' }}
         >
-          Navigation
+          导航
         </div>
         {NAV_ITEMS.map(({ path, icon: Icon, label, desc }) => {
           const isActive = location.pathname === path;
@@ -102,7 +102,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      {/* Bottom section */}
+      {/* Bottom section — generic learning tip, no Feynman branding */}
       <div className="px-4 py-5 border-t" style={{ borderColor: 'var(--color-border)' }}>
         <div
           className="rounded-xl p-4"
@@ -114,11 +114,11 @@ export function Sidebar() {
           <div className="flex items-center gap-2 mb-2">
             <Sparkles size={14} style={{ color: 'var(--color-accent-amber)' }} />
             <span className="text-[12px] font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-              费曼学习法
+              交互式学习
             </span>
           </div>
           <p className="text-[11px] leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
-            点击图谱节点，用你的话教会 AI，在解释中加深理解。
+            点击图谱节点，与 AI 对话来检验和深化你的理解。
           </p>
         </div>
       </div>
