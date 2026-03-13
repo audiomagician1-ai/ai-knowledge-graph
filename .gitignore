@@ -51,6 +51,10 @@ docker-data/
 packages/mobile/android/
 packages/mobile/ios/
 
+# PyInstaller
+*.spec
+*.exe
+
 # Misc
 *.tsbuildinfo
 .turbo/

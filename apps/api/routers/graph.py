@@ -2,16 +2,26 @@
 
 import json
 import os
+import sys
 from fastapi import APIRouter, Query, HTTPException
 from typing import Optional
 
 router = APIRouter()
 
-# 种子图谱 JSON 路径（Neo4j 不可用时 fallback）
-SEED_JSON = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
-    "data", "seed", "programming", "seed_graph.json",
-)
+
+def _get_seed_path() -> str:
+    """Get seed graph JSON path — works both in dev and PyInstaller frozen mode"""
+    if getattr(sys, 'frozen', False):
+        # PyInstaller: data bundled under _MEIPASS
+        return os.path.join(sys._MEIPASS, "seed_data", "seed_graph.json")
+    # Dev mode: relative to apps/api/
+    return os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+        "data", "seed", "programming", "seed_graph.json",
+    )
+
+
+SEED_JSON = _get_seed_path()
 
 _seed_cache: dict | None = None
 
