@@ -63,7 +63,8 @@ data/seed/         — 种子图谱数据
 | ADR-005 | Capacitor 做移动端 (非 RN) | 对齐 MuseSea，共享同一套 Web 代码 |
 | ADR-006 | 深色主题优先 | 知识宇宙主题，对齐 MuseSea 风格 |
 | ADR-007 | FSRS 间隔重复 (非 SM-2) | 97.4% 优于 SM-2，Anki 已默认采用 |
-| ADR-008 | BKT 知识追踪 (MVP) | 可解释性强，MVP 够用，中期过渡 DKT |
+| ADR-009 | 全站免登录可用 | MVP 阶段降低门槛，匿名即可体验全部功能 |
+| ADR-010 | 用户自带 LLM Key | 前端 localStorage 存储，请求头透传后端，服务端不保存 |
 
 ---
 
@@ -93,13 +94,15 @@ data/seed/         — 种子图谱数据
 - ✅ **对话API**: SSE流式/conversations CRUD/评估端点(5 endpoints)
 - ✅ **前端对话页**: 消息气泡+流式渲染+评估卡片+4维度进度条
 - ✅ **Dialogue Store**: Zustand 5 状态管理(会话/消息/流式/评估)
-- ✅ tsc 0 errors, vite build 2.2s, 所有Python模块导入通过
+- ✅ **免登录体验**: 全站开放无需登录，匿名即可使用图谱+对话
+- ✅ **用户自带 LLM Key**: 设置页面配置 (OpenRouter/OpenAI/DeepSeek) + localStorage + 请求头透传
+- ✅ tsc 0 errors, vite build 2.4s, bundle 656KB, 所有Python模块导入通过
 
 ### 待完成 🟡
-1. 🟡 **LLM API Key 配置** + 实际端到端对话测试
-2. 🟡 本地 Docker 安装 (Neo4j + Redis)
-3. 🟡 Supabase Cloud 项目创建
-4. 🟡 **Phase 3**: 用户认证 + 节点点亮逻辑 + FSRS复习调度
+1. 🟡 **LLM 端到端测试** — 配置 Key 后实际对话验证
+2. 🟡 **Phase 3**: 节点点亮逻辑 (评估通过→mastered) + 用户认证(可选)
+3. 🟡 本地 Docker 安装 (Neo4j + Redis)
+4. 🟡 代码分割 Cytoscape.js
 
 ---
 
