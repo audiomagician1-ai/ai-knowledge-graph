@@ -26,6 +26,7 @@ interface DialogueState {
   isMilestone: boolean;
   messages: ChatMessage[];
   isStreaming: boolean;
+  isAssessing: boolean;
   suggestAssess: boolean;
   assessment: AssessmentResult | null;
   error: string | null;
@@ -34,6 +35,7 @@ interface DialogueState {
   startConversation: (conceptId: string) => Promise<void>;
   sendMessage: (text: string) => Promise<void>;
   requestAssessment: () => Promise<void>;
+  cancelStream: () => void;
   reset: () => void;
 }
 
@@ -41,7 +43,29 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 let msgCounter = 0;
 function nextId() {
-  return `msg-${Date.now()}-${++msgCounter}`;
+  return `msg-${Date.now()}-${msgCounter++}-${Math.random().toString(36).slice(2, 6)}`;
+}
+
+// Module-level AbortController for SSE cancellation
+let _streamAbort: AbortController | null = null;
+
+function abortCurrentStream() {
+  if (_streamAbort) {
+    _streamAbort.abort();
+    _streamAbort = null;
+  }
+}
+
+/** Process remaining SSE data in buffer after stream ends */
+function flushBuffer(buffer: string, handler: (payload: Record<string, unknown>) => void) {
+  if (!buffer.trim()) return;
+  const lines = buffer.split('\n\n');
+  for (const line of lines) {
+    if (!line.startsWith('data: ')) continue;
+    try {
+      handler(JSON.parse(line.slice(6)));
+    } catch { /* ignore */ }
+  }
 }
 
 export const useDialogueStore = create<DialogueState>((set, get) => ({
@@ -51,11 +75,15 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
   isMilestone: false,
   messages: [],
   isStreaming: false,
+  isAssessing: false,
   suggestAssess: false,
   assessment: null,
   error: null,
 
   startConversation: async (conceptId: string) => {
+    // Cancel any in-flight SSE stream
+    abortCurrentStream();
+
     set({
       conversationId: null,
       conceptId,
@@ -63,6 +91,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       isMilestone: false,
       messages: [],
       isStreaming: false,
+      isAssessing: false,
       suggestAssess: false,
       assessment: null,
       error: null,
@@ -97,8 +126,18 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
   },
 
   sendMessage: async (text: string) => {
-    const { conversationId } = get();
-    if (!conversationId || get().isStreaming) return;
+    const { conversationId, isStreaming, isAssessing } = get();
+    if (!conversationId || isStreaming || isAssessing) return;
+
+    // Abort any previous stream (safety net)
+    abortCurrentStream();
+
+    // Create a new AbortController for this request
+    const controller = new AbortController();
+    _streamAbort = controller;
+
+    // Capture conversation ID to detect stale callbacks
+    const myConvId = conversationId;
 
     // Add user message
     const userMsg: ChatMessage = {
@@ -109,8 +148,9 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     };
 
     // Add placeholder for assistant response
+    const assistantMsgId = nextId();
     const assistantMsg: ChatMessage = {
-      id: nextId(),
+      id: assistantMsgId,
       role: 'assistant',
       content: '',
       timestamp: Date.now(),
@@ -130,6 +170,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
           conversation_id: conversationId,
           message: text,
         }),
+        signal: controller.signal,
       });
 
       if (!res.ok) throw new Error('Chat failed');
@@ -138,6 +179,27 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       const decoder = new TextDecoder();
 
       if (!reader) throw new Error('No response body');
+
+      const handlePayload = (payload: Record<string, unknown>) => {
+        // Guard: ignore if conversation changed
+        if (get().conversationId !== myConvId) return;
+
+        if (payload.type === 'chunk') {
+          set((s) => {
+            const msgs = [...s.messages];
+            const idx = msgs.findIndex((m) => m.id === assistantMsgId);
+            if (idx >= 0) {
+              msgs[idx] = { ...msgs[idx], content: msgs[idx].content + (payload.content as string) };
+            }
+            return { messages: msgs };
+          });
+        } else if (payload.type === 'done') {
+          set({
+            isStreaming: false,
+            suggestAssess: (payload.suggest_assess as boolean) || false,
+          });
+        }
+      };
 
       let buffer = '';
       while (true) {
@@ -151,44 +213,41 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         for (const line of lines) {
           if (!line.startsWith('data: ')) continue;
           try {
-            const payload = JSON.parse(line.slice(6));
-
-            if (payload.type === 'chunk') {
-              set((s) => {
-                const msgs = [...s.messages];
-                const last = msgs[msgs.length - 1];
-                if (last.role === 'assistant') {
-                  msgs[msgs.length - 1] = { ...last, content: last.content + payload.content };
-                }
-                return { messages: msgs };
-              });
-            } else if (payload.type === 'done') {
-              set({
-                isStreaming: false,
-                suggestAssess: payload.suggest_assess || false,
-              });
-            }
-          } catch {
-            // ignore parse errors
-          }
+            handlePayload(JSON.parse(line.slice(6)));
+          } catch { /* ignore parse errors */ }
         }
       }
 
-      // Ensure streaming is marked done
-      set({ isStreaming: false });
+      // Flush remaining buffer (fix: last SSE frame could be missed)
+      flushBuffer(buffer, handlePayload);
+
+      // Ensure streaming is marked done (safety)
+      if (get().conversationId === myConvId) {
+        set({ isStreaming: false });
+      }
     } catch (err) {
-      set({
-        isStreaming: false,
-        error: err instanceof Error ? err.message : 'Unknown error',
-      });
+      // Ignore AbortError — it's intentional cancellation
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        return;
+      }
+      if (get().conversationId === myConvId) {
+        set({
+          isStreaming: false,
+          error: err instanceof Error ? err.message : 'Unknown error',
+        });
+      }
+    } finally {
+      if (_streamAbort === controller) {
+        _streamAbort = null;
+      }
     }
   },
 
   requestAssessment: async () => {
-    const { conversationId } = get();
-    if (!conversationId) return;
+    const { conversationId, isStreaming, isAssessing } = get();
+    if (!conversationId || isStreaming || isAssessing) return;
 
-    set({ isStreaming: true, error: null });
+    set({ isAssessing: true, error: null });
 
     try {
       const res = await fetch(`${API_BASE}/dialogue/assess`, {
@@ -201,7 +260,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       const data = await res.json();
 
       if (data.error) {
-        set({ isStreaming: false, error: data.error });
+        set({ isAssessing: false, error: data.error });
         return;
       }
 
@@ -216,17 +275,23 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
           feedback: data.feedback || '',
           mastered: data.mastered || false,
         },
-        isStreaming: false,
+        isAssessing: false,
       });
     } catch (err) {
       set({
-        isStreaming: false,
+        isAssessing: false,
         error: err instanceof Error ? err.message : 'Unknown error',
       });
     }
   },
 
-  reset: () =>
+  cancelStream: () => {
+    abortCurrentStream();
+    set({ isStreaming: false });
+  },
+
+  reset: () => {
+    abortCurrentStream();
     set({
       conversationId: null,
       conceptId: null,
@@ -234,8 +299,10 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       isMilestone: false,
       messages: [],
       isStreaming: false,
+      isAssessing: false,
       suggestAssess: false,
       assessment: null,
       error: null,
-    }),
+    });
+  },
 }));

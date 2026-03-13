@@ -17,6 +17,18 @@ interface SettingsState {
 
 const STORAGE_KEY = 'akg-settings';
 
+/** Simple obfuscation — NOT encryption, just prevents casual plaintext scanning.
+ *  Use btoa/atob for base64 encode/decode. */
+function obfuscate(plain: string): string {
+  if (!plain) return '';
+  try { return btoa(encodeURIComponent(plain)); } catch { return plain; }
+}
+
+function deobfuscate(encoded: string): string {
+  if (!encoded) return '';
+  try { return decodeURIComponent(atob(encoded)); } catch { return encoded; }
+}
+
 function loadFromStorage(): LLMConfig {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -24,7 +36,7 @@ function loadFromStorage(): LLMConfig {
       const parsed = JSON.parse(raw);
       return {
         provider: parsed.provider || 'openrouter',
-        apiKey: parsed.apiKey || '',
+        apiKey: parsed.apiKey_b64 ? deobfuscate(parsed.apiKey_b64) : (parsed.apiKey || ''),
         model: parsed.model || '',
       };
     }
@@ -34,7 +46,13 @@ function loadFromStorage(): LLMConfig {
 
 function saveToStorage(config: LLMConfig) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+    // Store key obfuscated; never store plaintext 'apiKey' field
+    const toSave = {
+      provider: config.provider,
+      apiKey_b64: obfuscate(config.apiKey),
+      model: config.model || '',
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
   } catch { /* ignore */ }
 }
 

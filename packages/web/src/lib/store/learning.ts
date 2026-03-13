@@ -88,8 +88,23 @@ function saveStreak(streak: StreakData) {
   } catch { /* ignore */ }
 }
 
+/** Get today's date string in local timezone (YYYY-MM-DD) */
 function todayStr(): string {
-  return new Date().toISOString().slice(0, 10);
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+/** Get yesterday's date string in local timezone */
+function yesterdayStr(): string {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
 }
 
 // ========================================
@@ -136,12 +151,9 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     // Update streak
     let newStreak = { ...streak };
     if (streak.lastDate !== today) {
-      const yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().slice(0, 10);
-      if (streak.lastDate === yesterdayStr) {
+      if (streak.lastDate === yesterdayStr()) {
         newStreak.current += 1;
-      } else if (streak.lastDate !== today) {
+      } else {
         newStreak.current = 1;
       }
       newStreak.lastDate = today;
@@ -160,11 +172,11 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     const updated: ConceptProgress = {
       concept_id: conceptId,
       status: mastered ? 'mastered' : 'learning',
-      mastery_score: score,
+      mastery_score: mastered ? Math.max(score, existing?.mastery_score || 0) : score,
       last_score: score,
-      sessions: (existing?.sessions || 0),
+      sessions: existing?.sessions || 1, // inherit; at least 1 since we're assessing
       total_time_sec: existing?.total_time_sec || 0,
-      mastered_at: mastered ? now : existing?.mastered_at,
+      mastered_at: mastered ? (existing?.mastered_at || now) : undefined,
       last_learn_at: now,
     };
 
@@ -186,19 +198,23 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   },
 
   computeStats: (totalConcepts) => {
+    // Auto-refresh streak on each stats computation
+    get().refreshStreak();
+
     const { progress, streak } = get();
     const entries = Object.values(progress);
     const mastered = entries.filter((p) => p.status === 'mastered').length;
     const learning = entries.filter((p) => p.status === 'learning').length;
+    const notStarted = totalConcepts - mastered - learning;
     const totalTime = entries.reduce((sum, p) => sum + p.total_time_sec, 0);
 
     const stats: LearningStats = {
       total_concepts: totalConcepts,
       mastered_count: mastered,
       learning_count: learning,
-      available_count: totalConcepts - mastered - learning,
+      available_count: notStarted, // no lock system — available = not_started
       locked_count: 0,
-      not_started_count: totalConcepts - mastered - learning,
+      not_started_count: notStarted,
       total_study_time_sec: totalTime,
       current_streak: streak.current,
       longest_streak: streak.longest,
@@ -211,12 +227,10 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   refreshStreak: () => {
     const { streak } = get();
     const today = todayStr();
+    // Only act if there's a previous date and it's not today
     if (streak.lastDate && streak.lastDate !== today) {
-      const yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().slice(0, 10);
-      if (streak.lastDate !== yesterdayStr) {
-        // Streak broken
+      if (streak.lastDate !== yesterdayStr()) {
+        // Streak broken — last activity was before yesterday
         const newStreak = { ...streak, current: 0 };
         saveStreak(newStreak);
         set({ streak: newStreak });

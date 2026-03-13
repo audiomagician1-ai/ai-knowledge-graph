@@ -1,8 +1,11 @@
 """对话引擎 API — 费曼对话 + 苏格拉底追问 + 理解度评估
 无需登录，支持用户自带 LLM API Key (通过请求头传递)"""
 
+import asyncio
 import json
+import time
 import uuid
+import logging
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Request
@@ -13,11 +16,44 @@ from engines.dialogue.socratic import socratic_engine
 from engines.dialogue.evaluator import evaluator
 from routers.graph import _load_seed
 
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
 # 内存会话存储（MVP 阶段，后续迁移到 Redis/Supabase）
 _sessions: dict[str, dict] = {}
+# Per-session lock to prevent concurrent message writes
+_session_locks: dict[str, asyncio.Lock] = {}
+
+# Session limits
+_MAX_SESSIONS = 200
+_SESSION_TTL_SEC = 3600  # 1 hour
+
+# Valid LLM providers
+_VALID_PROVIDERS = {"openrouter", "openai", "deepseek"}
+
+
+def _cleanup_sessions():
+    """Remove expired sessions (LRU by last_active)"""
+    now = time.time()
+    expired = [k for k, v in _sessions.items() if now - v.get("last_active", 0) > _SESSION_TTL_SEC]
+    for k in expired:
+        _sessions.pop(k, None)
+        _session_locks.pop(k, None)
+
+    # If still over limit, evict oldest
+    if len(_sessions) > _MAX_SESSIONS:
+        sorted_keys = sorted(_sessions.keys(), key=lambda k: _sessions[k].get("last_active", 0))
+        for k in sorted_keys[: len(_sessions) - _MAX_SESSIONS]:
+            _sessions.pop(k, None)
+            _session_locks.pop(k, None)
+
+
+def _get_lock(conv_id: str) -> asyncio.Lock:
+    """Get or create a per-session asyncio.Lock"""
+    if conv_id not in _session_locks:
+        _session_locks[conv_id] = asyncio.Lock()
+    return _session_locks[conv_id]
 
 
 class ConversationCreate(BaseModel):
@@ -43,8 +79,11 @@ def _extract_user_llm_config(request: Request) -> Optional[dict]:
     api_key = request.headers.get("x-llm-api-key", "").strip()
     if not api_key:
         return None
+    provider = request.headers.get("x-llm-provider", "openrouter").strip().lower()
+    if provider not in _VALID_PROVIDERS:
+        provider = "openrouter"
     return {
-        "provider": request.headers.get("x-llm-provider", "openrouter").strip(),
+        "provider": provider,
         "api_key": api_key,
         "model": request.headers.get("x-llm-model", "").strip() or None,
     }
@@ -85,11 +124,14 @@ def _get_concept_info(concept_id: str) -> Optional[dict]:
 @router.post("/conversations")
 async def create_conversation(req: ConversationCreate):
     """创建新的费曼对话会话"""
+    # Cleanup old sessions before creating new ones
+    _cleanup_sessions()
+
     concept = _get_concept_info(req.concept_id)
     if not concept:
         raise HTTPException(status_code=404, detail=f"概念不存在: {req.concept_id}")
 
-    conv_id = str(uuid.uuid4())[:12]
+    conv_id = str(uuid.uuid4())
 
     # 构建 system prompt
     system_prompt = await socratic_engine.build_system_prompt(
@@ -112,6 +154,7 @@ async def create_conversation(req: ConversationCreate):
             {"role": "assistant", "content": opening},
         ],
         "status": "active",
+        "last_active": time.time(),
     }
 
     return {
@@ -130,6 +173,7 @@ async def chat(req: ChatRequest, request: Request):
     if not session:
         raise HTTPException(status_code=404, detail="会话不存在")
 
+    session["last_active"] = time.time()
     user_config = _extract_user_llm_config(request)
 
     # 验证有可用的 LLM Key
@@ -138,14 +182,17 @@ async def chat(req: ChatRequest, request: Request):
     if not user_config and not has_server_key:
         async def no_key_response():
             msg = "⚠️ 还没有配置 LLM API Key 哦！请到「设置」页面配置你的 API Key，然后就可以开始对话了。"
-            session["messages"].append({"role": "user", "content": req.message})
-            session["messages"].append({"role": "assistant", "content": msg})
+            async with _get_lock(req.conversation_id):
+                session["messages"].append({"role": "user", "content": req.message})
+                session["messages"].append({"role": "assistant", "content": msg})
             yield f"data: {json.dumps({'type': 'chunk', 'content': msg}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
         return StreamingResponse(no_key_response(), media_type="text/event-stream")
 
-    # 添加用户消息到历史
-    session["messages"].append({"role": "user", "content": req.message})
+    # 添加用户消息到历史 (under lock)
+    lock = _get_lock(req.conversation_id)
+    async with lock:
+        session["messages"].append({"role": "user", "content": req.message})
 
     async def generate():
         full_response = ""
@@ -159,8 +206,9 @@ async def chat(req: ChatRequest, request: Request):
                 full_response += chunk
                 yield f"data: {json.dumps({'type': 'chunk', 'content': chunk}, ensure_ascii=False)}\n\n"
 
-            # 保存完整的 AI 回复
-            session["messages"].append({"role": "assistant", "content": full_response})
+            # 保存完整的 AI 回复 (under lock)
+            async with lock:
+                session["messages"].append({"role": "assistant", "content": full_response})
 
             # 检查是否应该提示评估（4轮用户消息后）
             user_turns = sum(1 for m in session["messages"] if m["role"] == "user")
@@ -168,10 +216,12 @@ async def chat(req: ChatRequest, request: Request):
 
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': suggest_assess, 'turn': user_turns}, ensure_ascii=False)}\n\n"
         except Exception as e:
+            logger.warning("Chat stream error for %s: %s", req.conversation_id, e)
             fallback = "抱歉，我刚才走神了 😅 你能再说一遍吗？我保证认真听！"
-            session["messages"].append({"role": "assistant", "content": fallback})
+            async with lock:
+                session["messages"].append({"role": "assistant", "content": fallback})
             yield f"data: {json.dumps({'type': 'chunk', 'content': fallback}, ensure_ascii=False)}\n\n"
-            yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False, 'error': str(e)}, ensure_ascii=False)}\n\n"
+            yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
 
     return StreamingResponse(
         generate(),

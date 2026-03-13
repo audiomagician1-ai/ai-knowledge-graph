@@ -17,9 +17,11 @@ export function LearnPage() {
 
   const {
     conversationId, conceptName, isMilestone,
-    messages, isStreaming, suggestAssess, assessment, error,
-    startConversation, sendMessage, requestAssessment, reset,
+    messages, isStreaming, isAssessing, suggestAssess, assessment, error,
+    startConversation, sendMessage, requestAssessment, cancelStream, reset,
   } = useDialogueStore();
+
+  const isBusy = isStreaming || isAssessing;
 
   const { startLearning, recordAssessment } = useLearningStore();
 
@@ -50,7 +52,7 @@ export function LearnPage() {
 
   const handleSend = async () => {
     const text = input.trim();
-    if (!text || isStreaming) return;
+    if (!text || isBusy) return;
     setInput('');
     await sendMessage(text);
   };
@@ -97,11 +99,11 @@ export function LearnPage() {
         {suggestAssess && !assessment && (
           <button
             onClick={requestAssessment}
-            disabled={isStreaming}
+            disabled={isBusy}
             className="rounded-lg px-3 py-1.5 text-xs font-medium"
-            style={{ backgroundColor: '#8b5cf6', color: '#fff' }}
+            style={{ backgroundColor: '#8b5cf6', color: '#fff', opacity: isBusy ? 0.5 : 1 }}
           >
-            📊 评估
+            {isAssessing ? '评估中...' : '📊 评估'}
           </button>
         )}
       </header>
@@ -172,16 +174,16 @@ export function LearnPage() {
               border: '1px solid #334155',
               maxHeight: '120px',
             }}
-            disabled={isStreaming || !conversationId}
+            disabled={isBusy || !conversationId}
           />
           <button
             onClick={handleSend}
-            disabled={isStreaming || !input.trim() || !conversationId}
+            disabled={isBusy || !input.trim() || !conversationId}
             className="rounded-xl px-4 py-3 text-sm font-medium transition-opacity"
             style={{
-              backgroundColor: isStreaming ? '#475569' : '#8b5cf6',
+              backgroundColor: isBusy ? '#475569' : '#8b5cf6',
               color: '#fff',
-              opacity: !input.trim() || isStreaming ? 0.5 : 1,
+              opacity: !input.trim() || isBusy ? 0.5 : 1,
             }}
           >
             {isStreaming ? '...' : '发送'}
