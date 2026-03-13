@@ -7,30 +7,30 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 2 完成 + Phase 3 边缘功能完成 + Code Review 修复完成** | 图谱可视化 + 费曼对话引擎 + EXE打包
+**当前阶段**: 🟢 **Phase 3 完成** | 图谱可视化 + 对话引擎 + 节点点亮级联 + EXE打包
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 
-**当前最高优先任务 — Phase 2 集成测试** (进行中):
-> **目标**: LLM API 实际对接测试 + 端到端对话验证 + 里程碑点亮
-> **详见**: `DEVELOPMENT_PLAN.md` Phase 2-3
+**当前最高优先任务 — Phase 4 打磨** (进行中):
+> **目标**: UI/UX 打磨 + Markdown渲染 + 评估动效 + 响应式适配 + 最终内测版
+> **详见**: `DEVELOPMENT_PLAN.md` Phase 4
 
 ### 12周里程碑
 
 | Phase | 周次 | 目标 | 状态 |
 |:---|:---|:---|:---|
 | **Phase 0** | W1-2 | 基础设施 + 种子图谱 | ✅ 完成 |
-| **Phase 1** | W3-4 | 图谱展示 + 基础交互 | ✅ 完成 (267节点334边, Cytoscape.js, 里程碑高亮) |
-| **Phase 2** | W5-7 | 费曼对话引擎 (核心) | ✅ 核心完成 (LLM调用层+苏格拉底引擎+评估器+SSE流式+前端UI) |
-| **Phase 3** | W8-9 | 技能树点亮 + 用户系统 | 🟡 下一步 |
-| **Phase 4** | W10-12 | 打磨 + 内测 | ⬜ |
+| **Phase 1** | W3-4 | 图谱展示 + 基础交互 | ✅ 完成 (267节点334边, 3D球面力导向图, 里程碑高亮) |
+| **Phase 2** | W5-7 | 对话引擎 (核心) | ✅ 完成 (LLM调用层+苏格拉底引擎+评估器+SSE流式+前端UI+RAG知识库) |
+| **Phase 3** | W8-9 | 节点点亮 + 进度系统 | ✅ 完成 (前置条件图+推荐集合+mastered绿光晕+recommended青光晕+Dashboard真实数据) |
+| **Phase 4** | W10-12 | 打磨 + 内测 | 🟡 进行中 |
 
 ---
 
 ## 2. PROJECT IDENTITY（项目基本面）
 
-**产品**: AI知识图谱 — 费曼对话+苏格拉底式教学+知识图谱技能树点亮学习平台
-**核心理念**: 通过"教AI"来学会知识 — 结合费曼学习法、苏格拉底式对话和可视化知识图谱
+**产品**: AI知识图谱 — 交互式教学+苏格拉底式对话+知识图谱技能树点亮学习平台
+**核心理念**: AI先讲解知识，再以"好奇学生"角色提问，用户通过回答来检验和深化理解
 **技术栈**:
 - **前端**: React 19 + TypeScript 5.7 + Vite 6 + TailwindCSS 4 + Zustand 5 + Three.js/3d-force-graph + Framer Motion + Lucide React
 - **后端**: FastAPI (Python 3.11+) — 图谱引擎/对话引擎/学习引擎
@@ -106,6 +106,10 @@ data/seed/         — 种子图谱数据
 - ✅ **Code Review 修复**: 24项问题全部修复 (9 critical + 9 medium + 6 minor)
 - ✅ **UI 重设计**: Neural Observatory 主题, DM Sans+JetBrains Mono, PC侧边栏布局, glass morphism, gradient+glow
 - ✅ **PyInstaller EXE 打包**: 55MB 单文件, FastAPI+前端SPA+种子数据内嵌, 输出至 release/ 目录, 自动生成 Release Note
+- ✅ **RAG 知识库**: 267篇 Markdown 文档 (15子域), 对话引擎自动注入相关知识上下文
+- ✅ **混合教学模式**: AI先讲解→切换"好奇学生"角色提问→用户作答→AI反馈→循环, 5种提问风格轮换
+- ✅ **Phase 3 节点点亮级联**: 前置条件图(prereqMap/dependentsMap) + 推荐集合(recommendedIds) + mastered绿光晕 + recommended青光晕
+- ✅ **3种学习状态光晕**: 里程碑金色辉光 / 已掌握绿色辉光 / 推荐学习青色辉光
 
 ### EXE 打包规范
 ```
@@ -133,10 +137,10 @@ Release Note 包含:
 ```
 
 ### 待完成 🟡
-1. 🟡 **LLM 端到端测试** — 配置 Key 后实际对话验证
-2. 🟡 本地 Docker 安装 (Neo4j + Redis)
-3. 🟡 UI/UX 打磨 (移动端适配、动画过渡、loading states)
-4. 🟡 API 缓存 + 离线支持
+1. 🟡 **Phase 4**: Markdown渲染 + 评估动效 + 设置页增强 + 响应式适配
+2. 🟡 **LLM 端到端测试** — 配置 Key 后实际对话验证
+3. 🟡 Sidebar 实时进度条
+4. 🟡 移动端响应式适配 (小屏 Sidebar 隐藏 + 面板全屏)
 
 ---
 

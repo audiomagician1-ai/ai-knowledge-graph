@@ -3,9 +3,11 @@ import { useDialogueStore } from '@/lib/store/dialogue';
 import { useLearningStore } from '@/lib/store/learning';
 import type { AssessmentResult, SavedConversation } from '@/lib/store/dialogue';
 import type { ConceptProgress } from '@/lib/store/learning';
+import { MarkdownRenderer } from './MarkdownRenderer';
 import {
   Send, BarChart3, Brain, RotateCcw, Zap, Play,
   Trophy, History, Trash2, MessageSquare, X, BookOpen,
+  Sparkles,
 } from 'lucide-react';
 
 interface ChatPanelProps {
@@ -28,7 +30,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   } = useDialogueStore();
 
   const isBusy = isStreaming || isAssessing;
-  const { progress, startLearning, recordAssessment } = useLearningStore();
+  const { progress, startLearning, recordAssessment, newlyUnlockedIds, clearNewlyUnlocked } = useLearningStore();
+  const [showCelebration, setShowCelebration] = useState(false);
 
   // When concept changes → reset to idle (show history + start button)
   useEffect(() => {
@@ -40,10 +43,14 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
     }
   }, [conceptId]);
 
-  // Record assessment
+  // Record assessment + show celebration if mastered
   useEffect(() => {
     if (assessment && conceptId) {
       recordAssessment(conceptId, conceptName || conceptId, assessment.overall_score, assessment.mastered);
+      if (assessment.mastered) {
+        setShowCelebration(true);
+        setTimeout(() => setShowCelebration(false), 4000);
+      }
     }
   }, [assessment]);
 
@@ -351,13 +358,18 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                       }
                 }
               >
-                <div className="whitespace-pre-wrap break-words">{msg.content}</div>
-                {msg.role === 'assistant' && msg.content === '' && isStreaming && (
-                  <div className="flex items-center gap-1.5 mt-1">
-                    <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-indigo)' }} />
-                    <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-violet)', animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-cyan)', animationDelay: '300ms' }} />
-                  </div>
+                {msg.role === 'assistant' ? (
+                  msg.content ? (
+                    <MarkdownRenderer content={msg.content} />
+                  ) : isStreaming ? (
+                    <div className="flex items-center gap-1.5 mt-1">
+                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-indigo)' }} />
+                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-violet)', animationDelay: '150ms' }} />
+                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-cyan)', animationDelay: '300ms' }} />
+                    </div>
+                  ) : null
+                ) : (
+                  <div className="whitespace-pre-wrap break-words">{msg.content}</div>
                 )}
               </div>
             </div>
@@ -439,6 +451,37 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
           style={{ backgroundColor: 'rgba(244, 63, 94, 0.12)', color: 'var(--color-accent-rose)', border: '1px solid rgba(244, 63, 94, 0.2)' }}
         >
           {error}
+        </div>
+      )}
+
+      {/* Mastery celebration overlay */}
+      {showCelebration && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none animate-fade-in">
+          <div
+            className="rounded-2xl px-8 py-6 text-center pointer-events-auto"
+            style={{
+              background: 'linear-gradient(135deg, rgba(52, 211, 153, 0.15), rgba(16, 185, 129, 0.1))',
+              border: '1px solid rgba(52, 211, 153, 0.3)',
+              backdropFilter: 'blur(16px)',
+              boxShadow: '0 0 60px rgba(52, 211, 153, 0.2)',
+            }}
+          >
+            <div className="text-4xl mb-3">🎉</div>
+            <div className="text-lg font-bold mb-1" style={{ color: 'var(--color-accent-emerald)' }}>
+              概念已掌握！
+            </div>
+            <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+              {conceptName} 节点已点亮
+            </div>
+            {newlyUnlockedIds.length > 0 && (
+              <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(52, 211, 153, 0.15)' }}>
+                <div className="flex items-center justify-center gap-1.5 text-xs" style={{ color: '#22d3ee' }}>
+                  <Sparkles size={13} />
+                  <span>已解锁 {newlyUnlockedIds.length} 个新概念</span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

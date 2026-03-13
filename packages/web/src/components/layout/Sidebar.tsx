@@ -1,5 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Network, BarChart3, Settings, Brain, Sparkles } from 'lucide-react';
+import { useGraphStore } from '@/lib/store/graph';
+import { useLearningStore } from '@/lib/store/learning';
+import { Network, BarChart3, Settings, Brain, Sparkles, Zap } from 'lucide-react';
 
 const NAV_ITEMS = [
   { path: '/graph', icon: Network, label: '知识图谱', desc: '探索知识宇宙' },
@@ -10,6 +12,12 @@ const NAV_ITEMS = [
 export function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { graphData } = useGraphStore();
+  const { progress } = useLearningStore();
+  const totalNodes = graphData?.nodes.length || 0;
+  const masteredCount = Object.values(progress).filter(p => p.status === 'mastered').length;
+  const learningCount = Object.values(progress).filter(p => p.status === 'learning').length;
+  const progressPct = totalNodes > 0 ? Math.round((masteredCount / totalNodes) * 100) : 0;
 
   return (
     <aside
@@ -102,7 +110,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      {/* Bottom section — generic learning tip, no Feynman branding */}
+      {/* Bottom section — progress overview */}
       <div className="px-4 py-5 border-t" style={{ borderColor: 'var(--color-border)' }}>
         <div
           className="rounded-xl p-4"
@@ -111,15 +119,52 @@ export function Sidebar() {
             border: '1px solid var(--color-border)',
           }}
         >
-          <div className="flex items-center gap-2 mb-2">
-            <Sparkles size={14} style={{ color: 'var(--color-accent-amber)' }} />
-            <span className="text-[12px] font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-              交互式学习
-            </span>
-          </div>
-          <p className="text-[11px] leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
-            点击图谱节点，与 AI 对话来检验和深化你的理解。
-          </p>
+          {totalNodes > 0 && (masteredCount > 0 || learningCount > 0) ? (
+            <>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[12px] font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                  学习进度
+                </span>
+                <span className="text-[12px] font-mono font-bold" style={{ color: 'var(--color-accent-indigo)' }}>
+                  {progressPct}%
+                </span>
+              </div>
+              {/* Progress bar */}
+              <div className="h-1.5 rounded-full overflow-hidden mb-2" style={{ backgroundColor: 'var(--color-surface-4)' }}>
+                <div
+                  className="h-full rounded-full transition-all duration-700"
+                  style={{
+                    width: `${progressPct}%`,
+                    background: 'linear-gradient(90deg, var(--color-accent-indigo), var(--color-accent-emerald))',
+                    minWidth: progressPct > 0 ? 4 : 0,
+                  }}
+                />
+              </div>
+              <div className="flex items-center gap-3 text-[11px]">
+                <span className="flex items-center gap-1" style={{ color: 'var(--color-accent-emerald)' }}>
+                  <Zap size={10} /> {masteredCount} 掌握
+                </span>
+                {learningCount > 0 && (
+                  <span className="flex items-center gap-1" style={{ color: 'var(--color-accent-amber)' }}>
+                    <Sparkles size={10} /> {learningCount} 学习中
+                  </span>
+                )}
+                <span style={{ color: 'var(--color-text-tertiary)' }}>/ {totalNodes}</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center gap-2 mb-2">
+                <Sparkles size={14} style={{ color: 'var(--color-accent-amber)' }} />
+                <span className="text-[12px] font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                  交互式学习
+                </span>
+              </div>
+              <p className="text-[11px] leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
+                点击图谱节点，与 AI 对话来检验和深化你的理解。
+              </p>
+            </>
+          )}
         </div>
       </div>
     </aside>

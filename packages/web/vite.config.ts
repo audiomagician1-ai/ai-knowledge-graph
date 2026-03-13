@@ -30,6 +30,7 @@ export default defineConfig({
           ui: ['framer-motion', 'lucide-react'],
           three: ['three'],
           graph: ['3d-force-graph'],
+          markdown: ['react-markdown', 'remark-gfm'],
         },
       },
     },

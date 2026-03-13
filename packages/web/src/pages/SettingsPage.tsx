@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useSettingsStore, PROVIDER_INFO } from '@/lib/store/settings';
+import { useSettingsStore, PROVIDER_INFO, getLLMHeaders } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
 import {
   Eye, EyeOff, Check, Trash2, ChevronDown, Shield,
-  Key, Server, Cpu, ExternalLink, Info,
+  Key, Server, Cpu, ExternalLink, Info, Wifi, WifiOff, Loader2,
 } from 'lucide-react';
 
 const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek'];
@@ -12,10 +12,43 @@ export function SettingsPage() {
   const { llmConfig, setLLMConfig, clearApiKey } = useSettingsStore();
   const [showKey, setShowKey] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [testStatus, setTestStatus] = useState<'idle' | 'testing' | 'success' | 'error'>('idle');
+  const [testMessage, setTestMessage] = useState('');
 
   const handleSave = () => {
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
+  };
+
+  const handleTestConnection = async () => {
+    if (!llmConfig.apiKey) {
+      setTestStatus('error');
+      setTestMessage('请先输入 API Key');
+      return;
+    }
+    setTestStatus('testing');
+    setTestMessage('');
+    try {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+      // Create a quick test conversation to verify the key works
+      const res = await fetch(`${API_BASE}/dialogue/conversations`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
+        body: JSON.stringify({ concept_id: 'prompt-basics' }),
+      });
+      if (res.ok) {
+        setTestStatus('success');
+        setTestMessage('连接成功！API Key 有效');
+        setTimeout(() => setTestStatus('idle'), 4000);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setTestStatus('error');
+        setTestMessage(data.detail || `连接失败 (${res.status})`);
+      }
+    } catch (err) {
+      setTestStatus('error');
+      setTestMessage(err instanceof Error ? err.message : '网络错误，请检查后端是否运行');
+    }
   };
 
   const maskedKey = llmConfig.apiKey
@@ -193,12 +226,40 @@ export function SettingsPage() {
                 {saved ? <><Check size={16} /> 已保存</> : '保存配置'}
               </button>
               {llmConfig.apiKey && (
-                <button onClick={clearApiKey} className="btn-ghost flex items-center gap-2 px-5">
+                <button
+                  onClick={handleTestConnection}
+                  disabled={testStatus === 'testing'}
+                  className="btn-ghost flex items-center gap-2 px-5"
+                  style={{
+                    color: testStatus === 'success' ? 'var(--color-accent-emerald)'
+                      : testStatus === 'error' ? 'var(--color-accent-rose)'
+                      : undefined,
+                  }}
+                >
+                  {testStatus === 'testing' ? <Loader2 size={14} className="animate-spin" />
+                    : testStatus === 'success' ? <Wifi size={14} />
+                    : testStatus === 'error' ? <WifiOff size={14} />
+                    : <Wifi size={14} />}
+                  {testStatus === 'testing' ? '测试中...'
+                    : testStatus === 'success' ? '连接正常'
+                    : testStatus === 'error' ? '连接失败'
+                    : '测试连接'}
+                </button>
+              )}
+              {llmConfig.apiKey && (
+                <button onClick={clearApiKey} className="btn-ghost flex items-center gap-2 px-4">
                   <Trash2 size={14} />
-                  清除
                 </button>
               )}
             </div>
+            {testMessage && testStatus !== 'idle' && (
+              <p
+                className="text-[12px] mt-1"
+                style={{ color: testStatus === 'success' ? 'var(--color-accent-emerald)' : 'var(--color-accent-rose)' }}
+              >
+                {testMessage}
+              </p>
+            )}
           </div>
         </div>
 
@@ -248,7 +309,7 @@ export function SettingsPage() {
         {/* Footer */}
         <div className="text-center mt-8 pb-4">
           <p className="text-[11px] font-mono" style={{ color: 'var(--color-text-tertiary)' }}>
-            AI Knowledge Graph v0.3.0 · Phase 2 Complete
+            AI Knowledge Graph v0.4.0 · Phase 3 Complete
           </p>
         </div>
       </div>
