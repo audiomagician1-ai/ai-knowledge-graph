@@ -25,7 +25,7 @@ WEB_DIR = ROOT / "packages" / "web"
 WEB_DIST = WEB_DIR / "dist"
 SEED_JSON = ROOT / "data" / "seed" / "programming" / "seed_graph.json"
 BUILD_DIR = ROOT / "build"
-DIST_DIR = ROOT / "dist"
+RELEASE_DIR = ROOT / "release"
 
 
 def get_git_info() -> tuple[str, str]:
@@ -67,10 +67,10 @@ def build_exe():
 
     print(f"\n🔨 Building exe: {exe_name}.exe")
 
-    # Clean previous builds
-    for d in [BUILD_DIR, DIST_DIR]:
-        if d.exists():
-            shutil.rmtree(d)
+    # Clean previous builds (keep release/ for history, only clean build/)
+    if BUILD_DIR.exists():
+        shutil.rmtree(BUILD_DIR)
+    RELEASE_DIR.mkdir(parents=True, exist_ok=True)
 
     # Prepare staging directory for added data
     staging = BUILD_DIR / "staging"
@@ -117,7 +117,7 @@ def build_exe():
         # Paths
         "--paths", str(API_DIR),
         # Working dirs
-        "--distpath", str(DIST_DIR),
+        "--distpath", str(RELEASE_DIR),
         "--workpath", str(BUILD_DIR / "work"),
         "--specpath", str(BUILD_DIR),
         # Entry point
@@ -127,15 +127,68 @@ def build_exe():
     print(f"   Running PyInstaller...")
     subprocess.check_call(cmd, cwd=str(ROOT))
 
-    exe_path = DIST_DIR / f"{exe_name}.exe"
+    exe_path = RELEASE_DIR / f"{exe_name}.exe"
     if exe_path.exists():
         size_mb = exe_path.stat().st_size / (1024 * 1024)
+
+        # Get full commit hash + commit message
+        try:
+            full_commit = subprocess.check_output(
+                ["git", "log", "-1", "--format=%H"], cwd=str(ROOT), text=True
+            ).strip()
+            commit_msg = subprocess.check_output(
+                ["git", "log", "-1", "--format=%s"], cwd=str(ROOT), text=True
+            ).strip()
+            commit_time = subprocess.check_output(
+                ["git", "log", "-1", "--format=%ci"], cwd=str(ROOT), text=True
+            ).strip()
+        except Exception:
+            full_commit = commit
+            commit_msg = "unknown"
+            commit_time = "unknown"
+
+        build_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        # Write RELEASE_NOTE.md
+        note_path = RELEASE_DIR / f"{exe_name}.md"
+        note_content = f"""# Release: {exe_name}
+
+| 字段 | 值 |
+|------|----|
+| **文件名** | `{exe_name}.exe` |
+| **版本** | v{version} |
+| **大小** | {size_mb:.1f} MB |
+| **Commit (short)** | `{commit}` |
+| **Commit (full)** | `{full_commit}` |
+| **Commit 信息** | {commit_msg} |
+| **Commit 时间** | {commit_time} |
+| **打包时间** | {build_time} |
+
+## 运行方式
+
+```bash
+# 双击运行或命令行启动
+./{exe_name}.exe
+# 浏览器访问 http://127.0.0.1:8000
+```
+
+## 包含内容
+
+- FastAPI 后端 (API + LLM 对话引擎 + 评估器)
+- React 前端 SPA (3D 知识图谱 + 费曼对话 + 仪表板 + 设置)
+- 种子图谱数据 (267 节点 / 334 边 / 15 子域 / 27 里程碑)
+"""
+        note_path.write_text(note_content, encoding="utf-8")
+
         print(f"\n✅ Build successful!")
         print(f"   📦 {exe_path}")
+        print(f"   📝 {note_path}")
         print(f"   📏 Size: {size_mb:.1f} MB")
         print(f"   🏷️  Version: v{version}")
-        print(f"   🔗 Commit: {commit}")
-        print(f"   📅 Time: {timestamp}")
+        print(f"   🔗 Commit: {commit} ({full_commit})")
+        print(f"   💬 Message: {commit_msg}")
+        print(f"   📅 Commit time: {commit_time}")
+        print(f"   📅 Build time: {build_time}")
     else:
         print(f"\n❌ Build failed — exe not found at {exe_path}")
         sys.exit(1)

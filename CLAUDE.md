@@ -32,7 +32,7 @@
 **产品**: AI知识图谱 — 费曼对话+苏格拉底式教学+知识图谱技能树点亮学习平台
 **核心理念**: 通过"教AI"来学会知识 — 结合费曼学习法、苏格拉底式对话和可视化知识图谱
 **技术栈**:
-- **前端**: React 19 + TypeScript 5.7 + Vite 6 + TailwindCSS 4 + Zustand 5 + Cytoscape.js + Framer Motion
+- **前端**: React 19 + TypeScript 5.7 + Vite 6 + TailwindCSS 4 + Zustand 5 + Three.js/3d-force-graph + Framer Motion + Lucide React
 - **后端**: FastAPI (Python 3.11+) — 图谱引擎/对话引擎/学习引擎
 - **数据库**: Neo4j 5 (知识图谱) + PostgreSQL 15 via Supabase (用户/学习数据) + Redis 7 (缓存)
 - **移动端**: Capacitor 8 (Android/iOS)
@@ -85,9 +85,9 @@ data/seed/         — 种子图谱数据
 - ✅ GitHub 仓库: https://github.com/audiomagician1-ai/ai-knowledge-graph
 - ✅ **种子图谱 v2**: 267概念节点 + 304先修依赖 + 30关联关系 = 334边 (15子域, 含LLM/Agent/Prompt/RAG/Agent系统)
 - ✅ **里程碑高亮**: 27个milestone节点 (替代战争迷雾, 金色发光引导)
-- ✅ **Cytoscape.js 图谱可视化**: 力导向布局+子域着色+里程碑高亮+邻居highlight+缩放平移
+- ✅ **3D 球面图谱可视化**: Three.js + 3d-force-graph, 球面力导向+指数雾渐隐+里程碑金色辉光+粒子流连线+自动旋转
 - ✅ **后端图谱查询**: 5 endpoints (data/domains/subdomains/concept/neighbors/stats), JSON fallback
-- ✅ **前端图谱页**: Cytoscape.js交互式图谱+子域Tab+详情面板+图例
+- ✅ **前端图谱页**: 3D球面图谱+浮动glass面板+子域筛选+右侧详情面板
 - ✅ **LLM调用层**: httpx异步+OpenAI兼容API(OpenRouter/DeepSeek/OpenAI)+SSE流式+重试
 - ✅ **费曼对话引擎**: System Prompt(苏格拉底式4种策略)+图谱上下文注入+开场白生成
 - ✅ **理解度评估器**: 4维度打分(完整性/准确性/深度/举例)+JSON结构化输出+fallback
@@ -96,7 +96,7 @@ data/seed/         — 种子图谱数据
 - ✅ **Dialogue Store**: Zustand 5 状态管理(会话/消息/流式/评估)
 - ✅ **免登录体验**: 全站开放无需登录，匿名即可使用图谱+对话
 - ✅ **用户自带 LLM Key**: 设置页面配置 (OpenRouter/OpenAI/DeepSeek) + localStorage + 请求头透传
-- ✅ **代码分割**: Cytoscape.js lazy import, 主包 656KB→219KB (-66%), graph chunk 442KB 按需加载
+- ✅ **代码分割**: Three.js + 3d-force-graph lazy import, three 551KB + graph 767KB 按需加载, 主包 238KB
 - ✅ **学习进度持久化**: localStorage 存储匿名用户节点状态 (learning/mastered) + 学习历史 + 连续天数
 - ✅ **节点点亮逻辑**: 评估通过→mastered, 图谱节点实时反映学习状态 (enrichedGraphData)
 - ✅ **Dashboard 页面**: 真实统计(4 stat cards + 进度条 + 连续天数 + 最近学习记录 + 已掌握列表)
@@ -104,14 +104,32 @@ data/seed/         — 种子图谱数据
 - ✅ **Error Boundary + Toast**: 全局错误捕获 + 4类型通知系统 (success/error/info/warning)
 - ✅ tsc 0 errors, vite build 2.67s, 主包 219KB + graph 442KB (lazy), 所有Python模块导入通过
 - ✅ **Code Review 修复**: 24项问题全部修复 (9 critical + 9 medium + 6 minor)
-- ✅ **PyInstaller EXE 打包**: 55MB 单文件, FastAPI+前端SPA+种子数据内嵌, 双击运行自动开浏览器
+- ✅ **UI 重设计**: Neural Observatory 主题, DM Sans+JetBrains Mono, PC侧边栏布局, glass morphism, gradient+glow
+- ✅ **PyInstaller EXE 打包**: 55MB 单文件, FastAPI+前端SPA+种子数据内嵌, 输出至 release/ 目录, 自动生成 Release Note
 
 ### EXE 打包规范
 ```
-命名: {缩写}-v{version}-{commit7}-{YYYYMMDD}-{HHmm}.exe
-示例: akg-v0.1.0-e9318f2-20260313-1607.exe
-构建: python scripts/build_exe.py  (自动化全流程)
-验证: /api/health + SPA index.html + /assets/*
+输出目录: release/                              ← 不是 dist/
+EXE命名: akg-v{version}-{commit7}-{YYYYMMDD}-{HHmm}.exe
+Note命名: akg-v{version}-{commit7}-{YYYYMMDD}-{HHmm}.md  ← 同名 markdown
+示例:
+  release/akg-v0.1.0-dd10479-20260313-1900.exe
+  release/akg-v0.1.0-dd10479-20260313-1900.md
+
+构建命令: python scripts/build_exe.py  (自动化全流程)
+验证方式: 双击 exe → 浏览器访问 http://127.0.0.1:8000
+          检查: /api/health + SPA index.html + /assets/*
+
+Release Note 包含:
+  - 文件名、版本、大小
+  - Commit short hash + full hash + 提交信息 + 提交时间
+  - 打包时间 (构建机器本地时间)
+  - 运行方式说明
+  - 包含内容清单
+
+.gitignore 规则:
+  - release/*.exe → 忽略 (二进制不入库)
+  - release/*.md  → 跟踪 (release note 入库)
 ```
 
 ### 待完成 🟡

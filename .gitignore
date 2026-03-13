@@ -53,7 +53,7 @@ packages/mobile/ios/
 
 # PyInstaller
 *.spec
-*.exe
+release/*.exe
 
 # Misc
 *.tsbuildinfo
