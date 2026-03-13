@@ -28,12 +28,18 @@ BUILD_DIR = ROOT / "build"
 RELEASE_DIR = ROOT / "release"
 
 
+def _git(fmt: str) -> str:
+    """Run git log -1 with a format string. Uses --pretty=format: to avoid Windows %VAR% expansion."""
+    return subprocess.check_output(
+        ["git", "log", "-1", f"--pretty=format:{fmt}"],
+        cwd=str(ROOT), text=True, stderr=subprocess.DEVNULL,
+    ).strip()
+
+
 def get_git_info() -> tuple[str, str]:
     """Get short commit hash and timestamp"""
     try:
-        commit = subprocess.check_output(
-            ["git", "log", "-1", "--format=%h"], cwd=str(ROOT), text=True
-        ).strip()
+        commit = _git("%h")
         return commit, datetime.now().strftime("%Y%m%d-%H%M")
     except Exception:
         return "unknown", datetime.now().strftime("%Y%m%d-%H%M")
@@ -131,18 +137,13 @@ def build_exe():
     if exe_path.exists():
         size_mb = exe_path.stat().st_size / (1024 * 1024)
 
-        # Get full commit hash + commit message
+        # Get full commit hash + commit message + commit time
         try:
-            full_commit = subprocess.check_output(
-                ["git", "log", "-1", "--format=%H"], cwd=str(ROOT), text=True
-            ).strip()
-            commit_msg = subprocess.check_output(
-                ["git", "log", "-1", "--format=%s"], cwd=str(ROOT), text=True
-            ).strip()
-            commit_time = subprocess.check_output(
-                ["git", "log", "-1", "--format=%ci"], cwd=str(ROOT), text=True
-            ).strip()
-        except Exception:
+            full_commit = _git("%H")
+            commit_msg = _git("%s")
+            commit_time = _git("%ci")
+        except Exception as e:
+            print(f"   ⚠ Git info fallback: {e}")
             full_commit = commit
             commit_msg = "unknown"
             commit_time = "unknown"
