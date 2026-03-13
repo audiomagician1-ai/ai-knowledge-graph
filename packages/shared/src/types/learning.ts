@@ -2,13 +2,12 @@
 // Learning & User Progress Types
 // ========================================
 
-/** 概念学习状态 */
+/** 概念学习状态 — 所有节点始终可见，无战争迷雾 */
 export type ConceptStatus =
-  | 'locked'      // 前置未满足，不可见详情
-  | 'available'   // 可以开始学习
-  | 'learning'    // 正在学习中
-  | 'reviewing'   // 已学过，等待复习
-  | 'mastered';   // 已掌握
+  | 'not_started'  // 尚未开始学习（始终可见）
+  | 'learning'     // 正在学习中
+  | 'reviewing'    // 已学过，等待复习
+  | 'mastered';    // 已掌握
 
 /** 用户概念学习状态 */
 export interface UserConceptStatus {
@@ -56,6 +55,7 @@ export interface LearningStats {
   learning_count: number;
   available_count: number;
   locked_count: number;
+  not_started_count: number;
   total_study_time_sec: number;
   current_streak: number;
   longest_streak: number;

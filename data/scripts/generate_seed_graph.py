@@ -1,14 +1,15 @@
 """
-AI知识图谱 — 编程领域种子图谱生成器
-生成 ~300 个概念节点 + 先修依赖 + 关联关系
+AI知识图谱 — LLM/Agent 前沿知识种子图谱生成器
+生成 ~350 个概念节点 + 先修依赖 + 关联关系 + 里程碑节点
 输出: JSON 文件 + Neo4j Cypher 导入脚本
 
-知识体系设计:
-- 1 个领域 (编程/Programming)
-- 12 个子域 (基础→Web→数据→系统→AI→...)
-- ~300 个概念节点，难度 1-10
+知识体系设计 v2:
+- 1 个领域 (AI Engineering / AI工程)
+- 15 个子域 (CS基础→编程→数据结构→算法→OOP→Web前端→Web后端→数据库→DevOps→系统设计→AI基础→LLM核心→Prompt工程→RAG与知识库→Agent系统)
+- ~350 个概念节点，难度 1-10
 - 先修依赖关系 (PREREQUISITE)
 - 关联关系 (RELATED_TO: analogy/application/contrast)
+- 里程碑节点 (is_milestone: True) — 关键成就节点，高亮显示引导用户
 """
 
 import json
@@ -20,14 +21,14 @@ from datetime import datetime, timezone
 # =============================================
 
 DOMAIN = {
-    "id": "programming",
-    "name": "编程",
-    "description": "从零基础到系统架构的编程知识体系",
-    "icon": "💻",
-    "color": "#6366f1",
+    "id": "ai-engineering",
+    "name": "AI工程",
+    "description": "从编程基础到大模型与Agent系统的前沿知识体系",
+    "icon": "🧠",
+    "color": "#8b5cf6",
 }
 
-# 子域定义
+# 子域定义 — v2: 聚焦 LLM/Agent 前沿，保留编程基础作为先修
 SUBDOMAINS = [
     {"id": "cs-fundamentals", "name": "计算机基础", "order": 1},
     {"id": "programming-basics", "name": "编程基础", "order": 2},
@@ -39,8 +40,11 @@ SUBDOMAINS = [
     {"id": "database", "name": "数据库", "order": 8},
     {"id": "devops", "name": "开发运维", "order": 9},
     {"id": "system-design", "name": "系统设计", "order": 10},
-    {"id": "ai-ml", "name": "AI与机器学习", "order": 11},
-    {"id": "software-engineering", "name": "软件工程", "order": 12},
+    {"id": "ai-foundations", "name": "AI基础", "order": 11},
+    {"id": "llm-core", "name": "大模型核心", "order": 12},
+    {"id": "prompt-engineering", "name": "Prompt工程", "order": 13},
+    {"id": "rag-knowledge", "name": "RAG与知识库", "order": 14},
+    {"id": "agent-systems", "name": "Agent系统", "order": 15},
 ]
 
 # =============================================
@@ -250,48 +254,100 @@ CONCEPTS_RAW = [
     ("design-rate-limiter", "设计限流器", "system-design", 7, 40, "project", ["实战"]),
     ("twelve-factor-app", "12-Factor App", "system-design", 6, 30, "theory", ["方法论"]),
 
-    # ---- AI与机器学习 (difficulty 5-10) ----
-    ("ai-overview", "人工智能概述", "ai-ml", 4, 25, "theory", ["AI"]),
-    ("ml-basics", "机器学习基础", "ai-ml", 5, 35, "theory", ["ML"]),
-    ("supervised-learning", "监督学习", "ai-ml", 5, 30, "theory", ["ML"]),
-    ("unsupervised-learning", "无监督学习", "ai-ml", 6, 30, "theory", ["ML"]),
-    ("linear-regression", "线性回归", "ai-ml", 5, 35, "practice", ["ML"]),
-    ("logistic-regression", "逻辑回归", "ai-ml", 5, 30, "practice", ["ML"]),
-    ("decision-tree", "决策树", "ai-ml", 5, 30, "theory", ["ML"]),
-    ("neural-network-basics", "神经网络基础", "ai-ml", 6, 40, "theory", ["DL"]),
-    ("deep-learning-intro", "深度学习入门", "ai-ml", 7, 45, "theory", ["DL"]),
-    ("cnn-basics", "卷积神经网络(CNN)", "ai-ml", 7, 40, "theory", ["DL", "视觉"]),
-    ("rnn-basics", "循环神经网络(RNN)", "ai-ml", 7, 40, "theory", ["DL", "序列"]),
-    ("transformer-basics", "Transformer架构", "ai-ml", 8, 50, "theory", ["DL", "NLP"]),
-    ("llm-basics", "大语言模型(LLM)", "ai-ml", 8, 45, "theory", ["AI", "NLP"]),
-    ("prompt-engineering", "提示工程", "ai-ml", 5, 30, "practice", ["AI", "LLM"]),
-    ("rag-basics", "RAG检索增强生成", "ai-ml", 7, 35, "theory", ["AI", "LLM"]),
-    ("vector-database", "向量数据库", "ai-ml", 6, 30, "theory", ["AI", "数据库"]),
-    ("ai-agent-basics", "AI Agent基础", "ai-ml", 7, 35, "theory", ["AI", "Agent"]),
-    ("ml-evaluation", "模型评估指标", "ai-ml", 5, 25, "theory", ["ML"]),
-    ("overfitting", "过拟合与正则化", "ai-ml", 6, 30, "theory", ["ML"]),
-    ("feature-engineering", "特征工程", "ai-ml", 6, 30, "practice", ["ML"]),
-    ("knowledge-graph", "知识图谱", "ai-ml", 7, 40, "theory", ["AI", "图"]),
+    # ---- AI基础 (difficulty 4-7) ----
+    ("ai-overview", "人工智能概述", "ai-foundations", 4, 25, "theory", ["AI"]),
+    ("ml-basics", "机器学习基础", "ai-foundations", 5, 35, "theory", ["ML"]),
+    ("supervised-learning", "监督学习", "ai-foundations", 5, 30, "theory", ["ML"]),
+    ("unsupervised-learning", "无监督学习", "ai-foundations", 6, 30, "theory", ["ML"]),
+    ("linear-regression", "线性回归", "ai-foundations", 5, 35, "practice", ["ML"]),
+    ("logistic-regression", "逻辑回归", "ai-foundations", 5, 30, "practice", ["ML"]),
+    ("decision-tree", "决策树", "ai-foundations", 5, 30, "theory", ["ML"]),
+    ("neural-network-basics", "神经网络基础", "ai-foundations", 6, 40, "theory", ["DL"]),
+    ("deep-learning-intro", "深度学习入门", "ai-foundations", 7, 45, "theory", ["DL"]),
+    ("cnn-basics", "卷积神经网络(CNN)", "ai-foundations", 7, 40, "theory", ["DL", "视觉"]),
+    ("rnn-basics", "循环神经网络(RNN)", "ai-foundations", 7, 40, "theory", ["DL", "序列"]),
+    ("ml-evaluation", "模型评估指标", "ai-foundations", 5, 25, "theory", ["ML"]),
+    ("overfitting", "过拟合与正则化", "ai-foundations", 6, 30, "theory", ["ML"]),
+    ("feature-engineering", "特征工程", "ai-foundations", 6, 30, "practice", ["ML"]),
+    ("gradient-descent", "梯度下降与优化", "ai-foundations", 6, 35, "theory", ["DL"]),
+    ("loss-functions", "损失函数", "ai-foundations", 5, 25, "theory", ["DL"]),
+    ("backpropagation", "反向传播", "ai-foundations", 7, 40, "theory", ["DL"]),
+    ("pytorch-basics", "PyTorch基础", "ai-foundations", 5, 40, "practice", ["工具"]),
 
-    # ---- 软件工程 (difficulty 4-8) ----
-    ("agile-basics", "敏捷开发基础", "software-engineering", 3, 25, "theory", ["方法论"]),
-    ("scrum", "Scrum框架", "software-engineering", 4, 25, "theory", ["敏捷"]),
-    ("code-review", "代码审查", "software-engineering", 3, 20, "theory", ["质量"]),
-    ("unit-testing", "单元测试", "software-engineering", 4, 30, "practice", ["测试"]),
-    ("integration-testing", "集成测试", "software-engineering", 5, 30, "practice", ["测试"]),
-    ("tdd", "测试驱动开发(TDD)", "software-engineering", 5, 35, "theory", ["方法论"]),
-    ("clean-code", "整洁代码", "software-engineering", 4, 30, "theory", ["质量"]),
-    ("refactoring", "重构", "software-engineering", 5, 35, "theory", ["质量"]),
-    ("technical-debt", "技术债务", "software-engineering", 4, 20, "theory", ["管理"]),
-    ("documentation", "技术文档", "software-engineering", 3, 20, "theory", ["沟通"]),
-    ("open-source", "开源协作", "software-engineering", 3, 20, "theory", ["协作"]),
-    ("semantic-versioning", "语义化版本", "software-engineering", 3, 15, "theory", ["规范"]),
-    ("api-design-principles", "API设计原则", "software-engineering", 5, 30, "theory", ["设计"]),
-    ("security-basics", "安全编程基础", "software-engineering", 4, 30, "theory", ["安全"]),
-    ("xss-csrf", "XSS/CSRF攻击防御", "software-engineering", 5, 30, "theory", ["安全"]),
-    ("sql-injection", "SQL注入防御", "software-engineering", 5, 25, "theory", ["安全"]),
-    ("performance-profiling", "性能分析", "software-engineering", 6, 35, "practice", ["性能"]),
-    ("estimation", "工时估算", "software-engineering", 4, 20, "theory", ["管理"]),
+    # ---- 大模型核心 (difficulty 5-9) ⭐ 新增重点子域 ----
+    ("attention-mechanism", "注意力机制", "llm-core", 7, 45, "theory", ["DL", "NLP"]),
+    ("transformer-architecture", "Transformer架构", "llm-core", 8, 50, "theory", ["DL", "NLP"]),
+    ("self-attention", "自注意力与多头注意力", "llm-core", 8, 40, "theory", ["Transformer"]),
+    ("positional-encoding", "位置编码", "llm-core", 7, 30, "theory", ["Transformer"]),
+    ("bert-model", "BERT与编码器模型", "llm-core", 7, 35, "theory", ["NLP"]),
+    ("gpt-model", "GPT与解码器模型", "llm-core", 8, 40, "theory", ["LLM"]),
+    ("llm-pretraining", "LLM预训练", "llm-core", 8, 45, "theory", ["LLM"]),
+    ("tokenization", "分词与Tokenization", "llm-core", 5, 25, "theory", ["NLP"]),
+    ("llm-scaling-laws", "LLM缩放定律", "llm-core", 8, 35, "theory", ["LLM"]),
+    ("llm-inference", "LLM推理优化", "llm-core", 7, 40, "theory", ["LLM", "性能"]),
+    ("quantization", "模型量化(GPTQ/AWQ)", "llm-core", 7, 35, "theory", ["LLM", "部署"]),
+    ("fine-tuning-overview", "微调概述(SFT/RLHF)", "llm-core", 7, 40, "theory", ["LLM"]),
+    ("lora-peft", "LoRA与参数高效微调", "llm-core", 7, 35, "practice", ["LLM", "微调"]),
+    ("rlhf", "RLHF人类反馈强化学习", "llm-core", 9, 50, "theory", ["LLM", "对齐"]),
+    ("dpo", "DPO直接偏好优化", "llm-core", 8, 40, "theory", ["LLM", "对齐"]),
+    ("multimodal-models", "多模态大模型", "llm-core", 8, 45, "theory", ["LLM", "视觉"]),
+    ("llm-evaluation", "LLM评估方法", "llm-core", 6, 30, "theory", ["LLM"]),
+    ("open-source-llm", "开源LLM生态(Llama/Qwen/DeepSeek)", "llm-core", 6, 30, "theory", ["LLM"]),
+    ("context-window", "上下文窗口与长文本", "llm-core", 7, 35, "theory", ["LLM"]),
+    ("mixture-of-experts", "MoE混合专家模型", "llm-core", 8, 40, "theory", ["LLM", "架构"]),
+
+    # ---- Prompt工程 (difficulty 3-8) ⭐ 新增重点子域 ----
+    ("prompt-basics", "提示词基础", "prompt-engineering", 3, 20, "practice", ["Prompt"]),
+    ("zero-shot", "零样本提示", "prompt-engineering", 3, 15, "practice", ["Prompt"]),
+    ("few-shot", "少样本提示", "prompt-engineering", 4, 20, "practice", ["Prompt"]),
+    ("chain-of-thought", "思维链(CoT)", "prompt-engineering", 5, 30, "theory", ["Prompt"]),
+    ("self-consistency", "自一致性采样", "prompt-engineering", 6, 25, "theory", ["Prompt"]),
+    ("tree-of-thought", "思维树(ToT)", "prompt-engineering", 7, 35, "theory", ["Prompt"]),
+    ("react-prompting", "ReAct推理+行动", "prompt-engineering", 6, 30, "theory", ["Prompt", "Agent"]),
+    ("structured-output", "结构化输出(JSON Mode)", "prompt-engineering", 4, 20, "practice", ["Prompt", "API"]),
+    ("system-prompt-design", "System Prompt设计", "prompt-engineering", 5, 30, "practice", ["Prompt"]),
+    ("prompt-injection", "提示注入攻防", "prompt-engineering", 6, 30, "theory", ["安全"]),
+    ("prompt-optimization", "提示词自动优化(DSPy)", "prompt-engineering", 7, 35, "theory", ["Prompt"]),
+    ("llm-api-usage", "LLM API调用(OpenAI/Claude)", "prompt-engineering", 4, 25, "practice", ["API"]),
+    ("temperature-sampling", "Temperature与采样策略", "prompt-engineering", 5, 20, "theory", ["LLM"]),
+    ("token-economics", "Token经济与成本优化", "prompt-engineering", 4, 20, "theory", ["实践"]),
+
+    # ---- RAG与知识库 (difficulty 5-9) ⭐ 新增重点子域 ----
+    ("rag-overview", "RAG检索增强生成概述", "rag-knowledge", 5, 30, "theory", ["RAG"]),
+    ("text-embedding", "文本嵌入(Embedding)", "rag-knowledge", 6, 35, "theory", ["NLP", "RAG"]),
+    ("vector-database", "向量数据库(Pinecone/Milvus)", "rag-knowledge", 6, 35, "theory", ["数据库", "RAG"]),
+    ("chunking-strategies", "文档分块策略", "rag-knowledge", 5, 25, "practice", ["RAG"]),
+    ("similarity-search", "相似度搜索与重排", "rag-knowledge", 6, 30, "theory", ["RAG"]),
+    ("hybrid-search", "混合检索(向量+关键词)", "rag-knowledge", 6, 30, "theory", ["RAG"]),
+    ("rag-pipeline", "RAG管道架构", "rag-knowledge", 7, 40, "theory", ["RAG", "架构"]),
+    ("rag-evaluation", "RAG评估(Ragas)", "rag-knowledge", 7, 35, "theory", ["RAG"]),
+    ("knowledge-graph-rag", "知识图谱+RAG", "rag-knowledge", 8, 45, "theory", ["RAG", "图"]),
+    ("multimodal-rag", "多模态RAG", "rag-knowledge", 8, 40, "theory", ["RAG", "多模态"]),
+    ("document-parsing", "文档解析(PDF/HTML/OCR)", "rag-knowledge", 5, 30, "practice", ["RAG"]),
+    ("langchain-basics", "LangChain基础", "rag-knowledge", 5, 30, "practice", ["工具"]),
+    ("llamaindex-basics", "LlamaIndex基础", "rag-knowledge", 5, 30, "practice", ["工具"]),
+    ("graph-database-ai", "图数据库在AI中的应用", "rag-knowledge", 7, 35, "theory", ["图", "RAG"]),
+    ("agentic-rag", "Agentic RAG", "rag-knowledge", 8, 40, "theory", ["RAG", "Agent"]),
+
+    # ---- Agent系统 (difficulty 5-10) ⭐ 新增重点子域 ----
+    ("agent-overview", "AI Agent概述", "agent-systems", 5, 25, "theory", ["Agent"]),
+    ("agent-loop", "Agent循环(感知-推理-行动)", "agent-systems", 6, 30, "theory", ["Agent"]),
+    ("tool-use", "工具调用(Function Calling)", "agent-systems", 6, 35, "practice", ["Agent", "API"]),
+    ("mcp-protocol", "MCP模型上下文协议", "agent-systems", 7, 40, "theory", ["Agent", "协议"]),
+    ("agent-memory", "Agent记忆系统", "agent-systems", 7, 35, "theory", ["Agent"]),
+    ("agent-planning", "Agent规划与分解", "agent-systems", 7, 40, "theory", ["Agent"]),
+    ("multi-agent", "多Agent协作系统", "agent-systems", 8, 45, "theory", ["Agent"]),
+    ("agent-evaluation", "Agent评估与基准测试", "agent-systems", 7, 35, "theory", ["Agent"]),
+    ("autogen-framework", "AutoGen框架", "agent-systems", 6, 35, "practice", ["Agent", "工具"]),
+    ("crewai-framework", "CrewAI框架", "agent-systems", 6, 35, "practice", ["Agent", "工具"]),
+    ("agent-safety", "Agent安全与对齐", "agent-systems", 8, 40, "theory", ["Agent", "安全"]),
+    ("code-generation", "代码生成Agent", "agent-systems", 7, 35, "practice", ["Agent", "编程"]),
+    ("browser-agent", "浏览器Agent", "agent-systems", 7, 35, "practice", ["Agent", "Web"]),
+    ("agent-orchestration", "Agent编排与工作流", "agent-systems", 8, 40, "theory", ["Agent", "架构"]),
+    ("human-in-the-loop", "人在回路(HITL)", "agent-systems", 6, 25, "theory", ["Agent", "安全"]),
+    ("agent-deployment", "Agent部署与监控", "agent-systems", 7, 35, "practice", ["Agent", "DevOps"]),
+    ("ai-application-arch", "AI应用架构设计", "agent-systems", 8, 45, "theory", ["Agent", "架构"]),
+    ("autonomous-agents", "自主Agent前沿", "agent-systems", 9, 50, "theory", ["Agent", "前沿"]),
 ]
 
 # =============================================
@@ -517,7 +573,7 @@ PREREQUISITES = [
     ("rate-limiting", "design-rate-limiter", 0.6),
     ("system-design-basics", "twelve-factor-app", 0.5),
 
-    # AI/ML
+    # AI基础
     ("time-complexity", "ai-overview", 0.3),
     ("ai-overview", "ml-basics", 0.8),
     ("ml-basics", "supervised-learning", 0.9),
@@ -528,40 +584,158 @@ PREREQUISITES = [
     ("ml-basics", "ml-evaluation", 0.7),
     ("ml-evaluation", "overfitting", 0.7),
     ("ml-basics", "feature-engineering", 0.6),
+    ("ml-basics", "loss-functions", 0.7),
+    ("loss-functions", "gradient-descent", 0.8),
+    ("gradient-descent", "backpropagation", 0.8),
     ("linear-regression", "neural-network-basics", 0.5),
+    ("gradient-descent", "neural-network-basics", 0.7),
     ("neural-network-basics", "deep-learning-intro", 0.8),
     ("deep-learning-intro", "cnn-basics", 0.7),
     ("deep-learning-intro", "rnn-basics", 0.7),
-    ("rnn-basics", "transformer-basics", 0.7),
-    ("transformer-basics", "llm-basics", 0.8),
-    ("llm-basics", "prompt-engineering", 0.7),
-    ("llm-basics", "rag-basics", 0.6),
-    ("nosql-intro", "vector-database", 0.4),
-    ("rag-basics", "vector-database", 0.6),
-    ("llm-basics", "ai-agent-basics", 0.6),
-    ("graph-database", "knowledge-graph", 0.6),
-    ("ai-overview", "knowledge-graph", 0.5),
+    ("functions", "pytorch-basics", 0.4),
+    ("neural-network-basics", "pytorch-basics", 0.5),
 
-    # 软件工程
-    ("functions", "unit-testing", 0.5),
-    ("unit-testing", "integration-testing", 0.7),
-    ("unit-testing", "tdd", 0.7),
-    ("code-style", "clean-code", 0.5),
-    ("clean-code", "refactoring", 0.7),
-    ("refactoring", "technical-debt", 0.5),
-    ("git-basics", "code-review", 0.5),
-    ("agile-basics", "scrum", 0.8),
-    ("git-basics", "open-source", 0.4),
-    ("git-basics", "semantic-versioning", 0.4),
-    ("restful-api", "api-design-principles", 0.6),
-    ("solid-principles", "api-design-principles", 0.5),
-    ("error-handling", "security-basics", 0.4),
-    ("security-basics", "xss-csrf", 0.7),
-    ("security-basics", "sql-injection", 0.7),
-    ("time-complexity", "performance-profiling", 0.4),
-    ("agile-basics", "estimation", 0.5),
-    ("modules-imports", "documentation", 0.3),
+    # 大模型核心
+    ("rnn-basics", "attention-mechanism", 0.7),
+    ("attention-mechanism", "transformer-architecture", 0.9),
+    ("attention-mechanism", "self-attention", 0.9),
+    ("transformer-architecture", "self-attention", 0.6),
+    ("transformer-architecture", "positional-encoding", 0.8),
+    ("transformer-architecture", "bert-model", 0.7),
+    ("transformer-architecture", "gpt-model", 0.8),
+    ("gpt-model", "llm-pretraining", 0.8),
+    ("transformer-architecture", "tokenization", 0.5),
+    ("llm-pretraining", "llm-scaling-laws", 0.7),
+    ("llm-pretraining", "llm-inference", 0.6),
+    ("llm-inference", "quantization", 0.7),
+    ("llm-pretraining", "fine-tuning-overview", 0.7),
+    ("fine-tuning-overview", "lora-peft", 0.8),
+    ("fine-tuning-overview", "rlhf", 0.7),
+    ("rlhf", "dpo", 0.8),
+    ("gpt-model", "multimodal-models", 0.5),
+    ("cnn-basics", "multimodal-models", 0.5),
+    ("llm-pretraining", "llm-evaluation", 0.5),
+    ("gpt-model", "open-source-llm", 0.5),
+    ("gpt-model", "context-window", 0.6),
+    ("transformer-architecture", "mixture-of-experts", 0.6),
+    ("llm-scaling-laws", "mixture-of-experts", 0.5),
+
+    # Prompt工程
+    ("gpt-model", "prompt-basics", 0.5),
+    ("prompt-basics", "zero-shot", 0.8),
+    ("prompt-basics", "few-shot", 0.8),
+    ("few-shot", "chain-of-thought", 0.7),
+    ("chain-of-thought", "self-consistency", 0.7),
+    ("chain-of-thought", "tree-of-thought", 0.7),
+    ("chain-of-thought", "react-prompting", 0.7),
+    ("prompt-basics", "structured-output", 0.6),
+    ("prompt-basics", "system-prompt-design", 0.7),
+    ("prompt-basics", "prompt-injection", 0.5),
+    ("chain-of-thought", "prompt-optimization", 0.6),
+    ("prompt-basics", "llm-api-usage", 0.7),
+    ("llm-api-usage", "temperature-sampling", 0.6),
+    ("llm-api-usage", "token-economics", 0.5),
+
+    # RAG与知识库
+    ("gpt-model", "rag-overview", 0.5),
+    ("prompt-basics", "rag-overview", 0.5),
+    ("rag-overview", "text-embedding", 0.8),
+    ("text-embedding", "vector-database", 0.8),
+    ("rag-overview", "chunking-strategies", 0.7),
+    ("text-embedding", "similarity-search", 0.8),
+    ("similarity-search", "hybrid-search", 0.7),
+    ("chunking-strategies", "rag-pipeline", 0.7),
+    ("similarity-search", "rag-pipeline", 0.7),
+    ("rag-pipeline", "rag-evaluation", 0.7),
+    ("graph-database-ai", "knowledge-graph-rag", 0.7),
+    ("rag-pipeline", "knowledge-graph-rag", 0.6),
+    ("multimodal-models", "multimodal-rag", 0.6),
+    ("rag-pipeline", "multimodal-rag", 0.6),
+    ("rag-overview", "document-parsing", 0.6),
+    ("rag-overview", "langchain-basics", 0.5),
+    ("rag-overview", "llamaindex-basics", 0.5),
+    ("graph-ds", "graph-database-ai", 0.4),
+    ("nosql-intro", "graph-database-ai", 0.4),
+    ("rag-pipeline", "agentic-rag", 0.7),
+
+    # Agent系统
+    ("react-prompting", "agent-overview", 0.6),
+    ("llm-api-usage", "agent-overview", 0.5),
+    ("agent-overview", "agent-loop", 0.9),
+    ("agent-loop", "tool-use", 0.8),
+    ("structured-output", "tool-use", 0.6),
+    ("tool-use", "mcp-protocol", 0.7),
+    ("restful-api", "mcp-protocol", 0.4),
+    ("agent-loop", "agent-memory", 0.7),
+    ("rag-pipeline", "agent-memory", 0.5),
+    ("agent-loop", "agent-planning", 0.8),
+    ("tree-of-thought", "agent-planning", 0.5),
+    ("agent-loop", "multi-agent", 0.6),
+    ("agent-planning", "multi-agent", 0.6),
+    ("agent-overview", "agent-evaluation", 0.5),
+    ("tool-use", "autogen-framework", 0.5),
+    ("multi-agent", "autogen-framework", 0.5),
+    ("multi-agent", "crewai-framework", 0.5),
+    ("agent-overview", "agent-safety", 0.5),
+    ("prompt-injection", "agent-safety", 0.5),
+    ("tool-use", "code-generation", 0.6),
+    ("tool-use", "browser-agent", 0.6),
+    ("multi-agent", "agent-orchestration", 0.7),
+    ("agent-overview", "human-in-the-loop", 0.6),
+    ("agent-orchestration", "agent-deployment", 0.6),
+    ("ci-cd", "agent-deployment", 0.4),
+    ("agent-orchestration", "ai-application-arch", 0.7),
+    ("system-design-basics", "ai-application-arch", 0.5),
+    ("multi-agent", "autonomous-agents", 0.6),
+    ("agent-planning", "autonomous-agents", 0.6),
+    ("agentic-rag", "autonomous-agents", 0.5),
 ]
+
+# =============================================
+# 里程碑节点 — 高亮显示引导用户冲刺的关键成就节点
+# 设计原则: 每个子域 1-2 个里程碑，前沿子域更多
+# =============================================
+
+MILESTONE_NODES = {
+    # 编程基础里程碑
+    "functions",               # 函数 — 编程核心能力
+    "recursion",               # 递归 — 算法思维起点
+    # 数据结构里程碑
+    "hash-table",              # 哈希表 — 最实用的数据结构
+    "binary-tree",             # 二叉树 — 树的基石
+    # 算法里程碑
+    "dynamic-programming",     # 动态规划 — 算法巅峰
+    "binary-search",           # 二分查找 — 分治入门
+    # OOP里程碑
+    "solid-principles",        # SOLID — 设计能力标志
+    # Web里程碑
+    "react-hooks",             # React Hooks — 现代前端核心
+    "restful-api",             # REST API — 后端核心
+    # 数据库里程碑
+    "db-indexing",             # 索引 — 性能优化关键
+    # 系统设计里程碑
+    "system-design-basics",    # 系统设计入门
+    # AI基础里程碑
+    "deep-learning-intro",     # 深度学习入门 — AI分水岭
+    "neural-network-basics",   # 神经网络基础
+    # LLM核心里程碑
+    "transformer-architecture", # Transformer — LLM的基石
+    "gpt-model",              # GPT — 理解生成式AI
+    "lora-peft",              # LoRA — 微调实战能力
+    "rlhf",                   # RLHF — AI对齐关键技术
+    # Prompt工程里程碑
+    "chain-of-thought",       # 思维链 — 高级Prompt核心
+    "react-prompting",        # ReAct — Agent原型
+    # RAG里程碑
+    "rag-pipeline",           # RAG管道 — 知识库应用核心
+    "knowledge-graph-rag",    # KG+RAG — 高级知识检索
+    # Agent里程碑
+    "tool-use",               # 工具调用 — Agent基础能力
+    "mcp-protocol",           # MCP — 最新Agent协议
+    "multi-agent",            # 多Agent — 协作系统
+    "agent-orchestration",    # Agent编排 — 生产级能力
+    "autonomous-agents",      # 自主Agent — 前沿终极目标
+}
 
 # =============================================
 # 关联关系 (非依赖, 知识互补)
@@ -575,17 +749,27 @@ RELATED_EDGES = [
     ("restful-api", "graphql-basics", "contrast", 0.7),
     ("supervised-learning", "unsupervised-learning", "contrast", 0.8),
     ("cnn-basics", "rnn-basics", "contrast", 0.7),
+    ("bert-model", "gpt-model", "contrast", 0.8),
+    ("rlhf", "dpo", "contrast", 0.8),
+    ("langchain-basics", "llamaindex-basics", "contrast", 0.7),
+    ("autogen-framework", "crewai-framework", "contrast", 0.7),
     ("iteration-vs-recursion", "dynamic-programming", "application", 0.6),
     ("hash-table", "bloom-filter", "application", 0.5),
     ("binary-search", "bst", "analogy", 0.7),
-    ("graph-ds", "knowledge-graph", "application", 0.7),
     ("react-state", "observer-pattern", "analogy", 0.5),
     ("typescript-basics", "generics", "application", 0.6),
     ("docker-basics", "microservices-intro", "application", 0.6),
     ("redis-basics", "distributed-cache", "application", 0.7),
-    ("tdd", "clean-code", "application", 0.6),
-    ("rag-basics", "knowledge-graph", "application", 0.7),
-    ("db-indexing", "binary-tree", "application", 0.6),
+    ("vector-database", "similarity-search", "application", 0.8),
+    ("knowledge-graph-rag", "graph-database-ai", "application", 0.8),
+    ("rag-pipeline", "agent-memory", "application", 0.7),
+    ("tool-use", "mcp-protocol", "application", 0.8),
+    ("react-prompting", "agent-loop", "analogy", 0.8),
+    ("chain-of-thought", "agent-planning", "application", 0.7),
+    ("multi-agent", "agent-orchestration", "application", 0.8),
+    ("code-generation", "browser-agent", "contrast", 0.6),
+    ("lora-peft", "rlhf", "contrast", 0.6),
+    ("quantization", "llm-inference", "application", 0.7),
     ("web-performance", "caching-strategies", "application", 0.6),
     ("async-js", "websocket", "application", 0.5),
 ]
@@ -601,12 +785,13 @@ def build_concepts():
             "id": cid,
             "name": name,
             "description": f"掌握{name}的核心概念和应用",
-            "domain_id": "programming",
+            "domain_id": "ai-engineering",
             "subdomain_id": subdomain,
             "difficulty": diff,
             "estimated_minutes": est_min,
             "content_type": ctype,
             "tags": tags,
+            "is_milestone": cid in MILESTONE_NODES,
             "created_at": now,
         })
     return concepts
@@ -701,7 +886,7 @@ def generate_cypher(concepts, edges, subdomains):
         "// 清空旧数据 (慎用)",
         "// MATCH (n) DETACH DELETE n;\n",
         "// 创建领域节点",
-        f"CREATE (:Domain {{id: 'programming', name: '编程', description: '从零基础到系统架构的编程知识体系', icon: '💻', color: '#6366f1'}});\n",
+        f"CREATE (:Domain {{id: 'ai-engineering', name: 'AI工程', description: '从编程基础到大模型与Agent系统的前沿知识体系', icon: '🧠', color: '#8b5cf6'}});\n",
         "// 创建子域节点",
     ]
     for sd in subdomains:
@@ -752,7 +937,7 @@ def generate_cypher(concepts, edges, subdomains):
 
     # 领域包含关系
     lines.append("\n// 领域→概念 包含关系")
-    lines.append("MATCH (d:Domain {id: 'programming'}), (c:Concept {domain_id: 'programming'})")
+    lines.append("MATCH (d:Domain {id: 'ai-engineering'}), (c:Concept {domain_id: 'ai-engineering'})")
     lines.append("CREATE (d)-[:CONTAINS]->(c);")
 
     # 子域→概念 包含关系

@@ -49,7 +49,8 @@ async def get_graph_data(
             "domain_id": c["domain_id"],
             "subdomain_id": c["subdomain_id"],
             "difficulty": c["difficulty"],
-            "status": "available",  # 默认状态，需结合用户数据
+            "status": "not_started",  # 默认状态，需结合用户数据
+            "is_milestone": c.get("is_milestone", False),
             "estimated_minutes": c["estimated_minutes"],
             "content_type": c["content_type"],
             "tags": c["tags"],
@@ -151,7 +152,8 @@ async def get_neighbors(concept_id: str, depth: int = Query(1, ge=1, le=3)):
             "domain_id": c["domain_id"],
             "subdomain_id": c["subdomain_id"],
             "difficulty": c["difficulty"],
-            "status": "available",
+            "status": "not_started",
+            "is_milestone": c.get("is_milestone", False),
         }
         for c in seed["concepts"]
         if c["id"] in visited

@@ -21,10 +21,12 @@ export interface Concept {
   name: string;
   description: string;
   domain_id: string;
+  subdomain_id: string;
   difficulty: number; // 1-10
   estimated_minutes: number;
   content_type: 'theory' | 'practice' | 'project';
   tags: string[];
+  is_milestone: boolean; // 里程碑节点 — 高亮显示
   created_at?: string;
   updated_at?: string;
 }
@@ -52,8 +54,13 @@ export interface GraphNode {
   id: string;
   label: string;
   domain_id: string;
+  subdomain_id: string;
   difficulty: number;
   status: ConceptStatus;
+  is_milestone: boolean;
+  estimated_minutes?: number;
+  content_type?: string;
+  tags?: string[];
   position?: { x: number; y: number };
 }
 

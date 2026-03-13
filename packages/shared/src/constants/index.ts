@@ -26,19 +26,38 @@ export const MASTERY_THRESHOLDS = {
 
 /** 图谱可视化常量 */
 export const GRAPH_VISUAL = {
-  /** 节点状态颜色 */
+  /** 节点状态颜色 — 无战争迷雾，所有节点始终可见 */
   NODE_COLORS: {
-    locked: '#374151',     // gray-700
-    available: '#6366f1',  // indigo-500
-    learning: '#f59e0b',   // amber-500
-    reviewing: '#8b5cf6',  // violet-500
-    mastered: '#10b981',   // emerald-500
+    not_started: '#94a3b8',  // slate-400 — 柔和灰蓝
+    learning: '#f59e0b',     // amber-500
+    reviewing: '#8b5cf6',    // violet-500
+    mastered: '#10b981',     // emerald-500
   },
-  /** 战争迷雾透明度 */
-  FOG_OPACITY: 0.15,
+  /** 里程碑节点高亮色 */
+  MILESTONE_COLOR: '#fbbf24',    // amber-400 金色
+  MILESTONE_GLOW: '#fde68a',     // amber-200 发光
+  MILESTONE_RING: '#f59e0b',     // amber-500 外环
+  /** 子域配色方案 */
+  SUBDOMAIN_COLORS: {
+    'cs-fundamentals': '#64748b',
+    'programming-basics': '#6366f1',
+    'data-structures': '#ec4899',
+    'algorithms': '#f97316',
+    'oop': '#8b5cf6',
+    'web-frontend': '#06b6d4',
+    'web-backend': '#14b8a6',
+    'database': '#f43f5e',
+    'devops': '#84cc16',
+    'system-design': '#a855f7',
+    'ai-foundations': '#3b82f6',
+    'llm-core': '#ef4444',
+    'prompt-engineering': '#f59e0b',
+    'rag-knowledge': '#10b981',
+    'agent-systems': '#8b5cf6',
+  } as Record<string, string>,
   /** 默认缩放范围 */
-  ZOOM_MIN: 0.2,
-  ZOOM_MAX: 3.0,
+  ZOOM_MIN: 0.1,
+  ZOOM_MAX: 4.0,
 } as const;
 
 /** API 端点 */

@@ -1,10 +1,10 @@
 {
   "domain": {
-    "id": "programming",
-    "name": "编程",
-    "description": "从零基础到系统架构的编程知识体系",
-    "icon": "💻",
-    "color": "#6366f1"
+    "id": "ai-engineering",
+    "name": "AI工程",
+    "description": "从编程基础到大模型与Agent系统的前沿知识体系",
+    "icon": "🧠",
+    "color": "#8b5cf6"
   },
   "subdomains": [
     {
@@ -58,14 +58,29 @@
       "order": 10
     },
     {
-      "id": "ai-ml",
-      "name": "AI与机器学习",
+      "id": "ai-foundations",
+      "name": "AI基础",
       "order": 11
     },
     {
-      "id": "software-engineering",
-      "name": "软件工程",
+      "id": "llm-core",
+      "name": "大模型核心",
       "order": 12
+    },
+    {
+      "id": "prompt-engineering",
+      "name": "Prompt工程",
+      "order": 13
+    },
+    {
+      "id": "rag-knowledge",
+      "name": "RAG与知识库",
+      "order": 14
+    },
+    {
+      "id": "agent-systems",
+      "name": "Agent系统",
+      "order": 15
     }
   ],
   "concepts": [
@@ -73,7 +88,7 @@
       "id": "binary-system",
       "name": "二进制与数制",
       "description": "掌握二进制与数制的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 1,
       "estimated_minutes": 20,
@@ -82,13 +97,14 @@
         "基础",
         "数学"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "boolean-logic",
       "name": "布尔逻辑",
       "description": "掌握布尔逻辑的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 1,
       "estimated_minutes": 15,
@@ -97,13 +113,14 @@
         "基础",
         "逻辑"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "how-computer-works",
       "name": "计算机如何工作",
       "description": "掌握计算机如何工作的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 1,
       "estimated_minutes": 25,
@@ -112,13 +129,14 @@
         "基础",
         "硬件"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "memory-model",
       "name": "内存模型",
       "description": "掌握内存模型的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 2,
       "estimated_minutes": 30,
@@ -127,13 +145,14 @@
         "基础",
         "内存"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "cpu-execution",
       "name": "CPU执行原理",
       "description": "掌握CPU执行原理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 2,
       "estimated_minutes": 25,
@@ -142,13 +161,14 @@
         "基础",
         "硬件"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "os-basics",
       "name": "操作系统基础",
       "description": "掌握操作系统基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 3,
       "estimated_minutes": 35,
@@ -157,13 +177,14 @@
         "基础",
         "OS"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "file-system",
       "name": "文件系统",
       "description": "掌握文件系统的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 2,
       "estimated_minutes": 20,
@@ -172,13 +193,14 @@
         "基础",
         "OS"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "network-basics",
       "name": "网络基础",
       "description": "掌握网络基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 3,
       "estimated_minutes": 30,
@@ -187,13 +209,14 @@
         "基础",
         "网络"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "tcp-ip",
       "name": "TCP/IP协议",
       "description": "掌握TCP/IP协议的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 3,
       "estimated_minutes": 35,
@@ -202,13 +225,14 @@
         "网络",
         "协议"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "http-protocol",
       "name": "HTTP协议",
       "description": "掌握HTTP协议的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -217,13 +241,14 @@
         "网络",
         "Web"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "character-encoding",
       "name": "字符编码(ASCII/UTF-8)",
       "description": "掌握字符编码(ASCII/UTF-8)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 2,
       "estimated_minutes": 20,
@@ -232,13 +257,14 @@
         "基础",
         "编码"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "command-line",
       "name": "命令行基础",
       "description": "掌握命令行基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "cs-fundamentals",
       "difficulty": 1,
       "estimated_minutes": 20,
@@ -247,13 +273,14 @@
         "工具",
         "终端"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "what-is-programming",
       "name": "什么是编程",
       "description": "掌握什么是编程的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 1,
       "estimated_minutes": 15,
@@ -261,13 +288,14 @@
       "tags": [
         "入门"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "variables",
       "name": "变量与数据类型",
       "description": "掌握变量与数据类型的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 1,
       "estimated_minutes": 20,
@@ -275,13 +303,14 @@
       "tags": [
         "基础"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "operators",
       "name": "运算符",
       "description": "掌握运算符的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 1,
       "estimated_minutes": 15,
@@ -289,13 +318,14 @@
       "tags": [
         "基础"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "conditionals",
       "name": "条件判断(if/else)",
       "description": "掌握条件判断(if/else)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 1,
       "estimated_minutes": 20,
@@ -303,13 +333,14 @@
       "tags": [
         "控制流"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "loops",
       "name": "循环(for/while)",
       "description": "掌握循环(for/while)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 25,
@@ -317,13 +348,14 @@
       "tags": [
         "控制流"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "functions",
       "name": "函数",
       "description": "掌握函数的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 30,
@@ -331,13 +363,14 @@
       "tags": [
         "模块化"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "scope",
       "name": "作用域",
       "description": "掌握作用域的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 20,
@@ -345,13 +378,14 @@
       "tags": [
         "基础"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "strings",
       "name": "字符串操作",
       "description": "掌握字符串操作的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 25,
@@ -359,13 +393,14 @@
       "tags": [
         "数据类型"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "arrays-lists",
       "name": "数组/列表",
       "description": "掌握数组/列表的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 25,
@@ -373,13 +408,14 @@
       "tags": [
         "数据类型"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "dictionaries-maps",
       "name": "字典/映射",
       "description": "掌握字典/映射的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 25,
@@ -387,13 +423,14 @@
       "tags": [
         "数据类型"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "input-output",
       "name": "输入与输出",
       "description": "掌握输入与输出的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 1,
       "estimated_minutes": 15,
@@ -401,13 +438,14 @@
       "tags": [
         "基础"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "error-handling",
       "name": "错误处理(try/catch)",
       "description": "掌握错误处理(try/catch)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -415,13 +453,14 @@
       "tags": [
         "鲁棒性"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "recursion",
       "name": "递归",
       "description": "掌握递归的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 3,
       "estimated_minutes": 35,
@@ -429,13 +468,14 @@
       "tags": [
         "算法思维"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "modules-imports",
       "name": "模块与导入",
       "description": "掌握模块与导入的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 20,
@@ -443,13 +483,14 @@
       "tags": [
         "模块化"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "type-system",
       "name": "类型系统(静态vs动态)",
       "description": "掌握类型系统(静态vs动态)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -457,13 +498,14 @@
       "tags": [
         "语言设计"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "debugging-basics",
       "name": "调试基础",
       "description": "掌握调试基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 20,
@@ -471,13 +513,14 @@
       "tags": [
         "工具"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "code-style",
       "name": "代码规范与风格",
       "description": "掌握代码规范与风格的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 2,
       "estimated_minutes": 15,
@@ -485,13 +528,14 @@
       "tags": [
         "工程"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "hello-world",
       "name": "Hello World",
       "description": "掌握Hello World的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 1,
       "estimated_minutes": 10,
@@ -499,13 +543,14 @@
       "tags": [
         "入门"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "comments",
       "name": "注释",
       "description": "掌握注释的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 1,
       "estimated_minutes": 10,
@@ -513,13 +558,14 @@
       "tags": [
         "基础"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "iteration-vs-recursion",
       "name": "迭代vs递归",
       "description": "掌握迭代vs递归的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "programming-basics",
       "difficulty": 3,
       "estimated_minutes": 30,
@@ -527,13 +573,14 @@
       "tags": [
         "算法思维"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "array-internals",
       "name": "数组内部原理",
       "description": "掌握数组内部原理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -541,13 +588,14 @@
       "tags": [
         "线性"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "linked-list",
       "name": "链表",
       "description": "掌握链表的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 4,
       "estimated_minutes": 35,
@@ -555,13 +603,14 @@
       "tags": [
         "线性"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "stack",
       "name": "栈",
       "description": "掌握栈的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -570,13 +619,14 @@
         "线性",
         "LIFO"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "queue",
       "name": "队列",
       "description": "掌握队列的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -585,13 +635,14 @@
         "线性",
         "FIFO"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "deque",
       "name": "双端队列",
       "description": "掌握双端队列的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 4,
       "estimated_minutes": 20,
@@ -599,13 +650,14 @@
       "tags": [
         "线性"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "hash-table",
       "name": "哈希表",
       "description": "掌握哈希表的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 4,
       "estimated_minutes": 40,
@@ -613,13 +665,14 @@
       "tags": [
         "映射"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "set-data-structure",
       "name": "集合",
       "description": "掌握集合的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 3,
       "estimated_minutes": 20,
@@ -627,13 +680,14 @@
       "tags": [
         "集合论"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "binary-tree",
       "name": "二叉树",
       "description": "掌握二叉树的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 5,
       "estimated_minutes": 40,
@@ -641,13 +695,14 @@
       "tags": [
         "树"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "bst",
       "name": "二叉搜索树(BST)",
       "description": "掌握二叉搜索树(BST)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 5,
       "estimated_minutes": 40,
@@ -656,13 +711,14 @@
         "树",
         "搜索"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "avl-tree",
       "name": "AVL树",
       "description": "掌握AVL树的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 6,
       "estimated_minutes": 45,
@@ -671,13 +727,14 @@
         "树",
         "平衡"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "red-black-tree",
       "name": "红黑树",
       "description": "掌握红黑树的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 7,
       "estimated_minutes": 50,
@@ -686,13 +743,14 @@
         "树",
         "平衡"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "heap",
       "name": "堆(优先队列)",
       "description": "掌握堆(优先队列)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 5,
       "estimated_minutes": 35,
@@ -701,13 +759,14 @@
         "树",
         "排序"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "trie",
       "name": "字典树(Trie)",
       "description": "掌握字典树(Trie)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -716,13 +775,14 @@
         "树",
         "字符串"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "graph-ds",
       "name": "图(数据结构)",
       "description": "掌握图(数据结构)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 5,
       "estimated_minutes": 40,
@@ -730,13 +790,14 @@
       "tags": [
         "图"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "adjacency-matrix",
       "name": "邻接矩阵",
       "description": "掌握邻接矩阵的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 5,
       "estimated_minutes": 20,
@@ -744,13 +805,14 @@
       "tags": [
         "图"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "adjacency-list",
       "name": "邻接表",
       "description": "掌握邻接表的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 5,
       "estimated_minutes": 20,
@@ -758,13 +820,14 @@
       "tags": [
         "图"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "disjoint-set",
       "name": "并查集",
       "description": "掌握并查集的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -773,13 +836,14 @@
         "图",
         "集合"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "bloom-filter",
       "name": "布隆过滤器",
       "description": "掌握布隆过滤器的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 7,
       "estimated_minutes": 30,
@@ -787,13 +851,14 @@
       "tags": [
         "概率"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "skip-list",
       "name": "跳表",
       "description": "掌握跳表的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "data-structures",
       "difficulty": 7,
       "estimated_minutes": 35,
@@ -802,13 +867,14 @@
         "概率",
         "线性"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "time-complexity",
       "name": "时间复杂度(Big-O)",
       "description": "掌握时间复杂度(Big-O)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 3,
       "estimated_minutes": 30,
@@ -816,13 +882,14 @@
       "tags": [
         "分析"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "space-complexity",
       "name": "空间复杂度",
       "description": "掌握空间复杂度的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -830,13 +897,14 @@
       "tags": [
         "分析"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "bubble-sort",
       "name": "冒泡排序",
       "description": "掌握冒泡排序的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 3,
       "estimated_minutes": 20,
@@ -844,13 +912,14 @@
       "tags": [
         "排序"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "selection-sort",
       "name": "选择排序",
       "description": "掌握选择排序的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 3,
       "estimated_minutes": 20,
@@ -858,13 +927,14 @@
       "tags": [
         "排序"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "insertion-sort",
       "name": "插入排序",
       "description": "掌握插入排序的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 3,
       "estimated_minutes": 20,
@@ -872,13 +942,14 @@
       "tags": [
         "排序"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "merge-sort",
       "name": "归并排序",
       "description": "掌握归并排序的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 5,
       "estimated_minutes": 35,
@@ -887,13 +958,14 @@
         "排序",
         "分治"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "quick-sort",
       "name": "快速排序",
       "description": "掌握快速排序的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 5,
       "estimated_minutes": 35,
@@ -902,13 +974,14 @@
         "排序",
         "分治"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "heap-sort",
       "name": "堆排序",
       "description": "掌握堆排序的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -916,13 +989,14 @@
       "tags": [
         "排序"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "counting-sort",
       "name": "计数排序",
       "description": "掌握计数排序的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 4,
       "estimated_minutes": 20,
@@ -930,13 +1004,14 @@
       "tags": [
         "排序"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "binary-search",
       "name": "二分查找",
       "description": "掌握二分查找的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -944,13 +1019,14 @@
       "tags": [
         "搜索"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "bfs",
       "name": "广度优先搜索(BFS)",
       "description": "掌握广度优先搜索(BFS)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -959,13 +1035,14 @@
         "图",
         "搜索"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "dfs",
       "name": "深度优先搜索(DFS)",
       "description": "掌握深度优先搜索(DFS)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -974,13 +1051,14 @@
         "图",
         "搜索"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "dijkstra",
       "name": "Dijkstra最短路径",
       "description": "掌握Dijkstra最短路径的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 6,
       "estimated_minutes": 40,
@@ -989,13 +1067,14 @@
         "图",
         "最短路"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "bellman-ford",
       "name": "Bellman-Ford算法",
       "description": "掌握Bellman-Ford算法的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -1004,13 +1083,14 @@
         "图",
         "最短路"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "topological-sort",
       "name": "拓扑排序",
       "description": "掌握拓扑排序的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1019,13 +1099,14 @@
         "图",
         "DAG"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "kruskal-mst",
       "name": "Kruskal最小生成树",
       "description": "掌握Kruskal最小生成树的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -1033,13 +1114,14 @@
       "tags": [
         "图"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "two-pointers",
       "name": "双指针",
       "description": "掌握双指针的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1047,13 +1129,14 @@
       "tags": [
         "技巧"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "sliding-window",
       "name": "滑动窗口",
       "description": "掌握滑动窗口的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -1061,13 +1144,14 @@
       "tags": [
         "技巧"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "divide-conquer",
       "name": "分治法",
       "description": "掌握分治法的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 5,
       "estimated_minutes": 35,
@@ -1075,13 +1159,14 @@
       "tags": [
         "范式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "greedy",
       "name": "贪心算法",
       "description": "掌握贪心算法的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1089,13 +1174,14 @@
       "tags": [
         "范式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "dynamic-programming",
       "name": "动态规划",
       "description": "掌握动态规划的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 7,
       "estimated_minutes": 60,
@@ -1103,13 +1189,14 @@
       "tags": [
         "范式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "dp-memoization",
       "name": "记忆化搜索",
       "description": "掌握记忆化搜索的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -1117,13 +1204,14 @@
       "tags": [
         "DP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "dp-tabulation",
       "name": "DP表格法",
       "description": "掌握DP表格法的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 7,
       "estimated_minutes": 40,
@@ -1131,13 +1219,14 @@
       "tags": [
         "DP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "backtracking",
       "name": "回溯法",
       "description": "掌握回溯法的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 6,
       "estimated_minutes": 40,
@@ -1145,13 +1234,14 @@
       "tags": [
         "范式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "bit-manipulation",
       "name": "位运算技巧",
       "description": "掌握位运算技巧的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1159,13 +1249,14 @@
       "tags": [
         "技巧"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "string-matching",
       "name": "字符串匹配(KMP)",
       "description": "掌握字符串匹配(KMP)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 7,
       "estimated_minutes": 45,
@@ -1173,13 +1264,14 @@
       "tags": [
         "字符串"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "graph-coloring",
       "name": "图着色",
       "description": "掌握图着色的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 7,
       "estimated_minutes": 35,
@@ -1187,13 +1279,14 @@
       "tags": [
         "图"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "np-completeness",
       "name": "NP完全性",
       "description": "掌握NP完全性的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "algorithms",
       "difficulty": 9,
       "estimated_minutes": 50,
@@ -1201,13 +1294,14 @@
       "tags": [
         "理论"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "class-object",
       "name": "类与对象",
       "description": "掌握类与对象的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 3,
       "estimated_minutes": 30,
@@ -1215,13 +1309,14 @@
       "tags": [
         "OOP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "encapsulation",
       "name": "封装",
       "description": "掌握封装的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -1229,13 +1324,14 @@
       "tags": [
         "OOP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "inheritance",
       "name": "继承",
       "description": "掌握继承的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -1243,13 +1339,14 @@
       "tags": [
         "OOP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "polymorphism",
       "name": "多态",
       "description": "掌握多态的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 4,
       "estimated_minutes": 35,
@@ -1257,13 +1354,14 @@
       "tags": [
         "OOP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "abstraction",
       "name": "抽象",
       "description": "掌握抽象的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1271,13 +1369,14 @@
       "tags": [
         "OOP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "interface",
       "name": "接口",
       "description": "掌握接口的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1285,13 +1384,14 @@
       "tags": [
         "OOP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "composition-vs-inheritance",
       "name": "组合优于继承",
       "description": "掌握组合优于继承的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1299,13 +1399,14 @@
       "tags": [
         "设计"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "design-patterns-intro",
       "name": "设计模式概述",
       "description": "掌握设计模式概述的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 5,
       "estimated_minutes": 20,
@@ -1313,13 +1414,14 @@
       "tags": [
         "设计"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "singleton",
       "name": "单例模式",
       "description": "掌握单例模式的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 5,
       "estimated_minutes": 20,
@@ -1327,13 +1429,14 @@
       "tags": [
         "设计模式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "factory-pattern",
       "name": "工厂模式",
       "description": "掌握工厂模式的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 5,
       "estimated_minutes": 25,
@@ -1341,13 +1444,14 @@
       "tags": [
         "设计模式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "observer-pattern",
       "name": "观察者模式",
       "description": "掌握观察者模式的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 5,
       "estimated_minutes": 25,
@@ -1355,13 +1459,14 @@
       "tags": [
         "设计模式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "strategy-pattern",
       "name": "策略模式",
       "description": "掌握策略模式的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 5,
       "estimated_minutes": 25,
@@ -1369,13 +1474,14 @@
       "tags": [
         "设计模式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "decorator-pattern",
       "name": "装饰器模式",
       "description": "掌握装饰器模式的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 6,
       "estimated_minutes": 30,
@@ -1383,13 +1489,14 @@
       "tags": [
         "设计模式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "mvc-pattern",
       "name": "MVC模式",
       "description": "掌握MVC模式的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 5,
       "estimated_minutes": 25,
@@ -1397,13 +1504,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "solid-principles",
       "name": "SOLID原则",
       "description": "掌握SOLID原则的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 6,
       "estimated_minutes": 40,
@@ -1411,13 +1519,14 @@
       "tags": [
         "设计"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "dependency-injection",
       "name": "依赖注入",
       "description": "掌握依赖注入的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 6,
       "estimated_minutes": 30,
@@ -1425,13 +1534,14 @@
       "tags": [
         "设计"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "generics",
       "name": "泛型",
       "description": "掌握泛型的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1439,13 +1549,14 @@
       "tags": [
         "类型系统"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "enum",
       "name": "枚举类型",
       "description": "掌握枚举类型的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "oop",
       "difficulty": 3,
       "estimated_minutes": 15,
@@ -1453,13 +1564,14 @@
       "tags": [
         "数据类型"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "html-basics",
       "name": "HTML基础",
       "description": "掌握HTML基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 2,
       "estimated_minutes": 25,
@@ -1467,13 +1579,14 @@
       "tags": [
         "Web"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "css-basics",
       "name": "CSS基础",
       "description": "掌握CSS基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 2,
       "estimated_minutes": 30,
@@ -1482,13 +1595,14 @@
         "Web",
         "样式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "css-layout",
       "name": "CSS布局(Flex/Grid)",
       "description": "掌握CSS布局(Flex/Grid)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 3,
       "estimated_minutes": 35,
@@ -1496,13 +1610,14 @@
       "tags": [
         "布局"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "css-responsive",
       "name": "响应式设计",
       "description": "掌握响应式设计的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -1510,13 +1625,14 @@
       "tags": [
         "移动端"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "javascript-basics",
       "name": "JavaScript基础",
       "description": "掌握JavaScript基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 3,
       "estimated_minutes": 40,
@@ -1524,13 +1640,14 @@
       "tags": [
         "JS"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "dom-manipulation",
       "name": "DOM操作",
       "description": "掌握DOM操作的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 3,
       "estimated_minutes": 30,
@@ -1539,13 +1656,14 @@
         "JS",
         "浏览器"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "event-handling",
       "name": "事件处理",
       "description": "掌握事件处理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -1553,13 +1671,14 @@
       "tags": [
         "JS"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "async-js",
       "name": "异步JavaScript(Promise/async)",
       "description": "掌握异步JavaScript(Promise/async)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 5,
       "estimated_minutes": 45,
@@ -1568,13 +1687,14 @@
         "JS",
         "异步"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "fetch-api",
       "name": "Fetch API与网络请求",
       "description": "掌握Fetch API与网络请求的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1583,13 +1703,14 @@
         "JS",
         "网络"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "react-basics",
       "name": "React基础",
       "description": "掌握React基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 4,
       "estimated_minutes": 40,
@@ -1597,13 +1718,14 @@
       "tags": [
         "React"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "react-hooks",
       "name": "React Hooks",
       "description": "掌握React Hooks的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 5,
       "estimated_minutes": 40,
@@ -1611,13 +1733,14 @@
       "tags": [
         "React"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "react-state",
       "name": "React状态管理",
       "description": "掌握React状态管理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 5,
       "estimated_minutes": 35,
@@ -1625,13 +1748,14 @@
       "tags": [
         "React"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "component-lifecycle",
       "name": "组件生命周期",
       "description": "掌握组件生命周期的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1639,13 +1763,14 @@
       "tags": [
         "React"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "virtual-dom",
       "name": "虚拟DOM原理",
       "description": "掌握虚拟DOM原理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1654,13 +1779,14 @@
         "React",
         "性能"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "spa-routing",
       "name": "SPA路由",
       "description": "掌握SPA路由的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1668,13 +1794,14 @@
       "tags": [
         "Web"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "typescript-basics",
       "name": "TypeScript基础",
       "description": "掌握TypeScript基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 4,
       "estimated_minutes": 35,
@@ -1682,13 +1809,14 @@
       "tags": [
         "TS"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "ts-advanced-types",
       "name": "TypeScript高级类型",
       "description": "掌握TypeScript高级类型的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 6,
       "estimated_minutes": 40,
@@ -1696,13 +1824,14 @@
       "tags": [
         "TS"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "css-in-js",
       "name": "CSS-in-JS / TailwindCSS",
       "description": "掌握CSS-in-JS / TailwindCSS的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1710,13 +1839,14 @@
       "tags": [
         "样式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "web-accessibility",
       "name": "Web无障碍(a11y)",
       "description": "掌握Web无障碍(a11y)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1724,13 +1854,14 @@
       "tags": [
         "质量"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "web-performance",
       "name": "前端性能优化",
       "description": "掌握前端性能优化的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 6,
       "estimated_minutes": 40,
@@ -1738,13 +1869,14 @@
       "tags": [
         "性能"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "bundler-basics",
       "name": "打包工具(Webpack/Vite)",
       "description": "掌握打包工具(Webpack/Vite)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1752,13 +1884,14 @@
       "tags": [
         "工具链"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "browser-rendering",
       "name": "浏览器渲染原理",
       "description": "掌握浏览器渲染原理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -1766,13 +1899,14 @@
       "tags": [
         "浏览器"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "pwa-basics",
       "name": "PWA基础",
       "description": "掌握PWA基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-frontend",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1780,13 +1914,14 @@
       "tags": [
         "移动端"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "server-basics",
       "name": "服务器基础概念",
       "description": "掌握服务器基础概念的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -1794,13 +1929,14 @@
       "tags": [
         "后端"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "restful-api",
       "name": "RESTful API设计",
       "description": "掌握RESTful API设计的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 4,
       "estimated_minutes": 35,
@@ -1808,13 +1944,14 @@
       "tags": [
         "API"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "api-authentication",
       "name": "API认证(JWT/OAuth)",
       "description": "掌握API认证(JWT/OAuth)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 5,
       "estimated_minutes": 40,
@@ -1822,13 +1959,14 @@
       "tags": [
         "安全"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "middleware",
       "name": "中间件",
       "description": "掌握中间件的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1836,13 +1974,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "session-cookie",
       "name": "Session与Cookie",
       "description": "掌握Session与Cookie的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1850,13 +1989,14 @@
       "tags": [
         "状态"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "websocket",
       "name": "WebSocket实时通信",
       "description": "掌握WebSocket实时通信的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1864,13 +2004,14 @@
       "tags": [
         "网络"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "graphql-basics",
       "name": "GraphQL基础",
       "description": "掌握GraphQL基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 5,
       "estimated_minutes": 35,
@@ -1878,13 +2019,14 @@
       "tags": [
         "API"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "server-side-rendering",
       "name": "服务端渲染(SSR)",
       "description": "掌握服务端渲染(SSR)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -1892,13 +2034,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "cors",
       "name": "CORS跨域",
       "description": "掌握CORS跨域的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 4,
       "estimated_minutes": 20,
@@ -1906,13 +2049,14 @@
       "tags": [
         "安全"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "rate-limiting",
       "name": "限流策略",
       "description": "掌握限流策略的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 5,
       "estimated_minutes": 25,
@@ -1920,13 +2064,14 @@
       "tags": [
         "安全"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "file-upload",
       "name": "文件上传处理",
       "description": "掌握文件上传处理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1934,13 +2079,14 @@
       "tags": [
         "API"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "logging-monitoring",
       "name": "日志与监控",
       "description": "掌握日志与监控的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -1948,13 +2094,14 @@
       "tags": [
         "运维"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "error-handling-backend",
       "name": "后端错误处理",
       "description": "掌握后端错误处理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -1962,13 +2109,14 @@
       "tags": [
         "鲁棒性"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "caching-strategies",
       "name": "缓存策略",
       "description": "掌握缓存策略的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -1976,13 +2124,14 @@
       "tags": [
         "性能"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "message-queue",
       "name": "消息队列",
       "description": "掌握消息队列的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -1990,13 +2139,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "microservices-intro",
       "name": "微服务入门",
       "description": "掌握微服务入门的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 7,
       "estimated_minutes": 40,
@@ -2004,13 +2154,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "serverless",
       "name": "Serverless架构",
       "description": "掌握Serverless架构的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "web-backend",
       "difficulty": 6,
       "estimated_minutes": 30,
@@ -2018,13 +2169,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "db-basics",
       "name": "数据库基本概念",
       "description": "掌握数据库基本概念的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -2032,13 +2184,14 @@
       "tags": [
         "数据库"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "sql-basics",
       "name": "SQL基础(CRUD)",
       "description": "掌握SQL基础(CRUD)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 3,
       "estimated_minutes": 30,
@@ -2046,13 +2199,14 @@
       "tags": [
         "SQL"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "sql-joins",
       "name": "SQL JOIN查询",
       "description": "掌握SQL JOIN查询的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 4,
       "estimated_minutes": 35,
@@ -2060,13 +2214,14 @@
       "tags": [
         "SQL"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "sql-aggregation",
       "name": "SQL聚合与分组",
       "description": "掌握SQL聚合与分组的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -2074,13 +2229,14 @@
       "tags": [
         "SQL"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "sql-subquery",
       "name": "SQL子查询",
       "description": "掌握SQL子查询的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -2088,13 +2244,14 @@
       "tags": [
         "SQL"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "db-normalization",
       "name": "数据库范式",
       "description": "掌握数据库范式的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 5,
       "estimated_minutes": 35,
@@ -2102,13 +2259,14 @@
       "tags": [
         "设计"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "db-indexing",
       "name": "索引原理与优化",
       "description": "掌握索引原理与优化的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 6,
       "estimated_minutes": 40,
@@ -2116,13 +2274,14 @@
       "tags": [
         "性能"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "db-transactions",
       "name": "事务(ACID)",
       "description": "掌握事务(ACID)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -2130,13 +2289,14 @@
       "tags": [
         "一致性"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "orm-basics",
       "name": "ORM基础",
       "description": "掌握ORM基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -2144,13 +2304,14 @@
       "tags": [
         "工具"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "nosql-intro",
       "name": "NoSQL概述",
       "description": "掌握NoSQL概述的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -2158,13 +2319,14 @@
       "tags": [
         "数据库"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "mongodb-basics",
       "name": "MongoDB基础",
       "description": "掌握MongoDB基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -2172,13 +2334,14 @@
       "tags": [
         "NoSQL"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "redis-basics",
       "name": "Redis基础",
       "description": "掌握Redis基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -2186,13 +2349,14 @@
       "tags": [
         "缓存"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "graph-database",
       "name": "图数据库(Neo4j)",
       "description": "掌握图数据库(Neo4j)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -2200,13 +2364,14 @@
       "tags": [
         "图"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "db-replication",
       "name": "数据库复制",
       "description": "掌握数据库复制的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 7,
       "estimated_minutes": 35,
@@ -2214,13 +2379,14 @@
       "tags": [
         "分布式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "db-sharding",
       "name": "分库分表",
       "description": "掌握分库分表的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 8,
       "estimated_minutes": 40,
@@ -2228,13 +2394,14 @@
       "tags": [
         "分布式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "db-migration",
       "name": "数据库迁移",
       "description": "掌握数据库迁移的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "database",
       "difficulty": 4,
       "estimated_minutes": 20,
@@ -2242,13 +2409,14 @@
       "tags": [
         "运维"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "git-basics",
       "name": "Git基础",
       "description": "掌握Git基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 2,
       "estimated_minutes": 25,
@@ -2256,13 +2424,14 @@
       "tags": [
         "版本控制"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "git-branching",
       "name": "Git分支策略",
       "description": "掌握Git分支策略的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 3,
       "estimated_minutes": 25,
@@ -2270,13 +2439,14 @@
       "tags": [
         "版本控制"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "git-workflow",
       "name": "Git工作流(GitFlow)",
       "description": "掌握Git工作流(GitFlow)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -2284,13 +2454,14 @@
       "tags": [
         "协作"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "ci-cd",
       "name": "CI/CD持续集成",
       "description": "掌握CI/CD持续集成的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 5,
       "estimated_minutes": 35,
@@ -2298,13 +2469,14 @@
       "tags": [
         "自动化"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "docker-basics",
       "name": "Docker基础",
       "description": "掌握Docker基础的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 4,
       "estimated_minutes": 35,
@@ -2312,13 +2484,14 @@
       "tags": [
         "容器"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "docker-compose-concept",
       "name": "Docker Compose",
       "description": "掌握Docker Compose的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 5,
       "estimated_minutes": 25,
@@ -2326,13 +2499,14 @@
       "tags": [
         "容器"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "kubernetes-intro",
       "name": "Kubernetes入门",
       "description": "掌握Kubernetes入门的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 7,
       "estimated_minutes": 45,
@@ -2340,13 +2514,14 @@
       "tags": [
         "编排"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "linux-basics",
       "name": "Linux基础命令",
       "description": "掌握Linux基础命令的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 2,
       "estimated_minutes": 25,
@@ -2354,13 +2529,14 @@
       "tags": [
         "运维"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "shell-scripting",
       "name": "Shell脚本",
       "description": "掌握Shell脚本的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -2368,13 +2544,14 @@
       "tags": [
         "自动化"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "cloud-basics",
       "name": "云服务基础(AWS/GCP)",
       "description": "掌握云服务基础(AWS/GCP)的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 4,
       "estimated_minutes": 30,
@@ -2382,13 +2559,14 @@
       "tags": [
         "云"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "monitoring-alerting",
       "name": "监控与告警",
       "description": "掌握监控与告警的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 5,
       "estimated_minutes": 30,
@@ -2396,13 +2574,14 @@
       "tags": [
         "运维"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "infra-as-code",
       "name": "基础设施即代码",
       "description": "掌握基础设施即代码的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 6,
       "estimated_minutes": 35,
@@ -2410,13 +2589,14 @@
       "tags": [
         "自动化"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "ssl-tls",
       "name": "SSL/TLS与HTTPS",
       "description": "掌握SSL/TLS与HTTPS的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 4,
       "estimated_minutes": 25,
@@ -2424,13 +2604,14 @@
       "tags": [
         "安全"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "environment-variables",
       "name": "环境变量管理",
       "description": "掌握环境变量管理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "devops",
       "difficulty": 3,
       "estimated_minutes": 15,
@@ -2438,13 +2619,14 @@
       "tags": [
         "配置"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "system-design-basics",
       "name": "系统设计入门",
       "description": "掌握系统设计入门的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 6,
       "estimated_minutes": 40,
@@ -2452,13 +2634,14 @@
       "tags": [
         "设计"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "scalability",
       "name": "可扩展性",
       "description": "掌握可扩展性的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 7,
       "estimated_minutes": 40,
@@ -2466,13 +2649,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "load-balancing",
       "name": "负载均衡",
       "description": "掌握负载均衡的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 6,
       "estimated_minutes": 30,
@@ -2480,13 +2664,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "cap-theorem",
       "name": "CAP定理",
       "description": "掌握CAP定理的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 7,
       "estimated_minutes": 35,
@@ -2494,13 +2679,14 @@
       "tags": [
         "分布式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "consistency-patterns",
       "name": "一致性模型",
       "description": "掌握一致性模型的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 8,
       "estimated_minutes": 40,
@@ -2508,13 +2694,14 @@
       "tags": [
         "分布式"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "event-driven-arch",
       "name": "事件驱动架构",
       "description": "掌握事件驱动架构的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 7,
       "estimated_minutes": 35,
@@ -2522,13 +2709,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "api-gateway",
       "name": "API网关",
       "description": "掌握API网关的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 6,
       "estimated_minutes": 25,
@@ -2536,13 +2724,14 @@
       "tags": [
         "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "service-discovery",
       "name": "服务发现",
       "description": "掌握服务发现的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 7,
       "estimated_minutes": 30,
@@ -2550,13 +2739,14 @@
       "tags": [
         "微服务"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "circuit-breaker",
       "name": "熔断器模式",
       "description": "掌握熔断器模式的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 7,
       "estimated_minutes": 25,
@@ -2564,13 +2754,14 @@
       "tags": [
         "容错"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "distributed-cache",
       "name": "分布式缓存",
       "description": "掌握分布式缓存的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 7,
       "estimated_minutes": 35,
@@ -2578,13 +2769,14 @@
       "tags": [
         "性能"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "cdn",
       "name": "CDN内容分发",
       "description": "掌握CDN内容分发的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 5,
       "estimated_minutes": 20,
@@ -2592,13 +2784,14 @@
       "tags": [
         "性能"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "design-url-shortener",
       "name": "设计短链接系统",
       "description": "掌握设计短链接系统的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 7,
       "estimated_minutes": 45,
@@ -2606,13 +2799,14 @@
       "tags": [
         "实战"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "design-chat-system",
       "name": "设计聊天系统",
       "description": "掌握设计聊天系统的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 8,
       "estimated_minutes": 50,
@@ -2620,13 +2814,14 @@
       "tags": [
         "实战"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "design-rate-limiter",
       "name": "设计限流器",
       "description": "掌握设计限流器的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 7,
       "estimated_minutes": 40,
@@ -2634,13 +2829,14 @@
       "tags": [
         "实战"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "twelve-factor-app",
       "name": "12-Factor App",
       "description": "掌握12-Factor App的核心概念和应用",
-      "domain_id": "programming",
+      "domain_id": "ai-engineering",
       "subdomain_id": "system-design",
       "difficulty": 6,
       "estimated_minutes": 30,
@@ -2648,140 +2844,150 @@
       "tags": [
         "方法论"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "ai-overview",
       "name": "人工智能概述",
       "description": "掌握人工智能概述的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 4,
       "estimated_minutes": 25,
       "content_type": "theory",
       "tags": [
         "AI"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "ml-basics",
       "name": "机器学习基础",
       "description": "掌握机器学习基础的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 5,
       "estimated_minutes": 35,
       "content_type": "theory",
       "tags": [
         "ML"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "supervised-learning",
       "name": "监督学习",
       "description": "掌握监督学习的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 5,
       "estimated_minutes": 30,
       "content_type": "theory",
       "tags": [
         "ML"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "unsupervised-learning",
       "name": "无监督学习",
       "description": "掌握无监督学习的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 6,
       "estimated_minutes": 30,
       "content_type": "theory",
       "tags": [
         "ML"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "linear-regression",
       "name": "线性回归",
       "description": "掌握线性回归的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 5,
       "estimated_minutes": 35,
       "content_type": "practice",
       "tags": [
         "ML"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "logistic-regression",
       "name": "逻辑回归",
       "description": "掌握逻辑回归的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 5,
       "estimated_minutes": 30,
       "content_type": "practice",
       "tags": [
         "ML"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "decision-tree",
       "name": "决策树",
       "description": "掌握决策树的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 5,
       "estimated_minutes": 30,
       "content_type": "theory",
       "tags": [
         "ML"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "neural-network-basics",
       "name": "神经网络基础",
       "description": "掌握神经网络基础的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 6,
       "estimated_minutes": 40,
       "content_type": "theory",
       "tags": [
         "DL"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "deep-learning-intro",
       "name": "深度学习入门",
       "description": "掌握深度学习入门的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 7,
       "estimated_minutes": 45,
       "content_type": "theory",
       "tags": [
         "DL"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "cnn-basics",
       "name": "卷积神经网络(CNN)",
       "description": "掌握卷积神经网络(CNN)的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 7,
       "estimated_minutes": 40,
       "content_type": "theory",
@@ -2789,14 +2995,15 @@
         "DL",
         "视觉"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
       "id": "rnn-basics",
       "name": "循环神经网络(RNN)",
       "description": "掌握循环神经网络(RNN)的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
       "difficulty": 7,
       "estimated_minutes": 40,
       "content_type": "theory",
@@ -2804,14 +3011,136 @@
         "DL",
         "序列"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "transformer-basics",
+      "id": "ml-evaluation",
+      "name": "模型评估指标",
+      "description": "掌握模型评估指标的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "ML"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "overfitting",
+      "name": "过拟合与正则化",
+      "description": "掌握过拟合与正则化的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "ML"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "feature-engineering",
+      "name": "特征工程",
+      "description": "掌握特征工程的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "ML"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "gradient-descent",
+      "name": "梯度下降与优化",
+      "description": "掌握梯度下降与优化的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 6,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "DL"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "loss-functions",
+      "name": "损失函数",
+      "description": "掌握损失函数的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "DL"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "backpropagation",
+      "name": "反向传播",
+      "description": "掌握反向传播的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 7,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "DL"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "pytorch-basics",
+      "name": "PyTorch基础",
+      "description": "掌握PyTorch基础的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "attention-mechanism",
+      "name": "注意力机制",
+      "description": "掌握注意力机制的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 45,
+      "content_type": "theory",
+      "tags": [
+        "DL",
+        "NLP"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "transformer-architecture",
       "name": "Transformer架构",
       "description": "掌握Transformer架构的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
       "difficulty": 8,
       "estimated_minutes": 50,
       "content_type": "theory",
@@ -2819,391 +3148,1011 @@
         "DL",
         "NLP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "llm-basics",
-      "name": "大语言模型(LLM)",
-      "description": "掌握大语言模型(LLM)的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "id": "self-attention",
+      "name": "自注意力与多头注意力",
+      "description": "掌握自注意力与多头注意力的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "Transformer"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "positional-encoding",
+      "name": "位置编码",
+      "description": "掌握位置编码的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "Transformer"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "bert-model",
+      "name": "BERT与编码器模型",
+      "description": "掌握BERT与编码器模型的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "NLP"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "gpt-model",
+      "name": "GPT与解码器模型",
+      "description": "掌握GPT与解码器模型的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "llm-pretraining",
+      "name": "LLM预训练",
+      "description": "掌握LLM预训练的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
       "difficulty": 8,
       "estimated_minutes": 45,
       "content_type": "theory",
       "tags": [
-        "AI",
-        "NLP"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "prompt-engineering",
-      "name": "提示工程",
-      "description": "掌握提示工程的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
-      "difficulty": 5,
-      "estimated_minutes": 30,
-      "content_type": "practice",
-      "tags": [
-        "AI",
         "LLM"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "rag-basics",
-      "name": "RAG检索增强生成",
-      "description": "掌握RAG检索增强生成的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
-      "difficulty": 7,
-      "estimated_minutes": 35,
-      "content_type": "theory",
-      "tags": [
-        "AI",
-        "LLM"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "vector-database",
-      "name": "向量数据库",
-      "description": "掌握向量数据库的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
-      "difficulty": 6,
-      "estimated_minutes": 30,
-      "content_type": "theory",
-      "tags": [
-        "AI",
-        "数据库"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "ai-agent-basics",
-      "name": "AI Agent基础",
-      "description": "掌握AI Agent基础的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
-      "difficulty": 7,
-      "estimated_minutes": 35,
-      "content_type": "theory",
-      "tags": [
-        "AI",
-        "Agent"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "ml-evaluation",
-      "name": "模型评估指标",
-      "description": "掌握模型评估指标的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "id": "tokenization",
+      "name": "分词与Tokenization",
+      "description": "掌握分词与Tokenization的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
       "difficulty": 5,
       "estimated_minutes": 25,
       "content_type": "theory",
       "tags": [
-        "ML"
+        "NLP"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "overfitting",
-      "name": "过拟合与正则化",
-      "description": "掌握过拟合与正则化的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
-      "difficulty": 6,
-      "estimated_minutes": 30,
+      "id": "llm-scaling-laws",
+      "name": "LLM缩放定律",
+      "description": "掌握LLM缩放定律的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 35,
       "content_type": "theory",
       "tags": [
-        "ML"
+        "LLM"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "feature-engineering",
-      "name": "特征工程",
-      "description": "掌握特征工程的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
-      "difficulty": 6,
-      "estimated_minutes": 30,
-      "content_type": "practice",
-      "tags": [
-        "ML"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "knowledge-graph",
-      "name": "知识图谱",
-      "description": "掌握知识图谱的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "ai-ml",
+      "id": "llm-inference",
+      "name": "LLM推理优化",
+      "description": "掌握LLM推理优化的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
       "difficulty": 7,
       "estimated_minutes": 40,
       "content_type": "theory",
       "tags": [
-        "AI",
-        "图"
+        "LLM",
+        "性能"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "agile-basics",
-      "name": "敏捷开发基础",
-      "description": "掌握敏捷开发基础的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 3,
-      "estimated_minutes": 25,
-      "content_type": "theory",
-      "tags": [
-        "方法论"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "scrum",
-      "name": "Scrum框架",
-      "description": "掌握Scrum框架的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 4,
-      "estimated_minutes": 25,
-      "content_type": "theory",
-      "tags": [
-        "敏捷"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "code-review",
-      "name": "代码审查",
-      "description": "掌握代码审查的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 3,
-      "estimated_minutes": 20,
-      "content_type": "theory",
-      "tags": [
-        "质量"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "unit-testing",
-      "name": "单元测试",
-      "description": "掌握单元测试的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 4,
-      "estimated_minutes": 30,
-      "content_type": "practice",
-      "tags": [
-        "测试"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "integration-testing",
-      "name": "集成测试",
-      "description": "掌握集成测试的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 5,
-      "estimated_minutes": 30,
-      "content_type": "practice",
-      "tags": [
-        "测试"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "tdd",
-      "name": "测试驱动开发(TDD)",
-      "description": "掌握测试驱动开发(TDD)的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 5,
+      "id": "quantization",
+      "name": "模型量化(GPTQ/AWQ)",
+      "description": "掌握模型量化(GPTQ/AWQ)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
       "estimated_minutes": 35,
       "content_type": "theory",
       "tags": [
-        "方法论"
+        "LLM",
+        "部署"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "clean-code",
-      "name": "整洁代码",
-      "description": "掌握整洁代码的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 4,
+      "id": "fine-tuning-overview",
+      "name": "微调概述(SFT/RLHF)",
+      "description": "掌握微调概述(SFT/RLHF)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "lora-peft",
+      "name": "LoRA与参数高效微调",
+      "description": "掌握LoRA与参数高效微调的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "LLM",
+        "微调"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "rlhf",
+      "name": "RLHF人类反馈强化学习",
+      "description": "掌握RLHF人类反馈强化学习的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 9,
+      "estimated_minutes": 50,
+      "content_type": "theory",
+      "tags": [
+        "LLM",
+        "对齐"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "dpo",
+      "name": "DPO直接偏好优化",
+      "description": "掌握DPO直接偏好优化的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "LLM",
+        "对齐"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "multimodal-models",
+      "name": "多模态大模型",
+      "description": "掌握多模态大模型的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 45,
+      "content_type": "theory",
+      "tags": [
+        "LLM",
+        "视觉"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "llm-evaluation",
+      "name": "LLM评估方法",
+      "description": "掌握LLM评估方法的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 6,
       "estimated_minutes": 30,
       "content_type": "theory",
       "tags": [
-        "质量"
+        "LLM"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "refactoring",
-      "name": "重构",
-      "description": "掌握重构的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 5,
+      "id": "open-source-llm",
+      "name": "开源LLM生态(Llama/Qwen/DeepSeek)",
+      "description": "掌握开源LLM生态(Llama/Qwen/DeepSeek)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "context-window",
+      "name": "上下文窗口与长文本",
+      "description": "掌握上下文窗口与长文本的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
       "estimated_minutes": 35,
       "content_type": "theory",
       "tags": [
-        "质量"
+        "LLM"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "technical-debt",
-      "name": "技术债务",
-      "description": "掌握技术债务的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 4,
-      "estimated_minutes": 20,
+      "id": "mixture-of-experts",
+      "name": "MoE混合专家模型",
+      "description": "掌握MoE混合专家模型的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 40,
       "content_type": "theory",
       "tags": [
-        "管理"
+        "LLM",
+        "架构"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "documentation",
-      "name": "技术文档",
-      "description": "掌握技术文档的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
+      "id": "prompt-basics",
+      "name": "提示词基础",
+      "description": "掌握提示词基础的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
       "difficulty": 3,
       "estimated_minutes": 20,
-      "content_type": "theory",
+      "content_type": "practice",
       "tags": [
-        "沟通"
+        "Prompt"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "open-source",
-      "name": "开源协作",
-      "description": "掌握开源协作的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 3,
-      "estimated_minutes": 20,
-      "content_type": "theory",
-      "tags": [
-        "协作"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "semantic-versioning",
-      "name": "语义化版本",
-      "description": "掌握语义化版本的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
+      "id": "zero-shot",
+      "name": "零样本提示",
+      "description": "掌握零样本提示的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
       "difficulty": 3,
       "estimated_minutes": 15,
-      "content_type": "theory",
+      "content_type": "practice",
       "tags": [
-        "规范"
+        "Prompt"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "api-design-principles",
-      "name": "API设计原则",
-      "description": "掌握API设计原则的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 5,
-      "estimated_minutes": 30,
-      "content_type": "theory",
-      "tags": [
-        "设计"
-      ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
-    },
-    {
-      "id": "security-basics",
-      "name": "安全编程基础",
-      "description": "掌握安全编程基础的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
+      "id": "few-shot",
+      "name": "少样本提示",
+      "description": "掌握少样本提示的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
       "difficulty": 4,
-      "estimated_minutes": 30,
-      "content_type": "theory",
+      "estimated_minutes": 20,
+      "content_type": "practice",
       "tags": [
-        "安全"
+        "Prompt"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "xss-csrf",
-      "name": "XSS/CSRF攻击防御",
-      "description": "掌握XSS/CSRF攻击防御的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
+      "id": "chain-of-thought",
+      "name": "思维链(CoT)",
+      "description": "掌握思维链(CoT)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
       "difficulty": 5,
       "estimated_minutes": 30,
       "content_type": "theory",
       "tags": [
-        "安全"
+        "Prompt"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "sql-injection",
-      "name": "SQL注入防御",
-      "description": "掌握SQL注入防御的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
+      "id": "self-consistency",
+      "name": "自一致性采样",
+      "description": "掌握自一致性采样的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Prompt"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "tree-of-thought",
+      "name": "思维树(ToT)",
+      "description": "掌握思维树(ToT)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "Prompt"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "react-prompting",
+      "name": "ReAct推理+行动",
+      "description": "掌握ReAct推理+行动的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "Prompt",
+        "Agent"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "structured-output",
+      "name": "结构化输出(JSON Mode)",
+      "description": "掌握结构化输出(JSON Mode)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "Prompt",
+        "API"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "system-prompt-design",
+      "name": "System Prompt设计",
+      "description": "掌握System Prompt设计的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "Prompt"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "prompt-injection",
+      "name": "提示注入攻防",
+      "description": "掌握提示注入攻防的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "prompt-optimization",
+      "name": "提示词自动优化(DSPy)",
+      "description": "掌握提示词自动优化(DSPy)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "Prompt"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "llm-api-usage",
+      "name": "LLM API调用(OpenAI/Claude)",
+      "description": "掌握LLM API调用(OpenAI/Claude)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "API"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "temperature-sampling",
+      "name": "Temperature与采样策略",
+      "description": "掌握Temperature与采样策略的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "token-economics",
+      "name": "Token经济与成本优化",
+      "description": "掌握Token经济与成本优化的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "prompt-engineering",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "rag-overview",
+      "name": "RAG检索增强生成概述",
+      "description": "掌握RAG检索增强生成概述的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "text-embedding",
+      "name": "文本嵌入(Embedding)",
+      "description": "掌握文本嵌入(Embedding)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 6,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "NLP",
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "vector-database",
+      "name": "向量数据库(Pinecone/Milvus)",
+      "description": "掌握向量数据库(Pinecone/Milvus)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 6,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "数据库",
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "chunking-strategies",
+      "name": "文档分块策略",
+      "description": "掌握文档分块策略的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "similarity-search",
+      "name": "相似度搜索与重排",
+      "description": "掌握相似度搜索与重排的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "hybrid-search",
+      "name": "混合检索(向量+关键词)",
+      "description": "掌握混合检索(向量+关键词)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "rag-pipeline",
+      "name": "RAG管道架构",
+      "description": "掌握RAG管道架构的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 7,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "RAG",
+        "架构"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "rag-evaluation",
+      "name": "RAG评估(Ragas)",
+      "description": "掌握RAG评估(Ragas)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "knowledge-graph-rag",
+      "name": "知识图谱+RAG",
+      "description": "掌握知识图谱+RAG的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 8,
+      "estimated_minutes": 45,
+      "content_type": "theory",
+      "tags": [
+        "RAG",
+        "图"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "multimodal-rag",
+      "name": "多模态RAG",
+      "description": "掌握多模态RAG的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 8,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "RAG",
+        "多模态"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "document-parsing",
+      "name": "文档解析(PDF/HTML/OCR)",
+      "description": "掌握文档解析(PDF/HTML/OCR)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "langchain-basics",
+      "name": "LangChain基础",
+      "description": "掌握LangChain基础的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "llamaindex-basics",
+      "name": "LlamaIndex基础",
+      "description": "掌握LlamaIndex基础的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "graph-database-ai",
+      "name": "图数据库在AI中的应用",
+      "description": "掌握图数据库在AI中的应用的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "图",
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "agentic-rag",
+      "name": "Agentic RAG",
+      "description": "掌握Agentic RAG的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 8,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "RAG",
+        "Agent"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "agent-overview",
+      "name": "AI Agent概述",
+      "description": "掌握AI Agent概述的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
       "difficulty": 5,
       "estimated_minutes": 25,
       "content_type": "theory",
       "tags": [
-        "安全"
+        "Agent"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "performance-profiling",
-      "name": "性能分析",
-      "description": "掌握性能分析的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
+      "id": "agent-loop",
+      "name": "Agent循环(感知-推理-行动)",
+      "description": "掌握Agent循环(感知-推理-行动)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "Agent"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "tool-use",
+      "name": "工具调用(Function Calling)",
+      "description": "掌握工具调用(Function Calling)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
       "difficulty": 6,
       "estimated_minutes": 35,
       "content_type": "practice",
       "tags": [
-        "性能"
+        "Agent",
+        "API"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     },
     {
-      "id": "estimation",
-      "name": "工时估算",
-      "description": "掌握工时估算的核心概念和应用",
-      "domain_id": "programming",
-      "subdomain_id": "software-engineering",
-      "difficulty": 4,
-      "estimated_minutes": 20,
+      "id": "mcp-protocol",
+      "name": "MCP模型上下文协议",
+      "description": "掌握MCP模型上下文协议的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 7,
+      "estimated_minutes": 40,
       "content_type": "theory",
       "tags": [
-        "管理"
+        "Agent",
+        "协议"
       ],
-      "created_at": "2026-03-13T03:40:23.987764+00:00"
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "agent-memory",
+      "name": "Agent记忆系统",
+      "description": "掌握Agent记忆系统的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "Agent"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "agent-planning",
+      "name": "Agent规划与分解",
+      "description": "掌握Agent规划与分解的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 7,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "Agent"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "multi-agent",
+      "name": "多Agent协作系统",
+      "description": "掌握多Agent协作系统的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 8,
+      "estimated_minutes": 45,
+      "content_type": "theory",
+      "tags": [
+        "Agent"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "agent-evaluation",
+      "name": "Agent评估与基准测试",
+      "description": "掌握Agent评估与基准测试的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "Agent"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "autogen-framework",
+      "name": "AutoGen框架",
+      "description": "掌握AutoGen框架的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 6,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "Agent",
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "crewai-framework",
+      "name": "CrewAI框架",
+      "description": "掌握CrewAI框架的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 6,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "Agent",
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "agent-safety",
+      "name": "Agent安全与对齐",
+      "description": "掌握Agent安全与对齐的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 8,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "Agent",
+        "安全"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "code-generation",
+      "name": "代码生成Agent",
+      "description": "掌握代码生成Agent的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "Agent",
+        "编程"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "browser-agent",
+      "name": "浏览器Agent",
+      "description": "掌握浏览器Agent的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "Agent",
+        "Web"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "agent-orchestration",
+      "name": "Agent编排与工作流",
+      "description": "掌握Agent编排与工作流的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 8,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "Agent",
+        "架构"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "human-in-the-loop",
+      "name": "人在回路(HITL)",
+      "description": "掌握人在回路(HITL)的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Agent",
+        "安全"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "agent-deployment",
+      "name": "Agent部署与监控",
+      "description": "掌握Agent部署与监控的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "Agent",
+        "DevOps"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "ai-application-arch",
+      "name": "AI应用架构设计",
+      "description": "掌握AI应用架构设计的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 8,
+      "estimated_minutes": 45,
+      "content_type": "theory",
+      "tags": [
+        "Agent",
+        "架构"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "autonomous-agents",
+      "name": "自主Agent前沿",
+      "description": "掌握自主Agent前沿的核心概念和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 9,
+      "estimated_minutes": 50,
+      "content_type": "theory",
+      "tags": [
+        "Agent",
+        "前沿"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-13T05:16:41.112869+00:00"
     }
   ],
   "edges": [
@@ -4450,10 +5399,34 @@
       "strength": 0.6
     },
     {
+      "source_id": "ml-basics",
+      "target_id": "loss-functions",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "loss-functions",
+      "target_id": "gradient-descent",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gradient-descent",
+      "target_id": "backpropagation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
       "source_id": "linear-regression",
       "target_id": "neural-network-basics",
       "relation_type": "prerequisite",
       "strength": 0.5
+    },
+    {
+      "source_id": "gradient-descent",
+      "target_id": "neural-network-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
     },
     {
       "source_id": "neural-network-basics",
@@ -4474,166 +5447,538 @@
       "strength": 0.7
     },
     {
+      "source_id": "functions",
+      "target_id": "pytorch-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.4
+    },
+    {
+      "source_id": "neural-network-basics",
+      "target_id": "pytorch-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
       "source_id": "rnn-basics",
-      "target_id": "transformer-basics",
+      "target_id": "attention-mechanism",
       "relation_type": "prerequisite",
       "strength": 0.7
     },
     {
-      "source_id": "transformer-basics",
-      "target_id": "llm-basics",
+      "source_id": "attention-mechanism",
+      "target_id": "transformer-architecture",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "attention-mechanism",
+      "target_id": "self-attention",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "transformer-architecture",
+      "target_id": "self-attention",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "transformer-architecture",
+      "target_id": "positional-encoding",
       "relation_type": "prerequisite",
       "strength": 0.8
     },
     {
-      "source_id": "llm-basics",
-      "target_id": "prompt-engineering",
+      "source_id": "transformer-architecture",
+      "target_id": "bert-model",
       "relation_type": "prerequisite",
       "strength": 0.7
     },
     {
-      "source_id": "llm-basics",
-      "target_id": "rag-basics",
+      "source_id": "transformer-architecture",
+      "target_id": "gpt-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gpt-model",
+      "target_id": "llm-pretraining",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "transformer-architecture",
+      "target_id": "tokenization",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "llm-pretraining",
+      "target_id": "llm-scaling-laws",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "llm-pretraining",
+      "target_id": "llm-inference",
       "relation_type": "prerequisite",
       "strength": 0.6
+    },
+    {
+      "source_id": "llm-inference",
+      "target_id": "quantization",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "llm-pretraining",
+      "target_id": "fine-tuning-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fine-tuning-overview",
+      "target_id": "lora-peft",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fine-tuning-overview",
+      "target_id": "rlhf",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rlhf",
+      "target_id": "dpo",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gpt-model",
+      "target_id": "multimodal-models",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "cnn-basics",
+      "target_id": "multimodal-models",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "llm-pretraining",
+      "target_id": "llm-evaluation",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "gpt-model",
+      "target_id": "open-source-llm",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "gpt-model",
+      "target_id": "context-window",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "transformer-architecture",
+      "target_id": "mixture-of-experts",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "llm-scaling-laws",
+      "target_id": "mixture-of-experts",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "gpt-model",
+      "target_id": "prompt-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "prompt-basics",
+      "target_id": "zero-shot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prompt-basics",
+      "target_id": "few-shot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "few-shot",
+      "target_id": "chain-of-thought",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "chain-of-thought",
+      "target_id": "self-consistency",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "chain-of-thought",
+      "target_id": "tree-of-thought",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "chain-of-thought",
+      "target_id": "react-prompting",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "prompt-basics",
+      "target_id": "structured-output",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "prompt-basics",
+      "target_id": "system-prompt-design",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "prompt-basics",
+      "target_id": "prompt-injection",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "chain-of-thought",
+      "target_id": "prompt-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "prompt-basics",
+      "target_id": "llm-api-usage",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "llm-api-usage",
+      "target_id": "temperature-sampling",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "llm-api-usage",
+      "target_id": "token-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "gpt-model",
+      "target_id": "rag-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "prompt-basics",
+      "target_id": "rag-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "rag-overview",
+      "target_id": "text-embedding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "text-embedding",
+      "target_id": "vector-database",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rag-overview",
+      "target_id": "chunking-strategies",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "text-embedding",
+      "target_id": "similarity-search",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "similarity-search",
+      "target_id": "hybrid-search",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "chunking-strategies",
+      "target_id": "rag-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "similarity-search",
+      "target_id": "rag-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "rag-evaluation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "graph-database-ai",
+      "target_id": "knowledge-graph-rag",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "knowledge-graph-rag",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "multimodal-models",
+      "target_id": "multimodal-rag",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "multimodal-rag",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "rag-overview",
+      "target_id": "document-parsing",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "rag-overview",
+      "target_id": "langchain-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "rag-overview",
+      "target_id": "llamaindex-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "graph-ds",
+      "target_id": "graph-database-ai",
+      "relation_type": "prerequisite",
+      "strength": 0.4
     },
     {
       "source_id": "nosql-intro",
-      "target_id": "vector-database",
+      "target_id": "graph-database-ai",
       "relation_type": "prerequisite",
       "strength": 0.4
     },
     {
-      "source_id": "rag-basics",
-      "target_id": "vector-database",
-      "relation_type": "prerequisite",
-      "strength": 0.6
-    },
-    {
-      "source_id": "llm-basics",
-      "target_id": "ai-agent-basics",
-      "relation_type": "prerequisite",
-      "strength": 0.6
-    },
-    {
-      "source_id": "graph-database",
-      "target_id": "knowledge-graph",
-      "relation_type": "prerequisite",
-      "strength": 0.6
-    },
-    {
-      "source_id": "ai-overview",
-      "target_id": "knowledge-graph",
-      "relation_type": "prerequisite",
-      "strength": 0.5
-    },
-    {
-      "source_id": "functions",
-      "target_id": "unit-testing",
-      "relation_type": "prerequisite",
-      "strength": 0.5
-    },
-    {
-      "source_id": "unit-testing",
-      "target_id": "integration-testing",
+      "source_id": "rag-pipeline",
+      "target_id": "agentic-rag",
       "relation_type": "prerequisite",
       "strength": 0.7
     },
     {
-      "source_id": "unit-testing",
-      "target_id": "tdd",
+      "source_id": "react-prompting",
+      "target_id": "agent-overview",
       "relation_type": "prerequisite",
-      "strength": 0.7
+      "strength": 0.6
     },
     {
-      "source_id": "code-style",
-      "target_id": "clean-code",
-      "relation_type": "prerequisite",
-      "strength": 0.5
-    },
-    {
-      "source_id": "clean-code",
-      "target_id": "refactoring",
-      "relation_type": "prerequisite",
-      "strength": 0.7
-    },
-    {
-      "source_id": "refactoring",
-      "target_id": "technical-debt",
+      "source_id": "llm-api-usage",
+      "target_id": "agent-overview",
       "relation_type": "prerequisite",
       "strength": 0.5
     },
     {
-      "source_id": "git-basics",
-      "target_id": "code-review",
+      "source_id": "agent-overview",
+      "target_id": "agent-loop",
       "relation_type": "prerequisite",
-      "strength": 0.5
+      "strength": 0.9
     },
     {
-      "source_id": "agile-basics",
-      "target_id": "scrum",
+      "source_id": "agent-loop",
+      "target_id": "tool-use",
       "relation_type": "prerequisite",
       "strength": 0.8
     },
     {
-      "source_id": "git-basics",
-      "target_id": "open-source",
-      "relation_type": "prerequisite",
-      "strength": 0.4
-    },
-    {
-      "source_id": "git-basics",
-      "target_id": "semantic-versioning",
-      "relation_type": "prerequisite",
-      "strength": 0.4
-    },
-    {
-      "source_id": "restful-api",
-      "target_id": "api-design-principles",
+      "source_id": "structured-output",
+      "target_id": "tool-use",
       "relation_type": "prerequisite",
       "strength": 0.6
     },
     {
-      "source_id": "solid-principles",
-      "target_id": "api-design-principles",
-      "relation_type": "prerequisite",
-      "strength": 0.5
-    },
-    {
-      "source_id": "error-handling",
-      "target_id": "security-basics",
-      "relation_type": "prerequisite",
-      "strength": 0.4
-    },
-    {
-      "source_id": "security-basics",
-      "target_id": "xss-csrf",
+      "source_id": "tool-use",
+      "target_id": "mcp-protocol",
       "relation_type": "prerequisite",
       "strength": 0.7
     },
     {
-      "source_id": "security-basics",
-      "target_id": "sql-injection",
-      "relation_type": "prerequisite",
-      "strength": 0.7
-    },
-    {
-      "source_id": "time-complexity",
-      "target_id": "performance-profiling",
+      "source_id": "restful-api",
+      "target_id": "mcp-protocol",
       "relation_type": "prerequisite",
       "strength": 0.4
     },
     {
-      "source_id": "agile-basics",
-      "target_id": "estimation",
+      "source_id": "agent-loop",
+      "target_id": "agent-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "agent-memory",
       "relation_type": "prerequisite",
       "strength": 0.5
     },
     {
-      "source_id": "modules-imports",
-      "target_id": "documentation",
+      "source_id": "agent-loop",
+      "target_id": "agent-planning",
       "relation_type": "prerequisite",
-      "strength": 0.3
+      "strength": 0.8
+    },
+    {
+      "source_id": "tree-of-thought",
+      "target_id": "agent-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "agent-loop",
+      "target_id": "multi-agent",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "agent-planning",
+      "target_id": "multi-agent",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "agent-overview",
+      "target_id": "agent-evaluation",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "tool-use",
+      "target_id": "autogen-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "multi-agent",
+      "target_id": "autogen-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "multi-agent",
+      "target_id": "crewai-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "agent-overview",
+      "target_id": "agent-safety",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "prompt-injection",
+      "target_id": "agent-safety",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "tool-use",
+      "target_id": "code-generation",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "tool-use",
+      "target_id": "browser-agent",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "multi-agent",
+      "target_id": "agent-orchestration",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "agent-overview",
+      "target_id": "human-in-the-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "agent-orchestration",
+      "target_id": "agent-deployment",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ci-cd",
+      "target_id": "agent-deployment",
+      "relation_type": "prerequisite",
+      "strength": 0.4
+    },
+    {
+      "source_id": "agent-orchestration",
+      "target_id": "ai-application-arch",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "system-design-basics",
+      "target_id": "ai-application-arch",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "multi-agent",
+      "target_id": "autonomous-agents",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "agent-planning",
+      "target_id": "autonomous-agents",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "agentic-rag",
+      "target_id": "autonomous-agents",
+      "relation_type": "prerequisite",
+      "strength": 0.5
     },
     {
       "source_id": "stack",
@@ -4685,6 +6030,34 @@
       "strength": 0.7
     },
     {
+      "source_id": "bert-model",
+      "target_id": "gpt-model",
+      "relation_type": "related_to",
+      "sub_type": "contrast",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rlhf",
+      "target_id": "dpo",
+      "relation_type": "related_to",
+      "sub_type": "contrast",
+      "strength": 0.8
+    },
+    {
+      "source_id": "langchain-basics",
+      "target_id": "llamaindex-basics",
+      "relation_type": "related_to",
+      "sub_type": "contrast",
+      "strength": 0.7
+    },
+    {
+      "source_id": "autogen-framework",
+      "target_id": "crewai-framework",
+      "relation_type": "related_to",
+      "sub_type": "contrast",
+      "strength": 0.7
+    },
+    {
       "source_id": "iteration-vs-recursion",
       "target_id": "dynamic-programming",
       "relation_type": "related_to",
@@ -4703,13 +6076,6 @@
       "target_id": "bst",
       "relation_type": "related_to",
       "sub_type": "analogy",
-      "strength": 0.7
-    },
-    {
-      "source_id": "graph-ds",
-      "target_id": "knowledge-graph",
-      "relation_type": "related_to",
-      "sub_type": "application",
       "strength": 0.7
     },
     {
@@ -4741,25 +6107,74 @@
       "strength": 0.7
     },
     {
-      "source_id": "tdd",
-      "target_id": "clean-code",
+      "source_id": "vector-database",
+      "target_id": "similarity-search",
       "relation_type": "related_to",
       "sub_type": "application",
-      "strength": 0.6
+      "strength": 0.8
     },
     {
-      "source_id": "rag-basics",
-      "target_id": "knowledge-graph",
+      "source_id": "knowledge-graph-rag",
+      "target_id": "graph-database-ai",
+      "relation_type": "related_to",
+      "sub_type": "application",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "agent-memory",
       "relation_type": "related_to",
       "sub_type": "application",
       "strength": 0.7
     },
     {
-      "source_id": "db-indexing",
-      "target_id": "binary-tree",
+      "source_id": "tool-use",
+      "target_id": "mcp-protocol",
       "relation_type": "related_to",
       "sub_type": "application",
+      "strength": 0.8
+    },
+    {
+      "source_id": "react-prompting",
+      "target_id": "agent-loop",
+      "relation_type": "related_to",
+      "sub_type": "analogy",
+      "strength": 0.8
+    },
+    {
+      "source_id": "chain-of-thought",
+      "target_id": "agent-planning",
+      "relation_type": "related_to",
+      "sub_type": "application",
+      "strength": 0.7
+    },
+    {
+      "source_id": "multi-agent",
+      "target_id": "agent-orchestration",
+      "relation_type": "related_to",
+      "sub_type": "application",
+      "strength": 0.8
+    },
+    {
+      "source_id": "code-generation",
+      "target_id": "browser-agent",
+      "relation_type": "related_to",
+      "sub_type": "contrast",
       "strength": 0.6
+    },
+    {
+      "source_id": "lora-peft",
+      "target_id": "rlhf",
+      "relation_type": "related_to",
+      "sub_type": "contrast",
+      "strength": 0.6
+    },
+    {
+      "source_id": "quantization",
+      "target_id": "llm-inference",
+      "relation_type": "related_to",
+      "sub_type": "application",
+      "strength": 0.7
     },
     {
       "source_id": "web-performance",
@@ -4777,9 +6192,9 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-03-13T03:40:23.988757+00:00",
-    "total_concepts": 221,
-    "total_edges": 258,
+    "generated_at": "2026-03-13T05:16:41.113866+00:00",
+    "total_concepts": 267,
+    "total_edges": 334,
     "subdomain_counts": {
       "cs-fundamentals": 12,
       "programming-basics": 20,
@@ -4791,19 +6206,22 @@
       "database": 16,
       "devops": 14,
       "system-design": 15,
-      "ai-ml": 21,
-      "software-engineering": 18
+      "ai-foundations": 18,
+      "llm-core": 20,
+      "prompt-engineering": 14,
+      "rag-knowledge": 15,
+      "agent-systems": 18
     },
     "difficulty_distribution": {
       "1": 11,
       "2": 17,
-      "3": 35,
-      "4": 44,
-      "5": 53,
-      "6": 31,
-      "7": 24,
-      "9": 1,
-      "8": 5
+      "3": 32,
+      "4": 42,
+      "5": 58,
+      "6": 44,
+      "7": 42,
+      "9": 3,
+      "8": 18
     }
   }
 }
