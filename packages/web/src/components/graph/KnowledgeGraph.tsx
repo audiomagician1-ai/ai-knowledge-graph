@@ -71,10 +71,10 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
             'text-halign': 'center',
             'font-size': '9px',
             'font-family': 'system-ui, -apple-system, sans-serif',
-            'color': '#cbd5e1',
+            'color': '#8893a7',
             'text-margin-y': 6,
             'text-outline-width': 2,
-            'text-outline-color': '#0f172a',
+            'text-outline-color': '#06090f',
             'width': 'mapData(difficulty, 1, 9, 20, 40)',
             'height': 'mapData(difficulty, 1, 9, 20, 40)',
             'background-color': (ele: cytoscape.NodeSingular) => {
@@ -82,7 +82,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
               return SUBDOMAIN_COLORS[sd] || '#6366f1';
             },
             'border-width': 1,
-            'border-color': '#1e293b',
+            'border-color': '#131c2e',
             'opacity': 0.85,
           } as cytoscape.Css.Node,
         },
@@ -96,7 +96,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
             'font-size': '11px',
             'font-weight': 'bold',
             'color': '#fde68a',
-            'text-outline-color': '#1e293b',
+            'text-outline-color': '#06090f',
             'width': 'mapData(difficulty, 1, 9, 28, 48)',
             'height': 'mapData(difficulty, 1, 9, 28, 48)',
             'shadow-blur': 15,
@@ -137,8 +137,8 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
           selector: 'edge',
           style: {
             'width': 'mapData(strength, 0.3, 1.0, 0.5, 2)',
-            'line-color': '#334155',
-            'target-arrow-color': '#334155',
+            'line-color': '#1a2540',
+            'target-arrow-color': '#1a2540',
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier',
             'arrow-scale': 0.6,
@@ -149,8 +149,8 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
         {
           selector: 'edge[relation_type = "prerequisite"]',
           style: {
-            'line-color': '#475569',
-            'target-arrow-color': '#475569',
+            'line-color': '#213054',
+            'target-arrow-color': '#213054',
           } as cytoscape.Css.Edge,
         },
         // Related edge (dashed)
@@ -158,7 +158,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
           selector: 'edge[relation_type = "related_to"]',
           style: {
             'line-style': 'dashed',
-            'line-color': '#4b5563',
+            'line-color': '#1a2540',
             'target-arrow-shape': 'none',
             'opacity': 0.25,
           } as cytoscape.Css.Edge,
@@ -278,7 +278,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     <div
       ref={containerRef}
       className="w-full h-full"
-      style={{ backgroundColor: '#0f172a' }}
+      style={{ backgroundColor: 'var(--color-surface-0, #06090f)' }}
     />
   );
 }
