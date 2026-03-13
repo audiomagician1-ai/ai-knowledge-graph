@@ -22,12 +22,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
+    chunkSizeWarningLimit: 1200, // Three.js is large; lazy-loaded only on graph page
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
           ui: ['framer-motion', 'lucide-react'],
-          graph: ['cytoscape'],
+          three: ['three'],
+          graph: ['3d-force-graph'],
         },
       },
     },
