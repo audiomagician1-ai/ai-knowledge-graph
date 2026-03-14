@@ -140,13 +140,13 @@ export function GraphPage() {
         <div className="absolute top-0 right-0 bottom-0 z-20 animate-slide-in-right" style={{ width: '50%' }}>
           <div className="h-full flex flex-col" style={{ backgroundColor: 'var(--color-surface-1)', borderLeft: '1px solid var(--color-border)' }}>
             {/* Header */}
-            <div className="px-8 py-6 shrink-0 flex items-start justify-between gap-4" style={{ borderBottom: '1px solid var(--color-border)' }}>
+            <div className="px-8 py-7 shrink-0 flex items-start justify-between gap-4" style={{ borderBottom: '1px solid var(--color-border)' }}>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2.5 mb-2">
+                <div className="flex items-center gap-3 mb-3">
                   {selectedNode!.is_milestone && <Star size={16} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
                   <h3 className="text-lg font-bold truncate">{selectedNode!.label}</h3>
                 </div>
-                <div className="flex items-center gap-3 flex-wrap">
+                <div className="flex items-center gap-4 flex-wrap">
                   {(() => { const diff = difficultyLabel(selectedNode!.difficulty); return (
                     <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1 text-sm font-medium" style={{ backgroundColor: diff.color + '14', color: diff.color }}>
                       Lv.{selectedNode!.difficulty} {diff.text}
@@ -256,7 +256,7 @@ export function GraphPage() {
             background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)',
             border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 12px 48px rgba(0,0,0,0.1)',
           }}>
-            <div className="px-5 py-4 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+             <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="flex items-center gap-2">
                 <Compass size={15} style={{ color: 'var(--color-accent-primary)' }} />
                 <span className="text-sm font-semibold">推荐学习路径</span>
@@ -274,7 +274,7 @@ export function GraphPage() {
                   <button key={rec.concept_id} onClick={() => {
                     const node = enrichedGraphData?.nodes.find(n => n.id === rec.concept_id);
                     if (node) { selectNode(node); setShowRecommend(false); }
-                  }} className="w-full text-left px-5 py-4 flex items-start gap-4 transition-colors"
+                  }} className="w-full text-left px-6 py-5 flex items-start gap-4 transition-colors"
                     style={{ borderBottom: '1px solid rgba(0,0,0,0.04)' }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.03)')}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>

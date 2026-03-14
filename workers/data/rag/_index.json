@@ -1,0 +1,3831 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-03-13T20:58:06",
+  "total_concepts": 267,
+  "documents": [
+    {
+      "id": "binary-system",
+      "name": "二进制与数制",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "数学"
+      ],
+      "file": "cs-fundamentals/binary-system.md",
+      "exists": true,
+      "char_count": 3692
+    },
+    {
+      "id": "boolean-logic",
+      "name": "布尔逻辑",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "逻辑"
+      ],
+      "file": "cs-fundamentals/boolean-logic.md",
+      "exists": true,
+      "char_count": 3491
+    },
+    {
+      "id": "how-computer-works",
+      "name": "计算机如何工作",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "硬件"
+      ],
+      "file": "cs-fundamentals/how-computer-works.md",
+      "exists": true,
+      "char_count": 3766
+    },
+    {
+      "id": "memory-model",
+      "name": "内存模型",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "内存"
+      ],
+      "file": "cs-fundamentals/memory-model.md",
+      "exists": true,
+      "char_count": 3530
+    },
+    {
+      "id": "cpu-execution",
+      "name": "CPU执行原理",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "硬件"
+      ],
+      "file": "cs-fundamentals/cpu-execution.md",
+      "exists": true,
+      "char_count": 3570
+    },
+    {
+      "id": "os-basics",
+      "name": "操作系统基础",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "OS"
+      ],
+      "file": "cs-fundamentals/os-basics.md",
+      "exists": true,
+      "char_count": 3622
+    },
+    {
+      "id": "file-system",
+      "name": "文件系统",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "OS"
+      ],
+      "file": "cs-fundamentals/file-system.md",
+      "exists": true,
+      "char_count": 3486
+    },
+    {
+      "id": "network-basics",
+      "name": "网络基础",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "网络"
+      ],
+      "file": "cs-fundamentals/network-basics.md",
+      "exists": true,
+      "char_count": 3520
+    },
+    {
+      "id": "tcp-ip",
+      "name": "TCP/IP协议",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "网络",
+        "协议"
+      ],
+      "file": "cs-fundamentals/tcp-ip.md",
+      "exists": true,
+      "char_count": 3481
+    },
+    {
+      "id": "http-protocol",
+      "name": "HTTP协议",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "网络",
+        "Web"
+      ],
+      "file": "cs-fundamentals/http-protocol.md",
+      "exists": true,
+      "char_count": 3615
+    },
+    {
+      "id": "character-encoding",
+      "name": "字符编码(ASCII/UTF-8)",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础",
+        "编码"
+      ],
+      "file": "cs-fundamentals/character-encoding.md",
+      "exists": true,
+      "char_count": 3805
+    },
+    {
+      "id": "command-line",
+      "name": "命令行基础",
+      "subdomain_id": "cs-fundamentals",
+      "subdomain_name": "计算机基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "工具",
+        "终端"
+      ],
+      "file": "cs-fundamentals/command-line.md",
+      "exists": true,
+      "char_count": 3662
+    },
+    {
+      "id": "what-is-programming",
+      "name": "什么是编程",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "入门"
+      ],
+      "file": "programming-basics/what-is-programming.md",
+      "exists": true,
+      "char_count": 3566
+    },
+    {
+      "id": "variables",
+      "name": "变量与数据类型",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "programming-basics/variables.md",
+      "exists": true,
+      "char_count": 3942
+    },
+    {
+      "id": "operators",
+      "name": "运算符",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "programming-basics/operators.md",
+      "exists": true,
+      "char_count": 3438
+    },
+    {
+      "id": "conditionals",
+      "name": "条件判断(if/else)",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "控制流"
+      ],
+      "file": "programming-basics/conditionals.md",
+      "exists": true,
+      "char_count": 3676
+    },
+    {
+      "id": "loops",
+      "name": "循环(for/while)",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "控制流"
+      ],
+      "file": "programming-basics/loops.md",
+      "exists": true,
+      "char_count": 3660
+    },
+    {
+      "id": "functions",
+      "name": "函数",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "模块化"
+      ],
+      "file": "programming-basics/functions.md",
+      "exists": true,
+      "char_count": 3878
+    },
+    {
+      "id": "scope",
+      "name": "作用域",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "programming-basics/scope.md",
+      "exists": true,
+      "char_count": 3354
+    },
+    {
+      "id": "strings",
+      "name": "字符串操作",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数据类型"
+      ],
+      "file": "programming-basics/strings.md",
+      "exists": true,
+      "char_count": 3579
+    },
+    {
+      "id": "arrays-lists",
+      "name": "数组/列表",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数据类型"
+      ],
+      "file": "programming-basics/arrays-lists.md",
+      "exists": true,
+      "char_count": 3878
+    },
+    {
+      "id": "dictionaries-maps",
+      "name": "字典/映射",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数据类型"
+      ],
+      "file": "programming-basics/dictionaries-maps.md",
+      "exists": true,
+      "char_count": 3515
+    },
+    {
+      "id": "input-output",
+      "name": "输入与输出",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "programming-basics/input-output.md",
+      "exists": true,
+      "char_count": 3543
+    },
+    {
+      "id": "error-handling",
+      "name": "错误处理(try/catch)",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "鲁棒性"
+      ],
+      "file": "programming-basics/error-handling.md",
+      "exists": true,
+      "char_count": 3718
+    },
+    {
+      "id": "recursion",
+      "name": "递归",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "算法思维"
+      ],
+      "file": "programming-basics/recursion.md",
+      "exists": true,
+      "char_count": 3802
+    },
+    {
+      "id": "modules-imports",
+      "name": "模块与导入",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "模块化"
+      ],
+      "file": "programming-basics/modules-imports.md",
+      "exists": true,
+      "char_count": 3551
+    },
+    {
+      "id": "type-system",
+      "name": "类型系统(静态vs动态)",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "语言设计"
+      ],
+      "file": "programming-basics/type-system.md",
+      "exists": true,
+      "char_count": 3892
+    },
+    {
+      "id": "debugging-basics",
+      "name": "调试基础",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "programming-basics/debugging-basics.md",
+      "exists": true,
+      "char_count": 3506
+    },
+    {
+      "id": "code-style",
+      "name": "代码规范与风格",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工程"
+      ],
+      "file": "programming-basics/code-style.md",
+      "exists": true,
+      "char_count": 3698
+    },
+    {
+      "id": "hello-world",
+      "name": "Hello World",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "入门"
+      ],
+      "file": "programming-basics/hello-world.md",
+      "exists": true,
+      "char_count": 3486
+    },
+    {
+      "id": "comments",
+      "name": "注释",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "programming-basics/comments.md",
+      "exists": true,
+      "char_count": 3302
+    },
+    {
+      "id": "iteration-vs-recursion",
+      "name": "迭代vs递归",
+      "subdomain_id": "programming-basics",
+      "subdomain_name": "编程基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法思维"
+      ],
+      "file": "programming-basics/iteration-vs-recursion.md",
+      "exists": true,
+      "char_count": 3492
+    },
+    {
+      "id": "array-internals",
+      "name": "数组内部原理",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "线性"
+      ],
+      "file": "data-structures/array-internals.md",
+      "exists": true,
+      "char_count": 3589
+    },
+    {
+      "id": "linked-list",
+      "name": "链表",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "线性"
+      ],
+      "file": "data-structures/linked-list.md",
+      "exists": true,
+      "char_count": 3356
+    },
+    {
+      "id": "stack",
+      "name": "栈",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "线性",
+        "LIFO"
+      ],
+      "file": "data-structures/stack.md",
+      "exists": true,
+      "char_count": 3282
+    },
+    {
+      "id": "queue",
+      "name": "队列",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "线性",
+        "FIFO"
+      ],
+      "file": "data-structures/queue.md",
+      "exists": true,
+      "char_count": 3381
+    },
+    {
+      "id": "deque",
+      "name": "双端队列",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "线性"
+      ],
+      "file": "data-structures/deque.md",
+      "exists": true,
+      "char_count": 3421
+    },
+    {
+      "id": "hash-table",
+      "name": "哈希表",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "映射"
+      ],
+      "file": "data-structures/hash-table.md",
+      "exists": true,
+      "char_count": 3629
+    },
+    {
+      "id": "set-data-structure",
+      "name": "集合",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "集合论"
+      ],
+      "file": "data-structures/set-data-structure.md",
+      "exists": true,
+      "char_count": 3319
+    },
+    {
+      "id": "binary-tree",
+      "name": "二叉树",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [
+        "树"
+      ],
+      "file": "data-structures/binary-tree.md",
+      "exists": true,
+      "char_count": 3692
+    },
+    {
+      "id": "bst",
+      "name": "二叉搜索树(BST)",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "树",
+        "搜索"
+      ],
+      "file": "data-structures/bst.md",
+      "exists": true,
+      "char_count": 3625
+    },
+    {
+      "id": "avl-tree",
+      "name": "AVL树",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "树",
+        "平衡"
+      ],
+      "file": "data-structures/avl-tree.md",
+      "exists": true,
+      "char_count": 3347
+    },
+    {
+      "id": "red-black-tree",
+      "name": "红黑树",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "树",
+        "平衡"
+      ],
+      "file": "data-structures/red-black-tree.md",
+      "exists": true,
+      "char_count": 3368
+    },
+    {
+      "id": "heap",
+      "name": "堆(优先队列)",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "树",
+        "排序"
+      ],
+      "file": "data-structures/heap.md",
+      "exists": true,
+      "char_count": 3563
+    },
+    {
+      "id": "trie",
+      "name": "字典树(Trie)",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "树",
+        "字符串"
+      ],
+      "file": "data-structures/trie.md",
+      "exists": true,
+      "char_count": 3508
+    },
+    {
+      "id": "graph-ds",
+      "name": "图(数据结构)",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "图"
+      ],
+      "file": "data-structures/graph-ds.md",
+      "exists": true,
+      "char_count": 3886
+    },
+    {
+      "id": "adjacency-matrix",
+      "name": "邻接矩阵",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "图"
+      ],
+      "file": "data-structures/adjacency-matrix.md",
+      "exists": true,
+      "char_count": 3462
+    },
+    {
+      "id": "adjacency-list",
+      "name": "邻接表",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "图"
+      ],
+      "file": "data-structures/adjacency-list.md",
+      "exists": true,
+      "char_count": 3391
+    },
+    {
+      "id": "disjoint-set",
+      "name": "并查集",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "图",
+        "集合"
+      ],
+      "file": "data-structures/disjoint-set.md",
+      "exists": true,
+      "char_count": 3437
+    },
+    {
+      "id": "bloom-filter",
+      "name": "布隆过滤器",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "概率"
+      ],
+      "file": "data-structures/bloom-filter.md",
+      "exists": true,
+      "char_count": 3506
+    },
+    {
+      "id": "skip-list",
+      "name": "跳表",
+      "subdomain_id": "data-structures",
+      "subdomain_name": "数据结构",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "概率",
+        "线性"
+      ],
+      "file": "data-structures/skip-list.md",
+      "exists": true,
+      "char_count": 3297
+    },
+    {
+      "id": "time-complexity",
+      "name": "时间复杂度(Big-O)",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "algorithms/time-complexity.md",
+      "exists": true,
+      "char_count": 3824
+    },
+    {
+      "id": "space-complexity",
+      "name": "空间复杂度",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "algorithms/space-complexity.md",
+      "exists": true,
+      "char_count": 3507
+    },
+    {
+      "id": "bubble-sort",
+      "name": "冒泡排序",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "排序"
+      ],
+      "file": "algorithms/bubble-sort.md",
+      "exists": true,
+      "char_count": 3406
+    },
+    {
+      "id": "selection-sort",
+      "name": "选择排序",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "排序"
+      ],
+      "file": "algorithms/selection-sort.md",
+      "exists": true,
+      "char_count": 3409
+    },
+    {
+      "id": "insertion-sort",
+      "name": "插入排序",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "排序"
+      ],
+      "file": "algorithms/insertion-sort.md",
+      "exists": true,
+      "char_count": 3409
+    },
+    {
+      "id": "merge-sort",
+      "name": "归并排序",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "排序",
+        "分治"
+      ],
+      "file": "algorithms/merge-sort.md",
+      "exists": true,
+      "char_count": 3431
+    },
+    {
+      "id": "quick-sort",
+      "name": "快速排序",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "排序",
+        "分治"
+      ],
+      "file": "algorithms/quick-sort.md",
+      "exists": true,
+      "char_count": 3431
+    },
+    {
+      "id": "heap-sort",
+      "name": "堆排序",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "排序"
+      ],
+      "file": "algorithms/heap-sort.md",
+      "exists": true,
+      "char_count": 3348
+    },
+    {
+      "id": "counting-sort",
+      "name": "计数排序",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "排序"
+      ],
+      "file": "algorithms/counting-sort.md",
+      "exists": true,
+      "char_count": 3409
+    },
+    {
+      "id": "binary-search",
+      "name": "二分查找",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "搜索"
+      ],
+      "file": "algorithms/binary-search.md",
+      "exists": true,
+      "char_count": 3635
+    },
+    {
+      "id": "bfs",
+      "name": "广度优先搜索(BFS)",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "图",
+        "搜索"
+      ],
+      "file": "algorithms/bfs.md",
+      "exists": true,
+      "char_count": 3732
+    },
+    {
+      "id": "dfs",
+      "name": "深度优先搜索(DFS)",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "图",
+        "搜索"
+      ],
+      "file": "algorithms/dfs.md",
+      "exists": true,
+      "char_count": 3731
+    },
+    {
+      "id": "dijkstra",
+      "name": "Dijkstra最短路径",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "图",
+        "最短路"
+      ],
+      "file": "algorithms/dijkstra.md",
+      "exists": true,
+      "char_count": 3658
+    },
+    {
+      "id": "bellman-ford",
+      "name": "Bellman-Ford算法",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "图",
+        "最短路"
+      ],
+      "file": "algorithms/bellman-ford.md",
+      "exists": true,
+      "char_count": 3577
+    },
+    {
+      "id": "topological-sort",
+      "name": "拓扑排序",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "图",
+        "DAG"
+      ],
+      "file": "algorithms/topological-sort.md",
+      "exists": true,
+      "char_count": 3446
+    },
+    {
+      "id": "kruskal-mst",
+      "name": "Kruskal最小生成树",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "图"
+      ],
+      "file": "algorithms/kruskal-mst.md",
+      "exists": true,
+      "char_count": 3622
+    },
+    {
+      "id": "two-pointers",
+      "name": "双指针",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "algorithms/two-pointers.md",
+      "exists": true,
+      "char_count": 3357
+    },
+    {
+      "id": "sliding-window",
+      "name": "滑动窗口",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "algorithms/sliding-window.md",
+      "exists": true,
+      "char_count": 3398
+    },
+    {
+      "id": "divide-conquer",
+      "name": "分治法",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "范式"
+      ],
+      "file": "algorithms/divide-conquer.md",
+      "exists": true,
+      "char_count": 3368
+    },
+    {
+      "id": "greedy",
+      "name": "贪心算法",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "范式"
+      ],
+      "file": "algorithms/greedy.md",
+      "exists": true,
+      "char_count": 3429
+    },
+    {
+      "id": "dynamic-programming",
+      "name": "动态规划",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 7,
+      "is_milestone": true,
+      "tags": [
+        "范式"
+      ],
+      "file": "algorithms/dynamic-programming.md",
+      "exists": true,
+      "char_count": 3673
+    },
+    {
+      "id": "dp-memoization",
+      "name": "记忆化搜索",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "DP"
+      ],
+      "file": "algorithms/dp-memoization.md",
+      "exists": true,
+      "char_count": 3499
+    },
+    {
+      "id": "dp-tabulation",
+      "name": "DP表格法",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "DP"
+      ],
+      "file": "algorithms/dp-tabulation.md",
+      "exists": true,
+      "char_count": 3379
+    },
+    {
+      "id": "backtracking",
+      "name": "回溯法",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "范式"
+      ],
+      "file": "algorithms/backtracking.md",
+      "exists": true,
+      "char_count": 3396
+    },
+    {
+      "id": "bit-manipulation",
+      "name": "位运算技巧",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "algorithms/bit-manipulation.md",
+      "exists": true,
+      "char_count": 3496
+    },
+    {
+      "id": "string-matching",
+      "name": "字符串匹配(KMP)",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "字符串"
+      ],
+      "file": "algorithms/string-matching.md",
+      "exists": true,
+      "char_count": 3604
+    },
+    {
+      "id": "graph-coloring",
+      "name": "图着色",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "图"
+      ],
+      "file": "algorithms/graph-coloring.md",
+      "exists": true,
+      "char_count": 3350
+    },
+    {
+      "id": "np-completeness",
+      "name": "NP完全性",
+      "subdomain_id": "algorithms",
+      "subdomain_name": "算法",
+      "difficulty": 9,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "algorithms/np-completeness.md",
+      "exists": true,
+      "char_count": 3415
+    },
+    {
+      "id": "class-object",
+      "name": "类与对象",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "OOP"
+      ],
+      "file": "oop/class-object.md",
+      "exists": true,
+      "char_count": 3634
+    },
+    {
+      "id": "encapsulation",
+      "name": "封装",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "OOP"
+      ],
+      "file": "oop/encapsulation.md",
+      "exists": true,
+      "char_count": 3329
+    },
+    {
+      "id": "inheritance",
+      "name": "继承",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "OOP"
+      ],
+      "file": "oop/inheritance.md",
+      "exists": true,
+      "char_count": 3376
+    },
+    {
+      "id": "polymorphism",
+      "name": "多态",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "OOP"
+      ],
+      "file": "oop/polymorphism.md",
+      "exists": true,
+      "char_count": 3311
+    },
+    {
+      "id": "abstraction",
+      "name": "抽象",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "OOP"
+      ],
+      "file": "oop/abstraction.md",
+      "exists": true,
+      "char_count": 3334
+    },
+    {
+      "id": "interface",
+      "name": "接口",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "OOP"
+      ],
+      "file": "oop/interface.md",
+      "exists": true,
+      "char_count": 3324
+    },
+    {
+      "id": "composition-vs-inheritance",
+      "name": "组合优于继承",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "oop/composition-vs-inheritance.md",
+      "exists": true,
+      "char_count": 3604
+    },
+    {
+      "id": "design-patterns-intro",
+      "name": "设计模式概述",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "oop/design-patterns-intro.md",
+      "exists": true,
+      "char_count": 3791
+    },
+    {
+      "id": "singleton",
+      "name": "单例模式",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "设计模式"
+      ],
+      "file": "oop/singleton.md",
+      "exists": true,
+      "char_count": 3491
+    },
+    {
+      "id": "factory-pattern",
+      "name": "工厂模式",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "设计模式"
+      ],
+      "file": "oop/factory-pattern.md",
+      "exists": true,
+      "char_count": 3497
+    },
+    {
+      "id": "observer-pattern",
+      "name": "观察者模式",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "设计模式"
+      ],
+      "file": "oop/observer-pattern.md",
+      "exists": true,
+      "char_count": 3567
+    },
+    {
+      "id": "strategy-pattern",
+      "name": "策略模式",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "设计模式"
+      ],
+      "file": "oop/strategy-pattern.md",
+      "exists": true,
+      "char_count": 3498
+    },
+    {
+      "id": "decorator-pattern",
+      "name": "装饰器模式",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "设计模式"
+      ],
+      "file": "oop/decorator-pattern.md",
+      "exists": true,
+      "char_count": 3568
+    },
+    {
+      "id": "mvc-pattern",
+      "name": "MVC模式",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "oop/mvc-pattern.md",
+      "exists": true,
+      "char_count": 3418
+    },
+    {
+      "id": "solid-principles",
+      "name": "SOLID原则",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 6,
+      "is_milestone": true,
+      "tags": [
+        "设计"
+      ],
+      "file": "oop/solid-principles.md",
+      "exists": true,
+      "char_count": 3678
+    },
+    {
+      "id": "dependency-injection",
+      "name": "依赖注入",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "oop/dependency-injection.md",
+      "exists": true,
+      "char_count": 3475
+    },
+    {
+      "id": "generics",
+      "name": "泛型",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "类型系统"
+      ],
+      "file": "oop/generics.md",
+      "exists": true,
+      "char_count": 3382
+    },
+    {
+      "id": "enum",
+      "name": "枚举类型",
+      "subdomain_id": "oop",
+      "subdomain_name": "面向对象编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据类型"
+      ],
+      "file": "oop/enum.md",
+      "exists": true,
+      "char_count": 3467
+    },
+    {
+      "id": "html-basics",
+      "name": "HTML基础",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "Web"
+      ],
+      "file": "web-frontend/html-basics.md",
+      "exists": true,
+      "char_count": 3493
+    },
+    {
+      "id": "css-basics",
+      "name": "CSS基础",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "Web",
+        "样式"
+      ],
+      "file": "web-frontend/css-basics.md",
+      "exists": true,
+      "char_count": 3440
+    },
+    {
+      "id": "css-layout",
+      "name": "CSS布局(Flex/Grid)",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "布局"
+      ],
+      "file": "web-frontend/css-layout.md",
+      "exists": true,
+      "char_count": 3621
+    },
+    {
+      "id": "css-responsive",
+      "name": "响应式设计",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "移动端"
+      ],
+      "file": "web-frontend/css-responsive.md",
+      "exists": true,
+      "char_count": 3535
+    },
+    {
+      "id": "javascript-basics",
+      "name": "JavaScript基础",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "JS"
+      ],
+      "file": "web-frontend/javascript-basics.md",
+      "exists": true,
+      "char_count": 3661
+    },
+    {
+      "id": "dom-manipulation",
+      "name": "DOM操作",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "JS",
+        "浏览器"
+      ],
+      "file": "web-frontend/dom-manipulation.md",
+      "exists": true,
+      "char_count": 3474
+    },
+    {
+      "id": "event-handling",
+      "name": "事件处理",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "JS"
+      ],
+      "file": "web-frontend/event-handling.md",
+      "exists": true,
+      "char_count": 3469
+    },
+    {
+      "id": "async-js",
+      "name": "异步JavaScript(Promise/async)",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "JS",
+        "异步"
+      ],
+      "file": "web-frontend/async-js.md",
+      "exists": true,
+      "char_count": 3981
+    },
+    {
+      "id": "fetch-api",
+      "name": "Fetch API与网络请求",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "JS",
+        "网络"
+      ],
+      "file": "web-frontend/fetch-api.md",
+      "exists": true,
+      "char_count": 3800
+    },
+    {
+      "id": "react-basics",
+      "name": "React基础",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "React"
+      ],
+      "file": "web-frontend/react-basics.md",
+      "exists": true,
+      "char_count": 3567
+    },
+    {
+      "id": "react-hooks",
+      "name": "React Hooks",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [
+        "React"
+      ],
+      "file": "web-frontend/react-hooks.md",
+      "exists": true,
+      "char_count": 3652
+    },
+    {
+      "id": "react-state",
+      "name": "React状态管理",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "React"
+      ],
+      "file": "web-frontend/react-state.md",
+      "exists": true,
+      "char_count": 3535
+    },
+    {
+      "id": "component-lifecycle",
+      "name": "组件生命周期",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "React"
+      ],
+      "file": "web-frontend/component-lifecycle.md",
+      "exists": true,
+      "char_count": 3566
+    },
+    {
+      "id": "virtual-dom",
+      "name": "虚拟DOM原理",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "React",
+        "性能"
+      ],
+      "file": "web-frontend/virtual-dom.md",
+      "exists": true,
+      "char_count": 3575
+    },
+    {
+      "id": "spa-routing",
+      "name": "SPA路由",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "Web"
+      ],
+      "file": "web-frontend/spa-routing.md",
+      "exists": true,
+      "char_count": 3349
+    },
+    {
+      "id": "typescript-basics",
+      "name": "TypeScript基础",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "TS"
+      ],
+      "file": "web-frontend/typescript-basics.md",
+      "exists": true,
+      "char_count": 3661
+    },
+    {
+      "id": "ts-advanced-types",
+      "name": "TypeScript高级类型",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "TS"
+      ],
+      "file": "web-frontend/ts-advanced-types.md",
+      "exists": true,
+      "char_count": 3668
+    },
+    {
+      "id": "css-in-js",
+      "name": "CSS-in-JS / TailwindCSS",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "样式"
+      ],
+      "file": "web-frontend/css-in-js.md",
+      "exists": true,
+      "char_count": 3666
+    },
+    {
+      "id": "web-accessibility",
+      "name": "Web无障碍(a11y)",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "web-frontend/web-accessibility.md",
+      "exists": true,
+      "char_count": 3562
+    },
+    {
+      "id": "web-performance",
+      "name": "前端性能优化",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "性能"
+      ],
+      "file": "web-frontend/web-performance.md",
+      "exists": true,
+      "char_count": 3647
+    },
+    {
+      "id": "bundler-basics",
+      "name": "打包工具(Webpack/Vite)",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "工具链"
+      ],
+      "file": "web-frontend/bundler-basics.md",
+      "exists": true,
+      "char_count": 3761
+    },
+    {
+      "id": "browser-rendering",
+      "name": "浏览器渲染原理",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "浏览器"
+      ],
+      "file": "web-frontend/browser-rendering.md",
+      "exists": true,
+      "char_count": 3661
+    },
+    {
+      "id": "pwa-basics",
+      "name": "PWA基础",
+      "subdomain_id": "web-frontend",
+      "subdomain_name": "Web前端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "移动端"
+      ],
+      "file": "web-frontend/pwa-basics.md",
+      "exists": true,
+      "char_count": 3366
+    },
+    {
+      "id": "server-basics",
+      "name": "服务器基础概念",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "后端"
+      ],
+      "file": "web-backend/server-basics.md",
+      "exists": true,
+      "char_count": 3908
+    },
+    {
+      "id": "restful-api",
+      "name": "RESTful API设计",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "API"
+      ],
+      "file": "web-backend/restful-api.md",
+      "exists": true,
+      "char_count": 4059
+    },
+    {
+      "id": "api-authentication",
+      "name": "API认证(JWT/OAuth)",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "安全"
+      ],
+      "file": "web-backend/api-authentication.md",
+      "exists": true,
+      "char_count": 3647
+    },
+    {
+      "id": "middleware",
+      "name": "中间件",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "web-backend/middleware.md",
+      "exists": true,
+      "char_count": 3380
+    },
+    {
+      "id": "session-cookie",
+      "name": "Session与Cookie",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "状态"
+      ],
+      "file": "web-backend/session-cookie.md",
+      "exists": true,
+      "char_count": 3512
+    },
+    {
+      "id": "websocket",
+      "name": "WebSocket实时通信",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "网络"
+      ],
+      "file": "web-backend/websocket.md",
+      "exists": true,
+      "char_count": 3715
+    },
+    {
+      "id": "graphql-basics",
+      "name": "GraphQL基础",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "API"
+      ],
+      "file": "web-backend/graphql-basics.md",
+      "exists": true,
+      "char_count": 3461
+    },
+    {
+      "id": "server-side-rendering",
+      "name": "服务端渲染(SSR)",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "web-backend/server-side-rendering.md",
+      "exists": true,
+      "char_count": 3698
+    },
+    {
+      "id": "cors",
+      "name": "CORS跨域",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "安全"
+      ],
+      "file": "web-backend/cors.md",
+      "exists": true,
+      "char_count": 3364
+    },
+    {
+      "id": "rate-limiting",
+      "name": "限流策略",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "安全"
+      ],
+      "file": "web-backend/rate-limiting.md",
+      "exists": true,
+      "char_count": 3473
+    },
+    {
+      "id": "file-upload",
+      "name": "文件上传处理",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "API"
+      ],
+      "file": "web-backend/file-upload.md",
+      "exists": true,
+      "char_count": 3573
+    },
+    {
+      "id": "logging-monitoring",
+      "name": "日志与监控",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "运维"
+      ],
+      "file": "web-backend/logging-monitoring.md",
+      "exists": true,
+      "char_count": 3550
+    },
+    {
+      "id": "error-handling-backend",
+      "name": "后端错误处理",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "鲁棒性"
+      ],
+      "file": "web-backend/error-handling-backend.md",
+      "exists": true,
+      "char_count": 3608
+    },
+    {
+      "id": "caching-strategies",
+      "name": "缓存策略",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "性能"
+      ],
+      "file": "web-backend/caching-strategies.md",
+      "exists": true,
+      "char_count": 3517
+    },
+    {
+      "id": "message-queue",
+      "name": "消息队列",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "web-backend/message-queue.md",
+      "exists": true,
+      "char_count": 3470
+    },
+    {
+      "id": "microservices-intro",
+      "name": "微服务入门",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "web-backend/microservices-intro.md",
+      "exists": true,
+      "char_count": 3593
+    },
+    {
+      "id": "serverless",
+      "name": "Serverless架构",
+      "subdomain_id": "web-backend",
+      "subdomain_name": "Web后端",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "web-backend/serverless.md",
+      "exists": true,
+      "char_count": 3541
+    },
+    {
+      "id": "db-basics",
+      "name": "数据库基本概念",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据库"
+      ],
+      "file": "database/db-basics.md",
+      "exists": true,
+      "char_count": 3862
+    },
+    {
+      "id": "sql-basics",
+      "name": "SQL基础(CRUD)",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "SQL"
+      ],
+      "file": "database/sql-basics.md",
+      "exists": true,
+      "char_count": 3635
+    },
+    {
+      "id": "sql-joins",
+      "name": "SQL JOIN查询",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "SQL"
+      ],
+      "file": "database/sql-joins.md",
+      "exists": true,
+      "char_count": 3488
+    },
+    {
+      "id": "sql-aggregation",
+      "name": "SQL聚合与分组",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "SQL"
+      ],
+      "file": "database/sql-aggregation.md",
+      "exists": true,
+      "char_count": 3568
+    },
+    {
+      "id": "sql-subquery",
+      "name": "SQL子查询",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "SQL"
+      ],
+      "file": "database/sql-subquery.md",
+      "exists": true,
+      "char_count": 3424
+    },
+    {
+      "id": "db-normalization",
+      "name": "数据库范式",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "database/db-normalization.md",
+      "exists": true,
+      "char_count": 3521
+    },
+    {
+      "id": "db-indexing",
+      "name": "索引原理与优化",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 6,
+      "is_milestone": true,
+      "tags": [
+        "性能"
+      ],
+      "file": "database/db-indexing.md",
+      "exists": true,
+      "char_count": 3881
+    },
+    {
+      "id": "db-transactions",
+      "name": "事务(ACID)",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "一致性"
+      ],
+      "file": "database/db-transactions.md",
+      "exists": true,
+      "char_count": 3502
+    },
+    {
+      "id": "orm-basics",
+      "name": "ORM基础",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "database/orm-basics.md",
+      "exists": true,
+      "char_count": 3359
+    },
+    {
+      "id": "nosql-intro",
+      "name": "NoSQL概述",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "数据库"
+      ],
+      "file": "database/nosql-intro.md",
+      "exists": true,
+      "char_count": 3583
+    },
+    {
+      "id": "mongodb-basics",
+      "name": "MongoDB基础",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "NoSQL"
+      ],
+      "file": "database/mongodb-basics.md",
+      "exists": true,
+      "char_count": 3442
+    },
+    {
+      "id": "redis-basics",
+      "name": "Redis基础",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "缓存"
+      ],
+      "file": "database/redis-basics.md",
+      "exists": true,
+      "char_count": 3395
+    },
+    {
+      "id": "graph-database",
+      "name": "图数据库(Neo4j)",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "图"
+      ],
+      "file": "database/graph-database.md",
+      "exists": true,
+      "char_count": 3638
+    },
+    {
+      "id": "db-replication",
+      "name": "数据库复制",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "分布式"
+      ],
+      "file": "database/db-replication.md",
+      "exists": true,
+      "char_count": 3513
+    },
+    {
+      "id": "db-sharding",
+      "name": "分库分表",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "分布式"
+      ],
+      "file": "database/db-sharding.md",
+      "exists": true,
+      "char_count": 3432
+    },
+    {
+      "id": "db-migration",
+      "name": "数据库迁移",
+      "subdomain_id": "database",
+      "subdomain_name": "数据库",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "运维"
+      ],
+      "file": "database/db-migration.md",
+      "exists": true,
+      "char_count": 3499
+    },
+    {
+      "id": "git-basics",
+      "name": "Git基础",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "版本控制"
+      ],
+      "file": "devops/git-basics.md",
+      "exists": true,
+      "char_count": 3404
+    },
+    {
+      "id": "git-branching",
+      "name": "Git分支策略",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "版本控制"
+      ],
+      "file": "devops/git-branching.md",
+      "exists": true,
+      "char_count": 3539
+    },
+    {
+      "id": "git-workflow",
+      "name": "Git工作流(GitFlow)",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "devops/git-workflow.md",
+      "exists": true,
+      "char_count": 3681
+    },
+    {
+      "id": "ci-cd",
+      "name": "CI/CD持续集成",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "自动化"
+      ],
+      "file": "devops/ci-cd.md",
+      "exists": true,
+      "char_count": 3609
+    },
+    {
+      "id": "docker-basics",
+      "name": "Docker基础",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "容器"
+      ],
+      "file": "devops/docker-basics.md",
+      "exists": true,
+      "char_count": 3523
+    },
+    {
+      "id": "docker-compose-concept",
+      "name": "Docker Compose",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "容器"
+      ],
+      "file": "devops/docker-compose-concept.md",
+      "exists": true,
+      "char_count": 3519
+    },
+    {
+      "id": "kubernetes-intro",
+      "name": "Kubernetes入门",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "编排"
+      ],
+      "file": "devops/kubernetes-intro.md",
+      "exists": true,
+      "char_count": 3539
+    },
+    {
+      "id": "linux-basics",
+      "name": "Linux基础命令",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "运维"
+      ],
+      "file": "devops/linux-basics.md",
+      "exists": true,
+      "char_count": 3606
+    },
+    {
+      "id": "shell-scripting",
+      "name": "Shell脚本",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "自动化"
+      ],
+      "file": "devops/shell-scripting.md",
+      "exists": true,
+      "char_count": 3435
+    },
+    {
+      "id": "cloud-basics",
+      "name": "云服务基础(AWS/GCP)",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "云"
+      ],
+      "file": "devops/cloud-basics.md",
+      "exists": true,
+      "char_count": 3737
+    },
+    {
+      "id": "monitoring-alerting",
+      "name": "监控与告警",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "运维"
+      ],
+      "file": "devops/monitoring-alerting.md",
+      "exists": true,
+      "char_count": 3522
+    },
+    {
+      "id": "infra-as-code",
+      "name": "基础设施即代码",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "自动化"
+      ],
+      "file": "devops/infra-as-code.md",
+      "exists": true,
+      "char_count": 3648
+    },
+    {
+      "id": "ssl-tls",
+      "name": "SSL/TLS与HTTPS",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "安全"
+      ],
+      "file": "devops/ssl-tls.md",
+      "exists": true,
+      "char_count": 3495
+    },
+    {
+      "id": "environment-variables",
+      "name": "环境变量管理",
+      "subdomain_id": "devops",
+      "subdomain_name": "开发运维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "配置"
+      ],
+      "file": "devops/environment-variables.md",
+      "exists": true,
+      "char_count": 3592
+    },
+    {
+      "id": "system-design-basics",
+      "name": "系统设计入门",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 6,
+      "is_milestone": true,
+      "tags": [
+        "设计"
+      ],
+      "file": "system-design/system-design-basics.md",
+      "exists": true,
+      "char_count": 4126
+    },
+    {
+      "id": "scalability",
+      "name": "可扩展性",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "system-design/scalability.md",
+      "exists": true,
+      "char_count": 3479
+    },
+    {
+      "id": "load-balancing",
+      "name": "负载均衡",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "system-design/load-balancing.md",
+      "exists": true,
+      "char_count": 3446
+    },
+    {
+      "id": "cap-theorem",
+      "name": "CAP定理",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "分布式"
+      ],
+      "file": "system-design/cap-theorem.md",
+      "exists": true,
+      "char_count": 3401
+    },
+    {
+      "id": "consistency-patterns",
+      "name": "一致性模型",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "分布式"
+      ],
+      "file": "system-design/consistency-patterns.md",
+      "exists": true,
+      "char_count": 3515
+    },
+    {
+      "id": "event-driven-arch",
+      "name": "事件驱动架构",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "system-design/event-driven-arch.md",
+      "exists": true,
+      "char_count": 3587
+    },
+    {
+      "id": "api-gateway",
+      "name": "API网关",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "system-design/api-gateway.md",
+      "exists": true,
+      "char_count": 3383
+    },
+    {
+      "id": "service-discovery",
+      "name": "服务发现",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "微服务"
+      ],
+      "file": "system-design/service-discovery.md",
+      "exists": true,
+      "char_count": 3461
+    },
+    {
+      "id": "circuit-breaker",
+      "name": "熔断器模式",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "容错"
+      ],
+      "file": "system-design/circuit-breaker.md",
+      "exists": true,
+      "char_count": 3525
+    },
+    {
+      "id": "distributed-cache",
+      "name": "分布式缓存",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "性能"
+      ],
+      "file": "system-design/distributed-cache.md",
+      "exists": true,
+      "char_count": 3518
+    },
+    {
+      "id": "cdn",
+      "name": "CDN内容分发",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "性能"
+      ],
+      "file": "system-design/cdn.md",
+      "exists": true,
+      "char_count": 3504
+    },
+    {
+      "id": "design-url-shortener",
+      "name": "设计短链接系统",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "system-design/design-url-shortener.md",
+      "exists": true,
+      "char_count": 3677
+    },
+    {
+      "id": "design-chat-system",
+      "name": "设计聊天系统",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "system-design/design-chat-system.md",
+      "exists": true,
+      "char_count": 3678
+    },
+    {
+      "id": "design-rate-limiter",
+      "name": "设计限流器",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "system-design/design-rate-limiter.md",
+      "exists": true,
+      "char_count": 3583
+    },
+    {
+      "id": "twelve-factor-app",
+      "name": "12-Factor App",
+      "subdomain_id": "system-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "system-design/twelve-factor-app.md",
+      "exists": true,
+      "char_count": 3493
+    },
+    {
+      "id": "ai-overview",
+      "name": "人工智能概述",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "ai-foundations/ai-overview.md",
+      "exists": true,
+      "char_count": 3614
+    },
+    {
+      "id": "ml-basics",
+      "name": "机器学习基础",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/ml-basics.md",
+      "exists": true,
+      "char_count": 3726
+    },
+    {
+      "id": "supervised-learning",
+      "name": "监督学习",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/supervised-learning.md",
+      "exists": true,
+      "char_count": 3514
+    },
+    {
+      "id": "unsupervised-learning",
+      "name": "无监督学习",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/unsupervised-learning.md",
+      "exists": true,
+      "char_count": 3513
+    },
+    {
+      "id": "linear-regression",
+      "name": "线性回归",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/linear-regression.md",
+      "exists": true,
+      "char_count": 3452
+    },
+    {
+      "id": "logistic-regression",
+      "name": "逻辑回归",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/logistic-regression.md",
+      "exists": true,
+      "char_count": 3424
+    },
+    {
+      "id": "decision-tree",
+      "name": "决策树",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/decision-tree.md",
+      "exists": true,
+      "char_count": 3349
+    },
+    {
+      "id": "neural-network-basics",
+      "name": "神经网络基础",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 6,
+      "is_milestone": true,
+      "tags": [
+        "DL"
+      ],
+      "file": "ai-foundations/neural-network-basics.md",
+      "exists": true,
+      "char_count": 3925
+    },
+    {
+      "id": "deep-learning-intro",
+      "name": "深度学习入门",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 7,
+      "is_milestone": true,
+      "tags": [
+        "DL"
+      ],
+      "file": "ai-foundations/deep-learning-intro.md",
+      "exists": true,
+      "char_count": 3899
+    },
+    {
+      "id": "cnn-basics",
+      "name": "卷积神经网络(CNN)",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "DL",
+        "视觉"
+      ],
+      "file": "ai-foundations/cnn-basics.md",
+      "exists": true,
+      "char_count": 3726
+    },
+    {
+      "id": "rnn-basics",
+      "name": "循环神经网络(RNN)",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "DL",
+        "序列"
+      ],
+      "file": "ai-foundations/rnn-basics.md",
+      "exists": true,
+      "char_count": 3720
+    },
+    {
+      "id": "ml-evaluation",
+      "name": "模型评估指标",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/ml-evaluation.md",
+      "exists": true,
+      "char_count": 3610
+    },
+    {
+      "id": "overfitting",
+      "name": "过拟合与正则化",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/overfitting.md",
+      "exists": true,
+      "char_count": 3641
+    },
+    {
+      "id": "feature-engineering",
+      "name": "特征工程",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "ML"
+      ],
+      "file": "ai-foundations/feature-engineering.md",
+      "exists": true,
+      "char_count": 3442
+    },
+    {
+      "id": "gradient-descent",
+      "name": "梯度下降与优化",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "DL"
+      ],
+      "file": "ai-foundations/gradient-descent.md",
+      "exists": true,
+      "char_count": 3688
+    },
+    {
+      "id": "loss-functions",
+      "name": "损失函数",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "DL"
+      ],
+      "file": "ai-foundations/loss-functions.md",
+      "exists": true,
+      "char_count": 3473
+    },
+    {
+      "id": "backpropagation",
+      "name": "反向传播",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "DL"
+      ],
+      "file": "ai-foundations/backpropagation.md",
+      "exists": true,
+      "char_count": 3447
+    },
+    {
+      "id": "pytorch-basics",
+      "name": "PyTorch基础",
+      "subdomain_id": "ai-foundations",
+      "subdomain_name": "AI基础",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "ai-foundations/pytorch-basics.md",
+      "exists": true,
+      "char_count": 3491
+    },
+    {
+      "id": "attention-mechanism",
+      "name": "注意力机制",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "DL",
+        "NLP"
+      ],
+      "file": "llm-core/attention-mechanism.md",
+      "exists": true,
+      "char_count": 5485
+    },
+    {
+      "id": "transformer-architecture",
+      "name": "Transformer架构",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 8,
+      "is_milestone": true,
+      "tags": [
+        "DL",
+        "NLP"
+      ],
+      "file": "llm-core/transformer-architecture.md",
+      "exists": true,
+      "char_count": 4101
+    },
+    {
+      "id": "self-attention",
+      "name": "自注意力与多头注意力",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "Transformer"
+      ],
+      "file": "llm-core/self-attention.md",
+      "exists": true,
+      "char_count": 3947
+    },
+    {
+      "id": "positional-encoding",
+      "name": "位置编码",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Transformer"
+      ],
+      "file": "llm-core/positional-encoding.md",
+      "exists": true,
+      "char_count": 3484
+    },
+    {
+      "id": "bert-model",
+      "name": "BERT与编码器模型",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "NLP"
+      ],
+      "file": "llm-core/bert-model.md",
+      "exists": true,
+      "char_count": 3697
+    },
+    {
+      "id": "gpt-model",
+      "name": "GPT与解码器模型",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 8,
+      "is_milestone": true,
+      "tags": [
+        "LLM"
+      ],
+      "file": "llm-core/gpt-model.md",
+      "exists": true,
+      "char_count": 4194
+    },
+    {
+      "id": "llm-pretraining",
+      "name": "LLM预训练",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "LLM"
+      ],
+      "file": "llm-core/llm-pretraining.md",
+      "exists": true,
+      "char_count": 3630
+    },
+    {
+      "id": "tokenization",
+      "name": "分词与Tokenization",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "NLP"
+      ],
+      "file": "llm-core/tokenization.md",
+      "exists": true,
+      "char_count": 3676
+    },
+    {
+      "id": "llm-scaling-laws",
+      "name": "LLM缩放定律",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "LLM"
+      ],
+      "file": "llm-core/llm-scaling-laws.md",
+      "exists": true,
+      "char_count": 3563
+    },
+    {
+      "id": "llm-inference",
+      "name": "LLM推理优化",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "LLM",
+        "性能"
+      ],
+      "file": "llm-core/llm-inference.md",
+      "exists": true,
+      "char_count": 3572
+    },
+    {
+      "id": "quantization",
+      "name": "模型量化(GPTQ/AWQ)",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "LLM",
+        "部署"
+      ],
+      "file": "llm-core/quantization.md",
+      "exists": true,
+      "char_count": 3703
+    },
+    {
+      "id": "fine-tuning-overview",
+      "name": "微调概述(SFT/RLHF)",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "LLM"
+      ],
+      "file": "llm-core/fine-tuning-overview.md",
+      "exists": true,
+      "char_count": 3798
+    },
+    {
+      "id": "lora-peft",
+      "name": "LoRA与参数高效微调",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 7,
+      "is_milestone": true,
+      "tags": [
+        "LLM",
+        "微调"
+      ],
+      "file": "llm-core/lora-peft.md",
+      "exists": true,
+      "char_count": 4017
+    },
+    {
+      "id": "rlhf",
+      "name": "RLHF人类反馈强化学习",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 9,
+      "is_milestone": true,
+      "tags": [
+        "LLM",
+        "对齐"
+      ],
+      "file": "llm-core/rlhf.md",
+      "exists": true,
+      "char_count": 4117
+    },
+    {
+      "id": "dpo",
+      "name": "DPO直接偏好优化",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "LLM",
+        "对齐"
+      ],
+      "file": "llm-core/dpo.md",
+      "exists": true,
+      "char_count": 3710
+    },
+    {
+      "id": "multimodal-models",
+      "name": "多模态大模型",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "LLM",
+        "视觉"
+      ],
+      "file": "llm-core/multimodal-models.md",
+      "exists": true,
+      "char_count": 3730
+    },
+    {
+      "id": "llm-evaluation",
+      "name": "LLM评估方法",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "LLM"
+      ],
+      "file": "llm-core/llm-evaluation.md",
+      "exists": true,
+      "char_count": 3525
+    },
+    {
+      "id": "open-source-llm",
+      "name": "开源LLM生态(Llama/Qwen/DeepSeek)",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "LLM"
+      ],
+      "file": "llm-core/open-source-llm.md",
+      "exists": true,
+      "char_count": 4036
+    },
+    {
+      "id": "context-window",
+      "name": "上下文窗口与长文本",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "LLM"
+      ],
+      "file": "llm-core/context-window.md",
+      "exists": true,
+      "char_count": 3828
+    },
+    {
+      "id": "mixture-of-experts",
+      "name": "MoE混合专家模型",
+      "subdomain_id": "llm-core",
+      "subdomain_name": "大模型核心",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "LLM",
+        "架构"
+      ],
+      "file": "llm-core/mixture-of-experts.md",
+      "exists": true,
+      "char_count": 3746
+    },
+    {
+      "id": "prompt-basics",
+      "name": "提示词基础",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "Prompt"
+      ],
+      "file": "prompt-engineering/prompt-basics.md",
+      "exists": true,
+      "char_count": 3871
+    },
+    {
+      "id": "zero-shot",
+      "name": "零样本提示",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "Prompt"
+      ],
+      "file": "prompt-engineering/zero-shot.md",
+      "exists": true,
+      "char_count": 3523
+    },
+    {
+      "id": "few-shot",
+      "name": "少样本提示",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "Prompt"
+      ],
+      "file": "prompt-engineering/few-shot.md",
+      "exists": true,
+      "char_count": 3545
+    },
+    {
+      "id": "chain-of-thought",
+      "name": "思维链(CoT)",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [
+        "Prompt"
+      ],
+      "file": "prompt-engineering/chain-of-thought.md",
+      "exists": true,
+      "char_count": 3901
+    },
+    {
+      "id": "self-consistency",
+      "name": "自一致性采样",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "Prompt"
+      ],
+      "file": "prompt-engineering/self-consistency.md",
+      "exists": true,
+      "char_count": 3597
+    },
+    {
+      "id": "tree-of-thought",
+      "name": "思维树(ToT)",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Prompt"
+      ],
+      "file": "prompt-engineering/tree-of-thought.md",
+      "exists": true,
+      "char_count": 3538
+    },
+    {
+      "id": "react-prompting",
+      "name": "ReAct推理+行动",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 6,
+      "is_milestone": true,
+      "tags": [
+        "Prompt",
+        "Agent"
+      ],
+      "file": "prompt-engineering/react-prompting.md",
+      "exists": true,
+      "char_count": 3854
+    },
+    {
+      "id": "structured-output",
+      "name": "结构化输出(JSON Mode)",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "Prompt",
+        "API"
+      ],
+      "file": "prompt-engineering/structured-output.md",
+      "exists": true,
+      "char_count": 3846
+    },
+    {
+      "id": "system-prompt-design",
+      "name": "System Prompt设计",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "Prompt"
+      ],
+      "file": "prompt-engineering/system-prompt-design.md",
+      "exists": true,
+      "char_count": 3627
+    },
+    {
+      "id": "prompt-injection",
+      "name": "提示注入攻防",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "安全"
+      ],
+      "file": "prompt-engineering/prompt-injection.md",
+      "exists": true,
+      "char_count": 3634
+    },
+    {
+      "id": "prompt-optimization",
+      "name": "提示词自动优化(DSPy)",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Prompt"
+      ],
+      "file": "prompt-engineering/prompt-optimization.md",
+      "exists": true,
+      "char_count": 3807
+    },
+    {
+      "id": "llm-api-usage",
+      "name": "LLM API调用(OpenAI/Claude)",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "API"
+      ],
+      "file": "prompt-engineering/llm-api-usage.md",
+      "exists": true,
+      "char_count": 3962
+    },
+    {
+      "id": "temperature-sampling",
+      "name": "Temperature与采样策略",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "LLM"
+      ],
+      "file": "prompt-engineering/temperature-sampling.md",
+      "exists": true,
+      "char_count": 3824
+    },
+    {
+      "id": "token-economics",
+      "name": "Token经济与成本优化",
+      "subdomain_id": "prompt-engineering",
+      "subdomain_name": "Prompt工程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "prompt-engineering/token-economics.md",
+      "exists": true,
+      "char_count": 3822
+    },
+    {
+      "id": "rag-overview",
+      "name": "RAG检索增强生成概述",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "RAG"
+      ],
+      "file": "rag-knowledge/rag-overview.md",
+      "exists": true,
+      "char_count": 4099
+    },
+    {
+      "id": "text-embedding",
+      "name": "文本嵌入(Embedding)",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "NLP",
+        "RAG"
+      ],
+      "file": "rag-knowledge/text-embedding.md",
+      "exists": true,
+      "char_count": 3878
+    },
+    {
+      "id": "vector-database",
+      "name": "向量数据库(Pinecone/Milvus)",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "数据库",
+        "RAG"
+      ],
+      "file": "rag-knowledge/vector-database.md",
+      "exists": true,
+      "char_count": 3968
+    },
+    {
+      "id": "chunking-strategies",
+      "name": "文档分块策略",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "RAG"
+      ],
+      "file": "rag-knowledge/chunking-strategies.md",
+      "exists": true,
+      "char_count": 3673
+    },
+    {
+      "id": "similarity-search",
+      "name": "相似度搜索与重排",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "RAG"
+      ],
+      "file": "rag-knowledge/similarity-search.md",
+      "exists": true,
+      "char_count": 3863
+    },
+    {
+      "id": "hybrid-search",
+      "name": "混合检索(向量+关键词)",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "RAG"
+      ],
+      "file": "rag-knowledge/hybrid-search.md",
+      "exists": true,
+      "char_count": 3910
+    },
+    {
+      "id": "rag-pipeline",
+      "name": "RAG管道架构",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 7,
+      "is_milestone": true,
+      "tags": [
+        "RAG",
+        "架构"
+      ],
+      "file": "rag-knowledge/rag-pipeline.md",
+      "exists": true,
+      "char_count": 4026
+    },
+    {
+      "id": "rag-evaluation",
+      "name": "RAG评估(Ragas)",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "RAG"
+      ],
+      "file": "rag-knowledge/rag-evaluation.md",
+      "exists": true,
+      "char_count": 3562
+    },
+    {
+      "id": "knowledge-graph-rag",
+      "name": "知识图谱+RAG",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 8,
+      "is_milestone": true,
+      "tags": [
+        "RAG",
+        "图"
+      ],
+      "file": "rag-knowledge/knowledge-graph-rag.md",
+      "exists": true,
+      "char_count": 3897
+    },
+    {
+      "id": "multimodal-rag",
+      "name": "多模态RAG",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "RAG",
+        "多模态"
+      ],
+      "file": "rag-knowledge/multimodal-rag.md",
+      "exists": true,
+      "char_count": 3546
+    },
+    {
+      "id": "document-parsing",
+      "name": "文档解析(PDF/HTML/OCR)",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "RAG"
+      ],
+      "file": "rag-knowledge/document-parsing.md",
+      "exists": true,
+      "char_count": 3830
+    },
+    {
+      "id": "langchain-basics",
+      "name": "LangChain基础",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "rag-knowledge/langchain-basics.md",
+      "exists": true,
+      "char_count": 3580
+    },
+    {
+      "id": "llamaindex-basics",
+      "name": "LlamaIndex基础",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "rag-knowledge/llamaindex-basics.md",
+      "exists": true,
+      "char_count": 3604
+    },
+    {
+      "id": "graph-database-ai",
+      "name": "图数据库在AI中的应用",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "图",
+        "RAG"
+      ],
+      "file": "rag-knowledge/graph-database-ai.md",
+      "exists": true,
+      "char_count": 3945
+    },
+    {
+      "id": "agentic-rag",
+      "name": "Agentic RAG",
+      "subdomain_id": "rag-knowledge",
+      "subdomain_name": "RAG与知识库",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "RAG",
+        "Agent"
+      ],
+      "file": "rag-knowledge/agentic-rag.md",
+      "exists": true,
+      "char_count": 3481
+    },
+    {
+      "id": "agent-overview",
+      "name": "AI Agent概述",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "Agent"
+      ],
+      "file": "agent-systems/agent-overview.md",
+      "exists": true,
+      "char_count": 3802
+    },
+    {
+      "id": "agent-loop",
+      "name": "Agent循环(感知-推理-行动)",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "Agent"
+      ],
+      "file": "agent-systems/agent-loop.md",
+      "exists": true,
+      "char_count": 4110
+    },
+    {
+      "id": "tool-use",
+      "name": "工具调用(Function Calling)",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 6,
+      "is_milestone": true,
+      "tags": [
+        "Agent",
+        "API"
+      ],
+      "file": "agent-systems/tool-use.md",
+      "exists": true,
+      "char_count": 4379
+    },
+    {
+      "id": "mcp-protocol",
+      "name": "MCP模型上下文协议",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 7,
+      "is_milestone": true,
+      "tags": [
+        "Agent",
+        "协议"
+      ],
+      "file": "agent-systems/mcp-protocol.md",
+      "exists": true,
+      "char_count": 4064
+    },
+    {
+      "id": "agent-memory",
+      "name": "Agent记忆系统",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Agent"
+      ],
+      "file": "agent-systems/agent-memory.md",
+      "exists": true,
+      "char_count": 3669
+    },
+    {
+      "id": "agent-planning",
+      "name": "Agent规划与分解",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Agent"
+      ],
+      "file": "agent-systems/agent-planning.md",
+      "exists": true,
+      "char_count": 3811
+    },
+    {
+      "id": "multi-agent",
+      "name": "多Agent协作系统",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 8,
+      "is_milestone": true,
+      "tags": [
+        "Agent"
+      ],
+      "file": "agent-systems/multi-agent.md",
+      "exists": true,
+      "char_count": 4121
+    },
+    {
+      "id": "agent-evaluation",
+      "name": "Agent评估与基准测试",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Agent"
+      ],
+      "file": "agent-systems/agent-evaluation.md",
+      "exists": true,
+      "char_count": 3769
+    },
+    {
+      "id": "autogen-framework",
+      "name": "AutoGen框架",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "Agent",
+        "工具"
+      ],
+      "file": "agent-systems/autogen-framework.md",
+      "exists": true,
+      "char_count": 3598
+    },
+    {
+      "id": "crewai-framework",
+      "name": "CrewAI框架",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "Agent",
+        "工具"
+      ],
+      "file": "agent-systems/crewai-framework.md",
+      "exists": true,
+      "char_count": 3475
+    },
+    {
+      "id": "agent-safety",
+      "name": "Agent安全与对齐",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "Agent",
+        "安全"
+      ],
+      "file": "agent-systems/agent-safety.md",
+      "exists": true,
+      "char_count": 3700
+    },
+    {
+      "id": "code-generation",
+      "name": "代码生成Agent",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Agent",
+        "编程"
+      ],
+      "file": "agent-systems/code-generation.md",
+      "exists": true,
+      "char_count": 3619
+    },
+    {
+      "id": "browser-agent",
+      "name": "浏览器Agent",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Agent",
+        "Web"
+      ],
+      "file": "agent-systems/browser-agent.md",
+      "exists": true,
+      "char_count": 3545
+    },
+    {
+      "id": "agent-orchestration",
+      "name": "Agent编排与工作流",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 8,
+      "is_milestone": true,
+      "tags": [
+        "Agent",
+        "架构"
+      ],
+      "file": "agent-systems/agent-orchestration.md",
+      "exists": true,
+      "char_count": 4038
+    },
+    {
+      "id": "human-in-the-loop",
+      "name": "人在回路(HITL)",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "Agent",
+        "安全"
+      ],
+      "file": "agent-systems/human-in-the-loop.md",
+      "exists": true,
+      "char_count": 3596
+    },
+    {
+      "id": "agent-deployment",
+      "name": "Agent部署与监控",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "Agent",
+        "DevOps"
+      ],
+      "file": "agent-systems/agent-deployment.md",
+      "exists": true,
+      "char_count": 3728
+    },
+    {
+      "id": "ai-application-arch",
+      "name": "AI应用架构设计",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "Agent",
+        "架构"
+      ],
+      "file": "agent-systems/ai-application-arch.md",
+      "exists": true,
+      "char_count": 3734
+    },
+    {
+      "id": "autonomous-agents",
+      "name": "自主Agent前沿",
+      "subdomain_id": "agent-systems",
+      "subdomain_name": "Agent系统",
+      "difficulty": 9,
+      "is_milestone": true,
+      "tags": [
+        "Agent",
+        "前沿"
+      ],
+      "file": "agent-systems/autonomous-agents.md",
+      "exists": true,
+      "char_count": 3929
+    }
+  ],
+  "stats": {
+    "by_subdomain": {
+      "cs-fundamentals": 12,
+      "programming-basics": 20,
+      "data-structures": 19,
+      "algorithms": 28,
+      "oop": 18,
+      "web-frontend": 23,
+      "web-backend": 17,
+      "database": 16,
+      "devops": 14,
+      "system-design": 15,
+      "ai-foundations": 18,
+      "llm-core": 20,
+      "prompt-engineering": 14,
+      "rag-knowledge": 15,
+      "agent-systems": 18
+    },
+    "total_docs": 267,
+    "total_chars": 966317
+  }
+}

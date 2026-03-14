@@ -94,10 +94,10 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
     return (
       <div className="flex flex-col h-full">
         <div
-          className="flex items-center justify-between px-6 py-4 shrink-0"
+          className="flex items-center justify-between px-8 py-6 shrink-0"
           style={{ borderBottom: '1px solid var(--color-border)' }}
         >
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             <History size={18} style={{ color: 'var(--color-accent-primary)' }} />
             <span className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>
               "{conceptName}" 的对话记录
@@ -119,11 +119,11 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               <p className="text-base" style={{ color: 'var(--color-text-tertiary)' }}>暂无对话记录</p>
             </div>
           ) : (
-            <div className="p-3 space-y-2">
+            <div className="p-4 space-y-3">
               {conceptConvHistory.map((conv) => (
                 <div
                   key={conv.conversationId}
-                  className="group flex items-center gap-4 rounded-xl px-5 py-4 cursor-pointer transition-all"
+                  className="group flex items-center gap-4 rounded-xl px-6 py-5 cursor-pointer transition-all"
                   style={{ border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-2)' }}
                   onClick={() => { loadSavedConversation(conv.conversationId); setView('chat'); }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--color-border-accent)'; }}
@@ -168,13 +168,13 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   if (view === 'idle') {
     return (
       <div className="flex flex-col h-full">
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        <div className="flex-1 overflow-y-auto px-8 py-8 space-y-8">
           {/* Per-node mastery card */}
           <div
-            className="rounded-lg p-6"
+            className="rounded-xl p-7"
             style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-4 mb-6">
                 <div
                 className="w-10 h-10 rounded-md flex items-center justify-center shrink-0"
                 style={{
@@ -206,27 +206,27 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
             {/* Per-node stats */}
             <div className="grid grid-cols-3 gap-4">
-              <div className="text-center rounded-lg py-3" style={{ backgroundColor: 'var(--color-surface-3)' }}>
-                <div className="text-xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: 'var(--color-surface-3)' }}>
+                <div className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
                   {nodeProgress?.sessions || 0}
                 </div>
-                <div className="text-sm mt-1" style={{ color: 'var(--color-text-tertiary)' }}>学习次数</div>
+                <div className="text-sm mt-2" style={{ color: 'var(--color-text-tertiary)' }}>学习次数</div>
               </div>
-              <div className="text-center rounded-lg py-3" style={{ backgroundColor: 'var(--color-surface-3)' }}>
-                <div className="text-lg font-bold" style={{
+              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: 'var(--color-surface-3)' }}>
+                <div className="text-2xl font-bold" style={{
                   color: nodeProgress?.mastery_score
                     ? (nodeProgress.mastery_score >= 75 ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)')
                     : 'var(--color-text-tertiary)',
                 }}>
                   {nodeProgress?.mastery_score || '—'}
                 </div>
-                <div className="text-sm mt-1" style={{ color: 'var(--color-text-tertiary)' }}>最高分</div>
+                <div className="text-sm mt-2" style={{ color: 'var(--color-text-tertiary)' }}>最高分</div>
               </div>
-              <div className="text-center rounded-lg py-3" style={{ backgroundColor: 'var(--color-surface-3)' }}>
-                <div className="text-xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: 'var(--color-surface-3)' }}>
+                <div className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
                   {conceptConvHistory.length}
                 </div>
-                <div className="text-sm mt-1" style={{ color: 'var(--color-text-tertiary)' }}>对话记录</div>
+                <div className="text-sm mt-2" style={{ color: 'var(--color-text-tertiary)' }}>对话记录</div>
               </div>
             </div>
           </div>
@@ -234,7 +234,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
           {/* Recent history preview (last 3) */}
           {conceptConvHistory.length > 0 && (
             <div>
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-5">
                 <span className="text-sm font-bold" style={{ color: 'var(--color-text-secondary)' }}>
                   最近对话
                 </span>
@@ -247,11 +247,11 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                   <History size={14} />
                 </button>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {conceptConvHistory.slice(0, 3).map((conv) => (
                   <div
                     key={conv.conversationId}
-                    className="flex items-center gap-3 rounded-lg px-4 py-3 cursor-pointer transition-all"
+                    className="flex items-center gap-4 rounded-xl px-5 py-4 cursor-pointer transition-all"
                     style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
                     onClick={() => { loadSavedConversation(conv.conversationId); setView('chat'); }}
                     onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--color-border-accent)'; }}
@@ -280,7 +280,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
         </div>
 
         {/* Start learning button */}
-        <div className="shrink-0 p-6" style={{ borderTop: '1px solid var(--color-border)' }}>
+        <div className="shrink-0 px-8 py-7" style={{ borderTop: '1px solid var(--color-border)' }}>
           <button
             onClick={handleStartLearning}
             className="btn-primary w-full flex items-center justify-center gap-3 py-4 text-lg font-bold"
@@ -288,7 +288,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
             <Play size={20} />
             开始学习
           </button>
-          <p className="text-sm mt-3 text-center" style={{ color: 'var(--color-text-tertiary)' }}>
+          <p className="text-sm mt-4 text-center" style={{ color: 'var(--color-text-tertiary)' }}>
             AI 将根据你的掌握程度讲解并提问
           </p>
         </div>
@@ -301,7 +301,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
     <div className="flex flex-col h-full relative">
       {/* Chat header */}
       <div
-        className="flex items-center gap-3 px-6 py-4 shrink-0"
+        className="flex items-center gap-3 px-8 py-5 shrink-0"
         style={{ borderBottom: '1px solid var(--color-border)' }}
       >
             <Brain size={18} style={{ color: 'var(--color-accent-primary)' }} />
@@ -334,7 +334,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
       {/* Messages area */}
       <div className="flex-1 overflow-y-auto">
-        <div className="px-6 py-5 space-y-5">
+        <div className="px-8 py-6 space-y-6">
           {/* Messages */}
           {messages.map((msg) => (
             <div
@@ -384,7 +384,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
       </div>
 
       {/* Input area */}
-      <div className="shrink-0 px-6 py-4" style={{ borderTop: '1px solid var(--color-border)' }}>
+      <div className="shrink-0 px-8 py-5" style={{ borderTop: '1px solid var(--color-border)' }}>
         {assessment ? (
           <div className="flex gap-3">
             <button

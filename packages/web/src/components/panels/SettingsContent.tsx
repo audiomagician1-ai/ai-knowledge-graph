@@ -37,10 +37,10 @@ export function SettingsContent() {
   const info = PROVIDER_INFO[llmConfig.provider];
 
   return (
-    <div className="p-7 space-y-6">
+    <div className="px-8 py-8 space-y-7">
       {/* Provider */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+        <label className="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
           <Server size={12} /> 服务商
         </label>
         <div className="grid grid-cols-4 gap-3">
@@ -60,18 +60,18 @@ export function SettingsContent() {
             );
           })}
         </div>
-        <p className="text-sm mt-2.5" style={{ color: 'var(--color-text-tertiary)' }}>{info.hint}</p>
+        <p className="text-sm mt-3" style={{ color: 'var(--color-text-tertiary)' }}>{info.hint}</p>
       </div>
 
       {/* API Key */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+        <label className="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
           <Key size={12} /> API Key
         </label>
         <div className="flex items-center rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}>
           <input type={showKey ? 'text' : 'password'} value={llmConfig.apiKey}
             onChange={(e) => setLLMConfig({ apiKey: e.target.value })} placeholder={info.placeholder}
-            className="flex-1 bg-transparent px-5 py-3.5 text-sm outline-none font-mono" style={{ color: 'var(--color-text-primary)', border: 'none' }} />
+            className="flex-1 bg-transparent px-5 py-4 text-sm outline-none font-mono" style={{ color: 'var(--color-text-primary)', border: 'none' }} />
           <button onClick={() => setShowKey(!showKey)} className="px-3 shrink-0" style={{ color: 'var(--color-text-tertiary)' }}>
             {showKey ? <EyeOff size={15} /> : <Eye size={15} />}
           </button>
@@ -81,24 +81,24 @@ export function SettingsContent() {
 
       {/* Base URL */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+        <label className="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
           <Globe size={12} /> API Base URL
         </label>
         <input type="text" value={llmConfig.baseUrl || ''} onChange={(e) => setLLMConfig({ baseUrl: e.target.value })}
           placeholder={info.defaultBase || 'https://your-api.example.com/v1'}
-          className="w-full rounded-xl px-5 py-3.5 text-sm font-mono outline-none"
+          className="w-full rounded-xl px-5 py-4 text-sm font-mono outline-none"
           style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
       </div>
 
       {/* Model */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+        <label className="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
           <Box size={12} /> 模型名称
         </label>
         <input type="text" value={llmConfig.model || ''}
           onChange={(e) => setLLMConfig({ model: e.target.value })}
           placeholder={llmConfig.provider === 'openrouter' ? 'openai/gpt-4o' : llmConfig.provider === 'openai' ? 'gpt-4o' : llmConfig.provider === 'deepseek' ? 'deepseek-chat' : 'model-name'}
-          className="w-full rounded-xl px-5 py-3.5 text-sm font-mono outline-none"
+          className="w-full rounded-xl px-5 py-4 text-sm font-mono outline-none"
           style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
       </div>
 
@@ -124,12 +124,12 @@ export function SettingsContent() {
       )}
 
       {/* About */}
-      <div className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-2)' }}>
-        <div className="flex items-center gap-2 mb-4">
+      <div className="rounded-xl p-6" style={{ backgroundColor: 'var(--color-surface-2)' }}>
+        <div className="flex items-center gap-2.5 mb-5">
           <Info size={14} style={{ color: 'var(--color-accent-primary)' }} />
           <span className="text-sm font-semibold">关于</span>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {[
             { label: '版本', value: 'v0.1.0' },
             { label: '知识节点', value: `${totalNodes}` },
@@ -155,7 +155,7 @@ export function SettingsContent() {
       </button>
 
       {/* Security */}
-      <div className="flex items-start gap-3 rounded-xl px-5 py-4" style={{ backgroundColor: 'var(--color-tint-emerald)' }}>
+      <div className="flex items-start gap-4 rounded-xl px-6 py-5" style={{ backgroundColor: 'var(--color-tint-emerald)' }}>
         <Shield size={14} className="shrink-0 mt-0.5" style={{ color: 'var(--color-accent-emerald)' }} />
         <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
           Key 仅存在浏览器本地，不会发送到后端。

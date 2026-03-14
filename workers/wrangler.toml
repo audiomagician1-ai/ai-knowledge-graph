@@ -1,0 +1,13 @@
+name = "akg-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 SQLite Database
+[[d1_databases]]
+binding = "DB"
+database_name = "akg-db"
+database_id = "placeholder-will-be-set-after-create"
+
+# Environment variables (set via wrangler secret or dashboard)
+# OPENROUTER_API_KEY = "..." (optional server-side key)

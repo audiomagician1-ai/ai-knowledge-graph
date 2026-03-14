@@ -76,7 +76,7 @@ export function DraggableModal({ open, onClose, title, width = 560, height = 520
       >
         {/* Title bar — draggable */}
         <div
-          className="flex items-center justify-between px-7 py-5 shrink-0 select-none cursor-grab active:cursor-grabbing"
+          className="flex items-center justify-between px-8 py-6 shrink-0 select-none cursor-grab active:cursor-grabbing"
           style={{ borderBottom: '1px solid var(--color-border)' }}
           onMouseDown={onMouseDown}
         >

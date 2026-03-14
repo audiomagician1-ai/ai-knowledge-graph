@@ -19,7 +19,7 @@ export function DashboardContent() {
   const progressPct = totalNodes > 0 ? Math.round((masteredNodes.length / totalNodes) * 100) : 0;
 
   return (
-    <div className="p-7 space-y-7">
+    <div className="px-8 py-8 space-y-8">
       {/* Stats */}
       <div className="grid grid-cols-4 gap-4">
         {[
@@ -28,31 +28,31 @@ export function DashboardContent() {
           { label: '连续', value: `${streak.current}天`, color: 'var(--color-accent-cyan)', icon: Flame },
           { label: '最高', value: `${streak.longest}天`, color: 'var(--color-text-tertiary)', icon: Trophy },
         ].map(({ label, value, color, icon: Icon }) => (
-          <div key={label} className="rounded-xl p-4 text-center" style={{ backgroundColor: 'var(--color-surface-2)' }}>
-            <Icon size={18} style={{ color, margin: '0 auto 8px' }} />
+          <div key={label} className="rounded-xl p-5 text-center" style={{ backgroundColor: 'var(--color-surface-2)' }}>
+            <Icon size={18} style={{ color, margin: '0 auto 10px' }} />
             <div className="text-2xl font-bold font-mono" style={{ color }}>{value}</div>
-            <div className="text-xs mt-1.5" style={{ color: 'var(--color-text-tertiary)' }}>{label}</div>
+            <div className="text-xs mt-2" style={{ color: 'var(--color-text-tertiary)' }}>{label}</div>
           </div>
         ))}
       </div>
 
       {/* Progress */}
-      <div className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-2)' }}>
-        <div className="flex items-center justify-between mb-3">
+      <div className="rounded-xl p-6" style={{ backgroundColor: 'var(--color-surface-2)' }}>
+        <div className="flex items-center justify-between mb-4">
           <span className="text-sm font-semibold">掌握进度</span>
           <span className="text-lg font-mono font-bold" style={{ color: 'var(--color-accent-primary)' }}>{progressPct}%</span>
         </div>
         <div className="h-2.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-4)' }}>
           <div className="h-full rounded-full transition-all duration-700" style={{ width: `${progressPct}%`, backgroundColor: 'var(--color-accent-emerald)', minWidth: progressPct > 0 ? 4 : 0 }} />
         </div>
-        <div className="text-sm mt-3" style={{ color: 'var(--color-text-tertiary)' }}>
+        <div className="text-sm mt-4" style={{ color: 'var(--color-text-tertiary)' }}>
           {masteredNodes.length} / {totalNodes} 概念
         </div>
       </div>
 
       {/* Recent */}
       <div>
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2.5 mb-5">
           <Clock size={15} style={{ color: 'var(--color-text-tertiary)' }} />
           <span className="text-sm font-semibold">最近学习</span>
         </div>
@@ -95,7 +95,7 @@ function HistoryRow({ item }: { item: LearningHistory }) {
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${String(time.getHours()).padStart(2, '0')}:${String(time.getMinutes()).padStart(2, '0')}`;
   const scoreColor = item.score >= 80 ? 'var(--color-accent-emerald)' : item.score >= 60 ? 'var(--color-accent-primary)' : 'var(--color-accent-rose)';
   return (
-    <div className="flex items-center gap-3 rounded-lg px-4 py-3.5" style={{ backgroundColor: 'transparent' }}>
+    <div className="flex items-center gap-4 rounded-lg px-5 py-4" style={{ backgroundColor: 'transparent' }}>
       <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: item.mastered ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.1)', color: item.mastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>
         {item.mastered ? <Zap size={13} /> : <BookOpen size={13} />}
       </div>
