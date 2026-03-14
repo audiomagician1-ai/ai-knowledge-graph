@@ -14,6 +14,8 @@ import {
   Trophy, Loader, Compass, BarChart3, Settings, Network,
 } from 'lucide-react';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+
 const KnowledgeGraph = lazy(() =>
   import('@/components/graph/KnowledgeGraph').then((m) => ({ default: m.KnowledgeGraph }))
 );
@@ -82,14 +84,14 @@ export function GraphPage() {
   const loadGraph = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/graph/data');
+      const res = await fetch(`${API_BASE}/graph/data`);
       if (!res.ok) throw new Error('Failed to fetch graph');
       setGraphData(await res.json());
     } catch (err) { setError(err instanceof Error ? err.message : 'Unknown error'); }
   };
 
   const loadSubdomains = async () => {
-    try { const res = await fetch('/api/graph/subdomains'); if (res.ok) setSubdomains(await res.json()); } catch { /* ignore */ }
+    try { const res = await fetch(`${API_BASE}/graph/subdomains`); if (res.ok) setSubdomains(await res.json()); } catch { /* ignore */ }
   };
 
   const handleNodeClick = (node: GraphNode) => selectNode(node?.id ? node : null);
