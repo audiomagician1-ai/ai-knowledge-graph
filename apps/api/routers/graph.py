@@ -14,9 +14,9 @@ def _get_seed_path() -> str:
     if getattr(sys, 'frozen', False):
         # PyInstaller: data bundled under _MEIPASS
         return os.path.join(sys._MEIPASS, "seed_data", "seed_graph.json")
-    # Dev mode: relative to apps/api/
+    # Dev mode: relative to project root (apps/api/routers/graph.py → 4 levels up)
     return os.path.join(
-        os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))),
         "data", "seed", "programming", "seed_graph.json",
     )
 
