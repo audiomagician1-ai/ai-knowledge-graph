@@ -76,15 +76,15 @@ export function DraggableModal({ open, onClose, title, width = 560, height = 520
       >
         {/* Title bar — draggable */}
         <div
-          className="flex items-center justify-between px-8 py-6 shrink-0 select-none cursor-grab active:cursor-grabbing"
-          style={{ borderBottom: '1px solid var(--color-border)' }}
+          className="flex items-center justify-between shrink-0 select-none cursor-grab active:cursor-grabbing"
+          style={{ padding: '20px 28px', borderBottom: '1px solid var(--color-border)' }}
           onMouseDown={onMouseDown}
         >
-          <span className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>{title}</span>
+          <span className="font-bold" style={{ fontSize: 16, color: 'var(--color-text-primary)' }}>{title}</span>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-            style={{ color: 'var(--color-text-tertiary)' }}
+            className="flex items-center justify-center transition-colors"
+            style={{ width: 32, height: 32, borderRadius: '50%', color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer' }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.06)';
               e.currentTarget.style.color = 'var(--color-text-primary)';

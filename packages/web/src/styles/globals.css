@@ -1,26 +1,25 @@
 @import "tailwindcss";
 
 /* ========================================
-   AI Knowledge Graph — Light Breeze
-   Clean white/cream base · Fresh & positive
-   Mint + Sky + Coral + Lavender + Gold
+   AI Knowledge Graph — Warm Stone
+   Slightly deeper gray tones · Grounded
    ======================================== */
 
 @theme {
-  /* Surface layers — warm whites & creams */
-  --color-surface-0: #fafaf8;
-  --color-surface-1: #ffffff;
-  --color-surface-2: #f5f5f3;
-  --color-surface-3: #eeeeeb;
-  --color-surface-4: #e5e5e2;
+  /* Surface layers — deeper warm grays */
+  --color-surface-0: #f0f0ed;
+  --color-surface-1: #f7f7f5;
+  --color-surface-2: #eaeae7;
+  --color-surface-3: #e0e0dc;
+  --color-surface-4: #d5d5d0;
   /* Borders */
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-border-subtle: rgba(0, 0, 0, 0.04);
+  --color-border: rgba(0, 0, 0, 0.10);
+  --color-border-subtle: rgba(0, 0, 0, 0.05);
   --color-border-accent: rgba(16, 185, 129, 0.3);
   /* Text — warm dark */
   --color-text-primary: #1a1a1a;
-  --color-text-secondary: #555555;
-  --color-text-tertiary: #999999;
+  --color-text-secondary: #4a4a4a;
+  --color-text-tertiary: #888888;
   /* Accents — fresh, inspiring, saturated */
   --color-accent-primary: #10b981;     /* emerald green — main action */
   --color-accent-warm: #34d399;        /* light emerald — hover */
@@ -66,8 +65,8 @@ html {
   font-optical-sizing: auto;
 }
 
-/* Graph background override — soft warm white */
-.graph-container { background-color: #f2f1ef !important; }
+/* Graph background override — warm stone */
+.graph-container { background-color: #e8e8e4 !important; }
 
 body { min-height: 100dvh; overflow-x: hidden; }
 #root { width: 100%; min-height: 100dvh; }

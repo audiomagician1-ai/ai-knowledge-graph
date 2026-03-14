@@ -33,7 +33,7 @@ interface GLink extends LinkObject<GNode> {
 }
 
 const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
-const BG_COLOR = '#f2f1ef';
+const BG_COLOR = '#e8e8e4';
 
 /* ── Sphere layout ── */
 const SPHERE_R = 480;
@@ -211,7 +211,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
 
       /* ── Subtle fog ── */
       const scene = Graph.scene();
-      scene.fog = new THREE.FogExp2(0xf2f1ef, 0.0003);
+      scene.fog = new THREE.FogExp2(0xe8e8e4, 0.0003);
 
       /* ── Bright neutral lights for light bg ── */
       Graph.lights([

@@ -142,13 +142,13 @@ export function GraphPage() {
         <div className="absolute top-0 right-0 bottom-0 z-20 animate-slide-in-right" style={{ width: '50%' }}>
           <div className="h-full flex flex-col" style={{ backgroundColor: 'var(--color-surface-1)', borderLeft: '1px solid var(--color-border)' }}>
             {/* Header */}
-            <div className="px-8 py-7 shrink-0 flex items-start justify-between gap-4" style={{ borderBottom: '1px solid var(--color-border)' }}>
+            <div className="shrink-0 flex items-start justify-between" style={{ padding: '24px 32px', gap: 16, borderBottom: '1px solid var(--color-border)' }}>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 mb-3">
+                <div className="flex items-center" style={{ gap: 10, marginBottom: 10 }}>
                   {selectedNode!.is_milestone && <Star size={16} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
-                  <h3 className="text-lg font-bold truncate">{selectedNode!.label}</h3>
+                  <h3 className="font-bold truncate" style={{ fontSize: 18 }}>{selectedNode!.label}</h3>
                 </div>
-                <div className="flex items-center gap-4 flex-wrap">
+                <div className="flex items-center flex-wrap" style={{ gap: 14 }}>
                   {(() => { const diff = difficultyLabel(selectedNode!.difficulty); return (
                     <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1 text-sm font-medium" style={{ backgroundColor: diff.color + '14', color: diff.color }}>
                       Lv.{selectedNode!.difficulty} {diff.text}
@@ -186,9 +186,9 @@ export function GraphPage() {
       {!chatOpen ? (
         <div className="absolute top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-auto" style={{ width: 'min(420px, 90vw)' }}>
           <div className="relative">
-            <div className="flex items-center gap-2 px-4 rounded-2xl" style={{
-              height: 48, background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
+            <div className="flex items-center gap-2" style={{
+              height: 48, padding: '0 20px', borderRadius: 16, background: 'rgba(245,245,242,0.92)', backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
             }}>
               <Search size={15} style={{ color: 'var(--color-text-tertiary)', flexShrink: 0 }} />
               <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="搜索知识节点..."
@@ -200,13 +200,14 @@ export function GraphPage() {
               )}
             </div>
             {searchResults.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2 rounded-2xl p-1.5 animate-fade-in-scale" style={{
-                maxHeight: 320, overflowY: 'auto', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+              <div className="absolute top-full left-0 right-0 animate-fade-in-scale" style={{
+                marginTop: 8, borderRadius: 16, padding: 8, maxHeight: 320, overflowY: 'auto', background: 'rgba(245,245,242,0.96)', backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               }}>
                 {searchResults.map((node) => (
                   <button key={node.id} onClick={() => { selectNode(node); setSearchQuery(''); }}
-                    className="w-full text-left flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl transition-colors text-sm"
+                    className="w-full text-left flex items-center transition-colors"
+                    style={{ gap: 10, padding: '12px 16px', borderRadius: 10, fontSize: 14 }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)')}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                     {node.is_milestone && <Star size={13} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
@@ -222,9 +223,9 @@ export function GraphPage() {
 
       {/* ===== BOTTOM HUB BAR (shifts to left-half center when chat is open) ===== */}
       <div className="absolute bottom-6 z-30 pointer-events-auto transition-all duration-500 ease-out" style={chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }}>
-        <div className="flex items-center gap-2 px-5 rounded-3xl" style={{
-          height: 72, background: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+        <div className="flex items-center gap-2" style={{
+          padding: '0 24px', height: 72, borderRadius: 24, background: 'rgba(245,245,242,0.92)', backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
         }}>
           {/* Dashboard */}
           <HubButton icon={BarChart3} label="进度" active={showDashboard} onClick={() => { setShowDashboard(!showDashboard); setShowSettings(false); }} />
@@ -254,11 +255,11 @@ export function GraphPage() {
       {/* ===== RECOMMEND PANEL (above hub) ===== */}
       {showRecommend && (
         <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ width: 400, bottom: 100, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
-          <div className="rounded-2xl overflow-hidden" style={{
-            background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 12px 48px rgba(0,0,0,0.1)',
+          <div style={{
+            borderRadius: 16, overflow: 'hidden', background: 'rgba(245,245,242,0.96)', backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 12px 48px rgba(0,0,0,0.1)',
           }}>
-             <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+             <div className="flex items-center justify-between" style={{ padding: '18px 24px', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="flex items-center gap-2">
                 <Compass size={15} style={{ color: 'var(--color-accent-primary)' }} />
                 <span className="text-sm font-semibold">推荐学习路径</span>
@@ -276,8 +277,8 @@ export function GraphPage() {
                   <button key={rec.concept_id} onClick={() => {
                     const node = enrichedGraphData?.nodes.find(n => n.id === rec.concept_id);
                     if (node) { selectNode(node); setShowRecommend(false); }
-                  }} className="w-full text-left px-6 py-5 flex items-start gap-4 transition-colors"
-                    style={{ borderBottom: '1px solid rgba(0,0,0,0.04)' }}
+                  }} className="w-full text-left flex items-start transition-colors"
+                    style={{ padding: '16px 24px', gap: 14, borderBottom: '1px solid rgba(0,0,0,0.04)' }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.03)')}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                     <div className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"

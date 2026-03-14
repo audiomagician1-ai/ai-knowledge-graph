@@ -37,79 +37,80 @@ export function SettingsContent() {
   const info = PROVIDER_INFO[llmConfig.provider];
 
   return (
-    <div className="px-8 py-8 space-y-7">
+    <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', gap: 28 }}>
       {/* Provider */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
+        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12, display: 'flex' }}>
           <Server size={12} /> 服务商
         </label>
-        <div className="grid grid-cols-4 gap-3">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
           {PROVIDERS.map((p) => {
             const pInfo = PROVIDER_INFO[p];
             const isActive = llmConfig.provider === p;
             return (
               <button key={p} onClick={() => setLLMConfig({ provider: p })}
-                className="rounded-xl py-3 px-3 text-center text-sm font-medium transition-all"
                 style={{
+                  borderRadius: 12, padding: '12px 10px', textAlign: 'center', fontSize: 14, fontWeight: 500,
                   backgroundColor: isActive ? 'var(--color-surface-3)' : 'var(--color-surface-2)',
                   border: isActive ? '1.5px solid var(--color-accent-primary)' : '1px solid transparent',
                   color: isActive ? 'var(--color-accent-primary)' : 'var(--color-text-secondary)',
+                  cursor: 'pointer', transition: 'all 0.15s',
                 }}>
                 {pInfo.name}
               </button>
             );
           })}
         </div>
-        <p className="text-sm mt-3" style={{ color: 'var(--color-text-tertiary)' }}>{info.hint}</p>
+        <p style={{ color: 'var(--color-text-tertiary)', fontSize: 13, marginTop: 10 }}>{info.hint}</p>
       </div>
 
       {/* API Key */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
+        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12, display: 'flex' }}>
           <Key size={12} /> API Key
         </label>
-        <div className="flex items-center rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}>
+        <div className="flex items-center overflow-hidden" style={{ borderRadius: 12, backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}>
           <input type={showKey ? 'text' : 'password'} value={llmConfig.apiKey}
             onChange={(e) => setLLMConfig({ apiKey: e.target.value })} placeholder={info.placeholder}
-            className="flex-1 bg-transparent px-5 py-4 text-sm outline-none font-mono" style={{ color: 'var(--color-text-primary)', border: 'none' }} />
-          <button onClick={() => setShowKey(!showKey)} className="px-3 shrink-0" style={{ color: 'var(--color-text-tertiary)' }}>
+            className="flex-1 bg-transparent outline-none font-mono" style={{ padding: '14px 20px', fontSize: 14, color: 'var(--color-text-primary)', border: 'none' }} />
+          <button onClick={() => setShowKey(!showKey)} style={{ padding: '0 14px', flexShrink: 0, color: 'var(--color-text-tertiary)', cursor: 'pointer', background: 'none', border: 'none' }}>
             {showKey ? <EyeOff size={15} /> : <Eye size={15} />}
           </button>
-          {llmConfig.apiKey && <button onClick={clearApiKey} className="px-3 shrink-0" style={{ color: 'var(--color-text-tertiary)' }}><Trash2 size={15} /></button>}
+          {llmConfig.apiKey && <button onClick={clearApiKey} style={{ padding: '0 14px', flexShrink: 0, color: 'var(--color-text-tertiary)', cursor: 'pointer', background: 'none', border: 'none' }}><Trash2 size={15} /></button>}
         </div>
       </div>
 
       {/* Base URL */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
+        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12, display: 'flex' }}>
           <Globe size={12} /> API Base URL
         </label>
         <input type="text" value={llmConfig.baseUrl || ''} onChange={(e) => setLLMConfig({ baseUrl: e.target.value })}
           placeholder={info.defaultBase || 'https://your-api.example.com/v1'}
-          className="w-full rounded-xl px-5 py-4 text-sm font-mono outline-none"
-          style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
+          className="w-full outline-none font-mono"
+          style={{ borderRadius: 12, padding: '14px 20px', fontSize: 14, backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
       </div>
 
       {/* Model */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
+        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12, display: 'flex' }}>
           <Box size={12} /> 模型名称
         </label>
         <input type="text" value={llmConfig.model || ''}
           onChange={(e) => setLLMConfig({ model: e.target.value })}
           placeholder={llmConfig.provider === 'openrouter' ? 'openai/gpt-4o' : llmConfig.provider === 'openai' ? 'gpt-4o' : llmConfig.provider === 'deepseek' ? 'deepseek-chat' : 'model-name'}
-          className="w-full rounded-xl px-5 py-4 text-sm font-mono outline-none"
-          style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
+          className="w-full outline-none font-mono"
+          style={{ borderRadius: 12, padding: '14px 20px', fontSize: 14, backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
       </div>
 
       {/* Actions */}
-      <div className="flex gap-3">
-        <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2 text-sm py-3.5" style={{ borderRadius: 12 }}>
+      <div style={{ display: 'flex', gap: 12, marginTop: 4 }}>
+        <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2" style={{ borderRadius: 12, padding: '14px 0', fontSize: 15 }}>
           {saved ? <><Check size={14} /> 已保存</> : '保存配置'}
         </button>
         {llmConfig.apiKey && (
           <button onClick={handleTestConnection} disabled={testStatus === 'testing'}
-            className="btn-ghost flex items-center gap-1.5 px-4 text-sm" style={{ borderRadius: 12, color: testStatus === 'success' ? 'var(--color-accent-emerald)' : testStatus === 'error' ? 'var(--color-accent-rose)' : undefined }}>
+            className="btn-ghost flex items-center gap-1.5" style={{ borderRadius: 12, padding: '14px 20px', fontSize: 14, color: testStatus === 'success' ? 'var(--color-accent-emerald)' : testStatus === 'error' ? 'var(--color-accent-rose)' : undefined }}>
             {testStatus === 'testing' ? <Loader2 size={13} className="animate-spin" /> : testStatus === 'success' ? <Wifi size={13} /> : testStatus === 'error' ? <WifiOff size={13} /> : <Wifi size={13} />}
             {testStatus === 'testing' ? '测试...' : testStatus === 'success' ? '可用' : testStatus === 'error' ? '失败' : '测试'}
           </button>
@@ -124,12 +125,12 @@ export function SettingsContent() {
       )}
 
       {/* About */}
-      <div className="rounded-xl p-6" style={{ backgroundColor: 'var(--color-surface-2)' }}>
-        <div className="flex items-center gap-2.5 mb-5">
+      <div style={{ borderRadius: 12, padding: 24, backgroundColor: 'var(--color-surface-2)' }}>
+        <div className="flex items-center gap-2.5" style={{ marginBottom: 18 }}>
           <Info size={14} style={{ color: 'var(--color-accent-primary)' }} />
-          <span className="text-sm font-semibold">关于</span>
+          <span style={{ fontSize: 14, fontWeight: 600 }}>关于</span>
         </div>
-        <div className="space-y-3.5">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           {[
             { label: '版本', value: 'v0.1.0' },
             { label: '知识节点', value: `${totalNodes}` },
@@ -150,14 +151,14 @@ export function SettingsContent() {
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob); const a = document.createElement('a');
         a.href = url; a.download = `akg-data-${new Date().toISOString().slice(0, 10)}.json`; a.click(); URL.revokeObjectURL(url);
-      }} className="btn-ghost w-full flex items-center justify-center gap-2 text-sm" style={{ borderRadius: 12 }}>
+      }} className="btn-ghost w-full flex items-center justify-center gap-2" style={{ borderRadius: 12, padding: '14px 0', fontSize: 14 }}>
         <Download size={14} /> 导出数据
       </button>
 
       {/* Security */}
-      <div className="flex items-start gap-4 rounded-xl px-6 py-5" style={{ backgroundColor: 'var(--color-tint-emerald)' }}>
-        <Shield size={14} className="shrink-0 mt-0.5" style={{ color: 'var(--color-accent-emerald)' }} />
-        <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
+      <div className="flex items-start gap-4" style={{ borderRadius: 12, padding: '18px 24px', backgroundColor: 'var(--color-tint-emerald)' }}>
+        <Shield size={14} className="shrink-0" style={{ marginTop: 2, color: 'var(--color-accent-emerald)' }} />
+        <p style={{ fontSize: 13, lineHeight: 1.7, color: 'var(--color-text-tertiary)' }}>
           Key 仅存在浏览器本地，不会发送到后端。
         </p>
       </div>
