@@ -140,36 +140,36 @@ export function GraphPage() {
         <div className="absolute top-0 right-0 bottom-0 z-20 animate-slide-in-right" style={{ width: '50%' }}>
           <div className="h-full flex flex-col" style={{ backgroundColor: 'var(--color-surface-1)', borderLeft: '1px solid var(--color-border)' }}>
             {/* Header */}
-            <div className="px-5 py-4 shrink-0 flex items-start justify-between gap-3" style={{ borderBottom: '1px solid var(--color-border)' }}>
+            <div className="px-8 py-6 shrink-0 flex items-start justify-between gap-4" style={{ borderBottom: '1px solid var(--color-border)' }}>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1.5">
-                  {selectedNode!.is_milestone && <Star size={14} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
-                  <h3 className="text-[15px] font-semibold truncate">{selectedNode!.label}</h3>
+                <div className="flex items-center gap-2.5 mb-2">
+                  {selectedNode!.is_milestone && <Star size={16} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
+                  <h3 className="text-lg font-bold truncate">{selectedNode!.label}</h3>
                 </div>
-                <div className="flex items-center gap-2 flex-wrap">
+                <div className="flex items-center gap-3 flex-wrap">
                   {(() => { const diff = difficultyLabel(selectedNode!.difficulty); return (
-                    <span className="inline-flex items-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium" style={{ backgroundColor: diff.color + '14', color: diff.color }}>
+                    <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1 text-sm font-medium" style={{ backgroundColor: diff.color + '14', color: diff.color }}>
                       Lv.{selectedNode!.difficulty} {diff.text}
                     </span>
                   ); })()}
                   {selectedNode!.estimated_minutes && (
-                    <span className="inline-flex items-center gap-1 text-xs" style={{ color: 'var(--color-text-tertiary)' }}><Clock size={11} /> {selectedNode!.estimated_minutes}min</span>
+                    <span className="inline-flex items-center gap-1.5 text-sm" style={{ color: 'var(--color-text-tertiary)' }}><Clock size={13} /> {selectedNode!.estimated_minutes}min</span>
                   )}
                   {progress[selectedNode!.id]?.status === 'mastered' ? (
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: 'var(--color-accent-emerald)' }}><Trophy size={11} /> 已掌握</span>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: 'var(--color-accent-emerald)' }}><Trophy size={13} /> 已掌握</span>
                   ) : progress[selectedNode!.id]?.status === 'learning' ? (
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: 'var(--color-accent-primary)' }}><BookOpen size={11} /> 学习中</span>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: 'var(--color-accent-primary)' }}><BookOpen size={13} /> 学习中</span>
                   ) : selectedNode!.is_recommended ? (
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: 'var(--color-accent-cyan)' }}><Zap size={11} /> 推荐</span>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: 'var(--color-accent-cyan)' }}><Zap size={13} /> 推荐</span>
                   ) : null}
                 </div>
               </div>
               <button onClick={() => selectNode(null)}
-                className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-colors"
+                className="shrink-0 w-9 h-9 flex items-center justify-center rounded-full transition-colors"
                 style={{ color: 'var(--color-text-tertiary)' }}
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.06)')}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
-                <X size={14} />
+                <X size={16} />
               </button>
             </div>
             {/* Chat */}

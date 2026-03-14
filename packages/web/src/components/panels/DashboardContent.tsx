@@ -52,14 +52,14 @@ export function DashboardContent() {
 
       {/* Recent */}
       <div>
-        <div className="flex items-center gap-1.5 mb-3">
-          <Clock size={13} style={{ color: 'var(--color-text-tertiary)' }} />
-          <span className="text-sm font-medium">最近学习</span>
+        <div className="flex items-center gap-2 mb-4">
+          <Clock size={15} style={{ color: 'var(--color-text-tertiary)' }} />
+          <span className="text-sm font-semibold">最近学习</span>
         </div>
         {recentHistory.length === 0 ? (
-          <p className="text-sm text-center py-6" style={{ color: 'var(--color-text-tertiary)' }}>还没有学习记录</p>
+          <p className="text-sm text-center py-10" style={{ color: 'var(--color-text-tertiary)' }}>还没有学习记录</p>
         ) : (
-          <div className="space-y-0.5">
+          <div className="space-y-1.5">
             {recentHistory.map((item, i) => (
               <HistoryRow key={`${item.concept_id}-${i}`} item={item} />
             ))}
@@ -95,15 +95,15 @@ function HistoryRow({ item }: { item: LearningHistory }) {
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${String(time.getHours()).padStart(2, '0')}:${String(time.getMinutes()).padStart(2, '0')}`;
   const scoreColor = item.score >= 80 ? 'var(--color-accent-emerald)' : item.score >= 60 ? 'var(--color-accent-primary)' : 'var(--color-accent-rose)';
   return (
-    <div className="flex items-center gap-3 rounded-lg px-3 py-2.5" style={{ backgroundColor: 'transparent' }}>
-      <div className="w-5 h-5 rounded-md flex items-center justify-center shrink-0" style={{ backgroundColor: item.mastered ? 'rgba(138,173,122,0.1)' : 'rgba(200,149,108,0.1)', color: item.mastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-primary)' }}>
-        {item.mastered ? <Zap size={11} /> : <BookOpen size={11} />}
+    <div className="flex items-center gap-3 rounded-lg px-4 py-3.5" style={{ backgroundColor: 'transparent' }}>
+      <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: item.mastered ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.1)', color: item.mastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>
+        {item.mastered ? <Zap size={13} /> : <BookOpen size={13} />}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-sm truncate">{item.concept_name}</div>
-        <div className="text-[11px] font-mono" style={{ color: 'var(--color-text-tertiary)' }}>{timeStr}</div>
+        <div className="text-[15px] truncate">{item.concept_name}</div>
+        <div className="text-xs font-mono mt-0.5" style={{ color: 'var(--color-text-tertiary)' }}>{timeStr}</div>
       </div>
-      <span className="text-sm font-bold font-mono" style={{ color: scoreColor }}>{item.score}</span>
+      <span className="text-[15px] font-bold font-mono" style={{ color: scoreColor }}>{item.score}</span>
     </div>
   );
 }
