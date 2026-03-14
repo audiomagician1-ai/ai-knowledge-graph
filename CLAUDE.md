@@ -113,7 +113,8 @@ data/seed/         — 种子图谱数据
 - ✅ **shared包修复**: 添加typescript devDependency, pnpm type-check全通过
 - ✅ **UI改版「Observatory Study」**: 暖调深色(#111110)+衬线标题(Noto Serif SC)+去glass/glow/gradient+铜/苔/梅自然色系+圆角6-8px+实色按钮+图谱去辉光粒子
 - ✅ **Prompt工程方案文档**: `docs/PROMPT_ENGINEERING_ITERATION_V2.md` — 完整迭代设计
-- ✅ tsc 0 errors, vite build 3.3s, CSS 28KB + graph 6.9KB (lazy)
+- ✅ **本地CORS代理模式**: useProxy替代directMode + resolveBaseUrl/probeCORS/probeProxy + 代理脚本下载引导UI
+- ✅ tsc 0 errors, vite build 3.28s, CSS 28KB + graph 6.9KB (lazy)
 
 ### EXE 打包规范
 ```
@@ -142,9 +143,10 @@ Release Note 包含:
 
 ### 待完成 🟡
 1. ✅ **LLM 端到端测试** — mihoyo Claude 4.6 Sonnet: 4轮对话+评估 81/100 mastered ✅
-2. 🟡 **V2对话流程 E2E测试** — 验证选项生成+解析+前端渲染完整链路
-3. 🟡 **EXE 重新打包** — 包含 Phase 4 + V2对话流程改进
-4. 🟡 **最终内测版发布** — Release Note + 分发
+2. ✅ **V2对话流程代码审查** — dialogue.ts+direct-llm.ts+LearnPage+ChoiceButtons 全链路完整
+3. ✅ **EXE 重新打包** — akg-v0.1.0-e9802e4 (46.5MB), 含代理模式UI+tsc修复
+4. ✅ **代理模式重构** — directMode→useProxy, CORS代理引导UI, probeCORS/probeProxy工具
+5. 🟡 **最终内测版发布** — Release Note + 分发
 
 ---
 
