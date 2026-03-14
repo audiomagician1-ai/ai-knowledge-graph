@@ -9,6 +9,7 @@ import {
   CheckCircle2, Target, BookOpen,
 } from 'lucide-react';
 import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
+import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
 import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
 
 export function LearnPage() {
@@ -20,7 +21,8 @@ export function LearnPage() {
   const {
     conversationId, conceptName, isMilestone,
     messages, isStreaming, isAssessing, suggestAssess, assessment, error,
-    startConversation, sendMessage, requestAssessment, cancelStream, reset,
+    currentChoices,
+    startConversation, sendMessage, selectChoice, requestAssessment, cancelStream, reset,
   } = useDialogueStore();
 
   const isBusy = isStreaming || isAssessing;
@@ -43,7 +45,14 @@ export function LearnPage() {
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, assessment]);
+  }, [messages, assessment, currentChoices]);
+
+  const isUserTyping = input.length > 0;
+
+  /** Strip ```choices ... ``` block from content for display */
+  const stripChoicesBlock = (text: string) => {
+    return text.replace(/```choices[\s\S]*?```/g, '').trim();
+  };
 
   const handleSend = async () => {
     const text = input.trim();
@@ -132,10 +141,10 @@ export function LearnPage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>
-                    交互式学习
+                    探索式学习
                   </h3>
                   <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-                    用你自己的话向 AI 解释这个概念。AI 会追问关键细节，帮你发现理解的盲区。
+                    AI 会先讲解概念，然后提供选项引导你深入。你可以点选选项或自由输入来互动。
                   </p>
                 </div>
               </div>
@@ -178,7 +187,7 @@ export function LearnPage() {
                     <>
 
                     {msg.content ? (
-                      <MarkdownRenderer content={msg.content} />
+                      <MarkdownRenderer content={stripChoicesBlock(msg.content)} />
                     ) : isStreaming ? (
                       <div className="flex items-center gap-1 mt-1">
                         <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-primary)' }} />
@@ -201,7 +210,7 @@ export function LearnPage() {
           </div>
         </div>
 
-        {/* Input area */}
+        {/* Input area with choice buttons */}
         {!assessment ? (
           <div
             className="shrink-0 border-t"
@@ -210,7 +219,17 @@ export function LearnPage() {
               borderColor: 'var(--color-border)',
             }}
           >
-            <div className="max-w-3xl mx-auto px-6 py-4">
+            <div className="max-w-3xl mx-auto px-6 py-4 space-y-3">
+              {/* Choice buttons — shown when AI provides choices */}
+              {currentChoices && currentChoices.length > 0 && !isBusy && (
+                <ChoiceButtons
+                  choices={currentChoices}
+                  onSelect={selectChoice}
+                  disabled={isBusy}
+                  dimmed={isUserTyping}
+                />
+              )}
+
               <div
                   className="flex items-end gap-3 rounded-lg px-4 py-3 transition-all"
                 style={{
@@ -226,7 +245,7 @@ export function LearnPage() {
                     e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px';
                   }}
                   onKeyDown={handleKeyDown}
-                  placeholder="用你自己的话解释这个概念..."
+                  placeholder={currentChoices ? "也可以用自己的话回答..." : "用你自己的话解释这个概念..."}
                   rows={1}
                   className="flex-1 bg-transparent text-[14px] outline-none resize-none leading-relaxed"
                   style={{
@@ -251,7 +270,7 @@ export function LearnPage() {
                 </button>
               </div>
               <p className="text-[11px] mt-2 text-center font-mono" style={{ color: 'var(--color-text-tertiary)' }}>
-                Enter 发送 · Shift+Enter 换行 · 对话 4 轮后可评估理解度
+                {currentChoices ? '点选上方选项或自由输入 · Enter 发送' : 'Enter 发送 · Shift+Enter 换行 · 对话 4 轮后可评估理解度'}
               </p>
             </div>
           </div>

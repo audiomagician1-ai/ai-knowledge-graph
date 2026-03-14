@@ -1,6 +1,13 @@
-"""对话引擎 API — 费曼对话 + 苏格拉底追问 + 理解度评估
+"""对话引擎 API V2 — AI引导式探测学习 + 选项式交互 + 理解度评估
 无需登录，支持用户自带 LLM API Key (通过请求头传递)
-对话数据持久化到 SQLite — 重启不丢失"""
+对话数据持久化到 SQLite — 重启不丢失
+
+V2 变更:
+- 开场白由 LLM 动态生成 (含 choices)
+- /conversations 返回 opening_choices
+- /chat SSE 新增 choices 事件 (从 LLM 回复中解析)
+- ChatRequest 新增 is_choice 标记
+"""
 
 import asyncio
 import json
@@ -14,6 +21,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from engines.dialogue.socratic import socratic_engine
+from engines.dialogue.prompts.feynman_system import parse_ai_response
 from engines.dialogue.evaluator import evaluator
 from routers.graph import _load_seed
 from db.sqlite_client import (
@@ -91,6 +99,7 @@ class ConversationCreate(BaseModel):
 class ChatRequest(BaseModel):
     conversation_id: str
     message: str
+    is_choice: bool = False  # True when user clicked a preset choice option
 
 
 class AssessmentRequest(BaseModel):
@@ -141,8 +150,8 @@ def _get_concept_info(concept_id: str) -> Optional[dict]:
 
 
 @router.post("/conversations")
-async def create_conversation(req: ConversationCreate):
-    """创建新的费曼对话会话"""
+async def create_conversation(req: ConversationCreate, request: Request):
+    """创建新的费曼对话会话 — V2: LLM生成开场白含选项"""
     _cleanup_cache()
     cleanup_old_conversations()
 
@@ -151,6 +160,7 @@ async def create_conversation(req: ConversationCreate):
         raise HTTPException(status_code=404, detail=f"概念不存在: {req.concept_id}")
 
     conv_id = str(uuid.uuid4())
+    user_config = _extract_user_llm_config(request)
 
     system_prompt = await socratic_engine.build_system_prompt(
         concept=concept,
@@ -159,12 +169,19 @@ async def create_conversation(req: ConversationCreate):
         related=concept.get("related_names", []),
     )
 
-    opening = await socratic_engine.get_opening(concept)
+    # V2: LLM generates opening with choices
+    opening_text, opening_choices = await socratic_engine.get_opening(
+        concept, system_prompt, user_config=user_config,
+    )
+
+    # Store the full raw response (with choices) for message history
+    # But the opening_message field is clean text only
+    opening_raw = opening_text  # text-only for messages history
 
     # Persist to SQLite
     save_conversation(conv_id, req.concept_id, concept["name"], system_prompt,
                       is_milestone=concept.get("is_milestone", False))
-    save_message(conv_id, "assistant", opening)
+    save_message(conv_id, "assistant", opening_raw)
 
     # Cache in memory
     _session_cache[conv_id] = {
@@ -172,7 +189,7 @@ async def create_conversation(req: ConversationCreate):
         "concept_id": req.concept_id,
         "concept": concept,
         "system_prompt": system_prompt,
-        "messages": [{"role": "assistant", "content": opening}],
+        "messages": [{"role": "assistant", "content": opening_raw}],
         "status": "active",
         "last_active": time.time(),
     }
@@ -181,7 +198,8 @@ async def create_conversation(req: ConversationCreate):
         "conversation_id": conv_id,
         "concept_id": req.concept_id,
         "concept_name": concept["name"],
-        "opening_message": opening,
+        "opening_message": opening_text,
+        "opening_choices": opening_choices,
         "is_milestone": concept.get("is_milestone", False),
     }
 
@@ -227,21 +245,33 @@ async def chat(req: ChatRequest, request: Request):
                 full_response += chunk
                 yield f"data: {json.dumps({'type': 'chunk', 'content': chunk}, ensure_ascii=False)}\n\n"
 
+            # V2: Parse choices from full LLM response
+            parsed = parse_ai_response(full_response)
+            clean_content = parsed["content"]
+            choices = parsed["choices"]
+
             async with lock:
-                session["messages"].append({"role": "assistant", "content": full_response})
-            save_message(req.conversation_id, "assistant", full_response)
+                session["messages"].append({"role": "assistant", "content": clean_content})
+            save_message(req.conversation_id, "assistant", clean_content)
 
             user_turns = sum(1 for m in session["messages"] if m["role"] == "user")
             suggest_assess = user_turns >= 4
 
+            # Send choices as separate SSE event
+            yield f"data: {json.dumps({'type': 'choices', 'choices': choices}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': suggest_assess, 'turn': user_turns}, ensure_ascii=False)}\n\n"
         except Exception as e:
             logger.warning("Chat stream error for %s: %s", req.conversation_id, e)
             fallback = "抱歉，我刚才走神了 😅 你能再说一遍吗？我保证认真听！"
+            fallback_choices = [
+                {"id": "opt-1", "text": "重新说一遍", "type": "action"},
+                {"id": "opt-2", "text": "换个方式解释", "type": "explore"},
+            ]
             async with lock:
                 session["messages"].append({"role": "assistant", "content": fallback})
             save_message(req.conversation_id, "assistant", fallback)
             yield f"data: {json.dumps({'type': 'chunk', 'content': fallback}, ensure_ascii=False)}\n\n"
+            yield f"data: {json.dumps({'type': 'choices', 'choices': fallback_choices}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
 
     return StreamingResponse(

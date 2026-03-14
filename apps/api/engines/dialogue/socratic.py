@@ -1,7 +1,7 @@
 """
-苏格拉底式对话引擎
-"先导后学"混合模式: AI 先讲解 → 变身好奇学生提问 → 用户解答 → AI 反馈
-支持 RAG 知识库文档注入，为 AI 提供准确的概念参考知识
+苏格拉底式对话引擎 V2
+AI引导式探测学习: 破冰探测 → 自适应讲解 → 理解检验 → 总结深化
+每次AI回复都附带2-4个可选选项，支持 RAG 知识库文档注入
 """
 
 import json
@@ -13,6 +13,7 @@ from llm.router import llm_router
 from engines.dialogue.prompts.feynman_system import (
     FEYNMAN_SYSTEM_PROMPT,
     GRAPH_CONTEXT_TEMPLATE,
+    parse_ai_response,
 )
 
 
@@ -60,8 +61,12 @@ def _load_rag_content(concept_id: str, subdomain_id: str) -> str:
         return ""
 
 
+# The LLM generates the opening as Phase 1 (probe), no hardcoded templates
+OPENING_USER_PROMPT = "开始学习「{concept_name}」"
+
+
 class SocraticEngine:
-    """苏格拉底式对话引擎 — 核心对话逻辑"""
+    """苏格拉底式对话引擎 V2 — AI引导式探测学习"""
 
     async def build_system_prompt(
         self,
@@ -94,26 +99,48 @@ class SocraticEngine:
             graph_context=graph_context,
         )
 
-    async def get_opening(self, concept: dict) -> str:
-        """生成开场白 — AI 学生表达好奇心"""
-        name = concept["name"]
-        difficulty = concept.get("difficulty", 5)
+    async def get_opening(
+        self,
+        concept: dict,
+        system_prompt: str,
+        user_config: dict | None = None,
+    ) -> tuple[str, list[dict]]:
+        """LLM 生成开场白 (Phase 1: 破冰探测).
 
-        if difficulty <= 3:
-            return (
-                f"嗨！👋 我听说{name}是编程中很基础但很重要的概念。"
-                f"不过我还不太理解它到底是什么意思。你能用最简单的话给我解释一下吗？"
+        Returns:
+            (opening_text, opening_choices)
+        """
+        user_msg = OPENING_USER_PROMPT.format(concept_name=concept["name"])
+
+        try:
+            raw = await llm_router.chat(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_msg},
+                ],
+                tier="dialogue",
+                temperature=0.8,
+                max_tokens=600,
+                user_config=user_config,
             )
-        elif difficulty <= 6:
-            return (
-                f"嗨！🤔 我最近在学习{name}，感觉挺有意思但又有点复杂。"
-                f"你对这个概念了解多少？能试着用最直白的方式给我讲讲吗？"
+            parsed = parse_ai_response(raw)
+            return parsed["content"], parsed["choices"]
+        except Exception:
+            # Fallback: hardcoded opening for resilience
+            name = concept["name"]
+            fallback_text = (
+                f"👋 今天我们一起来探索「{name}」！\n\n"
+                f"这是一个很有意思的概念，让我先简单介绍一下，"
+                f"然后我们一步步深入。\n\n"
+                f"你之前对 {name} 有了解吗？"
             )
-        else:
-            return (
-                f"嗨！🧐 {name}这个话题看起来挺深的，我之前一直没搞明白。"
-                f"听说你对这方面有研究，能帮我从头捋一下吗？先从最核心的概念开始？"
-            )
+            fallback_choices = [
+                {"id": "opt-1", "text": "完全没听说过", "type": "level"},
+                {"id": "opt-2", "text": "听过但说不太清楚", "type": "level"},
+                {"id": "opt-3", "text": "有一些了解，想深入", "type": "level"},
+                {"id": "opt-4", "text": "比较熟悉，直接进阶", "type": "level"},
+            ]
+            return fallback_text, fallback_choices
 
     async def chat_stream(
         self,
@@ -133,7 +160,7 @@ class SocraticEngine:
             messages=full_messages,
             tier="dialogue",
             temperature=0.75,
-            max_tokens=512,
+            max_tokens=800,
             user_config=user_config,
         ):
             yield chunk
@@ -156,7 +183,7 @@ class SocraticEngine:
             messages=full_messages,
             tier="dialogue",
             temperature=0.75,
-            max_tokens=512,
+            max_tokens=800,
             user_config=user_config,
         )
 

@@ -1,11 +1,18 @@
 ﻿import { create } from 'zustand';
 import { getLLMHeaders } from './settings';
 
+export interface ChoiceOption {
+  id: string;
+  text: string;
+  type: 'explore' | 'answer' | 'action' | 'level';
+}
+
 export interface ChatMessage {
   id: string;
   role: 'user' | 'assistant';
   content: string;
   timestamp: number;
+  isChoice?: boolean;  // true if user clicked a preset choice
 }
 
 export interface AssessmentResult {
@@ -42,12 +49,16 @@ interface DialogueState {
   assessment: AssessmentResult | null;
   error: string | null;
 
+  /** V2: Current choices offered by AI */
+  currentChoices: ChoiceOption[] | null;
+
   /** Persisted conversation history */
   savedConversations: SavedConversation[];
 
   // Actions
   startConversation: (conceptId: string) => Promise<void>;
-  sendMessage: (text: string) => Promise<void>;
+  sendMessage: (text: string, isChoice?: boolean) => Promise<void>;
+  selectChoice: (choiceId: string) => Promise<void>;
   requestAssessment: () => Promise<void>;
   cancelStream: () => void;
   reset: () => void;
@@ -135,6 +146,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
   suggestAssess: false,
   assessment: null,
   error: null,
+  currentChoices: null,
   savedConversations: loadSavedConversations(),
 
   startConversation: async (conceptId: string) => {
@@ -152,12 +164,13 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       suggestAssess: false,
       assessment: null,
       error: null,
+      currentChoices: null,
     });
 
     try {
       const res = await fetch(`${API_BASE}/dialogue/conversations`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
         body: JSON.stringify({ concept_id: conceptId }),
       });
 
@@ -176,13 +189,14 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
             timestamp: Date.now(),
           },
         ],
+        currentChoices: data.opening_choices || null,
       });
     } catch (err) {
       set({ error: err instanceof Error ? err.message : 'Unknown error' });
     }
   },
 
-  sendMessage: async (text: string) => {
+  sendMessage: async (text: string, isChoice = false) => {
     const { conversationId, isStreaming, isAssessing } = get();
     if (!conversationId || isStreaming || isAssessing) return;
 
@@ -217,6 +231,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       messages: [...s.messages, userMsg, assistantMsg],
       isStreaming: true,
       error: null,
+      currentChoices: null,  // Clear choices when user sends
     }));
 
     try {
@@ -226,6 +241,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         body: JSON.stringify({
           conversation_id: conversationId,
           message: text,
+          is_choice: isChoice,
         }),
         signal: controller.signal,
       });
@@ -249,6 +265,10 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
               msgs[idx] = { ...msgs[idx], content: msgs[idx].content + (payload.content as string) };
             }
             return { messages: msgs };
+          });
+        } else if (payload.type === 'choices') {
+          set({
+            currentChoices: (payload.choices as ChoiceOption[]) || null,
           });
         } else if (payload.type === 'done') {
           set({
@@ -352,6 +372,14 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     set({ isStreaming: false });
   },
 
+  selectChoice: async (choiceId: string) => {
+    const { currentChoices, sendMessage } = get();
+    if (!currentChoices) return;
+    const choice = currentChoices.find(c => c.id === choiceId);
+    if (!choice) return;
+    await sendMessage(choice.text, true);
+  },
+
   reset: () => {
     // Auto-save before clearing
     const saved = autoSaveConversation(get());
@@ -367,6 +395,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       suggestAssess: false,
       assessment: null,
       error: null,
+      currentChoices: null,
       ...(saved ? { savedConversations: saved } : {}),
     });
   },
