@@ -48,14 +48,21 @@ class LLMRouter:
     def _resolve_endpoint(self, model: str, user_config: dict | None = None) -> tuple[str, str]:
         """根据模型名决定 API base 和 key
         优先使用用户自带的 API Key.
+        Supports custom base_url for internal/proxy endpoints.
         Raises ValueError if no API key is available."""
         # 用户自定义 Key 优先
         if user_config and user_config.get("api_key"):
-            provider = user_config.get("provider", "openrouter")
             key = user_config["api_key"]
+            # Custom base URL takes highest priority
+            if user_config.get("base_url"):
+                return user_config["base_url"].rstrip("/"), key
+            provider = user_config.get("provider", "openrouter")
             if provider == "deepseek":
                 return self.DEEPSEEK_BASE, key
             elif provider == "openai":
+                return self.OPENAI_BASE, key
+            elif provider == "custom":
+                # custom provider without base_url — try openai-compatible default
                 return self.OPENAI_BASE, key
             else:
                 return self.OPENROUTER_BASE, key

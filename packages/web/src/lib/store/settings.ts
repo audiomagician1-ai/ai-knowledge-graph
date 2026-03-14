@@ -1,11 +1,12 @@
 import { create } from 'zustand';
 
-export type LLMProvider = 'openrouter' | 'openai' | 'deepseek';
+export type LLMProvider = 'openrouter' | 'openai' | 'deepseek' | 'custom';
 
 interface LLMConfig {
   provider: LLMProvider;
   apiKey: string;
-  model?: string; // optional override
+  model?: string;       // model name override
+  baseUrl?: string;     // custom API base URL (for internal/proxy endpoints)
 }
 
 interface SettingsState {
@@ -17,8 +18,6 @@ interface SettingsState {
 
 const STORAGE_KEY = 'akg-settings';
 
-/** Simple obfuscation — NOT encryption, just prevents casual plaintext scanning.
- *  Use btoa/atob for base64 encode/decode. */
 function obfuscate(plain: string): string {
   if (!plain) return '';
   try { return btoa(encodeURIComponent(plain)); } catch { return plain; }
@@ -38,19 +37,20 @@ function loadFromStorage(): LLMConfig {
         provider: parsed.provider || 'openrouter',
         apiKey: parsed.apiKey_b64 ? deobfuscate(parsed.apiKey_b64) : (parsed.apiKey || ''),
         model: parsed.model || '',
+        baseUrl: parsed.baseUrl || '',
       };
     }
   } catch { /* ignore */ }
-  return { provider: 'openrouter', apiKey: '', model: '' };
+  return { provider: 'openrouter', apiKey: '', model: '', baseUrl: '' };
 }
 
 function saveToStorage(config: LLMConfig) {
   try {
-    // Store key obfuscated; never store plaintext 'apiKey' field
     const toSave = {
       provider: config.provider,
       apiKey_b64: obfuscate(config.apiKey),
       model: config.model || '',
+      baseUrl: config.baseUrl || '',
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
   } catch { /* ignore */ }
@@ -81,27 +81,38 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
 export function getLLMHeaders(): Record<string, string> {
   const { llmConfig } = useSettingsStore.getState();
   if (!llmConfig.apiKey) return {};
-  return {
+  const headers: Record<string, string> = {
     'X-LLM-Provider': llmConfig.provider,
     'X-LLM-API-Key': llmConfig.apiKey,
-    ...(llmConfig.model ? { 'X-LLM-Model': llmConfig.model } : {}),
   };
+  if (llmConfig.model) headers['X-LLM-Model'] = llmConfig.model;
+  if (llmConfig.baseUrl) headers['X-LLM-Base-URL'] = llmConfig.baseUrl;
+  return headers;
 }
 
-export const PROVIDER_INFO: Record<LLMProvider, { name: string; placeholder: string; hint: string }> = {
+export const PROVIDER_INFO: Record<LLMProvider, { name: string; placeholder: string; hint: string; defaultBase: string }> = {
   openrouter: {
     name: 'OpenRouter',
     placeholder: 'sk-or-v1-...',
-    hint: '支持所有主流模型，推荐。openrouter.ai 获取',
+    hint: '多模型聚合路由，支持 GPT-4o / Claude / Gemini 等',
+    defaultBase: 'https://openrouter.ai/api/v1',
   },
   openai: {
     name: 'OpenAI',
     placeholder: 'sk-...',
-    hint: 'GPT-4o / GPT-4o-mini。platform.openai.com 获取',
+    hint: 'GPT-4o / GPT-4o-mini / o1 系列',
+    defaultBase: 'https://api.openai.com/v1',
   },
   deepseek: {
     name: 'DeepSeek',
     placeholder: 'sk-...',
-    hint: 'DeepSeek-V3 / Chat。platform.deepseek.com 获取',
+    hint: 'DeepSeek-V3 / DeepSeek-R1 系列',
+    defaultBase: 'https://api.deepseek.com/v1',
+  },
+  custom: {
+    name: '自定义',
+    placeholder: 'your-api-key',
+    hint: '任意 OpenAI 兼容 API (内网、代理等)',
+    defaultBase: '',
   },
 };

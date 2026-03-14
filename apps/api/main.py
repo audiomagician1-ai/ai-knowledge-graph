@@ -90,6 +90,7 @@ app.add_middleware(
         "X-LLM-Provider",
         "X-LLM-API-Key",
         "X-LLM-Model",
+        "X-LLM-Base-URL",
     ],
 )
 

@@ -30,7 +30,7 @@ _MAX_SESSIONS = 200
 _SESSION_TTL_SEC = 3600  # 1 hour
 
 # Valid LLM providers
-_VALID_PROVIDERS = {"openrouter", "openai", "deepseek"}
+_VALID_PROVIDERS = {"openrouter", "openai", "deepseek", "custom"}
 
 
 def _cleanup_sessions():
@@ -72,9 +72,10 @@ class AssessmentRequest(BaseModel):
 def _extract_user_llm_config(request: Request) -> Optional[dict]:
     """从请求头提取用户自定义 LLM 配置
     Headers:
-      X-LLM-Provider: openrouter | openai | deepseek
+      X-LLM-Provider: openrouter | openai | deepseek | custom
       X-LLM-API-Key: sk-...
       X-LLM-Model: (optional) model name override
+      X-LLM-Base-URL: (optional) custom API base URL for custom/proxy endpoints
     """
     api_key = request.headers.get("x-llm-api-key", "").strip()
     if not api_key:
@@ -86,6 +87,7 @@ def _extract_user_llm_config(request: Request) -> Optional[dict]:
         "provider": provider,
         "api_key": api_key,
         "model": request.headers.get("x-llm-model", "").strip() or None,
+        "base_url": request.headers.get("x-llm-base-url", "").strip() or None,
     }
 
 

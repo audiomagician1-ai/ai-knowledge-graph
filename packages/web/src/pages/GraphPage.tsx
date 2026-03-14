@@ -1,12 +1,13 @@
 import { useEffect, useState, lazy, Suspense, useMemo } from 'react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
+import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
 import type { GraphNode, GraphData } from '@akg/shared';
 import { GRAPH_VISUAL } from '@akg/shared';
 import { ChatPanel } from '@/components/chat/ChatPanel';
 import {
   Search, X, Star, ChevronRight, Clock, BookOpen, Zap,
-  Layers, Filter, Compass, Trophy,
+  Filter, Trophy, Loader,
 } from 'lucide-react';
 
 const KnowledgeGraph = lazy(() =>
@@ -20,7 +21,8 @@ export function GraphPage() {
     graphData, loading, selectedNode, activeSubdomain,
     setGraphData, selectNode, setActiveSubdomain, setLoading, setError,
   } = useGraphStore();
-  const { progress, computeStats, refreshStreak, initEdges, recommendedIds, newlyUnlockedIds, clearNewlyUnlocked } = useLearningStore();
+  const { progress, computeStats, refreshStreak, initEdges, recommendedIds } = useLearningStore();
+  const isDesktop = useIsDesktop();
   const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -32,11 +34,7 @@ export function GraphPage() {
       nodes: graphData.nodes.map((n) => {
         const p = progress[n.id];
         const isRecommended = recommendedIds.has(n.id);
-        return {
-          ...n,
-          status: p ? p.status : n.status,
-          is_recommended: isRecommended,
-        };
+        return { ...n, status: p ? p.status : n.status, is_recommended: isRecommended };
       }),
     };
   }, [graphData, progress, recommendedIds]);
@@ -45,7 +43,6 @@ export function GraphPage() {
     if (graphData) {
       refreshStreak();
       computeStats(graphData.nodes.length);
-      // Initialize prerequisite edges for unlocking logic
       const prereqEdges = graphData.edges
         .filter((e) => e.relation_type === 'prerequisite')
         .map((e) => ({ source: e.source, target: e.target }));
@@ -53,26 +50,17 @@ export function GraphPage() {
     }
   }, [graphData]);
 
-  // Recompute stats when progress changes (but don't re-init edges)
-  useEffect(() => {
-    if (graphData) computeStats(graphData.nodes.length);
-  }, [progress]);
+  useEffect(() => { if (graphData) computeStats(graphData.nodes.length); }, [progress]);
 
-  useEffect(() => {
-    loadGraph();
-    loadSubdomains();
-  }, []);
+  useEffect(() => { loadGraph(); loadSubdomains(); }, []);
 
   const loadGraph = async () => {
     setLoading(true);
     try {
       const res = await fetch('/api/graph/data');
       if (!res.ok) throw new Error('Failed to fetch graph');
-      const data = await res.json();
-      setGraphData(data);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unknown error');
-    }
+      setGraphData(await res.json());
+    } catch (err) { setError(err instanceof Error ? err.message : 'Unknown error'); }
   };
 
   const loadSubdomains = async () => {
@@ -82,15 +70,12 @@ export function GraphPage() {
     } catch { /* ignore */ }
   };
 
-  const handleNodeClick = (node: GraphNode) => {
-    selectNode(node?.id ? node : null);
-  };
+  const handleNodeClick = (node: GraphNode) => selectNode(node?.id ? node : null);
 
   const difficultyLabel = (d: number) => {
     if (d <= 3) return { text: '入门', color: 'var(--color-accent-emerald)' };
     if (d <= 6) return { text: '进阶', color: 'var(--color-accent-amber)' };
-    if (d <= 9) return { text: '高级', color: '#f97316' };
-    return { text: '专家', color: 'var(--color-accent-rose)' };
+    return { text: '高级', color: 'var(--color-accent-rose)' };
   };
 
   const searchResults = useMemo(() => {
@@ -101,78 +86,32 @@ export function GraphPage() {
       .slice(0, 8);
   }, [searchQuery, enrichedGraphData]);
 
-  const milestoneCount = enrichedGraphData?.nodes.filter(n => n.is_milestone).length || 0;
-  const masteredCount = Object.values(progress).filter(p => p.status === 'mastered').length;
-  const totalNodes = enrichedGraphData?.nodes.length || 0;
-
   return (
     <div className="relative flex h-full w-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-0)' }}>
 
-      {/* ── Graph Canvas (fills everything behind overlays) ── */}
+      {/* ── 3D Graph Canvas ── */}
       <div className="absolute inset-0">
         {loading ? (
-          <div className="flex items-center justify-center h-full">
-            <div className="flex flex-col items-center gap-4 animate-fade-in">
-              <div className="relative">
-                <div
-                  className="w-14 h-14 rounded-full animate-spin"
-                  style={{
-                    border: '3px solid var(--color-surface-3)',
-                    borderTopColor: 'var(--color-accent-indigo)',
-                  }}
-                />
-                <Compass
-                  size={22}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  style={{ color: 'var(--color-accent-indigo)' }}
-                />
-              </div>
-              <div className="text-center">
-                <p className="text-base font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                  正在构建知识图谱...
-                </p>
-                <p className="text-sm mt-1" style={{ color: 'var(--color-text-tertiary)' }}>
-                  Loading knowledge graph
-                </p>
-              </div>
+          <div className="flex items-center justify-center h-full animate-fade-in">
+            <div className="flex flex-col items-center gap-3">
+              <Loader size={24} className="animate-spin" style={{ color: 'var(--color-accent-primary)' }} />
+              <p className="text-[13px]" style={{ color: 'var(--color-text-tertiary)' }}>加载知识图谱...</p>
             </div>
           </div>
         ) : !enrichedGraphData || enrichedGraphData.nodes.length === 0 ? (
-          <div className="flex items-center justify-center h-full">
-            <div className="text-center animate-fade-in max-w-md px-8">
-              <div
-                className="w-20 h-20 rounded-2xl mx-auto mb-6 flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet))',
-                  boxShadow: '0 8px 32px rgba(99, 102, 241, 0.3)',
-                }}
-              >
-                <Compass size={36} className="text-white" />
-              </div>
-              <h2 className="text-xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
-                欢迎来到知识图谱
-              </h2>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
-                请确保后端服务已启动。知识图谱将展示 AI 工程相关概念及其关联关系。
+          <div className="flex items-center justify-center h-full animate-fade-in">
+            <div className="text-center max-w-sm">
+              <h2 className="text-lg font-semibold mb-2">知识图谱</h2>
+              <p className="text-[13px]" style={{ color: 'var(--color-text-tertiary)' }}>
+                请确保后端服务已启动。
               </p>
             </div>
           </div>
         ) : (
           <Suspense
             fallback={
-              <div className="flex items-center justify-center h-full">
-                <div className="flex flex-col items-center gap-4 animate-fade-in">
-                  <div
-                    className="w-14 h-14 rounded-full animate-spin"
-                    style={{
-                      border: '3px solid var(--color-surface-3)',
-                      borderTopColor: 'var(--color-accent-violet)',
-                    }}
-                  />
-                  <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-                    初始化 3D 图谱...
-                  </p>
-                </div>
+              <div className="flex items-center justify-center h-full animate-fade-in">
+                <Loader size={24} className="animate-spin" style={{ color: 'var(--color-text-tertiary)' }} />
               </div>
             }
           >
@@ -186,55 +125,41 @@ export function GraphPage() {
         )}
       </div>
 
-      {/* ── Top bar overlay ── */}
+      {/* ── Top bar ── */}
       <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none">
-        <div className="flex items-center gap-3 p-4 pointer-events-auto">
+        <div className="flex items-center gap-2 p-3 pointer-events-auto">
           {/* Search */}
-          <div className="relative flex-1 max-w-md">
-            <div className="glass-heavy flex items-center gap-2.5 rounded-xl px-4 h-12">
-              <Search size={17} style={{ color: 'var(--color-text-tertiary)', flexShrink: 0 }} />
+          <div className="relative flex-1 max-w-sm">
+            <div className="glass-heavy flex items-center gap-2 rounded-lg px-3 h-9">
+              <Search size={14} style={{ color: 'var(--color-text-tertiary)', flexShrink: 0 }} />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="搜索概念节点..."
-                className="flex-1 bg-transparent text-sm outline-none"
+                placeholder="搜索..."
+                className="flex-1 bg-transparent text-[13px] outline-none"
                 style={{ color: 'var(--color-text-primary)' }}
               />
               {searchQuery && (
                 <button onClick={() => setSearchQuery('')} className="shrink-0">
-                  <X size={15} style={{ color: 'var(--color-text-tertiary)' }} />
+                  <X size={13} style={{ color: 'var(--color-text-tertiary)' }} />
                 </button>
               )}
             </div>
-
-            {/* Search results */}
             {searchResults.length > 0 && (
-              <div
-                className="absolute top-full left-0 right-0 mt-2 glass-heavy rounded-xl overflow-hidden animate-fade-in-scale"
-                style={{ maxHeight: 320, overflowY: 'auto' }}
-              >
+              <div className="absolute top-full left-0 right-0 mt-1 glass-heavy rounded-lg overflow-hidden animate-fade-in-scale" style={{ maxHeight: 280, overflowY: 'auto' }}>
                 {searchResults.map((node) => (
                   <button
                     key={node.id}
                     onClick={() => { selectNode(node); setSearchQuery(''); }}
-                    className="w-full text-left flex items-center gap-3 px-4 py-3 transition-colors"
+                    className="w-full text-left flex items-center gap-2.5 px-3 py-2 transition-colors text-[13px]"
                     style={{ borderBottom: '1px solid var(--color-border-subtle)' }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
                   >
-                    {node.is_milestone && (
-                      <Star size={15} fill="var(--color-accent-amber)" style={{ color: 'var(--color-accent-amber)', flexShrink: 0 }} />
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-medium truncate" style={{ color: 'var(--color-text-primary)' }}>
-                        {node.label}
-                      </div>
-                      <div className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
-                        {node.subdomain_id.replace(/-/g, ' ')}
-                      </div>
-                    </div>
-                    <ChevronRight size={15} style={{ color: 'var(--color-text-tertiary)', flexShrink: 0 }} />
+                    {node.is_milestone && <Star size={12} fill="var(--color-accent-amber)" style={{ color: 'var(--color-accent-amber)' }} />}
+                    <span className="flex-1 truncate" style={{ color: 'var(--color-text-primary)' }}>{node.label}</span>
+                    <ChevronRight size={12} style={{ color: 'var(--color-text-tertiary)' }} />
                   </button>
                 ))}
               </div>
@@ -244,74 +169,41 @@ export function GraphPage() {
           {/* Filter toggle */}
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="glass-heavy flex items-center gap-2 rounded-xl px-4 h-12 transition-all"
-            style={{
-              borderColor: showFilters ? 'var(--color-accent-indigo)' : undefined,
-              color: showFilters ? 'var(--color-accent-indigo)' : 'var(--color-text-secondary)',
-            }}
+            className="glass-heavy flex items-center gap-1.5 rounded-lg px-3 h-9 transition-all"
+            style={{ color: showFilters ? 'var(--color-accent-primary)' : 'var(--color-text-tertiary)' }}
           >
-            <Filter size={16} />
-            <span className="text-sm font-medium">筛选</span>
+            <Filter size={13} />
+            <span className="text-[12px] font-medium">筛选</span>
           </button>
-
-          {/* Stats pills */}
-          <div className="hidden lg:flex items-center gap-2">
-            <div className="glass-heavy rounded-xl px-4 h-12 flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-sm">
-                <Layers size={15} style={{ color: 'var(--color-accent-indigo)' }} />
-                <span style={{ color: 'var(--color-text-secondary)' }}>{totalNodes}</span>
-              </span>
-              <span className="w-px h-5" style={{ backgroundColor: 'var(--color-border)' }} />
-              <span className="flex items-center gap-1.5 text-sm">
-                <Star size={15} style={{ color: 'var(--color-accent-amber)' }} />
-                <span style={{ color: 'var(--color-text-secondary)' }}>{milestoneCount}</span>
-              </span>
-              {masteredCount > 0 && (
-                <>
-                  <span className="w-px h-5" style={{ backgroundColor: 'var(--color-border)' }} />
-                  <span className="flex items-center gap-1.5 text-sm">
-                    <Zap size={15} style={{ color: 'var(--color-accent-emerald)' }} />
-                    <span style={{ color: 'var(--color-accent-emerald)' }}>{masteredCount}</span>
-                  </span>
-                </>
-              )}
-            </div>
-          </div>
         </div>
 
-        {/* Subdomain filter tabs */}
+        {/* Subdomain tabs */}
         {showFilters && subdomains.length > 0 && (
-          <div className="px-4 pb-3 pointer-events-auto animate-fade-in">
-            <div className="glass-heavy rounded-xl p-2 flex gap-1.5 overflow-x-auto no-scrollbar">
+          <div className="px-3 pb-2 pointer-events-auto animate-fade-in">
+            <div className="glass-heavy rounded-lg p-1.5 flex gap-1 overflow-x-auto no-scrollbar">
               <button
                 onClick={() => setActiveSubdomain(null)}
-                className="shrink-0 rounded-lg px-3 py-2 text-sm font-medium transition-all"
+                className="shrink-0 rounded-md px-2.5 py-1.5 text-[12px] font-medium transition-all"
                 style={{
-                  backgroundColor: !activeSubdomain ? 'var(--color-accent-indigo)' : 'transparent',
-                  color: !activeSubdomain ? '#fff' : 'var(--color-text-secondary)',
+                  backgroundColor: !activeSubdomain ? 'var(--color-accent-primary)' : 'transparent',
+                  color: !activeSubdomain ? '#0a0c10' : 'var(--color-text-tertiary)',
                 }}
-              >
-                全部
-              </button>
+              >全部</button>
               {subdomains.map((sd) => {
                 const isActive = activeSubdomain === sd.id;
-                const sdColor = SUBDOMAIN_COLORS[sd.id] || 'var(--color-accent-indigo)';
+                const sdColor = SUBDOMAIN_COLORS[sd.id] || 'var(--color-accent-primary)';
                 return (
                   <button
                     key={sd.id}
                     onClick={() => setActiveSubdomain(isActive ? null : sd.id)}
-                    className="shrink-0 rounded-lg px-3 py-2 text-sm font-medium transition-all flex items-center gap-1.5"
+                    className="shrink-0 rounded-md px-2.5 py-1.5 text-[12px] font-medium transition-all flex items-center gap-1"
                     style={{
                       backgroundColor: isActive ? sdColor : 'transparent',
-                      color: isActive ? '#fff' : 'var(--color-text-secondary)',
+                      color: isActive ? '#fff' : 'var(--color-text-tertiary)',
                     }}
                   >
-                    <span
-                      className="w-2.5 h-2.5 rounded-full shrink-0"
-                      style={{ backgroundColor: sdColor, opacity: isActive ? 0 : 1 }}
-                    />
+                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: sdColor, opacity: isActive ? 0 : 0.7 }} />
                     {sd.name}
-                    <span className="opacity-60">{sd.concept_count}</span>
                   </button>
                 );
               })}
@@ -321,112 +213,83 @@ export function GraphPage() {
       </div>
 
       {/* ── Legend (bottom-left) ── */}
-      <div className="absolute bottom-4 left-4 z-10">
-        <div className="glass-heavy rounded-xl px-4 py-3">
-          <div className="flex items-center gap-5">
-            <span className="flex items-center gap-2">
-              <span className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: 'var(--color-accent-amber)', border: '2px solid #f59e0b', boxShadow: '0 0 10px rgba(251, 191, 36, 0.5)' }} />
-              <span className="text-xs font-medium" style={{ color: 'var(--color-accent-amber)' }}>里程碑</span>
+      <div className="absolute bottom-3 left-3 z-10">
+        <div className="glass-heavy rounded-lg px-3 py-2 flex items-center gap-4">
+          {[
+            { label: '里程碑', color: 'var(--color-accent-amber)' },
+            { label: '推荐', color: '#22d3ee' },
+            { label: '学习中', color: '#f59e0b' },
+            { label: '已掌握', color: 'var(--color-accent-emerald)' },
+          ].map(({ label, color }) => (
+            <span key={label} className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
+              <span className="text-[11px]" style={{ color }}>{label}</span>
             </span>
-            <span className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: '#22d3ee', boxShadow: '0 0 8px rgba(34, 211, 238, 0.5)' }} />
-              <span className="text-xs" style={{ color: '#22d3ee' }}>推荐学习</span>
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: 'var(--color-text-tertiary)' }} />
-              <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>未学习</span>
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: '#f59e0b' }} />
-              <span className="text-xs" style={{ color: '#f59e0b' }}>学习中</span>
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: 'var(--color-accent-emerald)', boxShadow: '0 0 8px rgba(52, 211, 153, 0.5)' }} />
-              <span className="text-xs" style={{ color: 'var(--color-accent-emerald)' }}>已掌握</span>
-            </span>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* ── Right Panel: Node Info + Mastery Stats + Inline Chat ── */}
+      {/* ── Right Panel ── */}
       {selectedNode && (
-        <div className="absolute top-3 right-3 bottom-3 z-10 w-[680px] animate-slide-in-right">
-          <div className="glass-heavy rounded-2xl h-full flex flex-col overflow-hidden">
-            {/* ─ Panel Header: node info ─ */}
+        <div
+          className={`z-10 animate-slide-in-right ${
+            isDesktop
+              ? 'absolute top-2 right-2 bottom-2 w-[560px]'
+              : 'fixed inset-0'
+          }`}
+        >
+          <div className="glass-heavy rounded-xl h-full flex flex-col overflow-hidden">
+            {/* Panel Header */}
             <div className="px-4 pt-4 pb-3 shrink-0" style={{ borderBottom: '1px solid var(--color-border)' }}>
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex items-start justify-between gap-2">
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    {selectedNode.is_milestone && (
-                      <Star size={17} fill="var(--color-accent-amber)" style={{ color: 'var(--color-accent-amber)' }} />
-                    )}
-                    <h3 className="text-base font-bold truncate" style={{ color: 'var(--color-text-primary)' }}>
-                      {selectedNode.label}
-                    </h3>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    {selectedNode.is_milestone && <Star size={14} fill="var(--color-accent-amber)" style={{ color: 'var(--color-accent-amber)' }} />}
+                    <h3 className="text-[15px] font-semibold truncate">{selectedNode.label}</h3>
                   </div>
-                  <div className="flex items-center gap-2 flex-wrap">
+                  <div className="flex items-center gap-1.5 flex-wrap">
                     {(() => {
                       const diff = difficultyLabel(selectedNode.difficulty);
                       return (
-                        <span
-                          className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-semibold"
-                          style={{ backgroundColor: diff.color + '18', color: diff.color }}
-                        >
-                          {diff.text} Lv.{selectedNode.difficulty}
+                        <span className="inline-flex items-center gap-1 rounded px-1.5 py-px text-[11px] font-medium"
+                          style={{ backgroundColor: diff.color + '15', color: diff.color }}>
+                          Lv.{selectedNode.difficulty} {diff.text}
                         </span>
                       );
                     })()}
                     {selectedNode.estimated_minutes && (
-                      <span className="inline-flex items-center gap-1 text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
-                        <Clock size={12} />
-                        {selectedNode.estimated_minutes}分钟
+                      <span className="inline-flex items-center gap-1 text-[11px]" style={{ color: 'var(--color-text-tertiary)' }}>
+                        <Clock size={10} /> {selectedNode.estimated_minutes}min
                       </span>
                     )}
-                    {/* Subdomain badge */}
-                    <span
-                      className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs"
-                      style={{
-                        backgroundColor: (SUBDOMAIN_COLORS[selectedNode.subdomain_id] || '#6366f1') + '18',
-                        color: SUBDOMAIN_COLORS[selectedNode.subdomain_id] || '#6366f1',
-                      }}
-                    >
-                      <span
-                        className="w-2 h-2 rounded-full"
-                        style={{ backgroundColor: SUBDOMAIN_COLORS[selectedNode.subdomain_id] || '#6366f1' }}
-                      />
-                      {selectedNode.subdomain_id.replace(/-/g, ' ')}
-                    </span>
-                    {/* Status badge */}
                     {progress[selectedNode.id]?.status === 'mastered' ? (
-                      <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: 'var(--color-accent-emerald)' }}>
-                        <Trophy size={12} /> 已掌握
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium" style={{ color: 'var(--color-accent-emerald)' }}>
+                        <Trophy size={10} /> 已掌握
                       </span>
                     ) : progress[selectedNode.id]?.status === 'learning' ? (
-                      <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: '#f59e0b' }}>
-                        <BookOpen size={12} /> 学习中
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium" style={{ color: '#f59e0b' }}>
+                        <BookOpen size={10} /> 学习中
                       </span>
                     ) : selectedNode.is_recommended ? (
-                      <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: '#22d3ee' }}>
-                        <Zap size={12} /> 推荐学习
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium" style={{ color: '#22d3ee' }}>
+                        <Zap size={10} /> 推荐
                       </span>
                     ) : null}
                   </div>
                 </div>
                 <button
                   onClick={() => selectNode(null)}
-                  className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg transition-colors"
+                  className="shrink-0 w-7 h-7 flex items-center justify-center rounded-md transition-colors"
                   style={{ color: 'var(--color-text-tertiary)' }}
                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
                   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
                 >
-                  <X size={16} />
+                  <X size={14} />
                 </button>
               </div>
-
-              {/* ── Compact mastery overview — removed, now in ChatPanel idle view ── */}
             </div>
 
-            {/* ─ Panel Body: Inline Chat ─ */}
+            {/* Chat Panel */}
             <div className="flex-1 min-h-0 overflow-hidden">
               <ChatPanel conceptId={selectedNode.id} conceptName={selectedNode.label} />
             </div>

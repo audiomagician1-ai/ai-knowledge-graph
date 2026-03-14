@@ -31,7 +31,11 @@ importers:
         specifier: ^8.1.0
         version: 8.2.0
 
-  packages/shared: {}
+  packages/shared:
+    devDependencies:
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
 
   packages/web:
     dependencies:

@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { useSettingsStore, PROVIDER_INFO, getLLMHeaders } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
 import {
-  Eye, EyeOff, Check, Trash2, ChevronDown, Shield,
-  Key, Server, Cpu, ExternalLink, Info, Wifi, WifiOff, Loader2,
+  Eye, EyeOff, Check, Trash2, Shield,
+  Key, Server, Cpu, Wifi, WifiOff, Loader2, Globe, Box,
+  Info, Download, Network,
 } from 'lucide-react';
+import { useGraphStore } from '@/lib/store/graph';
+import { useLearningStore } from '@/lib/store/learning';
 
-const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek'];
+const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek', 'custom'];
 
 export function SettingsPage() {
   const { llmConfig, setLLMConfig, clearApiKey } = useSettingsStore();
@@ -14,6 +17,10 @@ export function SettingsPage() {
   const [saved, setSaved] = useState(false);
   const [testStatus, setTestStatus] = useState<'idle' | 'testing' | 'success' | 'error'>('idle');
   const [testMessage, setTestMessage] = useState('');
+  const { graphData } = useGraphStore();
+  const { progress, history, streak } = useLearningStore();
+  const totalNodes = graphData?.nodes.length || 0;
+  const masteredCount = Object.values(progress).filter(p => p.status === 'mastered').length;
 
   const handleSave = () => {
     setSaved(true);
@@ -30,7 +37,6 @@ export function SettingsPage() {
     setTestMessage('');
     try {
       const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
-      // Create a quick test conversation to verify the key works
       const res = await fetch(`${API_BASE}/dialogue/conversations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
@@ -38,280 +44,268 @@ export function SettingsPage() {
       });
       if (res.ok) {
         setTestStatus('success');
-        setTestMessage('连接成功！API Key 有效');
+        setTestMessage('连接成功，API 可用');
         setTimeout(() => setTestStatus('idle'), 4000);
       } else {
         const data = await res.json().catch(() => ({}));
         setTestStatus('error');
-        setTestMessage(data.detail || `连接失败 (${res.status})`);
+        setTestMessage(data.detail || `HTTP ${res.status}`);
       }
     } catch (err) {
       setTestStatus('error');
-      setTestMessage(err instanceof Error ? err.message : '网络错误，请检查后端是否运行');
+      setTestMessage(err instanceof Error ? err.message : '网络错误');
     }
   };
 
-  const maskedKey = llmConfig.apiKey
-    ? llmConfig.apiKey.slice(0, 8) + '•'.repeat(Math.max(0, llmConfig.apiKey.length - 12)) + llmConfig.apiKey.slice(-4)
-    : '';
+  const info = PROVIDER_INFO[llmConfig.provider];
 
   return (
     <div className="h-full overflow-y-auto" style={{ backgroundColor: 'var(--color-surface-0)' }}>
-      <div className="max-w-2xl mx-auto px-8 py-8">
+      <div className="max-w-xl mx-auto px-6 py-8">
 
-        {/* Page header */}
+        {/* Header */}
         <div className="mb-8 animate-fade-in">
-          <h1 className="text-2xl font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>
-            设置
-          </h1>
-          <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-            Configure your LLM provider and API credentials
+          <h1 className="text-xl font-semibold mb-1">API 设置</h1>
+          <p className="text-[13px]" style={{ color: 'var(--color-text-tertiary)' }}>
+            配置 LLM 服务以启用对话功能
           </p>
         </div>
 
-        {/* LLM Configuration Card */}
-        <div className="card-static rounded-2xl overflow-hidden mb-6 animate-fade-in stagger-1">
-          {/* Card header */}
-          <div
-            className="px-6 py-4 flex items-center gap-3"
-            style={{
-              borderBottom: '1px solid var(--color-border)',
-              background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(139, 92, 246, 0.04))',
-            }}
-          >
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet))',
-              }}
-            >
-              <Cpu size={16} className="text-white" />
-            </div>
-            <div>
-              <h2 className="text-[15px] font-bold" style={{ color: 'var(--color-text-primary)' }}>
-                LLM 配置
-              </h2>
-              <p className="text-[12px]" style={{ color: 'var(--color-text-tertiary)' }}>
-                配置 API Key 启用费曼对话功能
-              </p>
-            </div>
+        {/* Provider Selection */}
+        <div className="mb-6 animate-fade-in stagger-1">
+          <label className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+            <Server size={11} />
+            服务商
+          </label>
+          <div className="grid grid-cols-4 gap-2">
+            {PROVIDERS.map((p) => {
+              const pInfo = PROVIDER_INFO[p];
+              const isActive = llmConfig.provider === p;
+              return (
+                <button
+                  key={p}
+                  onClick={() => setLLMConfig({ provider: p })}
+                  className="rounded-lg py-2.5 px-3 text-center transition-all"
+                  style={{
+                    backgroundColor: isActive ? 'var(--color-surface-3)' : 'var(--color-surface-2)',
+                    border: isActive ? '1px solid var(--color-accent-primary)' : '1px solid var(--color-border)',
+                    color: isActive ? 'var(--color-accent-primary)' : 'var(--color-text-secondary)',
+                  }}
+                >
+                  <div className="text-[13px] font-semibold">{pInfo.name}</div>
+                </button>
+              );
+            })}
           </div>
+          <p className="text-[12px] mt-2" style={{ color: 'var(--color-text-tertiary)' }}>
+            {info.hint}
+          </p>
+        </div>
 
-          <div className="px-6 py-5 space-y-5">
-            {/* Provider Selection */}
-            <div>
-              <label
-                className="text-[11px] font-mono font-semibold uppercase tracking-wider mb-3 flex items-center gap-1.5"
+        {/* API Key */}
+        <div className="mb-5 animate-fade-in stagger-2">
+          <label className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+            <Key size={11} />
+            API Key
+          </label>
+          <div
+            className="flex items-center rounded-lg overflow-hidden"
+            style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
+          >
+            <input
+              type={showKey ? 'text' : 'password'}
+              value={llmConfig.apiKey}
+              onChange={(e) => setLLMConfig({ apiKey: e.target.value })}
+              placeholder={info.placeholder}
+              className="flex-1 bg-transparent px-3.5 py-2.5 text-[13px] outline-none font-mono"
+              style={{ color: 'var(--color-text-primary)', border: 'none' }}
+            />
+            <button
+              onClick={() => setShowKey(!showKey)}
+              className="px-3 shrink-0"
+              style={{ color: 'var(--color-text-tertiary)' }}
+            >
+              {showKey ? <EyeOff size={14} /> : <Eye size={14} />}
+            </button>
+            {llmConfig.apiKey && (
+              <button
+                onClick={clearApiKey}
+                className="px-3 shrink-0"
                 style={{ color: 'var(--color-text-tertiary)' }}
               >
-                <Server size={12} />
-                Provider
-              </label>
-              <div className="grid grid-cols-3 gap-2">
-                {PROVIDERS.map((p) => {
-                  const info = PROVIDER_INFO[p];
-                  const isActive = llmConfig.provider === p;
-                  return (
-                    <button
-                      key={p}
-                      onClick={() => setLLMConfig({ provider: p })}
-                      className="rounded-xl py-3 px-4 text-left transition-all"
-                      style={{
-                        backgroundColor: isActive ? 'var(--color-surface-4)' : 'var(--color-surface-3)',
-                        border: isActive ? '1px solid var(--color-accent-indigo)' : '1px solid var(--color-border)',
-                        boxShadow: isActive ? '0 0 0 1px var(--color-accent-indigo), 0 0 12px var(--color-glow-indigo)' : 'none',
-                      }}
-                    >
-                      <div className="text-[13px] font-semibold mb-0.5" style={{ color: isActive ? 'var(--color-accent-indigo)' : 'var(--color-text-primary)' }}>
-                        {info.name}
-                      </div>
-                      <div className="text-[11px]" style={{ color: 'var(--color-text-tertiary)' }}>
-                        {p === 'openrouter' ? '多模型路由' : p === 'openai' ? 'GPT 系列' : 'DeepSeek 系列'}
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-              <p className="text-[12px] mt-2 flex items-start gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
-                <Info size={12} className="shrink-0 mt-0.5" />
-                {PROVIDER_INFO[llmConfig.provider].hint}
-              </p>
-            </div>
-
-            {/* API Key Input */}
-            <div>
-              <label
-                className="text-[11px] font-mono font-semibold uppercase tracking-wider mb-3 flex items-center gap-1.5"
-                style={{ color: 'var(--color-text-tertiary)' }}
-              >
-                <Key size={12} />
-                API Key
-              </label>
-              <div
-                className="flex items-center rounded-xl overflow-hidden transition-all"
-                style={{
-                  backgroundColor: 'var(--color-surface-3)',
-                  border: '1px solid var(--color-border)',
-                }}
-              >
-                <input
-                  type={showKey ? 'text' : 'password'}
-                  value={llmConfig.apiKey}
-                  onChange={(e) => setLLMConfig({ apiKey: e.target.value })}
-                  placeholder={PROVIDER_INFO[llmConfig.provider].placeholder}
-                  className="flex-1 bg-transparent px-4 py-3 text-[14px] outline-none font-mono"
-                  style={{ color: 'var(--color-text-primary)', border: 'none' }}
-                />
-                <button
-                  onClick={() => setShowKey(!showKey)}
-                  className="px-3 h-full transition-colors"
-                  style={{ color: 'var(--color-text-tertiary)' }}
-                >
-                  {showKey ? <EyeOff size={16} /> : <Eye size={16} />}
-                </button>
-              </div>
-
-              {/* Key status */}
-              {llmConfig.apiKey && (
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: 'var(--color-accent-emerald)' }} />
-                  <span className="text-[12px] font-mono" style={{ color: 'var(--color-accent-emerald)' }}>
-                    已配置: {maskedKey}
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Advanced: Custom Model */}
-            <details className="group">
-              <summary
-                className="flex items-center gap-2 cursor-pointer select-none"
-                style={{ color: 'var(--color-text-tertiary)' }}
-              >
-                <ChevronDown size={14} className="transition-transform group-open:rotate-180" />
-                <span className="text-[12px] font-medium">高级选项</span>
-              </summary>
-              <div className="mt-3 pl-6">
-                <label
-                  className="text-[11px] font-mono font-semibold uppercase tracking-wider mb-2 block"
-                  style={{ color: 'var(--color-text-tertiary)' }}
-                >
-                  Custom Model Override
-                </label>
-                <input
-                  type="text"
-                  value={llmConfig.model || ''}
-                  onChange={(e) => setLLMConfig({ model: e.target.value })}
-                  placeholder={
-                    llmConfig.provider === 'openrouter' ? 'openai/gpt-4o' :
-                    llmConfig.provider === 'openai' ? 'gpt-4o' :
-                    'deepseek-chat'
-                  }
-                  className="w-full rounded-xl px-4 py-2.5 text-[14px] font-mono outline-none"
-                  style={{
-                    backgroundColor: 'var(--color-surface-3)',
-                    color: 'var(--color-text-primary)',
-                    border: '1px solid var(--color-border)',
-                  }}
-                />
-                <p className="text-[11px] mt-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
-                  留空使用默认模型
-                </p>
-              </div>
-            </details>
-
-            {/* Action buttons */}
-            <div className="flex gap-3 pt-2">
-              <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2">
-                {saved ? <><Check size={16} /> 已保存</> : '保存配置'}
+                <Trash2 size={14} />
               </button>
-              {llmConfig.apiKey && (
-                <button
-                  onClick={handleTestConnection}
-                  disabled={testStatus === 'testing'}
-                  className="btn-ghost flex items-center gap-2 px-5"
-                  style={{
-                    color: testStatus === 'success' ? 'var(--color-accent-emerald)'
-                      : testStatus === 'error' ? 'var(--color-accent-rose)'
-                      : undefined,
-                  }}
-                >
-                  {testStatus === 'testing' ? <Loader2 size={14} className="animate-spin" />
-                    : testStatus === 'success' ? <Wifi size={14} />
-                    : testStatus === 'error' ? <WifiOff size={14} />
-                    : <Wifi size={14} />}
-                  {testStatus === 'testing' ? '测试中...'
-                    : testStatus === 'success' ? '连接正常'
-                    : testStatus === 'error' ? '连接失败'
-                    : '测试连接'}
-                </button>
-              )}
-              {llmConfig.apiKey && (
-                <button onClick={clearApiKey} className="btn-ghost flex items-center gap-2 px-4">
-                  <Trash2 size={14} />
-                </button>
-              )}
-            </div>
-            {testMessage && testStatus !== 'idle' && (
-              <p
-                className="text-[12px] mt-1"
-                style={{ color: testStatus === 'success' ? 'var(--color-accent-emerald)' : 'var(--color-accent-rose)' }}
-              >
-                {testMessage}
-              </p>
             )}
           </div>
         </div>
 
-        {/* Usage Guide Card */}
-        <div className="card-static rounded-2xl overflow-hidden mb-6 animate-fade-in stagger-2">
-          <div className="px-6 py-5">
-            <h2 className="text-[15px] font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-              使用说明
-            </h2>
-            <div className="space-y-3">
-              {[
-                { step: '01', text: '选择你的 LLM 服务商并输入 API Key' },
-                { step: '02', text: '回到知识图谱，点击任意节点的"开始学习"' },
-                { step: '03', text: 'AI 会作为好奇的学生，向你提问来帮你理解概念' },
-                { step: '04', text: '对话 4 轮后可点击"评估"获取理解度打分' },
-              ].map(({ step, text }) => (
-                <div key={step} className="flex items-start gap-3">
-                  <span
-                    className="text-[11px] font-mono font-bold shrink-0 mt-0.5"
-                    style={{ color: 'var(--color-accent-indigo)' }}
-                  >
-                    {step}
-                  </span>
-                  <span className="text-[13px] leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-                    {text}
-                  </span>
-                </div>
-              ))}
-            </div>
+        {/* Base URL (always shown — gives power users full control) */}
+        <div className="mb-5 animate-fade-in stagger-3">
+          <label className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+            <Globe size={11} />
+            API Base URL
+          </label>
+          <input
+            type="text"
+            value={llmConfig.baseUrl || ''}
+            onChange={(e) => setLLMConfig({ baseUrl: e.target.value })}
+            placeholder={info.defaultBase || 'https://your-api.example.com/v1'}
+            className="w-full rounded-lg px-3.5 py-2.5 text-[13px] font-mono outline-none"
+            style={{
+              backgroundColor: 'var(--color-surface-2)',
+              color: 'var(--color-text-primary)',
+              border: '1px solid var(--color-border)',
+            }}
+          />
+          <p className="text-[11px] mt-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+            留空使用默认地址{info.defaultBase ? `（${info.defaultBase}）` : ''}。支持内网 / 代理 / OneAPI 等 OpenAI 兼容接口。
+          </p>
+        </div>
+
+        {/* Model */}
+        <div className="mb-6 animate-fade-in stagger-4">
+          <label className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+            <Box size={11} />
+            模型名称
+          </label>
+          <input
+            type="text"
+            value={llmConfig.model || ''}
+            onChange={(e) => setLLMConfig({ model: e.target.value })}
+            placeholder={
+              llmConfig.provider === 'openrouter' ? 'openai/gpt-4o' :
+              llmConfig.provider === 'openai' ? 'gpt-4o' :
+              llmConfig.provider === 'deepseek' ? 'deepseek-chat' :
+              'your-model-name'
+            }
+            className="w-full rounded-lg px-3.5 py-2.5 text-[13px] font-mono outline-none"
+            style={{
+              backgroundColor: 'var(--color-surface-2)',
+              color: 'var(--color-text-primary)',
+              border: '1px solid var(--color-border)',
+            }}
+          />
+          <p className="text-[11px] mt-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+            留空使用默认模型。自定义服务商必须填写。
+          </p>
+        </div>
+
+        {/* Action row */}
+        <div className="flex gap-2.5 mb-5 animate-fade-in stagger-5">
+          <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2">
+            {saved ? <><Check size={14} /> 已保存</> : '保存配置'}
+          </button>
+          {llmConfig.apiKey && (
+            <button
+              onClick={handleTestConnection}
+              disabled={testStatus === 'testing'}
+              className="btn-ghost flex items-center gap-2 px-4"
+              style={{
+                color: testStatus === 'success' ? 'var(--color-accent-emerald)'
+                  : testStatus === 'error' ? 'var(--color-accent-rose)'
+                  : undefined,
+              }}
+            >
+              {testStatus === 'testing' ? <Loader2 size={14} className="animate-spin" />
+                : testStatus === 'success' ? <Wifi size={14} />
+                : testStatus === 'error' ? <WifiOff size={14} />
+                : <Wifi size={14} />}
+              {testStatus === 'testing' ? '测试...'
+                : testStatus === 'success' ? '可用'
+                : testStatus === 'error' ? '失败'
+                : '测试连接'}
+            </button>
+          )}
+        </div>
+
+        {testMessage && testStatus !== 'idle' && (
+          <p
+            className="text-[12px] mb-5 rounded-lg px-3.5 py-2.5"
+            style={{
+              color: testStatus === 'success' ? 'var(--color-accent-emerald)' : 'var(--color-accent-rose)',
+              backgroundColor: testStatus === 'success' ? 'rgba(52,211,153,0.06)' : 'rgba(244,63,94,0.06)',
+              border: `1px solid ${testStatus === 'success' ? 'rgba(52,211,153,0.12)' : 'rgba(244,63,94,0.12)'}`,
+            }}
+          >
+            {testMessage}
+          </p>
+        )}
+
+        {/* How to use */}
+        <div className="card-static p-5 mb-5 animate-fade-in stagger-5">
+          <h3 className="text-[13px] font-semibold mb-3" style={{ color: 'var(--color-text-primary)' }}>
+            使用流程
+          </h3>
+          <div className="space-y-2">
+            {[
+              '选择服务商并输入 API Key（自定义需填写 Base URL + 模型名）',
+              '回到图谱页面，点击任意知识节点',
+              'AI 先讲解概念，然后向你提问，你来解答',
+              '对话 4 轮后可请求评估，获得掌握度打分',
+            ].map((text, i) => (
+              <div key={i} className="flex items-start gap-2.5">
+                <span className="text-[11px] font-mono font-bold mt-px shrink-0" style={{ color: 'var(--color-accent-primary)' }}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="text-[13px] leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+                  {text}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 
+        {/* About section */}
+        <div className="card-static p-5 mb-5 animate-fade-in stagger-6">
+          <div className="flex items-center gap-2 mb-3">
+            <Info size={13} style={{ color: 'var(--color-accent-primary)' }} />
+            <h3 className="text-[13px] font-semibold" style={{ color: 'var(--color-text-primary)' }}>关于</h3>
+          </div>
+          <div className="space-y-2">
+            {[
+              { label: '版本', value: 'v0.1.0' },
+              { label: '知识节点', value: `${totalNodes} 个` },
+              { label: '已掌握', value: `${masteredCount} 个` },
+              { label: '学习记录', value: `${history.length} 条` },
+              { label: '连续学习', value: `${streak.current} 天 (最高 ${streak.longest} 天)` },
+            ].map(({ label, value }) => (
+              <div key={label} className="flex items-center justify-between">
+                <span className="text-[12px]" style={{ color: 'var(--color-text-tertiary)' }}>{label}</span>
+                <span className="text-[12px] font-mono" style={{ color: 'var(--color-text-secondary)' }}>{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Data export */}
+        <button
+          onClick={() => {
+            const data = { progress, history, streak, exportedAt: new Date().toISOString() };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `akg-learning-data-${new Date().toISOString().slice(0, 10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+          }}
+          className="btn-ghost w-full flex items-center justify-center gap-2 mb-5 animate-fade-in stagger-6"
+        >
+          <Download size={14} />
+          导出学习数据
+        </button>
+
         {/* Security note */}
         <div
-          className="rounded-xl px-5 py-4 flex items-start gap-3 animate-fade-in stagger-3"
-          style={{
-            backgroundColor: 'rgba(52, 211, 153, 0.04)',
-            border: '1px solid rgba(52, 211, 153, 0.1)',
-          }}
+          className="rounded-lg px-4 py-3 flex items-start gap-2.5 animate-fade-in stagger-6"
+          style={{ backgroundColor: 'rgba(52, 211, 153, 0.04)', border: '1px solid rgba(52, 211, 153, 0.08)' }}
         >
-          <Shield size={16} className="shrink-0 mt-0.5" style={{ color: 'var(--color-accent-emerald)' }} />
-          <p className="text-[12px] leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-            API Key 仅存储在浏览器本地 (localStorage)，通过加密请求头发送到后端。后端不保存 Key，仅用于实时代理请求。
+          <Shield size={13} className="shrink-0 mt-0.5" style={{ color: 'var(--color-accent-emerald)' }} />
+          <p className="text-[11px] leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
+            Key 存储在浏览器 localStorage，仅通过加密请求头传递。后端不存储 Key。
           </p>
         </div>
 
-        {/* Footer */}
-        <div className="text-center mt-8 pb-4">
-          <p className="text-[11px] font-mono" style={{ color: 'var(--color-text-tertiary)' }}>
-            AI Knowledge Graph v0.4.0 · Phase 3 Complete
-          </p>
-        </div>
       </div>
     </div>
   );

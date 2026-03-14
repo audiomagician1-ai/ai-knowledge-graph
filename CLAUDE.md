@@ -7,12 +7,12 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 3 完成** | 图谱可视化 + 对话引擎 + 节点点亮级联 + EXE打包
+**当前阶段**: 🟢 **Phase 4 进行中** | 响应式适配 + Markdown渲染 + 评估动效 + 设置页增强 已完成
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 
-**当前最高优先任务 — Phase 4 打磨** (进行中):
-> **目标**: UI/UX 打磨 + Markdown渲染 + 评估动效 + 响应式适配 + 最终内测版
+**当前最高优先任务 — Phase 4 收尾** (进行中):
+> **目标**: LLM 端到端测试 + EXE 重新打包 + 最终内测版
 > **详见**: `DEVELOPMENT_PLAN.md` Phase 4
 
 ### 12周里程碑
@@ -23,7 +23,7 @@
 | **Phase 1** | W3-4 | 图谱展示 + 基础交互 | ✅ 完成 (267节点334边, 3D球面力导向图, 里程碑高亮) |
 | **Phase 2** | W5-7 | 对话引擎 (核心) | ✅ 完成 (LLM调用层+苏格拉底引擎+评估器+SSE流式+前端UI+RAG知识库) |
 | **Phase 3** | W8-9 | 节点点亮 + 进度系统 | ✅ 完成 (前置条件图+推荐集合+mastered绿光晕+recommended青光晕+Dashboard真实数据) |
-| **Phase 4** | W10-12 | 打磨 + 内测 | 🟡 进行中 |
+| **Phase 4** | W10-12 | 打磨 + 内测 | 🟡 进行中 (响应式+Markdown+动效+设置页 ✅) |
 
 ---
 
@@ -102,14 +102,15 @@ data/seed/         — 种子图谱数据
 - ✅ **Dashboard 页面**: 真实统计(4 stat cards + 进度条 + 连续天数 + 最近学习记录 + 已掌握列表)
 - ✅ **图谱搜索**: 即时搜索 overlay, 快速定位概念节点
 - ✅ **Error Boundary + Toast**: 全局错误捕获 + 4类型通知系统 (success/error/info/warning)
-- ✅ tsc 0 errors, vite build 2.67s, 主包 219KB + graph 442KB (lazy), 所有Python模块导入通过
-- ✅ **Code Review 修复**: 24项问题全部修复 (9 critical + 9 medium + 6 minor)
-- ✅ **UI 重设计**: Neural Observatory 主题, DM Sans+JetBrains Mono, PC侧边栏布局, glass morphism, gradient+glow
-- ✅ **PyInstaller EXE 打包**: 55MB 单文件, FastAPI+前端SPA+种子数据内嵌, 输出至 release/ 目录, 自动生成 Release Note
-- ✅ **RAG 知识库**: 267篇 Markdown 文档 (15子域), 对话引擎自动注入相关知识上下文
-- ✅ **混合教学模式**: AI先讲解→切换"好奇学生"角色提问→用户作答→AI反馈→循环, 5种提问风格轮换
-- ✅ **Phase 3 节点点亮级联**: 前置条件图(prereqMap/dependentsMap) + 推荐集合(recommendedIds) + mastered绿光晕 + recommended青光晕
-- ✅ **3种学习状态光晕**: 里程碑金色辉光 / 已掌握绿色辉光 / 推荐学习青色辉光
+- ✅ **响应式布局**: 桌面Sidebar + 移动BottomNav自动切换, GraphPage右侧面板移动端全屏, DashboardPage自适应grid
+- ✅ **LearnPage Markdown渲染**: AI消息使用react-markdown渲染(代码高亮/表格/列表/引用)
+- ✅ **评估动效增强**: 分数计数动画(useCountUp hook) + 4维度进度条延迟填充 + 庆祝动画
+- ✅ **设置页增强**: 关于信息(版本/节点数/学习统计) + 学习数据JSON导出
+- ✅ **BottomNav主题统一**: 使用设计系统CSS变量, 与Sidebar风格一致
+- ✅ **微交互打磨**: textarea自动增高 + 按钮press反馈 + tabular-nums分数显示
+- ✅ **useMediaQuery hook**: 响应式断点检测(768px), 桌面/移动端条件渲染
+- ✅ **shared包修复**: 添加typescript devDependency, pnpm type-check全通过
+- ✅ tsc 0 errors, vite build 3.23s, 主包 254KB + graph 442KB (lazy)
 
 ### EXE 打包规范
 ```
@@ -137,10 +138,9 @@ Release Note 包含:
 ```
 
 ### 待完成 🟡
-1. 🟡 **Phase 4**: Markdown渲染 + 评估动效 + 设置页增强 + 响应式适配
-2. 🟡 **LLM 端到端测试** — 配置 Key 后实际对话验证
-3. 🟡 Sidebar 实时进度条
-4. 🟡 移动端响应式适配 (小屏 Sidebar 隐藏 + 面板全屏)
+1. 🟡 **LLM 端到端测试** — 配置 Key 后实际对话验证
+2. 🟡 **EXE 重新打包** — 包含 Phase 4 所有改进
+3. 🟡 **最终内测版发布** — Release Note + 分发
 
 ---
 

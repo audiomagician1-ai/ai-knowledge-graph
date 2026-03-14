@@ -4,10 +4,10 @@ import { useLearningStore } from '@/lib/store/learning';
 import type { AssessmentResult, SavedConversation } from '@/lib/store/dialogue';
 import type { ConceptProgress } from '@/lib/store/learning';
 import { MarkdownRenderer } from './MarkdownRenderer';
+import { useCountUp } from '@/lib/hooks/useCountUp';
 import {
   Send, BarChart3, Brain, RotateCcw, Zap, Play,
   Trophy, History, Trash2, MessageSquare, X, BookOpen,
-  Sparkles,
 } from 'lucide-react';
 
 interface ChatPanelProps {
@@ -98,7 +98,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
           style={{ borderBottom: '1px solid var(--color-border)' }}
         >
           <div className="flex items-center gap-2">
-            <History size={16} style={{ color: 'var(--color-accent-indigo)' }} />
+            <History size={14} style={{ color: 'var(--color-accent-primary)' }} />
             <span className="text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
               "{conceptName}" 的对话记录
             </span>
@@ -129,7 +129,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--color-border-accent)'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--color-border)'; }}
                 >
-                  <Brain size={18} style={{ color: 'var(--color-accent-indigo)', flexShrink: 0 }} />
+                  <Brain size={16} style={{ color: 'var(--color-accent-primary)', flexShrink: 0 }} />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3">
                       <span className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
@@ -178,9 +178,9 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                 style={{
-                  background: nodeProgress?.status === 'mastered'
-                    ? 'linear-gradient(135deg, var(--color-accent-emerald), #10b981)'
-                    : 'linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet))',
+                    backgroundColor: nodeProgress?.status === 'mastered'
+                    ? 'var(--color-accent-emerald)'
+                    : 'var(--color-accent-primary)',
                 }}
               >
                 {nodeProgress?.status === 'mastered'
@@ -241,7 +241,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                 <button
                   onClick={() => setView('history')}
                   className="text-xs flex items-center gap-1 transition-colors"
-                  style={{ color: 'var(--color-accent-indigo)' }}
+                  style={{ color: 'var(--color-accent-primary)' }}
                 >
                   查看全部
                   <History size={12} />
@@ -304,7 +304,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
         className="flex items-center gap-3 px-5 py-3 shrink-0"
         style={{ borderBottom: '1px solid var(--color-border)' }}
       >
-        <Brain size={16} style={{ color: 'var(--color-accent-indigo)' }} />
+            <Brain size={14} style={{ color: 'var(--color-accent-primary)' }} />
         <span className="text-sm font-semibold flex-1 truncate" style={{ color: 'var(--color-text-primary)' }}>
           {conceptName}
         </span>
@@ -346,14 +346,14 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                 style={
                   msg.role === 'user'
                     ? {
-                        background: 'linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet))',
-                        color: '#fff',
-                        borderBottomRightRadius: 6,
+                        backgroundColor: 'var(--color-accent-primary)',
+                        color: '#0a0c10',
+                        borderBottomRightRadius: 4,
                       }
                     : {
                         backgroundColor: 'var(--color-surface-2)',
                         color: 'var(--color-text-primary)',
-                        borderBottomLeftRadius: 6,
+                        borderBottomLeftRadius: 4,
                         border: '1px solid var(--color-border)',
                       }
                 }
@@ -363,8 +363,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                     <MarkdownRenderer content={msg.content} />
                   ) : isStreaming ? (
                     <div className="flex items-center gap-1.5 mt-1">
-                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-indigo)' }} />
-                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-violet)', animationDelay: '150ms' }} />
+                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-primary)' }} />
+                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-warm)', animationDelay: '150ms' }} />
                       <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-cyan)', animationDelay: '300ms' }} />
                     </div>
                   ) : null
@@ -410,7 +410,12 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
           >
             <textarea
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                // Auto-resize
+                e.target.style.height = 'auto';
+                e.target.style.height = Math.min(e.target.scrollHeight, 100) + 'px';
+              }}
               onKeyDown={handleKeyDown}
               placeholder="输入你的回答..."
               rows={1}
@@ -426,10 +431,10 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               disabled={isBusy || !input.trim() || !conversationId}
               className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center transition-all"
               style={{
-                background: !input.trim() || isBusy
-                  ? 'var(--color-surface-4)'
-                  : 'linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet))',
-                color: '#fff',
+                  background: !input.trim() || isBusy
+                    ? 'var(--color-surface-4)'
+                    : 'var(--color-accent-primary)',
+                color: '#0a0c10',
                 opacity: !input.trim() || isBusy ? 0.4 : 1,
               }}
             >
@@ -476,7 +481,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
             {newlyUnlockedIds.length > 0 && (
               <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(52, 211, 153, 0.15)' }}>
                 <div className="flex items-center justify-center gap-1.5 text-xs" style={{ color: '#22d3ee' }}>
-                  <Sparkles size={13} />
+                  <Zap size={13} />
                   <span>已解锁 {newlyUnlockedIds.length} 个新概念</span>
                 </div>
               </div>
@@ -488,7 +493,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   );
 }
 
-/** Compact assessment card for inline display */
+/** Compact assessment card with animated scores */
 function InlineAssessmentCard({ result }: { result: AssessmentResult }) {
   const scoreColor = (s: number) => {
     if (s >= 80) return 'var(--color-accent-emerald)';
@@ -496,16 +501,18 @@ function InlineAssessmentCard({ result }: { result: AssessmentResult }) {
     return 'var(--color-accent-rose)';
   };
 
+  const animatedOverall = useCountUp(result.overall_score, 1000, 200);
+
   const dims = [
-    { label: '完整性', key: 'completeness' as const },
-    { label: '准确性', key: 'accuracy' as const },
-    { label: '深度', key: 'depth' as const },
-    { label: '举例', key: 'examples' as const },
+    { label: '完整性', key: 'completeness' as const, delay: 300 },
+    { label: '准确性', key: 'accuracy' as const, delay: 450 },
+    { label: '深度', key: 'depth' as const, delay: 600 },
+    { label: '举例', key: 'examples' as const, delay: 750 },
   ];
 
   return (
     <div
-      className="rounded-xl p-5 animate-fade-in"
+      className="rounded-xl p-5 animate-fade-in-scale"
       style={{
         backgroundColor: result.mastered ? 'rgba(52, 211, 153, 0.08)' : 'var(--color-surface-2)',
         border: `1px solid ${result.mastered ? 'rgba(52, 211, 153, 0.2)' : 'var(--color-border)'}`,
@@ -522,8 +529,8 @@ function InlineAssessmentCard({ result }: { result: AssessmentResult }) {
             {result.mastered ? '已掌握！' : '评估结果'}
           </span>
         </div>
-        <span className="text-2xl font-bold" style={{ color: scoreColor(result.overall_score) }}>
-          {result.overall_score}
+        <span className="text-2xl font-bold tabular-nums" style={{ color: scoreColor(result.overall_score) }}>
+          {animatedOverall}
           <span className="text-xs font-normal ml-0.5" style={{ color: 'var(--color-text-tertiary)' }}>/100</span>
         </span>
       </div>
@@ -531,22 +538,7 @@ function InlineAssessmentCard({ result }: { result: AssessmentResult }) {
       <div className="space-y-2.5 mb-4">
         {dims.map((dim) => {
           const score = result[dim.key];
-          return (
-            <div key={dim.key} className="flex items-center gap-3">
-              <span className="text-sm w-12 shrink-0" style={{ color: 'var(--color-text-tertiary)' }}>
-                {dim.label}
-              </span>
-              <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-4)' }}>
-                <div
-                  className="h-full rounded-full transition-all duration-700"
-                  style={{ width: `${score}%`, backgroundColor: scoreColor(score) }}
-                />
-              </div>
-              <span className="text-sm w-8 text-right font-semibold" style={{ color: scoreColor(score) }}>
-                {score}
-              </span>
-            </div>
-          );
+          return <AnimatedDimBar key={dim.key} label={dim.label} score={score} delay={dim.delay} scoreColor={scoreColor} />;
         })}
       </div>
 
@@ -567,6 +559,34 @@ function InlineAssessmentCard({ result }: { result: AssessmentResult }) {
           </ul>
         </div>
       )}
+    </div>
+  );
+}
+
+/** Single dimension bar with staggered fill animation */
+function AnimatedDimBar({ label, score, delay, scoreColor }: {
+  label: string; score: number; delay: number;
+  scoreColor: (s: number) => string;
+}) {
+  const animVal = useCountUp(score, 800, delay);
+  return (
+    <div className="flex items-center gap-3">
+      <span className="text-sm w-12 shrink-0" style={{ color: 'var(--color-text-tertiary)' }}>
+        {label}
+      </span>
+      <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-4)' }}>
+        <div
+          className="h-full rounded-full"
+          style={{
+            width: `${animVal}%`,
+            backgroundColor: scoreColor(score),
+            transition: 'none',
+          }}
+        />
+      </div>
+      <span className="text-sm w-8 text-right font-semibold tabular-nums" style={{ color: scoreColor(score) }}>
+        {animVal}
+      </span>
     </div>
   );
 }

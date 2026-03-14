@@ -18,10 +18,10 @@ export function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around border-t"
       style={{
-        height: 'var(--bottom-nav-height)',
-        backgroundColor: '#1e293b',
-        borderColor: '#334155',
-        paddingBottom: 'var(--safe-area-bottom)',
+        height: 'var(--bottom-nav-height, 56px)',
+        backgroundColor: 'var(--color-surface-1)',
+        borderColor: 'var(--color-border)',
+        paddingBottom: 'env(safe-area-inset-bottom, 0px)',
       }}
       data-testid="bottom-nav"
     >
@@ -31,15 +31,15 @@ export function BottomNav() {
           <button
             key={path}
             onClick={() => navigate(path)}
-            className="flex flex-col items-center justify-center gap-1 px-4 py-2"
+            className="flex flex-col items-center justify-center gap-1 px-4 py-2 transition-colors duration-150"
             style={{
-              color: isActive ? '#8b5cf6' : '#64748b',
+              color: isActive ? 'var(--color-accent-primary)' : 'var(--color-text-tertiary)',
               minWidth: 64,
-              minHeight: 44, // 触控目标 ≥ 44px
+              minHeight: 44,
             }}
           >
-            <Icon size={22} />
-            <span className="text-xs">{label}</span>
+            <Icon size={20} />
+            <span className="text-[11px] font-medium">{label}</span>
           </button>
         );
       })}

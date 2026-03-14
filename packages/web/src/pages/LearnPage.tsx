@@ -8,6 +8,8 @@ import {
   RotateCcw, ArrowRight, Zap, AlertTriangle, Trophy,
   CheckCircle2, Target, BookOpen, Sparkles,
 } from 'lucide-react';
+import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
+import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
 
 export function LearnPage() {
   const { conceptId } = useParams<{ conceptId: string }>();
@@ -23,6 +25,7 @@ export function LearnPage() {
 
   const isBusy = isStreaming || isAssessing;
   const { startLearning, recordAssessment } = useLearningStore();
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
     if (conceptId) {
@@ -173,20 +176,25 @@ export function LearnPage() {
                         }
                   }
                 >
-                  {msg.role === 'assistant' && (
+                  {msg.role === 'assistant' ? (
+                    <>
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <span className="text-[11px] font-mono font-semibold" style={{ color: 'var(--color-accent-indigo)' }}>
                         AI Student
                       </span>
                     </div>
-                  )}
-                  <div className="whitespace-pre-wrap">{msg.content}</div>
-                  {msg.role === 'assistant' && msg.content === '' && isStreaming && (
-                    <div className="flex items-center gap-1 mt-1">
-                      <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-indigo)' }} />
-                      <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-violet)', animationDelay: '150ms' }} />
-                      <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-cyan)', animationDelay: '300ms' }} />
-                    </div>
+                    {msg.content ? (
+                      <MarkdownRenderer content={msg.content} />
+                    ) : isStreaming ? (
+                      <div className="flex items-center gap-1 mt-1">
+                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-indigo)' }} />
+                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-violet)', animationDelay: '150ms' }} />
+                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-cyan)', animationDelay: '300ms' }} />
+                      </div>
+                    ) : null}
+                    </>
+                  ) : (
+                    <div className="whitespace-pre-wrap break-words">{msg.content}</div>
                   )}
                 </div>
               </div>
@@ -218,7 +226,11 @@ export function LearnPage() {
               >
                 <textarea
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e) => {
+                    setInput(e.target.value);
+                    e.target.style.height = 'auto';
+                    e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px';
+                  }}
                   onKeyDown={handleKeyDown}
                   placeholder="用你自己的话解释这个概念..."
                   rows={1}
