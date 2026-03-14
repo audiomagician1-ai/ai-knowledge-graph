@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react';
-import { useSettingsStore, PROVIDER_INFO, getLLMHeaders } from '@/lib/store/settings';
+import { useSettingsStore, PROVIDER_INFO, getLLMHeaders, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, PROXY_BAT_SRC, downloadBlob } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
-import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Cpu, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Zap } from 'lucide-react';
+import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, MonitorDown } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 
@@ -13,6 +13,7 @@ export function SettingsContent() {
   const [saved, setSaved] = useState(false);
   const [testStatus, setTestStatus] = useState<'idle' | 'testing' | 'success' | 'error'>('idle');
   const [testMessage, setTestMessage] = useState('');
+  const [connError, setConnError] = useState('');
   const { graphData } = useGraphStore();
   const { progress, history, streak } = useLearningStore();
   const totalNodes = graphData?.nodes.length || 0;
@@ -20,35 +21,40 @@ export function SettingsContent() {
 
   const handleSave = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
+  const [showProxyGuide, setShowProxyGuide] = useState(false);
+
   const handleTestConnection = async () => {
     if (!llmConfig.apiKey) { setTestStatus('error'); setTestMessage('请先输入 API Key'); return; }
     setTestStatus('testing'); setTestMessage('');
     try {
-      if (llmConfig.directMode && llmConfig.baseUrl) {
-        // Direct mode: test LLM API directly from browser
-        const baseUrl = llmConfig.baseUrl.replace(/\/$/, '');
-        const res = await fetch(`${baseUrl}/chat/completions`, {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${llmConfig.apiKey}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: llmConfig.model || 'gpt-4o',
-            messages: [{ role: 'user', content: 'Say "OK" in one word.' }],
-            max_tokens: 5,
-          }),
-        });
-        if (res.ok) { setTestStatus('success'); setTestMessage('直连成功 ✨'); setTimeout(() => setTestStatus('idle'), 4000); }
-        else { setTestStatus('error'); setTestMessage(`LLM API 返回 ${res.status}`); }
-      } else {
-        // Proxy mode: test via Worker
-        const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
-        const res = await fetch(`${API_BASE}/dialogue/conversations`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
-          body: JSON.stringify({ concept_id: 'prompt-basics' }),
-        });
-        if (res.ok) { setTestStatus('success'); setTestMessage('连接成功'); setTimeout(() => setTestStatus('idle'), 4000); }
-        else { const d = await res.json().catch(() => ({})); setTestStatus('error'); setTestMessage(d.detail || `HTTP ${res.status}`); }
+      const effectiveUrl = resolveBaseUrl(
+        llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase,
+        !!llmConfig.useProxy,
+      );
+      const ok = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || 'gpt-4o');
+      if (ok) {
+        setTestStatus('success');
+        setTestMessage(llmConfig.useProxy ? '通过本地代理连接成功' : '连接成功');
+        setTimeout(() => setTestStatus('idle'), 4000);
+        return;
       }
-    } catch (err) { setTestStatus('error'); setTestMessage(err instanceof Error ? err.message : '网络错误'); }
+      // Failed — give specific hints
+      let errMsg = '连接失败';
+      if (llmConfig.useProxy) {
+        const alive = await probeProxy();
+        errMsg = alive
+          ? '代理在运行但 API 返回错误，请检查 URL / Key / 模型名。'
+          : '本地代理未运行。请先下载并启动代理脚本。';
+      } else {
+        errMsg = '连接失败。如果是内网 API，请启用「本地代理」并启动代理脚本。';
+      }
+      setConnError(errMsg);
+      setTestStatus('error');
+      setTestMessage(errMsg);
+    } catch (err) {
+      setTestStatus('error');
+      setTestMessage(err instanceof Error ? err.message : '网络错误');
+    }
   };
 
   const info = PROVIDER_INFO[llmConfig.provider];
@@ -120,30 +126,55 @@ export function SettingsContent() {
           style={{ borderRadius: 10, padding: '12px 16px', fontSize: 13, backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
       </div>
 
-      {/* Direct Mode Toggle */}
-      <div style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-surface-2)', border: llmConfig.directMode ? '1.5px solid var(--color-accent-primary)' : '1px solid var(--color-border)' }}>
+      {/* Local Proxy Toggle */}
+      <div style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-surface-2)', border: llmConfig.useProxy ? '1.5px solid var(--color-accent-primary)' : '1px solid var(--color-border)' }}>
         <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
           <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'flex' }}>
-            <Zap size={12} /> 浏览器直连模式
+            <MonitorDown size={12} /> 本地代理模式
           </label>
-          <button onClick={() => setLLMConfig({ directMode: !llmConfig.directMode })}
+          <button onClick={() => setLLMConfig({ useProxy: !llmConfig.useProxy })}
             style={{
               width: 44, height: 24, borderRadius: 12, padding: 2, cursor: 'pointer', border: 'none',
-              backgroundColor: llmConfig.directMode ? 'var(--color-accent-primary)' : 'var(--color-surface-3)',
+              backgroundColor: llmConfig.useProxy ? 'var(--color-accent-primary)' : 'var(--color-surface-3)',
               transition: 'background-color 0.2s', position: 'relative',
             }}>
             <div style={{
               width: 20, height: 20, borderRadius: '50%', backgroundColor: '#fff',
-              transform: llmConfig.directMode ? 'translateX(20px)' : 'translateX(0)',
+              transform: llmConfig.useProxy ? 'translateX(20px)' : 'translateX(0)',
               transition: 'transform 0.2s', boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
             }} />
           </button>
         </div>
         <p style={{ color: 'var(--color-text-tertiary)', fontSize: 12, lineHeight: 1.6 }}>
-          {llmConfig.directMode
-            ? '✅ 已开启 — 浏览器将直接调用 LLM API，适合内网/私有 API 地址'
-            : '关闭时通过云端服务器中转。如果你的 LLM API 只能从内网访问，请开启此选项并填写 Base URL。'}
+          {llmConfig.useProxy
+            ? '✅ 已开启 — 通过本地代理绕过 CORS 限制，适合内网/私有 API'
+            : '关闭时浏览器直接调用 API。如果遇到 CORS 错误，请开启并下载代理脚本。'}
         </p>
+        {llmConfig.useProxy && (
+          <div style={{ marginTop: 10, display: 'flex', gap: 8 }}>
+            <button onClick={() => setShowProxyGuide(!showProxyGuide)}
+              className="btn-ghost" style={{ fontSize: 12, padding: '6px 12px', borderRadius: 8 }}>
+              {showProxyGuide ? '收起指南' : '使用指南'}
+            </button>
+            <button onClick={() => downloadBlob(PROXY_SCRIPT_SRC, 'cors-proxy.cjs', 'text/javascript')}
+              className="btn-ghost flex items-center gap-1" style={{ fontSize: 12, padding: '6px 12px', borderRadius: 8 }}>
+              <Download size={11} /> cors-proxy.cjs
+            </button>
+            <button onClick={() => downloadBlob(PROXY_BAT_SRC, 'start-proxy.bat', 'application/x-bat')}
+              className="btn-ghost flex items-center gap-1" style={{ fontSize: 12, padding: '6px 12px', borderRadius: 8 }}>
+              <Download size={11} /> start-proxy.bat
+            </button>
+          </div>
+        )}
+        {showProxyGuide && llmConfig.useProxy && (
+          <div style={{ marginTop: 12, padding: '12px 14px', borderRadius: 8, backgroundColor: 'var(--color-surface-1)', fontSize: 12, lineHeight: 1.8, color: 'var(--color-text-secondary)' }}>
+            <strong>快速开始：</strong><br/>
+            1. 下载上方两个文件到同一文件夸<br/>
+            2. 双击 <code style={{ padding: '1px 5px', borderRadius: 4, backgroundColor: 'var(--color-surface-3)' }}>start-proxy.bat</code> 启动代理（需 Node.js）<br/>
+            3. 看到 <em>"CORS proxy running on port 9876"</em> 即成功<br/>
+            4. 回来点击「测试」按钮验证连接
+          </div>
+        )}
       </div>
 
       {/* Actions */}
@@ -202,7 +233,7 @@ export function SettingsContent() {
       <div className="flex items-start gap-3" style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-tint-emerald)' }}>
         <Shield size={13} className="shrink-0" style={{ marginTop: 1, color: 'var(--color-accent-emerald)' }} />
         <p style={{ fontSize: 12, lineHeight: 1.6, color: 'var(--color-text-tertiary)' }}>
-          Key 仅存在浏览器本地。{llmConfig.directMode ? '直连模式下，请求直接从你的浏览器发往 LLM API，不经过任何中间服务器。' : '代理模式下，Key 会通过 HTTPS 发送到云端服务器中转。'}
+          Key 仅存在浏览器本地。{llmConfig.useProxy ? '本地代理模式下，请求通过本机代理转发，不经过任何外部服务器。' : '直连模式下，请求直接从浏览器发往 LLM API。'}
         </p>
       </div>
     </div>

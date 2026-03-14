@@ -4,7 +4,7 @@
  * that are not reachable from Cloudflare Workers.
  */
 
-import { useSettingsStore, PROVIDER_INFO } from './store/settings';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl } from './store/settings';
 import { useGraphStore } from './store/graph';
 import type { GraphNode } from '@akg/shared';
 
@@ -119,12 +119,9 @@ function resolveEndpoint(): { baseUrl: string; apiKey: string; model: string } {
   const key = llmConfig.apiKey;
   const model = llmConfig.model || 'gpt-4o';
 
-  if (llmConfig.baseUrl) {
-    return { baseUrl: llmConfig.baseUrl.replace(/\/$/, ''), apiKey: key, model };
-  }
-
-  const info = PROVIDER_INFO[llmConfig.provider];
-  return { baseUrl: info.defaultBase.replace(/\/$/, ''), apiKey: key, model };
+  const rawBase = llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase;
+  const baseUrl = resolveBaseUrl(rawBase, !!llmConfig.useProxy);
+  return { baseUrl, apiKey: key, model };
 }
 
 /** Get concept info + graph context from the loaded graph store */
