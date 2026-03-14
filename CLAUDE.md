@@ -138,7 +138,7 @@ Release Note 包含:
 ```
 
 ### 待完成 🟡
-1. 🟡 **LLM 端到端测试** — 配置 Key 后实际对话验证
+1. ✅ **LLM 端到端测试** — mihoyo Claude 4.6 Sonnet: 4轮对话+评估 81/100 mastered ✅
 2. 🟡 **EXE 重新打包** — 包含 Phase 4 所有改进
 3. 🟡 **最终内测版发布** — Release Note + 分发
 
