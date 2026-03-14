@@ -180,8 +180,8 @@ export function GraphPage() {
         </div>
       )}
 
-      {/* ===== TOP-LEFT: Search (overlay on graph) ===== */}
-      {!chatOpen && (
+      {/* ===== TOP: Search (overlay on graph, shifts to left-half when chat is open) ===== */}
+      {!chatOpen ? (
         <div className="absolute top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-auto" style={{ width: 'min(420px, 90vw)' }}>
           <div className="relative">
             <div className="flex items-center gap-2 px-4 rounded-2xl" style={{
@@ -216,10 +216,10 @@ export function GraphPage() {
             )}
           </div>
         </div>
-      )}
+      ) : null}
 
-      {/* ===== BOTTOM HUB BAR ===== */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
+      {/* ===== BOTTOM HUB BAR (shifts to left-half center when chat is open) ===== */}
+      <div className="absolute bottom-5 z-30 pointer-events-auto transition-all duration-500 ease-out" style={chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }}>
         <div className="flex items-center gap-1 px-2 rounded-2xl" style={{
           height: 52, background: 'rgba(25,24,26,0.85)', backdropFilter: 'blur(24px) saturate(1.5)',
           border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 8px 40px rgba(0,0,0,0.4)',
@@ -255,7 +255,7 @@ export function GraphPage() {
 
       {/* ===== RECOMMEND PANEL (above hub) ===== */}
       {showRecommend && (
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-25 pointer-events-auto animate-fade-in-scale" style={{ width: 360 }}>
+        <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ width: 360, bottom: 80, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
           <div className="rounded-2xl overflow-hidden" style={{
             background: 'rgba(25,24,26,0.92)', backdropFilter: 'blur(20px)',
             border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
@@ -305,7 +305,7 @@ export function GraphPage() {
 
       {/* ===== FILTER PANEL (above hub) ===== */}
       {showFilters && subdomains.length > 0 && (
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-25 pointer-events-auto animate-fade-in-scale">
+        <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ bottom: 80, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
           <div className="rounded-2xl p-2.5 flex flex-wrap gap-1.5" style={{
             maxWidth: 480, background: 'rgba(25,24,26,0.92)', backdropFilter: 'blur(20px)',
             border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
