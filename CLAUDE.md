@@ -30,7 +30,7 @@
 ## 2. PROJECT IDENTITY（项目基本面）
 
 **产品**: AI知识图谱 — 交互式教学+苏格拉底式对话+知识图谱技能树点亮学习平台
-**核心理念**: AI先讲解知识，再以"好奇学生"角色提问，用户通过回答来检验和深化理解
+**核心理念**: AI先讲解知识 → 提供选项引导互动 → 探测用户水平 → 自适应深度讲解 → 选项式理解检验 → 评估点亮
 **技术栈**:
 - **前端**: React 19 + TypeScript 5.7 + Vite 6 + TailwindCSS 4 + Zustand 5 + Three.js/3d-force-graph + Framer Motion + Lucide React
 - **后端**: FastAPI (Python 3.11+) — 图谱引擎/对话引擎/学习引擎
@@ -89,11 +89,12 @@ data/seed/         — 种子图谱数据
 - ✅ **后端图谱查询**: 5 endpoints (data/domains/subdomains/concept/neighbors/stats), JSON fallback
 - ✅ **前端图谱页**: 3D球面图谱+浮动glass面板+子域筛选+右侧详情面板
 - ✅ **LLM调用层**: httpx异步+OpenAI兼容API(OpenRouter/DeepSeek/OpenAI)+SSE流式+重试
-- ✅ **费曼对话引擎**: System Prompt(苏格拉底式4种策略)+图谱上下文注入+开场白生成
-- ✅ **理解度评估器**: 4维度打分(完整性/准确性/深度/举例)+JSON结构化输出+fallback
-- ✅ **对话API**: SSE流式/conversations CRUD/评估端点(5 endpoints)
-- ✅ **前端对话页**: 消息气泡+流式渲染+评估卡片+4维度进度条
-- ✅ **Dialogue Store**: Zustand 5 状态管理(会话/消息/流式/评估)
+- ✅ **对话引擎 V2**: AI引导式探测学习(4阶段: probe→teach→check→wrapup) + parse_ai_response选项解析 + LLM动态开场白
+- ✅ **选项式交互**: 每次AI回复附2-4个可点选选项(explore/answer/action/level) + ChoiceButtons组件 + 用户可自由输入
+- ✅ **理解度评估器 V2**: 4维度打分+选项交互信号评估(自由输入>选项点选)+JSON结构化输出+fallback
+- ✅ **对话API V2**: SSE流式 + choices事件 + opening_choices + is_choice标记
+- ✅ **前端对话页 V2**: 消息气泡+流式渲染+选项按钮区+评估卡片+stripChoicesBlock
+- ✅ **Dialogue Store V2**: Zustand 5 (currentChoices/selectChoice/isChoice标记)
 - ✅ **免登录体验**: 全站开放无需登录，匿名即可使用图谱+对话
 - ✅ **用户自带 LLM Key**: 设置页面配置 (OpenRouter/OpenAI/DeepSeek) + localStorage + 请求头透传
 - ✅ **代码分割**: Three.js + 3d-force-graph lazy import, three 551KB + graph 767KB 按需加载, 主包 238KB
@@ -111,7 +112,8 @@ data/seed/         — 种子图谱数据
 - ✅ **useMediaQuery hook**: 响应式断点检测(768px), 桌面/移动端条件渲染
 - ✅ **shared包修复**: 添加typescript devDependency, pnpm type-check全通过
 - ✅ **UI改版「Observatory Study」**: 暖调深色(#111110)+衬线标题(Noto Serif SC)+去glass/glow/gradient+铜/苔/梅自然色系+圆角6-8px+实色按钮+图谱去辉光粒子
-- ✅ tsc 0 errors, vite build 2.96s, CSS 26.95KB + graph 6.43KB (lazy)
+- ✅ **Prompt工程方案文档**: `docs/PROMPT_ENGINEERING_ITERATION_V2.md` — 完整迭代设计
+- ✅ tsc 0 errors, vite build 3.3s, CSS 28KB + graph 6.9KB (lazy)
 
 ### EXE 打包规范
 ```
@@ -140,8 +142,9 @@ Release Note 包含:
 
 ### 待完成 🟡
 1. ✅ **LLM 端到端测试** — mihoyo Claude 4.6 Sonnet: 4轮对话+评估 81/100 mastered ✅
-2. 🟡 **EXE 重新打包** — 包含 Phase 4 所有改进
-3. 🟡 **最终内测版发布** — Release Note + 分发
+2. 🟡 **V2对话流程 E2E测试** — 验证选项生成+解析+前端渲染完整链路
+3. 🟡 **EXE 重新打包** — 包含 Phase 4 + V2对话流程改进
+4. 🟡 **最终内测版发布** — Release Note + 分发
 
 ---
 
