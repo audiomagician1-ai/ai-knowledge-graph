@@ -1,4 +1,4 @@
-import type { DialogueRequest } from '@akg/shared';
+﻿import type { DialogueRequest } from '@akg/shared';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 

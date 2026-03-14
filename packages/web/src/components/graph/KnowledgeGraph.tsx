@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import type { GraphData, GraphNode } from '@akg/shared';
 import { GRAPH_VISUAL } from '@akg/shared';
@@ -33,7 +33,7 @@ interface GLink extends LinkObject<GNode> {
 }
 
 const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
-const BG_COLOR = '#111110';
+const BG_COLOR = '#0c1117';
 
 /* ── Sphere layout ── */
 const SPHERE_R = 480;
@@ -46,10 +46,10 @@ function baseSize(n: GNode): number {
 }
 
 function nodeColor(n: GNode): string {
-  if (n.status === 'mastered') return '#8AAD7A';  // sage green
-  if (n.status === 'learning') return '#C8956C';  // copper
-  if (n.is_recommended) return '#7BAE7F';          // light sage
-  return SUBDOMAIN_COLORS[n.subdomain_id] || '#8A8A8A';
+  if (n.status === 'mastered') return '#47d18c';  // vivid green
+  if (n.status === 'learning') return '#f5b85a';  // warm gold
+  if (n.is_recommended) return '#5eb8f0';          // sky blue
+  return SUBDOMAIN_COLORS[n.subdomain_id] || '#667788';
 }
 
 /* ── Label texture cache to avoid re-creating every frame ── */
@@ -78,13 +78,13 @@ function makeLabelTexture(text: string, color: string, isMilestone: boolean): TH
   ctx.textAlign = 'center';
 
   // Dark outline/shadow for readability — warm dark
-  ctx.strokeStyle = 'rgba(14, 13, 12, 0.95)';
+  ctx.strokeStyle = 'rgba(10, 14, 20, 0.95)';
   ctx.lineWidth = 5;
   ctx.lineJoin = 'round';
   ctx.strokeText(text, w / 2, h / 2);
 
   // Fill text
-  ctx.fillStyle = isMilestone ? '#D4A57C' : color;  // warm copper for milestones
+      ctx.fillStyle = isMilestone ? '#f5d05a' : color;  // bright gold for milestones
   ctx.fillText(text, w / 2, h / 2);
 
   const tex = new THREE.CanvasTexture(canvas);
@@ -99,7 +99,7 @@ function makeLabelTexture(text: string, color: string, isMilestone: boolean): TH
 /* ── Celebration particles for newly mastered nodes ── */
 function spawnCelebration(scene: THREE.Scene, x: number, y: number, z: number) {
   const PARTICLE_COUNT = 24;
-  const colors = [0x8AAD7A, 0xC8956C, 0x8A9EC0, 0x7BAE7F, 0xB07CC3]; // sage, copper, steel, light sage, plum
+  const colors = [0x47d18c, 0xf5b85a, 0x5eb8f0, 0x5ed3ac, 0xc78bf0]; // green, gold, sky, mint, lavender
 
   const particles: { mesh: THREE.Mesh; vx: number; vy: number; vz: number; life: number }[] = [];
 
@@ -211,12 +211,13 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
 
       /* ── Subtle fog ── */
       const scene = Graph.scene();
-      scene.fog = new THREE.FogExp2(BG_COLOR, 0.0004);
+      scene.fog = new THREE.FogExp2(BG_COLOR, 0.00025);
 
-      /* ── Warm neutral lights ── */
+      /* ── Cool-tinted lights ── */
       Graph.lights([
-        new THREE.AmbientLight(0xfaf5ef, 0.8),
-        (() => { const l = new THREE.PointLight(0xc8956c, 0.3, 1000); l.position.set(0, 0, 0); return l; })(),
+        new THREE.AmbientLight(0xe8eef5, 0.9),
+        (() => { const l = new THREE.PointLight(0x5ed3ac, 0.25, 1200); l.position.set(0, 200, 0); return l; })(),
+        (() => { const l = new THREE.PointLight(0x5eb8f0, 0.15, 1000); l.position.set(0, -200, 0); return l; })(),
       ]);
 
       /* ── Forces ── */
@@ -284,15 +285,18 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
           return group;
         });
 
-      /* ── Link visuals: thin, quiet lines ── */
+      /* ── Link visuals: visible, fresh lines ── */
       Graph
-        .linkWidth((l: object) => (l as GLink).relation_type === 'prerequisite' ? 0.6 : 0.3)
-        .linkOpacity(0.15)
-        .linkColor(() => '#4a4a50')
-        .linkDirectionalParticles(0)
-        .linkDirectionalParticleWidth(0)
-        .linkDirectionalParticleSpeed(0)
-        .linkDirectionalParticleColor(() => '#4a4a50');
+        .linkWidth((l: object) => (l as GLink).relation_type === 'prerequisite' ? 1.5 : 0.8)
+        .linkOpacity(0.35)
+        .linkColor((l: object) => {
+          const link = l as GLink;
+          return link.relation_type === 'prerequisite' ? '#3d6b7a' : '#2a4555';
+        })
+        .linkDirectionalParticles((l: object) => (l as GLink).relation_type === 'prerequisite' ? 2 : 0)
+        .linkDirectionalParticleWidth(1.5)
+        .linkDirectionalParticleSpeed(0.004)
+        .linkDirectionalParticleColor(() => '#5ed3ac');
 
       /* ── Interaction: STOP rotation + FREEZE simulation on click ── */
       Graph.onNodeClick((n: NodeObject) => {
@@ -452,7 +456,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     } else {
       G.nodeColor((n: object) => nodeColor(n as GNode));
       G.nodeOpacity(0.85);
-      G.linkOpacity(0.35);
+      G.linkOpacity(0.4);
     }
     G.nodeRelSize(3);
   }, [activeSubdomain]);

@@ -1,38 +1,38 @@
 @import "tailwindcss";
 
 /* ========================================
-   AI Knowledge Graph — Observatory Study
-   Warm dark UI · Scholarly & grounded
-   Copper + sage + plum · No glow, no glass
+   AI Knowledge Graph — Fresh Inspiration
+   Deep blue-gray base · Vivid & uplifting
+   Mint + Sky + Coral + Lavender + Gold
    ======================================== */
 
 @theme {
-  /* Surface layers — warm near-black progression */
-  --color-surface-0: #111110;
-  --color-surface-1: #19181a;
-  --color-surface-2: #201f22;
-  --color-surface-3: #28272b;
-  --color-surface-4: #323135;
+  /* Surface layers — cool deep blue-gray */
+  --color-surface-0: #0f1419;
+  --color-surface-1: #151c24;
+  --color-surface-2: #1b232d;
+  --color-surface-3: #222b37;
+  --color-surface-4: #2a3441;
   /* Borders */
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-subtle: rgba(255, 255, 255, 0.03);
-  --color-border-accent: rgba(200, 149, 108, 0.2);
-  /* Text — warm tones */
-  --color-text-primary: #edebe8;
-  --color-text-secondary: #a8a5a0;
-  --color-text-tertiary: #6b6966;
-  /* Accents — natural, desaturated */
-  --color-accent-primary: #c8956c;
-  --color-accent-warm: #d4a57c;
-  --color-accent-emerald: #8aad7a;
-  --color-accent-amber: #c8956c;
-  --color-accent-rose: #c97b7b;
-  --color-accent-cyan: #7bae7f;
-  --color-accent-blue: #8a9ec0;
-  /* Subtle tints (replace glow) */
-  --color-tint-primary: rgba(200, 149, 108, 0.08);
-  --color-tint-emerald: rgba(138, 173, 122, 0.08);
-  --color-tint-amber: rgba(200, 149, 108, 0.08);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  --color-border-accent: rgba(94, 211, 172, 0.25);
+  /* Text — clean, bright */
+  --color-text-primary: #f0f2f5;
+  --color-text-secondary: #a4b1c1;
+  --color-text-tertiary: #637085;
+  /* Accents — fresh, inspiring, saturated */
+  --color-accent-primary: #5ed3ac;     /* mint green — main action */
+  --color-accent-warm: #6ee4ba;        /* light mint — hover */
+  --color-accent-emerald: #47d18c;     /* vivid green — mastered */
+  --color-accent-amber: #f5b85a;       /* warm gold — learning */
+  --color-accent-rose: #f07878;        /* coral — advanced/warning */
+  --color-accent-cyan: #5eb8f0;        /* sky blue — recommended */
+  --color-accent-blue: #7c8ff0;        /* periwinkle — info */
+  /* Subtle tints */
+  --color-tint-primary: rgba(94, 211, 172, 0.10);
+  --color-tint-emerald: rgba(71, 209, 140, 0.10);
+  --color-tint-amber: rgba(245, 184, 90, 0.10);
 }
 
 :root {
@@ -65,6 +65,9 @@ html {
   color: var(--color-text-primary);
   font-optical-sizing: auto;
 }
+
+/* Graph background override — deep space blue */
+.graph-container { background-color: #0c1117 !important; }
 
 body { min-height: 100dvh; overflow-x: hidden; }
 #root { width: 100%; min-height: 100dvh; }
@@ -103,7 +106,7 @@ h1, h2, h3, h4 {
 /* ── Buttons ── */
 .btn-primary {
   background: var(--color-accent-primary);
-  color: #111110;
+  color: #0f1419;
   font-weight: 500;
   border: none;
   border-radius: 6px;
@@ -116,6 +119,7 @@ h1, h2, h3, h4 {
 }
 .btn-primary:hover {
   background: var(--color-accent-warm);
+  color: #0f1419;
 }
 .btn-primary:active { opacity: 0.85; }
 .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
@@ -200,7 +204,7 @@ input:focus, textarea:focus, select:focus {
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(200, 149, 108, 0.25);
+  background: rgba(94, 211, 172, 0.25);
   color: white;
 }
 

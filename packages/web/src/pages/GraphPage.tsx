@@ -185,8 +185,8 @@ export function GraphPage() {
         <div className="absolute top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-auto" style={{ width: 'min(420px, 90vw)' }}>
           <div className="relative">
             <div className="flex items-center gap-2 px-4 rounded-2xl" style={{
-              height: 44, background: 'rgba(25,24,26,0.85)', backdropFilter: 'blur(20px) saturate(1.5)',
-              border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
+              height: 44, background: 'rgba(15,20,25,0.88)', backdropFilter: 'blur(20px) saturate(1.4)',
+              border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 4px 24px rgba(0,0,0,0.4)',
             }}>
               <Search size={15} style={{ color: 'var(--color-text-tertiary)', flexShrink: 0 }} />
               <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="搜索知识节点..."
@@ -199,8 +199,8 @@ export function GraphPage() {
             </div>
             {searchResults.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-2 rounded-2xl p-1.5 animate-fade-in-scale" style={{
-                maxHeight: 320, overflowY: 'auto', background: 'rgba(25,24,26,0.92)', backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+                maxHeight: 320, overflowY: 'auto', background: 'rgba(15,20,25,0.94)', backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
               }}>
                 {searchResults.map((node) => (
                   <button key={node.id} onClick={() => { selectNode(node); setSearchQuery(''); }}
@@ -219,10 +219,10 @@ export function GraphPage() {
       ) : null}
 
       {/* ===== BOTTOM HUB BAR (shifts to left-half center when chat is open) ===== */}
-      <div className="absolute bottom-5 z-30 pointer-events-auto transition-all duration-500 ease-out" style={chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }}>
-        <div className="flex items-center gap-1 px-2 rounded-2xl" style={{
-          height: 52, background: 'rgba(25,24,26,0.85)', backdropFilter: 'blur(24px) saturate(1.5)',
-          border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 8px 40px rgba(0,0,0,0.4)',
+      <div className="absolute bottom-6 z-30 pointer-events-auto transition-all duration-500 ease-out" style={chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }}>
+        <div className="flex items-center gap-3 px-6 rounded-3xl" style={{
+          height: 80, background: 'rgba(15,20,25,0.88)', backdropFilter: 'blur(24px) saturate(1.4)',
+          border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
         }}>
           {/* Filter */}
           <HubButton icon={Filter} label="筛选" active={showFilters} onClick={() => setShowFilters(!showFilters)} />
@@ -230,21 +230,21 @@ export function GraphPage() {
           <HubButton icon={BarChart3} label="进度" active={showDashboard} onClick={() => { setShowDashboard(!showDashboard); setShowSettings(false); }} />
 
           {/* Divider */}
-          <div className="w-px h-6 mx-1" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
+          <div className="w-px h-10 mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} />
 
           {/* Recommend — center, prominent */}
           <button onClick={() => {
             if (!showRecommend) { setShowRecommend(true); loadRecommendations(); } else setShowRecommend(false);
-          }} className="flex items-center gap-2 px-5 py-2 rounded-xl transition-all text-sm font-medium" style={{
-            backgroundColor: showRecommend ? 'var(--color-accent-primary)' : 'rgba(200,149,108,0.12)',
-            color: showRecommend ? '#111110' : 'var(--color-accent-primary)',
+          }} className="flex items-center gap-3 px-8 py-3 rounded-2xl transition-all text-base font-semibold" style={{
+            backgroundColor: showRecommend ? 'var(--color-accent-primary)' : 'rgba(94,211,172,0.12)',
+            color: showRecommend ? '#0f1419' : 'var(--color-accent-primary)',
           }}>
-            <Compass size={16} />
+            <Compass size={22} />
             <span>推荐学习</span>
           </button>
 
           {/* Divider */}
-          <div className="w-px h-6 mx-1" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
+          <div className="w-px h-10 mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} />
 
           {/* Settings */}
           <HubButton icon={Settings} label="设置" active={showSettings} onClick={() => { setShowSettings(!showSettings); setShowDashboard(false); }} />
@@ -255,10 +255,10 @@ export function GraphPage() {
 
       {/* ===== RECOMMEND PANEL (above hub) ===== */}
       {showRecommend && (
-        <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ width: 360, bottom: 80, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
+        <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ width: 400, bottom: 100, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
           <div className="rounded-2xl overflow-hidden" style={{
-            background: 'rgba(25,24,26,0.92)', backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
+            background: 'rgba(15,20,25,0.94)', backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
           }}>
             <div className="px-4 py-3 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
               <div className="flex items-center gap-2">
@@ -283,7 +283,7 @@ export function GraphPage() {
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)')}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                     <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-semibold"
-                      style={{ backgroundColor: 'var(--color-accent-primary)', color: '#111110' }}>{idx + 1}</div>
+                      style={{ backgroundColor: 'var(--color-accent-primary)', color: '#0f1419' }}>{idx + 1}</div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1.5 mb-0.5">
                         {rec.is_milestone && <Star size={11} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
@@ -305,14 +305,14 @@ export function GraphPage() {
 
       {/* ===== FILTER PANEL (above hub) ===== */}
       {showFilters && subdomains.length > 0 && (
-        <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ bottom: 80, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
+        <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ bottom: 100, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
           <div className="rounded-2xl p-2.5 flex flex-wrap gap-1.5" style={{
             maxWidth: 480, background: 'rgba(25,24,26,0.92)', backdropFilter: 'blur(20px)',
             border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
           }}>
             <button onClick={() => setActiveSubdomain(null)}
               className="rounded-xl px-3 py-1.5 text-sm font-medium transition-all"
-              style={{ backgroundColor: !activeSubdomain ? 'var(--color-accent-primary)' : 'transparent', color: !activeSubdomain ? '#111110' : 'var(--color-text-secondary)' }}>
+               style={{ backgroundColor: !activeSubdomain ? 'var(--color-accent-primary)' : 'transparent', color: !activeSubdomain ? '#0f1419' : 'var(--color-text-secondary)' }}>
               全部
             </button>
             {subdomains.map((sd) => {
@@ -346,14 +346,14 @@ export function GraphPage() {
 function HubButton({ icon: Icon, label, active, onClick }: { icon: typeof Filter; label: string; active: boolean; onClick: () => void }) {
   return (
     <button onClick={onClick}
-      className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-all text-sm font-medium whitespace-nowrap"
+      className="flex items-center gap-2.5 px-5 py-3 rounded-2xl transition-all text-base font-medium whitespace-nowrap"
       style={{
-        backgroundColor: active ? 'rgba(255,255,255,0.08)' : 'transparent',
+        backgroundColor: active ? 'rgba(255,255,255,0.1)' : 'transparent',
         color: active ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)',
       }}
-      onMouseEnter={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)'; }}
+      onMouseEnter={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'; }}
       onMouseLeave={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'transparent'; }}>
-      <Icon size={15} />
+      <Icon size={20} />
       <span>{label}</span>
     </button>
   );

@@ -1,4 +1,4 @@
-import { useToastStore, type ToastType } from '@/lib/store/toast';
+﻿import { useToastStore, type ToastType } from '@/lib/store/toast';
 
 const STYLE_MAP: Record<ToastType, { bg: string; border: string; text: string; icon: string }> = {
   success: { bg: '#1a2218', border: '#2d3a28', text: '#8aad7a', icon: '✓' },

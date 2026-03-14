@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useEffect, type ReactNode } from 'react';
+﻿import { useRef, useState, useCallback, useEffect, type ReactNode } from 'react';
 import { X } from 'lucide-react';
 
 interface DraggableModalProps {

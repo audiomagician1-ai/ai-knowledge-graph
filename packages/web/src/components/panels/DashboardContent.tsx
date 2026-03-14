@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { useLearningStore, type LearningHistory } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
 import { Zap, BookOpen, Flame, Trophy, Clock, Target } from 'lucide-react';

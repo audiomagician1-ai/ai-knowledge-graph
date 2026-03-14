@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDialogueStore } from '@/lib/store/dialogue';
 import { useLearningStore } from '@/lib/store/learning';
@@ -128,7 +128,7 @@ export function LearnPage() {
                   className="w-9 h-9 rounded-md flex items-center justify-center shrink-0"
                   style={{ backgroundColor: 'var(--color-accent-primary)' }}
                 >
-                  <Lightbulb size={16} style={{ color: '#111110' }} />
+                  <Lightbulb size={16} style={{ color: '#0f1419' }} />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>
@@ -243,7 +243,7 @@ export function LearnPage() {
                     background: !input.trim() || isBusy
                       ? 'var(--color-surface-3)'
                       : 'var(--color-accent-primary)',
-                    color: '#111110',
+                    color: '#0f1419',
                     opacity: !input.trim() || isBusy ? 0.4 : 1,
                   }}
                 >
@@ -334,7 +334,7 @@ function AssessmentCard({ result, conceptName }: { result: AssessmentResult; con
                     : 'var(--color-accent-primary)',
                 }}
               >
-                {result.mastered ? <Trophy size={18} style={{ color: '#111110' }} /> : <BarChart3 size={18} style={{ color: '#111110' }} />}
+                {result.mastered ? <Trophy size={18} style={{ color: '#0f1419' }} /> : <BarChart3 size={18} style={{ color: '#0f1419' }} />}
               </div>
               <div>
                 <h3 className="text-[15px] font-bold" style={{ color: 'var(--color-text-primary)' }}>

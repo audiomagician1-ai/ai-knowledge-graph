@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Learning API client — communicates with backend SQLite persistence layer.
  * All calls are fire-and-forget async (write) or lazy-loaded (read).
  */

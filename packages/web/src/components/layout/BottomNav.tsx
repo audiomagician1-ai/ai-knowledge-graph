@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+﻿import { useNavigate, useLocation } from 'react-router-dom';
 import { Network, BarChart3, Settings } from 'lucide-react';
 
 const NAV_ITEMS = [

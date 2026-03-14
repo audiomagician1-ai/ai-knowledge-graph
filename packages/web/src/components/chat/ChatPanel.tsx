@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { useDialogueStore } from '@/lib/store/dialogue';
 import { useLearningStore } from '@/lib/store/learning';
 import type { AssessmentResult, SavedConversation } from '@/lib/store/dialogue';
@@ -184,8 +184,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                 }}
               >
                 {nodeProgress?.status === 'mastered'
-                  ? <Trophy size={18} style={{ color: '#111110' }} />
-                  : <Brain size={18} style={{ color: '#111110' }} />
+                  ? <Trophy size={18} style={{ color: '#0f1419' }} />
+                  : <Brain size={18} style={{ color: '#0f1419' }} />
                 }
               </div>
               <div className="flex-1 min-w-0">
@@ -435,7 +435,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                   background: !input.trim() || isBusy
                     ? 'var(--color-surface-4)'
                     : 'var(--color-accent-primary)',
-                color: '#111110',
+                color: '#0f1419',
                 opacity: !input.trim() || isBusy ? 0.4 : 1,
               }}
             >
