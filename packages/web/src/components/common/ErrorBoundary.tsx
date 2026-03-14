@@ -50,7 +50,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 window.location.reload();
               }}
               className="rounded-xl px-6 py-2.5 text-sm font-medium"
-              style={{ backgroundColor: '#8b5cf6', color: '#fff' }}
+              style={{ backgroundColor: '#c8956c', color: '#111110' }}
             >
               刷新页面
             </button>

@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+/* ========================================
+   AI Knowledge Graph — Obsidian Glass
+   Refined dark editorial design system
+   Warm slate + amber accents, clean geometry
+   ======================================== */
+
+@theme {
+  /* Surface layers — warm charcoal progression */
+  --color-surface-0: #0a0c10;
+  --color-surface-1: #111318;
+  --color-surface-2: #18191f;
+  --color-surface-3: #1f2128;
+  --color-surface-4: #282a33;
+  /* Borders */
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  --color-border-accent: rgba(234, 179, 8, 0.25);
+  /* Glass */
+  --color-glass: rgba(14, 15, 20, 0.78);
+  --color-glass-heavy: rgba(14, 15, 20, 0.92);
+  /* Text */
+  --color-text-primary: #e4e4e7;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #63636e;
+  /* Accents — warm amber anchor + functional colors */
+  --color-accent-primary: #eab308;
+  --color-accent-warm: #f59e0b;
+  --color-accent-emerald: #34d399;
+  --color-accent-amber: #eab308;
+  --color-accent-rose: #f43f5e;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-blue: #60a5fa;
+  /* Glows */
+  --color-glow-primary: rgba(234, 179, 8, 0.12);
+  --color-glow-emerald: rgba(52, 211, 153, 0.12);
+  --color-glow-amber: rgba(234, 179, 8, 0.12);
+}
+
+:root {
+  --sidebar-width: 220px;
+  --bottom-nav-height: 56px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-surface-0);
+  color: var(--color-text-primary);
+  font-optical-sizing: auto;
+}
+
+body { min-height: 100dvh; overflow-x: hidden; }
+#root { width: 100%; min-height: 100dvh; }
+
+/* ── Typography ── */
+.font-mono {
+  font-family: "Cascadia Code", "Fira Code", "JetBrains Mono", "Consolas", monospace !important;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+}
+
+/* ── Glass morphism ── */
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--color-border);
+}
+
+.glass-heavy {
+  background: var(--color-glass-heavy);
+  backdrop-filter: blur(40px) saturate(160%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  border: 1px solid var(--color-border);
+}
+
+/* ── Card styles ── */
+.card-static {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  background: var(--color-accent-primary);
+  color: #0a0c10;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.87rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: -0.01em;
+}
+.btn-primary:hover {
+  background: #facc15;
+  box-shadow: 0 4px 20px var(--color-glow-primary);
+}
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.87rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.btn-ghost:hover {
+  background: var(--color-surface-3);
+  color: var(--color-text-primary);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.btn-ghost:active { transform: scale(0.98); }
+
+/* ── Tabular numbers for score animations ── */
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* ── Scrollbar — ultra thin, fades ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.15); }
+
+/* ── Graph container ── */
+.graph-container { touch-action: none; user-select: none; -webkit-user-select: none; }
+
+/* ── Animations ── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-scale {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in { animation: fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in-scale { animation: fade-in-scale 0.25s ease-out both; }
+.animate-slide-in-right { animation: slide-in-right 0.3s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-slide-in-left { animation: slide-in-left 0.3s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+.stagger-1 { animation-delay: 40ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 120ms; }
+.stagger-4 { animation-delay: 160ms; }
+.stagger-5 { animation-delay: 200ms; }
+.stagger-6 { animation-delay: 240ms; }
+
+/* ── Utility ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-warm));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Focus states ── */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent-primary) !important;
+  box-shadow: 0 0 0 2px var(--color-glow-primary);
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(234, 179, 8, 0.25);
+  color: white;
+}

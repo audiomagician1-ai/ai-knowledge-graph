@@ -478,8 +478,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               {conceptName} 节点已点亮
             </div>
             {newlyUnlockedIds.length > 0 && (
-              <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(52, 211, 153, 0.15)' }}>
-                <div className="flex items-center justify-center gap-1.5 text-xs" style={{ color: '#22d3ee' }}>
+              <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(138, 173, 122, 0.15)' }}>
+                <div className="flex items-center justify-center gap-1.5 text-xs" style={{ color: 'var(--color-accent-cyan)' }}>
                   <Zap size={13} />
                   <span>已解锁 {newlyUnlockedIds.length} 个新概念</span>
                 </div>

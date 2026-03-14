@@ -1,7 +1,7 @@
 import { useToastStore, type ToastType } from '@/lib/store/toast';
 
 const STYLE_MAP: Record<ToastType, { bg: string; border: string; text: string; icon: string }> = {
-  success: { bg: '#052e16', border: '#166534', text: '#4ade80', icon: '✓' },
+  success: { bg: '#1a2218', border: '#2d3a28', text: '#8aad7a', icon: '✓' },
   error: { bg: '#450a0a', border: '#991b1b', text: '#fca5a5', icon: '✕' },
   info: { bg: '#172554', border: '#1e40af', text: '#93c5fd', icon: 'ℹ' },
   warning: { bg: '#422006', border: '#92400e', text: '#fde68a', icon: '⚠' },

@@ -33,7 +33,7 @@ interface GLink extends LinkObject<GNode> {
 }
 
 const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
-const BG_COLOR = '#0C0E12';
+const BG_COLOR = '#111110';
 
 /* ── Larger sphere to spread 267 nodes ── */
 const SPHERE_R = 480;
@@ -77,9 +77,9 @@ function makeLabelTexture(text: string, color: string, isMilestone: boolean): TH
   ctx.textBaseline = 'middle';
   ctx.textAlign = 'center';
 
-  // Dark outline/shadow for readability
-  ctx.strokeStyle = 'rgba(6, 9, 15, 0.95)';
-  ctx.lineWidth = 6;
+  // Dark outline/shadow for readability — warm dark
+  ctx.strokeStyle = 'rgba(14, 13, 12, 0.95)';
+  ctx.lineWidth = 5;
   ctx.lineJoin = 'round';
   ctx.strokeText(text, w / 2, h / 2);
 
@@ -94,62 +94,7 @@ function makeLabelTexture(text: string, color: string, isMilestone: boolean): TH
   return tex;
 }
 
-/* ── Glow sprite texture (shared) ── */
-let _glowTex: THREE.Texture | null = null;
-function glowTexture(): THREE.Texture {
-  if (_glowTex) return _glowTex;
-  const size = 256;
-  const canvas = document.createElement('canvas');
-  canvas.width = size; canvas.height = size;
-  const ctx = canvas.getContext('2d')!;
-  const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-  g.addColorStop(0, 'rgba(251,191,36,0.5)');
-  g.addColorStop(0.25, 'rgba(251,191,36,0.15)');
-  g.addColorStop(0.6, 'rgba(251,191,36,0.03)');
-  g.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, size, size);
-  _glowTex = new THREE.CanvasTexture(canvas);
-  return _glowTex;
-}
-
-/* ── Mastered glow (green) ── */
-let _masteredGlowTex: THREE.Texture | null = null;
-function masteredGlowTexture(): THREE.Texture {
-  if (_masteredGlowTex) return _masteredGlowTex;
-  const size = 256;
-  const canvas = document.createElement('canvas');
-  canvas.width = size; canvas.height = size;
-  const ctx = canvas.getContext('2d')!;
-  const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-  g.addColorStop(0, 'rgba(52,211,153,0.6)');
-  g.addColorStop(0.25, 'rgba(52,211,153,0.2)');
-  g.addColorStop(0.6, 'rgba(52,211,153,0.04)');
-  g.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, size, size);
-  _masteredGlowTex = new THREE.CanvasTexture(canvas);
-  return _masteredGlowTex;
-}
-
-/* ── Recommended glow (cyan) ── */
-let _recommendedGlowTex: THREE.Texture | null = null;
-function recommendedGlowTexture(): THREE.Texture {
-  if (_recommendedGlowTex) return _recommendedGlowTex;
-  const size = 256;
-  const canvas = document.createElement('canvas');
-  canvas.width = size; canvas.height = size;
-  const ctx = canvas.getContext('2d')!;
-  const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-  g.addColorStop(0, 'rgba(34,211,238,0.5)');
-  g.addColorStop(0.25, 'rgba(34,211,238,0.15)');
-  g.addColorStop(0.6, 'rgba(34,211,238,0.03)');
-  g.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, size, size);
-  _recommendedGlowTex = new THREE.CanvasTexture(canvas);
-  return _recommendedGlowTex;
-}
+/* (glow textures removed — Observatory Study: no glow) */
 
 /* ── Celebration particles for newly mastered nodes ── */
 function spawnCelebration(scene: THREE.Scene, x: number, y: number, z: number) {

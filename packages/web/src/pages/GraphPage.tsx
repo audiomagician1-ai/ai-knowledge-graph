@@ -298,8 +298,8 @@ export function GraphPage() {
           <div className="flex flex-wrap gap-x-3 gap-y-1">
             {[
               { label: '里程碑', color: 'var(--color-accent-amber)' },
-              { label: '推荐', color: '#22d3ee' },
-              { label: '学习中', color: '#f59e0b' },
+              { label: '推荐', color: 'var(--color-accent-cyan)' },
+              { label: '学习中', color: 'var(--color-accent-primary)' },
               { label: '已掌握', color: 'var(--color-accent-emerald)' },
             ].map(({ label, color }) => (
               <span key={label} className="flex items-center gap-1">
@@ -430,11 +430,11 @@ export function GraphPage() {
                         <Trophy size={12} /> 已掌握
                       </span>
                     ) : progress[selectedNode.id]?.status === 'learning' ? (
-                      <span className="inline-flex items-center gap-1 text-xs font-bold" style={{ color: '#f59e0b' }}>
+                      <span className="inline-flex items-center gap-1 text-xs font-bold" style={{ color: 'var(--color-accent-primary)' }}>
                         <BookOpen size={12} /> 学习中
                       </span>
                     ) : selectedNode.is_recommended ? (
-                      <span className="inline-flex items-center gap-1 text-xs font-bold" style={{ color: '#22d3ee' }}>
+                      <span className="inline-flex items-center gap-1 text-xs font-bold" style={{ color: 'var(--color-accent-cyan)' }}>
                         <Zap size={12} /> 推荐
                       </span>
                     ) : null}
