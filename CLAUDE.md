@@ -7,7 +7,7 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 4 进行中** | 响应式适配 + Markdown渲染 + 评估动效 + 设置页增强 已完成
+**当前阶段**: 🟢 **Phase 4 进行中** | 响应式+Markdown+动效+设置页+UI改版「Observatory Study」 已完成
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 
@@ -110,7 +110,8 @@ data/seed/         — 种子图谱数据
 - ✅ **微交互打磨**: textarea自动增高 + 按钮press反馈 + tabular-nums分数显示
 - ✅ **useMediaQuery hook**: 响应式断点检测(768px), 桌面/移动端条件渲染
 - ✅ **shared包修复**: 添加typescript devDependency, pnpm type-check全通过
-- ✅ tsc 0 errors, vite build 3.23s, 主包 254KB + graph 442KB (lazy)
+- ✅ **UI改版「Observatory Study」**: 暖调深色(#111110)+衬线标题(Noto Serif SC)+去glass/glow/gradient+铜/苔/梅自然色系+圆角6-8px+实色按钮+图谱去辉光粒子
+- ✅ tsc 0 errors, vite build 2.96s, CSS 26.95KB + graph 6.43KB (lazy)
 
 ### EXE 打包规范
 ```
