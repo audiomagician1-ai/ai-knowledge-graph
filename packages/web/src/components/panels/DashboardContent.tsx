@@ -19,7 +19,7 @@ export function DashboardContent() {
   const progressPct = totalNodes > 0 ? Math.round((masteredNodes.length / totalNodes) * 100) : 0;
 
   return (
-    <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', gap: 28 }}>
+    <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 20 }}>
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
         {[
@@ -28,31 +28,31 @@ export function DashboardContent() {
           { label: '连续', value: `${streak.current}天`, color: 'var(--color-accent-cyan)', icon: Flame },
           { label: '最高', value: `${streak.longest}天`, color: 'var(--color-text-tertiary)', icon: Trophy },
         ].map(({ label, value, color, icon: Icon }) => (
-          <div key={label} style={{ borderRadius: 12, padding: '20px 12px', textAlign: 'center', backgroundColor: 'var(--color-surface-2)' }}>
-            <Icon size={18} style={{ color, margin: '0 auto 12px' }} />
-            <div className="font-bold font-mono" style={{ fontSize: 22, color }}>{value}</div>
-            <div style={{ fontSize: 12, marginTop: 10, color: 'var(--color-text-tertiary)' }}>{label}</div>
+          <div key={label} style={{ borderRadius: 10, padding: '16px 10px', textAlign: 'center', backgroundColor: 'var(--color-surface-2)' }}>
+            <Icon size={16} style={{ color, margin: '0 auto 8px' }} />
+            <div className="font-bold font-mono" style={{ fontSize: 20, color }}>{value}</div>
+            <div style={{ fontSize: 11, marginTop: 8, color: 'var(--color-text-tertiary)' }}>{label}</div>
           </div>
         ))}
       </div>
 
       {/* Progress */}
-      <div style={{ borderRadius: 12, padding: 24, backgroundColor: 'var(--color-surface-2)' }}>
-        <div className="flex items-center justify-between" style={{ marginBottom: 16 }}>
-          <span style={{ fontSize: 14, fontWeight: 600 }}>掌握进度</span>
-          <span className="font-mono font-bold" style={{ fontSize: 18, color: 'var(--color-accent-primary)' }}>{progressPct}%</span>
+      <div style={{ borderRadius: 10, padding: '18px 20px', backgroundColor: 'var(--color-surface-2)' }}>
+        <div className="flex items-center justify-between" style={{ marginBottom: 12 }}>
+          <span style={{ fontSize: 13, fontWeight: 600 }}>掌握进度</span>
+          <span className="font-mono font-bold" style={{ fontSize: 16, color: 'var(--color-accent-primary)' }}>{progressPct}%</span>
         </div>
         <div style={{ height: 10, borderRadius: 999, overflow: 'hidden', backgroundColor: 'var(--color-surface-4)' }}>
           <div style={{ height: '100%', borderRadius: 999, transition: 'all 0.7s', width: `${progressPct}%`, backgroundColor: 'var(--color-accent-emerald)', minWidth: progressPct > 0 ? 4 : 0 }} />
         </div>
-        <div style={{ fontSize: 14, marginTop: 14, color: 'var(--color-text-tertiary)' }}>
+        <div style={{ fontSize: 13, marginTop: 10, color: 'var(--color-text-tertiary)' }}>
           {masteredNodes.length} / {totalNodes} 概念
         </div>
       </div>
 
       {/* Recent */}
       <div>
-        <div className="flex items-center gap-2.5" style={{ marginBottom: 16 }}>
+        <div className="flex items-center gap-2" style={{ marginBottom: 12 }}>
           <Clock size={15} style={{ color: 'var(--color-text-tertiary)' }} />
           <span style={{ fontSize: 14, fontWeight: 600 }}>最近学习</span>
         </div>
@@ -95,7 +95,7 @@ function HistoryRow({ item }: { item: LearningHistory }) {
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${String(time.getHours()).padStart(2, '0')}:${String(time.getMinutes()).padStart(2, '0')}`;
   const scoreColor = item.score >= 80 ? 'var(--color-accent-emerald)' : item.score >= 60 ? 'var(--color-accent-primary)' : 'var(--color-accent-rose)';
   return (
-    <div className="flex items-center" style={{ gap: 14, borderRadius: 10, padding: '14px 20px', backgroundColor: 'transparent' }}>
+    <div className="flex items-center" style={{ gap: 12, borderRadius: 8, padding: '10px 16px', backgroundColor: 'transparent' }}>
       <div className="flex items-center justify-center shrink-0" style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: item.mastered ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.1)', color: item.mastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>
         {item.mastered ? <Zap size={13} /> : <BookOpen size={13} />}
       </div>

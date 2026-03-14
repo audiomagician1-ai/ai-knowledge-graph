@@ -419,10 +419,18 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     prevMasteredRef.current = currMastered;
   }, [data]);
 
-  /* ── Fly to selected node from outside ── */
+  /* ── Fly to selected node / restore free orbit when deselected ── */
   useEffect(() => {
     const G = graphRef.current;
-    if (!G || !selectedNodeId) return;
+    if (!G) return;
+
+    if (!selectedNodeId) {
+      // Panel closed → restore free orbit rotation
+      const ctrl = G.controls() as { autoRotate?: boolean };
+      if (ctrl) ctrl.autoRotate = true;
+      return;
+    }
+
     const nodes = G.graphData().nodes as GNode[];
     const node = nodes.find((n) => n.id === selectedNodeId);
     if (!node || node.x == null) return;

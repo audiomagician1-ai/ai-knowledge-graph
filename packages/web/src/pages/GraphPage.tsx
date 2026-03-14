@@ -305,10 +305,10 @@ export function GraphPage() {
 
 
       {/* ===== MODALS ===== */}
-      <DraggableModal open={showDashboard} onClose={() => setShowDashboard(false)} title="学习进度" width={520} height={560}>
+      <DraggableModal open={showDashboard} onClose={() => setShowDashboard(false)} title="学习进度" width={560} height={720}>
         <DashboardContent />
       </DraggableModal>
-      <DraggableModal open={showSettings} onClose={() => setShowSettings(false)} title="设置" width={480} height={600}>
+      <DraggableModal open={showSettings} onClose={() => setShowSettings(false)} title="设置" width={520} height={760}>
         <SettingsContent />
       </DraggableModal>
     </div>

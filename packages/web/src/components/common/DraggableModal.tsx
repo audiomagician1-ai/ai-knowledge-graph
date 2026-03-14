@@ -65,7 +65,7 @@ export function DraggableModal({ open, onClose, title, width = 560, height = 520
           left: pos.x,
           top: pos.y,
           width,
-          maxHeight: height,
+          maxHeight: Math.min(height, window.innerHeight - 40),
           pointerEvents: 'auto',
           background: 'var(--color-surface-1)',
           border: '1px solid rgba(0,0,0,0.1)',
