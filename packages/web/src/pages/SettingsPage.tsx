@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSettingsStore, PROVIDER_INFO, getLLMHeaders } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
 import {
   Eye, EyeOff, Check, Trash2, Shield,
   Key, Server, Cpu, Wifi, WifiOff, Loader2, Globe, Box,
-  Info, Download, Network,
+  Info, Download, Network, ArrowLeft,
 } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
@@ -12,6 +13,7 @@ import { useLearningStore } from '@/lib/store/learning';
 const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek', 'custom'];
 
 export function SettingsPage() {
+  const navigate = useNavigate();
   const { llmConfig, setLLMConfig, clearApiKey } = useSettingsStore();
   const [showKey, setShowKey] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -61,23 +63,33 @@ export function SettingsPage() {
 
   return (
     <div className="h-full overflow-y-auto" style={{ backgroundColor: 'var(--color-surface-0)' }}>
-      <div className="max-w-xl mx-auto px-6 py-8">
+      <div className="max-w-2xl mx-auto px-8 py-10">
 
-        {/* Header */}
-        <div className="mb-8 animate-fade-in">
-          <h1 className="text-xl font-semibold mb-1">API 设置</h1>
-          <p className="text-[13px]" style={{ color: 'var(--color-text-tertiary)' }}>
+        {/* Header with back nav */}
+        <div className="mb-10 animate-fade-in">
+          <button
+            onClick={() => navigate('/graph')}
+            className="flex items-center gap-2 text-base mb-4 transition-colors"
+            style={{ color: 'var(--color-text-secondary)' }}
+            onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.color = 'var(--color-accent-primary)')}
+            onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.color = 'var(--color-text-secondary)')}
+          >
+            <ArrowLeft size={20} />
+            <span className="font-medium">返回图谱</span>
+          </button>
+          <h1 className="text-3xl font-bold mb-2">API 设置</h1>
+          <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>
             配置 LLM 服务以启用对话功能
           </p>
         </div>
 
         {/* Provider Selection */}
-        <div className="mb-6 animate-fade-in stagger-1">
-          <label className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
-            <Server size={11} />
+        <div className="mb-8 animate-fade-in stagger-1">
+          <label className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
+            <Server size={14} />
             服务商
           </label>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-4 gap-3">
             {PROVIDERS.map((p) => {
               const pInfo = PROVIDER_INFO[p];
               const isActive = llmConfig.provider === p;
@@ -85,31 +97,31 @@ export function SettingsPage() {
                 <button
                   key={p}
                   onClick={() => setLLMConfig({ provider: p })}
-                  className="rounded-lg py-2.5 px-3 text-center transition-all"
+                  className="rounded-md py-3 px-4 text-center transition-all min-h-[48px]"
                   style={{
                     backgroundColor: isActive ? 'var(--color-surface-3)' : 'var(--color-surface-2)',
                     border: isActive ? '1px solid var(--color-accent-primary)' : '1px solid var(--color-border)',
                     color: isActive ? 'var(--color-accent-primary)' : 'var(--color-text-secondary)',
                   }}
                 >
-                  <div className="text-[13px] font-semibold">{pInfo.name}</div>
+                  <div className="text-[15px] font-semibold">{pInfo.name}</div>
                 </button>
               );
             })}
           </div>
-          <p className="text-[12px] mt-2" style={{ color: 'var(--color-text-tertiary)' }}>
+          <p className="text-sm mt-3" style={{ color: 'var(--color-text-tertiary)' }}>
             {info.hint}
           </p>
         </div>
 
         {/* API Key */}
-        <div className="mb-5 animate-fade-in stagger-2">
-          <label className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
-            <Key size={11} />
+        <div className="mb-7 animate-fade-in stagger-2">
+          <label className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
+            <Key size={14} />
             API Key
           </label>
           <div
-            className="flex items-center rounded-lg overflow-hidden"
+            className="flex items-center rounded-md overflow-hidden"
             style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
           >
             <input
@@ -117,15 +129,15 @@ export function SettingsPage() {
               value={llmConfig.apiKey}
               onChange={(e) => setLLMConfig({ apiKey: e.target.value })}
               placeholder={info.placeholder}
-              className="flex-1 bg-transparent px-3.5 py-2.5 text-[13px] outline-none font-mono"
+              className="flex-1 bg-transparent px-4 py-3 text-[15px] outline-none font-mono"
               style={{ color: 'var(--color-text-primary)', border: 'none' }}
             />
             <button
               onClick={() => setShowKey(!showKey)}
-              className="px-3 shrink-0"
+              className="px-4 shrink-0 py-3"
               style={{ color: 'var(--color-text-tertiary)' }}
             >
-              {showKey ? <EyeOff size={14} /> : <Eye size={14} />}
+              {showKey ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
             {llmConfig.apiKey && (
               <button
@@ -133,16 +145,16 @@ export function SettingsPage() {
                 className="px-3 shrink-0"
                 style={{ color: 'var(--color-text-tertiary)' }}
               >
-                <Trash2 size={14} />
+                <Trash2 size={18} />
               </button>
             )}
           </div>
         </div>
 
         {/* Base URL (always shown — gives power users full control) */}
-        <div className="mb-5 animate-fade-in stagger-3">
-          <label className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
-            <Globe size={11} />
+        <div className="mb-7 animate-fade-in stagger-3">
+          <label className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
+            <Globe size={14} />
             API Base URL
           </label>
           <input
@@ -150,22 +162,22 @@ export function SettingsPage() {
             value={llmConfig.baseUrl || ''}
             onChange={(e) => setLLMConfig({ baseUrl: e.target.value })}
             placeholder={info.defaultBase || 'https://your-api.example.com/v1'}
-            className="w-full rounded-lg px-3.5 py-2.5 text-[13px] font-mono outline-none"
+            className="w-full rounded-md px-4 py-3 text-[15px] font-mono outline-none"
             style={{
               backgroundColor: 'var(--color-surface-2)',
               color: 'var(--color-text-primary)',
               border: '1px solid var(--color-border)',
             }}
           />
-          <p className="text-[11px] mt-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+          <p className="text-sm mt-2" style={{ color: 'var(--color-text-tertiary)' }}>
             留空使用默认地址{info.defaultBase ? `（${info.defaultBase}）` : ''}。支持内网 / 代理 / OneAPI 等 OpenAI 兼容接口。
           </p>
         </div>
 
         {/* Model */}
-        <div className="mb-6 animate-fade-in stagger-4">
-          <label className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
-            <Box size={11} />
+        <div className="mb-8 animate-fade-in stagger-4">
+          <label className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
+            <Box size={14} />
             模型名称
           </label>
           <input
@@ -178,22 +190,22 @@ export function SettingsPage() {
               llmConfig.provider === 'deepseek' ? 'deepseek-chat' :
               'your-model-name'
             }
-            className="w-full rounded-lg px-3.5 py-2.5 text-[13px] font-mono outline-none"
+            className="w-full rounded-md px-4 py-3 text-[15px] font-mono outline-none"
             style={{
               backgroundColor: 'var(--color-surface-2)',
               color: 'var(--color-text-primary)',
               border: '1px solid var(--color-border)',
             }}
           />
-          <p className="text-[11px] mt-1.5" style={{ color: 'var(--color-text-tertiary)' }}>
+          <p className="text-sm mt-2" style={{ color: 'var(--color-text-tertiary)' }}>
             留空使用默认模型。自定义服务商必须填写。
           </p>
         </div>
 
         {/* Action row */}
-        <div className="flex gap-2.5 mb-5 animate-fade-in stagger-5">
-          <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2">
-            {saved ? <><Check size={14} /> 已保存</> : '保存配置'}
+        <div className="flex gap-3 mb-7 animate-fade-in stagger-5">
+          <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2.5 text-base">
+            {saved ? <><Check size={16} /> 已保存</> : '保存配置'}
           </button>
           {llmConfig.apiKey && (
             <button
@@ -232,11 +244,11 @@ export function SettingsPage() {
         )}
 
         {/* How to use */}
-        <div className="card-static p-5 mb-5 animate-fade-in stagger-5">
-          <h3 className="text-[13px] font-semibold mb-3" style={{ color: 'var(--color-text-primary)' }}>
+        <div className="card-static p-6 rounded-lg mb-7 animate-fade-in stagger-5">
+          <h3 className="text-base font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
             使用流程
           </h3>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {[
               '选择服务商并输入 API Key（自定义需填写 Base URL + 模型名）',
               '回到图谱页面，点击任意知识节点',
@@ -244,10 +256,10 @@ export function SettingsPage() {
               '对话 4 轮后可请求评估，获得掌握度打分',
             ].map((text, i) => (
               <div key={i} className="flex items-start gap-2.5">
-                <span className="text-[11px] font-mono font-bold mt-px shrink-0" style={{ color: 'var(--color-accent-primary)' }}>
+                <span className="text-sm font-mono font-bold mt-px shrink-0" style={{ color: 'var(--color-accent-primary)' }}>
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="text-[13px] leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+                <span className="text-[15px] leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                   {text}
                 </span>
               </div>
@@ -256,12 +268,12 @@ export function SettingsPage() {
         </div>
 
         {/* About section */}
-        <div className="card-static p-5 mb-5 animate-fade-in stagger-6">
-          <div className="flex items-center gap-2 mb-3">
-            <Info size={13} style={{ color: 'var(--color-accent-primary)' }} />
-            <h3 className="text-[13px] font-semibold" style={{ color: 'var(--color-text-primary)' }}>关于</h3>
+        <div className="card-static p-6 rounded-lg mb-7 animate-fade-in stagger-6">
+          <div className="flex items-center gap-2.5 mb-4">
+            <Info size={16} style={{ color: 'var(--color-accent-primary)' }} />
+            <h3 className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>关于</h3>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {[
               { label: '版本', value: 'v0.1.0' },
               { label: '知识节点', value: `${totalNodes} 个` },
@@ -269,9 +281,9 @@ export function SettingsPage() {
               { label: '学习记录', value: `${history.length} 条` },
               { label: '连续学习', value: `${streak.current} 天 (最高 ${streak.longest} 天)` },
             ].map(({ label, value }) => (
-              <div key={label} className="flex items-center justify-between">
-                <span className="text-[12px]" style={{ color: 'var(--color-text-tertiary)' }}>{label}</span>
-                <span className="text-[12px] font-mono" style={{ color: 'var(--color-text-secondary)' }}>{value}</span>
+              <div key={label} className="flex items-center justify-between py-1">
+                <span className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>{label}</span>
+                <span className="text-sm font-mono font-medium" style={{ color: 'var(--color-text-secondary)' }}>{value}</span>
               </div>
             ))}
           </div>
@@ -289,19 +301,19 @@ export function SettingsPage() {
             a.click();
             URL.revokeObjectURL(url);
           }}
-          className="btn-ghost w-full flex items-center justify-center gap-2 mb-5 animate-fade-in stagger-6"
+          className="btn-ghost w-full flex items-center justify-center gap-2.5 mb-7 text-base animate-fade-in stagger-6"
         >
-          <Download size={14} />
+          <Download size={18} />
           导出学习数据
         </button>
 
         {/* Security note */}
         <div
-          className="rounded-lg px-4 py-3 flex items-start gap-2.5 animate-fade-in stagger-6"
-          style={{ backgroundColor: 'rgba(52, 211, 153, 0.04)', border: '1px solid rgba(52, 211, 153, 0.08)' }}
+          className="rounded-md px-4 py-3 flex items-start gap-3 animate-fade-in stagger-6"
+          style={{ backgroundColor: 'var(--color-tint-emerald)', border: '1px solid rgba(138, 173, 122, 0.1)' }}
         >
-          <Shield size={13} className="shrink-0 mt-0.5" style={{ color: 'var(--color-accent-emerald)' }} />
-          <p className="text-[11px] leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
+          <Shield size={16} className="shrink-0 mt-0.5" style={{ color: 'var(--color-accent-emerald)' }} />
+          <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
             Key 存储在浏览器 localStorage，仅通过加密请求头传递。后端不存储 Key。
           </p>
         </div>

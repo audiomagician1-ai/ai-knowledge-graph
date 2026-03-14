@@ -33,7 +33,7 @@ interface GLink extends LinkObject<GNode> {
 }
 
 const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
-const BG_COLOR = '#06090f';
+const BG_COLOR = '#0C0E12';
 
 /* ── Larger sphere to spread 267 nodes ── */
 const SPHERE_R = 480;
@@ -46,10 +46,10 @@ function baseSize(n: GNode): number {
 }
 
 function nodeColor(n: GNode): string {
-  if (n.status === 'mastered') return '#34d399';
-  if (n.status === 'learning') return '#fbbf24';
-  if (n.is_recommended) return '#22d3ee'; // cyan for "ready to learn"
-  return SUBDOMAIN_COLORS[n.subdomain_id] || '#6366f1';
+  if (n.status === 'mastered') return '#8AAD7A';  // sage green
+  if (n.status === 'learning') return '#C8956C';  // copper
+  if (n.is_recommended) return '#7BAE7F';          // light sage
+  return SUBDOMAIN_COLORS[n.subdomain_id] || '#8A8A8A';
 }
 
 /* ── Label texture cache to avoid re-creating every frame ── */
@@ -84,7 +84,7 @@ function makeLabelTexture(text: string, color: string, isMilestone: boolean): TH
   ctx.strokeText(text, w / 2, h / 2);
 
   // Fill text
-  ctx.fillStyle = isMilestone ? '#fde68a' : color;
+  ctx.fillStyle = isMilestone ? '#D4A57C' : color;  // warm copper for milestones
   ctx.fillText(text, w / 2, h / 2);
 
   const tex = new THREE.CanvasTexture(canvas);
@@ -154,7 +154,7 @@ function recommendedGlowTexture(): THREE.Texture {
 /* ── Celebration particles for newly mastered nodes ── */
 function spawnCelebration(scene: THREE.Scene, x: number, y: number, z: number) {
   const PARTICLE_COUNT = 24;
-  const colors = [0x34d399, 0xfbbf24, 0x818cf8, 0x22d3ee, 0xf472b6]; // green, amber, indigo, cyan, pink
+  const colors = [0x8AAD7A, 0xC8956C, 0x8A9EC0, 0x7BAE7F, 0xB07CC3]; // sage, copper, steel, light sage, plum
 
   const particles: { mesh: THREE.Mesh; vx: number; vy: number; vz: number; life: number }[] = [];
 
@@ -264,15 +264,14 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
         .showNavInfo(false)
         .graphData(buildPayload());
 
-      /* ── Much lighter fog so labels stay visible ── */
+      /* ── Subtle fog ── */
       const scene = Graph.scene();
-      scene.fog = new THREE.FogExp2(BG_COLOR, 0.0006);
+      scene.fog = new THREE.FogExp2(BG_COLOR, 0.0004);
 
-      /* ── Brighter lights ── */
+      /* ── Warm neutral lights ── */
       Graph.lights([
-        new THREE.AmbientLight(0xffffff, 0.9),
-        (() => { const l = new THREE.PointLight(0x6366f1, 0.8, 1200); l.position.set(0, 0, 0); return l; })(),
-        (() => { const l = new THREE.PointLight(0x8b5cf6, 0.4, 800); l.position.set(300, 300, 300); return l; })(),
+        new THREE.AmbientLight(0xfaf5ef, 0.8),
+        (() => { const l = new THREE.PointLight(0xc8956c, 0.3, 1000); l.position.set(0, 0, 0); return l; })(),
       ]);
 
       /* ── Forces: stronger repulsion to prevent overlap ── */
@@ -316,53 +315,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
           const group = new THREE.Group();
           const color = nodeColor(n);
 
-          /* Glow sprite for milestone nodes */
-          if (n.is_milestone) {
-            const sprite = new THREE.Sprite(
-              new THREE.SpriteMaterial({
-                map: glowTexture(),
-                transparent: true,
-                opacity: 0.6,
-                depthWrite: false,
-                blending: THREE.AdditiveBlending,
-              })
-            );
-            const s = baseSize(n) * 12;
-            sprite.scale.set(s, s, 1);
-            group.add(sprite);
-          }
-
-          /* Glow for mastered nodes */
-          if (n.status === 'mastered') {
-            const sprite = new THREE.Sprite(
-              new THREE.SpriteMaterial({
-                map: masteredGlowTexture(),
-                transparent: true,
-                opacity: 0.7,
-                depthWrite: false,
-                blending: THREE.AdditiveBlending,
-              })
-            );
-            const s = baseSize(n) * 10;
-            sprite.scale.set(s, s, 1);
-            group.add(sprite);
-          }
-
-          /* Glow for recommended nodes (ready to learn) */
-          if (n.is_recommended && n.status !== 'mastered') {
-            const sprite = new THREE.Sprite(
-              new THREE.SpriteMaterial({
-                map: recommendedGlowTexture(),
-                transparent: true,
-                opacity: 0.5,
-                depthWrite: false,
-                blending: THREE.AdditiveBlending,
-              })
-            );
-            const s = baseSize(n) * 10;
-            sprite.scale.set(s, s, 1);
-            group.add(sprite);
-          }
+          /* No glow sprites — clean solid nodes */
 
           /* Label sprite — large, crisp, always visible */
           const tex = makeLabelTexture(n.label, color, n.is_milestone);
@@ -386,15 +339,15 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
           return group;
         });
 
-      /* ── Link visuals: thicker, more visible ── */
+      /* ── Link visuals: thin, quiet lines ── */
       Graph
-        .linkWidth((l: object) => (l as GLink).relation_type === 'prerequisite' ? 1.0 : 0.5)
-        .linkOpacity(0.35)
-        .linkColor((l: object) => (l as GLink).relation_type === 'prerequisite' ? '#4a5880' : '#2a3654')
-        .linkDirectionalParticles((l: object) => (l as GLink).relation_type === 'prerequisite' ? 2 : 0)
-        .linkDirectionalParticleWidth(1.2)
-        .linkDirectionalParticleSpeed(0.003)
-        .linkDirectionalParticleColor(() => '#818cf8');
+        .linkWidth((l: object) => (l as GLink).relation_type === 'prerequisite' ? 0.6 : 0.3)
+        .linkOpacity(0.15)
+        .linkColor(() => '#4a4a50')
+        .linkDirectionalParticles(0)
+        .linkDirectionalParticleWidth(0)
+        .linkDirectionalParticleSpeed(0)
+        .linkDirectionalParticleColor(() => '#4a4a50');
 
       /* ── Interaction: STOP rotation + FREEZE simulation on click ── */
       Graph.onNodeClick((n: NodeObject) => {
@@ -450,7 +403,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       const ctrl = Graph.controls() as { autoRotate?: boolean; autoRotateSpeed?: number; enableDamping?: boolean; dampingFactor?: number };
       if (ctrl) {
         ctrl.autoRotate = true;
-        ctrl.autoRotateSpeed = 0.3;
+        ctrl.autoRotateSpeed = 0.15;
         ctrl.enableDamping = true;
         ctrl.dampingFactor = 0.12;
       }

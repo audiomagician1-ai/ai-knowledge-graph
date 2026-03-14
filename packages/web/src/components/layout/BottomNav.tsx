@@ -31,15 +31,15 @@ export function BottomNav() {
           <button
             key={path}
             onClick={() => navigate(path)}
-            className="flex flex-col items-center justify-center gap-1 px-4 py-2 transition-colors duration-150"
+            className="flex flex-col items-center justify-center gap-1 px-5 py-2 transition-colors duration-150 rounded-lg"
             style={{
               color: isActive ? 'var(--color-accent-primary)' : 'var(--color-text-tertiary)',
-              minWidth: 64,
-              minHeight: 44,
+              minWidth: 72,
+              minHeight: 52,
             }}
           >
-            <Icon size={20} />
-            <span className="text-[11px] font-medium">{label}</span>
+            <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+            <span className="text-xs font-medium">{label}</span>
           </button>
         );
       })}

@@ -1,46 +1,50 @@
 @import "tailwindcss";
 
 /* ========================================
-   AI Knowledge Graph — Obsidian Glass
-   Refined dark editorial design system
-   Warm slate + amber accents, clean geometry
+   AI Knowledge Graph — Observatory Study
+   Warm dark UI · Scholarly & grounded
+   Copper + sage + plum · No glow, no glass
    ======================================== */
 
 @theme {
-  /* Surface layers — warm charcoal progression */
-  --color-surface-0: #0a0c10;
-  --color-surface-1: #111318;
-  --color-surface-2: #18191f;
-  --color-surface-3: #1f2128;
-  --color-surface-4: #282a33;
+  /* Surface layers — warm near-black progression */
+  --color-surface-0: #111110;
+  --color-surface-1: #19181a;
+  --color-surface-2: #201f22;
+  --color-surface-3: #28272b;
+  --color-surface-4: #323135;
   /* Borders */
-  --color-border: rgba(255, 255, 255, 0.07);
-  --color-border-subtle: rgba(255, 255, 255, 0.04);
-  --color-border-accent: rgba(234, 179, 8, 0.25);
-  /* Glass */
-  --color-glass: rgba(14, 15, 20, 0.78);
-  --color-glass-heavy: rgba(14, 15, 20, 0.92);
-  /* Text */
-  --color-text-primary: #e4e4e7;
-  --color-text-secondary: #a1a1aa;
-  --color-text-tertiary: #63636e;
-  /* Accents — warm amber anchor + functional colors */
-  --color-accent-primary: #eab308;
-  --color-accent-warm: #f59e0b;
-  --color-accent-emerald: #34d399;
-  --color-accent-amber: #eab308;
-  --color-accent-rose: #f43f5e;
-  --color-accent-cyan: #22d3ee;
-  --color-accent-blue: #60a5fa;
-  /* Glows */
-  --color-glow-primary: rgba(234, 179, 8, 0.12);
-  --color-glow-emerald: rgba(52, 211, 153, 0.12);
-  --color-glow-amber: rgba(234, 179, 8, 0.12);
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-subtle: rgba(255, 255, 255, 0.03);
+  --color-border-accent: rgba(200, 149, 108, 0.2);
+  /* Text — warm tones */
+  --color-text-primary: #edebe8;
+  --color-text-secondary: #a8a5a0;
+  --color-text-tertiary: #6b6966;
+  /* Accents — natural, desaturated */
+  --color-accent-primary: #c8956c;
+  --color-accent-warm: #d4a57c;
+  --color-accent-emerald: #8aad7a;
+  --color-accent-amber: #c8956c;
+  --color-accent-rose: #c97b7b;
+  --color-accent-cyan: #7bae7f;
+  --color-accent-blue: #8a9ec0;
+  /* Subtle tints (replace glow) */
+  --color-tint-primary: rgba(200, 149, 108, 0.08);
+  --color-tint-emerald: rgba(138, 173, 122, 0.08);
+  --color-tint-amber: rgba(200, 149, 108, 0.08);
 }
 
 :root {
-  --sidebar-width: 220px;
-  --bottom-nav-height: 56px;
+  --bottom-nav-height: 64px;
+}
+
+/* ── Floating Panel — solid, grounded ── */
+.floating-panel {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* ── Reset ── */
@@ -51,10 +55,10 @@
 }
 
 html {
-  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  font-size: 15px;
-  line-height: 1.6;
+  font-family: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+    -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-surface-0);
@@ -71,24 +75,21 @@ body { min-height: 100dvh; overflow-x: hidden; }
 }
 
 h1, h2, h3, h4 {
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  font-family: "Noto Serif SC", "Source Serif 4", Georgia, "PingFang SC", serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
   color: var(--color-text-primary);
 }
 
-/* ── Glass morphism ── */
+/* ── Solid panels (no blur/glass) ── */
 .glass {
-  background: var(--color-glass);
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: var(--color-surface-1);
   border: 1px solid var(--color-border);
 }
 
 .glass-heavy {
-  background: var(--color-glass-heavy);
-  backdrop-filter: blur(40px) saturate(160%);
-  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  background: var(--color-surface-1);
   border: 1px solid var(--color-border);
 }
 
@@ -96,55 +97,54 @@ h1, h2, h3, h4 {
 .card-static {
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 /* ── Buttons ── */
 .btn-primary {
   background: var(--color-accent-primary);
-  color: #0a0c10;
-  font-weight: 600;
+  color: #111110;
+  font-weight: 500;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px 20px;
-  font-size: 0.87rem;
+  font-size: 0.9375rem;
   cursor: pointer;
-  transition: all 0.15s ease;
-  letter-spacing: -0.01em;
+  transition: background 0.15s ease;
+  letter-spacing: 0.01em;
+  min-height: 44px;
 }
 .btn-primary:hover {
-  background: #facc15;
-  box-shadow: 0 4px 20px var(--color-glow-primary);
+  background: var(--color-accent-warm);
 }
-.btn-primary:active { transform: scale(0.98); }
-.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.btn-primary:active { opacity: 0.85; }
+.btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
 
 .btn-ghost {
   background: transparent;
   color: var(--color-text-secondary);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px 20px;
-  font-size: 0.87rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
+  min-height: 44px;
 }
 .btn-ghost:hover {
   background: var(--color-surface-3);
   color: var(--color-text-primary);
-  border-color: rgba(255, 255, 255, 0.12);
 }
-.btn-ghost:active { transform: scale(0.98); }
 
 /* ── Tabular numbers for score animations ── */
 .tabular-nums { font-variant-numeric: tabular-nums; }
 
-/* ── Scrollbar — ultra thin, fades ── */
-::-webkit-scrollbar { width: 4px; height: 4px; }
+/* ── Scrollbar — refined thin ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.15); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.18); }
 
 /* ── Graph container ── */
 .graph-container { touch-action: none; user-select: none; -webkit-user-select: none; }
@@ -188,21 +188,53 @@ h1, h2, h3, h4 {
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-warm));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent-primary);
 }
 
 /* ── Focus states ── */
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--color-accent-primary) !important;
-  box-shadow: 0 0 0 2px var(--color-glow-primary);
+  box-shadow: 0 0 0 2px var(--color-tint-primary);
 }
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(234, 179, 8, 0.25);
+  background: rgba(200, 149, 108, 0.25);
   color: white;
+}
+
+/* ── Solid panels ── */
+.glass-panel {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Larger, more accessible card styles ── */
+.card-elevated {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 24px;
+  transition: border-color 0.15s ease;
+}
+.card-elevated:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Touch-friendly interactive targets ── */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+.touch-target:hover {
+  background: var(--color-surface-3);
 }

@@ -6,7 +6,7 @@ import type { AssessmentResult } from '@/lib/store/dialogue';
 import {
   ArrowLeft, Star, Send, BarChart3, Brain, Lightbulb,
   RotateCcw, ArrowRight, Zap, AlertTriangle, Trophy,
-  CheckCircle2, Target, BookOpen, Sparkles,
+  CheckCircle2, Target, BookOpen,
 } from 'lucide-react';
 import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
 import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
@@ -78,7 +78,7 @@ export function LearnPage() {
         >
           <button
             onClick={() => navigate('/graph')}
-            className="flex items-center justify-center w-9 h-9 rounded-xl transition-colors"
+              className="flex items-center justify-center w-9 h-9 rounded-md transition-colors"
             style={{ color: 'var(--color-text-secondary)' }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
@@ -120,15 +120,15 @@ export function LearnPage() {
               className="gradient-border animate-fade-in"
               style={{ padding: 0 }}
             >
-              <div
-                className="rounded-2xl px-5 py-4 flex items-start gap-4"
-                style={{ backgroundColor: 'var(--color-surface-2)' }}
-              >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ background: 'linear-gradient(135deg, var(--color-accent-amber), #f97316)', boxShadow: '0 4px 12px rgba(251, 191, 36, 0.2)' }}
+                  className="rounded-lg px-5 py-4 flex items-start gap-4"
+                  style={{ backgroundColor: 'var(--color-surface-2)' }}
                 >
-                  <Lightbulb size={18} className="text-white" />
+                <div
+                  className="w-9 h-9 rounded-md flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: 'var(--color-accent-primary)' }}
+                >
+                  <Lightbulb size={16} style={{ color: '#111110' }} />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>
@@ -150,46 +150,40 @@ export function LearnPage() {
               >
                 {msg.role === 'assistant' && (
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mr-3 mt-1"
-                    style={{
-                      background: 'linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet))',
-                    }}
+                    className="w-7 h-7 rounded-md flex items-center justify-center shrink-0 mr-3 mt-1"
+                    style={{ backgroundColor: 'var(--color-surface-3)' }}
                   >
-                    <Brain size={14} className="text-white" />
+                    <Brain size={13} style={{ color: 'var(--color-text-secondary)' }} />
                   </div>
                 )}
                 <div
-                  className="max-w-[75%] rounded-2xl px-5 py-3.5 text-[14px] leading-relaxed"
+                  className="max-w-[75%] rounded-lg px-5 py-3.5 text-[14px] leading-relaxed"
                   style={
                     msg.role === 'user'
                       ? {
-                          background: 'linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet))',
-                          color: '#fff',
-                          borderBottomRightRadius: 6,
-                          boxShadow: '0 4px 16px rgba(99, 102, 241, 0.2)',
+                          backgroundColor: 'var(--color-tint-primary)',
+                          borderLeft: '2px solid var(--color-accent-primary)',
+                          color: 'var(--color-text-primary)',
+                          borderRadius: '2px 8px 8px 2px',
                         }
                       : {
                           backgroundColor: 'var(--color-surface-2)',
                           color: 'var(--color-text-primary)',
-                          borderBottomLeftRadius: 6,
+                          borderBottomLeftRadius: 2,
                           border: '1px solid var(--color-border)',
                         }
                   }
                 >
                   {msg.role === 'assistant' ? (
                     <>
-                    <div className="flex items-center gap-1.5 mb-1.5">
-                      <span className="text-[11px] font-mono font-semibold" style={{ color: 'var(--color-accent-indigo)' }}>
-                        AI Student
-                      </span>
-                    </div>
+
                     {msg.content ? (
                       <MarkdownRenderer content={msg.content} />
                     ) : isStreaming ? (
                       <div className="flex items-center gap-1 mt-1">
-                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-indigo)' }} />
-                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-violet)', animationDelay: '150ms' }} />
-                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-cyan)', animationDelay: '300ms' }} />
+                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent-primary)' }} />
+                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-text-tertiary)', animationDelay: '150ms' }} />
+                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-text-tertiary)', animationDelay: '300ms' }} />
                       </div>
                     ) : null}
                     </>
@@ -218,7 +212,7 @@ export function LearnPage() {
           >
             <div className="max-w-3xl mx-auto px-6 py-4">
               <div
-                className="flex items-end gap-3 rounded-2xl px-4 py-3 transition-all"
+                  className="flex items-end gap-3 rounded-lg px-4 py-3 transition-all"
                 style={{
                   backgroundColor: 'var(--color-surface-2)',
                   border: '1px solid var(--color-border)',
@@ -244,14 +238,13 @@ export function LearnPage() {
                 <button
                   onClick={handleSend}
                   disabled={isBusy || !input.trim() || !conversationId}
-                  className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center transition-all"
+                  className="shrink-0 w-9 h-9 rounded-md flex items-center justify-center transition-all"
                   style={{
                     background: !input.trim() || isBusy
                       ? 'var(--color-surface-3)'
-                      : 'linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet))',
-                    color: '#fff',
-                    opacity: !input.trim() || isBusy ? 0.5 : 1,
-                    boxShadow: input.trim() && !isBusy ? '0 2px 12px rgba(99, 102, 241, 0.3)' : 'none',
+                      : 'var(--color-accent-primary)',
+                    color: '#111110',
+                    opacity: !input.trim() || isBusy ? 0.4 : 1,
                   }}
                 >
                   <Send size={16} />
@@ -316,7 +309,7 @@ function AssessmentCard({ result, conceptName }: { result: AssessmentResult; con
     { label: '完整性', key: 'completeness' as const, icon: Target },
     { label: '准确性', key: 'accuracy' as const, icon: CheckCircle2 },
     { label: '深度', key: 'depth' as const, icon: BookOpen },
-    { label: '举例', key: 'examples' as const, icon: Sparkles },
+    { label: '举例', key: 'examples' as const, icon: Target },
   ];
 
   return (
@@ -329,22 +322,19 @@ function AssessmentCard({ result, conceptName }: { result: AssessmentResult; con
             : 'var(--color-surface-2)',
         }}
       >
-        <div className="rounded-2xl p-6" style={{ backgroundColor: 'var(--color-surface-2)' }}>
+        <div className="rounded-lg p-6" style={{ backgroundColor: 'var(--color-surface-2)' }}>
           {/* Header */}
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-3">
               <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center"
+                className="w-10 h-10 rounded-md flex items-center justify-center"
                 style={{
-                  background: result.mastered
-                    ? 'linear-gradient(135deg, var(--color-accent-emerald), #10b981)'
-                    : 'linear-gradient(135deg, var(--color-accent-amber), #f97316)',
-                  boxShadow: result.mastered
-                    ? '0 4px 16px rgba(52, 211, 153, 0.25)'
-                    : '0 4px 16px rgba(251, 191, 36, 0.25)',
+                  backgroundColor: result.mastered
+                    ? 'var(--color-accent-emerald)'
+                    : 'var(--color-accent-primary)',
                 }}
               >
-                {result.mastered ? <Trophy size={20} className="text-white" /> : <BarChart3 size={20} className="text-white" />}
+                {result.mastered ? <Trophy size={18} style={{ color: '#111110' }} /> : <BarChart3 size={18} style={{ color: '#111110' }} />}
               </div>
               <div>
                 <h3 className="text-[15px] font-bold" style={{ color: 'var(--color-text-primary)' }}>
@@ -384,11 +374,10 @@ function AssessmentCard({ result, conceptName }: { result: AssessmentResult; con
                   </div>
                   <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-4)' }}>
                     <div
-                      className="h-full rounded-full transition-all duration-700 ease-out"
+                      className="h-1.5 rounded-full transition-all duration-700 ease-out"
                       style={{
                         width: `${score}%`,
-                        background: `linear-gradient(90deg, ${scoreColor(score)}, ${scoreColor(score)}dd)`,
-                        boxShadow: `0 0 8px ${scoreColor(score)}40`,
+                        backgroundColor: scoreColor(score),
                       }}
                     />
                   </div>
@@ -398,8 +387,8 @@ function AssessmentCard({ result, conceptName }: { result: AssessmentResult; con
           </div>
 
           {/* Feedback */}
-          <div
-            className="rounded-xl px-4 py-3 mb-4"
+            <div
+            className="rounded-md px-4 py-3 mb-4"
             style={{ backgroundColor: 'var(--color-surface-3)', border: '1px solid var(--color-border-subtle)' }}
           >
             <p className="text-[13px] leading-relaxed" style={{ color: 'var(--color-text-primary)' }}>
@@ -410,8 +399,8 @@ function AssessmentCard({ result, conceptName }: { result: AssessmentResult; con
           {/* Knowledge gaps */}
           {result.gaps.length > 0 && (
             <div>
-              <p className="text-[11px] font-mono font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--color-accent-amber)' }}>
-                Knowledge Gaps
+              <p className="text-[11px] font-mono font-medium uppercase tracking-wider mb-2" style={{ color: 'var(--color-accent-amber)' }}>
+                知识盲区
               </p>
               <ul className="space-y-1.5">
                 {result.gaps.map((gap, i) => (
