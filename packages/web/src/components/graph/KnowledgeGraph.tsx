@@ -151,11 +151,71 @@ function recommendedGlowTexture(): THREE.Texture {
   return _recommendedGlowTex;
 }
 
+/* ── Celebration particles for newly mastered nodes ── */
+function spawnCelebration(scene: THREE.Scene, x: number, y: number, z: number) {
+  const PARTICLE_COUNT = 24;
+  const colors = [0x34d399, 0xfbbf24, 0x818cf8, 0x22d3ee, 0xf472b6]; // green, amber, indigo, cyan, pink
+
+  const particles: { mesh: THREE.Mesh; vx: number; vy: number; vz: number; life: number }[] = [];
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const color = colors[i % colors.length];
+    const geo = new THREE.SphereGeometry(0.6 + Math.random() * 0.8, 6, 6);
+    const mat = new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 1,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(x, y, z);
+
+    // Random velocity in all directions
+    const speed = 1.5 + Math.random() * 3;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.random() * Math.PI;
+    const vx = speed * Math.sin(phi) * Math.cos(theta);
+    const vy = speed * Math.sin(phi) * Math.sin(theta);
+    const vz = speed * Math.cos(phi);
+
+    scene.add(mesh);
+    particles.push({ mesh, vx, vy, vz, life: 1.0 });
+  }
+
+  // Animate particles
+  let frame = 0;
+  const maxFrames = 60; // ~1 second at 60fps
+  const animate = () => {
+    frame++;
+    if (frame > maxFrames) {
+      // Cleanup
+      for (const p of particles) {
+        scene.remove(p.mesh);
+        p.mesh.geometry.dispose();
+        (p.mesh.material as THREE.MeshBasicMaterial).dispose();
+      }
+      return;
+    }
+    for (const p of particles) {
+      p.mesh.position.x += p.vx;
+      p.mesh.position.y += p.vy;
+      p.mesh.position.z += p.vz;
+      p.life -= 1 / maxFrames;
+      (p.mesh.material as THREE.MeshBasicMaterial).opacity = Math.max(0, p.life);
+      p.vx *= 0.96; p.vy *= 0.96; p.vz *= 0.96; // friction
+    }
+    requestAnimationFrame(animate);
+  };
+  requestAnimationFrame(animate);
+}
+
 /* ── Component ── */
 export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdomain }: KnowledgeGraphProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<ForceGraph3DInstance | null>(null);
   const hoveredRef = useRef<GNode | null>(null);
+  const prevMasteredRef = useRef<Set<string>>(new Set(
+    data.nodes.filter(n => n.status === 'mastered').map(n => n.id)
+  ));
   // Use refs for callbacks to avoid re-init on every render
   const onNodeClickRef = useRef(onNodeClick);
   onNodeClickRef.current = onNodeClick;
@@ -421,12 +481,41 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Init ONCE — data changes handled via separate effect
 
-  /* ── Update node status colors when data changes (without re-creating graph) ── */
+  /* ── Update node visuals when data (status) changes ── */
   useEffect(() => {
     const G = graphRef.current;
     if (!G) return;
-    // Update node colors to reflect new status
+
+    // Collect IDs of previously-mastered nodes
+    const prevMastered = prevMasteredRef.current;
+    const currMastered = new Set<string>();
+
+    // Update graphData node properties in-place
+    const gNodes = G.graphData().nodes as GNode[];
+    for (const gn of gNodes) {
+      const src = data.nodes.find(n => n.id === gn.id);
+      if (src) {
+        gn.status = src.status;
+        gn.is_recommended = src.is_recommended;
+        if (src.status === 'mastered') currMastered.add(src.id);
+      }
+    }
+
+    // Trigger visual refresh: nodeColor + regenerate three objects (for glow changes)
     G.nodeColor((n: object) => nodeColor(n as GNode));
+    // Force nodeThreeObject rebuild by re-setting the same function
+    G.nodeThreeObject(G.nodeThreeObject());
+
+    // Detect newly mastered nodes → fire celebration particles
+    for (const id of currMastered) {
+      if (!prevMastered.has(id)) {
+        const node = gNodes.find(n => n.id === id);
+        if (node && node.x != null) {
+          spawnCelebration(G.scene(), node.x!, node.y!, node.z!);
+        }
+      }
+    }
+    prevMasteredRef.current = currMastered;
   }, [data]);
 
   /* ── Fly to selected node from outside ── */

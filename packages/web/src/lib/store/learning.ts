@@ -1,5 +1,9 @@
 import { create } from 'zustand';
 import type { LearningStats, ConceptStatus } from '@akg/shared';
+import {
+  apiStartLearning, apiRecordAssessment, apiFetchAllProgress,
+  apiFetchStats, apiFetchHistory, apiFetchStreak, apiSyncToBackend,
+} from '@/lib/api/learning-api';
 
 // ========================================
 // Simplified concept progress for anonymous users
@@ -172,6 +176,8 @@ interface LearningState {
   history: LearningHistory[];
   streak: StreakData;
   stats: LearningStats | null;
+  /** Whether we've synced local data to backend at least once this session */
+  backendSynced: boolean;
 
   /** Edge data for prerequisite-based unlocking */
   prereqMap: Map<string, string[]>;
@@ -198,6 +204,8 @@ interface LearningState {
   refreshStreak: () => void;
   /** Clear newly unlocked (after UI has shown notification) */
   clearNewlyUnlocked: () => void;
+  /** Sync local data to backend (one-time migration + merge) */
+  syncWithBackend: () => Promise<void>;
 }
 
 export const useLearningStore = create<LearningState>((set, get) => ({
@@ -205,6 +213,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   history: loadHistory(),
   streak: loadStreak(),
   stats: null,
+  backendSynced: false,
   prereqMap: new Map(),
   dependentsMap: new Map(),
   recommendedIds: new Set(),
@@ -255,6 +264,9 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     }
 
     set({ progress: newProgress, streak: newStreak });
+
+    // Async write to backend (fire-and-forget)
+    apiStartLearning(conceptId);
   },
 
   recordAssessment: (conceptId, conceptName, score, mastered) => {
@@ -267,7 +279,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       status: mastered ? 'mastered' : 'learning',
       mastery_score: mastered ? Math.max(score, existing?.mastery_score || 0) : score,
       last_score: score,
-      sessions: existing?.sessions || 1, // inherit; at least 1 since we're assessing
+      sessions: existing?.sessions || 1,
       total_time_sec: existing?.total_time_sec || 0,
       mastered_at: mastered ? (existing?.mastered_at || now) : undefined,
       last_learn_at: now,
@@ -287,9 +299,8 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     const { dependentsMap, prereqMap, recommendedIds } = get();
     if (mastered && dependentsMap.size > 0) {
       newlyUnlocked = getNewlyUnlocked(conceptId, dependentsMap, prereqMap, newProgress);
-      // Update recommended set
       const updated_recommended = new Set(recommendedIds);
-      updated_recommended.delete(conceptId); // mastered, no longer "recommended"
+      updated_recommended.delete(conceptId);
       for (const uid of newlyUnlocked) {
         updated_recommended.add(uid);
       }
@@ -297,6 +308,9 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     } else {
       set({ progress: newProgress, history: newHistory });
     }
+
+    // Async write to backend (fire-and-forget)
+    apiRecordAssessment(conceptId, conceptName, score, mastered);
   },
 
   getConceptStatus: (conceptId) => {
@@ -310,7 +324,6 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   },
 
   computeStats: (totalConcepts) => {
-    // Auto-refresh streak on each stats computation
     get().refreshStreak();
 
     const { progress, streak } = get();
@@ -324,7 +337,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       total_concepts: totalConcepts,
       mastered_count: mastered,
       learning_count: learning,
-      available_count: notStarted, // no lock system — available = not_started
+      available_count: notStarted,
       locked_count: 0,
       not_started_count: notStarted,
       total_study_time_sec: totalTime,
@@ -339,10 +352,8 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   refreshStreak: () => {
     const { streak } = get();
     const today = todayStr();
-    // Only act if there's a previous date and it's not today
     if (streak.lastDate && streak.lastDate !== today) {
       if (streak.lastDate !== yesterdayStr()) {
-        // Streak broken — last activity was before yesterday
         const newStreak = { ...streak, current: 0 };
         saveStreak(newStreak);
         set({ streak: newStreak });
@@ -352,5 +363,96 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
   clearNewlyUnlocked: () => {
     set({ newlyUnlockedIds: [] });
+  },
+
+  syncWithBackend: async () => {
+    if (get().backendSynced) return;
+
+    try {
+      // 1. Push local data to backend (in case backend DB is empty/new)
+      const localProgress = get().progress;
+      const localHistory = get().history;
+      const localStreak = get().streak;
+
+      if (Object.keys(localProgress).length > 0 || localHistory.length > 0) {
+        await apiSyncToBackend({
+          progress: localProgress,
+          history: localHistory,
+          streak: localStreak,
+        });
+      }
+
+      // 2. Pull merged data from backend (backend has the authoritative state now)
+      const [backendProgress, backendHistory, backendStreak] = await Promise.all([
+        apiFetchAllProgress(),
+        apiFetchHistory(100),
+        apiFetchStreak(),
+      ]);
+
+      // 3. Merge: backend data takes priority for progress, merge into local format
+      const mergedProgress: Record<string, ConceptProgress> = { ...localProgress };
+      for (const [cid, bp] of Object.entries(backendProgress)) {
+        const local = mergedProgress[cid];
+        const backendItem = bp as any;
+        // Backend has newer or equal data → use it
+        if (!local || (backendItem.last_learn_at && backendItem.last_learn_at >= (local.last_learn_at || 0))) {
+          mergedProgress[cid] = {
+            concept_id: cid,
+            status: backendItem.status || 'not_started',
+            mastery_score: backendItem.mastery_score || 0,
+            last_score: backendItem.last_score,
+            sessions: backendItem.sessions || 0,
+            total_time_sec: backendItem.total_time_sec || 0,
+            mastered_at: backendItem.mastered_at,
+            last_learn_at: backendItem.last_learn_at || 0,
+          };
+        }
+      }
+
+      // Merge history (deduplicate by timestamp+concept_id)
+      const historySet = new Set(localHistory.map(h => `${h.concept_id}-${h.timestamp}`));
+      const mergedHistory = [...localHistory];
+      for (const bh of (backendHistory as any[])) {
+        const key = `${bh.concept_id}-${bh.timestamp}`;
+        if (!historySet.has(key)) {
+          mergedHistory.push({
+            concept_id: bh.concept_id,
+            concept_name: bh.concept_name,
+            score: bh.score,
+            mastered: !!bh.mastered,
+            timestamp: bh.timestamp,
+          });
+          historySet.add(key);
+        }
+      }
+      mergedHistory.sort((a, b) => a.timestamp - b.timestamp);
+
+      // Merge streak (take max)
+      let mergedStreak = { ...localStreak };
+      if (backendStreak) {
+        mergedStreak = {
+          current: Math.max(localStreak.current, backendStreak.current_streak || 0),
+          longest: Math.max(localStreak.longest, backendStreak.longest_streak || 0),
+          lastDate: localStreak.lastDate > (backendStreak.last_date || '') ? localStreak.lastDate : (backendStreak.last_date || ''),
+        };
+      }
+
+      // 4. Save merged data locally
+      saveProgress(mergedProgress);
+      saveHistory(mergedHistory);
+      saveStreak(mergedStreak);
+
+      set({
+        progress: mergedProgress,
+        history: mergedHistory,
+        streak: mergedStreak,
+        backendSynced: true,
+      });
+
+      console.log('[learning] Backend sync complete:', Object.keys(mergedProgress).length, 'concepts');
+    } catch (err) {
+      console.warn('[learning] Backend sync failed, using local data:', err);
+      set({ backendSynced: true }); // Don't retry this session
+    }
   },
 }));

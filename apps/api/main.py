@@ -35,7 +35,15 @@ BASE_DIR = _get_base_dir()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """应用生命周期管理 — DB connections are optional (graceful degradation)"""
-    # Startup: try connecting DBs but don't crash if unavailable
+    # Startup: initialize SQLite (always available, zero-config)
+    try:
+        from db.sqlite_client import init_db, DB_PATH
+        init_db()
+        logger.info("SQLite initialized: %s", DB_PATH)
+    except Exception as e:
+        logger.error("SQLite init failed: %s", e)
+
+    # Optional: try connecting external DBs but don't crash if unavailable
     try:
         from db.neo4j_client import neo4j_client
         await neo4j_client.connect()

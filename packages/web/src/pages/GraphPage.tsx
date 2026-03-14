@@ -1,13 +1,14 @@
-import { useEffect, useState, lazy, Suspense, useMemo } from 'react';
+import { useEffect, useState, useCallback, lazy, Suspense, useMemo } from 'react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
+import { apiFetchRecommendations } from '@/lib/api/learning-api';
 import type { GraphNode, GraphData } from '@akg/shared';
 import { GRAPH_VISUAL } from '@akg/shared';
 import { ChatPanel } from '@/components/chat/ChatPanel';
 import {
   Search, X, Star, ChevronRight, Clock, BookOpen, Zap,
-  Filter, Trophy, Loader,
+  Filter, Trophy, Loader, Compass, Sparkles,
 } from 'lucide-react';
 
 const KnowledgeGraph = lazy(() =>
@@ -21,11 +22,24 @@ export function GraphPage() {
     graphData, loading, selectedNode, activeSubdomain,
     setGraphData, selectNode, setActiveSubdomain, setLoading, setError,
   } = useGraphStore();
-  const { progress, computeStats, refreshStreak, initEdges, recommendedIds } = useLearningStore();
+  const { progress, computeStats, refreshStreak, initEdges, recommendedIds, syncWithBackend, backendSynced } = useLearningStore();
   const isDesktop = useIsDesktop();
   const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
+  const [showRecommend, setShowRecommend] = useState(false);
+  const [recommendations, setRecommendations] = useState<Array<{
+    concept_id: string; name: string; difficulty: number;
+    estimated_minutes: number; is_milestone: boolean; score: number; reason: string; status: string;
+  }>>([]);
+  const [recommendLoading, setRecommendLoading] = useState(false);
+
+  const loadRecommendations = useCallback(async () => {
+    setRecommendLoading(true);
+    const data = await apiFetchRecommendations(5);
+    if (data) setRecommendations(data.recommendations);
+    setRecommendLoading(false);
+  }, []);
 
   const enrichedGraphData = useMemo<GraphData | null>(() => {
     if (!graphData) return null;
@@ -51,6 +65,9 @@ export function GraphPage() {
   }, [graphData]);
 
   useEffect(() => { if (graphData) computeStats(graphData.nodes.length); }, [progress]);
+
+  // Sync with backend on first load
+  useEffect(() => { if (!backendSynced) syncWithBackend(); }, [backendSynced]);
 
   useEffect(() => { loadGraph(); loadSubdomains(); }, []);
 
@@ -294,6 +311,86 @@ export function GraphPage() {
               <ChatPanel conceptId={selectedNode.id} conceptName={selectedNode.label} />
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ── Recommend Button + Panel (bottom-right, when no node selected) ── */}
+      {!selectedNode && (
+        <div className="absolute bottom-4 right-4 z-10 flex flex-col items-end gap-2">
+          {/* Recommendation Panel */}
+          {showRecommend && (
+            <div className="glass-heavy rounded-xl overflow-hidden animate-fade-in-scale" style={{ width: isDesktop ? 340 : 300 }}>
+              <div className="px-4 pt-3 pb-2 flex items-center justify-between" style={{ borderBottom: '1px solid var(--color-border-subtle)' }}>
+                <div className="flex items-center gap-1.5">
+                  <Compass size={14} style={{ color: 'var(--color-accent-primary)' }} />
+                  <span className="text-[13px] font-semibold">推荐学习路径</span>
+                </div>
+                <button onClick={() => setShowRecommend(false)} className="p-1 rounded" style={{ color: 'var(--color-text-tertiary)' }}>
+                  <X size={12} />
+                </button>
+              </div>
+              <div className="max-h-[320px] overflow-y-auto">
+                {recommendLoading ? (
+                  <div className="flex items-center justify-center py-8">
+                    <Loader size={16} className="animate-spin" style={{ color: 'var(--color-text-tertiary)' }} />
+                  </div>
+                ) : recommendations.length === 0 ? (
+                  <div className="text-center py-8 px-4">
+                    <p className="text-[12px]" style={{ color: 'var(--color-text-tertiary)' }}>暂无推荐</p>
+                  </div>
+                ) : (
+                  recommendations.map((rec, idx) => {
+                    const diff = difficultyLabel(rec.difficulty);
+                    return (
+                      <button
+                        key={rec.concept_id}
+                        onClick={() => {
+                          const node = enrichedGraphData?.nodes.find(n => n.id === rec.concept_id);
+                          if (node) { selectNode(node); setShowRecommend(false); }
+                        }}
+                        className="w-full text-left px-4 py-2.5 flex items-start gap-3 transition-colors"
+                        style={{ borderBottom: '1px solid var(--color-border-subtle)' }}
+                        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+                      >
+                        <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5"
+                          style={{ backgroundColor: 'var(--color-accent-primary)', color: '#0a0c10' }}>
+                          {idx + 1}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 mb-0.5">
+                            {rec.is_milestone && <Star size={10} fill="var(--color-accent-amber)" style={{ color: 'var(--color-accent-amber)' }} />}
+                            <span className="text-[13px] font-medium truncate">{rec.name}</span>
+                          </div>
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <span className="text-[10px] font-medium" style={{ color: diff.color }}>Lv.{rec.difficulty}</span>
+                            <span className="text-[10px]" style={{ color: 'var(--color-text-tertiary)' }}>{rec.estimated_minutes}min</span>
+                            {rec.status === 'learning' && (
+                              <span className="text-[10px] font-medium" style={{ color: '#f59e0b' }}>进行中</span>
+                            )}
+                          </div>
+                          <p className="text-[11px] leading-tight" style={{ color: 'var(--color-text-tertiary)' }}>{rec.reason}</p>
+                        </div>
+                        <ChevronRight size={12} className="shrink-0 mt-1" style={{ color: 'var(--color-text-tertiary)' }} />
+                      </button>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Recommend Button */}
+          <button
+            onClick={() => {
+              if (!showRecommend) { setShowRecommend(true); loadRecommendations(); }
+              else setShowRecommend(false);
+            }}
+            className="btn-primary flex items-center gap-2 px-5 py-2.5 rounded-xl shadow-lg text-[13px] font-semibold transition-all hover:scale-105 active:scale-95"
+          >
+            <Sparkles size={15} />
+            AI 推荐学习
+          </button>
         </div>
       )}
     </div>

@@ -55,6 +55,11 @@ packages/mobile/ios/
 *.spec
 release/*.exe
 
+# SQLite local data
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
 # Misc
 *.tsbuildinfo
 .turbo/
