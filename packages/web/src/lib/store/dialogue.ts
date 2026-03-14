@@ -67,6 +67,10 @@ interface DialogueState {
   loadSavedConversation: (convId: string) => void;
   /** Delete a saved conversation */
   deleteSavedConversation: (convId: string) => void;
+  /** Import saved conversations from external data (merge) */
+  importConversations: (convs: SavedConversation[]) => { imported: number };
+  /** Replace all saved conversations */
+  replaceConversations: (convs: SavedConversation[]) => void;
 }
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
@@ -452,5 +456,30 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     const updated = savedConversations.filter(c => c.conversationId !== convId);
     persistConversations(updated);
     set({ savedConversations: updated });
+  },
+
+  importConversations: (convs: SavedConversation[]) => {
+    const { savedConversations } = get();
+    const existingIds = new Set(savedConversations.map(c => c.conversationId));
+    let imported = 0;
+    const merged = [...savedConversations];
+    for (const conv of convs) {
+      if (!conv.conversationId || !conv.conceptId || !Array.isArray(conv.messages)) continue;
+      if (!existingIds.has(conv.conversationId)) {
+        merged.push(conv);
+        existingIds.add(conv.conversationId);
+        imported++;
+      }
+    }
+    merged.sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+    persistConversations(merged);
+    set({ savedConversations: merged });
+    return { imported };
+  },
+
+  replaceConversations: (convs: SavedConversation[]) => {
+    const valid = convs.filter(c => c.conversationId && c.conceptId && Array.isArray(c.messages));
+    persistConversations(valid);
+    set({ savedConversations: valid });
   },
 }));

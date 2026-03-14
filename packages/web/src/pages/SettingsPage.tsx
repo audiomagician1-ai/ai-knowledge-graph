@@ -1,14 +1,15 @@
-﻿import { useState } from 'react';
+﻿import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSettingsStore, PROVIDER_INFO, getLLMHeaders } from '@/lib/store/settings';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
 import {
   Eye, EyeOff, Check, Trash2, Shield,
-  Key, Server, Cpu, Wifi, WifiOff, Loader2, Globe, Box,
-  Info, Download, Network, ArrowLeft,
+  Key, Server, Wifi, WifiOff, Loader2, Globe, Box,
+  Info, Download, Upload, ArrowLeft,
 } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
+import { useDialogueStore } from '@/lib/store/dialogue';
 
 const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek', 'custom'];
 
@@ -20,9 +21,13 @@ export function SettingsPage() {
   const [testStatus, setTestStatus] = useState<'idle' | 'testing' | 'success' | 'error'>('idle');
   const [testMessage, setTestMessage] = useState('');
   const { graphData } = useGraphStore();
-  const { progress, history, streak } = useLearningStore();
+  const { progress, history, streak, importData } = useLearningStore();
+  const { savedConversations, importConversations } = useDialogueStore();
   const totalNodes = graphData?.nodes.length || 0;
   const masteredCount = Object.values(progress).filter(p => p.status === 'mastered').length;
+  const [importStatus, setImportStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [importMessage, setImportMessage] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSave = () => {
     setSaved(true);
@@ -38,42 +43,27 @@ export function SettingsPage() {
     setTestStatus('testing');
     setTestMessage('');
     try {
-      if (llmConfig.directMode && llmConfig.baseUrl) {
-        // Direct mode: test LLM API directly from browser
-        const baseUrl = llmConfig.baseUrl.replace(/\/$/, '');
-        const res = await fetch(`${baseUrl}/chat/completions`, {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${llmConfig.apiKey}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: llmConfig.model || 'gpt-4o',
-            messages: [{ role: 'user', content: 'Say "OK" in one word.' }],
-            max_tokens: 5,
-          }),
-        });
-        if (res.ok) {
-          setTestStatus('success');
-          setTestMessage('直连成功 ✨ API 可用');
-          setTimeout(() => setTestStatus('idle'), 4000);
-        } else {
-          setTestStatus('error');
-          setTestMessage(`LLM API 返回 ${res.status}`);
-        }
+      const effectiveUrl = resolveBaseUrl(
+        llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase,
+        !!llmConfig.useProxy,
+      );
+      const ok = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || 'gpt-4o');
+      if (ok) {
+        setTestStatus('success');
+        setTestMessage(llmConfig.useProxy ? '通过本地代理连接成功 ✨' : '连接成功 ✨ API 可用');
+        setTimeout(() => setTestStatus('idle'), 4000);
       } else {
-        const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
-        const res = await fetch(`${API_BASE}/dialogue/conversations`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
-          body: JSON.stringify({ concept_id: 'prompt-basics' }),
-        });
-        if (res.ok) {
-          setTestStatus('success');
-          setTestMessage('连接成功，API 可用');
-          setTimeout(() => setTestStatus('idle'), 4000);
+        let errMsg = '连接失败';
+        if (llmConfig.useProxy) {
+          const alive = await probeProxy();
+          errMsg = alive
+            ? '代理在运行但 API 返回错误，请检查 URL / Key / 模型名。'
+            : '本地代理未运行。请先下载并启动代理脚本。';
         } else {
-          const data = await res.json().catch(() => ({}));
-          setTestStatus('error');
-          setTestMessage(data.detail || `HTTP ${res.status}`);
+          errMsg = '连接失败。如果是内网 API，请启用「本地代理」并启动代理脚本。';
         }
+        setTestStatus('error');
+        setTestMessage(errMsg);
       }
     } catch (err) {
       setTestStatus('error');
@@ -311,23 +301,98 @@ export function SettingsPage() {
           </div>
         </div>
 
-        {/* Data export */}
-        <button
-          onClick={() => {
-            const data = { progress, history, streak, exportedAt: new Date().toISOString() };
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `akg-learning-data-${new Date().toISOString().slice(0, 10)}.json`;
-            a.click();
-            URL.revokeObjectURL(url);
-          }}
-          className="btn-ghost w-full flex items-center justify-center gap-2.5 mb-7 text-base animate-fade-in stagger-6"
-        >
-          <Download size={18} />
-          导出学习数据
-        </button>
+        {/* Data export & import */}
+        <div className="flex gap-3 mb-3 animate-fade-in stagger-6">
+          <button
+            onClick={() => {
+              const data = {
+                version: 1,
+                progress,
+                history,
+                streak,
+                conversations: savedConversations,
+                settings: {
+                  provider: llmConfig.provider,
+                  model: llmConfig.model || '',
+                  baseUrl: llmConfig.baseUrl || '',
+                  useProxy: llmConfig.useProxy ?? false,
+                },
+                exportedAt: new Date().toISOString(),
+              };
+              const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `akg-data-${new Date().toISOString().slice(0, 10)}.json`;
+              a.click();
+              URL.revokeObjectURL(url);
+            }}
+            className="btn-ghost flex-1 flex items-center justify-center gap-2.5 text-base"
+          >
+            <Download size={18} />
+            导出数据
+          </button>
+          <button
+            onClick={() => fileInputRef.current?.click()}
+            className="btn-ghost flex-1 flex items-center justify-center gap-2.5 text-base"
+          >
+            <Upload size={18} />
+            导入数据
+          </button>
+          <input ref={fileInputRef} type="file" accept=".json" style={{ display: 'none' }} onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+              try {
+                const data = JSON.parse(ev.target?.result as string);
+                if (!data || typeof data !== 'object') throw new Error('无效的数据格式');
+                const results: string[] = [];
+                if (data.progress || data.history || data.streak) {
+                  const { imported, merged } = importData({ progress: data.progress, history: data.history, streak: data.streak });
+                  results.push(`学习进度: ${imported} 新增, ${merged} 更新`);
+                }
+                if (data.conversations && Array.isArray(data.conversations)) {
+                  const { imported } = importConversations(data.conversations);
+                  results.push(`对话记录: ${imported} 条导入`);
+                }
+                if (data.settings) {
+                  const partial: Record<string, unknown> = {};
+                  if (data.settings.provider) partial.provider = data.settings.provider;
+                  if (data.settings.model) partial.model = data.settings.model;
+                  if (data.settings.baseUrl) partial.baseUrl = data.settings.baseUrl;
+                  if (data.settings.useProxy !== undefined) partial.useProxy = data.settings.useProxy;
+                  if (Object.keys(partial).length > 0) {
+                    setLLMConfig(partial as any);
+                    results.push('设置已恢复（API Key 需手动输入）');
+                  }
+                }
+                setImportStatus('success');
+                setImportMessage(results.length > 0 ? results.join('；') : '无可导入的数据');
+                setTimeout(() => setImportStatus('idle'), 5000);
+              } catch (err) {
+                setImportStatus('error');
+                setImportMessage(err instanceof Error ? err.message : '导入失败');
+                setTimeout(() => setImportStatus('idle'), 5000);
+              }
+            };
+            reader.readAsText(file);
+            e.target.value = '';
+          }} />
+        </div>
+
+        {importStatus !== 'idle' && (
+          <p
+            className="text-sm mb-5 rounded-lg px-3.5 py-2.5 animate-fade-in"
+            style={{
+              color: importStatus === 'success' ? 'var(--color-accent-emerald)' : 'var(--color-accent-rose)',
+              backgroundColor: importStatus === 'success' ? 'rgba(52,211,153,0.06)' : 'rgba(244,63,94,0.06)',
+              border: `1px solid ${importStatus === 'success' ? 'rgba(52,211,153,0.12)' : 'rgba(244,63,94,0.12)'}`,
+            }}
+          >
+            {importMessage}
+          </p>
+        )}
 
         {/* Security note */}
         <div

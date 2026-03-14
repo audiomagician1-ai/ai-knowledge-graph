@@ -1,9 +1,10 @@
-﻿import { useState } from 'react';
-import { useSettingsStore, PROVIDER_INFO, getLLMHeaders, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, PROXY_BAT_SRC, downloadBlob } from '@/lib/store/settings';
+﻿import { useState, useRef } from 'react';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, PROXY_BAT_SRC, downloadBlob } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
-import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, MonitorDown } from 'lucide-react';
+import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
+import { useDialogueStore } from '@/lib/store/dialogue';
 
 const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek', 'custom'];
 
@@ -15,9 +16,13 @@ export function SettingsContent() {
   const [testMessage, setTestMessage] = useState('');
   const [connError, setConnError] = useState('');
   const { graphData } = useGraphStore();
-  const { progress, history, streak } = useLearningStore();
+  const { progress, history, streak, importData } = useLearningStore();
+  const { savedConversations, importConversations } = useDialogueStore();
   const totalNodes = graphData?.nodes.length || 0;
   const masteredCount = Object.values(progress).filter(p => p.status === 'mastered').length;
+  const [importStatus, setImportStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [importMessage, setImportMessage] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSave = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
@@ -219,15 +224,88 @@ export function SettingsContent() {
         </div>
       </div>
 
-      {/* Export */}
-      <button onClick={() => {
-        const data = { progress, history, streak, exportedAt: new Date().toISOString() };
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob); const a = document.createElement('a');
-        a.href = url; a.download = `akg-data-${new Date().toISOString().slice(0, 10)}.json`; a.click(); URL.revokeObjectURL(url);
-      }} className="btn-ghost w-full flex items-center justify-center gap-2" style={{ borderRadius: 10, padding: '12px 0', fontSize: 13 }}>
-        <Download size={14} /> 导出数据
-      </button>
+      {/* Export & Import */}
+      <div style={{ display: 'flex', gap: 10 }}>
+        <button onClick={() => {
+          const data = {
+            version: 1,
+            progress,
+            history,
+            streak,
+            conversations: savedConversations,
+            settings: {
+              provider: llmConfig.provider,
+              model: llmConfig.model || '',
+              baseUrl: llmConfig.baseUrl || '',
+              useProxy: llmConfig.useProxy ?? false,
+            },
+            exportedAt: new Date().toISOString(),
+          };
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob); const a = document.createElement('a');
+          a.href = url; a.download = `akg-data-${new Date().toISOString().slice(0, 10)}.json`; a.click(); URL.revokeObjectURL(url);
+        }} className="btn-ghost flex-1 flex items-center justify-center gap-2" style={{ borderRadius: 10, padding: '12px 0', fontSize: 13 }}>
+          <Download size={14} /> 导出
+        </button>
+        <button onClick={() => fileInputRef.current?.click()}
+          className="btn-ghost flex-1 flex items-center justify-center gap-2" style={{ borderRadius: 10, padding: '12px 0', fontSize: 13 }}>
+          <Upload size={14} /> 导入
+        </button>
+        <input ref={fileInputRef} type="file" accept=".json" style={{ display: 'none' }} onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            try {
+              const data = JSON.parse(ev.target?.result as string);
+              if (!data || typeof data !== 'object') throw new Error('无效的数据格式');
+              const results: string[] = [];
+              // Import learning data
+              if (data.progress || data.history || data.streak) {
+                const { imported, merged } = importData({
+                  progress: data.progress,
+                  history: data.history,
+                  streak: data.streak,
+                });
+                results.push(`学习进度: ${imported} 新增, ${merged} 更新`);
+              }
+              // Import conversations
+              if (data.conversations && Array.isArray(data.conversations)) {
+                const { imported } = importConversations(data.conversations);
+                results.push(`对话记录: ${imported} 条导入`);
+              }
+              // Import settings (except API key for security)
+              if (data.settings) {
+                const partial: Record<string, unknown> = {};
+                if (data.settings.provider) partial.provider = data.settings.provider;
+                if (data.settings.model) partial.model = data.settings.model;
+                if (data.settings.baseUrl) partial.baseUrl = data.settings.baseUrl;
+                if (data.settings.useProxy !== undefined) partial.useProxy = data.settings.useProxy;
+                if (Object.keys(partial).length > 0) {
+                  setLLMConfig(partial as any);
+                  results.push('设置已恢复（API Key 需手动输入）');
+                }
+              }
+              setImportStatus('success');
+              setImportMessage(results.length > 0 ? results.join('；') : '无可导入的数据');
+              setTimeout(() => setImportStatus('idle'), 5000);
+            } catch (err) {
+              setImportStatus('error');
+              setImportMessage(err instanceof Error ? err.message : '导入失败');
+              setTimeout(() => setImportStatus('idle'), 5000);
+            }
+          };
+          reader.readAsText(file);
+          e.target.value = ''; // Reset file input
+        }} />
+      </div>
+
+      {importStatus !== 'idle' && (
+        <p className="text-xs rounded-xl px-3.5 py-2.5" style={{
+          color: importStatus === 'success' ? 'var(--color-accent-emerald)' : 'var(--color-accent-rose)',
+          backgroundColor: importStatus === 'success' ? 'rgba(138,173,122,0.06)' : 'rgba(201,123,123,0.06)',
+        }}>{importMessage}</p>
+      )}
 
       {/* Security */}
       <div className="flex items-start gap-3" style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-tint-emerald)' }}>

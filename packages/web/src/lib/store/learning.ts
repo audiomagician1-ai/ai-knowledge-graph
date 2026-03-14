@@ -95,14 +95,36 @@ interface PersistedData {
   progress: Record<string, ConceptProgress>;
 }
 
+/** Validate a single ConceptProgress entry */
+function isValidProgress(p: unknown): p is ConceptProgress {
+  if (!p || typeof p !== 'object') return false;
+  const obj = p as Record<string, unknown>;
+  return typeof obj.concept_id === 'string' &&
+    typeof obj.status === 'string' &&
+    typeof obj.mastery_score === 'number' &&
+    typeof obj.last_learn_at === 'number';
+}
+
 function loadProgress(): Record<string, ConceptProgress> {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed: PersistedData = JSON.parse(raw);
-      return parsed.progress || {};
+      const progress = parsed.progress || {};
+      // Validate entries, skip corrupted ones
+      const validated: Record<string, ConceptProgress> = {};
+      for (const [key, val] of Object.entries(progress)) {
+        if (isValidProgress(val)) {
+          validated[key] = val;
+        } else {
+          console.warn(`[learning] Skipped corrupted progress entry: ${key}`);
+        }
+      }
+      return validated;
     }
-  } catch { /* ignore */ }
+  } catch (e) {
+    console.warn('[learning] Failed to load progress from localStorage:', e);
+  }
   return {};
 }
 
@@ -116,8 +138,21 @@ function saveProgress(progress: Record<string, ConceptProgress>) {
 function loadHistory(): LearningHistory[] {
   try {
     const raw = localStorage.getItem(HISTORY_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch { /* ignore */ }
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return [];
+      // Validate entries
+      return parsed.filter((h: unknown) => {
+        if (!h || typeof h !== 'object') return false;
+        const obj = h as Record<string, unknown>;
+        return typeof obj.concept_id === 'string' &&
+          typeof obj.score === 'number' &&
+          typeof obj.timestamp === 'number';
+      });
+    }
+  } catch (e) {
+    console.warn('[learning] Failed to load history from localStorage:', e);
+  }
   return [];
 }
 
@@ -204,6 +239,10 @@ interface LearningState {
   refreshStreak: () => void;
   /** Clear newly unlocked (after UI has shown notification) */
   clearNewlyUnlocked: () => void;
+  /** Import data from a previously exported JSON blob (merge strategy) */
+  importData: (data: { progress?: Record<string, ConceptProgress>; history?: LearningHistory[]; streak?: StreakData }) => { imported: number; merged: number };
+  /** Completely replace local data (for full restore) */
+  replaceData: (data: { progress: Record<string, ConceptProgress>; history: LearningHistory[]; streak: StreakData }) => void;
   /** Sync local data to backend (one-time migration + merge) */
   syncWithBackend: () => Promise<void>;
 }
@@ -363,6 +402,65 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
   clearNewlyUnlocked: () => {
     set({ newlyUnlockedIds: [] });
+  },
+
+  importData: (data) => {
+    const { progress: existingProgress, history: existingHistory, streak: existingStreak } = get();
+    let imported = 0;
+    let merged = 0;
+
+    // Merge progress
+    const mergedProgress = { ...existingProgress };
+    if (data.progress) {
+      for (const [key, val] of Object.entries(data.progress)) {
+        if (!isValidProgress(val)) continue;
+        const existing = mergedProgress[key];
+        if (!existing) {
+          mergedProgress[key] = val;
+          imported++;
+        } else if (val.last_learn_at > existing.last_learn_at) {
+          mergedProgress[key] = val;
+          merged++;
+        }
+      }
+    }
+
+    // Merge history (deduplicate by concept_id + timestamp)
+    const historySet = new Set(existingHistory.map(h => `${h.concept_id}-${h.timestamp}`));
+    const mergedHistory = [...existingHistory];
+    if (data.history) {
+      for (const h of data.history) {
+        const key = `${h.concept_id}-${h.timestamp}`;
+        if (!historySet.has(key)) {
+          mergedHistory.push(h);
+          historySet.add(key);
+        }
+      }
+      mergedHistory.sort((a, b) => a.timestamp - b.timestamp);
+    }
+
+    // Merge streak (take max)
+    let mergedStreak = { ...existingStreak };
+    if (data.streak) {
+      mergedStreak = {
+        current: Math.max(existingStreak.current, data.streak.current || 0),
+        longest: Math.max(existingStreak.longest, data.streak.longest || 0),
+        lastDate: existingStreak.lastDate > (data.streak.lastDate || '') ? existingStreak.lastDate : (data.streak.lastDate || ''),
+      };
+    }
+
+    saveProgress(mergedProgress);
+    saveHistory(mergedHistory);
+    saveStreak(mergedStreak);
+    set({ progress: mergedProgress, history: mergedHistory, streak: mergedStreak });
+    return { imported, merged };
+  },
+
+  replaceData: (data) => {
+    saveProgress(data.progress);
+    saveHistory(data.history);
+    saveStreak(data.streak);
+    set({ progress: data.progress, history: data.history, streak: data.streak });
   },
 
   syncWithBackend: async () => {

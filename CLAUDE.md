@@ -114,7 +114,8 @@ data/seed/         — 种子图谱数据
 - ✅ **UI改版「Observatory Study」**: 暖调深色(#111110)+衬线标题(Noto Serif SC)+去glass/glow/gradient+铜/苔/梅自然色系+圆角6-8px+实色按钮+图谱去辉光粒子
 - ✅ **Prompt工程方案文档**: `docs/PROMPT_ENGINEERING_ITERATION_V2.md` — 完整迭代设计
 - ✅ **本地CORS代理模式**: useProxy替代directMode + resolveBaseUrl/probeCORS/probeProxy + 代理脚本下载引导UI
-- ✅ tsc 0 errors, vite build 3.28s, CSS 28KB + graph 6.9KB (lazy)
+- ✅ **持久化机制修复+导入导出**: SettingsPage directMode→useProxy迁移 + 导出含对话记录/设置 + JSON导入(合并策略) + localStorage数据校验防腐败
+- ✅ tsc 0 errors, vite build 2.82s, CSS 28KB + graph 6.9KB (lazy)
 
 ### EXE 打包规范
 ```
