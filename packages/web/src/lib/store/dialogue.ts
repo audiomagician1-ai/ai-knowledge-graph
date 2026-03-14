@@ -1,5 +1,6 @@
 ﻿import { create } from 'zustand';
-import { getLLMHeaders } from './settings';
+import { getLLMHeaders, useSettingsStore } from './settings';
+import { directCreateConversation, directChatStream, directAssess } from '../direct-llm';
 
 export interface ChoiceOption {
   id: string;
@@ -167,16 +168,27 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       currentChoices: null,
     });
 
+    const isDirect = useSettingsStore.getState().isDirectMode();
+
     try {
-      const res = await fetch(`${API_BASE}/dialogue/conversations`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
-        body: JSON.stringify({ concept_id: conceptId }),
-      });
+      let data: any;
 
-      if (!res.ok) throw new Error('Failed to create conversation');
+      if (isDirect) {
+        // Direct mode: create conversation locally
+        const result = directCreateConversation(conceptId);
+        if (!result) throw new Error(`概念不存在: ${conceptId}`);
+        data = result;
+      } else {
+        // Proxy mode: create via Worker
+        const res = await fetch(`${API_BASE}/dialogue/conversations`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
+          body: JSON.stringify({ concept_id: conceptId }),
+        });
+        if (!res.ok) throw new Error('Failed to create conversation');
+        data = await res.json();
+      }
 
-      const data = await res.json();
       set({
         conversationId: data.conversation_id,
         conceptName: data.concept_name,
@@ -235,20 +247,28 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     }));
 
     try {
-      const res = await fetch(`${API_BASE}/dialogue/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
-        body: JSON.stringify({
-          conversation_id: conversationId,
-          message: text,
-          is_choice: isChoice,
-        }),
-        signal: controller.signal,
-      });
+      const isDirect = useSettingsStore.getState().isDirectMode();
+      let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
 
-      if (!res.ok) throw new Error('Chat failed');
-
-      const reader = res.body?.getReader();
+      if (isDirect) {
+        // Direct mode: stream from browser → LLM
+        const stream = directChatStream(conversationId, text, controller.signal);
+        reader = stream.getReader();
+      } else {
+        // Proxy mode: stream via Worker
+        const res = await fetch(`${API_BASE}/dialogue/chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
+          body: JSON.stringify({
+            conversation_id: conversationId,
+            message: text,
+            is_choice: isChoice,
+          }),
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error('Chat failed');
+        reader = res.body?.getReader();
+      }
       const decoder = new TextDecoder();
 
       if (!reader) throw new Error('No response body');
@@ -329,14 +349,22 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     set({ isAssessing: true, error: null });
 
     try {
-      const res = await fetch(`${API_BASE}/dialogue/assess`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
-        body: JSON.stringify({ conversation_id: conversationId }),
-      });
+      const isDirect = useSettingsStore.getState().isDirectMode();
+      let data: any;
 
-      if (!res.ok) throw new Error('Assessment failed');
-      const data = await res.json();
+      if (isDirect) {
+        // Direct mode: assess from browser → LLM
+        data = await directAssess(conversationId);
+      } else {
+        // Proxy mode: assess via Worker
+        const res = await fetch(`${API_BASE}/dialogue/assess`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
+          body: JSON.stringify({ conversation_id: conversationId }),
+        });
+        if (!res.ok) throw new Error('Assessment failed');
+        data = await res.json();
+      }
 
       if (data.error) {
         set({ isAssessing: false, error: data.error });

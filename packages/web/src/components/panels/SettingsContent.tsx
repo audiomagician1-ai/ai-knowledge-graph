@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react';
 import { useSettingsStore, PROVIDER_INFO, getLLMHeaders } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
-import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Cpu, Wifi, WifiOff, Loader2, Globe, Box, Info, Download } from 'lucide-react';
+import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Cpu, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Zap } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 
@@ -24,13 +24,30 @@ export function SettingsContent() {
     if (!llmConfig.apiKey) { setTestStatus('error'); setTestMessage('请先输入 API Key'); return; }
     setTestStatus('testing'); setTestMessage('');
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
-      const res = await fetch(`${API_BASE}/dialogue/conversations`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
-        body: JSON.stringify({ concept_id: 'prompt-basics' }),
-      });
-      if (res.ok) { setTestStatus('success'); setTestMessage('连接成功'); setTimeout(() => setTestStatus('idle'), 4000); }
-      else { const d = await res.json().catch(() => ({})); setTestStatus('error'); setTestMessage(d.detail || `HTTP ${res.status}`); }
+      if (llmConfig.directMode && llmConfig.baseUrl) {
+        // Direct mode: test LLM API directly from browser
+        const baseUrl = llmConfig.baseUrl.replace(/\/$/, '');
+        const res = await fetch(`${baseUrl}/chat/completions`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${llmConfig.apiKey}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: llmConfig.model || 'gpt-4o',
+            messages: [{ role: 'user', content: 'Say "OK" in one word.' }],
+            max_tokens: 5,
+          }),
+        });
+        if (res.ok) { setTestStatus('success'); setTestMessage('直连成功 ✨'); setTimeout(() => setTestStatus('idle'), 4000); }
+        else { setTestStatus('error'); setTestMessage(`LLM API 返回 ${res.status}`); }
+      } else {
+        // Proxy mode: test via Worker
+        const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+        const res = await fetch(`${API_BASE}/dialogue/conversations`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
+          body: JSON.stringify({ concept_id: 'prompt-basics' }),
+        });
+        if (res.ok) { setTestStatus('success'); setTestMessage('连接成功'); setTimeout(() => setTestStatus('idle'), 4000); }
+        else { const d = await res.json().catch(() => ({})); setTestStatus('error'); setTestMessage(d.detail || `HTTP ${res.status}`); }
+      }
     } catch (err) { setTestStatus('error'); setTestMessage(err instanceof Error ? err.message : '网络错误'); }
   };
 
@@ -103,6 +120,32 @@ export function SettingsContent() {
           style={{ borderRadius: 10, padding: '12px 16px', fontSize: 13, backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
       </div>
 
+      {/* Direct Mode Toggle */}
+      <div style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-surface-2)', border: llmConfig.directMode ? '1.5px solid var(--color-accent-primary)' : '1px solid var(--color-border)' }}>
+        <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
+          <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'flex' }}>
+            <Zap size={12} /> 浏览器直连模式
+          </label>
+          <button onClick={() => setLLMConfig({ directMode: !llmConfig.directMode })}
+            style={{
+              width: 44, height: 24, borderRadius: 12, padding: 2, cursor: 'pointer', border: 'none',
+              backgroundColor: llmConfig.directMode ? 'var(--color-accent-primary)' : 'var(--color-surface-3)',
+              transition: 'background-color 0.2s', position: 'relative',
+            }}>
+            <div style={{
+              width: 20, height: 20, borderRadius: '50%', backgroundColor: '#fff',
+              transform: llmConfig.directMode ? 'translateX(20px)' : 'translateX(0)',
+              transition: 'transform 0.2s', boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+            }} />
+          </button>
+        </div>
+        <p style={{ color: 'var(--color-text-tertiary)', fontSize: 12, lineHeight: 1.6 }}>
+          {llmConfig.directMode
+            ? '✅ 已开启 — 浏览器将直接调用 LLM API，适合内网/私有 API 地址'
+            : '关闭时通过云端服务器中转。如果你的 LLM API 只能从内网访问，请开启此选项并填写 Base URL。'}
+        </p>
+      </div>
+
       {/* Actions */}
       <div style={{ display: 'flex', gap: 10 }}>
         <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2" style={{ borderRadius: 10, padding: '12px 0', fontSize: 14 }}>
@@ -159,7 +202,7 @@ export function SettingsContent() {
       <div className="flex items-start gap-3" style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-tint-emerald)' }}>
         <Shield size={13} className="shrink-0" style={{ marginTop: 1, color: 'var(--color-accent-emerald)' }} />
         <p style={{ fontSize: 12, lineHeight: 1.6, color: 'var(--color-text-tertiary)' }}>
-          Key 仅存在浏览器本地，不会发送到后端。
+          Key 仅存在浏览器本地。{llmConfig.directMode ? '直连模式下，请求直接从你的浏览器发往 LLM API，不经过任何中间服务器。' : '代理模式下，Key 会通过 HTTPS 发送到云端服务器中转。'}
         </p>
       </div>
     </div>

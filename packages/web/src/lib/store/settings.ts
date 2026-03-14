@@ -7,6 +7,7 @@ interface LLMConfig {
   apiKey: string;
   model?: string;       // model name override
   baseUrl?: string;     // custom API base URL (for internal/proxy endpoints)
+  directMode?: boolean; // true = browser calls LLM directly (for intranet keys)
 }
 
 interface SettingsState {
@@ -14,6 +15,7 @@ interface SettingsState {
   setLLMConfig: (config: Partial<LLMConfig>) => void;
   clearApiKey: () => void;
   hasApiKey: () => boolean;
+  isDirectMode: () => boolean;
 }
 
 const STORAGE_KEY = 'akg-settings';
@@ -38,10 +40,11 @@ function loadFromStorage(): LLMConfig {
         apiKey: parsed.apiKey_b64 ? deobfuscate(parsed.apiKey_b64) : (parsed.apiKey || ''),
         model: parsed.model || '',
         baseUrl: parsed.baseUrl || '',
+        directMode: parsed.directMode ?? false,
       };
     }
   } catch { /* ignore */ }
-  return { provider: 'openrouter', apiKey: '', model: '', baseUrl: '' };
+  return { provider: 'openrouter', apiKey: '', model: '', baseUrl: '', directMode: false };
 }
 
 function saveToStorage(config: LLMConfig) {
@@ -51,6 +54,7 @@ function saveToStorage(config: LLMConfig) {
       apiKey_b64: obfuscate(config.apiKey),
       model: config.model || '',
       baseUrl: config.baseUrl || '',
+      directMode: config.directMode ?? false,
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
   } catch { /* ignore */ }
@@ -74,6 +78,11 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
 
   hasApiKey: () => {
     return get().llmConfig.apiKey.length > 0;
+  },
+
+  isDirectMode: () => {
+    const cfg = get().llmConfig;
+    return !!(cfg.directMode && cfg.apiKey && cfg.baseUrl);
   },
 }));
 

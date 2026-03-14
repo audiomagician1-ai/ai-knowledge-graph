@@ -38,20 +38,42 @@ export function SettingsPage() {
     setTestStatus('testing');
     setTestMessage('');
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
-      const res = await fetch(`${API_BASE}/dialogue/conversations`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
-        body: JSON.stringify({ concept_id: 'prompt-basics' }),
-      });
-      if (res.ok) {
-        setTestStatus('success');
-        setTestMessage('连接成功，API 可用');
-        setTimeout(() => setTestStatus('idle'), 4000);
+      if (llmConfig.directMode && llmConfig.baseUrl) {
+        // Direct mode: test LLM API directly from browser
+        const baseUrl = llmConfig.baseUrl.replace(/\/$/, '');
+        const res = await fetch(`${baseUrl}/chat/completions`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${llmConfig.apiKey}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: llmConfig.model || 'gpt-4o',
+            messages: [{ role: 'user', content: 'Say "OK" in one word.' }],
+            max_tokens: 5,
+          }),
+        });
+        if (res.ok) {
+          setTestStatus('success');
+          setTestMessage('直连成功 ✨ API 可用');
+          setTimeout(() => setTestStatus('idle'), 4000);
+        } else {
+          setTestStatus('error');
+          setTestMessage(`LLM API 返回 ${res.status}`);
+        }
       } else {
-        const data = await res.json().catch(() => ({}));
-        setTestStatus('error');
-        setTestMessage(data.detail || `HTTP ${res.status}`);
+        const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+        const res = await fetch(`${API_BASE}/dialogue/conversations`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
+          body: JSON.stringify({ concept_id: 'prompt-basics' }),
+        });
+        if (res.ok) {
+          setTestStatus('success');
+          setTestMessage('连接成功，API 可用');
+          setTimeout(() => setTestStatus('idle'), 4000);
+        } else {
+          const data = await res.json().catch(() => ({}));
+          setTestStatus('error');
+          setTestMessage(data.detail || `HTTP ${res.status}`);
+        }
       }
     } catch (err) {
       setTestStatus('error');
