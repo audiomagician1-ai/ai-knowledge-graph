@@ -35,8 +35,9 @@ interface GLink extends LinkObject<GNode> {
 const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
 const BG_COLOR = '#111110';
 
-/* ── Larger sphere to spread 267 nodes ── */
-const SPHERE_R = 480;
+/* ── Layout constants ── */
+const SPREAD_R = 600;    // soft target radius for node cloud
+const SPREAD_PULL = 0.005; // very gentle centering (not a hard shell)
 
 /* ── Node size: MUCH smaller than before ── */
 function baseSize(n: GNode): number {
@@ -211,7 +212,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
 
       /* ── Subtle fog ── */
       const scene = Graph.scene();
-      scene.fog = new THREE.FogExp2(BG_COLOR, 0.0004);
+      scene.fog = new THREE.FogExp2(BG_COLOR, 0.00025);
 
       /* ── Warm neutral lights ── */
       Graph.lights([
@@ -219,29 +220,39 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
         (() => { const l = new THREE.PointLight(0xc8956c, 0.3, 1000); l.position.set(0, 0, 0); return l; })(),
       ]);
 
-      /* ── Forces: stronger repulsion to prevent overlap ── */
+      /* ── Forces: strong repulsion for 267 nodes ── */
       // @ts-ignore d3Force
       Graph.d3Force('radial', null);
-      // @ts-ignore d3Force — much stronger repulsion (was -40)
-      Graph.d3Force('charge')?.strength(-120);
-      // @ts-ignore d3Force — longer link distances
+      // Strong charge to push nodes apart uniformly
+      // @ts-ignore d3Force
+      Graph.d3Force('charge')?.strength(-400).distanceMax(500);
+      // Longer link distances to avoid cluster clumps
+      // @ts-ignore d3Force
       Graph.d3Force('link')?.distance((link: GLink) => {
-        return link.relation_type === 'prerequisite' ? 80 : 110;
-      });
+        return link.relation_type === 'prerequisite' ? 120 : 160;
+      }).strength(0.3);
+      // Disable centering force (causes center pile-up)
+      // @ts-ignore d3Force
+      Graph.d3Force('center', null);
 
-      // Sphere-surface constraining force
+      // Soft cloud-like constraint: gently pull outliers back, don't force onto shell
       Graph.onEngineTick(() => {
         const nodes = Graph.graphData().nodes as GNode[];
-        nodes.forEach((n) => {
+        for (const n of nodes) {
           if (n.x == null || n.y == null || n.z == null) return;
           const dist = Math.sqrt(n.x * n.x + n.y * n.y + n.z * n.z) || 1;
-          const scale = SPHERE_R / dist;
-          const pull = 0.02;
-          n.x! += (n.x! * scale - n.x!) * pull;
-          n.y! += (n.y! * scale - n.y!) * pull;
-          n.z! += (n.z! * scale - n.z!) * pull;
-        });
+          // Only pull back if outside the target radius
+          if (dist > SPREAD_R) {
+            const overshoot = (dist - SPREAD_R) / dist;
+            n.x! -= n.x! * overshoot * SPREAD_PULL;
+            n.y! -= n.y! * overshoot * SPREAD_PULL;
+            n.z! -= n.z! * overshoot * SPREAD_PULL;
+          }
+        }
       });
+
+      // Let simulation run longer for better convergence
+      Graph.cooldownTicks(300).cooldownTime(8000);
 
       /* ── Node visuals: small spheres ── */
       Graph
@@ -304,7 +315,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
 
         // 2) Freeze the physics simulation so nodes don't scramble
         Graph.cooldownTime(0);        // stop simulation immediately
-        Graph.d3ReheatSimulation();    // noop since cooldown = 0
+        // Don't reheat — simulation is frozen
 
         // 3) Notify parent via ref (avoids re-init)
         onNodeClickRef.current({
@@ -354,7 +365,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       }
 
       /* ── Camera start: further out so we see the whole sphere ── */
-      Graph.cameraPosition({ x: 0, y: 100, z: 700 });
+      Graph.cameraPosition({ x: 0, y: 120, z: 850 });
 
       /* ── Resize handling ── */
       const ro = new ResizeObserver((entries) => {
@@ -445,7 +456,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     if (activeSubdomain) {
       G.nodeColor((n: object) => {
         const gn = n as GNode;
-        return gn.subdomain_id === activeSubdomain ? nodeColor(gn) : '#1a2540';
+        return gn.subdomain_id === activeSubdomain ? nodeColor(gn) : '#2a2825';
       });
       G.nodeOpacity(0.4);
       G.linkOpacity(0.06);
