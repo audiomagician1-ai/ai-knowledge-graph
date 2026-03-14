@@ -11,7 +11,7 @@ import { DashboardContent } from '@/components/panels/DashboardContent';
 import { SettingsContent } from '@/components/panels/SettingsContent';
 import {
   Search, X, Star, ChevronRight, Clock, BookOpen, Zap,
-  Filter, Trophy, Loader, Compass, BarChart3, Settings, Network,
+  Trophy, Loader, Compass, BarChart3, Settings, Network,
 } from 'lucide-react';
 
 const KnowledgeGraph = lazy(() =>
@@ -29,7 +29,7 @@ export function GraphPage() {
   const isDesktop = useIsDesktop();
   const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [showFilters, setShowFilters] = useState(false);
+
   const [showDashboard, setShowDashboard] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [recommendations, setRecommendations] = useState<Array<{
@@ -165,9 +165,9 @@ export function GraphPage() {
                 </div>
               </div>
               <button onClick={() => selectNode(null)}
-                className="shrink-0 w-7 h-7 flex items-center justify-center rounded-full transition-colors"
+                className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-colors"
                 style={{ color: 'var(--color-text-tertiary)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)')}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.06)')}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                 <X size={14} />
               </button>
@@ -185,8 +185,8 @@ export function GraphPage() {
         <div className="absolute top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-auto" style={{ width: 'min(420px, 90vw)' }}>
           <div className="relative">
             <div className="flex items-center gap-2 px-4 rounded-2xl" style={{
-              height: 44, background: 'rgba(15,20,25,0.88)', backdropFilter: 'blur(20px) saturate(1.4)',
-              border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 4px 24px rgba(0,0,0,0.4)',
+              height: 48, background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
             }}>
               <Search size={15} style={{ color: 'var(--color-text-tertiary)', flexShrink: 0 }} />
               <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="搜索知识节点..."
@@ -199,13 +199,13 @@ export function GraphPage() {
             </div>
             {searchResults.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-2 rounded-2xl p-1.5 animate-fade-in-scale" style={{
-                maxHeight: 320, overflowY: 'auto', background: 'rgba(15,20,25,0.94)', backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+                maxHeight: 320, overflowY: 'auto', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               }}>
                 {searchResults.map((node) => (
                   <button key={node.id} onClick={() => { selectNode(node); setSearchQuery(''); }}
                     className="w-full text-left flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl transition-colors text-sm"
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)')}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                     {node.is_milestone && <Star size={13} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
                     <span className="flex-1 truncate" style={{ color: 'var(--color-text-primary)' }}>{node.label}</span>
@@ -220,36 +220,32 @@ export function GraphPage() {
 
       {/* ===== BOTTOM HUB BAR (shifts to left-half center when chat is open) ===== */}
       <div className="absolute bottom-6 z-30 pointer-events-auto transition-all duration-500 ease-out" style={chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }}>
-        <div className="flex items-center gap-3 px-6 rounded-3xl" style={{
-          height: 80, background: 'rgba(15,20,25,0.88)', backdropFilter: 'blur(24px) saturate(1.4)',
-          border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
+        <div className="flex items-center gap-2 px-5 rounded-3xl" style={{
+          height: 72, background: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
         }}>
-          {/* Filter */}
-          <HubButton icon={Filter} label="筛选" active={showFilters} onClick={() => setShowFilters(!showFilters)} />
           {/* Dashboard */}
           <HubButton icon={BarChart3} label="进度" active={showDashboard} onClick={() => { setShowDashboard(!showDashboard); setShowSettings(false); }} />
 
           {/* Divider */}
-          <div className="w-px h-10 mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} />
+          <div className="w-px h-8 mx-1" style={{ backgroundColor: 'rgba(0,0,0,0.08)' }} />
 
           {/* Recommend — center, prominent */}
           <button onClick={() => {
             if (!showRecommend) { setShowRecommend(true); loadRecommendations(); } else setShowRecommend(false);
-          }} className="flex items-center gap-3 px-8 py-3 rounded-2xl transition-all text-base font-semibold" style={{
-            backgroundColor: showRecommend ? 'var(--color-accent-primary)' : 'rgba(94,211,172,0.12)',
-            color: showRecommend ? '#0f1419' : 'var(--color-accent-primary)',
+          }} className="flex items-center gap-3 px-7 py-3 rounded-2xl transition-all text-base font-semibold" style={{
+            backgroundColor: showRecommend ? 'var(--color-accent-primary)' : 'rgba(16,185,129,0.1)',
+            color: showRecommend ? '#ffffff' : 'var(--color-accent-primary)',
           }}>
-            <Compass size={22} />
+            <Compass size={20} />
             <span>推荐学习</span>
           </button>
 
           {/* Divider */}
-          <div className="w-px h-10 mx-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} />
+          <div className="w-px h-8 mx-1" style={{ backgroundColor: 'rgba(0,0,0,0.08)' }} />
 
           {/* Settings */}
           <HubButton icon={Settings} label="设置" active={showSettings} onClick={() => { setShowSettings(!showSettings); setShowDashboard(false); }} />
-          {/* Legend */}
-          <HubButton icon={BookOpen} label="图例" active={false} onClick={() => {}} />
         </div>
       </div>
 
@@ -257,15 +253,15 @@ export function GraphPage() {
       {showRecommend && (
         <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ width: 400, bottom: 100, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
           <div className="rounded-2xl overflow-hidden" style={{
-            background: 'rgba(15,20,25,0.94)', backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
+            background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 12px 48px rgba(0,0,0,0.1)',
           }}>
-            <div className="px-4 py-3 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="px-5 py-4 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="flex items-center gap-2">
                 <Compass size={15} style={{ color: 'var(--color-accent-primary)' }} />
                 <span className="text-sm font-semibold">推荐学习路径</span>
               </div>
-              <button onClick={() => setShowRecommend(false)} className="p-1.5 rounded-full hover:bg-white/5" style={{ color: 'var(--color-text-tertiary)' }}><X size={13} /></button>
+              <button onClick={() => setShowRecommend(false)} className="p-1.5 rounded-full hover:bg-black/5" style={{ color: 'var(--color-text-tertiary)' }}><X size={14} /></button>
             </div>
             <div style={{ maxHeight: 320, overflowY: 'auto' }}>
               {recommendLoading ? (
@@ -278,12 +274,12 @@ export function GraphPage() {
                   <button key={rec.concept_id} onClick={() => {
                     const node = enrichedGraphData?.nodes.find(n => n.id === rec.concept_id);
                     if (node) { selectNode(node); setShowRecommend(false); }
-                  }} className="w-full text-left px-4 py-3 flex items-start gap-3 transition-colors"
-                    style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)')}
+                  }} className="w-full text-left px-5 py-4 flex items-start gap-4 transition-colors"
+                    style={{ borderBottom: '1px solid rgba(0,0,0,0.04)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.03)')}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
-                    <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-semibold"
-                      style={{ backgroundColor: 'var(--color-accent-primary)', color: '#0f1419' }}>{idx + 1}</div>
+                    <div className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+                      style={{ backgroundColor: 'var(--color-accent-primary)', color: '#ffffff' }}>{idx + 1}</div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1.5 mb-0.5">
                         {rec.is_milestone && <Star size={11} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
@@ -303,33 +299,7 @@ export function GraphPage() {
         </div>
       )}
 
-      {/* ===== FILTER PANEL (above hub) ===== */}
-      {showFilters && subdomains.length > 0 && (
-        <div className="absolute z-25 pointer-events-auto animate-fade-in-scale transition-all duration-500 ease-out" style={{ bottom: 100, ...(chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }) }}>
-          <div className="rounded-2xl p-2.5 flex flex-wrap gap-1.5" style={{
-            maxWidth: 480, background: 'rgba(25,24,26,0.92)', backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
-          }}>
-            <button onClick={() => setActiveSubdomain(null)}
-              className="rounded-xl px-3 py-1.5 text-sm font-medium transition-all"
-               style={{ backgroundColor: !activeSubdomain ? 'var(--color-accent-primary)' : 'transparent', color: !activeSubdomain ? '#0f1419' : 'var(--color-text-secondary)' }}>
-              全部
-            </button>
-            {subdomains.map((sd) => {
-              const isActive = activeSubdomain === sd.id;
-              const sdColor = SUBDOMAIN_COLORS[sd.id] || 'var(--color-accent-primary)';
-              return (
-                <button key={sd.id} onClick={() => setActiveSubdomain(isActive ? null : sd.id)}
-                  className="rounded-xl px-3 py-1.5 text-sm font-medium transition-all flex items-center gap-1.5"
-                  style={{ backgroundColor: isActive ? sdColor : 'transparent', color: isActive ? '#fff' : 'var(--color-text-secondary)' }}>
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: sdColor, opacity: isActive ? 0 : 0.7 }} />
-                  {sd.name}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
+
 
       {/* ===== MODALS ===== */}
       <DraggableModal open={showDashboard} onClose={() => setShowDashboard(false)} title="学习进度" width={520} height={560}>
@@ -343,17 +313,17 @@ export function GraphPage() {
 }
 
 /* ── Hub Button ── */
-function HubButton({ icon: Icon, label, active, onClick }: { icon: typeof Filter; label: string; active: boolean; onClick: () => void }) {
+function HubButton({ icon: Icon, label, active, onClick }: { icon: typeof BarChart3; label: string; active: boolean; onClick: () => void }) {
   return (
     <button onClick={onClick}
-      className="flex items-center gap-2.5 px-5 py-3 rounded-2xl transition-all text-base font-medium whitespace-nowrap"
+      className="flex items-center gap-2.5 px-5 py-3 rounded-2xl transition-all text-[15px] font-medium whitespace-nowrap"
       style={{
-        backgroundColor: active ? 'rgba(255,255,255,0.1)' : 'transparent',
+        backgroundColor: active ? 'rgba(0,0,0,0.06)' : 'transparent',
         color: active ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)',
       }}
-      onMouseEnter={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'; }}
+      onMouseEnter={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
       onMouseLeave={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'transparent'; }}>
-      <Icon size={20} />
+      <Icon size={18} />
       <span>{label}</span>
     </button>
   );

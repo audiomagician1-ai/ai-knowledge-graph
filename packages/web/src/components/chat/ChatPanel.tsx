@@ -184,8 +184,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                 }}
               >
                 {nodeProgress?.status === 'mastered'
-                  ? <Trophy size={18} style={{ color: '#0f1419' }} />
-                  : <Brain size={18} style={{ color: '#0f1419' }} />
+                  ? <Trophy size={18} style={{ color: '#ffffff' }} />
+                  : <Brain size={18} style={{ color: '#ffffff' }} />
                 }
               </div>
               <div className="flex-1 min-w-0">
@@ -435,7 +435,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                   background: !input.trim() || isBusy
                     ? 'var(--color-surface-4)'
                     : 'var(--color-accent-primary)',
-                color: '#0f1419',
+                color: '#ffffff',
                 opacity: !input.trim() || isBusy ? 0.4 : 1,
               }}
             >

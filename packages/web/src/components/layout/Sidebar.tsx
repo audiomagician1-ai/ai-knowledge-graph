@@ -35,7 +35,7 @@ export function Sidebar() {
             className="w-9 h-9 rounded-lg flex items-center justify-center"
             style={{ backgroundColor: 'var(--color-accent-primary)' }}
           >
-            <BookOpen size={16} style={{ color: '#0f1419' }} />
+            <BookOpen size={16} style={{ color: '#ffffff' }} />
           </div>
           <div className="flex flex-col">
             <span style={{ fontFamily: 'var(--font-heading, "Noto Serif SC", Georgia, serif)', color: 'var(--color-text-primary)', fontSize: '15px', fontWeight: 500 }}>

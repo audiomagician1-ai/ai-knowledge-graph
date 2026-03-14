@@ -19,33 +19,33 @@ export function DashboardContent() {
   const progressPct = totalNodes > 0 ? Math.round((masteredNodes.length / totalNodes) * 100) : 0;
 
   return (
-    <div className="p-5 space-y-5">
+    <div className="p-7 space-y-7">
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-2.5">
+      <div className="grid grid-cols-4 gap-4">
         {[
           { label: '已掌握', value: masteredNodes.length, color: 'var(--color-accent-emerald)', icon: Zap },
-          { label: '学习中', value: learningNodes.length, color: 'var(--color-accent-primary)', icon: BookOpen },
-          { label: '连续', value: `${streak.current}天`, color: 'var(--color-accent-warm)', icon: Flame },
+          { label: '学习中', value: learningNodes.length, color: 'var(--color-accent-amber)', icon: BookOpen },
+          { label: '连续', value: `${streak.current}天`, color: 'var(--color-accent-cyan)', icon: Flame },
           { label: '最高', value: `${streak.longest}天`, color: 'var(--color-text-tertiary)', icon: Trophy },
         ].map(({ label, value, color, icon: Icon }) => (
-          <div key={label} className="rounded-xl p-3.5" style={{ backgroundColor: 'var(--color-surface-2)' }}>
-            <Icon size={14} style={{ color, marginBottom: 6 }} />
-            <div className="text-lg font-bold font-mono" style={{ color }}>{value}</div>
-            <div className="text-[11px] mt-0.5" style={{ color: 'var(--color-text-tertiary)' }}>{label}</div>
+          <div key={label} className="rounded-xl p-4 text-center" style={{ backgroundColor: 'var(--color-surface-2)' }}>
+            <Icon size={18} style={{ color, margin: '0 auto 8px' }} />
+            <div className="text-2xl font-bold font-mono" style={{ color }}>{value}</div>
+            <div className="text-xs mt-1.5" style={{ color: 'var(--color-text-tertiary)' }}>{label}</div>
           </div>
         ))}
       </div>
 
       {/* Progress */}
-      <div className="rounded-xl p-4" style={{ backgroundColor: 'var(--color-surface-2)' }}>
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium">掌握进度</span>
-          <span className="text-sm font-mono font-semibold" style={{ color: 'var(--color-accent-primary)' }}>{progressPct}%</span>
+      <div className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-2)' }}>
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-sm font-semibold">掌握进度</span>
+          <span className="text-lg font-mono font-bold" style={{ color: 'var(--color-accent-primary)' }}>{progressPct}%</span>
         </div>
-        <div className="h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-4)' }}>
+        <div className="h-2.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-4)' }}>
           <div className="h-full rounded-full transition-all duration-700" style={{ width: `${progressPct}%`, backgroundColor: 'var(--color-accent-emerald)', minWidth: progressPct > 0 ? 4 : 0 }} />
         </div>
-        <div className="text-xs mt-2" style={{ color: 'var(--color-text-tertiary)' }}>
+        <div className="text-sm mt-3" style={{ color: 'var(--color-text-tertiary)' }}>
           {masteredNodes.length} / {totalNodes} 概念
         </div>
       </div>

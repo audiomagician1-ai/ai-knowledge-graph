@@ -37,7 +37,7 @@ export function SettingsContent() {
   const info = PROVIDER_INFO[llmConfig.provider];
 
   return (
-    <div className="p-5 space-y-5">
+    <div className="p-7 space-y-6">
       {/* Provider */}
       <div>
         <label className="text-xs font-semibold uppercase tracking-wider mb-2.5 flex items-center gap-1.5" style={{ color: 'var(--color-text-tertiary)' }}>

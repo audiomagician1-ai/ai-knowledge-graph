@@ -128,7 +128,7 @@ export function LearnPage() {
                   className="w-9 h-9 rounded-md flex items-center justify-center shrink-0"
                   style={{ backgroundColor: 'var(--color-accent-primary)' }}
                 >
-                  <Lightbulb size={16} style={{ color: '#0f1419' }} />
+                  <Lightbulb size={16} style={{ color: '#ffffff' }} />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>
@@ -243,7 +243,7 @@ export function LearnPage() {
                     background: !input.trim() || isBusy
                       ? 'var(--color-surface-3)'
                       : 'var(--color-accent-primary)',
-                    color: '#0f1419',
+                    color: '#ffffff',
                     opacity: !input.trim() || isBusy ? 0.4 : 1,
                   }}
                 >
@@ -334,7 +334,7 @@ function AssessmentCard({ result, conceptName }: { result: AssessmentResult; con
                     : 'var(--color-accent-primary)',
                 }}
               >
-                {result.mastered ? <Trophy size={18} style={{ color: '#0f1419' }} /> : <BarChart3 size={18} style={{ color: '#0f1419' }} />}
+                {result.mastered ? <Trophy size={18} style={{ color: '#ffffff' }} /> : <BarChart3 size={18} style={{ color: '#ffffff' }} />}
               </div>
               <div>
                 <h3 className="text-[15px] font-bold" style={{ color: 'var(--color-text-primary)' }}>

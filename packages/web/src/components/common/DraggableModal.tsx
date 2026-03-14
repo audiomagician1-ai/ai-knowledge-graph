@@ -68,9 +68,9 @@ export function DraggableModal({ open, onClose, title, width = 560, height = 520
           maxHeight: height,
           pointerEvents: 'auto',
           background: 'var(--color-surface-1)',
-          border: '1px solid var(--color-border)',
-          borderRadius: 14,
-          boxShadow: '0 24px 80px rgba(0,0,0,0.5), 0 0 0 0.5px rgba(255,255,255,0.06)',
+          border: '1px solid rgba(0,0,0,0.1)',
+          borderRadius: 16,
+          boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 0 0 0.5px rgba(0,0,0,0.04)',
           overflow: 'hidden',
         }}
       >
@@ -86,7 +86,7 @@ export function DraggableModal({ open, onClose, title, width = 560, height = 520
             className="w-7 h-7 rounded-full flex items-center justify-center transition-colors"
             style={{ color: 'var(--color-text-tertiary)' }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)';
+              e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.06)';
               e.currentTarget.style.color = 'var(--color-text-primary)';
             }}
             onMouseLeave={(e) => {

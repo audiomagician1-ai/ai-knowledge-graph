@@ -33,7 +33,7 @@ interface GLink extends LinkObject<GNode> {
 }
 
 const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
-const BG_COLOR = '#0c1117';
+const BG_COLOR = '#f2f1ef';
 
 /* ── Sphere layout ── */
 const SPHERE_R = 480;
@@ -46,10 +46,10 @@ function baseSize(n: GNode): number {
 }
 
 function nodeColor(n: GNode): string {
-  if (n.status === 'mastered') return '#47d18c';  // vivid green
-  if (n.status === 'learning') return '#f5b85a';  // warm gold
-  if (n.is_recommended) return '#5eb8f0';          // sky blue
-  return SUBDOMAIN_COLORS[n.subdomain_id] || '#667788';
+  if (n.status === 'mastered') return '#10b981';  // emerald
+  if (n.status === 'learning') return '#f59e0b';  // amber
+  if (n.is_recommended) return '#06b6d4';          // cyan
+  return SUBDOMAIN_COLORS[n.subdomain_id] || '#94a3b8';
 }
 
 /* ── Label texture cache to avoid re-creating every frame ── */
@@ -78,13 +78,13 @@ function makeLabelTexture(text: string, color: string, isMilestone: boolean): TH
   ctx.textAlign = 'center';
 
   // Dark outline/shadow for readability — warm dark
-  ctx.strokeStyle = 'rgba(10, 14, 20, 0.95)';
+  ctx.strokeStyle = 'rgba(242, 241, 239, 0.9)';
   ctx.lineWidth = 5;
   ctx.lineJoin = 'round';
   ctx.strokeText(text, w / 2, h / 2);
 
   // Fill text
-      ctx.fillStyle = isMilestone ? '#f5d05a' : color;  // bright gold for milestones
+      ctx.fillStyle = isMilestone ? '#b45309' : color;  // deep amber for milestones on light bg
   ctx.fillText(text, w / 2, h / 2);
 
   const tex = new THREE.CanvasTexture(canvas);
@@ -99,7 +99,7 @@ function makeLabelTexture(text: string, color: string, isMilestone: boolean): TH
 /* ── Celebration particles for newly mastered nodes ── */
 function spawnCelebration(scene: THREE.Scene, x: number, y: number, z: number) {
   const PARTICLE_COUNT = 24;
-  const colors = [0x47d18c, 0xf5b85a, 0x5eb8f0, 0x5ed3ac, 0xc78bf0]; // green, gold, sky, mint, lavender
+  const colors = [0x10b981, 0xf59e0b, 0x06b6d4, 0x6366f1, 0xec4899]; // emerald, amber, cyan, indigo, pink
 
   const particles: { mesh: THREE.Mesh; vx: number; vy: number; vz: number; life: number }[] = [];
 
@@ -211,13 +211,12 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
 
       /* ── Subtle fog ── */
       const scene = Graph.scene();
-      scene.fog = new THREE.FogExp2(BG_COLOR, 0.00025);
+      scene.fog = new THREE.FogExp2(0xf2f1ef, 0.0003);
 
-      /* ── Cool-tinted lights ── */
+      /* ── Bright neutral lights for light bg ── */
       Graph.lights([
-        new THREE.AmbientLight(0xe8eef5, 0.9),
-        (() => { const l = new THREE.PointLight(0x5ed3ac, 0.25, 1200); l.position.set(0, 200, 0); return l; })(),
-        (() => { const l = new THREE.PointLight(0x5eb8f0, 0.15, 1000); l.position.set(0, -200, 0); return l; })(),
+        new THREE.AmbientLight(0xffffff, 1.2),
+        (() => { const l = new THREE.PointLight(0xffffff, 0.4, 1200); l.position.set(200, 300, 200); return l; })(),
       ]);
 
       /* ── Forces ── */
@@ -287,16 +286,16 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
 
       /* ── Link visuals: visible, fresh lines ── */
       Graph
-        .linkWidth((l: object) => (l as GLink).relation_type === 'prerequisite' ? 1.5 : 0.8)
-        .linkOpacity(0.35)
+        .linkWidth((l: object) => (l as GLink).relation_type === 'prerequisite' ? 1.2 : 0.6)
+        .linkOpacity(0.3)
         .linkColor((l: object) => {
           const link = l as GLink;
-          return link.relation_type === 'prerequisite' ? '#3d6b7a' : '#2a4555';
+          return link.relation_type === 'prerequisite' ? '#94a3b8' : '#cbd5e1';
         })
         .linkDirectionalParticles((l: object) => (l as GLink).relation_type === 'prerequisite' ? 2 : 0)
         .linkDirectionalParticleWidth(1.5)
         .linkDirectionalParticleSpeed(0.004)
-        .linkDirectionalParticleColor(() => '#5ed3ac');
+        .linkDirectionalParticleColor(() => '#10b981');
 
       /* ── Interaction: STOP rotation + FREEZE simulation on click ── */
       Graph.onNodeClick((n: NodeObject) => {
@@ -449,14 +448,14 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     if (activeSubdomain) {
       G.nodeColor((n: object) => {
         const gn = n as GNode;
-        return gn.subdomain_id === activeSubdomain ? nodeColor(gn) : '#2a2825';
+        return gn.subdomain_id === activeSubdomain ? nodeColor(gn) : '#d1d5db';
       });
       G.nodeOpacity(0.4);
-      G.linkOpacity(0.06);
+      G.linkOpacity(0.08);
     } else {
       G.nodeColor((n: object) => nodeColor(n as GNode));
-      G.nodeOpacity(0.85);
-      G.linkOpacity(0.4);
+      G.nodeOpacity(0.9);
+      G.linkOpacity(0.3);
     }
     G.nodeRelSize(3);
   }, [activeSubdomain]);
