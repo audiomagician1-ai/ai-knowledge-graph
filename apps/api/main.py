@@ -76,11 +76,15 @@ async def lifespan(app: FastAPI):
         pass
 
 
+_debug = os.getenv("DEBUG", "false").lower() == "true"
+
 app = FastAPI(
     title="AI Knowledge Graph API",
     description="费曼对话 + 知识图谱 + 技能树点亮",
     version="0.1.0",
     lifespan=lifespan,
+    docs_url="/docs" if _debug else None,
+    redoc_url="/redoc" if _debug else None,
 )
 
 # CORS — allow origins from env or default to local dev
@@ -114,17 +118,18 @@ app.include_router(learning.router, prefix="/api/learning", tags=["learning"])
 _frontend_dist = BASE_DIR / "web_dist"
 if _frontend_dist.is_dir():
     _index_html = _frontend_dist / "index.html"
-
-    @app.get("/{full_path:path}")
-    async def serve_spa(full_path: str):
-        """Serve frontend SPA — all non-API routes return index.html or static files"""
-        if full_path:
-            # Security: prevent path traversal
-            safe_path = Path(full_path).resolve()
-            candidate = (_frontend_dist / full_path).resolve()
-            if str(candidate).startswith(str(_frontend_dist.resolve())) and candidate.is_file():
-                return FileResponse(str(candidate))
-        return FileResponse(str(_index_html))
+    if not _index_html.is_file():
+        logger.warning("Frontend dist exists but index.html is missing: %s", _frontend_dist)
+    else:
+        @app.get("/{full_path:path}")
+        async def serve_spa(full_path: str):
+            """Serve frontend SPA — all non-API routes return index.html or static files"""
+            if full_path:
+                # Security: prevent path traversal
+                candidate = (_frontend_dist / full_path).resolve()
+                if str(candidate).startswith(str(_frontend_dist.resolve())) and candidate.is_file():
+                    return FileResponse(str(candidate))
+            return FileResponse(str(_index_html))
 
 
 # ── Entry point for PyInstaller exe ──

@@ -154,39 +154,42 @@ def get_progress(concept_id: str) -> Optional[dict]:
 
 
 def upsert_progress(concept_id: str, **kwargs) -> dict:
-    """Insert or update concept progress."""
+    """Insert or update concept progress — atomic upsert via ON CONFLICT."""
     now = time.time()
-    existing = get_progress(concept_id)
 
     with get_db() as conn:
-        if existing:
-            fields = []
-            values = []
-            for k, v in kwargs.items():
-                if k in ('status', 'mastery_score', 'last_score', 'sessions', 'total_time_sec', 'mastered_at', 'last_learn_at'):
-                    fields.append(f"{k} = ?")
-                    values.append(v)
-            fields.append("updated_at = ?")
-            values.append(now)
-            values.append(concept_id)
-            conn.execute(f"UPDATE concept_progress SET {', '.join(fields)} WHERE concept_id = ?", values)
-        else:
-            cols = ['concept_id', 'status', 'mastery_score', 'sessions', 'total_time_sec', 'last_learn_at', 'created_at', 'updated_at']
-            vals = [
-                concept_id,
-                kwargs.get('status', 'not_started'),
-                kwargs.get('mastery_score', 0),
-                kwargs.get('sessions', 0),
-                kwargs.get('total_time_sec', 0),
-                kwargs.get('last_learn_at', now),
-                now, now,
-            ]
-            for extra in ('last_score', 'mastered_at'):
-                if extra in kwargs:
-                    cols.append(extra)
-                    vals.append(kwargs[extra])
-            placeholders = ', '.join('?' * len(cols))
-            conn.execute(f"INSERT INTO concept_progress ({', '.join(cols)}) VALUES ({placeholders})", vals)
+        conn.execute("""
+            INSERT INTO concept_progress (concept_id, status, mastery_score, last_score, sessions, total_time_sec, mastered_at, last_learn_at, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(concept_id) DO UPDATE SET
+                status = COALESCE(?, concept_progress.status),
+                mastery_score = COALESCE(?, concept_progress.mastery_score),
+                last_score = COALESCE(?, concept_progress.last_score),
+                sessions = COALESCE(?, concept_progress.sessions),
+                total_time_sec = COALESCE(?, concept_progress.total_time_sec),
+                mastered_at = COALESCE(?, concept_progress.mastered_at),
+                last_learn_at = COALESCE(?, concept_progress.last_learn_at),
+                updated_at = ?
+        """, (
+            concept_id,
+            kwargs.get('status', 'not_started'),
+            kwargs.get('mastery_score', 0),
+            kwargs.get('last_score'),
+            kwargs.get('sessions', 0),
+            kwargs.get('total_time_sec', 0),
+            kwargs.get('mastered_at'),
+            kwargs.get('last_learn_at', now),
+            now, now,
+            # ON CONFLICT SET values
+            kwargs.get('status'),
+            kwargs.get('mastery_score'),
+            kwargs.get('last_score'),
+            kwargs.get('sessions'),
+            kwargs.get('total_time_sec'),
+            kwargs.get('mastered_at'),
+            kwargs.get('last_learn_at'),
+            now,
+        ))
 
     return get_progress(concept_id) or {}
 

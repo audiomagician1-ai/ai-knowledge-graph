@@ -29,20 +29,24 @@ class Neo4jClient:
         return self._driver
 
     async def execute_read(self, query: str, params: dict | None = None):
-        """执行只读 Cypher 查询"""
+        """执行只读 Cypher 查询 — 使用显式读事务"""
         if not self._driver:
             raise RuntimeError("Neo4j not connected. Call connect() first.")
         async with self._driver.session() as session:
-            result = await session.run(query, params or {})
-            return [record.data() async for record in result]
+            async def _work(tx):
+                result = await tx.run(query, params or {})
+                return [record.data() async for record in result]
+            return await session.execute_read(_work)
 
     async def execute_write(self, query: str, params: dict | None = None):
-        """执行写入 Cypher 查询"""
+        """执行写入 Cypher 查询 — 使用显式写事务"""
         if not self._driver:
             raise RuntimeError("Neo4j not connected. Call connect() first.")
         async with self._driver.session() as session:
-            result = await session.run(query, params or {})
-            return [record.data() async for record in result]
+            async def _work(tx):
+                result = await tx.run(query, params or {})
+                return [record.data() async for record in result]
+            return await session.execute_write(_work)
 
 
 neo4j_client = Neo4jClient()

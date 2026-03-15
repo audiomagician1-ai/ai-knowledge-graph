@@ -1,5 +1,8 @@
 """Redis 缓存客户端"""
 
+import asyncio
+import time
+
 import redis.asyncio as redis
 from config import settings
 
@@ -7,6 +10,8 @@ from config import settings
 class RedisClient:
     def __init__(self):
         self._client: redis.Redis | None = None
+        self._reconnect_lock = asyncio.Lock()
+        self._last_reconnect: float = 0
 
     async def connect(self):
         try:
@@ -27,20 +32,29 @@ class RedisClient:
         return self._client
 
     async def _try_reconnect(self) -> bool:
-        """Attempt lazy reconnection with cooldown (max once per 60s)."""
-        import time
+        """Attempt lazy reconnection with lock + cooldown (max once per 60s)."""
         now = time.time()
-        if hasattr(self, '_last_reconnect') and now - self._last_reconnect < 60:
+        if now - self._last_reconnect < 60:
             return False
-        self._last_reconnect = now
-        try:
-            self._client = redis.from_url(settings.redis_url, decode_responses=True)
-            await self._client.ping()
-            print("✅ Redis reconnected")
-            return True
-        except Exception:
-            self._client = None
-            return False
+        async with self._reconnect_lock:
+            # Double-check after acquiring lock
+            if time.time() - self._last_reconnect < 60:
+                return self._client is not None
+            self._last_reconnect = time.time()
+            try:
+                old_client = self._client
+                self._client = redis.from_url(settings.redis_url, decode_responses=True)
+                await self._client.ping()
+                if old_client:
+                    try:
+                        await old_client.close()
+                    except Exception:
+                        pass
+                print("✅ Redis reconnected")
+                return True
+            except Exception:
+                self._client = None
+                return False
 
     async def get_cached(self, key: str) -> str | None:
         if not self._client:

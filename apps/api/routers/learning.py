@@ -4,8 +4,8 @@
 import time
 from typing import Optional
 
-from fastapi import APIRouter
-from pydantic import BaseModel
+from fastapi import APIRouter, Query
+from pydantic import BaseModel, Field, field_validator
 
 from db.sqlite_client import (
     get_all_progress, get_progress, start_learning, record_assessment,
@@ -31,9 +31,23 @@ class RecordAssessmentRequest(BaseModel):
 
 class SyncProgressRequest(BaseModel):
     """Bulk sync from frontend localStorage → backend SQLite"""
-    progress: dict[str, dict]  # concept_id → { status, mastery_score, ... }
-    history: list[dict] = []   # learning history entries
+    progress: dict[str, dict] = Field(default_factory=dict)  # concept_id → { status, mastery_score, ... }
+    history: list[dict] = Field(default_factory=list)         # learning history entries
     streak: Optional[dict] = None
+
+    @field_validator('progress')
+    @classmethod
+    def validate_progress_size(cls, v):
+        if len(v) > 500:
+            raise ValueError("progress entries cannot exceed 500")
+        return v
+
+    @field_validator('history')
+    @classmethod
+    def validate_history_size(cls, v):
+        if len(v) > 1000:
+            raise ValueError("history entries cannot exceed 1000")
+        return v
 
 
 # ── Endpoints ──
@@ -75,7 +89,7 @@ async def record_assessment_result(req: RecordAssessmentRequest):
 
 
 @router.get("/history")
-async def get_learning_history(limit: int = 100):
+async def get_learning_history(limit: int = Query(100, ge=1, le=1000)):
     """获取学习历史"""
     return get_history(limit)
 
@@ -90,12 +104,15 @@ async def get_learning_streak():
 async def sync_from_frontend(req: SyncProgressRequest):
     """从前端 localStorage 同步数据到 SQLite (一次性迁移)"""
     from db.sqlite_client import upsert_progress, add_history, get_db
+    import re
 
     synced_progress = 0
     synced_history = 0
 
     # Sync progress
     for concept_id, data in req.progress.items():
+        if not concept_id or not isinstance(concept_id, str) or len(concept_id) > 200:
+            continue  # Skip invalid concept_id
         existing = get_progress(concept_id)
         # Only sync if backend doesn't have it or frontend has newer data
         if not existing or (data.get('last_learn_at', 0) > (existing.get('last_learn_at') or 0)):
@@ -111,23 +128,31 @@ async def sync_from_frontend(req: SyncProgressRequest):
             )
             synced_progress += 1
 
-    # Sync history
+    # Sync history (with KeyError protection)
     for entry in req.history:
+        concept_id = entry.get('concept_id')
+        if not concept_id or not isinstance(concept_id, str):
+            continue  # Skip invalid entries
         add_history(
-            concept_id=entry['concept_id'],
-            concept_name=entry.get('concept_name', entry['concept_id']),
-            score=entry.get('score', 0),
-            mastered=entry.get('mastered', False),
-            timestamp=entry.get('timestamp', time.time()),
+            concept_id=concept_id,
+            concept_name=str(entry.get('concept_name', concept_id))[:200],
+            score=float(entry.get('score', 0)),
+            mastered=bool(entry.get('mastered', False)),
+            timestamp=float(entry.get('timestamp', time.time())),
         )
         synced_history += 1
 
-    # Sync streak
+    # Sync streak (with input validation)
     if req.streak:
+        last_date = str(req.streak.get('lastDate', ''))[:10]
+        if last_date and not re.match(r'^\d{4}-\d{2}-\d{2}$', last_date):
+            last_date = ''
+        current = max(0, min(int(req.streak.get('current', 0)), 9999))
+        longest = max(0, min(int(req.streak.get('longest', 0)), 9999))
         with get_db() as conn:
             conn.execute(
                 "UPDATE streak SET current_streak = MAX(current_streak, ?), longest_streak = MAX(longest_streak, ?), last_date = ? WHERE id = 1",
-                (req.streak.get('current', 0), req.streak.get('longest', 0), req.streak.get('lastDate', '')),
+                (current, longest, last_date),
             )
 
     return {
@@ -138,7 +163,7 @@ async def sync_from_frontend(req: SyncProgressRequest):
 
 
 @router.get("/recommend")
-async def recommend_next(top_k: int = 5):
+async def recommend_next(top_k: int = Query(5, ge=1, le=50)):
     """推荐下一批最优学习节点
 
     算法:

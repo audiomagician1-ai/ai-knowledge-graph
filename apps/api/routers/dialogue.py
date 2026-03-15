@@ -50,7 +50,7 @@ _VALID_PROVIDERS = {"openrouter", "openai", "deepseek", "custom"}
 
 
 def _cleanup_cache():
-    """Remove expired cache entries."""
+    """Remove expired cache entries and orphan locks."""
     now = time.time()
     expired = [k for k, v in _session_cache.items() if now - v.get("last_active", 0) > _CACHE_TTL_SEC]
     for k in expired:
@@ -61,6 +61,10 @@ def _cleanup_cache():
         for k in sorted_keys[: len(_session_cache) - _MAX_CACHE]:
             _session_cache.pop(k, None)
             _session_locks.pop(k, None)
+    # Clean orphan locks (lock exists but cache evicted)
+    orphan_locks = set(_session_locks.keys()) - set(_session_cache.keys())
+    for k in orphan_locks:
+        _session_locks.pop(k, None)
 
 
 def _get_lock(conv_id: str) -> asyncio.Lock:
@@ -68,27 +72,33 @@ def _get_lock(conv_id: str) -> asyncio.Lock:
 
 
 async def _ensure_session(conv_id: str) -> Optional[dict]:
-    """Get or rebuild session from cache/DB."""
+    """Get or rebuild session from cache/DB (double-check locking to prevent concurrent rebuild)."""
     if conv_id in _session_cache:
         return _session_cache[conv_id]
 
-    # Try loading from SQLite
-    conv = get_conversation(conv_id)
-    if not conv:
-        return None
+    lock = _get_lock(conv_id)
+    async with lock:
+        # Double-check after acquiring lock
+        if conv_id in _session_cache:
+            return _session_cache[conv_id]
 
-    # Rebuild cache from DB
-    concept = _get_concept_info(conv['concept_id'])
-    _session_cache[conv_id] = {
-        "id": conv_id,
-        "concept_id": conv['concept_id'],
-        "concept": concept or {"id": conv['concept_id'], "name": conv['concept_name']},
-        "system_prompt": conv.get('system_prompt', ''),
-        "messages": conv.get('messages', []),
-        "status": conv.get('status', 'active'),
-        "last_active": time.time(),
-    }
-    return _session_cache[conv_id]
+        # Try loading from SQLite
+        conv = get_conversation(conv_id)
+        if not conv:
+            return None
+
+        # Rebuild cache from DB
+        concept = _get_concept_info(conv['concept_id'])
+        _session_cache[conv_id] = {
+            "id": conv_id,
+            "concept_id": conv['concept_id'],
+            "concept": concept or {"id": conv['concept_id'], "name": conv['concept_name']},
+            "system_prompt": conv.get('system_prompt', ''),
+            "messages": conv.get('messages', []),
+            "status": conv.get('status', 'active'),
+            "last_active": time.time(),
+        }
+        return _session_cache[conv_id]
 
 
 class ConversationCreate(BaseModel):
@@ -222,8 +232,9 @@ async def chat(req: ChatRequest, request: Request):
             async with _get_lock(req.conversation_id):
                 session["messages"].append({"role": "user", "content": req.message})
                 session["messages"].append({"role": "assistant", "content": msg})
-            save_message(req.conversation_id, "user", req.message)
-            save_message(req.conversation_id, "assistant", msg)
+            # DB writes outside lock to avoid blocking event loop while holding lock
+            await asyncio.to_thread(save_message, req.conversation_id, "user", req.message)
+            await asyncio.to_thread(save_message, req.conversation_id, "assistant", msg)
             yield f"data: {json.dumps({'type': 'chunk', 'content': msg}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
         return StreamingResponse(no_key_response(), media_type="text/event-stream")
@@ -236,12 +247,13 @@ async def chat(req: ChatRequest, request: Request):
     lock = _get_lock(req.conversation_id)
     async with lock:
         session["messages"].append({"role": "user", "content": req.message})
-        # Truncate to sliding window if exceeding limit (keep first + last N messages)
+        # Truncate to sliding window if exceeding limit (keep first + context notice + last N)
         if len(session["messages"]) > _MAX_MESSAGES_PER_SESSION:
             first_msg = session["messages"][:1]  # Keep opening
-            recent = session["messages"][-(_MAX_MESSAGES_PER_SESSION - 1):]
-            session["messages"] = first_msg + recent
-    save_message(req.conversation_id, "user", req.message)
+            recent = session["messages"][-(_MAX_MESSAGES_PER_SESSION - 2):]
+            truncation_notice = {"role": "system", "content": "[对话历史已截断，以下为最近的对话记录]"}
+            session["messages"] = first_msg + [truncation_notice] + recent
+    await asyncio.to_thread(save_message, req.conversation_id, "user", req.message)
 
     async def generate():
         full_response = ""
@@ -262,7 +274,7 @@ async def chat(req: ChatRequest, request: Request):
 
             async with lock:
                 session["messages"].append({"role": "assistant", "content": clean_content})
-            save_message(req.conversation_id, "assistant", clean_content)
+            await asyncio.to_thread(save_message, req.conversation_id, "assistant", clean_content)
 
             user_turns = sum(1 for m in session["messages"] if m["role"] == "user")
             suggest_assess = user_turns >= 4
@@ -270,7 +282,6 @@ async def chat(req: ChatRequest, request: Request):
             # Send choices as separate SSE event
             yield f"data: {json.dumps({'type': 'choices', 'choices': choices}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': suggest_assess, 'turn': user_turns}, ensure_ascii=False)}\n\n"
-            session.pop("_busy", None)  # Release busy flag on success
         except Exception as e:
             logger.warning("Chat stream error for %s: %s", req.conversation_id, e)
             fallback = "抱歉，我刚才走神了 😅 你能再说一遍吗？我保证认真听！"
@@ -280,11 +291,12 @@ async def chat(req: ChatRequest, request: Request):
             ]
             async with lock:
                 session["messages"].append({"role": "assistant", "content": fallback})
-            save_message(req.conversation_id, "assistant", fallback)
+            await asyncio.to_thread(save_message, req.conversation_id, "assistant", fallback)
             yield f"data: {json.dumps({'type': 'chunk', 'content': fallback}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'choices', 'choices': fallback_choices}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
-            session.pop("_busy", None)  # Release busy flag on error
+        finally:
+            session.pop("_busy", None)  # Always release — handles client disconnect (GeneratorExit)
 
     return StreamingResponse(
         generate(),

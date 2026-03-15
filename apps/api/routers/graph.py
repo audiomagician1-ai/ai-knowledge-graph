@@ -3,6 +3,7 @@
 import json
 import os
 import sys
+import threading
 from fastapi import APIRouter, Query, HTTPException
 from typing import Optional
 
@@ -24,14 +25,18 @@ def _get_seed_path() -> str:
 SEED_JSON = _get_seed_path()
 
 _seed_cache: dict | None = None
+_seed_lock = threading.Lock()
 
 
 def _load_seed() -> dict:
-    """懒加载种子图谱 JSON"""
+    """懒加载种子图谱 JSON（线程安全）"""
     global _seed_cache
-    if _seed_cache is None:
-        with open(SEED_JSON, "r", encoding="utf-8") as f:
-            _seed_cache = json.load(f)
+    if _seed_cache is not None:
+        return _seed_cache
+    with _seed_lock:
+        if _seed_cache is None:  # double-check after lock
+            with open(SEED_JSON, "r", encoding="utf-8") as f:
+                _seed_cache = json.load(f)
     return _seed_cache
 
 
@@ -234,8 +239,8 @@ async def get_rag_document(concept_id: str):
         raise HTTPException(status_code=404, detail=f"RAG 文档不存在: {concept_id}")
 
     doc_path = os.path.normpath(os.path.join(RAG_DIR, doc_entry["file"]))
-    # Path traversal protection
-    if not doc_path.startswith(os.path.normpath(RAG_DIR)):
+    # Path traversal protection (case-insensitive on Windows)
+    if not os.path.normcase(doc_path).startswith(os.path.normcase(os.path.normpath(RAG_DIR))):
         raise HTTPException(status_code=400, detail="Invalid file path")
     if not os.path.exists(doc_path):
         raise HTTPException(status_code=404, detail=f"RAG 文档文件不存在: {doc_entry['file']}")

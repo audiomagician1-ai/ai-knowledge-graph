@@ -5,13 +5,36 @@ httpx 异步 + SSE 流式 + 重试
 """
 
 import asyncio
+import ipaddress
 import json
 import logging
 from typing import AsyncIterator, Optional
+from urllib.parse import urlparse
 
 import httpx
 
 from config import settings
+
+
+# SSRF prevention: block private/internal network ranges
+_BLOCKED_HOSTS = {'localhost', '127.0.0.1', '0.0.0.0', '::1', 'metadata.google.internal'}
+
+
+def _validate_base_url(url: str) -> str:
+    """Validate user-provided base URL to prevent SSRF."""
+    parsed = urlparse(url)
+    if parsed.scheme not in ('http', 'https'):
+        raise ValueError(f"Invalid URL scheme: {parsed.scheme}")
+    hostname = parsed.hostname or ''
+    if hostname in _BLOCKED_HOSTS:
+        raise ValueError(f"Blocked host: {hostname}")
+    try:
+        ip = ipaddress.ip_address(hostname)
+        if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved:
+            raise ValueError(f"Private/reserved IP not allowed: {hostname}")
+    except ValueError:
+        pass  # Not a raw IP, hostname is fine
+    return url.rstrip("/")
 
 logger = logging.getLogger(__name__)
 
@@ -53,9 +76,9 @@ class LLMRouter:
         # 用户自定义 Key 优先
         if user_config and user_config.get("api_key"):
             key = user_config["api_key"]
-            # Custom base URL takes highest priority
+            # Custom base URL takes highest priority (validated for SSRF)
             if user_config.get("base_url"):
-                return user_config["base_url"].rstrip("/"), key
+                return _validate_base_url(user_config["base_url"]), key
             provider = user_config.get("provider", "openrouter")
             if provider == "deepseek":
                 return self.DEEPSEEK_BASE, key
@@ -146,7 +169,7 @@ class LLMRouter:
         max_tokens: int = 2048,
         user_config: dict | None = None,
     ) -> AsyncIterator[str]:
-        """流式对话 — 用于实时对话 SSE"""
+        """流式对话 — 用于实时对话 SSE（含单次重试）"""
         tiers = self.model_tiers
         model = tiers.get(tier, tiers["dialogue"])
         if user_config and user_config.get("model"):
@@ -155,35 +178,51 @@ class LLMRouter:
         model_name = model if "openrouter" in base_url else model.split("/")[-1]
 
         client = await self._get_client()
-        async with client.stream(
-            "POST",
-            f"{base_url}/chat/completions",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": model_name,
-                "messages": messages,
-                "temperature": temperature,
-                "max_tokens": max_tokens,
-                "stream": True,
-            },
-        ) as resp:
-            resp.raise_for_status()
-            async for line in resp.aiter_lines():
-                if not line.startswith("data: "):
-                    continue
-                payload = line[6:]
-                if payload.strip() == "[DONE]":
+        last_error: Exception | None = None
+        for attempt in range(2):  # 1 retry on transient errors
+            try:
+                async with client.stream(
+                    "POST",
+                    f"{base_url}/chat/completions",
+                    headers={
+                        "Authorization": f"Bearer {api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": model_name,
+                        "messages": messages,
+                        "temperature": temperature,
+                        "max_tokens": max_tokens,
+                        "stream": True,
+                    },
+                ) as resp:
+                    resp.raise_for_status()
+                    async for line in resp.aiter_lines():
+                        if not line.startswith("data: "):
+                            continue
+                        payload = line[6:]
+                        if payload.strip() == "[DONE]":
+                            return  # Normal completion
+                        try:
+                            chunk = json.loads(payload)
+                            delta = chunk["choices"][0].get("delta", {})
+                            if "content" in delta and delta["content"]:
+                                yield delta["content"]
+                        except (json.JSONDecodeError, KeyError, IndexError):
+                            continue
+                    return  # Stream finished normally
+            except httpx.HTTPStatusError as e:
+                last_error = e
+                if not self._is_retryable(e.response.status_code):
                     break
-                try:
-                    chunk = json.loads(payload)
-                    delta = chunk["choices"][0].get("delta", {})
-                    if "content" in delta and delta["content"]:
-                        yield delta["content"]
-                except (json.JSONDecodeError, KeyError, IndexError):
-                    continue
+                logger.warning("LLM stream HTTP %d on attempt %d", e.response.status_code, attempt + 1)
+            except (httpx.ReadTimeout, httpx.ConnectError) as e:
+                last_error = e
+                logger.warning("LLM stream network error on attempt %d: %s", attempt + 1, type(e).__name__)
+            if attempt < 1:
+                await asyncio.sleep(1)
+
+        raise RuntimeError(f"LLM stream failed: {last_error}") from last_error
 
     async def close(self):
         if self._client and not self._client.is_closed:
