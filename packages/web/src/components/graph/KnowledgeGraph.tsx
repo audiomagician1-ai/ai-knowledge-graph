@@ -342,8 +342,12 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       });
 
       Graph.onBackgroundClick(() => {
-        const ctrl = Graph.controls() as { autoRotate?: boolean };
-        if (ctrl) ctrl.autoRotate = true;
+        const ctrl = Graph.controls() as { autoRotate?: boolean; target?: { set: (x: number, y: number, z: number) => void } };
+        if (ctrl) {
+          ctrl.autoRotate = true;
+          // Reset orbit target to sphere center
+          if (ctrl.target) ctrl.target.set(0, 0, 0);
+        }
         onNodeClickRef.current(null as unknown as GraphNode);
       });
 
@@ -438,9 +442,19 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     if (!G) return;
 
     if (!selectedNodeId) {
-      // Panel closed → restore free orbit rotation
-      const ctrl = G.controls() as { autoRotate?: boolean };
-      if (ctrl) ctrl.autoRotate = true;
+      // Panel closed → restore free orbit rotation + reset lookAt to sphere center
+      const ctrl = G.controls() as { autoRotate?: boolean; target?: { set: (x: number, y: number, z: number) => void } };
+      if (ctrl) {
+        ctrl.autoRotate = true;
+        // Reset orbit target to sphere center so camera orbits the whole globe
+        if (ctrl.target) ctrl.target.set(0, 0, 0);
+      }
+      // Smoothly fly camera back to overview position
+      G.cameraPosition(
+        { x: 0, y: 100, z: 700 },  // same as initial position
+        { x: 0, y: 0, z: 0 },       // look at center
+        1000,
+      );
       return;
     }
 
