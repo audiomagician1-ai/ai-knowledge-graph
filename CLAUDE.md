@@ -11,8 +11,8 @@
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 
-**当前最高优先任务 — Phase 4 收尾** (进行中):
-> **目标**: LLM 端到端测试 + EXE 重新打包 + 最终内测版
+**当前最高优先任务 — Phase 4 收尾** (接近完成):
+> **目标**: 3轮深度审查(65+项修复) + EXE打包 + 最终内测版分发
 > **详见**: `DEVELOPMENT_PLAN.md` Phase 4
 
 ### 12周里程碑
@@ -153,6 +153,26 @@ data/seed/         — 种子图谱数据
   - BE: redis_client.py惰性重连机制(60s冷却)+操作异常自动降级 [m-11]
   - BE: main.py CORS通配符+credentials互斥检查 [m-09]
 
+- ✅ **第三轮深度审查+修复(20项, c11ac37)**:
+  - BE: dialogue.py `_busy`标志改用try/finally释放(防客户端断开时会话永久死锁/GeneratorExit) [C-01]
+  - BE: dialogue.py `_cleanup_cache`清理孤儿锁(防`_session_locks`内存无限增长) [C-02]
+  - BE: llm/router.py `chat_stream`增加单次重试(429/5xx)+SSRF防护(`_validate_base_url`) [C-03,M-03]
+  - BE: dialogue.py `_ensure_session`双重检查锁(防并发重建丢消息) [M-07]
+  - BE: dialogue.py `no_key_response`将DB写入移到锁外via asyncio.to_thread [M-06]
+  - BE: dialogue.py 消息截断插入`[对话历史已截断]`系统提示(LLM上下文连贯性) [m-05]
+  - BE: dialogue.py 所有`save_message`包装为`asyncio.to_thread`(非阻塞事件循环) [m-06]
+  - BE: learning.py `/sync`校验progress(≤500)/history(≤1000)/streak日期格式 [M-02]
+  - BE: learning.py `/history` limit上限1000, `/recommend` top_k上限50 [M-08]
+  - BE: learning.py history sync用`.get()`防KeyError [M-09]
+  - BE: sqlite_client.py `upsert_progress`改原子INSERT...ON CONFLICT(修复TOCTOU竞态) [M-01]
+  - BE: neo4j_client.py `execute_read/write`改用显式读/写事务函数 [M-04]
+  - BE: evaluator.py `_format_dialogue`截断到8000字符(防超LLM上下文窗口) [m-03]
+  - BE: graph.py `_load_seed`加threading.Lock线程安全 [M-05]
+  - BE: graph.py RAG路径遍历使用`os.path.normcase`(Windows大小写不敏感) [m-04]
+  - BE: redis_client.py `_try_reconnect`加asyncio.Lock(防并发重连泄漏连接) [m-02]
+  - BE: main.py 生产环境禁用/docs和/redoc(DEBUG环境变量控制) [m-01]
+  - BE: main.py SPA路由检查index.html是否存在 [m-07]
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -186,8 +206,9 @@ Release Note 包含:
 5. ✅ **系统性审查+修复** — 30项问题(9C+25M+23m)，内存泄漏/竞态/安全/性能全面修复
 6. ✅ **EXE 重新打包(含审查修复)** — akg-v0.1.0-bf51060 (46.6MB), 含7项测试修复
 7. ✅ **第二轮深度审查+修复** — 15项修复(3C+5M+7m): isStreaming卡死/并发竞态/评估标签/Neo4j null/Redis重连
-8. 🟡 **EXE 重新打包(含第二轮审查)** — 待打包
-9. 🟡 **最终内测版发布** — Release Note + 分发
+8. ✅ **第三轮深度审查+修复** — 20项修复(3C+10M+7m): SSRF防护/busy死锁/TOCTOU竞态/sync校验/stream重试/并发安全
+9. ✅ **EXE 重新打包(含第三轮审查)** — akg-v0.1.0-c11ac37 (46.6MB)
+10. 🟡 **最终内测版分发** — 确认EXE可正常运行后分发
 
 ---
 
