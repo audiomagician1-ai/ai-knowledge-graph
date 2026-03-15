@@ -178,8 +178,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       let data: any;
 
       if (isDirect) {
-        // Direct mode: create conversation locally
-        const result = directCreateConversation(conceptId);
+        // Direct mode: create conversation with LLM-generated opening
+        const result = await directCreateConversation(conceptId);
         if (!result) throw new Error(`概念不存在: ${conceptId}`);
         data = result;
       } else {
