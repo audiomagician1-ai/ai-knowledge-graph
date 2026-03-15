@@ -86,11 +86,13 @@ app = FastAPI(
 # CORS — allow origins from env or default to local dev
 _cors_origins_raw = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173")
 _cors_origins = [o.strip() for o in _cors_origins_raw.split(",") if o.strip()]
+# Wildcard origin + credentials is invalid per CORS spec — disable credentials if "*" present
+_allow_credentials = "*" not in _cors_origins
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins,
-    allow_credentials=True,
+    allow_credentials=_allow_credentials,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=[
         "Content-Type",

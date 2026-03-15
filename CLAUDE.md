@@ -128,7 +128,7 @@ data/seed/         — 种子图谱数据
   - BE: socratic.py subdomain_name替代subdomain_id + 异常日志
   - BE: graph.py edge过滤or→and + 移除未用domain_id参数 + RAG路径遍历防护
   - BE: redis_client.py close后置None
-- ✅ tsc 0 errors, vite build 3.20s, CSS 28KB + graph 7.1KB (lazy)
+- ✅ tsc 0 errors, vite build 3.11s, CSS 28KB + graph 7.2KB (lazy)
 - ✅ **Direct模式V2 Prompt同步+消息窗口修复**: direct-llm.ts老版Feynman双角色prompt→V2四阶段引导式学习, 添加20条消息滑动窗口(修复AI几轮后不输出), max_tokens 512→800, directCreateConversation改异步+LLM生成opening+choices, 流式响应解析choices block
 - ✅ **测试+7项问题修复(bf51060)**:
   - FE: `isDirectMode()`不再要求显式baseUrl — 使用provider默认值(OpenRouter等标准provider直接可用)
@@ -137,6 +137,21 @@ data/seed/         — 种子图谱数据
   - FE: LearnPage error toast 6秒自动消失
   - FE: directAssess评估角色标签修正(之前反了: user标为老师)
   - FE: loadSavedConversation清理stale currentChoices
+- ✅ **第二轮深度审查+修复(15项重点修复)**:
+  - FE: dialogue.ts AbortError分支补充`isStreaming:false`重置(防UI卡死) [C-01]
+  - FE: ChatPanel.tsx setTimeout清理(组件卸载clearTimeout)+eslint注释 [M-02]
+  - FE: GraphPage.tsx loadRecommendations try-finally(防loading卡死) [M-10]
+  - FE: direct-llm.ts openingText初始化=''(防未赋值) [m-05]
+  - FE: settings.ts downloadBlob延迟revoke 10s(防下载失败)+obfuscate注释 [m-10,m-02]
+  - FE: settings.ts probeCORS优先GET /models检测(省token) [m-01]
+  - FE: GraphPage+ChatPanel eslint-disable注释(Zustand stable refs) [m-04,M-01]
+  - BE: evaluator.py角色标签修正"用户（学习者）"/"AI（学习伙伴/老师）"(影响评估准确性) [M-09]
+  - BE: evaluator.py fallback_evaluate mastered统一为overall>=75且all dims>=60 [m-08]
+  - BE: neo4j_client.py execute_read/write添加driver None检查 [C-04]
+  - BE: dialogue.py添加_busy标志拒绝同会话并发请求(防消息乱序) [C-02]
+  - BE: dialogue.py chat/assess调用_cleanup_cache(防锁/缓存无限增长) [C-05]
+  - BE: redis_client.py惰性重连机制(60s冷却)+操作异常自动降级 [m-11]
+  - BE: main.py CORS通配符+credentials互斥检查 [m-09]
 
 ### EXE 打包规范
 ```
@@ -170,7 +185,9 @@ Release Note 包含:
 4. ✅ **代理模式重构** — directMode→useProxy, CORS代理引导UI, probeCORS/probeProxy工具
 5. ✅ **系统性审查+修复** — 30项问题(9C+25M+23m)，内存泄漏/竞态/安全/性能全面修复
 6. ✅ **EXE 重新打包(含审查修复)** — akg-v0.1.0-bf51060 (46.6MB), 含7项测试修复
-7. 🟡 **最终内测版发布** — Release Note + 分发
+7. ✅ **第二轮深度审查+修复** — 15项修复(3C+5M+7m): isStreaming卡死/并发竞态/评估标签/Neo4j null/Redis重连
+8. 🟡 **EXE 重新打包(含第二轮审查)** — 待打包
+9. 🟡 **最终内测版发布** — Release Note + 分发
 
 ---
 

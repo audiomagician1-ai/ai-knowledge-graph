@@ -44,6 +44,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
       setView('idle');
       setInput('');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand actions are stable refs
   }, [conceptId]);
 
   // Record assessment + show celebration if mastered
@@ -52,9 +53,11 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
       recordAssessment(conceptId, conceptName || conceptId, assessment.overall_score, assessment.mastered);
       if (assessment.mastered) {
         setShowCelebration(true);
-        setTimeout(() => setShowCelebration(false), 4000);
+        const timer = setTimeout(() => setShowCelebration(false), 4000);
+        return () => clearTimeout(timer);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand actions are stable refs
   }, [assessment]);
 
   // Auto-scroll

@@ -26,15 +26,40 @@ class RedisClient:
     def client(self) -> redis.Redis | None:
         return self._client
 
+    async def _try_reconnect(self) -> bool:
+        """Attempt lazy reconnection with cooldown (max once per 60s)."""
+        import time
+        now = time.time()
+        if hasattr(self, '_last_reconnect') and now - self._last_reconnect < 60:
+            return False
+        self._last_reconnect = now
+        try:
+            self._client = redis.from_url(settings.redis_url, decode_responses=True)
+            await self._client.ping()
+            print("✅ Redis reconnected")
+            return True
+        except Exception:
+            self._client = None
+            return False
+
     async def get_cached(self, key: str) -> str | None:
         if not self._client:
+            if not await self._try_reconnect():
+                return None
+        try:
+            return await self._client.get(key)
+        except Exception:
+            self._client = None
             return None
-        return await self._client.get(key)
 
     async def set_cached(self, key: str, value: str, ttl: int = 3600):
         if not self._client:
-            return
-        await self._client.set(key, value, ex=ttl)
+            if not await self._try_reconnect():
+                return
+        try:
+            await self._client.set(key, value, ex=ttl)
+        except Exception:
+            self._client = None
 
 
 redis_client = RedisClient()

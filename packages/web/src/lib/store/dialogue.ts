@@ -322,15 +322,20 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       // Flush remaining buffer (fix: last SSE frame could be missed)
       flushBuffer(buffer, handlePayload);
 
-      // Ensure streaming is marked done + auto-save
+      // Ensure streaming is marked done + auto-save (single set() to avoid double re-render)
       if (get().conversationId === myConvId) {
         set({ isStreaming: false });
+        // Read updated state after isStreaming is set, then save+set in one go
         const saved = autoSaveConversation(get());
         if (saved) set({ savedConversations: saved });
       }
     } catch (err) {
       // Ignore AbortError — it's intentional cancellation
       if (err instanceof DOMException && err.name === 'AbortError') {
+        // Still ensure isStreaming is reset (C-01 fix)
+        if (get().conversationId === myConvId) {
+          set({ isStreaming: false });
+        }
         return;
       }
       if (get().conversationId === myConvId) {

@@ -26,6 +26,7 @@ interface SettingsState {
 
 const STORAGE_KEY = 'akg-settings';
 
+/** Simple base64 obfuscation — NOT encryption. Only prevents casual shoulder-surfing in DevTools. */
 function obfuscate(plain: string): string {
   if (!plain) return '';
   try { return btoa(encodeURIComponent(plain)); } catch { return plain; }
@@ -140,13 +141,27 @@ export async function probeProxy(): Promise<boolean> {
 }
 
 /** Try a direct fetch to the API to check if CORS is available.
+ *  First tries GET /models (no token cost), falls back to POST /chat/completions with max_tokens: 1.
  *  Uses 15s timeout (generous for overseas APIs) + automatic 1 retry on timeout/network error. */
 export async function probeCORS(
   baseUrl: string, apiKey: string, model: string,
 ): Promise<{ ok: boolean; status?: number; detail?: string }> {
-  const url = baseUrl.replace(/\/+$/, '') + '/chat/completions';
-  const body = JSON.stringify({ model, messages: [{ role: 'user', content: 'hi' }], max_tokens: 1 });
+  const base = baseUrl.replace(/\/+$/, '');
   const headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` };
+
+  // Attempt 0: Try GET /models (no token cost, quick CORS check)
+  try {
+    const ctrl0 = new AbortController();
+    const timer0 = setTimeout(() => ctrl0.abort(), 8_000);
+    const modelsRes = await fetch(`${base}/models`, { headers, signal: ctrl0.signal });
+    clearTimeout(timer0);
+    if (modelsRes.ok) return { ok: true, status: modelsRes.status };
+    // If 404 or other error, fall through to chat probe
+  } catch { /* timeout or CORS blocked — fall through */ }
+
+  // Fallback: POST /chat/completions with max_tokens: 1 (minimal token cost)
+  const url = `${base}/chat/completions`;
+  const body = JSON.stringify({ model, messages: [{ role: 'user', content: 'hi' }], max_tokens: 1 });
 
   const attempt = async (timeoutMs: number): Promise<{ ok: boolean; status?: number; detail?: string }> => {
     const ctrl = new AbortController();
@@ -307,7 +322,8 @@ export function downloadBlob(content: string, filename: string, mime: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url; a.download = filename; a.click();
-  URL.revokeObjectURL(url);
+  // Delay revoke to ensure browser has time to start the download
+  setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
 
 export const PROVIDER_INFO: Record<LLMProvider, { name: string; placeholder: string; hint: string; defaultBase: string }> = {

@@ -70,7 +70,7 @@ class UnderstandingEvaluator:
         """格式化对话记录"""
         lines = []
         for msg in messages:
-            role = "用户（老师）" if msg["role"] == "user" else "AI（学生）"
+            role = "用户（学习者）" if msg["role"] == "user" else "AI（学习伙伴/老师）"
             lines.append(f"[{role}]: {msg['content']}")
         return "\n\n".join(lines)
 
@@ -144,7 +144,7 @@ class UnderstandingEvaluator:
 
         # 简单启发式
         base = min(40 + num_turns * 8 + total_words // 50, 85)
-        return {
+        result = {
             "completeness": base,
             "accuracy": base - 5,
             "depth": base - 10,
@@ -152,8 +152,13 @@ class UnderstandingEvaluator:
             "overall_score": base - 5,
             "gaps": ["评估服务暂时不可用，此为粗略估计"],
             "feedback": f"你进行了 {num_turns} 轮对话，表现不错！建议继续深入探讨。",
-            "mastered": base >= 80,
         }
+        # Use same mastered logic as _validate_result: overall >= 75 AND all dims >= 60
+        result["mastered"] = (
+            result["overall_score"] >= 75
+            and all(result[k] >= 60 for k in ["completeness", "accuracy", "depth", "examples"])
+        )
+        return result
 
 
 # 全局单例

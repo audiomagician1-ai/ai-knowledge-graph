@@ -332,7 +332,7 @@ export async function directCreateConversation(conceptId: string): Promise<{
   const convId = crypto.randomUUID();
 
   // Try to get LLM-generated opening with choices
-  let openingText: string;
+  let openingText = '';
   let openingChoices: Array<{ id: string; text: string; type: string }> | null = null;
 
   try {

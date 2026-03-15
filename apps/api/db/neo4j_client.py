@@ -30,12 +30,16 @@ class Neo4jClient:
 
     async def execute_read(self, query: str, params: dict | None = None):
         """执行只读 Cypher 查询"""
+        if not self._driver:
+            raise RuntimeError("Neo4j not connected. Call connect() first.")
         async with self._driver.session() as session:
             result = await session.run(query, params or {})
             return [record.data() async for record in result]
 
     async def execute_write(self, query: str, params: dict | None = None):
         """执行写入 Cypher 查询"""
+        if not self._driver:
+            raise RuntimeError("Neo4j not connected. Call connect() first.")
         async with self._driver.session() as session:
             result = await session.run(query, params or {})
             return [record.data() async for record in result]

@@ -206,6 +206,7 @@ async def create_conversation(req: ConversationCreate, request: Request):
 @router.post("/chat")
 async def chat(req: ChatRequest, request: Request):
     """发送消息 — SSE 流式响应"""
+    _cleanup_cache()  # Periodically clean expired sessions & locks
     session = await _ensure_session(req.conversation_id)
     if not session:
         raise HTTPException(status_code=404, detail="会话不存在")
@@ -226,6 +227,11 @@ async def chat(req: ChatRequest, request: Request):
             yield f"data: {json.dumps({'type': 'chunk', 'content': msg}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
         return StreamingResponse(no_key_response(), media_type="text/event-stream")
+
+    # Reject concurrent requests for the same session (C-02 fix)
+    if session.get("_busy"):
+        raise HTTPException(status_code=429, detail="该会话正在处理中，请稍后重试")
+    session["_busy"] = True
 
     lock = _get_lock(req.conversation_id)
     async with lock:
@@ -264,6 +270,7 @@ async def chat(req: ChatRequest, request: Request):
             # Send choices as separate SSE event
             yield f"data: {json.dumps({'type': 'choices', 'choices': choices}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': suggest_assess, 'turn': user_turns}, ensure_ascii=False)}\n\n"
+            session.pop("_busy", None)  # Release busy flag on success
         except Exception as e:
             logger.warning("Chat stream error for %s: %s", req.conversation_id, e)
             fallback = "抱歉，我刚才走神了 😅 你能再说一遍吗？我保证认真听！"
@@ -277,6 +284,7 @@ async def chat(req: ChatRequest, request: Request):
             yield f"data: {json.dumps({'type': 'chunk', 'content': fallback}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'choices', 'choices': fallback_choices}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
+            session.pop("_busy", None)  # Release busy flag on error
 
     return StreamingResponse(
         generate(),
@@ -292,6 +300,7 @@ async def chat(req: ChatRequest, request: Request):
 @router.post("/assess")
 async def assess_understanding(req: AssessmentRequest, request: Request):
     """请求理解度评估"""
+    _cleanup_cache()  # Periodically clean expired sessions & locks
     session = await _ensure_session(req.conversation_id)
     if not session:
         raise HTTPException(status_code=404, detail="会话不存在")

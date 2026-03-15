@@ -51,9 +51,11 @@ export function GraphPage() {
 
   const loadRecommendations = useCallback(async () => {
     setRecommendLoading(true);
-    const data = await apiFetchRecommendations(5);
-    if (data) setRecommendations(data.recommendations);
-    setRecommendLoading(false);
+    try {
+      const data = await apiFetchRecommendations(5);
+      if (data) setRecommendations(data.recommendations);
+    } catch { /* ignore — non-critical feature */ }
+    finally { setRecommendLoading(false); }
   }, []);
 
   const enrichedGraphData = useMemo<GraphData | null>(() => {
@@ -75,10 +77,14 @@ export function GraphPage() {
       const prereqEdges = graphData.edges.filter((e) => e.relation_type === 'prerequisite').map((e) => ({ source: e.source, target: e.target }));
       initEdges(prereqEdges);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand actions are stable refs
   }, [graphData]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- computeStats is stable, graphData read from closure
   useEffect(() => { if (graphData) computeStats(graphData.nodes.length); }, [progress]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- one-time sync on mount
   useEffect(() => { if (!backendSynced) syncWithBackend(); }, [backendSynced]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- mount-only
   useEffect(() => { loadGraph(); loadSubdomains(); }, []);
 
   const loadGraph = async () => {
