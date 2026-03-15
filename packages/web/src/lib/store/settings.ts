@@ -90,8 +90,11 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
 
   isDirectMode: () => {
     const cfg = get().llmConfig;
-    // Direct mode = use local proxy to call LLM from browser
-    return !!(cfg.useProxy && cfg.apiKey && cfg.baseUrl);
+    // Direct mode = call LLM from browser (vs. through backend API proxy)
+    // Activated when user has API key AND a resolvable base URL exists
+    // (providers have defaultBase, so user only needs a key for standard providers)
+    const hasBase = !!(cfg.baseUrl || PROVIDER_INFO[cfg.provider]?.defaultBase);
+    return !!(cfg.apiKey && hasBase);
   },
 }));
 

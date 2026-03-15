@@ -456,6 +456,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       suggestAssess: false,
       assessment: conv.assessment,
       error: null,
+      currentChoices: null,  // Clear stale choices when loading saved conversation
     });
   },
 

@@ -48,6 +48,13 @@ export function LearnPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, assessment, currentChoices]);
 
+  // Auto-dismiss error after 6 seconds
+  useEffect(() => {
+    if (!error) return;
+    const timer = setTimeout(() => useDialogueStore.setState({ error: null }), 6000);
+    return () => clearTimeout(timer);
+  }, [error]);
+
   const isUserTyping = input.length > 0;
 
   /** Strip ```choices ... ``` block from content for display */

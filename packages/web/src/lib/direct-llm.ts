@@ -552,7 +552,7 @@ export async function directAssess(conversationId: string): Promise<Record<strin
   });
 
   const dialogueText = conv.messages.map(m =>
-    `[${m.role === 'user' ? '用户（老师）' : 'AI（学生）'}]: ${m.content}`
+    `[${m.role === 'user' ? '用户' : 'AI（学习伙伴）'}]: ${m.content}`
   ).join('\n\n');
 
   const { baseUrl, apiKey, model } = resolveEndpoint();

@@ -4,6 +4,7 @@ import { useLearningStore } from '@/lib/store/learning';
 import type { AssessmentResult, SavedConversation } from '@/lib/store/dialogue';
 import type { ConceptProgress } from '@/lib/store/learning';
 import { MarkdownRenderer } from './MarkdownRenderer';
+import { ChoiceButtons } from './ChoiceButtons';
 import { useCountUp } from '@/lib/hooks/useCountUp';
 import {
   Send, BarChart3, Brain, RotateCcw, Zap, Play,
@@ -25,11 +26,13 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
   const {
     conversationId, messages, isStreaming, isAssessing, suggestAssess, assessment, error,
-    startConversation, sendMessage, requestAssessment, reset,
+    currentChoices,
+    startConversation, sendMessage, selectChoice, requestAssessment, reset,
     savedConversations, loadSavedConversation, deleteSavedConversation,
   } = useDialogueStore();
 
   const isBusy = isStreaming || isAssessing;
+  const isUserTyping = input.length > 0;
   const { progress, startLearning, recordAssessment, newlyUnlockedIds, clearNewlyUnlocked } = useLearningStore();
   const [showCelebration, setShowCelebration] = useState(false);
 
@@ -80,6 +83,11 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   };
 
   const userTurns = messages.filter((m) => m.role === 'user').length;
+
+  /** Strip ```choices ... ``` block from content for display */
+  const stripChoicesBlock = (text: string) => {
+    return text.replace(/```choices[\s\S]*?```/g, '').trim();
+  };
 
   // This concept's history
   const conceptConvHistory = savedConversations
@@ -361,7 +369,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               >
                 {msg.role === 'assistant' ? (
                   msg.content ? (
-                    <MarkdownRenderer content={msg.content} />
+                    <MarkdownRenderer content={stripChoicesBlock(msg.content)} />
                   ) : isStreaming ? (
                     <div className="flex items-center gap-1.5 mt-1">
                       <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-text-tertiary)' }} />
@@ -402,45 +410,56 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
             </button>
           </div>
         ) : (
-          <div
-            className="flex items-end gap-3 rounded-lg px-4 py-3"
-            style={{
-              backgroundColor: 'var(--color-surface-2)',
-              border: '1px solid var(--color-border)',
-            }}
-          >
-            <textarea
-              value={input}
-              onChange={(e) => {
-                setInput(e.target.value);
-                // Auto-resize
-                e.target.style.height = 'auto';
-                e.target.style.height = Math.min(e.target.scrollHeight, 100) + 'px';
-              }}
-              onKeyDown={handleKeyDown}
-              placeholder="输入你的回答..."
-              rows={1}
-              className="flex-1 bg-transparent text-[15px] outline-none resize-none leading-relaxed"
+          <div className="space-y-3">
+            {/* Choice buttons — shown when AI provides choices */}
+            {currentChoices && currentChoices.length > 0 && !isBusy && (
+              <ChoiceButtons
+                choices={currentChoices}
+                onSelect={selectChoice}
+                disabled={isBusy}
+                dimmed={isUserTyping}
+              />
+            )}
+            <div
+              className="flex items-end gap-3 rounded-lg px-4 py-3"
               style={{
-                color: 'var(--color-text-primary)',
-                maxHeight: '100px',
-              }}
-              disabled={isBusy || !conversationId}
-            />
-            <button
-              onClick={handleSend}
-              disabled={isBusy || !input.trim() || !conversationId}
-              className="shrink-0 w-10 h-10 rounded-md flex items-center justify-center transition-all"
-              style={{
-                  background: !input.trim() || isBusy
-                    ? 'var(--color-surface-4)'
-                    : 'var(--color-accent-primary)',
-                color: '#ffffff',
-                opacity: !input.trim() || isBusy ? 0.4 : 1,
+                backgroundColor: 'var(--color-surface-2)',
+                border: '1px solid var(--color-border)',
               }}
             >
-              <Send size={18} />
-            </button>
+              <textarea
+                value={input}
+                onChange={(e) => {
+                  setInput(e.target.value);
+                  // Auto-resize
+                  e.target.style.height = 'auto';
+                  e.target.style.height = Math.min(e.target.scrollHeight, 100) + 'px';
+                }}
+                onKeyDown={handleKeyDown}
+                placeholder={currentChoices ? "也可以用自己的话回答..." : "输入你的回答..."}
+                rows={1}
+                className="flex-1 bg-transparent text-[15px] outline-none resize-none leading-relaxed"
+                style={{
+                  color: 'var(--color-text-primary)',
+                  maxHeight: '100px',
+                }}
+                disabled={isBusy || !conversationId}
+              />
+              <button
+                onClick={handleSend}
+                disabled={isBusy || !input.trim() || !conversationId}
+                className="shrink-0 w-10 h-10 rounded-md flex items-center justify-center transition-all"
+                style={{
+                    background: !input.trim() || isBusy
+                      ? 'var(--color-surface-4)'
+                      : 'var(--color-accent-primary)',
+                  color: '#ffffff',
+                  opacity: !input.trim() || isBusy ? 0.4 : 1,
+                }}
+              >
+                <Send size={18} />
+              </button>
+            </div>
           </div>
         )}
         {!assessment && (

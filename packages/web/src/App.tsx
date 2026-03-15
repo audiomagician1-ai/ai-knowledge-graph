@@ -11,8 +11,8 @@ export function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route path="*" element={<GraphPage />} />
             <Route path="/learn/:conceptId" element={<LearnPage />} />
+            <Route path="*" element={<GraphPage />} />
           </Route>
         </Routes>
         <ToastContainer />
