@@ -41,7 +41,8 @@ export function LearnPage() {
     if (assessment && conceptId) {
       recordAssessment(conceptId, conceptName || conceptId, assessment.overall_score, assessment.mastered);
     }
-  }, [assessment]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [assessment, conceptId]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -291,7 +292,7 @@ export function LearnPage() {
                 返回图谱
               </button>
               <button
-                onClick={() => { reset(); if (conceptId) startConversation(conceptId); }}
+                onClick={() => { reset(); if (conceptId) { startConversation(conceptId); startLearning(conceptId); } }}
                 className="btn-primary flex-1 flex items-center justify-center gap-2 py-3"
               >
                 <RotateCcw size={16} />

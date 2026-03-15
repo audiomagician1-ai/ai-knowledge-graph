@@ -37,7 +37,6 @@ def _load_seed() -> dict:
 
 @router.get("/data")
 async def get_graph_data(
-    domain_id: Optional[str] = Query(None),
     subdomain_id: Optional[str] = Query(None),
 ):
     """获取图谱数据（节点+边）"""
@@ -49,7 +48,7 @@ async def get_graph_data(
     if subdomain_id:
         concept_ids = {c["id"] for c in concepts if c["subdomain_id"] == subdomain_id}
         concepts = [c for c in concepts if c["subdomain_id"] == subdomain_id]
-        edges = [e for e in edges if e["source_id"] in concept_ids or e["target_id"] in concept_ids]
+        edges = [e for e in edges if e["source_id"] in concept_ids and e["target_id"] in concept_ids]
 
     # 转换为前端 GraphData 格式
     nodes = [
@@ -234,7 +233,10 @@ async def get_rag_document(concept_id: str):
     if not doc_entry:
         raise HTTPException(status_code=404, detail=f"RAG 文档不存在: {concept_id}")
 
-    doc_path = os.path.join(RAG_DIR, doc_entry["file"])
+    doc_path = os.path.normpath(os.path.join(RAG_DIR, doc_entry["file"]))
+    # Path traversal protection
+    if not doc_path.startswith(os.path.normpath(RAG_DIR)):
+        raise HTTPException(status_code=400, detail="Invalid file path")
     if not os.path.exists(doc_path):
         raise HTTPException(status_code=404, detail=f"RAG 文档文件不存在: {doc_entry['file']}")
 

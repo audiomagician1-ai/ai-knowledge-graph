@@ -43,6 +43,7 @@ _session_locks: dict[str, asyncio.Lock] = {}
 # Limits
 _MAX_CACHE = 200
 _CACHE_TTL_SEC = 3600  # 1 hour
+_MAX_MESSAGES_PER_SESSION = 40  # Max messages in a single session (prevents unbounded growth)
 
 # Valid LLM providers
 _VALID_PROVIDERS = {"openrouter", "openai", "deepseek", "custom"}
@@ -63,9 +64,7 @@ def _cleanup_cache():
 
 
 def _get_lock(conv_id: str) -> asyncio.Lock:
-    if conv_id not in _session_locks:
-        _session_locks[conv_id] = asyncio.Lock()
-    return _session_locks[conv_id]
+    return _session_locks.setdefault(conv_id, asyncio.Lock())
 
 
 async def _ensure_session(conv_id: str) -> Optional[dict]:
@@ -231,6 +230,11 @@ async def chat(req: ChatRequest, request: Request):
     lock = _get_lock(req.conversation_id)
     async with lock:
         session["messages"].append({"role": "user", "content": req.message})
+        # Truncate to sliding window if exceeding limit (keep first + last N messages)
+        if len(session["messages"]) > _MAX_MESSAGES_PER_SESSION:
+            first_msg = session["messages"][:1]  # Keep opening
+            recent = session["messages"][-(_MAX_MESSAGES_PER_SESSION - 1):]
+            session["messages"] = first_msg + recent
     save_message(req.conversation_id, "user", req.message)
 
     async def generate():
@@ -298,7 +302,7 @@ async def assess_understanding(req: AssessmentRequest, request: Request):
 
     user_turns = sum(1 for m in messages if m["role"] == "user")
     if user_turns < 2:
-        return {"error": "请至少进行 2 轮对话后再评估", "current_turns": user_turns}
+        raise HTTPException(status_code=400, detail=f"请至少进行 2 轮对话后再评估，当前 {user_turns} 轮")
 
     result = await evaluator.evaluate(concept=concept, messages=messages, user_config=user_config)
 

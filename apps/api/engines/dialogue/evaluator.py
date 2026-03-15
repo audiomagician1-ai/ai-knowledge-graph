@@ -5,10 +5,13 @@
 """
 
 import json
+import logging
 from typing import Optional
 
 from llm.router import llm_router
 from engines.dialogue.prompts.feynman_system import ASSESSMENT_SYSTEM_PROMPT
+
+logger = logging.getLogger(__name__)
 
 
 class UnderstandingEvaluator:
@@ -57,8 +60,8 @@ class UnderstandingEvaluator:
             if result:
                 # 校验必填字段
                 return self._validate_result(result)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning("Assessment LLM call failed: %s", e)
 
         # Fallback: 基于消息长度和轮数粗略评估
         return self._fallback_evaluate(messages)
@@ -82,7 +85,9 @@ class UnderstandingEvaluator:
         # 尝试从 ```json ... ``` 中提取
         if "```json" in text:
             start = text.index("```json") + 7
-            end = text.index("```", start)
+            end = text.find("```", start)
+            if end == -1:
+                end = len(text)  # no closing ```, take rest
             try:
                 return json.loads(text[start:end].strip())
             except (json.JSONDecodeError, ValueError):
@@ -118,7 +123,10 @@ class UnderstandingEvaluator:
 
         # 确保分数在 0-100
         for key in ["completeness", "accuracy", "depth", "examples", "overall_score"]:
-            result[key] = max(0, min(100, int(result[key])))
+            try:
+                result[key] = max(0, min(100, int(float(result[key]))))
+            except (ValueError, TypeError):
+                result[key] = defaults[key]
 
         # 重新计算 mastered
         result["mastered"] = (

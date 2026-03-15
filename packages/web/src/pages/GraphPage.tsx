@@ -88,6 +88,7 @@ export function GraphPage() {
       if (!res.ok) throw new Error('Failed to fetch graph');
       setGraphData(await res.json());
     } catch (err) { setError(err instanceof Error ? err.message : 'Unknown error'); }
+    finally { setLoading(false); }
   };
 
   const loadSubdomains = async () => {

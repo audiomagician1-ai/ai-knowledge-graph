@@ -186,8 +186,28 @@ export interface DirectConversation {
   isMilestone: boolean;
 }
 
-// In-memory conversation storage for direct mode
+// In-memory conversation storage for direct mode (max 20 conversations)
 const directConversations = new Map<string, DirectConversation>();
+const MAX_DIRECT_CONVERSATIONS = 20;
+
+/** Clean up direct conversations map — evict oldest when exceeding limit */
+function pruneDirectConversations(): void {
+  if (directConversations.size <= MAX_DIRECT_CONVERSATIONS) return;
+  const entries = Array.from(directConversations.entries());
+  // Map preserves insertion order — delete oldest entries
+  const toRemove = entries.slice(0, entries.length - MAX_DIRECT_CONVERSATIONS);
+  for (const [key] of toRemove) directConversations.delete(key);
+}
+
+/** Clear a specific direct conversation (called by dialogue store reset) */
+export function clearDirectConversation(conversationId: string): void {
+  directConversations.delete(conversationId);
+}
+
+/** Clear all direct conversations */
+export function clearAllDirectConversations(): void {
+  directConversations.clear();
+}
 
 /** Create a new conversation in direct mode (no Worker call) */
 export function directCreateConversation(conceptId: string): {
@@ -214,6 +234,7 @@ export function directCreateConversation(conceptId: string): {
     isMilestone: node.is_milestone,
   };
   directConversations.set(convId, conv);
+  pruneDirectConversations();
 
   return {
     conversation_id: convId,
@@ -284,7 +305,17 @@ export function directChatStream(
           return;
         }
 
-        const reader = res.body!.getReader();
+        if (!res.body) {
+          controller.enqueue(encoder.encode(
+            `data: ${JSON.stringify({ type: 'chunk', content: '⚠️ LLM 返回了空响应体' })}\n\n`
+          ));
+          controller.enqueue(encoder.encode(
+            `data: ${JSON.stringify({ type: 'done', suggest_assess: false })}\n\n`
+          ));
+          controller.close();
+          return;
+        }
+        const reader = res.body.getReader();
         const decoder = new TextDecoder();
         let buffer = '';
         let fullContent = '';
@@ -414,7 +445,7 @@ function parseAssessmentJSON(text: string): any | null {
     try {
       const result = JSON.parse(text.slice(start, end));
       for (const k of ['completeness', 'accuracy', 'depth', 'examples', 'overall_score']) {
-        result[k] = Math.max(0, Math.min(100, Math.round(result[k] || 50)));
+        result[k] = Math.max(0, Math.min(100, Math.round(result[k] ?? 50)));
       }
       result.mastered = result.overall_score >= 75 && ['completeness', 'accuracy', 'depth', 'examples'].every((k: string) => result[k] >= 60);
       result.gaps = result.gaps || [];

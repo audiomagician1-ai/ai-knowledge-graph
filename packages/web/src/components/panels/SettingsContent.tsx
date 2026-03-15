@@ -56,9 +56,11 @@ export function SettingsContent() {
       setConnError(errMsg);
       setTestStatus('error');
       setTestMessage(errMsg);
+      setTimeout(() => setTestStatus('idle'), 6000);
     } catch (err) {
       setTestStatus('error');
       setTestMessage(err instanceof Error ? err.message : '网络错误');
+      setTimeout(() => setTestStatus('idle'), 6000);
     }
   };
 

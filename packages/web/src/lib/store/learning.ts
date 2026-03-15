@@ -369,7 +369,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     const entries = Object.values(progress);
     const mastered = entries.filter((p) => p.status === 'mastered').length;
     const learning = entries.filter((p) => p.status === 'learning').length;
-    const notStarted = totalConcepts - mastered - learning;
+    const notStarted = Math.max(0, totalConcepts - mastered - learning);
     const totalTime = entries.reduce((sum, p) => sum + p.total_time_sec, 0);
 
     const stats: LearningStats = {
@@ -442,10 +442,13 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     // Merge streak (take max)
     let mergedStreak = { ...existingStreak };
     if (data.streak) {
+      // Use the streak with the more recent lastDate (not just max)
+      const importLastDate = data.streak.lastDate || '';
+      const useImported = importLastDate > existingStreak.lastDate;
       mergedStreak = {
-        current: Math.max(existingStreak.current, data.streak.current || 0),
+        current: useImported ? (data.streak.current || 0) : existingStreak.current,
         longest: Math.max(existingStreak.longest, data.streak.longest || 0),
-        lastDate: existingStreak.lastDate > (data.streak.lastDate || '') ? existingStreak.lastDate : (data.streak.lastDate || ''),
+        lastDate: useImported ? importLastDate : existingStreak.lastDate,
       };
     }
 
@@ -528,10 +531,13 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       // Merge streak (take max)
       let mergedStreak = { ...localStreak };
       if (backendStreak) {
+        // Use the streak with the more recent lastDate (not just max)
+        const backendLastDate = backendStreak.last_date || '';
+        const useBackend = backendLastDate > localStreak.lastDate;
         mergedStreak = {
-          current: Math.max(localStreak.current, backendStreak.current_streak || 0),
+          current: useBackend ? (backendStreak.current_streak || 0) : localStreak.current,
           longest: Math.max(localStreak.longest, backendStreak.longest_streak || 0),
-          lastDate: localStreak.lastDate > (backendStreak.last_date || '') ? localStreak.lastDate : (backendStreak.last_date || ''),
+          lastDate: useBackend ? backendLastDate : localStreak.lastDate,
         };
       }
 

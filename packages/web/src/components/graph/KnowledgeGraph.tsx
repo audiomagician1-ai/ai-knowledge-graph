@@ -378,7 +378,17 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       };
     });
 
-    return () => { destroyed = true; };
+    return () => {
+      destroyed = true;
+      // Cleanup graph instance stored in ref (the .then() cleanup won't run as useEffect cleanup)
+      if (graphRef.current) {
+        graphRef.current._destructor();
+        graphRef.current = null;
+      }
+      // Dispose all cached label textures to free GPU memory
+      for (const tex of _labelCache.values()) tex.dispose();
+      _labelCache.clear();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Init ONCE — data changes handled via separate effect
 
@@ -391,10 +401,13 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
     const prevMastered = prevMasteredRef.current;
     const currMastered = new Set<string>();
 
+    // Build lookup map for O(1) matching (avoid O(N²))
+    const nodeMap = new Map(data.nodes.map(n => [n.id, n]));
+
     // Update graphData node properties in-place
     const gNodes = G.graphData().nodes as GNode[];
     for (const gn of gNodes) {
-      const src = data.nodes.find(n => n.id === gn.id);
+      const src = nodeMap.get(gn.id);
       if (src) {
         gn.status = src.status;
         gn.is_recommended = src.is_recommended;

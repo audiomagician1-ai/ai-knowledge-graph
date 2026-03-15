@@ -20,6 +20,7 @@ class RedisClient:
     async def close(self):
         if self._client:
             await self._client.close()
+            self._client = None
 
     @property
     def client(self) -> redis.Redis | None:

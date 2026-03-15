@@ -1,6 +1,6 @@
 ﻿import { create } from 'zustand';
 import { getLLMHeaders, useSettingsStore } from './settings';
-import { directCreateConversation, directChatStream, directAssess } from '../direct-llm';
+import { directCreateConversation, directChatStream, directAssess, clearDirectConversation } from '../direct-llm';
 
 export interface ChoiceOption {
   id: string;
@@ -350,6 +350,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     const { conversationId, isStreaming, isAssessing } = get();
     if (!conversationId || isStreaming || isAssessing) return;
 
+    // Capture conversation ID for stale guard
+    const myConvId = conversationId;
     set({ isAssessing: true, error: null });
 
     try {
@@ -357,10 +359,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       let data: any;
 
       if (isDirect) {
-        // Direct mode: assess from browser → LLM
         data = await directAssess(conversationId);
       } else {
-        // Proxy mode: assess via Worker
         const res = await fetch(`${API_BASE}/dialogue/assess`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
@@ -369,6 +369,9 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         if (!res.ok) throw new Error('Assessment failed');
         data = await res.json();
       }
+
+      // Stale guard: ignore if conversation changed during assessment
+      if (get().conversationId !== myConvId) return;
 
       if (data.error) {
         set({ isAssessing: false, error: data.error });
@@ -392,6 +395,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       const saved = autoSaveConversation(get());
       if (saved) set({ savedConversations: saved });
     } catch (err) {
+      // Stale guard
+      if (get().conversationId !== myConvId) return;
       set({
         isAssessing: false,
         error: err instanceof Error ? err.message : 'Unknown error',
@@ -415,6 +420,9 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
   reset: () => {
     // Auto-save before clearing
     const saved = autoSaveConversation(get());
+    // Clean up direct conversation memory
+    const convId = get().conversationId;
+    if (convId) clearDirectConversation(convId);
     abortCurrentStream();
     set({
       conversationId: null,

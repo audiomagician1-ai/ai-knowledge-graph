@@ -115,7 +115,19 @@ data/seed/         — 种子图谱数据
 - ✅ **Prompt工程方案文档**: `docs/PROMPT_ENGINEERING_ITERATION_V2.md` — 完整迭代设计
 - ✅ **本地CORS代理模式**: useProxy替代directMode + resolveBaseUrl/probeCORS/probeProxy + 代理脚本下载引导UI
 - ✅ **持久化机制修复+导入导出**: SettingsPage directMode→useProxy迁移 + 导出含对话记录/设置 + JSON导入(合并策略) + localStorage数据校验防腐败
-- ✅ tsc 0 errors, vite build 2.82s, CSS 28KB + graph 6.9KB (lazy)
+- ✅ **系统性代码审查+修复(30项)**: 前后端深度审查发现9critical+25major+23minor
+  - FE: direct-llm.ts `||50`→`??50` score bug + directConversations内存泄漏清理 + res.body null检查
+  - FE: KnowledgeGraph.tsx cleanup竞态修复(graphRef外部销毁) + _labelCache dispose + O(N²)→O(N) nodeMap
+  - FE: GraphPage loading状态finally + LearnPage"再来一轮"补startLearning + assessment deps修复
+  - FE: dialogue.ts requestAssessment stale guard + reset清理directConversation
+  - FE: SettingsContent testStatus error自动清除(6s) + DashboardContent 2col grid响应式
+  - FE: learning.ts streak合并逻辑(lastDate优先而非max) + notStarted防负数
+  - BE: dialogue.py _get_lock竞态(setdefault) + messages滑动窗口(40条上限) + assess返回400
+  - BE: config.py移除硬编码密码+启动警告 + evaluator.py int()→float()防崩溃+错误日志
+  - BE: socratic.py subdomain_name替代subdomain_id + 异常日志
+  - BE: graph.py edge过滤or→and + 移除未用domain_id参数 + RAG路径遍历防护
+  - BE: redis_client.py close后置None
+- ✅ tsc 0 errors, vite build 3.20s, CSS 28KB + graph 7.1KB (lazy)
 
 ### EXE 打包规范
 ```
@@ -147,7 +159,9 @@ Release Note 包含:
 2. ✅ **V2对话流程代码审查** — dialogue.ts+direct-llm.ts+LearnPage+ChoiceButtons 全链路完整
 3. ✅ **EXE 重新打包** — akg-v0.1.0-e9802e4 (46.5MB), 含代理模式UI+tsc修复
 4. ✅ **代理模式重构** — directMode→useProxy, CORS代理引导UI, probeCORS/probeProxy工具
-5. 🟡 **最终内测版发布** — Release Note + 分发
+5. ✅ **系统性审查+修复** — 30项问题(9C+25M+23m)，内存泄漏/竞态/安全/性能全面修复
+6. 🟡 **EXE 重新打包(含审查修复)** — 需包含最新修复
+7. 🟡 **最终内测版发布** — Release Note + 分发
 
 ---
 
