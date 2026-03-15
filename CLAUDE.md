@@ -130,6 +130,13 @@ data/seed/         — 种子图谱数据
   - BE: redis_client.py close后置None
 - ✅ tsc 0 errors, vite build 3.20s, CSS 28KB + graph 7.1KB (lazy)
 - ✅ **Direct模式V2 Prompt同步+消息窗口修复**: direct-llm.ts老版Feynman双角色prompt→V2四阶段引导式学习, 添加20条消息滑动窗口(修复AI几轮后不输出), max_tokens 512→800, directCreateConversation改异步+LLM生成opening+choices, 流式响应解析choices block
+- ✅ **测试+7项问题修复(bf51060)**:
+  - FE: `isDirectMode()`不再要求显式baseUrl — 使用provider默认值(OpenRouter等标准provider直接可用)
+  - FE: ChatPanel补充ChoiceButtons渲染(之前仅LearnPage有) + 消息stripChoicesBlock
+  - FE: App.tsx路由顺序修正(/learn/:conceptId在通配符*之前, 防止被吞)
+  - FE: LearnPage error toast 6秒自动消失
+  - FE: directAssess评估角色标签修正(之前反了: user标为老师)
+  - FE: loadSavedConversation清理stale currentChoices
 
 ### EXE 打包规范
 ```
@@ -162,7 +169,7 @@ Release Note 包含:
 3. ✅ **EXE 重新打包** — akg-v0.1.0-e9802e4 (46.5MB), 含代理模式UI+tsc修复
 4. ✅ **代理模式重构** — directMode→useProxy, CORS代理引导UI, probeCORS/probeProxy工具
 5. ✅ **系统性审查+修复** — 30项问题(9C+25M+23m)，内存泄漏/竞态/安全/性能全面修复
-6. 🟡 **EXE 重新打包(含审查修复)** — 需包含最新修复
+6. ✅ **EXE 重新打包(含审查修复)** — akg-v0.1.0-bf51060 (46.6MB), 含7项测试修复
 7. 🟡 **最终内测版发布** — Release Note + 分发
 
 ---
