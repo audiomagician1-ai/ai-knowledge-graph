@@ -114,6 +114,7 @@ data/seed/         — 种子图谱数据
 - ✅ **UI改版「Observatory Study」**: 暖调深色(#111110)+衬线标题(Noto Serif SC)+去glass/glow/gradient+铜/苔/梅自然色系+圆角6-8px+实色按钮+图谱去辉光粒子
 - ✅ **Prompt工程方案文档**: `docs/PROMPT_ENGINEERING_ITERATION_V2.md` — 完整迭代设计
 - ✅ **本地CORS代理模式**: useProxy替代directMode + resolveBaseUrl/probeCORS/probeProxy + 代理脚本下载引导UI
+- ✅ **CORS代理增强(照搬NewCRPG)**: probeCORS返回详细错误({ok,status,detail}) + generateSelfContainedBat()自包含BAT(base64嵌入,一键启动无需额外文件) + 错误诊断信息优化
 - ✅ **持久化机制修复+导入导出**: SettingsPage directMode→useProxy迁移 + 导出含对话记录/设置 + JSON导入(合并策略) + localStorage数据校验防腐败
 - ✅ **系统性代码审查+修复(30项)**: 前后端深度审查发现9critical+25major+23minor
   - FE: direct-llm.ts `||50`→`??50` score bug + directConversations内存泄漏清理 + res.body null检查

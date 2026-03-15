@@ -1,5 +1,5 @@
 ﻿import { useState, useRef } from 'react';
-import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, PROXY_BAT_SRC, downloadBlob } from '@/lib/store/settings';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, generateSelfContainedBat, downloadBlob } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
 import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
@@ -36,22 +36,22 @@ export function SettingsContent() {
         llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase,
         !!llmConfig.useProxy,
       );
-      const ok = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || 'gpt-4o');
-      if (ok) {
+      const result = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || 'gpt-4o');
+      if (result.ok) {
         setTestStatus('success');
         setTestMessage(llmConfig.useProxy ? '通过本地代理连接成功' : '连接成功');
         setTimeout(() => setTestStatus('idle'), 4000);
         return;
       }
-      // Failed — give specific hints
-      let errMsg = '连接失败';
+      // Failed — give specific hints with detailed error info
+      let errMsg = result.detail ? `连接失败: ${result.detail}` : '连接失败';
       if (llmConfig.useProxy) {
         const alive = await probeProxy();
         errMsg = alive
-          ? '代理在运行但 API 返回错误，请检查 URL / Key / 模型名。'
+          ? `代理在运行但 API 返回错误${result.detail ? ` (${result.detail})` : ''}，请检查 URL / Key / 模型名。`
           : '本地代理未运行。请先下载并启动代理脚本。';
       } else {
-        errMsg = '连接失败。如果是内网 API，请启用「本地代理」并启动代理脚本。';
+        errMsg = `连接失败${result.detail ? `: ${result.detail}` : ''}。如果是内网 API，请启用「本地代理」并启动代理脚本。`;
       }
       setConnError(errMsg);
       setTestStatus('error');
@@ -163,21 +163,21 @@ export function SettingsContent() {
               className="btn-ghost" style={{ fontSize: 12, padding: '6px 12px', borderRadius: 8 }}>
               {showProxyGuide ? '收起指南' : '使用指南'}
             </button>
+            <button onClick={() => downloadBlob(generateSelfContainedBat(), 'start-proxy.bat', 'application/bat')}
+              className="btn-ghost flex items-center gap-1" style={{ fontSize: 12, padding: '6px 12px', borderRadius: 8 }}>
+              <Download size={11} /> start-proxy.bat（一键启动）
+            </button>
             <button onClick={() => downloadBlob(PROXY_SCRIPT_SRC, 'cors-proxy.cjs', 'text/javascript')}
               className="btn-ghost flex items-center gap-1" style={{ fontSize: 12, padding: '6px 12px', borderRadius: 8 }}>
-              <Download size={11} /> cors-proxy.cjs
-            </button>
-            <button onClick={() => downloadBlob(PROXY_BAT_SRC, 'start-proxy.bat', 'application/x-bat')}
-              className="btn-ghost flex items-center gap-1" style={{ fontSize: 12, padding: '6px 12px', borderRadius: 8 }}>
-              <Download size={11} /> start-proxy.bat
+              <Download size={11} /> cors-proxy.cjs（手动）
             </button>
           </div>
         )}
         {showProxyGuide && llmConfig.useProxy && (
           <div style={{ marginTop: 12, padding: '12px 14px', borderRadius: 8, backgroundColor: 'var(--color-surface-1)', fontSize: 12, lineHeight: 1.8, color: 'var(--color-text-secondary)' }}>
             <strong>快速开始：</strong><br/>
-            1. 下载上方两个文件到同一文件夸<br/>
-            2. 双击 <code style={{ padding: '1px 5px', borderRadius: 4, backgroundColor: 'var(--color-surface-3)' }}>start-proxy.bat</code> 启动代理（需 Node.js）<br/>
+            1. 下载 <code style={{ padding: '1px 5px', borderRadius: 4, backgroundColor: 'var(--color-surface-3)' }}>start-proxy.bat</code>（自包含，无需其他文件）<br/>
+            2. 双击运行（需已安装 <a href="https://nodejs.org" target="_blank" rel="noopener" style={{ color: 'var(--color-accent-primary)' }}>Node.js</a>）<br/>
             3. 看到 <em>"CORS proxy running on port 9876"</em> 即成功<br/>
             4. 回来点击「测试」按钮验证连接
           </div>

@@ -47,20 +47,20 @@ export function SettingsPage() {
         llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase,
         !!llmConfig.useProxy,
       );
-      const ok = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || 'gpt-4o');
-      if (ok) {
+      const result = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || 'gpt-4o');
+      if (result.ok) {
         setTestStatus('success');
         setTestMessage(llmConfig.useProxy ? '通过本地代理连接成功 ✨' : '连接成功 ✨ API 可用');
         setTimeout(() => setTestStatus('idle'), 4000);
       } else {
-        let errMsg = '连接失败';
+        let errMsg = result.detail ? `连接失败: ${result.detail}` : '连接失败';
         if (llmConfig.useProxy) {
           const alive = await probeProxy();
           errMsg = alive
-            ? '代理在运行但 API 返回错误，请检查 URL / Key / 模型名。'
+            ? `代理在运行但 API 返回错误${result.detail ? ` (${result.detail})` : ''}，请检查 URL / Key / 模型名。`
             : '本地代理未运行。请先下载并启动代理脚本。';
         } else {
-          errMsg = '连接失败。如果是内网 API，请启用「本地代理」并启动代理脚本。';
+          errMsg = `连接失败${result.detail ? `: ${result.detail}` : ''}。如果是内网 API，请启用「本地代理」并启动代理脚本。`;
         }
         setTestStatus('error');
         setTestMessage(errMsg);

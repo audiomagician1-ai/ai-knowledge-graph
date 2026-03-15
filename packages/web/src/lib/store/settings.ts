@@ -136,11 +136,13 @@ export async function probeProxy(): Promise<boolean> {
   }
 }
 
-/** Try a direct fetch to the API to check if CORS is available (3s timeout) */
-export async function probeCORS(baseUrl: string, apiKey: string, model: string): Promise<boolean> {
+/** Try a direct fetch to the API to check if CORS is available (5s timeout) */
+export async function probeCORS(
+  baseUrl: string, apiKey: string, model: string,
+): Promise<{ ok: boolean; status?: number; detail?: string }> {
   try {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 3000);
+    const timer = setTimeout(() => ctrl.abort(), 5000);
     const url = baseUrl.replace(/\/+$/, '') + '/chat/completions';
     const res = await fetch(url, {
       method: 'POST',
@@ -149,9 +151,19 @@ export async function probeCORS(baseUrl: string, apiKey: string, model: string):
       signal: ctrl.signal,
     });
     clearTimeout(timer);
-    return res.ok;
-  } catch {
-    return false;
+    if (res.ok) return { ok: true, status: res.status };
+    // Try to extract upstream error detail
+    let detail = `HTTP ${res.status}`;
+    try {
+      const body = await res.text();
+      const j = JSON.parse(body);
+      if (j.error?.message) detail += `: ${j.error.message}`;
+      else if (j.message) detail += `: ${j.message}`;
+      else if (body.length < 200) detail += `: ${body}`;
+    } catch { /* ignore parse errors */ }
+    return { ok: false, status: res.status, detail };
+  } catch (e) {
+    return { ok: false, detail: e instanceof Error ? e.message : 'Unknown error' };
   }
 }
 
@@ -210,8 +222,67 @@ http.createServer((req, res) => {
 });
 `;
 
-/** BAT launcher source */
+/** BAT launcher source (legacy — requires cors-proxy.cjs alongside) */
 export const PROXY_BAT_SRC = '@echo off\r\nwhere node >nul 2>&1 || (echo [ERROR] Node.js not found. Install from https://nodejs.org && pause && exit /b)\r\necho Starting CORS proxy on port 9876...\r\nnode "%~dp0cors-proxy.cjs"\r\npause\r\n';
+
+/**
+ * Generate a self-contained .bat that embeds the CORS proxy JS as base64.
+ * User downloads ONE file, double-clicks, done.
+ *
+ * Architecture: The bat writes a tiny Node decode-and-run script inline,
+ * passes the base64 payload via a temp file (avoids CMD line-length and
+ * quoting issues entirely), then exec's node on the decoded .cjs.
+ *
+ * IMPORTANT — CMD safety rules applied:
+ *  - NO `for /f` (parenthesis + quote hell causes flash-exit)
+ *  - NO `||` compound operators (unreliable in multi-line blocks)
+ *  - Only simple `if errorlevel`, `set`, `echo`, `node`, `goto`, `call`
+ *  - All user-visible error paths end with `pause` before `exit`
+ */
+export function generateSelfContainedBat(): string {
+  const proxyJs = PROXY_SCRIPT_SRC;
+  const b64 = btoa(proxyJs);
+
+  const bat = [
+    '@echo off',
+    'chcp 65001 >nul 2>&1',
+    'title AI Knowledge Graph - CORS Proxy',
+    'echo.',
+    '',
+    'REM --- Check Node.js ---',
+    'node --version >nul 2>&1',
+    'if errorlevel 1 goto nonode',
+    '',
+    'REM --- Write base64 payload to temp file ---',
+    `echo ${b64}> "%TEMP%\\akg-proxy.b64"`,
+    '',
+    'REM --- Decode and launch via node ---',
+    'echo   Starting CORS proxy...',
+    'echo.',
+    'echo   ==========================================',
+    'echo     AI Knowledge Graph - LLM CORS Proxy',
+    'echo     http://localhost:9876/proxy/',
+    'echo   ==========================================',
+    'echo.',
+    '',
+    `node -e "var f=require('fs'),b=f.readFileSync(process.env.TEMP+'/akg-proxy.b64','utf8').trim();f.writeFileSync(process.env.TEMP+'/akg-cors-proxy.cjs',Buffer.from(b,'base64'));require(process.env.TEMP+'/akg-cors-proxy.cjs')" 9876`,
+    '',
+    'echo.',
+    'echo   Proxy stopped.',
+    'pause',
+    'goto end',
+    '',
+    ':nonode',
+    'echo.',
+    'echo   [ERROR] Node.js is not installed or not in PATH.',
+    'echo   Download from: https://nodejs.org',
+    'echo.',
+    'pause',
+    '',
+    ':end',
+  ];
+  return bat.join('\r\n');
+}
 
 /** Download a text blob as a file */
 export function downloadBlob(content: string, filename: string, mime: string) {
