@@ -129,6 +129,7 @@ data/seed/         — 种子图谱数据
   - BE: graph.py edge过滤or→and + 移除未用domain_id参数 + RAG路径遍历防护
   - BE: redis_client.py close后置None
 - ✅ tsc 0 errors, vite build 3.20s, CSS 28KB + graph 7.1KB (lazy)
+- ✅ **Direct模式V2 Prompt同步+消息窗口修复**: direct-llm.ts老版Feynman双角色prompt→V2四阶段引导式学习, 添加20条消息滑动窗口(修复AI几轮后不输出), max_tokens 512→800, directCreateConversation改异步+LLM生成opening+choices, 流式响应解析choices block
 
 ### EXE 打包规范
 ```
