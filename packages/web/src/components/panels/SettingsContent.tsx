@@ -30,13 +30,18 @@ export function SettingsContent() {
 
   const handleTestConnection = async () => {
     if (!llmConfig.apiKey) { setTestStatus('error'); setTestMessage('请先输入 API Key'); return; }
-    setTestStatus('testing'); setTestMessage('');
+    setTestStatus('testing'); setTestMessage('正在连接，请稍候…');
     try {
       const effectiveUrl = resolveBaseUrl(
         llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase,
         !!llmConfig.useProxy,
       );
-      const result = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || 'gpt-4o');
+      // Use provider-appropriate default model if user hasn't specified one
+      const defaultModel = llmConfig.provider === 'openrouter' ? 'openai/gpt-4o-mini'
+        : llmConfig.provider === 'deepseek' ? 'deepseek-chat'
+        : 'gpt-4o-mini';
+      const testModel = llmConfig.model || defaultModel;
+      const result = await probeCORS(effectiveUrl, llmConfig.apiKey, testModel);
       if (result.ok) {
         setTestStatus('success');
         setTestMessage(llmConfig.useProxy ? '通过本地代理连接成功' : '连接成功');

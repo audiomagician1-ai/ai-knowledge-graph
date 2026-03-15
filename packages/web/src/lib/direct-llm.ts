@@ -117,7 +117,11 @@ function fmt(template: string, vars: Record<string, string>): string {
 function resolveEndpoint(): { baseUrl: string; apiKey: string; model: string } {
   const { llmConfig } = useSettingsStore.getState();
   const key = llmConfig.apiKey;
-  const model = llmConfig.model || 'gpt-4o';
+  // Use provider-appropriate default model
+  const defaultModel = llmConfig.provider === 'openrouter' ? 'openai/gpt-4o-mini'
+    : llmConfig.provider === 'deepseek' ? 'deepseek-chat'
+    : 'gpt-4o-mini';
+  const model = llmConfig.model || defaultModel;
 
   const rawBase = llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase;
   const baseUrl = resolveBaseUrl(rawBase, !!llmConfig.useProxy);

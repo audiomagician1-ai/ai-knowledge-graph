@@ -136,34 +136,48 @@ export async function probeProxy(): Promise<boolean> {
   }
 }
 
-/** Try a direct fetch to the API to check if CORS is available (5s timeout) */
+/** Try a direct fetch to the API to check if CORS is available.
+ *  Uses 15s timeout (generous for overseas APIs) + automatic 1 retry on timeout/network error. */
 export async function probeCORS(
   baseUrl: string, apiKey: string, model: string,
 ): Promise<{ ok: boolean; status?: number; detail?: string }> {
-  try {
+  const url = baseUrl.replace(/\/+$/, '') + '/chat/completions';
+  const body = JSON.stringify({ model, messages: [{ role: 'user', content: 'hi' }], max_tokens: 1 });
+  const headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` };
+
+  const attempt = async (timeoutMs: number): Promise<{ ok: boolean; status?: number; detail?: string }> => {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 5000);
-    const url = baseUrl.replace(/\/+$/, '') + '/chat/completions';
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({ model, messages: [{ role: 'user', content: 'hi' }], max_tokens: 1 }),
-      signal: ctrl.signal,
-    });
-    clearTimeout(timer);
-    if (res.ok) return { ok: true, status: res.status };
-    // Try to extract upstream error detail
-    let detail = `HTTP ${res.status}`;
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
     try {
-      const body = await res.text();
-      const j = JSON.parse(body);
-      if (j.error?.message) detail += `: ${j.error.message}`;
-      else if (j.message) detail += `: ${j.message}`;
-      else if (body.length < 200) detail += `: ${body}`;
-    } catch { /* ignore parse errors */ }
-    return { ok: false, status: res.status, detail };
-  } catch (e) {
-    return { ok: false, detail: e instanceof Error ? e.message : 'Unknown error' };
+      const res = await fetch(url, { method: 'POST', headers, body, signal: ctrl.signal });
+      clearTimeout(timer);
+      if (res.ok) return { ok: true, status: res.status };
+      // Try to extract upstream error detail
+      let detail = `HTTP ${res.status}`;
+      try {
+        const respBody = await res.text();
+        const j = JSON.parse(respBody);
+        if (j.error?.message) detail += `: ${j.error.message}`;
+        else if (j.message) detail += `: ${j.message}`;
+        else if (respBody.length < 200) detail += `: ${respBody}`;
+      } catch { /* ignore parse errors */ }
+      return { ok: false, status: res.status, detail };
+    } catch (e) {
+      clearTimeout(timer);
+      throw e; // re-throw for retry logic
+    }
+  };
+
+  // First attempt — 15s timeout
+  try {
+    return await attempt(15_000);
+  } catch (e1) {
+    // On timeout or network error, retry once (connection is likely warmed up now)
+    try {
+      return await attempt(10_000);
+    } catch (e2) {
+      return { ok: false, detail: e2 instanceof Error ? e2.message : 'Unknown error' };
+    }
   }
 }
 
