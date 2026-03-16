@@ -174,6 +174,22 @@ data/seed/         — 种子图谱数据
   - BE: main.py 生产环境禁用/docs和/redoc(DEBUG环境变量控制) [m-01]
   - BE: main.py SPA路由检查index.html是否存在 [m-07]
 
+- ✅ **第四轮深度审查+修复(14项, d62e997)**:
+  - FE: supabase-sync.ts `fullSync`改为先下载后上传(防覆盖云端新数据→数据丢失) [C-01]
+  - FE: supabase-sync.ts `fullSync`并发保护(`_syncing`标志防多标签页竞态) [M-06]
+  - FE: supabase-sync.ts 历史事件增量同步(lastSyncTimestamp追踪→防每次登录历史翻倍) [M-05]
+  - FE: supabase-sync.ts `syncProgressToCloud`检查Supabase error返回 [m-07]
+  - FE: auth.ts `onAuthStateChange`订阅清理(HMR/StrictMode重复订阅泄漏) [M-01]
+  - FE: auth.ts `_runLoginCallbacks`添加`.catch()`+回调去重+返回unsubscribe [M-02,m-03]
+  - FE: dialogue.ts SSE abort时清除空assistant占位消息(防空气泡) [M-12]
+  - FE: learning.ts `mastered_at`降级时保留历史时间戳(不再清零) [M-16]
+  - FE: LoginPage切换模式清空密码+OAuth loading防重复+signUp邮箱验证检测+autocomplete属性 [M-08,M-09,m-10,m-11]
+  - BE: main.py SPA path traversal改用`is_relative_to`(Windows大小写兼容) [M-26]
+  - BE: dialogue.py ConversationCreate/ChatRequest/AssessmentRequest添加Field max_length输入校验 [m-36,m-37]
+  - BE: learning.py RecordAssessmentRequest score范围校验(ge=0,le=100) [M-30]
+  - BE: learning.py /stats endpoint total_concepts添加Query范围限制 [M-31]
+  - BE: learning.py /sync score值clamping到[0,100] [M-30]
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -209,7 +225,8 @@ Release Note 包含:
 7. ✅ **第二轮深度审查+修复** — 15项修复(3C+5M+7m): isStreaming卡死/并发竞态/评估标签/Neo4j null/Redis重连
 8. ✅ **第三轮深度审查+修复** — 20项修复(3C+10M+7m): SSRF防护/busy死锁/TOCTOU竞态/sync校验/stream重试/并发安全
 9. ✅ **EXE 重新打包(含第三轮审查)** — akg-v0.1.0-c11ac37 (46.6MB)
-10. 🟡 **最终内测版分发** — 确认EXE可正常运行后分发
+10. ✅ **第四轮深度审查+修复** — 14项修复(1C+8M+5m): fullSync数据丢失/auth订阅泄漏/SSE空气泡/输入校验 (d62e997)
+11. 🟡 **最终内测版分发** — 需重新打包EXE(含第四轮审查修复)
 
 ### Phase 5 迭代计划: 可选登录 + Supabase 跨端同步 🟡
 
