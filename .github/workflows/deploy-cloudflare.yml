@@ -23,6 +23,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: workers
+          packageManager: npm
           command: deploy
       - name: Run D1 Migrations
         uses: cloudflare/wrangler-action@v3
@@ -30,6 +31,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: workers
+          packageManager: npm
           command: d1 migrations apply akg-db --remote
 
   deploy-pages:
@@ -57,4 +59,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: npm
           command: pages deploy packages/web/dist --project-name=akg-web
