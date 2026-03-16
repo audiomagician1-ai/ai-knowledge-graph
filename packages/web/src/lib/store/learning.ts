@@ -316,14 +316,18 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     const existing = progress[conceptId];
     const now = Date.now();
 
+    // Prevent demotion: once mastered, status stays mastered (user is reviewing)
+    const wasMastered = existing?.status === 'mastered';
+    const nowMastered = mastered || wasMastered;
+
     const updated: ConceptProgress = {
       concept_id: conceptId,
-      status: mastered ? 'mastered' : 'learning',
-      mastery_score: mastered ? Math.max(score, existing?.mastery_score || 0) : score,
+      status: nowMastered ? 'mastered' : 'learning',
+      mastery_score: nowMastered ? Math.max(score, existing?.mastery_score || 0) : score,
       last_score: score,
       sessions: existing?.sessions || 1,
       total_time_sec: existing?.total_time_sec || 0,
-      mastered_at: mastered ? (existing?.mastered_at || now) : existing?.mastered_at,
+      mastered_at: nowMastered ? (existing?.mastered_at || now) : existing?.mastered_at,
       last_learn_at: now,
     };
 

@@ -375,7 +375,8 @@ export function SettingsPage() {
               a.href = url;
               a.download = `akg-data-${new Date().toISOString().slice(0, 10)}.json`;
               a.click();
-              URL.revokeObjectURL(url);
+              // Delay revoke to ensure browser has time to start the download
+              setTimeout(() => URL.revokeObjectURL(url), 10_000);
             }}
             className="btn-ghost flex-1 flex items-center justify-center gap-2.5 text-base"
           >

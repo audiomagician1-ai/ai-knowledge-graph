@@ -2,11 +2,14 @@
 
 import logging
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 
 logger = logging.getLogger(__name__)
 
 
 class Settings(BaseSettings):
+    model_config = ConfigDict(env_file=".env", env_file_encoding="utf-8")
+
     # Neo4j
     neo4j_uri: str = "bolt://localhost:7687"
     neo4j_user: str = "neo4j"
@@ -28,10 +31,6 @@ class Settings(BaseSettings):
     llm_model_dialogue: str = "openai/gpt-4o"
     llm_model_assessment: str = "openai/gpt-4o"
     llm_model_simple: str = "deepseek/deepseek-chat"
-
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
 
 
 settings = Settings()

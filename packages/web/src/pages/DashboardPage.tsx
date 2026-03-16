@@ -16,6 +16,7 @@ export function DashboardPage() {
   useEffect(() => {
     refreshStreak();
     if (graphData) computeStats(graphData.nodes.length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand stable refs, only re-run when graphData changes
   }, [graphData]);
 
   const recentHistory = [...history].reverse().slice(0, 8);

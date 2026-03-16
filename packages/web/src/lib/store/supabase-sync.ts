@@ -95,12 +95,13 @@ export async function syncHistoryToCloud(
   const uid = getUserId();
   if (!uid) return;
   try {
-    await supabase.from('learning_events').insert({
+    const { error } = await supabase.from('learning_events').insert({
       user_id: uid,
       concept_id: conceptId,
       event_type: mastered ? 'mastered' : 'feynman_attempt',
       payload: { concept_name: conceptName, score, mastered },
     });
+    if (error) console.warn('[sync] insert history failed:', conceptId, error.message);
   } catch (err) {
     console.warn('[sync] Failed to sync history event:', err);
   }
@@ -244,11 +245,14 @@ export async function fullSync(): Promise<{
     allHistory.sort((a, b) => a.timestamp - b.timestamp);
     const mergedHistory = allHistory.slice(-500);
 
-    // 3. Upload merged progress to cloud
+    // 3. Upload merged progress to cloud (batched to reduce latency)
+    const progressEntries = Object.values(merged);
+    const BATCH_SIZE = 10;
     let uploadedProgress = 0;
-    for (const p of Object.values(merged)) {
-      await syncProgressToCloud(p);
-      uploadedProgress++;
+    for (let i = 0; i < progressEntries.length; i += BATCH_SIZE) {
+      const batch = progressEntries.slice(i, i + BATCH_SIZE);
+      await Promise.allSettled(batch.map(p => syncProgressToCloud(p)));
+      uploadedProgress += batch.length;
     }
 
     // Upload only history entries newer than last sync (avoid duplicates)

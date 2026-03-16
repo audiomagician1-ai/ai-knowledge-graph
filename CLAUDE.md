@@ -23,7 +23,7 @@
 | **Phase 1** | W3-4 | 图谱展示 + 基础交互 | ✅ 完成 (267节点334边, 3D球面力导向图, 里程碑高亮) |
 | **Phase 2** | W5-7 | 对话引擎 (核心) | ✅ 完成 (LLM调用层+苏格拉底引擎+评估器+SSE流式+前端UI+RAG知识库) |
 | **Phase 3** | W8-9 | 节点点亮 + 进度系统 | ✅ 完成 (前置条件图+推荐集合+mastered绿光晕+recommended青光晕+Dashboard真实数据) |
-| **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+3轮审查65项+EXE打包) |
+| **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+5轮审查79项+48测试+EXE打包) |
 | **Phase 5** | W13+ | 可选登录 + 跨端同步 | 🟡 进行中 |
 
 ---
@@ -174,6 +174,14 @@ data/seed/         — 种子图谱数据
   - BE: main.py 生产环境禁用/docs和/redoc(DEBUG环境变量控制) [m-01]
   - BE: main.py SPA路由检查index.html是否存在 [m-07]
 
+- ✅ **第五轮审查+修复+测试(6项修复+48测试)**:
+  - FE: learning.ts `recordAssessment`防止mastered状态被降级(wasMastered保护) [M-01]
+  - FE: supabase-sync.ts `syncHistoryToCloud`补充error返回检查 [M-02]
+  - FE: supabase-sync.ts `fullSync` upload改为批量并发(Promise.allSettled, BATCH_SIZE=10) [M-03]
+  - FE: DashboardPage.tsx useEffect添加eslint-disable deps注释(Zustand stable refs) [m-01]
+  - FE: SettingsPage.tsx 导出下载URL.revokeObjectURL延迟10s(防下载竞态) [m-02]
+  - BE: config.py Pydantic `class Config`→`model_config = ConfigDict()`(消除DeprecationWarning) [m-03]
+  - TEST: 前端23测试(learning store 10+settings store 13), 后端25测试(health 1+sqlite 12+learning API 12)
 - ✅ **第四轮深度审查+修复(14项, d62e997)**:
   - FE: supabase-sync.ts `fullSync`改为先下载后上传(防覆盖云端新数据→数据丢失) [C-01]
   - FE: supabase-sync.ts `fullSync`并发保护(`_syncing`标志防多标签页竞态) [M-06]
@@ -293,8 +301,8 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅
-cd apps/api && python -m pytest          # 后端测试 ✅
+cd packages/web && npx vitest run        # 前端测试 ✅ (23 tests: learning store + settings store)
+cd apps/api && python -m pytest          # 后端测试 ✅ (25 tests: health + sqlite_client + learning API)
 ```
 
 ### 提交规范
