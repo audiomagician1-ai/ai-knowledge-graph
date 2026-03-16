@@ -9,9 +9,6 @@ jobs:
   deploy-worker:
     name: Deploy API (Cloudflare Workers)
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: workers
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -20,15 +17,20 @@ jobs:
           node-version: 20
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
-        working-directory: .
       - name: Deploy Worker
-        run: pnpm wrangler deploy
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: workers
+          command: deploy
       - name: Run D1 Migrations
-        run: pnpm wrangler d1 migrations apply akg-db --remote
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: workers
+          command: d1 migrations apply akg-db --remote
 
   deploy-pages:
     name: Deploy Frontend (Cloudflare Pages)
