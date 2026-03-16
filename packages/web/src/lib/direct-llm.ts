@@ -357,7 +357,11 @@ export async function directCreateConversation(conceptId: string): Promise<{
       signal: AbortSignal.timeout(15000), // 15s timeout
     });
 
-    if (res.ok) {
+    // Guard: wrong URL may return 200 + HTML instead of JSON
+    const openCT = res.headers.get('content-type') || '';
+    if (res.ok && !openCT.includes('application/json')) {
+      console.warn('LLM returned non-JSON content-type:', openCT);
+    } else if (res.ok) {
       const data: any = await res.json();
       const raw = data.choices?.[0]?.message?.content || '';
       if (raw) {
@@ -456,6 +460,17 @@ export function directChatStream(
           controller.enqueue(encoder.encode(
             `data: ${JSON.stringify({ type: 'done', suggest_assess: false })}\n\n`
           ));
+          controller.close();
+          return;
+        }
+
+        // Guard: wrong URL may return 200 + HTML instead of SSE/JSON
+        const streamCT = res.headers.get('content-type') || '';
+        if (!streamCT.includes('text/event-stream') && !streamCT.includes('application/json')) {
+          controller.enqueue(encoder.encode(
+            `data: ${JSON.stringify({ type: 'chunk', content: `⚠️ LLM 返回了非预期的 content-type: ${streamCT}，请检查 Base URL 设置。` })}\n\n`
+          ));
+          controller.enqueue(encoder.encode('data: [DONE]\n\n'));
           controller.close();
           return;
         }
@@ -576,6 +591,11 @@ export async function directAssess(conversationId: string): Promise<Record<strin
     });
 
     if (!res.ok) throw new Error(`LLM error ${res.status}`);
+    // Guard: wrong URL may return 200 + HTML instead of JSON
+    const evalCT = res.headers.get('content-type') || '';
+    if (!evalCT.includes('application/json')) {
+      throw new Error(`LLM returned non-JSON (${evalCT}). Check your Base URL.`);
+    }
     const data: any = await res.json();
     const text = data.choices?.[0]?.message?.content || '';
 

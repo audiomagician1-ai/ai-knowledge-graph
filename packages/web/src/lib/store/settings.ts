@@ -155,7 +155,13 @@ export async function probeCORS(
     const timer0 = setTimeout(() => ctrl0.abort(), 8_000);
     const modelsRes = await fetch(`${base}/models`, { headers, signal: ctrl0.signal });
     clearTimeout(timer0);
-    if (modelsRes.ok) return { ok: true, status: modelsRes.status };
+    // Guard: some providers return 200 + HTML for wrong paths
+    const mCT = modelsRes.headers.get('content-type') || '';
+    if (modelsRes.ok && !mCT.includes('application/json')) {
+      // Not a real API response — fall through to chat probe
+    } else if (modelsRes.ok) {
+      return { ok: true, status: modelsRes.status };
+    }
     // If 404 or other error, fall through to chat probe
   } catch { /* timeout or CORS blocked — fall through */ }
 
@@ -169,6 +175,11 @@ export async function probeCORS(
     try {
       const res = await fetch(url, { method: 'POST', headers, body, signal: ctrl.signal });
       clearTimeout(timer);
+      // Guard: some providers return 200 + HTML for wrong paths
+      const ct = res.headers.get('content-type') || '';
+      if (res.ok && !ct.includes('application/json') && !ct.includes('text/event-stream')) {
+        return { ok: false, status: res.status, detail: `HTTP ${res.status} but response is ${ct || 'unknown'} (expected JSON). Check your Base URL.` };
+      }
       if (res.ok) return { ok: true, status: res.status };
       // Try to extract upstream error detail
       let detail = `HTTP ${res.status}`;

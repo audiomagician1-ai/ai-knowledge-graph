@@ -4,6 +4,15 @@ const OPENROUTER_BASE = 'https://openrouter.ai/api/v1';
 const OPENAI_BASE = 'https://api.openai.com/v1';
 const DEEPSEEK_BASE = 'https://api.deepseek.com/v1';
 
+/** Normalize well-known provider URLs */
+function normalizeProviderUrl(url: string): string {
+  if (/^https:\/\/openrouter\.ai(\/.*)?$/i.test(url)) {
+    if (/^https:\/\/openrouter\.ai\/api\/v1$/i.test(url)) return url;
+    return 'https://openrouter.ai/api/v1';
+  }
+  return url;
+}
+
 interface LLMOptions {
   messages: Array<{ role: string; content: string }>;
   temperature?: number;
@@ -21,7 +30,7 @@ function resolveEndpoint(
     const model = userConfig.model || 'gpt-4o';
 
     if (userConfig.base_url) {
-      return { baseUrl: userConfig.base_url.replace(/\/$/, ''), apiKey: key, model };
+      return { baseUrl: normalizeProviderUrl(userConfig.base_url.replace(/\/$/, '')), apiKey: key, model };
     }
     switch (userConfig.provider) {
       case 'deepseek':
