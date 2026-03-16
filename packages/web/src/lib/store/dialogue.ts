@@ -342,9 +342,12 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     } catch (err) {
       // Ignore AbortError — it's intentional cancellation
       if (err instanceof DOMException && err.name === 'AbortError') {
-        // Still ensure isStreaming is reset (C-01 fix)
+        // Reset isStreaming + remove empty assistant placeholder to prevent blank bubbles
         if (get().conversationId === myConvId) {
-          set({ isStreaming: false });
+          set((s) => ({
+            isStreaming: false,
+            messages: s.messages.filter(m => !(m.id === assistantMsgId && m.content === '')),
+          }));
         }
         return;
       }

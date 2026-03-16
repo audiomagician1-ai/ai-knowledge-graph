@@ -127,7 +127,7 @@ if _frontend_dist.is_dir():
             if full_path:
                 # Security: prevent path traversal
                 candidate = (_frontend_dist / full_path).resolve()
-                if str(candidate).startswith(str(_frontend_dist.resolve())) and candidate.is_file():
+                if candidate.is_relative_to(_frontend_dist.resolve()) and candidate.is_file():
                     return FileResponse(str(candidate))
             return FileResponse(str(_index_html))
 

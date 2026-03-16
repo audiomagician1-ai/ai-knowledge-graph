@@ -19,13 +19,13 @@ router = APIRouter()
 # ── Request Models ──
 
 class StartLearningRequest(BaseModel):
-    concept_id: str
+    concept_id: str = Field(..., max_length=200)
 
 
 class RecordAssessmentRequest(BaseModel):
-    concept_id: str
-    concept_name: str
-    score: float
+    concept_id: str = Field(..., max_length=200)
+    concept_name: str = Field(..., max_length=200)
+    score: float = Field(..., ge=0, le=100)
     mastered: bool
 
 
@@ -53,8 +53,8 @@ class SyncProgressRequest(BaseModel):
 # ── Endpoints ──
 
 @router.get("/stats")
-async def get_learning_stats(total_concepts: int = 267):
-    """获取学习统计"""
+async def get_learning_stats(total_concepts: int = Query(default=267, ge=1, le=10000)):
+    """获取学习统计 — total_concepts should ideally come from seed data"""
     return compute_stats(total_concepts)
 
 
@@ -136,7 +136,7 @@ async def sync_from_frontend(req: SyncProgressRequest):
         add_history(
             concept_id=concept_id,
             concept_name=str(entry.get('concept_name', concept_id))[:200],
-            score=float(entry.get('score', 0)),
+            score=max(0.0, min(100.0, float(entry.get('score', 0)))),
             mastered=bool(entry.get('mastered', False)),
             timestamp=float(entry.get('timestamp', time.time())),
         )

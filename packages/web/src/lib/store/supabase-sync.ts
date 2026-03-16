@@ -37,7 +37,7 @@ export async function syncProgressToCloud(p: ConceptProgress): Promise<void> {
   const uid = getUserId();
   if (!uid) return;
   try {
-    await supabase.from('user_concept_status').upsert({
+    const { error } = await supabase.from('user_concept_status').upsert({
       user_id: uid,
       concept_id: p.concept_id,
       status: p.status,
@@ -48,6 +48,7 @@ export async function syncProgressToCloud(p: ConceptProgress): Promise<void> {
       last_feynman_at: p.mastered_at ? new Date(p.mastered_at).toISOString() : null,
       updated_at: new Date(p.last_learn_at || Date.now()).toISOString(),
     }, { onConflict: 'user_id,concept_id' });
+    if (error) console.warn('[sync] upsert progress failed:', p.concept_id, error.message);
   } catch (err) {
     console.warn('[sync] Failed to sync progress:', p.concept_id, err);
   }
@@ -188,11 +189,15 @@ export async function downloadConversationsFromCloud(limit = 50): Promise<CloudC
 // Full Sync (login-triggered)
 // ════════════════════════════════════════════
 
+/** Guard against concurrent fullSync calls (e.g. rapid login/logout) */
+let _syncing = false;
+
 /**
  * Full bidirectional sync triggered on login.
- * 1. Upload local data to cloud (first-login migration)
- * 2. Download cloud data
- * 3. Merge: last_learn_at wins
+ * Order: Download first → Merge → Upload merged (prevents overwriting newer cloud data).
+ * 1. Download cloud data
+ * 2. Merge: last_learn_at wins (local vs cloud)
+ * 3. Upload only merged result to cloud
  * 4. Write merged result back to localStorage
  */
 export async function fullSync(): Promise<{
@@ -200,66 +205,77 @@ export async function fullSync(): Promise<{
   downloadedProgress: number;
   mergedProgress: number;
 }> {
-  // Use static import (no circular: learning→supabase-sync exports, supabase-sync→learning store)
-  const store = useLearningStore.getState();
+  if (_syncing) return { uploadedProgress: 0, downloadedProgress: 0, mergedProgress: 0 };
+  _syncing = true;
+  try {
+    const store = useLearningStore.getState();
+    const localProgress = store.progress;
+    const localHistory = store.history;
 
-  const localProgress = store.progress;
-  const localHistory = store.history;
+    // 1. Download cloud data FIRST (prevents overwriting newer cloud data)
+    const cloudProgress = await downloadProgressFromCloud();
+    const cloudHistory = await downloadHistoryFromCloud();
 
-  // 1. Upload all local progress to cloud
-  let uploadedProgress = 0;
-  const entries = Object.values(localProgress);
-  for (const p of entries) {
-    await syncProgressToCloud(p);
-    uploadedProgress++;
-  }
-
-  // Upload local history events
-  for (const h of localHistory.slice(-100)) {
-    await syncHistoryToCloud(h.concept_id, h.concept_name, h.score, h.mastered);
-  }
-
-  // 2. Download cloud data
-  const cloudProgress = await downloadProgressFromCloud();
-  const cloudHistory = await downloadHistoryFromCloud();
-
-  // 3. Merge: last_learn_at wins
-  const merged: Record<string, ConceptProgress> = { ...localProgress };
-  let mergedCount = 0;
-  for (const [cid, cp] of Object.entries(cloudProgress)) {
-    const local = merged[cid];
-    if (!local || cp.last_learn_at > local.last_learn_at) {
-      merged[cid] = cp;
-      mergedCount++;
+    // 2. Merge progress: last_learn_at wins
+    const merged: Record<string, ConceptProgress> = {};
+    const allIds = new Set([...Object.keys(localProgress), ...Object.keys(cloudProgress)]);
+    let mergedCount = 0;
+    for (const cid of allIds) {
+      const local = localProgress[cid];
+      const cloud = cloudProgress[cid];
+      if (local && cloud) {
+        merged[cid] = cloud.last_learn_at > local.last_learn_at ? cloud : local;
+        mergedCount++;
+      } else {
+        merged[cid] = (local || cloud)!;
+      }
     }
-  }
 
-  // Merge history (deduplicate by concept_id + timestamp)
-  const historySet = new Set(localHistory.map(h => `${h.concept_id}-${h.timestamp}`));
-  const mergedHistory = [...localHistory];
-  for (const ch of cloudHistory) {
-    const key = `${ch.concept_id}-${ch.timestamp}`;
-    if (!historySet.has(key)) {
-      mergedHistory.push(ch);
-      historySet.add(key);
+    // Merge history (deduplicate by concept_id + timestamp)
+    const historySet = new Set<string>();
+    const allHistory: LearningHistory[] = [];
+    for (const h of [...localHistory, ...cloudHistory]) {
+      const key = `${h.concept_id}-${h.timestamp}`;
+      if (!historySet.has(key)) {
+        allHistory.push(h);
+        historySet.add(key);
+      }
     }
+    allHistory.sort((a, b) => a.timestamp - b.timestamp);
+    const mergedHistory = allHistory.slice(-500);
+
+    // 3. Upload merged progress to cloud
+    let uploadedProgress = 0;
+    for (const p of Object.values(merged)) {
+      await syncProgressToCloud(p);
+      uploadedProgress++;
+    }
+
+    // Upload only history entries newer than last sync (avoid duplicates)
+    const lastSyncTs = Number(localStorage.getItem('akg-last-cloud-sync-ts') || '0');
+    const newHistory = localHistory.filter(h => h.timestamp > lastSyncTs);
+    for (const h of newHistory.slice(-100)) {
+      await syncHistoryToCloud(h.concept_id, h.concept_name, h.score, h.mastered);
+    }
+    localStorage.setItem('akg-last-cloud-sync-ts', String(Date.now()));
+
+    // 4. Write merged result to local store
+    store.replaceData({
+      progress: merged,
+      history: mergedHistory,
+      streak: store.streak, // streak stays local
+    });
+
+    console.log(`[sync] Full sync done: uploaded=${uploadedProgress}, cloud=${Object.keys(cloudProgress).length}, merged=${mergedCount}`);
+
+    return {
+      uploadedProgress,
+      downloadedProgress: Object.keys(cloudProgress).length,
+      mergedProgress: mergedCount,
+    };
+  } finally {
+    _syncing = false;
   }
-  mergedHistory.sort((a, b) => a.timestamp - b.timestamp);
-
-  // 4. Write merged result to local store
-  store.replaceData({
-    progress: merged,
-    history: mergedHistory.slice(-500),
-    streak: store.streak, // streak stays local
-  });
-
-  console.log(`[sync] Full sync done: uploaded=${uploadedProgress}, cloud=${Object.keys(cloudProgress).length}, merged=${mergedCount}`);
-
-  return {
-    uploadedProgress,
-    downloadedProgress: Object.keys(cloudProgress).length,
-    mergedProgress: mergedCount,
-  };
 }
 
 // ════════════════════════════════════════════

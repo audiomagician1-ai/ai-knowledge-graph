@@ -18,7 +18,7 @@ from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from engines.dialogue.socratic import socratic_engine
 from engines.dialogue.prompts.feynman_system import parse_ai_response
@@ -102,17 +102,17 @@ async def _ensure_session(conv_id: str) -> Optional[dict]:
 
 
 class ConversationCreate(BaseModel):
-    concept_id: str
+    concept_id: str = Field(..., max_length=200)
 
 
 class ChatRequest(BaseModel):
-    conversation_id: str
-    message: str
+    conversation_id: str = Field(..., max_length=200)
+    message: str = Field(..., max_length=10000)
     is_choice: bool = False  # True when user clicked a preset choice option
 
 
 class AssessmentRequest(BaseModel):
-    conversation_id: str
+    conversation_id: str = Field(..., max_length=200)
 
 
 def _extract_user_llm_config(request: Request) -> Optional[dict]:

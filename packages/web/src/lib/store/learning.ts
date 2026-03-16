@@ -323,7 +323,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       last_score: score,
       sessions: existing?.sessions || 1,
       total_time_sec: existing?.total_time_sec || 0,
-      mastered_at: mastered ? (existing?.mastered_at || now) : undefined,
+      mastered_at: mastered ? (existing?.mastered_at || now) : existing?.mastered_at,
       last_learn_at: now,
     };
 

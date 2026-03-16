@@ -1,6 +1,9 @@
 ﻿import { create } from 'zustand';
-import type { Session, User, Provider } from '@supabase/supabase-js';
+import type { Session, User, Provider, Subscription } from '@supabase/supabase-js';
 import { supabase } from '../api/supabase';
+
+/** Track active auth subscription to avoid leaks on re-init (HMR / StrictMode) */
+let _authSubscription: Subscription | null = null;
 
 interface AuthState {
   session: Session | null;
@@ -30,9 +33,13 @@ function isSupabaseConfigured(): boolean {
 /** Callback registry for post-login sync — avoids circular imports */
 const _onLoginCallbacks: Array<(userId: string) => Promise<void>> = [];
 
-/** Register a callback to run after successful login (used by supabase-sync) */
+/** Register a callback to run after successful login (used by supabase-sync). Returns unsubscribe function. */
 export function onAuthLogin(cb: (userId: string) => Promise<void>) {
-  _onLoginCallbacks.push(cb);
+  if (!_onLoginCallbacks.includes(cb)) _onLoginCallbacks.push(cb);
+  return () => {
+    const i = _onLoginCallbacks.indexOf(cb);
+    if (i >= 0) _onLoginCallbacks.splice(i, 1);
+  };
 }
 
 async function _runLoginCallbacks(userId: string) {
@@ -57,23 +64,27 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       return;
     }
     try {
+      // Unsubscribe previous listener (HMR / double-init guard)
+      _authSubscription?.unsubscribe();
+
       const { data: { session } } = await supabase.auth.getSession();
       set({ session, user: session?.user ?? null, loading: false });
 
       // If already logged in, trigger sync
       if (session?.user) {
-        _runLoginCallbacks(session.user.id);
+        _runLoginCallbacks(session.user.id).catch(() => {});
       }
 
-      supabase.auth.onAuthStateChange((event, session) => {
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
         const prevUser = get().user;
         set({ session, user: session?.user ?? null });
 
         // Trigger sync on fresh sign-in (not on token refresh)
         if (session?.user && !prevUser && (event === 'SIGNED_IN')) {
-          _runLoginCallbacks(session.user.id);
+          _runLoginCallbacks(session.user.id).catch(() => {});
         }
       });
+      _authSubscription = subscription;
     } catch {
       set({ loading: false });
     }

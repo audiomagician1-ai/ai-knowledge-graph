@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/lib/store/auth';
-import { BookOpen, Mail, Loader2 } from 'lucide-react';
+import { BookOpen, Loader2 } from 'lucide-react';
 
 export function LoginPage() {
   const [mode, setMode] = useState<'login' | 'register'>('login');
@@ -20,10 +20,17 @@ export function LoginPage() {
     try {
       if (mode === 'login') {
         await signInWithEmail(email, password);
+        navigate('/graph');
       } else {
         await signUp(email, password, displayName);
+        // signUp may require email confirmation — check session
+        const { session } = useAuthStore.getState();
+        if (session) {
+          navigate('/graph');
+        } else {
+          setError('Please check your email to confirm your account.');
+        }
       }
-      navigate('/graph');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Operation failed');
     } finally {
@@ -32,11 +39,14 @@ export function LoginPage() {
   };
 
   const handleOAuth = async (provider: 'google' | 'github') => {
+    if (loading) return; // Prevent duplicate OAuth triggers
     setError('');
+    setLoading(true);
     try {
       await signInWithOAuth(provider);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'OAuth failed');
+      setLoading(false);
     }
   };
 
@@ -77,9 +87,10 @@ export function LoginPage() {
 
       {/* OAuth buttons */}
       <div className="w-full max-w-sm space-y-3 mb-6 animate-fade-in stagger-1">
-        <button
+          <button
           onClick={() => handleOAuth('google')}
-          className="w-full flex items-center justify-center gap-3 rounded-lg py-3 text-sm font-medium transition-colors"
+          disabled={loading}
+          className="w-full flex items-center justify-center gap-3 rounded-lg py-3 text-sm font-medium transition-colors disabled:opacity-50"
           style={{
             backgroundColor: 'var(--color-surface-2)',
             color: 'var(--color-text-primary)',
@@ -89,9 +100,10 @@ export function LoginPage() {
           <GoogleIcon />
           Continue with Google
         </button>
-        <button
+          <button
           onClick={() => handleOAuth('github')}
-          className="w-full flex items-center justify-center gap-3 rounded-lg py-3 text-sm font-medium transition-colors"
+          disabled={loading}
+          className="w-full flex items-center justify-center gap-3 rounded-lg py-3 text-sm font-medium transition-colors disabled:opacity-50"
           style={{
             backgroundColor: 'var(--color-surface-2)',
             color: 'var(--color-text-primary)',
@@ -122,11 +134,13 @@ export function LoginPage() {
         <input
           type="email" placeholder="Email" value={email}
           onChange={(e) => setEmail(e.target.value)} required
+          autoComplete="email"
           style={inputStyle}
         />
         <input
           type="password" placeholder="Password" value={password}
           onChange={(e) => setPassword(e.target.value)} required minLength={6}
+          autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
           style={inputStyle}
         />
 
@@ -145,7 +159,7 @@ export function LoginPage() {
 
         <button
           type="button"
-          onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
+          onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError(''); setPassword(''); }}
           className="w-full py-2 text-sm"
           style={{ color: 'var(--color-accent-primary)' }}
         >
