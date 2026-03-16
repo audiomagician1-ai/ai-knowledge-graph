@@ -1,7 +1,8 @@
 ﻿import { useNavigate, useLocation } from 'react-router-dom';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
-import { Network, BarChart3, Settings, Zap, BookOpen } from 'lucide-react';
+import { useAuthStore } from '@/lib/store/auth';
+import { Network, BarChart3, Settings, Zap, BookOpen, LogIn, LogOut, User } from 'lucide-react';
 
 const NAV_ITEMS = [
   { path: '/graph', icon: Network, label: '知识图谱' },
@@ -14,6 +15,9 @@ export function Sidebar() {
   const location = useLocation();
   const { graphData } = useGraphStore();
   const { progress } = useLearningStore();
+  const { user, supabaseConfigured, signOut } = useAuthStore();
+  const isLoggedIn = !!user;
+  const displayName = useAuthStore((s) => s.displayName());
   const totalNodes = graphData?.nodes.length || 0;
   const masteredCount = Object.values(progress).filter(p => p.status === 'mastered').length;
   const learningCount = Object.values(progress).filter(p => p.status === 'learning').length;
@@ -78,6 +82,52 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      {/* User section */}
+      {supabaseConfigured && (
+        <div className="px-4 pb-3">
+          {isLoggedIn ? (
+            <div
+              className="flex items-center gap-3 rounded-lg px-4 py-3"
+              style={{ backgroundColor: 'var(--color-surface-2)' }}
+            >
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
+                style={{ backgroundColor: 'var(--color-accent-primary)', color: '#fff', fontSize: 13, fontWeight: 600 }}
+              >
+                {(displayName || '?')[0].toUpperCase()}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-medium truncate" style={{ color: 'var(--color-text-primary)' }}>
+                  {displayName}
+                </div>
+                <div className="text-xs truncate" style={{ color: 'var(--color-text-tertiary)' }}>
+                  已同步
+                </div>
+              </div>
+              <button
+                onClick={() => signOut()}
+                className="shrink-0 p-1.5 rounded-md transition-colors"
+                style={{ color: 'var(--color-text-tertiary)' }}
+                title="退出登录"
+              >
+                <LogOut size={16} />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => navigate('/login')}
+              className="w-full flex items-center gap-3 rounded-lg px-4 py-3 transition-colors"
+              style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-secondary)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-surface-3)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-surface-2)'; }}
+            >
+              <LogIn size={18} style={{ color: 'var(--color-accent-primary)' }} />
+              <span className="text-sm font-medium">登录 · 跨端同步</span>
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Bottom stats */}
       {totalNodes > 0 && (

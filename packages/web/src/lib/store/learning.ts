@@ -4,6 +4,7 @@ import {
   apiStartLearning, apiRecordAssessment, apiFetchAllProgress,
   apiFetchStats, apiFetchHistory, apiFetchStreak, apiSyncToBackend,
 } from '@/lib/api/learning-api';
+import { syncProgressToCloud, syncHistoryToCloud } from './supabase-sync';
 
 // ========================================
 // Simplified concept progress for anonymous users
@@ -306,6 +307,8 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
     // Async write to backend (fire-and-forget)
     apiStartLearning(conceptId);
+    // Async write to Supabase cloud (fire-and-forget, logged-in only)
+    syncProgressToCloud(updated);
   },
 
   recordAssessment: (conceptId, conceptName, score, mastered) => {
@@ -350,6 +353,9 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
     // Async write to backend (fire-and-forget)
     apiRecordAssessment(conceptId, conceptName, score, mastered);
+    // Async write to Supabase cloud (fire-and-forget, logged-in only)
+    syncProgressToCloud(updated);
+    syncHistoryToCloud(conceptId, conceptName, score, mastered);
   },
 
   getConceptStatus: (conceptId) => {

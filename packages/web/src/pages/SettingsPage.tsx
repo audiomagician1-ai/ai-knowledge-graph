@@ -5,11 +5,12 @@ import type { LLMProvider } from '@/lib/store/settings';
 import {
   Eye, EyeOff, Check, Trash2, Shield,
   Key, Server, Wifi, WifiOff, Loader2, Globe, Box,
-  Info, Download, Upload, ArrowLeft,
+  Info, Download, Upload, ArrowLeft, LogIn, LogOut, Cloud,
 } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDialogueStore } from '@/lib/store/dialogue';
+import { useAuthStore } from '@/lib/store/auth';
 
 const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek', 'custom'];
 
@@ -28,6 +29,9 @@ export function SettingsPage() {
   const [importStatus, setImportStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [importMessage, setImportMessage] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { user, supabaseConfigured, signOut } = useAuthStore();
+  const isLoggedIn = !!user;
+  const displayName = useAuthStore((s) => s.displayName());
 
   const handleSave = () => {
     setSaved(true);
@@ -94,6 +98,52 @@ export function SettingsPage() {
             配置 LLM 服务以启用对话功能
           </p>
         </div>
+
+        {/* Account Section */}
+        {supabaseConfigured && (
+          <div className="mb-8 animate-fade-in stagger-1">
+            <label className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
+              <Cloud size={14} />
+              账号
+            </label>
+            {isLoggedIn ? (
+              <div
+                className="flex items-center gap-4 rounded-md p-4"
+                style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
+              >
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: 'var(--color-accent-primary)', color: '#fff', fontSize: 15, fontWeight: 600 }}
+                >
+                  {(displayName || '?')[0].toUpperCase()}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[15px] font-medium truncate" style={{ color: 'var(--color-text-primary)' }}>
+                    {displayName}
+                  </div>
+                  <div className="text-xs truncate" style={{ color: 'var(--color-text-tertiary)' }}>
+                    {user?.email} · 学习数据已云同步
+                  </div>
+                </div>
+                <button
+                  onClick={() => signOut()}
+                  className="btn-ghost flex items-center gap-1.5 text-sm shrink-0"
+                >
+                  <LogOut size={14} /> 退出
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => navigate('/login')}
+                className="w-full flex items-center justify-center gap-2.5 rounded-md py-3 text-[15px] font-medium transition-colors"
+                style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-accent-primary)', border: '1px solid var(--color-border)' }}
+              >
+                <LogIn size={16} />
+                登录 · 跨端同步学习进度
+              </button>
+            )}
+          </div>
+        )}
 
         {/* Provider Selection */}
         <div className="mb-8 animate-fade-in stagger-1">

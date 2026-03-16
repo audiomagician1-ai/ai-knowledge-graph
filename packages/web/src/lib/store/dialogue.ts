@@ -1,6 +1,7 @@
 ﻿import { create } from 'zustand';
 import { getLLMHeaders, useSettingsStore } from './settings';
 import { directCreateConversation, directChatStream, directAssess, clearDirectConversation } from '../direct-llm';
+import { syncConversationToCloud } from './supabase-sync';
 
 export interface ChoiceOption {
   id: string;
@@ -110,6 +111,15 @@ function autoSaveConversation(state: DialogueState) {
     ? existing.map((c, i) => i === idx ? record : c)
     : [...existing, record];
   persistConversations(updated);
+
+  // Async sync to Supabase cloud (fire-and-forget, logged-in only)
+  syncConversationToCloud(
+    record.conversationId,
+    record.conceptId,
+    record.messages.map(m => ({ role: m.role, content: m.content, timestamp: m.timestamp })),
+    record.assessment ? 'completed' : 'active',
+  );
+
   return updated;
 }
 

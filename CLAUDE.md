@@ -7,13 +7,13 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 4 进行中** | 响应式+Markdown+动效+设置页+UI改版「Observatory Study」 已完成
+**当前阶段**: 🟢 **Phase 5 启动** | 可选登录 + Supabase 云同步（跨端进度）
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 
-**当前最高优先任务 — Phase 4 收尾** (接近完成):
-> **目标**: 3轮深度审查(65+项修复) + EXE打包 + 最终内测版分发
-> **详见**: `DEVELOPMENT_PLAN.md` Phase 4
+**当前最高优先任务 — Phase 5: 可选登录 + 跨端同步**:
+> **目标**: 保持免登录可用(ADR-009)，增加可选邮箱登录，登录用户自动同步学习数据到 Supabase，实现跨端进度恢复
+> **详见**: 下方 Phase 5 迭代计划
 
 ### 12周里程碑
 
@@ -23,7 +23,8 @@
 | **Phase 1** | W3-4 | 图谱展示 + 基础交互 | ✅ 完成 (267节点334边, 3D球面力导向图, 里程碑高亮) |
 | **Phase 2** | W5-7 | 对话引擎 (核心) | ✅ 完成 (LLM调用层+苏格拉底引擎+评估器+SSE流式+前端UI+RAG知识库) |
 | **Phase 3** | W8-9 | 节点点亮 + 进度系统 | ✅ 完成 (前置条件图+推荐集合+mastered绿光晕+recommended青光晕+Dashboard真实数据) |
-| **Phase 4** | W10-12 | 打磨 + 内测 | 🟡 进行中 (响应式+Markdown+动效+设置页 ✅) |
+| **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+3轮审查65项+EXE打包) |
+| **Phase 5** | W13+ | 可选登录 + 跨端同步 | 🟡 进行中 |
 
 ---
 
@@ -198,7 +199,7 @@ Release Note 包含:
   - release/*.md  → 跟踪 (release note 入库)
 ```
 
-### 待完成 🟡
+### Phase 4 已完成 ✅
 1. ✅ **LLM 端到端测试** — mihoyo Claude 4.6 Sonnet: 4轮对话+评估 81/100 mastered ✅
 2. ✅ **V2对话流程代码审查** — dialogue.ts+direct-llm.ts+LearnPage+ChoiceButtons 全链路完整
 3. ✅ **EXE 重新打包** — akg-v0.1.0-e9802e4 (46.5MB), 含代理模式UI+tsc修复
@@ -209,6 +210,55 @@ Release Note 包含:
 8. ✅ **第三轮深度审查+修复** — 20项修复(3C+10M+7m): SSRF防护/busy死锁/TOCTOU竞态/sync校验/stream重试/并发安全
 9. ✅ **EXE 重新打包(含第三轮审查)** — akg-v0.1.0-c11ac37 (46.6MB)
 10. 🟡 **最终内测版分发** — 确认EXE可正常运行后分发
+
+### Phase 5 迭代计划: 可选登录 + Supabase 跨端同步 🟡
+
+**设计原则**:
+- **ADR-009 不变**: 全站免登录可用，匿名用户体验完全不受影响
+- **登录 = 可选增值**: 登录后自动云同步，跨端恢复学习进度
+- **双写**: 登录状态下每次学习行为同时写 localStorage + Supabase
+- **Supabase 直连**: 前端通过 `@supabase/supabase-js` 直连 Supabase，不经后端 SQLite
+
+**现状盘点**:
+- ✅ `auth.ts` store 已有完整的 signIn/signUp/signOut + onAuthStateChange
+- ✅ `LoginPage.tsx` 已有登录/注册表单 UI
+- ✅ `supabase/migrations/00001_initial_schema.sql` 已有 profiles + user_concept_status + conversations + learning_events 表 + RLS + auto-profile trigger
+- ✅ `supabase.ts` 已有 createClient
+- ❌ App.tsx 未注册 /login 路由，未调用 auth.initialize()
+- ❌ Sidebar/BottomNav 无用户入口
+- ❌ 前端从未向 Supabase 写过学习数据
+- ❌ 无 Supabase 同步通道 (supabase-sync.ts)
+
+**架构**:
+```
+用户操作
+  ├── localStorage (始终写入，离线可用)
+  ├── 后端 SQLite (始终 fire-and-forget, EXE模式)
+  └── Supabase (仅登录用户，前端直连)
+        ├── user_concept_status (学习进度，按 last_learn_at 合并)
+        ├── conversations (对话历史，JSONB messages)
+        └── learning_events (学习事件流水)
+```
+
+**待实施步骤**:
+1. ✅ **App.tsx 路由 + auth 初始化** — /login 路由 + useAuthStore.initialize() + supabase-sync side-effect import
+2. ✅ **auth.ts 增强** — isAuthenticated/displayName, signInWithOAuth(Google/GitHub), onAuthLogin回调注册, supabaseConfigured检测
+3. ✅ **新建 supabase-sync.ts** — 276行, syncProgressToCloud/downloadProgressFromCloud/syncHistoryToCloud/downloadHistoryFromCloud/syncConversationToCloud/downloadConversationsFromCloud/fullSync(双向合并), onAuthLogin自动触发
+4. ✅ **learning.ts 双写** — startLearning/recordAssessment 增加 syncProgressToCloud + syncHistoryToCloud fire-and-forget
+5. ✅ **dialogue.ts 双写** — autoSaveConversation 增加 syncConversationToCloud fire-and-forget
+6. ✅ **Sidebar 用户区域** — 底部: 未登录→"登录·跨端同步"按钮, 已登录→头像+名字+退出, supabaseConfigured控制显隐
+7. ✅ **LoginPage 改版** — Google/GitHub OAuth按钮 + 邮箱登录/注册 + "Skip, continue without account" + Observatory Study风格
+8. ✅ **SettingsPage 账号区域** — Cloud图标+已登录显示头像/邮箱/退出, 未登录显示登录按钮
+9. ✅ **首次登录数据迁移 + 跨端恢复** — fullSync(): localStorage→Supabase上传 + Supabase→本地下载 + last_learn_at合并
+10. ✅ **tsc + build 验证** — tsc 0 errors, vite build 3.39s, 0 warnings
+11. 🟡 **Supabase Cloud 配置** — 需创建线上项目 + 配置 Google/GitHub OAuth providers + 设置 .env
+12. 🟡 **端到端测试** — 注册→学习→退出→新设备登录→进度恢复
+
+**决策已确认**:
+- [x] Supabase 实例: **线上 Supabase Cloud** (跨端必须云端)
+- [x] 登录方式: **邮箱 + Google + GitHub** OAuth
+- [x] 数据冲突: 以 **last_learn_at 较新为准** (与现有 importData 一致)
+- [x] 登录入口: **Sidebar 底部 + 移动端设置页顶部**
 
 ---
 
