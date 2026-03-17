@@ -366,6 +366,13 @@ data/seed/         — 种子图谱数据
   - VERIFY: 175 tests (56 FE + 119 BE) 全通过, tsc 0 errors, build 3.18s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续9轮零issues审查**
 
+- ✅ **第二十三轮巡逻审查+对话Store测试补全 (2026-03-18, c84fba9)**:
+  - **FIX**: dialogue.ts `startConversation` catch块补充`isStreaming: false`重置(防开场streaming阶段异常后isStreaming卡死) [m-01]
+  - TEST: +24 FE新测试(dialogue store: 初始状态2 + reset清理1 + cancelStream 1 + startConversation错误处理2 + loadSavedConversation加载/不存在2 + deleteSavedConversation删除/持久化2 + importConversations去重/无效跳过/排序3 + replaceConversations替换/过滤2 + selectChoice空choices/无效id 2 + sendMessage guards(无convId/streaming/assessing) 3 + requestAssessment guards(无convId/streaming/assessing) 3 + 持久化50上限1)
+  - REVIEW: dialogue.ts深度审查 — stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController/streaming simulation stale check 全通过
+  - VERIFY: 199 tests (80 FE + 119 BE) 全通过, tsc 0 errors, build 3.44s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 仅1 minor修复
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -469,7 +476,7 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (56 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6)
+cd packages/web && npx vitest run        # 前端测试 ✅ (80 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24)
 cd apps/api && python -m pytest          # 后端测试 ✅ (119 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41)
 ```
 
