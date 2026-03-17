@@ -341,6 +341,16 @@ data/seed/         — 种子图谱数据
   - VERIFY: 134 tests (56 FE + 78 BE) 全通过, tsc 0 errors, build 3.43s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续7轮零issues审查**
 
+- ✅ **第二十轮深度巡逻审查+SSRF修复+LLM Router测试补全 (2026-03-18, f4c381f)**:
+  - **CRITICAL FIX**: llm/router.py `_validate_base_url` SSRF绕过漏洞 — try/except ValueError同时捕获了ip_address()解析错误和intentional的"Private IP not allowed" raise, 导致10.x/192.168.x/172.16.x等私有IP绕过SSRF保护。修复: try/except/else模式分离解析错误和校验错误 [C-01]
+  - TEST: +41 BE新测试(LLM Router: SSRF防护15 + 重试逻辑9 + 端点解析11 + 模型名解析4 + 模型分层2)
+    - SSRF: scheme校验(https/http/ftp/file/无) + 阻止localhost/127.0.0.1/::1/metadata.google.internal + 阻止私有IP(10.x/192.168.x/172.16.x) + 允许公网IP/hostname + 尾斜杠清理
+    - 重试: 429/5xx可重试, 400/401/403/404/200不重试
+    - 端点: 用户配置(openrouter/openai/deepseek/custom) + 自定义base_url + SSRF阻止 + 服务端fallback(3 providers) + 无key抛错
+    - 模型名: OpenRouter保留org/前缀, 直连去掉前缀, 无前缀不变
+  - VERIFY: 175 tests (56 FE + 119 BE) 全通过, tsc 0 errors, build 3.15s
+  - STATUS: 发现1个CRITICAL SSRF漏洞并修复, 代码质量持续提升
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -445,7 +455,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (56 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6)
-cd apps/api && python -m pytest          # 后端测试 ✅ (78 tests: health 1 + sqlite_client 16 + learning API 12 + evaluator 17 + dialogue API 16 + graph API 16)
+cd apps/api && python -m pytest          # 后端测试 ✅ (119 tests: health 1 + sqlite_client 16 + learning API 12 + evaluator 17 + dialogue API 16 + graph API 16 + llm_router 41)
 ```
 
 ### 提交规范
