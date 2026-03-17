@@ -520,6 +520,10 @@ export function directChatStream(
           const parsed = parseChoicesFromContent(fullContent);
           // Store clean content (without choices block) for conversation history
           conv.messages.push({ role: 'assistant', content: parsed.content || fullContent });
+          // M-02 fix: Cap conversation messages to prevent unbounded memory growth
+          if (conv.messages.length > MAX_CONTEXT_MESSAGES * 2) {
+            conv.messages = [conv.messages[0], ...conv.messages.slice(-(MAX_CONTEXT_MESSAGES * 2 - 1))];
+          }
 
           // Send choices event if parsed successfully
           if (parsed.choices.length >= 2) {
@@ -573,6 +577,7 @@ export async function directAssess(conversationId: string): Promise<Record<strin
   const { baseUrl, apiKey, model } = resolveEndpoint();
 
   try {
+    // m-07 fix: Add timeout to prevent indefinite "评估中..." UI state
     const res = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
@@ -588,6 +593,7 @@ export async function directAssess(conversationId: string): Promise<Record<strin
         temperature: 0.2,
         max_tokens: 1024,
       }),
+      signal: AbortSignal.timeout(30_000),
     });
 
     if (!res.ok) throw new Error(`LLM error ${res.status}`);

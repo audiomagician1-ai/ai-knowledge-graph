@@ -248,15 +248,13 @@ async def chat(req: ChatRequest, request: Request):
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
         return StreamingResponse(no_key_response(), media_type="text/event-stream")
 
-    # Reject concurrent requests for the same session (C-02 fix: check under lock)
+    # C-02 fix: single lock block for _busy check + message append (no TOCTOU window)
     lock = _get_lock(req.conversation_id)
     async with lock:
         if session.get("_busy"):
             raise HTTPException(status_code=429, detail="该会话正在处理中，请稍后重试")
         session["_busy"] = True
         session["_busy_since"] = time.time()
-
-    async with lock:
         session["messages"].append({"role": "user", "content": req.message})
         # Truncate to sliding window if exceeding limit (keep first + context notice + last N)
         if len(session["messages"]) > _MAX_MESSAGES_PER_SESSION:
@@ -264,6 +262,8 @@ async def chat(req: ChatRequest, request: Request):
             recent = session["messages"][-(_MAX_MESSAGES_PER_SESSION - 2):]
             truncation_notice = {"role": "system", "content": "[对话历史已截断，以下为最近的对话记录]"}
             session["messages"] = first_msg + [truncation_notice] + recent
+        # M-05 fix: snapshot messages before releasing lock (prevent reads of mutated state)
+        messages_snapshot = list(session["messages"])
     await asyncio.to_thread(save_message, req.conversation_id, "user", req.message)
 
     async def generate():
@@ -271,7 +271,7 @@ async def chat(req: ChatRequest, request: Request):
         try:
             async for chunk in socratic_engine.chat_stream(
                 system_prompt=session["system_prompt"],
-                messages=session["messages"][:-1],
+                messages=messages_snapshot[:-1],
                 user_message=req.message,
                 user_config=user_config,
             ):

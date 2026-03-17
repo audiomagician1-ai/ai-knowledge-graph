@@ -173,6 +173,25 @@ describe('useLearningStore', () => {
     });
   });
 
+  describe('streak', () => {
+    it('should initialize streak on first learning', () => {
+      const store = useLearningStore.getState();
+      store.startLearning('streak_test');
+      const { streak } = useLearningStore.getState();
+      expect(streak.current).toBe(1);
+      expect(streak.longest).toBe(1);
+      expect(streak.lastDate).toBeTruthy();
+    });
+
+    it('should not increment streak for same-day learning', () => {
+      const store = useLearningStore.getState();
+      store.startLearning('streak_same1');
+      store.startLearning('streak_same2');
+      const { streak } = useLearningStore.getState();
+      expect(streak.current).toBe(1);
+    });
+  });
+
   describe('initEdges + recommended', () => {
     it('should compute recommended concepts based on prerequisites', () => {
       useLearningStore.setState({

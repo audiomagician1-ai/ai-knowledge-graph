@@ -252,14 +252,34 @@ export async function fullSync(): Promise<{
     allHistory.sort((a, b) => a.timestamp - b.timestamp);
     const mergedHistory = allHistory.slice(-500);
 
-    // 3. Upload merged progress to cloud (batched to reduce latency)
+    // 3. Upload merged progress to cloud (M-04 fix: batch upsert instead of N individual requests)
     const progressEntries = Object.values(merged);
-    const BATCH_SIZE = 10;
+    const uid = getUserId();
     let uploadedProgress = 0;
-    for (let i = 0; i < progressEntries.length; i += BATCH_SIZE) {
-      const batch = progressEntries.slice(i, i + BATCH_SIZE);
-      await Promise.allSettled(batch.map(p => syncProgressToCloud(p)));
-      uploadedProgress += batch.length;
+    if (uid && progressEntries.length > 0) {
+      const BATCH_SIZE = 50;
+      for (let i = 0; i < progressEntries.length; i += BATCH_SIZE) {
+        const batch = progressEntries.slice(i, i + BATCH_SIZE);
+        const rows = batch.map(p => ({
+          user_id: uid,
+          concept_id: p.concept_id,
+          status: p.status,
+          mastery_level: (p.mastery_score || 0) / 100,
+          total_sessions: p.sessions || 0,
+          total_time_sec: p.total_time_sec || 0,
+          feynman_score: p.last_score ? p.last_score / 100 : null,
+          last_feynman_at: p.mastered_at ? new Date(p.mastered_at).toISOString() : null,
+          updated_at: new Date(p.last_learn_at || Date.now()).toISOString(),
+        }));
+        try {
+          const { error } = await supabase.from('user_concept_status')
+            .upsert(rows, { onConflict: 'user_id,concept_id' });
+          if (error) console.warn('[sync] batch upsert failed:', error.message);
+        } catch (err) {
+          console.warn('[sync] batch upsert error:', err);
+        }
+        uploadedProgress += batch.length;
+      }
     }
 
     // Upload only history entries newer than last sync (avoid duplicates)

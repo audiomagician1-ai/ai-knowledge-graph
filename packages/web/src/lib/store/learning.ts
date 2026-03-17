@@ -185,23 +185,35 @@ function saveStreak(streak: StreakData) {
   } catch { /* ignore */ }
 }
 
-/** Get today's date string in local timezone (YYYY-MM-DD) */
-function todayStr(): string {
-  const d = new Date();
+/** Format a Date object to YYYY-MM-DD in local timezone */
+function formatDate(d: Date): string {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
   return `${y}-${m}-${day}`;
 }
 
+/** Get today's date string in local timezone (YYYY-MM-DD) */
+function todayStr(): string {
+  return formatDate(new Date());
+}
+
 /** Get yesterday's date string in local timezone */
 function yesterdayStr(): string {
   const d = new Date();
   d.setDate(d.getDate() - 1);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${day}`;
+  return formatDate(d);
+}
+
+/**
+ * M-09 fix: Compute today + yesterday from a single fixed timestamp.
+ * Prevents cross-midnight race where todayStr() and yesterdayStr() span different days.
+ */
+function getStreakDates(): { today: string; yesterday: string } {
+  const now = new Date();
+  const today = formatDate(now);
+  const yd = new Date(now.getTime() - 86400_000);
+  return { today, yesterday: formatDate(yd) };
 }
 
 // ========================================
@@ -281,7 +293,8 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     const { progress, streak } = get();
     const existing = progress[conceptId];
     const now = Date.now();
-    const today = todayStr();
+    // M-09 fix: Use single fixed timestamp for streak dates (prevents cross-midnight race)
+    const { today, yesterday } = getStreakDates();
 
     const updated: ConceptProgress = existing
       ? { ...existing, status: existing.status === 'mastered' ? 'mastered' : 'learning', sessions: existing.sessions + 1, last_learn_at: now }
@@ -293,7 +306,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     // Update streak
     let newStreak = { ...streak };
     if (streak.lastDate !== today) {
-      if (streak.lastDate === yesterdayStr()) {
+      if (streak.lastDate === yesterday) {
         newStreak.current += 1;
       } else {
         newStreak.current = 1;

@@ -109,6 +109,9 @@ async def sync_from_frontend(req: SyncProgressRequest):
     synced_progress = 0
     synced_history = 0
 
+    # m-11 fix: Whitelist valid status values to prevent arbitrary status injection
+    _valid_statuses = {'not_started', 'learning', 'mastered'}
+
     # Sync progress
     for concept_id, data in req.progress.items():
         if not concept_id or not isinstance(concept_id, str) or len(concept_id) > 200:
@@ -116,9 +119,11 @@ async def sync_from_frontend(req: SyncProgressRequest):
         existing = get_progress(concept_id)
         # Only sync if backend doesn't have it or frontend has newer data
         if not existing or (data.get('last_learn_at', 0) > (existing.get('last_learn_at') or 0)):
+            raw_status = data.get('status', 'not_started')
+            safe_status = raw_status if raw_status in _valid_statuses else 'not_started'
             upsert_progress(
                 concept_id,
-                status=data.get('status', 'not_started'),
+                status=safe_status,
                 mastery_score=data.get('mastery_score', 0),
                 last_score=data.get('last_score'),
                 sessions=data.get('sessions', 0),

@@ -126,3 +126,30 @@ class TestLearningEndpoints:
         data = res.json()
         assert "recommendations" in data
         assert isinstance(data["recommendations"], list)
+
+    def test_sync_status_whitelist(self):
+        """m-11: Invalid status values should be normalized to 'not_started'."""
+        res = client.post("/api/learning/sync", json={
+            "progress": {
+                "wl_valid": {"status": "mastered", "mastery_score": 90, "sessions": 1, "last_learn_at": 9999999999},
+                "wl_invalid": {"status": "hacked", "mastery_score": 100, "sessions": 1, "last_learn_at": 9999999999},
+                "wl_missing": {"mastery_score": 50, "sessions": 1, "last_learn_at": 9999999999},
+            }
+        })
+        assert res.status_code == 200
+
+        # Valid status should be preserved
+        from db.sqlite_client import get_progress
+        valid = get_progress("wl_valid")
+        assert valid is not None
+        assert valid["status"] == "mastered"
+
+        # Invalid status should be normalized to 'not_started'
+        invalid = get_progress("wl_invalid")
+        assert invalid is not None
+        assert invalid["status"] == "not_started"
+
+        # Missing status should default to 'not_started'
+        missing = get_progress("wl_missing")
+        assert missing is not None
+        assert missing["status"] == "not_started"

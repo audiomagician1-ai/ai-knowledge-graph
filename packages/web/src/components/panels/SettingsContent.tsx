@@ -250,7 +250,7 @@ export function SettingsContent() {
           };
           const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
           const url = URL.createObjectURL(blob); const a = document.createElement('a');
-          a.href = url; a.download = `akg-data-${new Date().toISOString().slice(0, 10)}.json`; a.click(); URL.revokeObjectURL(url);
+          a.href = url; a.download = `akg-data-${new Date().toISOString().slice(0, 10)}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url), 10_000);
         }} className="btn-ghost flex-1 flex items-center justify-center gap-2" style={{ borderRadius: 10, padding: '12px 0', fontSize: 13 }}>
           <Download size={14} /> 导出
         </button>

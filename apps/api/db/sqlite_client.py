@@ -195,25 +195,34 @@ def upsert_progress(concept_id: str, **kwargs) -> dict:
 
 
 def start_learning(concept_id: str) -> dict:
-    """Mark concept as learning, increment session count."""
+    """Mark concept as learning, increment session count.
+    C-05 fix: Atomic read-modify-write in a single connection to prevent TOCTOU race.
+    """
     now = time.time()
-    existing = get_progress(concept_id)
-    if existing:
-        new_status = 'mastered' if existing['status'] == 'mastered' else 'learning'
-        return upsert_progress(
-            concept_id,
-            status=new_status,
-            sessions=existing['sessions'] + 1,
-            last_learn_at=now,
-        )
-    else:
-        return upsert_progress(
-            concept_id,
-            status='learning',
-            mastery_score=0,
-            sessions=1,
-            last_learn_at=now,
-        )
+    now_iso = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(now))
+    with get_db() as conn:
+        row = conn.execute(
+            "SELECT * FROM concept_progress WHERE concept_id = ?", (concept_id,)
+        ).fetchone()
+        if row:
+            cols = [d[0] for d in conn.execute("SELECT * FROM concept_progress LIMIT 0").description]
+            existing = dict(zip(cols, row))
+            new_status = 'mastered' if existing['status'] == 'mastered' else 'learning'
+            conn.execute(
+                """UPDATE concept_progress
+                   SET status = ?, sessions = sessions + 1, last_learn_at = ?, updated_at = ?
+                   WHERE concept_id = ?""",
+                (new_status, now, now_iso, concept_id),
+            )
+        else:
+            conn.execute(
+                """INSERT INTO concept_progress
+                   (concept_id, status, mastery_score, last_score, sessions, total_time_sec,
+                    mastered_at, last_learn_at, created_at, updated_at)
+                   VALUES (?, 'learning', 0, NULL, 1, 0, NULL, ?, ?, ?)""",
+                (concept_id, now, now_iso, now_iso),
+            )
+    return get_progress(concept_id) or {}
 
 
 def record_assessment(concept_id: str, concept_name: str, score: float, mastered: bool) -> dict:

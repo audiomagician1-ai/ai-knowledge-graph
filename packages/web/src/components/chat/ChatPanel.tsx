@@ -8,7 +8,7 @@ import { ChoiceButtons } from './ChoiceButtons';
 import { useCountUp } from '@/lib/hooks/useCountUp';
 import {
   Send, BarChart3, Brain, RotateCcw, Zap, Play,
-  Trophy, History, Trash2, MessageSquare, X, BookOpen,
+  Trophy, History, Trash2, MessageSquare, X,
 } from 'lucide-react';
 
 interface ChatPanelProps {
@@ -35,11 +35,14 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   const isUserTyping = input.length > 0;
   const { progress, startLearning, recordAssessment, newlyUnlockedIds, clearNewlyUnlocked } = useLearningStore();
   const [showCelebration, setShowCelebration] = useState(false);
+  // C-01 fix: prevent duplicate recordAssessment calls (same guard as LearnPage)
+  const recordedConvRef = useRef<string | null>(null);
 
   // When concept changes → reset to idle (show history + start button)
   useEffect(() => {
     if (conceptId && conceptId !== prevConceptRef.current) {
       prevConceptRef.current = conceptId;
+      recordedConvRef.current = null;
       reset();
       setView('idle');
       setInput('');
@@ -49,7 +52,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
   // Record assessment + show celebration if mastered
   useEffect(() => {
-    if (assessment && conceptId) {
+    if (assessment && conceptId && conversationId && recordedConvRef.current !== conversationId) {
+      recordedConvRef.current = conversationId;
       recordAssessment(conceptId, conceptName || conceptId, assessment.overall_score, assessment.mastered);
       if (assessment.mastered) {
         setShowCelebration(true);
@@ -58,7 +62,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand actions are stable refs
-  }, [assessment]);
+  }, [assessment, conversationId]);
 
   // Auto-scroll
   useEffect(() => {

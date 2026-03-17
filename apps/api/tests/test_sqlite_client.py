@@ -85,6 +85,28 @@ class TestConceptProgress:
         all_p = sc.get_all_progress()
         assert len(all_p) == 2
 
+    def test_start_learning_atomic_sessions(self):
+        """C-05: start_learning should atomically increment sessions in a single connection."""
+        # First call: create
+        r1 = sc.start_learning("atomic_test")
+        assert r1["sessions"] == 1
+        assert r1["status"] == "learning"
+        # Second call: increment
+        r2 = sc.start_learning("atomic_test")
+        assert r2["sessions"] == 2
+        # Third call: increment again
+        r3 = sc.start_learning("atomic_test")
+        assert r3["sessions"] == 3
+
+    def test_start_learning_preserves_mastery_score(self):
+        """start_learning on existing concept should not reset mastery_score."""
+        sc.upsert_progress("preserve_test", status="learning", mastery_score=60, sessions=2)
+        result = sc.start_learning("preserve_test")
+        assert result["sessions"] == 3
+        assert result["status"] == "learning"
+        # mastery_score should not be reset
+        assert result["mastery_score"] == 60
+
 
 class TestLearningHistory:
     def setup_method(self):
