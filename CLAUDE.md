@@ -242,6 +242,15 @@ data/seed/         — 种子图谱数据
   - REVIEW: ChatPanel/DashboardPage/DashboardContent/dialogue.ts/learning.ts/supabase-sync.ts/auth.ts/main.py 全模块审查通过
   - TOTAL: 54 tests (25 FE + 29 BE) 全通过
 
+- ✅ **Issue #2 修复: OpenRouter model ID 格式校验 (2026-03-18, a585803)**:
+  - FE: settings.ts 新增 `validateModelId()` — OpenRouter provider时检测model名缺少org/前缀并显示警告 [#2]
+  - FE: settings.ts 新增 `getDefaultModel()` — 集中管理各provider默认模型名(DRY, 消除3处重复)
+  - FE: PROVIDER_INFO 增加 `modelHint` 字段 — OpenRouter模型输入框下方显示"格式: org/model"提示
+  - FE: SettingsPage.tsx `handleTestConnection` 修复默认模型从硬编码`gpt-4o`改为`getDefaultModel(provider)`
+  - FE: SettingsContent.tsx + direct-llm.ts 同步修复(getDefaultModel + 格式提示 + 实时校验)
+  - TEST: +9 新测试(validateModelId 5 + getDefaultModel 3 + modelHint 1)
+  - TOTAL: 63 tests (34 FE + 29 BE) 全通过
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -345,7 +354,7 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (25 tests: learning store 12 + settings store 13)
+cd packages/web && npx vitest run        # 前端测试 ✅ (34 tests: learning store 12 + settings store 22)
 cd apps/api && python -m pytest          # 后端测试 ✅ (29 tests: health 1 + sqlite_client 14 + learning API 14)
 ```
 
