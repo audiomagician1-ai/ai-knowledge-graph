@@ -186,12 +186,12 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   /* ─── IDLE VIEW: per-node progress + history + start button ─── */
   if (view === 'idle') {
     return (
-      <div className="flex flex-col h-full">
-        <div className="flex-1 overflow-y-auto px-8 py-8 space-y-8">
+      <div className="flex flex-col h-full" style={{ backgroundColor: '#eceae6' }}>
+        <div className="flex-1 overflow-y-auto" style={{ padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           {/* Per-node mastery card */}
           <div
-            className="rounded-xl p-7"
-            style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
+            className="rounded-xl"
+            style={{ backgroundColor: '#ffffff', padding: 24, border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
           >
             <div className="flex items-center gap-4 mb-6">
                 <div
@@ -225,13 +225,13 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
             {/* Per-node stats */}
             <div className="grid grid-cols-3 gap-4">
-              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: 'var(--color-surface-3)' }}>
+              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: '#f5f5f3' }}>
                 <div className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
                   {nodeProgress?.sessions || 0}
                 </div>
                 <div className="text-sm mt-2" style={{ color: 'var(--color-text-tertiary)' }}>学习次数</div>
               </div>
-              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: 'var(--color-surface-3)' }}>
+              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: '#f5f5f3' }}>
                 <div className="text-2xl font-bold" style={{
                   color: nodeProgress?.mastery_score
                     ? (nodeProgress.mastery_score >= 75 ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)')
@@ -241,7 +241,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                 </div>
                 <div className="text-sm mt-2" style={{ color: 'var(--color-text-tertiary)' }}>最高分</div>
               </div>
-              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: 'var(--color-surface-3)' }}>
+              <div className="text-center rounded-xl px-3 py-5" style={{ backgroundColor: '#f5f5f3' }}>
                 <div className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
                   {conceptConvHistory.length}
                 </div>
@@ -271,7 +271,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                   <div
                     key={conv.conversationId}
                     className="flex items-center gap-4 rounded-xl px-5 py-4 cursor-pointer transition-all"
-                    style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
+                    style={{ backgroundColor: '#ffffff', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
                     onClick={() => { loadSavedConversation(conv.conversationId); setView('chat'); }}
                     onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--color-border-accent)'; }}
                     onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--color-border)'; }}
@@ -299,7 +299,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
         </div>
 
         {/* Start learning button */}
-        <div className="shrink-0 px-8 py-7" style={{ borderTop: '1px solid var(--color-border)' }}>
+        <div className="shrink-0" style={{ padding: '20px 24px', borderTop: '1px solid rgba(0,0,0,0.08)', backgroundColor: '#ffffff' }}>
           <button
             onClick={handleStartLearning}
             className="btn-primary w-full flex items-center justify-center gap-3 py-4 text-lg font-bold"
@@ -320,8 +320,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
     <div className="flex flex-col h-full relative">
       {/* Chat header */}
       <div
-        className="flex items-center gap-3 px-8 py-5 shrink-0"
-        style={{ borderBottom: '1px solid var(--color-border)' }}
+        className="flex items-center gap-3 shrink-0"
+        style={{ padding: '16px 24px', borderBottom: '1px solid rgba(0,0,0,0.08)', backgroundColor: '#ffffff' }}
       >
             <Brain size={18} style={{ color: 'var(--color-accent-primary)' }} />
         <span className="text-base font-bold flex-1 truncate" style={{ color: 'var(--color-text-primary)' }}>
@@ -353,7 +353,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
       {/* Messages area */}
       <div className="flex-1 overflow-y-auto" style={{ backgroundColor: '#eceae6' }}>
-        <div style={{ padding: '32px 28px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div style={{ padding: '24px 24px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           {/* Loading indicator while LLM prepares opening content */}
           {isInitializing && (
             <div className="flex justify-start animate-fade-in">
@@ -433,7 +433,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
       </div>
 
       {/* Input area */}
-      <div className="shrink-0 px-8 py-6" style={{ borderTop: '1px solid var(--color-border)' }}>
+      <div className="shrink-0" style={{ padding: '20px 24px', borderTop: '1px solid rgba(0,0,0,0.08)', backgroundColor: '#ffffff' }}>
         {assessment ? (
           <div className="flex gap-3">
             <button
@@ -464,8 +464,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
             <div
               className="flex items-end gap-3 rounded-xl px-5 py-4"
               style={{
-                backgroundColor: 'var(--color-surface-2)',
-                border: '1px solid rgba(0, 0, 0, 0.12)',
+                backgroundColor: '#f5f5f3',
+                border: '1px solid rgba(0, 0, 0, 0.1)',
               }}
             >
               <textarea
