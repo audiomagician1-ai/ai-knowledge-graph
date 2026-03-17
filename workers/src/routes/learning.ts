@@ -108,7 +108,7 @@ app.post('/assess', async (c) => {
 
 /** GET /learning/history */
 app.get('/history', async (c) => {
-  const limit = parseInt(c.req.query('limit') || '100');
+  const limit = Math.min(parseInt(c.req.query('limit') || '100'), 1000);
   const db = c.env.DB;
   const { results } = await db.prepare('SELECT * FROM learning_history ORDER BY timestamp DESC LIMIT ?').bind(limit).all();
   return c.json(results || []);
@@ -140,7 +140,24 @@ app.post('/sync', async (c) => {
   let syncedProgress = 0;
   let syncedHistory = 0;
 
-  for (const [conceptId, data] of Object.entries(progress)) {
+  // Input validation (matching FastAPI backend limits)
+  const VALID_STATUSES = new Set(['not_started', 'learning', 'mastered', 'available', 'locked', 'reviewing']);
+  const progressEntries = Object.entries(progress || {});
+  if (progressEntries.length > 500) {
+    return c.json({ error: 'progress exceeds 500 entries limit' }, 400);
+  }
+  const historyEntries = history || [];
+  if (historyEntries.length > 1000) {
+    return c.json({ error: 'history exceeds 1000 entries limit' }, 400);
+  }
+
+  for (const [conceptId, data] of progressEntries) {
+    // Status whitelist validation
+    const status = VALID_STATUSES.has(data.status) ? data.status : 'not_started';
+    // Score clamping to [0, 100]
+    const masteryScore = Math.max(0, Math.min(100, Number(data.mastery_score) || 0));
+    const lastScore = data.last_score != null ? Math.max(0, Math.min(100, Number(data.last_score))) : null;
+
     await db.prepare(`
       INSERT INTO concept_progress (concept_id, status, mastery_score, last_score, sessions, total_time_sec, mastered_at, last_learn_at, created_at, updated_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -151,16 +168,17 @@ app.post('/sync', async (c) => {
         last_learn_at = MAX(concept_progress.last_learn_at, excluded.last_learn_at),
         updated_at = ?
     `).bind(
-      conceptId, data.status || 'not_started', data.mastery_score || 0, data.last_score || null,
+      conceptId, status, masteryScore, lastScore,
       data.sessions || 0, data.total_time_sec || 0, data.mastered_at || null, data.last_learn_at || 0,
       now, now, now,
     ).run();
     syncedProgress++;
   }
 
-  for (const entry of (history || [])) {
+  for (const entry of historyEntries) {
+    const score = Math.max(0, Math.min(100, Number(entry.score) || 0));
     await db.prepare('INSERT INTO learning_history (concept_id, concept_name, score, mastered, timestamp) VALUES (?, ?, ?, ?, ?)')
-      .bind(entry.concept_id, entry.concept_name || entry.concept_id, entry.score || 0, entry.mastered ? 1 : 0, entry.timestamp || now).run();
+      .bind(entry.concept_id, entry.concept_name || entry.concept_id, score, entry.mastered ? 1 : 0, entry.timestamp || now).run();
     syncedHistory++;
   }
 
@@ -174,7 +192,7 @@ app.post('/sync', async (c) => {
 
 /** GET /learning/recommend */
 app.get('/recommend', async (c) => {
-  const topK = parseInt(c.req.query('top_k') || '5');
+  const topK = Math.min(parseInt(c.req.query('top_k') || '5'), 50);
   const db = c.env.DB;
 
   const { results: allProgress } = await db.prepare('SELECT * FROM concept_progress').all();

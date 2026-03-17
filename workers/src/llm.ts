@@ -4,6 +4,42 @@ const OPENROUTER_BASE = 'https://openrouter.ai/api/v1';
 const OPENAI_BASE = 'https://api.openai.com/v1';
 const DEEPSEEK_BASE = 'https://api.deepseek.com/v1';
 
+/** SSRF protection — block private/internal URLs (mirrors FastAPI _validate_base_url) */
+function validateBaseUrl(url: string): void {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    throw new Error(`Invalid base URL: ${url}`);
+  }
+
+  // Scheme check
+  if (!['http:', 'https:'].includes(parsed.protocol)) {
+    throw new Error(`Unsupported scheme: ${parsed.protocol}`);
+  }
+
+  const hostname = parsed.hostname.toLowerCase();
+
+  // Block localhost and loopback
+  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1') {
+    throw new Error('Localhost not allowed');
+  }
+
+  // Block cloud metadata endpoints
+  if (hostname === 'metadata.google.internal' || hostname === '169.254.169.254') {
+    throw new Error('Metadata endpoint not allowed');
+  }
+
+  // Block private IP ranges (10.x, 172.16-31.x, 192.168.x)
+  const ipMatch = hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
+  if (ipMatch) {
+    const [, a, b] = ipMatch.map(Number);
+    if (a === 10 || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168)) {
+      throw new Error('Private IP not allowed');
+    }
+  }
+}
+
 /** Normalize well-known provider URLs */
 function normalizeProviderUrl(url: string): string {
   if (/^https:\/\/openrouter\.ai(\/.*)?$/i.test(url)) {
@@ -30,7 +66,9 @@ function resolveEndpoint(
     const model = userConfig.model || 'gpt-4o';
 
     if (userConfig.base_url) {
-      return { baseUrl: normalizeProviderUrl(userConfig.base_url.replace(/\/$/, '')), apiKey: key, model };
+      const cleaned = normalizeProviderUrl(userConfig.base_url.replace(/\/$/, ''));
+      validateBaseUrl(cleaned);
+      return { baseUrl: cleaned, apiKey: key, model };
     }
     switch (userConfig.provider) {
       case 'deepseek':

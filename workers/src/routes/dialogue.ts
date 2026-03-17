@@ -71,6 +71,7 @@ function getOpening(concept: any): string {
 /** POST /dialogue/conversations — create new conversation */
 app.post('/conversations', async (c) => {
   const { concept_id } = await c.req.json<{ concept_id: string }>();
+  if (!concept_id || concept_id.length > 200) return c.json({ detail: 'Invalid concept_id' }, 422);
   const concept = getConceptInfo(concept_id);
   if (!concept) return c.json({ detail: `概念不存在: ${concept_id}` }, 404);
 
@@ -97,6 +98,8 @@ app.post('/conversations', async (c) => {
 /** POST /dialogue/chat — SSE streaming chat */
 app.post('/chat', async (c) => {
   const { conversation_id, message } = await c.req.json<{ conversation_id: string; message: string }>();
+  if (!conversation_id) return c.json({ detail: 'conversation_id required' }, 422);
+  if (!message || message.length > 10000) return c.json({ detail: 'message required (max 10000 chars)' }, 422);
   const db = c.env.DB;
 
   const conv = await db.prepare('SELECT * FROM conversations WHERE id = ?').bind(conversation_id).first<any>();
@@ -129,11 +132,14 @@ app.post('/chat', async (c) => {
     });
   }
 
-  // Build message history
+  // Build message history (sliding window: keep last 40 messages, matching FastAPI backend)
+  const MAX_MESSAGES = 40;
   const { results: dbMessages } = await db.prepare('SELECT role, content FROM messages WHERE conversation_id = ? ORDER BY created_at').bind(conversation_id).all();
+  const msgList = (dbMessages || []).map((m: any) => ({ role: m.role, content: m.content }));
+  const windowedMessages = msgList.length > MAX_MESSAGES ? msgList.slice(-MAX_MESSAGES) : msgList;
   const allMessages = [
     { role: 'system', content: conv.system_prompt },
-    ...(dbMessages || []).map((m: any) => ({ role: m.role, content: m.content })),
+    ...windowedMessages,
   ];
 
   // Count user turns for suggest_assess
