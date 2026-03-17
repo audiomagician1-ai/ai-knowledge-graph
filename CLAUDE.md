@@ -394,6 +394,19 @@ data/seed/         — 种子图谱数据
   - VERIFY: 218 tests (99 FE + 119 BE) 全通过, tsc 0 errors, build 3.15s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 仅1 minor修复
 
+- ✅ **第二十六轮深度巡逻审查+Prompt Parser测试补全 (2026-03-18, a8f34f5)**:
+  - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race/demotion protection/syncWithBackend local-first) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment) + supabase-sync.ts(concurrency guard/batch upsert/incremental history sync/status whitelist) + auth.ts(subscription cleanup/callback dedup) + settings.ts(validateModelId/getDefaultModel/probeCORS) + toast.ts(auto-dismiss/counter uniqueness) + graph.ts(simple setters)
+    - BE: feynman_system.py(parse_ai_response/choices block regex+trailing JSON fallback/_validate_choices min2 max4/text cap 60/type whitelist/_parse_choices_json single-quote+trailing-comma cleanup) + socratic.py(RAG loading/YAML frontmatter strip/3000 char truncation/build_system_prompt graph context/opening fallback) + dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + evaluator.py(O(n) format_dialogue/consistent mastered/parse_json fallback) + main.py(path traversal/CORS/headless) + sqlite_client.py(atomic ops/mastered demotion protection/REAL timestamps) + llm/router.py(SSRF try/except/else/retry/double-check lock)
+    - SECURITY: No eval/exec/innerHTML/dangerouslySetInnerHTML across entire codebase. socratic.py RAG path uses seed-data concept IDs (trusted). No TODO/FIXME in production code (only in future-phase stubs).
+  - TEST: +28 BE新测试(prompt parser: parse_ai_response 11 + _parse_choices_json 5 + _try_trailing_json 4 + _validate_choices 8)
+    - parse_ai_response: 空串/None/空白→默认 + 有效choices块 + 空白choices块 + 尾部JSON fallback + 无choices→默认 + 畸形JSON→默认 + 文字60字截断 + 最多4选项 + 无效type默认explore
+    - _parse_choices_json: 有效数组/单引号修复/尾逗号修复/无效JSON→空/对象非数组→空
+    - _try_trailing_json: 尾部数组提取/无括号/无type字段忽略/单项数组拒绝
+    - _validate_choices: 空列表/None→默认 + 单项→默认 + 4种type保留 + 自动分配ID/保留ID + 非dict跳过 + 空text跳过
+  - VERIFY: 246 tests (99 FE + 147 BE) 全通过, tsc 0 errors, build 3.40s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续10轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -498,7 +511,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (99 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24 + direct-llm 19)
-cd apps/api && python -m pytest          # 后端测试 ✅ (119 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41)
+cd apps/api && python -m pytest          # 后端测试 ✅ (147 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28)
 ```
 
 ### 提交规范
