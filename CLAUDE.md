@@ -407,6 +407,13 @@ data/seed/         — 种子图谱数据
   - VERIFY: 246 tests (99 FE + 147 BE) 全通过, tsc 0 errors, build 3.40s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续10轮零issues审查**
 
+- ✅ **第二十七轮深度巡逻审查 (2026-03-18)**:
+  - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge/getStreakDates) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment/pruneDirectConversations/content-type guard/message cap) + supabase-sync.ts(concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + auth.ts(subscription cleanup/callback dedup/OAuth redirect/displayName fallback chain)
+    - BE: socratic.py(RAG loading/YAML frontmatter strip/3000 char truncation/build_system_prompt graph context/opening fallback) + graph.py(double-check locking/BFS depth limit/path traversal protection/thread-safe RAG loading/normcase) + dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless webbrowser/DEBUG docs) + redis_client.py(lazy reconnect with lock+cooldown/old client cleanup/graceful degradation) + config.py(ConfigDict/no hardcoded secrets) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + llm/router.py(SSRF try/except/else pattern/retry logic/double-check lock)
+  - VERIFY: 246 tests (99 FE + 147 BE) 全通过, tsc 0 errors, build 3.50s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续11轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
