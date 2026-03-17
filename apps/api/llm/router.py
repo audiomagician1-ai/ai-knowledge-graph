@@ -30,10 +30,11 @@ def _validate_base_url(url: str) -> str:
         raise ValueError(f"Blocked host: {hostname}")
     try:
         ip = ipaddress.ip_address(hostname)
-        if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved:
-            raise ValueError(f"Private/reserved IP not allowed: {hostname}")
     except ValueError:
         pass  # Not a raw IP, hostname is fine
+    else:
+        if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved:
+            raise ValueError(f"Private/reserved IP not allowed: {hostname}")
     return url.rstrip("/")
 
 logger = logging.getLogger(__name__)
