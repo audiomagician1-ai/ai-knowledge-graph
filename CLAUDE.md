@@ -619,7 +619,19 @@ data/seed/         — 种子图谱数据
      - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format_dialogue/consistent mastered/role labels) + main.py(path traversal/CORS/headless) + llm/router.py(SSRF try/except/else/retry)
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.25s, workers tsc 0 errors
-   - STATUS: 发现2个Medium(CORS credentials泄露+评估标签不一致)+1个minor(O(n²)截断)并修复, Workers与FastAPI一致性完善
+    - STATUS: 发现2个Medium(CORS credentials泄露+评估标签不一致)+1个minor(O(n²)截断)并修复, Workers与FastAPI一致性完善
+
+- ✅ **第四十六轮深度巡逻审查+Workers安全修复 (2026-03-18, 025f597)**:
+   - **FIX**: workers/src/index.ts CORS origin匹配从`origin.includes('localhost')`改为`new URL(origin).hostname === 'localhost'` — 旧逻辑对hostname做子串匹配, `evil-localhost.com`等恶意域名可绕过CORS保护。修复: 使用URL解析提取hostname后做精确匹配(localhost/127.0.0.1/::1)或安全后缀匹配(.pages.dev/.workers.dev) [M-01]
+   - **FIX**: workers/src/routes/dialogue.ts `parseAssessmentJSON`前两个分支(直接JSON解析/```json代码块提取)返回原始LLM输出, 缺少分数clamping(0-100)/mastered重算/缺失字段填充 — 仅第三个分支(花括号提取)有校验。修复: 提取`validateAssessment()`函数统一应用到所有3个解析分支, 与FastAPI evaluator.py validate_result一致 [M-02]
+   - REVIEW: Workers全5模块+生产代码20+模块深度审查:
+     - Workers: index.ts(CORS URL-parsed hostname match/no substring bypass) + llm.ts(SSRF validateBaseUrl) + dialogue.ts(SSE chunk-aware transform/40-message window/input validation/8000 char O(n) truncation/validateAssessment all branches) + learning.ts(mastered demotion protection/score clamping/status whitelist/sync input validation) + graph.ts(BFS depth limit)
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental sync)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format_dialogue/consistent mastered/role labels/validate_result) + main.py(path traversal/CORS exact origins/headless) + llm/router.py(SSRF try/except/else/retry)
+   - SECURITY: 全项目无eval/exec/innerHTML/dangerouslySetInnerHTML, 无TODO/FIXME in production code, FastAPI CORS用精确origin列表(安全)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.07s, workers tsc 0 errors
+   - STATUS: 发现2个Medium Workers安全/一致性问题并修复, Workers CORS保护和评估校验提升到与FastAPI同等水平
 
 ### EXE 打包规范
 ```
