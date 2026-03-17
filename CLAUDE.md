@@ -293,6 +293,13 @@ data/seed/         — 种子图谱数据
   - VERIFY: 101 tests (39 FE + 62 BE) 全通过, tsc 0 errors, build 3.24s
   - STATUS: 代码质量稳定, 0 open GitHub issues, 无待修复bug
 
+- ✅ **第十四轮深度巡逻审查 (2026-03-18, 0e12885)**:
+  - REVIEW: 18模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoicesFromContent/parseAssessmentJSON) + supabase-sync.ts(concurrency guard/batch upsert/incremental history sync/status whitelist) + auth.ts(subscription cleanup/callback dedup/OAuth redirect) + settings.ts(validateModelId/getDefaultModel/probeCORS retry/generateSelfContainedBat) + LearnPage.tsx(recordedRef reset on retry/initializing indicator/error auto-dismiss) + ChatPanel.tsx(recordedConvRef per-conversationId dedup/concept change reset/celebration timer cleanup) + graph-api.ts(encodeURIComponent) + text.ts(stripChoicesBlock)
+    - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks) + learning.py(Field validation/status whitelist/score clamping/sync input validation) + evaluator.py(O(n) format_dialogue/consistent mastered logic/parse_json fallback chain) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless webbrowser) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/conversation cleanup) + llm/router.py(SSRF prevention/retry logic/model tier resolution/httpx client lifecycle)
+  - VERIFY: 101 tests (39 FE + 62 BE) 全通过, tsc 0 errors, build 3.21s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, 连续2轮零issues审查
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
