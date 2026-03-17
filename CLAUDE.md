@@ -266,7 +266,8 @@ data/seed/         — 种子图谱数据
   - FE: 提取 `stripChoicesBlock` 到 `lib/utils/text.ts` 共享工具(消除LearnPage+ChatPanel重复代码) [m-01]
   - TEST: +5 新测试(stripChoicesBlock: 完整块/不完整块/无块/空串/空白修剪)
   - REVIEW: 13模块深度审查通过: dialogue.ts + learning.ts + direct-llm.ts + supabase-sync.ts + auth.ts + settings.ts + LearnPage.tsx + ChatPanel.tsx + DashboardContent.tsx + dialogue.py + learning.py + main.py + evaluator.py
-  - TOTAL: 68 tests (39 FE + 29 BE) 全通过, tsc 0 errors, build 3.42s
+  - TEST: +5 FE测试(stripChoicesBlock) + 17 BE测试(evaluator: validate_result 6 + parse_json 5 + fallback_evaluate 3 + format_dialogue 3)
+  - TOTAL: 85 tests (39 FE + 46 BE) 全通过, tsc 0 errors, build 3.42s
 
 ### EXE 打包规范
 ```
@@ -372,7 +373,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (39 tests: learning store 12 + settings store 22 + text utils 5)
-cd apps/api && python -m pytest          # 后端测试 ✅ (29 tests: health 1 + sqlite_client 14 + learning API 14)
+cd apps/api && python -m pytest          # 后端测试 ✅ (46 tests: health 1 + sqlite_client 14 + learning API 14 + evaluator 17)
 ```
 
 ### 提交规范
