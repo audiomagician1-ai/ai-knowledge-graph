@@ -607,7 +607,19 @@ data/seed/         — 种子图谱数据
      - Workers: llm.ts(SSRF validateBaseUrl) + dialogue.ts(SSE chunk-aware transform/40-message window/input validation/8000 char truncation/400 status) + learning.ts(mastered demotion protection/score clamping/status whitelist/sync input validation) + index.ts(CORS) + graph.ts(BFS depth limit)
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.15s, workers tsc 0 errors
-   - STATUS: 发现1个Critical(Workers mastered降级)+1个Medium(SSE丢chunk)+3个minor修复, Workers代码与FastAPI一致性进一步提升
+    - STATUS: 发现1个Critical(Workers mastered降级)+1个Medium(SSE丢chunk)+3个minor修复, Workers代码与FastAPI一致性进一步提升
+
+- ✅ **第四十五轮深度巡逻审查+Workers安全/一致性修复 (2026-03-18, b3fc6a9)**:
+   - **FIX**: workers/src/index.ts CORS origin函数对未知域名echo回原始origin — 结合`credentials:true`, 导致任意网站可携带credentials发送跨域请求(浏览器不会阻止)。修复: 未知origin返回空字符串(浏览器阻止CORS请求) [M-01]
+   - **FIX**: workers/src/routes/dialogue.ts `/assess`评估角色标签与FastAPI不一致 — Workers用"用户（老师）/AI（学生）", FastAPI evaluator.py用"用户（学习者）/AI（学习伙伴/老师）"。标签不一致会影响LLM评估准确性。修复: 统一为FastAPI标签 [M-02]
+   - **FIX**: workers/src/routes/dialogue.ts `/assess`对话截断`dialogueLines.unshift()`为O(n²) — 改为`push()+reverse()`实现O(n), 与FastAPI evaluator.py第六轮修复(m-08)一致 [m-01]
+   - REVIEW: Workers全5模块+生产代码20+模块深度审查:
+     - Workers: index.ts(CORS trusted-only origin/no wildcard+credentials) + llm.ts(SSRF validateBaseUrl/normalizeProviderUrl/resolveEndpoint) + dialogue.ts(SSE chunk-aware transform/40-message window/input validation/8000 char O(n) truncation/role labels aligned) + learning.ts(mastered demotion protection/score clamping/status whitelist/sync input validation/limit caps) + graph.ts(BFS depth limit/RAG metadata)
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental sync)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format_dialogue/consistent mastered/role labels) + main.py(path traversal/CORS/headless) + llm/router.py(SSRF try/except/else/retry)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.25s, workers tsc 0 errors
+   - STATUS: 发现2个Medium(CORS credentials泄露+评估标签不一致)+1个minor(O(n²)截断)并修复, Workers与FastAPI一致性完善
 
 ### EXE 打包规范
 ```
