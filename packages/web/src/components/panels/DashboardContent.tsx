@@ -10,6 +10,7 @@ export function DashboardContent() {
   useEffect(() => {
     refreshStreak();
     if (graphData) computeStats(graphData.nodes.length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand stable refs
   }, [graphData]);
 
   // Build recent activity from progress entries (sorted by last_learn_at)
