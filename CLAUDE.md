@@ -1,4 +1,4 @@
-# CLAUDE.md — AI知识图谱 项目大脑
+﻿# CLAUDE.md — AI知识图谱 项目大脑
 
 > 每次新对话或 context 压缩后，必须首先读取本文件。
 > 本文件是项目级持久记忆，不受上下文压缩影响。
@@ -236,6 +236,11 @@ data/seed/         — 种子图谱数据
   - FE: LearnPage.tsx + ChatPanel.tsx — isInitializing 时显示 bounce 动画 loading 气泡 + "正在准备学习内容…" 文案, 解决首次进入学习 5-10 秒无反馈问题
 - ✅ **Dashboard"最近学习"修复 (2026-03-18, e6c8958)**:
   - FE: DashboardContent.tsx + DashboardPage.tsx — "最近学习"改为基于 progress entries (last_learn_at排序), 而非仅显示评估记录(history); 未评估节点显示"学习中"标签, 已评估显示分数; 点击跳转到 /learn/:id
+
+- ✅ **第八轮巡逻审查+修复 (2026-03-17, 5861592)**:
+  - FE: LearnPage.tsx “再来一轮”按钮添加 `recordedRef.current = false` 重置 (修复同概念多轮学习时评估不记录的bug) [#1]
+  - REVIEW: ChatPanel/DashboardPage/DashboardContent/dialogue.ts/learning.ts/supabase-sync.ts/auth.ts/main.py 全模块审查通过
+  - TOTAL: 54 tests (25 FE + 29 BE) 全通过
 
 ### EXE 打包规范
 ```
