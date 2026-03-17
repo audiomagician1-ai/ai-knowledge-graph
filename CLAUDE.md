@@ -434,6 +434,17 @@ data/seed/         — 种子图谱数据
   - VERIFY: 270 tests (99 FE + 171 BE) 全通过, tsc 0 errors, build 3.17s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续13轮零issues审查**
 
+- ✅ **第三十轮深度巡逻审查+toast/graph store测试补全 (2026-03-18, 7c31f1d)**:
+  - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment) + supabase-sync.ts(concurrency guard/batch upsert/incremental history sync/status whitelist) + auth.ts(subscription cleanup/callback dedup) + settings.ts(validateModelId/getDefaultModel/probeCORS) + toast.ts(auto-dismiss/counter uniqueness/shorthand helpers) + graph.ts(simple setters/loading clear) + graph-api.ts(encodeURIComponent) + dialogue-api.ts(signal passthrough) + learning-api.ts(fire-and-forget error handling) + text.ts(stripChoicesBlock)
+    - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks/input validation) + learning.py(Field validation/status whitelist/score clamping/sync input validation) + evaluator.py(O(n) format_dialogue/consistent mastered logic/parse_json fallback chain) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + llm/router.py(SSRF try/except/else pattern/retry logic/double-check lock) + redis_client.py(lazy reconnect with lock+cooldown/graceful degradation) + neo4j_client.py(explicit read/write transactions/driver None check) + config.py(ConfigDict/no hardcoded secrets)
+  - TEST: +22 FE新测试:
+    - toast store 12测试: addToast(唯一ID/多toast/默认3秒自动dismiss/自定义duration/duration=0永久/唯一ID验证) + removeToast(指定删除/不存在ID无效) + shorthand(success/error 5s/info/warning 4s)
+    - graph store 10测试: 初始状态(null checks/loading false) + setGraphData(设数据+清loading) + selectNode(设/清) + setActiveSubdomain(设/清) + setLoading(toggle) + setError(设error清loading/清error)
+  - GITHUB: 0 open issues, 2 closed (all resolved)
+  - VERIFY: 292 tests (121 FE + 171 BE) 全通过, tsc 0 errors, build 3.41s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续14轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -537,7 +548,7 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (99 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24 + direct-llm 19)
+cd packages/web && npx vitest run        # 前端测试 ✅ (121 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24 + direct-llm 19 + toast 12 + graph 10)
 cd apps/api && python -m pytest          # 后端测试 ✅ (171 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28 + socratic 24)
 ```
 
