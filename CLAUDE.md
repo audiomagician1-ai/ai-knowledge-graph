@@ -285,6 +285,14 @@ data/seed/         — 种子图谱数据
     - 校验: concept_id超长/message超长/is_choice标志
   - TOTAL: 101 tests (39 FE + 62 BE) 全通过
 
+- ✅ **第十三轮巡逻审查+修复 (2026-03-18, 3145e74)**:
+  - FE: DashboardContent.tsx + DashboardPage.tsx — 概念显示名使用图谱节点label(中文名)替代原始ID(英文连字符), 修复`replace(/_/g,' ')`对hyphen-ID无效的显示bug [m-01]
+  - REVIEW: 16模块深度审查通过(0 critical/0 major issues):
+    - FE: dialogue.ts(isInitializing/stale guards/abort cleanup) + learning.ts(localStorage验证/streak竞态/降级防护) + direct-llm.ts(滑动窗口/timeout/mastered一致) + supabase-sync.ts(并发保护/批量upsert/增量同步) + auth.ts(订阅清理/回调去重) + LearnPage.tsx(recordedRef/loading bubble) + ChatPanel.tsx(recordedConvRef/error auto-dismiss) + DashboardContent.tsx + DashboardPage.tsx + text.ts + settings.ts
+    - BE: dialogue.py(_busy try/finally/snapshot messages/double-check locking) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format/consistent mastered) + main.py(path traversal/wildcard+credentials) + test_dialogue_api.py(16 tests quality check)
+  - VERIFY: 101 tests (39 FE + 62 BE) 全通过, tsc 0 errors, build 3.24s
+  - STATUS: 代码质量稳定, 0 open GitHub issues, 无待修复bug
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -389,7 +397,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (39 tests: learning store 12 + settings store 22 + text utils 5)
-cd apps/api && python -m pytest          # 后端测试 ✅ (62 tests: health 1 + sqlite_client 14 + learning API 14 + evaluator 17 + dialogue API 16)
+cd apps/api && python -m pytest          # 后端测试 ✅ (62 tests: health 1 + sqlite_client 16 + learning API 12 + evaluator 17 + dialogue API 16)
 ```
 
 ### 提交规范
