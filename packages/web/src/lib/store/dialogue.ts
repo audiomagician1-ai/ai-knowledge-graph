@@ -47,6 +47,7 @@ interface DialogueState {
   messages: ChatMessage[];
   isStreaming: boolean;
   isAssessing: boolean;
+  isInitializing: boolean;
   suggestAssess: boolean;
   assessment: AssessmentResult | null;
   error: string | null;
@@ -158,6 +159,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
   messages: [],
   isStreaming: false,
   isAssessing: false,
+  isInitializing: false,
   suggestAssess: false,
   assessment: null,
   error: null,
@@ -176,6 +178,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       messages: [],
       isStreaming: false,
       isAssessing: false,
+      isInitializing: true,
       suggestAssess: false,
       assessment: null,
       error: null,
@@ -206,6 +209,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       // Simulate streaming for the opening message to give a smooth typing effect
       const openingMsgId = nextId();
       set({
+        isInitializing: false,
         conversationId: data.conversation_id,
         conceptName: data.concept_name,
         isMilestone: data.is_milestone || false,
@@ -259,7 +263,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         });
       }
     } catch (err) {
-      set({ error: err instanceof Error ? err.message : 'Unknown error' });
+      set({ isInitializing: false, error: err instanceof Error ? err.message : 'Unknown error' });
     }
   },
 
@@ -491,6 +495,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       messages: [],
       isStreaming: false,
       isAssessing: false,
+      isInitializing: false,
       suggestAssess: false,
       assessment: null,
       error: null,
@@ -512,6 +517,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       messages: conv.messages,
       isStreaming: false,
       isAssessing: false,
+      isInitializing: false,
       suggestAssess: false,
       assessment: conv.assessment,
       error: null,

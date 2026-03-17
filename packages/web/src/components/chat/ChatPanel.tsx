@@ -25,7 +25,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   const prevConceptRef = useRef<string | null>(null);
 
   const {
-    conversationId, messages, isStreaming, isAssessing, suggestAssess, assessment, error,
+    conversationId, messages, isStreaming, isAssessing, isInitializing, suggestAssess, assessment, error,
     currentChoices,
     startConversation, sendMessage, selectChoice, requestAssessment, reset,
     savedConversations, loadSavedConversation, deleteSavedConversation,
@@ -354,6 +354,33 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
       {/* Messages area */}
       <div className="flex-1 overflow-y-auto" style={{ backgroundColor: '#eceae6' }}>
         <div style={{ padding: '32px 28px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+          {/* Loading indicator while LLM prepares opening content */}
+          {isInitializing && (
+            <div className="flex justify-start animate-fade-in">
+              <div
+                style={{
+                  borderRadius: '16px 16px 16px 4px',
+                  padding: '20px 24px',
+                  backgroundColor: '#ffffff',
+                  color: 'var(--color-text-primary)',
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)',
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: 'var(--color-accent-primary)', animationDelay: '0ms', animationDuration: '1.2s' }} />
+                    <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: 'var(--color-accent-primary)', animationDelay: '150ms', animationDuration: '1.2s' }} />
+                    <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: 'var(--color-accent-primary)', animationDelay: '300ms', animationDuration: '1.2s' }} />
+                  </div>
+                  <span className="text-[13px]" style={{ color: 'var(--color-text-tertiary)' }}>
+                    正在准备学习内容…
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Messages */}
           {messages.map((msg) => (
             <div
