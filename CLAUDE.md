@@ -333,6 +333,14 @@ data/seed/         — 种子图谱数据
   - VERIFY: 118 tests (56 FE + 62 BE) 全通过, tsc 0 errors, build 3.45s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续6轮零issues审查**
 
+- ✅ **第十九轮深度巡逻审查+Graph API测试补全 (2026-03-18)**:
+  - REVIEW: 18+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: KnowledgeGraph.tsx(label cache/celebration particles/ResizeObserver cleanup/destroyed guard) + GraphPage.tsx(enrichedGraphData/loadRecommendations try-finally/search useMemo/backendSynced one-time sync) + graph.ts(store) + graph-api.ts(encodeURIComponent) + learning-api.ts(fire-and-forget/error handling) + auth.test.ts(mock quality/11 tests) + supabase-sync.test.ts(mock chain/6 tests)
+    - BE: sqlite_client.py(REAL timestamps/atomic ops/mastered demotion protection) + dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking) + main.py(path traversal/CORS/headless) + graph.py(thread-safe seed+RAG loading/BFS depth limit/path traversal protection) + config.py(ConfigDict/no hardcoded secrets) + llm/router.py(SSRF/retry/double-check lock)
+  - TEST: +16 BE新测试(graph API: data全量+subdomain筛选+node结构+edge结构+不存在subdomain + domains + subdomains计数 + concept详情+404 + neighbors depth1/depth2/depth限制/404 + stats + rag stats + rag 404)
+  - VERIFY: 134 tests (56 FE + 78 BE) 全通过, tsc 0 errors, build 3.43s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续7轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -437,7 +445,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (56 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6)
-cd apps/api && python -m pytest          # 后端测试 ✅ (62 tests: health 1 + sqlite_client 16 + learning API 12 + evaluator 17 + dialogue API 16)
+cd apps/api && python -m pytest          # 后端测试 ✅ (78 tests: health 1 + sqlite_client 16 + learning API 12 + evaluator 17 + dialogue API 16 + graph API 16)
 ```
 
 ### 提交规范
