@@ -195,6 +195,20 @@ data/seed/         — 种子图谱数据
   - BE: main.py `webbrowser.open`异常处理(无头环境安全) [m-14]
   - BE: graph.py `_load_rag_index`添加threading.Lock线程安全 [m-18]
   - TEST: 后端新增mastered降级防护测试(26 tests total)
+- ✅ **第七轮深度审查+修复(11项修复+5新测试, a204c99)**:
+  - FE: ChatPanel.tsx assessment recordAssessment去重(recordedConvRef防重复记录, 与LearnPage一致) [C-01]
+  - BE: dialogue.py _busy检查+消息append合并为单个lock块(消除TOCTOU窗口+asyncio取消风险) [C-02]
+  - BE: dialogue.py generate()使用messages_snapshot(防lock外读取被并发修改) [M-05]
+  - BE: sqlite_client.py start_learning改为单连接原子read-modify-write(消除TOCTOU竞态) [C-05]
+  - FE: graph-api.ts fetchGraphData/fetchConcept/fetchNeighbors添加encodeURIComponent [M-06]
+  - FE: learning.ts streak日期计算使用单固定时间点(getStreakDates防跨午夜竞态) [M-09]
+  - FE: SettingsContent.tsx URL.revokeObjectURL延迟10s(防导出下载失败, 与SettingsPage一致) [M-11]
+  - FE: direct-llm.ts conversations messages数组上限(MAX_CONTEXT_MESSAGES*2防无限增长) [M-02]
+  - FE: direct-llm.ts directAssess添加AbortSignal.timeout(30s, 防无限"评估中...") [m-07]
+  - BE: learning.py /sync端点添加status白名单校验(防任意状态注入) [m-11]
+  - FE: supabase-sync.ts fullSync改为批量upsert(50条/批, 替代N个独立HTTP请求) [M-04]
+  - TEST: 前端+2测试(streak初始化+同日不递增), 后端+3测试(原子sessions+保持score+status白名单)
+  - TOTAL: 54 tests (25 FE + 29 BE)
 - ✅ **第四轮深度审查+修复(14项, d62e997)**:
   - FE: supabase-sync.ts `fullSync`改为先下载后上传(防覆盖云端新数据→数据丢失) [C-01]
   - FE: supabase-sync.ts `fullSync`并发保护(`_syncing`标志防多标签页竞态) [M-06]
@@ -314,8 +328,8 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (23 tests: learning store + settings store)
-cd apps/api && python -m pytest          # 后端测试 ✅ (26 tests: health + sqlite_client + learning API)
+cd packages/web && npx vitest run        # 前端测试 ✅ (25 tests: learning store 12 + settings store 13)
+cd apps/api && python -m pytest          # 后端测试 ✅ (29 tests: health 1 + sqlite_client 14 + learning API 14)
 ```
 
 ### 提交规范
