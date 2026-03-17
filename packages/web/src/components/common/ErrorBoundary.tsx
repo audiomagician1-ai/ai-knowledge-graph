@@ -34,14 +34,14 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <div
           className="flex items-center justify-center min-h-[200px] p-6"
-          style={{ backgroundColor: '#0f172a' }}
+          style={{ backgroundColor: 'var(--color-surface-0, #f5f5f2)' }}
         >
           <div className="text-center max-w-md">
             <div className="text-5xl mb-4">💥</div>
-            <h2 className="text-lg font-bold mb-2" style={{ color: '#f1f5f9' }}>
+            <h2 className="text-lg font-bold mb-2" style={{ color: 'var(--color-text-primary, #1c1917)' }}>
               出了点小问题
             </h2>
-            <p className="text-sm mb-4" style={{ color: '#94a3b8' }}>
+            <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary, #78716c)' }}>
               {this.state.error?.message || '未知错误'}
             </p>
             <button
