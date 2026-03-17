@@ -373,6 +373,19 @@ data/seed/         — 种子图谱数据
   - VERIFY: 199 tests (80 FE + 119 BE) 全通过, tsc 0 errors, build 3.44s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 仅1 minor修复
 
+- ✅ **第二十四轮深度巡逻审查+direct-llm测试补全 (2026-03-18, 4caa1fd)**:
+  - **FIX**: direct-llm.ts `directChatStream` content-type不匹配时SSE done事件使用`data: [DONE]`(非JSON格式)→改为标准`{type:'done',suggest_assess:false}`JSON格式(确保dialogue.ts正确解析done事件) [m-01]
+  - **EXPORT**: parseChoicesFromContent + windowMessages + parseAssessmentJSON 导出供测试
+  - TEST: +19 FE新测试(direct-llm: parseChoicesFromContent 9 + windowMessages 3 + parseAssessmentJSON 7)
+    - parseChoicesFromContent: 空输入/有效块/最多4选项/文字截断60字/未知type默认explore/无效JSON/最少2选项/过滤空文字/无块纯文本
+    - windowMessages: 低于限制不变/超限保留首条+最后N条/恰好限制不变
+    - parseAssessmentJSON: 直接JSON/json代码块/花括号提取/分数clamp 0-100/mastered重算/不可解析返回null/缺失字段填充
+  - REVIEW: 20+模块全面深度审查(0 critical/0 major issues):
+    - FE: direct-llm.ts(parseChoicesFromContent/windowMessages/parseAssessmentJSON/resolveEndpoint/getConceptContext/buildSystemPrompt/directCreateConversation 15s timeout/directChatStream content-type guard+sliding window+messages cap/directAssess 30s timeout/pruneDirectConversations) + graph.ts(store, 简单setter) + toast.ts(setTimeout+removeToast) + graph-api.ts(encodeURIComponent) + dialogue-api.ts(signal传递) + learning-api.ts(fire-and-forget) + useCountUp.ts(cleanup) + useMediaQuery.ts(SSR安全)
+    - BE: graph.py(double-check locking/BFS depth limit/path traversal protection/thread-safe RAG loading) + config.py(ConfigDict/no secrets) + socratic.py(RAG loading/fallback opening/streaming)
+  - VERIFY: 218 tests (99 FE + 119 BE) 全通过, tsc 0 errors, build 3.20s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 仅1 minor修复
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -476,7 +489,7 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (80 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24)
+cd packages/web && npx vitest run        # 前端测试 ✅ (99 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24 + direct-llm 19)
 cd apps/api && python -m pytest          # 后端测试 ✅ (119 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41)
 ```
 
