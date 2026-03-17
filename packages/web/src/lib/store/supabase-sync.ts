@@ -28,6 +28,17 @@ function isLoggedIn(): boolean {
   return useAuthStore.getState().isAuthenticated();
 }
 
+/**
+ * Map local ConceptStatus to Supabase DB-compatible status.
+ * DB CHECK constraint: ('locked', 'available', 'learning', 'reviewing', 'mastered')
+ * Local statuses: 'not_started' | 'learning' | 'reviewing' | 'mastered'
+ * 'not_started' has no DB equivalent → map to 'available' (visible but not learned)
+ */
+function toDbStatus(localStatus: string): string {
+  if (localStatus === 'not_started') return 'available';
+  return localStatus;
+}
+
 // ════════════════════════════════════════════
 // Progress: Upload / Download / Upsert
 // ════════════════════════════════════════════
@@ -40,7 +51,7 @@ export async function syncProgressToCloud(p: ConceptProgress): Promise<void> {
     const { error } = await supabase.from('user_concept_status').upsert({
       user_id: uid,
       concept_id: p.concept_id,
-      status: p.status,
+      status: toDbStatus(p.status),
       mastery_level: (p.mastery_score || 0) / 100,
       total_sessions: p.sessions || 0,
       total_time_sec: p.total_time_sec || 0,
@@ -68,7 +79,10 @@ export async function downloadProgressFromCloud(): Promise<Record<string, Concep
     const validStatuses = new Set(['not_started', 'learning', 'mastered']);
     for (const row of data) {
       // C-05: Whitelist status values to prevent invalid data propagation
-      const rawStatus = row.status === 'reviewing' ? 'learning' : row.status;
+      // Map DB statuses back to local statuses: 'available'→'not_started', 'reviewing'→'learning'
+      let rawStatus = row.status;
+      if (rawStatus === 'available' || rawStatus === 'locked') rawStatus = 'not_started';
+      else if (rawStatus === 'reviewing') rawStatus = 'learning';
       const safeStatus = validStatuses.has(rawStatus) ? rawStatus : 'learning';
       result[row.concept_id] = {
         concept_id: row.concept_id,
@@ -263,7 +277,7 @@ export async function fullSync(): Promise<{
         const rows = batch.map(p => ({
           user_id: uid,
           concept_id: p.concept_id,
-          status: p.status,
+          status: toDbStatus(p.status),
           mastery_level: (p.mastery_score || 0) / 100,
           total_sessions: p.sessions || 0,
           total_time_sec: p.total_time_sec || 0,

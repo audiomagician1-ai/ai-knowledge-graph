@@ -115,6 +115,44 @@ describe('supabase-sync', () => {
       // supabase.from should be called
       expect(mockUpsert).toHaveBeenCalled();
     });
+
+    it('should map not_started status to available for DB constraint', async () => {
+      vi.mocked(useAuthStore.getState).mockReturnValue({
+        user: { id: 'user-456' } as any,
+        isAuthenticated: () => true,
+      } as any);
+
+      await syncProgressToCloud({
+        concept_id: 'unmapped-node',
+        status: 'not_started',
+        mastery_score: 0,
+        sessions: 0,
+        total_time_sec: 0,
+        last_learn_at: Date.now(),
+      });
+      expect(mockUpsert).toHaveBeenCalled();
+      const callArgs = (mockUpsert.mock.calls[0] as any[])[0];
+      expect(callArgs.status).toBe('available');
+    });
+
+    it('should pass learning/mastered statuses unchanged', async () => {
+      vi.mocked(useAuthStore.getState).mockReturnValue({
+        user: { id: 'user-789' } as any,
+        isAuthenticated: () => true,
+      } as any);
+
+      await syncProgressToCloud({
+        concept_id: 'learning-node',
+        status: 'learning',
+        mastery_score: 30,
+        sessions: 1,
+        total_time_sec: 60,
+        last_learn_at: Date.now(),
+      });
+      expect(mockUpsert).toHaveBeenCalled();
+      const callArgs = (mockUpsert.mock.calls[0] as any[])[0];
+      expect(callArgs.status).toBe('learning');
+    });
   });
 
   describe('syncHistoryToCloud', () => {
