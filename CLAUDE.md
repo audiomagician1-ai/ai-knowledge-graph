@@ -231,6 +231,9 @@ data/seed/         — 种子图谱数据
   - FE: learning.ts `saveProgress/saveHistory/saveStreak` 返回boolean成功标志, 失败时console.error
   - FE: learning.ts `loadProgress` 增加 `isValidProgress()` 校验, 跳过损坏条目
   - FE: learning.ts `startLearning/recordAssessment` 添加console.log事件追踪(DevTools可见)
+- ✅ **学习开场加载提示 (2026-03-18, 8ba2749)**:
+  - FE: dialogue.ts 新增 `isInitializing` 状态 — `startConversation` 入口 set true, LLM 返回/出错后 set false, reset/loadSaved 也重置
+  - FE: LearnPage.tsx + ChatPanel.tsx — isInitializing 时显示 bounce 动画 loading 气泡 + "正在准备学习内容…" 文案, 解决首次进入学习 5-10 秒无反馈问题
 
 ### EXE 打包规范
 ```
