@@ -121,6 +121,9 @@ async def sync_from_frontend(req: SyncProgressRequest):
         if not existing or (data.get('last_learn_at', 0) > (existing.get('last_learn_at') or 0)):
             raw_status = data.get('status', 'not_started')
             safe_status = raw_status if raw_status in _valid_statuses else 'not_started'
+            # Mastered demotion protection: never downgrade mastered status via sync
+            if existing and existing.get('status') == 'mastered':
+                safe_status = 'mastered'
             upsert_progress(
                 concept_id,
                 status=safe_status,

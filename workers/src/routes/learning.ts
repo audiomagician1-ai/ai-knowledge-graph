@@ -172,7 +172,11 @@ app.post('/sync', async (c) => {
       INSERT INTO concept_progress (concept_id, status, mastery_score, last_score, sessions, total_time_sec, mastered_at, last_learn_at, created_at, updated_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(concept_id) DO UPDATE SET
-        status = CASE WHEN excluded.last_learn_at > concept_progress.last_learn_at THEN excluded.status ELSE concept_progress.status END,
+        status = CASE
+          WHEN concept_progress.status = 'mastered' THEN 'mastered'
+          WHEN excluded.last_learn_at > concept_progress.last_learn_at THEN excluded.status
+          ELSE concept_progress.status
+        END,
         mastery_score = MAX(concept_progress.mastery_score, excluded.mastery_score),
         sessions = MAX(concept_progress.sessions, excluded.sessions),
         last_learn_at = MAX(concept_progress.last_learn_at, excluded.last_learn_at),

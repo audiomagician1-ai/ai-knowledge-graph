@@ -153,3 +153,37 @@ class TestLearningEndpoints:
         missing = get_progress("wl_missing")
         assert missing is not None
         assert missing["status"] == "not_started"
+
+    def test_sync_mastered_demotion_protection(self):
+        """Sync should never demote a mastered concept back to learning."""
+        from db.sqlite_client import get_progress
+
+        # Step 1: Set concept as mastered via assess
+        client.post("/api/learning/start", json={"concept_id": "sync_demo_prot"})
+        client.post("/api/learning/assess", json={
+            "concept_id": "sync_demo_prot",
+            "concept_name": "Sync Demo Protection",
+            "score": 90,
+            "mastered": True,
+        })
+        prog = get_progress("sync_demo_prot")
+        assert prog is not None
+        assert prog["status"] == "mastered"
+
+        # Step 2: Sync with 'learning' status and newer timestamp
+        res = client.post("/api/learning/sync", json={
+            "progress": {
+                "sync_demo_prot": {
+                    "status": "learning",
+                    "mastery_score": 50,
+                    "sessions": 10,
+                    "last_learn_at": 9999999999,
+                }
+            }
+        })
+        assert res.status_code == 200
+
+        # Step 3: Verify mastered status was NOT demoted
+        prog = get_progress("sync_demo_prot")
+        assert prog is not None
+        assert prog["status"] == "mastered", f"Expected 'mastered' but got '{prog['status']}'"
