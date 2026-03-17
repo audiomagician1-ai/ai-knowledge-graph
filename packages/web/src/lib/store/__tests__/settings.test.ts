@@ -2,7 +2,7 @@
  * settings.ts store tests
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl } from '@/lib/store/settings';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, validateModelId, getDefaultModel } from '@/lib/store/settings';
 
 const storage: Record<string, string> = {};
 vi.stubGlobal('localStorage', {
@@ -98,5 +98,52 @@ describe('PROVIDER_INFO', () => {
 
   it('should have empty defaultBase for custom provider', () => {
     expect(PROVIDER_INFO.custom.defaultBase).toBe('');
+  });
+
+  it('should have modelHint for openrouter', () => {
+    expect(PROVIDER_INFO.openrouter.modelHint).toContain('org/model');
+  });
+});
+
+describe('validateModelId', () => {
+  it('should return null for empty model (uses default)', () => {
+    expect(validateModelId('openrouter', '')).toBeNull();
+  });
+
+  it('should return null for valid openrouter model with org/ prefix', () => {
+    expect(validateModelId('openrouter', 'openai/gpt-4o')).toBeNull();
+    expect(validateModelId('openrouter', 'stepfun/step-3.5-flash')).toBeNull();
+    expect(validateModelId('openrouter', 'anthropic/claude-3.5-sonnet')).toBeNull();
+  });
+
+  it('should return warning for openrouter model missing org/ prefix', () => {
+    const warn = validateModelId('openrouter', 'gpt-4o');
+    expect(warn).toBeTruthy();
+    expect(warn).toContain('org/model');
+  });
+
+  it('should return warning for openrouter model "step-3.5-flash" without org prefix', () => {
+    const warn = validateModelId('openrouter', 'step-3.5-flash');
+    expect(warn).toBeTruthy();
+  });
+
+  it('should return null for non-openrouter providers regardless of format', () => {
+    expect(validateModelId('openai', 'gpt-4o')).toBeNull();
+    expect(validateModelId('deepseek', 'deepseek-chat')).toBeNull();
+    expect(validateModelId('custom', 'my-model')).toBeNull();
+  });
+});
+
+describe('getDefaultModel', () => {
+  it('should return openai/gpt-4o-mini for openrouter', () => {
+    expect(getDefaultModel('openrouter')).toBe('openai/gpt-4o-mini');
+  });
+
+  it('should return deepseek-chat for deepseek', () => {
+    expect(getDefaultModel('deepseek')).toBe('deepseek-chat');
+  });
+
+  it('should return gpt-4o-mini for openai', () => {
+    expect(getDefaultModel('openai')).toBe('gpt-4o-mini');
   });
 });

@@ -337,29 +337,52 @@ export function downloadBlob(content: string, filename: string, mime: string) {
   setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
 
-export const PROVIDER_INFO: Record<LLMProvider, { name: string; placeholder: string; hint: string; defaultBase: string }> = {
+/** Validate model ID format for the given provider.
+ *  Returns null if valid, or an error message string if invalid. */
+export function validateModelId(provider: LLMProvider, model: string): string | null {
+  if (!model) return null; // empty = use default, always valid
+  if (provider === 'openrouter' && !model.includes('/')) {
+    return 'OpenRouter 模型名需包含提供商前缀，格式: org/model（如 openai/gpt-4o, stepfun/step-3.5-flash）';
+  }
+  return null;
+}
+
+/** Get the provider-appropriate default model name */
+export function getDefaultModel(provider: LLMProvider): string {
+  switch (provider) {
+    case 'openrouter': return 'openai/gpt-4o-mini';
+    case 'deepseek': return 'deepseek-chat';
+    default: return 'gpt-4o-mini';
+  }
+}
+
+export const PROVIDER_INFO: Record<LLMProvider, { name: string; placeholder: string; hint: string; defaultBase: string; modelHint: string }> = {
   openrouter: {
     name: 'OpenRouter',
     placeholder: 'sk-or-v1-...',
     hint: '多模型聚合路由，支持 GPT-4o / Claude / Gemini 等',
     defaultBase: 'https://openrouter.ai/api/v1',
+    modelHint: '格式: org/model（如 openai/gpt-4o、stepfun/step-3.5-flash）',
   },
   openai: {
     name: 'OpenAI',
     placeholder: 'sk-...',
     hint: 'GPT-4o / GPT-4o-mini / o1 系列',
     defaultBase: 'https://api.openai.com/v1',
+    modelHint: '',
   },
   deepseek: {
     name: 'DeepSeek',
     placeholder: 'sk-...',
     hint: 'DeepSeek-V3 / DeepSeek-R1 系列',
     defaultBase: 'https://api.deepseek.com/v1',
+    modelHint: '',
   },
   custom: {
     name: '自定义',
     placeholder: 'your-api-key',
     hint: '任意 OpenAI 兼容 API (内网、代理等)',
     defaultBase: '',
+    modelHint: '',
   },
 };

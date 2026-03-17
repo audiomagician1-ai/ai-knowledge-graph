@@ -1,5 +1,5 @@
 ﻿import { useState, useRef } from 'react';
-import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, generateSelfContainedBat, downloadBlob } from '@/lib/store/settings';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, generateSelfContainedBat, downloadBlob, validateModelId, getDefaultModel } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
 import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
@@ -37,10 +37,7 @@ export function SettingsContent() {
         !!llmConfig.useProxy,
       );
       // Use provider-appropriate default model if user hasn't specified one
-      const defaultModel = llmConfig.provider === 'openrouter' ? 'openai/gpt-4o-mini'
-        : llmConfig.provider === 'deepseek' ? 'deepseek-chat'
-        : 'gpt-4o-mini';
-      const testModel = llmConfig.model || defaultModel;
+      const testModel = llmConfig.model || getDefaultModel(llmConfig.provider);
       const result = await probeCORS(effectiveUrl, llmConfig.apiKey, testModel);
       if (result.ok) {
         setTestStatus('success');
@@ -136,6 +133,12 @@ export function SettingsContent() {
           placeholder={llmConfig.provider === 'openrouter' ? 'openai/gpt-4o' : llmConfig.provider === 'openai' ? 'gpt-4o' : llmConfig.provider === 'deepseek' ? 'deepseek-chat' : 'model-name'}
           className="w-full outline-none font-mono"
           style={{ borderRadius: 10, padding: '12px 16px', fontSize: 13, backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
+        {info.modelHint && (
+          <p style={{ color: 'var(--color-text-tertiary)', fontSize: 11, marginTop: 6, lineHeight: 1.5 }}>{info.modelHint}</p>
+        )}
+        {(() => { const warn = validateModelId(llmConfig.provider, llmConfig.model || ''); return warn ? (
+          <p style={{ color: 'var(--color-accent-rose)', fontSize: 11, marginTop: 4, lineHeight: 1.5 }}>⚠️ {warn}</p>
+        ) : null; })()}
       </div>
 
       {/* Local Proxy Toggle */}

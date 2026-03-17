@@ -4,7 +4,7 @@
  * that are not reachable from Cloudflare Workers.
  */
 
-import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl } from './store/settings';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, getDefaultModel } from './store/settings';
 import { useGraphStore } from './store/graph';
 import type { GraphNode } from '@akg/shared';
 
@@ -207,10 +207,7 @@ function resolveEndpoint(): { baseUrl: string; apiKey: string; model: string } {
   const { llmConfig } = useSettingsStore.getState();
   const key = llmConfig.apiKey;
   // Use provider-appropriate default model
-  const defaultModel = llmConfig.provider === 'openrouter' ? 'openai/gpt-4o-mini'
-    : llmConfig.provider === 'deepseek' ? 'deepseek-chat'
-    : 'gpt-4o-mini';
-  const model = llmConfig.model || defaultModel;
+  const model = llmConfig.model || getDefaultModel(llmConfig.provider);
 
   const rawBase = llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase;
   const baseUrl = resolveBaseUrl(rawBase, !!llmConfig.useProxy);

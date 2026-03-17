@@ -1,6 +1,6 @@
 ﻿import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy } from '@/lib/store/settings';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, validateModelId, getDefaultModel } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
 import {
   Eye, EyeOff, Check, Trash2, Shield,
@@ -51,7 +51,7 @@ export function SettingsPage() {
         llmConfig.baseUrl || PROVIDER_INFO[llmConfig.provider].defaultBase,
         !!llmConfig.useProxy,
       );
-      const result = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || 'gpt-4o');
+      const result = await probeCORS(effectiveUrl, llmConfig.apiKey, llmConfig.model || getDefaultModel(llmConfig.provider));
       if (result.ok) {
         setTestStatus('success');
         setTestMessage(llmConfig.useProxy ? '通过本地代理连接成功 ✨' : '连接成功 ✨ API 可用');
@@ -260,8 +260,13 @@ export function SettingsPage() {
             }}
           />
           <p className="text-sm mt-2" style={{ color: 'var(--color-text-tertiary)' }}>
-            留空使用默认模型。自定义服务商必须填写。
+            {info.modelHint
+              ? <>{info.modelHint}。留空使用默认模型。</>
+              : '留空使用默认模型。自定义服务商必须填写。'}
           </p>
+          {(() => { const warn = validateModelId(llmConfig.provider, llmConfig.model || ''); return warn ? (
+            <p className="text-sm mt-1" style={{ color: 'var(--color-accent-rose)' }}>⚠️ {warn}</p>
+          ) : null; })()}
         </div>
 
         {/* Action row */}
