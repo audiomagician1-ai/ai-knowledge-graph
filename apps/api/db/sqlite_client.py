@@ -199,7 +199,6 @@ def start_learning(concept_id: str) -> dict:
     C-05 fix: Atomic read-modify-write in a single connection to prevent TOCTOU race.
     """
     now = time.time()
-    now_iso = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(now))
     with get_db() as conn:
         row = conn.execute(
             "SELECT * FROM concept_progress WHERE concept_id = ?", (concept_id,)
@@ -212,7 +211,7 @@ def start_learning(concept_id: str) -> dict:
                 """UPDATE concept_progress
                    SET status = ?, sessions = sessions + 1, last_learn_at = ?, updated_at = ?
                    WHERE concept_id = ?""",
-                (new_status, now, now_iso, concept_id),
+                (new_status, now, now, concept_id),
             )
         else:
             conn.execute(
@@ -220,7 +219,7 @@ def start_learning(concept_id: str) -> dict:
                    (concept_id, status, mastery_score, last_score, sessions, total_time_sec,
                     mastered_at, last_learn_at, created_at, updated_at)
                    VALUES (?, 'learning', 0, NULL, 1, 0, NULL, ?, ?, ?)""",
-                (concept_id, now, now_iso, now_iso),
+                (concept_id, now, now, now),
             )
     return get_progress(concept_id) or {}
 
