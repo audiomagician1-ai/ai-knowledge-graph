@@ -5,6 +5,7 @@ import type { AssessmentResult, SavedConversation } from '@/lib/store/dialogue';
 import type { ConceptProgress } from '@/lib/store/learning';
 import { MarkdownRenderer } from './MarkdownRenderer';
 import { ChoiceButtons } from './ChoiceButtons';
+import { stripChoicesBlock } from '@/lib/utils/text';
 import { useCountUp } from '@/lib/hooks/useCountUp';
 import {
   Send, BarChart3, Brain, RotateCcw, Zap, Play,
@@ -97,15 +98,6 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   };
 
   const userTurns = messages.filter((m) => m.role === 'user').length;
-
-  /** Strip ```choices ... ``` block (complete or partial/in-progress) from content for display */
-  const stripChoicesBlock = (text: string) => {
-    // First strip complete ```choices ... ``` blocks
-    let result = text.replace(/```choices[\s\S]*?```/g, '');
-    // Then strip any incomplete/in-progress ```choices block (no closing ```)
-    result = result.replace(/```choices[\s\S]*$/g, '');
-    return result.trim();
-  };
 
   // This concept's history
   const conceptConvHistory = savedConversations

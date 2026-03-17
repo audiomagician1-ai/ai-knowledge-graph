@@ -11,6 +11,7 @@ import {
 import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
 import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
 import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
+import { stripChoicesBlock } from '@/lib/utils/text';
 
 export function LearnPage() {
   const { conceptId } = useParams<{ conceptId: string }>();
@@ -65,15 +66,6 @@ export function LearnPage() {
   }, [error]);
 
   const isUserTyping = input.length > 0;
-
-  /** Strip ```choices ... ``` block (complete or partial/in-progress) from content for display */
-  const stripChoicesBlock = (text: string) => {
-    // First strip complete ```choices ... ``` blocks
-    let result = text.replace(/```choices[\s\S]*?```/g, '');
-    // Then strip any incomplete/in-progress ```choices block (no closing ```)
-    result = result.replace(/```choices[\s\S]*$/g, '');
-    return result.trim();
-  };
 
   const handleSend = async () => {
     const text = input.trim();
