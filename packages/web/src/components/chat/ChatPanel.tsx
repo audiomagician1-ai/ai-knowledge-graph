@@ -352,8 +352,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
       </div>
 
       {/* Messages area */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="px-8 py-8 space-y-8">
+      <div className="flex-1 overflow-y-auto" style={{ backgroundColor: '#eceae6' }}>
+        <div style={{ padding: '32px 28px', display: 'flex', flexDirection: 'column', gap: 24 }}>
           {/* Messages */}
           {messages.map((msg) => (
             <div
@@ -361,23 +361,25 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className="max-w-[80%] rounded-2xl px-7 py-6 text-[15px] leading-[1.9]"
-                style={
-                  msg.role === 'user'
+                style={{
+                  maxWidth: '82%',
+                  borderRadius: msg.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
+                  padding: '20px 24px',
+                  fontSize: 15,
+                  lineHeight: 1.85,
+                  ...(msg.role === 'user'
                     ? {
-                        backgroundColor: 'rgba(16, 185, 129, 0.08)',
-                        borderLeft: '3px solid var(--color-accent-primary)',
+                        backgroundColor: '#d4edda',
                         color: 'var(--color-text-primary)',
-                        borderRadius: '2px 12px 12px 2px',
+                        border: '1px solid rgba(16, 185, 129, 0.25)',
                       }
                     : {
                         backgroundColor: '#ffffff',
                         color: 'var(--color-text-primary)',
-                        borderBottomLeftRadius: 2,
-                        border: '1px solid rgba(0, 0, 0, 0.08)',
-                        boxShadow: '0 1px 4px rgba(0, 0, 0, 0.06)',
-                      }
-                }
+                        border: '1px solid rgba(0, 0, 0, 0.1)',
+                        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)',
+                      }),
+                }}
               >
                 {msg.role === 'assistant' ? (
                   msg.content ? (
