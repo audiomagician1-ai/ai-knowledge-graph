@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   # Neo4j 图数据库 — 知识图谱存储
   neo4j:

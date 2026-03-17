@@ -157,22 +157,26 @@ app.post('/chat', async (c) => {
 
           const text = decoder.decode(value, { stream: true });
           // Parse each SSE line to collect full content
+          let hasDoneEvent = false;
           for (const line of text.split('\n')) {
             if (line.startsWith('data: ')) {
               try {
                 const payload = JSON.parse(line.slice(6));
                 if (payload.type === 'chunk') fullResponse += payload.content;
                 if (payload.type === 'done') {
+                  hasDoneEvent = true;
                   // Replace done event with one that includes suggest_assess
                   controller.enqueue(encoder.encode(
                     `data: ${JSON.stringify({ type: 'done', suggest_assess: userTurns >= 4, turn: userTurns })}\n\n`
                   ));
-                  continue;
                 }
               } catch { /* pass */ }
             }
           }
-          controller.enqueue(value);
+          // Only forward original chunk if we didn't replace the done event
+          if (!hasDoneEvent) {
+            controller.enqueue(value);
+          }
         }
       } finally {
         // Save assistant response to DB
