@@ -567,6 +567,22 @@ data/seed/         — 种子图谱数据
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续23轮零issues审查**
    - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
 
+- ✅ **第四十二轮深度巡逻审查+Workers修复 (2026-03-18, 45fb458)**:
+   - **FIX**: workers/src/index.ts CORS `origin: '*'` fallback与`credentials: true`冲突 — 改为返回空字符串(no-origin时)或echo请求origin, 消除wildcard+credentials互斥问题(与main.py m-09修复一致) [M-01]
+   - **FIX**: workers/src/routes/dialogue.ts SSE stream transform `done`事件替换后原始value仍被enqueue — 添加`hasDoneEvent`标志, 仅在未替换时forward原始chunk(消除客户端收到重复done事件) [m-02]
+   - **FIX**: docker-compose.yml 移除已弃用的`version: '3.9'`键(Docker Compose v2+自动忽略, 消除deprecation warning) [m-06]
+   - REVIEW角度: 首次对workers/目录(Cloudflare Workers未来部署代码)进行完整审查, 同时覆盖CI/CD配置+Supabase schema+build config+依赖审计
+   - 额外发现(已记录, 非阻塞):
+     - workers/src/routes/dialogue.ts 无消息滑动窗口(FastAPI有40条上限) [m-03]
+     - workers/src/routes/learning.ts /sync无输入校验(FastAPI有progress≤500/history≤1000/status白名单) [m-04]
+     - workers/src/llm.ts 无SSRF防护(FastAPI有_validate_base_url) [m-05]
+     - CI ci.yml test/type-check步骤`continue-on-error: true`可能掩盖回归
+     - NPM audit: 6漏洞(4moderate+2high)均在workers>wrangler dev依赖, 无生产影响
+   - PRODUCTION CODE: 20+模块深度审查全通过(0 critical/0 major/0 minor issues) — 连续24轮零issues
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.10s
+   - STATUS: 首次扩展审查范围到Workers代码, 发现并修复3项问题, 生产代码持续稳定
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
