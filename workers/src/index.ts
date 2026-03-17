@@ -8,20 +8,19 @@ import dialogueRoutes from './routes/dialogue';
 const app = new Hono<{ Bindings: Env }>();
 
 // CORS — allow Cloudflare Pages domain + local dev
-// Note: credentials:true requires specific origin (not wildcard '*')
-// Unknown origins get the request origin echoed back without credentials
+// credentials:true requires specific origin (not wildcard), so only trusted origins get CORS headers
 app.use('*', cors({
   origin: (origin) => {
     if (!origin) return '';
-    // Allow any localhost, *.pages.dev, and custom domains
+    // Allow local dev + Cloudflare Pages/Workers domains
     if (
       origin.includes('localhost') ||
       origin.includes('127.0.0.1') ||
       origin.endsWith('.pages.dev') ||
       origin.endsWith('.workers.dev')
     ) return origin;
-    // Non-matching origins: echo origin but without credentials
-    return origin;
+    // Untrusted origins: return empty string (no CORS headers, request blocked by browser)
+    return '';
   },
   allowHeaders: [
     'Content-Type', 'Authorization',

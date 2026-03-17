@@ -246,19 +246,20 @@ app.post('/assess', async (c) => {
   });
 
   // Truncate dialogue to prevent exceeding LLM context window (matches FastAPI evaluator 8000 char limit)
-  let dialogueText = '';
   let totalChars = 0;
   const MAX_DIALOGUE_CHARS = 8000;
   const dialogueLines: string[] = [];
-  // Prioritize recent messages by iterating in reverse
+  // Prioritize recent messages by iterating in reverse, use push+reverse for O(n) (matching FastAPI evaluator.py)
   for (let i = messages.length - 1; i >= 0; i--) {
     const m = messages[i];
-    const line = `[${m.role === 'user' ? '用户（老师）' : 'AI（学生）'}]: ${m.content}`;
+    // Role labels match FastAPI evaluator.py: user=学习者, AI=学习伙伴/老师
+    const line = `[${m.role === 'user' ? '用户（学习者）' : 'AI（学习伙伴/老师）'}]: ${m.content}`;
     if (totalChars + line.length > MAX_DIALOGUE_CHARS) break;
-    dialogueLines.unshift(line);
+    dialogueLines.push(line);
     totalChars += line.length;
   }
-  dialogueText = dialogueLines.join('\n\n');
+  dialogueLines.reverse();
+  const dialogueText = dialogueLines.join('\n\n');
 
   try {
     const response = await llmChat(c.env, {
