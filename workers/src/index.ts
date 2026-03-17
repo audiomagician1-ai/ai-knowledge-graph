@@ -9,16 +9,20 @@ const app = new Hono<{ Bindings: Env }>();
 
 // CORS — allow Cloudflare Pages domain + local dev
 // credentials:true requires specific origin (not wildcard), so only trusted origins get CORS headers
+// Origin matching uses URL parsing to prevent bypass (e.g. evil-localhost.com matching "localhost")
 app.use('*', cors({
   origin: (origin) => {
     if (!origin) return '';
-    // Allow local dev + Cloudflare Pages/Workers domains
-    if (
-      origin.includes('localhost') ||
-      origin.includes('127.0.0.1') ||
-      origin.endsWith('.pages.dev') ||
-      origin.endsWith('.workers.dev')
-    ) return origin;
+    let hostname: string;
+    try {
+      hostname = new URL(origin).hostname;
+    } catch {
+      return '';
+    }
+    // Allow local dev (exact hostname match, not substring)
+    if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1') return origin;
+    // Allow Cloudflare Pages/Workers domains (suffix match on parsed hostname)
+    if (hostname.endsWith('.pages.dev') || hostname.endsWith('.workers.dev')) return origin;
     // Untrusted origins: return empty string (no CORS headers, request blocked by browser)
     return '';
   },
