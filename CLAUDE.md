@@ -631,7 +631,28 @@ data/seed/         — 种子图谱数据
    - SECURITY: 全项目无eval/exec/innerHTML/dangerouslySetInnerHTML, 无TODO/FIXME in production code, FastAPI CORS用精确origin列表(安全)
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.07s, workers tsc 0 errors
-   - STATUS: 发现2个Medium Workers安全/一致性问题并修复, Workers CORS保护和评估校验提升到与FastAPI同等水平
+    - STATUS: 发现2个Medium Workers安全/一致性问题并修复, Workers CORS保护和评估校验提升到与FastAPI同等水平
+
+- ✅ **第四十七轮深度巡逻审查+/sync mastered降级防护修复 (2026-03-18, 5f2b864)**:
+   - **FIX**: workers/src/routes/learning.ts `/sync` ON CONFLICT SQL缺少mastered降级防护 — 当incoming sync数据的`last_learn_at`较新但`status`为`learning`时, 会将已mastered的概念降级。修复: 添加`WHEN concept_progress.status = 'mastered' THEN 'mastered'`优先分支, 与Workers `/assess`(C-06)和`/start`一致 [M-01]
+   - **FIX**: apps/api/routers/learning.py `/sync`添加Python级mastered防护 — 虽然前端learning.ts已有降级保护, 但后端应作为defense-in-depth也强制执行: `if existing.status == 'mastered': safe_status = 'mastered'` [M-02]
+   - TEST: +1 BE新测试(sync_mastered_demotion_protection: assess mastered→sync learning→verify stays mastered)
+   - REVIEW: Workers全5模块+生产代码20+模块深度审查:
+     - Workers: index.ts(CORS URL-parsed hostname match) + llm.ts(SSRF validateBaseUrl) + dialogue.ts(SSE chunk-aware transform/40-message window/validateAssessment) + learning.ts(mastered demotion in /sync+/assess+/start/score clamping/status whitelist/sync input validation) + graph.ts(BFS depth limit)
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental sync)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping/sync mastered guard) + evaluator.py(O(n) format_dialogue/consistent mastered) + main.py(path traversal/CORS/headless) + sqlite_client.py(mastered demotion in record_assessment+start_learning) + llm/router.py(SSRF try/except/else/retry)
+   - MASTERED PROTECTION AUDIT (全路径一致性):
+     - FE learning.ts: startLearning(wasMastered guard) + recordAssessment(wasMastered guard) ✅
+     - FE direct-llm.ts: fallback mastered判定(overall>=75 && all dims>=60) ✅
+     - FE supabase-sync.ts: toDbStatus映射 + downloadProgressFromCloud逆映射 ✅
+     - BE sqlite_client.py: start_learning(mastered→mastered) + record_assessment(C-06 effective_mastered) ✅
+     - BE learning.py /sync: mastered guard(新增) ✅
+     - Workers /start: mastered→mastered CASE ✅
+     - Workers /assess: C-06 wasMastered+effectiveMastered ✅
+     - Workers /sync: mastered CASE优先(新增) ✅
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 344 tests (123 FE + 221 BE) 全通过, tsc 0 errors, build 3.24s, workers tsc 0 errors
+   - STATUS: 发现2个Medium级mastered降级防护缺口(Workers /sync + FastAPI /sync)并修复, 全路径mastered保护一致性验证通过
 
 ### EXE 打包规范
 ```
@@ -737,7 +758,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (123 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 19 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
-cd apps/api && python -m pytest          # 后端测试 ✅ (220 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
+cd apps/api && python -m pytest          # 后端测试 ✅ (221 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
 ```
 
 ### 提交规范
