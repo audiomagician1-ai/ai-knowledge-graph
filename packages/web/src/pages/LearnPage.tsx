@@ -66,9 +66,13 @@ export function LearnPage() {
 
   const isUserTyping = input.length > 0;
 
-  /** Strip ```choices ... ``` block from content for display */
+  /** Strip ```choices ... ``` block (complete or partial/in-progress) from content for display */
   const stripChoicesBlock = (text: string) => {
-    return text.replace(/```choices[\s\S]*?```/g, '').trim();
+    // First strip complete ```choices ... ``` blocks
+    let result = text.replace(/```choices[\s\S]*?```/g, '');
+    // Then strip any incomplete/in-progress ```choices block (no closing ```)
+    result = result.replace(/```choices[\s\S]*$/g, '');
+    return result.trim();
   };
 
   const handleSend = async () => {
@@ -183,7 +187,7 @@ export function LearnPage() {
                   </div>
                 )}
                 <div
-                  className="max-w-[75%] rounded-lg px-6 py-5 text-[14px] leading-relaxed"
+                  className="max-w-[75%] rounded-xl px-7 py-6 text-[14px] leading-[1.85]"
                   style={
                     msg.role === 'user'
                       ? {

@@ -91,9 +91,13 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
   const userTurns = messages.filter((m) => m.role === 'user').length;
 
-  /** Strip ```choices ... ``` block from content for display */
+  /** Strip ```choices ... ``` block (complete or partial/in-progress) from content for display */
   const stripChoicesBlock = (text: string) => {
-    return text.replace(/```choices[\s\S]*?```/g, '').trim();
+    // First strip complete ```choices ... ``` blocks
+    let result = text.replace(/```choices[\s\S]*?```/g, '');
+    // Then strip any incomplete/in-progress ```choices block (no closing ```)
+    result = result.replace(/```choices[\s\S]*$/g, '');
+    return result.trim();
   };
 
   // This concept's history
@@ -357,7 +361,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className="max-w-[85%] rounded-lg px-6 py-5 text-[15px] leading-relaxed"
+                className="max-w-[85%] rounded-xl px-7 py-6 text-[15px] leading-[1.85]"
                 style={
                   msg.role === 'user'
                     ? {
