@@ -162,25 +162,39 @@ app.post('/chat', async (c) => {
           if (done) break;
 
           const text = decoder.decode(value, { stream: true });
-          // Parse each SSE line to collect full content
+          // Parse each SSE line to collect full content and replace done event
           let hasDoneEvent = false;
           for (const line of text.split('\n')) {
             if (line.startsWith('data: ')) {
               try {
                 const payload = JSON.parse(line.slice(6));
-                if (payload.type === 'chunk') fullResponse += payload.content;
+                if (payload.type === 'chunk') {
+                  fullResponse += payload.content;
+                  // When done is in same value, forward chunk individually
+                  // (we can't forward raw value as it includes the done event)
+                }
                 if (payload.type === 'done') {
                   hasDoneEvent = true;
-                  // Replace done event with one that includes suggest_assess
-                  controller.enqueue(encoder.encode(
-                    `data: ${JSON.stringify({ type: 'done', suggest_assess: userTurns >= 4, turn: userTurns })}\n\n`
-                  ));
                 }
               } catch { /* pass */ }
             }
           }
-          // Only forward original chunk if we didn't replace the done event
-          if (!hasDoneEvent) {
+          if (hasDoneEvent) {
+            // Re-encode only the chunk events, then append replaced done
+            for (const line of text.split('\n')) {
+              if (line.startsWith('data: ')) {
+                try {
+                  const payload = JSON.parse(line.slice(6));
+                  if (payload.type === 'chunk') {
+                    controller.enqueue(encoder.encode(`data: ${JSON.stringify(payload)}\n\n`));
+                  }
+                } catch { /* pass */ }
+              }
+            }
+            controller.enqueue(encoder.encode(
+              `data: ${JSON.stringify({ type: 'done', suggest_assess: userTurns >= 4, turn: userTurns })}\n\n`
+            ));
+          } else {
             controller.enqueue(value);
           }
         }
