@@ -663,7 +663,19 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 344 tests (123 FE + 221 BE) 全通过, tsc 0 errors, build 3.15s, workers tsc 0 errors
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续23轮零issues审查**(生产代码)
-   - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+    - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+
+- ✅ **第四十九轮深度巡逻审查+CI修复 (2026-03-18, e96d7b2)**:
+   - **FIX**: .github/workflows/ci.yml 移除3个`continue-on-error: true` — CI type-check/test/pytest步骤失败时仍显示通过, 导致回归被隐藏。修复: 移除frontend type-check+test和backend pytest的continue-on-error, CI现在正确报告测试/类型检查失败 [M-01]
+   - REVIEW: 20+模块+Workers全5模块深度审查全通过(0 critical/0 major/0 minor issues):
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + auth.ts(subscription cleanup/callback dedup) + settings.ts(validateModelId/getDefaultModel/probeCORS)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping/sync mastered guard) + evaluator.py(O(n) format_dialogue/consistent mastered) + main.py(path traversal/CORS/headless) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + llm/router.py(SSRF try/except/else/retry/double-check lock) + config.py(ConfigDict/no hardcoded secrets)
+     - Workers: index.ts(CORS URL-parsed hostname match) + llm.ts(SSRF validateBaseUrl) + dialogue.ts(SSE chunk-aware transform/40-message window/validateAssessment) + learning.ts(mastered demotion in /sync+/assess+/start/score clamping/status whitelist) + graph.ts(BFS depth limit)
+     - CI: ci.yml(continue-on-error removed/frontend 3-step pipeline/backend single pytest step)
+   - NPM AUDIT: 6漏洞(4moderate+2high)均在workers>wrangler dev依赖(undici 5.29.0/esbuild 0.17.19), 无生产代码影响
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 344 tests (123 FE + 221 BE) 全通过, tsc 0 errors, build 3.10s, workers tsc 0 errors
+   - STATUS: 发现1个Medium级CI配置问题并修复, 生产代码持续稳定, **连续24轮零issues审查**(生产代码)
 
 ### EXE 打包规范
 ```
