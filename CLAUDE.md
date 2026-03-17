@@ -675,7 +675,24 @@ data/seed/         — 种子图谱数据
    - NPM AUDIT: 6漏洞(4moderate+2high)均在workers>wrangler dev依赖(undici 5.29.0/esbuild 0.17.19), 无生产代码影响
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 344 tests (123 FE + 221 BE) 全通过, tsc 0 errors, build 3.10s, workers tsc 0 errors
-   - STATUS: 发现1个Medium级CI配置问题并修复, 生产代码持续稳定, **连续24轮零issues审查**(生产代码)
+    - STATUS: 发现1个Medium级CI配置问题并修复, 生产代码持续稳定, **连续24轮零issues审查**(生产代码)
+
+- ✅ **第五十轮跨模块集成审查 (2026-03-18)**:
+   - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+     - 审查方法: 全新视角API合约一致性审查(FE API client ↔ BE endpoint ↔ Workers路由), 跨模块数据流追踪
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge/getStreakDates/replaceData) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment/pruneDirectConversations/content-type guard/message cap) + supabase-sync.ts(toDbStatus mapping/concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + dialogue-api.ts(signal passthrough) + learning-api.ts(fire-and-forget/error handling) + graph-api.ts(encodeURIComponent)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks/input validation) + learning.py(Field validation/status whitelist/score clamping/sync mastered guard) + evaluator.py(O(n) format_dialogue/consistent mastered/parse_json fallback) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless/DEBUG docs) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + llm/router.py(SSRF try/except/else pattern/retry logic/double-check lock)
+   - CONTRACT AUDIT:
+     - API Contracts: FE dialogue-api.ts POST /conversations → BE returns {conversation_id, concept_name, opening_message, opening_choices, is_milestone} ✅
+     - API Contracts: FE learning-api.ts POST /start,/assess,/sync + GET /progress,/stats,/history,/streak,/recommend ↔ BE learning.py 全部匹配 ✅
+     - STATUS MAPPING: learning.ts local statuses → toDbStatus() → DB CHECK → downloadProgressFromCloud() reverse — 三方一致 ✅
+     - MASTERED PROTECTION: 8路径全一致(FE learning.ts×2, FE direct-llm.ts, FE supabase-sync.ts, BE sqlite_client.py×2, BE learning.py /sync, Workers×3) ✅
+     - SLIDING WINDOW: direct-llm MAX_CONTEXT_MESSAGES=20 + conv cap 40 ↔ backend dialogue.py 40-message window — 一致 ✅
+     - MASTERED LOGIC: overall>=75 && all dims>=60 — direct-llm.ts + evaluator.py + sqlite_client.py — 三路一致 ✅
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 344 tests (123 FE + 221 BE) 全通过, tsc 0 errors, build 3.03s
+   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续25轮零issues审查**(生产代码)
+   - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
 
 ### EXE 打包规范
 ```
