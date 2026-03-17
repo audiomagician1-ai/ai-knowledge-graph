@@ -459,6 +459,17 @@ data/seed/         — 种子图谱数据
   - VERIFY: 310 tests (121 FE + 189 BE) 全通过, tsc 0 errors, build 3.20s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续15轮零issues审查**
 
+- ✅ **第三十二轮深度巡逻审查+config/redis测试补全 (2026-03-18, 8db37d4)**:
+  - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment) + supabase-sync.ts(concurrency guard/batch upsert/incremental history sync/status whitelist) + auth.ts(subscription cleanup/callback dedup) + settings.ts(validateModelId/getDefaultModel/probeCORS) + graph.ts(simple setters) + text.ts(stripChoicesBlock)
+    - BE: config.py(ConfigDict/env overrides/no hardcoded secrets) + redis_client.py(lazy reconnect with lock+cooldown/graceful degradation/old client cleanup) + dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format_dialogue/consistent mastered/parse_json fallback) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + llm/router.py(SSRF try/except/else pattern/retry logic/double-check lock) + main.py(path traversal/CORS/headless/DEBUG docs)
+  - TEST: +31 BE新测试:
+    - config.py 12测试: 默认值(neo4j_uri/user/password/redis/supabase/llm_models/api_keys 7) + 环境变量覆盖(neo4j_uri/redis_url/llm_model 3) + ConfigDict验证(model_config/no deprecated Config 2)
+    - redis_client.py 19测试: 初始化(state/property 2) + 连接(success/failure/close/close_noop 4) + 缓存(get_value/get_miss/get_no_client/get_error_clears/set_ttl/set_default/set_no_client/set_error_clears 8) + 重连(success/cooldown_60s/failure_clears/closes_old/get_triggers_reconnect 5)
+  - GITHUB: 0 open issues, 2 closed (all resolved)
+  - VERIFY: 341 tests (121 FE + 220 BE) 全通过, tsc 0 errors
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续16轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -563,7 +574,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (121 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24 + direct-llm 19 + toast 12 + graph 10)
-cd apps/api && python -m pytest          # 后端测试 ✅ (189 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28 + socratic 24 + main 18)
+cd apps/api && python -m pytest          # 后端测试 ✅ (220 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
 ```
 
 ### 提交规范
