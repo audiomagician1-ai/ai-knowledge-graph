@@ -351,6 +351,14 @@ data/seed/         — 种子图谱数据
   - VERIFY: 175 tests (56 FE + 119 BE) 全通过, tsc 0 errors, build 3.15s
   - STATUS: 发现1个CRITICAL SSRF漏洞并修复, 代码质量持续提升
 
+- ✅ **第二十一轮深度巡逻审查 (2026-03-18)**:
+  - REVIEW: 8核心模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge/getStreakDates) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment/pruneDirectConversations/content-type guard/message cap)
+    - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks/input validation) + evaluator.py(O(n) format_dialogue/consistent mastered logic/parse_json fallback chain/score clamping) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless webbrowser/DEBUG docs) + llm/router.py(SSRF try/except/else pattern/retry logic/double-check lock/model tier resolution)
+    - TEST: test_llm_router.py quality check (41 tests: SSRF 15 + retry 9 + endpoint 11 + model 4 + tier 2)
+  - VERIFY: 175 tests (56 FE + 119 BE) 全通过, tsc 0 errors, build 3.27s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续8轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -455,7 +463,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (56 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6)
-cd apps/api && python -m pytest          # 后端测试 ✅ (119 tests: health 1 + sqlite_client 16 + learning API 12 + evaluator 17 + dialogue API 16 + graph API 16 + llm_router 41)
+cd apps/api && python -m pytest          # 后端测试 ✅ (119 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41)
 ```
 
 ### 提交规范
