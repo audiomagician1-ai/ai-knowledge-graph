@@ -349,7 +349,7 @@ export function LearnPage() {
                 返回图谱
               </button>
               <button
-                onClick={() => { reset(); if (conceptId) { startConversation(conceptId); startLearning(conceptId); } }}
+                onClick={() => { recordedRef.current = false; reset(); if (conceptId) { startConversation(conceptId); startLearning(conceptId); } }}
                 className="btn-primary flex-1 flex items-center justify-center gap-2 py-3"
               >
                 <RotateCcw size={16} />
