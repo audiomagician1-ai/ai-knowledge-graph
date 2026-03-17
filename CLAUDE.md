@@ -234,6 +234,8 @@ data/seed/         — 种子图谱数据
 - ✅ **学习开场加载提示 (2026-03-18, 8ba2749)**:
   - FE: dialogue.ts 新增 `isInitializing` 状态 — `startConversation` 入口 set true, LLM 返回/出错后 set false, reset/loadSaved 也重置
   - FE: LearnPage.tsx + ChatPanel.tsx — isInitializing 时显示 bounce 动画 loading 气泡 + "正在准备学习内容…" 文案, 解决首次进入学习 5-10 秒无反馈问题
+- ✅ **Dashboard"最近学习"修复 (2026-03-18, e6c8958)**:
+  - FE: DashboardContent.tsx + DashboardPage.tsx — "最近学习"改为基于 progress entries (last_learn_at排序), 而非仅显示评估记录(history); 未评估节点显示"学习中"标签, 已评估显示分数; 点击跳转到 /learn/:id
 
 ### EXE 打包规范
 ```
