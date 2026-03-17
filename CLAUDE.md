@@ -507,6 +507,17 @@ data/seed/         — 种子图谱数据
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续19轮零issues审查**
   - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已就绪
 
+- ✅ **第三十七轮深度巡逻审查+Supabase状态映射修复 (2026-03-18, 2e96d3a)**:
+  - **FIX**: supabase-sync.ts `toDbStatus()` — 本地status `not_started`在Supabase DB的CHECK约束(`locked/available/learning/reviewing/mastered`)中不存在, fullSync批量upsert时会触发约束违反。新增`toDbStatus()`映射函数: `not_started→available`, 其余保持不变; 下载路径同步修复: `available/locked→not_started`, `reviewing→learning` [M-01]
+  - TEST: +2 FE新测试(syncProgressToCloud: not_started→available映射 + learning/mastered直通)
+  - REVIEW: 20+模块深度审查(0 critical/0 major issues, 1 medium fix):
+    - FE: supabase-sync.ts(toDbStatus mapping/concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered)
+    - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format_dialogue/consistent mastered) + main.py(path traversal/CORS/headless) + llm/router.py(SSRF try/except/else/retry/double-check lock)
+    - SCHEMA: Supabase migration SQL与前端sync代码一致性验证(user_concept_status/conversations/learning_events表结构/CHECK约束/RLS)
+  - GITHUB: 0 open issues, 2 closed (all resolved)
+  - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.15s
+  - STATUS: 发现1个Medium级Supabase schema-code不一致bug并修复, 代码质量持续提升
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -610,7 +621,7 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (121 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24 + direct-llm 19 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (123 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 19 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (220 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
 ```
 
