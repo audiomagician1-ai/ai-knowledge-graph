@@ -487,6 +487,15 @@ data/seed/         — 种子图谱数据
   - VERIFY: 341 tests (121 FE + 220 BE) 全通过, tsc 0 errors, build 3.11s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续17轮零issues审查**
 
+- ✅ **第三十五轮深度巡逻审查 (2026-03-18)**:
+  - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge/getStreakDates) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment/pruneDirectConversations/content-type guard/message cap) + supabase-sync.ts(concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + auth.ts(subscription cleanup/callback dedup) + settings.ts(validateModelId/getDefaultModel/probeCORS) + graph.ts(simple setters) + text.ts(stripChoicesBlock) + graph-api.ts(encodeURIComponent) + dialogue-api.ts(signal passthrough) + learning-api.ts(fire-and-forget) + supabase.ts(createClient)
+    - FE Components: DashboardContent.tsx(progress-based activity/nameMap useMemo/graph node label display) + DashboardPage.tsx(two-column responsive layout/navigate on click) + useCountUp.ts(rAF cleanup/setTimeout cleanup) + useMediaQuery.ts(SSR safe/listener cleanup)
+    - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks/input validation) + learning.py(Field validation/status whitelist/score clamping/sync input validation) + evaluator.py(O(n) format_dialogue/consistent mastered/parse_json fallback chain) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless webbrowser/DEBUG docs) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + llm/router.py(SSRF try/except/else pattern/retry logic/double-check lock/model tier resolution) + config.py(ConfigDict/no hardcoded secrets) + redis_client.py(lazy reconnect with lock+cooldown/graceful degradation) + neo4j_client.py(explicit read/write transactions/driver None check)
+  - GITHUB: 0 open issues, 2 closed (all resolved)
+  - VERIFY: 341 tests (121 FE + 220 BE) 全通过, tsc 0 errors, build 3.21s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续18轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
