@@ -326,6 +326,13 @@ data/seed/         — 种子图谱数据
   - VERIFY: 118 tests (56 FE + 62 BE) 全通过, tsc 0 errors, build 3.17s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 连续5轮近零issues审查(仅1 minor修复)
 
+- ✅ **第十八轮深度巡逻审查 (2026-03-18)**:
+  - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge/getStreakDates) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment/pruneDirectConversations) + supabase-sync.ts(concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + auth.ts(subscription cleanup/callback dedup/OAuth redirect/displayName fallback chain) + settings.ts(validateModelId/getDefaultModel/probeCORS/generateSelfContainedBat) + LearnPage.tsx(recordedRef reset on retry/initializing indicator/error auto-dismiss/stripChoicesBlock) + ChatPanel.tsx(recordedConvRef per-conversationId dedup/concept change reset/celebration timer cleanup/ChoiceButtons) + DashboardContent.tsx(progress-based activity/graph node label display)
+    - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks) + learning.py(Field validation/status whitelist/score clamping/sync input validation) + evaluator.py(O(n) format_dialogue/consistent mastered logic/parse_json fallback chain) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless webbrowser/DEBUG docs) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + llm/router.py(SSRF prevention/retry logic/model tier resolution/httpx client lifecycle/double-check lock)
+  - VERIFY: 118 tests (56 FE + 62 BE) 全通过, tsc 0 errors, build 3.45s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续6轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
