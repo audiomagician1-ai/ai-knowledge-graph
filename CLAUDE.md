@@ -386,6 +386,14 @@ data/seed/         — 种子图谱数据
   - VERIFY: 218 tests (99 FE + 119 BE) 全通过, tsc 0 errors, build 3.20s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 仅1 minor修复
 
+- ✅ **第二十五轮深度巡逻审查+修复 (2026-03-18, 0fdd064)**:
+  - FE: ErrorBoundary.tsx 错误页面背景/文字颜色从硬编码深色(#0f172a/#f1f5f9/#94a3b8)改为CSS变量(--color-surface-0/--color-text-primary/--color-text-tertiary)+fallback值, 与Observatory Study浅色主题一致 [m-01]
+  - REVIEW: 20+模块全面深度审查(0 critical/0 major issues):
+    - FE: KnowledgeGraph.tsx(labelCache dispose/celebration rAF self-terminating/ResizeObserver cleanup/destroyed guard/dataRef stable callback) + GraphPage.tsx(enrichedGraphData useMemo/loadRecommendations try-finally/search useMemo/backendSynced one-time sync/loading finally) + LoginPage.tsx(OAuth loading guard/mode switch clear password/email confirmation check/autocomplete) + Sidebar.tsx(supabaseConfigured guard/displayName fallback/progress stats) + DraggableModal.tsx(center on open/drag bounds/backdrop close/event listener cleanup) + ErrorBoundary.tsx(CSS variable colors) + graph.ts(store简单setter) + graph-api.ts(encodeURIComponent) + learning-api.ts(fire-and-forget) + toast.ts(setTimeout+removeToast/counter uniqueness) + App.tsx(auth initialize/supabase-sync side-effect import/route order)
+    - BE: config.py(ConfigDict/no hardcoded secrets/warning logs) + neo4j_client.py(explicit read/write transactions/driver None check) + redis_client.py(lazy reconnect with lock+cooldown/old client cleanup/graceful degradation)
+  - VERIFY: 218 tests (99 FE + 119 BE) 全通过, tsc 0 errors, build 3.15s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 仅1 minor修复
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
