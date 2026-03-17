@@ -252,8 +252,8 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
           {/* Recent history preview (last 3) */}
           {conceptConvHistory.length > 0 && (
-            <div>
-              <div className="flex items-center justify-between mb-5">
+            <div className="rounded-xl" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)', padding: '20px 24px' }}>
+              <div className="flex items-center justify-between" style={{ marginBottom: 16 }}>
                 <span className="text-sm font-bold" style={{ color: 'var(--color-text-secondary)' }}>
                   最近对话
                 </span>
@@ -266,15 +266,15 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                   <History size={14} />
                 </button>
               </div>
-              <div className="space-y-3">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {conceptConvHistory.slice(0, 3).map((conv) => (
                   <div
                     key={conv.conversationId}
-                    className="flex items-center gap-4 rounded-xl px-5 py-4 cursor-pointer transition-all"
-                    style={{ backgroundColor: '#ffffff', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
+                    className="flex items-center gap-4 rounded-lg cursor-pointer transition-all"
+                    style={{ backgroundColor: '#f5f5f3', padding: '14px 18px', border: '1px solid transparent' }}
                     onClick={() => { loadSavedConversation(conv.conversationId); setView('chat'); }}
-                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--color-border-accent)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--color-border)'; }}
+                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#eeeeec'; e.currentTarget.style.borderColor = 'rgba(0,0,0,0.1)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#f5f5f3'; e.currentTarget.style.borderColor = 'transparent'; }}
                   >
                     <MessageSquare size={16} style={{ color: 'var(--color-text-tertiary)', flexShrink: 0 }} />
                     <span className="text-[15px] flex-1" style={{ color: 'var(--color-text-secondary)' }}>
