@@ -256,6 +256,12 @@ data/seed/         — 种子图谱数据
   - REVIEW: settings.ts(validateModelId/getDefaultModel) + SettingsContent + SettingsPage + direct-llm.ts + dialogue.ts(isInitializing) + DashboardContent + DashboardPage 全模块审查通过
   - TOTAL: 63 tests (34 FE + 29 BE) 全通过
 
+- ✅ **第十轮深度巡逻审查+修复 (2026-03-18, 6275b8c)**:
+  - FE: ChatPanel.tsx 添加 error toast 6秒自动消失(与LearnPage一致, 修复错误永久显示) [m-01]
+  - REVIEW: dialogue.ts + learning.ts + direct-llm.ts + supabase-sync.ts + auth.ts + LearnPage.tsx + ChatPanel.tsx + routers/dialogue.py + routers/learning.py + evaluator.py + main.py 全11模块深度审查通过
+  - Issue #2 已关闭 (a585803+10fd08a 修复确认)
+  - TOTAL: 63 tests (34 FE + 29 BE) 全通过, tsc 0 errors, build 3.17s
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
