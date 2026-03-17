@@ -414,6 +414,18 @@ data/seed/         — 种子图谱数据
   - VERIFY: 246 tests (99 FE + 147 BE) 全通过, tsc 0 errors, build 3.50s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续11轮零issues审查**
 
+- ✅ **第二十八轮深度巡逻审查+苏格拉底引擎测试补全 (2026-03-18)**:
+  - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge/getStreakDates) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment/pruneDirectConversations/content-type guard/message cap) + graph.ts(simple setters) + graph-api.ts(encodeURIComponent) + text.ts(stripChoicesBlock)
+    - BE: socratic.py(RAG loading/YAML frontmatter strip/3000 char truncation/build_system_prompt graph context/opening fallback/LLM failure resilience) + feynman_system.py(parse_ai_response/choices block regex/trailing JSON fallback/validate_choices) + dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks/input validation) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless webbrowser/DEBUG docs) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + learning.py(Field validation/status whitelist/score clamping)
+  - TEST: +24 BE新测试(socratic engine: _get_rag_dir 3 + _load_rag_content 6 + build_system_prompt 13 + opening_prompt 1 + get_opening fallback 1)
+    - _get_rag_dir: 返回类型/路径后缀/dev模式路径存在
+    - _load_rag_content: 已知概念返回内容/不存在概念返回空/不存在子域返回空/截断3000字/YAML frontmatter剥离/H1标题剥离
+    - build_system_prompt: 概念名/子域名/难度/先修/无先修/后续/关联/里程碑/非里程碑/RAG注入/无RAG/四阶段/choices格式
+    - get_opening: LLM失败时fallback(4个level选项)
+  - VERIFY: 270 tests (99 FE + 171 BE) 全通过, tsc 0 errors
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续12轮零issues审查**
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -518,7 +530,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (99 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6 + dialogue 24 + direct-llm 19)
-cd apps/api && python -m pytest          # 后端测试 ✅ (147 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28)
+cd apps/api && python -m pytest          # 后端测试 ✅ (171 tests: health 1 + sqlite 16 + learning 12 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28 + socratic 24)
 ```
 
 ### 提交规范
