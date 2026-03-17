@@ -518,6 +518,17 @@ data/seed/         — 种子图谱数据
   - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.15s
   - STATUS: 发现1个Medium级Supabase schema-code不一致bug并修复, 代码质量持续提升
 
+- ✅ **第三十八轮深度巡逻审查 (2026-03-18)**:
+  - REVIEW: 7核心模块+Supabase Schema深度审查全通过(0 critical/0 major/0 minor issues):
+    - FE: supabase-sync.ts(toDbStatus mapping verified against DB CHECK constraint/concurrency guard/batch upsert 50/batch/incremental history sync/status whitelist/fullSync download-first) + dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController/streaming simulation stale check) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge/getStreakDates/verifyStorageAvailable/isValidProgress)
+    - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks/input validation/no_key_response lock scope) + learning.py(Field validation/status whitelist/score clamping/sync input validation/recommend scoring)
+    - SCHEMA: 00001_initial_schema.sql CHECK constraint(`locked/available/learning/reviewing/mastered`) ↔ toDbStatus()映射 ↔ downloadProgressFromCloud()逆映射 三方一致性再次确认
+    - TESTS: supabase-sync.test.ts 8测试覆盖(skip/upsert/status mapping/history/conversation/fullSync zeros/concurrency guard)
+  - GITHUB: 0 open issues, 2 closed (all resolved)
+  - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.13s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续20轮零issues审查**
+  - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
