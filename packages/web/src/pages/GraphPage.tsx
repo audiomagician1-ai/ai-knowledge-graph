@@ -182,7 +182,7 @@ export function GraphPage() {
               </button>
             </div>
             {/* Chat */}
-            <div className="flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 min-h-0 overflow-hidden" style={{ borderTop: '1px solid var(--color-border)' }}>
               <ChatPanel conceptId={selectedNode!.id} conceptName={selectedNode!.label} />
             </div>
           </div>

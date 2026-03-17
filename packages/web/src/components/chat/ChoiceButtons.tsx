@@ -32,7 +32,7 @@ export function ChoiceButtons({ choices, onSelect, disabled, dimmed }: Props) {
             className="group flex items-center gap-4 px-5 py-4 rounded-xl text-left transition-all duration-150 active:scale-[0.98]"
             style={{
               backgroundColor: 'var(--color-surface-2)',
-              border: '1px solid var(--color-border)',
+              border: '1px solid rgba(0, 0, 0, 0.12)',
               cursor: disabled ? 'not-allowed' : 'pointer',
               opacity: disabled ? 0.5 : 1,
             }}

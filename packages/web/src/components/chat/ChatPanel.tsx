@@ -361,20 +361,20 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className="max-w-[85%] rounded-2xl px-8 py-7 text-[15px] leading-[1.9]"
+                className="max-w-[80%] rounded-2xl px-8 py-7 text-[15px] leading-[1.9]"
                 style={
                   msg.role === 'user'
                     ? {
                         backgroundColor: 'var(--color-tint-primary)',
-                        borderLeft: '2px solid var(--color-accent-primary)',
+                        borderLeft: '3px solid var(--color-accent-primary)',
                         color: 'var(--color-text-primary)',
-                        borderRadius: '2px 8px 8px 2px',
+                        borderRadius: '2px 12px 12px 2px',
                       }
                     : {
                         backgroundColor: 'var(--color-surface-2)',
                         color: 'var(--color-text-primary)',
                         borderBottomLeftRadius: 2,
-                        border: '1px solid var(--color-border)',
+                        border: '1px solid rgba(0, 0, 0, 0.13)',
                       }
                 }
               >
@@ -403,7 +403,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
       </div>
 
       {/* Input area */}
-      <div className="shrink-0 px-8 py-5" style={{ borderTop: '1px solid var(--color-border)' }}>
+      <div className="shrink-0 px-8 py-6" style={{ borderTop: '1px solid var(--color-border)' }}>
         {assessment ? (
           <div className="flex gap-3">
             <button
@@ -435,7 +435,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               className="flex items-end gap-3 rounded-xl px-5 py-4"
               style={{
                 backgroundColor: 'var(--color-surface-2)',
-                border: '1px solid var(--color-border)',
+                border: '1px solid rgba(0, 0, 0, 0.12)',
               }}
             >
               <textarea
