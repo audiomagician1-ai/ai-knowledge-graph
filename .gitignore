@@ -64,3 +64,6 @@ data/*.db-shm
 *.tsbuildinfo
 .turbo/
 .wrangler/
+
+# PowerShell artifacts (2>$null creates a file named "$null")
+$null
