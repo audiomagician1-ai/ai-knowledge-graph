@@ -158,7 +158,7 @@ const MAX_CONTEXT_MESSAGES = 20;
 // ─── Helpers ───
 
 /** Parse ```choices JSON block from LLM response content */
-function parseChoicesFromContent(text: string): { content: string; choices: Array<{ id: string; text: string; type: string }> } {
+export function parseChoicesFromContent(text: string): { content: string; choices: Array<{ id: string; text: string; type: string }> } {
   if (!text) return { content: '', choices: [] };
 
   // Try to find ```choices ... ``` block
@@ -189,7 +189,7 @@ function parseChoicesFromContent(text: string): { content: string; choices: Arra
 }
 
 /** Apply sliding window to messages array — keep system prompt separate */
-function windowMessages(messages: Array<{ role: string; content: string }>): Array<{ role: string; content: string }> {
+export function windowMessages(messages: Array<{ role: string; content: string }>): Array<{ role: string; content: string }> {
   if (messages.length <= MAX_CONTEXT_MESSAGES) return messages;
   // Always keep the first message (assistant opening) + last N messages
   return [messages[0], ...messages.slice(-MAX_CONTEXT_MESSAGES + 1)];
@@ -467,7 +467,9 @@ export function directChatStream(
           controller.enqueue(encoder.encode(
             `data: ${JSON.stringify({ type: 'chunk', content: `⚠️ LLM 返回了非预期的 content-type: ${streamCT}，请检查 Base URL 设置。` })}\n\n`
           ));
-          controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+          controller.enqueue(encoder.encode(
+            `data: ${JSON.stringify({ type: 'done', suggest_assess: false })}\n\n`
+          ));
           controller.close();
           return;
         }
@@ -623,7 +625,7 @@ export async function directAssess(conversationId: string): Promise<Record<strin
   };
 }
 
-function parseAssessmentJSON(text: string): any | null {
+export function parseAssessmentJSON(text: string): any | null {
   try { return JSON.parse(text); } catch { /* */ }
   if (text.includes('```json')) {
     const start = text.indexOf('```json') + 7;
