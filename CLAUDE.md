@@ -593,7 +593,21 @@ data/seed/         — 种子图谱数据
      - Workers: llm.ts(SSRF validateBaseUrl/normalizeProviderUrl) + dialogue.ts(40-message window/input validation/SSE hasDoneEvent) + learning.ts(sync input validation/status whitelist/score clamping/limit caps) + index.ts(CORS origin echo/no wildcard+credentials) + graph.ts(seed data/BFS depth limit)
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.16s, workers tsc 0 errors
-   - STATUS: Round-42发现的3个Workers安全/一致性问题(m-03/m-04/m-05)全部修复, Workers代码现与FastAPI backend安全水平对齐
+    - STATUS: Round-42发现的3个Workers安全/一致性问题(m-03/m-04/m-05)全部修复, Workers代码现与FastAPI backend安全水平对齐
+
+- ✅ **第四十四轮深度巡逻审查+Workers一致性修复 (2026-03-18, 608f0a5)**:
+   - **FIX**: workers/src/routes/dialogue.ts SSE transform丢失最后一个chunk — 当upstream LLM stream的done事件与chunk在同一网络包中时, `hasDoneEvent=true`导致整个raw value被跳过(含最后一段content)。修复: done事件存在时逐一re-encode chunk events再追加replaced done [M-01]
+   - **FIX**: workers/src/routes/learning.ts `/assess`缺少mastered降级防护 — 已掌握概念可被降级为learning。新增C-06保护: read existing→wasMastered check→effectiveMastered, 与FastAPI sqlite_client.py record_assessment一致 [C-01]
+   - **FIX**: workers/src/routes/learning.ts `/assess`添加score clamping到[0,100] [m-01]
+   - **FIX**: workers/src/routes/dialogue.ts `/assess`返回HTTP 400(非200)当对话轮数不足, 与FastAPI一致 [m-02]
+   - **FIX**: workers/src/routes/dialogue.ts `/assess`添加8000字符对话截断(优先保留最近消息, 防LLM上下文溢出), 与FastAPI evaluator._format_dialogue一致 [m-03]
+   - REVIEW: 20+模块+Workers深度审查:
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/parseAssessment)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format_dialogue/consistent mastered) + sqlite_client.py(mastered demotion protection)
+     - Workers: llm.ts(SSRF validateBaseUrl) + dialogue.ts(SSE chunk-aware transform/40-message window/input validation/8000 char truncation/400 status) + learning.ts(mastered demotion protection/score clamping/status whitelist/sync input validation) + index.ts(CORS) + graph.ts(BFS depth limit)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.15s, workers tsc 0 errors
+   - STATUS: 发现1个Critical(Workers mastered降级)+1个Medium(SSE丢chunk)+3个minor修复, Workers代码与FastAPI一致性进一步提升
 
 ### EXE 打包规范
 ```
