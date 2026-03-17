@@ -187,20 +187,21 @@ export function LearnPage() {
                   </div>
                 )}
                 <div
-                  className="max-w-[75%] rounded-2xl px-8 py-7 text-[14px] leading-[1.9]"
+                  className="max-w-[75%] rounded-2xl px-7 py-6 text-[14px] leading-[1.9]"
                   style={
                     msg.role === 'user'
                       ? {
-                          backgroundColor: 'var(--color-tint-primary)',
+                          backgroundColor: 'rgba(16, 185, 129, 0.08)',
                           borderLeft: '3px solid var(--color-accent-primary)',
                           color: 'var(--color-text-primary)',
                           borderRadius: '2px 12px 12px 2px',
                         }
                       : {
-                          backgroundColor: 'var(--color-surface-2)',
+                          backgroundColor: '#ffffff',
                           color: 'var(--color-text-primary)',
                           borderBottomLeftRadius: 2,
-                          border: '1px solid rgba(0, 0, 0, 0.13)',
+                          border: '1px solid rgba(0, 0, 0, 0.08)',
+                          boxShadow: '0 1px 4px rgba(0, 0, 0, 0.06)',
                         }
                   }
                 >
