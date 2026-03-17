@@ -269,6 +269,13 @@ data/seed/         — 种子图谱数据
   - TEST: +5 FE测试(stripChoicesBlock) + 17 BE测试(evaluator: validate_result 6 + parse_json 5 + fallback_evaluate 3 + format_dialogue 3)
   - TOTAL: 85 tests (39 FE + 46 BE) 全通过, tsc 0 errors, build 3.42s
 
+- ✅ **第十二轮深度巡逻审查 (2026-03-18, e64783a)**:
+  - REVIEW: 15模块深度审查全通过(0 issues found):
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save) + learning.ts(demotion protection/localStorage verification/streak race) + direct-llm.ts(sliding window/timeout/fallback mastered) + supabase-sync.ts(concurrency guard/batch upsert/incremental sync) + LearnPage.tsx(recordedRef reset/initializing indicator) + ChatPanel.tsx(recordedConvRef dedup/error auto-dismiss) + text.ts + text.test.ts + test_evaluator.py
+    - BE: dialogue.py(_busy try/finally/snapshot messages/double-check locking) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format/consistent mastered/fallback) + main.py(path traversal/wildcard+credentials/headless)
+  - VERIFY: 85 tests (39 FE + 46 BE) 全通过, tsc 0 errors, build 3.27s
+  - STATUS: 代码质量稳定, 0 open issues, 无待修复bug
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
