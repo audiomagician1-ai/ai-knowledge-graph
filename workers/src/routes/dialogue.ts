@@ -234,7 +234,7 @@ app.post('/assess', async (c) => {
   const userTurns = messages.filter(m => m.role === 'user').length;
 
   if (userTurns < 2) {
-    return c.json({ error: '请至少进行 2 轮对话后再评估', current_turns: userTurns });
+    return c.json({ error: '请至少进行 2 轮对话后再评估', current_turns: userTurns }, 400);
   }
 
   const conceptName = conv.concept_name;
@@ -245,9 +245,20 @@ app.post('/assess', async (c) => {
     difficulty: String(difficulty),
   });
 
-  const dialogueText = messages.map((m: any) =>
-    `[${m.role === 'user' ? '用户（老师）' : 'AI（学生）'}]: ${m.content}`
-  ).join('\n\n');
+  // Truncate dialogue to prevent exceeding LLM context window (matches FastAPI evaluator 8000 char limit)
+  let dialogueText = '';
+  let totalChars = 0;
+  const MAX_DIALOGUE_CHARS = 8000;
+  const dialogueLines: string[] = [];
+  // Prioritize recent messages by iterating in reverse
+  for (let i = messages.length - 1; i >= 0; i--) {
+    const m = messages[i];
+    const line = `[${m.role === 'user' ? '用户（老师）' : 'AI（学生）'}]: ${m.content}`;
+    if (totalChars + line.length > MAX_DIALOGUE_CHARS) break;
+    dialogueLines.unshift(line);
+    totalChars += line.length;
+  }
+  dialogueText = dialogueLines.join('\n\n');
 
   try {
     const response = await llmChat(c.env, {

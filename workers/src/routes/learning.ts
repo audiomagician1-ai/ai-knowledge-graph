@@ -83,27 +83,37 @@ app.post('/assess', async (c) => {
   }>();
   const db = c.env.DB;
   const now = Date.now() / 1000;
+  // Score clamping to [0, 100]
+  const clampedScore = Math.max(0, Math.min(100, Number(score) || 0));
+
+  // C-06 fix: Never demote mastered → learning (matches FastAPI sqlite_client.py)
+  const existing = await db.prepare('SELECT status, mastery_score, mastered_at FROM concept_progress WHERE concept_id = ?').bind(concept_id).first<any>();
+  const wasMastered = existing?.status === 'mastered';
+  const effectiveMastered = mastered || wasMastered;
+  const effectiveStatus = effectiveMastered ? 'mastered' : 'learning';
+  const effectiveScore = effectiveMastered ? Math.max(clampedScore, existing?.mastery_score || 0) : clampedScore;
+  const effectiveMasteredAt = effectiveMastered && !existing?.mastered_at ? now : (existing?.mastered_at || null);
 
   await db.prepare(`
     INSERT INTO concept_progress (concept_id, status, mastery_score, last_score, sessions, mastered_at, last_learn_at, created_at, updated_at)
     VALUES (?, ?, ?, ?, 1, ?, ?, ?, ?)
     ON CONFLICT(concept_id) DO UPDATE SET
       status = ?,
-      mastery_score = CASE WHEN ? THEN MAX(mastery_score, ?) ELSE ? END,
+      mastery_score = ?,
       last_score = ?,
-      mastered_at = CASE WHEN ? AND mastered_at IS NULL THEN ? ELSE mastered_at END,
+      mastered_at = ?,
       last_learn_at = ?,
       updated_at = ?
   `).bind(
-    concept_id, mastered ? 'mastered' : 'learning', score, score, mastered ? now : null, now, now, now,
-    mastered ? 'mastered' : 'learning', mastered, score, score, score, mastered, now, now, now,
+    concept_id, effectiveStatus, effectiveScore, clampedScore, effectiveMasteredAt, now, now, now,
+    effectiveStatus, effectiveScore, clampedScore, effectiveMasteredAt, now, now,
   ).run();
 
   // Add history entry
   await db.prepare('INSERT INTO learning_history (concept_id, concept_name, score, mastered, timestamp) VALUES (?, ?, ?, ?, ?)')
-    .bind(concept_id, concept_name, score, mastered ? 1 : 0, now).run();
+    .bind(concept_id, concept_name, clampedScore, effectiveMastered ? 1 : 0, now).run();
 
-  return c.json({ success: true, mastered });
+  return c.json({ success: true, mastered: effectiveMastered });
 });
 
 /** GET /learning/history */
