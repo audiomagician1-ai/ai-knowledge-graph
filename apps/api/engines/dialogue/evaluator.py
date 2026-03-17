@@ -67,9 +67,11 @@ class UnderstandingEvaluator:
         return self._fallback_evaluate(messages)
 
     def _format_dialogue(self, messages: list[dict], max_chars: int = 8000) -> str:
-        """格式化对话记录（截断到合理长度以避免超出LLM上下文窗口）"""
-        lines = []
+        """格式化对话记录（截断到合理长度以避免超出LLM上下文窗口）
+        m-08 fix: Use append + reverse to avoid O(n²) insert(0,...) pattern."""
+        collected = []
         total_chars = 0
+        truncated = False
         # Prioritize recent dialogue by iterating in reverse
         for msg in reversed(messages):
             if msg["role"] == "system":
@@ -77,11 +79,14 @@ class UnderstandingEvaluator:
             role = "用户（学习者）" if msg["role"] == "user" else "AI（学习伙伴/老师）"
             line = f"[{role}]: {msg['content']}"
             if total_chars + len(line) > max_chars:
-                lines.insert(0, "... (早期对话已省略)")
+                truncated = True
                 break
-            lines.insert(0, line)
+            collected.append(line)
             total_chars += len(line)
-        return "\n\n".join(lines)
+        collected.reverse()
+        if truncated:
+            collected.insert(0, "... (早期对话已省略)")
+        return "\n\n".join(collected)
 
     def _parse_json(self, text: str) -> Optional[dict]:
         """从 LLM 响应中提取 JSON"""

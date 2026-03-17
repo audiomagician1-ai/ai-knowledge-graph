@@ -23,7 +23,7 @@
 | **Phase 1** | W3-4 | 图谱展示 + 基础交互 | ✅ 完成 (267节点334边, 3D球面力导向图, 里程碑高亮) |
 | **Phase 2** | W5-7 | 对话引擎 (核心) | ✅ 完成 (LLM调用层+苏格拉底引擎+评估器+SSE流式+前端UI+RAG知识库) |
 | **Phase 3** | W8-9 | 节点点亮 + 进度系统 | ✅ 完成 (前置条件图+推荐集合+mastered绿光晕+recommended青光晕+Dashboard真实数据) |
-| **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+5轮审查79项+48测试+EXE打包) |
+| **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+6轮审查90项+49测试+EXE打包) |
 | **Phase 5** | W13+ | 可选登录 + 跨端同步 | 🟡 进行中 |
 
 ---
@@ -182,6 +182,19 @@ data/seed/         — 种子图谱数据
   - FE: SettingsPage.tsx 导出下载URL.revokeObjectURL延迟10s(防下载竞态) [m-02]
   - BE: config.py Pydantic `class Config`→`model_config = ConfigDict()`(消除DeprecationWarning) [m-03]
   - TEST: 前端23测试(learning store 10+settings store 13), 后端25测试(health 1+sqlite 12+learning API 12)
+- ✅ **第六轮审查+修复(10项修复+1新测试)**:
+  - BE: dialogue.py `_busy`检查移入lock保护区(修复check-then-act竞态) [C-02]
+  - BE: dialogue.py `_busy_since`时间戳+`_cleanup_cache`120s超时自动释放(防永久锁死) [C-03]
+  - BE: sqlite_client.py `record_assessment`mastered降级防护(was_mastered保护,与前端一致) [C-06]
+  - FE: direct-llm.ts fallback评估mastered判定统一为overall>=75且所有维度>=60(与后端一致) [C-04]
+  - FE: supabase-sync.ts status白名单校验(防非法值传播)+`||`改`??`(防score=0丢失) [C-05]
+  - FE: supabase-sync.ts merge `last_learn_at`安全比较(fallback to 0防undefined) [M-10]
+  - FE: LearnPage.tsx cleanup先cancelStream再reset(防stale回调) [M-01]
+  - FE: LearnPage.tsx assessment recordedRef防重复记录 [M-02]
+  - BE: evaluator.py `_format_dialogue` O(n²)→O(n)(append+reverse替代insert(0)) [m-08]
+  - BE: main.py `webbrowser.open`异常处理(无头环境安全) [m-14]
+  - BE: graph.py `_load_rag_index`添加threading.Lock线程安全 [m-18]
+  - TEST: 后端新增mastered降级防护测试(26 tests total)
 - ✅ **第四轮深度审查+修复(14项, d62e997)**:
   - FE: supabase-sync.ts `fullSync`改为先下载后上传(防覆盖云端新数据→数据丢失) [C-01]
   - FE: supabase-sync.ts `fullSync`并发保护(`_syncing`标志防多标签页竞态) [M-06]
@@ -302,7 +315,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (23 tests: learning store + settings store)
-cd apps/api && python -m pytest          # 后端测试 ✅ (25 tests: health + sqlite_client + learning API)
+cd apps/api && python -m pytest          # 后端测试 ✅ (26 tests: health + sqlite_client + learning API)
 ```
 
 ### 提交规范

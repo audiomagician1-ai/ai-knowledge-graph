@@ -49,9 +49,18 @@ _MAX_MESSAGES_PER_SESSION = 40  # Max messages in a single session (prevents unb
 _VALID_PROVIDERS = {"openrouter", "openai", "deepseek", "custom"}
 
 
+_BUSY_TIMEOUT_SEC = 120  # Auto-release _busy after 120s (handles client disconnect edge cases)
+
+
 def _cleanup_cache():
-    """Remove expired cache entries and orphan locks."""
+    """Remove expired cache entries, orphan locks, and stale _busy flags."""
     now = time.time()
+    # Release stale _busy flags (C-03: handles edge cases where GeneratorExit not called)
+    for v in _session_cache.values():
+        if v.get("_busy") and now - v.get("_busy_since", 0) > _BUSY_TIMEOUT_SEC:
+            v.pop("_busy", None)
+            v.pop("_busy_since", None)
+            logger.warning("Auto-released stale _busy for session %s", v.get("id"))
     expired = [k for k, v in _session_cache.items() if now - v.get("last_active", 0) > _CACHE_TTL_SEC]
     for k in expired:
         _session_cache.pop(k, None)
@@ -239,12 +248,14 @@ async def chat(req: ChatRequest, request: Request):
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
         return StreamingResponse(no_key_response(), media_type="text/event-stream")
 
-    # Reject concurrent requests for the same session (C-02 fix)
-    if session.get("_busy"):
-        raise HTTPException(status_code=429, detail="该会话正在处理中，请稍后重试")
-    session["_busy"] = True
-
+    # Reject concurrent requests for the same session (C-02 fix: check under lock)
     lock = _get_lock(req.conversation_id)
+    async with lock:
+        if session.get("_busy"):
+            raise HTTPException(status_code=429, detail="该会话正在处理中，请稍后重试")
+        session["_busy"] = True
+        session["_busy_since"] = time.time()
+
     async with lock:
         session["messages"].append({"role": "user", "content": req.message})
         # Truncate to sliding window if exceeding limit (keep first + context notice + last N)
@@ -297,6 +308,7 @@ async def chat(req: ChatRequest, request: Request):
             yield f"data: {json.dumps({'type': 'done', 'suggest_assess': False}, ensure_ascii=False)}\n\n"
         finally:
             session.pop("_busy", None)  # Always release — handles client disconnect (GeneratorExit)
+            session.pop("_busy_since", None)
 
     return StreamingResponse(
         generate(),

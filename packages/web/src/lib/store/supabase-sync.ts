@@ -65,10 +65,14 @@ export async function downloadProgressFromCloud(): Promise<Record<string, Concep
       .eq('user_id', uid);
     if (error || !data) return {};
     const result: Record<string, ConceptProgress> = {};
+    const validStatuses = new Set(['not_started', 'learning', 'mastered']);
     for (const row of data) {
+      // C-05: Whitelist status values to prevent invalid data propagation
+      const rawStatus = row.status === 'reviewing' ? 'learning' : row.status;
+      const safeStatus = validStatuses.has(rawStatus) ? rawStatus : 'learning';
       result[row.concept_id] = {
         concept_id: row.concept_id,
-        status: row.status === 'reviewing' ? 'learning' : row.status as any,
+        status: safeStatus as any,
         mastery_score: (row.mastery_level || 0) * 100,
         last_score: row.feynman_score ? row.feynman_score * 100 : undefined,
         sessions: row.total_sessions || 0,
@@ -123,8 +127,8 @@ export async function downloadHistoryFromCloud(limit = 200): Promise<LearningHis
     return data.map((row: any) => ({
       concept_id: row.concept_id,
       concept_name: row.payload?.concept_name || row.concept_id,
-      score: row.payload?.score || 0,
-      mastered: row.payload?.mastered || false,
+      score: row.payload?.score ?? 0,
+      mastered: row.payload?.mastered ?? false,
       timestamp: new Date(row.created_at).getTime(),
     }));
   } catch (err) {
@@ -225,7 +229,10 @@ export async function fullSync(): Promise<{
       const local = localProgress[cid];
       const cloud = cloudProgress[cid];
       if (local && cloud) {
-        merged[cid] = cloud.last_learn_at > local.last_learn_at ? cloud : local;
+        // M-10: Safe comparison — fallback to 0 when timestamps are undefined/NaN
+        const cloudTs = cloud.last_learn_at || 0;
+        const localTs = local.last_learn_at || 0;
+        merged[cid] = cloudTs >= localTs ? cloud : local;
         mergedCount++;
       } else {
         merged[cid] = (local || cloud)!;

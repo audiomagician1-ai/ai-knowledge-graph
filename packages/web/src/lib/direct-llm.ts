@@ -606,13 +606,17 @@ export async function directAssess(conversationId: string): Promise<Record<strin
     }
   } catch { /* fallback */ }
 
-  // Fallback
+  // Fallback — mastered logic must match backend evaluator._validate_result:
+  // overall_score >= 75 AND all dimensions >= 60
   const base = Math.min(40 + userTurns * 8, 85);
+  const dims = { completeness: base, accuracy: base - 5, depth: base - 10, examples: base - 15 };
+  const overall = base - 5;
+  const mastered = overall >= 75 && Object.values(dims).every(s => s >= 60);
   return {
     concept_id: conv.conceptId, concept_name: conv.conceptName, turns: userTurns,
-    completeness: base, accuracy: base - 5, depth: base - 10, examples: base - 15,
-    overall_score: base - 5, gaps: ['评估服务暂时不可用'], feedback: `你进行了 ${userTurns} 轮对话，表现不错！`,
-    mastered: base >= 80,
+    ...dims, overall_score: overall,
+    gaps: ['评估服务暂时不可用'], feedback: `你进行了 ${userTurns} 轮对话，表现不错！`,
+    mastered,
   };
 }
 

@@ -28,21 +28,30 @@ export function LearnPage() {
   const isBusy = isStreaming || isAssessing;
   const { startLearning, recordAssessment } = useLearningStore();
   const isDesktop = useIsDesktop();
+  const recordedRef = useRef(false);
 
   useEffect(() => {
     if (conceptId) {
       startConversation(conceptId);
       startLearning(conceptId);
     }
-    return () => reset();
+    // M-01: Cancel active stream before reset to prevent stale callbacks
+    return () => { cancelStream(); reset(); };
   }, [conceptId]);
 
+  // M-02: Prevent duplicate recording if assessment object is re-created
   useEffect(() => {
-    if (assessment && conceptId) {
+    if (assessment && conceptId && !recordedRef.current) {
+      recordedRef.current = true;
       recordAssessment(conceptId, conceptName || conceptId, assessment.overall_score, assessment.mastered);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [assessment, conceptId]);
+
+  // Reset recorded flag when concept changes (new learning session)
+  useEffect(() => {
+    recordedRef.current = false;
+  }, [conceptId]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

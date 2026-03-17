@@ -217,15 +217,20 @@ def start_learning(concept_id: str) -> dict:
 
 
 def record_assessment(concept_id: str, concept_name: str, score: float, mastered: bool) -> dict:
-    """Record assessment result, potentially marking as mastered."""
+    """Record assessment result, potentially marking as mastered.
+    C-06 fix: Never demote a mastered concept back to learning — matches frontend wasMastered guard.
+    """
     now = time.time()
     existing = get_progress(concept_id)
     old_score = existing['mastery_score'] if existing else 0
+    was_mastered = existing is not None and existing.get('status') == 'mastered'
 
+    # Once mastered, always mastered (demotion protection)
+    effective_mastered = mastered or was_mastered
     progress = upsert_progress(
         concept_id,
-        status='mastered' if mastered else 'learning',
-        mastery_score=max(score, old_score) if mastered else score,
+        status='mastered' if effective_mastered else 'learning',
+        mastery_score=max(score, old_score) if effective_mastered else score,
         last_score=score,
         sessions=max((existing['sessions'] if existing else 0), 1),
         mastered_at=now if mastered and not (existing and existing.get('mastered_at')) else (existing.get('mastered_at') if existing else None),

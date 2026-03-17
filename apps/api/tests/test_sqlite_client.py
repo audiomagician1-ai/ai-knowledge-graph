@@ -55,6 +55,22 @@ class TestConceptProgress:
         assert result["status"] == "learning"
         assert result["mastery_score"] == 60.0
 
+    def test_record_assessment_no_demotion(self):
+        """C-06: Once mastered, re-assessment with mastered=False should NOT demote back to learning."""
+        sc.start_learning("bert")
+        sc.record_assessment("bert", "BERT", 85.0, True)
+        p1 = sc.get_progress("bert")
+        assert p1["status"] == "mastered"
+        assert p1["mastered_at"] is not None
+        old_mastered_at = p1["mastered_at"]
+
+        # Re-assess with lower score, mastered=False → should still be mastered
+        result = sc.record_assessment("bert", "BERT", 55.0, False)
+        assert result["status"] == "mastered", "mastered should not be demoted"
+        assert result["mastery_score"] >= 85.0, "mastery_score should keep the higher value"
+        assert result["last_score"] == 55.0, "last_score should reflect the new assessment"
+        assert result["mastered_at"] == old_mastered_at, "mastered_at should not change"
+
     def test_upsert_progress_atomic(self):
         sc.upsert_progress("rl", status="learning", mastery_score=30)
         sc.upsert_progress("rl", status="mastered", mastery_score=90)

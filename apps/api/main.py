@@ -144,9 +144,14 @@ if __name__ == "__main__":
     print(f"  http://{host}:{port}")
     print(f"{'='*50}\n")
 
-    # Auto-open browser
+    # Auto-open browser (m-14: gracefully handle headless/SSH environments)
     import webbrowser
     import threading
-    threading.Timer(1.5, lambda: webbrowser.open(f"http://{host}:{port}")).start()
+    def _try_open_browser():
+        try:
+            webbrowser.open(f"http://{host}:{port}")
+        except Exception:
+            pass  # Headless server or no display — silently skip
+    threading.Timer(1.5, _try_open_browser).start()
 
     uvicorn.run(app, host=host, port=port, log_level="info")

@@ -209,12 +209,18 @@ def _get_rag_dir() -> str:
 
 RAG_DIR = _get_rag_dir()
 _rag_index_cache: dict | None = None
+_rag_lock = threading.Lock()  # m-18: Thread safety for RAG index loading
 
 
 def _load_rag_index() -> dict:
-    """懒加载 RAG 索引"""
+    """懒加载 RAG 索引 (thread-safe)"""
     global _rag_index_cache
-    if _rag_index_cache is None:
+    if _rag_index_cache is not None:
+        return _rag_index_cache
+    with _rag_lock:
+        # Double-check after acquiring lock
+        if _rag_index_cache is not None:
+            return _rag_index_cache
         index_path = os.path.join(RAG_DIR, "_index.json")
         if os.path.exists(index_path):
             with open(index_path, "r", encoding="utf-8") as f:
