@@ -263,7 +263,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         });
       }
     } catch (err) {
-      set({ isInitializing: false, error: err instanceof Error ? err.message : 'Unknown error' });
+      set({ isInitializing: false, isStreaming: false, error: err instanceof Error ? err.message : 'Unknown error' });
     }
   },
 
