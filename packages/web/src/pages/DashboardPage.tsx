@@ -1,6 +1,6 @@
 ﻿import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useLearningStore, type LearningHistory } from '@/lib/store/learning';
+import { useLearningStore, type ConceptProgress } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
 import {
   Zap, BookOpen, Flame, Trophy, ArrowRight, Clock, Target, ArrowLeft,
@@ -8,7 +8,7 @@ import {
 import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
 
 export function DashboardPage() {
-  const { stats, progress, history, streak, computeStats, refreshStreak } = useLearningStore();
+  const { stats, progress, streak, computeStats, refreshStreak } = useLearningStore();
   const { graphData } = useGraphStore();
   const navigate = useNavigate();
   const isDesktop = useIsDesktop();
@@ -19,7 +19,12 @@ export function DashboardPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand stable refs, only re-run when graphData changes
   }, [graphData]);
 
-  const recentHistory = [...history].reverse().slice(0, 8);
+  // Build recent activity from progress entries (sorted by last_learn_at)
+  // Shows nodes as soon as user starts learning, even before assessment
+  const recentActivity = Object.values(progress)
+    .filter(p => p.last_learn_at > 0)
+    .sort((a, b) => b.last_learn_at - a.last_learn_at)
+    .slice(0, 8);
   const masteredNodes = Object.values(progress).filter(p => p.status === 'mastered');
   const learningNodes = Object.values(progress).filter(p => p.status === 'learning');
   const totalNodes = stats?.total_concepts || 0;
@@ -102,7 +107,7 @@ export function DashboardPage() {
               <Clock size={14} style={{ color: 'var(--color-text-tertiary)' }} />
               <span className="text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>最近学习</span>
             </div>
-            {recentHistory.length === 0 ? (
+            {recentActivity.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)' }}>还没有学习记录</p>
                 <button
@@ -114,8 +119,8 @@ export function DashboardPage() {
               </div>
             ) : (
               <div className="space-y-0.5">
-                {recentHistory.map((item, i) => (
-                  <HistoryItem key={`${item.concept_id}-${item.timestamp}-${i}`} item={item} navigate={navigate} />
+                {recentActivity.map((item) => (
+                  <ActivityItem key={item.concept_id} item={item} navigate={navigate} />
                 ))}
               </div>
             )}
@@ -162,14 +167,19 @@ export function DashboardPage() {
   );
 }
 
-function HistoryItem({ item, navigate }: { item: LearningHistory; navigate: (p: string) => void }) {
-  const time = new Date(item.timestamp);
+function ActivityItem({ item, navigate }: { item: ConceptProgress; navigate: (p: string) => void }) {
+  const time = new Date(item.last_learn_at);
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${time.getHours().toString().padStart(2, '0')}:${time.getMinutes().toString().padStart(2, '0')}`;
-  const scoreColor = item.score >= 80 ? 'var(--color-accent-emerald)' : item.score >= 60 ? 'var(--color-accent-amber)' : 'var(--color-accent-rose)';
+  const isMastered = item.status === 'mastered';
+  const hasScore = (item.mastery_score || 0) > 0;
+  const scoreColor = hasScore
+    ? (item.mastery_score >= 80 ? 'var(--color-accent-emerald)' : item.mastery_score >= 60 ? 'var(--color-accent-amber)' : 'var(--color-accent-rose)')
+    : 'var(--color-text-tertiary)';
+  const displayName = item.concept_id.replace(/_/g, ' ');
 
   return (
     <button
-      onClick={() => navigate('/graph')}
+      onClick={() => navigate(`/learn/${item.concept_id}`)}
       className="w-full flex items-center gap-3 rounded-md px-3 py-2.5 transition-all group"
       onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
       onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
@@ -177,17 +187,21 @@ function HistoryItem({ item, navigate }: { item: LearningHistory; navigate: (p: 
       <div
         className="w-6 h-6 rounded-md flex items-center justify-center shrink-0"
         style={{
-          backgroundColor: item.mastered ? 'rgba(52,211,153,0.1)' : 'rgba(234,179,8,0.1)',
-          color: item.mastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)',
+          backgroundColor: isMastered ? 'rgba(52,211,153,0.1)' : 'rgba(234,179,8,0.1)',
+          color: isMastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)',
         }}
       >
-        {item.mastered ? <Zap size={13} /> : <BookOpen size={13} />}
+        {isMastered ? <Zap size={13} /> : <BookOpen size={13} />}
       </div>
       <div className="flex-1 min-w-0 text-left">
-        <div className="text-sm font-medium truncate" style={{ color: 'var(--color-text-primary)' }}>{item.concept_name}</div>
+        <div className="text-sm font-medium truncate" style={{ color: 'var(--color-text-primary)' }}>{displayName}</div>
         <div className="text-xs font-mono" style={{ color: 'var(--color-text-tertiary)' }}>{timeStr}</div>
       </div>
-      <span className="text-sm font-bold font-mono" style={{ color: scoreColor }}>{item.score}</span>
+      {hasScore ? (
+        <span className="text-sm font-bold font-mono" style={{ color: scoreColor }}>{item.mastery_score}</span>
+      ) : (
+        <span className="text-xs" style={{ color: 'var(--color-accent-amber)' }}>学习中</span>
+      )}
       <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--color-text-tertiary)' }} />
     </button>
   );

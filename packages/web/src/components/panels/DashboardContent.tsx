@@ -1,10 +1,10 @@
 ﻿import { useEffect } from 'react';
-import { useLearningStore, type LearningHistory } from '@/lib/store/learning';
+import { useLearningStore, type ConceptProgress } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
 import { Zap, BookOpen, Flame, Trophy, Clock, Target } from 'lucide-react';
 
 export function DashboardContent() {
-  const { stats, progress, history, streak, computeStats, refreshStreak } = useLearningStore();
+  const { stats, progress, streak, computeStats, refreshStreak } = useLearningStore();
   const { graphData } = useGraphStore();
 
   useEffect(() => {
@@ -12,7 +12,12 @@ export function DashboardContent() {
     if (graphData) computeStats(graphData.nodes.length);
   }, [graphData]);
 
-  const recentHistory = [...history].reverse().slice(0, 6);
+  // Build recent activity from progress entries (sorted by last_learn_at)
+  // This ensures nodes show up as soon as user starts learning, even before assessment
+  const recentActivity = Object.values(progress)
+    .filter(p => p.last_learn_at > 0)
+    .sort((a, b) => b.last_learn_at - a.last_learn_at)
+    .slice(0, 6);
   const masteredNodes = Object.values(progress).filter(p => p.status === 'mastered');
   const learningNodes = Object.values(progress).filter(p => p.status === 'learning');
   const totalNodes = stats?.total_concepts || 0;
@@ -56,12 +61,12 @@ export function DashboardContent() {
           <Clock size={15} style={{ color: 'var(--color-text-tertiary)' }} />
           <span style={{ fontSize: 14, fontWeight: 600 }}>最近学习</span>
         </div>
-        {recentHistory.length === 0 ? (
+        {recentActivity.length === 0 ? (
           <p style={{ fontSize: 14, textAlign: 'center', padding: '36px 0', color: 'var(--color-text-tertiary)' }}>还没有学习记录</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            {recentHistory.map((item, i) => (
-              <HistoryRow key={`${item.concept_id}-${i}`} item={item} />
+            {recentActivity.map((item) => (
+              <ActivityRow key={item.concept_id} item={item} />
             ))}
           </div>
         )}
@@ -90,20 +95,30 @@ export function DashboardContent() {
   );
 }
 
-function HistoryRow({ item }: { item: LearningHistory }) {
-  const time = new Date(item.timestamp);
+function ActivityRow({ item }: { item: ConceptProgress }) {
+  const time = new Date(item.last_learn_at);
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${String(time.getHours()).padStart(2, '0')}:${String(time.getMinutes()).padStart(2, '0')}`;
-  const scoreColor = item.score >= 80 ? 'var(--color-accent-emerald)' : item.score >= 60 ? 'var(--color-accent-primary)' : 'var(--color-accent-rose)';
+  const isMastered = item.status === 'mastered';
+  const hasScore = (item.mastery_score || 0) > 0;
+  const scoreColor = hasScore
+    ? (item.mastery_score >= 80 ? 'var(--color-accent-emerald)' : item.mastery_score >= 60 ? 'var(--color-accent-primary)' : 'var(--color-accent-rose)')
+    : 'var(--color-text-tertiary)';
+  // Display concept name: replace underscores with spaces for readability
+  const displayName = item.concept_id.replace(/_/g, ' ');
   return (
     <div className="flex items-center" style={{ gap: 12, borderRadius: 8, padding: '10px 16px', backgroundColor: 'transparent' }}>
-      <div className="flex items-center justify-center shrink-0" style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: item.mastered ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.1)', color: item.mastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>
-        {item.mastered ? <Zap size={13} /> : <BookOpen size={13} />}
+      <div className="flex items-center justify-center shrink-0" style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: isMastered ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.1)', color: isMastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>
+        {isMastered ? <Zap size={13} /> : <BookOpen size={13} />}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="truncate" style={{ fontSize: 14 }}>{item.concept_name}</div>
+        <div className="truncate" style={{ fontSize: 14 }}>{displayName}</div>
         <div className="font-mono" style={{ fontSize: 12, marginTop: 4, color: 'var(--color-text-tertiary)' }}>{timeStr}</div>
       </div>
-      <span className="font-bold font-mono" style={{ fontSize: 15, color: scoreColor }}>{item.score}</span>
+      {hasScore ? (
+        <span className="font-bold font-mono" style={{ fontSize: 15, color: scoreColor }}>{item.mastery_score}</span>
+      ) : (
+        <span style={{ fontSize: 12, color: 'var(--color-accent-amber)' }}>学习中</span>
+      )}
     </div>
   );
 }
