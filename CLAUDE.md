@@ -307,6 +307,17 @@ data/seed/         — 种子图谱数据
   - VERIFY: 101 tests (39 FE + 62 BE) 全通过, tsc 0 errors, build 3.44s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, 连续3轮零issues审查
 
+- ✅ **第十六轮巡逻审查+Phase5测试补全 (2026-03-18)**:
+  - REVIEW: auth.ts + supabase-sync.ts 深度审查通过(0 critical/0 major issues)
+    - auth.ts: onAuthLogin回调去重/反注册 + HMR订阅清理 + displayName fallback链 + isAuthenticated安全getter
+    - supabase-sync.ts: _syncing并发guard + try/finally释放 + 状态白名单(C-05) + last_learn_at安全比较(M-10) + 批量upsert 50/batch(M-04) + 增量历史同步
+    - NOTE: downloadConversationsFromCloud/CloudConversation 为未使用的预留代码(Phase 5 E2E)
+  - TEST: +17 FE新测试:
+    - auth store 11测试: onAuthLogin回调注册/去重/反注册 + displayName 5种fallback + isAuthenticated有无session + supabaseConfigured默认值
+    - supabase-sync 6测试: syncProgressToCloud skip(无用户)/upsert(有用户) + syncHistoryToCloud skip + syncConversationToCloud skip + fullSync zeros(无用户)/并发guard
+  - TOTAL: 118 tests (56 FE + 62 BE) 全通过, tsc 0 errors, build 3.17s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 连续4轮零issues审查
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -410,7 +421,7 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (39 tests: learning store 12 + settings store 22 + text utils 5)
+cd packages/web && npx vitest run        # 前端测试 ✅ (56 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 6)
 cd apps/api && python -m pytest          # 后端测试 ✅ (62 tests: health 1 + sqlite_client 16 + learning API 12 + evaluator 17 + dialogue API 16)
 ```
 
