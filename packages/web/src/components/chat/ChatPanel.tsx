@@ -69,6 +69,13 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, assessment]);
 
+  // m-01: Auto-dismiss error after 6 seconds (consistent with LearnPage)
+  useEffect(() => {
+    if (!error) return;
+    const timer = setTimeout(() => useDialogueStore.setState({ error: null }), 6000);
+    return () => clearTimeout(timer);
+  }, [error]);
+
   const handleStartLearning = () => {
     startConversation(conceptId);
     startLearning(conceptId);
