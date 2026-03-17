@@ -276,6 +276,15 @@ data/seed/         — 种子图谱数据
   - VERIFY: 85 tests (39 FE + 46 BE) 全通过, tsc 0 errors, build 3.27s
   - STATUS: 代码质量稳定, 0 open issues, 无待修复bug
 
+- ✅ **对话API测试补全 (2026-03-18)**:
+  - TEST: +16 BE新测试(dialogue API: 创建会话3 + 聊天3 + 评估4 + 获取会话3 + 输入校验3)
+    - 创建: 成功/未知概念404/缺少参数422
+    - 聊天: 无API Key提示/不存在会话404/缺消息422
+    - 评估: 轮数不足400/成功mastered/未mastered/不存在会话404
+    - 获取: 详情/不存在404/列表
+    - 校验: concept_id超长/message超长/is_choice标志
+  - TOTAL: 101 tests (39 FE + 62 BE) 全通过
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -380,7 +389,7 @@ Release Note 包含:
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (39 tests: learning store 12 + settings store 22 + text utils 5)
-cd apps/api && python -m pytest          # 后端测试 ✅ (46 tests: health 1 + sqlite_client 14 + learning API 14 + evaluator 17)
+cd apps/api && python -m pytest          # 后端测试 ✅ (62 tests: health 1 + sqlite_client 14 + learning API 14 + evaluator 17 + dialogue API 16)
 ```
 
 ### 提交规范
