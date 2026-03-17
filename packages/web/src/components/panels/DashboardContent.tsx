@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+﻿import { useEffect, useMemo } from 'react';
 import { useLearningStore, type ConceptProgress } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
 import { Zap, BookOpen, Flame, Trophy, Clock, Target } from 'lucide-react';
@@ -11,6 +11,13 @@ export function DashboardContent() {
     refreshStreak();
     if (graphData) computeStats(graphData.nodes.length);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand stable refs
+  }, [graphData]);
+
+  // Build concept ID → label lookup from graph data
+  const nameMap = useMemo(() => {
+    const m: Record<string, string> = {};
+    if (graphData) for (const n of graphData.nodes) m[n.id] = n.label;
+    return m;
   }, [graphData]);
 
   // Build recent activity from progress entries (sorted by last_learn_at)
@@ -67,7 +74,7 @@ export function DashboardContent() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {recentActivity.map((item) => (
-              <ActivityRow key={item.concept_id} item={item} />
+              <ActivityRow key={item.concept_id} item={item} nameMap={nameMap} />
             ))}
           </div>
         )}
@@ -86,7 +93,7 @@ export function DashboardContent() {
           <div className="flex flex-wrap" style={{ gap: 8 }}>
             {masteredNodes.map((p) => (
               <span key={p.concept_id} style={{ borderRadius: 8, padding: '6px 14px', fontSize: 12, backgroundColor: 'rgba(138,173,122,0.06)', color: 'var(--color-accent-emerald)' }}>
-                {p.concept_id.replace(/_/g, ' ')}
+                {nameMap[p.concept_id] || p.concept_id.replace(/-/g, ' ')}
               </span>
             ))}
           </div>
@@ -96,7 +103,7 @@ export function DashboardContent() {
   );
 }
 
-function ActivityRow({ item }: { item: ConceptProgress }) {
+function ActivityRow({ item, nameMap }: { item: ConceptProgress; nameMap: Record<string, string> }) {
   const time = new Date(item.last_learn_at);
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${String(time.getHours()).padStart(2, '0')}:${String(time.getMinutes()).padStart(2, '0')}`;
   const isMastered = item.status === 'mastered';
@@ -104,8 +111,8 @@ function ActivityRow({ item }: { item: ConceptProgress }) {
   const scoreColor = hasScore
     ? (item.mastery_score >= 80 ? 'var(--color-accent-emerald)' : item.mastery_score >= 60 ? 'var(--color-accent-primary)' : 'var(--color-accent-rose)')
     : 'var(--color-text-tertiary)';
-  // Display concept name: replace underscores with spaces for readability
-  const displayName = item.concept_id.replace(/_/g, ' ');
+  // Display concept name from graph data, fallback to humanized ID
+  const displayName = nameMap[item.concept_id] || item.concept_id.replace(/-/g, ' ');
   return (
     <div className="flex items-center" style={{ gap: 12, borderRadius: 8, padding: '10px 16px', backgroundColor: 'transparent' }}>
       <div className="flex items-center justify-center shrink-0" style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: isMastered ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.1)', color: isMastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>

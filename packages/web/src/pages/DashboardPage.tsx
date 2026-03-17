@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+﻿import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLearningStore, type ConceptProgress } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
@@ -17,6 +17,13 @@ export function DashboardPage() {
     refreshStreak();
     if (graphData) computeStats(graphData.nodes.length);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand stable refs, only re-run when graphData changes
+  }, [graphData]);
+
+  // Build concept ID → label lookup from graph data
+  const nameMap = useMemo(() => {
+    const m: Record<string, string> = {};
+    if (graphData) for (const n of graphData.nodes) m[n.id] = n.label;
+    return m;
   }, [graphData]);
 
   // Build recent activity from progress entries (sorted by last_learn_at)
@@ -120,7 +127,7 @@ export function DashboardPage() {
             ) : (
               <div className="space-y-0.5">
                 {recentActivity.map((item) => (
-                  <ActivityItem key={item.concept_id} item={item} navigate={navigate} />
+                  <ActivityItem key={item.concept_id} item={item} navigate={navigate} nameMap={nameMap} />
                 ))}
               </div>
             )}
@@ -155,7 +162,7 @@ export function DashboardPage() {
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(52,211,153,0.12)')}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(52,211,153,0.06)')}
                   >
-                    {p.concept_id.replace(/_/g, ' ')}
+                    {nameMap[p.concept_id] || p.concept_id.replace(/-/g, ' ')}
                   </button>
                 ))}
               </div>
@@ -167,7 +174,7 @@ export function DashboardPage() {
   );
 }
 
-function ActivityItem({ item, navigate }: { item: ConceptProgress; navigate: (p: string) => void }) {
+function ActivityItem({ item, navigate, nameMap }: { item: ConceptProgress; navigate: (p: string) => void; nameMap: Record<string, string> }) {
   const time = new Date(item.last_learn_at);
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${time.getHours().toString().padStart(2, '0')}:${time.getMinutes().toString().padStart(2, '0')}`;
   const isMastered = item.status === 'mastered';
@@ -175,7 +182,7 @@ function ActivityItem({ item, navigate }: { item: ConceptProgress; navigate: (p:
   const scoreColor = hasScore
     ? (item.mastery_score >= 80 ? 'var(--color-accent-emerald)' : item.mastery_score >= 60 ? 'var(--color-accent-amber)' : 'var(--color-accent-rose)')
     : 'var(--color-text-tertiary)';
-  const displayName = item.concept_id.replace(/_/g, ' ');
+  const displayName = nameMap[item.concept_id] || item.concept_id.replace(/-/g, ' ');
 
   return (
     <button
