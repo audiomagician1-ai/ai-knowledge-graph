@@ -251,6 +251,11 @@ data/seed/         — 种子图谱数据
   - TEST: +9 新测试(validateModelId 5 + getDefaultModel 3 + modelHint 1)
   - TOTAL: 63 tests (34 FE + 29 BE) 全通过
 
+- ✅ **第九轮巡逻审查 (2026-03-18, 10fd08a)**:
+  - FE: DashboardContent.tsx useEffect添加eslint-disable注释(Zustand stable refs, 与DashboardPage一致)
+  - REVIEW: settings.ts(validateModelId/getDefaultModel) + SettingsContent + SettingsPage + direct-llm.ts + dialogue.ts(isInitializing) + DashboardContent + DashboardPage 全模块审查通过
+  - TOTAL: 63 tests (34 FE + 29 BE) 全通过
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
