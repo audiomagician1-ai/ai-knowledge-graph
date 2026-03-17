@@ -224,6 +224,13 @@ data/seed/         — 种子图谱数据
   - BE: learning.py RecordAssessmentRequest score范围校验(ge=0,le=100) [M-30]
   - BE: learning.py /stats endpoint total_concepts添加Query范围限制 [M-31]
   - BE: learning.py /sync score值clamping到[0,100] [M-30]
+- ✅ **localStorage 持久化修复 (2026-03-17)**:
+  - FE: learning.ts `syncWithBackend` 合并逻辑重写 — 本地数据为权威源(localStorage-first), 后端仅补充本地不存在的条目, 后端严格更新时才合并且不降级mastered状态
+  - FE: learning.ts 新增 `verifyStorageAvailable()` 启动时检测localStorage可用性, 不可用时console.error警告
+  - FE: learning.ts 新增 `getStorageDiagnostics()` + `window.__akgDiag()` 浏览器控制台调试工具
+  - FE: learning.ts `saveProgress/saveHistory/saveStreak` 返回boolean成功标志, 失败时console.error
+  - FE: learning.ts `loadProgress` 增加 `isValidProgress()` 校验, 跳过损坏条目
+  - FE: learning.ts `startLearning/recordAssessment` 添加console.log事件追踪(DevTools可见)
 
 ### EXE 打包规范
 ```
