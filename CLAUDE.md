@@ -583,6 +583,18 @@ data/seed/         — 种子图谱数据
    - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.10s
    - STATUS: 首次扩展审查范围到Workers代码, 发现并修复3项问题, 生产代码持续稳定
 
+- ✅ **第四十三轮深度巡逻审查+Workers安全加固 (2026-03-18, 5589f3a)**:
+   - **FIX**: workers/src/llm.ts 添加 `validateBaseUrl()` SSRF防护 — 阻止localhost/127.0.0.1/::1/metadata.google.internal/169.254.169.254/私有IP(10.x/192.168.x/172.16.x), scheme限制http/https, 与FastAPI `_validate_base_url`一致 [M-01]
+   - **FIX**: workers/src/routes/dialogue.ts 添加消息滑动窗口(MAX_MESSAGES=40, 与FastAPI backend一致) + concept_id/message输入校验(max_length) [M-02]
+   - **FIX**: workers/src/routes/learning.ts /sync添加输入校验 — progress≤500条/history≤1000条上限 + status白名单校验(not_started/learning/mastered/available/locked/reviewing) + score clamping到[0,100] + /history limit上限1000 + /recommend top_k上限50 [M-03]
+   - REVIEW: 生产代码20+模块深度审查全通过(0 critical/0 major/0 minor issues):
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered) + supabase-sync.ts(concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping) + evaluator.py(O(n) format_dialogue/consistent mastered) + main.py(path traversal/CORS/headless) + llm/router.py(SSRF try/except/else/retry/double-check lock)
+     - Workers: llm.ts(SSRF validateBaseUrl/normalizeProviderUrl) + dialogue.ts(40-message window/input validation/SSE hasDoneEvent) + learning.ts(sync input validation/status whitelist/score clamping/limit caps) + index.ts(CORS origin echo/no wildcard+credentials) + graph.ts(seed data/BFS depth limit)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.16s, workers tsc 0 errors
+   - STATUS: Round-42发现的3个Workers安全/一致性问题(m-03/m-04/m-05)全部修复, Workers代码现与FastAPI backend安全水平对齐
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
