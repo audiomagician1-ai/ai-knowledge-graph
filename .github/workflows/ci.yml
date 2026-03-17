@@ -19,9 +19,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm type-check
-        continue-on-error: true
       - run: pnpm test
-        continue-on-error: true
       - run: pnpm build
 
   backend:
@@ -37,4 +35,3 @@ jobs:
           python-version: '3.11'
       - run: pip install -e ".[dev]"
       - run: python -m pytest -v
-        continue-on-error: true
