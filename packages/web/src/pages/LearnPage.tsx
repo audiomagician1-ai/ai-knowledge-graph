@@ -143,7 +143,7 @@ export function LearnPage() {
 
         {/* Messages area */}
         <div className="flex-1 overflow-y-auto">
-            <div className="max-w-3xl mx-auto px-6 py-6 space-y-7">
+            <div className="max-w-3xl mx-auto px-8 py-8 space-y-8">
 
             {/* Guide card */}
             <div
@@ -151,7 +151,7 @@ export function LearnPage() {
               style={{ padding: 0 }}
             >
                 <div
-                  className="rounded-lg px-5 py-4 flex items-start gap-4"
+                  className="rounded-lg px-6 py-5 flex items-start gap-4"
                   style={{ backgroundColor: 'var(--color-surface-2)' }}
                 >
                 <div
@@ -187,7 +187,7 @@ export function LearnPage() {
                   </div>
                 )}
                 <div
-                  className="max-w-[75%] rounded-xl px-7 py-6 text-[14px] leading-[1.85]"
+                  className="max-w-[75%] rounded-2xl px-8 py-7 text-[14px] leading-[1.9]"
                   style={
                     msg.role === 'user'
                       ? {
@@ -240,7 +240,7 @@ export function LearnPage() {
               borderColor: 'var(--color-border)',
             }}
           >
-            <div className="max-w-3xl mx-auto px-6 py-4 space-y-3">
+            <div className="max-w-3xl mx-auto px-8 py-5 space-y-4">
               {/* Choice buttons — shown when AI provides choices */}
               {currentChoices && currentChoices.length > 0 && !isBusy && (
                 <ChoiceButtons
@@ -252,7 +252,7 @@ export function LearnPage() {
               )}
 
               <div
-                  className="flex items-end gap-3 rounded-lg px-4 py-3 transition-all"
+                  className="flex items-end gap-3 rounded-xl px-5 py-4 transition-all"
                 style={{
                   backgroundColor: 'var(--color-surface-2)',
                   border: '1px solid var(--color-border)',

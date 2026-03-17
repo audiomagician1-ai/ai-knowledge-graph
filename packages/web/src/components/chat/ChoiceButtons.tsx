@@ -18,7 +18,7 @@ interface Props {
 export function ChoiceButtons({ choices, onSelect, disabled, dimmed }: Props) {
   return (
     <div
-      className="flex flex-col gap-2 transition-opacity duration-200"
+      className="flex flex-col gap-2.5 transition-opacity duration-200"
       style={{ opacity: dimmed ? 0.4 : 1 }}
     >
       {choices.map((choice) => {
@@ -29,7 +29,7 @@ export function ChoiceButtons({ choices, onSelect, disabled, dimmed }: Props) {
             key={choice.id}
             onClick={() => onSelect(choice.id)}
             disabled={disabled}
-            className="group flex items-center gap-3.5 px-5 py-3.5 rounded-lg text-left transition-all duration-150 active:scale-[0.98]"
+            className="group flex items-center gap-4 px-5 py-4 rounded-xl text-left transition-all duration-150 active:scale-[0.98]"
             style={{
               backgroundColor: 'var(--color-surface-2)',
               border: '1px solid var(--color-border)',

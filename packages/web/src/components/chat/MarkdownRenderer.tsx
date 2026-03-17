@@ -21,18 +21,18 @@ const components: Components = {
 
   // Paragraph
   p: ({ children }) => (
-    <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>
+    <p className="mb-3 last:mb-0 leading-[1.85]">{children}</p>
   ),
 
   // Lists
   ul: ({ children }) => (
-    <ul className="mb-2 pl-4 space-y-1 list-disc" style={{ color: 'var(--color-text-secondary)' }}>{children}</ul>
+    <ul className="mb-3 pl-5 space-y-1.5 list-disc" style={{ color: 'var(--color-text-secondary)' }}>{children}</ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-2 pl-4 space-y-1 list-decimal" style={{ color: 'var(--color-text-secondary)' }}>{children}</ol>
+    <ol className="mb-3 pl-5 space-y-1.5 list-decimal" style={{ color: 'var(--color-text-secondary)' }}>{children}</ol>
   ),
   li: ({ children }) => (
-    <li className="leading-relaxed">{children}</li>
+    <li className="leading-[1.85]">{children}</li>
   ),
 
   // Inline code

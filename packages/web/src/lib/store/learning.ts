@@ -92,6 +92,63 @@ const STORAGE_KEY = 'akg-learning';
 const HISTORY_KEY = 'akg-learning-history';
 const STREAK_KEY = 'akg-streak';
 
+/** Check if localStorage is available and writable */
+function verifyStorageAvailable(): boolean {
+  const testKey = '__akg_storage_test__';
+  try {
+    localStorage.setItem(testKey, '1');
+    const val = localStorage.getItem(testKey);
+    localStorage.removeItem(testKey);
+    return val === '1';
+  } catch {
+    return false;
+  }
+}
+
+/** Storage diagnostic info — callable from browser console: window.__akgDiag() */
+export function getStorageDiagnostics(): {
+  storageAvailable: boolean;
+  progressEntries: number;
+  historyEntries: number;
+  streakData: StreakData | null;
+  rawSizes: { progress: number; history: number; streak: number };
+} {
+  const storageAvailable = verifyStorageAvailable();
+  const progressRaw = localStorage.getItem(STORAGE_KEY) || '';
+  const historyRaw = localStorage.getItem(HISTORY_KEY) || '';
+  const streakRaw = localStorage.getItem(STREAK_KEY) || '';
+  let progressEntries = 0;
+  let historyEntries = 0;
+  let streakData: StreakData | null = null;
+  try {
+    const p = JSON.parse(progressRaw);
+    progressEntries = Object.keys(p?.progress || {}).length;
+  } catch { /* empty */ }
+  try {
+    const h = JSON.parse(historyRaw);
+    historyEntries = Array.isArray(h) ? h.length : 0;
+  } catch { /* empty */ }
+  try { streakData = JSON.parse(streakRaw); } catch { /* empty */ }
+  return {
+    storageAvailable,
+    progressEntries,
+    historyEntries,
+    streakData,
+    rawSizes: { progress: progressRaw.length, history: historyRaw.length, streak: streakRaw.length },
+  };
+}
+
+// Expose diagnostics on window for debugging
+if (typeof window !== 'undefined') {
+  (window as any).__akgDiag = getStorageDiagnostics;
+}
+
+// Verify at load time
+const _storageOk = verifyStorageAvailable();
+if (!_storageOk) {
+  console.error('[learning] ⚠️ localStorage is NOT available! Learning data will NOT be persisted. Check browser privacy settings or storage quota.');
+}
+
 interface PersistedData {
   progress: Record<string, ConceptProgress>;
 }
@@ -129,11 +186,22 @@ function loadProgress(): Record<string, ConceptProgress> {
   return {};
 }
 
-function saveProgress(progress: Record<string, ConceptProgress>) {
+function saveProgress(progress: Record<string, ConceptProgress>): boolean {
   try {
     const data: PersistedData = { progress };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch { /* ignore */ }
+    const json = JSON.stringify(data);
+    localStorage.setItem(STORAGE_KEY, json);
+    // Verify write succeeded
+    const readBack = localStorage.getItem(STORAGE_KEY);
+    if (!readBack) {
+      console.error('[learning] localStorage write verification failed: readback is null');
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error('[learning] Failed to save progress to localStorage:', e);
+    return false;
+  }
 }
 
 function loadHistory(): LearningHistory[] {
@@ -157,12 +225,16 @@ function loadHistory(): LearningHistory[] {
   return [];
 }
 
-function saveHistory(history: LearningHistory[]) {
+function saveHistory(history: LearningHistory[]): boolean {
   try {
     // Keep last 100 entries
     const trimmed = history.slice(-100);
     localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
-  } catch { /* ignore */ }
+    return true;
+  } catch (e) {
+    console.error('[learning] Failed to save history to localStorage:', e);
+    return false;
+  }
 }
 
 interface StreakData {
@@ -179,10 +251,14 @@ function loadStreak(): StreakData {
   return { current: 0, longest: 0, lastDate: '' };
 }
 
-function saveStreak(streak: StreakData) {
+function saveStreak(streak: StreakData): boolean {
   try {
     localStorage.setItem(STREAK_KEY, JSON.stringify(streak));
-  } catch { /* ignore */ }
+    return true;
+  } catch (e) {
+    console.error('[learning] Failed to save streak to localStorage:', e);
+    return false;
+  }
 }
 
 /** Format a Date object to YYYY-MM-DD in local timezone */
@@ -290,6 +366,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   },
 
   startLearning: (conceptId) => {
+    console.log('[learning] startLearning called:', conceptId);
     const { progress, streak } = get();
     const existing = progress[conceptId];
     const now = Date.now();
@@ -301,7 +378,8 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       : { concept_id: conceptId, status: 'learning', mastery_score: 0, sessions: 1, total_time_sec: 0, last_learn_at: now };
 
     const newProgress = { ...progress, [conceptId]: updated };
-    saveProgress(newProgress);
+    const saved = saveProgress(newProgress);
+    console.log('[learning] startLearning saveProgress:', saved ? 'OK' : 'FAILED', '| entries:', Object.keys(newProgress).length);
 
     // Update streak
     let newStreak = { ...streak };
@@ -325,6 +403,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   },
 
   recordAssessment: (conceptId, conceptName, score, mastered) => {
+    console.log('[learning] recordAssessment called:', { conceptId, conceptName, score, mastered });
     const { progress, history } = get();
     const existing = progress[conceptId];
     const now = Date.now();
@@ -345,13 +424,14 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     };
 
     const newProgress = { ...progress, [conceptId]: updated };
-    saveProgress(newProgress);
+    const savedP = saveProgress(newProgress);
 
     const newHistory: LearningHistory[] = [
       ...history,
       { concept_id: conceptId, concept_name: conceptName, score, mastered, timestamp: now },
     ];
-    saveHistory(newHistory);
+    const savedH = saveHistory(newHistory);
+    console.log('[learning] recordAssessment save:', { progress: savedP ? 'OK' : 'FAILED', history: savedH ? 'OK' : 'FAILED', status: updated.status, entries: Object.keys(newProgress).length });
 
     // Compute newly unlocked concepts if this node was just mastered
     let newlyUnlocked: string[] = [];
@@ -513,13 +593,15 @@ export const useLearningStore = create<LearningState>((set, get) => ({
         apiFetchStreak(),
       ]);
 
-      // 3. Merge: backend data takes priority for progress, merge into local format
+      // 3. Merge: LOCAL data is authoritative (localStorage is primary source of truth).
+      //    Backend data is only used to fill in missing entries (e.g. synced from another device).
+      //    This prevents backend stale data from overwriting local progress.
       const mergedProgress: Record<string, ConceptProgress> = { ...localProgress };
       for (const [cid, bp] of Object.entries(backendProgress)) {
         const local = mergedProgress[cid];
         const backendItem = bp as any;
-        // Backend has newer or equal data → use it
-        if (!local || (backendItem.last_learn_at && backendItem.last_learn_at >= (local.last_learn_at || 0))) {
+        if (!local) {
+          // Only import entries that don't exist locally
           mergedProgress[cid] = {
             concept_id: cid,
             status: backendItem.status || 'not_started',
@@ -530,7 +612,21 @@ export const useLearningStore = create<LearningState>((set, get) => ({
             mastered_at: backendItem.mastered_at,
             last_learn_at: backendItem.last_learn_at || 0,
           };
+        } else if (backendItem.last_learn_at && backendItem.last_learn_at > (local.last_learn_at || 0)) {
+          // Backend has strictly newer data → merge but never demote mastered status
+          const wasMastered = local.status === 'mastered';
+          mergedProgress[cid] = {
+            concept_id: cid,
+            status: wasMastered ? 'mastered' : (backendItem.status || local.status),
+            mastery_score: wasMastered ? Math.max(local.mastery_score, backendItem.mastery_score || 0) : (backendItem.mastery_score || 0),
+            last_score: backendItem.last_score ?? local.last_score,
+            sessions: Math.max(local.sessions, backendItem.sessions || 0),
+            total_time_sec: Math.max(local.total_time_sec, backendItem.total_time_sec || 0),
+            mastered_at: local.mastered_at || backendItem.mastered_at,
+            last_learn_at: backendItem.last_learn_at,
+          };
         }
+        // If local has same or newer data → keep local (default: spread already copied)
       }
 
       // Merge history (deduplicate by timestamp+concept_id)

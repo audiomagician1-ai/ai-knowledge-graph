@@ -353,7 +353,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
       {/* Messages area */}
       <div className="flex-1 overflow-y-auto">
-        <div className="px-8 py-6 space-y-8">
+        <div className="px-8 py-8 space-y-8">
           {/* Messages */}
           {messages.map((msg) => (
             <div
@@ -361,7 +361,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className="max-w-[85%] rounded-xl px-7 py-6 text-[15px] leading-[1.85]"
+                className="max-w-[85%] rounded-2xl px-8 py-7 text-[15px] leading-[1.9]"
                 style={
                   msg.role === 'user'
                     ? {
@@ -421,7 +421,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
             </button>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {/* Choice buttons — shown when AI provides choices */}
             {currentChoices && currentChoices.length > 0 && !isBusy && (
               <ChoiceButtons
@@ -432,7 +432,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               />
             )}
             <div
-              className="flex items-end gap-3 rounded-lg px-4 py-3"
+              className="flex items-end gap-3 rounded-xl px-5 py-4"
               style={{
                 backgroundColor: 'var(--color-surface-2)',
                 border: '1px solid var(--color-border)',
