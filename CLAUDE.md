@@ -543,6 +543,20 @@ data/seed/         — 种子图谱数据
   - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.10s
   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续21轮零issues审查**
 
+- ✅ **第四十轮安全巡逻审查+.gitignore修复 (2026-03-18, 125171c)**:
+  - **FIX**: .gitignore 添加 `$null` 规则 — PowerShell `2>$null` 重定向会在工作目录创建名为 `$null` 的文件, 已被意外提交两次(fa8cd70, db4178e), 现永久排除 [m-01]
+  - REVIEW: 安全专项审查全通过(0 critical/0 major/0 minor issues):
+    - SECURITY AUDIT: 全项目无 eval/exec/innerHTML/dangerouslySetInnerHTML/subprocess/os.system/pickle
+    - SSRF: llm/router.py `_validate_base_url` try/except/else 模式确认正确(私有IP 10.x/192.168.x/172.16.x 无法绕过)
+    - SCHEMA CONSISTENCY: DB CHECK(`locked/available/learning/reviewing/mastered`) ↔ toDbStatus() ↔ downloadProgressFromCloud() 三方一致再次确认
+    - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental sync) + learning.ts(demotion protection/syncWithBackend local-first/replaceData)
+    - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + llm/router.py(SSRF try/except/else/retry/double-check lock)
+    - CONSOLE LOGGING: 31处console输出均为诊断/警告级别, 无敏感数据泄露(API keys/passwords)
+  - GITHUB: 0 open issues, 2 closed (all resolved)
+  - VERIFY: 343 tests (123 FE + 220 BE) 全通过, tsc 0 errors, build 3.15s
+  - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续22轮零issues审查**
+  - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
