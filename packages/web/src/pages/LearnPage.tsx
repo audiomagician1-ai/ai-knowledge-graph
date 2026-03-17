@@ -139,7 +139,7 @@ export function LearnPage() {
 
         {/* Messages area */}
         <div className="flex-1 overflow-y-auto">
-          <div className="max-w-3xl mx-auto px-6 py-6 space-y-5">
+            <div className="max-w-3xl mx-auto px-6 py-6 space-y-7">
 
             {/* Guide card */}
             <div
@@ -183,7 +183,7 @@ export function LearnPage() {
                   </div>
                 )}
                 <div
-                  className="max-w-[75%] rounded-lg px-5 py-3.5 text-[14px] leading-relaxed"
+                  className="max-w-[75%] rounded-lg px-6 py-5 text-[14px] leading-relaxed"
                   style={
                     msg.role === 'user'
                       ? {
@@ -259,15 +259,16 @@ export function LearnPage() {
                   onChange={(e) => {
                     setInput(e.target.value);
                     e.target.style.height = 'auto';
-                    e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px';
+                    e.target.style.height = Math.min(e.target.scrollHeight, 150) + 'px';
                   }}
                   onKeyDown={handleKeyDown}
                   placeholder={currentChoices ? "也可以用自己的话回答..." : "用你自己的话解释这个概念..."}
-                  rows={1}
+                  rows={3}
                   className="flex-1 bg-transparent text-[14px] outline-none resize-none leading-relaxed"
                   style={{
                     color: 'var(--color-text-primary)',
-                    maxHeight: '120px',
+                    minHeight: '4.5em',
+                    maxHeight: '150px',
                   }}
                   disabled={isBusy || !conversationId}
                 />

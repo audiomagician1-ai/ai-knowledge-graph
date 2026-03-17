@@ -349,7 +349,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
 
       {/* Messages area */}
       <div className="flex-1 overflow-y-auto">
-        <div className="px-8 py-6 space-y-6">
+        <div className="px-8 py-6 space-y-8">
           {/* Messages */}
           {messages.map((msg) => (
             <div
@@ -357,7 +357,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className="max-w-[85%] rounded-lg px-5 py-4 text-[15px] leading-relaxed"
+                className="max-w-[85%] rounded-lg px-6 py-5 text-[15px] leading-relaxed"
                 style={
                   msg.role === 'user'
                     ? {
@@ -440,15 +440,16 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                   setInput(e.target.value);
                   // Auto-resize
                   e.target.style.height = 'auto';
-                  e.target.style.height = Math.min(e.target.scrollHeight, 100) + 'px';
+                  e.target.style.height = Math.min(e.target.scrollHeight, 150) + 'px';
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={currentChoices ? "也可以用自己的话回答..." : "输入你的回答..."}
-                rows={1}
+                rows={3}
                 className="flex-1 bg-transparent text-[15px] outline-none resize-none leading-relaxed"
                 style={{
                   color: 'var(--color-text-primary)',
-                  maxHeight: '100px',
+                  minHeight: '4.5em',
+                  maxHeight: '150px',
                 }}
                 disabled={isBusy || !conversationId}
               />

@@ -203,20 +203,61 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         data = await res.json();
       }
 
+      // Simulate streaming for the opening message to give a smooth typing effect
+      const openingMsgId = nextId();
       set({
         conversationId: data.conversation_id,
         conceptName: data.concept_name,
         isMilestone: data.is_milestone || false,
         messages: [
           {
-            id: nextId(),
+            id: openingMsgId,
             role: 'assistant',
-            content: data.opening_message,
+            content: '',
             timestamp: Date.now(),
           },
         ],
-        currentChoices: data.opening_choices || null,
+        isStreaming: true,
+        currentChoices: null,
       });
+
+      // Reveal opening message progressively (simulate streaming)
+      const fullText = data.opening_message || '';
+      const myConvId = data.conversation_id;
+      const CHUNK_SIZE = 3; // characters per tick
+      const TICK_MS = 18;   // milliseconds between ticks
+      let offset = 0;
+      await new Promise<void>((resolve) => {
+        const timer = setInterval(() => {
+          // Stop if conversation changed
+          if (get().conversationId !== myConvId) {
+            clearInterval(timer);
+            resolve();
+            return;
+          }
+          offset = Math.min(offset + CHUNK_SIZE, fullText.length);
+          set((s) => {
+            const msgs = [...s.messages];
+            const idx = msgs.findIndex((m) => m.id === openingMsgId);
+            if (idx >= 0) {
+              msgs[idx] = { ...msgs[idx], content: fullText.slice(0, offset) };
+            }
+            return { messages: msgs };
+          });
+          if (offset >= fullText.length) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, TICK_MS);
+      });
+
+      // Streaming done — reveal choices
+      if (get().conversationId === myConvId) {
+        set({
+          isStreaming: false,
+          currentChoices: data.opening_choices || null,
+        });
+      }
     } catch (err) {
       set({ error: err instanceof Error ? err.message : 'Unknown error' });
     }
