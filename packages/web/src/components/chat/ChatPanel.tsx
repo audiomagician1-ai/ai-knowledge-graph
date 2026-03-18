@@ -65,10 +65,10 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand actions are stable refs
   }, [assessment, conversationId]);
 
-  // Auto-scroll
+  // Auto-scroll — also trigger when choices appear (so user doesn't need to scroll manually)
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, assessment]);
+  }, [messages, assessment, currentChoices]);
 
   // m-01: Auto-dismiss error after 6 seconds (consistent with LearnPage)
   useEffect(() => {
@@ -391,7 +391,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                   maxWidth: '82%',
                   borderRadius: msg.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
                   padding: '20px 24px',
-                  fontSize: 15,
+                  fontSize: 20,
                   lineHeight: 1.85,
                   ...(msg.role === 'user'
                     ? {
@@ -478,7 +478,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
                 onKeyDown={handleKeyDown}
                 placeholder={currentChoices ? "也可以用自己的话回答..." : "输入你的回答..."}
                 rows={3}
-                className="flex-1 bg-transparent text-[15px] outline-none resize-none leading-relaxed"
+                className="flex-1 bg-transparent text-[20px] outline-none resize-none leading-relaxed"
                 style={{
                   color: 'var(--color-text-primary)',
                   minHeight: '4.5em',

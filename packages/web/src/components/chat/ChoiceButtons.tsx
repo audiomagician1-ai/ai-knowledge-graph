@@ -54,7 +54,7 @@ export function ChoiceButtons({ choices, onSelect, disabled, dimmed }: Props) {
               <Icon size={14} style={{ color: 'var(--color-text-secondary)' }} />
             </div>
             <span
-              className="text-[13px] leading-snug"
+              className="text-[17px] leading-snug"
               style={{ color: 'var(--color-text-primary)' }}
             >
               {choice.text}

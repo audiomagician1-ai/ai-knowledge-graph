@@ -10,13 +10,13 @@ interface MarkdownRendererProps {
 const components: Components = {
   // Headings
   h1: ({ children }) => (
-    <h1 className="text-lg font-bold mt-4 mb-2" style={{ color: 'var(--color-text-primary)' }}>{children}</h1>
+    <h1 className="text-2xl font-bold mt-4 mb-2" style={{ color: 'var(--color-text-primary)' }}>{children}</h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-base font-bold mt-3 mb-1.5" style={{ color: 'var(--color-text-primary)' }}>{children}</h2>
+    <h2 className="text-xl font-bold mt-3 mb-1.5" style={{ color: 'var(--color-text-primary)' }}>{children}</h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-sm font-bold mt-2 mb-1" style={{ color: 'var(--color-text-primary)' }}>{children}</h3>
+    <h3 className="text-lg font-bold mt-2 mb-1" style={{ color: 'var(--color-text-primary)' }}>{children}</h3>
   ),
 
   // Paragraph
@@ -41,8 +41,8 @@ const components: Components = {
     if (isBlock) {
       return (
         <code
-          className="block text-[13px] font-mono leading-relaxed whitespace-pre-wrap break-words"
-          style={{ color: 'var(--color-accent-cyan, #22d3ee)' }}
+          className="block text-[17px] font-mono leading-relaxed whitespace-pre-wrap break-words"
+          style={{ color: '#e2e8f0' }}
         >
           {children}
         </code>
@@ -50,10 +50,10 @@ const components: Components = {
     }
     return (
       <code
-        className="text-[13px] font-mono px-1.5 py-0.5 rounded-md"
+        className="text-[17px] font-mono px-1.5 py-0.5 rounded-md"
         style={{
-          backgroundColor: 'var(--color-surface-4)',
-          color: 'var(--color-accent-cyan, #22d3ee)',
+          backgroundColor: '#1e293b',
+          color: '#e2e8f0',
         }}
       >
         {children}
@@ -64,10 +64,10 @@ const components: Components = {
   // Code block
   pre: ({ children }) => (
     <pre
-      className="mb-2 rounded-lg px-4 py-3 overflow-x-auto text-[13px] leading-relaxed"
+      className="mb-2 rounded-lg px-4 py-3 overflow-x-auto text-[17px] leading-relaxed"
       style={{
-        backgroundColor: 'rgba(6, 9, 15, 0.6)',
-        border: '1px solid var(--color-border)',
+        backgroundColor: '#1e293b',
+        border: '1px solid rgba(0, 0, 0, 0.15)',
       }}
     >
       {children}
