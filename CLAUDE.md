@@ -694,6 +694,39 @@ data/seed/         — 种子图谱数据
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续25轮零issues审查**(生产代码)
    - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
 
+- ✅ **第五十一轮审查+tokenLimitParam兼容+测试补全 (2026-03-18, 0a25eca)**:
+   - **FEAT**: FE+BE+Workers 添加 `tokenLimitParam()` — OpenAI o1/o3/chatgpt-* 系列模型要求 `max_completion_tokens` 而非 `max_tokens`, 按模型名自动检测并应用正确参数; 4个文件(direct-llm.ts/settings.ts/llm/router.py/workers/llm.ts)一致实现
+   - **REVIEW**: 最新提交(9f2ec22 btoa Unicode fix + friendly LLM error messages)深度代码审查:
+     - settings.ts `generateSelfContainedBat`: TextEncoder Unicode-safe base64编码正确(修复PROXY_SCRIPT_SRC含中文"知识图谱"时btoa崩溃) ✅
+     - direct-llm.ts `directChatStream` HTTP错误处理: 401/402/429/404友好中文提示(替代raw JSON dump) ✅, 其他状态码保留text.slice(0,200) fallback ✅
+     - settings.ts `obfuscate`: 仍用`btoa(encodeURIComponent())`, encodeURIComponent只产生ASCII→安全 ✅
+     - direct-llm.ts `directCreateConversation`/`directAssess`错误路径: 均有try/catch+fallback, 不暴露raw错误给用户 ✅
+   - **CONSISTENCY**: tokenLimitParam跨4文件一致性验证:
+     - FE direct-llm.ts: regex `/^(o[1-9]|chatgpt-)/.test(m) || /\/(o[1-9]|chatgpt-)/.test(m)` ✅
+     - FE settings.ts: 同上regex, 用于probeCORS测试请求 ✅
+     - Workers llm.ts: 同上regex ✅
+     - BE llm/router.py: `model.lower().split("/")[-1].startswith(("o1","o3","chatgpt-"))` — 等价逻辑 ✅
+   - TEST: +10 FE新测试:
+     - generateSelfContainedBat 4测试: header/@echo off + base64 payload存在 + Unicode不抛异常 + base64往返解码一致
+     - tokenLimitParam 6测试: 标准模型max_tokens + o1/o3裸名max_completion_tokens + vendor前缀 + chatgpt系列 + 大小写不敏感 + 子串不误匹配
+   - TEST: +5 BE新测试(tokenLimitParam: 标准模型 + o1-o3 + chatgpt + vendor前缀 + 大小写)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 359 tests (133 FE + 226 BE) 全通过, tsc 0 errors, build 3.15s
+   - STATUS: 代码质量持续稳定, 新增OpenAI新模型兼容性, **连续26轮零issues审查**(生产代码)
+
+- ✅ **Prompt准确性纪律强化 (2026-03-18)**:
+   - **问题**: 教学中AI举代码示例时未明确标注语言范围, 导致用户误以为某语言特性是通用规则(如Java抽象类编译检查≠Python/Go行为)
+   - **修复**: FEYNMAN_SYSTEM_PROMPT 新增"知识准确性纪律"规则块(最高优先级):
+     - 规则1: 区分"通用概念"与"语言/框架特性" — 代码示例必须标注语言, 主动说明其他语言可能不同
+     - 规则2: 主动说明适用范围 — 标注适用条件, 首次提到规则后主动补充跨语言差异
+     - 规则3: 不确定时诚实声明 — 不编造细节, 标注变体或例外
+     - 规则4: 自身讲解有误时的纠正方式 — 简洁纠正, 不过度自责
+   - **同步**: 3处prompt一致更新:
+     - BE: apps/api/engines/dialogue/prompts/feynman_system.py (V2+准确性纪律)
+     - FE: packages/web/src/lib/direct-llm.ts (V2+准确性纪律)
+     - Workers: workers/src/prompts.ts (从V1旧版完整升级为V2+准确性纪律+V2评估prompt)
+   - VERIFY: 359 tests (133 FE + 226 BE) 全通过, tsc 0 errors, build 3.08s
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -797,8 +830,8 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (123 tests: learning 12 + settings 22 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 19 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
-cd apps/api && python -m pytest          # 后端测试 ✅ (221 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 41 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
+cd packages/web && npx vitest run        # 前端测试 ✅ (133 tests: learning 12 + settings 26 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 25 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd apps/api && python -m pytest          # 后端测试 ✅ (226 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
 ```
 
 ### 提交规范
