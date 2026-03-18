@@ -675,26 +675,29 @@ export async function directAssess(conversationId: string): Promise<Record<strin
   };
 }
 
+/** Validate and normalize assessment result — clamp scores, recalculate mastered
+ *  (matches FastAPI evaluator.validate_result and Workers validateAssessment) */
+function validateAssessment(result: any): any {
+  for (const k of ['completeness', 'accuracy', 'depth', 'examples', 'overall_score']) {
+    result[k] = Math.max(0, Math.min(100, Math.round(result[k] ?? 50)));
+  }
+  result.mastered = result.overall_score >= 75 && ['completeness', 'accuracy', 'depth', 'examples'].every((k: string) => result[k] >= 60);
+  result.gaps = Array.isArray(result.gaps) ? result.gaps : [];
+  result.feedback = result.feedback || '评估完成';
+  return result;
+}
+
 export function parseAssessmentJSON(text: string): any | null {
-  try { return JSON.parse(text); } catch { /* */ }
+  try { return validateAssessment(JSON.parse(text)); } catch { /* */ }
   if (text.includes('```json')) {
     const start = text.indexOf('```json') + 7;
     const end = text.indexOf('```', start);
-    try { return JSON.parse(text.slice(start, end).trim()); } catch { /* */ }
+    try { return validateAssessment(JSON.parse(text.slice(start, end).trim())); } catch { /* */ }
   }
   const start = text.indexOf('{');
   const end = text.lastIndexOf('}') + 1;
   if (start >= 0 && end > start) {
-    try {
-      const result = JSON.parse(text.slice(start, end));
-      for (const k of ['completeness', 'accuracy', 'depth', 'examples', 'overall_score']) {
-        result[k] = Math.max(0, Math.min(100, Math.round(result[k] ?? 50)));
-      }
-      result.mastered = result.overall_score >= 75 && ['completeness', 'accuracy', 'depth', 'examples'].every((k: string) => result[k] >= 60);
-      result.gaps = result.gaps || [];
-      result.feedback = result.feedback || '评估完成';
-      return result;
-    } catch { /* */ }
+    try { return validateAssessment(JSON.parse(text.slice(start, end))); } catch { /* */ }
   }
   return null;
 }

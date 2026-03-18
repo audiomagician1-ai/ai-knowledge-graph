@@ -91,7 +91,7 @@ describe('windowMessages', () => {
 });
 
 describe('parseAssessmentJSON', () => {
-  it('should parse direct JSON', () => {
+  it('should parse direct JSON and validate', () => {
     const json = JSON.stringify({
       completeness: 80, accuracy: 85, depth: 70, examples: 75,
       overall_score: 78, gaps: [], feedback: 'Good', mastered: true,
@@ -102,11 +102,50 @@ describe('parseAssessmentJSON', () => {
     expect(result.mastered).toBe(true);
   });
 
-  it('should parse JSON inside ```json block', () => {
+  it('should clamp scores in direct JSON path', () => {
+    const json = JSON.stringify({
+      completeness: 150, accuracy: -10, depth: 200, examples: 50,
+      overall_score: 120, gaps: [], feedback: 'test',
+    });
+    const result = parseAssessmentJSON(json);
+    expect(result).not.toBeNull();
+    expect(result.completeness).toBe(100);
+    expect(result.accuracy).toBe(0);
+    expect(result.overall_score).toBe(100);
+    // mastered recalculated: overall 100>=75 but accuracy 0<60 → false
+    expect(result.mastered).toBe(false);
+  });
+
+  it('should recalculate mastered in direct JSON path (LLM lies)', () => {
+    // LLM says mastered:true but depth is below threshold
+    const json = JSON.stringify({
+      completeness: 80, accuracy: 80, depth: 55, examples: 80,
+      overall_score: 76, gaps: [], feedback: 'ok', mastered: true,
+    });
+    const result = parseAssessmentJSON(json);
+    expect(result).not.toBeNull();
+    expect(result.mastered).toBe(false); // depth 55 < 60 → overridden
+  });
+
+  it('should parse JSON inside ```json block and validate', () => {
     const text = 'Here is my assessment:\n```json\n{"completeness":90,"accuracy":85,"depth":80,"examples":75,"overall_score":83,"gaps":[],"feedback":"Great","mastered":true}\n```\nDone.';
     const result = parseAssessmentJSON(text);
     expect(result).not.toBeNull();
     expect(result.overall_score).toBe(83);
+    expect(result.mastered).toBe(true);
+  });
+
+  it('should clamp scores in ```json block path', () => {
+    const text = '```json\n{"completeness":999,"accuracy":-50,"depth":80,"examples":80,"overall_score":80}\n```';
+    const result = parseAssessmentJSON(text);
+    expect(result).not.toBeNull();
+    expect(result.completeness).toBe(100);
+    expect(result.accuracy).toBe(0);
+    // mastered: overall 80>=75 but accuracy 0<60 → false
+    expect(result.mastered).toBe(false);
+    // gaps should be filled in
+    expect(result.gaps).toEqual([]);
+    expect(result.feedback).toBe('评估完成');
   });
 
   it('should extract JSON from mixed text using brace matching', () => {
@@ -118,13 +157,11 @@ describe('parseAssessmentJSON', () => {
     expect(result.mastered).toBe(false);
   });
 
-  it('should clamp scores to 0-100', () => {
+  it('should clamp scores in brace-match path', () => {
     const json = JSON.stringify({
       completeness: 150, accuracy: -10, depth: 200, examples: 50,
       overall_score: 120, gaps: [], feedback: 'test',
     });
-    // Direct JSON parse won't trigger clamping, only brace-match path does
-    // Wrap in text to trigger brace-match path
     const text = `Assessment: ${json} done`;
     const result = parseAssessmentJSON(text);
     expect(result).not.toBeNull();
