@@ -765,7 +765,23 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 359 tests (133 FE + 226 BE) 全通过, tsc 0 errors, build 3.11s, workers tsc 0 errors
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续28轮零issues审查**(生产代码)
-   - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+    - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+
+- ✅ **第五十五轮深度巡逻审查+3项修复 (2026-03-18)**:
+   - **FIX**: FE direct-llm.ts `parseAssessmentJSON` 前两个解析分支(直接JSON/```json块)返回原始LLM输出, 缺少分数clamping和mastered重算 — 仅第三分支(花括号提取)有校验。提取`validateAssessment()`统一应用到所有3个分支, 与Workers dialogue.ts validateAssessment和FastAPI evaluator.validate_result一致 [M-01]
+   - **FIX**: FE direct-llm.ts `directAssess` 角色标签不一致 — 使用'用户'/'AI（学习伙伴）'而非标准'用户（学习者）'/'AI（学习伙伴/老师）', 与FastAPI/Workers不一致影响LLM评估准确性 [M-02]
+   - **FIX**: FE direct-llm.ts `directAssess` 缺少对话截断 — 发送完整对话文本无8000字符上限, 长对话可能超出LLM上下文窗口。新增8000字符截断(优先保留最近消息, push+reverse O(n)模式, 与FastAPI evaluator._format_dialogue和Workers dialogue.ts一致) [M-03]
+   - **FIX**: Workers dialogue.ts fallback mastered判定改为显式标准公式(overall>=75 && all dims>=60), 替代隐式shorthand `base >= 80`(虽数学等价但脆弱) [m-01]
+   - TEST: +3 FE新测试(parseAssessmentJSON: 直接JSON clamping + 直接JSON mastered重算 + ```json块 clamping)
+   - REVIEW: direct-llm.ts全模块深度审查 + Workers dialogue.ts fallback一致性审查
+   - CONSISTENCY AUDIT: 评估校验4路一致性确认:
+     - FE direct-llm.ts: validateAssessment (3 branches) ✅
+     - Workers dialogue.ts: validateAssessment (3 branches) ✅
+     - FastAPI evaluator.py: validate_result ✅
+     - Fallback mastered: FE(overall>=75 && all>=60) = Workers(同) = FastAPI(同) ✅
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 362 tests (136 FE + 226 BE) 全通过, tsc 0 errors, build 3.49s, workers tsc 0 errors
+   - STATUS: 发现3个Medium+1个minor一致性问题并修复, FE direct-llm.ts评估校验提升到与FastAPI/Workers同等水平
 
 ### EXE 打包规范
 ```
@@ -870,7 +886,7 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (133 tests: learning 12 + settings 26 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 25 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (136 tests: learning 12 + settings 26 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 28 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (226 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
 ```
 
