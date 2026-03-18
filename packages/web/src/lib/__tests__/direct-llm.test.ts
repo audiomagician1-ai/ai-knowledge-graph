@@ -186,9 +186,9 @@ describe('parseAssessmentJSON', () => {
     });
     const result = parseAssessmentJSON(json);
     expect(result).not.toBeNull();
-    // 'high' → Number('high')=NaN → fallback 50, null → Number(null)=0, true → Number(true)=1
+    // 'high' → NaN → fallback 50, null → fallback 50 (matches Python TypeError → defaults), true → Number(true)=1
     expect(result.completeness).toBe(50);
-    expect(result.accuracy).toBe(0);
+    expect(result.accuracy).toBe(50);
     expect(result.examples).toBe(1);
     expect(result.overall_score).toBe(50);
     expect(result.mastered).toBe(false);
