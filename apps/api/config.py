@@ -42,4 +42,4 @@ if not settings.neo4j_password:
 if not any([settings.openrouter_api_key, settings.openai_api_key, settings.deepseek_api_key]):
     logger.warning("⚠️ No server-side LLM API keys configured — users without their own key will see a setup prompt")
 else:
-    logger.info("✅ Server-side LLM key configured — default free AI service available for all users")
+    logger.info("✅ Server-side LLM key configured — default model: %s", settings.llm_model_dialogue)

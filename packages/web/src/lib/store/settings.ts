@@ -102,7 +102,7 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
   },
 
   isUsingDefaultLLM: () => {
-    return !get().llmConfig.apiKey;
+    return !get().llmConfig.apiKey?.trim();
   },
 }));
 

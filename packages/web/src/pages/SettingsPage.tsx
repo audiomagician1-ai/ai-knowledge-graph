@@ -259,7 +259,7 @@ export function SettingsPage() {
             </button>
             {llmConfig.apiKey && (
               <button
-                onClick={clearApiKey}
+                onClick={() => { clearApiKey(); setShowAdvancedLLM(false); }}
                 className="px-3 shrink-0"
                 style={{ color: 'var(--color-text-tertiary)' }}
               >
@@ -366,7 +366,9 @@ export function SettingsPage() {
           </p>
         )}
 
-        {/* How to use */}
+        </>)}
+
+        {/* How to use (always visible — guides new users) */}
         <div className="card-static p-6 rounded-lg mb-7 animate-fade-in stagger-5">
           <h3 className="text-base font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
             使用流程
@@ -389,7 +391,6 @@ export function SettingsPage() {
             ))}
           </div>
         </div>
-        </>)}
 
         {/* About section */}
         <div className="card-static p-6 rounded-lg mb-7 animate-fade-in stagger-6">

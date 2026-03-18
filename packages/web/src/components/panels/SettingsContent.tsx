@@ -143,7 +143,7 @@ export function SettingsContent() {
           <button onClick={() => setShowKey(!showKey)} style={{ padding: '0 14px', flexShrink: 0, color: 'var(--color-text-tertiary)', cursor: 'pointer', background: 'none', border: 'none' }}>
             {showKey ? <EyeOff size={15} /> : <Eye size={15} />}
           </button>
-          {llmConfig.apiKey && <button onClick={clearApiKey} style={{ padding: '0 14px', flexShrink: 0, color: 'var(--color-text-tertiary)', cursor: 'pointer', background: 'none', border: 'none' }}><Trash2 size={15} /></button>}
+          {llmConfig.apiKey && <button onClick={() => { clearApiKey(); setShowAdvancedLLM(false); }} style={{ padding: '0 14px', flexShrink: 0, color: 'var(--color-text-tertiary)', cursor: 'pointer', background: 'none', border: 'none' }}><Trash2 size={15} /></button>}
         </div>
       </div>
 
@@ -352,7 +352,9 @@ export function SettingsContent() {
         }}>{importMessage}</p>
       )}
 
-      {/* Security */}
+      </>)}
+
+      {/* Security (always visible) */}
       <div className="flex items-start gap-3" style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-tint-emerald)' }}>
         <Shield size={13} className="shrink-0" style={{ marginTop: 1, color: 'var(--color-accent-emerald)' }} />
         <p style={{ fontSize: 12, lineHeight: 1.6, color: 'var(--color-text-tertiary)' }}>
@@ -361,7 +363,6 @@ export function SettingsContent() {
             : `Key 仅存在浏览器本地。${llmConfig.useProxy ? '本地代理模式下，请求通过本机代理转发，不经过任何外部服务器。' : '直连模式下，请求直接从浏览器发往 LLM API。'}`}
         </p>
       </div>
-      </>)}
     </div>
   );
 }

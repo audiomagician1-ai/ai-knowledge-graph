@@ -126,7 +126,7 @@ CREATE OR REPLACE TRIGGER on_auth_user_created
 -- PostgREST 角色权限 (Supabase REST API 必需)
 GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
 
-GRANT SELECT ON profiles TO anon, authenticated;
+GRANT SELECT ON profiles TO authenticated;
 GRANT ALL ON profiles TO service_role;
 GRANT INSERT, UPDATE ON profiles TO authenticated;
 

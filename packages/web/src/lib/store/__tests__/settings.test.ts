@@ -76,6 +76,11 @@ describe('useSettingsStore', () => {
     useSettingsStore.getState().setLLMConfig({ apiKey: 'my-key' });
     expect(useSettingsStore.getState().isUsingDefaultLLM()).toBe(false);
   });
+
+  it('isUsingDefaultLLM should be true when apiKey is whitespace-only', () => {
+    useSettingsStore.getState().setLLMConfig({ apiKey: '   ' });
+    expect(useSettingsStore.getState().isUsingDefaultLLM()).toBe(true);
+  });
 });
 
 describe('resolveBaseUrl', () => {
