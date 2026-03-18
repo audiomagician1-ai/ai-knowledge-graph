@@ -871,6 +871,18 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 363 tests (137 FE + 226 BE) 全通过, tsc 0 errors, build 3.16s, workers tsc 0 errors
    - STATUS: 发现1个minor一致性问题并修复, 代码质量持续稳定
+
+- ✅ **Workers LLM free-tier fallback + configurable model tiers (2026-03-18, 98c13a9)**:
+   - Workers llm.ts: 新增 `getModelForTier()` + `DEFAULT_FREE_MODEL` (`stepfun/step-3.5-flash:free`) — 服务端fallback从硬编码`openai/gpt-4o`改为免费模型(匹配FastAPI config.py)
+   - Workers llm.ts: `resolveEndpoint()` 新增 `tier` 参数(dialogue/assessment/simple), server-side fallback使用env-configurable模型
+   - Workers llm.ts: `llmChat`/`llmChatStream` 新增 `tier` 参数(默认 'dialogue'), 与FastAPI LLMRouter.model_tiers一致
+   - Workers dialogue.ts: 对话调用传 `tier='dialogue'`, 评估调用传 `tier='assessment'`
+   - Workers types.ts: 新增 `LLM_MODEL_DIALOGUE`/`LLM_MODEL_ASSESSMENT`/`LLM_MODEL_SIMPLE` 可选env vars
+   - Workers wrangler.toml: 文档化新env vars及默认值
+   - CONSISTENCY: FastAPI(config.py 3-tier defaults) ↔ Workers(getModelForTier 3-tier defaults) — 两路一致 ✅
+   - VERIFY: 365 tests (139 FE + 226 BE) 全通过, tsc 0 errors (pnpm + workers), build 3.55s
+   - STATUS: Workers LLM与FastAPI完全对齐, Phase 5.5.2 Workers LLM代理步骤完成
+
 ```
 输出目录: release/                              ← 不是 dist/
 EXE命名: akg-v{version}-{commit7}-{YYYYMMDD}-{HHmm}.exe
@@ -1002,7 +1014,7 @@ Release Note 包含:
 **待实施步骤**:
 1. ✅ **后端 LLM 默认配置** (87e4b00) — config.py 默认模型改为 stepfun/step-3.5-flash:free, .env 配置 OpenRouter API Key, router.py 已有 fallback 逻辑
 2. ✅ **前端 UX 改造** (87e4b00) — settings.ts 新增 `isUsingDefaultLLM()`, SettingsPage + SettingsContent "正在使用免费 AI 服务 ✓" banner + 可展开高级配置, 安全说明自适应
-3. 🟡 **Workers LLM 代理** — workers/llm.ts 添加服务端 Key fallback，Supabase Edge Function `llm-proxy` 同步
+3. ✅ **Workers LLM 代理** (98c13a9) — workers/llm.ts 添加 getModelForTier + tier参数, resolveEndpoint server-side fallback使用免费模型, 与FastAPI 3-tier配置一致
 4. 🟡 **Rate Limiting** — 免费 LLM 每 IP 限制(建议 30次/小时), 登录用户限制(100次/小时), 自带 Key 无限制
 5. ✅ **设置页改版** — 新用户看到"正在使用免费 AI 服务"，无需配置即可学习
 
@@ -1050,9 +1062,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (137 tests: learning 12 + settings 26 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (139 tests: learning 12 + settings 28 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (226 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
-# Total: 363 tests
+# Total: 365 tests
 ```
 
 ### 提交规范
