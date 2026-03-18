@@ -122,3 +122,26 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE OR REPLACE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE FUNCTION handle_new_user();
+
+-- PostgREST 角色权限 (Supabase REST API 必需)
+GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
+
+GRANT SELECT ON profiles TO anon, authenticated;
+GRANT ALL ON profiles TO service_role;
+GRANT INSERT, UPDATE ON profiles TO authenticated;
+
+GRANT SELECT ON user_settings TO authenticated;
+GRANT ALL ON user_settings TO service_role;
+GRANT INSERT, UPDATE ON user_settings TO authenticated;
+
+GRANT SELECT ON user_concept_status TO authenticated;
+GRANT ALL ON user_concept_status TO service_role;
+GRANT INSERT, UPDATE, DELETE ON user_concept_status TO authenticated;
+
+GRANT SELECT ON conversations TO authenticated;
+GRANT ALL ON conversations TO service_role;
+GRANT INSERT, UPDATE, DELETE ON conversations TO authenticated;
+
+GRANT SELECT ON learning_events TO authenticated;
+GRANT ALL ON learning_events TO service_role;
+GRANT INSERT ON learning_events TO authenticated;
