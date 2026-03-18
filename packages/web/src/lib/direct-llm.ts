@@ -692,7 +692,8 @@ export async function directAssess(conversationId: string): Promise<Record<strin
  *  (matches FastAPI evaluator.validate_result and Workers validateAssessment) */
 function validateAssessment(result: any): any {
   for (const k of ['completeness', 'accuracy', 'depth', 'examples', 'overall_score']) {
-    result[k] = Math.max(0, Math.min(100, Math.round(result[k] ?? 50)));
+    const raw = Number(result[k]);
+    result[k] = Math.max(0, Math.min(100, Math.round(Number.isFinite(raw) ? raw : 50)));
   }
   result.mastered = result.overall_score >= 75 && ['completeness', 'accuracy', 'depth', 'examples'].every((k: string) => result[k] >= 60);
   result.gaps = Array.isArray(result.gaps) ? result.gaps : [];

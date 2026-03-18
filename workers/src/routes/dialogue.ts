@@ -296,7 +296,8 @@ app.post('/assess', async (c) => {
 /** Validate and normalize assessment result — clamp scores, recalculate mastered (matches FastAPI evaluator.validate_result) */
 function validateAssessment(result: any): any {
   for (const k of ['completeness', 'accuracy', 'depth', 'examples', 'overall_score']) {
-    result[k] = Math.max(0, Math.min(100, Math.round(Number(result[k]) || 50)));
+    const raw = Number(result[k]);
+    result[k] = Math.max(0, Math.min(100, Math.round(Number.isFinite(raw) ? raw : 50)));
   }
   // Always recalculate mastered from scores (don't trust LLM's mastered field)
   result.mastered = result.overall_score >= 75 && ['completeness', 'accuracy', 'depth', 'examples'].every((k: string) => result[k] >= 60);

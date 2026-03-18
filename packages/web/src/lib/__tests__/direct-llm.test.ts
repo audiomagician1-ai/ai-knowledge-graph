@@ -178,6 +178,22 @@ describe('parseAssessmentJSON', () => {
     expect(result.mastered).toBe(false); // depth 55 < 60
   });
 
+  it('should handle non-numeric score values gracefully', () => {
+    // LLM returns string instead of number — should fallback to 50
+    const json = JSON.stringify({
+      completeness: 'high', accuracy: null, depth: undefined, examples: true,
+      overall_score: 'excellent', gaps: [], feedback: 'ok',
+    });
+    const result = parseAssessmentJSON(json);
+    expect(result).not.toBeNull();
+    // 'high' → Number('high')=NaN → fallback 50, null → Number(null)=0, true → Number(true)=1
+    expect(result.completeness).toBe(50);
+    expect(result.accuracy).toBe(0);
+    expect(result.examples).toBe(1);
+    expect(result.overall_score).toBe(50);
+    expect(result.mastered).toBe(false);
+  });
+
   it('should return null for completely unparseable text', () => {
     expect(parseAssessmentJSON('no json here')).toBeNull();
     expect(parseAssessmentJSON('')).toBeNull();
