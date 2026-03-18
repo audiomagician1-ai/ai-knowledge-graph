@@ -849,9 +849,21 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 363 tests (137 FE + 226 BE) 全通过, tsc 0 errors, build 3.13s
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续32轮零issues审查**(生产代码)
-   - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+    - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
 
-### EXE 打包规范
+- ✅ **第六十轮巡逻审查+validateAssessment null防护修复 (2026-03-18, a3b8842)**:
+   - **FIX**: FE direct-llm.ts + Workers dialogue.ts `validateAssessment` — `Number(null)===0`通过`Number.isFinite()`导致null分数被映射为0而非默认50, 与Python后端(`int(float(None))`→`TypeError`→`defaults[key]=50`)行为不一致。修复: 显式检查`null/undefined`映射为NaN, 触发fallback 50 [m-01]
+   - REVIEW: 20+模块+Workers深度审查(0 critical/0 major issues):
+     - FE: direct-llm.ts(validateAssessment null/undefined defense/sliding window/timeout/fallback mastered/parseChoices/parseAssessment/tokenLimitParam) + dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental sync)
+     - BE: evaluator.py(try/except int(float()) for None/str defense/O(n) format_dialogue/consistent mastered) + dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking) + learning.py(Field validation/status whitelist/score clamping/sync mastered guard) + main.py(path traversal/CORS/headless)
+     - Workers: dialogue.ts(validateAssessment null defense/SSE chunk-aware transform/40-message window/8000 char truncation/role labels aligned) + llm.ts(SSRF validateBaseUrl) + learning.ts(mastered demotion /sync+/assess+/start/score clamping)
+   - CONSISTENCY: validateAssessment三路一致性验证:
+     - FE: null/undefined→NaN→fallback 50, Number.isFinite defense ✅
+     - Workers: 同FE ✅
+     - BE: int(float(None))→TypeError→default 50 ✅
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 363 tests (137 FE + 226 BE) 全通过, tsc 0 errors, build 3.16s, workers tsc 0 errors
+   - STATUS: 发现1个minor一致性问题并修复, 代码质量持续稳定
 ```
 输出目录: release/                              ← 不是 dist/
 EXE命名: akg-v{version}-{commit7}-{YYYYMMDD}-{HHmm}.exe
