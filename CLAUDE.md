@@ -881,7 +881,19 @@ data/seed/         — 种子图谱数据
    - Workers wrangler.toml: 文档化新env vars及默认值
    - CONSISTENCY: FastAPI(config.py 3-tier defaults) ↔ Workers(getModelForTier 3-tier defaults) — 两路一致 ✅
    - VERIFY: 365 tests (139 FE + 226 BE) 全通过, tsc 0 errors (pnpm + workers), build 3.55s
-   - STATUS: Workers LLM与FastAPI完全对齐, Phase 5.5.2 Workers LLM代理步骤完成
+    - STATUS: Workers LLM与FastAPI完全对齐, Phase 5.5.2 Workers LLM代理步骤完成
+
+- ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
+   - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
+   - **FIX(1fc80e9)**: settings.ts `hasApiKey()`/`isDirectMode()`/`getLLMHeaders()` 三处apiKey检查统一添加`.trim()` — 空白字符apiKey不再触发直连模式/发送空白header, 与`isUsingDefaultLLM()`保持一致 [m-01]
+   - TEST: +2 FE新测试(hasApiKey whitespace→false + isDirectMode whitespace→false)
+   - REVIEW: 最近4次提交(87e4b00/82f22a0/98c13a9/c12aac7)涉及的12个文件深度审查:
+     - FE: settings.ts(isUsingDefaultLLM/hasApiKey/isDirectMode/getLLMHeaders trim一致) + SettingsContent.tsx(showAdvancedLLM/Trash2联动/Security always-visible) + SettingsPage.tsx(同上)
+     - Workers: llm.ts(getModelForTier/DEFAULT_FREE_MODEL/resolveEndpoint tier参数/DeepSeek prefix strip) + dialogue.ts(tier参数传递dialogue/assessment) + types.ts(LLM_MODEL_* env vars)
+     - Infra: wrangler.toml(文档化env vars) + migration SQL(anon GRANT removal) + config.py(默认免费模型)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 368 tests (142 FE + 226 BE) 全通过, tsc 0 errors, build 3.21s
+   - STATUS: 发现1个minor一致性问题(apiKey trim)并修复, 代码质量持续稳定
 
 ```
 输出目录: release/                              ← 不是 dist/
@@ -1062,9 +1074,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (139 tests: learning 12 + settings 28 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (142 tests: learning 12 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (226 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
-# Total: 365 tests
+# Total: 368 tests
 ```
 
 ### 提交规范
