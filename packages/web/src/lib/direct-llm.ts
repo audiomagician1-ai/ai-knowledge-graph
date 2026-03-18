@@ -619,9 +619,22 @@ export async function directAssess(conversationId: string): Promise<Record<strin
     difficulty: String(difficulty),
   });
 
-  const dialogueText = conv.messages.map(m =>
-    `[${m.role === 'user' ? '用户' : 'AI（学习伙伴）'}]: ${m.content}`
-  ).join('\n\n');
+  // Truncate dialogue to prevent exceeding LLM context window
+  // (matches FastAPI evaluator 8000 char limit and Workers dialogue.ts)
+  // Role labels match FastAPI evaluator.py: user=学习者, AI=学习伙伴/老师
+  const MAX_DIALOGUE_CHARS = 8000;
+  let totalChars = 0;
+  const dialogueLines: string[] = [];
+  // Prioritize recent messages by iterating in reverse, use push+reverse for O(n)
+  for (let i = conv.messages.length - 1; i >= 0; i--) {
+    const m = conv.messages[i];
+    const line = `[${m.role === 'user' ? '用户（学习者）' : 'AI（学习伙伴/老师）'}]: ${m.content}`;
+    if (totalChars + line.length > MAX_DIALOGUE_CHARS) break;
+    dialogueLines.push(line);
+    totalChars += line.length;
+  }
+  dialogueLines.reverse();
+  const dialogueText = dialogueLines.join('\n\n');
 
   const { baseUrl, apiKey, model } = resolveEndpoint();
 
