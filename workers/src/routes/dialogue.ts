@@ -281,13 +281,15 @@ app.post('/assess', async (c) => {
     }
   } catch { /* fallback */ }
 
-  // Fallback assessment
+  // Fallback assessment — mastered logic matches standard: overall>=75 && all dims>=60
   const base = Math.min(40 + userTurns * 8, 85);
+  const dims = { completeness: base, accuracy: base - 5, depth: base - 10, examples: base - 15 };
+  const overall = base - 5;
+  const mastered = overall >= 75 && Object.values(dims).every(s => s >= 60);
   return c.json({
     concept_id: conv.concept_id, concept_name: conceptName, turns: userTurns,
-    completeness: base, accuracy: base - 5, depth: base - 10, examples: base - 15,
-    overall_score: base - 5, gaps: ['评估服务暂时不可用'], feedback: `你进行了 ${userTurns} 轮对话，表现不错！`,
-    mastered: base >= 80,
+    ...dims, overall_score: overall, gaps: ['评估服务暂时不可用'], feedback: `你进行了 ${userTurns} 轮对话，表现不错！`,
+    mastered,
   });
 });
 
