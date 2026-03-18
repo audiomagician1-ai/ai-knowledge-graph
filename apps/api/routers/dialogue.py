@@ -24,6 +24,7 @@ from engines.dialogue.socratic import socratic_engine
 from engines.dialogue.prompts.feynman_system import parse_ai_response
 from engines.dialogue.evaluator import evaluator
 from routers.graph import _load_seed
+from rate_limiter import check_rate_limit
 from db.sqlite_client import (
     save_conversation, save_message, get_conversation,
     get_conversation_messages, update_conversation_status,
@@ -180,6 +181,15 @@ async def create_conversation(req: ConversationCreate, request: Request):
     conv_id = str(uuid.uuid4())
     user_config = _extract_user_llm_config(request)
 
+    # Rate limit check — only for free LLM users (no user key)
+    allowed, rl_info = check_rate_limit(request, has_user_key=bool(user_config))
+    if not allowed:
+        raise HTTPException(
+            status_code=429,
+            detail=f"免费 AI 服务请求过于频繁，请 {rl_info['reset_after']} 秒后重试。或在设置页配置自己的 API Key 获取无限额度。",
+            headers={"Retry-After": str(rl_info["reset_after"])},
+        )
+
     system_prompt = await socratic_engine.build_system_prompt(
         concept=concept,
         prerequisites=concept.get("prerequisite_names", []),
@@ -232,6 +242,15 @@ async def chat(req: ChatRequest, request: Request):
 
     session["last_active"] = time.time()
     user_config = _extract_user_llm_config(request)
+
+    # Rate limit check — only for free LLM users (no user key)
+    allowed, rl_info = check_rate_limit(request, has_user_key=bool(user_config))
+    if not allowed:
+        raise HTTPException(
+            status_code=429,
+            detail=f"免费 AI 服务请求过于频繁，请 {rl_info['reset_after']} 秒后重试。或在设置页配置自己的 API Key 获取无限额度。",
+            headers={"Retry-After": str(rl_info["reset_after"])},
+        )
 
     from config import settings
     has_server_key = bool(settings.openrouter_api_key or settings.openai_api_key or settings.deepseek_api_key)
@@ -330,6 +349,16 @@ async def assess_understanding(req: AssessmentRequest, request: Request):
         raise HTTPException(status_code=404, detail="会话不存在")
 
     user_config = _extract_user_llm_config(request)
+
+    # Rate limit check — only for free LLM users (no user key)
+    allowed, rl_info = check_rate_limit(request, has_user_key=bool(user_config))
+    if not allowed:
+        raise HTTPException(
+            status_code=429,
+            detail=f"免费 AI 服务请求过于频繁，请 {rl_info['reset_after']} 秒后重试。或在设置页配置自己的 API Key 获取无限额度。",
+            headers={"Retry-After": str(rl_info["reset_after"])},
+        )
+
     concept = session["concept"]
     messages = session["messages"]
 

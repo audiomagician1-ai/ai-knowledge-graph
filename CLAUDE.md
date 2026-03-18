@@ -883,6 +883,14 @@ data/seed/         — 种子图谱数据
    - VERIFY: 365 tests (139 FE + 226 BE) 全通过, tsc 0 errors (pnpm + workers), build 3.55s
     - STATUS: Workers LLM与FastAPI完全对齐, Phase 5.5.2 Workers LLM代理步骤完成
 
+- ✅ **Phase 5.5.2 Rate Limiting 实现 (2026-03-19)**:
+   - NEW: `apps/api/rate_limiter.py` — 滑动窗口限流器(in-memory), IP-based keying, 自动过期清理(5min pruning interval), 环境变量可配置
+   - 设计: BYOK用户(自带Key)不限流; 匿名用户30次/小时(RATE_LIMIT_ANON_PER_HOUR); 登录用户100次/小时(RATE_LIMIT_AUTH_PER_HOUR, 预留)
+   - 集成: dialogue.py 3个LLM端点(POST /conversations, /chat, /assess)均添加rate limit check, 429响应含Retry-After header
+   - TEST: +17 BE新测试(RateLimiter核心9 + get_client_ip 5 + check_rate_limit 3): 允许/阻止/独立key/窗口过期/部分过期/prune/间隔跳过/正整数reset/X-Forwarded-For/多代理/空格/host fallback/unknown/BYOK无限/匿名限流/不同IP独立
+   - VERIFY: 385 tests (142 FE + 243 BE) 全通过, tsc 0 errors
+   - STATUS: Phase 5.5.2 所有5个步骤全部完成 ✅
+
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
    - **FIX(1fc80e9)**: settings.ts `hasApiKey()`/`isDirectMode()`/`getLLMHeaders()` 三处apiKey检查统一添加`.trim()` — 空白字符apiKey不再触发直连模式/发送空白header, 与`isUsingDefaultLLM()`保持一致 [m-01]
@@ -1027,7 +1035,7 @@ Release Note 包含:
 1. ✅ **后端 LLM 默认配置** (87e4b00) — config.py 默认模型改为 stepfun/step-3.5-flash:free, .env 配置 OpenRouter API Key, router.py 已有 fallback 逻辑
 2. ✅ **前端 UX 改造** (87e4b00) — settings.ts 新增 `isUsingDefaultLLM()`, SettingsPage + SettingsContent "正在使用免费 AI 服务 ✓" banner + 可展开高级配置, 安全说明自适应
 3. ✅ **Workers LLM 代理** (98c13a9) — workers/llm.ts 添加 getModelForTier + tier参数, resolveEndpoint server-side fallback使用免费模型, 与FastAPI 3-tier配置一致
-4. 🟡 **Rate Limiting** — 免费 LLM 每 IP 限制(建议 30次/小时), 登录用户限制(100次/小时), 自带 Key 无限制
+4. ✅ **Rate Limiting** — `rate_limiter.py` 滑动窗口限流器: 匿名用户30次/小时(IP-based), 登录用户100次/小时(预留), BYOK无限制; 3个LLM端点(conversations/chat/assess)均集成; 环境变量可配置(RATE_LIMIT_ANON_PER_HOUR/RATE_LIMIT_AUTH_PER_HOUR); 17项测试全覆盖
 5. ✅ **设置页改版** — 新用户看到"正在使用免费 AI 服务"，无需配置即可学习
 
 #### 5.5.3 数据持久化策略迭代 (ADR-011)
@@ -1075,8 +1083,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (142 tests: learning 12 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
-cd apps/api && python -m pytest          # 后端测试 ✅ (226 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
-# Total: 368 tests
+cd apps/api && python -m pytest          # 后端测试 ✅ (243 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
+# Total: 385 tests
 ```
 
 ### 提交规范
