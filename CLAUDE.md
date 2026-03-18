@@ -7,13 +7,13 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 5 启动** | 可选登录 + Supabase 云同步（跨端进度）
+**当前阶段**: 🟢 **Phase 5.5 启动** | 后端服务升级（Auth 配置 + 默认 LLM + 数据持久化迭代）
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 
-**当前最高优先任务 — Phase 5: 可选登录 + 跨端同步**:
-> **目标**: 保持免登录可用(ADR-009)，增加可选邮箱登录，登录用户自动同步学习数据到 Supabase，实现跨端进度恢复
-> **详见**: 下方 Phase 5 迭代计划
+**当前最高优先任务 — Phase 5.5: 后端服务升级**:
+> **目标**: (1) Supabase Cloud 上线 + Google/GitHub OAuth 配置; (2) 提供默认免费 LLM (OpenRouter step-3.5-flash:free); (3) 迭代数据持久化策略(登录用户 Supabase-first)
+> **详见**: 下方 Phase 5.5 迭代计划
 
 ### 12周里程碑
 
@@ -24,7 +24,8 @@
 | **Phase 2** | W5-7 | 对话引擎 (核心) | ✅ 完成 (LLM调用层+苏格拉底引擎+评估器+SSE流式+前端UI+RAG知识库) |
 | **Phase 3** | W8-9 | 节点点亮 + 进度系统 | ✅ 完成 (前置条件图+推荐集合+mastered绿光晕+recommended青光晕+Dashboard真实数据) |
 | **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+6轮审查90项+49测试+EXE打包) |
-| **Phase 5** | W13+ | 可选登录 + 跨端同步 | 🟡 进行中 |
+| **Phase 5** | W13+ | 可选登录 + 跨端同步 | ✅ 代码就绪 (57轮审查363tests) |
+| **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | 🟡 进行中 |
 
 ---
 
@@ -65,7 +66,8 @@ data/seed/         — 种子图谱数据
 | ADR-006 | 深色主题优先 | 知识宇宙主题，对齐 MuseSea 风格 |
 | ADR-007 | FSRS 间隔重复 (非 SM-2) | 97.4% 优于 SM-2，Anki 已默认采用 |
 | ADR-009 | 全站免登录可用 | MVP 阶段降低门槛，匿名即可体验全部功能 |
-| ADR-010 | 用户自带 LLM Key | 前端 localStorage 存储，请求头透传后端，服务端不保存 |
+| ADR-010 | ~~用户自带 LLM Key~~ → 默认免费 LLM + 可选自带 Key | 服务端提供 OpenRouter step-3.5-flash:free 作为默认后端，用户无需配置即可使用；高级用户可在设置页覆盖为自己的 Key/模型 |
+| ADR-011 | 登录用户 Supabase-first 持久化 | 登录用户数据以 Supabase Cloud 为权威源(替代 localStorage-first)，匿名用户仍用 localStorage |
 
 ---
 
@@ -949,6 +951,86 @@ Release Note 包含:
 - [x] 登录方式: **邮箱 + Google + GitHub** OAuth
 - [x] 数据冲突: 以 **last_learn_at 较新为准** (与现有 importData 一致)
 - [x] 登录入口: **Sidebar 底部 + 移动端设置页顶部**
+
+### Phase 5.5 迭代计划: 后端服务升级（Auth 配置 + 默认 LLM + 数据持久化迭代）🟡
+
+> **P0 — 第一优先级**: 本阶段是网站后端服务升级的核心迭代
+
+**三大目标**:
+1. **Supabase Cloud 上线 + OAuth 配置** — 让用户注册/登录真正可用
+2. **默认免费 LLM 服务** — 用户零配置即可开始学习
+3. **数据持久化策略迭代** — 登录用户从 localStorage-first 升级为 Supabase-first
+
+#### 5.5.1 Supabase Cloud 上线 + OAuth
+
+**Supabase Cloud 凭据** (已保存在 deployment-index.json):
+- Project: `oepkmybgwptxnkpgrglv`
+- URL: `https://oepkmybgwptxnkpgrglv.supabase.co`
+- Anon Key / Service Role Key: 已配置到 .env
+- Dashboard 凭据: `sb_publishable_*` / `sb_secret_*`
+
+**待实施步骤**:
+1. 🟡 **Supabase Dashboard 配置** — 登录 Dashboard 执行:
+   - 运行 `00001_initial_schema.sql` migration (创建6表+RLS+trigger)
+   - 启用 Email Auth provider
+   - 配置 Google OAuth provider (需 Google Cloud Console 创建 OAuth Client ID, redirect URL: `https://oepkmybgwptxnkpgrglv.supabase.co/auth/v1/callback`)
+   - 配置 GitHub OAuth provider (需 GitHub Settings > Developer settings > OAuth Apps, redirect URL 同上)
+   - 配置 Redirect URLs 白名单: `http://localhost:3000`, `https://akg-web.pages.dev`, 以及最终域名
+2. 🟡 **前端 OAuth 回调处理** — 确认 auth.ts `signInWithOAuth` 的 redirectTo 配置正确
+3. 🟡 **E2E 验证** — 邮箱注册→学习→退出→新设备登录→进度恢复
+
+#### 5.5.2 默认免费 LLM 服务 (ADR-010 迭代)
+
+**设计原则**:
+- **零配置体验**: 用户首次访问即可开始学习，无需设置任何 API Key
+- **服务端代理**: 免费 LLM 请求走服务端(隐藏 API Key)，不暴露给前端
+- **BYOK 保留**: 用户仍可在设置页配置自己的 Key/Provider/Model，此时走 direct 模式(用户 Key 不经服务端)
+- **免费额度合理限制**: 防滥用(IP/用户级 rate limit)
+
+**技术方案**:
+- **LLM Provider**: OpenRouter
+- **免费模型**: `stepfun/step-3.5-flash:free`
+- **API Key**: `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` (保存在服务端环境变量，不进前端)
+- **Base URL**: `https://openrouter.ai/api/v1`
+
+**待实施步骤**:
+1. 🟡 **后端 LLM 默认配置** — `apps/api/config.py` / `workers/wrangler.toml` 添加 OpenRouter API Key 环境变量, `llm/router.py` 无用户 Key 时 fallback 到服务端 Key
+2. 🟡 **前端 UX 改造** —
+   - settings.ts: 新增 `useDefaultLLM` 状态(默认 true), 当 true 时不需要用户提供 API Key
+   - SettingsPage: "AI 模型"区域改版 — 顶部显示"正在使用免费 AI 服务 ✓", 下方折叠"高级: 使用自己的 API Key"
+   - direct-llm.ts: `isDirectMode()` 改为仅在用户主动配置了 Key 时返回 true
+   - dialogue.ts: 无用户 Key 时 → 走后端 API(后端用服务端 Key); 有用户 Key 时 → 走 direct 模式
+3. 🟡 **Workers LLM 代理** — workers/llm.ts 添加服务端 Key fallback，Supabase Edge Function `llm-proxy` 同步
+4. 🟡 **Rate Limiting** — 免费 LLM 每 IP 限制(建议 30次/小时), 登录用户限制(100次/小时), 自带 Key 无限制
+5. 🟡 **移除设置页首次引导** — 新用户不再需要先去设置页配 Key 才能学习
+
+#### 5.5.3 数据持久化策略迭代 (ADR-011)
+
+**当前架构** (Phase 5):
+```
+localStorage (权威源) → fire-and-forget 同步到 Supabase
+```
+
+**目标架构** (Phase 5.5):
+```
+匿名用户: localStorage (权威源, 与当前相同)
+登录用户: Supabase Cloud (权威源) → 本地缓存到 localStorage (离线 fallback)
+```
+
+**待实施步骤**:
+1. 🟡 **learning.ts 重构** — 登录用户的 `startLearning`/`recordAssessment` 改为 Supabase-first + localStorage 缓存:
+   - 写: 先写 Supabase → 成功后更新 localStorage; Supabase 不可用时降级为 localStorage-first + 队列重试
+   - 读: 先读 Supabase → 缓存到 localStorage; 离线时读 localStorage
+2. 🟡 **supabase-sync.ts 简化** — 登录用户不再需要复杂的双向合并(fullSync), 改为:
+   - 登录时: Supabase → localStorage 单向下载(Supabase 为权威)
+   - 退出时: 清空 localStorage 敏感数据(保留匿名学习数据)
+3. 🟡 **离线队列** — 网络中断时暂存写操作, 恢复后批量同步
+4. 🟡 **首次登录迁移** — 匿名用户注册/登录时, localStorage 数据一次性上传到 Supabase(保留现有 fullSync 逻辑作为迁移工具)
+
+**⚠️ 注意事项**:
+- Phase 5 的 localStorage-first + fire-and-forget 双写架构代码保留, 作为匿名用户路径
+- 登录用户路径是新增的 Supabase-first 分支, 不修改匿名用户行为
+- 所有 mastered 降级防护(8路一致)必须在新路径中同样执行
 
 ---
 
