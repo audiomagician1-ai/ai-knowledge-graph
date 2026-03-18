@@ -21,7 +21,10 @@ interface SettingsState {
   setLLMConfig: (config: Partial<LLMConfig>) => void;
   clearApiKey: () => void;
   hasApiKey: () => boolean;
+  /** True when user has their own API key configured → LLM calls go direct from browser */
   isDirectMode: () => boolean;
+  /** True when using server-provided free LLM (no user key) */
+  isUsingDefaultLLM: () => boolean;
 }
 
 const STORAGE_KEY = 'akg-settings';
@@ -96,6 +99,10 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
     // (providers have defaultBase, so user only needs a key for standard providers)
     const hasBase = !!(cfg.baseUrl || PROVIDER_INFO[cfg.provider]?.defaultBase);
     return !!(cfg.apiKey && hasBase);
+  },
+
+  isUsingDefaultLLM: () => {
+    return !get().llmConfig.apiKey;
   },
 }));
 

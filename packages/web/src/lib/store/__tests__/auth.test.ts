@@ -128,10 +128,10 @@ describe('useAuthStore', () => {
   });
 
   describe('supabaseConfigured', () => {
-    it('should be false by default (test env has no VITE_SUPABASE_URL)', () => {
-      // In test environment, import.meta.env.VITE_SUPABASE_URL is not set
-      // so isSupabaseConfigured returns false
-      expect(useAuthStore.getState().supabaseConfigured).toBe(false);
+    it('should reflect whether VITE_SUPABASE_URL is a real cloud URL', () => {
+      const url = import.meta.env.VITE_SUPABASE_URL || '';
+      const expected = !!url && !url.includes('localhost') && url !== 'http://localhost:54321';
+      expect(useAuthStore.getState().supabaseConfigured).toBe(expected);
     });
   });
 });

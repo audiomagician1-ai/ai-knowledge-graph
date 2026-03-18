@@ -23,6 +23,8 @@ export function SettingsContent() {
   const [importStatus, setImportStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [importMessage, setImportMessage] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const isUsingDefault = useSettingsStore((s) => s.isUsingDefaultLLM());
+  const [showAdvancedLLM, setShowAdvancedLLM] = useState(!isUsingDefault);
 
   const handleSave = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
@@ -70,6 +72,39 @@ export function SettingsContent() {
 
   return (
     <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+      {/* AI Service Status */}
+      <div>
+        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex' }}>
+          <Server size={12} /> AI 模型
+        </label>
+        {isUsingDefault ? (
+          <div className="flex items-center gap-3" style={{ borderRadius: 10, padding: '12px 16px', backgroundColor: 'var(--color-tint-emerald)', border: '1px solid rgba(138, 173, 122, 0.15)' }}>
+            <Check size={15} style={{ color: 'var(--color-accent-emerald)', flexShrink: 0 }} />
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-text-primary)' }}>正在使用免费 AI 服务</div>
+              <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 2 }}>无需配置，直接开始学习</div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3" style={{ borderRadius: 10, padding: '12px 16px', backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}>
+            <Key size={15} style={{ color: 'var(--color-accent-primary)', flexShrink: 0 }} />
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-text-primary)' }}>使用自定义 API Key</div>
+              <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {PROVIDER_INFO[llmConfig.provider].name} · {llmConfig.model || getDefaultModel(llmConfig.provider)}
+              </div>
+            </div>
+            <button onClick={() => { clearApiKey(); setShowAdvancedLLM(false); }} style={{ fontSize: 11, color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0 }}>切回免费</button>
+          </div>
+        )}
+        <button onClick={() => setShowAdvancedLLM(!showAdvancedLLM)}
+          style={{ marginTop: 8, fontSize: 12, color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ display: 'inline-block', transition: 'transform 0.2s', transform: showAdvancedLLM ? 'rotate(90deg)' : 'rotate(0deg)' }}>▸</span>
+          高级：使用自己的 API Key
+        </button>
+      </div>
+
+      {showAdvancedLLM && (<>
       {/* Provider */}
       <div>
         <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex' }}>
@@ -321,9 +356,12 @@ export function SettingsContent() {
       <div className="flex items-start gap-3" style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-tint-emerald)' }}>
         <Shield size={13} className="shrink-0" style={{ marginTop: 1, color: 'var(--color-accent-emerald)' }} />
         <p style={{ fontSize: 12, lineHeight: 1.6, color: 'var(--color-text-tertiary)' }}>
-          Key 仅存在浏览器本地。{llmConfig.useProxy ? '本地代理模式下，请求通过本机代理转发，不经过任何外部服务器。' : '直连模式下，请求直接从浏览器发往 LLM API。'}
+          {isUsingDefault
+            ? '免费服务由服务器代理调用，你的浏览器不会接触 API Key。'
+            : `Key 仅存在浏览器本地。${llmConfig.useProxy ? '本地代理模式下，请求通过本机代理转发，不经过任何外部服务器。' : '直连模式下，请求直接从浏览器发往 LLM API。'}`}
         </p>
       </div>
+      </>)}
     </div>
   );
 }

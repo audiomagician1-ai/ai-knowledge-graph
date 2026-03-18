@@ -32,6 +32,8 @@ export function SettingsPage() {
   const { user, supabaseConfigured, signOut } = useAuthStore();
   const isLoggedIn = !!user;
   const displayName = useAuthStore((s) => s.displayName());
+  const isUsingDefault = useSettingsStore((s) => s.isUsingDefaultLLM());
+  const [showAdvancedLLM, setShowAdvancedLLM] = useState(!isUsingDefault);
 
   const handleSave = () => {
     setSaved(true);
@@ -93,9 +95,9 @@ export function SettingsPage() {
             <ArrowLeft size={20} />
             <span className="font-medium">返回图谱</span>
           </button>
-          <h1 className="text-3xl font-bold mb-2">API 设置</h1>
+          <h1 className="text-3xl font-bold mb-2">设置</h1>
           <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>
-            配置 LLM 服务以启用对话功能
+            AI 服务与学习数据管理
           </p>
         </div>
 
@@ -145,12 +147,66 @@ export function SettingsPage() {
           </div>
         )}
 
-        {/* Provider Selection */}
+        {/* AI Service Status */}
         <div className="mb-8 animate-fade-in stagger-1">
           <label className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--color-text-secondary)' }}>
             <Server size={14} />
-            服务商
+            AI 模型
           </label>
+          {isUsingDefault ? (
+            <div
+              className="rounded-md p-4 flex items-center gap-3"
+              style={{ backgroundColor: 'var(--color-tint-emerald)', border: '1px solid rgba(138, 173, 122, 0.15)' }}
+            >
+              <Check size={18} style={{ color: 'var(--color-accent-emerald)' }} className="shrink-0" />
+              <div className="flex-1">
+                <div className="text-[15px] font-medium" style={{ color: 'var(--color-text-primary)' }}>
+                  正在使用免费 AI 服务
+                </div>
+                <div className="text-sm mt-0.5" style={{ color: 'var(--color-text-tertiary)' }}>
+                  无需配置，直接开始学习。如需更强模型，可展开下方高级设置。
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div
+              className="rounded-md p-4 flex items-center gap-3"
+              style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
+            >
+              <Key size={18} style={{ color: 'var(--color-accent-primary)' }} className="shrink-0" />
+              <div className="flex-1">
+                <div className="text-[15px] font-medium" style={{ color: 'var(--color-text-primary)' }}>
+                  使用自定义 API Key
+                </div>
+                <div className="text-sm mt-0.5" style={{ color: 'var(--color-text-tertiary)' }}>
+                  {PROVIDER_INFO[llmConfig.provider].name} · {llmConfig.model || getDefaultModel(llmConfig.provider)}
+                </div>
+              </div>
+              <button
+                onClick={() => { clearApiKey(); setShowAdvancedLLM(false); }}
+                className="btn-ghost text-sm shrink-0"
+              >
+                切回免费
+              </button>
+            </div>
+          )}
+
+          {/* Toggle advanced settings */}
+          <button
+            onClick={() => setShowAdvancedLLM(!showAdvancedLLM)}
+            className="mt-3 text-sm flex items-center gap-1.5 transition-colors"
+            style={{ color: 'var(--color-text-tertiary)' }}
+            onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.color = 'var(--color-accent-primary)')}
+            onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.color = 'var(--color-text-tertiary)')}
+          >
+            <span style={{ display: 'inline-block', transition: 'transform 0.2s', transform: showAdvancedLLM ? 'rotate(90deg)' : 'rotate(0deg)' }}>▸</span>
+            高级：使用自己的 API Key
+          </button>
+        </div>
+
+        {showAdvancedLLM && (<>
+        {/* Provider Selection */}
+        <div className="mb-8 animate-fade-in">
           <div className="grid grid-cols-4 gap-3">
             {PROVIDERS.map((p) => {
               const pInfo = PROVIDER_INFO[p];
@@ -317,10 +373,10 @@ export function SettingsPage() {
           </h3>
           <div className="space-y-3">
             {[
-              '选择服务商并输入 API Key（自定义需填写 Base URL + 模型名）',
               '回到图谱页面，点击任意知识节点',
               'AI 先讲解概念，然后向你提问，你来解答',
               '对话 4 轮后可请求评估，获得掌握度打分',
+              '（可选）在上方展开高级设置，换用更强的模型',
             ].map((text, i) => (
               <div key={i} className="flex items-start gap-2.5">
                 <span className="text-sm font-mono font-bold mt-px shrink-0" style={{ color: 'var(--color-accent-primary)' }}>
@@ -333,6 +389,7 @@ export function SettingsPage() {
             ))}
           </div>
         </div>
+        </>)}
 
         {/* About section */}
         <div className="card-static p-6 rounded-lg mb-7 animate-fade-in stagger-6">
@@ -457,7 +514,9 @@ export function SettingsPage() {
         >
           <Shield size={16} className="shrink-0 mt-0.5" style={{ color: 'var(--color-accent-emerald)' }} />
           <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-tertiary)' }}>
-            Key 存储在浏览器 localStorage，仅通过加密请求头传递。后端不存储 Key。
+            {isUsingDefault
+              ? '免费服务由服务器代理调用，你的浏览器不会接触 API Key。'
+              : '自定义 Key 存储在浏览器 localStorage，仅通过请求头传递。后端不存储你的 Key。'}
           </p>
         </div>
 

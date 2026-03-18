@@ -67,6 +67,15 @@ describe('useSettingsStore', () => {
     useSettingsStore.getState().setLLMConfig({ apiKey: 'sk-test', provider: 'custom', baseUrl: '' });
     expect(useSettingsStore.getState().isDirectMode()).toBe(false);
   });
+
+  it('isUsingDefaultLLM should be true when no apiKey', () => {
+    expect(useSettingsStore.getState().isUsingDefaultLLM()).toBe(true);
+  });
+
+  it('isUsingDefaultLLM should be false when apiKey is set', () => {
+    useSettingsStore.getState().setLLMConfig({ apiKey: 'my-key' });
+    expect(useSettingsStore.getState().isUsingDefaultLLM()).toBe(false);
+  });
 });
 
 describe('resolveBaseUrl', () => {
