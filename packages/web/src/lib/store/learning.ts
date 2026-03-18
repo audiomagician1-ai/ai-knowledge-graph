@@ -1,8 +1,8 @@
 ﻿import { create } from 'zustand';
 import type { LearningStats, ConceptStatus } from '@akg/shared';
 import {
-  apiStartLearning, apiRecordAssessment, apiFetchAllProgress,
-  apiFetchStats, apiFetchHistory, apiFetchStreak, apiSyncToBackend,
+  apiStartLearning, apiRecordAssessment,
+  apiFetchStats, apiSyncToBackend,
 } from '@/lib/api/learning-api';
 import { syncProgressToCloud, syncHistoryToCloud } from './supabase-sync';
 
@@ -573,7 +573,9 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     if (get().backendSynced) return;
 
     try {
-      // 1. Push local data to backend (in case backend DB is empty/new)
+      // Backend SQLite has NO user isolation — all anonymous users share the same DB.
+      // Pulling data from backend would merge other users' progress into local storage.
+      // Only push local data to backend (for recommendation engine), never pull back.
       const localProgress = get().progress;
       const localHistory = get().history;
       const localStreak = get().streak;
@@ -586,93 +588,10 @@ export const useLearningStore = create<LearningState>((set, get) => ({
         });
       }
 
-      // 2. Pull merged data from backend (backend has the authoritative state now)
-      const [backendProgress, backendHistory, backendStreak] = await Promise.all([
-        apiFetchAllProgress(),
-        apiFetchHistory(100),
-        apiFetchStreak(),
-      ]);
-
-      // 3. Merge: LOCAL data is authoritative (localStorage is primary source of truth).
-      //    Backend data is only used to fill in missing entries (e.g. synced from another device).
-      //    This prevents backend stale data from overwriting local progress.
-      const mergedProgress: Record<string, ConceptProgress> = { ...localProgress };
-      for (const [cid, bp] of Object.entries(backendProgress)) {
-        const local = mergedProgress[cid];
-        const backendItem = bp as any;
-        if (!local) {
-          // Only import entries that don't exist locally
-          mergedProgress[cid] = {
-            concept_id: cid,
-            status: backendItem.status || 'not_started',
-            mastery_score: backendItem.mastery_score || 0,
-            last_score: backendItem.last_score,
-            sessions: backendItem.sessions || 0,
-            total_time_sec: backendItem.total_time_sec || 0,
-            mastered_at: backendItem.mastered_at,
-            last_learn_at: backendItem.last_learn_at || 0,
-          };
-        } else if (backendItem.last_learn_at && backendItem.last_learn_at > (local.last_learn_at || 0)) {
-          // Backend has strictly newer data → merge but never demote mastered status
-          const wasMastered = local.status === 'mastered';
-          mergedProgress[cid] = {
-            concept_id: cid,
-            status: wasMastered ? 'mastered' : (backendItem.status || local.status),
-            mastery_score: wasMastered ? Math.max(local.mastery_score, backendItem.mastery_score || 0) : (backendItem.mastery_score || 0),
-            last_score: backendItem.last_score ?? local.last_score,
-            sessions: Math.max(local.sessions, backendItem.sessions || 0),
-            total_time_sec: Math.max(local.total_time_sec, backendItem.total_time_sec || 0),
-            mastered_at: local.mastered_at || backendItem.mastered_at,
-            last_learn_at: backendItem.last_learn_at,
-          };
-        }
-        // If local has same or newer data → keep local (default: spread already copied)
-      }
-
-      // Merge history (deduplicate by timestamp+concept_id)
-      const historySet = new Set(localHistory.map(h => `${h.concept_id}-${h.timestamp}`));
-      const mergedHistory = [...localHistory];
-      for (const bh of (backendHistory as any[])) {
-        const key = `${bh.concept_id}-${bh.timestamp}`;
-        if (!historySet.has(key)) {
-          mergedHistory.push({
-            concept_id: bh.concept_id,
-            concept_name: bh.concept_name,
-            score: bh.score,
-            mastered: !!bh.mastered,
-            timestamp: bh.timestamp,
-          });
-          historySet.add(key);
-        }
-      }
-      mergedHistory.sort((a, b) => a.timestamp - b.timestamp);
-
-      // Merge streak (take max)
-      let mergedStreak = { ...localStreak };
-      if (backendStreak) {
-        // Use the streak with the more recent lastDate (not just max)
-        const backendLastDate = backendStreak.last_date || '';
-        const useBackend = backendLastDate > localStreak.lastDate;
-        mergedStreak = {
-          current: useBackend ? (backendStreak.current_streak || 0) : localStreak.current,
-          longest: Math.max(localStreak.longest, backendStreak.longest_streak || 0),
-          lastDate: useBackend ? backendLastDate : localStreak.lastDate,
-        };
-      }
-
-      // 4. Save merged data locally
-      saveProgress(mergedProgress);
-      saveHistory(mergedHistory);
-      saveStreak(mergedStreak);
-
-      set({
-        progress: mergedProgress,
-        history: mergedHistory,
-        streak: mergedStreak,
-        backendSynced: true,
-      });
-
-      console.log('[learning] Backend sync complete:', Object.keys(mergedProgress).length, 'concepts');
+      // Skip pull from backend — localStorage is the single source of truth for anonymous users.
+      // When Supabase auth is configured (Phase 5), user-specific sync uses supabase-sync.ts instead.
+      set({ backendSynced: true });
+      console.log('[learning] Backend push-only sync complete:', Object.keys(localProgress).length, 'concepts');
     } catch (err) {
       console.warn('[learning] Backend sync failed, using local data:', err);
       set({ backendSynced: true }); // Don't retry this session

@@ -313,7 +313,11 @@ export function GraphPage() {
 
       {/* ===== MODALS ===== */}
       <DraggableModal open={showDashboard} onClose={() => setShowDashboard(false)} title="学习进度" width={560} height={720}>
-        <DashboardContent />
+        <DashboardContent onNavigate={(conceptId) => {
+          setShowDashboard(false);
+          const node = enrichedGraphData?.nodes.find(n => n.id === conceptId);
+          if (node) selectNode(node);
+        }} />
       </DraggableModal>
       <DraggableModal open={showSettings} onClose={() => setShowSettings(false)} title="设置" width={520} height={760}>
         <SettingsContent />

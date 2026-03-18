@@ -1,9 +1,14 @@
 ﻿import { useEffect, useMemo } from 'react';
 import { useLearningStore, type ConceptProgress } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
-import { Zap, BookOpen, Flame, Trophy, Clock, Target } from 'lucide-react';
+import { Zap, BookOpen, Flame, Trophy, Clock, Target, ArrowRight } from 'lucide-react';
 
-export function DashboardContent() {
+interface DashboardContentProps {
+  /** Called when user clicks a learning activity item. Receives the concept_id. */
+  onNavigate?: (conceptId: string) => void;
+}
+
+export function DashboardContent({ onNavigate }: DashboardContentProps) {
   const { stats, progress, streak, computeStats, refreshStreak } = useLearningStore();
   const { graphData } = useGraphStore();
 
@@ -74,7 +79,7 @@ export function DashboardContent() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {recentActivity.map((item) => (
-              <ActivityRow key={item.concept_id} item={item} nameMap={nameMap} />
+              <ActivityRow key={item.concept_id} item={item} nameMap={nameMap} onNavigate={onNavigate} />
             ))}
           </div>
         )}
@@ -103,7 +108,7 @@ export function DashboardContent() {
   );
 }
 
-function ActivityRow({ item, nameMap }: { item: ConceptProgress; nameMap: Record<string, string> }) {
+function ActivityRow({ item, nameMap, onNavigate }: { item: ConceptProgress; nameMap: Record<string, string>; onNavigate?: (conceptId: string) => void }) {
   const time = new Date(item.last_learn_at);
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${String(time.getHours()).padStart(2, '0')}:${String(time.getMinutes()).padStart(2, '0')}`;
   const isMastered = item.status === 'mastered';
@@ -113,8 +118,16 @@ function ActivityRow({ item, nameMap }: { item: ConceptProgress; nameMap: Record
     : 'var(--color-text-tertiary)';
   // Display concept name from graph data, fallback to humanized ID
   const displayName = nameMap[item.concept_id] || item.concept_id.replace(/-/g, ' ');
+  const clickable = !!onNavigate;
   return (
-    <div className="flex items-center" style={{ gap: 12, borderRadius: 8, padding: '10px 16px', backgroundColor: 'transparent' }}>
+    <button
+      onClick={() => onNavigate?.(item.concept_id)}
+      disabled={!clickable}
+      className="w-full flex items-center transition-all group"
+      style={{ gap: 12, borderRadius: 8, padding: '10px 16px', backgroundColor: 'transparent', border: 'none', cursor: clickable ? 'pointer' : 'default', textAlign: 'left' }}
+      onMouseEnter={(e) => { if (clickable) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
+      onMouseLeave={(e) => { if (clickable) e.currentTarget.style.backgroundColor = 'transparent'; }}
+    >
       <div className="flex items-center justify-center shrink-0" style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: isMastered ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.1)', color: isMastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>
         {isMastered ? <Zap size={13} /> : <BookOpen size={13} />}
       </div>
@@ -127,6 +140,7 @@ function ActivityRow({ item, nameMap }: { item: ConceptProgress; nameMap: Record
       ) : (
         <span style={{ fontSize: 12, color: 'var(--color-accent-amber)' }}>学习中</span>
       )}
-    </div>
+      {clickable && <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0" style={{ color: 'var(--color-text-tertiary)' }} />}
+    </button>
   );
 }

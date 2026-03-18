@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     # Supabase (用于验证 JWT)
     supabase_url: str = "http://localhost:54321"
     supabase_jwt_secret: str = ""
+    supabase_service_role_key: str = ""
 
     # LLM
     openrouter_api_key: str = ""
