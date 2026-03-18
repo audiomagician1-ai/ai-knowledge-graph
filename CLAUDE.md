@@ -834,6 +834,23 @@ data/seed/         — 种子图谱数据
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续31轮零issues审查**(生产代码)
    - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
 
+- ✅ **第五十九轮深度巡逻审查 (2026-03-18)**:
+   - REVIEW: 20+模块+Workers全5模块深度审查全通过(0 critical/0 major/0 minor issues):
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController/streaming simulation stale check) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge/getStreakDates/verifyStorageAvailable/isValidProgress) + direct-llm.ts(validateAssessment Number.isFinite/sliding window/timeout/fallback mastered/parseChoices/parseAssessment/pruneDirectConversations/content-type guard/message cap/8000 char truncation/tokenLimitParam) + supabase-sync.ts(toDbStatus mapping/concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + auth.ts(subscription cleanup/callback dedup/OAuth redirect/displayName fallback chain) + settings.ts(validateModelId/getDefaultModel/probeCORS/generateSelfContainedBat/tokenLimitParam) + graph.ts(simple setters) + text.ts(stripChoicesBlock)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache orphan locks/input validation) + learning.py(Field validation/status whitelist/score clamping/sync mastered guard) + evaluator.py(O(n) format_dialogue/consistent mastered/parse_json fallback chain/validate_result) + main.py(path traversal is_relative_to/wildcard+credentials CORS/headless webbrowser/DEBUG docs) + sqlite_client.py(atomic start_learning/mastered demotion protection/WAL mode/REAL timestamps) + llm/router.py(SSRF try/except/else pattern/retry logic/double-check lock/model tier resolution/_token_limit_param o[1-9] regex) + config.py(ConfigDict/no hardcoded secrets) + redis_client.py(lazy reconnect with lock+cooldown/graceful degradation)
+     - Workers: index.ts(CORS URL-parsed hostname match/no wildcard+credentials) + llm.ts(SSRF validateBaseUrl/normalizeProviderUrl/tokenLimitParam) + dialogue.ts(validateAssessment Number.isFinite/SSE chunk-aware transform/40-message window/input validation/8000 char O(n) truncation/role labels aligned/fallback mastered standard formula) + learning.ts(mastered demotion in /sync+/assess+/start/score clamping/status whitelist/sync input validation) + graph.ts(BFS depth limit)
+   - CONSISTENCY: 跨模块一致性全面验证:
+     - tokenLimitParam: FE/Workers regex o[1-9]+chatgpt- + BE re.match o[1-9]+chatgpt- — 四路一致 ✅
+     - mastered logic: overall>=75 && all dims>=60 — FE(3处)/Workers(2处)/BE(2处) — 七路一致 ✅
+     - mastered demotion protection: FE learning.ts + BE sqlite_client.py + BE learning.py /sync + Workers learning.ts — 全路径一致 ✅
+     - validateAssessment: FE Number.isFinite + Workers Number.isFinite + BE try/except(int(float())) — 三路一致 ✅
+     - toDbStatus: supabase-sync.ts not_started→available ↔ DB CHECK constraint ↔ downloadProgressFromCloud reverse — 三方一致 ✅
+   - SECURITY: 全项目无eval/exec/innerHTML/dangerouslySetInnerHTML/subprocess/os.system/pickle, 无TODO/FIXME in production code, 无敏感数据泄露
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 363 tests (137 FE + 226 BE) 全通过, tsc 0 errors, build 3.13s
+   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续32轮零issues审查**(生产代码)
+   - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
@@ -939,6 +956,7 @@ Release Note 包含:
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (137 tests: learning 12 + settings 26 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (226 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
+# Total: 363 tests
 ```
 
 ### 提交规范
