@@ -796,7 +796,26 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 362 tests (136 FE + 226 BE) 全通过, tsc 0 errors, build 3.21s
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续29轮零issues审查**(生产代码)
-   - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+    - NOTE: Phase 5 剩余任务(Supabase Cloud配置/E2E测试/EXE重打包)均需外部操作或GUI, 代码层面已完全就绪
+
+- ✅ **第五十七轮深度巡逻审查+validateAssessment非数值防护修复 (2026-03-18, 32e2a66)**:
+   - **FIX**: FE direct-llm.ts + Workers dialogue.ts `validateAssessment()` — 非数值score输入防护不一致:
+     - FE旧代码: `result[k] ?? 50` — 仅防null/undefined, 字符串如"high"→`Math.round("high")`→NaN, 后续所有比较返回false, 导致mastered判定异常 [m-01]
+     - Workers旧代码: `Number(result[k]) || 50` — `Number(0) || 50`→50, 合法score=0被错误转换为50 [m-02]
+     - 修复: 两处统一为 `const raw = Number(result[k]); Number.isFinite(raw) ? raw : 50` — 正确处理字符串/null/undefined→fallback 50, 保留合法的score=0
+     - BE evaluator.py `_validate_result`: `int(float(result[key])) + try/except`→已正确处理(无需修改)
+   - TEST: +1 FE新测试(parseAssessmentJSON: 非数值score字符串/null/undefined/boolean→正确fallback到50或Number转换)
+   - REVIEW: 20+模块+Workers深度审查:
+     - FE: direct-llm.ts(validateAssessment Number.isFinite/8000字符截断/角色标签对齐/滑动窗口/tokenLimitParam/parseChoices/pruneDirectConversations) + dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental sync)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + evaluator.py(O(n) format_dialogue/consistent mastered/parse_json fallback/validate_result try/except) + main.py(path traversal/CORS/headless) + learning.py(Field validation/status whitelist/score clamping)
+     - Workers: dialogue.ts(validateAssessment Number.isFinite/SSE chunk-aware transform/40-message window/8000 char truncation/role labels aligned/fallback mastered) + llm.ts(SSRF validateBaseUrl/tokenLimitParam) + learning.ts(mastered demotion in /sync+/assess+/start)
+   - CONSISTENCY: validateAssessment非数值防护3路一致:
+     - FE: `Number.isFinite(Number(v)) ? v : 50` ✅
+     - Workers: `Number.isFinite(Number(v)) ? v : 50` ✅
+     - BE: `int(float(v)) + try/except fallback 50` ✅ (等价逻辑)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 363 tests (137 FE + 226 BE) 全通过, tsc 0 errors, build 3.17s, workers tsc 0 errors
+   - STATUS: 发现2个minor非数值防护不一致bug并修复, 代码质量持续提升
 
 ### EXE 打包规范
 ```
@@ -901,7 +920,7 @@ Release Note 包含:
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (136 tests: learning 12 + settings 26 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 28 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (137 tests: learning 12 + settings 26 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (226 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19)
 ```
 
