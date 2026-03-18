@@ -140,6 +140,19 @@ export async function probeProxy(): Promise<boolean> {
   }
 }
 
+/**
+ * Build the token-limit parameter for the request body.
+ * OpenAI's newer models (o1, o3, chatgpt-5 series etc.)
+ * require `max_completion_tokens` instead of `max_tokens`.
+ */
+function tokenLimitParam(model: string, tokens: number): Record<string, number> {
+  const m = model.toLowerCase();
+  if (/^(o[1-9]|chatgpt-)/.test(m) || /\/(o[1-9]|chatgpt-)/.test(m)) {
+    return { max_completion_tokens: tokens };
+  }
+  return { max_tokens: tokens };
+}
+
 /** Try a direct fetch to the API to check if CORS is available.
  *  First tries GET /models (no token cost), falls back to POST /chat/completions with max_tokens: 1.
  *  Uses 15s timeout (generous for overseas APIs) + automatic 1 retry on timeout/network error. */
@@ -167,7 +180,7 @@ export async function probeCORS(
 
   // Fallback: POST /chat/completions with max_tokens: 1 (minimal token cost)
   const url = `${base}/chat/completions`;
-  const body = JSON.stringify({ model, messages: [{ role: 'user', content: 'hi' }], max_tokens: 1 });
+  const body = JSON.stringify({ model, messages: [{ role: 'user', content: 'hi' }], ...tokenLimitParam(model, 1) });
 
   const attempt = async (timeoutMs: number): Promise<{ ok: boolean; status?: number; detail?: string }> => {
     const ctrl = new AbortController();

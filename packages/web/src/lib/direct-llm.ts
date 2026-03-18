@@ -155,6 +155,20 @@ mastered 标准: overall_score >= 75 且所有单项 >= 60
 /** Max messages to send to LLM (sliding window to prevent token overflow) */
 const MAX_CONTEXT_MESSAGES = 20;
 
+/**
+ * Build the token-limit parameter for the request body.
+ * OpenAI's newer models (o1, o3, chatgpt-4o-latest, chatgpt-5 series etc.)
+ * require `max_completion_tokens` instead of `max_tokens`.
+ */
+export function tokenLimitParam(model: string, tokens: number): Record<string, number> {
+  const m = model.toLowerCase();
+  // Models that require max_completion_tokens
+  if (/^(o[1-9]|chatgpt-)/.test(m) || /\/(o[1-9]|chatgpt-)/.test(m)) {
+    return { max_completion_tokens: tokens };
+  }
+  return { max_tokens: tokens };
+}
+
 // ─── Helpers ───
 
 /** Parse ```choices JSON block from LLM response content */
@@ -349,7 +363,7 @@ export async function directCreateConversation(conceptId: string): Promise<{
           { role: 'user', content: userMsg },
         ],
         temperature: 0.8,
-        max_tokens: 600,
+        ...tokenLimitParam(model, 600),
       }),
       signal: AbortSignal.timeout(15000), // 15s timeout
     });
@@ -443,7 +457,7 @@ export function directChatStream(
             model,
             messages: allMessages,
             temperature: 0.75,
-            max_tokens: 800,
+            ...tokenLimitParam(model, 800),
             stream: true,
           }),
           signal,
@@ -603,7 +617,7 @@ export async function directAssess(conversationId: string): Promise<Record<strin
           { role: 'user', content: `以下是用户在费曼对话中的完整对话记录，请评估用户对「${conv.conceptName}」的理解程度：\n\n${dialogueText}` },
         ],
         temperature: 0.2,
-        max_tokens: 1024,
+        ...tokenLimitParam(model, 1024),
       }),
       signal: AbortSignal.timeout(30_000),
     });

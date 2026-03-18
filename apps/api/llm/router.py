@@ -139,7 +139,7 @@ class LLMRouter:
                         "model": model_name,
                         "messages": messages,
                         "temperature": temperature,
-                        "max_tokens": max_tokens,
+                        **_token_limit_param(model, max_tokens),
                     },
                 )
                 resp.raise_for_status()
@@ -193,7 +193,7 @@ class LLMRouter:
                         "model": model_name,
                         "messages": messages,
                         "temperature": temperature,
-                        "max_tokens": max_tokens,
+                        **_token_limit_param(model, max_tokens),
                         "stream": True,
                     },
                 ) as resp:
@@ -232,3 +232,15 @@ class LLMRouter:
 
 # 全局单例
 llm_router = LLMRouter()
+
+
+def _token_limit_param(model: str, tokens: int) -> dict:
+    """Build the token-limit key for the request body.
+
+    OpenAI newer models (o1, o3, chatgpt-* series) require
+    ``max_completion_tokens`` instead of ``max_tokens``.
+    """
+    m = model.lower().split("/")[-1]  # strip vendor prefix for matching
+    if m.startswith(("o1", "o3", "chatgpt-")):
+        return {"max_completion_tokens": tokens}
+    return {"max_tokens": tokens}

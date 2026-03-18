@@ -56,6 +56,19 @@ interface LLMOptions {
   stream?: boolean;
 }
 
+/**
+ * Build the token-limit parameter for the request body.
+ * OpenAI's newer models (o1, o3, chatgpt-4o-latest, chatgpt-5 series etc.)
+ * require `max_completion_tokens` instead of `max_tokens`.
+ */
+function tokenLimitParam(model: string, tokens: number): Record<string, number> {
+  const m = model.toLowerCase();
+  if (/^(o[1-9]|chatgpt-)/.test(m) || /\/(o[1-9]|chatgpt-)/.test(m)) {
+    return { max_completion_tokens: tokens };
+  }
+  return { max_tokens: tokens };
+}
+
 function resolveEndpoint(
   env: Env,
   userConfig?: UserLLMConfig | null,
@@ -114,7 +127,7 @@ export async function llmChat(
       model,
       messages: opts.messages,
       temperature: opts.temperature ?? 0.7,
-      max_tokens: opts.max_tokens ?? 2048,
+      ...tokenLimitParam(model, opts.max_tokens ?? 2048),
     }),
   });
 
@@ -150,7 +163,7 @@ export function llmChatStream(
             model,
             messages: opts.messages,
             temperature: opts.temperature ?? 0.75,
-            max_tokens: opts.max_tokens ?? 512,
+            ...tokenLimitParam(model, opts.max_tokens ?? 512),
             stream: true,
           }),
         });

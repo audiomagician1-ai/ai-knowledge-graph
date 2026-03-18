@@ -2,7 +2,7 @@
  * settings.ts store tests
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, validateModelId, getDefaultModel } from '@/lib/store/settings';
+import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, validateModelId, getDefaultModel, generateSelfContainedBat, PROXY_SCRIPT_SRC } from '@/lib/store/settings';
 
 const storage: Record<string, string> = {};
 vi.stubGlobal('localStorage', {
@@ -145,5 +145,39 @@ describe('getDefaultModel', () => {
 
   it('should return gpt-4o-mini for openai', () => {
     expect(getDefaultModel('openai')).toBe('gpt-4o-mini');
+  });
+});
+
+describe('generateSelfContainedBat', () => {
+  it('should return a string containing @echo off header', () => {
+    const bat = generateSelfContainedBat();
+    expect(bat).toContain('@echo off');
+  });
+
+  it('should contain base64-encoded proxy script payload', () => {
+    const bat = generateSelfContainedBat();
+    // The bat should contain an echo line with base64 payload
+    expect(bat).toContain('akg-proxy.b64');
+  });
+
+  it('should handle Unicode characters in PROXY_SCRIPT_SRC without throwing', () => {
+    // PROXY_SCRIPT_SRC contains Chinese: "AI 知识图谱 — LLM CORS 代理"
+    expect(PROXY_SCRIPT_SRC).toContain('知识图谱');
+    // generateSelfContainedBat should NOT throw InvalidCharacterError
+    expect(() => generateSelfContainedBat()).not.toThrow();
+  });
+
+  it('should produce valid base64 that decodes back to original script', () => {
+    const bat = generateSelfContainedBat();
+    // Extract base64 payload from the bat file: echo <base64>> "%TEMP%\akg-proxy.b64"
+    const match = bat.match(/^echo (.+)> "%TEMP%\\akg-proxy\.b64"/m);
+    expect(match).toBeTruthy();
+    const b64 = match![1];
+    // Decode: base64 → binary string → Uint8Array → TextDecoder → original
+    const binary = atob(b64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    const decoded = new TextDecoder().decode(bytes);
+    expect(decoded).toBe(PROXY_SCRIPT_SRC);
   });
 });

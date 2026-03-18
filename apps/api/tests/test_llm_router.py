@@ -1,8 +1,8 @@
-﻿"""LLM Router 单元测试 — SSRF防护/端点解析/重试逻辑/模型名解析"""
+﻿"""LLM Router 单元测试 — SSRF防护/端点解析/重试逻辑/模型名解析/token参数"""
 
 import pytest
 from unittest.mock import patch, AsyncMock, MagicMock
-from llm.router import _validate_base_url, _BLOCKED_HOSTS, LLMRouter
+from llm.router import _validate_base_url, _BLOCKED_HOSTS, LLMRouter, _token_limit_param
 
 
 # ========== _validate_base_url (SSRF Prevention) ==========
@@ -242,3 +242,33 @@ class TestModelTiers:
         tiers = router.model_tiers
         model = tiers.get("nonexistent", tiers["dialogue"])
         assert model == tiers["dialogue"]
+
+
+# ========== _token_limit_param ==========
+
+
+class TestTokenLimitParam:
+    """Token limit parameter: max_tokens vs max_completion_tokens"""
+
+    def test_standard_models_use_max_tokens(self):
+        assert _token_limit_param("gpt-4o", 800) == {"max_tokens": 800}
+        assert _token_limit_param("deepseek-chat", 512) == {"max_tokens": 512}
+        assert _token_limit_param("claude-3.5-sonnet", 1024) == {"max_tokens": 1024}
+
+    def test_o1_o3_use_max_completion_tokens(self):
+        assert _token_limit_param("o1", 800) == {"max_completion_tokens": 800}
+        assert _token_limit_param("o1-mini", 512) == {"max_completion_tokens": 512}
+        assert _token_limit_param("o3", 1024) == {"max_completion_tokens": 1024}
+        assert _token_limit_param("o3-pro", 600) == {"max_completion_tokens": 600}
+
+    def test_chatgpt_series_use_max_completion_tokens(self):
+        assert _token_limit_param("chatgpt-4o-latest", 800) == {"max_completion_tokens": 800}
+
+    def test_vendor_prefixed_models_stripped(self):
+        assert _token_limit_param("openai/o1", 800) == {"max_completion_tokens": 800}
+        assert _token_limit_param("openai/o3-pro", 1024) == {"max_completion_tokens": 1024}
+        assert _token_limit_param("openai/gpt-4o", 800) == {"max_tokens": 800}
+
+    def test_case_insensitive(self):
+        assert _token_limit_param("O1-Mini", 512) == {"max_completion_tokens": 512}
+        assert _token_limit_param("CHATGPT-4o-latest", 800) == {"max_completion_tokens": 800}

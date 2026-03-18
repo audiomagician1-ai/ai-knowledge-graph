@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { parseChoicesFromContent, windowMessages, parseAssessmentJSON } from '../direct-llm';
+import { parseChoicesFromContent, windowMessages, parseAssessmentJSON, tokenLimitParam } from '../direct-llm';
 
 describe('parseChoicesFromContent', () => {
   it('should return empty for empty/null input', () => {
@@ -153,5 +153,41 @@ describe('parseAssessmentJSON', () => {
     expect(result.gaps).toEqual([]);
     expect(result.feedback).toBe('评估完成');
     expect(result.mastered).toBe(true);
+  });
+});
+
+describe('tokenLimitParam', () => {
+  it('should return max_tokens for standard models', () => {
+    expect(tokenLimitParam('gpt-4o', 800)).toEqual({ max_tokens: 800 });
+    expect(tokenLimitParam('deepseek-chat', 512)).toEqual({ max_tokens: 512 });
+    expect(tokenLimitParam('claude-3.5-sonnet', 1024)).toEqual({ max_tokens: 1024 });
+  });
+
+  it('should return max_completion_tokens for o1/o3 series (bare name)', () => {
+    expect(tokenLimitParam('o1', 800)).toEqual({ max_completion_tokens: 800 });
+    expect(tokenLimitParam('o1-mini', 512)).toEqual({ max_completion_tokens: 512 });
+    expect(tokenLimitParam('o3', 1024)).toEqual({ max_completion_tokens: 1024 });
+    expect(tokenLimitParam('o3-pro', 600)).toEqual({ max_completion_tokens: 600 });
+  });
+
+  it('should return max_completion_tokens for vendor-prefixed o1/o3', () => {
+    expect(tokenLimitParam('openai/o1', 800)).toEqual({ max_completion_tokens: 800 });
+    expect(tokenLimitParam('openai/o3-pro', 1024)).toEqual({ max_completion_tokens: 1024 });
+  });
+
+  it('should return max_completion_tokens for chatgpt- series', () => {
+    expect(tokenLimitParam('chatgpt-4o-latest', 800)).toEqual({ max_completion_tokens: 800 });
+    expect(tokenLimitParam('openai/chatgpt-5', 1024)).toEqual({ max_completion_tokens: 1024 });
+  });
+
+  it('should be case-insensitive', () => {
+    expect(tokenLimitParam('O1-Mini', 512)).toEqual({ max_completion_tokens: 512 });
+    expect(tokenLimitParam('CHATGPT-4o-latest', 800)).toEqual({ max_completion_tokens: 800 });
+  });
+
+  it('should NOT match models containing o1/o3 as substring', () => {
+    // "gpt-4o" should NOT match (4o != o4, but starts with o-check)
+    expect(tokenLimitParam('gpt-4o-mini', 800)).toEqual({ max_tokens: 800 });
+    expect(tokenLimitParam('modelo1', 800)).toEqual({ max_tokens: 800 });
   });
 });
