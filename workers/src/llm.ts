@@ -69,9 +69,22 @@ function tokenLimitParam(model: string, tokens: number): Record<string, number> 
   return { max_tokens: tokens };
 }
 
+/** Default free-tier model (matches FastAPI config.py defaults) */
+const DEFAULT_FREE_MODEL = 'stepfun/step-3.5-flash:free';
+
+/** Get the configured model for a given tier, falling back to free default */
+function getModelForTier(env: Env, tier: 'dialogue' | 'assessment' | 'simple'): string {
+  switch (tier) {
+    case 'dialogue': return env.LLM_MODEL_DIALOGUE || DEFAULT_FREE_MODEL;
+    case 'assessment': return env.LLM_MODEL_ASSESSMENT || DEFAULT_FREE_MODEL;
+    case 'simple': return env.LLM_MODEL_SIMPLE || DEFAULT_FREE_MODEL;
+  }
+}
+
 function resolveEndpoint(
   env: Env,
   userConfig?: UserLLMConfig | null,
+  tier: 'dialogue' | 'assessment' | 'simple' = 'dialogue',
 ): { baseUrl: string; apiKey: string; model: string } {
   // User-provided key takes priority
   if (userConfig?.api_key) {
@@ -95,15 +108,19 @@ function resolveEndpoint(
     }
   }
 
-  // Server-side keys fallback
+  // Server-side keys fallback — use configured free-tier model
+  const serverModel = getModelForTier(env, tier);
   if (env.OPENROUTER_API_KEY) {
-    return { baseUrl: OPENROUTER_BASE, apiKey: env.OPENROUTER_API_KEY, model: 'openai/gpt-4o' };
+    return { baseUrl: OPENROUTER_BASE, apiKey: env.OPENROUTER_API_KEY, model: serverModel };
   }
   if (env.DEEPSEEK_API_KEY) {
-    return { baseUrl: DEEPSEEK_BASE, apiKey: env.DEEPSEEK_API_KEY, model: 'deepseek-chat' };
+    // DeepSeek direct: strip vendor prefix
+    const dsModel = serverModel.includes('/') ? serverModel.split('/').pop()! : serverModel;
+    return { baseUrl: DEEPSEEK_BASE, apiKey: env.DEEPSEEK_API_KEY, model: dsModel };
   }
   if (env.OPENAI_API_KEY) {
-    return { baseUrl: OPENAI_BASE, apiKey: env.OPENAI_API_KEY, model: 'gpt-4o' };
+    const oaiModel = serverModel.includes('/') ? serverModel.split('/').pop()! : serverModel;
+    return { baseUrl: OPENAI_BASE, apiKey: env.OPENAI_API_KEY, model: oaiModel };
   }
 
   throw new Error('No LLM API key configured');
@@ -114,8 +131,9 @@ export async function llmChat(
   env: Env,
   opts: LLMOptions,
   userConfig?: UserLLMConfig | null,
+  tier: 'dialogue' | 'assessment' | 'simple' = 'dialogue',
 ): Promise<string> {
-  const { baseUrl, apiKey, model } = resolveEndpoint(env, userConfig);
+  const { baseUrl, apiKey, model } = resolveEndpoint(env, userConfig, tier);
 
   const res = await fetch(`${baseUrl}/chat/completions`, {
     method: 'POST',
@@ -145,8 +163,9 @@ export function llmChatStream(
   env: Env,
   opts: LLMOptions,
   userConfig?: UserLLMConfig | null,
+  tier: 'dialogue' | 'assessment' | 'simple' = 'dialogue',
 ): ReadableStream {
-  const { baseUrl, apiKey, model } = resolveEndpoint(env, userConfig);
+  const { baseUrl, apiKey, model } = resolveEndpoint(env, userConfig, tier);
 
   const encoder = new TextEncoder();
 

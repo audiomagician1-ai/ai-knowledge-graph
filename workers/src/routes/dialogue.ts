@@ -146,7 +146,7 @@ app.post('/chat', async (c) => {
   const userTurns = (dbMessages || []).filter((m: any) => m.role === 'user').length;
 
   // Stream LLM response
-  const stream = llmChatStream(c.env, { messages: allMessages, temperature: 0.75, max_tokens: 512 }, userConfig);
+  const stream = llmChatStream(c.env, { messages: allMessages, temperature: 0.75, max_tokens: 512 }, userConfig, 'dialogue');
 
   // We need to intercept the stream to save the full response
   const encoder = new TextEncoder();
@@ -269,7 +269,7 @@ app.post('/assess', async (c) => {
       ],
       temperature: 0.2,
       max_tokens: 1024,
-    }, userConfig);
+    }, userConfig, 'assessment');
 
     const result = parseAssessmentJSON(response);
     if (result) {

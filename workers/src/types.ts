@@ -4,6 +4,12 @@ export interface Env {
   OPENAI_API_KEY?: string;
   DEEPSEEK_API_KEY?: string;
   CORS_ORIGINS?: string;
+  /** Default LLM model for dialogue (default: stepfun/step-3.5-flash:free) */
+  LLM_MODEL_DIALOGUE?: string;
+  /** Default LLM model for assessment (default: stepfun/step-3.5-flash:free) */
+  LLM_MODEL_ASSESSMENT?: string;
+  /** Default LLM model for simple tasks (default: stepfun/step-3.5-flash:free) */
+  LLM_MODEL_SIMPLE?: string;
 }
 
 export interface UserLLMConfig {
