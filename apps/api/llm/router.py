@@ -8,6 +8,7 @@ import asyncio
 import ipaddress
 import json
 import logging
+import re
 from typing import AsyncIterator, Optional
 from urllib.parse import urlparse
 
@@ -239,8 +240,9 @@ def _token_limit_param(model: str, tokens: int) -> dict:
 
     OpenAI newer models (o1, o3, chatgpt-* series) require
     ``max_completion_tokens`` instead of ``max_tokens``.
+    Future-proof: matches any o[digit] prefix (o1, o3, o4, …).
     """
     m = model.lower().split("/")[-1]  # strip vendor prefix for matching
-    if m.startswith(("o1", "o3", "chatgpt-")):
+    if re.match(r"o[1-9]", m) or m.startswith("chatgpt-"):
         return {"max_completion_tokens": tokens}
     return {"max_tokens": tokens}

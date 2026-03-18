@@ -727,6 +727,19 @@ data/seed/         — 种子图谱数据
      - Workers: workers/src/prompts.ts (从V1旧版完整升级为V2+准确性纪律+V2评估prompt)
    - VERIFY: 359 tests (133 FE + 226 BE) 全通过, tsc 0 errors, build 3.08s
 
+- ✅ **第五十二轮巡逻审查+tokenLimitParam一致性修复 (2026-03-18)**:
+   - **FIX**: apps/api/llm/router.py `_token_limit_param` — Python版仅匹配`o1`/`o3`前缀(startswith("o1","o3"))而FE/Workers regex匹配`o[1-9]`(future-proof), 不一致可能导致OpenAI后续o2/o4/o5模型在后端不生效。修复: 改用`re.match(r"o[1-9]", m)`+`import re`移至模块顶部, 与FE/Workers regex `o[1-9]`一致 [m-01]
+   - REVIEW: 最近3个commit(12d3fca/0a25eca/9f2ec22)深度代码审查:
+     - Prompt准确性纪律: 3处prompt(BE feynman_system.py/FE direct-llm.ts/Workers prompts.ts)一致性验证 — 4条规则(区分通用vs语言特性/主动说明范围/不确定时诚实/纠正方式)全部一致 ✅
+     - tokenLimitParam: 4处实现(FE direct-llm.ts/FE settings.ts/BE router.py/Workers llm.ts)一致性验证 — regex模式统一为`o[1-9]`(含修复) + chatgpt-系列 ✅
+     - btoa Unicode修复: TextEncoder→Uint8Array→String.fromCharCode→btoa管线正确处理中文(PROXY_SCRIPT_SRC含"AI 知识图谱") ✅
+     - 友好LLM错误消息: 401/402/429/404各有中文提示, 其他status保留text.slice(0,200) fallback ✅
+     - Workers prompts.ts V2升级: FEYNMAN_SYSTEM_PROMPT V2四阶段+准确性纪律 + ASSESSMENT_SYSTEM_PROMPT V2评估信号+mastered标准 — 与BE/FE完全一致 ✅
+     - 测试覆盖: tokenLimitParam FE 6测试 + BE 5测试 + generateSelfContainedBat 4测试 — 边界覆盖充分 ✅
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 359 tests (133 FE + 226 BE) 全通过, tsc 0 errors, build 3.08s
+   - STATUS: 发现1个minor一致性问题并修复, 代码质量持续稳定
+
 ### EXE 打包规范
 ```
 输出目录: release/                              ← 不是 dist/
