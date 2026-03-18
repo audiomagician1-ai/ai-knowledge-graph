@@ -451,8 +451,21 @@ export function directChatStream(
 
         if (!res.ok) {
           const text = await res.text().catch(() => '');
+          // Build user-friendly error message for common HTTP status codes
+          let friendlyMsg = `⚠️ LLM 错误 ${res.status}: `;
+          if (res.status === 401) {
+            friendlyMsg += 'API Key 无效或已过期，请在设置中检查 Key 是否正确。';
+          } else if (res.status === 402) {
+            friendlyMsg += 'API 账户余额不足，请前往服务商充值后重试。';
+          } else if (res.status === 429) {
+            friendlyMsg += '请求过于频繁，请稍后再试。';
+          } else if (res.status === 404) {
+            friendlyMsg += '模型不存在或 Base URL 错误，请检查设置。';
+          } else {
+            friendlyMsg += text.slice(0, 200);
+          }
           controller.enqueue(encoder.encode(
-            `data: ${JSON.stringify({ type: 'chunk', content: `⚠️ LLM 错误 ${res.status}: ${text.slice(0, 200)}` })}\n\n`
+            `data: ${JSON.stringify({ type: 'chunk', content: friendlyMsg })}\n\n`
           ));
           controller.enqueue(encoder.encode(
             `data: ${JSON.stringify({ type: 'done', suggest_assess: false })}\n\n`

@@ -284,7 +284,11 @@ export const PROXY_BAT_SRC = '@echo off\r\nwhere node >nul 2>&1 || (echo [ERROR]
  */
 export function generateSelfContainedBat(): string {
   const proxyJs = PROXY_SCRIPT_SRC;
-  const b64 = btoa(proxyJs);
+  // btoa() only handles Latin1 — use TextEncoder for Unicode-safe base64
+  const bytes = new TextEncoder().encode(proxyJs);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  const b64 = btoa(binary);
 
   const bat = [
     '@echo off',
