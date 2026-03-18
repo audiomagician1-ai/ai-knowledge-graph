@@ -52,6 +52,11 @@ describe('useSettingsStore', () => {
     expect(useSettingsStore.getState().hasApiKey()).toBe(true);
   });
 
+  it('hasApiKey should be false for whitespace-only apiKey', () => {
+    useSettingsStore.getState().setLLMConfig({ apiKey: '   ' });
+    expect(useSettingsStore.getState().hasApiKey()).toBe(false);
+  });
+
   it('isDirectMode should be true when apiKey is set and provider has defaultBase', () => {
     expect(useSettingsStore.getState().isDirectMode()).toBe(false);
     useSettingsStore.getState().setLLMConfig({ apiKey: 'sk-test', provider: 'openrouter' });
@@ -65,6 +70,11 @@ describe('useSettingsStore', () => {
 
   it('isDirectMode should be false for custom provider without baseUrl', () => {
     useSettingsStore.getState().setLLMConfig({ apiKey: 'sk-test', provider: 'custom', baseUrl: '' });
+    expect(useSettingsStore.getState().isDirectMode()).toBe(false);
+  });
+
+  it('isDirectMode should be false for whitespace-only apiKey', () => {
+    useSettingsStore.getState().setLLMConfig({ apiKey: '   ', provider: 'openrouter' });
     expect(useSettingsStore.getState().isDirectMode()).toBe(false);
   });
 

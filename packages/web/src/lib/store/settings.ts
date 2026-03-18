@@ -89,7 +89,7 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
   },
 
   hasApiKey: () => {
-    return get().llmConfig.apiKey.length > 0;
+    return !!get().llmConfig.apiKey?.trim();
   },
 
   isDirectMode: () => {
@@ -98,7 +98,7 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
     // Activated when user has API key AND a resolvable base URL exists
     // (providers have defaultBase, so user only needs a key for standard providers)
     const hasBase = !!(cfg.baseUrl || PROVIDER_INFO[cfg.provider]?.defaultBase);
-    return !!(cfg.apiKey && hasBase);
+    return !!(cfg.apiKey?.trim() && hasBase);
   },
 
   isUsingDefaultLLM: () => {
@@ -109,7 +109,7 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
 /** 构建 LLM 相关请求头 */
 export function getLLMHeaders(): Record<string, string> {
   const { llmConfig } = useSettingsStore.getState();
-  if (!llmConfig.apiKey) return {};
+  if (!llmConfig.apiKey?.trim()) return {};
   const headers: Record<string, string> = {
     'X-LLM-Provider': llmConfig.provider,
     'X-LLM-API-Key': llmConfig.apiKey,
