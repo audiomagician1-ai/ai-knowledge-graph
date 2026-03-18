@@ -975,12 +975,13 @@ Release Note 包含:
 - Dashboard 凭据: `sb_publishable_*` / `sb_secret_*`
 
 **待实施步骤**:
-1. 🟡 **Supabase Dashboard 配置** — 登录 Dashboard 执行:
-   - 运行 `00001_initial_schema.sql` migration (创建6表+RLS+trigger)
-   - 启用 Email Auth provider
-   - 配置 Google OAuth provider (需 Google Cloud Console 创建 OAuth Client ID, redirect URL: `https://oepkmybgwptxnkpgrglv.supabase.co/auth/v1/callback`)
-   - 配置 GitHub OAuth provider (需 GitHub Settings > Developer settings > OAuth Apps, redirect URL 同上)
-   - 配置 Redirect URLs 白名单: `http://localhost:3000`, `https://akg-web.pages.dev`, 以及最终域名
+1. ✅ **Supabase Dashboard 配置** — 通过 Management API 执行:
+   - ✅ 运行 `00001_initial_schema.sql` migration (创建5表+RLS+trigger+GRANT)
+   - ✅ 启用 Email Auth provider
+   - ✅ 启用 Google OAuth provider (need OAuth Client ID from Google Cloud Console)
+   - ✅ 启用 GitHub OAuth provider (need OAuth App from GitHub Developer Settings)
+   - ✅ Redirect URLs 白名单: `http://localhost:3000/**`, `https://akg-web.pages.dev/**`
+   - ⚠️ Google/GitHub OAuth Client ID + Secret 需用户手动创建后通过 Dashboard 设置
 2. 🟡 **前端 OAuth 回调处理** — 确认 auth.ts `signInWithOAuth` 的 redirectTo 配置正确
 3. 🟡 **E2E 验证** — 邮箱注册→学习→退出→新设备登录→进度恢复
 
@@ -999,15 +1000,11 @@ Release Note 包含:
 - **Base URL**: `https://openrouter.ai/api/v1`
 
 **待实施步骤**:
-1. 🟡 **后端 LLM 默认配置** — `apps/api/config.py` / `workers/wrangler.toml` 添加 OpenRouter API Key 环境变量, `llm/router.py` 无用户 Key 时 fallback 到服务端 Key
-2. 🟡 **前端 UX 改造** —
-   - settings.ts: 新增 `useDefaultLLM` 状态(默认 true), 当 true 时不需要用户提供 API Key
-   - SettingsPage: "AI 模型"区域改版 — 顶部显示"正在使用免费 AI 服务 ✓", 下方折叠"高级: 使用自己的 API Key"
-   - direct-llm.ts: `isDirectMode()` 改为仅在用户主动配置了 Key 时返回 true
-   - dialogue.ts: 无用户 Key 时 → 走后端 API(后端用服务端 Key); 有用户 Key 时 → 走 direct 模式
+1. ✅ **后端 LLM 默认配置** (87e4b00) — config.py 默认模型改为 stepfun/step-3.5-flash:free, .env 配置 OpenRouter API Key, router.py 已有 fallback 逻辑
+2. ✅ **前端 UX 改造** (87e4b00) — settings.ts 新增 `isUsingDefaultLLM()`, SettingsPage + SettingsContent "正在使用免费 AI 服务 ✓" banner + 可展开高级配置, 安全说明自适应
 3. 🟡 **Workers LLM 代理** — workers/llm.ts 添加服务端 Key fallback，Supabase Edge Function `llm-proxy` 同步
 4. 🟡 **Rate Limiting** — 免费 LLM 每 IP 限制(建议 30次/小时), 登录用户限制(100次/小时), 自带 Key 无限制
-5. 🟡 **移除设置页首次引导** — 新用户不再需要先去设置页配 Key 才能学习
+5. ✅ **设置页改版** — 新用户看到"正在使用免费 AI 服务"，无需配置即可学习
 
 #### 5.5.3 数据持久化策略迭代 (ADR-011)
 
