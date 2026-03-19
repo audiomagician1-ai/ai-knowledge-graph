@@ -1,7 +1,63 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/lib/store/auth';
-import { BookOpen, Loader2 } from 'lucide-react';
+import { BookOpen, Loader2, ArrowRight, Sparkles, Brain, Network } from 'lucide-react';
+
+/* ── Decorative background blobs ── */
+function BackgroundDecoration() {
+  return (
+    <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden>
+      {/* Top-right emerald blob */}
+      <div
+        className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%)',
+        }}
+      />
+      {/* Bottom-left warm blob */}
+      <div
+        className="absolute -bottom-40 -left-40 w-[520px] h-[520px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%)',
+        }}
+      />
+      {/* Center-left subtle indigo blob */}
+      <div
+        className="absolute top-1/3 -left-20 w-[300px] h-[300px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%)',
+        }}
+      />
+    </div>
+  );
+}
+
+/* ── Feature pill shown below subtitle ── */
+function FeaturePills() {
+  const pills = [
+    { icon: Sparkles, label: 'AI-Powered' },
+    { icon: Brain, label: 'Smart Review' },
+    { icon: Network, label: 'Knowledge Graph' },
+  ];
+  return (
+    <div className="flex items-center justify-center gap-2 flex-wrap">
+      {pills.map(({ icon: Icon, label }) => (
+        <span
+          key={label}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
+          style={{
+            backgroundColor: 'var(--color-tint-primary)',
+            color: 'var(--color-accent-primary)',
+            border: '1px solid rgba(16,185,129,0.15)',
+          }}
+        >
+          <Icon size={12} />
+          {label}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export function LoginPage() {
   const [mode, setMode] = useState<'login' | 'register'>('login');
@@ -11,7 +67,7 @@ export function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { signInWithEmail, signUp, signInWithOAuth } = useAuthStore();
+  const { signInWithEmail, signUp, signInWithOAuth, supabaseConfigured } = useAuthStore();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +79,6 @@ export function LoginPage() {
         navigate('/graph');
       } else {
         await signUp(email, password, displayName);
-        // signUp may require email confirmation — check session
         const { session } = useAuthStore.getState();
         if (session) {
           navigate('/graph');
@@ -39,144 +94,228 @@ export function LoginPage() {
   };
 
   const handleOAuth = async (provider: 'google' | 'github') => {
-    if (loading) return; // Prevent duplicate OAuth triggers
+    if (loading) return;
     setError('');
     setLoading(true);
     try {
       await signInWithOAuth(provider);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'OAuth failed');
+      setError(err instanceof Error ? err.message : 'OAuth login is not configured yet. Please use email sign-in.');
       setLoading(false);
     }
   };
 
-  const inputStyle: React.CSSProperties = {
-    backgroundColor: 'var(--color-surface-2)',
-    color: 'var(--color-text-primary)',
-    border: '1px solid var(--color-border)',
-    borderRadius: 8,
-    padding: '12px 16px',
-    fontSize: 14,
-    width: '100%',
-    outline: 'none',
-  };
-
   return (
     <div
-      className="flex min-h-dvh flex-col items-center justify-center px-6"
+      className="relative flex min-h-dvh flex-col items-center justify-center px-6 py-12"
       style={{ backgroundColor: 'var(--color-surface-0)' }}
     >
-      {/* Logo */}
-      <div className="mb-10 text-center animate-fade-in">
-        <div
-          className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4"
-          style={{ backgroundColor: 'var(--color-accent-primary)' }}
-        >
-          <BookOpen size={24} style={{ color: '#fff' }} />
+      <BackgroundDecoration />
+
+      {/* ── Card container ── */}
+      <div
+        className="relative z-10 w-full max-w-[420px] rounded-2xl p-8 sm:p-10 animate-fade-in"
+        style={{
+          backgroundColor: 'rgba(255,255,255,0.7)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid var(--color-border-subtle)',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)',
+        }}
+      >
+        {/* ── Logo + Title ── */}
+        <div className="text-center mb-8">
+          <div
+            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+            style={{
+              background: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
+              boxShadow: '0 4px 16px rgba(16,185,129,0.3)',
+            }}
+          >
+            <BookOpen size={28} style={{ color: '#fff' }} strokeWidth={1.8} />
+          </div>
+          <h1
+            className="text-2xl font-bold mb-2"
+            style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-text-primary)' }}
+          >
+            AI Knowledge Graph
+          </h1>
+          <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
+            Sign in to sync your learning progress across devices
+          </p>
+          <FeaturePills />
         </div>
-        <h1
-          className="text-2xl font-bold mb-1"
-          style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-text-primary)' }}
-        >
-          AI Knowledge Graph
-        </h1>
-        <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-          Sign in to sync progress across devices
-        </p>
-      </div>
 
-      {/* OAuth buttons */}
-      <div className="w-full max-w-sm space-y-3 mb-6 animate-fade-in stagger-1">
-          <button
-          onClick={() => handleOAuth('google')}
-          disabled={loading}
-          className="w-full flex items-center justify-center gap-3 rounded-lg py-3 text-sm font-medium transition-colors disabled:opacity-50"
-          style={{
-            backgroundColor: 'var(--color-surface-2)',
-            color: 'var(--color-text-primary)',
-            border: '1px solid var(--color-border)',
-          }}
-        >
-          <GoogleIcon />
-          Continue with Google
-        </button>
-          <button
-          onClick={() => handleOAuth('github')}
-          disabled={loading}
-          className="w-full flex items-center justify-center gap-3 rounded-lg py-3 text-sm font-medium transition-colors disabled:opacity-50"
-          style={{
-            backgroundColor: 'var(--color-surface-2)',
-            color: 'var(--color-text-primary)',
-            border: '1px solid var(--color-border)',
-          }}
-        >
-          <GitHubIcon />
-          Continue with GitHub
-        </button>
-      </div>
+        {/* ── OAuth buttons ── */}
+        {supabaseConfigured && (
+          <>
+            <div className="space-y-3 mb-6 animate-fade-in stagger-1">
+              <button
+                onClick={() => handleOAuth('google')}
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-3 rounded-xl py-3 text-sm font-medium transition-all disabled:opacity-50"
+                style={{
+                  backgroundColor: 'var(--color-surface-1)',
+                  color: 'var(--color-text-primary)',
+                  border: '1px solid var(--color-border)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--color-surface-2)';
+                  e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--color-surface-1)';
+                  e.currentTarget.style.borderColor = 'var(--color-border)';
+                }}
+              >
+                <GoogleIcon />
+                Continue with Google
+              </button>
+              <button
+                onClick={() => handleOAuth('github')}
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-3 rounded-xl py-3 text-sm font-medium transition-all disabled:opacity-50"
+                style={{
+                  backgroundColor: 'var(--color-surface-1)',
+                  color: 'var(--color-text-primary)',
+                  border: '1px solid var(--color-border)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--color-surface-2)';
+                  e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--color-surface-1)';
+                  e.currentTarget.style.borderColor = 'var(--color-border)';
+                }}
+              >
+                <GitHubIcon />
+                Continue with GitHub
+              </button>
+            </div>
 
-      {/* Divider */}
-      <div className="w-full max-w-sm flex items-center gap-4 mb-6 animate-fade-in stagger-2">
-        <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-border)' }} />
-        <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>OR</span>
-        <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-border)' }} />
-      </div>
-
-      {/* Email form */}
-      <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-3 animate-fade-in stagger-3">
-        {mode === 'register' && (
-          <input
-            type="text" placeholder="Display name" value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)} required
-            style={inputStyle}
-          />
-        )}
-        <input
-          type="email" placeholder="Email" value={email}
-          onChange={(e) => setEmail(e.target.value)} required
-          autoComplete="email"
-          style={inputStyle}
-        />
-        <input
-          type="password" placeholder="Password" value={password}
-          onChange={(e) => setPassword(e.target.value)} required minLength={6}
-          autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-          style={inputStyle}
-        />
-
-        {error && (
-          <p className="text-sm" style={{ color: 'var(--color-accent-rose)' }}>{error}</p>
+            {/* ── Divider ── */}
+            <div className="flex items-center gap-4 mb-6 animate-fade-in stagger-2">
+              <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-border)' }} />
+              <span className="text-xs font-medium tracking-wider uppercase" style={{ color: 'var(--color-text-tertiary)' }}>
+                or
+              </span>
+              <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-border)' }} />
+            </div>
+          </>
         )}
 
-        <button
-          type="submit" disabled={loading}
-          className="w-full rounded-lg py-3 text-sm font-semibold transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
-          style={{ backgroundColor: 'var(--color-accent-primary)', color: '#fff' }}
-        >
-          {loading && <Loader2 size={14} className="animate-spin" />}
-          {loading ? 'Processing...' : mode === 'login' ? 'Sign in with Email' : 'Create Account'}
-        </button>
+        {/* ── Email form ── */}
+        <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in stagger-3">
+          {mode === 'register' && (
+            <div>
+              <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--color-text-secondary)' }}>
+                Display Name
+              </label>
+              <input
+                type="text"
+                placeholder="Your name"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                required
+                className="login-input"
+              />
+            </div>
+          )}
+          <div>
+            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--color-text-secondary)' }}>
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoComplete="email"
+              className="login-input"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--color-text-secondary)' }}>
+              Password
+            </label>
+            <input
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength={6}
+              autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+              className="login-input"
+            />
+          </div>
 
-        <button
-          type="button"
-          onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError(''); setPassword(''); }}
-          className="w-full py-2 text-sm"
-          style={{ color: 'var(--color-accent-primary)' }}
-        >
-          {mode === 'login' ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
-        </button>
-      </form>
+          {error && (
+            <div
+              className="text-sm px-4 py-3 rounded-lg"
+              style={{
+                backgroundColor: 'rgba(244,63,94,0.08)',
+                color: 'var(--color-accent-rose)',
+                border: '1px solid rgba(244,63,94,0.15)',
+              }}
+            >
+              {error}
+            </div>
+          )}
 
-      {/* Skip */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-xl py-3.5 text-sm font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+            style={{
+              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              color: '#fff',
+              boxShadow: '0 2px 8px rgba(16,185,129,0.3)',
+            }}
+            onMouseEnter={(e) => {
+              if (!loading) e.currentTarget.style.boxShadow = '0 4px 16px rgba(16,185,129,0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(16,185,129,0.3)';
+            }}
+          >
+            {loading && <Loader2 size={14} className="animate-spin" />}
+            {loading ? 'Processing...' : mode === 'login' ? 'Sign in with Email' : 'Create Account'}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError(''); setPassword(''); }}
+            className="w-full py-2 text-sm font-medium transition-colors"
+            style={{ color: 'var(--color-accent-primary)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent-warm)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-accent-primary)'; }}
+          >
+            {mode === 'login' ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
+          </button>
+        </form>
+      </div>
+
+      {/* ── Skip link (outside the card) ── */}
       <button
         onClick={() => navigate('/graph')}
-        className="mt-6 text-sm transition-colors animate-fade-in stagger-4"
+        className="relative z-10 mt-6 inline-flex items-center gap-1.5 text-sm font-medium transition-all animate-fade-in stagger-4 group"
         style={{ color: 'var(--color-text-tertiary)' }}
         onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
         onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-tertiary)'; }}
       >
-        Skip, continue without account &rarr;
+        Skip, continue without account
+        <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
       </button>
+
+      {/* ── Footer ── */}
+      <p
+        className="relative z-10 mt-8 text-xs animate-fade-in stagger-5"
+        style={{ color: 'var(--color-text-tertiary)', opacity: 0.7 }}
+      >
+        Your data is stored locally. Sign in to enable cloud sync.
+      </p>
     </div>
   );
 }
