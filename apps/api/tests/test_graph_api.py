@@ -995,4 +995,38 @@ async def test_domains_list_includes_product_design():
         assert "product-design" in domain_ids
 
 
+# ── Product Design RAG Tests (Phase 11.2) ──────────────────────
+
+
+@pytest.mark.asyncio
+async def test_rag_product_design_document():
+    """Should return RAG content for a product design concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/design-thinking?domain=product-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "design-thinking"
+        assert data["domain"] == "product-design"
+        assert len(data["content"]) > 100
+
+
+@pytest.mark.asyncio
+async def test_rag_product_design_stats():
+    """Product Design RAG stats should report 182 docs."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=product-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["domain"] == "product-design"
+        assert data["total_docs"] == 182
+
+
+@pytest.mark.asyncio
+async def test_rag_product_design_404_wrong_domain():
+    """Product design concept should 404 when queried against math RAG."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/design-thinking?domain=mathematics")
+        assert resp.status_code == 404
+
+
 
