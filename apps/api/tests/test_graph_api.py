@@ -873,3 +873,48 @@ async def test_physics_four_domains_listed():
         assert physics_domain["color"] == "#22c55e"
 
 
+# ── Physics RAG Tests (Phase 10.2) ──────────────────────
+
+
+@pytest.mark.asyncio
+async def test_rag_physics_stats():
+    """Physics RAG stats should reflect 194 documents."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=physics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] >= 190  # ~194
+        assert data["domain"] == "physics"
+
+
+@pytest.mark.asyncio
+async def test_rag_physics_concept():
+    """Should return RAG content for a physics concept with LaTeX."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/newtons-second-law?domain=physics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "newtons-second-law"
+        assert data["domain"] == "physics"
+        assert "F" in data["content"] or "力" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_physics_latex_content():
+    """Physics RAG docs should contain LaTeX formulas."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/schrodinger-equation?domain=physics")
+        assert resp.status_code == 200
+        data = resp.json()
+        # Should contain LaTeX math notation
+        assert "hbar" in data["content"] or "\\hbar" in data["content"] or "$" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_physics_404_wrong_domain():
+    """Physics concept should 404 when queried against math RAG."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/newtons-second-law?domain=mathematics")
+        assert resp.status_code == 404
+
+
