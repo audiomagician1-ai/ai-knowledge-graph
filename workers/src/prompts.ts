@@ -204,10 +204,24 @@ export const PHYSICS_ASSESSMENT_SUPPLEMENT = `
 - **常见误区**: 注意检测物理中的典型错误（如混淆质量与重量、忽视参考系、能量不守恒情况等）
 `;
 
+const PRODUCT_ASSESSMENT_SUPPLEMENT = `
+## 产品设计领域评估特殊指标
+
+在评估产品设计概念理解时，请额外关注以下方面：
+- **概念运用**: 用户是否能将概念应用到具体产品场景中？而非仅停留在定义背诵
+- **权衡判断**: 用户是否理解不同方案的利弊权衡？能否根据场景做出合理选择？
+- **用户视角**: 用户是否从用户需求出发思考问题？还是仅从技术或业务视角？
+- **数据思维**: 涉及数据相关概念时，用户是否理解指标含义、计算方法和应用场景？
+- **框架灵活性**: 用户是否理解框架的适用范围和局限性？能否灵活组合多种方法？
+- **实际案例**: 用户能否举出真实产品案例来说明概念？
+- **系统思维**: 用户是否理解概念在产品全局中的位置和与其他概念的关联？
+`;
+
 export function getAssessmentSupplement(domainId: string | undefined): string {
   if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'physics') return PHYSICS_ASSESSMENT_SUPPLEMENT;
+  if (domainId === 'product-design') return PRODUCT_ASSESSMENT_SUPPLEMENT;
   return '';
 }
 

@@ -211,10 +211,24 @@ const PHYSICS_ASSESSMENT_SUPPLEMENT = `
 - **常见误区**: 注意检测物理中的典型错误（如混淆质量与重量、忽视参考系、能量不守恒情况等）
 `;
 
+const PRODUCT_ASSESSMENT_SUPPLEMENT = `
+## 产品设计领域评估特殊指标
+
+在评估产品设计概念理解时，请额外关注以下方面：
+- **概念运用**: 用户是否能将概念应用到具体产品场景中？而非仅停留在定义背诵
+- **权衡判断**: 用户是否理解不同方案的利弊权衡？能否根据场景做出合理选择？
+- **用户视角**: 用户是否从用户需求出发思考问题？还是仅从技术或业务视角？
+- **数据思维**: 涉及数据相关概念时，用户是否理解指标含义、计算方法和应用场景？
+- **框架灵活性**: 用户是否理解框架的适用范围和局限性？能否灵活组合多种方法？
+- **实际案例**: 用户能否举出真实产品案例来说明概念？
+- **系统思维**: 用户是否理解概念在产品全局中的位置和与其他概念的关联？
+`;
+
 function getAssessmentSupplement(domainId: string | undefined): string {
   if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'physics') return PHYSICS_ASSESSMENT_SUPPLEMENT;
+  if (domainId === 'product-design') return PRODUCT_ASSESSMENT_SUPPLEMENT;
   return '';
 }
 
@@ -341,6 +355,8 @@ function buildSystemPrompt(node: GraphNode, prereqs: string[], deps: string[], r
     domainSupplement = `\n## 英语教学特殊规则\n\n1. **双语讲解**: 用中文解释英语知识点，关键术语和例句保留英文原文并附中文翻译\n2. **例句丰富**: 每个知识点提供至少2-3个英文例句\n3. **对比教学**: 主动对比中英文差异，指出母语负迁移错误\n4. **语境导向**: 将语法规则放在真实语境中讲解\n5. **分层讲解**: 先给简单例子建立直觉，再讲规则细节和例外\n6. **不要使用LaTeX公式**：这是英语教学，用自然语言和英文例句\n`;
   } else if (domainId === 'physics') {
     domainSupplement = `\n## 物理教学特殊规则\n\n1. **公式使用**: 使用 LaTeX 格式的物理公式，标注物理量的单位和量纲\n2. **直觉优先**: 先建立物理图像和直觉，再给数学表达。用类比、思想实验帮助理解\n3. **实验连接**: 将概念与真实实验或日常现象联系\n4. **单位和量纲**: 强调SI单位，进行量纲分析验证公式\n5. **近似与适用范围**: 明确定律的适用条件（如牛顿力学适用于低速宏观物体）\n6. **数值估算**: 鼓励数量级估算，培养物理直觉\n7. **历史脉络**: 适当介绍物理概念的发现历史\n`;
+  } else if (domainId === 'product-design') {
+    domainSupplement = `\n## 产品设计教学特殊规则\n\n1. **案例驱动**: 每个概念尽量用真实产品案例说明（如微信、淘宝、Uber、Notion等）\n2. **框架与工具**: 介绍概念时同时说明对应的实用框架或工具\n3. **场景化教学**: 用"假设你是某产品的PM"的场景引导思考\n4. **权衡思维**: 明确指出各方案的利弊，培养权衡判断\n5. **避免教条**: 强调"取决于具体场景"，培养灵活运用能力\n6. **数据意识**: 涉及数据概念时用具体数字和计算示例\n7. **跨职能视角**: 适时引入设计、开发、运营等其他角色的关注点\n`;
   }
 
   return fmt(FEYNMAN_SYSTEM_PROMPT, {

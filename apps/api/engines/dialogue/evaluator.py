@@ -14,6 +14,7 @@ from engines.dialogue.prompts.feynman_system import (
     MATH_ASSESSMENT_SUPPLEMENT,
     ENGLISH_ASSESSMENT_SUPPLEMENT,
     PHYSICS_ASSESSMENT_SUPPLEMENT,
+    PRODUCT_ASSESSMENT_SUPPLEMENT,
 )
 
 logger = logging.getLogger(__name__)
@@ -47,6 +48,8 @@ class UnderstandingEvaluator:
             domain_supplement = ENGLISH_ASSESSMENT_SUPPLEMENT
         elif domain_id == "physics":
             domain_supplement = PHYSICS_ASSESSMENT_SUPPLEMENT
+        elif domain_id == "product-design":
+            domain_supplement = PRODUCT_ASSESSMENT_SUPPLEMENT
 
         system_prompt = ASSESSMENT_SYSTEM_PROMPT.format(
             concept_name=concept["name"],
