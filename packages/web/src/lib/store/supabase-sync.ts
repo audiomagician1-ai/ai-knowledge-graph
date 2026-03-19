@@ -395,12 +395,10 @@ onAuthLogin(async (_userId: string) => {
 // Offline queue flush — auto-replay on connectivity restore
 // ════════════════════════════════════════════
 
-import { registerOnlineFlush, flushQueue, type QueuedWrite } from './offline-queue';
-import type { ConceptProgress as _CP } from './learning';
-
+import { registerOnlineFlush, flushQueue } from './offline-queue';
 /** Replay a queued progress write */
 async function _replayProgress(data: Record<string, unknown>): Promise<boolean> {
-  return writeProgressToCloud(data as unknown as _CP);
+  return writeProgressToCloud(data as unknown as ConceptProgress);
 }
 
 /** Replay a queued history write */
