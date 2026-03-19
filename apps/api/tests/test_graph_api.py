@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -1138,6 +1138,96 @@ async def test_rag_finance_404_wrong_domain():
         resp = await client.get("/api/graph/rag/compound-interest?domain=product-design")
         # compound-interest only exists in finance domain RAG
         assert resp.status_code == 404
+
+
+# ── Psychology Domain Tests (Phase 13.1) ──────────────────────
+
+
+@pytest.mark.asyncio
+async def test_psychology_graph_data():
+    """Psychology domain should return graph data with correct structure."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=psychology")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert "nodes" in data
+        assert "edges" in data
+        assert len(data["nodes"]) == 183
+        assert len(data["edges"]) >= 200
+
+
+@pytest.mark.asyncio
+async def test_psychology_node_structure():
+    """Psychology concept nodes should have expected fields."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=psychology")
+        data = resp.json()
+        node = data["nodes"][0]
+        assert "id" in node
+        assert "label" in node
+        assert "subdomain_id" in node
+        assert node.get("domain_id") == "psychology"
+
+
+@pytest.mark.asyncio
+async def test_psychology_subdomains():
+    """Psychology domain should have 8 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=psychology")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 8
+        subdomain_ids = {s["id"] for s in data}
+        assert "cognitive-psychology" in subdomain_ids
+        assert "clinical-psychology" in subdomain_ids
+        assert "research-methods" in subdomain_ids
+
+
+@pytest.mark.asyncio
+async def test_psychology_stats():
+    """Psychology domain stats should reflect seed graph counts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=psychology")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["stats"]["total_concepts"] == 183
+        assert data["stats"]["total_edges"] >= 200
+
+
+@pytest.mark.asyncio
+async def test_psychology_concept_detail():
+    """Psychology concept detail should return correct data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/working-memory?domain=psychology")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "working-memory"
+        assert data["name"] == "工作记忆"
+        assert data["subdomain_id"] == "cognitive-psychology"
+
+
+@pytest.mark.asyncio
+async def test_psychology_subdomain_filter():
+    """Should be able to filter psychology concepts by subdomain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=psychology&subdomain_id=clinical-psychology")
+        assert resp.status_code == 200
+        data = resp.json()
+        for node in data["nodes"]:
+            assert node["subdomain_id"] == "clinical-psychology"
+        assert len(data["nodes"]) == 23
+
+
+@pytest.mark.asyncio
+async def test_domains_list_includes_psychology():
+    """Domains list includes psychology as seventh domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        assert resp.status_code == 200
+        data = resp.json()
+        domain_ids = [d["id"] for d in data]
+        assert "psychology" in domain_ids
+        assert len(data) >= 7
 
 
 

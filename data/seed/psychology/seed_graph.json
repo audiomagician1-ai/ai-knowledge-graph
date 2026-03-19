@@ -1,0 +1,3845 @@
+{
+  "domain": {
+    "id": "psychology",
+    "name": "心理学",
+    "description": "从认知心理学到临床应用的系统知识体系",
+    "icon": "💜",
+    "color": "#a855f7"
+  },
+  "subdomains": [
+    {
+      "id": "cognitive-psychology",
+      "name": "认知心理学",
+      "order": 1
+    },
+    {
+      "id": "developmental-psychology",
+      "name": "发展心理学",
+      "order": 2
+    },
+    {
+      "id": "social-psychology",
+      "name": "社会心理学",
+      "order": 3
+    },
+    {
+      "id": "clinical-psychology",
+      "name": "临床心理学",
+      "order": 4
+    },
+    {
+      "id": "behavioral-psychology",
+      "name": "行为心理学",
+      "order": 5
+    },
+    {
+      "id": "biological-psychology",
+      "name": "生物心理学",
+      "order": 6
+    },
+    {
+      "id": "personality-psychology",
+      "name": "人格心理学",
+      "order": 7
+    },
+    {
+      "id": "research-methods",
+      "name": "研究方法",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "cognitive-psychology-overview",
+      "name": "认知心理学概述",
+      "description": "认知心理学的定义、历史与研究范畴",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "perception",
+      "name": "知觉",
+      "description": "感觉信息的组织与解释过程",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "attention",
+      "name": "注意",
+      "description": "选择性注意、分配注意与注意力模型",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "selective-attention",
+      "name": "选择性注意",
+      "description": "鸡尾酒会效应、过滤器模型与衰减模型",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "注意"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "working-memory",
+      "name": "工作记忆",
+      "description": "Baddeley工作记忆模型与认知容量限制",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "记忆"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "long-term-memory",
+      "name": "长期记忆",
+      "description": "陈述性记忆与程序性记忆的编码与提取",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "记忆"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "memory-encoding",
+      "name": "记忆编码",
+      "description": "深层加工、精细化加工与编码特异性原则",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "记忆"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "forgetting",
+      "name": "遗忘",
+      "description": "遗忘曲线、干扰理论与提取失败",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "记忆"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "language-cognition",
+      "name": "语言与认知",
+      "description": "语言习得、语法加工与Sapir-Whorf假说",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "语言"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "problem-solving",
+      "name": "问题解决",
+      "description": "算法与启发式、功能固着与顿悟",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "思维"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "decision-making",
+      "name": "决策",
+      "description": "理性决策模型、有限理性与前景理论",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "思维"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cognitive-biases",
+      "name": "认知偏差",
+      "description": "确认偏差、锚定效应、可得性启发式等",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "思维"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "heuristics",
+      "name": "启发式",
+      "description": "代表性启发式、可得性启发式与锚定",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "思维"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "metacognition",
+      "name": "元认知",
+      "description": "对自身认知过程的监控与调节",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "schema-theory",
+      "name": "图式理论",
+      "description": "图式的形成、同化与顺应过程",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "知识"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mental-models",
+      "name": "心理模型",
+      "description": "心理表征与推理中的模型构建",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "思维"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cognitive-load",
+      "name": "认知负荷",
+      "description": "内在、外在与关联认知负荷理论",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "expertise-development",
+      "name": "专家技能发展",
+      "description": "从新手到专家的认知变化与刻意练习",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "发展"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "creativity",
+      "name": "创造力",
+      "description": "发散思维、聚合思维与创造力的认知基础",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "embodied-cognition",
+      "name": "具身认知",
+      "description": "身体经验对认知加工的影响",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cognitive-development-piaget",
+      "name": "皮亚杰认知发展论",
+      "description": "感觉运动期到形式运算期的四阶段理论",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "发展"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "information-processing",
+      "name": "信息加工理论",
+      "description": "将心智比作计算机的信息加工框架",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dual-process-theory",
+      "name": "双加工理论",
+      "description": "系统1(快速直觉)与系统2(慢速分析)思维模式",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "intelligence-theories",
+      "name": "智力理论",
+      "description": "Spearman g因素、多元智力与三元智力理论",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "智力"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emotional-intelligence",
+      "name": "情绪智力",
+      "description": "情绪识别、理解、管理与运用能力",
+      "subdomain_id": "cognitive-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "情绪"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "developmental-overview",
+      "name": "发展心理学概述",
+      "description": "毕生发展观与发展心理学的核心议题",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "nature-nurture",
+      "name": "先天与后天",
+      "description": "遗传与环境的交互作用",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "prenatal-development",
+      "name": "产前发展",
+      "description": "从受精到出生的发展阶段与关键期",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "婴幼儿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "infant-development",
+      "name": "婴儿期发展",
+      "description": "感知觉发展、运动发展与早期社会化",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "婴幼儿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "attachment-theory",
+      "name": "依恋理论",
+      "description": "Bowlby依恋理论与Ainsworth陌生情境实验",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "language-development",
+      "name": "语言发展",
+      "description": "从咿呀学语到复杂语法的语言习得过程",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "语言"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "moral-development",
+      "name": "道德发展",
+      "description": "Kohlberg道德发展阶段理论与道德推理",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "道德"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "erikson-stages",
+      "name": "Erikson心理社会发展",
+      "description": "从信任vs不信任到自我整合vs绝望的八阶段",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "adolescent-development",
+      "name": "青少年期发展",
+      "description": "青春期身体变化、同一性危机与同伴关系",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "青少年"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "identity-formation",
+      "name": "同一性形成",
+      "description": "Marcia同一性状态理论与自我探索",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "青少年"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "adult-development",
+      "name": "成年期发展",
+      "description": "亲密关系、职业发展与中年转变",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "成年"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aging-psychology",
+      "name": "老年心理学",
+      "description": "认知老化、智慧发展与成功老龄化",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "老年"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vygotsky-theory",
+      "name": "维果茨基理论",
+      "description": "最近发展区、支架式教学与社会文化理论",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "temperament",
+      "name": "气质",
+      "description": "气质的生物基础与Thomas-Chess气质类型",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "个体差异"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "parenting-styles",
+      "name": "教养方式",
+      "description": "权威型、专制型、放任型与忽视型教养",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "家庭"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "play-development",
+      "name": "游戏与发展",
+      "description": "游戏的类型及其在认知与社会发展中的作用",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "儿童"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "theory-of-mind",
+      "name": "心理理论",
+      "description": "理解他人心理状态的能力发展",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "认知"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gender-development",
+      "name": "性别发展",
+      "description": "性别认同、性别角色与性别图式理论",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "社会化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "resilience",
+      "name": "心理韧性",
+      "description": "面对逆境的积极适应与保护因素",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "积极"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "critical-periods",
+      "name": "关键期与敏感期",
+      "description": "发展中的关键期概念与可塑性",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发展"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cognitive-aging",
+      "name": "认知老化",
+      "description": "晶体智力vs流体智力与年龄相关认知变化",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "老年"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "developmental-psychopathology",
+      "name": "发展精神病理学",
+      "description": "发展偏差的风险因素与保护因素",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "临床"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "socioemotional-development",
+      "name": "社会情感发展",
+      "description": "情绪调节、同理心与社会能力的发展",
+      "subdomain_id": "developmental-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "社会化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-psychology-overview",
+      "name": "社会心理学概述",
+      "description": "社会心理学的定义、历史与核心研究领域",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "social-cognition",
+      "name": "社会认知",
+      "description": "印象形成、社会图式与归因过程",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "认知"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "attribution-theory",
+      "name": "归因理论",
+      "description": "内部归因vs外部归因、基本归因错误",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "attitudes",
+      "name": "态度",
+      "description": "态度的形成、结构与态度-行为关系",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "态度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "persuasion",
+      "name": "说服",
+      "description": "中心路径vs外周路径、说服的六原则",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "影响"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cognitive-dissonance",
+      "name": "认知失调",
+      "description": "Festinger认知失调理论与自我辩解",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "conformity",
+      "name": "从众",
+      "description": "Asch从众实验与信息性/规范性社会影响",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "群体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "obedience",
+      "name": "服从",
+      "description": "Milgram服从实验与权威影响",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "群体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "group-dynamics",
+      "name": "群体动力学",
+      "description": "群体极化、团体思维与社会促进/抑制",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "群体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-identity",
+      "name": "社会认同",
+      "description": "Tajfel社会认同理论与内群体偏好",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "自我"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "prejudice-discrimination",
+      "name": "偏见与歧视",
+      "description": "偏见的认知、情感与行为成分及其减少策略",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "群际"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "stereotypes",
+      "name": "刻板印象",
+      "description": "刻板印象的形成、维持与刻板印象威胁",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "群际"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aggression",
+      "name": "攻击行为",
+      "description": "攻击的生物、心理与社会文化解释",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "prosocial-behavior",
+      "name": "亲社会行为",
+      "description": "利他主义、旁观者效应与助人行为的决策模型",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "interpersonal-attraction",
+      "name": "人际吸引",
+      "description": "亲近性、相似性、外貌与互惠在人际吸引中的作用",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "关系"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "love-psychology",
+      "name": "爱情心理学",
+      "description": "Sternberg爱情三角理论与依恋风格",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "关系"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-influence",
+      "name": "社会影响",
+      "description": "顺从、服从、从众的心理机制",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "影响"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "self-concept",
+      "name": "自我概念",
+      "description": "自我意识、自尊与自我效能感",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "自我"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "self-serving-bias",
+      "name": "自利偏差",
+      "description": "成功归因于自己、失败归因于外界的倾向",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "偏差"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bystander-effect",
+      "name": "旁观者效应",
+      "description": "责任分散与Kitty Genovese案例",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cultural-psychology",
+      "name": "文化心理学",
+      "description": "个人主义vs集体主义文化差异对心理的影响",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-media-psychology",
+      "name": "社交媒体心理学",
+      "description": "社交媒体对自我认同、社会比较与幸福感的影响",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "leadership-psychology",
+      "name": "领导力心理学",
+      "description": "领导风格、变革型领导与情境领导理论",
+      "subdomain_id": "social-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "clinical-overview",
+      "name": "临床心理学概述",
+      "description": "临床心理学的定义、角色与伦理原则",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "psychopathology",
+      "name": "精神病理学",
+      "description": "心理异常的定义标准与分类系统(DSM/ICD)",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anxiety-disorders",
+      "name": "焦虑障碍",
+      "description": "广泛性焦虑、恐惧症、社交焦虑与惊恐障碍",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "障碍"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "depressive-disorders",
+      "name": "抑郁障碍",
+      "description": "重度抑郁症的症状、病因与认知三联征",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "障碍"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "bipolar-disorder",
+      "name": "双相障碍",
+      "description": "躁狂期与抑郁期的交替及其神经生物学基础",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "障碍"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "schizophrenia",
+      "name": "精神分裂症",
+      "description": "阳性症状、阴性症状与多巴胺假说",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "障碍"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "personality-disorders",
+      "name": "人格障碍",
+      "description": "A/B/C三类人格障碍的特征与鉴别",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "障碍"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ptsd",
+      "name": "创伤后应激障碍",
+      "description": "PTSD的症状、风险因素与创伤记忆加工",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "创伤"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ocd",
+      "name": "强迫症",
+      "description": "强迫思维、强迫行为与认知行为模型",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "障碍"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "eating-disorders",
+      "name": "进食障碍",
+      "description": "神经性厌食、贪食症与暴食障碍",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "障碍"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "substance-use-disorders",
+      "name": "物质使用障碍",
+      "description": "成瘾的生物心理社会模型与阶段变化模型",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "成瘾"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "psychological-assessment",
+      "name": "心理评估",
+      "description": "临床访谈、心理测验与行为观察方法",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "评估"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "psychotherapy-overview",
+      "name": "心理治疗概述",
+      "description": "心理治疗的流派、共同因素与循证实践",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "治疗"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cbt",
+      "name": "认知行为疗法",
+      "description": "CBT的核心原理、认知重构与行为实验",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "治疗"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "psychodynamic-therapy",
+      "name": "心理动力学治疗",
+      "description": "自由联想、移情分析与无意识探索",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "治疗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "humanistic-therapy",
+      "name": "人本主义治疗",
+      "description": "来访者中心疗法、无条件积极关注与同理心",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "治疗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "group-therapy",
+      "name": "团体治疗",
+      "description": "团体治疗的疗效因子与常见形式",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "治疗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "crisis-intervention",
+      "name": "危机干预",
+      "description": "心理危机的识别、评估与短期干预技术",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "child-clinical",
+      "name": "儿童临床心理学",
+      "description": "ADHD、自闭谱系、学习障碍的评估与干预",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "发展"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "positive-psychology",
+      "name": "积极心理学",
+      "description": "幸福感、心流、品格优势与意义感",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "积极"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mindfulness",
+      "name": "正念",
+      "description": "正念的心理学基础与正念减压疗法(MBSR)",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "积极"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "therapeutic-relationship",
+      "name": "治疗关系",
+      "description": "治疗联盟、共情与治疗效果的关系",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "治疗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "evidence-based-practice",
+      "name": "循证实践",
+      "description": "将研究证据、临床专业与来访者需求结合",
+      "subdomain_id": "clinical-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-overview",
+      "name": "行为心理学概述",
+      "description": "行为主义的哲学基础与核心假设",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "classical-conditioning",
+      "name": "经典条件反射",
+      "description": "巴甫洛夫实验、习得、消退与自发恢复",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "operant-conditioning",
+      "name": "操作性条件反射",
+      "description": "Skinner箱实验、强化与惩罚的四种类型",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "reinforcement-schedules",
+      "name": "强化程式",
+      "description": "固定/变化比率与间隔强化程式的行为效应",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "punishment",
+      "name": "惩罚",
+      "description": "正惩罚与负惩罚的原理及其有效运用条件",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "shaping",
+      "name": "行为塑造",
+      "description": "通过逐步接近法建立复杂行为",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "observational-learning",
+      "name": "观察学习",
+      "description": "Bandura社会学习理论与Bobo玩偶实验",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "self-efficacy",
+      "name": "自我效能感",
+      "description": "Bandura自我效能理论与效能感的四大来源",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "stimulus-generalization",
+      "name": "刺激泛化",
+      "description": "条件反应向相似刺激的迁移",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "stimulus-discrimination",
+      "name": "刺激辨别",
+      "description": "区分不同刺激的能力发展",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "extinction",
+      "name": "消退",
+      "description": "条件反应的消退过程与自发恢复",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavior-modification",
+      "name": "行为矫正",
+      "description": "基于学习原理的行为改变技术",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "token-economy",
+      "name": "代币经济",
+      "description": "代币制在教育与临床中的应用",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "systematic-desensitization",
+      "name": "系统脱敏",
+      "description": "Wolpe的系统脱敏法与放松训练在恐惧治疗中的应用",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "治疗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aversion-therapy",
+      "name": "厌恶疗法",
+      "description": "将不良行为与厌恶刺激配对的治疗方法",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "治疗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "biofeedback",
+      "name": "生物反馈",
+      "description": "通过仪器反馈学习控制生理过程",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "applied-behavior-analysis",
+      "name": "应用行为分析",
+      "description": "ABA在自闭症与特殊教育中的应用",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "habit-formation",
+      "name": "习惯形成",
+      "description": "习惯回路(提示-惯常行为-奖赏)与习惯改变策略",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "日常"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "learned-helplessness",
+      "name": "习得性无助",
+      "description": "Seligman习得性无助实验与抑郁的联系",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "latent-learning",
+      "name": "潜伏学习",
+      "description": "Tolman认知地图实验与非强化条件下的学习",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "认知"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "motivation-behavioral",
+      "name": "行为动机理论",
+      "description": "驱力减少理论、激励理论与行为经济学视角",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-economics",
+      "name": "行为经济学",
+      "description": "心理学与经济决策: 框架效应、禀赋效应",
+      "subdomain_id": "behavioral-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "biological-overview",
+      "name": "生物心理学概述",
+      "description": "生物心理学的研究范畴与心脑关系问题",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "neuron-structure",
+      "name": "神经元结构",
+      "description": "神经元的结构、动作电位与突触传递",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "神经"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "neurotransmitters",
+      "name": "神经递质",
+      "description": "多巴胺、5-HT、GABA等主要递质的功能",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "神经"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "brain-structure",
+      "name": "大脑结构",
+      "description": "大脑皮层四叶、边缘系统与脑干功能",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cerebral-lateralization",
+      "name": "大脑偏侧化",
+      "description": "左右半球功能特化与胼胝体",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "大脑"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endocrine-system",
+      "name": "内分泌系统",
+      "description": "激素对情绪与行为的调节作用",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "autonomic-nervous-system",
+      "name": "自主神经系统",
+      "description": "交感神经与副交感神经在应激反应中的作用",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "neuroplasticity",
+      "name": "神经可塑性",
+      "description": "突触可塑性、关键期与经验依赖的脑发展",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "sleep-psychology",
+      "name": "睡眠心理学",
+      "description": "睡眠阶段、睡眠功能与睡眠障碍",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "节律"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "stress-physiology",
+      "name": "应激生理学",
+      "description": "HPA轴、皮质醇与应激的生理机制",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "应激"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "psychopharmacology",
+      "name": "精神药理学",
+      "description": "抗抑郁药、抗焦虑药与抗精神病药的作用机制",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "药物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "brain-imaging",
+      "name": "脑成像技术",
+      "description": "fMRI、PET、EEG等脑成像方法比较",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "genetics-behavior",
+      "name": "遗传与行为",
+      "description": "行为遗传学、双生子研究与基因-环境交互",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "遗传"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emotion-neuroscience",
+      "name": "情绪神经科学",
+      "description": "杏仁核、前额叶在情绪加工中的角色",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "情绪"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pain-psychology",
+      "name": "疼痛心理学",
+      "description": "门控理论与疼痛的心理调节",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "感觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hunger-eating",
+      "name": "饥饿与进食",
+      "description": "下丘脑对进食行为的调控与肥胖的生理心理机制",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sexual-behavior-biology",
+      "name": "性行为的生物基础",
+      "description": "性激素、性取向的生物学解释",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "consciousness",
+      "name": "意识",
+      "description": "意识的神经关联、变更意识状态与注意的角色",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "evolutionary-psychology",
+      "name": "进化心理学",
+      "description": "适应性行为、自然选择与人类心理的进化解释",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "comparative-psychology",
+      "name": "比较心理学",
+      "description": "跨物种行为比较与动物认知研究",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "epigenetics-behavior",
+      "name": "表观遗传与行为",
+      "description": "环境经验对基因表达的影响与跨代传递",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "psychoneuroimmunology",
+      "name": "心理神经免疫学",
+      "description": "心理因素对免疫系统的影响",
+      "subdomain_id": "biological-psychology",
+      "domain_id": "psychology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "personality-overview",
+      "name": "人格心理学概述",
+      "description": "人格的定义、人格理论的主要流派",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "big-five",
+      "name": "大五人格模型",
+      "description": "开放性、尽责性、外向性、宜人性、神经质",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "trait-theory",
+      "name": "特质理论",
+      "description": "Allport、Cattell与Eysenck的特质理论比较",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "特质"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "psychoanalytic-theory",
+      "name": "精神分析理论",
+      "description": "Freud的人格结构(本我/自我/超我)与无意识",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "defense-mechanisms",
+      "name": "防御机制",
+      "description": "压抑、投射、合理化、升华等防御机制",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "精神分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "psychosexual-stages",
+      "name": "性心理发展阶段",
+      "description": "Freud口唇期到生殖期的人格发展理论",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "精神分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "jung-theory",
+      "name": "荣格分析心理学",
+      "description": "集体无意识、原型与个体化过程",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "精神分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "humanistic-personality",
+      "name": "人本主义人格理论",
+      "description": "Rogers自我概念、Maslow需求层次与自我实现",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "maslow-hierarchy",
+      "name": "马斯洛需求层次",
+      "description": "生理→安全→归属→尊重→自我实现的五层需求",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动机"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "social-cognitive-personality",
+      "name": "社会认知人格理论",
+      "description": "Bandura交互决定论与Mischel认知情感系统",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "personality-assessment",
+      "name": "人格评估",
+      "description": "自陈量表、投射测验与行为评估方法",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "评估"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mbti",
+      "name": "MBTI人格类型",
+      "description": "Myers-Briggs类型指标的四维度与16类型",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "locus-of-control",
+      "name": "控制点",
+      "description": "Rotter内外控理论及其对行为的影响",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "认知"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "self-actualization",
+      "name": "自我实现",
+      "description": "自我实现者的特征与高峰体验",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "人本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "personality-stability",
+      "name": "人格稳定性",
+      "description": "人格的跨时间稳定性与跨情境一致性争论",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "争论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "narcissism",
+      "name": "自恋",
+      "description": "健康自恋vs病理性自恋的心理学分析",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "人格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "attachment-adult",
+      "name": "成人依恋",
+      "description": "成人依恋风格与亲密关系模式",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "关系"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "personality-culture",
+      "name": "人格与文化",
+      "description": "文化对人格特质表达与评估的影响",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dark-triad",
+      "name": "黑暗三人格",
+      "description": "自恋、马基雅维利主义与精神病态的人格特征",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "人格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "growth-mindset",
+      "name": "成长型思维",
+      "description": "Dweck固定思维vs成长思维对成就的影响",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "积极"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "grit",
+      "name": "坚毅",
+      "description": "Duckworth坚毅理论与长期目标的坚持",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "积极"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emotional-regulation",
+      "name": "情绪调节",
+      "description": "情绪调节策略与Gross过程模型",
+      "subdomain_id": "personality-psychology",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "情绪"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "research-methods-overview",
+      "name": "研究方法概述",
+      "description": "心理学研究方法的分类与科学方法论",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "scientific-method",
+      "name": "科学方法",
+      "description": "假设检验、可证伪性与经验主义",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "experimental-design",
+      "name": "实验设计",
+      "description": "自变量、因变量、控制变量与实验范式",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "random-assignment",
+      "name": "随机分配",
+      "description": "随机分配的原理与混淆变量的控制",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "实验"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "correlational-research",
+      "name": "相关研究",
+      "description": "相关系数、相关不等于因果与第三变量问题",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "survey-methods",
+      "name": "调查法",
+      "description": "问卷设计、抽样方法与自陈报告的局限",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "observational-methods",
+      "name": "观察法",
+      "description": "自然观察与实验室观察的优缺点",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "case-study-method",
+      "name": "个案研究法",
+      "description": "深度个案分析的价值与局限性",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "longitudinal-study",
+      "name": "纵向研究",
+      "description": "追踪研究设计与发展变化的测量",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cross-sectional-study",
+      "name": "横断研究",
+      "description": "不同年龄组同时比较的设计与局限",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "descriptive-statistics",
+      "name": "描述统计",
+      "description": "均值、中位数、标准差与数据分布",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "统计"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "inferential-statistics",
+      "name": "推断统计",
+      "description": "t检验、方差分析与统计显著性",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "统计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "effect-size",
+      "name": "效应量",
+      "description": "Cohen's d、r与实际意义vs统计显著性",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "统计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "reliability-validity",
+      "name": "信度与效度",
+      "description": "内部一致性、重测信度、结构效度与内容效度",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "测量"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "sampling-methods",
+      "name": "抽样方法",
+      "description": "概率抽样与非概率抽样的比较",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ethics-research",
+      "name": "研究伦理",
+      "description": "知情同意、保密性、欺骗与动物研究伦理",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "replication-crisis",
+      "name": "可重复性危机",
+      "description": "心理学可重复性问题与开放科学运动",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "meta-analysis",
+      "name": "元分析",
+      "description": "效应量综合与跨研究一般性结论",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "qualitative-methods",
+      "name": "质性研究方法",
+      "description": "主题分析、扎根理论与现象学方法",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "operational-definition",
+      "name": "操作性定义",
+      "description": "将抽象概念转化为可观测可测量的操作定义",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "internal-external-validity",
+      "name": "内部效度与外部效度",
+      "description": "实验控制精确性vs结果可推广性的权衡",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "效度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "apa-style",
+      "name": "APA格式",
+      "description": "APA论文写作格式与引用规范",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "写作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "power-analysis",
+      "name": "统计功效分析",
+      "description": "样本量计算、统计功效与Type I/II错误",
+      "subdomain_id": "research-methods",
+      "domain_id": "psychology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "统计"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "cognitive-psychology-overview",
+      "target_id": "perception",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-psychology-overview",
+      "target_id": "attention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "attention",
+      "target_id": "selective-attention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "perception",
+      "target_id": "working-memory",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "attention",
+      "target_id": "working-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "working-memory",
+      "target_id": "long-term-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "long-term-memory",
+      "target_id": "memory-encoding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "long-term-memory",
+      "target_id": "forgetting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "working-memory",
+      "target_id": "cognitive-load",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-psychology-overview",
+      "target_id": "language-cognition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-psychology-overview",
+      "target_id": "problem-solving",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "problem-solving",
+      "target_id": "decision-making",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "decision-making",
+      "target_id": "cognitive-biases",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "decision-making",
+      "target_id": "heuristics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-biases",
+      "target_id": "heuristics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "long-term-memory",
+      "target_id": "schema-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "schema-theory",
+      "target_id": "mental-models",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "problem-solving",
+      "target_id": "metacognition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metacognition",
+      "target_id": "expertise-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "problem-solving",
+      "target_id": "creativity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-psychology-overview",
+      "target_id": "information-processing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "information-processing",
+      "target_id": "dual-process-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dual-process-theory",
+      "target_id": "heuristics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "cognitive-psychology-overview",
+      "target_id": "intelligence-theories",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "intelligence-theories",
+      "target_id": "emotional-intelligence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-psychology-overview",
+      "target_id": "embodied-cognition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "schema-theory",
+      "target_id": "cognitive-development-piaget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-overview",
+      "target_id": "nature-nurture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-overview",
+      "target_id": "prenatal-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prenatal-development",
+      "target_id": "infant-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "infant-development",
+      "target_id": "attachment-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "infant-development",
+      "target_id": "language-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-overview",
+      "target_id": "erikson-stages",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "attachment-theory",
+      "target_id": "erikson-stages",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "erikson-stages",
+      "target_id": "adolescent-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adolescent-development",
+      "target_id": "identity-formation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "erikson-stages",
+      "target_id": "adult-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adult-development",
+      "target_id": "aging-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-overview",
+      "target_id": "moral-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-development-piaget",
+      "target_id": "vygotsky-theory",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "infant-development",
+      "target_id": "temperament",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "attachment-theory",
+      "target_id": "parenting-styles",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "infant-development",
+      "target_id": "play-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "language-development",
+      "target_id": "theory-of-mind",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-overview",
+      "target_id": "gender-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-overview",
+      "target_id": "resilience",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-overview",
+      "target_id": "critical-periods",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aging-psychology",
+      "target_id": "cognitive-aging",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-overview",
+      "target_id": "developmental-psychopathology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "infant-development",
+      "target_id": "socioemotional-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "social-cognition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-cognition",
+      "target_id": "attribution-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "attitudes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "attitudes",
+      "target_id": "persuasion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "attitudes",
+      "target_id": "cognitive-dissonance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "conformity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "conformity",
+      "target_id": "obedience",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "group-dynamics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "group-dynamics",
+      "target_id": "social-identity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-identity",
+      "target_id": "prejudice-discrimination",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-cognition",
+      "target_id": "stereotypes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stereotypes",
+      "target_id": "prejudice-discrimination",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "aggression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "prosocial-behavior",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prosocial-behavior",
+      "target_id": "bystander-effect",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "interpersonal-attraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "interpersonal-attraction",
+      "target_id": "love-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "conformity",
+      "target_id": "social-influence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "self-concept",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "attribution-theory",
+      "target_id": "self-serving-bias",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "cultural-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-psychology-overview",
+      "target_id": "social-media-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "group-dynamics",
+      "target_id": "leadership-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "clinical-overview",
+      "target_id": "psychopathology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychopathology",
+      "target_id": "anxiety-disorders",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychopathology",
+      "target_id": "depressive-disorders",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychopathology",
+      "target_id": "bipolar-disorder",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychopathology",
+      "target_id": "schizophrenia",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychopathology",
+      "target_id": "personality-disorders",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anxiety-disorders",
+      "target_id": "ptsd",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anxiety-disorders",
+      "target_id": "ocd",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychopathology",
+      "target_id": "eating-disorders",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychopathology",
+      "target_id": "substance-use-disorders",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "clinical-overview",
+      "target_id": "psychological-assessment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "clinical-overview",
+      "target_id": "psychotherapy-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychotherapy-overview",
+      "target_id": "cbt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychotherapy-overview",
+      "target_id": "psychodynamic-therapy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychotherapy-overview",
+      "target_id": "humanistic-therapy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychotherapy-overview",
+      "target_id": "group-therapy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "clinical-overview",
+      "target_id": "crisis-intervention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "clinical-overview",
+      "target_id": "child-clinical",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "clinical-overview",
+      "target_id": "positive-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "positive-psychology",
+      "target_id": "mindfulness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychotherapy-overview",
+      "target_id": "therapeutic-relationship",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychotherapy-overview",
+      "target_id": "evidence-based-practice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "depressive-disorders",
+      "target_id": "cbt",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "behavioral-overview",
+      "target_id": "classical-conditioning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-overview",
+      "target_id": "operant-conditioning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "classical-conditioning",
+      "target_id": "stimulus-generalization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "classical-conditioning",
+      "target_id": "stimulus-discrimination",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "classical-conditioning",
+      "target_id": "extinction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "operant-conditioning",
+      "target_id": "reinforcement-schedules",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "operant-conditioning",
+      "target_id": "punishment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "operant-conditioning",
+      "target_id": "shaping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-overview",
+      "target_id": "observational-learning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "observational-learning",
+      "target_id": "self-efficacy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "operant-conditioning",
+      "target_id": "behavior-modification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavior-modification",
+      "target_id": "token-economy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "classical-conditioning",
+      "target_id": "systematic-desensitization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "classical-conditioning",
+      "target_id": "aversion-therapy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-overview",
+      "target_id": "biofeedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavior-modification",
+      "target_id": "applied-behavior-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "operant-conditioning",
+      "target_id": "habit-formation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "operant-conditioning",
+      "target_id": "learned-helplessness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-overview",
+      "target_id": "latent-learning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-overview",
+      "target_id": "motivation-behavioral",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-biases",
+      "target_id": "behavioral-economics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "motivation-behavioral",
+      "target_id": "behavioral-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biological-overview",
+      "target_id": "neuron-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "neuron-structure",
+      "target_id": "neurotransmitters",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biological-overview",
+      "target_id": "brain-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "brain-structure",
+      "target_id": "cerebral-lateralization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biological-overview",
+      "target_id": "endocrine-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biological-overview",
+      "target_id": "autonomic-nervous-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "neuron-structure",
+      "target_id": "neuroplasticity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biological-overview",
+      "target_id": "sleep-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "autonomic-nervous-system",
+      "target_id": "stress-physiology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "neurotransmitters",
+      "target_id": "psychopharmacology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "brain-structure",
+      "target_id": "brain-imaging",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biological-overview",
+      "target_id": "genetics-behavior",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "brain-structure",
+      "target_id": "emotion-neuroscience",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biological-overview",
+      "target_id": "pain-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biological-overview",
+      "target_id": "hunger-eating",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "endocrine-system",
+      "target_id": "sexual-behavior-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "brain-structure",
+      "target_id": "consciousness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genetics-behavior",
+      "target_id": "evolutionary-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "evolutionary-psychology",
+      "target_id": "comparative-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genetics-behavior",
+      "target_id": "epigenetics-behavior",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stress-physiology",
+      "target_id": "psychoneuroimmunology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "personality-overview",
+      "target_id": "big-five",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "personality-overview",
+      "target_id": "trait-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "trait-theory",
+      "target_id": "big-five",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "personality-overview",
+      "target_id": "psychoanalytic-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychoanalytic-theory",
+      "target_id": "defense-mechanisms",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychoanalytic-theory",
+      "target_id": "psychosexual-stages",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "psychoanalytic-theory",
+      "target_id": "jung-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "personality-overview",
+      "target_id": "humanistic-personality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "humanistic-personality",
+      "target_id": "maslow-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "humanistic-personality",
+      "target_id": "self-actualization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "personality-overview",
+      "target_id": "social-cognitive-personality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "personality-overview",
+      "target_id": "personality-assessment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "personality-assessment",
+      "target_id": "mbti",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-cognitive-personality",
+      "target_id": "locus-of-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "big-five",
+      "target_id": "personality-stability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "personality-overview",
+      "target_id": "narcissism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "attachment-theory",
+      "target_id": "attachment-adult",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "big-five",
+      "target_id": "personality-culture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narcissism",
+      "target_id": "dark-triad",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-cognitive-personality",
+      "target_id": "growth-mindset",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "humanistic-personality",
+      "target_id": "grit",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "personality-overview",
+      "target_id": "emotional-regulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "scientific-method",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scientific-method",
+      "target_id": "experimental-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "experimental-design",
+      "target_id": "random-assignment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "correlational-research",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "survey-methods",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "observational-methods",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "case-study-method",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "longitudinal-study",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "cross-sectional-study",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "experimental-design",
+      "target_id": "descriptive-statistics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "descriptive-statistics",
+      "target_id": "inferential-statistics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "inferential-statistics",
+      "target_id": "effect-size",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "reliability-validity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "sampling-methods",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "ethics-research",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "inferential-statistics",
+      "target_id": "meta-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "qualitative-methods",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scientific-method",
+      "target_id": "operational-definition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "experimental-design",
+      "target_id": "internal-external-validity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "replication-crisis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methods-overview",
+      "target_id": "apa-style",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "inferential-statistics",
+      "target_id": "power-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-biases",
+      "target_id": "attribution-theory",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "self-efficacy",
+      "target_id": "self-concept",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "observational-learning",
+      "target_id": "social-cognition",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "classical-conditioning",
+      "target_id": "anxiety-disorders",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "learned-helplessness",
+      "target_id": "depressive-disorders",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "neurotransmitters",
+      "target_id": "depressive-disorders",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "neurotransmitters",
+      "target_id": "anxiety-disorders",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "psychopharmacology",
+      "target_id": "depressive-disorders",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "brain-structure",
+      "target_id": "cognitive-psychology-overview",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "attachment-theory",
+      "target_id": "love-psychology",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "maslow-hierarchy",
+      "target_id": "motivation-behavioral",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "psychoanalytic-theory",
+      "target_id": "psychodynamic-therapy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "humanistic-personality",
+      "target_id": "humanistic-therapy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cbt",
+      "target_id": "cognitive-biases",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "experimental-design",
+      "target_id": "clinical-overview",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "reliability-validity",
+      "target_id": "personality-assessment",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "reliability-validity",
+      "target_id": "psychological-assessment",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "descriptive-statistics",
+      "target_id": "correlational-research",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "erikson-stages",
+      "target_id": "identity-formation",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-development-piaget",
+      "target_id": "moral-development",
+      "relation_type": "related",
+      "strength": 0.5
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "created_at": "2026-03-19T11:44:29.185831+00:00",
+    "stats": {
+      "total_concepts": 183,
+      "total_edges": 203,
+      "total_subdomains": 8,
+      "total_milestones": 41
+    }
+  }
+}
