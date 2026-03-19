@@ -329,17 +329,7 @@ export async function fullSync(): Promise<{
       const BATCH_SIZE = 50;
       for (let i = 0; i < progressEntries.length; i += BATCH_SIZE) {
         const batch = progressEntries.slice(i, i + BATCH_SIZE);
-        const rows = batch.map(p => ({
-          user_id: uid,
-          concept_id: p.concept_id,
-          status: toDbStatus(p.status),
-          mastery_level: (p.mastery_score || 0) / 100,
-          total_sessions: p.sessions || 0,
-          total_time_sec: p.total_time_sec || 0,
-          feynman_score: p.last_score ? p.last_score / 100 : null,
-          last_feynman_at: p.mastered_at ? new Date(p.mastered_at).toISOString() : null,
-          updated_at: new Date(p.last_learn_at || Date.now()).toISOString(),
-        }));
+        const rows = batch.map(p => buildProgressRow(uid, p));
         try {
           const { error } = await supabase.from('user_concept_status')
             .upsert(rows, { onConflict: 'user_id,concept_id' });
