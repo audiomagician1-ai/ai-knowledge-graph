@@ -5919,6 +5919,448 @@
       ],
       "is_milestone": false,
       "created_at": "2026-03-19T13:40:07Z"
+    },
+    {
+      "id": "design-notification-system",
+      "name": "设计通知系统",
+      "description": "系统设计实践：推送通道选择、优先级队列、延迟/批量投递",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "system-design",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "concept",
+      "tags": [
+        "notification",
+        "push",
+        "priority-queue"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "back-of-envelope",
+      "name": "粗略估算",
+      "description": "掌握系统设计面试中的QPS/存储/带宽估算方法",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "system-design",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "concept",
+      "tags": [
+        "estimation",
+        "capacity-planning",
+        "qps"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "graceful-degradation",
+      "name": "优雅降级",
+      "description": "设计系统在部分故障时维持核心功能的策略",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "system-design",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "fallback",
+        "resilience",
+        "degradation"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "web-animation",
+      "name": "Web动画",
+      "description": "掌握CSS动画、requestAnimationFrame和动画库的性能优化",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "web-frontend",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "animation",
+        "css",
+        "framer-motion"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "design-system",
+      "name": "设计系统",
+      "description": "构建可复用的UI组件库、设计Token和文档化规范",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "web-frontend",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "concept",
+      "tags": [
+        "component-library",
+        "design-tokens",
+        "storybook"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "frontend-testing",
+      "name": "前端测试",
+      "description": "掌握组件测试、E2E测试和视觉回归测试的策略",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "web-frontend",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "concept",
+      "tags": [
+        "vitest",
+        "playwright",
+        "testing-library"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "api-versioning",
+      "name": "API版本管理",
+      "description": "掌握URL/Header/Content-Type版本策略和向后兼容设计",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "web-backend",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "concept",
+      "tags": [
+        "versioning",
+        "backward-compatible",
+        "api"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "healthcheck-readiness",
+      "name": "健康检查与就绪探针",
+      "description": "设计/health和/ready端点，集成K8s liveness/readiness probes",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "web-backend",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "concept",
+      "tags": [
+        "healthcheck",
+        "kubernetes",
+        "probe"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "pagination-cursor",
+      "name": "游标分页",
+      "description": "掌握Offset分页vs游标分页的原理和性能差异",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "web-backend",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "cursor",
+        "pagination",
+        "offset"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "db-connection-tuning",
+      "name": "数据库连接调优",
+      "description": "掌握连接池大小、超时配置和慢查询排查",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "database",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "pool-size",
+        "slow-query",
+        "explain"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "full-text-search",
+      "name": "全文搜索",
+      "description": "掌握倒排索引原理和PostgreSQL/Elasticsearch全文检索实践",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "database",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "concept",
+      "tags": [
+        "inverted-index",
+        "elasticsearch",
+        "tsvector"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "rope-positional",
+      "name": "RoPE位置编码",
+      "description": "掌握旋转位置编码的原理和长上下文外推能力",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "concept",
+      "tags": [
+        "positional-encoding",
+        "rope",
+        "long-context"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "agent-eval-framework",
+      "name": "Agent评估框架",
+      "description": "设计Agent的自动化评估流程：任务成功率、效率和安全性指标",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "concept",
+      "tags": [
+        "eval",
+        "benchmark",
+        "metrics"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "agent-memory-systems",
+      "name": "Agent记忆系统",
+      "description": "掌握短期/长期/工作记忆在Agent中的实现和检索策略",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "concept",
+      "tags": [
+        "memory",
+        "retrieval",
+        "working-memory"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "query-transformation",
+      "name": "查询转换",
+      "description": "掌握Query Rewriting/Decomposition/Step-back等查询优化技术",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "query-rewrite",
+        "decomposition",
+        "step-back"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "rag-security",
+      "name": "RAG安全",
+      "description": "防范RAG系统中的数据泄露、Prompt注入和检索投毒攻击",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "security",
+        "data-leakage",
+        "poisoning"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "attention-variants",
+      "name": "注意力机制变体",
+      "description": "掌握Multi-Head/Cross/Sparse/Flash Attention的区别和应用",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "concept",
+      "tags": [
+        "attention",
+        "multi-head",
+        "flash-attention"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "data-augmentation",
+      "name": "数据增强",
+      "description": "掌握图像翻转/裁剪、文本回译等数据增强提升模型泛化的技术",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "ai-foundations",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "augmentation",
+        "overfitting",
+        "generalization"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "blue-green-deployment",
+      "name": "蓝绿部署",
+      "description": "掌握蓝绿部署和金丝雀发布的零停机发布策略",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "devops",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "blue-green",
+        "canary",
+        "zero-downtime"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "secret-management",
+      "name": "密钥管理",
+      "description": "安全存储和分发API Key/证书等敏感配置的最佳实践",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "devops",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "vault",
+        "secrets",
+        "rotation"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "design-by-contract",
+      "name": "契约式设计",
+      "description": "掌握前置条件、后置条件和不变式的防御性编程思想",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "programming-basics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "concept",
+      "tags": [
+        "assertion",
+        "precondition",
+        "defensive"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "logging-basics",
+      "name": "日志基础",
+      "description": "掌握日志等级、格式化和结构化日志的最佳实践",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "programming-basics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "concept",
+      "tags": [
+        "logging",
+        "debug",
+        "structured-log"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "monotone-queue",
+      "name": "单调队列",
+      "description": "掌握滑动窗口最值问题的O(n)解法",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "data-structures",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "monotone",
+        "sliding-window",
+        "deque"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "persistent-data-structure",
+      "name": "持久化数据结构",
+      "description": "理解函数式数据结构的版本控制和不可变共享原理",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "data-structures",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "concept",
+      "tags": [
+        "immutable",
+        "versioning",
+        "functional"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "builder-pattern",
+      "name": "建造者模式",
+      "description": "使用建造者模式分步构建复杂对象，分离构建和表示",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "oop",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "concept",
+      "tags": [
+        "builder",
+        "fluent-api",
+        "design-pattern"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
+    },
+    {
+      "id": "state-pattern",
+      "name": "状态模式",
+      "description": "让对象在内部状态改变时改变行为，有限状态机的OOP实现",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "oop",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "concept",
+      "tags": [
+        "state",
+        "fsm",
+        "design-pattern"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T13:55:00Z"
     }
   ],
   "edges": [
@@ -9292,12 +9734,318 @@
       "target_id": "rabin-karp",
       "relation_type": "prerequisite",
       "strength": 0.7
+    },
+    {
+      "source_id": "scalability",
+      "target_id": "design-notification-system",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "message-queue",
+      "target_id": "design-notification-system",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "system-design-basics",
+      "target_id": "back-of-envelope",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "circuit-breaker",
+      "target_id": "graceful-degradation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "load-balancing",
+      "target_id": "graceful-degradation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "css-basics",
+      "target_id": "web-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "javascript-basics",
+      "target_id": "web-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "react-basics",
+      "target_id": "design-system",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "css-in-js",
+      "target_id": "design-system",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "react-basics",
+      "target_id": "frontend-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "testing-basics",
+      "target_id": "frontend-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "restful-api",
+      "target_id": "api-versioning",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "openapi-swagger",
+      "target_id": "api-versioning",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "server-basics",
+      "target_id": "healthcheck-readiness",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "kubernetes-intro",
+      "target_id": "healthcheck-readiness",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "restful-api",
+      "target_id": "pagination-cursor",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "db-indexing",
+      "target_id": "pagination-cursor",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "connection-pool",
+      "target_id": "db-connection-tuning",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "db-indexing",
+      "target_id": "db-connection-tuning",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "db-indexing",
+      "target_id": "full-text-search",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sql-basics",
+      "target_id": "full-text-search",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "transformer-architecture",
+      "target_id": "rope-positional",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "positional-encoding",
+      "target_id": "rope-positional",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "agent-loop",
+      "target_id": "agent-eval-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "tool-use",
+      "target_id": "agent-eval-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "agent-loop",
+      "target_id": "agent-memory-systems",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vector-database",
+      "target_id": "agent-memory-systems",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "query-transformation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rag-query-routing",
+      "target_id": "query-transformation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "rag-security",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "prompt-injection-defense",
+      "target_id": "rag-security",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "attention-mechanism-basics",
+      "target_id": "attention-variants",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "transformer-architecture",
+      "target_id": "attention-variants",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "overfitting",
+      "target_id": "data-augmentation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "feature-engineering",
+      "target_id": "data-augmentation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ci-cd",
+      "target_id": "blue-green-deployment",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "kubernetes-intro",
+      "target_id": "blue-green-deployment",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "environment-variables",
+      "target_id": "secret-management",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ci-cd",
+      "target_id": "secret-management",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "error-handling",
+      "target_id": "design-by-contract",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "testing-basics",
+      "target_id": "design-by-contract",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "debugging-basics",
+      "target_id": "logging-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "error-handling",
+      "target_id": "logging-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "deque",
+      "target_id": "monotone-queue",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sliding-window",
+      "target_id": "monotone-queue",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "binary-tree",
+      "target_id": "persistent-data-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "functional-programming",
+      "target_id": "persistent-data-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "design-patterns-intro",
+      "target_id": "builder-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "factory-pattern",
+      "target_id": "builder-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "design-patterns-intro",
+      "target_id": "state-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "strategy-pattern",
+      "target_id": "state-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.7
     }
   ],
   "meta": {
     "generated_at": "2026-03-19T05:15:52.875580+00:00",
-    "total_concepts": 374,
-    "total_edges": 558,
+    "total_concepts": 400,
+    "total_edges": 609,
     "subdomain_counts": {
       "agent-systems": 25,
       "ai-foundations": 23,
@@ -9326,6 +10074,6 @@
       "8": 26,
       "9": 3
     },
-    "last_updated": "2026-03-19T13:40:07Z"
+    "last_updated": "2026-03-19T13:55:00Z"
   }
 }
