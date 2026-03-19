@@ -430,3 +430,81 @@ async def test_math_domain_no_orphan_nodes():
         node_ids = {n["id"] for n in data["nodes"]}
         orphans = node_ids - connected
         assert len(orphans) == 0, f"Orphan nodes: {orphans}"
+
+
+# ── RAG Multi-domain Tests ────────────────────────────────────────
+
+
+@pytest.mark.asyncio
+async def test_rag_default_domain_backwards_compat():
+    """RAG stats without domain param should return ai-engineering data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["domain"] == "ai-engineering"
+        assert data["total_docs"] == 267
+
+
+@pytest.mark.asyncio
+async def test_rag_math_stats():
+    """RAG stats for mathematics domain should return correct counts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["domain"] == "mathematics"
+        assert data["total_docs"] == 269
+        assert data["total_chars"] > 0
+        assert len(data["by_subdomain"]) == 12
+
+
+@pytest.mark.asyncio
+async def test_rag_math_document_with_latex():
+    """Should fetch a math RAG doc with LaTeX content (templated concept)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/derivative-concept?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "derivative-concept"
+        assert data["domain"] == "mathematics"
+        assert data["is_milestone"] is True
+        # Should contain LaTeX formulas
+        assert "\\lim" in data["content"] or "lim" in data["content"]
+        assert data["char_count"] > 100
+
+
+@pytest.mark.asyncio
+async def test_rag_math_document_generic():
+    """Should fetch a generic (non-templated) math RAG doc."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/decimals?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "decimals"
+        assert data["domain"] == "mathematics"
+        assert "核心内容" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_math_404_wrong_domain():
+    """Math concept should 404 when queried against ai-engineering RAG."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/derivative-concept?domain=ai-engineering")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_rag_overlapping_concept_ids():
+    """Concepts with same ID in different domains should return different content."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        # linear-regression exists in both domains
+        resp_ai = await client.get("/api/graph/rag/linear-regression?domain=ai-engineering")
+        resp_math = await client.get("/api/graph/rag/linear-regression?domain=mathematics")
+        assert resp_ai.status_code == 200
+        assert resp_math.status_code == 200
+        # They should be different documents
+        assert resp_ai.json()["domain"] == "ai-engineering"
+        assert resp_math.json()["domain"] == "mathematics"
+        assert resp_ai.json()["content"] != resp_math.json()["content"]
+

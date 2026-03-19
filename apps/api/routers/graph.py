@@ -271,33 +271,45 @@ def _get_rag_base_dir() -> str:
 
 
 RAG_BASE_DIR = _get_rag_base_dir()
-_rag_index_cache: dict | None = None
+_rag_index_cache: dict[str, dict] = {}  # domain_id -> index data
 _rag_lock = threading.Lock()  # m-18: Thread safety for RAG index loading
 
+# Default domain for backwards compatibility
+_DEFAULT_RAG_DOMAIN = "ai-engineering"
 
-def _load_rag_index() -> dict:
-    """懒加载 RAG 索引 (thread-safe)"""
-    global _rag_index_cache
-    if _rag_index_cache is not None:
-        return _rag_index_cache
+
+def _rag_index_path(domain_id: str) -> str:
+    """Get the RAG index file path for a domain."""
+    if domain_id == "ai-engineering":
+        # Legacy: flat index at data/rag/_index.json
+        return os.path.join(RAG_BASE_DIR, "_index.json")
+    else:
+        # New domains: data/rag/{domain_id}/_index.json
+        return os.path.join(RAG_BASE_DIR, domain_id, "_index.json")
+
+
+def _load_rag_index(domain_id: str = "ai-engineering") -> dict:
+    """懒加载 RAG 索引 (thread-safe, per-domain)"""
+    if domain_id in _rag_index_cache:
+        return _rag_index_cache[domain_id]
     with _rag_lock:
         # Double-check after acquiring lock
-        if _rag_index_cache is not None:
-            return _rag_index_cache
-        index_path = os.path.join(RAG_BASE_DIR, "_index.json")
+        if domain_id in _rag_index_cache:
+            return _rag_index_cache[domain_id]
+        index_path = _rag_index_path(domain_id)
         if os.path.exists(index_path):
             with open(index_path, "r", encoding="utf-8") as f:
-                _rag_index_cache = json.load(f)
+                _rag_index_cache[domain_id] = json.load(f)
         else:
-            _rag_index_cache = {"documents": [], "stats": {}}
-    return _rag_index_cache
+            _rag_index_cache[domain_id] = {"documents": [], "stats": {}}
+    return _rag_index_cache[domain_id]
 
 
 @router.get("/rag/{concept_id}")
-async def get_rag_document(concept_id: str):
+async def get_rag_document(concept_id: str, domain: str = "ai-engineering"):
     """获取概念的 RAG 参考文档"""
     # 查找文档路径
-    index = _load_rag_index()
+    index = _load_rag_index(domain)
     doc_entry = None
     for d in index.get("documents", []):
         if d["id"] == concept_id:
@@ -327,6 +339,7 @@ async def get_rag_document(concept_id: str):
         "concept_id": concept_id,
         "name": doc_entry.get("name", concept_id),
         "subdomain": doc_entry.get("subdomain_id", ""),
+        "domain": domain,
         "difficulty": doc_entry.get("difficulty", 0),
         "is_milestone": doc_entry.get("is_milestone", False),
         "content": content,
@@ -335,11 +348,12 @@ async def get_rag_document(concept_id: str):
 
 
 @router.get("/rag")
-async def get_rag_stats():
+async def get_rag_stats(domain: str = "ai-engineering"):
     """获取 RAG 知识库统计"""
-    index = _load_rag_index()
+    index = _load_rag_index(domain)
     return {
-        "total_docs": index.get("stats", {}).get("total_docs", 0),
+        "domain": domain,
+        "total_docs": index.get("stats", {}).get("total_docs", 0) or index.get("total_concepts", 0),
         "total_chars": index.get("stats", {}).get("total_chars", 0),
         "by_subdomain": index.get("stats", {}).get("by_subdomain", {}),
         "version": index.get("version", ""),
