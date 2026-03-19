@@ -198,9 +198,23 @@ const ENGLISH_ASSESSMENT_SUPPLEMENT = `
 - **发音意识**（如涉及语音概念）: 用户是否理解音标和发音规则？
 `;
 
+const PHYSICS_ASSESSMENT_SUPPLEMENT = `
+## 物理领域评估特殊指标
+
+在评估物理概念理解时，请额外关注以下方面：
+- **物理图像**: 用户是否建立了正确的物理直觉和图像？能否用自己的话描述物理过程？
+- **公式理解**: 用户是否理解公式中各物理量的含义和单位？能否解释公式的物理意义？
+- **定律适用范围**: 用户是否清楚物理定律的适用条件和局限性？
+- **数量级感觉**: 用户是否对典型物理量的数值有合理的估计能力？
+- **实验联系**: 用户是否能将理论与实验现象联系起来？
+- **推理链条**: 用户是否能进行因果推理（如力→加速度→速度变化）？
+- **常见误区**: 注意检测物理中的典型错误（如混淆质量与重量、忽视参考系、能量不守恒情况等）
+`;
+
 function getAssessmentSupplement(domainId: string | undefined): string {
   if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
+  if (domainId === 'physics') return PHYSICS_ASSESSMENT_SUPPLEMENT;
   return '';
 }
 
@@ -325,6 +339,8 @@ function buildSystemPrompt(node: GraphNode, prereqs: string[], deps: string[], r
     domainSupplement = `\n## 数学教学特殊规则\n\n1. **公式使用**: 讲解中使用 LaTeX 格式的数学公式（行内用 \`$...$\`，独立公式用 \`$$...$$\`）\n2. **证明引导**: 对定理类概念，引导用户理解证明思路而非仅记结论\n3. **计算验证**: 鼓励用户动手计算，提供数值例子\n4. **直觉优先**: 先给几何直觉或物理意义，再给严格定义\n5. **不要提及编程语言或代码**：这是纯数学教学\n`;
   } else if (domainId === 'english') {
     domainSupplement = `\n## 英语教学特殊规则\n\n1. **双语讲解**: 用中文解释英语知识点，关键术语和例句保留英文原文并附中文翻译\n2. **例句丰富**: 每个知识点提供至少2-3个英文例句\n3. **对比教学**: 主动对比中英文差异，指出母语负迁移错误\n4. **语境导向**: 将语法规则放在真实语境中讲解\n5. **分层讲解**: 先给简单例子建立直觉，再讲规则细节和例外\n6. **不要使用LaTeX公式**：这是英语教学，用自然语言和英文例句\n`;
+  } else if (domainId === 'physics') {
+    domainSupplement = `\n## 物理教学特殊规则\n\n1. **公式使用**: 使用 LaTeX 格式的物理公式，标注物理量的单位和量纲\n2. **直觉优先**: 先建立物理图像和直觉，再给数学表达。用类比、思想实验帮助理解\n3. **实验连接**: 将概念与真实实验或日常现象联系\n4. **单位和量纲**: 强调SI单位，进行量纲分析验证公式\n5. **近似与适用范围**: 明确定律的适用条件（如牛顿力学适用于低速宏观物体）\n6. **数值估算**: 鼓励数量级估算，培养物理直觉\n7. **历史脉络**: 适当介绍物理概念的发现历史\n`;
   }
 
   return fmt(FEYNMAN_SYSTEM_PROMPT, {

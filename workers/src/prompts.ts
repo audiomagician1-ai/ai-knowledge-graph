@@ -191,9 +191,23 @@ export const ENGLISH_ASSESSMENT_SUPPLEMENT = `
 - **发音意识**（如涉及语音概念）: 用户是否理解音标和发音规则？
 `;
 
+export const PHYSICS_ASSESSMENT_SUPPLEMENT = `
+## 物理领域评估特殊指标
+
+在评估物理概念理解时，请额外关注以下方面：
+- **物理图像**: 用户是否建立了正确的物理直觉和图像？能否用自己的话描述物理过程？
+- **公式理解**: 用户是否理解公式中各物理量的含义和单位？能否解释公式的物理意义？
+- **定律适用范围**: 用户是否清楚物理定律的适用条件和局限性？
+- **数量级感觉**: 用户是否对典型物理量的数值有合理的估计能力？
+- **实验联系**: 用户是否能将理论与实验现象联系起来？
+- **推理链条**: 用户是否能进行因果推理（如力→加速度→速度变化）？
+- **常见误区**: 注意检测物理中的典型错误（如混淆质量与重量、忽视参考系、能量不守恒情况等）
+`;
+
 export function getAssessmentSupplement(domainId: string | undefined): string {
   if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
+  if (domainId === 'physics') return PHYSICS_ASSESSMENT_SUPPLEMENT;
   return '';
 }
 
