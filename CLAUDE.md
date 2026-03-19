@@ -7,14 +7,16 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 6 完成 → Phase 7 规划中** | AI工程球扩容完成(400节点/609边), 下一步: 多球体架构
+**当前阶段**: 🟢 **Phase 7 进行中** | 多球体架构(7.1数据层+7.2后端API已完成), 下一步: 7.3前端domain store+球切换器
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
 
 **当前最高优先任务 — Phase 7: 多球体架构**:
 > **目标**: 球体注册表/切换器/独立种子数据管线, 为数学/英语等知识球做架构准备
-> **前置**: Phase 6 ✅ 完成 (400节点, 609边, 15子域, 400 RAG文档)
+> **前置**: Phase 6 ✅ 完成 (400节点, 615边, 15子域, 400 RAG文档)
+> **已完成**: 7.1 数据层重构 ✅ + 7.2 后端多域API ✅
+> **下一步**: 7.3 前端 domain store + 球切换器UI
 
 ### 12周里程碑
 
@@ -26,9 +28,9 @@
 | **Phase 3** | W8-9 | 节点点亮 + 进度系统 | ✅ 完成 (前置条件图+推荐集合+mastered绿光晕+recommended青光晕+Dashboard真实数据) |
 | **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+6轮审查90项+49测试+EXE打包) |
 | **Phase 5** | W13+ | 可选登录 + 跨端同步 | ✅ 代码就绪 (57轮审查363tests) |
-| **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | 🟡 进行中 |
-| **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | ✅ 完成 (400节点, 609边, 400 RAG文档, 15子域) |
-| **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | 📋 计划中 |
+| **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | ✅ 代码就绪 (OAuth需手动配置) |
+| **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | ✅ 完成 (400节点, 615边, 400 RAG文档, 15子域) |
+| **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | 🟡 进行中 (7.1+7.2 完成) |
 | **Phase 8** | W19-21 | 数学知识球(高中→大学数学, ~300节点, LaTeX渲染) | 📋 计划中 |
 | **Phase 9** | W22-24 | 英语知识球(~250节点) + 跨球体关联链接 | 📋 计划中 |
 
@@ -997,6 +999,23 @@ data/seed/         — 种子图谱数据
    - VERIFY: 411 tests (168 FE + 243 BE) 全通过, tsc 0 errors, build 3.09s
    - STATUS: Phase 6 A-2完成, 图谱312/400节点(78%), 距离Phase 6目标还需~88个新概念
 
+- ✅ **Phase 7.1+7.2 多球体架构启动 (2026-03-19, 5368a1d+7cd14cf+940be90)**:
+   - **BUG FIX (5368a1d)**: 图审计发现10个cs-fundamentals节点(how-computer-works, os-basics, cpu-execution等)与主图(390节点)完全断连, 形成孤立岛
+     - 添加6条语义桥接边: binary-system→how-computer-works, boolean-logic→cpu-execution, process-thread→concurrency-basics, file-system→file-io, compiler-basics→type-system, io-model→network-basics
+     - 修复stale meta: total_edges 609→615, subdomain_counts和difficulty_distribution重算
+     - 图谱: 400节点, 615边, 全连通 ✅
+   - **CLEANUP (7cd14cf)**: .gitignore新增one-time expansion/utility scripts + data/seed/shiji/实验数据
+   - **Phase 7.1 数据层重构 (940be90)**: `data/seed/programming/` → `data/seed/ai-engineering/` + 新建 `data/seed/domains.json` 域注册表
+   - **Phase 7.2 后端多域API (940be90)**:
+     - graph.py重构: per-domain seed缓存(dict keyed by domain_id), _load_seed(domain_id)懒加载+线程安全
+     - _load_domains()读取domains.json注册表(含fallback)
+     - GET /api/graph/domains 返回域列表+统计(concepts/edges/subdomains)
+     - 所有图谱端点新增 `?domain=` 查询参数: /data, /subdomains, /concepts/{id}, /concepts/{id}/neighbors, /stats
+     - 无效domain返回404; 默认domain=ai-engineering, 100%向后兼容
+   - TEST: +5 BE新测试(domain stats/explicit domain/invalid domain 404/subdomain with domain/stats with domain)
+   - VERIFY: 415 tests (168 FE + 247 BE) 全通过, tsc 0 errors
+   - STATUS: Phase 7 已启动! 7.1+7.2完成, 下一步: 7.3前端domain store+球切换器UI
+
 - ✅ **Phase 6 A-3+A-4 种子图谱扩展完成 (2026-03-19, 7090729+e01c77b)**:
    - **A-3 (7090729)**: +62概念, +128边 (312→374 concepts, 430→558 edges)
      - web-frontend +7: Web Workers, WebAssembly, Canvas/WebGL, 前端状态机, SSG/ISR, 微前端, 浏览器存储
@@ -1115,7 +1134,7 @@ Release Note 包含:
 - [x] 数据冲突: 以 **last_learn_at 较新为准** (与现有 importData 一致)
 - [x] 登录入口: **Sidebar 底部 + 移动端设置页顶部**
 
-### Phase 5.5 迭代计划: 后端服务升级（Auth 配置 + 默认 LLM + 数据持久化迭代）🟡
+### Phase 5.5 迭代计划: 后端服务升级（Auth 配置 + 默认 LLM + 数据持久化迭代）✅ 代码就绪
 
 > **P0 — 第一优先级**: 本阶段是网站后端服务升级的核心迭代
 
@@ -1187,6 +1206,28 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 - Phase 5 的 localStorage-first + fire-and-forget 双写架构代码保留, 作为匿名用户路径
 - 登录用户路径是新增的 Supabase-first 分支, 不修改匿名用户行为
 - 所有 mastered 降级防护(8路一致)必须在新路径中同样执行
+
+---
+
+### Phase 7 多球体架构 🟡 进行中
+
+> **目标**: 球体注册表/切换器/独立种子数据管线, 为数学/英语等知识球做架构准备
+> **详细设计**: `docs/EXPANSION_PLAN.md` §四-五
+
+**任务清单**:
+1. ✅ **7.1 数据层重构** (940be90) — `data/seed/programming/` → `data/seed/ai-engineering/` + `data/seed/domains.json` 域注册表
+2. ✅ **7.2 后端多域API** (940be90) — per-domain seed缓存, `_load_seed(domain_id)`, `_load_domains()`, 所有端点+`?domain=`参数, `/api/graph/domains`返回域列表+统计
+3. 🔲 **7.3 前端domain store + 球切换器UI** — Zustand domain store, Sidebar球切换器组件, 切换时重载图谱数据
+4. 🔲 **7.4 图谱渲染按domain加载 + 每球独立配色** — 3D球色调从domains.json读取, 不同球不同主题色
+5. 🔲 **7.5 数据模型迁移** — localStorage per-domain key, Supabase migration添加domain_id列
+6. 🔲 **7.6 Dashboard星系总览 + per-domain进度**
+7. 🔲 **7.7 测试** — 多domain E2E测试, 球切换功能测试
+
+**架构要点**:
+- 种子数据: `data/seed/{domain_id}/seed_graph.json`
+- RAG文档: `data/rag/` (当前扁平结构, 后续可按domain隔离)
+- 域注册表: `data/seed/domains.json`
+- 默认domain: `ai-engineering` (所有API向后兼容)
 
 ---
 
