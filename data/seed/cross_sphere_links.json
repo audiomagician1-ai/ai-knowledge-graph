@@ -322,10 +322,130 @@
       "target_id": "neural-network-basics",
       "relation": "enables",
       "description": "能带理论是半导体和GPU等神经网络硬件加速器的物理基础"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "ab-testing-design",
+      "target_domain": "mathematics",
+      "target_id": "hypothesis-testing",
+      "relation": "requires",
+      "description": "产品A/B测试的统计显著性判断依赖数学中的假设检验理论"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "statistical-significance",
+      "target_domain": "mathematics",
+      "target_id": "hypothesis-testing",
+      "relation": "same_concept",
+      "description": "产品中的统计显著性概念直接来自数学统计的假设检验"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "data-visualization",
+      "target_domain": "mathematics",
+      "target_id": "descriptive-statistics",
+      "relation": "requires",
+      "description": "数据可视化需要理解描述统计学的基本概念（均值、中位数、分布等）"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "predictive-analytics",
+      "target_domain": "ai-engineering",
+      "target_id": "ml-basics",
+      "relation": "requires",
+      "description": "产品中的预测分析（流失预警等）依赖机器学习的基本模型和方法"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "user-segmentation",
+      "target_domain": "ai-engineering",
+      "target_id": "ml-basics",
+      "relation": "related",
+      "description": "用户分群可以借助聚类等机器学习方法实现自动化和精细化"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "seo-basics",
+      "target_domain": "ai-engineering",
+      "target_id": "llm-api-usage",
+      "relation": "related",
+      "description": "现代SEO策略越来越多地利用LLM进行内容生成和优化"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "design-system",
+      "target_domain": "ai-engineering",
+      "target_id": "design-system",
+      "relation": "same_concept",
+      "description": "设计系统在产品设计和前端工程中是同一概念的不同视角：设计规范 vs 组件实现"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "responsive-design",
+      "target_domain": "ai-engineering",
+      "target_id": "html-basics",
+      "relation": "related",
+      "description": "响应式设计的实现依赖HTML/CSS媒体查询等前端基础技术"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "content-strategy",
+      "target_domain": "english",
+      "target_id": "writing-process",
+      "relation": "related",
+      "description": "UX文案和内容策略需要扎实的写作功底和语言表达能力"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "product-communication",
+      "target_domain": "english",
+      "target_id": "presentation-skills",
+      "relation": "related",
+      "description": "产品经理的汇报沟通需要演讲表达技巧"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "cohort-analysis",
+      "target_domain": "mathematics",
+      "target_id": "probability-basics",
+      "relation": "requires",
+      "description": "群组分析中的留存率计算和趋势判断需要概率论基础"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "behavioral-economics",
+      "target_domain": "mathematics",
+      "target_id": "probability-basics",
+      "relation": "related",
+      "description": "行为经济学中的前景理论涉及概率权重函数等数学概念"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "frontend-testing",
+      "target_domain": "product-design",
+      "target_id": "ab-testing-design",
+      "relation": "enables",
+      "description": "前端测试框架为产品A/B测试提供技术实现基础"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "restful-api",
+      "target_domain": "product-design",
+      "target_id": "event-tracking",
+      "relation": "enables",
+      "description": "RESTful API是产品埋点数据上报的技术通道"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "system-design-basics",
+      "target_domain": "product-design",
+      "target_id": "technical-debt",
+      "relation": "related",
+      "description": "系统设计中的架构权衡直接影响产品的技术债务累积"
     }
   ],
   "meta": {
-    "total_links": 40,
+    "total_links": 55,
     "relation_types": {
       "same_concept": "相同概念在不同领域的不同视角",
       "requires": "源概念需要目标概念作为知识基础",
@@ -336,12 +456,17 @@
     "domain_pairs": {
       "ai-engineering_mathematics": 11,
       "ai-engineering_english": 5,
+      "ai-engineering_product-design": 3,
       "mathematics_ai-engineering": 4,
       "mathematics_english": 1,
       "english_ai-engineering": 4,
       "mathematics_physics": 10,
       "physics_ai-engineering": 4,
-      "physics_english": 1
+      "physics_english": 1,
+      "product-design_mathematics": 4,
+      "product-design_ai-engineering": 4,
+      "product-design_english": 2,
+      "product-design_physics": 0
     }
   }
 }
