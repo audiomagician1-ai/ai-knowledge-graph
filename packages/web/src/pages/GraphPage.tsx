@@ -5,7 +5,6 @@ import { useLearningStore } from '@/lib/store/learning';
 import { useDomainStore } from '@/lib/store/domain';
 import { apiFetchRecommendations } from '@/lib/api/learning-api';
 import type { GraphNode, GraphData } from '@akg/shared';
-import { GRAPH_VISUAL } from '@akg/shared';
 import { ChatPanel } from '@/components/chat/ChatPanel';
 import { DraggableModal } from '@/components/common/DraggableModal';
 import { DashboardContent } from '@/components/panels/DashboardContent';
@@ -22,16 +21,14 @@ const KnowledgeGraph = lazy(() =>
   import('@/components/graph/KnowledgeGraph').then((m) => ({ default: m.KnowledgeGraph }))
 );
 
-const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
-
 export function GraphPage() {
   const {
     graphData, loading, selectedNode, activeSubdomain,
-    loadGraphData, selectNode, setActiveSubdomain,
+    loadGraphData, selectNode,
   } = useGraphStore();
   const { activeDomain, fetchDomains, getActiveDomainInfo } = useDomainStore();
   const { progress, computeStats, refreshStreak, initEdges, recommendedIds, syncWithBackend, backendSynced } = useLearningStore();
-  const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const [showDashboard, setShowDashboard] = useState(false);
@@ -121,16 +118,9 @@ export function GraphPage() {
 
   // Reload graph when activeDomain changes
   // eslint-disable-next-line react-hooks/exhaustive-deps -- activeDomain drives reload
-  useEffect(() => { loadGraphData(activeDomain); loadSubdomains(); }, [activeDomain]);
+  useEffect(() => { loadGraphData(activeDomain); }, [activeDomain]);
 
-  const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
-  const loadSubdomains = async () => {
-    try {
-      const res = await fetch(`${API_BASE}/graph/subdomains?domain=${encodeURIComponent(activeDomain)}`);
-      if (res.ok) setSubdomains(await res.json());
-    } catch { /* ignore */ }
-  };
 
   const handleNodeClick = (node: GraphNode) => selectNode(node?.id ? node : null);
 
@@ -415,7 +405,7 @@ function HubButton({ icon: Icon, label, active, onClick }: { icon: typeof BarCha
         color: active ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)',
       }}
       onMouseEnter={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-      onMouseLeave={(e) => { if (!active) e.currentTarget.style.backgroundColor = active ? 'rgba(0,0,0,0.06)' : 'transparent'; }}>
+      onMouseLeave={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'transparent'; }}>
       <Icon size={18} strokeWidth={active ? 2.5 : 2} />
       <span style={{ fontSize: 10, fontWeight: 500, marginTop: 2, lineHeight: 1 }}>{label}</span>
     </button>
