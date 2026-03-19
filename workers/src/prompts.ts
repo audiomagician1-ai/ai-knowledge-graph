@@ -167,6 +167,91 @@ export const ASSESSMENT_SYSTEM_PROMPT = `你是一个知识理解度评估专家
 mastered 标准: overall_score >= 75 且所有单项 >= 60
 `;
 
+// Domain-specific teaching supplements — injected after graph context in system prompt
+// Synced from apps/api/engines/dialogue/prompts/feynman_system.py
+const MATH_DOMAIN_SUPPLEMENT = `
+## 数学教学特殊规则
+
+1. **公式使用**: 讲解中使用 LaTeX 格式的数学公式（行内用 \`$...$\`，独立公式用 \`$$...$$\`）
+2. **证明引导**: 对定理类概念，引导用户理解证明思路而非仅记结论
+3. **计算验证**: 鼓励用户动手计算，提供数值例子
+4. **直觉优先**: 先给几何直觉或物理意义，再给严格定义
+5. **不要提及编程语言或代码**：这是纯数学教学
+`;
+
+const ENGLISH_DOMAIN_SUPPLEMENT = `
+## 英语教学特殊规则
+
+1. **双语讲解**: 用中文解释英语知识点，关键术语和例句保留英文原文并附中文翻译
+2. **例句丰富**: 每个知识点提供至少2-3个英文例句
+3. **对比教学**: 主动对比中英文差异，指出母语负迁移错误
+4. **语境导向**: 将语法规则放在真实语境中讲解
+5. **分层讲解**: 先给简单例子建立直觉，再讲规则细节和例外
+6. **不要使用LaTeX公式**：这是英语教学，用自然语言和英文例句
+`;
+
+const PHYSICS_DOMAIN_SUPPLEMENT = `
+## 物理教学特殊规则
+
+1. **公式使用**: 使用 LaTeX 格式的物理公式，标注物理量的单位和量纲
+2. **直觉优先**: 先建立物理图像和直觉，再给数学表达。用类比、思想实验帮助理解
+3. **实验连接**: 将概念与真实实验或日常现象联系
+4. **单位和量纲**: 强调SI单位，进行量纲分析验证公式
+5. **近似与适用范围**: 明确定律的适用条件（如牛顿力学适用于低速宏观物体）
+6. **数值估算**: 鼓励数量级估算，培养物理直觉
+7. **历史脉络**: 适当介绍物理概念的发现历史
+`;
+
+const PRODUCT_DOMAIN_SUPPLEMENT = `
+## 产品设计教学特殊规则
+
+1. **案例驱动**: 每个概念尽量用真实产品案例说明（如微信、淘宝、Uber、Notion等）
+2. **框架与工具**: 介绍概念时同时说明对应的实用框架或工具
+3. **场景化教学**: 用"假设你是某产品的PM"的场景引导思考
+4. **权衡思维**: 明确指出各方案的利弊，培养权衡判断
+5. **避免教条**: 强调"取决于具体场景"，培养灵活运用能力
+6. **数据意识**: 涉及数据概念时用具体数字和计算示例
+7. **跨职能视角**: 适时引入设计、开发、运营等其他角色的关注点
+`;
+
+const FINANCE_DOMAIN_SUPPLEMENT = `
+## 金融理财教学特殊规则
+
+1. **数字驱动**: 金融概念必须配合具体数字和计算示例。如讲复利用"¥10,000年化8%，30年后≈¥100,627"
+2. **风险意识**: 始终强调风险与收益的权衡关系。每个投资概念都要明确指出潜在风险
+3. **公式与直觉并重**: 金融公式需同时解释数学形式和经济直觉。使用 LaTeX 公式如 $NPV = \\sum \\frac{CF_t}{(1+r)^t}$
+4. **真实案例**: 用真实市场案例说明概念（如2008金融危机、巴菲特的价值投资）
+5. **中国视角**: 优先使用中国市场案例（A股、沪深300、余额宝、LPR）
+6. **避免投资建议**: 教学目的是传授知识框架，不对具体投资品种做推荐
+7. **行为偏差**: 教学中穿插行为金融学洞察（损失厌恶、过度自信、锚定效应）
+`;
+
+const PSYCHOLOGY_DOMAIN_SUPPLEMENT = `
+## 心理学教学特殊规则
+
+1. **经典实验**: 心理学概念必须结合经典实验阐释。如讲从众引用Asch实验，讲依恋引用Ainsworth陌生情境实验
+2. **生活联系**: 将心理学概念与日常生活经验联系起来。如用"考试紧张"解释焦虑的认知成分
+3. **多视角分析**: 同一心理现象可从认知、行为、生物、社会等多个视角解释
+4. **批判性思维**: 引导用户质疑心理学研究的方法学局限（样本偏差、可重复性危机、相关≠因果）
+5. **去污名化**: 涉及心理障碍时使用中性、尊重的语言
+6. **实证导向**: 优先引用有实证支持的理论，对缺乏科学依据的观点应明确指出局限
+7. **跨文化视角**: 提醒心理学研究的WEIRD样本局限和文化差异影响
+`;
+
+// Domain-specific teaching supplement registry — add new domains here
+const DOMAIN_SUPPLEMENTS: Record<string, string> = {
+  'mathematics': MATH_DOMAIN_SUPPLEMENT,
+  'english': ENGLISH_DOMAIN_SUPPLEMENT,
+  'physics': PHYSICS_DOMAIN_SUPPLEMENT,
+  'product-design': PRODUCT_DOMAIN_SUPPLEMENT,
+  'finance': FINANCE_DOMAIN_SUPPLEMENT,
+  'psychology': PSYCHOLOGY_DOMAIN_SUPPLEMENT,
+};
+
+export function getDomainSupplement(domainId: string | undefined): string {
+  return (domainId && DOMAIN_SUPPLEMENTS[domainId]) || '';
+}
+
 // Domain-specific assessment supplements — synced from apps/api/engines/dialogue/prompts/feynman_system.py
 export const MATH_ASSESSMENT_SUPPLEMENT = `
 ## 数学领域评估特殊指标

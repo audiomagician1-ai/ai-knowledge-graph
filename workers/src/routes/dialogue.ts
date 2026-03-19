@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import type { Env, UserLLMConfig } from '../types';
 import { llmChat, llmChatStream } from '../llm';
-import { FEYNMAN_SYSTEM_PROMPT, GRAPH_CONTEXT_TEMPLATE, ASSESSMENT_SYSTEM_PROMPT, formatPrompt, getAssessmentSupplement } from '../prompts';
+import { FEYNMAN_SYSTEM_PROMPT, GRAPH_CONTEXT_TEMPLATE, ASSESSMENT_SYSTEM_PROMPT, formatPrompt, getAssessmentSupplement, getDomainSupplement } from '../prompts';
 import seedGraph from '../../data/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
@@ -51,12 +51,15 @@ function buildSystemPrompt(concept: any): string {
     is_milestone: concept.is_milestone ? '⭐ 是（里程碑节点）' : '否',
   });
 
+  // Domain-specific teaching supplement (registry lookup)
+  const domainSupplement = getDomainSupplement(concept.domain_id);
+
   return formatPrompt(FEYNMAN_SYSTEM_PROMPT, {
     concept_name: concept.name,
     subdomain_name: concept.subdomain_id || '',
     difficulty: String(concept.difficulty || 5),
     content_type: concept.content_type || 'theory',
-    graph_context: graphContext,
+    graph_context: graphContext + domainSupplement,
   });
 }
 
