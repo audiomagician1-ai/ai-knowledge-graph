@@ -32,7 +32,7 @@
 | **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | ✅ 代码就绪 (OAuth需手动配置) |
 | **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | ✅ 完成 (400节点, 615边, 400 RAG文档, 15子域) |
 | **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | ✅ 完成 (7.1-7.7, 453 tests) |
-| **Phase 8** | W19-21 | 数学知识球(高中→大学数学, ~300节点, LaTeX渲染) | 🟢 进行中 (8.1✅) |
+| **Phase 8** | W19-21 | 数学知识球(269节点, 366边, 12子域, LaTeX渲染, RAG+Socratic适配) | ✅ 完成 (8.1-8.7, 472 tests) |
 | **Phase 9** | W22-24 | 英语知识球(~250节点) + 跨球体关联链接 | 📋 计划中 |
 
 ---
@@ -1271,7 +1271,7 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ---
 
-### Phase 8 数学知识球 🟢 进行中
+### Phase 8 数学知识球 ✅ 完成
 
 > **目标**: 上线第二个知识球 — 数学基础, 覆盖高中到大学数学
 > **详细设计**: `docs/EXPANSION_PLAN.md` §4.2
@@ -1283,8 +1283,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 3. ✅ **8.3 RAG知识文档编写** (7620870) — 269篇数学教学文档(含LaTeX公式), 30个关键概念有手写LaTeX模板(求根公式/导数/积分/中值定理/行列式/特征值/贝叶斯/CLT等), 239个通用模板; generate_rag.py+_templates.json可重现; RAG API重构为per-domain(_load_rag_index(domain_id)), ?domain=参数向后兼容; +7 BE测试(backwards compat/math stats/LaTeX content/generic doc/cross-domain 404/overlapping IDs)
 4. ✅ **8.4 苏格拉底引擎适配** (ad3ceec) — _load_rag_content()支持domain_id参数(mathematics路径: data/rag/mathematics/{subdomain}/{concept}.md); MATH_DOMAIN_SUPPLEMENT注入(LaTeX格式/证明引导/计算验证/直觉优先/禁止代码); build_system_prompt读取concept.domain_id; +4 BE测试
 5. ✅ **8.5 评估器适配** (b59ec40) — 评估器已domain-agnostic(4维度: completeness/accuracy/depth/examples对数学通用); +2 BE测试(LaTeX对话fallback评估/LaTeX格式保留); mastery阈值(>=75分且单项>=60)对数学合理
-6. 🟡 **8.6 LaTeX渲染支持** — 前端KaTeX/MathJax集成
-7. 🟡 **8.7 质量审查+测试**
+6. ✅ **8.6 LaTeX渲染支持** (773732c) — remark-math + rehype-katex + katex集成到MarkdownRenderer; 行内`$...$`和独立`$$...$$`公式渲染; KaTeX CSS+字体自动打包; build 4.26s通过
+7. ✅ **8.7 质量审查+测试** — 全链路验证: 269 seed→269 RAG 1:1映射, 0 orphan nodes, 366 edges, 29 milestones覆盖12子域, RAG文件全部存在, domains.json注册正确; verify.py完整性检查; 472总测试(200 FE + 272 BE)全通过; tsc 0 errors; build 4.26s
 
 **架构要点**:
 - 种子数据: `data/seed/mathematics/seed_graph.json`
