@@ -54,12 +54,23 @@
       "rag_dir": "product-design",
       "is_active": true,
       "sort_order": 5
+    },
+    {
+      "id": "finance",
+      "name": "金融理财",
+      "description": "从个人理财到量化金融的系统知识体系",
+      "icon": "🟠",
+      "color": "#f97316",
+      "seed_dir": "finance",
+      "rag_dir": "finance",
+      "is_active": true,
+      "sort_order": 6
     }
   ],
   "meta": {
-    "version": "4.0.0",
+    "version": "5.0.0",
     "default_domain": "ai-engineering",
     "created_at": "2026-03-19T14:00:00Z",
-    "updated_at": "2026-03-19T18:30:00Z"
+    "updated_at": "2026-03-19T22:00:00Z"
   }
 }

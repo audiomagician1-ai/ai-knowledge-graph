@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -1027,6 +1027,88 @@ async def test_rag_product_design_404_wrong_domain():
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/rag/design-thinking?domain=mathematics")
         assert resp.status_code == 404
+
+
+# ── Phase 12: Finance Knowledge Sphere (#8) ──
+
+
+@pytest.mark.asyncio
+async def test_finance_graph_data():
+    """Finance graph data loads with concepts and edges."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=finance")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) > 0
+        assert len(data["edges"]) > 0
+
+
+@pytest.mark.asyncio
+async def test_finance_node_count():
+    """Finance domain has ~160 concepts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=finance")
+        data = resp.json()
+        assert len(data["nodes"]) >= 150
+        assert len(data["nodes"]) <= 180
+
+
+@pytest.mark.asyncio
+async def test_finance_subdomain_filter():
+    """Finance subdomain filter returns relevant concepts only."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=finance&subdomain_id=personal-finance")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) > 0
+        for c in data["nodes"]:
+            assert c["subdomain_id"] == "personal-finance"
+        assert len(data["nodes"]) == 20
+
+
+@pytest.mark.asyncio
+async def test_finance_subdomains():
+    """Finance domain has 8 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=finance")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 8
+
+
+@pytest.mark.asyncio
+async def test_finance_stats():
+    """Finance stats endpoint returns valid counts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=finance")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["stats"]["total_concepts"] >= 150
+        assert data["stats"]["total_edges"] >= 170
+
+
+@pytest.mark.asyncio
+async def test_finance_concept_detail():
+    """Finance concept detail returns valid data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/compound-interest?domain=finance")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "compound-interest"
+        assert data["domain_id"] == "finance"
+
+
+@pytest.mark.asyncio
+async def test_domains_list_includes_finance():
+    """Domains list includes finance as sixth domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        assert resp.status_code == 200
+        data = resp.json()
+        domain_ids = [d["id"] for d in data]
+        assert "finance" in domain_ids
+        assert len(data) >= 6
+
 
 
 
