@@ -17,6 +17,7 @@ from engines.dialogue.prompts.feynman_system import (
     FEYNMAN_SYSTEM_PROMPT,
     GRAPH_CONTEXT_TEMPLATE,
     MATH_DOMAIN_SUPPLEMENT,
+    ENGLISH_DOMAIN_SUPPLEMENT,
     parse_ai_response,
 )
 
@@ -105,6 +106,8 @@ class SocraticEngine:
         domain_id = concept.get("domain_id", "ai-engineering")
         if domain_id == "mathematics":
             graph_context += MATH_DOMAIN_SUPPLEMENT
+        elif domain_id == "english":
+            graph_context += ENGLISH_DOMAIN_SUPPLEMENT
 
         return FEYNMAN_SYSTEM_PROMPT.format(
             concept_name=concept["name"],

@@ -287,12 +287,21 @@ function buildSystemPrompt(node: GraphNode, prereqs: string[], deps: string[], r
 - **是否为里程碑**: ${node.is_milestone ? '⭐ 是（里程碑节点）' : '否'}
 `;
 
+  // Domain-specific supplement
+  const domainId = 'domain_id' in node ? (node as { domain_id?: string }).domain_id : undefined;
+  let domainSupplement = '';
+  if (domainId === 'mathematics') {
+    domainSupplement = `\n## 数学教学特殊规则\n\n1. **公式使用**: 讲解中使用 LaTeX 格式的数学公式（行内用 \`$...$\`，独立公式用 \`$$...$$\`）\n2. **证明引导**: 对定理类概念，引导用户理解证明思路而非仅记结论\n3. **计算验证**: 鼓励用户动手计算，提供数值例子\n4. **直觉优先**: 先给几何直觉或物理意义，再给严格定义\n5. **不要提及编程语言或代码**：这是纯数学教学\n`;
+  } else if (domainId === 'english') {
+    domainSupplement = `\n## 英语教学特殊规则\n\n1. **双语讲解**: 用中文解释英语知识点，关键术语和例句保留英文原文并附中文翻译\n2. **例句丰富**: 每个知识点提供至少2-3个英文例句\n3. **对比教学**: 主动对比中英文差异，指出母语负迁移错误\n4. **语境导向**: 将语法规则放在真实语境中讲解\n5. **分层讲解**: 先给简单例子建立直觉，再讲规则细节和例外\n6. **不要使用LaTeX公式**：这是英语教学，用自然语言和英文例句\n`;
+  }
+
   return fmt(FEYNMAN_SYSTEM_PROMPT, {
     concept_name: node.label,
     subdomain_name: node.subdomain_id || '',
     difficulty: String(node.difficulty || 5),
     content_type: node.content_type || 'theory',
-    graph_context: graphContext,
+    graph_context: graphContext + domainSupplement,
   });
 }
 
