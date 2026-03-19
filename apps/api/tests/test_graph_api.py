@@ -508,3 +508,123 @@ async def test_rag_overlapping_concept_ids():
         assert resp_math.json()["domain"] == "mathematics"
         assert resp_ai.json()["content"] != resp_math.json()["content"]
 
+
+# ── English Domain Tests ───────────────────────────
+
+@pytest.mark.asyncio
+async def test_english_domain_graph_data():
+    """GET /api/graph/data?domain=english should return english concepts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=english")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) == 200
+        assert len(data["edges"]) == 229
+        # All nodes should be english domain
+        for node in data["nodes"]:
+            assert node["domain_id"] == "english"
+
+
+@pytest.mark.asyncio
+async def test_english_domain_node_structure():
+    """English nodes should have required fields."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=english")
+        data = resp.json()
+        node = data["nodes"][0]
+        required = {"id", "label", "domain_id", "subdomain_id",
+                     "difficulty", "estimated_minutes", "content_type", "tags",
+                     "is_milestone"}
+        assert required.issubset(set(node.keys()))
+
+
+@pytest.mark.asyncio
+async def test_english_domain_subdomains():
+    """English should have 10 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=english")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 10
+        sub_ids = {s["id"] for s in data}
+        expected = {"phonetics", "basic-grammar", "vocabulary", "tenses",
+                    "sentence-patterns", "advanced-grammar", "reading",
+                    "writing-en", "speaking", "idioms-culture"}
+        assert sub_ids == expected
+
+
+@pytest.mark.asyncio
+async def test_english_domain_stats():
+    """English stats should reflect seed data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=english")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_concepts"] == 200
+        assert data["total_edges"] == 229
+        assert data["total_milestones"] == 27
+
+
+@pytest.mark.asyncio
+async def test_english_domain_concept_detail():
+    """Should fetch an english concept by ID."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/present-perfect?domain=english")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "present-perfect"
+        assert data["domain_id"] == "english"
+        assert data["subdomain_id"] == "tenses"
+        assert data["is_milestone"] is True
+
+
+@pytest.mark.asyncio
+async def test_english_domain_neighbors():
+    """Should return neighbors for an english concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/adjective-clauses/neighbors?domain=english")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) > 0
+        assert len(data["edges"]) > 0
+
+
+@pytest.mark.asyncio
+async def test_english_domain_in_domain_list():
+    """English should appear in the domain list with correct stats."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        assert resp.status_code == 200
+        data = resp.json()
+        eng = next((d for d in data if d["id"] == "english"), None)
+        assert eng is not None
+        assert eng["name"] == "英语"
+        assert eng["icon"] == "🟡"
+        assert eng["stats"]["total_concepts"] == 200
+        assert eng["stats"]["total_edges"] == 229
+        assert eng["stats"]["subdomains"] == 10
+
+
+@pytest.mark.asyncio
+async def test_english_domain_subdomain_filter():
+    """Filtering by subdomain should return only matching concepts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=english&subdomain_id=tenses")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) == 20
+        for node in data["nodes"]:
+            assert node["subdomain_id"] == "tenses"
+
+
+@pytest.mark.asyncio
+async def test_three_domains_listed():
+    """Domain list should now include all 3 active domains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        assert resp.status_code == 200
+        data = resp.json()
+        domain_ids = {d["id"] for d in data}
+        assert domain_ids == {"ai-engineering", "mathematics", "english"}
+
+
