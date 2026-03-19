@@ -217,11 +217,25 @@ const PRODUCT_ASSESSMENT_SUPPLEMENT = `
 - **系统思维**: 用户是否理解概念在产品全局中的位置和与其他概念的关联？
 `;
 
+const FINANCE_ASSESSMENT_SUPPLEMENT = `
+## 金融理财领域评估特殊指标
+
+在评估金融理财概念理解时，请额外关注以下方面：
+- **概念与计算**: 用户是否不仅知道概念定义，还能进行基本的金融计算（如复利、NPV、收益率）？
+- **风险意识**: 用户是否理解所学概念涉及的风险类型及其管理方法？而非只关注收益
+- **市场理解**: 用户是否理解金融概念在真实市场环境中的运作方式？而非仅停留在教科书理论
+- **公式解读**: 涉及金融公式时，用户是否理解公式背后的经济逻辑？而非仅机械记忆
+- **决策应用**: 用户是否能将概念应用到实际的投资或财务决策场景中？
+- **行为偏差**: 用户是否意识到认知偏差对金融决策的影响？
+- **边界条件**: 用户是否理解金融模型的假设前提和适用范围？
+`;
+
 export function getAssessmentSupplement(domainId: string | undefined): string {
   if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'physics') return PHYSICS_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'product-design') return PRODUCT_ASSESSMENT_SUPPLEMENT;
+  if (domainId === 'finance') return FINANCE_ASSESSMENT_SUPPLEMENT;
   return '';
 }
 

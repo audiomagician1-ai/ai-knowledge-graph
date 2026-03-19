@@ -224,11 +224,25 @@ const PRODUCT_ASSESSMENT_SUPPLEMENT = `
 - **系统思维**: 用户是否理解概念在产品全局中的位置和与其他概念的关联？
 `;
 
+const FINANCE_ASSESSMENT_SUPPLEMENT = `
+## 金融理财领域评估特殊指标
+
+在评估金融理财概念理解时，请额外关注以下方面：
+- **概念与计算**: 用户是否不仅知道概念定义，还能进行基本的金融计算（如复利、NPV、收益率）？
+- **风险意识**: 用户是否理解所学概念涉及的风险类型及其管理方法？而非只关注收益
+- **市场理解**: 用户是否理解金融概念在真实市场环境中的运作方式？而非仅停留在教科书理论
+- **公式解读**: 涉及金融公式时，用户是否理解公式背后的经济逻辑？而非仅机械记忆
+- **决策应用**: 用户是否能将概念应用到实际的投资或财务决策场景中？
+- **行为偏差**: 用户是否意识到认知偏差对金融决策的影响？
+- **边界条件**: 用户是否理解金融模型的假设前提和适用范围？
+`;
+
 function getAssessmentSupplement(domainId: string | undefined): string {
   if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'physics') return PHYSICS_ASSESSMENT_SUPPLEMENT;
   if (domainId === 'product-design') return PRODUCT_ASSESSMENT_SUPPLEMENT;
+  if (domainId === 'finance') return FINANCE_ASSESSMENT_SUPPLEMENT;
   return '';
 }
 
@@ -357,6 +371,8 @@ function buildSystemPrompt(node: GraphNode, prereqs: string[], deps: string[], r
     domainSupplement = `\n## 物理教学特殊规则\n\n1. **公式使用**: 使用 LaTeX 格式的物理公式，标注物理量的单位和量纲\n2. **直觉优先**: 先建立物理图像和直觉，再给数学表达。用类比、思想实验帮助理解\n3. **实验连接**: 将概念与真实实验或日常现象联系\n4. **单位和量纲**: 强调SI单位，进行量纲分析验证公式\n5. **近似与适用范围**: 明确定律的适用条件（如牛顿力学适用于低速宏观物体）\n6. **数值估算**: 鼓励数量级估算，培养物理直觉\n7. **历史脉络**: 适当介绍物理概念的发现历史\n`;
   } else if (domainId === 'product-design') {
     domainSupplement = `\n## 产品设计教学特殊规则\n\n1. **案例驱动**: 每个概念尽量用真实产品案例说明（如微信、淘宝、Uber、Notion等）\n2. **框架与工具**: 介绍概念时同时说明对应的实用框架或工具\n3. **场景化教学**: 用"假设你是某产品的PM"的场景引导思考\n4. **权衡思维**: 明确指出各方案的利弊，培养权衡判断\n5. **避免教条**: 强调"取决于具体场景"，培养灵活运用能力\n6. **数据意识**: 涉及数据概念时用具体数字和计算示例\n7. **跨职能视角**: 适时引入设计、开发、运营等其他角色的关注点\n`;
+  } else if (domainId === 'finance') {
+    domainSupplement = `\n## 金融理财教学特殊规则\n\n1. **数字驱动**: 金融概念必须配合具体数字和计算示例。如讲复利用"¥10,000年化8%，30年后≈¥100,627"\n2. **风险意识**: 始终强调风险与收益的权衡关系。每个投资概念都要明确指出潜在风险\n3. **公式与直觉并重**: 金融公式需同时解释数学形式和经济直觉。使用 LaTeX 公式如 $NPV = \\sum \\frac{CF_t}{(1+r)^t}$\n4. **真实案例**: 用真实市场案例说明概念（如2008金融危机、巴菲特的价值投资）\n5. **中国视角**: 优先使用中国市场案例（A股、沪深300、余额宝、LPR）\n6. **避免投资建议**: 教学目的是传授知识框架，不对具体投资品种做推荐\n7. **行为偏差**: 教学中穿插行为金融学洞察（损失厌恶、过度自信、锚定效应）\n`;
   }
 
   return fmt(FEYNMAN_SYSTEM_PROMPT, {
