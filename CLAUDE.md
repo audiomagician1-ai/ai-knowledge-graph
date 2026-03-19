@@ -7,14 +7,14 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 5.5 启动** | 后端服务升级（Auth 配置 + 默认 LLM + 数据持久化迭代）
+**当前阶段**: 🟢 **Phase 6 完成 → Phase 7 规划中** | AI工程球扩容完成(400节点/609边), 下一步: 多球体架构
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
 
-**当前最高优先任务 — Phase 5.5: 后端服务升级**:
-> **目标**: (1) Supabase Cloud 上线 + Google/GitHub OAuth 配置; (2) 提供默认免费 LLM (OpenRouter step-3.5-flash:free); (3) 迭代数据持久化策略(登录用户 Supabase-first)
-> **详见**: 下方 Phase 5.5 迭代计划
+**当前最高优先任务 — Phase 7: 多球体架构**:
+> **目标**: 球体注册表/切换器/独立种子数据管线, 为数学/英语等知识球做架构准备
+> **前置**: Phase 6 ✅ 完成 (400节点, 609边, 15子域, 400 RAG文档)
 
 ### 12周里程碑
 
@@ -27,7 +27,7 @@
 | **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+6轮审查90项+49测试+EXE打包) |
 | **Phase 5** | W13+ | 可选登录 + 跨端同步 | ✅ 代码就绪 (57轮审查363tests) |
 | **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | 🟡 进行中 |
-| **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | 🟡 进行中 (A-2: 312节点, 430边, 312 RAG文档) |
+| **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | ✅ 完成 (400节点, 609边, 400 RAG文档, 15子域) |
 | **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | 📋 计划中 |
 | **Phase 8** | W19-21 | 数学知识球(高中→大学数学, ~300节点, LaTeX渲染) | 📋 计划中 |
 | **Phase 9** | W22-24 | 英语知识球(~250节点) + 跨球体关联链接 | 📋 计划中 |
@@ -91,7 +91,7 @@ data/seed/         — 种子图谱数据
 - ✅ Capacitor 移动端配置
 - ✅ CI/CD (GitHub Actions: frontend + backend)
 - ✅ GitHub 仓库: https://github.com/audiomagician1-ai/ai-knowledge-graph
-- ✅ **种子图谱 v2.2**: 312概念节点 + 430边 (15子域, 含LLM/Agent/Prompt/RAG/Agent系统, Phase 6 A-1扩展+15, A-2扩展+30, 312 RAG文档100%覆盖)
+- ✅ **种子图谱 v3.0**: 400概念节点 + 609边 (15子域, Phase 6完成: A-1+15, A-2+30, A-3+62, A-4+26, 400 RAG文档100%覆盖)
 - ✅ **里程碑高亮**: 27个milestone节点 (替代战争迷雾, 金色发光引导)
 - ✅ **3D 球面图谱可视化**: Three.js + 3d-force-graph, 球面力导向+指数雾渐隐+里程碑金色辉光+粒子流连线+自动旋转
 - ✅ **后端图谱查询**: 5 endpoints (data/domains/subdomains/concept/neighbors/stats), JSON fallback
@@ -996,6 +996,26 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 411 tests (168 FE + 243 BE) 全通过, tsc 0 errors, build 3.09s
    - STATUS: Phase 6 A-2完成, 图谱312/400节点(78%), 距离Phase 6目标还需~88个新概念
+
+- ✅ **Phase 6 A-3+A-4 种子图谱扩展完成 (2026-03-19, 7090729+e01c77b)**:
+   - **A-3 (7090729)**: +62概念, +128边 (312→374 concepts, 430→558 edges)
+     - web-frontend +7: Web Workers, WebAssembly, Canvas/WebGL, 前端状态机, SSG/ISR, 微前端, 浏览器存储
+     - web-backend +7: gRPC, OpenAPI/Swagger, 连接池, 任务队列, Web安全, OAuth/OIDC, ORM高级
+     - system-design +7: CQRS/ES, 分布式事务, Feed流, 搜索引擎, 幂等性, 可观测性, 数据分区
+     - cs-fundamentals +6: 进程/线程, 内存管理, 死锁, 编译原理, I/O模型, DNS
+     - devops +6: Helm, Service Mesh, 日志聚合, GitOps, 安全扫描, 容器仓库
+     - programming-basics +8: 正则, 文件I/O, 并发, 函数式, 包管理, 测试, 序列化, CLI
+     - oop +4: 命令/适配器/模板方法/代理模式
+     - database +6: 窗口函数, CTE, 锁, MVCC, 时序DB, 备份恢复
+     - ai-foundations +5: 扩散模型, 自监督学习, Word2Vec, BatchNorm, 模型压缩
+     - prompt-engineering +4: 注入防御, 多轮策略, 模板模式, 评估基准
+     - algorithms +2: Floyd-Warshall, Rabin-Karp
+   - **A-4 (e01c77b)**: +26概念, +51边 (374→400 concepts, 558→609 edges)
+     - system-design +3, web-frontend +3, web-backend +3, database +2, llm-core +1, agent-systems +2, rag-knowledge +2, ai-foundations +2, devops +2, programming-basics +2, data-structures +2, oop +2
+   - **RAG**: 88个新RAG文档, 400/400 = 100%覆盖
+   - **INTEGRITY**: 0孤立节点, 0无效边, 0重复边, 0重复概念ID
+   - VERIFY: 411 tests (168 FE + 243 BE) 全通过, tsc 0 errors
+   - STATUS: 🎯 Phase 6 目标达成! 400概念, 609边, 15子域, 400 RAG文档
 
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
