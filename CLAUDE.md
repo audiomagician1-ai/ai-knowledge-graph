@@ -903,6 +903,18 @@ data/seed/         — 种子图谱数据
    - VERIFY: 387 tests (144 FE + 243 BE) 全通过, tsc 0 errors, build 3.13s
    - STATUS: 发现1个Medium级UX问题(proxy模式429错误不友好)并修复, 代码质量持续提升
 
+- ✅ **第五十六轮深度巡逻审查+代码块主题修复 (2026-03-19, 4cb9fdf)**:
+   - **FIX**: MarkdownRenderer.tsx 代码块颜色从硬编码hex值(`#1e293b`/`#e2e8f0`)改为CSS变量(`--color-code-bg`/`--color-code-text`/`--color-code-border`) — 新增3个code block主题变量到globals.css `@theme`块, 确保与设计系统一致(未来换肤时代码块也能随主题变化) [m-01]
+   - REVIEW: 20+模块深度审查(0 critical/0 major issues, 1 minor fix):
+     - FE: rate_limiter.py(deque O(1)/prune interval/BYOK bypass/sliding window) + dialogue.py(3处rate limit集成/429 Retry-After/input validation/extractErrorDetail) + settings.ts(trim一致/isUsingDefaultLLM/tokenLimitParam/showAdvancedLLM) + SettingsContent.tsx(free AI banner/Trash2联动/Security自适应文案) + SettingsPage.tsx(同上) + DashboardContent.tsx(onNavigate/ActivityRow clickable/ArrowRight hover) + GraphPage.tsx(Dashboard modal→selectNode) + ChatPanel.tsx(fontSize 20/auto-scroll choices) + MarkdownRenderer.tsx(CSS variable code colors) + learning.ts(syncWithBackend push-only重构/移除pull-back防跨用户数据合并) + dialogue.ts(extractErrorDetail/3处error handling)
+     - BE: rate_limiter.py(deque popleft O(1)/prune interval/separate keys/BYOK bypass) + dialogue.py(rate limit check all 3 LLM endpoints/429 Retry-After/input validation) + config.py(默认免费模型stepfun/step-3.5-flash:free) + llm/router.py(SSRF/retry/tier resolution)
+     - Workers: llm.ts(getModelForTier/SSRF validateBaseUrl/resolveEndpoint tier参数)
+     - CROSS-MODULE: learning.ts syncWithBackend push-only重构正确性验证 — 后端SQLite无用户隔离, pull-back会合并其他匿名用户数据, push-only设计避免此问题 ✅
+     - UNTRACKED: packages/web/src/lib/store/offline-queue.ts — Phase 5.5.3预备代码(离线写队列), 未import/未使用, 无影响
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 387 tests (144 FE + 243 BE) 全通过, tsc 0 errors, build 3.17s
+   - STATUS: 发现1个minor设计系统一致性问题(代码块硬编码颜色)并修复, 代码质量持续稳定
+
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
    - **FIX(1fc80e9)**: settings.ts `hasApiKey()`/`isDirectMode()`/`getLLMHeaders()` 三处apiKey检查统一添加`.trim()` — 空白字符apiKey不再触发直连模式/发送空白header, 与`isUsingDefaultLLM()`保持一致 [m-01]
