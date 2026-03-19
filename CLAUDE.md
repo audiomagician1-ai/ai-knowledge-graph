@@ -915,6 +915,15 @@ data/seed/         — 种子图谱数据
    - VERIFY: 387 tests (144 FE + 243 BE) 全通过, tsc 0 errors, build 3.17s
    - STATUS: 发现1个minor设计系统一致性问题(代码块硬编码颜色)并修复, 代码质量持续稳定
 
+- ✅ **第五十七轮深度巡逻审查 (2026-03-19)**:
+   - REVIEW: 10+模块深度审查全通过(0 critical/0 major/0 minor issues):
+     - FE: dialogue.ts(extractErrorDetail/stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend push-only/getStreakDates) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + MarkdownRenderer.tsx(CSS variable code colors) + offline-queue.ts(Phase 5.5.3 prep, unused, clean types)
+     - BE: rate_limiter.py(deque O(1) popleft/prune interval/BYOK bypass/sliding window correctness/17 tests) + dialogue.py(3处rate limit集成/429 Retry-After/input validation/extractErrorDetail integration) + test_rate_limiter.py(9 core + 5 IP + 3 integration tests quality check)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 387 tests (144 FE + 243 BE) 全通过, tsc 0 errors, build 3.66s
+   - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续多轮零issues审查**
+   - NEXT: Phase 5.5.3 数据持久化策略迭代(Supabase-first for logged-in users)为下一个待实施任务
+
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
    - **FIX(1fc80e9)**: settings.ts `hasApiKey()`/`isDirectMode()`/`getLLMHeaders()` 三处apiKey检查统一添加`.trim()` — 空白字符apiKey不再触发直连模式/发送空白header, 与`isUsingDefaultLLM()`保持一致 [m-01]
