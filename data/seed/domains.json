@@ -1,0 +1,20 @@
+{
+  "domains": [
+    {
+      "id": "ai-engineering",
+      "name": "AI工程",
+      "description": "从编程基础到AI系统设计的完整知识体系",
+      "icon": "🟣",
+      "color": "#8b5cf6",
+      "seed_dir": "ai-engineering",
+      "rag_dir": "ai-engineering",
+      "is_active": true,
+      "sort_order": 1
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "default_domain": "ai-engineering",
+    "created_at": "2026-03-19T14:00:00Z"
+  }
+}

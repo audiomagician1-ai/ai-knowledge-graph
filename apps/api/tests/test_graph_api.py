@@ -80,14 +80,60 @@ async def test_get_graph_data_nonexistent_subdomain():
 
 @pytest.mark.asyncio
 async def test_get_domains():
-    """GET /api/graph/domains should return domain list."""
+    """GET /api/graph/domains should return domain list with stats."""
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/domains")
         assert resp.status_code == 200
         data = resp.json()
         assert isinstance(data, list)
         assert len(data) >= 1
-        assert data[0]["id"] == "ai-engineering"
+        domain = data[0]
+        assert domain["id"] == "ai-engineering"
+        assert domain["name"] == "AI工程"
+        # Domain list now includes stats
+        assert "stats" in domain
+        assert domain["stats"]["total_concepts"] == 400
+        assert domain["stats"]["total_edges"] == 615
+        assert domain["stats"]["subdomains"] == 15
+
+
+@pytest.mark.asyncio
+async def test_get_graph_data_with_domain_param():
+    """GET /api/graph/data?domain=ai-engineering should work same as default."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=ai-engineering")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) == 400
+        assert len(data["edges"]) == 615
+
+
+@pytest.mark.asyncio
+async def test_get_graph_data_invalid_domain():
+    """GET /api/graph/data?domain=nonexistent should return 404."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=nonexistent")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_get_subdomains_with_domain_param():
+    """GET /api/graph/subdomains?domain=ai-engineering should work."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=ai-engineering")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 15
+
+
+@pytest.mark.asyncio
+async def test_get_stats_with_domain_param():
+    """GET /api/graph/stats?domain=ai-engineering should return stats."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=ai-engineering")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_concepts"] == 400
 
 
 # ── Subdomains ──────────────────────────────────────
