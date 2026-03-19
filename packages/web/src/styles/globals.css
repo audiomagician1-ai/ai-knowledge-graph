@@ -28,6 +28,10 @@
   --color-accent-rose: #f43f5e;        /* rose — advanced/warning */
   --color-accent-cyan: #06b6d4;        /* cyan — recommended */
   --color-accent-blue: #6366f1;        /* indigo — info */
+  /* Code blocks — dark contrast blocks on light page */
+  --color-code-bg: #1e293b;
+  --color-code-text: #e2e8f0;
+  --color-code-border: rgba(0, 0, 0, 0.15);
   /* Subtle tints */
   --color-tint-primary: rgba(16, 185, 129, 0.08);
   --color-tint-emerald: rgba(16, 185, 129, 0.08);

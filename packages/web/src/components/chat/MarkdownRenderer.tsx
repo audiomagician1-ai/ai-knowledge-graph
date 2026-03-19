@@ -42,7 +42,7 @@ const components: Components = {
       return (
         <code
           className="block text-[17px] font-mono leading-relaxed whitespace-pre-wrap break-words"
-          style={{ color: '#e2e8f0' }}
+          style={{ color: 'var(--color-code-text)' }}
         >
           {children}
         </code>
@@ -52,8 +52,8 @@ const components: Components = {
       <code
         className="text-[17px] font-mono px-1.5 py-0.5 rounded-md"
         style={{
-          backgroundColor: '#1e293b',
-          color: '#e2e8f0',
+          backgroundColor: 'var(--color-code-bg)',
+          color: 'var(--color-code-text)',
         }}
       >
         {children}
@@ -66,8 +66,8 @@ const components: Components = {
     <pre
       className="mb-2 rounded-lg px-4 py-3 overflow-x-auto text-[17px] leading-relaxed"
       style={{
-        backgroundColor: '#1e293b',
-        border: '1px solid rgba(0, 0, 0, 0.15)',
+        backgroundColor: 'var(--color-code-bg)',
+        border: '1px solid var(--color-code-border)',
       }}
     >
       {children}
