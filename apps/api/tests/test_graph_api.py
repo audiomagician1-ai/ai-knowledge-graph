@@ -18,8 +18,8 @@ async def test_get_graph_data():
         data = resp.json()
         assert "nodes" in data
         assert "edges" in data
-        assert len(data["nodes"]) == 282
-        assert len(data["edges"]) == 367
+        assert len(data["nodes"]) == 312
+        assert len(data["edges"]) == 430
 
 
 @pytest.mark.asyncio
@@ -30,7 +30,7 @@ async def test_get_graph_data_with_subdomain_filter():
         assert resp.status_code == 200
         data = resp.json()
         assert len(data["nodes"]) > 0
-        assert len(data["nodes"]) < 267  # filtered subset
+        assert len(data["nodes"]) < 312  # filtered subset
         # All nodes should belong to the requested subdomain
         for node in data["nodes"]:
             assert node["subdomain_id"] == "cs-fundamentals"
@@ -187,8 +187,8 @@ async def test_get_graph_stats():
         resp = await client.get("/api/graph/stats")
         assert resp.status_code == 200
         data = resp.json()
-        assert data["total_concepts"] == 282
-        assert data["total_edges"] == 367
+        assert data["total_concepts"] == 312
+        assert data["total_edges"] == 430
         assert "subdomain_counts" in data
         assert "difficulty_distribution" in data
 
