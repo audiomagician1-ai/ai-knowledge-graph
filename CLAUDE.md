@@ -7,7 +7,7 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: ✅ **Phase 12 完成** | 金融理财知识球(160节点, 182边, 8子域) + 跨球体关联(70链接)
+**当前阶段**: ✅ **Phase 12 完成 + 重构完成** | 6知识球(1,405节点) + 域补充注册表重构(#9)
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
@@ -16,8 +16,14 @@
 > **目标**: 上线第六个知识球 — 金融理财, 覆盖个人理财到量化金融
 > **前置**: Phase 11 ✅ 完成 (产品设计球验证第五球体管线)
 > **已完成**: 12.1 种子图谱 ✅ | 12.2 RAG文档 ✅ | 12.3 对话引擎适配 ✅ | 12.4 评估器适配 ✅ | 12.5 跨球体关联 ✅ | 12.6 集成测试 ✅ | 12.7 文档更新 ✅
-> **测试总数**: 620 (200 FE + 420 BE)
-> **下一步**: P1球体全部完成，进入P2阶段或平台功能增强 (规划中)
+> **测试总数**: 630 (204 FE + 426 BE)
+> **下一步**: P1球体全部完成 + 域补充注册表重构完成, 进入P2阶段或平台功能增强 (规划中)
+
+**重构: 域补充注册表 (#9, 2a56848)**:
+> **目标**: 消除if-elif链式分发技术债务 — 5文件6处改为dict/Record查表
+> **影响文件**: feynman_system.py(+DOMAIN_SUPPLEMENTS/ASSESSMENT_SUPPLEMENTS dicts), socratic.py(.get()替代5条if-elif), evaluator.py(.get()替代5条if-elif), direct-llm.ts(DOMAIN_SUPPLEMENTS/ASSESSMENT_SUPPLEMENTS Records+getDomainSupplement/getAssessmentSupplement), workers/prompts.ts(ASSESSMENT_SUPPLEMENTS Record)
+> **收益**: 新增知识域从编辑6处if-elif降为每文件1条dict/Record entry
+> **测试**: +10 (6 BE registry + 4 FE registry), 总计 630 (204 FE + 426 BE)
 
 ### 12周里程碑
 
