@@ -208,3 +208,66 @@ class TestGetOpeningFallback:
         assert len(choices) == 4
         assert all(c["type"] == "level" for c in choices)
         assert choices[0]["id"] == "opt-1"
+
+
+# ─── Math Domain Prompt Adaptation (Phase 8.4) ───
+
+class TestMathDomainPrompt:
+    @pytest.fixture
+    def engine(self):
+        return SocraticEngine()
+
+    @pytest.fixture
+    def math_concept(self):
+        return {
+            "id": "derivative-concept",
+            "name": "导数概念",
+            "domain_id": "mathematics",
+            "subdomain_id": "calculus",
+            "subdomain_name": "微积分",
+            "difficulty": 5,
+            "content_type": "theory",
+            "is_milestone": True,
+        }
+
+    @pytest.fixture
+    def sample_concept(self):
+        return {
+            "id": "neural-network-basics",
+            "name": "神经网络基础",
+            "subdomain_id": "ai-foundations",
+            "subdomain_name": "AI基础",
+            "difficulty": 5,
+            "content_type": "theory",
+            "is_milestone": False,
+        }
+
+    @pytest.mark.asyncio
+    async def test_math_prompt_contains_math_supplement(self, engine, math_concept):
+        """Math domain should inject MATH_DOMAIN_SUPPLEMENT into prompt."""
+        prompt = await engine.build_system_prompt(math_concept)
+        assert "数学教学特殊规则" in prompt
+        assert "LaTeX" in prompt
+        assert "证明引导" in prompt
+
+    @pytest.mark.asyncio
+    async def test_math_prompt_loads_math_rag_content(self, engine, math_concept):
+        """Math domain should load RAG content from mathematics subdirectory."""
+        prompt = await engine.build_system_prompt(math_concept)
+        # The derivative-concept has a templated RAG doc with LaTeX
+        assert "导数" in prompt
+        assert "参考知识文档" in prompt
+
+    @pytest.mark.asyncio
+    async def test_ai_domain_no_math_supplement(self, engine, sample_concept):
+        """AI engineering domain should NOT include math supplement."""
+        prompt = await engine.build_system_prompt(sample_concept)
+        assert "数学教学特殊规则" not in prompt
+
+    @pytest.mark.asyncio
+    async def test_math_prompt_contains_base_structure(self, engine, math_concept):
+        """Math prompt should still contain the base Feynman prompt structure."""
+        prompt = await engine.build_system_prompt(math_concept)
+        assert "小图" in prompt
+        assert "Phase 1" in prompt
+        assert "choices" in prompt

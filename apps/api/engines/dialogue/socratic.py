@@ -16,6 +16,7 @@ from llm.router import llm_router
 from engines.dialogue.prompts.feynman_system import (
     FEYNMAN_SYSTEM_PROMPT,
     GRAPH_CONTEXT_TEMPLATE,
+    MATH_DOMAIN_SUPPLEMENT,
     parse_ai_response,
 )
 
@@ -31,10 +32,15 @@ def _get_rag_dir() -> str:
     )
 
 
-def _load_rag_content(concept_id: str, subdomain_id: str) -> str:
+def _load_rag_content(concept_id: str, subdomain_id: str, domain_id: str = "ai-engineering") -> str:
     """加载概念的 RAG 参考文档内容"""
     rag_dir = _get_rag_dir()
-    doc_path = os.path.join(rag_dir, subdomain_id, f"{concept_id}.md")
+    # ai-engineering: flat structure {subdomain}/{concept}.md
+    # other domains: {domain_id}/{subdomain}/{concept}.md
+    if domain_id == "ai-engineering":
+        doc_path = os.path.join(rag_dir, subdomain_id, f"{concept_id}.md")
+    else:
+        doc_path = os.path.join(rag_dir, domain_id, subdomain_id, f"{concept_id}.md")
 
     if not os.path.exists(doc_path):
         return ""
@@ -90,9 +96,15 @@ class SocraticEngine:
         rag_content = _load_rag_content(
             concept["id"],
             concept.get("subdomain_id", ""),
+            concept.get("domain_id", "ai-engineering"),
         )
         if rag_content:
             graph_context += f"\n\n## 参考知识文档（你的讲解素材，请基于以下内容进行教学）\n\n{rag_content}"
+
+        # 数学领域特殊prompt补充
+        domain_id = concept.get("domain_id", "ai-engineering")
+        if domain_id == "mathematics":
+            graph_context += MATH_DOMAIN_SUPPLEMENT
 
         return FEYNMAN_SYSTEM_PROMPT.format(
             concept_name=concept["name"],
