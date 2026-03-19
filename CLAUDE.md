@@ -24,6 +24,19 @@
 > - [ ] 浮层/弹窗/面板四周有至少 12px padding
 > - [ ] 文字与图标之间有 4-8px gap
 
+### 🚨🚨🚨 Bug修复全流程纪律（强制执行）🚨🚨🚨
+
+> **事故教训**：Hub bar UI修复 commit 后未 push，导致线上未部署，用户投诉。
+>
+> **所有 Bug 必须走完以下全流程**：
+> 1. **创建 GitHub Issue** — 标题含 `[Bug]` 前缀，body 含复现步骤/预期/实际行为
+> 2. **本地修复** — commit message 引用 Issue 编号: `fix(scope): description #N`
+> 3. **验证** — `pnpm build` + `pnpm test` 通过
+> 4. **⚠️ 立即 `git push`** — commit ≠ 部署！不 push = CI/CD 不触发 = 用户看不到修复
+> 5. **确认部署** — 检查 [GitHub Actions](https://github.com/audiomagician1-ai/ai-knowledge-graph/actions) 运行状态
+> 6. **线上验证** — 访问 https://akg-web.pages.dev 确认修复生效
+> 7. **关闭 Issue**
+
 ---
 
 **当前阶段**: ✅ **Phase 13 完成** | 7知识球(1,588节点) + P2球体管线验证
