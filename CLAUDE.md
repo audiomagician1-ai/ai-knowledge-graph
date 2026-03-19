@@ -891,6 +891,18 @@ data/seed/         — 种子图谱数据
    - VERIFY: 385 tests (142 FE + 243 BE) 全通过, tsc 0 errors
    - STATUS: Phase 5.5.2 所有5个步骤全部完成 ✅
 
+- ✅ **第五十五轮深度巡逻审查+修复 (2026-03-19, e8592ef+601d714)**:
+   - **FIX(e8592ef)**: dialogue.ts `extractErrorDetail()` — proxy模式下后端429/400等HTTP错误之前被丢弃为通用英文消息(如"Failed to create conversation"), 现在提取后端返回的`{detail: "..."}`中文友好提示(如"免费AI服务请求过于频繁, 请N秒后重试"); 3处(create/chat/assess)统一修复; fallback改为中文+HTTP status code [M-01]
+   - **REFACTOR(601d714)**: rate_limiter.py `_buckets` 从 `defaultdict(list)` 改为 `defaultdict(deque)` — `popleft()` O(1) 替代 `pop(0)` O(n), 测试夹具同步修复 [m-01]
+   - REVIEW: 20+模块深度审查(0 critical/0 major issues, 1M+1m fix):
+     - FE: dialogue.ts(extractErrorDetail+3处error handling+stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + settings.ts(trim一致/isUsingDefaultLLM/tokenLimitParam) + direct-llm.ts(sliding window/timeout/fallback mastered/parseChoices/friendly error messages)
+     - BE: rate_limiter.py(deque popleft O(1)/prune interval/BYOK bypass/sliding window correctness) + dialogue.py(3处rate limit集成/429 Retry-After/input validation) + learning.py(Field validation/status whitelist/score clamping/sync mastered guard) + evaluator.py(O(n) format_dialogue/consistent mastered) + main.py(path traversal/CORS/headless)
+     - Workers: 暂无rate limiting(未部署, 计划中)
+   - TEST: +2 FE新测试(extractErrorDetail: 429 detail提取 + non-JSON fallback)
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 387 tests (144 FE + 243 BE) 全通过, tsc 0 errors, build 3.13s
+   - STATUS: 发现1个Medium级UX问题(proxy模式429错误不友好)并修复, 代码质量持续提升
+
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
    - **FIX(1fc80e9)**: settings.ts `hasApiKey()`/`isDirectMode()`/`getLLMHeaders()` 三处apiKey检查统一添加`.trim()` — 空白字符apiKey不再触发直连模式/发送空白header, 与`isUsingDefaultLLM()`保持一致 [m-01]
@@ -1082,9 +1094,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (142 tests: learning 12 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 24 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (144 tests: learning 12 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (243 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
-# Total: 385 tests
+# Total: 387 tests
 ```
 
 ### 提交规范
