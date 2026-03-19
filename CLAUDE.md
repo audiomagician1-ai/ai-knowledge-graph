@@ -7,17 +7,17 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 8 进行中** | 数学知识球(8.1种子图谱✅, 8.2-8.7进行中)
+**当前阶段**: 🟢 **Phase 9 进行中** | 英语知识球(9.1种子图谱✅, 9.2-9.7进行中)
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
 
-**当前最高优先任务 — Phase 8: 数学知识球**:
-> **目标**: 上线第二个知识球 — 数学基础, 覆盖高中到大学数学, ~270节点, LaTeX渲染
-> **前置**: Phase 7 ✅ 完成 (多球体架构就绪)
-> **已完成**: 8.1 种子图谱 ✅ (269节点, 366边, 12子域, 29里程碑)
-> **进行中**: 8.2 里程碑验证, 8.3 RAG文档编写
-> **下一步**: 8.4 苏格拉底引擎适配 + 8.5 评估器适配 + 8.6 LaTeX渲染 + 8.7 测试
+**当前最高优先任务 — Phase 9: 英语知识球**:
+> **目标**: 上线第三个知识球 — 英语学习, 覆盖语音到高级写作, ~200节点, 跨球体关联链接
+> **前置**: Phase 8 ✅ 完成 (数学球验证第二球体管线)
+> **已完成**: 9.1 种子图谱 ✅ (200节点, 229边, 10子域, 27里程碑)
+> **进行中**: 9.2 RAG文档编写
+> **下一步**: 9.3 对话引擎适配 + 9.4 跨球体关联 + 9.5 学习路径推荐 + 9.6 星系视图增强 + 9.7 测试
 
 ### 12周里程碑
 
@@ -33,7 +33,7 @@
 | **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | ✅ 完成 (400节点, 615边, 400 RAG文档, 15子域) |
 | **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | ✅ 完成 (7.1-7.7, 453 tests) |
 | **Phase 8** | W19-21 | 数学知识球(269节点, 366边, 12子域, LaTeX渲染, RAG+Socratic适配) | ✅ 完成 (8.1-8.7, 472 tests) |
-| **Phase 9** | W22-24 | 英语知识球(~250节点) + 跨球体关联链接 | 📋 计划中 |
+| **Phase 9** | W22-24 | 英语知识球(200节点, 229边, 10子域) + 跨球体关联链接 | 🟢 进行中 |
 
 ---
 
@@ -1292,6 +1292,29 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 - RAG索引: `data/rag/mathematics/_index.json` (per-domain索引)
 - RAG模板: `data/rag/mathematics/_templates.json` (30个LaTeX手写模板)
 - 域注册表: `data/seed/domains.json` (已注册, is_active:true)
+
+---
+
+### Phase 9 英语知识球 + 跨球体关联 🟢 进行中
+
+> **目标**: 上线第三个知识球 — 英语学习, 覆盖语音到高级写作, + 跨球体关联链接
+> **详细设计**: `docs/EXPANSION_PLAN.md` §4.3 + §6
+> **GitHub Issue**: #5
+
+**任务清单**:
+1. ✅ **9.1 种子图谱设计** (c5d5925) — 200概念, 229边, 10子域(phonetics/basic-grammar/vocabulary/tenses/sentence-patterns/advanced-grammar/reading/writing-en/speaking/idioms-culture), 27里程碑, generate_seed.py可重现生成, +9 BE测试(graph data/node structure/subdomains/stats/concept detail/neighbors/domain list/subdomain filter/three domains)
+2. 📋 **9.2 RAG知识文档编写** — ~200篇英语教学文档
+3. 📋 **9.3 对话引擎适配** — 语言学习模式(不同于知识讲解)
+4. 📋 **9.4 跨球体先修关系数据建模**
+5. 📋 **9.5 跨球体学习路径推荐**
+6. 📋 **9.6 星系视图增强** — 球间连线可视化
+7. 📋 **9.7 质量审查+测试**
+
+**架构要点**:
+- 种子数据: `data/seed/english/seed_graph.json`
+- RAG文档: `data/rag/english/{subdomain}/{concept}.md`
+- 域注册表: `data/seed/domains.json` (已注册, is_active:true, sort_order:3)
+- 跨球体关联: `data/seed/cross_domain_edges.json` (待创建)
 
 ---
 
