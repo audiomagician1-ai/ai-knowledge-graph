@@ -16,7 +16,7 @@
 > **目标**: 上线第三个知识球 — 英语学习, 覆盖语音到高级写作, ~200节点, 跨球体关联链接
 > **前置**: Phase 8 ✅ 完成 (数学球验证第二球体管线)
 > **已完成**: 9.1 种子图谱 ✅ (200节点, 229边, 10子域, 27里程碑), 9.2 RAG文档 ✅ (200篇教学文档)
-> **进行中**: 9.3 对话引擎适配
+> **进行中**: 9.4 跨球体关联
 > **下一步**: 9.3 对话引擎适配 + 9.4 跨球体关联 + 9.5 学习路径推荐 + 9.6 星系视图增强 + 9.7 测试
 
 ### 12周里程碑
@@ -1304,7 +1304,7 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 **任务清单**:
 1. ✅ **9.1 种子图谱设计** (c5d5925) — 200概念, 229边, 10子域(phonetics/basic-grammar/vocabulary/tenses/sentence-patterns/advanced-grammar/reading/writing-en/speaking/idioms-culture), 27里程碑, generate_seed.py可重现生成, +9 BE测试(graph data/node structure/subdomains/stats/concept detail/neighbors/domain list/subdomain filter/three domains)
 2. ✅ **9.2 RAG知识文档编写** (fb433dc) — 200篇英语教学文档(10子域), generate_rag.py可重现生成, per-subdomain内容模板(语音/语法/词汇/时态/句型/高级语法/阅读/写作/口语/文化各有专属模板), _index.json索引; +3 BE测试(RAG stats/concept content/cross-domain 404)
-3. 📋 **9.3 对话引擎适配** — 语言学习模式(不同于知识讲解)
+3. ✅ **9.3 对话引擎适配** (86598ff) — ENGLISH_DOMAIN_SUPPLEMENT注入(双语讲解/例句丰富/对比教学/语境导向/分层讲解/发音标注/禁LaTeX); BE socratic.py domain_id=="english"分支; FE direct-llm.ts buildSystemPrompt domain-aware(math+english supplements); 与MATH_DOMAIN_SUPPLEMENT一致架构
 4. 📋 **9.4 跨球体先修关系数据建模**
 5. 📋 **9.5 跨球体学习路径推荐**
 6. 📋 **9.6 星系视图增强** — 球间连线可视化
