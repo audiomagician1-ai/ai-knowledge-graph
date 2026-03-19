@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import type { Env, UserLLMConfig } from '../types';
 import { llmChat, llmChatStream } from '../llm';
-import { FEYNMAN_SYSTEM_PROMPT, GRAPH_CONTEXT_TEMPLATE, ASSESSMENT_SYSTEM_PROMPT, formatPrompt } from '../prompts';
+import { FEYNMAN_SYSTEM_PROMPT, GRAPH_CONTEXT_TEMPLATE, ASSESSMENT_SYSTEM_PROMPT, formatPrompt, getAssessmentSupplement } from '../prompts';
 import seedGraph from '../../data/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
@@ -239,10 +239,12 @@ app.post('/assess', async (c) => {
 
   const conceptName = conv.concept_name;
   const difficulty = seed.concepts.find((cc: any) => cc.id === conv.concept_id)?.difficulty || 5;
+  const domainId = seed.meta?.domain_id || 'ai-engineering';
 
   const systemPrompt = formatPrompt(ASSESSMENT_SYSTEM_PROMPT, {
     concept_name: conceptName,
     difficulty: String(difficulty),
+    domain_assessment_supplement: getAssessmentSupplement(domainId),
   });
 
   // Truncate dialogue to prevent exceeding LLM context window (matches FastAPI evaluator 8000 char limit)

@@ -117,7 +117,7 @@ export const ASSESSMENT_SYSTEM_PROMPT = `你是一个知识理解度评估专家
 ## 评估概念
 - **概念名称**: {concept_name}
 - **难度等级**: {difficulty}/9
-
+{domain_assessment_supplement}
 ## 评估维度（每项 0-100 分）
 
 1. **completeness（完整性）**: 用户的回答是否覆盖了概念的核心要点？
@@ -166,6 +166,36 @@ export const ASSESSMENT_SYSTEM_PROMPT = `你是一个知识理解度评估专家
 
 mastered 标准: overall_score >= 75 且所有单项 >= 60
 `;
+
+// Domain-specific assessment supplements — synced from apps/api/engines/dialogue/prompts/feynman_system.py
+export const MATH_ASSESSMENT_SUPPLEMENT = `
+## 数学领域评估特殊指标
+
+在评估数学概念理解时，请额外关注以下方面：
+- **公式理解**: 用户是否理解公式的含义而非仅记住形式？能否解释各符号的意义？
+- **推导能力**: 用户是否能跟随或独立进行简单推导？
+- **计算准确性**: 用户的计算步骤是否正确？是否注意了符号、定义域等细节？
+- **直觉建立**: 用户是否建立了几何直觉或物理意义的理解，而非纯粹的符号操作？
+- **常见误区**: 注意检测数学中的典型错误（符号运算遗漏负号、混淆充分/必要条件等）
+`;
+
+export const ENGLISH_ASSESSMENT_SUPPLEMENT = `
+## 英语领域评估特殊指标
+
+在评估英语概念理解时，请额外关注以下方面：
+- **语法准确性**: 用户在回答中是否正确运用了所学语法规则？注意时态、主谓一致、冠词等
+- **词汇运用**: 用户是否能在语境中恰当使用目标词汇，而非仅知道中文释义？
+- **中英差异意识**: 用户是否认识到中英文的结构差异？是否避免了母语负迁移错误？
+- **语境理解**: 用户是否理解语言规则在不同语境中的变化和例外？
+- **产出能力**: 用户能否用英语造出正确的例句？（即使在中文对话中穿插英文也算）
+- **发音意识**（如涉及语音概念）: 用户是否理解音标和发音规则？
+`;
+
+export function getAssessmentSupplement(domainId: string | undefined): string {
+  if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
+  if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
+  return '';
+}
 
 /** Simple template interpolation */
 export function formatPrompt(template: string, vars: Record<string, string>): string {

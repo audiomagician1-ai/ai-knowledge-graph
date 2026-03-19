@@ -9,7 +9,11 @@ import logging
 from typing import Optional
 
 from llm.router import llm_router
-from engines.dialogue.prompts.feynman_system import ASSESSMENT_SYSTEM_PROMPT
+from engines.dialogue.prompts.feynman_system import (
+    ASSESSMENT_SYSTEM_PROMPT,
+    MATH_ASSESSMENT_SUPPLEMENT,
+    ENGLISH_ASSESSMENT_SUPPLEMENT,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -33,9 +37,18 @@ class UnderstandingEvaluator:
         Returns:
             评估结果 dict: completeness, accuracy, depth, examples, overall_score, gaps, feedback, mastered
         """
+        # Domain-specific assessment supplement
+        domain_id = concept.get("domain_id", "ai-engineering")
+        domain_supplement = ""
+        if domain_id == "mathematics":
+            domain_supplement = MATH_ASSESSMENT_SUPPLEMENT
+        elif domain_id == "english":
+            domain_supplement = ENGLISH_ASSESSMENT_SUPPLEMENT
+
         system_prompt = ASSESSMENT_SYSTEM_PROMPT.format(
             concept_name=concept["name"],
             difficulty=concept.get("difficulty", 5),
+            domain_assessment_supplement=domain_supplement,
         )
 
         # 构建对话摘要供评估

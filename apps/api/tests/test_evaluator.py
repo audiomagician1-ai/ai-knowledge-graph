@@ -166,3 +166,100 @@ class TestMathDomainEvaluator:
         formatted = evaluator._format_dialogue(messages)
         assert "\\frac" in formatted
         assert "\\sqrt" in formatted
+
+
+class TestDomainAwareAssessment:
+    """Tests for domain-specific assessment prompt injection (Phase 9.4)."""
+
+    def test_default_domain_no_supplement(self):
+        """AI-engineering domain should not inject domain supplement."""
+        from engines.dialogue.prompts.feynman_system import ASSESSMENT_SYSTEM_PROMPT
+        prompt = ASSESSMENT_SYSTEM_PROMPT.format(
+            concept_name="Test",
+            difficulty=5,
+            domain_assessment_supplement="",
+        )
+        assert "数学领域评估" not in prompt
+        assert "英语领域评估" not in prompt
+        assert "评估概念" in prompt
+        assert "Test" in prompt
+
+    def test_math_supplement_injected(self):
+        """Mathematics domain should inject math-specific assessment criteria."""
+        from engines.dialogue.prompts.feynman_system import (
+            ASSESSMENT_SYSTEM_PROMPT,
+            MATH_ASSESSMENT_SUPPLEMENT,
+        )
+        prompt = ASSESSMENT_SYSTEM_PROMPT.format(
+            concept_name="导数",
+            difficulty=7,
+            domain_assessment_supplement=MATH_ASSESSMENT_SUPPLEMENT,
+        )
+        assert "数学领域评估特殊指标" in prompt
+        assert "公式理解" in prompt
+        assert "推导能力" in prompt
+        assert "计算准确性" in prompt
+        assert "导数" in prompt
+        assert "7/9" in prompt
+
+    def test_english_supplement_injected(self):
+        """English domain should inject English-specific assessment criteria."""
+        from engines.dialogue.prompts.feynman_system import (
+            ASSESSMENT_SYSTEM_PROMPT,
+            ENGLISH_ASSESSMENT_SUPPLEMENT,
+        )
+        prompt = ASSESSMENT_SYSTEM_PROMPT.format(
+            concept_name="Present Tense",
+            difficulty=3,
+            domain_assessment_supplement=ENGLISH_ASSESSMENT_SUPPLEMENT,
+        )
+        assert "英语领域评估特殊指标" in prompt
+        assert "语法准确性" in prompt
+        assert "词汇运用" in prompt
+        assert "中英差异意识" in prompt
+        assert "产出能力" in prompt
+        assert "发音意识" in prompt
+        assert "Present Tense" in prompt
+
+    def test_evaluator_uses_domain_from_concept(self):
+        """Evaluator should extract domain_id from concept dict for prompt generation."""
+        from engines.dialogue.prompts.feynman_system import (
+            ASSESSMENT_SYSTEM_PROMPT,
+            MATH_ASSESSMENT_SUPPLEMENT,
+            ENGLISH_ASSESSMENT_SUPPLEMENT,
+        )
+        # Simulate what evaluator.evaluate() does
+        for domain_id, expected_text in [
+            ("mathematics", "数学领域评估"),
+            ("english", "英语领域评估"),
+            ("ai-engineering", ""),
+        ]:
+            concept = {"name": "Test", "difficulty": 5, "domain_id": domain_id}
+            supplement = ""
+            if concept.get("domain_id") == "mathematics":
+                supplement = MATH_ASSESSMENT_SUPPLEMENT
+            elif concept.get("domain_id") == "english":
+                supplement = ENGLISH_ASSESSMENT_SUPPLEMENT
+            prompt = ASSESSMENT_SYSTEM_PROMPT.format(
+                concept_name=concept["name"],
+                difficulty=concept.get("difficulty", 5),
+                domain_assessment_supplement=supplement,
+            )
+            if expected_text:
+                assert expected_text in prompt, f"Expected '{expected_text}' in prompt for domain '{domain_id}'"
+            else:
+                assert "数学领域评估" not in prompt
+                assert "英语领域评估" not in prompt
+
+    def test_english_supplement_no_latex(self):
+        """English assessment supplement should not mention LaTeX."""
+        from engines.dialogue.prompts.feynman_system import ENGLISH_ASSESSMENT_SUPPLEMENT
+        assert "LaTeX" not in ENGLISH_ASSESSMENT_SUPPLEMENT
+        assert "latex" not in ENGLISH_ASSESSMENT_SUPPLEMENT.lower()
+
+    def test_math_supplement_no_english_teaching(self):
+        """Math assessment supplement should not mention English teaching terms."""
+        from engines.dialogue.prompts.feynman_system import MATH_ASSESSMENT_SUPPLEMENT
+        assert "语法" not in MATH_ASSESSMENT_SUPPLEMENT
+        assert "词汇" not in MATH_ASSESSMENT_SUPPLEMENT
+        assert "发音" not in MATH_ASSESSMENT_SUPPLEMENT
