@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDomainStore } from '@/lib/store/domain';
-import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
 import { apiFetchRecommendations } from '@/lib/api/learning-api';
 import type { GraphNode, GraphData } from '@akg/shared';
 import { GRAPH_VISUAL } from '@akg/shared';
@@ -32,7 +31,6 @@ export function GraphPage() {
   } = useGraphStore();
   const { activeDomain, fetchDomains, getActiveDomainInfo } = useDomainStore();
   const { progress, computeStats, refreshStreak, initEdges, recommendedIds, syncWithBackend, backendSynced } = useLearningStore();
-  const isDesktop = useIsDesktop();
   const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -263,80 +261,36 @@ export function GraphPage() {
 
       {/* ===== BOTTOM HUB BAR (shifts to left-half center when chat is open) ===== */}
       <div className="absolute bottom-6 z-30 pointer-events-auto transition-all duration-500 ease-out" style={chatOpen ? { left: '25%', transform: 'translateX(-50%)' } : { left: '50%', transform: 'translateX(-50%)' }} ref={domainPickerRef}>
-        <div className="flex items-center gap-2" style={{
-          padding: '0 20px', height: 72, borderRadius: 24, background: 'rgba(245,245,242,0.92)', backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+        <div className="flex items-center" style={{
+          padding: '0 8px', height: 64, borderRadius: 20, background: 'rgba(245,245,242,0.92)', backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', gap: 4,
         }}>
-          {/* Domain Switcher */}
-          <button onClick={() => { setShowDomainPicker(!showDomainPicker); setShowRecommend(false); }}
-            className="flex items-center gap-2.5 px-4 py-3 rounded-2xl transition-all text-[15px] font-medium whitespace-nowrap"
-            style={{
-              backgroundColor: showDomainPicker ? 'rgba(0,0,0,0.06)' : 'transparent',
-              color: showDomainPicker ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)',
-            }}
-            onMouseEnter={(e) => { if (!showDomainPicker) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-            onMouseLeave={(e) => { if (!showDomainPicker) e.currentTarget.style.backgroundColor = 'transparent'; }}>
-            <span className="text-base" role="img" aria-label="domain">{activeDomainInfo?.icon || '🌐'}</span>
-            {isDesktop && <span className="max-w-[100px] truncate">{activeDomainInfo?.name || '知识域'}</span>}
-          </button>
+          {/* Domain Switcher — icon + 2 chars */}
+          <HubButton icon={Globe} label="知域" active={showDomainPicker} onClick={() => { setShowDomainPicker(!showDomainPicker); setShowRecommend(false); }} />
 
-          <div className="w-px h-8 mx-0.5" style={{ backgroundColor: 'rgba(0,0,0,0.08)' }} />
-
-          {/* Dashboard */}
-          <HubButton icon={BarChart3} label={isDesktop ? '进度' : ''} active={showDashboard} onClick={() => { setShowDashboard(!showDashboard); setShowSettings(false); }} />
-
-          <div className="w-px h-8 mx-0.5" style={{ backgroundColor: 'rgba(0,0,0,0.08)' }} />
+          {/* Dashboard — icon + 2 chars */}
+          <HubButton icon={BarChart3} label="进度" active={showDashboard} onClick={() => { setShowDashboard(!showDashboard); setShowSettings(false); }} />
 
           {/* Recommend — center, prominent */}
           <button onClick={() => {
             if (!showRecommend) { setShowRecommend(true); setShowDomainPicker(false); loadRecommendations(); } else setShowRecommend(false);
-          }} className="flex items-center gap-3 px-6 py-3 rounded-2xl transition-all text-base font-semibold" style={{
+          }} className="flex items-center gap-2 rounded-2xl transition-all font-semibold whitespace-nowrap" style={{
+            padding: '8px 20px', height: 48,
             backgroundColor: showRecommend ? 'var(--color-accent-primary)' : 'rgba(16,185,129,0.1)',
-            color: showRecommend ? '#ffffff' : 'var(--color-accent-primary)',
+            color: showRecommend ? '#ffffff' : 'var(--color-accent-primary)', fontSize: 14,
           }}>
-            <Compass size={20} />
-            {isDesktop && <span>推荐学习</span>}
+            <Compass size={18} />
+            <span>推荐</span>
           </button>
 
-          <div className="w-px h-8 mx-0.5" style={{ backgroundColor: 'rgba(0,0,0,0.08)' }} />
+          {/* Settings — icon + 2 chars */}
+          <HubButton icon={Settings} label="设置" active={showSettings} onClick={() => { setShowSettings(!showSettings); setShowDashboard(false); }} />
 
-          {/* Settings */}
-          <HubButton icon={Settings} label={isDesktop ? '设置' : ''} active={showSettings} onClick={() => { setShowSettings(!showSettings); setShowDashboard(false); }} />
-
-          <div className="w-px h-8 mx-0.5" style={{ backgroundColor: 'rgba(0,0,0,0.08)' }} />
-
-          {/* User / Login */}
-          {supabaseConfigured && (
-            isLoggedIn ? (
-              <button onClick={() => signOut()}
-                className="flex items-center gap-2.5 px-4 py-3 rounded-2xl transition-all text-[15px] font-medium whitespace-nowrap"
-                style={{ color: 'var(--color-text-tertiary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
-                title="退出登录"
-              >
-                <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold"
-                  style={{ backgroundColor: 'var(--color-accent-primary)', color: '#fff' }}>
-                  {(displayName || '?')[0].toUpperCase()}
-                </div>
-                {isDesktop && <span className="max-w-[72px] truncate">{displayName}</span>}
-              </button>
-            ) : (
-              <button onClick={() => navigate('/login')}
-                className="flex items-center gap-2.5 px-4 py-3 rounded-2xl transition-all text-[15px] font-medium whitespace-nowrap"
-                style={{ color: 'var(--color-text-tertiary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                <LogIn size={18} style={{ color: 'var(--color-accent-primary)' }} />
-                {isDesktop && <span>登录</span>}
-              </button>
-            )
-          )}
-          {/* Fallback: no Supabase configured — show a generic user icon */}
-          {!supabaseConfigured && (
-            <div className="flex items-center px-3 py-3" style={{ color: 'var(--color-text-tertiary)' }}>
-              <User size={18} />
-            </div>
+          {/* User / Login — icon + 2 chars */}
+          {supabaseConfigured && isLoggedIn ? (
+            <HubButton icon={User} label="我的" active={false} onClick={() => signOut()} />
+          ) : (
+            <HubButton icon={LogIn} label="登录" active={false} onClick={() => navigate('/login')} />
           )}
         </div>
 
@@ -355,12 +309,17 @@ export function GraphPage() {
                 <button onClick={() => setShowDomainPicker(false)} className="p-1.5 rounded-full hover:bg-black/5" style={{ color: 'var(--color-text-tertiary)' }}><X size={14} /></button>
               </div>
               <div style={{ maxHeight: 320, overflowY: 'auto' }}>
-                {activeDomains.map((domain) => {
+                {activeDomains.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-8 px-5" style={{ gap: 8 }}>
+                    <Loader size={18} className="animate-spin" style={{ color: 'var(--color-text-tertiary)' }} />
+                    <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>请启动后端服务以加载知识域</span>
+                  </div>
+                ) : activeDomains.map((domain) => {
                   const isActive = domain.id === activeDomain;
                   return (
                     <button key={domain.id} onClick={() => handleDomainSwitch(domain.id)}
-                      className="w-full text-left flex items-center gap-3 px-5 py-3.5 transition-colors"
-                      style={{ backgroundColor: isActive ? 'rgba(0,0,0,0.04)' : 'transparent', borderBottom: '1px solid rgba(0,0,0,0.04)' }}
+                      className="w-full text-left flex items-center gap-3 transition-colors"
+                      style={{ padding: '10px 20px', backgroundColor: isActive ? 'rgba(0,0,0,0.04)' : 'transparent', borderBottom: '1px solid rgba(0,0,0,0.04)' }}
                       onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.03)'; }}
                       onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = isActive ? 'rgba(0,0,0,0.04)' : 'transparent'; }}>
                       <span className="text-lg">{domain.icon}</span>
@@ -372,12 +331,6 @@ export function GraphPage() {
                     </button>
                   );
                 })}
-                {activeDomains.length <= 1 && (
-                  <div className="px-5 py-3 text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
-                    <Globe size={11} className="inline mr-1.5" style={{ verticalAlign: 'middle' }} />
-                    更多知识域即将推出...
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -451,19 +404,20 @@ export function GraphPage() {
   );
 }
 
-/* ── Hub Button ── */
+/* ── Hub Button — unified: icon(18) + 2-char label, fixed width for symmetry ── */
 function HubButton({ icon: Icon, label, active, onClick }: { icon: typeof BarChart3; label: string; active: boolean; onClick: () => void }) {
   return (
     <button onClick={onClick}
-      className="flex items-center gap-2.5 px-4 py-3 rounded-2xl transition-all text-[15px] font-medium whitespace-nowrap"
+      className="flex flex-col items-center justify-center rounded-xl transition-all whitespace-nowrap"
       style={{
+        width: 56, height: 48,
         backgroundColor: active ? 'rgba(0,0,0,0.06)' : 'transparent',
         color: active ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)',
       }}
       onMouseEnter={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-      onMouseLeave={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'transparent'; }}>
-      <Icon size={18} />
-      {label && <span>{label}</span>}
+      onMouseLeave={(e) => { if (!active) e.currentTarget.style.backgroundColor = active ? 'rgba(0,0,0,0.06)' : 'transparent'; }}>
+      <Icon size={18} strokeWidth={active ? 2.5 : 2} />
+      <span style={{ fontSize: 10, fontWeight: 500, marginTop: 2, lineHeight: 1 }}>{label}</span>
     </button>
   );
 }

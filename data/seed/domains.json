@@ -76,6 +76,17 @@
       "rag_dir": "psychology",
       "is_active": true,
       "sort_order": 7
+    },
+    {
+      "id": "shiji",
+      "name": "史记",
+      "description": "司马迁《史记》知识图谱——涵盖上古五帝至汉武帝时期的人物、事件、地理与制度",
+      "icon": "📜",
+      "color": "#8B4513",
+      "seed_dir": "shiji",
+      "rag_dir": "shiji",
+      "is_active": true,
+      "sort_order": 8
     }
   ],
   "meta": {
