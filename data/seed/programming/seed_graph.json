@@ -4153,6 +4153,233 @@
       ],
       "is_milestone": true,
       "created_at": "2026-03-13T05:16:41.112869+00:00"
+    },
+    {
+      "id": "speculative-decoding",
+      "name": "Speculative Decoding",
+      "description": "Master the principle of speculative decoding for accelerating LLM autoregressive inference",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "kv-cache",
+      "name": "KV Cache",
+      "description": "Master the KV Cache mechanism in autoregressive generation and its optimization strategies",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "rope-embedding",
+      "name": "RoPE Rotary Position Embedding",
+      "description": "Master the mathematical principles of RoPE and its application in long-context LLMs",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "LLM",
+        "Transformer"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "flash-attention",
+      "name": "FlashAttention",
+      "description": "Master the IO-aware algorithm design and memory optimization principles of FlashAttention",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 8,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "llm-distillation",
+      "name": "Model Distillation",
+      "description": "Master knowledge distillation techniques for transferring large model capabilities to smaller models",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "llm-safety-alignment",
+      "name": "LLM Safety and Alignment",
+      "description": "Master LLM safety evaluation, red teaming, and alignment methods",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "embedding-models",
+      "name": "Embedding Models",
+      "description": "Master embedding model architectures, training methods, and domain-specific fine-tuning",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "LLM",
+        "NLP"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "function-calling",
+      "name": "Function Calling",
+      "description": "Master the LLM function calling mechanism and implementation patterns",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "llm-benchmarks",
+      "name": "LLM Benchmarks (MMLU/HumanEval)",
+      "description": "Master the methodology and limitations of mainstream LLM evaluation benchmarks",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "llm-serving",
+      "name": "LLM Serving (vLLM/TGI)",
+      "description": "Master high-performance LLM serving deployment frameworks and optimization strategies",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "llm-core",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "LLM"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "agent-frameworks-comparison",
+      "name": "Agent Frameworks Comparison",
+      "description": "Master design philosophies, trade-offs, and selection principles of mainstream Agent frameworks",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 6,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "Agent"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "agent-debugging",
+      "name": "Agent Debugging and Observability",
+      "description": "Master debugging tools, trace analysis, and observability best practices for Agent systems",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "agent-systems",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "Agent"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "graph-rag",
+      "name": "Graph RAG",
+      "description": "Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 7,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "hyde-retrieval",
+      "name": "HyDE Retrieval",
+      "description": "Master how HyDE generates hypothetical documents to enhance retrieval effectiveness",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
+    },
+    {
+      "id": "reranking",
+      "name": "Reranking",
+      "description": "Master post-retrieval reranking techniques to improve RAG generation quality",
+      "domain_id": "ai-engineering",
+      "subdomain_id": "rag-knowledge",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "RAG"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T00:00:00.000000+00:00"
     }
   ],
   "edges": [
@@ -6189,12 +6416,210 @@
       "relation_type": "related_to",
       "sub_type": "application",
       "strength": 0.5
+    },
+    {
+      "source_id": "llm-inference",
+      "target_id": "speculative-decoding",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "transformer-architecture",
+      "target_id": "speculative-decoding",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "self-attention",
+      "target_id": "kv-cache",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "llm-inference",
+      "target_id": "kv-cache",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "positional-encoding",
+      "target_id": "rope-embedding",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "self-attention",
+      "target_id": "flash-attention",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "llm-pretraining",
+      "target_id": "llm-distillation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fine-tuning-overview",
+      "target_id": "llm-distillation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rlhf",
+      "target_id": "llm-safety-alignment",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dpo",
+      "target_id": "llm-safety-alignment",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "tokenization",
+      "target_id": "embedding-models",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "text-embedding",
+      "target_id": "embedding-models",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gpt-model",
+      "target_id": "function-calling",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "structured-output",
+      "target_id": "function-calling",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "tool-use",
+      "target_id": "function-calling",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "llm-evaluation",
+      "target_id": "llm-benchmarks",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "llm-inference",
+      "target_id": "llm-serving",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "quantization",
+      "target_id": "llm-serving",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "kv-cache",
+      "target_id": "llm-serving",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "flash-attention",
+      "target_id": "llm-serving",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "speculative-decoding",
+      "target_id": "llm-serving",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "autogen-framework",
+      "target_id": "agent-frameworks-comparison",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "crewai-framework",
+      "target_id": "agent-frameworks-comparison",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "agent-loop",
+      "target_id": "agent-debugging",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "agent-evaluation",
+      "target_id": "agent-debugging",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "knowledge-graph-rag",
+      "target_id": "graph-rag",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "graph-rag",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "text-embedding",
+      "target_id": "hyde-retrieval",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "similarity-search",
+      "target_id": "hyde-retrieval",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "similarity-search",
+      "target_id": "reranking",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rag-pipeline",
+      "target_id": "reranking",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "hyde-retrieval",
+      "target_id": "rag-evaluation",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "reranking",
+      "target_id": "rag-evaluation",
+      "relation_type": "related",
+      "strength": 0.6
     }
   ],
   "meta": {
-    "generated_at": "2026-03-13T05:16:41.113866+00:00",
-    "total_concepts": 267,
-    "total_edges": 334,
+    "generated_at": "2026-03-19T00:00:00.000000+00:00",
+    "total_concepts": 282,
+    "total_edges": 367,
     "subdomain_counts": {
       "cs-fundamentals": 12,
       "programming-basics": 20,
@@ -6207,10 +6632,10 @@
       "devops": 14,
       "system-design": 15,
       "ai-foundations": 18,
-      "llm-core": 20,
+      "llm-core": 30,
       "prompt-engineering": 14,
-      "rag-knowledge": 15,
-      "agent-systems": 18
+      "rag-knowledge": 18,
+      "agent-systems": 20
     },
     "difficulty_distribution": {
       "1": 11,
@@ -6218,10 +6643,10 @@
       "3": 32,
       "4": 42,
       "5": 58,
-      "6": 44,
-      "7": 42,
+      "6": 51,
+      "7": 47,
       "9": 3,
-      "8": 18
+      "8": 21
     }
   }
 }

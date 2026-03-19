@@ -18,8 +18,8 @@ async def test_get_graph_data():
         data = resp.json()
         assert "nodes" in data
         assert "edges" in data
-        assert len(data["nodes"]) == 267
-        assert len(data["edges"]) == 334
+        assert len(data["nodes"]) == 282
+        assert len(data["edges"]) == 367
 
 
 @pytest.mark.asyncio
@@ -187,8 +187,8 @@ async def test_get_graph_stats():
         resp = await client.get("/api/graph/stats")
         assert resp.status_code == 200
         data = resp.json()
-        assert data["total_concepts"] == 267
-        assert data["total_edges"] == 334
+        assert data["total_concepts"] == 282
+        assert data["total_edges"] == 367
         assert "subdomain_counts" in data
         assert "difficulty_distribution" in data
 
