@@ -331,3 +331,102 @@ async def test_domain_list_structure():
             assert "color" in domain
             assert "stats" in domain
             assert domain["stats"]["total_concepts"] > 0
+
+
+# ── Mathematics Domain Tests ───────────────────────────
+
+@pytest.mark.asyncio
+async def test_math_domain_graph_data():
+    """GET /api/graph/data?domain=mathematics should return math concepts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) == 269
+        assert len(data["edges"]) == 366
+        # All nodes should be math domain
+        for node in data["nodes"]:
+            assert node["domain_id"] == "mathematics"
+
+
+@pytest.mark.asyncio
+async def test_math_domain_subdomains():
+    """Mathematics should have 12 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 12
+        sub_ids = {s["id"] for s in data}
+        expected = {"arithmetic", "algebra", "geometry", "trigonometry",
+                    "analytic-geometry", "calculus", "linear-algebra",
+                    "probability", "statistics", "discrete-math",
+                    "number-theory", "optimization"}
+        assert sub_ids == expected
+
+
+@pytest.mark.asyncio
+async def test_math_domain_stats():
+    """Mathematics stats should reflect seed data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_concepts"] == 269
+        assert data["total_edges"] == 366
+        assert data["total_milestones"] == 29
+
+
+@pytest.mark.asyncio
+async def test_math_domain_concept_detail():
+    """Should fetch a math concept by ID."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/quadratic-equations?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "quadratic-equations"
+        assert data["domain_id"] == "mathematics"
+        assert data["subdomain_id"] == "algebra"
+        assert data["is_milestone"] is True
+
+
+@pytest.mark.asyncio
+async def test_math_domain_neighbors():
+    """Should return neighbors for a math concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/derivative-concept/neighbors?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) > 0
+        assert len(data["edges"]) > 0
+
+
+@pytest.mark.asyncio
+async def test_math_domain_in_domain_list():
+    """Mathematics should appear in the domain list with correct stats."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        assert resp.status_code == 200
+        data = resp.json()
+        math = next((d for d in data if d["id"] == "mathematics"), None)
+        assert math is not None
+        assert math["name"] == "数学"
+        assert math["icon"] == "🔵"
+        assert math["stats"]["total_concepts"] == 269
+        assert math["stats"]["total_edges"] == 366
+        assert math["stats"]["subdomains"] == 12
+
+
+@pytest.mark.asyncio
+async def test_math_domain_no_orphan_nodes():
+    """All math nodes should have at least one edge connection."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=mathematics")
+        data = resp.json()
+        connected = set()
+        for edge in data["edges"]:
+            connected.add(edge["source"])
+            connected.add(edge["target"])
+        node_ids = {n["id"] for n in data["nodes"]}
+        orphans = node_ids - connected
+        assert len(orphans) == 0, f"Orphan nodes: {orphans}"
