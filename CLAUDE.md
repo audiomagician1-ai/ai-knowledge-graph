@@ -7,17 +7,17 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 9 进行中** | 英语知识球(9.1种子图谱✅, 9.2-9.7进行中)
+**当前阶段**: ✅ **Phase 9 完成** | 英语知识球(200节点, 229边, 10子域) + 跨球体关联链接(25链接)
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
 
-**当前最高优先任务 — Phase 9: 英语知识球**:
-> **目标**: 上线第三个知识球 — 英语学习, 覆盖语音到高级写作, ~200节点, 跨球体关联链接
+**Phase 9 完成摘要**:
+> **目标**: 上线第三个知识球 — 英语学习, 覆盖语音到高级写作, 200节点, 跨球体关联链接
 > **前置**: Phase 8 ✅ 完成 (数学球验证第二球体管线)
-> **已完成**: 9.1 种子图谱 ✅ (200节点, 229边, 10子域, 27里程碑), 9.2 RAG文档 ✅ (200篇教学文档)
-> **进行中**: 9.4 跨球体关联
-> **下一步**: 9.3 对话引擎适配 + 9.4 跨球体关联 + 9.5 学习路径推荐 + 9.6 星系视图增强 + 9.7 测试
+> **已完成**: 9.1 种子图谱 ✅ | 9.2 RAG文档 ✅ | 9.3 对话引擎适配 ✅ | 9.4 评估器适配 ✅ | 9.5 跨球体关联 ✅ | 9.6 集成测试 ✅ | 9.7 文档更新 ✅
+> **测试总数**: 521 (200 FE + 321 BE)
+> **下一步**: Phase 10 — 物理知识球 (规划中)
 
 ### 12周里程碑
 
@@ -33,7 +33,7 @@
 | **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | ✅ 完成 (400节点, 615边, 400 RAG文档, 15子域) |
 | **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | ✅ 完成 (7.1-7.7, 453 tests) |
 | **Phase 8** | W19-21 | 数学知识球(269节点, 366边, 12子域, LaTeX渲染, RAG+Socratic适配) | ✅ 完成 (8.1-8.7, 472 tests) |
-| **Phase 9** | W22-24 | 英语知识球(200节点, 229边, 10子域) + 跨球体关联链接 | 🟢 进行中 |
+| **Phase 9** | W22-24 | 英语知识球(200节点, 229边, 10子域) + 跨球体关联链接(25链接) | ✅ 完成 (9.1-9.7, 521 tests) |
 
 ---
 
@@ -1295,7 +1295,7 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ---
 
-### Phase 9 英语知识球 + 跨球体关联 🟢 进行中
+### Phase 9 英语知识球 + 跨球体关联 ✅ 完成
 
 > **目标**: 上线第三个知识球 — 英语学习, 覆盖语音到高级写作, + 跨球体关联链接
 > **详细设计**: `docs/EXPANSION_PLAN.md` §4.3 + §6
@@ -1304,17 +1304,18 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 **任务清单**:
 1. ✅ **9.1 种子图谱设计** (c5d5925) — 200概念, 229边, 10子域(phonetics/basic-grammar/vocabulary/tenses/sentence-patterns/advanced-grammar/reading/writing-en/speaking/idioms-culture), 27里程碑, generate_seed.py可重现生成, +9 BE测试(graph data/node structure/subdomains/stats/concept detail/neighbors/domain list/subdomain filter/three domains)
 2. ✅ **9.2 RAG知识文档编写** (fb433dc) — 200篇英语教学文档(10子域), generate_rag.py可重现生成, per-subdomain内容模板(语音/语法/词汇/时态/句型/高级语法/阅读/写作/口语/文化各有专属模板), _index.json索引; +3 BE测试(RAG stats/concept content/cross-domain 404)
-3. ✅ **9.3 对话引擎适配** (86598ff) — ENGLISH_DOMAIN_SUPPLEMENT注入(双语讲解/例句丰富/对比教学/语境导向/分层讲解/发音标注/禁LaTeX); BE socratic.py domain_id=="english"分支; FE direct-llm.ts buildSystemPrompt domain-aware(math+english supplements); 与MATH_DOMAIN_SUPPLEMENT一致架构
-4. 📋 **9.4 跨球体先修关系数据建模**
-5. 📋 **9.5 跨球体学习路径推荐**
-6. 📋 **9.6 星系视图增强** — 球间连线可视化
-7. 📋 **9.7 质量审查+测试**
+3. ✅ **9.3 对话引擎适配** (86598ff) — ENGLISH_DOMAIN_SUPPLEMENT注入(双语讲解/例句丰富/对比教学/语境导向/分层讲解/发音标注/禁LaTeX); BE socratic.py domain_id=="english"分支; FE direct-llm.ts buildSystemPrompt domain-aware(math+english supplements)
+4. ✅ **9.4 评估器适配** (1541308) — ENGLISH_ASSESSMENT_SUPPLEMENT + MATH_ASSESSMENT_SUPPLEMENT注入评估提示词; BE evaluator.py domain-aware; FE direct-llm.ts getAssessmentSupplement(); Workers prompts.ts getAssessmentSupplement(); +6 BE测试
+5. ✅ **9.5 跨球体关联链接** (bc5d211) — 25条跨域链接(AI↔Math 11, AI↔English 5, Math→AI 4, Math→English 1, English→AI 4); 5种关系类型(same_concept/requires/enables/applies_to/related); GET /api/graph/cross-links端点(?domain=&concept_id=过滤); +8 BE测试
+6. ✅ **9.6 集成测试** (c888ebe) — 23项端到端集成测试(种子完整性 9 + RAG覆盖 3 + 对话适配 3 + 评估适配 3 + 跨球体 3 + 端到端管线 2)
+7. ✅ **9.7 文档更新** — CLAUDE.md Phase 9标记完成, 测试总数 521 (200 FE + 321 BE)
 
 **架构要点**:
 - 种子数据: `data/seed/english/seed_graph.json`
 - RAG文档: `data/rag/english/{subdomain}/{concept}.md`
 - 域注册表: `data/seed/domains.json` (已注册, is_active:true, sort_order:3)
-- 跨球体关联: `data/seed/cross_domain_edges.json` (待创建)
+- 跨球体关联: `data/seed/cross_sphere_links.json` (25链接, 3域互联)
+- 评估器: 英语特殊指标(语法准确性/词汇运用/中英差异/语境理解/产出能力/发音意识)
 
 ---
 
@@ -1333,6 +1334,7 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (200 tests: learning 24 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 16 + offline-queue 19 + domain 19) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd apps/api && python -m pytest          # 后端测试 ✅ (321 tests: graph 59 + evaluator 25 + socratic 24 + prompt-parser 28 + dialogue 16 + learning 26 + sqlite 12 + health 1 + llm-router 41 + main 18 + config 12 + redis 19 + phase9-integration 23 + neo4j-stub 17)
 cd apps/api && python -m pytest          # 后端测试 ✅ (272 tests: health 1 + sqlite 16 + learning 13 + evaluator 19 + dialogue 16 + graph 39 + llm_router 46 + prompt_parser 28 + socratic 28 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
 # Total: 472 tests
 ```
