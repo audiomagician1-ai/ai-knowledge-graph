@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/lib/store/auth';
-import { BookOpen, Loader2, ArrowRight, Sparkles, Brain, Network } from 'lucide-react';
+import { BookOpen, Loader2, ArrowRight, ArrowLeft, Sparkles, Brain, Network } from 'lucide-react';
 
 /* ── Decorative background blobs ── */
 function BackgroundDecoration() {
@@ -111,6 +111,24 @@ export function LoginPage() {
       style={{ backgroundColor: 'var(--color-surface-0)' }}
     >
       <BackgroundDecoration />
+
+      {/* ── Back to home ── */}
+      <button
+        onClick={() => navigate('/graph')}
+        className="absolute top-5 left-5 z-20 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all group"
+        style={{ color: 'var(--color-text-tertiary)' }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = 'var(--color-text-primary)';
+          e.currentTarget.style.backgroundColor = 'var(--color-surface-2)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = 'var(--color-text-tertiary)';
+          e.currentTarget.style.backgroundColor = 'transparent';
+        }}
+      >
+        <ArrowLeft size={15} className="transition-transform group-hover:-translate-x-0.5" />
+        Back to Home
+      </button>
 
       {/* ── Card container ── */}
       <div
