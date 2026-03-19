@@ -15,6 +15,7 @@ import { supabase } from '../api/supabase';
 import { onAuthLogin, useAuthStore } from './auth';
 import type { ConceptProgress, LearningHistory } from './learning';
 import { useLearningStore } from './learning';
+import { useDomainStore } from './domain';
 
 // ════════════════════════════════════════════
 // Helpers
@@ -43,11 +44,17 @@ function toDbStatus(localStatus: string): string {
 // Progress: Upload / Download / Upsert
 // ════════════════════════════════════════════
 
+/** Get current active domain for DB operations */
+function getActiveDomainId(): string {
+  return useDomainStore.getState().activeDomain;
+}
+
 /** Build the DB row from a ConceptProgress (reused by sync and write) */
 function buildProgressRow(uid: string, p: ConceptProgress) {
   return {
     user_id: uid,
     concept_id: p.concept_id,
+    domain_id: getActiveDomainId(),
     status: toDbStatus(p.status),
     mastery_level: (p.mastery_score || 0) / 100,
     total_sessions: p.sessions || 0,
@@ -64,7 +71,7 @@ export async function syncProgressToCloud(p: ConceptProgress): Promise<void> {
   if (!uid) return;
   try {
     const { error } = await supabase.from('user_concept_status')
-      .upsert(buildProgressRow(uid, p), { onConflict: 'user_id,concept_id' });
+      .upsert(buildProgressRow(uid, p), { onConflict: 'user_id,concept_id,domain_id' });
     if (error) console.warn('[sync] upsert progress failed:', p.concept_id, error.message);
   } catch (err) {
     console.warn('[sync] Failed to sync progress:', p.concept_id, err);
@@ -81,7 +88,7 @@ export async function writeProgressToCloud(p: ConceptProgress): Promise<boolean>
   if (!uid) return false;
   try {
     const { error } = await supabase.from('user_concept_status')
-      .upsert(buildProgressRow(uid, p), { onConflict: 'user_id,concept_id' });
+      .upsert(buildProgressRow(uid, p), { onConflict: 'user_id,concept_id,domain_id' });
     if (error) {
       console.warn('[sync] writeProgress failed:', p.concept_id, error.message);
       return false;
@@ -101,7 +108,8 @@ export async function downloadProgressFromCloud(): Promise<Record<string, Concep
     const { data, error } = await supabase
       .from('user_concept_status')
       .select('*')
-      .eq('user_id', uid);
+      .eq('user_id', uid)
+      .eq('domain_id', getActiveDomainId());
     if (error || !data) return {};
     const result: Record<string, ConceptProgress> = {};
     const validStatuses = new Set(['not_started', 'learning', 'mastered']);
@@ -332,7 +340,7 @@ export async function fullSync(): Promise<{
         const rows = batch.map(p => buildProgressRow(uid, p));
         try {
           const { error } = await supabase.from('user_concept_status')
-            .upsert(rows, { onConflict: 'user_id,concept_id' });
+            .upsert(rows, { onConflict: 'user_id,concept_id,domain_id' });
           if (error) console.warn('[sync] batch upsert failed:', error.message);
         } catch (err) {
           console.warn('[sync] batch upsert error:', err);

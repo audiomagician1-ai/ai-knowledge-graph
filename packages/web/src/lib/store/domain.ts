@@ -52,6 +52,10 @@ export const useDomainStore = create<DomainState>((set, get) => ({
     try {
       localStorage.setItem(STORAGE_KEY, domainId);
     } catch { /* localStorage unavailable — ignore */ }
+    // Sync learning store to the new domain (lazy import to avoid circular dependency)
+    import('./learning').then(({ useLearningStore }) => {
+      useLearningStore.getState().switchDomain(domainId);
+    });
   },
 
   getActiveDomainInfo: () => {

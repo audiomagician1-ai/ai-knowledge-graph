@@ -91,11 +91,53 @@ export interface LearningHistory {
 }
 
 // ========================================
-// localStorage persistence
+// localStorage persistence — per-domain keys
 // ========================================
-const STORAGE_KEY = 'akg-learning';
-const HISTORY_KEY = 'akg-learning-history';
-const STREAK_KEY = 'akg-streak';
+const LEGACY_STORAGE_KEY = 'akg-learning';        // v1 flat key (pre-7.5)
+const LEGACY_HISTORY_KEY = 'akg-learning-history'; // v1 flat key (pre-7.5)
+const STREAK_KEY = 'akg-streak'; // Global — not domain-scoped
+
+/** Get domain-scoped storage key */
+export function storageKeyForDomain(domain: string): string {
+  return `akg-learning:${domain}`;
+}
+
+/** Get domain-scoped history key */
+export function historyKeyForDomain(domain: string): string {
+  return `akg-learning-history:${domain}`;
+}
+
+/**
+ * One-time migration: move legacy flat keys to domain-scoped keys.
+ * Only runs when legacy data exists AND the target domain key is empty.
+ * Returns true if migration occurred.
+ */
+export function migrateLegacyStorage(targetDomain: string = 'ai-engineering'): boolean {
+  try {
+    const legacyProgress = localStorage.getItem(LEGACY_STORAGE_KEY);
+    const domainKey = storageKeyForDomain(targetDomain);
+    // Only migrate if legacy data exists and domain key doesn't
+    if (legacyProgress && !localStorage.getItem(domainKey)) {
+      localStorage.setItem(domainKey, legacyProgress);
+      // Migrate history too
+      const legacyHistory = localStorage.getItem(LEGACY_HISTORY_KEY);
+      if (legacyHistory) {
+        localStorage.setItem(historyKeyForDomain(targetDomain), legacyHistory);
+      }
+      // Remove legacy keys after successful migration
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
+      localStorage.removeItem(LEGACY_HISTORY_KEY);
+      console.log(`[learning] Migrated legacy storage to domain: ${targetDomain}`);
+      return true;
+    }
+  } catch (e) {
+    console.warn('[learning] Legacy storage migration failed:', e);
+  }
+  return false;
+}
+
+/** Current active domain for storage — set by switchStorageDomain() */
+let _activeDomain = 'ai-engineering';
 
 /** Check if localStorage is available and writable */
 function verifyStorageAvailable(): boolean {
@@ -119,8 +161,10 @@ export function getStorageDiagnostics(): {
   rawSizes: { progress: number; history: number; streak: number };
 } {
   const storageAvailable = verifyStorageAvailable();
-  const progressRaw = localStorage.getItem(STORAGE_KEY) || '';
-  const historyRaw = localStorage.getItem(HISTORY_KEY) || '';
+  const progressKey = storageKeyForDomain(_activeDomain);
+  const historyKey = historyKeyForDomain(_activeDomain);
+  const progressRaw = localStorage.getItem(progressKey) || '';
+  const historyRaw = localStorage.getItem(historyKey) || '';
   const streakRaw = localStorage.getItem(STREAK_KEY) || '';
   let progressEntries = 0;
   let historyEntries = 0;
@@ -168,19 +212,20 @@ function isValidProgress(p: unknown): p is ConceptProgress {
     typeof obj.last_learn_at === 'number';
 }
 
-function loadProgress(): Record<string, ConceptProgress> {
+function loadProgress(domain?: string): Record<string, ConceptProgress> {
+  const key = storageKeyForDomain(domain || _activeDomain);
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(key);
     if (raw) {
       const parsed: PersistedData = JSON.parse(raw);
       const progress = parsed.progress || {};
       // Validate entries, skip corrupted ones
       const validated: Record<string, ConceptProgress> = {};
-      for (const [key, val] of Object.entries(progress)) {
+      for (const [k, val] of Object.entries(progress)) {
         if (isValidProgress(val)) {
-          validated[key] = val;
+          validated[k] = val;
         } else {
-          console.warn(`[learning] Skipped corrupted progress entry: ${key}`);
+          console.warn(`[learning] Skipped corrupted progress entry: ${k}`);
         }
       }
       return validated;
@@ -191,13 +236,14 @@ function loadProgress(): Record<string, ConceptProgress> {
   return {};
 }
 
-function saveProgress(progress: Record<string, ConceptProgress>): boolean {
+function saveProgress(progress: Record<string, ConceptProgress>, domain?: string): boolean {
+  const key = storageKeyForDomain(domain || _activeDomain);
   try {
     const data: PersistedData = { progress };
     const json = JSON.stringify(data);
-    localStorage.setItem(STORAGE_KEY, json);
+    localStorage.setItem(key, json);
     // Verify write succeeded
-    const readBack = localStorage.getItem(STORAGE_KEY);
+    const readBack = localStorage.getItem(key);
     if (!readBack) {
       console.error('[learning] localStorage write verification failed: readback is null');
       return false;
@@ -209,9 +255,10 @@ function saveProgress(progress: Record<string, ConceptProgress>): boolean {
   }
 }
 
-function loadHistory(): LearningHistory[] {
+function loadHistory(domain?: string): LearningHistory[] {
+  const key = historyKeyForDomain(domain || _activeDomain);
   try {
-    const raw = localStorage.getItem(HISTORY_KEY);
+    const raw = localStorage.getItem(key);
     if (raw) {
       const parsed = JSON.parse(raw);
       if (!Array.isArray(parsed)) return [];
@@ -230,11 +277,12 @@ function loadHistory(): LearningHistory[] {
   return [];
 }
 
-function saveHistory(history: LearningHistory[]): boolean {
+function saveHistory(history: LearningHistory[], domain?: string): boolean {
+  const key = historyKeyForDomain(domain || _activeDomain);
   try {
     // Keep last 100 entries
     const trimmed = history.slice(-100);
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
+    localStorage.setItem(key, JSON.stringify(trimmed));
     return true;
   } catch (e) {
     console.error('[learning] Failed to save history to localStorage:', e);
@@ -339,7 +387,12 @@ interface LearningState {
   replaceData: (data: { progress: Record<string, ConceptProgress>; history: LearningHistory[]; streak: StreakData }) => void;
   /** Sync local data to backend (one-time migration + merge) */
   syncWithBackend: () => Promise<void>;
+  /** Switch to a different domain's learning data — reloads progress/history from localStorage */
+  switchDomain: (domain: string) => void;
 }
+
+// Run migration on first load
+migrateLegacyStorage(_activeDomain);
 
 export const useLearningStore = create<LearningState>((set, get) => ({
   progress: loadProgress(),
@@ -623,5 +676,24 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       console.warn('[learning] Backend sync failed, using local data:', err);
       set({ backendSynced: true }); // Don't retry this session
     }
+  },
+
+  switchDomain: (domain: string) => {
+    // Run migration for legacy flat keys → first domain (only if needed)
+    migrateLegacyStorage(domain);
+    // Update active domain for storage operations
+    _activeDomain = domain;
+    // Reload progress and history from new domain's localStorage
+    const progress = loadProgress(domain);
+    const history = loadHistory(domain);
+    set({
+      progress,
+      history,
+      stats: null,
+      backendSynced: false,
+      recommendedIds: new Set(),
+      newlyUnlockedIds: [],
+    });
+    console.log(`[learning] Switched to domain: ${domain}, ${Object.keys(progress).length} concepts loaded`);
   },
 }));

@@ -342,4 +342,80 @@ describe('useLearningStore', () => {
       expect(recommendedIds.has('prereq_2')).toBe(true);
     });
   });
+
+  describe('domain-scoped storage (Phase 7.5)', () => {
+    it('should save and load progress per domain', () => {
+      // Write to ai-engineering domain
+      const store = useLearningStore.getState();
+      store.startLearning('concept_a');
+      expect(useLearningStore.getState().progress['concept_a']).toBeDefined();
+
+      // Switch to mathematics domain — should have empty progress
+      store.switchDomain('mathematics');
+      expect(useLearningStore.getState().progress['concept_a']).toBeUndefined();
+      expect(Object.keys(useLearningStore.getState().progress)).toHaveLength(0);
+
+      // Write to mathematics domain
+      useLearningStore.getState().startLearning('math_linear_algebra');
+      expect(useLearningStore.getState().progress['math_linear_algebra']).toBeDefined();
+
+      // Switch back to ai-engineering — should recover original progress
+      useLearningStore.getState().switchDomain('ai-engineering');
+      expect(useLearningStore.getState().progress['concept_a']).toBeDefined();
+      expect(useLearningStore.getState().progress['math_linear_algebra']).toBeUndefined();
+    });
+
+    it('should migrate legacy flat keys to domain-scoped keys', async () => {
+      const { migrateLegacyStorage, storageKeyForDomain } = await import('@/lib/store/learning');
+
+      // Simulate legacy data
+      const legacyData = JSON.stringify({
+        progress: {
+          legacy_concept: { concept_id: 'legacy_concept', status: 'mastered', mastery_score: 95, sessions: 3, total_time_sec: 600, last_learn_at: Date.now() },
+        },
+      });
+      localStorage.setItem('akg-learning', legacyData);
+      localStorage.setItem('akg-learning-history', JSON.stringify([{ concept_id: 'legacy_concept', concept_name: 'Legacy', score: 95, mastered: true, timestamp: Date.now() }]));
+
+      // Run migration
+      const migrated = migrateLegacyStorage('ai-engineering');
+      expect(migrated).toBe(true);
+
+      // Legacy key should be removed
+      expect(localStorage.getItem('akg-learning')).toBeNull();
+      // Domain-scoped key should have the data
+      const domainData = localStorage.getItem(storageKeyForDomain('ai-engineering'));
+      expect(domainData).toBeTruthy();
+      const parsed = JSON.parse(domainData!);
+      expect(parsed.progress.legacy_concept.status).toBe('mastered');
+    });
+
+    it('should not migrate if domain key already exists', async () => {
+      const { migrateLegacyStorage, storageKeyForDomain } = await import('@/lib/store/learning');
+
+      // Set up both legacy and domain data
+      localStorage.setItem('akg-learning', JSON.stringify({ progress: { old: { concept_id: 'old', status: 'learning', mastery_score: 0, sessions: 1, total_time_sec: 0, last_learn_at: 1 } } }));
+      localStorage.setItem(storageKeyForDomain('ai-engineering'), JSON.stringify({ progress: { existing: { concept_id: 'existing', status: 'mastered', mastery_score: 100, sessions: 5, total_time_sec: 1000, last_learn_at: 2 } } }));
+
+      const migrated = migrateLegacyStorage('ai-engineering');
+      expect(migrated).toBe(false);
+
+      // Domain key should still have existing data, not overwritten
+      const domainData = JSON.parse(localStorage.getItem(storageKeyForDomain('ai-engineering'))!);
+      expect(domainData.progress.existing).toBeDefined();
+      expect(domainData.progress.old).toBeUndefined();
+    });
+
+    it('should reset stats and recommendations on domain switch', () => {
+      const store = useLearningStore.getState();
+      store.startLearning('test_node');
+      useLearningStore.setState({ stats: { total: 100, mastered: 1, learning: 1, streak: 1, dailyGoalMet: false } as any, recommendedIds: new Set(['rec1']) });
+
+      store.switchDomain('mathematics');
+      const state = useLearningStore.getState();
+      expect(state.stats).toBeNull();
+      expect(state.recommendedIds.size).toBe(0);
+      expect(state.newlyUnlockedIds).toHaveLength(0);
+    });
+  });
 });
