@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -916,5 +916,83 @@ async def test_rag_physics_404_wrong_domain():
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/rag/newtons-second-law?domain=mathematics")
         assert resp.status_code == 404
+
+
+# ── Product Design Domain Tests (Phase 11.1) ──────────────────────
+
+
+@pytest.mark.asyncio
+async def test_product_design_graph_data():
+    """Product Design domain should return graph data with correct structure."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=product-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) >= 180
+        assert len(data["edges"]) >= 180
+
+
+@pytest.mark.asyncio
+async def test_product_design_node_count():
+    """Product Design domain should have 182 concepts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=product-design")
+        data = resp.json()
+        assert len(data["nodes"]) == 182
+
+
+@pytest.mark.asyncio
+async def test_product_design_subdomain_filter():
+    """Filtering by subdomain should return only matching concepts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=product-design&subdomain_id=user-research")
+        assert resp.status_code == 200
+        data = resp.json()
+        for node in data["nodes"]:
+            assert node["subdomain_id"] == "user-research"
+        assert len(data["nodes"]) == 24
+
+
+@pytest.mark.asyncio
+async def test_product_design_subdomains():
+    """Product Design should have 8 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=product-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 8
+
+
+@pytest.mark.asyncio
+async def test_product_design_stats():
+    """Product Design stats should report correct concept count."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=product-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["stats"]["total_concepts"] == 182
+
+
+@pytest.mark.asyncio
+async def test_product_design_concept_detail():
+    """Should return detail for a product design concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/design-thinking?domain=product-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "design-thinking"
+        assert data["domain_id"] == "product-design"
+
+
+@pytest.mark.asyncio
+async def test_domains_list_includes_product_design():
+    """Domains list should include product-design."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        assert resp.status_code == 200
+        data = resp.json()
+        domain_ids = [d["id"] for d in data]
+        assert "product-design" in domain_ids
+
 
 

@@ -1,0 +1,3941 @@
+{
+  "domain": {
+    "id": "product-design",
+    "name": "产品设计",
+    "description": "从用户研究到增长运营的产品设计知识体系",
+    "icon": "🔴",
+    "color": "#ef4444"
+  },
+  "subdomains": [
+    {
+      "id": "user-research",
+      "name": "用户研究",
+      "order": 1
+    },
+    {
+      "id": "product-thinking",
+      "name": "产品思维",
+      "order": 2
+    },
+    {
+      "id": "interaction-design",
+      "name": "交互设计",
+      "order": 3
+    },
+    {
+      "id": "visual-design",
+      "name": "视觉设计",
+      "order": 4
+    },
+    {
+      "id": "prototyping",
+      "name": "原型与测试",
+      "order": 5
+    },
+    {
+      "id": "data-driven",
+      "name": "数据驱动",
+      "order": 6
+    },
+    {
+      "id": "product-management",
+      "name": "产品管理",
+      "order": 7
+    },
+    {
+      "id": "growth",
+      "name": "增长运营",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "user-research-overview",
+      "name": "用户研究概述",
+      "description": "用户研究的定义、价值与方法论框架",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "user-interview",
+      "name": "用户访谈",
+      "description": "一对一深度访谈的设计、执行与分析",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "定性"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "contextual-inquiry",
+      "name": "情境调查",
+      "description": "在用户真实使用环境中观察与访谈",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "定性"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "survey-design",
+      "name": "问卷设计",
+      "description": "量化问卷的题目设计、量表选择与分发策略",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "定量"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "user-persona",
+      "name": "用户画像",
+      "description": "基于研究数据构建代表性用户角色模型",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "建模"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "empathy-map",
+      "name": "同理心地图",
+      "description": "可视化用户所想、所说、所做、所感",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "journey-map",
+      "name": "用户旅程图",
+      "description": "端到端用户体验旅程的可视化与分析",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "jobs-to-be-done",
+      "name": "待完成工作理论",
+      "description": "JTBD框架：用户雇佣产品完成特定工作",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "框架"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "usability-testing",
+      "name": "可用性测试",
+      "description": "任务导向的产品易用性评估方法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "card-sorting",
+      "name": "卡片分类法",
+      "description": "信息架构验证的用户参与式分类方法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "IA"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "diary-study",
+      "name": "日记研究法",
+      "description": "用户在自然环境中长期记录使用体验",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "定性"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "focus-group",
+      "name": "焦点小组",
+      "description": "小组讨论式定性研究方法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "定性"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "competitive-analysis",
+      "name": "竞品分析",
+      "description": "系统性分析竞争对手的产品策略与功能",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "heuristic-evaluation",
+      "name": "启发式评估",
+      "description": "基于可用性原则的专家评审方法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "评估"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "eye-tracking",
+      "name": "眼动追踪",
+      "description": "通过眼动数据分析用户视觉注意力分布",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "量化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "think-aloud-protocol",
+      "name": "出声思考法",
+      "description": "用户操作时口述思维过程的观察方法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "定性"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "ethnographic-research",
+      "name": "民族志研究",
+      "description": "深入用户生活环境的长期沉浸式研究",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "定性"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "quantitative-ux-metrics",
+      "name": "UX量化指标",
+      "description": "SUS、NPS、CSAT等标准化用户体验度量",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "量化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "research-synthesis",
+      "name": "研究综合分析",
+      "description": "多来源研究数据的整合与洞察提炼",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "affinity-diagram",
+      "name": "亲和图法",
+      "description": "将零散数据归类整理发现模式的方法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "accessibility-research",
+      "name": "无障碍研究",
+      "description": "面向残障用户群体的研究方法与标准",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "包容性"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "research-ethics",
+      "name": "研究伦理",
+      "description": "知情同意、隐私保护与研究偏见控制",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "stakeholder-interview",
+      "name": "利益相关者访谈",
+      "description": "与业务方/技术方的需求对齐访谈",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "research-planning",
+      "name": "研究计划制定",
+      "description": "研究目标、方法选择与时间预算规划",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "规划"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-thinking-overview",
+      "name": "产品思维概述",
+      "description": "产品经理的核心思维模式与决策框架",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-thinking",
+      "name": "设计思维",
+      "description": "以人为本的创新方法论：共情→定义→构思→原型→测试",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "lean-startup",
+      "name": "精益创业",
+      "description": "MVP→构建→测量→学习循环的快速验证方法",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-market-fit",
+      "name": "产品市场契合",
+      "description": "PMF的定义、衡量标准与实现路径",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "value-proposition",
+      "name": "价值主张",
+      "description": "产品为目标用户解决的核心问题与独特价值",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "business-model-canvas",
+      "name": "商业模式画布",
+      "description": "9大要素的商业模式可视化分析工具",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-vision",
+      "name": "产品愿景",
+      "description": "长期方向的定义与团队对齐",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-strategy",
+      "name": "产品策略",
+      "description": "目标市场、差异化与竞争优势规划",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "mvp-design",
+      "name": "MVP设计",
+      "description": "最小可行产品的范围界定与快速验证",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "user-story-mapping",
+      "name": "用户故事地图",
+      "description": "从用户活动到功能优先级的可视化规划",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "prioritization-frameworks",
+      "name": "优先级排序框架",
+      "description": "RICE、MoSCoW、Kano模型等排序方法",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-lifecycle",
+      "name": "产品生命周期",
+      "description": "引入期→成长期→成熟期→衰退期的管理策略",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "platform-thinking",
+      "name": "平台思维",
+      "description": "双边市场、网络效应与平台战略设计",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "systems-thinking",
+      "name": "系统思维",
+      "description": "理解产品作为复杂系统的整体关联与反馈循环",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "思维"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "first-principles",
+      "name": "第一性原理",
+      "description": "从基本事实出发推导产品决策的思维方式",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "思维"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "opportunity-assessment",
+      "name": "机会评估",
+      "description": "市场规模、技术可行性与商业价值的综合判断",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-positioning",
+      "name": "产品定位",
+      "description": "目标用户心智中的差异化位置确立",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "behavioral-economics",
+      "name": "行为经济学",
+      "description": "非理性决策、锚定效应等行为理论在产品中的应用",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "ecosystem-design",
+      "name": "生态系统设计",
+      "description": "产品与周边产品/服务的协同价值设计",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "innovation-types",
+      "name": "创新类型",
+      "description": "渐进式创新vs颠覆式创新的策略选择",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "blue-ocean-strategy",
+      "name": "蓝海战略",
+      "description": "创造无竞争新市场空间的策略方法",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "hypothesis-driven-dev",
+      "name": "假设驱动开发",
+      "description": "将产品决策转化为可验证假设的方法",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "user-centered-design",
+      "name": "以用户为中心的设计",
+      "description": "UCD流程：理解用户→设计方案→评估→迭代",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-ethics",
+      "name": "产品伦理",
+      "description": "暗黑模式、成瘾性设计等伦理问题与设计原则",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "interaction-design-overview",
+      "name": "交互设计概述",
+      "description": "交互设计的原则、流程与核心概念",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "information-architecture",
+      "name": "信息架构",
+      "description": "内容组织、导航结构与标签系统设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "IA"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "navigation-design",
+      "name": "导航设计",
+      "description": "全局导航、局部导航与面包屑的设计模式",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "form-design",
+      "name": "表单设计",
+      "description": "输入控件选择、验证反馈与表单流程优化",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "micro-interaction",
+      "name": "微交互设计",
+      "description": "触发器→规则→反馈→循环的细节交互设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "动效"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "responsive-design",
+      "name": "响应式设计",
+      "description": "跨设备适配的布局策略与断点设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "布局"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "mobile-design-patterns",
+      "name": "移动端设计模式",
+      "description": "手势交互、底部导航、下拉刷新等移动特有模式",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "移动"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-system",
+      "name": "设计系统",
+      "description": "组件库、设计令牌与设计规范的构建与维护",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "gestalt-principles",
+      "name": "格式塔原则",
+      "description": "接近、相似、闭合、连续等视知觉组织原则",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心理学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "fitts-law",
+      "name": "费茨定律",
+      "description": "目标大小与距离对操作时间的影响定律",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "心理学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "hicks-law",
+      "name": "希克定律",
+      "description": "选项数量与决策时间的对数关系",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "心理学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "progressive-disclosure",
+      "name": "渐进式披露",
+      "description": "按需展示信息降低认知负荷的设计策略",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "error-handling-ux",
+      "name": "错误处理设计",
+      "description": "错误预防、错误提示与恢复路径设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "onboarding-design",
+      "name": "新手引导设计",
+      "description": "首次使用体验、教程与空状态设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "search-design",
+      "name": "搜索设计",
+      "description": "搜索框、自动补全、筛选与结果呈现",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "notification-design",
+      "name": "通知设计",
+      "description": "推送、应用内与邮件通知的策略与节奏",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "empty-state-design",
+      "name": "空状态设计",
+      "description": "无内容状态的引导性与情感化设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 15,
+      "content_type": "practice",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "dark-mode-design",
+      "name": "深色模式设计",
+      "description": "深色主题的色彩策略与可读性保障",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "主题"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "animation-principles",
+      "name": "动效设计原则",
+      "description": "缓动曲线、时长与迪士尼动画12原则在UI中的应用",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "动效"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "accessibility-design",
+      "name": "无障碍设计",
+      "description": "WCAG标准、屏幕阅读器适配与色彩对比度",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "包容性"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "multi-platform-design",
+      "name": "多平台设计",
+      "description": "桌面/移动/平板/手表的跨平台一致性策略",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "跨平台"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "voice-ui-design",
+      "name": "语音界面设计",
+      "description": "对话式交互、语音指令与多模态界面",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "新兴"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "gamification",
+      "name": "游戏化设计",
+      "description": "积分、徽章、排行榜与进度系统的激励设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "激励"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "content-strategy",
+      "name": "内容策略",
+      "description": "UX文案、语气风格与内容治理",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "内容"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "visual-design-overview",
+      "name": "视觉设计概述",
+      "description": "视觉设计的基本原则与在产品中的作用",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "color-theory",
+      "name": "色彩理论",
+      "description": "色轮、色彩心理学与产品配色方案",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "typography",
+      "name": "字体排印学",
+      "description": "字体选择、字号层级、行距与可读性",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "layout-grid",
+      "name": "布局与栅格",
+      "description": "栅格系统、间距规范与视觉节奏",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "布局"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "iconography",
+      "name": "图标设计",
+      "description": "图标风格、尺寸规范与语义一致性",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "元素"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "illustration-design",
+      "name": "插画设计",
+      "description": "产品插画的风格定义与应用场景",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "元素"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "visual-hierarchy",
+      "name": "视觉层级",
+      "description": "大小、颜色、对比度与留白建立信息层次",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "brand-design",
+      "name": "品牌设计",
+      "description": "品牌标识、调性定义与视觉一致性",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "品牌"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-token",
+      "name": "设计令牌",
+      "description": "颜色/字体/间距的变量化与跨平台同步",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "data-visualization",
+      "name": "数据可视化",
+      "description": "图表类型选择、数据墨水比与交互式可视化",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "emotional-design",
+      "name": "情感化设计",
+      "description": "Norman三层模型：本能层→行为层→反思层",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心理学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "material-design",
+      "name": "Material Design",
+      "description": "Google的设计语言：表面、运动与交互规范",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "ios-human-interface",
+      "name": "iOS Human Interface",
+      "description": "Apple的HIG设计规范与平台特性",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "whitespace-design",
+      "name": "留白设计",
+      "description": "负空间的运用与呼吸感创造",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "contrast-design",
+      "name": "对比设计",
+      "description": "色彩对比、尺寸对比与风格对比的运用",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-consistency",
+      "name": "设计一致性",
+      "description": "内部一致性、外部一致性与实际一致性原则",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "responsive-imagery",
+      "name": "响应式图片",
+      "description": "不同分辨率与设备的图片适配策略",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "dark-light-theme",
+      "name": "明暗主题设计",
+      "description": "双主题的色彩方案与自动切换策略",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "主题"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "3d-in-ui",
+      "name": "3D与UI融合",
+      "description": "3D元素在扁平UI中的应用与性能考量",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "新兴"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "motion-design",
+      "name": "运动设计",
+      "description": "UI动效的时间线编排与品牌运动语言",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "动效"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "skeuomorphism-vs-flat",
+      "name": "拟物与扁平",
+      "description": "设计风格的演变：拟物→扁平→新拟态",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "历史"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-handoff",
+      "name": "设计交付",
+      "description": "标注、切图与开发协作规范",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "prototyping-overview",
+      "name": "原型设计概述",
+      "description": "从纸面原型到高保真原型的方法谱",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "wireframe",
+      "name": "线框图",
+      "description": "低保真页面结构与布局的快速表达",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "低保真"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "low-fi-prototype",
+      "name": "低保真原型",
+      "description": "纸面原型与快速草图的验证方法",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "practice",
+      "tags": [
+        "低保真"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "high-fi-prototype",
+      "name": "高保真原型",
+      "description": "接近最终产品的交互式可点击原型",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "高保真"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "figma-basics",
+      "name": "Figma基础",
+      "description": "Figma的组件、自动布局与原型连线",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "figma-advanced",
+      "name": "Figma高级",
+      "description": "变体、设计系统与团队协作工作流",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "sketch-to-code",
+      "name": "设计到代码",
+      "description": "设计稿转前端代码的工具与流程",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工程"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "interactive-prototype",
+      "name": "交互原型",
+      "description": "微交互、页面跳转与状态切换的原型制作",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "高保真"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "prototype-testing",
+      "name": "原型测试",
+      "description": "基于原型的用户测试设计与执行",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "rapid-prototyping",
+      "name": "快速原型",
+      "description": "快速迭代验证产品概念的技术与方法",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "component-library",
+      "name": "组件库建设",
+      "description": "可复用UI组件的设计、文档与版本管理",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-spec",
+      "name": "设计规格说明",
+      "description": "标注文档、交互说明与验收标准",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "storyboard",
+      "name": "故事板",
+      "description": "用户使用场景的叙事性视觉化表达",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "wizard-of-oz",
+      "name": "绿野仙踪法",
+      "description": "人工模拟系统行为的概念验证方法",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "concept-testing",
+      "name": "概念测试",
+      "description": "产品概念阶段的用户接受度验证",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-critique",
+      "name": "设计评审",
+      "description": "结构化的设计方案评审与反馈方法",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-iteration",
+      "name": "设计迭代",
+      "description": "基于反馈的快速改进循环",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "ab-testing-design",
+      "name": "A/B测试设计",
+      "description": "对照实验的变量控制与统计显著性",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "multivariate-testing",
+      "name": "多变量测试",
+      "description": "多因素同时测试的实验设计方法",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "design-review-checklist",
+      "name": "设计走查清单",
+      "description": "交付前的系统性设计质量检查",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "data-driven-overview",
+      "name": "数据驱动概述",
+      "description": "数据在产品决策中的角色与方法论",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-metrics",
+      "name": "产品核心指标",
+      "description": "北极星指标、AARRR海盗指标与指标体系",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "指标"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "funnel-analysis",
+      "name": "漏斗分析",
+      "description": "转化漏斗的构建、诊断与优化",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "cohort-analysis",
+      "name": "群组分析",
+      "description": "按用户群组追踪行为变化的分析方法",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "retention-analysis",
+      "name": "留存分析",
+      "description": "次日/7日/30日留存的计算与改善策略",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "ab-testing-analysis",
+      "name": "A/B测试分析",
+      "description": "假设检验、样本量计算与显著性判断",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实验"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "event-tracking",
+      "name": "埋点设计",
+      "description": "行为事件定义、参数规划与数据采集方案",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "采集"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "user-segmentation",
+      "name": "用户分群",
+      "description": "基于行为/属性/价值的用户群体划分",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "analytics-tools",
+      "name": "分析工具",
+      "description": "GA4、Mixpanel、Amplitude等产品分析工具",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "sql-for-pm",
+      "name": "产品经理SQL",
+      "description": "产品分析常用SQL查询与数据提取",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技能"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "data-storytelling",
+      "name": "数据叙事",
+      "description": "用数据讲故事的方法与可视化呈现",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "attribution-model",
+      "name": "归因模型",
+      "description": "首次/末次/线性/时间衰减等归因方法",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "predictive-analytics",
+      "name": "预测分析",
+      "description": "用户行为预测与流失预警模型",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "data-privacy-compliance",
+      "name": "数据隐私合规",
+      "description": "GDPR、CCPA与用户数据保护实践",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "合规"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "dashboard-design",
+      "name": "数据看板设计",
+      "description": "业务看板的指标选择、布局与刷新策略",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "可视化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "experiment-design",
+      "name": "实验设计方法",
+      "description": "对照组、自变量、因变量与外部效度",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实验"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "statistical-significance",
+      "name": "统计显著性",
+      "description": "p值、置信区间与统计功效",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "统计"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "behavioral-analytics",
+      "name": "行为分析",
+      "description": "用户行为序列、路径分析与热图",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "ltv-calculation",
+      "name": "LTV计算",
+      "description": "用户生命周期价值的估算方法",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "指标"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "churn-analysis",
+      "name": "流失分析",
+      "description": "用户流失的定义、原因诊断与挽回策略",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "feature-flag",
+      "name": "功能开关",
+      "description": "灰度发布、功能开关与渐进式上线",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工程"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "data-quality",
+      "name": "数据质量治理",
+      "description": "数据清洗、口径统一与数据治理流程",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "治理"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-management-overview",
+      "name": "产品管理概述",
+      "description": "产品经理的角色、职责与核心能力模型",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-roadmap",
+      "name": "产品路线图",
+      "description": "OKR驱动的路线图制定与沟通",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "规划"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "prd-writing",
+      "name": "PRD编写",
+      "description": "产品需求文档的结构、内容与维护",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "sprint-planning",
+      "name": "Sprint规划",
+      "description": "敏捷迭代的范围、估算与承诺",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "敏捷"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "scrum-framework",
+      "name": "Scrum框架",
+      "description": "角色、仪式与工件的完整Scrum实践",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "敏捷"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "kanban-method",
+      "name": "看板方法",
+      "description": "可视化工作流、WIP限制与持续交付",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "敏捷"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "stakeholder-management",
+      "name": "利益相关者管理",
+      "description": "利益相关者地图与影响力-利益矩阵",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "cross-functional-collab",
+      "name": "跨职能协作",
+      "description": "与开发、设计、市场的协作模式与冲突处理",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "backlog-management",
+      "name": "需求池管理",
+      "description": "需求收集、评审、优先级排序与版本规划",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "release-management",
+      "name": "发布管理",
+      "description": "发布计划、灰度策略与回滚机制",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工程"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "okr-method",
+      "name": "OKR方法",
+      "description": "目标与关键结果的设定、追踪与复盘",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "目标"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "technical-debt",
+      "name": "技术债务管理",
+      "description": "技术债识别、量化与偿还策略",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工程"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-launch",
+      "name": "产品发布策略",
+      "description": "Go-to-Market策略、发布清单与影响力放大",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "发布"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "feedback-loop",
+      "name": "反馈循环",
+      "description": "用户反馈收集、分类与闭环处理",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "运营"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "competitive-moat",
+      "name": "竞争壁垒",
+      "description": "网络效应、数据壁垒、品牌与规模效应",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "战略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-analytics-review",
+      "name": "产品数据复盘",
+      "description": "周/月度数据review的方法与行动计划",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "team-building",
+      "name": "产品团队建设",
+      "description": "产品团队的组成、能力模型与文化建设",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "remote-collaboration",
+      "name": "远程协作",
+      "description": "分布式团队的工具、流程与文化",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-doc-system",
+      "name": "产品文档体系",
+      "description": "需求文档、设计文档、技术文档的组织与维护",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "estimation-techniques",
+      "name": "工作量估算",
+      "description": "故事点、T-shirt Sizing与三点估算法",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "敏捷"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "retrospective",
+      "name": "迭代回顾",
+      "description": "回顾会议的组织方法与持续改进",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "敏捷"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "feature-specification",
+      "name": "功能规格说明",
+      "description": "从用户故事到详细功能规格的转化",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-communication",
+      "name": "产品沟通技巧",
+      "description": "向上汇报、跨部门对齐与用户沟通",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "product-metrics-review",
+      "name": "指标异动排查",
+      "description": "数据波动的根因分析与应对方案",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "growth-overview",
+      "name": "增长概述",
+      "description": "增长黑客思维、增长模型与增长团队",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "aarrr-model",
+      "name": "AARRR漏斗模型",
+      "description": "获客→激活→留存→变现→推荐的增长框架",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "框架"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "growth-hacking",
+      "name": "增长黑客",
+      "description": "低成本高效率的增长实验与策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "viral-loop",
+      "name": "病毒循环",
+      "description": "邀请机制、社交分享与K系数优化",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "获客"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "user-activation",
+      "name": "用户激活",
+      "description": "Aha Moment识别与新用户激活优化",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "激活"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "retention-strategy",
+      "name": "留存策略",
+      "description": "功能留存、内容留存与习惯养成",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "留存"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "monetization-strategy",
+      "name": "变现策略",
+      "description": "订阅/广告/增值服务/交易抽成的变现模型",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "变现"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "pricing-strategy",
+      "name": "定价策略",
+      "description": "价值定价、竞争定价与心理定价方法",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "变现"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "content-marketing",
+      "name": "内容营销",
+      "description": "SEO、博客、社交媒体内容策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "获客"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "seo-basics",
+      "name": "SEO基础",
+      "description": "搜索引擎优化的技术与内容策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "获客"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "push-notification-strategy",
+      "name": "推送策略",
+      "description": "推送时机、频率与个性化策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "留存"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "email-marketing",
+      "name": "邮件营销",
+      "description": "邮件序列、个性化与打开率优化",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "获客"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "referral-program",
+      "name": "推荐计划",
+      "description": "双边激励的推荐系统设计",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "获客"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "onboarding-optimization",
+      "name": "新手引导优化",
+      "description": "首次体验流程的转化率优化",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "激活"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "growth-experiment",
+      "name": "增长实验",
+      "description": "实验假设→设计→执行→分析的完整流程",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实验"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "user-lifecycle",
+      "name": "用户生命周期管理",
+      "description": "新用户→活跃→衰退→流失→召回的全周期运营",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "运营"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "community-building",
+      "name": "社区建设",
+      "description": "用户社区的搭建、运营与活跃度提升",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "运营"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "paywall-design",
+      "name": "付费墙设计",
+      "description": "免费/付费边界与转化触发点设计",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "变现"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "freemium-model",
+      "name": "免费增值模式",
+      "description": "免费版与付费版的功能拆分策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "network-effects",
+      "name": "网络效应",
+      "description": "直接/间接网络效应与临界质量",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "growth-loops",
+      "name": "增长飞轮",
+      "description": "自强化增长循环的设计与加速",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    },
+    {
+      "id": "marketplace-growth",
+      "name": "双边市场增长",
+      "description": "供给侧与需求侧的冷启动与平衡增长",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:22:06.995144+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "user-research-overview",
+      "target_id": "user-interview",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "user-research-overview",
+      "target_id": "survey-design",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "user-research-overview",
+      "target_id": "research-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "user-research-overview",
+      "target_id": "research-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-interview",
+      "target_id": "contextual-inquiry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-interview",
+      "target_id": "think-aloud-protocol",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "user-interview",
+      "target_id": "focus-group",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "user-interview",
+      "target_id": "stakeholder-interview",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "survey-design",
+      "target_id": "quantitative-ux-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-interview",
+      "target_id": "user-persona",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "survey-design",
+      "target_id": "user-persona",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-persona",
+      "target_id": "empathy-map",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-persona",
+      "target_id": "journey-map",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "empathy-map",
+      "target_id": "journey-map",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "journey-map",
+      "target_id": "usability-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-interview",
+      "target_id": "jobs-to-be-done",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "usability-testing",
+      "target_id": "heuristic-evaluation",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "usability-testing",
+      "target_id": "think-aloud-protocol",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "card-sorting",
+      "target_id": "information-architecture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "diary-study",
+      "target_id": "ethnographic-research",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "contextual-inquiry",
+      "target_id": "ethnographic-research",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "quantitative-ux-metrics",
+      "target_id": "eye-tracking",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "research-planning",
+      "target_id": "research-synthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "focus-group",
+      "target_id": "research-synthesis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "research-synthesis",
+      "target_id": "affinity-diagram",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "usability-testing",
+      "target_id": "accessibility-research",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "competitive-analysis",
+      "target_id": "product-positioning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-thinking-overview",
+      "target_id": "design-thinking",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-thinking-overview",
+      "target_id": "user-centered-design",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-thinking-overview",
+      "target_id": "first-principles",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-thinking",
+      "target_id": "lean-startup",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lean-startup",
+      "target_id": "mvp-design",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "lean-startup",
+      "target_id": "hypothesis-driven-dev",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mvp-design",
+      "target_id": "product-market-fit",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "value-proposition",
+      "target_id": "product-market-fit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "value-proposition",
+      "target_id": "product-positioning",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-vision",
+      "target_id": "product-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-strategy",
+      "target_id": "product-roadmap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-strategy",
+      "target_id": "product-positioning",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "business-model-canvas",
+      "target_id": "value-proposition",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "business-model-canvas",
+      "target_id": "monetization-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "user-story-mapping",
+      "target_id": "prioritization-frameworks",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-lifecycle",
+      "target_id": "product-strategy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "platform-thinking",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "ecosystem-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "opportunity-assessment",
+      "target_id": "product-market-fit",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "innovation-types",
+      "target_id": "blue-ocean-strategy",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-economics",
+      "target_id": "gamification",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "product-ethics",
+      "target_id": "design-thinking",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "interaction-design-overview",
+      "target_id": "gestalt-principles",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "interaction-design-overview",
+      "target_id": "information-architecture",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "interaction-design-overview",
+      "target_id": "progressive-disclosure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gestalt-principles",
+      "target_id": "visual-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "information-architecture",
+      "target_id": "navigation-design",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "navigation-design",
+      "target_id": "search-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "form-design",
+      "target_id": "error-handling-ux",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "micro-interaction",
+      "target_id": "animation-principles",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "responsive-design",
+      "target_id": "mobile-design-patterns",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "responsive-design",
+      "target_id": "multi-platform-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "design-system",
+      "target_id": "component-library",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "design-system",
+      "target_id": "design-token",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fitts-law",
+      "target_id": "form-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "hicks-law",
+      "target_id": "navigation-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "hicks-law",
+      "target_id": "progressive-disclosure",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "onboarding-design",
+      "target_id": "empty-state-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "onboarding-design",
+      "target_id": "onboarding-optimization",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "notification-design",
+      "target_id": "push-notification-strategy",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dark-mode-design",
+      "target_id": "dark-light-theme",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-design",
+      "target_id": "accessibility-research",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "voice-ui-design",
+      "target_id": "multi-platform-design",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gamification",
+      "target_id": "micro-interaction",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "content-strategy",
+      "target_id": "prd-writing",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "visual-design-overview",
+      "target_id": "color-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "visual-design-overview",
+      "target_id": "typography",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "visual-design-overview",
+      "target_id": "visual-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "color-theory",
+      "target_id": "dark-light-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "color-theory",
+      "target_id": "contrast-design",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "typography",
+      "target_id": "layout-grid",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "layout-grid",
+      "target_id": "responsive-imagery",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "iconography",
+      "target_id": "illustration-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "brand-design",
+      "target_id": "design-consistency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "brand-design",
+      "target_id": "motion-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "design-token",
+      "target_id": "dark-light-theme",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "emotional-design",
+      "target_id": "brand-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "material-design",
+      "target_id": "ios-human-interface",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "material-design",
+      "target_id": "design-system",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "whitespace-design",
+      "target_id": "visual-hierarchy",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "motion-design",
+      "target_id": "animation-principles",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "skeuomorphism-vs-flat",
+      "target_id": "material-design",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "3d-in-ui",
+      "target_id": "motion-design",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "data-visualization",
+      "target_id": "dashboard-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-handoff",
+      "target_id": "design-spec",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "design-handoff",
+      "target_id": "sketch-to-code",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prototyping-overview",
+      "target_id": "wireframe",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "prototyping-overview",
+      "target_id": "low-fi-prototype",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "wireframe",
+      "target_id": "high-fi-prototype",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "low-fi-prototype",
+      "target_id": "high-fi-prototype",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "low-fi-prototype",
+      "target_id": "storyboard",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "figma-basics",
+      "target_id": "figma-advanced",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "figma-basics",
+      "target_id": "wireframe",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "figma-advanced",
+      "target_id": "component-library",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "high-fi-prototype",
+      "target_id": "interactive-prototype",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "interactive-prototype",
+      "target_id": "prototype-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "prototype-testing",
+      "target_id": "design-iteration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rapid-prototyping",
+      "target_id": "mvp-design",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "concept-testing",
+      "target_id": "prototype-testing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "wizard-of-oz",
+      "target_id": "concept-testing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "design-critique",
+      "target_id": "design-iteration",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-review-checklist",
+      "target_id": "design-handoff",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ab-testing-design",
+      "target_id": "ab-testing-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "ab-testing-design",
+      "target_id": "multivariate-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-spec",
+      "target_id": "design-review-checklist",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "data-driven-overview",
+      "target_id": "product-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "data-driven-overview",
+      "target_id": "event-tracking",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-metrics",
+      "target_id": "funnel-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-metrics",
+      "target_id": "retention-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-metrics",
+      "target_id": "ltv-calculation",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "funnel-analysis",
+      "target_id": "cohort-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "retention-analysis",
+      "target_id": "churn-analysis",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "event-tracking",
+      "target_id": "analytics-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "event-tracking",
+      "target_id": "behavioral-analytics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "analytics-tools",
+      "target_id": "sql-for-pm",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ab-testing-analysis",
+      "target_id": "experiment-design",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ab-testing-analysis",
+      "target_id": "statistical-significance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-segmentation",
+      "target_id": "cohort-analysis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "data-storytelling",
+      "target_id": "dashboard-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "attribution-model",
+      "target_id": "funnel-analysis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "predictive-analytics",
+      "target_id": "churn-analysis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "data-privacy-compliance",
+      "target_id": "event-tracking",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "data-quality",
+      "target_id": "event-tracking",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "feature-flag",
+      "target_id": "release-management",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feature-flag",
+      "target_id": "ab-testing-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "product-management-overview",
+      "target_id": "product-roadmap",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-management-overview",
+      "target_id": "prd-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-management-overview",
+      "target_id": "okr-method",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-roadmap",
+      "target_id": "sprint-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-roadmap",
+      "target_id": "backlog-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sprint-planning",
+      "target_id": "scrum-framework",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scrum-framework",
+      "target_id": "kanban-method",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "scrum-framework",
+      "target_id": "retrospective",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "backlog-management",
+      "target_id": "prioritization-frameworks",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "backlog-management",
+      "target_id": "feature-specification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "release-management",
+      "target_id": "product-launch",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stakeholder-management",
+      "target_id": "cross-functional-collab",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stakeholder-management",
+      "target_id": "product-communication",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "okr-method",
+      "target_id": "product-analytics-review",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "product-analytics-review",
+      "target_id": "product-metrics-review",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "technical-debt",
+      "target_id": "backlog-management",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "feedback-loop",
+      "target_id": "backlog-management",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "team-building",
+      "target_id": "remote-collaboration",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "estimation-techniques",
+      "target_id": "sprint-planning",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-doc-system",
+      "target_id": "prd-writing",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "competitive-moat",
+      "target_id": "product-strategy",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "growth-overview",
+      "target_id": "aarrr-model",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "growth-overview",
+      "target_id": "growth-hacking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aarrr-model",
+      "target_id": "user-activation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "aarrr-model",
+      "target_id": "retention-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "aarrr-model",
+      "target_id": "viral-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aarrr-model",
+      "target_id": "monetization-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-activation",
+      "target_id": "onboarding-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "retention-strategy",
+      "target_id": "push-notification-strategy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "retention-strategy",
+      "target_id": "user-lifecycle",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "viral-loop",
+      "target_id": "referral-program",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "viral-loop",
+      "target_id": "network-effects",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "content-marketing",
+      "target_id": "seo-basics",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "content-marketing",
+      "target_id": "email-marketing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "monetization-strategy",
+      "target_id": "pricing-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetization-strategy",
+      "target_id": "paywall-design",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetization-strategy",
+      "target_id": "freemium-model",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "growth-experiment",
+      "target_id": "ab-testing-design",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "growth-experiment",
+      "target_id": "growth-hacking",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "community-building",
+      "target_id": "retention-strategy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "network-effects",
+      "target_id": "growth-loops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "growth-loops",
+      "target_id": "marketplace-growth",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "user-lifecycle",
+      "target_id": "churn-analysis",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-persona",
+      "target_id": "product-thinking-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "journey-map",
+      "target_id": "interaction-design-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "usability-testing",
+      "target_id": "prototype-testing",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "design-thinking",
+      "target_id": "prototyping-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "product-market-fit",
+      "target_id": "growth-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-metrics",
+      "target_id": "product-analytics-review",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "retention-analysis",
+      "target_id": "retention-strategy",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "product-roadmap",
+      "target_id": "prioritization-frameworks",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-system",
+      "target_id": "brand-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "data-visualization",
+      "target_id": "data-storytelling",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "product-launch",
+      "target_id": "growth-overview",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "mvp-design",
+      "target_id": "rapid-prototyping",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "competitive-analysis",
+      "target_id": "opportunity-assessment",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "user-centered-design",
+      "target_id": "interaction-design-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "visual-design-overview",
+      "target_id": "design-system",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "funnel-analysis",
+      "target_id": "user-activation",
+      "relation_type": "related",
+      "strength": 0.7
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "generated_at": "2026-03-19T10:22:06.995144+00:00",
+    "stats": {
+      "total_concepts": 182,
+      "total_edges": 191,
+      "subdomains": 8,
+      "milestones": 25
+    }
+  }
+}
