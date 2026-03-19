@@ -946,7 +946,25 @@ data/seed/         — 种子图谱数据
    - DATA INTEGRITY: python验证脚本确认 — 282 concepts (0 duplicates), 367 edges (all references valid), meta consistent
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 392 tests (149 FE + 243 BE) 全通过, tsc 0 errors, build 3.44s
-   - STATUS: Phase 6 A-1 种子扩展(15新概念)已提交, 代码质量持续稳定
+    - STATUS: Phase 6 A-1 种子扩展(15新概念)已提交, 代码质量持续稳定
+
+- ✅ **第六十二轮巡逻审查+offline-queue测试补全+RAG文档提交 (2026-03-19, a4233c9)**:
+   - TEST: +19 FE新测试(offline-queue: loadQueue 4 + enqueue 4 + clearQueue/queueSize 2 + dequeueProcessed 2 + flushQueue 7)
+     - loadQueue: 空/无效JSON/非数组/有效解析
+     - enqueue: 基础添加/progress按concept_id去重/history不去重/MAX_QUEUE_SIZE(200)裁剪
+     - clearQueue: 清空队列 + queueSize空队列返回0
+     - dequeueProcessed: 移除前N条/超出队列长度安全处理
+     - flushQueue: 空队列返回0/progress回放/history回放/失败条目保留/conversation类型跳过/writer异常优雅处理/并发guard
+   - RAG: 提交4个未跟踪的llm-core RAG文档(flash-attention/kv-cache/rope-embedding/speculative-decoding)
+     - 高质量教学内容: YAML frontmatter + 概述 + 核心原理 + 代码示例 + 关联知识 + 常见误区 + 学习建议
+   - FIX: .gitignore 添加 `1]` PowerShell重定向产物排除规则(与`$null`同类问题)
+   - REVIEW: 最近5个commit(306d60a~b88e9a6)涉及的核心模块深度审查(0 critical/0 major/0 minor issues):
+     - FE: offline-queue.ts(loadQueue JSON安全解析/saveQueue MAX_QUEUE_SIZE裁剪/enqueue progress去重/flushQueue concurrent guard/registerOnlineFlush SSR safe/conversation类型预留) + learning.ts(isLoggedIn双路径/enqueue on write failure/fire-and-forget anon path/mastered降级防护/streak竞态修复/verifyStorageAvailable) + supabase-sync.ts(writeProgressToCloud/writeHistoryToCloud boolean返回/buildProgressRow DRY/toDbStatus mapping/fullSync download-first+batch upsert/onAuthLogin flush queue/_replayProgress类型转换)
+     - DATA: seed_graph.json 282 concepts(0 dups) + 367 edges(all refs valid) + meta consistent
+   - NOTE: 发现11个新Phase 6 A-1概念缺少RAG文档(embedding-models/function-calling/llm-benchmarks等), 为Phase 6后续RAG内容创建任务
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 411 tests (168 FE + 243 BE) 全通过, tsc 0 errors, build 3.62s
+   - STATUS: offline-queue模块测试覆盖补全(0→19 tests), 4个RAG文档正式入库, 代码质量持续稳定
 
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
@@ -1135,9 +1153,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (149 tests: learning 17 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (168 tests: learning 17 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 10 + offline-queue 19) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (243 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
-# Total: 392 tests
+# Total: 411 tests
 ```
 
 ### 提交规范
