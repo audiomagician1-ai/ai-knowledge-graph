@@ -129,6 +129,16 @@ function nextId() {
   return `msg-${Date.now()}-${msgCounter++}-${Math.random().toString(36).slice(2, 6)}`;
 }
 
+/** Extract user-friendly error message from a failed HTTP response.
+ *  Backend returns { detail: "...", ... } with a Chinese-language message for 429/400/etc. */
+async function extractErrorDetail(res: Response, fallback: string): Promise<string> {
+  try {
+    const body = await res.json();
+    if (typeof body.detail === 'string') return body.detail;
+  } catch { /* ignore parse errors */ }
+  return fallback;
+}
+
 // Module-level AbortController for SSE cancellation
 let _streamAbort: AbortController | null = null;
 
@@ -202,7 +212,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
           headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
           body: JSON.stringify({ concept_id: conceptId }),
         });
-        if (!res.ok) throw new Error('Failed to create conversation');
+        if (!res.ok) throw new Error(await extractErrorDetail(res, `创建对话失败 (${res.status})`));
         data = await res.json();
       }
 
@@ -325,7 +335,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
           }),
           signal: controller.signal,
         });
-        if (!res.ok) throw new Error('Chat failed');
+        if (!res.ok) throw new Error(await extractErrorDetail(res, `发送消息失败 (${res.status})`));
         reader = res.body?.getReader();
       }
       const decoder = new TextDecoder();
@@ -429,7 +439,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
           headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
           body: JSON.stringify({ conversation_id: conversationId }),
         });
-        if (!res.ok) throw new Error('Assessment failed');
+        if (!res.ok) throw new Error(await extractErrorDetail(res, `评估请求失败 (${res.status})`));
         data = await res.json();
       }
 

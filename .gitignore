@@ -67,3 +67,5 @@ data/*.db-shm
 
 # PowerShell artifacts (2>$null creates a file named "$null")
 $null
+pytest_out.txt
+vitest_out.txt

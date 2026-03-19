@@ -170,6 +170,35 @@ describe('useDialogueStore', () => {
 
       expect(useDialogueStore.getState().conceptId).toBe('my-concept');
     });
+
+    it('should extract backend error detail on 429', async () => {
+      // Simulate backend returning 429 with JSON detail
+      (globalThis.fetch as any).mockResolvedValueOnce({
+        ok: false,
+        status: 429,
+        json: async () => ({ detail: '免费 AI 服务请求过于频繁，请 1234 秒后重试。' }),
+      });
+
+      await useDialogueStore.getState().startConversation('test-concept');
+      const s = useDialogueStore.getState();
+
+      expect(s.error).toBe('免费 AI 服务请求过于频繁，请 1234 秒后重试。');
+      expect(s.isInitializing).toBe(false);
+      expect(s.isStreaming).toBe(false);
+    });
+
+    it('should use fallback error message when backend returns non-JSON', async () => {
+      (globalThis.fetch as any).mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => { throw new Error('not json'); },
+      });
+
+      await useDialogueStore.getState().startConversation('test-concept');
+      const s = useDialogueStore.getState();
+
+      expect(s.error).toBe('创建对话失败 (500)');
+    });
   });
 
   // ------------------------------------------------------------------
