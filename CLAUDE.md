@@ -91,7 +91,7 @@ data/seed/         — 种子图谱数据
 - ✅ Capacitor 移动端配置
 - ✅ CI/CD (GitHub Actions: frontend + backend)
 - ✅ GitHub 仓库: https://github.com/audiomagician1-ai/ai-knowledge-graph
-- ✅ **种子图谱 v2.1**: 282概念节点 + 367边 (15子域, 含LLM/Agent/Prompt/RAG/Agent系统, Phase 6 A-1扩展+15)
+- ✅ **种子图谱 v2.1**: 282概念节点 + 367边 (15子域, 含LLM/Agent/Prompt/RAG/Agent系统, Phase 6 A-1扩展+15, 282 RAG文档100%覆盖)
 - ✅ **里程碑高亮**: 27个milestone节点 (替代战争迷雾, 金色发光引导)
 - ✅ **3D 球面图谱可视化**: Three.js + 3d-force-graph, 球面力导向+指数雾渐隐+里程碑金色辉光+粒子流连线+自动旋转
 - ✅ **后端图谱查询**: 5 endpoints (data/domains/subdomains/concept/neighbors/stats), JSON fallback
@@ -961,10 +961,24 @@ data/seed/         — 种子图谱数据
    - REVIEW: 最近5个commit(306d60a~b88e9a6)涉及的核心模块深度审查(0 critical/0 major/0 minor issues):
      - FE: offline-queue.ts(loadQueue JSON安全解析/saveQueue MAX_QUEUE_SIZE裁剪/enqueue progress去重/flushQueue concurrent guard/registerOnlineFlush SSR safe/conversation类型预留) + learning.ts(isLoggedIn双路径/enqueue on write failure/fire-and-forget anon path/mastered降级防护/streak竞态修复/verifyStorageAvailable) + supabase-sync.ts(writeProgressToCloud/writeHistoryToCloud boolean返回/buildProgressRow DRY/toDbStatus mapping/fullSync download-first+batch upsert/onAuthLogin flush queue/_replayProgress类型转换)
      - DATA: seed_graph.json 282 concepts(0 dups) + 367 edges(all refs valid) + meta consistent
-   - NOTE: 发现11个新Phase 6 A-1概念缺少RAG文档(embedding-models/function-calling/llm-benchmarks等), 为Phase 6后续RAG内容创建任务
+    - NOTE: 发现11个新Phase 6 A-1概念缺少RAG文档(embedding-models/function-calling/llm-benchmarks等) → 已在 7d56332 中全部补全
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 411 tests (168 FE + 243 BE) 全通过, tsc 0 errors, build 3.62s
-   - STATUS: offline-queue模块测试覆盖补全(0→19 tests), 4个RAG文档正式入库, 代码质量持续稳定
+    - STATUS: offline-queue模块测试覆盖补全(0→19 tests), 4个RAG文档正式入库, 代码质量持续稳定
+
+- ✅ **Phase 6 A-1 RAG文档补全+DRY重构 (2026-03-19, 7d56332)**:
+   - **RAG**: 补全所有Phase 6 A-1新概念的RAG文档, 282 concepts = 282 RAG docs (0 missing):
+     - rag-knowledge +3: graph-rag(Graph RAG架构/社区检测/Map-Reduce全局查询/Microsoft GraphRAG), hyde-retrieval(HyDE假设文档/语义锚点/Python代码示例), reranking(两阶段检索/Bi-Encoder vs Cross-Encoder/sentence-transformers)
+     - llm-core +6: embedding-models, function-calling, llm-benchmarks, llm-distillation, llm-safety-alignment, llm-serving (之前已创建但未提交)
+     - agent-systems +2: agent-debugging, agent-frameworks-comparison (之前已创建但未提交)
+   - **REFACTOR**: supabase-sync.ts `fullSync` batch行构建从内联重复代码改为调用`buildProgressRow(uid, p)` (DRY fix, 消除与line 47-59的重复) [m-01]
+   - REVIEW: offline-queue.ts + supabase-sync.ts + learning.ts Phase 5.5.3代码深度审查(0 critical/0 major, 1 minor DRY fix):
+     - offline-queue.ts: loadQueue JSON安全解析/saveQueue MAX_QUEUE_SIZE裁剪/enqueue progress去重/flushQueue concurrent guard+try/finally释放/registerOnlineFlush SSR safe
+     - supabase-sync.ts: writeProgressToCloud/writeHistoryToCloud boolean返回/buildProgressRow DRY(修复)/toDbStatus mapping/fullSync download-first+batch upsert
+     - learning.ts: isLoggedIn双路径分流/enqueue on write failure/fire-and-forget anon path
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 411 tests (168 FE + 243 BE) 全通过, tsc 0 errors, build 3.33s
+   - STATUS: Phase 6 A-1 RAG文档100%补全(282/282), 代码质量持续稳定
 
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
