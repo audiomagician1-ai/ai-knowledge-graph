@@ -418,4 +418,36 @@ describe('useLearningStore', () => {
       expect(state.newlyUnlockedIds).toHaveLength(0);
     });
   });
+
+  describe('peekDomainProgress', () => {
+    it('should return zeros for empty domain', async () => {
+      const { peekDomainProgress } = await import('@/lib/store/learning');
+      const result = peekDomainProgress('nonexistent-domain');
+      expect(result).toEqual({ mastered: 0, learning: 0, total: 0 });
+    });
+
+    it('should count mastered and learning concepts', async () => {
+      const { peekDomainProgress, storageKeyForDomain } = await import('@/lib/store/learning');
+      const data = {
+        progress: {
+          c1: { concept_id: 'c1', status: 'mastered', mastery_score: 90, sessions: 1, total_time_sec: 0, last_learn_at: 1 },
+          c2: { concept_id: 'c2', status: 'learning', mastery_score: 40, sessions: 1, total_time_sec: 0, last_learn_at: 2 },
+          c3: { concept_id: 'c3', status: 'mastered', mastery_score: 85, sessions: 2, total_time_sec: 0, last_learn_at: 3 },
+          c4: { concept_id: 'c4', status: 'learning', mastery_score: 0, sessions: 1, total_time_sec: 0, last_learn_at: 4 },
+        },
+      };
+      localStorage.setItem(storageKeyForDomain('test-domain'), JSON.stringify(data));
+      const result = peekDomainProgress('test-domain');
+      expect(result.mastered).toBe(2);
+      expect(result.learning).toBe(2);
+      expect(result.total).toBe(4);
+    });
+
+    it('should handle corrupted data gracefully', async () => {
+      const { peekDomainProgress, storageKeyForDomain } = await import('@/lib/store/learning');
+      localStorage.setItem(storageKeyForDomain('corrupt-domain'), 'not-json');
+      const result = peekDomainProgress('corrupt-domain');
+      expect(result).toEqual({ mastered: 0, learning: 0, total: 0 });
+    });
+  });
 });

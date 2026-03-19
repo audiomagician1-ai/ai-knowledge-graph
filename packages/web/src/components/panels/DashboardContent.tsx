@@ -1,7 +1,9 @@
 ﻿import { useEffect, useMemo } from 'react';
 import { useLearningStore, type ConceptProgress } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
+import { useDomainStore } from '@/lib/store/domain';
 import { Zap, BookOpen, Flame, Trophy, Clock, Target, ArrowRight } from 'lucide-react';
+import { DomainOverview } from './DomainOverview';
 
 interface DashboardContentProps {
   /** Called when user clicks a learning activity item. Receives the concept_id. */
@@ -11,6 +13,7 @@ interface DashboardContentProps {
 export function DashboardContent({ onNavigate }: DashboardContentProps) {
   const { stats, progress, streak, computeStats, refreshStreak } = useLearningStore();
   const { graphData } = useGraphStore();
+  const domainInfo = useDomainStore((s) => s.getActiveDomainInfo());
 
   useEffect(() => {
     refreshStreak();
@@ -38,6 +41,18 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
 
   return (
     <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+      {/* Galaxy Overview — all domains */}
+      <DomainOverview compact />
+
+      {/* Active domain header */}
+      {domainInfo && (
+        <div className="flex items-center gap-2" style={{ marginTop: -8 }}>
+          <span role="img" aria-label={domainInfo.name}>{domainInfo.icon}</span>
+          <span style={{ fontSize: 14, fontWeight: 600, color: domainInfo.color }}>{domainInfo.name}</span>
+          <span style={{ fontSize: 12, color: 'var(--color-text-tertiary)' }}>学习进度</span>
+        </div>
+      )}
+
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
         {[

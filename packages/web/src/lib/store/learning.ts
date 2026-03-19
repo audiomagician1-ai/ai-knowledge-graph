@@ -136,6 +136,30 @@ export function migrateLegacyStorage(targetDomain: string = 'ai-engineering'): b
   return false;
 }
 
+/**
+ * Peek at another domain's learning progress without switching the active domain.
+ * Reads directly from localStorage — safe to call from any component.
+ * Returns { mastered, learning, total } counts (total = mastered + learning + not_started).
+ */
+export function peekDomainProgress(domain: string): { mastered: number; learning: number; total: number } {
+  const key = storageKeyForDomain(domain);
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return { mastered: 0, learning: 0, total: 0 };
+    const parsed = JSON.parse(raw);
+    const progress: Record<string, { status?: string }> = parsed?.progress || {};
+    let mastered = 0;
+    let learning = 0;
+    for (const val of Object.values(progress)) {
+      if (val?.status === 'mastered') mastered++;
+      else if (val?.status === 'learning') learning++;
+    }
+    return { mastered, learning, total: mastered + learning };
+  } catch {
+    return { mastered: 0, learning: 0, total: 0 };
+  }
+}
+
 /** Current active domain for storage — set by switchStorageDomain() */
 let _activeDomain = 'ai-engineering';
 

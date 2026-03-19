@@ -2,14 +2,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useLearningStore, type ConceptProgress } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
+import { useDomainStore } from '@/lib/store/domain';
 import {
   Zap, BookOpen, Flame, Trophy, ArrowRight, Clock, Target, ArrowLeft,
 } from 'lucide-react';
 import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
+import { DomainOverview } from '@/components/panels/DomainOverview';
 
 export function DashboardPage() {
   const { stats, progress, streak, computeStats, refreshStreak } = useLearningStore();
   const { graphData } = useGraphStore();
+  const { domains, activeDomain } = useDomainStore();
   const navigate = useNavigate();
   const isDesktop = useIsDesktop();
 
@@ -18,6 +21,8 @@ export function DashboardPage() {
     if (graphData) computeStats(graphData.nodes.length);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- Zustand stable refs, only re-run when graphData changes
   }, [graphData]);
+
+  const activeDomainInfo = domains.find((d) => d.id === activeDomain);
 
   // Build concept ID → label lookup from graph data
   const nameMap = useMemo(() => {
@@ -56,7 +61,16 @@ export function DashboardPage() {
             <ArrowLeft size={16} />
             <span>返回图谱</span>
           </button>
-          <h1 className="text-2xl font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>学习进度</h1>
+          <div className="flex items-center gap-3 mb-1">
+            {activeDomainInfo && (
+              <span className="text-2xl" role="img" aria-label={activeDomainInfo.name}>
+                {activeDomainInfo.icon}
+              </span>
+            )}
+            <h1 className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
+              {activeDomainInfo?.name || '学习进度'}
+            </h1>
+          </div>
           <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
             {masteredNodes.length}/{totalNodes} 概念已掌握
           </p>
@@ -102,6 +116,16 @@ export function DashboardPage() {
             />
           </div>
         </div>
+
+        {/* Galaxy Overview — show all domains with mini progress */}
+        {domains.length > 0 && (
+          <div
+            className="rounded-lg p-5 mb-6 animate-fade-in stagger-3"
+            style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
+          >
+            <DomainOverview compact />
+          </div>
+        )}
 
         {/* Two columns */}
         <div className={`grid gap-4 ${isDesktop ? 'grid-cols-5' : 'grid-cols-1'}`}>
@@ -213,3 +237,4 @@ function ActivityItem({ item, navigate, nameMap }: { item: ConceptProgress; navi
     </button>
   );
 }
+
