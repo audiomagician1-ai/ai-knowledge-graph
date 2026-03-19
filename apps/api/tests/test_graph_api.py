@@ -1110,5 +1110,36 @@ async def test_domains_list_includes_finance():
         assert len(data) >= 6
 
 
+@pytest.mark.asyncio
+async def test_rag_finance_document():
+    """Finance RAG document loads for a known concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/compound-interest?domain=finance")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert "content" in data
+        assert "复利" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_finance_stats():
+    """Finance RAG stats returns 160 documents."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=finance")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 160
+
+
+@pytest.mark.asyncio
+async def test_rag_finance_404_wrong_domain():
+    """Finance concept should 404 when queried against math RAG."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/compound-interest?domain=product-design")
+        # compound-interest only exists in finance domain RAG
+        assert resp.status_code == 404
+
+
+
 
 
