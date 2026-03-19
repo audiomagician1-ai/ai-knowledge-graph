@@ -1281,7 +1281,7 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 1. ✅ **8.1 种子图谱设计** (92644df) — 269概念, 366边, 12子域(arithmetic/algebra/geometry/trigonometry/analytic-geometry/calculus/linear-algebra/probability/statistics/discrete-math/number-theory/optimization), 29里程碑, generate_seed.py可重现生成
 2. ✅ **8.2 里程碑节点验证** — 29个milestone覆盖12子域关键节点(随8.1一起验证)
 3. ✅ **8.3 RAG知识文档编写** (7620870) — 269篇数学教学文档(含LaTeX公式), 30个关键概念有手写LaTeX模板(求根公式/导数/积分/中值定理/行列式/特征值/贝叶斯/CLT等), 239个通用模板; generate_rag.py+_templates.json可重现; RAG API重构为per-domain(_load_rag_index(domain_id)), ?domain=参数向后兼容; +7 BE测试(backwards compat/math stats/LaTeX content/generic doc/cross-domain 404/overlapping IDs)
-4. 🟡 **8.4 苏格拉底引擎适配** — 数学领域prompt调优(公式引用、证明引导)
+4. ✅ **8.4 苏格拉底引擎适配** (ad3ceec) — _load_rag_content()支持domain_id参数(mathematics路径: data/rag/mathematics/{subdomain}/{concept}.md); MATH_DOMAIN_SUPPLEMENT注入(LaTeX格式/证明引导/计算验证/直觉优先/禁止代码); build_system_prompt读取concept.domain_id; +4 BE测试
 5. 🟡 **8.5 评估器适配** — 数学理解度评估逻辑(计算推理vs概念理解)
 6. 🟡 **8.6 LaTeX渲染支持** — 前端KaTeX/MathJax集成
 7. 🟡 **8.7 质量审查+测试**
@@ -1310,8 +1310,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (200 tests: learning 24 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 16 + offline-queue 19 + domain 19) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
-cd apps/api && python -m pytest          # 后端测试 ✅ (266 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 39 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
-# Total: 466 tests
+cd apps/api && python -m pytest          # 后端测试 ✅ (270 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 39 + llm_router 46 + prompt_parser 28 + socratic 28 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
+# Total: 470 tests
 ```
 
 ### 提交规范

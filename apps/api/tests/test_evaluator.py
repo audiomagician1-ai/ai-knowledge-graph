@@ -138,3 +138,31 @@ class TestFormatDialogue:
         messages = [{"role": "user", "content": "x" * 500}] * 50
         result = evaluator._format_dialogue(messages, max_chars=2000)
         assert "早期对话已省略" in result
+
+
+# ─── Math Domain Evaluator (Phase 8.5) ───
+
+class TestMathDomainEvaluator:
+    """Verify evaluator works correctly with math concepts."""
+
+    def test_fallback_evaluate_with_math_dialogue(self):
+        """Fallback evaluator should handle math dialogue with LaTeX."""
+        messages = [
+            {"role": "assistant", "content": "让我们学习导数。导数的定义是 $f'(x) = \\lim_{h→0} \\frac{f(x+h)-f(x)}{h}$"},
+            {"role": "user", "content": "导数就是函数的变化率，$f'(x)$ 表示在 $x$ 处的瞬时变化率"},
+            {"role": "assistant", "content": "说得好！几何意义是切线斜率。"},
+            {"role": "user", "content": "比如 $f(x) = x^2$ 的导数是 $f'(x) = 2x$，在 $x=3$ 处切线斜率为 6"},
+        ]
+        result = evaluator._fallback_evaluate(messages)
+        assert result["overall_score"] > 0
+        assert "mastered" in result
+        assert isinstance(result["gaps"], list)
+
+    def test_format_dialogue_preserves_latex(self):
+        """Dialogue formatter should preserve LaTeX formulas."""
+        messages = [
+            {"role": "user", "content": "求根公式是 $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"},
+        ]
+        formatted = evaluator._format_dialogue(messages)
+        assert "\\frac" in formatted
+        assert "\\sqrt" in formatted
