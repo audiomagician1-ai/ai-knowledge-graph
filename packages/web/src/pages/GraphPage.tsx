@@ -168,9 +168,9 @@ export function GraphPage() {
       {/* ===== RIGHT PANEL: Chat (50% width) ===== */}
       {chatOpen && (
         <div className="absolute top-0 right-0 bottom-0 z-20 animate-slide-in-right" style={{ width: '50%' }}>
-            <div className="h-full flex flex-col" style={{ backgroundColor: '#eceae6', borderLeft: '1px solid rgba(0,0,0,0.1)' }}>
+            <div className="h-full flex flex-col" style={{ backgroundColor: 'var(--color-surface-2)', borderLeft: '1px solid var(--color-border)' }}>
             {/* Header */}
-            <div className="shrink-0 flex items-start justify-between" style={{ padding: '24px 28px', gap: 16, backgroundColor: '#ffffff', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
+            <div className="shrink-0 flex items-start justify-between" style={{ padding: '24px 28px', gap: 16, backgroundColor: 'var(--color-surface-1)', borderBottom: '1px solid var(--color-border-subtle)' }}>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center" style={{ gap: 10, marginBottom: 10 }}>
                   {selectedNode!.is_milestone && <Star size={16} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
