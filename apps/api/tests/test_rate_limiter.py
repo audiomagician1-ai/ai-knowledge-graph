@@ -4,6 +4,7 @@ import time
 from unittest.mock import MagicMock, patch
 import pytest
 
+from collections import deque
 from rate_limiter import RateLimiter, get_client_ip, check_rate_limit, WINDOW_SECONDS
 
 
@@ -57,7 +58,7 @@ class TestRateLimiter:
 
         # Simulate time passing beyond the window
         now = time.time()
-        self.rl._buckets["test-ip"] = [now - WINDOW_SECONDS - 10] * 3  # All expired
+        self.rl._buckets["test-ip"] = deque([now - WINDOW_SECONDS - 10] * 3)  # All expired
         allowed, info = self.rl.check("test-ip", limit=3)
         assert allowed is True
         assert info["remaining"] == 2
@@ -66,11 +67,11 @@ class TestRateLimiter:
         """Old requests expire while recent ones count."""
         now = time.time()
         # 2 old (expired) + 1 recent
-        self.rl._buckets["test-ip"] = [
+        self.rl._buckets["test-ip"] = deque([
             now - WINDOW_SECONDS - 100,  # expired
             now - WINDOW_SECONDS - 50,   # expired
             now - 10,                      # recent
-        ]
+        ])
         allowed, info = self.rl.check("test-ip", limit=3)
         assert allowed is True
         # 1 recent + 1 new = 2 total, limit 3, remaining 1
@@ -79,8 +80,8 @@ class TestRateLimiter:
     def test_prune_removes_stale_keys(self):
         """_prune_stale_keys should remove keys with no recent activity."""
         now = time.time()
-        self.rl._buckets["active-ip"] = [now - 10]
-        self.rl._buckets["stale-ip"] = [now - WINDOW_SECONDS - 100]
+        self.rl._buckets["active-ip"] = deque([now - 10])
+        self.rl._buckets["stale-ip"] = deque([now - WINDOW_SECONDS - 100])
         self.rl._last_prune = 0  # Force prune to run
 
         self.rl._prune_stale_keys(now)
@@ -90,7 +91,7 @@ class TestRateLimiter:
     def test_prune_skips_within_interval(self):
         """Pruning should not run if within the prune interval."""
         now = time.time()
-        self.rl._buckets["stale-ip"] = [now - WINDOW_SECONDS - 100]
+        self.rl._buckets["stale-ip"] = deque([now - WINDOW_SECONDS - 100])
         self.rl._last_prune = now - 10  # Recent prune, within 5-min interval
 
         self.rl._prune_stale_keys(now)

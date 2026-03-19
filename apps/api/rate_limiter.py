@@ -19,7 +19,7 @@ BYOK (bring-your-own-key) users are NOT rate-limited — they use their own quot
 import os
 import time
 import logging
-from collections import defaultdict
+from collections import defaultdict, deque
 
 logger = logging.getLogger(__name__)
 
@@ -33,8 +33,8 @@ class RateLimiter:
     """Sliding-window rate limiter keyed by client identifier (IP or user ID)."""
 
     def __init__(self) -> None:
-        # key -> list of timestamps
-        self._buckets: dict[str, list[float]] = defaultdict(list)
+        # key -> deque of timestamps (deque.popleft is O(1) vs list.pop(0) O(n))
+        self._buckets: dict[str, deque[float]] = defaultdict(deque)
         self._last_prune: float = 0.0
         self._PRUNE_INTERVAL = 300  # Prune stale keys every 5 minutes
 
@@ -65,7 +65,7 @@ class RateLimiter:
         bucket = self._buckets[key]
         # Remove expired entries (bucket is append-only so entries are sorted)
         while bucket and bucket[0] < cutoff:
-            bucket.pop(0)
+            bucket.popleft()
 
         count = len(bucket)
         if count >= limit:
