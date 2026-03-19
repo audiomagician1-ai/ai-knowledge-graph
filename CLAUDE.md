@@ -7,7 +7,7 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 7 进行中** | 多球体架构(7.1数据层+7.2后端API已完成), 下一步: 7.3前端domain store+球切换器
+**当前阶段**: 🟢 **Phase 7 进行中** | 多球体架构(7.1-7.3已完成), 下一步: 7.4 图谱渲染按domain加载+独立配色
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
@@ -15,8 +15,8 @@
 **当前最高优先任务 — Phase 7: 多球体架构**:
 > **目标**: 球体注册表/切换器/独立种子数据管线, 为数学/英语等知识球做架构准备
 > **前置**: Phase 6 ✅ 完成 (400节点, 615边, 15子域, 400 RAG文档)
-> **已完成**: 7.1 数据层重构 ✅ + 7.2 后端多域API ✅
-> **下一步**: 7.3 前端 domain store + 球切换器UI
+> **已完成**: 7.1 数据层重构 ✅ + 7.2 后端多域API ✅ + 7.3 前端domain store+球切换器 ✅
+> **下一步**: 7.4 图谱渲染按domain加载 + 每球独立配色
 
 ### 12周里程碑
 
@@ -1217,7 +1217,7 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 **任务清单**:
 1. ✅ **7.1 数据层重构** (940be90) — `data/seed/programming/` → `data/seed/ai-engineering/` + `data/seed/domains.json` 域注册表
 2. ✅ **7.2 后端多域API** (940be90) — per-domain seed缓存, `_load_seed(domain_id)`, `_load_domains()`, 所有端点+`?domain=`参数, `/api/graph/domains`返回域列表+统计
-3. 🔲 **7.3 前端domain store + 球切换器UI** — Zustand domain store, Sidebar球切换器组件, 切换时重载图谱数据
+3. ✅ **7.3 前端domain store + 球切换器UI** (b1b831b) — `domain.ts` Zustand store (activeDomain/domains/fetchDomains/switchDomain/localStorage持久化), `DomainSwitcher.tsx` Sidebar下拉组件 (图标/名称/描述/概念数/coming-soon占位), `graph.ts` 新增 `loadGraphData(domain)` action, GraphPage.tsx domain切换时自动重载图谱, 修复 graph-api.ts `?domain_id=` → `?domain=` bug
 4. 🔲 **7.4 图谱渲染按domain加载 + 每球独立配色** — 3D球色调从domains.json读取, 不同球不同主题色
 5. 🔲 **7.5 数据模型迁移** — localStorage per-domain key, Supabase migration添加domain_id列
 6. 🔲 **7.6 Dashboard星系总览 + per-domain进度**
@@ -1245,9 +1245,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (168 tests: learning 17 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 10 + offline-queue 19) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
-cd apps/api && python -m pytest          # 后端测试 ✅ (243 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
-# Total: 411 tests
+cd packages/web && npx vitest run        # 前端测试 ✅ (183 tests: learning 17 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 15 + offline-queue 19 + domain 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd apps/api && python -m pytest          # 后端测试 ✅ (247 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17 + multi-domain 4)
+# Total: 430 tests
 ```
 
 ### 提交规范
