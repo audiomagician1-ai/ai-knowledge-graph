@@ -126,4 +126,35 @@ describe('useDomainStore', () => {
       expect(useDomainStore.getState().getActiveDomainInfo()).toBeUndefined();
     });
   });
+
+  describe('domain color for graph theming (Phase 7.4)', () => {
+    it('should provide color for active domain', () => {
+      useDomainStore.setState({ domains: mockDomains, activeDomain: 'ai-engineering' });
+      const info = useDomainStore.getState().getActiveDomainInfo();
+      expect(info?.color).toBe('#8b5cf6');
+    });
+
+    it('should provide different color when switching domains', () => {
+      useDomainStore.setState({ domains: mockDomains, activeDomain: 'ai-engineering' });
+      const color1 = useDomainStore.getState().getActiveDomainInfo()?.color;
+
+      useDomainStore.getState().switchDomain('mathematics');
+      const color2 = useDomainStore.getState().getActiveDomainInfo()?.color;
+
+      expect(color1).toBe('#8b5cf6');
+      expect(color2).toBe('#3b82f6');
+      expect(color1).not.toBe(color2);
+    });
+
+    it('should return undefined color when domains not loaded', () => {
+      const info = useDomainStore.getState().getActiveDomainInfo();
+      expect(info?.color).toBeUndefined();
+    });
+
+    it('should provide icon for domain switcher display', () => {
+      useDomainStore.setState({ domains: mockDomains, activeDomain: 'mathematics' });
+      const info = useDomainStore.getState().getActiveDomainInfo();
+      expect(info?.icon).toBe('🔵');
+    });
+  });
 });

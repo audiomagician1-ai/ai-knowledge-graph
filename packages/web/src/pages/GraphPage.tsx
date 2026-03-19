@@ -27,7 +27,7 @@ export function GraphPage() {
     graphData, loading, selectedNode, activeSubdomain,
     loadGraphData, selectNode, setActiveSubdomain,
   } = useGraphStore();
-  const { activeDomain, fetchDomains } = useDomainStore();
+  const { activeDomain, fetchDomains, getActiveDomainInfo } = useDomainStore();
   const { progress, computeStats, refreshStreak, initEdges, recommendedIds, syncWithBackend, backendSynced } = useLearningStore();
   const isDesktop = useIsDesktop();
   const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
@@ -139,7 +139,7 @@ export function GraphPage() {
           </div>
         ) : (
           <Suspense fallback={<div className="flex items-center justify-center h-full"><Loader size={28} className="animate-spin" style={{ color: 'var(--color-text-tertiary)' }} /></div>}>
-            <KnowledgeGraph data={enrichedGraphData!} onNodeClick={handleNodeClick} selectedNodeId={selectedNode?.id} activeSubdomain={activeSubdomain} />
+            <KnowledgeGraph key={activeDomain} data={enrichedGraphData!} onNodeClick={handleNodeClick} selectedNodeId={selectedNode?.id} activeSubdomain={activeSubdomain} domainColor={getActiveDomainInfo()?.color} domainId={activeDomain} />
           </Suspense>
         )}
       </div>

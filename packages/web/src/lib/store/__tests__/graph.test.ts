@@ -172,5 +172,19 @@ describe('useGraphStore', () => {
       await fetchPromise;
       expect(useGraphStore.getState().loading).toBe(false);
     });
+
+    it('should preserve domain_id on loaded graph nodes', async () => {
+      const domainData: GraphData = {
+        nodes: [{ ...mockNode, domain_id: 'mathematics' }],
+        edges: [],
+      };
+      vi.mocked(mockFetchGraphData).mockResolvedValue(domainData);
+
+      await useGraphStore.getState().loadGraphData('mathematics');
+
+      const nodes = useGraphStore.getState().graphData?.nodes;
+      expect(nodes).toHaveLength(1);
+      expect(nodes![0].domain_id).toBe('mathematics');
+    });
   });
 });

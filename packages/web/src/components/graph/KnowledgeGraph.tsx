@@ -11,12 +11,17 @@ interface KnowledgeGraphProps {
   onNodeClick: (node: GraphNode) => void;
   selectedNodeId?: string | null;
   activeSubdomain?: string | null;
+  /** Domain accent color from domains.json (hex). Defaults to '#8b5cf6' (violet). */
+  domainColor?: string;
+  /** Active domain ID, forwarded into GraphNode on click. */
+  domainId?: string;
 }
 
 /* ── Extended node / link with our fields ── */
 interface GNode extends NodeObject {
   id: string;
   label: string;
+  domain_id: string;
   subdomain_id: string;
   difficulty: number;
   status: string;
@@ -154,7 +159,12 @@ function spawnCelebration(scene: THREE.Scene, x: number, y: number, z: number) {
 }
 
 /* ── Component ── */
-export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdomain }: KnowledgeGraphProps) {
+const DEFAULT_DOMAIN_COLOR = '#8b5cf6'; // violet
+const DEFAULT_DOMAIN_ID = 'ai-engineering';
+
+export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdomain, domainColor, domainId }: KnowledgeGraphProps) {
+  const effectiveDomainColor = domainColor || DEFAULT_DOMAIN_COLOR;
+  const effectiveDomainId = domainId || DEFAULT_DOMAIN_ID;
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<ForceGraph3DInstance | null>(null);
   const hoveredRef = useRef<GNode | null>(null);
@@ -167,12 +177,19 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
   const dataRef = useRef(data);
   dataRef.current = data;
 
+  // Store refs for domain props so they're available in callbacks without re-init
+  const domainColorRef = useRef(effectiveDomainColor);
+  domainColorRef.current = effectiveDomainColor;
+  const domainIdRef = useRef(effectiveDomainId);
+  domainIdRef.current = effectiveDomainId;
+
   /* Build graph data payload from ref (stable) */
   const buildPayload = () => {
     const d = dataRef.current;
     const nodes: GNode[] = d.nodes.map((n) => ({
       id: n.id,
       label: n.label,
+      domain_id: n.domain_id,
       subdomain_id: n.subdomain_id,
       difficulty: n.difficulty,
       status: n.status,
@@ -213,10 +230,12 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
       const scene = Graph.scene();
       scene.fog = new THREE.FogExp2(0xe8e8e4, 0.0003);
 
-      /* ── Bright neutral lights for light bg ── */
+      /* ── Bright neutral lights + domain-tinted accent light ── */
+      const domainThreeColor = new THREE.Color(domainColorRef.current);
       Graph.lights([
-        new THREE.AmbientLight(0xffffff, 1.2),
-        (() => { const l = new THREE.PointLight(0xffffff, 0.4, 1200); l.position.set(200, 300, 200); return l; })(),
+        new THREE.AmbientLight(0xffffff, 1.1),
+        (() => { const l = new THREE.PointLight(0xffffff, 0.3, 1200); l.position.set(200, 300, 200); return l; })(),
+        (() => { const l = new THREE.PointLight(domainThreeColor, 0.25, 1400); l.position.set(-300, -100, 300); return l; })(),
       ]);
 
       /* ── Forces ── */
@@ -295,7 +314,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
         .linkDirectionalParticles((l: object) => (l as GLink).relation_type === 'prerequisite' ? 2 : 0)
         .linkDirectionalParticleWidth(1.5)
         .linkDirectionalParticleSpeed(0.004)
-        .linkDirectionalParticleColor(() => '#10b981');
+        .linkDirectionalParticleColor(() => domainColorRef.current);
 
       /* ── Interaction: STOP rotation + FREEZE simulation on click ── */
       Graph.onNodeClick((n: NodeObject) => {
@@ -313,7 +332,7 @@ export function KnowledgeGraph({ data, onNodeClick, selectedNodeId, activeSubdom
         onNodeClickRef.current({
           id: node.id,
           label: node.label,
-          domain_id: 'ai-engineering',
+          domain_id: node.domain_id || domainIdRef.current,
           subdomain_id: node.subdomain_id,
           difficulty: node.difficulty,
           status: node.status,
