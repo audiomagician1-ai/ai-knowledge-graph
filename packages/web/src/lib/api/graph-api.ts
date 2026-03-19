@@ -3,9 +3,9 @@
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 /** 获取指定领域的图谱数据 */
-export async function fetchGraphData(domainId?: string): Promise<GraphData> {
-  const url = domainId
-    ? `${API_BASE}/graph/data?domain_id=${encodeURIComponent(domainId)}`
+export async function fetchGraphData(domain?: string): Promise<GraphData> {
+  const url = domain
+    ? `${API_BASE}/graph/data?domain=${encodeURIComponent(domain)}`
     : `${API_BASE}/graph/data`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`获取图谱失败: ${res.statusText}`);

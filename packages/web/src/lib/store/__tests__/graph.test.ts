@@ -1,9 +1,16 @@
 /**
  * graph.ts store tests — graph state management
  */
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { useGraphStore } from '@/lib/store/graph';
 import type { GraphData, GraphNode } from '@akg/shared';
+
+// Mock the graph-api module
+vi.mock('@/lib/api/graph-api', () => ({
+  fetchGraphData: vi.fn(),
+}));
+
+import { fetchGraphData as mockFetchGraphData } from '@/lib/api/graph-api';
 
 const mockNode: GraphNode = {
   id: 'test-node',
@@ -103,6 +110,67 @@ describe('useGraphStore', () => {
       useGraphStore.getState().setError('Some error');
       useGraphStore.getState().setError(null);
       expect(useGraphStore.getState().error).toBeNull();
+    });
+  });
+
+  describe('loadGraphData', () => {
+    beforeEach(() => {
+      vi.clearAllMocks();
+    });
+
+    it('should fetch and set graph data for a domain', async () => {
+      vi.mocked(mockFetchGraphData).mockResolvedValue(mockGraphData);
+
+      await useGraphStore.getState().loadGraphData('ai-engineering');
+
+      expect(mockFetchGraphData).toHaveBeenCalledWith('ai-engineering');
+      const state = useGraphStore.getState();
+      expect(state.graphData).toEqual(mockGraphData);
+      expect(state.loading).toBe(false);
+      expect(state.error).toBeNull();
+    });
+
+    it('should call API without domain when not specified', async () => {
+      vi.mocked(mockFetchGraphData).mockResolvedValue(mockGraphData);
+
+      await useGraphStore.getState().loadGraphData();
+
+      expect(mockFetchGraphData).toHaveBeenCalledWith(undefined);
+    });
+
+    it('should reset selectedNode and activeSubdomain when loading', async () => {
+      useGraphStore.setState({ selectedNode: mockNode, activeSubdomain: 'ml' });
+      vi.mocked(mockFetchGraphData).mockResolvedValue(mockGraphData);
+
+      await useGraphStore.getState().loadGraphData('ai-engineering');
+
+      expect(useGraphStore.getState().selectedNode).toBeNull();
+      expect(useGraphStore.getState().activeSubdomain).toBeNull();
+    });
+
+    it('should handle fetch error', async () => {
+      vi.mocked(mockFetchGraphData).mockRejectedValue(new Error('Server down'));
+
+      await useGraphStore.getState().loadGraphData('ai-engineering');
+
+      const state = useGraphStore.getState();
+      expect(state.graphData).toBeNull();
+      expect(state.loading).toBe(false);
+      expect(state.error).toBe('Server down');
+    });
+
+    it('should set loading=true during fetch', async () => {
+      let resolvePromise: (v: GraphData) => void;
+      vi.mocked(mockFetchGraphData).mockImplementation(
+        () => new Promise<GraphData>((resolve) => { resolvePromise = resolve; })
+      );
+
+      const fetchPromise = useGraphStore.getState().loadGraphData('ai-engineering');
+      expect(useGraphStore.getState().loading).toBe(true);
+
+      resolvePromise!(mockGraphData);
+      await fetchPromise;
+      expect(useGraphStore.getState().loading).toBe(false);
     });
   });
 });

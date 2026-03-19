@@ -1,6 +1,7 @@
 ﻿import { useEffect, useState, useCallback, lazy, Suspense, useMemo } from 'react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
+import { useDomainStore } from '@/lib/store/domain';
 import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
 import { apiFetchRecommendations } from '@/lib/api/learning-api';
 import type { GraphNode, GraphData } from '@akg/shared';
@@ -14,7 +15,6 @@ import {
   Trophy, Loader, Compass, BarChart3, Settings, Network,
 } from 'lucide-react';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 const KnowledgeGraph = lazy(() =>
   import('@/components/graph/KnowledgeGraph').then((m) => ({ default: m.KnowledgeGraph }))
@@ -25,8 +25,9 @@ const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
 export function GraphPage() {
   const {
     graphData, loading, selectedNode, activeSubdomain,
-    setGraphData, selectNode, setActiveSubdomain, setLoading, setError,
+    loadGraphData, selectNode, setActiveSubdomain,
   } = useGraphStore();
+  const { activeDomain, fetchDomains } = useDomainStore();
   const { progress, computeStats, refreshStreak, initEdges, recommendedIds, syncWithBackend, backendSynced } = useLearningStore();
   const isDesktop = useIsDesktop();
   const [subdomains, setSubdomains] = useState<Array<{ id: string; name: string; concept_count: number }>>([]);
@@ -85,20 +86,19 @@ export function GraphPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps -- one-time sync on mount
   useEffect(() => { if (!backendSynced) syncWithBackend(); }, [backendSynced]);
   // eslint-disable-next-line react-hooks/exhaustive-deps -- mount-only
-  useEffect(() => { loadGraph(); loadSubdomains(); }, []);
+  useEffect(() => { fetchDomains(); }, []);
 
-  const loadGraph = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(`${API_BASE}/graph/data`);
-      if (!res.ok) throw new Error('Failed to fetch graph');
-      setGraphData(await res.json());
-    } catch (err) { setError(err instanceof Error ? err.message : 'Unknown error'); }
-    finally { setLoading(false); }
-  };
+  // Reload graph when activeDomain changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- activeDomain drives reload
+  useEffect(() => { loadGraphData(activeDomain); loadSubdomains(); }, [activeDomain]);
+
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
   const loadSubdomains = async () => {
-    try { const res = await fetch(`${API_BASE}/graph/subdomains`); if (res.ok) setSubdomains(await res.json()); } catch { /* ignore */ }
+    try {
+      const res = await fetch(`${API_BASE}/graph/subdomains?domain=${encodeURIComponent(activeDomain)}`);
+      if (res.ok) setSubdomains(await res.json());
+    } catch { /* ignore */ }
   };
 
   const handleNodeClick = (node: GraphNode) => selectNode(node?.id ? node : null);

@@ -3,6 +3,7 @@ import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useAuthStore } from '@/lib/store/auth';
 import { Network, BarChart3, Settings, Zap, BookOpen, LogIn, LogOut, User } from 'lucide-react';
+import { DomainSwitcher } from './DomainSwitcher';
 
 const NAV_ITEMS = [
   { path: '/graph', icon: Network, label: '知识图谱' },
@@ -82,6 +83,9 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      {/* Domain Switcher */}
+      <DomainSwitcher />
 
       {/* User section */}
       {supabaseConfigured && (
