@@ -230,6 +230,19 @@ const FINANCE_ASSESSMENT_SUPPLEMENT = `
 - **边界条件**: 用户是否理解金融模型的假设前提和适用范围？
 `;
 
+const PSYCHOLOGY_ASSESSMENT_SUPPLEMENT = `
+## 心理学领域评估特殊指标
+
+在评估心理学概念理解时，请额外关注以下方面：
+- **概念精确性**: 用户是否能准确区分相近概念（如经典条件反射vs操作性条件反射、相关vs因果、信度vs效度）？
+- **实验理解**: 用户是否理解经典实验的设计逻辑、自变量因变量以及结论的适用范围？
+- **理论整合**: 用户是否能比较不同理论流派对同一现象的解释？而非只记住单一理论
+- **应用能力**: 用户是否能将心理学原理应用到真实情境分析？
+- **批判思维**: 用户是否能识别研究方法的局限性和结论的适用边界？
+- **伦理意识**: 涉及临床和研究概念时，用户是否理解相关的伦理考量？
+- **避免误区**: 用户是否能避免常见的心理学误解？
+`;
+
 // Domain-specific assessment supplement registry — add new domains here
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
@@ -237,6 +250,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'physics': PHYSICS_ASSESSMENT_SUPPLEMENT,
   'product-design': PRODUCT_ASSESSMENT_SUPPLEMENT,
   'finance': FINANCE_ASSESSMENT_SUPPLEMENT,
+  'psychology': PSYCHOLOGY_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

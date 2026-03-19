@@ -252,6 +252,7 @@ describe('getDomainSupplement', () => {
     expect(getDomainSupplement('physics')).toContain('物理教学特殊规则');
     expect(getDomainSupplement('product-design')).toContain('产品设计教学特殊规则');
     expect(getDomainSupplement('finance')).toContain('金融理财教学特殊规则');
+    expect(getDomainSupplement('psychology')).toContain('心理学教学特殊规则');
   });
 
   it('should return empty for unknown/default domain', () => {
@@ -268,6 +269,7 @@ describe('getAssessmentSupplement', () => {
     expect(getAssessmentSupplement('physics')).toContain('物理领域评估特殊指标');
     expect(getAssessmentSupplement('product-design')).toContain('产品设计领域评估特殊指标');
     expect(getAssessmentSupplement('finance')).toContain('金融理财领域评估特殊指标');
+    expect(getAssessmentSupplement('psychology')).toContain('心理学领域评估特殊指标');
   });
 
   it('should return empty for unknown/default domain', () => {

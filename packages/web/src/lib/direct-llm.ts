@@ -237,6 +237,19 @@ const FINANCE_ASSESSMENT_SUPPLEMENT = `
 - **边界条件**: 用户是否理解金融模型的假设前提和适用范围？
 `;
 
+const PSYCHOLOGY_ASSESSMENT_SUPPLEMENT = `
+## 心理学领域评估特殊指标
+
+在评估心理学概念理解时，请额外关注以下方面：
+- **概念精确性**: 用户是否能准确区分相近概念（如经典条件反射vs操作性条件反射、相关vs因果、信度vs效度）？
+- **实验理解**: 用户是否理解经典实验的设计逻辑、自变量因变量以及结论的适用范围？
+- **理论整合**: 用户是否能比较不同理论流派对同一现象的解释？而非只记住单一理论
+- **应用能力**: 用户是否能将心理学原理应用到真实情境分析？（如用归因理论分析人际冲突）
+- **批判思维**: 用户是否能识别研究方法的局限性和结论的适用边界？
+- **伦理意识**: 涉及临床和研究概念时，用户是否理解相关的伦理考量？
+- **避免误区**: 用户是否能避免常见的心理学误解？
+`;
+
 // Domain-specific assessment supplement registry — add new domains here
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
@@ -244,6 +257,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'physics': PHYSICS_ASSESSMENT_SUPPLEMENT,
   'product-design': PRODUCT_ASSESSMENT_SUPPLEMENT,
   'finance': FINANCE_ASSESSMENT_SUPPLEMENT,
+  'psychology': PSYCHOLOGY_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {
@@ -363,6 +377,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'physics': `\n## 物理教学特殊规则\n\n1. **公式使用**: 使用 LaTeX 格式的物理公式，标注物理量的单位和量纲\n2. **直觉优先**: 先建立物理图像和直觉，再给数学表达。用类比、思想实验帮助理解\n3. **实验连接**: 将概念与真实实验或日常现象联系\n4. **单位和量纲**: 强调SI单位，进行量纲分析验证公式\n5. **近似与适用范围**: 明确定律的适用条件（如牛顿力学适用于低速宏观物体）\n6. **数值估算**: 鼓励数量级估算，培养物理直觉\n7. **历史脉络**: 适当介绍物理概念的发现历史\n`,
   'product-design': `\n## 产品设计教学特殊规则\n\n1. **案例驱动**: 每个概念尽量用真实产品案例说明（如微信、淘宝、Uber、Notion等）\n2. **框架与工具**: 介绍概念时同时说明对应的实用框架或工具\n3. **场景化教学**: 用"假设你是某产品的PM"的场景引导思考\n4. **权衡思维**: 明确指出各方案的利弊，培养权衡判断\n5. **避免教条**: 强调"取决于具体场景"，培养灵活运用能力\n6. **数据意识**: 涉及数据概念时用具体数字和计算示例\n7. **跨职能视角**: 适时引入设计、开发、运营等其他角色的关注点\n`,
   'finance': `\n## 金融理财教学特殊规则\n\n1. **数字驱动**: 金融概念必须配合具体数字和计算示例。如讲复利用"¥10,000年化8%，30年后≈¥100,627"\n2. **风险意识**: 始终强调风险与收益的权衡关系。每个投资概念都要明确指出潜在风险\n3. **公式与直觉并重**: 金融公式需同时解释数学形式和经济直觉。使用 LaTeX 公式如 $NPV = \\sum \\frac{CF_t}{(1+r)^t}$\n4. **真实案例**: 用真实市场案例说明概念（如2008金融危机、巴菲特的价值投资）\n5. **中国视角**: 优先使用中国市场案例（A股、沪深300、余额宝、LPR）\n6. **避免投资建议**: 教学目的是传授知识框架，不对具体投资品种做推荐\n7. **行为偏差**: 教学中穿插行为金融学洞察（损失厌恶、过度自信、锚定效应）\n`,
+  'psychology': `\n## 心理学教学特殊规则\n\n1. **经典实验**: 心理学概念必须结合经典实验阐释。如讲从众引用Asch实验，讲依恋引用Ainsworth陌生情境实验\n2. **生活联系**: 将心理学概念与日常生活经验联系起来。如用"考试紧张"解释焦虑的认知成分\n3. **多视角分析**: 同一心理现象可从认知、行为、生物、社会等多个视角解释\n4. **批判性思维**: 引导用户质疑心理学研究的方法学局限（样本偏差、可重复性危机、相关≠因果）\n5. **去污名化**: 涉及心理障碍时使用中性、尊重的语言\n6. **实证导向**: 优先引用有实证支持的理论，对缺乏科学依据的观点应明确指出局限\n7. **跨文化视角**: 提醒心理学研究的WEIRD样本局限和文化差异影响\n`,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {

@@ -369,6 +369,31 @@ FINANCE_ASSESSMENT_SUPPLEMENT = """
 - **边界条件**: 用户是否理解金融模型的假设前提和适用范围？（如有效市场假说的局限性）
 """
 
+PSYCHOLOGY_DOMAIN_SUPPLEMENT = """
+## 心理学教学特殊规则
+
+1. **经典实验**: 心理学概念必须结合经典实验阐释。如讲从众引用Asch实验，讲依恋引用Ainsworth陌生情境实验。用实验设计、结果和发现讲故事
+2. **生活联系**: 将心理学概念与日常生活经验联系起来。如用"考试紧张"解释焦虑的认知成分，用"刷抖音停不下来"解释变比率强化
+3. **多视角分析**: 同一心理现象可从认知、行为、生物、社会等多个视角解释。鼓励用户理解不同理论的互补性而非对立性
+4. **批判性思维**: 引导用户质疑心理学研究的方法学局限（样本偏差、可重复性危机、相关≠因果），培养科学素养
+5. **去污名化**: 涉及心理障碍时使用中性、尊重的语言。强调心理问题的连续性（正常-异常谱系）而非二元划分
+6. **实证导向**: 优先引用有实证支持的理论和发现，对流行但缺乏科学依据的观点（如左脑右脑性格论、MBTI的科学性）应明确指出其局限
+7. **跨文化视角**: 心理学研究多来自WEIRD样本（Western, Educated, Industrialized, Rich, Democratic），教学中应提醒文化差异对心理现象的影响
+"""
+
+PSYCHOLOGY_ASSESSMENT_SUPPLEMENT = """
+## 心理学领域评估特殊指标
+
+在评估心理学概念理解时，请额外关注以下方面：
+- **概念精确性**: 用户是否能准确区分相近概念（如经典条件反射vs操作性条件反射、相关vs因果、信度vs效度）？
+- **实验理解**: 用户是否理解经典实验的设计逻辑、自变量因变量以及结论的适用范围？
+- **理论整合**: 用户是否能比较不同理论流派对同一现象的解释？而非只记住单一理论
+- **应用能力**: 用户是否能将心理学原理应用到真实情境分析？（如用归因理论分析人际冲突）
+- **批判思维**: 用户是否能识别研究方法的局限性和结论的适用边界？
+- **伦理意识**: 涉及临床和研究概念时，用户是否理解相关的伦理考量？
+- **避免误区**: 用户是否能避免常见的心理学误解（如"10%大脑使用率"、"宣泄假说"等伪科学概念）？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -379,6 +404,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "physics": PHYSICS_DOMAIN_SUPPLEMENT,
     "product-design": PRODUCT_DOMAIN_SUPPLEMENT,
     "finance": FINANCE_DOMAIN_SUPPLEMENT,
+    "psychology": PSYCHOLOGY_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -387,6 +413,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "physics": PHYSICS_ASSESSMENT_SUPPLEMENT,
     "product-design": PRODUCT_ASSESSMENT_SUPPLEMENT,
     "finance": FINANCE_ASSESSMENT_SUPPLEMENT,
+    "psychology": PSYCHOLOGY_ASSESSMENT_SUPPLEMENT,
 }
 
 
