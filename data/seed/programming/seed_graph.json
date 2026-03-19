@@ -10040,40 +10040,78 @@
       "target_id": "state-pattern",
       "relation_type": "prerequisite",
       "strength": 0.7
+    },
+    {
+      "source_id": "binary-system",
+      "target_id": "how-computer-works",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "boolean-logic",
+      "target_id": "cpu-execution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "process-thread",
+      "target_id": "concurrency-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "file-system",
+      "target_id": "file-io",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "compiler-basics",
+      "target_id": "type-system",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "io-model",
+      "target_id": "network-basics",
+      "relation_type": "related",
+      "strength": 0.7
     }
   ],
   "meta": {
     "generated_at": "2026-03-19T05:15:52.875580+00:00",
     "total_concepts": 400,
-    "total_edges": 609,
+    "total_edges": 615,
     "subdomain_counts": {
-      "agent-systems": 25,
-      "ai-foundations": 23,
-      "algorithms": 33,
-      "cs-fundamentals": 12,
-      "data-structures": 24,
-      "database": 16,
-      "devops": 14,
-      "llm-core": 35,
-      "oop": 18,
-      "programming-basics": 20,
-      "prompt-engineering": 16,
-      "rag-knowledge": 21,
-      "system-design": 15,
-      "web-backend": 17,
-      "web-frontend": 23
+      "agent-systems": 27,
+      "ai-foundations": 30,
+      "algorithms": 35,
+      "cs-fundamentals": 18,
+      "data-structures": 26,
+      "database": 24,
+      "devops": 22,
+      "llm-core": 36,
+      "oop": 24,
+      "programming-basics": 30,
+      "prompt-engineering": 20,
+      "rag-knowledge": 23,
+      "system-design": 25,
+      "web-backend": 27,
+      "web-frontend": 33
     },
     "difficulty_distribution": {
       "1": 11,
-      "2": 17,
-      "3": 32,
-      "4": 43,
-      "5": 60,
+      "2": 20,
+      "3": 53,
+      "4": 89,
+      "5": 78,
       "6": 61,
       "7": 59,
       "8": 26,
       "9": 3
     },
-    "last_updated": "2026-03-19T13:55:00Z"
+    "last_updated": "2026-03-19T13:55:00Z",
+    "edge_count": 615,
+    "updated_at": "2026-03-19T06:07:17.387571+00:00"
   }
 }
