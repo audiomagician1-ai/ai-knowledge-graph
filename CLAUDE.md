@@ -1126,6 +1126,26 @@ data/seed/         — 种子图谱数据
    - **WHY**: 之前Sidebar.tsx/BottomNav.tsx/DomainSwitcher.tsx组件虽完整实现但从未接入渲染树(AppLayout仅有Outlet), 登录和球体切换无UI入口。本次采用方案B(沉浸式)而非方案A(传统Sidebar), 将功能直接集成到Hub Bar
    - VERIFY: 453 tests (200 FE + 253 BE) 全通过, tsc 0 errors, build 3.81s
 
+- ✅ **UI改版: LoginPage+Hub Bar+Workers Domain Supplements (2026-03-19, 7c5a3ba)**:
+   - **FEAT**: LoginPage 全面改版(7c5a3ba) — glassmorphism卡片+gradient CTA+feature pills(AI-Powered/Smart Review/Knowledge Graph)+.login-input CSS class+animate stagger+深色blob背景装饰
+   - **FIX**: Workers prompts.ts 添加 DOMAIN_SUPPLEMENTS 注册表(ac35c97) — 6域教学补充(math LaTeX/english bilingual/physics experiments/product cases/finance numbers/psychology experiments), 与BE feynman_system.py和FE direct-llm.ts对齐
+   - **FIX**: domains.json 移除意外添加的 shiji 域(43340cb) — 恢复7域状态
+   - **FIX**: Hub Bar 改版(3be51fd) — 统一按钮样式(icon+2字标签), 修复登录按钮, 添加间距纪律到CLAUDE.md
+
+- ✅ **第六十三轮巡逻审查+GraphPage清理 (2026-03-19, 2a68880)**:
+   - **FIX**: LoginPage 添加 "Back to Home" 按钮(81dbf6b) — 左上角返回按钮, ArrowLeft icon, CSS变量主题一致 [m-01]
+   - **REFACTOR**: GraphPage.tsx 移除死代码(1b11dd6) — 移除未使用的subdomains状态/loadSubdomains API调用/SUBDOMAIN_COLORS常量/GRAPH_VISUAL导入/setActiveSubdomain解构, 简化HubButton hover逻辑(消除dead branch ternary) [m-02]
+   - **FIX**: GraphPage.tsx 聊天面板硬编码颜色改为CSS变量(2a68880) — `#eceae6`→`var(--color-surface-2)`, `#ffffff`→`var(--color-surface-1)`, border→`var(--color-border)` [m-03]
+   - REVIEW: 最近6个commit深度代码审查(0 critical/0 major issues, 3 minor fixes):
+     - LoginPage.tsx: glassmorphism card/CSS变量一致/mode切换清密码/OAuth loading guard/email验证/BackgroundDecoration aria-hidden/FeaturePills提取/stagger动画
+     - GraphPage.tsx: enrichedGraphData useMemo/loadRecommendations try-finally/outside-click cleanup/domain切换/HubButton统一宽度56px
+     - Workers prompts.ts: DOMAIN_SUPPLEMENTS 6域一致性(BE+FE+Workers三方验证)
+     - Workers dialogue.ts: getDomainSupplement正确注入buildSystemPrompt
+     - domains.json: 7域状态正确(ai-engineering/mathematics/english/physics/product-design/finance/psychology)
+   - GITHUB: 1 open issue (#11 Phase 14: Philosophy), 10 closed (all resolved)
+   - VERIFY: 665 tests (204 FE + 461 BE) 全通过, tsc 0 errors, build 3.57s, workers tsc 0 errors
+   - STATUS: 发现3个minor UI改进并修复(Back to Home按钮/死代码清理/硬编码颜色), 代码质量持续稳定
+
 ```
 输出目录: release/                              ← 不是 dist/
 EXE命名: akg-v{version}-{commit7}-{YYYYMMDD}-{HHmm}.exe
