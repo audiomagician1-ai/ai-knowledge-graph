@@ -7,16 +7,17 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 7 完成** | 多球体架构(7.1-7.7全部完成), 下一步: Phase 8 数学知识球
+**当前阶段**: 🟢 **Phase 8 进行中** | 数学知识球(8.1种子图谱✅, 8.2-8.7进行中)
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
 
-**当前最高优先任务 — Phase 7: 多球体架构**:
-> **目标**: 球体注册表/切换器/独立种子数据管线, 为数学/英语等知识球做架构准备
-> **前置**: Phase 6 ✅ 完成 (400节点, 615边, 15子域, 400 RAG文档)
-> **已完成**: 7.1-7.7 全部完成 ✅
-> **下一步**: Phase 8 数学知识球
+**当前最高优先任务 — Phase 8: 数学知识球**:
+> **目标**: 上线第二个知识球 — 数学基础, 覆盖高中到大学数学, ~270节点, LaTeX渲染
+> **前置**: Phase 7 ✅ 完成 (多球体架构就绪)
+> **已完成**: 8.1 种子图谱 ✅ (269节点, 366边, 12子域, 29里程碑)
+> **进行中**: 8.2 里程碑验证, 8.3 RAG文档编写
+> **下一步**: 8.4 苏格拉底引擎适配 + 8.5 评估器适配 + 8.6 LaTeX渲染 + 8.7 测试
 
 ### 12周里程碑
 
@@ -31,7 +32,7 @@
 | **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | ✅ 代码就绪 (OAuth需手动配置) |
 | **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | ✅ 完成 (400节点, 615边, 400 RAG文档, 15子域) |
 | **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | ✅ 完成 (7.1-7.7, 453 tests) |
-| **Phase 8** | W19-21 | 数学知识球(高中→大学数学, ~300节点, LaTeX渲染) | 📋 计划中 |
+| **Phase 8** | W19-21 | 数学知识球(高中→大学数学, ~300节点, LaTeX渲染) | 🟢 进行中 (8.1✅) |
 | **Phase 9** | W22-24 | 英语知识球(~250节点) + 跨球体关联链接 | 📋 计划中 |
 
 ---
@@ -1063,7 +1064,21 @@ data/seed/         — 种子图谱数据
    - TEST: +6 BE新测试(graph API multi-domain integration): 默认请求vs显式?domain=ai-engineering数据一致/所有节点domain_id字段匹配/概念详情继承domain_id/无效域subdomains 404/无效域stats 404/域列表完整结构校验(id+name+description+icon+color+stats)
    - GITHUB: 1 open issue (#3 Phase 6 tracking — stale, can be closed), 2 closed
    - VERIFY: 453 tests (200 FE + 253 BE) 全通过, tsc 0 errors, build 3.55s
-   - STATUS: 🎉 **Phase 7 全部完成!** 7.1-7.7 共7个子任务, 多球体架构就绪, 下一步Phase 8数学知识球
+    - STATUS: 🎉 **Phase 7 全部完成!** 7.1-7.7 共7个子任务, 多球体架构就绪, 下一步Phase 8数学知识球
+
+- ✅ **Phase 8.1 数学知识球种子图谱 (2026-03-19, 92644df)**:
+   - **DATA**: 数学球种子图谱 `data/seed/mathematics/seed_graph.json`:
+     - 269个概念节点, 366条边, 12个子域, 29个里程碑
+     - 子域分布: arithmetic(18) + algebra(28) + geometry(22) + trigonometry(20) + analytic-geometry(18) + calculus(35) + linear-algebra(28) + probability(22) + statistics(20) + discrete-math(22) + number-theory(18) + optimization(18)
+     - 难度覆盖: 1-9级, 中位集中在5-7(大学核心)
+     - 0孤立节点, 0重复ID, 所有边引用有效
+   - **REGISTRY**: `data/seed/domains.json` 新增 mathematics 域(icon:🔵, color:#3b82f6, sort_order:2)
+   - **GENERATOR**: `data/seed/mathematics/generate_seed.py` — 可重现的生成脚本, 含完整性校验
+   - **ISSUE**: 创建 GitHub #4 "Phase 8: Mathematics Knowledge Sphere", 关闭 stale #3
+   - TEST: +7 BE新测试(math domain: graph data 269/366 + subdomains 12 + stats + concept detail + neighbors + domain list + no orphan nodes)
+   - GITHUB: 1 open issue (#4 Phase 8), 3 closed
+   - VERIFY: 460 tests (200 FE + 260 BE) 全通过, tsc 0 errors
+   - STATUS: Phase 8.1完成, 数学球269概念/366边/12子域/29里程碑, 下一步: 8.3 RAG文档编写
 
 ```
 输出目录: release/                              ← 不是 dist/
@@ -1248,6 +1263,28 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ---
 
+### Phase 8 数学知识球 🟢 进行中
+
+> **目标**: 上线第二个知识球 — 数学基础, 覆盖高中到大学数学
+> **详细设计**: `docs/EXPANSION_PLAN.md` §4.2
+> **GitHub Issue**: #4
+
+**任务清单**:
+1. ✅ **8.1 种子图谱设计** (92644df) — 269概念, 366边, 12子域(arithmetic/algebra/geometry/trigonometry/analytic-geometry/calculus/linear-algebra/probability/statistics/discrete-math/number-theory/optimization), 29里程碑, generate_seed.py可重现生成
+2. 🟡 **8.2 里程碑节点验证** — 验证29个milestone节点覆盖关键学习节点
+3. 🟡 **8.3 RAG知识文档编写** — ~269篇数学教学文档(含LaTeX公式)
+4. 🟡 **8.4 苏格拉底引擎适配** — 数学领域prompt调优(公式引用、证明引导)
+5. 🟡 **8.5 评估器适配** — 数学理解度评估逻辑(计算推理vs概念理解)
+6. 🟡 **8.6 LaTeX渲染支持** — 前端KaTeX/MathJax集成
+7. 🟡 **8.7 质量审查+测试**
+
+**架构要点**:
+- 种子数据: `data/seed/mathematics/seed_graph.json`
+- RAG文档: `data/rag/mathematics/{subdomain}/{concept}.md`
+- 域注册表: `data/seed/domains.json` (已注册, is_active:true)
+
+---
+
 ## 5. AGENT GUIDELINES（Agent 操作指南）
 
 ### 移动端布局规范（MUST — Web+移动端双平台）
@@ -1263,8 +1300,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (200 tests: learning 24 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 16 + offline-queue 19 + domain 19) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
-cd apps/api && python -m pytest          # 后端测试 ✅ (253 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 22 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17 + multi-domain 4)
-# Total: 453 tests
+cd apps/api && python -m pytest          # 后端测试 ✅ (260 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 29 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17 + multi-domain 4)
+# Total: 460 tests
 ```
 
 ### 提交规范
