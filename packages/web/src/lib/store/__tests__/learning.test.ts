@@ -13,10 +13,24 @@ vi.stubGlobal('localStorage', {
   clear: () => { Object.keys(storage).forEach(k => delete storage[k]); },
 });
 
-// Mock supabase-sync (fire-and-forget, should not affect logic)
+// Mock supabase-sync (fire-and-forget + Supabase-first writes)
 vi.mock('@/lib/store/supabase-sync', () => ({
   syncProgressToCloud: vi.fn(),
   syncHistoryToCloud: vi.fn(),
+  writeProgressToCloud: vi.fn(() => Promise.resolve(true)),
+  writeHistoryToCloud: vi.fn(() => Promise.resolve(true)),
+  isLoggedIn: vi.fn(() => false), // default: anonymous user
+}));
+
+// Mock offline-queue (enqueue for retry on Supabase write failure)
+vi.mock('@/lib/store/offline-queue', () => ({
+  enqueue: vi.fn(),
+  loadQueue: vi.fn(() => []),
+  clearQueue: vi.fn(),
+  queueSize: vi.fn(() => 0),
+  dequeueProcessed: vi.fn(),
+  flushQueue: vi.fn(() => Promise.resolve(0)),
+  registerOnlineFlush: vi.fn(),
 }));
 
 // Mock learning-api (fire-and-forget backend calls)
@@ -189,6 +203,120 @@ describe('useLearningStore', () => {
       store.startLearning('streak_same2');
       const { streak } = useLearningStore.getState();
       expect(streak.current).toBe(1);
+    });
+  });
+
+  describe('Supabase-first path (logged-in users)', () => {
+    beforeEach(async () => {
+      resetStore();
+      // Clear all mock call records
+      const sync = await import('@/lib/store/supabase-sync');
+      (sync.isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(false);
+      (sync.writeProgressToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(true);
+      (sync.writeHistoryToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(true);
+      (sync.syncProgressToCloud as ReturnType<typeof vi.fn>).mockClear();
+      (sync.syncHistoryToCloud as ReturnType<typeof vi.fn>).mockClear();
+      (sync.writeProgressToCloud as ReturnType<typeof vi.fn>).mockClear();
+      (sync.writeHistoryToCloud as ReturnType<typeof vi.fn>).mockClear();
+      const oq = await import('@/lib/store/offline-queue');
+      (oq.enqueue as ReturnType<typeof vi.fn>).mockClear();
+    });
+
+    it('should call writeProgressToCloud when logged in (startLearning)', async () => {
+      const { isLoggedIn, writeProgressToCloud, syncProgressToCloud } = await import('@/lib/store/supabase-sync');
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(true);
+      (writeProgressToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(true);
+
+      const store = useLearningStore.getState();
+      store.startLearning('cloud_test');
+
+      // Wait for async write
+      await new Promise(r => setTimeout(r, 10));
+
+      expect(writeProgressToCloud).toHaveBeenCalled();
+      // syncProgressToCloud should NOT be called when logged in
+      expect(syncProgressToCloud).not.toHaveBeenCalled();
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(false);
+    });
+
+    it('should call syncProgressToCloud when anonymous (startLearning)', async () => {
+      const { isLoggedIn, syncProgressToCloud, writeProgressToCloud } = await import('@/lib/store/supabase-sync');
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(false);
+
+      const store = useLearningStore.getState();
+      store.startLearning('anon_test');
+
+      await new Promise(r => setTimeout(r, 10));
+
+      expect(syncProgressToCloud).toHaveBeenCalled();
+      expect(writeProgressToCloud).not.toHaveBeenCalled();
+    });
+
+    it('should enqueue on writeProgressToCloud failure', async () => {
+      const { isLoggedIn, writeProgressToCloud } = await import('@/lib/store/supabase-sync');
+      const { enqueue } = await import('@/lib/store/offline-queue');
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(true);
+      (writeProgressToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(false); // simulate failure
+
+      const store = useLearningStore.getState();
+      store.startLearning('offline_test');
+
+      // Wait for async write + enqueue
+      await new Promise(r => setTimeout(r, 20));
+
+      expect(enqueue).toHaveBeenCalledWith(expect.objectContaining({
+        type: 'progress',
+        concept_id: 'offline_test',
+      }));
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(false);
+      (writeProgressToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(true);
+    });
+
+    it('should call writeHistoryToCloud when logged in (recordAssessment)', async () => {
+      const { isLoggedIn, writeProgressToCloud, writeHistoryToCloud } = await import('@/lib/store/supabase-sync');
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(true);
+      (writeProgressToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(true);
+      (writeHistoryToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(true);
+
+      const store = useLearningStore.getState();
+      store.recordAssessment('assess_cloud', 'Assess Cloud', 85, true);
+
+      await new Promise(r => setTimeout(r, 10));
+
+      expect(writeProgressToCloud).toHaveBeenCalled();
+      expect(writeHistoryToCloud).toHaveBeenCalledWith('assess_cloud', 'Assess Cloud', 85, true);
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(false);
+    });
+
+    it('should enqueue history on writeHistoryToCloud failure', async () => {
+      const { isLoggedIn, writeProgressToCloud, writeHistoryToCloud } = await import('@/lib/store/supabase-sync');
+      const { enqueue } = await import('@/lib/store/offline-queue');
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(true);
+      (writeProgressToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(true);
+      (writeHistoryToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(false); // simulate failure
+
+      const store = useLearningStore.getState();
+      store.recordAssessment('assess_offline', 'Assess Offline', 70, false);
+
+      await new Promise(r => setTimeout(r, 20));
+
+      expect(enqueue).toHaveBeenCalledWith(expect.objectContaining({
+        type: 'history',
+        concept_id: 'assess_offline',
+        score: 70,
+        mastered: false,
+      }));
+
+      (isLoggedIn as ReturnType<typeof vi.fn>).mockReturnValue(false);
+      (writeHistoryToCloud as ReturnType<typeof vi.fn>).mockResolvedValue(true);
     });
   });
 

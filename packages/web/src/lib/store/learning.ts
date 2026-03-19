@@ -4,7 +4,12 @@ import {
   apiStartLearning, apiRecordAssessment,
   apiFetchStats, apiSyncToBackend,
 } from '@/lib/api/learning-api';
-import { syncProgressToCloud, syncHistoryToCloud } from './supabase-sync';
+import {
+  syncProgressToCloud, syncHistoryToCloud,
+  writeProgressToCloud, writeHistoryToCloud,
+  isLoggedIn,
+} from './supabase-sync';
+import { enqueue } from './offline-queue';
 
 // ========================================
 // Simplified concept progress for anonymous users
@@ -398,8 +403,19 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
     // Async write to backend (fire-and-forget)
     apiStartLearning(conceptId);
-    // Async write to Supabase cloud (fire-and-forget, logged-in only)
-    syncProgressToCloud(updated);
+
+    // Supabase-first path for logged-in users (ADR-011)
+    if (isLoggedIn()) {
+      writeProgressToCloud(updated).then(ok => {
+        if (!ok) {
+          // Supabase write failed — enqueue for offline retry
+          enqueue({ type: 'progress', concept_id: updated.concept_id, data: { ...updated }, created_at: now });
+        }
+      });
+    } else {
+      // Anonymous: fire-and-forget sync (if configured)
+      syncProgressToCloud(updated);
+    }
   },
 
   recordAssessment: (conceptId, conceptName, score, mastered) => {
@@ -450,9 +466,20 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
     // Async write to backend (fire-and-forget)
     apiRecordAssessment(conceptId, conceptName, score, mastered);
-    // Async write to Supabase cloud (fire-and-forget, logged-in only)
-    syncProgressToCloud(updated);
-    syncHistoryToCloud(conceptId, conceptName, score, mastered);
+
+    // Supabase-first path for logged-in users (ADR-011)
+    if (isLoggedIn()) {
+      writeProgressToCloud(updated).then(ok => {
+        if (!ok) enqueue({ type: 'progress', concept_id: updated.concept_id, data: { ...updated }, created_at: now });
+      });
+      writeHistoryToCloud(conceptId, conceptName, score, mastered).then(ok => {
+        if (!ok) enqueue({ type: 'history', concept_id: conceptId, concept_name: conceptName, score, mastered, created_at: now });
+      });
+    } else {
+      // Anonymous: fire-and-forget sync (if configured)
+      syncProgressToCloud(updated);
+      syncHistoryToCloud(conceptId, conceptName, score, mastered);
+    }
   },
 
   getConceptStatus: (conceptId) => {

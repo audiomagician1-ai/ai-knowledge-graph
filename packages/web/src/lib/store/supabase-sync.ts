@@ -24,7 +24,7 @@ function getUserId(): string | null {
   return useAuthStore.getState().user?.id ?? null;
 }
 
-function isLoggedIn(): boolean {
+export function isLoggedIn(): boolean {
   return useAuthStore.getState().isAuthenticated();
 }
 
@@ -43,25 +43,53 @@ function toDbStatus(localStatus: string): string {
 // Progress: Upload / Download / Upsert
 // ════════════════════════════════════════════
 
-/** Upload a single concept progress to Supabase */
+/** Build the DB row from a ConceptProgress (reused by sync and write) */
+function buildProgressRow(uid: string, p: ConceptProgress) {
+  return {
+    user_id: uid,
+    concept_id: p.concept_id,
+    status: toDbStatus(p.status),
+    mastery_level: (p.mastery_score || 0) / 100,
+    total_sessions: p.sessions || 0,
+    total_time_sec: p.total_time_sec || 0,
+    feynman_score: p.last_score ? p.last_score / 100 : null,
+    last_feynman_at: p.mastered_at ? new Date(p.mastered_at).toISOString() : null,
+    updated_at: new Date(p.last_learn_at || Date.now()).toISOString(),
+  };
+}
+
+/** Upload a single concept progress to Supabase (fire-and-forget) */
 export async function syncProgressToCloud(p: ConceptProgress): Promise<void> {
   const uid = getUserId();
   if (!uid) return;
   try {
-    const { error } = await supabase.from('user_concept_status').upsert({
-      user_id: uid,
-      concept_id: p.concept_id,
-      status: toDbStatus(p.status),
-      mastery_level: (p.mastery_score || 0) / 100,
-      total_sessions: p.sessions || 0,
-      total_time_sec: p.total_time_sec || 0,
-      feynman_score: p.last_score ? p.last_score / 100 : null,
-      last_feynman_at: p.mastered_at ? new Date(p.mastered_at).toISOString() : null,
-      updated_at: new Date(p.last_learn_at || Date.now()).toISOString(),
-    }, { onConflict: 'user_id,concept_id' });
+    const { error } = await supabase.from('user_concept_status')
+      .upsert(buildProgressRow(uid, p), { onConflict: 'user_id,concept_id' });
     if (error) console.warn('[sync] upsert progress failed:', p.concept_id, error.message);
   } catch (err) {
     console.warn('[sync] Failed to sync progress:', p.concept_id, err);
+  }
+}
+
+/**
+ * Write a single concept progress to Supabase — returns true on success.
+ * Used by Supabase-first path (logged-in users) where we need to know if the write succeeded.
+ * On failure, callers should enqueue to offline queue.
+ */
+export async function writeProgressToCloud(p: ConceptProgress): Promise<boolean> {
+  const uid = getUserId();
+  if (!uid) return false;
+  try {
+    const { error } = await supabase.from('user_concept_status')
+      .upsert(buildProgressRow(uid, p), { onConflict: 'user_id,concept_id' });
+    if (error) {
+      console.warn('[sync] writeProgress failed:', p.concept_id, error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn('[sync] writeProgress error:', p.concept_id, err);
+    return false;
   }
 }
 
@@ -106,7 +134,7 @@ export async function downloadProgressFromCloud(): Promise<Record<string, Concep
 // History: Upload / Download
 // ════════════════════════════════════════════
 
-/** Upload a single learning event to Supabase */
+/** Upload a single learning event to Supabase (fire-and-forget) */
 export async function syncHistoryToCloud(
   conceptId: string, conceptName: string, score: number, mastered: boolean
 ): Promise<void> {
@@ -122,6 +150,33 @@ export async function syncHistoryToCloud(
     if (error) console.warn('[sync] insert history failed:', conceptId, error.message);
   } catch (err) {
     console.warn('[sync] Failed to sync history event:', err);
+  }
+}
+
+/**
+ * Write a single learning event to Supabase — returns true on success.
+ * Used by Supabase-first path (logged-in users).
+ */
+export async function writeHistoryToCloud(
+  conceptId: string, conceptName: string, score: number, mastered: boolean
+): Promise<boolean> {
+  const uid = getUserId();
+  if (!uid) return false;
+  try {
+    const { error } = await supabase.from('learning_events').insert({
+      user_id: uid,
+      concept_id: conceptId,
+      event_type: mastered ? 'mastered' : 'feynman_attempt',
+      payload: { concept_name: conceptName, score, mastered },
+    });
+    if (error) {
+      console.warn('[sync] writeHistory failed:', conceptId, error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn('[sync] writeHistory error:', err);
+    return false;
   }
 }
 
@@ -334,4 +389,33 @@ onAuthLogin(async (_userId: string) => {
   } catch (err) {
     console.warn('[sync] Full sync failed:', err);
   }
+});
+
+// ════════════════════════════════════════════
+// Offline queue flush — auto-replay on connectivity restore
+// ════════════════════════════════════════════
+
+import { registerOnlineFlush, flushQueue, type QueuedWrite } from './offline-queue';
+import type { ConceptProgress as _CP } from './learning';
+
+/** Replay a queued progress write */
+async function _replayProgress(data: Record<string, unknown>): Promise<boolean> {
+  return writeProgressToCloud(data as unknown as _CP);
+}
+
+/** Replay a queued history write */
+async function _replayHistory(conceptId: string, conceptName: string, score: number, mastered: boolean): Promise<boolean> {
+  return writeHistoryToCloud(conceptId, conceptName, score, mastered);
+}
+
+const _queueWriters = { writeProgress: _replayProgress, writeHistory: _replayHistory };
+
+// Register online/visibility flush listeners
+registerOnlineFlush(_queueWriters);
+
+// Also flush when login succeeds (in case items queued while offline then user logs in)
+onAuthLogin(async () => {
+  try {
+    await flushQueue(_queueWriters);
+  } catch { /* ignore */ }
 });
