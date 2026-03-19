@@ -65,7 +65,8 @@ data/*.db-shm
 .turbo/
 .wrangler/
 
-# PowerShell artifacts (2>$null creates a file named "$null")
+# PowerShell artifacts (2>$null creates a file named "$null", 2>1] creates "1]")
 $null
+1]
 pytest_out.txt
 vitest_out.txt
