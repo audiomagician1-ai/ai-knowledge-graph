@@ -915,6 +915,15 @@ data/seed/         — 种子图谱数据
    - VERIFY: 387 tests (144 FE + 243 BE) 全通过, tsc 0 errors, build 3.17s
    - STATUS: 发现1个minor设计系统一致性问题(代码块硬编码颜色)并修复, 代码质量持续稳定
 
+- ✅ **Phase 5.5.3 Step 1-3: Supabase-first 数据持久化 (2026-03-19, 306d60a)**:
+   - **FEAT**: learning.ts 双路径写入 — 登录用户: `writeProgressToCloud()`返回boolean, 失败时`enqueue()`到offline-queue; 匿名用户: 保持`syncProgressToCloud()`fire-and-forget
+   - **FEAT**: supabase-sync.ts 新增`writeProgressToCloud()`/`writeHistoryToCloud()`返回boolean的可靠写入函数(替代fire-and-forget); 新增`buildProgressRow()`DRY辅助; 导出`isLoggedIn()`
+   - **FEAT**: offline-queue.ts 新增`flushQueue()`重放机制 + `registerOnlineFlush()`浏览器online/visibilitychange事件自动flush; 支持progress/history两种类型
+   - **INTEGRATION**: supabase-sync.ts 注册online flush writers + 登录时自动flush离线队列
+   - TEST: +5 FE新测试(Supabase-first path: writeProgress logged-in/anonymous路径分流 + enqueue-on-failure + writeHistory logged-in + enqueue history failure)
+   - VERIFY: 392 tests (149 FE + 243 BE) 全通过, tsc 0 errors, build 3.02s
+   - STATUS: Phase 5.5.3 Step 1(learning.ts重构) + Step 2(supabase-sync简化) + Step 3(offline queue集成) 完成; Step 4(首次登录迁移)由现有fullSync()处理已就绪
+
 - ✅ **第五十七轮深度巡逻审查 (2026-03-19)**:
    - REVIEW: 10+模块深度审查全通过(0 critical/0 major/0 minor issues):
      - FE: dialogue.ts(extractErrorDetail/stale guards/abort cleanup/auto-save/flushBuffer/isInitializing/module-level AbortController) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend push-only/getStreakDates) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental history sync/status whitelist/fullSync download-first) + MarkdownRenderer.tsx(CSS variable code colors) + offline-queue.ts(Phase 5.5.3 prep, unused, clean types)
@@ -922,7 +931,6 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 387 tests (144 FE + 243 BE) 全通过, tsc 0 errors, build 3.66s
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续多轮零issues审查**
-   - NEXT: Phase 5.5.3 数据持久化策略迭代(Supabase-first for logged-in users)为下一个待实施任务
 
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
@@ -1085,14 +1093,10 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ```
 
 **待实施步骤**:
-1. 🟡 **learning.ts 重构** — 登录用户的 `startLearning`/`recordAssessment` 改为 Supabase-first + localStorage 缓存:
-   - 写: 先写 Supabase → 成功后更新 localStorage; Supabase 不可用时降级为 localStorage-first + 队列重试
-   - 读: 先读 Supabase → 缓存到 localStorage; 离线时读 localStorage
-2. 🟡 **supabase-sync.ts 简化** — 登录用户不再需要复杂的双向合并(fullSync), 改为:
-   - 登录时: Supabase → localStorage 单向下载(Supabase 为权威)
-   - 退出时: 清空 localStorage 敏感数据(保留匿名学习数据)
-3. 🟡 **离线队列** — 网络中断时暂存写操作, 恢复后批量同步
-4. 🟡 **首次登录迁移** — 匿名用户注册/登录时, localStorage 数据一次性上传到 Supabase(保留现有 fullSync 逻辑作为迁移工具)
+1. ✅ **learning.ts 重构** (306d60a) — 登录用户的 `startLearning`/`recordAssessment` 改为 Supabase-first: writeProgressToCloud/writeHistoryToCloud 返回 boolean, 失败时 enqueue 到 offline-queue; 匿名用户保持 localStorage-first
+2. ✅ **supabase-sync.ts 可靠写入** (306d60a) — 新增 writeProgressToCloud/writeHistoryToCloud (返回 boolean), buildProgressRow DRY 辅助, 导出 isLoggedIn; 登录时自动 flush 离线队列
+3. ✅ **离线队列** (306d60a) — offline-queue.ts flushQueue() 重放 + registerOnlineFlush() 浏览器 online/visibilitychange 事件自动 flush
+4. ✅ **首次登录迁移** — 现有 fullSync() onAuthLogin 回调已处理(下载云端→合并→上传→写回 localStorage)
 
 **⚠️ 注意事项**:
 - Phase 5 的 localStorage-first + fire-and-forget 双写架构代码保留, 作为匿名用户路径
@@ -1115,9 +1119,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (144 tests: learning 12 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (149 tests: learning 17 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 10) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (243 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
-# Total: 387 tests
+# Total: 392 tests
 ```
 
 ### 提交规范
