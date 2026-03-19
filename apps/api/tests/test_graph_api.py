@@ -628,3 +628,36 @@ async def test_three_domains_listed():
         assert domain_ids == {"ai-engineering", "mathematics", "english"}
 
 
+# ── English RAG Tests ───────────────────────────
+
+@pytest.mark.asyncio
+async def test_rag_english_stats():
+    """English RAG stats should reflect 200 documents."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=english")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 200
+        assert data["domain"] == "english"
+
+
+@pytest.mark.asyncio
+async def test_rag_english_concept():
+    """Should return RAG content for an English concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/present-perfect?domain=english")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "present-perfect"
+        assert data["domain"] == "english"
+        assert "核心内容" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_english_404_wrong_domain():
+    """English concept should 404 when queried against math RAG."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/present-perfect?domain=mathematics")
+        assert resp.status_code == 404
+
+
