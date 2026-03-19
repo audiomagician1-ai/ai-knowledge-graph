@@ -237,13 +237,17 @@ const FINANCE_ASSESSMENT_SUPPLEMENT = `
 - **边界条件**: 用户是否理解金融模型的假设前提和适用范围？
 `;
 
-function getAssessmentSupplement(domainId: string | undefined): string {
-  if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
-  if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
-  if (domainId === 'physics') return PHYSICS_ASSESSMENT_SUPPLEMENT;
-  if (domainId === 'product-design') return PRODUCT_ASSESSMENT_SUPPLEMENT;
-  if (domainId === 'finance') return FINANCE_ASSESSMENT_SUPPLEMENT;
-  return '';
+// Domain-specific assessment supplement registry — add new domains here
+const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
+  'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
+  'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
+  'physics': PHYSICS_ASSESSMENT_SUPPLEMENT,
+  'product-design': PRODUCT_ASSESSMENT_SUPPLEMENT,
+  'finance': FINANCE_ASSESSMENT_SUPPLEMENT,
+};
+
+export function getAssessmentSupplement(domainId: string | undefined): string {
+  return (domainId && ASSESSMENT_SUPPLEMENTS[domainId]) || '';
 }
 
 // ─── Constants ───
@@ -352,6 +356,19 @@ function getConceptContext(conceptId: string) {
   return { node, prereqs, deps, related };
 }
 
+// Domain-specific teaching supplement registry — synced from apps/api/engines/dialogue/prompts/feynman_system.py
+const DOMAIN_SUPPLEMENTS: Record<string, string> = {
+  'mathematics': `\n## 数学教学特殊规则\n\n1. **公式使用**: 讲解中使用 LaTeX 格式的数学公式（行内用 \`$...$\`，独立公式用 \`$$...$$\`）\n2. **证明引导**: 对定理类概念，引导用户理解证明思路而非仅记结论\n3. **计算验证**: 鼓励用户动手计算，提供数值例子\n4. **直觉优先**: 先给几何直觉或物理意义，再给严格定义\n5. **不要提及编程语言或代码**：这是纯数学教学\n`,
+  'english': `\n## 英语教学特殊规则\n\n1. **双语讲解**: 用中文解释英语知识点，关键术语和例句保留英文原文并附中文翻译\n2. **例句丰富**: 每个知识点提供至少2-3个英文例句\n3. **对比教学**: 主动对比中英文差异，指出母语负迁移错误\n4. **语境导向**: 将语法规则放在真实语境中讲解\n5. **分层讲解**: 先给简单例子建立直觉，再讲规则细节和例外\n6. **不要使用LaTeX公式**：这是英语教学，用自然语言和英文例句\n`,
+  'physics': `\n## 物理教学特殊规则\n\n1. **公式使用**: 使用 LaTeX 格式的物理公式，标注物理量的单位和量纲\n2. **直觉优先**: 先建立物理图像和直觉，再给数学表达。用类比、思想实验帮助理解\n3. **实验连接**: 将概念与真实实验或日常现象联系\n4. **单位和量纲**: 强调SI单位，进行量纲分析验证公式\n5. **近似与适用范围**: 明确定律的适用条件（如牛顿力学适用于低速宏观物体）\n6. **数值估算**: 鼓励数量级估算，培养物理直觉\n7. **历史脉络**: 适当介绍物理概念的发现历史\n`,
+  'product-design': `\n## 产品设计教学特殊规则\n\n1. **案例驱动**: 每个概念尽量用真实产品案例说明（如微信、淘宝、Uber、Notion等）\n2. **框架与工具**: 介绍概念时同时说明对应的实用框架或工具\n3. **场景化教学**: 用"假设你是某产品的PM"的场景引导思考\n4. **权衡思维**: 明确指出各方案的利弊，培养权衡判断\n5. **避免教条**: 强调"取决于具体场景"，培养灵活运用能力\n6. **数据意识**: 涉及数据概念时用具体数字和计算示例\n7. **跨职能视角**: 适时引入设计、开发、运营等其他角色的关注点\n`,
+  'finance': `\n## 金融理财教学特殊规则\n\n1. **数字驱动**: 金融概念必须配合具体数字和计算示例。如讲复利用"¥10,000年化8%，30年后≈¥100,627"\n2. **风险意识**: 始终强调风险与收益的权衡关系。每个投资概念都要明确指出潜在风险\n3. **公式与直觉并重**: 金融公式需同时解释数学形式和经济直觉。使用 LaTeX 公式如 $NPV = \\sum \\frac{CF_t}{(1+r)^t}$\n4. **真实案例**: 用真实市场案例说明概念（如2008金融危机、巴菲特的价值投资）\n5. **中国视角**: 优先使用中国市场案例（A股、沪深300、余额宝、LPR）\n6. **避免投资建议**: 教学目的是传授知识框架，不对具体投资品种做推荐\n7. **行为偏差**: 教学中穿插行为金融学洞察（损失厌恶、过度自信、锚定效应）\n`,
+};
+
+export function getDomainSupplement(domainId: string | undefined): string {
+  return (domainId && DOMAIN_SUPPLEMENTS[domainId]) || '';
+}
+
 function buildSystemPrompt(node: GraphNode, prereqs: string[], deps: string[], related: string[]): string {
   const graphContext = `## 图谱上下文（帮助你理解这个概念在知识体系中的位置）
 - **先修概念**: ${prereqs.join(', ') || '无'}
@@ -360,20 +377,9 @@ function buildSystemPrompt(node: GraphNode, prereqs: string[], deps: string[], r
 - **是否为里程碑**: ${node.is_milestone ? '⭐ 是（里程碑节点）' : '否'}
 `;
 
-  // Domain-specific supplement
+  // Domain-specific supplement (registry lookup)
   const domainId = 'domain_id' in node ? (node as { domain_id?: string }).domain_id : undefined;
-  let domainSupplement = '';
-  if (domainId === 'mathematics') {
-    domainSupplement = `\n## 数学教学特殊规则\n\n1. **公式使用**: 讲解中使用 LaTeX 格式的数学公式（行内用 \`$...$\`，独立公式用 \`$$...$$\`）\n2. **证明引导**: 对定理类概念，引导用户理解证明思路而非仅记结论\n3. **计算验证**: 鼓励用户动手计算，提供数值例子\n4. **直觉优先**: 先给几何直觉或物理意义，再给严格定义\n5. **不要提及编程语言或代码**：这是纯数学教学\n`;
-  } else if (domainId === 'english') {
-    domainSupplement = `\n## 英语教学特殊规则\n\n1. **双语讲解**: 用中文解释英语知识点，关键术语和例句保留英文原文并附中文翻译\n2. **例句丰富**: 每个知识点提供至少2-3个英文例句\n3. **对比教学**: 主动对比中英文差异，指出母语负迁移错误\n4. **语境导向**: 将语法规则放在真实语境中讲解\n5. **分层讲解**: 先给简单例子建立直觉，再讲规则细节和例外\n6. **不要使用LaTeX公式**：这是英语教学，用自然语言和英文例句\n`;
-  } else if (domainId === 'physics') {
-    domainSupplement = `\n## 物理教学特殊规则\n\n1. **公式使用**: 使用 LaTeX 格式的物理公式，标注物理量的单位和量纲\n2. **直觉优先**: 先建立物理图像和直觉，再给数学表达。用类比、思想实验帮助理解\n3. **实验连接**: 将概念与真实实验或日常现象联系\n4. **单位和量纲**: 强调SI单位，进行量纲分析验证公式\n5. **近似与适用范围**: 明确定律的适用条件（如牛顿力学适用于低速宏观物体）\n6. **数值估算**: 鼓励数量级估算，培养物理直觉\n7. **历史脉络**: 适当介绍物理概念的发现历史\n`;
-  } else if (domainId === 'product-design') {
-    domainSupplement = `\n## 产品设计教学特殊规则\n\n1. **案例驱动**: 每个概念尽量用真实产品案例说明（如微信、淘宝、Uber、Notion等）\n2. **框架与工具**: 介绍概念时同时说明对应的实用框架或工具\n3. **场景化教学**: 用"假设你是某产品的PM"的场景引导思考\n4. **权衡思维**: 明确指出各方案的利弊，培养权衡判断\n5. **避免教条**: 强调"取决于具体场景"，培养灵活运用能力\n6. **数据意识**: 涉及数据概念时用具体数字和计算示例\n7. **跨职能视角**: 适时引入设计、开发、运营等其他角色的关注点\n`;
-  } else if (domainId === 'finance') {
-    domainSupplement = `\n## 金融理财教学特殊规则\n\n1. **数字驱动**: 金融概念必须配合具体数字和计算示例。如讲复利用"¥10,000年化8%，30年后≈¥100,627"\n2. **风险意识**: 始终强调风险与收益的权衡关系。每个投资概念都要明确指出潜在风险\n3. **公式与直觉并重**: 金融公式需同时解释数学形式和经济直觉。使用 LaTeX 公式如 $NPV = \\sum \\frac{CF_t}{(1+r)^t}$\n4. **真实案例**: 用真实市场案例说明概念（如2008金融危机、巴菲特的价值投资）\n5. **中国视角**: 优先使用中国市场案例（A股、沪深300、余额宝、LPR）\n6. **避免投资建议**: 教学目的是传授知识框架，不对具体投资品种做推荐\n7. **行为偏差**: 教学中穿插行为金融学洞察（损失厌恶、过度自信、锚定效应）\n`;
-  }
+  const domainSupplement = getDomainSupplement(domainId);
 
   return fmt(FEYNMAN_SYSTEM_PROMPT, {
     concept_name: node.label,

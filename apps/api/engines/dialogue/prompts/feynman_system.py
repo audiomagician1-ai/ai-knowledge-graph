@@ -369,6 +369,27 @@ FINANCE_ASSESSMENT_SUPPLEMENT = """
 - **边界条件**: 用户是否理解金融模型的假设前提和适用范围？（如有效市场假说的局限性）
 """
 
+# ---------------------------------------------------------------------------
+# Domain supplement registries — add new domains here (O(1) per domain)
+# ---------------------------------------------------------------------------
+
+DOMAIN_SUPPLEMENTS: dict[str, str] = {
+    "mathematics": MATH_DOMAIN_SUPPLEMENT,
+    "english": ENGLISH_DOMAIN_SUPPLEMENT,
+    "physics": PHYSICS_DOMAIN_SUPPLEMENT,
+    "product-design": PRODUCT_DOMAIN_SUPPLEMENT,
+    "finance": FINANCE_DOMAIN_SUPPLEMENT,
+}
+
+ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
+    "mathematics": MATH_ASSESSMENT_SUPPLEMENT,
+    "english": ENGLISH_ASSESSMENT_SUPPLEMENT,
+    "physics": PHYSICS_ASSESSMENT_SUPPLEMENT,
+    "product-design": PRODUCT_ASSESSMENT_SUPPLEMENT,
+    "finance": FINANCE_ASSESSMENT_SUPPLEMENT,
+}
+
+
 ASSESSMENT_SYSTEM_PROMPT = """你是一个知识理解度评估专家。请根据对话记录评估用户对概念的真实理解程度。
 
 在本学习系统中，AI会先讲解知识，然后通过选项式提问和自由问答检验用户的理解。用户可以通过点选预设选项或自由输入来作答。

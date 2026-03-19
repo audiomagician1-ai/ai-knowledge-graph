@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { parseChoicesFromContent, windowMessages, parseAssessmentJSON, tokenLimitParam } from '../direct-llm';
+import { parseChoicesFromContent, windowMessages, parseAssessmentJSON, tokenLimitParam, getDomainSupplement, getAssessmentSupplement } from '../direct-llm';
 
 describe('parseChoicesFromContent', () => {
   it('should return empty for empty/null input', () => {
@@ -242,5 +242,37 @@ describe('tokenLimitParam', () => {
     // "gpt-4o" should NOT match (4o != o4, but starts with o-check)
     expect(tokenLimitParam('gpt-4o-mini', 800)).toEqual({ max_tokens: 800 });
     expect(tokenLimitParam('modelo1', 800)).toEqual({ max_tokens: 800 });
+  });
+});
+
+describe('getDomainSupplement', () => {
+  it('should return supplement for known domains', () => {
+    expect(getDomainSupplement('mathematics')).toContain('数学教学特殊规则');
+    expect(getDomainSupplement('english')).toContain('英语教学特殊规则');
+    expect(getDomainSupplement('physics')).toContain('物理教学特殊规则');
+    expect(getDomainSupplement('product-design')).toContain('产品设计教学特殊规则');
+    expect(getDomainSupplement('finance')).toContain('金融理财教学特殊规则');
+  });
+
+  it('should return empty for unknown/default domain', () => {
+    expect(getDomainSupplement('ai-engineering')).toBe('');
+    expect(getDomainSupplement('nonexistent')).toBe('');
+    expect(getDomainSupplement(undefined)).toBe('');
+  });
+});
+
+describe('getAssessmentSupplement', () => {
+  it('should return assessment supplement for known domains', () => {
+    expect(getAssessmentSupplement('mathematics')).toContain('数学领域评估特殊指标');
+    expect(getAssessmentSupplement('english')).toContain('英语领域评估特殊指标');
+    expect(getAssessmentSupplement('physics')).toContain('物理领域评估特殊指标');
+    expect(getAssessmentSupplement('product-design')).toContain('产品设计领域评估特殊指标');
+    expect(getAssessmentSupplement('finance')).toContain('金融理财领域评估特殊指标');
+  });
+
+  it('should return empty for unknown/default domain', () => {
+    expect(getAssessmentSupplement('ai-engineering')).toBe('');
+    expect(getAssessmentSupplement('nonexistent')).toBe('');
+    expect(getAssessmentSupplement(undefined)).toBe('');
   });
 });

@@ -16,11 +16,7 @@ from llm.router import llm_router
 from engines.dialogue.prompts.feynman_system import (
     FEYNMAN_SYSTEM_PROMPT,
     GRAPH_CONTEXT_TEMPLATE,
-    MATH_DOMAIN_SUPPLEMENT,
-    ENGLISH_DOMAIN_SUPPLEMENT,
-    PHYSICS_DOMAIN_SUPPLEMENT,
-    PRODUCT_DOMAIN_SUPPLEMENT,
-    FINANCE_DOMAIN_SUPPLEMENT,
+    DOMAIN_SUPPLEMENTS,
     parse_ai_response,
 )
 
@@ -105,18 +101,11 @@ class SocraticEngine:
         if rag_content:
             graph_context += f"\n\n## 参考知识文档（你的讲解素材，请基于以下内容进行教学）\n\n{rag_content}"
 
-        # 数学领域特殊prompt补充
+        # Domain-specific prompt supplement (registry lookup)
         domain_id = concept.get("domain_id", "ai-engineering")
-        if domain_id == "mathematics":
-            graph_context += MATH_DOMAIN_SUPPLEMENT
-        elif domain_id == "english":
-            graph_context += ENGLISH_DOMAIN_SUPPLEMENT
-        elif domain_id == "physics":
-            graph_context += PHYSICS_DOMAIN_SUPPLEMENT
-        elif domain_id == "product-design":
-            graph_context += PRODUCT_DOMAIN_SUPPLEMENT
-        elif domain_id == "finance":
-            graph_context += FINANCE_DOMAIN_SUPPLEMENT
+        domain_supplement = DOMAIN_SUPPLEMENTS.get(domain_id, "")
+        if domain_supplement:
+            graph_context += domain_supplement
 
         return FEYNMAN_SYSTEM_PROMPT.format(
             concept_name=concept["name"],

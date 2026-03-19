@@ -230,13 +230,17 @@ const FINANCE_ASSESSMENT_SUPPLEMENT = `
 - **边界条件**: 用户是否理解金融模型的假设前提和适用范围？
 `;
 
+// Domain-specific assessment supplement registry — add new domains here
+const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
+  'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
+  'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
+  'physics': PHYSICS_ASSESSMENT_SUPPLEMENT,
+  'product-design': PRODUCT_ASSESSMENT_SUPPLEMENT,
+  'finance': FINANCE_ASSESSMENT_SUPPLEMENT,
+};
+
 export function getAssessmentSupplement(domainId: string | undefined): string {
-  if (domainId === 'mathematics') return MATH_ASSESSMENT_SUPPLEMENT;
-  if (domainId === 'english') return ENGLISH_ASSESSMENT_SUPPLEMENT;
-  if (domainId === 'physics') return PHYSICS_ASSESSMENT_SUPPLEMENT;
-  if (domainId === 'product-design') return PRODUCT_ASSESSMENT_SUPPLEMENT;
-  if (domainId === 'finance') return FINANCE_ASSESSMENT_SUPPLEMENT;
-  return '';
+  return (domainId && ASSESSMENT_SUPPLEMENTS[domainId]) || '';
 }
 
 /** Simple template interpolation */

@@ -263,3 +263,45 @@ class TestDomainAwareAssessment:
         assert "语法" not in MATH_ASSESSMENT_SUPPLEMENT
         assert "词汇" not in MATH_ASSESSMENT_SUPPLEMENT
         assert "发音" not in MATH_ASSESSMENT_SUPPLEMENT
+
+
+class TestDomainSupplementRegistries:
+    """Verify DOMAIN_SUPPLEMENTS and ASSESSMENT_SUPPLEMENTS registries."""
+
+    def test_domain_supplements_covers_all_domains(self):
+        """Registry should have entries for all non-default domains."""
+        from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS
+        expected = {"mathematics", "english", "physics", "product-design", "finance"}
+        assert set(DOMAIN_SUPPLEMENTS.keys()) == expected
+
+    def test_assessment_supplements_covers_all_domains(self):
+        """Assessment registry should have entries for all non-default domains."""
+        from engines.dialogue.prompts.feynman_system import ASSESSMENT_SUPPLEMENTS
+        expected = {"mathematics", "english", "physics", "product-design", "finance"}
+        assert set(ASSESSMENT_SUPPLEMENTS.keys()) == expected
+
+    def test_domain_supplements_values_non_empty(self):
+        """All domain supplement values should be non-empty strings."""
+        from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS
+        for domain_id, supplement in DOMAIN_SUPPLEMENTS.items():
+            assert isinstance(supplement, str), f"{domain_id} supplement is not a string"
+            assert len(supplement.strip()) > 50, f"{domain_id} supplement is too short"
+
+    def test_assessment_supplements_values_non_empty(self):
+        """All assessment supplement values should be non-empty strings."""
+        from engines.dialogue.prompts.feynman_system import ASSESSMENT_SUPPLEMENTS
+        for domain_id, supplement in ASSESSMENT_SUPPLEMENTS.items():
+            assert isinstance(supplement, str), f"{domain_id} assessment is not a string"
+            assert len(supplement.strip()) > 50, f"{domain_id} assessment is too short"
+
+    def test_default_domain_not_in_registries(self):
+        """ai-engineering (default) should NOT be in registries (no special supplement)."""
+        from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+        assert "ai-engineering" not in DOMAIN_SUPPLEMENTS
+        assert "ai-engineering" not in ASSESSMENT_SUPPLEMENTS
+
+    def test_registry_get_returns_empty_for_unknown(self):
+        """Unknown domain should return empty string via .get()."""
+        from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+        assert DOMAIN_SUPPLEMENTS.get("nonexistent", "") == ""
+        assert ASSESSMENT_SUPPLEMENTS.get("nonexistent", "") == ""
