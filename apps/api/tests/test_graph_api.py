@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -780,5 +780,96 @@ async def test_cross_links_concepts_exist_in_domains():
                 f"Source concept {src_domain}:{src_id} not found"
             assert tgt_id in domain_concepts.get(tgt_domain, set()), \
                 f"Target concept {tgt_domain}:{tgt_id} not found"
+
+
+# ── Physics Domain Tests (Phase 10.1) ──────────────────────
+
+
+@pytest.mark.asyncio
+async def test_physics_graph_data():
+    """Physics domain should return graph data with correct structure."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=physics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert "nodes" in data
+        assert "edges" in data
+        assert len(data["nodes"]) >= 190  # ~194 concepts
+
+
+@pytest.mark.asyncio
+async def test_physics_node_count():
+    """Physics domain should have ~194 concepts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=physics")
+        data = resp.json()
+        assert len(data["nodes"]) >= 190
+        assert len(data["edges"]) >= 220
+
+
+@pytest.mark.asyncio
+async def test_physics_subdomains():
+    """Physics should have 10 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=physics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 10
+        sub_ids = {s["id"] for s in data}
+        assert "classical-mechanics" in sub_ids
+        assert "quantum-mechanics" in sub_ids
+        assert "thermodynamics" in sub_ids
+        assert "electromagnetism" in sub_ids
+
+
+@pytest.mark.asyncio
+async def test_physics_concept_detail():
+    """Should return concept detail for a physics concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/newtons-second-law?domain=physics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "newtons-second-law"
+        assert data["domain_id"] == "physics"
+        assert data["subdomain_id"] == "classical-mechanics"
+
+
+@pytest.mark.asyncio
+async def test_physics_stats():
+    """Physics domain stats should show correct counts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=physics")
+        assert resp.status_code == 200
+        data = resp.json()
+        stats = data["stats"]
+        assert stats["total_concepts"] >= 190
+        assert stats["total_edges"] >= 220
+        assert stats["subdomains"] == 10
+
+
+@pytest.mark.asyncio
+async def test_physics_subdomain_filter():
+    """Physics should filter by subdomain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=physics&subdomain_id=classical-mechanics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) >= 25  # classical-mechanics has 31 concepts
+        for node in data["nodes"]:
+            assert node["subdomain_id"] == "classical-mechanics"
+
+
+@pytest.mark.asyncio
+async def test_physics_four_domains_listed():
+    """Domains endpoint should now include physics."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        assert resp.status_code == 200
+        data = resp.json()
+        domain_ids = {d["id"] for d in data}
+        assert "physics" in domain_ids
+        physics_domain = [d for d in data if d["id"] == "physics"][0]
+        assert physics_domain["name"] == "物理"
+        assert physics_domain["color"] == "#22c55e"
 
 
