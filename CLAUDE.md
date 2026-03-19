@@ -27,7 +27,7 @@
 | **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+6轮审查90项+49测试+EXE打包) |
 | **Phase 5** | W13+ | 可选登录 + 跨端同步 | ✅ 代码就绪 (57轮审查363tests) |
 | **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | 🟡 进行中 |
-| **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | 📋 计划中 |
+| **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | 🟡 进行中 (A-1: 282节点) |
 | **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | 📋 计划中 |
 | **Phase 8** | W19-21 | 数学知识球(高中→大学数学, ~300节点, LaTeX渲染) | 📋 计划中 |
 | **Phase 9** | W22-24 | 英语知识球(~250节点) + 跨球体关联链接 | 📋 计划中 |
@@ -91,7 +91,7 @@ data/seed/         — 种子图谱数据
 - ✅ Capacitor 移动端配置
 - ✅ CI/CD (GitHub Actions: frontend + backend)
 - ✅ GitHub 仓库: https://github.com/audiomagician1-ai/ai-knowledge-graph
-- ✅ **种子图谱 v2**: 267概念节点 + 304先修依赖 + 30关联关系 = 334边 (15子域, 含LLM/Agent/Prompt/RAG/Agent系统)
+- ✅ **种子图谱 v2.1**: 282概念节点 + 367边 (15子域, 含LLM/Agent/Prompt/RAG/Agent系统, Phase 6 A-1扩展+15)
 - ✅ **里程碑高亮**: 27个milestone节点 (替代战争迷雾, 金色发光引导)
 - ✅ **3D 球面图谱可视化**: Three.js + 3d-force-graph, 球面力导向+指数雾渐隐+里程碑金色辉光+粒子流连线+自动旋转
 - ✅ **后端图谱查询**: 5 endpoints (data/domains/subdomains/concept/neighbors/stats), JSON fallback
@@ -931,6 +931,22 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 387 tests (144 FE + 243 BE) 全通过, tsc 0 errors, build 3.66s
    - STATUS: 代码质量持续稳定, 0 open GitHub issues, 无待修复bug, **连续多轮零issues审查**
+
+- ✅ **第六十一轮深度巡逻审查+Phase 6 A-1种子图扩展提交 (2026-03-19, c6a079c)**:
+   - **COMMIT**: Phase 6 A-1 种子图谱扩展 — 267→282概念, 334→367边:
+     - LLM Core +10: Speculative Decoding, KV Cache, RoPE, FlashAttention, Model Distillation, LLM Safety, Embedding Models, Function Calling, LLM Benchmarks, LLM Serving
+     - Agent Systems +2: Frameworks Comparison, Agent Debugging
+     - RAG Knowledge +3: Graph RAG, HyDE Retrieval, Reranking
+     - 33条新边(prerequisite+related), 所有边引用验证通过, meta计数一致
+     - 测试调整: test_graph_api.py 节点/边计数更新(267→282, 334→367)
+   - REVIEW: 10+核心模块深度审查(0 critical/0 major/0 minor issues):
+     - Phase 5.5.3 代码审查: offline-queue.ts(localStorage持久化/MAX_QUEUE_SIZE 200/progress去重/concurrent flush guard/try-finally释放/SSR safe) + supabase-sync.ts(writeProgressToCloud/writeHistoryToCloud返回boolean/buildProgressRow DRY/registerOnlineFlush/onAuthLogin flush queue/toDbStatus mapping) + learning.ts(isLoggedIn双路径分流/enqueue on failure/fire-and-forget anon path/mastered降级防护/streak竞态修复)
+     - 种子图谱数据审查: 282个唯一ID/367条边全引用有效/meta一致/描述质量高/subdomain归属正确/难度合理(6-8)
+     - BE: rate_limiter.py(deque O(1)/BYOK bypass) + dialogue.py(rate limit集成/429 Retry-After) + graph.py(seed加载线程安全)
+   - DATA INTEGRITY: python验证脚本确认 — 282 concepts (0 duplicates), 367 edges (all references valid), meta consistent
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 392 tests (149 FE + 243 BE) 全通过, tsc 0 errors, build 3.44s
+   - STATUS: Phase 6 A-1 种子扩展(15新概念)已提交, 代码质量持续稳定
 
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
