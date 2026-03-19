@@ -27,7 +27,7 @@
 | **Phase 4** | W10-12 | 打磨 + 内测 | ✅ 完成 (响应式+Markdown+动效+设置页+6轮审查90项+49测试+EXE打包) |
 | **Phase 5** | W13+ | 可选登录 + 跨端同步 | ✅ 代码就绪 (57轮审查363tests) |
 | **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | 🟡 进行中 |
-| **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | 🟡 进行中 (A-1: 282节点) |
+| **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | 🟡 进行中 (A-2: 312节点, 430边, 312 RAG文档) |
 | **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | 📋 计划中 |
 | **Phase 8** | W19-21 | 数学知识球(高中→大学数学, ~300节点, LaTeX渲染) | 📋 计划中 |
 | **Phase 9** | W22-24 | 英语知识球(~250节点) + 跨球体关联链接 | 📋 计划中 |
@@ -91,7 +91,7 @@ data/seed/         — 种子图谱数据
 - ✅ Capacitor 移动端配置
 - ✅ CI/CD (GitHub Actions: frontend + backend)
 - ✅ GitHub 仓库: https://github.com/audiomagician1-ai/ai-knowledge-graph
-- ✅ **种子图谱 v2.1**: 282概念节点 + 367边 (15子域, 含LLM/Agent/Prompt/RAG/Agent系统, Phase 6 A-1扩展+15, 282 RAG文档100%覆盖)
+- ✅ **种子图谱 v2.2**: 312概念节点 + 430边 (15子域, 含LLM/Agent/Prompt/RAG/Agent系统, Phase 6 A-1扩展+15, A-2扩展+30, 312 RAG文档100%覆盖)
 - ✅ **里程碑高亮**: 27个milestone节点 (替代战争迷雾, 金色发光引导)
 - ✅ **3D 球面图谱可视化**: Three.js + 3d-force-graph, 球面力导向+指数雾渐隐+里程碑金色辉光+粒子流连线+自动旋转
 - ✅ **后端图谱查询**: 5 endpoints (data/domains/subdomains/concept/neighbors/stats), JSON fallback
@@ -979,6 +979,23 @@ data/seed/         — 种子图谱数据
    - GITHUB: 0 open issues, 2 closed (all resolved)
    - VERIFY: 411 tests (168 FE + 243 BE) 全通过, tsc 0 errors, build 3.33s
    - STATUS: Phase 6 A-1 RAG文档100%补全(282/282), 代码质量持续稳定
+
+- ✅ **Phase 6 A-2 种子图谱扩展 (2026-03-19, 6106c68)**:
+   - **EXPANSION**: 种子图谱 282→312 概念 (+30), 367→430 边 (+63, 含去重-7+新增70), 15子域不变:
+     - agent-systems +5: agent-reflection(反思机制), agent-tool-creation(工具创造), agent-benchmarks(评测基准), agent-guardrails(安全护栏), agent-workflow(工作流编排)
+     - ai-foundations +5: reinforcement-learning(强化学习), generative-adversarial-networks(GAN), autoencoders(自编码器), transfer-learning(迁移学习), attention-mechanism-basics(注意力机制)
+     - algorithms +5: a-star-search(A*), monotone-stack(单调栈), prefix-sum(前缀和), kmp-algorithm(KMP), minimum-spanning-tree(MST)
+     - data-structures +5: segment-tree(线段树), b-tree(B树/B+树), lru-cache(LRU缓存), fenwick-tree(树状数组), sparse-table(稀疏表)
+     - llm-core +5: continual-pretraining, llm-hallucination, llm-watermarking, model-merging, sparse-attention
+     - prompt-engineering +2: meta-prompting(元提示), prompt-chaining(提示链)
+     - rag-knowledge +3: rag-query-routing(查询路由), rag-caching(缓存策略), contextual-compression(上下文压缩)
+   - **FIX**: character-encoding孤立节点(pre-existing bug) — 添加2条边: binary-system→character-encoding + character-encoding→strings
+   - **FIX**: 移除7条重复边(restful-api→graphql-basics, rlhf→dpo, hash-table→bloom-filter, rag-pipeline→agent-memory, tool-use→mcp-protocol, multi-agent→agent-orchestration, async-js→websocket)
+   - **RAG**: 补全所有30个新概念的RAG文档(312/312 = 100%覆盖)
+   - **INTEGRITY**: 0孤立节点, 0无效边, 0重复边, 0重复概念ID, 所有子域valid, 难度1-9范围内
+   - GITHUB: 0 open issues, 2 closed (all resolved)
+   - VERIFY: 411 tests (168 FE + 243 BE) 全通过, tsc 0 errors, build 3.09s
+   - STATUS: Phase 6 A-2完成, 图谱312/400节点(78%), 距离Phase 6目标还需~88个新概念
 
 - ✅ **CR审查修复+第五十四轮巡逻审查+修复 (2026-03-18, c12aac7+1fc80e9)**:
    - **FIX(c12aac7)**: CR review fixes — SettingsContent/SettingsPage Trash2按钮联动clearApiKey()+setShowAdvancedLLM(false) + Security/使用指南移到always-visible区域 + apiKey trim + anon GRANT removal
