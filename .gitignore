@@ -75,9 +75,6 @@ scripts/audit_connectivity.py
 scripts/fix_connectivity.py
 scripts/fix_meta.py
 
-# Experimental seed data
-data/seed/shiji/
-
 # PowerShell artifacts (2>$null creates a file named "$null", 2>1] creates "1]")
 $null
 1]
