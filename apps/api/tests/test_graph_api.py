@@ -258,3 +258,76 @@ async def test_get_rag_document_not_found():
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/rag/nonexistent-concept-xyz")
         assert resp.status_code == 404
+
+
+# ── Multi-Domain Integration (Phase 7.7) ──────────────────────────────────
+
+@pytest.mark.asyncio
+async def test_domain_consistency_default_vs_explicit():
+    """Default request and ?domain=ai-engineering should return identical data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp_default = await client.get("/api/graph/data")
+        resp_explicit = await client.get("/api/graph/data?domain=ai-engineering")
+        assert resp_default.status_code == 200
+        assert resp_explicit.status_code == 200
+        default_data = resp_default.json()
+        explicit_data = resp_explicit.json()
+        assert len(default_data["nodes"]) == len(explicit_data["nodes"])
+        assert len(default_data["edges"]) == len(explicit_data["edges"])
+
+
+@pytest.mark.asyncio
+async def test_domain_all_nodes_have_domain_id():
+    """All nodes returned should have a domain_id field matching the requested domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=ai-engineering")
+        assert resp.status_code == 200
+        data = resp.json()
+        for node in data["nodes"]:
+            assert "domain_id" in node
+            assert node["domain_id"] == "ai-engineering"
+
+
+@pytest.mark.asyncio
+async def test_domain_concept_detail_inherits_domain():
+    """Concept detail should include domain_id."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/variables")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert "domain_id" in data
+        assert data["domain_id"] == "ai-engineering"
+
+
+@pytest.mark.asyncio
+async def test_domain_invalid_domain_subdomains():
+    """GET /api/graph/subdomains?domain=nonexistent should return 404."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=nonexistent")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_domain_invalid_domain_stats():
+    """GET /api/graph/stats?domain=nonexistent should return 404."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=nonexistent")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_domain_list_structure():
+    """GET /api/graph/domains should return complete domain metadata."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        assert resp.status_code == 200
+        data = resp.json()
+        for domain in data:
+            # Required fields from domains.json + runtime stats
+            assert "id" in domain
+            assert "name" in domain
+            assert "description" in domain
+            assert "icon" in domain
+            assert "color" in domain
+            assert "stats" in domain
+            assert domain["stats"]["total_concepts"] > 0

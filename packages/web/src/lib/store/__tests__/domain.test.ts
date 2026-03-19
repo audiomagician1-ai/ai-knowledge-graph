@@ -157,4 +157,62 @@ describe('useDomainStore', () => {
       expect(info?.icon).toBe('🔵');
     });
   });
+
+  describe('multi-domain integration (Phase 7.7)', () => {
+    it('should preserve domain across page reload (localStorage persistence)', () => {
+      // Switch to mathematics domain
+      useDomainStore.getState().switchDomain('mathematics');
+      expect(localStorage.getItem('akg_active_domain')).toBe('mathematics');
+      
+      // Simulate page reload by resetting store state but keeping localStorage
+      useDomainStore.setState({ domains: mockDomains, activeDomain: localStorage.getItem('akg_active_domain') || 'ai-engineering' });
+      expect(useDomainStore.getState().activeDomain).toBe('mathematics');
+    });
+
+    it('should default to ai-engineering when localStorage is empty', () => {
+      localStorage.removeItem('akg_active_domain');
+      useDomainStore.setState({ activeDomain: localStorage.getItem('akg_active_domain') || 'ai-engineering' });
+      expect(useDomainStore.getState().activeDomain).toBe('ai-engineering');
+    });
+
+    it('should handle switching between multiple domains in sequence', () => {
+      useDomainStore.setState({ domains: mockDomains });
+      const store = useDomainStore.getState();
+      
+      // Rapid domain switching
+      store.switchDomain('mathematics');
+      expect(useDomainStore.getState().activeDomain).toBe('mathematics');
+      
+      store.switchDomain('ai-engineering');
+      expect(useDomainStore.getState().activeDomain).toBe('ai-engineering');
+      
+      store.switchDomain('mathematics');
+      expect(useDomainStore.getState().activeDomain).toBe('mathematics');
+      
+      // Verify localStorage tracks latest
+      expect(localStorage.getItem('akg_active_domain')).toBe('mathematics');
+    });
+
+    it('should handle switching to a non-existent domain gracefully', () => {
+      useDomainStore.setState({ domains: mockDomains });
+      useDomainStore.getState().switchDomain('physics');
+      
+      // Should still set it (store doesn't validate, UI handles display)
+      expect(useDomainStore.getState().activeDomain).toBe('physics');
+      // But getActiveDomainInfo should return undefined
+      expect(useDomainStore.getState().getActiveDomainInfo()).toBeUndefined();
+    });
+
+    it('should keep domain state independent from loading state', async () => {
+      useDomainStore.getState().switchDomain('mathematics');
+      
+      // Start fetching domains - should not change activeDomain
+      vi.mocked(mockFetchDomains).mockResolvedValue(mockDomains);
+      await useDomainStore.getState().fetchDomains();
+      
+      // activeDomain should be preserved during/after fetch
+      expect(useDomainStore.getState().activeDomain).toBe('mathematics');
+      expect(useDomainStore.getState().domains).toHaveLength(2);
+    });
+  });
 });
