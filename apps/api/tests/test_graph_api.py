@@ -1230,6 +1230,37 @@ async def test_domains_list_includes_psychology():
         assert len(data) >= 7
 
 
+@pytest.mark.asyncio
+async def test_rag_psychology_stats():
+    """Psychology RAG stats should reflect 183 documents."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=psychology")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 183
+        assert data["domain"] == "psychology"
+
+
+@pytest.mark.asyncio
+async def test_rag_psychology_concept():
+    """Should return RAG content for a psychology concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/working-memory?domain=psychology")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "working-memory"
+        assert data["domain"] == "psychology"
+        assert "核心内容" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_psychology_404_wrong_domain():
+    """Psychology concept should 404 when queried against another domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/working-memory?domain=finance")
+        assert resp.status_code == 404
+
+
 
 
 
