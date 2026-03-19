@@ -661,3 +661,124 @@ async def test_rag_english_404_wrong_domain():
         assert resp.status_code == 404
 
 
+# ── Cross-Sphere Links (Phase 9.5) ──────────────────────
+
+
+@pytest.mark.asyncio
+async def test_cross_links_all():
+    """GET /api/graph/cross-links should return all cross-sphere links."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert "links" in data
+        assert "total" in data
+        assert data["total"] >= 20  # We defined 25 links
+        # Each link has required fields
+        for link in data["links"]:
+            assert "source_domain" in link
+            assert "source_id" in link
+            assert "target_domain" in link
+            assert "target_id" in link
+            assert "relation" in link
+            assert "description" in link
+
+
+@pytest.mark.asyncio
+async def test_cross_links_filter_by_domain():
+    """Cross-links should be filterable by domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] > 0
+        for link in data["links"]:
+            assert link["source_domain"] == "mathematics" or link["target_domain"] == "mathematics"
+
+
+@pytest.mark.asyncio
+async def test_cross_links_filter_by_concept():
+    """Cross-links should be filterable by concept_id."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?concept_id=linear-regression")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] >= 1  # linear-regression has same_concept link
+        for link in data["links"]:
+            assert link["source_id"] == "linear-regression" or link["target_id"] == "linear-regression"
+
+
+@pytest.mark.asyncio
+async def test_cross_links_filter_domain_and_concept():
+    """Cross-links should support combined domain + concept filter."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=english&concept_id=word-formation")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] >= 1
+        for link in data["links"]:
+            domain_match = link["source_domain"] == "english" or link["target_domain"] == "english"
+            concept_match = link["source_id"] == "word-formation" or link["target_id"] == "word-formation"
+            assert domain_match and concept_match
+
+
+@pytest.mark.asyncio
+async def test_cross_links_no_results():
+    """Non-existent domain/concept should return empty results."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=nonexistent")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] == 0
+        assert data["links"] == []
+
+
+@pytest.mark.asyncio
+async def test_cross_links_relation_types():
+    """Cross-links should have valid relation types."""
+    valid_relations = {"same_concept", "requires", "enables", "applies_to", "related"}
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links")
+        data = resp.json()
+        for link in data["links"]:
+            assert link["relation"] in valid_relations, f"Invalid relation: {link['relation']}"
+
+
+@pytest.mark.asyncio
+async def test_cross_links_same_concept_pairs():
+    """Same_concept links should exist for known overlapping IDs."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links")
+        data = resp.json()
+        same_concepts = [lk for lk in data["links"] if lk["relation"] == "same_concept"]
+        same_ids = {(lk["source_id"], lk["target_id"]) for lk in same_concepts}
+        # linear-regression and gradient-descent should be in same_concept pairs
+        assert ("linear-regression", "linear-regression") in same_ids
+        assert ("gradient-descent", "gradient-descent") in same_ids
+
+
+@pytest.mark.asyncio
+async def test_cross_links_concepts_exist_in_domains():
+    """All concept IDs in cross-links should exist in their respective domain seed graphs."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        links_resp = await client.get("/api/graph/cross-links")
+        links = links_resp.json()["links"]
+
+        # Cache domain concept IDs
+        domain_concepts = {}
+        for domain_id in ["ai-engineering", "mathematics", "english"]:
+            resp = await client.get(f"/api/graph/data?domain={domain_id}")
+            data = resp.json()
+            domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
+
+        for link in links:
+            src_domain = link["source_domain"]
+            src_id = link["source_id"]
+            tgt_domain = link["target_domain"]
+            tgt_id = link["target_id"]
+            assert src_id in domain_concepts.get(src_domain, set()), \
+                f"Source concept {src_domain}:{src_id} not found"
+            assert tgt_id in domain_concepts.get(tgt_domain, set()), \
+                f"Target concept {tgt_domain}:{tgt_id} not found"
+
+

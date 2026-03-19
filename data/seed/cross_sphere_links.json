@@ -1,0 +1,224 @@
+{
+  "_doc": "Cross-sphere relation links — connects concepts across different knowledge domains",
+  "_version": "1.0",
+  "_created": "2026-03-19",
+  "links": [
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "linear-regression",
+      "target_domain": "mathematics",
+      "target_id": "linear-regression",
+      "relation": "same_concept",
+      "description": "AI工程中的线性回归与数学中的线性回归是同一概念，前者侧重应用，后者侧重理论推导"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "gradient-descent",
+      "target_domain": "mathematics",
+      "target_id": "gradient-descent",
+      "relation": "same_concept",
+      "description": "梯度下降在AI工程中用于模型优化，在数学中是最优化理论的基本方法"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "neural-network-basics",
+      "target_domain": "mathematics",
+      "target_id": "matrix-multiplication",
+      "relation": "requires",
+      "description": "神经网络的前向传播本质上是矩阵乘法运算"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "neural-network-basics",
+      "target_domain": "mathematics",
+      "target_id": "derivative-concept",
+      "relation": "requires",
+      "description": "神经网络的反向传播需要理解导数和链式法则"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "gradient-descent",
+      "target_domain": "mathematics",
+      "target_id": "gradient-directional",
+      "relation": "requires",
+      "description": "梯度下降算法需要理解梯度和方向导数的数学基础"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "gradient-descent",
+      "target_domain": "mathematics",
+      "target_id": "optimization-calculus",
+      "relation": "requires",
+      "description": "梯度下降是微积分中最优化方法的计算实现"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "text-embedding",
+      "target_domain": "mathematics",
+      "target_id": "vectors-intro",
+      "relation": "requires",
+      "description": "文本嵌入将文本映射到向量空间，需要理解向量的基本概念"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "text-embedding",
+      "target_domain": "mathematics",
+      "target_id": "vector-spaces",
+      "relation": "requires",
+      "description": "嵌入空间是一个向量空间，理解线性代数中的向量空间有助于理解嵌入"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "word2vec",
+      "target_domain": "mathematics",
+      "target_id": "vectors-intro",
+      "relation": "requires",
+      "description": "Word2Vec将词语映射为向量，向量运算可表达语义关系"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "adjacency-matrix",
+      "target_domain": "mathematics",
+      "target_id": "matrix-multiplication",
+      "relation": "requires",
+      "description": "邻接矩阵是图的矩阵表示，矩阵运算可分析图的性质"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "prompt-optimization",
+      "target_domain": "mathematics",
+      "target_id": "convex-optimization",
+      "relation": "related",
+      "description": "提示词优化中的一些方法借鉴了数学优化理论的思想"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "text-embedding",
+      "target_domain": "english",
+      "target_id": "word-formation",
+      "relation": "applies_to",
+      "description": "文本嵌入技术用于将英语词汇转换为计算机可处理的数值向量"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "word2vec",
+      "target_domain": "english",
+      "target_id": "word-formation",
+      "relation": "applies_to",
+      "description": "Word2Vec模型从大量英文文本中学习词汇的语义表示"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "text-embedding",
+      "target_domain": "english",
+      "target_id": "five-basic-patterns",
+      "relation": "applies_to",
+      "description": "句子嵌入技术能捕获英语句型的语义特征"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "context-window",
+      "target_domain": "english",
+      "target_id": "cohesion-coherence",
+      "relation": "related",
+      "description": "LLM的上下文窗口决定了模型能理解的英文文本连贯性范围"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "full-text-search",
+      "target_domain": "english",
+      "target_id": "skimming",
+      "relation": "related",
+      "description": "全文搜索是对文本检索的计算机实现，类似于人类的快速浏览技能"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "probability-basics",
+      "target_domain": "ai-engineering",
+      "target_id": "neural-network-basics",
+      "relation": "enables",
+      "description": "概率论为神经网络的损失函数设计和输出层解释提供数学基础"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "bayesian-statistics",
+      "target_domain": "ai-engineering",
+      "target_id": "prompt-optimization",
+      "relation": "related",
+      "description": "贝叶斯统计方法可用于提示词优化中的不确定性建模"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "eigenvalues-eigenvectors",
+      "target_domain": "ai-engineering",
+      "target_id": "embedding-models",
+      "relation": "enables",
+      "description": "特征值分解是降维和嵌入模型的数学基础（如PCA降维）"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "descriptive-statistics",
+      "target_domain": "english",
+      "target_id": "graphic-information",
+      "relation": "related",
+      "description": "描述统计的图表和数据可视化需要英文读图能力来理解"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "linear-programming",
+      "target_domain": "ai-engineering",
+      "target_id": "prompt-optimization",
+      "relation": "related",
+      "description": "线性规划的优化思想在AI工程的资源分配和调度中有应用"
+    },
+    {
+      "source_domain": "english",
+      "source_id": "academic-writing",
+      "target_domain": "ai-engineering",
+      "target_id": "prompt-optimization",
+      "relation": "related",
+      "description": "学术写作中的清晰表达和逻辑结构对编写高质量提示词至关重要"
+    },
+    {
+      "source_domain": "english",
+      "source_id": "summarizing",
+      "target_domain": "ai-engineering",
+      "target_id": "contextual-compression",
+      "relation": "related",
+      "description": "人类的摘要能力与AI的上下文压缩技术追求相同目标——保留核心信息"
+    },
+    {
+      "source_domain": "english",
+      "source_id": "figurative-language",
+      "target_domain": "ai-engineering",
+      "target_id": "text-embedding",
+      "relation": "related",
+      "description": "比喻等修辞手法对NLP的语义理解提出挑战，嵌入模型需要学会处理"
+    },
+    {
+      "source_domain": "english",
+      "source_id": "reading-speed",
+      "target_domain": "ai-engineering",
+      "target_id": "context-window",
+      "relation": "related",
+      "description": "人类阅读速度有限类似于AI的上下文窗口限制，都需要策略性处理长文本"
+    }
+  ],
+  "meta": {
+    "total_links": 25,
+    "relation_types": {
+      "same_concept": "相同概念在不同领域的不同视角",
+      "requires": "源概念需要目标概念作为知识基础",
+      "enables": "源概念使目标概念的学习或应用成为可能",
+      "applies_to": "源概念（技术）应用于目标概念（内容）",
+      "related": "两个概念在不同领域中有有趣的关联或类比"
+    },
+    "domain_pairs": {
+      "ai-engineering_mathematics": 11,
+      "ai-engineering_english": 5,
+      "mathematics_ai-engineering": 4,
+      "mathematics_english": 1,
+      "english_ai-engineering": 4
+    }
+  }
+}

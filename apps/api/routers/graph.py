@@ -360,3 +360,59 @@ async def get_rag_stats(domain: str = "ai-engineering"):
         "generated_at": index.get("generated_at", ""),
     }
 
+
+# ── 跨球体关联链接 API ─────────────────────────────────
+
+_cross_links_cache: list | None = None
+_cross_links_lock = threading.Lock()
+
+
+def _get_cross_links_path() -> str:
+    """Get the cross-sphere links JSON path."""
+    if getattr(sys, "frozen", False):
+        return os.path.join(sys._MEIPASS, "seed_data", "cross_sphere_links.json")
+    return os.path.join(_project_root(), "data", "seed", "cross_sphere_links.json")
+
+
+def _load_cross_links() -> list[dict]:
+    """懒加载跨球体关联链接（线程安全）"""
+    global _cross_links_cache
+    if _cross_links_cache is not None:
+        return _cross_links_cache
+    with _cross_links_lock:
+        if _cross_links_cache is None:
+            path = _get_cross_links_path()
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                _cross_links_cache = data.get("links", [])
+            else:
+                _cross_links_cache = []
+    return _cross_links_cache
+
+
+@router.get("/cross-links")
+async def get_cross_links(
+    domain: Optional[str] = Query(None, description="Filter by source or target domain"),
+    concept_id: Optional[str] = Query(None, description="Filter by source or target concept"),
+):
+    """获取跨球体关联链接，可按域或概念过滤"""
+    links = _load_cross_links()
+
+    if domain:
+        links = [
+            lk for lk in links
+            if lk["source_domain"] == domain or lk["target_domain"] == domain
+        ]
+
+    if concept_id:
+        links = [
+            lk for lk in links
+            if lk["source_id"] == concept_id or lk["target_id"] == concept_id
+        ]
+
+    return {
+        "links": links,
+        "total": len(links),
+    }
+
