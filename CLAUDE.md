@@ -1078,7 +1078,15 @@ data/seed/         — 种子图谱数据
    - TEST: +7 BE新测试(math domain: graph data 269/366 + subdomains 12 + stats + concept detail + neighbors + domain list + no orphan nodes)
    - GITHUB: 1 open issue (#4 Phase 8), 3 closed
    - VERIFY: 460 tests (200 FE + 260 BE) 全通过, tsc 0 errors
-   - STATUS: Phase 8.1完成, 数学球269概念/366边/12子域/29里程碑, 下一步: 8.3 RAG文档编写
+    - STATUS: Phase 8.1完成, 数学球269概念/366边/12子域/29里程碑, 下一步: 8.3 RAG文档编写
+
+- ✅ **Hub Bar 球体切换+登录入口 (2026-03-19, 8352376)**:
+   - **FEAT**: GraphPage Hub Bar 改版 — 保持全屏沉浸式布局, 在底部 Hub Bar 内嵌入球体切换和用户区:
+     - 左侧: 域切换按钮(emoji icon + 域名), 点击弹出浮动域列表面板(图标/名称/描述/当前域✓/coming-soon占位), outside-click自动关闭
+     - 右侧: 用户区(supabaseConfigured guard) — 已登录: 头像圆形+名称(点击退出) / 未登录: 登录按钮→跳转/login / 无Supabase: User图标占位
+     - 移动端: isDesktop hook 自动切换icon-only模式(隐藏文字标签), Hub Bar自适应窄屏
+   - **WHY**: 之前Sidebar.tsx/BottomNav.tsx/DomainSwitcher.tsx组件虽完整实现但从未接入渲染树(AppLayout仅有Outlet), 登录和球体切换无UI入口。本次采用方案B(沉浸式)而非方案A(传统Sidebar), 将功能直接集成到Hub Bar
+   - VERIFY: 453 tests (200 FE + 253 BE) 全通过, tsc 0 errors, build 3.81s
 
 ```
 输出目录: release/                              ← 不是 dist/
