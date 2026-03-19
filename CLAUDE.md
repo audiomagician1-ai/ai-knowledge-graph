@@ -7,7 +7,7 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: 🟢 **Phase 7 进行中** | 多球体架构(7.1-7.4已完成), 下一步: 7.5 数据模型迁移(localStorage+Supabase per-domain key)
+**当前阶段**: 🟢 **Phase 7 进行中** | 多球体架构(7.1-7.5已完成), 下一步: 7.6 Dashboard星系总览+per-domain进度
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
@@ -15,8 +15,8 @@
 **当前最高优先任务 — Phase 7: 多球体架构**:
 > **目标**: 球体注册表/切换器/独立种子数据管线, 为数学/英语等知识球做架构准备
 > **前置**: Phase 6 ✅ 完成 (400节点, 615边, 15子域, 400 RAG文档)
-> **已完成**: 7.1 数据层重构 ✅ + 7.2 后端多域API ✅ + 7.3 前端domain store+球切换器 ✅ + 7.4 每球独立配色 ✅
-> **下一步**: 7.5 数据模型迁移 (localStorage per-domain key + Supabase domain_id 列)
+> **已完成**: 7.1-7.5 全部完成 ✅
+> **下一步**: 7.6 Dashboard星系总览 + per-domain进度展示
 
 ### 12周里程碑
 
@@ -30,7 +30,7 @@
 | **Phase 5** | W13+ | 可选登录 + 跨端同步 | ✅ 代码就绪 (57轮审查363tests) |
 | **Phase 5.5** | W14+ | 后端服务升级(Auth+默认LLM+持久化) | ✅ 代码就绪 (OAuth需手动配置) |
 | **Phase 6** | W15-16 | AI工程球扩容(267→400节点, 6新子域, 133新RAG文档) | ✅ 完成 (400节点, 615边, 400 RAG文档, 15子域) |
-| **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | 🟡 进行中 (7.1-7.4 完成) |
+| **Phase 7** | W17-18 | 多球体架构(球体注册表/切换器/独立种子数据管线) | 🟡 进行中 (7.1-7.5 完成) |
 | **Phase 8** | W19-21 | 数学知识球(高中→大学数学, ~300节点, LaTeX渲染) | 📋 计划中 |
 | **Phase 9** | W22-24 | 英语知识球(~250节点) + 跨球体关联链接 | 📋 计划中 |
 
@@ -1219,7 +1219,7 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 2. ✅ **7.2 后端多域API** (940be90) — per-domain seed缓存, `_load_seed(domain_id)`, `_load_domains()`, 所有端点+`?domain=`参数, `/api/graph/domains`返回域列表+统计
 3. ✅ **7.3 前端domain store + 球切换器UI** (b1b831b) — `domain.ts` Zustand store (activeDomain/domains/fetchDomains/switchDomain/localStorage持久化), `DomainSwitcher.tsx` Sidebar下拉组件 (图标/名称/描述/概念数/coming-soon占位), `graph.ts` 新增 `loadGraphData(domain)` action, GraphPage.tsx domain切换时自动重载图谱, 修复 graph-api.ts `?domain_id=` → `?domain=` bug
 4. ✅ **7.4 图谱渲染按domain加载 + 每球独立配色** (e538de0) — KnowledgeGraph新增 domainColor/domainId props, 域配色强调点光源, 链接粒子用域主题色, GNode增加domain_id字段, key={activeDomain}切换时重初Three.js场景
-5. 🔲 **7.5 数据模型迁移** — localStorage per-domain key, Supabase migration添加domain_id列
+5. ✅ **7.5 数据模型迁移** (145209b) — localStorage per-domain key (`akg-learning:{domain}`), Supabase migration `00002_add_domain_id.sql` (domain_id列+3列PK), `migrateLegacyStorage()`一次性迁移, learning.ts `switchDomain()`重载域数据, supabase-sync.ts全链路include domain_id
 6. 🔲 **7.6 Dashboard星系总览 + per-domain进度**
 7. 🔲 **7.7 测试** — 多domain E2E测试, 球切换功能测试
 
@@ -1245,9 +1245,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (188 tests: learning 17 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 16 + offline-queue 19 + domain 14) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
+cd packages/web && npx vitest run        # 前端测试 ✅ (192 tests: learning 21 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 16 + offline-queue 19 + domain 14) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
 cd apps/api && python -m pytest          # 后端测试 ✅ (247 tests: health 1 + sqlite 16 + learning 13 + evaluator 17 + dialogue 16 + graph 16 + llm_router 46 + prompt_parser 28 + socratic 24 + main 18 + config 12 + redis_client 19 + rate_limiter 17 + multi-domain 4)
-# Total: 435 tests
+# Total: 439 tests
 ```
 
 ### 提交规范
