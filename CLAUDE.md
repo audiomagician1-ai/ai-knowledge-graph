@@ -7,23 +7,19 @@
 
 ## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**当前阶段**: ✅ **Phase 12 完成 + 重构完成** | 6知识球(1,405节点) + 域补充注册表重构(#9)
+**当前阶段**: ✅ **Phase 13 完成** | 7知识球(1,588节点) + P2球体管线验证
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
-**🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + AI工程球扩容至400节点 + 数学/英语/物理/产品/金融球体规划
+**🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 7球体(AI/数学/英语/物理/产品/金融/心理)
 
-**Phase 12 完成摘要**:
-> **目标**: 上线第六个知识球 — 金融理财, 覆盖个人理财到量化金融
-> **前置**: Phase 11 ✅ 完成 (产品设计球验证第五球体管线)
-> **已完成**: 12.1 种子图谱 ✅ | 12.2 RAG文档 ✅ | 12.3 对话引擎适配 ✅ | 12.4 评估器适配 ✅ | 12.5 跨球体关联 ✅ | 12.6 集成测试 ✅ | 12.7 文档更新 ✅
-> **测试总数**: 630 (204 FE + 426 BE)
-> **下一步**: P1球体全部完成 + 域补充注册表重构完成, 进入P2阶段或平台功能增强 (规划中)
+**Phase 13 完成摘要**:
+> **目标**: 上线第七个知识球 — 心理学, 覆盖认知心理学到临床应用 (P2第一球)
+> **前置**: Phase 12 ✅ 完成 (金融球 + 域补充注册表重构)
+> **已完成**: 13.1 种子图谱 ✅ | 13.2 RAG文档 ✅ | 13.3 对话引擎适配 ✅ | 13.4 评估器适配 ✅ | 13.5 跨球体关联 ✅ | 13.6 集成测试 ✅ | 13.7 文档更新 ✅
+> **测试总数**: 665 (204 FE + 461 BE)
+> **下一步**: P2球体继续 (哲学/生物/经济学) 或平台功能增强 (规划中)
 
-**重构: 域补充注册表 (#9, 2a56848)**:
-> **目标**: 消除if-elif链式分发技术债务 — 5文件6处改为dict/Record查表
-> **影响文件**: feynman_system.py(+DOMAIN_SUPPLEMENTS/ASSESSMENT_SUPPLEMENTS dicts), socratic.py(.get()替代5条if-elif), evaluator.py(.get()替代5条if-elif), direct-llm.ts(DOMAIN_SUPPLEMENTS/ASSESSMENT_SUPPLEMENTS Records+getDomainSupplement/getAssessmentSupplement), workers/prompts.ts(ASSESSMENT_SUPPLEMENTS Record)
-> **收益**: 新增知识域从编辑6处if-elif降为每文件1条dict/Record entry
-> **测试**: +10 (6 BE registry + 4 FE registry), 总计 630 (204 FE + 426 BE)
+**重构: 域补充注册表 (#9, 2a56848)**: 消除if-elif链式分发技术债务 — 5文件6处改为dict/Record查表, 新增知识域从编辑6处if-elif降为每文件1条dict/Record entry
 
 ### 12周里程碑
 
@@ -43,6 +39,7 @@
 | **Phase 10** | W25-27 | 物理知识球(194节点, 232边, 10子域, LaTeX公式, 跨球体关联) | ✅ 完成 (10.1-10.7, 552 tests) |
 | **Phase 11** | W28-30 | 产品设计知识球(182节点, 191边, 8子域, 案例驱动教学, 跨球体关联) | ✅ 完成 (11.1-11.7, 586 tests) |
 | **Phase 12** | W31-33 | 金融理财知识球(160节点, 182边, 8子域, 数字驱动教学, 跨球体关联) | ✅ 完成 (12.1-12.7, 620 tests) |
+| **Phase 13** | W34-36 | 心理学知识球(183节点, 203边, 8子域, 实验驱动教学, 跨球体关联, P2第一球) | ✅ 完成 (13.1-13.7, 665 tests) |
 
 ---
 
@@ -1342,10 +1339,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (200 tests: learning 24 + settings 31 + text 5 + auth 11 + supabase-sync 8 + dialogue 26 + direct-llm 29 + toast 12 + graph 16 + offline-queue 19 + domain 19) [vitest.config.ts: pool=forks, 4GB heap per worker for Node v24]
-cd apps/api && python -m pytest          # 后端测试 ✅ (321 tests: graph 59 + evaluator 25 + socratic 24 + prompt-parser 28 + dialogue 16 + learning 26 + sqlite 12 + health 1 + llm-router 41 + main 18 + config 12 + redis 19 + phase9-integration 23 + neo4j-stub 17)
-cd apps/api && python -m pytest          # 后端测试 ✅ (272 tests: health 1 + sqlite 16 + learning 13 + evaluator 19 + dialogue 16 + graph 39 + llm_router 46 + prompt_parser 28 + socratic 28 + main 18 + config 12 + redis_client 19 + rate_limiter 17)
-# Total: 472 tests
+cd packages/web && npx vitest run        # 前端测试 ✅ (204 tests)
+cd apps/api && python -m pytest          # 后端测试 ✅ (461 tests)
+# Total: 665 tests
 ```
 
 ### 提交规范
