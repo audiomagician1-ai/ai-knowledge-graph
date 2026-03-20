@@ -1602,15 +1602,218 @@
       "target_id": "editor-ext-intro",
       "relation": "requires",
       "description": "UE5关卡编辑器是引擎编辑器扩展系统的核心应用，LD工作流依赖编辑器功能"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-dp-observer",
+      "target_domain": "game-engine",
+      "target_id": "ue5-delegate-event",
+      "relation": "applied_in",
+      "description": "观察者模式在UE5中通过Delegate和Event系统实现，是引擎事件驱动架构的基础"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-dp-factory",
+      "target_domain": "game-engine",
+      "target_id": "ue5-uobject",
+      "relation": "applied_in",
+      "description": "工厂模式在UE5中通过UObject系统的NewObject/SpawnActor实现，管理对象生命周期"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-component-pattern",
+      "target_domain": "game-engine",
+      "target_id": "ue5-actor-component",
+      "relation": "applied_in",
+      "description": "组件模式是UE5 Actor-Component架构的理论基础，实现了组合优于继承的设计"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-component-pattern",
+      "target_domain": "game-engine",
+      "target_id": "unity-gameobject",
+      "relation": "applied_in",
+      "description": "组件模式是Unity GameObject-Component架构的理论基础"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-ecs-intro",
+      "target_domain": "game-engine",
+      "target_id": "ue5-mass-entity",
+      "relation": "applied_in",
+      "description": "ECS架构在UE5中通过Mass Entity Framework实现，用于大规模实体管理"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-unity-dots-ecs",
+      "target_domain": "game-engine",
+      "target_id": "unity-dots",
+      "relation": "same_concept",
+      "description": "软件工程中讨论的Unity DOTS ECS与游戏引擎中的DOTS架构是同一技术"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-game-loop",
+      "target_domain": "game-engine",
+      "target_id": "ge-overview",
+      "relation": "foundational",
+      "description": "游戏循环是所有游戏引擎的核心架构模式，理解游戏引擎必须先理解Game Loop"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-ubt",
+      "target_domain": "game-engine",
+      "target_id": "ue5-build-system",
+      "relation": "same_concept",
+      "description": "软件工程中的UBT(Unreal Build Tool)与引擎中的UE5构建系统是同一概念"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-game-threading",
+      "target_domain": "game-engine",
+      "target_id": "physics-multithreading",
+      "relation": "applied_in",
+      "description": "游戏多线程架构直接影响引擎物理系统的多线程调度方案"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-asset-pipeline",
+      "target_domain": "game-engine",
+      "target_id": "ue5-pak-system",
+      "relation": "related",
+      "description": "资产处理管线的最终产出通过Pak系统打包分发，两者是构建流程的上下游"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "render-graph",
+      "target_domain": "software-engineering",
+      "target_id": "se-pipe-filter",
+      "relation": "applied_in",
+      "description": "渲染图(RDG)是管道-过滤器架构在GPU渲染调度中的高级应用"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "ue5-gameplay-ability",
+      "target_domain": "software-engineering",
+      "target_id": "se-dp-command",
+      "relation": "applied_in",
+      "description": "GAS技能系统大量使用命令模式，将技能效果封装为可组合的GameplayEffect"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "ue5-subsystem",
+      "target_domain": "software-engineering",
+      "target_id": "se-dp-singleton",
+      "relation": "applied_in",
+      "description": "UE5 Subsystem是单例模式的改良版，提供生命周期管理的全局服务访问点"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "animation-blueprint",
+      "target_domain": "software-engineering",
+      "target_id": "se-state-pattern-game",
+      "relation": "applied_in",
+      "description": "动画蓝图中的状态机是状态模式在游戏动画系统中的核心应用"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "audio-middleware",
+      "target_domain": "software-engineering",
+      "target_id": "se-plugin-arch",
+      "relation": "applied_in",
+      "description": "Wwise/FMOD作为音频中间件通过插件架构集成到引擎中"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-dp-strategy",
+      "target_domain": "game-design",
+      "target_id": "difficulty-overview",
+      "relation": "applied_in",
+      "description": "策略模式可用于实现不同难度曲线算法的运行时切换，支持动态难度调整"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-dp-observer",
+      "target_domain": "game-design",
+      "target_id": "positive-feedback-loop",
+      "relation": "applied_in",
+      "description": "观察者模式是实现正反馈循环的核心编程模式，驱动事件→响应链路"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-dp-state",
+      "target_domain": "game-design",
+      "target_id": "systems-thinking",
+      "relation": "applied_in",
+      "description": "状态模式是实现游戏系统思维中状态机的基础编程模式"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-event-queue",
+      "target_domain": "game-design",
+      "target_id": "notification-system",
+      "relation": "applied_in",
+      "description": "事件队列模式是游戏通知系统的异步消息分发基础"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-object-pool",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "applied_in",
+      "description": "对象池模式在战斗系统中用于管理大量弹体/特效的高效创建与回收"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-perforce",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "supports",
+      "description": "Perforce版本控制是游戏团队管理设计文档和大型资产文件的行业标准工具"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-spatial-partition",
+      "target_domain": "level-design",
+      "target_id": "combat-space-intro",
+      "relation": "applied_in",
+      "description": "空间分区算法(Quadtree/Octree)是战斗空间管理和大场景物体检索的技术基础"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-git-lfs",
+      "target_domain": "level-design",
+      "target_id": "ue5-level-editor",
+      "relation": "supports",
+      "description": "Git LFS为关卡编辑器产出的大型二进制文件(.umap)提供版本控制支持"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-frame-analysis",
+      "target_domain": "level-design",
+      "target_id": "optimization-ld",
+      "relation": "supports",
+      "description": "帧分析是关卡优化的核心方法，通过帧时间分解定位性能瓶颈"
+    },
+    {
+      "source_domain": "software-engineering",
+      "source_id": "se-game-ci",
+      "target_domain": "level-design",
+      "target_id": "iteration-blockout",
+      "relation": "supports",
+      "description": "游戏CI/CD自动化构建支持关卡的Blockout快速迭代，缩短构建-测试反馈循环"
     }
   ],
   "meta": {
-    "total_links": 145,
+    "total_links": 225,
     "relation_types": {
       "same_concept": "相同概念在不同领域的不同视角",
       "requires": "源概念需要目标概念作为知识基础",
       "enables": "源概念使目标概念的学习或应用成为可能",
       "applies_to": "源概念（技术）应用于目标概念（内容）",
+      "applied_in": "源概念在目标领域中有具体应用",
+      "foundational": "源概念是目标概念的理论基础",
+      "supports": "源概念为目标概念的实践提供工具或方法支持",
       "related": "两个概念在不同领域中有有趣的关联或类比"
     },
     "domain_pairs": {
@@ -1628,8 +1831,12 @@
       "product-design_english": 2,
       "product-design_physics": 0,
       "game-design_level-design": 10,
-      "level-design_game-design": 5
+      "level-design_game-design": 5,
+      "software-engineering_game-engine": 10,
+      "game-engine_software-engineering": 5,
+      "software-engineering_game-design": 6,
+      "software-engineering_level-design": 4
     }
   },
-  "total": 175
+  "total": 225
 }

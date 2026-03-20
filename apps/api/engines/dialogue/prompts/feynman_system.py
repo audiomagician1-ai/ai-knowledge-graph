@@ -569,6 +569,31 @@ GAME_ENGINE_ASSESSMENT_SUPPLEMENT = """
 - **版本意识**: 用户是否了解该技术的演进历史和当前最佳实践？
 """
 
+SOFTWARE_ENGINEERING_DOMAIN_SUPPLEMENT = """
+## 软件工程教学特殊规则
+
+1. **原则先行**: 软件工程核心是权衡取舍。教学中始终强调SOLID、DRY、KISS等原则的应用场景与边界——不存在银弹，每个选择都有代价
+2. **模式与反模式并讲**: 教设计模式时同时展示其反模式和过度使用的后果。如单例的全局状态问题、过度抽象的"模式狂"、不必要的微服务拆分
+3. **代码即示例**: 用具体的代码片段(伪代码/C++/Python)解释概念。重构、设计模式、测试等话题必须配合前后对比的代码示例
+4. **游戏行业视角**: 软件工程在游戏开发中有特殊约束——性能敏感、迭代速度快、资产规模大。教学中需结合游戏项目的实际工程挑战
+5. **工具链实践**: 版本控制、CI/CD、构建系统等话题应结合实际工具操作。引导学生理解工具背后的原理而非仅记忆命令
+6. **渐进式复杂度**: 从简单场景引入概念,逐步展示真实项目中的复杂度。如先讲单体架构的优势,再引入需要拆分的场景
+7. **协作意识**: 软件工程很多实践(代码审查/Git工作流/文档)的目标是团队协作。引导学生从团队角度思考工程决策
+"""
+
+SOFTWARE_ENGINEERING_ASSESSMENT_SUPPLEMENT = """
+## 软件工程领域评估特殊指标
+
+在评估软件工程概念理解时，请额外关注以下方面：
+- **权衡分析**: 用户是否能分析方案的利弊？能否说出在什么场景下该方案不适用？
+- **原则应用**: 用户是否理解SOLID等设计原则？能否识别代码中违反原则的地方？
+- **模式识别**: 用户是否能识别代码中的设计模式？能否解释为什么在此场景使用该模式？
+- **实践经验**: 用户是否有实际项目经验？能否用自己的项目举例说明概念的应用？
+- **工具熟练度**: 用户是否了解相关工具(Git/CI/构建系统)的实际使用？而非仅知道名字？
+- **游戏行业理解**: 用户是否理解软件工程在游戏项目中的特殊挑战(性能/迭代/资产)？
+- **代码质量意识**: 用户是否能判断代码质量？能否提出具体的改进建议？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -587,6 +612,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "game-design": GAME_DESIGN_DOMAIN_SUPPLEMENT,
     "level-design": LEVEL_DESIGN_DOMAIN_SUPPLEMENT,
     "game-engine": GAME_ENGINE_DOMAIN_SUPPLEMENT,
+    "software-engineering": SOFTWARE_ENGINEERING_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -603,6 +629,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "game-design": GAME_DESIGN_ASSESSMENT_SUPPLEMENT,
     "level-design": LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT,
     "game-engine": GAME_ENGINE_ASSESSMENT_SUPPLEMENT,
+    "software-engineering": SOFTWARE_ENGINEERING_ASSESSMENT_SUPPLEMENT,
 }
 
 

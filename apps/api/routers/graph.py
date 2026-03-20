@@ -143,11 +143,11 @@ async def get_graph_data(
 
     graph_edges = [
         {
-            "id": f"{e['source_id']}-{e['target_id']}",
-            "source": e["source_id"],
-            "target": e["target_id"],
-            "relation_type": e["relation_type"],
-            "strength": e["strength"],
+            "id": f"{e.get('source_id') or e.get('source')}-{e.get('target_id') or e.get('target')}",
+            "source": e.get("source_id") or e.get("source"),
+            "target": e.get("target_id") or e.get("target"),
+            "relation_type": e.get("relation_type") or e.get("type", "related"),
+            "strength": e.get("strength", 0.5),
         }
         for e in edges
     ]

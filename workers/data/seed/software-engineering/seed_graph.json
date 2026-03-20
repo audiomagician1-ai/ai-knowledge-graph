@@ -1,0 +1,5132 @@
+{
+  "domain": {
+    "id": "software-engineering",
+    "name": "软件工程",
+    "description": "从架构模式到构建系统的完整软件工程知识体系",
+    "icon": "⚙️",
+    "color": "#4f46e5"
+  },
+  "subdomains": [
+    {
+      "id": "architecture-patterns",
+      "name": "架构模式",
+      "order": 1
+    },
+    {
+      "id": "design-patterns",
+      "name": "设计模式",
+      "order": 2
+    },
+    {
+      "id": "version-control",
+      "name": "版本控制",
+      "order": 3
+    },
+    {
+      "id": "ci-cd",
+      "name": "CI/CD",
+      "order": 4
+    },
+    {
+      "id": "code-review",
+      "name": "代码审查",
+      "order": 5
+    },
+    {
+      "id": "tdd",
+      "name": "测试驱动开发",
+      "order": 6
+    },
+    {
+      "id": "performance-analysis",
+      "name": "性能分析",
+      "order": 7
+    },
+    {
+      "id": "refactoring",
+      "name": "重构",
+      "order": 8
+    },
+    {
+      "id": "game-programming-patterns",
+      "name": "游戏编程模式",
+      "order": 9
+    },
+    {
+      "id": "ecs-architecture",
+      "name": "ECS架构",
+      "order": 10
+    },
+    {
+      "id": "memory-management",
+      "name": "内存管理",
+      "order": 11
+    },
+    {
+      "id": "multithreading",
+      "name": "多线程",
+      "order": 12
+    },
+    {
+      "id": "build-systems",
+      "name": "构建系统",
+      "order": 13
+    },
+    {
+      "id": "package-management",
+      "name": "包管理",
+      "order": 14
+    }
+  ],
+  "concepts": [
+    {
+      "id": "se-arch-intro",
+      "name": "软件架构概述",
+      "description": "软件架构的定义、目标与评估维度",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-layered-arch",
+      "name": "分层架构",
+      "description": "三层/N层架构的职责划分与依赖规则",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mvc-mvvm",
+      "name": "MVC/MVVM模式",
+      "description": "Model-View-Controller与MVVM变体",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-microservices",
+      "name": "微服务架构",
+      "description": "服务拆分、通信协议与分布式挑战",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "分布式"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-event-driven",
+      "name": "事件驱动架构",
+      "description": "事件溯源、CQRS与消息队列模式",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "异步"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-hexagonal",
+      "name": "六边形架构",
+      "description": "端口与适配器模式实现依赖反转",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "DDD"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-clean-arch",
+      "name": "Clean Architecture",
+      "description": "Robert Martin的洋葱架构与依赖规则",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ddd",
+      "name": "领域驱动设计",
+      "description": "限界上下文、聚合根与通用语言",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "DDD"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-pipe-filter",
+      "name": "管道-过滤器架构",
+      "description": "数据流导向的处理链模式",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据流"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-plugin-arch",
+      "name": "插件架构",
+      "description": "宿主/插件解耦与动态加载机制",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "扩展"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-serverless",
+      "name": "Serverless架构",
+      "description": "FaaS/BaaS模型与冷启动优化",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "云原生"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-monorepo",
+      "name": "Monorepo策略",
+      "description": "单仓库管理、代码共享与构建优化",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工程化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-modular-arch",
+      "name": "模块化架构",
+      "description": "高内聚低耦合的模块划分原则",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-solid",
+      "name": "SOLID原则",
+      "description": "五大面向对象设计原则详解",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-api-design",
+      "name": "API设计原则",
+      "description": "RESTful/GraphQL/gRPC接口设计规范",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "接口"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-caching-arch",
+      "name": "缓存架构",
+      "description": "多级缓存策略与一致性保证",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-database-arch",
+      "name": "数据库架构",
+      "description": "SQL/NoSQL选型与分库分表策略",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-arch-decision",
+      "name": "架构决策记录",
+      "description": "ADR文档与技术选型评估框架",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-service-mesh",
+      "name": "Service Mesh",
+      "description": "Istio/Envoy/Sidecar代理模式",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "微服务"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-arch-evolution",
+      "name": "架构演进策略",
+      "description": "增量重构、Strangler Fig模式与渐进式迁移",
+      "subdomain_id": "architecture-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "演进"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-intro",
+      "name": "设计模式概述",
+      "description": "设计模式的分类、适用场景与反模式",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-dp-singleton",
+      "name": "单例模式",
+      "description": "全局唯一实例的线程安全实现",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "创建型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-factory",
+      "name": "工厂模式",
+      "description": "Simple/Method/Abstract Factory对比",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "创建型"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-dp-builder",
+      "name": "建造者模式",
+      "description": "复杂对象的分步构建与Director角色",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "创建型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-prototype",
+      "name": "原型模式",
+      "description": "深拷贝/浅拷贝与对象克隆注册表",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "创建型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-adapter",
+      "name": "适配器模式",
+      "description": "接口转换与遗留系统集成",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "结构型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-decorator",
+      "name": "装饰器模式",
+      "description": "动态职责附加与组合优于继承",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-proxy",
+      "name": "代理模式",
+      "description": "远程/虚拟/保护代理与懒加载",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-facade",
+      "name": "外观模式",
+      "description": "子系统简化接口与解耦策略",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "结构型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-composite",
+      "name": "组合模式",
+      "description": "树形结构的统一处理接口",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-observer",
+      "name": "观察者模式",
+      "description": "发布-订阅与事件驱动解耦",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-dp-strategy",
+      "name": "策略模式",
+      "description": "算法族封装与运行时切换",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-command",
+      "name": "命令模式",
+      "description": "请求封装、撤销/重做与宏命令",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-state",
+      "name": "状态模式",
+      "description": "有限状态机的面向对象实现",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-template",
+      "name": "模板方法模式",
+      "description": "算法骨架与可覆写步骤",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-iterator",
+      "name": "迭代器模式",
+      "description": "聚合对象的顺序访问接口",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-mediator",
+      "name": "中介者模式",
+      "description": "组件间通信集中化与松耦合",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-visitor",
+      "name": "访问者模式",
+      "description": "双分派与操作扩展不修改数据结构",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-flyweight",
+      "name": "享元模式",
+      "description": "共享细粒度对象降低内存开销",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dp-chain",
+      "name": "责任链模式",
+      "description": "请求沿链传递与中间件管道",
+      "subdomain_id": "design-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-vc-intro",
+      "name": "版本控制概述",
+      "description": "版本控制系统的演进与核心概念",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-git-basics",
+      "name": "Git基础",
+      "description": "仓库初始化、暂存区与提交工作流",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Git"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-git-branching",
+      "name": "Git分支策略",
+      "description": "Git Flow/GitHub Flow/Trunk-Based对比",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "分支"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-git-merge-rebase",
+      "name": "Merge与Rebase",
+      "description": "合并策略选择与冲突解决技巧",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Git"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-git-hooks",
+      "name": "Git Hooks",
+      "description": "客户端/服务端钩子与自动化",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "自动化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-git-submodule",
+      "name": "Git子模块与子树",
+      "description": "Submodule/Subtree/Subrepo对比",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "依赖"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-conventional-commit",
+      "name": "约定式提交",
+      "description": "Conventional Commits规范与自动化变更日志",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-git-lfs",
+      "name": "Git LFS",
+      "description": "大文件存储与二进制资产管理",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "大文件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-pr-workflow",
+      "name": "Pull Request工作流",
+      "description": "PR创建、Review循环与合并策略",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-monorepo-tools",
+      "name": "Monorepo工具",
+      "description": "Nx/Turborepo/Lerna/Rush工具对比",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-perforce",
+      "name": "Perforce基础",
+      "description": "P4V/Workspace/Stream Depot游戏行业实践",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-vc-binary",
+      "name": "二进制版本控制",
+      "description": "游戏资产/美术文件的版本管理策略",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-semantic-versioning",
+      "name": "语义化版本",
+      "description": "SemVer规范与API兼容性承诺",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-changelog",
+      "name": "变更日志管理",
+      "description": "CHANGELOG.md自动化与发布说明",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-gitignore",
+      "name": "忽略规则",
+      "description": ".gitignore模式与全局配置",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "theory",
+      "tags": [
+        "配置"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cherry-pick",
+      "name": "Cherry-pick与补丁",
+      "description": "精选提交与热修复回港策略",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Git"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-bisect",
+      "name": "Git Bisect调试",
+      "description": "二分查找引入Bug的提交",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-worktree",
+      "name": "Git Worktree",
+      "description": "多工作目录并行开发",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "效率"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-git-internals",
+      "name": "Git内部原理",
+      "description": "对象模型(blob/tree/commit/tag)与引用",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "原理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-vc-migration",
+      "name": "版本控制迁移",
+      "description": "SVN→Git/P4→Git迁移策略与历史保留",
+      "subdomain_id": "version-control",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "迁移"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cicd-intro",
+      "name": "CI/CD概述",
+      "description": "持续集成/交付/部署的概念与价值",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-pipeline-design",
+      "name": "流水线设计",
+      "description": "Stage/Job/Step分层与并行策略",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-github-actions",
+      "name": "GitHub Actions",
+      "description": "Workflow/Action/Runner配置与编写",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "平台"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-jenkins",
+      "name": "Jenkins",
+      "description": "Jenkinsfile/Pipeline语法与插件生态",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "平台"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-gitlab-ci",
+      "name": "GitLab CI",
+      "description": ".gitlab-ci.yml配置与Runner管理",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "平台"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-docker-ci",
+      "name": "Docker在CI中的应用",
+      "description": "容器化构建、镜像缓存与多阶段构建",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "容器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-artifact-mgmt",
+      "name": "制品管理",
+      "description": "Docker Registry/NPM/Maven制品存储",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制品"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-deploy-strategies",
+      "name": "部署策略",
+      "description": "蓝绿/金丝雀/滚动/A-B部署对比",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "部署"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-infra-as-code",
+      "name": "基础设施即代码",
+      "description": "Terraform/Pulumi/CloudFormation",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "IaC"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-env-management",
+      "name": "环境管理",
+      "description": "Dev/Staging/Prod环境隔离与配置管理",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-feature-flags",
+      "name": "Feature Flags",
+      "description": "功能开关实现与渐进式发布",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发布"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-monitoring-ci",
+      "name": "监控与告警",
+      "description": "CI指标采集、构建失败告警与仪表盘",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "监控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-secrets-mgmt",
+      "name": "密钥管理",
+      "description": "Vault/环境变量/OIDC安全凭证管理",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ci-testing",
+      "name": "CI中的测试策略",
+      "description": "测试金字塔与CI阶段测试编排",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-rollback",
+      "name": "回滚策略",
+      "description": "自动回滚/手动回滚与版本锁定",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ci-cache",
+      "name": "构建缓存优化",
+      "description": "依赖缓存/增量构建/远程缓存",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ci-security",
+      "name": "CI安全扫描",
+      "description": "SAST/DAST/SCA安全检查集成",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-gitops",
+      "name": "GitOps",
+      "description": "Flux/ArgoCD声明式持续交付",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "GitOps"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-game-ci",
+      "name": "游戏CI/CD",
+      "description": "UE5/Unity自动化构建与打包",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-release-mgmt",
+      "name": "发布管理",
+      "description": "Release Branch/Tag/自动化Release Notes",
+      "subdomain_id": "ci-cd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发布"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cr-intro",
+      "name": "代码审查概述",
+      "description": "代码审查的目标、价值与最佳实践",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-cr-checklist",
+      "name": "审查清单",
+      "description": "功能/安全/性能/可读性检查维度",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cr-tooling",
+      "name": "审查工具",
+      "description": "GitHub PR Review/Gerrit/Crucible对比",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cr-feedback",
+      "name": "建设性反馈",
+      "description": "审查评论的措辞、优先级标记与建议格式",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-cr-automation",
+      "name": "自动化审查",
+      "description": "Lint/Format/StaticAnalysis集成",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "自动化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cr-pair-programming",
+      "name": "结对编程",
+      "description": "Driver/Navigator模式与远程结对",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cr-metrics",
+      "name": "审查指标",
+      "description": "Review Time/Comment Density/Defect Escape",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "度量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-code-quality",
+      "name": "代码质量标准",
+      "description": "圈复杂度/认知复杂度/重复率",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-static-analysis",
+      "name": "静态分析",
+      "description": "SonarQube/ESLint/Pylint/Clang-Tidy",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-tech-debt",
+      "name": "技术债务管理",
+      "description": "技术债识别、分类与偿还策略",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-code-convention",
+      "name": "编码规范",
+      "description": "命名/格式/注释/文件组织约定",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-documentation",
+      "name": "文档实践",
+      "description": "API文档/README/Architecture Decision Record",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-security-review",
+      "name": "安全审查",
+      "description": "OWASP/注入/XSS/CSRF安全检查",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-perf-review",
+      "name": "性能审查",
+      "description": "N+1查询/内存泄漏/算法复杂度检查",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-accessibility-review",
+      "name": "可访问性审查",
+      "description": "WCAG/ARIA/键盘导航/屏幕阅读器检查",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "可访问"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cr-culture",
+      "name": "审查文化建设",
+      "description": "心理安全/知识共享/导师制度",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mob-programming",
+      "name": "群体编程",
+      "description": "Mob Programming与实时协作方法",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dependency-review",
+      "name": "依赖审查",
+      "description": "第三方库安全/许可证/维护状态评估",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "供应链"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cr-large-diff",
+      "name": "大型变更审查",
+      "description": "拆分策略/Stacked PR/增量审查",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cr-game-specific",
+      "name": "游戏项目审查重点",
+      "description": "资源引用/内存预算/帧率影响检查",
+      "subdomain_id": "code-review",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-tdd-intro",
+      "name": "TDD概述",
+      "description": "测试驱动开发的红-绿-重构循环",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-test-pyramid",
+      "name": "测试金字塔",
+      "description": "单元/集成/端到端测试比例策略",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-unit-test",
+      "name": "单元测试",
+      "description": "隔离测试、断言与测试命名规范",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "单元"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-integration-test",
+      "name": "集成测试",
+      "description": "组件间协作验证与测试容器",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "集成"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-e2e-test",
+      "name": "端到端测试",
+      "description": "Playwright/Cypress/Selenium UI自动化",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "E2E"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-test-doubles",
+      "name": "测试替身",
+      "description": "Mock/Stub/Spy/Fake与隔离策略",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-test-coverage",
+      "name": "测试覆盖率",
+      "description": "行/分支/路径覆盖与覆盖率陷阱",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "度量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-bdd",
+      "name": "行为驱动开发",
+      "description": "BDD/Gherkin/Given-When-Then规范",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "BDD"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-property-test",
+      "name": "属性测试",
+      "description": "QuickCheck/Hypothesis随机化测试",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mutation-test",
+      "name": "变异测试",
+      "description": "代码变异检测测试套件有效性",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-snapshot-test",
+      "name": "快照测试",
+      "description": "UI/API响应快照与差异对比",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-test-fixture",
+      "name": "测试夹具",
+      "description": "SetUp/TearDown/数据工厂与共享状态",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-test-patterns",
+      "name": "测试模式",
+      "description": "AAA模式/Builder Pattern/Object Mother",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-contract-test",
+      "name": "契约测试",
+      "description": "Pact/消费者驱动契约与API兼容验证",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "微服务"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-perf-test",
+      "name": "性能测试",
+      "description": "LoadRunner/JMeter/k6负载/压力/基准测试",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-chaos-engineering",
+      "name": "混沌工程",
+      "description": "故障注入/Chaos Monkey/韧性测试",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "韧性"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-test-game",
+      "name": "游戏测试策略",
+      "description": "自动化游戏测试/Bot测试/回放系统",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-test-refactoring",
+      "name": "测试与重构",
+      "description": "安全重构的测试保障策略",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "重构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-flaky-tests",
+      "name": "不稳定测试",
+      "description": "Flaky Test诊断与修复策略",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "维护"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-test-data",
+      "name": "测试数据管理",
+      "description": "数据生成/清理/隔离与种子策略",
+      "subdomain_id": "tdd",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-perf-intro",
+      "name": "性能分析概述",
+      "description": "性能指标定义与分析方法论",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-profiling-tools",
+      "name": "剖析工具",
+      "description": "Sampling/Instrumentation Profiler对比",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cpu-profiling",
+      "name": "CPU性能分析",
+      "description": "热点函数/调用图/火焰图解读",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "CPU"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-memory-profiling",
+      "name": "内存性能分析",
+      "description": "分配跟踪/泄漏检测/堆快照",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "内存"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-gpu-profiling",
+      "name": "GPU性能分析",
+      "description": "RenderDoc/Nsight/PIX图形调试",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "GPU"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-benchmark",
+      "name": "基准测试",
+      "description": "Microbenchmark/Macro/回归基准方法",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-algo-complexity",
+      "name": "算法复杂度分析",
+      "description": "时间/空间复杂度与实际性能关系",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cache-perf",
+      "name": "缓存性能",
+      "description": "CPU缓存层级/缓存行/数据局部性",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "硬件"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-io-perf",
+      "name": "I/O性能分析",
+      "description": "磁盘/网络I/O瓶颈与异步优化",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "I/O"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-concurrency-perf",
+      "name": "并发性能分析",
+      "description": "锁竞争/上下文切换/False Sharing",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "并发"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-frame-analysis",
+      "name": "帧分析",
+      "description": "游戏帧时间分解与瓶颈定位",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-load-testing",
+      "name": "负载测试",
+      "description": "并发用户模拟与服务器性能评估",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "服务器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-apm",
+      "name": "APM监控",
+      "description": "Application Performance Monitoring工具",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "监控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-optimization-pattern",
+      "name": "优化模式",
+      "description": "空间换时间/预计算/批处理/池化",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-compile-time-perf",
+      "name": "编译时性能",
+      "description": "编译耗时分析与优化策略",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "编译"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-startup-perf",
+      "name": "启动性能优化",
+      "description": "冷启动/热启动/懒加载策略",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "启动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-network-perf",
+      "name": "网络性能分析",
+      "description": "延迟/带宽/吞吐量/协议优化",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-database-perf",
+      "name": "数据库性能",
+      "description": "查询优化/索引/执行计划分析",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数据库"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-perf-regression",
+      "name": "性能回归检测",
+      "description": "CI集成性能基准与告警阈值",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "CI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-perf-budget",
+      "name": "性能预算",
+      "description": "性能指标预算分配与监控策略",
+      "subdomain_id": "performance-analysis",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "规划"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-refactor-intro",
+      "name": "重构概述",
+      "description": "重构的定义、时机与安全保障",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-code-smells",
+      "name": "代码异味",
+      "description": "22种常见代码异味识别与分类",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "识别"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-extract-method",
+      "name": "提取方法",
+      "description": "长方法拆分与职责单一化",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-rename-refactor",
+      "name": "重命名重构",
+      "description": "变量/方法/类的语义化命名",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-extract-class",
+      "name": "提取类",
+      "description": "God Class拆分与职责分配",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-move-method",
+      "name": "移动方法/字段",
+      "description": "Feature Envy修复与职责归位",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-inline-refactor",
+      "name": "内联重构",
+      "description": "过度抽象的简化与消除间接层",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "简化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-replace-conditional",
+      "name": "替换条件逻辑",
+      "description": "多态替换switch/if-else链",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "控制流"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-introduce-parameter",
+      "name": "引入参数对象",
+      "description": "参数列表简化与数据聚合",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "参数"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-null-object",
+      "name": "Null对象模式",
+      "description": "消除null检查的策略模式",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-legacy-refactor",
+      "name": "遗留代码重构",
+      "description": "Michael Feathers的遗留代码改善策略",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "遗留"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-strangler-fig",
+      "name": "绞杀者模式",
+      "description": "渐进式系统替换而非大爆炸重写",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "迁移"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-refactor-patterns",
+      "name": "重构模式",
+      "description": "Kerievsky《重构到模式》关键手法",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-test-before-refactor",
+      "name": "重构前加测试",
+      "description": "Characterization Test与安全网构建",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-micro-refactor",
+      "name": "微重构",
+      "description": "5分钟内完成的小步安全重构",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-api-refactor",
+      "name": "API重构",
+      "description": "向后兼容的接口重构与废弃策略",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "接口"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-database-refactor",
+      "name": "数据库重构",
+      "description": "Schema迁移/零停机变更/演化式设计",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数据库"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-arch-refactor",
+      "name": "架构级重构",
+      "description": "模块解耦/微服务拆分/代码分层调整",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-continuous-refactor",
+      "name": "持续重构",
+      "description": "童子军原则与日常重构习惯",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-refactor-game",
+      "name": "游戏代码重构",
+      "description": "热路径性能保护/ECS迁移/脚本重组",
+      "subdomain_id": "refactoring",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-gpp-intro",
+      "name": "游戏编程模式概述",
+      "description": "Robert Nystrom《游戏编程模式》核心思想",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-game-loop",
+      "name": "游戏循环",
+      "description": "Fixed/Variable/Semi-Fixed Timestep",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-update-method",
+      "name": "更新方法",
+      "description": "统一更新接口与帧驱动逻辑",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-component-pattern",
+      "name": "组件模式",
+      "description": "组合优于继承的游戏对象设计",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-event-queue",
+      "name": "事件队列",
+      "description": "异步消息分发与帧间通信",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "通信"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-service-locator",
+      "name": "服务定位器",
+      "description": "全局服务访问点与Mock替换",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "依赖"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-object-pool",
+      "name": "对象池",
+      "description": "预分配对象复用降低GC压力",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内存"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-spatial-partition",
+      "name": "空间分区",
+      "description": "Grid/Quadtree/Octree/BSP/BVH",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-double-buffer",
+      "name": "双缓冲",
+      "description": "帧缓冲/状态缓冲与无撕裂更新",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dirty-flag",
+      "name": "脏标记",
+      "description": "变化追踪与按需更新优化",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-bytecode",
+      "name": "字节码模式",
+      "description": "用户定义行为的安全沙箱执行",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "脚本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-type-object",
+      "name": "类型对象",
+      "description": "数据驱动的类型定义系统",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据驱动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-data-locality",
+      "name": "数据局部性",
+      "description": "缓存友好的数据布局与SoA模式",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-flyweight-game",
+      "name": "享元模式(游戏)",
+      "description": "共享资源实例化与实例数据分离",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内存"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-prototype-game",
+      "name": "原型模式(游戏)",
+      "description": "运行时对象克隆与Prefab系统",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "创建"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-state-pattern-game",
+      "name": "状态模式(游戏)",
+      "description": "角色/AI有限状态机实现",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-command-pattern-game",
+      "name": "命令模式(游戏)",
+      "description": "输入映射/撤销/回放/网络同步",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "输入"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-observer-game",
+      "name": "观察者模式(游戏)",
+      "description": "成就/事件系统/UI绑定",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "事件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-sandbox-pattern",
+      "name": "沙箱模式",
+      "description": "安全隔离的自定义行为运行环境",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-subclass-sandbox",
+      "name": "子类沙箱",
+      "description": "模板方法+受限API的行为定义模式",
+      "subdomain_id": "game-programming-patterns",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "继承"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-intro",
+      "name": "ECS架构概述",
+      "description": "Entity-Component-System的核心理念",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-entity",
+      "name": "Entity实体",
+      "description": "轻量ID与组件容器设计",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-component-ecs",
+      "name": "Component组件",
+      "description": "纯数据结构与组合式对象定义",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-system-ecs",
+      "name": "System系统",
+      "description": "逻辑处理单元与查询遍历",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-archetype",
+      "name": "Archetype存储",
+      "description": "组件组合分类与连续内存布局",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "存储"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-sparse-set",
+      "name": "Sparse Set",
+      "description": "O(1)查找/添加/删除的组件存储",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "存储"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-query",
+      "name": "ECS查询系统",
+      "description": "Component Query/Filter/排除条件",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "查询"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-scheduling",
+      "name": "System调度",
+      "description": "依赖图/并行执行/阶段分组",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "调度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-events",
+      "name": "ECS事件系统",
+      "description": "Command Buffer/Event Queue/延迟操作",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "事件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-soa-layout",
+      "name": "SoA数据布局",
+      "description": "Structure of Arrays与SIMD友好设计",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据布局"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-entt",
+      "name": "EnTT框架",
+      "description": "C++ ECS库的设计与使用",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "框架"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-flecs",
+      "name": "Flecs框架",
+      "description": "高性能ECS框架与关系型查询",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "框架"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-unity-dots-ecs",
+      "name": "Unity DOTS ECS",
+      "description": "Unity官方ECS实现与Burst集成",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "Unity"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ue5-mass",
+      "name": "UE5 Mass Entity",
+      "description": "UE5 ECS变体与Gameplay集成",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-networking",
+      "name": "ECS网络同步",
+      "description": "组件快照/差量同步/状态复制",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-serialization",
+      "name": "ECS序列化",
+      "description": "World快照/Save-Load/Scene导入导出",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "持久化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-hierarchy",
+      "name": "ECS层级关系",
+      "description": "Parent-Child关系与变换传播",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "关系"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-prefab",
+      "name": "ECS Prefab",
+      "description": "实体模板与批量实例化",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-migration",
+      "name": "OOP到ECS迁移",
+      "description": "从面向对象到数据导向的渐进式重构",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "迁移"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ecs-testing",
+      "name": "ECS测试策略",
+      "description": "System单元测试与集成测试方法",
+      "subdomain_id": "ecs-architecture",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mem-intro",
+      "name": "内存管理概述",
+      "description": "堆/栈/静态内存与生命周期管理",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-stack-heap",
+      "name": "栈与堆",
+      "description": "分配策略对比与性能影响",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-smart-pointers",
+      "name": "智能指针",
+      "description": "unique_ptr/shared_ptr/weak_ptr语义",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "C++"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-raii",
+      "name": "RAII",
+      "description": "资源获取即初始化与异常安全",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "C++"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-memory-allocator",
+      "name": "内存分配器",
+      "description": "Custom Allocator/Arena/Slab分配策略",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-pool-allocator",
+      "name": "池分配器",
+      "description": "固定大小对象的O(1)分配回收",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "池化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-gc",
+      "name": "垃圾回收",
+      "description": "Mark-Sweep/Generational/Incremental GC",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "GC"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-gc-optimization",
+      "name": "GC优化",
+      "description": "减少分配/对象池/值类型/结构体",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-memory-leak",
+      "name": "内存泄漏检测",
+      "description": "Valgrind/AddressSanitizer/HeapTrack",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-memory-fragmentation",
+      "name": "内存碎片化",
+      "description": "碎片类型/紧凑化/分配策略",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "问题"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-virtual-memory",
+      "name": "虚拟内存",
+      "description": "页表/TLB/内存映射文件",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "OS"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cache-friendly",
+      "name": "缓存友好编程",
+      "description": "数据布局/预取/避免Cache Miss",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-memory-budget",
+      "name": "内存预算管理",
+      "description": "游戏平台内存限制与分配策略",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-texture-memory",
+      "name": "纹理内存管理",
+      "description": "流式加载/Mipmap/压缩格式选择",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "图形"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-string-interning",
+      "name": "字符串池化",
+      "description": "字符串去重与哈希查找优化",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-alignment",
+      "name": "内存对齐",
+      "description": "结构体填充/SIMD对齐/平台差异",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "底层"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-move-semantics",
+      "name": "移动语义",
+      "description": "C++11 Move/右值引用/完美转发",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "C++"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ownership",
+      "name": "所有权模型",
+      "description": "Rust所有权/借用检查对C++的启示",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-arena-allocator",
+      "name": "Arena分配器",
+      "description": "Frame Allocator/Scope Allocator实现",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mem-debug",
+      "name": "内存调试技巧",
+      "description": "内存哨兵/Canary/填充模式/检测工具",
+      "subdomain_id": "memory-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mt-intro",
+      "name": "多线程概述",
+      "description": "并发/并行概念与线程模型",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-thread-basics",
+      "name": "线程基础",
+      "description": "创建/同步/生命周期管理",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mutex-lock",
+      "name": "互斥锁",
+      "description": "Mutex/Lock Guard/Deadlock预防",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "同步"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-condition-var",
+      "name": "条件变量",
+      "description": "Wait/Notify/虚假唤醒与生产消费者",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "同步"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-atomic",
+      "name": "原子操作",
+      "description": "Atomic类型/CAS/内存序",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "底层"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-lock-free",
+      "name": "无锁编程",
+      "description": "无锁队列/栈与ABA问题",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-thread-pool",
+      "name": "线程池",
+      "description": "工作窃取/任务调度/线程复用",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-task-system",
+      "name": "任务系统",
+      "description": "Task Graph/依赖/优先级调度",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-future-promise",
+      "name": "Future/Promise",
+      "description": "异步结果与链式操作",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "异步"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-coroutine",
+      "name": "协程",
+      "description": "C++20 Coroutine/Python async-await/Fiber",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "异步"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-rwlock",
+      "name": "读写锁",
+      "description": "Shared/Exclusive Lock与读多写少优化",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "同步"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-memory-model",
+      "name": "内存模型",
+      "description": "C++/Java内存模型与Happens-Before",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "底层"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-data-race",
+      "name": "数据竞争检测",
+      "description": "ThreadSanitizer/Helgrind检测工具",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mt-patterns",
+      "name": "多线程模式",
+      "description": "Producer-Consumer/Pipeline/MapReduce",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-game-threading",
+      "name": "游戏多线程架构",
+      "description": "主线程/渲染线程/Worker模型",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-simd",
+      "name": "SIMD编程",
+      "description": "SSE/AVX/NEON向量化与intrinsics",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "向量化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-gpu-compute",
+      "name": "GPU计算",
+      "description": "Compute Shader/CUDA/OpenCL基础",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "GPU"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-false-sharing",
+      "name": "False Sharing",
+      "description": "缓存行争用与Padding对策",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-concurrent-ds",
+      "name": "并发数据结构",
+      "description": "ConcurrentHashMap/Queue/SkipList",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数据结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-mt-debug",
+      "name": "多线程调试",
+      "description": "调试策略/日志/确定性重放",
+      "subdomain_id": "multithreading",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-build-intro",
+      "name": "构建系统概述",
+      "description": "构建系统的职责与核心概念",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-cmake",
+      "name": "CMake",
+      "description": "CMakeLists.txt/Target/Generator",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "C++"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-make",
+      "name": "Make/Makefile",
+      "description": "经典构建工具的规则与模式",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-msbuild",
+      "name": "MSBuild",
+      "description": "Visual Studio构建系统与.vcxproj",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Windows"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ninja",
+      "name": "Ninja",
+      "description": "低层级高速构建执行器",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-bazel",
+      "name": "Bazel",
+      "description": "Google的可复现/可缓存构建系统",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "大规模"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-gradle",
+      "name": "Gradle",
+      "description": "JVM生态构建工具与Groovy/Kotlin DSL",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "JVM"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-webpack-vite",
+      "name": "Webpack/Vite",
+      "description": "前端打包工具与模块联邦",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-ubt",
+      "name": "Unreal Build Tool",
+      "description": "UE5的UBT/UHT/模块编译",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-incremental-build",
+      "name": "增量构建",
+      "description": "文件时间戳/内容哈希/依赖追踪",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-cross-compile",
+      "name": "交叉编译",
+      "description": "多平台目标编译与工具链配置",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "平台"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-precompiled-header",
+      "name": "预编译头",
+      "description": "PCH/Unity Build/模块接口单元",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "C++"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-link-time",
+      "name": "链接优化",
+      "description": "LTO/Linker脚本/符号可见性",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-build-variant",
+      "name": "构建变体",
+      "description": "Debug/Release/Profile配置管理",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "配置"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-code-generation",
+      "name": "代码生成",
+      "description": "Proto/Thrift/UHT反射代码自动生成",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生成"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-remote-build",
+      "name": "远程构建",
+      "description": "分布式编译/IncrediBuild/distcc",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分布式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-build-reproducibility",
+      "name": "可复现构建",
+      "description": "确定性构建与供应链安全",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-shader-build",
+      "name": "Shader编译管线",
+      "description": "Shader变体/Permutation/异步编译",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-asset-pipeline",
+      "name": "资产处理管线",
+      "description": "Cook/Compress/Platform-specific导出",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-build-automation",
+      "name": "构建自动化脚本",
+      "description": "Python/PowerShell/Bash构建脚本",
+      "subdomain_id": "build-systems",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "自动化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-pkg-intro",
+      "name": "包管理概述",
+      "description": "依赖管理的核心问题与解决方案",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-npm",
+      "name": "npm/Yarn/pnpm",
+      "description": "Node.js包管理器与lock文件",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-pip",
+      "name": "pip/Poetry/conda",
+      "description": "Python依赖管理与虚拟环境",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Python"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-nuget",
+      "name": "NuGet",
+      "description": ".NET包管理器与C#项目集成",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "C#"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-conan-vcpkg",
+      "name": "Conan/vcpkg",
+      "description": "C++包管理器与构建集成",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "C++"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-cargo",
+      "name": "Cargo",
+      "description": "Rust包管理器与crates.io生态",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Rust"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-maven",
+      "name": "Maven/Gradle依赖",
+      "description": "JVM依赖解析/仓库/传递依赖",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "JVM"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dep-resolution",
+      "name": "依赖解析算法",
+      "description": "版本约束求解/SAT/回溯策略",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "原理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-lockfile",
+      "name": "Lock文件",
+      "description": "确定性安装与协作一致性",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-private-registry",
+      "name": "私有注册表",
+      "description": "Verdaccio/Artifactory/自建仓库",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "企业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-monorepo-deps",
+      "name": "Monorepo依赖管理",
+      "description": "Workspace Protocol/Hoist/Phantom依赖",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Monorepo"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dep-security",
+      "name": "依赖安全",
+      "description": "npm audit/Snyk/Dependabot漏洞扫描",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-dep-license",
+      "name": "许可证合规",
+      "description": "MIT/Apache/GPL兼容性与合规检查",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "法务"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-dep-upgrade",
+      "name": "依赖升级策略",
+      "description": "Renovate/Dependabot自动化更新",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "维护"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-vendoring",
+      "name": "Vendoring",
+      "description": "依赖内嵌与离线构建保障",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-game-dep",
+      "name": "游戏项目依赖管理",
+      "description": "引擎插件/第三方库/中间件版本控制",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-container-deps",
+      "name": "容器化依赖",
+      "description": "Dockerfile依赖管理与多阶段镜像",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "容器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-workspace",
+      "name": "Workspace管理",
+      "description": "npm/pnpm/Yarn workspace协议",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Monorepo"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "se-publish-flow",
+      "name": "包发布流程",
+      "description": "Publish/Unpublish/Deprecate生命周期",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "se-dep-analysis",
+      "name": "依赖分析",
+      "description": "依赖树可视化/循环检测/Tree Shaking",
+      "subdomain_id": "package-management",
+      "domain_id": "software-engineering",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "se-arch-intro",
+      "target": "se-layered-arch",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-arch-intro",
+      "target": "se-mvc-mvvm",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-arch-intro",
+      "target": "se-modular-arch",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-modular-arch",
+      "target": "se-microservices",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-layered-arch",
+      "target": "se-hexagonal",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-layered-arch",
+      "target": "se-clean-arch",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-solid",
+      "target": "se-clean-arch",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-solid",
+      "target": "se-hexagonal",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-microservices",
+      "target": "se-event-driven",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-microservices",
+      "target": "se-service-mesh",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-hexagonal",
+      "target": "se-ddd",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-api-design",
+      "target": "se-microservices",
+      "type": "related"
+    },
+    {
+      "source": "se-arch-intro",
+      "target": "se-arch-decision",
+      "type": "related"
+    },
+    {
+      "source": "se-arch-intro",
+      "target": "se-arch-evolution",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-intro",
+      "target": "se-dp-singleton",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dp-intro",
+      "target": "se-dp-factory",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dp-intro",
+      "target": "se-dp-observer",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dp-factory",
+      "target": "se-dp-builder",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-factory",
+      "target": "se-dp-prototype",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-adapter",
+      "target": "se-dp-facade",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-decorator",
+      "target": "se-dp-proxy",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-observer",
+      "target": "se-dp-mediator",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-strategy",
+      "target": "se-dp-state",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-strategy",
+      "target": "se-dp-template",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-command",
+      "target": "se-dp-chain",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-composite",
+      "target": "se-dp-iterator",
+      "type": "related"
+    },
+    {
+      "source": "se-vc-intro",
+      "target": "se-git-basics",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-git-basics",
+      "target": "se-git-branching",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-git-basics",
+      "target": "se-gitignore",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-git-branching",
+      "target": "se-git-merge-rebase",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-git-branching",
+      "target": "se-pr-workflow",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-git-basics",
+      "target": "se-git-hooks",
+      "type": "related"
+    },
+    {
+      "source": "se-git-basics",
+      "target": "se-cherry-pick",
+      "type": "related"
+    },
+    {
+      "source": "se-git-basics",
+      "target": "se-git-internals",
+      "type": "related"
+    },
+    {
+      "source": "se-git-lfs",
+      "target": "se-vc-binary",
+      "type": "related"
+    },
+    {
+      "source": "se-monorepo-tools",
+      "target": "se-monorepo",
+      "type": "related"
+    },
+    {
+      "source": "se-pr-workflow",
+      "target": "se-conventional-commit",
+      "type": "related"
+    },
+    {
+      "source": "se-cicd-intro",
+      "target": "se-pipeline-design",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-pipeline-design",
+      "target": "se-github-actions",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-pipeline-design",
+      "target": "se-jenkins",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-pipeline-design",
+      "target": "se-gitlab-ci",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-github-actions",
+      "target": "se-docker-ci",
+      "type": "related"
+    },
+    {
+      "source": "se-pipeline-design",
+      "target": "se-ci-testing",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-deploy-strategies",
+      "target": "se-rollback",
+      "type": "related"
+    },
+    {
+      "source": "se-deploy-strategies",
+      "target": "se-feature-flags",
+      "type": "related"
+    },
+    {
+      "source": "se-infra-as-code",
+      "target": "se-gitops",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cicd-intro",
+      "target": "se-game-ci",
+      "type": "related"
+    },
+    {
+      "source": "se-cr-intro",
+      "target": "se-cr-checklist",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cr-intro",
+      "target": "se-cr-tooling",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cr-intro",
+      "target": "se-cr-feedback",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cr-checklist",
+      "target": "se-security-review",
+      "type": "related"
+    },
+    {
+      "source": "se-cr-checklist",
+      "target": "se-perf-review",
+      "type": "related"
+    },
+    {
+      "source": "se-cr-automation",
+      "target": "se-static-analysis",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cr-intro",
+      "target": "se-cr-culture",
+      "type": "related"
+    },
+    {
+      "source": "se-code-quality",
+      "target": "se-tech-debt",
+      "type": "related"
+    },
+    {
+      "source": "se-tdd-intro",
+      "target": "se-unit-test",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-tdd-intro",
+      "target": "se-test-pyramid",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-unit-test",
+      "target": "se-test-doubles",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-unit-test",
+      "target": "se-integration-test",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-integration-test",
+      "target": "se-e2e-test",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-test-doubles",
+      "target": "se-test-patterns",
+      "type": "related"
+    },
+    {
+      "source": "se-unit-test",
+      "target": "se-test-coverage",
+      "type": "related"
+    },
+    {
+      "source": "se-tdd-intro",
+      "target": "se-bdd",
+      "type": "related"
+    },
+    {
+      "source": "se-unit-test",
+      "target": "se-property-test",
+      "type": "related"
+    },
+    {
+      "source": "se-test-coverage",
+      "target": "se-mutation-test",
+      "type": "related"
+    },
+    {
+      "source": "se-perf-intro",
+      "target": "se-profiling-tools",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-profiling-tools",
+      "target": "se-cpu-profiling",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-profiling-tools",
+      "target": "se-memory-profiling",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-profiling-tools",
+      "target": "se-gpu-profiling",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-perf-intro",
+      "target": "se-algo-complexity",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cpu-profiling",
+      "target": "se-cache-perf",
+      "type": "related"
+    },
+    {
+      "source": "se-perf-intro",
+      "target": "se-benchmark",
+      "type": "related"
+    },
+    {
+      "source": "se-benchmark",
+      "target": "se-perf-regression",
+      "type": "related"
+    },
+    {
+      "source": "se-perf-intro",
+      "target": "se-frame-analysis",
+      "type": "related"
+    },
+    {
+      "source": "se-refactor-intro",
+      "target": "se-code-smells",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-code-smells",
+      "target": "se-extract-method",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-code-smells",
+      "target": "se-rename-refactor",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-code-smells",
+      "target": "se-extract-class",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-extract-method",
+      "target": "se-move-method",
+      "type": "related"
+    },
+    {
+      "source": "se-extract-method",
+      "target": "se-inline-refactor",
+      "type": "related"
+    },
+    {
+      "source": "se-refactor-intro",
+      "target": "se-test-before-refactor",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-legacy-refactor",
+      "target": "se-strangler-fig",
+      "type": "related"
+    },
+    {
+      "source": "se-refactor-patterns",
+      "target": "se-arch-refactor",
+      "type": "related"
+    },
+    {
+      "source": "se-gpp-intro",
+      "target": "se-game-loop",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-gpp-intro",
+      "target": "se-component-pattern",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-game-loop",
+      "target": "se-update-method",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-component-pattern",
+      "target": "se-event-queue",
+      "type": "related"
+    },
+    {
+      "source": "se-gpp-intro",
+      "target": "se-object-pool",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-gpp-intro",
+      "target": "se-state-pattern-game",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-object-pool",
+      "target": "se-spatial-partition",
+      "type": "related"
+    },
+    {
+      "source": "se-data-locality",
+      "target": "se-flyweight-game",
+      "type": "related"
+    },
+    {
+      "source": "se-command-pattern-game",
+      "target": "se-event-queue",
+      "type": "related"
+    },
+    {
+      "source": "se-ecs-intro",
+      "target": "se-entity",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ecs-intro",
+      "target": "se-component-ecs",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ecs-intro",
+      "target": "se-system-ecs",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-component-ecs",
+      "target": "se-archetype",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-component-ecs",
+      "target": "se-sparse-set",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-system-ecs",
+      "target": "se-ecs-query",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-system-ecs",
+      "target": "se-ecs-scheduling",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-archetype",
+      "target": "se-soa-layout",
+      "type": "related"
+    },
+    {
+      "source": "se-ecs-intro",
+      "target": "se-ecs-migration",
+      "type": "related"
+    },
+    {
+      "source": "se-ecs-intro",
+      "target": "se-unity-dots-ecs",
+      "type": "related"
+    },
+    {
+      "source": "se-ecs-intro",
+      "target": "se-ue5-mass",
+      "type": "related"
+    },
+    {
+      "source": "se-mem-intro",
+      "target": "se-stack-heap",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-stack-heap",
+      "target": "se-smart-pointers",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-stack-heap",
+      "target": "se-raii",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-stack-heap",
+      "target": "se-memory-allocator",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-memory-allocator",
+      "target": "se-pool-allocator",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-memory-allocator",
+      "target": "se-arena-allocator",
+      "type": "related"
+    },
+    {
+      "source": "se-mem-intro",
+      "target": "se-gc",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-gc",
+      "target": "se-gc-optimization",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-mem-intro",
+      "target": "se-memory-leak",
+      "type": "related"
+    },
+    {
+      "source": "se-memory-allocator",
+      "target": "se-memory-fragmentation",
+      "type": "related"
+    },
+    {
+      "source": "se-cache-friendly",
+      "target": "se-alignment",
+      "type": "related"
+    },
+    {
+      "source": "se-smart-pointers",
+      "target": "se-move-semantics",
+      "type": "related"
+    },
+    {
+      "source": "se-mt-intro",
+      "target": "se-thread-basics",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-thread-basics",
+      "target": "se-mutex-lock",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-thread-basics",
+      "target": "se-condition-var",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-mutex-lock",
+      "target": "se-atomic",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-atomic",
+      "target": "se-lock-free",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-thread-basics",
+      "target": "se-thread-pool",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-thread-pool",
+      "target": "se-task-system",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-thread-basics",
+      "target": "se-future-promise",
+      "type": "related"
+    },
+    {
+      "source": "se-future-promise",
+      "target": "se-coroutine",
+      "type": "related"
+    },
+    {
+      "source": "se-mutex-lock",
+      "target": "se-rwlock",
+      "type": "related"
+    },
+    {
+      "source": "se-atomic",
+      "target": "se-memory-model",
+      "type": "related"
+    },
+    {
+      "source": "se-mt-intro",
+      "target": "se-game-threading",
+      "type": "related"
+    },
+    {
+      "source": "se-mt-intro",
+      "target": "se-simd",
+      "type": "related"
+    },
+    {
+      "source": "se-build-intro",
+      "target": "se-cmake",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-build-intro",
+      "target": "se-make",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-build-intro",
+      "target": "se-msbuild",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cmake",
+      "target": "se-ninja",
+      "type": "related"
+    },
+    {
+      "source": "se-build-intro",
+      "target": "se-bazel",
+      "type": "related"
+    },
+    {
+      "source": "se-build-intro",
+      "target": "se-incremental-build",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cmake",
+      "target": "se-cross-compile",
+      "type": "related"
+    },
+    {
+      "source": "se-cmake",
+      "target": "se-precompiled-header",
+      "type": "related"
+    },
+    {
+      "source": "se-build-intro",
+      "target": "se-ubt",
+      "type": "related"
+    },
+    {
+      "source": "se-build-intro",
+      "target": "se-asset-pipeline",
+      "type": "related"
+    },
+    {
+      "source": "se-pkg-intro",
+      "target": "se-npm",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-pkg-intro",
+      "target": "se-pip",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-pkg-intro",
+      "target": "se-conan-vcpkg",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-npm",
+      "target": "se-lockfile",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-pkg-intro",
+      "target": "se-dep-resolution",
+      "type": "related"
+    },
+    {
+      "source": "se-npm",
+      "target": "se-workspace",
+      "type": "related"
+    },
+    {
+      "source": "se-workspace",
+      "target": "se-monorepo-deps",
+      "type": "related"
+    },
+    {
+      "source": "se-pkg-intro",
+      "target": "se-dep-security",
+      "type": "related"
+    },
+    {
+      "source": "se-dep-security",
+      "target": "se-dep-license",
+      "type": "related"
+    },
+    {
+      "source": "se-pkg-intro",
+      "target": "se-publish-flow",
+      "type": "related"
+    },
+    {
+      "source": "se-solid",
+      "target": "se-dp-intro",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dp-observer",
+      "target": "se-observer-game",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-command",
+      "target": "se-command-pattern-game",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-state",
+      "target": "se-state-pattern-game",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-strategy",
+      "target": "se-object-pool",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-flyweight",
+      "target": "se-flyweight-game",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-prototype",
+      "target": "se-prototype-game",
+      "type": "related"
+    },
+    {
+      "source": "se-component-pattern",
+      "target": "se-ecs-intro",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-data-locality",
+      "target": "se-soa-layout",
+      "type": "related"
+    },
+    {
+      "source": "se-data-locality",
+      "target": "se-cache-friendly",
+      "type": "related"
+    },
+    {
+      "source": "se-object-pool",
+      "target": "se-pool-allocator",
+      "type": "related"
+    },
+    {
+      "source": "se-pr-workflow",
+      "target": "se-cr-intro",
+      "type": "related"
+    },
+    {
+      "source": "se-git-hooks",
+      "target": "se-cr-automation",
+      "type": "related"
+    },
+    {
+      "source": "se-tdd-intro",
+      "target": "se-test-before-refactor",
+      "type": "related"
+    },
+    {
+      "source": "se-test-refactoring",
+      "target": "se-refactor-intro",
+      "type": "related"
+    },
+    {
+      "source": "se-ci-testing",
+      "target": "se-test-pyramid",
+      "type": "related"
+    },
+    {
+      "source": "se-github-actions",
+      "target": "se-game-ci",
+      "type": "related"
+    },
+    {
+      "source": "se-ubt",
+      "target": "se-cmake",
+      "type": "related"
+    },
+    {
+      "source": "se-conan-vcpkg",
+      "target": "se-cmake",
+      "type": "related"
+    },
+    {
+      "source": "se-game-threading",
+      "target": "se-task-system",
+      "type": "related"
+    },
+    {
+      "source": "se-memory-allocator",
+      "target": "se-perf-intro",
+      "type": "related"
+    },
+    {
+      "source": "se-algo-complexity",
+      "target": "se-code-quality",
+      "type": "related"
+    },
+    {
+      "source": "se-static-analysis",
+      "target": "se-ci-security",
+      "type": "related"
+    },
+    {
+      "source": "se-ecs-migration",
+      "target": "se-refactor-game",
+      "type": "related"
+    },
+    {
+      "source": "se-gc-optimization",
+      "target": "se-object-pool",
+      "type": "related"
+    },
+    {
+      "source": "se-memory-budget",
+      "target": "se-texture-memory",
+      "type": "related"
+    },
+    {
+      "source": "se-lock-free",
+      "target": "se-concurrent-ds",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-game-loop",
+      "target": "se-game-threading",
+      "type": "related"
+    },
+    {
+      "source": "se-asset-pipeline",
+      "target": "se-game-ci",
+      "type": "related"
+    },
+    {
+      "source": "se-dep-security",
+      "target": "se-ci-security",
+      "type": "related"
+    }
+  ],
+  "milestones": [
+    {
+      "concept_id": "se-arch-intro",
+      "name": "软件架构概述",
+      "order": 1
+    },
+    {
+      "concept_id": "se-microservices",
+      "name": "微服务架构",
+      "order": 2
+    },
+    {
+      "concept_id": "se-ddd",
+      "name": "领域驱动设计",
+      "order": 3
+    },
+    {
+      "concept_id": "se-dp-intro",
+      "name": "设计模式概述",
+      "order": 4
+    },
+    {
+      "concept_id": "se-dp-factory",
+      "name": "工厂模式",
+      "order": 5
+    },
+    {
+      "concept_id": "se-dp-observer",
+      "name": "观察者模式",
+      "order": 6
+    },
+    {
+      "concept_id": "se-vc-intro",
+      "name": "版本控制概述",
+      "order": 7
+    },
+    {
+      "concept_id": "se-git-branching",
+      "name": "Git分支策略",
+      "order": 8
+    },
+    {
+      "concept_id": "se-pr-workflow",
+      "name": "Pull Request工作流",
+      "order": 9
+    },
+    {
+      "concept_id": "se-cicd-intro",
+      "name": "CI/CD概述",
+      "order": 10
+    },
+    {
+      "concept_id": "se-github-actions",
+      "name": "GitHub Actions",
+      "order": 11
+    },
+    {
+      "concept_id": "se-deploy-strategies",
+      "name": "部署策略",
+      "order": 12
+    },
+    {
+      "concept_id": "se-game-ci",
+      "name": "游戏CI/CD",
+      "order": 13
+    },
+    {
+      "concept_id": "se-cr-intro",
+      "name": "代码审查概述",
+      "order": 14
+    },
+    {
+      "concept_id": "se-cr-feedback",
+      "name": "建设性反馈",
+      "order": 15
+    },
+    {
+      "concept_id": "se-static-analysis",
+      "name": "静态分析",
+      "order": 16
+    },
+    {
+      "concept_id": "se-tdd-intro",
+      "name": "TDD概述",
+      "order": 17
+    },
+    {
+      "concept_id": "se-unit-test",
+      "name": "单元测试",
+      "order": 18
+    },
+    {
+      "concept_id": "se-test-doubles",
+      "name": "测试替身",
+      "order": 19
+    },
+    {
+      "concept_id": "se-test-game",
+      "name": "游戏测试策略",
+      "order": 20
+    },
+    {
+      "concept_id": "se-perf-intro",
+      "name": "性能分析概述",
+      "order": 21
+    },
+    {
+      "concept_id": "se-cpu-profiling",
+      "name": "CPU性能分析",
+      "order": 22
+    },
+    {
+      "concept_id": "se-cache-perf",
+      "name": "缓存性能",
+      "order": 23
+    },
+    {
+      "concept_id": "se-refactor-intro",
+      "name": "重构概述",
+      "order": 24
+    },
+    {
+      "concept_id": "se-extract-method",
+      "name": "提取方法",
+      "order": 25
+    },
+    {
+      "concept_id": "se-legacy-refactor",
+      "name": "遗留代码重构",
+      "order": 26
+    },
+    {
+      "concept_id": "se-gpp-intro",
+      "name": "游戏编程模式概述",
+      "order": 27
+    },
+    {
+      "concept_id": "se-game-loop",
+      "name": "游戏循环",
+      "order": 28
+    },
+    {
+      "concept_id": "se-object-pool",
+      "name": "对象池",
+      "order": 29
+    },
+    {
+      "concept_id": "se-ecs-intro",
+      "name": "ECS架构概述",
+      "order": 30
+    },
+    {
+      "concept_id": "se-system-ecs",
+      "name": "System系统",
+      "order": 31
+    },
+    {
+      "concept_id": "se-soa-layout",
+      "name": "SoA数据布局",
+      "order": 32
+    },
+    {
+      "concept_id": "se-mem-intro",
+      "name": "内存管理概述",
+      "order": 33
+    },
+    {
+      "concept_id": "se-smart-pointers",
+      "name": "智能指针",
+      "order": 34
+    },
+    {
+      "concept_id": "se-pool-allocator",
+      "name": "池分配器",
+      "order": 35
+    },
+    {
+      "concept_id": "se-mt-intro",
+      "name": "多线程概述",
+      "order": 36
+    },
+    {
+      "concept_id": "se-mutex-lock",
+      "name": "互斥锁",
+      "order": 37
+    },
+    {
+      "concept_id": "se-lock-free",
+      "name": "无锁编程",
+      "order": 38
+    },
+    {
+      "concept_id": "se-game-threading",
+      "name": "游戏多线程架构",
+      "order": 39
+    },
+    {
+      "concept_id": "se-build-intro",
+      "name": "构建系统概述",
+      "order": 40
+    },
+    {
+      "concept_id": "se-cmake",
+      "name": "CMake",
+      "order": 41
+    },
+    {
+      "concept_id": "se-ubt",
+      "name": "Unreal Build Tool",
+      "order": 42
+    },
+    {
+      "concept_id": "se-asset-pipeline",
+      "name": "资产处理管线",
+      "order": 43
+    },
+    {
+      "concept_id": "se-pkg-intro",
+      "name": "包管理概述",
+      "order": 44
+    },
+    {
+      "concept_id": "se-conan-vcpkg",
+      "name": "Conan/vcpkg",
+      "order": 45
+    },
+    {
+      "concept_id": "se-dep-security",
+      "name": "依赖安全",
+      "order": 46
+    },
+    {
+      "concept_id": "se-publish-flow",
+      "name": "包发布流程",
+      "order": 47
+    }
+  ]
+}
