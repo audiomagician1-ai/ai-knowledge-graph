@@ -1185,6 +1185,21 @@ data/seed/         — 种子图谱数据
     - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors
    - STATUS: 清理routing重构遗留死代码, 数据完整性验证通过
 
+- ✅ **第六十六轮深度巡逻审查+LoginPage路由修复 (2026-03-20, 9eb6ea1)**:
+   - **FIX**: LoginPage.tsx 2处`navigate('/graph')`→`navigate('/')` — `/graph`路由在routing重构后不存在, 虽被wildcard catch-all重定向到`/`但产生不必要的redirect跳转 [m-01]
+   - REVIEW: 25+模块全面深度审查全通过(0 critical/0 major issues):
+     - FE Pages: HomePage.tsx(domain grid/fetchDomains/hover states/CSS variables) + GraphPage.tsx(URL-driven domain/concept/hub bar/DraggableModal/outside-click cleanup) + LearnPage.tsx(recordedRef/initializing indicator/error auto-dismiss/stripChoicesBlock/cancelStream cleanup) + LoginPage.tsx(OAuth loading guard/mode switch clear password/email confirmation/autocomplete) + AppLayout.tsx(pure Outlet wrapper)
+     - FE Components: ChatPanel.tsx(recordedConvRef/error auto-dismiss/ChoiceButtons) + ChoiceButtons.tsx(type config/disabled state) + MarkdownRenderer.tsx(GFM+math/rehype-katex/components) + DraggableModal.tsx(center on open/drag bounds/cleanup) + ErrorBoundary.tsx(CSS variable colors) + ToastContainer.tsx(STYLE_MAP opaque overlays — intentional hardcoded dark backgrounds for floating toasts) + DomainOverview.tsx(progress bars/is_active filter/overall stats) + DashboardContent.tsx(progress-based activity/nameMap useMemo/graph node label display) + SettingsContent.tsx(AI service mode selector/proxy guide/import-export)
+     - FE Stores: domain.ts(localStorage persistence/lazy import learning switch/getActiveDomainInfo) + graph.ts(simple setters) + toast.ts(auto-dismiss/counter uniqueness) + text.ts(stripChoicesBlock)
+     - FE API: graph-api.ts(encodeURIComponent) + dialogue-api.ts(signal passthrough) + learning-api.ts(fire-and-forget error handling)
+     - FE Hooks: useCountUp.ts(rAF+timeout cleanup) + useMediaQuery.ts(SSR safe/listener cleanup)
+     - FE App: App.tsx(route order/legacy fallback/auth initialize/supabase-sync side-effect import)
+     - BE: dialogue.py + learning.py + evaluator.py + main.py + graph.py + sqlite_client.py + llm/router.py + config.py + redis_client.py — all previously reviewed patterns stable
+   - STALE ROUTE AUDIT: 全项目搜索`/graph`路由引用 — LoginPage 2处修复后, 0剩余stale routes; 同时验证`/dashboard`/`/settings`/`/chat`等旧路由均无残留引用
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors, build 4.37s
+   - STATUS: 代码质量持续稳定, 1个minor路由修复(避免不必要redirect)
+
 - ✅ **第六十五轮深度巡逻审查+GraphPage清理 (2026-03-20, 991a95c)**:
    - **FIX**: GraphPage.tsx 移除4个未使用变量(displayName/activeDomainInfo/learningCount/progressPct — routing重构后死代码) [m-01]
    - **FIX**: GraphPage.tsx 推荐面板`z-25`无效Tailwind类 → inline `zIndex:25`(Tailwind 4仅支持z-0/10/20/30/40/50, z-25不生成任何样式) [m-02]
