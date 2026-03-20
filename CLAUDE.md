@@ -1282,6 +1282,15 @@ data/seed/         — 种子图谱数据
     - VERIFY: 811 tests (602 BE + 209 FE) 全通过, tsc 0 errors, build 3.78s
     - STATUS: Issue #14 两个bug均已修复, 推荐排序BE/Workers一致
 
+ - ✅ **Issue #14 追加修复: LoginPage OAuth隐藏时间距 (2026-03-20, ee3dd52)**:
+    - **FIX**: LoginPage 在生产环境(supabaseConfigured=false, OAuth按钮隐藏)时, 标题区域与表单之间间距不足。修复: 卡片padding 44→48px, 标题区域marginBottom 36→40px, 表单添加条件marginTop(非OAuth时+8px), 标签marginBottom 8→10px, 提交按钮marginTop 8→12px
+    - VERIFY: 811 tests (602 BE + 209 FE) 全通过, tsc 0 errors, build 6.69s
+    - STATUS: Issue #14 间距修复覆盖OAuth显示/隐藏两种场景
+
+## Last Review
+
+**Date**: 2026-03-20 | **Scope**: 全栈 (Round 80: recommend域感知 + LLM null安全 + Issue #14修复验证) | **Result**: issues-filed (#14 fixed)
+
  - ✅ **第八十轮推荐端点域感知修复+LLM响应null安全加固 (2026-03-20, cf96177)**:
     - **FIX[Medium]**: BE `/learning/recommend` 端点始终使用默认`ai-engineering`种子数据, 无视用户当前查看的域 — 用户在数学/生物等非AI域点击"推荐"按钮, 返回的却是AI工程概念
       - BE learning.py: 添加`domain`查询参数(Query default="ai-engineering", max_length=100), 传递给`_load_seed(domain)`, 与Workers实现保持一致
