@@ -682,6 +682,126 @@
       "target_id": "electromagnetic-waves",
       "relation": "related",
       "description": "脑成像技术（fMRI、EEG）依赖物理学的电磁波和核磁共振原理"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "philosophy-of-ai",
+      "target_domain": "ai-engineering",
+      "target_id": "neural-network-basics",
+      "relation": "related",
+      "description": "AI哲学探讨机器能否真正理解和思考，而神经网络是当前AI系统的核心技术"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "tech-ethics",
+      "target_domain": "ai-engineering",
+      "target_id": "ml-evaluation",
+      "relation": "related",
+      "description": "技术伦理探讨AI系统的公平性和可解释性，模型评估是实现这些伦理目标的技术手段"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "propositional-logic",
+      "target_domain": "mathematics",
+      "target_id": "set-theory",
+      "relation": "related",
+      "description": "命题逻辑与集合论共享基础运算结构（合取↔交集、析取↔并集、否定↔补集）"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "philosophy-of-math",
+      "target_domain": "mathematics",
+      "target_id": "proof-techniques",
+      "relation": "related",
+      "description": "数学哲学追问数学证明的本质：形式主义者认为证明是符号操作，柏拉图主义者认为证明揭示独立真理"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "falsificationism",
+      "target_domain": "physics",
+      "target_id": "uncertainty-principle",
+      "relation": "related",
+      "description": "波普尔的证伪主义与量子力学的不确定性原理都挑战了确定性知识的可能性"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "time-space",
+      "target_domain": "physics",
+      "target_id": "special-relativity-postulates",
+      "relation": "related",
+      "description": "哲学的时空讨论与狸义相对论深度关联：相对论改变了绝对时空的形而上学假设"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "causation",
+      "target_domain": "physics",
+      "target_id": "newtons-second-law",
+      "relation": "related",
+      "description": "因果关系的哲学分析与牛顿第二定律密切相关：力是运动变化的原因"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "critical-thinking",
+      "target_domain": "english",
+      "target_id": "argumentative-writing",
+      "relation": "enables",
+      "description": "批判性思维中的论证分析能力直接支撑英语议论文写作的逻辑性"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "philosophy-of-language",
+      "target_domain": "english",
+      "target_id": "pragmatic-competence",
+      "relation": "related",
+      "description": "语言哲学中的意义理论与英语语用能力研究同一核心问题：语言如何在语境中承载意义"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "utilitarianism",
+      "target_domain": "product-design",
+      "target_id": "user-centered-design",
+      "relation": "related",
+      "description": "功利主义的最大化福祉原则与产品设计中以用户为中心的方法论有深层关联"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "rawls-justice",
+      "target_domain": "finance",
+      "target_id": "income-management",
+      "relation": "related",
+      "description": "罗尔斯正义论中的差异原则与个人收入管理相关：公平分配的哲学基础"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "business-ethics",
+      "target_domain": "finance",
+      "target_id": "market-efficiency",
+      "relation": "related",
+      "description": "商业伦理与市场效率研究相关：内幕交易和信息不对称的伦理问题"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "moral-psychology",
+      "target_domain": "psychology",
+      "target_id": "moral-development",
+      "relation": "related",
+      "description": "哲学的道德心理学与心理学的道德发展研究从不同角度探索道德判断的本质"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "free-will",
+      "target_domain": "psychology",
+      "target_id": "behavioral-overview",
+      "relation": "related",
+      "description": "自由意志的哲学争论与行为心理学的决定论倾向形成有趣的张力"
+    },
+    {
+      "source_domain": "philosophy",
+      "source_id": "mind-body-problem",
+      "target_domain": "psychology",
+      "target_id": "consciousness",
+      "relation": "related",
+      "description": "心身问题是哲学和心理学/神经科学的共同核心问题：意识如何从物质中产生"
     }
   ],
   "meta": {
@@ -709,5 +829,5 @@
       "product-design_physics": 0
     }
   },
-  "total": 85
+  "total": 100
 }
