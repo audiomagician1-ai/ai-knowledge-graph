@@ -1182,8 +1182,22 @@ data/seed/         — 种子图谱数据
      - GraphPage: URL参数驱动domain/concept选择, DraggableModal承载Dashboard/Settings, hub bar集成所有导航
      - LearnPage: back导航正确指向/domain/:domainId/:conceptId
      - AppLayout: 简化为纯Outlet容器(Sidebar/BottomNav已移除)
-   - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors
+    - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors
    - STATUS: 清理routing重构遗留死代码, 数据完整性验证通过
+
+- ✅ **第六十五轮深度巡逻审查+GraphPage清理 (2026-03-20, 991a95c)**:
+   - **FIX**: GraphPage.tsx 移除4个未使用变量(displayName/activeDomainInfo/learningCount/progressPct — routing重构后死代码) [m-01]
+   - **FIX**: GraphPage.tsx 推荐面板`z-25`无效Tailwind类 → inline `zIndex:25`(Tailwind 4仅支持z-0/10/20/30/40/50, z-25不生成任何样式) [m-02]
+   - REVIEW: 20+模块全面深度审查全通过(0 critical/0 major issues):
+     - FE: GraphPage.tsx(URL-driven domain/concept/hub bar/DraggableModal Dashboard+Settings/outside-click cleanup/domain switch navigation) + HomePage.tsx(domain grid/fetchDomains/hover states/CSS variables) + AppLayout.tsx(pure Outlet) + App.tsx(route order/legacy fallback/auth initialize/supabase-sync side-effect) + LearnPage.tsx(recordedRef/initializing indicator/error auto-dismiss/stripChoicesBlock/cancelStream cleanup)
+     - FE: dialogue.ts(stale guards/abort cleanup/auto-save/flushBuffer/isInitializing) + learning.ts(localStorage verification/streak race fix/demotion protection/syncWithBackend local-first merge) + direct-llm.ts(sliding window/timeout/fallback mastered) + supabase-sync.ts(toDbStatus/concurrency guard/batch upsert/incremental sync) + auth.ts(subscription cleanup/callback dedup)
+     - BE: dialogue.py(_busy try/finally+timeout/snapshot messages/double-check locking/cleanup_cache) + learning.py(Field validation/status whitelist/score clamping/sync mastered guard) + evaluator.py(O(n) format_dialogue/consistent mastered) + main.py(path traversal/CORS/headless) + graph.py(API response source_id→source mapping/thread-safe seed loading)
+   - DANGLING REF CHECK: 0 dangling imports to deleted Sidebar/BottomNav/DomainSwitcher/DashboardPage/SettingsPage — routing重构完全clean
+   - CROSS-DOMAIN AUDIT: 31个跨域重复概念ID(e.g. linear-regression in ai-engineering+mathematics+economics)确认by-design — 后端所有API已domain-scoped(_load_seed(domain_id)), 前端learning store per-domain localStorage keys(akg-learning:{domain}), Supabase schema domain_id列+3列PK — 不存在冲突
+   - CODEBASE HEALTH: 0 TODO/FIXME in production code, 41 console outputs均为诊断级([learning]/[sync]/[offline-queue])无敏感数据, 全项目无eval/exec/innerHTML
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors, build 3.38s
+   - STATUS: 代码质量持续稳定, 2个minor修复(死变量+无效z-index), 主包-200B
 
 ```
 输出目录: release/                              ← 不是 dist/
