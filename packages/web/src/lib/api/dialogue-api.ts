@@ -35,11 +35,11 @@ export async function requestAssessment(
 }
 
 /** 创建新的对话会话 */
-export async function createConversation(conceptId: string): Promise<{ conversation_id: string }> {
+export async function createConversation(conceptId: string, domainId?: string): Promise<{ conversation_id: string }> {
   const res = await fetch(`${API_BASE}/dialogue/conversations`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ concept_id: conceptId }),
+    body: JSON.stringify({ concept_id: conceptId, domain_id: domainId || 'ai-engineering' }),
   });
   if (!res.ok) throw new Error(`创建对话失败: ${res.statusText}`);
   return res.json();

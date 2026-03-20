@@ -15,11 +15,12 @@ import {
 interface ChatPanelProps {
   conceptId: string;
   conceptName: string;
+  domainId?: string;
 }
 
 type PanelView = 'idle' | 'chat' | 'history';
 
-export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
+export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) {
   const [input, setInput] = useState('');
   const [view, setView] = useState<PanelView>('idle');
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -78,7 +79,7 @@ export function ChatPanel({ conceptId, conceptName }: ChatPanelProps) {
   }, [error]);
 
   const handleStartLearning = () => {
-    startConversation(conceptId);
+    startConversation(conceptId, domainId);
     startLearning(conceptId);
     setView('chat');
   };

@@ -232,7 +232,7 @@ export function GraphPage() {
             </div>
             {/* Chat */}
             <div className="flex-1 min-h-0 overflow-hidden" style={{ borderTop: '1px solid var(--color-border)' }}>
-              <ChatPanel conceptId={selectedNode!.id} conceptName={selectedNode!.label} />
+              <ChatPanel conceptId={selectedNode!.id} conceptName={selectedNode!.label} domainId={urlDomainId} />
             </div>
           </div>
         </div>

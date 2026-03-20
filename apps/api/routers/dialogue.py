@@ -98,10 +98,12 @@ async def _ensure_session(conv_id: str) -> Optional[dict]:
             return None
 
         # Rebuild cache from DB
-        concept = _get_concept_info(conv['concept_id'])
+        domain_id = conv.get('domain_id', 'ai-engineering')
+        concept = _get_concept_info(conv['concept_id'], domain_id)
         _session_cache[conv_id] = {
             "id": conv_id,
             "concept_id": conv['concept_id'],
+            "domain_id": domain_id,
             "concept": concept or {"id": conv['concept_id'], "name": conv['concept_name']},
             "system_prompt": conv.get('system_prompt', ''),
             "messages": conv.get('messages', []),
@@ -113,6 +115,7 @@ async def _ensure_session(conv_id: str) -> Optional[dict]:
 
 class ConversationCreate(BaseModel):
     concept_id: str = Field(..., max_length=200)
+    domain_id: str = Field(default="ai-engineering", max_length=100)
 
 
 class ChatRequest(BaseModel):
@@ -141,9 +144,9 @@ def _extract_user_llm_config(request: Request) -> Optional[dict]:
     }
 
 
-def _get_concept_info(concept_id: str) -> Optional[dict]:
+def _get_concept_info(concept_id: str, domain_id: str = "ai-engineering") -> Optional[dict]:
     """从种子图谱获取概念信息"""
-    seed = _load_seed()
+    seed = _load_seed(domain_id)
     for c in seed["concepts"]:
         if c["id"] == concept_id:
             prereqs, deps, related = [], [], []
@@ -174,9 +177,9 @@ async def create_conversation(req: ConversationCreate, request: Request):
     _cleanup_cache()
     cleanup_old_conversations()
 
-    concept = _get_concept_info(req.concept_id)
+    concept = _get_concept_info(req.concept_id, req.domain_id)
     if not concept:
-        raise HTTPException(status_code=404, detail=f"概念不存在: {req.concept_id}")
+        raise HTTPException(status_code=404, detail=f"概念不存在: {req.concept_id} (domain={req.domain_id})")
 
     conv_id = str(uuid.uuid4())
     user_config = _extract_user_llm_config(request)
@@ -208,13 +211,15 @@ async def create_conversation(req: ConversationCreate, request: Request):
 
     # Persist to SQLite
     save_conversation(conv_id, req.concept_id, concept["name"], system_prompt,
-                      is_milestone=concept.get("is_milestone", False))
+                      is_milestone=concept.get("is_milestone", False),
+                      domain_id=req.domain_id)
     save_message(conv_id, "assistant", opening_raw)
 
     # Cache in memory
     _session_cache[conv_id] = {
         "id": conv_id,
         "concept_id": req.concept_id,
+        "domain_id": req.domain_id,
         "concept": concept,
         "system_prompt": system_prompt,
         "messages": [{"role": "assistant", "content": opening_raw}],

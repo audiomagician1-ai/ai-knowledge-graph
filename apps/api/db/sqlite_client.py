@@ -106,6 +106,7 @@ def init_db():
                 id TEXT PRIMARY KEY,
                 concept_id TEXT NOT NULL,
                 concept_name TEXT NOT NULL,
+                domain_id TEXT NOT NULL DEFAULT 'ai-engineering',
                 system_prompt TEXT NOT NULL DEFAULT '',
                 status TEXT NOT NULL DEFAULT 'active',
                 is_milestone INTEGER NOT NULL DEFAULT 0,
@@ -131,6 +132,20 @@ def init_db():
             -- Initialize schema version
             INSERT OR IGNORE INTO schema_version (version) VALUES (1);
         """)
+
+        # ── Schema migrations ──
+        version = conn.execute("SELECT MAX(version) FROM schema_version").fetchone()[0] or 1
+
+        if version < 2:
+            # V2: Add domain_id to conversations for multi-domain support
+            try:
+                conn.execute("ALTER TABLE conversations ADD COLUMN domain_id TEXT NOT NULL DEFAULT 'ai-engineering'")
+            except Exception:
+                pass  # Column already exists (re-run safe)
+            conn.execute("INSERT OR REPLACE INTO schema_version (version) VALUES (2)")
+            conn.commit()
+            logger.info("SQLite schema migrated to v2 (conversations.domain_id)")
+
 
     logger.info("SQLite DB initialized at %s", DB_PATH)
 
@@ -341,16 +356,17 @@ def refresh_streak() -> dict:
 # ════════════════════════════════════════════
 
 def save_conversation(conv_id: str, concept_id: str, concept_name: str,
-                      system_prompt: str, is_milestone: bool = False) -> dict:
+                      system_prompt: str, is_milestone: bool = False,
+                      domain_id: str = "ai-engineering") -> dict:
     """Create or update a conversation record."""
     now = time.time()
     with get_db() as conn:
         conn.execute("""
-            INSERT INTO conversations (id, concept_id, concept_name, system_prompt, is_milestone, last_active, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO conversations (id, concept_id, concept_name, domain_id, system_prompt, is_milestone, last_active, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(id) DO UPDATE SET last_active = ?, status = 'active'
-        """, (conv_id, concept_id, concept_name, system_prompt, 1 if is_milestone else 0, now, now, now))
-    return {'id': conv_id, 'concept_id': concept_id, 'concept_name': concept_name}
+        """, (conv_id, concept_id, concept_name, domain_id, system_prompt, 1 if is_milestone else 0, now, now, now))
+    return {'id': conv_id, 'concept_id': concept_id, 'concept_name': concept_name, 'domain_id': domain_id}
 
 
 def save_message(conversation_id: str, role: str, content: str, timestamp: float = None):

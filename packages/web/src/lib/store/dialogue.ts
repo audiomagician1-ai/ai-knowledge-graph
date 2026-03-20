@@ -59,7 +59,7 @@ interface DialogueState {
   savedConversations: SavedConversation[];
 
   // Actions
-  startConversation: (conceptId: string) => Promise<void>;
+  startConversation: (conceptId: string, domainId?: string) => Promise<void>;
   sendMessage: (text: string, isChoice?: boolean) => Promise<void>;
   selectChoice: (choiceId: string) => Promise<void>;
   requestAssessment: () => Promise<void>;
@@ -176,7 +176,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
   currentChoices: null,
   savedConversations: loadSavedConversations(),
 
-  startConversation: async (conceptId: string) => {
+  startConversation: async (conceptId: string, domainId?: string) => {
     // Cancel any in-flight SSE stream
     abortCurrentStream();
 
@@ -206,11 +206,11 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         if (!result) throw new Error(`概念不存在: ${conceptId}`);
         data = result;
       } else {
-        // Proxy mode: create via Worker
+        // Proxy mode: create via backend API
         const res = await fetch(`${API_BASE}/dialogue/conversations`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', ...getLLMHeaders() },
-          body: JSON.stringify({ concept_id: conceptId }),
+          body: JSON.stringify({ concept_id: conceptId, domain_id: domainId || 'ai-engineering' }),
         });
         if (!res.ok) throw new Error(await extractErrorDetail(res, `创建对话失败 (${res.status})`));
         data = await res.json();

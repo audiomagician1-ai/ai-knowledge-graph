@@ -270,3 +270,77 @@ class TestInputValidation:
         })
         # Will be 404 (conv not found) not 422 (validation), proving is_choice is accepted
         assert res.status_code == 404
+
+    def test_domain_id_field_accepted(self):
+        """domain_id field should be accepted and default to ai-engineering."""
+        # Test with default domain
+        res = client.post("/api/dialogue/conversations", json={"concept_id": "nonexistent"})
+        assert res.status_code == 404
+        # Test with explicit domain
+        res = client.post("/api/dialogue/conversations", json={"concept_id": "nonexistent", "domain_id": "mathematics"})
+        assert res.status_code == 404
+
+    def test_domain_id_max_length(self):
+        long_domain = "x" * 101
+        res = client.post("/api/dialogue/conversations", json={"concept_id": "test", "domain_id": long_domain})
+        assert res.status_code == 422
+
+
+class TestMultiDomainDialogue:
+    """Test multi-domain conversation creation."""
+
+    def setup_method(self):
+        from routers.dialogue import _session_cache, _session_locks
+        _session_cache.clear()
+        _session_locks.clear()
+
+    @patch("routers.dialogue.socratic_engine")
+    def test_create_conversation_non_default_domain(self, mock_engine):
+        """Creating a conversation with a non-ai-engineering domain should find concepts in that domain."""
+        mock_build, mock_open = _mock_opening()
+        mock_engine.build_system_prompt = mock_build
+        mock_engine.get_opening = mock_open
+
+        # "natural-numbers" exists in mathematics domain
+        res = client.post("/api/dialogue/conversations", json={
+            "concept_id": "natural-numbers",
+            "domain_id": "mathematics",
+        })
+        assert res.status_code == 200
+        data = res.json()
+        assert data["concept_id"] == "natural-numbers"
+        assert data["conversation_id"]
+        assert data["opening_message"]
+
+    @patch("routers.dialogue.socratic_engine")
+    def test_concept_not_in_wrong_domain(self, mock_engine):
+        """Looking for an ai-engineering concept in mathematics domain should 404."""
+        mock_build, mock_open = _mock_opening()
+        mock_engine.build_system_prompt = mock_build
+        mock_engine.get_opening = mock_open
+
+        # "binary-system" is in ai-engineering, not mathematics
+        res = client.post("/api/dialogue/conversations", json={
+            "concept_id": "binary-system",
+            "domain_id": "mathematics",
+        })
+        assert res.status_code == 404
+
+    @patch("routers.dialogue.socratic_engine")
+    def test_domain_id_stored_in_session(self, mock_engine):
+        """domain_id should be stored in the session cache."""
+        mock_build, mock_open = _mock_opening()
+        mock_engine.build_system_prompt = mock_build
+        mock_engine.get_opening = mock_open
+
+        res = client.post("/api/dialogue/conversations", json={
+            "concept_id": "natural-numbers",
+            "domain_id": "mathematics",
+        })
+        assert res.status_code == 200
+        conv_id = res.json()["conversation_id"]
+
+        from routers.dialogue import _session_cache
+        session = _session_cache.get(conv_id)
+        assert session is not None
+        assert session["domain_id"] == "mathematics"
