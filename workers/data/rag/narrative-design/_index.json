@@ -1,0 +1,744 @@
+{
+  "version": "1.0.0",
+  "domain": "narrative-design",
+  "domain_name": "叙事设计",
+  "generated_at": "2026-03-21T06:04:33.807624",
+  "total_concepts": 180,
+  "stats": {
+    "total_docs": 180,
+    "total_chars": 137879,
+    "by_subdomain": {
+      "worldbuilding": 20,
+      "character-writing": 20,
+      "dialogue-system": 20,
+      "branching-narrative": 20,
+      "quest-design": 20,
+      "cinematics": 20,
+      "environmental-storytelling": 20,
+      "localization": 20,
+      "narrative-tools": 20
+    }
+  },
+  "documents": [
+    {
+      "id": "nd-wb-setting-bible",
+      "file": "narrative-design/nd-wb-setting-bible.md"
+    },
+    {
+      "id": "nd-wb-lore-hierarchy",
+      "file": "narrative-design/nd-wb-lore-hierarchy.md"
+    },
+    {
+      "id": "nd-wb-world-history",
+      "file": "narrative-design/nd-wb-world-history.md"
+    },
+    {
+      "id": "nd-wb-geography",
+      "file": "narrative-design/nd-wb-geography.md"
+    },
+    {
+      "id": "nd-wb-faction-design",
+      "file": "narrative-design/nd-wb-faction-design.md"
+    },
+    {
+      "id": "nd-wb-magic-system",
+      "file": "narrative-design/nd-wb-magic-system.md"
+    },
+    {
+      "id": "nd-wb-culture-creation",
+      "file": "narrative-design/nd-wb-culture-creation.md"
+    },
+    {
+      "id": "nd-wb-mythology",
+      "file": "narrative-design/nd-wb-mythology.md"
+    },
+    {
+      "id": "nd-wb-economy-politics",
+      "file": "narrative-design/nd-wb-economy-politics.md"
+    },
+    {
+      "id": "nd-wb-ecology",
+      "file": "narrative-design/nd-wb-ecology.md"
+    },
+    {
+      "id": "nd-wb-tech-level",
+      "file": "narrative-design/nd-wb-tech-level.md"
+    },
+    {
+      "id": "nd-wb-naming-convention",
+      "file": "narrative-design/nd-wb-naming-convention.md"
+    },
+    {
+      "id": "nd-wb-internal-consistency",
+      "file": "narrative-design/nd-wb-internal-consistency.md"
+    },
+    {
+      "id": "nd-wb-worldbuilding-scope",
+      "file": "narrative-design/nd-wb-worldbuilding-scope.md"
+    },
+    {
+      "id": "nd-wb-genre-convention",
+      "file": "narrative-design/nd-wb-genre-convention.md"
+    },
+    {
+      "id": "nd-wb-tone-mood",
+      "file": "narrative-design/nd-wb-tone-mood.md"
+    },
+    {
+      "id": "nd-wb-timeline-management",
+      "file": "narrative-design/nd-wb-timeline-management.md"
+    },
+    {
+      "id": "nd-wb-player-agency-world",
+      "file": "narrative-design/nd-wb-player-agency-world.md"
+    },
+    {
+      "id": "nd-wb-transmedia",
+      "file": "narrative-design/nd-wb-transmedia.md"
+    },
+    {
+      "id": "nd-wb-living-world",
+      "file": "narrative-design/nd-wb-living-world.md"
+    },
+    {
+      "id": "nd-cw-character-arc",
+      "file": "narrative-design/nd-cw-character-arc.md"
+    },
+    {
+      "id": "nd-cw-protagonist-design",
+      "file": "narrative-design/nd-cw-protagonist-design.md"
+    },
+    {
+      "id": "nd-cw-antagonist-design",
+      "file": "narrative-design/nd-cw-antagonist-design.md"
+    },
+    {
+      "id": "nd-cw-npc-personality",
+      "file": "narrative-design/nd-cw-npc-personality.md"
+    },
+    {
+      "id": "nd-cw-motivation-system",
+      "file": "narrative-design/nd-cw-motivation-system.md"
+    },
+    {
+      "id": "nd-cw-backstory",
+      "file": "narrative-design/nd-cw-backstory.md"
+    },
+    {
+      "id": "nd-cw-relationship-web",
+      "file": "narrative-design/nd-cw-relationship-web.md"
+    },
+    {
+      "id": "nd-cw-companion-system",
+      "file": "narrative-design/nd-cw-companion-system.md"
+    },
+    {
+      "id": "nd-cw-voice-tone",
+      "file": "narrative-design/nd-cw-voice-tone.md"
+    },
+    {
+      "id": "nd-cw-character-template",
+      "file": "narrative-design/nd-cw-character-template.md"
+    },
+    {
+      "id": "nd-cw-silent-protagonist",
+      "file": "narrative-design/nd-cw-silent-protagonist.md"
+    },
+    {
+      "id": "nd-cw-ensemble-cast",
+      "file": "narrative-design/nd-cw-ensemble-cast.md"
+    },
+    {
+      "id": "nd-cw-character-reveal",
+      "file": "narrative-design/nd-cw-character-reveal.md"
+    },
+    {
+      "id": "nd-cw-moral-complexity",
+      "file": "narrative-design/nd-cw-moral-complexity.md"
+    },
+    {
+      "id": "nd-cw-cultural-sensitivity",
+      "file": "narrative-design/nd-cw-cultural-sensitivity.md"
+    },
+    {
+      "id": "nd-cw-player-character-bond",
+      "file": "narrative-design/nd-cw-player-character-bond.md"
+    },
+    {
+      "id": "nd-cw-dynamic-personality",
+      "file": "narrative-design/nd-cw-dynamic-personality.md"
+    },
+    {
+      "id": "nd-cw-archetype-usage",
+      "file": "narrative-design/nd-cw-archetype-usage.md"
+    },
+    {
+      "id": "nd-cw-redemption-arc",
+      "file": "narrative-design/nd-cw-redemption-arc.md"
+    },
+    {
+      "id": "nd-cw-tragic-character",
+      "file": "narrative-design/nd-cw-tragic-character.md"
+    },
+    {
+      "id": "nd-ds-dialogue-tree",
+      "file": "narrative-design/nd-ds-dialogue-tree.md"
+    },
+    {
+      "id": "nd-ds-dialogue-wheel",
+      "file": "narrative-design/nd-ds-dialogue-wheel.md"
+    },
+    {
+      "id": "nd-ds-bark-system",
+      "file": "narrative-design/nd-ds-bark-system.md"
+    },
+    {
+      "id": "nd-ds-conditional-dialogue",
+      "file": "narrative-design/nd-ds-conditional-dialogue.md"
+    },
+    {
+      "id": "nd-ds-dialogue-writing",
+      "file": "narrative-design/nd-ds-dialogue-writing.md"
+    },
+    {
+      "id": "nd-ds-voice-acting-prep",
+      "file": "narrative-design/nd-ds-voice-acting-prep.md"
+    },
+    {
+      "id": "nd-ds-lip-sync",
+      "file": "narrative-design/nd-ds-lip-sync.md"
+    },
+    {
+      "id": "nd-ds-dialogue-camera",
+      "file": "narrative-design/nd-ds-dialogue-camera.md"
+    },
+    {
+      "id": "nd-ds-node-based-editor",
+      "file": "narrative-design/nd-ds-node-based-editor.md"
+    },
+    {
+      "id": "nd-ds-hub-spoke",
+      "file": "narrative-design/nd-ds-hub-spoke.md"
+    },
+    {
+      "id": "nd-ds-keyword-system",
+      "file": "narrative-design/nd-ds-keyword-system.md"
+    },
+    {
+      "id": "nd-ds-persuasion-system",
+      "file": "narrative-design/nd-ds-persuasion-system.md"
+    },
+    {
+      "id": "nd-ds-lore-dump-avoidance",
+      "file": "narrative-design/nd-ds-lore-dump-avoidance.md"
+    },
+    {
+      "id": "nd-ds-dialogue-state-machine",
+      "file": "narrative-design/nd-ds-dialogue-state-machine.md"
+    },
+    {
+      "id": "nd-ds-procedural-dialogue",
+      "file": "narrative-design/nd-ds-procedural-dialogue.md"
+    },
+    {
+      "id": "nd-ds-subtext",
+      "file": "narrative-design/nd-ds-subtext.md"
+    },
+    {
+      "id": "nd-ds-exposition-techniques",
+      "file": "narrative-design/nd-ds-exposition-techniques.md"
+    },
+    {
+      "id": "nd-ds-interrupt-system",
+      "file": "narrative-design/nd-ds-interrupt-system.md"
+    },
+    {
+      "id": "nd-ds-reactivity-feedback",
+      "file": "narrative-design/nd-ds-reactivity-feedback.md"
+    },
+    {
+      "id": "nd-ds-dialogue-database",
+      "file": "narrative-design/nd-ds-dialogue-database.md"
+    },
+    {
+      "id": "nd-bn-branch-merge",
+      "file": "narrative-design/nd-bn-branch-merge.md"
+    },
+    {
+      "id": "nd-bn-multiple-endings",
+      "file": "narrative-design/nd-bn-multiple-endings.md"
+    },
+    {
+      "id": "nd-bn-choice-consequence",
+      "file": "narrative-design/nd-bn-choice-consequence.md"
+    },
+    {
+      "id": "nd-bn-flag-system",
+      "file": "narrative-design/nd-bn-flag-system.md"
+    },
+    {
+      "id": "nd-bn-state-tracking",
+      "file": "narrative-design/nd-bn-state-tracking.md"
+    },
+    {
+      "id": "nd-bn-illusion-of-choice",
+      "file": "narrative-design/nd-bn-illusion-of-choice.md"
+    },
+    {
+      "id": "nd-bn-delayed-consequence",
+      "file": "narrative-design/nd-bn-delayed-consequence.md"
+    },
+    {
+      "id": "nd-bn-moral-dilemma",
+      "file": "narrative-design/nd-bn-moral-dilemma.md"
+    },
+    {
+      "id": "nd-bn-narrative-graph",
+      "file": "narrative-design/nd-bn-narrative-graph.md"
+    },
+    {
+      "id": "nd-bn-combinatorial-explosion",
+      "file": "narrative-design/nd-bn-combinatorial-explosion.md"
+    },
+    {
+      "id": "nd-bn-point-of-no-return",
+      "file": "narrative-design/nd-bn-point-of-no-return.md"
+    },
+    {
+      "id": "nd-bn-narrative-variable",
+      "file": "narrative-design/nd-bn-narrative-variable.md"
+    },
+    {
+      "id": "nd-bn-butterfly-effect",
+      "file": "narrative-design/nd-bn-butterfly-effect.md"
+    },
+    {
+      "id": "nd-bn-emergent-narrative",
+      "file": "narrative-design/nd-bn-emergent-narrative.md"
+    },
+    {
+      "id": "nd-bn-player-driven-story",
+      "file": "narrative-design/nd-bn-player-driven-story.md"
+    },
+    {
+      "id": "nd-bn-relationship-system",
+      "file": "narrative-design/nd-bn-relationship-system.md"
+    },
+    {
+      "id": "nd-bn-faction-reputation",
+      "file": "narrative-design/nd-bn-faction-reputation.md"
+    },
+    {
+      "id": "nd-bn-narrative-testing",
+      "file": "narrative-design/nd-bn-narrative-testing.md"
+    },
+    {
+      "id": "nd-bn-save-scumming",
+      "file": "narrative-design/nd-bn-save-scumming.md"
+    },
+    {
+      "id": "nd-bn-procedural-story",
+      "file": "narrative-design/nd-bn-procedural-story.md"
+    },
+    {
+      "id": "nd-qd-main-quest",
+      "file": "narrative-design/nd-qd-main-quest.md"
+    },
+    {
+      "id": "nd-qd-side-quest",
+      "file": "narrative-design/nd-qd-side-quest.md"
+    },
+    {
+      "id": "nd-qd-quest-structure",
+      "file": "narrative-design/nd-qd-quest-structure.md"
+    },
+    {
+      "id": "nd-qd-objective-design",
+      "file": "narrative-design/nd-qd-objective-design.md"
+    },
+    {
+      "id": "nd-qd-quest-reward",
+      "file": "narrative-design/nd-qd-quest-reward.md"
+    },
+    {
+      "id": "nd-qd-quest-giver",
+      "file": "narrative-design/nd-qd-quest-giver.md"
+    },
+    {
+      "id": "nd-qd-fetch-quest-alternatives",
+      "file": "narrative-design/nd-qd-fetch-quest-alternatives.md"
+    },
+    {
+      "id": "nd-qd-quest-chain",
+      "file": "narrative-design/nd-qd-quest-chain.md"
+    },
+    {
+      "id": "nd-qd-dynamic-quest",
+      "file": "narrative-design/nd-qd-dynamic-quest.md"
+    },
+    {
+      "id": "nd-qd-quest-journal",
+      "file": "narrative-design/nd-qd-quest-journal.md"
+    },
+    {
+      "id": "nd-qd-parallel-quests",
+      "file": "narrative-design/nd-qd-parallel-quests.md"
+    },
+    {
+      "id": "nd-qd-escort-quest",
+      "file": "narrative-design/nd-qd-escort-quest.md"
+    },
+    {
+      "id": "nd-qd-investigation-quest",
+      "file": "narrative-design/nd-qd-investigation-quest.md"
+    },
+    {
+      "id": "nd-qd-timed-quest",
+      "file": "narrative-design/nd-qd-timed-quest.md"
+    },
+    {
+      "id": "nd-qd-optional-objectives",
+      "file": "narrative-design/nd-qd-optional-objectives.md"
+    },
+    {
+      "id": "nd-qd-quest-failure",
+      "file": "narrative-design/nd-qd-quest-failure.md"
+    },
+    {
+      "id": "nd-qd-radiant-quest",
+      "file": "narrative-design/nd-qd-radiant-quest.md"
+    },
+    {
+      "id": "nd-qd-quest-dependency",
+      "file": "narrative-design/nd-qd-quest-dependency.md"
+    },
+    {
+      "id": "nd-qd-world-quest",
+      "file": "narrative-design/nd-qd-world-quest.md"
+    },
+    {
+      "id": "nd-qd-quest-pacing",
+      "file": "narrative-design/nd-qd-quest-pacing.md"
+    },
+    {
+      "id": "nd-ci-cutscene-types",
+      "file": "narrative-design/nd-ci-cutscene-types.md"
+    },
+    {
+      "id": "nd-ci-camera-language",
+      "file": "narrative-design/nd-ci-camera-language.md"
+    },
+    {
+      "id": "nd-ci-storyboard",
+      "file": "narrative-design/nd-ci-storyboard.md"
+    },
+    {
+      "id": "nd-ci-pacing-rhythm",
+      "file": "narrative-design/nd-ci-pacing-rhythm.md"
+    },
+    {
+      "id": "nd-ci-interactive-cutscene",
+      "file": "narrative-design/nd-ci-interactive-cutscene.md"
+    },
+    {
+      "id": "nd-ci-in-engine-cutscene",
+      "file": "narrative-design/nd-ci-in-engine-cutscene.md"
+    },
+    {
+      "id": "nd-ci-sequencer-tools",
+      "file": "narrative-design/nd-ci-sequencer-tools.md"
+    },
+    {
+      "id": "nd-ci-transition-design",
+      "file": "narrative-design/nd-ci-transition-design.md"
+    },
+    {
+      "id": "nd-ci-cinematic-lighting",
+      "file": "narrative-design/nd-ci-cinematic-lighting.md"
+    },
+    {
+      "id": "nd-ci-motion-capture-story",
+      "file": "narrative-design/nd-ci-motion-capture-story.md"
+    },
+    {
+      "id": "nd-ci-shot-composition",
+      "file": "narrative-design/nd-ci-shot-composition.md"
+    },
+    {
+      "id": "nd-ci-script-format",
+      "file": "narrative-design/nd-ci-script-format.md"
+    },
+    {
+      "id": "nd-ci-non-skippable-debate",
+      "file": "narrative-design/nd-ci-non-skippable-debate.md"
+    },
+    {
+      "id": "nd-ci-parallel-action",
+      "file": "narrative-design/nd-ci-parallel-action.md"
+    },
+    {
+      "id": "nd-ci-emotional-beats",
+      "file": "narrative-design/nd-ci-emotional-beats.md"
+    },
+    {
+      "id": "nd-ci-first-person-cutscene",
+      "file": "narrative-design/nd-ci-first-person-cutscene.md"
+    },
+    {
+      "id": "nd-ci-vfx-in-cutscene",
+      "file": "narrative-design/nd-ci-vfx-in-cutscene.md"
+    },
+    {
+      "id": "nd-ci-audio-sync",
+      "file": "narrative-design/nd-ci-audio-sync.md"
+    },
+    {
+      "id": "nd-ci-branching-cutscene",
+      "file": "narrative-design/nd-ci-branching-cutscene.md"
+    },
+    {
+      "id": "nd-ci-real-time-event",
+      "file": "narrative-design/nd-ci-real-time-event.md"
+    },
+    {
+      "id": "nd-es-visual-narrative",
+      "file": "narrative-design/nd-es-visual-narrative.md"
+    },
+    {
+      "id": "nd-es-found-narrative",
+      "file": "narrative-design/nd-es-found-narrative.md"
+    },
+    {
+      "id": "nd-es-level-as-story",
+      "file": "narrative-design/nd-es-level-as-story.md"
+    },
+    {
+      "id": "nd-es-prop-storytelling",
+      "file": "narrative-design/nd-es-prop-storytelling.md"
+    },
+    {
+      "id": "nd-es-architecture-story",
+      "file": "narrative-design/nd-es-architecture-story.md"
+    },
+    {
+      "id": "nd-es-graffiti-signs",
+      "file": "narrative-design/nd-es-graffiti-signs.md"
+    },
+    {
+      "id": "nd-es-lighting-narrative",
+      "file": "narrative-design/nd-es-lighting-narrative.md"
+    },
+    {
+      "id": "nd-es-audio-narrative",
+      "file": "narrative-design/nd-es-audio-narrative.md"
+    },
+    {
+      "id": "nd-es-corpse-storytelling",
+      "file": "narrative-design/nd-es-corpse-storytelling.md"
+    },
+    {
+      "id": "nd-es-progression-change",
+      "file": "narrative-design/nd-es-progression-change.md"
+    },
+    {
+      "id": "nd-es-show-dont-tell",
+      "file": "narrative-design/nd-es-show-dont-tell.md"
+    },
+    {
+      "id": "nd-es-collectible-lore",
+      "file": "narrative-design/nd-es-collectible-lore.md"
+    },
+    {
+      "id": "nd-es-ghost-echo",
+      "file": "narrative-design/nd-es-ghost-echo.md"
+    },
+    {
+      "id": "nd-es-ruins-decay",
+      "file": "narrative-design/nd-es-ruins-decay.md"
+    },
+    {
+      "id": "nd-es-npc-routine",
+      "file": "narrative-design/nd-es-npc-routine.md"
+    },
+    {
+      "id": "nd-es-contrast-juxtaposition",
+      "file": "narrative-design/nd-es-contrast-juxtaposition.md"
+    },
+    {
+      "id": "nd-es-discovery-pacing",
+      "file": "narrative-design/nd-es-discovery-pacing.md"
+    },
+    {
+      "id": "nd-es-subtle-clues",
+      "file": "narrative-design/nd-es-subtle-clues.md"
+    },
+    {
+      "id": "nd-es-player-exploration-reward",
+      "file": "narrative-design/nd-es-player-exploration-reward.md"
+    },
+    {
+      "id": "nd-es-world-reaction",
+      "file": "narrative-design/nd-es-world-reaction.md"
+    },
+    {
+      "id": "nd-lo-loc-pipeline",
+      "file": "narrative-design/nd-lo-loc-pipeline.md"
+    },
+    {
+      "id": "nd-lo-string-table",
+      "file": "narrative-design/nd-lo-string-table.md"
+    },
+    {
+      "id": "nd-lo-cultural-adaptation",
+      "file": "narrative-design/nd-lo-cultural-adaptation.md"
+    },
+    {
+      "id": "nd-lo-text-expansion",
+      "file": "narrative-design/nd-lo-text-expansion.md"
+    },
+    {
+      "id": "nd-lo-voice-localization",
+      "file": "narrative-design/nd-lo-voice-localization.md"
+    },
+    {
+      "id": "nd-lo-subtitle-system",
+      "file": "narrative-design/nd-lo-subtitle-system.md"
+    },
+    {
+      "id": "nd-lo-gendered-language",
+      "file": "narrative-design/nd-lo-gendered-language.md"
+    },
+    {
+      "id": "nd-lo-loc-testing",
+      "file": "narrative-design/nd-lo-loc-testing.md"
+    },
+    {
+      "id": "nd-lo-cat-tools",
+      "file": "narrative-design/nd-lo-cat-tools.md"
+    },
+    {
+      "id": "nd-lo-internationalization",
+      "file": "narrative-design/nd-lo-internationalization.md"
+    },
+    {
+      "id": "nd-lo-locale-specific-content",
+      "file": "narrative-design/nd-lo-locale-specific-content.md"
+    },
+    {
+      "id": "nd-lo-right-to-left",
+      "file": "narrative-design/nd-lo-right-to-left.md"
+    },
+    {
+      "id": "nd-lo-font-localization",
+      "file": "narrative-design/nd-lo-font-localization.md"
+    },
+    {
+      "id": "nd-lo-dynamic-text",
+      "file": "narrative-design/nd-lo-dynamic-text.md"
+    },
+    {
+      "id": "nd-lo-context-notes",
+      "file": "narrative-design/nd-lo-context-notes.md"
+    },
+    {
+      "id": "nd-lo-pseudolocalization",
+      "file": "narrative-design/nd-lo-pseudolocalization.md"
+    },
+    {
+      "id": "nd-lo-regional-rating",
+      "file": "narrative-design/nd-lo-regional-rating.md"
+    },
+    {
+      "id": "nd-lo-community-translation",
+      "file": "narrative-design/nd-lo-community-translation.md"
+    },
+    {
+      "id": "nd-lo-loc-budget",
+      "file": "narrative-design/nd-lo-loc-budget.md"
+    },
+    {
+      "id": "nd-lo-continuous-loc",
+      "file": "narrative-design/nd-lo-continuous-loc.md"
+    },
+    {
+      "id": "nd-nt-articy-draft",
+      "file": "narrative-design/nd-nt-articy-draft.md"
+    },
+    {
+      "id": "nd-nt-ink-scripting",
+      "file": "narrative-design/nd-nt-ink-scripting.md"
+    },
+    {
+      "id": "nd-nt-twine",
+      "file": "narrative-design/nd-nt-twine.md"
+    },
+    {
+      "id": "nd-nt-yarn-spinner",
+      "file": "narrative-design/nd-nt-yarn-spinner.md"
+    },
+    {
+      "id": "nd-nt-dialogue-middleware",
+      "file": "narrative-design/nd-nt-dialogue-middleware.md"
+    },
+    {
+      "id": "nd-nt-version-control-narrative",
+      "file": "narrative-design/nd-nt-version-control-narrative.md"
+    },
+    {
+      "id": "nd-nt-spreadsheet-pipeline",
+      "file": "narrative-design/nd-nt-spreadsheet-pipeline.md"
+    },
+    {
+      "id": "nd-nt-graph-visualization",
+      "file": "narrative-design/nd-nt-graph-visualization.md"
+    },
+    {
+      "id": "nd-nt-writing-room",
+      "file": "narrative-design/nd-nt-writing-room.md"
+    },
+    {
+      "id": "nd-nt-narrative-review",
+      "file": "narrative-design/nd-nt-narrative-review.md"
+    },
+    {
+      "id": "nd-nt-playtesting-narrative",
+      "file": "narrative-design/nd-nt-playtesting-narrative.md"
+    },
+    {
+      "id": "nd-nt-text-analytics",
+      "file": "narrative-design/nd-nt-text-analytics.md"
+    },
+    {
+      "id": "nd-nt-chatscript",
+      "file": "narrative-design/nd-nt-chatscript.md"
+    },
+    {
+      "id": "nd-nt-custom-tool-dev",
+      "file": "narrative-design/nd-nt-custom-tool-dev.md"
+    },
+    {
+      "id": "nd-nt-narrative-doc",
+      "file": "narrative-design/nd-nt-narrative-doc.md"
+    },
+    {
+      "id": "nd-nt-flowchart-methodology",
+      "file": "narrative-design/nd-nt-flowchart-methodology.md"
+    },
+    {
+      "id": "nd-nt-llm-narrative",
+      "file": "narrative-design/nd-nt-llm-narrative.md"
+    },
+    {
+      "id": "nd-nt-loc-tool-integration",
+      "file": "narrative-design/nd-nt-loc-tool-integration.md"
+    },
+    {
+      "id": "nd-nt-narrative-debug",
+      "file": "narrative-design/nd-nt-narrative-debug.md"
+    },
+    {
+      "id": "nd-nt-content-management",
+      "file": "narrative-design/nd-nt-content-management.md"
+    }
+  ]
+}

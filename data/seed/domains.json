@@ -252,6 +252,17 @@
       "rag_dir": "game-ui-ux",
       "is_active": true,
       "sort_order": 23
+    },
+    {
+      "id": "narrative-design",
+      "name": "叙事设计",
+      "description": "游戏叙事设计知识体系，覆盖世界观构建、角色塑造、对话系统、分支叙事、任务设计、环境叙事与本地化",
+      "icon": "📖",
+      "color": "#92400e",
+      "seed_dir": "narrative-design",
+      "rag_dir": "narrative-design",
+      "is_active": true,
+      "sort_order": 24
     }
   ]
 }

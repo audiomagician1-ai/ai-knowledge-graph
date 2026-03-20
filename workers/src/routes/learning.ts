@@ -24,6 +24,7 @@ import seedTechnicalArt from '../../data/seed/technical-art/seed_graph.json';
 import seedVfx from '../../data/seed/vfx/seed_graph.json';
 import seedGameAudioMusic from '../../data/seed/game-audio-music/seed_graph.json';
 import seedGameUiUx from '../../data/seed/game-ui-ux/seed_graph.json';
+import seedNarrativeDesign from '../../data/seed/narrative-design/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -45,6 +46,7 @@ const seedMap: Record<string, any> = {
   'vfx': seedVfx,
   'game-audio-music': seedGameAudioMusic,
   'game-ui-ux': seedGameUiUx,
+  'narrative-design': seedNarrativeDesign,
 };
 function getSeed(domain: string): any { return seedMap[domain] || seedMap[DEFAULT_DOMAIN]; }
 

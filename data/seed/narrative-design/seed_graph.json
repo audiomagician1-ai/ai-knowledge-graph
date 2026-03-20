@@ -1,0 +1,3322 @@
+{
+  "domain": {
+    "id": "narrative-design",
+    "name": "叙事设计",
+    "version": "1.0.0",
+    "description": "游戏叙事设计的完整知识体系——从世界观构建、角色塑造到对话系统、分支叙事、环境叙事与本地化"
+  },
+  "subdomains": [
+    {
+      "id": "worldbuilding",
+      "name": "世界观构建",
+      "description": "游戏世界的设定、历史、规则与文化体系构建",
+      "order": 1
+    },
+    {
+      "id": "character-writing",
+      "name": "角色塑造",
+      "description": "游戏角色的性格、动机、弧光与对话风格设计",
+      "order": 2
+    },
+    {
+      "id": "dialogue-system",
+      "name": "对话系统",
+      "description": "游戏中对话的结构、触发、流转与技术实现",
+      "order": 3
+    },
+    {
+      "id": "branching-narrative",
+      "name": "分支叙事",
+      "description": "玩家选择驱动的故事分支、多结局与因果系统",
+      "order": 4
+    },
+    {
+      "id": "quest-design",
+      "name": "任务设计",
+      "description": "主线、支线与动态任务的结构与体验设计",
+      "order": 5
+    },
+    {
+      "id": "cinematics",
+      "name": "过场动画",
+      "description": "游戏叙事中过场演出、镜头语言与脚本编排",
+      "order": 6
+    },
+    {
+      "id": "environmental-storytelling",
+      "name": "环境叙事",
+      "description": "通过场景、道具与空间布局讲述故事",
+      "order": 7
+    },
+    {
+      "id": "localization",
+      "name": "本地化",
+      "description": "叙事内容的多语言翻译、文化适配与本地化管线",
+      "order": 8
+    },
+    {
+      "id": "narrative-tools",
+      "name": "叙事工具",
+      "description": "叙事设计的专业工具链与工作流程",
+      "order": 9
+    }
+  ],
+  "concepts": [
+    {
+      "id": "nd-wb-setting-bible",
+      "name": "设定圣经",
+      "description": "项目世界观的核心参考文档，包含历史、地理、文化等所有设定",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-lore-hierarchy",
+      "name": "传说层级",
+      "description": "世界背景信息从核心到外围的分层架构与优先级",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-world-history",
+      "name": "世界历史",
+      "description": "虚构世界的历史脉络、纪元划分与关键事件时间线",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-wb-geography",
+      "name": "世界地理",
+      "description": "虚构世界的地图、区域划分与空间关系",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-faction-design",
+      "name": "阵营设计",
+      "description": "游戏中各派系/阵营的目标、文化、关系与冲突设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-magic-system",
+      "name": "魔法/科技体系",
+      "description": "世界观中超自然或科技系统的规则与限制设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-wb-culture-creation",
+      "name": "文化创造",
+      "description": "虚构文明的语言、宗教、习俗与社会结构设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-mythology",
+      "name": "神话体系",
+      "description": "世界中的神话传说、创世故事与信仰系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-economy-politics",
+      "name": "经济与政治",
+      "description": "虚构世界的经济体系、政治结构与权力关系",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-ecology",
+      "name": "世界生态",
+      "description": "虚构世界的生物多样性、食物链与自然规则",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-tech-level",
+      "name": "科技水平",
+      "description": "世界的科技发展阶段及其对社会和玩法的影响",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-naming-convention",
+      "name": "命名规范",
+      "description": "角色、地点、道具等命名的语言学规则与风格统一",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-internal-consistency",
+      "name": "内部一致性",
+      "description": "确保世界设定各部分逻辑自洽的方法论",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-wb-worldbuilding-scope",
+      "name": "世界观范围控制",
+      "description": "根据项目规模合理界定世界设定的深度与广度",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-genre-convention",
+      "name": "类型惯例",
+      "description": "不同游戏类型（RPG/FPS/策略等）的世界观设计惯例",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-tone-mood",
+      "name": "基调与氛围",
+      "description": "世界整体的情感色彩、叙事语调与美学方向",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-timeline-management",
+      "name": "时间线管理",
+      "description": "跨剧情线的时间同步、闪回与时间跳跃处理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-player-agency-world",
+      "name": "玩家对世界的影响",
+      "description": "玩家行为如何改变世界状态的设计框架",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-wb-transmedia",
+      "name": "跨媒体叙事",
+      "description": "游戏世界在小说、漫画、影视等多媒体间的扩展策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-wb-living-world",
+      "name": "活世界设计",
+      "description": "让虚构世界感觉鲜活、有自主运行感的设计技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-character-arc",
+      "name": "角色弧光",
+      "description": "角色在故事中经历的内在转变与成长轨迹",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-cw-protagonist-design",
+      "name": "主角设计",
+      "description": "玩家扮演角色的性格、能力与叙事定位",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-cw-antagonist-design",
+      "name": "反派设计",
+      "description": "对手角色的动机、能力与叙事功能设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-npc-personality",
+      "name": "NPC性格系统",
+      "description": "非玩家角色的个性特征、行为模式与互动风格",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-motivation-system",
+      "name": "动机系统",
+      "description": "角色行为驱动力的层次结构与冲突设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-backstory",
+      "name": "角色背景故事",
+      "description": "角色过往经历的设计原则与信息释放节奏",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-relationship-web",
+      "name": "角色关系网",
+      "description": "角色之间的关系类型、动态变化与冲突设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-cw-companion-system",
+      "name": "同伴系统",
+      "description": "可招募同伴的性格、忠诚度与个人任务设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-voice-tone",
+      "name": "角色语气与口吻",
+      "description": "不同角色独特的说话风格、用词习惯与语调",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-character-template",
+      "name": "角色模板",
+      "description": "标准化的角色设计文档与属性检查清单",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-silent-protagonist",
+      "name": "沉默主角设计",
+      "description": "不说话主角的叙事补偿策略与玩家代入感",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-ensemble-cast",
+      "name": "群像角色设计",
+      "description": "多主角或大型角色团队的平衡与互补设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-character-reveal",
+      "name": "角色揭示节奏",
+      "description": "角色信息的渐进式揭露与悬念管理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-moral-complexity",
+      "name": "道德复杂性",
+      "description": "角色灰色地带与道德困境的设计方法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-cultural-sensitivity",
+      "name": "文化敏感性",
+      "description": "角色设计中避免刻板印象与文化冒犯的策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-player-character-bond",
+      "name": "玩家角色纽带",
+      "description": "建立玩家与游戏角色情感联系的设计技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-dynamic-personality",
+      "name": "动态性格系统",
+      "description": "角色性格随玩家互动和剧情变化的系统设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-archetype-usage",
+      "name": "原型运用",
+      "description": "英雄之旅、荣格原型等叙事原型在角色设计中的应用",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-redemption-arc",
+      "name": "救赎弧光",
+      "description": "角色从堕落到救赎的经典叙事弧线设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-cw-tragic-character",
+      "name": "悲剧角色",
+      "description": "悲剧性角色的命运必然性与情感冲击设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-dialogue-tree",
+      "name": "对话树",
+      "description": "基于节点的对话分支结构与流转逻辑",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-ds-dialogue-wheel",
+      "name": "对话轮盘",
+      "description": "Mass Effect式对话选择的情感标签与语调系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-bark-system",
+      "name": "Bark系统",
+      "description": "NPC环境感知的自动短句触发系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-ds-conditional-dialogue",
+      "name": "条件对话",
+      "description": "基于游戏状态、好感度等变量的对话条件判断",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-dialogue-writing",
+      "name": "对话写作",
+      "description": "游戏对话的写作技巧、节奏与风格把控",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-voice-acting-prep",
+      "name": "配音准备",
+      "description": "为配音演员准备的脚本格式、情感标注与发音指导",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-lip-sync",
+      "name": "口型同步",
+      "description": "对话与角色口型动画的同步技术与方案",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-dialogue-camera",
+      "name": "对话镜头",
+      "description": "对话场景中的镜头切换、角度与构图规则",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-node-based-editor",
+      "name": "节点式对话编辑器",
+      "description": "可视化对话编辑工具的功能需求与使用方法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-hub-spoke",
+      "name": "Hub-and-Spoke模式",
+      "description": "中心话题辐射多个子话题的对话结构模式",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-keyword-system",
+      "name": "关键词系统",
+      "description": "基于关键词触发的动态对话匹配机制",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-persuasion-system",
+      "name": "说服系统",
+      "description": "对话中的谈判、说服与技能检定机制设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-lore-dump-avoidance",
+      "name": "避免信息灌输",
+      "description": "在对话中自然传递背景信息而不显得生硬的技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-dialogue-state-machine",
+      "name": "对话状态机",
+      "description": "对话流程的技术状态管理与流转控制",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-procedural-dialogue",
+      "name": "程序化对话",
+      "description": "AI驱动或模板生成的动态对话内容",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-subtext",
+      "name": "潜台词设计",
+      "description": "对话中隐藏含义与角色真实意图的表达技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-exposition-techniques",
+      "name": "信息交代技巧",
+      "description": "在对话中自然地交代关键剧情信息的方法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-interrupt-system",
+      "name": "打断系统",
+      "description": "对话被游戏事件或玩家动作中断的处理机制",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-reactivity-feedback",
+      "name": "反馈与回应性",
+      "description": "对话系统对玩家行为和选择的回应机制设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ds-dialogue-database",
+      "name": "对话数据库",
+      "description": "大规模对话内容的存储、索引与检索架构",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-branch-merge",
+      "name": "分支与合流",
+      "description": "故事分支后在关键节点重新汇合的结构设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-bn-multiple-endings",
+      "name": "多结局设计",
+      "description": "基于玩家累积选择导向不同故事结局的系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-bn-choice-consequence",
+      "name": "选择与后果",
+      "description": "玩家选择产生短期和长期影响的因果系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-bn-flag-system",
+      "name": "标志系统",
+      "description": "追踪玩家选择与游戏状态的布尔/数值标志体系",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-state-tracking",
+      "name": "状态追踪",
+      "description": "复杂叙事分支中的全局状态管理策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-illusion-of-choice",
+      "name": "选择幻觉",
+      "description": "让玩家感到有选择权但实际收束叙事的设计技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-delayed-consequence",
+      "name": "延迟后果",
+      "description": "玩家选择在多个章节后才显现影响的设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-moral-dilemma",
+      "name": "道德困境",
+      "description": "没有明确对错的选择设计与玩家心理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-bn-narrative-graph",
+      "name": "叙事图结构",
+      "description": "用有向图建模故事分支、循环与合流",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-combinatorial-explosion",
+      "name": "组合爆炸控制",
+      "description": "管理分支数量呈指数增长的设计策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-point-of-no-return",
+      "name": "不可逆节点",
+      "description": "关键选择后无法回头的叙事设计与玩家提示",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-narrative-variable",
+      "name": "叙事变量",
+      "description": "量化玩家行为倾向的变量系统（善恶、声望等）",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-butterfly-effect",
+      "name": "蝴蝶效应",
+      "description": "微小选择导致巨大叙事差异的涟漪设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-emergent-narrative",
+      "name": "涌现叙事",
+      "description": "由系统动态生成而非预设的叙事体验",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-player-driven-story",
+      "name": "玩家驱动故事",
+      "description": "将故事主导权交给玩家的开放式叙事设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-relationship-system",
+      "name": "好感度系统",
+      "description": "NPC对玩家的态度随互动动态变化的系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-faction-reputation",
+      "name": "阵营声望",
+      "description": "玩家在不同阵营的声望值及其对叙事的影响",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-narrative-testing",
+      "name": "分支叙事测试",
+      "description": "大量分支路径的系统化测试方法与覆盖策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-save-scumming",
+      "name": "S/L防护设计",
+      "description": "设计上减少玩家反复读档投机行为的策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-bn-procedural-story",
+      "name": "程序化故事生成",
+      "description": "算法驱动的故事生成系统与叙事模板",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-main-quest",
+      "name": "主线任务设计",
+      "description": "驱动核心剧情推进的主线任务结构与节奏",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-qd-side-quest",
+      "name": "支线任务设计",
+      "description": "丰富世界体验的可选任务设计原则",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-qd-quest-structure",
+      "name": "任务结构模型",
+      "description": "常见任务结构（线性/Hub/开放/链式）的对比与选择",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-objective-design",
+      "name": "目标设计",
+      "description": "任务目标的清晰度、可追踪性与玩家引导",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-quest-reward",
+      "name": "任务奖励设计",
+      "description": "叙事奖励、物质奖励与情感奖励的平衡策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-quest-giver",
+      "name": "任务发布者设计",
+      "description": "NPC任务发布者的角色塑造与可信动机",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-fetch-quest-alternatives",
+      "name": "收集任务替代方案",
+      "description": "避免无聊的收集/获取任务的创意设计思路",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-quest-chain",
+      "name": "任务链设计",
+      "description": "多步骤连续任务的节奏、回报与叙事递进",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-dynamic-quest",
+      "name": "动态任务生成",
+      "description": "基于游戏状态动态生成或调整的任务系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-quest-journal",
+      "name": "任务日志设计",
+      "description": "任务追踪UI、描述文本与完成提示的设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-parallel-quests",
+      "name": "并行任务管理",
+      "description": "多条活跃任务的优先级、冲突与完成顺序处理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-escort-quest",
+      "name": "护送任务设计",
+      "description": "护送类任务的AI行为、节奏与避免烦躁的设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-investigation-quest",
+      "name": "调查类任务",
+      "description": "推理、线索收集与证据拼接的叙事任务设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-timed-quest",
+      "name": "限时任务",
+      "description": "时间压力任务的紧迫感营造与公平性设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-optional-objectives",
+      "name": "可选目标",
+      "description": "任务中的附加挑战与完美完成条件设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-quest-failure",
+      "name": "任务失败处理",
+      "description": "任务失败后的叙事处理、惩罚与补救路径",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-radiant-quest",
+      "name": "Radiant Quest系统",
+      "description": "Skyrim式程序化重复任务的设计与局限性",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-quest-dependency",
+      "name": "任务依赖关系",
+      "description": "任务之间的前置条件、解锁逻辑与有向图结构",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-world-quest",
+      "name": "世界事件任务",
+      "description": "全服务器或全局事件驱动的大规模任务设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-qd-quest-pacing",
+      "name": "任务节奏控制",
+      "description": "主线与支线交替的节奏安排与疲劳感管理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-ci-cutscene-types",
+      "name": "过场类型",
+      "description": "预渲染、实时渲染、混合过场的对比与选择",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-ci-camera-language",
+      "name": "镜头语言",
+      "description": "景别、角度、运镜在游戏过场中的叙事功能",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-storyboard",
+      "name": "分镜设计",
+      "description": "过场演出的分镜脚本与预可视化流程",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-ci-pacing-rhythm",
+      "name": "演出节奏",
+      "description": "过场动画的时长控制、节奏变化与情感曲线",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-interactive-cutscene",
+      "name": "交互式过场",
+      "description": "QTE、选择或自由移动等玩家参与元素的过场",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-in-engine-cutscene",
+      "name": "引擎内过场",
+      "description": "使用游戏引擎实时渲染的过场制作流程",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-sequencer-tools",
+      "name": "序列器工具",
+      "description": "UE5 Sequencer/Unity Timeline等过场制作工具",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-transition-design",
+      "name": "过渡设计",
+      "description": "游戏与过场之间的无缝过渡技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-cinematic-lighting",
+      "name": "过场光照",
+      "description": "过场专用的光照设置与氛围营造",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-motion-capture-story",
+      "name": "动捕叙事",
+      "description": "动作捕捉在过场演出中的应用与导演技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-shot-composition",
+      "name": "构图法则",
+      "description": "过场画面构图的美学原则与情感表达",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-script-format",
+      "name": "过场脚本格式",
+      "description": "标准化的过场脚本文档格式与协作规范",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-non-skippable-debate",
+      "name": "可跳过性设计",
+      "description": "过场是否可跳过的设计决策与玩家体验权衡",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 2,
+      "estimated_minutes": 15,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-parallel-action",
+      "name": "平行动作",
+      "description": "过场中多条动作线同时展开的叙事技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-emotional-beats",
+      "name": "情感节拍",
+      "description": "过场中关键情感高潮的设计与铺垫",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-first-person-cutscene",
+      "name": "第一人称过场",
+      "description": "保持玩家视角的过场设计（Half-Life式）",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-vfx-in-cutscene",
+      "name": "过场特效",
+      "description": "过场动画中特效元素的设计与制作",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-audio-sync",
+      "name": "音画同步",
+      "description": "过场中音乐、音效与画面的精确同步",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-branching-cutscene",
+      "name": "分支过场",
+      "description": "根据玩家选择呈现不同版本的过场设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-ci-real-time-event",
+      "name": "实时事件演出",
+      "description": "在gameplay中嵌入的脚本事件与演出设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-visual-narrative",
+      "name": "视觉叙事",
+      "description": "通过场景视觉元素讲述故事的基本原则",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-es-found-narrative",
+      "name": "发现式叙事",
+      "description": "玩家主动发现的日记、录音、信件等叙事碎片",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-es-level-as-story",
+      "name": "关卡即故事",
+      "description": "将关卡空间本身设计为叙事载体的方法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-prop-storytelling",
+      "name": "道具叙事",
+      "description": "通过场景道具的摆放与状态传递叙事信息",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-architecture-story",
+      "name": "建筑叙事",
+      "description": "建筑风格、损坏程度等传递历史与文化信息",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-graffiti-signs",
+      "name": "涂鸦与标识",
+      "description": "场景中的文字、涂鸦、标识作为叙事线索",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-lighting-narrative",
+      "name": "光照叙事",
+      "description": "通过光影变化传递情感与引导叙事关注",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-audio-narrative",
+      "name": "音频叙事",
+      "description": "环境音、背景音乐变化传递的叙事信息",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-corpse-storytelling",
+      "name": "尸体叙事",
+      "description": "通过尸体/遗骸的姿态与位置讲述过去的事件",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-progression-change",
+      "name": "场景变化叙事",
+      "description": "场景随剧情推进发生变化来反映故事发展",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-show-dont-tell",
+      "name": "展示而非讲述",
+      "description": "通过环境展示信息而非文字描述的设计原则",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-collectible-lore",
+      "name": "收集品世界观",
+      "description": "可收集物品中蕴含的世界观与背景故事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-ghost-echo",
+      "name": "回声/幻影叙事",
+      "description": "场景中的全息投影、幽灵回放等叙事手法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-ruins-decay",
+      "name": "废墟叙事",
+      "description": "通过废弃建筑与衰败场景传递文明兴衰",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-npc-routine",
+      "name": "NPC日常行为叙事",
+      "description": "NPC的日常活动与互动传递的叙事信息",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-contrast-juxtaposition",
+      "name": "对比叙事",
+      "description": "通过场景中的反差元素制造叙事张力",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-discovery-pacing",
+      "name": "发现节奏",
+      "description": "环境叙事元素的分布密度与发现频率控制",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-subtle-clues",
+      "name": "隐性线索",
+      "description": "需要玩家仔细观察才能发现的叙事线索设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-player-exploration-reward",
+      "name": "探索奖励叙事",
+      "description": "通过叙事内容奖励偏离主路径的探索行为",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-es-world-reaction",
+      "name": "世界反应",
+      "description": "游戏世界对玩家行为的视觉反馈与叙事呼应",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-loc-pipeline",
+      "name": "本地化管线",
+      "description": "从文本提取到翻译集成的完整本地化工作流",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-lo-string-table",
+      "name": "字符串表",
+      "description": "游戏文本的ID化管理与多语言映射结构",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-lo-cultural-adaptation",
+      "name": "文化适配",
+      "description": "超越直译的文化语境适配与创意翻译",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-text-expansion",
+      "name": "文本膨胀",
+      "description": "不同语言翻译后文本长度变化的UI适配策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-voice-localization",
+      "name": "配音本地化",
+      "description": "多语言配音的选角、录制与品质管理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-subtitle-system",
+      "name": "字幕系统",
+      "description": "字幕显示的时序、格式与可访问性设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-gendered-language",
+      "name": "性别化语言",
+      "description": "处理不同语言中的语法性别差异",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-loc-testing",
+      "name": "本地化测试",
+      "description": "翻译质量、文本截断与语境正确性的测试方法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-cat-tools",
+      "name": "CAT工具",
+      "description": "计算机辅助翻译工具与翻译记忆库",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-internationalization",
+      "name": "国际化(i18n)",
+      "description": "代码层面支持多语言的技术架构与最佳实践",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-locale-specific-content",
+      "name": "地区专属内容",
+      "description": "针对特定地区的内容修改与审查需求",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-right-to-left",
+      "name": "RTL语言支持",
+      "description": "阿拉伯语/希伯来语等从右到左书写的UI适配",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-font-localization",
+      "name": "字体本地化",
+      "description": "不同语言文字的字体选择与渲染支持",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-dynamic-text",
+      "name": "动态文本本地化",
+      "description": "包含变量、复数形式等动态文本的本地化处理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-context-notes",
+      "name": "翻译上下文备注",
+      "description": "为译者提供充分语境信息以确保翻译准确",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-pseudolocalization",
+      "name": "伪本地化",
+      "description": "使用伪翻译文本提前发现本地化问题",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-regional-rating",
+      "name": "区域分级适配",
+      "description": "不同国家的内容审查要求与调整策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-community-translation",
+      "name": "社区翻译",
+      "description": "利用玩家社区进行本地化翻译的方法与管理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-loc-budget",
+      "name": "本地化预算",
+      "description": "本地化工作的成本估算与资源分配",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-lo-continuous-loc",
+      "name": "持续本地化",
+      "description": "游戏上线后持续更新内容的本地化工作流",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-articy-draft",
+      "name": "Articy:Draft",
+      "description": "专业叙事设计工具Articy:Draft的功能与使用",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-nt-ink-scripting",
+      "name": "Ink脚本语言",
+      "description": "Inkle的Ink叙事脚本语言的语法与工作流",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-nt-twine",
+      "name": "Twine工具",
+      "description": "开源交互叙事工具Twine的使用与原型验证",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-yarn-spinner",
+      "name": "Yarn Spinner",
+      "description": "Unity生态的对话脚本工具Yarn Spinner",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-dialogue-middleware",
+      "name": "对话中间件",
+      "description": "市场上对话系统中间件的对比与选型",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-version-control-narrative",
+      "name": "叙事版本控制",
+      "description": "叙事内容的版本管理、分支与合并策略",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-spreadsheet-pipeline",
+      "name": "表格管线",
+      "description": "Excel/Google Sheets在叙事内容管理中的应用",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-graph-visualization",
+      "name": "叙事图可视化",
+      "description": "复杂叙事结构的可视化工具与分析方法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-writing-room",
+      "name": "编剧室工作法",
+      "description": "影视编剧室方法论在游戏叙事团队中的应用",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-narrative-review",
+      "name": "叙事评审流程",
+      "description": "故事内容的多轮审阅、反馈与迭代流程",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-playtesting-narrative",
+      "name": "叙事玩测",
+      "description": "专注于叙事体验的玩测设计与反馈收集",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-text-analytics",
+      "name": "文本分析工具",
+      "description": "用数据分析方法评估对话质量与覆盖率",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-chatscript",
+      "name": "ChatScript",
+      "description": "基于规则的对话AI引擎ChatScript的应用",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-custom-tool-dev",
+      "name": "自定义工具开发",
+      "description": "为特定项目开发专属叙事设计工具的方法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-narrative-doc",
+      "name": "叙事设计文档",
+      "description": "叙事设计文档的标准结构与编写规范",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "nd-nt-flowchart-methodology",
+      "name": "流程图方法论",
+      "description": "用流程图梳理叙事逻辑与分支关系",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-llm-narrative",
+      "name": "LLM叙事辅助",
+      "description": "利用大语言模型辅助叙事创作与对话生成",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-loc-tool-integration",
+      "name": "本地化工具集成",
+      "description": "叙事工具与本地化管线的集成方案",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-narrative-debug",
+      "name": "叙事调试",
+      "description": "运行时对话流、标志状态与分支路径的调试工具",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "nd-nt-content-management",
+      "name": "内容管理系统",
+      "description": "大规模叙事内容的数据库管理与CMS方案",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "nd-wb-setting-bible",
+      "target_id": "nd-wb-lore-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-setting-bible",
+      "target_id": "nd-wb-world-history",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-setting-bible",
+      "target_id": "nd-wb-geography",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-world-history",
+      "target_id": "nd-wb-faction-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-world-history",
+      "target_id": "nd-wb-mythology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-faction-design",
+      "target_id": "nd-wb-economy-politics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-culture-creation",
+      "target_id": "nd-wb-mythology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-culture-creation",
+      "target_id": "nd-wb-naming-convention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-magic-system",
+      "target_id": "nd-wb-tech-level",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-worldbuilding-scope",
+      "target_id": "nd-wb-setting-bible",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-genre-convention",
+      "target_id": "nd-wb-tone-mood",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-world-history",
+      "target_id": "nd-wb-timeline-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-player-agency-world",
+      "target_id": "nd-wb-living-world",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-internal-consistency",
+      "target_id": "nd-wb-timeline-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-living-world",
+      "target_id": "nd-wb-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-tone-mood",
+      "target_id": "nd-wb-setting-bible",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-character-arc",
+      "target_id": "nd-cw-protagonist-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-character-arc",
+      "target_id": "nd-cw-antagonist-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-protagonist-design",
+      "target_id": "nd-cw-silent-protagonist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-antagonist-design",
+      "target_id": "nd-cw-moral-complexity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-motivation-system",
+      "target_id": "nd-cw-character-arc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-backstory",
+      "target_id": "nd-cw-character-reveal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-relationship-web",
+      "target_id": "nd-cw-companion-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-character-template",
+      "target_id": "nd-cw-backstory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-voice-tone",
+      "target_id": "nd-cw-npc-personality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-archetype-usage",
+      "target_id": "nd-cw-character-arc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-ensemble-cast",
+      "target_id": "nd-cw-relationship-web",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-moral-complexity",
+      "target_id": "nd-cw-redemption-arc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-moral-complexity",
+      "target_id": "nd-cw-tragic-character",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-player-character-bond",
+      "target_id": "nd-cw-dynamic-personality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-npc-personality",
+      "target_id": "nd-cw-dynamic-personality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-tree",
+      "target_id": "nd-ds-dialogue-wheel",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-tree",
+      "target_id": "nd-ds-hub-spoke",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-tree",
+      "target_id": "nd-ds-node-based-editor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-conditional-dialogue",
+      "target_id": "nd-ds-dialogue-state-machine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-writing",
+      "target_id": "nd-ds-subtext",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-writing",
+      "target_id": "nd-ds-exposition-techniques",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-writing",
+      "target_id": "nd-ds-lore-dump-avoidance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-voice-acting-prep",
+      "target_id": "nd-ds-lip-sync",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-bark-system",
+      "target_id": "nd-ds-conditional-dialogue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-state-machine",
+      "target_id": "nd-ds-procedural-dialogue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-keyword-system",
+      "target_id": "nd-ds-procedural-dialogue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-persuasion-system",
+      "target_id": "nd-ds-conditional-dialogue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-camera",
+      "target_id": "nd-ds-lip-sync",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-reactivity-feedback",
+      "target_id": "nd-ds-interrupt-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-database",
+      "target_id": "nd-ds-dialogue-state-machine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-branch-merge",
+      "target_id": "nd-bn-multiple-endings",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-choice-consequence",
+      "target_id": "nd-bn-delayed-consequence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-choice-consequence",
+      "target_id": "nd-bn-moral-dilemma",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-flag-system",
+      "target_id": "nd-bn-state-tracking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-state-tracking",
+      "target_id": "nd-bn-narrative-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-narrative-graph",
+      "target_id": "nd-bn-combinatorial-explosion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-illusion-of-choice",
+      "target_id": "nd-bn-branch-merge",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-delayed-consequence",
+      "target_id": "nd-bn-butterfly-effect",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-narrative-variable",
+      "target_id": "nd-bn-faction-reputation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-narrative-variable",
+      "target_id": "nd-bn-relationship-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-emergent-narrative",
+      "target_id": "nd-bn-procedural-story",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-player-driven-story",
+      "target_id": "nd-bn-emergent-narrative",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-point-of-no-return",
+      "target_id": "nd-bn-save-scumming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-narrative-testing",
+      "target_id": "nd-bn-combinatorial-explosion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-multiple-endings",
+      "target_id": "nd-bn-point-of-no-return",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-main-quest",
+      "target_id": "nd-qd-quest-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-side-quest",
+      "target_id": "nd-qd-quest-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-quest-structure",
+      "target_id": "nd-qd-objective-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-quest-structure",
+      "target_id": "nd-qd-quest-chain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-objective-design",
+      "target_id": "nd-qd-quest-journal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-quest-reward",
+      "target_id": "nd-qd-quest-giver",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-fetch-quest-alternatives",
+      "target_id": "nd-qd-investigation-quest",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-quest-chain",
+      "target_id": "nd-qd-quest-dependency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-dynamic-quest",
+      "target_id": "nd-qd-radiant-quest",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-parallel-quests",
+      "target_id": "nd-qd-quest-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-quest-failure",
+      "target_id": "nd-qd-quest-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-escort-quest",
+      "target_id": "nd-qd-fetch-quest-alternatives",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-timed-quest",
+      "target_id": "nd-qd-quest-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-optional-objectives",
+      "target_id": "nd-qd-quest-reward",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-main-quest",
+      "target_id": "nd-qd-quest-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-cutscene-types",
+      "target_id": "nd-ci-in-engine-cutscene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-cutscene-types",
+      "target_id": "nd-ci-interactive-cutscene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-camera-language",
+      "target_id": "nd-ci-shot-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-camera-language",
+      "target_id": "nd-ds-dialogue-camera",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-storyboard",
+      "target_id": "nd-ci-pacing-rhythm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-in-engine-cutscene",
+      "target_id": "nd-ci-sequencer-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-pacing-rhythm",
+      "target_id": "nd-ci-emotional-beats",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-interactive-cutscene",
+      "target_id": "nd-ci-first-person-cutscene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-transition-design",
+      "target_id": "nd-ci-real-time-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-motion-capture-story",
+      "target_id": "nd-ci-in-engine-cutscene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-cinematic-lighting",
+      "target_id": "nd-ci-shot-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-audio-sync",
+      "target_id": "nd-ci-vfx-in-cutscene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-branching-cutscene",
+      "target_id": "nd-ci-interactive-cutscene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-script-format",
+      "target_id": "nd-ci-storyboard",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-parallel-action",
+      "target_id": "nd-ci-pacing-rhythm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-visual-narrative",
+      "target_id": "nd-es-show-dont-tell",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-visual-narrative",
+      "target_id": "nd-es-prop-storytelling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-found-narrative",
+      "target_id": "nd-es-collectible-lore",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-level-as-story",
+      "target_id": "nd-es-architecture-story",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-prop-storytelling",
+      "target_id": "nd-es-corpse-storytelling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-lighting-narrative",
+      "target_id": "nd-es-contrast-juxtaposition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-audio-narrative",
+      "target_id": "nd-es-lighting-narrative",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-progression-change",
+      "target_id": "nd-es-world-reaction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-ghost-echo",
+      "target_id": "nd-es-found-narrative",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-ruins-decay",
+      "target_id": "nd-es-architecture-story",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-npc-routine",
+      "target_id": "nd-es-world-reaction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-subtle-clues",
+      "target_id": "nd-es-discovery-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-player-exploration-reward",
+      "target_id": "nd-es-discovery-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-graffiti-signs",
+      "target_id": "nd-es-visual-narrative",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-show-dont-tell",
+      "target_id": "nd-es-level-as-story",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-loc-pipeline",
+      "target_id": "nd-lo-string-table",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-string-table",
+      "target_id": "nd-lo-dynamic-text",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-cultural-adaptation",
+      "target_id": "nd-lo-locale-specific-content",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-text-expansion",
+      "target_id": "nd-lo-font-localization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-voice-localization",
+      "target_id": "nd-lo-subtitle-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-gendered-language",
+      "target_id": "nd-lo-dynamic-text",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-loc-testing",
+      "target_id": "nd-lo-pseudolocalization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-cat-tools",
+      "target_id": "nd-lo-loc-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-internationalization",
+      "target_id": "nd-lo-string-table",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-right-to-left",
+      "target_id": "nd-lo-font-localization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-context-notes",
+      "target_id": "nd-lo-cultural-adaptation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-regional-rating",
+      "target_id": "nd-lo-locale-specific-content",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-community-translation",
+      "target_id": "nd-lo-loc-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-continuous-loc",
+      "target_id": "nd-lo-loc-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-loc-budget",
+      "target_id": "nd-lo-loc-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-articy-draft",
+      "target_id": "nd-nt-graph-visualization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-ink-scripting",
+      "target_id": "nd-nt-yarn-spinner",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-twine",
+      "target_id": "nd-nt-ink-scripting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-dialogue-middleware",
+      "target_id": "nd-nt-articy-draft",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-version-control-narrative",
+      "target_id": "nd-nt-spreadsheet-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-writing-room",
+      "target_id": "nd-nt-narrative-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-narrative-review",
+      "target_id": "nd-nt-playtesting-narrative",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-chatscript",
+      "target_id": "nd-nt-llm-narrative",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-custom-tool-dev",
+      "target_id": "nd-nt-narrative-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-narrative-doc",
+      "target_id": "nd-nt-flowchart-methodology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-flowchart-methodology",
+      "target_id": "nd-nt-graph-visualization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-loc-tool-integration",
+      "target_id": "nd-nt-content-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-text-analytics",
+      "target_id": "nd-nt-narrative-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-content-management",
+      "target_id": "nd-nt-narrative-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-llm-narrative",
+      "target_id": "nd-ds-procedural-dialogue",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-setting-bible",
+      "target_id": "nd-cw-character-template",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-voice-tone",
+      "target_id": "nd-ds-dialogue-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-dialogue-tree",
+      "target_id": "nd-bn-branch-merge",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-choice-consequence",
+      "target_id": "nd-qd-quest-failure",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-main-quest",
+      "target_id": "nd-ci-cutscene-types",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-storyboard",
+      "target_id": "nd-es-visual-narrative",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-found-narrative",
+      "target_id": "nd-lo-string-table",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-lo-loc-pipeline",
+      "target_id": "nd-nt-loc-tool-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-faction-design",
+      "target_id": "nd-bn-faction-reputation",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-companion-system",
+      "target_id": "nd-qd-side-quest",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-bark-system",
+      "target_id": "nd-es-npc-routine",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-bn-flag-system",
+      "target_id": "nd-ds-conditional-dialogue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-quest-journal",
+      "target_id": "nd-lo-string-table",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-articy-draft",
+      "target_id": "nd-ds-node-based-editor",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-wb-player-agency-world",
+      "target_id": "nd-bn-player-driven-story",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-cw-relationship-web",
+      "target_id": "nd-bn-relationship-system",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ci-motion-capture-story",
+      "target_id": "nd-ds-lip-sync",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-es-progression-change",
+      "target_id": "nd-bn-choice-consequence",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-nt-ink-scripting",
+      "target_id": "nd-ds-dialogue-state-machine",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-qd-dynamic-quest",
+      "target_id": "nd-bn-emergent-narrative",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nd-ds-procedural-dialogue",
+      "target_id": "nd-nt-llm-narrative",
+      "relation_type": "related",
+      "strength": 0.8
+    }
+  ],
+  "milestones": [
+    {
+      "concept_id": "nd-wb-world-history",
+      "name": "世界历史",
+      "description": "掌握世界历史的核心理论与实践方法",
+      "order": 1
+    },
+    {
+      "concept_id": "nd-wb-magic-system",
+      "name": "魔法/科技体系",
+      "description": "掌握魔法/科技体系的核心理论与实践方法",
+      "order": 2
+    },
+    {
+      "concept_id": "nd-wb-internal-consistency",
+      "name": "内部一致性",
+      "description": "掌握内部一致性的核心理论与实践方法",
+      "order": 3
+    },
+    {
+      "concept_id": "nd-wb-player-agency-world",
+      "name": "玩家对世界的影响",
+      "description": "掌握玩家对世界的影响的核心理论与实践方法",
+      "order": 4
+    },
+    {
+      "concept_id": "nd-cw-character-arc",
+      "name": "角色弧光",
+      "description": "掌握角色弧光的核心理论与实践方法",
+      "order": 5
+    },
+    {
+      "concept_id": "nd-cw-protagonist-design",
+      "name": "主角设计",
+      "description": "掌握主角设计的核心理论与实践方法",
+      "order": 6
+    },
+    {
+      "concept_id": "nd-cw-relationship-web",
+      "name": "角色关系网",
+      "description": "掌握角色关系网的核心理论与实践方法",
+      "order": 7
+    },
+    {
+      "concept_id": "nd-ds-dialogue-tree",
+      "name": "对话树",
+      "description": "掌握对话树的核心理论与实践方法",
+      "order": 8
+    },
+    {
+      "concept_id": "nd-ds-bark-system",
+      "name": "Bark系统",
+      "description": "掌握Bark系统的核心理论与实践方法",
+      "order": 9
+    },
+    {
+      "concept_id": "nd-bn-branch-merge",
+      "name": "分支与合流",
+      "description": "掌握分支与合流的核心理论与实践方法",
+      "order": 10
+    },
+    {
+      "concept_id": "nd-bn-multiple-endings",
+      "name": "多结局设计",
+      "description": "掌握多结局设计的核心理论与实践方法",
+      "order": 11
+    },
+    {
+      "concept_id": "nd-bn-choice-consequence",
+      "name": "选择与后果",
+      "description": "掌握选择与后果的核心理论与实践方法",
+      "order": 12
+    },
+    {
+      "concept_id": "nd-bn-moral-dilemma",
+      "name": "道德困境",
+      "description": "掌握道德困境的核心理论与实践方法",
+      "order": 13
+    },
+    {
+      "concept_id": "nd-qd-main-quest",
+      "name": "主线任务设计",
+      "description": "掌握主线任务设计的核心理论与实践方法",
+      "order": 14
+    },
+    {
+      "concept_id": "nd-qd-side-quest",
+      "name": "支线任务设计",
+      "description": "掌握支线任务设计的核心理论与实践方法",
+      "order": 15
+    },
+    {
+      "concept_id": "nd-qd-quest-pacing",
+      "name": "任务节奏控制",
+      "description": "掌握任务节奏控制的核心理论与实践方法",
+      "order": 16
+    },
+    {
+      "concept_id": "nd-ci-cutscene-types",
+      "name": "过场类型",
+      "description": "掌握过场类型的核心理论与实践方法",
+      "order": 17
+    },
+    {
+      "concept_id": "nd-ci-storyboard",
+      "name": "分镜设计",
+      "description": "掌握分镜设计的核心理论与实践方法",
+      "order": 18
+    },
+    {
+      "concept_id": "nd-es-visual-narrative",
+      "name": "视觉叙事",
+      "description": "掌握视觉叙事的核心理论与实践方法",
+      "order": 19
+    },
+    {
+      "concept_id": "nd-es-found-narrative",
+      "name": "发现式叙事",
+      "description": "掌握发现式叙事的核心理论与实践方法",
+      "order": 20
+    },
+    {
+      "concept_id": "nd-lo-loc-pipeline",
+      "name": "本地化管线",
+      "description": "掌握本地化管线的核心理论与实践方法",
+      "order": 21
+    },
+    {
+      "concept_id": "nd-lo-string-table",
+      "name": "字符串表",
+      "description": "掌握字符串表的核心理论与实践方法",
+      "order": 22
+    },
+    {
+      "concept_id": "nd-nt-articy-draft",
+      "name": "Articy:Draft",
+      "description": "掌握Articy:Draft的核心理论与实践方法",
+      "order": 23
+    },
+    {
+      "concept_id": "nd-nt-ink-scripting",
+      "name": "Ink脚本语言",
+      "description": "掌握Ink脚本语言的核心理论与实践方法",
+      "order": 24
+    },
+    {
+      "concept_id": "nd-nt-narrative-doc",
+      "name": "叙事设计文档",
+      "description": "掌握叙事设计文档的核心理论与实践方法",
+      "order": 25
+    }
+  ]
+}

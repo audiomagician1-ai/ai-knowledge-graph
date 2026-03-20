@@ -3330,6 +3330,206 @@
       "target_id": "cognitive-load",
       "relation": "same_concept",
       "description": "游戏UI认知负荷评估源自心理学认知负荷理论"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-wb-setting-bible",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "related",
+      "description": "世界设定圣经是游戏设计文档的核心组成部分"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-qd-main-quest",
+      "target_domain": "game-design",
+      "target_id": "core-loop-intro",
+      "relation": "related",
+      "description": "主线任务结构与游戏核心循环的关系"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-qd-quest-reward",
+      "target_domain": "game-design",
+      "target_id": "reward-loop",
+      "relation": "related",
+      "description": "任务奖励设计与游戏奖励循环"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-cw-motivation-system",
+      "target_domain": "game-design",
+      "target_id": "emotion-design",
+      "relation": "related",
+      "description": "角色动机系统与游戏情感设计"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-es-progression-change",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "related",
+      "description": "场景变化叙事与游戏反馈系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-es-level-as-story",
+      "target_domain": "level-design",
+      "target_id": "spatial-storytelling",
+      "relation": "related",
+      "description": "关卡即故事与空间叙事原理"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-es-lighting-narrative",
+      "target_domain": "level-design",
+      "target_id": "lighting-intro",
+      "relation": "related",
+      "description": "光照叙事与关卡光照设计"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-storyboard",
+      "target_domain": "level-design",
+      "target_id": "blockout-intro",
+      "relation": "related",
+      "description": "分镜设计与关卡灰盒空间规划"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ds-dialogue-writing",
+      "target_domain": "writing",
+      "target_id": "dialogue-writing",
+      "relation": "related",
+      "description": "游戏对话写作与通用对话写作技巧"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-cw-character-arc",
+      "target_domain": "writing",
+      "target_id": "character-creation",
+      "relation": "related",
+      "description": "游戏角色弧光与写作中的人物塑造"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-wb-mythology",
+      "target_domain": "writing",
+      "target_id": "world-building",
+      "relation": "related",
+      "description": "游戏神话体系与写作中的世界构建"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-qd-quest-journal",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-menu-quest-log",
+      "relation": "related",
+      "description": "任务日志设计与UI任务日志界面"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ds-dialogue-wheel",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-menu-radial",
+      "relation": "related",
+      "description": "对话轮盘与环形菜单的交互设计"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-audio-sync",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-adaptive-overview",
+      "relation": "related",
+      "description": "过场音画同步与自适应音乐系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-wb-tone-mood",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-character-theme",
+      "relation": "related",
+      "description": "世界基调与角色音乐主题设计"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-motion-capture-story",
+      "target_domain": "animation",
+      "target_id": "anim-mocap-overview",
+      "relation": "related",
+      "description": "过场动捕叙事与动画的动作捕捉"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ds-lip-sync",
+      "target_domain": "animation",
+      "target_id": "anim-face-overview",
+      "relation": "related",
+      "description": "对话口型同步与面部动画系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-sequencer-tools",
+      "target_domain": "game-engine",
+      "target_id": "sequencer-extension",
+      "relation": "related",
+      "description": "过场序列器工具与引擎Sequencer扩展"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ds-dialogue-state-machine",
+      "target_domain": "game-engine",
+      "target_id": "state-machine-engine",
+      "relation": "related",
+      "description": "对话状态机与引擎通用状态机系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-vfx-in-cutscene",
+      "target_domain": "vfx",
+      "target_id": "vfx-niagara-overview",
+      "relation": "related",
+      "description": "过场特效与Niagara粒子系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-cw-motivation-system",
+      "target_domain": "psychology",
+      "target_id": "motivation-behavioral",
+      "relation": "related",
+      "description": "角色动机系统与行为动机理论"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-bn-choice-consequence",
+      "target_domain": "psychology",
+      "target_id": "decision-making",
+      "relation": "related",
+      "description": "选择与后果系统与心理学决策理论"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-nt-version-control-narrative",
+      "target_domain": "software-engineering",
+      "target_id": "se-git-basics",
+      "relation": "related",
+      "description": "叙事内容版本控制与Git版本管理"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-wb-culture-creation",
+      "target_domain": "concept-design",
+      "target_id": "cd-visdev-intro",
+      "relation": "related",
+      "description": "文化创造与视觉开发概述"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-es-visual-narrative",
+      "target_domain": "concept-design",
+      "target_id": "cd-env-narrative-env",
+      "relation": "related",
+      "description": "视觉叙事与叙事性环境设计"
     }
   ],
   "meta": {

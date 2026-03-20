@@ -1,6 +1,6 @@
 {
   "_doc": "Cross-sphere relation links — connects concepts across different knowledge domains",
-  "_version": "1.2",
+  "_version": "1.3",
   "_created": "2026-03-19",
   "links": [
     {
@@ -2002,6 +2002,1534 @@
       "target_id": "cg-cube-mapping",
       "relation": "requires",
       "description": "水面渲染需要立方体贴图技术(反射/折射)"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-tex-pbr-workflow",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-pbr-intro",
+      "strength": 0.9,
+      "description": "PBR纹理工作流直接应用PBR材质的物理原理",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-tex-normal-map",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-normal-mapping",
+      "strength": 0.9,
+      "description": "法线贴图制作应用切线空间法线映射原理",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-bake-normal",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-texture-baking",
+      "strength": 0.8,
+      "description": "法线烘焙应用纹理烘焙的核心技术",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-uv-intro",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-tex-intro",
+      "strength": 0.8,
+      "description": "UV展开概念需要理解纹理映射原理",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-env-optimization",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-optim-intro",
+      "strength": 0.7,
+      "description": "环境优化应用渲染优化的核心方法论",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-subdivision-surface",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-subdivision",
+      "strength": 0.8,
+      "description": "细分曲面修改器直接使用Catmull-Clark细分算法",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-prop-lod-creation",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-lod",
+      "strength": 0.8,
+      "description": "道具LOD制作应用LOD系统原理",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-mesh-topology",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-mesh-representation",
+      "strength": 0.7,
+      "description": "网格拓扑概念与图形学网格表示理论相关",
+      "relation": "related"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-metallic-workflow",
+      "target_domain": "3d-art",
+      "target_id": "3da-tex-metallic",
+      "strength": 0.8,
+      "description": "金属度工作流理论指导金属度贴图的制作",
+      "relation": "teaches"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-virtual-texture",
+      "target_domain": "3d-art",
+      "target_id": "3da-uv-udim",
+      "strength": 0.7,
+      "description": "虚拟纹理技术与UDIM多Tile UV布局相关",
+      "relation": "related"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-nanite",
+      "target_domain": "3d-art",
+      "target_id": "3da-retopo-poly-count",
+      "strength": 0.7,
+      "description": "Nanite虚拟几何体改变了传统面数预算规则",
+      "relation": "impacts"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-subsurface",
+      "target_domain": "3d-art",
+      "target_id": "3da-bake-thickness",
+      "strength": 0.7,
+      "description": "次表面散射原理指导厚度贴图的烘焙",
+      "relation": "teaches"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-instancing",
+      "target_domain": "3d-art",
+      "target_id": "3da-env-modular",
+      "strength": 0.7,
+      "description": "实例化渲染使模块化环境美术的批量渲染高效可行",
+      "relation": "enables"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-pipe-fbx-export",
+      "target_domain": "game-engine",
+      "target_id": "uasset-format",
+      "strength": 0.8,
+      "description": "FBX导出设置直接影响引擎的资产导入质量",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-rig-ue-mannequin",
+      "target_domain": "game-engine",
+      "target_id": "animation-blueprint",
+      "strength": 0.7,
+      "description": "UE骨骼系统是动画蓝图系统的基础",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-pipe-engine-import",
+      "target_domain": "game-engine",
+      "target_id": "resource-mgmt-intro",
+      "strength": 0.7,
+      "description": "引擎导入设置与引擎资源管理系统紧密相关",
+      "relation": "related"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-env-optimization",
+      "target_domain": "game-engine",
+      "target_id": "profiling-intro",
+      "strength": 0.7,
+      "description": "环境优化需要引擎性能分析工具支持",
+      "relation": "related"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-prop-collision",
+      "target_domain": "game-engine",
+      "target_id": "collision-shapes",
+      "strength": 0.8,
+      "description": "碰撞体制作直接服务于引擎碰撞检测系统",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "ue5-nanite",
+      "target_domain": "3d-art",
+      "target_id": "3da-retopo-poly-count",
+      "strength": 0.7,
+      "description": "Nanite系统改变了3D美术的面数预算标准",
+      "relation": "impacts"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "pbr-material",
+      "target_domain": "3d-art",
+      "target_id": "3da-prop-material-instance",
+      "strength": 0.7,
+      "description": "引擎材质编辑器为材质实例化提供工具",
+      "relation": "enables"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-env-modular",
+      "target_domain": "level-design",
+      "target_id": "modular-kit",
+      "strength": 0.8,
+      "description": "模块化建模为模块化关卡设计提供资产基础",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-blockout",
+      "target_domain": "level-design",
+      "target_id": "blockout-intro",
+      "strength": 0.8,
+      "description": "白盒建模与关卡灰盒搭建是同一流程的两个视角",
+      "relation": "related"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-env-composition",
+      "target_domain": "level-design",
+      "target_id": "spatial-hierarchy",
+      "strength": 0.7,
+      "description": "场景构图与关卡视觉层级设计密切相关",
+      "relation": "related"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-prop-interactable",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "strength": 0.6,
+      "description": "可交互道具设计需要理解游戏反馈系统原则",
+      "relation": "related"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-turnaround",
+      "target_domain": "3d-art",
+      "target_id": "3da-org-body-proportion",
+      "relation": "applies",
+      "description": "角色三视图为3D建模提供精确的比例参考"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-pipeline",
+      "target_domain": "3d-art",
+      "target_id": "3da-org-game-ready-char",
+      "relation": "prerequisite",
+      "description": "角色概念设计交付后进入3D角色制作管线"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-establishing-shot",
+      "target_domain": "3d-art",
+      "target_id": "3da-env-intro",
+      "relation": "applies",
+      "description": "环境概念图为3D环境美术提供设计蓝图"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-prop-orthographic",
+      "target_domain": "3d-art",
+      "target_id": "3da-blockout",
+      "relation": "applies",
+      "description": "道具正交图直接指导3D白盒建模阶段"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-prop-material-callout",
+      "target_domain": "3d-art",
+      "target_id": "3da-tex-pbr-workflow",
+      "relation": "applies",
+      "description": "材质标注指导3D纹理贴图制作"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-style-realism-spectrum",
+      "target_domain": "3d-art",
+      "target_id": "3da-org-stylized-char",
+      "relation": "applies",
+      "description": "写实度光谱决定3D角色的风格化程度"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-color-harmony",
+      "target_domain": "3d-art",
+      "target_id": "3da-tex-color-theory",
+      "relation": "same_concept",
+      "description": "色彩和谐理论在2D概念和3D纹理中同样适用"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-modular-thinking",
+      "target_domain": "3d-art",
+      "target_id": "3da-env-modular",
+      "relation": "applies",
+      "description": "概念阶段的模块化思维直接影响3D模块化建模策略"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-prop-weapon-design",
+      "target_domain": "3d-art",
+      "target_id": "3da-prop-hero-asset",
+      "relation": "prerequisite",
+      "description": "武器概念设计是3D Hero资产制作的前置"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-visdev-look-dev",
+      "target_domain": "3d-art",
+      "target_id": "3da-tex-substance-painter",
+      "relation": "applies",
+      "description": "Look Dev阶段确定的材质方向指导Substance纹理制作"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-archetype",
+      "target_domain": "game-design",
+      "target_id": "player-personas",
+      "relation": "applies",
+      "description": "角色原型设计服务于游戏设计中的玩家角色定位"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-shape-language",
+      "target_domain": "game-design",
+      "target_id": "visual-feedback",
+      "relation": "applies",
+      "description": "形状语言帮助游戏玩家直观辨识角色阵营与能力"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-prop-color-coding",
+      "target_domain": "game-design",
+      "target_id": "loot-table",
+      "relation": "applies",
+      "description": "道具色彩编码与游戏设计中的品质分级系统对应"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-atmosphere-mood",
+      "target_domain": "game-design",
+      "target_id": "emotion-design",
+      "relation": "applies",
+      "description": "环境氛围营造直接支撑游戏情感化设计"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-visdev-color-script",
+      "target_domain": "game-design",
+      "target_id": "pacing-design",
+      "relation": "applies",
+      "description": "色彩脚本与游戏节奏/流程设计相互呼应"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-style-art-direction",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "applies",
+      "description": "美术指导方向是游戏设计文档的重要组成部分"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-readability",
+      "target_domain": "game-design",
+      "target_id": "accessibility-intro",
+      "relation": "applies",
+      "description": "视觉可读性与游戏可达性设计紧密相关"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-game-constraints",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "applies",
+      "description": "游戏角色设计约束源自游戏系统限制"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-birds-eye-map",
+      "target_domain": "level-design",
+      "target_id": "top-down-map",
+      "relation": "applies",
+      "description": "鸟瞰地图概念图为关卡俯视布局提供设计参考"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-landmark",
+      "target_domain": "level-design",
+      "target_id": "landmark-design",
+      "relation": "applies",
+      "description": "概念设计中的地标与关卡设计中的导航地标功能一致"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-scale-storytelling",
+      "target_domain": "level-design",
+      "target_id": "metrics-intro",
+      "relation": "applies",
+      "description": "环境尺度叙事与关卡度量系统相互约束"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-narrative-env",
+      "target_domain": "level-design",
+      "target_id": "env-storytelling",
+      "relation": "same_concept",
+      "description": "叙事性环境在概念设计和关卡设计中是同一理念"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-depth-layers",
+      "target_domain": "level-design",
+      "target_id": "sightline-test",
+      "relation": "applies",
+      "description": "构图景深层次与关卡视线设计方法相通"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-cinematic-composition",
+      "target_domain": "level-design",
+      "target_id": "surprise-moment",
+      "relation": "applies",
+      "description": "电影化构图为关卡的电影化时刻提供视觉参考"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-fsm-basics",
+      "target_domain": "game-engine",
+      "target_id": "animation-system-intro",
+      "relation": "applies",
+      "description": "动画状态机在游戏引擎动画系统中的具体实现"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-abp-overview",
+      "target_domain": "game-engine",
+      "target_id": "ue5-actor-component",
+      "relation": "applies",
+      "description": "动画蓝图是UE5引擎架构的核心子系统"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-ragdoll",
+      "target_domain": "game-engine",
+      "target_id": "physics-engine-intro",
+      "relation": "applies",
+      "description": "布娃娃系统依赖引擎物理引擎进行实时模拟"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-root-motion",
+      "target_domain": "game-engine",
+      "target_id": "animation-system-intro",
+      "relation": "applies",
+      "description": "Root Motion需要引擎动画系统与角色控制器协调"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-cloth-sim",
+      "target_domain": "game-engine",
+      "target_id": "physics-engine-intro",
+      "relation": "applies",
+      "description": "布料模拟依赖引擎物理引擎的约束求解器"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-sequencer",
+      "target_domain": "game-engine",
+      "target_id": "editor-ext-intro",
+      "relation": "applies",
+      "description": "动画序列器是引擎编辑器的重要工具组件"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-weight-balance",
+      "target_domain": "concept-design",
+      "target_id": "cd-weight-balance",
+      "relation": "same_concept",
+      "description": "概念设计中的重心平衡原理与动画重量感表现是同一知识在不同维度的应用"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-line-of-action",
+      "target_domain": "concept-design",
+      "target_id": "cd-line-of-action",
+      "relation": "same_concept",
+      "description": "动态线在概念设计速写和动画姿势设计中使用完全相同的原理"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-face-overview",
+      "target_domain": "concept-design",
+      "target_id": "cd-char-expression-sheet",
+      "relation": "applies",
+      "description": "面部动画需要参考概念设计阶段的表情集设计"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-skin-binding",
+      "target_domain": "3d-art",
+      "target_id": "3da-rig-intro",
+      "relation": "same_concept",
+      "description": "蒙皮绑定在动画和3D美术中是同一技术流程"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-weight-painting",
+      "target_domain": "3d-art",
+      "target_id": "3da-rig-intro",
+      "relation": "applies",
+      "description": "权重绘制是3D美术绑定流程中的核心步骤"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-retargeting",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-lod-pipeline",
+      "relation": "applies",
+      "description": "动画重定向是3D资产管线中动画复用的关键环节"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-attack-animation",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "applies",
+      "description": "攻击动画的预备/挥击/恢复时间直接影响战斗设计的手感"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-game-vs-film",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "applies",
+      "description": "游戏动画需要为反馈系统服务——动作可读性/输入响应"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-hit-pause",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "applies",
+      "description": "Hit Pause/帧冻结是战斗设计中增强打击感的核心动画技巧"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-face-wrinkle",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-normal-mapping",
+      "relation": "applies",
+      "description": "皱纹贴图系统依赖法线贴图技术实现面部细节"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-cloth-sim",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-vertex-shader",
+      "relation": "applies",
+      "description": "布料模拟的顶点变形可通过顶点着色器加速"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-fsm-basics",
+      "target_domain": "software-engineering",
+      "target_id": "se-state-pattern-game",
+      "relation": "applies",
+      "description": "有限状态机是软件工程中的经典设计模式在动画系统中的应用"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-data-driven",
+      "target_domain": "software-engineering",
+      "target_id": "se-component-pattern",
+      "relation": "applies",
+      "description": "数据驱动动画是软件工程中数据驱动架构在动画系统中的体现"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-gpu-pipeline",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-raster-pipeline",
+      "relation": "applies",
+      "description": "GPU渲染管线是图形学核心概念在技术美术中的应用"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-hlsl-basics",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-vertex-shader",
+      "relation": "applies",
+      "description": "HLSL是图形学顶点着色器的实现语言"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-pbr-fundamentals",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-pbr-intro",
+      "relation": "applies",
+      "description": "PBR材质基于图形学PBR理论"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-compute-shader",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-gpu-intro",
+      "relation": "prerequisite",
+      "description": "Compute Shader需要GPU架构知识"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-shader-optimization",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-gpu-pipeline",
+      "relation": "applies",
+      "description": "Shader性能优化需理解GPU硬件管线"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-poly-standard",
+      "target_domain": "3d-art",
+      "target_id": "3da-modeling-intro",
+      "relation": "impacts",
+      "description": "面数标准影响3D建模方式"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-lod-generation",
+      "target_domain": "3d-art",
+      "target_id": "3da-retopo-lod-levels",
+      "relation": "applies",
+      "description": "LOD生成是3D资产优化处理"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-naming-convention",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-naming",
+      "relation": "impacts",
+      "description": "命名规范影响3D资产管线"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-texture-pipeline",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-texture-pipeline",
+      "relation": "applies",
+      "description": "纹理管线影响3D纹理制作"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-ue-material-editor",
+      "target_domain": "game-engine",
+      "target_id": "pbr-material",
+      "relation": "applies",
+      "description": "UE材质编辑器是引擎PBR材质的工作界面"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-ue-editor-utility",
+      "target_domain": "game-engine",
+      "target_id": "blueprint-system",
+      "relation": "applies",
+      "description": "UE编辑器工具基于蓝图系统"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-nanite",
+      "target_domain": "game-engine",
+      "target_id": "ue5-nanite",
+      "relation": "applies",
+      "description": "Nanite是UE5核心渲染技术"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-scalability",
+      "target_domain": "game-engine",
+      "target_id": "render-pipeline-intro",
+      "relation": "applies",
+      "description": "画质可伸缩性通过渲染管线实现"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-ci-art",
+      "target_domain": "software-engineering",
+      "target_id": "se-cicd-intro",
+      "relation": "applies",
+      "description": "美术CI/CD基于软件工程持续集成"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-vcs-workflow",
+      "target_domain": "software-engineering",
+      "target_id": "se-git-basics",
+      "relation": "applies",
+      "description": "版本控制工作流基于Git"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-tool-testing",
+      "target_domain": "software-engineering",
+      "target_id": "se-test-pyramid",
+      "relation": "applies",
+      "description": "工具测试基于测试金字塔"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-perf-regression",
+      "target_domain": "software-engineering",
+      "target_id": "se-ci-testing",
+      "relation": "applies",
+      "description": "性能回归检测基于CI测试策略"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-lod-animation",
+      "target_domain": "animation",
+      "target_id": "anim-distance-lod",
+      "relation": "applies",
+      "description": "LOD动画简化影响动画距离LOD"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-anim-memory",
+      "target_domain": "animation",
+      "target_id": "anim-animation-clip",
+      "relation": "impacts",
+      "description": "动画内存预算影响动画片段管理"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-animation-standard",
+      "target_domain": "animation",
+      "target_id": "anim-humanoid-rig",
+      "relation": "impacts",
+      "description": "动画标准规定人形骨骼规范"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-pcg-overview",
+      "target_domain": "game-design",
+      "target_id": "procedural-gen",
+      "relation": "applies",
+      "description": "程序化生成是游戏设计技术实现"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-perf-overview",
+      "target_domain": "game-design",
+      "target_id": "systems-thinking",
+      "relation": "impacts",
+      "description": "性能约束影响游戏系统思维"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-pcg-terrain",
+      "target_domain": "level-design",
+      "target_id": "terrain-intro",
+      "relation": "applies",
+      "description": "程序化地形是关卡地形设计的技术实现"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-pcg-world-partition",
+      "target_domain": "level-design",
+      "target_id": "world-partition",
+      "relation": "applies",
+      "description": "世界分区与PCG支撑开放世界"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-skin-material",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-rendering-level",
+      "relation": "applies",
+      "description": "皮肤材质实现概念设计渲染精度"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-bloom",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-pp-intro",
+      "relation": "applies",
+      "description": "Bloom泛光是后处理管线的核心效果之一"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-ao",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-ambient-occlusion",
+      "relation": "same_concept",
+      "description": "屏幕空间环境光遮蔽在特效和图形学中是同一技术"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-ssr",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-ssr",
+      "relation": "same_concept",
+      "description": "屏幕空间反射在特效和图形学中是同一技术"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-shader-fresnel",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-fresnel",
+      "relation": "applies",
+      "description": "菲涅尔效果在特效中广泛用于护盾/全息/轮廓发光"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-opt-gpu-profiling",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-gpu-profiling",
+      "relation": "same_concept",
+      "description": "GPU性能分析工具在特效和图形学中通用"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-niagara-overview",
+      "target_domain": "game-engine",
+      "target_id": "ue5-actor-component",
+      "relation": "applies",
+      "description": "Niagara系统是UE5引擎生态的核心VFX组件"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-niagara-gpu",
+      "target_domain": "game-engine",
+      "target_id": "gpu-driven-rendering",
+      "relation": "related",
+      "description": "Niagara GPU模拟与引擎GPU驱动渲染共享GPU计算管线"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-volume",
+      "target_domain": "game-engine",
+      "target_id": "post-processing",
+      "relation": "same_concept",
+      "description": "后处理体积在VFX和引擎中是同一概念"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-destruct-chaos",
+      "target_domain": "game-engine",
+      "target_id": "physics-engine-intro",
+      "relation": "applies",
+      "description": "Chaos破碎系统依赖UE5物理引擎子系统"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-shader-dissolve",
+      "target_domain": "technical-art",
+      "target_id": "ta-shader-overview",
+      "relation": "applies",
+      "description": "溶解Shader是技术美术Shader开发的经典案例"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-opt-overdraw",
+      "target_domain": "technical-art",
+      "target_id": "ta-shader-optimization",
+      "relation": "applies",
+      "description": "Overdraw控制是技术美术Shader优化的重要方面"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-fb-vat",
+      "target_domain": "technical-art",
+      "target_id": "ta-houdini-engine",
+      "relation": "applies",
+      "description": "VAT顶点动画纹理是技术美术Houdini集成的典型产出"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-destruct-prefracture",
+      "target_domain": "3d-art",
+      "target_id": "3da-modeling-intro",
+      "relation": "related",
+      "description": "预碎裂工作流需要3D建模基础知识"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-fb-atlas",
+      "target_domain": "3d-art",
+      "target_id": "3da-uv-intro",
+      "relation": "related",
+      "description": "序列帧图集排列与UV展开共享纹理空间管理概念"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-fb-playback",
+      "target_domain": "animation",
+      "target_id": "anim-keyframe-basics",
+      "relation": "related",
+      "description": "序列帧播放控制与关键帧动画的帧率/时间概念相通"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-niagara-blueprint",
+      "target_domain": "animation",
+      "target_id": "anim-abp-overview",
+      "relation": "related",
+      "description": "Niagara蓝图集成与动画蓝图系统在UE5中协同工作"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-destruct-overview",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "applies",
+      "description": "破碎系统为战斗设计提供视觉冲击力和打击反馈"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-color-grading",
+      "target_domain": "game-design",
+      "target_id": "emotion-design",
+      "relation": "applies",
+      "description": "颜色分级是游戏情感设计的重要视觉手段"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-opt-pooling",
+      "target_domain": "software-engineering",
+      "target_id": "se-object-pool",
+      "relation": "same_concept",
+      "description": "特效对象池与软件工程中的对象池模式是同一技术"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-fog",
+      "target_domain": "level-design",
+      "target_id": "lighting-intro",
+      "relation": "applies",
+      "description": "体积雾是关卡光照设计中营造氛围的重要工具"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-shader-hologram",
+      "target_domain": "concept-design",
+      "target_id": "cd-visdev-look-dev",
+      "relation": "applies",
+      "description": "全息效果Shader实现需要参考概念设计的视觉开发"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-fluid-navier-stokes",
+      "target_domain": "mathematics",
+      "target_id": "differential-equations-intro",
+      "relation": "requires",
+      "description": "Navier-Stokes方程是偏微分方程在流体力学中的核心应用"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-particle-turbulence",
+      "target_domain": "mathematics",
+      "target_id": "vectors-intro",
+      "relation": "requires",
+      "description": "粒子湍流场需要理解向量场的数学基础"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-particle-gravity",
+      "target_domain": "physics",
+      "target_id": "kinematics-1d",
+      "relation": "applies",
+      "description": "粒子重力模拟直接应用运动学的加速度和抛物线轨迹"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-adaptive-overview",
+      "target_domain": "game-design",
+      "target_id": "core-loop-intro",
+      "relation": "related_to",
+      "description": "自适应音乐系统配合游戏核心循环"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-player-agency",
+      "target_domain": "game-design",
+      "target_id": "player-motivation",
+      "relation": "related_to",
+      "description": "玩家行为驱动音乐变化与玩家动机"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-combat-music-system",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "related_to",
+      "description": "战斗音乐系统与战斗设计配合"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-emotional-mapping",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "related_to",
+      "description": "音乐情感映射作为游戏反馈系统"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-wwise-ue-integration",
+      "target_domain": "game-engine",
+      "target_id": "audio-system-intro",
+      "relation": "related_to",
+      "description": "Wwise-UE集成与引擎音频系统"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-fmod-ue-integration",
+      "target_domain": "game-engine",
+      "target_id": "audio-middleware",
+      "relation": "related_to",
+      "description": "FMOD集成与引擎音频中间件"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-music-state-machine",
+      "target_domain": "game-engine",
+      "target_id": "blueprint-system",
+      "relation": "related_to",
+      "description": "音乐状态机通过蓝图系统实现"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-music-memory",
+      "target_domain": "game-engine",
+      "target_id": "resource-mgmt-intro",
+      "relation": "related_to",
+      "description": "音乐内存管理与引擎资源管理"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-stinger-system",
+      "target_domain": "vfx",
+      "target_id": "vfx-niagara-overview",
+      "relation": "related_to",
+      "description": "音乐Stinger触发与粒子特效联动"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-dynamic-mixing",
+      "target_domain": "vfx",
+      "target_id": "vfx-pp-overview",
+      "relation": "related_to",
+      "description": "动态混音与后处理特效协调"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-beat-sync",
+      "target_domain": "animation",
+      "target_id": "anim-face-overview",
+      "relation": "related_to",
+      "description": "节拍同步与面部动画配合"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-cutscene-scoring",
+      "target_domain": "animation",
+      "target_id": "anim-mocap-face",
+      "relation": "related_to",
+      "description": "过场配乐与动作捕捉面部表演同步"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-region-music",
+      "target_domain": "level-design",
+      "target_id": "spatial-storytelling",
+      "relation": "related_to",
+      "description": "区域音乐设计与空间叙事"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-open-world-music",
+      "target_domain": "level-design",
+      "target_id": "terrain-intro",
+      "relation": "related_to",
+      "description": "开放世界配乐与地形设计"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-exploration-music",
+      "target_domain": "level-design",
+      "target_id": "pacing-intro",
+      "relation": "related_to",
+      "description": "探索音乐系统与关卡节奏控制"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-music-state-machine",
+      "target_domain": "software-engineering",
+      "target_id": "se-state-pattern-game",
+      "relation": "related_to",
+      "description": "音乐状态机与游戏中的状态模式"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-procedural-music",
+      "target_domain": "software-engineering",
+      "target_id": "se-dp-state",
+      "relation": "related_to",
+      "description": "程序化音乐生成与状态设计模式"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-generative-music",
+      "target_domain": "technical-art",
+      "target_id": "ta-pcg-overview",
+      "relation": "related_to",
+      "description": "生成式音乐与程序化内容生成"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-wwise-best-practices",
+      "target_domain": "technical-art",
+      "target_id": "ta-pipeline-overview",
+      "relation": "related_to",
+      "description": "音频管线最佳实践与技术美术管线"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-emotional-arc",
+      "target_domain": "psychology",
+      "target_id": "emotional-intelligence",
+      "relation": "related_to",
+      "description": "音乐情感弧线设计与情绪智力"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-tension-resolution",
+      "target_domain": "psychology",
+      "target_id": "emotion-neuroscience",
+      "relation": "related_to",
+      "description": "音乐张力解决与情绪神经科学"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-world-building-music",
+      "target_domain": "concept-design",
+      "target_id": "cd-visdev-world-bible",
+      "relation": "related_to",
+      "description": "音乐世界构建与世界观圣经"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-cultural-motif",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-intro",
+      "relation": "related_to",
+      "description": "文化音乐动机与视觉风格定义"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-design-overview",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "related",
+      "description": "HUD设计是游戏反馈系统的核心视觉通道"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-usability-overview",
+      "target_domain": "game-design",
+      "target_id": "player-motivation",
+      "relation": "applies_to",
+      "description": "可用性测试方法应用于玩家心理研究"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-menu-inventory",
+      "target_domain": "game-design",
+      "target_id": "game-economy-intro",
+      "relation": "related",
+      "description": "背包/商店UI是经济系统的前端展现"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-umg",
+      "target_domain": "game-engine",
+      "target_id": "editor-ext-intro",
+      "relation": "related",
+      "description": "UMG是UE5编辑器扩展的核心UI框架"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-performance",
+      "target_domain": "game-engine",
+      "target_id": "profiling-intro",
+      "relation": "applies_to",
+      "description": "UI性能优化依赖引擎性能剖析工具"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-shader-ui",
+      "target_domain": "technical-art",
+      "target_id": "ta-hlsl-basics",
+      "relation": "requires",
+      "description": "UI Shader效果基于HLSL/GLSL着色器编程"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-motion-performance",
+      "target_domain": "technical-art",
+      "target_id": "ta-perf-overview",
+      "relation": "related",
+      "description": "动效性能优化与性能优化概述密切相关"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-motion-12-principles",
+      "target_domain": "animation",
+      "target_id": "anim-principles-overview",
+      "relation": "applies_to",
+      "description": "迪士尼12原则在UI动效中的应用"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-motion-easing",
+      "target_domain": "animation",
+      "target_id": "anim-keyframe-basics",
+      "relation": "related",
+      "description": "缓动曲线与关键帧动画基础相关"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-icon-style-guide",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-reference-board",
+      "relation": "related",
+      "description": "图标风格指南参考概念设计的风格参考板"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-color-coding",
+      "target_domain": "concept-design",
+      "target_id": "cd-color-intro",
+      "relation": "requires",
+      "description": "HUD色彩编码需要色彩理论基础"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-motion-particle-ui",
+      "target_domain": "vfx",
+      "target_id": "vfx-niagara-overview",
+      "relation": "related",
+      "description": "UI粒子效果可使用Niagara粒子系统实现"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-feedback-screen-shake",
+      "target_domain": "vfx",
+      "target_id": "vfx-pp-volume",
+      "relation": "related",
+      "description": "屏幕震动反馈是后处理特效的一种应用"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-objective-marker",
+      "target_domain": "level-design",
+      "target_id": "visual-guidance",
+      "relation": "applies_to",
+      "description": "任务标记和导航UI辅助关卡视觉引导设计"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-spatial",
+      "target_domain": "level-design",
+      "target_id": "spatial-storytelling",
+      "relation": "related",
+      "description": "空间HUD元素参与环境空间叙事"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-data-binding",
+      "target_domain": "software-engineering",
+      "target_id": "se-state-pattern-game",
+      "relation": "requires",
+      "description": "UI数据绑定基于状态模式等设计模式"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-event-system",
+      "target_domain": "software-engineering",
+      "target_id": "se-command-pattern-game",
+      "relation": "related",
+      "description": "UI事件系统实现了命令模式"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-render-pipeline",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-raster-intro",
+      "relation": "requires",
+      "description": "UI渲染管线基于光栅化渲染基础"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-atlas-batching",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-optim-intro",
+      "relation": "related",
+      "description": "图集合批与渲染优化策略相关"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-feedback-audio-cue",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-composition-overview",
+      "relation": "related",
+      "description": "UI音频反馈是游戏音乐/音效系统的组成部分"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-spatial",
+      "target_domain": "3d-art",
+      "target_id": "3da-env-composition",
+      "relation": "related",
+      "description": "3D空间HUD与环境构图紧密相关"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-usability-heuristic",
+      "target_domain": "product-design",
+      "target_id": "usability-testing",
+      "relation": "same_concept",
+      "description": "游戏可用性评估源自产品设计的可用性测试方法论"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-usability-persona",
+      "target_domain": "product-design",
+      "target_id": "user-research-overview",
+      "relation": "related",
+      "description": "用户画像是用户研究的核心工具"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-usability-cognitive-load",
+      "target_domain": "psychology",
+      "target_id": "cognitive-load",
+      "relation": "same_concept",
+      "description": "游戏UI认知负荷评估源自心理学认知负荷理论"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-wb-setting-bible",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "related",
+      "description": "世界设定圣经是游戏设计文档的核心组成部分"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-qd-main-quest",
+      "target_domain": "game-design",
+      "target_id": "core-loop-intro",
+      "relation": "related",
+      "description": "主线任务结构与游戏核心循环的关系"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-qd-quest-reward",
+      "target_domain": "game-design",
+      "target_id": "reward-loop",
+      "relation": "related",
+      "description": "任务奖励设计与游戏奖励循环"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-cw-motivation-system",
+      "target_domain": "game-design",
+      "target_id": "emotion-design",
+      "relation": "related",
+      "description": "角色动机系统与游戏情感设计"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-es-progression-change",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "related",
+      "description": "场景变化叙事与游戏反馈系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-es-level-as-story",
+      "target_domain": "level-design",
+      "target_id": "spatial-storytelling",
+      "relation": "related",
+      "description": "关卡即故事与空间叙事原理"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-es-lighting-narrative",
+      "target_domain": "level-design",
+      "target_id": "lighting-intro",
+      "relation": "related",
+      "description": "光照叙事与关卡光照设计"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-storyboard",
+      "target_domain": "level-design",
+      "target_id": "blockout-intro",
+      "relation": "related",
+      "description": "分镜设计与关卡灰盒空间规划"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ds-dialogue-writing",
+      "target_domain": "writing",
+      "target_id": "dialogue-writing",
+      "relation": "related",
+      "description": "游戏对话写作与通用对话写作技巧"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-cw-character-arc",
+      "target_domain": "writing",
+      "target_id": "character-creation",
+      "relation": "related",
+      "description": "游戏角色弧光与写作中的人物塑造"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-wb-mythology",
+      "target_domain": "writing",
+      "target_id": "world-building",
+      "relation": "related",
+      "description": "游戏神话体系与写作中的世界构建"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-qd-quest-journal",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-menu-quest-log",
+      "relation": "related",
+      "description": "任务日志设计与UI任务日志界面"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ds-dialogue-wheel",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-menu-radial",
+      "relation": "related",
+      "description": "对话轮盘与环形菜单的交互设计"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-audio-sync",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-adaptive-overview",
+      "relation": "related",
+      "description": "过场音画同步与自适应音乐系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-wb-tone-mood",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-character-theme",
+      "relation": "related",
+      "description": "世界基调与角色音乐主题设计"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-motion-capture-story",
+      "target_domain": "animation",
+      "target_id": "anim-mocap-overview",
+      "relation": "related",
+      "description": "过场动捕叙事与动画的动作捕捉"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ds-lip-sync",
+      "target_domain": "animation",
+      "target_id": "anim-face-overview",
+      "relation": "related",
+      "description": "对话口型同步与面部动画系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-sequencer-tools",
+      "target_domain": "game-engine",
+      "target_id": "sequencer-extension",
+      "relation": "related",
+      "description": "过场序列器工具与引擎Sequencer扩展"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ds-dialogue-state-machine",
+      "target_domain": "game-engine",
+      "target_id": "state-machine-engine",
+      "relation": "related",
+      "description": "对话状态机与引擎通用状态机系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-ci-vfx-in-cutscene",
+      "target_domain": "vfx",
+      "target_id": "vfx-niagara-overview",
+      "relation": "related",
+      "description": "过场特效与Niagara粒子系统"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-cw-motivation-system",
+      "target_domain": "psychology",
+      "target_id": "motivation-behavioral",
+      "relation": "related",
+      "description": "角色动机系统与行为动机理论"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-bn-choice-consequence",
+      "target_domain": "psychology",
+      "target_id": "decision-making",
+      "relation": "related",
+      "description": "选择与后果系统与心理学决策理论"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-nt-version-control-narrative",
+      "target_domain": "software-engineering",
+      "target_id": "se-git-basics",
+      "relation": "related",
+      "description": "叙事内容版本控制与Git版本管理"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-wb-culture-creation",
+      "target_domain": "concept-design",
+      "target_id": "cd-visdev-intro",
+      "relation": "related",
+      "description": "文化创造与视觉开发概述"
+    },
+    {
+      "source_domain": "narrative-design",
+      "source_id": "nd-es-visual-narrative",
+      "target_domain": "concept-design",
+      "target_id": "cd-env-narrative-env",
+      "relation": "related",
+      "description": "视觉叙事与叙事性环境设计"
     }
   ],
   "meta": {
@@ -2038,5 +3566,12 @@
       "software-engineering_level-design": 4
     }
   },
-  "total": 225
+  "total": 298,
+  "_stats": {
+    "by_domain_pair": {
+      "concept-design_3d-art": 10,
+      "concept-design_game-design": 8,
+      "concept-design_level-design": 6
+    }
+  }
 }

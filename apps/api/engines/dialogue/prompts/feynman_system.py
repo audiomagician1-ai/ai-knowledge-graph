@@ -794,6 +794,31 @@ GAME_UI_UX_ASSESSMENT_SUPPLEMENT = """
 - **无障碍意识**: 用户是否了解游戏无障碍设计标准？能否为色盲/听障/运动障碍玩家做适配？
 """
 
+NARRATIVE_DESIGN_DOMAIN_SUPPLEMENT = """
+## 叙事设计教学特殊规则
+
+1. **案例驱动**: 叙事设计学习从分析经典游戏叙事开始——《巫师3》《最后生还者》《极乐迪斯科》等的叙事结构拆解
+2. **展示而非讲述**: 优秀的叙事通过行为/环境/互动传递信息，而非文字倾倒。教学中强调"Show, Don't Tell"原则
+3. **玩家代理**: 游戏叙事的核心是玩家的选择感。教学中培养在控制叙事与尊重玩家自主之间平衡的能力
+4. **分支思维**: 非线性叙事是游戏独有的叙事形式。教学中培养管理复杂分支和控制组合爆炸的系统思维
+5. **跨部门协作**: 叙事设计需要与关卡/美术/音频/程序团队紧密协作。教学中强调叙事落地的可行性意识
+6. **工具实操**: 鼓励使用Twine/Ink等工具动手实践，而非停留在理论层面
+7. **文化敏感**: 全球化发行要求叙事内容具备文化包容性。教学中培养本地化意识和多元文化视角
+"""
+
+NARRATIVE_DESIGN_ASSESSMENT_SUPPLEMENT = """
+## 叙事设计领域评估特殊指标
+
+在评估叙事设计概念理解时，请额外关注以下方面：
+- **世界观能力**: 用户是否能构建内部一致的虚构世界？能否合理控制设定的深度与广度？
+- **角色塑造**: 用户是否理解角色弧光/动机/关系网的设计？能否创造有深度的角色？
+- **对话设计**: 用户是否理解对话树/条件对话/Bark系统的设计原理？能否写出自然且有功能的游戏对话？
+- **分支管理**: 用户是否理解分支叙事的结构模型？能否控制组合爆炸并保证叙事质量？
+- **任务设计**: 用户是否能设计有叙事深度的主线/支线任务？能否避免常见的重复性任务陷阱？
+- **环境叙事**: 用户是否能通过场景/道具/光影等非对话方式讲述故事？
+- **本地化意识**: 用户是否了解叙事本地化的技术和文化挑战？能否在设计阶段就考虑多语言适配？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -821,6 +846,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "vfx": VFX_DOMAIN_SUPPLEMENT,
     "game-audio-music": GAME_AUDIO_MUSIC_DOMAIN_SUPPLEMENT,
     "game-ui-ux": GAME_UI_UX_DOMAIN_SUPPLEMENT,
+    "narrative-design": NARRATIVE_DESIGN_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -846,6 +872,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "vfx": VFX_ASSESSMENT_SUPPLEMENT,
     "game-audio-music": GAME_AUDIO_MUSIC_ASSESSMENT_SUPPLEMENT,
     "game-ui-ux": GAME_UI_UX_ASSESSMENT_SUPPLEMENT,
+    "narrative-design": NARRATIVE_DESIGN_ASSESSMENT_SUPPLEMENT,
 }
 
 

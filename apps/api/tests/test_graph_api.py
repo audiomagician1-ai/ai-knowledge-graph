@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2615,4 +2615,82 @@ async def test_game_ui_ux_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "guiux-hud-design-overview"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Narrative Design Knowledge Sphere Tests (Phase 30) ──────────────
+
+@pytest.mark.asyncio
+async def test_narrative_design_data():
+    """Narrative Design seed graph: 180 concepts, 157 edges, 9 subdomains, 25 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=narrative-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 180, f"Expected 180 concepts, got {len(nodes)}"
+        assert len(edges) == 157, f"Expected 157 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 9, f"Expected 9 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 25, f"Expected 25 milestones, got {len(milestones)}"
+
+@pytest.mark.asyncio
+async def test_narrative_design_rag():
+    """Narrative Design RAG stats should reflect 180 documents across 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=narrative-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 180
+
+@pytest.mark.asyncio
+async def test_narrative_design_concept_detail():
+    """Should retrieve a specific Narrative Design concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/nd-wb-setting-bible?domain=narrative-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "nd-wb-setting-bible"
+        assert data["domain_id"] == "narrative-design"
+
+@pytest.mark.asyncio
+async def test_narrative_design_subdomains():
+    """Narrative Design should have 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=narrative-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 9
+        names = [s["name"] for s in data]
+        assert "世界观构建" in names
+        assert "角色塑造" in names
+        assert "叙事工具" in names
+
+@pytest.mark.asyncio
+async def test_narrative_design_cross_links():
+    """Cross-sphere links for narrative-design should exist (↔ game-design/level-design/etc)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=narrative-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] >= 20
+
+@pytest.mark.asyncio
+async def test_narrative_design_supplements():
+    """Narrative Design should have domain & assessment supplements."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "narrative-design" in DOMAIN_SUPPLEMENTS, "narrative-design missing from DOMAIN_SUPPLEMENTS"
+    assert "narrative-design" in ASSESSMENT_SUPPLEMENTS, "narrative-design missing from ASSESSMENT_SUPPLEMENTS"
+    assert "叙事" in DOMAIN_SUPPLEMENTS["narrative-design"], "Narrative Design supplement should mention 叙事"
+
+@pytest.mark.asyncio
+async def test_narrative_design_neighbors():
+    """Narrative Design concept should have neighbors."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/nd-wb-setting-bible/neighbors?domain=narrative-design&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "nd-wb-setting-bible"
         assert len(data["nodes"]) >= 2
