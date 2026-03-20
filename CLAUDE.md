@@ -1287,9 +1287,18 @@ data/seed/         — 种子图谱数据
     - VERIFY: 811 tests (602 BE + 209 FE) 全通过, tsc 0 errors, build 6.69s
     - STATUS: Issue #14 间距修复覆盖OAuth显示/隐藏两种场景
 
+ - ✅ **Phase 18.1-18.3: Galaxy Progress Enhancement (2026-03-20, 596aa57)**:
+    - **FEAT**: HomePage 星系球体显示每域学习进度 (#13):
+      - 球体初始化时调用`peekDomainProgress(domain.id)`读取localStorage学习数据
+      - 球体外围绘制薄进度弧线(mastered=实色域色, learning=浅色), 从12点钟方向按比例填充
+      - Stats文字优先显示"N/M 已掌握"(有mastered时), "N 学习中"(仅learning时), 无进度时退化为"N 知识点"
+      - 弧线半径 = orb半径 × 1.12, 背景轨道线 + mastered实线 + learning虚线三层
+    - VERIFY: 811 tests (602 BE + 209 FE) 全通过, tsc 0 errors, build 3.60s
+    - STATUS: Phase 18 步骤 18.1(进度计算) + 18.2(文字显示) + 18.3(弧线可视化) 完成; 18.4(测试+文档)待完成
+
 ## Last Review
 
-**Date**: 2026-03-20 | **Scope**: 全栈 (Round 80: recommend域感知 + LLM null安全 + Issue #14修复验证) | **Result**: issues-filed (#14 fixed)
+**Date**: 2026-03-20 | **Scope**: 全栈 (Round 80: recommend域感知 + LLM null安全 + Issue #14修复 + Phase 18进度可视化) | **Result**: issues-filed (#14 fixed, #13 in-progress)
 
  - ✅ **第八十轮推荐端点域感知修复+LLM响应null安全加固 (2026-03-20, cf96177)**:
     - **FIX[Medium]**: BE `/learning/recommend` 端点始终使用默认`ai-engineering`种子数据, 无视用户当前查看的域 — 用户在数学/生物等非AI域点击"推荐"按钮, 返回的却是AI工程概念
