@@ -186,7 +186,7 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
   /* ─── IDLE VIEW: per-node progress + history + start button ─── */
   if (view === 'idle') {
     return (
-      <div className="flex flex-col h-full" style={{ backgroundColor: '#eceae6' }}>
+      <div className="flex flex-col h-full" style={{ backgroundColor: 'var(--color-surface-2)' }}>
         <div className="flex-1 overflow-y-auto" style={{ padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           {/* Per-node mastery card */}
           <div
@@ -352,7 +352,7 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
       </div>
 
       {/* Messages area */}
-      <div className="flex-1 overflow-y-auto" style={{ backgroundColor: '#eceae6' }}>
+      <div className="flex-1 overflow-y-auto" style={{ backgroundColor: 'var(--color-surface-2)' }}>
         <div style={{ padding: '24px 24px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           {/* Loading indicator while LLM prepares opening content */}
           {isInitializing && (

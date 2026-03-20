@@ -33,7 +33,7 @@ else:
 _DB_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH = _DB_DIR / "akg_local.db"
 
-_SCHEMA_VERSION = 1
+_SCHEMA_VERSION = 2
 
 
 def _get_conn() -> sqlite3.Connection:

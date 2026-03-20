@@ -134,7 +134,7 @@ export function LearnPage() {
         </header>
 
         {/* Messages area */}
-        <div className="flex-1 overflow-y-auto" style={{ backgroundColor: '#eceae6' }}>
+        <div className="flex-1 overflow-y-auto" style={{ backgroundColor: 'var(--color-surface-2)' }}>
             <div className="max-w-3xl mx-auto" style={{ padding: '32px 28px', display: 'flex', flexDirection: 'column', gap: 24 }}>
 
             {/* Guide card */}
