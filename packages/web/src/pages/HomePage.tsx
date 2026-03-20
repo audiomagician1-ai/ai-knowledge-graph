@@ -3,6 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { useDomainStore } from '@/lib/store/domain';
 import { Loader } from 'lucide-react';
 
+/* ─── Resolved CSS variable cache (canvas can't read CSS vars directly) ─── */
+let _resolvedColors: { surface0: string; textPrimary: string; textTertiary: string } | null = null;
+function getThemeColors(): { surface0: string; textPrimary: string; textTertiary: string } {
+  if (_resolvedColors) return _resolvedColors;
+  if (typeof document === 'undefined') return { surface0: '#f0f0ed', textPrimary: '#1a1a1a', textTertiary: '#888888' };
+  const s = getComputedStyle(document.documentElement);
+  _resolvedColors = {
+    surface0: s.getPropertyValue('--color-surface-0').trim() || '#f0f0ed',
+    textPrimary: s.getPropertyValue('--color-text-primary').trim() || '#1a1a1a',
+    textTertiary: s.getPropertyValue('--color-text-tertiary').trim() || '#888888',
+  };
+  return _resolvedColors;
+}
+
 /* ─── Types ─── */
 interface Orb {
   x: number; y: number; z: number;
@@ -173,7 +187,8 @@ function drawOrb(
   const labelY = sy + finalR + 14 * scale;
   ctx.font = `600 ${Math.round(13 * scale)}px "Noto Serif SC", "Source Serif 4", Georgia, serif`;
   ctx.textAlign = 'center';
-  ctx.fillStyle = orb.hovered ? '#1a1a1a' : 'rgba(26,26,26,0.75)';
+  const tc = getThemeColors();
+  ctx.fillStyle = orb.hovered ? tc.textPrimary : 'rgba(26,26,26,0.75)';
   ctx.fillText(orb.domain.name, sx, labelY);
 
   // Stats line
@@ -238,8 +253,19 @@ export function HomePage() {
   const orbsRef = useRef<Orb[]>([]);
   const mouseRef = useRef<{ x: number; y: number }>({ x: -9999, y: -9999 });
   const [transitioning, setTransitioning] = useState<{ domainId: string; cx: number; cy: number; color: string } | null>(null);
+  const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mountedRef = useRef(true);
 
   useEffect(() => { fetchDomains(); }, [fetchDomains]);
+
+  // Cleanup on unmount — cancel pending transition timeout
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
+    };
+  }, []);
 
   // Init background nodes
   const initBgNodes = useCallback((w: number, h: number) => {
@@ -342,12 +368,15 @@ export function HomePage() {
       // Hit-test mouse for hover
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
+      let anyHovered = false;
       for (const orb of orbs) {
         const { sx, sy, scale } = project(orb.x, orb.y, orb.z, cx, cy);
         const r = orb.radius * scale;
         const dx = mx - sx, dy = my - sy;
         orb.hovered = (dx * dx + dy * dy) < (r + 8) * (r + 8);
+        if (orb.hovered) anyHovered = true;
       }
+      cursorRef.current = anyHovered;
 
       // Sort by z (back to front)
       const sorted = [...orbs].sort((a, b) => b.z - a.z);
@@ -394,27 +423,27 @@ export function HomePage() {
       if (dx * dx + dy * dy < (r + 8) * (r + 8)) {
         // Trigger transition
         setTransitioning({ domainId: orb.domain.id, cx: e.clientX, cy: e.clientY, color: orb.color });
-        setTimeout(() => {
-          navigate(`/domain/${orb.domain.id}`);
+        transitionTimerRef.current = setTimeout(() => {
+          if (mountedRef.current) navigate(`/domain/${orb.domain.id}`);
         }, TRANSITION_MS);
         return;
       }
     }
   }, [navigate, transitioning]);
 
-  // Cursor style
+  // Cursor style — derived from orb hover state each frame (via ref, set in rAF)
   const [cursorPointer, setCursorPointer] = useState(false);
+  const cursorRef = useRef(false);
+  // Sync cursorRef → state at low frequency to avoid re-renders every frame
   useEffect(() => {
-    const check = () => {
-      const any = orbsRef.current.some((o) => o.hovered);
-      setCursorPointer(any);
-    };
-    const id = setInterval(check, 60);
+    const id = setInterval(() => {
+      if (cursorRef.current !== cursorPointer) setCursorPointer(cursorRef.current);
+    }, 100);
     return () => clearInterval(id);
-  }, []);
+  }, [cursorPointer]);
 
   return (
-    <div className="h-dvh w-full relative overflow-hidden" style={{ backgroundColor: '#e8e8e3' }}>
+    <div className="h-dvh w-full relative overflow-hidden" style={{ backgroundColor: 'var(--color-surface-0)' }}>
       {/* Canvas */}
       <canvas
         ref={canvasRef}
@@ -433,7 +462,7 @@ export function HomePage() {
           style={{
             fontSize: 28,
             fontWeight: 500,
-            color: '#1a1a1a',
+            color: 'var(--color-text-primary)',
             letterSpacing: '-0.02em',
             marginBottom: 8,
             fontFamily: '"Noto Serif SC", "Source Serif 4", Georgia, serif',
@@ -441,7 +470,7 @@ export function HomePage() {
         >
           选择你的知识领域
         </h1>
-        <p style={{ fontSize: 14, color: '#888', lineHeight: 1.6 }}>
+        <p style={{ fontSize: 14, color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
           点击星球，进入 3D 知识图谱
         </p>
       </div>
@@ -449,7 +478,7 @@ export function HomePage() {
       {/* Loading state */}
       {loading && activeDomains.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 20 }}>
-          <Loader size={28} className="animate-spin" style={{ color: '#888' }} />
+          <Loader size={28} className="animate-spin" style={{ color: 'var(--color-text-tertiary)' }} />
         </div>
       )}
 
