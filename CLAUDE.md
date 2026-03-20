@@ -1203,6 +1203,22 @@ data/seed/         — 种子图谱数据
    - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.74s
     - STATUS: 修复1个stale RAG索引(Phase 6遗留), 全量数据完整性验证通过
 
+- ✅ **第七十四轮FE深度审查+ChatPanel流清理修复+死代码清除 (2026-03-20, e868d32)**:
+   - **FIX[Medium]**: ChatPanel.tsx未在unmount时调用`cancelStream()+reset()` — LearnPage有此清理(M-01注释), 但ChatPanel完全缺失。用户在GraphPage中关闭聊天面板(点X按钮)时, 如果AI正在流式输出, 旧流继续写入dialogue store, 可能导致下次打开不同概念时出现陈旧消息或状态异常。添加`useEffect cleanup`调用`cancelStream(); reset();`
+   - **REFACTOR**: 清除LearnPage.tsx 3个unused imports(ArrowRight/Zap未使用, useIsDesktop+isDesktop赋值后未读取) + ChatPanel.tsx 1个unused import(clearNewlyUnlocked从useLearningStore解构但未调用)
+   - **TEST**: +2新测试(dialogue.test.ts): reset()清除isStreaming验证(ChatPanel unmount契约) + cancelStream→reset全清理验证
+   - REVIEW: 6个FE模块深度审查(LearnPage.tsx 488行 + ChatPanel.tsx 652行 + KnowledgeGraph.tsx 525行 + GraphPage.tsx 444行 + graph.ts 42行 + domain.ts 65行):
+     - LearnPage: conceptId effect(startConversation+startLearning)/cleanup(cancelStream+reset)/recordedRef guard/auto-scroll/auto-dismiss error 6s/handleSend+handleKeyDown/AssessmentCard(scoreColor+dimension bars) — 全部正确
+     - ChatPanel: 3-view FSM(idle/chat/history)/prevConceptRef guard/recordedConvRef guard(conversationId级)/celebration timeout 4s/auto-scroll/auto-dismiss error 6s/conceptConvHistory sort by updatedAt/nodeProgress display/handleStartLearning — 全部正确(unmount cleanup已修复)
+     - KnowledgeGraph: 3d-force-graph lazy import/scene fog+lights(domain-tinted)/sphere constraint force(R=480, pull=0.02)/baseSize(0.6+d*0.13)/nodeColor(mastered→learning→recommended→difficulty)/labelCache module-level(unmount时dispose+clear)/spawnCelebration particles(24粒子 60帧)/onNodeClick(stop rotation+freeze simulation+camera fly)/onBackgroundClick(restore rotation+reset target)/ResizeObserver/data effect(in-place status update+nodeThreeObject rebuild+newlyMastered celebration)/selectedNode effect(fly-to vs restore)/subdomain filter — 全部正确
+     - GraphPage: URL↔store双向同步(domainId/conceptId)/handleNodeClick(URL navigate)/handleCloseDetail(selectNode null+URL)/enrichedGraphData useMemo(progress overlay)/loadRecommendations/domain picker outside-click/hub bar 6 buttons — 全部正确
+     - graph.ts: Zustand store(loadGraphData async/error handling/selectNode/activeSubdomain) — 简洁正确(42行)
+     - domain.ts: localStorage persistence/loadSavedDomain/switchDomain(lazy import learning.ts避免循环依赖)/getActiveDomainInfo — 全部正确(65行)
+   - SECURITY: 审查范围内0个`as any`, 无eval/innerHTML/dangerouslySetInnerHTML
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 801 tests (208 FE + 593 BE) 全通过, tsc 0 errors, build 3.64s
+   - STATUS: 修复1个Medium级ChatPanel流清理缺失, 清除4处dead imports, 6个FE模块深度审查无其他问题
+
 - ✅ **第七十三轮FE面板深度审查+DomainOverview概念数修复+Domain类型完善 (2026-03-20, 45a2aa4)**:
    - **FIX[Critical]**: DomainOverview.tsx读取`domain.concept_count`(始终undefined)而非`domain.stats.total_concepts`(后端/graph/domains实际返回) — 导致知识星系面板所有域卡片显示"0 概念"、进度条0%、"总进度 0/0 (0%)"。修复为`domain.stats?.total_concepts ?? domain.concept_count ?? 0`双重fallback
    - **REFACTOR**: Domain类型完善 — 添加DomainStats接口(total_concepts/total_edges/subdomains) + Domain.stats字段 + Domain.is_active + Domain.sort_order, 消除4个组件(DomainOverview/HomePage/GraphPage)中共5处`(d as any).is_active`类型转换
@@ -1564,9 +1580,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (206 tests)
+cd packages/web && npx vitest run        # 前端测试 ✅ (208 tests)
 cd apps/api && python -m pytest          # 后端测试 ✅ (593 tests)
-# Total: 799 tests
+# Total: 801 tests
 ```
 
 ### 提交规范
