@@ -4,6 +4,13 @@
 
 import type { ConceptStatus } from './learning';
 
+/** Domain stats returned by /graph/domains endpoint */
+export interface DomainStats {
+  total_concepts: number;
+  total_edges: number;
+  subdomains: number;
+}
+
 /** 领域节点 */
 export interface Domain {
   id: string;
@@ -11,7 +18,9 @@ export interface Domain {
   description: string;
   icon: string;
   color: string;
-  concept_count?: number;
+  /** Runtime stats from backend (total concepts, edges, subdomains) */
+  stats?: DomainStats;
+  concept_count?: number; // @deprecated — use stats.total_concepts
   created_at?: string;
 }
 

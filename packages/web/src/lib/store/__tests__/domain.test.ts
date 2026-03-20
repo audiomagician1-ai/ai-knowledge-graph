@@ -19,7 +19,7 @@ const mockDomains: Domain[] = [
     description: '从编程基础到AI系统设计',
     icon: '🟣',
     color: '#8b5cf6',
-    concept_count: 400,
+    stats: { total_concepts: 400, total_edges: 500, subdomains: 10 },
   },
   {
     id: 'mathematics',
@@ -27,7 +27,7 @@ const mockDomains: Domain[] = [
     description: '高中到大学数学',
     icon: '🔵',
     color: '#3b82f6',
-    concept_count: 300,
+    stats: { total_concepts: 300, total_edges: 350, subdomains: 8 },
   },
 ];
 
@@ -213,6 +213,34 @@ describe('useDomainStore', () => {
       // activeDomain should be preserved during/after fetch
       expect(useDomainStore.getState().activeDomain).toBe('mathematics');
       expect(useDomainStore.getState().domains).toHaveLength(2);
+    });
+  });
+
+  describe('domain stats (concept_count via stats field)', () => {
+    it('should provide stats.total_concepts for each domain (API response format)', () => {
+      useDomainStore.setState({ domains: mockDomains });
+      const domains = useDomainStore.getState().domains;
+
+      // API returns stats object, not flat concept_count
+      expect(domains[0].stats?.total_concepts).toBe(400);
+      expect(domains[1].stats?.total_concepts).toBe(300);
+    });
+
+    it('should handle domains without stats field gracefully', () => {
+      const legacyDomain: Domain = {
+        id: 'legacy',
+        name: 'Legacy',
+        description: 'no stats',
+        icon: '⬜',
+        color: '#999',
+        // no stats field — old format
+      };
+      useDomainStore.setState({ domains: [legacyDomain], activeDomain: 'legacy' });
+      const info = useDomainStore.getState().getActiveDomainInfo();
+
+      // stats should be undefined, not crash
+      expect(info?.stats).toBeUndefined();
+      expect(info?.stats?.total_concepts ?? 0).toBe(0);
     });
   });
 });

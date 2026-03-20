@@ -12,7 +12,7 @@ interface Orb {
   glowColor: string;
   domain: import('@akg/shared').Domain;
   hovered: boolean;
-  stats?: { total_concepts?: number; subdomains?: number };
+  stats?: import('@akg/shared').DomainStats;
 }
 
 interface BgNode { x: number; y: number; vx: number; vy: number; size: number; opacity: number }
@@ -267,7 +267,7 @@ export function HomePage() {
       const ry = Math.min(220, 80 + count * 13);
       const jitterX = (Math.random() - 0.5) * 40;
       const jitterY = (Math.random() - 0.5) * 30;
-      const stats = (domain as any).stats as { total_concepts?: number; subdomains?: number } | undefined;
+      const stats = domain.stats;
 
       // Lighten color for glow
       const r = parseInt(domain.color.slice(1, 3), 16);

@@ -18,7 +18,7 @@ function DomainCard({ domain, compact }: { domain: Domain; compact?: boolean }) 
   const { activeDomain, switchDomain } = useDomainStore();
   const { loadGraphData } = useGraphStore();
   const isActive = domain.id === activeDomain;
-  const conceptCount = domain.concept_count || 0;
+  const conceptCount = domain.stats?.total_concepts ?? domain.concept_count ?? 0;
   const progress = peekDomainProgress(domain.id);
   const pct = conceptCount > 0 ? Math.round((progress.mastered / conceptCount) * 100) : 0;
   const isComingSoon = !(domain as any).is_active;
@@ -137,7 +137,7 @@ export function DomainOverview({ compact }: DomainOverviewProps) {
   const overallStats = activeDomains.reduce(
     (acc, d) => {
       const p = peekDomainProgress(d.id);
-      acc.totalConcepts += d.concept_count || 0;
+      acc.totalConcepts += d.stats?.total_concepts ?? d.concept_count ?? 0;
       acc.mastered += p.mastered;
       acc.learning += p.learning;
       return acc;
