@@ -1185,6 +1185,23 @@ data/seed/         — 种子图谱数据
     - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors
    - STATUS: 清理routing重构遗留死代码, 数据完整性验证通过
 
+- ✅ **第六十七轮深度巡逻审查+多域对话修复+CSS变量修复 (2026-03-20, bc1e413)**:
+   - **FIX**: MarkdownRenderer.tsx blockquote border和link color引用不存在的CSS变量`--color-accent-indigo` → `--color-accent-blue`(globals.css:30定义为#6366f1, 实际就是indigo色) — 修复2处引用(line 95 borderColor, line 131 color) [m-01, 3e0f39f]
+   - **FIX**: 多域对话创建bug — `_get_concept_info()`调用`_load_seed()`不传domain_id, 默认只搜索ai-engineering域。其余10个域(mathematics/physics/english等)的概念在后端API模式下创建对话会404 [critical, bc1e413]:
+     - BE: ConversationCreate添加domain_id字段 + _get_concept_info()接受domain_id + save_conversation()存储domain_id + _ensure_session()从DB恢复domain_id
+     - DB: conversations表添加domain_id列 + schema v2迁移(ALTER TABLE safe, 已有数据默认ai-engineering)
+     - FE: dialogue store startConversation()接受domainId → LearnPage/ChatPanel/GraphPage全链路传递domainId
+     - +5新测试(domain_id validation, 跨域创建, 跨域404, session domain_id存储)
+   - REVIEW: 40+模块全面深度审查(FE+BE全覆盖, 0 additional critical issues):
+     - BE Engines: socratic.py(RAG path resolution/OPENING_USER_PROMPT/build_system_prompt/get_opening fallback/chat_stream) + evaluator.py(O(n) format_dialogue/validate_result/fallback_evaluate/mastered logic) + feynman_system.py(parse_ai_response/choices validation/DOMAIN_SUPPLEMENTS 10域/ASSESSMENT_SUPPLEMENTS 10域/ASSESSMENT_SYSTEM_PROMPT)
+     - BE Engines (stubs): builder.py + pathfinder.py + fsrs_scheduler.py + tracker.py — all placeholder, no issues
+     - BE Routers: dialogue.py(multi-domain fix/session cache/double-check locking/_busy timeout/rate limit/SSE stream) + learning.py(recommend algo/sync validation/streak/status whitelist/mastered demotion protection) + graph.py(per-domain seed cache/thread-safe/RAG index/cross-links/path traversal protection) + health.py(simple OK)
+     - BE Other: rate_limiter.py(sliding window/deque O(1)/prune stale keys/BYOK bypass) + llm/router.py(SSRF prevention/token-limit param/retry logic/httpx async) + neo4j_client.py(explicit read/write transactions) + sqlite_client.py(schema migration v2)
+     - FE: KnowledgeGraph.tsx(3D force graph/sphere constraint/celebration particles/label texture cache/resize observer/cleanup) + direct-llm.ts(888行完整review: domain supplements 10域同步/tokenLimitParam/parseChoices/windowMessages/directCreate/directChat/directAssess/validateAssessment) + supabase-sync.ts(fullSync bidirectional merge/batch upsert/toDbStatus/offline queue/concurrency guard) + settings.ts(CORS proxy/BYOK/obfuscation/probeProxy/probeCORS/generateSelfContainedBat) + dialogue.ts(startConversation domain passthrough) + dialogue-api.ts(createConversation domain passthrough)
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.45s
+   - STATUS: 修复1个critical多域对话bug + 1个minor CSS变量引用bug, 代码质量全面稳定
+
 - ✅ **第六十六轮深度巡逻审查+LoginPage路由修复 (2026-03-20, 9eb6ea1)**:
    - **FIX**: LoginPage.tsx 2处`navigate('/graph')`→`navigate('/')` — `/graph`路由在routing重构后不存在, 虽被wildcard catch-all重定向到`/`但产生不必要的redirect跳转 [m-01]
    - REVIEW: 25+模块全面深度审查全通过(0 critical/0 major issues):
