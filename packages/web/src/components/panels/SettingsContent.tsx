@@ -1,7 +1,7 @@
 ﻿import { useState, useRef } from 'react';
 import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, generateSelfContainedBat, downloadBlob, validateModelId, getDefaultModel } from '@/lib/store/settings';
 import type { LLMProvider } from '@/lib/store/settings';
-import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown } from 'lucide-react';
+import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown, AlertTriangle, Zap } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDialogueStore } from '@/lib/store/dialogue';
@@ -72,36 +72,80 @@ export function SettingsContent() {
 
   return (
     <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 20 }}>
-      {/* AI Service Status */}
+      {/* AI Service Mode Selector */}
       <div>
-        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex' }}>
-          <Server size={12} /> AI 模型
+        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 10, display: 'flex' }}>
+          <Server size={12} /> AI 服务模式
         </label>
+
+        {/* Two-option radio cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+          {/* Option 1: Free service */}
+          <button
+            onClick={() => { if (!isUsingDefault) { clearApiKey(); setShowAdvancedLLM(false); } }}
+            style={{
+              borderRadius: 10, padding: '12px 14px', textAlign: 'left', cursor: isUsingDefault ? 'default' : 'pointer',
+              backgroundColor: isUsingDefault ? 'var(--color-tint-emerald)' : 'var(--color-surface-2)',
+              border: isUsingDefault ? '2px solid var(--color-accent-emerald)' : '1px solid var(--color-border)',
+              opacity: isUsingDefault ? 1 : 0.75, transition: 'all 0.15s',
+            }}
+          >
+            <div className="flex items-center gap-2" style={{ marginBottom: 4 }}>
+              <div style={{
+                width: 13, height: 13, borderRadius: '50%', border: `2px solid ${isUsingDefault ? 'var(--color-accent-emerald)' : 'var(--color-text-tertiary)'}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+              }}>
+                {isUsingDefault && <div style={{ width: 7, height: 7, borderRadius: '50%', backgroundColor: 'var(--color-accent-emerald)' }} />}
+              </div>
+              <Zap size={12} style={{ color: isUsingDefault ? 'var(--color-accent-emerald)' : 'var(--color-text-tertiary)' }} />
+              <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)' }}>免费服务</span>
+            </div>
+            <p style={{ fontSize: 11, color: 'var(--color-text-tertiary)', lineHeight: 1.4 }}>无需配置，开箱即用</p>
+          </button>
+
+          {/* Option 2: Custom API Key */}
+          <button
+            onClick={() => { setShowAdvancedLLM(true); }}
+            style={{
+              borderRadius: 10, padding: '12px 14px', textAlign: 'left', cursor: isUsingDefault ? 'pointer' : 'default',
+              backgroundColor: !isUsingDefault ? 'var(--color-surface-3)' : 'var(--color-surface-2)',
+              border: !isUsingDefault ? '2px solid var(--color-accent-primary)' : '1px solid var(--color-border)',
+              opacity: !isUsingDefault ? 1 : 0.75, transition: 'all 0.15s',
+            }}
+          >
+            <div className="flex items-center gap-2" style={{ marginBottom: 4 }}>
+              <div style={{
+                width: 13, height: 13, borderRadius: '50%', border: `2px solid ${!isUsingDefault ? 'var(--color-accent-primary)' : 'var(--color-text-tertiary)'}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+              }}>
+                {!isUsingDefault && <div style={{ width: 7, height: 7, borderRadius: '50%', backgroundColor: 'var(--color-accent-primary)' }} />}
+              </div>
+              <Key size={12} style={{ color: !isUsingDefault ? 'var(--color-accent-primary)' : 'var(--color-text-tertiary)' }} />
+              <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)' }}>自带 API Key</span>
+            </div>
+            <p style={{ fontSize: 11, color: 'var(--color-text-tertiary)', lineHeight: 1.4 }}>更强模型，稳定可靠</p>
+          </button>
+        </div>
+
+        {/* Status / warning */}
         {isUsingDefault ? (
-          <div className="flex items-center gap-3" style={{ borderRadius: 10, padding: '12px 16px', backgroundColor: 'var(--color-tint-emerald)', border: '1px solid rgba(138, 173, 122, 0.15)' }}>
-            <Check size={15} style={{ color: 'var(--color-accent-emerald)', flexShrink: 0 }} />
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-text-primary)' }}>正在使用免费 AI 服务</div>
-              <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 2 }}>无需配置，直接开始学习</div>
+          <div className="flex items-start gap-2" style={{ marginTop: 8, borderRadius: 8, padding: '8px 12px', backgroundColor: 'rgba(217, 169, 78, 0.06)', border: '1px solid rgba(217, 169, 78, 0.15)' }}>
+            <AlertTriangle size={12} className="shrink-0" style={{ marginTop: 2, color: 'var(--color-accent-amber)' }} />
+            <div>
+              <p style={{ fontSize: 12, lineHeight: 1.5, color: 'var(--color-text-secondary)' }}>
+                免费服务<strong>稳定性有限</strong>，可能响应缓慢或偶尔不可用。
+              </p>
+              <p style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 2 }}>推荐配置自己的 Key 获得更好体验。</p>
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-3" style={{ borderRadius: 10, padding: '12px 16px', backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}>
-            <Key size={15} style={{ color: 'var(--color-accent-primary)', flexShrink: 0 }} />
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-text-primary)' }}>使用自定义 API Key</div>
-              <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {PROVIDER_INFO[llmConfig.provider].name} · {llmConfig.model || getDefaultModel(llmConfig.provider)}
-              </div>
-            </div>
-            <button onClick={() => { clearApiKey(); setShowAdvancedLLM(false); }} style={{ fontSize: 11, color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0 }}>切回免费</button>
+          <div className="flex items-center gap-2" style={{ marginTop: 8, borderRadius: 8, padding: '8px 12px', backgroundColor: 'var(--color-tint-emerald)', border: '1px solid rgba(138, 173, 122, 0.15)' }}>
+            <Check size={12} className="shrink-0" style={{ color: 'var(--color-accent-emerald)' }} />
+            <p style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>
+              {PROVIDER_INFO[llmConfig.provider].name} · {llmConfig.model || getDefaultModel(llmConfig.provider)}
+            </p>
           </div>
         )}
-        <button onClick={() => setShowAdvancedLLM(!showAdvancedLLM)}
-          style={{ marginTop: 8, fontSize: 12, color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>
-          <span style={{ display: 'inline-block', transition: 'transform 0.2s', transform: showAdvancedLLM ? 'rotate(90deg)' : 'rotate(0deg)' }}>▸</span>
-          高级：使用自己的 API Key
-        </button>
       </div>
 
       {showAdvancedLLM && (<>

@@ -262,6 +262,19 @@ const BIOLOGY_DOMAIN_SUPPLEMENT = `
 7. **伦理维度**: 涉及基因编辑、转基因等技术时，主动讨论相关的伦理争议
 `;
 
+const ECONOMICS_DOMAIN_SUPPLEMENT = `
+## 经济学教学特殊规则
+
+1. **模型思维**: 经济学是通过简化模型理解复杂现实。讲解时先说明模型假设，再推导结论，最后讨论假设放松后的变化
+2. **数据驱动**: 尽可能用真实经济数据和案例支撑理论（如用具体国家数据讲GDP、用历史数据讲通胀）
+3. **权衡意识**: 每个政策都有成本和收益，引导学生思考"谁受益、谁受损、有什么替代方案"
+4. **激励分析**: 始终追问"激励结构是什么？"，分析制度和政策对不同主体的激励效应
+5. **边际思维**: 强调边际分析的核心地位，帮助学生养成"多一单位"的思考习惯
+6. **历史语境**: 经济理论产生于特定的历史背景（如凯恩斯与大萧条、货币主义与滞胀）
+7. **政策连接**: 理论最终服务于政策分析，讲完理论后引导学生思考其政策含义
+`;
+
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -272,6 +285,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'psychology': PSYCHOLOGY_DOMAIN_SUPPLEMENT,
   'philosophy': PHILOSOPHY_DOMAIN_SUPPLEMENT,
   'biology': BIOLOGY_DOMAIN_SUPPLEMENT,
+  'economics': ECONOMICS_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -380,6 +394,19 @@ const BIOLOGY_ASSESSMENT_SUPPLEMENT = `
 - **避免误区**: 用户是否避免了常见误解（如“进化=进步”、“基因决定一切”、“适者生存=最强者生存”）？
 `;
 
+const ECONOMICS_ASSESSMENT_SUPPLEMENT = `
+## 经济学领域评估特殊指标
+
+在评估经济学概念理解时，请额外关注以下方面：
+- **模型运用**: 用户是否能正确描述经济模型的假设、机制和结论？是否理解模型的适用边界？
+- **因果推理**: 用户是否能区分相关关系和因果关系？是否能识别经济现象背后的因果机制？
+- **权衡分析**: 用户是否能识别经济决策中的权衡？是否理解政策的成本-收益和分配效应？
+- **激励分析**: 用户是否能分析制度和政策对不同主体的激励效应？
+- **定量素养**: 涉及弹性、乘数、增长率等定量概念时，用户是否能进行正确的数量推理？
+- **学派辨析**: 用户是否了解不同经济学派对同一问题的不同观点？
+- **避免误区**: 用户是否避免了常见误解（如"贸易是零和博弈"、"通胀只有坏处"、"GDP=福利"）？
+`;
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -389,6 +416,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'psychology': PSYCHOLOGY_ASSESSMENT_SUPPLEMENT,
   'philosophy': PHILOSOPHY_ASSESSMENT_SUPPLEMENT,
   'biology': BIOLOGY_ASSESSMENT_SUPPLEMENT,
+  'economics': ECONOMICS_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {
