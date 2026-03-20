@@ -1,0 +1,3669 @@
+{
+  "domain": {
+    "id": "writing",
+    "name": "写作",
+    "description": "从写作基础到文体修改的系统知识体系",
+    "icon": "✍️",
+    "color": "#f59e0b"
+  },
+  "subdomains": [
+    {
+      "id": "writing-fundamentals",
+      "name": "写作基础",
+      "order": 1
+    },
+    {
+      "id": "narrative-writing",
+      "name": "叙事写作",
+      "order": 2
+    },
+    {
+      "id": "expository-writing",
+      "name": "说明文写作",
+      "order": 3
+    },
+    {
+      "id": "persuasive-writing",
+      "name": "论说文写作",
+      "order": 4
+    },
+    {
+      "id": "creative-writing",
+      "name": "创意写作",
+      "order": 5
+    },
+    {
+      "id": "academic-writing",
+      "name": "学术写作",
+      "order": 6
+    },
+    {
+      "id": "professional-writing",
+      "name": "职业写作",
+      "order": 7
+    },
+    {
+      "id": "revision-craft",
+      "name": "修改与文体",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "writing-overview",
+      "name": "写作概述",
+      "description": "写作的本质、目的与分类概览",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "sentence-structure",
+      "name": "句子结构",
+      "description": "主谓宾、简单句与复合句的构造原则",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "语法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "paragraph-structure",
+      "name": "段落结构",
+      "description": "主题句、支撑句与结尾句的段落组织",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "punctuation-usage",
+      "name": "标点符号运用",
+      "description": "常用标点符号的功能与正确使用规范",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "语法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "word-choice",
+      "name": "词语选择",
+      "description": "精准选词、避免冗余与词汇搭配技巧",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "语言"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "coherence-cohesion",
+      "name": "连贯与衔接",
+      "description": "过渡词、逻辑连接与语篇连贯性",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "topic-selection",
+      "name": "选题与立意",
+      "description": "如何选择写作话题并确立中心思想",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "outline-planning",
+      "name": "提纲与构思",
+      "description": "写作前的思维导图、大纲与结构规划",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "writing-process",
+      "name": "写作过程",
+      "description": "预写、起草、修改、校对的完整写作流程",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "audience-awareness",
+      "name": "读者意识",
+      "description": "根据目标读者调整语言风格与内容深度",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "tone-and-voice",
+      "name": "语气与声音",
+      "description": "正式与非正式语气、作者独特声音的塑造",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "active-passive-voice",
+      "name": "主动与被动语态",
+      "description": "主动语态与被动语态的选择与效果",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "语法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "parallel-structure",
+      "name": "平行结构",
+      "description": "句式对称与并列结构的修辞效果",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "修辞"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "figurative-language",
+      "name": "修辞手法",
+      "description": "比喻、拟人、夸张等常用修辞手法",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "修辞"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "writing-genres-overview",
+      "name": "写作体裁概览",
+      "description": "记叙文、说明文、议论文、应用文等体裁特征",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "reading-writing-connection",
+      "name": "读写互动",
+      "description": "阅读对写作的促进作用与借鉴方法",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "freewriting-techniques",
+      "name": "自由写作技法",
+      "description": "自由写作、头脑风暴与快速草稿的入门方法",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "入门"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "grammar-essentials",
+      "name": "语法要点",
+      "description": "主谓一致、时态、代词指代等写作必备语法",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "语法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vocabulary-building",
+      "name": "词汇积累",
+      "description": "扩大写作词汇量的策略与方法",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "语言"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sentence-variety",
+      "name": "句式变化",
+      "description": "长短句交替、句式多样化与节奏控制",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "writing-confidence",
+      "name": "写作自信",
+      "description": "克服写作焦虑、培养写作习惯与自我激励",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "心理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "writing-tools",
+      "name": "写作工具",
+      "description": "常用写作软件、笔记方法与数字化工具",
+      "subdomain_id": "writing-fundamentals",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "narrative-overview",
+      "name": "叙事写作概述",
+      "description": "叙事文学的基本要素与创作原则",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "plot-structure",
+      "name": "情节结构",
+      "description": "起承转合、三幕式结构与弗赖塔格金字塔",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "character-creation",
+      "name": "人物塑造",
+      "description": "主要人物与次要人物的性格刻画与成长弧线",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "人物"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "setting-description",
+      "name": "场景描写",
+      "description": "时间、地点、环境氛围的营造技法",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "描写"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "point-of-view",
+      "name": "叙事视角",
+      "description": "第一人称、第三人称、全知视角的选择与效果",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "dialogue-writing",
+      "name": "对话写作",
+      "description": "真实自然的对话技巧与对话标点规范",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "show-dont-tell",
+      "name": "展示而非告知",
+      "description": "通过细节、动作、感官描写代替直接陈述",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "conflict-tension",
+      "name": "冲突与张力",
+      "description": "内在冲突、外在冲突与悬念制造技巧",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pacing-rhythm",
+      "name": "节奏控制",
+      "description": "叙事节奏的快慢调节与场景切换技巧",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "narrative-arc",
+      "name": "叙事弧线",
+      "description": "开端、发展、高潮、结局的完整叙事弧线",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "theme-development",
+      "name": "主题发展",
+      "description": "在叙事中自然地传达深层主题与意义",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内涵"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sensory-detail",
+      "name": "感官细节",
+      "description": "视觉、听觉、嗅觉、触觉、味觉的描写运用",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "描写"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "flashback-foreshadow",
+      "name": "闪回与伏笔",
+      "description": "时间线操控与悬念铺设的高级叙事技法",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unreliable-narrator",
+      "name": "不可靠叙述者",
+      "description": "利用叙述者偏见创造悬疑与深度",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "memoir-writing",
+      "name": "回忆录写作",
+      "description": "个人经历的文学化表达与情感真实性",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "short-story-craft",
+      "name": "短篇小说技巧",
+      "description": "短篇小说的篇幅控制、聚焦与结尾技巧",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "novel-structure",
+      "name": "长篇小说结构",
+      "description": "多线叙事、章节安排与长篇作品的节奏控制",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "biographical-writing",
+      "name": "传记写作",
+      "description": "人物传记的资料收集、选材与叙事策略",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "travel-writing",
+      "name": "旅行写作",
+      "description": "旅行见闻的文学化记录与文化观察",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "narrative-essay",
+      "name": "叙事散文",
+      "description": "以个人经历为核心的散文写作技巧",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "storytelling-oral",
+      "name": "口头叙事",
+      "description": "口头讲故事的技巧与书面叙事的转化",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "micro-fiction",
+      "name": "微型小说",
+      "description": "极短篇幅内的叙事艺术与冲击力营造",
+      "subdomain_id": "narrative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "expository-overview",
+      "name": "说明文概述",
+      "description": "说明文的定义、分类与写作目的",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "definition-essay",
+      "name": "定义型说明文",
+      "description": "通过界定概念进行说明的写作方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "process-essay",
+      "name": "过程型说明文",
+      "description": "步骤说明、流程描述的写作方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "comparison-contrast",
+      "name": "比较对比文",
+      "description": "两个或多个事物的异同分析写作方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cause-effect-essay",
+      "name": "因果分析文",
+      "description": "分析原因与结果关系的写作方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "classification-essay",
+      "name": "分类说明文",
+      "description": "按标准分类、逐类说明的写作方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "descriptive-essay",
+      "name": "描述型说明文",
+      "description": "客观描述事物特征与状态的写作方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "informative-writing",
+      "name": "信息型写作",
+      "description": "传递客观信息、数据和事实的写作技巧",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-presentation",
+      "name": "数据呈现",
+      "description": "图表、统计数据在说明文中的运用与解读",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "technical-description",
+      "name": "技术描述",
+      "description": "技术产品、系统与流程的准确说明方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "science-writing",
+      "name": "科普写作",
+      "description": "将科学知识转化为通俗易懂的大众读物",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "news-writing",
+      "name": "新闻写作",
+      "description": "倒金字塔结构、5W1H与新闻报道写作",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feature-writing",
+      "name": "专题报道",
+      "description": "深度报道与特写的写作技巧与结构",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "instruction-manual",
+      "name": "说明书写作",
+      "description": "用户手册、操作指南的清晰写作方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "summary-writing",
+      "name": "摘要写作",
+      "description": "提取要点、压缩信息的摘要与缩写技巧",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "interview-writing",
+      "name": "采访写作",
+      "description": "采访准备、提问技巧与采访稿整理",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "review-writing",
+      "name": "评论写作",
+      "description": "书评、影评、产品评测等评论文章写作",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "explanatory-structure",
+      "name": "解释性结构",
+      "description": "由浅入深、层层递进的说明文组织策略",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "visual-aids-writing",
+      "name": "图文配合写作",
+      "description": "插图、图表与文字的协调配合方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fact-checking",
+      "name": "事实核查",
+      "description": "信息来源验证、数据准确性检查的方法",
+      "subdomain_id": "expository-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "persuasive-overview",
+      "name": "论说文概述",
+      "description": "论说文的定义、要素与说服目的",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "thesis-statement",
+      "name": "论点陈述",
+      "description": "清晰有力的中心论点的提出与表述",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "argument-structure",
+      "name": "论证结构",
+      "description": "论点—论据—论证的逻辑组织方法",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "evidence-types",
+      "name": "论据类型",
+      "description": "事实论据、数据论据、专家引证与案例论据",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "论据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "logical-reasoning-writing",
+      "name": "逻辑推理写作",
+      "description": "演绎推理、归纳推理在论证中的运用",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "逻辑"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "counterargument",
+      "name": "反驳与让步",
+      "description": "预设反对意见并进行有效反驳的策略",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rhetorical-appeals",
+      "name": "修辞诉求",
+      "description": "逻辑诉求、情感诉求与人格诉求的综合运用",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "修辞"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "logical-fallacies-writing",
+      "name": "逻辑谬误识别",
+      "description": "常见逻辑谬误的识别与避免方法",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "逻辑"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "persuasive-techniques",
+      "name": "说服技巧",
+      "description": "重复、类比、对比、设问等说服手法",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "editorial-writing",
+      "name": "社论写作",
+      "description": "报刊社论与时评的结构与语言特征",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "debate-writing",
+      "name": "辩论稿写作",
+      "description": "辩论赛立论、驳论与总结陈词的写作",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "speech-writing",
+      "name": "演讲稿写作",
+      "description": "演讲稿的结构、语言与修辞技巧",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "opinion-essay",
+      "name": "观点文写作",
+      "description": "表达个人观点并进行论证的短文写作",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "proposal-writing",
+      "name": "提案写作",
+      "description": "项目建议书与方案提议的写作结构",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "advertising-copywriting",
+      "name": "广告文案",
+      "description": "商业广告与营销文案的说服性写作",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ethos-building",
+      "name": "人格信誉构建",
+      "description": "通过专业性、可信度建立作者权威",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "修辞"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pathos-techniques",
+      "name": "情感唤起技法",
+      "description": "通过故事、意象与情感语言打动读者",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "修辞"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "logos-strategies",
+      "name": "逻辑论证策略",
+      "description": "运用数据、证据与推理说服读者的方法",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "逻辑"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "call-to-action",
+      "name": "行动号召",
+      "description": "文章结尾的行动号召与读者激励技巧",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "critical-analysis-essay",
+      "name": "批判分析文",
+      "description": "对文本、观点或现象的深度批判与分析",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "propaganda-analysis",
+      "name": "宣传手法分析",
+      "description": "识别与分析宣传手法的批判性阅读方法",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "批判"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "persuasive-ethics",
+      "name": "说服伦理",
+      "description": "说服性写作中的道德边界与责任意识",
+      "subdomain_id": "persuasive-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "creative-overview",
+      "name": "创意写作概述",
+      "description": "创意写作的定义、领域与创作精神",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "poetry-basics",
+      "name": "诗歌基础",
+      "description": "韵律、节奏、意象与诗歌形式概述",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "诗歌"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "free-verse",
+      "name": "自由诗",
+      "description": "自由体诗歌的创作方法与审美特征",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "诗歌"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "classical-poetry-forms",
+      "name": "古典诗词",
+      "description": "中国古典诗词的格律、意境与创作传统",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "诗歌"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "imagery-symbolism",
+      "name": "意象与象征",
+      "description": "意象构建与象征手法在创意写作中的运用",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "creative-nonfiction",
+      "name": "创意非虚构",
+      "description": "将文学手法应用于真实事件的写作方式",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "flash-fiction",
+      "name": "闪小说",
+      "description": "极短篇幅(千字以内)的小说创作技巧",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dramatic-writing",
+      "name": "戏剧写作",
+      "description": "戏剧剧本的对话、动作与舞台提示写作",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "screenplay-basics",
+      "name": "剧本写作基础",
+      "description": "电影/电视剧本的格式、结构与场景描写",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "song-lyrics",
+      "name": "歌词创作",
+      "description": "歌词的韵律、意象与情感表达技巧",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "world-building",
+      "name": "世界构建",
+      "description": "虚构世界的设定、规则与细节构建方法",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "虚构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "voice-style",
+      "name": "文学声音与风格",
+      "description": "发展独特的写作声音与个人风格",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "experimental-writing",
+      "name": "实验性写作",
+      "description": "突破传统形式的先锋写作与元小说技法",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "先锋"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "humor-writing",
+      "name": "幽默写作",
+      "description": "喜剧效果的营造、讽刺与反讽技巧",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "horror-suspense-writing",
+      "name": "恐怖悬疑写作",
+      "description": "悬疑氛围营造与恐怖效果的文学技法",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "childrens-writing",
+      "name": "儿童文学写作",
+      "description": "适合不同年龄段儿童的故事创作方法",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "writing-prompts",
+      "name": "写作提示与练习",
+      "description": "利用写作提示激发创意的练习方法",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "literary-devices",
+      "name": "文学手法",
+      "description": "反讽、隐喻、转喻、通感等高级文学技法",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "genre-fiction",
+      "name": "类型小说",
+      "description": "科幻、奇幻、推理、言情等类型小说特征",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "creative-process",
+      "name": "创作过程",
+      "description": "灵感捕捉、素材积累与创意孵化的方法",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "publishing-basics",
+      "name": "出版入门",
+      "description": "投稿、审稿、版权与自出版的基本知识",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "出版"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "writing-workshop",
+      "name": "写作工坊",
+      "description": "创意写作工坊的同行评议与反馈方法",
+      "subdomain_id": "creative-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "社群"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "academic-overview",
+      "name": "学术写作概述",
+      "description": "学术写作的特征、规范与基本要求",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "research-question",
+      "name": "研究问题",
+      "description": "如何提出有效的研究问题与研究假设",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "研究"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "literature-review",
+      "name": "文献综述",
+      "description": "学术文献的检索、评价与综述写作",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "研究"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "research-methodology",
+      "name": "研究方法论写作",
+      "description": "定量、定性与混合研究方法的写作呈现",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "研究"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "academic-argument",
+      "name": "学术论证",
+      "description": "学术论文中的论点提出与论证展开",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "论证"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "citation-referencing",
+      "name": "引用与参考文献",
+      "description": "APA、MLA、Chicago等引用格式与文献管理",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "abstract-writing",
+      "name": "摘要写作",
+      "description": "学术论文摘要的结构与写作技巧",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "introduction-writing",
+      "name": "引言写作",
+      "description": "学术论文引言的CARS模式与写作策略",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "methodology-section",
+      "name": "方法部分",
+      "description": "研究方法部分的写作要素与组织",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "results-discussion",
+      "name": "结果与讨论",
+      "description": "数据呈现、结果分析与讨论的写作方法",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "conclusion-writing",
+      "name": "结论写作",
+      "description": "学术论文结论的总结、贡献与展望",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "academic-tone",
+      "name": "学术语体",
+      "description": "客观、准确、严谨的学术语言风格",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hedging-language",
+      "name": "模糊限制语",
+      "description": "学术写作中的谨慎表述与程度限定",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "语言"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "thesis-writing",
+      "name": "学位论文写作",
+      "description": "硕士/博士学位论文的结构与写作流程",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "peer-review-process",
+      "name": "同行评审",
+      "description": "学术论文投稿与同行评审的流程与应对",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "出版"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plagiarism-avoidance",
+      "name": "避免抄袭",
+      "description": "学术诚信、引用规范与抄袭检测工具",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "conference-paper",
+      "name": "会议论文",
+      "description": "学术会议论文的撰写与报告准备",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "出版"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "grant-proposal",
+      "name": "科研基金申请",
+      "description": "科研项目申请书的写作结构与策略",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "academic-book-review",
+      "name": "学术书评",
+      "description": "学术著作的批判性评介与评论写作",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-visualization-writing",
+      "name": "数据可视化写作",
+      "description": "学术写作中图表的设计、描述与解读",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "collaborative-writing",
+      "name": "合作写作",
+      "description": "多作者协作写作的工具、流程与规范",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "academic-presentation",
+      "name": "学术报告",
+      "description": "学术口头报告与海报展示的准备方法",
+      "subdomain_id": "academic-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "展示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "professional-overview",
+      "name": "职业写作概述",
+      "description": "职业环境中的写作类型与基本要求",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "business-email",
+      "name": "商务邮件",
+      "description": "商务邮件的格式、语气与高效沟通技巧",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "report-writing",
+      "name": "报告写作",
+      "description": "工作报告、调研报告的结构与写作方法",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "resume-cover-letter",
+      "name": "简历与求职信",
+      "description": "个人简历与求职信的写作策略与格式",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "职业"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "meeting-minutes",
+      "name": "会议纪要",
+      "description": "会议记录与纪要的规范写作方法",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "memo-writing",
+      "name": "备忘录写作",
+      "description": "内部备忘录的格式、结构与写作要点",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "technical-writing",
+      "name": "技术文档写作",
+      "description": "技术文档、API文档与开发者指南的写作",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ux-writing",
+      "name": "用户体验写作",
+      "description": "界面文案、微文案与用户引导文字的设计",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "content-marketing",
+      "name": "内容营销写作",
+      "description": "博客文章、白皮书与内容策略的写作方法",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "营销"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-media-writing",
+      "name": "社交媒体写作",
+      "description": "不同社交平台的文案特征与写作技巧",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "营销"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "press-release",
+      "name": "新闻稿",
+      "description": "企业新闻稿的标准格式与写作规范",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "公关"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "contract-legal-writing",
+      "name": "合同与法律文书",
+      "description": "合同条款、法律文件的准确性与规范性",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "法律"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "grant-report",
+      "name": "项目总结报告",
+      "description": "项目进展报告与最终成果报告的写作",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "crisis-communication",
+      "name": "危机沟通写作",
+      "description": "危机公关声明、致歉信与应急通知的写作",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "公关"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "policy-writing",
+      "name": "政策文件写作",
+      "description": "政策文件、规章制度的清晰准确写作",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "行政"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pitch-deck-narrative",
+      "name": "商业计划叙事",
+      "description": "创业路演与商业计划书的叙事策略",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "localization-writing",
+      "name": "本地化写作",
+      "description": "跨文化语境下的文本翻译与本地化策略",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "国际"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "seo-writing",
+      "name": "SEO写作",
+      "description": "搜索引擎优化写作的关键词策略与技巧",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "数字"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "newsletter-writing",
+      "name": "通讯写作",
+      "description": "企业通讯、电子邮件通讯的编写方法",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "营销"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "documentation-standards",
+      "name": "文档标准",
+      "description": "企业文档管理规范、模板与版本控制",
+      "subdomain_id": "professional-writing",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "revision-overview",
+      "name": "修改概述",
+      "description": "修改的重要性、层次与基本原则",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "self-editing",
+      "name": "自我编辑",
+      "description": "自我审读、检查清单与距离感策略",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "structural-revision",
+      "name": "结构修改",
+      "description": "文章整体结构、段落组织的调整方法",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "层次"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "sentence-level-editing",
+      "name": "句子层修改",
+      "description": "句子清晰度、简洁性与力度的打磨技巧",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "层次"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "word-level-editing",
+      "name": "词语层修改",
+      "description": "精确选词、消除冗余与语言打磨",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "层次"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "proofreading",
+      "name": "校对",
+      "description": "拼写、语法、标点与格式的最终检查",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "peer-feedback",
+      "name": "同行反馈",
+      "description": "有效给予与接受写作反馈的方法",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "社群"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "style-consistency",
+      "name": "风格一致性",
+      "description": "文体、语气与格式在全文中的统一维护",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "clarity-conciseness",
+      "name": "清晰与简洁",
+      "description": "消除歧义、减少冗余、提高表达清晰度",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "rhythm-flow",
+      "name": "节奏与流畅",
+      "description": "句式节奏、段落衔接与全文流畅度的优化",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cutting-killing-darlings",
+      "name": "删减与割爱",
+      "description": "大胆删除冗余内容与心爱但无用的段落",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fact-verification",
+      "name": "事实核实",
+      "description": "修改阶段的事实、数据与引用准确性检查",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "formatting-layout",
+      "name": "排版与格式",
+      "description": "文档排版、标题层级与视觉呈现规范",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "style-guide",
+      "name": "写作风格指南",
+      "description": "常用风格指南(AP/Chicago/GB)的核心规范",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "developmental-editing",
+      "name": "发展性编辑",
+      "description": "宏观层面的内容、结构与论证质量评估",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "专业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "copyediting",
+      "name": "文字编辑",
+      "description": "语法、用词、风格与一致性的专业编辑",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "专业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ai-writing-tools",
+      "name": "AI写作工具",
+      "description": "GPT、Grammarly等AI辅助写作工具的应用与局限",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "revision-strategies",
+      "name": "修改策略",
+      "description": "分层修改、朗读法与逆向大纲等修改方法",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "editor-author-relation",
+      "name": "编辑与作者关系",
+      "description": "专业编辑流程中的沟通、协作与决策",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "专业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "portfolio-building",
+      "name": "作品集建设",
+      "description": "写作作品的选择、修订与作品集的构建策略",
+      "subdomain_id": "revision-craft",
+      "domain_id": "writing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "职业"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "writing-overview",
+      "target_id": "sentence-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "paragraph-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "writing-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "writing-genres-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-structure",
+      "target_id": "punctuation-usage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-structure",
+      "target_id": "word-choice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-structure",
+      "target_id": "grammar-essentials",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "paragraph-structure",
+      "target_id": "coherence-cohesion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-process",
+      "target_id": "outline-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-process",
+      "target_id": "topic-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "audience-awareness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audience-awareness",
+      "target_id": "tone-and-voice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-structure",
+      "target_id": "active-passive-voice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-structure",
+      "target_id": "parallel-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "word-choice",
+      "target_id": "figurative-language",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-structure",
+      "target_id": "sentence-variety",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "freewriting-techniques",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "word-choice",
+      "target_id": "vocabulary-building",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "writing-confidence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "writing-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "reading-writing-connection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "plot-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "character-creation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "setting-description",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "point-of-view",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plot-structure",
+      "target_id": "narrative-arc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plot-structure",
+      "target_id": "conflict-tension",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "character-creation",
+      "target_id": "dialogue-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "setting-description",
+      "target_id": "sensory-detail",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "show-dont-tell",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plot-structure",
+      "target_id": "pacing-rhythm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-arc",
+      "target_id": "theme-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plot-structure",
+      "target_id": "flashback-foreshadow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "point-of-view",
+      "target_id": "unreliable-narrator",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "memoir-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plot-structure",
+      "target_id": "short-story-craft",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plot-structure",
+      "target_id": "novel-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "character-creation",
+      "target_id": "biographical-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "travel-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "narrative-essay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "narrative-overview",
+      "target_id": "storytelling-oral",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "short-story-craft",
+      "target_id": "micro-fiction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "definition-essay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "process-essay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "comparison-contrast",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "cause-effect-essay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "classification-essay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "descriptive-essay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "informative-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "informative-writing",
+      "target_id": "data-presentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "informative-writing",
+      "target_id": "technical-description",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "science-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "news-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "news-writing",
+      "target_id": "feature-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "instruction-manual",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "summary-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "news-writing",
+      "target_id": "interview-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "review-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "expository-overview",
+      "target_id": "explanatory-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "data-presentation",
+      "target_id": "visual-aids-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "informative-writing",
+      "target_id": "fact-checking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "persuasive-overview",
+      "target_id": "thesis-statement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "thesis-statement",
+      "target_id": "argument-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "argument-structure",
+      "target_id": "evidence-types",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "argument-structure",
+      "target_id": "logical-reasoning-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "argument-structure",
+      "target_id": "counterargument",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "persuasive-overview",
+      "target_id": "rhetorical-appeals",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "logical-reasoning-writing",
+      "target_id": "logical-fallacies-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rhetorical-appeals",
+      "target_id": "persuasive-techniques",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "persuasive-overview",
+      "target_id": "editorial-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "argument-structure",
+      "target_id": "debate-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rhetorical-appeals",
+      "target_id": "speech-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "persuasive-overview",
+      "target_id": "opinion-essay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "argument-structure",
+      "target_id": "proposal-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "persuasive-techniques",
+      "target_id": "advertising-copywriting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rhetorical-appeals",
+      "target_id": "ethos-building",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rhetorical-appeals",
+      "target_id": "pathos-techniques",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rhetorical-appeals",
+      "target_id": "logos-strategies",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "persuasive-techniques",
+      "target_id": "call-to-action",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "argument-structure",
+      "target_id": "critical-analysis-essay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "logical-fallacies-writing",
+      "target_id": "propaganda-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "persuasive-overview",
+      "target_id": "persuasive-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "poetry-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "poetry-basics",
+      "target_id": "free-verse",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "poetry-basics",
+      "target_id": "classical-poetry-forms",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "imagery-symbolism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "creative-nonfiction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "flash-fiction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "dramatic-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dramatic-writing",
+      "target_id": "screenplay-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "poetry-basics",
+      "target_id": "song-lyrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "world-building",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "voice-style",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "voice-style",
+      "target_id": "experimental-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "humor-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "horror-suspense-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "childrens-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "writing-prompts",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "imagery-symbolism",
+      "target_id": "literary-devices",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "genre-fiction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "creative-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "publishing-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "creative-overview",
+      "target_id": "writing-workshop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "research-question",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-question",
+      "target_id": "literature-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "research-methodology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "academic-argument",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "citation-referencing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "abstract-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-question",
+      "target_id": "introduction-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "research-methodology",
+      "target_id": "methodology-section",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "methodology-section",
+      "target_id": "results-discussion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "results-discussion",
+      "target_id": "conclusion-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "academic-tone",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-tone",
+      "target_id": "hedging-language",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "literature-review",
+      "target_id": "thesis-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "peer-review-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "citation-referencing",
+      "target_id": "plagiarism-avoidance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "conference-paper",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "thesis-writing",
+      "target_id": "grant-proposal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "academic-book-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "results-discussion",
+      "target_id": "data-visualization-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "collaborative-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "academic-overview",
+      "target_id": "academic-presentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "business-email",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "report-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "resume-cover-letter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "meeting-minutes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "memo-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "technical-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "ux-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "content-marketing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "content-marketing",
+      "target_id": "social-media-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "press-release",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "contract-legal-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "report-writing",
+      "target_id": "grant-report",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "press-release",
+      "target_id": "crisis-communication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "policy-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "content-marketing",
+      "target_id": "pitch-deck-narrative",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "localization-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "content-marketing",
+      "target_id": "seo-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "content-marketing",
+      "target_id": "newsletter-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "professional-overview",
+      "target_id": "documentation-standards",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "self-editing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "structural-revision",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "structural-revision",
+      "target_id": "sentence-level-editing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-level-editing",
+      "target_id": "word-level-editing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "word-level-editing",
+      "target_id": "proofreading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "peer-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "style-consistency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "clarity-conciseness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "clarity-conciseness",
+      "target_id": "rhythm-flow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "self-editing",
+      "target_id": "cutting-killing-darlings",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "fact-verification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "formatting-layout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "style-guide",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "structural-revision",
+      "target_id": "developmental-editing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-level-editing",
+      "target_id": "copyediting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "ai-writing-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "revision-strategies",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "developmental-editing",
+      "target_id": "editor-author-relation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "revision-overview",
+      "target_id": "portfolio-building",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "narrative-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "expository-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "persuasive-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "creative-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "academic-overview",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "writing-overview",
+      "target_id": "professional-overview",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "writing-process",
+      "target_id": "revision-overview",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "figurative-language",
+      "target_id": "imagery-symbolism",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "figurative-language",
+      "target_id": "literary-devices",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "coherence-cohesion",
+      "target_id": "structural-revision",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "audience-awareness",
+      "target_id": "ux-writing",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "audience-awareness",
+      "target_id": "content-marketing",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "tone-and-voice",
+      "target_id": "voice-style",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "tone-and-voice",
+      "target_id": "academic-tone",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "argument-structure",
+      "target_id": "academic-argument",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "thesis-statement",
+      "target_id": "research-question",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "evidence-types",
+      "target_id": "citation-referencing",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "show-dont-tell",
+      "target_id": "sensory-detail",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "show-dont-tell",
+      "target_id": "imagery-symbolism",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "plot-structure",
+      "target_id": "screenplay-basics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "character-creation",
+      "target_id": "dramatic-writing",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "dialogue-writing",
+      "target_id": "dramatic-writing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "news-writing",
+      "target_id": "press-release",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "summary-writing",
+      "target_id": "abstract-writing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fact-checking",
+      "target_id": "fact-verification",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "proposal-writing",
+      "target_id": "grant-proposal",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "technical-description",
+      "target_id": "technical-writing",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "data-presentation",
+      "target_id": "data-visualization-writing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "review-writing",
+      "target_id": "academic-book-review",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "speech-writing",
+      "target_id": "academic-presentation",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "report-writing",
+      "target_id": "results-discussion",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "self-editing",
+      "target_id": "proofreading",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "style-guide",
+      "target_id": "style-consistency",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "word-choice",
+      "target_id": "word-level-editing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sentence-variety",
+      "target_id": "sentence-level-editing",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sentence-variety",
+      "target_id": "rhythm-flow",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "creative-nonfiction",
+      "target_id": "narrative-essay",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "creative-nonfiction",
+      "target_id": "memoir-writing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "flash-fiction",
+      "target_id": "micro-fiction",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "advertising-copywriting",
+      "target_id": "content-marketing",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "persuasive-techniques",
+      "target_id": "pathos-techniques",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "logical-reasoning-writing",
+      "target_id": "logos-strategies",
+      "relation_type": "related",
+      "strength": 0.7
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "created_at": "2026-03-20T05:16:04.824863+00:00",
+    "stats": {
+      "total_concepts": 170,
+      "total_edges": 204,
+      "total_subdomains": 8,
+      "total_milestones": 42
+    }
+  }
+}
