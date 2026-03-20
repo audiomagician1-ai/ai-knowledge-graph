@@ -443,7 +443,7 @@ async def test_rag_default_domain_backwards_compat():
         assert resp.status_code == 200
         data = resp.json()
         assert data["domain"] == "ai-engineering"
-        assert data["total_docs"] == 267
+        assert data["total_docs"] == 400
 
 
 @pytest.mark.asyncio
