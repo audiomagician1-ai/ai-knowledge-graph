@@ -92,7 +92,7 @@ const components: Components = {
     <blockquote
       className="mb-2 pl-3 border-l-2"
       style={{
-        borderColor: 'var(--color-accent-indigo)',
+        borderColor: 'var(--color-accent-blue)',
         color: 'var(--color-text-secondary)',
       }}
     >
@@ -128,7 +128,7 @@ const components: Components = {
       target="_blank"
       rel="noopener noreferrer"
       className="underline underline-offset-2 transition-colors"
-      style={{ color: 'var(--color-accent-indigo)' }}
+      style={{ color: 'var(--color-accent-blue)' }}
     >
       {children}
     </a>
