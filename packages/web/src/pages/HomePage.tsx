@@ -403,9 +403,53 @@ function drawOrb(
     ctx.font = `400 ${statsFontSize}px "Inter", sans-serif`;
     ctx.fillStyle = `rgba(60,60,60,${orb.hovered ? 0.7 : 0.5})`;
     const parts: string[] = [];
-    if (orb.stats.total_concepts != null) parts.push(`${orb.stats.total_concepts} 知识点`);
+    if (orb.progress && orb.progress.mastered > 0) {
+      parts.push(`${orb.progress.mastered}/${orb.progress.total} 已掌握`);
+    } else if (orb.progress && orb.progress.learning > 0) {
+      parts.push(`${orb.progress.learning} 学习中`);
+    } else if (orb.stats.total_concepts != null) {
+      parts.push(`${orb.stats.total_concepts} 知识点`);
+    }
     if (orb.stats.subdomains != null) parts.push(`${orb.stats.subdomains} 子领域`);
     if (parts.length) ctx.fillText(parts.join(' · '), sx, statsY);
+  }
+
+  // Progress arc ring — thin colored arc showing mastery percentage around the orb
+  if (orb.progress && orb.progress.total > 0 && (orb.progress.mastered > 0 || orb.progress.learning > 0)) {
+    const arcR = finalR * 1.12; // slightly outside the orb body
+    const masteredPct = orb.progress.mastered / orb.progress.total;
+    const learningPct = orb.progress.learning / orb.progress.total;
+    const startAngle = -Math.PI / 2; // 12 o'clock position
+
+    // Draw track (subtle background ring)
+    ctx.strokeStyle = hexToRgba(orb.color, 0.08);
+    ctx.lineWidth = 2.5 * scale;
+    ctx.beginPath();
+    ctx.arc(sx, sy, arcR, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Draw mastered arc (solid domain color)
+    if (masteredPct > 0) {
+      const masteredEnd = startAngle + masteredPct * Math.PI * 2;
+      ctx.strokeStyle = hexToRgba(orb.color, orb.hovered ? 0.8 : 0.55);
+      ctx.lineWidth = 2.5 * scale;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.arc(sx, sy, arcR, startAngle, masteredEnd);
+      ctx.stroke();
+    }
+
+    // Draw learning arc (lighter, after mastered)
+    if (learningPct > 0) {
+      const learningStart = startAngle + masteredPct * Math.PI * 2;
+      const learningEnd = learningStart + learningPct * Math.PI * 2;
+      ctx.strokeStyle = hexToRgba(orb.color, orb.hovered ? 0.35 : 0.2);
+      ctx.lineWidth = 2 * scale;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.arc(sx, sy, arcR, learningStart, learningEnd);
+      ctx.stroke();
+    }
   }
 
   return { sx, sy, finalR, scale };
@@ -541,6 +585,13 @@ export function HomePage() {
       const bx = Math.cos(angle) * rx + jitterX;
       const by = Math.sin(angle) * ry + jitterY;
       const bz = (Math.random() - 0.5) * Z_RANGE;
+      // Read learning progress from localStorage (no store subscription needed — snapshot)
+      const progress = peekDomainProgress(domain.id);
+      // Use seed total_concepts as the authoritative total if available
+      if (stats?.total_concepts && progress.total !== stats.total_concepts) {
+        progress.total = stats.total_concepts;
+      }
+
       return {
         baseX: bx, baseY: by, baseZ: bz,
         x: bx, y: by, z: bz,
@@ -551,6 +602,7 @@ export function HomePage() {
         domain,
         hovered: false,
         stats,
+        progress,
         miniNodes,
         miniEdges,
       };
