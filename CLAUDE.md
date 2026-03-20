@@ -1185,6 +1185,24 @@ data/seed/         — 种子图谱数据
     - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors
    - STATUS: 清理routing重构遗留死代码, 数据完整性验证通过
 
+- ✅ **第六十九轮深度巡逻审查+RAG索引修复+数据完整性审计 (2026-03-20, 83529ff)**:
+   - **FIX**: `data/rag/_index.json` ai-engineering RAG索引从267→400文档, 与Phase 6扩展后的400概念对齐 — 索引自Phase 6后一直是stale的(267), 导致`/api/graph/rag/{concept_id}?domain=ai-engineering`对133个新概念返回404; 教学不受影响(socratic.py直接读文件路径) [m-01, 83529ff]
+   - **FIX**: test_graph_api.py `test_rag_default_domain_backwards_compat` 断言267→400 [m-02]
+   - REVIEW: 深度代码审查+数据完整性审计(FE+BE全覆盖):
+     - FE direct-llm.ts(888行完整审查): DOMAIN_SUPPLEMENTS 10域 + ASSESSMENT_SUPPLEMENTS 10域 + parseChoicesFromContent + windowMessages + directCreateConversation + directChatStream + directAssess + validateAssessment — 全部正确
+     - FE dialogue.ts(569行完整审查): startConversation(opening simulation) + sendMessage(SSE stream/abort/stale guard) + requestAssessment + cancelStream + reset(auto-save) + loadSavedConversation + importConversations — 全部正确
+     - BE socratic.py: _load_rag_content domain路径分发(ai-engineering flat vs others nested) — 正确
+     - BE graph.py: _rag_index_path/_load_rag_index domain路径分发 — 正确
+     - 三方同步验证: BE feynman_system.py + FE direct-llm.ts + Workers prompts.ts — DOMAIN_SUPPLEMENTS和ASSESSMENT_SUPPLEMENTS 10个域完全一致
+   - DATA AUDIT: 全11域数据完整性审计(0 issues):
+     - 2,270概念(400+269+200+194+182+160+183+170+172+170+170), 2,839边, 11域100%有效
+     - 145跨球链接: 0断引用, 5种关系类型(same_concept 13/requires 20/related 81/applies_to 13/enables 18), 48个域对方向
+     - RAG覆盖: 全11域100%(400+269+200+194+182+160+183+170+172+170+170 = 2,270文件)
+   - SECURITY: 全项目无eval/exec/innerHTML/dangerouslySetInnerHTML/subprocess, 无TODO/FIXME in production code(仅4个future-phase stub占位符), 无敏感数据泄露, console.log无敏感信息
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.74s
+   - STATUS: 修复1个stale RAG索引(Phase 6遗留), 全量数据完整性验证通过
+
 - ✅ **第六十八轮巡逻审查+硬编码颜色修复+schema版本修正 (2026-03-20, 67ff4f5)**:
    - **FIX**: ChatPanel.tsx + LearnPage.tsx 3处硬编码`#eceae6`背景色 → `var(--color-surface-2)` — 统一使用设计系统CSS变量(--color-surface-2: #eaeae7), 确保主题变更时跟随 [m-01]
    - **FIX**: sqlite_client.py `_SCHEMA_VERSION`常量从1→2, 与实际schema v2迁移(conversations.domain_id)保持一致 [m-02]
