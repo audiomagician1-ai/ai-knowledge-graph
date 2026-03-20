@@ -252,7 +252,8 @@ app.get('/recommend', async (c) => {
   }
 
   const masteredDiffs = [...masteredIds].map(id => idToConcept[id]?.difficulty || 1);
-  const currentLevel = masteredDiffs.length > 0 ? masteredDiffs.reduce((a, b) => a + b, 0) / masteredDiffs.length : 1.0;
+  const currentLevel = masteredDiffs.length > 0 ? masteredDiffs.reduce((a, b) => a + b, 0) / masteredDiffs.length : 0.0;
+  const isNewUser = masteredIds.size === 0;
 
   const scored: Array<{ concept: any; score: number }> = [];
   for (const cc of seed.concepts) {
@@ -261,19 +262,31 @@ app.get('/recommend', async (c) => {
     if (!prereqs.every(p => masteredIds.has(p))) continue;
 
     let score = 0;
-    if (cc.is_milestone) score += 15;
-    const optimal = currentLevel + 1;
-    score += Math.max(0, 10 - Math.abs(cc.difficulty - optimal) * 2);
-    score += Math.min((depsMap[cc.id] || []).length * 2, 10);
-    const prog = progressMap[cc.id];
-    if (prog?.status === 'learning') { score += 8; if (prog.last_score > 0) score += 5; }
-    if (cc.estimated_minutes <= 15) score += 2;
-    else if (cc.estimated_minutes <= 25) score += 1;
+    const diff = cc.difficulty;
+
+    if (isNewUser) {
+      // New user: strongly prefer lowest difficulty (dominant factor)
+      // diff=1 → 50, diff=2 → 40, diff=3 → 30, diff=4 → 20, diff=5 → 10
+      score += Math.max(0, 60 - diff * 10);
+      if (cc.is_milestone) score += 3;
+      score += Math.min((depsMap[cc.id] || []).length * 0.5, 3);
+      if (cc.estimated_minutes <= 15) score += 1;
+    } else {
+      if (cc.is_milestone) score += 15;
+      const optimal = currentLevel + 1;
+      score += Math.max(0, 10 - Math.abs(diff - optimal) * 2);
+      score += Math.min((depsMap[cc.id] || []).length * 2, 10);
+      const prog = progressMap[cc.id];
+      if (prog?.status === 'learning') { score += 8; if (prog.last_score > 0) score += 5; }
+      if (cc.estimated_minutes <= 15) score += 2;
+      else if (cc.estimated_minutes <= 25) score += 1;
+    }
 
     scored.push({ concept: cc, score });
   }
 
-  scored.sort((a, b) => b.score - a.score);
+  // Sort by score descending, then difficulty ascending, then id (deterministic tiebreaker)
+  scored.sort((a, b) => b.score - a.score || a.concept.difficulty - b.concept.difficulty || a.concept.id.localeCompare(b.concept.id));
 
   const recommendations = scored.slice(0, topK).map(item => ({
     concept_id: item.concept.id,

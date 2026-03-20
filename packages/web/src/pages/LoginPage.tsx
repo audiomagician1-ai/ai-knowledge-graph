@@ -7,26 +7,17 @@ import { BookOpen, Loader2, ArrowRight, ArrowLeft, Sparkles, Brain, Network } fr
 function BackgroundDecoration() {
   return (
     <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden>
-      {/* Top-right emerald blob */}
       <div
         className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%)' }}
       />
-      {/* Bottom-left warm blob */}
       <div
         className="absolute -bottom-40 -left-40 w-[520px] h-[520px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%)' }}
       />
-      {/* Center-left subtle indigo blob */}
       <div
         className="absolute top-1/3 -left-20 w-[300px] h-[300px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%)' }}
       />
     </div>
   );
@@ -40,11 +31,11 @@ function FeaturePills() {
     { icon: Network, label: 'Knowledge Graph' },
   ];
   return (
-    <div className="flex items-center justify-center gap-2 flex-wrap">
+    <div className="flex items-center justify-center gap-3 flex-wrap">
       {pills.map(({ icon: Icon, label }) => (
         <span
           key={label}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
           style={{
             backgroundColor: 'var(--color-tint-primary)',
             color: 'var(--color-accent-primary)',
@@ -88,7 +79,6 @@ export function LoginPage() {
       }
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Operation failed';
-      // Network error: Supabase unreachable (common in China / corporate firewalls)
       if (msg === 'Failed to fetch' || msg.includes('fetch')) {
         setError('无法连接到认证服务器。请检查网络连接，或尝试使用 VPN。');
       } else {
@@ -113,7 +103,7 @@ export function LoginPage() {
 
   return (
     <div
-      className="relative flex min-h-dvh flex-col items-center justify-center px-6 py-12"
+      className="relative flex min-h-dvh flex-col items-center justify-center px-6 py-16"
       style={{ backgroundColor: 'var(--color-surface-0)' }}
     >
       <BackgroundDecoration />
@@ -138,8 +128,9 @@ export function LoginPage() {
 
       {/* ── Card container ── */}
       <div
-        className="relative z-10 w-full max-w-[420px] rounded-2xl p-8 sm:p-10 animate-fade-in"
+        className="relative z-10 w-full max-w-[440px] rounded-2xl animate-fade-in"
         style={{
+          padding: '44px 40px',
           backgroundColor: 'rgba(255,255,255,0.7)',
           backdropFilter: 'blur(20px)',
           border: '1px solid var(--color-border-subtle)',
@@ -147,23 +138,24 @@ export function LoginPage() {
         }}
       >
         {/* ── Logo + Title ── */}
-        <div className="text-center mb-10">
+        <div className="text-center" style={{ marginBottom: 36 }}>
           <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto"
             style={{
+              marginBottom: 20,
               background: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
               boxShadow: '0 4px 16px rgba(16,185,129,0.3)',
             }}
           >
             <BookOpen size={28} style={{ color: '#fff' }} strokeWidth={1.8} />
           </div>
-            <h1
-            className="text-2xl font-bold mb-3"
-            style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-text-primary)' }}
+          <h1
+            className="text-2xl font-bold"
+            style={{ marginBottom: 10, fontFamily: 'var(--font-heading)', color: 'var(--color-text-primary)' }}
           >
             AI Knowledge Graph
           </h1>
-          <p className="text-sm mb-5" style={{ color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
+          <p className="text-sm" style={{ marginBottom: 24, color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
             Sign in to sync your learning progress across devices
           </p>
           <FeaturePills />
@@ -172,11 +164,11 @@ export function LoginPage() {
         {/* ── OAuth buttons ── */}
         {supabaseConfigured && (
           <>
-            <div className="space-y-3 mb-7 animate-fade-in stagger-1">
+            <div className="animate-fade-in stagger-1" style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
               <button
                 onClick={() => handleOAuth('google')}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-3 rounded-xl py-3 text-sm font-medium transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-3 rounded-xl py-3.5 text-sm font-medium transition-all disabled:opacity-50"
                 style={{
                   backgroundColor: 'var(--color-surface-1)',
                   color: 'var(--color-text-primary)',
@@ -197,7 +189,7 @@ export function LoginPage() {
               <button
                 onClick={() => handleOAuth('github')}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-3 rounded-xl py-3 text-sm font-medium transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-3 rounded-xl py-3.5 text-sm font-medium transition-all disabled:opacity-50"
                 style={{
                   backgroundColor: 'var(--color-surface-1)',
                   color: 'var(--color-text-primary)',
@@ -218,7 +210,7 @@ export function LoginPage() {
             </div>
 
             {/* ── Divider ── */}
-            <div className="flex items-center gap-4 mb-7 animate-fade-in stagger-2">
+            <div className="flex items-center gap-4 animate-fade-in stagger-2" style={{ marginBottom: 28 }}>
               <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-border)' }} />
               <span className="text-xs font-medium tracking-wider uppercase" style={{ color: 'var(--color-text-tertiary)' }}>
                 or
@@ -229,10 +221,10 @@ export function LoginPage() {
         )}
 
         {/* ── Email form ── */}
-        <form onSubmit={handleSubmit} className="space-y-5 animate-fade-in stagger-3">
+        <form onSubmit={handleSubmit} className="animate-fade-in stagger-3" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {mode === 'register' && (
             <div>
-              <label className="block text-xs font-medium mb-2" style={{ color: 'var(--color-text-secondary)' }}>
+              <label className="block text-xs font-medium" style={{ marginBottom: 8, color: 'var(--color-text-secondary)' }}>
                 Display Name
               </label>
               <input
@@ -246,7 +238,7 @@ export function LoginPage() {
             </div>
           )}
           <div>
-            <label className="block text-xs font-medium mb-2" style={{ color: 'var(--color-text-secondary)' }}>
+            <label className="block text-xs font-medium" style={{ marginBottom: 8, color: 'var(--color-text-secondary)' }}>
               Email
             </label>
             <input
@@ -260,7 +252,7 @@ export function LoginPage() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium mb-2" style={{ color: 'var(--color-text-secondary)' }}>
+            <label className="block text-xs font-medium" style={{ marginBottom: 8, color: 'var(--color-text-secondary)' }}>
               Password
             </label>
             <input
@@ -277,8 +269,9 @@ export function LoginPage() {
 
           {error && (
             <div
-              className="text-sm px-4 py-3 rounded-lg"
+              className="text-sm rounded-lg"
               style={{
+                padding: '12px 16px',
                 backgroundColor: 'rgba(244,63,94,0.08)',
                 color: 'var(--color-accent-rose)',
                 border: '1px solid rgba(244,63,94,0.15)',
@@ -291,8 +284,10 @@ export function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl py-3.5 mt-2 text-sm font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full rounded-xl text-sm font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
             style={{
+              marginTop: 8,
+              padding: '14px 0',
               background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
               color: '#fff',
               boxShadow: '0 2px 8px rgba(16,185,129,0.3)',
@@ -311,8 +306,8 @@ export function LoginPage() {
           <button
             type="button"
             onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError(''); setPassword(''); }}
-            className="w-full py-2.5 text-sm font-medium transition-colors"
-            style={{ color: 'var(--color-accent-primary)' }}
+            className="w-full text-sm font-medium transition-colors"
+            style={{ padding: '12px 0', marginTop: 4, color: 'var(--color-accent-primary)' }}
             onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent-warm)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-accent-primary)'; }}
           >
@@ -324,8 +319,8 @@ export function LoginPage() {
       {/* ── Skip link (outside the card) ── */}
       <button
         onClick={() => navigate('/')}
-        className="relative z-10 mt-8 inline-flex items-center gap-1.5 text-sm font-medium transition-all animate-fade-in stagger-4 group"
-        style={{ color: 'var(--color-text-tertiary)' }}
+        className="relative z-10 inline-flex items-center gap-1.5 text-sm font-medium transition-all animate-fade-in stagger-4 group"
+        style={{ marginTop: 28, color: 'var(--color-text-tertiary)' }}
         onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
         onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-tertiary)'; }}
       >
@@ -335,8 +330,8 @@ export function LoginPage() {
 
       {/* ── Footer ── */}
       <p
-        className="relative z-10 mt-8 text-xs animate-fade-in stagger-5"
-        style={{ color: 'var(--color-text-tertiary)', opacity: 0.7 }}
+        className="relative z-10 text-xs animate-fade-in stagger-5"
+        style={{ marginTop: 16, color: 'var(--color-text-tertiary)', opacity: 0.7 }}
       >
         Your data is stored locally. Sign in to enable cloud sync.
       </p>

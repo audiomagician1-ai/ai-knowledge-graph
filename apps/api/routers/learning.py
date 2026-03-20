@@ -209,7 +209,8 @@ async def recommend_next(
 
     # Determine user's current level from mastered concepts
     mastered_difficulties = [id_to_concept[cid]["difficulty"] for cid in mastered_ids if cid in id_to_concept]
-    current_level = sum(mastered_difficulties) / len(mastered_difficulties) if mastered_difficulties else 1.0
+    current_level = sum(mastered_difficulties) / len(mastered_difficulties) if mastered_difficulties else 0.0
+    is_new_user = len(mastered_ids) == 0
 
     # Find available nodes: all prereqs mastered, not yet mastered
     candidates = []
@@ -227,39 +228,53 @@ async def recommend_next(
         cid = c["id"]
         score = 0.0
 
-        # Factor 1: Milestone bonus
-        if c.get("is_milestone", False):
-            score += 15.0
-
-        # Factor 2: Difficulty match (bell curve around current level, prefer slightly harder)
         diff = c["difficulty"]
-        optimal_diff = current_level + 1.0  # aim slightly above
-        distance = abs(diff - optimal_diff)
-        score += max(0, 10.0 - distance * 2.0)
 
-        # Factor 3: Downstream influence (more dependents = higher value)
-        downstream = len(dependents_map.get(cid, []))
-        score += min(downstream * 2.0, 10.0)
+        if is_new_user:
+            # New user: strongly prefer lowest difficulty (dominant factor)
+            # diff=1 → 50, diff=2 → 40, diff=3 → 30, diff=4 → 20, diff=5 → 10
+            score += max(0, 60.0 - diff * 10.0)
+            # Minor tiebreakers (cannot override difficulty ordering)
+            if c.get("is_milestone", False):
+                score += 3.0
+            downstream = len(dependents_map.get(cid, []))
+            score += min(downstream * 0.5, 3.0)
+            est_min = c.get("estimated_minutes", 30)
+            if est_min <= 15:
+                score += 1.0
+        else:
+            # Factor 1: Milestone bonus
+            if c.get("is_milestone", False):
+                score += 15.0
 
-        # Factor 4: Already started (encourage completion)
-        prog = progress_map.get(cid)
-        if prog and prog["status"] == "learning":
-            score += 8.0
-            # Higher bonus if they've already scored on it
-            if prog.get("last_score") and prog["last_score"] > 0:
-                score += 5.0
+            # Factor 2: Difficulty match (bell curve around current level, prefer slightly harder)
+            optimal_diff = current_level + 1.0  # aim slightly above
+            distance = abs(diff - optimal_diff)
+            score += max(0, 10.0 - distance * 2.0)
 
-        # Factor 5: Estimated time (prefer shorter when tied)
-        est_min = c.get("estimated_minutes", 30)
-        if est_min <= 15:
-            score += 2.0
-        elif est_min <= 25:
-            score += 1.0
+            # Factor 3: Downstream influence (more dependents = higher value)
+            downstream = len(dependents_map.get(cid, []))
+            score += min(downstream * 2.0, 10.0)
+
+            # Factor 4: Already started (encourage completion)
+            prog = progress_map.get(cid)
+            if prog and prog["status"] == "learning":
+                score += 8.0
+                # Higher bonus if they've already scored on it
+                if prog.get("last_score") and prog["last_score"] > 0:
+                    score += 5.0
+
+            # Factor 5: Estimated time (prefer shorter when tied)
+            est_min = c.get("estimated_minutes", 30)
+            if est_min <= 15:
+                score += 2.0
+            elif est_min <= 25:
+                score += 1.0
 
         scored.append({"concept": c, "score": score})
 
-    # Sort by score descending
-    scored.sort(key=lambda x: x["score"], reverse=True)
+    # Sort by score descending, then difficulty ascending (tiebreaker for same score)
+    scored.sort(key=lambda x: (-x["score"], x["concept"]["difficulty"], x["concept"]["id"]))
 
     # Return top_k
     recommendations = []

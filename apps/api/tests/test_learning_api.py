@@ -127,6 +127,33 @@ class TestLearningEndpoints:
         assert "recommendations" in data
         assert isinstance(data["recommendations"], list)
 
+    def test_recommend_new_user_lowest_difficulty_first(self):
+        """#14: New user (no mastered concepts) should get lowest difficulty recommendations first."""
+        res = client.get("/api/learning/recommend?top_k=5")
+        assert res.status_code == 200
+        data = res.json()
+        assert data["mastered_count"] == 0, "Test expects fresh state with no mastered concepts"
+        recs = data["recommendations"]
+        assert len(recs) >= 2, "Need at least 2 recommendations"
+        # Verify difficulty is non-decreasing (lowest first)
+        difficulties = [r["difficulty"] for r in recs]
+        for i in range(len(difficulties) - 1):
+            assert difficulties[i] <= difficulties[i + 1], (
+                f"Recommendation {i} (difficulty={difficulties[i]}) should come before "
+                f"recommendation {i+1} (difficulty={difficulties[i+1]}) for new users"
+            )
+
+    def test_recommend_deterministic_ordering(self):
+        """#14: Recommendations should be deterministically sorted (difficulty asc + id tiebreaker)."""
+        # Run twice and verify identical ordering
+        res1 = client.get("/api/learning/recommend?top_k=10")
+        res2 = client.get("/api/learning/recommend?top_k=10")
+        assert res1.status_code == 200 and res2.status_code == 200
+        ids1 = [r["concept_id"] for r in res1.json()["recommendations"]]
+        ids2 = [r["concept_id"] for r in res2.json()["recommendations"]]
+        assert ids1 == ids2, "Recommend ordering should be deterministic across calls"
+        assert len(ids1) >= 2, "Need at least 2 recommendations"
+
     def test_recommend_domain_param(self):
         """Round 80: /recommend?domain= should load domain-specific seed data."""
         import json, os

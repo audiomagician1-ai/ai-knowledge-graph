@@ -26,8 +26,12 @@ interface DomainProgress {
 }
 
 interface Orb {
+  /** Base position (center of the orbit path, set at init) */
+  baseX: number; baseY: number; baseZ: number;
+  /** Current position (computed each frame from base + breathing offset) */
   x: number; y: number; z: number;
-  vx: number; vy: number; vz: number;
+  /** Fixed random seed per orb — never changes after init */
+  seed: number;
   radius: number;
   color: string;
   glowColor: string;
@@ -79,7 +83,6 @@ const BG_CONNECTION_DIST = 260;
 const ORB_BASE_RADIUS = 57;
 const PERSPECTIVE = 600;
 const Z_RANGE = 200;
-const FLOAT_SPEED = 0.0004;
 const TRANSITION_MS = 900;
 const MINI_NODE_COUNT = 50;
 const MINI_EDGE_MAX = 40;
@@ -251,8 +254,8 @@ function drawMiniGraph(
   const [cr, cg, cb] = hexToRgb(color);
   const sphereR = finalR * 0.82;
   // Slow rotation
-  const rotY = time * 0.0003 + orbSeed;
-  const rotX = Math.sin(time * 0.0002 + orbSeed * 2) * 0.2;
+  const rotY = time * 0.00008 + orbSeed;
+  const rotX = Math.sin(time * 0.00006 + orbSeed * 2) * 0.15;
   const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
   const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
 
@@ -364,7 +367,7 @@ function drawOrb(
     ctx.beginPath();
     ctx.arc(sx, sy, finalR * 0.96, 0, Math.PI * 2);
     ctx.clip();
-    drawMiniGraph(ctx, sx, sy, finalR, orb.miniNodes, orb.miniEdges, orb.color, time, orb.x + orb.y, orb.hovered);
+    drawMiniGraph(ctx, sx, sy, finalR, orb.miniNodes, orb.miniEdges, orb.color, time, orb.seed, orb.hovered);
     ctx.restore();
   }
 
@@ -535,13 +538,13 @@ export function HomePage() {
       // Generate unique mini-graph for this orb
       const { nodes: miniNodes, edges: miniEdges } = generateMiniGraph();
 
+      const bx = Math.cos(angle) * rx + jitterX;
+      const by = Math.sin(angle) * ry + jitterY;
+      const bz = (Math.random() - 0.5) * Z_RANGE;
       return {
-        x: Math.cos(angle) * rx + jitterX,
-        y: Math.sin(angle) * ry + jitterY,
-        z: (Math.random() - 0.5) * Z_RANGE,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
-        vz: (Math.random() - 0.5) * 0.08,
+        baseX: bx, baseY: by, baseZ: bz,
+        x: bx, y: by, z: bz,
+        seed: i * 137.5 + 42, // fixed, deterministic seed per orb
         radius: ORB_BASE_RADIUS + (stats?.total_concepts ? Math.min(12, stats.total_concepts / 40) : 0),
         color: domain.color,
         glowColor,
@@ -585,20 +588,12 @@ export function HomePage() {
       const cy = h / 2 + 20; // push orbs slightly below center for header space
       const orbs = orbsRef.current;
 
-      // Float orbs
+      // Float orbs — pure sinusoidal breathing, no velocity/bounce
       for (const orb of orbs) {
-        orb.x += orb.vx + Math.sin(time * FLOAT_SPEED + orb.z) * 0.12;
-        orb.y += orb.vy + Math.cos(time * FLOAT_SPEED * 0.8 + orb.x * 0.01) * 0.1;
-        orb.z += orb.vz;
-        // Soft boundary bounce
-        const boundX = Math.max(300, w * 0.35), boundY = Math.max(200, h * 0.28), boundZ = Z_RANGE;
-        if (Math.abs(orb.x) > boundX) orb.vx *= -0.8;
-        if (Math.abs(orb.y) > boundY) orb.vy *= -0.8;
-        if (Math.abs(orb.z) > boundZ) orb.vz *= -0.8;
-        // Damping
-        orb.vx *= 0.9995;
-        orb.vy *= 0.9995;
-        orb.vz *= 0.9995;
+        const s = orb.seed;
+        orb.x = orb.baseX + Math.sin(time * 0.00012 + s) * 18 + Math.sin(time * 0.00005 + s * 2.3) * 8;
+        orb.y = orb.baseY + Math.cos(time * 0.0001 + s * 1.7) * 14 + Math.cos(time * 0.00004 + s * 3.1) * 6;
+        orb.z = orb.baseZ + Math.sin(time * 0.00008 + s * 0.9) * 20;
       }
 
       // Hit-test mouse for hover
