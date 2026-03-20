@@ -395,6 +395,18 @@ const TECHNICAL_ART_DOMAIN_SUPPLEMENT = `
 7. **平台差异**: PC/主机/移动端有截然不同的GPU架构和限制。避免一刀切，培养针对性优化思维
 `;
 
+const VFX_DOMAIN_SUPPLEMENT = `
+## 特效教学特殊规则
+
+1. **视觉参考先行**: 特效学习始终从视觉参考开始——分析AAA游戏和电影中的特效表现，理解"好特效"的标准
+2. **分层思维**: 好的特效是多层叠加的结果——底层粒子+中层Shader+顶层后处理。教学时分层拆解复杂特效
+3. **物理直觉**: 即使是卡通风格特效，也需要符合物理直觉。教学中培养对重力、空气阻力、惯性的感知
+4. **性能预算**: 特效是GPU开销的重灾区。始终强调Overdraw、粒子数量、Draw Call的控制，培养Profile习惯
+5. **引擎工具**: Niagara(UE5)/VFX Graph(Unity)是核心工具。教学中结合具体引擎工具讲解，但也传授通用原理
+6. **预计算vs实时**: 很多看似实时的特效实际是预计算(序列帧/VAT)。教学中培养在质量与性能间选择合适方案的能力
+7. **迭代优化**: 特效制作是不断迭代的过程——先实现核心效果，再逐步增加细节，最后优化性能
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -416,6 +428,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'concept-design': CONCEPT_DESIGN_DOMAIN_SUPPLEMENT,
   'animation': ANIMATION_DOMAIN_SUPPLEMENT,
   'technical-art': TECHNICAL_ART_DOMAIN_SUPPLEMENT,
+  'vfx': VFX_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -667,6 +680,19 @@ export const TECHNICAL_ART_ASSESSMENT_SUPPLEMENT = `
 - **跨平台**: 用户是否了解不同平台(PC/主机/移动)的GPU架构差异及其对美术管线的影响？
 `;
 
+export const VFX_ASSESSMENT_SUPPLEMENT = `
+## 特效领域评估特殊指标
+
+在评估特效概念理解时，请额外关注以下方面：
+- **粒子系统**: 用户是否理解粒子生命周期、发射模式、力场系统？能否设计合理的粒子效果？
+- **Shader特效**: 用户是否能编写/理解特效Shader(溶解、扭曲、UV滚动)？是否理解混合模式的原理？
+- **物理模拟**: 用户是否理解流体、破碎等物理模拟的基本原理？能否选择合适的模拟精度？
+- **性能意识**: 用户是否能识别Overdraw/粒子数量/DrawCall等特效性能瓶颈？能否提出优化方案？
+- **后处理**: 用户是否理解Bloom/DoF/运动模糊等后处理原理？能否配置合理的后处理管线？
+- **工作流**: 用户是否了解Houdini到引擎的特效烘焙流程？是否理解序列帧/VAT等预计算方案？
+- **艺术表现**: 用户是否能分析特效的美术风格？能否在写实/风格化之间做出合理选择？
+`;
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -687,6 +713,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'concept-design': CONCEPT_DESIGN_ASSESSMENT_SUPPLEMENT,
   'animation': ANIMATION_ASSESSMENT_SUPPLEMENT,
   'technical-art': TECHNICAL_ART_ASSESSMENT_SUPPLEMENT,
+  'vfx': VFX_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

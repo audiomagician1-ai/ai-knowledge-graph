@@ -219,6 +219,17 @@
       "rag_dir": "technical-art",
       "is_active": true,
       "sort_order": 20
+    },
+    {
+      "id": "vfx",
+      "name": "特效",
+      "description": "从粒子系统到后处理特效的完整游戏特效知识体系",
+      "icon": "✨",
+      "color": "#f97316",
+      "seed_dir": "vfx",
+      "rag_dir": "vfx",
+      "is_active": true,
+      "sort_order": 21
     }
   ]
 }

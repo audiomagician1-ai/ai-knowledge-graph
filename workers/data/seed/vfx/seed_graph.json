@@ -1,0 +1,3712 @@
+{
+  "domain": {
+    "id": "vfx",
+    "name": "特效",
+    "description": "从粒子系统到后处理特效的完整游戏特效知识体系"
+  },
+  "subdomains": [
+    {
+      "id": "niagara",
+      "name": "Niagara系统",
+      "order": 1
+    },
+    {
+      "id": "vfx-graph",
+      "name": "VFX Graph",
+      "order": 2
+    },
+    {
+      "id": "particle-physics",
+      "name": "粒子物理",
+      "order": 3
+    },
+    {
+      "id": "fluid-sim",
+      "name": "流体模拟",
+      "order": 4
+    },
+    {
+      "id": "destruction",
+      "name": "破碎与销毁",
+      "order": 5
+    },
+    {
+      "id": "post-process",
+      "name": "后处理特效",
+      "order": 6
+    },
+    {
+      "id": "flipbook",
+      "name": "序列帧特效",
+      "order": 7
+    },
+    {
+      "id": "shader-vfx",
+      "name": "Shader特效",
+      "order": 8
+    },
+    {
+      "id": "vfx-optimization",
+      "name": "特效优化",
+      "order": 9
+    }
+  ],
+  "concepts": [
+    {
+      "id": "vfx-niagara-overview",
+      "name": "Niagara系统概述",
+      "description": "UE5 Niagara粒子系统的架构与核心设计理念",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-niagara-emitter",
+      "name": "Emitter与System",
+      "description": "Niagara中Emitter和System的层级关系与组织方式",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-module",
+      "name": "Module脚本",
+      "description": "Niagara模块脚本编写——自定义粒子行为的核心",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-parameter",
+      "name": "参数与属性",
+      "description": "Niagara中粒子属性的定义、读写与生命周期管理",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-spawn",
+      "name": "生成模式",
+      "description": "Spawn Rate、Burst、事件触发等粒子生成策略",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-niagara-lifecycle",
+      "name": "粒子生命周期",
+      "description": "从生成到消亡的完整粒子生命周期管理",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-force",
+      "name": "力场与运动",
+      "description": "Niagara中重力、风力、吸引/排斥等力场模块",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-collision",
+      "name": "碰撞检测",
+      "description": "Niagara粒子与场景的碰撞检测与响应",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-event",
+      "name": "事件系统",
+      "description": "Niagara事件驱动——粒子间通信与级联触发",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-niagara-data-interface",
+      "name": "数据接口",
+      "description": "Niagara Data Interface——访问外部数据(网格、纹理、音频)",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-renderer",
+      "name": "渲染器类型",
+      "description": "Sprite/Mesh/Ribbon/Light等Niagara渲染器配置",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-ribbon",
+      "name": "Ribbon特效",
+      "description": "Ribbon渲染器实现拖尾、光束、闪电等条带特效",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-mesh",
+      "name": "Mesh粒子",
+      "description": "Mesh渲染器实现碎片、弹壳、落叶等3D粒子",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-gpu",
+      "name": "GPU模拟",
+      "description": "Niagara GPU Compute Sim——大规模粒子的GPU并行模拟",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-niagara-sim-stage",
+      "name": "Simulation Stage",
+      "description": "自定义模拟阶段实现多Pass粒子计算",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-neighbor-grid",
+      "name": "邻域网格",
+      "description": "Neighbor Grid 3D实现粒子间交互与空间查询",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-audio",
+      "name": "音频可视化",
+      "description": "Niagara音频数据接口驱动的可视化特效",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-camera",
+      "name": "相机交互",
+      "description": "粒子与相机的距离衰减、朝向、近裁剪处理",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-debug",
+      "name": "调试工具",
+      "description": "Niagara调试视图、属性可视化与性能分析",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-niagara-blueprint",
+      "name": "蓝图集成",
+      "description": "Niagara系统与游戏蓝图的双向通信与参数控制",
+      "subdomain_id": "niagara",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-vfxgraph-overview",
+      "name": "VFX Graph概述",
+      "description": "Unity VFX Graph节点式可视化粒子编辑系统",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-vfxgraph-context",
+      "name": "Context系统",
+      "description": "VFX Graph中Initialize/Update/Output三大Context",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-block",
+      "name": "Block与节点",
+      "description": "VFX Graph节点类型——Block、Operator、属性节点",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-spawn",
+      "name": "生成系统",
+      "description": "VFX Graph中Rate、Burst、GPU Event等生成方式",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-vfxgraph-attribute",
+      "name": "属性系统",
+      "description": "VFX Graph粒子属性的自定义与数据流",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-force",
+      "name": "力与运动",
+      "description": "VFX Graph中力场、湍流、噪声驱动的粒子运动",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-collision",
+      "name": "碰撞与交互",
+      "description": "VFX Graph粒子碰撞、深度缓冲碰撞与事件触发",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-output",
+      "name": "输出模式",
+      "description": "Quad/Mesh/Line/点云等Output Context配置",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-sdf",
+      "name": "SDF交互",
+      "description": "Signed Distance Field在VFX Graph中的应用",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-vfxgraph-gpu-event",
+      "name": "GPU事件",
+      "description": "VFX Graph GPU事件系统实现粒子级联",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-subgraph",
+      "name": "SubGraph复用",
+      "description": "VFX Graph SubGraph实现模块化特效",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-texture",
+      "name": "纹理采样",
+      "description": "VFX Graph中纹理采样、Flipbook、法线贴图应用",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-noise",
+      "name": "噪声函数",
+      "description": "Perlin/Simplex/Curl噪声在VFX Graph中的运用",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-strip",
+      "name": "Strip粒子",
+      "description": "VFX Graph中Strip(条带)粒子实现轨迹与拖尾",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-point-cache",
+      "name": "Point Cache",
+      "description": "点缓存数据驱动的粒子分布与动画",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-skinned-mesh",
+      "name": "蒙皮网格采样",
+      "description": "从Skinned Mesh表面生成粒子的技术",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-vfxgraph-shader-graph",
+      "name": "Shader Graph集成",
+      "description": "VFX Graph与Shader Graph的联合使用",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-timeline",
+      "name": "Timeline集成",
+      "description": "VFX Graph与Unity Timeline的同步控制",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-property",
+      "name": "Exposed Property",
+      "description": "VFX Graph暴露属性与C#脚本控制",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-vfxgraph-perf",
+      "name": "VFX Graph性能",
+      "description": "VFX Graph性能分析与优化策略",
+      "subdomain_id": "vfx-graph",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-overview",
+      "name": "粒子物理概述",
+      "description": "游戏特效中粒子物理模拟的基础理论与应用",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-particle-emission",
+      "name": "发射模型",
+      "description": "点/线/面/体积发射器的数学模型与参数控制",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-velocity",
+      "name": "速度与加速度",
+      "description": "粒子初速度分布、加速度场与速度衰减",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-gravity",
+      "name": "重力模拟",
+      "description": "重力加速度、抛物线轨迹与弹跳物理",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-particle-turbulence",
+      "name": "湍流与噪声",
+      "description": "Curl Noise、Perlin Noise驱动的湍流运动",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-drag",
+      "name": "阻力模型",
+      "description": "空气阻力、线性/二次阻力对粒子运动的影响",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-orbit",
+      "name": "轨道运动",
+      "description": "粒子绕点/轴公转的数学模型与参数",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-attract",
+      "name": "吸引与排斥",
+      "description": "引力场/排斥场/漩涡场对粒子群的作用",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-particle-collision-phys",
+      "name": "碰撞物理",
+      "description": "粒子碰撞的弹性系数、摩擦力与能量损失",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-size",
+      "name": "尺寸变化",
+      "description": "粒子生命周期内尺寸曲线与随机变化",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-color",
+      "name": "颜色演变",
+      "description": "粒子颜色随时间/速度/生命的渐变策略",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-rotation",
+      "name": "旋转控制",
+      "description": "粒子自旋、面向相机、速度对齐等旋转模式",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-sub-emitter",
+      "name": "子发射器",
+      "description": "粒子生成/碰撞/消亡时触发子粒子系统",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-particle-spring",
+      "name": "弹簧系统",
+      "description": "弹簧约束连接粒子实现弹性运动与布料简化",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-flocking",
+      "name": "群集行为",
+      "description": "Boids算法实现鸟群、鱼群等群集粒子运动",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-curve",
+      "name": "曲线驱动",
+      "description": "Spline/Bezier曲线引导粒子运动路径",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-random",
+      "name": "随机性控制",
+      "description": "种子值、分布函数与可重复随机在特效中的运用",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-wind",
+      "name": "风场系统",
+      "description": "全局/局部风场对粒子和植被的影响",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-volume",
+      "name": "体积发射",
+      "description": "从3D体积(球、盒、锥、网格)均匀发射粒子",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-particle-interpolation",
+      "name": "插值与缓动",
+      "description": "粒子属性插值曲线与缓动函数的应用",
+      "subdomain_id": "particle-physics",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-overview",
+      "name": "流体模拟概述",
+      "description": "游戏特效中流体模拟的基本方法与应用场景",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fluid-euler",
+      "name": "欧拉法网格流体",
+      "description": "基于固定网格的Euler方法流体模拟基础",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-lagrange",
+      "name": "拉格朗日粒子法",
+      "description": "SPH等无网格粒子法的流体模拟原理",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-navier-stokes",
+      "name": "Navier-Stokes简化",
+      "description": "游戏中Navier-Stokes方程的简化与近似求解",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fluid-sph",
+      "name": "SPH方法",
+      "description": "光滑粒子流体动力学在实时特效中的实现",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-flip",
+      "name": "FLIP/APIC方法",
+      "description": "混合粒子-网格方法实现高质量流体模拟",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-surface",
+      "name": "流体表面重建",
+      "description": "Marching Cubes等方法从粒子重建流体表面网格",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-foam",
+      "name": "泡沫与飞溅",
+      "description": "流体表面泡沫、飞溅、喷雾的生成与模拟",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fluid-viscosity",
+      "name": "粘性流体",
+      "description": "蜂蜜、岩浆等高粘性流体的模拟方法",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-fire",
+      "name": "火焰模拟",
+      "description": "基于流体的火焰模拟——温度场、燃烧模型与渲染",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-smoke",
+      "name": "烟雾模拟",
+      "description": "烟雾体积模拟——密度场、浮力、耗散与渲染",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fluid-realtime",
+      "name": "实时流体策略",
+      "description": "LOD、降采样、预计算等实时流体优化手段",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-texture",
+      "name": "流体纹理",
+      "description": "Flowmap、法线扰动等基于纹理的流体表现技巧",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-interaction",
+      "name": "流体交互",
+      "description": "角色/物体与流体的双向交互——力反馈与波纹",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-waterfall",
+      "name": "瀑布与水流",
+      "description": "瀑布、河流等有向水流的特效实现方案",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-ocean",
+      "name": "海洋模拟",
+      "description": "FFT海洋、Gerstner波等大规模水面模拟",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fluid-rain",
+      "name": "雨滴模拟",
+      "description": "雨水粒子、涟漪、湿润效果的综合实现",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-blood",
+      "name": "血液与液体",
+      "description": "游戏中血液、油漆等特殊液体的模拟与贴花",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-gpu",
+      "name": "GPU流体计算",
+      "description": "Compute Shader实现实时GPU流体模拟",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fluid-houdini",
+      "name": "Houdini流体导出",
+      "description": "Houdini离线流体烘焙为游戏可用的序列资产",
+      "subdomain_id": "fluid-sim",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-overview",
+      "name": "破碎系统概述",
+      "description": "游戏中物体破碎与销毁系统的设计理念",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-destruct-voronoi",
+      "name": "Voronoi碎裂",
+      "description": "Voronoi图驱动的程序化碎裂算法",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-prefracture",
+      "name": "预碎裂工作流",
+      "description": "离线预切割网格生成碎片资产的制作流程",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-destruct-runtime",
+      "name": "运行时碎裂",
+      "description": "实时计算碎裂的算法与性能权衡",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-chaos",
+      "name": "Chaos物理",
+      "description": "UE5 Chaos Destruction系统的使用与配置",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-hierarchy",
+      "name": "层级破碎",
+      "description": "多级破碎(大块→中块→小块)的层级结构设计",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-destruct-damage",
+      "name": "伤害模型",
+      "description": "基于伤害值/区域/类型的破碎触发机制",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-debris",
+      "name": "碎片与残骸",
+      "description": "碎片粒子、灰尘、烟雾等破碎附属特效",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-constraint",
+      "name": "约束系统",
+      "description": "破碎约束——连接力、断裂阈值与传播",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-cluster",
+      "name": "簇组管理",
+      "description": "Cluster Union实现大量碎片的高效物理分组",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-anchor",
+      "name": "锚点与支撑",
+      "description": "固定点设置防止结构整体坍塌的锚点系统",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-deform",
+      "name": "变形破坏",
+      "description": "金属弯曲、塑性变形等非碎裂破坏表现",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-destruct-decal",
+      "name": "破坏痕迹",
+      "description": "弹痕、裂缝、焦痕等破坏贴花系统",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-sound",
+      "name": "破碎音效",
+      "description": "破碎事件驱动的物理材质音效系统",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-building",
+      "name": "建筑破碎",
+      "description": "大型建筑结构破碎的特殊处理与优化",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-terrain",
+      "name": "地形破坏",
+      "description": "炸坑、地裂等地形动态破坏方案",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-cleanup",
+      "name": "碎片清理",
+      "description": "碎片生命周期管理——合并、淡出与回收",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-network",
+      "name": "网络同步",
+      "description": "破碎效果在多人游戏中的网络同步策略",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-lod",
+      "name": "破碎LOD",
+      "description": "远距离碎片简化与破碎效果的LOD策略",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-destruct-tool",
+      "name": "破碎工具链",
+      "description": "Houdini/Blender等DCC工具的预碎裂工作流",
+      "subdomain_id": "destruction",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-pp-overview",
+      "name": "后处理概述",
+      "description": "游戏后处理特效管线的设计与常见效果概览",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-pp-bloom",
+      "name": "Bloom泛光",
+      "description": "高亮区域光溢出效果的实现——阈值、模糊核与叠加",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-dof",
+      "name": "景深效果",
+      "description": "Depth of Field实现——Circle of Confusion与散景",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-pp-motion-blur",
+      "name": "运动模糊",
+      "description": "Per-Object/Camera运动模糊的实现与性能",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-tonemap",
+      "name": "色调映射",
+      "description": "HDR→LDR色调映射——ACES/Filmic/Reinhard等曲线",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-color-grading",
+      "name": "颜色分级",
+      "description": "LUT查找表、Lift/Gamma/Gain等颜色调整",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-pp-vignette",
+      "name": "暗角效果",
+      "description": "画面边缘暗角的实现与艺术运用",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-chromatic",
+      "name": "色散",
+      "description": "色差/色散效果模拟镜头光学缺陷",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-film-grain",
+      "name": "胶片颗粒",
+      "description": "胶片噪点与扫描线等复古效果",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-ao",
+      "name": "环境光遮蔽",
+      "description": "SSAO/HBAO/GTAO等屏幕空间AO技术",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-pp-ssr",
+      "name": "屏幕空间反射",
+      "description": "SSR实现——Ray March、Hi-Z追踪与降噪",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-fog",
+      "name": "体积雾",
+      "description": "高度雾、体积雾、God Ray等雾效实现",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-outline",
+      "name": "描边效果",
+      "description": "角色/物体描边——深度/法线/Sobel边缘检测",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-distortion",
+      "name": "画面扭曲",
+      "description": "热浪、冲击波、水下等屏幕扭曲效果",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-lens-flare",
+      "name": "镜头光晕",
+      "description": "镜头光晕、星芒等光学效果模拟",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-pp-custom",
+      "name": "自定义后处理",
+      "description": "编写自定义后处理Pass——Material/Compute方式",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-stencil",
+      "name": "模板缓冲应用",
+      "description": "Stencil Buffer实现局部后处理与遮罩效果",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-temporal",
+      "name": "TAA与时域滤波",
+      "description": "Temporal Anti-Aliasing与时域稳定化技术",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-volume",
+      "name": "后处理体积",
+      "description": "UE/Unity后处理体积的混合与优先级系统",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-pp-pipeline",
+      "name": "后处理管线",
+      "description": "后处理Pass排序、性能预算与全局管理",
+      "subdomain_id": "post-process",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-overview",
+      "name": "序列帧概述",
+      "description": "序列帧特效的基本概念与适用场景",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fb-atlas",
+      "name": "图集制作",
+      "description": "序列帧纹理图集的排列、尺寸与格式规范",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-playback",
+      "name": "播放控制",
+      "description": "帧率、循环模式、随机起始帧等播放参数",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fb-blending",
+      "name": "帧间混合",
+      "description": "相邻帧插值混合消除跳帧感",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-motion-vector",
+      "name": "运动矢量",
+      "description": "序列帧运动矢量贴图实现帧间运动补偿",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fb-capture",
+      "name": "序列帧捕获",
+      "description": "从3D模拟/Houdini/AE导出序列帧图集的工作流",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-houdini",
+      "name": "Houdini烘焙",
+      "description": "Houdini模拟结果烘焙为序列帧纹理的完整流程",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-explosion",
+      "name": "爆炸序列帧",
+      "description": "爆炸、烟雾等体积特效的序列帧制作要点",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fb-fire",
+      "name": "火焰序列帧",
+      "description": "火焰特效序列帧的制作技巧与着色方案",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-water",
+      "name": "水花序列帧",
+      "description": "水花、飞溅等流体序列帧的制作与应用",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-channel-pack",
+      "name": "通道打包",
+      "description": "RGBA通道分别存储不同数据的高效打包策略",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-normal",
+      "name": "法线序列帧",
+      "description": "序列帧法线贴图实现动态光照响应",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-emissive",
+      "name": "自发光序列帧",
+      "description": "Emissive序列帧实现发光特效的HDR表现",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-distortion-tex",
+      "name": "扭曲序列帧",
+      "description": "Distortion纹理序列帧实现热浪、冲击波",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-shader",
+      "name": "序列帧Shader",
+      "description": "序列帧播放Shader的编写——UV偏移、混合、裁剪",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-fb-optimization",
+      "name": "序列帧优化",
+      "description": "分辨率、帧数、压缩格式对性能和质量的影响",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-vat",
+      "name": "VAT顶点动画",
+      "description": "Vertex Animation Texture存储网格动画数据",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-realtime-capture",
+      "name": "实时捕获",
+      "description": "运行时Render Target捕获生成动态序列帧",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-sprite-sheet",
+      "name": "Sprite Sheet工具",
+      "description": "TexturePacker等工具自动生成优化图集",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-fb-comparison",
+      "name": "序列帧vs粒子",
+      "description": "序列帧与实时粒子特效的对比与混合使用策略",
+      "subdomain_id": "flipbook",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-overview",
+      "name": "Shader特效概述",
+      "description": "Shader在游戏特效中的角色与核心技术",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-shader-dissolve",
+      "name": "溶解效果",
+      "description": "Dissolve/Disintegrate Shader的Noise驱动实现",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-shader-uv-scroll",
+      "name": "UV滚动",
+      "description": "UV偏移/旋转实现流动、旋转等持续动画",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-distortion-sh",
+      "name": "折射扭曲",
+      "description": "GrabPass/Scene Color采样实现折射与扭曲效果",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-fresnel",
+      "name": "菲涅尔效果",
+      "description": "Fresnel边缘发光在护盾、全息、轮廓中的应用",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-shader-vertex-anim",
+      "name": "顶点动画",
+      "description": "Vertex Shader驱动的旗帜飘扬、水面波动",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-panning",
+      "name": "纹理流动",
+      "description": "多层纹理Panning混合实现岩浆、水流效果",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-soft-particle",
+      "name": "软粒子",
+      "description": "深度缓冲比较实现粒子与场景的柔和交融",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-shader-erosion",
+      "name": "边缘侵蚀",
+      "description": "Alpha Erosion技术实现边缘溶解与渐变消失",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-mask",
+      "name": "遮罩技术",
+      "description": "多种遮罩(纹理/距离/方向)控制特效范围与形状",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-depth-fade",
+      "name": "深度渐变",
+      "description": "基于深度的粒子透明度渐变与交叉淡出",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-polar",
+      "name": "极坐标变换",
+      "description": "UV极坐标转换实现漩涡、传送门等旋转效果",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-noise-gen",
+      "name": "噪声生成",
+      "description": "Shader内生成Perlin/Voronoi/Worley噪声的技巧",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-shader-rim",
+      "name": "边缘光",
+      "description": "Rim Light Shader实现角色受击、选中等高光边缘",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-hologram",
+      "name": "全息效果",
+      "description": "扫描线+噪声+菲涅尔的全息显示Shader",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-shield",
+      "name": "护盾Shader",
+      "description": "力场护盾——球面交叉+菲涅尔+噪声动画",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-trail",
+      "name": "拖尾Shader",
+      "description": "Trail/Ribbon渲染的UV生成与材质编写",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-custom-data",
+      "name": "自定义数据",
+      "description": "粒子系统传递Custom Data到Shader的管线",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-blend-mode",
+      "name": "混合模式",
+      "description": "Additive/Alpha/Pre-multiplied等混合模式原理与选择",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-shader-pbr-vfx",
+      "name": "PBR特效材质",
+      "description": "PBR工作流在特效材质(折射/透射/半透明)中的应用",
+      "subdomain_id": "shader-vfx",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-opt-overview",
+      "name": "特效优化概述",
+      "description": "游戏特效性能优化的目标、指标与方法论",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-opt-overdraw",
+      "name": "Overdraw控制",
+      "description": "半透明粒子Overdraw的测量与优化——减少fill rate压力",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-opt-particle-count",
+      "name": "粒子数量控制",
+      "description": "最大粒子数、动态调节与距离衰减策略",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-lod-vfx",
+      "name": "特效LOD",
+      "description": "基于距离/重要性的特效LOD与降级策略",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-texture-budget",
+      "name": "纹理预算",
+      "description": "特效纹理的分辨率、格式、压缩与共享策略",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-draw-call",
+      "name": "DrawCall优化",
+      "description": "粒子合批、Instancing与Material合并减少DC",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-opt-gpu-profiling",
+      "name": "GPU Profile",
+      "description": "RenderDoc/PIX/Frame Debugger分析特效GPU开销",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-cpu-profiling",
+      "name": "CPU Profile",
+      "description": "粒子系统CPU端更新的性能分析与瓶颈定位",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-bounds",
+      "name": "包围盒优化",
+      "description": "准确的粒子系统Bounds设置避免不必要的渲染",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-pooling",
+      "name": "特效池化",
+      "description": "Object Pool复用粒子系统实例减少GC压力",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-opt-scalability",
+      "name": "可扩展性设置",
+      "description": "不同硬件档位的特效质量分级与动态调整",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-mobile",
+      "name": "移动端优化",
+      "description": "移动平台特效的特殊限制与优化策略",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-atlas-share",
+      "name": "图集共享",
+      "description": "多特效共享纹理图集减少采样器与内存占用",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-sim-space",
+      "name": "模拟空间",
+      "description": "Local vs World空间模拟对性能和效果的影响",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-collision-cost",
+      "name": "碰撞开销",
+      "description": "粒子碰撞检测的性能成本与简化策略",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-light-vfx",
+      "name": "光源特效开销",
+      "description": "粒子光源(Point Light)的数量限制与替代方案",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-precompute",
+      "name": "预计算策略",
+      "description": "Baked Simulation/预烘焙替代实时计算",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "vfx-opt-budget-system",
+      "name": "预算系统",
+      "description": "全局特效预算管理——优先级队列与自动降级",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "applied",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-benchmark",
+      "name": "基准测试",
+      "description": "特效性能基准测试的方法与自动化测试",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vfx-opt-platform",
+      "name": "平台差异",
+      "description": "PC/Console/Mobile不同平台的特效适配策略",
+      "subdomain_id": "vfx-optimization",
+      "domain_id": "vfx",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "applied",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "vfx-niagara-overview",
+      "target_id": "vfx-niagara-emitter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-emitter",
+      "target_id": "vfx-niagara-module",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-module",
+      "target_id": "vfx-niagara-parameter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-parameter",
+      "target_id": "vfx-niagara-spawn",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-spawn",
+      "target_id": "vfx-niagara-lifecycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-lifecycle",
+      "target_id": "vfx-niagara-force",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-force",
+      "target_id": "vfx-niagara-collision",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-collision",
+      "target_id": "vfx-niagara-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-event",
+      "target_id": "vfx-niagara-data-interface",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-data-interface",
+      "target_id": "vfx-niagara-renderer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-renderer",
+      "target_id": "vfx-niagara-ribbon",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-ribbon",
+      "target_id": "vfx-niagara-mesh",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-mesh",
+      "target_id": "vfx-niagara-gpu",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-gpu",
+      "target_id": "vfx-niagara-sim-stage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-sim-stage",
+      "target_id": "vfx-niagara-neighbor-grid",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-neighbor-grid",
+      "target_id": "vfx-niagara-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-audio",
+      "target_id": "vfx-niagara-camera",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-camera",
+      "target_id": "vfx-niagara-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-debug",
+      "target_id": "vfx-niagara-blueprint",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-overview",
+      "target_id": "vfx-vfxgraph-context",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-context",
+      "target_id": "vfx-vfxgraph-block",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-block",
+      "target_id": "vfx-vfxgraph-spawn",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-spawn",
+      "target_id": "vfx-vfxgraph-attribute",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-attribute",
+      "target_id": "vfx-vfxgraph-force",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-force",
+      "target_id": "vfx-vfxgraph-collision",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-collision",
+      "target_id": "vfx-vfxgraph-output",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-output",
+      "target_id": "vfx-vfxgraph-sdf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-sdf",
+      "target_id": "vfx-vfxgraph-gpu-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-gpu-event",
+      "target_id": "vfx-vfxgraph-subgraph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-subgraph",
+      "target_id": "vfx-vfxgraph-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-texture",
+      "target_id": "vfx-vfxgraph-noise",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-noise",
+      "target_id": "vfx-vfxgraph-strip",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-strip",
+      "target_id": "vfx-vfxgraph-point-cache",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-point-cache",
+      "target_id": "vfx-vfxgraph-skinned-mesh",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-skinned-mesh",
+      "target_id": "vfx-vfxgraph-shader-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-shader-graph",
+      "target_id": "vfx-vfxgraph-timeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-timeline",
+      "target_id": "vfx-vfxgraph-property",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-vfxgraph-property",
+      "target_id": "vfx-vfxgraph-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-overview",
+      "target_id": "vfx-particle-emission",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-emission",
+      "target_id": "vfx-particle-velocity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-velocity",
+      "target_id": "vfx-particle-gravity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-gravity",
+      "target_id": "vfx-particle-turbulence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-turbulence",
+      "target_id": "vfx-particle-drag",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-drag",
+      "target_id": "vfx-particle-orbit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-orbit",
+      "target_id": "vfx-particle-attract",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-attract",
+      "target_id": "vfx-particle-collision-phys",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-collision-phys",
+      "target_id": "vfx-particle-size",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-size",
+      "target_id": "vfx-particle-color",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-color",
+      "target_id": "vfx-particle-rotation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-rotation",
+      "target_id": "vfx-particle-sub-emitter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-sub-emitter",
+      "target_id": "vfx-particle-spring",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-spring",
+      "target_id": "vfx-particle-flocking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-flocking",
+      "target_id": "vfx-particle-curve",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-curve",
+      "target_id": "vfx-particle-random",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-random",
+      "target_id": "vfx-particle-wind",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-wind",
+      "target_id": "vfx-particle-volume",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-particle-volume",
+      "target_id": "vfx-particle-interpolation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-overview",
+      "target_id": "vfx-fluid-euler",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-euler",
+      "target_id": "vfx-fluid-lagrange",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-lagrange",
+      "target_id": "vfx-fluid-navier-stokes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-navier-stokes",
+      "target_id": "vfx-fluid-sph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-sph",
+      "target_id": "vfx-fluid-flip",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-flip",
+      "target_id": "vfx-fluid-surface",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-surface",
+      "target_id": "vfx-fluid-foam",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-foam",
+      "target_id": "vfx-fluid-viscosity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-viscosity",
+      "target_id": "vfx-fluid-fire",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-fire",
+      "target_id": "vfx-fluid-smoke",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-smoke",
+      "target_id": "vfx-fluid-realtime",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-realtime",
+      "target_id": "vfx-fluid-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-texture",
+      "target_id": "vfx-fluid-interaction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-interaction",
+      "target_id": "vfx-fluid-waterfall",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-waterfall",
+      "target_id": "vfx-fluid-ocean",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-ocean",
+      "target_id": "vfx-fluid-rain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-rain",
+      "target_id": "vfx-fluid-blood",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-blood",
+      "target_id": "vfx-fluid-gpu",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fluid-gpu",
+      "target_id": "vfx-fluid-houdini",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-overview",
+      "target_id": "vfx-destruct-voronoi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-voronoi",
+      "target_id": "vfx-destruct-prefracture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-prefracture",
+      "target_id": "vfx-destruct-runtime",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-runtime",
+      "target_id": "vfx-destruct-chaos",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-chaos",
+      "target_id": "vfx-destruct-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-hierarchy",
+      "target_id": "vfx-destruct-damage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-damage",
+      "target_id": "vfx-destruct-debris",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-debris",
+      "target_id": "vfx-destruct-constraint",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-constraint",
+      "target_id": "vfx-destruct-cluster",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-cluster",
+      "target_id": "vfx-destruct-anchor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-anchor",
+      "target_id": "vfx-destruct-deform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-deform",
+      "target_id": "vfx-destruct-decal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-decal",
+      "target_id": "vfx-destruct-sound",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-sound",
+      "target_id": "vfx-destruct-building",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-building",
+      "target_id": "vfx-destruct-terrain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-terrain",
+      "target_id": "vfx-destruct-cleanup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-cleanup",
+      "target_id": "vfx-destruct-network",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-network",
+      "target_id": "vfx-destruct-lod",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-destruct-lod",
+      "target_id": "vfx-destruct-tool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-overview",
+      "target_id": "vfx-pp-bloom",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-bloom",
+      "target_id": "vfx-pp-dof",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-dof",
+      "target_id": "vfx-pp-motion-blur",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-motion-blur",
+      "target_id": "vfx-pp-tonemap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-tonemap",
+      "target_id": "vfx-pp-color-grading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-color-grading",
+      "target_id": "vfx-pp-vignette",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-vignette",
+      "target_id": "vfx-pp-chromatic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-chromatic",
+      "target_id": "vfx-pp-film-grain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-film-grain",
+      "target_id": "vfx-pp-ao",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-ao",
+      "target_id": "vfx-pp-ssr",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-ssr",
+      "target_id": "vfx-pp-fog",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-fog",
+      "target_id": "vfx-pp-outline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-outline",
+      "target_id": "vfx-pp-distortion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-distortion",
+      "target_id": "vfx-pp-lens-flare",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-lens-flare",
+      "target_id": "vfx-pp-custom",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-custom",
+      "target_id": "vfx-pp-stencil",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-stencil",
+      "target_id": "vfx-pp-temporal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-temporal",
+      "target_id": "vfx-pp-volume",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-pp-volume",
+      "target_id": "vfx-pp-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-overview",
+      "target_id": "vfx-fb-atlas",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-atlas",
+      "target_id": "vfx-fb-playback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-playback",
+      "target_id": "vfx-fb-blending",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-blending",
+      "target_id": "vfx-fb-motion-vector",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-motion-vector",
+      "target_id": "vfx-fb-capture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-capture",
+      "target_id": "vfx-fb-houdini",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-houdini",
+      "target_id": "vfx-fb-explosion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-explosion",
+      "target_id": "vfx-fb-fire",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-fire",
+      "target_id": "vfx-fb-water",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-water",
+      "target_id": "vfx-fb-channel-pack",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-channel-pack",
+      "target_id": "vfx-fb-normal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-normal",
+      "target_id": "vfx-fb-emissive",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-emissive",
+      "target_id": "vfx-fb-distortion-tex",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-distortion-tex",
+      "target_id": "vfx-fb-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-shader",
+      "target_id": "vfx-fb-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-optimization",
+      "target_id": "vfx-fb-vat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-vat",
+      "target_id": "vfx-fb-realtime-capture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-realtime-capture",
+      "target_id": "vfx-fb-sprite-sheet",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-fb-sprite-sheet",
+      "target_id": "vfx-fb-comparison",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-overview",
+      "target_id": "vfx-shader-dissolve",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-dissolve",
+      "target_id": "vfx-shader-uv-scroll",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-uv-scroll",
+      "target_id": "vfx-shader-distortion-sh",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-distortion-sh",
+      "target_id": "vfx-shader-fresnel",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-fresnel",
+      "target_id": "vfx-shader-vertex-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-vertex-anim",
+      "target_id": "vfx-shader-panning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-panning",
+      "target_id": "vfx-shader-soft-particle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-soft-particle",
+      "target_id": "vfx-shader-erosion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-erosion",
+      "target_id": "vfx-shader-mask",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-mask",
+      "target_id": "vfx-shader-depth-fade",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-depth-fade",
+      "target_id": "vfx-shader-polar",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-polar",
+      "target_id": "vfx-shader-noise-gen",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-noise-gen",
+      "target_id": "vfx-shader-rim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-rim",
+      "target_id": "vfx-shader-hologram",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-hologram",
+      "target_id": "vfx-shader-shield",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-shield",
+      "target_id": "vfx-shader-trail",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-trail",
+      "target_id": "vfx-shader-custom-data",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-custom-data",
+      "target_id": "vfx-shader-blend-mode",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-shader-blend-mode",
+      "target_id": "vfx-shader-pbr-vfx",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-overview",
+      "target_id": "vfx-opt-overdraw",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-overdraw",
+      "target_id": "vfx-opt-particle-count",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-particle-count",
+      "target_id": "vfx-opt-lod-vfx",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-lod-vfx",
+      "target_id": "vfx-opt-texture-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-texture-budget",
+      "target_id": "vfx-opt-draw-call",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-draw-call",
+      "target_id": "vfx-opt-gpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-gpu-profiling",
+      "target_id": "vfx-opt-cpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-cpu-profiling",
+      "target_id": "vfx-opt-bounds",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-bounds",
+      "target_id": "vfx-opt-pooling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-pooling",
+      "target_id": "vfx-opt-scalability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-scalability",
+      "target_id": "vfx-opt-mobile",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-mobile",
+      "target_id": "vfx-opt-atlas-share",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-atlas-share",
+      "target_id": "vfx-opt-sim-space",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-sim-space",
+      "target_id": "vfx-opt-collision-cost",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-collision-cost",
+      "target_id": "vfx-opt-light-vfx",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-light-vfx",
+      "target_id": "vfx-opt-precompute",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-precompute",
+      "target_id": "vfx-opt-budget-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-budget-system",
+      "target_id": "vfx-opt-benchmark",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-opt-benchmark",
+      "target_id": "vfx-opt-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vfx-niagara-force",
+      "target_id": "vfx-particle-gravity",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vfx-niagara-collision",
+      "target_id": "vfx-particle-collision-phys",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vfx-niagara-gpu",
+      "target_id": "vfx-opt-gpu-profiling",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vfx-vfxgraph-force",
+      "target_id": "vfx-particle-turbulence",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vfx-vfxgraph-collision",
+      "target_id": "vfx-particle-collision-phys",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vfx-particle-attract",
+      "target_id": "vfx-fluid-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vfx-fluid-interaction",
+      "target_id": "vfx-destruct-overview",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "vfx-destruct-debris",
+      "target_id": "vfx-pp-distortion",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "vfx-pp-custom",
+      "target_id": "vfx-shader-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vfx-pp-bloom",
+      "target_id": "vfx-shader-fresnel",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "vfx-fb-shader",
+      "target_id": "vfx-shader-uv-scroll",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vfx-fb-motion-vector",
+      "target_id": "vfx-shader-distortion-sh",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vfx-shader-soft-particle",
+      "target_id": "vfx-opt-overdraw",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vfx-shader-blend-mode",
+      "target_id": "vfx-opt-overdraw",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vfx-niagara-renderer",
+      "target_id": "vfx-fb-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vfx-niagara-renderer",
+      "target_id": "vfx-shader-custom-data",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vfx-vfxgraph-texture",
+      "target_id": "vfx-fb-atlas",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vfx-fluid-houdini",
+      "target_id": "vfx-fb-houdini",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    }
+  ]
+}

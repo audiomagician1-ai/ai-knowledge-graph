@@ -619,13 +619,13 @@ async def test_english_domain_subdomain_filter():
 
 @pytest.mark.asyncio
 async def test_three_domains_listed():
-    """Domain list should include all 20 active domains."""
+    """Domain list should include all 21 active domains."""
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/domains")
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2355,3 +2355,94 @@ async def test_technical_art_domain_supplements():
     assert "technical-art" in DOMAIN_SUPPLEMENTS, "technical-art missing from DOMAIN_SUPPLEMENTS"
     assert "technical-art" in ASSESSMENT_SUPPLEMENTS, "technical-art missing from ASSESSMENT_SUPPLEMENTS"
     assert "Shader" in DOMAIN_SUPPLEMENTS["technical-art"], "Technical Art supplement should mention Shader"
+
+
+# ── Phase 27: VFX (特效) Integration Tests ───────────────────────────
+
+@pytest.mark.asyncio
+async def test_vfx_seed_graph():
+    """VFX seed graph: 180 concepts, 189 edges, 9 subdomains, 44 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=vfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 180, f"Expected 180 concepts, got {len(nodes)}"
+        assert len(edges) == 189, f"Expected 189 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 9, f"Expected 9 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 44, f"Expected 44 milestones, got {len(milestones)}"
+
+
+@pytest.mark.asyncio
+async def test_vfx_rag_stats():
+    """VFX RAG stats should reflect 180 documents across 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=vfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 180
+
+
+@pytest.mark.asyncio
+async def test_vfx_concept_detail():
+    """GET /api/graph/concepts/{id} for a VFX concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/vfx-niagara-overview?domain=vfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "vfx-niagara-overview"
+        assert data["domain_id"] == "vfx"
+        assert data["is_milestone"] is True
+
+
+@pytest.mark.asyncio
+async def test_vfx_subdomains():
+    """VFX should have exactly 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=vfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 9
+        names = {s["name"] for s in data}
+        assert "Niagara系统" in names
+        assert "特效优化" in names
+
+
+@pytest.mark.asyncio
+async def test_vfx_cross_sphere_links():
+    """Cross-sphere links for vfx should exist (↔ computer-graphics/game-engine/technical-art/3d-art)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=vfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 20, f"Expected >= 20 cross-links, got {len(links)}"
+        partner_domains = set()
+        for lk in links:
+            partner_domains.add(lk.get("source_domain", ""))
+            partner_domains.add(lk.get("target_domain", ""))
+        assert "computer-graphics" in partner_domains, "Expected cross-links with computer-graphics"
+        assert "technical-art" in partner_domains, "Expected cross-links with technical-art"
+
+
+@pytest.mark.asyncio
+async def test_vfx_domain_supplements():
+    """VFX should have domain supplements in BE evaluation system."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "vfx" in DOMAIN_SUPPLEMENTS, "vfx missing from DOMAIN_SUPPLEMENTS"
+    assert "vfx" in ASSESSMENT_SUPPLEMENTS, "vfx missing from ASSESSMENT_SUPPLEMENTS"
+    assert "粒子" in DOMAIN_SUPPLEMENTS["vfx"] or "特效" in DOMAIN_SUPPLEMENTS["vfx"], "VFX supplement should mention particles/effects"
+
+
+@pytest.mark.asyncio
+async def test_vfx_neighbors():
+    """VFX concept should have neighbors."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/vfx-niagara-overview/neighbors?domain=vfx&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "vfx-niagara-overview"
+        assert len(data["nodes"]) >= 2

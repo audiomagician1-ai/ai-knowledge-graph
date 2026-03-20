@@ -2762,6 +2762,198 @@
       "target_id": "cd-style-rendering-level",
       "relation": "applies",
       "description": "皮肤材质实现概念设计渲染精度"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-bloom",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-pp-intro",
+      "relation": "applies",
+      "description": "Bloom泛光是后处理管线的核心效果之一"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-ao",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-ambient-occlusion",
+      "relation": "same_concept",
+      "description": "屏幕空间环境光遮蔽在特效和图形学中是同一技术"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-ssr",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-ssr",
+      "relation": "same_concept",
+      "description": "屏幕空间反射在特效和图形学中是同一技术"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-shader-fresnel",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-fresnel",
+      "relation": "applies",
+      "description": "菲涅尔效果在特效中广泛用于护盾/全息/轮廓发光"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-opt-gpu-profiling",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-gpu-profiling",
+      "relation": "same_concept",
+      "description": "GPU性能分析工具在特效和图形学中通用"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-niagara-overview",
+      "target_domain": "game-engine",
+      "target_id": "ue5-actor-component",
+      "relation": "applies",
+      "description": "Niagara系统是UE5引擎生态的核心VFX组件"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-niagara-gpu",
+      "target_domain": "game-engine",
+      "target_id": "gpu-driven-rendering",
+      "relation": "related",
+      "description": "Niagara GPU模拟与引擎GPU驱动渲染共享GPU计算管线"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-volume",
+      "target_domain": "game-engine",
+      "target_id": "post-processing",
+      "relation": "same_concept",
+      "description": "后处理体积在VFX和引擎中是同一概念"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-destruct-chaos",
+      "target_domain": "game-engine",
+      "target_id": "physics-engine-intro",
+      "relation": "applies",
+      "description": "Chaos破碎系统依赖UE5物理引擎子系统"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-shader-dissolve",
+      "target_domain": "technical-art",
+      "target_id": "ta-shader-overview",
+      "relation": "applies",
+      "description": "溶解Shader是技术美术Shader开发的经典案例"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-opt-overdraw",
+      "target_domain": "technical-art",
+      "target_id": "ta-shader-optimization",
+      "relation": "applies",
+      "description": "Overdraw控制是技术美术Shader优化的重要方面"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-fb-vat",
+      "target_domain": "technical-art",
+      "target_id": "ta-houdini-engine",
+      "relation": "applies",
+      "description": "VAT顶点动画纹理是技术美术Houdini集成的典型产出"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-destruct-prefracture",
+      "target_domain": "3d-art",
+      "target_id": "3da-modeling-intro",
+      "relation": "related",
+      "description": "预碎裂工作流需要3D建模基础知识"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-fb-atlas",
+      "target_domain": "3d-art",
+      "target_id": "3da-uv-intro",
+      "relation": "related",
+      "description": "序列帧图集排列与UV展开共享纹理空间管理概念"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-fb-playback",
+      "target_domain": "animation",
+      "target_id": "anim-keyframe-basics",
+      "relation": "related",
+      "description": "序列帧播放控制与关键帧动画的帧率/时间概念相通"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-niagara-blueprint",
+      "target_domain": "animation",
+      "target_id": "anim-abp-overview",
+      "relation": "related",
+      "description": "Niagara蓝图集成与动画蓝图系统在UE5中协同工作"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-destruct-overview",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "applies",
+      "description": "破碎系统为战斗设计提供视觉冲击力和打击反馈"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-color-grading",
+      "target_domain": "game-design",
+      "target_id": "emotion-design",
+      "relation": "applies",
+      "description": "颜色分级是游戏情感设计的重要视觉手段"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-opt-pooling",
+      "target_domain": "software-engineering",
+      "target_id": "se-object-pool",
+      "relation": "same_concept",
+      "description": "特效对象池与软件工程中的对象池模式是同一技术"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-pp-fog",
+      "target_domain": "level-design",
+      "target_id": "lighting-intro",
+      "relation": "applies",
+      "description": "体积雾是关卡光照设计中营造氛围的重要工具"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-shader-hologram",
+      "target_domain": "concept-design",
+      "target_id": "cd-visdev-look-dev",
+      "relation": "applies",
+      "description": "全息效果Shader实现需要参考概念设计的视觉开发"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-fluid-navier-stokes",
+      "target_domain": "mathematics",
+      "target_id": "differential-equations-intro",
+      "relation": "requires",
+      "description": "Navier-Stokes方程是偏微分方程在流体力学中的核心应用"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-particle-turbulence",
+      "target_domain": "mathematics",
+      "target_id": "vectors-intro",
+      "relation": "requires",
+      "description": "粒子湍流场需要理解向量场的数学基础"
+    },
+    {
+      "source_domain": "vfx",
+      "source_id": "vfx-particle-gravity",
+      "target_domain": "physics",
+      "target_id": "kinematics-1d",
+      "relation": "applies",
+      "description": "粒子重力模拟直接应用运动学的加速度和抛物线轨迹"
     }
   ],
   "meta": {
