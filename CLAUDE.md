@@ -1414,8 +1414,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (204 tests)
-cd apps/api && python -m pytest          # 后端测试 ✅ (500 tests)
-# Total: 704 tests
+cd apps/api && python -m pytest          # 后端测试 ✅ (584 tests)
+# Total: 788 tests
 ```
 
 ### 提交规范
