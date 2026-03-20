@@ -39,8 +39,8 @@
 
 ---
 
-**当前阶段**: 🔥 **Phase 27 下一步** | 20知识球(4,356节点) + Phase 26 技术美术球已完成
-**🔥 下一阶段**: **Phase 27-37 游戏开发全领域知识球** | 12个新球 — 详见 `docs/EXPANSION_PLAN.md` 第十章
+**当前阶段**: 🔥 **Phase 28 下一步** | 21知识球(4,536节点) + Phase 27 特效球已完成
+**🔥 下一阶段**: **Phase 28-37 游戏开发全领域知识球** | 11个新球 — 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 11球体 + 🔥20游戏开发球(P0最高优先级)
@@ -113,7 +113,16 @@
 > **测试总数**: 898 (213 FE + 685 BE)
 > **数据完整性**: 4,356概念 0重复ID, 4,908边 0断引用, 342跨球链接全部有效, 20域RAG 100%覆盖
 > **子域**: Shader开发/材质系统/程序化生成/性能优化/工具开发/管线搭建/LOD策略/内存与预算/美术标准制定/自动化工作流
-> **下一步**: Phase 27 DCC工具知识球
+> **下一步**: Phase 27 特效知识球
+
+**Phase 27 完成摘要** (特效知识球):
+> **目标**: 上线第二十一个知识球 — 特效(VFX), 覆盖Niagara系统到特效优化 (游戏开发P0-C第一球)
+> **前置**: Phase 26 ✅ 完成 (技术美术球)
+> **已完成**: 27.1 种子图谱(180概念,189边,9子域,44里程碑) ✅ | 27.2 RAG文档(180篇) ✅ | 27.3 对话引擎适配 ✅ | 27.4 评估器适配 ✅ | 27.5 跨球体关联(24链接→10域) ✅ | 27.6 集成测试 ✅ | 27.7 Workers同步 ✅
+> **测试总数**: 905 (213 FE + 692 BE)
+> **数据完整性**: 4,536概念 0重复ID, 5,097边 0断引用, 366跨球链接全部有效, 21域RAG 100%覆盖
+> **子域**: Niagara系统/VFX Graph/粒子物理/流体模拟/破碎与销毁/后处理特效/序列帧特效/Shader特效/特效优化
+> **下一步**: Phase 28 游戏音乐知识球
 
 **重构: 域补充注册表 (#9, 2a56848)**: 消除if-elif链式分发技术债务 — 5文件6处改为dict/Record查表, 新增知识域从编辑6处if-elif降为每文件1条dict/Record entry
 
@@ -149,6 +158,7 @@
 | **Phase 24** | W67-69 | 概念设计知识球(220节点, 240边, 11子域, 跨球体关联, 游戏开发P0-B第三球) | ✅ 完成 (24.1-24.7, 886 tests) |
 | **Phase 25** | W70-72 | 动画知识球(180节点, 184边, 10子域, 12原则+管线教学, 跨球体关联, 游戏开发P0-B第四球) | ✅ 完成 (25.1-25.7, 892 tests) |
 | **Phase 26** | W73-75 | 技术美术知识球(180节点, 181边, 10子域, Shader+管线+PCG教学, 跨球体关联, 游戏开发P0-B第五球) | ✅ 完成 (26.1-26.7, 898 tests) |
+| **Phase 27** | W76-78 | 特效知识球(180节点, 189边, 9子域, 粒子+后处理+破碎教学, 跨球体关联, 游戏开发P0-C第一球) | ✅ 完成 (27.1-27.7, 905 tests) |
 
 ---
 
@@ -1400,17 +1410,17 @@ data/seed/         — 种子图谱数据
 
 ## Last Review
 
-**Date**: 2026-03-21 | **Scope**: Phase 26 技术美术知识球 — 全栈验证+提交+推送 | **Result**: issues-filed (#20 completed)
+**Date**: 2026-03-21 | **Scope**: Phase 27 特效(VFX)知识球 — 全栈验证+提交+推送 | **Result**: issues-filed (#21 completed)
 
- - ✅ **Phase 26 技术美术知识球完成+提交 (2026-03-21, 9f8a26d)**:
-    - **SCOPE**: 上线第二十个知识球 — 技术美术, 覆盖Shader开发到自动化工作流 (游戏开发P0-B第五球)
-    - **DATA**: 种子图谱 180概念/181边/10子域/36里程碑 + RAG文档 180篇(100%覆盖) + 跨球体关联 25链接(↔ computer-graphics/3d-art/game-engine/software-engineering/animation/game-design/level-design/concept-design)
-    - **BACKEND**: feynman_system.py DOMAIN_SUPPLEMENTS + ASSESSMENT_SUPPLEMENTS 注册
+ - ✅ **Phase 27 特效知识球完成+提交 (2026-03-21, 85cc8b7)**:
+    - **SCOPE**: 上线第二十一个知识球 — 特效(VFX), 覆盖Niagara系统到特效优化 (游戏开发P0-C第一球)
+    - **DATA**: 种子图谱 180概念/189边/9子域/44里程碑 + RAG文档 180篇(100%覆盖) + 跨球体关联 24链接(↔ computer-graphics/game-engine/technical-art/3d-art/animation/game-design/software-engineering/level-design/concept-design/mathematics/physics)
+    - **BACKEND**: feynman_system.py VFX_DOMAIN_SUPPLEMENT + VFX_ASSESSMENT_SUPPLEMENT 注册
     - **FRONTEND**: direct-llm.ts DOMAIN_SUPPLEMENTS + ASSESSMENT_SUPPLEMENTS 注册
     - **WORKERS**: seed/RAG数据同步 + routes/graph.ts+dialogue.ts+learning.ts 注册 + prompts.ts 注册
-    - **TEST**: domain list test更新(19→20域) + evaluator supplements test更新 + cross-links domain list更新 + 7个新Phase 26集成测试
-    - **DATA INTEGRITY**: 20域 4,356概念 0重复ID, 4,908边 0断引用, 342跨球链接全部有效, 20域RAG 100%覆盖
-    - **GITHUB**: Issue #20 in progress, 0 other open issues
+    - **TEST**: domain list test更新(20→21域) + evaluator supplements test更新 + cross-links domain list更新 + 7个新Phase 27集成测试
+    - **DATA INTEGRITY**: 21域 4,536概念 0重复ID, 5,097边 0断引用, 366跨球链接全部有效, 21域RAG 100%覆盖
+    - **GITHUB**: Issue #21 closed, 0 other open issues
     - **VERIFY**: 898 tests (213 FE + 685 BE) 全通过, tsc 0 errors, build 3.73s, workers tsc 0 errors
     - **STATUS**: Phase 26完成, 下一步Phase 27 DCC工具知识球
 
