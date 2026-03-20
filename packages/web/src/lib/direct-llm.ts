@@ -289,6 +289,19 @@ const ECONOMICS_ASSESSMENT_SUPPLEMENT = `
 - **避免误区**: 用户是否避免了常见误解（如"贸易是零和博弈"、"通胀只有坏处"、"GDP=福利"）？
 `;
 
+const WRITING_ASSESSMENT_SUPPLEMENT = `
+## 写作领域评估特殊指标
+
+在评估写作概念理解时，请额外关注以下方面：
+- **技法理解**: 用户是否理解写作技法的原理和效果？如"展示而非告知"的沉浸感原理
+- **体裁意识**: 用户是否能区分不同写作体裁的特征与规范？
+- **结构能力**: 用户是否能分析和运用文章结构？如叙事弧线、论证结构
+- **修辞敏感**: 用户是否能识别和运用修辞手法？
+- **读者意识**: 用户是否能根据不同读者和场景调整写作策略？
+- **修改能力**: 用户是否理解修改的层次（结构→段落→句子→词语）？
+- **避免误区**: 用户是否避免了常见误解（如"好文章一气呵成"、"华丽辞藻=好文章"、"创意写作不需要技巧"）？
+`;
+
 // Domain-specific assessment supplement registry — add new domains here
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
@@ -300,6 +313,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'philosophy': PHILOSOPHY_ASSESSMENT_SUPPLEMENT,
   'biology': BIOLOGY_ASSESSMENT_SUPPLEMENT,
   'economics': ECONOMICS_ASSESSMENT_SUPPLEMENT,
+  'writing': WRITING_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

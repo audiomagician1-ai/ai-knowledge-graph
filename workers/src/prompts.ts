@@ -274,6 +274,18 @@ const ECONOMICS_DOMAIN_SUPPLEMENT = `
 7. **政策连接**: 理论最终服务于政策分析，讲完理论后引导学生思考其政策含义
 `;
 
+const WRITING_DOMAIN_SUPPLEMENT = `
+## 写作教学特殊规则
+
+1. **过程导向**: 写作是一个迭代过程（构思→起草→修改→校对），教学中强调每个阶段的方法而非仅关注最终成品
+2. **读者意识**: 始终引导学生思考"谁在读？读者需要什么？"，不同体裁有不同的读者期待和文体规范
+3. **示例驱动**: 每个写作技法都用经典范文片段示范（如讲"展示而非告知"用海明威、汪曾祺）
+4. **练习为本**: 写作是技能而非纯知识，必须通过练习习得，每讲一个技法后提供具体的练习建议
+5. **风格多元**: 尊重不同写作风格与传统，融合中西写作理论
+6. **批判修改**: 培养批判性自我审视能力，引导学生学会诊断自己文章的问题
+7. **真实写作**: 鼓励联系真实写作情境，让学习有即时应用价值
+`;
+
 
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
@@ -286,6 +298,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'philosophy': PHILOSOPHY_DOMAIN_SUPPLEMENT,
   'biology': BIOLOGY_DOMAIN_SUPPLEMENT,
   'economics': ECONOMICS_DOMAIN_SUPPLEMENT,
+  'writing': WRITING_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -407,6 +420,19 @@ const ECONOMICS_ASSESSMENT_SUPPLEMENT = `
 - **避免误区**: 用户是否避免了常见误解（如"贸易是零和博弈"、"通胀只有坏处"、"GDP=福利"）？
 `;
 
+const WRITING_ASSESSMENT_SUPPLEMENT = `
+## 写作领域评估特殊指标
+
+在评估写作概念理解时，请额外关注以下方面：
+- **技法理解**: 用户是否理解写作技法的原理和效果？
+- **体裁意识**: 用户是否能区分不同写作体裁的特征与规范？
+- **结构能力**: 用户是否能分析和运用文章结构？
+- **修辞敏感**: 用户是否能识别和运用修辞手法？
+- **读者意识**: 用户是否能根据不同读者和场景调整写作策略？
+- **修改能力**: 用户是否理解修改的层次（结构→段落→句子→词语）？
+- **避免误区**: 用户是否避免了常见误解（如"好文章一气呵成"、"华丽辞藻=好文章"、"创意写作不需要技巧"）？
+`;
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -417,6 +443,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'philosophy': PHILOSOPHY_ASSESSMENT_SUPPLEMENT,
   'biology': BIOLOGY_ASSESSMENT_SUPPLEMENT,
   'economics': ECONOMICS_ASSESSMENT_SUPPLEMENT,
+  'writing': WRITING_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {
