@@ -1364,4 +1364,35 @@ async def test_philosophy_in_domain_list():
         assert phil[0]["name"] == "哲学"
 
 
+# ── Philosophy RAG Tests (Phase 14.2) ──────────────────────
 
+
+@pytest.mark.asyncio
+async def test_rag_philosophy_stats():
+    """Philosophy RAG stats should reflect 170 documents."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=philosophy")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 170
+        assert data["domain"] == "philosophy"
+
+
+@pytest.mark.asyncio
+async def test_rag_philosophy_concept():
+    """Should return RAG content for a philosophy concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/socrates?domain=philosophy")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "socrates"
+        assert data["domain"] == "philosophy"
+        assert "核心内容" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_philosophy_404_wrong_domain():
+    """Philosophy concept should 404 when queried against another domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/socrates?domain=mathematics")
+        assert resp.status_code == 404
