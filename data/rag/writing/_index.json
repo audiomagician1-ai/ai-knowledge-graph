@@ -1,0 +1,2568 @@
+{
+  "documents": [
+    {
+      "id": "writing-overview",
+      "name": "写作概述",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/writing-fundamentals/writing-overview.md",
+      "exists": true,
+      "char_count": 501
+    },
+    {
+      "id": "sentence-structure",
+      "name": "句子结构",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "语法"
+      ],
+      "file": "writing/writing-fundamentals/sentence-structure.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "paragraph-structure",
+      "name": "段落结构",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "结构"
+      ],
+      "file": "writing/writing-fundamentals/paragraph-structure.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "punctuation-usage",
+      "name": "标点符号运用",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "语法"
+      ],
+      "file": "writing/writing-fundamentals/punctuation-usage.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "word-choice",
+      "name": "词语选择",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "writing/writing-fundamentals/word-choice.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "coherence-cohesion",
+      "name": "连贯与衔接",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "结构"
+      ],
+      "file": "writing/writing-fundamentals/coherence-cohesion.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "topic-selection",
+      "name": "选题与立意",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "writing/writing-fundamentals/topic-selection.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "outline-planning",
+      "name": "提纲与构思",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "writing/writing-fundamentals/outline-planning.md",
+      "exists": true,
+      "char_count": 507
+    },
+    {
+      "id": "writing-process",
+      "name": "写作过程",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "writing/writing-fundamentals/writing-process.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "audience-awareness",
+      "name": "读者意识",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "writing/writing-fundamentals/audience-awareness.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "tone-and-voice",
+      "name": "语气与声音",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "writing/writing-fundamentals/tone-and-voice.md",
+      "exists": true,
+      "char_count": 509
+    },
+    {
+      "id": "active-passive-voice",
+      "name": "主动与被动语态",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "语法"
+      ],
+      "file": "writing/writing-fundamentals/active-passive-voice.md",
+      "exists": true,
+      "char_count": 512
+    },
+    {
+      "id": "parallel-structure",
+      "name": "平行结构",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "修辞"
+      ],
+      "file": "writing/writing-fundamentals/parallel-structure.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "figurative-language",
+      "name": "修辞手法",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "修辞"
+      ],
+      "file": "writing/writing-fundamentals/figurative-language.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "writing-genres-overview",
+      "name": "写作体裁概览",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/writing-fundamentals/writing-genres-overview.md",
+      "exists": true,
+      "char_count": 514
+    },
+    {
+      "id": "reading-writing-connection",
+      "name": "读写互动",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "writing/writing-fundamentals/reading-writing-connection.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "freewriting-techniques",
+      "name": "自由写作技法",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "入门"
+      ],
+      "file": "writing/writing-fundamentals/freewriting-techniques.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "grammar-essentials",
+      "name": "语法要点",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "语法"
+      ],
+      "file": "writing/writing-fundamentals/grammar-essentials.md",
+      "exists": true,
+      "char_count": 507
+    },
+    {
+      "id": "vocabulary-building",
+      "name": "词汇积累",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "writing/writing-fundamentals/vocabulary-building.md",
+      "exists": true,
+      "char_count": 501
+    },
+    {
+      "id": "sentence-variety",
+      "name": "句式变化",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "writing/writing-fundamentals/sentence-variety.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "writing-confidence",
+      "name": "写作自信",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "心理"
+      ],
+      "file": "writing/writing-fundamentals/writing-confidence.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "writing-tools",
+      "name": "写作工具",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "writing/writing-fundamentals/writing-tools.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "narrative-overview",
+      "name": "叙事写作概述",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/narrative-writing/narrative-overview.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "plot-structure",
+      "name": "情节结构",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "结构"
+      ],
+      "file": "writing/narrative-writing/plot-structure.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "character-creation",
+      "name": "人物塑造",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "人物"
+      ],
+      "file": "writing/narrative-writing/character-creation.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "setting-description",
+      "name": "场景描写",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "描写"
+      ],
+      "file": "writing/narrative-writing/setting-description.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "point-of-view",
+      "name": "叙事视角",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/narrative-writing/point-of-view.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "dialogue-writing",
+      "name": "对话写作",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/narrative-writing/dialogue-writing.md",
+      "exists": true,
+      "char_count": 561
+    },
+    {
+      "id": "show-dont-tell",
+      "name": "展示而非告知",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/narrative-writing/show-dont-tell.md",
+      "exists": true,
+      "char_count": 569
+    },
+    {
+      "id": "conflict-tension",
+      "name": "冲突与张力",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "writing/narrative-writing/conflict-tension.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "pacing-rhythm",
+      "name": "节奏控制",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/narrative-writing/pacing-rhythm.md",
+      "exists": true,
+      "char_count": 561
+    },
+    {
+      "id": "narrative-arc",
+      "name": "叙事弧线",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "writing/narrative-writing/narrative-arc.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "theme-development",
+      "name": "主题发展",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "内涵"
+      ],
+      "file": "writing/narrative-writing/theme-development.md",
+      "exists": true,
+      "char_count": 561
+    },
+    {
+      "id": "sensory-detail",
+      "name": "感官细节",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "描写"
+      ],
+      "file": "writing/narrative-writing/sensory-detail.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "flashback-foreshadow",
+      "name": "闪回与伏笔",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/narrative-writing/flashback-foreshadow.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "unreliable-narrator",
+      "name": "不可靠叙述者",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "writing/narrative-writing/unreliable-narrator.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "memoir-writing",
+      "name": "回忆录写作",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/narrative-writing/memoir-writing.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "short-story-craft",
+      "name": "短篇小说技巧",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/narrative-writing/short-story-craft.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "novel-structure",
+      "name": "长篇小说结构",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "writing/narrative-writing/novel-structure.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "biographical-writing",
+      "name": "传记写作",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/narrative-writing/biographical-writing.md",
+      "exists": true,
+      "char_count": 562
+    },
+    {
+      "id": "travel-writing",
+      "name": "旅行写作",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/narrative-writing/travel-writing.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "narrative-essay",
+      "name": "叙事散文",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/narrative-writing/narrative-essay.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "storytelling-oral",
+      "name": "口头叙事",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/narrative-writing/storytelling-oral.md",
+      "exists": true,
+      "char_count": 561
+    },
+    {
+      "id": "micro-fiction",
+      "name": "微型小说",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/narrative-writing/micro-fiction.md",
+      "exists": true,
+      "char_count": 561
+    },
+    {
+      "id": "expository-overview",
+      "name": "说明文概述",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/expository-writing/expository-overview.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "definition-essay",
+      "name": "定义型说明文",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/expository-writing/definition-essay.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "process-essay",
+      "name": "过程型说明文",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/expository-writing/process-essay.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "comparison-contrast",
+      "name": "比较对比文",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/expository-writing/comparison-contrast.md",
+      "exists": true,
+      "char_count": 501
+    },
+    {
+      "id": "cause-effect-essay",
+      "name": "因果分析文",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/expository-writing/cause-effect-essay.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "classification-essay",
+      "name": "分类说明文",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/expository-writing/classification-essay.md",
+      "exists": true,
+      "char_count": 500
+    },
+    {
+      "id": "descriptive-essay",
+      "name": "描述型说明文",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/expository-writing/descriptive-essay.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "informative-writing",
+      "name": "信息型写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/expository-writing/informative-writing.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "data-presentation",
+      "name": "数据呈现",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/expository-writing/data-presentation.md",
+      "exists": true,
+      "char_count": 500
+    },
+    {
+      "id": "technical-description",
+      "name": "技术描述",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/expository-writing/technical-description.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "science-writing",
+      "name": "科普写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/expository-writing/science-writing.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "news-writing",
+      "name": "新闻写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/expository-writing/news-writing.md",
+      "exists": true,
+      "char_count": 500
+    },
+    {
+      "id": "feature-writing",
+      "name": "专题报道",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/expository-writing/feature-writing.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "instruction-manual",
+      "name": "说明书写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/expository-writing/instruction-manual.md",
+      "exists": true,
+      "char_count": 501
+    },
+    {
+      "id": "summary-writing",
+      "name": "摘要写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/expository-writing/summary-writing.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "interview-writing",
+      "name": "采访写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/expository-writing/interview-writing.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "review-writing",
+      "name": "评论写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/expository-writing/review-writing.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "explanatory-structure",
+      "name": "解释性结构",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "writing/expository-writing/explanatory-structure.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "visual-aids-writing",
+      "name": "图文配合写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "writing/expository-writing/visual-aids-writing.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "fact-checking",
+      "name": "事实核查",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "writing/expository-writing/fact-checking.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "persuasive-overview",
+      "name": "论说文概述",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/persuasive-writing/persuasive-overview.md",
+      "exists": true,
+      "char_count": 544
+    },
+    {
+      "id": "thesis-statement",
+      "name": "论点陈述",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "writing/persuasive-writing/thesis-statement.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "argument-structure",
+      "name": "论证结构",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "结构"
+      ],
+      "file": "writing/persuasive-writing/argument-structure.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "evidence-types",
+      "name": "论据类型",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "论据"
+      ],
+      "file": "writing/persuasive-writing/evidence-types.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "logical-reasoning-writing",
+      "name": "逻辑推理写作",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "逻辑"
+      ],
+      "file": "writing/persuasive-writing/logical-reasoning-writing.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "counterargument",
+      "name": "反驳与让步",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/persuasive-writing/counterargument.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "rhetorical-appeals",
+      "name": "修辞诉求",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "修辞"
+      ],
+      "file": "writing/persuasive-writing/rhetorical-appeals.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "logical-fallacies-writing",
+      "name": "逻辑谬误识别",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "逻辑"
+      ],
+      "file": "writing/persuasive-writing/logical-fallacies-writing.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "persuasive-techniques",
+      "name": "说服技巧",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/persuasive-writing/persuasive-techniques.md",
+      "exists": true,
+      "char_count": 543
+    },
+    {
+      "id": "editorial-writing",
+      "name": "社论写作",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/persuasive-writing/editorial-writing.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "debate-writing",
+      "name": "辩论稿写作",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/persuasive-writing/debate-writing.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "speech-writing",
+      "name": "演讲稿写作",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/persuasive-writing/speech-writing.md",
+      "exists": true,
+      "char_count": 544
+    },
+    {
+      "id": "opinion-essay",
+      "name": "观点文写作",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/persuasive-writing/opinion-essay.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "proposal-writing",
+      "name": "提案写作",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/persuasive-writing/proposal-writing.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "advertising-copywriting",
+      "name": "广告文案",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/persuasive-writing/advertising-copywriting.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "ethos-building",
+      "name": "人格信誉构建",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "修辞"
+      ],
+      "file": "writing/persuasive-writing/ethos-building.md",
+      "exists": true,
+      "char_count": 548
+    },
+    {
+      "id": "pathos-techniques",
+      "name": "情感唤起技法",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "修辞"
+      ],
+      "file": "writing/persuasive-writing/pathos-techniques.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "logos-strategies",
+      "name": "逻辑论证策略",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "逻辑"
+      ],
+      "file": "writing/persuasive-writing/logos-strategies.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "call-to-action",
+      "name": "行动号召",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/persuasive-writing/call-to-action.md",
+      "exists": true,
+      "char_count": 543
+    },
+    {
+      "id": "critical-analysis-essay",
+      "name": "批判分析文",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "writing/persuasive-writing/critical-analysis-essay.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "propaganda-analysis",
+      "name": "宣传手法分析",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "批判"
+      ],
+      "file": "writing/persuasive-writing/propaganda-analysis.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "persuasive-ethics",
+      "name": "说服伦理",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "伦理"
+      ],
+      "file": "writing/persuasive-writing/persuasive-ethics.md",
+      "exists": true,
+      "char_count": 543
+    },
+    {
+      "id": "creative-overview",
+      "name": "创意写作概述",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/creative-writing/creative-overview.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "poetry-basics",
+      "name": "诗歌基础",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "诗歌"
+      ],
+      "file": "writing/creative-writing/poetry-basics.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "free-verse",
+      "name": "自由诗",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "诗歌"
+      ],
+      "file": "writing/creative-writing/free-verse.md",
+      "exists": true,
+      "char_count": 562
+    },
+    {
+      "id": "classical-poetry-forms",
+      "name": "古典诗词",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "诗歌"
+      ],
+      "file": "writing/creative-writing/classical-poetry-forms.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "imagery-symbolism",
+      "name": "意象与象征",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/creative-writing/imagery-symbolism.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "creative-nonfiction",
+      "name": "创意非虚构",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/creative-writing/creative-nonfiction.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "flash-fiction",
+      "name": "闪小说",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/creative-writing/flash-fiction.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "dramatic-writing",
+      "name": "戏剧写作",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/creative-writing/dramatic-writing.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "screenplay-basics",
+      "name": "剧本写作基础",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/creative-writing/screenplay-basics.md",
+      "exists": true,
+      "char_count": 574
+    },
+    {
+      "id": "song-lyrics",
+      "name": "歌词创作",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/creative-writing/song-lyrics.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "world-building",
+      "name": "世界构建",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "虚构"
+      ],
+      "file": "writing/creative-writing/world-building.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "voice-style",
+      "name": "文学声音与风格",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "writing/creative-writing/voice-style.md",
+      "exists": true,
+      "char_count": 573
+    },
+    {
+      "id": "experimental-writing",
+      "name": "实验性写作",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "先锋"
+      ],
+      "file": "writing/creative-writing/experimental-writing.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "humor-writing",
+      "name": "幽默写作",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "writing/creative-writing/humor-writing.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "horror-suspense-writing",
+      "name": "恐怖悬疑写作",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/creative-writing/horror-suspense-writing.md",
+      "exists": true,
+      "char_count": 572
+    },
+    {
+      "id": "childrens-writing",
+      "name": "儿童文学写作",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/creative-writing/childrens-writing.md",
+      "exists": true,
+      "char_count": 572
+    },
+    {
+      "id": "writing-prompts",
+      "name": "写作提示与练习",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "练习"
+      ],
+      "file": "writing/creative-writing/writing-prompts.md",
+      "exists": true,
+      "char_count": 574
+    },
+    {
+      "id": "literary-devices",
+      "name": "文学手法",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/creative-writing/literary-devices.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "genre-fiction",
+      "name": "类型小说",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "writing/creative-writing/genre-fiction.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "creative-process",
+      "name": "创作过程",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "writing/creative-writing/creative-process.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "publishing-basics",
+      "name": "出版入门",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "出版"
+      ],
+      "file": "writing/creative-writing/publishing-basics.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "writing-workshop",
+      "name": "写作工坊",
+      "domain_id": "writing",
+      "subdomain_id": "creative-writing",
+      "subdomain_name": "创意写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社群"
+      ],
+      "file": "writing/creative-writing/writing-workshop.md",
+      "exists": true,
+      "char_count": 566
+    },
+    {
+      "id": "academic-overview",
+      "name": "学术写作概述",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/academic-writing/academic-overview.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "research-question",
+      "name": "研究问题",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "研究"
+      ],
+      "file": "writing/academic-writing/research-question.md",
+      "exists": true,
+      "char_count": 540
+    },
+    {
+      "id": "literature-review",
+      "name": "文献综述",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "研究"
+      ],
+      "file": "writing/academic-writing/literature-review.md",
+      "exists": true,
+      "char_count": 539
+    },
+    {
+      "id": "research-methodology",
+      "name": "研究方法论写作",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "研究"
+      ],
+      "file": "writing/academic-writing/research-methodology.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "academic-argument",
+      "name": "学术论证",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "论证"
+      ],
+      "file": "writing/academic-writing/academic-argument.md",
+      "exists": true,
+      "char_count": 539
+    },
+    {
+      "id": "citation-referencing",
+      "name": "引用与参考文献",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "规范"
+      ],
+      "file": "writing/academic-writing/citation-referencing.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "abstract-writing",
+      "name": "摘要写作",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "格式"
+      ],
+      "file": "writing/academic-writing/abstract-writing.md",
+      "exists": true,
+      "char_count": 538
+    },
+    {
+      "id": "introduction-writing",
+      "name": "引言写作",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "格式"
+      ],
+      "file": "writing/academic-writing/introduction-writing.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "methodology-section",
+      "name": "方法部分",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "格式"
+      ],
+      "file": "writing/academic-writing/methodology-section.md",
+      "exists": true,
+      "char_count": 538
+    },
+    {
+      "id": "results-discussion",
+      "name": "结果与讨论",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "格式"
+      ],
+      "file": "writing/academic-writing/results-discussion.md",
+      "exists": true,
+      "char_count": 544
+    },
+    {
+      "id": "conclusion-writing",
+      "name": "结论写作",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "格式"
+      ],
+      "file": "writing/academic-writing/conclusion-writing.md",
+      "exists": true,
+      "char_count": 539
+    },
+    {
+      "id": "academic-tone",
+      "name": "学术语体",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "writing/academic-writing/academic-tone.md",
+      "exists": true,
+      "char_count": 539
+    },
+    {
+      "id": "hedging-language",
+      "name": "模糊限制语",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "writing/academic-writing/hedging-language.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "thesis-writing",
+      "name": "学位论文写作",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "高级"
+      ],
+      "file": "writing/academic-writing/thesis-writing.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "peer-review-process",
+      "name": "同行评审",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "出版"
+      ],
+      "file": "writing/academic-writing/peer-review-process.md",
+      "exists": true,
+      "char_count": 541
+    },
+    {
+      "id": "plagiarism-avoidance",
+      "name": "避免抄袭",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "伦理"
+      ],
+      "file": "writing/academic-writing/plagiarism-avoidance.md",
+      "exists": true,
+      "char_count": 540
+    },
+    {
+      "id": "conference-paper",
+      "name": "会议论文",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "出版"
+      ],
+      "file": "writing/academic-writing/conference-paper.md",
+      "exists": true,
+      "char_count": 538
+    },
+    {
+      "id": "grant-proposal",
+      "name": "科研基金申请",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "writing/academic-writing/grant-proposal.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "academic-book-review",
+      "name": "学术书评",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/academic-writing/academic-book-review.md",
+      "exists": true,
+      "char_count": 539
+    },
+    {
+      "id": "data-visualization-writing",
+      "name": "数据可视化写作",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "writing/academic-writing/data-visualization-writing.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "collaborative-writing",
+      "name": "合作写作",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "writing/academic-writing/collaborative-writing.md",
+      "exists": true,
+      "char_count": 540
+    },
+    {
+      "id": "academic-presentation",
+      "name": "学术报告",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "展示"
+      ],
+      "file": "writing/academic-writing/academic-presentation.md",
+      "exists": true,
+      "char_count": 540
+    },
+    {
+      "id": "professional-overview",
+      "name": "职业写作概述",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/professional-writing/professional-overview.md",
+      "exists": true,
+      "char_count": 522
+    },
+    {
+      "id": "business-email",
+      "name": "商务邮件",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/professional-writing/business-email.md",
+      "exists": true,
+      "char_count": 518
+    },
+    {
+      "id": "report-writing",
+      "name": "报告写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/professional-writing/report-writing.md",
+      "exists": true,
+      "char_count": 518
+    },
+    {
+      "id": "resume-cover-letter",
+      "name": "简历与求职信",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "职业"
+      ],
+      "file": "writing/professional-writing/resume-cover-letter.md",
+      "exists": true,
+      "char_count": 523
+    },
+    {
+      "id": "meeting-minutes",
+      "name": "会议纪要",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/professional-writing/meeting-minutes.md",
+      "exists": true,
+      "char_count": 515
+    },
+    {
+      "id": "memo-writing",
+      "name": "备忘录写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/professional-writing/memo-writing.md",
+      "exists": true,
+      "char_count": 520
+    },
+    {
+      "id": "technical-writing",
+      "name": "技术文档写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "技术"
+      ],
+      "file": "writing/professional-writing/technical-writing.md",
+      "exists": true,
+      "char_count": 526
+    },
+    {
+      "id": "ux-writing",
+      "name": "用户体验写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "writing/professional-writing/ux-writing.md",
+      "exists": true,
+      "char_count": 525
+    },
+    {
+      "id": "content-marketing",
+      "name": "内容营销写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "营销"
+      ],
+      "file": "writing/professional-writing/content-marketing.md",
+      "exists": true,
+      "char_count": 525
+    },
+    {
+      "id": "social-media-writing",
+      "name": "社交媒体写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "营销"
+      ],
+      "file": "writing/professional-writing/social-media-writing.md",
+      "exists": true,
+      "char_count": 523
+    },
+    {
+      "id": "press-release",
+      "name": "新闻稿",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "公关"
+      ],
+      "file": "writing/professional-writing/press-release.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "contract-legal-writing",
+      "name": "合同与法律文书",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "法律"
+      ],
+      "file": "writing/professional-writing/contract-legal-writing.md",
+      "exists": true,
+      "char_count": 527
+    },
+    {
+      "id": "grant-report",
+      "name": "项目总结报告",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "writing/professional-writing/grant-report.md",
+      "exists": true,
+      "char_count": 523
+    },
+    {
+      "id": "crisis-communication",
+      "name": "危机沟通写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "公关"
+      ],
+      "file": "writing/professional-writing/crisis-communication.md",
+      "exists": true,
+      "char_count": 525
+    },
+    {
+      "id": "policy-writing",
+      "name": "政策文件写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行政"
+      ],
+      "file": "writing/professional-writing/policy-writing.md",
+      "exists": true,
+      "char_count": 523
+    },
+    {
+      "id": "pitch-deck-narrative",
+      "name": "商业计划叙事",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "writing/professional-writing/pitch-deck-narrative.md",
+      "exists": true,
+      "char_count": 522
+    },
+    {
+      "id": "localization-writing",
+      "name": "本地化写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "国际"
+      ],
+      "file": "writing/professional-writing/localization-writing.md",
+      "exists": true,
+      "char_count": 521
+    },
+    {
+      "id": "seo-writing",
+      "name": "SEO写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数字"
+      ],
+      "file": "writing/professional-writing/seo-writing.md",
+      "exists": true,
+      "char_count": 521
+    },
+    {
+      "id": "newsletter-writing",
+      "name": "通讯写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "营销"
+      ],
+      "file": "writing/professional-writing/newsletter-writing.md",
+      "exists": true,
+      "char_count": 517
+    },
+    {
+      "id": "documentation-standards",
+      "name": "文档标准",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "writing/professional-writing/documentation-standards.md",
+      "exists": true,
+      "char_count": 517
+    },
+    {
+      "id": "revision-overview",
+      "name": "修改概述",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "writing/revision-craft/revision-overview.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "self-editing",
+      "name": "自我编辑",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/revision-craft/self-editing.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "structural-revision",
+      "name": "结构修改",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "层次"
+      ],
+      "file": "writing/revision-craft/structural-revision.md",
+      "exists": true,
+      "char_count": 566
+    },
+    {
+      "id": "sentence-level-editing",
+      "name": "句子层修改",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "层次"
+      ],
+      "file": "writing/revision-craft/sentence-level-editing.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "word-level-editing",
+      "name": "词语层修改",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "层次"
+      ],
+      "file": "writing/revision-craft/word-level-editing.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "proofreading",
+      "name": "校对",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "writing/revision-craft/proofreading.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "peer-feedback",
+      "name": "同行反馈",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社群"
+      ],
+      "file": "writing/revision-craft/peer-feedback.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "style-consistency",
+      "name": "风格一致性",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "writing/revision-craft/style-consistency.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "clarity-conciseness",
+      "name": "清晰与简洁",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "原则"
+      ],
+      "file": "writing/revision-craft/clarity-conciseness.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "rhythm-flow",
+      "name": "节奏与流畅",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "writing/revision-craft/rhythm-flow.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "cutting-killing-darlings",
+      "name": "删减与割爱",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "writing/revision-craft/cutting-killing-darlings.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "fact-verification",
+      "name": "事实核实",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "writing/revision-craft/fact-verification.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "formatting-layout",
+      "name": "排版与格式",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "格式"
+      ],
+      "file": "writing/revision-craft/formatting-layout.md",
+      "exists": true,
+      "char_count": 569
+    },
+    {
+      "id": "style-guide",
+      "name": "写作风格指南",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "writing/revision-craft/style-guide.md",
+      "exists": true,
+      "char_count": 582
+    },
+    {
+      "id": "developmental-editing",
+      "name": "发展性编辑",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "专业"
+      ],
+      "file": "writing/revision-craft/developmental-editing.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "copyediting",
+      "name": "文字编辑",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "专业"
+      ],
+      "file": "writing/revision-craft/copyediting.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "ai-writing-tools",
+      "name": "AI写作工具",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "writing/revision-craft/ai-writing-tools.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "revision-strategies",
+      "name": "修改策略",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "writing/revision-craft/revision-strategies.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "editor-author-relation",
+      "name": "编辑与作者关系",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "专业"
+      ],
+      "file": "writing/revision-craft/editor-author-relation.md",
+      "exists": true,
+      "char_count": 575
+    },
+    {
+      "id": "portfolio-building",
+      "name": "作品集建设",
+      "domain_id": "writing",
+      "subdomain_id": "revision-craft",
+      "subdomain_name": "修改与文体",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "职业"
+      ],
+      "file": "writing/revision-craft/portfolio-building.md",
+      "exists": true,
+      "char_count": 572
+    }
+  ],
+  "stats": {
+    "total_docs": 170,
+    "total_chars": 91782,
+    "by_subdomain": {
+      "writing-fundamentals": 22,
+      "narrative-writing": 22,
+      "expository-writing": 20,
+      "persuasive-writing": 22,
+      "creative-writing": 22,
+      "academic-writing": 22,
+      "professional-writing": 20,
+      "revision-craft": 20
+    }
+  }
+}
