@@ -1254,6 +1254,26 @@ data/seed/         — 种子图谱数据
    - VERIFY: 802 tests (209 FE + 593 BE) 全通过, tsc 0 errors, build 3.67s
    - STATUS: 消除最后一个生产tsx `as any`, 全栈基础设施15+模块审查无重大问题, 代码质量优秀
 
+- ✅ **第七十八轮Workers深度审查+三方同步回归测试+域中立Opening修复 (2026-03-20, 6fe1c23)**:
+   - **TEST**: +3新回归测试(test_graph_api.py):
+     - `test_domain_supplements_three_way_sync`: DOMAIN_SUPPLEMENTS keys必须BE/FE/Workers三方一致。共享`_extract_ts_map_keys()`辅助函数解析TypeScript `Record<string, string>` map块, 正确处理内联模板字面量(FE)和常量引用(Workers)两种格式
+     - `test_assessment_supplements_three_way_sync`: ASSESSMENT_SUPPLEMENTS keys三方一致验证
+     - `test_workers_opening_domain_neutral`: Workers getOpening()中禁止出现"编程/代码/programming/coding"等CS特定术语
+   - **FIX[Medium]**: Workers `routes/dialogue.ts` getOpening() difficulty≤3的开场白包含"编程中很基础" — 对非CS域(biology/economics/writing等)产生误导。修改为域中立的"是很基础但很重要的概念", 与BE(socratic.py)和FE(direct-llm.ts)的fallback风格一致
+   - **FIX[Low]**: Workers `llm.ts` llmChat()返回值`data.choices[0].message.content`无null保护 — 若LLM返回异常响应结构(空choices数组等), 原代码抛出不可读的TypeError。添加optional chaining + typeof检查, 抛出明确错误信息
+   - REVIEW: Workers全量代码深度审查(6文件, 248+210+359+299+49+32=1197行):
+     - index.ts(49行): CORS origin URL解析精确匹配(hostname===localhost, suffix .pages.dev/.workers.dev), credentials:true, 6个自定义header, 404 fallback — 全部正确
+     - types.ts(32行): Env+UserLLMConfig+AssessmentResult接口 — 正确
+     - llm.ts(251行): SSRF validateBaseUrl(scheme+hostname+private IP block)/normalizeProviderUrl(OpenRouter)/tokenLimitParam(o1/o3/chatgpt→max_completion_tokens)/resolveEndpoint(user→server key chain with tier)/llmChat(non-streaming+null-safety已修复)/llmChatStream(SSE parsing+error fallback+buffer split) — 全部正确
+     - routes/graph.ts(210行): 11域seedMap+ragMap/domains(is_active filter+stats)/subdomains(concept count)/concepts/:id(prereqs+deps)/neighbors(BFS depth≤3)/stats/rag/:concept_id/rag(index stats)/cross-links(domain+concept filter) — 全部正确
+     - routes/dialogue.ts(359行): 11域seedMap/findConceptAcrossDomains/extractLLMConfig(provider whitelist)/getConceptInfo(prereqs+deps+related names)/buildSystemPrompt(domain supplement)/getOpening(域中立已修复)/POST conversations(UUID+D1 insert+opening)/POST chat(sliding window 40+SSE intercept+suggest_assess≥4 turns+DB save)/POST assess(2-turn minimum+8000 char truncation+3-fallback JSON parse+validateAssessment clamp+mastered recalculate+fallback scorer) — 全部正确
+     - routes/learning.ts(299行): stats(total_concepts query param)/progress CRUD/start(UPSERT+mastered guard+streak update)/assess(score clamp+never-demote mastered+max score track+history)/history(limit≤1000)/streak(auto-reset check)/sync(500 progress+1000 history limit+status whitelist+score clamp+mastered guard in UPSERT)/recommend(prereq check+milestone bonus+difficulty curve+learning bonus+time bonus) — 全部正确
+   - D1 SCHEMA: Workers 0001_init.sql无domain_id列(vs BE schema v2有) — 预期差异, Workers通过findConceptAcrossDomains()动态定位域
+   - STYLE NOTE: graph.ts line 92 /domains handler整个handler写在一行(~250字符) — 可读性差但功能正确, 不修改
+   - GITHUB: 0 open issues, 12 closed (all resolved)
+   - VERIFY: 805 tests (596 BE + 209 FE) 全通过, tsc 0 errors
+   - STATUS: Workers全量1197行深度审查, 修复1个Medium级CS特定开场白问题+1个Low级null安全问题, 添加3个三方同步回归测试
+
 - ✅ **第七十四轮FE深度审查+ChatPanel流清理修复+死代码清除 (2026-03-20, e868d32)**:
    - **FIX[Medium]**: ChatPanel.tsx未在unmount时调用`cancelStream()+reset()` — LearnPage有此清理(M-01注释), 但ChatPanel完全缺失。用户在GraphPage中关闭聊天面板(点X按钮)时, 如果AI正在流式输出, 旧流继续写入dialogue store, 可能导致下次打开不同概念时出现陈旧消息或状态异常。添加`useEffect cleanup`调用`cancelStream(); reset();`
    - **REFACTOR**: 清除LearnPage.tsx 3个unused imports(ArrowRight/Zap未使用, useIsDesktop+isDesktop赋值后未读取) + ChatPanel.tsx 1个unused import(clearNewlyUnlocked从useLearningStore解构但未调用)
@@ -1632,8 +1652,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (209 tests)
-cd apps/api && python -m pytest          # 后端测试 ✅ (593 tests)
-# Total: 802 tests (2026-03-20)
+cd apps/api && python -m pytest          # 后端测试 ✅ (596 tests)
+# Total: 805 tests (2026-03-20)
 ```
 
 ### 提交规范
