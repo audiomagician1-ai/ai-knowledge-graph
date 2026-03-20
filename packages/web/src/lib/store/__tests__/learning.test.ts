@@ -449,5 +449,51 @@ describe('useLearningStore', () => {
       const result = peekDomainProgress('corrupt-domain');
       expect(result).toEqual({ mastered: 0, learning: 0, total: 0 });
     });
+
+    it('should return zeros for empty progress object', async () => {
+      const { peekDomainProgress, storageKeyForDomain } = await import('@/lib/store/learning');
+      localStorage.setItem(storageKeyForDomain('empty-progress'), JSON.stringify({ progress: {} }));
+      const result = peekDomainProgress('empty-progress');
+      expect(result).toEqual({ mastered: 0, learning: 0, total: 0 });
+    });
+
+    it('should ignore not_started statuses in total count', async () => {
+      const { peekDomainProgress, storageKeyForDomain } = await import('@/lib/store/learning');
+      const data = {
+        progress: {
+          c1: { concept_id: 'c1', status: 'not_started', mastery_score: 0, sessions: 0, total_time_sec: 0, last_learn_at: 0 },
+          c2: { concept_id: 'c2', status: 'not_started', mastery_score: 0, sessions: 0, total_time_sec: 0, last_learn_at: 0 },
+          c3: { concept_id: 'c3', status: 'mastered', mastery_score: 90, sessions: 1, total_time_sec: 0, last_learn_at: 1 },
+        },
+      };
+      localStorage.setItem(storageKeyForDomain('mixed-domain'), JSON.stringify(data));
+      const result = peekDomainProgress('mixed-domain');
+      expect(result.mastered).toBe(1);
+      expect(result.learning).toBe(0);
+      expect(result.total).toBe(1); // only mastered + learning counted
+    });
+
+    it('should handle entries with missing or null status gracefully', async () => {
+      const { peekDomainProgress, storageKeyForDomain } = await import('@/lib/store/learning');
+      const data = {
+        progress: {
+          c1: { concept_id: 'c1' }, // missing status
+          c2: { concept_id: 'c2', status: null }, // null status
+          c3: { concept_id: 'c3', status: 'mastered', mastery_score: 85, sessions: 1, total_time_sec: 0, last_learn_at: 1 },
+        },
+      };
+      localStorage.setItem(storageKeyForDomain('null-status'), JSON.stringify(data));
+      const result = peekDomainProgress('null-status');
+      expect(result.mastered).toBe(1);
+      expect(result.learning).toBe(0);
+      expect(result.total).toBe(1);
+    });
+
+    it('should handle data without progress key', async () => {
+      const { peekDomainProgress, storageKeyForDomain } = await import('@/lib/store/learning');
+      localStorage.setItem(storageKeyForDomain('no-progress-key'), JSON.stringify({ history: [] }));
+      const result = peekDomainProgress('no-progress-key');
+      expect(result).toEqual({ mastered: 0, learning: 0, total: 0 });
+    });
   });
 });
