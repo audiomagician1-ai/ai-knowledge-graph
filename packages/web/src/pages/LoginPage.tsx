@@ -130,7 +130,7 @@ export function LoginPage() {
       <div
         className="relative z-10 w-full max-w-[440px] rounded-2xl animate-fade-in"
         style={{
-          padding: '44px 40px',
+          padding: '48px 40px',
           backgroundColor: 'rgba(255,255,255,0.7)',
           backdropFilter: 'blur(20px)',
           border: '1px solid var(--color-border-subtle)',
@@ -138,7 +138,7 @@ export function LoginPage() {
         }}
       >
         {/* ── Logo + Title ── */}
-        <div className="text-center" style={{ marginBottom: 36 }}>
+        <div className="text-center" style={{ marginBottom: 40 }}>
           <div
             className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto"
             style={{
@@ -155,7 +155,7 @@ export function LoginPage() {
           >
             AI Knowledge Graph
           </h1>
-          <p className="text-sm" style={{ marginBottom: 24, color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
+          <p className="text-sm" style={{ marginBottom: 20, color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
             Sign in to sync your learning progress across devices
           </p>
           <FeaturePills />
@@ -221,10 +221,10 @@ export function LoginPage() {
         )}
 
         {/* ── Email form ── */}
-        <form onSubmit={handleSubmit} className="animate-fade-in stagger-3" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <form onSubmit={handleSubmit} className="animate-fade-in stagger-3" style={{ display: 'flex', flexDirection: 'column', gap: 24, marginTop: supabaseConfigured ? 0 : 8 }}>
           {mode === 'register' && (
             <div>
-              <label className="block text-xs font-medium" style={{ marginBottom: 8, color: 'var(--color-text-secondary)' }}>
+              <label className="block text-xs font-medium" style={{ marginBottom: 10, color: 'var(--color-text-secondary)' }}>
                 Display Name
               </label>
               <input
@@ -238,7 +238,7 @@ export function LoginPage() {
             </div>
           )}
           <div>
-            <label className="block text-xs font-medium" style={{ marginBottom: 8, color: 'var(--color-text-secondary)' }}>
+            <label className="block text-xs font-medium" style={{ marginBottom: 10, color: 'var(--color-text-secondary)' }}>
               Email
             </label>
             <input
@@ -252,7 +252,7 @@ export function LoginPage() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium" style={{ marginBottom: 8, color: 'var(--color-text-secondary)' }}>
+            <label className="block text-xs font-medium" style={{ marginBottom: 10, color: 'var(--color-text-secondary)' }}>
               Password
             </label>
             <input
@@ -286,7 +286,7 @@ export function LoginPage() {
             disabled={loading}
             className="w-full rounded-xl text-sm font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
             style={{
-              marginTop: 8,
+              marginTop: 12,
               padding: '14px 0',
               background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
               color: '#fff',
