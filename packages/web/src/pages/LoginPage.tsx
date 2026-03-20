@@ -114,7 +114,7 @@ export function LoginPage() {
 
       {/* ── Back to home ── */}
       <button
-        onClick={() => navigate('/graph')}
+        onClick={() => navigate('/')}
         className="absolute top-5 left-5 z-20 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all group"
         style={{ color: 'var(--color-text-tertiary)' }}
         onMouseEnter={(e) => {
@@ -317,7 +317,7 @@ export function LoginPage() {
 
       {/* ── Skip link (outside the card) ── */}
       <button
-        onClick={() => navigate('/graph')}
+        onClick={() => navigate('/')}
         className="relative z-10 mt-6 inline-flex items-center gap-1.5 text-sm font-medium transition-all animate-fade-in stagger-4 group"
         style={{ color: 'var(--color-text-tertiary)' }}
         onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
