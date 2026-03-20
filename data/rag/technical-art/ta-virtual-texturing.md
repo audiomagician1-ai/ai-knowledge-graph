@@ -1,0 +1,36 @@
+---
+domain: technical-art
+subdomain: material-system
+concept_id: ta-virtual-texturing
+difficulty: 3
+content_type: theory
+tags: [进阶]
+---
+
+# 虚拟纹理
+
+## 概述
+
+Virtual Texture/UDIM——超大纹理的按需流送
+
+## 核心知识点
+
+虚拟纹理是技术美术领域材质系统方向的进阶知识。
+
+
+这是一个高级话题，需要扎实的基础知识和实际项目经验。
+
+## 学习建议
+
+- 难度等级: 3/3
+- 预计学习时间: 35分钟
+- 内容类型: 理论知识
+- 所属子域: 材质系统
+
+## 关键术语
+
+在学习虚拟纹理时，需要关注以下方面：
+1. 核心概念的定义和原理
+2. 在游戏开发管线中的实际应用
+3. 与相关技术的关联和协作
+4. 常见问题和最佳实践

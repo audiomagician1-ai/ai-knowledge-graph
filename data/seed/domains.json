@@ -208,12 +208,17 @@
       "rag_dir": "animation",
       "is_active": true,
       "sort_order": 19
+    },
+    {
+      "id": "technical-art",
+      "name": "技术美术",
+      "description": "从Shader开发到自动化工作流的完整技术美术知识体系",
+      "icon": "🔬",
+      "color": "#0891b2",
+      "seed_dir": "technical-art",
+      "rag_dir": "technical-art",
+      "is_active": true,
+      "sort_order": 20
     }
-  ],
-  "meta": {
-    "version": "18.0.0",
-    "default_domain": "ai-engineering",
-    "created_at": "2026-03-19T14:00:00Z",
-    "updated_at": "2026-03-21T22:00:00Z"
-  }
+  ]
 }

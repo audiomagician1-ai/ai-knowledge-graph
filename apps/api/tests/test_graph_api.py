@@ -619,13 +619,13 @@ async def test_english_domain_subdomain_filter():
 
 @pytest.mark.asyncio
 async def test_three_domains_listed():
-    """Domain list should include all 18 active domains."""
+    """Domain list should include all 20 active domains."""
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/domains")
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2269,3 +2269,89 @@ async def test_animation_domain_supplements():
     assert "animation" in DOMAIN_SUPPLEMENTS, "animation missing from DOMAIN_SUPPLEMENTS"
     assert "animation" in ASSESSMENT_SUPPLEMENTS, "animation missing from ASSESSMENT_SUPPLEMENTS"
     assert "12原则" in DOMAIN_SUPPLEMENTS["animation"] or "12条" in DOMAIN_SUPPLEMENTS["animation"], "Animation supplement should mention 12 principles"
+
+
+# ─── Phase 26: Technical Art (技术美术) ───
+
+@pytest.mark.asyncio
+async def test_technical_art_seed_graph_integrity():
+    """Technical Art seed graph: 180 concepts, 181 edges, 10 subdomains, 36 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=technical-art")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 180, f"Expected 180 concepts, got {len(nodes)}"
+        assert len(edges) == 181, f"Expected 181 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 10, f"Expected 10 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 36, f"Expected 36 milestones, got {len(milestones)}"
+
+
+@pytest.mark.asyncio
+async def test_technical_art_subdomains():
+    """Technical Art should have 10 subdomains with correct IDs."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=technical-art")
+        assert resp.status_code == 200
+        subs = resp.json()
+        sub_ids = {s["id"] for s in subs}
+        expected = {
+            "shader-dev", "material-system", "pcg",
+            "perf-optimization", "tool-dev", "pipeline-build",
+            "lod-strategy", "memory-budget", "art-standards",
+            "automation",
+        }
+        assert sub_ids == expected, f"Subdomain mismatch: {sub_ids ^ expected}"
+
+
+@pytest.mark.asyncio
+async def test_rag_technical_art_stats():
+    """Technical Art RAG stats should reflect 180 documents across 10 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=technical-art")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 180
+        assert data["domain"] == "technical-art"
+        assert len(data.get("by_subdomain", {})) == 10
+
+
+@pytest.mark.asyncio
+async def test_rag_technical_art_concept():
+    """Should return RAG content for a technical art concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/ta-gpu-pipeline?domain=technical-art")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "ta-gpu-pipeline"
+        assert data["domain"] == "technical-art"
+        assert "渲染管线" in data["content"] or "GPU" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_technical_art_cross_sphere_links():
+    """Cross-sphere links for technical-art should exist (↔ computer-graphics/3d-art/game-engine/software-engineering/animation)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=technical-art")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 15, f"Expected >= 15 cross-links, got {len(links)}"
+        partner_domains = set()
+        for lk in links:
+            partner_domains.add(lk.get("source_domain", ""))
+            partner_domains.add(lk.get("target_domain", ""))
+        assert "computer-graphics" in partner_domains, "Expected cross-links with computer-graphics"
+        assert "3d-art" in partner_domains, "Expected cross-links with 3d-art"
+
+
+@pytest.mark.asyncio
+async def test_technical_art_domain_supplements():
+    """Technical Art should have domain supplements in BE evaluation system."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "technical-art" in DOMAIN_SUPPLEMENTS, "technical-art missing from DOMAIN_SUPPLEMENTS"
+    assert "technical-art" in ASSESSMENT_SUPPLEMENTS, "technical-art missing from ASSESSMENT_SUPPLEMENTS"
+    assert "Shader" in DOMAIN_SUPPLEMENTS["technical-art"], "Technical Art supplement should mention Shader"

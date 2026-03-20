@@ -20,6 +20,7 @@ import seedComputerGraphics from '../../data/seed/computer-graphics/seed_graph.j
 import seed3DArt from '../../data/seed/3d-art/seed_graph.json';
 import seedConceptDesign from '../../data/seed/concept-design/seed_graph.json';
 import seedAnimation from '../../data/seed/animation/seed_graph.json';
+import seedTechnicalArt from '../../data/seed/technical-art/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -37,6 +38,7 @@ const seedMap: Record<string, any> = {
   '3d-art': seed3DArt,
   'concept-design': seedConceptDesign,
   'animation': seedAnimation,
+  'technical-art': seedTechnicalArt,
 };
 function getSeed(domain: string): any { return seedMap[domain] || seedMap[DEFAULT_DOMAIN]; }
 

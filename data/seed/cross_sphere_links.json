@@ -2562,6 +2562,206 @@
       "target_id": "se-component-pattern",
       "relation": "applies",
       "description": "数据驱动动画是软件工程中数据驱动架构在动画系统中的体现"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-gpu-pipeline",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-raster-pipeline",
+      "relation": "applies",
+      "description": "GPU渲染管线是图形学核心概念在技术美术中的应用"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-hlsl-basics",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-vertex-shader",
+      "relation": "applies",
+      "description": "HLSL是图形学顶点着色器的实现语言"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-pbr-fundamentals",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-pbr-intro",
+      "relation": "applies",
+      "description": "PBR材质基于图形学PBR理论"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-compute-shader",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-gpu-intro",
+      "relation": "prerequisite",
+      "description": "Compute Shader需要GPU架构知识"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-shader-optimization",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-gpu-pipeline",
+      "relation": "applies",
+      "description": "Shader性能优化需理解GPU硬件管线"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-poly-standard",
+      "target_domain": "3d-art",
+      "target_id": "3da-modeling-intro",
+      "relation": "impacts",
+      "description": "面数标准影响3D建模方式"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-lod-generation",
+      "target_domain": "3d-art",
+      "target_id": "3da-retopo-lod-levels",
+      "relation": "applies",
+      "description": "LOD生成是3D资产优化处理"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-naming-convention",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-naming",
+      "relation": "impacts",
+      "description": "命名规范影响3D资产管线"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-texture-pipeline",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-texture-pipeline",
+      "relation": "applies",
+      "description": "纹理管线影响3D纹理制作"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-ue-material-editor",
+      "target_domain": "game-engine",
+      "target_id": "pbr-material",
+      "relation": "applies",
+      "description": "UE材质编辑器是引擎PBR材质的工作界面"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-ue-editor-utility",
+      "target_domain": "game-engine",
+      "target_id": "blueprint-system",
+      "relation": "applies",
+      "description": "UE编辑器工具基于蓝图系统"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-nanite",
+      "target_domain": "game-engine",
+      "target_id": "ue5-nanite",
+      "relation": "applies",
+      "description": "Nanite是UE5核心渲染技术"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-scalability",
+      "target_domain": "game-engine",
+      "target_id": "render-pipeline-intro",
+      "relation": "applies",
+      "description": "画质可伸缩性通过渲染管线实现"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-ci-art",
+      "target_domain": "software-engineering",
+      "target_id": "se-cicd-intro",
+      "relation": "applies",
+      "description": "美术CI/CD基于软件工程持续集成"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-vcs-workflow",
+      "target_domain": "software-engineering",
+      "target_id": "se-git-basics",
+      "relation": "applies",
+      "description": "版本控制工作流基于Git"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-tool-testing",
+      "target_domain": "software-engineering",
+      "target_id": "se-test-pyramid",
+      "relation": "applies",
+      "description": "工具测试基于测试金字塔"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-perf-regression",
+      "target_domain": "software-engineering",
+      "target_id": "se-ci-testing",
+      "relation": "applies",
+      "description": "性能回归检测基于CI测试策略"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-lod-animation",
+      "target_domain": "animation",
+      "target_id": "anim-distance-lod",
+      "relation": "applies",
+      "description": "LOD动画简化影响动画距离LOD"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-anim-memory",
+      "target_domain": "animation",
+      "target_id": "anim-animation-clip",
+      "relation": "impacts",
+      "description": "动画内存预算影响动画片段管理"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-animation-standard",
+      "target_domain": "animation",
+      "target_id": "anim-humanoid-rig",
+      "relation": "impacts",
+      "description": "动画标准规定人形骨骼规范"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-pcg-overview",
+      "target_domain": "game-design",
+      "target_id": "procedural-gen",
+      "relation": "applies",
+      "description": "程序化生成是游戏设计技术实现"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-perf-overview",
+      "target_domain": "game-design",
+      "target_id": "systems-thinking",
+      "relation": "impacts",
+      "description": "性能约束影响游戏系统思维"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-pcg-terrain",
+      "target_domain": "level-design",
+      "target_id": "terrain-intro",
+      "relation": "applies",
+      "description": "程序化地形是关卡地形设计的技术实现"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-pcg-world-partition",
+      "target_domain": "level-design",
+      "target_id": "world-partition",
+      "relation": "applies",
+      "description": "世界分区与PCG支撑开放世界"
+    },
+    {
+      "source_domain": "technical-art",
+      "source_id": "ta-skin-material",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-rendering-level",
+      "relation": "applies",
+      "description": "皮肤材质实现概念设计渲染精度"
     }
   ],
   "meta": {

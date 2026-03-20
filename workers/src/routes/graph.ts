@@ -24,6 +24,7 @@ import seedComputerGraphics from '../../data/seed/computer-graphics/seed_graph.j
 import seed3DArt from '../../data/seed/3d-art/seed_graph.json';
 import seedConceptDesign from '../../data/seed/concept-design/seed_graph.json';
 import seedAnimation from '../../data/seed/animation/seed_graph.json';
+import seedTechnicalArt from '../../data/seed/technical-art/seed_graph.json';
 // Multi-domain RAG index imports
 import ragAI from '../../data/rag/_index.json';
 import ragMath from '../../data/rag/mathematics/_index.json';
@@ -44,6 +45,7 @@ import ragComputerGraphics from '../../data/rag/computer-graphics/_index.json';
 import rag3DArt from '../../data/rag/3d-art/_index.json';
 import ragConceptDesign from '../../data/rag/concept-design/_index.json';
 import ragAnimation from '../../data/rag/animation/_index.json';
+import ragTechnicalArt from '../../data/rag/technical-art/_index.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -62,6 +64,7 @@ const seedMap: Record<string, any> = {
   '3d-art': seed3DArt,
   'concept-design': seedConceptDesign,
   'animation': seedAnimation,
+  'technical-art': seedTechnicalArt,
 };
 const ragMap: Record<string, any> = {
   'ai-engineering': ragAI, 'mathematics': ragMath, 'english': ragEnglish,
@@ -76,6 +79,7 @@ const ragMap: Record<string, any> = {
   '3d-art': rag3DArt,
   'concept-design': ragConceptDesign,
   'animation': ragAnimation,
+  'technical-art': ragTechnicalArt,
 };
 function getSeed(domain: string): any { return seedMap[domain] || null; }
 function getRagIndex(domain: string): any { return ragMap[domain] || { documents: [], stats: {} }; }

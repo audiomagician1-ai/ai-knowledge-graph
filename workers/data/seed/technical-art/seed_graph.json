@@ -1,0 +1,3671 @@
+{
+  "domain": {
+    "id": "technical-art",
+    "name": "技术美术",
+    "description": "从Shader开发到自动化工作流的完整技术美术知识体系",
+    "icon": "🔬",
+    "color": "#0891b2"
+  },
+  "subdomains": [
+    {
+      "id": "shader-dev",
+      "name": "Shader开发",
+      "order": 1
+    },
+    {
+      "id": "material-system",
+      "name": "材质系统",
+      "order": 2
+    },
+    {
+      "id": "pcg",
+      "name": "程序化生成",
+      "order": 3
+    },
+    {
+      "id": "perf-optimization",
+      "name": "性能优化",
+      "order": 4
+    },
+    {
+      "id": "tool-dev",
+      "name": "工具开发",
+      "order": 5
+    },
+    {
+      "id": "pipeline-build",
+      "name": "管线搭建",
+      "order": 6
+    },
+    {
+      "id": "lod-strategy",
+      "name": "LOD策略",
+      "order": 7
+    },
+    {
+      "id": "memory-budget",
+      "name": "内存与预算",
+      "order": 8
+    },
+    {
+      "id": "art-standards",
+      "name": "美术标准制定",
+      "order": 9
+    },
+    {
+      "id": "automation",
+      "name": "自动化工作流",
+      "order": 10
+    }
+  ],
+  "concepts": [
+    {
+      "id": "ta-shader-overview",
+      "name": "Shader开发概述",
+      "description": "技术美术中Shader开发的角色与职责——连接美术需求与GPU实现",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-gpu-pipeline",
+      "name": "GPU渲染管线",
+      "description": "顶点→光栅化→片元→输出的图形管线各阶段概述",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-hlsl-basics",
+      "name": "HLSL基础",
+      "description": "DirectX着色器语言——语法/数据类型/内置函数/语义",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-glsl-basics",
+      "name": "GLSL基础",
+      "description": "OpenGL着色器语言——与HLSL的差异/精度修饰符/uniform",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-vertex-shader",
+      "name": "顶点着色器编写",
+      "description": "顶点变换/法线处理/顶点动画/屏幕空间投影",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pixel-shader",
+      "name": "片元着色器编写",
+      "description": "颜色计算/光照模型/纹理采样/输出控制",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-ue-material-editor",
+      "name": "UE材质编辑器",
+      "description": "Unreal Engine可视化材质图——节点/连接/预览/编译",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-unity-shadergraph",
+      "name": "Unity Shader Graph",
+      "description": "Unity可视化着色器编辑——节点系统/SubGraph/Custom Function",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-custom-lighting",
+      "name": "自定义光照模型",
+      "description": "在Shader中实现NPR/Toon/各向异性等非标准光照",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-shader-math",
+      "name": "Shader数学基础",
+      "description": "向量/矩阵/空间变换/三角函数在Shader中的应用",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-noise-functions",
+      "name": "噪声函数",
+      "description": "Perlin/Simplex/Worley噪声在Shader中的实现与应用",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-sdf-shader",
+      "name": "SDF着色器",
+      "description": "有符号距离场在Shader中的应用——UI/特效/体积渲染",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-compute-shader",
+      "name": "Compute Shader",
+      "description": "通用GPU计算——并行算法/GPGPU/UAV读写",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-shader-variants",
+      "name": "Shader变体管理",
+      "description": "宏定义/关键字/多Pass——控制Shader编译变体数量",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-shader-debugging",
+      "name": "Shader调试技巧",
+      "description": "RenderDoc/PIX/Frame Debugger——可视化调试GPU运行",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tessellation-shader",
+      "name": "曲面细分着色器",
+      "description": "Hull/Domain Shader——运行时网格细分与位移",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-geometry-shader",
+      "name": "几何着色器",
+      "description": "逐图元操作——粒子/线条/草地等几何生成",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-shader-optimization",
+      "name": "Shader性能优化",
+      "description": "ALU/纹理/带宽瓶颈分析与优化策略",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-screen-space-effects",
+      "name": "屏幕空间效果",
+      "description": "SSAO/SSR/SSS等基于屏幕空间的后处理Shader",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-shader-cross-platform",
+      "name": "跨平台Shader",
+      "description": "移动/PC/主机的Shader兼容性——特性集/精度/性能差异",
+      "subdomain_id": "shader-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pbr-fundamentals",
+      "name": "PBR材质基础",
+      "description": "基于物理的渲染——金属度/粗糙度/法线/AO等通道",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-material-layer",
+      "name": "材质分层",
+      "description": "多层材质混合——高度混合/遮罩/材质函数叠加",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-material-instance",
+      "name": "材质实例",
+      "description": "参数化材质实例——同一母材质不同参数/无需重编译",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-material-function",
+      "name": "材质函数",
+      "description": "可复用的材质计算模块——节点封装/参数暴露",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-texture-packing",
+      "name": "纹理通道打包",
+      "description": "将多张灰度图打包到单张RGBA——减少纹理采样",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tiling-textures",
+      "name": "无缝贴图制作",
+      "description": "Tiling纹理/Wang Tiles/Stochastic Tiling技术",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-substance-workflow",
+      "name": "Substance工作流",
+      "description": "Substance Designer/Painter在材质制作中的角色",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-material-blending",
+      "name": "材质混合技术",
+      "description": "顶点颜色混合/高度混合/法线混合的实现",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-parallax-mapping",
+      "name": "视差贴图",
+      "description": "Parallax Occlusion Mapping——廉价的深度错觉",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-decal-system",
+      "name": "贴花系统",
+      "description": "运行时在表面叠加细节——弹痕/涂鸦/脏迹",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-virtual-texturing",
+      "name": "虚拟纹理",
+      "description": "Virtual Texture/UDIM——超大纹理的按需流送",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-texture-compression",
+      "name": "纹理压缩",
+      "description": "BC/ASTC/ETC格式——平台差异/质量/内存权衡",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-material-complexity",
+      "name": "材质指令数",
+      "description": "材质复杂度对性能的影响——ALU/纹理采样统计",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-detail-normal",
+      "name": "细节法线",
+      "description": "叠加细节法线贴图增加表面微观细节",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-material-atlas",
+      "name": "材质图集",
+      "description": "将多个材质合并到一张纹理——减少Draw Call",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-procedural-material",
+      "name": "程序化材质",
+      "description": "完全用数学/噪声生成的无贴图材质",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-material-weather",
+      "name": "天气效果材质",
+      "description": "雨雪/湿度/积雪等动态天气对材质的影响",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-skin-material",
+      "name": "皮肤材质",
+      "description": "次表面散射/毛孔/油脂层的皮肤渲染实现",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-translucent-material",
+      "name": "半透明材质",
+      "description": "玻璃/水/薄纱等半透明物体的渲染与排序",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-material-library",
+      "name": "材质库管理",
+      "description": "团队共享材质库的组织/版本/命名规范",
+      "subdomain_id": "material-system",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-overview",
+      "name": "程序化生成概述",
+      "description": "PCG的核心理念——用规则和算法代替手工制作",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-terrain",
+      "name": "程序化地形",
+      "description": "高度图生成/分形噪声/侵蚀模拟/地形混合",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-pcg-vegetation",
+      "name": "程序化植被",
+      "description": "L-System/SpeedTree/散布规则/密度控制",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-building",
+      "name": "程序化建筑",
+      "description": "模块化建筑生成——规则/语法/约束求解",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-dungeon",
+      "name": "程序化关卡",
+      "description": "BSP/Wave Function Collapse/Agent-based关卡生成",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-houdini-basics",
+      "name": "Houdini基础",
+      "description": "Houdini节点式工作流/SOP/VEX基本概念",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-houdini-engine",
+      "name": "Houdini Engine",
+      "description": "Houdini数字资产(HDA)在UE/Unity中的使用",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-ue-pcg-framework",
+      "name": "UE PCG Framework",
+      "description": "Unreal PCG框架——点/线/面生成与规则",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-scatter-system",
+      "name": "散布系统",
+      "description": "物件散布/密度贴图/碰撞排除/旋转随机",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-road",
+      "name": "程序化道路",
+      "description": "样条驱动的道路/河流/铁路自动生成与适配地形",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-wfc",
+      "name": "Wave Function Collapse",
+      "description": "WFC约束求解——从样本学习规则自动生成布局",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-pcg-biome",
+      "name": "生态群落系统",
+      "description": "不同生态区的PCG规则——沙漠/森林/雪山/沼泽",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-city",
+      "name": "程序化城市",
+      "description": "街道网格/地块/建筑风格/交通的程序化生成",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-seed",
+      "name": "随机种子与可控性",
+      "description": "种子管理/确定性生成/设计师覆盖/调参控制",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-runtime",
+      "name": "运行时PCG",
+      "description": "实时程序化生成——流式加载/分块/LOD集成",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-texture",
+      "name": "程序化纹理",
+      "description": "Substance Designer中的程序化纹理生成流程",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-mesh",
+      "name": "程序化网格",
+      "description": "运行时或离线生成几何体——Marching Cubes/Dual Contouring",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-rule-system",
+      "name": "规则系统设计",
+      "description": "为PCG设计可配置/可扩展的规则系统",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-validation",
+      "name": "PCG质量验证",
+      "description": "自动化检测生成结果的质量——碰撞/可达性/美观性",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pcg-world-partition",
+      "name": "世界分区与PCG",
+      "description": "大型开放世界中PCG与WorldPartition/Streaming的集成",
+      "subdomain_id": "pcg",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-perf-overview",
+      "name": "性能优化概述",
+      "description": "技术美术视角的性能优化——GPU/CPU/内存三大战场",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-gpu-profiling",
+      "name": "GPU性能分析",
+      "description": "RenderDoc/Nsight/PIX/Unreal Insights——GPU瓶颈定位",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-draw-call",
+      "name": "Draw Call优化",
+      "description": "合批/实例化/间接渲染——减少CPU→GPU的提交开销",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-overdraw",
+      "name": "Overdraw控制",
+      "description": "像素重复绘制的检测与消除——透明物体/粒子/UI",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-culling",
+      "name": "裁剪技术",
+      "description": "视锥体/遮挡/距离裁剪——不渲染看不见的物体",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-instancing",
+      "name": "GPU实例化",
+      "description": "Instanced Rendering——一次Draw Call渲染大量相同物体",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-batch-merge",
+      "name": "网格合并",
+      "description": "静态合批/HLOD/Merge Actors——减少物体数量",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tri-budget",
+      "name": "三角面预算",
+      "description": "场景/角色/道具的三角面数预算制定与监控",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lightmap-opt",
+      "name": "光照贴图优化",
+      "description": "光照贴图分辨率/打包/Indirect Lighting Cache",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-particle-perf",
+      "name": "粒子性能优化",
+      "description": "GPU粒子/LOD/屏幕空间限制/排序优化",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-mobile-perf",
+      "name": "移动端性能",
+      "description": "移动端GPU架构差异/TBR/带宽优化/热降频",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-perf-budget",
+      "name": "性能预算分配",
+      "description": "帧时间预算——渲染/逻辑/物理/动画的分配策略",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-scalability",
+      "name": "画质可伸缩性",
+      "description": "画质分级设置(Low/Med/High/Epic)的实现",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-async-compute",
+      "name": "异步计算",
+      "description": "利用GPU空闲时段执行计算任务——提升利用率",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-rendering-features",
+      "name": "渲染特性开关",
+      "description": "按平台/画质开关渲染特性——r.命令/CVar",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-mesh-simplify",
+      "name": "网格简化",
+      "description": "Simplygon/UE Mesh Reduction——自动减面算法与质量控制",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-shadow-perf",
+      "name": "阴影性能",
+      "description": "阴影级联/分辨率/距离/Virtual Shadow Maps优化",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-streaming",
+      "name": "资源流送",
+      "description": "纹理/网格/关卡的异步流送——减少加载卡顿",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-perf-regression",
+      "name": "性能回归检测",
+      "description": "自动化性能基准测试——检测提交引入的性能退化",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-frame-analysis",
+      "name": "帧分析实战",
+      "description": "从一帧截图反推性能瓶颈——完整的分析思路",
+      "subdomain_id": "perf-optimization",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-tool-overview",
+      "name": "技美工具开发概述",
+      "description": "用脚本和工具提升美术团队效率——技美的核心职责之一",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-python-maya",
+      "name": "Maya Python脚本",
+      "description": "cmds/pymel/OpenMaya——Maya中的Python自动化",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-python-blender",
+      "name": "Blender Python脚本",
+      "description": "bpy模块——Blender中的自动化与插件开发",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-mel-scripting",
+      "name": "MEL脚本",
+      "description": "Maya Embedded Language——Maya原生脚本语言",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-ue-editor-utility",
+      "name": "UE编辑器工具",
+      "description": "Editor Utility Widget/Blueprint——自定义编辑器界面",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-ue-python",
+      "name": "UE Python脚本",
+      "description": "Unreal Python API——批量资产操作/管线自动化",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-unity-editor",
+      "name": "Unity编辑器扩展",
+      "description": "Custom Inspector/EditorWindow/PropertyDrawer开发",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-gui-framework",
+      "name": "工具GUI框架",
+      "description": "Qt/PySide/tkinter/DearImGui——工具界面开发",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-asset-processor",
+      "name": "资产处理工具",
+      "description": "批量导入/导出/格式转换/自动命名工具",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-validation-tool",
+      "name": "资产验证工具",
+      "description": "自动检测面数/UV/材质/命名等规范的工具",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-batch-tool",
+      "name": "批量操作工具",
+      "description": "批量修改材质/重命名/调整LOD的自动化脚本",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-dcc-bridge",
+      "name": "DCC桥接工具",
+      "description": "Maya→UE/Blender→Unity等跨软件自动传输",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tool-testing",
+      "name": "工具测试",
+      "description": "单元测试/集成测试/回归测试保证工具质量",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tool-deploy",
+      "name": "工具分发部署",
+      "description": "打包/版本控制/自动更新/团队分发方案",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tool-ux",
+      "name": "工具用户体验",
+      "description": "面向美术师的工具UX设计——简洁/反馈/容错",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-csharp-tools",
+      "name": "C#工具开发",
+      "description": "C#在Unity编辑器扩展和独立工具中的应用",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-api-integration",
+      "name": "外部API集成",
+      "description": "Perforce/Shotgrid/Jira等外部服务的脚本集成",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-commandlet",
+      "name": "命令行工具",
+      "description": "UE Commandlet/Unity CLI——无头模式批量处理",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tool-documentation",
+      "name": "工具文档",
+      "description": "为自制工具编写用户文档/教程/Changelog",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tool-pipeline",
+      "name": "工具开发管线",
+      "description": "从需求收集→原型→开发→测试→部署的完整流程",
+      "subdomain_id": "tool-dev",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-pipeline-overview",
+      "name": "资产管线概述",
+      "description": "从DCC到引擎的完整资产生产流程设计",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-naming-convention",
+      "name": "命名规范",
+      "description": "资产/材质/纹理/蓝图的统一命名规则制定",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-folder-structure",
+      "name": "目录结构",
+      "description": "项目目录组织——按类型/功能/模块的最佳实践",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-import-pipeline",
+      "name": "导入管线",
+      "description": "FBX/glTF导入设置标准化——缩放/坐标系/材质",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-export-pipeline",
+      "name": "导出管线",
+      "description": "DCC→引擎的标准化导出流程与设置",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-vcs-workflow",
+      "name": "版本控制工作流",
+      "description": "Perforce/Git-LFS——大型资产的版本控制策略",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-asset-review",
+      "name": "资产审查流程",
+      "description": "技术审查/美术审查/自动化检查的流程设计",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-reference-library",
+      "name": "参考资产库",
+      "description": "标准参考模型/纹理/尺度参考的建设与维护",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-cook-pipeline",
+      "name": "资产烘焙管线",
+      "description": "编辑器资产→运行时资产的转换/烘焙/优化流程",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-asset-database",
+      "name": "资产数据库",
+      "description": "Shotgrid/Perforce等资产追踪与管理系统",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-texture-pipeline",
+      "name": "纹理管线",
+      "description": "从原始照片到引擎内纹理的完整处理流程",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-modular-asset",
+      "name": "模块化资产系统",
+      "description": "可组合的标准化模块——网格对齐/Pivot/变体",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-scale-reference",
+      "name": "尺度与单位",
+      "description": "引擎单位/真实世界尺寸/网格对齐/透视校准",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-outsource-pipeline",
+      "name": "外包管线",
+      "description": "外包资产的质量控制/标准文档/审查流程",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-multi-platform",
+      "name": "多平台管线",
+      "description": "PC/Console/Mobile的资产差异化管线",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-data-validation",
+      "name": "数据验证管线",
+      "description": "自动化验证资产在每个管线阶段的合规性",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pipeline-monitoring",
+      "name": "管线监控",
+      "description": "管线健康度/吞吐量/瓶颈的度量与可视化",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-iteration-speed",
+      "name": "迭代速度优化",
+      "description": "减少美术师等待时间——增量烘焙/热重载/预览",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-migration-strategy",
+      "name": "版本迁移策略",
+      "description": "引擎大版本升级时的资产迁移计划与风险管理",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pipeline-doc",
+      "name": "管线文档",
+      "description": "完整管线文档体系——入门指南/标准/FAQ/更新日志",
+      "subdomain_id": "pipeline-build",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-overview",
+      "name": "LOD概述",
+      "description": "Level of Detail——基于距离的渐进式细节控制",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-generation",
+      "name": "LOD生成方法",
+      "description": "手动/Simplygon/引擎自动LOD生成与质量对比",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-lod-switching",
+      "name": "LOD切换策略",
+      "description": "距离阈值/屏幕尺寸/手动——切换时机与平滑过渡",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-hlod",
+      "name": "HLOD系统",
+      "description": "Hierarchical LOD——远距离物体合并为单一代理网格",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-nanite",
+      "name": "Nanite虚拟几何",
+      "description": "UE5 Nanite——自动LOD/无需手工减面/虚拟化几何",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-nanite-limitations",
+      "name": "Nanite限制",
+      "description": "不支持的材质/动画/透明——Nanite使用约束",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-impostor",
+      "name": "Impostor/Billboard",
+      "description": "极远距离用2D卡片替代3D模型的技术",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-material",
+      "name": "LOD材质切换",
+      "description": "远距离使用简化材质——减少Shader指令/纹理采样",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-animation",
+      "name": "LOD动画简化",
+      "description": "远处角色降低动画更新频率/减少骨骼数",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-shadow",
+      "name": "LOD阴影优化",
+      "description": "远距离物体使用简化网格投射阴影",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-foliage",
+      "name": "植被LOD",
+      "description": "树木/草地的特殊LOD策略——交叉淡化/面片",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-vfx",
+      "name": "特效LOD",
+      "description": "粒子/特效的距离衰减——粒子数/分辨率/更新频率",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-transition",
+      "name": "LOD过渡效果",
+      "description": "Dithered/CrossFade/Screen Door——消除LOD切换跳变",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-testing",
+      "name": "LOD质量测试",
+      "description": "视觉质量/切换距离/性能增益的验证方法",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-streaming",
+      "name": "LOD与流送",
+      "description": "结合WorldPartition/Level Streaming的LOD策略",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-tessellation-lod",
+      "name": "曲面细分LOD",
+      "description": "近距离曲面细分+远距离减面的动态策略",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-crowd",
+      "name": "人群LOD",
+      "description": "大量NPC的渐进式简化——骨骼/材质/动画综合策略",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-lod-building",
+      "name": "建筑LOD",
+      "description": "建筑物的多级LOD——外壳/合并/面片化",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-proxy-mesh",
+      "name": "代理网格",
+      "description": "为复杂资产创建低面数代理——碰撞/远景/阴影用",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lod-budget",
+      "name": "LOD预算管理",
+      "description": "按场景制定LOD级别/切换距离/面数降比的预算",
+      "subdomain_id": "lod-strategy",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-mem-overview",
+      "name": "内存管理概述",
+      "description": "游戏中的内存类型——系统RAM/VRAM/共享内存",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-texture-budget",
+      "name": "纹理内存预算",
+      "description": "纹理是最大内存消耗——分辨率/格式/Mip策略",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-mesh-budget",
+      "name": "网格内存预算",
+      "description": "顶点/索引缓冲区的内存占用计算与优化",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-vram-profiling",
+      "name": "VRAM分析",
+      "description": "RenderDoc/GPU Viewer——分析显存中的资源分布",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-mipmap-strategy",
+      "name": "Mipmap策略",
+      "description": "Mip链生成/流送/bias——平衡画质与内存",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-texture-streaming",
+      "name": "纹理流送",
+      "description": "按需加载纹理Mip层级——Virtual Texture Stream",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-memory-pool",
+      "name": "内存池管理",
+      "description": "预分配/池化/碎片化控制的策略",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-asset-size",
+      "name": "资产大小审计",
+      "description": "定期审计资产内存占用——发现异常资产",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-console-budget",
+      "name": "主机内存限制",
+      "description": "PS5/Xbox/Switch的固定内存预算与分配策略",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-mobile-memory",
+      "name": "移动端内存",
+      "description": "iOS/Android内存限制/后台杀进程/内存警告处理",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-render-target",
+      "name": "渲染目标内存",
+      "description": "GBuffer/Shadow Map/Post-Process等RT的内存开销",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-shader-memory",
+      "name": "Shader内存",
+      "description": "Shader变体编译/缓存/PSO的内存与加载影响",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-anim-memory",
+      "name": "动画内存预算",
+      "description": "动画数据的内存占用——压缩/共享/按需加载",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-audio-memory",
+      "name": "音频内存预算",
+      "description": "音频资产的内存管理——流式/预加载/压缩格式",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-memory-report",
+      "name": "内存报告",
+      "description": "生成内存使用报告——按类别/按场景/按平台",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "监控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-pak-size",
+      "name": "包体大小优化",
+      "description": "发布包大小控制——冗余检测/DLC拆分/补丁策略",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "发布"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-loading-screen",
+      "name": "加载优化",
+      "description": "减少加载时间——异步加载/预缓存/加载屏幕",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-reference-viewer",
+      "name": "引用查看器",
+      "description": "追踪资产引用关系——避免意外引入大量依赖",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-mem-leak-detect",
+      "name": "内存泄漏检测",
+      "description": "检测未释放资源的方法与工具",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-mem-budget-doc",
+      "name": "内存预算文档",
+      "description": "为项目制定并维护详细的内存预算分配表",
+      "subdomain_id": "memory-budget",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-std-overview",
+      "name": "美术标准概述",
+      "description": "技术美术制定并维护团队的美术技术规范",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-poly-standard",
+      "name": "面数标准",
+      "description": "角色/道具/场景各类资产的三角面数上限规范",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-texture-standard",
+      "name": "纹理标准",
+      "description": "纹理分辨率/格式/通道使用的规范文档",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-material-standard",
+      "name": "材质标准",
+      "description": "材质复杂度/纹理采样数/Shader指令数上限",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-lighting-standard",
+      "name": "光照标准",
+      "description": "光源数量/阴影级联/烘焙质量的标准设定",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-animation-standard",
+      "name": "动画标准",
+      "description": "骨骼数/帧率/导出设置/命名的动画规范",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-std-checklist",
+      "name": "审查检查清单",
+      "description": "资产提交前的标准化检查项目列表",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-std-template",
+      "name": "标准模板资产",
+      "description": "创建符合规范的模板资产供团队参考",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-std-training",
+      "name": "规范培训",
+      "description": "向美术团队传达并培训技术标准的方法",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-std-evolution",
+      "name": "标准迭代",
+      "description": "根据项目进展/平台变化/团队反馈更新规范",
+      "subdomain_id": "art-standards",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-auto-overview",
+      "name": "自动化工作流概述",
+      "description": "用自动化消除重复劳动——技美的效率倍增器",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-ci-art",
+      "name": "美术CI/CD",
+      "description": "自动化构建/资产验证/部署的持续集成流程",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-auto-import",
+      "name": "自动导入",
+      "description": "资产放入指定目录自动触发导入/处理/验证",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-auto-test",
+      "name": "自动化测试",
+      "description": "资产规范自动检测——面数/UV/命名/碰撞",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-nightly-build",
+      "name": "夜间构建",
+      "description": "每晚自动构建+资产验证+性能回归测试",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ta-auto-lod",
+      "name": "自动LOD生成",
+      "description": "资产导入时自动生成LOD链——减少手工工作",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-auto-texture",
+      "name": "自动纹理处理",
+      "description": "纹理导入自动压缩/生成Mip/设置格式",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-webhook",
+      "name": "Webhook集成",
+      "description": "VCS提交触发自动化流水线——Perforce/Git钩子",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-report-gen",
+      "name": "报告自动生成",
+      "description": "自动生成资产统计/预算使用/质量报告",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "监控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ta-auto-pipeline",
+      "name": "端到端自动化管线",
+      "description": "从DCC到打包的全自动化流程——技美自动化的终极目标",
+      "subdomain_id": "automation",
+      "domain_id": "technical-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": true
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "ta-shader-overview",
+      "target_id": "ta-gpu-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-shader-overview",
+      "target_id": "ta-shader-math",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-gpu-pipeline",
+      "target_id": "ta-hlsl-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-gpu-pipeline",
+      "target_id": "ta-glsl-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-hlsl-basics",
+      "target_id": "ta-vertex-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-hlsl-basics",
+      "target_id": "ta-pixel-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-gpu-pipeline",
+      "target_id": "ta-ue-material-editor",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-gpu-pipeline",
+      "target_id": "ta-unity-shadergraph",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pixel-shader",
+      "target_id": "ta-custom-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-shader-math",
+      "target_id": "ta-noise-functions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-noise-functions",
+      "target_id": "ta-sdf-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-hlsl-basics",
+      "target_id": "ta-compute-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pixel-shader",
+      "target_id": "ta-shader-variants",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pixel-shader",
+      "target_id": "ta-shader-debugging",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-vertex-shader",
+      "target_id": "ta-tessellation-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-vertex-shader",
+      "target_id": "ta-geometry-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-shader-variants",
+      "target_id": "ta-shader-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pixel-shader",
+      "target_id": "ta-screen-space-effects",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-shader-optimization",
+      "target_id": "ta-shader-cross-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pixel-shader",
+      "target_id": "ta-pbr-fundamentals",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-material-layer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-material-instance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-material-instance",
+      "target_id": "ta-material-function",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-texture-packing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-tiling-textures",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-substance-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-material-layer",
+      "target_id": "ta-material-blending",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-parallax-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-material-layer",
+      "target_id": "ta-decal-system",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-tiling-textures",
+      "target_id": "ta-virtual-texturing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-texture-compression",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-material-instance",
+      "target_id": "ta-material-complexity",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-detail-normal",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-texture-packing",
+      "target_id": "ta-material-atlas",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-noise-functions",
+      "target_id": "ta-procedural-material",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-material-blending",
+      "target_id": "ta-material-weather",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-custom-lighting",
+      "target_id": "ta-skin-material",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pbr-fundamentals",
+      "target_id": "ta-translucent-material",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-material-function",
+      "target_id": "ta-material-library",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-shader-overview",
+      "target_id": "ta-pcg-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "ta-pcg-overview",
+      "target_id": "ta-pcg-terrain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pcg-overview",
+      "target_id": "ta-pcg-vegetation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pcg-overview",
+      "target_id": "ta-pcg-building",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pcg-building",
+      "target_id": "ta-pcg-dungeon",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-overview",
+      "target_id": "ta-houdini-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-houdini-basics",
+      "target_id": "ta-houdini-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pcg-overview",
+      "target_id": "ta-ue-pcg-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-vegetation",
+      "target_id": "ta-scatter-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pcg-terrain",
+      "target_id": "ta-pcg-road",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-dungeon",
+      "target_id": "ta-wfc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pcg-vegetation",
+      "target_id": "ta-pcg-biome",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-building",
+      "target_id": "ta-pcg-city",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-overview",
+      "target_id": "ta-pcg-seed",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-terrain",
+      "target_id": "ta-pcg-runtime",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-overview",
+      "target_id": "ta-pcg-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-compute-shader",
+      "target_id": "ta-pcg-mesh",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-seed",
+      "target_id": "ta-pcg-rule-system",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pcg-rule-system",
+      "target_id": "ta-pcg-validation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pcg-runtime",
+      "target_id": "ta-pcg-world-partition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-shader-optimization",
+      "target_id": "ta-perf-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-gpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-draw-call",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-overdraw",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-culling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-draw-call",
+      "target_id": "ta-instancing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-draw-call",
+      "target_id": "ta-batch-merge",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-tri-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-lightmap-opt",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-overdraw",
+      "target_id": "ta-particle-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-gpu-profiling",
+      "target_id": "ta-mobile-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-perf-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-perf-budget",
+      "target_id": "ta-scalability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-compute-shader",
+      "target_id": "ta-async-compute",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-scalability",
+      "target_id": "ta-rendering-features",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-tri-budget",
+      "target_id": "ta-mesh-simplify",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-culling",
+      "target_id": "ta-shadow-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-virtual-texturing",
+      "target_id": "ta-streaming",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-gpu-profiling",
+      "target_id": "ta-perf-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-gpu-profiling",
+      "target_id": "ta-frame-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-shader-overview",
+      "target_id": "ta-tool-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "ta-tool-overview",
+      "target_id": "ta-python-maya",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-tool-overview",
+      "target_id": "ta-python-blender",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-python-maya",
+      "target_id": "ta-mel-scripting",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-tool-overview",
+      "target_id": "ta-ue-editor-utility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-ue-editor-utility",
+      "target_id": "ta-ue-python",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-tool-overview",
+      "target_id": "ta-unity-editor",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-python-maya",
+      "target_id": "ta-gui-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-ue-python",
+      "target_id": "ta-asset-processor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-asset-processor",
+      "target_id": "ta-validation-tool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-asset-processor",
+      "target_id": "ta-batch-tool",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-asset-processor",
+      "target_id": "ta-dcc-bridge",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-validation-tool",
+      "target_id": "ta-tool-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-gui-framework",
+      "target_id": "ta-tool-deploy",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-gui-framework",
+      "target_id": "ta-tool-ux",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-unity-editor",
+      "target_id": "ta-csharp-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-dcc-bridge",
+      "target_id": "ta-api-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-ue-python",
+      "target_id": "ta-commandlet",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-tool-overview",
+      "target_id": "ta-tool-documentation",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "ta-tool-testing",
+      "target_id": "ta-tool-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-tool-overview",
+      "target_id": "ta-pipeline-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pipeline-overview",
+      "target_id": "ta-naming-convention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-naming-convention",
+      "target_id": "ta-folder-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pipeline-overview",
+      "target_id": "ta-import-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-import-pipeline",
+      "target_id": "ta-export-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pipeline-overview",
+      "target_id": "ta-vcs-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-naming-convention",
+      "target_id": "ta-asset-review",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-folder-structure",
+      "target_id": "ta-reference-library",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-import-pipeline",
+      "target_id": "ta-cook-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-vcs-workflow",
+      "target_id": "ta-asset-database",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-import-pipeline",
+      "target_id": "ta-texture-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-import-pipeline",
+      "target_id": "ta-modular-asset",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pipeline-overview",
+      "target_id": "ta-scale-reference",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-asset-review",
+      "target_id": "ta-outsource-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-cook-pipeline",
+      "target_id": "ta-multi-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-validation-tool",
+      "target_id": "ta-data-validation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-asset-database",
+      "target_id": "ta-pipeline-monitoring",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-cook-pipeline",
+      "target_id": "ta-iteration-speed",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-multi-platform",
+      "target_id": "ta-migration-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-pipeline-overview",
+      "target_id": "ta-pipeline-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-lod-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-overview",
+      "target_id": "ta-lod-generation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-lod-generation",
+      "target_id": "ta-lod-switching",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-lod-switching",
+      "target_id": "ta-hlod",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-overview",
+      "target_id": "ta-nanite",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-nanite",
+      "target_id": "ta-nanite-limitations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-lod-switching",
+      "target_id": "ta-impostor",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-switching",
+      "target_id": "ta-lod-material",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-overview",
+      "target_id": "ta-lod-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-switching",
+      "target_id": "ta-lod-shadow",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-generation",
+      "target_id": "ta-lod-foliage",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-overview",
+      "target_id": "ta-lod-vfx",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-switching",
+      "target_id": "ta-lod-transition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-lod-generation",
+      "target_id": "ta-lod-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-hlod",
+      "target_id": "ta-lod-streaming",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-tessellation-shader",
+      "target_id": "ta-tessellation-lod",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-animation",
+      "target_id": "ta-lod-crowd",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-lod-generation",
+      "target_id": "ta-lod-building",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-mesh-simplify",
+      "target_id": "ta-proxy-mesh",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-lod-testing",
+      "target_id": "ta-lod-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-perf-overview",
+      "target_id": "ta-mem-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-mem-overview",
+      "target_id": "ta-texture-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-mem-overview",
+      "target_id": "ta-mesh-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-gpu-profiling",
+      "target_id": "ta-vram-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-texture-budget",
+      "target_id": "ta-mipmap-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-mipmap-strategy",
+      "target_id": "ta-texture-streaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-mem-overview",
+      "target_id": "ta-memory-pool",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-vram-profiling",
+      "target_id": "ta-asset-size",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-mem-overview",
+      "target_id": "ta-console-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-console-budget",
+      "target_id": "ta-mobile-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-texture-budget",
+      "target_id": "ta-render-target",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-shader-variants",
+      "target_id": "ta-shader-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-mesh-budget",
+      "target_id": "ta-anim-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-mem-overview",
+      "target_id": "ta-audio-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-asset-size",
+      "target_id": "ta-memory-report",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-memory-report",
+      "target_id": "ta-pak-size",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-texture-streaming",
+      "target_id": "ta-loading-screen",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-asset-size",
+      "target_id": "ta-reference-viewer",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-memory-pool",
+      "target_id": "ta-mem-leak-detect",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-memory-report",
+      "target_id": "ta-mem-budget-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-pipeline-overview",
+      "target_id": "ta-std-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-std-overview",
+      "target_id": "ta-poly-standard",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-std-overview",
+      "target_id": "ta-texture-standard",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-texture-standard",
+      "target_id": "ta-material-standard",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-std-overview",
+      "target_id": "ta-lighting-standard",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-std-overview",
+      "target_id": "ta-animation-standard",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-poly-standard",
+      "target_id": "ta-std-checklist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-texture-standard",
+      "target_id": "ta-std-checklist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-std-checklist",
+      "target_id": "ta-std-template",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-std-template",
+      "target_id": "ta-std-training",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-std-training",
+      "target_id": "ta-std-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-tool-pipeline",
+      "target_id": "ta-auto-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-auto-overview",
+      "target_id": "ta-ci-art",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-auto-overview",
+      "target_id": "ta-auto-import",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-auto-import",
+      "target_id": "ta-auto-test",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-ci-art",
+      "target_id": "ta-nightly-build",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-auto-import",
+      "target_id": "ta-auto-lod",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-auto-import",
+      "target_id": "ta-auto-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-ci-art",
+      "target_id": "ta-webhook",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-auto-test",
+      "target_id": "ta-report-gen",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ta-nightly-build",
+      "target_id": "ta-auto-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ta-auto-test",
+      "target_id": "ta-auto-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    }
+  ]
+}

@@ -694,6 +694,31 @@ ANIMATION_ASSESSMENT_SUPPLEMENT = """
 - **调试能力**: 用户是否能识别和解决常见动画问题——穿模/滑步/权重异常/混合跳变？
 """
 
+TECHNICAL_ART_DOMAIN_SUPPLEMENT = """
+## 技术美术教学特殊规则
+
+1. **桥梁角色**: 技术美术是美术与工程之间的桥梁。教学时始终强调跨职能沟通——用程序员能理解的方式描述美术需求，用美术师能理解的方式解释技术限制
+2. **性能意识**: 每个视觉效果都有性能代价。教学中始终关联性能影响——Shader指令数/Draw Call/内存/带宽
+3. **管线思维**: 技术美术不是孤立的——每个决策影响上下游。培养从DCC到引擎到发布的全管线视角
+4. **自动化优先**: 重复操作就应该自动化。鼓励用脚本/工具替代手工操作，提升团队效率
+5. **规范先行**: 技术规范要在项目早期制定，而非事后补救。标准/预算/命名是项目稳定运行的基础
+6. **实测为准**: 理论预期与实际性能可能有巨大差距。培养Profile驱动的优化习惯——先测量再优化
+7. **平台差异**: PC/主机/移动端有截然不同的GPU架构和限制。避免一刀切，培养针对性优化思维
+"""
+
+TECHNICAL_ART_ASSESSMENT_SUPPLEMENT = """
+## 技术美术领域评估特殊指标
+
+在评估技术美术概念理解时，请额外关注以下方面：
+- **Shader理解**: 用户是否理解GPU管线各阶段？能否读懂/编写基本的HLSL/GLSL代码？
+- **性能意识**: 用户是否能识别常见的性能瓶颈(Draw Call/Overdraw/带宽)？能否提出合理的优化策略？
+- **材质系统**: 用户是否理解PBR工作流？能否设计分层/可复用的材质系统？
+- **工具能力**: 用户是否具备用Python/C#开发DCC/引擎工具的能力？能否设计面向美术师的工具界面？
+- **管线设计**: 用户是否理解从建模到引擎的完整资产管线？能否制定合理的技术规范和预算？
+- **PCG理解**: 用户是否理解程序化生成的基本原理？能否选择合适的PCG技术解决实际问题？
+- **跨平台**: 用户是否了解不同平台(PC/主机/移动)的GPU架构差异及其对美术管线的影响？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -717,6 +742,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "3d-art": THREE_D_ART_DOMAIN_SUPPLEMENT,
     "concept-design": CONCEPT_DESIGN_DOMAIN_SUPPLEMENT,
     "animation": ANIMATION_DOMAIN_SUPPLEMENT,
+    "technical-art": TECHNICAL_ART_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -738,6 +764,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "3d-art": THREE_D_ART_ASSESSMENT_SUPPLEMENT,
     "concept-design": CONCEPT_DESIGN_ASSESSMENT_SUPPLEMENT,
     "animation": ANIMATION_ASSESSMENT_SUPPLEMENT,
+    "technical-art": TECHNICAL_ART_ASSESSMENT_SUPPLEMENT,
 }
 
 
