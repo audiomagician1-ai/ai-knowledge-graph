@@ -1230,7 +1230,29 @@ data/seed/         — 种子图谱数据
      - Workers: graph.ts+dialogue.ts+learning.ts(11域seedMap完整) + llm.ts(SSRF/tokenLimitParam)
    - GITHUB: 0 open issues, 12 closed (all resolved)
    - VERIFY: 802 tests (209 FE + 593 BE) 全通过, tsc 0 errors, build 4.20s
-   - STATUS: 3个minor修复(CSS变量一致性+transition timer泄露+cursor polling优化), 代码质量持续稳定
+    - STATUS: 3个minor修复(CSS变量一致性+transition timer泄露+cursor polling优化), 代码质量持续稳定
+
+- ✅ **第七十七轮全栈基础设施审查+类型安全修复 (2026-03-20, 8b374e5)**:
+   - **REFACTOR**: settings.ts `LLMConfig`接口从private→`export`, SettingsContent.tsx数据导入中`partial`变量类型从`Record<string, unknown>`→`Partial<LLMConfig>`, 消除生产.tsx文件中最后一个`as any`转换(`setLLMConfig(partial as any)`→`setLLMConfig(partial)`)
+   - REVIEW: 全栈基础设施深度审查(15+模块, 0 critical/0 major issues):
+     - BE Infrastructure: llm/router.py(249行 — SSRF validation/_validate_base_url(scheme+hostname+private IP block)/double-check locking for httpx client/3-attempt retry with exponential backoff/SSE stream parsing with 2-attempt retry/_token_limit_param for o1/o3/chatgpt models/_resolve_endpoint user→server key chain — 全部正确)
+     - BE Infrastructure: main.py(158行 — lifespan graceful degradation(SQLite always/Neo4j+Redis optional)/CORS wildcard+credentials guard/path traversal protection for SPA serving/browser auto-open with headless safety — 全部正确)
+     - BE Infrastructure: rate_limiter.py(136行 — sliding window deque(O(1) popleft)/5min prune interval/BYOK bypass/X-Forwarded-For IP extraction — 全部正确)
+     - BE Infrastructure: config.py(46行 — pydantic-settings BaseSettings/env file/.env fallback/sensitive field warnings — 简洁正确)
+     - BE Infrastructure: redis_client.py(80行 — lazy reconnect with lock+60s cooldown/graceful degradation on failure — 正确)
+     - BE Infrastructure: neo4j_client.py(53行 — async driver/explicit read+write transactions — 正确)
+     - BE Engines: evaluator.py(188行 — JSON parse 3 fallback strategies(direct/```json/braces)/score validation+clamping 0-100/mastered threshold(overall≥75 AND all dims≥60)/fallback evaluator heuristic — 全部正确)
+     - BE Engines: socratic.py(210行 — RAG loading with domain path dispatch(ai-engineering flat vs nested)/domain supplement registry/LLM opening with hardcoded fallback — 全部正确)
+     - Engine Stubs: tracker.py/builder.py/pathfinder.py/fsrs_scheduler.py — 全部TODO占位符(未来Phase), 预期状态
+     - Supabase EFs: health(echo)/llm-proxy(TODO stub)/cors(wildcard origin) — 预期状态
+     - Workers prompts.ts: 10域DOMAIN_SUPPLEMENTS + 10域ASSESSMENT_SUPPLEMENTS — 与BE/FE三方一致确认
+     - Shared Types: graph.ts(Domain/DomainStats/Concept/GraphNode/GraphEdge) + learning.ts + chat.ts + constants/index.ts — 全部正确, 与API返回格式一致
+   - TYPE SAFETY AUDIT: 生产.tsx文件 **0个`as any`**(SettingsContent最后一个已消除); 生产.ts文件仅2个合理`as any`(supabase-sync.ts enum转换 + learning.ts window diagnostic)
+   - DEAD CODE INVENTORY: useMediaQuery.ts(16行, Round 74后全项目unused) + dialogue-api.ts(42行, 从未被import) — 均为future-ready代码, 体积极小, 保留
+   - VITE WARNING: learning.ts同时被静态import(6个组件)和动态import(domain.ts避免循环依赖) — 已知cosmetic warning, 无运行时影响
+   - GITHUB: 0 open issues, 12 closed (all resolved)
+   - VERIFY: 802 tests (209 FE + 593 BE) 全通过, tsc 0 errors, build 3.67s
+   - STATUS: 消除最后一个生产tsx `as any`, 全栈基础设施15+模块审查无重大问题, 代码质量优秀
 
 - ✅ **第七十四轮FE深度审查+ChatPanel流清理修复+死代码清除 (2026-03-20, e868d32)**:
    - **FIX[Medium]**: ChatPanel.tsx未在unmount时调用`cancelStream()+reset()` — LearnPage有此清理(M-01注释), 但ChatPanel完全缺失。用户在GraphPage中关闭聊天面板(点X按钮)时, 如果AI正在流式输出, 旧流继续写入dialogue store, 可能导致下次打开不同概念时出现陈旧消息或状态异常。添加`useEffect cleanup`调用`cancelStream(); reset();`
