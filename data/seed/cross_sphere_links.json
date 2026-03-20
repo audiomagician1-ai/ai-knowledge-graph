@@ -922,10 +922,130 @@
       "target_id": "consciousness",
       "relation": "related",
       "description": "心理神经免疫学发现心理状态（压力、情绪）通过神经-内分泌-免疫轴影响免疫功能"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "game-theory-econ",
+      "target_domain": "mathematics",
+      "target_id": "game-theory-intro",
+      "relation": "same_concept",
+      "description": "经济学中的博弈论与数学中的博弈论是同一学科，前者侧重策略互动的经济应用，后者侧重形式化建模"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "linear-regression",
+      "target_domain": "mathematics",
+      "target_id": "linear-regression",
+      "relation": "same_concept",
+      "description": "计量经济学的线性回归与数学统计的线性回归是同一工具，前者侧重因果推断，后者侧重参数估计理论"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "econometrics-overview",
+      "target_domain": "mathematics",
+      "target_id": "descriptive-statistics",
+      "relation": "requires",
+      "description": "计量经济学的学习需要统计学基础，包括描述统计、假设检验和回归分析"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "utility-maximization",
+      "target_domain": "mathematics",
+      "target_id": "optimization-calculus",
+      "relation": "requires",
+      "description": "微观经济学中效用最大化和成本最小化的核心方法是数学最优化理论"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "behavioral-econ-overview",
+      "target_domain": "psychology",
+      "target_id": "cognitive-biases",
+      "relation": "related",
+      "description": "行为经济学直接建立在认知心理学的认知偏差研究基础上（Kahneman & Tversky）"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "prospect-theory",
+      "target_domain": "psychology",
+      "target_id": "decision-making",
+      "relation": "same_concept",
+      "description": "前景理论是Kahneman & Tversky在心理学决策研究基础上提出的经济学核心理论"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "nudge-theory",
+      "target_domain": "psychology",
+      "target_id": "behavioral-overview",
+      "relation": "related",
+      "description": "助推理论结合行为心理学发现设计选择架构，引导人们做出更好的决策"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "behavioral-finance",
+      "target_domain": "finance",
+      "target_id": "behavioral-finance",
+      "relation": "same_concept",
+      "description": "行为金融学同时属于经济学和金融学领域，前者关注理论框架，后者关注市场应用"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "market-failure",
+      "target_domain": "finance",
+      "target_id": "market-efficiency",
+      "relation": "related",
+      "description": "经济学的市场失灵理论与金融学的市场有效性假说形成互补：前者分析市场何时失效，后者分析市场何时有效"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "interest-rates",
+      "target_domain": "finance",
+      "target_id": "interest-rate-risk",
+      "relation": "related",
+      "description": "宏观经济学中的利率理论是金融学利率风险管理的理论基础"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "welfare-economics",
+      "target_domain": "philosophy",
+      "target_id": "utilitarianism",
+      "relation": "related",
+      "description": "福利经济学的效用理论直接源于功利主义哲学，边沁的最大幸福原则是经济学福利分析的哲学基础"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "welfare-economics",
+      "target_domain": "philosophy",
+      "target_id": "rawls-justice",
+      "relation": "related",
+      "description": "福利经济学的分配公正分析与罗尔斯正义论的差异原则密切相关"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "adam-smith",
+      "target_domain": "philosophy",
+      "target_id": "social-contract",
+      "relation": "related",
+      "description": "亚当·斯密既是经济学之父也是道德哲学家，其'看不见的手'与社会契约论形成互补的社会秩序解释"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "machine-learning-econ",
+      "target_domain": "ai-engineering",
+      "target_id": "decision-tree",
+      "relation": "related",
+      "description": "经济学中越来越多地使用机器学习方法（决策树、随机森林）进行因果推断和政策评估"
+    },
+    {
+      "source_domain": "economics",
+      "source_id": "population-economics",
+      "target_domain": "biology",
+      "target_id": "population-dynamics",
+      "relation": "related",
+      "description": "人口经济学与种群动态共享马尔萨斯增长模型的理论渊源，两者都研究人口规模与资源的关系"
     }
   ],
   "meta": {
-    "total_links": 115,
+    "total_links": 130,
     "relation_types": {
       "same_concept": "相同概念在不同领域的不同视角",
       "requires": "源概念需要目标概念作为知识基础",
@@ -949,5 +1069,5 @@
       "product-design_physics": 0
     }
   },
-  "total": 115
+  "total": 130
 }
