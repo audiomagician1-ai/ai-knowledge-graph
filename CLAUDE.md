@@ -1201,7 +1201,18 @@ data/seed/         — 种子图谱数据
    - SECURITY: 全项目无eval/exec/innerHTML/dangerouslySetInnerHTML/subprocess, 无TODO/FIXME in production code(仅4个future-phase stub占位符), 无敏感数据泄露, console.log无敏感信息
    - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
    - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.74s
-   - STATUS: 修复1个stale RAG索引(Phase 6遗留), 全量数据完整性验证通过
+    - STATUS: 修复1个stale RAG索引(Phase 6遗留), 全量数据完整性验证通过
+
+- ✅ **第七十轮深度巡逻审查+学习统计默认值修复 (2026-03-20, 01afd3a)**:
+   - **FIX**: learning.py `/stats`端点`total_concepts`默认值267→400 — Phase 6扩展后ai-engineering种子图谱从267增至400概念, 但`Query(default=267)`未同步更新。前端始终传显式count故无影响, 但裸API调用返回错误的available_count [m-01]
+   - **TEST**: 新增`test_stats_default_matches_seed_count`回归测试 — 直接读取seed_graph.json概念数与`/stats`默认返回的total_concepts比较, 确保未来扩展时不再遗漏
+   - REVIEW: 8个核心模块深度审查(未近期审查的模块优先, 0 critical/0 major issues):
+     - FE Stores: learning.ts(724行 — domain-scoped localStorage/migrateLegacyStorage/peekDomainProgress/streak race fix M-09/demotion guard/prereq unlocking/writeVerification/importData merge/syncWithBackend push-only/switchDomain reload — 全部逻辑正确) + supabase-sync.ts(418行 — toDbStatus映射/buildProgressRow/fullSync download-first merge/batch upsert BATCH_SIZE=50/incremental history/concurrency guard _syncing/offline queue registerOnlineFlush — 全部逻辑正确) + settings.ts(412行 — obfuscate/deobfuscate/directMode migration/resolveBaseUrl proxy/probeCORS retry+timeout/tokenLimitParam o1/o3/chatgpt pattern/generateSelfContainedBat/PROVIDER_INFO 4 providers — 全部逻辑正确) + offline-queue.ts(185行 — FIFO dedup for progress/MAX_QUEUE_SIZE 200/flushQueue concurrent guard/registerOnlineFlush+visibilitychange — 全部逻辑正确)
+     - BE Routers: learning.py(304行 — recommend algo multi-factor scoring/sync validation m-11 whitelist/demotion protection/streak atomic update — 全部正确, default值已修复) + graph.py(419行 — per-domain seed/RAG/cross-links cache with threading.Lock/path traversal protection/BFS neighbors depth≤3 — 全部正确) + dialogue.py(409行 — double-check locking/_busy timeout 120s/message sliding window 40/SSE stream try/finally release — 全部正确) + sqlite_client.py(459行 — schema v2 migration idempotent/upsert ON CONFLICT/start_learning atomic read-modify-write C-05/record_assessment demotion guard C-06 — 全部正确)
+   - DATA INTEGRITY: 全11域RAG覆盖验证(2,270文件 0缺失), 145跨球体链接全部有效, 种子数据完整
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 794 tests (204 FE + 590 BE) 全通过, tsc 0 errors
+   - STATUS: 修复1个stale默认值(Phase 6遗留), 8个核心模块深度审查无重大问题
 
 - ✅ **第六十八轮巡逻审查+硬编码颜色修复+schema版本修正 (2026-03-20, 67ff4f5)**:
    - **FIX**: ChatPanel.tsx + LearnPage.tsx 3处硬编码`#eceae6`背景色 → `var(--color-surface-2)` — 统一使用设计系统CSS变量(--color-surface-2: #eaeae7), 确保主题变更时跟随 [m-01]
@@ -1509,8 +1520,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (204 tests)
-cd apps/api && python -m pytest          # 后端测试 ✅ (589 tests)
-# Total: 793 tests
+cd apps/api && python -m pytest          # 后端测试 ✅ (590 tests)
+# Total: 794 tests
 ```
 
 ### 提交规范
