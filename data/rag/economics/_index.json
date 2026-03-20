@@ -1,0 +1,2568 @@
+{
+  "documents": [
+    {
+      "id": "microeconomics-overview",
+      "name": "微观经济学概述",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "economics/microeconomics/microeconomics-overview.md",
+      "exists": true,
+      "char_count": 593
+    },
+    {
+      "id": "supply-demand",
+      "name": "供给与需求",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/microeconomics/supply-demand.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "elasticity",
+      "name": "弹性理论",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/microeconomics/elasticity.md",
+      "exists": true,
+      "char_count": 586
+    },
+    {
+      "id": "consumer-theory",
+      "name": "消费者理论",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/microeconomics/consumer-theory.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "utility-maximization",
+      "name": "效用最大化",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/microeconomics/utility-maximization.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "producer-theory",
+      "name": "生产者理论",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "企业"
+      ],
+      "file": "economics/microeconomics/producer-theory.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "cost-theory",
+      "name": "成本理论",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "企业"
+      ],
+      "file": "economics/microeconomics/cost-theory.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "perfect-competition",
+      "name": "完全竞争市场",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "市场结构"
+      ],
+      "file": "economics/microeconomics/perfect-competition.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "monopoly",
+      "name": "垄断市场",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "市场结构"
+      ],
+      "file": "economics/microeconomics/monopoly.md",
+      "exists": true,
+      "char_count": 581
+    },
+    {
+      "id": "monopolistic-competition",
+      "name": "垄断竞争",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "市场结构"
+      ],
+      "file": "economics/microeconomics/monopolistic-competition.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "oligopoly",
+      "name": "寡头市场",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "市场结构"
+      ],
+      "file": "economics/microeconomics/oligopoly.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "game-theory-econ",
+      "name": "博弈论基础",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "分析工具"
+      ],
+      "file": "economics/microeconomics/game-theory-econ.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "market-failure",
+      "name": "市场失灵",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/microeconomics/market-failure.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "externalities",
+      "name": "外部性",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/microeconomics/externalities.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "public-goods",
+      "name": "公共品",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/microeconomics/public-goods.md",
+      "exists": true,
+      "char_count": 578
+    },
+    {
+      "id": "information-asymmetry",
+      "name": "信息不对称",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "信息"
+      ],
+      "file": "economics/microeconomics/information-asymmetry.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "factor-markets",
+      "name": "要素市场",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分配"
+      ],
+      "file": "economics/microeconomics/factor-markets.md",
+      "exists": true,
+      "char_count": 581
+    },
+    {
+      "id": "welfare-economics",
+      "name": "福利经济学",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "福利"
+      ],
+      "file": "economics/microeconomics/welfare-economics.md",
+      "exists": true,
+      "char_count": 586
+    },
+    {
+      "id": "general-equilibrium",
+      "name": "一般均衡理论",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "economics/microeconomics/general-equilibrium.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "auction-theory",
+      "name": "拍卖理论",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "机制设计"
+      ],
+      "file": "economics/microeconomics/auction-theory.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "contract-theory",
+      "name": "契约理论",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "信息"
+      ],
+      "file": "economics/microeconomics/contract-theory.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "behavioral-micro",
+      "name": "行为微观经济学",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "economics/microeconomics/behavioral-micro.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "market-design",
+      "name": "市场设计",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "机制设计"
+      ],
+      "file": "economics/microeconomics/market-design.md",
+      "exists": true,
+      "char_count": 582
+    },
+    {
+      "id": "income-distribution",
+      "name": "收入分配",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "分配"
+      ],
+      "file": "economics/microeconomics/income-distribution.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "marginal-analysis",
+      "name": "边际分析",
+      "domain_id": "economics",
+      "subdomain_id": "microeconomics",
+      "subdomain_name": "微观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/microeconomics/marginal-analysis.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "macroeconomics-overview",
+      "name": "宏观经济学概述",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "economics/macroeconomics/macroeconomics-overview.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "gdp-measurement",
+      "name": "GDP核算",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/macroeconomics/gdp-measurement.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "aggregate-demand-supply",
+      "name": "总供给与总需求",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/macroeconomics/aggregate-demand-supply.md",
+      "exists": true,
+      "char_count": 583
+    },
+    {
+      "id": "inflation",
+      "name": "通货膨胀",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "现象"
+      ],
+      "file": "economics/macroeconomics/inflation.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "unemployment",
+      "name": "失业",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "现象"
+      ],
+      "file": "economics/macroeconomics/unemployment.md",
+      "exists": true,
+      "char_count": 579
+    },
+    {
+      "id": "business-cycle",
+      "name": "经济周期",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "波动"
+      ],
+      "file": "economics/macroeconomics/business-cycle.md",
+      "exists": true,
+      "char_count": 577
+    },
+    {
+      "id": "fiscal-policy",
+      "name": "财政政策",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/macroeconomics/fiscal-policy.md",
+      "exists": true,
+      "char_count": 574
+    },
+    {
+      "id": "monetary-policy",
+      "name": "货币政策",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/macroeconomics/monetary-policy.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "money-banking",
+      "name": "货币与银行",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/macroeconomics/money-banking.md",
+      "exists": true,
+      "char_count": 581
+    },
+    {
+      "id": "interest-rates",
+      "name": "利率理论",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/macroeconomics/interest-rates.md",
+      "exists": true,
+      "char_count": 577
+    },
+    {
+      "id": "economic-growth",
+      "name": "经济增长理论",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "增长"
+      ],
+      "file": "economics/macroeconomics/economic-growth.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "is-lm-model",
+      "name": "IS-LM模型",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模型"
+      ],
+      "file": "economics/macroeconomics/is-lm-model.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "phillips-curve",
+      "name": "菲利普斯曲线",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模型"
+      ],
+      "file": "economics/macroeconomics/phillips-curve.md",
+      "exists": true,
+      "char_count": 581
+    },
+    {
+      "id": "consumption-saving",
+      "name": "消费与储蓄",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/macroeconomics/consumption-saving.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "investment-theory",
+      "name": "投资理论",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/macroeconomics/investment-theory.md",
+      "exists": true,
+      "char_count": 578
+    },
+    {
+      "id": "national-debt",
+      "name": "国债与财政赤字",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/macroeconomics/national-debt.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "exchange-rate-macro",
+      "name": "汇率与宏观经济",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "开放经济"
+      ],
+      "file": "economics/macroeconomics/exchange-rate-macro.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "open-economy-macro",
+      "name": "开放经济宏观",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "开放经济"
+      ],
+      "file": "economics/macroeconomics/open-economy-macro.md",
+      "exists": true,
+      "char_count": 582
+    },
+    {
+      "id": "rational-expectations",
+      "name": "理性预期",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "预期"
+      ],
+      "file": "economics/macroeconomics/rational-expectations.md",
+      "exists": true,
+      "char_count": 574
+    },
+    {
+      "id": "new-keynesian",
+      "name": "新凯恩斯主义",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "学派"
+      ],
+      "file": "economics/macroeconomics/new-keynesian.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "financial-crisis-macro",
+      "name": "金融危机与宏观",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "危机"
+      ],
+      "file": "economics/macroeconomics/financial-crisis-macro.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "labor-market-macro",
+      "name": "宏观劳动市场",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "劳动"
+      ],
+      "file": "economics/macroeconomics/labor-market-macro.md",
+      "exists": true,
+      "char_count": 582
+    },
+    {
+      "id": "monetary-transmission",
+      "name": "货币传导机制",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/macroeconomics/monetary-transmission.md",
+      "exists": true,
+      "char_count": 582
+    },
+    {
+      "id": "macroprudential-policy",
+      "name": "宏观审慎政策",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/macroeconomics/macroprudential-policy.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "supply-side-economics",
+      "name": "供给侧经济学",
+      "domain_id": "economics",
+      "subdomain_id": "macroeconomics",
+      "subdomain_name": "宏观经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "学派"
+      ],
+      "file": "economics/macroeconomics/supply-side-economics.md",
+      "exists": true,
+      "char_count": 583
+    },
+    {
+      "id": "behavioral-econ-overview",
+      "name": "行为经济学概述",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "economics/behavioral-econ/behavioral-econ-overview.md",
+      "exists": true,
+      "char_count": 601
+    },
+    {
+      "id": "prospect-theory",
+      "name": "前景理论",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/behavioral-econ/prospect-theory.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "cognitive-biases-econ",
+      "name": "认知偏差",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "偏差"
+      ],
+      "file": "economics/behavioral-econ/cognitive-biases-econ.md",
+      "exists": true,
+      "char_count": 593
+    },
+    {
+      "id": "heuristics-econ",
+      "name": "启发式判断",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "偏差"
+      ],
+      "file": "economics/behavioral-econ/heuristics-econ.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "framing-effects",
+      "name": "框架效应",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "偏差"
+      ],
+      "file": "economics/behavioral-econ/framing-effects.md",
+      "exists": true,
+      "char_count": 583
+    },
+    {
+      "id": "mental-accounting",
+      "name": "心理账户",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "消费"
+      ],
+      "file": "economics/behavioral-econ/mental-accounting.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "time-inconsistency-behav",
+      "name": "时间不一致性",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "决策"
+      ],
+      "file": "economics/behavioral-econ/time-inconsistency-behav.md",
+      "exists": true,
+      "char_count": 592
+    },
+    {
+      "id": "nudge-theory",
+      "name": "助推理论",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "应用"
+      ],
+      "file": "economics/behavioral-econ/nudge-theory.md",
+      "exists": true,
+      "char_count": 586
+    },
+    {
+      "id": "bounded-rationality",
+      "name": "有限理性",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/behavioral-econ/bounded-rationality.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "social-preferences",
+      "name": "社会偏好",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "社会"
+      ],
+      "file": "economics/behavioral-econ/social-preferences.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "overconfidence-econ",
+      "name": "过度自信",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "偏差"
+      ],
+      "file": "economics/behavioral-econ/overconfidence-econ.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "endowment-effect",
+      "name": "禀赋效应",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "偏差"
+      ],
+      "file": "economics/behavioral-econ/endowment-effect.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "herding-behavior",
+      "name": "羊群效应",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/behavioral-econ/herding-behavior.md",
+      "exists": true,
+      "char_count": 586
+    },
+    {
+      "id": "behavioral-finance",
+      "name": "行为金融学",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/behavioral-econ/behavioral-finance.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "experimental-economics",
+      "name": "实验经济学",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "economics/behavioral-econ/experimental-economics.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "neuroeconomics",
+      "name": "神经经济学",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "economics/behavioral-econ/neuroeconomics.md",
+      "exists": true,
+      "char_count": 592
+    },
+    {
+      "id": "default-effects",
+      "name": "默认效应",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "economics/behavioral-econ/default-effects.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "sunk-cost-fallacy",
+      "name": "沉没成本谬误",
+      "domain_id": "economics",
+      "subdomain_id": "behavioral-econ",
+      "subdomain_name": "行为经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "偏差"
+      ],
+      "file": "economics/behavioral-econ/sunk-cost-fallacy.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "international-econ-overview",
+      "name": "国际经济学概述",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "economics/international-econ/international-econ-overview.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "comparative-advantage",
+      "name": "比较优势",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "贸易"
+      ],
+      "file": "economics/international-econ/comparative-advantage.md",
+      "exists": true,
+      "char_count": 548
+    },
+    {
+      "id": "absolute-advantage",
+      "name": "绝对优势",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "贸易"
+      ],
+      "file": "economics/international-econ/absolute-advantage.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "heckscher-ohlin",
+      "name": "赫克歇尔-俄林模型",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "贸易"
+      ],
+      "file": "economics/international-econ/heckscher-ohlin.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "trade-policy",
+      "name": "贸易政策",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/international-econ/trade-policy.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "free-trade-agreements",
+      "name": "自由贸易协定",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/international-econ/free-trade-agreements.md",
+      "exists": true,
+      "char_count": 557
+    },
+    {
+      "id": "exchange-rate-systems",
+      "name": "汇率制度",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/international-econ/exchange-rate-systems.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "balance-of-payments",
+      "name": "国际收支",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/international-econ/balance-of-payments.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "foreign-exchange-market",
+      "name": "外汇市场",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/international-econ/foreign-exchange-market.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "international-capital-flows",
+      "name": "国际资本流动",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/international-econ/international-capital-flows.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "currency-crisis",
+      "name": "货币危机",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "危机"
+      ],
+      "file": "economics/international-econ/currency-crisis.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "terms-of-trade",
+      "name": "贸易条件",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "贸易"
+      ],
+      "file": "economics/international-econ/terms-of-trade.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "new-trade-theory",
+      "name": "新贸易理论",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "economics/international-econ/new-trade-theory.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "trade-and-development",
+      "name": "贸易与发展",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "发展"
+      ],
+      "file": "economics/international-econ/trade-and-development.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "global-value-chains",
+      "name": "全球价值链",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "现代"
+      ],
+      "file": "economics/international-econ/global-value-chains.md",
+      "exists": true,
+      "char_count": 551
+    },
+    {
+      "id": "multinational-corporations",
+      "name": "跨国公司",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "企业"
+      ],
+      "file": "economics/international-econ/multinational-corporations.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "trade-wars",
+      "name": "贸易战",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/international-econ/trade-wars.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "international-monetary-system",
+      "name": "国际货币体系",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/international-econ/international-monetary-system.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "regional-integration",
+      "name": "区域经济一体化",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/international-econ/regional-integration.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "trade-gravity-model",
+      "name": "贸易引力模型",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实证"
+      ],
+      "file": "economics/international-econ/trade-gravity-model.md",
+      "exists": true,
+      "char_count": 554
+    },
+    {
+      "id": "migration-economics",
+      "name": "移民经济学",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "劳动"
+      ],
+      "file": "economics/international-econ/migration-economics.md",
+      "exists": true,
+      "char_count": 551
+    },
+    {
+      "id": "digital-trade",
+      "name": "数字贸易",
+      "domain_id": "economics",
+      "subdomain_id": "international-econ",
+      "subdomain_name": "国际经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "现代"
+      ],
+      "file": "economics/international-econ/digital-trade.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "development-econ-overview",
+      "name": "发展经济学概述",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "economics/development-econ/development-econ-overview.md",
+      "exists": true,
+      "char_count": 607
+    },
+    {
+      "id": "poverty-inequality",
+      "name": "贫困与不平等",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/development-econ/poverty-inequality.md",
+      "exists": true,
+      "char_count": 603
+    },
+    {
+      "id": "human-development-index",
+      "name": "人类发展指数",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "指标"
+      ],
+      "file": "economics/development-econ/human-development-index.md",
+      "exists": true,
+      "char_count": 604
+    },
+    {
+      "id": "structural-transformation",
+      "name": "结构转型",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "转型"
+      ],
+      "file": "economics/development-econ/structural-transformation.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "industrialization",
+      "name": "工业化",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "转型"
+      ],
+      "file": "economics/development-econ/industrialization.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "agriculture-development",
+      "name": "农业与发展",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "部门"
+      ],
+      "file": "economics/development-econ/agriculture-development.md",
+      "exists": true,
+      "char_count": 597
+    },
+    {
+      "id": "microfinance",
+      "name": "小额金融",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/development-econ/microfinance.md",
+      "exists": true,
+      "char_count": 596
+    },
+    {
+      "id": "foreign-aid",
+      "name": "对外援助",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/development-econ/foreign-aid.md",
+      "exists": true,
+      "char_count": 596
+    },
+    {
+      "id": "institutions-development",
+      "name": "制度与发展",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/development-econ/institutions-development.md",
+      "exists": true,
+      "char_count": 602
+    },
+    {
+      "id": "rct-development",
+      "name": "随机对照试验",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "方法"
+      ],
+      "file": "economics/development-econ/rct-development.md",
+      "exists": true,
+      "char_count": 603
+    },
+    {
+      "id": "education-economics",
+      "name": "教育经济学",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "人力资本"
+      ],
+      "file": "economics/development-econ/education-economics.md",
+      "exists": true,
+      "char_count": 599
+    },
+    {
+      "id": "health-economics-dev",
+      "name": "健康经济学",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "人力资本"
+      ],
+      "file": "economics/development-econ/health-economics-dev.md",
+      "exists": true,
+      "char_count": 601
+    },
+    {
+      "id": "urbanization-econ",
+      "name": "城市化经济学",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "空间"
+      ],
+      "file": "economics/development-econ/urbanization-econ.md",
+      "exists": true,
+      "char_count": 598
+    },
+    {
+      "id": "natural-resources-curse",
+      "name": "资源诅咒",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "资源"
+      ],
+      "file": "economics/development-econ/natural-resources-curse.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "population-economics",
+      "name": "人口经济学",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "人口"
+      ],
+      "file": "economics/development-econ/population-economics.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "sustainable-development",
+      "name": "可持续发展",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "economics/development-econ/sustainable-development.md",
+      "exists": true,
+      "char_count": 599
+    },
+    {
+      "id": "technology-transfer",
+      "name": "技术转移",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "economics/development-econ/technology-transfer.md",
+      "exists": true,
+      "char_count": 597
+    },
+    {
+      "id": "gender-economics",
+      "name": "性别经济学",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社会"
+      ],
+      "file": "economics/development-econ/gender-economics.md",
+      "exists": true,
+      "char_count": 599
+    },
+    {
+      "id": "informal-economy",
+      "name": "非正规经济",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "部门"
+      ],
+      "file": "economics/development-econ/informal-economy.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "development-finance",
+      "name": "发展融资",
+      "domain_id": "economics",
+      "subdomain_id": "development-econ",
+      "subdomain_name": "发展经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/development-econ/development-finance.md",
+      "exists": true,
+      "char_count": 597
+    },
+    {
+      "id": "econometrics-overview",
+      "name": "计量经济学概述",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "economics/econometrics/econometrics-overview.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "linear-regression",
+      "name": "线性回归",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/econometrics/linear-regression.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "multiple-regression",
+      "name": "多元回归",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/econometrics/multiple-regression.md",
+      "exists": true,
+      "char_count": 553
+    },
+    {
+      "id": "hypothesis-testing-econ",
+      "name": "假设检验",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "统计"
+      ],
+      "file": "economics/econometrics/hypothesis-testing-econ.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "endogeneity",
+      "name": "内生性问题",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "economics/econometrics/endogeneity.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "instrumental-variables",
+      "name": "工具变量法",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "因果"
+      ],
+      "file": "economics/econometrics/instrumental-variables.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "panel-data",
+      "name": "面板数据分析",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "economics/econometrics/panel-data.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "time-series-econ",
+      "name": "时间序列分析",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "economics/econometrics/time-series-econ.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "diff-in-diff",
+      "name": "双重差分法",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "因果"
+      ],
+      "file": "economics/econometrics/diff-in-diff.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "regression-discontinuity",
+      "name": "断点回归",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "因果"
+      ],
+      "file": "economics/econometrics/regression-discontinuity.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "propensity-score",
+      "name": "倾向得分匹配",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "因果"
+      ],
+      "file": "economics/econometrics/propensity-score.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "maximum-likelihood",
+      "name": "极大似然估计",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "economics/econometrics/maximum-likelihood.md",
+      "exists": true,
+      "char_count": 557
+    },
+    {
+      "id": "limited-dependent",
+      "name": "有限因变量模型",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模型"
+      ],
+      "file": "economics/econometrics/limited-dependent.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "heteroskedasticity",
+      "name": "异方差",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "诊断"
+      ],
+      "file": "economics/econometrics/heteroskedasticity.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "autocorrelation-econ",
+      "name": "自相关",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "诊断"
+      ],
+      "file": "economics/econometrics/autocorrelation-econ.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "causal-inference",
+      "name": "因果推断",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "economics/econometrics/causal-inference.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "machine-learning-econ",
+      "name": "机器学习与经济学",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "economics/econometrics/machine-learning-econ.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "synthetic-control",
+      "name": "合成控制法",
+      "domain_id": "economics",
+      "subdomain_id": "econometrics",
+      "subdomain_name": "计量经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "因果"
+      ],
+      "file": "economics/econometrics/synthetic-control.md",
+      "exists": true,
+      "char_count": 554
+    },
+    {
+      "id": "public-econ-overview",
+      "name": "公共经济学概述",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "economics/public-econ/public-econ-overview.md",
+      "exists": true,
+      "char_count": 616
+    },
+    {
+      "id": "taxation-principles",
+      "name": "税收原则",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "税收"
+      ],
+      "file": "economics/public-econ/taxation-principles.md",
+      "exists": true,
+      "char_count": 599
+    },
+    {
+      "id": "tax-incidence",
+      "name": "税收归宿",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "税收"
+      ],
+      "file": "economics/public-econ/tax-incidence.md",
+      "exists": true,
+      "char_count": 601
+    },
+    {
+      "id": "optimal-taxation",
+      "name": "最优税收理论",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "税收"
+      ],
+      "file": "economics/public-econ/optimal-taxation.md",
+      "exists": true,
+      "char_count": 608
+    },
+    {
+      "id": "income-tax",
+      "name": "所得税",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "税种"
+      ],
+      "file": "economics/public-econ/income-tax.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "consumption-tax",
+      "name": "消费税",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "税种"
+      ],
+      "file": "economics/public-econ/consumption-tax.md",
+      "exists": true,
+      "char_count": 599
+    },
+    {
+      "id": "public-expenditure",
+      "name": "公共支出",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "支出"
+      ],
+      "file": "economics/public-econ/public-expenditure.md",
+      "exists": true,
+      "char_count": 604
+    },
+    {
+      "id": "social-insurance",
+      "name": "社会保险",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "福利"
+      ],
+      "file": "economics/public-econ/social-insurance.md",
+      "exists": true,
+      "char_count": 604
+    },
+    {
+      "id": "public-choice",
+      "name": "公共选择理论",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/public-econ/public-choice.md",
+      "exists": true,
+      "char_count": 608
+    },
+    {
+      "id": "rent-seeking",
+      "name": "寻租",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/public-econ/rent-seeking.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "cost-benefit-analysis",
+      "name": "成本收益分析",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "economics/public-econ/cost-benefit-analysis.md",
+      "exists": true,
+      "char_count": 609
+    },
+    {
+      "id": "environmental-economics",
+      "name": "环境经济学",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "economics/public-econ/environmental-economics.md",
+      "exists": true,
+      "char_count": 605
+    },
+    {
+      "id": "fiscal-federalism",
+      "name": "财政联邦主义",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/public-econ/fiscal-federalism.md",
+      "exists": true,
+      "char_count": 609
+    },
+    {
+      "id": "government-failure",
+      "name": "政府失灵",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/public-econ/government-failure.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "pigouvian-tax",
+      "name": "庇古税",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "economics/public-econ/pigouvian-tax.md",
+      "exists": true,
+      "char_count": 598
+    },
+    {
+      "id": "property-rights-econ",
+      "name": "产权经济学",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/public-econ/property-rights-econ.md",
+      "exists": true,
+      "char_count": 603
+    },
+    {
+      "id": "regulation-economics",
+      "name": "规制经济学",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "规制"
+      ],
+      "file": "economics/public-econ/regulation-economics.md",
+      "exists": true,
+      "char_count": 604
+    },
+    {
+      "id": "welfare-state",
+      "name": "福利国家",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "福利"
+      ],
+      "file": "economics/public-econ/welfare-state.md",
+      "exists": true,
+      "char_count": 605
+    },
+    {
+      "id": "behavioral-public-policy",
+      "name": "行为公共政策",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "economics/public-econ/behavioral-public-policy.md",
+      "exists": true,
+      "char_count": 612
+    },
+    {
+      "id": "education-policy-econ",
+      "name": "教育政策经济学",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/public-econ/education-policy-econ.md",
+      "exists": true,
+      "char_count": 612
+    },
+    {
+      "id": "healthcare-economics",
+      "name": "医疗经济学",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "政策"
+      ],
+      "file": "economics/public-econ/healthcare-economics.md",
+      "exists": true,
+      "char_count": 608
+    },
+    {
+      "id": "pension-economics",
+      "name": "养老金经济学",
+      "domain_id": "economics",
+      "subdomain_id": "public-econ",
+      "subdomain_name": "公共经济学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "福利"
+      ],
+      "file": "economics/public-econ/pension-economics.md",
+      "exists": true,
+      "char_count": 611
+    },
+    {
+      "id": "economic-thought-overview",
+      "name": "经济思想史概述",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "economics/economic-thought/economic-thought-overview.md",
+      "exists": true,
+      "char_count": 632
+    },
+    {
+      "id": "adam-smith",
+      "name": "亚当·斯密",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "古典"
+      ],
+      "file": "economics/economic-thought/adam-smith.md",
+      "exists": true,
+      "char_count": 631
+    },
+    {
+      "id": "david-ricardo",
+      "name": "大卫·李嘉图",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "古典"
+      ],
+      "file": "economics/economic-thought/david-ricardo.md",
+      "exists": true,
+      "char_count": 630
+    },
+    {
+      "id": "karl-marx-econ",
+      "name": "马克思经济学",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "古典"
+      ],
+      "file": "economics/economic-thought/karl-marx-econ.md",
+      "exists": true,
+      "char_count": 629
+    },
+    {
+      "id": "marginalism",
+      "name": "边际主义革命",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "新古典"
+      ],
+      "file": "economics/economic-thought/marginalism.md",
+      "exists": true,
+      "char_count": 632
+    },
+    {
+      "id": "alfred-marshall",
+      "name": "马歇尔经济学",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "新古典"
+      ],
+      "file": "economics/economic-thought/alfred-marshall.md",
+      "exists": true,
+      "char_count": 632
+    },
+    {
+      "id": "keynesian-revolution",
+      "name": "凯恩斯革命",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "凯恩斯"
+      ],
+      "file": "economics/economic-thought/keynesian-revolution.md",
+      "exists": true,
+      "char_count": 630
+    },
+    {
+      "id": "monetarism",
+      "name": "货币主义",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "芝加哥"
+      ],
+      "file": "economics/economic-thought/monetarism.md",
+      "exists": true,
+      "char_count": 629
+    },
+    {
+      "id": "austrian-school",
+      "name": "奥地利学派",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "学派"
+      ],
+      "file": "economics/economic-thought/austrian-school.md",
+      "exists": true,
+      "char_count": 628
+    },
+    {
+      "id": "institutional-economics",
+      "name": "制度经济学",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/economic-thought/institutional-economics.md",
+      "exists": true,
+      "char_count": 626
+    },
+    {
+      "id": "chicago-school",
+      "name": "芝加哥学派",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "学派"
+      ],
+      "file": "economics/economic-thought/chicago-school.md",
+      "exists": true,
+      "char_count": 627
+    },
+    {
+      "id": "development-thought",
+      "name": "发展思想演变",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "发展"
+      ],
+      "file": "economics/economic-thought/development-thought.md",
+      "exists": true,
+      "char_count": 635
+    },
+    {
+      "id": "neoclassical-synthesis",
+      "name": "新古典综合",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "综合"
+      ],
+      "file": "economics/economic-thought/neoclassical-synthesis.md",
+      "exists": true,
+      "char_count": 634
+    },
+    {
+      "id": "new-institutional",
+      "name": "新制度经济学",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "制度"
+      ],
+      "file": "economics/economic-thought/new-institutional.md",
+      "exists": true,
+      "char_count": 630
+    },
+    {
+      "id": "behavioral-thought",
+      "name": "行为经济学思想",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "economics/economic-thought/behavioral-thought.md",
+      "exists": true,
+      "char_count": 635
+    },
+    {
+      "id": "feminist-economics",
+      "name": "女性主义经济学",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "批判"
+      ],
+      "file": "economics/economic-thought/feminist-economics.md",
+      "exists": true,
+      "char_count": 636
+    },
+    {
+      "id": "ecological-economics",
+      "name": "生态经济学",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "economics/economic-thought/ecological-economics.md",
+      "exists": true,
+      "char_count": 629
+    },
+    {
+      "id": "complexity-economics",
+      "name": "复杂性经济学",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "economics/economic-thought/complexity-economics.md",
+      "exists": true,
+      "char_count": 632
+    },
+    {
+      "id": "chinese-economic-thought",
+      "name": "中国经济思想",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "中国"
+      ],
+      "file": "economics/economic-thought/chinese-economic-thought.md",
+      "exists": true,
+      "char_count": 632
+    },
+    {
+      "id": "nobel-economics",
+      "name": "诺贝尔经济学奖",
+      "domain_id": "economics",
+      "subdomain_id": "economic-thought",
+      "subdomain_name": "经济思想史",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "总览"
+      ],
+      "file": "economics/economic-thought/nobel-economics.md",
+      "exists": true,
+      "char_count": 634
+    }
+  ],
+  "stats": {
+    "total_docs": 170,
+    "total_chars": 99829,
+    "by_subdomain": {
+      "microeconomics": 25,
+      "macroeconomics": 25,
+      "behavioral-econ": 18,
+      "international-econ": 22,
+      "development-econ": 20,
+      "econometrics": 18,
+      "public-econ": 22,
+      "economic-thought": 20
+    }
+  }
+}
