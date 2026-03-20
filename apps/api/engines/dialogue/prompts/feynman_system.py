@@ -394,6 +394,31 @@ PSYCHOLOGY_ASSESSMENT_SUPPLEMENT = """
 - **避免误区**: 用户是否能避免常见的心理学误解（如"10%大脑使用率"、"宣泄假说"等伪科学概念）？
 """
 
+PHILOSOPHY_DOMAIN_SUPPLEMENT = """
+## 哲学教学特殊规则
+
+1. **原典引证**: 哲学概念必须结合原典文本阐释。如讲柏拉图引用洞穴寓言原文，讲康德引用定言命令的具体表述。用哲学家自己的论证讲故事
+2. **思想实验**: 善用经典思想实验激发思考。如电车难题引入义务论vs功利主义争论，中文房间引入心灵哲学议题。让用户亲身参与哲学推理
+3. **对话传统**: 哲学本身就是对话的艺术。鼓励苏格拉底式追问，帮助用户发现自己立场中的隐含前提和潜在矛盾
+4. **东西互照**: 涉及西方哲学概念时主动联系中国哲学传统的类似讨论。如将亚里士多德美德伦理与儒家德性论对比，将道家自然观与斯多亚学派对照
+5. **论证结构**: 强调论证的逻辑结构。帮助用户区分前提和结论，识别有效论证与谬误，培养严密的哲学思维习惯
+6. **多元立场**: 对有争议的哲学问题呈现多种合理立场及其论据，避免灌输单一观点。引导用户理解为何聪明人可以有不同看法
+7. **概念精确**: 哲学概念有严格的技术含义（如"先验"≠"先天"，"唯物主义"≠日常的"物质至上"）。务必区分哲学术语的精确含义与日常用法
+"""
+
+PHILOSOPHY_ASSESSMENT_SUPPLEMENT = """
+## 哲学领域评估特殊指标
+
+在评估哲学概念理解时，请额外关注以下方面：
+- **概念辨析**: 用户是否能准确区分相近但不同的哲学概念（如经验主义vs实证主义、唯心主义vs主观主义、决定论vs宿命论）？
+- **论证能力**: 用户是否能重构哲学家的核心论证步骤，而非只记住结论？
+- **批判评估**: 用户是否能识别论证中的关键假设，并提出合理的反驳或质疑？
+- **思想关联**: 用户是否理解不同哲学家/流派之间的影响、继承和批判关系？
+- **应用思辨**: 用户是否能将哲学概念应用于分析当代问题（如AI伦理、政治制度、审美判断）？
+- **东西对比**: 用户是否能在东西方哲学传统之间建立有意义的比较和联系？
+- **避免简化**: 用户是否避免了对哲学观点的过度简化（如将功利主义简化为"只看结果"、将存在主义简化为"虚无主义"）？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -405,6 +430,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "product-design": PRODUCT_DOMAIN_SUPPLEMENT,
     "finance": FINANCE_DOMAIN_SUPPLEMENT,
     "psychology": PSYCHOLOGY_DOMAIN_SUPPLEMENT,
+    "philosophy": PHILOSOPHY_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -414,6 +440,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "product-design": PRODUCT_ASSESSMENT_SUPPLEMENT,
     "finance": FINANCE_ASSESSMENT_SUPPLEMENT,
     "psychology": PSYCHOLOGY_ASSESSMENT_SUPPLEMENT,
+    "philosophy": PHILOSOPHY_ASSESSMENT_SUPPLEMENT,
 }
 
 
