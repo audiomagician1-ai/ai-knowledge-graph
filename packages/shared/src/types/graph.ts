@@ -18,6 +18,10 @@ export interface Domain {
   description: string;
   icon: string;
   color: string;
+  /** Whether this domain is active (true) or coming soon (false). Defaults to true if absent. */
+  is_active?: boolean;
+  /** Sort order in domain list */
+  sort_order?: number;
   /** Runtime stats from backend (total concepts, edges, subdomains) */
   stats?: DomainStats;
   concept_count?: number; // @deprecated — use stats.total_concepts

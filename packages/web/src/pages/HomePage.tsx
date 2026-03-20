@@ -228,7 +228,7 @@ export function HomePage() {
   const navigate = useNavigate();
   const { domains, loading, fetchDomains } = useDomainStore();
   const activeDomains = useMemo(
-    () => domains.filter((d) => (d as any).is_active !== false),
+    () => domains.filter((d) => d.is_active !== false),
     [domains],
   );
 

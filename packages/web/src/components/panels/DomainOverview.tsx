@@ -21,7 +21,7 @@ function DomainCard({ domain, compact }: { domain: Domain; compact?: boolean }) 
   const conceptCount = domain.stats?.total_concepts ?? domain.concept_count ?? 0;
   const progress = peekDomainProgress(domain.id);
   const pct = conceptCount > 0 ? Math.round((progress.mastered / conceptCount) * 100) : 0;
-  const isComingSoon = !(domain as any).is_active;
+  const isComingSoon = domain.is_active === false;
 
   return (
     <button
@@ -130,8 +130,8 @@ export function DomainOverview({ compact }: DomainOverviewProps) {
   const { domains, loading } = useDomainStore();
 
   // Separate active domains from coming-soon
-  const activeDomains = domains.filter((d) => (d as any).is_active !== false);
-  const comingSoonDomains = domains.filter((d) => (d as any).is_active === false);
+  const activeDomains = domains.filter((d) => d.is_active !== false);
+  const comingSoonDomains = domains.filter((d) => d.is_active === false);
 
   // Compute overall stats across all active domains
   const overallStats = activeDomains.reduce(

@@ -50,7 +50,7 @@ export function GraphPage() {
 
   // Domain
   const { domains } = useDomainStore();
-  const activeDomains = domains.filter((d) => (d as any).is_active !== false);
+  const activeDomains = domains.filter((d) => d.is_active !== false);
 
   // Close domain picker on outside click
   const domainPickerRef = useRef<HTMLDivElement>(null);
