@@ -134,4 +134,21 @@ describe('useAuthStore', () => {
       expect(useAuthStore.getState().supabaseConfigured).toBe(expected);
     });
   });
+
+  describe('signInWithOAuth', () => {
+    it('should pass redirectTo as origin root (/) not stale /graph route', async () => {
+      const { supabase } = await import('@/lib/api/supabase');
+      const mockOAuth = supabase.auth.signInWithOAuth as ReturnType<typeof vi.fn>;
+      mockOAuth.mockResolvedValueOnce({ data: {}, error: null });
+
+      await useAuthStore.getState().signInWithOAuth('google');
+
+      expect(mockOAuth).toHaveBeenCalledTimes(1);
+      const callArgs = mockOAuth.mock.calls[0][0];
+      expect(callArgs.provider).toBe('google');
+      // redirectTo must point to a valid route (/ is home page), not /graph (no such route)
+      expect(callArgs.options.redirectTo).toMatch(/\/$/);
+      expect(callArgs.options.redirectTo).not.toContain('/graph');
+    });
+  });
 });

@@ -108,7 +108,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/graph`,
+        redirectTo: `${window.location.origin}/`,
       },
     });
     if (error) throw error;
