@@ -35,7 +35,7 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
 
   const isBusy = isStreaming || isAssessing;
   const isUserTyping = input.length > 0;
-  const { progress, startLearning, recordAssessment, newlyUnlockedIds, clearNewlyUnlocked } = useLearningStore();
+  const { progress, startLearning, recordAssessment, newlyUnlockedIds } = useLearningStore();
   const [showCelebration, setShowCelebration] = useState(false);
   // C-01 fix: prevent duplicate recordAssessment calls (same guard as LearnPage)
   const recordedConvRef = useRef<string | null>(null);

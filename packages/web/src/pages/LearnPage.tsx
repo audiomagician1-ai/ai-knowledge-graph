@@ -5,12 +5,11 @@ import { useLearningStore } from '@/lib/store/learning';
 import type { AssessmentResult } from '@/lib/store/dialogue';
 import {
   ArrowLeft, Star, Send, BarChart3, Brain, Lightbulb,
-  RotateCcw, ArrowRight, Zap, AlertTriangle, Trophy,
+  RotateCcw, AlertTriangle, Trophy,
   CheckCircle2, Target, BookOpen,
 } from 'lucide-react';
 import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
 import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
-import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
 import { stripChoicesBlock } from '@/lib/utils/text';
 
 export function LearnPage() {
@@ -28,7 +27,6 @@ export function LearnPage() {
 
   const isBusy = isStreaming || isAssessing;
   const { startLearning, recordAssessment } = useLearningStore();
-  const isDesktop = useIsDesktop();
   const recordedRef = useRef(false);
 
   useEffect(() => {
