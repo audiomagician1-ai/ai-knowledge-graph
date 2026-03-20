@@ -1042,10 +1042,130 @@
       "target_id": "population-dynamics",
       "relation": "related",
       "description": "人口经济学与种群动态共享马尔萨斯增长模型的理论渊源，两者都研究人口规模与资源的关系"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "grammar-essentials",
+      "target_domain": "english",
+      "target_id": "grammar-in-context",
+      "relation": "same_concept",
+      "description": "写作语法要点与英语语法基础是同一知识的不同应用视角，写作侧重表达效果，英语侧重规则掌握"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "vocabulary-building",
+      "target_domain": "english",
+      "target_id": "vocabulary-strategies",
+      "relation": "same_concept",
+      "description": "写作词汇积累与英语词汇策略相辅相成，前者侧重表达精准性，后者侧重理解与记忆"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "academic-overview",
+      "target_domain": "english",
+      "target_id": "academic-writing",
+      "relation": "related",
+      "description": "学术写作与学术英语紧密相关，学术英语能力是高质量学术写作的语言基础"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "audience-awareness",
+      "target_domain": "psychology",
+      "target_id": "social-cognition",
+      "relation": "related",
+      "description": "读者意识本质上是社会认知能力——理解他人的知识状态、需求和期待以调整写作策略"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "persuasive-techniques",
+      "target_domain": "psychology",
+      "target_id": "persuasion",
+      "relation": "requires",
+      "description": "说服性写作技巧建立在心理学的说服与态度改变理论之上，如中心路径和外周路径说服"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "writing-confidence",
+      "target_domain": "psychology",
+      "target_id": "self-efficacy",
+      "relation": "related",
+      "description": "写作自信与自我效能感理论直接相关——对写作能力的信念影响写作投入和坚持"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "logical-reasoning-writing",
+      "target_domain": "philosophy",
+      "target_id": "deductive-reasoning",
+      "relation": "requires",
+      "description": "论说文的逻辑推理写作依赖哲学中的演绎推理方法，有效论证需要符合逻辑规则"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "logical-fallacies-writing",
+      "target_domain": "philosophy",
+      "target_id": "informal-fallacies",
+      "relation": "same_concept",
+      "description": "写作中的逻辑谬误识别与哲学中的非形式谬误是同一知识体系，写作侧重实际识别与避免"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "rhetorical-appeals",
+      "target_domain": "philosophy",
+      "target_id": "aristotle",
+      "relation": "related",
+      "description": "修辞诉求(logos/ethos/pathos)源自亚里士多德的修辞学，是古典修辞学的核心框架"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "ux-writing",
+      "target_domain": "product-design",
+      "target_id": "interaction-design-overview",
+      "relation": "applies_to",
+      "description": "用户体验写作是交互设计的重要组成部分，界面文案直接影响用户操作流畅度和产品体验"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "content-marketing",
+      "target_domain": "product-design",
+      "target_id": "journey-map",
+      "relation": "related",
+      "description": "内容营销写作需要理解用户旅程，在不同触点提供适当的内容以推动用户决策"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "data-presentation",
+      "target_domain": "economics",
+      "target_id": "econometrics-overview",
+      "relation": "related",
+      "description": "说明文中的数据呈现技巧在经济学写作中尤为重要，计量经济学结果需要清晰的文字解读"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "proposal-writing",
+      "target_domain": "economics",
+      "target_id": "cost-benefit-analysis",
+      "relation": "related",
+      "description": "提案写作中常需要成本效益分析来论证方案可行性，经济学分析方法是有力的说服工具"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "technical-writing",
+      "target_domain": "ai-engineering",
+      "target_id": "api-design",
+      "relation": "applies_to",
+      "description": "技术文档写作直接应用于API文档编写，清晰的技术文档是优秀API设计的重要组成部分"
+    },
+    {
+      "source_domain": "writing",
+      "source_id": "science-writing",
+      "target_domain": "biology",
+      "target_id": "ecology-overview",
+      "relation": "applies_to",
+      "description": "科普写作技巧可应用于生态学知识的通俗化传播，将复杂生态系统概念转化为大众可理解的内容"
     }
   ],
   "meta": {
-    "total_links": 130,
+    "total_links": 145,
     "relation_types": {
       "same_concept": "相同概念在不同领域的不同视角",
       "requires": "源概念需要目标概念作为知识基础",
