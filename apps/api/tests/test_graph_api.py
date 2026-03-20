@@ -1579,3 +1579,36 @@ def test_assessment_supplements_three_way_sync():
         f"  BE only: {be_keys - fe_keys}\n"
         f"  FE only: {fe_keys - be_keys}"
     )
+
+
+# ── Workers Opening Domain-Neutral Regression ─────────────────────
+
+def test_workers_opening_domain_neutral():
+    """Workers dialogue opening messages must be domain-neutral (no '编程' reference).
+
+    Regression: Round 78 found getOpening() contained '编程中很基础' (basic in programming),
+    which misleads non-CS domains (biology, economics, writing, etc.).
+    BE and FE both use domain-neutral openings; Workers must match.
+    """
+    import os
+
+    project_root = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    )
+    dialogue_file = os.path.join(project_root, "workers", "src", "routes", "dialogue.ts")
+    assert os.path.exists(dialogue_file), f"Workers dialogue.ts not found: {dialogue_file}"
+    content = open(dialogue_file, encoding="utf-8").read()
+
+    # Extract the getOpening function body (between "function getOpening" and closing "}")
+    import re
+    m = re.search(r"function getOpening\b.*?\n\}", content, re.DOTALL)
+    assert m, "getOpening function not found in workers/src/routes/dialogue.ts"
+    fn_body = m.group(0)
+
+    # Domain-specific terms that should NOT appear in generic opening messages
+    forbidden_terms = ["编程", "代码", "programming", "coding"]
+    for term in forbidden_terms:
+        assert term not in fn_body, (
+            f"Workers getOpening() contains domain-specific term '{term}'. "
+            f"Opening messages must be domain-neutral for all 11 domains."
+        )

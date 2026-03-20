@@ -93,7 +93,9 @@ function buildSystemPrompt(concept: any): string {
 function getOpening(concept: any): string {
   const name = concept.name;
   const diff = concept.difficulty || 5;
-  if (diff <= 3) return `嗨！👋 我听说${name}是编程中很基础但很重要的概念。不过我还不太理解它到底是什么意思。你能用最简单的话给我解释一下吗？`;
+  // Domain-neutral openings — matches BE (socratic.py) and FE (direct-llm.ts) fallback style.
+  // Round 78 fix: removed CS-specific wording from low-difficulty opening.
+  if (diff <= 3) return `嗨！👋 我听说${name}是很基础但很重要的概念。不过我还不太理解它到底是什么意思。你能用最简单的话给我解释一下吗？`;
   if (diff <= 6) return `嗨！🤔 我最近在学习${name}，感觉挺有意思但又有点复杂。你对这个概念了解多少？能试着用最直白的方式给我讲讲吗？`;
   return `嗨！🧐 ${name}这个话题看起来挺深的，我之前一直没搞明白。听说你对这方面有研究，能帮我从头捋一下吗？先从最核心的概念开始？`;
 }

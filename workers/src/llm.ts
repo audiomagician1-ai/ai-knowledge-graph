@@ -155,7 +155,11 @@ export async function llmChat(
   }
 
   const data: any = await res.json();
-  return data.choices[0].message.content;
+  const content = data?.choices?.[0]?.message?.content;
+  if (typeof content !== 'string') {
+    throw new Error(`Unexpected LLM response: no choices[0].message.content`);
+  }
+  return content;
 }
 
 /** Streaming chat completion — returns a ReadableStream of SSE */
