@@ -1203,6 +1203,21 @@ data/seed/         — 种子图谱数据
    - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.74s
     - STATUS: 修复1个stale RAG索引(Phase 6遗留), 全量数据完整性验证通过
 
+- ✅ **第七十三轮FE面板深度审查+DomainOverview概念数修复+Domain类型完善 (2026-03-20, 45a2aa4)**:
+   - **FIX[Critical]**: DomainOverview.tsx读取`domain.concept_count`(始终undefined)而非`domain.stats.total_concepts`(后端/graph/domains实际返回) — 导致知识星系面板所有域卡片显示"0 概念"、进度条0%、"总进度 0/0 (0%)"。修复为`domain.stats?.total_concepts ?? domain.concept_count ?? 0`双重fallback
+   - **REFACTOR**: Domain类型完善 — 添加DomainStats接口(total_concepts/total_edges/subdomains) + Domain.stats字段 + Domain.is_active + Domain.sort_order, 消除4个组件(DomainOverview/HomePage/GraphPage)中共5处`(d as any).is_active`类型转换
+   - **REFACTOR**: HomePage.tsx — Orb.stats类型从手写inline改为DomainStats引用, domain.stats不再需要`as any`转换
+   - **TEST**: +2新测试: stats.total_concepts字段访问 + 缺失stats字段的优雅降级
+   - REVIEW: 4个FE面板/页面深度审查(DashboardContent.tsx 162行 + DomainOverview.tsx 216行 + SettingsContent.tsx 413行 + HomePage.tsx 489行):
+     - DashboardContent: stats从learning store获取(computeStats(graphData.nodes.length)) — 正确(不同于domain stats); nameMap memoized; recentActivity sorted by last_learn_at; mastered/learning filter; progressPct Math.round — 全部正确
+     - DomainOverview: peekDomainProgress per-domain; overallStats reduce; loading/empty guards; conceptCount已修复为stats?.total_concepts fallback — 全部正确
+     - SettingsContent: AI服务模式双选(免费/自带Key); provider/key/baseUrl/model表单; 本地代理toggle+指南+bat下载; probeCORS+probeProxy连接测试; 导出/导入数据(progress+history+streak+conversations+settings, API Key安全排除); 版本/节点/掌握/记录统计 — 全部正确
+     - HomePage: canvas animation loop(BG network O(n²) n=90 acceptable + 3D perspective orbs + orbiting dots + specular highlight + inter-orb dashed lines); hit-test mouse for hover; click→transition→navigate; resize handler with DPR capping — 全部正确
+   - SECURITY: production .tsx文件仅1个`as any`(SettingsContent partial config — 合理), 无eval/innerHTML/dangerouslySetInnerHTML
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 799 tests (206 FE + 593 BE) 全通过, tsc 0 errors, build 3.95s
+   - STATUS: 修复1个Critical级DomainOverview概念数显示缺陷(API格式不匹配), Domain类型补全消除5处as any转换
+
 - ✅ **第七十二轮深度Workers审查+3域缺失修复+哲学RAG修复 (2026-03-20, 3fc50e5)**:
    - **FIX[Critical]**: Workers route files (graph.ts/dialogue.ts/learning.ts) seedMap只有8/11域 — 缺少biology/economics/writing的import和seedMap注册。Phase 15-17添加了3个新知识球但Workers代码从未更新。影响: Cloudflare Workers后端用户选择生物/经济/写作域时所有graph/dialogue/learning/RAG端点返回404
    - **FIX[Medium]**: Workers graph.ts ragMap中philosophy条目是stub(`{documents:[],stats:{}}`)而非实际import — philosophy RAG _index.json有170文档但Workers返回空。Phase 14添加哲学球时遗漏RAG import
@@ -1549,9 +1564,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (204 tests)
+cd packages/web && npx vitest run        # 前端测试 ✅ (206 tests)
 cd apps/api && python -m pytest          # 后端测试 ✅ (593 tests)
-# Total: 797 tests
+# Total: 799 tests
 ```
 
 ### 提交规范
