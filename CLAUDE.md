@@ -1203,6 +1203,19 @@ data/seed/         — 种子图谱数据
    - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.74s
     - STATUS: 修复1个stale RAG索引(Phase 6遗留), 全量数据完整性验证通过
 
+- ✅ **第七十一轮深度巡逻审查+经济学/写作域教学补充修复 (2026-03-20, ad394f1)**:
+   - **FIX**: direct-llm.ts `DOMAIN_SUPPLEMENTS`缺少`economics`和`writing`条目 — 后端feynman_system.py和Workers prompts.ts已有全部10个域的教学补充, 但前端direct-llm.ts仅有8个(math~biology)。Direct模式下学习经济学或写作概念时缺少域特定教学规则(如经济学的模型思维/边际分析, 写作的过程导向/读者意识) [M-01]
+   - TEST: getDomainSupplement测试覆盖从6域→10域, getAssessmentSupplement同步扩展到10域
+   - REVIEW: 跨模块一致性审查(FE+BE+Workers, 0 additional issues):
+     - 域教学补充: BE feynman_system.py DOMAIN_SUPPLEMENTS(10域) ↔ FE direct-llm.ts DOMAIN_SUPPLEMENTS(10域, 已修复) ↔ Workers prompts.ts DOMAIN_SUPPLEMENTS(10域) — 三方一致
+     - 域评估补充: BE ASSESSMENT_SUPPLEMENTS(10域) ↔ FE ASSESSMENT_SUPPLEMENTS(10域) ↔ Workers ASSESSMENT_SUPPLEMENTS(10域) — 三方一致
+     - Multi-domain dialogue: dialogue.py(domain_id through session lifecycle) + sqlite_client.py(schema v2 domain_id column) + FE(startConversation domain passthrough) — 全链路正确
+     - Recent commits审查: bc1e413(multi-domain fix) + 67ff4f5(CSS var + schema version) + 83529ff(RAG index rebuild) + 01afd3a(stats default) — 所有修复逻辑正确
+   - DATA INTEGRITY: 全11域数据完整性验证(2,270概念 0重复ID, 2,839边 0断引用, 145跨球链接全部有效, 11域RAG 100%覆盖)
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 794 tests (204 FE + 590 BE) 全通过, tsc 0 errors, build 3.63s
+   - STATUS: 修复1个Medium级域教学补充缺失(Phase 16/17遗留), 三方一致性验证通过
+
 - ✅ **第七十轮深度巡逻审查+学习统计默认值修复 (2026-03-20, 01afd3a)**:
    - **FIX**: learning.py `/stats`端点`total_concepts`默认值267→400 — Phase 6扩展后ai-engineering种子图谱从267增至400概念, 但`Query(default=267)`未同步更新。前端始终传显式count故无影响, 但裸API调用返回错误的available_count [m-01]
    - **TEST**: 新增`test_stats_default_matches_seed_count`回归测试 — 直接读取seed_graph.json概念数与`/stats`默认返回的total_concepts比较, 确保未来扩展时不再遗漏
