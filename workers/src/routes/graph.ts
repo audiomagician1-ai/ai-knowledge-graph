@@ -13,6 +13,9 @@ import seedProduct from '../../data/seed/product-design/seed_graph.json';
 import seedFinance from '../../data/seed/finance/seed_graph.json';
 import seedPsychology from '../../data/seed/psychology/seed_graph.json';
 import seedPhilosophy from '../../data/seed/philosophy/seed_graph.json';
+import seedBiology from '../../data/seed/biology/seed_graph.json';
+import seedEconomics from '../../data/seed/economics/seed_graph.json';
+import seedWriting from '../../data/seed/writing/seed_graph.json';
 // Multi-domain RAG index imports
 import ragAI from '../../data/rag/_index.json';
 import ragMath from '../../data/rag/mathematics/_index.json';
@@ -21,6 +24,10 @@ import ragPhysics from '../../data/rag/physics/_index.json';
 import ragProduct from '../../data/rag/product-design/_index.json';
 import ragFinance from '../../data/rag/finance/_index.json';
 import ragPsychology from '../../data/rag/psychology/_index.json';
+import ragPhilosophy from '../../data/rag/philosophy/_index.json';
+import ragBiology from '../../data/rag/biology/_index.json';
+import ragEconomics from '../../data/rag/economics/_index.json';
+import ragWriting from '../../data/rag/writing/_index.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -30,11 +37,13 @@ const seedMap: Record<string, any> = {
   'ai-engineering': seedAI, 'mathematics': seedMath, 'english': seedEnglish,
   'physics': seedPhysics, 'product-design': seedProduct, 'finance': seedFinance,
   'psychology': seedPsychology, 'philosophy': seedPhilosophy,
+  'biology': seedBiology, 'economics': seedEconomics, 'writing': seedWriting,
 };
 const ragMap: Record<string, any> = {
   'ai-engineering': ragAI, 'mathematics': ragMath, 'english': ragEnglish,
   'physics': ragPhysics, 'product-design': ragProduct, 'finance': ragFinance,
-  'psychology': ragPsychology, 'philosophy': { documents: [], stats: {} },
+  'psychology': ragPsychology, 'philosophy': ragPhilosophy,
+  'biology': ragBiology, 'economics': ragEconomics, 'writing': ragWriting,
 };
 function getSeed(domain: string): any { return seedMap[domain] || null; }
 function getRagIndex(domain: string): any { return ragMap[domain] || { documents: [], stats: {} }; }

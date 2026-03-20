@@ -1,0 +1,2568 @@
+{
+  "documents": [
+    {
+      "id": "ancient-philosophy-overview",
+      "name": "古代哲学概述",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/ancient-philosophy/ancient-philosophy-overview.md",
+      "exists": true,
+      "char_count": 614
+    },
+    {
+      "id": "pre-socratic-overview",
+      "name": "前苏格拉底哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "早期"
+      ],
+      "file": "philosophy/ancient-philosophy/pre-socratic-overview.md",
+      "exists": true,
+      "char_count": 622
+    },
+    {
+      "id": "heraclitus",
+      "name": "赫拉克利特",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "早期"
+      ],
+      "file": "philosophy/ancient-philosophy/heraclitus.md",
+      "exists": true,
+      "char_count": 611
+    },
+    {
+      "id": "parmenides",
+      "name": "巴门尼德",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "早期"
+      ],
+      "file": "philosophy/ancient-philosophy/parmenides.md",
+      "exists": true,
+      "char_count": 612
+    },
+    {
+      "id": "democritus",
+      "name": "德谟克利特",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "早期"
+      ],
+      "file": "philosophy/ancient-philosophy/democritus.md",
+      "exists": true,
+      "char_count": 612
+    },
+    {
+      "id": "sophists",
+      "name": "智者学派",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "古希腊"
+      ],
+      "file": "philosophy/ancient-philosophy/sophists.md",
+      "exists": true,
+      "char_count": 615
+    },
+    {
+      "id": "socrates",
+      "name": "苏格拉底",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ancient-philosophy/socrates.md",
+      "exists": true,
+      "char_count": 616
+    },
+    {
+      "id": "plato",
+      "name": "柏拉图",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ancient-philosophy/plato.md",
+      "exists": true,
+      "char_count": 608
+    },
+    {
+      "id": "plato-republic",
+      "name": "《理想国》",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "philosophy/ancient-philosophy/plato-republic.md",
+      "exists": true,
+      "char_count": 614
+    },
+    {
+      "id": "aristotle",
+      "name": "亚里士多德",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ancient-philosophy/aristotle.md",
+      "exists": true,
+      "char_count": 615
+    },
+    {
+      "id": "aristotle-ethics",
+      "name": "亚里士多德伦理学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "伦理"
+      ],
+      "file": "philosophy/ancient-philosophy/aristotle-ethics.md",
+      "exists": true,
+      "char_count": 632
+    },
+    {
+      "id": "epicurus",
+      "name": "伊壁鸠鲁",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "希腊化"
+      ],
+      "file": "philosophy/ancient-philosophy/epicurus.md",
+      "exists": true,
+      "char_count": 610
+    },
+    {
+      "id": "stoicism",
+      "name": "斯多亚学派",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "希腊化"
+      ],
+      "file": "philosophy/ancient-philosophy/stoicism.md",
+      "exists": true,
+      "char_count": 615
+    },
+    {
+      "id": "skepticism-ancient",
+      "name": "古代怀疑论",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "希腊化"
+      ],
+      "file": "philosophy/ancient-philosophy/skepticism-ancient.md",
+      "exists": true,
+      "char_count": 618
+    },
+    {
+      "id": "neoplatonism",
+      "name": "新柏拉图主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "晚期"
+      ],
+      "file": "philosophy/ancient-philosophy/neoplatonism.md",
+      "exists": true,
+      "char_count": 617
+    },
+    {
+      "id": "confucius",
+      "name": "孔子",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/confucius.md",
+      "exists": true,
+      "char_count": 604
+    },
+    {
+      "id": "mencius",
+      "name": "孟子",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/mencius.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "xunzi",
+      "name": "荀子",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/xunzi.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "laozi",
+      "name": "老子",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/laozi.md",
+      "exists": true,
+      "char_count": 606
+    },
+    {
+      "id": "zhuangzi",
+      "name": "庄子",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/zhuangzi.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "mozi",
+      "name": "墨子",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/mozi.md",
+      "exists": true,
+      "char_count": 603
+    },
+    {
+      "id": "legalism",
+      "name": "法家思想",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/legalism.md",
+      "exists": true,
+      "char_count": 610
+    },
+    {
+      "id": "buddhist-philosophy",
+      "name": "佛教哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/buddhist-philosophy.md",
+      "exists": true,
+      "char_count": 609
+    },
+    {
+      "id": "yinyang-school",
+      "name": "阴阳家",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ancient-philosophy/yinyang-school.md",
+      "exists": true,
+      "char_count": 605
+    },
+    {
+      "id": "ancient-philosophy-legacy",
+      "name": "古代哲学遗产",
+      "domain_id": "philosophy",
+      "subdomain_id": "ancient-philosophy",
+      "subdomain_name": "古代哲学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "总结"
+      ],
+      "file": "philosophy/ancient-philosophy/ancient-philosophy-legacy.md",
+      "exists": true,
+      "char_count": 618
+    },
+    {
+      "id": "epistemology-overview",
+      "name": "认识论概述",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/epistemology/epistemology-overview.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "knowledge-definition",
+      "name": "知识的定义",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/epistemology/knowledge-definition.md",
+      "exists": true,
+      "char_count": 607
+    },
+    {
+      "id": "gettier-problem",
+      "name": "盖梯尔问题",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/epistemology/gettier-problem.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "rationalism",
+      "name": "理性主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/epistemology/rationalism.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "empiricism",
+      "name": "经验主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/epistemology/empiricism.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "a-priori-knowledge",
+      "name": "先验知识与后验知识",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/epistemology/a-priori-knowledge.md",
+      "exists": true,
+      "char_count": 603
+    },
+    {
+      "id": "kant-epistemology",
+      "name": "康德认识论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/epistemology/kant-epistemology.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "skepticism",
+      "name": "怀疑论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/epistemology/skepticism.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "truth-theories",
+      "name": "真理理论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/epistemology/truth-theories.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "scientific-method-phil",
+      "name": "科学方法论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "philosophy/epistemology/scientific-method-phil.md",
+      "exists": true,
+      "char_count": 592
+    },
+    {
+      "id": "induction-problem",
+      "name": "归纳问题",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "问题"
+      ],
+      "file": "philosophy/epistemology/induction-problem.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "falsificationism",
+      "name": "证伪主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "科学哲学"
+      ],
+      "file": "philosophy/epistemology/falsificationism.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "paradigm-shift",
+      "name": "范式转换",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "科学哲学"
+      ],
+      "file": "philosophy/epistemology/paradigm-shift.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "epistemological-relativism",
+      "name": "认识论相对主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/epistemology/epistemological-relativism.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "social-epistemology",
+      "name": "社会认识论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/epistemology/social-epistemology.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "foundationalism",
+      "name": "基础主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "philosophy/epistemology/foundationalism.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "coherentism",
+      "name": "融贯论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "philosophy/epistemology/coherentism.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "reliabilism",
+      "name": "可靠主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/epistemology/reliabilism.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "virtue-epistemology",
+      "name": "德性认识论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/epistemology/virtue-epistemology.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "phenomenology-method",
+      "name": "现象学方法",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "philosophy/epistemology/phenomenology-method.md",
+      "exists": true,
+      "char_count": 597
+    },
+    {
+      "id": "pragmatist-epistemology",
+      "name": "实用主义认识论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/epistemology/pragmatist-epistemology.md",
+      "exists": true,
+      "char_count": 599
+    },
+    {
+      "id": "naturalized-epistemology",
+      "name": "自然化认识论",
+      "domain_id": "philosophy",
+      "subdomain_id": "epistemology",
+      "subdomain_name": "认识论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/epistemology/naturalized-epistemology.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "metaphysics-overview",
+      "name": "形而上学概述",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/metaphysics/metaphysics-overview.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "being-existence",
+      "name": "存在",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/metaphysics/being-existence.md",
+      "exists": true,
+      "char_count": 580
+    },
+    {
+      "id": "ontology",
+      "name": "本体论",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/metaphysics/ontology.md",
+      "exists": true,
+      "char_count": 581
+    },
+    {
+      "id": "realism-antirealism",
+      "name": "实在论与反实在论",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "争论"
+      ],
+      "file": "philosophy/metaphysics/realism-antirealism.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "idealism",
+      "name": "唯心主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/metaphysics/idealism.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "materialism-physicalism",
+      "name": "唯物主义与物理主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/metaphysics/materialism-physicalism.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "dualism",
+      "name": "二元论",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "心灵"
+      ],
+      "file": "philosophy/metaphysics/dualism.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "causation",
+      "name": "因果关系",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/metaphysics/causation.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "free-will",
+      "name": "自由意志",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/metaphysics/free-will.md",
+      "exists": true,
+      "char_count": 581
+    },
+    {
+      "id": "determinism",
+      "name": "决定论",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "争论"
+      ],
+      "file": "philosophy/metaphysics/determinism.md",
+      "exists": true,
+      "char_count": 578
+    },
+    {
+      "id": "compatibilism",
+      "name": "相容论",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "争论"
+      ],
+      "file": "philosophy/metaphysics/compatibilism.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "time-space",
+      "name": "时间与空间",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/metaphysics/time-space.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "personal-identity",
+      "name": "个人同一性",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/metaphysics/personal-identity.md",
+      "exists": true,
+      "char_count": 596
+    },
+    {
+      "id": "possible-worlds",
+      "name": "可能世界",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/metaphysics/possible-worlds.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "universals-particulars",
+      "name": "共相与殊相",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "philosophy/metaphysics/universals-particulars.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "substance-metaphysics",
+      "name": "实体",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/metaphysics/substance-metaphysics.md",
+      "exists": true,
+      "char_count": 578
+    },
+    {
+      "id": "mind-body-problem",
+      "name": "心身问题",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/metaphysics/mind-body-problem.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "emergence",
+      "name": "涌现",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/metaphysics/emergence.md",
+      "exists": true,
+      "char_count": 578
+    },
+    {
+      "id": "abstract-objects",
+      "name": "抽象对象",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/metaphysics/abstract-objects.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "chinese-metaphysics",
+      "name": "中国形而上学",
+      "domain_id": "philosophy",
+      "subdomain_id": "metaphysics",
+      "subdomain_name": "形而上学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/metaphysics/chinese-metaphysics.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "ethics-overview",
+      "name": "伦理学概述",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/ethics/ethics-overview.md",
+      "exists": true,
+      "char_count": 595
+    },
+    {
+      "id": "utilitarianism",
+      "name": "功利主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ethics/utilitarianism.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "act-rule-utilitarianism",
+      "name": "行为与规则功利主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "功利"
+      ],
+      "file": "philosophy/ethics/act-rule-utilitarianism.md",
+      "exists": true,
+      "char_count": 607
+    },
+    {
+      "id": "deontology",
+      "name": "义务论",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ethics/deontology.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "categorical-imperative",
+      "name": "定言命令",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "康德"
+      ],
+      "file": "philosophy/ethics/categorical-imperative.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "virtue-ethics",
+      "name": "美德伦理学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ethics/virtue-ethics.md",
+      "exists": true,
+      "char_count": 604
+    },
+    {
+      "id": "care-ethics",
+      "name": "关怀伦理学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/ethics/care-ethics.md",
+      "exists": true,
+      "char_count": 593
+    },
+    {
+      "id": "metaethics",
+      "name": "元伦理学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ethics/metaethics.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "moral-realism",
+      "name": "道德实在论",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "元伦理"
+      ],
+      "file": "philosophy/ethics/moral-realism.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "emotivism",
+      "name": "情感主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "元伦理"
+      ],
+      "file": "philosophy/ethics/emotivism.md",
+      "exists": true,
+      "char_count": 593
+    },
+    {
+      "id": "moral-relativism",
+      "name": "道德相对主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "争论"
+      ],
+      "file": "philosophy/ethics/moral-relativism.md",
+      "exists": true,
+      "char_count": 597
+    },
+    {
+      "id": "problem-of-evil",
+      "name": "善恶问题",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "宗教哲学"
+      ],
+      "file": "philosophy/ethics/problem-of-evil.md",
+      "exists": true,
+      "char_count": 592
+    },
+    {
+      "id": "applied-ethics",
+      "name": "应用伦理学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "philosophy/ethics/applied-ethics.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "bioethics",
+      "name": "生命伦理学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "philosophy/ethics/bioethics.md",
+      "exists": true,
+      "char_count": 596
+    },
+    {
+      "id": "environmental-ethics",
+      "name": "环境伦理学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "philosophy/ethics/environmental-ethics.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "business-ethics",
+      "name": "商业伦理",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "philosophy/ethics/business-ethics.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "tech-ethics",
+      "name": "技术伦理",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/ethics/tech-ethics.md",
+      "exists": true,
+      "char_count": 596
+    },
+    {
+      "id": "human-rights-phil",
+      "name": "人权的哲学基础",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ethics/human-rights-phil.md",
+      "exists": true,
+      "char_count": 600
+    },
+    {
+      "id": "justice-concept",
+      "name": "正义概念",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/ethics/justice-concept.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "trolley-problem",
+      "name": "电车难题",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "思想实验"
+      ],
+      "file": "philosophy/ethics/trolley-problem.md",
+      "exists": true,
+      "char_count": 592
+    },
+    {
+      "id": "moral-development-phil",
+      "name": "道德发展",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "发展"
+      ],
+      "file": "philosophy/ethics/moral-development-phil.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "confucian-ethics",
+      "name": "儒家伦理",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ethics/confucian-ethics.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "buddhist-ethics",
+      "name": "佛教伦理",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/ethics/buddhist-ethics.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "moral-psychology",
+      "name": "道德心理学",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "交叉"
+      ],
+      "file": "philosophy/ethics/moral-psychology.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "effective-altruism",
+      "name": "有效利他主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "ethics",
+      "subdomain_name": "伦理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/ethics/effective-altruism.md",
+      "exists": true,
+      "char_count": 598
+    },
+    {
+      "id": "logic-overview",
+      "name": "逻辑学概述",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/logic-reasoning/logic-overview.md",
+      "exists": true,
+      "char_count": 578
+    },
+    {
+      "id": "propositional-logic",
+      "name": "命题逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/logic-reasoning/propositional-logic.md",
+      "exists": true,
+      "char_count": 575
+    },
+    {
+      "id": "predicate-logic",
+      "name": "谓词逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/logic-reasoning/predicate-logic.md",
+      "exists": true,
+      "char_count": 577
+    },
+    {
+      "id": "deductive-reasoning",
+      "name": "演绎推理",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "推理"
+      ],
+      "file": "philosophy/logic-reasoning/deductive-reasoning.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "inductive-reasoning",
+      "name": "归纳推理",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "推理"
+      ],
+      "file": "philosophy/logic-reasoning/inductive-reasoning.md",
+      "exists": true,
+      "char_count": 572
+    },
+    {
+      "id": "abductive-reasoning",
+      "name": "溯因推理",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "推理"
+      ],
+      "file": "philosophy/logic-reasoning/abductive-reasoning.md",
+      "exists": true,
+      "char_count": 572
+    },
+    {
+      "id": "analogical-reasoning",
+      "name": "类比推理",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "推理"
+      ],
+      "file": "philosophy/logic-reasoning/analogical-reasoning.md",
+      "exists": true,
+      "char_count": 575
+    },
+    {
+      "id": "formal-fallacies",
+      "name": "形式谬误",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "谬误"
+      ],
+      "file": "philosophy/logic-reasoning/formal-fallacies.md",
+      "exists": true,
+      "char_count": 579
+    },
+    {
+      "id": "informal-fallacies",
+      "name": "非形式谬误",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "谬误"
+      ],
+      "file": "philosophy/logic-reasoning/informal-fallacies.md",
+      "exists": true,
+      "char_count": 582
+    },
+    {
+      "id": "paradoxes",
+      "name": "悖论",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/logic-reasoning/paradoxes.md",
+      "exists": true,
+      "char_count": 575
+    },
+    {
+      "id": "modal-logic",
+      "name": "模态逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "philosophy/logic-reasoning/modal-logic.md",
+      "exists": true,
+      "char_count": 577
+    },
+    {
+      "id": "argument-structure",
+      "name": "论证结构",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/logic-reasoning/argument-structure.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "critical-thinking",
+      "name": "批判性思维",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "实践"
+      ],
+      "file": "philosophy/logic-reasoning/critical-thinking.md",
+      "exists": true,
+      "char_count": 580
+    },
+    {
+      "id": "philosophy-of-logic",
+      "name": "逻辑哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/logic-reasoning/philosophy-of-logic.md",
+      "exists": true,
+      "char_count": 578
+    },
+    {
+      "id": "dialectic",
+      "name": "辩证法",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "philosophy/logic-reasoning/dialectic.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "set-theory-phil",
+      "name": "集合论基础",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "数理"
+      ],
+      "file": "philosophy/logic-reasoning/set-theory-phil.md",
+      "exists": true,
+      "char_count": 574
+    },
+    {
+      "id": "philosophy-of-math",
+      "name": "数学哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "交叉"
+      ],
+      "file": "philosophy/logic-reasoning/philosophy-of-math.md",
+      "exists": true,
+      "char_count": 579
+    },
+    {
+      "id": "fuzzy-logic-phil",
+      "name": "模糊逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/logic-reasoning/fuzzy-logic-phil.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "political-philosophy-overview",
+      "name": "政治哲学概述",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/political-philosophy/political-philosophy-overview.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "social-contract",
+      "name": "社会契约论",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/political-philosophy/social-contract.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "hobbes",
+      "name": "霍布斯",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "philosophy/political-philosophy/hobbes.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "locke-political",
+      "name": "洛克政治哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "philosophy/political-philosophy/locke-political.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "rousseau",
+      "name": "卢梭",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "philosophy/political-philosophy/rousseau.md",
+      "exists": true,
+      "char_count": 553
+    },
+    {
+      "id": "liberalism",
+      "name": "自由主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/political-philosophy/liberalism.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "conservatism",
+      "name": "保守主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/political-philosophy/conservatism.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "socialism",
+      "name": "社会主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/political-philosophy/socialism.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "marxism",
+      "name": "马克思主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "philosophy/political-philosophy/marxism.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "anarchism",
+      "name": "无政府主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/political-philosophy/anarchism.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "rawls-justice",
+      "name": "罗尔斯正义论",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/political-philosophy/rawls-justice.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "nozick-libertarianism",
+      "name": "诺齐克自由至上主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/political-philosophy/nozick-libertarianism.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "democracy-theory",
+      "name": "民主理论",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/political-philosophy/democracy-theory.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "power-theory",
+      "name": "权力理论",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/political-philosophy/power-theory.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "civil-society",
+      "name": "公民社会",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/political-philosophy/civil-society.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "rights-theory",
+      "name": "权利理论",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/political-philosophy/rights-theory.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "nationalism",
+      "name": "民族主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "议题"
+      ],
+      "file": "philosophy/political-philosophy/nationalism.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "cosmopolitanism",
+      "name": "世界主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/political-philosophy/cosmopolitanism.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "feminism-political",
+      "name": "女性主义政治哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/political-philosophy/feminism-political.md",
+      "exists": true,
+      "char_count": 575
+    },
+    {
+      "id": "multiculturalism",
+      "name": "多元文化主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/political-philosophy/multiculturalism.md",
+      "exists": true,
+      "char_count": 569
+    },
+    {
+      "id": "chinese-political-phil",
+      "name": "中国政治哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/political-philosophy/chinese-political-phil.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "global-justice",
+      "name": "全球正义",
+      "domain_id": "philosophy",
+      "subdomain_id": "political-philosophy",
+      "subdomain_name": "政治哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/political-philosophy/global-justice.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "aesthetics-overview",
+      "name": "美学概述",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/aesthetics/aesthetics-overview.md",
+      "exists": true,
+      "char_count": 592
+    },
+    {
+      "id": "nature-of-beauty",
+      "name": "美的本质",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/aesthetics/nature-of-beauty.md",
+      "exists": true,
+      "char_count": 592
+    },
+    {
+      "id": "definition-of-art",
+      "name": "艺术的定义",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/aesthetics/definition-of-art.md",
+      "exists": true,
+      "char_count": 596
+    },
+    {
+      "id": "aesthetic-judgment",
+      "name": "审美判断",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/aesthetics/aesthetic-judgment.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "sublime",
+      "name": "崇高",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/aesthetics/sublime.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "mimesis",
+      "name": "模仿论",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "philosophy/aesthetics/mimesis.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "expression-theory",
+      "name": "表现论",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "philosophy/aesthetics/expression-theory.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "art-form",
+      "name": "艺术形式",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/aesthetics/art-form.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "art-criticism",
+      "name": "艺术批评",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "philosophy/aesthetics/art-criticism.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "aesthetic-experience",
+      "name": "审美经验",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/aesthetics/aesthetic-experience.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "chinese-aesthetics",
+      "name": "中国传统美学",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/aesthetics/chinese-aesthetics.md",
+      "exists": true,
+      "char_count": 599
+    },
+    {
+      "id": "tragedy-philosophy",
+      "name": "悲剧哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "philosophy/aesthetics/tragedy-philosophy.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "philosophy-of-music",
+      "name": "音乐哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分支"
+      ],
+      "file": "philosophy/aesthetics/philosophy-of-music.md",
+      "exists": true,
+      "char_count": 596
+    },
+    {
+      "id": "photography-aesthetics",
+      "name": "摄影美学",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/aesthetics/photography-aesthetics.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "environmental-aesthetics",
+      "name": "环境美学",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/aesthetics/environmental-aesthetics.md",
+      "exists": true,
+      "char_count": 586
+    },
+    {
+      "id": "digital-aesthetics",
+      "name": "数字美学",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/aesthetics/digital-aesthetics.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "taste-theory",
+      "name": "趣味理论",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "概念"
+      ],
+      "file": "philosophy/aesthetics/taste-theory.md",
+      "exists": true,
+      "char_count": 586
+    },
+    {
+      "id": "institutional-theory",
+      "name": "艺术制度论",
+      "domain_id": "philosophy",
+      "subdomain_id": "aesthetics",
+      "subdomain_name": "美学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/aesthetics/institutional-theory.md",
+      "exists": true,
+      "char_count": 593
+    },
+    {
+      "id": "modern-philosophy-overview",
+      "name": "近现代哲学概述",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/modern-philosophy/modern-philosophy-overview.md",
+      "exists": true,
+      "char_count": 597
+    },
+    {
+      "id": "existentialism",
+      "name": "存在主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/modern-philosophy/existentialism.md",
+      "exists": true,
+      "char_count": 589
+    },
+    {
+      "id": "phenomenology",
+      "name": "现象学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/modern-philosophy/phenomenology.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "analytic-philosophy",
+      "name": "分析哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/modern-philosophy/analytic-philosophy.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "wittgenstein",
+      "name": "维特根斯坦",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "人物"
+      ],
+      "file": "philosophy/modern-philosophy/wittgenstein.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "postmodernism",
+      "name": "后现代主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/modern-philosophy/postmodernism.md",
+      "exists": true,
+      "char_count": 591
+    },
+    {
+      "id": "deconstruction",
+      "name": "解构主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/modern-philosophy/deconstruction.md",
+      "exists": true,
+      "char_count": 583
+    },
+    {
+      "id": "pragmatism",
+      "name": "实用主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/modern-philosophy/pragmatism.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "philosophy-of-language",
+      "name": "语言哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "分支"
+      ],
+      "file": "philosophy/modern-philosophy/philosophy-of-language.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "philosophy-of-mind",
+      "name": "心灵哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "分支"
+      ],
+      "file": "philosophy/modern-philosophy/philosophy-of-mind.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "feminist-philosophy",
+      "name": "女性主义哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/modern-philosophy/feminist-philosophy.md",
+      "exists": true,
+      "char_count": 594
+    },
+    {
+      "id": "postcolonial-philosophy",
+      "name": "后殖民哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "当代"
+      ],
+      "file": "philosophy/modern-philosophy/postcolonial-philosophy.md",
+      "exists": true,
+      "char_count": 596
+    },
+    {
+      "id": "critical-theory",
+      "name": "批判理论",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/modern-philosophy/critical-theory.md",
+      "exists": true,
+      "char_count": 590
+    },
+    {
+      "id": "hermeneutics",
+      "name": "诠释学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/modern-philosophy/hermeneutics.md",
+      "exists": true,
+      "char_count": 585
+    },
+    {
+      "id": "structuralism",
+      "name": "结构主义",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/modern-philosophy/structuralism.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "philosophy-of-science",
+      "name": "科学哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分支"
+      ],
+      "file": "philosophy/modern-philosophy/philosophy-of-science.md",
+      "exists": true,
+      "char_count": 584
+    },
+    {
+      "id": "philosophy-of-technology",
+      "name": "技术哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/modern-philosophy/philosophy-of-technology.md",
+      "exists": true,
+      "char_count": 588
+    },
+    {
+      "id": "process-philosophy",
+      "name": "过程哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "流派"
+      ],
+      "file": "philosophy/modern-philosophy/process-philosophy.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "new-confucianism",
+      "name": "新儒学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "东方"
+      ],
+      "file": "philosophy/modern-philosophy/new-confucianism.md",
+      "exists": true,
+      "char_count": 586
+    },
+    {
+      "id": "philosophy-of-ai",
+      "name": "人工智能哲学",
+      "domain_id": "philosophy",
+      "subdomain_id": "modern-philosophy",
+      "subdomain_name": "近现代哲学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "philosophy/modern-philosophy/philosophy-of-ai.md",
+      "exists": true,
+      "char_count": 597
+    }
+  ],
+  "stats": {
+    "total_docs": 170,
+    "total_chars": 100133,
+    "by_subdomain": {
+      "ancient-philosophy": 25,
+      "epistemology": 22,
+      "metaphysics": 20,
+      "ethics": 25,
+      "logic-reasoning": 18,
+      "political-philosophy": 22,
+      "aesthetics": 18,
+      "modern-philosophy": 20
+    }
+  }
+}

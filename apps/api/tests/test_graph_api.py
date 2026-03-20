@@ -1396,3 +1396,87 @@ async def test_rag_philosophy_404_wrong_domain():
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/rag/socrates?domain=mathematics")
         assert resp.status_code == 404
+
+
+# ── Workers Sync Regression ──────────────────────────────────────
+
+def test_workers_seedmap_covers_all_domains():
+    """Workers route files must import+register all active domains in seedMap.
+
+    Regression: Phases 15-17 added biology/economics/writing seed data but
+    Workers src/routes/{graph,dialogue,learning}.ts were not updated, causing
+    404 for those domains on the Cloudflare Workers backend.
+    """
+    import json
+    import os
+
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    domains_path = os.path.join(project_root, "data", "seed", "domains.json")
+    with open(domains_path, encoding="utf-8") as f:
+        all_domains = [d["id"] for d in json.load(f)["domains"] if d.get("is_active", True)]
+
+    workers_route_files = [
+        os.path.join(project_root, "workers", "src", "routes", "graph.ts"),
+        os.path.join(project_root, "workers", "src", "routes", "dialogue.ts"),
+        os.path.join(project_root, "workers", "src", "routes", "learning.ts"),
+    ]
+
+    for route_file in workers_route_files:
+        assert os.path.exists(route_file), f"Workers route file missing: {route_file}"
+        content = open(route_file, encoding="utf-8").read()
+        for domain_id in all_domains:
+            assert f"'{domain_id}'" in content, (
+                f"Domain '{domain_id}' missing from Workers {os.path.basename(route_file)} seedMap. "
+                f"When adding a new knowledge sphere, all 3 Workers route files must be updated."
+            )
+
+
+def test_workers_ragmap_covers_all_domains():
+    """Workers graph.ts ragMap must include RAG index imports for all domains with RAG data.
+
+    Regression: philosophy/biology/economics/writing RAG indices existed but
+    Workers graph.ts had a stub ({ documents: [], stats: {} }) or no entry,
+    causing /api/graph/rag/:concept_id to 404 on Workers backend.
+    """
+    import json
+    import os
+
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    domains_path = os.path.join(project_root, "data", "seed", "domains.json")
+    with open(domains_path, encoding="utf-8") as f:
+        all_domains = [d["id"] for d in json.load(f)["domains"] if d.get("is_active", True)]
+
+    graph_ts = os.path.join(project_root, "workers", "src", "routes", "graph.ts")
+    content = open(graph_ts, encoding="utf-8").read()
+
+    # Every domain with a RAG _index.json should have a real import in graph.ts (not a stub)
+    for domain_id in all_domains:
+        rag_index = os.path.join(project_root, "data", "rag", domain_id, "_index.json")
+        if os.path.exists(rag_index):
+            # Check it's imported (not a stub with empty documents/stats)
+            assert f"rag/{domain_id}/_index.json" in content or f"rag/{domain_id.replace('-', '')}/_index.json" in content, (
+                f"RAG index for '{domain_id}' exists but is not imported in Workers graph.ts. "
+                f"Add: import ragXxx from '../../data/rag/{domain_id}/_index.json';"
+            )
+
+
+def test_workers_data_directory_synced():
+    """Workers data/ directory must contain seed_graph.json for all domains.
+
+    The Workers import seed data at build time. If workers/data/seed/{domain}/
+    is missing, the build will fail with import resolution errors.
+    """
+    import json
+    import os
+
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    domains_path = os.path.join(project_root, "data", "seed", "domains.json")
+    with open(domains_path, encoding="utf-8") as f:
+        all_domains = [d["id"] for d in json.load(f)["domains"] if d.get("is_active", True)]
+
+    for domain_id in all_domains:
+        seed_file = os.path.join(project_root, "workers", "data", "seed", domain_id, "seed_graph.json")
+        assert os.path.exists(seed_file), (
+            f"Workers data/seed/{domain_id}/seed_graph.json missing. "
+            f"Copy from data/seed/{domain_id}/ to workers/data/seed/{domain_id}/"
+        )

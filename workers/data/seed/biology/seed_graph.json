@@ -1,0 +1,3691 @@
+{
+  "domain": {
+    "id": "biology",
+    "name": "生物学",
+    "description": "从分子生物学到生态系统的系统知识体系",
+    "icon": "🟤",
+    "color": "#84cc16"
+  },
+  "subdomains": [
+    {
+      "id": "cell-biology",
+      "name": "细胞生物学",
+      "order": 1
+    },
+    {
+      "id": "molecular-biology",
+      "name": "分子生物学",
+      "order": 2
+    },
+    {
+      "id": "genetics",
+      "name": "遗传学",
+      "order": 3
+    },
+    {
+      "id": "evolution",
+      "name": "进化生物学",
+      "order": 4
+    },
+    {
+      "id": "human-physiology",
+      "name": "人体生理学",
+      "order": 5
+    },
+    {
+      "id": "ecology",
+      "name": "生态学",
+      "order": 6
+    },
+    {
+      "id": "microbiology",
+      "name": "微生物学",
+      "order": 7
+    },
+    {
+      "id": "botany-zoology",
+      "name": "植物与动物学",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "cell-biology-overview",
+      "name": "细胞生物学概述",
+      "description": "细胞学说、细胞的基本结构与功能",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "prokaryotic-cells",
+      "name": "原核细胞",
+      "description": "细菌和古菌的细胞结构特征",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "eukaryotic-cells",
+      "name": "真核细胞",
+      "description": "真核细胞的结构特征与膜性细胞器",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cell-membrane",
+      "name": "细胞膜",
+      "description": "磷脂双分子层结构、流动镶嵌模型与物质转运",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "membrane-transport",
+      "name": "膜转运",
+      "description": "被动运输、主动运输与囊泡转运机制",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "功能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endoplasmic-reticulum",
+      "name": "内质网",
+      "description": "粗面内质网与滑面内质网的结构与功能",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "细胞器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "golgi-apparatus",
+      "name": "高尔基体",
+      "description": "蛋白质加工、分选与分泌功能",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "细胞器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mitochondria",
+      "name": "线粒体",
+      "description": "线粒体结构、有氧呼吸与ATP合成",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "细胞器"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "chloroplast",
+      "name": "叶绿体",
+      "description": "叶绿体结构与光合作用的场所",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "细胞器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "nucleus",
+      "name": "细胞核",
+      "description": "核膜、染色质、核仁与基因表达调控",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cytoskeleton",
+      "name": "细胞骨架",
+      "description": "微管、微丝与中间纤维的结构与功能",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cell-cycle",
+      "name": "细胞周期",
+      "description": "G1/S/G2/M期与细胞周期调控机制",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "增殖"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "mitosis",
+      "name": "有丝分裂",
+      "description": "前期、中期、后期与末期的细胞分裂过程",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "增殖"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "meiosis",
+      "name": "减数分裂",
+      "description": "减数分裂I/II与遗传多样性的产生",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "增殖"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "apoptosis",
+      "name": "细胞凋亡",
+      "description": "程序性细胞死亡的分子机制与生物学意义",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "调控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cell-signaling",
+      "name": "细胞信号转导",
+      "description": "受体、第二信使与信号级联放大机制",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "通讯"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "stem-cells",
+      "name": "干细胞",
+      "description": "胚胎干细胞与成体干细胞的特性与应用",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cellular-respiration",
+      "name": "细胞呼吸",
+      "description": "糖酵解、柠檬酸循环与氧化磷酸化",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "代谢"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "photosynthesis",
+      "name": "光合作用",
+      "description": "光反应与暗反应(Calvin循环)的完整过程",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "代谢"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cell-differentiation",
+      "name": "细胞分化",
+      "description": "基因差异性表达与细胞命运决定",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发育"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "lysosomes-peroxisomes",
+      "name": "溶酶体与过氧化物酶体",
+      "description": "细胞内消化与解毒功能",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "细胞器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endomembrane-system",
+      "name": "内膜系统",
+      "description": "内质网-高尔基体-溶酶体的功能协作网络",
+      "subdomain_id": "cell-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "molecular-biology-overview",
+      "name": "分子生物学概述",
+      "description": "分子生物学的中心法则与研究范畴",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "dna-structure",
+      "name": "DNA结构",
+      "description": "双螺旋结构、碱基配对与DNA的理化性质",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核酸"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "rna-types",
+      "name": "RNA类型",
+      "description": "mRNA、tRNA、rRNA及非编码RNA的功能",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核酸"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dna-replication",
+      "name": "DNA复制",
+      "description": "半保留复制、复制叉与DNA聚合酶",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核酸"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "transcription",
+      "name": "转录",
+      "description": "RNA聚合酶、启动子识别与mRNA加工",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "基因表达"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "translation",
+      "name": "翻译",
+      "description": "核糖体、密码子与蛋白质合成过程",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "基因表达"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gene-regulation",
+      "name": "基因调控",
+      "description": "操纵子模型、转录因子与表观遗传调控",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "调控"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "protein-structure",
+      "name": "蛋白质结构",
+      "description": "一级到四级结构与蛋白质折叠",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "蛋白质"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "enzyme-function",
+      "name": "酶的功能",
+      "description": "酶的催化机制、动力学与调节",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "蛋白质"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "protein-modification",
+      "name": "蛋白质修饰",
+      "description": "磷酸化、糖基化、泛素化等翻译后修饰",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "蛋白质"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "signal-transduction-mol",
+      "name": "分子信号通路",
+      "description": "MAPK、PI3K/Akt与Wnt等经典信号通路",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "信号"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "epigenetics",
+      "name": "表观遗传学",
+      "description": "DNA甲基化、组蛋白修饰与染色质重塑",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "recombinant-dna",
+      "name": "重组DNA技术",
+      "description": "限制酶、连接酶与质粒载体的基因工程基础",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pcr-technology",
+      "name": "PCR技术",
+      "description": "聚合酶链式反应的原理与应用",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gene-editing",
+      "name": "基因编辑",
+      "description": "CRISPR-Cas9系统的原理与应用前景",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "genomics",
+      "name": "基因组学",
+      "description": "全基因组测序、比较基因组学与功能基因组学",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "组学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "proteomics",
+      "name": "蛋白质组学",
+      "description": "蛋白质组分析技术与功能研究",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "组学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bioinformatics",
+      "name": "生物信息学",
+      "description": "序列比对、基因注释与生物数据库",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "molecular-cloning",
+      "name": "分子克隆",
+      "description": "基因克隆的策略与载体系统",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rna-interference",
+      "name": "RNA干扰",
+      "description": "siRNA与miRNA介导的基因沉默机制",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "调控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "central-dogma",
+      "name": "中心法则",
+      "description": "DNA→RNA→蛋白质的遗传信息流动",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dna-repair",
+      "name": "DNA修复",
+      "description": "错配修复、碱基切除修复与核苷酸切除修复",
+      "subdomain_id": "molecular-biology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核酸"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "genetics-overview",
+      "name": "遗传学概述",
+      "description": "遗传学的基本概念、历史与研究方法",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "mendelian-genetics",
+      "name": "孟德尔遗传",
+      "description": "分离定律与自由组合定律",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "gene-concept",
+      "name": "基因概念",
+      "description": "基因的定义演变与现代基因观",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "alleles-genotype",
+      "name": "等位基因与基因型",
+      "description": "显性与隐性、纯合与杂合、基因型与表型",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "chromosomal-inheritance",
+      "name": "染色体遗传",
+      "description": "染色体学说、连锁与交换",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sex-linked-inheritance",
+      "name": "伴性遗传",
+      "description": "X连锁遗传与Y连锁遗传模式",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "polygenic-inheritance",
+      "name": "多基因遗传",
+      "description": "数量性状遗传与多基因假说",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "复杂"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gene-interaction",
+      "name": "基因互作",
+      "description": "上位性、互补作用与基因多效性",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "复杂"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mutation-types",
+      "name": "突变类型",
+      "description": "点突变、插入/缺失与染色体变异",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "变异"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "chromosomal-abnormalities",
+      "name": "染色体异常",
+      "description": "非整倍体、结构畸变与遗传病",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "变异"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "population-genetics",
+      "name": "群体遗传学",
+      "description": "Hardy-Weinberg平衡与等位基因频率",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "群体"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "quantitative-genetics",
+      "name": "数量遗传学",
+      "description": "遗传力、选择响应与数量性状座位",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "群体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "human-genetics",
+      "name": "人类遗传学",
+      "description": "人类基因组计划、遗传病与遗传咨询",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "医学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "genetic-mapping",
+      "name": "遗传图谱",
+      "description": "连锁分析、基因定位与基因组作图",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gene-expression-regulation",
+      "name": "基因表达调控",
+      "description": "原核与真核基因表达的多层次调控",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "调控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "extranuclear-inheritance",
+      "name": "核外遗传",
+      "description": "线粒体遗传与叶绿体遗传",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "非经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "genetic-counseling",
+      "name": "遗传咨询",
+      "description": "遗传风险评估与产前诊断",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "医学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-genetics",
+      "name": "行为遗传学",
+      "description": "双生子研究与遗传-环境交互作用",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "交叉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pharmacogenomics",
+      "name": "药物基因组学",
+      "description": "基因多态性与个体化用药",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "genetic-engineering",
+      "name": "遗传工程",
+      "description": "转基因技术、基因治疗与合成生物学",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pedigree-analysis",
+      "name": "家系分析",
+      "description": "系谱图绘制与遗传模式判断",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "genetic-drift",
+      "name": "遗传漂变",
+      "description": "随机遗传漂变、瓶颈效应与建立者效应",
+      "subdomain_id": "genetics",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "群体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "evolution-overview",
+      "name": "进化生物学概述",
+      "description": "进化论的发展历程与核心原理",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "natural-selection",
+      "name": "自然选择",
+      "description": "达尔文自然选择理论与适者生存",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "evidence-evolution",
+      "name": "进化证据",
+      "description": "化石记录、比较解剖学与分子证据",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "证据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "speciation",
+      "name": "物种形成",
+      "description": "地理隔离、生殖隔离与渐进式物种分化",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "adaptive-radiation",
+      "name": "适应辐射",
+      "description": "共同祖先的快速多样化与生态位分化",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "coevolution",
+      "name": "协同进化",
+      "description": "物种间相互影响的进化过程",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sexual-selection",
+      "name": "性选择",
+      "description": "性内选择与性间选择的进化机制",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "机制"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "molecular-evolution",
+      "name": "分子进化",
+      "description": "中性进化理论与分子钟假说",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "分子"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "phylogenetics",
+      "name": "系统发育",
+      "description": "进化树构建方法与分子系统学",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "macroevolution",
+      "name": "宏观进化",
+      "description": "大灭绝事件、进化趋势与进化速率",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "microevolution",
+      "name": "微观进化",
+      "description": "种群内等位基因频率的变化",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "adaptation",
+      "name": "适应",
+      "description": "形态、生理与行为适应的进化基础",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "origin-of-life",
+      "name": "生命起源",
+      "description": "化学进化、RNA世界假说与原始细胞",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "起源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "human-evolution",
+      "name": "人类进化",
+      "description": "从南方古猿到智人的进化历程",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "人类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "kin-selection",
+      "name": "亲缘选择",
+      "description": "Hamilton法则与利他行为的进化解释",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "evolutionary-development",
+      "name": "进化发育生物学",
+      "description": "Hox基因、发育约束与evo-devo",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "convergent-evolution",
+      "name": "趋同进化",
+      "description": "不同谱系中相似特征的独立进化",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "divergent-evolution",
+      "name": "趋异进化",
+      "description": "同源结构的多样化与辐射适应",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endosymbiosis",
+      "name": "内共生学说",
+      "description": "线粒体与叶绿体的内共生起源",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "起源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "extinction",
+      "name": "灭绝",
+      "description": "物种灭绝的原因、五次大灭绝与当代灭绝危机",
+      "subdomain_id": "evolution",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physiology-overview",
+      "name": "人体生理学概述",
+      "description": "人体生理学的基本原理与稳态概念",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "nervous-system",
+      "name": "神经系统",
+      "description": "中枢与外周神经系统的结构与功能",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "neuron-synapse",
+      "name": "神经元与突触",
+      "description": "动作电位产生与突触传递机制",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "神经"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "brain-function",
+      "name": "脑的功能",
+      "description": "大脑皮层分区、功能定位与神经可塑性",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "神经"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endocrine-system",
+      "name": "内分泌系统",
+      "description": "激素的分类、作用机制与反馈调节",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cardiovascular-system",
+      "name": "心血管系统",
+      "description": "心脏结构、血液循环与血压调节",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "respiratory-system",
+      "name": "呼吸系统",
+      "description": "肺通气、气体交换与呼吸调节",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "digestive-system",
+      "name": "消化系统",
+      "description": "消化道结构、酶消化与营养吸收",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "immune-system",
+      "name": "免疫系统",
+      "description": "先天免疫、适应性免疫与免疫记忆",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "immune-cells",
+      "name": "免疫细胞",
+      "description": "T细胞、B细胞、巨噬细胞与NK细胞",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "免疫"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "antibody-response",
+      "name": "抗体反应",
+      "description": "免疫球蛋白结构、类别转换与亲和力成熟",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "免疫"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "musculoskeletal-system",
+      "name": "运动系统",
+      "description": "骨骼肌收缩机制与骨关节结构",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "urinary-system",
+      "name": "泌尿系统",
+      "description": "肾小球滤过、肾小管重吸收与尿液形成",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "reproductive-system",
+      "name": "生殖系统",
+      "description": "男女生殖系统结构与配子形成",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "homeostasis",
+      "name": "稳态",
+      "description": "体温调节、血糖调节与酸碱平衡",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "blood-composition",
+      "name": "血液组成",
+      "description": "血浆、红细胞、白细胞与血小板",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "血液"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "lymphatic-system",
+      "name": "淋巴系统",
+      "description": "淋巴循环、淋巴器官与免疫防御",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sensory-system",
+      "name": "感觉系统",
+      "description": "视觉、听觉、嗅觉、味觉与触觉机制",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "神经"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "autonomic-nervous-system",
+      "name": "自主神经系统",
+      "description": "交感与副交感神经的拮抗调节",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "神经"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hormone-regulation",
+      "name": "激素调节",
+      "description": "下丘脑-垂体轴与反馈调节机制",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内分泌"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "metabolism-overview",
+      "name": "代谢概览",
+      "description": "合成代谢与分解代谢的能量转化",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "代谢"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "nutrition-physiology",
+      "name": "营养生理学",
+      "description": "三大营养素的消化、吸收与代谢",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "营养"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aging-physiology",
+      "name": "衰老生理学",
+      "description": "衰老的生理变化与端粒学说",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "特殊"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "exercise-physiology",
+      "name": "运动生理学",
+      "description": "运动对心血管、呼吸与肌肉系统的影响",
+      "subdomain_id": "human-physiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ecology-overview",
+      "name": "生态学概述",
+      "description": "生态学的层次、研究方法与基本概念",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "population-ecology",
+      "name": "种群生态学",
+      "description": "种群增长模型、容纳量与种群调节",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "种群"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "community-ecology",
+      "name": "群落生态学",
+      "description": "群落结构、物种多样性与演替",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "群落"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ecosystem-ecology",
+      "name": "生态系统生态学",
+      "description": "能量流动与物质循环的基本规律",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "生态系统"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "food-web",
+      "name": "食物网",
+      "description": "营养级、食物链与能量金字塔",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生态系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "nutrient-cycling",
+      "name": "物质循环",
+      "description": "碳循环、氮循环与磷循环",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生态系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "biomes",
+      "name": "生物群落",
+      "description": "陆地与水生生物群落的分布与特征",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "species-interactions",
+      "name": "种间关系",
+      "description": "竞争、捕食、互利共生与寄生",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "群落"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "biodiversity",
+      "name": "生物多样性",
+      "description": "物种多样性、遗传多样性与生态系统多样性",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "保护"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "conservation-biology",
+      "name": "保护生物学",
+      "description": "濒危物种保护策略与栖息地管理",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "保护"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ecological-succession",
+      "name": "生态演替",
+      "description": "初生演替与次生演替的过程与机制",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "niche-theory",
+      "name": "生态位理论",
+      "description": "基础生态位与实际生态位的概念",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "island-biogeography",
+      "name": "岛屿生物地理学",
+      "description": "岛屿面积-物种数关系与MacArthur-Wilson模型",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "climate-change-ecology",
+      "name": "气候变化与生态",
+      "description": "全球变暖对生态系统的影响与碳循环",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "全球"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ecosystem-services",
+      "name": "生态系统服务",
+      "description": "供给、调节、文化与支持服务",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-ecology",
+      "name": "行为生态学",
+      "description": "觅食策略、领地行为与动物通讯",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "population-dynamics",
+      "name": "种群动态",
+      "description": "Lotka-Volterra模型与种群波动",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "landscape-ecology",
+      "name": "景观生态学",
+      "description": "斑块-廊道-基质模型与景观格局",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "marine-ecology",
+      "name": "海洋生态学",
+      "description": "海洋生态系统的结构与功能特征",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "水生"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "freshwater-ecology",
+      "name": "淡水生态学",
+      "description": "河流与湖泊生态系统的特征与保护",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "水生"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "restoration-ecology",
+      "name": "恢复生态学",
+      "description": "退化生态系统的修复原理与技术",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "urban-ecology",
+      "name": "城市生态学",
+      "description": "城市生态系统的结构与人类活动影响",
+      "subdomain_id": "ecology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "microbiology-overview",
+      "name": "微生物学概述",
+      "description": "微生物的分类、发现史与研究方法",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "bacteria-structure",
+      "name": "细菌结构",
+      "description": "细菌细胞壁、鞭毛、荚膜与芽孢",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "细菌"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bacterial-metabolism",
+      "name": "细菌代谢",
+      "description": "细菌的能量代谢与生物合成途径",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "细菌"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bacterial-genetics",
+      "name": "细菌遗传",
+      "description": "转化、转导与接合等基因转移方式",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "细菌"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "virus-biology",
+      "name": "病毒生物学",
+      "description": "病毒结构、分类与复制周期",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "病毒"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "viral-replication",
+      "name": "病毒复制",
+      "description": "裂解循环与溶原循环的分子机制",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "病毒"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fungi-biology",
+      "name": "真菌生物学",
+      "description": "真菌的结构、生殖与生态角色",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "真菌"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "protists",
+      "name": "原生生物",
+      "description": "原生动物与藻类的多样性",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "多样性"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "antibiotic-resistance",
+      "name": "抗生素耐药性",
+      "description": "耐药机制的产生与全球健康威胁",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "医学"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "microbiome",
+      "name": "微生物组",
+      "description": "人体微生物组的组成与健康影响",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pathogenic-mechanisms",
+      "name": "致病机制",
+      "description": "病原微生物的毒力因子与致病策略",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "医学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "immune-evasion",
+      "name": "免疫逃逸",
+      "description": "病原体逃避宿主免疫防御的策略",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "医学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vaccine-biology",
+      "name": "疫苗生物学",
+      "description": "疫苗类型、免疫原理与疫苗开发",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "医学"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "food-microbiology",
+      "name": "食品微生物学",
+      "description": "发酵食品、食品腐败与食品安全",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "environmental-microbiology",
+      "name": "环境微生物学",
+      "description": "微生物在生物地球化学循环中的作用",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "industrial-microbiology",
+      "name": "工业微生物学",
+      "description": "微生物发酵、生物制药与生物能源",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "archaea",
+      "name": "古菌",
+      "description": "古菌的发现、分类与极端环境适应",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "多样性"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "biofilm",
+      "name": "生物膜",
+      "description": "微生物群落的生物膜形成与临床意义",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "prions",
+      "name": "朊病毒",
+      "description": "蛋白质错误折叠引起的传染性疾病",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "特殊"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emerging-infectious",
+      "name": "新发传染病",
+      "description": "新发传染病的起源、传播与防控",
+      "subdomain_id": "microbiology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "公卫"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "botany-zoology-overview",
+      "name": "植物与动物学概述",
+      "description": "多细胞生物的分类体系与比较研究",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "plant-anatomy",
+      "name": "植物解剖学",
+      "description": "根、茎、叶的组织结构与功能",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "植物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plant-physiology",
+      "name": "植物生理学",
+      "description": "水分运输、矿质营养与气孔调节",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "植物"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "plant-reproduction",
+      "name": "植物繁殖",
+      "description": "有性生殖与无性生殖策略",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "植物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plant-hormones",
+      "name": "植物激素",
+      "description": "生长素、赤霉素、细胞分裂素等的作用",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "植物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plant-responses",
+      "name": "植物应答",
+      "description": "向光性、向地性与逆境响应",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "植物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "animal-diversity",
+      "name": "动物多样性",
+      "description": "从无脊椎动物到脊椎动物的分类与特征",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "动物"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "invertebrate-biology",
+      "name": "无脊椎动物生物学",
+      "description": "节肢动物、软体动物与棘皮动物",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vertebrate-biology",
+      "name": "脊椎动物生物学",
+      "description": "鱼类、两栖、爬行、鸟类与哺乳动物",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "animal-behavior",
+      "name": "动物行为学",
+      "description": "先天行为、学习行为与社会行为",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "embryology",
+      "name": "胚胎学",
+      "description": "受精、卵裂、原肠胚形成与器官发生",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "发育"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "comparative-anatomy",
+      "name": "比较解剖学",
+      "description": "同源器官、同功器官与痕迹器官",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "比较"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plant-classification",
+      "name": "植物分类",
+      "description": "苔藓、蕨类、裸子与被子植物的分类体系",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "seed-biology",
+      "name": "种子生物学",
+      "description": "种子结构、休眠与萌发机制",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "植物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "animal-physiology-comp",
+      "name": "动物比较生理学",
+      "description": "不同动物类群的生理适应策略",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "比较"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pollination-ecology",
+      "name": "传粉生态学",
+      "description": "传粉者多样性与植物-传粉者协同进化",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "migration-hibernation",
+      "name": "迁徙与冬眠",
+      "description": "动物的季节性行为适应策略",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "symbiosis",
+      "name": "共生关系",
+      "description": "互利共生、共栖与寄生的生物学基础",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "developmental-biology",
+      "name": "发育生物学",
+      "description": "模式生物中的形态发生与细胞分化",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "发育"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "biomimetics",
+      "name": "仿生学",
+      "description": "从生物结构与功能中汲取工程灵感",
+      "subdomain_id": "botany-zoology",
+      "domain_id": "biology",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "cell-biology-overview",
+      "target_id": "prokaryotic-cells",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-biology-overview",
+      "target_id": "eukaryotic-cells",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "eukaryotic-cells",
+      "target_id": "cell-membrane",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-membrane",
+      "target_id": "membrane-transport",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "eukaryotic-cells",
+      "target_id": "endoplasmic-reticulum",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "eukaryotic-cells",
+      "target_id": "golgi-apparatus",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "endoplasmic-reticulum",
+      "target_id": "golgi-apparatus",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "eukaryotic-cells",
+      "target_id": "mitochondria",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "eukaryotic-cells",
+      "target_id": "chloroplast",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "eukaryotic-cells",
+      "target_id": "nucleus",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "eukaryotic-cells",
+      "target_id": "cytoskeleton",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-biology-overview",
+      "target_id": "cell-cycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-cycle",
+      "target_id": "mitosis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-cycle",
+      "target_id": "meiosis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-cycle",
+      "target_id": "apoptosis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-biology-overview",
+      "target_id": "cell-signaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-signaling",
+      "target_id": "stem-cells",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "mitochondria",
+      "target_id": "cellular-respiration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "chloroplast",
+      "target_id": "photosynthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-cycle",
+      "target_id": "cell-differentiation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "eukaryotic-cells",
+      "target_id": "lysosomes-peroxisomes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "endoplasmic-reticulum",
+      "target_id": "endomembrane-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "golgi-apparatus",
+      "target_id": "endomembrane-system",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "lysosomes-peroxisomes",
+      "target_id": "endomembrane-system",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "molecular-biology-overview",
+      "target_id": "dna-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "molecular-biology-overview",
+      "target_id": "central-dogma",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dna-structure",
+      "target_id": "rna-types",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dna-structure",
+      "target_id": "dna-replication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dna-structure",
+      "target_id": "dna-repair",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "central-dogma",
+      "target_id": "transcription",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "central-dogma",
+      "target_id": "translation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "transcription",
+      "target_id": "translation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "transcription",
+      "target_id": "gene-regulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "molecular-biology-overview",
+      "target_id": "protein-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "protein-structure",
+      "target_id": "enzyme-function",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "translation",
+      "target_id": "protein-modification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cell-signaling",
+      "target_id": "signal-transduction-mol",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gene-regulation",
+      "target_id": "epigenetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dna-structure",
+      "target_id": "recombinant-dna",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "recombinant-dna",
+      "target_id": "molecular-cloning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dna-replication",
+      "target_id": "pcr-technology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gene-regulation",
+      "target_id": "gene-editing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "recombinant-dna",
+      "target_id": "gene-editing",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "dna-structure",
+      "target_id": "genomics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "protein-structure",
+      "target_id": "proteomics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genomics",
+      "target_id": "bioinformatics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "proteomics",
+      "target_id": "bioinformatics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gene-regulation",
+      "target_id": "rna-interference",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rna-types",
+      "target_id": "rna-interference",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "genetics-overview",
+      "target_id": "mendelian-genetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genetics-overview",
+      "target_id": "gene-concept",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mendelian-genetics",
+      "target_id": "alleles-genotype",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mendelian-genetics",
+      "target_id": "chromosomal-inheritance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "chromosomal-inheritance",
+      "target_id": "sex-linked-inheritance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mendelian-genetics",
+      "target_id": "polygenic-inheritance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mendelian-genetics",
+      "target_id": "gene-interaction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gene-concept",
+      "target_id": "mutation-types",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mutation-types",
+      "target_id": "chromosomal-abnormalities",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mendelian-genetics",
+      "target_id": "population-genetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "population-genetics",
+      "target_id": "quantitative-genetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genetics-overview",
+      "target_id": "human-genetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "chromosomal-inheritance",
+      "target_id": "genetic-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gene-regulation",
+      "target_id": "gene-expression-regulation",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genetics-overview",
+      "target_id": "extranuclear-inheritance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "human-genetics",
+      "target_id": "genetic-counseling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genetics-overview",
+      "target_id": "behavioral-genetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "human-genetics",
+      "target_id": "pharmacogenomics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "recombinant-dna",
+      "target_id": "genetic-engineering",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gene-editing",
+      "target_id": "genetic-engineering",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "mendelian-genetics",
+      "target_id": "pedigree-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "population-genetics",
+      "target_id": "genetic-drift",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "evolution-overview",
+      "target_id": "natural-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "evolution-overview",
+      "target_id": "evidence-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "natural-selection",
+      "target_id": "speciation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "speciation",
+      "target_id": "adaptive-radiation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "natural-selection",
+      "target_id": "coevolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "natural-selection",
+      "target_id": "sexual-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "natural-selection",
+      "target_id": "molecular-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "molecular-evolution",
+      "target_id": "phylogenetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "speciation",
+      "target_id": "macroevolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "evolution-overview",
+      "target_id": "microevolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "natural-selection",
+      "target_id": "adaptation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "evolution-overview",
+      "target_id": "origin-of-life",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "phylogenetics",
+      "target_id": "human-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "natural-selection",
+      "target_id": "kin-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "evolution-overview",
+      "target_id": "evolutionary-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adaptation",
+      "target_id": "convergent-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "speciation",
+      "target_id": "divergent-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "origin-of-life",
+      "target_id": "endosymbiosis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "macroevolution",
+      "target_id": "extinction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "population-genetics",
+      "target_id": "microevolution",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "genetic-drift",
+      "target_id": "microevolution",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "nervous-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nervous-system",
+      "target_id": "neuron-synapse",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "neuron-synapse",
+      "target_id": "brain-function",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "endocrine-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "cardiovascular-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "respiratory-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "digestive-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "immune-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "immune-system",
+      "target_id": "immune-cells",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "immune-cells",
+      "target_id": "antibody-response",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "musculoskeletal-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "urinary-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "reproductive-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "homeostasis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cardiovascular-system",
+      "target_id": "blood-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "immune-system",
+      "target_id": "lymphatic-system",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "nervous-system",
+      "target_id": "sensory-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nervous-system",
+      "target_id": "autonomic-nervous-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "endocrine-system",
+      "target_id": "hormone-regulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physiology-overview",
+      "target_id": "metabolism-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "digestive-system",
+      "target_id": "nutrition-physiology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "homeostasis",
+      "target_id": "aging-physiology",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "cardiovascular-system",
+      "target_id": "exercise-physiology",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "respiratory-system",
+      "target_id": "exercise-physiology",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "population-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "population-ecology",
+      "target_id": "community-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "community-ecology",
+      "target_id": "ecosystem-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecosystem-ecology",
+      "target_id": "food-web",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecosystem-ecology",
+      "target_id": "nutrient-cycling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "biomes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "community-ecology",
+      "target_id": "species-interactions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "biodiversity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biodiversity",
+      "target_id": "conservation-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "community-ecology",
+      "target_id": "ecological-succession",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "community-ecology",
+      "target_id": "niche-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biodiversity",
+      "target_id": "island-biogeography",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecosystem-ecology",
+      "target_id": "climate-change-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "ecosystem-services",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "behavioral-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "population-ecology",
+      "target_id": "population-dynamics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "landscape-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "marine-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "freshwater-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "conservation-biology",
+      "target_id": "restoration-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ecology-overview",
+      "target_id": "urban-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "bacteria-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bacteria-structure",
+      "target_id": "bacterial-metabolism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bacteria-structure",
+      "target_id": "bacterial-genetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "virus-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "virus-biology",
+      "target_id": "viral-replication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "fungi-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "protists",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bacterial-genetics",
+      "target_id": "antibiotic-resistance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "microbiome",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "virus-biology",
+      "target_id": "pathogenic-mechanisms",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bacteria-structure",
+      "target_id": "pathogenic-mechanisms",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pathogenic-mechanisms",
+      "target_id": "immune-evasion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "immune-system",
+      "target_id": "vaccine-biology",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "virus-biology",
+      "target_id": "vaccine-biology",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "food-microbiology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "environmental-microbiology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "industrial-microbiology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microbiology-overview",
+      "target_id": "archaea",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bacteria-structure",
+      "target_id": "biofilm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "virus-biology",
+      "target_id": "prions",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "pathogenic-mechanisms",
+      "target_id": "emerging-infectious",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "botany-zoology-overview",
+      "target_id": "plant-anatomy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plant-anatomy",
+      "target_id": "plant-physiology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "botany-zoology-overview",
+      "target_id": "plant-reproduction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plant-physiology",
+      "target_id": "plant-hormones",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plant-hormones",
+      "target_id": "plant-responses",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "botany-zoology-overview",
+      "target_id": "animal-diversity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animal-diversity",
+      "target_id": "invertebrate-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animal-diversity",
+      "target_id": "vertebrate-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "botany-zoology-overview",
+      "target_id": "animal-behavior",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "botany-zoology-overview",
+      "target_id": "embryology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "botany-zoology-overview",
+      "target_id": "comparative-anatomy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "botany-zoology-overview",
+      "target_id": "plant-classification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plant-reproduction",
+      "target_id": "seed-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "vertebrate-biology",
+      "target_id": "animal-physiology-comp",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plant-reproduction",
+      "target_id": "pollination-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animal-behavior",
+      "target_id": "migration-hibernation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "species-interactions",
+      "target_id": "symbiosis",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "embryology",
+      "target_id": "developmental-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "comparative-anatomy",
+      "target_id": "biomimetics",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "mitochondria",
+      "target_id": "endosymbiosis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "chloroplast",
+      "target_id": "endosymbiosis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dna-structure",
+      "target_id": "mendelian-genetics",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "gene-concept",
+      "target_id": "central-dogma",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "meiosis",
+      "target_id": "mendelian-genetics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "mutation-types",
+      "target_id": "natural-selection",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "population-genetics",
+      "target_id": "natural-selection",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "immune-system",
+      "target_id": "pathogenic-mechanisms",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vaccine-biology",
+      "target_id": "antibody-response",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "photosynthesis",
+      "target_id": "nutrient-cycling",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "cellular-respiration",
+      "target_id": "metabolism-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "neuron-synapse",
+      "target_id": "cell-signaling",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "cell-differentiation",
+      "target_id": "embryology",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gene-regulation",
+      "target_id": "cell-differentiation",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "antibiotic-resistance",
+      "target_id": "natural-selection",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "biodiversity",
+      "target_id": "extinction",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "evolutionary-development",
+      "target_id": "embryology",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "human-evolution",
+      "target_id": "comparative-anatomy",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "microbiome",
+      "target_id": "immune-system",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "behavioral-ecology",
+      "target_id": "animal-behavior",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "coevolution",
+      "target_id": "pollination-ecology",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "photosynthesis",
+      "target_id": "plant-physiology",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "plant-hormones",
+      "target_id": "gene-regulation",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "epigenetics",
+      "target_id": "cell-differentiation",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "genomics",
+      "target_id": "human-genetics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "climate-change-ecology",
+      "target_id": "conservation-biology",
+      "relation_type": "related",
+      "strength": 0.7
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "created_at": "2026-03-20T03:41:57.771909+00:00",
+    "stats": {
+      "total_concepts": 172,
+      "total_edges": 203,
+      "total_subdomains": 8,
+      "total_milestones": 36
+    }
+  }
+}

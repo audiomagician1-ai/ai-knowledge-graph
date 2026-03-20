@@ -11,6 +11,9 @@ import seedProduct from '../../data/seed/product-design/seed_graph.json';
 import seedFinance from '../../data/seed/finance/seed_graph.json';
 import seedPsychology from '../../data/seed/psychology/seed_graph.json';
 import seedPhilosophy from '../../data/seed/philosophy/seed_graph.json';
+import seedBiology from '../../data/seed/biology/seed_graph.json';
+import seedEconomics from '../../data/seed/economics/seed_graph.json';
+import seedWriting from '../../data/seed/writing/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -18,6 +21,7 @@ const seedMap: Record<string, any> = {
   'ai-engineering': seedAI, 'mathematics': seedMath, 'english': seedEnglish,
   'physics': seedPhysics, 'product-design': seedProduct, 'finance': seedFinance,
   'psychology': seedPsychology, 'philosophy': seedPhilosophy,
+  'biology': seedBiology, 'economics': seedEconomics, 'writing': seedWriting,
 };
 
 function findConceptAcrossDomains(conceptId: string): { seed: any; domain: string } | null {

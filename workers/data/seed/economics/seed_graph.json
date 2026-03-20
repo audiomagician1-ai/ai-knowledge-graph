@@ -1,0 +1,3645 @@
+{
+  "domain": {
+    "id": "economics",
+    "name": "经济学",
+    "description": "从微观经济学到经济思想史的系统知识体系",
+    "icon": "💰",
+    "color": "#f59e0b"
+  },
+  "subdomains": [
+    {
+      "id": "microeconomics",
+      "name": "微观经济学",
+      "order": 1
+    },
+    {
+      "id": "macroeconomics",
+      "name": "宏观经济学",
+      "order": 2
+    },
+    {
+      "id": "behavioral-econ",
+      "name": "行为经济学",
+      "order": 3
+    },
+    {
+      "id": "international-econ",
+      "name": "国际经济学",
+      "order": 4
+    },
+    {
+      "id": "development-econ",
+      "name": "发展经济学",
+      "order": 5
+    },
+    {
+      "id": "econometrics",
+      "name": "计量经济学",
+      "order": 6
+    },
+    {
+      "id": "public-econ",
+      "name": "公共经济学",
+      "order": 7
+    },
+    {
+      "id": "economic-thought",
+      "name": "经济思想史",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "microeconomics-overview",
+      "name": "微观经济学概述",
+      "description": "稀缺性、选择与机会成本等基本经济问题",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "supply-demand",
+      "name": "供给与需求",
+      "description": "供给定律、需求定律与市场均衡价格的形成",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "elasticity",
+      "name": "弹性理论",
+      "description": "价格弹性、收入弹性、交叉弹性的计算与应用",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "consumer-theory",
+      "name": "消费者理论",
+      "description": "效用函数、无差异曲线与预算约束下的最优选择",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "utility-maximization",
+      "name": "效用最大化",
+      "description": "边际效用递减规律与消费者均衡条件",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "producer-theory",
+      "name": "生产者理论",
+      "description": "生产函数、等产量线与成本最小化",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "企业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cost-theory",
+      "name": "成本理论",
+      "description": "短期与长期成本曲线、规模经济与范围经济",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "企业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "perfect-competition",
+      "name": "完全竞争市场",
+      "description": "价格接受者、利润最大化与长期均衡",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "市场结构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "monopoly",
+      "name": "垄断市场",
+      "description": "价格歧视、自然垄断与反垄断政策",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "市场结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "monopolistic-competition",
+      "name": "垄断竞争",
+      "description": "产品差异化、短期利润与长期零利润均衡",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "市场结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "oligopoly",
+      "name": "寡头市场",
+      "description": "古诺模型、伯特兰模型与斯塔克伯格模型",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "市场结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-theory-econ",
+      "name": "博弈论基础",
+      "description": "纳什均衡、囚徒困境与策略互动分析",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "分析工具"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "market-failure",
+      "name": "市场失灵",
+      "description": "外部性、公共品、信息不对称与市场势力",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "externalities",
+      "name": "外部性",
+      "description": "正外部性与负外部性及其纠正手段（庇古税、科斯定理）",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "public-goods",
+      "name": "公共品",
+      "description": "非竞争性、非排他性与搭便车问题",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "information-asymmetry",
+      "name": "信息不对称",
+      "description": "逆向选择、道德风险与信号传递机制",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "信息"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "factor-markets",
+      "name": "要素市场",
+      "description": "劳动、资本与土地市场的价格决定",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分配"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "welfare-economics",
+      "name": "福利经济学",
+      "description": "帕累托效率、社会福利函数与福利定理",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "福利"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "general-equilibrium",
+      "name": "一般均衡理论",
+      "description": "瓦尔拉斯一般均衡与阿罗-德布鲁模型",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "auction-theory",
+      "name": "拍卖理论",
+      "description": "英式、荷式、密封拍卖与最优拍卖机制设计",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "机制设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "contract-theory",
+      "name": "契约理论",
+      "description": "委托代理问题、激励相容与机制设计基础",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "信息"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-micro",
+      "name": "行为微观经济学",
+      "description": "有限理性对消费者与企业决策的影响",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "market-design",
+      "name": "市场设计",
+      "description": "匹配市场、学校选择与器官分配机制",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "机制设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "income-distribution",
+      "name": "收入分配",
+      "description": "洛伦茨曲线、基尼系数与收入不平等度量",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分配"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "marginal-analysis",
+      "name": "边际分析",
+      "description": "边际成本、边际收益与经济决策的边际原则",
+      "subdomain_id": "microeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "macroeconomics-overview",
+      "name": "宏观经济学概述",
+      "description": "国民经济总量指标与宏观经济学的研究框架",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "gdp-measurement",
+      "name": "GDP核算",
+      "description": "国内生产总值的三种核算方法与名义/实际GDP",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aggregate-demand-supply",
+      "name": "总供给与总需求",
+      "description": "AD-AS模型与宏观经济均衡",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "inflation",
+      "name": "通货膨胀",
+      "description": "通胀的度量、成因（需求拉动/成本推动/预期）与影响",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "现象"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unemployment",
+      "name": "失业",
+      "description": "失业类型（摩擦/结构/周期）、自然失业率与奥肯定律",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "现象"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "business-cycle",
+      "name": "经济周期",
+      "description": "繁荣、衰退、萧条与复苏的周期性波动",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "波动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fiscal-policy",
+      "name": "财政政策",
+      "description": "政府支出、税收与财政乘数效应",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "monetary-policy",
+      "name": "货币政策",
+      "description": "利率调控、公开市场操作与量化宽松",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "money-banking",
+      "name": "货币与银行",
+      "description": "货币创造、商业银行体系与中央银行职能",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "interest-rates",
+      "name": "利率理论",
+      "description": "名义利率与实际利率、利率的期限结构",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "economic-growth",
+      "name": "经济增长理论",
+      "description": "索洛模型、内生增长理论与全要素生产率",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "增长"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "is-lm-model",
+      "name": "IS-LM模型",
+      "description": "产品市场与货币市场的同时均衡分析",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "phillips-curve",
+      "name": "菲利普斯曲线",
+      "description": "通胀与失业的短期权衡与长期垂直",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "consumption-saving",
+      "name": "消费与储蓄",
+      "description": "凯恩斯消费函数、永久收入假说与生命周期假说",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "investment-theory",
+      "name": "投资理论",
+      "description": "投资决定因素、托宾Q理论与加速器模型",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "national-debt",
+      "name": "国债与财政赤字",
+      "description": "政府债务的可持续性、挤出效应与代际公平",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "exchange-rate-macro",
+      "name": "汇率与宏观经济",
+      "description": "汇率决定理论、购买力平价与蒙代尔-弗莱明模型",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "开放经济"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "open-economy-macro",
+      "name": "开放经济宏观",
+      "description": "经常账户、资本账户与国际收支平衡",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "开放经济"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rational-expectations",
+      "name": "理性预期",
+      "description": "理性预期假说与政策无效性命题",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "预期"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "new-keynesian",
+      "name": "新凯恩斯主义",
+      "description": "价格粘性、菜单成本与DSGE模型基础",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "学派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "financial-crisis-macro",
+      "name": "金融危机与宏观",
+      "description": "系统性风险、银行挤兑与最后贷款人",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "危机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "labor-market-macro",
+      "name": "宏观劳动市场",
+      "description": "工资刚性、效率工资与劳动力参与率",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "劳动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "monetary-transmission",
+      "name": "货币传导机制",
+      "description": "利率渠道、信贷渠道与资产价格渠道",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "macroprudential-policy",
+      "name": "宏观审慎政策",
+      "description": "系统性风险监管、资本缓冲与逆周期工具",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "supply-side-economics",
+      "name": "供给侧经济学",
+      "description": "减税刺激供给、拉弗曲线与结构性改革",
+      "subdomain_id": "macroeconomics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-econ-overview",
+      "name": "行为经济学概述",
+      "description": "有限理性、有限意志力、有限自利与传统经济学的偏离",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "prospect-theory",
+      "name": "前景理论",
+      "description": "参考点依赖、损失厌恶与价值函数的S形曲线",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cognitive-biases-econ",
+      "name": "认知偏差",
+      "description": "锚定效应、可得性偏差与代表性启发在经济决策中的影响",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "偏差"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "heuristics-econ",
+      "name": "启发式判断",
+      "description": "简单规则在不确定性下的决策作用与局限",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "偏差"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "framing-effects",
+      "name": "框架效应",
+      "description": "信息呈现方式对选择的系统性影响",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "偏差"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mental-accounting",
+      "name": "心理账户",
+      "description": "消费者如何对金钱进行心理分类与非替代性",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "消费"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "time-inconsistency-behav",
+      "name": "时间不一致性",
+      "description": "双曲贴现、即时满足偏好与自我控制问题",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "决策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "nudge-theory",
+      "name": "助推理论",
+      "description": "自由家长主义、默认选项与选择架构设计",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "bounded-rationality",
+      "name": "有限理性",
+      "description": "西蒙的满意决策理论与认知资源约束",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-preferences",
+      "name": "社会偏好",
+      "description": "公平偏好、互惠行为与利他主义的经济学解释",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "社会"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "overconfidence-econ",
+      "name": "过度自信",
+      "description": "过度自信对投资、创业与预测的影响",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "偏差"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endowment-effect",
+      "name": "禀赋效应",
+      "description": "拥有物品后的高估值倾向与WTP/WTA差异",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "偏差"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "herding-behavior",
+      "name": "羊群效应",
+      "description": "信息级联与从众行为在金融市场中的表现",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-finance",
+      "name": "行为金融学",
+      "description": "市场异象、投资者情绪与非有效市场现象",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "experimental-economics",
+      "name": "实验经济学",
+      "description": "实验室实验、田野实验与经济理论检验方法",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "neuroeconomics",
+      "name": "神经经济学",
+      "description": "大脑决策机制、奖赏系统与经济选择的神经基础",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "default-effects",
+      "name": "默认效应",
+      "description": "默认选项对退休储蓄、器官捐献等决策的巨大影响",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sunk-cost-fallacy",
+      "name": "沉没成本谬误",
+      "description": "已付出不可回收成本对后续决策的非理性影响",
+      "subdomain_id": "behavioral-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "偏差"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "international-econ-overview",
+      "name": "国际经济学概述",
+      "description": "国际贸易与国际金融的基本框架",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "comparative-advantage",
+      "name": "比较优势",
+      "description": "李嘉图比较优势理论与贸易互利的基本原理",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "贸易"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "absolute-advantage",
+      "name": "绝对优势",
+      "description": "亚当·斯密的绝对优势理论与国际分工",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "贸易"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "heckscher-ohlin",
+      "name": "赫克歇尔-俄林模型",
+      "description": "要素禀赋差异与贸易模式的决定",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "贸易"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "trade-policy",
+      "name": "贸易政策",
+      "description": "关税、配额、补贴与战略性贸易政策",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "free-trade-agreements",
+      "name": "自由贸易协定",
+      "description": "WTO规则、区域经济一体化与FTA的福利效应",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "exchange-rate-systems",
+      "name": "汇率制度",
+      "description": "固定汇率、浮动汇率与管理浮动汇率制度比较",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "balance-of-payments",
+      "name": "国际收支",
+      "description": "经常账户、资本与金融账户的结构与平衡",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "foreign-exchange-market",
+      "name": "外汇市场",
+      "description": "外汇交易机制、汇率决定与套利平价条件",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "international-capital-flows",
+      "name": "国际资本流动",
+      "description": "FDI、证券投资与短期资本流动的动因与影响",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "currency-crisis",
+      "name": "货币危机",
+      "description": "投机攻击、三代货币危机模型与防范机制",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "危机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terms-of-trade",
+      "name": "贸易条件",
+      "description": "进出口价格比率变动与贸易利益分配",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "贸易"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "new-trade-theory",
+      "name": "新贸易理论",
+      "description": "规模经济、产品差异化与产业内贸易解释",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "trade-and-development",
+      "name": "贸易与发展",
+      "description": "出口导向vs进口替代战略与贸易对发展中国家的影响",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发展"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "global-value-chains",
+      "name": "全球价值链",
+      "description": "生产环节的国际分工、增值贸易与产业升级",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "现代"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "multinational-corporations",
+      "name": "跨国公司",
+      "description": "FDI理论、转移定价与跨国企业的经济影响",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "企业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "trade-wars",
+      "name": "贸易战",
+      "description": "报复性关税、贸易摩擦的博弈分析与经济后果",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "international-monetary-system",
+      "name": "国际货币体系",
+      "description": "从金本位到布雷顿森林再到牙买加体系的演变",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "regional-integration",
+      "name": "区域经济一体化",
+      "description": "自由贸易区、关税同盟、共同市场与经济联盟",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "trade-gravity-model",
+      "name": "贸易引力模型",
+      "description": "经济规模与距离对双边贸易量的决定性影响",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "实证"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "migration-economics",
+      "name": "移民经济学",
+      "description": "劳动力国际流动的经济效应与移民政策分析",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "劳动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "digital-trade",
+      "name": "数字贸易",
+      "description": "跨境数据流动、数字服务贸易与电子商务规则",
+      "subdomain_id": "international-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "现代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "development-econ-overview",
+      "name": "发展经济学概述",
+      "description": "经济发展与经济增长的区别、发展的多维度衡量",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "poverty-inequality",
+      "name": "贫困与不平等",
+      "description": "绝对贫困与相对贫困、不平等度量与贫困陷阱",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "human-development-index",
+      "name": "人类发展指数",
+      "description": "HDI的构成（健康/教育/收入）与发展评估",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "指标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "structural-transformation",
+      "name": "结构转型",
+      "description": "从农业到工业再到服务业的经济结构演变",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "转型"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "industrialization",
+      "name": "工业化",
+      "description": "工业化路径选择、产业政策与后发优势",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "转型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "agriculture-development",
+      "name": "农业与发展",
+      "description": "绿色革命、小农经济与农业现代化路径",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "部门"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "microfinance",
+      "name": "小额金融",
+      "description": "格莱珉银行模式、普惠金融与贫困减缓效果",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "foreign-aid",
+      "name": "对外援助",
+      "description": "官方发展援助的有效性争论与援助依赖问题",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "institutions-development",
+      "name": "制度与发展",
+      "description": "产权保护、法治与制度质量对经济发展的核心作用",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "rct-development",
+      "name": "随机对照试验",
+      "description": "RCT在发展经济学中的应用与政策评估革命",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "education-economics",
+      "name": "教育经济学",
+      "description": "人力资本投资回报、教育与经济增长的关系",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "人力资本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "health-economics-dev",
+      "name": "健康经济学",
+      "description": "健康与生产力、疾病负担与发展中国家医疗体系",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "人力资本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "urbanization-econ",
+      "name": "城市化经济学",
+      "description": "城市化进程、集聚经济与城市问题",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "natural-resources-curse",
+      "name": "资源诅咒",
+      "description": "自然资源丰裕与经济增长困境的理论解释",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "资源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "population-economics",
+      "name": "人口经济学",
+      "description": "人口转变理论、人口红利与老龄化的经济影响",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "人口"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sustainable-development",
+      "name": "可持续发展",
+      "description": "环境-经济协调、SDGs与绿色增长路径",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "technology-transfer",
+      "name": "技术转移",
+      "description": "技术扩散机制、适宜技术与创新对发展的作用",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gender-economics",
+      "name": "性别经济学",
+      "description": "性别差距的经济分析、女性赋权与发展效应",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "社会"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "informal-economy",
+      "name": "非正规经济",
+      "description": "发展中国家非正规部门的规模、成因与正规化",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "部门"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "development-finance",
+      "name": "发展融资",
+      "description": "国内资本动员、国际融资渠道与债务可持续性",
+      "subdomain_id": "development-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "金融"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "econometrics-overview",
+      "name": "计量经济学概述",
+      "description": "经济数据类型、计量模型的基本框架与因果推断目标",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "linear-regression",
+      "name": "线性回归",
+      "description": "OLS估计、假设检验与回归结果解读",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "multiple-regression",
+      "name": "多元回归",
+      "description": "多变量模型设定、多重共线性与遗漏变量偏误",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hypothesis-testing-econ",
+      "name": "假设检验",
+      "description": "t检验、F检验与经济假说的统计检验",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "统计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endogeneity",
+      "name": "内生性问题",
+      "description": "遗漏变量、测量误差与联立性导致的估计偏误",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "instrumental-variables",
+      "name": "工具变量法",
+      "description": "IV估计、两阶段最小二乘法(2SLS)与工具有效性检验",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "因果"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "panel-data",
+      "name": "面板数据分析",
+      "description": "固定效应、随机效应模型与Hausman检验",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "time-series-econ",
+      "name": "时间序列分析",
+      "description": "平稳性检验、ARIMA模型与VAR模型",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "diff-in-diff",
+      "name": "双重差分法",
+      "description": "DID设计、平行趋势假设与政策效果评估",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "因果"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "regression-discontinuity",
+      "name": "断点回归",
+      "description": "RDD设计、局部随机化与带宽选择",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "因果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "propensity-score",
+      "name": "倾向得分匹配",
+      "description": "PSM方法、处理效应估计与观测数据因果推断",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "因果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "maximum-likelihood",
+      "name": "极大似然估计",
+      "description": "MLE原理、渐近性质与非线性模型估计",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "limited-dependent",
+      "name": "有限因变量模型",
+      "description": "Logit、Probit模型与离散选择分析",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "heteroskedasticity",
+      "name": "异方差",
+      "description": "异方差检验、后果与稳健标准误修正",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "诊断"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "autocorrelation-econ",
+      "name": "自相关",
+      "description": "时间序列自相关的检测与修正方法",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "诊断"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "causal-inference",
+      "name": "因果推断",
+      "description": "潜在结果框架、鲁宾因果模型与因果效应识别策略",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "machine-learning-econ",
+      "name": "机器学习与经济学",
+      "description": "预测vs因果、LASSO/随机森林在经济分析中的应用",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "synthetic-control",
+      "name": "合成控制法",
+      "description": "比较案例研究的定量方法与政策评估应用",
+      "subdomain_id": "econometrics",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "因果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "public-econ-overview",
+      "name": "公共经济学概述",
+      "description": "政府在市场经济中的角色、公共部门的经济分析框架",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "taxation-principles",
+      "name": "税收原则",
+      "description": "效率、公平与简便的税制设计原则",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "税收"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "tax-incidence",
+      "name": "税收归宿",
+      "description": "税负转嫁与弹性对税收负担分配的影响",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "税收"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "optimal-taxation",
+      "name": "最优税收理论",
+      "description": "拉姆齐规则、最优所得税与米尔利斯模型",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "税收"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "income-tax",
+      "name": "所得税",
+      "description": "个人所得税与企业所得税的设计与经济效应",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "税种"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "consumption-tax",
+      "name": "消费税",
+      "description": "增值税、销售税的效率特性与累退性讨论",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "税种"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "public-expenditure",
+      "name": "公共支出",
+      "description": "公共支出的规模决定、效率评估与瓦格纳法则",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "支出"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "social-insurance",
+      "name": "社会保险",
+      "description": "养老保险、医疗保险与失业保险的经济学分析",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "福利"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "public-choice",
+      "name": "公共选择理论",
+      "description": "投票悖论、中位选民定理与官僚行为模型",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "rent-seeking",
+      "name": "寻租",
+      "description": "寻租行为的经济损失与防范机制设计",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cost-benefit-analysis",
+      "name": "成本收益分析",
+      "description": "项目评估中的折现、影子价格与社会贴现率",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "environmental-economics",
+      "name": "环境经济学",
+      "description": "碳税、排放权交易与环境政策的经济分析",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fiscal-federalism",
+      "name": "财政联邦主义",
+      "description": "中央与地方财政关系、财政分权与转移支付",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "government-failure",
+      "name": "政府失灵",
+      "description": "寻租、官僚效率与政府干预的局限性",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pigouvian-tax",
+      "name": "庇古税",
+      "description": "通过税收内化外部性的理论基础与实践",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "property-rights-econ",
+      "name": "产权经济学",
+      "description": "产权界定、科斯定理与交易成本分析",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "regulation-economics",
+      "name": "规制经济学",
+      "description": "自然垄断规制、信息不对称与规制俘获",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规制"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "welfare-state",
+      "name": "福利国家",
+      "description": "福利国家模式比较、再分配效应与财政可持续性",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "福利"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-public-policy",
+      "name": "行为公共政策",
+      "description": "助推在公共政策中的应用：退休储蓄、健康与节能",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "education-policy-econ",
+      "name": "教育政策经济学",
+      "description": "教育券、学校竞争与教育投入的回报率分析",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "healthcare-economics",
+      "name": "医疗经济学",
+      "description": "医疗保险市场、信息不对称与医疗改革经济分析",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "政策"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pension-economics",
+      "name": "养老金经济学",
+      "description": "现收现付vs基金制、人口老龄化与养老金改革",
+      "subdomain_id": "public-econ",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "福利"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "economic-thought-overview",
+      "name": "经济思想史概述",
+      "description": "经济学从古典到现代的思想演变脉络",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "adam-smith",
+      "name": "亚当·斯密",
+      "description": "《国富论》、看不见的手与古典自由主义经济学",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "古典"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "david-ricardo",
+      "name": "大卫·李嘉图",
+      "description": "比较优势、劳动价值论与收入分配理论",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "古典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "karl-marx-econ",
+      "name": "马克思经济学",
+      "description": "剩余价值、资本积累与经济危机理论",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "古典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "marginalism",
+      "name": "边际主义革命",
+      "description": "杰文斯、门格尔与瓦尔拉斯的边际效用理论",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "新古典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "alfred-marshall",
+      "name": "马歇尔经济学",
+      "description": "局部均衡分析、供需剪刀模型与新古典综合",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "新古典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "keynesian-revolution",
+      "name": "凯恩斯革命",
+      "description": "有效需求、流动性偏好与政府干预的理论基础",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "凯恩斯"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "monetarism",
+      "name": "货币主义",
+      "description": "弗里德曼的货币数量论、自然失业率与规则性政策",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "芝加哥"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "austrian-school",
+      "name": "奥地利学派",
+      "description": "主观价值论、企业家精神与自发秩序理论",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "学派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "institutional-economics",
+      "name": "制度经济学",
+      "description": "交易成本、产权理论与制度变迁分析",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "chicago-school",
+      "name": "芝加哥学派",
+      "description": "市场效率、理性预期与法律经济学传统",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "学派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "development-thought",
+      "name": "发展思想演变",
+      "description": "从现代化理论到华盛顿共识再到制度主义的发展观",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发展"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "neoclassical-synthesis",
+      "name": "新古典综合",
+      "description": "IS-LM框架、菲利普斯曲线与凯恩斯-新古典融合",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "综合"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "new-institutional",
+      "name": "新制度经济学",
+      "description": "科斯、诺斯与威廉姆森的制度分析框架",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "制度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "behavioral-thought",
+      "name": "行为经济学思想",
+      "description": "从西蒙到卡尼曼：行为经济学的兴起与影响",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feminist-economics",
+      "name": "女性主义经济学",
+      "description": "性别视角下的经济分析、无偿劳动与关怀经济",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "批判"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ecological-economics",
+      "name": "生态经济学",
+      "description": "稳态经济、自然资本与经济增长的生态极限",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "complexity-economics",
+      "name": "复杂性经济学",
+      "description": "经济系统的涌现、非线性动态与圣塔菲学派",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "chinese-economic-thought",
+      "name": "中国经济思想",
+      "description": "从管仲到近代：中国经济思想的演变与特色",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "中国"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "nobel-economics",
+      "name": "诺贝尔经济学奖",
+      "description": "重要获奖理论回顾与经济学前沿发展方向",
+      "subdomain_id": "economic-thought",
+      "domain_id": "economics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "总览"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "microeconomics-overview",
+      "target_id": "supply-demand",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "supply-demand",
+      "target_id": "elasticity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "supply-demand",
+      "target_id": "consumer-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "consumer-theory",
+      "target_id": "utility-maximization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "microeconomics-overview",
+      "target_id": "marginal-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "marginal-analysis",
+      "target_id": "consumer-theory",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "microeconomics-overview",
+      "target_id": "producer-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "producer-theory",
+      "target_id": "cost-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "supply-demand",
+      "target_id": "perfect-competition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "perfect-competition",
+      "target_id": "monopoly",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "perfect-competition",
+      "target_id": "monopolistic-competition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monopoly",
+      "target_id": "oligopoly",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "oligopoly",
+      "target_id": "game-theory-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "perfect-competition",
+      "target_id": "market-failure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "market-failure",
+      "target_id": "externalities",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "market-failure",
+      "target_id": "public-goods",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "market-failure",
+      "target_id": "information-asymmetry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "information-asymmetry",
+      "target_id": "contract-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "information-asymmetry",
+      "target_id": "auction-theory",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "producer-theory",
+      "target_id": "factor-markets",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "welfare-economics",
+      "target_id": "general-equilibrium",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "consumer-theory",
+      "target_id": "welfare-economics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "factor-markets",
+      "target_id": "income-distribution",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-theory-econ",
+      "target_id": "market-design",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "contract-theory",
+      "target_id": "market-design",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "consumer-theory",
+      "target_id": "behavioral-micro",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "macroeconomics-overview",
+      "target_id": "gdp-measurement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gdp-measurement",
+      "target_id": "aggregate-demand-supply",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aggregate-demand-supply",
+      "target_id": "inflation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aggregate-demand-supply",
+      "target_id": "unemployment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "macroeconomics-overview",
+      "target_id": "business-cycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "macroeconomics-overview",
+      "target_id": "fiscal-policy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "macroeconomics-overview",
+      "target_id": "monetary-policy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetary-policy",
+      "target_id": "money-banking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "money-banking",
+      "target_id": "interest-rates",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "interest-rates",
+      "target_id": "monetary-transmission",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fiscal-policy",
+      "target_id": "national-debt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gdp-measurement",
+      "target_id": "economic-growth",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aggregate-demand-supply",
+      "target_id": "is-lm-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "is-lm-model",
+      "target_id": "fiscal-policy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "is-lm-model",
+      "target_id": "monetary-policy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "inflation",
+      "target_id": "phillips-curve",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unemployment",
+      "target_id": "phillips-curve",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "macroeconomics-overview",
+      "target_id": "consumption-saving",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "macroeconomics-overview",
+      "target_id": "investment-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "is-lm-model",
+      "target_id": "exchange-rate-macro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "exchange-rate-macro",
+      "target_id": "open-economy-macro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "phillips-curve",
+      "target_id": "rational-expectations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rational-expectations",
+      "target_id": "new-keynesian",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "money-banking",
+      "target_id": "financial-crisis-macro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "unemployment",
+      "target_id": "labor-market-macro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetary-policy",
+      "target_id": "macroprudential-policy",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "fiscal-policy",
+      "target_id": "supply-side-economics",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "behavioral-econ-overview",
+      "target_id": "prospect-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-econ-overview",
+      "target_id": "cognitive-biases-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-biases-econ",
+      "target_id": "heuristics-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prospect-theory",
+      "target_id": "framing-effects",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prospect-theory",
+      "target_id": "endowment-effect",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-econ-overview",
+      "target_id": "bounded-rationality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prospect-theory",
+      "target_id": "mental-accounting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-econ-overview",
+      "target_id": "time-inconsistency-behav",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "time-inconsistency-behav",
+      "target_id": "nudge-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nudge-theory",
+      "target_id": "default-effects",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-biases-econ",
+      "target_id": "overconfidence-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-econ-overview",
+      "target_id": "social-preferences",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "overconfidence-econ",
+      "target_id": "herding-behavior",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "herding-behavior",
+      "target_id": "behavioral-finance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prospect-theory",
+      "target_id": "behavioral-finance",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "behavioral-econ-overview",
+      "target_id": "experimental-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-econ-overview",
+      "target_id": "neuroeconomics",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "cognitive-biases-econ",
+      "target_id": "sunk-cost-fallacy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "international-econ-overview",
+      "target_id": "comparative-advantage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "international-econ-overview",
+      "target_id": "absolute-advantage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "absolute-advantage",
+      "target_id": "comparative-advantage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "comparative-advantage",
+      "target_id": "heckscher-ohlin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "comparative-advantage",
+      "target_id": "trade-policy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "trade-policy",
+      "target_id": "free-trade-agreements",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "trade-policy",
+      "target_id": "trade-wars",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "international-econ-overview",
+      "target_id": "exchange-rate-systems",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "international-econ-overview",
+      "target_id": "balance-of-payments",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "exchange-rate-systems",
+      "target_id": "foreign-exchange-market",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-of-payments",
+      "target_id": "international-capital-flows",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "foreign-exchange-market",
+      "target_id": "currency-crisis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "international-capital-flows",
+      "target_id": "currency-crisis",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "comparative-advantage",
+      "target_id": "terms-of-trade",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "heckscher-ohlin",
+      "target_id": "new-trade-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "trade-policy",
+      "target_id": "trade-and-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "new-trade-theory",
+      "target_id": "global-value-chains",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "international-capital-flows",
+      "target_id": "multinational-corporations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "exchange-rate-systems",
+      "target_id": "international-monetary-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "free-trade-agreements",
+      "target_id": "regional-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "new-trade-theory",
+      "target_id": "trade-gravity-model",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "international-capital-flows",
+      "target_id": "migration-economics",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "global-value-chains",
+      "target_id": "digital-trade",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "poverty-inequality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "human-development-index",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "structural-transformation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "structural-transformation",
+      "target_id": "industrialization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "structural-transformation",
+      "target_id": "agriculture-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "poverty-inequality",
+      "target_id": "microfinance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "foreign-aid",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "institutions-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "institutions-development",
+      "target_id": "rct-development",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "education-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "health-economics-dev",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "structural-transformation",
+      "target_id": "urbanization-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "institutions-development",
+      "target_id": "natural-resources-curse",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "population-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "sustainable-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "industrialization",
+      "target_id": "technology-transfer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "development-econ-overview",
+      "target_id": "gender-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "structural-transformation",
+      "target_id": "informal-economy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "poverty-inequality",
+      "target_id": "development-finance",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "foreign-aid",
+      "target_id": "development-finance",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "econometrics-overview",
+      "target_id": "linear-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "linear-regression",
+      "target_id": "multiple-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "linear-regression",
+      "target_id": "hypothesis-testing-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "multiple-regression",
+      "target_id": "endogeneity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "endogeneity",
+      "target_id": "instrumental-variables",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "multiple-regression",
+      "target_id": "panel-data",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "multiple-regression",
+      "target_id": "time-series-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "endogeneity",
+      "target_id": "diff-in-diff",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "diff-in-diff",
+      "target_id": "regression-discontinuity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "endogeneity",
+      "target_id": "propensity-score",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "linear-regression",
+      "target_id": "maximum-likelihood",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "maximum-likelihood",
+      "target_id": "limited-dependent",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "multiple-regression",
+      "target_id": "heteroskedasticity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "time-series-econ",
+      "target_id": "autocorrelation-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "instrumental-variables",
+      "target_id": "causal-inference",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "diff-in-diff",
+      "target_id": "causal-inference",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "causal-inference",
+      "target_id": "machine-learning-econ",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "diff-in-diff",
+      "target_id": "synthetic-control",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "public-econ-overview",
+      "target_id": "taxation-principles",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "taxation-principles",
+      "target_id": "tax-incidence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "tax-incidence",
+      "target_id": "optimal-taxation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "taxation-principles",
+      "target_id": "income-tax",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "taxation-principles",
+      "target_id": "consumption-tax",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-econ-overview",
+      "target_id": "public-expenditure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-expenditure",
+      "target_id": "social-insurance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-econ-overview",
+      "target_id": "public-choice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-choice",
+      "target_id": "rent-seeking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-expenditure",
+      "target_id": "cost-benefit-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-econ-overview",
+      "target_id": "environmental-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "environmental-economics",
+      "target_id": "pigouvian-tax",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-econ-overview",
+      "target_id": "fiscal-federalism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-choice",
+      "target_id": "government-failure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-econ-overview",
+      "target_id": "property-rights-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "property-rights-econ",
+      "target_id": "regulation-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-insurance",
+      "target_id": "welfare-state",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-insurance",
+      "target_id": "pension-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nudge-theory",
+      "target_id": "behavioral-public-policy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "public-expenditure",
+      "target_id": "education-policy-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "public-expenditure",
+      "target_id": "healthcare-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "regulation-economics",
+      "target_id": "healthcare-economics",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "adam-smith",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adam-smith",
+      "target_id": "david-ricardo",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "david-ricardo",
+      "target_id": "karl-marx-econ",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adam-smith",
+      "target_id": "marginalism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "marginalism",
+      "target_id": "alfred-marshall",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "alfred-marshall",
+      "target_id": "neoclassical-synthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "karl-marx-econ",
+      "target_id": "keynesian-revolution",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "alfred-marshall",
+      "target_id": "keynesian-revolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "keynesian-revolution",
+      "target_id": "monetarism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "austrian-school",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "keynesian-revolution",
+      "target_id": "neoclassical-synthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetarism",
+      "target_id": "chicago-school",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "institutional-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "institutional-economics",
+      "target_id": "new-institutional",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adam-smith",
+      "target_id": "development-thought",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "behavioral-thought",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "feminist-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "ecological-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "complexity-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "chinese-economic-thought",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economic-thought-overview",
+      "target_id": "nobel-economics",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "supply-demand",
+      "target_id": "aggregate-demand-supply",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "market-failure",
+      "target_id": "fiscal-policy",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "externalities",
+      "target_id": "environmental-economics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "externalities",
+      "target_id": "pigouvian-tax",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "public-goods",
+      "target_id": "public-expenditure",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-theory-econ",
+      "target_id": "oligopoly",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "behavioral-econ-overview",
+      "target_id": "behavioral-micro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "behavioral-thought",
+      "target_id": "behavioral-econ-overview",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ecological-economics",
+      "target_id": "sustainable-development",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "comparative-advantage",
+      "target_id": "trade-and-development",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "economic-growth",
+      "target_id": "development-econ-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "adam-smith",
+      "target_id": "microeconomics-overview",
+      "relation_type": "influences",
+      "strength": 0.5
+    },
+    {
+      "source_id": "keynesian-revolution",
+      "target_id": "macroeconomics-overview",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "monetarism",
+      "target_id": "monetary-policy",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "rct-development",
+      "target_id": "experimental-economics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "instrumental-variables",
+      "target_id": "endogeneity",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "information-asymmetry",
+      "target_id": "healthcare-economics",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "institutions-development",
+      "target_id": "new-institutional",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "welfare-economics",
+      "target_id": "public-econ-overview",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "income-distribution",
+      "target_id": "poverty-inequality",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "inflation",
+      "target_id": "monetary-policy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "exchange-rate-macro",
+      "target_id": "exchange-rate-systems",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fiscal-policy",
+      "target_id": "public-expenditure",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "fiscal-policy",
+      "target_id": "taxation-principles",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "bounded-rationality",
+      "target_id": "behavioral-thought",
+      "relation_type": "related",
+      "strength": 0.6
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "created_at": "2026-03-20T04:25:35.563974+00:00",
+    "stats": {
+      "total_concepts": 170,
+      "total_edges": 200,
+      "total_subdomains": 8,
+      "total_milestones": 30
+    }
+  }
+}

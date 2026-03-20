@@ -9,6 +9,9 @@ import seedProduct from '../../data/seed/product-design/seed_graph.json';
 import seedFinance from '../../data/seed/finance/seed_graph.json';
 import seedPsychology from '../../data/seed/psychology/seed_graph.json';
 import seedPhilosophy from '../../data/seed/philosophy/seed_graph.json';
+import seedBiology from '../../data/seed/biology/seed_graph.json';
+import seedEconomics from '../../data/seed/economics/seed_graph.json';
+import seedWriting from '../../data/seed/writing/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -17,12 +20,13 @@ const seedMap: Record<string, any> = {
   'ai-engineering': seedAI, 'mathematics': seedMath, 'english': seedEnglish,
   'physics': seedPhysics, 'product-design': seedProduct, 'finance': seedFinance,
   'psychology': seedPsychology, 'philosophy': seedPhilosophy,
+  'biology': seedBiology, 'economics': seedEconomics, 'writing': seedWriting,
 };
 function getSeed(domain: string): any { return seedMap[domain] || seedMap[DEFAULT_DOMAIN]; }
 
 /** GET /learning/stats */
 app.get('/stats', async (c) => {
-  const totalConcepts = parseInt(c.req.query('total_concepts') || '267');
+  const totalConcepts = parseInt(c.req.query('total_concepts') || '400');
   const db = c.env.DB;
   const mastered = await db.prepare("SELECT COUNT(*) as cnt FROM concept_progress WHERE status = 'mastered'").first<{ cnt: number }>();
   const learning = await db.prepare("SELECT COUNT(*) as cnt FROM concept_progress WHERE status = 'learning'").first<{ cnt: number }>();
