@@ -802,10 +802,130 @@
       "target_id": "consciousness",
       "relation": "related",
       "description": "心身问题是哲学和心理学/神经科学的共同核心问题：意识如何从物质中产生"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "neural-network-basics",
+      "target_domain": "biology",
+      "target_id": "neuron-synapse",
+      "relation": "related",
+      "description": "人工神经网络的灵感直接来源于生物神经元的结构和突触传递机制"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "gene-editing",
+      "target_domain": "philosophy",
+      "target_id": "bioethics",
+      "relation": "related",
+      "description": "CRISPR基因编辑技术引发了深刻的生命伦理学讨论：人类是否应该编辑自己的基因组"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "population-genetics",
+      "target_domain": "mathematics",
+      "target_id": "probability-basics",
+      "relation": "requires",
+      "description": "群体遗传学的Hardy-Weinberg定律和遗传漂变模型依赖概率论基础"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "population-dynamics",
+      "target_domain": "mathematics",
+      "target_id": "differential-equations-intro",
+      "relation": "requires",
+      "description": "种群动态的Lotka-Volterra捕食模型和logistic增长方程都是微分方程的经典应用"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "neuron-synapse",
+      "target_domain": "psychology",
+      "target_id": "neurotransmitters",
+      "relation": "related",
+      "description": "突触传递的生物学机制是心理学中神经递质理论的分子基础"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "brain-function",
+      "target_domain": "psychology",
+      "target_id": "brain-structure",
+      "relation": "related",
+      "description": "脑功能的生理学研究为心理学的大脑结构与功能定位提供解剖学基础"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "behavioral-genetics",
+      "target_domain": "psychology",
+      "target_id": "nature-nurture",
+      "relation": "related",
+      "description": "行为遗传学的双生子研究为心理学中先天vs后天的争论提供实证数据"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "cellular-respiration",
+      "target_domain": "physics",
+      "target_id": "energy-conservation",
+      "relation": "related",
+      "description": "细胞呼吸中的能量转化遵循物理学的能量守恒定律，化学能→ATP→机械能/热能"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "dna-structure",
+      "target_domain": "physics",
+      "target_id": "electromagnetic-waves",
+      "relation": "related",
+      "description": "DNA双螺旋结构的发现关键依赖X射线衍射技术，这是电磁波与物质相互作用的应用"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "bioinformatics",
+      "target_domain": "ai-engineering",
+      "target_id": "feature-engineering",
+      "relation": "related",
+      "description": "生物信息学大量使用机器学习的特征工程方法处理基因组和蛋白质组数据"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "genomics",
+      "target_domain": "ai-engineering",
+      "target_id": "neural-network-basics",
+      "relation": "related",
+      "description": "基因组学中的序列分析和变异检测越来越多地依赖深度神经网络方法"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "biodiversity",
+      "target_domain": "mathematics",
+      "target_id": "descriptive-statistics",
+      "relation": "requires",
+      "description": "生物多样性指数（Shannon指数、Simpson指数）本质上是描述统计量"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "environmental-microbiology",
+      "target_domain": "philosophy",
+      "target_id": "environmental-ethics",
+      "relation": "related",
+      "description": "环境微生物学揭示的生态脆弱性为环境伦理学的自然价值论提供科学依据"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "natural-selection",
+      "target_domain": "philosophy",
+      "target_id": "determinism",
+      "relation": "related",
+      "description": "自然选择理论引发了关于生物世界是否存在目的和设计的哲学讨论，与决定论问题紧密相关"
+    },
+    {
+      "source_domain": "biology",
+      "source_id": "immune-system",
+      "target_domain": "psychology",
+      "target_id": "consciousness",
+      "relation": "related",
+      "description": "心理神经免疫学发现心理状态（压力、情绪）通过神经-内分泌-免疫轴影响免疫功能"
     }
   ],
   "meta": {
-    "total_links": 55,
+    "total_links": 115,
     "relation_types": {
       "same_concept": "相同概念在不同领域的不同视角",
       "requires": "源概念需要目标概念作为知识基础",
@@ -829,5 +949,5 @@
       "product-design_physics": 0
     }
   },
-  "total": 100
+  "total": 115
 }

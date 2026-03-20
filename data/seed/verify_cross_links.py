@@ -9,11 +9,12 @@ with open(os.path.join(root, "cross_sphere_links.json"), "r", encoding="utf-8") 
     links = json.load(f)["links"]
 
 domain_concepts = {}
-for d in ["ai-engineering", "mathematics", "english"]:
+for d in os.listdir(root):
     path = os.path.join(root, d, "seed_graph.json")
-    with open(path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-        domain_concepts[d] = set(c["id"] for c in data["concepts"])
+    if os.path.isfile(path):
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            domain_concepts[data["domain"]["id"]] = set(c["id"] for c in data["concepts"])
 
 errors = []
 for i, link in enumerate(links):
