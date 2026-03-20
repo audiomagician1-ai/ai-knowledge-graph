@@ -1,0 +1,4622 @@
+{
+  "domain": {
+    "id": "game-ui-ux",
+    "name": "游戏UI/UX",
+    "description": "游戏UI/UX设计知识体系，覆盖HUD设计、菜单系统、交互反馈、可用性测试、图标系统、字体排版、动效设计、多平台适配、无障碍设计和UI技术实现",
+    "version": "1.0.0",
+    "created_at": "2026-03-21T05:33:13.305063"
+  },
+  "subdomains": [
+    {
+      "id": "hud-design",
+      "name": "HUD设计",
+      "order": 1,
+      "description": "抬头显示系统设计，包括血条、地图、准星、弹药等游戏信息的实时展示"
+    },
+    {
+      "id": "menu-system",
+      "name": "菜单系统",
+      "order": 2,
+      "description": "游戏菜单架构设计，包括主菜单、暂停菜单、设置界面、商城等系统"
+    },
+    {
+      "id": "interaction-feedback",
+      "name": "交互反馈",
+      "order": 3,
+      "description": "用户操作的视觉/听觉/触觉反馈设计，确保操作确认感和流畅感"
+    },
+    {
+      "id": "usability-testing",
+      "name": "可用性测试",
+      "order": 4,
+      "description": "UI/UX的用户测试方法，包括A/B测试、热力图分析、眼动追踪等"
+    },
+    {
+      "id": "icon-system",
+      "name": "图标系统",
+      "order": 5,
+      "description": "游戏图标的设计规范、风格一致性、语义清晰度和批量制作流程"
+    },
+    {
+      "id": "typography",
+      "name": "字体排版",
+      "order": 6,
+      "description": "游戏中的字体选择、层级排版、可读性优化和多语言支持"
+    },
+    {
+      "id": "motion-design",
+      "name": "动效设计",
+      "order": 7,
+      "description": "UI动画与过渡效果设计，包括缓动曲线、微交互和状态变化"
+    },
+    {
+      "id": "multiplatform",
+      "name": "多平台适配",
+      "order": 8,
+      "description": "跨平台UI适配策略，包括PC/主机/移动端的输入和分辨率差异"
+    },
+    {
+      "id": "accessibility",
+      "name": "无障碍设计",
+      "order": 9,
+      "description": "游戏无障碍性设计，包括色盲模式、字幕、控制器重映射和认知辅助"
+    },
+    {
+      "id": "ui-tech",
+      "name": "UI技术实现",
+      "order": 10,
+      "description": "UI框架与技术实现，包括UMG、UGUI、Slate、数据绑定和性能优化"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "guiux-hud-design-overview",
+      "name": "HUD设计概述",
+      "description": "HUD(Heads-Up Display)的定义、历史演变和在游戏中的核心作用",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "HUD设计概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-hud-health-bar",
+      "name": "血条与生命值显示",
+      "description": "生命值可视化方案：数值型、条形、分段、环形及隐式反馈",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "血条与生命值显示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-minimap",
+      "name": "小地图系统",
+      "description": "小地图的类型(圆形/方形/全屏)、信息层级和交互设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "小地图系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-crosshair",
+      "name": "准星与瞄准系统",
+      "description": "准星样式、动态扩散、命中反馈和自定义选项设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "准星与瞄准系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-ammo-resource",
+      "name": "弹药与资源显示",
+      "description": "弹药、魔力、体力等消耗型资源的UI表现形式",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "弹药与资源显示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-objective-marker",
+      "name": "任务标记与导航",
+      "description": "任务目标指示器、路径导航、距离标识和兴趣点标记",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "任务标记与导航"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-damage-indicator",
+      "name": "伤害方向指示",
+      "description": "受击方向显示、伤害来源标记和屏幕边缘提示设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "伤害方向指示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-status-effect",
+      "name": "状态效果显示",
+      "description": "Buff/Debuff图标、持续时间、堆叠层数的可视化方案",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "状态效果显示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-contextual",
+      "name": "上下文HUD",
+      "description": "根据游戏情境动态显示/隐藏HUD元素的策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "上下文HUD"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-diegetic",
+      "name": "叙事性HUD",
+      "description": "将UI融入游戏世界(如死亡空间的脊柱血条)的设计理念",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "hud-design",
+        "叙事性HUD"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-hud-non-diegetic",
+      "name": "非叙事性HUD",
+      "description": "传统屏幕覆盖式HUD的设计原则和最佳实践",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "非叙事性HUD"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-spatial",
+      "name": "空间HUD",
+      "description": "3D世界空间中的UI元素(血条、名牌、交互提示)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "空间HUD"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-meta",
+      "name": "元叙事HUD",
+      "description": "打破第四面墙的UI设计(如Undertale的存档机制)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "hud-design",
+        "元叙事HUD"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-safe-zone",
+      "name": "安全区域与布局",
+      "description": "HUD元素的安全区域规范、不同分辨率下的布局策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "安全区域与布局"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-scaling",
+      "name": "HUD缩放系统",
+      "description": "基于分辨率和用户偏好的HUD自适应缩放方案",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "HUD缩放系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-color-coding",
+      "name": "色彩编码系统",
+      "description": "通过颜色传达信息(稀有度、阵营、危险等级)的规范",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "hud-design",
+        "色彩编码系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-minimalist",
+      "name": "极简HUD设计",
+      "description": "减少UI干扰、增强沉浸感的极简主义HUD策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "极简HUD设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-combat-ui",
+      "name": "战斗UI系统",
+      "description": "战斗状态下的技能栏、冷却显示、连击计数等专项设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "战斗UI系统"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-hud-team-info",
+      "name": "队伍信息显示",
+      "description": "多人游戏中队友状态、位置和通信的UI设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "队伍信息显示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-hud-notification",
+      "name": "通知与提示系统",
+      "description": "游戏内通知的优先级队列、展示时机和消退动画",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "hud-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "hud-design",
+        "通知与提示系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-system-overview",
+      "name": "菜单系统概述",
+      "description": "游戏菜单体系的整体架构、导航模式和设计原则",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "menu-system",
+        "菜单系统概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-menu-main",
+      "name": "主菜单设计",
+      "description": "游戏启动后首屏设计：布局、氛围营造和功能入口",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "menu-system",
+        "主菜单设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-pause",
+      "name": "暂停菜单",
+      "description": "游戏中暂停菜单的功能项、快速操作和返回流程",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "menu-system",
+        "暂停菜单"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-settings",
+      "name": "设置界面设计",
+      "description": "画质/音频/控制/界面等设置项的组织和预览机制",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "设置界面设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-navigation",
+      "name": "菜单导航架构",
+      "description": "面包屑、标签页、层级跳转等菜单导航模式",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "menu-system",
+        "菜单导航架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-inventory",
+      "name": "背包/物品界面",
+      "description": "物品网格、分类筛选、排序、装备对比和快速操作",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "背包/物品界面"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-menu-character",
+      "name": "角色/属性界面",
+      "description": "角色属性面板、技能树、天赋系统的UI设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "角色/属性界面"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-map",
+      "name": "地图界面",
+      "description": "全屏地图的缩放、标记、传送点和区域信息展示",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "地图界面"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-quest-log",
+      "name": "任务日志",
+      "description": "任务列表、追踪、分类和进度显示的UI设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "任务日志"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-shop",
+      "name": "商城/商店界面",
+      "description": "虚拟商店的商品展示、购买流程、货币显示和确认机制",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "商城/商店界面"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-social",
+      "name": "社交界面",
+      "description": "好友列表、聊天、组队、公会等社交功能的UI设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "社交界面"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-loading",
+      "name": "加载界面设计",
+      "description": "加载画面的进度反馈、提示信息和视觉趣味性",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "menu-system",
+        "加载界面设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-tutorial-flow",
+      "name": "教程引导流程",
+      "description": "新手引导的UI覆盖层、步骤提示和渐进式解锁",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "教程引导流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-menu-popup-dialog",
+      "name": "弹窗与对话框",
+      "description": "确认弹窗、信息弹窗、模态/非模态对话框设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "menu-system",
+        "弹窗与对话框"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-radial",
+      "name": "环形/辐射菜单",
+      "description": "快速选择用的环形菜单(如武器轮盘)设计与交互",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "环形/辐射菜单"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-tab-system",
+      "name": "标签页系统",
+      "description": "多标签切换的交互模式、快捷键绑定和内容加载",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "menu-system",
+        "标签页系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-crafting",
+      "name": "制作/合成界面",
+      "description": "配方展示、材料需求、制作流程和结果预览的UI",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "制作/合成界面"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-skill-tree",
+      "name": "技能树界面",
+      "description": "节点连线、解锁路径、预览和重置的交互设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "menu-system",
+        "技能树界面"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-leaderboard",
+      "name": "排行榜界面",
+      "description": "排名展示、筛选维度、个人定位和数据刷新",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "menu-system",
+        "排行榜界面"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-menu-end-screen",
+      "name": "结算/结束画面",
+      "description": "关卡结算、MVP展示、经验获取和奖励动画的UI",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "menu-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "menu-system",
+        "结算/结束画面"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-overview",
+      "name": "交互反馈概述",
+      "description": "游戏交互反馈的定义、类型(视觉/听觉/触觉)和设计原则",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "交互反馈概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-feedback-visual-confirm",
+      "name": "视觉确认反馈",
+      "description": "按钮点击、选中状态、高亮等视觉确认信号设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "视觉确认反馈"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-hover-state",
+      "name": "悬停状态设计",
+      "description": "鼠标悬停时的视觉变化、工具提示和预览信息",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "悬停状态设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-press-response",
+      "name": "按压响应设计",
+      "description": "按钮按下的缩放、颜色变化和弹性回弹效果",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "按压响应设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-drag-drop",
+      "name": "拖放交互",
+      "description": "物品拖放的视觉跟随、可放置区域高亮和吸附效果",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "interaction-feedback",
+        "拖放交互"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-progress-bar",
+      "name": "进度条与加载指示",
+      "description": "各类进度条的样式、动画和完成反馈设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "进度条与加载指示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-tooltip",
+      "name": "工具提示设计",
+      "description": "信息浮层的触发方式、内容层级和显示策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "工具提示设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-screen-shake",
+      "name": "屏幕震动反馈",
+      "description": "屏幕震动的触发时机、强度参数和频率设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "interaction-feedback",
+        "屏幕震动反馈"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-hit-marker",
+      "name": "命中标记反馈",
+      "description": "击中敌人时的准星反馈、伤害数字和击杀确认",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "interaction-feedback",
+        "命中标记反馈"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-feedback-input-queue",
+      "name": "输入缓冲提示",
+      "description": "操作输入缓冲的视觉提示和连续输入指示",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "interaction-feedback",
+        "输入缓冲提示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-error-state",
+      "name": "错误状态反馈",
+      "description": "操作失败、条件不满足时的视觉和音效提示",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "错误状态反馈"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-reward-popup",
+      "name": "奖励弹出动画",
+      "description": "获得物品/经验/成就时的庆祝动画和粒子效果",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "interaction-feedback",
+        "奖励弹出动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-combo-counter",
+      "name": "连击计数器",
+      "description": "连击数字的动态放大、颜色渐变和节奏感设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "interaction-feedback",
+        "连击计数器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-haptic",
+      "name": "触觉反馈设计",
+      "description": "手柄震动、HD Rumble和触觉反馈的游戏应用",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "interaction-feedback",
+        "触觉反馈设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-audio-cue",
+      "name": "音频反馈提示",
+      "description": "UI操作音效、状态变化音和空间音频提示",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "音频反馈提示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-transition",
+      "name": "界面过渡动画",
+      "description": "页面切换、面板展开/收起的过渡动画设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "interaction-feedback",
+        "界面过渡动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-onboarding",
+      "name": "引导反馈设计",
+      "description": "新手引导中的高亮、箭头、遮罩和操作确认",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "引导反馈设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-selection",
+      "name": "选择状态反馈",
+      "description": "列表/网格中选中项的视觉区分和多选反馈",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "选择状态反馈"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-scroll",
+      "name": "滚动与翻页反馈",
+      "description": "列表滚动惯性、到底提示、翻页动画设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "interaction-feedback",
+        "滚动与翻页反馈"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-feedback-cooldown-timer",
+      "name": "冷却计时器",
+      "description": "技能冷却的时钟擦除、数字倒计时和就绪闪光",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "interaction-feedback",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "interaction-feedback",
+        "冷却计时器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-overview",
+      "name": "可用性测试概述",
+      "description": "游戏UI可用性测试的方法论、流程和关键指标",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "usability-testing",
+        "可用性测试概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-usability-heuristic",
+      "name": "启发式评估",
+      "description": "基于Nielsen十原则的游戏UI启发式可用性评估方法",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "usability-testing",
+        "启发式评估"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-playtest",
+      "name": "游戏测试(Playtest)",
+      "description": "通过观察玩家实际游玩收集UI反馈的测试方法",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "usability-testing",
+        "游戏测试(Playtest)"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-usability-ab-test",
+      "name": "A/B测试",
+      "description": "对比两种UI方案的量化测试方法和统计分析",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "A/B测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-heatmap",
+      "name": "热力图分析",
+      "description": "记录和分析玩家点击/注视热力图来优化UI布局",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "热力图分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-eye-tracking",
+      "name": "眼动追踪",
+      "description": "使用眼动仪分析玩家视线路径优化信息层级",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "usability-testing",
+        "眼动追踪"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-think-aloud",
+      "name": "出声思维法",
+      "description": "让测试者边操作边说出想法以发现UI问题",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "usability-testing",
+        "出声思维法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-task-analysis",
+      "name": "任务分析",
+      "description": "分解用户操作路径、测量任务完成率和操作步骤数",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "任务分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-survey",
+      "name": "问卷与访谈",
+      "description": "SUS量表、自定义问卷和半结构化访谈的设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "usability-testing",
+        "问卷与访谈"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-analytics",
+      "name": "行为数据分析",
+      "description": "通过游戏内埋点分析UI使用模式和瓶颈",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "行为数据分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-first-time",
+      "name": "首次体验测试",
+      "description": "针对新玩家首次进入游戏的UI学习曲线测试",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "usability-testing",
+        "首次体验测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-cognitive-load",
+      "name": "认知负荷评估",
+      "description": "评估UI信息密度对玩家认知负担的影响",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "认知负荷评估"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-learnability",
+      "name": "可学习性测试",
+      "description": "测量玩家多久能掌握UI操作的学习曲线分析",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "可学习性测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-error-rate",
+      "name": "错误率统计",
+      "description": "统计UI操作中的误点击、误操作和恢复路径",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "usability-testing",
+        "错误率统计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-satisfaction",
+      "name": "满意度评估",
+      "description": "玩家对UI美观度、效率和愉悦感的主观评价",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "usability-testing",
+        "满意度评估"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-remote-test",
+      "name": "远程可用性测试",
+      "description": "线上远程测试的工具、流程和样本招募策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "远程可用性测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-iteration",
+      "name": "迭代优化流程",
+      "description": "基于测试结果的UI迭代改进方法和优先级排序",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "迭代优化流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-usability-benchmark",
+      "name": "基准测试",
+      "description": "与竞品/行业标准对比的UI性能基准测试",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "基准测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-persona",
+      "name": "用户画像",
+      "description": "基于玩家类型(Bartle分类等)的UI差异化设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "用户画像"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-usability-funnel",
+      "name": "漏斗分析",
+      "description": "追踪玩家在UI流程中的流失节点和转化率",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "usability-testing",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "usability-testing",
+        "漏斗分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-overview",
+      "name": "图标系统概述",
+      "description": "游戏图标系统的作用、设计规范和管理策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "图标系统概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-icon-style-guide",
+      "name": "图标风格指南",
+      "description": "线性/面性/混合风格的选择和一致性标准",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "图标风格指南"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-grid-system",
+      "name": "图标栅格系统",
+      "description": "基于网格的图标绘制规范(24/32/48/64px)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "图标栅格系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-item-rarity",
+      "name": "物品稀有度图标",
+      "description": "通过边框、光效、颜色区分物品品质的图标设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "物品稀有度图标"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-icon-skill-ability",
+      "name": "技能/能力图标",
+      "description": "技能图标的辨识度、冷却状态和等级表示",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "技能/能力图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-status-buff",
+      "name": "状态/Buff图标",
+      "description": "增益/减益效果图标的清晰度和堆叠显示",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "状态/Buff图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-weapon-equipment",
+      "name": "武器/装备图标",
+      "description": "装备图标的剪影辨识、部位区分和品质表达",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "武器/装备图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-resource-currency",
+      "name": "资源/货币图标",
+      "description": "金币、宝石、材料等资源图标的差异化设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "资源/货币图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-navigation",
+      "name": "导航/功能图标",
+      "description": "菜单图标(背包/地图/设置/社交)的通用性设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "导航/功能图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-achievement",
+      "name": "成就/徽章图标",
+      "description": "成就图标的层级设计、解锁前后状态和收集感",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "成就/徽章图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-emotion-emote",
+      "name": "表情/动作图标",
+      "description": "聊天表情、快捷动作和情绪表达的图标设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "表情/动作图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-map-poi",
+      "name": "地图POI图标",
+      "description": "地图兴趣点(任务/商店/传送)的图标辨识系统",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "地图POI图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-class-role",
+      "name": "职业/角色图标",
+      "description": "不同职业、角色和阵营的图标识别设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "职业/角色图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-batch-workflow",
+      "name": "图标批量制作流程",
+      "description": "使用模板、组件库和自动化工具提高图标制作效率",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "图标批量制作流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-pixel-art",
+      "name": "像素图标设计",
+      "description": "像素风格游戏中的图标设计技巧和限制",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "像素图标设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-color-meaning",
+      "name": "图标色彩语义",
+      "description": "红色=危险、绿色=安全等色彩语义规范",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "图标色彩语义"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-scalability",
+      "name": "图标可缩放性",
+      "description": "确保图标在不同尺寸下保持清晰辨识的设计策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "icon-system",
+        "图标可缩放性"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-animation",
+      "name": "动态图标设计",
+      "description": "图标的微动效(闪烁、脉动、旋转)增强注意力",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "动态图标设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-localization",
+      "name": "图标本地化",
+      "description": "避免文化歧义、使用通用符号的跨文化图标设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "icon-system",
+        "图标本地化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-icon-atlas-sprite",
+      "name": "图标图集管理",
+      "description": "Sprite Atlas的打包、加载和内存优化策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "icon-system",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "icon-system",
+        "图标图集管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-overview",
+      "name": "游戏字体排版概述",
+      "description": "游戏中字体选择、排版规则和可读性标准",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "typography",
+        "游戏字体排版概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-typo-font-selection",
+      "name": "字体选择策略",
+      "description": "衬线/无衬线/手写/像素字体的场景匹配",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "typography",
+        "字体选择策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-hierarchy",
+      "name": "文字层级系统",
+      "description": "标题/正文/注释的字号、字重和间距层级规范",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "typography",
+        "文字层级系统"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-typo-readability",
+      "name": "游戏可读性优化",
+      "description": "对比度、描边、阴影、背景半透明等可读性增强技术",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "游戏可读性优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-dynamic-text",
+      "name": "动态文本显示",
+      "description": "伤害数字弹出、对话逐字显示、打字机效果",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "动态文本显示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-subtitle-design",
+      "name": "字幕设计",
+      "description": "过场字幕、对话字幕的位置、样式和无障碍标准",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "typography",
+        "字幕设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-localization",
+      "name": "多语言排版",
+      "description": "CJK/RTL/变长文本的排版适配和溢出处理",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "typography",
+        "多语言排版"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-font-rendering",
+      "name": "字体渲染技术",
+      "description": "SDF(Signed Distance Field)字体、抗锯齿和分辨率适配",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "typography",
+        "字体渲染技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-color-text",
+      "name": "文字色彩系统",
+      "description": "通过文字颜色传达品质、状态和重要性(如WoW式彩色装备名)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "typography",
+        "文字色彩系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-spacing-kerning",
+      "name": "字距与行距",
+      "description": "字母间距(kerning)、词间距和行高的游戏适配",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "字距与行距"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-text-overflow",
+      "name": "文本溢出处理",
+      "description": "截断、省略号、自动换行和滚动显示的处理策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "typography",
+        "文本溢出处理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-rich-text",
+      "name": "富文本系统",
+      "description": "支持内嵌图标、颜色标签和超链接的富文本渲染",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "富文本系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-damage-number",
+      "name": "伤害数字设计",
+      "description": "伤害/治疗数字的大小、颜色、弹出轨迹和暴击表现",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "伤害数字设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-chat-system",
+      "name": "聊天文本系统",
+      "description": "游戏内聊天的文字显示、频道区分和表情嵌入",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "聊天文本系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-naming",
+      "name": "命名显示规范",
+      "description": "玩家ID、NPC名称、物品名的显示规则和装饰",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "typography",
+        "命名显示规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-input-field",
+      "name": "输入框设计",
+      "description": "文字输入框的样式、占位符、验证和IME支持",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "输入框设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-accessibility-font",
+      "name": "无障碍字体",
+      "description": "阅读障碍友好字体(OpenDyslexic等)和字号调节",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "无障碍字体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-stylized",
+      "name": "风格化字体设计",
+      "description": "与游戏美术风格统一的定制字体和装饰文字",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "风格化字体设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-outline-shadow",
+      "name": "描边与阴影",
+      "description": "文字描边粗细、投影方向和半透明背板的搭配",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "typography",
+        "描边与阴影"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-typo-responsive",
+      "name": "响应式文字",
+      "description": "基于屏幕尺寸和距离自适应字号的设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "typography",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "typography",
+        "响应式文字"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-overview",
+      "name": "UI动效设计概述",
+      "description": "游戏UI动画的作用、原则和性能考量",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "motion-design",
+        "UI动效设计概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-motion-easing",
+      "name": "缓动曲线",
+      "description": "线性/ease-in/ease-out/弹性等缓动函数的选择和应用",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "motion-design",
+        "缓动曲线"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-motion-micro-interaction",
+      "name": "微交互设计",
+      "description": "按钮反馈、开关切换、加载旋转等细微动画",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "motion-design",
+        "微交互设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-page-transition",
+      "name": "页面转场动画",
+      "description": "淡入淡出、滑动、缩放等界面切换过渡效果",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "页面转场动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-reveal-animation",
+      "name": "元素入场动画",
+      "description": "列表项逐一显示、卡片翻转、渐次浮入效果",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "元素入场动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-loot-drop",
+      "name": "掉落/开箱动画",
+      "description": "物品掉落的物理弹跳、开箱的悬念演出设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "掉落/开箱动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-level-up",
+      "name": "升级庆祝动画",
+      "description": "等级提升、解锁成就时的全屏庆祝动效",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "升级庆祝动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-number-roll",
+      "name": "数字滚动动画",
+      "description": "分数累加、货币变化的滚动和缓停效果",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "motion-design",
+        "数字滚动动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-spring-physics",
+      "name": "弹簧物理动效",
+      "description": "基于弹簧阻尼模型的自然弹跳UI动画",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "motion-design",
+        "弹簧物理动效"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-parallax",
+      "name": "视差效果",
+      "description": "菜单背景和UI层级的视差滚动和深度感",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "视差效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-skeleton-loading",
+      "name": "骨架屏加载",
+      "description": "内容加载时的骨架占位动画和渐进显示",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "motion-design",
+        "骨架屏加载"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-state-change",
+      "name": "状态变化动画",
+      "description": "开/关、展开/折叠、选中/取消的状态过渡",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "motion-design",
+        "状态变化动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-attention-grab",
+      "name": "注意力引导动效",
+      "description": "脉动、摇晃、闪烁等吸引玩家注意的动画",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "motion-design",
+        "注意力引导动效"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-chain-animation",
+      "name": "链式动画序列",
+      "description": "多个动画按时间线依次触发的编排和调度",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "motion-design",
+        "链式动画序列"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-performance",
+      "name": "动效性能优化",
+      "description": "GPU加速、动画合批、LOD降级和帧率控制",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "motion-design",
+        "动效性能优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-cancel-interrupt",
+      "name": "动画取消与中断",
+      "description": "用户操作中断动画时的平滑过渡和状态恢复",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "动画取消与中断"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-particle-ui",
+      "name": "UI粒子效果",
+      "description": "按钮粒子尾迹、金币飞溅等UI特效设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "UI粒子效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-12-principles",
+      "name": "动画12原则在UI中",
+      "description": "迪士尼动画原则(挤压拉伸/预备/跟随等)在UI中的应用",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "动画12原则在UI中"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-timing",
+      "name": "动效时间控制",
+      "description": "动画持续时间、延迟和节奏感的设计标准(100-500ms)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "motion-design",
+        "动效时间控制"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-motion-responsive-anim",
+      "name": "响应式动效",
+      "description": "根据设备性能和用户偏好调整动效强度和复杂度",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "motion-design",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "motion-design",
+        "响应式动效"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-overview",
+      "name": "多平台适配概述",
+      "description": "PC/主机/移动端/掌机的UI差异和统一适配策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "multiplatform",
+        "多平台适配概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-platform-input-modes",
+      "name": "输入模式切换",
+      "description": "键鼠/手柄/触屏输入的自动检测和UI即时切换",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "multiplatform",
+        "输入模式切换"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-platform-resolution",
+      "name": "分辨率适配",
+      "description": "从720p到4K的UI缩放、锚点和DPI感知策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "multiplatform",
+        "分辨率适配"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-aspect-ratio",
+      "name": "宽高比适配",
+      "description": "16:9/21:9/4:3等不同宽高比下的UI布局调整",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "宽高比适配"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-controller-nav",
+      "name": "手柄导航设计",
+      "description": "焦点系统、导航网格和手柄专用UI交互模式",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "手柄导航设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-touch-design",
+      "name": "触屏UI设计",
+      "description": "触摸目标大小(48dp+)、手势和虚拟摇杆设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "触屏UI设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-mouse-keyboard",
+      "name": "键鼠UI优化",
+      "description": "右键菜单、快捷键绑定和精确点击区域设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "multiplatform",
+        "键鼠UI优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-text-input",
+      "name": "跨平台文字输入",
+      "description": "虚拟键盘、手柄文字输入和语音输入的适配",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "跨平台文字输入"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-safe-area",
+      "name": "平台安全区域",
+      "description": "TV过扫描、刘海屏、曲面屏的安全区域处理",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "multiplatform",
+        "平台安全区域"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-console-cert",
+      "name": "主机认证要求",
+      "description": "PlayStation/Xbox/Switch的UI认证规范和TRC/XR要求",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "multiplatform",
+        "主机认证要求"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-mobile-gesture",
+      "name": "移动端手势设计",
+      "description": "滑动、双指缩放、长按等触控手势的游戏应用",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "移动端手势设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-adaptive-layout",
+      "name": "自适应布局系统",
+      "description": "基于屏幕尺寸自动调整的响应式UI布局框架",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "自适应布局系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-button-prompt",
+      "name": "按键提示图标",
+      "description": "根据当前输入设备显示对应的按键图标(ABXY/方圆叉三角)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "multiplatform",
+        "按键提示图标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-split-screen",
+      "name": "分屏多人UI",
+      "description": "本地多人分屏模式下的UI缩放和信息精简",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "multiplatform",
+        "分屏多人UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-vr-ui",
+      "name": "VR界面设计",
+      "description": "VR中的3D UI面板、注视选择和舒适度设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "multiplatform",
+        "VR界面设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-streaming",
+      "name": "云游戏UI适配",
+      "description": "高延迟环境下的UI设计补偿和视觉反馈",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "云游戏UI适配"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-hdr-display",
+      "name": "HDR显示适配",
+      "description": "HDR模式下UI元素的亮度标定和色彩映射",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "HDR显示适配"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-font-scaling",
+      "name": "跨平台字体缩放",
+      "description": "不同DPI和观看距离下的字体大小自适应",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "multiplatform",
+        "跨平台字体缩放"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-notch-cutout",
+      "name": "异形屏适配",
+      "description": "刘海/打孔/折叠屏的UI避让和利用策略",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "异形屏适配"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-platform-crossplay-ui",
+      "name": "跨平台联机UI",
+      "description": "显示不同平台玩家图标和输入提示的统一方案",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "multiplatform",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "multiplatform",
+        "跨平台联机UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-overview",
+      "name": "无障碍设计概述",
+      "description": "游戏无障碍设计的重要性、法规要求和WCAG标准",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "无障碍设计概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-a11y-colorblind",
+      "name": "色盲模式",
+      "description": "红绿色盲/蓝黄色盲的UI适配(符号+颜色双编码)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "色盲模式"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-a11y-font-size",
+      "name": "字体大小调节",
+      "description": "可调节的UI文字大小和最低可读性标准",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "字体大小调节"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-high-contrast",
+      "name": "高对比度模式",
+      "description": "增强UI对比度帮助视觉障碍玩家",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "高对比度模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-subtitle-options",
+      "name": "字幕选项",
+      "description": "字幕大小/背景/说话人标识/音效描述等选项",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "字幕选项"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-controller-remap",
+      "name": "控制器重映射",
+      "description": "自定义按键绑定和单手操作模式",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "控制器重映射"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-audio-visual",
+      "name": "音频视觉化",
+      "description": "将音频信息转化为视觉提示(如字幕/方向指示器)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "音频视觉化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-motor-assist",
+      "name": "运动辅助",
+      "description": "自动瞄准、长按替代连击、可调速度等运动辅助功能",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "运动辅助"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-cognitive-aid",
+      "name": "认知辅助设计",
+      "description": "简化UI模式、任务提醒和导航辅助",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "认知辅助设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-screen-reader",
+      "name": "屏幕阅读器兼容",
+      "description": "UI元素的文本标签和导航顺序供屏幕阅读器使用",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "accessibility",
+        "屏幕阅读器兼容"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-photosensitive",
+      "name": "光敏性保护",
+      "description": "闪烁频率控制和癫痫安全的动效设计",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "光敏性保护"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-text-to-speech",
+      "name": "文字转语音",
+      "description": "游戏内UI文本和消息的TTS朗读功能",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "文字转语音"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-difficulty-ui",
+      "name": "难度相关UI",
+      "description": "通过UI调整降低游戏难度(辅助线/提示/自动等)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "难度相关UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-one-handed",
+      "name": "单手操作模式",
+      "description": "支持单手控制器或单侧操作的UI布局",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "单手操作模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-magnifier",
+      "name": "放大镜功能",
+      "description": "UI局部放大和缩放浏览功能",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "放大镜功能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-testing-tools",
+      "name": "无障碍测试工具",
+      "description": "色盲模拟器、屏幕阅读器测试和自动检查工具",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "无障碍测试工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-xbox-guidelines",
+      "name": "Xbox无障碍指南",
+      "description": "Xbox Gaming Accessibility Guidelines的具体要求",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "Xbox无障碍指南"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-a11y-deaf-hoh",
+      "name": "聋人/听障适配",
+      "description": "视觉提示替代音频提示、震动反馈和方向指示",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "accessibility",
+        "聋人/听障适配"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-settings-menu",
+      "name": "无障碍设置菜单",
+      "description": "集中式无障碍设置界面的设计和首次运行配置",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "无障碍设置菜单"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-a11y-inclusive-design",
+      "name": "包容性设计思维",
+      "description": "从设计之初考虑多样性需求的设计方法论",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "accessibility",
+      "difficulty": 2,
+      "estimated_minutes": 21,
+      "content_type": "theory",
+      "tags": [
+        "accessibility",
+        "包容性设计思维"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-overview",
+      "name": "UI技术实现概述",
+      "description": "游戏UI框架的选型、架构模式和技术栈",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 1,
+      "estimated_minutes": 13,
+      "content_type": "theory",
+      "tags": [
+        "ui-tech",
+        "UI技术实现概述"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-tech-umg",
+      "name": "UMG(Unreal)",
+      "description": "Unreal Engine的UMG系统：Widget蓝图、Slate底层、数据绑定",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "UMG(Unreal)"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-tech-ugui",
+      "name": "UGUI(Unity)",
+      "description": "Unity的UGUI系统：Canvas、RectTransform、EventSystem",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "UGUI(Unity)"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-ui-toolkit",
+      "name": "UI Toolkit(Unity)",
+      "description": "Unity新一代UI系统：USS/UXML/数据绑定/Retained模式",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "UI Toolkit(Unity)"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-imgui",
+      "name": "Immediate Mode GUI",
+      "description": "IMGUI模式的原理、优缺点和Debug UI应用",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "Immediate Mode GUI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-retained-mode",
+      "name": "Retained Mode GUI",
+      "description": "保留模式UI的场景树、脏标记和布局算法",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "Retained Mode GUI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-data-binding",
+      "name": "数据绑定模式",
+      "description": "UI与数据层的绑定机制(MVVM、响应式、Observer)",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "ui-tech",
+        "数据绑定模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-layout-engine",
+      "name": "布局引擎",
+      "description": "Flexbox/网格/堆栈等自动布局算法的实现",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "布局引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-render-pipeline",
+      "name": "UI渲染管线",
+      "description": "UI绘制顺序、批处理、遮罩和裁剪的渲染流程",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "ui-tech",
+        "UI渲染管线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-atlas-batching",
+      "name": "图集与合批",
+      "description": "Sprite Atlas减少DrawCall的打包策略和动态图集",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "图集与合批"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-event-system",
+      "name": "事件系统",
+      "description": "点击/拖放/焦点等UI事件的分发和冒泡机制",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "事件系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-widget-pool",
+      "name": "Widget对象池",
+      "description": "列表滚动中Widget的回收复用和虚拟滚动",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "ui-tech",
+        "Widget对象池"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-animation-system",
+      "name": "UI动画系统",
+      "description": "Tween引擎、关键帧、序列和动画状态机",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "UI动画系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-localization-impl",
+      "name": "本地化技术实现",
+      "description": "字符串表管理、运行时语言切换和字体Fallback",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "本地化技术实现"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-resolution-scaling",
+      "name": "分辨率缩放实现",
+      "description": "DPI缩放、Canvas Scaler和自适应锚点系统",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "分辨率缩放实现"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-rich-text-impl",
+      "name": "富文本实现",
+      "description": "标签解析、内嵌图片、超链接和自定义渲染器",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "ui-tech",
+        "富文本实现"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-shader-ui",
+      "name": "UI Shader效果",
+      "description": "模糊、溶解、渐变、流光等UI专用Shader",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "ui-tech",
+        "UI Shader效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-performance",
+      "name": "UI性能优化",
+      "description": "DrawCall优化、Rebuild频率、Raycast过滤和Canvas拆分",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 4,
+      "estimated_minutes": 37,
+      "content_type": "advanced",
+      "tags": [
+        "ui-tech",
+        "UI性能优化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guiux-tech-debug-tools",
+      "name": "UI调试工具",
+      "description": "Widget反射器、渲染统计、事件追踪和实时编辑",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "UI调试工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "guiux-tech-testing",
+      "name": "UI自动化测试",
+      "description": "UI元素的自动化截图测试、交互测试和回归检测",
+      "domain_id": "game-ui-ux",
+      "subdomain_id": "ui-tech",
+      "difficulty": 3,
+      "estimated_minutes": 29,
+      "content_type": "practice",
+      "tags": [
+        "ui-tech",
+        "UI自动化测试"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "guiux-hud-design-overview",
+      "target_id": "guiux-hud-health-bar",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-health-bar",
+      "target_id": "guiux-hud-minimap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-minimap",
+      "target_id": "guiux-hud-crosshair",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-crosshair",
+      "target_id": "guiux-hud-ammo-resource",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-ammo-resource",
+      "target_id": "guiux-hud-objective-marker",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-objective-marker",
+      "target_id": "guiux-hud-damage-indicator",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-damage-indicator",
+      "target_id": "guiux-hud-status-effect",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-status-effect",
+      "target_id": "guiux-hud-contextual",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-contextual",
+      "target_id": "guiux-hud-diegetic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-diegetic",
+      "target_id": "guiux-hud-non-diegetic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-non-diegetic",
+      "target_id": "guiux-hud-spatial",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-spatial",
+      "target_id": "guiux-hud-meta",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-meta",
+      "target_id": "guiux-hud-safe-zone",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-safe-zone",
+      "target_id": "guiux-hud-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-scaling",
+      "target_id": "guiux-hud-color-coding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-color-coding",
+      "target_id": "guiux-hud-minimalist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-minimalist",
+      "target_id": "guiux-hud-combat-ui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-combat-ui",
+      "target_id": "guiux-hud-team-info",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-team-info",
+      "target_id": "guiux-hud-notification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-system-overview",
+      "target_id": "guiux-menu-main",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-main",
+      "target_id": "guiux-menu-pause",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-pause",
+      "target_id": "guiux-menu-settings",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-settings",
+      "target_id": "guiux-menu-navigation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-navigation",
+      "target_id": "guiux-menu-inventory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-inventory",
+      "target_id": "guiux-menu-character",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-character",
+      "target_id": "guiux-menu-map",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-map",
+      "target_id": "guiux-menu-quest-log",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-quest-log",
+      "target_id": "guiux-menu-shop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-shop",
+      "target_id": "guiux-menu-social",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-social",
+      "target_id": "guiux-menu-loading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-loading",
+      "target_id": "guiux-menu-tutorial-flow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-tutorial-flow",
+      "target_id": "guiux-menu-popup-dialog",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-popup-dialog",
+      "target_id": "guiux-menu-radial",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-radial",
+      "target_id": "guiux-menu-tab-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-tab-system",
+      "target_id": "guiux-menu-crafting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-crafting",
+      "target_id": "guiux-menu-skill-tree",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-skill-tree",
+      "target_id": "guiux-menu-leaderboard",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-menu-leaderboard",
+      "target_id": "guiux-menu-end-screen",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-overview",
+      "target_id": "guiux-feedback-visual-confirm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-visual-confirm",
+      "target_id": "guiux-feedback-hover-state",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-hover-state",
+      "target_id": "guiux-feedback-press-response",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-press-response",
+      "target_id": "guiux-feedback-drag-drop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-drag-drop",
+      "target_id": "guiux-feedback-progress-bar",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-progress-bar",
+      "target_id": "guiux-feedback-tooltip",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-tooltip",
+      "target_id": "guiux-feedback-screen-shake",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-screen-shake",
+      "target_id": "guiux-feedback-hit-marker",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-hit-marker",
+      "target_id": "guiux-feedback-input-queue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-input-queue",
+      "target_id": "guiux-feedback-error-state",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-error-state",
+      "target_id": "guiux-feedback-reward-popup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-reward-popup",
+      "target_id": "guiux-feedback-combo-counter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-combo-counter",
+      "target_id": "guiux-feedback-haptic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-haptic",
+      "target_id": "guiux-feedback-audio-cue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-audio-cue",
+      "target_id": "guiux-feedback-transition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-transition",
+      "target_id": "guiux-feedback-onboarding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-onboarding",
+      "target_id": "guiux-feedback-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-selection",
+      "target_id": "guiux-feedback-scroll",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-feedback-scroll",
+      "target_id": "guiux-feedback-cooldown-timer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-overview",
+      "target_id": "guiux-usability-heuristic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-heuristic",
+      "target_id": "guiux-usability-playtest",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-playtest",
+      "target_id": "guiux-usability-ab-test",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-ab-test",
+      "target_id": "guiux-usability-heatmap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-heatmap",
+      "target_id": "guiux-usability-eye-tracking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-eye-tracking",
+      "target_id": "guiux-usability-think-aloud",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-think-aloud",
+      "target_id": "guiux-usability-task-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-task-analysis",
+      "target_id": "guiux-usability-survey",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-survey",
+      "target_id": "guiux-usability-analytics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-analytics",
+      "target_id": "guiux-usability-first-time",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-first-time",
+      "target_id": "guiux-usability-cognitive-load",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-cognitive-load",
+      "target_id": "guiux-usability-learnability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-learnability",
+      "target_id": "guiux-usability-error-rate",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-error-rate",
+      "target_id": "guiux-usability-satisfaction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-satisfaction",
+      "target_id": "guiux-usability-remote-test",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-remote-test",
+      "target_id": "guiux-usability-iteration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-iteration",
+      "target_id": "guiux-usability-benchmark",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-benchmark",
+      "target_id": "guiux-usability-persona",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-usability-persona",
+      "target_id": "guiux-usability-funnel",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-overview",
+      "target_id": "guiux-icon-style-guide",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-style-guide",
+      "target_id": "guiux-icon-grid-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-grid-system",
+      "target_id": "guiux-icon-item-rarity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-item-rarity",
+      "target_id": "guiux-icon-skill-ability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-skill-ability",
+      "target_id": "guiux-icon-status-buff",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-status-buff",
+      "target_id": "guiux-icon-weapon-equipment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-weapon-equipment",
+      "target_id": "guiux-icon-resource-currency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-resource-currency",
+      "target_id": "guiux-icon-navigation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-navigation",
+      "target_id": "guiux-icon-achievement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-achievement",
+      "target_id": "guiux-icon-emotion-emote",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-emotion-emote",
+      "target_id": "guiux-icon-map-poi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-map-poi",
+      "target_id": "guiux-icon-class-role",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-class-role",
+      "target_id": "guiux-icon-batch-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-batch-workflow",
+      "target_id": "guiux-icon-pixel-art",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-pixel-art",
+      "target_id": "guiux-icon-color-meaning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-color-meaning",
+      "target_id": "guiux-icon-scalability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-scalability",
+      "target_id": "guiux-icon-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-animation",
+      "target_id": "guiux-icon-localization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-localization",
+      "target_id": "guiux-icon-atlas-sprite",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-overview",
+      "target_id": "guiux-typo-font-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-font-selection",
+      "target_id": "guiux-typo-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-hierarchy",
+      "target_id": "guiux-typo-readability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-readability",
+      "target_id": "guiux-typo-dynamic-text",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-dynamic-text",
+      "target_id": "guiux-typo-subtitle-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-subtitle-design",
+      "target_id": "guiux-typo-localization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-localization",
+      "target_id": "guiux-typo-font-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-font-rendering",
+      "target_id": "guiux-typo-color-text",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-color-text",
+      "target_id": "guiux-typo-spacing-kerning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-spacing-kerning",
+      "target_id": "guiux-typo-text-overflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-text-overflow",
+      "target_id": "guiux-typo-rich-text",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-rich-text",
+      "target_id": "guiux-typo-damage-number",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-damage-number",
+      "target_id": "guiux-typo-chat-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-chat-system",
+      "target_id": "guiux-typo-naming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-naming",
+      "target_id": "guiux-typo-input-field",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-input-field",
+      "target_id": "guiux-typo-accessibility-font",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-accessibility-font",
+      "target_id": "guiux-typo-stylized",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-stylized",
+      "target_id": "guiux-typo-outline-shadow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-outline-shadow",
+      "target_id": "guiux-typo-responsive",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-overview",
+      "target_id": "guiux-motion-easing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-easing",
+      "target_id": "guiux-motion-micro-interaction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-micro-interaction",
+      "target_id": "guiux-motion-page-transition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-page-transition",
+      "target_id": "guiux-motion-reveal-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-reveal-animation",
+      "target_id": "guiux-motion-loot-drop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-loot-drop",
+      "target_id": "guiux-motion-level-up",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-level-up",
+      "target_id": "guiux-motion-number-roll",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-number-roll",
+      "target_id": "guiux-motion-spring-physics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-spring-physics",
+      "target_id": "guiux-motion-parallax",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-parallax",
+      "target_id": "guiux-motion-skeleton-loading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-skeleton-loading",
+      "target_id": "guiux-motion-state-change",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-state-change",
+      "target_id": "guiux-motion-attention-grab",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-attention-grab",
+      "target_id": "guiux-motion-chain-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-chain-animation",
+      "target_id": "guiux-motion-performance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-performance",
+      "target_id": "guiux-motion-cancel-interrupt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-cancel-interrupt",
+      "target_id": "guiux-motion-particle-ui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-particle-ui",
+      "target_id": "guiux-motion-12-principles",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-12-principles",
+      "target_id": "guiux-motion-timing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-motion-timing",
+      "target_id": "guiux-motion-responsive-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-overview",
+      "target_id": "guiux-platform-input-modes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-input-modes",
+      "target_id": "guiux-platform-resolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-resolution",
+      "target_id": "guiux-platform-aspect-ratio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-aspect-ratio",
+      "target_id": "guiux-platform-controller-nav",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-controller-nav",
+      "target_id": "guiux-platform-touch-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-touch-design",
+      "target_id": "guiux-platform-mouse-keyboard",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-mouse-keyboard",
+      "target_id": "guiux-platform-text-input",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-text-input",
+      "target_id": "guiux-platform-safe-area",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-safe-area",
+      "target_id": "guiux-platform-console-cert",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-console-cert",
+      "target_id": "guiux-platform-mobile-gesture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-mobile-gesture",
+      "target_id": "guiux-platform-adaptive-layout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-adaptive-layout",
+      "target_id": "guiux-platform-button-prompt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-button-prompt",
+      "target_id": "guiux-platform-split-screen",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-split-screen",
+      "target_id": "guiux-platform-vr-ui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-vr-ui",
+      "target_id": "guiux-platform-streaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-streaming",
+      "target_id": "guiux-platform-hdr-display",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-hdr-display",
+      "target_id": "guiux-platform-font-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-font-scaling",
+      "target_id": "guiux-platform-notch-cutout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-notch-cutout",
+      "target_id": "guiux-platform-crossplay-ui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-overview",
+      "target_id": "guiux-a11y-colorblind",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-colorblind",
+      "target_id": "guiux-a11y-font-size",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-font-size",
+      "target_id": "guiux-a11y-high-contrast",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-high-contrast",
+      "target_id": "guiux-a11y-subtitle-options",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-subtitle-options",
+      "target_id": "guiux-a11y-controller-remap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-controller-remap",
+      "target_id": "guiux-a11y-audio-visual",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-audio-visual",
+      "target_id": "guiux-a11y-motor-assist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-motor-assist",
+      "target_id": "guiux-a11y-cognitive-aid",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-cognitive-aid",
+      "target_id": "guiux-a11y-screen-reader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-screen-reader",
+      "target_id": "guiux-a11y-photosensitive",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-photosensitive",
+      "target_id": "guiux-a11y-text-to-speech",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-text-to-speech",
+      "target_id": "guiux-a11y-difficulty-ui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-difficulty-ui",
+      "target_id": "guiux-a11y-one-handed",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-one-handed",
+      "target_id": "guiux-a11y-magnifier",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-magnifier",
+      "target_id": "guiux-a11y-testing-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-testing-tools",
+      "target_id": "guiux-a11y-xbox-guidelines",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-xbox-guidelines",
+      "target_id": "guiux-a11y-deaf-hoh",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-deaf-hoh",
+      "target_id": "guiux-a11y-settings-menu",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-settings-menu",
+      "target_id": "guiux-a11y-inclusive-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-overview",
+      "target_id": "guiux-tech-umg",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-umg",
+      "target_id": "guiux-tech-ugui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-ugui",
+      "target_id": "guiux-tech-ui-toolkit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-ui-toolkit",
+      "target_id": "guiux-tech-imgui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-imgui",
+      "target_id": "guiux-tech-retained-mode",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-retained-mode",
+      "target_id": "guiux-tech-data-binding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-data-binding",
+      "target_id": "guiux-tech-layout-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-layout-engine",
+      "target_id": "guiux-tech-render-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-render-pipeline",
+      "target_id": "guiux-tech-atlas-batching",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-atlas-batching",
+      "target_id": "guiux-tech-event-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-event-system",
+      "target_id": "guiux-tech-widget-pool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-widget-pool",
+      "target_id": "guiux-tech-animation-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-animation-system",
+      "target_id": "guiux-tech-localization-impl",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-localization-impl",
+      "target_id": "guiux-tech-resolution-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-resolution-scaling",
+      "target_id": "guiux-tech-rich-text-impl",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-rich-text-impl",
+      "target_id": "guiux-tech-shader-ui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-shader-ui",
+      "target_id": "guiux-tech-performance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-performance",
+      "target_id": "guiux-tech-debug-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-tech-debug-tools",
+      "target_id": "guiux-tech-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-hud-design-overview",
+      "target_id": "guiux-menu-system-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-menu-system-overview",
+      "target_id": "guiux-platform-overview",
+      "relation_type": "enables",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-feedback-overview",
+      "target_id": "guiux-motion-overview",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-feedback-visual-confirm",
+      "target_id": "guiux-motion-micro-interaction",
+      "relation_type": "enables",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-usability-overview",
+      "target_id": "guiux-a11y-overview",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-usability-playtest",
+      "target_id": "guiux-a11y-testing-tools",
+      "relation_type": "enables",
+      "strength": 0.5
+    },
+    {
+      "source_id": "guiux-icon-overview",
+      "target_id": "guiux-typo-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-icon-atlas-sprite",
+      "target_id": "guiux-tech-atlas-batching",
+      "relation_type": "enables",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-font-rendering",
+      "target_id": "guiux-tech-shader-ui",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-motion-performance",
+      "target_id": "guiux-tech-performance",
+      "relation_type": "enables",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-platform-input-modes",
+      "target_id": "guiux-tech-event-system",
+      "relation_type": "enables",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-platform-resolution",
+      "target_id": "guiux-tech-resolution-scaling",
+      "relation_type": "enables",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-a11y-colorblind",
+      "target_id": "guiux-hud-color-coding",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-a11y-screen-reader",
+      "target_id": "guiux-tech-event-system",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "guiux-tech-umg",
+      "target_id": "guiux-tech-data-binding",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-tech-ugui",
+      "target_id": "guiux-tech-layout-engine",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-hud-diegetic",
+      "target_id": "guiux-feedback-overview",
+      "relation_type": "enables",
+      "strength": 0.5
+    },
+    {
+      "source_id": "guiux-menu-tutorial-flow",
+      "target_id": "guiux-feedback-onboarding",
+      "relation_type": "enables",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-typo-localization",
+      "target_id": "guiux-tech-localization-impl",
+      "relation_type": "enables",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-icon-localization",
+      "target_id": "guiux-typo-localization",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-motion-12-principles",
+      "target_id": "guiux-motion-easing",
+      "relation_type": "enables",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-usability-cognitive-load",
+      "target_id": "guiux-a11y-cognitive-aid",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-hud-combat-ui",
+      "target_id": "guiux-feedback-hit-marker",
+      "relation_type": "enables",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-menu-inventory",
+      "target_id": "guiux-icon-item-rarity",
+      "relation_type": "enables",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-platform-vr-ui",
+      "target_id": "guiux-hud-spatial",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-tech-widget-pool",
+      "target_id": "guiux-tech-performance",
+      "relation_type": "enables",
+      "strength": 0.7
+    },
+    {
+      "source_id": "guiux-a11y-subtitle-options",
+      "target_id": "guiux-typo-subtitle-design",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guiux-typo-hierarchy",
+      "target_id": "guiux-tech-layout-engine",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "guiux-feedback-haptic",
+      "target_id": "guiux-platform-input-modes",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "guiux-motion-chain-animation",
+      "target_id": "guiux-tech-animation-system",
+      "relation_type": "enables",
+      "strength": 0.8
+    }
+  ],
+  "milestones": [
+    {
+      "id": "guiux-hud-design-overview",
+      "name": "HUD设计概述",
+      "description": "HUD设计模块的核心里程碑 — HUD(Heads-Up Display)的定义、历史演变和在游戏中的核心作用",
+      "order": 1,
+      "required_concepts": [
+        "guiux-hud-design-overview"
+      ]
+    },
+    {
+      "id": "guiux-hud-diegetic",
+      "name": "叙事性HUD",
+      "description": "HUD设计模块的核心里程碑 — 将UI融入游戏世界(如死亡空间的脊柱血条)的设计理念",
+      "order": 2,
+      "required_concepts": [
+        "guiux-hud-diegetic"
+      ]
+    },
+    {
+      "id": "guiux-hud-combat-ui",
+      "name": "战斗UI系统",
+      "description": "HUD设计模块的核心里程碑 — 战斗状态下的技能栏、冷却显示、连击计数等专项设计",
+      "order": 3,
+      "required_concepts": [
+        "guiux-hud-combat-ui"
+      ]
+    },
+    {
+      "id": "guiux-menu-system-overview",
+      "name": "菜单系统概述",
+      "description": "菜单系统模块的核心里程碑 — 游戏菜单体系的整体架构、导航模式和设计原则",
+      "order": 4,
+      "required_concepts": [
+        "guiux-menu-system-overview"
+      ]
+    },
+    {
+      "id": "guiux-menu-inventory",
+      "name": "背包/物品界面",
+      "description": "菜单系统模块的核心里程碑 — 物品网格、分类筛选、排序、装备对比和快速操作",
+      "order": 5,
+      "required_concepts": [
+        "guiux-menu-inventory"
+      ]
+    },
+    {
+      "id": "guiux-menu-tutorial-flow",
+      "name": "教程引导流程",
+      "description": "菜单系统模块的核心里程碑 — 新手引导的UI覆盖层、步骤提示和渐进式解锁",
+      "order": 6,
+      "required_concepts": [
+        "guiux-menu-tutorial-flow"
+      ]
+    },
+    {
+      "id": "guiux-feedback-overview",
+      "name": "交互反馈概述",
+      "description": "交互反馈模块的核心里程碑 — 游戏交互反馈的定义、类型(视觉/听觉/触觉)和设计原则",
+      "order": 7,
+      "required_concepts": [
+        "guiux-feedback-overview"
+      ]
+    },
+    {
+      "id": "guiux-feedback-hit-marker",
+      "name": "命中标记反馈",
+      "description": "交互反馈模块的核心里程碑 — 击中敌人时的准星反馈、伤害数字和击杀确认",
+      "order": 8,
+      "required_concepts": [
+        "guiux-feedback-hit-marker"
+      ]
+    },
+    {
+      "id": "guiux-usability-overview",
+      "name": "可用性测试概述",
+      "description": "可用性测试模块的核心里程碑 — 游戏UI可用性测试的方法论、流程和关键指标",
+      "order": 9,
+      "required_concepts": [
+        "guiux-usability-overview"
+      ]
+    },
+    {
+      "id": "guiux-usability-playtest",
+      "name": "游戏测试(Playtest)",
+      "description": "可用性测试模块的核心里程碑 — 通过观察玩家实际游玩收集UI反馈的测试方法",
+      "order": 10,
+      "required_concepts": [
+        "guiux-usability-playtest"
+      ]
+    },
+    {
+      "id": "guiux-usability-iteration",
+      "name": "迭代优化流程",
+      "description": "可用性测试模块的核心里程碑 — 基于测试结果的UI迭代改进方法和优先级排序",
+      "order": 11,
+      "required_concepts": [
+        "guiux-usability-iteration"
+      ]
+    },
+    {
+      "id": "guiux-icon-overview",
+      "name": "图标系统概述",
+      "description": "图标系统模块的核心里程碑 — 游戏图标系统的作用、设计规范和管理策略",
+      "order": 12,
+      "required_concepts": [
+        "guiux-icon-overview"
+      ]
+    },
+    {
+      "id": "guiux-icon-item-rarity",
+      "name": "物品稀有度图标",
+      "description": "图标系统模块的核心里程碑 — 通过边框、光效、颜色区分物品品质的图标设计",
+      "order": 13,
+      "required_concepts": [
+        "guiux-icon-item-rarity"
+      ]
+    },
+    {
+      "id": "guiux-typo-overview",
+      "name": "游戏字体排版概述",
+      "description": "字体排版模块的核心里程碑 — 游戏中字体选择、排版规则和可读性标准",
+      "order": 14,
+      "required_concepts": [
+        "guiux-typo-overview"
+      ]
+    },
+    {
+      "id": "guiux-typo-hierarchy",
+      "name": "文字层级系统",
+      "description": "字体排版模块的核心里程碑 — 标题/正文/注释的字号、字重和间距层级规范",
+      "order": 15,
+      "required_concepts": [
+        "guiux-typo-hierarchy"
+      ]
+    },
+    {
+      "id": "guiux-motion-overview",
+      "name": "UI动效设计概述",
+      "description": "动效设计模块的核心里程碑 — 游戏UI动画的作用、原则和性能考量",
+      "order": 16,
+      "required_concepts": [
+        "guiux-motion-overview"
+      ]
+    },
+    {
+      "id": "guiux-motion-easing",
+      "name": "缓动曲线",
+      "description": "动效设计模块的核心里程碑 — 线性/ease-in/ease-out/弹性等缓动函数的选择和应用",
+      "order": 17,
+      "required_concepts": [
+        "guiux-motion-easing"
+      ]
+    },
+    {
+      "id": "guiux-platform-overview",
+      "name": "多平台适配概述",
+      "description": "多平台适配模块的核心里程碑 — PC/主机/移动端/掌机的UI差异和统一适配策略",
+      "order": 18,
+      "required_concepts": [
+        "guiux-platform-overview"
+      ]
+    },
+    {
+      "id": "guiux-platform-input-modes",
+      "name": "输入模式切换",
+      "description": "多平台适配模块的核心里程碑 — 键鼠/手柄/触屏输入的自动检测和UI即时切换",
+      "order": 19,
+      "required_concepts": [
+        "guiux-platform-input-modes"
+      ]
+    },
+    {
+      "id": "guiux-a11y-overview",
+      "name": "无障碍设计概述",
+      "description": "无障碍设计模块的核心里程碑 — 游戏无障碍设计的重要性、法规要求和WCAG标准",
+      "order": 20,
+      "required_concepts": [
+        "guiux-a11y-overview"
+      ]
+    },
+    {
+      "id": "guiux-a11y-colorblind",
+      "name": "色盲模式",
+      "description": "无障碍设计模块的核心里程碑 — 红绿色盲/蓝黄色盲的UI适配(符号+颜色双编码)",
+      "order": 21,
+      "required_concepts": [
+        "guiux-a11y-colorblind"
+      ]
+    },
+    {
+      "id": "guiux-a11y-xbox-guidelines",
+      "name": "Xbox无障碍指南",
+      "description": "无障碍设计模块的核心里程碑 — Xbox Gaming Accessibility Guidelines的具体要求",
+      "order": 22,
+      "required_concepts": [
+        "guiux-a11y-xbox-guidelines"
+      ]
+    },
+    {
+      "id": "guiux-tech-overview",
+      "name": "UI技术实现概述",
+      "description": "UI技术实现模块的核心里程碑 — 游戏UI框架的选型、架构模式和技术栈",
+      "order": 23,
+      "required_concepts": [
+        "guiux-tech-overview"
+      ]
+    },
+    {
+      "id": "guiux-tech-umg",
+      "name": "UMG(Unreal)",
+      "description": "UI技术实现模块的核心里程碑 — Unreal Engine的UMG系统：Widget蓝图、Slate底层、数据绑定",
+      "order": 24,
+      "required_concepts": [
+        "guiux-tech-umg"
+      ]
+    },
+    {
+      "id": "guiux-tech-performance",
+      "name": "UI性能优化",
+      "description": "UI技术实现模块的核心里程碑 — DrawCall优化、Rebuild频率、Raycast过滤和Canvas拆分",
+      "order": 25,
+      "required_concepts": [
+        "guiux-tech-performance"
+      ]
+    }
+  ]
+}

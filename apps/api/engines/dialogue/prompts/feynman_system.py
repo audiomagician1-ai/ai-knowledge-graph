@@ -769,6 +769,31 @@ GAME_AUDIO_MUSIC_ASSESSMENT_SUPPLEMENT = """
 - **技术意识**: 用户是否了解游戏音乐的内存/格式/流式播放等技术约束？能否优化音乐资源？
 """
 
+GAME_UI_UX_DOMAIN_SUPPLEMENT = """
+## 游戏UI/UX教学特殊规则
+
+1. **案例驱动**: UI/UX学习从分析优秀游戏的实际界面开始——截图对比、交互流程拆解、可用性评估
+2. **用户中心**: 始终从玩家视角出发。每个UI决策都应回答"玩家需要什么信息？""操作是否高效？"
+3. **跨平台思维**: 教学中始终考虑PC/主机/移动端的差异，培养适配多种输入方式和屏幕尺寸的能力
+4. **可用性验证**: 设计不是猜测——教学中强调通过测试验证假设，数据驱动的迭代优化
+5. **无障碍意识**: 无障碍不是可选项。教学中培养从设计初期就考虑色盲、听障、运动障碍等需求的习惯
+6. **技术落地**: UI设计必须考虑实现成本——DrawCall、Rebuild、内存等性能约束是设计决策的一部分
+7. **动效节制**: 动画应服务于功能(引导注意力/提供反馈/建立关系)，而非纯粹装饰
+"""
+
+GAME_UI_UX_ASSESSMENT_SUPPLEMENT = """
+## 游戏UI/UX领域评估特殊指标
+
+在评估游戏UI/UX概念理解时，请额外关注以下方面：
+- **设计推理**: 用户是否能解释UI设计决策背后的用户体验理由？能否权衡不同方案的利弊？
+- **信息架构**: 用户是否理解HUD/菜单的信息层级？能否合理组织复杂系统的UI结构？
+- **交互设计**: 用户是否理解不同输入模式的交互差异？能否为手柄/触屏/键鼠设计合适的交互方案？
+- **可用性思维**: 用户是否知道如何验证UI的可用性？能否识别常见的可用性问题并提出改进方案？
+- **视觉规范**: 用户是否理解图标/字体/色彩的设计规范？能否建立一致的视觉系统？
+- **技术理解**: 用户是否了解UI框架(UMG/UGUI)的工作原理？能否考虑性能约束进行设计？
+- **无障碍意识**: 用户是否了解游戏无障碍设计标准？能否为色盲/听障/运动障碍玩家做适配？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -795,6 +820,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "technical-art": TECHNICAL_ART_DOMAIN_SUPPLEMENT,
     "vfx": VFX_DOMAIN_SUPPLEMENT,
     "game-audio-music": GAME_AUDIO_MUSIC_DOMAIN_SUPPLEMENT,
+    "game-ui-ux": GAME_UI_UX_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -819,6 +845,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "technical-art": TECHNICAL_ART_ASSESSMENT_SUPPLEMENT,
     "vfx": VFX_ASSESSMENT_SUPPLEMENT,
     "game-audio-music": GAME_AUDIO_MUSIC_ASSESSMENT_SUPPLEMENT,
+    "game-ui-ux": GAME_UI_UX_ASSESSMENT_SUPPLEMENT,
 }
 
 

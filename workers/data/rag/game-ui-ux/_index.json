@@ -1,0 +1,1655 @@
+{
+  "version": "1.0.0",
+  "domain": "game-ui-ux",
+  "domain_name": "游戏UI/UX",
+  "generated_at": "2026-03-21T05:35:01.321574",
+  "total_concepts": 200,
+  "stats": {
+    "total_docs": 200,
+    "total_chars": 194535,
+    "by_subdomain": {
+      "accessibility": {
+        "docs": 20,
+        "chars": 20063
+      },
+      "hud-design": {
+        "docs": 20,
+        "chars": 18159
+      },
+      "icon-system": {
+        "docs": 20,
+        "chars": 18280
+      },
+      "interaction-feedback": {
+        "docs": 20,
+        "chars": 18453
+      },
+      "menu-system": {
+        "docs": 20,
+        "chars": 18364
+      },
+      "motion-design": {
+        "docs": 20,
+        "chars": 19347
+      },
+      "multiplatform": {
+        "docs": 20,
+        "chars": 19866
+      },
+      "typography": {
+        "docs": 20,
+        "chars": 20118
+      },
+      "ui-tech": {
+        "docs": 20,
+        "chars": 23532
+      },
+      "usability-testing": {
+        "docs": 20,
+        "chars": 18353
+      }
+    }
+  },
+  "documents": [
+    {
+      "id": "guiux-hud-design-overview",
+      "file": "game-ui-ux/guiux-hud-design-overview.md",
+      "title": "HUD设计概述",
+      "subdomain": "hud-design",
+      "difficulty": 1,
+      "chars": 942
+    },
+    {
+      "id": "guiux-hud-health-bar",
+      "file": "game-ui-ux/guiux-hud-health-bar.md",
+      "title": "血条与生命值显示",
+      "subdomain": "hud-design",
+      "difficulty": 2,
+      "chars": 917
+    },
+    {
+      "id": "guiux-hud-minimap",
+      "file": "game-ui-ux/guiux-hud-minimap.md",
+      "title": "小地图系统",
+      "subdomain": "hud-design",
+      "difficulty": 2,
+      "chars": 902
+    },
+    {
+      "id": "guiux-hud-crosshair",
+      "file": "game-ui-ux/guiux-hud-crosshair.md",
+      "title": "准星与瞄准系统",
+      "subdomain": "hud-design",
+      "difficulty": 2,
+      "chars": 904
+    },
+    {
+      "id": "guiux-hud-ammo-resource",
+      "file": "game-ui-ux/guiux-hud-ammo-resource.md",
+      "title": "弹药与资源显示",
+      "subdomain": "hud-design",
+      "difficulty": 2,
+      "chars": 906
+    },
+    {
+      "id": "guiux-hud-objective-marker",
+      "file": "game-ui-ux/guiux-hud-objective-marker.md",
+      "title": "任务标记与导航",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 914
+    },
+    {
+      "id": "guiux-hud-damage-indicator",
+      "file": "game-ui-ux/guiux-hud-damage-indicator.md",
+      "title": "伤害方向指示",
+      "subdomain": "hud-design",
+      "difficulty": 2,
+      "chars": 907
+    },
+    {
+      "id": "guiux-hud-status-effect",
+      "file": "game-ui-ux/guiux-hud-status-effect.md",
+      "title": "状态效果显示",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 919
+    },
+    {
+      "id": "guiux-hud-contextual",
+      "file": "game-ui-ux/guiux-hud-contextual.md",
+      "title": "上下文HUD",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 900
+    },
+    {
+      "id": "guiux-hud-diegetic",
+      "file": "game-ui-ux/guiux-hud-diegetic.md",
+      "title": "叙事性HUD",
+      "subdomain": "hud-design",
+      "difficulty": 4,
+      "chars": 908
+    },
+    {
+      "id": "guiux-hud-non-diegetic",
+      "file": "game-ui-ux/guiux-hud-non-diegetic.md",
+      "title": "非叙事性HUD",
+      "subdomain": "hud-design",
+      "difficulty": 2,
+      "chars": 903
+    },
+    {
+      "id": "guiux-hud-spatial",
+      "file": "game-ui-ux/guiux-hud-spatial.md",
+      "title": "空间HUD",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 899
+    },
+    {
+      "id": "guiux-hud-meta",
+      "file": "game-ui-ux/guiux-hud-meta.md",
+      "title": "元叙事HUD",
+      "subdomain": "hud-design",
+      "difficulty": 4,
+      "chars": 909
+    },
+    {
+      "id": "guiux-hud-safe-zone",
+      "file": "game-ui-ux/guiux-hud-safe-zone.md",
+      "title": "安全区域与布局",
+      "subdomain": "hud-design",
+      "difficulty": 2,
+      "chars": 908
+    },
+    {
+      "id": "guiux-hud-scaling",
+      "file": "game-ui-ux/guiux-hud-scaling.md",
+      "title": "HUD缩放系统",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 901
+    },
+    {
+      "id": "guiux-hud-color-coding",
+      "file": "game-ui-ux/guiux-hud-color-coding.md",
+      "title": "色彩编码系统",
+      "subdomain": "hud-design",
+      "difficulty": 2,
+      "chars": 907
+    },
+    {
+      "id": "guiux-hud-minimalist",
+      "file": "game-ui-ux/guiux-hud-minimalist.md",
+      "title": "极简HUD设计",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 906
+    },
+    {
+      "id": "guiux-hud-combat-ui",
+      "file": "game-ui-ux/guiux-hud-combat-ui.md",
+      "title": "战斗UI系统",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 904
+    },
+    {
+      "id": "guiux-hud-team-info",
+      "file": "game-ui-ux/guiux-hud-team-info.md",
+      "title": "队伍信息显示",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 897
+    },
+    {
+      "id": "guiux-hud-notification",
+      "file": "game-ui-ux/guiux-hud-notification.md",
+      "title": "通知与提示系统",
+      "subdomain": "hud-design",
+      "difficulty": 3,
+      "chars": 906
+    },
+    {
+      "id": "guiux-menu-system-overview",
+      "file": "game-ui-ux/guiux-menu-system-overview.md",
+      "title": "菜单系统概述",
+      "subdomain": "menu-system",
+      "difficulty": 1,
+      "chars": 923
+    },
+    {
+      "id": "guiux-menu-main",
+      "file": "game-ui-ux/guiux-menu-main.md",
+      "title": "主菜单设计",
+      "subdomain": "menu-system",
+      "difficulty": 2,
+      "chars": 912
+    },
+    {
+      "id": "guiux-menu-pause",
+      "file": "game-ui-ux/guiux-menu-pause.md",
+      "title": "暂停菜单",
+      "subdomain": "menu-system",
+      "difficulty": 2,
+      "chars": 907
+    },
+    {
+      "id": "guiux-menu-settings",
+      "file": "game-ui-ux/guiux-menu-settings.md",
+      "title": "设置界面设计",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 923
+    },
+    {
+      "id": "guiux-menu-navigation",
+      "file": "game-ui-ux/guiux-menu-navigation.md",
+      "title": "菜单导航架构",
+      "subdomain": "menu-system",
+      "difficulty": 2,
+      "chars": 916
+    },
+    {
+      "id": "guiux-menu-inventory",
+      "file": "game-ui-ux/guiux-menu-inventory.md",
+      "title": "背包/物品界面",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 925
+    },
+    {
+      "id": "guiux-menu-character",
+      "file": "game-ui-ux/guiux-menu-character.md",
+      "title": "角色/属性界面",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 922
+    },
+    {
+      "id": "guiux-menu-map",
+      "file": "game-ui-ux/guiux-menu-map.md",
+      "title": "地图界面",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 906
+    },
+    {
+      "id": "guiux-menu-quest-log",
+      "file": "game-ui-ux/guiux-menu-quest-log.md",
+      "title": "任务日志",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 910
+    },
+    {
+      "id": "guiux-menu-shop",
+      "file": "game-ui-ux/guiux-menu-shop.md",
+      "title": "商城/商店界面",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 925
+    },
+    {
+      "id": "guiux-menu-social",
+      "file": "game-ui-ux/guiux-menu-social.md",
+      "title": "社交界面",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 913
+    },
+    {
+      "id": "guiux-menu-loading",
+      "file": "game-ui-ux/guiux-menu-loading.md",
+      "title": "加载界面设计",
+      "subdomain": "menu-system",
+      "difficulty": 2,
+      "chars": 915
+    },
+    {
+      "id": "guiux-menu-tutorial-flow",
+      "file": "game-ui-ux/guiux-menu-tutorial-flow.md",
+      "title": "教程引导流程",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 923
+    },
+    {
+      "id": "guiux-menu-popup-dialog",
+      "file": "game-ui-ux/guiux-menu-popup-dialog.md",
+      "title": "弹窗与对话框",
+      "subdomain": "menu-system",
+      "difficulty": 2,
+      "chars": 922
+    },
+    {
+      "id": "guiux-menu-radial",
+      "file": "game-ui-ux/guiux-menu-radial.md",
+      "title": "环形/辐射菜单",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 923
+    },
+    {
+      "id": "guiux-menu-tab-system",
+      "file": "game-ui-ux/guiux-menu-tab-system.md",
+      "title": "标签页系统",
+      "subdomain": "menu-system",
+      "difficulty": 2,
+      "chars": 916
+    },
+    {
+      "id": "guiux-menu-crafting",
+      "file": "game-ui-ux/guiux-menu-crafting.md",
+      "title": "制作/合成界面",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 925
+    },
+    {
+      "id": "guiux-menu-skill-tree",
+      "file": "game-ui-ux/guiux-menu-skill-tree.md",
+      "title": "技能树界面",
+      "subdomain": "menu-system",
+      "difficulty": 4,
+      "chars": 916
+    },
+    {
+      "id": "guiux-menu-leaderboard",
+      "file": "game-ui-ux/guiux-menu-leaderboard.md",
+      "title": "排行榜界面",
+      "subdomain": "menu-system",
+      "difficulty": 2,
+      "chars": 913
+    },
+    {
+      "id": "guiux-menu-end-screen",
+      "file": "game-ui-ux/guiux-menu-end-screen.md",
+      "title": "结算/结束画面",
+      "subdomain": "menu-system",
+      "difficulty": 3,
+      "chars": 929
+    },
+    {
+      "id": "guiux-feedback-overview",
+      "file": "game-ui-ux/guiux-feedback-overview.md",
+      "title": "交互反馈概述",
+      "subdomain": "interaction-feedback",
+      "difficulty": 1,
+      "chars": 932
+    },
+    {
+      "id": "guiux-feedback-visual-confirm",
+      "file": "game-ui-ux/guiux-feedback-visual-confirm.md",
+      "title": "视觉确认反馈",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 928
+    },
+    {
+      "id": "guiux-feedback-hover-state",
+      "file": "game-ui-ux/guiux-feedback-hover-state.md",
+      "title": "悬停状态设计",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 923
+    },
+    {
+      "id": "guiux-feedback-press-response",
+      "file": "game-ui-ux/guiux-feedback-press-response.md",
+      "title": "按压响应设计",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 924
+    },
+    {
+      "id": "guiux-feedback-drag-drop",
+      "file": "game-ui-ux/guiux-feedback-drag-drop.md",
+      "title": "拖放交互",
+      "subdomain": "interaction-feedback",
+      "difficulty": 3,
+      "chars": 918
+    },
+    {
+      "id": "guiux-feedback-progress-bar",
+      "file": "game-ui-ux/guiux-feedback-progress-bar.md",
+      "title": "进度条与加载指示",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 928
+    },
+    {
+      "id": "guiux-feedback-tooltip",
+      "file": "game-ui-ux/guiux-feedback-tooltip.md",
+      "title": "工具提示设计",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 917
+    },
+    {
+      "id": "guiux-feedback-screen-shake",
+      "file": "game-ui-ux/guiux-feedback-screen-shake.md",
+      "title": "屏幕震动反馈",
+      "subdomain": "interaction-feedback",
+      "difficulty": 3,
+      "chars": 923
+    },
+    {
+      "id": "guiux-feedback-hit-marker",
+      "file": "game-ui-ux/guiux-feedback-hit-marker.md",
+      "title": "命中标记反馈",
+      "subdomain": "interaction-feedback",
+      "difficulty": 3,
+      "chars": 922
+    },
+    {
+      "id": "guiux-feedback-input-queue",
+      "file": "game-ui-ux/guiux-feedback-input-queue.md",
+      "title": "输入缓冲提示",
+      "subdomain": "interaction-feedback",
+      "difficulty": 4,
+      "chars": 921
+    },
+    {
+      "id": "guiux-feedback-error-state",
+      "file": "game-ui-ux/guiux-feedback-error-state.md",
+      "title": "错误状态反馈",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 921
+    },
+    {
+      "id": "guiux-feedback-reward-popup",
+      "file": "game-ui-ux/guiux-feedback-reward-popup.md",
+      "title": "奖励弹出动画",
+      "subdomain": "interaction-feedback",
+      "difficulty": 3,
+      "chars": 927
+    },
+    {
+      "id": "guiux-feedback-combo-counter",
+      "file": "game-ui-ux/guiux-feedback-combo-counter.md",
+      "title": "连击计数器",
+      "subdomain": "interaction-feedback",
+      "difficulty": 3,
+      "chars": 922
+    },
+    {
+      "id": "guiux-feedback-haptic",
+      "file": "game-ui-ux/guiux-feedback-haptic.md",
+      "title": "触觉反馈设计",
+      "subdomain": "interaction-feedback",
+      "difficulty": 3,
+      "chars": 927
+    },
+    {
+      "id": "guiux-feedback-audio-cue",
+      "file": "game-ui-ux/guiux-feedback-audio-cue.md",
+      "title": "音频反馈提示",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 919
+    },
+    {
+      "id": "guiux-feedback-transition",
+      "file": "game-ui-ux/guiux-feedback-transition.md",
+      "title": "界面过渡动画",
+      "subdomain": "interaction-feedback",
+      "difficulty": 3,
+      "chars": 921
+    },
+    {
+      "id": "guiux-feedback-onboarding",
+      "file": "game-ui-ux/guiux-feedback-onboarding.md",
+      "title": "引导反馈设计",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 920
+    },
+    {
+      "id": "guiux-feedback-selection",
+      "file": "game-ui-ux/guiux-feedback-selection.md",
+      "title": "选择状态反馈",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 919
+    },
+    {
+      "id": "guiux-feedback-scroll",
+      "file": "game-ui-ux/guiux-feedback-scroll.md",
+      "title": "滚动与翻页反馈",
+      "subdomain": "interaction-feedback",
+      "difficulty": 2,
+      "chars": 918
+    },
+    {
+      "id": "guiux-feedback-cooldown-timer",
+      "file": "game-ui-ux/guiux-feedback-cooldown-timer.md",
+      "title": "冷却计时器",
+      "subdomain": "interaction-feedback",
+      "difficulty": 3,
+      "chars": 923
+    },
+    {
+      "id": "guiux-usability-overview",
+      "file": "game-ui-ux/guiux-usability-overview.md",
+      "title": "可用性测试概述",
+      "subdomain": "usability-testing",
+      "difficulty": 1,
+      "chars": 920
+    },
+    {
+      "id": "guiux-usability-heuristic",
+      "file": "game-ui-ux/guiux-usability-heuristic.md",
+      "title": "启发式评估",
+      "subdomain": "usability-testing",
+      "difficulty": 2,
+      "chars": 927
+    },
+    {
+      "id": "guiux-usability-playtest",
+      "file": "game-ui-ux/guiux-usability-playtest.md",
+      "title": "游戏测试(Playtest)",
+      "subdomain": "usability-testing",
+      "difficulty": 2,
+      "chars": 949
+    },
+    {
+      "id": "guiux-usability-ab-test",
+      "file": "game-ui-ux/guiux-usability-ab-test.md",
+      "title": "A/B测试",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 912
+    },
+    {
+      "id": "guiux-usability-heatmap",
+      "file": "game-ui-ux/guiux-usability-heatmap.md",
+      "title": "热力图分析",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 916
+    },
+    {
+      "id": "guiux-usability-eye-tracking",
+      "file": "game-ui-ux/guiux-usability-eye-tracking.md",
+      "title": "眼动追踪",
+      "subdomain": "usability-testing",
+      "difficulty": 4,
+      "chars": 912
+    },
+    {
+      "id": "guiux-usability-think-aloud",
+      "file": "game-ui-ux/guiux-usability-think-aloud.md",
+      "title": "出声思维法",
+      "subdomain": "usability-testing",
+      "difficulty": 2,
+      "chars": 913
+    },
+    {
+      "id": "guiux-usability-task-analysis",
+      "file": "game-ui-ux/guiux-usability-task-analysis.md",
+      "title": "任务分析",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 918
+    },
+    {
+      "id": "guiux-usability-survey",
+      "file": "game-ui-ux/guiux-usability-survey.md",
+      "title": "问卷与访谈",
+      "subdomain": "usability-testing",
+      "difficulty": 2,
+      "chars": 912
+    },
+    {
+      "id": "guiux-usability-analytics",
+      "file": "game-ui-ux/guiux-usability-analytics.md",
+      "title": "行为数据分析",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 914
+    },
+    {
+      "id": "guiux-usability-first-time",
+      "file": "game-ui-ux/guiux-usability-first-time.md",
+      "title": "首次体验测试",
+      "subdomain": "usability-testing",
+      "difficulty": 2,
+      "chars": 918
+    },
+    {
+      "id": "guiux-usability-cognitive-load",
+      "file": "game-ui-ux/guiux-usability-cognitive-load.md",
+      "title": "认知负荷评估",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 919
+    },
+    {
+      "id": "guiux-usability-learnability",
+      "file": "game-ui-ux/guiux-usability-learnability.md",
+      "title": "可学习性测试",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 921
+    },
+    {
+      "id": "guiux-usability-error-rate",
+      "file": "game-ui-ux/guiux-usability-error-rate.md",
+      "title": "错误率统计",
+      "subdomain": "usability-testing",
+      "difficulty": 2,
+      "chars": 914
+    },
+    {
+      "id": "guiux-usability-satisfaction",
+      "file": "game-ui-ux/guiux-usability-satisfaction.md",
+      "title": "满意度评估",
+      "subdomain": "usability-testing",
+      "difficulty": 2,
+      "chars": 916
+    },
+    {
+      "id": "guiux-usability-remote-test",
+      "file": "game-ui-ux/guiux-usability-remote-test.md",
+      "title": "远程可用性测试",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 922
+    },
+    {
+      "id": "guiux-usability-iteration",
+      "file": "game-ui-ux/guiux-usability-iteration.md",
+      "title": "迭代优化流程",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 919
+    },
+    {
+      "id": "guiux-usability-benchmark",
+      "file": "game-ui-ux/guiux-usability-benchmark.md",
+      "title": "基准测试",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 908
+    },
+    {
+      "id": "guiux-usability-persona",
+      "file": "game-ui-ux/guiux-usability-persona.md",
+      "title": "用户画像",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 918
+    },
+    {
+      "id": "guiux-usability-funnel",
+      "file": "game-ui-ux/guiux-usability-funnel.md",
+      "title": "漏斗分析",
+      "subdomain": "usability-testing",
+      "difficulty": 3,
+      "chars": 905
+    },
+    {
+      "id": "guiux-icon-overview",
+      "file": "game-ui-ux/guiux-icon-overview.md",
+      "title": "图标系统概述",
+      "subdomain": "icon-system",
+      "difficulty": 1,
+      "chars": 903
+    },
+    {
+      "id": "guiux-icon-style-guide",
+      "file": "game-ui-ux/guiux-icon-style-guide.md",
+      "title": "图标风格指南",
+      "subdomain": "icon-system",
+      "difficulty": 2,
+      "chars": 908
+    },
+    {
+      "id": "guiux-icon-grid-system",
+      "file": "game-ui-ux/guiux-icon-grid-system.md",
+      "title": "图标栅格系统",
+      "subdomain": "icon-system",
+      "difficulty": 2,
+      "chars": 922
+    },
+    {
+      "id": "guiux-icon-item-rarity",
+      "file": "game-ui-ux/guiux-icon-item-rarity.md",
+      "title": "物品稀有度图标",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 916
+    },
+    {
+      "id": "guiux-icon-skill-ability",
+      "file": "game-ui-ux/guiux-icon-skill-ability.md",
+      "title": "技能/能力图标",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 913
+    },
+    {
+      "id": "guiux-icon-status-buff",
+      "file": "game-ui-ux/guiux-icon-status-buff.md",
+      "title": "状态/Buff图标",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 919
+    },
+    {
+      "id": "guiux-icon-weapon-equipment",
+      "file": "game-ui-ux/guiux-icon-weapon-equipment.md",
+      "title": "武器/装备图标",
+      "subdomain": "icon-system",
+      "difficulty": 2,
+      "chars": 917
+    },
+    {
+      "id": "guiux-icon-resource-currency",
+      "file": "game-ui-ux/guiux-icon-resource-currency.md",
+      "title": "资源/货币图标",
+      "subdomain": "icon-system",
+      "difficulty": 2,
+      "chars": 918
+    },
+    {
+      "id": "guiux-icon-navigation",
+      "file": "game-ui-ux/guiux-icon-navigation.md",
+      "title": "导航/功能图标",
+      "subdomain": "icon-system",
+      "difficulty": 2,
+      "chars": 919
+    },
+    {
+      "id": "guiux-icon-achievement",
+      "file": "game-ui-ux/guiux-icon-achievement.md",
+      "title": "成就/徽章图标",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 915
+    },
+    {
+      "id": "guiux-icon-emotion-emote",
+      "file": "game-ui-ux/guiux-icon-emotion-emote.md",
+      "title": "表情/动作图标",
+      "subdomain": "icon-system",
+      "difficulty": 2,
+      "chars": 914
+    },
+    {
+      "id": "guiux-icon-map-poi",
+      "file": "game-ui-ux/guiux-icon-map-poi.md",
+      "title": "地图POI图标",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 915
+    },
+    {
+      "id": "guiux-icon-class-role",
+      "file": "game-ui-ux/guiux-icon-class-role.md",
+      "title": "职业/角色图标",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 908
+    },
+    {
+      "id": "guiux-icon-batch-workflow",
+      "file": "game-ui-ux/guiux-icon-batch-workflow.md",
+      "title": "图标批量制作流程",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 926
+    },
+    {
+      "id": "guiux-icon-pixel-art",
+      "file": "game-ui-ux/guiux-icon-pixel-art.md",
+      "title": "像素图标设计",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 903
+    },
+    {
+      "id": "guiux-icon-color-meaning",
+      "file": "game-ui-ux/guiux-icon-color-meaning.md",
+      "title": "图标色彩语义",
+      "subdomain": "icon-system",
+      "difficulty": 2,
+      "chars": 908
+    },
+    {
+      "id": "guiux-icon-scalability",
+      "file": "game-ui-ux/guiux-icon-scalability.md",
+      "title": "图标可缩放性",
+      "subdomain": "icon-system",
+      "difficulty": 2,
+      "chars": 912
+    },
+    {
+      "id": "guiux-icon-animation",
+      "file": "game-ui-ux/guiux-icon-animation.md",
+      "title": "动态图标设计",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 911
+    },
+    {
+      "id": "guiux-icon-localization",
+      "file": "game-ui-ux/guiux-icon-localization.md",
+      "title": "图标本地化",
+      "subdomain": "icon-system",
+      "difficulty": 3,
+      "chars": 910
+    },
+    {
+      "id": "guiux-icon-atlas-sprite",
+      "file": "game-ui-ux/guiux-icon-atlas-sprite.md",
+      "title": "图标图集管理",
+      "subdomain": "icon-system",
+      "difficulty": 4,
+      "chars": 923
+    },
+    {
+      "id": "guiux-typo-overview",
+      "file": "game-ui-ux/guiux-typo-overview.md",
+      "title": "游戏字体排版概述",
+      "subdomain": "typography",
+      "difficulty": 1,
+      "chars": 1000
+    },
+    {
+      "id": "guiux-typo-font-selection",
+      "file": "game-ui-ux/guiux-typo-font-selection.md",
+      "title": "字体选择策略",
+      "subdomain": "typography",
+      "difficulty": 2,
+      "chars": 1002
+    },
+    {
+      "id": "guiux-typo-hierarchy",
+      "file": "game-ui-ux/guiux-typo-hierarchy.md",
+      "title": "文字层级系统",
+      "subdomain": "typography",
+      "difficulty": 2,
+      "chars": 1000
+    },
+    {
+      "id": "guiux-typo-readability",
+      "file": "game-ui-ux/guiux-typo-readability.md",
+      "title": "游戏可读性优化",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 1012
+    },
+    {
+      "id": "guiux-typo-dynamic-text",
+      "file": "game-ui-ux/guiux-typo-dynamic-text.md",
+      "title": "动态文本显示",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 1001
+    },
+    {
+      "id": "guiux-typo-subtitle-design",
+      "file": "game-ui-ux/guiux-typo-subtitle-design.md",
+      "title": "字幕设计",
+      "subdomain": "typography",
+      "difficulty": 2,
+      "chars": 999
+    },
+    {
+      "id": "guiux-typo-localization",
+      "file": "game-ui-ux/guiux-typo-localization.md",
+      "title": "多语言排版",
+      "subdomain": "typography",
+      "difficulty": 4,
+      "chars": 1004
+    },
+    {
+      "id": "guiux-typo-font-rendering",
+      "file": "game-ui-ux/guiux-typo-font-rendering.md",
+      "title": "字体渲染技术",
+      "subdomain": "typography",
+      "difficulty": 4,
+      "chars": 1042
+    },
+    {
+      "id": "guiux-typo-color-text",
+      "file": "game-ui-ux/guiux-typo-color-text.md",
+      "title": "文字色彩系统",
+      "subdomain": "typography",
+      "difficulty": 2,
+      "chars": 1018
+    },
+    {
+      "id": "guiux-typo-spacing-kerning",
+      "file": "game-ui-ux/guiux-typo-spacing-kerning.md",
+      "title": "字距与行距",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 1012
+    },
+    {
+      "id": "guiux-typo-text-overflow",
+      "file": "game-ui-ux/guiux-typo-text-overflow.md",
+      "title": "文本溢出处理",
+      "subdomain": "typography",
+      "difficulty": 2,
+      "chars": 1005
+    },
+    {
+      "id": "guiux-typo-rich-text",
+      "file": "game-ui-ux/guiux-typo-rich-text.md",
+      "title": "富文本系统",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 998
+    },
+    {
+      "id": "guiux-typo-damage-number",
+      "file": "game-ui-ux/guiux-typo-damage-number.md",
+      "title": "伤害数字设计",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 1010
+    },
+    {
+      "id": "guiux-typo-chat-system",
+      "file": "game-ui-ux/guiux-typo-chat-system.md",
+      "title": "聊天文本系统",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 1002
+    },
+    {
+      "id": "guiux-typo-naming",
+      "file": "game-ui-ux/guiux-typo-naming.md",
+      "title": "命名显示规范",
+      "subdomain": "typography",
+      "difficulty": 2,
+      "chars": 1000
+    },
+    {
+      "id": "guiux-typo-input-field",
+      "file": "game-ui-ux/guiux-typo-input-field.md",
+      "title": "输入框设计",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 1000
+    },
+    {
+      "id": "guiux-typo-accessibility-font",
+      "file": "game-ui-ux/guiux-typo-accessibility-font.md",
+      "title": "无障碍字体",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 1021
+    },
+    {
+      "id": "guiux-typo-stylized",
+      "file": "game-ui-ux/guiux-typo-stylized.md",
+      "title": "风格化字体设计",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 1001
+    },
+    {
+      "id": "guiux-typo-outline-shadow",
+      "file": "game-ui-ux/guiux-typo-outline-shadow.md",
+      "title": "描边与阴影",
+      "subdomain": "typography",
+      "difficulty": 2,
+      "chars": 1000
+    },
+    {
+      "id": "guiux-typo-responsive",
+      "file": "game-ui-ux/guiux-typo-responsive.md",
+      "title": "响应式文字",
+      "subdomain": "typography",
+      "difficulty": 3,
+      "chars": 991
+    },
+    {
+      "id": "guiux-motion-overview",
+      "file": "game-ui-ux/guiux-motion-overview.md",
+      "title": "UI动效设计概述",
+      "subdomain": "motion-design",
+      "difficulty": 1,
+      "chars": 962
+    },
+    {
+      "id": "guiux-motion-easing",
+      "file": "game-ui-ux/guiux-motion-easing.md",
+      "title": "缓动曲线",
+      "subdomain": "motion-design",
+      "difficulty": 2,
+      "chars": 977
+    },
+    {
+      "id": "guiux-motion-micro-interaction",
+      "file": "game-ui-ux/guiux-motion-micro-interaction.md",
+      "title": "微交互设计",
+      "subdomain": "motion-design",
+      "difficulty": 2,
+      "chars": 965
+    },
+    {
+      "id": "guiux-motion-page-transition",
+      "file": "game-ui-ux/guiux-motion-page-transition.md",
+      "title": "页面转场动画",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 968
+    },
+    {
+      "id": "guiux-motion-reveal-animation",
+      "file": "game-ui-ux/guiux-motion-reveal-animation.md",
+      "title": "元素入场动画",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 969
+    },
+    {
+      "id": "guiux-motion-loot-drop",
+      "file": "game-ui-ux/guiux-motion-loot-drop.md",
+      "title": "掉落/开箱动画",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 966
+    },
+    {
+      "id": "guiux-motion-level-up",
+      "file": "game-ui-ux/guiux-motion-level-up.md",
+      "title": "升级庆祝动画",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 957
+    },
+    {
+      "id": "guiux-motion-number-roll",
+      "file": "game-ui-ux/guiux-motion-number-roll.md",
+      "title": "数字滚动动画",
+      "subdomain": "motion-design",
+      "difficulty": 2,
+      "chars": 959
+    },
+    {
+      "id": "guiux-motion-spring-physics",
+      "file": "game-ui-ux/guiux-motion-spring-physics.md",
+      "title": "弹簧物理动效",
+      "subdomain": "motion-design",
+      "difficulty": 4,
+      "chars": 964
+    },
+    {
+      "id": "guiux-motion-parallax",
+      "file": "game-ui-ux/guiux-motion-parallax.md",
+      "title": "视差效果",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 951
+    },
+    {
+      "id": "guiux-motion-skeleton-loading",
+      "file": "game-ui-ux/guiux-motion-skeleton-loading.md",
+      "title": "骨架屏加载",
+      "subdomain": "motion-design",
+      "difficulty": 2,
+      "chars": 960
+    },
+    {
+      "id": "guiux-motion-state-change",
+      "file": "game-ui-ux/guiux-motion-state-change.md",
+      "title": "状态变化动画",
+      "subdomain": "motion-design",
+      "difficulty": 2,
+      "chars": 966
+    },
+    {
+      "id": "guiux-motion-attention-grab",
+      "file": "game-ui-ux/guiux-motion-attention-grab.md",
+      "title": "注意力引导动效",
+      "subdomain": "motion-design",
+      "difficulty": 2,
+      "chars": 968
+    },
+    {
+      "id": "guiux-motion-chain-animation",
+      "file": "game-ui-ux/guiux-motion-chain-animation.md",
+      "title": "链式动画序列",
+      "subdomain": "motion-design",
+      "difficulty": 4,
+      "chars": 967
+    },
+    {
+      "id": "guiux-motion-performance",
+      "file": "game-ui-ux/guiux-motion-performance.md",
+      "title": "动效性能优化",
+      "subdomain": "motion-design",
+      "difficulty": 4,
+      "chars": 969
+    },
+    {
+      "id": "guiux-motion-cancel-interrupt",
+      "file": "game-ui-ux/guiux-motion-cancel-interrupt.md",
+      "title": "动画取消与中断",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 973
+    },
+    {
+      "id": "guiux-motion-particle-ui",
+      "file": "game-ui-ux/guiux-motion-particle-ui.md",
+      "title": "UI粒子效果",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 962
+    },
+    {
+      "id": "guiux-motion-12-principles",
+      "file": "game-ui-ux/guiux-motion-12-principles.md",
+      "title": "动画12原则在UI中",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 998
+    },
+    {
+      "id": "guiux-motion-timing",
+      "file": "game-ui-ux/guiux-motion-timing.md",
+      "title": "动效时间控制",
+      "subdomain": "motion-design",
+      "difficulty": 2,
+      "chars": 978
+    },
+    {
+      "id": "guiux-motion-responsive-anim",
+      "file": "game-ui-ux/guiux-motion-responsive-anim.md",
+      "title": "响应式动效",
+      "subdomain": "motion-design",
+      "difficulty": 3,
+      "chars": 968
+    },
+    {
+      "id": "guiux-platform-overview",
+      "file": "game-ui-ux/guiux-platform-overview.md",
+      "title": "多平台适配概述",
+      "subdomain": "multiplatform",
+      "difficulty": 1,
+      "chars": 994
+    },
+    {
+      "id": "guiux-platform-input-modes",
+      "file": "game-ui-ux/guiux-platform-input-modes.md",
+      "title": "输入模式切换",
+      "subdomain": "multiplatform",
+      "difficulty": 2,
+      "chars": 990
+    },
+    {
+      "id": "guiux-platform-resolution",
+      "file": "game-ui-ux/guiux-platform-resolution.md",
+      "title": "分辨率适配",
+      "subdomain": "multiplatform",
+      "difficulty": 2,
+      "chars": 990
+    },
+    {
+      "id": "guiux-platform-aspect-ratio",
+      "file": "game-ui-ux/guiux-platform-aspect-ratio.md",
+      "title": "宽高比适配",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 999
+    },
+    {
+      "id": "guiux-platform-controller-nav",
+      "file": "game-ui-ux/guiux-platform-controller-nav.md",
+      "title": "手柄导航设计",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 991
+    },
+    {
+      "id": "guiux-platform-touch-design",
+      "file": "game-ui-ux/guiux-platform-touch-design.md",
+      "title": "触屏UI设计",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 995
+    },
+    {
+      "id": "guiux-platform-mouse-keyboard",
+      "file": "game-ui-ux/guiux-platform-mouse-keyboard.md",
+      "title": "键鼠UI优化",
+      "subdomain": "multiplatform",
+      "difficulty": 2,
+      "chars": 988
+    },
+    {
+      "id": "guiux-platform-text-input",
+      "file": "game-ui-ux/guiux-platform-text-input.md",
+      "title": "跨平台文字输入",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 989
+    },
+    {
+      "id": "guiux-platform-safe-area",
+      "file": "game-ui-ux/guiux-platform-safe-area.md",
+      "title": "平台安全区域",
+      "subdomain": "multiplatform",
+      "difficulty": 2,
+      "chars": 985
+    },
+    {
+      "id": "guiux-platform-console-cert",
+      "file": "game-ui-ux/guiux-platform-console-cert.md",
+      "title": "主机认证要求",
+      "subdomain": "multiplatform",
+      "difficulty": 4,
+      "chars": 1028
+    },
+    {
+      "id": "guiux-platform-mobile-gesture",
+      "file": "game-ui-ux/guiux-platform-mobile-gesture.md",
+      "title": "移动端手势设计",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 995
+    },
+    {
+      "id": "guiux-platform-adaptive-layout",
+      "file": "game-ui-ux/guiux-platform-adaptive-layout.md",
+      "title": "自适应布局系统",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 996
+    },
+    {
+      "id": "guiux-platform-button-prompt",
+      "file": "game-ui-ux/guiux-platform-button-prompt.md",
+      "title": "按键提示图标",
+      "subdomain": "multiplatform",
+      "difficulty": 2,
+      "chars": 1007
+    },
+    {
+      "id": "guiux-platform-split-screen",
+      "file": "game-ui-ux/guiux-platform-split-screen.md",
+      "title": "分屏多人UI",
+      "subdomain": "multiplatform",
+      "difficulty": 4,
+      "chars": 988
+    },
+    {
+      "id": "guiux-platform-vr-ui",
+      "file": "game-ui-ux/guiux-platform-vr-ui.md",
+      "title": "VR界面设计",
+      "subdomain": "multiplatform",
+      "difficulty": 4,
+      "chars": 987
+    },
+    {
+      "id": "guiux-platform-streaming",
+      "file": "game-ui-ux/guiux-platform-streaming.md",
+      "title": "云游戏UI适配",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 986
+    },
+    {
+      "id": "guiux-platform-hdr-display",
+      "file": "game-ui-ux/guiux-platform-hdr-display.md",
+      "title": "HDR显示适配",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 992
+    },
+    {
+      "id": "guiux-platform-font-scaling",
+      "file": "game-ui-ux/guiux-platform-font-scaling.md",
+      "title": "跨平台字体缩放",
+      "subdomain": "multiplatform",
+      "difficulty": 2,
+      "chars": 990
+    },
+    {
+      "id": "guiux-platform-notch-cutout",
+      "file": "game-ui-ux/guiux-platform-notch-cutout.md",
+      "title": "异形屏适配",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 983
+    },
+    {
+      "id": "guiux-platform-crossplay-ui",
+      "file": "game-ui-ux/guiux-platform-crossplay-ui.md",
+      "title": "跨平台联机UI",
+      "subdomain": "multiplatform",
+      "difficulty": 3,
+      "chars": 993
+    },
+    {
+      "id": "guiux-a11y-overview",
+      "file": "game-ui-ux/guiux-a11y-overview.md",
+      "title": "无障碍设计概述",
+      "subdomain": "accessibility",
+      "difficulty": 1,
+      "chars": 1006
+    },
+    {
+      "id": "guiux-a11y-colorblind",
+      "file": "game-ui-ux/guiux-a11y-colorblind.md",
+      "title": "色盲模式",
+      "subdomain": "accessibility",
+      "difficulty": 2,
+      "chars": 999
+    },
+    {
+      "id": "guiux-a11y-font-size",
+      "file": "game-ui-ux/guiux-a11y-font-size.md",
+      "title": "字体大小调节",
+      "subdomain": "accessibility",
+      "difficulty": 2,
+      "chars": 995
+    },
+    {
+      "id": "guiux-a11y-high-contrast",
+      "file": "game-ui-ux/guiux-a11y-high-contrast.md",
+      "title": "高对比度模式",
+      "subdomain": "accessibility",
+      "difficulty": 2,
+      "chars": 993
+    },
+    {
+      "id": "guiux-a11y-subtitle-options",
+      "file": "game-ui-ux/guiux-a11y-subtitle-options.md",
+      "title": "字幕选项",
+      "subdomain": "accessibility",
+      "difficulty": 2,
+      "chars": 1000
+    },
+    {
+      "id": "guiux-a11y-controller-remap",
+      "file": "game-ui-ux/guiux-a11y-controller-remap.md",
+      "title": "控制器重映射",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 995
+    },
+    {
+      "id": "guiux-a11y-audio-visual",
+      "file": "game-ui-ux/guiux-a11y-audio-visual.md",
+      "title": "音频视觉化",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 1005
+    },
+    {
+      "id": "guiux-a11y-motor-assist",
+      "file": "game-ui-ux/guiux-a11y-motor-assist.md",
+      "title": "运动辅助",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 1001
+    },
+    {
+      "id": "guiux-a11y-cognitive-aid",
+      "file": "game-ui-ux/guiux-a11y-cognitive-aid.md",
+      "title": "认知辅助设计",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 996
+    },
+    {
+      "id": "guiux-a11y-screen-reader",
+      "file": "game-ui-ux/guiux-a11y-screen-reader.md",
+      "title": "屏幕阅读器兼容",
+      "subdomain": "accessibility",
+      "difficulty": 4,
+      "chars": 1013
+    },
+    {
+      "id": "guiux-a11y-photosensitive",
+      "file": "game-ui-ux/guiux-a11y-photosensitive.md",
+      "title": "光敏性保护",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 993
+    },
+    {
+      "id": "guiux-a11y-text-to-speech",
+      "file": "game-ui-ux/guiux-a11y-text-to-speech.md",
+      "title": "文字转语音",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 997
+    },
+    {
+      "id": "guiux-a11y-difficulty-ui",
+      "file": "game-ui-ux/guiux-a11y-difficulty-ui.md",
+      "title": "难度相关UI",
+      "subdomain": "accessibility",
+      "difficulty": 2,
+      "chars": 1011
+    },
+    {
+      "id": "guiux-a11y-one-handed",
+      "file": "game-ui-ux/guiux-a11y-one-handed.md",
+      "title": "单手操作模式",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 995
+    },
+    {
+      "id": "guiux-a11y-magnifier",
+      "file": "game-ui-ux/guiux-a11y-magnifier.md",
+      "title": "放大镜功能",
+      "subdomain": "accessibility",
+      "difficulty": 2,
+      "chars": 981
+    },
+    {
+      "id": "guiux-a11y-testing-tools",
+      "file": "game-ui-ux/guiux-a11y-testing-tools.md",
+      "title": "无障碍测试工具",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 1008
+    },
+    {
+      "id": "guiux-a11y-xbox-guidelines",
+      "file": "game-ui-ux/guiux-a11y-xbox-guidelines.md",
+      "title": "Xbox无障碍指南",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 1059
+    },
+    {
+      "id": "guiux-a11y-deaf-hoh",
+      "file": "game-ui-ux/guiux-a11y-deaf-hoh.md",
+      "title": "聋人/听障适配",
+      "subdomain": "accessibility",
+      "difficulty": 3,
+      "chars": 1003
+    },
+    {
+      "id": "guiux-a11y-settings-menu",
+      "file": "game-ui-ux/guiux-a11y-settings-menu.md",
+      "title": "无障碍设置菜单",
+      "subdomain": "accessibility",
+      "difficulty": 2,
+      "chars": 1007
+    },
+    {
+      "id": "guiux-a11y-inclusive-design",
+      "file": "game-ui-ux/guiux-a11y-inclusive-design.md",
+      "title": "包容性设计思维",
+      "subdomain": "accessibility",
+      "difficulty": 2,
+      "chars": 1006
+    },
+    {
+      "id": "guiux-tech-overview",
+      "file": "game-ui-ux/guiux-tech-overview.md",
+      "title": "UI技术实现概述",
+      "subdomain": "ui-tech",
+      "difficulty": 1,
+      "chars": 1151
+    },
+    {
+      "id": "guiux-tech-umg",
+      "file": "game-ui-ux/guiux-tech-umg.md",
+      "title": "UMG(Unreal)",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1206
+    },
+    {
+      "id": "guiux-tech-ugui",
+      "file": "game-ui-ux/guiux-tech-ugui.md",
+      "title": "UGUI(Unity)",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1216
+    },
+    {
+      "id": "guiux-tech-ui-toolkit",
+      "file": "game-ui-ux/guiux-tech-ui-toolkit.md",
+      "title": "UI Toolkit(Unity)",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1230
+    },
+    {
+      "id": "guiux-tech-imgui",
+      "file": "game-ui-ux/guiux-tech-imgui.md",
+      "title": "Immediate Mode GUI",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1205
+    },
+    {
+      "id": "guiux-tech-retained-mode",
+      "file": "game-ui-ux/guiux-tech-retained-mode.md",
+      "title": "Retained Mode GUI",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1197
+    },
+    {
+      "id": "guiux-tech-data-binding",
+      "file": "game-ui-ux/guiux-tech-data-binding.md",
+      "title": "数据绑定模式",
+      "subdomain": "ui-tech",
+      "difficulty": 4,
+      "chars": 1175
+    },
+    {
+      "id": "guiux-tech-layout-engine",
+      "file": "game-ui-ux/guiux-tech-layout-engine.md",
+      "title": "布局引擎",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1153
+    },
+    {
+      "id": "guiux-tech-render-pipeline",
+      "file": "game-ui-ux/guiux-tech-render-pipeline.md",
+      "title": "UI渲染管线",
+      "subdomain": "ui-tech",
+      "difficulty": 4,
+      "chars": 1160
+    },
+    {
+      "id": "guiux-tech-atlas-batching",
+      "file": "game-ui-ux/guiux-tech-atlas-batching.md",
+      "title": "图集与合批",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1176
+    },
+    {
+      "id": "guiux-tech-event-system",
+      "file": "game-ui-ux/guiux-tech-event-system.md",
+      "title": "事件系统",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1148
+    },
+    {
+      "id": "guiux-tech-widget-pool",
+      "file": "game-ui-ux/guiux-tech-widget-pool.md",
+      "title": "Widget对象池",
+      "subdomain": "ui-tech",
+      "difficulty": 4,
+      "chars": 1168
+    },
+    {
+      "id": "guiux-tech-animation-system",
+      "file": "game-ui-ux/guiux-tech-animation-system.md",
+      "title": "UI动画系统",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1158
+    },
+    {
+      "id": "guiux-tech-localization-impl",
+      "file": "game-ui-ux/guiux-tech-localization-impl.md",
+      "title": "本地化技术实现",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1173
+    },
+    {
+      "id": "guiux-tech-resolution-scaling",
+      "file": "game-ui-ux/guiux-tech-resolution-scaling.md",
+      "title": "分辨率缩放实现",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1178
+    },
+    {
+      "id": "guiux-tech-rich-text-impl",
+      "file": "game-ui-ux/guiux-tech-rich-text-impl.md",
+      "title": "富文本实现",
+      "subdomain": "ui-tech",
+      "difficulty": 4,
+      "chars": 1153
+    },
+    {
+      "id": "guiux-tech-shader-ui",
+      "file": "game-ui-ux/guiux-tech-shader-ui.md",
+      "title": "UI Shader效果",
+      "subdomain": "ui-tech",
+      "difficulty": 4,
+      "chars": 1176
+    },
+    {
+      "id": "guiux-tech-performance",
+      "file": "game-ui-ux/guiux-tech-performance.md",
+      "title": "UI性能优化",
+      "subdomain": "ui-tech",
+      "difficulty": 4,
+      "chars": 1191
+    },
+    {
+      "id": "guiux-tech-debug-tools",
+      "file": "game-ui-ux/guiux-tech-debug-tools.md",
+      "title": "UI调试工具",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1161
+    },
+    {
+      "id": "guiux-tech-testing",
+      "file": "game-ui-ux/guiux-tech-testing.md",
+      "title": "UI自动化测试",
+      "subdomain": "ui-tech",
+      "difficulty": 3,
+      "chars": 1157
+    }
+  ]
+}

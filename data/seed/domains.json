@@ -241,6 +241,17 @@
       "rag_dir": "game-audio-music",
       "is_active": true,
       "sort_order": 22
+    },
+    {
+      "id": "game-ui-ux",
+      "name": "游戏UI/UX",
+      "description": "游戏用户界面与体验设计知识体系，覆盖HUD设计、菜单系统、交互反馈、可用性测试到UI技术实现",
+      "icon": "📱",
+      "color": "#c026d3",
+      "seed_dir": "game-ui-ux",
+      "rag_dir": "game-ui-ux",
+      "is_active": true,
+      "sort_order": 23
     }
   ]
 }

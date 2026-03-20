@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2537,4 +2537,82 @@ async def test_game_audio_music_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "game-audio-music-composition-overview"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Game UI/UX Knowledge Sphere Tests (Phase 29) ──────────────
+
+@pytest.mark.asyncio
+async def test_game_ui_ux_data():
+    """Game UI/UX seed graph: 200 concepts, 220 edges, 10 subdomains, 25 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=game-ui-ux")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 200, f"Expected 200 concepts, got {len(nodes)}"
+        assert len(edges) == 220, f"Expected 220 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 10, f"Expected 10 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 25, f"Expected 25 milestones, got {len(milestones)}"
+
+@pytest.mark.asyncio
+async def test_game_ui_ux_rag():
+    """Game UI/UX RAG stats should reflect 200 documents across 10 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=game-ui-ux")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 200
+
+@pytest.mark.asyncio
+async def test_game_ui_ux_concept_detail():
+    """Should retrieve a specific Game UI/UX concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/guiux-hud-design-overview?domain=game-ui-ux")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "guiux-hud-design-overview"
+        assert data["domain_id"] == "game-ui-ux"
+
+@pytest.mark.asyncio
+async def test_game_ui_ux_subdomains():
+    """Game UI/UX should have 10 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=game-ui-ux")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 10
+        names = [s["name"] for s in data]
+        assert "HUD设计" in names
+        assert "菜单系统" in names
+        assert "UI技术实现" in names
+
+@pytest.mark.asyncio
+async def test_game_ui_ux_cross_links():
+    """Cross-sphere links for game-ui-ux should exist (↔ game-design/game-engine/etc)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=game-ui-ux")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] >= 20
+
+@pytest.mark.asyncio
+async def test_game_ui_ux_supplements():
+    """Game UI/UX should have domain & assessment supplements."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "game-ui-ux" in DOMAIN_SUPPLEMENTS, "game-ui-ux missing from DOMAIN_SUPPLEMENTS"
+    assert "game-ui-ux" in ASSESSMENT_SUPPLEMENTS, "game-ui-ux missing from ASSESSMENT_SUPPLEMENTS"
+    assert "UI" in DOMAIN_SUPPLEMENTS["game-ui-ux"], "Game UI/UX supplement should mention UI"
+
+@pytest.mark.asyncio
+async def test_game_ui_ux_neighbors():
+    """Game UI/UX concept should have neighbors."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/guiux-hud-design-overview/neighbors?domain=game-ui-ux&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "guiux-hud-design-overview"
         assert len(data["nodes"]) >= 2

@@ -3138,6 +3138,198 @@
       "target_id": "cd-style-intro",
       "relation": "related_to",
       "description": "文化音乐动机与视觉风格定义"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-design-overview",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "related",
+      "description": "HUD设计是游戏反馈系统的核心视觉通道"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-usability-overview",
+      "target_domain": "game-design",
+      "target_id": "player-motivation",
+      "relation": "applies_to",
+      "description": "可用性测试方法应用于玩家心理研究"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-menu-inventory",
+      "target_domain": "game-design",
+      "target_id": "game-economy-intro",
+      "relation": "related",
+      "description": "背包/商店UI是经济系统的前端展现"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-umg",
+      "target_domain": "game-engine",
+      "target_id": "editor-ext-intro",
+      "relation": "related",
+      "description": "UMG是UE5编辑器扩展的核心UI框架"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-performance",
+      "target_domain": "game-engine",
+      "target_id": "profiling-intro",
+      "relation": "applies_to",
+      "description": "UI性能优化依赖引擎性能剖析工具"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-shader-ui",
+      "target_domain": "technical-art",
+      "target_id": "ta-hlsl-basics",
+      "relation": "requires",
+      "description": "UI Shader效果基于HLSL/GLSL着色器编程"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-motion-performance",
+      "target_domain": "technical-art",
+      "target_id": "ta-perf-overview",
+      "relation": "related",
+      "description": "动效性能优化与性能优化概述密切相关"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-motion-12-principles",
+      "target_domain": "animation",
+      "target_id": "anim-principles-overview",
+      "relation": "applies_to",
+      "description": "迪士尼12原则在UI动效中的应用"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-motion-easing",
+      "target_domain": "animation",
+      "target_id": "anim-keyframe-basics",
+      "relation": "related",
+      "description": "缓动曲线与关键帧动画基础相关"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-icon-style-guide",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-reference-board",
+      "relation": "related",
+      "description": "图标风格指南参考概念设计的风格参考板"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-color-coding",
+      "target_domain": "concept-design",
+      "target_id": "cd-color-intro",
+      "relation": "requires",
+      "description": "HUD色彩编码需要色彩理论基础"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-motion-particle-ui",
+      "target_domain": "vfx",
+      "target_id": "vfx-niagara-overview",
+      "relation": "related",
+      "description": "UI粒子效果可使用Niagara粒子系统实现"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-feedback-screen-shake",
+      "target_domain": "vfx",
+      "target_id": "vfx-pp-volume",
+      "relation": "related",
+      "description": "屏幕震动反馈是后处理特效的一种应用"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-objective-marker",
+      "target_domain": "level-design",
+      "target_id": "visual-guidance",
+      "relation": "applies_to",
+      "description": "任务标记和导航UI辅助关卡视觉引导设计"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-spatial",
+      "target_domain": "level-design",
+      "target_id": "spatial-storytelling",
+      "relation": "related",
+      "description": "空间HUD元素参与环境空间叙事"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-data-binding",
+      "target_domain": "software-engineering",
+      "target_id": "se-state-pattern-game",
+      "relation": "requires",
+      "description": "UI数据绑定基于状态模式等设计模式"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-event-system",
+      "target_domain": "software-engineering",
+      "target_id": "se-command-pattern-game",
+      "relation": "related",
+      "description": "UI事件系统实现了命令模式"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-render-pipeline",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-raster-intro",
+      "relation": "requires",
+      "description": "UI渲染管线基于光栅化渲染基础"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-tech-atlas-batching",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-optim-intro",
+      "relation": "related",
+      "description": "图集合批与渲染优化策略相关"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-feedback-audio-cue",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-composition-overview",
+      "relation": "related",
+      "description": "UI音频反馈是游戏音乐/音效系统的组成部分"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-hud-spatial",
+      "target_domain": "3d-art",
+      "target_id": "3da-env-composition",
+      "relation": "related",
+      "description": "3D空间HUD与环境构图紧密相关"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-usability-heuristic",
+      "target_domain": "product-design",
+      "target_id": "usability-testing",
+      "relation": "same_concept",
+      "description": "游戏可用性评估源自产品设计的可用性测试方法论"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-usability-persona",
+      "target_domain": "product-design",
+      "target_id": "user-research-overview",
+      "relation": "related",
+      "description": "用户画像是用户研究的核心工具"
+    },
+    {
+      "source_domain": "game-ui-ux",
+      "source_id": "guiux-usability-cognitive-load",
+      "target_domain": "psychology",
+      "target_id": "cognitive-load",
+      "relation": "same_concept",
+      "description": "游戏UI认知负荷评估源自心理学认知负荷理论"
     }
   ],
   "meta": {
