@@ -744,6 +744,31 @@ VFX_ASSESSMENT_SUPPLEMENT = """
 - **艺术表现**: 用户是否能分析特效的美术风格？能否在写实/风格化之间做出合理选择？
 """
 
+GAME_AUDIO_MUSIC_DOMAIN_SUPPLEMENT = """
+## 游戏音乐教学特殊规则
+
+1. **听觉先行**: 音乐学习始终从聆听开始——分析经典游戏配乐，理解不同风格/场景下的音乐设计思路
+2. **理论与实践并重**: 音乐理论(和声/曲式/配器)是基础，但必须结合DAW实操和中间件实现才能真正掌握
+3. **交互思维**: 游戏音乐不是线性的——教学中强调自适应/动态音乐的设计思维，音乐如何响应玩家行为
+4. **工具链完整**: 从DAW作曲→中间件(Wwise/FMOD)集成→引擎实现，教学覆盖完整的游戏音乐管线
+5. **主题动机驱动**: Leitmotif是游戏音乐的灵魂。教学中培养为角色/场景/事件设计和发展音乐主题的能力
+6. **风格多样性**: 游戏音乐涵盖管弦乐/电子/民族/摇滚等多种风格。教学中拓展风格视野，培养融合创新能力
+7. **技术约束**: 游戏音乐受内存/CPU/文件大小等技术约束。教学中培养在艺术表现与技术限制间平衡的能力
+"""
+
+GAME_AUDIO_MUSIC_ASSESSMENT_SUPPLEMENT = """
+## 游戏音乐领域评估特殊指标
+
+在评估游戏音乐概念理解时，请额外关注以下方面：
+- **作曲能力**: 用户是否理解旋律/和声/节奏/配器的基本原理？能否为特定游戏场景设计合适的音乐？
+- **自适应理解**: 用户是否理解水平重组/垂直分层/状态机等自适应音乐技术？能否设计动态音乐系统？
+- **中间件实操**: 用户是否熟悉Wwise/FMOD的音乐系统功能？能否搭建交互式音乐播放逻辑？
+- **主题设计**: 用户是否能为角色/场景设计有辨识度的音乐主题？是否理解主题变奏与发展的技法？
+- **DAW技能**: 用户是否能使用DAW进行作曲/编曲/混音？是否了解虚拟乐器和采样库的使用？
+- **风格认知**: 用户是否能辨别和分析不同音乐风格？能否根据游戏需求选择合适的风格方向？
+- **技术意识**: 用户是否了解游戏音乐的内存/格式/流式播放等技术约束？能否优化音乐资源？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -769,6 +794,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "animation": ANIMATION_DOMAIN_SUPPLEMENT,
     "technical-art": TECHNICAL_ART_DOMAIN_SUPPLEMENT,
     "vfx": VFX_DOMAIN_SUPPLEMENT,
+    "game-audio-music": GAME_AUDIO_MUSIC_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -792,6 +818,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "animation": ANIMATION_ASSESSMENT_SUPPLEMENT,
     "technical-art": TECHNICAL_ART_ASSESSMENT_SUPPLEMENT,
     "vfx": VFX_ASSESSMENT_SUPPLEMENT,
+    "game-audio-music": GAME_AUDIO_MUSIC_ASSESSMENT_SUPPLEMENT,
 }
 
 

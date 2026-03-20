@@ -1,0 +1,1491 @@
+{
+  "version": "1.0",
+  "domain": "game-audio-music",
+  "domain_name": "游戏音乐",
+  "generated_at": "2026-03-21T05:08:58.572257",
+  "total_concepts": 180,
+  "stats": {
+    "total_docs": 180,
+    "total_chars": 277510,
+    "by_subdomain": {
+      "composition": {
+        "doc_count": 20,
+        "total_chars": 30596
+      },
+      "adaptive-music": {
+        "doc_count": 20,
+        "total_chars": 31014
+      },
+      "interactive-score": {
+        "doc_count": 20,
+        "total_chars": 31578
+      },
+      "music-theory": {
+        "doc_count": 20,
+        "total_chars": 30438
+      },
+      "daw": {
+        "doc_count": 20,
+        "total_chars": 31156
+      },
+      "wwise-music": {
+        "doc_count": 20,
+        "total_chars": 30890
+      },
+      "fmod-music": {
+        "doc_count": 20,
+        "total_chars": 30114
+      },
+      "leitmotif": {
+        "doc_count": 20,
+        "total_chars": 30710
+      },
+      "style-study": {
+        "doc_count": 20,
+        "total_chars": 31014
+      }
+    }
+  },
+  "documents": [
+    {
+      "id": "game-audio-music-composition-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-composition-overview.md",
+      "concept_name": "作曲基础概述",
+      "subdomain": "composition",
+      "difficulty": 1,
+      "chars": 1559
+    },
+    {
+      "id": "game-audio-music-melody-writing",
+      "file": "data/rag/game-audio-music/game-audio-music-melody-writing.md",
+      "concept_name": "旋律创作",
+      "subdomain": "composition",
+      "difficulty": 1,
+      "chars": 1557
+    },
+    {
+      "id": "game-audio-music-harmony-progression",
+      "file": "data/rag/game-audio-music/game-audio-music-harmony-progression.md",
+      "concept_name": "和声进行",
+      "subdomain": "composition",
+      "difficulty": 2,
+      "chars": 1517
+    },
+    {
+      "id": "game-audio-music-rhythm-pattern",
+      "file": "data/rag/game-audio-music/game-audio-music-rhythm-pattern.md",
+      "concept_name": "节奏型设计",
+      "subdomain": "composition",
+      "difficulty": 2,
+      "chars": 1555
+    },
+    {
+      "id": "game-audio-music-counterpoint-basics",
+      "file": "data/rag/game-audio-music/game-audio-music-counterpoint-basics.md",
+      "concept_name": "对位法基础",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1533
+    },
+    {
+      "id": "game-audio-music-orchestration-intro",
+      "file": "data/rag/game-audio-music/game-audio-music-orchestration-intro.md",
+      "concept_name": "配器法入门",
+      "subdomain": "composition",
+      "difficulty": 2,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-string-writing",
+      "file": "data/rag/game-audio-music/game-audio-music-string-writing.md",
+      "concept_name": "弦乐编写",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1495
+    },
+    {
+      "id": "game-audio-music-brass-woodwind",
+      "file": "data/rag/game-audio-music/game-audio-music-brass-woodwind.md",
+      "concept_name": "铜管与木管",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1535
+    },
+    {
+      "id": "game-audio-music-percussion-scoring",
+      "file": "data/rag/game-audio-music/game-audio-music-percussion-scoring.md",
+      "concept_name": "打击乐编写",
+      "subdomain": "composition",
+      "difficulty": 2,
+      "chars": 1545
+    },
+    {
+      "id": "game-audio-music-choir-vocal",
+      "file": "data/rag/game-audio-music/game-audio-music-choir-vocal.md",
+      "concept_name": "合唱与人声",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1553
+    },
+    {
+      "id": "game-audio-music-electronic-elements",
+      "file": "data/rag/game-audio-music/game-audio-music-electronic-elements.md",
+      "concept_name": "电子元素融合",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-hybrid-orchestral",
+      "file": "data/rag/game-audio-music/game-audio-music-hybrid-orchestral.md",
+      "concept_name": "混合管弦乐",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1543
+    },
+    {
+      "id": "game-audio-music-arrangement-technique",
+      "file": "data/rag/game-audio-music/game-audio-music-arrangement-technique.md",
+      "concept_name": "编曲技法",
+      "subdomain": "composition",
+      "difficulty": 2,
+      "chars": 1517
+    },
+    {
+      "id": "game-audio-music-form-structure",
+      "file": "data/rag/game-audio-music/game-audio-music-form-structure.md",
+      "concept_name": "曲式结构",
+      "subdomain": "composition",
+      "difficulty": 2,
+      "chars": 1525
+    },
+    {
+      "id": "game-audio-music-dynamic-range",
+      "file": "data/rag/game-audio-music/game-audio-music-dynamic-range.md",
+      "concept_name": "动态范围控制",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1535
+    },
+    {
+      "id": "game-audio-music-tempo-management",
+      "file": "data/rag/game-audio-music/game-audio-music-tempo-management.md",
+      "concept_name": "速度管理",
+      "subdomain": "composition",
+      "difficulty": 2,
+      "chars": 1499
+    },
+    {
+      "id": "game-audio-music-key-modulation",
+      "file": "data/rag/game-audio-music/game-audio-music-key-modulation.md",
+      "concept_name": "调性转换",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1493
+    },
+    {
+      "id": "game-audio-music-motif-development",
+      "file": "data/rag/game-audio-music/game-audio-music-motif-development.md",
+      "concept_name": "动机发展",
+      "subdomain": "composition",
+      "difficulty": 3,
+      "chars": 1475
+    },
+    {
+      "id": "game-audio-music-scoring-workflow",
+      "file": "data/rag/game-audio-music/game-audio-music-scoring-workflow.md",
+      "concept_name": "配乐工作流程",
+      "subdomain": "composition",
+      "difficulty": 1,
+      "chars": 1559
+    },
+    {
+      "id": "game-audio-music-music-demo-reel",
+      "file": "data/rag/game-audio-music/game-audio-music-music-demo-reel.md",
+      "concept_name": "音乐Demo制作",
+      "subdomain": "composition",
+      "difficulty": 2,
+      "chars": 1519
+    },
+    {
+      "id": "game-audio-music-adaptive-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-adaptive-overview.md",
+      "concept_name": "自适应音乐概述",
+      "subdomain": "adaptive-music",
+      "difficulty": 1,
+      "chars": 1603
+    },
+    {
+      "id": "game-audio-music-horizontal-resequencing",
+      "file": "data/rag/game-audio-music/game-audio-music-horizontal-resequencing.md",
+      "concept_name": "水平重组",
+      "subdomain": "adaptive-music",
+      "difficulty": 2,
+      "chars": 1551
+    },
+    {
+      "id": "game-audio-music-vertical-layering",
+      "file": "data/rag/game-audio-music/game-audio-music-vertical-layering.md",
+      "concept_name": "垂直分层",
+      "subdomain": "adaptive-music",
+      "difficulty": 2,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-transition-technique",
+      "file": "data/rag/game-audio-music/game-audio-music-transition-technique.md",
+      "concept_name": "过渡技术",
+      "subdomain": "adaptive-music",
+      "difficulty": 3,
+      "chars": 1539
+    },
+    {
+      "id": "game-audio-music-stinger-system",
+      "file": "data/rag/game-audio-music/game-audio-music-stinger-system.md",
+      "concept_name": "Stinger系统",
+      "subdomain": "adaptive-music",
+      "difficulty": 2,
+      "chars": 1513
+    },
+    {
+      "id": "game-audio-music-intensity-system",
+      "file": "data/rag/game-audio-music/game-audio-music-intensity-system.md",
+      "concept_name": "强度系统",
+      "subdomain": "adaptive-music",
+      "difficulty": 3,
+      "chars": 1531
+    },
+    {
+      "id": "game-audio-music-music-state-machine",
+      "file": "data/rag/game-audio-music/game-audio-music-music-state-machine.md",
+      "concept_name": "音乐状态机",
+      "subdomain": "adaptive-music",
+      "difficulty": 3,
+      "chars": 1575
+    },
+    {
+      "id": "game-audio-music-beat-sync",
+      "file": "data/rag/game-audio-music/game-audio-music-beat-sync.md",
+      "concept_name": "节拍同步",
+      "subdomain": "adaptive-music",
+      "difficulty": 3,
+      "chars": 1521
+    },
+    {
+      "id": "game-audio-music-procedural-music",
+      "file": "data/rag/game-audio-music/game-audio-music-procedural-music.md",
+      "concept_name": "程序化音乐",
+      "subdomain": "adaptive-music",
+      "difficulty": 4,
+      "chars": 1557
+    },
+    {
+      "id": "game-audio-music-generative-music",
+      "file": "data/rag/game-audio-music/game-audio-music-generative-music.md",
+      "concept_name": "生成式音乐",
+      "subdomain": "adaptive-music",
+      "difficulty": 5,
+      "chars": 1529
+    },
+    {
+      "id": "game-audio-music-exploration-music",
+      "file": "data/rag/game-audio-music/game-audio-music-exploration-music.md",
+      "concept_name": "探索音乐系统",
+      "subdomain": "adaptive-music",
+      "difficulty": 3,
+      "chars": 1553
+    },
+    {
+      "id": "game-audio-music-combat-music-system",
+      "file": "data/rag/game-audio-music/game-audio-music-combat-music-system.md",
+      "concept_name": "战斗音乐系统",
+      "subdomain": "adaptive-music",
+      "difficulty": 3,
+      "chars": 1583
+    },
+    {
+      "id": "game-audio-music-stealth-music",
+      "file": "data/rag/game-audio-music/game-audio-music-stealth-music.md",
+      "concept_name": "潜行音乐系统",
+      "subdomain": "adaptive-music",
+      "difficulty": 3,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-ambient-music-system",
+      "file": "data/rag/game-audio-music/game-audio-music-ambient-music-system.md",
+      "concept_name": "环境音乐系统",
+      "subdomain": "adaptive-music",
+      "difficulty": 2,
+      "chars": 1563
+    },
+    {
+      "id": "game-audio-music-menu-music",
+      "file": "data/rag/game-audio-music/game-audio-music-menu-music.md",
+      "concept_name": "菜单与UI音乐",
+      "subdomain": "adaptive-music",
+      "difficulty": 1,
+      "chars": 1545
+    },
+    {
+      "id": "game-audio-music-cutscene-scoring",
+      "file": "data/rag/game-audio-music/game-audio-music-cutscene-scoring.md",
+      "concept_name": "过场配乐",
+      "subdomain": "adaptive-music",
+      "difficulty": 2,
+      "chars": 1499
+    },
+    {
+      "id": "game-audio-music-dynamic-mixing",
+      "file": "data/rag/game-audio-music/game-audio-music-dynamic-mixing.md",
+      "concept_name": "动态混音",
+      "subdomain": "adaptive-music",
+      "difficulty": 4,
+      "chars": 1529
+    },
+    {
+      "id": "game-audio-music-music-memory",
+      "file": "data/rag/game-audio-music/game-audio-music-music-memory.md",
+      "concept_name": "音乐记忆管理",
+      "subdomain": "adaptive-music",
+      "difficulty": 4,
+      "chars": 1587
+    },
+    {
+      "id": "game-audio-music-adaptive-testing",
+      "file": "data/rag/game-audio-music/game-audio-music-adaptive-testing.md",
+      "concept_name": "自适应测试方法",
+      "subdomain": "adaptive-music",
+      "difficulty": 3,
+      "chars": 1565
+    },
+    {
+      "id": "game-audio-music-case-study-adaptive",
+      "file": "data/rag/game-audio-music/game-audio-music-case-study-adaptive.md",
+      "concept_name": "案例分析:自适应",
+      "subdomain": "adaptive-music",
+      "difficulty": 2,
+      "chars": 1589
+    },
+    {
+      "id": "game-audio-music-interactive-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-interactive-overview.md",
+      "concept_name": "交互式配乐概述",
+      "subdomain": "interactive-score",
+      "difficulty": 1,
+      "chars": 1589
+    },
+    {
+      "id": "game-audio-music-player-agency",
+      "file": "data/rag/game-audio-music/game-audio-music-player-agency.md",
+      "concept_name": "玩家能动性与音乐",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1635
+    },
+    {
+      "id": "game-audio-music-emotional-arc",
+      "file": "data/rag/game-audio-music/game-audio-music-emotional-arc.md",
+      "concept_name": "情感弧线设计",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1553
+    },
+    {
+      "id": "game-audio-music-music-game-loop",
+      "file": "data/rag/game-audio-music/game-audio-music-music-game-loop.md",
+      "concept_name": "音乐与核心循环",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1605
+    },
+    {
+      "id": "game-audio-music-region-music",
+      "file": "data/rag/game-audio-music/game-audio-music-region-music.md",
+      "concept_name": "区域音乐设计",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1567
+    },
+    {
+      "id": "game-audio-music-npc-music",
+      "file": "data/rag/game-audio-music/game-audio-music-npc-music.md",
+      "concept_name": "NPC与音乐互动",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1575
+    },
+    {
+      "id": "game-audio-music-quest-music",
+      "file": "data/rag/game-audio-music/game-audio-music-quest-music.md",
+      "concept_name": "任务音乐设计",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1561
+    },
+    {
+      "id": "game-audio-music-boss-music-design",
+      "file": "data/rag/game-audio-music/game-audio-music-boss-music-design.md",
+      "concept_name": "Boss战配乐设计",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1615
+    },
+    {
+      "id": "game-audio-music-puzzle-music",
+      "file": "data/rag/game-audio-music/game-audio-music-puzzle-music.md",
+      "concept_name": "解谜音乐设计",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1581
+    },
+    {
+      "id": "game-audio-music-horror-music",
+      "file": "data/rag/game-audio-music/game-audio-music-horror-music.md",
+      "concept_name": "恐怖音乐设计",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1593
+    },
+    {
+      "id": "game-audio-music-racing-music",
+      "file": "data/rag/game-audio-music/game-audio-music-racing-music.md",
+      "concept_name": "竞速音乐设计",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1577
+    },
+    {
+      "id": "game-audio-music-rhythm-game-scoring",
+      "file": "data/rag/game-audio-music/game-audio-music-rhythm-game-scoring.md",
+      "concept_name": "音游配乐设计",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1559
+    },
+    {
+      "id": "game-audio-music-multiplayer-music",
+      "file": "data/rag/game-audio-music/game-audio-music-multiplayer-music.md",
+      "concept_name": "多人游戏音乐",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1583
+    },
+    {
+      "id": "game-audio-music-open-world-music",
+      "file": "data/rag/game-audio-music/game-audio-music-open-world-music.md",
+      "concept_name": "开放世界配乐",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1577
+    },
+    {
+      "id": "game-audio-music-narrative-music",
+      "file": "data/rag/game-audio-music/game-audio-music-narrative-music.md",
+      "concept_name": "叙事驱动配乐",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1593
+    },
+    {
+      "id": "game-audio-music-music-silence",
+      "file": "data/rag/game-audio-music/game-audio-music-music-silence.md",
+      "concept_name": "沉默的艺术",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1569
+    },
+    {
+      "id": "game-audio-music-diegetic-music",
+      "file": "data/rag/game-audio-music/game-audio-music-diegetic-music.md",
+      "concept_name": "叙境内音乐",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1557
+    },
+    {
+      "id": "game-audio-music-music-pacing",
+      "file": "data/rag/game-audio-music/game-audio-music-music-pacing.md",
+      "concept_name": "音乐节奏控制",
+      "subdomain": "interactive-score",
+      "difficulty": 3,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-interactive-concert",
+      "file": "data/rag/game-audio-music/game-audio-music-interactive-concert.md",
+      "concept_name": "互动式音乐会",
+      "subdomain": "interactive-score",
+      "difficulty": 4,
+      "chars": 1549
+    },
+    {
+      "id": "game-audio-music-case-study-interactive",
+      "file": "data/rag/game-audio-music/game-audio-music-case-study-interactive.md",
+      "concept_name": "案例分析:交互配乐",
+      "subdomain": "interactive-score",
+      "difficulty": 2,
+      "chars": 1599
+    },
+    {
+      "id": "game-audio-music-theory-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-theory-overview.md",
+      "concept_name": "音乐理论概述",
+      "subdomain": "music-theory",
+      "difficulty": 1,
+      "chars": 1547
+    },
+    {
+      "id": "game-audio-music-scales-modes",
+      "file": "data/rag/game-audio-music/game-audio-music-scales-modes.md",
+      "concept_name": "音阶与调式",
+      "subdomain": "music-theory",
+      "difficulty": 1,
+      "chars": 1571
+    },
+    {
+      "id": "game-audio-music-chord-theory",
+      "file": "data/rag/game-audio-music/game-audio-music-chord-theory.md",
+      "concept_name": "和弦理论",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1517
+    },
+    {
+      "id": "game-audio-music-chord-progression-patterns",
+      "file": "data/rag/game-audio-music/game-audio-music-chord-progression-patterns.md",
+      "concept_name": "和弦进行模式",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1547
+    },
+    {
+      "id": "game-audio-music-interval-emotion",
+      "file": "data/rag/game-audio-music/game-audio-music-interval-emotion.md",
+      "concept_name": "音程与情感",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1535
+    },
+    {
+      "id": "game-audio-music-rhythm-theory",
+      "file": "data/rag/game-audio-music/game-audio-music-rhythm-theory.md",
+      "concept_name": "节奏理论",
+      "subdomain": "music-theory",
+      "difficulty": 1,
+      "chars": 1523
+    },
+    {
+      "id": "game-audio-music-timbre-texture",
+      "file": "data/rag/game-audio-music/game-audio-music-timbre-texture.md",
+      "concept_name": "音色与织体",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1511
+    },
+    {
+      "id": "game-audio-music-harmonic-rhythm",
+      "file": "data/rag/game-audio-music/game-audio-music-harmonic-rhythm.md",
+      "concept_name": "和声节奏",
+      "subdomain": "music-theory",
+      "difficulty": 3,
+      "chars": 1487
+    },
+    {
+      "id": "game-audio-music-tension-resolution",
+      "file": "data/rag/game-audio-music/game-audio-music-tension-resolution.md",
+      "concept_name": "紧张与解决",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1539
+    },
+    {
+      "id": "game-audio-music-modal-interchange",
+      "file": "data/rag/game-audio-music/game-audio-music-modal-interchange.md",
+      "concept_name": "调式互换",
+      "subdomain": "music-theory",
+      "difficulty": 3,
+      "chars": 1505
+    },
+    {
+      "id": "game-audio-music-secondary-dominants",
+      "file": "data/rag/game-audio-music/game-audio-music-secondary-dominants.md",
+      "concept_name": "副属和弦",
+      "subdomain": "music-theory",
+      "difficulty": 3,
+      "chars": 1493
+    },
+    {
+      "id": "game-audio-music-pentatonic-application",
+      "file": "data/rag/game-audio-music/game-audio-music-pentatonic-application.md",
+      "concept_name": "五声音阶应用",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1561
+    },
+    {
+      "id": "game-audio-music-chromatic-technique",
+      "file": "data/rag/game-audio-music/game-audio-music-chromatic-technique.md",
+      "concept_name": "半音技法",
+      "subdomain": "music-theory",
+      "difficulty": 3,
+      "chars": 1495
+    },
+    {
+      "id": "game-audio-music-ostinato-pattern",
+      "file": "data/rag/game-audio-music/game-audio-music-ostinato-pattern.md",
+      "concept_name": "固定音型",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1493
+    },
+    {
+      "id": "game-audio-music-drone-pedal",
+      "file": "data/rag/game-audio-music/game-audio-music-drone-pedal.md",
+      "concept_name": "持续音与踏板音",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1561
+    },
+    {
+      "id": "game-audio-music-polyrhythm",
+      "file": "data/rag/game-audio-music/game-audio-music-polyrhythm.md",
+      "concept_name": "复合节奏",
+      "subdomain": "music-theory",
+      "difficulty": 4,
+      "chars": 1505
+    },
+    {
+      "id": "game-audio-music-microtonality",
+      "file": "data/rag/game-audio-music/game-audio-music-microtonality.md",
+      "concept_name": "微分音",
+      "subdomain": "music-theory",
+      "difficulty": 5,
+      "chars": 1493
+    },
+    {
+      "id": "game-audio-music-form-analysis",
+      "file": "data/rag/game-audio-music/game-audio-music-form-analysis.md",
+      "concept_name": "曲式分析",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1515
+    },
+    {
+      "id": "game-audio-music-ear-training",
+      "file": "data/rag/game-audio-music/game-audio-music-ear-training.md",
+      "concept_name": "听力训练",
+      "subdomain": "music-theory",
+      "difficulty": 1,
+      "chars": 1499
+    },
+    {
+      "id": "game-audio-music-theory-to-practice",
+      "file": "data/rag/game-audio-music/game-audio-music-theory-to-practice.md",
+      "concept_name": "理论到实践",
+      "subdomain": "music-theory",
+      "difficulty": 2,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-daw-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-daw-overview.md",
+      "concept_name": "DAW概述",
+      "subdomain": "daw",
+      "difficulty": 1,
+      "chars": 1531
+    },
+    {
+      "id": "game-audio-music-daw-comparison",
+      "file": "data/rag/game-audio-music/game-audio-music-daw-comparison.md",
+      "concept_name": "DAW对比选择",
+      "subdomain": "daw",
+      "difficulty": 1,
+      "chars": 1567
+    },
+    {
+      "id": "game-audio-music-midi-fundamentals",
+      "file": "data/rag/game-audio-music/game-audio-music-midi-fundamentals.md",
+      "concept_name": "MIDI基础",
+      "subdomain": "daw",
+      "difficulty": 1,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-audio-recording",
+      "file": "data/rag/game-audio-music/game-audio-music-audio-recording.md",
+      "concept_name": "音频录制",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1553
+    },
+    {
+      "id": "game-audio-music-virtual-instruments",
+      "file": "data/rag/game-audio-music/game-audio-music-virtual-instruments.md",
+      "concept_name": "虚拟乐器",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1559
+    },
+    {
+      "id": "game-audio-music-sample-library",
+      "file": "data/rag/game-audio-music/game-audio-music-sample-library.md",
+      "concept_name": "采样库管理",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1575
+    },
+    {
+      "id": "game-audio-music-synth-programming",
+      "file": "data/rag/game-audio-music/game-audio-music-synth-programming.md",
+      "concept_name": "合成器编程",
+      "subdomain": "daw",
+      "difficulty": 3,
+      "chars": 1559
+    },
+    {
+      "id": "game-audio-music-mixing-basics",
+      "file": "data/rag/game-audio-music/game-audio-music-mixing-basics.md",
+      "concept_name": "混音基础",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1545
+    },
+    {
+      "id": "game-audio-music-eq-compression",
+      "file": "data/rag/game-audio-music/game-audio-music-eq-compression.md",
+      "concept_name": "EQ与压缩",
+      "subdomain": "daw",
+      "difficulty": 3,
+      "chars": 1517
+    },
+    {
+      "id": "game-audio-music-reverb-delay",
+      "file": "data/rag/game-audio-music/game-audio-music-reverb-delay.md",
+      "concept_name": "混响与延迟",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1571
+    },
+    {
+      "id": "game-audio-music-mastering-basics",
+      "file": "data/rag/game-audio-music/game-audio-music-mastering-basics.md",
+      "concept_name": "母带处理基础",
+      "subdomain": "daw",
+      "difficulty": 3,
+      "chars": 1583
+    },
+    {
+      "id": "game-audio-music-export-formats",
+      "file": "data/rag/game-audio-music/game-audio-music-export-formats.md",
+      "concept_name": "导出格式规范",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1589
+    },
+    {
+      "id": "game-audio-music-template-setup",
+      "file": "data/rag/game-audio-music/game-audio-music-template-setup.md",
+      "concept_name": "工程模板搭建",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1589
+    },
+    {
+      "id": "game-audio-music-automation-daw",
+      "file": "data/rag/game-audio-music/game-audio-music-automation-daw.md",
+      "concept_name": "自动化与表情",
+      "subdomain": "daw",
+      "difficulty": 3,
+      "chars": 1567
+    },
+    {
+      "id": "game-audio-music-stem-export",
+      "file": "data/rag/game-audio-music/game-audio-music-stem-export.md",
+      "concept_name": "分轨导出",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1519
+    },
+    {
+      "id": "game-audio-music-batch-processing",
+      "file": "data/rag/game-audio-music/game-audio-music-batch-processing.md",
+      "concept_name": "批量处理",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1531
+    },
+    {
+      "id": "game-audio-music-orchestral-mockup",
+      "file": "data/rag/game-audio-music/game-audio-music-orchestral-mockup.md",
+      "concept_name": "管弦乐模拟",
+      "subdomain": "daw",
+      "difficulty": 4,
+      "chars": 1561
+    },
+    {
+      "id": "game-audio-music-reaper-gameaudio",
+      "file": "data/rag/game-audio-music/game-audio-music-reaper-gameaudio.md",
+      "concept_name": "Reaper游戏音频",
+      "subdomain": "daw",
+      "difficulty": 2,
+      "chars": 1567
+    },
+    {
+      "id": "game-audio-music-plugin-chain",
+      "file": "data/rag/game-audio-music/game-audio-music-plugin-chain.md",
+      "concept_name": "效果器链设计",
+      "subdomain": "daw",
+      "difficulty": 3,
+      "chars": 1567
+    },
+    {
+      "id": "game-audio-music-daw-performance",
+      "file": "data/rag/game-audio-music/game-audio-music-daw-performance.md",
+      "concept_name": "DAW性能优化",
+      "subdomain": "daw",
+      "difficulty": 3,
+      "chars": 1565
+    },
+    {
+      "id": "game-audio-music-wwise-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-overview.md",
+      "concept_name": "Wwise概述",
+      "subdomain": "wwise-music",
+      "difficulty": 1,
+      "chars": 1547
+    },
+    {
+      "id": "game-audio-music-wwise-project-setup",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-project-setup.md",
+      "concept_name": "Wwise项目搭建",
+      "subdomain": "wwise-music",
+      "difficulty": 1,
+      "chars": 1557
+    },
+    {
+      "id": "game-audio-music-wwise-music-segment",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-music-segment.md",
+      "concept_name": "Music Segment",
+      "subdomain": "wwise-music",
+      "difficulty": 2,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-wwise-music-playlist",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-music-playlist.md",
+      "concept_name": "Music Playlist",
+      "subdomain": "wwise-music",
+      "difficulty": 2,
+      "chars": 1537
+    },
+    {
+      "id": "game-audio-music-wwise-music-switch",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-music-switch.md",
+      "concept_name": "Music Switch",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1537
+    },
+    {
+      "id": "game-audio-music-wwise-transition",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-transition.md",
+      "concept_name": "Transition规则",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1571
+    },
+    {
+      "id": "game-audio-music-wwise-stinger-impl",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-stinger-impl.md",
+      "concept_name": "Stinger实现",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1537
+    },
+    {
+      "id": "game-audio-music-wwise-meter",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-meter.md",
+      "concept_name": "节拍与小节",
+      "subdomain": "wwise-music",
+      "difficulty": 2,
+      "chars": 1525
+    },
+    {
+      "id": "game-audio-music-wwise-rtpc-music",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-rtpc-music.md",
+      "concept_name": "RTPC音乐控制",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1533
+    },
+    {
+      "id": "game-audio-music-wwise-state-music",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-state-music.md",
+      "concept_name": "State驱动音乐",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1533
+    },
+    {
+      "id": "game-audio-music-wwise-trigger-music",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-trigger-music.md",
+      "concept_name": "Trigger音乐事件",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1553
+    },
+    {
+      "id": "game-audio-music-wwise-interactive-demo",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-interactive-demo.md",
+      "concept_name": "交互音乐实战",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1583
+    },
+    {
+      "id": "game-audio-music-wwise-soundbank-music",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-soundbank-music.md",
+      "concept_name": "音乐SoundBank",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1549
+    },
+    {
+      "id": "game-audio-music-wwise-profiler-music",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-profiler-music.md",
+      "concept_name": "Wwise Profiler调试",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1569
+    },
+    {
+      "id": "game-audio-music-wwise-ue-integration",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-ue-integration.md",
+      "concept_name": "Wwise-UE集成",
+      "subdomain": "wwise-music",
+      "difficulty": 2,
+      "chars": 1517
+    },
+    {
+      "id": "game-audio-music-wwise-unity-integration",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-unity-integration.md",
+      "concept_name": "Wwise-Unity集成",
+      "subdomain": "wwise-music",
+      "difficulty": 2,
+      "chars": 1525
+    },
+    {
+      "id": "game-audio-music-wwise-midi",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-midi.md",
+      "concept_name": "Wwise MIDI",
+      "subdomain": "wwise-music",
+      "difficulty": 4,
+      "chars": 1473
+    },
+    {
+      "id": "game-audio-music-wwise-music-callback",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-music-callback.md",
+      "concept_name": "Music Callback",
+      "subdomain": "wwise-music",
+      "difficulty": 4,
+      "chars": 1521
+    },
+    {
+      "id": "game-audio-music-wwise-mixing-music",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-mixing-music.md",
+      "concept_name": "Wwise音乐混音",
+      "subdomain": "wwise-music",
+      "difficulty": 3,
+      "chars": 1553
+    },
+    {
+      "id": "game-audio-music-wwise-best-practices",
+      "file": "data/rag/game-audio-music/game-audio-music-wwise-best-practices.md",
+      "concept_name": "Wwise音乐最佳实践",
+      "subdomain": "wwise-music",
+      "difficulty": 2,
+      "chars": 1629
+    },
+    {
+      "id": "game-audio-music-fmod-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-overview.md",
+      "concept_name": "FMOD概述",
+      "subdomain": "fmod-music",
+      "difficulty": 1,
+      "chars": 1485
+    },
+    {
+      "id": "game-audio-music-fmod-project-setup",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-project-setup.md",
+      "concept_name": "FMOD项目搭建",
+      "subdomain": "fmod-music",
+      "difficulty": 1,
+      "chars": 1509
+    },
+    {
+      "id": "game-audio-music-fmod-music-event",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-music-event.md",
+      "concept_name": "Music Event",
+      "subdomain": "fmod-music",
+      "difficulty": 2,
+      "chars": 1485
+    },
+    {
+      "id": "game-audio-music-fmod-timeline",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-timeline.md",
+      "concept_name": "Timeline编辑",
+      "subdomain": "fmod-music",
+      "difficulty": 2,
+      "chars": 1511
+    },
+    {
+      "id": "game-audio-music-fmod-parameter-music",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-parameter-music.md",
+      "concept_name": "参数化音乐",
+      "subdomain": "fmod-music",
+      "difficulty": 2,
+      "chars": 1503
+    },
+    {
+      "id": "game-audio-music-fmod-transition-region",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-transition-region.md",
+      "concept_name": "Transition Region",
+      "subdomain": "fmod-music",
+      "difficulty": 3,
+      "chars": 1531
+    },
+    {
+      "id": "game-audio-music-fmod-logic-marker",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-logic-marker.md",
+      "concept_name": "Logic Marker",
+      "subdomain": "fmod-music",
+      "difficulty": 3,
+      "chars": 1515
+    },
+    {
+      "id": "game-audio-music-fmod-multi-instrument",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-multi-instrument.md",
+      "concept_name": "Multi Instrument",
+      "subdomain": "fmod-music",
+      "difficulty": 2,
+      "chars": 1505
+    },
+    {
+      "id": "game-audio-music-fmod-music-sheet",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-music-sheet.md",
+      "concept_name": "音乐Sheet",
+      "subdomain": "fmod-music",
+      "difficulty": 3,
+      "chars": 1459
+    },
+    {
+      "id": "game-audio-music-fmod-automation",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-automation.md",
+      "concept_name": "FMOD自动化",
+      "subdomain": "fmod-music",
+      "difficulty": 3,
+      "chars": 1495
+    },
+    {
+      "id": "game-audio-music-fmod-snapshot",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-snapshot.md",
+      "concept_name": "FMOD Snapshot",
+      "subdomain": "fmod-music",
+      "difficulty": 3,
+      "chars": 1495
+    },
+    {
+      "id": "game-audio-music-fmod-interactive-demo",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-interactive-demo.md",
+      "concept_name": "交互音乐实战",
+      "subdomain": "fmod-music",
+      "difficulty": 3,
+      "chars": 1553
+    },
+    {
+      "id": "game-audio-music-fmod-bank-music",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-bank-music.md",
+      "concept_name": "音乐Bank管理",
+      "subdomain": "fmod-music",
+      "difficulty": 3,
+      "chars": 1509
+    },
+    {
+      "id": "game-audio-music-fmod-live-update",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-live-update.md",
+      "concept_name": "Live Update调试",
+      "subdomain": "fmod-music",
+      "difficulty": 2,
+      "chars": 1497
+    },
+    {
+      "id": "game-audio-music-fmod-ue-integration",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-ue-integration.md",
+      "concept_name": "FMOD-UE集成",
+      "subdomain": "fmod-music",
+      "difficulty": 2,
+      "chars": 1467
+    },
+    {
+      "id": "game-audio-music-fmod-unity-integration",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-unity-integration.md",
+      "concept_name": "FMOD-Unity集成",
+      "subdomain": "fmod-music",
+      "difficulty": 2,
+      "chars": 1475
+    },
+    {
+      "id": "game-audio-music-fmod-command-instrument",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-command-instrument.md",
+      "concept_name": "Command Instrument",
+      "subdomain": "fmod-music",
+      "difficulty": 4,
+      "chars": 1537
+    },
+    {
+      "id": "game-audio-music-fmod-music-callback",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-music-callback.md",
+      "concept_name": "Music Callback",
+      "subdomain": "fmod-music",
+      "difficulty": 4,
+      "chars": 1485
+    },
+    {
+      "id": "game-audio-music-fmod-mixing-music",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-mixing-music.md",
+      "concept_name": "FMOD音乐混音",
+      "subdomain": "fmod-music",
+      "difficulty": 3,
+      "chars": 1507
+    },
+    {
+      "id": "game-audio-music-fmod-best-practices",
+      "file": "data/rag/game-audio-music/game-audio-music-fmod-best-practices.md",
+      "concept_name": "FMOD音乐最佳实践",
+      "subdomain": "fmod-music",
+      "difficulty": 2,
+      "chars": 1591
+    },
+    {
+      "id": "game-audio-music-leitmotif-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-leitmotif-overview.md",
+      "concept_name": "主题动机概述",
+      "subdomain": "leitmotif",
+      "difficulty": 1,
+      "chars": 1575
+    },
+    {
+      "id": "game-audio-music-character-theme",
+      "file": "data/rag/game-audio-music/game-audio-music-character-theme.md",
+      "concept_name": "角色主题",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1527
+    },
+    {
+      "id": "game-audio-music-villain-theme",
+      "file": "data/rag/game-audio-music/game-audio-music-villain-theme.md",
+      "concept_name": "反派主题",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1521
+    },
+    {
+      "id": "game-audio-music-location-theme",
+      "file": "data/rag/game-audio-music/game-audio-music-location-theme.md",
+      "concept_name": "场景主题",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1529
+    },
+    {
+      "id": "game-audio-music-faction-theme",
+      "file": "data/rag/game-audio-music/game-audio-music-faction-theme.md",
+      "concept_name": "阵营主题",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1507
+    },
+    {
+      "id": "game-audio-music-theme-variation",
+      "file": "data/rag/game-audio-music/game-audio-music-theme-variation.md",
+      "concept_name": "主题变奏技法",
+      "subdomain": "leitmotif",
+      "difficulty": 3,
+      "chars": 1569
+    },
+    {
+      "id": "game-audio-music-theme-development-arc",
+      "file": "data/rag/game-audio-music/game-audio-music-theme-development-arc.md",
+      "concept_name": "主题发展弧线",
+      "subdomain": "leitmotif",
+      "difficulty": 3,
+      "chars": 1575
+    },
+    {
+      "id": "game-audio-music-theme-combination",
+      "file": "data/rag/game-audio-music/game-audio-music-theme-combination.md",
+      "concept_name": "主题组合",
+      "subdomain": "leitmotif",
+      "difficulty": 4,
+      "chars": 1481
+    },
+    {
+      "id": "game-audio-music-theme-fragmentation",
+      "file": "data/rag/game-audio-music/game-audio-music-theme-fragmentation.md",
+      "concept_name": "主题碎片化",
+      "subdomain": "leitmotif",
+      "difficulty": 3,
+      "chars": 1539
+    },
+    {
+      "id": "game-audio-music-theme-inversion",
+      "file": "data/rag/game-audio-music/game-audio-music-theme-inversion.md",
+      "concept_name": "主题倒影",
+      "subdomain": "leitmotif",
+      "difficulty": 4,
+      "chars": 1515
+    },
+    {
+      "id": "game-audio-music-emotional-mapping",
+      "file": "data/rag/game-audio-music/game-audio-music-emotional-mapping.md",
+      "concept_name": "情感映射",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1499
+    },
+    {
+      "id": "game-audio-music-callback-theme",
+      "file": "data/rag/game-audio-music/game-audio-music-callback-theme.md",
+      "concept_name": "回忆主题",
+      "subdomain": "leitmotif",
+      "difficulty": 3,
+      "chars": 1511
+    },
+    {
+      "id": "game-audio-music-title-theme",
+      "file": "data/rag/game-audio-music/game-audio-music-title-theme.md",
+      "concept_name": "主题曲设计",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1531
+    },
+    {
+      "id": "game-audio-music-end-credits-music",
+      "file": "data/rag/game-audio-music/game-audio-music-end-credits-music.md",
+      "concept_name": "片尾曲设计",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1511
+    },
+    {
+      "id": "game-audio-music-trailer-music",
+      "file": "data/rag/game-audio-music/game-audio-music-trailer-music.md",
+      "concept_name": "预告片音乐",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1557
+    },
+    {
+      "id": "game-audio-music-theme-orchestration",
+      "file": "data/rag/game-audio-music/game-audio-music-theme-orchestration.md",
+      "concept_name": "主题配器变化",
+      "subdomain": "leitmotif",
+      "difficulty": 3,
+      "chars": 1523
+    },
+    {
+      "id": "game-audio-music-cultural-motif",
+      "file": "data/rag/game-audio-music/game-audio-music-cultural-motif.md",
+      "concept_name": "文化动机",
+      "subdomain": "leitmotif",
+      "difficulty": 3,
+      "chars": 1511
+    },
+    {
+      "id": "game-audio-music-world-building-music",
+      "file": "data/rag/game-audio-music/game-audio-music-world-building-music.md",
+      "concept_name": "音乐世界构建",
+      "subdomain": "leitmotif",
+      "difficulty": 3,
+      "chars": 1559
+    },
+    {
+      "id": "game-audio-music-motif-catalog",
+      "file": "data/rag/game-audio-music/game-audio-music-motif-catalog.md",
+      "concept_name": "动机素材库",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1535
+    },
+    {
+      "id": "game-audio-music-case-study-leitmotif",
+      "file": "data/rag/game-audio-music/game-audio-music-case-study-leitmotif.md",
+      "concept_name": "案例分析:主题动机",
+      "subdomain": "leitmotif",
+      "difficulty": 2,
+      "chars": 1635
+    },
+    {
+      "id": "game-audio-music-style-overview",
+      "file": "data/rag/game-audio-music/game-audio-music-style-overview.md",
+      "concept_name": "风格研究概述",
+      "subdomain": "style-study",
+      "difficulty": 1,
+      "chars": 1547
+    },
+    {
+      "id": "game-audio-music-orchestral-style",
+      "file": "data/rag/game-audio-music/game-audio-music-orchestral-style.md",
+      "concept_name": "管弦乐风格",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1533
+    },
+    {
+      "id": "game-audio-music-electronic-style",
+      "file": "data/rag/game-audio-music/game-audio-music-electronic-style.md",
+      "concept_name": "电子音乐风格",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1565
+    },
+    {
+      "id": "game-audio-music-retro-chiptune",
+      "file": "data/rag/game-audio-music/game-audio-music-retro-chiptune.md",
+      "concept_name": "复古/芯片音乐",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1555
+    },
+    {
+      "id": "game-audio-music-rock-metal-style",
+      "file": "data/rag/game-audio-music/game-audio-music-rock-metal-style.md",
+      "concept_name": "摇滚/金属风格",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1551
+    },
+    {
+      "id": "game-audio-music-jazz-style",
+      "file": "data/rag/game-audio-music/game-audio-music-jazz-style.md",
+      "concept_name": "爵士风格",
+      "subdomain": "style-study",
+      "difficulty": 3,
+      "chars": 1499
+    },
+    {
+      "id": "game-audio-music-folk-acoustic",
+      "file": "data/rag/game-audio-music/game-audio-music-folk-acoustic.md",
+      "concept_name": "民谣/原声风格",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1545
+    },
+    {
+      "id": "game-audio-music-world-music",
+      "file": "data/rag/game-audio-music/game-audio-music-world-music.md",
+      "concept_name": "世界音乐",
+      "subdomain": "style-study",
+      "difficulty": 3,
+      "chars": 1563
+    },
+    {
+      "id": "game-audio-music-cinematic-epic",
+      "file": "data/rag/game-audio-music/game-audio-music-cinematic-epic.md",
+      "concept_name": "史诗电影风格",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-minimalist-style",
+      "file": "data/rag/game-audio-music/game-audio-music-minimalist-style.md",
+      "concept_name": "极简主义风格",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1549
+    },
+    {
+      "id": "game-audio-music-dark-ambient",
+      "file": "data/rag/game-audio-music/game-audio-music-dark-ambient.md",
+      "concept_name": "暗氛围风格",
+      "subdomain": "style-study",
+      "difficulty": 3,
+      "chars": 1513
+    },
+    {
+      "id": "game-audio-music-sci-fi-music",
+      "file": "data/rag/game-audio-music/game-audio-music-sci-fi-music.md",
+      "concept_name": "科幻音乐风格",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1563
+    },
+    {
+      "id": "game-audio-music-fantasy-medieval",
+      "file": "data/rag/game-audio-music/game-audio-music-fantasy-medieval.md",
+      "concept_name": "奇幻/中世纪风格",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1625
+    },
+    {
+      "id": "game-audio-music-asian-game-music",
+      "file": "data/rag/game-audio-music/game-audio-music-asian-game-music.md",
+      "concept_name": "亚洲游戏音乐",
+      "subdomain": "style-study",
+      "difficulty": 3,
+      "chars": 1557
+    },
+    {
+      "id": "game-audio-music-latin-game-music",
+      "file": "data/rag/game-audio-music/game-audio-music-latin-game-music.md",
+      "concept_name": "拉丁游戏音乐",
+      "subdomain": "style-study",
+      "difficulty": 3,
+      "chars": 1563
+    },
+    {
+      "id": "game-audio-music-hybrid-genre",
+      "file": "data/rag/game-audio-music/game-audio-music-hybrid-genre.md",
+      "concept_name": "混合风格",
+      "subdomain": "style-study",
+      "difficulty": 3,
+      "chars": 1519
+    },
+    {
+      "id": "game-audio-music-period-music",
+      "file": "data/rag/game-audio-music/game-audio-music-period-music.md",
+      "concept_name": "时代音乐考据",
+      "subdomain": "style-study",
+      "difficulty": 3,
+      "chars": 1541
+    },
+    {
+      "id": "game-audio-music-indie-game-music",
+      "file": "data/rag/game-audio-music/game-audio-music-indie-game-music.md",
+      "concept_name": "独立游戏音乐",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1593
+    },
+    {
+      "id": "game-audio-music-music-reference",
+      "file": "data/rag/game-audio-music/game-audio-music-music-reference.md",
+      "concept_name": "音乐参考分析",
+      "subdomain": "style-study",
+      "difficulty": 2,
+      "chars": 1575
+    },
+    {
+      "id": "game-audio-music-style-portfolio",
+      "file": "data/rag/game-audio-music/game-audio-music-style-portfolio.md",
+      "concept_name": "风格作品集",
+      "subdomain": "style-study",
+      "difficulty": 1,
+      "chars": 1517
+    }
+  ]
+}

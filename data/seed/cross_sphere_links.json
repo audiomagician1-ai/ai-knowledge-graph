@@ -2954,6 +2954,190 @@
       "target_id": "kinematics-1d",
       "relation": "applies",
       "description": "粒子重力模拟直接应用运动学的加速度和抛物线轨迹"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-adaptive-overview",
+      "target_domain": "game-design",
+      "target_id": "core-loop-intro",
+      "relation": "related_to",
+      "description": "自适应音乐系统配合游戏核心循环"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-player-agency",
+      "target_domain": "game-design",
+      "target_id": "player-motivation",
+      "relation": "related_to",
+      "description": "玩家行为驱动音乐变化与玩家动机"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-combat-music-system",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "related_to",
+      "description": "战斗音乐系统与战斗设计配合"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-emotional-mapping",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "related_to",
+      "description": "音乐情感映射作为游戏反馈系统"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-wwise-ue-integration",
+      "target_domain": "game-engine",
+      "target_id": "audio-system-intro",
+      "relation": "related_to",
+      "description": "Wwise-UE集成与引擎音频系统"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-fmod-ue-integration",
+      "target_domain": "game-engine",
+      "target_id": "audio-middleware",
+      "relation": "related_to",
+      "description": "FMOD集成与引擎音频中间件"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-music-state-machine",
+      "target_domain": "game-engine",
+      "target_id": "blueprint-system",
+      "relation": "related_to",
+      "description": "音乐状态机通过蓝图系统实现"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-music-memory",
+      "target_domain": "game-engine",
+      "target_id": "resource-mgmt-intro",
+      "relation": "related_to",
+      "description": "音乐内存管理与引擎资源管理"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-stinger-system",
+      "target_domain": "vfx",
+      "target_id": "vfx-niagara-overview",
+      "relation": "related_to",
+      "description": "音乐Stinger触发与粒子特效联动"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-dynamic-mixing",
+      "target_domain": "vfx",
+      "target_id": "vfx-pp-overview",
+      "relation": "related_to",
+      "description": "动态混音与后处理特效协调"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-beat-sync",
+      "target_domain": "animation",
+      "target_id": "anim-face-overview",
+      "relation": "related_to",
+      "description": "节拍同步与面部动画配合"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-cutscene-scoring",
+      "target_domain": "animation",
+      "target_id": "anim-mocap-face",
+      "relation": "related_to",
+      "description": "过场配乐与动作捕捉面部表演同步"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-region-music",
+      "target_domain": "level-design",
+      "target_id": "spatial-storytelling",
+      "relation": "related_to",
+      "description": "区域音乐设计与空间叙事"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-open-world-music",
+      "target_domain": "level-design",
+      "target_id": "terrain-intro",
+      "relation": "related_to",
+      "description": "开放世界配乐与地形设计"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-exploration-music",
+      "target_domain": "level-design",
+      "target_id": "pacing-intro",
+      "relation": "related_to",
+      "description": "探索音乐系统与关卡节奏控制"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-music-state-machine",
+      "target_domain": "software-engineering",
+      "target_id": "se-state-pattern-game",
+      "relation": "related_to",
+      "description": "音乐状态机与游戏中的状态模式"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-procedural-music",
+      "target_domain": "software-engineering",
+      "target_id": "se-dp-state",
+      "relation": "related_to",
+      "description": "程序化音乐生成与状态设计模式"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-generative-music",
+      "target_domain": "technical-art",
+      "target_id": "ta-pcg-overview",
+      "relation": "related_to",
+      "description": "生成式音乐与程序化内容生成"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-wwise-best-practices",
+      "target_domain": "technical-art",
+      "target_id": "ta-pipeline-overview",
+      "relation": "related_to",
+      "description": "音频管线最佳实践与技术美术管线"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-emotional-arc",
+      "target_domain": "psychology",
+      "target_id": "emotional-intelligence",
+      "relation": "related_to",
+      "description": "音乐情感弧线设计与情绪智力"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-tension-resolution",
+      "target_domain": "psychology",
+      "target_id": "emotion-neuroscience",
+      "relation": "related_to",
+      "description": "音乐张力解决与情绪神经科学"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-world-building-music",
+      "target_domain": "concept-design",
+      "target_id": "cd-visdev-world-bible",
+      "relation": "related_to",
+      "description": "音乐世界构建与世界观圣经"
+    },
+    {
+      "source_domain": "game-audio-music",
+      "source_id": "game-audio-music-cultural-motif",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-intro",
+      "relation": "related_to",
+      "description": "文化音乐动机与视觉风格定义"
     }
   ],
   "meta": {

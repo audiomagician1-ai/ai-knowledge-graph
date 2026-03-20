@@ -1,0 +1,3760 @@
+{
+  "domain": {
+    "id": "game-audio-music",
+    "name": "游戏音乐",
+    "description": "从作曲编曲到自适应音乐系统的完整游戏音乐知识体系"
+  },
+  "subdomains": [
+    {
+      "id": "composition",
+      "name": "作曲编曲",
+      "order": 1
+    },
+    {
+      "id": "adaptive-music",
+      "name": "自适应音乐",
+      "order": 2
+    },
+    {
+      "id": "interactive-score",
+      "name": "交互式配乐",
+      "order": 3
+    },
+    {
+      "id": "music-theory",
+      "name": "音乐理论",
+      "order": 4
+    },
+    {
+      "id": "daw",
+      "name": "编曲软件(DAW)",
+      "order": 5
+    },
+    {
+      "id": "wwise-music",
+      "name": "Wwise音乐系统",
+      "order": 6
+    },
+    {
+      "id": "fmod-music",
+      "name": "FMOD音乐",
+      "order": 7
+    },
+    {
+      "id": "leitmotif",
+      "name": "主题动机",
+      "order": 8
+    },
+    {
+      "id": "style-study",
+      "name": "风格研究",
+      "order": 9
+    }
+  ],
+  "concepts": [
+    {
+      "id": "game-audio-music-composition-overview",
+      "name": "作曲基础概述",
+      "description": "游戏音乐作曲的基本概念、流程与思维方式",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-melody-writing",
+      "name": "旋律创作",
+      "description": "游戏音乐旋律创作的原则与技巧, 主旋律的记忆性与情感传达",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-harmony-progression",
+      "name": "和声进行",
+      "description": "和弦进行在游戏配乐中的情感表达与功能和声运用",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-rhythm-pattern",
+      "name": "节奏型设计",
+      "description": "节奏型在游戏音乐中的作用, 战斗/探索/叙事的节奏特征",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-counterpoint-basics",
+      "name": "对位法基础",
+      "description": "多声部写作基础, 对位技巧在游戏音乐中的应用",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-orchestration-intro",
+      "name": "配器法入门",
+      "description": "管弦乐队各乐器特性与游戏配乐中的常见编制",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-string-writing",
+      "name": "弦乐编写",
+      "description": "弦乐组的写作技巧, 弓法标记, 分部与齐奏",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-brass-woodwind",
+      "name": "铜管与木管",
+      "description": "铜管组和木管组在游戏音乐中的角色与编写技巧",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-percussion-scoring",
+      "name": "打击乐编写",
+      "description": "打击乐器在游戏音乐中的运用, 节奏驱动与气氛渲染",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-choir-vocal",
+      "name": "合唱与人声",
+      "description": "合唱和人声在游戏配乐中的运用, 拉丁语/虚构语言歌词",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-electronic-elements",
+      "name": "电子元素融合",
+      "description": "电子合成器、采样器与管弦乐的融合技巧",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-hybrid-orchestral",
+      "name": "混合管弦乐",
+      "description": "现代混合管弦乐风格: 管弦乐+电子+摇滚的融合",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-arrangement-technique",
+      "name": "编曲技法",
+      "description": "游戏音乐编曲中的层次构建、乐器叠加与动态变化",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-form-structure",
+      "name": "曲式结构",
+      "description": "游戏音乐的曲式设计: 循环结构、AB段、过渡段的安排",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-dynamic-range",
+      "name": "动态范围控制",
+      "description": "游戏音乐中的力度变化与动态范围管理",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-tempo-management",
+      "name": "速度管理",
+      "description": "BPM选择与速度变化在不同游戏场景中的应用",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-key-modulation",
+      "name": "调性转换",
+      "description": "调性在游戏音乐中的情感意义与转调技巧",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-motif-development",
+      "name": "动机发展",
+      "description": "音乐动机的变形、展开与回归技巧",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-scoring-workflow",
+      "name": "配乐工作流程",
+      "description": "从接收需求到交付音乐文件的完整工作流程",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-music-demo-reel",
+      "name": "音乐Demo制作",
+      "description": "游戏音乐Demo Reel的制作标准与展示策略",
+      "subdomain_id": "composition",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-adaptive-overview",
+      "name": "自适应音乐概述",
+      "description": "自适应/动态音乐系统的概念、类型与设计理念",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-horizontal-resequencing",
+      "name": "水平重组",
+      "description": "水平重组技术: 根据游戏状态切换不同音乐片段的顺序",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-vertical-layering",
+      "name": "垂直分层",
+      "description": "垂直分层技术: 通过叠加/移除音轨层实现动态变化",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-transition-technique",
+      "name": "过渡技术",
+      "description": "音乐段落间的无缝过渡: 交叉淡化、桥接段、节拍同步",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-stinger-system",
+      "name": "Stinger系统",
+      "description": "一次性触发音乐片段(Stinger)的设计与实现",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-intensity-system",
+      "name": "强度系统",
+      "description": "基于游戏紧张度/威胁等级驱动音乐动态变化的系统",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-music-state-machine",
+      "name": "音乐状态机",
+      "description": "用状态机管理音乐切换: 状态定义、转换条件、优先级",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-beat-sync",
+      "name": "节拍同步",
+      "description": "音乐切换的节拍量化与同步机制, 避免突兀切换",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-procedural-music",
+      "name": "程序化音乐",
+      "description": "算法驱动的程序化音乐生成: 规则系统与随机性控制",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-generative-music",
+      "name": "生成式音乐",
+      "description": "使用AI/算法实时生成游戏音乐的前沿技术",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-exploration-music",
+      "name": "探索音乐系统",
+      "description": "开放世界探索场景的自适应音乐设计策略",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-combat-music-system",
+      "name": "战斗音乐系统",
+      "description": "战斗场景的多阶段动态音乐: 前奏/交战/Boss/胜利",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-stealth-music",
+      "name": "潜行音乐系统",
+      "description": "潜行游戏的紧张度驱动音乐系统设计",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-ambient-music-system",
+      "name": "环境音乐系统",
+      "description": "环境/氛围音乐的程序化播放与昼夜/天气响应",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-menu-music",
+      "name": "菜单与UI音乐",
+      "description": "主菜单、暂停界面、加载画面的音乐设计",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-cutscene-scoring",
+      "name": "过场配乐",
+      "description": "过场动画的线性配乐设计与时间码同步",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-dynamic-mixing",
+      "name": "动态混音",
+      "description": "根据游戏状态自动调整音乐各层音量/EQ的混音策略",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-music-memory",
+      "name": "音乐记忆管理",
+      "description": "音乐系统的内存占用优化: 流式加载、压缩策略、卸载",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-adaptive-testing",
+      "name": "自适应测试方法",
+      "description": "自适应音乐系统的测试与调试方法论",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-case-study-adaptive",
+      "name": "案例分析:自适应",
+      "description": "经典自适应音乐案例: Zelda BotW, Doom 2016, RDR2",
+      "subdomain_id": "adaptive-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-interactive-overview",
+      "name": "交互式配乐概述",
+      "description": "交互式配乐的定义、历史演变与设计哲学",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-player-agency",
+      "name": "玩家能动性与音乐",
+      "description": "玩家行为如何影响音乐体验, 音乐反馈的设计原则",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-emotional-arc",
+      "name": "情感弧线设计",
+      "description": "通过音乐构建游戏的情感弧线与叙事节奏",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-music-game-loop",
+      "name": "音乐与核心循环",
+      "description": "音乐系统如何配合游戏核心循环: 准备→行动→奖励",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-region-music",
+      "name": "区域音乐设计",
+      "description": "基于地理区域/生物群系的音乐主题设计与切换",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-npc-music",
+      "name": "NPC与音乐互动",
+      "description": "NPC触发的音乐事件: 商人、敌人、同伴的音乐设计",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-quest-music",
+      "name": "任务音乐设计",
+      "description": "任务线/支线的专属音乐主题与进度驱动变化",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-boss-music-design",
+      "name": "Boss战配乐设计",
+      "description": "Boss战多阶段音乐设计: 相位切换、紧张度递进、胜利主题",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-puzzle-music",
+      "name": "解谜音乐设计",
+      "description": "解谜场景的音乐反馈: 提示、进展、完成的音乐变化",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-horror-music",
+      "name": "恐怖音乐设计",
+      "description": "恐怖游戏的音乐与音效边界: 不和谐音、静默、突发音效",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-racing-music",
+      "name": "竞速音乐设计",
+      "description": "竞速游戏的音乐系统: 速度感、加速/减速、终点线",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-rhythm-game-scoring",
+      "name": "音游配乐设计",
+      "description": "音乐节奏游戏的配乐特殊需求与打击感设计",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-multiplayer-music",
+      "name": "多人游戏音乐",
+      "description": "多人/对战模式的音乐设计: 公平性、团队主题、胜负",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-open-world-music",
+      "name": "开放世界配乐",
+      "description": "开放世界游戏的音乐密度管理与无缝过渡策略",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-narrative-music",
+      "name": "叙事驱动配乐",
+      "description": "叙事型游戏的音乐叙事: 角色主题、场景氛围、情节转折",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-music-silence",
+      "name": "沉默的艺术",
+      "description": "游戏中有意识的音乐留白: 何时不用音乐比用音乐更有效",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-diegetic-music",
+      "name": "叙境内音乐",
+      "description": "游戏世界内存在的音乐: 收音机、乐手、环境音乐源",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-music-pacing",
+      "name": "音乐节奏控制",
+      "description": "游戏整体音乐密度与节奏的宏观设计",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-interactive-concert",
+      "name": "互动式音乐会",
+      "description": "游戏内音乐表演/音乐会事件的特殊设计",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-case-study-interactive",
+      "name": "案例分析:交互配乐",
+      "description": "经典交互式配乐案例: Journey, Nier, Hades",
+      "subdomain_id": "interactive-score",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-theory-overview",
+      "name": "音乐理论概述",
+      "description": "游戏音乐创作所需的音乐理论基础框架",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-scales-modes",
+      "name": "音阶与调式",
+      "description": "大小调、教会调式、五声音阶等在游戏音乐中的情感映射",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-chord-theory",
+      "name": "和弦理论",
+      "description": "三和弦、七和弦、挂留和弦等在游戏配乐中的运用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-chord-progression-patterns",
+      "name": "和弦进行模式",
+      "description": "游戏音乐中常见的和弦进行模式与情感色彩",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-interval-emotion",
+      "name": "音程与情感",
+      "description": "不同音程的情感特质与在游戏音乐主题中的应用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-rhythm-theory",
+      "name": "节奏理论",
+      "description": "拍号、节奏型、切分、复合节拍在游戏音乐中的运用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-timbre-texture",
+      "name": "音色与织体",
+      "description": "音色选择与织体密度对游戏氛围的影响",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-harmonic-rhythm",
+      "name": "和声节奏",
+      "description": "和声变化的速率与游戏场景节奏的关系",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-tension-resolution",
+      "name": "紧张与解决",
+      "description": "不协和到协和的进行: 游戏音乐中的张力控制",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-modal-interchange",
+      "name": "调式互换",
+      "description": "同主音调式互换在游戏音乐中的色彩变化应用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-secondary-dominants",
+      "name": "副属和弦",
+      "description": "副属和弦与离调在游戏音乐转场中的运用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-pentatonic-application",
+      "name": "五声音阶应用",
+      "description": "五声音阶在东方风格/自然场景游戏音乐中的运用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-chromatic-technique",
+      "name": "半音技法",
+      "description": "半音化和声在悬疑/恐怖游戏音乐中的应用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-ostinato-pattern",
+      "name": "固定音型",
+      "description": "Ostinato在游戏战斗/紧张场景中的驱动作用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-drone-pedal",
+      "name": "持续音与踏板音",
+      "description": "持续低音在游戏氛围/环境音乐中的运用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-polyrhythm",
+      "name": "复合节奏",
+      "description": "复合节奏与交叉节奏在游戏音乐中的高级应用",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-microtonality",
+      "name": "微分音",
+      "description": "微分音和非十二平均律在实验性游戏音乐中的探索",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-form-analysis",
+      "name": "曲式分析",
+      "description": "游戏音乐的曲式结构分析: 循环体、ABA、回旋曲式",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-ear-training",
+      "name": "听力训练",
+      "description": "游戏音乐创作者的听力训练方法与音感培养",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-theory-to-practice",
+      "name": "理论到实践",
+      "description": "将音乐理论知识转化为游戏配乐实战的方法论",
+      "subdomain_id": "music-theory",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-daw-overview",
+      "name": "DAW概述",
+      "description": "数字音频工作站的核心概念与游戏音乐制作的DAW选择",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-daw-comparison",
+      "name": "DAW对比选择",
+      "description": "Logic Pro, Cubase, Reaper, Ableton, FL Studio的特点与适用场景",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-midi-fundamentals",
+      "name": "MIDI基础",
+      "description": "MIDI协议基础、MIDI编辑、CC控制器在游戏音乐中的应用",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-audio-recording",
+      "name": "音频录制",
+      "description": "实录乐器的录制技巧: 麦克风选择、录音环境、电平控制",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-virtual-instruments",
+      "name": "虚拟乐器",
+      "description": "游戏音乐常用的虚拟乐器: 管弦乐库、合成器、采样器",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-sample-library",
+      "name": "采样库管理",
+      "description": "管弦乐采样库的选择、安装与管理: Spitfire, EastWest, VSL等",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-synth-programming",
+      "name": "合成器编程",
+      "description": "减法/加法/FM/粒子合成器在游戏音乐中的音色设计",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-mixing-basics",
+      "name": "混音基础",
+      "description": "游戏音乐混音: 声像、电平、EQ、压缩的基本原则",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-eq-compression",
+      "name": "EQ与压缩",
+      "description": "均衡器与压缩器在游戏音乐制作中的详细运用",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-reverb-delay",
+      "name": "混响与延迟",
+      "description": "空间效果器: 混响和延迟在游戏音乐氛围塑造中的作用",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-mastering-basics",
+      "name": "母带处理基础",
+      "description": "游戏音乐母带处理: 响度标准、限制器、格式输出",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-export-formats",
+      "name": "导出格式规范",
+      "description": "游戏音乐的导出格式: WAV/OGG/OPUS, 采样率, 位深, 声道",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-template-setup",
+      "name": "工程模板搭建",
+      "description": "游戏音乐DAW工程模板: 轨道模板、总线路由、快捷键",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-automation-daw",
+      "name": "自动化与表情",
+      "description": "DAW自动化曲线在游戏音乐动态表现中的运用",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-stem-export",
+      "name": "分轨导出",
+      "description": "为自适应音乐系统导出分轨(Stem)的工作流程",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-batch-processing",
+      "name": "批量处理",
+      "description": "大量音乐资源的批量处理、命名规范与版本管理",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-orchestral-mockup",
+      "name": "管弦乐模拟",
+      "description": "用虚拟乐器制作逼真管弦乐模拟(Mock-up)的技巧",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-reaper-gameaudio",
+      "name": "Reaper游戏音频",
+      "description": "Reaper在游戏音频管线中的特殊优势与工作流",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-plugin-chain",
+      "name": "效果器链设计",
+      "description": "游戏音乐制作中的效果器链路设计与信号流",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-daw-performance",
+      "name": "DAW性能优化",
+      "description": "大型游戏音乐工程的DAW性能优化: 冻结、代理、缓冲",
+      "subdomain_id": "daw",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-overview",
+      "name": "Wwise概述",
+      "description": "Audiokinetic Wwise音频中间件的核心架构与游戏音乐功能",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-wwise-project-setup",
+      "name": "Wwise项目搭建",
+      "description": "Wwise音乐项目的创建、层级结构与基本设置",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-music-segment",
+      "name": "Music Segment",
+      "description": "Wwise Music Segment的概念、属性与音乐片段管理",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-wwise-music-playlist",
+      "name": "Music Playlist",
+      "description": "Wwise Music Playlist Container的顺序/随机播放设计",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-music-switch",
+      "name": "Music Switch",
+      "description": "Wwise Music Switch Container: 基于游戏状态切换音乐",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-wwise-transition",
+      "name": "Transition规则",
+      "description": "Wwise音乐过渡规则: 过渡时机、淡入淡出、过渡片段",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-stinger-impl",
+      "name": "Stinger实现",
+      "description": "在Wwise中实现Stinger(触发式音乐片段)的完整流程",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-meter",
+      "name": "节拍与小节",
+      "description": "Wwise中的Time/Tempo/Meter设置与节拍同步",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-rtpc-music",
+      "name": "RTPC音乐控制",
+      "description": "使用RTPC(实时参数)动态控制音乐参数",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-state-music",
+      "name": "State驱动音乐",
+      "description": "用Wwise State系统驱动音乐状态切换",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-trigger-music",
+      "name": "Trigger音乐事件",
+      "description": "Wwise Trigger在音乐系统中的特殊用法",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-interactive-demo",
+      "name": "交互音乐实战",
+      "description": "在Wwise中搭建完整的交互式音乐系统实战教程",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-wwise-soundbank-music",
+      "name": "音乐SoundBank",
+      "description": "音乐资源的SoundBank打包、流式播放与内存策略",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-profiler-music",
+      "name": "Wwise Profiler调试",
+      "description": "用Wwise Profiler分析和调试音乐播放行为",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-ue-integration",
+      "name": "Wwise-UE集成",
+      "description": "Wwise与Unreal Engine的音乐系统集成配置",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-unity-integration",
+      "name": "Wwise-Unity集成",
+      "description": "Wwise与Unity的音乐系统集成配置",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-midi",
+      "name": "Wwise MIDI",
+      "description": "Wwise中MIDI驱动的交互式音乐播放",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-music-callback",
+      "name": "Music Callback",
+      "description": "Wwise Music Callback的类型与游戏逻辑联动",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-mixing-music",
+      "name": "Wwise音乐混音",
+      "description": "Wwise中音乐Bus路由、混音自动化与Duck策略",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-wwise-best-practices",
+      "name": "Wwise音乐最佳实践",
+      "description": "Wwise音乐系统的组织规范、命名约定与团队协作",
+      "subdomain_id": "wwise-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-fmod-overview",
+      "name": "FMOD概述",
+      "description": "FMOD Studio音频中间件的核心架构与音乐功能",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-fmod-project-setup",
+      "name": "FMOD项目搭建",
+      "description": "FMOD Studio音乐项目的创建与基本工作流",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-music-event",
+      "name": "Music Event",
+      "description": "FMOD音乐事件的创建、属性与参数化设计",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-fmod-timeline",
+      "name": "Timeline编辑",
+      "description": "FMOD Studio Timeline的多轨编辑与音乐时间线设计",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-parameter-music",
+      "name": "参数化音乐",
+      "description": "FMOD参数(Parameter)驱动音乐动态变化",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-fmod-transition-region",
+      "name": "Transition Region",
+      "description": "FMOD音乐过渡区域的设计: 量化、条件、目标",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-logic-marker",
+      "name": "Logic Marker",
+      "description": "FMOD中逻辑标记(Loop/Transition)在音乐流程控制中的应用",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-multi-instrument",
+      "name": "Multi Instrument",
+      "description": "FMOD Multi Instrument在音乐变奏中的运用",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-music-sheet",
+      "name": "音乐Sheet",
+      "description": "FMOD音乐Sheet的多轨层叠与动态混合",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-automation",
+      "name": "FMOD自动化",
+      "description": "FMOD中的自动化曲线、Modulator与音乐表现力",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-snapshot",
+      "name": "FMOD Snapshot",
+      "description": "用FMOD Snapshot实现音乐场景的混音预设切换",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-interactive-demo",
+      "name": "交互音乐实战",
+      "description": "在FMOD中搭建完整的交互式音乐系统实战教程",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-fmod-bank-music",
+      "name": "音乐Bank管理",
+      "description": "FMOD音乐Bank的构建策略与流式播放配置",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-live-update",
+      "name": "Live Update调试",
+      "description": "FMOD Live Update实时调试音乐参数",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-ue-integration",
+      "name": "FMOD-UE集成",
+      "description": "FMOD与Unreal Engine的音乐系统集成",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-unity-integration",
+      "name": "FMOD-Unity集成",
+      "description": "FMOD与Unity的音乐系统集成",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-command-instrument",
+      "name": "Command Instrument",
+      "description": "FMOD Command Instrument在音乐序列中的高级用法",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-music-callback",
+      "name": "Music Callback",
+      "description": "FMOD音乐回调与游戏逻辑的联动实现",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-mixing-music",
+      "name": "FMOD音乐混音",
+      "description": "FMOD中音乐Bus结构、混音策略与Sidechain",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fmod-best-practices",
+      "name": "FMOD音乐最佳实践",
+      "description": "FMOD音乐系统的项目组织、版本控制与团队协作",
+      "subdomain_id": "fmod-music",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-leitmotif-overview",
+      "name": "主题动机概述",
+      "description": "音乐主题动机(Leitmotif)在游戏中的作用与设计哲学",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-character-theme",
+      "name": "角色主题",
+      "description": "为游戏角色设计独特音乐主题: 性格、成长、变奏",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-villain-theme",
+      "name": "反派主题",
+      "description": "反派角色的音乐主题设计: 威胁感、对比、堕落变奏",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-location-theme",
+      "name": "场景主题",
+      "description": "游戏场景/区域的音乐主题: 地理特色、文化元素、氛围",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-faction-theme",
+      "name": "阵营主题",
+      "description": "不同阵营/种族的音乐主题设计与文化音色选择",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-theme-variation",
+      "name": "主题变奏技法",
+      "description": "音乐主题的变奏手法: 节奏/调性/配器/速度变化",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-theme-development-arc",
+      "name": "主题发展弧线",
+      "description": "随游戏进程发展的主题音乐: 简单→复杂→高潮→回归",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-theme-combination",
+      "name": "主题组合",
+      "description": "多个主题动机的同时呈现与对位组合",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-theme-fragmentation",
+      "name": "主题碎片化",
+      "description": "将主题分解为碎片暗示, 逐步揭示完整主题的技巧",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-theme-inversion",
+      "name": "主题倒影",
+      "description": "通过反转主题传达对立含义: 善→恶、希望→绝望",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-emotional-mapping",
+      "name": "情感映射",
+      "description": "将游戏情感维度映射到音乐参数的设计方法",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-callback-theme",
+      "name": "回忆主题",
+      "description": "在关键剧情节点回调早期主题唤起玩家情感记忆",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-title-theme",
+      "name": "主题曲设计",
+      "description": "游戏主题曲(Title Theme)的创作原则与标志性",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-end-credits-music",
+      "name": "片尾曲设计",
+      "description": "游戏片尾曲的情感总结与主题回顾编排",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-trailer-music",
+      "name": "预告片音乐",
+      "description": "游戏预告片音乐的创作: 节奏把控、情感高潮、品牌识别",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-theme-orchestration",
+      "name": "主题配器变化",
+      "description": "同一主题在不同配器下的情感转变",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-cultural-motif",
+      "name": "文化动机",
+      "description": "融入特定文化音乐元素创造独特的游戏音乐身份",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-world-building-music",
+      "name": "音乐世界构建",
+      "description": "通过音乐主题体系构建游戏世界的文化与历史感",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-motif-catalog",
+      "name": "动机素材库",
+      "description": "建立和管理项目中所有音乐动机的素材库与文档",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-case-study-leitmotif",
+      "name": "案例分析:主题动机",
+      "description": "经典游戏主题动机分析: FF系列, Zelda, Witcher, Undertale",
+      "subdomain_id": "leitmotif",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-style-overview",
+      "name": "风格研究概述",
+      "description": "游戏音乐风格研究的方法论与实践框架",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-orchestral-style",
+      "name": "管弦乐风格",
+      "description": "AAA管弦乐配乐风格: 从John Williams到Hans Zimmer",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-electronic-style",
+      "name": "电子音乐风格",
+      "description": "电子音乐在游戏中的应用: Synthwave, Ambient, Drum & Bass",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-retro-chiptune",
+      "name": "复古/芯片音乐",
+      "description": "8-bit/16-bit芯片音乐风格与现代复古游戏音乐",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-rock-metal-style",
+      "name": "摇滚/金属风格",
+      "description": "摇滚和金属音乐在动作/格斗游戏中的应用",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-jazz-style",
+      "name": "爵士风格",
+      "description": "爵士音乐在游戏中的运用: Persona系列的启示",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-folk-acoustic",
+      "name": "民谣/原声风格",
+      "description": "民谣与原声乐器在独立游戏/RPG中的运用",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-world-music",
+      "name": "世界音乐",
+      "description": "世界各地传统音乐在游戏场景中的融合: 日本/凯尔特/中东/非洲",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-cinematic-epic",
+      "name": "史诗电影风格",
+      "description": "电影式史诗音乐在AAA游戏大场面中的运用",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-minimalist-style",
+      "name": "极简主义风格",
+      "description": "极简音乐在独立游戏/解谜游戏中的精妙运用",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-dark-ambient",
+      "name": "暗氛围风格",
+      "description": "Dark Ambient在恐怖/生存游戏中的氛围营造",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-sci-fi-music",
+      "name": "科幻音乐风格",
+      "description": "科幻游戏的音乐设计: 合成器、太空感、未来主义",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-fantasy-medieval",
+      "name": "奇幻/中世纪风格",
+      "description": "奇幻RPG的中世纪音乐风格: 古乐器、吟游诗人、教堂音乐",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-asian-game-music",
+      "name": "亚洲游戏音乐",
+      "description": "中国/日本/韩国游戏音乐的文化特色与现代融合",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-latin-game-music",
+      "name": "拉丁游戏音乐",
+      "description": "拉丁音乐元素在游戏中的运用: 节奏、乐器、舞蹈",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-hybrid-genre",
+      "name": "混合风格",
+      "description": "多种音乐风格的创意混合: 管弦+电子、爵士+嘻哈等",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-period-music",
+      "name": "时代音乐考据",
+      "description": "历史题材游戏的音乐考据与时代风格还原",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-indie-game-music",
+      "name": "独立游戏音乐",
+      "description": "独立游戏音乐的创作特点: 小编制、个人风格、情感直达",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-audio-music-music-reference",
+      "name": "音乐参考分析",
+      "description": "系统性分析音乐参考: 拆解风格、提取元素、融合创新",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-audio-music-style-portfolio",
+      "name": "风格作品集",
+      "description": "多风格游戏音乐作品集的建设与自我定位",
+      "subdomain_id": "style-study",
+      "domain_id": "game-audio-music",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "game-audio-music-composition-overview",
+      "target_id": "game-audio-music-melody-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-melody-writing",
+      "target_id": "game-audio-music-harmony-progression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-harmony-progression",
+      "target_id": "game-audio-music-rhythm-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-rhythm-pattern",
+      "target_id": "game-audio-music-counterpoint-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-counterpoint-basics",
+      "target_id": "game-audio-music-orchestration-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-orchestration-intro",
+      "target_id": "game-audio-music-string-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-string-writing",
+      "target_id": "game-audio-music-brass-woodwind",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-brass-woodwind",
+      "target_id": "game-audio-music-percussion-scoring",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-percussion-scoring",
+      "target_id": "game-audio-music-choir-vocal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-choir-vocal",
+      "target_id": "game-audio-music-electronic-elements",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-electronic-elements",
+      "target_id": "game-audio-music-hybrid-orchestral",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-hybrid-orchestral",
+      "target_id": "game-audio-music-arrangement-technique",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-arrangement-technique",
+      "target_id": "game-audio-music-form-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-form-structure",
+      "target_id": "game-audio-music-dynamic-range",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-dynamic-range",
+      "target_id": "game-audio-music-tempo-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-tempo-management",
+      "target_id": "game-audio-music-key-modulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-key-modulation",
+      "target_id": "game-audio-music-motif-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-motif-development",
+      "target_id": "game-audio-music-scoring-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-scoring-workflow",
+      "target_id": "game-audio-music-music-demo-reel",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-adaptive-overview",
+      "target_id": "game-audio-music-horizontal-resequencing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-horizontal-resequencing",
+      "target_id": "game-audio-music-vertical-layering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-vertical-layering",
+      "target_id": "game-audio-music-transition-technique",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-transition-technique",
+      "target_id": "game-audio-music-stinger-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-stinger-system",
+      "target_id": "game-audio-music-intensity-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-intensity-system",
+      "target_id": "game-audio-music-music-state-machine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-music-state-machine",
+      "target_id": "game-audio-music-beat-sync",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-beat-sync",
+      "target_id": "game-audio-music-procedural-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-procedural-music",
+      "target_id": "game-audio-music-generative-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-generative-music",
+      "target_id": "game-audio-music-exploration-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-exploration-music",
+      "target_id": "game-audio-music-combat-music-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-combat-music-system",
+      "target_id": "game-audio-music-stealth-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-stealth-music",
+      "target_id": "game-audio-music-ambient-music-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-ambient-music-system",
+      "target_id": "game-audio-music-menu-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-menu-music",
+      "target_id": "game-audio-music-cutscene-scoring",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-cutscene-scoring",
+      "target_id": "game-audio-music-dynamic-mixing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-dynamic-mixing",
+      "target_id": "game-audio-music-music-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-music-memory",
+      "target_id": "game-audio-music-adaptive-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-adaptive-testing",
+      "target_id": "game-audio-music-case-study-adaptive",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-interactive-overview",
+      "target_id": "game-audio-music-player-agency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-player-agency",
+      "target_id": "game-audio-music-emotional-arc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-emotional-arc",
+      "target_id": "game-audio-music-music-game-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-music-game-loop",
+      "target_id": "game-audio-music-region-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-region-music",
+      "target_id": "game-audio-music-npc-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-npc-music",
+      "target_id": "game-audio-music-quest-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-quest-music",
+      "target_id": "game-audio-music-boss-music-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-boss-music-design",
+      "target_id": "game-audio-music-puzzle-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-puzzle-music",
+      "target_id": "game-audio-music-horror-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-horror-music",
+      "target_id": "game-audio-music-racing-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-racing-music",
+      "target_id": "game-audio-music-rhythm-game-scoring",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-rhythm-game-scoring",
+      "target_id": "game-audio-music-multiplayer-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-multiplayer-music",
+      "target_id": "game-audio-music-open-world-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-open-world-music",
+      "target_id": "game-audio-music-narrative-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-narrative-music",
+      "target_id": "game-audio-music-music-silence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-music-silence",
+      "target_id": "game-audio-music-diegetic-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-diegetic-music",
+      "target_id": "game-audio-music-music-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-music-pacing",
+      "target_id": "game-audio-music-interactive-concert",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-interactive-concert",
+      "target_id": "game-audio-music-case-study-interactive",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-theory-overview",
+      "target_id": "game-audio-music-scales-modes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-scales-modes",
+      "target_id": "game-audio-music-chord-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-chord-theory",
+      "target_id": "game-audio-music-chord-progression-patterns",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-chord-progression-patterns",
+      "target_id": "game-audio-music-interval-emotion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-interval-emotion",
+      "target_id": "game-audio-music-rhythm-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-rhythm-theory",
+      "target_id": "game-audio-music-timbre-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-timbre-texture",
+      "target_id": "game-audio-music-harmonic-rhythm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-harmonic-rhythm",
+      "target_id": "game-audio-music-tension-resolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-tension-resolution",
+      "target_id": "game-audio-music-modal-interchange",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-modal-interchange",
+      "target_id": "game-audio-music-secondary-dominants",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-secondary-dominants",
+      "target_id": "game-audio-music-pentatonic-application",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-pentatonic-application",
+      "target_id": "game-audio-music-chromatic-technique",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-chromatic-technique",
+      "target_id": "game-audio-music-ostinato-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-ostinato-pattern",
+      "target_id": "game-audio-music-drone-pedal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-drone-pedal",
+      "target_id": "game-audio-music-polyrhythm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-polyrhythm",
+      "target_id": "game-audio-music-microtonality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-microtonality",
+      "target_id": "game-audio-music-form-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-form-analysis",
+      "target_id": "game-audio-music-ear-training",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-ear-training",
+      "target_id": "game-audio-music-theory-to-practice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-daw-overview",
+      "target_id": "game-audio-music-daw-comparison",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-daw-comparison",
+      "target_id": "game-audio-music-midi-fundamentals",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-midi-fundamentals",
+      "target_id": "game-audio-music-audio-recording",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-audio-recording",
+      "target_id": "game-audio-music-virtual-instruments",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-virtual-instruments",
+      "target_id": "game-audio-music-sample-library",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-sample-library",
+      "target_id": "game-audio-music-synth-programming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-synth-programming",
+      "target_id": "game-audio-music-mixing-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-mixing-basics",
+      "target_id": "game-audio-music-eq-compression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-eq-compression",
+      "target_id": "game-audio-music-reverb-delay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-reverb-delay",
+      "target_id": "game-audio-music-mastering-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-mastering-basics",
+      "target_id": "game-audio-music-export-formats",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-export-formats",
+      "target_id": "game-audio-music-template-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-template-setup",
+      "target_id": "game-audio-music-automation-daw",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-automation-daw",
+      "target_id": "game-audio-music-stem-export",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-stem-export",
+      "target_id": "game-audio-music-batch-processing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-batch-processing",
+      "target_id": "game-audio-music-orchestral-mockup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-orchestral-mockup",
+      "target_id": "game-audio-music-reaper-gameaudio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-reaper-gameaudio",
+      "target_id": "game-audio-music-plugin-chain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-plugin-chain",
+      "target_id": "game-audio-music-daw-performance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-overview",
+      "target_id": "game-audio-music-wwise-project-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-project-setup",
+      "target_id": "game-audio-music-wwise-music-segment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-music-segment",
+      "target_id": "game-audio-music-wwise-music-playlist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-music-playlist",
+      "target_id": "game-audio-music-wwise-music-switch",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-music-switch",
+      "target_id": "game-audio-music-wwise-transition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-transition",
+      "target_id": "game-audio-music-wwise-stinger-impl",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-stinger-impl",
+      "target_id": "game-audio-music-wwise-meter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-meter",
+      "target_id": "game-audio-music-wwise-rtpc-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-rtpc-music",
+      "target_id": "game-audio-music-wwise-state-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-state-music",
+      "target_id": "game-audio-music-wwise-trigger-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-trigger-music",
+      "target_id": "game-audio-music-wwise-interactive-demo",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-interactive-demo",
+      "target_id": "game-audio-music-wwise-soundbank-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-soundbank-music",
+      "target_id": "game-audio-music-wwise-profiler-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-profiler-music",
+      "target_id": "game-audio-music-wwise-ue-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-ue-integration",
+      "target_id": "game-audio-music-wwise-unity-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-unity-integration",
+      "target_id": "game-audio-music-wwise-midi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-midi",
+      "target_id": "game-audio-music-wwise-music-callback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-music-callback",
+      "target_id": "game-audio-music-wwise-mixing-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-wwise-mixing-music",
+      "target_id": "game-audio-music-wwise-best-practices",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-overview",
+      "target_id": "game-audio-music-fmod-project-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-project-setup",
+      "target_id": "game-audio-music-fmod-music-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-music-event",
+      "target_id": "game-audio-music-fmod-timeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-timeline",
+      "target_id": "game-audio-music-fmod-parameter-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-parameter-music",
+      "target_id": "game-audio-music-fmod-transition-region",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-transition-region",
+      "target_id": "game-audio-music-fmod-logic-marker",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-logic-marker",
+      "target_id": "game-audio-music-fmod-multi-instrument",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-multi-instrument",
+      "target_id": "game-audio-music-fmod-music-sheet",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-music-sheet",
+      "target_id": "game-audio-music-fmod-automation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-automation",
+      "target_id": "game-audio-music-fmod-snapshot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-snapshot",
+      "target_id": "game-audio-music-fmod-interactive-demo",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-interactive-demo",
+      "target_id": "game-audio-music-fmod-bank-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-bank-music",
+      "target_id": "game-audio-music-fmod-live-update",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-live-update",
+      "target_id": "game-audio-music-fmod-ue-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-ue-integration",
+      "target_id": "game-audio-music-fmod-unity-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-unity-integration",
+      "target_id": "game-audio-music-fmod-command-instrument",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-command-instrument",
+      "target_id": "game-audio-music-fmod-music-callback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-music-callback",
+      "target_id": "game-audio-music-fmod-mixing-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fmod-mixing-music",
+      "target_id": "game-audio-music-fmod-best-practices",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-leitmotif-overview",
+      "target_id": "game-audio-music-character-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-character-theme",
+      "target_id": "game-audio-music-villain-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-villain-theme",
+      "target_id": "game-audio-music-location-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-location-theme",
+      "target_id": "game-audio-music-faction-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-faction-theme",
+      "target_id": "game-audio-music-theme-variation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-theme-variation",
+      "target_id": "game-audio-music-theme-development-arc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-theme-development-arc",
+      "target_id": "game-audio-music-theme-combination",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-theme-combination",
+      "target_id": "game-audio-music-theme-fragmentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-theme-fragmentation",
+      "target_id": "game-audio-music-theme-inversion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-theme-inversion",
+      "target_id": "game-audio-music-emotional-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-emotional-mapping",
+      "target_id": "game-audio-music-callback-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-callback-theme",
+      "target_id": "game-audio-music-title-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-title-theme",
+      "target_id": "game-audio-music-end-credits-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-end-credits-music",
+      "target_id": "game-audio-music-trailer-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-trailer-music",
+      "target_id": "game-audio-music-theme-orchestration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-theme-orchestration",
+      "target_id": "game-audio-music-cultural-motif",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-cultural-motif",
+      "target_id": "game-audio-music-world-building-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-world-building-music",
+      "target_id": "game-audio-music-motif-catalog",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-motif-catalog",
+      "target_id": "game-audio-music-case-study-leitmotif",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-style-overview",
+      "target_id": "game-audio-music-orchestral-style",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-orchestral-style",
+      "target_id": "game-audio-music-electronic-style",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-electronic-style",
+      "target_id": "game-audio-music-retro-chiptune",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-retro-chiptune",
+      "target_id": "game-audio-music-rock-metal-style",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-rock-metal-style",
+      "target_id": "game-audio-music-jazz-style",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-jazz-style",
+      "target_id": "game-audio-music-folk-acoustic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-folk-acoustic",
+      "target_id": "game-audio-music-world-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-world-music",
+      "target_id": "game-audio-music-cinematic-epic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-cinematic-epic",
+      "target_id": "game-audio-music-minimalist-style",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-minimalist-style",
+      "target_id": "game-audio-music-dark-ambient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-dark-ambient",
+      "target_id": "game-audio-music-sci-fi-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-sci-fi-music",
+      "target_id": "game-audio-music-fantasy-medieval",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-fantasy-medieval",
+      "target_id": "game-audio-music-asian-game-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-asian-game-music",
+      "target_id": "game-audio-music-latin-game-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-latin-game-music",
+      "target_id": "game-audio-music-hybrid-genre",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-hybrid-genre",
+      "target_id": "game-audio-music-period-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-period-music",
+      "target_id": "game-audio-music-indie-game-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-indie-game-music",
+      "target_id": "game-audio-music-music-reference",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-music-reference",
+      "target_id": "game-audio-music-style-portfolio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-theory-overview",
+      "target_id": "game-audio-music-composition-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-scales-modes",
+      "target_id": "game-audio-music-melody-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-chord-theory",
+      "target_id": "game-audio-music-harmony-progression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-audio-music-rhythm-theory",
+      "target_id": "game-audio-music-rhythm-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-form-structure",
+      "target_id": "game-audio-music-adaptive-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-audio-music-scoring-workflow",
+      "target_id": "game-audio-music-adaptive-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "game-audio-music-motif-development",
+      "target_id": "game-audio-music-leitmotif-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-melody-writing",
+      "target_id": "game-audio-music-character-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-adaptive-overview",
+      "target_id": "game-audio-music-interactive-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-music-state-machine",
+      "target_id": "game-audio-music-player-agency",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "game-audio-music-combat-music-system",
+      "target_id": "game-audio-music-boss-music-design",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-audio-music-daw-overview",
+      "target_id": "game-audio-music-scoring-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-audio-music-virtual-instruments",
+      "target_id": "game-audio-music-orchestration-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "game-audio-music-mixing-basics",
+      "target_id": "game-audio-music-dynamic-range",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "game-audio-music-stem-export",
+      "target_id": "game-audio-music-wwise-music-segment",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-audio-music-export-formats",
+      "target_id": "game-audio-music-wwise-soundbank-music",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "game-audio-music-stem-export",
+      "target_id": "game-audio-music-fmod-music-event",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-audio-music-export-formats",
+      "target_id": "game-audio-music-fmod-bank-music",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "game-audio-music-wwise-music-switch",
+      "target_id": "game-audio-music-music-state-machine",
+      "relation_type": "related_to",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-wwise-transition",
+      "target_id": "game-audio-music-transition-technique",
+      "relation_type": "related_to",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-fmod-parameter-music",
+      "target_id": "game-audio-music-intensity-system",
+      "relation_type": "related_to",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-fmod-transition-region",
+      "target_id": "game-audio-music-transition-technique",
+      "relation_type": "related_to",
+      "strength": 0.7
+    },
+    {
+      "source_id": "game-audio-music-cultural-motif",
+      "target_id": "game-audio-music-world-music",
+      "relation_type": "related_to",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-audio-music-leitmotif-overview",
+      "target_id": "game-audio-music-style-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.4
+    },
+    {
+      "source_id": "game-audio-music-orchestral-style",
+      "target_id": "game-audio-music-orchestration-intro",
+      "relation_type": "related_to",
+      "strength": 0.6
+    },
+    {
+      "source_id": "game-audio-music-electronic-style",
+      "target_id": "game-audio-music-electronic-elements",
+      "relation_type": "related_to",
+      "strength": 0.6
+    }
+  ]
+}

@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -736,7 +736,7 @@ async def test_cross_links_no_results():
 @pytest.mark.asyncio
 async def test_cross_links_relation_types():
     """Cross-links should have valid relation types."""
-    valid_relations = {"same_concept", "requires", "enables", "applies_to", "applied_in", "foundational", "supports", "related", "applies", "impacts", "prerequisite", "teaches"}
+    valid_relations = {"same_concept", "requires", "enables", "applies_to", "applied_in", "foundational", "supports", "related", "related_to", "applies", "impacts", "prerequisite", "teaches"}
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/cross-links")
         data = resp.json()
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2445,4 +2445,96 @@ async def test_vfx_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "vfx-niagara-overview"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Game Audio Music (游戏音乐) Knowledge Sphere Tests ─────────────
+
+@pytest.mark.asyncio
+async def test_game_audio_music_seed_graph():
+    """Game Audio Music seed graph: 180 concepts, 197 edges, 9 subdomains, 43 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=game-audio-music")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 180, f"Expected 180 concepts, got {len(nodes)}"
+        assert len(edges) == 197, f"Expected 197 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 9, f"Expected 9 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 43, f"Expected 43 milestones, got {len(milestones)}"
+
+
+@pytest.mark.asyncio
+async def test_game_audio_music_rag_stats():
+    """Game Audio Music RAG stats should reflect 180 documents across 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=game-audio-music")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 180
+
+
+@pytest.mark.asyncio
+async def test_game_audio_music_concept_detail():
+    """GET /api/graph/concepts/{id} for a Game Audio Music concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/game-audio-music-composition-overview?domain=game-audio-music")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "game-audio-music-composition-overview"
+        assert data["domain_id"] == "game-audio-music"
+        assert data["is_milestone"] is True
+
+
+@pytest.mark.asyncio
+async def test_game_audio_music_subdomains():
+    """Game Audio Music should have exactly 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=game-audio-music")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 9
+        names = {s["name"] for s in data}
+        assert "作曲编曲" in names
+        assert "自适应音乐" in names
+        assert "Wwise音乐系统" in names
+
+
+@pytest.mark.asyncio
+async def test_game_audio_music_cross_sphere_links():
+    """Cross-sphere links for game-audio-music should exist (↔ game-design/game-engine/vfx/etc)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=game-audio-music")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 20, f"Expected >= 20 cross-links, got {len(links)}"
+        partner_domains = set()
+        for lk in links:
+            partner_domains.add(lk.get("source_domain", ""))
+            partner_domains.add(lk.get("target_domain", ""))
+        assert "game-design" in partner_domains, "Expected cross-links with game-design"
+        assert "game-engine" in partner_domains, "Expected cross-links with game-engine"
+
+
+@pytest.mark.asyncio
+async def test_game_audio_music_domain_supplements():
+    """Game Audio Music should have domain supplements in BE evaluation system."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "game-audio-music" in DOMAIN_SUPPLEMENTS, "game-audio-music missing from DOMAIN_SUPPLEMENTS"
+    assert "game-audio-music" in ASSESSMENT_SUPPLEMENTS, "game-audio-music missing from ASSESSMENT_SUPPLEMENTS"
+    assert "音乐" in DOMAIN_SUPPLEMENTS["game-audio-music"], "Game Audio Music supplement should mention music"
+
+
+@pytest.mark.asyncio
+async def test_game_audio_music_neighbors():
+    """Game Audio Music concept should have neighbors."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/game-audio-music-composition-overview/neighbors?domain=game-audio-music&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "game-audio-music-composition-overview"
         assert len(data["nodes"]) >= 2

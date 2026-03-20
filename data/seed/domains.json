@@ -230,6 +230,17 @@
       "rag_dir": "vfx",
       "is_active": true,
       "sort_order": 21
+    },
+    {
+      "id": "game-audio-music",
+      "name": "游戏音乐",
+      "description": "从作曲编曲到自适应音乐系统的完整游戏音乐知识体系",
+      "icon": "🎵",
+      "color": "#1d4ed8",
+      "seed_dir": "game-audio-music",
+      "rag_dir": "game-audio-music",
+      "is_active": true,
+      "sort_order": 22
     }
   ]
 }
