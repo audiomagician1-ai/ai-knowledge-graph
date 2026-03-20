@@ -1306,9 +1306,14 @@ data/seed/         — 种子图谱数据
     - VERIFY: 811 tests (602 BE + 209 FE) 全通过, tsc 0 errors, build 3.60s
     - STATUS: Phase 18 步骤 18.1(进度计算) + 18.2(文字显示) + 18.3(弧线可视化) 完成; 18.4(测试+文档)待完成
 
+ - ✅ **Phase 18.4: Galaxy Progress Tests + Docs (2026-03-20, 356bb66)**:
+    - **TEST**: +4 FE新测试(peekDomainProgress edge cases: empty progress object/not_started ignored in total/missing-null status graceful/no progress key)
+    - Issue #13 关闭 — Phase 18 Galaxy Progress Enhancement 全部4步骤完成
+    - VERIFY: 844 tests (631 BE + 213 FE) 全通过, tsc 0 errors, build 7.84s
+
 ## Last Review
 
-**Date**: 2026-03-20 | **Scope**: 全栈 (Round 80: recommend域感知 + LLM null安全 + Issue #14修复 + Phase 18进度可视化) | **Result**: issues-filed (#14 fixed, #13 in-progress)
+**Date**: 2026-03-20 | **Scope**: 全栈 (Round 80: recommend域感知 + LLM null安全 + Issue #14修复 + Phase 18进度可视化) | **Result**: issues-filed (#14 fixed, #13 closed)
 
  - ✅ **第八十轮推荐端点域感知修复+LLM响应null安全加固 (2026-03-20, cf96177)**:
     - **FIX[Medium]**: BE `/learning/recommend` 端点始终使用默认`ai-engineering`种子数据, 无视用户当前查看的域 — 用户在数学/生物等非AI域点击"推荐"按钮, 返回的却是AI工程概念
@@ -1720,9 +1725,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (209 tests)
-cd apps/api && python -m pytest          # 后端测试 ✅ (602 tests)
-# Total: 811 tests (2026-03-20)
+cd packages/web && npx vitest run        # 前端测试 ✅ (213 tests)
+cd apps/api && python -m pytest          # 后端测试 ✅ (631 tests)
+# Total: 844 tests (2026-03-20)
 ```
 
 ### 提交规范
