@@ -1,0 +1,5229 @@
+{
+  "domain": {
+    "id": "game-design",
+    "name": "游戏设计",
+    "description": "从核心循环到系统设计的完整游戏设计知识体系",
+    "icon": "🎮",
+    "color": "#dc2626"
+  },
+  "subdomains": [
+    {
+      "id": "core-loop",
+      "name": "核心循环",
+      "order": 1
+    },
+    {
+      "id": "systems-design",
+      "name": "系统设计",
+      "order": 2
+    },
+    {
+      "id": "player-psychology",
+      "name": "玩家心理",
+      "order": 3
+    },
+    {
+      "id": "economy-design",
+      "name": "经济系统",
+      "order": 4
+    },
+    {
+      "id": "balance-design",
+      "name": "平衡性设计",
+      "order": 5
+    },
+    {
+      "id": "combat-design",
+      "name": "战斗设计",
+      "order": 6
+    },
+    {
+      "id": "social-systems",
+      "name": "社交系统",
+      "order": 7
+    },
+    {
+      "id": "randomness-design",
+      "name": "随机性设计",
+      "order": 8
+    },
+    {
+      "id": "feedback-systems",
+      "name": "反馈系统",
+      "order": 9
+    },
+    {
+      "id": "difficulty-curve",
+      "name": "难度曲线",
+      "order": 10
+    },
+    {
+      "id": "accessibility",
+      "name": "可达性设计",
+      "order": 11
+    },
+    {
+      "id": "design-docs",
+      "name": "设计文档",
+      "order": 12
+    }
+  ],
+  "concepts": [
+    {
+      "id": "gd-overview",
+      "name": "游戏设计概述",
+      "description": "游戏设计的定义、历史与核心方法论",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "what-is-fun",
+      "name": "什么是乐趣",
+      "description": "乐趣的心理学基础与游戏设计中的乐趣类型",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-mechanics",
+      "name": "游戏机制",
+      "description": "核心机制的定义、分类与设计方法",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "core-loop-intro",
+      "name": "核心循环概述",
+      "description": "核心循环(Core Loop)的定义与组成要素",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "engagement-loop",
+      "name": "参与循环",
+      "description": "如何设计让玩家持续参与的循环机制",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "循环"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "progression-loop",
+      "name": "成长循环",
+      "description": "长期成长系统与进度设计",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "循环"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "reward-loop",
+      "name": "奖励循环",
+      "description": "奖励时机、类型与强化机制",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "循环"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "compulsion-loop",
+      "name": "强制循环",
+      "description": "习惯形成机制与道德考量",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "循环"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "meta-loop",
+      "name": "元循环",
+      "description": "跨系统的高层循环设计",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "session-design",
+      "name": "单局设计",
+      "description": "单次游戏会话的时长、节奏与满足感",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "onboarding-design",
+      "name": "新手引导设计",
+      "description": "首次体验(FTUE)与渐进式教学",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "引导"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "retention-design",
+      "name": "留存设计",
+      "description": "日/周/月留存机制与回流设计",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "留存"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endgame-design",
+      "name": "终局设计",
+      "description": "满级后的内容与持续挑战",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "留存"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "daily-loop",
+      "name": "日常循环",
+      "description": "每日任务、签到与日常激励机制",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "循环"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "weekly-loop",
+      "name": "周常循环",
+      "description": "周活动、赛季更新与周期性内容",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "循环"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "genre-loops",
+      "name": "品类核心循环",
+      "description": "不同游戏品类的典型核心循环分析",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "action-game-loop",
+      "name": "动作游戏循环",
+      "description": "动作游戏的挑战→反馈→进步循环",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rpg-game-loop",
+      "name": "RPG游戏循环",
+      "description": "角色扮演游戏的探索→战斗→成长循环",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "strategy-game-loop",
+      "name": "策略游戏循环",
+      "description": "策略游戏的规划→执行→反馈循环",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "idle-game-loop",
+      "name": "放置游戏循环",
+      "description": "放置/挂机游戏的自动化→优化循环",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mobile-f2p-loop",
+      "name": "手游F2P循环",
+      "description": "免费手游的核心循环与商业化结合",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "loop-analysis",
+      "name": "循环分析方法",
+      "description": "如何分析和优化现有游戏的核心循环",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "loop-metrics",
+      "name": "循环指标",
+      "description": "用数据衡量循环健康度的关键指标",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "loop-iteration",
+      "name": "循环迭代",
+      "description": "基于测试数据迭代核心循环的方法论",
+      "subdomain_id": "core-loop",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "迭代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "systems-thinking",
+      "name": "系统思维",
+      "description": "游戏作为复杂系统的分析框架",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "emergent-gameplay",
+      "name": "涌现玩法",
+      "description": "简单规则产生复杂行为的系统设计",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "涌现"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "game-state",
+      "name": "游戏状态",
+      "description": "状态空间、状态转换与状态管理",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "状态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "resource-systems",
+      "name": "资源系统",
+      "description": "资源的产出、消耗、转换与流通",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "资源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "inventory-system",
+      "name": "背包系统",
+      "description": "物品管理、分类、堆叠与容量设计",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "crafting-system",
+      "name": "制造系统",
+      "description": "配方、材料收集与制造循环",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "upgrade-system",
+      "name": "升级系统",
+      "description": "等级、技能树、装备强化等成长机制",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "成长"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "skill-tree",
+      "name": "技能树设计",
+      "description": "技能树的拓扑结构、平衡与重置机制",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "成长"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "quest-system",
+      "name": "任务系统",
+      "description": "主线/支线/日常任务的结构与追踪",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "achievement-system",
+      "name": "成就系统",
+      "description": "成就设计、进度追踪与奖励规划",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unlock-system",
+      "name": "解锁系统",
+      "description": "渐进式内容解锁与门控机制",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "scoring-system",
+      "name": "积分系统",
+      "description": "评分规则、排名与分数反馈",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "save-system",
+      "name": "存档系统",
+      "description": "手动/自动存档、云同步与进度安全",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "time-systems",
+      "name": "时间系统",
+      "description": "游戏内时间、冷却、计时器与等待机制",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "weather-system",
+      "name": "天气系统",
+      "description": "动态天气对玩法的影响与设计",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "faction-system",
+      "name": "阵营系统",
+      "description": "势力关系、声望与阵营选择机制",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pet-companion",
+      "name": "宠物/伙伴系统",
+      "description": "AI伙伴、宠物培养与战斗辅助",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "housing-system",
+      "name": "家园系统",
+      "description": "玩家住宅、装饰与个性化空间",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "transportation",
+      "name": "移动/载具系统",
+      "description": "角色移动、坐骑、快速旅行设计",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "map-system",
+      "name": "地图系统",
+      "description": "世界地图、小地图、标记与导航",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "system-coupling",
+      "name": "系统耦合度",
+      "description": "系统间的依赖关系与解耦策略",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feature-creep",
+      "name": "功能蔓延",
+      "description": "避免过度设计与功能堆砌的方法",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mvp-design",
+      "name": "最小可玩产品",
+      "description": "MVP概念在游戏设计中的应用",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "systems-integration",
+      "name": "系统集成",
+      "description": "多个子系统协调工作的设计模式",
+      "subdomain_id": "systems-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "player-motivation",
+      "name": "玩家动机",
+      "description": "内在/外在动机与自我决定理论",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "flow-theory",
+      "name": "心流理论",
+      "description": "Csikszentmihalyi心流状态在游戏中的应用",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bartle-types",
+      "name": "巴图玩家类型",
+      "description": "Achiever/Explorer/Socializer/Killer四类型模型",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "player-personas",
+      "name": "玩家画像",
+      "description": "用户研究与玩家角色建模",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "研究"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mastery-curve",
+      "name": "掌握感曲线",
+      "description": "从新手到专家的技能习得过程",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "autonomy-design",
+      "name": "自主感设计",
+      "description": "给予玩家有意义的选择与自由度",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "competence-design",
+      "name": "胜任感设计",
+      "description": "让玩家感到能力提升与成就感",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "relatedness-design",
+      "name": "归属感设计",
+      "description": "社交连接与社区归属的设计",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emotion-design",
+      "name": "情感设计",
+      "description": "通过游戏设计唤起特定情感体验",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "情感"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "surprise-delight",
+      "name": "惊喜与愉悦",
+      "description": "期望管理与超预期体验设计",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "情感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "loss-aversion",
+      "name": "损失厌恶",
+      "description": "玩家对失去的敏感度与设计应用",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sunk-cost",
+      "name": "沉没成本",
+      "description": "时间/金钱投入对玩家决策的影响",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "variable-reward",
+      "name": "变动奖励",
+      "description": "不确定性奖励对多巴胺系统的影响",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "endowment-effect",
+      "name": "禀赋效应",
+      "description": "玩家对已拥有物品的价值高估",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fomo-design",
+      "name": "FOMO设计",
+      "description": "错失恐惧的运用与道德边界",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "player-agency",
+      "name": "玩家代入感",
+      "description": "角色认同与叙事沉浸",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "沉浸"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cognitive-load",
+      "name": "认知负荷",
+      "description": "信息量控制与认知超载防止",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "认知"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "decision-fatigue",
+      "name": "决策疲劳",
+      "description": "选择数量与质量对玩家体验的影响",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "认知"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dark-patterns",
+      "name": "暗黑模式",
+      "description": "不道德设计模式的识别与避免",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ethical-design",
+      "name": "道德设计",
+      "description": "负责任的游戏设计原则与实践",
+      "subdomain_id": "player-psychology",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "game-economy-intro",
+      "name": "游戏经济系统概述",
+      "description": "虚拟经济的基本概念与设计目标",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "currency-design",
+      "name": "货币设计",
+      "description": "软/硬货币、代币与多货币体系",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "货币"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sink-source",
+      "name": "水龙头与排水口",
+      "description": "资源产出(Source)与消耗(Sink)的平衡",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "平衡"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "inflation-control",
+      "name": "通胀控制",
+      "description": "虚拟经济中的通货膨胀防治策略",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经济"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "monetization-models",
+      "name": "商业化模型",
+      "description": "Premium/F2P/订阅/混合模型对比",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "case-study",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "iap-design",
+      "name": "内购设计",
+      "description": "消耗品/永久品/订阅的定价策略",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gacha-design",
+      "name": "抽卡系统设计",
+      "description": "概率、保底、天井与合规考量",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "battle-pass",
+      "name": "Battle Pass设计",
+      "description": "赛季通行证的定价、进度与奖励规划",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "shop-design",
+      "name": "商店设计",
+      "description": "商品陈列、限时折扣与购买引导",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "trading-system",
+      "name": "交易系统",
+      "description": "玩家间交易、拍卖行与市场设计",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "loot-table",
+      "name": "掉落表设计",
+      "description": "物品掉落概率、品质分布与掉落保护",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "随机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "economy-simulation",
+      "name": "经济模拟",
+      "description": "用电子表格/脚本模拟经济运行",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pay-to-win",
+      "name": "付费平衡",
+      "description": "付费优势与公平性的设计边界",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gift-system",
+      "name": "赠送系统",
+      "description": "玩家间赠送、互惠与社交货币",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "subscription-model",
+      "name": "订阅模式",
+      "description": "月卡/VIP/季度订阅的设计与定价",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ad-monetization",
+      "name": "广告变现",
+      "description": "激励视频、插页广告与玩家体验平衡",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "economy-metrics",
+      "name": "经济指标",
+      "description": "ARPU/ARPPU/LTV/转化率等关键指标",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pricing-psychology",
+      "name": "定价心理学",
+      "description": "锚定效应、尾数定价与捆绑策略",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "economy-balancing",
+      "name": "经济调平",
+      "description": "上线后经济系统的监控与调整",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "运营"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "virtual-goods",
+      "name": "虚拟商品设计",
+      "description": "皮肤/装饰/功能性道具的价值定位",
+      "subdomain_id": "economy-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "balance-intro",
+      "name": "游戏平衡概述",
+      "description": "平衡性的定义、目标与重要性",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "symmetric-balance",
+      "name": "对称平衡",
+      "description": "镜像式平衡与公平竞争",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "asymmetric-balance",
+      "name": "非对称平衡",
+      "description": "不同能力/角色的等价设计",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "transitive-balance",
+      "name": "传递性平衡",
+      "description": "石头剪刀布式克制关系",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "关系"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "intransitive-balance",
+      "name": "非传递性平衡",
+      "description": "多因素交叉克制网络",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "关系"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "number-tuning",
+      "name": "数值调优",
+      "description": "属性、成长曲线与公式设计",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "数值"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "damage-formula",
+      "name": "伤害公式",
+      "description": "攻防计算、减伤公式与暴击系统",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "数值"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "level-scaling",
+      "name": "等级缩放",
+      "description": "等级差异对战斗的影响与缩放策略",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数值"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "meta-game",
+      "name": "Meta分析",
+      "description": "优势策略、Meta形成与Meta健康度",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "竞技"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "tier-list",
+      "name": "梯队划分",
+      "description": "角色/装备强度评级与调整策略",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "竞技"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "nerf-buff",
+      "name": "削弱与增强",
+      "description": "平衡调整的时机、幅度与沟通策略",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "运营"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "playtesting-balance",
+      "name": "平衡测试",
+      "description": "通过测试发现平衡问题的方法论",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-driven-balance",
+      "name": "数据驱动平衡",
+      "description": "利用玩家数据发现并修复平衡问题",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "power-curve",
+      "name": "力量曲线",
+      "description": "角色/装备力量随等级变化的曲线设计",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数值"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "diminishing-returns",
+      "name": "收益递减",
+      "description": "递减回报机制防止极端堆叠",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "机制"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rubber-banding",
+      "name": "橡皮筋机制",
+      "description": "自动追赶与领先抑制的隐性平衡",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "机制"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pve-balance",
+      "name": "PvE平衡",
+      "description": "玩家对环境的挑战平衡设计",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "PvE"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pvp-balance",
+      "name": "PvP平衡",
+      "description": "玩家对玩家的竞技平衡设计",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "PvP"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "co-op-balance",
+      "name": "合作平衡",
+      "description": "多人合作中的角色定位与贡献平衡",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "合作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "balance-philosophy",
+      "name": "平衡哲学",
+      "description": "完美平衡vs有趣不平衡的设计选择",
+      "subdomain_id": "balance-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "理念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "combat-overview",
+      "name": "战斗系统概述",
+      "description": "战斗设计的核心要素与分类",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "real-time-combat",
+      "name": "实时战斗",
+      "description": "动作游戏式的即时战斗系统",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "turn-based-combat",
+      "name": "回合制战斗",
+      "description": "回合制战斗的节奏与策略设计",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hybrid-combat",
+      "name": "混合战斗",
+      "description": "ATB/即时暂停等混合战斗方案",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hit-feedback",
+      "name": "打击感",
+      "description": "动画、粒子、音效、顿帧的综合打击反馈",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "手感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "combo-system",
+      "name": "连招系统",
+      "description": "攻击链、取消、连携技的设计",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "动作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dodge-parry",
+      "name": "闪避与格挡",
+      "description": "防御操作的设计与风险/回报",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "lock-on-system",
+      "name": "锁定系统",
+      "description": "目标锁定与摄像机管理",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "操作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "status-effects",
+      "name": "状态效果",
+      "description": "Buff/Debuff/控制效果的设计",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "elemental-system",
+      "name": "元素系统",
+      "description": "元素反应、克制与组合策略",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "class-design",
+      "name": "职业设计",
+      "description": "不同职业的定位、技能与玩法差异",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "角色"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "boss-design",
+      "name": "Boss战设计",
+      "description": "Boss机制、阶段、弱点与挑战设计",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "战斗"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "enemy-design",
+      "name": "敌人设计",
+      "description": "小怪/精英/Boss的能力层次与AI行为",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "weapon-design",
+      "name": "武器设计",
+      "description": "武器种类、手感差异与属性设计",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "装备"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "armor-system",
+      "name": "防具系统",
+      "description": "护甲、抗性与装备套装效果",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "装备"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "skill-design",
+      "name": "技能设计",
+      "description": "主动/被动技能的功能与数值设计",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cooldown-design",
+      "name": "冷却设计",
+      "description": "技能冷却、资源消耗与节奏控制",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ai-behavior",
+      "name": "战斗AI行为",
+      "description": "敌人AI的状态机与行为树设计",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "encounter-design",
+      "name": "遭遇战设计",
+      "description": "战斗场景、怪物组合与地形利用",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "关卡"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "combat-pacing",
+      "name": "战斗节奏",
+      "description": "战斗频率、时长与松紧张弛",
+      "subdomain_id": "combat-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-design-intro",
+      "name": "社交系统概述",
+      "description": "多人游戏中社交设计的目标与类型",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guild-system",
+      "name": "公会系统",
+      "description": "公会创建、管理、等级与活动",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "组织"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "chat-system",
+      "name": "聊天系统",
+      "description": "文字/语音/表情的沟通设计",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "friend-system",
+      "name": "好友系统",
+      "description": "好友添加、互动与社交图谱",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "关系"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "matchmaking",
+      "name": "匹配系统",
+      "description": "技能匹配、队伍组建与等待优化",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "竞技"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "leaderboard",
+      "name": "排行榜设计",
+      "description": "全球/好友/赛季排行的展示策略",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "竞争"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "coop-design",
+      "name": "合作玩法设计",
+      "description": "PvE合作的角色配合与激励机制",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "合作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "competitive-design",
+      "name": "竞技玩法设计",
+      "description": "PvP竞技模式的规则与平衡",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "竞技"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "elo-rating",
+      "name": "ELO评分系统",
+      "description": "排名分数计算与匹配池管理",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ugc-system",
+      "name": "用户生成内容",
+      "description": "关卡编辑器、MOD支持与创意工具",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "创意"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "spectator-mode",
+      "name": "观战系统",
+      "description": "观战功能与电竞观赛体验",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "电竞"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "replay-system",
+      "name": "回放系统",
+      "description": "战斗回放、精彩时刻与分享功能",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分享"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "toxicity-management",
+      "name": "毒性管理",
+      "description": "举报、禁言、低优先级匹配等反毒机制",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mentor-system",
+      "name": "师徒系统",
+      "description": "老玩家帮助新玩家的互惠机制",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-hooks",
+      "name": "社交钩子",
+      "description": "邀请好友、分享成就的社交传播设计",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "增长"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "clan-war",
+      "name": "公会战设计",
+      "description": "大规模公会对抗的规则与奖励",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "竞技"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-space",
+      "name": "社交空间",
+      "description": "大厅、城镇等非战斗社交区域设计",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emote-system",
+      "name": "表情动作系统",
+      "description": "角色表情、动作与社交表达",
+      "subdomain_id": "social-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "表达"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "randomness-intro",
+      "name": "随机性概述",
+      "description": "游戏中随机性的作用与分类",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "input-randomness",
+      "name": "输入随机性",
+      "description": "行动前的随机(如地图生成)",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "output-randomness",
+      "name": "输出随机性",
+      "description": "行动后的随机(如命中判定)",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "probability-design",
+      "name": "概率设计",
+      "description": "概率分布、权重表与保底机制",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pseudo-random",
+      "name": "伪随机分布",
+      "description": "PRD/PRNG防止极端连续与公平感",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "procedural-gen",
+      "name": "程序化生成",
+      "description": "地图/关卡/物品的随机生成算法",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "PCG"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "roguelike-design",
+      "name": "Roguelike设计",
+      "description": "随机生成、永久死亡与每局独特性",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "seed-system",
+      "name": "种子系统",
+      "description": "可重现的随机与种子分享机制",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "系统"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "loot-randomness",
+      "name": "掉落随机性",
+      "description": "物品品质、词条随机与掉落保护",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "掉落"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "crit-system",
+      "name": "暴击系统",
+      "description": "暴击率/暴击伤害的概率设计",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战斗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "miss-system",
+      "name": "命中/闪避系统",
+      "description": "命中率计算与感知公平性",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战斗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "card-draw",
+      "name": "卡牌抽取",
+      "description": "卡牌游戏的牌组随机与手牌管理",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dice-mechanics",
+      "name": "骰子机制",
+      "description": "桌游骰子在电子游戏中的应用",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "机制"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "shuffle-algorithm",
+      "name": "洗牌算法",
+      "description": "Fisher-Yates等公平洗牌实现",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "weighted-random",
+      "name": "加权随机",
+      "description": "按权重分配概率的实现方法",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "perception-fairness",
+      "name": "感知公平性",
+      "description": "数学公平与心理公平的差异处理",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rng-transparency",
+      "name": "随机性透明度",
+      "description": "向玩家展示/隐藏概率信息的策略",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "UX"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "controlled-chaos",
+      "name": "可控混沌",
+      "description": "在随机性与确定性之间取得平衡",
+      "subdomain_id": "randomness-design",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "feedback-intro",
+      "name": "反馈系统概述",
+      "description": "游戏反馈的类型、层次与设计原则",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "visual-feedback",
+      "name": "视觉反馈",
+      "description": "动画、特效、UI变化等视觉信号",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-feedback",
+      "name": "音频反馈",
+      "description": "音效、音乐变化与环境音的反馈作用",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "音频"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "haptic-feedback",
+      "name": "触觉反馈",
+      "description": "手柄振动、屏幕震动与力反馈",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "触觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ui-feedback",
+      "name": "UI反馈",
+      "description": "数字变化、进度条、图标状态等界面反馈",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "camera-feedback",
+      "name": "摄像机反馈",
+      "description": "摄像机抖动、缩放与聚焦的反馈效果",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "摄像机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "juice-design",
+      "name": "Juice设计",
+      "description": "让游戏感觉好的微反馈堆叠技巧",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "手感"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "positive-feedback-loop",
+      "name": "正反馈循环",
+      "description": "优势累积的雪球效应设计",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "循环"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "negative-feedback-loop",
+      "name": "负反馈循环",
+      "description": "自动平衡的追赶机制设计",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "循环"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "reward-feedback",
+      "name": "奖励反馈",
+      "description": "获得物品/升级时的庆祝效果",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "奖励"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "failure-feedback",
+      "name": "失败反馈",
+      "description": "死亡/失败时的反馈与重试激励",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "失败"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "progress-feedback",
+      "name": "进度反馈",
+      "description": "进度条、百分比与里程碑提示",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "damage-numbers",
+      "name": "伤害数字",
+      "description": "浮动数字的颜色、大小与信息传达",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "战斗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hit-stop",
+      "name": "顿帧(HitStop)",
+      "description": "攻击命中时的短暂停顿增强打击感",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "手感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "screen-shake",
+      "name": "屏幕震动",
+      "description": "不同强度震动传达的冲击力层次",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "手感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "notification-system",
+      "name": "通知系统",
+      "description": "新内容/活动/奖励的提醒策略",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "tutorial-feedback",
+      "name": "教学反馈",
+      "description": "新手引导中的即时对/错反馈",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "引导"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ambient-feedback",
+      "name": "环境反馈",
+      "description": "游戏世界对玩家行为的动态响应",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "世界"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-feedback",
+      "name": "社交反馈",
+      "description": "点赞、评论、观众反应等社交信号",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "delayed-feedback",
+      "name": "延迟反馈",
+      "description": "策略类游戏中决策后果的延迟揭示",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feedback-hierarchy",
+      "name": "反馈层级",
+      "description": "重要/次要/背景反馈的优先级管理",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feedback-fatigue",
+      "name": "反馈疲劳",
+      "description": "避免过度反馈导致的信息麻木",
+      "subdomain_id": "feedback-systems",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "问题"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "difficulty-overview",
+      "name": "难度设计概述",
+      "description": "难度的定义、维度与设计目标",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "difficulty-levels",
+      "name": "难度等级",
+      "description": "简单/普通/困难/噩梦等多难度设计",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "adaptive-difficulty",
+      "name": "自适应难度",
+      "description": "DDA(动态难度调整)的原理与实现",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "动态"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "skill-vs-challenge",
+      "name": "技能vs挑战",
+      "description": "玩家技能与游戏挑战的匹配曲线",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pacing-design",
+      "name": "节奏设计",
+      "description": "紧张→放松→高潮的情感节奏曲线",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "learning-curve",
+      "name": "学习曲线",
+      "description": "机制教学的渐进式难度提升",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "教学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "difficulty-spike",
+      "name": "难度尖刺",
+      "description": "识别与解决突然增加的难度跳跃",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "问题"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fail-state",
+      "name": "失败状态",
+      "description": "Game Over、惩罚与重试机制的设计",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "失败"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "checkpoint-design",
+      "name": "检查点设计",
+      "description": "自动/手动保存点的间距与放置",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "soulslike-difficulty",
+      "name": "魂系难度",
+      "description": "高难度游戏的核心设计哲学",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "case-study",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "casual-difficulty",
+      "name": "休闲难度",
+      "description": "休闲玩家的低压力体验设计",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "受众"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hardcore-difficulty",
+      "name": "硬核难度",
+      "description": "核心玩家追求的极限挑战设计",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "受众"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "assist-mode",
+      "name": "辅助模式",
+      "description": "可选辅助功能降低操作门槛",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "可达"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "enemy-scaling",
+      "name": "敌人缩放",
+      "description": "敌人强度随玩家进度的动态调整",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "缩放"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "puzzle-difficulty",
+      "name": "谜题难度",
+      "description": "解谜游戏的线索给予与难度控制",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "解谜"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "tutorial-progression",
+      "name": "教学进度",
+      "description": "新机制的引入时机与教学设计",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "教学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mastery-expression",
+      "name": "掌握度表达",
+      "description": "让高技术玩家展现技巧的设计空间",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "表达"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "optional-challenge",
+      "name": "可选挑战",
+      "description": "奖杯/成就/隐藏关卡等额外挑战",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内容"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "difficulty-testing",
+      "name": "难度测试",
+      "description": "通过测试验证难度曲线的方法",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "speed-run-design",
+      "name": "速通设计",
+      "description": "速通社区与游戏设计的关系",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "case-study",
+      "tags": [
+        "社区"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "new-game-plus",
+      "name": "二周目设计",
+      "description": "New Game+的难度提升与新内容",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内容"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rubber-band-difficulty",
+      "name": "橡皮筋难度",
+      "description": "竞技游戏中的追赶机制与领先抑制",
+      "subdomain_id": "difficulty-curve",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "竞技"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "accessibility-intro",
+      "name": "可达性设计概述",
+      "description": "游戏可达性的定义、重要性与法规",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "visual-accessibility",
+      "name": "视觉可达性",
+      "description": "色盲模式、大字体、高对比度",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "colorblind-design",
+      "name": "色盲友好设计",
+      "description": "Deuteranopia/Protanopia/Tritanopia适配",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-accessibility",
+      "name": "听觉可达性",
+      "description": "字幕、声音可视化与振动替代",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "听觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "motor-accessibility",
+      "name": "运动可达性",
+      "description": "单手操作、按键重映射、辅助瞄准",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "操作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cognitive-accessibility",
+      "name": "认知可达性",
+      "description": "简化模式、清晰UI、阅读辅助",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "认知"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "control-remapping",
+      "name": "控制重映射",
+      "description": "自定义按键绑定与控制方案",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "操作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "subtitle-design",
+      "name": "字幕设计",
+      "description": "字幕大小、颜色、背景与说话者标识",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aim-assist",
+      "name": "辅助瞄准",
+      "description": "瞄准辅助的类型与调节程度",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "操作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "text-to-speech",
+      "name": "文字转语音",
+      "description": "TTS/语音聊天转文字的集成",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "one-hand-mode",
+      "name": "单手模式",
+      "description": "适配单手操作的UI与控制设计",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "操作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "screen-reader",
+      "name": "屏幕阅读器",
+      "description": "支持Screen Reader的UI标记与导航",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "photosensitivity",
+      "name": "光敏性考虑",
+      "description": "闪烁控制、亮度调节与警告设置",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "accessible-ui",
+      "name": "无障碍UI",
+      "description": "WCAG标准在游戏UI中的应用",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "difficulty-accessibility",
+      "name": "难度可达性",
+      "description": "独立于挑战难度的可达性选项",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "难度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "localization-access",
+      "name": "本地化可达性",
+      "description": "多语言、RTL文本与文化适配",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "本地化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "accessibility-testing",
+      "name": "可达性测试",
+      "description": "自动化与用户测试验证可达性",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "accessibility-guidelines",
+      "name": "可达性标准",
+      "description": "CVAA/ADA/WCAG在游戏中的应用",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "法规"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "inclusive-design",
+      "name": "包容性设计",
+      "description": "从设计阶段考虑多样化玩家需求",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "理念"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "accessibility-audit",
+      "name": "可达性审计",
+      "description": "游戏可达性检查清单与评估方法",
+      "subdomain_id": "accessibility",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "design-doc-intro",
+      "name": "设计文档概述",
+      "description": "游戏设计文档的类型与作用",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "gdd-structure",
+      "name": "GDD结构",
+      "description": "游戏设计文档(GDD)的标准结构",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "one-pager",
+      "name": "一页纸概念",
+      "description": "用一页纸描述游戏核心概念的技巧",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pitch-deck",
+      "name": "游戏提案",
+      "description": "向投资人/发行商展示项目的提案设计",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "商业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feature-spec",
+      "name": "功能规格书",
+      "description": "单个功能的详细规格与需求文档",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "tech-design-doc",
+      "name": "技术设计文档",
+      "description": "实现方案的技术规格与架构说明",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "content-design-doc",
+      "name": "内容设计文档",
+      "description": "关卡/任务/剧情的内容规划文档",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "balance-doc",
+      "name": "数值设计文档",
+      "description": "属性公式、成长曲线的数值规格",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数值"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ui-wireframe",
+      "name": "UI线框图",
+      "description": "界面布局的低保真原型设计",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "flowchart-design",
+      "name": "流程图设计",
+      "description": "用流程图描述系统逻辑与玩家路径",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "user-story",
+      "name": "用户故事",
+      "description": "以玩家视角描述功能需求",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "敏捷"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "prototyping",
+      "name": "原型制作",
+      "description": "快速原型验证设计假设",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "paper-prototype",
+      "name": "纸面原型",
+      "description": "用纸和笔快速测试机制想法",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "playtesting-method",
+      "name": "测试方法论",
+      "description": "玩家测试的组织、观察与分析",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "iteration-process",
+      "name": "迭代流程",
+      "description": "设计→原型→测试→改进的迭代循环",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "design-pillars",
+      "name": "设计支柱",
+      "description": "定义游戏核心体验的设计支柱方法",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "competitive-analysis",
+      "name": "竞品分析",
+      "description": "分析竞品游戏的方法与模板",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "研究"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "design-review",
+      "name": "设计评审",
+      "description": "团队内部设计评审的流程与检查点",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "version-control-docs",
+      "name": "文档版本管理",
+      "description": "设计文档的版本控制与变更追踪",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "living-doc",
+      "name": "活文档",
+      "description": "保持设计文档与实际实现同步的策略",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "post-mortem",
+      "name": "复盘分析",
+      "description": "项目结束后的经验总结与文档化",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "case-study-writing",
+      "name": "案例研究写作",
+      "description": "将游戏设计案例整理为学习资料",
+      "subdomain_id": "design-docs",
+      "domain_id": "game-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "写作"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "gd-overview",
+      "target_id": "what-is-fun",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gd-overview",
+      "target_id": "game-mechanics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "what-is-fun",
+      "target_id": "core-loop-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-mechanics",
+      "target_id": "core-loop-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "core-loop-intro",
+      "target_id": "engagement-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "core-loop-intro",
+      "target_id": "progression-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "core-loop-intro",
+      "target_id": "reward-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "engagement-loop",
+      "target_id": "compulsion-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "engagement-loop",
+      "target_id": "meta-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "progression-loop",
+      "target_id": "meta-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "core-loop-intro",
+      "target_id": "session-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "core-loop-intro",
+      "target_id": "onboarding-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "engagement-loop",
+      "target_id": "retention-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "progression-loop",
+      "target_id": "endgame-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "retention-design",
+      "target_id": "daily-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "retention-design",
+      "target_id": "weekly-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "core-loop-intro",
+      "target_id": "genre-loops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genre-loops",
+      "target_id": "action-game-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genre-loops",
+      "target_id": "rpg-game-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genre-loops",
+      "target_id": "strategy-game-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genre-loops",
+      "target_id": "idle-game-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "genre-loops",
+      "target_id": "mobile-f2p-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "meta-loop",
+      "target_id": "loop-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "loop-analysis",
+      "target_id": "loop-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "loop-metrics",
+      "target_id": "loop-iteration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gd-overview",
+      "target_id": "systems-thinking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "emergent-gameplay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "game-state",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "resource-systems",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-systems",
+      "target_id": "inventory-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-systems",
+      "target_id": "crafting-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-systems",
+      "target_id": "upgrade-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "upgrade-system",
+      "target_id": "skill-tree",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "quest-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "achievement-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "unlock-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "scoring-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-state",
+      "target_id": "save-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "time-systems",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "emergent-gameplay",
+      "target_id": "weather-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "faction-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "pet-companion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "housing-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "transportation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "map-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "emergent-gameplay",
+      "target_id": "system-coupling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "feature-creep",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "systems-thinking",
+      "target_id": "mvp-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-coupling",
+      "target_id": "systems-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "what-is-fun",
+      "target_id": "player-motivation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "flow-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "bartle-types",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bartle-types",
+      "target_id": "player-personas",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "flow-theory",
+      "target_id": "mastery-curve",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "autonomy-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "competence-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "relatedness-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "autonomy-design",
+      "target_id": "emotion-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "competence-design",
+      "target_id": "emotion-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "emotion-design",
+      "target_id": "surprise-delight",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "loss-aversion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "sunk-cost",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "variable-reward",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "loss-aversion",
+      "target_id": "endowment-effect",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "variable-reward",
+      "target_id": "fomo-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "emotion-design",
+      "target_id": "player-agency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "player-motivation",
+      "target_id": "cognitive-load",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-load",
+      "target_id": "decision-fatigue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fomo-design",
+      "target_id": "dark-patterns",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dark-patterns",
+      "target_id": "ethical-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-systems",
+      "target_id": "game-economy-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-economy-intro",
+      "target_id": "currency-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-economy-intro",
+      "target_id": "sink-source",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sink-source",
+      "target_id": "inflation-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-economy-intro",
+      "target_id": "monetization-models",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetization-models",
+      "target_id": "iap-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "iap-design",
+      "target_id": "gacha-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "iap-design",
+      "target_id": "battle-pass",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-economy-intro",
+      "target_id": "shop-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-economy-intro",
+      "target_id": "trading-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-economy-intro",
+      "target_id": "loot-table",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "inflation-control",
+      "target_id": "economy-simulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetization-models",
+      "target_id": "pay-to-win",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-economy-intro",
+      "target_id": "gift-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetization-models",
+      "target_id": "subscription-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetization-models",
+      "target_id": "ad-monetization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economy-simulation",
+      "target_id": "economy-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "iap-design",
+      "target_id": "pricing-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "economy-metrics",
+      "target_id": "economy-balancing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monetization-models",
+      "target_id": "virtual-goods",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-mechanics",
+      "target_id": "balance-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-intro",
+      "target_id": "symmetric-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-intro",
+      "target_id": "asymmetric-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-intro",
+      "target_id": "transitive-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "transitive-balance",
+      "target_id": "intransitive-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-intro",
+      "target_id": "number-tuning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "number-tuning",
+      "target_id": "damage-formula",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "number-tuning",
+      "target_id": "level-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "asymmetric-balance",
+      "target_id": "meta-game",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "meta-game",
+      "target_id": "tier-list",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "tier-list",
+      "target_id": "nerf-buff",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-intro",
+      "target_id": "playtesting-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "playtesting-balance",
+      "target_id": "data-driven-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "number-tuning",
+      "target_id": "power-curve",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "number-tuning",
+      "target_id": "diminishing-returns",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-intro",
+      "target_id": "rubber-banding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-intro",
+      "target_id": "pve-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "balance-intro",
+      "target_id": "pvp-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pvp-balance",
+      "target_id": "co-op-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "meta-game",
+      "target_id": "balance-philosophy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-mechanics",
+      "target_id": "combat-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-overview",
+      "target_id": "real-time-combat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-overview",
+      "target_id": "turn-based-combat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "real-time-combat",
+      "target_id": "hybrid-combat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "turn-based-combat",
+      "target_id": "hybrid-combat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "real-time-combat",
+      "target_id": "hit-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "hit-feedback",
+      "target_id": "combo-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "real-time-combat",
+      "target_id": "dodge-parry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "real-time-combat",
+      "target_id": "lock-on-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-overview",
+      "target_id": "status-effects",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "status-effects",
+      "target_id": "elemental-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-overview",
+      "target_id": "class-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-overview",
+      "target_id": "boss-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-overview",
+      "target_id": "enemy-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-overview",
+      "target_id": "weapon-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-overview",
+      "target_id": "armor-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "class-design",
+      "target_id": "skill-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "skill-design",
+      "target_id": "cooldown-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "enemy-design",
+      "target_id": "ai-behavior",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "enemy-design",
+      "target_id": "encounter-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "boss-design",
+      "target_id": "combat-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "relatedness-design",
+      "target_id": "social-design-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "guild-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "chat-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "friend-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "matchmaking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "leaderboard",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "coop-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "competitive-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "matchmaking",
+      "target_id": "elo-rating",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "ugc-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "competitive-design",
+      "target_id": "spectator-mode",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "competitive-design",
+      "target_id": "replay-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "chat-system",
+      "target_id": "toxicity-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "mentor-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "friend-system",
+      "target_id": "social-hooks",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guild-system",
+      "target_id": "clan-war",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "social-space",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-design-intro",
+      "target_id": "emote-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-mechanics",
+      "target_id": "randomness-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "randomness-intro",
+      "target_id": "input-randomness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "randomness-intro",
+      "target_id": "output-randomness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "randomness-intro",
+      "target_id": "probability-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "probability-design",
+      "target_id": "pseudo-random",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-randomness",
+      "target_id": "procedural-gen",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "procedural-gen",
+      "target_id": "roguelike-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "procedural-gen",
+      "target_id": "seed-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "probability-design",
+      "target_id": "loot-randomness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "output-randomness",
+      "target_id": "crit-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "output-randomness",
+      "target_id": "miss-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "randomness-intro",
+      "target_id": "card-draw",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "randomness-intro",
+      "target_id": "dice-mechanics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "probability-design",
+      "target_id": "shuffle-algorithm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "probability-design",
+      "target_id": "weighted-random",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pseudo-random",
+      "target_id": "perception-fairness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "randomness-intro",
+      "target_id": "rng-transparency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "perception-fairness",
+      "target_id": "controlled-chaos",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "game-mechanics",
+      "target_id": "feedback-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "visual-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "audio-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "haptic-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "ui-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-feedback",
+      "target_id": "camera-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-feedback",
+      "target_id": "juice-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-feedback",
+      "target_id": "juice-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "haptic-feedback",
+      "target_id": "juice-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "positive-feedback-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "negative-feedback-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "reward-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "failure-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "progress-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-feedback",
+      "target_id": "damage-numbers",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-feedback",
+      "target_id": "hit-stop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "camera-feedback",
+      "target_id": "screen-shake",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ui-feedback",
+      "target_id": "notification-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "onboarding-design",
+      "target_id": "tutorial-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "ambient-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "social-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-intro",
+      "target_id": "delayed-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "juice-design",
+      "target_id": "feedback-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-hierarchy",
+      "target_id": "feedback-fatigue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "flow-theory",
+      "target_id": "difficulty-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "difficulty-levels",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "adaptive-difficulty",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "skill-vs-challenge",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "skill-vs-challenge",
+      "target_id": "pacing-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "learning-curve",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "learning-curve",
+      "target_id": "difficulty-spike",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "fail-state",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fail-state",
+      "target_id": "checkpoint-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-levels",
+      "target_id": "soulslike-difficulty",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-levels",
+      "target_id": "casual-difficulty",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-levels",
+      "target_id": "hardcore-difficulty",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-levels",
+      "target_id": "assist-mode",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "enemy-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "puzzle-difficulty",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "learning-curve",
+      "target_id": "tutorial-progression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mastery-curve",
+      "target_id": "mastery-expression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "optional-challenge",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-overview",
+      "target_id": "difficulty-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "hardcore-difficulty",
+      "target_id": "speed-run-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "difficulty-levels",
+      "target_id": "new-game-plus",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "negative-feedback-loop",
+      "target_id": "rubber-band-difficulty",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gd-overview",
+      "target_id": "accessibility-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-intro",
+      "target_id": "visual-accessibility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-accessibility",
+      "target_id": "colorblind-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-intro",
+      "target_id": "audio-accessibility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-intro",
+      "target_id": "motor-accessibility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-intro",
+      "target_id": "cognitive-accessibility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "motor-accessibility",
+      "target_id": "control-remapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-accessibility",
+      "target_id": "subtitle-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "motor-accessibility",
+      "target_id": "aim-assist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-accessibility",
+      "target_id": "text-to-speech",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "motor-accessibility",
+      "target_id": "one-hand-mode",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-accessibility",
+      "target_id": "screen-reader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-accessibility",
+      "target_id": "photosensitivity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cognitive-accessibility",
+      "target_id": "accessible-ui",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "assist-mode",
+      "target_id": "difficulty-accessibility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-intro",
+      "target_id": "localization-access",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-intro",
+      "target_id": "accessibility-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-testing",
+      "target_id": "accessibility-guidelines",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-intro",
+      "target_id": "inclusive-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "accessibility-guidelines",
+      "target_id": "accessibility-audit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gd-overview",
+      "target_id": "design-doc-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "gdd-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "one-pager",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "one-pager",
+      "target_id": "pitch-deck",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gdd-structure",
+      "target_id": "feature-spec",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feature-spec",
+      "target_id": "tech-design-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gdd-structure",
+      "target_id": "content-design-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gdd-structure",
+      "target_id": "balance-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "ui-wireframe",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "flowchart-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "user-story",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "prototyping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prototyping",
+      "target_id": "paper-prototype",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prototyping",
+      "target_id": "playtesting-method",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "playtesting-method",
+      "target_id": "iteration-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "design-pillars",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "competitive-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "iteration-process",
+      "target_id": "design-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "version-control-docs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-doc-intro",
+      "target_id": "living-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "design-review",
+      "target_id": "post-mortem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "post-mortem",
+      "target_id": "case-study-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "reward-loop",
+      "target_id": "resource-systems",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "progression-loop",
+      "target_id": "upgrade-system",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "mobile-f2p-loop",
+      "target_id": "monetization-models",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "session-design",
+      "target_id": "pacing-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "flow-theory",
+      "target_id": "skill-vs-challenge",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "emotion-design",
+      "target_id": "juice-design",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pay-to-win",
+      "target_id": "pvp-balance",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "hit-feedback",
+      "target_id": "juice-design",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "hit-feedback",
+      "target_id": "hit-stop",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "hit-feedback",
+      "target_id": "screen-shake",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "damage-formula",
+      "target_id": "number-tuning",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "class-design",
+      "target_id": "asymmetric-balance",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "loot-randomness",
+      "target_id": "loot-table",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "crit-system",
+      "target_id": "damage-formula",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "trading-system",
+      "target_id": "inflation-control",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "assist-mode",
+      "target_id": "difficulty-accessibility",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "playtesting-method",
+      "target_id": "playtesting-balance",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "balance-doc",
+      "target_id": "number-tuning",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "iteration-process",
+      "target_id": "loop-iteration",
+      "relation_type": "related",
+      "strength": 0.7
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "created_at": "2026-03-20T12:00:00.000000+00:00",
+    "stats": {
+      "total_concepts": 250,
+      "total_edges": 274,
+      "total_subdomains": 12,
+      "total_milestones": 34
+    }
+  }
+}

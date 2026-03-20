@@ -287,6 +287,18 @@ const WRITING_DOMAIN_SUPPLEMENT = `
 `;
 
 
+const GAME_DESIGN_DOMAIN_SUPPLEMENT = `
+## 游戏设计教学特殊规则
+
+1. **案例驱动**: 每个概念用真实游戏案例说明（如塞尔达、暗黑、文明、英雄联盟、原神等）
+2. **系统思维**: 鼓励从系统视角分析设计，理解一个改动对多个子系统的连锁影响
+3. **玩家中心**: 所有设计决策服务于玩家体验，引导思考"这对玩家感觉如何？"
+4. **迭代思维**: 强调原型→测试→改进的循环，鼓励快速失败、快速学习
+5. **权衡意识**: 没有绝对正确的答案，只有权衡（深度vs可达性、自由度vs引导、公平vs有趣）
+6. **跨领域视角**: 融合心理学、经济学、叙事、美学等多学科知识分析设计问题
+7. **伦理意识**: 适时讨论道德设计、暗黑模式、成瘾防护等话题
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -299,6 +311,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'biology': BIOLOGY_DOMAIN_SUPPLEMENT,
   'economics': ECONOMICS_DOMAIN_SUPPLEMENT,
   'writing': WRITING_DOMAIN_SUPPLEMENT,
+  'game-design': GAME_DESIGN_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -433,6 +446,19 @@ const WRITING_ASSESSMENT_SUPPLEMENT = `
 - **避免误区**: 用户是否避免了常见误解（如"好文章一气呵成"、"华丽辞藻=好文章"、"创意写作不需要技巧"）？
 `;
 
+const GAME_DESIGN_ASSESSMENT_SUPPLEMENT = `
+## 游戏设计领域评估特殊指标
+
+在评估游戏设计概念理解时，请额外关注以下方面：
+- **案例运用**: 用户是否能用具体游戏案例解释或分析设计概念？
+- **系统理解**: 用户是否理解设计决策的系统性影响和连锁反应？
+- **玩家视角**: 用户是否能从玩家体验角度分析设计？
+- **权衡分析**: 用户是否能识别设计中的权衡关系及其适用场景？
+- **迭代意识**: 用户是否理解设计需要通过测试和数据验证？
+- **创新思维**: 用户是否能在理解经典模式基础上提出改进或创新？
+- **避免误区**: 用户是否避免了常见误解（如"功能越多越好"、"数值平衡=好玩"、"抄成功游戏就能成功"）？
+`;
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -444,6 +470,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'biology': BIOLOGY_ASSESSMENT_SUPPLEMENT,
   'economics': ECONOMICS_ASSESSMENT_SUPPLEMENT,
   'writing': WRITING_ASSESSMENT_SUPPLEMENT,
+  'game-design': GAME_DESIGN_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

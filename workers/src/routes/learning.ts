@@ -12,6 +12,7 @@ import seedPhilosophy from '../../data/seed/philosophy/seed_graph.json';
 import seedBiology from '../../data/seed/biology/seed_graph.json';
 import seedEconomics from '../../data/seed/economics/seed_graph.json';
 import seedWriting from '../../data/seed/writing/seed_graph.json';
+import seedGameDesign from '../../data/seed/game-design/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -21,6 +22,7 @@ const seedMap: Record<string, any> = {
   'physics': seedPhysics, 'product-design': seedProduct, 'finance': seedFinance,
   'psychology': seedPsychology, 'philosophy': seedPhilosophy,
   'biology': seedBiology, 'economics': seedEconomics, 'writing': seedWriting,
+  'game-design': seedGameDesign,
 };
 function getSeed(domain: string): any { return seedMap[domain] || seedMap[DEFAULT_DOMAIN]; }
 

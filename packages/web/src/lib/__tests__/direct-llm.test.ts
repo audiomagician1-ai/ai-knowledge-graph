@@ -246,7 +246,7 @@ describe('tokenLimitParam', () => {
 });
 
 describe('getDomainSupplement', () => {
-  it('should return supplement for all 10 active domains', () => {
+  it('should return supplement for all 11 active domains', () => {
     expect(getDomainSupplement('mathematics')).toContain('数学教学特殊规则');
     expect(getDomainSupplement('english')).toContain('英语教学特殊规则');
     expect(getDomainSupplement('physics')).toContain('物理教学特殊规则');
@@ -257,6 +257,7 @@ describe('getDomainSupplement', () => {
     expect(getDomainSupplement('biology')).toContain('生物学教学特殊规则');
     expect(getDomainSupplement('economics')).toContain('经济学教学特殊规则');
     expect(getDomainSupplement('writing')).toContain('写作教学特殊规则');
+    expect(getDomainSupplement('game-design')).toContain('游戏设计教学特殊规则');
   });
 
   it('should return empty for unknown/default domain', () => {
@@ -267,7 +268,7 @@ describe('getDomainSupplement', () => {
 });
 
 describe('getAssessmentSupplement', () => {
-  it('should return assessment supplement for all 10 active domains', () => {
+  it('should return assessment supplement for all 11 active domains', () => {
     expect(getAssessmentSupplement('mathematics')).toContain('数学领域评估特殊指标');
     expect(getAssessmentSupplement('english')).toContain('英语领域评估特殊指标');
     expect(getAssessmentSupplement('physics')).toContain('物理领域评估特殊指标');
@@ -278,6 +279,7 @@ describe('getAssessmentSupplement', () => {
     expect(getAssessmentSupplement('biology')).toContain('生物学领域评估特殊指标');
     expect(getAssessmentSupplement('economics')).toContain('经济学领域评估特殊指标');
     expect(getAssessmentSupplement('writing')).toContain('写作领域评估特殊指标');
+    expect(getAssessmentSupplement('game-design')).toContain('游戏设计领域评估特殊指标');
   });
 
   it('should return empty for unknown/default domain', () => {

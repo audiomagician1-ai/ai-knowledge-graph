@@ -1,6 +1,6 @@
 {
   "_doc": "Cross-sphere relation links — connects concepts across different knowledge domains",
-  "_version": "1.0",
+  "_version": "1.1",
   "_created": "2026-03-19",
   "links": [
     {
@@ -1162,6 +1162,126 @@
       "target_id": "ecology-overview",
       "relation": "applies_to",
       "description": "科普写作技巧可应用于生态学知识的通俗化传播，将复杂生态系统概念转化为大众可理解的内容"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "player-personas",
+      "target_domain": "product-design",
+      "target_id": "user-persona",
+      "relation": "same_concept",
+      "description": "玩家画像与用户画像是相同的研究方法论，前者针对游戏玩家，后者针对产品用户"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "mvp-design",
+      "target_domain": "product-design",
+      "target_id": "mvp-design",
+      "relation": "same_concept",
+      "description": "MVP概念在游戏设计和产品设计中都是核心方法论，快速验证假设"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "prototyping",
+      "target_domain": "product-design",
+      "target_id": "design-thinking",
+      "relation": "related",
+      "description": "游戏原型制作是设计思维中原型阶段的具体应用"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "accessible-ui",
+      "target_domain": "product-design",
+      "target_id": "user-centered-design",
+      "relation": "related",
+      "description": "游戏无障碍UI设计是以用户为中心设计方法论的具体实践"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "player-motivation",
+      "target_domain": "psychology",
+      "target_id": "motivation-behavioral",
+      "relation": "related",
+      "description": "玩家动机设计直接应用行为心理学中的动机理论"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "flow-theory",
+      "target_domain": "psychology",
+      "target_id": "cognitive-psychology-overview",
+      "relation": "related",
+      "description": "心流理论源自认知心理学，是游戏设计中最核心的心理学概念"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "cognitive-load",
+      "target_domain": "psychology",
+      "target_id": "cognitive-load",
+      "relation": "same_concept",
+      "description": "认知负荷在游戏设计和认知心理学中是相同概念，前者关注如何控制信息量"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "loss-aversion",
+      "target_domain": "psychology",
+      "target_id": "cognitive-biases",
+      "relation": "related",
+      "description": "损失厌恶是认知偏差的重要类型，游戏设计利用这一心理特性设计激励机制"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "dark-patterns",
+      "target_domain": "psychology",
+      "target_id": "behavioral-economics",
+      "relation": "related",
+      "description": "游戏暗黑模式利用行为经济学发现的认知偏差来操纵玩家决策"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "game-economy-intro",
+      "target_domain": "economics",
+      "target_id": "supply-demand",
+      "relation": "related",
+      "description": "游戏虚拟经济遵循供需规律，理解微观经济学基础对设计游戏经济至关重要"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "inflation-control",
+      "target_domain": "economics",
+      "target_id": "aggregate-demand-supply",
+      "relation": "related",
+      "description": "游戏经济通胀控制与宏观经济中的总供给总需求模型原理相通"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "pricing-psychology",
+      "target_domain": "economics",
+      "target_id": "utility-maximization",
+      "relation": "related",
+      "description": "游戏定价心理学建立在效用理论基础上，理解玩家对虚拟商品的效用感知"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "meta-game",
+      "target_domain": "economics",
+      "target_id": "game-theory-econ",
+      "relation": "related",
+      "description": "竞技游戏Meta分析与博弈论中的策略均衡概念密切相关"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "probability-design",
+      "target_domain": "mathematics",
+      "target_id": "probability-basics",
+      "relation": "requires",
+      "description": "游戏概率设计需要概率论基础知识，包括概率分布、条件概率和期望值"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "elo-rating",
+      "target_domain": "mathematics",
+      "target_id": "descriptive-statistics",
+      "relation": "requires",
+      "description": "ELO评分系统基于统计学原理，需要理解正态分布和概率推断"
     }
   ],
   "meta": {
