@@ -1318,8 +1318,26 @@ data/seed/         — 种子图谱数据
       - 19.4 域补充: LEVEL_DESIGN_DOMAIN_SUPPLEMENT + LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT (BE/FE/Workers三端同步)
       - 19.5 跨球链接: 15条 game-design↔level-design 链接(10→+5←), 总计175条跨球链接
     - Workers sync: graph.ts/dialogue.ts/learning.ts seedMap全部更新
-    - **待完成**: 19.2 RAG文档(200篇) + 19.6 集成测试 + 19.7 文档更新
+     - **待完成**: 19.2 RAG文档(200篇) + 19.6 集成测试 + 19.7 文档更新
     - VERIFY: 844 tests (631 BE + 213 FE) 全通过, tsc 0 errors, build 3.46s
+
+ - ✅ **Phase 19.2+19.6+19.7: Level Design RAG文档+集成测试+文档更新 (2026-03-20, 044f4ca+0782e75)**:
+    - **FEAT**: Phase 19 关卡设计知识球全部7步骤完成:
+      - 19.2 RAG文档: 200篇markdown, 10子域×20篇, 102,432总字符, _index.json生成
+      - 生成器脚本: data/scripts/generate_ld_rag.py
+      - Workers sync: ragLevelDesign import注册到graph.ts ragMap
+      - Workers data: workers/data/rag/level-design/ 完整同步
+    - **TEST**: +7新集成测试:
+      - test_level_design_seed_graph_integrity: 200概念/213边/10子域/28里程碑
+      - test_level_design_subdomains: 10子域ID验证
+      - test_rag_level_design_stats: RAG索引200文档/10子域
+      - test_rag_level_design_concept: ld-overview RAG文档可获取
+      - test_rag_level_design_404_wrong_domain: 跨域404防护
+      - test_level_design_cross_sphere_links: ≥15条game-design↔level-design链接
+      - test_level_design_domain_supplements: DOMAIN/ASSESSMENT_SUPPLEMENTS注册验证
+    - DOCS: EXPANSION_PLAN.md Phase 19标记完成, 下一步Phase 20游戏引擎
+    - VERIFY: 851 tests (638 BE + 213 FE) 全通过, tsc 0 errors, build 3.79s
+    - STATUS: Phase 19 🗺️关卡设计知识球 **全部完成** (7/7步骤)
 
 ## Last Review
 
