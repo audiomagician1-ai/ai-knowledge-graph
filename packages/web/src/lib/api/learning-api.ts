@@ -71,7 +71,7 @@ export async function apiFetchStreak(): Promise<any | null> {
 }
 
 /** GET /api/learning/recommend — smart next-node recommendations */
-export async function apiFetchRecommendations(topK = 5): Promise<{
+export async function apiFetchRecommendations(topK = 5, domain?: string): Promise<{
   recommendations: Array<{
     concept_id: string;
     name: string;
@@ -88,7 +88,9 @@ export async function apiFetchRecommendations(topK = 5): Promise<{
   total_concepts: number;
 } | null> {
   try {
-    const res = await fetch(`${API_BASE}/learning/recommend?top_k=${topK}`);
+    const params = new URLSearchParams({ top_k: String(topK) });
+    if (domain) params.set('domain', domain);
+    const res = await fetch(`${API_BASE}/learning/recommend?${params}`);
     if (!res.ok) return null;
     return await res.json();
   } catch { return null; }

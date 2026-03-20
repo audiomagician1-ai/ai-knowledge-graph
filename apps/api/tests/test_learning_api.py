@@ -127,6 +127,34 @@ class TestLearningEndpoints:
         assert "recommendations" in data
         assert isinstance(data["recommendations"], list)
 
+    def test_recommend_domain_param(self):
+        """Round 80: /recommend?domain= should load domain-specific seed data."""
+        import json, os
+        seed_dir = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "seed")
+        domains_path = os.path.join(seed_dir, "domains.json")
+        with open(domains_path, "r", encoding="utf-8") as f:
+            domains_data = json.load(f)
+        active_domains = [d["id"] for d in domains_data["domains"] if d.get("is_active")]
+        assert len(active_domains) >= 2, "Need at least 2 active domains for this test"
+
+        for domain_id in active_domains[:3]:  # Test first 3 active domains
+            res = client.get(f"/api/learning/recommend?top_k=3&domain={domain_id}")
+            assert res.status_code == 200, f"recommend failed for domain={domain_id}"
+            data = res.json()
+            assert "recommendations" in data
+            assert data["total_concepts"] > 0, f"No concepts for domain={domain_id}"
+
+            # Verify returned concepts actually belong to this domain's seed
+            seed_path = os.path.join(seed_dir, domain_id, "seed_graph.json")
+            with open(seed_path, "r", encoding="utf-8") as f:
+                seed = json.load(f)
+            seed_ids = {c["id"] for c in seed["concepts"]}
+            for rec in data["recommendations"]:
+                assert rec["concept_id"] in seed_ids, (
+                    f"Recommended concept '{rec['concept_id']}' not in domain '{domain_id}' seed. "
+                    f"Endpoint may be ignoring domain param."
+                )
+
     def test_sync_status_whitelist(self):
         """m-11: Invalid status values should be normalized to 'not_started'."""
         res = client.post("/api/learning/sync", json={

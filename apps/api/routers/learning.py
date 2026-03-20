@@ -171,7 +171,10 @@ async def sync_from_frontend(req: SyncProgressRequest):
 
 
 @router.get("/recommend")
-async def recommend_next(top_k: int = Query(5, ge=1, le=50)):
+async def recommend_next(
+    top_k: int = Query(5, ge=1, le=50),
+    domain: str = Query("ai-engineering", max_length=100),
+):
     """推荐下一批最优学习节点
 
     算法:
@@ -186,7 +189,7 @@ async def recommend_next(top_k: int = Query(5, ge=1, le=50)):
     """
     from routers.graph import _load_seed
 
-    seed = _load_seed()
+    seed = _load_seed(domain)
     concepts = seed["concepts"]
     edges = seed["edges"]
 

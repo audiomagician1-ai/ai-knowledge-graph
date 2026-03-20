@@ -111,11 +111,11 @@ export function GraphPage() {
   const loadRecommendations = useCallback(async () => {
     setRecommendLoading(true);
     try {
-      const data = await apiFetchRecommendations(5);
+      const data = await apiFetchRecommendations(5, activeDomain);
       if (data) setRecommendations(data.recommendations);
     } catch { /* ignore — non-critical feature */ }
     finally { setRecommendLoading(false); }
-  }, []);
+  }, [activeDomain]);
 
   const enrichedGraphData = useMemo<GraphData | null>(() => {
     if (!graphData) return null;
