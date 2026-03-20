@@ -37,7 +37,7 @@ interface GLink extends LinkObject<GNode> {
   strength: number;
 }
 
-const SUBDOMAIN_COLORS = GRAPH_VISUAL.SUBDOMAIN_COLORS;
+const DIFFICULTY_COLORS = GRAPH_VISUAL.DIFFICULTY_COLORS;
 const BG_COLOR = '#e8e8e4';
 
 /* ── Sphere layout ── */
@@ -54,7 +54,8 @@ function nodeColor(n: GNode): string {
   if (n.status === 'mastered') return '#10b981';  // emerald
   if (n.status === 'learning') return '#f59e0b';  // amber
   if (n.is_recommended) return '#06b6d4';          // cyan
-  return SUBDOMAIN_COLORS[n.subdomain_id] || '#94a3b8';
+  // Color by difficulty level (1-10) — green→cyan→orange→violet gradient
+  return DIFFICULTY_COLORS[n.difficulty] || '#94a3b8';
 }
 
 /* ── Label texture cache to avoid re-creating every frame ── */

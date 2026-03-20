@@ -37,7 +37,25 @@ export const GRAPH_VISUAL = {
   MILESTONE_COLOR: '#b45309',
   MILESTONE_GLOW: '#b45309',
   MILESTONE_RING: '#d97706',
-  /** 子域配色方案 — vibrant on white */
+  /** 难度等级配色(difficulty 1-10) — 从柔和到鲜明的渐变色阶
+   *  入门(1-3): 绿色系(易读、友好)
+   *  进阶(4-6): 蓝青色系(稳重、成长)
+   *  高级(7-9): 橙红色系(挑战、警示)
+   *  专家(10):  紫色(稀有、精通)
+   */
+  DIFFICULTY_COLORS: {
+    1: '#86efac',   // green-300  — 最简单
+    2: '#4ade80',   // green-400
+    3: '#22c55e',   // green-500
+    4: '#22d3ee',   // cyan-400   — 中等偏易
+    5: '#06b6d4',   // cyan-500
+    6: '#0891b2',   // cyan-600   — 中等偏难
+    7: '#fb923c',   // orange-400 — 高级入门
+    8: '#f97316',   // orange-500
+    9: '#f43f5e',   // rose-500   — 高级
+    10: '#8b5cf6',  // violet-500 — 专家
+  } as Record<number, string>,
+  /** @deprecated 旧子域配色方案，已替换为 DIFFICULTY_COLORS */
   SUBDOMAIN_COLORS: {
     'cs-fundamentals': '#64748b',   // slate
     'programming-basics': '#3b82f6', // blue
