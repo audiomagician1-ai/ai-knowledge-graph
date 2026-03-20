@@ -1480,3 +1480,102 @@ def test_workers_data_directory_synced():
             f"Workers data/seed/{domain_id}/seed_graph.json missing. "
             f"Copy from data/seed/{domain_id}/ to workers/data/seed/{domain_id}/"
         )
+
+
+# ── Three-Way Supplement Sync Regression ───────────────────────────
+
+
+def _extract_ts_map_keys(content: str, map_name: str) -> set:
+    """Extract keys from a TypeScript `const MAP_NAME: Record<string, string> = { ... };` block.
+
+    Works for both inline template-literal values (``'key': `...`,``) and
+    const-reference values (``'key': CONST_NAME,``).
+    """
+    import re
+
+    # Locate the block:  const MAP_NAME: Record<string, string> = { ... };
+    pattern = re.compile(
+        rf"const\s+{re.escape(map_name)}\s*:\s*Record<string,\s*string>\s*=\s*\{{(.*?)\}};",
+        re.DOTALL,
+    )
+    m = pattern.search(content)
+    assert m, f"Could not find '{map_name}' map block in TypeScript source"
+    block = m.group(1)
+    # Keys are always single-quoted identifiers at the start of each entry
+    return set(re.findall(r"'([\w-]+)'\s*:", block))
+
+
+def test_domain_supplements_three_way_sync():
+    """DOMAIN_SUPPLEMENTS keys must be identical across BE, FE, and Workers.
+
+    Regression: Round 71 found FE direct-llm.ts missing economics+writing;
+    Round 72 found Workers prompts.ts missing biology/economics/writing.
+    This test catches any future drift between the three codebases.
+    """
+    import os
+
+    project_root = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    )
+
+    # BE: read from Python dict
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS
+    be_keys = set(DOMAIN_SUPPLEMENTS.keys())
+
+    # FE: parse direct-llm.ts DOMAIN_SUPPLEMENTS map block
+    fe_file = os.path.join(project_root, "packages", "web", "src", "lib", "direct-llm.ts")
+    assert os.path.exists(fe_file), f"FE direct-llm.ts not found: {fe_file}"
+    fe_content = open(fe_file, encoding="utf-8").read()
+    fe_keys = _extract_ts_map_keys(fe_content, "DOMAIN_SUPPLEMENTS")
+
+    # Workers: parse prompts.ts DOMAIN_SUPPLEMENTS map block
+    workers_file = os.path.join(project_root, "workers", "src", "prompts.ts")
+    assert os.path.exists(workers_file), f"Workers prompts.ts not found: {workers_file}"
+    workers_content = open(workers_file, encoding="utf-8").read()
+    workers_keys = _extract_ts_map_keys(workers_content, "DOMAIN_SUPPLEMENTS")
+
+    # All three should have the same set of domain keys
+    assert be_keys == workers_keys, (
+        f"BE vs Workers DOMAIN_SUPPLEMENTS mismatch.\n"
+        f"  BE only: {be_keys - workers_keys}\n"
+        f"  Workers only: {workers_keys - be_keys}"
+    )
+    assert be_keys == fe_keys, (
+        f"BE vs FE DOMAIN_SUPPLEMENTS mismatch.\n"
+        f"  BE only: {be_keys - fe_keys}\n"
+        f"  FE only: {fe_keys - be_keys}"
+    )
+
+
+def test_assessment_supplements_three_way_sync():
+    """ASSESSMENT_SUPPLEMENTS keys must be identical across BE, FE, and Workers."""
+    import os
+
+    project_root = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    )
+
+    # BE
+    from engines.dialogue.prompts.feynman_system import ASSESSMENT_SUPPLEMENTS
+    be_keys = set(ASSESSMENT_SUPPLEMENTS.keys())
+
+    # FE: parse ASSESSMENT_SUPPLEMENTS map block in direct-llm.ts
+    fe_file = os.path.join(project_root, "packages", "web", "src", "lib", "direct-llm.ts")
+    fe_content = open(fe_file, encoding="utf-8").read()
+    fe_keys = _extract_ts_map_keys(fe_content, "ASSESSMENT_SUPPLEMENTS")
+
+    # Workers: parse ASSESSMENT_SUPPLEMENTS map block in prompts.ts
+    workers_file = os.path.join(project_root, "workers", "src", "prompts.ts")
+    workers_content = open(workers_file, encoding="utf-8").read()
+    workers_keys = _extract_ts_map_keys(workers_content, "ASSESSMENT_SUPPLEMENTS")
+
+    assert be_keys == workers_keys, (
+        f"BE vs Workers ASSESSMENT_SUPPLEMENTS mismatch.\n"
+        f"  BE only: {be_keys - workers_keys}\n"
+        f"  Workers only: {workers_keys - be_keys}"
+    )
+    assert be_keys == fe_keys, (
+        f"BE vs FE ASSESSMENT_SUPPLEMENTS mismatch.\n"
+        f"  BE only: {be_keys - fe_keys}\n"
+        f"  FE only: {fe_keys - be_keys}"
+    )
