@@ -1274,7 +1274,25 @@ data/seed/         — 种子图谱数据
    - VERIFY: 805 tests (596 BE + 209 FE) 全通过, tsc 0 errors
    - STATUS: Workers全量1197行深度审查, 修复1个Medium级CS特定开场白问题+1个Low级null安全问题, 添加3个三方同步回归测试
 
-- ✅ **第七十九轮全栈横断面审查+配置/Schema/共享类型/数据脚本巡检 (2026-03-20)**:
+ - ✅ **第八十轮推荐端点域感知修复+LLM响应null安全加固 (2026-03-20, cf96177)**:
+    - **FIX[Medium]**: BE `/learning/recommend` 端点始终使用默认`ai-engineering`种子数据, 无视用户当前查看的域 — 用户在数学/生物等非AI域点击"推荐"按钮, 返回的却是AI工程概念
+      - BE learning.py: 添加`domain`查询参数(Query default="ai-engineering", max_length=100), 传递给`_load_seed(domain)`, 与Workers实现保持一致
+      - FE learning-api.ts: `apiFetchRecommendations()`添加可选`domain`参数, 构建URLSearchParams传递
+      - FE GraphPage.tsx: `loadRecommendations()`传递`activeDomain`到API调用, useCallback依赖数组包含`activeDomain`
+    - **FIX[Low]**: BE llm/router.py `chat()`方法直接访问`data["choices"][0]["message"]["content"]`无null保护 — 若LLM返回空choices数组或null content, 抛出不可读的KeyError/IndexError
+      - 添加choices非空列表验证 + content字符串类型检查
+      - 抛出描述性ValueError(被现有handler捕获), 与Workers llm.ts null-safety修复(Round 78)保持一致
+    - **TEST**: +4新测试:
+      - `test_recommend_domain_param`: 验证3个活跃域的推荐结果均来自对应域的种子数据(加载domains.json确认概念ID匹配)
+      - `test_empty_choices_raises_descriptive_error`: LLM返回空choices时抛出明确错误
+      - `test_null_content_raises_descriptive_error`: LLM返回null content时抛出明确错误
+      - `test_valid_response_returns_content`: 正常响应验证
+    - REVIEW: learning.py recommend_next全函数审查(domain-aware修复后与Workers recommend handler一致性确认) + llm/router.py chat()方法null-safety加固(3层验证: choices存在→非空列表→content为字符串)
+    - GITHUB: 0 open issues, 12 closed (all resolved)
+    - VERIFY: 809 tests (600 BE + 209 FE) 全通过, tsc 0 errors, build 3.80s
+    - STATUS: 修复1个Medium级推荐端点域不感知问题 + 1个Low级LLM响应null安全问题, BE/FE/Workers三端recommend行为现已一致
+
+ - ✅ **第七十九轮全栈横断面审查+配置/Schema/共享类型/数据脚本巡检 (2026-03-20)**:
    - REVIEW: 全栈横断面广度审查(非运行时组件 + 配置层 + 共享类型):
      - Supabase Migrations: 00001_initial_schema.sql(148行 — profiles/user_settings/user_concept_status/conversations/learning_events/RLS policies/handle_new_user trigger/PostgREST grants) + 00002_add_domain_id.sql(24行 — domain_id column+PK重建+index) — 全部正确, RLS策略完备
      - Supabase Edge Functions: health/index.ts(13行 echo) + llm-proxy/index.ts(23行 TODO stub) + _shared/cors.ts(5行 wildcard) — 预期状态, llm-proxy为Phase 2预留
@@ -1667,8 +1685,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (209 tests)
-cd apps/api && python -m pytest          # 后端测试 ✅ (596 tests)
-# Total: 805 tests (2026-03-20)
+cd apps/api && python -m pytest          # 后端测试 ✅ (600 tests)
+# Total: 809 tests (2026-03-20)
 ```
 
 ### 提交规范
