@@ -1218,7 +1218,19 @@ data/seed/         — 种子图谱数据
    - SECURITY: 全项目0个eval/exec/innerHTML/dangerouslySetInnerHTML(production code), console.log无敏感数据, 所有链接target=_blank+noopener+noreferrer
    - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
    - VERIFY: 802 tests (209 FE + 593 BE) 全通过, tsc 0 errors, build 4.00s
-   - STATUS: 修复1个Low级OAuth重定向路径错误, FE全项目源码18个模块100%审查完成, 安全扫描通过
+    - STATUS: 修复1个Low级OAuth重定向路径错误, FE全项目源码18个模块100%审查完成, 安全扫描通过
+
+- ✅ **第七十六轮巡逻审查+HomePage修复 (2026-03-20, 6e8ed4c)**:
+   - **FIX[m-01]**: HomePage.tsx 4处JSX hardcoded hex colors(`#e8e8e3`/`#1a1a1a`/`#888`)→CSS变量(`--color-surface-0`/`--color-text-primary`/`--color-text-tertiary`), canvas内部函数添加`getThemeColors()`缓存解析(canvas API无法直接读CSS vars) — 与Round 68 CSS变量一致性修复(67ff4f5)保持统一
+   - **FIX[m-02]**: HomePage.tsx orb点击transition的`setTimeout`未清理 — 组件unmount后仍触发`navigate()`, 添加`transitionTimerRef`+`mountedRef`守护: unmount时clearTimeout, callback检查mountedRef.current
+   - **FIX[m-03]**: HomePage.tsx cursor polling从`setInterval(60ms, scan all orbs)`改为rAF内联检测 — hover状态在tick循环中计算后写入`cursorRef`, 通过100ms `setInterval`同步到React state, 避免每60ms遍历全部orbs的冗余计算
+   - REVIEW: 20+模块深度审查(生产代码0 critical/0 major issues):
+     - FE: HomePage.tsx(CSS variable colors/transition timer cleanup/cursor ref optimization/canvas getThemeColors cache) + ChatPanel.tsx(cancelStream+reset unmount/domainId passthrough/CSS var surface-2) + DomainOverview.tsx(stats.total_concepts fallback/is_active filter) + auth.ts(OAuth redirectTo '/') + dialogue.ts(startConversation domainId) + direct-llm.ts(economics+writing supplements) + dialogue-api.ts(domain_id passthrough)
+     - BE: dialogue.py(multi-domain session lifecycle/domain_id in ConversationCreate/session_cache/SQLite schema v2) + learning.py(stats default 400/sync mastered guard) + sqlite_client.py(conversations domain_id column/migration v2) + graph.py(per-domain seed cache)
+     - Workers: graph.ts+dialogue.ts+learning.ts(11域seedMap完整) + llm.ts(SSRF/tokenLimitParam)
+   - GITHUB: 0 open issues, 12 closed (all resolved)
+   - VERIFY: 802 tests (209 FE + 593 BE) 全通过, tsc 0 errors, build 4.20s
+   - STATUS: 3个minor修复(CSS变量一致性+transition timer泄露+cursor polling优化), 代码质量持续稳定
 
 - ✅ **第七十四轮FE深度审查+ChatPanel流清理修复+死代码清除 (2026-03-20, e868d32)**:
    - **FIX[Medium]**: ChatPanel.tsx未在unmount时调用`cancelStream()+reset()` — LearnPage有此清理(M-01注释), 但ChatPanel完全缺失。用户在GraphPage中关闭聊天面板(点X按钮)时, 如果AI正在流式输出, 旧流继续写入dialogue store, 可能导致下次打开不同概念时出现陈旧消息或状态异常。添加`useEffect cleanup`调用`cancelStream(); reset();`
@@ -1599,7 +1611,7 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (209 tests)
 cd apps/api && python -m pytest          # 后端测试 ✅ (593 tests)
-# Total: 802 tests
+# Total: 802 tests (2026-03-20)
 ```
 
 ### 提交规范
