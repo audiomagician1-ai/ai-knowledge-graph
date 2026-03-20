@@ -1185,6 +1185,20 @@ data/seed/         — 种子图谱数据
     - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors
    - STATUS: 清理routing重构遗留死代码, 数据完整性验证通过
 
+- ✅ **第六十八轮巡逻审查+硬编码颜色修复+schema版本修正 (2026-03-20, 67ff4f5)**:
+   - **FIX**: ChatPanel.tsx + LearnPage.tsx 3处硬编码`#eceae6`背景色 → `var(--color-surface-2)` — 统一使用设计系统CSS变量(--color-surface-2: #eaeae7), 确保主题变更时跟随 [m-01]
+   - **FIX**: sqlite_client.py `_SCHEMA_VERSION`常量从1→2, 与实际schema v2迁移(conversations.domain_id)保持一致 [m-02]
+   - REVIEW: 30+模块巡逻审查(FE+BE, 0 critical/0 major issues):
+     - FE Pages: LearnPage.tsx(recording guard/cancel cleanup/assessment card/choice buttons/error auto-dismiss) + HomePage.tsx(canvas animation/orb hit-test/transition overlay/resize handler/BgNode O(n²) acceptable for n=90) + GraphPage.tsx(URL params/DraggableModal/hub bar)
+     - FE Components: ChatPanel.tsx(idle/chat/history views/auto-scroll/celebration/inline assessment/choice buttons/error dismiss — 652行完整审查) + MarkdownRenderer.tsx + ChoiceButtons.tsx
+     - FE Stores: dialogue.ts + learning.ts + domain.ts — stable patterns
+     - BE: sqlite_client.py(schema v2 migration idempotent/domain_id default correct/CREATE TABLE already includes domain_id so ALTER TABLE is redundant-but-safe for existing DBs)
+     - BE: dialogue.py + socratic.py + evaluator.py + graph.py — stable patterns
+   - SECURITY: 全项目无eval/exec/innerHTML/dangerouslySetInnerHTML/subprocess, 无TODO/FIXME in production code(仅4个future-phase stub占位符), 无敏感数据泄露
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.70s
+   - STATUS: 3处硬编码颜色统一为CSS变量 + schema版本常量修正, 代码质量持续稳定
+
 - ✅ **第六十七轮深度巡逻审查+多域对话修复+CSS变量修复 (2026-03-20, bc1e413)**:
    - **FIX**: MarkdownRenderer.tsx blockquote border和link color引用不存在的CSS变量`--color-accent-indigo` → `--color-accent-blue`(globals.css:30定义为#6366f1, 实际就是indigo色) — 修复2处引用(line 95 borderColor, line 131 color) [m-01, 3e0f39f]
    - **FIX**: 多域对话创建bug — `_get_concept_info()`调用`_load_seed()`不传domain_id, 默认只搜索ai-engineering域。其余10个域(mathematics/physics/english等)的概念在后端API模式下创建对话会404 [critical, bc1e413]:
@@ -1477,8 +1491,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (204 tests)
-cd apps/api && python -m pytest          # 后端测试 ✅ (584 tests)
-# Total: 788 tests
+cd apps/api && python -m pytest          # 后端测试 ✅ (589 tests)
+# Total: 793 tests
 ```
 
 ### 提交规范
