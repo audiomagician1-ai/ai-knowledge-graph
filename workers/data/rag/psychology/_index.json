@@ -1,0 +1,2763 @@
+{
+  "documents": [
+    {
+      "id": "cognitive-psychology-overview",
+      "name": "认知心理学概述",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/cognitive-psychology/cognitive-psychology-overview.md",
+      "exists": true,
+      "char_count": 575
+    },
+    {
+      "id": "perception",
+      "name": "知觉",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/cognitive-psychology/perception.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "attention",
+      "name": "注意",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/cognitive-psychology/attention.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "selective-attention",
+      "name": "选择性注意",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "注意"
+      ],
+      "file": "psychology/cognitive-psychology/selective-attention.md",
+      "exists": true,
+      "char_count": 570
+    },
+    {
+      "id": "working-memory",
+      "name": "工作记忆",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "记忆"
+      ],
+      "file": "psychology/cognitive-psychology/working-memory.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "long-term-memory",
+      "name": "长期记忆",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "记忆"
+      ],
+      "file": "psychology/cognitive-psychology/long-term-memory.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "memory-encoding",
+      "name": "记忆编码",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "记忆"
+      ],
+      "file": "psychology/cognitive-psychology/memory-encoding.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "forgetting",
+      "name": "遗忘",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "记忆"
+      ],
+      "file": "psychology/cognitive-psychology/forgetting.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "language-cognition",
+      "name": "语言与认知",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "psychology/cognitive-psychology/language-cognition.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "problem-solving",
+      "name": "问题解决",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "思维"
+      ],
+      "file": "psychology/cognitive-psychology/problem-solving.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "decision-making",
+      "name": "决策",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "思维"
+      ],
+      "file": "psychology/cognitive-psychology/decision-making.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "cognitive-biases",
+      "name": "认知偏差",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "思维"
+      ],
+      "file": "psychology/cognitive-psychology/cognitive-biases.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "heuristics",
+      "name": "启发式",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "思维"
+      ],
+      "file": "psychology/cognitive-psychology/heuristics.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "metacognition",
+      "name": "元认知",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "psychology/cognitive-psychology/metacognition.md",
+      "exists": true,
+      "char_count": 560
+    },
+    {
+      "id": "schema-theory",
+      "name": "图式理论",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "知识"
+      ],
+      "file": "psychology/cognitive-psychology/schema-theory.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "mental-models",
+      "name": "心理模型",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "思维"
+      ],
+      "file": "psychology/cognitive-psychology/mental-models.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "cognitive-load",
+      "name": "认知负荷",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/cognitive-psychology/cognitive-load.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "expertise-development",
+      "name": "专家技能发展",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "发展"
+      ],
+      "file": "psychology/cognitive-psychology/expertise-development.md",
+      "exists": true,
+      "char_count": 572
+    },
+    {
+      "id": "creativity",
+      "name": "创造力",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "psychology/cognitive-psychology/creativity.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "embodied-cognition",
+      "name": "具身认知",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "psychology/cognitive-psychology/embodied-cognition.md",
+      "exists": true,
+      "char_count": 562
+    },
+    {
+      "id": "cognitive-development-piaget",
+      "name": "皮亚杰认知发展论",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "发展"
+      ],
+      "file": "psychology/cognitive-psychology/cognitive-development-piaget.md",
+      "exists": true,
+      "char_count": 579
+    },
+    {
+      "id": "information-processing",
+      "name": "信息加工理论",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "psychology/cognitive-psychology/information-processing.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "dual-process-theory",
+      "name": "双加工理论",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "psychology/cognitive-psychology/dual-process-theory.md",
+      "exists": true,
+      "char_count": 576
+    },
+    {
+      "id": "intelligence-theories",
+      "name": "智力理论",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "智力"
+      ],
+      "file": "psychology/cognitive-psychology/intelligence-theories.md",
+      "exists": true,
+      "char_count": 574
+    },
+    {
+      "id": "emotional-intelligence",
+      "name": "情绪智力",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "情绪"
+      ],
+      "file": "psychology/cognitive-psychology/emotional-intelligence.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "developmental-overview",
+      "name": "发展心理学概述",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/developmental-psychology/developmental-overview.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "nature-nurture",
+      "name": "先天与后天",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/developmental-psychology/nature-nurture.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "prenatal-development",
+      "name": "产前发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "婴幼儿"
+      ],
+      "file": "psychology/developmental-psychology/prenatal-development.md",
+      "exists": true,
+      "char_count": 548
+    },
+    {
+      "id": "infant-development",
+      "name": "婴儿期发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "婴幼儿"
+      ],
+      "file": "psychology/developmental-psychology/infant-development.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "attachment-theory",
+      "name": "依恋理论",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/developmental-psychology/attachment-theory.md",
+      "exists": true,
+      "char_count": 559
+    },
+    {
+      "id": "language-development",
+      "name": "语言发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "psychology/developmental-psychology/language-development.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "moral-development",
+      "name": "道德发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "道德"
+      ],
+      "file": "psychology/developmental-psychology/moral-development.md",
+      "exists": true,
+      "char_count": 554
+    },
+    {
+      "id": "erikson-stages",
+      "name": "Erikson心理社会发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/developmental-psychology/erikson-stages.md",
+      "exists": true,
+      "char_count": 581
+    },
+    {
+      "id": "adolescent-development",
+      "name": "青少年期发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "青少年"
+      ],
+      "file": "psychology/developmental-psychology/adolescent-development.md",
+      "exists": true,
+      "char_count": 557
+    },
+    {
+      "id": "identity-formation",
+      "name": "同一性形成",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "青少年"
+      ],
+      "file": "psychology/developmental-psychology/identity-formation.md",
+      "exists": true,
+      "char_count": 554
+    },
+    {
+      "id": "adult-development",
+      "name": "成年期发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "成年"
+      ],
+      "file": "psychology/developmental-psychology/adult-development.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "aging-psychology",
+      "name": "老年心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "老年"
+      ],
+      "file": "psychology/developmental-psychology/aging-psychology.md",
+      "exists": true,
+      "char_count": 551
+    },
+    {
+      "id": "vygotsky-theory",
+      "name": "维果茨基理论",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/developmental-psychology/vygotsky-theory.md",
+      "exists": true,
+      "char_count": 557
+    },
+    {
+      "id": "temperament",
+      "name": "气质",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "个体差异"
+      ],
+      "file": "psychology/developmental-psychology/temperament.md",
+      "exists": true,
+      "char_count": 551
+    },
+    {
+      "id": "parenting-styles",
+      "name": "教养方式",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "家庭"
+      ],
+      "file": "psychology/developmental-psychology/parenting-styles.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "play-development",
+      "name": "游戏与发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "儿童"
+      ],
+      "file": "psychology/developmental-psychology/play-development.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "theory-of-mind",
+      "name": "心理理论",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "认知"
+      ],
+      "file": "psychology/developmental-psychology/theory-of-mind.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "gender-development",
+      "name": "性别发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社会化"
+      ],
+      "file": "psychology/developmental-psychology/gender-development.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "resilience",
+      "name": "心理韧性",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "积极"
+      ],
+      "file": "psychology/developmental-psychology/resilience.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "critical-periods",
+      "name": "关键期与敏感期",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "发展"
+      ],
+      "file": "psychology/developmental-psychology/critical-periods.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "cognitive-aging",
+      "name": "认知老化",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "老年"
+      ],
+      "file": "psychology/developmental-psychology/cognitive-aging.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "developmental-psychopathology",
+      "name": "发展精神病理学",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "临床"
+      ],
+      "file": "psychology/developmental-psychology/developmental-psychopathology.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "socioemotional-development",
+      "name": "社会情感发展",
+      "domain_id": "psychology",
+      "subdomain_id": "developmental-psychology",
+      "subdomain_name": "发展心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社会化"
+      ],
+      "file": "psychology/developmental-psychology/socioemotional-development.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "social-psychology-overview",
+      "name": "社会心理学概述",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/social-psychology/social-psychology-overview.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "social-cognition",
+      "name": "社会认知",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "认知"
+      ],
+      "file": "psychology/social-psychology/social-cognition.md",
+      "exists": true,
+      "char_count": 539
+    },
+    {
+      "id": "attribution-theory",
+      "name": "归因理论",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/social-psychology/attribution-theory.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "attitudes",
+      "name": "态度",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "态度"
+      ],
+      "file": "psychology/social-psychology/attitudes.md",
+      "exists": true,
+      "char_count": 535
+    },
+    {
+      "id": "persuasion",
+      "name": "说服",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "影响"
+      ],
+      "file": "psychology/social-psychology/persuasion.md",
+      "exists": true,
+      "char_count": 536
+    },
+    {
+      "id": "cognitive-dissonance",
+      "name": "认知失调",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/social-psychology/cognitive-dissonance.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "conformity",
+      "name": "从众",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "群体"
+      ],
+      "file": "psychology/social-psychology/conformity.md",
+      "exists": true,
+      "char_count": 539
+    },
+    {
+      "id": "obedience",
+      "name": "服从",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "群体"
+      ],
+      "file": "psychology/social-psychology/obedience.md",
+      "exists": true,
+      "char_count": 535
+    },
+    {
+      "id": "group-dynamics",
+      "name": "群体动力学",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "群体"
+      ],
+      "file": "psychology/social-psychology/group-dynamics.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "social-identity",
+      "name": "社会认同",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "自我"
+      ],
+      "file": "psychology/social-psychology/social-identity.md",
+      "exists": true,
+      "char_count": 543
+    },
+    {
+      "id": "prejudice-discrimination",
+      "name": "偏见与歧视",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "群际"
+      ],
+      "file": "psychology/social-psychology/prejudice-discrimination.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "stereotypes",
+      "name": "刻板印象",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "群际"
+      ],
+      "file": "psychology/social-psychology/stereotypes.md",
+      "exists": true,
+      "char_count": 542
+    },
+    {
+      "id": "aggression",
+      "name": "攻击行为",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "psychology/social-psychology/aggression.md",
+      "exists": true,
+      "char_count": 540
+    },
+    {
+      "id": "prosocial-behavior",
+      "name": "亲社会行为",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "psychology/social-psychology/prosocial-behavior.md",
+      "exists": true,
+      "char_count": 548
+    },
+    {
+      "id": "interpersonal-attraction",
+      "name": "人际吸引",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "关系"
+      ],
+      "file": "psychology/social-psychology/interpersonal-attraction.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "love-psychology",
+      "name": "爱情心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "关系"
+      ],
+      "file": "psychology/social-psychology/love-psychology.md",
+      "exists": true,
+      "char_count": 548
+    },
+    {
+      "id": "social-influence",
+      "name": "社会影响",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "影响"
+      ],
+      "file": "psychology/social-psychology/social-influence.md",
+      "exists": true,
+      "char_count": 538
+    },
+    {
+      "id": "self-concept",
+      "name": "自我概念",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "自我"
+      ],
+      "file": "psychology/social-psychology/self-concept.md",
+      "exists": true,
+      "char_count": 538
+    },
+    {
+      "id": "self-serving-bias",
+      "name": "自利偏差",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "偏差"
+      ],
+      "file": "psychology/social-psychology/self-serving-bias.md",
+      "exists": true,
+      "char_count": 543
+    },
+    {
+      "id": "bystander-effect",
+      "name": "旁观者效应",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "psychology/social-psychology/bystander-effect.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "cultural-psychology",
+      "name": "文化心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "psychology/social-psychology/cultural-psychology.md",
+      "exists": true,
+      "char_count": 548
+    },
+    {
+      "id": "social-media-psychology",
+      "name": "社交媒体心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "psychology/social-psychology/social-media-psychology.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "leadership-psychology",
+      "name": "领导力心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "social-psychology",
+      "subdomain_name": "社会心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "psychology/social-psychology/leadership-psychology.md",
+      "exists": true,
+      "char_count": 548
+    },
+    {
+      "id": "clinical-overview",
+      "name": "临床心理学概述",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/clinical-psychology/clinical-overview.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "psychopathology",
+      "name": "精神病理学",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/clinical-psychology/psychopathology.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "anxiety-disorders",
+      "name": "焦虑障碍",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "障碍"
+      ],
+      "file": "psychology/clinical-psychology/anxiety-disorders.md",
+      "exists": true,
+      "char_count": 557
+    },
+    {
+      "id": "depressive-disorders",
+      "name": "抑郁障碍",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "障碍"
+      ],
+      "file": "psychology/clinical-psychology/depressive-disorders.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "bipolar-disorder",
+      "name": "双相障碍",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "障碍"
+      ],
+      "file": "psychology/clinical-psychology/bipolar-disorder.md",
+      "exists": true,
+      "char_count": 557
+    },
+    {
+      "id": "schizophrenia",
+      "name": "精神分裂症",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "障碍"
+      ],
+      "file": "psychology/clinical-psychology/schizophrenia.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "personality-disorders",
+      "name": "人格障碍",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "障碍"
+      ],
+      "file": "psychology/clinical-psychology/personality-disorders.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "ptsd",
+      "name": "创伤后应激障碍",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "创伤"
+      ],
+      "file": "psychology/clinical-psychology/ptsd.md",
+      "exists": true,
+      "char_count": 566
+    },
+    {
+      "id": "ocd",
+      "name": "强迫症",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "障碍"
+      ],
+      "file": "psychology/clinical-psychology/ocd.md",
+      "exists": true,
+      "char_count": 551
+    },
+    {
+      "id": "eating-disorders",
+      "name": "进食障碍",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "障碍"
+      ],
+      "file": "psychology/clinical-psychology/eating-disorders.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "substance-use-disorders",
+      "name": "物质使用障碍",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "成瘾"
+      ],
+      "file": "psychology/clinical-psychology/substance-use-disorders.md",
+      "exists": true,
+      "char_count": 562
+    },
+    {
+      "id": "psychological-assessment",
+      "name": "心理评估",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "评估"
+      ],
+      "file": "psychology/clinical-psychology/psychological-assessment.md",
+      "exists": true,
+      "char_count": 554
+    },
+    {
+      "id": "psychotherapy-overview",
+      "name": "心理治疗概述",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "治疗"
+      ],
+      "file": "psychology/clinical-psychology/psychotherapy-overview.md",
+      "exists": true,
+      "char_count": 561
+    },
+    {
+      "id": "cbt",
+      "name": "认知行为疗法",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "治疗"
+      ],
+      "file": "psychology/clinical-psychology/cbt.md",
+      "exists": true,
+      "char_count": 562
+    },
+    {
+      "id": "psychodynamic-therapy",
+      "name": "心理动力学治疗",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "治疗"
+      ],
+      "file": "psychology/clinical-psychology/psychodynamic-therapy.md",
+      "exists": true,
+      "char_count": 562
+    },
+    {
+      "id": "humanistic-therapy",
+      "name": "人本主义治疗",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "治疗"
+      ],
+      "file": "psychology/clinical-psychology/humanistic-therapy.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "group-therapy",
+      "name": "团体治疗",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "治疗"
+      ],
+      "file": "psychology/clinical-psychology/group-therapy.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "crisis-intervention",
+      "name": "危机干预",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "psychology/clinical-psychology/crisis-intervention.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "child-clinical",
+      "name": "儿童临床心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "发展"
+      ],
+      "file": "psychology/clinical-psychology/child-clinical.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "positive-psychology",
+      "name": "积极心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "积极"
+      ],
+      "file": "psychology/clinical-psychology/positive-psychology.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "mindfulness",
+      "name": "正念",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "积极"
+      ],
+      "file": "psychology/clinical-psychology/mindfulness.md",
+      "exists": true,
+      "char_count": 553
+    },
+    {
+      "id": "therapeutic-relationship",
+      "name": "治疗关系",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "治疗"
+      ],
+      "file": "psychology/clinical-psychology/therapeutic-relationship.md",
+      "exists": true,
+      "char_count": 553
+    },
+    {
+      "id": "evidence-based-practice",
+      "name": "循证实践",
+      "domain_id": "psychology",
+      "subdomain_id": "clinical-psychology",
+      "subdomain_name": "临床心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "psychology/clinical-psychology/evidence-based-practice.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "behavioral-overview",
+      "name": "行为心理学概述",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/behavioral-psychology/behavioral-overview.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "classical-conditioning",
+      "name": "经典条件反射",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/behavioral-psychology/classical-conditioning.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "operant-conditioning",
+      "name": "操作性条件反射",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/behavioral-psychology/operant-conditioning.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "reinforcement-schedules",
+      "name": "强化程式",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/behavioral-psychology/reinforcement-schedules.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "punishment",
+      "name": "惩罚",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/behavioral-psychology/punishment.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "shaping",
+      "name": "行为塑造",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "psychology/behavioral-psychology/shaping.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "observational-learning",
+      "name": "观察学习",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/behavioral-psychology/observational-learning.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "self-efficacy",
+      "name": "自我效能感",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/behavioral-psychology/self-efficacy.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "stimulus-generalization",
+      "name": "刺激泛化",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/behavioral-psychology/stimulus-generalization.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "stimulus-discrimination",
+      "name": "刺激辨别",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/behavioral-psychology/stimulus-discrimination.md",
+      "exists": true,
+      "char_count": 544
+    },
+    {
+      "id": "extinction",
+      "name": "消退",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/behavioral-psychology/extinction.md",
+      "exists": true,
+      "char_count": 541
+    },
+    {
+      "id": "behavior-modification",
+      "name": "行为矫正",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "应用"
+      ],
+      "file": "psychology/behavioral-psychology/behavior-modification.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "token-economy",
+      "name": "代币经济",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "psychology/behavioral-psychology/token-economy.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "systematic-desensitization",
+      "name": "系统脱敏",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "治疗"
+      ],
+      "file": "psychology/behavioral-psychology/systematic-desensitization.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "aversion-therapy",
+      "name": "厌恶疗法",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "治疗"
+      ],
+      "file": "psychology/behavioral-psychology/aversion-therapy.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "biofeedback",
+      "name": "生物反馈",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "psychology/behavioral-psychology/biofeedback.md",
+      "exists": true,
+      "char_count": 547
+    },
+    {
+      "id": "applied-behavior-analysis",
+      "name": "应用行为分析",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "psychology/behavioral-psychology/applied-behavior-analysis.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "habit-formation",
+      "name": "习惯形成",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "日常"
+      ],
+      "file": "psychology/behavioral-psychology/habit-formation.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "learned-helplessness",
+      "name": "习得性无助",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "psychology/behavioral-psychology/learned-helplessness.md",
+      "exists": true,
+      "char_count": 557
+    },
+    {
+      "id": "latent-learning",
+      "name": "潜伏学习",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "认知"
+      ],
+      "file": "psychology/behavioral-psychology/latent-learning.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "motivation-behavioral",
+      "name": "行为动机理论",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "动机"
+      ],
+      "file": "psychology/behavioral-psychology/motivation-behavioral.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "behavioral-economics",
+      "name": "行为经济学",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "psychology/behavioral-psychology/behavioral-economics.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "biological-overview",
+      "name": "生物心理学概述",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/biological-psychology/biological-overview.md",
+      "exists": true,
+      "char_count": 538
+    },
+    {
+      "id": "neuron-structure",
+      "name": "神经元结构",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "神经"
+      ],
+      "file": "psychology/biological-psychology/neuron-structure.md",
+      "exists": true,
+      "char_count": 531
+    },
+    {
+      "id": "neurotransmitters",
+      "name": "神经递质",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "神经"
+      ],
+      "file": "psychology/biological-psychology/neurotransmitters.md",
+      "exists": true,
+      "char_count": 533
+    },
+    {
+      "id": "brain-structure",
+      "name": "大脑结构",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/biological-psychology/brain-structure.md",
+      "exists": true,
+      "char_count": 528
+    },
+    {
+      "id": "cerebral-lateralization",
+      "name": "大脑偏侧化",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "大脑"
+      ],
+      "file": "psychology/biological-psychology/cerebral-lateralization.md",
+      "exists": true,
+      "char_count": 527
+    },
+    {
+      "id": "endocrine-system",
+      "name": "内分泌系统",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "生理"
+      ],
+      "file": "psychology/biological-psychology/endocrine-system.md",
+      "exists": true,
+      "char_count": 528
+    },
+    {
+      "id": "autonomic-nervous-system",
+      "name": "自主神经系统",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "生理"
+      ],
+      "file": "psychology/biological-psychology/autonomic-nervous-system.md",
+      "exists": true,
+      "char_count": 537
+    },
+    {
+      "id": "neuroplasticity",
+      "name": "神经可塑性",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "前沿"
+      ],
+      "file": "psychology/biological-psychology/neuroplasticity.md",
+      "exists": true,
+      "char_count": 533
+    },
+    {
+      "id": "sleep-psychology",
+      "name": "睡眠心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "节律"
+      ],
+      "file": "psychology/biological-psychology/sleep-psychology.md",
+      "exists": true,
+      "char_count": 529
+    },
+    {
+      "id": "stress-physiology",
+      "name": "应激生理学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应激"
+      ],
+      "file": "psychology/biological-psychology/stress-physiology.md",
+      "exists": true,
+      "char_count": 531
+    },
+    {
+      "id": "psychopharmacology",
+      "name": "精神药理学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "药物"
+      ],
+      "file": "psychology/biological-psychology/psychopharmacology.md",
+      "exists": true,
+      "char_count": 535
+    },
+    {
+      "id": "brain-imaging",
+      "name": "脑成像技术",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "psychology/biological-psychology/brain-imaging.md",
+      "exists": true,
+      "char_count": 535
+    },
+    {
+      "id": "genetics-behavior",
+      "name": "遗传与行为",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "遗传"
+      ],
+      "file": "psychology/biological-psychology/genetics-behavior.md",
+      "exists": true,
+      "char_count": 534
+    },
+    {
+      "id": "emotion-neuroscience",
+      "name": "情绪神经科学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "情绪"
+      ],
+      "file": "psychology/biological-psychology/emotion-neuroscience.md",
+      "exists": true,
+      "char_count": 534
+    },
+    {
+      "id": "pain-psychology",
+      "name": "疼痛心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "感觉"
+      ],
+      "file": "psychology/biological-psychology/pain-psychology.md",
+      "exists": true,
+      "char_count": 527
+    },
+    {
+      "id": "hunger-eating",
+      "name": "饥饿与进食",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "动机"
+      ],
+      "file": "psychology/biological-psychology/hunger-eating.md",
+      "exists": true,
+      "char_count": 536
+    },
+    {
+      "id": "sexual-behavior-biology",
+      "name": "性行为的生物基础",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动机"
+      ],
+      "file": "psychology/biological-psychology/sexual-behavior-biology.md",
+      "exists": true,
+      "char_count": 537
+    },
+    {
+      "id": "consciousness",
+      "name": "意识",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "psychology/biological-psychology/consciousness.md",
+      "exists": true,
+      "char_count": 526
+    },
+    {
+      "id": "evolutionary-psychology",
+      "name": "进化心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进化"
+      ],
+      "file": "psychology/biological-psychology/evolutionary-psychology.md",
+      "exists": true,
+      "char_count": 535
+    },
+    {
+      "id": "comparative-psychology",
+      "name": "比较心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进化"
+      ],
+      "file": "psychology/biological-psychology/comparative-psychology.md",
+      "exists": true,
+      "char_count": 529
+    },
+    {
+      "id": "epigenetics-behavior",
+      "name": "表观遗传与行为",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "psychology/biological-psychology/epigenetics-behavior.md",
+      "exists": true,
+      "char_count": 538
+    },
+    {
+      "id": "psychoneuroimmunology",
+      "name": "心理神经免疫学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "psychology/biological-psychology/psychoneuroimmunology.md",
+      "exists": true,
+      "char_count": 533
+    },
+    {
+      "id": "personality-overview",
+      "name": "人格心理学概述",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/personality-psychology/personality-overview.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "big-five",
+      "name": "大五人格模型",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/personality-psychology/big-five.md",
+      "exists": true,
+      "char_count": 553
+    },
+    {
+      "id": "trait-theory",
+      "name": "特质理论",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "特质"
+      ],
+      "file": "psychology/personality-psychology/trait-theory.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "psychoanalytic-theory",
+      "name": "精神分析理论",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/personality-psychology/psychoanalytic-theory.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "defense-mechanisms",
+      "name": "防御机制",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "精神分析"
+      ],
+      "file": "psychology/personality-psychology/defense-mechanisms.md",
+      "exists": true,
+      "char_count": 545
+    },
+    {
+      "id": "psychosexual-stages",
+      "name": "性心理发展阶段",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "精神分析"
+      ],
+      "file": "psychology/personality-psychology/psychosexual-stages.md",
+      "exists": true,
+      "char_count": 556
+    },
+    {
+      "id": "jung-theory",
+      "name": "荣格分析心理学",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "精神分析"
+      ],
+      "file": "psychology/personality-psychology/jung-theory.md",
+      "exists": true,
+      "char_count": 551
+    },
+    {
+      "id": "humanistic-personality",
+      "name": "人本主义人格理论",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/personality-psychology/humanistic-personality.md",
+      "exists": true,
+      "char_count": 566
+    },
+    {
+      "id": "maslow-hierarchy",
+      "name": "马斯洛需求层次",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "动机"
+      ],
+      "file": "psychology/personality-psychology/maslow-hierarchy.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "social-cognitive-personality",
+      "name": "社会认知人格理论",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "psychology/personality-psychology/social-cognitive-personality.md",
+      "exists": true,
+      "char_count": 566
+    },
+    {
+      "id": "personality-assessment",
+      "name": "人格评估",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "评估"
+      ],
+      "file": "psychology/personality-psychology/personality-assessment.md",
+      "exists": true,
+      "char_count": 544
+    },
+    {
+      "id": "mbti",
+      "name": "MBTI人格类型",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "psychology/personality-psychology/mbti.md",
+      "exists": true,
+      "char_count": 565
+    },
+    {
+      "id": "locus-of-control",
+      "name": "控制点",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "认知"
+      ],
+      "file": "psychology/personality-psychology/locus-of-control.md",
+      "exists": true,
+      "char_count": 544
+    },
+    {
+      "id": "self-actualization",
+      "name": "自我实现",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "人本"
+      ],
+      "file": "psychology/personality-psychology/self-actualization.md",
+      "exists": true,
+      "char_count": 541
+    },
+    {
+      "id": "personality-stability",
+      "name": "人格稳定性",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "争论"
+      ],
+      "file": "psychology/personality-psychology/personality-stability.md",
+      "exists": true,
+      "char_count": 549
+    },
+    {
+      "id": "narcissism",
+      "name": "自恋",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "人格"
+      ],
+      "file": "psychology/personality-psychology/narcissism.md",
+      "exists": true,
+      "char_count": 539
+    },
+    {
+      "id": "attachment-adult",
+      "name": "成人依恋",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "关系"
+      ],
+      "file": "psychology/personality-psychology/attachment-adult.md",
+      "exists": true,
+      "char_count": 541
+    },
+    {
+      "id": "personality-culture",
+      "name": "人格与文化",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "psychology/personality-psychology/personality-culture.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "dark-triad",
+      "name": "黑暗三人格",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "人格"
+      ],
+      "file": "psychology/personality-psychology/dark-triad.md",
+      "exists": true,
+      "char_count": 551
+    },
+    {
+      "id": "growth-mindset",
+      "name": "成长型思维",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "积极"
+      ],
+      "file": "psychology/personality-psychology/growth-mindset.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "grit",
+      "name": "坚毅",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "积极"
+      ],
+      "file": "psychology/personality-psychology/grit.md",
+      "exists": true,
+      "char_count": 543
+    },
+    {
+      "id": "emotional-regulation",
+      "name": "情绪调节",
+      "domain_id": "psychology",
+      "subdomain_id": "personality-psychology",
+      "subdomain_name": "人格心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "情绪"
+      ],
+      "file": "psychology/personality-psychology/emotional-regulation.md",
+      "exists": true,
+      "char_count": 544
+    },
+    {
+      "id": "research-methods-overview",
+      "name": "研究方法概述",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/research-methods/research-methods-overview.md",
+      "exists": true,
+      "char_count": 529
+    },
+    {
+      "id": "scientific-method",
+      "name": "科学方法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/research-methods/scientific-method.md",
+      "exists": true,
+      "char_count": 521
+    },
+    {
+      "id": "experimental-design",
+      "name": "实验设计",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/research-methods/experimental-design.md",
+      "exists": true,
+      "char_count": 524
+    },
+    {
+      "id": "random-assignment",
+      "name": "随机分配",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实验"
+      ],
+      "file": "psychology/research-methods/random-assignment.md",
+      "exists": true,
+      "char_count": 522
+    },
+    {
+      "id": "correlational-research",
+      "name": "相关研究",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/research-methods/correlational-research.md",
+      "exists": true,
+      "char_count": 526
+    },
+    {
+      "id": "survey-methods",
+      "name": "调查法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "psychology/research-methods/survey-methods.md",
+      "exists": true,
+      "char_count": 521
+    },
+    {
+      "id": "observational-methods",
+      "name": "观察法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "psychology/research-methods/observational-methods.md",
+      "exists": true,
+      "char_count": 518
+    },
+    {
+      "id": "case-study-method",
+      "name": "个案研究法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "psychology/research-methods/case-study-method.md",
+      "exists": true,
+      "char_count": 523
+    },
+    {
+      "id": "longitudinal-study",
+      "name": "纵向研究",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "psychology/research-methods/longitudinal-study.md",
+      "exists": true,
+      "char_count": 521
+    },
+    {
+      "id": "cross-sectional-study",
+      "name": "横断研究",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "psychology/research-methods/cross-sectional-study.md",
+      "exists": true,
+      "char_count": 522
+    },
+    {
+      "id": "descriptive-statistics",
+      "name": "描述统计",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "统计"
+      ],
+      "file": "psychology/research-methods/descriptive-statistics.md",
+      "exists": true,
+      "char_count": 522
+    },
+    {
+      "id": "inferential-statistics",
+      "name": "推断统计",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "统计"
+      ],
+      "file": "psychology/research-methods/inferential-statistics.md",
+      "exists": true,
+      "char_count": 521
+    },
+    {
+      "id": "effect-size",
+      "name": "效应量",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "统计"
+      ],
+      "file": "psychology/research-methods/effect-size.md",
+      "exists": true,
+      "char_count": 527
+    },
+    {
+      "id": "reliability-validity",
+      "name": "信度与效度",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "测量"
+      ],
+      "file": "psychology/research-methods/reliability-validity.md",
+      "exists": true,
+      "char_count": 530
+    },
+    {
+      "id": "sampling-methods",
+      "name": "抽样方法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "psychology/research-methods/sampling-methods.md",
+      "exists": true,
+      "char_count": 520
+    },
+    {
+      "id": "ethics-research",
+      "name": "研究伦理",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "伦理"
+      ],
+      "file": "psychology/research-methods/ethics-research.md",
+      "exists": true,
+      "char_count": 525
+    },
+    {
+      "id": "replication-crisis",
+      "name": "可重复性危机",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "psychology/research-methods/replication-crisis.md",
+      "exists": true,
+      "char_count": 529
+    },
+    {
+      "id": "meta-analysis",
+      "name": "元分析",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "psychology/research-methods/meta-analysis.md",
+      "exists": true,
+      "char_count": 518
+    },
+    {
+      "id": "qualitative-methods",
+      "name": "质性研究方法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "psychology/research-methods/qualitative-methods.md",
+      "exists": true,
+      "char_count": 528
+    },
+    {
+      "id": "operational-definition",
+      "name": "操作性定义",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "psychology/research-methods/operational-definition.md",
+      "exists": true,
+      "char_count": 529
+    },
+    {
+      "id": "internal-external-validity",
+      "name": "内部效度与外部效度",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "效度"
+      ],
+      "file": "psychology/research-methods/internal-external-validity.md",
+      "exists": true,
+      "char_count": 540
+    },
+    {
+      "id": "apa-style",
+      "name": "APA格式",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "写作"
+      ],
+      "file": "psychology/research-methods/apa-style.md",
+      "exists": true,
+      "char_count": 524
+    },
+    {
+      "id": "power-analysis",
+      "name": "统计功效分析",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "统计"
+      ],
+      "file": "psychology/research-methods/power-analysis.md",
+      "exists": true,
+      "char_count": 535
+    }
+  ],
+  "stats": {
+    "total_docs": 183,
+    "total_chars": 100291,
+    "by_subdomain": {
+      "cognitive-psychology": 25,
+      "developmental-psychology": 23,
+      "social-psychology": 23,
+      "clinical-psychology": 23,
+      "behavioral-psychology": 22,
+      "biological-psychology": 22,
+      "personality-psychology": 22,
+      "research-methods": 23
+    }
+  }
+}

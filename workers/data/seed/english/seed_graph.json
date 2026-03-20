@@ -1,0 +1,7468 @@
+{
+  "domain": {
+    "id": "english",
+    "name": "英语",
+    "description": "从基础语法到高级表达的英语学习体系",
+    "icon": "🟡",
+    "color": "#eab308"
+  },
+  "subdomains": [
+    {
+      "id": "phonetics",
+      "name": "语音",
+      "order": 1
+    },
+    {
+      "id": "basic-grammar",
+      "name": "基础语法",
+      "order": 2
+    },
+    {
+      "id": "vocabulary",
+      "name": "核心词汇",
+      "order": 3
+    },
+    {
+      "id": "tenses",
+      "name": "时态系统",
+      "order": 4
+    },
+    {
+      "id": "sentence-patterns",
+      "name": "句型结构",
+      "order": 5
+    },
+    {
+      "id": "advanced-grammar",
+      "name": "高级语法",
+      "order": 6
+    },
+    {
+      "id": "reading",
+      "name": "阅读理解",
+      "order": 7
+    },
+    {
+      "id": "writing-en",
+      "name": "写作",
+      "order": 8
+    },
+    {
+      "id": "speaking",
+      "name": "口语表达",
+      "order": 9
+    },
+    {
+      "id": "idioms-culture",
+      "name": "习语与文化",
+      "order": 10
+    }
+  ],
+  "concepts": [
+    {
+      "id": "vowel-sounds",
+      "name": "元音音素",
+      "description": "英语12个单元音和8个双元音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "consonant-sounds",
+      "name": "辅音音素",
+      "description": "英语24个辅音音素的发音位置和方式",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "ipa-basics",
+      "name": "国际音标基础",
+      "description": "IPA符号系统与英语音素对应关系",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "syllable-structure",
+      "name": "音节结构",
+      "description": "音节的构成:起首辅音、元音核心、尾辅音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-stress",
+      "name": "单词重音",
+      "description": "英语单词的重音规则与标注",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "sentence-stress",
+      "name": "句子重音",
+      "description": "内容词与功能词的重读/弱读规则",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "intonation-patterns",
+      "name": "语调模式",
+      "description": "升调、降调、降升调的意义与使用",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "linking-sounds",
+      "name": "连读",
+      "description": "辅音与元音的连读、同辅音连读",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reduction-elision",
+      "name": "弱化与省音",
+      "description": "弱读形式、音素省略现象",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "minimal-pairs",
+      "name": "最小对立体",
+      "description": "通过最小差异词对辨别音素",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "phonics-rules",
+      "name": "自然拼读规则",
+      "description": "字母与音素的对应关系规则",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "schwa-sound",
+      "name": "中央元音schwa",
+      "description": "最常见英语元音/ə/的出现规律",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "consonant-clusters",
+      "name": "辅音丛",
+      "description": "词首和词尾的辅音组合",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "rhythm-timing",
+      "name": "节奏与语速",
+      "description": "英语的重音等时性节奏特征",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "am-vs-br-pronunciation",
+      "name": "美音与英音差异",
+      "description": "美式和英式英语的主要发音区别",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tongue-twisters",
+      "name": "绕口令练习",
+      "description": "通过绕口令训练难发音组合",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "assimilation",
+      "name": "语音同化",
+      "description": "相邻音素互相影响改变发音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "thought-groups",
+      "name": "意群划分",
+      "description": "句子按意义分组停顿的规律",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "pronunciation-practice",
+      "name": "发音综合练习",
+      "description": "系统性发音训练方法与自我纠正",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "phonemic-transcription",
+      "name": "音标转写",
+      "description": "将单词转写为IPA音标的练习",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "parts-of-speech",
+      "name": "词性概述",
+      "description": "名词、动词、形容词等八大词性",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "nouns",
+      "name": "名词",
+      "description": "可数/不可数名词、单复数变化",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "pronouns",
+      "name": "代词",
+      "description": "人称/物主/指示/反身代词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "articles",
+      "name": "冠词",
+      "description": "a/an/the的使用规则与零冠词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adjectives",
+      "name": "形容词",
+      "description": "形容词的用法、比较级和最高级",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adverbs",
+      "name": "副词",
+      "description": "副词的类型、位置与比较等级",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "prepositions",
+      "name": "介词",
+      "description": "时间/地点/方向介词与固定搭配",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "conjunctions",
+      "name": "连词",
+      "description": "并列连词和从属连词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "basic-sentence-order",
+      "name": "基本语序",
+      "description": "SVO语序与句子基本结构",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "be-verb",
+      "name": "be动词",
+      "description": "am/is/are/was/were的用法",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "have-do-auxiliary",
+      "name": "助动词have/do",
+      "description": "have和do作为助动词的用法",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "modal-verbs",
+      "name": "情态动词",
+      "description": "can/could/may/might/must/should等",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "questions",
+      "name": "疑问句",
+      "description": "一般疑问句、特殊疑问句、选择疑问句",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "negation",
+      "name": "否定句",
+      "description": "not的用法、双重否定、否定前缀",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "imperative",
+      "name": "祈使句",
+      "description": "命令、请求、建议的祈使表达",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "exclamatory",
+      "name": "感叹句",
+      "description": "what/how引导的感叹句结构",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "there-be",
+      "name": "there be句型",
+      "description": "存在句的结构与主谓一致",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "it-usage",
+      "name": "it的用法",
+      "description": "形式主语it、强调句、天气/时间表达",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "possessives",
+      "name": "所有格",
+      "description": "'s所有格、of所有格、双重所有格",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "quantifiers",
+      "name": "数量词",
+      "description": "some/any/many/much/few/little等",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "determiners",
+      "name": "限定词",
+      "description": "this/that/these/those/each/every等",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "subject-verb-agreement",
+      "name": "主谓一致",
+      "description": "单数/复数主语与动词的一致规则",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-formation",
+      "name": "构词法",
+      "description": "前缀、后缀、词根与合成词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "common-prefixes",
+      "name": "常见前缀",
+      "description": "un-/re-/pre-/dis-/mis-等20个高频前缀",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "common-suffixes",
+      "name": "常见后缀",
+      "description": "-tion/-ment/-ness/-able/-ful等20个高频后缀",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "latin-greek-roots",
+      "name": "拉丁与希腊词根",
+      "description": "常见拉丁/希腊词根及其派生",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "synonyms-antonyms",
+      "name": "同义词与反义词",
+      "description": "近义词辨析与反义词构成",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "collocations",
+      "name": "搭配",
+      "description": "常见动词+名词、形容词+名词搭配",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "phrasal-verbs",
+      "name": "短语动词",
+      "description": "动词+介词/副词组合的含义变化",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "context-clues",
+      "name": "上下文猜词",
+      "description": "通过语境推断生词含义的技巧",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-families",
+      "name": "词族",
+      "description": "同一词根派生出的词性变化家族",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "academic-vocabulary",
+      "name": "学术词汇",
+      "description": "AWL学术词汇表核心词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "false-friends",
+      "name": "假朋友",
+      "description": "中英文中形似但义不同的词汇",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "易错"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "register-formality",
+      "name": "语域与正式程度",
+      "description": "正式/非正式/口语/书面语词汇选择",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "vocabulary-strategies",
+      "name": "词汇记忆策略",
+      "description": "间隔重复、联想、语境学习等方法",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "confusing-words",
+      "name": "易混淆词",
+      "description": "affect/effect, its/it's等常见混淆",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "易错"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "business-vocabulary",
+      "name": "商务词汇",
+      "description": "商务场景高频词汇与表达",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "专业"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "technical-vocabulary",
+      "name": "科技词汇",
+      "description": "科学技术领域常见英语术语",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "专业"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "connotation-denotation",
+      "name": "内涵与外延",
+      "description": "词汇的字面含义与感情色彩",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-usage-practice",
+      "name": "词汇运用练习",
+      "description": "在写作和口语中准确运用新词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "simple-present",
+      "name": "一般现在时",
+      "description": "习惯动作、客观事实的表达",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "present-continuous",
+      "name": "现在进行时",
+      "description": "be+V-ing表示正在进行的动作",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "simple-past",
+      "name": "一般过去时",
+      "description": "过去发生的动作或状态",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "past-continuous",
+      "name": "过去进行时",
+      "description": "过去某时刻正在进行的动作",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "simple-future",
+      "name": "一般将来时",
+      "description": "will/be going to表示将来",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "present-perfect",
+      "name": "现在完成时",
+      "description": "have/has+过去分词，已完成或持续",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "present-perfect-cont",
+      "name": "现在完成进行时",
+      "description": "have been+V-ing强调持续过程",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "past-perfect",
+      "name": "过去完成时",
+      "description": "had+过去分词，过去的过去",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "past-perfect-cont",
+      "name": "过去完成进行时",
+      "description": "had been+V-ing过去持续动作",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "future-continuous",
+      "name": "将来进行时",
+      "description": "will be+V-ing将来某刻正在做",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "future-perfect",
+      "name": "将来完成时",
+      "description": "will have+过去分词，将来某点前完成",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tense-timeline",
+      "name": "时态时间线",
+      "description": "12种时态的时间线对比与总结",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "irregular-verbs",
+      "name": "不规则动词",
+      "description": "常见不规则动词三种形式",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "passive-voice",
+      "name": "被动语态",
+      "description": "be+过去分词的各时态被动形式",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reported-speech",
+      "name": "间接引语",
+      "description": "直接引语转间接引语的时态后退",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "stative-verbs",
+      "name": "状态动词",
+      "description": "不用于进行时的动词及例外",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tense-consistency",
+      "name": "时态一致性",
+      "description": "叙述中保持时态一致的规则",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "used-to-would",
+      "name": "used to与would",
+      "description": "表示过去习惯的两种表达",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "present-for-future",
+      "name": "现在时表将来",
+      "description": "时间/条件从句中现在时代替将来时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tense-review-exercise",
+      "name": "时态综合练习",
+      "description": "混合时态语境选择与翻译练习",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "five-basic-patterns",
+      "name": "五种基本句型",
+      "description": "SV/SVO/SVC/SVOO/SVOC",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "compound-sentences",
+      "name": "并列句",
+      "description": "and/but/or/so连接的并列结构",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "complex-sentences",
+      "name": "复合句",
+      "description": "主句+从句的基本结构",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "noun-clauses",
+      "name": "名词性从句",
+      "description": "主语从句、宾语从句、表语从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adjective-clauses",
+      "name": "定语从句",
+      "description": "who/which/that/where/when引导的定语从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adverb-clauses",
+      "name": "状语从句",
+      "description": "时间/原因/条件/让步/目的状语从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "relative-pronouns",
+      "name": "关系代词与关系副词",
+      "description": "定语从句中who/whom/whose/which/that/where/when",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "restrictive-vs-non",
+      "name": "限制性与非限制性",
+      "description": "限制性和非限制性定语从句的区别",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "infinitive-phrases",
+      "name": "不定式短语",
+      "description": "to+V作主语/宾语/定语/状语/补语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "gerund-phrases",
+      "name": "动名词短语",
+      "description": "V-ing作主语/宾语/介词宾语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "participle-phrases",
+      "name": "分词短语",
+      "description": "现在分词和过去分词作定语/状语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "conditional-sentences",
+      "name": "条件句",
+      "description": "零/一/二/三类条件句与混合条件句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "wish-subjunctive",
+      "name": "虚拟语气",
+      "description": "wish/if only/as if/suggest等虚拟用法",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "inversion",
+      "name": "倒装句",
+      "description": "完全倒装与部分倒装的条件",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "emphasis-cleft",
+      "name": "强调与分裂句",
+      "description": "It is...that强调句型、do/does强调",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "parallel-structure",
+      "name": "平行结构",
+      "description": "句子成分的对等与平衡",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "sentence-combining",
+      "name": "句子合并",
+      "description": "将简单句合并为复合句的技巧",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "run-on-fragments",
+      "name": "句子错误",
+      "description": "连写句、断句、悬垂修饰语等常见错误",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "易错"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "appositive-phrases",
+      "name": "同位语",
+      "description": "同位语和同位语从句的用法",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "ellipsis-substitution",
+      "name": "省略与替代",
+      "description": "so/not/do so/one等替代和省略",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "advanced-modals",
+      "name": "情态动词进阶",
+      "description": "推测/后悔/可能性的情态表达",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "causative-verbs",
+      "name": "使役动词",
+      "description": "make/have/let/get+宾语+补语",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "subjunctive-mood",
+      "name": "虚拟语气详解",
+      "description": "各种虚拟语气的形式与用法总结",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "discourse-markers",
+      "name": "话语标记词",
+      "description": "however/moreover/nevertheless等逻辑连接",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reported-speech-adv",
+      "name": "间接引语进阶",
+      "description": "复杂报告句、引用动词选择",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "articles-advanced",
+      "name": "冠词进阶",
+      "description": "抽象名词、专有名词等特殊冠词用法",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "noun-modifiers",
+      "name": "名词修饰语",
+      "description": "多个形容词排序规则与名词作修饰",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adverb-placement",
+      "name": "副词位置",
+      "description": "不同类型副词在句中的位置规则",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "dangling-modifiers",
+      "name": "悬垂修饰语",
+      "description": "分词短语修饰对象不明确的纠错",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "易错"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "hedging-language",
+      "name": "模糊表达",
+      "description": "学术写作中的缓和表达策略",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "ellipsis-advanced",
+      "name": "高级省略",
+      "description": "比较句、并列句中的高级省略规则",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "fronting-theme",
+      "name": "主位推进",
+      "description": "信息结构中的主位与述位",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "mixed-conditionals",
+      "name": "混合条件句",
+      "description": "过去与现在交叉的条件虚拟",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "nominal-relative",
+      "name": "名词性关系从句",
+      "description": "what/whoever/whatever引导的从句",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reduced-clauses",
+      "name": "从句简化",
+      "description": "将从句简化为短语的方法",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "concession-contrast",
+      "name": "让步与对比",
+      "description": "although/despite/whereas/while等对比表达",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "complex-prepositions",
+      "name": "复杂介词短语",
+      "description": "in terms of/with regard to/by means of等",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "aspect-nuances",
+      "name": "体态细微差别",
+      "description": "进行体、完成体、惯常体的深层语义",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "grammar-in-context",
+      "name": "语境中的语法",
+      "description": "语法规则在真实语篇中的灵活应用",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "error-analysis",
+      "name": "语法纠错",
+      "description": "中国学习者常见语法错误分析",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "skimming",
+      "name": "略读",
+      "description": "快速浏览获取文章大意",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "scanning",
+      "name": "查读",
+      "description": "快速定位特定信息",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "intensive-reading",
+      "name": "精读",
+      "description": "逐句分析理解文章细节",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "main-idea",
+      "name": "主旨大意",
+      "description": "识别段落和文章的中心思想",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "supporting-details",
+      "name": "细节支撑",
+      "description": "识别和理解支撑主旨的细节",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "inference",
+      "name": "推断",
+      "description": "根据文本信息进行逻辑推理",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "text-structure",
+      "name": "篇章结构",
+      "description": "因果/比较/问题解决/时间等组织结构",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "cohesion-coherence",
+      "name": "衔接与连贯",
+      "description": "代词指代、连接词、词汇衔接",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "authors-purpose",
+      "name": "作者目的",
+      "description": "判断作者写作意图和态度",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tone-mood",
+      "name": "语气与情感",
+      "description": "识别文本的语气和情感基调",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "fact-vs-opinion",
+      "name": "事实与观点",
+      "description": "区分客观事实与主观观点",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "critical-reading",
+      "name": "批判性阅读",
+      "description": "评价论点、识别偏见与逻辑谬误",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "narrative-reading",
+      "name": "叙事文阅读",
+      "description": "小说/故事的叙事要素与文学手法",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "expository-reading",
+      "name": "说明文阅读",
+      "description": "科普/百科类文章的阅读策略",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "argumentative-reading",
+      "name": "议论文阅读",
+      "description": "论点/论据/论证过程的分析",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "news-media-reading",
+      "name": "新闻阅读",
+      "description": "新闻报道结构与媒体素养",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "academic-reading",
+      "name": "学术文章阅读",
+      "description": "论文结构、引用、摘要阅读策略",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reading-speed",
+      "name": "阅读速度",
+      "description": "提高阅读速度的训练方法",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "summarizing",
+      "name": "概括总结",
+      "description": "用自己的话概括文章要点",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "graphic-information",
+      "name": "图表信息",
+      "description": "读懂图表、数据、信息图",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "sentence-writing",
+      "name": "句子写作",
+      "description": "写出语法正确、表意清晰的句子",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "paragraph-structure",
+      "name": "段落结构",
+      "description": "主题句+支撑句+结尾句",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "topic-sentences",
+      "name": "主题句",
+      "description": "写好段落的主题句",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "coherence-transitions",
+      "name": "连贯与过渡",
+      "description": "段落间的过渡词和逻辑连接",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "essay-structure",
+      "name": "文章结构",
+      "description": "引言/正文/结论的三部分结构",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "narrative-writing",
+      "name": "记叙文写作",
+      "description": "讲故事的技巧：人物/情节/冲突",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文体"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "descriptive-writing",
+      "name": "描写文写作",
+      "description": "五感描写、细节与意象",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文体"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "expository-writing",
+      "name": "说明文写作",
+      "description": "解释概念、过程或现象",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文体"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "argumentative-writing",
+      "name": "议论文写作",
+      "description": "论点+论据+反驳+结论",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文体"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "email-writing",
+      "name": "邮件写作",
+      "description": "正式/非正式邮件格式与表达",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "summary-writing",
+      "name": "摘要写作",
+      "description": "浓缩原文要点的写作技巧",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "paraphrasing",
+      "name": "改写",
+      "description": "用不同方式表达相同含义",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "punctuation",
+      "name": "标点符号",
+      "description": "逗号/句号/分号/冒号/引号的规则",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "sentence-variety",
+      "name": "句式多样性",
+      "description": "长短句交替、句首变化",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-choice",
+      "name": "措辞",
+      "description": "精确、具体、生动的词语选择",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "editing-proofreading",
+      "name": "编辑与校对",
+      "description": "修改草稿的系统方法",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "academic-writing",
+      "name": "学术写作",
+      "description": "学术论文结构、引用格式",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "citation-referencing",
+      "name": "引用与参考文献",
+      "description": "APA/MLA格式引用规范",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "creative-writing",
+      "name": "创意写作",
+      "description": "诗歌、短篇小说等文学创作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "report-writing",
+      "name": "报告写作",
+      "description": "正式报告的结构与语言",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "review-writing",
+      "name": "书评/影评",
+      "description": "评论文的结构与批判技巧",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "writing-process",
+      "name": "写作流程",
+      "description": "构思/起草/修改/定稿的完整流程",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "self-introduction",
+      "name": "自我介绍",
+      "description": "不同场合的自我介绍表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "daily-conversations",
+      "name": "日常对话",
+      "description": "问候/感谢/道歉/请求等基本社交",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "asking-directions",
+      "name": "问路与指路",
+      "description": "方向、位置描述与交通表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "expressing-opinions",
+      "name": "表达观点",
+      "description": "同意/反对/中立的表达方式",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "describing-things",
+      "name": "描述事物",
+      "description": "外观/功能/特征的口语描述",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "storytelling-oral",
+      "name": "口头叙事",
+      "description": "讲述经历和故事的口语技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "discussion-skills",
+      "name": "讨论技巧",
+      "description": "小组讨论中的发言与回应",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "presentation-skills",
+      "name": "演示技巧",
+      "description": "结构化演讲与幻灯片配合",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "debate-skills",
+      "name": "辩论技巧",
+      "description": "论证、反驳和总结的口语表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "telephone-english",
+      "name": "电话英语",
+      "description": "电话/视频通话的常用表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "interview-english",
+      "name": "面试英语",
+      "description": "工作面试常见问答与技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "fillers-hesitation",
+      "name": "填充语与犹豫",
+      "description": "well/um/you know等自然使用",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "口语"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "turn-taking",
+      "name": "话轮转换",
+      "description": "对话中的接话与插话技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "口语"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "pragmatic-competence",
+      "name": "语用能力",
+      "description": "言外之意、间接请求与礼貌策略",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "negotiation-english",
+      "name": "谈判英语",
+      "description": "商务谈判中的策略性表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "商务"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "fluency-strategies",
+      "name": "流利性策略",
+      "description": "提高口语流利度的方法",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "accuracy-practice",
+      "name": "准确性练习",
+      "description": "口语中避免常见语法错误",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "shadowing-technique",
+      "name": "影子跟读",
+      "description": "跟随母语者同步朗读训练",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "small-talk",
+      "name": "闲聊",
+      "description": "天气/爱好/新闻等社交闲聊话题",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "cross-cultural-comm",
+      "name": "跨文化交际",
+      "description": "不同文化背景下的沟通注意事项",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "common-idioms",
+      "name": "常见习语",
+      "description": "break the ice/a piece of cake等50个核心习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "proverbs",
+      "name": "谚语",
+      "description": "Actions speak louder than words等经典谚语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "slang-informal",
+      "name": "俚语与非正式表达",
+      "description": "当代英语口语中的常见俚语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "口语"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "body-language-idioms",
+      "name": "身体语言习语",
+      "description": "cold shoulder/keep an eye on等身体相关习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "color-idioms",
+      "name": "颜色习语",
+      "description": "feeling blue/green with envy等颜色相关习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "food-idioms",
+      "name": "食物习语",
+      "description": "spill the beans/cool as cucumber等食物习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "british-vs-american",
+      "name": "英式与美式差异",
+      "description": "拼写、词汇、表达的英美差异",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "english-humor",
+      "name": "英语幽默",
+      "description": "双关语、讽刺、英式/美式幽默风格",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "politeness-norms",
+      "name": "礼貌规范",
+      "description": "英语世界的礼貌策略与禁忌",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "holiday-culture",
+      "name": "节日文化",
+      "description": "Christmas/Thanksgiving/Halloween等文化背景",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "english-literature",
+      "name": "英语文学简介",
+      "description": "莎士比亚到当代的英语文学概览",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "media-entertainment",
+      "name": "影视与流行文化",
+      "description": "通过影视剧学习地道表达",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "figurative-language",
+      "name": "修辞手法",
+      "description": "比喻/拟人/夸张/反讽等表达手法",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "euphemisms",
+      "name": "委婉语",
+      "description": "避免直接表达不愉快话题的方式",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "internet-english",
+      "name": "网络英语",
+      "description": "LOL/BTW/ASAP等缩写与网络用语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "现代"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "english-word-origins",
+      "name": "英语词源",
+      "description": "英语借词的历史：拉丁/法语/日耳曼",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "global-english",
+      "name": "世界英语",
+      "description": "英语作为全球语言的变体与未来",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "idiom-usage-practice",
+      "name": "习语运用练习",
+      "description": "在写作和口语中恰当使用习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "vowel-sounds",
+      "name": "元音音素",
+      "description": "英语12个单元音和8个双元音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "consonant-sounds",
+      "name": "辅音音素",
+      "description": "英语24个辅音音素的发音位置和方式",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "ipa-basics",
+      "name": "国际音标基础",
+      "description": "IPA符号系统与英语音素对应关系",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "syllable-structure",
+      "name": "音节结构",
+      "description": "音节的构成:起首辅音、元音核心、尾辅音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-stress",
+      "name": "单词重音",
+      "description": "英语单词的重音规则与标注",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "sentence-stress",
+      "name": "句子重音",
+      "description": "内容词与功能词的重读/弱读规则",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "intonation-patterns",
+      "name": "语调模式",
+      "description": "升调、降调、降升调的意义与使用",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "linking-sounds",
+      "name": "连读",
+      "description": "辅音与元音的连读、同辅音连读",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reduction-elision",
+      "name": "弱化与省音",
+      "description": "弱读形式、音素省略现象",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "minimal-pairs",
+      "name": "最小对立体",
+      "description": "通过最小差异词对辨别音素",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "phonics-rules",
+      "name": "自然拼读规则",
+      "description": "字母与音素的对应关系规则",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "schwa-sound",
+      "name": "中央元音schwa",
+      "description": "最常见英语元音/ə/的出现规律",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "consonant-clusters",
+      "name": "辅音丛",
+      "description": "词首和词尾的辅音组合",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "rhythm-timing",
+      "name": "节奏与语速",
+      "description": "英语的重音等时性节奏特征",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "am-vs-br-pronunciation",
+      "name": "美音与英音差异",
+      "description": "美式和英式英语的主要发音区别",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tongue-twisters",
+      "name": "绕口令练习",
+      "description": "通过绕口令训练难发音组合",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "assimilation",
+      "name": "语音同化",
+      "description": "相邻音素互相影响改变发音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "thought-groups",
+      "name": "意群划分",
+      "description": "句子按意义分组停顿的规律",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "pronunciation-practice",
+      "name": "发音综合练习",
+      "description": "系统性发音训练方法与自我纠正",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "phonemic-transcription",
+      "name": "音标转写",
+      "description": "将单词转写为IPA音标的练习",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "parts-of-speech",
+      "name": "词性概述",
+      "description": "名词、动词、形容词等八大词性",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "nouns",
+      "name": "名词",
+      "description": "可数/不可数名词、单复数变化",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "pronouns",
+      "name": "代词",
+      "description": "人称/物主/指示/反身代词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "articles",
+      "name": "冠词",
+      "description": "a/an/the的使用规则与零冠词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adjectives",
+      "name": "形容词",
+      "description": "形容词的用法、比较级和最高级",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adverbs",
+      "name": "副词",
+      "description": "副词的类型、位置与比较等级",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "prepositions",
+      "name": "介词",
+      "description": "时间/地点/方向介词与固定搭配",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "conjunctions",
+      "name": "连词",
+      "description": "并列连词和从属连词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "basic-sentence-order",
+      "name": "基本语序",
+      "description": "SVO语序与句子基本结构",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "be-verb",
+      "name": "be动词",
+      "description": "am/is/are/was/were的用法",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "have-do-auxiliary",
+      "name": "助动词have/do",
+      "description": "have和do作为助动词的用法",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "modal-verbs",
+      "name": "情态动词",
+      "description": "can/could/may/might/must/should等",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "questions",
+      "name": "疑问句",
+      "description": "一般疑问句、特殊疑问句、选择疑问句",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "negation",
+      "name": "否定句",
+      "description": "not的用法、双重否定、否定前缀",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "imperative",
+      "name": "祈使句",
+      "description": "命令、请求、建议的祈使表达",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "exclamatory",
+      "name": "感叹句",
+      "description": "what/how引导的感叹句结构",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "there-be",
+      "name": "there be句型",
+      "description": "存在句的结构与主谓一致",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "it-usage",
+      "name": "it的用法",
+      "description": "形式主语it、强调句、天气/时间表达",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "possessives",
+      "name": "所有格",
+      "description": "'s所有格、of所有格、双重所有格",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "quantifiers",
+      "name": "数量词",
+      "description": "some/any/many/much/few/little等",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "determiners",
+      "name": "限定词",
+      "description": "this/that/these/those/each/every等",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "subject-verb-agreement",
+      "name": "主谓一致",
+      "description": "单数/复数主语与动词的一致规则",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-formation",
+      "name": "构词法",
+      "description": "前缀、后缀、词根与合成词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "common-prefixes",
+      "name": "常见前缀",
+      "description": "un-/re-/pre-/dis-/mis-等20个高频前缀",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "common-suffixes",
+      "name": "常见后缀",
+      "description": "-tion/-ment/-ness/-able/-ful等20个高频后缀",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "latin-greek-roots",
+      "name": "拉丁与希腊词根",
+      "description": "常见拉丁/希腊词根及其派生",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "synonyms-antonyms",
+      "name": "同义词与反义词",
+      "description": "近义词辨析与反义词构成",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "collocations",
+      "name": "搭配",
+      "description": "常见动词+名词、形容词+名词搭配",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "phrasal-verbs",
+      "name": "短语动词",
+      "description": "动词+介词/副词组合的含义变化",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "context-clues",
+      "name": "上下文猜词",
+      "description": "通过语境推断生词含义的技巧",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-families",
+      "name": "词族",
+      "description": "同一词根派生出的词性变化家族",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "academic-vocabulary",
+      "name": "学术词汇",
+      "description": "AWL学术词汇表核心词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "false-friends",
+      "name": "假朋友",
+      "description": "中英文中形似但义不同的词汇",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "易错"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "register-formality",
+      "name": "语域与正式程度",
+      "description": "正式/非正式/口语/书面语词汇选择",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "vocabulary-strategies",
+      "name": "词汇记忆策略",
+      "description": "间隔重复、联想、语境学习等方法",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "confusing-words",
+      "name": "易混淆词",
+      "description": "affect/effect, its/it's等常见混淆",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "易错"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "business-vocabulary",
+      "name": "商务词汇",
+      "description": "商务场景高频词汇与表达",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "专业"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "technical-vocabulary",
+      "name": "科技词汇",
+      "description": "科学技术领域常见英语术语",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "专业"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "connotation-denotation",
+      "name": "内涵与外延",
+      "description": "词汇的字面含义与感情色彩",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-usage-practice",
+      "name": "词汇运用练习",
+      "description": "在写作和口语中准确运用新词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "simple-present",
+      "name": "一般现在时",
+      "description": "习惯动作、客观事实的表达",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "present-continuous",
+      "name": "现在进行时",
+      "description": "be+V-ing表示正在进行的动作",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "simple-past",
+      "name": "一般过去时",
+      "description": "过去发生的动作或状态",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "past-continuous",
+      "name": "过去进行时",
+      "description": "过去某时刻正在进行的动作",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "simple-future",
+      "name": "一般将来时",
+      "description": "will/be going to表示将来",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "present-perfect",
+      "name": "现在完成时",
+      "description": "have/has+过去分词，已完成或持续",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "present-perfect-cont",
+      "name": "现在完成进行时",
+      "description": "have been+V-ing强调持续过程",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "past-perfect",
+      "name": "过去完成时",
+      "description": "had+过去分词，过去的过去",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "past-perfect-cont",
+      "name": "过去完成进行时",
+      "description": "had been+V-ing过去持续动作",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "future-continuous",
+      "name": "将来进行时",
+      "description": "will be+V-ing将来某刻正在做",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "future-perfect",
+      "name": "将来完成时",
+      "description": "will have+过去分词，将来某点前完成",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tense-timeline",
+      "name": "时态时间线",
+      "description": "12种时态的时间线对比与总结",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "irregular-verbs",
+      "name": "不规则动词",
+      "description": "常见不规则动词三种形式",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "passive-voice",
+      "name": "被动语态",
+      "description": "be+过去分词的各时态被动形式",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reported-speech",
+      "name": "间接引语",
+      "description": "直接引语转间接引语的时态后退",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "stative-verbs",
+      "name": "状态动词",
+      "description": "不用于进行时的动词及例外",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tense-consistency",
+      "name": "时态一致性",
+      "description": "叙述中保持时态一致的规则",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "used-to-would",
+      "name": "used to与would",
+      "description": "表示过去习惯的两种表达",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "present-for-future",
+      "name": "现在时表将来",
+      "description": "时间/条件从句中现在时代替将来时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tense-review-exercise",
+      "name": "时态综合练习",
+      "description": "混合时态语境选择与翻译练习",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "five-basic-patterns",
+      "name": "五种基本句型",
+      "description": "SV/SVO/SVC/SVOO/SVOC",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "compound-sentences",
+      "name": "并列句",
+      "description": "and/but/or/so连接的并列结构",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "complex-sentences",
+      "name": "复合句",
+      "description": "主句+从句的基本结构",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "noun-clauses",
+      "name": "名词性从句",
+      "description": "主语从句、宾语从句、表语从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adjective-clauses",
+      "name": "定语从句",
+      "description": "who/which/that/where/when引导的定语从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adverb-clauses",
+      "name": "状语从句",
+      "description": "时间/原因/条件/让步/目的状语从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "relative-pronouns",
+      "name": "关系代词与关系副词",
+      "description": "定语从句中who/whom/whose/which/that/where/when",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "restrictive-vs-non",
+      "name": "限制性与非限制性",
+      "description": "限制性和非限制性定语从句的区别",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "infinitive-phrases",
+      "name": "不定式短语",
+      "description": "to+V作主语/宾语/定语/状语/补语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "gerund-phrases",
+      "name": "动名词短语",
+      "description": "V-ing作主语/宾语/介词宾语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "participle-phrases",
+      "name": "分词短语",
+      "description": "现在分词和过去分词作定语/状语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "conditional-sentences",
+      "name": "条件句",
+      "description": "零/一/二/三类条件句与混合条件句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "wish-subjunctive",
+      "name": "虚拟语气",
+      "description": "wish/if only/as if/suggest等虚拟用法",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "inversion",
+      "name": "倒装句",
+      "description": "完全倒装与部分倒装的条件",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "emphasis-cleft",
+      "name": "强调与分裂句",
+      "description": "It is...that强调句型、do/does强调",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "parallel-structure",
+      "name": "平行结构",
+      "description": "句子成分的对等与平衡",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "sentence-combining",
+      "name": "句子合并",
+      "description": "将简单句合并为复合句的技巧",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "run-on-fragments",
+      "name": "句子错误",
+      "description": "连写句、断句、悬垂修饰语等常见错误",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "易错"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "appositive-phrases",
+      "name": "同位语",
+      "description": "同位语和同位语从句的用法",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "ellipsis-substitution",
+      "name": "省略与替代",
+      "description": "so/not/do so/one等替代和省略",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "advanced-modals",
+      "name": "情态动词进阶",
+      "description": "推测/后悔/可能性的情态表达",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "causative-verbs",
+      "name": "使役动词",
+      "description": "make/have/let/get+宾语+补语",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "subjunctive-mood",
+      "name": "虚拟语气详解",
+      "description": "各种虚拟语气的形式与用法总结",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "discourse-markers",
+      "name": "话语标记词",
+      "description": "however/moreover/nevertheless等逻辑连接",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reported-speech-adv",
+      "name": "间接引语进阶",
+      "description": "复杂报告句、引用动词选择",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "articles-advanced",
+      "name": "冠词进阶",
+      "description": "抽象名词、专有名词等特殊冠词用法",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "noun-modifiers",
+      "name": "名词修饰语",
+      "description": "多个形容词排序规则与名词作修饰",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "adverb-placement",
+      "name": "副词位置",
+      "description": "不同类型副词在句中的位置规则",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "dangling-modifiers",
+      "name": "悬垂修饰语",
+      "description": "分词短语修饰对象不明确的纠错",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "易错"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "hedging-language",
+      "name": "模糊表达",
+      "description": "学术写作中的缓和表达策略",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "ellipsis-advanced",
+      "name": "高级省略",
+      "description": "比较句、并列句中的高级省略规则",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "fronting-theme",
+      "name": "主位推进",
+      "description": "信息结构中的主位与述位",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "mixed-conditionals",
+      "name": "混合条件句",
+      "description": "过去与现在交叉的条件虚拟",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "nominal-relative",
+      "name": "名词性关系从句",
+      "description": "what/whoever/whatever引导的从句",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reduced-clauses",
+      "name": "从句简化",
+      "description": "将从句简化为短语的方法",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "concession-contrast",
+      "name": "让步与对比",
+      "description": "although/despite/whereas/while等对比表达",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "complex-prepositions",
+      "name": "复杂介词短语",
+      "description": "in terms of/with regard to/by means of等",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "aspect-nuances",
+      "name": "体态细微差别",
+      "description": "进行体、完成体、惯常体的深层语义",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "grammar-in-context",
+      "name": "语境中的语法",
+      "description": "语法规则在真实语篇中的灵活应用",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "error-analysis",
+      "name": "语法纠错",
+      "description": "中国学习者常见语法错误分析",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "skimming",
+      "name": "略读",
+      "description": "快速浏览获取文章大意",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "scanning",
+      "name": "查读",
+      "description": "快速定位特定信息",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "intensive-reading",
+      "name": "精读",
+      "description": "逐句分析理解文章细节",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "main-idea",
+      "name": "主旨大意",
+      "description": "识别段落和文章的中心思想",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "supporting-details",
+      "name": "细节支撑",
+      "description": "识别和理解支撑主旨的细节",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "inference",
+      "name": "推断",
+      "description": "根据文本信息进行逻辑推理",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "text-structure",
+      "name": "篇章结构",
+      "description": "因果/比较/问题解决/时间等组织结构",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "cohesion-coherence",
+      "name": "衔接与连贯",
+      "description": "代词指代、连接词、词汇衔接",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "authors-purpose",
+      "name": "作者目的",
+      "description": "判断作者写作意图和态度",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "tone-mood",
+      "name": "语气与情感",
+      "description": "识别文本的语气和情感基调",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "fact-vs-opinion",
+      "name": "事实与观点",
+      "description": "区分客观事实与主观观点",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "critical-reading",
+      "name": "批判性阅读",
+      "description": "评价论点、识别偏见与逻辑谬误",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "narrative-reading",
+      "name": "叙事文阅读",
+      "description": "小说/故事的叙事要素与文学手法",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "expository-reading",
+      "name": "说明文阅读",
+      "description": "科普/百科类文章的阅读策略",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "argumentative-reading",
+      "name": "议论文阅读",
+      "description": "论点/论据/论证过程的分析",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "news-media-reading",
+      "name": "新闻阅读",
+      "description": "新闻报道结构与媒体素养",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "academic-reading",
+      "name": "学术文章阅读",
+      "description": "论文结构、引用、摘要阅读策略",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "reading-speed",
+      "name": "阅读速度",
+      "description": "提高阅读速度的训练方法",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "summarizing",
+      "name": "概括总结",
+      "description": "用自己的话概括文章要点",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "graphic-information",
+      "name": "图表信息",
+      "description": "读懂图表、数据、信息图",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "sentence-writing",
+      "name": "句子写作",
+      "description": "写出语法正确、表意清晰的句子",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "paragraph-structure",
+      "name": "段落结构",
+      "description": "主题句+支撑句+结尾句",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "topic-sentences",
+      "name": "主题句",
+      "description": "写好段落的主题句",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "coherence-transitions",
+      "name": "连贯与过渡",
+      "description": "段落间的过渡词和逻辑连接",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "essay-structure",
+      "name": "文章结构",
+      "description": "引言/正文/结论的三部分结构",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "narrative-writing",
+      "name": "记叙文写作",
+      "description": "讲故事的技巧：人物/情节/冲突",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文体"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "descriptive-writing",
+      "name": "描写文写作",
+      "description": "五感描写、细节与意象",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文体"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "expository-writing",
+      "name": "说明文写作",
+      "description": "解释概念、过程或现象",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文体"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "argumentative-writing",
+      "name": "议论文写作",
+      "description": "论点+论据+反驳+结论",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文体"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "email-writing",
+      "name": "邮件写作",
+      "description": "正式/非正式邮件格式与表达",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "summary-writing",
+      "name": "摘要写作",
+      "description": "浓缩原文要点的写作技巧",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "paraphrasing",
+      "name": "改写",
+      "description": "用不同方式表达相同含义",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "punctuation",
+      "name": "标点符号",
+      "description": "逗号/句号/分号/冒号/引号的规则",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "sentence-variety",
+      "name": "句式多样性",
+      "description": "长短句交替、句首变化",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "word-choice",
+      "name": "措辞",
+      "description": "精确、具体、生动的词语选择",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "editing-proofreading",
+      "name": "编辑与校对",
+      "description": "修改草稿的系统方法",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "academic-writing",
+      "name": "学术写作",
+      "description": "学术论文结构、引用格式",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "citation-referencing",
+      "name": "引用与参考文献",
+      "description": "APA/MLA格式引用规范",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "学术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "creative-writing",
+      "name": "创意写作",
+      "description": "诗歌、短篇小说等文学创作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "文学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "report-writing",
+      "name": "报告写作",
+      "description": "正式报告的结构与语言",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "review-writing",
+      "name": "书评/影评",
+      "description": "评论文的结构与批判技巧",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "writing-process",
+      "name": "写作流程",
+      "description": "构思/起草/修改/定稿的完整流程",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "self-introduction",
+      "name": "自我介绍",
+      "description": "不同场合的自我介绍表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "daily-conversations",
+      "name": "日常对话",
+      "description": "问候/感谢/道歉/请求等基本社交",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "asking-directions",
+      "name": "问路与指路",
+      "description": "方向、位置描述与交通表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "expressing-opinions",
+      "name": "表达观点",
+      "description": "同意/反对/中立的表达方式",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "describing-things",
+      "name": "描述事物",
+      "description": "外观/功能/特征的口语描述",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "storytelling-oral",
+      "name": "口头叙事",
+      "description": "讲述经历和故事的口语技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "discussion-skills",
+      "name": "讨论技巧",
+      "description": "小组讨论中的发言与回应",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "presentation-skills",
+      "name": "演示技巧",
+      "description": "结构化演讲与幻灯片配合",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "debate-skills",
+      "name": "辩论技巧",
+      "description": "论证、反驳和总结的口语表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "telephone-english",
+      "name": "电话英语",
+      "description": "电话/视频通话的常用表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "interview-english",
+      "name": "面试英语",
+      "description": "工作面试常见问答与技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "fillers-hesitation",
+      "name": "填充语与犹豫",
+      "description": "well/um/you know等自然使用",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "口语"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "turn-taking",
+      "name": "话轮转换",
+      "description": "对话中的接话与插话技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "口语"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "pragmatic-competence",
+      "name": "语用能力",
+      "description": "言外之意、间接请求与礼貌策略",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "negotiation-english",
+      "name": "谈判英语",
+      "description": "商务谈判中的策略性表达",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 6,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "商务"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "fluency-strategies",
+      "name": "流利性策略",
+      "description": "提高口语流利度的方法",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "accuracy-practice",
+      "name": "准确性练习",
+      "description": "口语中避免常见语法错误",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "shadowing-technique",
+      "name": "影子跟读",
+      "description": "跟随母语者同步朗读训练",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "small-talk",
+      "name": "闲聊",
+      "description": "天气/爱好/新闻等社交闲聊话题",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "cross-cultural-comm",
+      "name": "跨文化交际",
+      "description": "不同文化背景下的沟通注意事项",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "common-idioms",
+      "name": "常见习语",
+      "description": "break the ice/a piece of cake等50个核心习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "proverbs",
+      "name": "谚语",
+      "description": "Actions speak louder than words等经典谚语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "slang-informal",
+      "name": "俚语与非正式表达",
+      "description": "当代英语口语中的常见俚语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "口语"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "body-language-idioms",
+      "name": "身体语言习语",
+      "description": "cold shoulder/keep an eye on等身体相关习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "color-idioms",
+      "name": "颜色习语",
+      "description": "feeling blue/green with envy等颜色相关习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "food-idioms",
+      "name": "食物习语",
+      "description": "spill the beans/cool as cucumber等食物习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "british-vs-american",
+      "name": "英式与美式差异",
+      "description": "拼写、词汇、表达的英美差异",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "english-humor",
+      "name": "英语幽默",
+      "description": "双关语、讽刺、英式/美式幽默风格",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "politeness-norms",
+      "name": "礼貌规范",
+      "description": "英语世界的礼貌策略与禁忌",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "holiday-culture",
+      "name": "节日文化",
+      "description": "Christmas/Thanksgiving/Halloween等文化背景",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "english-literature",
+      "name": "英语文学简介",
+      "description": "莎士比亚到当代的英语文学概览",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "media-entertainment",
+      "name": "影视与流行文化",
+      "description": "通过影视剧学习地道表达",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "趣味"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "figurative-language",
+      "name": "修辞手法",
+      "description": "比喻/拟人/夸张/反讽等表达手法",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "euphemisms",
+      "name": "委婉语",
+      "description": "避免直接表达不愉快话题的方式",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "internet-english",
+      "name": "网络英语",
+      "description": "LOL/BTW/ASAP等缩写与网络用语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "现代"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "english-word-origins",
+      "name": "英语词源",
+      "description": "英语借词的历史：拉丁/法语/日耳曼",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "global-english",
+      "name": "世界英语",
+      "description": "英语作为全球语言的变体与未来",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 5,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    },
+    {
+      "id": "idiom-usage-practice",
+      "name": "习语运用练习",
+      "description": "在写作和口语中恰当使用习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "difficulty": 4,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "练习"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T08:34:56.906169+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "vowel-sounds",
+      "target_id": "ipa-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "consonant-sounds",
+      "target_id": "ipa-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "ipa-basics",
+      "target_id": "syllable-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ipa-basics",
+      "target_id": "phonemic-transcription",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ipa-basics",
+      "target_id": "minimal-pairs",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "syllable-structure",
+      "target_id": "word-stress",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "word-stress",
+      "target_id": "sentence-stress",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-stress",
+      "target_id": "intonation-patterns",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sentence-stress",
+      "target_id": "rhythm-timing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "intonation-patterns",
+      "target_id": "thought-groups",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "consonant-sounds",
+      "target_id": "consonant-clusters",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "consonant-sounds",
+      "target_id": "linking-sounds",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "linking-sounds",
+      "target_id": "reduction-elision",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "reduction-elision",
+      "target_id": "assimilation",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "vowel-sounds",
+      "target_id": "schwa-sound",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "phonics-rules",
+      "target_id": "vowel-sounds",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "phonics-rules",
+      "target_id": "consonant-sounds",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "vowel-sounds",
+      "target_id": "am-vs-br-pronunciation",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "consonant-sounds",
+      "target_id": "tongue-twisters",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "rhythm-timing",
+      "target_id": "pronunciation-practice",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "intonation-patterns",
+      "target_id": "pronunciation-practice",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "parts-of-speech",
+      "target_id": "nouns",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "parts-of-speech",
+      "target_id": "pronouns",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "parts-of-speech",
+      "target_id": "adjectives",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "parts-of-speech",
+      "target_id": "adverbs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "parts-of-speech",
+      "target_id": "prepositions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "parts-of-speech",
+      "target_id": "conjunctions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nouns",
+      "target_id": "articles",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nouns",
+      "target_id": "possessives",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "nouns",
+      "target_id": "quantifiers",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "nouns",
+      "target_id": "determiners",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pronouns",
+      "target_id": "possessives",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "basic-sentence-order",
+      "target_id": "be-verb",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "be-verb",
+      "target_id": "have-do-auxiliary",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "have-do-auxiliary",
+      "target_id": "modal-verbs",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "basic-sentence-order",
+      "target_id": "questions",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "basic-sentence-order",
+      "target_id": "negation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "basic-sentence-order",
+      "target_id": "imperative",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "basic-sentence-order",
+      "target_id": "exclamatory",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "be-verb",
+      "target_id": "there-be",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pronouns",
+      "target_id": "it-usage",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "nouns",
+      "target_id": "subject-verb-agreement",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "be-verb",
+      "target_id": "subject-verb-agreement",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "word-formation",
+      "target_id": "common-prefixes",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "word-formation",
+      "target_id": "common-suffixes",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "common-prefixes",
+      "target_id": "latin-greek-roots",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "common-suffixes",
+      "target_id": "latin-greek-roots",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "word-formation",
+      "target_id": "word-families",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "synonyms-antonyms",
+      "target_id": "collocations",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "collocations",
+      "target_id": "phrasal-verbs",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "context-clues",
+      "target_id": "vocabulary-strategies",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "register-formality",
+      "target_id": "academic-vocabulary",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "register-formality",
+      "target_id": "business-vocabulary",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "synonyms-antonyms",
+      "target_id": "confusing-words",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "synonyms-antonyms",
+      "target_id": "connotation-denotation",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "collocations",
+      "target_id": "word-usage-practice",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "academic-vocabulary",
+      "target_id": "technical-vocabulary",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "confusing-words",
+      "target_id": "false-friends",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "simple-present",
+      "target_id": "present-continuous",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "simple-present",
+      "target_id": "simple-past",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "simple-present",
+      "target_id": "simple-future",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "simple-past",
+      "target_id": "past-continuous",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "simple-past",
+      "target_id": "irregular-verbs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "simple-present",
+      "target_id": "stative-verbs",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "present-continuous",
+      "target_id": "present-perfect",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "simple-past",
+      "target_id": "present-perfect",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "present-perfect",
+      "target_id": "present-perfect-cont",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "simple-past",
+      "target_id": "past-perfect",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "past-continuous",
+      "target_id": "past-perfect-cont",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "past-perfect",
+      "target_id": "past-perfect-cont",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "simple-future",
+      "target_id": "future-continuous",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "simple-future",
+      "target_id": "future-perfect",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "present-perfect",
+      "target_id": "tense-timeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "past-perfect",
+      "target_id": "tense-timeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "simple-past",
+      "target_id": "passive-voice",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "present-perfect",
+      "target_id": "passive-voice",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "past-perfect",
+      "target_id": "reported-speech",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "tense-timeline",
+      "target_id": "tense-consistency",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "simple-past",
+      "target_id": "used-to-would",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "simple-present",
+      "target_id": "present-for-future",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "tense-timeline",
+      "target_id": "tense-review-exercise",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "five-basic-patterns",
+      "target_id": "compound-sentences",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "compound-sentences",
+      "target_id": "complex-sentences",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "complex-sentences",
+      "target_id": "noun-clauses",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "complex-sentences",
+      "target_id": "adjective-clauses",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "complex-sentences",
+      "target_id": "adverb-clauses",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adjective-clauses",
+      "target_id": "relative-pronouns",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "adjective-clauses",
+      "target_id": "restrictive-vs-non",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "five-basic-patterns",
+      "target_id": "infinitive-phrases",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "five-basic-patterns",
+      "target_id": "gerund-phrases",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "infinitive-phrases",
+      "target_id": "participle-phrases",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gerund-phrases",
+      "target_id": "participle-phrases",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "adverb-clauses",
+      "target_id": "conditional-sentences",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "conditional-sentences",
+      "target_id": "wish-subjunctive",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "complex-sentences",
+      "target_id": "inversion",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "five-basic-patterns",
+      "target_id": "emphasis-cleft",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "compound-sentences",
+      "target_id": "parallel-structure",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "compound-sentences",
+      "target_id": "sentence-combining",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "five-basic-patterns",
+      "target_id": "run-on-fragments",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "noun-clauses",
+      "target_id": "appositive-phrases",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "complex-sentences",
+      "target_id": "ellipsis-substitution",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "modal-verbs",
+      "target_id": "advanced-modals",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "five-basic-patterns",
+      "target_id": "causative-verbs",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "conditional-sentences",
+      "target_id": "subjunctive-mood",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "wish-subjunctive",
+      "target_id": "subjunctive-mood",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "conjunctions",
+      "target_id": "discourse-markers",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "reported-speech",
+      "target_id": "reported-speech-adv",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "articles",
+      "target_id": "articles-advanced",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adjectives",
+      "target_id": "noun-modifiers",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "adverbs",
+      "target_id": "adverb-placement",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "participle-phrases",
+      "target_id": "dangling-modifiers",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "discourse-markers",
+      "target_id": "hedging-language",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ellipsis-substitution",
+      "target_id": "ellipsis-advanced",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "inversion",
+      "target_id": "fronting-theme",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "conditional-sentences",
+      "target_id": "mixed-conditionals",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "noun-clauses",
+      "target_id": "nominal-relative",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "participle-phrases",
+      "target_id": "reduced-clauses",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "adverb-clauses",
+      "target_id": "concession-contrast",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "prepositions",
+      "target_id": "complex-prepositions",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "present-perfect-cont",
+      "target_id": "aspect-nuances",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "error-analysis",
+      "target_id": "grammar-in-context",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "skimming",
+      "target_id": "scanning",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "skimming",
+      "target_id": "intensive-reading",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "main-idea",
+      "target_id": "supporting-details",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "supporting-details",
+      "target_id": "inference",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "main-idea",
+      "target_id": "text-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "text-structure",
+      "target_id": "cohesion-coherence",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "inference",
+      "target_id": "authors-purpose",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "authors-purpose",
+      "target_id": "tone-mood",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "main-idea",
+      "target_id": "fact-vs-opinion",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "inference",
+      "target_id": "critical-reading",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "tone-mood",
+      "target_id": "critical-reading",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "text-structure",
+      "target_id": "narrative-reading",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "text-structure",
+      "target_id": "expository-reading",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "critical-reading",
+      "target_id": "argumentative-reading",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "skimming",
+      "target_id": "news-media-reading",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "cohesion-coherence",
+      "target_id": "academic-reading",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "skimming",
+      "target_id": "reading-speed",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "main-idea",
+      "target_id": "summarizing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "expository-reading",
+      "target_id": "graphic-information",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "sentence-writing",
+      "target_id": "paragraph-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "paragraph-structure",
+      "target_id": "topic-sentences",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "paragraph-structure",
+      "target_id": "coherence-transitions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "coherence-transitions",
+      "target_id": "essay-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "essay-structure",
+      "target_id": "narrative-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "essay-structure",
+      "target_id": "descriptive-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "essay-structure",
+      "target_id": "expository-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "essay-structure",
+      "target_id": "argumentative-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sentence-writing",
+      "target_id": "email-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "summarizing",
+      "target_id": "summary-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "summary-writing",
+      "target_id": "paraphrasing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sentence-writing",
+      "target_id": "punctuation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "paragraph-structure",
+      "target_id": "sentence-variety",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sentence-variety",
+      "target_id": "word-choice",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "essay-structure",
+      "target_id": "editing-proofreading",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "argumentative-writing",
+      "target_id": "academic-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "academic-writing",
+      "target_id": "citation-referencing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "descriptive-writing",
+      "target_id": "creative-writing",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "expository-writing",
+      "target_id": "report-writing",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "critical-reading",
+      "target_id": "review-writing",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "essay-structure",
+      "target_id": "writing-process",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "self-introduction",
+      "target_id": "daily-conversations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "daily-conversations",
+      "target_id": "asking-directions",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "daily-conversations",
+      "target_id": "expressing-opinions",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "daily-conversations",
+      "target_id": "describing-things",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "describing-things",
+      "target_id": "storytelling-oral",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "expressing-opinions",
+      "target_id": "discussion-skills",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "discussion-skills",
+      "target_id": "presentation-skills",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "presentation-skills",
+      "target_id": "debate-skills",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "daily-conversations",
+      "target_id": "telephone-english",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "presentation-skills",
+      "target_id": "interview-english",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "daily-conversations",
+      "target_id": "fillers-hesitation",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "discussion-skills",
+      "target_id": "turn-taking",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "expressing-opinions",
+      "target_id": "pragmatic-competence",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "debate-skills",
+      "target_id": "negotiation-english",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "daily-conversations",
+      "target_id": "fluency-strategies",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "fluency-strategies",
+      "target_id": "accuracy-practice",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pronunciation-practice",
+      "target_id": "shadowing-technique",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "daily-conversations",
+      "target_id": "small-talk",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pragmatic-competence",
+      "target_id": "cross-cultural-comm",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "common-idioms",
+      "target_id": "proverbs",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "common-idioms",
+      "target_id": "body-language-idioms",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "common-idioms",
+      "target_id": "color-idioms",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "common-idioms",
+      "target_id": "food-idioms",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "common-idioms",
+      "target_id": "slang-informal",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "british-vs-american",
+      "target_id": "am-vs-br-pronunciation",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "slang-informal",
+      "target_id": "english-humor",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "politeness-norms",
+      "target_id": "cross-cultural-comm",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "holiday-culture",
+      "target_id": "british-vs-american",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "english-literature",
+      "target_id": "figurative-language",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "figurative-language",
+      "target_id": "euphemisms",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "slang-informal",
+      "target_id": "internet-english",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "latin-greek-roots",
+      "target_id": "english-word-origins",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "british-vs-american",
+      "target_id": "global-english",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "common-idioms",
+      "target_id": "idiom-usage-practice",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "media-entertainment",
+      "target_id": "slang-informal",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "ipa-basics",
+      "target_id": "parts-of-speech",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "word-stress",
+      "target_id": "vocabulary-strategies",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "parts-of-speech",
+      "target_id": "word-formation",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "nouns",
+      "target_id": "word-families",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "modal-verbs",
+      "target_id": "simple-present",
+      "relation_type": "prerequisite",
+      "strength": 0.5
+    },
+    {
+      "source_id": "have-do-auxiliary",
+      "target_id": "present-perfect",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "be-verb",
+      "target_id": "passive-voice",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "subject-verb-agreement",
+      "target_id": "tense-consistency",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "conjunctions",
+      "target_id": "compound-sentences",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "prepositions",
+      "target_id": "infinitive-phrases",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "collocations",
+      "target_id": "sentence-writing",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "phrasal-verbs",
+      "target_id": "daily-conversations",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "register-formality",
+      "target_id": "word-choice",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "register-formality",
+      "target_id": "hedging-language",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "discourse-markers",
+      "target_id": "coherence-transitions",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "discourse-markers",
+      "target_id": "essay-structure",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "text-structure",
+      "target_id": "essay-structure",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "main-idea",
+      "target_id": "topic-sentences",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "inference",
+      "target_id": "pragmatic-competence",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "critical-reading",
+      "target_id": "argumentative-writing",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "cohesion-coherence",
+      "target_id": "coherence-transitions",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sentence-variety",
+      "target_id": "grammar-in-context",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "error-analysis",
+      "target_id": "editing-proofreading",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "intonation-patterns",
+      "target_id": "expressing-opinions",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "thought-groups",
+      "target_id": "presentation-skills",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "common-idioms",
+      "target_id": "phrasal-verbs",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "figurative-language",
+      "target_id": "creative-writing",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "politeness-norms",
+      "target_id": "email-writing",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "euphemisms",
+      "target_id": "pragmatic-competence",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "academic-vocabulary",
+      "target_id": "academic-writing",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "academic-vocabulary",
+      "target_id": "academic-reading",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "business-vocabulary",
+      "target_id": "interview-english",
+      "relation_type": "related",
+      "strength": 0.4
+    },
+    {
+      "source_id": "business-vocabulary",
+      "target_id": "negotiation-english",
+      "relation_type": "related",
+      "strength": 0.4
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-03-19T08:34:56.906169+00:00",
+    "total_concepts": 200,
+    "total_edges": 229,
+    "total_milestones": 27,
+    "subdomain_counts": {
+      "advanced-grammar": 20,
+      "basic-grammar": 22,
+      "idioms-culture": 18,
+      "phonetics": 20,
+      "reading": 20,
+      "sentence-patterns": 20,
+      "speaking": 20,
+      "tenses": 20,
+      "vocabulary": 18,
+      "writing-en": 22
+    },
+    "difficulty_distribution": {
+      "1": 3,
+      "2": 22,
+      "3": 54,
+      "4": 59,
+      "5": 47,
+      "6": 15
+    },
+    "last_updated": "2026-03-19T08:34:56.906169+00:00"
+  }
+}

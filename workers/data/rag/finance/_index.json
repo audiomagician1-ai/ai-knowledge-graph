@@ -1,0 +1,2418 @@
+{
+  "documents": [
+    {
+      "id": "personal-finance-overview",
+      "name": "个人理财概述",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/personal-finance/personal-finance-overview.md",
+      "exists": true,
+      "char_count": 534
+    },
+    {
+      "id": "income-management",
+      "name": "收入管理",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/personal-finance/income-management.md",
+      "exists": true,
+      "char_count": 527
+    },
+    {
+      "id": "budgeting",
+      "name": "预算编制",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/personal-finance/budgeting.md",
+      "exists": true,
+      "char_count": 532
+    },
+    {
+      "id": "saving-strategies",
+      "name": "储蓄策略",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/personal-finance/saving-strategies.md",
+      "exists": true,
+      "char_count": 528
+    },
+    {
+      "id": "debt-management",
+      "name": "债务管理",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/personal-finance/debt-management.md",
+      "exists": true,
+      "char_count": 529
+    },
+    {
+      "id": "credit-score",
+      "name": "信用评分",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "信用"
+      ],
+      "file": "finance/personal-finance/credit-score.md",
+      "exists": true,
+      "char_count": 528
+    },
+    {
+      "id": "tax-basics",
+      "name": "税务基础",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "税务"
+      ],
+      "file": "finance/personal-finance/tax-basics.md",
+      "exists": true,
+      "char_count": 529
+    },
+    {
+      "id": "insurance-basics",
+      "name": "保险基础",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "保险"
+      ],
+      "file": "finance/personal-finance/insurance-basics.md",
+      "exists": true,
+      "char_count": 527
+    },
+    {
+      "id": "retirement-planning",
+      "name": "退休规划",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "长期"
+      ],
+      "file": "finance/personal-finance/retirement-planning.md",
+      "exists": true,
+      "char_count": 532
+    },
+    {
+      "id": "estate-planning",
+      "name": "遗产规划",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "finance/personal-finance/estate-planning.md",
+      "exists": true,
+      "char_count": 524
+    },
+    {
+      "id": "financial-goal-setting",
+      "name": "财务目标设定",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "规划"
+      ],
+      "file": "finance/personal-finance/financial-goal-setting.md",
+      "exists": true,
+      "char_count": 534
+    },
+    {
+      "id": "emergency-fund",
+      "name": "应急基金",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/personal-finance/emergency-fund.md",
+      "exists": true,
+      "char_count": 526
+    },
+    {
+      "id": "consumer-psychology",
+      "name": "消费心理学",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "finance/personal-finance/consumer-psychology.md",
+      "exists": true,
+      "char_count": 532
+    },
+    {
+      "id": "mortgage-basics",
+      "name": "房贷基础",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "贷款"
+      ],
+      "file": "finance/personal-finance/mortgage-basics.md",
+      "exists": true,
+      "char_count": 533
+    },
+    {
+      "id": "education-funding",
+      "name": "教育金规划",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "规划"
+      ],
+      "file": "finance/personal-finance/education-funding.md",
+      "exists": true,
+      "char_count": 532
+    },
+    {
+      "id": "inflation-hedging",
+      "name": "通胀对冲",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "宏观"
+      ],
+      "file": "finance/personal-finance/inflation-hedging.md",
+      "exists": true,
+      "char_count": 528
+    },
+    {
+      "id": "financial-statements-personal",
+      "name": "个人财务报表",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/personal-finance/financial-statements-personal.md",
+      "exists": true,
+      "char_count": 533
+    },
+    {
+      "id": "compound-interest",
+      "name": "复利效应",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/personal-finance/compound-interest.md",
+      "exists": true,
+      "char_count": 529
+    },
+    {
+      "id": "financial-independence",
+      "name": "财务自由",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "目标"
+      ],
+      "file": "finance/personal-finance/financial-independence.md",
+      "exists": true,
+      "char_count": 531
+    },
+    {
+      "id": "family-financial-planning",
+      "name": "家庭财务规划",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "subdomain_name": "个人理财",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "规划"
+      ],
+      "file": "finance/personal-finance/family-financial-planning.md",
+      "exists": true,
+      "char_count": 532
+    },
+    {
+      "id": "investment-overview",
+      "name": "投资概述",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/investment-basics/investment-overview.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "risk-return-tradeoff",
+      "name": "风险收益权衡",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/investment-basics/risk-return-tradeoff.md",
+      "exists": true,
+      "char_count": 514
+    },
+    {
+      "id": "time-value-of-money",
+      "name": "货币时间价值",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/investment-basics/time-value-of-money.md",
+      "exists": true,
+      "char_count": 512
+    },
+    {
+      "id": "asset-classes",
+      "name": "资产类别",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/investment-basics/asset-classes.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "diversification",
+      "name": "分散投资",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/investment-basics/diversification.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "asset-allocation",
+      "name": "资产配置",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/investment-basics/asset-allocation.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "dollar-cost-averaging",
+      "name": "定投策略",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/investment-basics/dollar-cost-averaging.md",
+      "exists": true,
+      "char_count": 509
+    },
+    {
+      "id": "market-efficiency",
+      "name": "市场有效性",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "finance/investment-basics/market-efficiency.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "behavioral-finance",
+      "name": "行为金融学",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "finance/investment-basics/behavioral-finance.md",
+      "exists": true,
+      "char_count": 514
+    },
+    {
+      "id": "investment-vehicles",
+      "name": "投资工具",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/investment-basics/investment-vehicles.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "index-investing",
+      "name": "指数投资",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/investment-basics/index-investing.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "portfolio-theory",
+      "name": "投资组合理论",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "finance/investment-basics/portfolio-theory.md",
+      "exists": true,
+      "char_count": 514
+    },
+    {
+      "id": "capm-model",
+      "name": "CAPM模型",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模型"
+      ],
+      "file": "finance/investment-basics/capm-model.md",
+      "exists": true,
+      "char_count": 517
+    },
+    {
+      "id": "apt-model",
+      "name": "套利定价理论",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "模型"
+      ],
+      "file": "finance/investment-basics/apt-model.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "investment-psychology",
+      "name": "投资心理",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "finance/investment-basics/investment-psychology.md",
+      "exists": true,
+      "char_count": 507
+    },
+    {
+      "id": "investment-horizon",
+      "name": "投资期限",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/investment-basics/investment-horizon.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "liquidity-concept",
+      "name": "流动性概念",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/investment-basics/liquidity-concept.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "benchmark-index",
+      "name": "基准指数",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/investment-basics/benchmark-index.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "fee-impact",
+      "name": "费用影响",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实务"
+      ],
+      "file": "finance/investment-basics/fee-impact.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "tax-efficient-investing",
+      "name": "税务优化投资",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "税务"
+      ],
+      "file": "finance/investment-basics/tax-efficient-investing.md",
+      "exists": true,
+      "char_count": 515
+    },
+    {
+      "id": "stock-market-overview",
+      "name": "股票市场概述",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/stock-market/stock-market-overview.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "stock-valuation",
+      "name": "股票估值",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/stock-market/stock-valuation.md",
+      "exists": true,
+      "char_count": 488
+    },
+    {
+      "id": "pe-ratio",
+      "name": "市盈率分析",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "指标"
+      ],
+      "file": "finance/stock-market/pe-ratio.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "pb-ratio",
+      "name": "市净率分析",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "指标"
+      ],
+      "file": "finance/stock-market/pb-ratio.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "dcf-valuation",
+      "name": "现金流折现",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "模型"
+      ],
+      "file": "finance/stock-market/dcf-valuation.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "financial-statement-analysis",
+      "name": "财务报表分析",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "分析"
+      ],
+      "file": "finance/stock-market/financial-statement-analysis.md",
+      "exists": true,
+      "char_count": 500
+    },
+    {
+      "id": "ratio-analysis",
+      "name": "比率分析",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "finance/stock-market/ratio-analysis.md",
+      "exists": true,
+      "char_count": 490
+    },
+    {
+      "id": "technical-analysis-basics",
+      "name": "技术分析基础",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "finance/stock-market/technical-analysis-basics.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "chart-patterns",
+      "name": "图表形态",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "finance/stock-market/chart-patterns.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "moving-averages",
+      "name": "移动平均线",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "指标"
+      ],
+      "file": "finance/stock-market/moving-averages.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "macd-indicator",
+      "name": "MACD指标",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "指标"
+      ],
+      "file": "finance/stock-market/macd-indicator.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "value-investing",
+      "name": "价值投资",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/stock-market/value-investing.md",
+      "exists": true,
+      "char_count": 489
+    },
+    {
+      "id": "growth-investing",
+      "name": "成长投资",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/stock-market/growth-investing.md",
+      "exists": true,
+      "char_count": 490
+    },
+    {
+      "id": "dividend-investing",
+      "name": "股息投资",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/stock-market/dividend-investing.md",
+      "exists": true,
+      "char_count": 487
+    },
+    {
+      "id": "sector-analysis",
+      "name": "行业分析",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "finance/stock-market/sector-analysis.md",
+      "exists": true,
+      "char_count": 488
+    },
+    {
+      "id": "ipo-analysis",
+      "name": "IPO分析",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实务"
+      ],
+      "file": "finance/stock-market/ipo-analysis.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "market-sentiment",
+      "name": "市场情绪",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "finance/stock-market/market-sentiment.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "short-selling",
+      "name": "做空机制",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "机制"
+      ],
+      "file": "finance/stock-market/short-selling.md",
+      "exists": true,
+      "char_count": 487
+    },
+    {
+      "id": "stock-screening",
+      "name": "股票筛选",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/stock-market/stock-screening.md",
+      "exists": true,
+      "char_count": 488
+    },
+    {
+      "id": "earnings-analysis",
+      "name": "盈利分析",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "subdomain_name": "股票市场",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "finance/stock-market/earnings-analysis.md",
+      "exists": true,
+      "char_count": 488
+    },
+    {
+      "id": "fixed-income-overview",
+      "name": "固定收益概述",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/fixed-income/fixed-income-overview.md",
+      "exists": true,
+      "char_count": 509
+    },
+    {
+      "id": "bond-basics",
+      "name": "债券基础",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/fixed-income/bond-basics.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "yield-curve",
+      "name": "收益率曲线",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/fixed-income/yield-curve.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "bond-pricing",
+      "name": "债券定价",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/fixed-income/bond-pricing.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "duration-convexity",
+      "name": "久期与凸度",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风险"
+      ],
+      "file": "finance/fixed-income/duration-convexity.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "government-bonds",
+      "name": "国债",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品种"
+      ],
+      "file": "finance/fixed-income/government-bonds.md",
+      "exists": true,
+      "char_count": 498
+    },
+    {
+      "id": "corporate-bonds",
+      "name": "公司债",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品种"
+      ],
+      "file": "finance/fixed-income/corporate-bonds.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "municipal-bonds",
+      "name": "地方政府债",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品种"
+      ],
+      "file": "finance/fixed-income/municipal-bonds.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "bond-rating",
+      "name": "债券评级",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "信用"
+      ],
+      "file": "finance/fixed-income/bond-rating.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "credit-spread",
+      "name": "信用利差",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风险"
+      ],
+      "file": "finance/fixed-income/credit-spread.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "interest-rate-risk",
+      "name": "利率风险",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风险"
+      ],
+      "file": "finance/fixed-income/interest-rate-risk.md",
+      "exists": true,
+      "char_count": 501
+    },
+    {
+      "id": "inflation-linked-bonds",
+      "name": "通胀挂钩债券",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "品种"
+      ],
+      "file": "finance/fixed-income/inflation-linked-bonds.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "convertible-bonds",
+      "name": "可转换债券",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "品种"
+      ],
+      "file": "finance/fixed-income/convertible-bonds.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "bond-etf",
+      "name": "债券ETF",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/fixed-income/bond-etf.md",
+      "exists": true,
+      "char_count": 509
+    },
+    {
+      "id": "repo-market",
+      "name": "回购市场",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "市场"
+      ],
+      "file": "finance/fixed-income/repo-market.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "money-market",
+      "name": "货币市场",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "市场"
+      ],
+      "file": "finance/fixed-income/money-market.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "abs-mbs",
+      "name": "资产证券化",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "结构化"
+      ],
+      "file": "finance/fixed-income/abs-mbs.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "high-yield-bonds",
+      "name": "高收益债券",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "品种"
+      ],
+      "file": "finance/fixed-income/high-yield-bonds.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "bond-ladder",
+      "name": "债券阶梯策略",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/fixed-income/bond-ladder.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "fixed-income-portfolio",
+      "name": "固收组合管理",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "subdomain_name": "固定收益",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "finance/fixed-income/fixed-income-portfolio.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "corporate-finance-overview",
+      "name": "公司金融概述",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/corporate-finance/corporate-finance-overview.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "capital-budgeting",
+      "name": "资本预算",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/corporate-finance/capital-budgeting.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "npv-analysis",
+      "name": "净现值分析",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/corporate-finance/npv-analysis.md",
+      "exists": true,
+      "char_count": 500
+    },
+    {
+      "id": "irr-method",
+      "name": "内部收益率",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/corporate-finance/irr-method.md",
+      "exists": true,
+      "char_count": 500
+    },
+    {
+      "id": "cost-of-capital",
+      "name": "资本成本",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "finance/corporate-finance/cost-of-capital.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "capital-structure",
+      "name": "资本结构",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "理论"
+      ],
+      "file": "finance/corporate-finance/capital-structure.md",
+      "exists": true,
+      "char_count": 495
+    },
+    {
+      "id": "dividend-policy",
+      "name": "股利政策",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分配"
+      ],
+      "file": "finance/corporate-finance/dividend-policy.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "working-capital",
+      "name": "营运资本管理",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "运营"
+      ],
+      "file": "finance/corporate-finance/working-capital.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "mergers-acquisitions",
+      "name": "并购分析",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "finance/corporate-finance/mergers-acquisitions.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "leveraged-buyout",
+      "name": "杠杆收购",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "finance/corporate-finance/leveraged-buyout.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "ipo-process",
+      "name": "IPO流程",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实务"
+      ],
+      "file": "finance/corporate-finance/ipo-process.md",
+      "exists": true,
+      "char_count": 498
+    },
+    {
+      "id": "equity-financing",
+      "name": "股权融资",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "融资"
+      ],
+      "file": "finance/corporate-finance/equity-financing.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "debt-financing",
+      "name": "债务融资",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "融资"
+      ],
+      "file": "finance/corporate-finance/debt-financing.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "financial-modeling",
+      "name": "财务建模",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技能"
+      ],
+      "file": "finance/corporate-finance/financial-modeling.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "corporate-governance",
+      "name": "公司治理",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "治理"
+      ],
+      "file": "finance/corporate-finance/corporate-governance.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "esg-investing",
+      "name": "ESG投资",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "finance/corporate-finance/esg-investing.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "venture-capital",
+      "name": "风险投资",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "创投"
+      ],
+      "file": "finance/corporate-finance/venture-capital.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "private-equity",
+      "name": "私募股权",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "创投"
+      ],
+      "file": "finance/corporate-finance/private-equity.md",
+      "exists": true,
+      "char_count": 495
+    },
+    {
+      "id": "real-options",
+      "name": "实物期权",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "finance/corporate-finance/real-options.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "financial-distress",
+      "name": "财务困境",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "subdomain_name": "公司金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风险"
+      ],
+      "file": "finance/corporate-finance/financial-distress.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "risk-management-overview",
+      "name": "风险管理概述",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/risk-management/risk-management-overview.md",
+      "exists": true,
+      "char_count": 488
+    },
+    {
+      "id": "market-risk",
+      "name": "市场风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类别"
+      ],
+      "file": "finance/risk-management/market-risk.md",
+      "exists": true,
+      "char_count": 482
+    },
+    {
+      "id": "credit-risk",
+      "name": "信用风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类别"
+      ],
+      "file": "finance/risk-management/credit-risk.md",
+      "exists": true,
+      "char_count": 484
+    },
+    {
+      "id": "operational-risk",
+      "name": "操作风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类别"
+      ],
+      "file": "finance/risk-management/operational-risk.md",
+      "exists": true,
+      "char_count": 486
+    },
+    {
+      "id": "var-method",
+      "name": "VaR方法",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/risk-management/var-method.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "stress-testing",
+      "name": "压力测试",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/risk-management/stress-testing.md",
+      "exists": true,
+      "char_count": 482
+    },
+    {
+      "id": "derivatives-overview",
+      "name": "衍生品概述",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/risk-management/derivatives-overview.md",
+      "exists": true,
+      "char_count": 485
+    },
+    {
+      "id": "options-basics",
+      "name": "期权基础",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "衍生品"
+      ],
+      "file": "finance/risk-management/options-basics.md",
+      "exists": true,
+      "char_count": 485
+    },
+    {
+      "id": "options-strategies",
+      "name": "期权策略",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "衍生品"
+      ],
+      "file": "finance/risk-management/options-strategies.md",
+      "exists": true,
+      "char_count": 483
+    },
+    {
+      "id": "futures-basics",
+      "name": "期货基础",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "衍生品"
+      ],
+      "file": "finance/risk-management/futures-basics.md",
+      "exists": true,
+      "char_count": 484
+    },
+    {
+      "id": "hedging-strategies",
+      "name": "对冲策略",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/risk-management/hedging-strategies.md",
+      "exists": true,
+      "char_count": 481
+    },
+    {
+      "id": "black-scholes-model",
+      "name": "Black-Scholes模型",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "模型"
+      ],
+      "file": "finance/risk-management/black-scholes-model.md",
+      "exists": true,
+      "char_count": 517
+    },
+    {
+      "id": "greeks",
+      "name": "希腊字母",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "衍生品"
+      ],
+      "file": "finance/risk-management/greeks.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "swap-contracts",
+      "name": "互换合约",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "衍生品"
+      ],
+      "file": "finance/risk-management/swap-contracts.md",
+      "exists": true,
+      "char_count": 482
+    },
+    {
+      "id": "currency-risk",
+      "name": "汇率风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类别"
+      ],
+      "file": "finance/risk-management/currency-risk.md",
+      "exists": true,
+      "char_count": 483
+    },
+    {
+      "id": "liquidity-risk",
+      "name": "流动性风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类别"
+      ],
+      "file": "finance/risk-management/liquidity-risk.md",
+      "exists": true,
+      "char_count": 485
+    },
+    {
+      "id": "risk-budgeting",
+      "name": "风险预算",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "finance/risk-management/risk-budgeting.md",
+      "exists": true,
+      "char_count": 480
+    },
+    {
+      "id": "insurance-products",
+      "name": "保险产品",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "产品"
+      ],
+      "file": "finance/risk-management/insurance-products.md",
+      "exists": true,
+      "char_count": 484
+    },
+    {
+      "id": "regulatory-framework",
+      "name": "金融监管",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "监管"
+      ],
+      "file": "finance/risk-management/regulatory-framework.md",
+      "exists": true,
+      "char_count": 482
+    },
+    {
+      "id": "systemic-risk",
+      "name": "系统性风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "subdomain_name": "风险管理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "宏观"
+      ],
+      "file": "finance/risk-management/systemic-risk.md",
+      "exists": true,
+      "char_count": 487
+    },
+    {
+      "id": "fintech-overview",
+      "name": "金融科技概述",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/fintech/fintech-overview.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "mobile-payment",
+      "name": "移动支付",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "支付"
+      ],
+      "file": "finance/fintech/mobile-payment.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "digital-banking",
+      "name": "数字银行",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "银行"
+      ],
+      "file": "finance/fintech/digital-banking.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "robo-advisor",
+      "name": "智能投顾",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "投资"
+      ],
+      "file": "finance/fintech/robo-advisor.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "p2p-lending",
+      "name": "P2P借贷",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "借贷"
+      ],
+      "file": "finance/fintech/p2p-lending.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "blockchain-basics",
+      "name": "区块链基础",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "区块链"
+      ],
+      "file": "finance/fintech/blockchain-basics.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "cryptocurrency",
+      "name": "加密货币",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "区块链"
+      ],
+      "file": "finance/fintech/cryptocurrency.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "defi",
+      "name": "去中心化金融",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "区块链"
+      ],
+      "file": "finance/fintech/defi.md",
+      "exists": true,
+      "char_count": 512
+    },
+    {
+      "id": "stablecoin",
+      "name": "稳定币",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "区块链"
+      ],
+      "file": "finance/fintech/stablecoin.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "regtech",
+      "name": "监管科技",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "监管"
+      ],
+      "file": "finance/fintech/regtech.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "insurtech",
+      "name": "保险科技",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "保险"
+      ],
+      "file": "finance/fintech/insurtech.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "open-banking",
+      "name": "开放银行",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "银行"
+      ],
+      "file": "finance/fintech/open-banking.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "credit-scoring-ai",
+      "name": "AI信用评分",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "finance/fintech/credit-scoring-ai.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "nft-basics",
+      "name": "NFT基础",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "区块链"
+      ],
+      "file": "finance/fintech/nft-basics.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "smart-contracts",
+      "name": "智能合约",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "区块链"
+      ],
+      "file": "finance/fintech/smart-contracts.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "embedded-finance",
+      "name": "嵌入式金融",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "趋势"
+      ],
+      "file": "finance/fintech/embedded-finance.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "wealth-management-tech",
+      "name": "财富管理科技",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "投资"
+      ],
+      "file": "finance/fintech/wealth-management-tech.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "digital-currency",
+      "name": "数字货币CBDC",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "货币"
+      ],
+      "file": "finance/fintech/digital-currency.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "cloud-banking",
+      "name": "云原生银行",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "finance/fintech/cloud-banking.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "financial-data-analytics",
+      "name": "金融数据分析",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "subdomain_name": "金融科技",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数据"
+      ],
+      "file": "finance/fintech/financial-data-analytics.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "quant-finance-overview",
+      "name": "量化金融概述",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "finance/quantitative-finance/quant-finance-overview.md",
+      "exists": true,
+      "char_count": 478
+    },
+    {
+      "id": "statistical-arbitrage",
+      "name": "统计套利",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/quantitative-finance/statistical-arbitrage.md",
+      "exists": true,
+      "char_count": 469
+    },
+    {
+      "id": "factor-models",
+      "name": "因子模型",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "模型"
+      ],
+      "file": "finance/quantitative-finance/factor-models.md",
+      "exists": true,
+      "char_count": 479
+    },
+    {
+      "id": "momentum-strategy",
+      "name": "动量策略",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/quantitative-finance/momentum-strategy.md",
+      "exists": true,
+      "char_count": 471
+    },
+    {
+      "id": "mean-reversion",
+      "name": "均值回归",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "finance/quantitative-finance/mean-reversion.md",
+      "exists": true,
+      "char_count": 471
+    },
+    {
+      "id": "high-frequency-trading",
+      "name": "高频交易",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "finance/quantitative-finance/high-frequency-trading.md",
+      "exists": true,
+      "char_count": 473
+    },
+    {
+      "id": "algorithmic-trading",
+      "name": "算法交易",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "技术"
+      ],
+      "file": "finance/quantitative-finance/algorithmic-trading.md",
+      "exists": true,
+      "char_count": 476
+    },
+    {
+      "id": "backtesting",
+      "name": "回测框架",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/quantitative-finance/backtesting.md",
+      "exists": true,
+      "char_count": 474
+    },
+    {
+      "id": "monte-carlo-simulation",
+      "name": "蒙特卡洛模拟",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "finance/quantitative-finance/monte-carlo-simulation.md",
+      "exists": true,
+      "char_count": 479
+    },
+    {
+      "id": "time-series-analysis",
+      "name": "时间序列分析",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "统计"
+      ],
+      "file": "finance/quantitative-finance/time-series-analysis.md",
+      "exists": true,
+      "char_count": 481
+    },
+    {
+      "id": "machine-learning-finance",
+      "name": "机器学习与金融",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "finance/quantitative-finance/machine-learning-finance.md",
+      "exists": true,
+      "char_count": 489
+    },
+    {
+      "id": "portfolio-optimization",
+      "name": "组合优化",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "finance/quantitative-finance/portfolio-optimization.md",
+      "exists": true,
+      "char_count": 483
+    },
+    {
+      "id": "risk-factor-analysis",
+      "name": "风险因子分析",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风险"
+      ],
+      "file": "finance/quantitative-finance/risk-factor-analysis.md",
+      "exists": true,
+      "char_count": 475
+    },
+    {
+      "id": "execution-cost",
+      "name": "交易执行成本",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实务"
+      ],
+      "file": "finance/quantitative-finance/execution-cost.md",
+      "exists": true,
+      "char_count": 475
+    },
+    {
+      "id": "quant-programming",
+      "name": "量化编程",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技能"
+      ],
+      "file": "finance/quantitative-finance/quant-programming.md",
+      "exists": true,
+      "char_count": 476
+    },
+    {
+      "id": "stochastic-calculus",
+      "name": "随机微积分",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "finance/quantitative-finance/stochastic-calculus.md",
+      "exists": true,
+      "char_count": 478
+    },
+    {
+      "id": "volatility-modeling",
+      "name": "波动率建模",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "模型"
+      ],
+      "file": "finance/quantitative-finance/volatility-modeling.md",
+      "exists": true,
+      "char_count": 478
+    },
+    {
+      "id": "market-microstructure",
+      "name": "市场微结构",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "finance/quantitative-finance/market-microstructure.md",
+      "exists": true,
+      "char_count": 474
+    },
+    {
+      "id": "sentiment-analysis-finance",
+      "name": "金融情绪分析",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "finance/quantitative-finance/sentiment-analysis-finance.md",
+      "exists": true,
+      "char_count": 480
+    },
+    {
+      "id": "alternative-data",
+      "name": "另类数据",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "subdomain_name": "量化金融",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "finance/quantitative-finance/alternative-data.md",
+      "exists": true,
+      "char_count": 477
+    }
+  ],
+  "stats": {
+    "total_docs": 160,
+    "total_chars": 80093,
+    "by_subdomain": {
+      "personal-finance": 20,
+      "investment-basics": 20,
+      "stock-market": 20,
+      "fixed-income": 20,
+      "corporate-finance": 20,
+      "risk-management": 20,
+      "fintech": 20,
+      "quantitative-finance": 20
+    }
+  }
+}

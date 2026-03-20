@@ -1,0 +1,4377 @@
+{
+  "domain": {
+    "id": "physics",
+    "name": "物理",
+    "description": "从经典力学到量子力学的系统知识体系",
+    "icon": "🟢",
+    "color": "#22c55e"
+  },
+  "subdomains": [
+    {
+      "id": "classical-mechanics",
+      "name": "经典力学",
+      "order": 1
+    },
+    {
+      "id": "thermodynamics",
+      "name": "热力学",
+      "order": 2
+    },
+    {
+      "id": "waves-and-optics",
+      "name": "波动与光学",
+      "order": 3
+    },
+    {
+      "id": "electromagnetism",
+      "name": "电磁学",
+      "order": 4
+    },
+    {
+      "id": "modern-physics",
+      "name": "近代物理",
+      "order": 5
+    },
+    {
+      "id": "quantum-mechanics",
+      "name": "量子力学",
+      "order": 6
+    },
+    {
+      "id": "nuclear-physics",
+      "name": "核物理",
+      "order": 7
+    },
+    {
+      "id": "astrophysics",
+      "name": "天体物理",
+      "order": 8
+    },
+    {
+      "id": "fluid-mechanics",
+      "name": "流体力学",
+      "order": 9
+    },
+    {
+      "id": "solid-state-physics",
+      "name": "固态物理",
+      "order": 10
+    }
+  ],
+  "concepts": [
+    {
+      "id": "physical-quantities",
+      "name": "物理量与单位",
+      "description": "SI单位制、量纲分析、有效数字",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "vectors-in-physics",
+      "name": "物理中的向量",
+      "description": "向量分解、合成、标量积与矢量积在物理中的应用",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "kinematics-1d",
+      "name": "一维运动学",
+      "description": "位移、速度、加速度、匀变速运动方程",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "kinematics-2d",
+      "name": "二维运动学",
+      "description": "抛体运动、圆周运动的运动学描述",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "newtons-first-law",
+      "name": "牛顿第一定律",
+      "description": "惯性、惯性参考系的概念",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "newtons-second-law",
+      "name": "牛顿第二定律",
+      "description": "F=ma、力的叠加原理、自由体图",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "newtons-third-law",
+      "name": "牛顿第三定律",
+      "description": "作用力与反作用力、力的相互性",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "friction",
+      "name": "摩擦力",
+      "description": "静摩擦、动摩擦、摩擦系数",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "circular-motion",
+      "name": "圆周运动",
+      "description": "向心加速度、向心力、匀速与非匀速圆周运动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "work-energy",
+      "name": "功与能",
+      "description": "功的定义、动能定理、功率",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "potential-energy",
+      "name": "势能",
+      "description": "重力势能、弹性势能、保守力与势能函数",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "energy-conservation",
+      "name": "能量守恒",
+      "description": "机械能守恒定律、能量转化与耗散",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "momentum",
+      "name": "动量与冲量",
+      "description": "动量定义、冲量-动量定理",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "momentum-conservation",
+      "name": "动量守恒",
+      "description": "动量守恒定律、碰撞问题",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "collisions",
+      "name": "碰撞",
+      "description": "弹性碰撞、完全非弹性碰撞、能量损失",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "rotational-kinematics",
+      "name": "转动运动学",
+      "description": "角位移、角速度、角加速度、匀角加速运动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "torque",
+      "name": "力矩",
+      "description": "力矩的定义、力臂、合力矩",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "rotational-dynamics",
+      "name": "转动动力学",
+      "description": "转动惯量、τ=Iα、平行轴定理",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "angular-momentum",
+      "name": "角动量",
+      "description": "角动量定义、角动量守恒定律",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "static-equilibrium",
+      "name": "静力学平衡",
+      "description": "力平衡与力矩平衡条件、重心",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "gravitation",
+      "name": "万有引力",
+      "description": "万有引力定律、引力势能、开普勒定律",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "orbital-mechanics",
+      "name": "轨道力学",
+      "description": "圆轨道、椭圆轨道、逃逸速度、宇宙速度",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "simple-harmonic-motion",
+      "name": "简谐运动",
+      "description": "弹簧振子、单摆、周期与频率、相位",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "damped-driven-oscillation",
+      "name": "阻尼与受迫振动",
+      "description": "阻尼振动、共振现象、品质因子",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "non-inertial-frames",
+      "name": "非惯性系",
+      "description": "惯性力、科里奥利力、离心力",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "projectile-motion",
+      "name": "抛体运动",
+      "description": "斜抛运动分析、射程与最大高度",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "elastic-force",
+      "name": "弹性力",
+      "description": "胡克定律、弹簧系统、弹性势能",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "center-of-mass",
+      "name": "质心",
+      "description": "质心定义、质心运动定理、质心坐标",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "rigid-body-motion",
+      "name": "刚体运动",
+      "description": "平动与转动、定轴转动、滚动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "coupled-oscillations",
+      "name": "耦合振动",
+      "description": "耦合振子、简正模、节拍",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "mechanical-waves-medium",
+      "name": "介质中的机械波",
+      "description": "弦上的波、棒中的纵波、波的能量传输",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "lagrangian-mechanics",
+      "name": "拉格朗日力学初步",
+      "description": "广义坐标、拉格朗日方程、变分原理",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "hamiltonian-mechanics",
+      "name": "哈密顿力学初步",
+      "description": "哈密顿量、相空间、正则方程",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "keplers-laws",
+      "name": "开普勒定律",
+      "description": "三大定律、椭圆轨道、面积速度",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "tidal-forces",
+      "name": "潮汐力",
+      "description": "引力差异、潮汐加热、洛希极限",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "temperature-heat",
+      "name": "温度与热量",
+      "description": "温度标度、热量的微观本质、热平衡",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "ideal-gas-law",
+      "name": "理想气体定律",
+      "description": "PV=nRT、气体状态方程、等温/等压/等容过程",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "kinetic-theory",
+      "name": "气体动理论",
+      "description": "分子运动、压强的微观解释、麦克斯韦速率分布",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "heat-transfer",
+      "name": "传热方式",
+      "description": "热传导、对流、辐射、傅里叶热传导定律",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "specific-heat",
+      "name": "比热容与热容量",
+      "description": "比热容、相变潜热、量热学实验",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "first-law-thermo",
+      "name": "热力学第一定律",
+      "description": "内能、功与热的关系、ΔU=Q-W",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "thermodynamic-processes",
+      "name": "热力学过程",
+      "description": "等温、绝热、等压、等容过程的PV图分析",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "second-law-thermo",
+      "name": "热力学第二定律",
+      "description": "卡诺定理、克劳修斯表述、开尔文表述",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "entropy",
+      "name": "熵",
+      "description": "熵的定义、熵增原理、统计诠释",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "heat-engines",
+      "name": "热机",
+      "description": "卡诺循环、效率、制冷机与热泵",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "phase-transitions",
+      "name": "相变",
+      "description": "熔化、汽化、升华、相图、临界点",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "free-energy",
+      "name": "自由能",
+      "description": "亥姆霍兹自由能、吉布斯自由能、热力学势",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "thermal-expansion",
+      "name": "热膨胀",
+      "description": "线膨胀、体膨胀、膨胀系数",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "statistical-mechanics",
+      "name": "统计力学初步",
+      "description": "玻尔兹曼分布、配分函数、能量均分定理",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "third-law-thermo",
+      "name": "热力学第三定律",
+      "description": "绝对零度不可达、低温极限下熵趋于零",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "carnot-theorem",
+      "name": "卡诺定理",
+      "description": "可逆热机效率最高、卡诺效率公式",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "maxwell-relations",
+      "name": "麦克斯韦关系",
+      "description": "热力学势的偏导数关系、全微分条件",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "real-gases",
+      "name": "实际气体",
+      "description": "范德瓦尔斯方程、临界常数、对比态定律",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "boltzmann-distribution",
+      "name": "玻尔兹曼分布",
+      "description": "能量分布函数、配分函数、熵的统计定义",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "adiabatic-process",
+      "name": "绝热过程",
+      "description": "绝热方程、绝热膨胀做功、绝热指数",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "enthalpy",
+      "name": "焓",
+      "description": "焓的定义H=U+PV、等压过程的焓变",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "irreversibility",
+      "name": "不可逆过程",
+      "description": "自发过程、耗散、自由膨胀",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "wave-basics",
+      "name": "波的基本概念",
+      "description": "横波与纵波、波长、频率、波速",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "wave-equation",
+      "name": "波动方程",
+      "description": "一维波方程、行波解、波的数学描述",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "superposition",
+      "name": "波的叠加",
+      "description": "叠加原理、干涉、驻波",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "sound-waves",
+      "name": "声波",
+      "description": "声速、声强、多普勒效应",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "resonance",
+      "name": "共振",
+      "description": "受迫振动共振、自然频率、品质因子",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "reflection-refraction",
+      "name": "反射与折射",
+      "description": "反射定律、折射定律(Snell's law)、全内反射",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "geometric-optics",
+      "name": "几何光学",
+      "description": "薄透镜成像、镜面成像、光线追迹",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "interference",
+      "name": "光的干涉",
+      "description": "杨氏双缝实验、薄膜干涉、等厚干涉",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "diffraction",
+      "name": "光的衍射",
+      "description": "单缝衍射、圆孔衍射、衍射光栅",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "polarization",
+      "name": "光的偏振",
+      "description": "偏振态、马吕斯定律、布儒斯特角",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "dispersion",
+      "name": "色散",
+      "description": "折射率与波长关系、棱镜色散、光谱",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "optical-instruments",
+      "name": "光学仪器",
+      "description": "显微镜、望远镜、分辨率(瑞利判据)",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "wave-particle-duality",
+      "name": "波粒二象性",
+      "description": "光的粒子性与波动性、德布罗意波长",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "electromagnetic-waves",
+      "name": "电磁波",
+      "description": "电磁波谱、赫兹实验、电磁波的能量与动量",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "fiber-optics",
+      "name": "光纤与光通信",
+      "description": "全内反射应用、光纤原理、通信基础",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "huygens-principle",
+      "name": "惠更斯原理",
+      "description": "波前传播、次波源、折射的波动解释",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "doppler-effect-light",
+      "name": "光的多普勒效应",
+      "description": "红移与蓝移、相对论多普勒效应",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "holography",
+      "name": "全息术",
+      "description": "全息记录与再现原理、全息干涉测量",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nonlinear-optics-intro",
+      "name": "非线性光学简介",
+      "description": "倍频、自聚焦、光学参量效应",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "electric-charge",
+      "name": "电荷",
+      "description": "电荷守恒、库仑定律、电荷量子化",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "electric-field",
+      "name": "电场",
+      "description": "电场强度、电场线、点电荷的电场",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "gauss-law",
+      "name": "高斯定律",
+      "description": "电通量、高斯定理、对称性应用",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "electric-potential",
+      "name": "电势",
+      "description": "电势的定义、等势面、电势差与功",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "capacitance",
+      "name": "电容",
+      "description": "电容器、平行板电容、介电质、电场能量",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "dc-circuits",
+      "name": "直流电路",
+      "description": "欧姆定律、串并联、基尔霍夫定律",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "rc-circuits",
+      "name": "RC电路",
+      "description": "充放电过程、时间常数、暂态分析",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "magnetic-field",
+      "name": "磁场",
+      "description": "磁感应强度、磁力线、载流导线的磁场",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "lorentz-force",
+      "name": "洛伦兹力",
+      "description": "运动电荷在磁场中的受力、带电粒子回旋",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "biot-savart",
+      "name": "毕奥-萨伐尔定律",
+      "description": "电流元产生的磁场、直导线与环形电流",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "amperes-law",
+      "name": "安培定律",
+      "description": "安培环路定理、螺线管磁场",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "faradays-law",
+      "name": "法拉第电磁感应",
+      "description": "感应电动势、楞次定律、法拉第定律",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "inductance",
+      "name": "电感",
+      "description": "自感、互感、RL电路、磁场能量",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "ac-circuits",
+      "name": "交流电路",
+      "description": "交流电基本量、阻抗、RLC串联谐振",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "maxwells-equations",
+      "name": "麦克斯韦方程组",
+      "description": "四个方程统一电磁理论、位移电流",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "electromagnetic-radiation",
+      "name": "电磁辐射",
+      "description": "加速电荷辐射、天线原理、Larmor公式",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "em-energy-poynting",
+      "name": "电磁能与坡印廷矢量",
+      "description": "能量密度、坡印廷矢量、辐射压",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "dielectrics",
+      "name": "电介质",
+      "description": "极化、介电常数、电极化强度",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "magnetic-materials",
+      "name": "磁性材料",
+      "description": "顺磁、抗磁、铁磁、磁化强度、磁滞",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "superconductivity-intro",
+      "name": "超导简介",
+      "description": "迈斯纳效应、BCS理论简介、临界温度",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "electric-dipole",
+      "name": "电偶极子",
+      "description": "偶极矩、偶极子电场、极化",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "magnetic-dipole",
+      "name": "磁偶极子",
+      "description": "磁矩、载流线圈的磁矩、磁场中的力矩",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "kirchhoffs-laws",
+      "name": "基尔霍夫定律",
+      "description": "节点电流定律、回路电压定律、复杂电路分析",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "power-transmission",
+      "name": "电能传输",
+      "description": "变压器原理、高压输电、功率损耗",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "electromagnetic-induction-app",
+      "name": "电磁感应应用",
+      "description": "发电机、电动机、涡流、电磁制动",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "special-relativity-postulates",
+      "name": "狭义相对论公设",
+      "description": "光速不变原理、相对性原理",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "time-dilation",
+      "name": "时间膨胀",
+      "description": "运动时钟变慢、洛伦兹因子γ",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "length-contraction",
+      "name": "长度收缩",
+      "description": "运动方向上的长度缩短",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "lorentz-transformations",
+      "name": "洛伦兹变换",
+      "description": "洛伦兹变换公式、同时性的相对性",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "relativistic-momentum-energy",
+      "name": "相对论性动量与能量",
+      "description": "E=mc²、质能等价、四维动量",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "spacetime-diagrams",
+      "name": "时空图",
+      "description": "闵可夫斯基时空、世界线、光锥",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "general-relativity-intro",
+      "name": "广义相对论初步",
+      "description": "等效原理、弯曲时空、引力波简介",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "photoelectric-effect",
+      "name": "光电效应",
+      "description": "光电效应实验、光子假说、爱因斯坦方程",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "compton-scattering",
+      "name": "康普顿散射",
+      "description": "光子与电子的碰撞、康普顿波长",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "blackbody-radiation",
+      "name": "黑体辐射",
+      "description": "普朗克量子假说、Stefan-Boltzmann定律、Wien位移律",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "bohr-model",
+      "name": "玻尔模型",
+      "description": "氢原子能级、光谱线系、玻尔半径",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "atomic-spectra",
+      "name": "原子光谱",
+      "description": "发射谱与吸收谱、量子数、选择定则",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "matter-waves",
+      "name": "物质波",
+      "description": "德布罗意假说、电子衍射实验",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "uncertainty-principle",
+      "name": "不确定性原理",
+      "description": "海森堡不确定性原理ΔxΔp≥ℏ/2",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "x-rays",
+      "name": "X射线",
+      "description": "X射线产生、布拉格衍射、晶体结构分析",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "lasers",
+      "name": "激光",
+      "description": "受激辐射、粒子数反转、激光器原理",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "pair-production",
+      "name": "正负电子对产生",
+      "description": "光子能量阈值、质能转化、反物质",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "zeeman-effect",
+      "name": "塞曼效应",
+      "description": "磁场中谱线分裂、正常与反常塞曼效应",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "franck-hertz",
+      "name": "弗兰克-赫兹实验",
+      "description": "原子能级的实验验证、非弹性碰撞",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实验"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "twin-paradox",
+      "name": "双生子佯谬",
+      "description": "时间膨胀的思想实验、加速参考系",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "wave-function",
+      "name": "波函数",
+      "description": "量子态描述、概率诠释、归一化",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "schrodinger-equation",
+      "name": "薛定谔方程",
+      "description": "含时与定态薛定谔方程、算符形式",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "infinite-square-well",
+      "name": "无限深方势阱",
+      "description": "一维方势阱的定态解、能量量子化",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "quantum-harmonic-oscillator",
+      "name": "量子谐振子",
+      "description": "量子谐振子能级、零点能、升降算符",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "hydrogen-atom-qm",
+      "name": "氢原子量子解",
+      "description": "径向方程、球谐函数、轨道量子数",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "quantum-tunneling",
+      "name": "量子隧穿",
+      "description": "势垒穿透、隧穿概率、STM应用",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "spin",
+      "name": "自旋",
+      "description": "自旋角动量、Stern-Gerlach实验、自旋1/2",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "pauli-exclusion",
+      "name": "泡利不相容原理",
+      "description": "费米子不可占据相同量子态、电子排布",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "quantum-entanglement",
+      "name": "量子纠缠",
+      "description": "EPR佯谬、Bell不等式、量子非局域性",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "quantum-superposition",
+      "name": "量子叠加",
+      "description": "叠加态、测量与塌缩、薛定谔猫",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "operators-observables",
+      "name": "算符与可观测量",
+      "description": "厄米算符、本征值、对易关系",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "angular-momentum-qm",
+      "name": "量子角动量",
+      "description": "轨道角动量量子化、角动量耦合",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "perturbation-theory",
+      "name": "微扰理论",
+      "description": "定态微扰、简并微扰、一级修正",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 8,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "quantum-computing-intro",
+      "name": "量子计算简介",
+      "description": "量子比特、量子门、Shor算法简介",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "bose-einstein-fermi-dirac",
+      "name": "量子统计",
+      "description": "玻色-爱因斯坦统计与费米-狄拉克统计",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "finite-square-well",
+      "name": "有限深方势阱",
+      "description": "束缚态与散射态、透射系数",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "density-matrix",
+      "name": "密度矩阵",
+      "description": "混合态描述、退相干、约化密度矩阵",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 8,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "path-integrals-intro",
+      "name": "路径积分简介",
+      "description": "费曼路径积分思想、传播子",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 8,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "selection-rules",
+      "name": "选择定则",
+      "description": "电偶极跃迁规则、禁戒跃迁",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nuclear-structure",
+      "name": "原子核结构",
+      "description": "质子、中子、核力、核的大小与结合能",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "binding-energy",
+      "name": "结合能",
+      "description": "质量亏损、结合能曲线、核稳定性",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "radioactive-decay",
+      "name": "放射性衰变",
+      "description": "α衰变、β衰变、γ辐射、衰变定律",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "half-life",
+      "name": "半衰期",
+      "description": "指数衰变、放射性活度、碳-14定年",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nuclear-fission",
+      "name": "核裂变",
+      "description": "链式反应、临界质量、核反应堆原理",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nuclear-fusion",
+      "name": "核聚变",
+      "description": "恒星能源、等离子体约束、ITER",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "particle-physics-intro",
+      "name": "粒子物理初步",
+      "description": "夸克模型、轻子、规范玻色子、标准模型简介",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nuclear-reactions",
+      "name": "核反应",
+      "description": "核反应方程、Q值、截面",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "radiation-protection",
+      "name": "辐射防护",
+      "description": "辐射剂量、生物效应、防护原则",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nuclear-applications",
+      "name": "核技术应用",
+      "description": "医学影像(PET/CT)、工业探伤、辐照",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nuclear-models",
+      "name": "核模型",
+      "description": "液滴模型、壳模型、集体模型",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "neutrinos",
+      "name": "中微子",
+      "description": "中微子类型、中微子振荡、弱相互作用",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "antimatter",
+      "name": "反物质",
+      "description": "正电子、反质子、CP破缺、物质-反物质不对称",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "stellar-structure",
+      "name": "恒星结构",
+      "description": "静力学平衡、辐射传输、恒星模型",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "stellar-evolution",
+      "name": "恒星演化",
+      "description": "主序星、红巨星、白矮星、中子星、黑洞",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "hr-diagram",
+      "name": "赫罗图",
+      "description": "光度-温度关系、恒星分类",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "cosmology-basics",
+      "name": "宇宙学基础",
+      "description": "哈勃定律、宇宙膨胀、宇宙大爆炸",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "cosmic-microwave-bg",
+      "name": "宇宙微波背景",
+      "description": "CMB辐射、黑体谱、宇宙年龄",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "dark-matter-energy",
+      "name": "暗物质与暗能量",
+      "description": "星系旋转曲线、宇宙加速膨胀证据",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "gravitational-waves-astro",
+      "name": "引力波",
+      "description": "LIGO探测、双中子星合并、引力波天文学",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "black-holes",
+      "name": "黑洞",
+      "description": "史瓦西半径、事件视界、霍金辐射",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "exoplanets",
+      "name": "系外行星",
+      "description": "凌星法、径向速度法、宜居带",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nucleosynthesis",
+      "name": "核合成",
+      "description": "大爆炸核合成、恒星核合成、元素起源",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "neutron-stars",
+      "name": "中子星",
+      "description": "脉冲星、磁星、中子星状态方程",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "galactic-structure",
+      "name": "星系结构",
+      "description": "旋涡星系、椭圆星系、星系团",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "cosmic-inflation",
+      "name": "宇宙暴胀",
+      "description": "暴胀模型、平坦性问题、视界问题",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "fluid-statics",
+      "name": "流体静力学",
+      "description": "压强、帕斯卡原理、液压系统",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "buoyancy",
+      "name": "浮力",
+      "description": "阿基米德原理、浮力与密度",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "continuity-equation",
+      "name": "连续性方程",
+      "description": "质量守恒、不可压缩流体的连续方程",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "bernoullis-equation",
+      "name": "伯努利方程",
+      "description": "沿流线的能量守恒、文丘里管、升力原理",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "viscosity",
+      "name": "粘性",
+      "description": "牛顿粘性定律、雷诺数、层流与湍流",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "navier-stokes-intro",
+      "name": "纳维-斯托克斯方程简介",
+      "description": "NS方程的物理含义、简化情况",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "surface-tension",
+      "name": "表面张力",
+      "description": "分子间力、毛细现象、Young-Laplace方程",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "drag-force",
+      "name": "阻力",
+      "description": "形状阻力、摩擦阻力、终端速度",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "ideal-fluid-flow",
+      "name": "理想流体流动",
+      "description": "势流、无旋流、流函数与势函数",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "vorticity",
+      "name": "涡量",
+      "description": "涡量定义、环量、Kelvin环量定理",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "dimensional-analysis",
+      "name": "量纲分析",
+      "description": "白金汉π定理、无量纲数、相似律",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "boundary-layer",
+      "name": "边界层",
+      "description": "边界层概念、分离、湍流边界层",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "compressible-flow-intro",
+      "name": "可压缩流简介",
+      "description": "马赫数、激波、等熵流",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "pipe-flow",
+      "name": "管道流动",
+      "description": "Hagen-Poiseuille方程、管道阻力、水锤",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "crystal-structure",
+      "name": "晶体结构",
+      "description": "布拉菲格子、密勒指数、晶系",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "x-ray-diffraction-solid",
+      "name": "X射线衍射(固体)",
+      "description": "布拉格条件、粉末法、结构因子",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "phonons",
+      "name": "声子",
+      "description": "晶格振动量子化、声子色散关系、德拜模型",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "free-electron-model",
+      "name": "自由电子模型",
+      "description": "Drude模型、Sommerfeld模型、费米能",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "band-theory",
+      "name": "能带理论",
+      "description": "布洛赫定理、导体/半导体/绝缘体的能带",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "semiconductors",
+      "name": "半导体",
+      "description": "本征半导体、掺杂、n型与p型",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "pn-junction",
+      "name": "PN结",
+      "description": "PN结原理、整流特性、二极管",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "transistors-intro",
+      "name": "晶体管简介",
+      "description": "BJT、MOSFET基本原理、放大与开关",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "magnetic-order",
+      "name": "磁有序",
+      "description": "铁磁性、反铁磁性、磁畴",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "superconductivity-solid",
+      "name": "超导",
+      "description": "超导现象、BCS理论、超导应用",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "hall-effect",
+      "name": "霍尔效应",
+      "description": "经典霍尔效应、量子霍尔效应、霍尔传感器",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "optical-properties-solid",
+      "name": "固体光学性质",
+      "description": "吸收、反射、透射、等离子体频率",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "amorphous-solids",
+      "name": "非晶态固体",
+      "description": "玻璃、无序结构、短程序",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    },
+    {
+      "id": "nanomaterials-intro",
+      "name": "纳米材料简介",
+      "description": "量子点、纳米管、尺寸效应",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T09:33:50.995407+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "physical-quantities",
+      "target_id": "vectors-in-physics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "vectors-in-physics",
+      "target_id": "kinematics-1d",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "kinematics-1d",
+      "target_id": "kinematics-2d",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "kinematics-1d",
+      "target_id": "newtons-first-law",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "newtons-first-law",
+      "target_id": "newtons-second-law",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "newtons-third-law",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "friction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "kinematics-2d",
+      "target_id": "circular-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "circular-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "work-energy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "work-energy",
+      "target_id": "potential-energy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "potential-energy",
+      "target_id": "energy-conservation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "momentum",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "momentum",
+      "target_id": "momentum-conservation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "momentum-conservation",
+      "target_id": "collisions",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "energy-conservation",
+      "target_id": "collisions",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "circular-motion",
+      "target_id": "rotational-kinematics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "torque",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "torque",
+      "target_id": "rotational-dynamics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "rotational-kinematics",
+      "target_id": "rotational-dynamics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "rotational-dynamics",
+      "target_id": "angular-momentum",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "torque",
+      "target_id": "static-equilibrium",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "gravitation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "energy-conservation",
+      "target_id": "gravitation",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gravitation",
+      "target_id": "orbital-mechanics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "energy-conservation",
+      "target_id": "simple-harmonic-motion",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "simple-harmonic-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "simple-harmonic-motion",
+      "target_id": "damped-driven-oscillation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "non-inertial-frames",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "circular-motion",
+      "target_id": "non-inertial-frames",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "kinematics-2d",
+      "target_id": "projectile-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "elastic-force",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "elastic-force",
+      "target_id": "simple-harmonic-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "momentum",
+      "target_id": "center-of-mass",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rotational-dynamics",
+      "target_id": "rigid-body-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "simple-harmonic-motion",
+      "target_id": "coupled-oscillations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "coupled-oscillations",
+      "target_id": "mechanical-waves-medium",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "wave-basics",
+      "target_id": "mechanical-waves-medium",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "energy-conservation",
+      "target_id": "lagrangian-mechanics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "newtons-second-law",
+      "target_id": "lagrangian-mechanics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "lagrangian-mechanics",
+      "target_id": "hamiltonian-mechanics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "gravitation",
+      "target_id": "keplers-laws",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "orbital-mechanics",
+      "target_id": "keplers-laws",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gravitation",
+      "target_id": "tidal-forces",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "temperature-heat",
+      "target_id": "ideal-gas-law",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "temperature-heat",
+      "target_id": "specific-heat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ideal-gas-law",
+      "target_id": "kinetic-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "temperature-heat",
+      "target_id": "heat-transfer",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "temperature-heat",
+      "target_id": "thermal-expansion",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "specific-heat",
+      "target_id": "first-law-thermo",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "work-energy",
+      "target_id": "first-law-thermo",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "first-law-thermo",
+      "target_id": "thermodynamic-processes",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "thermodynamic-processes",
+      "target_id": "second-law-thermo",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "second-law-thermo",
+      "target_id": "entropy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "thermodynamic-processes",
+      "target_id": "heat-engines",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "second-law-thermo",
+      "target_id": "heat-engines",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "first-law-thermo",
+      "target_id": "phase-transitions",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "entropy",
+      "target_id": "free-energy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "kinetic-theory",
+      "target_id": "statistical-mechanics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "entropy",
+      "target_id": "statistical-mechanics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "entropy",
+      "target_id": "third-law-thermo",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "second-law-thermo",
+      "target_id": "carnot-theorem",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "free-energy",
+      "target_id": "maxwell-relations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ideal-gas-law",
+      "target_id": "real-gases",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "kinetic-theory",
+      "target_id": "boltzmann-distribution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "statistical-mechanics",
+      "target_id": "boltzmann-distribution",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "thermodynamic-processes",
+      "target_id": "adiabatic-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "first-law-thermo",
+      "target_id": "enthalpy",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "second-law-thermo",
+      "target_id": "irreversibility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "entropy",
+      "target_id": "irreversibility",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "simple-harmonic-motion",
+      "target_id": "wave-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "wave-basics",
+      "target_id": "wave-equation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "wave-basics",
+      "target_id": "superposition",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "wave-basics",
+      "target_id": "sound-waves",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "damped-driven-oscillation",
+      "target_id": "resonance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "wave-basics",
+      "target_id": "reflection-refraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "reflection-refraction",
+      "target_id": "geometric-optics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "superposition",
+      "target_id": "interference",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "interference",
+      "target_id": "diffraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "wave-basics",
+      "target_id": "polarization",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "reflection-refraction",
+      "target_id": "dispersion",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "geometric-optics",
+      "target_id": "optical-instruments",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "interference",
+      "target_id": "wave-particle-duality",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "wave-basics",
+      "target_id": "electromagnetic-waves",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "reflection-refraction",
+      "target_id": "fiber-optics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "wave-basics",
+      "target_id": "huygens-principle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "huygens-principle",
+      "target_id": "diffraction",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sound-waves",
+      "target_id": "doppler-effect-light",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "special-relativity-postulates",
+      "target_id": "doppler-effect-light",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "interference",
+      "target_id": "holography",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "lasers",
+      "target_id": "holography",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "lasers",
+      "target_id": "nonlinear-optics-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "electric-charge",
+      "target_id": "electric-field",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "electric-field",
+      "target_id": "gauss-law",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "electric-field",
+      "target_id": "electric-potential",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "electric-potential",
+      "target_id": "capacitance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "electric-charge",
+      "target_id": "dc-circuits",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dc-circuits",
+      "target_id": "rc-circuits",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "electric-charge",
+      "target_id": "magnetic-field",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "magnetic-field",
+      "target_id": "lorentz-force",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "magnetic-field",
+      "target_id": "biot-savart",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "biot-savart",
+      "target_id": "amperes-law",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "magnetic-field",
+      "target_id": "faradays-law",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "faradays-law",
+      "target_id": "inductance",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "dc-circuits",
+      "target_id": "ac-circuits",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "inductance",
+      "target_id": "ac-circuits",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "capacitance",
+      "target_id": "ac-circuits",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gauss-law",
+      "target_id": "maxwells-equations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "amperes-law",
+      "target_id": "maxwells-equations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "faradays-law",
+      "target_id": "maxwells-equations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "maxwells-equations",
+      "target_id": "electromagnetic-radiation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "maxwells-equations",
+      "target_id": "em-energy-poynting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "maxwells-equations",
+      "target_id": "electromagnetic-waves",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "electric-field",
+      "target_id": "dielectrics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "magnetic-field",
+      "target_id": "magnetic-materials",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "magnetic-materials",
+      "target_id": "superconductivity-intro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "electric-field",
+      "target_id": "electric-dipole",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "magnetic-field",
+      "target_id": "magnetic-dipole",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dc-circuits",
+      "target_id": "kirchhoffs-laws",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "faradays-law",
+      "target_id": "power-transmission",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "faradays-law",
+      "target_id": "electromagnetic-induction-app",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "special-relativity-postulates",
+      "target_id": "time-dilation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "special-relativity-postulates",
+      "target_id": "length-contraction",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "time-dilation",
+      "target_id": "lorentz-transformations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "length-contraction",
+      "target_id": "lorentz-transformations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lorentz-transformations",
+      "target_id": "relativistic-momentum-energy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "lorentz-transformations",
+      "target_id": "spacetime-diagrams",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "relativistic-momentum-energy",
+      "target_id": "general-relativity-intro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "wave-particle-duality",
+      "target_id": "photoelectric-effect",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "photoelectric-effect",
+      "target_id": "compton-scattering",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "blackbody-radiation",
+      "target_id": "photoelectric-effect",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "photoelectric-effect",
+      "target_id": "bohr-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bohr-model",
+      "target_id": "atomic-spectra",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "wave-particle-duality",
+      "target_id": "matter-waves",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "matter-waves",
+      "target_id": "uncertainty-principle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "electromagnetic-waves",
+      "target_id": "x-rays",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "bohr-model",
+      "target_id": "lasers",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "atomic-spectra",
+      "target_id": "lasers",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "relativistic-momentum-energy",
+      "target_id": "pair-production",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "bohr-model",
+      "target_id": "zeeman-effect",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "atomic-spectra",
+      "target_id": "zeeman-effect",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "bohr-model",
+      "target_id": "franck-hertz",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "time-dilation",
+      "target_id": "twin-paradox",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "matter-waves",
+      "target_id": "wave-function",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "uncertainty-principle",
+      "target_id": "wave-function",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "wave-function",
+      "target_id": "schrodinger-equation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "schrodinger-equation",
+      "target_id": "infinite-square-well",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "schrodinger-equation",
+      "target_id": "quantum-harmonic-oscillator",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "schrodinger-equation",
+      "target_id": "hydrogen-atom-qm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "schrodinger-equation",
+      "target_id": "quantum-tunneling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "wave-function",
+      "target_id": "quantum-superposition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bohr-model",
+      "target_id": "hydrogen-atom-qm",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "angular-momentum",
+      "target_id": "spin",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "spin",
+      "target_id": "pauli-exclusion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "quantum-superposition",
+      "target_id": "quantum-entanglement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "schrodinger-equation",
+      "target_id": "operators-observables",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "operators-observables",
+      "target_id": "angular-momentum-qm",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "operators-observables",
+      "target_id": "perturbation-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "quantum-entanglement",
+      "target_id": "quantum-computing-intro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pauli-exclusion",
+      "target_id": "bose-einstein-fermi-dirac",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "infinite-square-well",
+      "target_id": "finite-square-well",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "finite-square-well",
+      "target_id": "quantum-tunneling",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "operators-observables",
+      "target_id": "density-matrix",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "schrodinger-equation",
+      "target_id": "path-integrals-intro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "angular-momentum-qm",
+      "target_id": "selection-rules",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "hydrogen-atom-qm",
+      "target_id": "selection-rules",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "nuclear-structure",
+      "target_id": "binding-energy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "nuclear-structure",
+      "target_id": "radioactive-decay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "radioactive-decay",
+      "target_id": "half-life",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "binding-energy",
+      "target_id": "nuclear-fission",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "binding-energy",
+      "target_id": "nuclear-fusion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nuclear-structure",
+      "target_id": "nuclear-reactions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "radioactive-decay",
+      "target_id": "radiation-protection",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "nuclear-fission",
+      "target_id": "nuclear-applications",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "nuclear-structure",
+      "target_id": "particle-physics-intro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "relativistic-momentum-energy",
+      "target_id": "binding-energy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "nuclear-structure",
+      "target_id": "nuclear-models",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "radioactive-decay",
+      "target_id": "neutrinos",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pair-production",
+      "target_id": "antimatter",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "particle-physics-intro",
+      "target_id": "antimatter",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "nuclear-fusion",
+      "target_id": "stellar-structure",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "stellar-structure",
+      "target_id": "stellar-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "stellar-evolution",
+      "target_id": "hr-diagram",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "general-relativity-intro",
+      "target_id": "cosmology-basics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "cosmology-basics",
+      "target_id": "cosmic-microwave-bg",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cosmology-basics",
+      "target_id": "dark-matter-energy",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "general-relativity-intro",
+      "target_id": "gravitational-waves-astro",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "general-relativity-intro",
+      "target_id": "black-holes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stellar-evolution",
+      "target_id": "black-holes",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "stellar-evolution",
+      "target_id": "nucleosynthesis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "nuclear-fusion",
+      "target_id": "nucleosynthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cosmology-basics",
+      "target_id": "exoplanets",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "stellar-evolution",
+      "target_id": "neutron-stars",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stellar-evolution",
+      "target_id": "galactic-structure",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "cosmology-basics",
+      "target_id": "cosmic-inflation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fluid-statics",
+      "target_id": "buoyancy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "fluid-statics",
+      "target_id": "continuity-equation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "continuity-equation",
+      "target_id": "bernoullis-equation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "energy-conservation",
+      "target_id": "bernoullis-equation",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "bernoullis-equation",
+      "target_id": "viscosity",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "viscosity",
+      "target_id": "navier-stokes-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fluid-statics",
+      "target_id": "surface-tension",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "viscosity",
+      "target_id": "drag-force",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "continuity-equation",
+      "target_id": "ideal-fluid-flow",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ideal-fluid-flow",
+      "target_id": "vorticity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "viscosity",
+      "target_id": "boundary-layer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "viscosity",
+      "target_id": "pipe-flow",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "bernoullis-equation",
+      "target_id": "compressible-flow-intro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "viscosity",
+      "target_id": "dimensional-analysis",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "bernoullis-equation",
+      "target_id": "pipe-flow",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "crystal-structure",
+      "target_id": "x-ray-diffraction-solid",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "crystal-structure",
+      "target_id": "phonons",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "phonons",
+      "target_id": "free-electron-model",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "free-electron-model",
+      "target_id": "band-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "band-theory",
+      "target_id": "semiconductors",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "semiconductors",
+      "target_id": "pn-junction",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "pn-junction",
+      "target_id": "transistors-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "magnetic-materials",
+      "target_id": "magnetic-order",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "superconductivity-intro",
+      "target_id": "superconductivity-solid",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pauli-exclusion",
+      "target_id": "free-electron-model",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "bose-einstein-fermi-dirac",
+      "target_id": "free-electron-model",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "band-theory",
+      "target_id": "hall-effect",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "lorentz-force",
+      "target_id": "hall-effect",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "band-theory",
+      "target_id": "optical-properties-solid",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "crystal-structure",
+      "target_id": "amorphous-solids",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "band-theory",
+      "target_id": "nanomaterials-intro",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "energy-conservation",
+      "target_id": "first-law-thermo",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gravitation",
+      "target_id": "general-relativity-intro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gravitation",
+      "target_id": "stellar-structure",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "statistical-mechanics",
+      "target_id": "bose-einstein-fermi-dirac",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "x-rays",
+      "target_id": "x-ray-diffraction-solid",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "band-theory",
+      "target_id": "superconductivity-solid",
+      "relation_type": "related",
+      "strength": 0.5
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "generated_at": "2026-03-19T09:33:50.995407+00:00",
+    "stats": {
+      "total_concepts": 194,
+      "total_edges": 232,
+      "subdomains": 10,
+      "milestones": 26
+    }
+  }
+}

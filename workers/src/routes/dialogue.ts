@@ -2,10 +2,30 @@ import { Hono } from 'hono';
 import type { Env, UserLLMConfig } from '../types';
 import { llmChat, llmChatStream } from '../llm';
 import { FEYNMAN_SYSTEM_PROMPT, GRAPH_CONTEXT_TEMPLATE, ASSESSMENT_SYSTEM_PROMPT, formatPrompt, getAssessmentSupplement, getDomainSupplement } from '../prompts';
-import seedGraph from '../../data/seed_graph.json';
+// Multi-domain seed data imports
+import seedAI from '../../data/seed/ai-engineering/seed_graph.json';
+import seedMath from '../../data/seed/mathematics/seed_graph.json';
+import seedEnglish from '../../data/seed/english/seed_graph.json';
+import seedPhysics from '../../data/seed/physics/seed_graph.json';
+import seedProduct from '../../data/seed/product-design/seed_graph.json';
+import seedFinance from '../../data/seed/finance/seed_graph.json';
+import seedPsychology from '../../data/seed/psychology/seed_graph.json';
+import seedPhilosophy from '../../data/seed/philosophy/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
-const seed = seedGraph as any;
+
+const seedMap: Record<string, any> = {
+  'ai-engineering': seedAI, 'mathematics': seedMath, 'english': seedEnglish,
+  'physics': seedPhysics, 'product-design': seedProduct, 'finance': seedFinance,
+  'psychology': seedPsychology, 'philosophy': seedPhilosophy,
+};
+
+function findConceptAcrossDomains(conceptId: string): { seed: any; domain: string } | null {
+  for (const [domainId, seed] of Object.entries(seedMap)) {
+    if (seed.concepts.find((cc: any) => cc.id === conceptId)) return { seed, domain: domainId };
+  }
+  return null;
+}
 
 function extractLLMConfig(c: any): UserLLMConfig | null {
   const apiKey = (c.req.header('x-llm-api-key') || '').trim();
@@ -21,6 +41,9 @@ function extractLLMConfig(c: any): UserLLMConfig | null {
 }
 
 function getConceptInfo(conceptId: string) {
+  const found = findConceptAcrossDomains(conceptId);
+  if (!found) return null;
+  const { seed } = found;
   const concept = seed.concepts.find((cc: any) => cc.id === conceptId);
   if (!concept) return null;
   const prereqs: string[] = [], deps: string[] = [], related: string[] = [];
@@ -241,8 +264,9 @@ app.post('/assess', async (c) => {
   }
 
   const conceptName = conv.concept_name;
-  const difficulty = seed.concepts.find((cc: any) => cc.id === conv.concept_id)?.difficulty || 5;
-  const domainId = seed.meta?.domain_id || 'ai-engineering';
+  const found = findConceptAcrossDomains(conv.concept_id);
+  const difficulty = found?.seed.concepts.find((cc: any) => cc.id === conv.concept_id)?.difficulty || 5;
+  const domainId = found?.domain || 'ai-engineering';
 
   const systemPrompt = formatPrompt(ASSESSMENT_SYSTEM_PROMPT, {
     concept_name: conceptName,

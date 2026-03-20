@@ -1,0 +1,3557 @@
+{
+  "domain": {
+    "id": "finance",
+    "name": "金融理财",
+    "description": "从个人理财到量化金融的系统知识体系",
+    "icon": "🟠",
+    "color": "#f97316"
+  },
+  "subdomains": [
+    {
+      "id": "personal-finance",
+      "name": "个人理财",
+      "order": 1
+    },
+    {
+      "id": "investment-basics",
+      "name": "投资基础",
+      "order": 2
+    },
+    {
+      "id": "stock-market",
+      "name": "股票市场",
+      "order": 3
+    },
+    {
+      "id": "fixed-income",
+      "name": "固定收益",
+      "order": 4
+    },
+    {
+      "id": "corporate-finance",
+      "name": "公司金融",
+      "order": 5
+    },
+    {
+      "id": "risk-management",
+      "name": "风险管理",
+      "order": 6
+    },
+    {
+      "id": "fintech",
+      "name": "金融科技",
+      "order": 7
+    },
+    {
+      "id": "quantitative-finance",
+      "name": "量化金融",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "personal-finance-overview",
+      "name": "个人理财概述",
+      "description": "个人理财的定义、重要性与核心原则",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "income-management",
+      "name": "收入管理",
+      "description": "工资、被动收入与收入多元化策略",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "budgeting",
+      "name": "预算编制",
+      "description": "50/30/20法则、零基预算与预算工具",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "saving-strategies",
+      "name": "储蓄策略",
+      "description": "应急基金、目标储蓄与自动储蓄机制",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "debt-management",
+      "name": "债务管理",
+      "description": "好债与坏债、雪球法与雪崩法还债策略",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "credit-score",
+      "name": "信用评分",
+      "description": "信用评分体系、影响因素与提升方法",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "信用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "tax-basics",
+      "name": "税务基础",
+      "description": "个人所得税、专项扣除与合法节税方法",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "税务"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "insurance-basics",
+      "name": "保险基础",
+      "description": "寿险、健康险、财产险的选择原则",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "保险"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "retirement-planning",
+      "name": "退休规划",
+      "description": "养老金、401k/IRA、退休金缺口计算",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "长期"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "estate-planning",
+      "name": "遗产规划",
+      "description": "遗嘱、信托与财富传承策略",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "financial-goal-setting",
+      "name": "财务目标设定",
+      "description": "SMART财务目标与短中长期规划",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "规划"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "emergency-fund",
+      "name": "应急基金",
+      "description": "应急储备的最佳规模与存放策略",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "consumer-psychology",
+      "name": "消费心理学",
+      "description": "心理账户、锚定效应与非理性消费行为",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "mortgage-basics",
+      "name": "房贷基础",
+      "description": "等额本息vs等额本金、LPR与固定利率选择",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "贷款"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "education-funding",
+      "name": "教育金规划",
+      "description": "子女教育基金的投资策略与529计划",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "规划"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "inflation-hedging",
+      "name": "通胀对冲",
+      "description": "通货膨胀对购买力的影响与应对策略",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "financial-statements-personal",
+      "name": "个人财务报表",
+      "description": "个人资产负债表与现金流量表编制",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "compound-interest",
+      "name": "复利效应",
+      "description": "复利的数学原理、72法则与时间价值",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "financial-independence",
+      "name": "财务自由",
+      "description": "FIRE运动、被动收入覆盖率与实现路径",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "目标"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "family-financial-planning",
+      "name": "家庭财务规划",
+      "description": "家庭生命周期各阶段的理财策略",
+      "domain_id": "finance",
+      "subdomain_id": "personal-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "规划"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "investment-overview",
+      "name": "投资概述",
+      "description": "投资的定义、目的与基本原则",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "risk-return-tradeoff",
+      "name": "风险收益权衡",
+      "description": "风险与回报的正相关关系与有效前沿",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "time-value-of-money",
+      "name": "货币时间价值",
+      "description": "现值、终值、年金与贴现率计算",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "asset-classes",
+      "name": "资产类别",
+      "description": "股票、债券、商品、房地产、另类投资概览",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "diversification",
+      "name": "分散投资",
+      "description": "相关性、分散化原理与不把鸡蛋放一个篮子",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "asset-allocation",
+      "name": "资产配置",
+      "description": "战略配置vs战术配置、年龄法则与再平衡",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "dollar-cost-averaging",
+      "name": "定投策略",
+      "description": "定期定额投资的优势、局限与实操方法",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "market-efficiency",
+      "name": "市场有效性",
+      "description": "有效市场假说三种形式与市场异象",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "behavioral-finance",
+      "name": "行为金融学",
+      "description": "过度自信、损失厌恶、羊群效应等认知偏差",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "investment-vehicles",
+      "name": "投资工具",
+      "description": "共同基金、ETF、REITs等投资载体比较",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "index-investing",
+      "name": "指数投资",
+      "description": "被动投资哲学、指数基金与追踪误差",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "portfolio-theory",
+      "name": "投资组合理论",
+      "description": "马科维茨均值-方差模型与最优组合",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "capm-model",
+      "name": "CAPM模型",
+      "description": "资本资产定价模型：β系数、市场风险溢价",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "apt-model",
+      "name": "套利定价理论",
+      "description": "APT多因子模型与套利机会",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "investment-psychology",
+      "name": "投资心理",
+      "description": "恐惧与贪婪、情绪管理与投资纪律",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "investment-horizon",
+      "name": "投资期限",
+      "description": "短期vs中期vs长期投资策略选择",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "liquidity-concept",
+      "name": "流动性概念",
+      "description": "资产流动性定义、衡量与流动性溢价",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "benchmark-index",
+      "name": "基准指数",
+      "description": "沪深300、标普500等主要指数与业绩基准",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "fee-impact",
+      "name": "费用影响",
+      "description": "管理费、交易成本对长期收益的侵蚀效应",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "实务"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "tax-efficient-investing",
+      "name": "税务优化投资",
+      "description": "资本利得税、税收递延账户与税务规划",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "税务"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "stock-market-overview",
+      "name": "股票市场概述",
+      "description": "股票市场的功能、参与者与交易机制",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "stock-valuation",
+      "name": "股票估值",
+      "description": "内在价值、安全边际与估值方法总览",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "pe-ratio",
+      "name": "市盈率分析",
+      "description": "PE、PEG、动态PE与行业PE比较",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "指标"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "pb-ratio",
+      "name": "市净率分析",
+      "description": "PB估值法及其在不同行业的适用性",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "指标"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "dcf-valuation",
+      "name": "现金流折现",
+      "description": "DCF模型：自由现金流预测与折现率确定",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "financial-statement-analysis",
+      "name": "财务报表分析",
+      "description": "三大报表阅读：利润表、资产负债表、现金流量表",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "ratio-analysis",
+      "name": "比率分析",
+      "description": "盈利能力、偿债能力、运营效率关键比率",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "technical-analysis-basics",
+      "name": "技术分析基础",
+      "description": "K线图、均线、成交量与趋势判断",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "chart-patterns",
+      "name": "图表形态",
+      "description": "头肩顶/底、双重顶/底、三角形态等经典形态",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "moving-averages",
+      "name": "移动平均线",
+      "description": "SMA、EMA、金叉死叉与均线系统",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "指标"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "macd-indicator",
+      "name": "MACD指标",
+      "description": "MACD原理、信号线、柱状图与背离信号",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "指标"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "value-investing",
+      "name": "价值投资",
+      "description": "格雷厄姆/巴菲特价值投资哲学与实践",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "growth-investing",
+      "name": "成长投资",
+      "description": "高增长公司识别、PEG估值与成长陷阱",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "dividend-investing",
+      "name": "股息投资",
+      "description": "股息率、派息比率与股息增长策略",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "sector-analysis",
+      "name": "行业分析",
+      "description": "行业生命周期、波特五力与行业轮动",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "ipo-analysis",
+      "name": "IPO分析",
+      "description": "新股发行定价、申购策略与破发风险",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "实务"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "market-sentiment",
+      "name": "市场情绪",
+      "description": "恐慌指数VIX、投资者情绪指标与逆向投资",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "行为"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "short-selling",
+      "name": "做空机制",
+      "description": "融券卖空的原理、风险与市场功能",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "机制"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "stock-screening",
+      "name": "股票筛选",
+      "description": "量化筛选条件设定与多因子选股方法",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "earnings-analysis",
+      "name": "盈利分析",
+      "description": "EPS、财报季解读与盈利预期差异",
+      "domain_id": "finance",
+      "subdomain_id": "stock-market",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "fixed-income-overview",
+      "name": "固定收益概述",
+      "description": "债券市场的功能、参与者与基本概念",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "bond-basics",
+      "name": "债券基础",
+      "description": "面值、票息、期限、信用评级等核心要素",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "yield-curve",
+      "name": "收益率曲线",
+      "description": "期限结构、正常/倒挂/平坦收益率曲线解读",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "bond-pricing",
+      "name": "债券定价",
+      "description": "债券价格与收益率的反向关系、久期与凸度",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "duration-convexity",
+      "name": "久期与凸度",
+      "description": "麦考利久期、修正久期与凸度的风险度量",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "风险"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "government-bonds",
+      "name": "国债",
+      "description": "国债种类、拍卖机制与无风险利率基准",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "品种"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "corporate-bonds",
+      "name": "公司债",
+      "description": "公司债信用分析、利差与违约风险",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "品种"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "municipal-bonds",
+      "name": "地方政府债",
+      "description": "市政债免税优势与信用分析要点",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "品种"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "bond-rating",
+      "name": "债券评级",
+      "description": "标普/穆迪/惠誉评级体系与评级迁移",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "信用"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "credit-spread",
+      "name": "信用利差",
+      "description": "信用利差的驱动因素与经济周期关系",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风险"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "interest-rate-risk",
+      "name": "利率风险",
+      "description": "利率变动对债券价格的影响机制",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风险"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "inflation-linked-bonds",
+      "name": "通胀挂钩债券",
+      "description": "TIPS等通胀保护债券的定价与策略",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "品种"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "convertible-bonds",
+      "name": "可转换债券",
+      "description": "转债的股债双重属性与转换价值分析",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "品种"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "bond-etf",
+      "name": "债券ETF",
+      "description": "债券ETF的构建、追踪误差与流动性特征",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "repo-market",
+      "name": "回购市场",
+      "description": "回购协议的机制、功能与系统性风险",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "市场"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "money-market",
+      "name": "货币市场",
+      "description": "短期资金市场：同业拆借、商业票据、货币基金",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "市场"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "abs-mbs",
+      "name": "资产证券化",
+      "description": "ABS/MBS的结构、分层与提前偿还风险",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "结构化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "high-yield-bonds",
+      "name": "高收益债券",
+      "description": "垃圾债的风险收益特征与投资策略",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "品种"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "bond-ladder",
+      "name": "债券阶梯策略",
+      "description": "分散到期日降低再投资风险的策略",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "fixed-income-portfolio",
+      "name": "固收组合管理",
+      "description": "免疫策略、现金流匹配与积极管理",
+      "domain_id": "finance",
+      "subdomain_id": "fixed-income",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "corporate-finance-overview",
+      "name": "公司金融概述",
+      "description": "公司金融的三大决策：投资、融资与分配",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "capital-budgeting",
+      "name": "资本预算",
+      "description": "NPV、IRR、回收期等投资决策方法",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "npv-analysis",
+      "name": "净现值分析",
+      "description": "NPV计算方法、敏感性分析与决策规则",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "irr-method",
+      "name": "内部收益率",
+      "description": "IRR的计算、优缺点与多重IRR问题",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "cost-of-capital",
+      "name": "资本成本",
+      "description": "WACC计算：债务成本、股权成本与资本结构权重",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "capital-structure",
+      "name": "资本结构",
+      "description": "MM定理、权衡理论与最优资本结构",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "dividend-policy",
+      "name": "股利政策",
+      "description": "股利无关论、信号理论与回购替代",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "分配"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "working-capital",
+      "name": "营运资本管理",
+      "description": "应收账款、存货、应付账款的优化管理",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "运营"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "mergers-acquisitions",
+      "name": "并购分析",
+      "description": "M&A动机、估值方法与整合挑战",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "leveraged-buyout",
+      "name": "杠杆收购",
+      "description": "LBO的结构、回报驱动因素与退出策略",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "ipo-process",
+      "name": "IPO流程",
+      "description": "上市准备、定价、路演与上市后管理",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实务"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "equity-financing",
+      "name": "股权融资",
+      "description": "天使轮到IPO的融资阶段与估值方法",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "融资"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "debt-financing",
+      "name": "债务融资",
+      "description": "银行贷款、债券发行与融资租赁的比较",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "融资"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "financial-modeling",
+      "name": "财务建模",
+      "description": "三表联动模型、DCF模型与LBO模型构建",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "技能"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "corporate-governance",
+      "name": "公司治理",
+      "description": "董事会、股东权益与代理问题",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "治理"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "esg-investing",
+      "name": "ESG投资",
+      "description": "环境、社会、治理因素的投资整合",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "venture-capital",
+      "name": "风险投资",
+      "description": "VC的投资流程、估值方法与退出机制",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "创投"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "private-equity",
+      "name": "私募股权",
+      "description": "PE基金运作、投资策略与价值创造",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "创投"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "real-options",
+      "name": "实物期权",
+      "description": "实物期权在企业投资决策中的应用",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "financial-distress",
+      "name": "财务困境",
+      "description": "破产预测模型、债务重组与清算",
+      "domain_id": "finance",
+      "subdomain_id": "corporate-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "风险"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "risk-management-overview",
+      "name": "风险管理概述",
+      "description": "金融风险的类别、度量与管理框架",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "market-risk",
+      "name": "市场风险",
+      "description": "股票、利率、汇率、商品价格风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类别"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "credit-risk",
+      "name": "信用风险",
+      "description": "违约概率、违约损失率与信用风险建模",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "类别"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "operational-risk",
+      "name": "操作风险",
+      "description": "内部流程、人员、系统失误与外部事件风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类别"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "var-method",
+      "name": "VaR方法",
+      "description": "在险价值的计算：历史模拟、参数法、蒙特卡洛",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "stress-testing",
+      "name": "压力测试",
+      "description": "极端情景设计与组合压力测试方法",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "derivatives-overview",
+      "name": "衍生品概述",
+      "description": "期货、期权、互换、远期合约基础",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "options-basics",
+      "name": "期权基础",
+      "description": "看涨/看跌期权、期权定价要素与损益图",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "衍生品"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "options-strategies",
+      "name": "期权策略",
+      "description": "保护性看跌、备兑看涨、价差策略等",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "衍生品"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "futures-basics",
+      "name": "期货基础",
+      "description": "期货合约要素、保证金制度与交割机制",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "衍生品"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "hedging-strategies",
+      "name": "对冲策略",
+      "description": "利用衍生品对冲市场风险的方法",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "black-scholes-model",
+      "name": "Black-Scholes模型",
+      "description": "BS期权定价公式的推导、假设与应用",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "greeks",
+      "name": "希腊字母",
+      "description": "Delta、Gamma、Theta、Vega等风险度量",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "衍生品"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "swap-contracts",
+      "name": "互换合约",
+      "description": "利率互换、货币互换的结构与定价",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "衍生品"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "currency-risk",
+      "name": "汇率风险",
+      "description": "交易风险、折算风险与经济风险管理",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类别"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "liquidity-risk",
+      "name": "流动性风险",
+      "description": "资产流动性风险与融资流动性风险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "类别"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "risk-budgeting",
+      "name": "风险预算",
+      "description": "风险预算分配与风险平价策略",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "insurance-products",
+      "name": "保险产品",
+      "description": "金融保险产品：年金、万能险、投连险",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "产品"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "regulatory-framework",
+      "name": "金融监管",
+      "description": "巴塞尔协议、证券法规与合规要求",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "监管"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "systemic-risk",
+      "name": "系统性风险",
+      "description": "系统性风险的传导机制与宏观审慎监管",
+      "domain_id": "finance",
+      "subdomain_id": "risk-management",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "宏观"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "fintech-overview",
+      "name": "金融科技概述",
+      "description": "金融科技的发展历程、分类与监管挑战",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "mobile-payment",
+      "name": "移动支付",
+      "description": "支付宝/微信支付/Apple Pay的技术与商业模式",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "支付"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "digital-banking",
+      "name": "数字银行",
+      "description": "纯线上银行的商业模式与技术架构",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "银行"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "robo-advisor",
+      "name": "智能投顾",
+      "description": "算法驱动的资产配置与再平衡服务",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "投资"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "p2p-lending",
+      "name": "P2P借贷",
+      "description": "点对点借贷平台的模式、风险与监管",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "借贷"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "blockchain-basics",
+      "name": "区块链基础",
+      "description": "分布式账本、共识机制与密码学基础",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "区块链"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "cryptocurrency",
+      "name": "加密货币",
+      "description": "比特币、以太坊的技术原理与价值主张",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "区块链"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "defi",
+      "name": "去中心化金融",
+      "description": "DeFi协议：DEX、借贷、流动性挖矿",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "区块链"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "stablecoin",
+      "name": "稳定币",
+      "description": "法币锚定、算法稳定币与CBDC",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "区块链"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "regtech",
+      "name": "监管科技",
+      "description": "合规自动化、KYC/AML技术解决方案",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "监管"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "insurtech",
+      "name": "保险科技",
+      "description": "大数据定价、智能理赔与UBI车险",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "保险"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "open-banking",
+      "name": "开放银行",
+      "description": "API经济、数据共享与PSD2合规",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "银行"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "credit-scoring-ai",
+      "name": "AI信用评分",
+      "description": "机器学习在信用评估中的应用与公平性",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "nft-basics",
+      "name": "NFT基础",
+      "description": "非同质化代币的技术标准与应用场景",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "区块链"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "smart-contracts",
+      "name": "智能合约",
+      "description": "自动执行合约的编程、审计与安全",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "区块链"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "embedded-finance",
+      "name": "嵌入式金融",
+      "description": "将金融服务嵌入非金融平台的模式",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "趋势"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "wealth-management-tech",
+      "name": "财富管理科技",
+      "description": "智能投顾进阶、目标导向投资与税务优化",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "投资"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "digital-currency",
+      "name": "数字货币CBDC",
+      "description": "央行数字货币的设计原理与影响",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "货币"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "cloud-banking",
+      "name": "云原生银行",
+      "description": "微服务架构在银行系统中的应用",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "financial-data-analytics",
+      "name": "金融数据分析",
+      "description": "大数据在金融风控、营销、定价中的应用",
+      "domain_id": "finance",
+      "subdomain_id": "fintech",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "quant-finance-overview",
+      "name": "量化金融概述",
+      "description": "量化金融的发展、主要领域与职业路径",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "statistical-arbitrage",
+      "name": "统计套利",
+      "description": "配对交易、均值回归与协整关系",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "factor-models",
+      "name": "因子模型",
+      "description": "Fama-French三因子、五因子与多因子投资",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "momentum-strategy",
+      "name": "动量策略",
+      "description": "价格动量、盈利动量与动量崩溃风险",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "mean-reversion",
+      "name": "均值回归",
+      "description": "均值回归现象的统计检验与交易策略",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "high-frequency-trading",
+      "name": "高频交易",
+      "description": "HFT策略、市场微结构与技术基础设施",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "algorithmic-trading",
+      "name": "算法交易",
+      "description": "TWAP、VWAP、智能订单路由等执行算法",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "backtesting",
+      "name": "回测框架",
+      "description": "策略回测方法论、过拟合陷阱与样本外验证",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "monte-carlo-simulation",
+      "name": "蒙特卡洛模拟",
+      "description": "随机模拟在期权定价与风险管理中的应用",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "time-series-analysis",
+      "name": "时间序列分析",
+      "description": "ARIMA、GARCH等金融时间序列模型",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "统计"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "machine-learning-finance",
+      "name": "机器学习与金融",
+      "description": "ML在alpha生成、风控、NLP情绪分析中的应用",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "portfolio-optimization",
+      "name": "组合优化",
+      "description": "均值-方差优化、Black-Litterman与风险平价",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "risk-factor-analysis",
+      "name": "风险因子分析",
+      "description": "系统性风险因子分解与风险归因",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "风险"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "execution-cost",
+      "name": "交易执行成本",
+      "description": "滑点、市场冲击与最优执行理论",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实务"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "quant-programming",
+      "name": "量化编程",
+      "description": "Python/R在量化金融中的应用与工具库",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技能"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "stochastic-calculus",
+      "name": "随机微积分",
+      "description": "布朗运动、伊藤引理与SDE在金融中的应用",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 4,
+      "estimated_minutes": 45,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "volatility-modeling",
+      "name": "波动率建模",
+      "description": "隐含波动率、波动率微笑与GARCH族模型",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "market-microstructure",
+      "name": "市场微结构",
+      "description": "限价订单簿、做市商与价格发现机制",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "sentiment-analysis-finance",
+      "name": "金融情绪分析",
+      "description": "新闻/社交媒体文本的情绪提取与交易信号",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    },
+    {
+      "id": "alternative-data",
+      "name": "另类数据",
+      "description": "卫星图像、信用卡数据等非传统数据源的投资应用",
+      "domain_id": "finance",
+      "subdomain_id": "quantitative-finance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-19T10:55:24.208013+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "personal-finance-overview",
+      "target_id": "income-management",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "personal-finance-overview",
+      "target_id": "budgeting",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "personal-finance-overview",
+      "target_id": "financial-goal-setting",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "personal-finance-overview",
+      "target_id": "compound-interest",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "income-management",
+      "target_id": "saving-strategies",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "budgeting",
+      "target_id": "saving-strategies",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "saving-strategies",
+      "target_id": "emergency-fund",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "budgeting",
+      "target_id": "debt-management",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "debt-management",
+      "target_id": "credit-score",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "debt-management",
+      "target_id": "mortgage-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "credit-score",
+      "target_id": "mortgage-basics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "tax-basics",
+      "target_id": "retirement-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "insurance-basics",
+      "target_id": "retirement-planning",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "retirement-planning",
+      "target_id": "estate-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "retirement-planning",
+      "target_id": "financial-independence",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "compound-interest",
+      "target_id": "inflation-hedging",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "financial-goal-setting",
+      "target_id": "financial-statements-personal",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "consumer-psychology",
+      "target_id": "budgeting",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "education-funding",
+      "target_id": "retirement-planning",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "financial-independence",
+      "target_id": "family-financial-planning",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "saving-strategies",
+      "target_id": "education-funding",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "estate-planning",
+      "target_id": "family-financial-planning",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "investment-overview",
+      "target_id": "risk-return-tradeoff",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "investment-overview",
+      "target_id": "asset-classes",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "investment-overview",
+      "target_id": "investment-horizon",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "risk-return-tradeoff",
+      "target_id": "diversification",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "risk-return-tradeoff",
+      "target_id": "time-value-of-money",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "diversification",
+      "target_id": "asset-allocation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "asset-allocation",
+      "target_id": "dollar-cost-averaging",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "asset-classes",
+      "target_id": "investment-vehicles",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "investment-vehicles",
+      "target_id": "index-investing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "market-efficiency",
+      "target_id": "behavioral-finance",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "market-efficiency",
+      "target_id": "index-investing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "diversification",
+      "target_id": "portfolio-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "portfolio-theory",
+      "target_id": "capm-model",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "capm-model",
+      "target_id": "apt-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-finance",
+      "target_id": "investment-psychology",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "investment-vehicles",
+      "target_id": "benchmark-index",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "investment-vehicles",
+      "target_id": "fee-impact",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "tax-basics",
+      "target_id": "tax-efficient-investing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "liquidity-concept",
+      "target_id": "asset-classes",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "stock-market-overview",
+      "target_id": "stock-valuation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "stock-market-overview",
+      "target_id": "financial-statement-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "stock-market-overview",
+      "target_id": "technical-analysis-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stock-valuation",
+      "target_id": "pe-ratio",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "stock-valuation",
+      "target_id": "pb-ratio",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "stock-valuation",
+      "target_id": "dcf-valuation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "financial-statement-analysis",
+      "target_id": "ratio-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "financial-statement-analysis",
+      "target_id": "earnings-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "technical-analysis-basics",
+      "target_id": "chart-patterns",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "technical-analysis-basics",
+      "target_id": "moving-averages",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "moving-averages",
+      "target_id": "macd-indicator",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stock-valuation",
+      "target_id": "value-investing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stock-valuation",
+      "target_id": "growth-investing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "value-investing",
+      "target_id": "dividend-investing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "financial-statement-analysis",
+      "target_id": "sector-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "stock-market-overview",
+      "target_id": "ipo-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "behavioral-finance",
+      "target_id": "market-sentiment",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stock-market-overview",
+      "target_id": "short-selling",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ratio-analysis",
+      "target_id": "stock-screening",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fixed-income-overview",
+      "target_id": "bond-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "fixed-income-overview",
+      "target_id": "money-market",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bond-basics",
+      "target_id": "yield-curve",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "bond-basics",
+      "target_id": "bond-pricing",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "bond-basics",
+      "target_id": "bond-rating",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bond-pricing",
+      "target_id": "duration-convexity",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "yield-curve",
+      "target_id": "interest-rate-risk",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "interest-rate-risk",
+      "target_id": "duration-convexity",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "bond-rating",
+      "target_id": "credit-spread",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bond-rating",
+      "target_id": "corporate-bonds",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fixed-income-overview",
+      "target_id": "government-bonds",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bond-basics",
+      "target_id": "municipal-bonds",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "bond-basics",
+      "target_id": "inflation-linked-bonds",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "bond-basics",
+      "target_id": "convertible-bonds",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "investment-vehicles",
+      "target_id": "bond-etf",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "money-market",
+      "target_id": "repo-market",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "corporate-bonds",
+      "target_id": "abs-mbs",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "credit-spread",
+      "target_id": "high-yield-bonds",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bond-basics",
+      "target_id": "bond-ladder",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "duration-convexity",
+      "target_id": "fixed-income-portfolio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "corporate-finance-overview",
+      "target_id": "capital-budgeting",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "corporate-finance-overview",
+      "target_id": "cost-of-capital",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "corporate-finance-overview",
+      "target_id": "capital-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "capital-budgeting",
+      "target_id": "npv-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "capital-budgeting",
+      "target_id": "irr-method",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "cost-of-capital",
+      "target_id": "capital-structure",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "capital-structure",
+      "target_id": "dividend-policy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "corporate-finance-overview",
+      "target_id": "working-capital",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "corporate-finance-overview",
+      "target_id": "corporate-governance",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "capital-budgeting",
+      "target_id": "mergers-acquisitions",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "mergers-acquisitions",
+      "target_id": "leveraged-buyout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "corporate-finance-overview",
+      "target_id": "equity-financing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "corporate-finance-overview",
+      "target_id": "debt-financing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "equity-financing",
+      "target_id": "ipo-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "equity-financing",
+      "target_id": "venture-capital",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "venture-capital",
+      "target_id": "private-equity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "npv-analysis",
+      "target_id": "financial-modeling",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dcf-valuation",
+      "target_id": "financial-modeling",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "capital-budgeting",
+      "target_id": "real-options",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "debt-financing",
+      "target_id": "financial-distress",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "corporate-governance",
+      "target_id": "esg-investing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "risk-management-overview",
+      "target_id": "market-risk",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "risk-management-overview",
+      "target_id": "credit-risk",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "risk-management-overview",
+      "target_id": "operational-risk",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "risk-management-overview",
+      "target_id": "derivatives-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "market-risk",
+      "target_id": "var-method",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "var-method",
+      "target_id": "stress-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "derivatives-overview",
+      "target_id": "options-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "derivatives-overview",
+      "target_id": "futures-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "derivatives-overview",
+      "target_id": "swap-contracts",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "options-basics",
+      "target_id": "options-strategies",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "options-basics",
+      "target_id": "black-scholes-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "options-basics",
+      "target_id": "greeks",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "black-scholes-model",
+      "target_id": "greeks",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "derivatives-overview",
+      "target_id": "hedging-strategies",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "market-risk",
+      "target_id": "currency-risk",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "market-risk",
+      "target_id": "liquidity-risk",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "var-method",
+      "target_id": "risk-budgeting",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "insurance-basics",
+      "target_id": "insurance-products",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "credit-risk",
+      "target_id": "regulatory-framework",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "systemic-risk",
+      "target_id": "regulatory-framework",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "liquidity-risk",
+      "target_id": "systemic-risk",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "mobile-payment",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "digital-banking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "blockchain-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "financial-data-analytics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "digital-banking",
+      "target_id": "open-banking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "digital-banking",
+      "target_id": "cloud-banking",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "blockchain-basics",
+      "target_id": "cryptocurrency",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "blockchain-basics",
+      "target_id": "smart-contracts",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "cryptocurrency",
+      "target_id": "stablecoin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cryptocurrency",
+      "target_id": "defi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "smart-contracts",
+      "target_id": "defi",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockchain-basics",
+      "target_id": "nft-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "robo-advisor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "robo-advisor",
+      "target_id": "wealth-management-tech",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "p2p-lending",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "p2p-lending",
+      "target_id": "credit-scoring-ai",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "regtech",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "insurtech",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "stablecoin",
+      "target_id": "digital-currency",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fintech-overview",
+      "target_id": "embedded-finance",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "quant-finance-overview",
+      "target_id": "factor-models",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "quant-finance-overview",
+      "target_id": "statistical-arbitrage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "quant-finance-overview",
+      "target_id": "algorithmic-trading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "quant-finance-overview",
+      "target_id": "quant-programming",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "factor-models",
+      "target_id": "momentum-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "factor-models",
+      "target_id": "risk-factor-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "statistical-arbitrage",
+      "target_id": "mean-reversion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "algorithmic-trading",
+      "target_id": "high-frequency-trading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "algorithmic-trading",
+      "target_id": "backtesting",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "algorithmic-trading",
+      "target_id": "execution-cost",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "backtesting",
+      "target_id": "monte-carlo-simulation",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "time-series-analysis",
+      "target_id": "volatility-modeling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "portfolio-theory",
+      "target_id": "portfolio-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "black-scholes-model",
+      "target_id": "stochastic-calculus",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "monte-carlo-simulation",
+      "target_id": "stochastic-calculus",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "machine-learning-finance",
+      "target_id": "sentiment-analysis-finance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "machine-learning-finance",
+      "target_id": "alternative-data",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "high-frequency-trading",
+      "target_id": "market-microstructure",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "quant-programming",
+      "target_id": "backtesting",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "time-series-analysis",
+      "target_id": "mean-reversion",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "compound-interest",
+      "target_id": "time-value-of-money",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "investment-overview",
+      "target_id": "personal-finance-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "asset-allocation",
+      "target_id": "retirement-planning",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "stock-market-overview",
+      "target_id": "investment-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fixed-income-overview",
+      "target_id": "investment-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "risk-return-tradeoff",
+      "target_id": "risk-management-overview",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dcf-valuation",
+      "target_id": "time-value-of-money",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "capital-structure",
+      "target_id": "corporate-bonds",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cost-of-capital",
+      "target_id": "bond-pricing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "financial-modeling",
+      "target_id": "financial-statement-analysis",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "portfolio-theory",
+      "target_id": "risk-budgeting",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "capm-model",
+      "target_id": "factor-models",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "behavioral-finance",
+      "target_id": "consumer-psychology",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "market-sentiment",
+      "target_id": "sentiment-analysis-finance",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stock-screening",
+      "target_id": "algorithmic-trading",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "robo-advisor",
+      "target_id": "asset-allocation",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "credit-risk",
+      "target_id": "bond-rating",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "credit-scoring-ai",
+      "target_id": "machine-learning-finance",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "quant-finance-overview",
+      "target_id": "investment-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "volatility-modeling",
+      "target_id": "var-method",
+      "relation_type": "related",
+      "strength": 0.8
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "generated_at": "2026-03-19T10:55:24.208013+00:00",
+    "stats": {
+      "total_concepts": 160,
+      "total_edges": 182,
+      "subdomains": 8,
+      "milestones": 32
+    }
+  }
+}

@@ -1,0 +1,3729 @@
+{
+  "domain": {
+    "id": "philosophy",
+    "name": "哲学",
+    "description": "从古代哲学到当代思潮的系统知识体系",
+    "icon": "🔮",
+    "color": "#06b6d4"
+  },
+  "subdomains": [
+    {
+      "id": "ancient-philosophy",
+      "name": "古代哲学",
+      "order": 1
+    },
+    {
+      "id": "epistemology",
+      "name": "认识论",
+      "order": 2
+    },
+    {
+      "id": "metaphysics",
+      "name": "形而上学",
+      "order": 3
+    },
+    {
+      "id": "ethics",
+      "name": "伦理学",
+      "order": 4
+    },
+    {
+      "id": "logic-reasoning",
+      "name": "逻辑与推理",
+      "order": 5
+    },
+    {
+      "id": "political-philosophy",
+      "name": "政治哲学",
+      "order": 6
+    },
+    {
+      "id": "aesthetics",
+      "name": "美学",
+      "order": 7
+    },
+    {
+      "id": "modern-philosophy",
+      "name": "近现代哲学",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "ancient-philosophy-overview",
+      "name": "古代哲学概述",
+      "description": "古代哲学的起源、分期与核心议题",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "pre-socratic-overview",
+      "name": "前苏格拉底哲学",
+      "description": "自然哲学家对宇宙本原(arche)的探索",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "早期"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "heraclitus",
+      "name": "赫拉克利特",
+      "description": "万物流转、逻各斯与对立统一思想",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "早期"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "parmenides",
+      "name": "巴门尼德",
+      "description": "存在与非存在、思维与存在同一、真理之路",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "早期"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "democritus",
+      "name": "德谟克利特",
+      "description": "原子论与虚空、机械唯物主义的先驱",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "早期"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sophists",
+      "name": "智者学派",
+      "description": "普罗泰戈拉的人是万物的尺度、修辞术与相对主义",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "古希腊"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "socrates",
+      "name": "苏格拉底",
+      "description": "苏格拉底方法(诘问法)、认识你自己、美德即知识",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "plato",
+      "name": "柏拉图",
+      "description": "理念论、洞穴寓言、灵魂三分说与理想国",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "plato-republic",
+      "name": "《理想国》",
+      "description": "正义论、哲学王、理想城邦的三阶层结构",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aristotle",
+      "name": "亚里士多德",
+      "description": "四因说、实体学说、中庸之道与逻辑学奠基",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "aristotle-ethics",
+      "name": "亚里士多德伦理学",
+      "description": "尼各马可伦理学、幸福(eudaimonia)与实践智慧",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "epicurus",
+      "name": "伊壁鸠鲁",
+      "description": "快乐主义、原子论伦理学、灵魂死灭论",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "希腊化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "stoicism",
+      "name": "斯多亚学派",
+      "description": "自然法则、理性生活、克制情感与命运之爱",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "希腊化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "skepticism-ancient",
+      "name": "古代怀疑论",
+      "description": "皮浪主义、悬搁判断(epoché)与宁静生活",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "希腊化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "neoplatonism",
+      "name": "新柏拉图主义",
+      "description": "普罗提诺的太一、流溢说与神秘主义传统",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "晚期"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "confucius",
+      "name": "孔子",
+      "description": "仁义礼智信、君子之道与《论语》思想",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "mencius",
+      "name": "孟子",
+      "description": "性善论、仁政思想与浩然之气",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "xunzi",
+      "name": "荀子",
+      "description": "性恶论、隆礼重法、天人之分",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "laozi",
+      "name": "老子",
+      "description": "道法自然、无为而治、《道德经》核心思想",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "zhuangzi",
+      "name": "庄子",
+      "description": "逍遥游、齐物论、坐忘与心斋",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mozi",
+      "name": "墨子",
+      "description": "兼爱非攻、尚贤尚同、功利主义先驱",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "legalism",
+      "name": "法家思想",
+      "description": "韩非子的法术势、商鞅变法与法治思想",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "buddhist-philosophy",
+      "name": "佛教哲学",
+      "description": "四谛八正道、缘起性空、中观与唯识",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "yinyang-school",
+      "name": "阴阳家",
+      "description": "阴阳五行、天人感应与宇宙论框架",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ancient-philosophy-legacy",
+      "name": "古代哲学遗产",
+      "description": "古代哲学对中世纪、近现代思想的深远影响",
+      "subdomain_id": "ancient-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "总结"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "epistemology-overview",
+      "name": "认识论概述",
+      "description": "认识论的核心问题:知识的本质、来源与限度",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "knowledge-definition",
+      "name": "知识的定义",
+      "description": "JTB理论(justified true belief)及其挑战",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gettier-problem",
+      "name": "盖梯尔问题",
+      "description": "对JTB定义的反例与知识定义的当代争论",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rationalism",
+      "name": "理性主义",
+      "description": "笛卡尔/莱布尼茨/斯宾诺莎:先天观念与理性认知",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "empiricism",
+      "name": "经验主义",
+      "description": "洛克/贝克莱/休谟:白板说与感觉经验的优先性",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "a-priori-knowledge",
+      "name": "先验知识与后验知识",
+      "description": "先验/后验、分析/综合命题的区分",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "kant-epistemology",
+      "name": "康德认识论",
+      "description": "先验综合判断、感性直观与知性范畴的统一",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "skepticism",
+      "name": "怀疑论",
+      "description": "笛卡尔式怀疑、休谟问题与怀疑论的当代形态",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "truth-theories",
+      "name": "真理理论",
+      "description": "符合论、融贯论、实用主义真理观与紧缩论",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "scientific-method-phil",
+      "name": "科学方法论",
+      "description": "归纳法、假说演绎法与科学发现的逻辑",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "induction-problem",
+      "name": "归纳问题",
+      "description": "休谟的归纳怀疑与归纳合理性的辩护",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "问题"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "falsificationism",
+      "name": "证伪主义",
+      "description": "波普尔的证伪理论与科学划界问题",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "科学哲学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "paradigm-shift",
+      "name": "范式转换",
+      "description": "库恩的科学革命结构与范式不可通约性",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "科学哲学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "epistemological-relativism",
+      "name": "认识论相对主义",
+      "description": "费耶阿本德的认识论无政府主义与方法多元",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "social-epistemology",
+      "name": "社会认识论",
+      "description": "知识的社会维度、证词与集体知识",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "foundationalism",
+      "name": "基础主义",
+      "description": "知识的基础结构:基本信念与推导信念",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "coherentism",
+      "name": "融贯论",
+      "description": "信念的相互支持与知识的网络结构",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "reliabilism",
+      "name": "可靠主义",
+      "description": "戈德曼的过程可靠论与外在主义辩护",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "virtue-epistemology",
+      "name": "德性认识论",
+      "description": "智识德性:开放心灵、求知勇气与认知谦逊",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "phenomenology-method",
+      "name": "现象学方法",
+      "description": "胡塞尔的意向性分析与悬搁(epoché)方法",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pragmatist-epistemology",
+      "name": "实用主义认识论",
+      "description": "皮尔斯/杜威/詹姆斯:知识的实践检验",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "naturalized-epistemology",
+      "name": "自然化认识论",
+      "description": "蒯因的认识论自然化与认知科学的介入",
+      "subdomain_id": "epistemology",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "metaphysics-overview",
+      "name": "形而上学概述",
+      "description": "形而上学的研究对象:存在、实在与世界的根本结构",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "being-existence",
+      "name": "存在",
+      "description": "存在的意义、存在与本质的关系、存在论差异",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ontology",
+      "name": "本体论",
+      "description": "存在者的分类:实体/属性/关系/事件",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "realism-antirealism",
+      "name": "实在论与反实在论",
+      "description": "外部世界是否独立于心灵存在的争论",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "争论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "idealism",
+      "name": "唯心主义",
+      "description": "贝克莱/黑格尔:心灵或理念是实在的基础",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "materialism-physicalism",
+      "name": "唯物主义与物理主义",
+      "description": "一切存在归结为物质或物理实体",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dualism",
+      "name": "二元论",
+      "description": "笛卡尔心物二元论与交互问题",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心灵"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "causation",
+      "name": "因果关系",
+      "description": "因果关系的本质:休谟式恒常联结vs必然联系",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "free-will",
+      "name": "自由意志",
+      "description": "自由意志的存在性争论与道德责任",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "determinism",
+      "name": "决定论",
+      "description": "因果决定论、物理决定论与相容论",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "争论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "compatibilism",
+      "name": "相容论",
+      "description": "自由意志与决定论的调和尝试",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "争论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "time-space",
+      "name": "时间与空间",
+      "description": "时间的本质:A理论vs B理论,绝对空间vs关系空间",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "personal-identity",
+      "name": "个人同一性",
+      "description": "是什么使一个人在时间中保持同一:身体/记忆/心理连续性",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "possible-worlds",
+      "name": "可能世界",
+      "description": "模态实在论:必然/可能/偶然的形而上学基础",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "universals-particulars",
+      "name": "共相与殊相",
+      "description": "共相问题:实在论/唯名论/概念论",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "substance-metaphysics",
+      "name": "实体",
+      "description": "实体的概念:从亚里士多德到当代本体论",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mind-body-problem",
+      "name": "心身问题",
+      "description": "意识如何与物质关联:物理主义/属性二元论/泛心论",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emergence",
+      "name": "涌现",
+      "description": "复杂系统中高层属性不可还原的涌现现象",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "abstract-objects",
+      "name": "抽象对象",
+      "description": "数/命题/集合等非时空实体的本体论地位",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "chinese-metaphysics",
+      "name": "中国形而上学",
+      "description": "气论/理气关系/天道观:中国哲学的本体论传统",
+      "subdomain_id": "metaphysics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ethics-overview",
+      "name": "伦理学概述",
+      "description": "伦理学的分类:规范伦理/元伦理/应用伦理",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "utilitarianism",
+      "name": "功利主义",
+      "description": "边沁/密尔:最大多数人的最大幸福原则",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "act-rule-utilitarianism",
+      "name": "行为与规则功利主义",
+      "description": "行为功利主义vs规则功利主义的区分与争论",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "功利"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "deontology",
+      "name": "义务论",
+      "description": "康德的定言命令:普遍化法则与人作为目的",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "categorical-imperative",
+      "name": "定言命令",
+      "description": "康德三个定言命令公式与道德义务的推导",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "康德"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "virtue-ethics",
+      "name": "美德伦理学",
+      "description": "亚里士多德传统:品格/德性/实践智慧(phronesis)",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "care-ethics",
+      "name": "关怀伦理学",
+      "description": "吉利根/诺丁斯:关系性道德与关怀回应",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "metaethics",
+      "name": "元伦理学",
+      "description": "道德判断的本质:道德实在论vs反实在论",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "moral-realism",
+      "name": "道德实在论",
+      "description": "客观道德事实的存在性论证",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "元伦理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emotivism",
+      "name": "情感主义",
+      "description": "艾耶尔/史蒂文森:道德判断表达情感而非事实",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "元伦理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "moral-relativism",
+      "name": "道德相对主义",
+      "description": "道德标准因文化/个人而异的立场及其挑战",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "争论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "problem-of-evil",
+      "name": "善恶问题",
+      "description": "恶的存在与全善全能上帝的矛盾:神义论困境",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "宗教哲学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "applied-ethics",
+      "name": "应用伦理学",
+      "description": "将伦理理论应用于具体道德难题的实践方法",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bioethics",
+      "name": "生命伦理学",
+      "description": "安乐死/基因编辑/克隆/器官分配的伦理争论",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "environmental-ethics",
+      "name": "环境伦理学",
+      "description": "深层生态学、动物权利与人类中心主义批判",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "business-ethics",
+      "name": "商业伦理",
+      "description": "企业社会责任、利益相关者理论与道德决策",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "tech-ethics",
+      "name": "技术伦理",
+      "description": "AI伦理/数据隐私/算法偏见/自主武器的伦理挑战",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "human-rights-phil",
+      "name": "人权的哲学基础",
+      "description": "自然权利/人的尊严/普世价值的哲学论证",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "justice-concept",
+      "name": "正义概念",
+      "description": "分配正义/矫正正义/程序正义的基本区分",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "trolley-problem",
+      "name": "电车难题",
+      "description": "经典道德直觉实验与后果论vs义务论的对决",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "思想实验"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "moral-development-phil",
+      "name": "道德发展",
+      "description": "科尔伯格的道德发展阶段与道德教育哲学",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发展"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "confucian-ethics",
+      "name": "儒家伦理",
+      "description": "仁义礼智的德性体系与五伦关系伦理",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "buddhist-ethics",
+      "name": "佛教伦理",
+      "description": "慈悲/不害/业报:佛教道德框架",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "moral-psychology",
+      "name": "道德心理学",
+      "description": "道德情感/道德直觉/道德判断的心理机制",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "交叉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "effective-altruism",
+      "name": "有效利他主义",
+      "description": "彼得·辛格与理性慈善:最大化善的当代运动",
+      "subdomain_id": "ethics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "logic-overview",
+      "name": "逻辑学概述",
+      "description": "逻辑学的研究对象:有效推理的规则与形式",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "propositional-logic",
+      "name": "命题逻辑",
+      "description": "命题联结词(与/或/非/蕴含)与真值表",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "predicate-logic",
+      "name": "谓词逻辑",
+      "description": "量词(全称/存在)、谓词与一阶逻辑的表达力",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "deductive-reasoning",
+      "name": "演绎推理",
+      "description": "从一般到特殊:三段论/假言推理/析取推理",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "推理"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "inductive-reasoning",
+      "name": "归纳推理",
+      "description": "从特殊到一般:归纳强度与归纳谬误",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "推理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "abductive-reasoning",
+      "name": "溯因推理",
+      "description": "推断最佳解释:从观察到假说的推理",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "推理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "analogical-reasoning",
+      "name": "类比推理",
+      "description": "基于相似性的推理:类比的结构与评估标准",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "推理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "formal-fallacies",
+      "name": "形式谬误",
+      "description": "肯定后件/否定前件/不当三段论等结构性推理错误",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "谬误"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "informal-fallacies",
+      "name": "非形式谬误",
+      "description": "稻草人/诉诸权威/红鲱鱼/滑坡论证等内容性谬误",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "谬误"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "paradoxes",
+      "name": "悖论",
+      "description": "说谎者悖论/飞矢悖论/忒修斯之船:逻辑与哲学的交叉",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "modal-logic",
+      "name": "模态逻辑",
+      "description": "必然性与可能性算子:模态命题与可能世界语义",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "argument-structure",
+      "name": "论证结构",
+      "description": "前提/结论/论证形式与论证图析",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "critical-thinking",
+      "name": "批判性思维",
+      "description": "论证评估/证据权衡/认知偏见识别的实践方法",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "philosophy-of-logic",
+      "name": "逻辑哲学",
+      "description": "逻辑的本质:逻辑是发现还是发明?逻辑多元主义",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dialectic",
+      "name": "辩证法",
+      "description": "从苏格拉底到黑格尔:正题/反题/合题的思维运动",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "set-theory-phil",
+      "name": "集合论基础",
+      "description": "集合论悖论与数学基础的哲学反思",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "philosophy-of-math",
+      "name": "数学哲学",
+      "description": "柏拉图主义/形式主义/直觉主义:数学对象的本质",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "交叉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fuzzy-logic-phil",
+      "name": "模糊逻辑",
+      "description": "多值逻辑与模糊概念:对经典二值逻辑的扩展",
+      "subdomain_id": "logic-reasoning",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "political-philosophy-overview",
+      "name": "政治哲学概述",
+      "description": "政治哲学的核心问题:国家/权力/正义/自由",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "social-contract",
+      "name": "社会契约论",
+      "description": "霍布斯/洛克/卢梭:政治权威的合法性基础",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "hobbes",
+      "name": "霍布斯",
+      "description": "自然状态、利维坦与绝对主权理论",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "locke-political",
+      "name": "洛克政治哲学",
+      "description": "自然权利、有限政府与财产权理论",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rousseau",
+      "name": "卢梭",
+      "description": "公意、人民主权与社会不平等批判",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "liberalism",
+      "name": "自由主义",
+      "description": "个人自由/权利保障/有限政府的政治传统",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "conservatism",
+      "name": "保守主义",
+      "description": "伯克传统:秩序/渐进改革/制度延续的价值",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "socialism",
+      "name": "社会主义",
+      "description": "马克思/恩格斯:阶级斗争/生产资料公有/社会公正",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "marxism",
+      "name": "马克思主义",
+      "description": "历史唯物主义/资本批判/异化/意识形态批判",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anarchism",
+      "name": "无政府主义",
+      "description": "反国家/自治/互助:从克鲁泡特金到当代无政府主义",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rawls-justice",
+      "name": "罗尔斯正义论",
+      "description": "无知之幕、原初立场与正义两原则",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "nozick-libertarianism",
+      "name": "诺齐克自由至上主义",
+      "description": "最小国家、持有正义与对再分配的批判",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "democracy-theory",
+      "name": "民主理论",
+      "description": "直接民主/代议民主/审议民主/参与式民主",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "power-theory",
+      "name": "权力理论",
+      "description": "福柯的微观权力/韦伯的支配类型/权力的面孔",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "civil-society",
+      "name": "公民社会",
+      "description": "公共领域/社团/市民参与与国家之间的关系",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rights-theory",
+      "name": "权利理论",
+      "description": "自然权利vs法律权利、积极权利vs消极权利",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "nationalism",
+      "name": "民族主义",
+      "description": "民族国家/民族认同/民族自决权的哲学基础",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "议题"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cosmopolitanism",
+      "name": "世界主义",
+      "description": "全球正义/世界公民/超越民族国家的道德义务",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feminism-political",
+      "name": "女性主义政治哲学",
+      "description": "性别平等/父权制批判/交叉性与身份政治",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "multiculturalism",
+      "name": "多元文化主义",
+      "description": "文化承认/群体权利/差异政治与文化冲突",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "chinese-political-phil",
+      "name": "中国政治哲学",
+      "description": "天命观/民本思想/大同理想与儒法互补",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "global-justice",
+      "name": "全球正义",
+      "description": "国际分配正义/气候正义/移民权利的哲学争论",
+      "subdomain_id": "political-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aesthetics-overview",
+      "name": "美学概述",
+      "description": "美学的研究对象:美/艺术/审美经验的哲学探究",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "nature-of-beauty",
+      "name": "美的本质",
+      "description": "客观美vs主观美:从柏拉图到经验论的美学争论",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "definition-of-art",
+      "name": "艺术的定义",
+      "description": "模仿论/表现论/制度论/家族相似:什么是艺术?",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "aesthetic-judgment",
+      "name": "审美判断",
+      "description": "康德的审美判断力批判:无利害的愉悦与共通感",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sublime",
+      "name": "崇高",
+      "description": "伯克与康德论崇高:恐惧/无限/理性的超越",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mimesis",
+      "name": "模仿论",
+      "description": "柏拉图与亚里士多德的模仿论:艺术再现现实",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "expression-theory",
+      "name": "表现论",
+      "description": "克罗齐/科林伍德:艺术是情感的表达与传达",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "理论"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "art-form",
+      "name": "艺术形式",
+      "description": "形式与内容的关系:形式主义美学与后形式主义",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "art-criticism",
+      "name": "艺术批评",
+      "description": "艺术评价的标准/方法/主观与客观之间的张力",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "aesthetic-experience",
+      "name": "审美经验",
+      "description": "审美态度/审美感知/审美情感的哲学分析",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "chinese-aesthetics",
+      "name": "中国传统美学",
+      "description": "气韵生动/意境/虚实/留白:中国美学的核心范畴",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "tragedy-philosophy",
+      "name": "悲剧哲学",
+      "description": "亚里士多德的净化论与尼采的悲剧精神",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "philosophy-of-music",
+      "name": "音乐哲学",
+      "description": "音乐的本质:形式主义vs表现主义/绝对音乐与标题音乐",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分支"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "photography-aesthetics",
+      "name": "摄影美学",
+      "description": "本雅明的机械复制时代艺术:灵韵(aura)的消失",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "environmental-aesthetics",
+      "name": "环境美学",
+      "description": "自然美/景观美学/日常生活审美化",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "digital-aesthetics",
+      "name": "数字美学",
+      "description": "数字艺术/生成艺术/AI创作的美学挑战",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "taste-theory",
+      "name": "趣味理论",
+      "description": "休谟的趣味标准与审美教育的可能性",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "概念"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "institutional-theory",
+      "name": "艺术制度论",
+      "description": "丹托/迪基:艺术世界与艺术地位的社会赋予",
+      "subdomain_id": "aesthetics",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "modern-philosophy-overview",
+      "name": "近现代哲学概述",
+      "description": "从笛卡尔到后现代:西方近现代哲学的主要运动",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "existentialism",
+      "name": "存在主义",
+      "description": "萨特/加缪/海德格尔:存在先于本质与自由选择",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "phenomenology",
+      "name": "现象学",
+      "description": "胡塞尔的意向性/海德格尔的此在/梅洛-庞蒂的身体",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "analytic-philosophy",
+      "name": "分析哲学",
+      "description": "弗雷格/罗素/维特根斯坦:语言分析与逻辑清晰性",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "wittgenstein",
+      "name": "维特根斯坦",
+      "description": "逻辑哲学论/哲学研究:语言游戏与生活形式",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "人物"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "postmodernism",
+      "name": "后现代主义",
+      "description": "利奥塔/鲍德里亚:大叙事的终结与模拟的时代",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "deconstruction",
+      "name": "解构主义",
+      "description": "德里达:延异/增补/文本之外无物",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pragmatism",
+      "name": "实用主义",
+      "description": "皮尔斯/詹姆斯/杜威/罗蒂:真理的实践标准",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "philosophy-of-language",
+      "name": "语言哲学",
+      "description": "意义理论/指称/言语行为:语言如何承载思想",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "分支"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "philosophy-of-mind",
+      "name": "心灵哲学",
+      "description": "意识难问题/感受质/功能主义/取消唯物论",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "分支"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feminist-philosophy",
+      "name": "女性主义哲学",
+      "description": "波伏娃/巴特勒:性别建构/身体政治/交叉性",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "postcolonial-philosophy",
+      "name": "后殖民哲学",
+      "description": "赛义德/斯皮瓦克/法农:东方主义/底层发声/殖民批判",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "当代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "critical-theory",
+      "name": "批判理论",
+      "description": "法兰克福学派:文化工业/工具理性/公共领域批判",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hermeneutics",
+      "name": "诠释学",
+      "description": "伽达默尔:理解的历史性/视域融合/效果历史",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "structuralism",
+      "name": "结构主义",
+      "description": "索绪尔/列维-斯特劳斯:深层结构与二元对立",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "philosophy-of-science",
+      "name": "科学哲学",
+      "description": "科学实在论/工具主义/科学解释模型",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分支"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "philosophy-of-technology",
+      "name": "技术哲学",
+      "description": "海德格尔论技术/技术决定论/技术的伦理维度",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "process-philosophy",
+      "name": "过程哲学",
+      "description": "怀特海:实际存在物/过程与实在/有机哲学",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流派"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "new-confucianism",
+      "name": "新儒学",
+      "description": "牟宗三/唐君毅:中国哲学的现代转化与儒学复兴",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "东方"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "philosophy-of-ai",
+      "name": "人工智能哲学",
+      "description": "中文房间/图灵测试/机器意识/AI伦理的哲学基础",
+      "subdomain_id": "modern-philosophy",
+      "domain_id": "philosophy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "ancient-philosophy-overview",
+      "target_id": "pre-socratic-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pre-socratic-overview",
+      "target_id": "heraclitus",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pre-socratic-overview",
+      "target_id": "parmenides",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pre-socratic-overview",
+      "target_id": "democritus",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ancient-philosophy-overview",
+      "target_id": "sophists",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sophists",
+      "target_id": "socrates",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "socrates",
+      "target_id": "plato",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plato",
+      "target_id": "plato-republic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plato",
+      "target_id": "aristotle",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aristotle",
+      "target_id": "aristotle-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "democritus",
+      "target_id": "epicurus",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "socrates",
+      "target_id": "stoicism",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "plato",
+      "target_id": "neoplatonism",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ancient-philosophy-overview",
+      "target_id": "skepticism-ancient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ancient-philosophy-overview",
+      "target_id": "confucius",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "confucius",
+      "target_id": "mencius",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "confucius",
+      "target_id": "xunzi",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ancient-philosophy-overview",
+      "target_id": "laozi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "laozi",
+      "target_id": "zhuangzi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ancient-philosophy-overview",
+      "target_id": "mozi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "confucius",
+      "target_id": "legalism",
+      "relation_type": "influences",
+      "strength": 0.5
+    },
+    {
+      "source_id": "xunzi",
+      "target_id": "legalism",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ancient-philosophy-overview",
+      "target_id": "buddhist-philosophy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ancient-philosophy-overview",
+      "target_id": "yinyang-school",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plato",
+      "target_id": "ancient-philosophy-legacy",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "aristotle",
+      "target_id": "ancient-philosophy-legacy",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "knowledge-definition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "knowledge-definition",
+      "target_id": "gettier-problem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "rationalism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "empiricism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rationalism",
+      "target_id": "a-priori-knowledge",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "empiricism",
+      "target_id": "a-priori-knowledge",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rationalism",
+      "target_id": "kant-epistemology",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "empiricism",
+      "target_id": "kant-epistemology",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "skepticism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "truth-theories",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "scientific-method-phil",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scientific-method-phil",
+      "target_id": "induction-problem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "induction-problem",
+      "target_id": "falsificationism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "falsificationism",
+      "target_id": "paradigm-shift",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "paradigm-shift",
+      "target_id": "epistemological-relativism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "social-epistemology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "knowledge-definition",
+      "target_id": "foundationalism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "knowledge-definition",
+      "target_id": "coherentism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "foundationalism",
+      "target_id": "reliabilism",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "knowledge-definition",
+      "target_id": "virtue-epistemology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "phenomenology-method",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "empiricism",
+      "target_id": "pragmatist-epistemology",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "epistemology-overview",
+      "target_id": "naturalized-epistemology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaphysics-overview",
+      "target_id": "being-existence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "being-existence",
+      "target_id": "ontology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaphysics-overview",
+      "target_id": "realism-antirealism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "realism-antirealism",
+      "target_id": "idealism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "realism-antirealism",
+      "target_id": "materialism-physicalism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaphysics-overview",
+      "target_id": "dualism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dualism",
+      "target_id": "mind-body-problem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaphysics-overview",
+      "target_id": "causation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "causation",
+      "target_id": "free-will",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "metaphysics-overview",
+      "target_id": "free-will",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "free-will",
+      "target_id": "determinism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "determinism",
+      "target_id": "compatibilism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaphysics-overview",
+      "target_id": "time-space",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaphysics-overview",
+      "target_id": "personal-identity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ontology",
+      "target_id": "possible-worlds",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ontology",
+      "target_id": "universals-particulars",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "being-existence",
+      "target_id": "substance-metaphysics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mind-body-problem",
+      "target_id": "emergence",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ontology",
+      "target_id": "abstract-objects",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaphysics-overview",
+      "target_id": "chinese-metaphysics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "utilitarianism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "utilitarianism",
+      "target_id": "act-rule-utilitarianism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "deontology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "deontology",
+      "target_id": "categorical-imperative",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "virtue-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "care-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "metaethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaethics",
+      "target_id": "moral-realism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metaethics",
+      "target_id": "emotivism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "moral-relativism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "problem-of-evil",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "applied-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "applied-ethics",
+      "target_id": "bioethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "applied-ethics",
+      "target_id": "environmental-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "applied-ethics",
+      "target_id": "business-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "applied-ethics",
+      "target_id": "tech-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "human-rights-phil",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "justice-concept",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "utilitarianism",
+      "target_id": "trolley-problem",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "deontology",
+      "target_id": "trolley-problem",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "moral-development-phil",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "virtue-ethics",
+      "target_id": "confucian-ethics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "buddhist-ethics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ethics-overview",
+      "target_id": "moral-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "utilitarianism",
+      "target_id": "effective-altruism",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "logic-overview",
+      "target_id": "propositional-logic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "propositional-logic",
+      "target_id": "predicate-logic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "logic-overview",
+      "target_id": "deductive-reasoning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "logic-overview",
+      "target_id": "inductive-reasoning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "logic-overview",
+      "target_id": "abductive-reasoning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "logic-overview",
+      "target_id": "analogical-reasoning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "deductive-reasoning",
+      "target_id": "formal-fallacies",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "inductive-reasoning",
+      "target_id": "informal-fallacies",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "logic-overview",
+      "target_id": "paradoxes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "predicate-logic",
+      "target_id": "modal-logic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "logic-overview",
+      "target_id": "argument-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "argument-structure",
+      "target_id": "critical-thinking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "formal-fallacies",
+      "target_id": "critical-thinking",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "informal-fallacies",
+      "target_id": "critical-thinking",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "predicate-logic",
+      "target_id": "philosophy-of-logic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "logic-overview",
+      "target_id": "dialectic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "predicate-logic",
+      "target_id": "set-theory-phil",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "set-theory-phil",
+      "target_id": "philosophy-of-math",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modal-logic",
+      "target_id": "fuzzy-logic-phil",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "social-contract",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-contract",
+      "target_id": "hobbes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-contract",
+      "target_id": "locke-political",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-contract",
+      "target_id": "rousseau",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "liberalism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "locke-political",
+      "target_id": "liberalism",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "conservatism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "socialism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "socialism",
+      "target_id": "marxism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "anarchism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "liberalism",
+      "target_id": "rawls-justice",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "rawls-justice",
+      "target_id": "nozick-libertarianism",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "democracy-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "power-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "civil-society",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "rights-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "locke-political",
+      "target_id": "rights-theory",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "nationalism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nationalism",
+      "target_id": "cosmopolitanism",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "feminism-political",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "liberalism",
+      "target_id": "multiculturalism",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "political-philosophy-overview",
+      "target_id": "chinese-political-phil",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rawls-justice",
+      "target_id": "global-justice",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "nature-of-beauty",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "definition-of-art",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "definition-of-art",
+      "target_id": "aesthetic-judgment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "sublime",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "mimesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "expression-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "definition-of-art",
+      "target_id": "art-form",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "definition-of-art",
+      "target_id": "art-criticism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "aesthetic-experience",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "chinese-aesthetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mimesis",
+      "target_id": "tragedy-philosophy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "philosophy-of-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "photography-aesthetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "environmental-aesthetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aesthetics-overview",
+      "target_id": "digital-aesthetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nature-of-beauty",
+      "target_id": "taste-theory",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "definition-of-art",
+      "target_id": "institutional-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "existentialism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "phenomenology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "analytic-philosophy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "analytic-philosophy",
+      "target_id": "wittgenstein",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "postmodernism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "postmodernism",
+      "target_id": "deconstruction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "pragmatism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "analytic-philosophy",
+      "target_id": "philosophy-of-language",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "analytic-philosophy",
+      "target_id": "philosophy-of-mind",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "feminist-philosophy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "postcolonial-philosophy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "critical-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "phenomenology",
+      "target_id": "hermeneutics",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "structuralism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "structuralism",
+      "target_id": "postmodernism",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "analytic-philosophy",
+      "target_id": "philosophy-of-science",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "philosophy-of-technology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "process-philosophy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modern-philosophy-overview",
+      "target_id": "new-confucianism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "philosophy-of-mind",
+      "target_id": "philosophy-of-ai",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "socrates",
+      "target_id": "knowledge-definition",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "plato",
+      "target_id": "rationalism",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "aristotle",
+      "target_id": "empiricism",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "skepticism-ancient",
+      "target_id": "skepticism",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "aristotle-ethics",
+      "target_id": "virtue-ethics",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "confucius",
+      "target_id": "confucian-ethics",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "buddhist-philosophy",
+      "target_id": "buddhist-ethics",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "epicurus",
+      "target_id": "utilitarianism",
+      "relation_type": "influences",
+      "strength": 0.5
+    },
+    {
+      "source_id": "stoicism",
+      "target_id": "deontology",
+      "relation_type": "influences",
+      "strength": 0.5
+    },
+    {
+      "source_id": "plato",
+      "target_id": "idealism",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "aristotle",
+      "target_id": "substance-metaphysics",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "parmenides",
+      "target_id": "being-existence",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "laozi",
+      "target_id": "chinese-metaphysics",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "aristotle",
+      "target_id": "deductive-reasoning",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "socrates",
+      "target_id": "dialectic",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plato-republic",
+      "target_id": "political-philosophy-overview",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "confucius",
+      "target_id": "chinese-political-phil",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "plato",
+      "target_id": "mimesis",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "aristotle",
+      "target_id": "tragedy-philosophy",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "kant-epistemology",
+      "target_id": "phenomenology",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "empiricism",
+      "target_id": "analytic-philosophy",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pragmatist-epistemology",
+      "target_id": "pragmatism",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "falsificationism",
+      "target_id": "philosophy-of-science",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "mind-body-problem",
+      "target_id": "philosophy-of-mind",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "free-will",
+      "target_id": "existentialism",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "justice-concept",
+      "target_id": "rawls-justice",
+      "relation_type": "influences",
+      "strength": 0.8
+    },
+    {
+      "source_id": "human-rights-phil",
+      "target_id": "rights-theory",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "utilitarianism",
+      "target_id": "democracy-theory",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "deductive-reasoning",
+      "target_id": "rationalism",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "inductive-reasoning",
+      "target_id": "induction-problem",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "critical-thinking",
+      "target_id": "scientific-method-phil",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "propositional-logic",
+      "target_id": "analytic-philosophy",
+      "relation_type": "influences",
+      "strength": 0.6
+    },
+    {
+      "source_id": "philosophy-of-logic",
+      "target_id": "wittgenstein",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "modal-logic",
+      "target_id": "possible-worlds",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "aesthetic-judgment",
+      "target_id": "phenomenology",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "photography-aesthetics",
+      "target_id": "critical-theory",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "tech-ethics",
+      "target_id": "philosophy-of-ai",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "moral-relativism",
+      "target_id": "postmodernism",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "marxism",
+      "target_id": "critical-theory",
+      "relation_type": "influences",
+      "strength": 0.7
+    },
+    {
+      "source_id": "feminism-political",
+      "target_id": "feminist-philosophy",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "socialism",
+      "target_id": "existentialism",
+      "relation_type": "related",
+      "strength": 0.4
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "created_at": "2026-03-20T03:00:24.824186+00:00",
+    "stats": {
+      "total_concepts": 170,
+      "total_edges": 214,
+      "total_subdomains": 8,
+      "total_milestones": 31
+    }
+  }
+}

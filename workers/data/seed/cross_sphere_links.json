@@ -1,0 +1,713 @@
+{
+  "_doc": "Cross-sphere relation links — connects concepts across different knowledge domains",
+  "_version": "1.0",
+  "_created": "2026-03-19",
+  "links": [
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "linear-regression",
+      "target_domain": "mathematics",
+      "target_id": "linear-regression",
+      "relation": "same_concept",
+      "description": "AI工程中的线性回归与数学中的线性回归是同一概念，前者侧重应用，后者侧重理论推导"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "gradient-descent",
+      "target_domain": "mathematics",
+      "target_id": "gradient-descent",
+      "relation": "same_concept",
+      "description": "梯度下降在AI工程中用于模型优化，在数学中是最优化理论的基本方法"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "neural-network-basics",
+      "target_domain": "mathematics",
+      "target_id": "matrix-multiplication",
+      "relation": "requires",
+      "description": "神经网络的前向传播本质上是矩阵乘法运算"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "neural-network-basics",
+      "target_domain": "mathematics",
+      "target_id": "derivative-concept",
+      "relation": "requires",
+      "description": "神经网络的反向传播需要理解导数和链式法则"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "gradient-descent",
+      "target_domain": "mathematics",
+      "target_id": "gradient-directional",
+      "relation": "requires",
+      "description": "梯度下降算法需要理解梯度和方向导数的数学基础"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "gradient-descent",
+      "target_domain": "mathematics",
+      "target_id": "optimization-calculus",
+      "relation": "requires",
+      "description": "梯度下降是微积分中最优化方法的计算实现"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "text-embedding",
+      "target_domain": "mathematics",
+      "target_id": "vectors-intro",
+      "relation": "requires",
+      "description": "文本嵌入将文本映射到向量空间，需要理解向量的基本概念"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "text-embedding",
+      "target_domain": "mathematics",
+      "target_id": "vector-spaces",
+      "relation": "requires",
+      "description": "嵌入空间是一个向量空间，理解线性代数中的向量空间有助于理解嵌入"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "word2vec",
+      "target_domain": "mathematics",
+      "target_id": "vectors-intro",
+      "relation": "requires",
+      "description": "Word2Vec将词语映射为向量，向量运算可表达语义关系"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "adjacency-matrix",
+      "target_domain": "mathematics",
+      "target_id": "matrix-multiplication",
+      "relation": "requires",
+      "description": "邻接矩阵是图的矩阵表示，矩阵运算可分析图的性质"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "prompt-optimization",
+      "target_domain": "mathematics",
+      "target_id": "convex-optimization",
+      "relation": "related",
+      "description": "提示词优化中的一些方法借鉴了数学优化理论的思想"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "text-embedding",
+      "target_domain": "english",
+      "target_id": "word-formation",
+      "relation": "applies_to",
+      "description": "文本嵌入技术用于将英语词汇转换为计算机可处理的数值向量"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "word2vec",
+      "target_domain": "english",
+      "target_id": "word-formation",
+      "relation": "applies_to",
+      "description": "Word2Vec模型从大量英文文本中学习词汇的语义表示"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "text-embedding",
+      "target_domain": "english",
+      "target_id": "five-basic-patterns",
+      "relation": "applies_to",
+      "description": "句子嵌入技术能捕获英语句型的语义特征"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "context-window",
+      "target_domain": "english",
+      "target_id": "cohesion-coherence",
+      "relation": "related",
+      "description": "LLM的上下文窗口决定了模型能理解的英文文本连贯性范围"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "full-text-search",
+      "target_domain": "english",
+      "target_id": "skimming",
+      "relation": "related",
+      "description": "全文搜索是对文本检索的计算机实现，类似于人类的快速浏览技能"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "probability-basics",
+      "target_domain": "ai-engineering",
+      "target_id": "neural-network-basics",
+      "relation": "enables",
+      "description": "概率论为神经网络的损失函数设计和输出层解释提供数学基础"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "bayesian-statistics",
+      "target_domain": "ai-engineering",
+      "target_id": "prompt-optimization",
+      "relation": "related",
+      "description": "贝叶斯统计方法可用于提示词优化中的不确定性建模"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "eigenvalues-eigenvectors",
+      "target_domain": "ai-engineering",
+      "target_id": "embedding-models",
+      "relation": "enables",
+      "description": "特征值分解是降维和嵌入模型的数学基础（如PCA降维）"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "descriptive-statistics",
+      "target_domain": "english",
+      "target_id": "graphic-information",
+      "relation": "related",
+      "description": "描述统计的图表和数据可视化需要英文读图能力来理解"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "linear-programming",
+      "target_domain": "ai-engineering",
+      "target_id": "prompt-optimization",
+      "relation": "related",
+      "description": "线性规划的优化思想在AI工程的资源分配和调度中有应用"
+    },
+    {
+      "source_domain": "english",
+      "source_id": "academic-writing",
+      "target_domain": "ai-engineering",
+      "target_id": "prompt-optimization",
+      "relation": "related",
+      "description": "学术写作中的清晰表达和逻辑结构对编写高质量提示词至关重要"
+    },
+    {
+      "source_domain": "english",
+      "source_id": "summarizing",
+      "target_domain": "ai-engineering",
+      "target_id": "contextual-compression",
+      "relation": "related",
+      "description": "人类的摘要能力与AI的上下文压缩技术追求相同目标——保留核心信息"
+    },
+    {
+      "source_domain": "english",
+      "source_id": "figurative-language",
+      "target_domain": "ai-engineering",
+      "target_id": "text-embedding",
+      "relation": "related",
+      "description": "比喻等修辞手法对NLP的语义理解提出挑战，嵌入模型需要学会处理"
+    },
+    {
+      "source_domain": "english",
+      "source_id": "reading-speed",
+      "target_domain": "ai-engineering",
+      "target_id": "context-window",
+      "relation": "related",
+      "description": "人类阅读速度有限类似于AI的上下文窗口限制，都需要策略性处理长文本"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "derivative-concept",
+      "target_domain": "physics",
+      "target_id": "kinematics-1d",
+      "relation": "enables",
+      "description": "导数的概念直接对应物理中的速度和加速度——瞬时变化率"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "definite-integrals",
+      "target_domain": "physics",
+      "target_id": "work-energy",
+      "relation": "enables",
+      "description": "定积分用于计算物理中的功（力对位移的积分）"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "differential-equations-intro",
+      "target_domain": "physics",
+      "target_id": "simple-harmonic-motion",
+      "relation": "enables",
+      "description": "简谐运动的方程mx''+kx=0是典型的二阶常微分方程"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "vectors-intro",
+      "target_domain": "physics",
+      "target_id": "vectors-in-physics",
+      "relation": "same_concept",
+      "description": "数学中的向量理论是物理向量分析的数学基础"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "eigenvalues-eigenvectors",
+      "target_domain": "physics",
+      "target_id": "schrodinger-equation",
+      "relation": "enables",
+      "description": "薛定谔方程本质是求解算符的本征值问题"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "probability-basics",
+      "target_domain": "physics",
+      "target_id": "wave-function",
+      "relation": "enables",
+      "description": "概率论为量子力学的概率诠释提供数学基础"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "gradient-directional",
+      "target_domain": "physics",
+      "target_id": "electric-potential",
+      "relation": "enables",
+      "description": "电场是电势的负梯度 E=-nabla V"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "greens-theorem",
+      "target_domain": "physics",
+      "target_id": "maxwells-equations",
+      "relation": "enables",
+      "description": "格林定理、斯托克斯定理是麦克斯韦方程组积分形式的数学基础"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "fourier-intro",
+      "target_domain": "physics",
+      "target_id": "wave-equation",
+      "relation": "enables",
+      "description": "傅里叶分析用于分解和求解波动方程"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "taylor-series",
+      "target_domain": "physics",
+      "target_id": "simple-harmonic-motion",
+      "relation": "related",
+      "description": "泰勒展开用于将复杂势能函数近似为二次型，导出简谐运动"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "statistical-mechanics",
+      "target_domain": "ai-engineering",
+      "target_id": "loss-functions",
+      "relation": "related",
+      "description": "物理中的统计力学熵与AI中交叉熵损失函数具有相同的数学形式"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "entropy",
+      "target_domain": "ai-engineering",
+      "target_id": "loss-functions",
+      "relation": "related",
+      "description": "热力学熵的玻尔兹曼定义S=kB*ln(Omega)启发了信息论与交叉熵损失"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "quantum-computing-intro",
+      "target_domain": "ai-engineering",
+      "target_id": "deep-learning-intro",
+      "relation": "related",
+      "description": "量子计算可能为深度学习带来革命性加速"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "sound-waves",
+      "target_domain": "english",
+      "target_id": "vowel-sounds",
+      "relation": "related",
+      "description": "声波的物理属性（频率、振幅）决定了元音的音调和响度"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "band-theory",
+      "target_domain": "ai-engineering",
+      "target_id": "neural-network-basics",
+      "relation": "enables",
+      "description": "能带理论是半导体和GPU等神经网络硬件加速器的物理基础"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "ab-testing-design",
+      "target_domain": "mathematics",
+      "target_id": "hypothesis-testing",
+      "relation": "requires",
+      "description": "产品A/B测试的统计显著性判断依赖数学中的假设检验理论"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "statistical-significance",
+      "target_domain": "mathematics",
+      "target_id": "hypothesis-testing",
+      "relation": "same_concept",
+      "description": "产品中的统计显著性概念直接来自数学统计的假设检验"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "data-visualization",
+      "target_domain": "mathematics",
+      "target_id": "descriptive-statistics",
+      "relation": "requires",
+      "description": "数据可视化需要理解描述统计学的基本概念（均值、中位数、分布等）"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "predictive-analytics",
+      "target_domain": "ai-engineering",
+      "target_id": "ml-basics",
+      "relation": "requires",
+      "description": "产品中的预测分析（流失预警等）依赖机器学习的基本模型和方法"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "user-segmentation",
+      "target_domain": "ai-engineering",
+      "target_id": "ml-basics",
+      "relation": "related",
+      "description": "用户分群可以借助聚类等机器学习方法实现自动化和精细化"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "seo-basics",
+      "target_domain": "ai-engineering",
+      "target_id": "llm-api-usage",
+      "relation": "related",
+      "description": "现代SEO策略越来越多地利用LLM进行内容生成和优化"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "design-system",
+      "target_domain": "ai-engineering",
+      "target_id": "design-system",
+      "relation": "same_concept",
+      "description": "设计系统在产品设计和前端工程中是同一概念的不同视角：设计规范 vs 组件实现"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "responsive-design",
+      "target_domain": "ai-engineering",
+      "target_id": "html-basics",
+      "relation": "related",
+      "description": "响应式设计的实现依赖HTML/CSS媒体查询等前端基础技术"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "content-strategy",
+      "target_domain": "english",
+      "target_id": "writing-process",
+      "relation": "related",
+      "description": "UX文案和内容策略需要扎实的写作功底和语言表达能力"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "product-communication",
+      "target_domain": "english",
+      "target_id": "presentation-skills",
+      "relation": "related",
+      "description": "产品经理的汇报沟通需要演讲表达技巧"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "cohort-analysis",
+      "target_domain": "mathematics",
+      "target_id": "probability-basics",
+      "relation": "requires",
+      "description": "群组分析中的留存率计算和趋势判断需要概率论基础"
+    },
+    {
+      "source_domain": "product-design",
+      "source_id": "behavioral-economics",
+      "target_domain": "mathematics",
+      "target_id": "probability-basics",
+      "relation": "related",
+      "description": "行为经济学中的前景理论涉及概率权重函数等数学概念"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "frontend-testing",
+      "target_domain": "product-design",
+      "target_id": "ab-testing-design",
+      "relation": "enables",
+      "description": "前端测试框架为产品A/B测试提供技术实现基础"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "restful-api",
+      "target_domain": "product-design",
+      "target_id": "event-tracking",
+      "relation": "enables",
+      "description": "RESTful API是产品埋点数据上报的技术通道"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "system-design-basics",
+      "target_domain": "product-design",
+      "target_id": "technical-debt",
+      "relation": "related",
+      "description": "系统设计中的架构权衡直接影响产品的技术债务累积"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "compound-interest",
+      "target_domain": "mathematics",
+      "target_id": "exponential-functions",
+      "relation": "applies_to",
+      "description": "复利公式是指数函数在金融中的核心应用"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "portfolio-theory",
+      "target_domain": "mathematics",
+      "target_id": "descriptive-statistics",
+      "relation": "applies_to",
+      "description": "投资组合理论依赖方差、协方差等统计概念进行风险度量"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "time-value-of-money",
+      "target_domain": "mathematics",
+      "target_id": "geometric-sequence",
+      "relation": "applies_to",
+      "description": "货币时间价值的折现计算基于等比数列求和公式"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "black-scholes-model",
+      "target_domain": "mathematics",
+      "target_id": "conditional-probability",
+      "relation": "applies_to",
+      "description": "Black-Scholes期权定价模型建立在概率论和随机过程基础上"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "portfolio-optimization",
+      "target_domain": "mathematics",
+      "target_id": "convex-optimization",
+      "relation": "applies_to",
+      "description": "投资组合优化本质是凸优化问题"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "machine-learning-finance",
+      "target_domain": "ai-engineering",
+      "target_id": "deep-learning-intro",
+      "relation": "applies_to",
+      "description": "深度学习在量化金融中的alpha生成和风控建模"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "sentiment-analysis-finance",
+      "target_domain": "ai-engineering",
+      "target_id": "linear-regression",
+      "relation": "applies_to",
+      "description": "金融情绪分析利用NLP和回归技术从新闻文本提取交易信号"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "algorithmic-trading",
+      "target_domain": "ai-engineering",
+      "target_id": "kmp-algorithm",
+      "relation": "related",
+      "description": "算法交易需要高效的数据结构和算法知识来处理实时市场数据"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "blockchain-basics",
+      "target_domain": "ai-engineering",
+      "target_id": "token-economics",
+      "relation": "related",
+      "description": "区块链技术中的代币经济学连接了金融理论和分布式系统"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "stochastic-calculus",
+      "target_domain": "physics",
+      "target_id": "statistical-mechanics",
+      "relation": "related",
+      "description": "金融随机微积分与统计力学共享布朗运动和随机过程的数学基础"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "systemic-risk",
+      "target_domain": "physics",
+      "target_id": "entropy",
+      "relation": "related",
+      "description": "系统性风险的传导机制与热力学熵增的不可逆性有类比关系"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "financial-modeling",
+      "target_domain": "english",
+      "target_id": "business-vocabulary",
+      "relation": "related",
+      "description": "财务建模需要大量英文商业术语（EBITDA、DCF、IRR等）"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "ipo-process",
+      "target_domain": "english",
+      "target_id": "compound-sentences",
+      "relation": "related",
+      "description": "IPO招股书和财务报告需要复杂英文句式的阅读理解能力"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "behavioral-finance",
+      "target_domain": "product-design",
+      "target_id": "behavioral-economics",
+      "relation": "related",
+      "description": "行为金融学与产品设计中的行为经济学共享非理性决策理论基础"
+    },
+    {
+      "source_domain": "finance",
+      "source_id": "robo-advisor",
+      "target_domain": "product-design",
+      "target_id": "data-driven-overview",
+      "relation": "related",
+      "description": "智能投顾产品设计需要数据驱动的用户体验和交互设计"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "cognitive-biases",
+      "target_domain": "ai-engineering",
+      "target_id": "prompt-basics",
+      "relation": "related",
+      "description": "认知偏差理解有助于设计更有效的AI提示词，避免偏差放大"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "decision-making",
+      "target_domain": "ai-engineering",
+      "target_id": "reinforcement-learning",
+      "relation": "related",
+      "description": "人类决策过程为强化学习的奖励函数设计提供心理学基础"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "working-memory",
+      "target_domain": "ai-engineering",
+      "target_id": "attention-mechanism",
+      "relation": "related",
+      "description": "注意力机制的设计灵感部分来自人类工作记忆的注意力分配"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "descriptive-statistics",
+      "target_domain": "mathematics",
+      "target_id": "descriptive-statistics",
+      "relation": "same_concept",
+      "description": "描述统计在心理学与数学中是完全相同的概念"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "inferential-statistics",
+      "target_domain": "mathematics",
+      "target_id": "hypothesis-testing",
+      "relation": "related",
+      "description": "心理学的推断统计大量使用数学假设检验方法"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "correlational-research",
+      "target_domain": "mathematics",
+      "target_id": "correlation",
+      "relation": "requires",
+      "description": "心理学相关研究需要数学中相关系数的计算和解释能力"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "language-cognition",
+      "target_domain": "english",
+      "target_id": "grammar-in-context",
+      "relation": "related",
+      "description": "语言认知研究为理解语法习得和语言加工提供理论基础"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "language-development",
+      "target_domain": "english",
+      "target_id": "vowel-sounds",
+      "relation": "related",
+      "description": "语言发展心理学解释了语音习得的敏感期和学习机制"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "persuasion",
+      "target_domain": "product-design",
+      "target_id": "growth-overview",
+      "relation": "enables",
+      "description": "说服心理学原理是产品增长策略和用户转化的理论基础"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "cognitive-load",
+      "target_domain": "product-design",
+      "target_id": "interaction-design-overview",
+      "relation": "enables",
+      "description": "认知负荷理论指导交互设计降低用户认知负担"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "maslow-hierarchy",
+      "target_domain": "product-design",
+      "target_id": "user-research-overview",
+      "relation": "related",
+      "description": "马斯洛需求层次为用户需求分析提供经典心理学框架"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "cognitive-biases",
+      "target_domain": "finance",
+      "target_id": "behavioral-finance",
+      "relation": "enables",
+      "description": "认知偏差是行为金融学的核心理论基础"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "heuristics",
+      "target_domain": "finance",
+      "target_id": "investment-psychology",
+      "relation": "enables",
+      "description": "启发式思维解释了投资者为何做出非理性决策"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "neuron-structure",
+      "target_domain": "physics",
+      "target_id": "electric-potential",
+      "relation": "related",
+      "description": "神经元的动作电位基于物理学的电流和电压原理"
+    },
+    {
+      "source_domain": "psychology",
+      "source_id": "brain-imaging",
+      "target_domain": "physics",
+      "target_id": "electromagnetic-waves",
+      "relation": "related",
+      "description": "脑成像技术（fMRI、EEG）依赖物理学的电磁波和核磁共振原理"
+    }
+  ],
+  "meta": {
+    "total_links": 55,
+    "relation_types": {
+      "same_concept": "相同概念在不同领域的不同视角",
+      "requires": "源概念需要目标概念作为知识基础",
+      "enables": "源概念使目标概念的学习或应用成为可能",
+      "applies_to": "源概念（技术）应用于目标概念（内容）",
+      "related": "两个概念在不同领域中有有趣的关联或类比"
+    },
+    "domain_pairs": {
+      "ai-engineering_mathematics": 11,
+      "ai-engineering_english": 5,
+      "ai-engineering_product-design": 3,
+      "mathematics_ai-engineering": 4,
+      "mathematics_english": 1,
+      "english_ai-engineering": 4,
+      "mathematics_physics": 10,
+      "physics_ai-engineering": 4,
+      "physics_english": 1,
+      "product-design_mathematics": 4,
+      "product-design_ai-engineering": 4,
+      "product-design_english": 2,
+      "product-design_physics": 0
+    }
+  },
+  "total": 85
+}

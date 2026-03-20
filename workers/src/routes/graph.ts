@@ -2,16 +2,49 @@ import { Hono } from 'hono';
 import type { Env } from '../types';
 // Seed data is imported at build time via wrangler's module rules
 // We import it from the data directory (copied to workers/data at build)
-import seedGraph from '../../data/seed_graph.json';
-import ragIndex from '../../data/rag/_index.json';
+// Multi-domain seed data imports
+import domainsRegistry from '../../data/seed/domains.json';
+import crossSphereLinks from '../../data/seed/cross_sphere_links.json';
+import seedAI from '../../data/seed/ai-engineering/seed_graph.json';
+import seedMath from '../../data/seed/mathematics/seed_graph.json';
+import seedEnglish from '../../data/seed/english/seed_graph.json';
+import seedPhysics from '../../data/seed/physics/seed_graph.json';
+import seedProduct from '../../data/seed/product-design/seed_graph.json';
+import seedFinance from '../../data/seed/finance/seed_graph.json';
+import seedPsychology from '../../data/seed/psychology/seed_graph.json';
+import seedPhilosophy from '../../data/seed/philosophy/seed_graph.json';
+// Multi-domain RAG index imports
+import ragAI from '../../data/rag/_index.json';
+import ragMath from '../../data/rag/mathematics/_index.json';
+import ragEnglish from '../../data/rag/english/_index.json';
+import ragPhysics from '../../data/rag/physics/_index.json';
+import ragProduct from '../../data/rag/product-design/_index.json';
+import ragFinance from '../../data/rag/finance/_index.json';
+import ragPsychology from '../../data/rag/psychology/_index.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
-const seed = seedGraph as any;
+const DEFAULT_DOMAIN = 'ai-engineering';
+const domainsList = (domainsRegistry as any).domains as any[];
+const seedMap: Record<string, any> = {
+  'ai-engineering': seedAI, 'mathematics': seedMath, 'english': seedEnglish,
+  'physics': seedPhysics, 'product-design': seedProduct, 'finance': seedFinance,
+  'psychology': seedPsychology, 'philosophy': seedPhilosophy,
+};
+const ragMap: Record<string, any> = {
+  'ai-engineering': ragAI, 'mathematics': ragMath, 'english': ragEnglish,
+  'physics': ragPhysics, 'product-design': ragProduct, 'finance': ragFinance,
+  'psychology': ragPsychology, 'philosophy': { documents: [], stats: {} },
+};
+function getSeed(domain: string): any { return seedMap[domain] || null; }
+function getRagIndex(domain: string): any { return ragMap[domain] || { documents: [], stats: {} }; }
 
 /** GET /graph/data */
 app.get('/data', (c) => {
+  const domain = c.req.query('domain') || DEFAULT_DOMAIN;
   const subdomainId = c.req.query('subdomain_id');
+  const seed = getSeed(domain);
+  if (!seed) return c.json({ detail: 'Domain not found' }, 404);
 
   let concepts = seed.concepts;
   let edges = seed.edges;
@@ -19,7 +52,7 @@ app.get('/data', (c) => {
   if (subdomainId) {
     const ids = new Set(concepts.filter((cc: any) => cc.subdomain_id === subdomainId).map((cc: any) => cc.id));
     concepts = concepts.filter((cc: any) => cc.subdomain_id === subdomainId);
-    edges = edges.filter((e: any) => ids.has(e.source_id) || ids.has(e.target_id));
+    edges = edges.filter((e: any) => ids.has(e.source_id) && ids.has(e.target_id));
   }
 
   const nodes = concepts.map((c: any) => ({
@@ -47,10 +80,13 @@ app.get('/data', (c) => {
 });
 
 /** GET /graph/domains */
-app.get('/domains', (c) => c.json([seed.domain]));
+app.get('/domains', (c) => { const result = domainsList.filter((d: any) => d.is_active !== false).map((d: any) => { const s = getSeed(d.id); const stats = s ? { total_concepts: s.concepts?.length ?? 0, total_edges: s.edges?.length ?? 0, subdomains: s.subdomains?.length ?? 0 } : { total_concepts: 0, total_edges: 0, subdomains: 0 }; return { ...d, stats }; }); return c.json(result); });
 
 /** GET /graph/subdomains */
 app.get('/subdomains', (c) => {
+  const domain = c.req.query('domain') || DEFAULT_DOMAIN;
+  const seed = getSeed(domain);
+  if (!seed) return c.json({ detail: 'Domain not found' }, 404);
   const conceptCounts: Record<string, number> = {};
   for (const cc of seed.concepts) {
     conceptCounts[cc.subdomain_id] = (conceptCounts[cc.subdomain_id] || 0) + 1;
@@ -61,6 +97,9 @@ app.get('/subdomains', (c) => {
 /** GET /graph/concepts/:id */
 app.get('/concepts/:id', (c) => {
   const conceptId = c.req.param('id');
+  const domain = c.req.query('domain') || DEFAULT_DOMAIN;
+  const seed = getSeed(domain);
+  if (!seed) return c.json({ detail: 'Domain not found' }, 404);
   const concept = seed.concepts.find((cc: any) => cc.id === conceptId);
   if (!concept) return c.json({ detail: `概念不存在: ${conceptId}` }, 404);
 
@@ -79,6 +118,9 @@ app.get('/concepts/:id', (c) => {
 app.get('/concepts/:id/neighbors', (c) => {
   const conceptId = c.req.param('id');
   const depth = Math.min(parseInt(c.req.query('depth') || '1'), 3);
+  const domain = c.req.query('domain') || DEFAULT_DOMAIN;
+  const seed = getSeed(domain);
+  if (!seed) return c.json({ detail: 'Domain not found' }, 404);
   const allIds = new Set(seed.concepts.map((cc: any) => cc.id));
   if (!allIds.has(conceptId)) return c.json({ detail: `概念不存在: ${conceptId}` }, 404);
 
@@ -106,12 +148,18 @@ app.get('/concepts/:id/neighbors', (c) => {
 });
 
 /** GET /graph/stats */
-app.get('/stats', (c) => c.json(seed.meta));
+app.get('/stats', (c) => {
+  const domain = c.req.query('domain') || DEFAULT_DOMAIN;
+  const seed = getSeed(domain);
+  if (!seed) return c.json({ detail: 'Domain not found' }, 404);
+  return c.json(seed.meta);
+});
 
 /** GET /graph/rag/:concept_id */
 app.get('/rag/:concept_id', (c) => {
   const conceptId = c.req.param('concept_id');
-  const idx = ragIndex as any;
+  const domain = c.req.query('domain') || DEFAULT_DOMAIN;
+  const idx = getRagIndex(domain);
   const doc = idx.documents?.find((d: any) => d.id === conceptId);
   if (!doc) return c.json({ detail: `RAG 文档不存在: ${conceptId}` }, 404);
   // RAG content is served from static files — return metadata only for now
@@ -127,14 +175,26 @@ app.get('/rag/:concept_id', (c) => {
 
 /** GET /graph/rag */
 app.get('/rag', (c) => {
-  const idx = ragIndex as any;
+  const domain = c.req.query('domain') || DEFAULT_DOMAIN;
+  const idx = getRagIndex(domain);
   return c.json({
-    total_docs: idx.stats?.total_docs || 0,
+    domain,
+    total_docs: idx.stats?.total_docs || idx.total_concepts || 0,
     total_chars: idx.stats?.total_chars || 0,
     by_subdomain: idx.stats?.by_subdomain || {},
     version: idx.version || '',
     generated_at: idx.generated_at || '',
   });
+});
+
+/** GET /graph/cross-links */
+app.get('/cross-links', (c) => {
+  const domain = c.req.query('domain');
+  const conceptId = c.req.query('concept_id');
+  let links = (crossSphereLinks as any).links || [];
+  if (domain) links = links.filter((lk: any) => lk.source_domain === domain || lk.target_domain === domain);
+  if (conceptId) links = links.filter((lk: any) => lk.source_id === conceptId || lk.target_id === conceptId);
+  return c.json({ links, total: links.length });
 });
 
 export default app;

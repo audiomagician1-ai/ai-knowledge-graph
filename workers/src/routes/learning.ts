@@ -1,9 +1,24 @@
 import { Hono } from 'hono';
 import type { Env } from '../types';
-import seedGraph from '../../data/seed_graph.json';
+// Multi-domain seed data imports
+import seedAI from '../../data/seed/ai-engineering/seed_graph.json';
+import seedMath from '../../data/seed/mathematics/seed_graph.json';
+import seedEnglish from '../../data/seed/english/seed_graph.json';
+import seedPhysics from '../../data/seed/physics/seed_graph.json';
+import seedProduct from '../../data/seed/product-design/seed_graph.json';
+import seedFinance from '../../data/seed/finance/seed_graph.json';
+import seedPsychology from '../../data/seed/psychology/seed_graph.json';
+import seedPhilosophy from '../../data/seed/philosophy/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
-const seed = seedGraph as any;
+
+const DEFAULT_DOMAIN = 'ai-engineering';
+const seedMap: Record<string, any> = {
+  'ai-engineering': seedAI, 'mathematics': seedMath, 'english': seedEnglish,
+  'physics': seedPhysics, 'product-design': seedProduct, 'finance': seedFinance,
+  'psychology': seedPsychology, 'philosophy': seedPhilosophy,
+};
+function getSeed(domain: string): any { return seedMap[domain] || seedMap[DEFAULT_DOMAIN]; }
 
 /** GET /learning/stats */
 app.get('/stats', async (c) => {
@@ -207,6 +222,8 @@ app.post('/sync', async (c) => {
 /** GET /learning/recommend */
 app.get('/recommend', async (c) => {
   const topK = Math.min(parseInt(c.req.query('top_k') || '5'), 50);
+  const domain = c.req.query('domain') || DEFAULT_DOMAIN;
+  const seed = getSeed(domain);
   const db = c.env.DB;
 
   const { results: allProgress } = await db.prepare('SELECT * FROM concept_progress').all();
