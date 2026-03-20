@@ -1,6 +1,6 @@
 ﻿import { useState, useRef } from 'react';
 import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, generateSelfContainedBat, downloadBlob, validateModelId, getDefaultModel } from '@/lib/store/settings';
-import type { LLMProvider } from '@/lib/store/settings';
+import type { LLMProvider, LLMConfig } from '@/lib/store/settings';
 import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown, AlertTriangle, Zap } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
@@ -365,13 +365,13 @@ export function SettingsContent() {
               }
               // Import settings (except API key for security)
               if (data.settings) {
-                const partial: Record<string, unknown> = {};
+                const partial: Partial<LLMConfig> = {};
                 if (data.settings.provider) partial.provider = data.settings.provider;
                 if (data.settings.model) partial.model = data.settings.model;
                 if (data.settings.baseUrl) partial.baseUrl = data.settings.baseUrl;
                 if (data.settings.useProxy !== undefined) partial.useProxy = data.settings.useProxy;
                 if (Object.keys(partial).length > 0) {
-                  setLLMConfig(partial as any);
+                  setLLMConfig(partial);
                   results.push('设置已恢复（API Key 需手动输入）');
                 }
               }

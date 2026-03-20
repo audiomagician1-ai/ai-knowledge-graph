@@ -6,7 +6,7 @@ export type LLMProvider = 'openrouter' | 'openai' | 'deepseek' | 'custom';
 const PROXY_PORT = 9876;
 const PROXY_BASE = `http://localhost:${PROXY_PORT}`;
 
-interface LLMConfig {
+export interface LLMConfig {
   provider: LLMProvider;
   apiKey: string;
   model?: string;       // model name override
