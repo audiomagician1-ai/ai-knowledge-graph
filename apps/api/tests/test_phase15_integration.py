@@ -2,11 +2,12 @@
 
 Verifies:
 1. Seed graph integrity (172 concepts, 203 edges, 8 subdomains, 0 orphans)
-2. Socratic engine biology domain adaptation
-3. Evaluator biology domain adaptation
-4. Cross-sphere links include biology
-5. Domain registry includes biology
-6. API integration end-to-end
+2. RAG coverage (172 docs, one per concept)
+3. Socratic engine biology domain adaptation
+4. Evaluator biology domain adaptation
+5. Cross-sphere links include biology
+6. Domain registry includes biology
+7. API integration end-to-end
 """
 
 import json
@@ -22,6 +23,8 @@ transport = ASGITransport(app=app)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(ROOT))
 SEED_PATH = os.path.join(PROJECT_ROOT, "data", "seed", "biology", "seed_graph.json")
+RAG_INDEX_PATH = os.path.join(PROJECT_ROOT, "data", "rag", "biology", "_index.json")
+RAG_DIR = os.path.join(PROJECT_ROOT, "data", "rag", "biology")
 CROSS_LINKS_PATH = os.path.join(PROJECT_ROOT, "data", "seed", "cross_sphere_links.json")
 DOMAINS_PATH = os.path.join(PROJECT_ROOT, "data", "seed", "domains.json")
 
@@ -96,7 +99,46 @@ def test_seed_no_duplicate_ids():
     assert len(ids) == len(set(ids)), "Duplicate concept IDs detected"
 
 
-# ── 2. Socratic Engine Adaptation ──
+# ── 2. RAG Coverage ──
+
+def _load_rag_index():
+    with open(RAG_INDEX_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def test_rag_doc_count():
+    idx = _load_rag_index()
+    assert len(idx["documents"]) == 172
+
+
+def test_rag_one_per_concept():
+    seed = _load_seed()
+    idx = _load_rag_index()
+    concept_ids = {c["id"] for c in seed["concepts"]}
+    rag_ids = {d["id"] for d in idx["documents"]}
+    missing = concept_ids - rag_ids
+    assert len(missing) == 0, f"Missing RAG docs: {missing}"
+
+
+def test_rag_files_exist():
+    idx = _load_rag_index()
+    rag_base = os.path.join(PROJECT_ROOT, "data", "rag")
+    for doc in idx["documents"]:
+        fpath = os.path.join(rag_base, doc["file"])
+        assert os.path.exists(fpath), f"RAG file missing: {doc['file']}"
+
+
+def test_rag_docs_non_empty():
+    idx = _load_rag_index()
+    rag_base = os.path.join(PROJECT_ROOT, "data", "rag")
+    for doc in idx["documents"][:10]:  # Check first 10
+        fpath = os.path.join(rag_base, doc["file"])
+        content = open(fpath, "r", encoding="utf-8").read()
+        assert len(content) > 100, f"RAG doc too short: {doc['file']}"
+        assert "核心内容" in content, f"RAG doc missing header: {doc['file']}"
+
+
+# ── 3. Socratic Engine Adaptation ──
 
 def test_socratic_biology_supplement_exists():
     from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS
@@ -219,3 +261,21 @@ async def test_api_cross_links_biology_filter():
         assert resp.status_code == 200
         data = resp.json()
         assert data["total"] >= 15
+
+
+@pytest.mark.asyncio
+async def test_api_rag_stats():
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=biology")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 172
+
+
+@pytest.mark.asyncio
+async def test_api_rag_concept():
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/cell-biology-overview?domain=biology")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert "核心内容" in data["content"]
