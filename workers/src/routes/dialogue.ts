@@ -16,6 +16,7 @@ import seedEconomics from '../../data/seed/economics/seed_graph.json';
 import seedWriting from '../../data/seed/writing/seed_graph.json';
 import seedGameDesign from '../../data/seed/game-design/seed_graph.json';
 import seedLevelDesign from '../../data/seed/level-design/seed_graph.json';
+import seedGameEngine from '../../data/seed/game-engine/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -26,6 +27,7 @@ const seedMap: Record<string, any> = {
   'biology': seedBiology, 'economics': seedEconomics, 'writing': seedWriting,
   'game-design': seedGameDesign,
   'level-design': seedLevelDesign,
+  'game-engine': seedGameEngine,
 };
 
 function findConceptAcrossDomains(conceptId: string): { seed: any; domain: string } | null {

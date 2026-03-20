@@ -1,0 +1,6334 @@
+{
+  "domain": {
+    "id": "game-engine",
+    "name": "游戏引擎",
+    "description": "从UE5架构到跨平台部署的完整游戏引擎知识体系",
+    "icon": "🔧",
+    "color": "#059669"
+  },
+  "subdomains": [
+    {
+      "id": "ue5-architecture",
+      "name": "UE5架构",
+      "order": 1
+    },
+    {
+      "id": "unity-architecture",
+      "name": "Unity架构",
+      "order": 2
+    },
+    {
+      "id": "rendering-pipeline",
+      "name": "渲染管线",
+      "order": 3
+    },
+    {
+      "id": "physics-engine",
+      "name": "物理引擎",
+      "order": 4
+    },
+    {
+      "id": "animation-system",
+      "name": "动画系统",
+      "order": 5
+    },
+    {
+      "id": "audio-system",
+      "name": "音频系统",
+      "order": 6
+    },
+    {
+      "id": "input-system",
+      "name": "输入系统",
+      "order": 7
+    },
+    {
+      "id": "resource-management",
+      "name": "资源管理",
+      "order": 8
+    },
+    {
+      "id": "scene-management",
+      "name": "场景管理",
+      "order": 9
+    },
+    {
+      "id": "scripting-system",
+      "name": "脚本系统",
+      "order": 10
+    },
+    {
+      "id": "editor-extension",
+      "name": "编辑器扩展",
+      "order": 11
+    },
+    {
+      "id": "platform-abstraction",
+      "name": "平台抽象",
+      "order": 12
+    },
+    {
+      "id": "performance-profiling",
+      "name": "性能剖析",
+      "order": 13
+    },
+    {
+      "id": "serialization",
+      "name": "序列化",
+      "order": 14
+    },
+    {
+      "id": "plugin-development",
+      "name": "插件开发",
+      "order": 15
+    }
+  ],
+  "concepts": [
+    {
+      "id": "ge-overview",
+      "name": "游戏引擎概述",
+      "description": "游戏引擎的定义、历史与架构分层",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ue5-module-system",
+      "name": "UE5模块系统",
+      "description": "UE5引擎模块划分与依赖关系",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-gameframework",
+      "name": "UE5 GameFramework",
+      "description": "GameMode/GameState/PlayerController体系",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "框架"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-uobject",
+      "name": "UObject系统",
+      "description": "UE5对象模型、反射与垃圾回收",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-actor-component",
+      "name": "Actor-Component模型",
+      "description": "Actor生命周期与Component组合模式",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ue5-gameplay-ability",
+      "name": "Gameplay Ability System",
+      "description": "GAS技能系统架构与使用",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "框架"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-subsystem",
+      "name": "UE5 Subsystem",
+      "description": "Engine/World/Game Instance Subsystem",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-delegate-event",
+      "name": "委托与事件系统",
+      "description": "Delegate/Multicast/Event分发机制",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "通信"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-smart-pointer",
+      "name": "UE5智能指针",
+      "description": "TSharedPtr/TWeakPtr/TUniquePtr",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内存"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-slate-umg",
+      "name": "Slate与UMG",
+      "description": "UE5 UI框架: Slate底层与UMG高层",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-networking",
+      "name": "UE5网络架构",
+      "description": "Replication/RPC/NetDriver",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-world-partition",
+      "name": "World Partition",
+      "description": "大世界分区加载与流式管理",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "大世界"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-nanite",
+      "name": "Nanite虚拟几何体",
+      "description": "微多边形渲染与虚拟化几何管线",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ue5-lumen",
+      "name": "Lumen全局光照",
+      "description": "软件/硬件光追混合全局光照方案",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-chaos",
+      "name": "Chaos物理系统",
+      "description": "UE5物理与破坏系统架构",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "物理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-mass-entity",
+      "name": "Mass Entity Framework",
+      "description": "大规模实体(ECS式)框架",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "ECS"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-build-system",
+      "name": "UE5构建系统",
+      "description": "UBT/UHT/Module编译与热重载",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-pak-system",
+      "name": "Pak文件系统",
+      "description": "资产打包、分发与热更新",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "资源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-data-asset",
+      "name": "Data Asset与DataTable",
+      "description": "数据驱动设计的资产类型",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-enhanced-input",
+      "name": "Enhanced Input System",
+      "description": "UE5新一代输入映射与修饰器",
+      "subdomain_id": "ue5-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "输入"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-overview",
+      "name": "Unity引擎概述",
+      "description": "Unity架构哲学、版本演进与生态",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "unity-gameobject",
+      "name": "GameObject-Component",
+      "description": "Unity核心组件式架构与MonoBehaviour",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-scriptable-obj",
+      "name": "ScriptableObject",
+      "description": "数据资产与配置驱动设计",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-dots",
+      "name": "DOTS/ECS架构",
+      "description": "Data-Oriented Technology Stack",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "ECS"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "unity-burst",
+      "name": "Burst编译器",
+      "description": "SIMD优化与HPC#高性能C#",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-jobs",
+      "name": "Job System",
+      "description": "多线程作业调度与依赖管理",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "多线程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-addressables",
+      "name": "Addressables",
+      "description": "可寻址资产系统与异步加载",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "资源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-urp",
+      "name": "URP渲染管线",
+      "description": "Universal Render Pipeline架构",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-hdrp",
+      "name": "HDRP渲染管线",
+      "description": "High Definition Render Pipeline",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-shader-graph",
+      "name": "Shader Graph",
+      "description": "可视化Shader编辑与节点系统",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-vfx-graph",
+      "name": "VFX Graph",
+      "description": "GPU粒子系统与节点化特效",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "特效"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-cinemachine",
+      "name": "Cinemachine",
+      "description": "程序化摄像机系统",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "摄像机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-input-system",
+      "name": "Unity Input System",
+      "description": "新输入系统:Action/Binding/Processor",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "输入"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-netcode",
+      "name": "Netcode for GameObjects",
+      "description": "Unity官方多人游戏网络框架",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-physics",
+      "name": "Unity Physics",
+      "description": "内置PhysX与DOTS Physics对比",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "物理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-animation",
+      "name": "Unity动画系统",
+      "description": "Animator/Timeline/Playable API",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动画"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-audio",
+      "name": "Unity音频系统",
+      "description": "AudioSource/Mixer/Spatializer",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "音频"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-ui-toolkit",
+      "name": "UI Toolkit",
+      "description": "新一代UI系统(替代uGUI)",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-profiler",
+      "name": "Unity Profiler",
+      "description": "CPU/GPU/Memory Profiler使用",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-build-pipeline",
+      "name": "Unity构建管线",
+      "description": "BuildPipeline/Addressables Build",
+      "subdomain_id": "unity-architecture",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "构建"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "render-pipeline-intro",
+      "name": "渲染管线概述",
+      "description": "实时渲染管线的基本阶段",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "forward-rendering",
+      "name": "前向渲染",
+      "description": "Forward/Forward+渲染路径",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "路径"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "deferred-rendering",
+      "name": "延迟渲染",
+      "description": "G-Buffer与延迟光照计算",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "路径"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "pbr-material",
+      "name": "PBR材质模型",
+      "description": "物理基础渲染的金属度/粗糙度工作流",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "材质"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "shadow-mapping",
+      "name": "阴影映射",
+      "description": "Shadow Map/CSM/PCSS/VSM技术",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "阴影"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "global-illumination",
+      "name": "全局光照",
+      "description": "光线追踪/光照贴图/DDGI/Irradiance",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "光照"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "post-processing",
+      "name": "后处理效果",
+      "description": "Bloom/SSAO/DoF/TAA/Motion Blur",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "后处理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gpu-driven-rendering",
+      "name": "GPU驱动渲染",
+      "description": "间接绘制/GPU剔除/Mesh Shader",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "lod-system",
+      "name": "LOD系统",
+      "description": "细节层次管理与过渡策略",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "occlusion-culling",
+      "name": "遮挡剔除",
+      "description": "Hi-Z/Software Occlusion/GPU Query",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "texture-streaming",
+      "name": "纹理流",
+      "description": "Virtual Texture/Mipmap Streaming",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "资源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "render-graph",
+      "name": "渲染图(RDG)",
+      "description": "帧图调度与资源依赖管理",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ray-tracing-engine",
+      "name": "引擎光线追踪",
+      "description": "DXR/Vulkan RT在引擎中的集成",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "光追"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anti-aliasing",
+      "name": "抗锯齿技术",
+      "description": "MSAA/FXAA/TAA/DLSS/FSR对比",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "particle-rendering",
+      "name": "粒子渲染",
+      "description": "GPU粒子/Billboard/Ribbon/Mesh粒子",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "特效"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "volumetric-rendering",
+      "name": "体积渲染",
+      "description": "体积雾/体积光/云渲染",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "特效"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terrain-rendering",
+      "name": "地形渲染",
+      "description": "Clipmap/Virtual Heightfield/GPU Tessellation",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "地形"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "water-rendering",
+      "name": "水体渲染",
+      "description": "FFT海洋/Flowmap河流/焦散",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "水体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "draw-call-optimization",
+      "name": "Draw Call优化",
+      "description": "Batching/Instancing/SRP Batcher",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "shader-compilation",
+      "name": "Shader编译管线",
+      "description": "Shader变体/Permutation/预编译策略",
+      "subdomain_id": "rendering-pipeline",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physics-engine-intro",
+      "name": "物理引擎概述",
+      "description": "实时物理模拟的需求与架构",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "rigid-body",
+      "name": "刚体动力学",
+      "description": "力、扭矩、惯性张量与运动方程",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动力学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "collision-detection",
+      "name": "碰撞检测",
+      "description": "Broad/Narrow Phase与GJK/SAT算法",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "碰撞"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "collision-shapes",
+      "name": "碰撞形状",
+      "description": "Box/Sphere/Capsule/Convex/Mesh",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "碰撞"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "constraint-solver",
+      "name": "约束求解器",
+      "description": "关节/约束与迭代求解",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "求解"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physics-material",
+      "name": "物理材质",
+      "description": "摩擦系数/弹性系数/物理表面类型",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "材质"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ragdoll-physics",
+      "name": "布娃娃物理",
+      "description": "骨骼驱动的死亡/击飞物理",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "角色"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vehicle-physics",
+      "name": "载具物理",
+      "description": "轮式/悬挂/传动模拟",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "载具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cloth-simulation",
+      "name": "布料模拟",
+      "description": "质点弹簧/PBD布料物理",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "软体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "destruction-physics",
+      "name": "破坏物理",
+      "description": "Voronoi分割/预碎裂/运行时破坏",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "破坏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physics-scene",
+      "name": "物理场景管理",
+      "description": "PhysX Scene/World/子步进",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physics-query",
+      "name": "物理查询",
+      "description": "Raycast/Sweep/Overlap检测",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "查询"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "trigger-volume-engine",
+      "name": "触发体积",
+      "description": "物理触发器事件与回调",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "事件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physics-interpolation",
+      "name": "物理插值",
+      "description": "Fixed Timestep与渲染帧插值",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "同步"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "character-controller",
+      "name": "角色控制器",
+      "description": "胶囊体/楼梯步进/斜面处理",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "角色"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "navmesh-engine",
+      "name": "导航网格系统",
+      "description": "NavMesh生成/寻路/动态障碍",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "fluid-simulation",
+      "name": "流体模拟",
+      "description": "SPH/Eulerian流体基础",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physics-multithreading",
+      "name": "物理多线程",
+      "description": "PhysX任务调度与并行碰撞检测",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physics-debug",
+      "name": "物理调试可视化",
+      "description": "碰撞体/射线/约束的可视化调试",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "physics-optimization",
+      "name": "物理性能优化",
+      "description": "简化碰撞/休眠策略/LOD物理",
+      "subdomain_id": "physics-engine",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "animation-system-intro",
+      "name": "动画系统概述",
+      "description": "游戏引擎动画系统的架构分层",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "skeleton-system",
+      "name": "骨骼系统",
+      "description": "Skeleton/Bone Hierarchy/Bind Pose",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "骨骼"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "animation-clip",
+      "name": "动画片段",
+      "description": "关键帧插值/曲线编辑/压缩",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "animation-blueprint",
+      "name": "动画蓝图",
+      "description": "UE5 AnimBP/State Machine/Blend",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "blend-tree",
+      "name": "混合树",
+      "description": "1D/2D BlendSpace/Layered Blend",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "混合"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "state-machine-anim",
+      "name": "动画状态机",
+      "description": "状态/转换/条件/分层状态机",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "状态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ik-system",
+      "name": "IK系统",
+      "description": "FABRIK/Two-Bone IK/Full Body IK",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "IK"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "root-motion",
+      "name": "Root Motion",
+      "description": "根骨骼驱动移动与旋转",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "移动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "additive-animation",
+      "name": "叠加动画",
+      "description": "差量动画与Pose叠加",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "混合"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "montage-system",
+      "name": "Montage系统",
+      "description": "UE5动画Montage/Section/Notify",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-notify",
+      "name": "动画通知",
+      "description": "Notify/NotifyState事件回调",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "事件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "facial-animation-engine",
+      "name": "面部动画系统",
+      "description": "Morph Target/骨骼/LiveLink",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "面部"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "procedural-animation",
+      "name": "程序化动画",
+      "description": "运行时动画生成与修正",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "程序化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "animation-compression",
+      "name": "动画压缩",
+      "description": "曲线简化/量化/ACL库",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "animation-retargeting",
+      "name": "动画重定向",
+      "description": "骨骼映射与比例适配",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "motion-matching",
+      "name": "Motion Matching",
+      "description": "数据驱动的动画选择系统",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "control-rig",
+      "name": "Control Rig",
+      "description": "UE5运行时Rigging与程序化调整",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pose-snapshot",
+      "name": "Pose快照",
+      "description": "动画Pose的保存/恢复/混合",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-multi-thread",
+      "name": "动画多线程更新",
+      "description": "多线程骨骼求值与同步",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-lod",
+      "name": "动画LOD",
+      "description": "距离/屏幕尺寸驱动的动画简化",
+      "subdomain_id": "animation-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-system-intro",
+      "name": "音频系统概述",
+      "description": "游戏引擎音频架构与中间件",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "audio-source-listener",
+      "name": "Audio Source与Listener",
+      "description": "空间音频的源/听者模型",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-middleware",
+      "name": "音频中间件",
+      "description": "Wwise/FMOD集成架构",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "中间件"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "spatial-audio",
+      "name": "空间音频",
+      "description": "3D音频/HRTF/Ambisonics",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-occlusion",
+      "name": "音频遮挡",
+      "description": "射线检测/材质衰减/传播模型",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "遮挡"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "reverb-zone",
+      "name": "混响区域",
+      "description": "房间混响/混响过渡/卷积混响",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "混响"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sound-cue",
+      "name": "Sound Cue/Event",
+      "description": "音频事件系统与参数化触发",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "事件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-bus-mixing",
+      "name": "音频总线与混音",
+      "description": "Bus/Duck/Sidechain/Master",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "混音"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dsp-effects",
+      "name": "DSP效果",
+      "description": "EQ/Compressor/Delay/Chorus",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "DSP"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "adaptive-music",
+      "name": "自适应音乐系统",
+      "description": "分层/转场/紧张度驱动配乐",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "音乐"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dialogue-system-audio",
+      "name": "对白系统",
+      "description": "语音管理/字幕同步/本地化",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "对白"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sound-bank",
+      "name": "Sound Bank管理",
+      "description": "资源打包/流式/内存预算",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "资源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-attenuation",
+      "name": "音频衰减模型",
+      "description": "距离/方向衰减曲线与优先级",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模型"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-concurrency",
+      "name": "音频并发控制",
+      "description": "最大实例数/优先级/虚拟Voice",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ambient-sound",
+      "name": "环境音设计",
+      "description": "环境音层/天气音/环境随机音",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "footstep-system",
+      "name": "脚步声系统",
+      "description": "物理材质→音效映射/变化池",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "交互"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-snapshot",
+      "name": "Audio Snapshot",
+      "description": "状态快照与批量参数切换",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "状态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "metasound",
+      "name": "MetaSound(UE5)",
+      "description": "UE5 DSP图音频系统",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "audio-profiling",
+      "name": "音频性能分析",
+      "description": "Voice count/CPU占用/内存预算",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-debug",
+      "name": "音频调试工具",
+      "description": "可视化衰减/射线/Listener分析",
+      "subdomain_id": "audio-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-system-intro",
+      "name": "输入系统概述",
+      "description": "游戏输入处理的架构与挑战",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "input-device-abstraction",
+      "name": "输入设备抽象",
+      "description": "键盘/鼠标/手柄/触屏统一接口",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "抽象"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-mapping",
+      "name": "输入映射",
+      "description": "Action/Axis Mapping与重绑定",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "映射"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "input-modifier",
+      "name": "输入修饰器",
+      "description": "Dead Zone/Sensitivity/Invert",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "处理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-trigger",
+      "name": "输入触发器",
+      "description": "Press/Release/Hold/Tap/Chorded",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "触发"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-context",
+      "name": "输入上下文",
+      "description": "上下文切换(菜单/游戏/载具)",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "上下文"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mouse-cursor",
+      "name": "鼠标光标处理",
+      "description": "显示/锁定/软件光标/硬件光标",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "鼠标"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gamepad-haptics",
+      "name": "手柄震动反馈",
+      "description": "Rumble/Trigger/Adaptive Trigger",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "反馈"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "touch-gesture",
+      "name": "触屏手势",
+      "description": "Tap/Swipe/Pinch/Multi-touch处理",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "移动端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "motion-input",
+      "name": "运动输入",
+      "description": "陀螺仪/加速度计/体感控制",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "体感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-buffering",
+      "name": "输入缓冲",
+      "description": "格斗/动作游戏的预输入缓冲",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "格斗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-replay",
+      "name": "输入录制与回放",
+      "description": "确定性回放/幽灵数据/QA",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "accessibility-input",
+      "name": "无障碍输入",
+      "description": "按键重映射/自动辅助/开关控制",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "可达性"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "local-multiplayer-input",
+      "name": "本地多人输入",
+      "description": "多手柄/分屏/设备分配",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "多人"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-prediction",
+      "name": "输入预测",
+      "description": "网络延迟补偿与客户端预测",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "virtual-joystick",
+      "name": "虚拟摇杆",
+      "description": "移动端虚拟操控UI实现",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "移动端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "camera-input",
+      "name": "摄像机输入控制",
+      "description": "鼠标/右摇杆→摄像机旋转平滑",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "摄像机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-debug",
+      "name": "输入调试",
+      "description": "输入日志/可视化/延迟测量",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "steamworks-input",
+      "name": "Steam Input",
+      "description": "Steam Deck/通用手柄配置",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "平台"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "input-latency",
+      "name": "输入延迟优化",
+      "description": "从按键到画面的全链路延迟分析",
+      "subdomain_id": "input-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "resource-mgmt-intro",
+      "name": "资源管理概述",
+      "description": "游戏资源的生命周期与加载策略",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "asset-reference",
+      "name": "资源引用",
+      "description": "硬引用/软引用/异步引用",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "引用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "async-loading",
+      "name": "异步加载",
+      "description": "后台加载/优先级/回调",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "异步"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "memory-budget",
+      "name": "内存预算",
+      "description": "各平台内存限制与分配策略",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内存"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "texture-budget",
+      "name": "纹理预算",
+      "description": "纹理内存管理/Mipmap/压缩格式",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "纹理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mesh-budget",
+      "name": "网格预算",
+      "description": "三角形预算/LOD策略/Nanite",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "网格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "asset-cooking",
+      "name": "资源烘焙",
+      "description": "平台相关的资源预处理/格式转换",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "构建"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "content-bundle",
+      "name": "内容包系统",
+      "description": "DLC/补丁包/可下载内容管理",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分发"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hot-reload",
+      "name": "热重载",
+      "description": "代码/资源热重载机制与限制",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "开发"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "garbage-collection-engine",
+      "name": "引擎垃圾回收",
+      "description": "UE5 GC/Unity GC策略与优化",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内存"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "object-pool",
+      "name": "对象池",
+      "description": "频繁创建销毁对象的池化管理",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "streaming-system",
+      "name": "流式系统",
+      "description": "资产按需加载与卸载",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "asset-registry",
+      "name": "资产注册表",
+      "description": "全局资产索引与依赖追踪",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "索引"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "compression-format",
+      "name": "压缩格式",
+      "description": "Oodle/LZ4/Zlib在游戏中的应用",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "压缩"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "shader-cache",
+      "name": "Shader缓存",
+      "description": "PSO缓存/Shader预编译/预热",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "level-streaming-asset",
+      "name": "关卡流式加载",
+      "description": "Sub-level/World Partition的资源调度",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "关卡"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "asset-dependency",
+      "name": "资源依赖分析",
+      "description": "引用链追踪与循环依赖检测",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "content-validation",
+      "name": "内容校验",
+      "description": "资源完整性检查/缺失资产检测",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "QA"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "patching-system",
+      "name": "补丁系统",
+      "description": "增量更新/二进制差分/版本管理",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分发"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "asset-profiling",
+      "name": "资源性能分析",
+      "description": "Size Map/引用审计/冗余检测",
+      "subdomain_id": "resource-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "scene-mgmt-intro",
+      "name": "场景管理概述",
+      "description": "游戏场景的组织与生命周期管理",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "scene-graph",
+      "name": "场景图",
+      "description": "层级变换与父子关系管理",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "world-composition",
+      "name": "世界组合",
+      "description": "多Sub-level/Persistent Level组织",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "大世界"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "spatial-partitioning",
+      "name": "空间分区",
+      "description": "Octree/Grid/BSP空间索引",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "索引"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "frustum-culling",
+      "name": "视锥剔除",
+      "description": "视锥体测试与批量剔除",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "剔除"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "visibility-system",
+      "name": "可见性系统",
+      "description": "PVS/Portal/Distance Culling",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "剔除"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-layer-scene",
+      "name": "场景数据层",
+      "description": "Gameplay/Art/Audio数据分层",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "组织"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "level-transition",
+      "name": "关卡过渡",
+      "description": "无缝/加载屏/流式切换方案",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "过渡"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "spawn-system",
+      "name": "生成系统",
+      "description": "Actor/Prefab的实例化与回收",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "生成"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "world-origin-shifting",
+      "name": "世界原点偏移",
+      "description": "超大世界浮点精度解决方案",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "大世界"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "persistent-state",
+      "name": "场景持久状态",
+      "description": "保存/恢复场景中物体的状态",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "存档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "environment-query",
+      "name": "环境查询系统",
+      "description": "EQS/Spatial Query for AI决策",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "minimap-system",
+      "name": "小地图系统",
+      "description": "正交投影/Fog of War/标记",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "weather-system",
+      "name": "天气系统",
+      "description": "雨/雪/雾/动态天空盒",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "天气"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "day-night-system",
+      "name": "昼夜系统",
+      "description": "太阳运动/光照参数/Gameplay影响",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "时间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "destruction-system",
+      "name": "场景破坏系统",
+      "description": "可破坏场景的管理与同步",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "破坏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "lod-management",
+      "name": "LOD管理系统",
+      "description": "HLOD/Auto-LOD/Impostor",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "scene-debug",
+      "name": "场景调试",
+      "description": "Outliner/世界浏览器/调试绘制",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "procedural-placement",
+      "name": "程序化放置",
+      "description": "PCG放置/规则驱动/密度控制",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "PCG"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "scene-optimization",
+      "name": "场景优化综合",
+      "description": "合批/剔除/流式/HLOD综合策略",
+      "subdomain_id": "scene-management",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "scripting-intro",
+      "name": "脚本系统概述",
+      "description": "游戏引擎中脚本系统的角色与设计",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "blueprint-system",
+      "name": "Blueprint系统",
+      "description": "UE5可视化脚本系统架构",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cpp-ue5",
+      "name": "C++在UE5中的使用",
+      "description": "UCLASS/UPROPERTY/UFUNCTION宏体系",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "csharp-unity",
+      "name": "C#在Unity中的使用",
+      "description": "MonoBehaviour/生命周期/协程",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Unity"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "lua-scripting",
+      "name": "Lua脚本集成",
+      "description": "Lua绑定/热更新/性能特征",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "脚本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "visual-scripting-engine",
+      "name": "可视化脚本引擎",
+      "description": "节点图/执行流/数据流架构",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "native-binding",
+      "name": "原生绑定",
+      "description": "C++↔脚本的FFI/反射绑定",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "绑定"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "coroutine-engine",
+      "name": "协程系统",
+      "description": "引擎协程/异步任务/定时器",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "异步"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "event-system-engine",
+      "name": "引擎事件系统",
+      "description": "Event Bus/Observer/消息队列",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "通信"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "console-command",
+      "name": "控制台命令",
+      "description": "Cheat/Debug命令注册与权限",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hot-reload-script",
+      "name": "脚本热重载",
+      "description": "代码修改即时生效的实现",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "开发"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gameplay-tag",
+      "name": "Gameplay Tag系统",
+      "description": "层级标签的注册、查询与过滤",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-driven-design",
+      "name": "数据驱动设计",
+      "description": "用数据表/配置替代硬编码逻辑",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ai-behavior-tree",
+      "name": "行为树",
+      "description": "BT节点类型/Decorator/Service",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "state-machine-engine",
+      "name": "通用状态机",
+      "description": "FSM/HFSM/Pushdown Automaton",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "command-pattern",
+      "name": "命令模式",
+      "description": "Undo/Redo/命令队列",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "object-model",
+      "name": "引擎对象模型",
+      "description": "类型系统/反射/序列化基础",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "debug-draw",
+      "name": "调试绘制",
+      "description": "运行时线条/球体/文字绘制",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "profiling-marker",
+      "name": "性能标记",
+      "description": "Stat/Scope计时/Unreal Insights",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "testing-framework",
+      "name": "引擎测试框架",
+      "description": "自动化测试/功能测试/回归测试",
+      "subdomain_id": "scripting-system",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "editor-ext-intro",
+      "name": "编辑器扩展概述",
+      "description": "编辑器定制化与工具开发需求",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "custom-editor-window",
+      "name": "自定义编辑器窗口",
+      "description": "Tab/Panel/Window的创建与注册",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "property-customization",
+      "name": "属性面板定制",
+      "description": "Detail Panel/Custom Row/Widget",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "editor-utility-widget",
+      "name": "编辑器工具Widget",
+      "description": "Editor Utility Widget/Blutility",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "custom-asset-type",
+      "name": "自定义资产类型",
+      "description": "Factory/Editor/Thumbnail注册",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "资产"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "editor-mode",
+      "name": "编辑器模式",
+      "description": "自定义编辑模式(Placement/Foliage)",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "模式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "editor-command",
+      "name": "编辑器命令",
+      "description": "命令注册/快捷键/工具栏",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "命令"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "content-browser-ext",
+      "name": "内容浏览器扩展",
+      "description": "右键菜单/Asset Action/过滤器",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sequencer-extension",
+      "name": "Sequencer扩展",
+      "description": "自定义Track/Section/Channel",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "editor-scripting-py",
+      "name": "Python编辑器脚本",
+      "description": "UE5 Python/Unity EditorScript",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "脚本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "automation-tool",
+      "name": "自动化工具",
+      "description": "批处理/资产验证/一键操作",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "自动化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "editor-test",
+      "name": "编辑器测试",
+      "description": "编辑器模式下的自动化测试",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gizmo-custom",
+      "name": "自定义Gizmo",
+      "description": "场景内可交互的编辑手柄",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "交互"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "toolbar-extension",
+      "name": "工具栏扩展",
+      "description": "添加自定义按钮/菜单项",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-validation",
+      "name": "数据校验工具",
+      "description": "资产规范检查/命名/引用校验",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "QA"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "editor-performance",
+      "name": "编辑器性能",
+      "description": "编辑器卡顿诊断与优化",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "source-control-editor",
+      "name": "版本控制集成",
+      "description": "Perforce/Git在编辑器中的集成",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cook-automation",
+      "name": "烘焙自动化",
+      "description": "自动构建/CI集成/差异构建",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "构建"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "editor-config",
+      "name": "编辑器配置",
+      "description": "DefaultEditor.ini/项目设置扩展",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "配置"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "multi-user-editor",
+      "name": "多人协同编辑",
+      "description": "Multi-User Editing/实时协作",
+      "subdomain_id": "editor-extension",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "platform-intro",
+      "name": "平台抽象概述",
+      "description": "跨平台游戏开发的架构设计",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "hal-layer",
+      "name": "硬件抽象层",
+      "description": "HAL设计/平台无关接口",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "graphics-api-abstraction",
+      "name": "图形API抽象",
+      "description": "RHI: DX12/Vulkan/Metal统一层",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "platform-defines",
+      "name": "平台宏定义",
+      "description": "条件编译/平台检测/Feature Level",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "编译"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "file-system-platform",
+      "name": "平台文件系统",
+      "description": "各平台文件路径/权限/沙盒差异",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "IO"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "threading-platform",
+      "name": "平台线程",
+      "description": "Thread/Task/Fiber的平台差异",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "多线程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "console-development",
+      "name": "主机开发",
+      "description": "PS5/Xbox Series/Switch开发特点",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "主机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mobile-development",
+      "name": "移动端开发",
+      "description": "iOS/Android性能预算与限制",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "移动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pc-optimization",
+      "name": "PC优化",
+      "description": "多配置/可扩展画质/帧率目标",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "PC"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vr-adaptation",
+      "name": "VR适配",
+      "description": "双眼渲染/90fps/运动病防护",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "VR"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cross-play",
+      "name": "跨平台联机",
+      "description": "平台账户/匹配/输入公平性",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "certification",
+      "name": "平台认证",
+      "description": "Sony TRC/MS XR/Nintendo Lotcheck",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发行"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "save-system-platform",
+      "name": "跨平台存档",
+      "description": "云存档/平台存储/配额管理",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "存档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "achievement-system",
+      "name": "成就系统",
+      "description": "平台成就/Trophy/Gamerscore",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "平台"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "storefront-integration",
+      "name": "商店集成",
+      "description": "Steam/Epic/PSN/Xbox/App Store",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发行"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cloud-gaming",
+      "name": "云游戏适配",
+      "description": "GeForce Now/xCloud/Luna注意事项",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "云端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "crash-reporting",
+      "name": "崩溃报告",
+      "description": "Minidump/Sentry/平台崩溃收集",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "运维"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "compliance-testing",
+      "name": "合规测试",
+      "description": "各平台提交前合规检查清单",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "QA"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "platform-scalability",
+      "name": "平台可扩展性",
+      "description": "画质档位/自动检测/Benchmark",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "platform-api-service",
+      "name": "平台服务API",
+      "description": "好友/语音/通知/Rich Presence",
+      "subdomain_id": "platform-abstraction",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "服务"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "profiling-intro",
+      "name": "性能剖析概述",
+      "description": "游戏性能分析的方法论与工具链",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cpu-profiling",
+      "name": "CPU性能分析",
+      "description": "热点函数/调用栈/Cache Miss",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "CPU"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gpu-profiling",
+      "name": "GPU性能分析",
+      "description": "Draw/Shader/Bandwidth瓶颈",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "GPU"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "memory-profiling",
+      "name": "内存性能分析",
+      "description": "Allocation/Leak/Fragmentation",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "内存"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "frame-time-analysis",
+      "name": "帧时间分析",
+      "description": "Game/Render/GPU线程帧时间",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "帧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "stat-system",
+      "name": "统计系统",
+      "description": "Stat Group/Counter/Timer",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unreal-insights",
+      "name": "Unreal Insights",
+      "description": "UE5 Trace/Timing/Memory分析器",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "renderdoc",
+      "name": "RenderDoc分析",
+      "description": "GPU帧捕获与Shader调试",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "GPU"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pix-nsa",
+      "name": "PIX/Nsight分析",
+      "description": "平台级GPU分析工具",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "GPU"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bandwidth-analysis",
+      "name": "带宽分析",
+      "description": "内存/总线/纹理带宽瓶颈",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "硬件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "draw-call-analysis",
+      "name": "Draw Call分析",
+      "description": "Batch Count/State Change分析",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "shader-complexity",
+      "name": "Shader复杂度",
+      "description": "Shader指令数/寄存器/Occupancy",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "渲染"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "loading-time",
+      "name": "加载时间优化",
+      "description": "启动/关卡加载/首帧时间",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "加载"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hitching-analysis",
+      "name": "卡顿分析",
+      "description": "GC/IO/线程锁导致的帧卡顿",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "卡顿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "network-profiling",
+      "name": "网络性能分析",
+      "description": "Bandwidth/Latency/Packet Loss",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "automation-benchmark",
+      "name": "自动化性能测试",
+      "description": "飞行路径/Replay Benchmark",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "自动化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "perf-budget",
+      "name": "性能预算制定",
+      "description": "帧率目标→各子系统ms分配",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "scalability-settings",
+      "name": "可扩展画质设置",
+      "description": "Low/Med/High/Epic/Cinematic",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "配置"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "perf-regression",
+      "name": "性能回归检测",
+      "description": "CI性能基线/自动报警/Blame",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "CI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mobile-profiling",
+      "name": "移动端性能分析",
+      "description": "Thermal/Battery/GPU Tile",
+      "subdomain_id": "performance-profiling",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "移动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "serialization-intro",
+      "name": "序列化概述",
+      "description": "游戏数据序列化的需求与方案",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "binary-serialization",
+      "name": "二进制序列化",
+      "description": "结构体/字节序/版本兼容",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "json-serialization",
+      "name": "JSON序列化",
+      "description": "可读格式/调试友好/性能取舍",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "save-game-system",
+      "name": "存档系统",
+      "description": "游戏存档的序列化与版本迁移",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "存档"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "uasset-format",
+      "name": "UAsset格式",
+      "description": "UE5资产文件的二进制结构",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "property-serialization",
+      "name": "属性序列化",
+      "description": "反射驱动的自动序列化",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "反射"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "network-serialization",
+      "name": "网络序列化",
+      "description": "压缩/BitStream/Delta序列化",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "schema-versioning",
+      "name": "Schema版本控制",
+      "description": "向前/向后兼容策略",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "版本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-migration",
+      "name": "数据迁移",
+      "description": "存档/资产格式升级策略",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "升级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "config-system",
+      "name": "配置系统",
+      "description": "INI/TOML/CommandLine参数层级",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "配置"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "replay-system",
+      "name": "回放系统",
+      "description": "确定性回放/事件录制/数据格式",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "回放"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "checkpoint-save",
+      "name": "检查点存档",
+      "description": "自动存档/快速保存/状态快照",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "存档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cloud-save",
+      "name": "云存档",
+      "description": "跨设备同步/冲突解决",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "云端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "protobuf-flatbuf",
+      "name": "Protobuf/FlatBuffers",
+      "description": "高效结构化序列化库",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "库"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "asset-metadata",
+      "name": "资产元数据",
+      "description": "标签/搜索/缩略图/自定义元数据",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-table-engine",
+      "name": "数据表系统",
+      "description": "CSV/JSON→运行时查表的设计",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "encryption-save",
+      "name": "存档加密",
+      "description": "防篡改/反作弊的存档保护",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "undo-redo-serialization",
+      "name": "Undo/Redo序列化",
+      "description": "编辑器操作的事务化记录",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "编辑器"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "custom-struct-serial",
+      "name": "自定义结构体序列化",
+      "description": "NetSerialize/ExportText/ImportText",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "高级"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "serialization-perf",
+      "name": "序列化性能",
+      "description": "读写速度/大小优化/Benchmark",
+      "subdomain_id": "serialization",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plugin-intro",
+      "name": "插件开发概述",
+      "description": "游戏引擎插件系统的设计与开发",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "plugin-architecture",
+      "name": "插件架构",
+      "description": "模块化/接口/依赖注入",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ue5-plugin-structure",
+      "name": "UE5插件结构",
+      "description": ".uplugin/Source/Content/Config",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "unity-package",
+      "name": "Unity Package",
+      "description": "Package Manager/Assembly Definition",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "Unity"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plugin-lifecycle",
+      "name": "插件生命周期",
+      "description": "加载/启动/停止/卸载",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "生命周期"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plugin-dependency",
+      "name": "插件依赖管理",
+      "description": "版本约束/可选依赖/加载顺序",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "依赖"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "api-design-plugin",
+      "name": "插件API设计",
+      "description": "公开接口/稳定性/文档",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plugin-settings",
+      "name": "插件设置",
+      "description": "Settings/ProjectSettings注册",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "配置"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "marketplace-plugin",
+      "name": "商城插件发布",
+      "description": "Marketplace/Asset Store提交流程",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "发布"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plugin-testing",
+      "name": "插件测试",
+      "description": "单元测试/集成测试/兼容性测试",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "thirdparty-integration",
+      "name": "第三方库集成",
+      "description": "C/C++第三方库的引擎集成",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "集成"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "online-subsystem",
+      "name": "Online Subsystem",
+      "description": "UE5在线服务抽象层",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "网络"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "analytics-plugin",
+      "name": "数据分析插件",
+      "description": "埋点/事件追踪/BI集成",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "localization-plugin",
+      "name": "本地化插件",
+      "description": "多语言/文本管理/字体支持",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "本地化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anti-cheat-plugin",
+      "name": "反作弊插件",
+      "description": "EAC/BattlEye集成与配置",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "安全"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "crash-reporter-plugin",
+      "name": "崩溃报告插件",
+      "description": "堆栈收集/符号化/上报",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "运维"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cicd-plugin",
+      "name": "CI/CD集成插件",
+      "description": "Jenkins/BuildGraph/自动化管线",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "DevOps"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "modding-support",
+      "name": "Mod支持系统",
+      "description": "Mod加载/沙盒/Steam Workshop",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "社区"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plugin-versioning",
+      "name": "插件版本管理",
+      "description": "语义版本/升级路径/Breaking Change",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "版本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "plugin-documentation",
+      "name": "插件文档编写",
+      "description": "API文档/示例/Migration Guide",
+      "subdomain_id": "plugin-development",
+      "domain_id": "game-engine",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "ge-overview",
+      "target_id": "ue5-module-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "ue5-gameframework",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-module-system",
+      "target_id": "ue5-uobject",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-uobject",
+      "target_id": "ue5-actor-component",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-actor-component",
+      "target_id": "ue5-gameplay-ability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-actor-component",
+      "target_id": "ue5-subsystem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-uobject",
+      "target_id": "ue5-delegate-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-uobject",
+      "target_id": "ue5-smart-pointer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-actor-component",
+      "target_id": "ue5-slate-umg",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-gameframework",
+      "target_id": "ue5-networking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-module-system",
+      "target_id": "ue5-world-partition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-module-system",
+      "target_id": "ue5-nanite",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-module-system",
+      "target_id": "ue5-lumen",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-module-system",
+      "target_id": "ue5-chaos",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-actor-component",
+      "target_id": "ue5-mass-entity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-module-system",
+      "target_id": "ue5-build-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-build-system",
+      "target_id": "ue5-pak-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-uobject",
+      "target_id": "ue5-data-asset",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-actor-component",
+      "target_id": "ue5-enhanced-input",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "unity-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-gameobject",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-gameobject",
+      "target_id": "unity-scriptable-obj",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-gameobject",
+      "target_id": "unity-dots",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-dots",
+      "target_id": "unity-burst",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-dots",
+      "target_id": "unity-jobs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-addressables",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-urp",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-urp",
+      "target_id": "unity-hdrp",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-urp",
+      "target_id": "unity-shader-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-vfx-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-cinemachine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-input-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-netcode",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-physics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-ui-toolkit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-profiler",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "unity-overview",
+      "target_id": "unity-build-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "render-pipeline-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "forward-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "deferred-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "pbr-material",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "deferred-rendering",
+      "target_id": "shadow-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "deferred-rendering",
+      "target_id": "global-illumination",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "deferred-rendering",
+      "target_id": "post-processing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "gpu-driven-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "lod-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "occlusion-culling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "texture-streaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gpu-driven-rendering",
+      "target_id": "render-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "global-illumination",
+      "target_id": "ray-tracing-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "post-processing",
+      "target_id": "anti-aliasing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "particle-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "volumetric-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "terrain-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "water-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "draw-call-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "render-pipeline-intro",
+      "target_id": "shader-compilation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "physics-engine-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-engine-intro",
+      "target_id": "rigid-body",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rigid-body",
+      "target_id": "collision-detection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-engine-intro",
+      "target_id": "collision-shapes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "collision-detection",
+      "target_id": "constraint-solver",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-engine-intro",
+      "target_id": "physics-material",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "constraint-solver",
+      "target_id": "ragdoll-physics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rigid-body",
+      "target_id": "vehicle-physics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-engine-intro",
+      "target_id": "cloth-simulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "collision-detection",
+      "target_id": "destruction-physics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-engine-intro",
+      "target_id": "physics-scene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-engine-intro",
+      "target_id": "physics-query",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-engine-intro",
+      "target_id": "trigger-volume-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-scene",
+      "target_id": "physics-interpolation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "collision-shapes",
+      "target_id": "character-controller",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-query",
+      "target_id": "navmesh-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rigid-body",
+      "target_id": "fluid-simulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-scene",
+      "target_id": "physics-multithreading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-engine-intro",
+      "target_id": "physics-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "physics-multithreading",
+      "target_id": "physics-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "animation-system-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-system-intro",
+      "target_id": "skeleton-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "skeleton-system",
+      "target_id": "animation-clip",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-clip",
+      "target_id": "animation-blueprint",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-blueprint",
+      "target_id": "blend-tree",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-blueprint",
+      "target_id": "state-machine-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "skeleton-system",
+      "target_id": "ik-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-clip",
+      "target_id": "root-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blend-tree",
+      "target_id": "additive-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-blueprint",
+      "target_id": "montage-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "montage-system",
+      "target_id": "anim-notify",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "skeleton-system",
+      "target_id": "facial-animation-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ik-system",
+      "target_id": "procedural-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-clip",
+      "target_id": "animation-compression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "skeleton-system",
+      "target_id": "animation-retargeting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "procedural-animation",
+      "target_id": "motion-matching",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ik-system",
+      "target_id": "control-rig",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-clip",
+      "target_id": "pose-snapshot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-system-intro",
+      "target_id": "anim-multi-thread",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "animation-system-intro",
+      "target_id": "anim-lod",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "audio-system-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-system-intro",
+      "target_id": "audio-source-listener",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-system-intro",
+      "target_id": "audio-middleware",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-source-listener",
+      "target_id": "spatial-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-audio",
+      "target_id": "audio-occlusion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-audio",
+      "target_id": "reverb-zone",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-middleware",
+      "target_id": "sound-cue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-middleware",
+      "target_id": "audio-bus-mixing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-bus-mixing",
+      "target_id": "dsp-effects",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-middleware",
+      "target_id": "adaptive-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-middleware",
+      "target_id": "dialogue-system-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-middleware",
+      "target_id": "sound-bank",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-source-listener",
+      "target_id": "audio-attenuation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-system-intro",
+      "target_id": "audio-concurrency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-system-intro",
+      "target_id": "ambient-sound",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-source-listener",
+      "target_id": "footstep-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-bus-mixing",
+      "target_id": "audio-snapshot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-middleware",
+      "target_id": "metasound",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-concurrency",
+      "target_id": "audio-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "audio-system-intro",
+      "target_id": "audio-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "input-system-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-system-intro",
+      "target_id": "input-device-abstraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-device-abstraction",
+      "target_id": "input-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-mapping",
+      "target_id": "input-modifier",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-mapping",
+      "target_id": "input-trigger",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-mapping",
+      "target_id": "input-context",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-device-abstraction",
+      "target_id": "mouse-cursor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-device-abstraction",
+      "target_id": "gamepad-haptics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-device-abstraction",
+      "target_id": "touch-gesture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-device-abstraction",
+      "target_id": "motion-input",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-trigger",
+      "target_id": "input-buffering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-system-intro",
+      "target_id": "input-replay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-system-intro",
+      "target_id": "accessibility-input",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-device-abstraction",
+      "target_id": "local-multiplayer-input",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-system-intro",
+      "target_id": "input-prediction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "touch-gesture",
+      "target_id": "virtual-joystick",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mouse-cursor",
+      "target_id": "camera-input",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-system-intro",
+      "target_id": "input-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-mapping",
+      "target_id": "steamworks-input",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "input-system-intro",
+      "target_id": "input-latency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "resource-mgmt-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "asset-reference",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "asset-reference",
+      "target_id": "async-loading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "memory-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "memory-budget",
+      "target_id": "texture-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "memory-budget",
+      "target_id": "mesh-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "asset-cooking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "asset-cooking",
+      "target_id": "content-bundle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "hot-reload",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "garbage-collection-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "object-pool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "async-loading",
+      "target_id": "streaming-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "asset-registry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "asset-cooking",
+      "target_id": "compression-format",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "shader-cache",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "streaming-system",
+      "target_id": "level-streaming-asset",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "asset-registry",
+      "target_id": "asset-dependency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "resource-mgmt-intro",
+      "target_id": "content-validation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "content-bundle",
+      "target_id": "patching-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "asset-registry",
+      "target_id": "asset-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "scene-mgmt-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "scene-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "world-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-graph",
+      "target_id": "spatial-partitioning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-partitioning",
+      "target_id": "frustum-culling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "frustum-culling",
+      "target_id": "visibility-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "data-layer-scene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "world-composition",
+      "target_id": "level-transition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "spawn-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "world-composition",
+      "target_id": "world-origin-shifting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "persistent-state",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-partitioning",
+      "target_id": "environment-query",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "minimap-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "weather-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "day-night-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "destruction-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "lod-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scene-mgmt-intro",
+      "target_id": "scene-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-partitioning",
+      "target_id": "procedural-placement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visibility-system",
+      "target_id": "scene-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "scripting-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "blueprint-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "cpp-ue5",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "csharp-unity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "lua-scripting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "visual-scripting-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cpp-ue5",
+      "target_id": "native-binding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "coroutine-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "event-system-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "console-command",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "hot-reload-script",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "gameplay-tag",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "data-driven-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blueprint-system",
+      "target_id": "ai-behavior-tree",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "state-machine-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "command-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "native-binding",
+      "target_id": "object-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "debug-draw",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "profiling-marker",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "scripting-intro",
+      "target_id": "testing-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "editor-ext-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "custom-editor-window",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "property-customization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "editor-utility-widget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "custom-asset-type",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "editor-mode",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "editor-command",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "custom-editor-window",
+      "target_id": "content-browser-ext",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "sequencer-extension",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "editor-scripting-py",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-scripting-py",
+      "target_id": "automation-tool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "editor-test",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "gizmo-custom",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "toolbar-extension",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "automation-tool",
+      "target_id": "data-validation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "editor-performance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "source-control-editor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "automation-tool",
+      "target_id": "cook-automation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "editor-config",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "editor-ext-intro",
+      "target_id": "multi-user-editor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "platform-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "hal-layer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "hal-layer",
+      "target_id": "graphics-api-abstraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "platform-defines",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "file-system-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "hal-layer",
+      "target_id": "threading-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "console-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "mobile-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "pc-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "vr-adaptation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "cross-play",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "certification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "save-system-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "achievement-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "storefront-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "cloud-gaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "crash-reporting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "certification",
+      "target_id": "compliance-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "platform-scalability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "platform-intro",
+      "target_id": "platform-api-service",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "profiling-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "cpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "gpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "memory-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "frame-time-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "stat-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cpu-profiling",
+      "target_id": "unreal-insights",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gpu-profiling",
+      "target_id": "renderdoc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gpu-profiling",
+      "target_id": "pix-nsa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gpu-profiling",
+      "target_id": "bandwidth-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gpu-profiling",
+      "target_id": "draw-call-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gpu-profiling",
+      "target_id": "shader-complexity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "loading-time",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "frame-time-analysis",
+      "target_id": "hitching-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "network-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "automation-benchmark",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "perf-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "scalability-settings",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "automation-benchmark",
+      "target_id": "perf-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "mobile-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "serialization-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "serialization-intro",
+      "target_id": "binary-serialization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "serialization-intro",
+      "target_id": "json-serialization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "binary-serialization",
+      "target_id": "save-game-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "binary-serialization",
+      "target_id": "uasset-format",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "serialization-intro",
+      "target_id": "property-serialization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "binary-serialization",
+      "target_id": "network-serialization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "save-game-system",
+      "target_id": "schema-versioning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "schema-versioning",
+      "target_id": "data-migration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "serialization-intro",
+      "target_id": "config-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "serialization-intro",
+      "target_id": "replay-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "save-game-system",
+      "target_id": "checkpoint-save",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "save-game-system",
+      "target_id": "cloud-save",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "binary-serialization",
+      "target_id": "protobuf-flatbuf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "serialization-intro",
+      "target_id": "asset-metadata",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "json-serialization",
+      "target_id": "data-table-engine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "save-game-system",
+      "target_id": "encryption-save",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "serialization-intro",
+      "target_id": "undo-redo-serialization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "property-serialization",
+      "target_id": "custom-struct-serial",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "serialization-intro",
+      "target_id": "serialization-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ge-overview",
+      "target_id": "plugin-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "plugin-architecture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-architecture",
+      "target_id": "ue5-plugin-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-architecture",
+      "target_id": "unity-package",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "plugin-lifecycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "plugin-dependency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-architecture",
+      "target_id": "api-design-plugin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "plugin-settings",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "marketplace-plugin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "plugin-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-architecture",
+      "target_id": "thirdparty-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-plugin-structure",
+      "target_id": "online-subsystem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "analytics-plugin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "localization-plugin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "thirdparty-integration",
+      "target_id": "anti-cheat-plugin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "crash-reporter-plugin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "cicd-plugin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-architecture",
+      "target_id": "modding-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "plugin-versioning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "plugin-documentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-nanite",
+      "target_id": "gpu-driven-rendering",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ue5-lumen",
+      "target_id": "global-illumination",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ue5-chaos",
+      "target_id": "physics-engine-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "unity-urp",
+      "target_id": "render-pipeline-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "unity-physics",
+      "target_id": "physics-engine-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "unity-animation",
+      "target_id": "animation-system-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "unity-audio",
+      "target_id": "audio-system-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ue5-enhanced-input",
+      "target_id": "input-system-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "unity-input-system",
+      "target_id": "input-system-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ue5-pak-system",
+      "target_id": "resource-mgmt-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "unity-addressables",
+      "target_id": "resource-mgmt-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ue5-world-partition",
+      "target_id": "scene-mgmt-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "blueprint-system",
+      "target_id": "ue5-actor-component",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "animation-blueprint",
+      "target_id": "ue5-actor-component",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "physics-optimization",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "profiling-intro",
+      "target_id": "audio-profiling",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "render-graph",
+      "target_id": "gpu-profiling",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "save-game-system",
+      "target_id": "persistent-state",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "plugin-intro",
+      "target_id": "editor-ext-intro",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "testing-framework",
+      "target_id": "editor-test",
+      "relation_type": "related",
+      "strength": 0.6
+    }
+  ],
+  "metadata": {
+    "domain_id": "game-engine",
+    "version": "1.0.0",
+    "generated_by": "generate_ge_seed.py",
+    "total_concepts": 300,
+    "total_edges": 319,
+    "subdomains": [
+      {
+        "id": "ue5-architecture",
+        "name": "UE5架构",
+        "order": 1
+      },
+      {
+        "id": "unity-architecture",
+        "name": "Unity架构",
+        "order": 2
+      },
+      {
+        "id": "rendering-pipeline",
+        "name": "渲染管线",
+        "order": 3
+      },
+      {
+        "id": "physics-engine",
+        "name": "物理引擎",
+        "order": 4
+      },
+      {
+        "id": "animation-system",
+        "name": "动画系统",
+        "order": 5
+      },
+      {
+        "id": "audio-system",
+        "name": "音频系统",
+        "order": 6
+      },
+      {
+        "id": "input-system",
+        "name": "输入系统",
+        "order": 7
+      },
+      {
+        "id": "resource-management",
+        "name": "资源管理",
+        "order": 8
+      },
+      {
+        "id": "scene-management",
+        "name": "场景管理",
+        "order": 9
+      },
+      {
+        "id": "scripting-system",
+        "name": "脚本系统",
+        "order": 10
+      },
+      {
+        "id": "editor-extension",
+        "name": "编辑器扩展",
+        "order": 11
+      },
+      {
+        "id": "platform-abstraction",
+        "name": "平台抽象",
+        "order": 12
+      },
+      {
+        "id": "performance-profiling",
+        "name": "性能剖析",
+        "order": 13
+      },
+      {
+        "id": "serialization",
+        "name": "序列化",
+        "order": 14
+      },
+      {
+        "id": "plugin-development",
+        "name": "插件开发",
+        "order": 15
+      }
+    ],
+    "milestones": [
+      "ge-overview",
+      "ue5-actor-component",
+      "ue5-nanite",
+      "unity-overview",
+      "unity-dots",
+      "render-pipeline-intro",
+      "deferred-rendering",
+      "render-graph",
+      "physics-engine-intro",
+      "collision-detection",
+      "character-controller",
+      "animation-system-intro",
+      "animation-blueprint",
+      "procedural-animation",
+      "audio-system-intro",
+      "audio-middleware",
+      "metasound",
+      "input-system-intro",
+      "input-mapping",
+      "input-latency",
+      "resource-mgmt-intro",
+      "async-loading",
+      "patching-system",
+      "scene-mgmt-intro",
+      "spatial-partitioning",
+      "procedural-placement",
+      "scripting-intro",
+      "blueprint-system",
+      "data-driven-design",
+      "editor-ext-intro",
+      "custom-asset-type",
+      "automation-tool",
+      "platform-intro",
+      "graphics-api-abstraction",
+      "platform-scalability",
+      "profiling-intro",
+      "gpu-profiling",
+      "automation-benchmark",
+      "serialization-intro",
+      "save-game-system",
+      "data-table-engine",
+      "plugin-intro",
+      "ue5-plugin-structure",
+      "thirdparty-integration"
+    ]
+  }
+}

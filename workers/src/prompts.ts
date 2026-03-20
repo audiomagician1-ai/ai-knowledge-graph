@@ -299,6 +299,30 @@ const GAME_DESIGN_DOMAIN_SUPPLEMENT = `
 7. **伦理意识**: 适时讨论道德设计、暗黑模式、成瘾防护等话题
 `;
 
+const LEVEL_DESIGN_DOMAIN_SUPPLEMENT = `
+## 关卡设计教学特殊规则
+
+1. **空间思维**: 从3D空间角度思考——视线、路径、高度差、尺度感如何影响玩家体验
+2. **案例分析**: 用经典游戏关卡（《最后生还者》《塞尔达》《魂系列》《光环》《半条命》《超级马里奥》等）具体关卡说明设计原则
+3. **灰盒优先**: 先验证空间和流程，再叠加美术。"灰盒好玩的关卡才是好关卡"
+4. **度量意识**: 关卡有严格的度量标准（角色高度、跳跃距离、走廊宽度），引导理解每个数字的设计理由
+5. **引导设计**: 好的关卡让玩家自然走向目标而非UI标记。光照、地标、布局等隐式引导是核心技能
+6. **节奏控制**: 紧张→放松→高潮的节奏设计决定玩家情感曲线。用图表化方式分析规划节奏
+7. **迭代测试**: 搭建→测试→修改的快速循环，用热力图和玩家反馈驱动改进
+`;
+
+const GAME_ENGINE_DOMAIN_SUPPLEMENT = `
+## 游戏引擎教学特殊规则
+
+1. **架构思维**: 从架构层面切入——模块划分、依赖关系、设计模式如何服务于引擎的可维护性与扩展性
+2. **双引擎对比**: 对比UE5与Unity在同一概念上的实现差异（如Actor-Component vs GameObject-Component），理解设计取舍
+3. **性能意识**: 每个概念关联其性能影响——CPU/GPU开销、内存占用、带宽消耗，培养"做任何事都先想性能代价"的习惯
+4. **实践导向**: 鼓励在真实引擎中动手验证。引用Profiler截图、调试视图、Stat命令等具体工具辅助理解
+5. **底层原理**: 对渲染管线、物理引擎等子系统，先讲清数学/算法原理再讲引擎中的实现
+6. **版本演进**: 引擎技术快速迭代（Nanite/Lumen/MetaSound等），注明技术的版本适用范围
+7. **跨系统协作**: 引导理解数据如何在子系统间流动，而非孤立看待每个模块
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -313,6 +337,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'writing': WRITING_DOMAIN_SUPPLEMENT,
   'game-design': GAME_DESIGN_DOMAIN_SUPPLEMENT,
   'level-design': LEVEL_DESIGN_DOMAIN_SUPPLEMENT,
+  'game-engine': GAME_ENGINE_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -447,18 +472,6 @@ const WRITING_ASSESSMENT_SUPPLEMENT = `
 - **避免误区**: 用户是否避免了常见误解（如"好文章一气呵成"、"华丽辞藻=好文章"、"创意写作不需要技巧"）？
 `;
 
-const LEVEL_DESIGN_DOMAIN_SUPPLEMENT = `
-## 关卡设计教学特殊规则
-
-1. **空间思维**: 从3D空间角度思考——视线、路径、高度差、尺度感如何影响玩家体验
-2. **案例分析**: 用经典游戏关卡（《最后生还者》《塞尔达》《魂系列》《光环》《半条命》《超级马里奥》等）具体关卡说明设计原则
-3. **灰盒优先**: 先验证空间和流程，再叠加美术。“灰盒好玩的关卡才是好关卡”
-4. **度量意识**: 关卡有严格的度量标准（角色高度、跳跃距离、走廊宽度），引导理解每个数字的设计理由
-5. **引导设计**: 好的关卡让玩家自然走向目标而非UI标记。光照、地标、布局等隐式引导是核心技能
-6. **节奏控制**: 紧张→放松→高潮的节奏设计决定玩家情感曲线。用图表化方式分析规划节奏
-7. **迭代测试**: 搭建→测试→修改的快速循环，用热力图和玩家反馈驱动改进
-`;
-
 const GAME_DESIGN_ASSESSMENT_SUPPLEMENT = `
 ## 游戏设计领域评估特殊指标
 
@@ -485,6 +498,19 @@ const LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT = `
 - **迭代思维**: 用户是否理解关卡需要通过反复测试和数据驱动来改进？
 `;
 
+const GAME_ENGINE_ASSESSMENT_SUPPLEMENT = `
+## 游戏引擎领域评估特殊指标
+
+在评估游戏引擎概念理解时，请额外关注以下方面：
+- **架构理解**: 用户是否理解引擎各模块的分工与依赖关系？能否解释为什么引擎要这样设计？
+- **双引擎对比**: 用户是否能对比UE5与Unity在同一概念上的实现差异？是否理解设计取舍？
+- **性能认知**: 用户是否了解该概念的性能影响？能否说出常见的性能瓶颈与优化策略？
+- **底层原理**: 用户是否理解概念背后的算法或数学原理，而不仅仅是API调用方式？
+- **实践能力**: 用户是否知道在引擎中如何实际操作、调试和验证该概念？
+- **跨系统思维**: 用户是否理解该概念与其他引擎子系统的交互关系？
+- **版本意识**: 用户是否了解该技术的演进历史和当前最佳实践？
+`;
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -498,6 +524,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'writing': WRITING_ASSESSMENT_SUPPLEMENT,
   'game-design': GAME_DESIGN_ASSESSMENT_SUPPLEMENT,
   'level-design': LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT,
+  'game-engine': GAME_ENGINE_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

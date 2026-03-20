@@ -544,6 +544,31 @@ LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT = """
 - **迭代思维**: 用户是否理解关卡需要通过反复测试和数据驱动来改进？
 """
 
+GAME_ENGINE_DOMAIN_SUPPLEMENT = """
+## 游戏引擎教学特殊规则
+
+1. **架构思维**: 游戏引擎是大型软件系统。教学中始终从架构层面切入——模块划分、依赖关系、设计模式如何服务于引擎的可维护性与扩展性
+2. **双引擎对比**: 大部分概念在UE5与Unity中都有对应实现。引导学生对比两个引擎的异同（如UE5 Actor-Component vs Unity GameObject-Component, UE5 Blueprint vs Unity Visual Scripting），理解设计取舍
+3. **性能意识**: 游戏引擎对性能极度敏感。每个概念都应关联其性能影响——CPU/GPU开销、内存占用、带宽消耗，培养学生"做任何事都先想性能代价"的习惯
+4. **实践导向**: 鼓励学生在真实引擎中动手验证。引用Profiler截图、调试视图、Stat命令等具体工具辅助理解抽象概念
+5. **底层原理**: 对渲染管线、物理引擎等子系统，先讲清数学/算法原理，再讲引擎中的实现。避免学生只会"点按钮"不理解背后机制
+6. **版本演进**: 引擎技术快速迭代（Nanite/Lumen/MetaSound等）。教学中注明技术的引擎版本适用范围，培养学生跟踪技术演进的能力
+7. **跨系统协作**: 引擎各子系统（渲染/物理/动画/音频/输入）高度耦合。引导学生理解数据如何在子系统间流动，而非孤立看待每个模块
+"""
+
+GAME_ENGINE_ASSESSMENT_SUPPLEMENT = """
+## 游戏引擎领域评估特殊指标
+
+在评估游戏引擎概念理解时，请额外关注以下方面：
+- **架构理解**: 用户是否理解引擎各模块的分工与依赖关系？能否解释为什么引擎要这样设计？
+- **双引擎对比**: 用户是否能对比UE5与Unity在同一概念上的实现差异？是否理解设计取舍？
+- **性能认知**: 用户是否了解该概念的性能影响？能否说出常见的性能瓶颈与优化策略？
+- **底层原理**: 用户是否理解概念背后的算法或数学原理，而不仅仅是API调用方式？
+- **实践能力**: 用户是否知道在引擎中如何实际操作、调试和验证该概念？
+- **跨系统思维**: 用户是否理解该概念与其他引擎子系统的交互关系？
+- **版本意识**: 用户是否了解该技术的演进历史和当前最佳实践？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -561,6 +586,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "writing": WRITING_DOMAIN_SUPPLEMENT,
     "game-design": GAME_DESIGN_DOMAIN_SUPPLEMENT,
     "level-design": LEVEL_DESIGN_DOMAIN_SUPPLEMENT,
+    "game-engine": GAME_ENGINE_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -576,6 +602,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "writing": WRITING_ASSESSMENT_SUPPLEMENT,
     "game-design": GAME_DESIGN_ASSESSMENT_SUPPLEMENT,
     "level-design": LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT,
+    "game-engine": GAME_ENGINE_ASSESSMENT_SUPPLEMENT,
 }
 
 

@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -1706,3 +1706,99 @@ async def test_level_design_domain_supplements():
     assert "level-design" in DOMAIN_SUPPLEMENTS, "level-design missing from DOMAIN_SUPPLEMENTS"
     assert "level-design" in ASSESSMENT_SUPPLEMENTS, "level-design missing from ASSESSMENT_SUPPLEMENTS"
     assert "关卡" in DOMAIN_SUPPLEMENTS["level-design"], "Level-design supplement should mention 关卡"
+
+
+# ─── Phase 20: Game Engine integration tests ───
+
+
+@pytest.mark.asyncio
+async def test_game_engine_seed_graph_integrity():
+    """Game-engine seed graph: 300 concepts, 319 edges, 15 subdomains, 44 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=game-engine")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 300, f"Expected 300 concepts, got {len(nodes)}"
+        assert len(edges) == 319, f"Expected 319 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 15, f"Expected 15 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 44, f"Expected 44 milestones, got {len(milestones)}"
+
+
+@pytest.mark.asyncio
+async def test_game_engine_subdomains():
+    """Game-engine should have 15 subdomains with correct IDs."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=game-engine")
+        assert resp.status_code == 200
+        subs = resp.json()
+        sub_ids = {s["id"] for s in subs}
+        expected = {
+            "ue5-architecture", "unity-architecture", "rendering-pipeline",
+            "physics-engine", "animation-system", "audio-system", "input-system",
+            "resource-management", "scene-management", "serialization",
+            "scripting-system", "editor-extension", "plugin-development",
+            "platform-abstraction", "performance-profiling",
+        }
+        assert sub_ids == expected, f"Subdomain mismatch: {sub_ids ^ expected}"
+
+
+@pytest.mark.asyncio
+async def test_rag_game_engine_stats():
+    """Game-engine RAG stats should reflect 300 documents across 15 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=game-engine")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 300
+        assert data["domain"] == "game-engine"
+        assert len(data.get("by_subdomain", {})) == 15
+
+
+@pytest.mark.asyncio
+async def test_rag_game_engine_concept():
+    """Should return RAG content for a game-engine concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/ge-overview?domain=game-engine")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "ge-overview"
+        assert data["domain"] == "game-engine"
+        assert "核心内容" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_game_engine_404_wrong_domain():
+    """Game-engine concept should 404 when queried against another domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/ge-overview?domain=mathematics")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_game_engine_cross_sphere_links():
+    """Cross-sphere links for game-engine should exist (game-engine ↔ game-design/level-design)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=game-engine")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 25, f"Expected >= 25 cross-links, got {len(links)}"
+        partner_domains = set()
+        for lk in links:
+            partner_domains.add(lk.get("source_domain", ""))
+            partner_domains.add(lk.get("target_domain", ""))
+        assert "game-design" in partner_domains, "Expected cross-links with game-design"
+        assert "level-design" in partner_domains, "Expected cross-links with level-design"
+
+
+@pytest.mark.asyncio
+async def test_game_engine_domain_supplements():
+    """Game-engine should have domain supplements in BE evaluation system."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "game-engine" in DOMAIN_SUPPLEMENTS, "game-engine missing from DOMAIN_SUPPLEMENTS"
+    assert "game-engine" in ASSESSMENT_SUPPLEMENTS, "game-engine missing from ASSESSMENT_SUPPLEMENTS"
+    assert "引擎" in DOMAIN_SUPPLEMENTS["game-engine"], "Game-engine supplement should mention 引擎"

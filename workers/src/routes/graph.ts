@@ -18,6 +18,7 @@ import seedEconomics from '../../data/seed/economics/seed_graph.json';
 import seedWriting from '../../data/seed/writing/seed_graph.json';
 import seedGameDesign from '../../data/seed/game-design/seed_graph.json';
 import seedLevelDesign from '../../data/seed/level-design/seed_graph.json';
+import seedGameEngine from '../../data/seed/game-engine/seed_graph.json';
 // Multi-domain RAG index imports
 import ragAI from '../../data/rag/_index.json';
 import ragMath from '../../data/rag/mathematics/_index.json';
@@ -32,6 +33,7 @@ import ragEconomics from '../../data/rag/economics/_index.json';
 import ragWriting from '../../data/rag/writing/_index.json';
 import ragGameDesign from '../../data/rag/game-design/_index.json';
 import ragLevelDesign from '../../data/rag/level-design/_index.json';
+import ragGameEngine from '../../data/rag/game-engine/_index.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -44,6 +46,7 @@ const seedMap: Record<string, any> = {
   'biology': seedBiology, 'economics': seedEconomics, 'writing': seedWriting,
   'game-design': seedGameDesign,
   'level-design': seedLevelDesign,
+  'game-engine': seedGameEngine,
 };
 const ragMap: Record<string, any> = {
   'ai-engineering': ragAI, 'mathematics': ragMath, 'english': ragEnglish,
@@ -52,6 +55,7 @@ const ragMap: Record<string, any> = {
   'biology': ragBiology, 'economics': ragEconomics, 'writing': ragWriting,
   'game-design': ragGameDesign,
   'level-design': ragLevelDesign,
+  'game-engine': ragGameEngine,
 };
 function getSeed(domain: string): any { return seedMap[domain] || null; }
 function getRagIndex(domain: string): any { return ragMap[domain] || { documents: [], stats: {} }; }

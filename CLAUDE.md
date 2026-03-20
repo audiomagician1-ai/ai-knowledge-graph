@@ -1339,6 +1339,21 @@ data/seed/         — 种子图谱数据
     - VERIFY: 851 tests (638 BE + 213 FE) 全通过, tsc 0 errors, build 3.79s
     - STATUS: Phase 19 🗺️关卡设计知识球 **全部完成** (7/7步骤)
 
+ - ✅ **Phase 20: Game Engine知识球完整交付 (2026-03-20)**:
+    - **FEAT**: 游戏引擎知识球 Phase 20 全部7步骤完成:
+      - 20.1 种子图谱: 300概念, 319边, 15子域(ue5-architecture/unity-architecture/rendering-pipeline/physics-engine/animation-system/audio-system/input-system/resource-management/scene-management/serialization/scripting-system/editor-extension/plugin-development/platform-abstraction/performance-profiling), 44里程碑
+      - 20.2 RAG文档: 300篇markdown, 15子域×20篇, 166,195总字符, _index.json生成
+      - 20.3 域注册: domains.json v13.0.0 (14个活跃域), sort_order: 14, icon 🔧, color #059669
+      - 20.4 域补充: GAME_ENGINE_DOMAIN_SUPPLEMENT + GAME_ENGINE_ASSESSMENT_SUPPLEMENT (BE/FE/Workers三端同步)
+      - 20.5 跨球链接: 25条 game-engine↔game-design/level-design 链接(10→gd+5←gd+5→ld+5←ld), 总计200条跨球链接
+      - 20.6 集成测试: +7新测试 (seed/subdomains/rag-stats/rag-concept/rag-404/cross-links/supplements) + 4个既有测试更新
+      - 20.7 文档更新: EXPANSION_PLAN.md Phase 20标记完成, CLAUDE.md更新
+    - Workers sync: graph.ts/dialogue.ts/learning.ts seedMap + ragMap全部更新
+    - FIX: workers/src/prompts.ts 修复level-design DOMAIN_SUPPLEMENT声明顺序bug(const使用在声明前)
+    - 生成器脚本: data/scripts/generate_ge_seed.py + data/scripts/generate_ge_rag.py
+    - VERIFY: 858 tests (645 BE + 213 FE) 全通过, tsc 0 errors, build 3.54s
+    - STATUS: Phase 20 🔧游戏引擎知识球 **全部完成** (7/7步骤)
+
 ## Last Review
 
 **Date**: 2026-03-20 | **Scope**: 全栈 (Round 80: recommend域感知 + LLM null安全 + Issue #14修复 + Phase 18进度可视化) | **Result**: issues-filed (#14 fixed, #13 closed)
