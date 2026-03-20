@@ -1282,6 +1282,126 @@
       "target_id": "descriptive-statistics",
       "relation": "requires",
       "description": "ELO评分系统基于统计学原理，需要理解正态分布和概率推断"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "pacing-design",
+      "target_domain": "level-design",
+      "target_id": "pacing-intro",
+      "relation": "related",
+      "description": "游戏设计中的节奏设计理论在关卡设计中通过空间节奏具体实现"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "onboarding-design",
+      "target_domain": "level-design",
+      "target_id": "tutorial-level",
+      "relation": "related",
+      "description": "游戏设计的新手引导理论在关卡层面通过教学关卡设计落地"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "encounter-design",
+      "target_domain": "level-design",
+      "target_id": "combat-space-intro",
+      "relation": "related",
+      "description": "遭遇战设计的敌人配置需要在战斗空间中落地实现"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "difficulty-overview",
+      "target_domain": "level-design",
+      "target_id": "difficulty-ramp",
+      "relation": "related",
+      "description": "游戏难度设计理论在关卡中通过难度爬坡具体实现"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "flow-theory",
+      "target_domain": "level-design",
+      "target_id": "flow-channel-ld",
+      "relation": "related",
+      "description": "心流理论在关卡设计中通过空间引导创造心流通道"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "feedback-intro",
+      "target_domain": "level-design",
+      "target_id": "visual-guidance",
+      "relation": "related",
+      "description": "游戏反馈系统理论在关卡中通过视觉反馈引导玩家"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "checkpoint-design",
+      "target_domain": "level-design",
+      "target_id": "checkpoint-pacing",
+      "relation": "same_concept",
+      "description": "检查点设计在游戏设计和关卡设计中是同一概念，前者侧重系统规则，后者侧重空间放置"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "adaptive-difficulty",
+      "target_domain": "level-design",
+      "target_id": "intensity-curve",
+      "relation": "related",
+      "description": "自适应难度系统影响关卡的强度曲线设计"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "procedural-gen",
+      "target_domain": "level-design",
+      "target_id": "pcg-level-gen",
+      "relation": "same_concept",
+      "description": "程序化生成在游戏设计和关卡设计中是同一技术，前者侧重系统设计，后者侧重空间生成"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "boss-design",
+      "target_domain": "level-design",
+      "target_id": "boss-arena",
+      "relation": "related",
+      "description": "Boss战的机制设计需要在Boss战场空间中落地实现"
+    },
+    {
+      "source_domain": "level-design",
+      "source_id": "spatial-storytelling",
+      "target_domain": "game-design",
+      "target_id": "emotion-design",
+      "relation": "related",
+      "description": "关卡中的空间叙事是情感设计理论在空间维度的具体实现"
+    },
+    {
+      "source_domain": "level-design",
+      "source_id": "metrics-intro",
+      "target_domain": "game-design",
+      "target_id": "number-tuning",
+      "relation": "related",
+      "description": "关卡度量标准与游戏数值调优共享相同的数据驱动方法论"
+    },
+    {
+      "source_domain": "level-design",
+      "source_id": "blockout-intro",
+      "target_domain": "game-design",
+      "target_id": "prototyping",
+      "relation": "related",
+      "description": "关卡灰盒是原型制作在空间设计中的具体应用"
+    },
+    {
+      "source_domain": "level-design",
+      "source_id": "lighting-intro",
+      "target_domain": "game-design",
+      "target_id": "visual-feedback",
+      "relation": "related",
+      "description": "关卡光照叙事是游戏视觉反馈在空间维度的延伸"
+    },
+    {
+      "source_domain": "level-design",
+      "source_id": "ld-doc-intro",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "related",
+      "description": "关卡设计文档是游戏设计文档的细分专项"
     }
   ],
   "meta": {
@@ -1306,8 +1426,10 @@
       "product-design_mathematics": 4,
       "product-design_ai-engineering": 4,
       "product-design_english": 2,
-      "product-design_physics": 0
+      "product-design_physics": 0,
+      "game-design_level-design": 10,
+      "level-design_game-design": 5
     }
   },
-  "total": 130
+  "total": 175
 }
