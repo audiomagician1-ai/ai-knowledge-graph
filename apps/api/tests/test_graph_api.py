@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2183,3 +2183,89 @@ async def test_concept_design_domain_supplements():
     assert "concept-design" in DOMAIN_SUPPLEMENTS, "concept-design missing from DOMAIN_SUPPLEMENTS"
     assert "concept-design" in ASSESSMENT_SUPPLEMENTS, "concept-design missing from ASSESSMENT_SUPPLEMENTS"
     assert "形状语言" in DOMAIN_SUPPLEMENTS["concept-design"], "Concept Design supplement should mention 形状语言"
+
+
+# ========================= Phase 25: Animation Integration Tests =========================
+
+@pytest.mark.asyncio
+async def test_animation_seed_graph_integrity():
+    """Animation seed graph: 180 concepts, 184 edges, 10 subdomains, 36 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=animation")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 180, f"Expected 180 concepts, got {len(nodes)}"
+        assert len(edges) == 184, f"Expected 184 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 10, f"Expected 10 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 36, f"Expected 36 milestones, got {len(milestones)}"
+
+
+@pytest.mark.asyncio
+async def test_animation_subdomains():
+    """Animation should have 10 subdomains with correct IDs."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=animation")
+        assert resp.status_code == 200
+        subs = resp.json()
+        sub_ids = {s["id"] for s in subs}
+        expected = {
+            "animation-principles", "skeletal-rigging", "keyframe-animation",
+            "motion-capture", "state-machine", "blend-space",
+            "ik-fk", "facial-animation", "animation-blueprint",
+            "physics-animation",
+        }
+        assert sub_ids == expected, f"Subdomain mismatch: {sub_ids ^ expected}"
+
+
+@pytest.mark.asyncio
+async def test_rag_animation_stats():
+    """Animation RAG stats should reflect 180 documents across 10 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=animation")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 180
+        assert data["domain"] == "animation"
+        assert len(data.get("by_subdomain", {})) == 10
+
+
+@pytest.mark.asyncio
+async def test_rag_animation_concept():
+    """Should return RAG content for an animation concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/anim-squash-stretch?domain=animation")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "anim-squash-stretch"
+        assert data["domain"] == "animation"
+        assert "挤压" in data["content"] or "拉伸" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_animation_cross_sphere_links():
+    """Cross-sphere links for animation should exist (animation ↔ game-engine/concept-design/3d-art/game-design)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=animation")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 15, f"Expected >= 15 cross-links, got {len(links)}"
+        partner_domains = set()
+        for lk in links:
+            partner_domains.add(lk.get("source_domain", ""))
+            partner_domains.add(lk.get("target_domain", ""))
+        assert "game-engine" in partner_domains, "Expected cross-links with game-engine"
+        assert "concept-design" in partner_domains, "Expected cross-links with concept-design"
+
+
+@pytest.mark.asyncio
+async def test_animation_domain_supplements():
+    """Animation should have domain supplements in BE evaluation system."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "animation" in DOMAIN_SUPPLEMENTS, "animation missing from DOMAIN_SUPPLEMENTS"
+    assert "animation" in ASSESSMENT_SUPPLEMENTS, "animation missing from ASSESSMENT_SUPPLEMENTS"
+    assert "12原则" in DOMAIN_SUPPLEMENTS["animation"] or "12条" in DOMAIN_SUPPLEMENTS["animation"], "Animation supplement should mention 12 principles"

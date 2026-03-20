@@ -21,6 +21,7 @@ import seedSoftwareEngineering from '../../data/seed/software-engineering/seed_g
 import seedComputerGraphics from '../../data/seed/computer-graphics/seed_graph.json';
 import seed3DArt from '../../data/seed/3d-art/seed_graph.json';
 import seedConceptDesign from '../../data/seed/concept-design/seed_graph.json';
+import seedAnimation from '../../data/seed/animation/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -36,6 +37,7 @@ const seedMap: Record<string, any> = {
   'computer-graphics': seedComputerGraphics,
   '3d-art': seed3DArt,
   'concept-design': seedConceptDesign,
+  'animation': seedAnimation,
 };
 
 function findConceptAcrossDomains(conceptId: string): { seed: any; domain: string } | null {

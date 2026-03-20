@@ -669,6 +669,31 @@ CONCEPT_DESIGN_ASSESSMENT_SUPPLEMENT = """
 - **可执行性**: 用户的设计是否考虑了下游制作的可行性——3D建模/动画/引擎实现？
 """
 
+ANIMATION_DOMAIN_SUPPLEMENT = """
+## 动画教学特殊规则
+
+1. **12原则为纲**: 迪士尼12条动画原理是一切动画的基础。教学时始终将具体技术关联到基本原理——无论是手K还是动捕后处理
+2. **参考为先**: 动画制作永远从参考视频开始。鼓励学生拍摄/收集参考，培养对运动的敏感度
+3. **游戏特殊性**: 游戏动画需要考虑实时性能/循环/混合/交互响应等特殊约束。与影视动画有本质区别
+4. **Blocking优先**: 先确保关键姿势和节奏正确(Blocking)，再添加细节(Polish)。避免过早陷入细节
+5. **权重与时间**: 重量感通过timing和spacing传达——重物慢/轻物快，起止有缓冲。这是区分新手和专业的关键
+6. **手感优先**: 游戏动画的首要目标是让玩家感觉操控流畅——预备动作不能太长，响应必须及时
+7. **管线思维**: 动画不是孤立环节——需要与绑定/引擎/设计紧密协作。培养完整管线意识
+"""
+
+ANIMATION_ASSESSMENT_SUPPLEMENT = """
+## 动画领域评估特殊指标
+
+在评估动画概念理解时，请额外关注以下方面：
+- **原理理解**: 用户是否真正理解12条动画原理？能否识别动画中违反原理的问题？
+- **时间感知**: 用户是否理解timing和spacing对动画质量的影响？能否判断节奏是否合适？
+- **重量表现**: 用户是否能区分不同重量物体的运动特征？能否通过姿势/时间表达重量感？
+- **游戏约束**: 用户是否理解游戏动画与影视动画的区别？能否考虑实时性能/交互响应/循环等约束？
+- **工具熟悉度**: 用户是否了解DCC工具和引擎中动画相关功能的使用方法和工作流？
+- **管线理解**: 用户是否理解从建模→绑定→动画→引擎的完整管线？能否识别各环节的依赖关系？
+- **调试能力**: 用户是否能识别和解决常见动画问题——穿模/滑步/权重异常/混合跳变？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -691,6 +716,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "computer-graphics": COMPUTER_GRAPHICS_DOMAIN_SUPPLEMENT,
     "3d-art": THREE_D_ART_DOMAIN_SUPPLEMENT,
     "concept-design": CONCEPT_DESIGN_DOMAIN_SUPPLEMENT,
+    "animation": ANIMATION_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -711,6 +737,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "computer-graphics": COMPUTER_GRAPHICS_ASSESSMENT_SUPPLEMENT,
     "3d-art": THREE_D_ART_ASSESSMENT_SUPPLEMENT,
     "concept-design": CONCEPT_DESIGN_ASSESSMENT_SUPPLEMENT,
+    "animation": ANIMATION_ASSESSMENT_SUPPLEMENT,
 }
 
 

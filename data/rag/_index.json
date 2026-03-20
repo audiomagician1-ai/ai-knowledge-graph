@@ -5877,6 +5877,1086 @@
       "file": "oop/state-pattern.md",
       "exists": true,
       "char_count": 550
+    },
+    {
+      "id": "anim-principles-overview",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-principles-overview.md"
+    },
+    {
+      "id": "anim-squash-stretch",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-squash-stretch.md"
+    },
+    {
+      "id": "anim-anticipation",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-anticipation.md"
+    },
+    {
+      "id": "anim-staging",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-staging.md"
+    },
+    {
+      "id": "anim-straight-ahead-pose",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-straight-ahead-pose.md"
+    },
+    {
+      "id": "anim-follow-through",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-follow-through.md"
+    },
+    {
+      "id": "anim-slow-in-out",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-slow-in-out.md"
+    },
+    {
+      "id": "anim-arcs",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-arcs.md"
+    },
+    {
+      "id": "anim-secondary-action",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-secondary-action.md"
+    },
+    {
+      "id": "anim-timing",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-timing.md"
+    },
+    {
+      "id": "anim-exaggeration",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-exaggeration.md"
+    },
+    {
+      "id": "anim-solid-drawing",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-solid-drawing.md"
+    },
+    {
+      "id": "anim-appeal",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-appeal.md"
+    },
+    {
+      "id": "anim-weight-balance",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-weight-balance.md"
+    },
+    {
+      "id": "anim-line-of-action",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-line-of-action.md"
+    },
+    {
+      "id": "anim-spacing",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-spacing.md"
+    },
+    {
+      "id": "anim-game-vs-film",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-game-vs-film.md"
+    },
+    {
+      "id": "anim-reference-study",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-reference-study.md"
+    },
+    {
+      "id": "anim-blocking",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-blocking.md"
+    },
+    {
+      "id": "anim-polish",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-polish.md"
+    },
+    {
+      "id": "anim-skeleton-basics",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-skeleton-basics.md"
+    },
+    {
+      "id": "anim-joint-hierarchy",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-joint-hierarchy.md"
+    },
+    {
+      "id": "anim-joint-orient",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-joint-orient.md"
+    },
+    {
+      "id": "anim-skin-binding",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-skin-binding.md"
+    },
+    {
+      "id": "anim-weight-painting",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-weight-painting.md"
+    },
+    {
+      "id": "anim-control-rig",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-control-rig.md"
+    },
+    {
+      "id": "anim-deformation",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-deformation.md"
+    },
+    {
+      "id": "anim-rig-constraints",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-rig-constraints.md"
+    },
+    {
+      "id": "anim-humanoid-rig",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-humanoid-rig.md"
+    },
+    {
+      "id": "anim-nonhuman-rig",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-nonhuman-rig.md"
+    },
+    {
+      "id": "anim-rig-testing",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-rig-testing.md"
+    },
+    {
+      "id": "anim-retargeting",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-retargeting.md"
+    },
+    {
+      "id": "anim-modular-rig",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-modular-rig.md"
+    },
+    {
+      "id": "anim-rig-pipeline",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-rig-pipeline.md"
+    },
+    {
+      "id": "anim-keyframe-basics",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-keyframe-basics.md"
+    },
+    {
+      "id": "anim-graph-editor",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-graph-editor.md"
+    },
+    {
+      "id": "anim-tangent-types",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-tangent-types.md"
+    },
+    {
+      "id": "anim-walk-cycle",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-walk-cycle.md"
+    },
+    {
+      "id": "anim-run-cycle",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-run-cycle.md"
+    },
+    {
+      "id": "anim-idle-animation",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-idle-animation.md"
+    },
+    {
+      "id": "anim-attack-animation",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-attack-animation.md"
+    },
+    {
+      "id": "anim-jump-animation",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-jump-animation.md"
+    },
+    {
+      "id": "anim-root-motion",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-root-motion.md"
+    },
+    {
+      "id": "anim-looping",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-looping.md"
+    },
+    {
+      "id": "anim-additive-anim",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-additive-anim.md"
+    },
+    {
+      "id": "anim-layer-system",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-layer-system.md"
+    },
+    {
+      "id": "anim-animation-clip",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-animation-clip.md"
+    },
+    {
+      "id": "anim-pose-library",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-pose-library.md"
+    },
+    {
+      "id": "anim-animation-export",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-animation-export.md"
+    },
+    {
+      "id": "anim-mocap-overview",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-overview.md"
+    },
+    {
+      "id": "anim-optical-mocap",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-optical-mocap.md"
+    },
+    {
+      "id": "anim-inertial-mocap",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-inertial-mocap.md"
+    },
+    {
+      "id": "anim-markerless-mocap",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-markerless-mocap.md"
+    },
+    {
+      "id": "anim-mocap-cleanup",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-cleanup.md"
+    },
+    {
+      "id": "anim-mocap-retarget",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-retarget.md"
+    },
+    {
+      "id": "anim-mocap-studio",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-studio.md"
+    },
+    {
+      "id": "anim-mocap-acting",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-acting.md"
+    },
+    {
+      "id": "anim-mocap-editing",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-editing.md"
+    },
+    {
+      "id": "anim-mocap-face",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-face.md"
+    },
+    {
+      "id": "anim-mocap-pipeline",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-pipeline.md"
+    },
+    {
+      "id": "anim-fsm-basics",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-fsm-basics.md"
+    },
+    {
+      "id": "anim-state-transitions",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-state-transitions.md"
+    },
+    {
+      "id": "anim-transition-rules",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-transition-rules.md"
+    },
+    {
+      "id": "anim-locomotion-sm",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-locomotion-sm.md"
+    },
+    {
+      "id": "anim-combat-sm",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-combat-sm.md"
+    },
+    {
+      "id": "anim-sub-state-machine",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-sub-state-machine.md"
+    },
+    {
+      "id": "anim-any-state",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-any-state.md"
+    },
+    {
+      "id": "anim-state-notifies",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-state-notifies.md"
+    },
+    {
+      "id": "anim-state-debugging",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-state-debugging.md"
+    },
+    {
+      "id": "anim-hfsm",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-hfsm.md"
+    },
+    {
+      "id": "anim-blend-basics",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-blend-basics.md"
+    },
+    {
+      "id": "anim-1d-blend",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-1d-blend.md"
+    },
+    {
+      "id": "anim-2d-blend",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-2d-blend.md"
+    },
+    {
+      "id": "anim-blend-tree",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-blend-tree.md"
+    },
+    {
+      "id": "anim-aim-offset",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-aim-offset.md"
+    },
+    {
+      "id": "anim-crossfade",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-crossfade.md"
+    },
+    {
+      "id": "anim-sync-groups",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-sync-groups.md"
+    },
+    {
+      "id": "anim-blend-mask",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-blend-mask.md"
+    },
+    {
+      "id": "anim-blend-profiles",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-blend-profiles.md"
+    },
+    {
+      "id": "anim-montage",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-montage.md"
+    },
+    {
+      "id": "anim-ik-overview",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-ik-overview.md"
+    },
+    {
+      "id": "anim-fk-basics",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-fk-basics.md"
+    },
+    {
+      "id": "anim-ik-basics",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-ik-basics.md"
+    },
+    {
+      "id": "anim-two-bone-ik",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-two-bone-ik.md"
+    },
+    {
+      "id": "anim-full-body-ik",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-full-body-ik.md"
+    },
+    {
+      "id": "anim-foot-ik",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-foot-ik.md"
+    },
+    {
+      "id": "anim-hand-ik",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-hand-ik.md"
+    },
+    {
+      "id": "anim-look-at",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-look-at.md"
+    },
+    {
+      "id": "anim-ik-fk-switch",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-ik-fk-switch.md"
+    },
+    {
+      "id": "anim-pole-vector",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-pole-vector.md"
+    },
+    {
+      "id": "anim-spline-ik",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-spline-ik.md"
+    },
+    {
+      "id": "anim-procedural-ik",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-procedural-ik.md"
+    },
+    {
+      "id": "anim-face-overview",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-face-overview.md"
+    },
+    {
+      "id": "anim-facs",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-facs.md"
+    },
+    {
+      "id": "anim-blend-shapes",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-blend-shapes.md"
+    },
+    {
+      "id": "anim-bone-face",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-bone-face.md"
+    },
+    {
+      "id": "anim-lip-sync",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-lip-sync.md"
+    },
+    {
+      "id": "anim-eye-animation",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-eye-animation.md"
+    },
+    {
+      "id": "anim-emotion-expression",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-emotion-expression.md"
+    },
+    {
+      "id": "anim-face-rig",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-face-rig.md"
+    },
+    {
+      "id": "anim-dialogue-scene",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-dialogue-scene.md"
+    },
+    {
+      "id": "anim-metahuman-face",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-metahuman-face.md"
+    },
+    {
+      "id": "anim-stylized-face",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-stylized-face.md"
+    },
+    {
+      "id": "anim-face-perf-capture",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-face-perf-capture.md"
+    },
+    {
+      "id": "anim-face-pipeline",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-face-pipeline.md"
+    },
+    {
+      "id": "anim-abp-overview",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-abp-overview.md"
+    },
+    {
+      "id": "anim-event-graph",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-event-graph.md"
+    },
+    {
+      "id": "anim-anim-graph",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-anim-graph.md"
+    },
+    {
+      "id": "anim-abp-variables",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-abp-variables.md"
+    },
+    {
+      "id": "anim-abp-caching",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-abp-caching.md"
+    },
+    {
+      "id": "anim-notify-event",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-notify-event.md"
+    },
+    {
+      "id": "anim-slot-node",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-slot-node.md"
+    },
+    {
+      "id": "anim-linked-anim",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-linked-anim.md"
+    },
+    {
+      "id": "anim-control-rig-bp",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-control-rig-bp.md"
+    },
+    {
+      "id": "anim-thread-safety",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-thread-safety.md"
+    },
+    {
+      "id": "anim-abp-debugging",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-abp-debugging.md"
+    },
+    {
+      "id": "anim-abp-optimization",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-abp-optimization.md"
+    },
+    {
+      "id": "anim-abp-best-practices",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-abp-best-practices.md"
+    },
+    {
+      "id": "anim-physics-overview",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-physics-overview.md"
+    },
+    {
+      "id": "anim-ragdoll",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-ragdoll.md"
+    },
+    {
+      "id": "anim-physics-blend",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-physics-blend.md"
+    },
+    {
+      "id": "anim-cloth-sim",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-cloth-sim.md"
+    },
+    {
+      "id": "anim-hair-sim",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-hair-sim.md"
+    },
+    {
+      "id": "anim-spring-bone",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-spring-bone.md"
+    },
+    {
+      "id": "anim-physical-anim-comp",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-physical-anim-comp.md"
+    },
+    {
+      "id": "anim-active-ragdoll",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-active-ragdoll.md"
+    },
+    {
+      "id": "anim-procedural-motion",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-procedural-motion.md"
+    },
+    {
+      "id": "anim-hit-reaction",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-hit-reaction.md"
+    },
+    {
+      "id": "anim-physics-constraint",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-physics-constraint.md"
+    },
+    {
+      "id": "anim-physics-perf",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-physics-perf.md"
+    },
+    {
+      "id": "anim-wind-interaction",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-wind-interaction.md"
+    },
+    {
+      "id": "anim-destruction-anim",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-destruction-anim.md"
+    },
+    {
+      "id": "anim-contrast",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-contrast.md"
+    },
+    {
+      "id": "anim-silhouette",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-silhouette.md"
+    },
+    {
+      "id": "anim-hold-moving",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-hold-moving.md"
+    },
+    {
+      "id": "anim-overlap-delay",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-overlap-delay.md"
+    },
+    {
+      "id": "anim-force-motion",
+      "domain": "animation",
+      "subdomain": "animation-principles",
+      "path": "animation/anim-force-motion.md"
+    },
+    {
+      "id": "anim-bone-naming",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-bone-naming.md"
+    },
+    {
+      "id": "anim-twist-bones",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-twist-bones.md"
+    },
+    {
+      "id": "anim-corrective-shapes",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-corrective-shapes.md"
+    },
+    {
+      "id": "anim-space-switching",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-space-switching.md"
+    },
+    {
+      "id": "anim-ribbon-spine",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-ribbon-spine.md"
+    },
+    {
+      "id": "anim-auto-rigging",
+      "domain": "animation",
+      "subdomain": "skeletal-rigging",
+      "path": "animation/anim-auto-rigging.md"
+    },
+    {
+      "id": "anim-hit-pause",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-hit-pause.md"
+    },
+    {
+      "id": "anim-death-animation",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-death-animation.md"
+    },
+    {
+      "id": "anim-interaction-anim",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-interaction-anim.md"
+    },
+    {
+      "id": "anim-emote-gesture",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-emote-gesture.md"
+    },
+    {
+      "id": "anim-transition-anim",
+      "domain": "animation",
+      "subdomain": "keyframe-animation",
+      "path": "animation/anim-transition-anim.md"
+    },
+    {
+      "id": "anim-mocap-workflow",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-workflow.md"
+    },
+    {
+      "id": "anim-mocap-budget",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-budget.md"
+    },
+    {
+      "id": "anim-mocap-vs-keyframe",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-vs-keyframe.md"
+    },
+    {
+      "id": "anim-mocap-library",
+      "domain": "animation",
+      "subdomain": "motion-capture",
+      "path": "animation/anim-mocap-library.md"
+    },
+    {
+      "id": "anim-animation-sm-design",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-animation-sm-design.md"
+    },
+    {
+      "id": "anim-parametric-state",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-parametric-state.md"
+    },
+    {
+      "id": "anim-interrupt-priority",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-interrupt-priority.md"
+    },
+    {
+      "id": "anim-state-machine-perf",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-state-machine-perf.md"
+    },
+    {
+      "id": "anim-behavior-tree-anim",
+      "domain": "animation",
+      "subdomain": "state-machine",
+      "path": "animation/anim-behavior-tree-anim.md"
+    },
+    {
+      "id": "anim-blend-per-bone",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-blend-per-bone.md"
+    },
+    {
+      "id": "anim-inertial-blend",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-inertial-blend.md"
+    },
+    {
+      "id": "anim-distance-matching",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-distance-matching.md"
+    },
+    {
+      "id": "anim-stride-warping",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-stride-warping.md"
+    },
+    {
+      "id": "anim-motion-matching",
+      "domain": "animation",
+      "subdomain": "blend-space",
+      "path": "animation/anim-motion-matching.md"
+    },
+    {
+      "id": "anim-ik-ground-adapt",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-ik-ground-adapt.md"
+    },
+    {
+      "id": "anim-ik-weapon-hold",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-ik-weapon-hold.md"
+    },
+    {
+      "id": "anim-ik-vehicle-mount",
+      "domain": "animation",
+      "subdomain": "ik-fk",
+      "path": "animation/anim-ik-vehicle-mount.md"
+    },
+    {
+      "id": "anim-micro-expression",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-micro-expression.md"
+    },
+    {
+      "id": "anim-corrective-bs",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-corrective-bs.md"
+    },
+    {
+      "id": "anim-face-wrinkle",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-face-wrinkle.md"
+    },
+    {
+      "id": "anim-speech-gesture",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-speech-gesture.md"
+    },
+    {
+      "id": "anim-crowd-face",
+      "domain": "animation",
+      "subdomain": "facial-animation",
+      "path": "animation/anim-crowd-face.md"
+    },
+    {
+      "id": "anim-property-access",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-property-access.md"
+    },
+    {
+      "id": "anim-distance-lod",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-distance-lod.md"
+    },
+    {
+      "id": "anim-anim-sharing",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-anim-sharing.md"
+    },
+    {
+      "id": "anim-sequencer",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-sequencer.md"
+    },
+    {
+      "id": "anim-data-driven",
+      "domain": "animation",
+      "subdomain": "animation-blueprint",
+      "path": "animation/anim-data-driven.md"
+    },
+    {
+      "id": "anim-soft-body",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-soft-body.md"
+    },
+    {
+      "id": "anim-chain-physics",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-chain-physics.md"
+    },
+    {
+      "id": "anim-water-interaction",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-water-interaction.md"
+    },
+    {
+      "id": "anim-physics-material",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-physics-material.md"
+    },
+    {
+      "id": "anim-vehicle-physics-anim",
+      "domain": "animation",
+      "subdomain": "physics-animation",
+      "path": "animation/anim-vehicle-physics-anim.md"
     }
   ],
   "stats": {
@@ -5898,6 +6978,7 @@
       "agent-systems": 27
     },
     "total_docs": 400,
-    "total_chars": 553124
+    "total_chars": 553124,
+    "total_documents": 580
   }
 }

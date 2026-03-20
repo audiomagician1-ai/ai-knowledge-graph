@@ -1,0 +1,3689 @@
+{
+  "domain": {
+    "id": "animation",
+    "name": "动画",
+    "description": "从动画原理到游戏动画管线的完整动画知识体系",
+    "icon": "🏃",
+    "color": "#7c3aed"
+  },
+  "subdomains": [
+    {
+      "id": "animation-principles",
+      "name": "动画原理",
+      "order": 1
+    },
+    {
+      "id": "skeletal-rigging",
+      "name": "骨骼绑定",
+      "order": 2
+    },
+    {
+      "id": "keyframe-animation",
+      "name": "关键帧动画",
+      "order": 3
+    },
+    {
+      "id": "motion-capture",
+      "name": "动作捕捉",
+      "order": 4
+    },
+    {
+      "id": "state-machine",
+      "name": "状态机",
+      "order": 5
+    },
+    {
+      "id": "blend-space",
+      "name": "BlendSpace",
+      "order": 6
+    },
+    {
+      "id": "ik-fk",
+      "name": "IK/FK",
+      "order": 7
+    },
+    {
+      "id": "facial-animation",
+      "name": "面部动画",
+      "order": 8
+    },
+    {
+      "id": "animation-blueprint",
+      "name": "动画蓝图",
+      "order": 9
+    },
+    {
+      "id": "physics-animation",
+      "name": "物理动画",
+      "order": 10
+    }
+  ],
+  "concepts": [
+    {
+      "id": "anim-principles-overview",
+      "name": "动画原理概述",
+      "description": "迪士尼12条动画原理及其在游戏动画中的应用",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-squash-stretch",
+      "name": "挤压与拉伸",
+      "description": "通过形变表现物体质量感与弹性的核心原理",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-anticipation",
+      "name": "预备动作",
+      "description": "主要动作前的反向准备动作——让观众'读'到即将发生的事",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-staging",
+      "name": "演出布局",
+      "description": "通过姿势/镜头/时机清晰传达动作意图",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-straight-ahead-pose",
+      "name": "逐帧与关键帧法",
+      "description": "Straight Ahead vs Pose to Pose两种基本动画方法",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-follow-through",
+      "name": "跟随与重叠动作",
+      "description": "不同部位以不同速率停止——毛发/衣物/尾巴的延迟运动",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-slow-in-out",
+      "name": "缓入缓出",
+      "description": "动作起止的加减速——自然运动的关键",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-arcs",
+      "name": "运动弧线",
+      "description": "自然运动沿弧线轨迹——关节旋转产生弧形路径",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-secondary-action",
+      "name": "次要动作",
+      "description": "辅助主要动作的附加动画——走路时的手臂摆动",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-timing",
+      "name": "时间节奏",
+      "description": "帧数分配决定动作的速度感与重量感",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-exaggeration",
+      "name": "夸张",
+      "description": "适度夸张让动画更生动——游戏中尤为重要",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-solid-drawing",
+      "name": "扎实绘画",
+      "description": "三维空间中的体积感与重量感——避免'纸片人'动画",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-appeal",
+      "name": "吸引力",
+      "description": "让角色动画具有魅力与辨识度的设计原则",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-weight-balance",
+      "name": "重量感与平衡",
+      "description": "通过时间/间距/姿势传达角色和物体的重量",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-line-of-action",
+      "name": "动态线",
+      "description": "用一条流畅曲线概括姿势的主要力量方向",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-spacing",
+      "name": "间距控制",
+      "description": "关键帧之间的间距变化——匀速/加速/减速的视觉呈现",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-game-vs-film",
+      "name": "游戏动画vs影视动画",
+      "description": "实时交互性/循环性/混合需求等游戏动画的独特约束",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-reference-study",
+      "name": "动画参考研究",
+      "description": "拍摄/收集动作参考视频用于动画制作",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-blocking",
+      "name": "Blocking阶段",
+      "description": "用关键帧定义动画的主要姿势和节奏",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-polish",
+      "name": "动画精修",
+      "description": "从Blocking到最终的过渡——细化曲线/添加细节",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-skeleton-basics",
+      "name": "骨骼系统基础",
+      "description": "骨骼/关节/层级结构的基本概念",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-joint-hierarchy",
+      "name": "关节层级",
+      "description": "父子关系链——根骨骼/脊柱/四肢/末端的层级结构",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-joint-orient",
+      "name": "关节朝向",
+      "description": "关节的局部坐标轴方向设定——影响旋转行为",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-skin-binding",
+      "name": "蒙皮绑定",
+      "description": "将网格顶点绑定到骨骼——权重决定变形影响",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-weight-painting",
+      "name": "权重绘制",
+      "description": "手动绘制骨骼对网格顶点的影响权重",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-control-rig",
+      "name": "控制绑定",
+      "description": "为动画师创建直观的控制器——简化骨骼操作",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-deformation",
+      "name": "变形技术",
+      "description": "Blend Shape/Lattice/Wrap等辅助变形方法",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-rig-constraints",
+      "name": "绑定约束",
+      "description": "Parent/Point/Orient/Aim等约束类型及其用途",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-humanoid-rig",
+      "name": "人形骨骼标准",
+      "description": "UE/Unity人形骨骼规范——Humanoid Rig/骨骼映射",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-nonhuman-rig",
+      "name": "非人形绑定",
+      "description": "四足/翼龙/蛇形/机械体等非人形骨骼设计",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-rig-testing",
+      "name": "绑定测试",
+      "description": "极限姿势测试/权重检查/穿模检查流程",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-retargeting",
+      "name": "动画重定向",
+      "description": "将一套骨骼的动画映射到不同比例的骨骼上",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-modular-rig",
+      "name": "模块化绑定",
+      "description": "可复用/可扩展的绑定系统设计",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-rig-pipeline",
+      "name": "绑定管线",
+      "description": "从建模到绑定到引擎的完整导出/导入流程",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-keyframe-basics",
+      "name": "关键帧基础",
+      "description": "关键帧的概念——标记动画中最重要的姿势",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-graph-editor",
+      "name": "曲线编辑器",
+      "description": "Animation Curve/Graph Editor——控制关键帧间的插值",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-tangent-types",
+      "name": "切线类型",
+      "description": "Auto/Spline/Linear/Step/Weighted切线——不同插值效果",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-walk-cycle",
+      "name": "行走循环",
+      "description": "最基础的循环动画——接触/低点/过渡/高点四阶段",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-run-cycle",
+      "name": "奔跑循环",
+      "description": "与行走的区别——双脚离地/更大幅度/更快节奏",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-idle-animation",
+      "name": "待机动画",
+      "description": "角色静止时的微动——呼吸/重心移动/环顾",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-attack-animation",
+      "name": "攻击动画",
+      "description": "预备→挥击→恢复三阶段的战斗动画制作",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-jump-animation",
+      "name": "跳跃动画",
+      "description": "起跳/滞空/下落/着地四阶段的跳跃制作",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-root-motion",
+      "name": "根运动",
+      "description": "Root Motion——动画驱动角色位移 vs 代码驱动位移",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-looping",
+      "name": "循环动画技巧",
+      "description": "确保首尾帧无缝衔接——偏移/对齐/过渡",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-additive-anim",
+      "name": "叠加动画",
+      "description": "在基础动画上叠加额外动作——受伤/疲劳/持武器",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-layer-system",
+      "name": "动画层系统",
+      "description": "多层动画叠加——基础层+上半身层+面部层",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-animation-clip",
+      "name": "动画片段管理",
+      "description": "命名规范/帧范围/导出设置/资产组织",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-pose-library",
+      "name": "姿势库",
+      "description": "预制姿势集合——加速动画制作流程",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-animation-export",
+      "name": "动画导出",
+      "description": "FBX/glTF导出设置——帧率/采样/骨骼/单位",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-overview",
+      "name": "动作捕捉概述",
+      "description": "光学/惯性/视觉三类动捕系统原理与对比",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-optical-mocap",
+      "name": "光学动捕",
+      "description": "Vicon/OptiTrack等反光标记点系统——高精度但昂贵",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-inertial-mocap",
+      "name": "惯性动捕",
+      "description": "Xsens/Rokoko等IMU传感器系统——灵活但漂移",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-markerless-mocap",
+      "name": "无标记动捕",
+      "description": "AI驱动的视频动捕——Move.ai/DeepMotion等",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-cleanup",
+      "name": "动捕数据清理",
+      "description": "去噪/填补缺失帧/修复穿帮/平滑处理",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-mocap-retarget",
+      "name": "动捕重定向",
+      "description": "将动捕数据映射到游戏角色骨骼的流程",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-studio",
+      "name": "动捕工作室设置",
+      "description": "空间规划/相机布置/标定/动捕服准备",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-acting",
+      "name": "动捕表演指导",
+      "description": "指导演员进行游戏动作表演——夸张度/节奏控制",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-editing",
+      "name": "动捕编辑",
+      "description": "在动捕基础上进行手动调整与艺术化处理",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-face",
+      "name": "面部动捕",
+      "description": "面部标记点/头戴式设备的面部表情捕捉",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-pipeline",
+      "name": "动捕管线",
+      "description": "从捕捉到引擎的完整动捕生产管线",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-fsm-basics",
+      "name": "状态机基础",
+      "description": "有限状态机(FSM)的概念——状态/转换/条件",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-state-transitions",
+      "name": "状态转换",
+      "description": "转换条件/过渡时间/交叉淡入淡出设置",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-transition-rules",
+      "name": "转换规则",
+      "description": "布尔条件/参数比较/事件触发的转换逻辑",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-locomotion-sm",
+      "name": "移动状态机",
+      "description": "Idle→Walk→Run→Sprint的基本移动状态图",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-combat-sm",
+      "name": "战斗状态机",
+      "description": "Idle→Attack→Hit→Dodge→Block的战斗状态设计",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-sub-state-machine",
+      "name": "子状态机",
+      "description": "嵌套状态机——将复杂状态图拆分为层级结构",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-any-state",
+      "name": "Any State转换",
+      "description": "从任意状态都能触发的全局转换——死亡/受击",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-state-notifies",
+      "name": "状态通知",
+      "description": "动画帧事件——脚步声/攻击判定/特效触发",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-state-debugging",
+      "name": "状态机调试",
+      "description": "可视化当前状态/转换/参数的调试方法",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-hfsm",
+      "name": "层级状态机",
+      "description": "HFSM——多层状态机的设计模式与适用场景",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-blend-basics",
+      "name": "混合基础",
+      "description": "动画混合的概念——两个动画间的权重插值",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-1d-blend",
+      "name": "1D BlendSpace",
+      "description": "单轴混合——速度驱动Walk→Run渐变",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-2d-blend",
+      "name": "2D BlendSpace",
+      "description": "双轴混合——速度+方向驱动八方向移动",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-blend-tree",
+      "name": "混合树",
+      "description": "Blend Tree的节点化混合方式——多输入权重计算",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-aim-offset",
+      "name": "Aim Offset",
+      "description": "瞄准偏移——上半身朝向目标方向的混合",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-crossfade",
+      "name": "交叉淡入淡出",
+      "description": "两段动画之间平滑过渡的时间/曲线控制",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-sync-groups",
+      "name": "同步组",
+      "description": "保持循环动画的脚步同步——Walk和Run步幅对齐",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-blend-mask",
+      "name": "混合遮罩",
+      "description": "按骨骼区域选择性混合——上半身/下半身分离",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-blend-profiles",
+      "name": "混合曲线",
+      "description": "Linear/Cubic/Custom混合权重的过渡曲线",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-montage",
+      "name": "动画蒙太奇",
+      "description": "UE Animation Montage——可脚本控制的动画序列",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-ik-overview",
+      "name": "IK/FK概述",
+      "description": "正向动力学(FK)与逆向动力学(IK)的对比与协作",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-fk-basics",
+      "name": "正向动力学(FK)",
+      "description": "从根到末端逐级旋转——适合手臂/手指动画",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-ik-basics",
+      "name": "逆向动力学(IK)",
+      "description": "定义末端位置反推关节链——适合脚部/抓取",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-two-bone-ik",
+      "name": "双骨骼IK",
+      "description": "最常用的IK类型——膝/肘的两段骨骼求解",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-full-body-ik",
+      "name": "全身IK",
+      "description": "FABRIK/CCD等多骨骼IK求解算法",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-foot-ik",
+      "name": "脚部IK",
+      "description": "脚部贴合地形——射线检测/骨盆调整/脚部旋转",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-hand-ik",
+      "name": "手部IK",
+      "description": "手部抓取/攀爬/扶墙等手部IK应用",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-look-at",
+      "name": "Look At",
+      "description": "头部/眼球追踪目标的IK——视线跟随系统",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-ik-fk-switch",
+      "name": "IK/FK切换",
+      "description": "动画中IK与FK的平滑切换技术",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-pole-vector",
+      "name": "极向量",
+      "description": "控制IK关节弯曲方向的极向量/偏好角",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-spline-ik",
+      "name": "样条IK",
+      "description": "沿曲线驱动骨骼链——蛇/触手/绳索的动画",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-procedural-ik",
+      "name": "程序化IK",
+      "description": "运行时IK求解——蜘蛛爬行/机械腿/地形适配",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-face-overview",
+      "name": "面部动画概述",
+      "description": "面部动画的重要性——情感传达与角色塑造",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-facs",
+      "name": "FACS系统",
+      "description": "面部动作编码系统——46个Action Unit的分类与组合",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-blend-shapes",
+      "name": "Blend Shape/Morph Target",
+      "description": "通过预制表情形状的权重混合驱动面部变形",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-bone-face",
+      "name": "骨骼驱动面部",
+      "description": "用面部骨骼关节驱动表情——适合实时游戏",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-lip-sync",
+      "name": "口型同步",
+      "description": "语音驱动口型动画——音素映射/Viseme系统",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-eye-animation",
+      "name": "眼部动画",
+      "description": "眨眼/瞳孔/视线方向——'眼睛是灵魂之窗'",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-emotion-expression",
+      "name": "情绪表达",
+      "description": "六种基本情绪的面部肌肉组合与微表情",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-face-rig",
+      "name": "面部绑定",
+      "description": "面部骨骼+控制器+BlendShape的综合绑定方案",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-dialogue-scene",
+      "name": "对话场景",
+      "description": "游戏对话过场的面部+身体动画协调",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-metahuman-face",
+      "name": "MetaHuman面部系统",
+      "description": "UE MetaHuman的面部动画管线与控制方法",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-stylized-face",
+      "name": "风格化面部动画",
+      "description": "卡通/动漫风格面部的特殊处理——夸张/简化",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-face-perf-capture",
+      "name": "面部性能捕捉",
+      "description": "实时面部捕捉在游戏中的应用——ARKit/LiveLink",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-face-pipeline",
+      "name": "面部动画管线",
+      "description": "从捕捉/手K到引擎的完整面部动画流程",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-abp-overview",
+      "name": "动画蓝图概述",
+      "description": "UE Animation Blueprint / Unity Animator Controller的架构",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-event-graph",
+      "name": "事件图",
+      "description": "Animation Blueprint的EventGraph——初始化/更新逻辑",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-anim-graph",
+      "name": "动画图",
+      "description": "AnimGraph——连接状态机/混合/IK等节点的可视化图",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-abp-variables",
+      "name": "动画变量",
+      "description": "Speed/Direction/IsInAir等驱动动画逻辑的变量",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-abp-caching",
+      "name": "姿势缓存",
+      "description": "Save/Use Cached Pose——避免重复计算同一姿势",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-notify-event",
+      "name": "动画通知",
+      "description": "AnimNotify/AnimNotifyState——帧精确的游戏事件触发",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-slot-node",
+      "name": "动画槽",
+      "description": "Slot Node——在AnimGraph中插入蒙太奇的接入点",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-linked-anim",
+      "name": "链接动画蓝图",
+      "description": "Linked Anim Graph——模块化/可复用的动画逻辑拆分",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-control-rig-bp",
+      "name": "Control Rig节点",
+      "description": "在AnimGraph中使用Control Rig进行运行时骨骼修改",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-thread-safety",
+      "name": "多线程动画",
+      "description": "动画更新线程安全——Game Thread vs Worker Thread",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-abp-debugging",
+      "name": "动画蓝图调试",
+      "description": "运行时查看状态/变量/混合权重的调试技巧",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-abp-optimization",
+      "name": "动画蓝图优化",
+      "description": "LOD动画/更新频率/快速路径/Nativization优化手段",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-abp-best-practices",
+      "name": "动画蓝图最佳实践",
+      "description": "命名规范/结构组织/性能考量的综合建议",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-physics-overview",
+      "name": "物理动画概述",
+      "description": "物理模拟在游戏动画中的应用场景与价值",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-ragdoll",
+      "name": "布娃娃系统",
+      "description": "角色死亡/击飞时的物理模拟——碰撞体/约束设置",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-physics-blend",
+      "name": "物理-动画混合",
+      "description": "动画驱动与物理驱动之间的平滑过渡",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-cloth-sim",
+      "name": "布料模拟",
+      "description": "衣服/斗篷/旗帜的实时布料物理",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-hair-sim",
+      "name": "毛发模拟",
+      "description": "头发/毛皮的物理模拟——弹簧链/Alembic缓存",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-spring-bone",
+      "name": "弹簧骨骼",
+      "description": "用弹簧物理驱动附属物——耳环/披风/尾巴",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-physical-anim-comp",
+      "name": "Physical Animation组件",
+      "description": "UE Physical Animation Component的使用与调参",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-active-ragdoll",
+      "name": "Active Ragdoll",
+      "description": "保持部分动画控制的物理模拟——跌倒/挣扎",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-procedural-motion",
+      "name": "程序化运动",
+      "description": "不依赖预制动画的运行时生成运动——虫类/蛛类",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-hit-reaction",
+      "name": "受击反应",
+      "description": "物理叠加的受击反应——方向/力度/部位影响",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-physics-constraint",
+      "name": "物理约束",
+      "description": "铰链/球窝/棱柱等约束类型及其在动画中的应用",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-physics-perf",
+      "name": "物理动画优化",
+      "description": "物理模拟的性能消耗与优化策略——LOD/简化碰撞",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-wind-interaction",
+      "name": "风力交互",
+      "description": "风场对布料/毛发/植被动画的影响设计",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-destruction-anim",
+      "name": "破坏动画",
+      "description": "物理驱动的物体破坏/碎裂/倒塌动画",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-contrast",
+      "name": "对比原则",
+      "description": "通过速度/幅度/节奏的对比增强动画表现力",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-silhouette",
+      "name": "动作剪影",
+      "description": "确保每个关键姿势在剪影下清晰可读",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-hold-moving",
+      "name": "Moving Hold",
+      "description": "静止姿势中保持微小运动避免死板感",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-overlap-delay",
+      "name": "动作延迟层次",
+      "description": "身体各部位启动/停止的时间差——创造自然流动感",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-force-motion",
+      "name": "力与运动",
+      "description": "物理力学在动画中的应用——重力/惯性/摩擦",
+      "subdomain_id": "animation-principles",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-bone-naming",
+      "name": "骨骼命名规范",
+      "description": "L_/R_前缀/层级命名的行业标准与引擎要求",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-twist-bones",
+      "name": "扭转骨骼",
+      "description": "前臂/大腿的扭转辅助骨——消除candy wrapper效果",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-corrective-shapes",
+      "name": "修正形状",
+      "description": "在极端姿势下自动触发修正BlendShape",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-space-switching",
+      "name": "空间切换",
+      "description": "IK目标在世界/局部/自定义空间之间切换",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-ribbon-spine",
+      "name": "柔性脊柱",
+      "description": "Ribbon/Spline脊柱——更灵活的躯干变形",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-auto-rigging",
+      "name": "自动绑定工具",
+      "description": "Mixamo/AccuRIG/UE Auto-Rig等自动化绑定",
+      "subdomain_id": "skeletal-rigging",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-hit-pause",
+      "name": "Hit Pause",
+      "description": "攻击命中时的帧冻结/慢放——增强打击感",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "游戏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-death-animation",
+      "name": "死亡动画",
+      "description": "各种死亡方式的动画设计——倒地/飞出/溶解",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-interaction-anim",
+      "name": "交互动画",
+      "description": "开门/拾取/攀爬/对话等与环境交互的动画",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-emote-gesture",
+      "name": "表情与手势",
+      "description": "社交表情/通讯手势/庆祝动作的设计",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "社交"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-transition-anim",
+      "name": "过渡动画",
+      "description": "状态切换的衔接动画——站转蹲/跑转停",
+      "subdomain_id": "keyframe-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-mocap-workflow",
+      "name": "动捕工作流",
+      "description": "动捕拍摄前的动作列表规划与拍摄流程",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-budget",
+      "name": "动捕预算规划",
+      "description": "动捕成本估算——租赁/天数/演员/后期",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-vs-keyframe",
+      "name": "动捕vs手K",
+      "description": "两种方法的适用场景/成本/质量对比",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "对比"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-mocap-library",
+      "name": "动捕数据库",
+      "description": "Mixamo/CMU等开源动捕数据库的使用方法",
+      "subdomain_id": "motion-capture",
+      "domain_id": "animation",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "资源"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-animation-sm-design",
+      "name": "状态机架构设计",
+      "description": "大型项目中动画状态机的层级/模块化设计",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-parametric-state",
+      "name": "参数化状态",
+      "description": "状态内部根据参数动态调整动画——速度/角度",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-interrupt-priority",
+      "name": "中断优先级",
+      "description": "动画中断规则——高优先级动作打断低优先级",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-state-machine-perf",
+      "name": "状态机性能",
+      "description": "状态机复杂度对性能的影响与优化策略",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-behavior-tree-anim",
+      "name": "行为树与动画",
+      "description": "AI行为树与动画状态机的协作模式",
+      "subdomain_id": "state-machine",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-blend-per-bone",
+      "name": "逐骨骼混合",
+      "description": "不同骨骼使用不同混合权重——精细混合控制",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-inertial-blend",
+      "name": "惯性混合",
+      "description": "Inertialization——无需交叉淡入的快速混合方法",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-distance-matching",
+      "name": "距离匹配",
+      "description": "Distance Matching——确保动画位移与游戏位移一致",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-stride-warping",
+      "name": "步幅调整",
+      "description": "Stride Warping——运行时调整步幅匹配实际移动速度",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-motion-matching",
+      "name": "Motion Matching",
+      "description": "基于运动数据库的新一代动画混合技术",
+      "subdomain_id": "blend-space",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-ik-ground-adapt",
+      "name": "地形适配IK",
+      "description": "角色在斜坡/阶梯上的自动姿势调整",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-ik-weapon-hold",
+      "name": "武器持握IK",
+      "description": "双手持武器/换手/瞄准的IK设置",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-ik-vehicle-mount",
+      "name": "载具乘坐IK",
+      "description": "角色上下车/骑乘时的IK适配",
+      "subdomain_id": "ik-fk",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-micro-expression",
+      "name": "微表情",
+      "description": "短暂/不自主的面部表情——增强角色可信度",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-corrective-bs",
+      "name": "修正BlendShape",
+      "description": "组合表情时的修正形状——防止不自然变形",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-face-wrinkle",
+      "name": "皱纹贴图",
+      "description": "表情驱动的法线/皱纹贴图系统",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-speech-gesture",
+      "name": "说话手势",
+      "description": "对话时的身体语言——手势/点头/倾斜的配合",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-crowd-face",
+      "name": "群演面部",
+      "description": "大量NPC的简化面部动画方案",
+      "subdomain_id": "facial-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-property-access",
+      "name": "属性访问优化",
+      "description": "Blueprint vs C++ Native——动画变量访问性能差异",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-distance-lod",
+      "name": "动画LOD",
+      "description": "基于距离的动画简化——远处角色降频/简化",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-anim-sharing",
+      "name": "动画共享",
+      "description": "多角色共用同一AnimBP/动画资产的设计",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-sequencer",
+      "name": "动画序列器",
+      "description": "Sequencer/Timeline用于过场/cinematics动画编排",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "anim-data-driven",
+      "name": "数据驱动动画",
+      "description": "通过数据表/配置驱动动画行为——非硬编码",
+      "subdomain_id": "animation-blueprint",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-soft-body",
+      "name": "软体模拟",
+      "description": "果冻/橡胶等软体物理在动画中的应用",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-chain-physics",
+      "name": "链条物理",
+      "description": "锁链/绳索/线缆的物理模拟动画",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-water-interaction",
+      "name": "水面交互",
+      "description": "角色与水面交互的波纹/浮力/阻力动画",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-physics-material",
+      "name": "物理材质属性",
+      "description": "不同材质的物理参数——弹性/摩擦/阻尼",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "anim-vehicle-physics-anim",
+      "name": "载具物理动画",
+      "description": "悬挂/轮胎/重心的载具物理动画系统",
+      "subdomain_id": "physics-animation",
+      "domain_id": "animation",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-squash-stretch",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-anticipation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-staging",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-squash-stretch",
+      "target_id": "anim-straight-ahead-pose",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-anticipation",
+      "target_id": "anim-follow-through",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-slow-in-out",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-arcs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-follow-through",
+      "target_id": "anim-secondary-action",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-slow-in-out",
+      "target_id": "anim-timing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-exaggeration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-solid-drawing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-appeal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-timing",
+      "target_id": "anim-weight-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-arcs",
+      "target_id": "anim-line-of-action",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-slow-in-out",
+      "target_id": "anim-spacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-timing",
+      "target_id": "anim-game-vs-film",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-reference-study",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-straight-ahead-pose",
+      "target_id": "anim-blocking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-blocking",
+      "target_id": "anim-polish",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-skeleton-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-skeleton-basics",
+      "target_id": "anim-joint-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-joint-hierarchy",
+      "target_id": "anim-joint-orient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-joint-hierarchy",
+      "target_id": "anim-skin-binding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-skin-binding",
+      "target_id": "anim-weight-painting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-skin-binding",
+      "target_id": "anim-control-rig",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-control-rig",
+      "target_id": "anim-deformation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-control-rig",
+      "target_id": "anim-rig-constraints",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-joint-hierarchy",
+      "target_id": "anim-humanoid-rig",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-humanoid-rig",
+      "target_id": "anim-nonhuman-rig",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-weight-painting",
+      "target_id": "anim-rig-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-humanoid-rig",
+      "target_id": "anim-retargeting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-control-rig",
+      "target_id": "anim-modular-rig",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-retargeting",
+      "target_id": "anim-rig-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-straight-ahead-pose",
+      "target_id": "anim-keyframe-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-keyframe-basics",
+      "target_id": "anim-graph-editor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-graph-editor",
+      "target_id": "anim-tangent-types",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-graph-editor",
+      "target_id": "anim-walk-cycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-walk-cycle",
+      "target_id": "anim-run-cycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-keyframe-basics",
+      "target_id": "anim-idle-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-walk-cycle",
+      "target_id": "anim-attack-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-walk-cycle",
+      "target_id": "anim-jump-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-walk-cycle",
+      "target_id": "anim-root-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-walk-cycle",
+      "target_id": "anim-looping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-root-motion",
+      "target_id": "anim-additive-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-additive-anim",
+      "target_id": "anim-layer-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-keyframe-basics",
+      "target_id": "anim-animation-clip",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-blocking",
+      "target_id": "anim-pose-library",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-animation-clip",
+      "target_id": "anim-animation-export",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-game-vs-film",
+      "target_id": "anim-mocap-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-mocap-overview",
+      "target_id": "anim-optical-mocap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-overview",
+      "target_id": "anim-inertial-mocap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-overview",
+      "target_id": "anim-markerless-mocap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-inertial-mocap",
+      "target_id": "anim-mocap-cleanup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-cleanup",
+      "target_id": "anim-mocap-retarget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-overview",
+      "target_id": "anim-mocap-studio",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-mocap-studio",
+      "target_id": "anim-mocap-acting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-cleanup",
+      "target_id": "anim-mocap-editing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-overview",
+      "target_id": "anim-mocap-face",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-mocap-retarget",
+      "target_id": "anim-mocap-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-editing",
+      "target_id": "anim-mocap-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-game-vs-film",
+      "target_id": "anim-fsm-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-fsm-basics",
+      "target_id": "anim-state-transitions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-state-transitions",
+      "target_id": "anim-transition-rules",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-state-transitions",
+      "target_id": "anim-locomotion-sm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-locomotion-sm",
+      "target_id": "anim-combat-sm",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-locomotion-sm",
+      "target_id": "anim-sub-state-machine",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-fsm-basics",
+      "target_id": "anim-any-state",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-state-transitions",
+      "target_id": "anim-state-notifies",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-locomotion-sm",
+      "target_id": "anim-state-debugging",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-sub-state-machine",
+      "target_id": "anim-hfsm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-state-transitions",
+      "target_id": "anim-blend-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-blend-basics",
+      "target_id": "anim-1d-blend",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-1d-blend",
+      "target_id": "anim-2d-blend",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-2d-blend",
+      "target_id": "anim-blend-tree",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-2d-blend",
+      "target_id": "anim-aim-offset",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-blend-basics",
+      "target_id": "anim-crossfade",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-1d-blend",
+      "target_id": "anim-sync-groups",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-2d-blend",
+      "target_id": "anim-blend-mask",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-blend-basics",
+      "target_id": "anim-blend-profiles",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-blend-mask",
+      "target_id": "anim-montage",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-joint-hierarchy",
+      "target_id": "anim-ik-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-ik-overview",
+      "target_id": "anim-fk-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-ik-overview",
+      "target_id": "anim-ik-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-ik-basics",
+      "target_id": "anim-two-bone-ik",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-two-bone-ik",
+      "target_id": "anim-full-body-ik",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-two-bone-ik",
+      "target_id": "anim-foot-ik",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-two-bone-ik",
+      "target_id": "anim-hand-ik",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-ik-basics",
+      "target_id": "anim-look-at",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-fk-basics",
+      "target_id": "anim-ik-fk-switch",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-ik-basics",
+      "target_id": "anim-pole-vector",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-full-body-ik",
+      "target_id": "anim-spline-ik",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-foot-ik",
+      "target_id": "anim-procedural-ik",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-principles-overview",
+      "target_id": "anim-face-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-face-overview",
+      "target_id": "anim-facs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-face-overview",
+      "target_id": "anim-blend-shapes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-face-overview",
+      "target_id": "anim-bone-face",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-facs",
+      "target_id": "anim-lip-sync",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-face-overview",
+      "target_id": "anim-eye-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-facs",
+      "target_id": "anim-emotion-expression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-blend-shapes",
+      "target_id": "anim-face-rig",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-lip-sync",
+      "target_id": "anim-dialogue-scene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-blend-shapes",
+      "target_id": "anim-metahuman-face",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-emotion-expression",
+      "target_id": "anim-stylized-face",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-mocap-face",
+      "target_id": "anim-face-perf-capture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-face-rig",
+      "target_id": "anim-face-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-lip-sync",
+      "target_id": "anim-face-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-locomotion-sm",
+      "target_id": "anim-abp-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-abp-overview",
+      "target_id": "anim-event-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-abp-overview",
+      "target_id": "anim-anim-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-event-graph",
+      "target_id": "anim-abp-variables",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-anim-graph",
+      "target_id": "anim-abp-caching",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-anim-graph",
+      "target_id": "anim-notify-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-anim-graph",
+      "target_id": "anim-slot-node",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-anim-graph",
+      "target_id": "anim-linked-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-anim-graph",
+      "target_id": "anim-control-rig-bp",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-abp-variables",
+      "target_id": "anim-thread-safety",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-abp-overview",
+      "target_id": "anim-abp-debugging",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-thread-safety",
+      "target_id": "anim-abp-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-abp-caching",
+      "target_id": "anim-abp-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-abp-optimization",
+      "target_id": "anim-abp-best-practices",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-game-vs-film",
+      "target_id": "anim-physics-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-physics-overview",
+      "target_id": "anim-ragdoll",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-ragdoll",
+      "target_id": "anim-physics-blend",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-physics-overview",
+      "target_id": "anim-cloth-sim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-cloth-sim",
+      "target_id": "anim-hair-sim",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-physics-overview",
+      "target_id": "anim-spring-bone",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-ragdoll",
+      "target_id": "anim-physical-anim-comp",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-physics-blend",
+      "target_id": "anim-active-ragdoll",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-procedural-ik",
+      "target_id": "anim-procedural-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-ragdoll",
+      "target_id": "anim-hit-reaction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-ragdoll",
+      "target_id": "anim-physics-constraint",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-cloth-sim",
+      "target_id": "anim-physics-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-ragdoll",
+      "target_id": "anim-physics-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-spring-bone",
+      "target_id": "anim-wind-interaction",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-cloth-sim",
+      "target_id": "anim-wind-interaction",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-physics-constraint",
+      "target_id": "anim-destruction-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-exaggeration",
+      "target_id": "anim-contrast",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-staging",
+      "target_id": "anim-silhouette",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-follow-through",
+      "target_id": "anim-hold-moving",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-follow-through",
+      "target_id": "anim-overlap-delay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-weight-balance",
+      "target_id": "anim-force-motion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-skeleton-basics",
+      "target_id": "anim-bone-naming",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-skin-binding",
+      "target_id": "anim-twist-bones",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-deformation",
+      "target_id": "anim-corrective-shapes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-rig-constraints",
+      "target_id": "anim-space-switching",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-control-rig",
+      "target_id": "anim-ribbon-spine",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-humanoid-rig",
+      "target_id": "anim-auto-rigging",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-attack-animation",
+      "target_id": "anim-hit-pause",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-walk-cycle",
+      "target_id": "anim-death-animation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-root-motion",
+      "target_id": "anim-interaction-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-idle-animation",
+      "target_id": "anim-emote-gesture",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-run-cycle",
+      "target_id": "anim-transition-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-studio",
+      "target_id": "anim-mocap-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-mocap-overview",
+      "target_id": "anim-mocap-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-mocap-overview",
+      "target_id": "anim-mocap-vs-keyframe",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-mocap-overview",
+      "target_id": "anim-mocap-library",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-hfsm",
+      "target_id": "anim-animation-sm-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-locomotion-sm",
+      "target_id": "anim-parametric-state",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-any-state",
+      "target_id": "anim-interrupt-priority",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-hfsm",
+      "target_id": "anim-state-machine-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-combat-sm",
+      "target_id": "anim-behavior-tree-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-blend-mask",
+      "target_id": "anim-blend-per-bone",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-crossfade",
+      "target_id": "anim-inertial-blend",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-root-motion",
+      "target_id": "anim-distance-matching",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-1d-blend",
+      "target_id": "anim-stride-warping",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-2d-blend",
+      "target_id": "anim-motion-matching",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-foot-ik",
+      "target_id": "anim-ik-ground-adapt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-hand-ik",
+      "target_id": "anim-ik-weapon-hold",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-hand-ik",
+      "target_id": "anim-ik-vehicle-mount",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-emotion-expression",
+      "target_id": "anim-micro-expression",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-blend-shapes",
+      "target_id": "anim-corrective-bs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-blend-shapes",
+      "target_id": "anim-face-wrinkle",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-lip-sync",
+      "target_id": "anim-speech-gesture",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-face-overview",
+      "target_id": "anim-crowd-face",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-abp-optimization",
+      "target_id": "anim-property-access",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-abp-optimization",
+      "target_id": "anim-distance-lod",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-linked-anim",
+      "target_id": "anim-anim-sharing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-notify-event",
+      "target_id": "anim-sequencer",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-abp-best-practices",
+      "target_id": "anim-data-driven",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-cloth-sim",
+      "target_id": "anim-soft-body",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-spring-bone",
+      "target_id": "anim-chain-physics",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-physics-overview",
+      "target_id": "anim-water-interaction",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "anim-physics-overview",
+      "target_id": "anim-physics-material",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "anim-physics-blend",
+      "target_id": "anim-vehicle-physics-anim",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    }
+  ]
+}

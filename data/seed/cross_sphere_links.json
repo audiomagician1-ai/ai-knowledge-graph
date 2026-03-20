@@ -2410,6 +2410,158 @@
       "target_id": "surprise-moment",
       "relation": "applies",
       "description": "电影化构图为关卡的电影化时刻提供视觉参考"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-fsm-basics",
+      "target_domain": "game-engine",
+      "target_id": "animation-system-intro",
+      "relation": "applies",
+      "description": "动画状态机在游戏引擎动画系统中的具体实现"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-abp-overview",
+      "target_domain": "game-engine",
+      "target_id": "ue5-actor-component",
+      "relation": "applies",
+      "description": "动画蓝图是UE5引擎架构的核心子系统"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-ragdoll",
+      "target_domain": "game-engine",
+      "target_id": "physics-engine-intro",
+      "relation": "applies",
+      "description": "布娃娃系统依赖引擎物理引擎进行实时模拟"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-root-motion",
+      "target_domain": "game-engine",
+      "target_id": "animation-system-intro",
+      "relation": "applies",
+      "description": "Root Motion需要引擎动画系统与角色控制器协调"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-cloth-sim",
+      "target_domain": "game-engine",
+      "target_id": "physics-engine-intro",
+      "relation": "applies",
+      "description": "布料模拟依赖引擎物理引擎的约束求解器"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-sequencer",
+      "target_domain": "game-engine",
+      "target_id": "editor-ext-intro",
+      "relation": "applies",
+      "description": "动画序列器是引擎编辑器的重要工具组件"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-weight-balance",
+      "target_domain": "concept-design",
+      "target_id": "cd-weight-balance",
+      "relation": "same_concept",
+      "description": "概念设计中的重心平衡原理与动画重量感表现是同一知识在不同维度的应用"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-line-of-action",
+      "target_domain": "concept-design",
+      "target_id": "cd-line-of-action",
+      "relation": "same_concept",
+      "description": "动态线在概念设计速写和动画姿势设计中使用完全相同的原理"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-face-overview",
+      "target_domain": "concept-design",
+      "target_id": "cd-char-expression-sheet",
+      "relation": "applies",
+      "description": "面部动画需要参考概念设计阶段的表情集设计"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-skin-binding",
+      "target_domain": "3d-art",
+      "target_id": "3da-rig-intro",
+      "relation": "same_concept",
+      "description": "蒙皮绑定在动画和3D美术中是同一技术流程"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-weight-painting",
+      "target_domain": "3d-art",
+      "target_id": "3da-rig-intro",
+      "relation": "applies",
+      "description": "权重绘制是3D美术绑定流程中的核心步骤"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-retargeting",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-lod-pipeline",
+      "relation": "applies",
+      "description": "动画重定向是3D资产管线中动画复用的关键环节"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-attack-animation",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "applies",
+      "description": "攻击动画的预备/挥击/恢复时间直接影响战斗设计的手感"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-game-vs-film",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "applies",
+      "description": "游戏动画需要为反馈系统服务——动作可读性/输入响应"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-hit-pause",
+      "target_domain": "game-design",
+      "target_id": "combat-overview",
+      "relation": "applies",
+      "description": "Hit Pause/帧冻结是战斗设计中增强打击感的核心动画技巧"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-face-wrinkle",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-normal-mapping",
+      "relation": "applies",
+      "description": "皱纹贴图系统依赖法线贴图技术实现面部细节"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-cloth-sim",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-vertex-shader",
+      "relation": "applies",
+      "description": "布料模拟的顶点变形可通过顶点着色器加速"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-fsm-basics",
+      "target_domain": "software-engineering",
+      "target_id": "se-state-pattern-game",
+      "relation": "applies",
+      "description": "有限状态机是软件工程中的经典设计模式在动画系统中的应用"
+    },
+    {
+      "source_domain": "animation",
+      "source_id": "anim-data-driven",
+      "target_domain": "software-engineering",
+      "target_id": "se-component-pattern",
+      "relation": "applies",
+      "description": "数据驱动动画是软件工程中数据驱动架构在动画系统中的体现"
     }
   ],
   "meta": {
