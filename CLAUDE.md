@@ -1203,6 +1203,23 @@ data/seed/         — 种子图谱数据
    - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.74s
     - STATUS: 修复1个stale RAG索引(Phase 6遗留), 全量数据完整性验证通过
 
+- ✅ **第七十二轮深度Workers审查+3域缺失修复+哲学RAG修复 (2026-03-20, 3fc50e5)**:
+   - **FIX[Critical]**: Workers route files (graph.ts/dialogue.ts/learning.ts) seedMap只有8/11域 — 缺少biology/economics/writing的import和seedMap注册。Phase 15-17添加了3个新知识球但Workers代码从未更新。影响: Cloudflare Workers后端用户选择生物/经济/写作域时所有graph/dialogue/learning/RAG端点返回404
+   - **FIX[Medium]**: Workers graph.ts ragMap中philosophy条目是stub(`{documents:[],stats:{}}`)而非实际import — philosophy RAG _index.json有170文档但Workers返回空。Phase 14添加哲学球时遗漏RAG import
+   - **FIX[Low]**: Workers learning.ts stats默认值267→400 — 同Round 70后端修复,Workers侧未同步
+   - **DATA SYNC**: 同步workers/data/目录: 添加biology/economics/writing seed_graph.json + philosophy/biology/economics/writing RAG数据
+   - **TEST**: +3个Workers同步回归测试: test_workers_seedmap_covers_all_domains + test_workers_ragmap_covers_all_domains + test_workers_data_directory_synced — 自动检查所有active域是否在Workers route files中注册, 防止未来添加新球体时再次遗漏
+   - REVIEW: Workers全模块深度审查(index.ts/llm.ts/prompts.ts/types.ts + routes/graph.ts+dialogue.ts+learning.ts):
+     - CORS: origin验证(URL parsing防bypass) + 安全header白名单 + credentials:true — 正确
+     - LLM: SSRF防护(private IP/localhost/metadata blocked) + provider normalization + tokenLimitParam(o1/o3/chatgpt) + free-tier model fallback — 正确
+     - Dialogue: 跨域findConceptAcrossDomains + 系统提示构建(graph context+domain supplement) + SSE stream intercept + message DB persistence + sliding window 40 + assessment JSON parse + mastered validation — 正确
+     - Graph: domain/subdomain/concept/neighbors(BFS depth≤3)/stats/RAG/cross-links — 全部正确
+     - Learning: stats/progress/start(demotion guard)/assess(C-06 never demote mastered)/history/streak(reset logic)/sync(input validation+status whitelist+score clamping+batch upsert)/recommend(multi-factor scoring) — 全部正确
+     - Prompts: DOMAIN_SUPPLEMENTS(10域) + ASSESSMENT_SUPPLEMENTS(10域) + registry lookup — 三方一致(BE/FE/Workers)
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 797 tests (204 FE + 593 BE) 全通过, tsc 0 errors, build 4.03s
+   - STATUS: 修复Workers 3域完全缺失(Critical)+哲学RAG stub(Medium)+stats stale值(Low), 添加3个回归测试防止未来遗漏
+
 - ✅ **第七十一轮深度巡逻审查+经济学/写作域教学补充修复 (2026-03-20, ad394f1)**:
    - **FIX**: direct-llm.ts `DOMAIN_SUPPLEMENTS`缺少`economics`和`writing`条目 — 后端feynman_system.py和Workers prompts.ts已有全部10个域的教学补充, 但前端direct-llm.ts仅有8个(math~biology)。Direct模式下学习经济学或写作概念时缺少域特定教学规则(如经济学的模型思维/边际分析, 写作的过程导向/读者意识) [M-01]
    - TEST: getDomainSupplement测试覆盖从6域→10域, getAssessmentSupplement同步扩展到10域
@@ -1533,8 +1550,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (204 tests)
-cd apps/api && python -m pytest          # 后端测试 ✅ (590 tests)
-# Total: 794 tests
+cd apps/api && python -m pytest          # 后端测试 ✅ (593 tests)
+# Total: 797 tests
 ```
 
 ### 提交规范
