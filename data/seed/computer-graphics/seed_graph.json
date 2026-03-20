@@ -1,0 +1,5148 @@
+{
+  "domain": {
+    "id": "computer-graphics",
+    "name": "图形学",
+    "description": "从光栅化到光线追踪的完整计算机图形学知识体系",
+    "icon": "💡",
+    "color": "#0284c7"
+  },
+  "subdomains": [
+    {
+      "id": "rasterization",
+      "name": "光栅化",
+      "order": 1
+    },
+    {
+      "id": "ray-tracing",
+      "name": "光线追踪",
+      "order": 2
+    },
+    {
+      "id": "pbr-materials",
+      "name": "PBR材质",
+      "order": 3
+    },
+    {
+      "id": "global-illumination",
+      "name": "全局光照",
+      "order": 4
+    },
+    {
+      "id": "post-processing",
+      "name": "后处理",
+      "order": 5
+    },
+    {
+      "id": "gpu-architecture",
+      "name": "GPU架构",
+      "order": 6
+    },
+    {
+      "id": "shader-programming",
+      "name": "Shader编程",
+      "order": 7
+    },
+    {
+      "id": "texture-techniques",
+      "name": "纹理技术",
+      "order": 8
+    },
+    {
+      "id": "geometry-processing",
+      "name": "几何处理",
+      "order": 9
+    },
+    {
+      "id": "volume-rendering",
+      "name": "体积渲染",
+      "order": 10
+    },
+    {
+      "id": "anti-aliasing",
+      "name": "抗锯齿",
+      "order": 11
+    },
+    {
+      "id": "render-optimization",
+      "name": "渲染优化",
+      "order": 12
+    }
+  ],
+  "concepts": [
+    {
+      "id": "cg-raster-intro",
+      "name": "光栅化概述",
+      "description": "光栅化渲染管线的定义、历史与基本流程",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-raster-pipeline",
+      "name": "图形管线阶段",
+      "description": "应用阶段→几何阶段→光栅化阶段→像素阶段的完整流程",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vertex-transform",
+      "name": "顶点变换",
+      "description": "模型空间→世界空间→观察空间→裁剪空间的矩阵变换链",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-projection",
+      "name": "投影变换",
+      "description": "透视投影与正交投影的矩阵推导与应用场景",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-clipping",
+      "name": "裁剪",
+      "description": "Cohen-Sutherland、Sutherland-Hodgman等裁剪算法",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-viewport-transform",
+      "name": "视口变换",
+      "description": "NDC到屏幕坐标的映射与像素中心约定",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-triangle-setup",
+      "name": "三角形装配",
+      "description": "图元组装、面剔除与三角形遍历",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-scanline",
+      "name": "扫描线转换",
+      "description": "扫描线填充算法与边表数据结构",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-interpolation",
+      "name": "属性插值",
+      "description": "重心坐标插值与透视校正插值",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-depth-buffer",
+      "name": "深度缓冲",
+      "description": "Z-Buffer算法、深度精度与反向Z",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-stencil-buffer",
+      "name": "模板缓冲",
+      "description": "模板测试的原理与应用（轮廓、镜面、阴影体）",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-early-z",
+      "name": "Early-Z优化",
+      "description": "Early-Z测试与Hi-Z剔除的硬件实现",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-blending",
+      "name": "Alpha混合",
+      "description": "混合方程、预乘Alpha与顺序无关透明",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-msaa",
+      "name": "多重采样抗锯齿",
+      "description": "MSAA的硬件实现与性能特征",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "抗锯齿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-forward-rendering",
+      "name": "前向渲染",
+      "description": "前向渲染的光照计算流程与多光源限制",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-deferred-rendering",
+      "name": "延迟渲染",
+      "description": "G-Buffer架构、延迟光照与材质多样性问题",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-forward-plus",
+      "name": "Forward+",
+      "description": "分块光源剔除与Forward+渲染管线",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-tiled-rendering",
+      "name": "分块渲染",
+      "description": "Tile-Based Deferred Rendering与移动端优化",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "移动端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-clustered-rendering",
+      "name": "簇式渲染",
+      "description": "3D光源分簇与Clustered Forward/Deferred",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-visibility-buffer",
+      "name": "可见性缓冲",
+      "description": "Visibility Buffer渲染管线与材质解耦",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-indirect-draw",
+      "name": "间接绘制",
+      "description": "GPU-Driven Rendering与Indirect Draw Call",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mesh-shader",
+      "name": "Mesh Shader",
+      "description": "网格着色器管线与传统管线对比",
+      "subdomain_id": "rasterization",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-rt-intro",
+      "name": "光线追踪概述",
+      "description": "光线追踪的基本原理、历史与Whitted模型",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-ray-generation",
+      "name": "光线生成",
+      "description": "相机模型与主光线生成算法",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-ray-intersection",
+      "name": "光线求交",
+      "description": "光线与球体、平面、三角形的交点计算",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-bvh",
+      "name": "BVH加速结构",
+      "description": "层次包围盒的构建算法（SAH、LBVH）与遍历",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-kd-tree",
+      "name": "KD-Tree",
+      "description": "KD树空间划分与遍历策略",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-rt-shadows",
+      "name": "光追阴影",
+      "description": "阴影光线与软阴影采样策略",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "光照"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-rt-reflection",
+      "name": "光追反射",
+      "description": "镜面反射与光泽反射的采样方法",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "光照"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-rt-refraction",
+      "name": "光追折射",
+      "description": "Snell定律、全内反射与色散模拟",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "光照"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-path-tracing",
+      "name": "路径追踪",
+      "description": "蒙特卡洛路径追踪与渲染方程的数值求解",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-importance-sampling",
+      "name": "重要性采样",
+      "description": "BRDF重要性采样与方差缩减技术",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mis",
+      "name": "多重重要性采样",
+      "description": "MIS权重函数与光源/BRDF联合采样",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-bidirectional-pt",
+      "name": "双向路径追踪",
+      "description": "BDPT算法与光子图连接策略",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mlt",
+      "name": "Metropolis光传输",
+      "description": "MLT的马尔可夫链突变策略",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-photon-mapping",
+      "name": "光子映射",
+      "description": "两步法光子映射与焦散效果",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-rt-denoising",
+      "name": "光追降噪",
+      "description": "时空降噪滤波器（SVGF、NRD）与AI降噪",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-rtx-hardware",
+      "name": "RTX硬件加速",
+      "description": "RT Core架构与DXR/Vulkan RT API",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "硬件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-hybrid-rendering",
+      "name": "混合渲染管线",
+      "description": "光栅化+光线追踪的混合渲染架构",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-restir",
+      "name": "ReSTIR",
+      "description": "时空重采样的实时直接光照算法",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-sdf-tracing",
+      "name": "SDF光线步进",
+      "description": "有符号距离场的Sphere Tracing算法",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-rt-gi",
+      "name": "光追全局光照",
+      "description": "基于光线追踪的实时GI方案（RTXGI、DDGI）",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-spectral-rendering",
+      "name": "光谱渲染",
+      "description": "多波长光线追踪与色散精确模拟",
+      "subdomain_id": "ray-tracing",
+      "domain_id": "computer-graphics",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-pbr-intro",
+      "name": "PBR材质概述",
+      "description": "物理渲染的核心原则——能量守恒与微表面理论",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-brdf",
+      "name": "BRDF基础",
+      "description": "双向反射分布函数的定义与性质",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-cook-torrance",
+      "name": "Cook-Torrance模型",
+      "description": "微表面BRDF：D·F·G项的物理含义",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-ndf",
+      "name": "法线分布函数",
+      "description": "GGX/Beckmann/Blinn-Phong NDF的对比与选择",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-fresnel",
+      "name": "菲涅尔效应",
+      "description": "Schlick近似与完整菲涅尔方程",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "物理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-geometry-term",
+      "name": "几何遮蔽项",
+      "description": "Smith遮蔽函数与Height-Correlated模型",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-metallic-workflow",
+      "name": "金属度工作流",
+      "description": "Metallic-Roughness工作流的参数含义与纹理制作",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-specular-workflow",
+      "name": "高光工作流",
+      "description": "Specular-Glossiness工作流与金属度工作流对比",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-subsurface",
+      "name": "次表面散射",
+      "description": "SSS的物理原理与屏幕空间/预积分近似",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-clear-coat",
+      "name": "清漆层",
+      "description": "多层材质模型与清漆BRDF叠加",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-anisotropy",
+      "name": "各向异性",
+      "description": "各向异性BRDF与切线空间参数化",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-cloth-shading",
+      "name": "布料着色",
+      "description": "Ashikhmin/Charlie模型与布料BRDF特征",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-hair-shading",
+      "name": "毛发着色",
+      "description": "Marschner模型与双高光毛发渲染",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-eye-rendering",
+      "name": "眼球渲染",
+      "description": "虹膜折射、焦散与睫毛投影的专项技术",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-skin-rendering",
+      "name": "皮肤渲染",
+      "description": "预积分SSS、屏幕空间扩散与皮肤纹理",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-iridescence",
+      "name": "薄膜干涉",
+      "description": "薄膜干涉光学模型与彩虹色材质",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-energy-conservation",
+      "name": "能量守恒",
+      "description": "多散射补偿与能量守恒校正技术",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-material-layering",
+      "name": "材质分层",
+      "description": "多层材质系统与层间能量传递",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-disney-brdf",
+      "name": "Disney BRDF",
+      "description": "Disney Principled BRDF的参数设计与工业应用",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-btdf",
+      "name": "透射BRDF",
+      "description": "BTDF与BSDF统一框架、微表面折射模型",
+      "subdomain_id": "pbr-materials",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-gi-intro",
+      "name": "全局光照概述",
+      "description": "直接光照与间接光照、渲染方程与GI方法分类",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-rendering-equation",
+      "name": "渲染方程",
+      "description": "Kajiya渲染方程的数学形式与物理含义",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-radiometry",
+      "name": "辐射度量学",
+      "description": "辐射通量、辐照度、辐射亮度等基本量",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "物理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-radiosity",
+      "name": "辐射度方法",
+      "description": "有限元辐射度方法与形状因子计算",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "经典"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-ambient-occlusion",
+      "name": "环境光遮蔽",
+      "description": "SSAO/HBAO/GTAO的原理与实现对比",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-irradiance-map",
+      "name": "辐照度贴图",
+      "description": "Irradiance Map预计算与球谐系数存储",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-spherical-harmonics",
+      "name": "球谐函数",
+      "description": "SH基函数在光照表示中的应用",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-light-probes",
+      "name": "光探针",
+      "description": "Light Probe的放置策略与运行时采样",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-reflection-probes",
+      "name": "反射探针",
+      "description": "Reflection Probe的捕获与视差校正",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-screen-space-gi",
+      "name": "屏幕空间GI",
+      "description": "SSGI/SSDO的原理、优势与伪影",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-lpv",
+      "name": "光传播体积",
+      "description": "Light Propagation Volumes的实现与局限",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-voxel-gi",
+      "name": "体素全局光照",
+      "description": "VXGI/SVOGI的体素化与锥追踪",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-lumen",
+      "name": "Lumen系统",
+      "description": "UE5 Lumen的SDF追踪与屏幕追踪混合策略",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-ddgi",
+      "name": "DDGI",
+      "description": "Dynamic Diffuse Global Illumination的探针更新机制",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-lightmap-baking",
+      "name": "光照图烘焙",
+      "description": "Lightmap的UV展开、烘焙参数与压缩方案",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-irradiance-volume",
+      "name": "辐照度体积",
+      "description": "3D纹理存储的辐照度体积与SH编码",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-caustics",
+      "name": "焦散",
+      "description": "焦散效果的光子映射与SDF近似方法",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-sky-atmosphere",
+      "name": "天空与大气",
+      "description": "大气散射模型（Rayleigh/Mie）与天空盒渲染",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-cloud-rendering",
+      "name": "云渲染",
+      "description": "体积云的Ray Marching与光照散射",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-indirect-specular",
+      "name": "间接高光",
+      "description": "屏幕空间反射(SSR)与平面反射",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-gi-hybrid",
+      "name": "混合GI方案",
+      "description": "离线烘焙+实时探针+屏幕空间的多层GI混合",
+      "subdomain_id": "global-illumination",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-pp-intro",
+      "name": "后处理概述",
+      "description": "后处理管线的定义、常见效果与性能考量",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-tone-mapping",
+      "name": "色调映射",
+      "description": "Reinhard/ACES/GT Filmic色调映射算子的对比",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-color-grading",
+      "name": "色彩分级",
+      "description": "LUT色彩查找表与ASC-CDL色彩校正",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "艺术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-bloom",
+      "name": "泛光",
+      "description": "高亮提取→高斯模糊→叠加的Bloom流程与阈值策略",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-dof",
+      "name": "景深",
+      "description": "Circle of Confusion、Bokeh形状与散景模拟",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-motion-blur",
+      "name": "运动模糊",
+      "description": "Per-Object与Camera Motion Blur的Velocity Buffer方案",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-lens-flare",
+      "name": "镜头光晕",
+      "description": "Screen-Space Lens Flare与光学模拟",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-chromatic-aberration",
+      "name": "色散",
+      "description": "色差效果的实现与艺术控制",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vignette",
+      "name": "暗角",
+      "description": "光学暗角与艺术暗角的参数化控制",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-film-grain",
+      "name": "胶片颗粒",
+      "description": "程序化颗粒噪点的生成与时间抖动",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-sharpening",
+      "name": "锐化",
+      "description": "CAS/RCAS锐化滤波器与Unsharp Mask",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-exposure",
+      "name": "自动曝光",
+      "description": "直方图自动曝光与EV适应",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-fog-pp",
+      "name": "雾效",
+      "description": "线性/指数/高度雾与体积雾后处理",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-ssr",
+      "name": "屏幕空间反射",
+      "description": "Screen-Space Reflection的Hi-Z Ray March实现",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-outline",
+      "name": "描边效果",
+      "description": "基于深度/法线不连续性的边缘检测描边",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-cel-shading",
+      "name": "赛璐璐着色",
+      "description": "Toon Shading的阶梯化光照与轮廓线",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-pixel-art-filter",
+      "name": "像素化滤镜",
+      "description": "降分辨率+调色板量化的像素风格化",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "风格化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-hdr-pipeline",
+      "name": "HDR管线",
+      "description": "线性HDR工作流与显示映射策略",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-pp-volume",
+      "name": "后处理体积",
+      "description": "空间化的后处理参数混合与优先级",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-eye-adaptation",
+      "name": "明暗适应",
+      "description": "人眼明暗适应的模拟与过渡曲线",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-pp-stack",
+      "name": "后处理栈设计",
+      "description": "后处理效果的排序依赖与性能预算管理",
+      "subdomain_id": "post-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-gpu-intro",
+      "name": "GPU架构概述",
+      "description": "GPU与CPU的架构差异、SIMT执行模型",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-gpu-pipeline",
+      "name": "GPU硬件管线",
+      "description": "图形管线的硬件固定功能单元与可编程单元",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-gpu-memory",
+      "name": "GPU内存层级",
+      "description": "VRAM/L2/L1/共享内存/寄存器的层级与带宽",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-warp-wavefront",
+      "name": "Warp/Wavefront",
+      "description": "线程束执行模型与分支发散代价",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-occupancy",
+      "name": "占用率",
+      "description": "Occupancy的计算、寄存器压力与Latency Hiding",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-gpu-scheduling",
+      "name": "GPU调度",
+      "description": "线程块调度与上下文切换的零开销模型",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-texture-unit",
+      "name": "纹理单元",
+      "description": "TMU的各向异性采样与缓存命中优化",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "硬件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-rop",
+      "name": "ROP",
+      "description": "光栅化输出单元的混合/深度/模板操作",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "硬件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-tmu-cache",
+      "name": "纹理缓存",
+      "description": "纹理缓存的行为模式与Mipmap的缓存友好性",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-compute-shader",
+      "name": "Compute Shader",
+      "description": "通用计算着色器的线程组模型与同步原语",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-async-compute",
+      "name": "异步计算",
+      "description": "Graphics/Compute/Copy队列的并行执行",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-gpu-driven",
+      "name": "GPU Driven Pipeline",
+      "description": "间接绘制/GPU剔除/Bindless的GPU驱动渲染",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-bindless",
+      "name": "Bindless资源",
+      "description": "Bindless Texture/Buffer的描述符管理",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-dx12-vk",
+      "name": "DX12/Vulkan基础",
+      "description": "现代图形API的命令缓冲/描述符堆/管线状态对象",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "API"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-command-buffer",
+      "name": "命令缓冲",
+      "description": "命令录制、提交与多线程命令构建",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "API"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-render-pass",
+      "name": "渲染Pass",
+      "description": "Render Pass/Subpass的依赖声明与Tile Memory",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "API"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-descriptor-set",
+      "name": "描述符集",
+      "description": "Descriptor Set/Root Signature的绑定模型",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "API"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-pipeline-barrier",
+      "name": "管线屏障",
+      "description": "资源状态转换与内存屏障的正确使用",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "API"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-gpu-profiling",
+      "name": "GPU性能分析",
+      "description": "GPU Timer/PIX/NSight的Profiling方法论",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-mobile-gpu",
+      "name": "移动端GPU",
+      "description": "Tile-Based架构(Mali/Adreno)的渲染特性",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "移动端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-ray-tracing-hw",
+      "name": "光追硬件单元",
+      "description": "RT Core/Ray Accelerator的BVH遍历硬件",
+      "subdomain_id": "gpu-architecture",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "硬件"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-shader-intro",
+      "name": "Shader概述",
+      "description": "着色器的类型、编译流程与着色语言生态",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-vertex-shader",
+      "name": "顶点着色器",
+      "description": "顶点着色器的输入/输出语义与空间变换",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-fragment-shader",
+      "name": "片元着色器",
+      "description": "片元着色器的光照计算与纹理采样",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-geometry-shader",
+      "name": "几何着色器",
+      "description": "几何着色器的图元扩展与性能陷阱",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-tessellation",
+      "name": "细分着色器",
+      "description": "Hull/Domain/Tessellation阶段与自适应LOD",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-hlsl",
+      "name": "HLSL",
+      "description": "High-Level Shading Language的语法与语义",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "语言"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-glsl",
+      "name": "GLSL",
+      "description": "OpenGL Shading Language的特性与差异",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "语言"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-spirv",
+      "name": "SPIR-V",
+      "description": "跨平台中间表示与着色器编译工具链",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-shader-model",
+      "name": "Shader Model",
+      "description": "SM 5.0/6.0+的特性演进与硬件对应",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-uber-shader",
+      "name": "Uber Shader",
+      "description": "静态/动态分支的大型着色器设计与变体管理",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-shader-permutation",
+      "name": "着色器变体",
+      "description": "宏驱动变体爆炸与PSO缓存管理",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-material-graph",
+      "name": "材质图编辑器",
+      "description": "节点式材质编辑器的设计与代码生成",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-surface-shader",
+      "name": "表面着色器",
+      "description": "Unity Surface Shader的抽象层与自动生成",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-material-function",
+      "name": "材质函数",
+      "description": "可复用材质函数/子图的设计模式",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-shader-debug",
+      "name": "着色器调试",
+      "description": "RenderDoc/PIX/NSight中的着色器单步调试",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-custom-lighting",
+      "name": "自定义光照模型",
+      "description": "在引擎中实现非PBR光照模型（卡通/NPR）",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "风格化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-procedural-shader",
+      "name": "程序化着色器",
+      "description": "噪声函数（Perlin/Simplex/Worley）与程序纹理",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-shader-optimization",
+      "name": "着色器优化",
+      "description": "ALU/TEX平衡、half精度、分支优化策略",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-wave-intrinsics",
+      "name": "Wave Intrinsics",
+      "description": "跨线程数据交换与Wave-level归约操作",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-shader-interop",
+      "name": "着色器互操作",
+      "description": "Compute-Graphics数据共享与UAV",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-slang",
+      "name": "Slang语言",
+      "description": "Slang着色器语言的可组合性与自动微分",
+      "subdomain_id": "shader-programming",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-tex-intro",
+      "name": "纹理映射概述",
+      "description": "纹理映射的基本原理、UV坐标与采样器",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-mipmap",
+      "name": "Mipmap",
+      "description": "多级纹理细节的生成算法与LOD偏移",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-aniso-filtering",
+      "name": "各向异性过滤",
+      "description": "各向异性纹理过滤的原理与质量级别",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-normal-mapping",
+      "name": "法线贴图",
+      "description": "切线空间法线贴图的原理与TBN矩阵",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-parallax-mapping",
+      "name": "视差贴图",
+      "description": "Parallax Mapping与Parallax Occlusion Mapping",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-displacement-map",
+      "name": "置换贴图",
+      "description": "真实几何置换与Tessellation配合",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-cube-mapping",
+      "name": "立方体贴图",
+      "description": "环境映射、天空盒与反射的立方体纹理",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-texture-compression",
+      "name": "纹理压缩",
+      "description": "BC1-7/ASTC/ETC2压缩格式的特性与选择",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-virtual-texture",
+      "name": "虚拟纹理",
+      "description": "Virtual Texturing/Sparse Texture的流式加载",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-texture-atlas",
+      "name": "纹理图集",
+      "description": "Atlas打包策略与UV边界处理",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-texture-streaming",
+      "name": "纹理流式加载",
+      "description": "Mip Streaming的优先级与内存预算管理",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-procedural-texture",
+      "name": "程序纹理",
+      "description": "Noise-based程序纹理生成与实时应用",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-detail-mapping",
+      "name": "细节贴图",
+      "description": "多层细节纹理的混合与UV缩放",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-texture-projection",
+      "name": "纹理投影",
+      "description": "Projective Texture与贴花系统基础",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-decal-system",
+      "name": "贴花系统",
+      "description": "Deferred Decal与Screen-Space Decal的实现",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-triplanar",
+      "name": "三平面映射",
+      "description": "无UV展开的世界空间纹理投影方法",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-texture-synthesis",
+      "name": "纹理合成",
+      "description": "基于样本的纹理合成与无缝平铺",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-sdf-texture",
+      "name": "SDF纹理",
+      "description": "有符号距离场纹理在文字/UI中的应用",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-material-textures",
+      "name": "材质纹理集",
+      "description": "Albedo/Normal/Roughness/Metallic/AO贴图工作流",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-texture-baking",
+      "name": "纹理烘焙",
+      "description": "高模→低模的法线/AO/Curvature烘焙流程",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-udim",
+      "name": "UDIM",
+      "description": "多Tile UV布局与大面积纹理管理",
+      "subdomain_id": "texture-techniques",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-geo-intro",
+      "name": "几何处理概述",
+      "description": "几何表示方法与处理管线概览",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-mesh-representation",
+      "name": "网格表示",
+      "description": "三角网格、半边结构与邻接关系",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mesh-simplification",
+      "name": "网格简化",
+      "description": "QEM误差度量与边折叠简化算法",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-subdivision",
+      "name": "细分曲面",
+      "description": "Catmull-Clark与Loop细分的规则与极限面",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-lod",
+      "name": "LOD系统",
+      "description": "离散LOD/连续LOD/HLOD的管线设计",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-nanite",
+      "name": "Nanite架构",
+      "description": "UE5 Nanite的虚拟几何体与软件光栅化",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-mesh-boolean",
+      "name": "网格布尔运算",
+      "description": "CSG操作的实现与鲁棒性挑战",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-parametric-surface",
+      "name": "参数曲面",
+      "description": "Bezier/B-Spline/NURBS曲面基础",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-point-cloud",
+      "name": "点云处理",
+      "description": "点云的采集、降噪与表面重建",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-isosurface",
+      "name": "等值面提取",
+      "description": "Marching Cubes与Dual Contouring算法",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "算法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-sdf-modeling",
+      "name": "SDF建模",
+      "description": "有符号距离场的构建、布尔运算与可视化",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mesh-repair",
+      "name": "网格修复",
+      "description": "非流形/法线翻转/自交的检测与修复",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mesh-deformation",
+      "name": "网格变形",
+      "description": "Free-Form Deformation与骨骼蒙皮绑定",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mesh-compression",
+      "name": "网格压缩",
+      "description": "量化/预测/熵编码的网格压缩方案",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-instancing",
+      "name": "实例化渲染",
+      "description": "Hardware Instancing与Indirect Instancing",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-impostor",
+      "name": "替身技术",
+      "description": "Billboard/Impostor Atlas用于远景简化",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-terrain-geometry",
+      "name": "地形几何",
+      "description": "高度图、Clipmap与自适应网格",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vegetation",
+      "name": "植被渲染",
+      "description": "植被的LOD策略、风动画与渲染优化",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-procedural-mesh",
+      "name": "程序化网格",
+      "description": "运行时网格生成与修改的技术方案",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mesh-streaming",
+      "name": "网格流式加载",
+      "description": "大场景几何的流式加载与LOD过渡",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-neural-geometry",
+      "name": "神经网络几何",
+      "description": "NeRF与Neural SDF在几何表示中的应用",
+      "subdomain_id": "geometry-processing",
+      "domain_id": "computer-graphics",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vol-intro",
+      "name": "体积渲染概述",
+      "description": "体积数据表示与渲染方法分类",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-ray-marching",
+      "name": "Ray Marching",
+      "description": "步进式体积渲染的基本算法",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-beer-lambert",
+      "name": "Beer-Lambert定律",
+      "description": "体积介质的光衰减与光学深度",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "物理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-participating-media",
+      "name": "参与介质",
+      "description": "吸收、散射与发射的体积渲染方程",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-phase-function",
+      "name": "相函数",
+      "description": "Henyey-Greenstein等相函数与各向异性散射",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "物理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vol-shadow",
+      "name": "体积阴影",
+      "description": "Shadow Ray Marching与Transmittance估算",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "光照"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vol-cloud",
+      "name": "体积云实现",
+      "description": "噪声驱动的云密度场与光照散射计算",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-vol-fog",
+      "name": "体积雾",
+      "description": "Volumetric Fog的Froxel体素化方案",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-god-rays",
+      "name": "体积光",
+      "description": "光轴散射效果（God Rays）的屏幕空间实现",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vol-texture",
+      "name": "3D纹理",
+      "description": "体积纹理的生成、采样与压缩",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-fluid-rendering",
+      "name": "流体渲染",
+      "description": "SPH/Grid粒子流体的表面提取与渲染",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "模拟"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-fire-explosion",
+      "name": "火焰与爆炸",
+      "description": "火焰体积渲染的温度-颜色映射与风场",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-smoke-sim",
+      "name": "烟雾模拟",
+      "description": "Euler/Lagrange方法的烟雾模拟基础",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "模拟"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-heterogeneous",
+      "name": "异构体积",
+      "description": "非均匀介质的Delta Tracking采样",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vol-gi",
+      "name": "体积全局光照",
+      "description": "体积散射中的多重散射近似方法",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-openvdb",
+      "name": "OpenVDB",
+      "description": "稀疏体积数据的VDB数据结构",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-medical-vis",
+      "name": "医学可视化",
+      "description": "CT/MRI数据的传递函数与体绘制",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-scientific-vis",
+      "name": "科学可视化",
+      "description": "矢量场/标量场的可视化技术",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "应用"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vol-decal",
+      "name": "体积贴花",
+      "description": "3D空间投影的体积贴花系统",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-atmosphere-scatter",
+      "name": "大气散射实现",
+      "description": "单/多次散射的预计算查表方案",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-neural-radiance",
+      "name": "神经辐射场",
+      "description": "NeRF的体积渲染公式与训练原理",
+      "subdomain_id": "volume-rendering",
+      "domain_id": "computer-graphics",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-aa-intro",
+      "name": "抗锯齿概述",
+      "description": "锯齿产生的原因——采样定理与Nyquist频率",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-ssaa",
+      "name": "SSAA",
+      "description": "超级采样抗锯齿的原理与性能开销",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-msaa-detail",
+      "name": "MSAA详解",
+      "description": "多重采样的覆盖掩码与解析过程",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-fxaa",
+      "name": "FXAA",
+      "description": "Fast Approximate AA的边缘检测与亚像素位移",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-smaa",
+      "name": "SMAA",
+      "description": "基于图案匹配的形态学抗锯齿",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-taa",
+      "name": "TAA",
+      "description": "时间性抗锯齿的抖动采样与历史帧混合",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-taa-ghosting",
+      "name": "TAA鬼影",
+      "description": "Ghosting的成因——遮挡/去遮挡与对策",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "问题"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-taa-sharpness",
+      "name": "TAA锐度",
+      "description": "TAA模糊的成因与反向色调映射/锐化补偿",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "问题"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-velocity-buffer",
+      "name": "速度缓冲",
+      "description": "Per-Pixel Velocity的计算与TAA/Motion Blur共享",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-jitter-pattern",
+      "name": "抖动模式",
+      "description": "Halton/R2序列在TAA子像素抖动中的应用",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-dlss",
+      "name": "DLSS",
+      "description": "深度学习超采样的架构与时序帧生成",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-fsr",
+      "name": "FSR",
+      "description": "AMD FidelityFX Super Resolution的空间/时间升采样",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-xess",
+      "name": "XeSS",
+      "description": "Intel XeSS的XMX加速超分辨率",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-upscaling",
+      "name": "超分辨率技术",
+      "description": "空间/时间超分辨率的统一框架与对比",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-alpha-testing-aa",
+      "name": "Alpha测试抗锯齿",
+      "description": "Alpha To Coverage与MSAA配合处理植被锯齿",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-specular-aa",
+      "name": "高光抗锯齿",
+      "description": "法线方差过滤与Roughness修正防闪烁",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-geometric-aa",
+      "name": "几何抗锯齿",
+      "description": "线框/细线条的几何级抗锯齿方案",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-temporal-stability",
+      "name": "时间稳定性",
+      "description": "渲染输出的帧间稳定性评估与优化",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-aa-comparison",
+      "name": "AA方案对比",
+      "description": "各AA技术的质量/性能/兼容性综合评估",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "总结"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-frame-generation",
+      "name": "帧生成",
+      "description": "DLSS 3/FSR 3的光流帧插值技术",
+      "subdomain_id": "anti-aliasing",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "前沿"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-optim-intro",
+      "name": "渲染优化概述",
+      "description": "渲染性能瓶颈分类与优化方法论",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-draw-call",
+      "name": "Draw Call优化",
+      "description": "批处理、Instancing与Indirect绘制的减少策略",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-frustum-culling",
+      "name": "视锥剔除",
+      "description": "AABB/OBB/Sphere的视锥体相交测试",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-occlusion-culling",
+      "name": "遮挡剔除",
+      "description": "HZB/Software Rasterization遮挡查询",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-gpu-culling",
+      "name": "GPU剔除",
+      "description": "基于Compute Shader的GPU-side剔除管线",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-bandwidth-opt",
+      "name": "带宽优化",
+      "description": "VRAM带宽瓶颈诊断与压缩/格式选择",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-overdraw",
+      "name": "Overdraw分析",
+      "description": "Overdraw的测量、原因与Front-to-Back排序",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-state-sorting",
+      "name": "状态排序",
+      "description": "渲染对象的材质/深度排序减少状态切换",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-atlas-batching",
+      "name": "图集批处理",
+      "description": "纹理Atlas与材质合批的实际应用",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-shader-complexity",
+      "name": "着色器复杂度",
+      "description": "ALU/TEX/控制流对着色器性能的影响",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-render-budget",
+      "name": "渲染预算",
+      "description": "帧时间预算分配与自适应质量缩放",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-adaptive-quality",
+      "name": "自适应质量",
+      "description": "动态分辨率缩放与质量级联",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-streaming-opt",
+      "name": "流式加载优化",
+      "description": "纹理/网格/场景的流式加载策略与预加载",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-render-graph",
+      "name": "渲染图",
+      "description": "Frame Graph/Render Graph的自动资源管理与Pass排序",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cg-cpu-gpu-sync",
+      "name": "CPU-GPU同步",
+      "description": "帧延迟、双/三缓冲与Fence管理",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-multithreaded-cmd",
+      "name": "多线程命令构建",
+      "description": "并行命令缓冲录制与提交策略",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-mobile-opt",
+      "name": "移动端优化",
+      "description": "Tile-Based架构的特定优化策略",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "移动端"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-vr-opt",
+      "name": "VR渲染优化",
+      "description": "双眼渲染、Foveated Rendering与ASW",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "XR"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-perf-counter",
+      "name": "性能计数器",
+      "description": "GPU硬件性能计数器的含义与瓶颈定位",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cg-profiling-workflow",
+      "name": "性能调优工作流",
+      "description": "Measure→Identify→Fix→Verify的系统化调优方法",
+      "subdomain_id": "render-optimization",
+      "domain_id": "computer-graphics",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "方法论"
+      ],
+      "is_milestone": true
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "cg-raster-intro",
+      "target_id": "cg-raster-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-raster-pipeline",
+      "target_id": "cg-vertex-transform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-raster-pipeline",
+      "target_id": "cg-clipping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-vertex-transform",
+      "target_id": "cg-projection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-projection",
+      "target_id": "cg-viewport-transform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-viewport-transform",
+      "target_id": "cg-triangle-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-triangle-setup",
+      "target_id": "cg-scanline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-triangle-setup",
+      "target_id": "cg-interpolation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-interpolation",
+      "target_id": "cg-depth-buffer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-depth-buffer",
+      "target_id": "cg-stencil-buffer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-depth-buffer",
+      "target_id": "cg-early-z",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-interpolation",
+      "target_id": "cg-blending",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-blending",
+      "target_id": "cg-msaa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-raster-pipeline",
+      "target_id": "cg-forward-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-forward-rendering",
+      "target_id": "cg-deferred-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-deferred-rendering",
+      "target_id": "cg-forward-plus",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-deferred-rendering",
+      "target_id": "cg-tiled-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-forward-plus",
+      "target_id": "cg-clustered-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-deferred-rendering",
+      "target_id": "cg-visibility-buffer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-depth-buffer",
+      "target_id": "cg-indirect-draw",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-indirect-draw",
+      "target_id": "cg-mesh-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-rt-intro",
+      "target_id": "cg-ray-generation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-generation",
+      "target_id": "cg-ray-intersection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-intersection",
+      "target_id": "cg-bvh",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-intersection",
+      "target_id": "cg-kd-tree",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-intersection",
+      "target_id": "cg-rt-shadows",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-rt-shadows",
+      "target_id": "cg-rt-reflection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-rt-reflection",
+      "target_id": "cg-rt-refraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-rt-intro",
+      "target_id": "cg-path-tracing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-path-tracing",
+      "target_id": "cg-importance-sampling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-importance-sampling",
+      "target_id": "cg-mis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-path-tracing",
+      "target_id": "cg-bidirectional-pt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-bidirectional-pt",
+      "target_id": "cg-mlt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-path-tracing",
+      "target_id": "cg-photon-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-path-tracing",
+      "target_id": "cg-rt-denoising",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-bvh",
+      "target_id": "cg-rtx-hardware",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-raster-intro",
+      "target_id": "cg-hybrid-rendering",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cg-rtx-hardware",
+      "target_id": "cg-hybrid-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-importance-sampling",
+      "target_id": "cg-restir",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-intersection",
+      "target_id": "cg-sdf-tracing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-path-tracing",
+      "target_id": "cg-rt-gi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-rt-refraction",
+      "target_id": "cg-spectral-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pbr-intro",
+      "target_id": "cg-brdf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-brdf",
+      "target_id": "cg-cook-torrance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-cook-torrance",
+      "target_id": "cg-ndf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-cook-torrance",
+      "target_id": "cg-fresnel",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-cook-torrance",
+      "target_id": "cg-geometry-term",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pbr-intro",
+      "target_id": "cg-metallic-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-metallic-workflow",
+      "target_id": "cg-specular-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-cook-torrance",
+      "target_id": "cg-subsurface",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-cook-torrance",
+      "target_id": "cg-clear-coat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-cook-torrance",
+      "target_id": "cg-anisotropy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-brdf",
+      "target_id": "cg-cloth-shading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-brdf",
+      "target_id": "cg-hair-shading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-subsurface",
+      "target_id": "cg-eye-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-subsurface",
+      "target_id": "cg-skin-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fresnel",
+      "target_id": "cg-iridescence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-cook-torrance",
+      "target_id": "cg-energy-conservation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-energy-conservation",
+      "target_id": "cg-material-layering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-brdf",
+      "target_id": "cg-disney-brdf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-brdf",
+      "target_id": "cg-btdf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gi-intro",
+      "target_id": "cg-rendering-equation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-rendering-equation",
+      "target_id": "cg-radiometry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-rendering-equation",
+      "target_id": "cg-radiosity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gi-intro",
+      "target_id": "cg-ambient-occlusion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gi-intro",
+      "target_id": "cg-irradiance-map",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-irradiance-map",
+      "target_id": "cg-spherical-harmonics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-irradiance-map",
+      "target_id": "cg-light-probes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gi-intro",
+      "target_id": "cg-reflection-probes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ambient-occlusion",
+      "target_id": "cg-screen-space-gi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gi-intro",
+      "target_id": "cg-lpv",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-lpv",
+      "target_id": "cg-voxel-gi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-voxel-gi",
+      "target_id": "cg-lumen",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-light-probes",
+      "target_id": "cg-ddgi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gi-intro",
+      "target_id": "cg-lightmap-baking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-spherical-harmonics",
+      "target_id": "cg-irradiance-volume",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-path-tracing",
+      "target_id": "cg-caustics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cg-gi-intro",
+      "target_id": "cg-sky-atmosphere",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-sky-atmosphere",
+      "target_id": "cg-cloud-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-screen-space-gi",
+      "target_id": "cg-indirect-specular",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-voxel-gi",
+      "target_id": "cg-gi-hybrid",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-tone-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tone-mapping",
+      "target_id": "cg-color-grading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-bloom",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-dof",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-motion-blur",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-lens-flare",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-lens-flare",
+      "target_id": "cg-chromatic-aberration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-vignette",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-film-grain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-sharpening",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tone-mapping",
+      "target_id": "cg-exposure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-fog-pp",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-deferred-rendering",
+      "target_id": "cg-ssr",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-outline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-outline",
+      "target_id": "cg-cel-shading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-pixel-art-filter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tone-mapping",
+      "target_id": "cg-hdr-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-intro",
+      "target_id": "cg-pp-volume",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-exposure",
+      "target_id": "cg-eye-adaptation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-pp-volume",
+      "target_id": "cg-pp-stack",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-intro",
+      "target_id": "cg-gpu-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-pipeline",
+      "target_id": "cg-gpu-memory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-intro",
+      "target_id": "cg-warp-wavefront",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-warp-wavefront",
+      "target_id": "cg-occupancy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-occupancy",
+      "target_id": "cg-gpu-scheduling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-pipeline",
+      "target_id": "cg-texture-unit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-pipeline",
+      "target_id": "cg-rop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-texture-unit",
+      "target_id": "cg-tmu-cache",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-intro",
+      "target_id": "cg-compute-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-compute-shader",
+      "target_id": "cg-async-compute",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-compute-shader",
+      "target_id": "cg-gpu-driven",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-driven",
+      "target_id": "cg-bindless",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-intro",
+      "target_id": "cg-dx12-vk",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-dx12-vk",
+      "target_id": "cg-command-buffer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-dx12-vk",
+      "target_id": "cg-render-pass",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-dx12-vk",
+      "target_id": "cg-descriptor-set",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-command-buffer",
+      "target_id": "cg-pipeline-barrier",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-intro",
+      "target_id": "cg-gpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-intro",
+      "target_id": "cg-mobile-gpu",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-bvh",
+      "target_id": "cg-ray-tracing-hw",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cg-shader-intro",
+      "target_id": "cg-vertex-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-vertex-shader",
+      "target_id": "cg-fragment-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fragment-shader",
+      "target_id": "cg-geometry-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fragment-shader",
+      "target_id": "cg-tessellation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-shader-intro",
+      "target_id": "cg-hlsl",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-shader-intro",
+      "target_id": "cg-glsl",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-hlsl",
+      "target_id": "cg-spirv",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-glsl",
+      "target_id": "cg-spirv",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-shader-intro",
+      "target_id": "cg-shader-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fragment-shader",
+      "target_id": "cg-uber-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-uber-shader",
+      "target_id": "cg-shader-permutation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fragment-shader",
+      "target_id": "cg-material-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fragment-shader",
+      "target_id": "cg-surface-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-material-graph",
+      "target_id": "cg-material-function",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-shader-intro",
+      "target_id": "cg-shader-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fragment-shader",
+      "target_id": "cg-custom-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fragment-shader",
+      "target_id": "cg-procedural-shader",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-uber-shader",
+      "target_id": "cg-shader-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-warp-wavefront",
+      "target_id": "cg-wave-intrinsics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cg-compute-shader",
+      "target_id": "cg-shader-interop",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cg-spirv",
+      "target_id": "cg-slang",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-mipmap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-mipmap",
+      "target_id": "cg-aniso-filtering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-normal-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-normal-mapping",
+      "target_id": "cg-parallax-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-parallax-mapping",
+      "target_id": "cg-displacement-map",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-cube-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-texture-compression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-texture-compression",
+      "target_id": "cg-virtual-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-texture-atlas",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-mipmap",
+      "target_id": "cg-texture-streaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-procedural-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-detail-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-texture-projection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-texture-projection",
+      "target_id": "cg-decal-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-triplanar",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-procedural-texture",
+      "target_id": "cg-texture-synthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-sdf-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-tex-intro",
+      "target_id": "cg-material-textures",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-material-textures",
+      "target_id": "cg-texture-baking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-texture-atlas",
+      "target_id": "cg-udim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-geo-intro",
+      "target_id": "cg-mesh-representation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-mesh-representation",
+      "target_id": "cg-mesh-simplification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-mesh-representation",
+      "target_id": "cg-subdivision",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-geo-intro",
+      "target_id": "cg-lod",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-lod",
+      "target_id": "cg-nanite",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-mesh-representation",
+      "target_id": "cg-mesh-boolean",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-geo-intro",
+      "target_id": "cg-parametric-surface",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-geo-intro",
+      "target_id": "cg-point-cloud",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-point-cloud",
+      "target_id": "cg-isosurface",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-isosurface",
+      "target_id": "cg-sdf-modeling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-mesh-representation",
+      "target_id": "cg-mesh-repair",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-mesh-representation",
+      "target_id": "cg-mesh-deformation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-mesh-representation",
+      "target_id": "cg-mesh-compression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-geo-intro",
+      "target_id": "cg-instancing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-lod",
+      "target_id": "cg-impostor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-geo-intro",
+      "target_id": "cg-terrain-geometry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-terrain-geometry",
+      "target_id": "cg-vegetation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-geo-intro",
+      "target_id": "cg-procedural-mesh",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-lod",
+      "target_id": "cg-mesh-streaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-sdf-modeling",
+      "target_id": "cg-neural-geometry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-vol-intro",
+      "target_id": "cg-ray-marching",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-marching",
+      "target_id": "cg-beer-lambert",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-beer-lambert",
+      "target_id": "cg-participating-media",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-participating-media",
+      "target_id": "cg-phase-function",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-participating-media",
+      "target_id": "cg-vol-shadow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-marching",
+      "target_id": "cg-vol-cloud",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-marching",
+      "target_id": "cg-vol-fog",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-marching",
+      "target_id": "cg-god-rays",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-vol-intro",
+      "target_id": "cg-vol-texture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-participating-media",
+      "target_id": "cg-fluid-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ray-marching",
+      "target_id": "cg-fire-explosion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-participating-media",
+      "target_id": "cg-smoke-sim",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-participating-media",
+      "target_id": "cg-heterogeneous",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-participating-media",
+      "target_id": "cg-vol-gi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-vol-intro",
+      "target_id": "cg-openvdb",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-vol-intro",
+      "target_id": "cg-medical-vis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-vol-intro",
+      "target_id": "cg-scientific-vis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-vol-intro",
+      "target_id": "cg-vol-decal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-sky-atmosphere",
+      "target_id": "cg-atmosphere-scatter",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cg-ray-marching",
+      "target_id": "cg-neural-radiance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-aa-intro",
+      "target_id": "cg-ssaa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-ssaa",
+      "target_id": "cg-msaa-detail",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-aa-intro",
+      "target_id": "cg-fxaa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fxaa",
+      "target_id": "cg-smaa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-aa-intro",
+      "target_id": "cg-taa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-taa-ghosting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-taa-sharpness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-velocity-buffer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-jitter-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-dlss",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-fsr",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-xess",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-dlss",
+      "target_id": "cg-upscaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-fsr",
+      "target_id": "cg-upscaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-msaa-detail",
+      "target_id": "cg-alpha-testing-aa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-specular-aa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-aa-intro",
+      "target_id": "cg-geometric-aa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-taa",
+      "target_id": "cg-temporal-stability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-aa-intro",
+      "target_id": "cg-aa-comparison",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-dlss",
+      "target_id": "cg-frame-generation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-draw-call",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-frustum-culling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-frustum-culling",
+      "target_id": "cg-occlusion-culling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-occlusion-culling",
+      "target_id": "cg-gpu-culling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-bandwidth-opt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-overdraw",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-draw-call",
+      "target_id": "cg-state-sorting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-draw-call",
+      "target_id": "cg-atlas-batching",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-shader-complexity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-render-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-render-budget",
+      "target_id": "cg-adaptive-quality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-streaming-opt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-render-graph",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-cpu-gpu-sync",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-cpu-gpu-sync",
+      "target_id": "cg-multithreaded-cmd",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-mobile-opt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-vr-opt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cg-gpu-profiling",
+      "target_id": "cg-perf-counter",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cg-optim-intro",
+      "target_id": "cg-profiling-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    }
+  ],
+  "metadata": {
+    "domain_id": "computer-graphics",
+    "version": "1.0.0",
+    "generated_by": "generate_cg_seed.py",
+    "total_concepts": 250,
+    "total_edges": 241,
+    "subdomains": [
+      {
+        "id": "rasterization",
+        "name": "光栅化",
+        "order": 1
+      },
+      {
+        "id": "ray-tracing",
+        "name": "光线追踪",
+        "order": 2
+      },
+      {
+        "id": "pbr-materials",
+        "name": "PBR材质",
+        "order": 3
+      },
+      {
+        "id": "global-illumination",
+        "name": "全局光照",
+        "order": 4
+      },
+      {
+        "id": "post-processing",
+        "name": "后处理",
+        "order": 5
+      },
+      {
+        "id": "gpu-architecture",
+        "name": "GPU架构",
+        "order": 6
+      },
+      {
+        "id": "shader-programming",
+        "name": "Shader编程",
+        "order": 7
+      },
+      {
+        "id": "texture-techniques",
+        "name": "纹理技术",
+        "order": 8
+      },
+      {
+        "id": "geometry-processing",
+        "name": "几何处理",
+        "order": 9
+      },
+      {
+        "id": "volume-rendering",
+        "name": "体积渲染",
+        "order": 10
+      },
+      {
+        "id": "anti-aliasing",
+        "name": "抗锯齿",
+        "order": 11
+      },
+      {
+        "id": "render-optimization",
+        "name": "渲染优化",
+        "order": 12
+      }
+    ],
+    "milestones": [
+      "cg-raster-intro",
+      "cg-interpolation",
+      "cg-forward-rendering",
+      "cg-deferred-rendering",
+      "cg-rt-intro",
+      "cg-bvh",
+      "cg-path-tracing",
+      "cg-rt-denoising",
+      "cg-hybrid-rendering",
+      "cg-pbr-intro",
+      "cg-cook-torrance",
+      "cg-subsurface",
+      "cg-disney-brdf",
+      "cg-gi-intro",
+      "cg-rendering-equation",
+      "cg-ambient-occlusion",
+      "cg-voxel-gi",
+      "cg-gi-hybrid",
+      "cg-pp-intro",
+      "cg-tone-mapping",
+      "cg-dof",
+      "cg-pp-stack",
+      "cg-gpu-intro",
+      "cg-gpu-memory",
+      "cg-compute-shader",
+      "cg-gpu-driven",
+      "cg-gpu-profiling",
+      "cg-shader-intro",
+      "cg-fragment-shader",
+      "cg-tessellation",
+      "cg-material-graph",
+      "cg-shader-optimization",
+      "cg-tex-intro",
+      "cg-mipmap",
+      "cg-normal-mapping",
+      "cg-virtual-texture",
+      "cg-geo-intro",
+      "cg-mesh-simplification",
+      "cg-lod",
+      "cg-nanite",
+      "cg-instancing",
+      "cg-vol-intro",
+      "cg-ray-marching",
+      "cg-vol-cloud",
+      "cg-neural-radiance",
+      "cg-aa-intro",
+      "cg-msaa-detail",
+      "cg-smaa",
+      "cg-taa",
+      "cg-dlss",
+      "cg-optim-intro",
+      "cg-draw-call",
+      "cg-occlusion-culling",
+      "cg-adaptive-quality",
+      "cg-render-graph",
+      "cg-profiling-workflow"
+    ]
+  }
+}

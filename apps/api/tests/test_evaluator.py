@@ -271,13 +271,13 @@ class TestDomainSupplementRegistries:
     def test_domain_supplements_covers_all_domains(self):
         """Registry should have entries for all non-default domains."""
         from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS
-        expected = {"mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering"}
+        expected = {"mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics"}
         assert set(DOMAIN_SUPPLEMENTS.keys()) == expected
 
     def test_assessment_supplements_covers_all_domains(self):
         """Assessment registry should have entries for all non-default domains."""
         from engines.dialogue.prompts.feynman_system import ASSESSMENT_SUPPLEMENTS
-        expected = {"mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering"}
+        expected = {"mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics"}
         assert set(ASSESSMENT_SUPPLEMENTS.keys()) == expected
 
     def test_domain_supplements_values_non_empty(self):

@@ -335,6 +335,18 @@ const SOFTWARE_ENGINEERING_DOMAIN_SUPPLEMENT = `
 7. **协作意识**: 从团队角度思考工程决策，强调代码审查/Git工作流/文档的协作价值
 `;
 
+const COMPUTER_GRAPHICS_DOMAIN_SUPPLEMENT = `
+## 计算机图形学教学特殊规则
+
+1. **数学驱动**: 从数学公式出发——线性代数(矩阵变换)、微积分(渲染方程)、概率论(蒙特卡洛采样)，帮助建立"从公式到像素"的思维链
+2. **管线思维**: 引导理解数据如何从顶点→光栅化→片元→帧缓冲逐步流转，每个概念在管线中的位置和作用
+3. **实时vs离线**: 对比实时渲染(游戏)和离线渲染(电影)对同一问题的不同解法，培养根据场景选择方案的能力
+4. **GPU硬件意识**: 关联并行计算、显存带宽、Warp/Wave执行模型等硬件概念，解释为什么某些算法在GPU上高效/低效
+5. **Shader实战**: 鼓励用HLSL/GLSL编写Shader动手实验。使用ShaderToy、RenderDoc等工具观察和调试渲染效果
+6. **引擎实现**: 对接UE5/Unity中的实际渲染特性(Nanite/Lumen/URP/HDRP)，理解理论到工程实现的落差
+7. **视觉直觉**: 用对比图(开启/关闭效果)、分步渲染截图、调试视图辅助解释抽象概念
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -351,6 +363,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'level-design': LEVEL_DESIGN_DOMAIN_SUPPLEMENT,
   'game-engine': GAME_ENGINE_DOMAIN_SUPPLEMENT,
   'software-engineering': SOFTWARE_ENGINEERING_DOMAIN_SUPPLEMENT,
+  'computer-graphics': COMPUTER_GRAPHICS_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -537,6 +550,19 @@ const SOFTWARE_ENGINEERING_ASSESSMENT_SUPPLEMENT = `
 - **代码质量意识**: 用户是否能判断代码质量？能否提出具体的改进建议？
 `;
 
+const COMPUTER_GRAPHICS_ASSESSMENT_SUPPLEMENT = `
+## 计算机图形学领域评估特殊指标
+
+在评估图形学概念理解时，请额外关注以下方面：
+- **数学理解**: 用户是否理解背后的数学原理？能否用公式或伪代码解释渲染过程？
+- **管线定位**: 用户是否知道该概念在渲染管线中的位置？能否解释输入/输出数据格式？
+- **性能权衡**: 用户是否了解该技术的性能开销？能否提出适合实时渲染的优化方案？
+- **GPU思维**: 用户是否理解GPU并行执行模型？能否解释为什么某些算法适合/不适合GPU？
+- **Shader能力**: 用户是否能用HLSL/GLSL描述核心算法？能否读懂简单的Shader代码？
+- **对比分析**: 用户是否能对比同一问题的多种渲染方案(如AA的MSAA/TAA/FXAA)？
+- **引擎实践**: 用户是否了解该技术在UE5/Unity中的实现方式和配置方法？
+`;
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -552,6 +578,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'level-design': LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT,
   'game-engine': GAME_ENGINE_ASSESSMENT_SUPPLEMENT,
   'software-engineering': SOFTWARE_ENGINEERING_ASSESSMENT_SUPPLEMENT,
+  'computer-graphics': COMPUTER_GRAPHICS_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

@@ -1,6 +1,6 @@
 {
   "_doc": "Cross-sphere relation links — connects concepts across different knowledge domains",
-  "_version": "1.1",
+  "_version": "1.2",
   "_created": "2026-03-19",
   "links": [
     {
@@ -1802,6 +1802,206 @@
       "target_id": "iteration-blockout",
       "relation": "supports",
       "description": "游戏CI/CD自动化构建支持关卡的Blockout快速迭代，缩短构建-测试反馈循环"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-forward-rendering",
+      "target_domain": "game-engine",
+      "target_id": "forward-rendering",
+      "relation": "same_concept",
+      "description": "前向渲染在图形学中是基础概念，在游戏引擎中是主要渲染路径之一"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-deferred-rendering",
+      "target_domain": "game-engine",
+      "target_id": "deferred-rendering",
+      "relation": "same_concept",
+      "description": "延迟渲染在图形学中是管线方案，在引擎中是处理大量光源的标准路径"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-pbr-intro",
+      "target_domain": "game-engine",
+      "target_id": "pbr-material",
+      "relation": "enables",
+      "description": "PBR理论基础(BRDF/能量守恒)支撑引擎中的PBR材质系统"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-gpu-intro",
+      "target_domain": "game-engine",
+      "target_id": "gpu-driven-rendering",
+      "relation": "requires",
+      "description": "GPU驱动渲染需要深入理解GPU架构(并行执行/显存带宽/命令缓冲)"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-mipmap",
+      "target_domain": "game-engine",
+      "target_id": "texture-streaming",
+      "relation": "related",
+      "description": "Mipmap纹理过滤理论与引擎纹理流送系统紧密相关"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-shader-intro",
+      "target_domain": "game-engine",
+      "target_id": "shader-compilation",
+      "relation": "enables",
+      "description": "Shader编程基础(HLSL/GLSL)是理解引擎Shader编译系统的前提"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-raster-pipeline",
+      "target_domain": "game-engine",
+      "target_id": "render-pipeline-intro",
+      "relation": "same_concept",
+      "description": "光栅化管线在图形学中是理论模型，在引擎中是具体实现(RenderGraph)"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-vol-fog",
+      "target_domain": "game-engine",
+      "target_id": "volumetric-rendering",
+      "relation": "enables",
+      "description": "体积雾渲染理论(ray marching/散射方程)支撑引擎中的体积效果"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-gpu-profiling",
+      "target_domain": "game-engine",
+      "target_id": "gpu-profiling",
+      "relation": "same_concept",
+      "description": "GPU性能分析在图形学研究和引擎开发中使用相同的工具(RenderDoc/Nsight)"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-shader-complexity",
+      "target_domain": "game-engine",
+      "target_id": "shader-complexity",
+      "relation": "same_concept",
+      "description": "Shader复杂度分析在图形学和引擎中使用相同的度量方法"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "render-graph",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-raster-pipeline",
+      "relation": "requires",
+      "description": "引擎RenderGraph系统的设计需要理解完整的光栅化管线流程"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "terrain-rendering",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-lod",
+      "relation": "requires",
+      "description": "地形渲染依赖LOD(Level of Detail)技术实现大场景的性能优化"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "renderdoc",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-gpu-profiling",
+      "relation": "same_concept",
+      "description": "RenderDoc是图形学调试和引擎GPU分析的通用工具"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "unity-shader-graph",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-surface-shader",
+      "relation": "related",
+      "description": "Unity Shader Graph可视化编辑器背后是Surface Shader技术"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-pp-intro",
+      "target_domain": "game-design",
+      "target_id": "visual-feedback",
+      "relation": "enables",
+      "description": "后处理效果(色调映射/Bloom/景深)是游戏视觉反馈的重要技术手段"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-gi-intro",
+      "target_domain": "game-design",
+      "target_id": "ambient-feedback",
+      "relation": "enables",
+      "description": "全局光照技术影响游戏氛围感知——光影传递情绪和空间信息"
+    },
+    {
+      "source_domain": "game-design",
+      "source_id": "visual-feedback",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-pp-intro",
+      "relation": "requires",
+      "description": "游戏视觉反馈设计的技术实现需要后处理效果的支持"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-compute-shader",
+      "target_domain": "software-engineering",
+      "target_id": "se-mt-intro",
+      "relation": "related",
+      "description": "计算着色器是GPU上的并行编程模型，与CPU多线程编程共享并行计算思维"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-gpu-memory",
+      "target_domain": "software-engineering",
+      "target_id": "se-mem-intro",
+      "relation": "related",
+      "description": "GPU显存管理与CPU内存管理有相似的优化策略(缓存友好/池分配)"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-vertex-transform",
+      "target_domain": "mathematics",
+      "target_id": "matrix-multiplication",
+      "relation": "requires",
+      "description": "顶点变换的核心就是矩阵乘法（模型→世界→视图→投影矩阵链）"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-rendering-equation",
+      "target_domain": "mathematics",
+      "target_id": "definite-integrals",
+      "relation": "requires",
+      "description": "渲染方程是一个积分方程，理解定积分是理解渲染方程的数学前提"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-importance-sampling",
+      "target_domain": "mathematics",
+      "target_id": "probability-basics",
+      "relation": "requires",
+      "description": "重要性采样需要概率分布知识(均匀分布/概率密度函数)"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "linear-transformations",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-vertex-transform",
+      "relation": "enables",
+      "description": "线性变换是图形学顶点变换的数学基础"
+    },
+    {
+      "source_domain": "mathematics",
+      "source_id": "dot-product",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-custom-lighting",
+      "relation": "enables",
+      "description": "点积运算是光照模型(Lambert/Phong)计算漫反射和镜面反射的核心"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "water-rendering",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-cube-mapping",
+      "relation": "requires",
+      "description": "水面渲染需要立方体贴图技术(反射/折射)"
     }
   ],
   "meta": {
