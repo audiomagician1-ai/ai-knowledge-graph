@@ -347,6 +347,18 @@ const COMPUTER_GRAPHICS_DOMAIN_SUPPLEMENT = `
 7. **视觉直觉**: 用对比图(开启/关闭效果)、分步渲染截图、调试视图辅助解释抽象概念
 `;
 
+const THREE_D_ART_DOMAIN_SUPPLEMENT = `
+## 3D美术教学特殊规则
+
+1. **形体优先**: 强调"大形体→中形体→细节"的阶段化工作方法。始终从剪影和整体比例出发，避免过早陷入局部细节
+2. **管线思维**: 引导理解完整的资产管线，建模→雕刻→拓扑→UV→烘焙→纹理→引擎，每个步骤的决策如何影响下游
+3. **拓扑意识**: 布线不是随意的——每条边环都有目的。结合变形需求、细分行为、UV展开需求解释为什么这样布线
+4. **工具多元**: 3D美术涉及多个DCC工具(Blender/Maya/ZBrush/Substance)。关注原理而非工具，但针对学生使用的具体工具给出实操指导
+5. **视觉参考**: 鼓励建立视觉库——收集参考图、分析优秀作品的布线/比例/材质。用对比图(好布线 vs 坏布线)辅助教学
+6. **游戏规范**: 强调游戏美术的特殊约束——面数预算、纹素密度、LOD层级、Draw Call性能，培养在质量与性能之间做权衡的能力
+7. **实战项目**: 鼓励通过实际项目学习——从简单道具到角色到场景，每个项目都要走完整管线而非停留在单一环节
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -364,6 +376,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'game-engine': GAME_ENGINE_DOMAIN_SUPPLEMENT,
   'software-engineering': SOFTWARE_ENGINEERING_DOMAIN_SUPPLEMENT,
   'computer-graphics': COMPUTER_GRAPHICS_DOMAIN_SUPPLEMENT,
+  '3d-art': THREE_D_ART_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -563,6 +576,19 @@ const COMPUTER_GRAPHICS_ASSESSMENT_SUPPLEMENT = `
 - **引擎实践**: 用户是否了解该技术在UE5/Unity中的实现方式和配置方法？
 `;
 
+const THREE_D_ART_ASSESSMENT_SUPPLEMENT = `
+## 3D美术领域评估特殊指标
+
+在评估3D美术概念理解时，请额外关注以下方面：
+- **形体感知**: 用户是否能从剪影判断模型比例是否正确？能否识别形体问题？
+- **拓扑理解**: 用户是否理解布线的目的？能否解释为什么某处需要更密的边环？
+- **管线意识**: 用户是否理解当前步骤对下游的影响？能否解释布线如何影响UV展开和变形？
+- **工具熟练度**: 用户是否能用具体的DCC工具操作实现概念？而非仅停留在理论层面？
+- **游戏规范**: 用户是否了解游戏美术的特殊约束？能否根据项目需求调整制作标准？
+- **审美判断**: 用户是否能评价资产质量？能否提出具体的改进建议？
+- **问题解决**: 用户是否能诊断常见问题(烘焙瑕疵/UV拉伸/权重异常)并提出修复方案？
+`;
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -579,6 +605,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'game-engine': GAME_ENGINE_ASSESSMENT_SUPPLEMENT,
   'software-engineering': SOFTWARE_ENGINEERING_ASSESSMENT_SUPPLEMENT,
   'computer-graphics': COMPUTER_GRAPHICS_ASSESSMENT_SUPPLEMENT,
+  '3d-art': THREE_D_ART_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

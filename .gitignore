@@ -74,6 +74,11 @@ scripts/list_all_ids.py
 scripts/audit_connectivity.py
 scripts/fix_connectivity.py
 scripts/fix_meta.py
+data/scripts/_fix_*.py
+data/scripts/_validate_*.py
+data/scripts/add_*.py
+data/scripts/fix_*.py
+data/scripts/generate_*.py
 
 # PowerShell artifacts (2>$null creates a file named "$null", 2>1] creates "1]")
 $null

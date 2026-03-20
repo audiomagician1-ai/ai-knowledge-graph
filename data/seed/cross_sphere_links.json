@@ -1,6 +1,6 @@
 {
   "_doc": "Cross-sphere relation links — connects concepts across different knowledge domains",
-  "_version": "1.2",
+  "_version": "1.3",
   "_created": "2026-03-19",
   "links": [
     {
@@ -2002,6 +2002,222 @@
       "target_id": "cg-cube-mapping",
       "relation": "requires",
       "description": "水面渲染需要立方体贴图技术(反射/折射)"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-tex-pbr-workflow",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-pbr-intro",
+      "strength": 0.9,
+      "description": "PBR纹理工作流直接应用PBR材质的物理原理",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-tex-normal-map",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-normal-mapping",
+      "strength": 0.9,
+      "description": "法线贴图制作应用切线空间法线映射原理",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-bake-normal",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-texture-baking",
+      "strength": 0.8,
+      "description": "法线烘焙应用纹理烘焙的核心技术",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-uv-intro",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-tex-intro",
+      "strength": 0.8,
+      "description": "UV展开概念需要理解纹理映射原理",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-env-optimization",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-optim-intro",
+      "strength": 0.7,
+      "description": "环境优化应用渲染优化的核心方法论",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-subdivision-surface",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-subdivision",
+      "strength": 0.8,
+      "description": "细分曲面修改器直接使用Catmull-Clark细分算法",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-prop-lod-creation",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-lod",
+      "strength": 0.8,
+      "description": "道具LOD制作应用LOD系统原理",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-mesh-topology",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-mesh-representation",
+      "strength": 0.7,
+      "description": "网格拓扑概念与图形学网格表示理论相关",
+      "relation": "related"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-metallic-workflow",
+      "target_domain": "3d-art",
+      "target_id": "3da-tex-metallic",
+      "strength": 0.8,
+      "description": "金属度工作流理论指导金属度贴图的制作",
+      "relation": "teaches"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-virtual-texture",
+      "target_domain": "3d-art",
+      "target_id": "3da-uv-udim",
+      "strength": 0.7,
+      "description": "虚拟纹理技术与UDIM多Tile UV布局相关",
+      "relation": "related"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-nanite",
+      "target_domain": "3d-art",
+      "target_id": "3da-retopo-poly-count",
+      "strength": 0.7,
+      "description": "Nanite虚拟几何体改变了传统面数预算规则",
+      "relation": "impacts"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-subsurface",
+      "target_domain": "3d-art",
+      "target_id": "3da-bake-thickness",
+      "strength": 0.7,
+      "description": "次表面散射原理指导厚度贴图的烘焙",
+      "relation": "teaches"
+    },
+    {
+      "source_domain": "computer-graphics",
+      "source_id": "cg-instancing",
+      "target_domain": "3d-art",
+      "target_id": "3da-env-modular",
+      "strength": 0.7,
+      "description": "实例化渲染使模块化环境美术的批量渲染高效可行",
+      "relation": "enables"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-pipe-fbx-export",
+      "target_domain": "game-engine",
+      "target_id": "uasset-format",
+      "strength": 0.8,
+      "description": "FBX导出设置直接影响引擎的资产导入质量",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-rig-ue-mannequin",
+      "target_domain": "game-engine",
+      "target_id": "animation-blueprint",
+      "strength": 0.7,
+      "description": "UE骨骼系统是动画蓝图系统的基础",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-pipe-engine-import",
+      "target_domain": "game-engine",
+      "target_id": "resource-mgmt-intro",
+      "strength": 0.7,
+      "description": "引擎导入设置与引擎资源管理系统紧密相关",
+      "relation": "related"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-env-optimization",
+      "target_domain": "game-engine",
+      "target_id": "profiling-intro",
+      "strength": 0.7,
+      "description": "环境优化需要引擎性能分析工具支持",
+      "relation": "related"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-prop-collision",
+      "target_domain": "game-engine",
+      "target_id": "collision-shapes",
+      "strength": 0.8,
+      "description": "碰撞体制作直接服务于引擎碰撞检测系统",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "ue5-nanite",
+      "target_domain": "3d-art",
+      "target_id": "3da-retopo-poly-count",
+      "strength": 0.7,
+      "description": "Nanite系统改变了3D美术的面数预算标准",
+      "relation": "impacts"
+    },
+    {
+      "source_domain": "game-engine",
+      "source_id": "pbr-material",
+      "target_domain": "3d-art",
+      "target_id": "3da-prop-material-instance",
+      "strength": 0.7,
+      "description": "引擎材质编辑器为材质实例化提供工具",
+      "relation": "enables"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-env-modular",
+      "target_domain": "level-design",
+      "target_id": "modular-kit",
+      "strength": 0.8,
+      "description": "模块化建模为模块化关卡设计提供资产基础",
+      "relation": "prerequisite"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-blockout",
+      "target_domain": "level-design",
+      "target_id": "blockout-intro",
+      "strength": 0.8,
+      "description": "白盒建模与关卡灰盒搭建是同一流程的两个视角",
+      "relation": "related"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-env-composition",
+      "target_domain": "level-design",
+      "target_id": "spatial-hierarchy",
+      "strength": 0.7,
+      "description": "场景构图与关卡视觉层级设计密切相关",
+      "relation": "related"
+    },
+    {
+      "source_domain": "3d-art",
+      "source_id": "3da-prop-interactable",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "strength": 0.6,
+      "description": "可交互道具设计需要理解游戏反馈系统原则",
+      "relation": "related"
     }
   ],
   "meta": {
@@ -2038,5 +2254,5 @@
       "software-engineering_level-design": 4
     }
   },
-  "total": 225
+  "total": 275
 }

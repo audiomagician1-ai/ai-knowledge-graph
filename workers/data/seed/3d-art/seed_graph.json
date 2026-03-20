@@ -1,0 +1,5170 @@
+{
+  "domain": {
+    "id": "3d-art",
+    "name": "3D美术",
+    "description": "从建模基础到完整资产管线的3D美术知识体系",
+    "icon": "🧊",
+    "color": "#6366f1"
+  },
+  "subdomains": [
+    {
+      "id": "modeling-fundamentals",
+      "name": "建模基础",
+      "order": 1
+    },
+    {
+      "id": "hard-surface",
+      "name": "硬表面建模",
+      "order": 2
+    },
+    {
+      "id": "organic-modeling",
+      "name": "有机建模",
+      "order": 3
+    },
+    {
+      "id": "sculpting",
+      "name": "数字雕刻",
+      "order": 4
+    },
+    {
+      "id": "retopology",
+      "name": "拓扑重构",
+      "order": 5
+    },
+    {
+      "id": "uv-unwrapping",
+      "name": "UV展开",
+      "order": 6
+    },
+    {
+      "id": "texturing",
+      "name": "纹理绘制",
+      "order": 7
+    },
+    {
+      "id": "baking",
+      "name": "烘焙",
+      "order": 8
+    },
+    {
+      "id": "rigging",
+      "name": "绑定",
+      "order": 9
+    },
+    {
+      "id": "environment-art",
+      "name": "环境美术",
+      "order": 10
+    },
+    {
+      "id": "prop-art",
+      "name": "道具美术",
+      "order": 11
+    },
+    {
+      "id": "asset-pipeline",
+      "name": "资产管线",
+      "order": 12
+    }
+  ],
+  "concepts": [
+    {
+      "id": "3da-modeling-intro",
+      "name": "3D建模概述",
+      "description": "3D建模的定义、发展历程与主要建模方法分类",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-polygon-basics",
+      "name": "多边形基础",
+      "description": "顶点、边、面的定义与多边形网格的基本拓扑概念",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-mesh-topology",
+      "name": "网格拓扑",
+      "description": "四边面与三角面的区别、拓扑流的概念与重要性",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-edge-flow",
+      "name": "布线原则",
+      "description": "边循环、边环与布线对变形和细分的影响",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-transform-tools",
+      "name": "变换工具",
+      "description": "移动、旋转、缩放与轴心点操作的基本方法",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-modeling-modes",
+      "name": "编辑模式",
+      "description": "物体模式与编辑模式(顶点/边/面)的切换与操作",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-extrude-inset",
+      "name": "挤出与内插",
+      "description": "Extrude/Inset Face/Bevel等核心建模操作",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-loop-cut",
+      "name": "环切与细分",
+      "description": "Loop Cut、Subdivide与边滑移操作",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-boolean-ops",
+      "name": "布尔运算",
+      "description": "并集、差集、交集在建模中的应用与陷阱",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-modifier-stack",
+      "name": "修改器栈",
+      "description": "修改器的概念、排列顺序与非破坏性工作流",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-mirror-modifier",
+      "name": "镜像修改器",
+      "description": "对称建模的镜像修改器设置与合并阈值",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-subdivision-surface",
+      "name": "细分曲面修改器",
+      "description": "Catmull-Clark细分对拓扑的影响与控制边的使用",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-normals-smoothing",
+      "name": "法线与平滑",
+      "description": "面法线、顶点法线、平滑组与自定义法线的设置",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-reference-setup",
+      "name": "参考图设置",
+      "description": "正交参考图的导入、对齐与建模前的准备工作",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-scale-proportion",
+      "name": "比例与尺度",
+      "description": "真实世界尺度在3D建模中的重要性与单位设置",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pivot-origin",
+      "name": "轴心与原点",
+      "description": "物体原点设置对变换、动画与引擎导入的影响",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-snapping",
+      "name": "吸附与对齐",
+      "description": "顶点吸附、栅格吸附与精确定位技巧",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-mesh-cleanup",
+      "name": "网格清理",
+      "description": "合并顶点、移除重复面、填充孔洞等清理操作",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-blockout",
+      "name": "白盒建模",
+      "description": "快速搭建基础形状验证比例和构图的白盒阶段",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-modeling-workflow",
+      "name": "建模工作流总览",
+      "description": "从概念到最终模型的完整工作流程与最佳实践",
+      "subdomain_id": "modeling-fundamentals",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-hs-intro",
+      "name": "硬表面建模概述",
+      "description": "硬表面建模的定义、适用对象与核心技法概览",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-bevel-edges",
+      "name": "倒角边工作流",
+      "description": "支撑边与倒角边控制细分后的硬边轮廓",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-support-loops",
+      "name": "支撑环",
+      "description": "使用支撑环(Support Loop)控制细分曲面的锐度",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-hs-crease",
+      "name": "褶皱权重",
+      "description": "Crease Weight在保持硬边的同时避免额外布线",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-boolean-workflow",
+      "name": "布尔硬表面工作流",
+      "description": "布尔运算在硬表面细节制作中的现代工作流",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "工作流"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-hs-panel-lines",
+      "name": "面板线与缝隙",
+      "description": "科幻/机械表面的面板线刻画与深度控制",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-greeble",
+      "name": "Greeble细节",
+      "description": "程序化细节添加与表面丰富度提升技法",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-mechanical",
+      "name": "机械零件建模",
+      "description": "齿轮、螺栓、铰链等机械部件的精确建模",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-vehicle",
+      "name": "载具建模",
+      "description": "汽车/飞行器等载具的建模流程与曲面控制",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-weapon",
+      "name": "武器建模",
+      "description": "游戏武器资产的建模规范与细节层次",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-architecture",
+      "name": "建筑建模",
+      "description": "建筑结构的模块化建模与比例把控",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-kitbash",
+      "name": "KitBash技法",
+      "description": "预制部件库在快速概念建模中的应用",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工作流"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-curved-surface",
+      "name": "曲面控制",
+      "description": "在硬表面上维持光滑曲面过渡的技法",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-ngon-management",
+      "name": "N-gon管理",
+      "description": "硬表面中N-gon的合理使用与问题回避",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-symmetry",
+      "name": "对称与阵列",
+      "description": "利用对称和阵列修改器加速硬表面建模",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-decal-mesh",
+      "name": "Decal Mesh",
+      "description": "贴花网格在硬表面细节添加中的应用",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-trim-sheet",
+      "name": "Trim Sheet",
+      "description": "Trim Sheet在重复性硬表面细节中的运用",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "工作流"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-floating-geo",
+      "name": "浮动几何",
+      "description": "利用浮动几何+法线烘焙实现低面数细节",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-subd-vs-chamfer",
+      "name": "SubD vs Chamfer",
+      "description": "细分建模与倒角建模两种工作流的对比与选择",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "对比"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-hs-game-ready",
+      "name": "游戏级硬表面资产",
+      "description": "从高模到游戏级低模的硬表面完整制作流程",
+      "subdomain_id": "hard-surface",
+      "domain_id": "3d-art",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-org-intro",
+      "name": "有机建模概述",
+      "description": "有机建模的特点、布线要求与常用技术",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-face-topology",
+      "name": "面部拓扑",
+      "description": "面部肌肉走向与表情变形所需的拓扑规范",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-org-body-proportion",
+      "name": "人体比例",
+      "description": "人体比例系统(7.5~8头身)与关键体块划分",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-anatomy-basics",
+      "name": "解剖学基础",
+      "description": "骨骼、肌肉与脂肪层对外形的影响",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-hand-foot",
+      "name": "手脚建模",
+      "description": "手部和脚部的骨骼解剖与建模技巧",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-head-modeling",
+      "name": "头部建模",
+      "description": "从基础形状到完整头部的建模流程",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-body-modeling",
+      "name": "躯干建模",
+      "description": "胸腔/骨盆/四肢的体块建模与连接",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-org-creature",
+      "name": "生物建模",
+      "description": "非人类生物(怪物/龙/动物)的建模方法",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-cloth-sim",
+      "name": "衣物建模",
+      "description": "衣物的手动建模与模拟结合工作流",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-hair-modeling",
+      "name": "毛发建模",
+      "description": "曲线/多边形条带/Groom的毛发制作方法",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-muscle-deform",
+      "name": "肌肉变形",
+      "description": "肌肉系统对蒙皮变形质量的提升",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-wrinkle-detail",
+      "name": "皱纹与细节",
+      "description": "皮肤褶皱、毛孔等微观细节的制作方法",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "细节"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-stylized-char",
+      "name": "风格化角色",
+      "description": "Q版/卡通/动漫风格角色的比例与建模特点",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-realistic-char",
+      "name": "写实角色",
+      "description": "写实人物的全流程制作标准与常见陷阱",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 5,
+      "estimated_minutes": 45,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-expression",
+      "name": "表情制作",
+      "description": "BlendShape/Morph Target的面部表情制作",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-edge-loops-organic",
+      "name": "有机体布线环",
+      "description": "关节/肌肉区域的关键边环布局规则",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-symmetry-break",
+      "name": "对称打破",
+      "description": "在对称基础上添加不对称细节增加真实感",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-proportion-check",
+      "name": "比例检查",
+      "description": "利用剪影、灰模渲染检查整体比例",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-tpose-apose",
+      "name": "T-Pose与A-Pose",
+      "description": "角色默认姿势选择对绑定和变形的影响",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-org-game-ready-char",
+      "name": "游戏级角色制作",
+      "description": "从概念到引擎内的完整角色资产制作流程",
+      "subdomain_id": "organic-modeling",
+      "domain_id": "3d-art",
+      "difficulty": 4,
+      "estimated_minutes": 45,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-sculpt-intro",
+      "name": "数字雕刻概述",
+      "description": "数字雕刻的原理、优势与在3D美术管线中的位置",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-brushes",
+      "name": "雕刻笔刷",
+      "description": "Clay/Standard/Flatten/Smooth等核心笔刷的功能与用法",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-alphas",
+      "name": "Alpha与笔触纹理",
+      "description": "利用Alpha贴图驱动笔刷细节的技法",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-dynamesh",
+      "name": "DynaMesh",
+      "description": "动态网格重建在自由雕刻中的应用",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-multires",
+      "name": "多分辨率雕刻",
+      "description": "多层级细分的非破坏性雕刻工作流",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-layers",
+      "name": "雕刻层",
+      "description": "雕刻层的叠加、混合与迭代修改",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-form",
+      "name": "形体把控",
+      "description": "大形体→中形体→细节的阶段化雕刻方法论",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-sculpt-anatomy-app",
+      "name": "解剖学应用",
+      "description": "在雕刻中准确表现骨骼、肌肉与脂肪层的方法",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-hard-surface",
+      "name": "雕刻式硬表面",
+      "description": "ZBrush ZModeler/Panel Loops等硬表面雕刻方法",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "跨域"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-detailing",
+      "name": "细节雕刻",
+      "description": "皮肤纹理、伤疤、铆钉等微观细节的雕刻技巧",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-sculpt-posing",
+      "name": "姿势调整",
+      "description": "Transpose/转置主控在姿势调整中的使用",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-insert-mesh",
+      "name": "Insert Mesh笔刷",
+      "description": "预制部件插入在快速细节添加中的应用",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-masks",
+      "name": "遮罩与分组",
+      "description": "遮罩、多组(Polygroup)在局部控制中的使用",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-zbrush-workflow",
+      "name": "ZBrush工作流",
+      "description": "ZBrush特有的SubTool管理与工作流最佳实践",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "工作流"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-blender-sculpt",
+      "name": "Blender雕刻",
+      "description": "Blender雕刻模式的特点与对比",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-3dcoat",
+      "name": "3DCoat雕刻",
+      "description": "3DCoat的体素雕刻与表面雕刻特性",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-cleanup",
+      "name": "雕刻清理",
+      "description": "雕刻完成后的法线修复与网格优化",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-projection",
+      "name": "细节投射",
+      "description": "在不同拓扑间传递雕刻细节的投射技术",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-stylized",
+      "name": "风格化雕刻",
+      "description": "卡通/手绘风格雕刻的夸张手法与形体语言",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-sculpt-presentation",
+      "name": "雕刻展示",
+      "description": "Turntable渲染、KeyShot等雕刻作品展示方法",
+      "subdomain_id": "sculpting",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "展示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-intro",
+      "name": "拓扑重构概述",
+      "description": "Retopology的目的——将高模转为可用的低模拓扑",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-goals",
+      "name": "拓扑目标",
+      "description": "变形友好、渲染高效、UV友好的拓扑目标",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-retopo-manual",
+      "name": "手动拓扑重构",
+      "description": "使用Poly Build/RetopoFlow等手动拓扑工具",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-auto",
+      "name": "自动拓扑重构",
+      "description": "Instant Meshes/QuadriFlow等自动重拓扑工具",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-quad-dominant",
+      "name": "四边面优先原则",
+      "description": "为什么四边面网格在动画和细分中更优越",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-retopo-poly-count",
+      "name": "面数规划",
+      "description": "不同用途(游戏/影视/移动端)的面数预算指南",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-face-loops",
+      "name": "面部拓扑环",
+      "description": "眼/嘴/鼻周边的关键拓扑环布局",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-body-flow",
+      "name": "身体拓扑流",
+      "description": "关节弯曲区域的拓扑密度与边环方向",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-clothing",
+      "name": "衣物拓扑",
+      "description": "衣物模型的拓扑简化与模拟需求",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-hard-surface",
+      "name": "硬表面拓扑",
+      "description": "硬表面模型的游戏级拓扑简化策略",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-symmetry",
+      "name": "对称拓扑",
+      "description": "利用半模拓扑+镜像的高效重拓扑方法",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-guidelines",
+      "name": "拓扑规范",
+      "description": "工业级项目的拓扑规范与验收标准",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-shrinkwrap",
+      "name": "ShrinkWrap投射",
+      "description": "利用ShrinkWrap修改器辅助拓扑贴合",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-edge-density",
+      "name": "边密度控制",
+      "description": "在变形区域增加密度而平坦区域减少密度",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-lod-levels",
+      "name": "LOD层级拓扑",
+      "description": "为不同LOD层级规划拓扑简化策略",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-tools-compare",
+      "name": "重拓扑工具对比",
+      "description": "RetopoFlow/TopoGun/3DCoat/Maya等工具的对比",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "对比"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-validation",
+      "name": "拓扑验证",
+      "description": "检查非流形、法线翻转、面积为零等拓扑错误",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-retopo-game-pipeline",
+      "name": "游戏拓扑管线",
+      "description": "高模→重拓扑→UV→烘焙的完整管线衔接",
+      "subdomain_id": "retopology",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-intro",
+      "name": "UV展开概述",
+      "description": "UV映射的原理——将3D表面展平为2D纹理空间",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-seam-placement",
+      "name": "UV缝合线",
+      "description": "缝合线放置的原则——隐藏接缝与最小化拉伸",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-uv-projection",
+      "name": "投影展开",
+      "description": "平面/圆柱/球形/盒形投影方式与适用场景",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-unwrap-tools",
+      "name": "展开工具",
+      "description": "Conformal/Angle-Based等自动展开算法的对比",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-packing",
+      "name": "UV打包",
+      "description": "UV岛的高效打包策略与Texel Density一致性",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-texel-density",
+      "name": "纹素密度",
+      "description": "Texel Density的计算、统一与质量影响",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-uv-overlap",
+      "name": "UV叠放",
+      "description": "镜像/重复部件的UV叠放节省纹理空间",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-straightening",
+      "name": "UV矫直",
+      "description": "沿Edge Loop矫直UV以减少纹理扭曲",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-udim",
+      "name": "UDIM多Tile",
+      "description": "多Tile UV布局在高精度资产中的应用",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-checker-map",
+      "name": "棋盘格检查",
+      "description": "使用棋盘格贴图检验UV拉伸与密度",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-hard-surface-uv",
+      "name": "硬表面UV",
+      "description": "硬表面模型的UV分块策略与Padding",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-organic-uv",
+      "name": "有机体UV",
+      "description": "角色/生物模型的UV展开与接缝隐藏",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-padding-bleeding",
+      "name": "Padding与Bleeding",
+      "description": "UV岛间距与纹理出血对Mipmap的影响",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-channels",
+      "name": "UV通道",
+      "description": "多UV通道的用途——纹理UV、光照图UV、细节UV",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-atlas-layout",
+      "name": "UV Atlas布局",
+      "description": "多物件共享UV空间的Atlas布局策略",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-rizom-workflow",
+      "name": "RizomUV工作流",
+      "description": "RizomUV的快速展开与打包工作流",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-auto-uv",
+      "name": "自动UV展开",
+      "description": "DCC工具和引擎内置自动UV的适用场景",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-uv-best-practices",
+      "name": "UV最佳实践",
+      "description": "行业标准的UV展开规范与常见错误总结",
+      "subdomain_id": "uv-unwrapping",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-intro",
+      "name": "纹理绘制概述",
+      "description": "纹理在3D资产中的作用与主要工作流分类",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-pbr-workflow",
+      "name": "PBR纹理工作流",
+      "description": "Metallic-Roughness与Specular-Glossiness两种PBR工作流",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-tex-substance-painter",
+      "name": "Substance Painter",
+      "description": "SP的图层系统、智能材质与生成器工作流",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-tex-substance-designer",
+      "name": "Substance Designer",
+      "description": "SD的节点式程序化材质创作方法",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-hand-painted",
+      "name": "手绘纹理",
+      "description": "Stylized手绘纹理的色彩理论与笔触技法",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-base-color",
+      "name": "BaseColor贴图",
+      "description": "基础颜色贴图的制作原则——无光照信息、色彩范围",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-roughness",
+      "name": "Roughness贴图",
+      "description": "粗糙度贴图的物理含义与常见材质参考值",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-metallic",
+      "name": "Metallic贴图",
+      "description": "金属度贴图的0/1二值特性与过渡区处理",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-normal-map",
+      "name": "法线贴图制作",
+      "description": "从高模烘焙或SP/SD中生成法线贴图的方法",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-tex-ao-map",
+      "name": "AO贴图",
+      "description": "环境光遮蔽贴图的烘焙与在材质中的混合",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-height-map",
+      "name": "高度贴图",
+      "description": "Height Map在视差映射和细分中的作用",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-emissive",
+      "name": "自发光贴图",
+      "description": "Emissive贴图在LED/屏幕/魔法效果中的应用",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-opacity-mask",
+      "name": "透明度与遮罩",
+      "description": "Opacity/Mask贴图在树叶/头发/栅栏中的应用",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-tiling-material",
+      "name": "可平铺材质",
+      "description": "无缝平铺材质的制作与检验方法",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-material-id",
+      "name": "Material ID",
+      "description": "利用MaterialID贴图快速分区纹理的方法",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-curvature",
+      "name": "曲率贴图",
+      "description": "Curvature贴图在边缘磨损和污垢中的应用",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-weathering",
+      "name": "做旧与风化",
+      "description": "氧化、锈蚀、灰尘、磨损等自然老化效果",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-decal-texturing",
+      "name": "贴花纹理",
+      "description": "在已有材质上叠加标志/损伤/涂鸦的贴花方法",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-scan-data",
+      "name": "扫描数据纹理",
+      "description": "利用摄影测量/扫描数据作为纹理源",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-color-theory",
+      "name": "色彩理论",
+      "description": "互补色/冷暖/色彩层次在3D纹理中的运用",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-export-settings",
+      "name": "纹理导出设置",
+      "description": "贴图格式(PNG/TGA/EXR)、位深度与压缩设置",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-tex-resolution-guide",
+      "name": "纹理分辨率指南",
+      "description": "不同资产类型的纹理分辨率选择标准",
+      "subdomain_id": "texturing",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-intro",
+      "name": "烘焙概述",
+      "description": "贴图烘焙的原理——从高模向低模传递表面信息",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-normal",
+      "name": "法线烘焙",
+      "description": "切线空间法线贴图烘焙的流程与参数设置",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-bake-ao",
+      "name": "AO烘焙",
+      "description": "环境光遮蔽贴图的烘焙原理与常见问题",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-curvature",
+      "name": "曲率烘焙",
+      "description": "Curvature贴图的烘焙与在材质中的应用",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-thickness",
+      "name": "厚度烘焙",
+      "description": "Thickness贴图在次表面散射中的应用",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-cage",
+      "name": "Cage设置",
+      "description": "烘焙笼(Cage)的创建与偏移距离调节",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-ray-distance",
+      "name": "光线距离",
+      "description": "Max Ray Distance对烘焙质量的影响",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "参数"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-artifacts",
+      "name": "烘焙瑕疵",
+      "description": "常见烘焙瑕疵(渗色/扭曲/缺失)的诊断与修复",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "问题"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-name-matching",
+      "name": "名称匹配",
+      "description": "利用_high/_low命名约定自动匹配烘焙对象",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-exploded",
+      "name": "爆炸式烘焙",
+      "description": "分离重叠部件避免烘焙交叉污染",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-position-map",
+      "name": "位置贴图",
+      "description": "World/Object Position Map的烘焙与程序化应用",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-id-map",
+      "name": "ID贴图烘焙",
+      "description": "Vertex Color/Material ID贴图的烘焙与用途",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-substance",
+      "name": "Substance烘焙",
+      "description": "Substance Painter内置烘焙器的设置与优势",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-marmoset",
+      "name": "Marmoset烘焙",
+      "description": "Toolbag的实时预览烘焙工作流",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-xnormal",
+      "name": "xNormal烘焙",
+      "description": "xNormal的高质量批量烘焙功能",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-bake-best-practices",
+      "name": "烘焙最佳实践",
+      "description": "烘焙流程的行业标准与常见错误总结",
+      "subdomain_id": "baking",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-rig-intro",
+      "name": "绑定概述",
+      "description": "骨骼绑定的目的与在3D美术管线中的角色",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-skeleton",
+      "name": "骨骼系统",
+      "description": "关节链创建与骨骼层级结构设计",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-rig-naming-convention",
+      "name": "命名规范",
+      "description": "骨骼/控制器的命名约定与引擎兼容性",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-skinning",
+      "name": "蒙皮权重",
+      "description": "权重绘制的原理与自动/手动权重调节",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-rig-weight-painting",
+      "name": "权重绘制技巧",
+      "description": "关节弯曲区域的权重分布与平滑技巧",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-ik-fk",
+      "name": "IK与FK",
+      "description": "正向运动学与反向运动学的原理与切换",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-constraints",
+      "name": "约束系统",
+      "description": "朝向约束、跟踪约束、极向量等常用约束",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-controllers",
+      "name": "控制器设计",
+      "description": "自定义控制器形状与用户友好的绑定界面",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-spine",
+      "name": "脊柱绑定",
+      "description": "Spline IK/Ribbon脊柱绑定方案",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-facial",
+      "name": "面部绑定",
+      "description": "骨骼/BlendShape混合的面部绑定系统",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-hand-setup",
+      "name": "手部绑定",
+      "description": "手指展开/弯曲/扇形的绑定与驱动关键帧",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-deformation",
+      "name": "变形质量",
+      "description": "关节变形的校正骨骼与变形器使用",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-game-skeleton",
+      "name": "游戏骨骼规范",
+      "description": "游戏引擎骨骼数量限制与LOD骨骼",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-rig-ue-mannequin",
+      "name": "UE骨骼系统",
+      "description": "UE5 Mannequin骨骼与IK Retarget系统",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-mixamo",
+      "name": "Mixamo自动绑定",
+      "description": "Mixamo的自动绑定与动作库的使用",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-twist-bones",
+      "name": "扭转骨骼",
+      "description": "前臂/大腿扭转骨骼消除糖纸效应",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-blendshape",
+      "name": "BlendShape/Morph",
+      "description": "变形目标的创建与驱动设置",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-rig-export",
+      "name": "绑定导出",
+      "description": "FBX导出设置与引擎骨骼映射",
+      "subdomain_id": "rigging",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-intro",
+      "name": "环境美术概述",
+      "description": "游戏环境美术的职责范围与工作流程",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-modular",
+      "name": "模块化建模",
+      "description": "模块化环境设计的栅格系统与拼接规则",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-env-tileable",
+      "name": "可平铺资产",
+      "description": "墙面/地面/天花等平铺资产的制作与变化",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-trim-sheet",
+      "name": "环境Trim Sheet",
+      "description": "Trim Sheet在建筑/工业场景中的高效应用",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-terrain",
+      "name": "地形制作",
+      "description": "高度图雕刻、材质混合与地形散布",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-vegetation",
+      "name": "植被制作",
+      "description": "树木/灌木/草地的制作技术与LOD策略",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-rock-creation",
+      "name": "岩石制作",
+      "description": "雕刻式岩石制作与程序化岩石生成",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-lighting-art",
+      "name": "环境光照美术",
+      "description": "环境美术视角下的光照布局与氛围营造",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "美术"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-env-composition",
+      "name": "场景构图",
+      "description": "视觉引导线、层次感与空间节奏的控制",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "美术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-storytelling",
+      "name": "环境叙事",
+      "description": "通过环境细节传达故事与世界观的技法",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-worldbuilding",
+      "name": "世界构建",
+      "description": "开放世界/关卡场景的宏观环境规划",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-set-dressing",
+      "name": "场景布置",
+      "description": "道具摆放、密度控制与视觉噪点管理",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-procedural",
+      "name": "程序化环境",
+      "description": "Houdini/程序化工具在环境生成中的应用",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-material-blend",
+      "name": "材质混合",
+      "description": "顶点颜色/高度混合/世界坐标混合的技术",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-decals",
+      "name": "环境贴花",
+      "description": "贴花在场景细节补充中的策略性使用",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-water",
+      "name": "水体制作",
+      "description": "河流/湖泊/海洋的材质与流体效果",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-atmosphere",
+      "name": "大气效果",
+      "description": "体积雾/天空/云的美术设置与视觉层次",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "效果"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-scale-reference",
+      "name": "比例参照",
+      "description": "利用角色比例检验环境尺度合理性",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-env-optimization",
+      "name": "环境优化",
+      "description": "HLOD/合批/Draw Call优化等环境性能管理",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-env-showcase",
+      "name": "环境展示",
+      "description": "环境作品的截图/视频/Flythrough展示技巧",
+      "subdomain_id": "environment-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "展示"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-intro",
+      "name": "道具美术概述",
+      "description": "游戏道具美术的定义与资产分级",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-hero-asset",
+      "name": "Hero资产",
+      "description": "主角武器/关键道具等高关注度资产的制作标准",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-prop-background",
+      "name": "背景道具",
+      "description": "低优先级填充道具的高效制作方法",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-breakable",
+      "name": "可破坏道具",
+      "description": "预切割碎片与实时破碎的制作方法",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-interactable",
+      "name": "可交互道具",
+      "description": "按钮/门/宝箱等交互道具的动画需求与绑定",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-weapon-art",
+      "name": "武器美术管线",
+      "description": "从概念→建模→纹理→引擎的武器制作全流程",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-food-organic",
+      "name": "食物/有机道具",
+      "description": "面包/水果等有机道具的SSS材质技巧",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-fabric",
+      "name": "布料道具",
+      "description": "旗帜/帐篷/地毯等布料道具的制作与模拟",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-sci-fi",
+      "name": "科幻道具",
+      "description": "全息/能量/高科技元素的视觉表现",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-medieval",
+      "name": "中世纪道具",
+      "description": "剑/盾/盔甲等历史道具的材质表现",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-variation",
+      "name": "道具变体",
+      "description": "基于母版快速生成颜色/材质/形状变体",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "效率"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-collision",
+      "name": "碰撞体制作",
+      "description": "简化碰撞体的创建与UCX命名规范",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-pivot-setup",
+      "name": "道具Pivot设置",
+      "description": "根据功能需求设置道具轴心点",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 15,
+      "content_type": "practice",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-lod-creation",
+      "name": "道具LOD制作",
+      "description": "手动/自动LOD的生成与质量验证",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-material-instance",
+      "name": "材质实例",
+      "description": "在引擎中利用母材质+参数变化的高效方案",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-prop-quality-checklist",
+      "name": "道具质量检查表",
+      "description": "面数/纹素密度/法线/碰撞的综合质量标准",
+      "subdomain_id": "prop-art",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-pipe-intro",
+      "name": "资产管线概述",
+      "description": "3D资产从创作到引擎内的完整管线架构",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-naming",
+      "name": "命名规范",
+      "description": "文件/资产/贴图的统一命名约定与版本控制",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-pipe-folder-structure",
+      "name": "目录结构",
+      "description": "项目目录组织与资产分类的最佳实践",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-version-control",
+      "name": "版本控制",
+      "description": "Perforce/Git LFS在3D资产中的使用",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-fbx-export",
+      "name": "FBX导出",
+      "description": "FBX导出设置——轴向/缩放/动画/嵌入的最佳设置",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-gltf",
+      "name": "glTF格式",
+      "description": "glTF/GLB格式的特点与Web/移动端应用",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-engine-import",
+      "name": "引擎导入设置",
+      "description": "UE5/Unity的资产导入设置与自动化",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "引擎"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-pipe-texture-pipeline",
+      "name": "纹理管线",
+      "description": "从源纹理到引擎压缩纹理的完整流程",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-material-library",
+      "name": "材质库",
+      "description": "可复用材质库的建设与维护策略",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "效率"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-batch-processing",
+      "name": "批量处理",
+      "description": "批量导出/转换/优化的脚本化方案",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "效率"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-validation",
+      "name": "资产验证",
+      "description": "自动化检查面数/纹素/命名/碰撞的流程",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-review-workflow",
+      "name": "审核工作流",
+      "description": "美术评审流程与反馈追踪的最佳实践",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-optimization",
+      "name": "资产优化",
+      "description": "面数/纹理/内存预算的项目级优化策略",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-lod-pipeline",
+      "name": "LOD管线",
+      "description": "自动LOD生成与质量验证的完整管线",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "优化"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "3da-pipe-dcc-interop",
+      "name": "DCC互通",
+      "description": "Maya↔Blender↔ZBrush↔SP的数据交换方案",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-alembic",
+      "name": "Alembic缓存",
+      "description": "Alembic格式在复杂动画/模拟资产中的应用",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "格式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-automation",
+      "name": "管线自动化",
+      "description": "Python/MEL/MaxScript的管线脚本自动化",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "3da-pipe-documentation",
+      "name": "管线文档",
+      "description": "技术文档与美术规范文档的编写与维护",
+      "subdomain_id": "asset-pipeline",
+      "domain_id": "3d-art",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "3da-modeling-intro",
+      "target_id": "3da-polygon-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-polygon-basics",
+      "target_id": "3da-mesh-topology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-mesh-topology",
+      "target_id": "3da-edge-flow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-modeling-intro",
+      "target_id": "3da-transform-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-transform-tools",
+      "target_id": "3da-modeling-modes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-modeling-modes",
+      "target_id": "3da-extrude-inset",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-extrude-inset",
+      "target_id": "3da-loop-cut",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-extrude-inset",
+      "target_id": "3da-boolean-ops",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-modeling-modes",
+      "target_id": "3da-modifier-stack",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-modifier-stack",
+      "target_id": "3da-mirror-modifier",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-modifier-stack",
+      "target_id": "3da-subdivision-surface",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-polygon-basics",
+      "target_id": "3da-normals-smoothing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-modeling-intro",
+      "target_id": "3da-reference-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-modeling-intro",
+      "target_id": "3da-scale-proportion",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-transform-tools",
+      "target_id": "3da-pivot-origin",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-transform-tools",
+      "target_id": "3da-snapping",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-mesh-topology",
+      "target_id": "3da-mesh-cleanup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-reference-setup",
+      "target_id": "3da-blockout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-edge-flow",
+      "target_id": "3da-modeling-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-blockout",
+      "target_id": "3da-modeling-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-hs-intro",
+      "target_id": "3da-hs-bevel-edges",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-hs-bevel-edges",
+      "target_id": "3da-hs-support-loops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-hs-bevel-edges",
+      "target_id": "3da-hs-crease",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-intro",
+      "target_id": "3da-hs-boolean-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-hs-boolean-workflow",
+      "target_id": "3da-hs-panel-lines",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-hs-panel-lines",
+      "target_id": "3da-hs-greeble",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-bevel-edges",
+      "target_id": "3da-hs-mechanical",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-hs-mechanical",
+      "target_id": "3da-hs-vehicle",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-mechanical",
+      "target_id": "3da-hs-weapon",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-intro",
+      "target_id": "3da-hs-architecture",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-intro",
+      "target_id": "3da-hs-kitbash",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-support-loops",
+      "target_id": "3da-hs-curved-surface",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-hs-intro",
+      "target_id": "3da-hs-ngon-management",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-intro",
+      "target_id": "3da-hs-symmetry",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-boolean-workflow",
+      "target_id": "3da-hs-decal-mesh",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-panel-lines",
+      "target_id": "3da-hs-trim-sheet",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-hs-bevel-edges",
+      "target_id": "3da-hs-floating-geo",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-support-loops",
+      "target_id": "3da-hs-subd-vs-chamfer",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-vehicle",
+      "target_id": "3da-hs-game-ready",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-hs-trim-sheet",
+      "target_id": "3da-hs-game-ready",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-intro",
+      "target_id": "3da-org-face-topology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-intro",
+      "target_id": "3da-org-body-proportion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-body-proportion",
+      "target_id": "3da-org-anatomy-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-anatomy-basics",
+      "target_id": "3da-org-hand-foot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-face-topology",
+      "target_id": "3da-org-head-modeling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-anatomy-basics",
+      "target_id": "3da-org-body-modeling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-anatomy-basics",
+      "target_id": "3da-org-creature",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-body-modeling",
+      "target_id": "3da-org-cloth-sim",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-head-modeling",
+      "target_id": "3da-org-hair-modeling",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-anatomy-basics",
+      "target_id": "3da-org-muscle-deform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-head-modeling",
+      "target_id": "3da-org-wrinkle-detail",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-intro",
+      "target_id": "3da-org-stylized-char",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-anatomy-basics",
+      "target_id": "3da-org-realistic-char",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-face-topology",
+      "target_id": "3da-org-expression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-face-topology",
+      "target_id": "3da-org-edge-loops-organic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-body-modeling",
+      "target_id": "3da-org-symmetry-break",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-body-proportion",
+      "target_id": "3da-org-proportion-check",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-body-modeling",
+      "target_id": "3da-org-tpose-apose",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-realistic-char",
+      "target_id": "3da-org-game-ready-char",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-org-tpose-apose",
+      "target_id": "3da-org-game-ready-char",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-intro",
+      "target_id": "3da-sculpt-brushes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-brushes",
+      "target_id": "3da-sculpt-alphas",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-intro",
+      "target_id": "3da-sculpt-dynamesh",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-intro",
+      "target_id": "3da-sculpt-multires",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-multires",
+      "target_id": "3da-sculpt-layers",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-intro",
+      "target_id": "3da-sculpt-form",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-form",
+      "target_id": "3da-sculpt-anatomy-app",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-brushes",
+      "target_id": "3da-sculpt-hard-surface",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-anatomy-app",
+      "target_id": "3da-sculpt-detailing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-brushes",
+      "target_id": "3da-sculpt-posing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-brushes",
+      "target_id": "3da-sculpt-insert-mesh",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-intro",
+      "target_id": "3da-sculpt-masks",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-masks",
+      "target_id": "3da-sculpt-zbrush-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-intro",
+      "target_id": "3da-sculpt-blender-sculpt",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-intro",
+      "target_id": "3da-sculpt-3dcoat",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-detailing",
+      "target_id": "3da-sculpt-cleanup",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-multires",
+      "target_id": "3da-sculpt-projection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-form",
+      "target_id": "3da-sculpt-stylized",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-cleanup",
+      "target_id": "3da-sculpt-presentation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-intro",
+      "target_id": "3da-retopo-goals",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-goals",
+      "target_id": "3da-retopo-manual",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-goals",
+      "target_id": "3da-retopo-auto",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-goals",
+      "target_id": "3da-retopo-quad-dominant",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-goals",
+      "target_id": "3da-retopo-poly-count",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-manual",
+      "target_id": "3da-retopo-face-loops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-manual",
+      "target_id": "3da-retopo-body-flow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-manual",
+      "target_id": "3da-retopo-clothing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-manual",
+      "target_id": "3da-retopo-hard-surface",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-manual",
+      "target_id": "3da-retopo-symmetry",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-poly-count",
+      "target_id": "3da-retopo-guidelines",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-manual",
+      "target_id": "3da-retopo-shrinkwrap",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-goals",
+      "target_id": "3da-retopo-edge-density",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-poly-count",
+      "target_id": "3da-retopo-lod-levels",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-auto",
+      "target_id": "3da-retopo-tools-compare",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-manual",
+      "target_id": "3da-retopo-validation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-retopo-guidelines",
+      "target_id": "3da-retopo-game-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-intro",
+      "target_id": "3da-uv-seam-placement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-intro",
+      "target_id": "3da-uv-projection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-projection",
+      "target_id": "3da-uv-unwrap-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-seam-placement",
+      "target_id": "3da-uv-packing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-packing",
+      "target_id": "3da-uv-texel-density",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-intro",
+      "target_id": "3da-uv-overlap",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-intro",
+      "target_id": "3da-uv-straightening",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-texel-density",
+      "target_id": "3da-uv-udim",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-intro",
+      "target_id": "3da-uv-checker-map",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-seam-placement",
+      "target_id": "3da-uv-hard-surface-uv",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-seam-placement",
+      "target_id": "3da-uv-organic-uv",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-packing",
+      "target_id": "3da-uv-padding-bleeding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-intro",
+      "target_id": "3da-uv-channels",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-packing",
+      "target_id": "3da-uv-atlas-layout",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-unwrap-tools",
+      "target_id": "3da-uv-rizom-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-unwrap-tools",
+      "target_id": "3da-uv-auto-uv",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-texel-density",
+      "target_id": "3da-uv-best-practices",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-intro",
+      "target_id": "3da-tex-pbr-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-pbr-workflow",
+      "target_id": "3da-tex-substance-painter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-pbr-workflow",
+      "target_id": "3da-tex-substance-designer",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-intro",
+      "target_id": "3da-tex-hand-painted",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-pbr-workflow",
+      "target_id": "3da-tex-base-color",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-pbr-workflow",
+      "target_id": "3da-tex-roughness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-pbr-workflow",
+      "target_id": "3da-tex-metallic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-substance-painter",
+      "target_id": "3da-tex-normal-map",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-substance-painter",
+      "target_id": "3da-tex-ao-map",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-pbr-workflow",
+      "target_id": "3da-tex-height-map",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-base-color",
+      "target_id": "3da-tex-emissive",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "3da-tex-base-color",
+      "target_id": "3da-tex-opacity-mask",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "3da-tex-substance-designer",
+      "target_id": "3da-tex-tiling-material",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-substance-painter",
+      "target_id": "3da-tex-material-id",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-normal-map",
+      "target_id": "3da-tex-curvature",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-substance-painter",
+      "target_id": "3da-tex-weathering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-tex-substance-painter",
+      "target_id": "3da-tex-decal-texturing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-pbr-workflow",
+      "target_id": "3da-tex-scan-data",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "3da-tex-intro",
+      "target_id": "3da-tex-color-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-substance-painter",
+      "target_id": "3da-tex-export-settings",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-pbr-workflow",
+      "target_id": "3da-tex-resolution-guide",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-intro",
+      "target_id": "3da-bake-normal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-bake-intro",
+      "target_id": "3da-bake-ao",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-bake-intro",
+      "target_id": "3da-bake-curvature",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-intro",
+      "target_id": "3da-bake-thickness",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-normal",
+      "target_id": "3da-bake-cage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-bake-cage",
+      "target_id": "3da-bake-ray-distance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-bake-normal",
+      "target_id": "3da-bake-artifacts",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-bake-intro",
+      "target_id": "3da-bake-name-matching",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-artifacts",
+      "target_id": "3da-bake-exploded",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-bake-intro",
+      "target_id": "3da-bake-position-map",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-intro",
+      "target_id": "3da-bake-id-map",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-normal",
+      "target_id": "3da-bake-substance",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-normal",
+      "target_id": "3da-bake-marmoset",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-normal",
+      "target_id": "3da-bake-xnormal",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-bake-artifacts",
+      "target_id": "3da-bake-best-practices",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-intro",
+      "target_id": "3da-rig-skeleton",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-skeleton",
+      "target_id": "3da-rig-naming-convention",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-rig-skeleton",
+      "target_id": "3da-rig-skinning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-skinning",
+      "target_id": "3da-rig-weight-painting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-skeleton",
+      "target_id": "3da-rig-ik-fk",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-ik-fk",
+      "target_id": "3da-rig-constraints",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-constraints",
+      "target_id": "3da-rig-controllers",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-rig-ik-fk",
+      "target_id": "3da-rig-spine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-constraints",
+      "target_id": "3da-rig-facial",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-ik-fk",
+      "target_id": "3da-rig-hand-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-weight-painting",
+      "target_id": "3da-rig-deformation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-skeleton",
+      "target_id": "3da-rig-game-skeleton",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-game-skeleton",
+      "target_id": "3da-rig-ue-mannequin",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-rig-intro",
+      "target_id": "3da-rig-mixamo",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-rig-deformation",
+      "target_id": "3da-rig-twist-bones",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-facial",
+      "target_id": "3da-rig-blendshape",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-rig-game-skeleton",
+      "target_id": "3da-rig-export",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-env-intro",
+      "target_id": "3da-env-modular",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-env-modular",
+      "target_id": "3da-env-tileable",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-env-modular",
+      "target_id": "3da-env-trim-sheet",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-env-intro",
+      "target_id": "3da-env-terrain",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-terrain",
+      "target_id": "3da-env-vegetation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-env-terrain",
+      "target_id": "3da-env-rock-creation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-intro",
+      "target_id": "3da-env-lighting-art",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-intro",
+      "target_id": "3da-env-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-env-composition",
+      "target_id": "3da-env-storytelling",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-composition",
+      "target_id": "3da-env-worldbuilding",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-modular",
+      "target_id": "3da-env-set-dressing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-env-intro",
+      "target_id": "3da-env-procedural",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-tileable",
+      "target_id": "3da-env-material-blend",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-set-dressing",
+      "target_id": "3da-env-decals",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-terrain",
+      "target_id": "3da-env-water",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-lighting-art",
+      "target_id": "3da-env-atmosphere",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-intro",
+      "target_id": "3da-env-scale-reference",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-env-modular",
+      "target_id": "3da-env-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-env-set-dressing",
+      "target_id": "3da-env-showcase",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-hero-asset",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-background",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-breakable",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-interactable",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-hero-asset",
+      "target_id": "3da-prop-weapon-art",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-food-organic",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-fabric",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-hero-asset",
+      "target_id": "3da-prop-sci-fi",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-hero-asset",
+      "target_id": "3da-prop-medieval",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-background",
+      "target_id": "3da-prop-variation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-collision",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-pivot-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-lod-creation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-intro",
+      "target_id": "3da-prop-material-instance",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-prop-hero-asset",
+      "target_id": "3da-prop-quality-checklist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-intro",
+      "target_id": "3da-pipe-naming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-naming",
+      "target_id": "3da-pipe-folder-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-intro",
+      "target_id": "3da-pipe-version-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-intro",
+      "target_id": "3da-pipe-fbx-export",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-fbx-export",
+      "target_id": "3da-pipe-gltf",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-fbx-export",
+      "target_id": "3da-pipe-engine-import",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-intro",
+      "target_id": "3da-pipe-texture-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-texture-pipeline",
+      "target_id": "3da-pipe-material-library",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-naming",
+      "target_id": "3da-pipe-batch-processing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-naming",
+      "target_id": "3da-pipe-validation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-validation",
+      "target_id": "3da-pipe-review-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-intro",
+      "target_id": "3da-pipe-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-optimization",
+      "target_id": "3da-pipe-lod-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-fbx-export",
+      "target_id": "3da-pipe-dcc-interop",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-fbx-export",
+      "target_id": "3da-pipe-alembic",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-batch-processing",
+      "target_id": "3da-pipe-automation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-pipe-validation",
+      "target_id": "3da-pipe-documentation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-modeling-workflow",
+      "target_id": "3da-hs-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-modeling-workflow",
+      "target_id": "3da-org-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-subdivision-surface",
+      "target_id": "3da-hs-bevel-edges",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-edge-flow",
+      "target_id": "3da-org-face-topology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-edge-flow",
+      "target_id": "3da-org-edge-loops-organic",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-org-realistic-char",
+      "target_id": "3da-sculpt-anatomy-app",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-sculpt-cleanup",
+      "target_id": "3da-retopo-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-sculpt-form",
+      "target_id": "3da-org-body-proportion",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "3da-retopo-game-pipeline",
+      "target_id": "3da-uv-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-retopo-game-pipeline",
+      "target_id": "3da-bake-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-uv-best-practices",
+      "target_id": "3da-bake-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-uv-best-practices",
+      "target_id": "3da-tex-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "3da-bake-best-practices",
+      "target_id": "3da-tex-substance-painter",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-weathering",
+      "target_id": "3da-prop-weapon-art",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "3da-rig-game-skeleton",
+      "target_id": "3da-org-tpose-apose",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-rig-weight-painting",
+      "target_id": "3da-retopo-body-flow",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "3da-env-modular",
+      "target_id": "3da-prop-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "3da-env-trim-sheet",
+      "target_id": "3da-hs-trim-sheet",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-fbx-export",
+      "target_id": "3da-rig-export",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-validation",
+      "target_id": "3da-prop-quality-checklist",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-pipe-optimization",
+      "target_id": "3da-env-optimization",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "3da-tex-export-settings",
+      "target_id": "3da-pipe-texture-pipeline",
+      "relation_type": "related",
+      "strength": 0.7
+    }
+  ],
+  "milestones": [
+    {
+      "id": "3da-modeling-intro",
+      "name": "3D建模概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-mesh-topology",
+      "name": "网格拓扑",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-edge-flow",
+      "name": "布线原则",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-extrude-inset",
+      "name": "挤出与内插",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-modifier-stack",
+      "name": "修改器栈",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-subdivision-surface",
+      "name": "细分曲面修改器",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-blockout",
+      "name": "白盒建模",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-modeling-workflow",
+      "name": "建模工作流总览",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-hs-intro",
+      "name": "硬表面建模概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-hs-bevel-edges",
+      "name": "倒角边工作流",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-hs-boolean-workflow",
+      "name": "布尔硬表面工作流",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-hs-mechanical",
+      "name": "机械零件建模",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-hs-vehicle",
+      "name": "载具建模",
+      "difficulty": 4
+    },
+    {
+      "id": "3da-hs-trim-sheet",
+      "name": "Trim Sheet",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-hs-game-ready",
+      "name": "游戏级硬表面资产",
+      "difficulty": 4
+    },
+    {
+      "id": "3da-org-intro",
+      "name": "有机建模概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-org-face-topology",
+      "name": "面部拓扑",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-org-body-proportion",
+      "name": "人体比例",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-org-anatomy-basics",
+      "name": "解剖学基础",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-org-hand-foot",
+      "name": "手脚建模",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-org-head-modeling",
+      "name": "头部建模",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-org-creature",
+      "name": "生物建模",
+      "difficulty": 4
+    },
+    {
+      "id": "3da-org-hair-modeling",
+      "name": "毛发建模",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-org-realistic-char",
+      "name": "写实角色",
+      "difficulty": 5
+    },
+    {
+      "id": "3da-org-expression",
+      "name": "表情制作",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-org-game-ready-char",
+      "name": "游戏级角色制作",
+      "difficulty": 4
+    },
+    {
+      "id": "3da-sculpt-intro",
+      "name": "数字雕刻概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-sculpt-brushes",
+      "name": "雕刻笔刷",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-sculpt-dynamesh",
+      "name": "DynaMesh",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-sculpt-multires",
+      "name": "多分辨率雕刻",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-sculpt-form",
+      "name": "形体把控",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-sculpt-anatomy-app",
+      "name": "解剖学应用",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-sculpt-zbrush-workflow",
+      "name": "ZBrush工作流",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-retopo-intro",
+      "name": "拓扑重构概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-retopo-goals",
+      "name": "拓扑目标",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-retopo-manual",
+      "name": "手动拓扑重构",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-retopo-auto",
+      "name": "自动拓扑重构",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-retopo-poly-count",
+      "name": "面数规划",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-retopo-face-loops",
+      "name": "面部拓扑环",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-retopo-guidelines",
+      "name": "拓扑规范",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-retopo-game-pipeline",
+      "name": "游戏拓扑管线",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-uv-intro",
+      "name": "UV展开概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-uv-seam-placement",
+      "name": "UV缝合线",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-uv-projection",
+      "name": "投影展开",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-uv-packing",
+      "name": "UV打包",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-uv-texel-density",
+      "name": "纹素密度",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-uv-udim",
+      "name": "UDIM多Tile",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-uv-organic-uv",
+      "name": "有机体UV",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-uv-best-practices",
+      "name": "UV最佳实践",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-tex-intro",
+      "name": "纹理绘制概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-tex-pbr-workflow",
+      "name": "PBR纹理工作流",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-tex-substance-painter",
+      "name": "Substance Painter",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-tex-substance-designer",
+      "name": "Substance Designer",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-tex-hand-painted",
+      "name": "手绘纹理",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-tex-normal-map",
+      "name": "法线贴图制作",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-tex-tiling-material",
+      "name": "可平铺材质",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-tex-weathering",
+      "name": "做旧与风化",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-bake-intro",
+      "name": "烘焙概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-bake-normal",
+      "name": "法线烘焙",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-bake-ao",
+      "name": "AO烘焙",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-bake-cage",
+      "name": "Cage设置",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-bake-artifacts",
+      "name": "烘焙瑕疵",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-bake-substance",
+      "name": "Substance烘焙",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-bake-best-practices",
+      "name": "烘焙最佳实践",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-rig-intro",
+      "name": "绑定概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-rig-skeleton",
+      "name": "骨骼系统",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-rig-skinning",
+      "name": "蒙皮权重",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-rig-weight-painting",
+      "name": "权重绘制技巧",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-rig-ik-fk",
+      "name": "IK与FK",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-rig-spine",
+      "name": "脊柱绑定",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-rig-facial",
+      "name": "面部绑定",
+      "difficulty": 4
+    },
+    {
+      "id": "3da-rig-game-skeleton",
+      "name": "游戏骨骼规范",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-rig-blendshape",
+      "name": "BlendShape/Morph",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-env-intro",
+      "name": "环境美术概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-env-modular",
+      "name": "模块化建模",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-env-tileable",
+      "name": "可平铺资产",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-env-trim-sheet",
+      "name": "环境Trim Sheet",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-env-terrain",
+      "name": "地形制作",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-env-vegetation",
+      "name": "植被制作",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-env-lighting-art",
+      "name": "环境光照美术",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-env-composition",
+      "name": "场景构图",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-env-set-dressing",
+      "name": "场景布置",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-env-procedural",
+      "name": "程序化环境",
+      "difficulty": 4
+    },
+    {
+      "id": "3da-env-optimization",
+      "name": "环境优化",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-prop-intro",
+      "name": "道具美术概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-prop-hero-asset",
+      "name": "Hero资产",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-prop-weapon-art",
+      "name": "武器美术管线",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-prop-collision",
+      "name": "碰撞体制作",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-prop-lod-creation",
+      "name": "道具LOD制作",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-prop-quality-checklist",
+      "name": "道具质量检查表",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-pipe-intro",
+      "name": "资产管线概述",
+      "difficulty": 1
+    },
+    {
+      "id": "3da-pipe-naming",
+      "name": "命名规范",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-pipe-version-control",
+      "name": "版本控制",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-pipe-fbx-export",
+      "name": "FBX导出",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-pipe-engine-import",
+      "name": "引擎导入设置",
+      "difficulty": 2
+    },
+    {
+      "id": "3da-pipe-batch-processing",
+      "name": "批量处理",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-pipe-validation",
+      "name": "资产验证",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-pipe-optimization",
+      "name": "资产优化",
+      "difficulty": 3
+    },
+    {
+      "id": "3da-pipe-automation",
+      "name": "管线自动化",
+      "difficulty": 3
+    }
+  ]
+}
