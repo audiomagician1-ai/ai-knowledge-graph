@@ -1168,6 +1168,23 @@ data/seed/         — 种子图谱数据
    - VERIFY: 665 tests (204 FE + 461 BE) 全通过, tsc 0 errors, build 3.57s, workers tsc 0 errors
    - STATUS: 发现3个minor UI改进并修复(Back to Home按钮/死代码清理/硬编码颜色), 代码质量持续稳定
 
+- ✅ **第六十四轮巡逻审查+死代码清理+数据完整性审计 (2026-03-20, 7a5e258)**:
+   - **DATA AUDIT**: 全11域数据完整性审计(0 issues): 2,270概念0重复ID, 2,839边0断引用, 145跨球链接全部有效, 11域RAG 100%覆盖, domains.json ↔ seed_graph ↔ cross_links三方一致
+   - **REFACTOR**: 移除5个死代码文件(7a5e258, -1,146行):
+     - `Sidebar.tsx` — 引用已废弃路由(/graph,/dashboard,/settings), 从未被import
+     - `BottomNav.tsx` — 同上, 引用已废弃路由
+     - `DomainSwitcher.tsx` — GraphPage hub bar内联了域选择器, 此组件从未被import
+     - `DashboardPage.tsx` — 功能已迁移到DashboardContent+DraggableModal(GraphPage内)
+     - `SettingsPage.tsx` — 功能已迁移到SettingsContent+DraggableModal(GraphPage内)
+   - REVIEW: commit d16d257(HomePage+路由重构)深度代码审查:
+     - 路由结构: /→HomePage(域选择), /domain/:domainId→GraphPage, /domain/:domainId/:conceptId→GraphPage(详情), /learn/:domainId/:conceptId→LearnPage
+     - HomePage: useDomainStore获取域列表+stats显示, CSS变量主题一致, hover交互, 响应式grid
+     - GraphPage: URL参数驱动domain/concept选择, DraggableModal承载Dashboard/Settings, hub bar集成所有导航
+     - LearnPage: back导航正确指向/domain/:domainId/:conceptId
+     - AppLayout: 简化为纯Outlet容器(Sidebar/BottomNav已移除)
+   - VERIFY: 788 tests (204 FE + 584 BE) 全通过, tsc 0 errors
+   - STATUS: 清理routing重构遗留死代码, 数据完整性验证通过
+
 ```
 输出目录: release/                              ← 不是 dist/
 EXE命名: akg-v{version}-{commit7}-{YYYYMMDD}-{HHmm}.exe
