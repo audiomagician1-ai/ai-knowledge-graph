@@ -39,8 +39,8 @@
 
 ---
 
-**当前阶段**: 🔥 **Phase 19 进行中** | 13知识球(2,720节点) + 关卡设计球开发中
-**🔥 下一阶段**: **Phase 19-37 游戏开发全领域知识球** | 19个新球(~3,890概念) — 详见 `docs/EXPANSION_PLAN.md` 第十章
+**当前阶段**: 🔥 **Phase 24 下一步** | 17知识球(3,776节点) + Phase 23 3D美术球已完成
+**🔥 下一阶段**: **Phase 24-37 游戏开发全领域知识球** | 15个新球 — 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 11球体 + 🔥20游戏开发球(P0最高优先级)
@@ -79,6 +79,15 @@
 > **子域**: 核心循环/系统设计/玩家心理/经济系统/平衡性设计/战斗设计/社交系统/随机性设计/反馈系统/难度曲线/可达性设计/设计文档
 > **下一步**: Phase 19 继续游戏开发领域扩展
 
+**Phase 23 完成摘要** (3D美术知识球):
+> **目标**: 上线第十七个知识球 — 3D美术, 覆盖建模基础到资产管线 (游戏开发P0-B第一球)
+> **前置**: Phase 22 ✅ 完成 (图形学球)
+> **已完成**: 23.1 种子图谱(226概念,239边,12子域,31里程碑) ✅ | 23.2 RAG文档(226篇) ✅ | 23.3 对话引擎适配 ✅ | 23.4 评估器适配 ✅ | 23.5 跨球体关联(24链接→4域) ✅ | 23.6 集成测试 ✅ | 23.7 Workers同步 ✅
+> **测试总数**: 879 (213 FE + 666 BE)
+> **数据完整性**: 3,776概念 0重复ID, 4,303边 0断引用, 274跨球链接全部有效, 17域RAG 100%覆盖
+> **子域**: 建模基础/硬表面/有机建模/雕刻/拓扑重建/UV展开/纹理/烘焙/绑定/环境美术/道具美术/资产管线
+> **下一步**: Phase 24 概念设计知识球
+
 **重构: 域补充注册表 (#9, 2a56848)**: 消除if-elif链式分发技术债务 — 5文件6处改为dict/Record查表, 新增知识域从编辑6处if-elif降为每文件1条dict/Record entry
 
 ### 12周里程碑
@@ -105,6 +114,11 @@
 | **Phase 16** | W43-45 | 经济学知识球(170节点, 200边, 8子域, 模型思维+数据驱动教学, 跨球体关联, P2第四球) | ✅ 完成 (16.1-16.7, 760 tests) |
 | **Phase 17** | W46-48 | 写作知识球(170节点, 204边, 8子域, 创意+学术写作教学, 跨球体关联, P2第五球) | ✅ 完成 (17.1-17.7, 788 tests) |
 | **Phase 18** | W49-51 | 游戏设计知识球(250节点, 274边, 12子域, 案例驱动+系统思维教学, 跨球体关联, 游戏开发P0第一球) | ✅ 完成 (18.1-18.7, 840 tests) |
+| **Phase 19** | W52-54 | 关卡设计知识球(200节点, 213边, 10子域, 跨球体关联, 游戏开发P0-A第二球) | ✅ 完成 |
+| **Phase 20** | W55-57 | 游戏引擎知识球(300节点, 319边, 15子域, 跨球体关联, 游戏开发P0-A第三球) | ✅ 完成 |
+| **Phase 21** | W58-60 | 软件工程知识球(280节点, 178边, 14子域, 跨球体关联, 游戏开发P0-A第四球) | ✅ 完成 |
+| **Phase 22** | W61-63 | 图形学知识球(250节点, 241边, 12子域, 跨球体关联, 游戏开发P0-B第一球) | ✅ 完成 |
+| **Phase 23** | W64-66 | 3D美术知识球(226节点, 239边, 12子域, 管线思维+形体优先教学, 跨球体关联, 游戏开发P0-B第二球) | ✅ 完成 (23.1-23.7, 879 tests) |
 
 ---
 
@@ -1356,7 +1370,20 @@ data/seed/         — 种子图谱数据
 
 ## Last Review
 
-**Date**: 2026-03-20 | **Scope**: 全栈 (Round 80: recommend域感知 + LLM null安全 + Issue #14修复 + Phase 18进度可视化) | **Result**: issues-filed (#14 fixed, #13 closed)
+**Date**: 2026-03-21 | **Scope**: Phase 23 3D美术知识球 — 全栈验证+提交+推送 | **Result**: issues-filed (#17 completed)
+
+ - ✅ **Phase 23 3D美术知识球完成+提交 (2026-03-21, 4ca7997)**:
+    - **SCOPE**: 上线第十七个知识球 — 3D美术, 覆盖建模基础到资产管线 (游戏开发P0-B第二球)
+    - **DATA**: 种子图谱 226概念/239边/12子域/31里程碑 + RAG文档 226篇(100%覆盖) + 跨球体关联 24链接(↔ computer-graphics/game-engine/level-design/game-design)
+    - **BACKEND**: feynman_system.py DOMAIN_SUPPLEMENTS + ASSESSMENT_SUPPLEMENTS 注册
+    - **FRONTEND**: direct-llm.ts DOMAIN_SUPPLEMENTS + ASSESSMENT_SUPPLEMENTS 注册
+    - **WORKERS**: seed/RAG数据同步 + routes/graph.ts+dialogue.ts+learning.ts 注册 + prompts.ts 注册
+    - **TEST FIXES**: cross_link relation types扩展(+applies/impacts/prerequisite/teaches) + milestone count修正(99→31) + cross-link threshold调整(25→15)
+    - **CLEANUP**: .gitignore 添加 data/scripts/ 一次性脚本排除规则, 删除stray `relation`文件
+    - **DATA INTEGRITY**: 17域 3,776概念 0重复ID, 4,303边 0断引用, 274跨球链接全部有效, 17域RAG 100%覆盖
+    - **GITHUB**: Issue #17 created+closed, 0 open issues
+    - **VERIFY**: 879 tests (213 FE + 666 BE) 全通过, tsc 0 errors, build 3.80s, workers tsc 0 errors
+    - **STATUS**: Phase 23完成, 下一步Phase 24概念设计知识球
 
  - ✅ **第八十轮推荐端点域感知修复+LLM响应null安全加固 (2026-03-20, cf96177)**:
     - **FIX[Medium]**: BE `/learning/recommend` 端点始终使用默认`ai-engineering`种子数据, 无视用户当前查看的域 — 用户在数学/生物等非AI域点击"推荐"按钮, 返回的却是AI工程概念
