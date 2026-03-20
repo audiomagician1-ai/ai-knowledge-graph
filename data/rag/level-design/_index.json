@@ -1,0 +1,3055 @@
+{
+  "version": "1.0.0",
+  "domain": "level-design",
+  "domain_name": "关卡设计",
+  "generated_at": "2026-03-20",
+  "total_concepts": 200,
+  "stats": {
+    "total_docs": 200,
+    "total_chars": 102432,
+    "by_subdomain": {
+      "spatial-narrative": {
+        "count": 20,
+        "chars": 10348
+      },
+      "pacing-curve": {
+        "count": 20,
+        "chars": 10081
+      },
+      "guidance-design": {
+        "count": 20,
+        "chars": 10254
+      },
+      "blockout": {
+        "count": 20,
+        "chars": 10364
+      },
+      "metrics-design": {
+        "count": 20,
+        "chars": 10232
+      },
+      "combat-space": {
+        "count": 20,
+        "chars": 10167
+      },
+      "level-editor": {
+        "count": 20,
+        "chars": 10508
+      },
+      "terrain-design": {
+        "count": 20,
+        "chars": 10223
+      },
+      "lighting-narrative": {
+        "count": 20,
+        "chars": 10007
+      },
+      "ld-documentation": {
+        "count": 20,
+        "chars": 10248
+      }
+    }
+  },
+  "documents": [
+    {
+      "id": "ld-overview",
+      "name": "关卡设计概述",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/spatial-narrative/ld-overview.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "spatial-storytelling",
+      "name": "空间叙事原理",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "叙事"
+      ],
+      "file": "level-design/spatial-narrative/spatial-storytelling.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "env-storytelling",
+      "name": "环境叙事",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "叙事"
+      ],
+      "file": "level-design/spatial-narrative/env-storytelling.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "visual-language",
+      "name": "视觉语言",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "视觉"
+      ],
+      "file": "level-design/spatial-narrative/visual-language.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "landmark-design",
+      "name": "地标设计",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "导航"
+      ],
+      "file": "level-design/spatial-narrative/landmark-design.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "negative-space",
+      "name": "负空间",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "空间"
+      ],
+      "file": "level-design/spatial-narrative/negative-space.md",
+      "exists": true,
+      "char_count": 486
+    },
+    {
+      "id": "spatial-hierarchy",
+      "name": "空间层次",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "level-design/spatial-narrative/spatial-hierarchy.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "world-building-ld",
+      "name": "世界观搭建(LD视角)",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "叙事"
+      ],
+      "file": "level-design/spatial-narrative/world-building-ld.md",
+      "exists": true,
+      "char_count": 536
+    },
+    {
+      "id": "set-piece",
+      "name": "定制场景(Set-piece)",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "叙事"
+      ],
+      "file": "level-design/spatial-narrative/set-piece.md",
+      "exists": true,
+      "char_count": 618
+    },
+    {
+      "id": "discovery-design",
+      "name": "发现感设计",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "探索"
+      ],
+      "file": "level-design/spatial-narrative/discovery-design.md",
+      "exists": true,
+      "char_count": 498
+    },
+    {
+      "id": "point-of-interest",
+      "name": "兴趣点(POI)设计",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "导航"
+      ],
+      "file": "level-design/spatial-narrative/point-of-interest.md",
+      "exists": true,
+      "char_count": 528
+    },
+    {
+      "id": "linear-vs-open",
+      "name": "线性vs开放世界",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "level-design/spatial-narrative/linear-vs-open.md",
+      "exists": true,
+      "char_count": 518
+    },
+    {
+      "id": "hub-spoke",
+      "name": "Hub-and-Spoke结构",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "level-design/spatial-narrative/hub-spoke.md",
+      "exists": true,
+      "char_count": 558
+    },
+    {
+      "id": "looping-path",
+      "name": "环形路径设计",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "level-design/spatial-narrative/looping-path.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "verticality",
+      "name": "垂直性设计",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "空间"
+      ],
+      "file": "level-design/spatial-narrative/verticality.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "scale-proportion",
+      "name": "尺度与比例",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "空间"
+      ],
+      "file": "level-design/spatial-narrative/scale-proportion.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "density-design",
+      "name": "密度设计",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "level-design/spatial-narrative/density-design.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "theme-variation",
+      "name": "主题变化",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "叙事"
+      ],
+      "file": "level-design/spatial-narrative/theme-variation.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "player-path-analysis",
+      "name": "玩家路径分析",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据"
+      ],
+      "file": "level-design/spatial-narrative/player-path-analysis.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "immersion-design",
+      "name": "沉浸感设计",
+      "domain_id": "level-design",
+      "subdomain_id": "spatial-narrative",
+      "subdomain_name": "空间叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "体验"
+      ],
+      "file": "level-design/spatial-narrative/immersion-design.md",
+      "exists": true,
+      "char_count": 495
+    },
+    {
+      "id": "pacing-intro",
+      "name": "节奏设计概述",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/pacing-curve/pacing-intro.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "tension-release",
+      "name": "紧张与释放",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "情感"
+      ],
+      "file": "level-design/pacing-curve/tension-release.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "intensity-curve",
+      "name": "强度曲线",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "曲线"
+      ],
+      "file": "level-design/pacing-curve/intensity-curve.md",
+      "exists": true,
+      "char_count": 490
+    },
+    {
+      "id": "three-act-level",
+      "name": "三幕式关卡",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "结构"
+      ],
+      "file": "level-design/pacing-curve/three-act-level.md",
+      "exists": true,
+      "char_count": 559
+    },
+    {
+      "id": "rest-area",
+      "name": "休息区设计",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "level-design/pacing-curve/rest-area.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "climax-design",
+      "name": "高潮设计",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "level-design/pacing-curve/climax-design.md",
+      "exists": true,
+      "char_count": 489
+    },
+    {
+      "id": "micro-pacing",
+      "name": "微观节奏",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "level-design/pacing-curve/micro-pacing.md",
+      "exists": true,
+      "char_count": 489
+    },
+    {
+      "id": "macro-pacing",
+      "name": "宏观节奏",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "level-design/pacing-curve/macro-pacing.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "reward-pacing",
+      "name": "奖励节奏",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "奖励"
+      ],
+      "file": "level-design/pacing-curve/reward-pacing.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "content-gating",
+      "name": "内容门控",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "门控"
+      ],
+      "file": "level-design/pacing-curve/content-gating.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "mechanic-introduction",
+      "name": "机制引入节奏",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "教学"
+      ],
+      "file": "level-design/pacing-curve/mechanic-introduction.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "difficulty-ramp",
+      "name": "难度爬坡",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "难度"
+      ],
+      "file": "level-design/pacing-curve/difficulty-ramp.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "surprise-moment",
+      "name": "惊喜时刻",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "情感"
+      ],
+      "file": "level-design/pacing-curve/surprise-moment.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "backtracking-design",
+      "name": "回溯设计",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "level-design/pacing-curve/backtracking-design.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "level-length",
+      "name": "关卡时长控制",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "时间"
+      ],
+      "file": "level-design/pacing-curve/level-length.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "checkpoint-pacing",
+      "name": "检查点节奏",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "容错"
+      ],
+      "file": "level-design/pacing-curve/checkpoint-pacing.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "narrative-pacing",
+      "name": "叙事节奏",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "叙事"
+      ],
+      "file": "level-design/pacing-curve/narrative-pacing.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "exploration-pacing",
+      "name": "探索节奏",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "探索"
+      ],
+      "file": "level-design/pacing-curve/exploration-pacing.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "downtime-design",
+      "name": "停顿设计",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "情感"
+      ],
+      "file": "level-design/pacing-curve/downtime-design.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "pacing-analysis",
+      "name": "节奏分析方法",
+      "domain_id": "level-design",
+      "subdomain_id": "pacing-curve",
+      "subdomain_name": "节奏曲线",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "分析"
+      ],
+      "file": "level-design/pacing-curve/pacing-analysis.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "guidance-intro",
+      "name": "引导设计概述",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/guidance-design/guidance-intro.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "visual-guidance",
+      "name": "视觉引导",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "视觉"
+      ],
+      "file": "level-design/guidance-design/visual-guidance.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "audio-guidance",
+      "name": "音频引导",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "音频"
+      ],
+      "file": "level-design/guidance-design/audio-guidance.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "layout-guidance",
+      "name": "布局引导",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "空间"
+      ],
+      "file": "level-design/guidance-design/layout-guidance.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "breadcrumb-trail",
+      "name": "面包屑引导",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "路径"
+      ],
+      "file": "level-design/guidance-design/breadcrumb-trail.md",
+      "exists": true,
+      "char_count": 498
+    },
+    {
+      "id": "affordance-ld",
+      "name": "可供性(Affordance)",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "交互"
+      ],
+      "file": "level-design/guidance-design/affordance-ld.md",
+      "exists": true,
+      "char_count": 559
+    },
+    {
+      "id": "gating-mechanic",
+      "name": "门控机制",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "门控"
+      ],
+      "file": "level-design/guidance-design/gating-mechanic.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "tutorial-level",
+      "name": "教学关卡设计",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "教学"
+      ],
+      "file": "level-design/guidance-design/tutorial-level.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "show-dont-tell",
+      "name": "展示而非告知",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "原则"
+      ],
+      "file": "level-design/guidance-design/show-dont-tell.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "signposting",
+      "name": "标识指引",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "显式"
+      ],
+      "file": "level-design/guidance-design/signposting.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "implicit-vs-explicit",
+      "name": "隐式vs显式引导",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "level-design/guidance-design/implicit-vs-explicit.md",
+      "exists": true,
+      "char_count": 516
+    },
+    {
+      "id": "flow-channel-ld",
+      "name": "心流通道(LD)",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "体验"
+      ],
+      "file": "level-design/guidance-design/flow-channel-ld.md",
+      "exists": true,
+      "char_count": 517
+    },
+    {
+      "id": "player-expectation",
+      "name": "玩家预期管理",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "心理"
+      ],
+      "file": "level-design/guidance-design/player-expectation.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "camera-control-ld",
+      "name": "摄像机引导",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "摄像机"
+      ],
+      "file": "level-design/guidance-design/camera-control-ld.md",
+      "exists": true,
+      "char_count": 498
+    },
+    {
+      "id": "npc-guidance",
+      "name": "NPC引导行为",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "level-design/guidance-design/npc-guidance.md",
+      "exists": true,
+      "char_count": 509
+    },
+    {
+      "id": "minimap-guidance",
+      "name": "小地图引导",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UI"
+      ],
+      "file": "level-design/guidance-design/minimap-guidance.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "objective-marker",
+      "name": "目标标记设计",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UI"
+      ],
+      "file": "level-design/guidance-design/objective-marker.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "lost-player-recovery",
+      "name": "迷路玩家恢复",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "容错"
+      ],
+      "file": "level-design/guidance-design/lost-player-recovery.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "difficulty-communication",
+      "name": "难度沟通",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "沟通"
+      ],
+      "file": "level-design/guidance-design/difficulty-communication.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "onboarding-sequence",
+      "name": "新手引导序列",
+      "domain_id": "level-design",
+      "subdomain_id": "guidance-design",
+      "subdomain_name": "引导设计",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "教学"
+      ],
+      "file": "level-design/guidance-design/onboarding-sequence.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "blockout-intro",
+      "name": "Blockout概述",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/blockout/blockout-intro.md",
+      "exists": true,
+      "char_count": 593
+    },
+    {
+      "id": "greybox-workflow",
+      "name": "灰盒工作流",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "level-design/blockout/greybox-workflow.md",
+      "exists": true,
+      "char_count": 507
+    },
+    {
+      "id": "bsp-blocking",
+      "name": "BSP阻挡体",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "level-design/blockout/bsp-blocking.md",
+      "exists": true,
+      "char_count": 507
+    },
+    {
+      "id": "modular-kit",
+      "name": "模块化套件",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "资产"
+      ],
+      "file": "level-design/blockout/modular-kit.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "scale-reference",
+      "name": "尺度参考",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "度量"
+      ],
+      "file": "level-design/blockout/scale-reference.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "collision-volume",
+      "name": "碰撞体积设计",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "物理"
+      ],
+      "file": "level-design/blockout/collision-volume.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "playable-path",
+      "name": "可行走路径规划",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "路径"
+      ],
+      "file": "level-design/blockout/playable-path.md",
+      "exists": true,
+      "char_count": 515
+    },
+    {
+      "id": "prototype-test",
+      "name": "原型测试",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "level-design/blockout/prototype-test.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "iteration-blockout",
+      "name": "Blockout迭代",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "迭代"
+      ],
+      "file": "level-design/blockout/iteration-blockout.md",
+      "exists": true,
+      "char_count": 531
+    },
+    {
+      "id": "cover-placement",
+      "name": "掩体布局",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战术"
+      ],
+      "file": "level-design/blockout/cover-placement.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "spawn-point",
+      "name": "出生点设计",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规则"
+      ],
+      "file": "level-design/blockout/spawn-point.md",
+      "exists": true,
+      "char_count": 501
+    },
+    {
+      "id": "trigger-volume",
+      "name": "触发体积设计",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "脚本"
+      ],
+      "file": "level-design/blockout/trigger-volume.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "navmesh-basics",
+      "name": "导航网格基础",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "level-design/blockout/navmesh-basics.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "sightline-test",
+      "name": "视线测试",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "level-design/blockout/sightline-test.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "flow-testing",
+      "name": "流程测试",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "level-design/blockout/flow-testing.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "blockout-checklist",
+      "name": "Blockout检查清单",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "level-design/blockout/blockout-checklist.md",
+      "exists": true,
+      "char_count": 605
+    },
+    {
+      "id": "kit-bashing",
+      "name": "Kit-bashing技法",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "level-design/blockout/kit-bashing.md",
+      "exists": true,
+      "char_count": 550
+    },
+    {
+      "id": "proxy-asset",
+      "name": "代理资产",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "资产"
+      ],
+      "file": "level-design/blockout/proxy-asset.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "blockout-annotation",
+      "name": "Blockout标注",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "沟通"
+      ],
+      "file": "level-design/blockout/blockout-annotation.md",
+      "exists": true,
+      "char_count": 531
+    },
+    {
+      "id": "blockout-review",
+      "name": "Blockout评审",
+      "domain_id": "level-design",
+      "subdomain_id": "blockout",
+      "subdomain_name": "Blockout",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "level-design/blockout/blockout-review.md",
+      "exists": true,
+      "char_count": 532
+    },
+    {
+      "id": "metrics-intro",
+      "name": "Metric设计概述",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/metrics-design/metrics-intro.md",
+      "exists": true,
+      "char_count": 593
+    },
+    {
+      "id": "character-metrics",
+      "name": "角色度量",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "角色"
+      ],
+      "file": "level-design/metrics-design/character-metrics.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "movement-speed",
+      "name": "移动速度标准",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "移动"
+      ],
+      "file": "level-design/metrics-design/movement-speed.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "jump-metrics",
+      "name": "跳跃度量",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "移动"
+      ],
+      "file": "level-design/metrics-design/jump-metrics.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "corridor-width",
+      "name": "走廊宽度标准",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "空间"
+      ],
+      "file": "level-design/metrics-design/corridor-width.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "ceiling-height",
+      "name": "天花板高度标准",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "空间"
+      ],
+      "file": "level-design/metrics-design/ceiling-height.md",
+      "exists": true,
+      "char_count": 512
+    },
+    {
+      "id": "door-size",
+      "name": "门洞尺寸标准",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "度量"
+      ],
+      "file": "level-design/metrics-design/door-size.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "stair-slope",
+      "name": "楼梯与坡道标准",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "度量"
+      ],
+      "file": "level-design/metrics-design/stair-slope.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "platform-gap",
+      "name": "平台间距",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "平台"
+      ],
+      "file": "level-design/metrics-design/platform-gap.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "combat-range",
+      "name": "战斗距离度量",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战斗"
+      ],
+      "file": "level-design/metrics-design/combat-range.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "cover-height",
+      "name": "掩体高度标准",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战术"
+      ],
+      "file": "level-design/metrics-design/cover-height.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "visibility-range",
+      "name": "可视距离",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "视觉"
+      ],
+      "file": "level-design/metrics-design/visibility-range.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "interaction-range",
+      "name": "交互距离",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "交互"
+      ],
+      "file": "level-design/metrics-design/interaction-range.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "spawn-distance",
+      "name": "出怪距离标准",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战斗"
+      ],
+      "file": "level-design/metrics-design/spawn-distance.md",
+      "exists": true,
+      "char_count": 507
+    },
+    {
+      "id": "camera-distance-ld",
+      "name": "摄像机距离标准",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "摄像机"
+      ],
+      "file": "level-design/metrics-design/camera-distance-ld.md",
+      "exists": true,
+      "char_count": 515
+    },
+    {
+      "id": "ai-patrol-range",
+      "name": "AI巡逻范围",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "level-design/metrics-design/ai-patrol-range.md",
+      "exists": true,
+      "char_count": 508
+    },
+    {
+      "id": "audio-range",
+      "name": "音效触发范围",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "音频"
+      ],
+      "file": "level-design/metrics-design/audio-range.md",
+      "exists": true,
+      "char_count": 509
+    },
+    {
+      "id": "metric-sheet",
+      "name": "度量表制作",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "文档"
+      ],
+      "file": "level-design/metrics-design/metric-sheet.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "metric-validation",
+      "name": "度量验证",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "level-design/metrics-design/metric-validation.md",
+      "exists": true,
+      "char_count": 499
+    },
+    {
+      "id": "metric-exception",
+      "name": "度量例外",
+      "domain_id": "level-design",
+      "subdomain_id": "metrics-design",
+      "subdomain_name": "Metric设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "level-design/metrics-design/metric-exception.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "combat-space-intro",
+      "name": "战斗空间概述",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/combat-space/combat-space-intro.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "arena-layout",
+      "name": "竞技场布局",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "布局"
+      ],
+      "file": "level-design/combat-space/arena-layout.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "corridor-combat",
+      "name": "走廊战斗空间",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "布局"
+      ],
+      "file": "level-design/combat-space/corridor-combat.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "elevation-tactics",
+      "name": "高度差战术",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "地形"
+      ],
+      "file": "level-design/combat-space/elevation-tactics.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "flanking-route",
+      "name": "侧翼路线",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战术"
+      ],
+      "file": "level-design/combat-space/flanking-route.md",
+      "exists": true,
+      "char_count": 490
+    },
+    {
+      "id": "cover-system-ld",
+      "name": "掩体系统(LD)",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "掩体"
+      ],
+      "file": "level-design/combat-space/cover-system-ld.md",
+      "exists": true,
+      "char_count": 578
+    },
+    {
+      "id": "choke-point",
+      "name": "瓶颈点设计",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战术"
+      ],
+      "file": "level-design/combat-space/choke-point.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "escape-route",
+      "name": "逃生路线",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "路线"
+      ],
+      "file": "level-design/combat-space/escape-route.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "enemy-spawn-area",
+      "name": "敌人刷新区域",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "敌人"
+      ],
+      "file": "level-design/combat-space/enemy-spawn-area.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "wave-arena",
+      "name": "波次战斗空间",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "波次"
+      ],
+      "file": "level-design/combat-space/wave-arena.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "boss-arena",
+      "name": "Boss战场",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "Boss"
+      ],
+      "file": "level-design/combat-space/boss-arena.md",
+      "exists": true,
+      "char_count": 566
+    },
+    {
+      "id": "stealth-space",
+      "name": "潜行空间",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "潜行"
+      ],
+      "file": "level-design/combat-space/stealth-space.md",
+      "exists": true,
+      "char_count": 489
+    },
+    {
+      "id": "destructible-env",
+      "name": "可破坏环境",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "level-design/combat-space/destructible-env.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "hazard-placement",
+      "name": "危险物放置",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "危害"
+      ],
+      "file": "level-design/combat-space/hazard-placement.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "ammo-health-placement",
+      "name": "补给点放置",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "补给"
+      ],
+      "file": "level-design/combat-space/ammo-health-placement.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "combat-flow",
+      "name": "战斗流线",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流线"
+      ],
+      "file": "level-design/combat-space/combat-flow.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "sightline-combat",
+      "name": "战斗视线管理",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "视线"
+      ],
+      "file": "level-design/combat-space/sightline-combat.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "multi-level-combat",
+      "name": "多层战斗空间",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "立体"
+      ],
+      "file": "level-design/combat-space/multi-level-combat.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "vehicle-combat-space",
+      "name": "载具战斗空间",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "载具"
+      ],
+      "file": "level-design/combat-space/vehicle-combat-space.md",
+      "exists": true,
+      "char_count": 502
+    },
+    {
+      "id": "combat-space-review",
+      "name": "战斗空间评审",
+      "domain_id": "level-design",
+      "subdomain_id": "combat-space",
+      "subdomain_name": "战斗空间",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "评审"
+      ],
+      "file": "level-design/combat-space/combat-space-review.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "level-editor-intro",
+      "name": "关卡编辑器概述",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/level-editor/level-editor-intro.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "ue5-level-editor",
+      "name": "UE5关卡编辑器",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UE5"
+      ],
+      "file": "level-design/level-editor/ue5-level-editor.md",
+      "exists": true,
+      "char_count": 527
+    },
+    {
+      "id": "unity-scene-editor",
+      "name": "Unity场景编辑器",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "Unity"
+      ],
+      "file": "level-design/level-editor/unity-scene-editor.md",
+      "exists": true,
+      "char_count": 530
+    },
+    {
+      "id": "blueprint-scripting",
+      "name": "蓝图脚本(LD)",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "脚本"
+      ],
+      "file": "level-design/level-editor/blueprint-scripting.md",
+      "exists": true,
+      "char_count": 517
+    },
+    {
+      "id": "level-streaming",
+      "name": "关卡流式加载",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "level-design/level-editor/level-streaming.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "world-partition",
+      "name": "World Partition",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "UE5"
+      ],
+      "file": "level-design/level-editor/world-partition.md",
+      "exists": true,
+      "char_count": 621
+    },
+    {
+      "id": "sublevel-management",
+      "name": "子关卡管理",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "level-design/level-editor/sublevel-management.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "version-control-ld",
+      "name": "关卡版本控制",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "level-design/level-editor/version-control-ld.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "multi-user-editing",
+      "name": "多人协同编辑",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "level-design/level-editor/multi-user-editing.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "landscape-tool",
+      "name": "地形工具",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "地形"
+      ],
+      "file": "level-design/level-editor/landscape-tool.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "foliage-tool",
+      "name": "植被工具",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "level-design/level-editor/foliage-tool.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "sequencer-ld",
+      "name": "Sequencer(LD)",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "脚本"
+      ],
+      "file": "level-design/level-editor/sequencer-ld.md",
+      "exists": true,
+      "char_count": 546
+    },
+    {
+      "id": "gameplay-ability-ld",
+      "name": "Gameplay Ability(LD)",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "UE5"
+      ],
+      "file": "level-design/level-editor/gameplay-ability-ld.md",
+      "exists": true,
+      "char_count": 587
+    },
+    {
+      "id": "pcg-level-gen",
+      "name": "PCG关卡生成",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "PCG"
+      ],
+      "file": "level-design/level-editor/pcg-level-gen.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "custom-editor-tool",
+      "name": "自定义编辑器工具",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "level-design/level-editor/custom-editor-tool.md",
+      "exists": true,
+      "char_count": 515
+    },
+    {
+      "id": "data-layer",
+      "name": "数据层管理",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "level-design/level-editor/data-layer.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "debug-visualization",
+      "name": "调试可视化",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "调试"
+      ],
+      "file": "level-design/level-editor/debug-visualization.md",
+      "exists": true,
+      "char_count": 506
+    },
+    {
+      "id": "profiling-ld",
+      "name": "关卡性能分析",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "性能"
+      ],
+      "file": "level-design/level-editor/profiling-ld.md",
+      "exists": true,
+      "char_count": 511
+    },
+    {
+      "id": "optimization-ld",
+      "name": "关卡优化",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "性能"
+      ],
+      "file": "level-design/level-editor/optimization-ld.md",
+      "exists": true,
+      "char_count": 555
+    },
+    {
+      "id": "build-pipeline-ld",
+      "name": "关卡构建管线",
+      "domain_id": "level-design",
+      "subdomain_id": "level-editor",
+      "subdomain_name": "关卡编辑器",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "level-design/level-editor/build-pipeline-ld.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "terrain-intro",
+      "name": "地形设计概述",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/terrain-design/terrain-intro.md",
+      "exists": true,
+      "char_count": 567
+    },
+    {
+      "id": "heightmap",
+      "name": "高度图",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "level-design/terrain-design/heightmap.md",
+      "exists": true,
+      "char_count": 484
+    },
+    {
+      "id": "terrain-sculpting",
+      "name": "地形雕刻",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技法"
+      ],
+      "file": "level-design/terrain-design/terrain-sculpting.md",
+      "exists": true,
+      "char_count": 489
+    },
+    {
+      "id": "terrain-material",
+      "name": "地形材质",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "材质"
+      ],
+      "file": "level-design/terrain-design/terrain-material.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "terrain-lod",
+      "name": "地形LOD",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "性能"
+      ],
+      "file": "level-design/terrain-design/terrain-lod.md",
+      "exists": true,
+      "char_count": 495
+    },
+    {
+      "id": "procedural-terrain",
+      "name": "程序化地形",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "PCG"
+      ],
+      "file": "level-design/terrain-design/procedural-terrain.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "road-river",
+      "name": "道路与河流",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "level-design/terrain-design/road-river.md",
+      "exists": true,
+      "char_count": 498
+    },
+    {
+      "id": "cliff-cave",
+      "name": "悬崖与洞穴",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "level-design/terrain-design/cliff-cave.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "biome-design",
+      "name": "生态区设计",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "环境"
+      ],
+      "file": "level-design/terrain-design/biome-design.md",
+      "exists": true,
+      "char_count": 563
+    },
+    {
+      "id": "water-body",
+      "name": "水体设计",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "level-design/terrain-design/water-body.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "vegetation-placement",
+      "name": "植被放置策略",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "level-design/terrain-design/vegetation-placement.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "rock-placement",
+      "name": "岩石放置",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "level-design/terrain-design/rock-placement.md",
+      "exists": true,
+      "char_count": 490
+    },
+    {
+      "id": "weather-terrain",
+      "name": "天气对地形的影响",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "玩法"
+      ],
+      "file": "level-design/terrain-design/weather-terrain.md",
+      "exists": true,
+      "char_count": 516
+    },
+    {
+      "id": "terrain-collision",
+      "name": "地形碰撞",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "物理"
+      ],
+      "file": "level-design/terrain-design/terrain-collision.md",
+      "exists": true,
+      "char_count": 489
+    },
+    {
+      "id": "open-world-terrain",
+      "name": "开放世界地形",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "大地图"
+      ],
+      "file": "level-design/terrain-design/open-world-terrain.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "level-art-handoff",
+      "name": "关卡美术交接",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "level-design/terrain-design/level-art-handoff.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "terrain-data",
+      "name": "地形数据管理",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "level-design/terrain-design/terrain-data.md",
+      "exists": true,
+      "char_count": 510
+    },
+    {
+      "id": "world-machine",
+      "name": "World Machine工具",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "level-design/terrain-design/world-machine.md",
+      "exists": true,
+      "char_count": 566
+    },
+    {
+      "id": "gaea-terrain",
+      "name": "Gaea地形工具",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "level-design/terrain-design/gaea-terrain.md",
+      "exists": true,
+      "char_count": 515
+    },
+    {
+      "id": "terrain-optimization",
+      "name": "地形优化",
+      "domain_id": "level-design",
+      "subdomain_id": "terrain-design",
+      "subdomain_name": "地形设计",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "性能"
+      ],
+      "file": "level-design/terrain-design/terrain-optimization.md",
+      "exists": true,
+      "char_count": 552
+    },
+    {
+      "id": "lighting-intro",
+      "name": "光照叙事概述",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/lighting-narrative/lighting-intro.md",
+      "exists": true,
+      "char_count": 568
+    },
+    {
+      "id": "light-as-guide",
+      "name": "光照引导",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "引导"
+      ],
+      "file": "level-design/lighting-narrative/light-as-guide.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "mood-lighting",
+      "name": "氛围光照",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "情感"
+      ],
+      "file": "level-design/lighting-narrative/mood-lighting.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "dynamic-lighting",
+      "name": "动态光照",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动态"
+      ],
+      "file": "level-design/lighting-narrative/dynamic-lighting.md",
+      "exists": true,
+      "char_count": 490
+    },
+    {
+      "id": "baked-vs-realtime",
+      "name": "烘焙vs实时光照",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "level-design/lighting-narrative/baked-vs-realtime.md",
+      "exists": true,
+      "char_count": 513
+    },
+    {
+      "id": "light-probe",
+      "name": "光照探针",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "level-design/lighting-narrative/light-probe.md",
+      "exists": true,
+      "char_count": 490
+    },
+    {
+      "id": "shadow-design",
+      "name": "阴影设计",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "视觉"
+      ],
+      "file": "level-design/lighting-narrative/shadow-design.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "color-temperature",
+      "name": "色温控制",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "色彩"
+      ],
+      "file": "level-design/lighting-narrative/color-temperature.md",
+      "exists": true,
+      "char_count": 487
+    },
+    {
+      "id": "contrast-lighting",
+      "name": "对比度照明",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "视觉"
+      ],
+      "file": "level-design/lighting-narrative/contrast-lighting.md",
+      "exists": true,
+      "char_count": 496
+    },
+    {
+      "id": "volumetric-lighting",
+      "name": "体积光效",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "特效"
+      ],
+      "file": "level-design/lighting-narrative/volumetric-lighting.md",
+      "exists": true,
+      "char_count": 554
+    },
+    {
+      "id": "practical-light",
+      "name": "实用光源",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "叙事"
+      ],
+      "file": "level-design/lighting-narrative/practical-light.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "light-puzzle",
+      "name": "光照谜题",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "玩法"
+      ],
+      "file": "level-design/lighting-narrative/light-puzzle.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "horror-lighting",
+      "name": "恐怖光照",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "level-design/lighting-narrative/horror-lighting.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "outdoor-lighting",
+      "name": "室外光照",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "室外"
+      ],
+      "file": "level-design/lighting-narrative/outdoor-lighting.md",
+      "exists": true,
+      "char_count": 490
+    },
+    {
+      "id": "indoor-lighting",
+      "name": "室内光照",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "室内"
+      ],
+      "file": "level-design/lighting-narrative/indoor-lighting.md",
+      "exists": true,
+      "char_count": 488
+    },
+    {
+      "id": "light-performance",
+      "name": "光照性能",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "性能"
+      ],
+      "file": "level-design/lighting-narrative/light-performance.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "post-process-ld",
+      "name": "后处理(LD)",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "后处理"
+      ],
+      "file": "level-design/lighting-narrative/post-process-ld.md",
+      "exists": true,
+      "char_count": 509
+    },
+    {
+      "id": "day-night-cycle",
+      "name": "昼夜循环",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动态"
+      ],
+      "file": "level-design/lighting-narrative/day-night-cycle.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "emissive-material",
+      "name": "自发光材质",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "材质"
+      ],
+      "file": "level-design/lighting-narrative/emissive-material.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "lighting-review",
+      "name": "光照评审",
+      "domain_id": "level-design",
+      "subdomain_id": "lighting-narrative",
+      "subdomain_name": "光照叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "level-design/lighting-narrative/lighting-review.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "ld-doc-intro",
+      "name": "LD文档概述",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "level-design/ld-documentation/ld-doc-intro.md",
+      "exists": true,
+      "char_count": 564
+    },
+    {
+      "id": "level-overview-doc",
+      "name": "关卡概览文档",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "文档"
+      ],
+      "file": "level-design/ld-documentation/level-overview-doc.md",
+      "exists": true,
+      "char_count": 505
+    },
+    {
+      "id": "level-flowchart",
+      "name": "关卡流程图",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "level-design/ld-documentation/level-flowchart.md",
+      "exists": true,
+      "char_count": 497
+    },
+    {
+      "id": "top-down-map",
+      "name": "俯视图设计",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "level-design/ld-documentation/top-down-map.md",
+      "exists": true,
+      "char_count": 559
+    },
+    {
+      "id": "encounter-doc",
+      "name": "遭遇战文档",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战斗"
+      ],
+      "file": "level-design/ld-documentation/encounter-doc.md",
+      "exists": true,
+      "char_count": 498
+    },
+    {
+      "id": "script-event-doc",
+      "name": "脚本事件文档",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "脚本"
+      ],
+      "file": "level-design/ld-documentation/script-event-doc.md",
+      "exists": true,
+      "char_count": 503
+    },
+    {
+      "id": "pacing-chart",
+      "name": "节奏图表",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "level-design/ld-documentation/pacing-chart.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "playtest-report",
+      "name": "测试报告",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "level-design/ld-documentation/playtest-report.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "feedback-log",
+      "name": "反馈日志",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "反馈"
+      ],
+      "file": "level-design/ld-documentation/feedback-log.md",
+      "exists": true,
+      "char_count": 491
+    },
+    {
+      "id": "iteration-log",
+      "name": "迭代日志",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "迭代"
+      ],
+      "file": "level-design/ld-documentation/iteration-log.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "naming-convention",
+      "name": "命名规范",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "level-design/ld-documentation/naming-convention.md",
+      "exists": true,
+      "char_count": 494
+    },
+    {
+      "id": "asset-list",
+      "name": "资产清单",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "level-design/ld-documentation/asset-list.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "ld-review-process",
+      "name": "评审流程",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "level-design/ld-documentation/ld-review-process.md",
+      "exists": true,
+      "char_count": 492
+    },
+    {
+      "id": "milestone-criteria",
+      "name": "里程碑标准",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "level-design/ld-documentation/milestone-criteria.md",
+      "exists": true,
+      "char_count": 571
+    },
+    {
+      "id": "design-intent-doc",
+      "name": "设计意图文档",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "文档"
+      ],
+      "file": "level-design/ld-documentation/design-intent-doc.md",
+      "exists": true,
+      "char_count": 504
+    },
+    {
+      "id": "bug-report-ld",
+      "name": "Bug报告(LD)",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "level-design/ld-documentation/bug-report-ld.md",
+      "exists": true,
+      "char_count": 524
+    },
+    {
+      "id": "handoff-doc",
+      "name": "交接文档",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "level-design/ld-documentation/handoff-doc.md",
+      "exists": true,
+      "char_count": 493
+    },
+    {
+      "id": "postmortem-ld",
+      "name": "复盘文档(LD)",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "总结"
+      ],
+      "file": "level-design/ld-documentation/postmortem-ld.md",
+      "exists": true,
+      "char_count": 516
+    },
+    {
+      "id": "ld-portfolio",
+      "name": "LD作品集",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "职业"
+      ],
+      "file": "level-design/ld-documentation/ld-portfolio.md",
+      "exists": true,
+      "char_count": 498
+    },
+    {
+      "id": "ld-career",
+      "name": "LD职业发展",
+      "domain_id": "level-design",
+      "subdomain_id": "ld-documentation",
+      "subdomain_name": "LD文档",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "职业"
+      ],
+      "file": "level-design/ld-documentation/ld-career.md",
+      "exists": true,
+      "char_count": 568
+    }
+  ]
+}

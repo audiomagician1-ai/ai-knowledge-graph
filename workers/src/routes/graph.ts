@@ -31,6 +31,7 @@ import ragBiology from '../../data/rag/biology/_index.json';
 import ragEconomics from '../../data/rag/economics/_index.json';
 import ragWriting from '../../data/rag/writing/_index.json';
 import ragGameDesign from '../../data/rag/game-design/_index.json';
+import ragLevelDesign from '../../data/rag/level-design/_index.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -50,7 +51,7 @@ const ragMap: Record<string, any> = {
   'psychology': ragPsychology, 'philosophy': ragPhilosophy,
   'biology': ragBiology, 'economics': ragEconomics, 'writing': ragWriting,
   'game-design': ragGameDesign,
-  // 'level-design': ragLevelDesign, // RAG not yet generated
+  'level-design': ragLevelDesign,
 };
 function getSeed(domain: string): any { return seedMap[domain] || null; }
 function getRagIndex(domain: string): any { return ragMap[domain] || { documents: [], stats: {} }; }
