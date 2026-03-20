@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState, useCallback, useRef, lazy, Suspense, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDomainStore } from '@/lib/store/domain';
@@ -12,7 +12,7 @@ import { SettingsContent } from '@/components/panels/SettingsContent';
 import {
   Search, X, Star, ChevronRight, Clock, BookOpen, Zap,
   Trophy, Loader, Compass, BarChart3, Settings, Network,
-  Globe, Check, LogIn, User,
+  Globe, Check, LogIn, User, Home,
 } from 'lucide-react';
 import { useAuthStore } from '@/lib/store/auth';
 
@@ -22,11 +22,14 @@ const KnowledgeGraph = lazy(() =>
 );
 
 export function GraphPage() {
+  const { domainId: urlDomainId, conceptId: urlConceptId } = useParams<{ domainId: string; conceptId?: string }>();
+  const navigate = useNavigate();
+
   const {
     graphData, loading, selectedNode, activeSubdomain,
     loadGraphData, selectNode,
   } = useGraphStore();
-  const { activeDomain, fetchDomains, getActiveDomainInfo } = useDomainStore();
+  const { activeDomain, fetchDomains, getActiveDomainInfo, switchDomain } = useDomainStore();
   const { progress, computeStats, refreshStreak, initEdges, recommendedIds, syncWithBackend, backendSynced } = useLearningStore();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -45,10 +48,9 @@ export function GraphPage() {
   const { user, supabaseConfigured, signOut } = useAuthStore();
   const isLoggedIn = !!user;
   const displayName = useAuthStore((s) => s.displayName());
-  const navigate = useNavigate();
 
   // Domain
-  const { domains, switchDomain } = useDomainStore();
+  const { domains } = useDomainStore();
   const activeDomainInfo = domains.find((d) => d.id === activeDomain);
   const activeDomains = domains.filter((d) => (d as any).is_active !== false);
 
@@ -63,11 +65,44 @@ export function GraphPage() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, [showDomainPicker]);
 
+  // ── Sync URL domainId → store ──
+  useEffect(() => {
+    if (urlDomainId && urlDomainId !== activeDomain) {
+      switchDomain(urlDomainId);
+    }
+  }, [urlDomainId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Restore concept selection from URL ──
+  useEffect(() => {
+    if (urlConceptId && graphData) {
+      const node = graphData.nodes.find((n) => n.id === urlConceptId);
+      if (node && selectedNode?.id !== urlConceptId) {
+        selectNode(node);
+      }
+    } else if (!urlConceptId && selectedNode) {
+      // URL has no conceptId but a node is selected → clear it
+      // (happens when user navigates back to /domain/:domainId)
+      selectNode(null);
+    }
+  }, [urlConceptId, graphData]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleDomainSwitch = (domainId: string) => {
     if (domainId === activeDomain) { setShowDomainPicker(false); return; }
-    switchDomain(domainId);
-    loadGraphData(domainId);
     setShowDomainPicker(false);
+    navigate(`/domain/${domainId}`);
+  };
+
+  // ── Node click → update URL ──
+  const handleNodeClick = (node: GraphNode) => {
+    if (node?.id) {
+      navigate(`/domain/${urlDomainId}/${node.id}`, { replace: true });
+    }
+  };
+
+  // ── Close detail panel → update URL ──
+  const handleCloseDetail = () => {
+    selectNode(null);
+    navigate(`/domain/${urlDomainId}`, { replace: true });
   };
 
   const totalNodes = graphData?.nodes.length || 0;
@@ -121,8 +156,6 @@ export function GraphPage() {
   useEffect(() => { loadGraphData(activeDomain); }, [activeDomain]);
 
 
-
-  const handleNodeClick = (node: GraphNode) => selectNode(node?.id ? node : null);
 
   const difficultyLabel = (d: number) => {
     if (d <= 3) return { text: '入门', color: 'var(--color-accent-emerald)' };
@@ -194,7 +227,7 @@ export function GraphPage() {
                   ) : null}
                 </div>
               </div>
-              <button onClick={() => selectNode(null)}
+              <button onClick={() => handleCloseDetail()}
                 className="shrink-0 w-9 h-9 flex items-center justify-center rounded-full transition-colors"
                 style={{ color: 'var(--color-text-tertiary)' }}
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.06)')}
@@ -233,7 +266,7 @@ export function GraphPage() {
                 border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               }}>
                 {searchResults.map((node) => (
-                  <button key={node.id} onClick={() => { selectNode(node); setSearchQuery(''); }}
+                  <button key={node.id} onClick={() => { handleNodeClick(node); setSearchQuery(''); }}
                     className="w-full text-left flex items-center transition-colors"
                     style={{ gap: 10, padding: '12px 16px', borderRadius: 10, fontSize: 14 }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)')}
@@ -255,6 +288,9 @@ export function GraphPage() {
           padding: '0 8px', height: 64, borderRadius: 20, background: 'rgba(245,245,242,0.92)', backdropFilter: 'blur(20px)',
           border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', gap: 4,
         }}>
+          {/* Home — back to domain selection */}
+          <HubButton icon={Home} label="首页" active={false} onClick={() => navigate('/')} />
+
           {/* Domain Switcher — icon + 2 chars */}
           <HubButton icon={Globe} label="知域" active={showDomainPicker} onClick={() => { setShowDomainPicker(!showDomainPicker); setShowRecommend(false); }} />
 
@@ -351,7 +387,7 @@ export function GraphPage() {
                 return (
                   <button key={rec.concept_id} onClick={() => {
                     const node = enrichedGraphData?.nodes.find(n => n.id === rec.concept_id);
-                    if (node) { selectNode(node); setShowRecommend(false); }
+                    if (node) { handleNodeClick(node); setShowRecommend(false); }
                   }} className="w-full text-left flex items-start transition-colors"
                     style={{ padding: '16px 24px', gap: 14, borderBottom: '1px solid rgba(0,0,0,0.04)' }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.03)')}
@@ -383,8 +419,7 @@ export function GraphPage() {
       <DraggableModal open={showDashboard} onClose={() => setShowDashboard(false)} title="学习进度" width={560} height={720}>
         <DashboardContent onNavigate={(conceptId) => {
           setShowDashboard(false);
-          const node = enrichedGraphData?.nodes.find(n => n.id === conceptId);
-          if (node) selectNode(node);
+          navigate(`/domain/${urlDomainId}/${conceptId}`, { replace: true });
         }} />
       </DraggableModal>
       <DraggableModal open={showSettings} onClose={() => setShowSettings(false)} title="设置" width={520} height={760}>

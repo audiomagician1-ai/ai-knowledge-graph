@@ -14,7 +14,7 @@ import { useIsDesktop } from '@/lib/hooks/useMediaQuery';
 import { stripChoicesBlock } from '@/lib/utils/text';
 
 export function LearnPage() {
-  const { conceptId } = useParams<{ conceptId: string }>();
+  const { conceptId, domainId } = useParams<{ conceptId: string; domainId: string }>();
   const navigate = useNavigate();
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -99,7 +99,7 @@ export function LearnPage() {
           }}
         >
           <button
-            onClick={() => navigate('/graph')}
+            onClick={() => navigate(domainId ? `/domain/${domainId}/${conceptId}` : '/')}
               className="flex items-center justify-center w-9 h-9 rounded-md transition-colors"
             style={{ color: 'var(--color-text-secondary)' }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
@@ -334,7 +334,7 @@ export function LearnPage() {
           >
             <div className="max-w-3xl mx-auto px-6 py-4 flex gap-3">
               <button
-                onClick={() => navigate('/graph')}
+                onClick={() => navigate(domainId ? `/domain/${domainId}/${conceptId}` : '/')}
                 className="btn-ghost flex-1 flex items-center justify-center gap-2 py-3"
               >
                 <ArrowLeft size={16} />

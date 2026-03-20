@@ -52,7 +52,7 @@ export function DashboardPage() {
         {/* Header */}
         <div className="mb-10 animate-fade-in">
           <button
-            onClick={() => navigate('/graph')}
+            onClick={() => navigate('/')}
             className="flex items-center gap-1.5 text-sm mb-6 transition-colors"
             style={{ color: 'var(--color-text-tertiary)' }}
             onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent-primary)')}
@@ -142,7 +142,7 @@ export function DashboardPage() {
               <div className="text-center py-8">
                 <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)' }}>还没有学习记录</p>
                 <button
-                  onClick={() => navigate('/graph')}
+                  onClick={() => navigate('/')}
                   className="btn-primary text-sm px-5 py-2.5"
                 >
                   前往图谱 <ArrowRight size={14} className="inline ml-1" />
@@ -180,7 +180,7 @@ export function DashboardPage() {
                 {masteredNodes.map((p) => (
                   <button
                     key={p.concept_id}
-                    onClick={() => navigate('/graph')}
+                    onClick={() => navigate('/')}
                     className="rounded-md px-2.5 py-1 text-xs font-medium transition-colors"
                     style={{ backgroundColor: 'rgba(52,211,153,0.06)', color: 'var(--color-accent-emerald)', border: '1px solid rgba(52,211,153,0.1)' }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(52,211,153,0.12)')}
@@ -199,6 +199,7 @@ export function DashboardPage() {
 }
 
 function ActivityItem({ item, navigate, nameMap }: { item: ConceptProgress; navigate: (p: string) => void; nameMap: Record<string, string> }) {
+  const { activeDomain } = useDomainStore();
   const time = new Date(item.last_learn_at);
   const timeStr = `${time.getMonth() + 1}/${time.getDate()} ${time.getHours().toString().padStart(2, '0')}:${time.getMinutes().toString().padStart(2, '0')}`;
   const isMastered = item.status === 'mastered';
@@ -210,7 +211,7 @@ function ActivityItem({ item, navigate, nameMap }: { item: ConceptProgress; navi
 
   return (
     <button
-      onClick={() => navigate(`/learn/${item.concept_id}`)}
+      onClick={() => navigate(`/learn/${activeDomain}/${item.concept_id}`)}
       className="w-full flex items-center gap-3 rounded-md px-3 py-2.5 transition-all group"
       onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
       onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}

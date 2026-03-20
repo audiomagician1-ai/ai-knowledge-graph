@@ -76,12 +76,12 @@ export function LoginPage() {
     try {
       if (mode === 'login') {
         await signInWithEmail(email, password);
-        navigate('/graph');
+        navigate('/');
       } else {
         await signUp(email, password, displayName);
         const { session } = useAuthStore.getState();
         if (session) {
-          navigate('/graph');
+          navigate('/');
         } else {
           setError('Please check your email to confirm your account.');
         }

@@ -87,7 +87,7 @@ export function SettingsPage() {
         {/* Header with back nav */}
         <div className="mb-10 animate-fade-in">
           <button
-            onClick={() => navigate('/graph')}
+            onClick={() => navigate('/')}
             className="flex items-center gap-2 text-base mb-4 transition-colors"
             style={{ color: 'var(--color-text-secondary)' }}
             onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.color = 'var(--color-accent-primary)')}

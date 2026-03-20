@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from './components/layout/AppLayout';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { ToastContainer } from './components/common/ToastContainer';
+import { HomePage } from './pages/HomePage';
 import { GraphPage } from './pages/GraphPage';
 import { LearnPage } from './pages/LearnPage';
 import { LoginPage } from './pages/LoginPage';
@@ -23,8 +24,18 @@ export function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route element={<AppLayout />}>
-            <Route path="/learn/:conceptId" element={<LearnPage />} />
-            <Route path="*" element={<GraphPage />} />
+            {/* Home — domain selection */}
+            <Route path="/" element={<HomePage />} />
+            {/* Graph — domain overview */}
+            <Route path="/domain/:domainId" element={<GraphPage />} />
+            {/* Graph — with concept detail panel open */}
+            <Route path="/domain/:domainId/:conceptId" element={<GraphPage />} />
+            {/* Learn — deep learning page */}
+            <Route path="/learn/:domainId/:conceptId" element={<LearnPage />} />
+            {/* Legacy fallback — redirect old /learn/:conceptId to home */}
+            <Route path="/learn/:conceptId" element={<Navigate to="/" replace />} />
+            {/* Catch-all → home */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
         <ToastContainer />
