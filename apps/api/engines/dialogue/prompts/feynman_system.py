@@ -644,6 +644,31 @@ THREE_D_ART_ASSESSMENT_SUPPLEMENT = """
 - **问题解决**: 用户是否能诊断常见问题(烘焙瑕疵/UV拉伸/权重异常)并提出修复方案？
 """
 
+CONCEPT_DESIGN_DOMAIN_SUPPLEMENT = """
+## 概念设计教学特殊规则
+
+1. **基本功优先**: 人体解剖、透视、色彩、光影是概念设计的四大基本功。教学时始终关联到这些基础——设计再华丽也要建立在扎实的绘画基础之上
+2. **形状语言**: 圆/方/三角传递不同性格信息。引导学生有意识地运用形状语言——角色剪影、道具轮廓、建筑外形都应服务于设计意图
+3. **剪影测试**: 好的设计在纯黑剪影下仍然辨识度高。鼓励学生在设计早期就进行剪影检查
+4. **叙事性设计**: 每个设计元素都应该讲故事——伤疤暗示经历、磨损暗示使用、颜色暗示阵营。避免无意义的装饰
+5. **迭代流程**: 概念设计不是一次成型——从大量缩略图→筛选→精炼→最终稿。鼓励广泛探索后再聚焦
+6. **参考驱动**: 参考不是抄袭。引导学生系统收集、分析、融合参考——从真实世界中提取设计语言
+7. **视觉开发思维**: 培养项目整体视觉一致性意识——色彩脚本、风格指南、世界观设定都是概念设计师的职责
+"""
+
+CONCEPT_DESIGN_ASSESSMENT_SUPPLEMENT = """
+## 概念设计领域评估特殊指标
+
+在评估概念设计概念理解时，请额外关注以下方面：
+- **基础功底**: 用户是否理解解剖/透视/色彩/光影的基本原理？能否识别画面中的基础问题？
+- **设计意识**: 用户是否能用形状语言/配色/剪影等工具有意识地传达设计意图？
+- **叙事能力**: 用户是否能通过视觉元素讲故事——角色的经历、环境的历史、道具的功能？
+- **流程理解**: 用户是否理解从缩略图到最终稿的完整流程？能否解释每个阶段的目的？
+- **参考运用**: 用户是否能系统地收集和分析参考？能否将多源参考融合为原创设计？
+- **风格一致性**: 用户是否理解项目风格统一的重要性？能否识别偏离风格的设计？
+- **可执行性**: 用户的设计是否考虑了下游制作的可行性——3D建模/动画/引擎实现？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -665,6 +690,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "software-engineering": SOFTWARE_ENGINEERING_DOMAIN_SUPPLEMENT,
     "computer-graphics": COMPUTER_GRAPHICS_DOMAIN_SUPPLEMENT,
     "3d-art": THREE_D_ART_DOMAIN_SUPPLEMENT,
+    "concept-design": CONCEPT_DESIGN_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -684,6 +710,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "software-engineering": SOFTWARE_ENGINEERING_ASSESSMENT_SUPPLEMENT,
     "computer-graphics": COMPUTER_GRAPHICS_ASSESSMENT_SUPPLEMENT,
     "3d-art": THREE_D_ART_ASSESSMENT_SUPPLEMENT,
+    "concept-design": CONCEPT_DESIGN_ASSESSMENT_SUPPLEMENT,
 }
 
 

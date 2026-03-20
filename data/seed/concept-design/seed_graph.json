@@ -1,0 +1,4590 @@
+{
+  "domain": {
+    "id": "concept-design",
+    "name": "概念设计",
+    "description": "从人体解剖速写到视觉开发的完整概念设计知识体系",
+    "icon": "🖌️",
+    "color": "#d97706"
+  },
+  "subdomains": [
+    {
+      "id": "anatomy-sketching",
+      "name": "人体解剖速写",
+      "order": 1
+    },
+    {
+      "id": "perspective",
+      "name": "透视法",
+      "order": 2
+    },
+    {
+      "id": "color-theory",
+      "name": "色彩理论",
+      "order": 3
+    },
+    {
+      "id": "composition",
+      "name": "构图",
+      "order": 4
+    },
+    {
+      "id": "light-shadow",
+      "name": "光影",
+      "order": 5
+    },
+    {
+      "id": "character-design",
+      "name": "角色设计",
+      "order": 6
+    },
+    {
+      "id": "environment-design",
+      "name": "环境设计",
+      "order": 7
+    },
+    {
+      "id": "prop-design",
+      "name": "道具设计",
+      "order": 8
+    },
+    {
+      "id": "visual-development",
+      "name": "视觉开发",
+      "order": 9
+    },
+    {
+      "id": "style-guide",
+      "name": "风格指南",
+      "order": 10
+    },
+    {
+      "id": "moodboard-ref",
+      "name": "Moodboard与参考",
+      "order": 11
+    }
+  ],
+  "concepts": [
+    {
+      "id": "cd-anatomy-intro",
+      "name": "人体解剖概述",
+      "description": "概念设计中人体解剖知识的重要性与学习路径",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-skeleton-structure",
+      "name": "骨骼结构",
+      "description": "人体骨骼框架——脊柱/肩/骨盆/四肢的基本结构",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-muscle-groups",
+      "name": "主要肌群",
+      "description": "影响体表形态的关键肌肉群——胸/背/三角/股四头等",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-gesture-drawing",
+      "name": "姿态速写",
+      "description": "快速捕捉动态姿态的方法——30秒/1分钟/5分钟练习",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-line-of-action",
+      "name": "动态线",
+      "description": "用一条流畅曲线概括人体主要动势",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-body-proportion",
+      "name": "人体比例系统",
+      "description": "7.5~8头身比例体系与不同体型的比例变化",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-head-face",
+      "name": "头部与面部结构",
+      "description": "Loomis头部法/Reilly抽象法与五官比例",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-hand-foot-sketch",
+      "name": "手脚速写",
+      "description": "手部骨骼简化/手势分组/脚部结构与速写",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-torso-rib-pelvis",
+      "name": "躯干:胸廓与骨盆",
+      "description": "胸廓盒/骨盆盒的简化与扭转表现",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-limb-joints",
+      "name": "四肢与关节",
+      "description": "上臂/前臂/大腿/小腿的结构简化与关节活动范围",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-weight-balance",
+      "name": "重心与平衡",
+      "description": "站立/行走/跑步姿态中的重心线与contrapposto",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-foreshortening",
+      "name": "透视缩短",
+      "description": "肢体朝向画面时的缩短表现方法",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-cloth-folds",
+      "name": "衣褶与布料",
+      "description": "五种基本衣褶类型与布料在人体上的行为",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-animal-anatomy",
+      "name": "动物解剖基础",
+      "description": "四足/鸟类/爬行动物的骨骼肌肉简化",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "theory",
+      "tags": [
+        "拓展"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-anatomy-stylization",
+      "name": "解剖风格化",
+      "description": "在写实解剖基础上进行夸张/简化的原则",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-life-drawing",
+      "name": "人体写生",
+      "description": "模特写生的观察方法与画室练习技巧",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-contour-drawing",
+      "name": "轮廓线描",
+      "description": "用不同粗细/轻重的线条表达结构与空间",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-construction-drawing",
+      "name": "结构素描",
+      "description": "用几何体(球/柱/盒)构建人体结构",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-dynamic-pose",
+      "name": "动态姿势设计",
+      "description": "动作线、力量传递与戏剧化姿态构思",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-anatomy-ref-practice",
+      "name": "解剖参考实践",
+      "description": "利用解剖图谱、3D参考工具辅助速写练习",
+      "subdomain_id": "anatomy-sketching",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-perspective-intro",
+      "name": "透视法概述",
+      "description": "透视法的历史与在概念设计中的核心地位",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-one-point",
+      "name": "一点透视",
+      "description": "单灭点透视的原理与室内/走廊场景应用",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-two-point",
+      "name": "两点透视",
+      "description": "两灭点透视的原理与建筑/道具外观应用",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-three-point",
+      "name": "三点透视",
+      "description": "三灭点透视的俯视/仰视戏剧化效果",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-horizon-line",
+      "name": "地平线与视平线",
+      "description": "地平线的定义、视角高度与构图关系",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-vanishing-point",
+      "name": "灭点与灭线",
+      "description": "灭点的放置策略对画面效果的影响",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-perspective-grid",
+      "name": "透视网格",
+      "description": "使用透视网格辅助绘画的方法与数字工具",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-ellipse-in-perspective",
+      "name": "透视中的椭圆",
+      "description": "圆形在透视中的椭圆表现与次轴方向",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-box-in-perspective",
+      "name": "方块透视练习",
+      "description": "通过旋转方块掌握三维空间理解",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-curvilinear-perspective",
+      "name": "曲线透视",
+      "description": "鱼眼/五点透视与全景环境设计",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-atmospheric-perspective",
+      "name": "大气透视",
+      "description": "色彩/明度/对比度随距离衰减的原理",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-scale-depth-cues",
+      "name": "尺度与深度暗示",
+      "description": "重叠/大小递减/纹理梯度等深度信号",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-camera-lens",
+      "name": "镜头与视角",
+      "description": "广角/标准/长焦镜头对透视的影响",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-perspective-for-env",
+      "name": "环境透视应用",
+      "description": "在概念设计场景中应用透视法的实战",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-perspective-for-vehicle",
+      "name": "载具透视绘制",
+      "description": "复杂曲面载具在透视中的构建方法",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-birds-eye-worms-eye",
+      "name": "鸟瞰与虫视",
+      "description": "极端视角的表现力与适用场景",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-perspective-correction",
+      "name": "透视校正",
+      "description": "草图阶段的透视检查与常见错误修正",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-multi-vp-scene",
+      "name": "多灭点复杂场景",
+      "description": "多个物体不同朝向时的灭点管理",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-measured-perspective",
+      "name": "度量透视",
+      "description": "利用测量点精确控制透视比例",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-perspective-master",
+      "name": "透视综合运用",
+      "description": "在完整概念设计流程中灵活运用各种透视技法",
+      "subdomain_id": "perspective",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-color-intro",
+      "name": "色彩理论概述",
+      "description": "色彩科学基础与在视觉设计中的核心作用",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-wheel",
+      "name": "色轮与色彩模型",
+      "description": "RGB/CMY色轮、HSB/HSL模型与数字色彩空间",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-hue-sat-val",
+      "name": "色相/饱和度/明度",
+      "description": "色彩三属性的定义与视觉效果",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-color-harmony",
+      "name": "色彩和谐",
+      "description": "互补/分裂互补/类似/三角等配色方案",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-warm-cool",
+      "name": "冷暖色温",
+      "description": "色温对情绪/空间感/光源表现的影响",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-value",
+      "name": "色彩明度关系",
+      "description": "明度是设计基础——色彩服从于明度结构",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-contrast",
+      "name": "色彩对比",
+      "description": "七种色彩对比(伊顿)——色相/明度/冷暖/补色/同时/饱和度/面积对比",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-limited-palette",
+      "name": "限定调色板",
+      "description": "使用3~5色限定调色板统一画面氛围",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-psychology",
+      "name": "色彩心理学",
+      "description": "不同色彩的情绪联想与文化含义",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-mixing",
+      "name": "色彩混合",
+      "description": "加法/减法混色原理与数字绘画中的混色",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-in-light",
+      "name": "光照中的色彩",
+      "description": "光源色/环境色/固有色三者的交互关系",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-key",
+      "name": "Color Key",
+      "description": "用小幅色彩缩略图探索画面整体色调",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-scripting",
+      "name": "色彩脚本",
+      "description": "用连续Color Key讲述故事色彩弧线",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-gamut-mapping",
+      "name": "色域映射",
+      "description": "利用Gamut Mask限制色域实现和谐配色",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-grading",
+      "name": "色彩分级",
+      "description": "后期色彩调整在概念图完善中的方法",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-monochrome-study",
+      "name": "单色研究",
+      "description": "去色练习强化明度关系理解",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-temperature-shift",
+      "name": "色温渐变",
+      "description": "从光源到阴影的色温过渡规律",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-local-color-vs-light",
+      "name": "固有色vs光色",
+      "description": "区分物体本身颜色与光照赋予的颜色",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-color-storytelling",
+      "name": "色彩叙事",
+      "description": "通过色彩变化传达故事节奏与情感",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-digital-color-tools",
+      "name": "数字色彩工具",
+      "description": "Photoshop/Procreate调色板工具与色彩插件",
+      "subdomain_id": "color-theory",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-composition-intro",
+      "name": "构图概述",
+      "description": "构图原则在概念设计中的引导作用",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-rule-of-thirds",
+      "name": "三分法则",
+      "description": "三分线/交点与视觉重心放置",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-golden-ratio",
+      "name": "黄金比例",
+      "description": "黄金分割/螺旋线在构图中的应用",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-leading-lines",
+      "name": "引导线",
+      "description": "利用线条引导观者视线到焦点的方法",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-focal-point",
+      "name": "焦点与层次",
+      "description": "主次焦点的建立与视觉层次划分",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-negative-space",
+      "name": "负空间",
+      "description": "留白/负形在构图中的平衡作用",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-framing",
+      "name": "框架构图",
+      "description": "利用前景元素框定主体增强纵深感",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-symmetry-asymmetry",
+      "name": "对称与不对称",
+      "description": "对称的庄重感vs不对称的动态感",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-rhythm-pattern",
+      "name": "节奏与重复",
+      "description": "元素的重复/渐变/交替创造视觉节奏",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-tangent-avoidance",
+      "name": "切线规避",
+      "description": "避免边缘相切/对齐造成的视觉粘连",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-thumbnail-sketch",
+      "name": "缩略图构图",
+      "description": "小尺寸快速探索多种构图方案",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-big-medium-small",
+      "name": "大中小形状",
+      "description": "用不同尺度的形状块面构建有趣的剪影",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-value-composition",
+      "name": "明度构图",
+      "description": "用2~3个明度区域规划画面大结构",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-dynamic-composition",
+      "name": "动态构图",
+      "description": "对角线/曲线/放射线创造运动感",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-static-composition",
+      "name": "静态构图",
+      "description": "水平/垂直线为主的稳定构图",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-depth-layers",
+      "name": "景深层次",
+      "description": "前景/中景/远景的空间层次设计",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-cinematic-composition",
+      "name": "电影化构图",
+      "description": "宽银幕比例/镜头语言在概念设计中的应用",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-readability",
+      "name": "可读性",
+      "description": "画面清晰度——剪影/对比/聚焦的测试方法",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-composition-breakdowns",
+      "name": "经典构图分析",
+      "description": "分析大师画作的构图骨架",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-composition-workflow",
+      "name": "构图工作流",
+      "description": "从缩略图到精稿的完整构图决策流程",
+      "subdomain_id": "composition",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-light-intro",
+      "name": "光影概述",
+      "description": "光与影是形体表现与氛围塑造的基础",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-light-source-types",
+      "name": "光源类型",
+      "description": "直射光/散射光/环境光的特性与表现",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-form-shadow",
+      "name": "形体阴影",
+      "description": "在球/柱/盒基本体上理解明暗交界线",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-cast-shadow",
+      "name": "投射阴影",
+      "description": "投影的形状/软硬/色彩与光源关系",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-value-scale",
+      "name": "明度阶梯",
+      "description": "五调子——高光/亮面/中间调/暗面/反光",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-core-shadow",
+      "name": "明暗交界线",
+      "description": "明暗交界线的特性——最暗/最实/形体关键",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-reflected-light",
+      "name": "反射光",
+      "description": "环境反射光对暗面的影响与控制",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-ambient-occlusion-art",
+      "name": "环境遮蔽(美术)",
+      "description": "裂缝/缝隙处的自然暗化现象",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-rim-light",
+      "name": "轮廓光",
+      "description": "背光/边缘光在分离层次中的作用",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-subsurface-scattering-art",
+      "name": "次表面散射(美术)",
+      "description": "光线穿透皮肤/树叶/蜡的红色透射现象",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-material-light-response",
+      "name": "材质光响应",
+      "description": "不同材质(金属/布/皮/玻璃)对光的不同反应",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-single-light-setup",
+      "name": "单灯光设置",
+      "description": "一个主光源的场景布光练习",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-two-light-setup",
+      "name": "双灯光设置",
+      "description": "主光+辅助光/轮廓光的经典布光",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-dramatic-lighting",
+      "name": "戏剧化光影",
+      "description": "低角度/高对比/色彩光的情绪渲染",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-outdoor-lighting",
+      "name": "室外光照",
+      "description": "太阳直射/多云/黄昏/夜晚的光影特征",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "场景"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-indoor-lighting",
+      "name": "室内光照",
+      "description": "人工光源/窗光/混合光的室内布光",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "场景"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-through-light",
+      "name": "光影情绪",
+      "description": "通过光影布局传达不同情绪与叙事",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-light-logic",
+      "name": "光照逻辑",
+      "description": "一致的光照方向/强度/颜色的逻辑性",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-shadow-shapes",
+      "name": "阴影造型",
+      "description": "将阴影视为可设计的形状——简化并图案化",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-lighting-study",
+      "name": "光影临摹研究",
+      "description": "临摹照片/电影截图学习真实光照",
+      "subdomain_id": "light-shadow",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "实践"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-intro",
+      "name": "角色设计概述",
+      "description": "游戏/影视角色设计的流程与目标",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-archetype",
+      "name": "角色原型",
+      "description": "英雄/导师/阴影等叙事原型与视觉映射",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-silhouette",
+      "name": "角色剪影",
+      "description": "通过剪影辨识度验证角色设计的独特性",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-char-shape-language",
+      "name": "角色形状语言",
+      "description": "圆/方/三角在角色性格暗示中的应用",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-char-color-palette",
+      "name": "角色配色",
+      "description": "为角色选择能传达性格/阵营/身份的配色",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-costume",
+      "name": "服装设计",
+      "description": "服装风格/功能/文化背景对角色定义的作用",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-expression-sheet",
+      "name": "表情集",
+      "description": "六种基本表情与角色专属微表情设计",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-turnaround",
+      "name": "角色三视图",
+      "description": "正/侧/背三视图的绘制规范",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-char-action-pose",
+      "name": "角色动作图",
+      "description": "代表性动作姿势表达角色性格",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-backstory-visual",
+      "name": "视觉叙事细节",
+      "description": "通过伤疤/配件/磨损等细节暗示角色经历",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-fantasy",
+      "name": "奇幻角色设计",
+      "description": "精灵/矮人/兽人等奇幻种族的视觉语言",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-sci-fi",
+      "name": "科幻角色设计",
+      "description": "太空服/赛博装/外星人的科幻视觉语言",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-creature-design",
+      "name": "生物设计",
+      "description": "将动物解剖与幻想元素融合的生物设计",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-npc-lineup",
+      "name": "NPC阵容设计",
+      "description": "配角群的差异化设计与阵容协调",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-villain",
+      "name": "反派角色设计",
+      "description": "通过形状/色彩/比例传达威胁感",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-age-variation",
+      "name": "年龄变体",
+      "description": "同一角色不同年龄的设计调整",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-iteration",
+      "name": "迭代设计",
+      "description": "从大量缩略图中筛选/融合/进化设计",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-presentation",
+      "name": "角色展示板",
+      "description": "完整角色设计的最终展示排版",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-game-constraints",
+      "name": "游戏角色约束",
+      "description": "面数/动画/可读性等游戏角色特殊限制",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-char-pipeline",
+      "name": "角色设计管线",
+      "description": "从概念简报到交付3D团队的完整流程",
+      "subdomain_id": "character-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-env-intro",
+      "name": "环境设计概述",
+      "description": "概念设计中环境设计的职责与交付物",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-worldbuilding",
+      "name": "世界观构建",
+      "description": "文化/气候/历史对环境视觉的影响",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-landmark",
+      "name": "地标设计",
+      "description": "具有辨识度的标志性建筑/地形设计",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-env-architecture-style",
+      "name": "建筑风格",
+      "description": "哥特/巴洛克/现代/未来主义等建筑语言",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-natural-formation",
+      "name": "自然地形",
+      "description": "山脉/森林/河流/洞穴的结构与绘制",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-vegetation-design",
+      "name": "植被设计",
+      "description": "树木/灌木/花卉的形状语言与场景适配",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-atmosphere-mood",
+      "name": "氛围营造",
+      "description": "通过光/色/雾/天空表达场景情绪",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-env-scale-storytelling",
+      "name": "尺度叙事",
+      "description": "利用人物/已知物暗示环境宏大/狭窄",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-callout-sheet",
+      "name": "环境说明图",
+      "description": "建筑材质/结构细节的放大标注图",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-birds-eye-map",
+      "name": "鸟瞰地图",
+      "description": "俯视角度的区域/关卡环境规划图",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-interior",
+      "name": "室内环境设计",
+      "description": "室内空间的光照/家具/材质氛围设计",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "场景"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-exterior",
+      "name": "室外环境设计",
+      "description": "城镇/荒野/战场等室外场景设计",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "场景"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-fantasy-world",
+      "name": "奇幻世界设计",
+      "description": "魔法/异界场景的可信世界构建",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-sci-fi-world",
+      "name": "科幻世界设计",
+      "description": "太空站/赛博城市/外星地貌的设计",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-establishing-shot",
+      "name": "定场景画",
+      "description": "电影化宽幅场景概念图的制作",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-env-modular-thinking",
+      "name": "模块化思维",
+      "description": "可重复/组合的模块化环境设计理念",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-paintover",
+      "name": "照片涂绘",
+      "description": "在照片/3D渲染基础上进行概念涂绘",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-color-script-env",
+      "name": "环境色彩脚本",
+      "description": "关卡各区域的色彩/光照进展规划",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-narrative-env",
+      "name": "叙事性环境",
+      "description": "通过场景细节讲述不在场人物的故事",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-env-pipeline",
+      "name": "环境设计管线",
+      "description": "从概念简报到交付美术/关卡团队的流程",
+      "subdomain_id": "environment-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-prop-intro",
+      "name": "道具设计概述",
+      "description": "概念设计中道具设计的职责——武器/物品/载具",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-shape-language",
+      "name": "道具形状语言",
+      "description": "形状语言在道具功能/阵营/时代暗示中的应用",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-prop-function-form",
+      "name": "功能决定形态",
+      "description": "从使用方式出发推导道具外形",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-material-callout",
+      "name": "材质标注",
+      "description": "在道具概念图上标注材质/颜色/反射等信息",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-weapon-design",
+      "name": "武器设计",
+      "description": "近战/远程武器的造型/比例/细节设计",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-prop-vehicle-design",
+      "name": "载具设计",
+      "description": "汽车/飞船/坐骑的造型设计与透视表现",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "实战"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-everyday-objects",
+      "name": "日常物品设计",
+      "description": "家具/器皿/工具等背景道具的风格化设计",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-magical-items",
+      "name": "魔法物品设计",
+      "description": "符文/发光/浮空等魔法元素的视觉表现",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-tech-gadgets",
+      "name": "科技道具设计",
+      "description": "全息/能量/赛博科技设备的视觉语言",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-orthographic",
+      "name": "道具正交图",
+      "description": "精确的正面/侧面/顶面道具蓝图",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-exploded-view",
+      "name": "爆炸图",
+      "description": "拆解道具内部构造的展示方法",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-size-chart",
+      "name": "尺寸对比图",
+      "description": "道具与人物/其他道具的尺寸关系图",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-variation-exploration",
+      "name": "变体探索",
+      "description": "同一道具的多种设计方向快速探索",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-wear-history",
+      "name": "磨损与历史感",
+      "description": "通过磨损/修补/涂装赋予道具生命力",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-cultural-reference",
+      "name": "文化参考",
+      "description": "融入特定文化元素增加道具可信度",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-color-coding",
+      "name": "道具色彩编码",
+      "description": "通过颜色区分品质/阵营/功能",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-kit-of-parts",
+      "name": "部件库思维",
+      "description": "可组合部件在批量道具生成中的应用",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-readability-test",
+      "name": "可读性测试",
+      "description": "缩小/剪影/去色验证道具辨识度",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-presentation-sheet",
+      "name": "道具展示板",
+      "description": "完整道具概念的最终展示排版",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-prop-pipeline",
+      "name": "道具设计管线",
+      "description": "从概念简报到交付3D/动画团队的流程",
+      "subdomain_id": "prop-design",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-visdev-intro",
+      "name": "视觉开发概述",
+      "description": "Visual Development在影视/游戏项目中的角色",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-design-brief",
+      "name": "设计简报解读",
+      "description": "如何分析创意总监的项目简报并转化为视觉方案",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-research-phase",
+      "name": "前期调研",
+      "description": "历史/文化/自然参考资料的系统收集",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-key-art",
+      "name": "关键概念图",
+      "description": "定义项目视觉基调的核心概念插画",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-visdev-world-bible",
+      "name": "世界设定圣经",
+      "description": "记录视觉规则/材质/比例/标志性元素的文档",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-visdev-color-script",
+      "name": "全片色彩脚本",
+      "description": "按时间线规划整个项目的色彩情绪弧",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-look-dev",
+      "name": "Look Development",
+      "description": "材质/光照/渲染风格的视觉测试",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-beat-boards",
+      "name": "Beat Boards",
+      "description": "关键叙事节点的情绪概念图",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "叙事"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-exploration-phase",
+      "name": "视觉探索阶段",
+      "description": "广泛方向探索——多风格/多方案并行",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-refinement",
+      "name": "视觉精炼",
+      "description": "从探索到确定的收敛过程与决策标准",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-presentation-to-director",
+      "name": "向导演提案",
+      "description": "如何有效地向创意总监展示视觉方案",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-iteration-process",
+      "name": "迭代反馈循环",
+      "description": "接收反馈、修改、重新提案的高效循环",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-cross-department",
+      "name": "跨部门协作",
+      "description": "与建模/动画/特效/关卡团队的沟通规范",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-art-test",
+      "name": "美术测试",
+      "description": "面试/外包项目的美术测试应对策略",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "职业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-film-vs-game",
+      "name": "影视vs游戏VisDev",
+      "description": "影视和游戏视觉开发的差异与共通点",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "对比"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-concept-package",
+      "name": "概念设计包",
+      "description": "完整项目交付物打包——角色/环境/道具/色彩",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-visdev-3d-concept",
+      "name": "3D概念设计",
+      "description": "利用3D工具加速概念设计——KeyShot/Blender",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-ai-assist",
+      "name": "AI辅助概念设计",
+      "description": "AI图像工具在概念探索中的使用与伦理",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-portfolio",
+      "name": "概念设计作品集",
+      "description": "个人作品集的筛选/排版/叙事构建",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "职业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-visdev-industry-pipeline",
+      "name": "行业管线",
+      "description": "AAA游戏/动画电影的概念设计生产管线",
+      "subdomain_id": "visual-development",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-style-intro",
+      "name": "风格指南概述",
+      "description": "为何需要统一的视觉风格——一致性与品牌识别",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-realism-spectrum",
+      "name": "写实度光谱",
+      "description": "从超写实到极简风格的连续谱系",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-style-line-quality",
+      "name": "线条风格",
+      "description": "线条粗细/质感/密度对风格的定义作用",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-rendering-level",
+      "name": "渲染精度",
+      "description": "涂鸦/平涂/软渲染/完成稿的层次选择",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-color-identity",
+      "name": "色彩身份",
+      "description": "标志性色彩方案作为品牌/IP识别元素",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-shape-consistency",
+      "name": "形状一致性",
+      "description": "项目内所有元素遵循相同的形状语言规则",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-style-proportion-rules",
+      "name": "比例规则",
+      "description": "角色/环境/道具间的比例关系约定",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-texture-treatment",
+      "name": "纹理处理",
+      "description": "笔触/噪点/平滑度等表面纹理风格",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-anime",
+      "name": "日式动画风格",
+      "description": "赛璐珞/大眼/发型等日式动画视觉特征",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-western-cartoon",
+      "name": "西方卡通风格",
+      "description": "弹性变形/夸张表情/圆润造型等特征",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-semi-realistic",
+      "name": "半写实风格",
+      "description": "写实结构+风格化表现的平衡点",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-pixel-art",
+      "name": "像素艺术风格",
+      "description": "像素画的色彩限制/抖色/比例规则",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-flat-design",
+      "name": "扁平设计风格",
+      "description": "几何简化/纯色/极简的现代风格",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-painterly",
+      "name": "油画风格",
+      "description": "可见笔触/厚涂/色彩层叠的传统画风",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "风格"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-document",
+      "name": "风格文档编写",
+      "description": "将风格规则整理为可执行的设计文档",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-style-reference-board",
+      "name": "风格参考板",
+      "description": "收集定义目标风格的视觉参考",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-consistency-check",
+      "name": "一致性检查",
+      "description": "审查不同画师产出是否符合风格规范",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "质量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-evolution",
+      "name": "风格演化",
+      "description": "项目过程中风格微调与有意进化",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-mixing",
+      "name": "风格混搭",
+      "description": "融合多种风格创造独特视觉语言",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-style-art-direction",
+      "name": "美术指导",
+      "description": "美术总监如何定义/守护/传达项目风格",
+      "subdomain_id": "style-guide",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "职业"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-mood-intro",
+      "name": "Moodboard概述",
+      "description": "Moodboard在概念设计前期的引导作用",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-purpose",
+      "name": "参考收集目的",
+      "description": "明确参考是为了理解规律而非复制",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-source-finding",
+      "name": "参考来源",
+      "description": "书籍/博物馆/电影/实地考察/网络等参考渠道",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-digital-tools",
+      "name": "数字收集工具",
+      "description": "PureRef/Eagle/Pinterest等参考管理工具",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-categorization",
+      "name": "参考分类",
+      "description": "按色彩/形状/材质/氛围/功能分类组织参考",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-mood-layout",
+      "name": "Moodboard排版",
+      "description": "有效的Moodboard布局——主次/分区/标注",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-color-extraction",
+      "name": "色彩提取",
+      "description": "从参考图中提取配色方案的方法",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-shape-extraction",
+      "name": "形状提取",
+      "description": "从参考中提炼形状语言与设计母题",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-texture-ref",
+      "name": "纹理/材质参考",
+      "description": "收集目标材质的特写照片与观察要点",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-lighting-ref",
+      "name": "光影参考",
+      "description": "电影截图/摄影作品作为光影设计参考",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技巧"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-cultural-ref",
+      "name": "文化参考",
+      "description": "建筑/服饰/图腾/纹样等文化元素参考",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "研究"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-photo-study",
+      "name": "照片研究",
+      "description": "从照片中分析构图/光影/色彩的练习",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-mood-master-study",
+      "name": "大师临摹",
+      "description": "临摹经典画作理解构图/色彩/笔触决策",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "学习"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "cd-mood-film-analysis",
+      "name": "电影画面分析",
+      "description": "分析电影镜头的构图/色彩/光影设计",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-presentation",
+      "name": "参考展示",
+      "description": "向团队展示参考板时的叙述方法",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-ref-vs-copy",
+      "name": "参考vs抄袭",
+      "description": "合理借鉴与创意边界的伦理思考",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "伦理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-field-research",
+      "name": "实地调研",
+      "description": "实地考察/拍照/速写收集一手参考",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "研究"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-cross-discipline",
+      "name": "跨领域参考",
+      "description": "从时装/建筑/自然/科技中获取创意灵感",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "创意"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-ref-library",
+      "name": "个人参考库",
+      "description": "建立持续更新的个人视觉参考数据库",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cd-mood-synthesis",
+      "name": "参考综合运用",
+      "description": "将多源参考融合为原创设计的方法论",
+      "subdomain_id": "moodboard-ref",
+      "domain_id": "concept-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": true
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "cd-anatomy-intro",
+      "target_id": "cd-skeleton-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-anatomy-intro",
+      "target_id": "cd-line-of-action",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-skeleton-structure",
+      "target_id": "cd-muscle-groups",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-line-of-action",
+      "target_id": "cd-gesture-drawing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-anatomy-intro",
+      "target_id": "cd-body-proportion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-skeleton-structure",
+      "target_id": "cd-head-face",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-skeleton-structure",
+      "target_id": "cd-hand-foot-sketch",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-skeleton-structure",
+      "target_id": "cd-torso-rib-pelvis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-skeleton-structure",
+      "target_id": "cd-limb-joints",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-body-proportion",
+      "target_id": "cd-weight-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-gesture-drawing",
+      "target_id": "cd-foreshortening",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-muscle-groups",
+      "target_id": "cd-cloth-folds",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-muscle-groups",
+      "target_id": "cd-animal-anatomy",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-muscle-groups",
+      "target_id": "cd-anatomy-stylization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-anatomy-intro",
+      "target_id": "cd-life-drawing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-line-of-action",
+      "target_id": "cd-contour-drawing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-anatomy-intro",
+      "target_id": "cd-construction-drawing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-gesture-drawing",
+      "target_id": "cd-dynamic-pose",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-life-drawing",
+      "target_id": "cd-anatomy-ref-practice",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-perspective-intro",
+      "target_id": "cd-one-point",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-perspective-intro",
+      "target_id": "cd-horizon-line",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-one-point",
+      "target_id": "cd-two-point",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-two-point",
+      "target_id": "cd-three-point",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-horizon-line",
+      "target_id": "cd-vanishing-point",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-vanishing-point",
+      "target_id": "cd-perspective-grid",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-two-point",
+      "target_id": "cd-ellipse-in-perspective",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-two-point",
+      "target_id": "cd-box-in-perspective",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-three-point",
+      "target_id": "cd-curvilinear-perspective",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-perspective-intro",
+      "target_id": "cd-atmospheric-perspective",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-perspective-intro",
+      "target_id": "cd-scale-depth-cues",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-vanishing-point",
+      "target_id": "cd-camera-lens",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-three-point",
+      "target_id": "cd-perspective-for-env",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-ellipse-in-perspective",
+      "target_id": "cd-perspective-for-vehicle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-three-point",
+      "target_id": "cd-birds-eye-worms-eye",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-perspective-grid",
+      "target_id": "cd-perspective-correction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-three-point",
+      "target_id": "cd-multi-vp-scene",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-vanishing-point",
+      "target_id": "cd-measured-perspective",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-perspective-for-env",
+      "target_id": "cd-perspective-master",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-multi-vp-scene",
+      "target_id": "cd-perspective-master",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-intro",
+      "target_id": "cd-color-wheel",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-wheel",
+      "target_id": "cd-hue-sat-val",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-hue-sat-val",
+      "target_id": "cd-color-harmony",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-hue-sat-val",
+      "target_id": "cd-warm-cool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-hue-sat-val",
+      "target_id": "cd-color-value",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-value",
+      "target_id": "cd-color-contrast",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-harmony",
+      "target_id": "cd-limited-palette",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-intro",
+      "target_id": "cd-color-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-wheel",
+      "target_id": "cd-color-mixing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-warm-cool",
+      "target_id": "cd-color-in-light",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-limited-palette",
+      "target_id": "cd-color-key",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-key",
+      "target_id": "cd-color-scripting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-harmony",
+      "target_id": "cd-gamut-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-key",
+      "target_id": "cd-color-grading",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-color-value",
+      "target_id": "cd-monochrome-study",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-warm-cool",
+      "target_id": "cd-color-temperature-shift",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-in-light",
+      "target_id": "cd-local-color-vs-light",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-scripting",
+      "target_id": "cd-color-storytelling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-color-intro",
+      "target_id": "cd-digital-color-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-composition-intro",
+      "target_id": "cd-rule-of-thirds",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-composition-intro",
+      "target_id": "cd-golden-ratio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-rule-of-thirds",
+      "target_id": "cd-leading-lines",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-rule-of-thirds",
+      "target_id": "cd-focal-point",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-focal-point",
+      "target_id": "cd-negative-space",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-composition-intro",
+      "target_id": "cd-framing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-composition-intro",
+      "target_id": "cd-symmetry-asymmetry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-composition-intro",
+      "target_id": "cd-rhythm-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-leading-lines",
+      "target_id": "cd-tangent-avoidance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-composition-intro",
+      "target_id": "cd-thumbnail-sketch",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-focal-point",
+      "target_id": "cd-big-medium-small",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-thumbnail-sketch",
+      "target_id": "cd-value-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-leading-lines",
+      "target_id": "cd-dynamic-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-symmetry-asymmetry",
+      "target_id": "cd-static-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-composition-intro",
+      "target_id": "cd-depth-layers",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-dynamic-composition",
+      "target_id": "cd-cinematic-composition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-focal-point",
+      "target_id": "cd-readability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-composition-intro",
+      "target_id": "cd-composition-breakdowns",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-value-composition",
+      "target_id": "cd-composition-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-cinematic-composition",
+      "target_id": "cd-composition-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-light-intro",
+      "target_id": "cd-light-source-types",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-light-source-types",
+      "target_id": "cd-form-shadow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-form-shadow",
+      "target_id": "cd-cast-shadow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-form-shadow",
+      "target_id": "cd-value-scale",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-value-scale",
+      "target_id": "cd-core-shadow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-core-shadow",
+      "target_id": "cd-reflected-light",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-form-shadow",
+      "target_id": "cd-ambient-occlusion-art",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-light-source-types",
+      "target_id": "cd-rim-light",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-reflected-light",
+      "target_id": "cd-subsurface-scattering-art",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-form-shadow",
+      "target_id": "cd-material-light-response",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-light-source-types",
+      "target_id": "cd-single-light-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-single-light-setup",
+      "target_id": "cd-two-light-setup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-two-light-setup",
+      "target_id": "cd-dramatic-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-light-source-types",
+      "target_id": "cd-outdoor-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-light-source-types",
+      "target_id": "cd-indoor-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-dramatic-lighting",
+      "target_id": "cd-mood-through-light",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-light-source-types",
+      "target_id": "cd-light-logic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-cast-shadow",
+      "target_id": "cd-shadow-shapes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-light-intro",
+      "target_id": "cd-lighting-study",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-char-intro",
+      "target_id": "cd-char-archetype",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-intro",
+      "target_id": "cd-char-silhouette",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-intro",
+      "target_id": "cd-char-shape-language",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-shape-language",
+      "target_id": "cd-char-color-palette",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-archetype",
+      "target_id": "cd-char-costume",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-intro",
+      "target_id": "cd-char-expression-sheet",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-silhouette",
+      "target_id": "cd-char-turnaround",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-turnaround",
+      "target_id": "cd-char-action-pose",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-archetype",
+      "target_id": "cd-char-backstory-visual",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-costume",
+      "target_id": "cd-char-fantasy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-costume",
+      "target_id": "cd-char-sci-fi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-shape-language",
+      "target_id": "cd-char-creature-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-silhouette",
+      "target_id": "cd-char-npc-lineup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-shape-language",
+      "target_id": "cd-char-villain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-intro",
+      "target_id": "cd-char-age-variation",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-char-silhouette",
+      "target_id": "cd-char-iteration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-turnaround",
+      "target_id": "cd-char-presentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-intro",
+      "target_id": "cd-char-game-constraints",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-presentation",
+      "target_id": "cd-char-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-char-game-constraints",
+      "target_id": "cd-char-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-intro",
+      "target_id": "cd-env-worldbuilding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-worldbuilding",
+      "target_id": "cd-env-landmark",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-worldbuilding",
+      "target_id": "cd-env-architecture-style",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-intro",
+      "target_id": "cd-env-natural-formation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-natural-formation",
+      "target_id": "cd-env-vegetation-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-intro",
+      "target_id": "cd-env-atmosphere-mood",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-landmark",
+      "target_id": "cd-env-scale-storytelling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-landmark",
+      "target_id": "cd-env-callout-sheet",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-worldbuilding",
+      "target_id": "cd-env-birds-eye-map",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-atmosphere-mood",
+      "target_id": "cd-env-interior",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-atmosphere-mood",
+      "target_id": "cd-env-exterior",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-architecture-style",
+      "target_id": "cd-env-fantasy-world",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-architecture-style",
+      "target_id": "cd-env-sci-fi-world",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-exterior",
+      "target_id": "cd-env-establishing-shot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-intro",
+      "target_id": "cd-env-modular-thinking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-establishing-shot",
+      "target_id": "cd-env-paintover",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-env-atmosphere-mood",
+      "target_id": "cd-env-color-script-env",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-worldbuilding",
+      "target_id": "cd-env-narrative-env",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-establishing-shot",
+      "target_id": "cd-env-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-env-callout-sheet",
+      "target_id": "cd-env-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-intro",
+      "target_id": "cd-prop-shape-language",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-intro",
+      "target_id": "cd-prop-function-form",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-shape-language",
+      "target_id": "cd-prop-material-callout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-shape-language",
+      "target_id": "cd-prop-weapon-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-function-form",
+      "target_id": "cd-prop-vehicle-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-intro",
+      "target_id": "cd-prop-everyday-objects",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-shape-language",
+      "target_id": "cd-prop-magical-items",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-shape-language",
+      "target_id": "cd-prop-tech-gadgets",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-weapon-design",
+      "target_id": "cd-prop-orthographic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-orthographic",
+      "target_id": "cd-prop-exploded-view",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-intro",
+      "target_id": "cd-prop-size-chart",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-intro",
+      "target_id": "cd-prop-variation-exploration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-material-callout",
+      "target_id": "cd-prop-wear-history",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-intro",
+      "target_id": "cd-prop-cultural-reference",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-prop-shape-language",
+      "target_id": "cd-prop-color-coding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-variation-exploration",
+      "target_id": "cd-prop-kit-of-parts",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-shape-language",
+      "target_id": "cd-prop-readability-test",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-orthographic",
+      "target_id": "cd-prop-presentation-sheet",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-presentation-sheet",
+      "target_id": "cd-prop-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-prop-vehicle-design",
+      "target_id": "cd-prop-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-visdev-intro",
+      "target_id": "cd-visdev-design-brief",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-design-brief",
+      "target_id": "cd-visdev-research-phase",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-research-phase",
+      "target_id": "cd-visdev-key-art",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-key-art",
+      "target_id": "cd-visdev-world-bible",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-key-art",
+      "target_id": "cd-visdev-color-script",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-key-art",
+      "target_id": "cd-visdev-look-dev",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-color-script",
+      "target_id": "cd-visdev-beat-boards",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-design-brief",
+      "target_id": "cd-visdev-exploration-phase",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-exploration-phase",
+      "target_id": "cd-visdev-refinement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-refinement",
+      "target_id": "cd-visdev-presentation-to-director",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-presentation-to-director",
+      "target_id": "cd-visdev-iteration-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-intro",
+      "target_id": "cd-visdev-cross-department",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-intro",
+      "target_id": "cd-visdev-art-test",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-visdev-intro",
+      "target_id": "cd-visdev-film-vs-game",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-world-bible",
+      "target_id": "cd-visdev-concept-package",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-intro",
+      "target_id": "cd-visdev-3d-concept",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-visdev-intro",
+      "target_id": "cd-visdev-ai-assist",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-visdev-intro",
+      "target_id": "cd-visdev-portfolio",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-visdev-concept-package",
+      "target_id": "cd-visdev-industry-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-visdev-cross-department",
+      "target_id": "cd-visdev-industry-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-intro",
+      "target_id": "cd-style-realism-spectrum",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-intro",
+      "target_id": "cd-style-line-quality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-intro",
+      "target_id": "cd-style-rendering-level",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-intro",
+      "target_id": "cd-style-color-identity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-intro",
+      "target_id": "cd-style-shape-consistency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-intro",
+      "target_id": "cd-style-proportion-rules",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-intro",
+      "target_id": "cd-style-texture-treatment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-realism-spectrum",
+      "target_id": "cd-style-anime",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-realism-spectrum",
+      "target_id": "cd-style-western-cartoon",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-realism-spectrum",
+      "target_id": "cd-style-semi-realistic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-realism-spectrum",
+      "target_id": "cd-style-pixel-art",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-realism-spectrum",
+      "target_id": "cd-style-flat-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-realism-spectrum",
+      "target_id": "cd-style-painterly",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-shape-consistency",
+      "target_id": "cd-style-document",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-intro",
+      "target_id": "cd-style-reference-board",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-document",
+      "target_id": "cd-style-consistency-check",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-style-document",
+      "target_id": "cd-style-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-style-anime",
+      "target_id": "cd-style-mixing",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-style-document",
+      "target_id": "cd-style-art-direction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-intro",
+      "target_id": "cd-mood-purpose",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-purpose",
+      "target_id": "cd-mood-source-finding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-source-finding",
+      "target_id": "cd-mood-digital-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-source-finding",
+      "target_id": "cd-mood-categorization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-categorization",
+      "target_id": "cd-mood-layout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-categorization",
+      "target_id": "cd-mood-color-extraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-categorization",
+      "target_id": "cd-mood-shape-extraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-categorization",
+      "target_id": "cd-mood-texture-ref",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-source-finding",
+      "target_id": "cd-mood-lighting-ref",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-source-finding",
+      "target_id": "cd-mood-cultural-ref",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-source-finding",
+      "target_id": "cd-mood-photo-study",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-photo-study",
+      "target_id": "cd-mood-master-study",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-lighting-ref",
+      "target_id": "cd-mood-film-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-layout",
+      "target_id": "cd-mood-presentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-purpose",
+      "target_id": "cd-mood-ref-vs-copy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-source-finding",
+      "target_id": "cd-mood-field-research",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-source-finding",
+      "target_id": "cd-mood-cross-discipline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-digital-tools",
+      "target_id": "cd-mood-ref-library",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-master-study",
+      "target_id": "cd-mood-synthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-mood-shape-extraction",
+      "target_id": "cd-mood-synthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cd-muscle-groups",
+      "target_id": "cd-char-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-body-proportion",
+      "target_id": "cd-char-turnaround",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-gesture-drawing",
+      "target_id": "cd-char-action-pose",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-anatomy-stylization",
+      "target_id": "cd-char-shape-language",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-animal-anatomy",
+      "target_id": "cd-char-creature-design",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-perspective-for-env",
+      "target_id": "cd-env-establishing-shot",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-atmospheric-perspective",
+      "target_id": "cd-env-atmosphere-mood",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-birds-eye-worms-eye",
+      "target_id": "cd-env-birds-eye-map",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-warm-cool",
+      "target_id": "cd-light-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-color-in-light",
+      "target_id": "cd-material-light-response",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-limited-palette",
+      "target_id": "cd-char-color-palette",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-color-scripting",
+      "target_id": "cd-env-color-script-env",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-depth-layers",
+      "target_id": "cd-env-establishing-shot",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-thumbnail-sketch",
+      "target_id": "cd-env-establishing-shot",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "cd-dramatic-lighting",
+      "target_id": "cd-env-atmosphere-mood",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-mood-through-light",
+      "target_id": "cd-env-narrative-env",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "cd-char-pipeline",
+      "target_id": "cd-visdev-concept-package",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-env-pipeline",
+      "target_id": "cd-visdev-concept-package",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-prop-pipeline",
+      "target_id": "cd-visdev-concept-package",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-style-shape-consistency",
+      "target_id": "cd-char-shape-language",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "cd-style-document",
+      "target_id": "cd-visdev-world-bible",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-mood-categorization",
+      "target_id": "cd-visdev-research-phase",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cd-mood-color-extraction",
+      "target_id": "cd-color-key",
+      "relation_type": "prerequisite",
+      "strength": 0.6
+    },
+    {
+      "source_id": "cd-perspective-for-vehicle",
+      "target_id": "cd-prop-vehicle-design",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    }
+  ]
+}

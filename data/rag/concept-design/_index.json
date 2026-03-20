@@ -1,0 +1,1819 @@
+{
+  "version": "1.0",
+  "domain": "concept-design",
+  "domain_name": "概念设计",
+  "generated_at": "2026-03-21T00:00:00",
+  "total_concepts": 220,
+  "stats": {
+    "total_docs": 220,
+    "total_chars": 125151,
+    "by_subdomain": {
+      "anatomy-sketching": {
+        "count": 20,
+        "chars": 11388
+      },
+      "perspective": {
+        "count": 20,
+        "chars": 11086
+      },
+      "color-theory": {
+        "count": 20,
+        "chars": 11291
+      },
+      "composition": {
+        "count": 20,
+        "chars": 10660
+      },
+      "light-shadow": {
+        "count": 20,
+        "chars": 10835
+      },
+      "character-design": {
+        "count": 20,
+        "chars": 11671
+      },
+      "environment-design": {
+        "count": 20,
+        "chars": 11558
+      },
+      "prop-design": {
+        "count": 20,
+        "chars": 11670
+      },
+      "visual-development": {
+        "count": 20,
+        "chars": 11922
+      },
+      "style-guide": {
+        "count": 20,
+        "chars": 10842
+      },
+      "moodboard-ref": {
+        "count": 20,
+        "chars": 12228
+      }
+    }
+  },
+  "documents": [
+    {
+      "id": "cd-anatomy-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-anatomy-intro.md",
+      "title": "人体解剖概述",
+      "chars": 552
+    },
+    {
+      "id": "cd-skeleton-structure",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-skeleton-structure.md",
+      "title": "骨骼结构",
+      "chars": 550
+    },
+    {
+      "id": "cd-muscle-groups",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-muscle-groups.md",
+      "title": "主要肌群",
+      "chars": 552
+    },
+    {
+      "id": "cd-gesture-drawing",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-gesture-drawing.md",
+      "title": "姿态速写",
+      "chars": 628
+    },
+    {
+      "id": "cd-line-of-action",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-line-of-action.md",
+      "title": "动态线",
+      "chars": 525
+    },
+    {
+      "id": "cd-body-proportion",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-body-proportion.md",
+      "title": "人体比例系统",
+      "chars": 557
+    },
+    {
+      "id": "cd-head-face",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-head-face.md",
+      "title": "头部与面部结构",
+      "chars": 555
+    },
+    {
+      "id": "cd-hand-foot-sketch",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-hand-foot-sketch.md",
+      "title": "手脚速写",
+      "chars": 603
+    },
+    {
+      "id": "cd-torso-rib-pelvis",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-torso-rib-pelvis.md",
+      "title": "躯干:胸廓与骨盆",
+      "chars": 543
+    },
+    {
+      "id": "cd-limb-joints",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-limb-joints.md",
+      "title": "四肢与关节",
+      "chars": 541
+    },
+    {
+      "id": "cd-weight-balance",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-weight-balance.md",
+      "title": "重心与平衡",
+      "chars": 553
+    },
+    {
+      "id": "cd-foreshortening",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-foreshortening.md",
+      "title": "透视缩短",
+      "chars": 593
+    },
+    {
+      "id": "cd-cloth-folds",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-cloth-folds.md",
+      "title": "衣褶与布料",
+      "chars": 531
+    },
+    {
+      "id": "cd-animal-anatomy",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-animal-anatomy.md",
+      "title": "动物解剖基础",
+      "chars": 540
+    },
+    {
+      "id": "cd-anatomy-stylization",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-anatomy-stylization.md",
+      "title": "解剖风格化",
+      "chars": 538
+    },
+    {
+      "id": "cd-life-drawing",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-life-drawing.md",
+      "title": "人体写生",
+      "chars": 606
+    },
+    {
+      "id": "cd-contour-drawing",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-contour-drawing.md",
+      "title": "轮廓线描",
+      "chars": 600
+    },
+    {
+      "id": "cd-construction-drawing",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-construction-drawing.md",
+      "title": "结构素描",
+      "chars": 601
+    },
+    {
+      "id": "cd-dynamic-pose",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-dynamic-pose.md",
+      "title": "动态姿势设计",
+      "chars": 607
+    },
+    {
+      "id": "cd-anatomy-ref-practice",
+      "domain_id": "concept-design",
+      "subdomain_id": "anatomy-sketching",
+      "file": "concept-design/cd-anatomy-ref-practice.md",
+      "title": "解剖参考实践",
+      "chars": 613
+    },
+    {
+      "id": "cd-perspective-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-perspective-intro.md",
+      "title": "透视法概述",
+      "chars": 538
+    },
+    {
+      "id": "cd-one-point",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-one-point.md",
+      "title": "一点透视",
+      "chars": 525
+    },
+    {
+      "id": "cd-two-point",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-two-point.md",
+      "title": "两点透视",
+      "chars": 531
+    },
+    {
+      "id": "cd-three-point",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-three-point.md",
+      "title": "三点透视",
+      "chars": 527
+    },
+    {
+      "id": "cd-horizon-line",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-horizon-line.md",
+      "title": "地平线与视平线",
+      "chars": 540
+    },
+    {
+      "id": "cd-vanishing-point",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-vanishing-point.md",
+      "title": "灭点与灭线",
+      "chars": 533
+    },
+    {
+      "id": "cd-perspective-grid",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-perspective-grid.md",
+      "title": "透视网格",
+      "chars": 601
+    },
+    {
+      "id": "cd-ellipse-in-perspective",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-ellipse-in-perspective.md",
+      "title": "透视中的椭圆",
+      "chars": 534
+    },
+    {
+      "id": "cd-box-in-perspective",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-box-in-perspective.md",
+      "title": "方块透视练习",
+      "chars": 597
+    },
+    {
+      "id": "cd-curvilinear-perspective",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-curvilinear-perspective.md",
+      "title": "曲线透视",
+      "chars": 511
+    },
+    {
+      "id": "cd-atmospheric-perspective",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-atmospheric-perspective.md",
+      "title": "大气透视",
+      "chars": 523
+    },
+    {
+      "id": "cd-scale-depth-cues",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-scale-depth-cues.md",
+      "title": "尺度与深度暗示",
+      "chars": 536
+    },
+    {
+      "id": "cd-camera-lens",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-camera-lens.md",
+      "title": "镜头与视角",
+      "chars": 522
+    },
+    {
+      "id": "cd-perspective-for-env",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-perspective-for-env.md",
+      "title": "环境透视应用",
+      "chars": 613
+    },
+    {
+      "id": "cd-perspective-for-vehicle",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-perspective-for-vehicle.md",
+      "title": "载具透视绘制",
+      "chars": 606
+    },
+    {
+      "id": "cd-birds-eye-worms-eye",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-birds-eye-worms-eye.md",
+      "title": "鸟瞰与虫视",
+      "chars": 520
+    },
+    {
+      "id": "cd-perspective-correction",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-perspective-correction.md",
+      "title": "透视校正",
+      "chars": 591
+    },
+    {
+      "id": "cd-multi-vp-scene",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-multi-vp-scene.md",
+      "title": "多灭点复杂场景",
+      "chars": 609
+    },
+    {
+      "id": "cd-measured-perspective",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-measured-perspective.md",
+      "title": "度量透视",
+      "chars": 510
+    },
+    {
+      "id": "cd-perspective-master",
+      "domain_id": "concept-design",
+      "subdomain_id": "perspective",
+      "file": "concept-design/cd-perspective-master.md",
+      "title": "透视综合运用",
+      "chars": 619
+    },
+    {
+      "id": "cd-color-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-intro.md",
+      "title": "色彩理论概述",
+      "chars": 549
+    },
+    {
+      "id": "cd-color-wheel",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-wheel.md",
+      "title": "色轮与色彩模型",
+      "chars": 572
+    },
+    {
+      "id": "cd-hue-sat-val",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-hue-sat-val.md",
+      "title": "色相/饱和度/明度",
+      "chars": 554
+    },
+    {
+      "id": "cd-color-harmony",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-harmony.md",
+      "title": "色彩和谐",
+      "chars": 537
+    },
+    {
+      "id": "cd-warm-cool",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-warm-cool.md",
+      "title": "冷暖色温",
+      "chars": 536
+    },
+    {
+      "id": "cd-color-value",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-value.md",
+      "title": "色彩明度关系",
+      "chars": 548
+    },
+    {
+      "id": "cd-color-contrast",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-contrast.md",
+      "title": "色彩对比",
+      "chars": 557
+    },
+    {
+      "id": "cd-limited-palette",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-limited-palette.md",
+      "title": "限定调色板",
+      "chars": 615
+    },
+    {
+      "id": "cd-color-psychology",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-psychology.md",
+      "title": "色彩心理学",
+      "chars": 521
+    },
+    {
+      "id": "cd-color-mixing",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-mixing.md",
+      "title": "色彩混合",
+      "chars": 524
+    },
+    {
+      "id": "cd-color-in-light",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-in-light.md",
+      "title": "光照中的色彩",
+      "chars": 547
+    },
+    {
+      "id": "cd-color-key",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-key.md",
+      "title": "Color Key",
+      "chars": 629
+    },
+    {
+      "id": "cd-color-scripting",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-scripting.md",
+      "title": "色彩脚本",
+      "chars": 618
+    },
+    {
+      "id": "cd-gamut-mapping",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-gamut-mapping.md",
+      "title": "色域映射",
+      "chars": 605
+    },
+    {
+      "id": "cd-color-grading",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-grading.md",
+      "title": "色彩分级",
+      "chars": 598
+    },
+    {
+      "id": "cd-monochrome-study",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-monochrome-study.md",
+      "title": "单色研究",
+      "chars": 587
+    },
+    {
+      "id": "cd-color-temperature-shift",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-temperature-shift.md",
+      "title": "色温渐变",
+      "chars": 511
+    },
+    {
+      "id": "cd-local-color-vs-light",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-local-color-vs-light.md",
+      "title": "固有色vs光色",
+      "chars": 537
+    },
+    {
+      "id": "cd-color-storytelling",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-color-storytelling.md",
+      "title": "色彩叙事",
+      "chars": 515
+    },
+    {
+      "id": "cd-digital-color-tools",
+      "domain_id": "concept-design",
+      "subdomain_id": "color-theory",
+      "file": "concept-design/cd-digital-color-tools.md",
+      "title": "数字色彩工具",
+      "chars": 631
+    },
+    {
+      "id": "cd-composition-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-composition-intro.md",
+      "title": "构图概述",
+      "chars": 521
+    },
+    {
+      "id": "cd-rule-of-thirds",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-rule-of-thirds.md",
+      "title": "三分法则",
+      "chars": 517
+    },
+    {
+      "id": "cd-golden-ratio",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-golden-ratio.md",
+      "title": "黄金比例",
+      "chars": 511
+    },
+    {
+      "id": "cd-leading-lines",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-leading-lines.md",
+      "title": "引导线",
+      "chars": 517
+    },
+    {
+      "id": "cd-focal-point",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-focal-point.md",
+      "title": "焦点与层次",
+      "chars": 525
+    },
+    {
+      "id": "cd-negative-space",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-negative-space.md",
+      "title": "负空间",
+      "chars": 504
+    },
+    {
+      "id": "cd-framing",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-framing.md",
+      "title": "框架构图",
+      "chars": 511
+    },
+    {
+      "id": "cd-symmetry-asymmetry",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-symmetry-asymmetry.md",
+      "title": "对称与不对称",
+      "chars": 528
+    },
+    {
+      "id": "cd-rhythm-pattern",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-rhythm-pattern.md",
+      "title": "节奏与重复",
+      "chars": 521
+    },
+    {
+      "id": "cd-tangent-avoidance",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-tangent-avoidance.md",
+      "title": "切线规避",
+      "chars": 512
+    },
+    {
+      "id": "cd-thumbnail-sketch",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-thumbnail-sketch.md",
+      "title": "缩略图构图",
+      "chars": 598
+    },
+    {
+      "id": "cd-big-medium-small",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-big-medium-small.md",
+      "title": "大中小形状",
+      "chars": 522
+    },
+    {
+      "id": "cd-value-composition",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-value-composition.md",
+      "title": "明度构图",
+      "chars": 596
+    },
+    {
+      "id": "cd-dynamic-composition",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-dynamic-composition.md",
+      "title": "动态构图",
+      "chars": 516
+    },
+    {
+      "id": "cd-static-composition",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-static-composition.md",
+      "title": "静态构图",
+      "chars": 509
+    },
+    {
+      "id": "cd-depth-layers",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-depth-layers.md",
+      "title": "景深层次",
+      "chars": 516
+    },
+    {
+      "id": "cd-cinematic-composition",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-cinematic-composition.md",
+      "title": "电影化构图",
+      "chars": 531
+    },
+    {
+      "id": "cd-readability",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-readability.md",
+      "title": "可读性",
+      "chars": 516
+    },
+    {
+      "id": "cd-composition-breakdowns",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-composition-breakdowns.md",
+      "title": "经典构图分析",
+      "chars": 589
+    },
+    {
+      "id": "cd-composition-workflow",
+      "domain_id": "concept-design",
+      "subdomain_id": "composition",
+      "file": "concept-design/cd-composition-workflow.md",
+      "title": "构图工作流",
+      "chars": 600
+    },
+    {
+      "id": "cd-light-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-light-intro.md",
+      "title": "光影概述",
+      "chars": 525
+    },
+    {
+      "id": "cd-light-source-types",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-light-source-types.md",
+      "title": "光源类型",
+      "chars": 524
+    },
+    {
+      "id": "cd-form-shadow",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-form-shadow.md",
+      "title": "形体阴影",
+      "chars": 525
+    },
+    {
+      "id": "cd-cast-shadow",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-cast-shadow.md",
+      "title": "投射阴影",
+      "chars": 518
+    },
+    {
+      "id": "cd-value-scale",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-value-scale.md",
+      "title": "明度阶梯",
+      "chars": 527
+    },
+    {
+      "id": "cd-core-shadow",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-core-shadow.md",
+      "title": "明暗交界线",
+      "chars": 531
+    },
+    {
+      "id": "cd-reflected-light",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-reflected-light.md",
+      "title": "反射光",
+      "chars": 514
+    },
+    {
+      "id": "cd-ambient-occlusion-art",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-ambient-occlusion-art.md",
+      "title": "环境遮蔽(美术)",
+      "chars": 531
+    },
+    {
+      "id": "cd-rim-light",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-rim-light.md",
+      "title": "轮廓光",
+      "chars": 505
+    },
+    {
+      "id": "cd-subsurface-scattering-art",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-subsurface-scattering-art.md",
+      "title": "次表面散射(美术)",
+      "chars": 546
+    },
+    {
+      "id": "cd-material-light-response",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-material-light-response.md",
+      "title": "材质光响应",
+      "chars": 538
+    },
+    {
+      "id": "cd-single-light-setup",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-single-light-setup.md",
+      "title": "单灯光设置",
+      "chars": 592
+    },
+    {
+      "id": "cd-two-light-setup",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-two-light-setup.md",
+      "title": "双灯光设置",
+      "chars": 599
+    },
+    {
+      "id": "cd-dramatic-lighting",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-dramatic-lighting.md",
+      "title": "戏剧化光影",
+      "chars": 605
+    },
+    {
+      "id": "cd-outdoor-lighting",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-outdoor-lighting.md",
+      "title": "室外光照",
+      "chars": 517
+    },
+    {
+      "id": "cd-indoor-lighting",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-indoor-lighting.md",
+      "title": "室内光照",
+      "chars": 513
+    },
+    {
+      "id": "cd-mood-through-light",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-mood-through-light.md",
+      "title": "光影情绪",
+      "chars": 518
+    },
+    {
+      "id": "cd-light-logic",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-light-logic.md",
+      "title": "光照逻辑",
+      "chars": 515
+    },
+    {
+      "id": "cd-shadow-shapes",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-shadow-shapes.md",
+      "title": "阴影造型",
+      "chars": 595
+    },
+    {
+      "id": "cd-lighting-study",
+      "domain_id": "concept-design",
+      "subdomain_id": "light-shadow",
+      "file": "concept-design/cd-lighting-study.md",
+      "title": "光影临摹研究",
+      "chars": 597
+    },
+    {
+      "id": "cd-char-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-intro.md",
+      "title": "角色设计概述",
+      "chars": 539
+    },
+    {
+      "id": "cd-char-archetype",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-archetype.md",
+      "title": "角色原型",
+      "chars": 535
+    },
+    {
+      "id": "cd-char-silhouette",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-silhouette.md",
+      "title": "角色剪影",
+      "chars": 535
+    },
+    {
+      "id": "cd-char-shape-language",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-shape-language.md",
+      "title": "角色形状语言",
+      "chars": 543
+    },
+    {
+      "id": "cd-char-color-palette",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-color-palette.md",
+      "title": "角色配色",
+      "chars": 607
+    },
+    {
+      "id": "cd-char-costume",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-costume.md",
+      "title": "服装设计",
+      "chars": 615
+    },
+    {
+      "id": "cd-char-expression-sheet",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-expression-sheet.md",
+      "title": "表情集",
+      "chars": 590
+    },
+    {
+      "id": "cd-char-turnaround",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-turnaround.md",
+      "title": "角色三视图",
+      "chars": 604
+    },
+    {
+      "id": "cd-char-action-pose",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-action-pose.md",
+      "title": "角色动作图",
+      "chars": 598
+    },
+    {
+      "id": "cd-char-backstory-visual",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-backstory-visual.md",
+      "title": "视觉叙事细节",
+      "chars": 535
+    },
+    {
+      "id": "cd-char-fantasy",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-fantasy.md",
+      "title": "奇幻角色设计",
+      "chars": 607
+    },
+    {
+      "id": "cd-char-sci-fi",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-sci-fi.md",
+      "title": "科幻角色设计",
+      "chars": 607
+    },
+    {
+      "id": "cd-char-creature-design",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-creature-design.md",
+      "title": "生物设计",
+      "chars": 604
+    },
+    {
+      "id": "cd-char-npc-lineup",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-npc-lineup.md",
+      "title": "NPC阵容设计",
+      "chars": 604
+    },
+    {
+      "id": "cd-char-villain",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-villain.md",
+      "title": "反派角色设计",
+      "chars": 603
+    },
+    {
+      "id": "cd-char-age-variation",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-age-variation.md",
+      "title": "年龄变体",
+      "chars": 589
+    },
+    {
+      "id": "cd-char-iteration",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-iteration.md",
+      "title": "迭代设计",
+      "chars": 595
+    },
+    {
+      "id": "cd-char-presentation",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-presentation.md",
+      "title": "角色展示板",
+      "chars": 600
+    },
+    {
+      "id": "cd-char-game-constraints",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-game-constraints.md",
+      "title": "游戏角色约束",
+      "chars": 542
+    },
+    {
+      "id": "cd-char-pipeline",
+      "domain_id": "concept-design",
+      "subdomain_id": "character-design",
+      "file": "concept-design/cd-char-pipeline.md",
+      "title": "角色设计管线",
+      "chars": 619
+    },
+    {
+      "id": "cd-env-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-intro.md",
+      "title": "环境设计概述",
+      "chars": 540
+    },
+    {
+      "id": "cd-env-worldbuilding",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-worldbuilding.md",
+      "title": "世界观构建",
+      "chars": 535
+    },
+    {
+      "id": "cd-env-landmark",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-landmark.md",
+      "title": "地标设计",
+      "chars": 605
+    },
+    {
+      "id": "cd-env-architecture-style",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-architecture-style.md",
+      "title": "建筑风格",
+      "chars": 538
+    },
+    {
+      "id": "cd-env-natural-formation",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-natural-formation.md",
+      "title": "自然地形",
+      "chars": 602
+    },
+    {
+      "id": "cd-env-vegetation-design",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-vegetation-design.md",
+      "title": "植被设计",
+      "chars": 597
+    },
+    {
+      "id": "cd-env-atmosphere-mood",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-atmosphere-mood.md",
+      "title": "氛围营造",
+      "chars": 533
+    },
+    {
+      "id": "cd-env-scale-storytelling",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-scale-storytelling.md",
+      "title": "尺度叙事",
+      "chars": 519
+    },
+    {
+      "id": "cd-env-callout-sheet",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-callout-sheet.md",
+      "title": "环境说明图",
+      "chars": 603
+    },
+    {
+      "id": "cd-env-birds-eye-map",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-birds-eye-map.md",
+      "title": "鸟瞰地图",
+      "chars": 598
+    },
+    {
+      "id": "cd-env-interior",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-interior.md",
+      "title": "室内环境设计",
+      "chars": 605
+    },
+    {
+      "id": "cd-env-exterior",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-exterior.md",
+      "title": "室外环境设计",
+      "chars": 606
+    },
+    {
+      "id": "cd-env-fantasy-world",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-fantasy-world.md",
+      "title": "奇幻世界设计",
+      "chars": 599
+    },
+    {
+      "id": "cd-env-sci-fi-world",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-sci-fi-world.md",
+      "title": "科幻世界设计",
+      "chars": 603
+    },
+    {
+      "id": "cd-env-establishing-shot",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-establishing-shot.md",
+      "title": "定场景画",
+      "chars": 601
+    },
+    {
+      "id": "cd-env-modular-thinking",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-modular-thinking.md",
+      "title": "模块化思维",
+      "chars": 525
+    },
+    {
+      "id": "cd-env-paintover",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-paintover.md",
+      "title": "照片涂绘",
+      "chars": 595
+    },
+    {
+      "id": "cd-env-color-script-env",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-color-script-env.md",
+      "title": "环境色彩脚本",
+      "chars": 606
+    },
+    {
+      "id": "cd-env-narrative-env",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-narrative-env.md",
+      "title": "叙事性环境",
+      "chars": 529
+    },
+    {
+      "id": "cd-env-pipeline",
+      "domain_id": "concept-design",
+      "subdomain_id": "environment-design",
+      "file": "concept-design/cd-env-pipeline.md",
+      "title": "环境设计管线",
+      "chars": 619
+    },
+    {
+      "id": "cd-prop-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-intro.md",
+      "title": "道具设计概述",
+      "chars": 557
+    },
+    {
+      "id": "cd-prop-shape-language",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-shape-language.md",
+      "title": "道具形状语言",
+      "chars": 551
+    },
+    {
+      "id": "cd-prop-function-form",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-function-form.md",
+      "title": "功能决定形态",
+      "chars": 530
+    },
+    {
+      "id": "cd-prop-material-callout",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-material-callout.md",
+      "title": "材质标注",
+      "chars": 610
+    },
+    {
+      "id": "cd-prop-weapon-design",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-weapon-design.md",
+      "title": "武器设计",
+      "chars": 605
+    },
+    {
+      "id": "cd-prop-vehicle-design",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-vehicle-design.md",
+      "title": "载具设计",
+      "chars": 613
+    },
+    {
+      "id": "cd-prop-everyday-objects",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-everyday-objects.md",
+      "title": "日常物品设计",
+      "chars": 611
+    },
+    {
+      "id": "cd-prop-magical-items",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-magical-items.md",
+      "title": "魔法物品设计",
+      "chars": 609
+    },
+    {
+      "id": "cd-prop-tech-gadgets",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-tech-gadgets.md",
+      "title": "科技道具设计",
+      "chars": 607
+    },
+    {
+      "id": "cd-prop-orthographic",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-orthographic.md",
+      "title": "道具正交图",
+      "chars": 606
+    },
+    {
+      "id": "cd-prop-exploded-view",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-exploded-view.md",
+      "title": "爆炸图",
+      "chars": 583
+    },
+    {
+      "id": "cd-prop-size-chart",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-size-chart.md",
+      "title": "尺寸对比图",
+      "chars": 600
+    },
+    {
+      "id": "cd-prop-variation-exploration",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-variation-exploration.md",
+      "title": "变体探索",
+      "chars": 599
+    },
+    {
+      "id": "cd-prop-wear-history",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-wear-history.md",
+      "title": "磨损与历史感",
+      "chars": 605
+    },
+    {
+      "id": "cd-prop-cultural-reference",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-cultural-reference.md",
+      "title": "文化参考",
+      "chars": 517
+    },
+    {
+      "id": "cd-prop-color-coding",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-color-coding.md",
+      "title": "道具色彩编码",
+      "chars": 527
+    },
+    {
+      "id": "cd-prop-kit-of-parts",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-kit-of-parts.md",
+      "title": "部件库思维",
+      "chars": 523
+    },
+    {
+      "id": "cd-prop-readability-test",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-readability-test.md",
+      "title": "可读性测试",
+      "chars": 598
+    },
+    {
+      "id": "cd-prop-presentation-sheet",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-presentation-sheet.md",
+      "title": "道具展示板",
+      "chars": 600
+    },
+    {
+      "id": "cd-prop-pipeline",
+      "domain_id": "concept-design",
+      "subdomain_id": "prop-design",
+      "file": "concept-design/cd-prop-pipeline.md",
+      "title": "道具设计管线",
+      "chars": 619
+    },
+    {
+      "id": "cd-visdev-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-intro.md",
+      "title": "视觉开发概述",
+      "chars": 570
+    },
+    {
+      "id": "cd-visdev-design-brief",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-design-brief.md",
+      "title": "设计简报解读",
+      "chars": 553
+    },
+    {
+      "id": "cd-visdev-research-phase",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-research-phase.md",
+      "title": "前期调研",
+      "chars": 608
+    },
+    {
+      "id": "cd-visdev-key-art",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-key-art.md",
+      "title": "关键概念图",
+      "chars": 610
+    },
+    {
+      "id": "cd-visdev-world-bible",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-world-bible.md",
+      "title": "世界设定圣经",
+      "chars": 627
+    },
+    {
+      "id": "cd-visdev-color-script",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-color-script.md",
+      "title": "全片色彩脚本",
+      "chars": 616
+    },
+    {
+      "id": "cd-visdev-look-dev",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-look-dev.md",
+      "title": "Look Development",
+      "chars": 652
+    },
+    {
+      "id": "cd-visdev-beat-boards",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-beat-boards.md",
+      "title": "Beat Boards",
+      "chars": 622
+    },
+    {
+      "id": "cd-visdev-exploration-phase",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-exploration-phase.md",
+      "title": "视觉探索阶段",
+      "chars": 612
+    },
+    {
+      "id": "cd-visdev-refinement",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-refinement.md",
+      "title": "视觉精炼",
+      "chars": 601
+    },
+    {
+      "id": "cd-visdev-presentation-to-director",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-presentation-to-director.md",
+      "title": "向导演提案",
+      "chars": 605
+    },
+    {
+      "id": "cd-visdev-iteration-process",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-iteration-process.md",
+      "title": "迭代反馈循环",
+      "chars": 606
+    },
+    {
+      "id": "cd-visdev-cross-department",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-cross-department.md",
+      "title": "跨部门协作",
+      "chars": 536
+    },
+    {
+      "id": "cd-visdev-art-test",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-art-test.md",
+      "title": "美术测试",
+      "chars": 595
+    },
+    {
+      "id": "cd-visdev-film-vs-game",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-film-vs-game.md",
+      "title": "影视vs游戏VisDev",
+      "chars": 567
+    },
+    {
+      "id": "cd-visdev-concept-package",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-concept-package.md",
+      "title": "概念设计包",
+      "chars": 624
+    },
+    {
+      "id": "cd-visdev-3d-concept",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-3d-concept.md",
+      "title": "3D概念设计",
+      "chars": 631
+    },
+    {
+      "id": "cd-visdev-ai-assist",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-ai-assist.md",
+      "title": "AI辅助概念设计",
+      "chars": 547
+    },
+    {
+      "id": "cd-visdev-portfolio",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-portfolio.md",
+      "title": "概念设计作品集",
+      "chars": 610
+    },
+    {
+      "id": "cd-visdev-industry-pipeline",
+      "domain_id": "concept-design",
+      "subdomain_id": "visual-development",
+      "file": "concept-design/cd-visdev-industry-pipeline.md",
+      "title": "行业管线",
+      "chars": 530
+    },
+    {
+      "id": "cd-style-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-intro.md",
+      "title": "风格指南概述",
+      "chars": 550
+    },
+    {
+      "id": "cd-style-realism-spectrum",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-realism-spectrum.md",
+      "title": "写实度光谱",
+      "chars": 535
+    },
+    {
+      "id": "cd-style-line-quality",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-line-quality.md",
+      "title": "线条风格",
+      "chars": 523
+    },
+    {
+      "id": "cd-style-rendering-level",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-rendering-level.md",
+      "title": "渲染精度",
+      "chars": 523
+    },
+    {
+      "id": "cd-style-color-identity",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-color-identity.md",
+      "title": "色彩身份",
+      "chars": 523
+    },
+    {
+      "id": "cd-style-shape-consistency",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-shape-consistency.md",
+      "title": "形状一致性",
+      "chars": 543
+    },
+    {
+      "id": "cd-style-proportion-rules",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-proportion-rules.md",
+      "title": "比例规则",
+      "chars": 519
+    },
+    {
+      "id": "cd-style-texture-treatment",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-texture-treatment.md",
+      "title": "纹理处理",
+      "chars": 519
+    },
+    {
+      "id": "cd-style-anime",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-anime.md",
+      "title": "日式动画风格",
+      "chars": 539
+    },
+    {
+      "id": "cd-style-western-cartoon",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-western-cartoon.md",
+      "title": "西方卡通风格",
+      "chars": 532
+    },
+    {
+      "id": "cd-style-semi-realistic",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-semi-realistic.md",
+      "title": "半写实风格",
+      "chars": 520
+    },
+    {
+      "id": "cd-style-pixel-art",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-pixel-art.md",
+      "title": "像素艺术风格",
+      "chars": 530
+    },
+    {
+      "id": "cd-style-flat-design",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-flat-design.md",
+      "title": "扁平设计风格",
+      "chars": 528
+    },
+    {
+      "id": "cd-style-painterly",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-painterly.md",
+      "title": "油画风格",
+      "chars": 520
+    },
+    {
+      "id": "cd-style-document",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-document.md",
+      "title": "风格文档编写",
+      "chars": 615
+    },
+    {
+      "id": "cd-style-reference-board",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-reference-board.md",
+      "title": "风格参考板",
+      "chars": 594
+    },
+    {
+      "id": "cd-style-consistency-check",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-consistency-check.md",
+      "title": "一致性检查",
+      "chars": 600
+    },
+    {
+      "id": "cd-style-evolution",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-evolution.md",
+      "title": "风格演化",
+      "chars": 515
+    },
+    {
+      "id": "cd-style-mixing",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-mixing.md",
+      "title": "风格混搭",
+      "chars": 591
+    },
+    {
+      "id": "cd-style-art-direction",
+      "domain_id": "concept-design",
+      "subdomain_id": "style-guide",
+      "file": "concept-design/cd-style-art-direction.md",
+      "title": "美术指导",
+      "chars": 523
+    },
+    {
+      "id": "cd-mood-intro",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-intro.md",
+      "title": "Moodboard概述",
+      "chars": 587
+    },
+    {
+      "id": "cd-mood-purpose",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-purpose.md",
+      "title": "参考收集目的",
+      "chars": 562
+    },
+    {
+      "id": "cd-mood-source-finding",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-source-finding.md",
+      "title": "参考来源",
+      "chars": 635
+    },
+    {
+      "id": "cd-mood-digital-tools",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-digital-tools.md",
+      "title": "数字收集工具",
+      "chars": 653
+    },
+    {
+      "id": "cd-mood-categorization",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-categorization.md",
+      "title": "参考分类",
+      "chars": 636
+    },
+    {
+      "id": "cd-mood-layout",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-layout.md",
+      "title": "Moodboard排版",
+      "chars": 665
+    },
+    {
+      "id": "cd-mood-color-extraction",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-color-extraction.md",
+      "title": "色彩提取",
+      "chars": 615
+    },
+    {
+      "id": "cd-mood-shape-extraction",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-shape-extraction.md",
+      "title": "形状提取",
+      "chars": 614
+    },
+    {
+      "id": "cd-mood-texture-ref",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-texture-ref.md",
+      "title": "纹理/材质参考",
+      "chars": 624
+    },
+    {
+      "id": "cd-mood-lighting-ref",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-lighting-ref.md",
+      "title": "光影参考",
+      "chars": 618
+    },
+    {
+      "id": "cd-mood-cultural-ref",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-cultural-ref.md",
+      "title": "文化参考",
+      "chars": 613
+    },
+    {
+      "id": "cd-mood-photo-study",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-photo-study.md",
+      "title": "照片研究",
+      "chars": 616
+    },
+    {
+      "id": "cd-mood-master-study",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-master-study.md",
+      "title": "大师临摹",
+      "chars": 620
+    },
+    {
+      "id": "cd-mood-film-analysis",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-film-analysis.md",
+      "title": "电影画面分析",
+      "chars": 621
+    },
+    {
+      "id": "cd-mood-presentation",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-presentation.md",
+      "title": "参考展示",
+      "chars": 612
+    },
+    {
+      "id": "cd-mood-ref-vs-copy",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-ref-vs-copy.md",
+      "title": "参考vs抄袭",
+      "chars": 543
+    },
+    {
+      "id": "cd-mood-field-research",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-field-research.md",
+      "title": "实地调研",
+      "chars": 609
+    },
+    {
+      "id": "cd-mood-cross-discipline",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-cross-discipline.md",
+      "title": "跨领域参考",
+      "chars": 545
+    },
+    {
+      "id": "cd-mood-ref-library",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-ref-library.md",
+      "title": "个人参考库",
+      "chars": 616
+    },
+    {
+      "id": "cd-mood-synthesis",
+      "domain_id": "concept-design",
+      "subdomain_id": "moodboard-ref",
+      "file": "concept-design/cd-mood-synthesis.md",
+      "title": "参考综合运用",
+      "chars": 624
+    }
+  ]
+}

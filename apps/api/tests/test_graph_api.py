@@ -619,13 +619,13 @@ async def test_english_domain_subdomain_filter():
 
 @pytest.mark.asyncio
 async def test_three_domains_listed():
-    """Domain list should include all 17 active domains."""
+    """Domain list should include all 18 active domains."""
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/domains")
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2086,3 +2086,100 @@ async def test_3d_art_domain_supplements():
     assert "3d-art" in DOMAIN_SUPPLEMENTS, "3d-art missing from DOMAIN_SUPPLEMENTS"
     assert "3d-art" in ASSESSMENT_SUPPLEMENTS, "3d-art missing from ASSESSMENT_SUPPLEMENTS"
     assert "管线" in DOMAIN_SUPPLEMENTS["3d-art"], "3D Art supplement should mention 管线"
+
+
+# ---------------------------------------------------------------------------
+# Phase 24 — Concept Design knowledge sphere tests
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_concept_design_seed_graph_integrity():
+    """Concept Design seed graph: 220 concepts, 240 edges, 11 subdomains, 39 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=concept-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 220, f"Expected 220 concepts, got {len(nodes)}"
+        assert len(edges) == 240, f"Expected 240 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 11, f"Expected 11 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 39, f"Expected 39 milestones, got {len(milestones)}"
+
+
+@pytest.mark.asyncio
+async def test_concept_design_subdomains():
+    """Concept Design should have 11 subdomains with correct IDs."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=concept-design")
+        assert resp.status_code == 200
+        subs = resp.json()
+        sub_ids = {s["id"] for s in subs}
+        expected = {
+            "anatomy-sketching", "perspective", "color-theory",
+            "composition", "light-shadow", "character-design",
+            "environment-design", "prop-design", "visual-development",
+            "style-guide", "moodboard-ref",
+        }
+        assert sub_ids == expected, f"Subdomain mismatch: {sub_ids ^ expected}"
+
+
+@pytest.mark.asyncio
+async def test_rag_concept_design_stats():
+    """Concept Design RAG stats should reflect 220 documents across 11 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=concept-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 220
+        assert data["domain"] == "concept-design"
+        assert len(data.get("by_subdomain", {})) == 11
+
+
+@pytest.mark.asyncio
+async def test_rag_concept_design_concept():
+    """Should return RAG content for a concept-design concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/cd-anatomy-intro?domain=concept-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "cd-anatomy-intro"
+        assert data["domain"] == "concept-design"
+        assert "解剖" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_concept_design_404_wrong_domain():
+    """Concept Design concept should 404 when queried against another domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/cd-anatomy-intro?domain=mathematics")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_concept_design_cross_sphere_links():
+    """Cross-sphere links for concept-design should exist (concept-design ↔ 3d-art/game-design/level-design)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=concept-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 20, f"Expected >= 20 cross-links, got {len(links)}"
+        partner_domains = set()
+        for lk in links:
+            partner_domains.add(lk.get("source_domain", ""))
+            partner_domains.add(lk.get("target_domain", ""))
+        assert "3d-art" in partner_domains, "Expected cross-links with 3d-art"
+        assert "game-design" in partner_domains, "Expected cross-links with game-design"
+
+
+@pytest.mark.asyncio
+async def test_concept_design_domain_supplements():
+    """Concept Design should have domain supplements in BE evaluation system."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "concept-design" in DOMAIN_SUPPLEMENTS, "concept-design missing from DOMAIN_SUPPLEMENTS"
+    assert "concept-design" in ASSESSMENT_SUPPLEMENTS, "concept-design missing from ASSESSMENT_SUPPLEMENTS"
+    assert "形状语言" in DOMAIN_SUPPLEMENTS["concept-design"], "Concept Design supplement should mention 形状语言"

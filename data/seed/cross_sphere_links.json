@@ -2218,6 +2218,198 @@
       "strength": 0.6,
       "description": "可交互道具设计需要理解游戏反馈系统原则",
       "relation": "related"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-turnaround",
+      "target_domain": "3d-art",
+      "target_id": "3da-org-body-proportion",
+      "relation": "applies",
+      "description": "角色三视图为3D建模提供精确的比例参考"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-pipeline",
+      "target_domain": "3d-art",
+      "target_id": "3da-org-game-ready-char",
+      "relation": "prerequisite",
+      "description": "角色概念设计交付后进入3D角色制作管线"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-establishing-shot",
+      "target_domain": "3d-art",
+      "target_id": "3da-env-intro",
+      "relation": "applies",
+      "description": "环境概念图为3D环境美术提供设计蓝图"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-prop-orthographic",
+      "target_domain": "3d-art",
+      "target_id": "3da-blockout",
+      "relation": "applies",
+      "description": "道具正交图直接指导3D白盒建模阶段"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-prop-material-callout",
+      "target_domain": "3d-art",
+      "target_id": "3da-tex-pbr-workflow",
+      "relation": "applies",
+      "description": "材质标注指导3D纹理贴图制作"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-style-realism-spectrum",
+      "target_domain": "3d-art",
+      "target_id": "3da-org-stylized-char",
+      "relation": "applies",
+      "description": "写实度光谱决定3D角色的风格化程度"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-color-harmony",
+      "target_domain": "3d-art",
+      "target_id": "3da-tex-color-theory",
+      "relation": "same_concept",
+      "description": "色彩和谐理论在2D概念和3D纹理中同样适用"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-modular-thinking",
+      "target_domain": "3d-art",
+      "target_id": "3da-env-modular",
+      "relation": "applies",
+      "description": "概念阶段的模块化思维直接影响3D模块化建模策略"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-prop-weapon-design",
+      "target_domain": "3d-art",
+      "target_id": "3da-prop-hero-asset",
+      "relation": "prerequisite",
+      "description": "武器概念设计是3D Hero资产制作的前置"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-visdev-look-dev",
+      "target_domain": "3d-art",
+      "target_id": "3da-tex-substance-painter",
+      "relation": "applies",
+      "description": "Look Dev阶段确定的材质方向指导Substance纹理制作"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-archetype",
+      "target_domain": "game-design",
+      "target_id": "player-personas",
+      "relation": "applies",
+      "description": "角色原型设计服务于游戏设计中的玩家角色定位"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-shape-language",
+      "target_domain": "game-design",
+      "target_id": "visual-feedback",
+      "relation": "applies",
+      "description": "形状语言帮助游戏玩家直观辨识角色阵营与能力"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-prop-color-coding",
+      "target_domain": "game-design",
+      "target_id": "loot-table",
+      "relation": "applies",
+      "description": "道具色彩编码与游戏设计中的品质分级系统对应"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-atmosphere-mood",
+      "target_domain": "game-design",
+      "target_id": "emotion-design",
+      "relation": "applies",
+      "description": "环境氛围营造直接支撑游戏情感化设计"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-visdev-color-script",
+      "target_domain": "game-design",
+      "target_id": "pacing-design",
+      "relation": "applies",
+      "description": "色彩脚本与游戏节奏/流程设计相互呼应"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-style-art-direction",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "applies",
+      "description": "美术指导方向是游戏设计文档的重要组成部分"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-readability",
+      "target_domain": "game-design",
+      "target_id": "accessibility-intro",
+      "relation": "applies",
+      "description": "视觉可读性与游戏可达性设计紧密相关"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-char-game-constraints",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "applies",
+      "description": "游戏角色设计约束源自游戏系统限制"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-birds-eye-map",
+      "target_domain": "level-design",
+      "target_id": "top-down-map",
+      "relation": "applies",
+      "description": "鸟瞰地图概念图为关卡俯视布局提供设计参考"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-landmark",
+      "target_domain": "level-design",
+      "target_id": "landmark-design",
+      "relation": "applies",
+      "description": "概念设计中的地标与关卡设计中的导航地标功能一致"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-scale-storytelling",
+      "target_domain": "level-design",
+      "target_id": "metrics-intro",
+      "relation": "applies",
+      "description": "环境尺度叙事与关卡度量系统相互约束"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-env-narrative-env",
+      "target_domain": "level-design",
+      "target_id": "env-storytelling",
+      "relation": "same_concept",
+      "description": "叙事性环境在概念设计和关卡设计中是同一理念"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-depth-layers",
+      "target_domain": "level-design",
+      "target_id": "sightline-test",
+      "relation": "applies",
+      "description": "构图景深层次与关卡视线设计方法相通"
+    },
+    {
+      "source_domain": "concept-design",
+      "source_id": "cd-cinematic-composition",
+      "target_domain": "level-design",
+      "target_id": "surprise-moment",
+      "relation": "applies",
+      "description": "电影化构图为关卡的电影化时刻提供视觉参考"
     }
   ],
   "meta": {
@@ -2254,5 +2446,12 @@
       "software-engineering_level-design": 4
     }
   },
-  "total": 275
+  "total": 298,
+  "_stats": {
+    "by_domain_pair": {
+      "concept-design_3d-art": 10,
+      "concept-design_game-design": 8,
+      "concept-design_level-design": 6
+    }
+  }
 }
