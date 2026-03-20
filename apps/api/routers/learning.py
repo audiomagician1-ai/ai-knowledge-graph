@@ -53,8 +53,8 @@ class SyncProgressRequest(BaseModel):
 # ── Endpoints ──
 
 @router.get("/stats")
-async def get_learning_stats(total_concepts: int = Query(default=267, ge=1, le=10000)):
-    """获取学习统计 — total_concepts should ideally come from seed data"""
+async def get_learning_stats(total_concepts: int = Query(default=400, ge=1, le=10000)):
+    """获取学习统计 — total_concepts default must match ai-engineering seed_graph concept count"""
     return compute_stats(total_concepts)
 
 

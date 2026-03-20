@@ -187,3 +187,20 @@ class TestLearningEndpoints:
         prog = get_progress("sync_demo_prot")
         assert prog is not None
         assert prog["status"] == "mastered", f"Expected 'mastered' but got '{prog['status']}'"
+
+    def test_stats_default_matches_seed_count(self):
+        """Round 70: /stats default total_concepts must match ai-engineering seed graph."""
+        import json, os
+        seed_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "seed", "ai-engineering", "seed_graph.json")
+        with open(seed_path, "r", encoding="utf-8") as f:
+            seed = json.load(f)
+        expected = len(seed["concepts"])
+
+        # Call /stats WITHOUT explicit total_concepts — should use default
+        res = client.get("/api/learning/stats")
+        assert res.status_code == 200
+        data = res.json()
+        assert data["total_concepts"] == expected, (
+            f"Stats default total_concepts={data['total_concepts']} doesn't match "
+            f"seed graph count={expected}. Update Query(default=...) in learning.py."
+        )
