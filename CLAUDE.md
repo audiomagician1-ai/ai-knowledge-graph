@@ -1274,6 +1274,21 @@ data/seed/         — 种子图谱数据
    - VERIFY: 805 tests (596 BE + 209 FE) 全通过, tsc 0 errors
    - STATUS: Workers全量1197行深度审查, 修复1个Medium级CS特定开场白问题+1个Low级null安全问题, 添加3个三方同步回归测试
 
+- ✅ **第七十九轮全栈横断面审查+配置/Schema/共享类型/数据脚本巡检 (2026-03-20)**:
+   - REVIEW: 全栈横断面广度审查(非运行时组件 + 配置层 + 共享类型):
+     - Supabase Migrations: 00001_initial_schema.sql(148行 — profiles/user_settings/user_concept_status/conversations/learning_events/RLS policies/handle_new_user trigger/PostgREST grants) + 00002_add_domain_id.sql(24行 — domain_id column+PK重建+index) — 全部正确, RLS策略完备
+     - Supabase Edge Functions: health/index.ts(13行 echo) + llm-proxy/index.ts(23行 TODO stub) + _shared/cors.ts(5行 wildcard) — 预期状态, llm-proxy为Phase 2预留
+     - FE Build Config: vite.config.ts(39行 — manualChunks vendor/ui/three/graph/markdown分包, proxy /api→8000, chunkSizeWarningLimit=1200 for Three.js) + tsconfig.json(23行 — strict/ES2022/bundler/paths @akg/shared) — 全部正确
+     - Shared Package: @akg/shared(types/graph.ts 88行 + types/learning.ts 63行 + types/chat.ts 53行 + types/user.ts 26行 + constants/index.ts 97行) — 类型定义正确, 但注意FE实际未import @akg/shared(仅learning.ts中LearningStats/ConceptStatus被使用), 大部分FE组件使用本地类型定义
+     - FE Build验证: `vite build` 3.91s, 唯一warning为learning.ts dynamic/static import(已知cosmetic), JS分包合理(vendor 49KB/ui 20KB/three 551KB/graph 767KB/markdown 158KB/index 804KB gzip后239KB)
+     - BE SQLite Client: sqlite_client.py(459行 — WAL mode/foreign keys/schema versioning v2/atomic TOCTOU-safe start_learning/never-demote record_assessment/streak auto-reset/conversation CRUD/30-day cleanup) — 全部正确
+     - BE Graph Router: graph.py(419行 — per-domain seed cache(double-check locking)/domains list(stats attach)/subdomains(concept count)/concepts/:id(prereqs+deps)/neighbors(BFS depth≤3)/RAG index(per-domain path dispatch ai-engineering flat vs nested)/RAG document(path traversal protection)/cross-links(domain+concept filter)) — 全部正确
+     - FE Learning Stats: learning.ts computeStats使用graphData.nodes.length(domain-specific正确值), BE default 400(ai-engineering), Workers default query param — 三端一致
+   - STALE TOOLING: data/scripts/(generate_rag_docs.py/batch_generate_local.py/parse_agent_output.py)和scripts/(14个.py文件)引用旧路径`data/seed/programming/`(应为`data/seed/ai-engineering/`)和旧edge schema(`e["type"]`/`e["source"]`/`e["target"]`而非`relation_type`/`source_id`/`target_id`) — 这些为一次性离线工具, 非运行时组件, 不影响应用功能, 但若需重新运行需更新
+   - GITHUB: 0 open issues, 12 closed (all resolved)
+   - VERIFY: 805 tests (596 BE + 209 FE) 全通过, tsc 0 errors, build 3.91s
+   - STATUS: 全栈横断面广度审查, 配置/Schema/共享类型/数据脚本全覆盖, 0 critical/0 major issues, 仅离线脚本存在stale路径(不影响运行时)
+
 - ✅ **第七十四轮FE深度审查+ChatPanel流清理修复+死代码清除 (2026-03-20, e868d32)**:
    - **FIX[Medium]**: ChatPanel.tsx未在unmount时调用`cancelStream()+reset()` — LearnPage有此清理(M-01注释), 但ChatPanel完全缺失。用户在GraphPage中关闭聊天面板(点X按钮)时, 如果AI正在流式输出, 旧流继续写入dialogue store, 可能导致下次打开不同概念时出现陈旧消息或状态异常。添加`useEffect cleanup`调用`cancelStream(); reset();`
    - **REFACTOR**: 清除LearnPage.tsx 3个unused imports(ArrowRight/Zap未使用, useIsDesktop+isDesktop赋值后未读取) + ChatPanel.tsx 1个unused import(clearNewlyUnlocked从useLearningStore解构但未调用)
