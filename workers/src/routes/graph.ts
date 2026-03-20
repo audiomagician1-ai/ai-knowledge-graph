@@ -17,6 +17,7 @@ import seedBiology from '../../data/seed/biology/seed_graph.json';
 import seedEconomics from '../../data/seed/economics/seed_graph.json';
 import seedWriting from '../../data/seed/writing/seed_graph.json';
 import seedGameDesign from '../../data/seed/game-design/seed_graph.json';
+import seedLevelDesign from '../../data/seed/level-design/seed_graph.json';
 // Multi-domain RAG index imports
 import ragAI from '../../data/rag/_index.json';
 import ragMath from '../../data/rag/mathematics/_index.json';
@@ -41,6 +42,7 @@ const seedMap: Record<string, any> = {
   'psychology': seedPsychology, 'philosophy': seedPhilosophy,
   'biology': seedBiology, 'economics': seedEconomics, 'writing': seedWriting,
   'game-design': seedGameDesign,
+  'level-design': seedLevelDesign,
 };
 const ragMap: Record<string, any> = {
   'ai-engineering': ragAI, 'mathematics': ragMath, 'english': ragEnglish,
@@ -48,6 +50,7 @@ const ragMap: Record<string, any> = {
   'psychology': ragPsychology, 'philosophy': ragPhilosophy,
   'biology': ragBiology, 'economics': ragEconomics, 'writing': ragWriting,
   'game-design': ragGameDesign,
+  // 'level-design': ragLevelDesign, // RAG not yet generated
 };
 function getSeed(domain: string): any { return seedMap[domain] || null; }
 function getRagIndex(domain: string): any { return ragMap[domain] || { documents: [], stats: {} }; }

@@ -1,0 +1,4143 @@
+{
+  "domain": {
+    "id": "level-design",
+    "name": "关卡设计",
+    "description": "从空间叙事到关卡编辑器的完整关卡设计知识体系",
+    "icon": "🗺️",
+    "color": "#d97706"
+  },
+  "subdomains": [
+    {
+      "id": "spatial-narrative",
+      "name": "空间叙事",
+      "order": 1
+    },
+    {
+      "id": "pacing-curve",
+      "name": "节奏曲线",
+      "order": 2
+    },
+    {
+      "id": "guidance-design",
+      "name": "引导设计",
+      "order": 3
+    },
+    {
+      "id": "blockout",
+      "name": "Blockout",
+      "order": 4
+    },
+    {
+      "id": "metrics-design",
+      "name": "Metric设计",
+      "order": 5
+    },
+    {
+      "id": "combat-space",
+      "name": "战斗空间",
+      "order": 6
+    },
+    {
+      "id": "level-editor",
+      "name": "关卡编辑器",
+      "order": 7
+    },
+    {
+      "id": "terrain-design",
+      "name": "地形设计",
+      "order": 8
+    },
+    {
+      "id": "lighting-narrative",
+      "name": "光照叙事",
+      "order": 9
+    },
+    {
+      "id": "ld-documentation",
+      "name": "LD文档",
+      "order": 10
+    }
+  ],
+  "concepts": [
+    {
+      "id": "ld-overview",
+      "name": "关卡设计概述",
+      "description": "关卡设计的定义、职责与工作流程",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "spatial-storytelling",
+      "name": "空间叙事原理",
+      "description": "通过空间布局传递故事的核心方法论",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "叙事"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "env-storytelling",
+      "name": "环境叙事",
+      "description": "用环境细节讲述背景故事（不依赖文字/对白）",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "叙事"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "visual-language",
+      "name": "视觉语言",
+      "description": "建筑风格、色彩、材质传递的信息与情感",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "landmark-design",
+      "name": "地标设计",
+      "description": "用地标引导玩家方向感与空间记忆",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "导航"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "negative-space",
+      "name": "负空间",
+      "description": "空旷区域的情感作用与节奏控制",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "spatial-hierarchy",
+      "name": "空间层次",
+      "description": "主路径、支线路径与隐藏区域的层次设计",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "world-building-ld",
+      "name": "世界观搭建(LD视角)",
+      "description": "关卡设计师如何服务于世界观一致性",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "叙事"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "set-piece",
+      "name": "定制场景(Set-piece)",
+      "description": "高潮事件的空间与脚本编排",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "叙事"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "discovery-design",
+      "name": "发现感设计",
+      "description": "秘密区域、隐藏路径与探索奖励",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "探索"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "point-of-interest",
+      "name": "兴趣点(POI)设计",
+      "description": "吸引玩家注意力的关键位置规划",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "导航"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "linear-vs-open",
+      "name": "线性vs开放世界",
+      "description": "两种关卡结构的设计取舍与适用场景",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hub-spoke",
+      "name": "Hub-and-Spoke结构",
+      "description": "中心区域辐射多路线的经典布局",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "looping-path",
+      "name": "环形路径设计",
+      "description": "Shortcut与解锁捷径的空间设计",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "verticality",
+      "name": "垂直性设计",
+      "description": "多层空间、高度差与垂直探索",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "scale-proportion",
+      "name": "尺度与比例",
+      "description": "建筑与环境尺度对玩家感知的影响",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "density-design",
+      "name": "密度设计",
+      "description": "内容密度、留白与信息过载平衡",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "theme-variation",
+      "name": "主题变化",
+      "description": "同一关卡内的视觉/玩法主题递进",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "叙事"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "player-path-analysis",
+      "name": "玩家路径分析",
+      "description": "热力图、轨迹追踪与路径优化",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "数据"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "immersion-design",
+      "name": "沉浸感设计",
+      "description": "减少打破沉浸的设计原则",
+      "subdomain_id": "spatial-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "体验"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pacing-intro",
+      "name": "节奏设计概述",
+      "description": "关卡节奏的定义与情感曲线",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "tension-release",
+      "name": "紧张与释放",
+      "description": "高压→放松的情感波动设计",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "情感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "intensity-curve",
+      "name": "强度曲线",
+      "description": "关卡内挑战强度的变化规律",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "曲线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "three-act-level",
+      "name": "三幕式关卡",
+      "description": "起承转合的经典叙事结构应用",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "rest-area",
+      "name": "休息区设计",
+      "description": "安全地带与补给点的节奏作用",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "climax-design",
+      "name": "高潮设计",
+      "description": "关卡终局的情感高潮编排",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "micro-pacing",
+      "name": "微观节奏",
+      "description": "房间级别的张力变化设计",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "macro-pacing",
+      "name": "宏观节奏",
+      "description": "关卡间/章节间的难度与情感曲线",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "reward-pacing",
+      "name": "奖励节奏",
+      "description": "奖励分布频率与玩家满足感曲线",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "奖励"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "content-gating",
+      "name": "内容门控",
+      "description": "何时解锁新机制/新区域的时机设计",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "门控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mechanic-introduction",
+      "name": "机制引入节奏",
+      "description": "新机制的教学→练习→挑战递进",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "教学"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "difficulty-ramp",
+      "name": "难度爬坡",
+      "description": "关卡内/关卡间的难度递增策略",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "难度"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "surprise-moment",
+      "name": "惊喜时刻",
+      "description": "打破预期的关卡事件与节奏转折",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "情感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "backtracking-design",
+      "name": "回溯设计",
+      "description": "回到已探索区域的新体验设计",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "结构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "level-length",
+      "name": "关卡时长控制",
+      "description": "单关卡时长与玩家注意力曲线",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "时间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "checkpoint-pacing",
+      "name": "检查点节奏",
+      "description": "存档点间距与失败成本控制",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "容错"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "narrative-pacing",
+      "name": "叙事节奏",
+      "description": "对话、过场、可玩段落的交替编排",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "叙事"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "exploration-pacing",
+      "name": "探索节奏",
+      "description": "开放区域的发现频率与报酬密度",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "探索"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "downtime-design",
+      "name": "停顿设计",
+      "description": "无战斗/低压区段的情感功能",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "情感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pacing-analysis",
+      "name": "节奏分析方法",
+      "description": "图表化关卡节奏并识别问题",
+      "subdomain_id": "pacing-curve",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practice",
+      "tags": [
+        "分析"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "guidance-intro",
+      "name": "引导设计概述",
+      "description": "玩家引导的分类与设计原则",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "visual-guidance",
+      "name": "视觉引导",
+      "description": "光线、颜色、对比度引导视线",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-guidance",
+      "name": "音频引导",
+      "description": "声音线索辅助空间定位与事件提示",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "音频"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "layout-guidance",
+      "name": "布局引导",
+      "description": "走廊、门洞、坡道的自然导流",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "breadcrumb-trail",
+      "name": "面包屑引导",
+      "description": "物品、NPC、特效的路径暗示",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "路径"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "affordance-ld",
+      "name": "可供性(Affordance)",
+      "description": "环境元素暗示可交互性的视觉语言",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "交互"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gating-mechanic",
+      "name": "门控机制",
+      "description": "钥匙、技能、事件解锁路径的设计",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "门控"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "tutorial-level",
+      "name": "教学关卡设计",
+      "description": "首关/教学关的机制引入与引导策略",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "教学"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "show-dont-tell",
+      "name": "展示而非告知",
+      "description": "通过关卡设计隐式传递规则",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "原则"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "signposting",
+      "name": "标识指引",
+      "description": "箭头、涂鸦、NPC对话的显式引导",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "显式"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "implicit-vs-explicit",
+      "name": "隐式vs显式引导",
+      "description": "两种引导策略的适用场景与平衡",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "策略"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "flow-channel-ld",
+      "name": "心流通道(LD)",
+      "description": "引导玩家进入心流状态的空间设计",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "体验"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "player-expectation",
+      "name": "玩家预期管理",
+      "description": "建立、满足与颠覆玩家预期",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "心理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "camera-control-ld",
+      "name": "摄像机引导",
+      "description": "摄像机运动辅助空间理解与引导",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "摄像机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "npc-guidance",
+      "name": "NPC引导行为",
+      "description": "同行NPC的导航与行为设计",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "minimap-guidance",
+      "name": "小地图引导",
+      "description": "小地图与标记系统的信息层级",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "objective-marker",
+      "name": "目标标记设计",
+      "description": "任务标记的侵入性与信息量平衡",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "UI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "lost-player-recovery",
+      "name": "迷路玩家恢复",
+      "description": "玩家迷失方向后的恢复机制",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "容错"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "difficulty-communication",
+      "name": "难度沟通",
+      "description": "通过视觉暗示传递区域危险等级",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "onboarding-sequence",
+      "name": "新手引导序列",
+      "description": "多关卡渐进式机制教学规划",
+      "subdomain_id": "guidance-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "教学"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "blockout-intro",
+      "name": "Blockout概述",
+      "description": "灰盒关卡原型的目的与工作流",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "greybox-workflow",
+      "name": "灰盒工作流",
+      "description": "从Blockout到美术资产替换的流程",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bsp-blocking",
+      "name": "BSP阻挡体",
+      "description": "引擎内置几何体快速搭建关卡",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "modular-kit",
+      "name": "模块化套件",
+      "description": "可复用建筑模块的设计与拼接规范",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "资产"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "scale-reference",
+      "name": "尺度参考",
+      "description": "角色模型作为尺度基准的重要性",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "度量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "collision-volume",
+      "name": "碰撞体积设计",
+      "description": "碰撞体、导航阻挡与玩家可达性",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "物理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "playable-path",
+      "name": "可行走路径规划",
+      "description": "主路径、支路与死胡同的灰盒布局",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "路径"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "prototype-test",
+      "name": "原型测试",
+      "description": "灰盒关卡的可玩性测试方法",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "iteration-blockout",
+      "name": "Blockout迭代",
+      "description": "基于反馈快速修改灰盒的策略",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "迭代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cover-placement",
+      "name": "掩体布局",
+      "description": "射击游戏掩体的战术性放置",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "spawn-point",
+      "name": "出生点设计",
+      "description": "玩家/敌人出生点的放置规则",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "规则"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "trigger-volume",
+      "name": "触发体积设计",
+      "description": "事件触发区域的大小与位置",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "脚本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "navmesh-basics",
+      "name": "导航网格基础",
+      "description": "NavMesh生成与AI可行走区域",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sightline-test",
+      "name": "视线测试",
+      "description": "检查视线遮挡与信息暴露",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "flow-testing",
+      "name": "流程测试",
+      "description": "完整流程走通与时间测量",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "blockout-checklist",
+      "name": "Blockout检查清单",
+      "description": "灰盒阶段必须验证的项目列表",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "kit-bashing",
+      "name": "Kit-bashing技法",
+      "description": "组合现有模块快速搭建复杂场景",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "proxy-asset",
+      "name": "代理资产",
+      "description": "临时占位模型的规范与管理",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "资产"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "blockout-annotation",
+      "name": "Blockout标注",
+      "description": "灰盒中的文字/颜色标注规范",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "沟通"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "blockout-review",
+      "name": "Blockout评审",
+      "description": "团队评审灰盒关卡的流程与标准",
+      "subdomain_id": "blockout",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "metrics-intro",
+      "name": "Metric设计概述",
+      "description": "关卡度量标准的定义与重要性",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "character-metrics",
+      "name": "角色度量",
+      "description": "角色高度、宽度、跳跃高度等核心参数",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "角色"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "movement-speed",
+      "name": "移动速度标准",
+      "description": "行走/跑步/冲刺速度与关卡尺度关系",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "移动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "jump-metrics",
+      "name": "跳跃度量",
+      "description": "跳跃距离、高度与平台间距标准",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "移动"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "corridor-width",
+      "name": "走廊宽度标准",
+      "description": "不同场景下走廊宽度的设计规范",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ceiling-height",
+      "name": "天花板高度标准",
+      "description": "室内空间净高与压迫感控制",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "空间"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "door-size",
+      "name": "门洞尺寸标准",
+      "description": "出入口尺寸与通行体验",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "度量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "stair-slope",
+      "name": "楼梯与坡道标准",
+      "description": "楼梯间距、坡度与可行走角度",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "度量"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "platform-gap",
+      "name": "平台间距",
+      "description": "跳跃平台的安全距离与挑战距离",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "平台"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "combat-range",
+      "name": "战斗距离度量",
+      "description": "近战/远程武器的有效距离标准",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战斗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cover-height",
+      "name": "掩体高度标准",
+      "description": "全掩/半掩/可翻越的高度定义",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "战术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "visibility-range",
+      "name": "可视距离",
+      "description": "视野范围与LOD距离标准",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "interaction-range",
+      "name": "交互距离",
+      "description": "玩家与物体交互的有效距离",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "交互"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "spawn-distance",
+      "name": "出怪距离标准",
+      "description": "敌人刷新点与玩家的安全距离",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战斗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "camera-distance-ld",
+      "name": "摄像机距离标准",
+      "description": "第三人称摄像机与墙壁的最小距离",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "摄像机"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ai-patrol-range",
+      "name": "AI巡逻范围",
+      "description": "敌人巡逻路径的长度与区域覆盖",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "AI"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "audio-range",
+      "name": "音效触发范围",
+      "description": "环境音/敌人音效的传播距离标准",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "音频"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "metric-sheet",
+      "name": "度量表制作",
+      "description": "项目度量标准文档的编写与维护",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "metric-validation",
+      "name": "度量验证",
+      "description": "通过自动化测试验证关卡符合度量标准",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "metric-exception",
+      "name": "度量例外",
+      "description": "何时可以合理突破标准度量",
+      "subdomain_id": "metrics-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "设计"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "combat-space-intro",
+      "name": "战斗空间概述",
+      "description": "战斗空间的设计目标与分类",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "arena-layout",
+      "name": "竞技场布局",
+      "description": "封闭式战斗区域的空间设计",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "布局"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "corridor-combat",
+      "name": "走廊战斗空间",
+      "description": "线性空间中的战术选择设计",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "布局"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "elevation-tactics",
+      "name": "高度差战术",
+      "description": "高低差地形对战斗策略的影响",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "地形"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "flanking-route",
+      "name": "侧翼路线",
+      "description": "绕后/包抄路线的空间设计",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cover-system-ld",
+      "name": "掩体系统(LD)",
+      "description": "掩体分布、密度与战斗节奏关系",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "掩体"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "choke-point",
+      "name": "瓶颈点设计",
+      "description": "防守/推进的关键地形节点",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "escape-route",
+      "name": "逃生路线",
+      "description": "允许玩家撤退与重新接近的路线",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "路线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "enemy-spawn-area",
+      "name": "敌人刷新区域",
+      "description": "敌人出现位置的戏剧性与公平性",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "敌人"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "wave-arena",
+      "name": "波次战斗空间",
+      "description": "多波次敌人的空间与节奏设计",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "波次"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "boss-arena",
+      "name": "Boss战场",
+      "description": "Boss战专用空间的设计原则",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "Boss"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "stealth-space",
+      "name": "潜行空间",
+      "description": "允许隐蔽行动的空间布局",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "潜行"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "destructible-env",
+      "name": "可破坏环境",
+      "description": "场景破坏对战术选择的影响",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "hazard-placement",
+      "name": "危险物放置",
+      "description": "陷阱、岩浆、电击等环境危害",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "危害"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ammo-health-placement",
+      "name": "补给点放置",
+      "description": "弹药/生命值的战略性分布",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "补给"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "combat-flow",
+      "name": "战斗流线",
+      "description": "从接敌到战斗结束的空间流动",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sightline-combat",
+      "name": "战斗视线管理",
+      "description": "视线开放度与信息暴露控制",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "multi-level-combat",
+      "name": "多层战斗空间",
+      "description": "立体战斗空间的高低差利用",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "立体"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vehicle-combat-space",
+      "name": "载具战斗空间",
+      "description": "大尺度载具战斗的空间需求",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "载具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "combat-space-review",
+      "name": "战斗空间评审",
+      "description": "实战测试与数据驱动的空间优化",
+      "subdomain_id": "combat-space",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "评审"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "level-editor-intro",
+      "name": "关卡编辑器概述",
+      "description": "主流引擎关卡编辑工具对比",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "ue5-level-editor",
+      "name": "UE5关卡编辑器",
+      "description": "Unreal Engine 5的关卡编辑核心功能",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "unity-scene-editor",
+      "name": "Unity场景编辑器",
+      "description": "Unity的场景管理与关卡编辑",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "Unity"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "blueprint-scripting",
+      "name": "蓝图脚本(LD)",
+      "description": "关卡设计师常用的蓝图脚本技术",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "脚本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "level-streaming",
+      "name": "关卡流式加载",
+      "description": "大地图分区加载与无缝衔接",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "world-partition",
+      "name": "World Partition",
+      "description": "UE5的世界分区与大世界管理",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "sublevel-management",
+      "name": "子关卡管理",
+      "description": "Sub-level的组织、加载与权限控制",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "version-control-ld",
+      "name": "关卡版本控制",
+      "description": "二进制关卡文件的版本管理策略",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "multi-user-editing",
+      "name": "多人协同编辑",
+      "description": "多LD同时编辑同一关卡的工作流",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "landscape-tool",
+      "name": "地形工具",
+      "description": "引擎内置地形编辑器的使用",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "地形"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "foliage-tool",
+      "name": "植被工具",
+      "description": "程序化植被散布与性能控制",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "sequencer-ld",
+      "name": "Sequencer(LD)",
+      "description": "关卡事件序列与过场动画编辑",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "脚本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gameplay-ability-ld",
+      "name": "Gameplay Ability(LD)",
+      "description": "GAS在关卡交互中的应用",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "UE5"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pcg-level-gen",
+      "name": "PCG关卡生成",
+      "description": "程序化内容生成在关卡设计中的应用",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "PCG"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "custom-editor-tool",
+      "name": "自定义编辑器工具",
+      "description": "为LD制作专用编辑器插件",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "data-layer",
+      "name": "数据层管理",
+      "description": "Gameplay数据与美术数据的分层",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "架构"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "debug-visualization",
+      "name": "调试可视化",
+      "description": "NavMesh/碰撞体/触发器的可视化调试",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "practice",
+      "tags": [
+        "调试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "profiling-ld",
+      "name": "关卡性能分析",
+      "description": "Draw call/三角形/内存预算分析",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "optimization-ld",
+      "name": "关卡优化",
+      "description": "LOD、裁剪、合批与内存优化",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "build-pipeline-ld",
+      "name": "关卡构建管线",
+      "description": "打包、光照烘焙与资产依赖管理",
+      "subdomain_id": "level-editor",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管线"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terrain-intro",
+      "name": "地形设计概述",
+      "description": "游戏地形的类型、工具与设计原则",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "heightmap",
+      "name": "高度图",
+      "description": "高度图的创建、编辑与导入",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terrain-sculpting",
+      "name": "地形雕刻",
+      "description": "引擎内地形刷的使用技巧",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "技法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terrain-material",
+      "name": "地形材质",
+      "description": "多层材质混合与Splatmap",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "材质"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terrain-lod",
+      "name": "地形LOD",
+      "description": "地形细节层次与远景衰减",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "procedural-terrain",
+      "name": "程序化地形",
+      "description": "噪声函数与侵蚀模拟生成地形",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "PCG"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "road-river",
+      "name": "道路与河流",
+      "description": "道路网络、河流路径的地形融合",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "cliff-cave",
+      "name": "悬崖与洞穴",
+      "description": "非高度图地形的网格建模方案",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "biome-design",
+      "name": "生态区设计",
+      "description": "沙漠/雪原/森林等区域的地形差异化",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "water-body",
+      "name": "水体设计",
+      "description": "海洋、湖泊、河流的地形与渲染",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "vegetation-placement",
+      "name": "植被放置策略",
+      "description": "树木、草丛的分布规则与性能",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "rock-placement",
+      "name": "岩石放置",
+      "description": "岩石散布、材质变化与碰撞",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "环境"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "weather-terrain",
+      "name": "天气对地形的影响",
+      "description": "雨雪、泥泞、冰面对玩法的影响",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "玩法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terrain-collision",
+      "name": "地形碰撞",
+      "description": "地形碰撞面的精度与性能",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "物理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "open-world-terrain",
+      "name": "开放世界地形",
+      "description": "大地图地形的分块加载与管理",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "大地图"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "level-art-handoff",
+      "name": "关卡美术交接",
+      "description": "灰盒到美术资产的地形交接流程",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terrain-data",
+      "name": "地形数据管理",
+      "description": "高度图、Splatmap的存储与版本管理",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "world-machine",
+      "name": "World Machine工具",
+      "description": "World Machine程序化地形生成入门",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "gaea-terrain",
+      "name": "Gaea地形工具",
+      "description": "Gaea地形生成与导出流程",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "terrain-optimization",
+      "name": "地形优化",
+      "description": "地形渲染与内存的性能优化",
+      "subdomain_id": "terrain-design",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "lighting-intro",
+      "name": "光照叙事概述",
+      "description": "光照在关卡设计中的叙事与引导作用",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "light-as-guide",
+      "name": "光照引导",
+      "description": "用明暗对比引导玩家移动方向",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "引导"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "mood-lighting",
+      "name": "氛围光照",
+      "description": "不同色温/亮度创造的情感氛围",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "情感"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "dynamic-lighting",
+      "name": "动态光照",
+      "description": "时间/事件驱动的光照变化",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "baked-vs-realtime",
+      "name": "烘焙vs实时光照",
+      "description": "预烘焙与实时光照的取舍",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "light-probe",
+      "name": "光照探针",
+      "description": "间接光照与反射探针的布局",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "技术"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "shadow-design",
+      "name": "阴影设计",
+      "description": "阴影在空间暗示与情感中的作用",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "color-temperature",
+      "name": "色温控制",
+      "description": "冷暖光色的情感映射",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "色彩"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "contrast-lighting",
+      "name": "对比度照明",
+      "description": "高/低对比照明的空间效果",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "视觉"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "volumetric-lighting",
+      "name": "体积光效",
+      "description": "雾光/上帝光的视觉与叙事效果",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "特效"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "practical-light",
+      "name": "实用光源",
+      "description": "场景中火把/路灯等叙事性光源",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "叙事"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "light-puzzle",
+      "name": "光照谜题",
+      "description": "以光照为核心机制的关卡设计",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "玩法"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "horror-lighting",
+      "name": "恐怖光照",
+      "description": "恐怖游戏的黑暗与手电筒机制",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "品类"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "outdoor-lighting",
+      "name": "室外光照",
+      "description": "太阳光、天空光与时间系统",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "室外"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "indoor-lighting",
+      "name": "室内光照",
+      "description": "人工光源布局与反弹光",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "室内"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "light-performance",
+      "name": "光照性能",
+      "description": "光源数量、阴影贴图与性能预算",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "性能"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "post-process-ld",
+      "name": "后处理(LD)",
+      "description": "关卡设计师常用的后处理效果",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "后处理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "day-night-cycle",
+      "name": "昼夜循环",
+      "description": "昼夜光照变化对关卡体验的影响",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "动态"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "emissive-material",
+      "name": "自发光材质",
+      "description": "自发光物体的引导与装饰作用",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "材质"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "lighting-review",
+      "name": "光照评审",
+      "description": "团队评审光照效果的标准与流程",
+      "subdomain_id": "lighting-narrative",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ld-doc-intro",
+      "name": "LD文档概述",
+      "description": "关卡设计文档的类型与用途",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "level-overview-doc",
+      "name": "关卡概览文档",
+      "description": "单个关卡的概念、目标与布局概述",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "level-flowchart",
+      "name": "关卡流程图",
+      "description": "用流程图描述关卡路径与分支",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "top-down-map",
+      "name": "俯视图设计",
+      "description": "2D俯视图的绘制规范与标注",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practice",
+      "tags": [
+        "工具"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "encounter-doc",
+      "name": "遭遇战文档",
+      "description": "单场战斗的敌人配置与空间说明",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "战斗"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "script-event-doc",
+      "name": "脚本事件文档",
+      "description": "关卡内触发事件的时序与逻辑",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "脚本"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "pacing-chart",
+      "name": "节奏图表",
+      "description": "关卡强度/情感曲线的可视化文档",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "节奏"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "playtest-report",
+      "name": "测试报告",
+      "description": "关卡可玩性测试结果的记录格式",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "feedback-log",
+      "name": "反馈日志",
+      "description": "测试反馈的收集、分类与处理",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "反馈"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "iteration-log",
+      "name": "迭代日志",
+      "description": "记录每次修改的原因、内容与效果",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "迭代"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "naming-convention",
+      "name": "命名规范",
+      "description": "关卡文件/资产/触发器的命名标准",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "规范"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "asset-list",
+      "name": "资产清单",
+      "description": "关卡所需美术资产的清单与优先级",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "管理"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ld-review-process",
+      "name": "评审流程",
+      "description": "关卡评审的参与者、标准与节奏",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "milestone-criteria",
+      "name": "里程碑标准",
+      "description": "灰盒/Alpha/Beta/Gold各阶段完成标准",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "流程"
+      ],
+      "is_milestone": true
+    },
+    {
+      "id": "design-intent-doc",
+      "name": "设计意图文档",
+      "description": "记录设计决策背后的理由与预期",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "文档"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "bug-report-ld",
+      "name": "Bug报告(LD)",
+      "description": "关卡Bug的描述模板与严重性分级",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 20,
+      "content_type": "theory",
+      "tags": [
+        "测试"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "handoff-doc",
+      "name": "交接文档",
+      "description": "关卡移交给其他LD/美术的文档",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "协作"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "postmortem-ld",
+      "name": "复盘文档(LD)",
+      "description": "项目结束后的关卡设计经验总结",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "总结"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ld-portfolio",
+      "name": "LD作品集",
+      "description": "关卡设计师作品集的组织与展示",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "theory",
+      "tags": [
+        "职业"
+      ],
+      "is_milestone": false
+    },
+    {
+      "id": "ld-career",
+      "name": "LD职业发展",
+      "description": "从初级到高级关卡设计师的成长路径",
+      "subdomain_id": "ld-documentation",
+      "domain_id": "level-design",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "职业"
+      ],
+      "is_milestone": true
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "ld-overview",
+      "target_id": "spatial-storytelling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-overview",
+      "target_id": "visual-language",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-storytelling",
+      "target_id": "env-storytelling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-storytelling",
+      "target_id": "landmark-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-storytelling",
+      "target_id": "negative-space",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-language",
+      "target_id": "spatial-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-hierarchy",
+      "target_id": "linear-vs-open",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-hierarchy",
+      "target_id": "hub-spoke",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-hierarchy",
+      "target_id": "looping-path",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-storytelling",
+      "target_id": "world-building-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "env-storytelling",
+      "target_id": "set-piece",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "landmark-design",
+      "target_id": "point-of-interest",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-hierarchy",
+      "target_id": "verticality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-language",
+      "target_id": "scale-proportion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-storytelling",
+      "target_id": "discovery-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "negative-space",
+      "target_id": "density-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "env-storytelling",
+      "target_id": "theme-variation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-storytelling",
+      "target_id": "immersion-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "point-of-interest",
+      "target_id": "player-path-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-overview",
+      "target_id": "pacing-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pacing-intro",
+      "target_id": "tension-release",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pacing-intro",
+      "target_id": "intensity-curve",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "tension-release",
+      "target_id": "three-act-level",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "intensity-curve",
+      "target_id": "three-act-level",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "three-act-level",
+      "target_id": "climax-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pacing-intro",
+      "target_id": "rest-area",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pacing-intro",
+      "target_id": "micro-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "micro-pacing",
+      "target_id": "macro-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pacing-intro",
+      "target_id": "reward-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pacing-intro",
+      "target_id": "content-gating",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "content-gating",
+      "target_id": "mechanic-introduction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "intensity-curve",
+      "target_id": "difficulty-ramp",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "tension-release",
+      "target_id": "surprise-moment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rest-area",
+      "target_id": "backtracking-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pacing-intro",
+      "target_id": "level-length",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rest-area",
+      "target_id": "checkpoint-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "three-act-level",
+      "target_id": "narrative-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rest-area",
+      "target_id": "exploration-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "rest-area",
+      "target_id": "downtime-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "macro-pacing",
+      "target_id": "pacing-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-overview",
+      "target_id": "guidance-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guidance-intro",
+      "target_id": "visual-guidance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guidance-intro",
+      "target_id": "audio-guidance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guidance-intro",
+      "target_id": "layout-guidance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-guidance",
+      "target_id": "breadcrumb-trail",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "layout-guidance",
+      "target_id": "affordance-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guidance-intro",
+      "target_id": "gating-mechanic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guidance-intro",
+      "target_id": "tutorial-level",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guidance-intro",
+      "target_id": "show-dont-tell",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guidance-intro",
+      "target_id": "signposting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "signposting",
+      "target_id": "implicit-vs-explicit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "show-dont-tell",
+      "target_id": "implicit-vs-explicit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-guidance",
+      "target_id": "flow-channel-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "implicit-vs-explicit",
+      "target_id": "player-expectation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-guidance",
+      "target_id": "camera-control-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "layout-guidance",
+      "target_id": "npc-guidance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "signposting",
+      "target_id": "minimap-guidance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "signposting",
+      "target_id": "objective-marker",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "guidance-intro",
+      "target_id": "lost-player-recovery",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "visual-guidance",
+      "target_id": "difficulty-communication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "tutorial-level",
+      "target_id": "onboarding-sequence",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-overview",
+      "target_id": "blockout-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "greybox-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "bsp-blocking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "modular-kit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "scale-reference",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bsp-blocking",
+      "target_id": "collision-volume",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "playable-path",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "greybox-workflow",
+      "target_id": "prototype-test",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prototype-test",
+      "target_id": "iteration-blockout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "cover-placement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "spawn-point",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "trigger-volume",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "collision-volume",
+      "target_id": "navmesh-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "playable-path",
+      "target_id": "sightline-test",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "prototype-test",
+      "target_id": "flow-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "iteration-blockout",
+      "target_id": "blockout-checklist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "modular-kit",
+      "target_id": "kit-bashing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "greybox-workflow",
+      "target_id": "proxy-asset",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "blockout-annotation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-checklist",
+      "target_id": "blockout-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "metrics-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "character-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "character-metrics",
+      "target_id": "movement-speed",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "character-metrics",
+      "target_id": "jump-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "corridor-width",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "ceiling-height",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "door-size",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "stair-slope",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "jump-metrics",
+      "target_id": "platform-gap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "combat-range",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "cover-height",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "visibility-range",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "interaction-range",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-range",
+      "target_id": "spawn-distance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "camera-distance-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-range",
+      "target_id": "ai-patrol-range",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "audio-range",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metrics-intro",
+      "target_id": "metric-sheet",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metric-sheet",
+      "target_id": "metric-validation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "metric-sheet",
+      "target_id": "metric-exception",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "combat-space-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "arena-layout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "corridor-combat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "arena-layout",
+      "target_id": "elevation-tactics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "arena-layout",
+      "target_id": "flanking-route",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "cover-system-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "arena-layout",
+      "target_id": "choke-point",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "escape-route",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "enemy-spawn-area",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "arena-layout",
+      "target_id": "wave-arena",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "arena-layout",
+      "target_id": "boss-arena",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "stealth-space",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "arena-layout",
+      "target_id": "destructible-env",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "hazard-placement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "ammo-health-placement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cover-system-ld",
+      "target_id": "combat-flow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-space-intro",
+      "target_id": "sightline-combat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "elevation-tactics",
+      "target_id": "multi-level-combat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "arena-layout",
+      "target_id": "vehicle-combat-space",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "combat-flow",
+      "target_id": "combat-space-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blockout-intro",
+      "target_id": "level-editor-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "ue5-level-editor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "unity-scene-editor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-level-editor",
+      "target_id": "blueprint-scripting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-level-editor",
+      "target_id": "level-streaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-streaming",
+      "target_id": "world-partition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-level-editor",
+      "target_id": "sublevel-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "version-control-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "version-control-ld",
+      "target_id": "multi-user-editing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-level-editor",
+      "target_id": "landscape-tool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ue5-level-editor",
+      "target_id": "foliage-tool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blueprint-scripting",
+      "target_id": "sequencer-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "blueprint-scripting",
+      "target_id": "gameplay-ability-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "pcg-level-gen",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "custom-editor-tool",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "data-layer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "debug-visualization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "profiling-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "profiling-ld",
+      "target_id": "optimization-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "optimization-ld",
+      "target_id": "build-pipeline-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "level-editor-intro",
+      "target_id": "terrain-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "heightmap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "heightmap",
+      "target_id": "terrain-sculpting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "terrain-material",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "terrain-lod",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "heightmap",
+      "target_id": "procedural-terrain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "road-river",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "cliff-cave",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "biome-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "water-body",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biome-design",
+      "target_id": "vegetation-placement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "biome-design",
+      "target_id": "rock-placement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "weather-terrain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "terrain-collision",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "open-world-terrain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-intro",
+      "target_id": "level-art-handoff",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "heightmap",
+      "target_id": "terrain-data",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "procedural-terrain",
+      "target_id": "world-machine",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "procedural-terrain",
+      "target_id": "gaea-terrain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "terrain-lod",
+      "target_id": "terrain-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-overview",
+      "target_id": "lighting-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "light-as-guide",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "mood-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "dynamic-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "baked-vs-realtime",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "baked-vs-realtime",
+      "target_id": "light-probe",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "shadow-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mood-lighting",
+      "target_id": "color-temperature",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mood-lighting",
+      "target_id": "contrast-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dynamic-lighting",
+      "target_id": "volumetric-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "practical-light",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "light-puzzle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mood-lighting",
+      "target_id": "horror-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "outdoor-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "indoor-lighting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "baked-vs-realtime",
+      "target_id": "light-performance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "post-process-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dynamic-lighting",
+      "target_id": "day-night-cycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "emissive-material",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "light-performance",
+      "target_id": "lighting-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-overview",
+      "target_id": "ld-doc-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "level-overview-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "level-flowchart",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "top-down-map",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "encounter-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "script-event-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "pacing-chart",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "playtest-report",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "playtest-report",
+      "target_id": "feedback-log",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-log",
+      "target_id": "iteration-log",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "naming-convention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "asset-list",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "ld-review-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-review-process",
+      "target_id": "milestone-criteria",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "design-intent-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "playtest-report",
+      "target_id": "bug-report-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "handoff-doc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "milestone-criteria",
+      "target_id": "postmortem-ld",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-doc-intro",
+      "target_id": "ld-portfolio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ld-portfolio",
+      "target_id": "ld-career",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "spatial-storytelling",
+      "target_id": "pacing-intro",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "visual-guidance",
+      "target_id": "light-as-guide",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "cover-placement",
+      "target_id": "cover-system-ld",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "playable-path",
+      "target_id": "combat-flow",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "landmark-design",
+      "target_id": "light-as-guide",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "blockout-review",
+      "target_id": "ld-review-process",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pacing-analysis",
+      "target_id": "pacing-chart",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "set-piece",
+      "target_id": "climax-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "prototype-test",
+      "target_id": "playtest-report",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "navmesh-basics",
+      "target_id": "ai-patrol-range",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "lighting-intro",
+      "target_id": "visual-guidance",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "scale-reference",
+      "target_id": "character-metrics",
+      "relation_type": "related",
+      "strength": 0.7
+    }
+  ]
+}

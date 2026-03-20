@@ -619,13 +619,13 @@ async def test_english_domain_subdomain_filter():
 
 @pytest.mark.asyncio
 async def test_three_domains_listed():
-    """Domain list should include all 12 active domains."""
+    """Domain list should include all 13 active domains."""
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/domains")
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design"}
 
 
 # ── English RAG Tests ───────────────────────────

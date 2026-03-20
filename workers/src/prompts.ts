@@ -312,6 +312,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'economics': ECONOMICS_DOMAIN_SUPPLEMENT,
   'writing': WRITING_DOMAIN_SUPPLEMENT,
   'game-design': GAME_DESIGN_DOMAIN_SUPPLEMENT,
+  'level-design': LEVEL_DESIGN_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -446,6 +447,18 @@ const WRITING_ASSESSMENT_SUPPLEMENT = `
 - **避免误区**: 用户是否避免了常见误解（如"好文章一气呵成"、"华丽辞藻=好文章"、"创意写作不需要技巧"）？
 `;
 
+const LEVEL_DESIGN_DOMAIN_SUPPLEMENT = `
+## 关卡设计教学特殊规则
+
+1. **空间思维**: 从3D空间角度思考——视线、路径、高度差、尺度感如何影响玩家体验
+2. **案例分析**: 用经典游戏关卡（《最后生还者》《塞尔达》《魂系列》《光环》《半条命》《超级马里奥》等）具体关卡说明设计原则
+3. **灰盒优先**: 先验证空间和流程，再叠加美术。“灰盒好玩的关卡才是好关卡”
+4. **度量意识**: 关卡有严格的度量标准（角色高度、跳跃距离、走廊宽度），引导理解每个数字的设计理由
+5. **引导设计**: 好的关卡让玩家自然走向目标而非UI标记。光照、地标、布局等隐式引导是核心技能
+6. **节奏控制**: 紧张→放松→高潮的节奏设计决定玩家情感曲线。用图表化方式分析规划节奏
+7. **迭代测试**: 搭建→测试→修改的快速循环，用热力图和玩家反馈驱动改进
+`;
+
 const GAME_DESIGN_ASSESSMENT_SUPPLEMENT = `
 ## 游戏设计领域评估特殊指标
 
@@ -457,6 +470,19 @@ const GAME_DESIGN_ASSESSMENT_SUPPLEMENT = `
 - **迭代意识**: 用户是否理解设计需要通过测试和数据验证？
 - **创新思维**: 用户是否能在理解经典模式基础上提出改进或创新？
 - **避免误区**: 用户是否避免了常见误解（如"功能越多越好"、"数值平衡=好玩"、"抄成功游戏就能成功"）？
+`;
+
+const LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT = `
+## 关卡设计领域评估特殊指标
+
+在评估关卡设计概念理解时，请额外关注以下方面：
+- **空间理解**: 用户是否能从空间角度分析关卡？是否理解视线、路径、高度差对玩家体验的影响？
+- **度量意识**: 用户是否了解关键度量标准（角色高度、跳跃距离、走廊宽度）并理解其设计理由？
+- **引导技能**: 用户是否理解如何通过空间布局、光照、地标等隐式手段引导玩家？
+- **节奏感知**: 用户是否能分析关卡的情感节奏曲线？是否理解紧张/放松/高潮的编排？
+- **工具能力**: 用户是否了解灰盒工作流和关卡编辑器的基本操作？
+- **案例分析**: 用户是否能用具体游戏关卡的例子来说明设计原则？
+- **迭代思维**: 用户是否理解关卡需要通过反复测试和数据驱动来改进？
 `;
 
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
@@ -471,6 +497,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'economics': ECONOMICS_ASSESSMENT_SUPPLEMENT,
   'writing': WRITING_ASSESSMENT_SUPPLEMENT,
   'game-design': GAME_DESIGN_ASSESSMENT_SUPPLEMENT,
+  'level-design': LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

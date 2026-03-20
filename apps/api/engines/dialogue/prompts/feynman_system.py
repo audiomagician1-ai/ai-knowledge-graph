@@ -519,6 +519,31 @@ GAME_DESIGN_ASSESSMENT_SUPPLEMENT = """
 - **避免误区**: 用户是否避免了常见设计误解（如"功能越多越好"、"数值平衡=好玩"、"抄成功游戏就能成功"、"硬核=有深度"）？
 """
 
+LEVEL_DESIGN_DOMAIN_SUPPLEMENT = """
+## 关卡设计教学特殊规则
+
+1. **空间思维**: 关卡设计的核心是空间设计。教学中引导学生从3D空间角度思考问题——视线、路径、高度差、尺度感如何影响玩家体验
+2. **案例分析**: 用经典游戏关卡（《最后生还者》《塞尔达》《魂系列》《光环》《半条命》《超级马里奥》等）的具体关卡来说明设计原则
+3. **灰盒优先**: 关卡设计从灰盒(Blockout)开始，先验证空间和流程，再叠加美术。强调"灰盒好玩的关卡才是好关卡"
+4. **度量意识**: 关卡设计有严格的度量标准（角色高度、跳跃距离、走廊宽度等），教学中引导学生理解每个数字背后的设计理由
+5. **引导设计**: 好的关卡设计让玩家自然走向目标而非依赖UI标记。通过光照、地标、布局等隐式引导是核心技能
+6. **节奏控制**: 关卡是时间体验，紧张→放松→高潮的节奏设计决定了玩家的情感曲线。引导学生用图表化方式分析和规划节奏
+7. **迭代测试**: 关卡设计依赖反复测试与迭代。鼓励"搭建→测试→修改"的快速循环，用热力图和玩家反馈驱动改进
+"""
+
+LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT = """
+## 关卡设计领域评估特殊指标
+
+在评估关卡设计概念理解时，请额外关注以下方面：
+- **空间理解**: 用户是否能从空间角度分析关卡？是否理解视线、路径、高度差对玩家体验的影响？
+- **度量意识**: 用户是否了解关键度量标准（角色高度、跳跃距离、走廊宽度）并理解其设计理由？
+- **引导技能**: 用户是否理解如何通过空间布局、光照、地标等隐式手段引导玩家？
+- **节奏感知**: 用户是否能分析关卡的情感节奏曲线？是否理解紧张/放松/高潮的编排？
+- **工具能力**: 用户是否了解灰盒工作流和关卡编辑器的基本操作？
+- **案例分析**: 用户是否能用具体游戏关卡的例子来说明设计原则？
+- **迭代思维**: 用户是否理解关卡需要通过反复测试和数据驱动来改进？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -535,6 +560,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "economics": ECONOMICS_DOMAIN_SUPPLEMENT,
     "writing": WRITING_DOMAIN_SUPPLEMENT,
     "game-design": GAME_DESIGN_DOMAIN_SUPPLEMENT,
+    "level-design": LEVEL_DESIGN_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -549,6 +575,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "economics": ECONOMICS_ASSESSMENT_SUPPLEMENT,
     "writing": WRITING_ASSESSMENT_SUPPLEMENT,
     "game-design": GAME_DESIGN_ASSESSMENT_SUPPLEMENT,
+    "level-design": LEVEL_DESIGN_ASSESSMENT_SUPPLEMENT,
 }
 
 
