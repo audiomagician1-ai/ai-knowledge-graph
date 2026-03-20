@@ -145,7 +145,14 @@ class LLMRouter:
                 )
                 resp.raise_for_status()
                 data = resp.json()
-                return data["choices"][0]["message"]["content"]
+                # Null-safety: validate response structure before accessing nested fields
+                choices = data.get("choices")
+                if not choices or not isinstance(choices, list) or len(choices) == 0:
+                    raise ValueError(f"LLM returned empty/invalid choices: {data!r:.200}")
+                content = choices[0].get("message", {}).get("content")
+                if not isinstance(content, str):
+                    raise ValueError(f"LLM returned non-string content: {type(content)}")
+                return content
             except httpx.HTTPStatusError as e:
                 last_error = e
                 if not self._is_retryable(e.response.status_code):
@@ -154,7 +161,7 @@ class LLMRouter:
             except (httpx.ReadTimeout, httpx.ConnectError) as e:
                 last_error = e
                 logger.warning("LLM network error on attempt %d: %s", attempt + 1, type(e).__name__)
-            except KeyError as e:
+            except (KeyError, ValueError) as e:
                 last_error = e
                 break  # malformed response — don't retry
 

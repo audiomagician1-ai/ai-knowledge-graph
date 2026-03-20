@@ -272,3 +272,64 @@ class TestTokenLimitParam:
     def test_case_insensitive(self):
         assert _token_limit_param("O1-Mini", 512) == {"max_completion_tokens": 512}
         assert _token_limit_param("CHATGPT-4o-latest", 800) == {"max_completion_tokens": 800}
+
+
+# ========== LLM Response Null-Safety ==========
+
+
+class TestLLMChatNullSafety:
+    """Round 80: LLM chat() must handle malformed responses gracefully."""
+
+    @pytest.mark.asyncio
+    async def test_empty_choices_raises_descriptive_error(self):
+        """If LLM returns empty choices array, should raise with clear message."""
+        router = LLMRouter()
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.raise_for_status = MagicMock()
+        mock_response.json.return_value = {"choices": []}
+
+        mock_client = AsyncMock()
+        mock_client.is_closed = False
+        mock_client.post = AsyncMock(return_value=mock_response)
+        router._client = mock_client
+
+        with patch.object(router, '_resolve_endpoint', return_value=("https://api.example.com/v1", "test-key")):
+            with pytest.raises(RuntimeError, match="LLM call failed"):
+                await router.chat(messages=[{"role": "user", "content": "test"}])
+
+    @pytest.mark.asyncio
+    async def test_null_content_raises_descriptive_error(self):
+        """If LLM returns null content, should raise with clear message."""
+        router = LLMRouter()
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.raise_for_status = MagicMock()
+        mock_response.json.return_value = {"choices": [{"message": {"content": None}}]}
+
+        mock_client = AsyncMock()
+        mock_client.is_closed = False
+        mock_client.post = AsyncMock(return_value=mock_response)
+        router._client = mock_client
+
+        with patch.object(router, '_resolve_endpoint', return_value=("https://api.example.com/v1", "test-key")):
+            with pytest.raises(RuntimeError, match="LLM call failed"):
+                await router.chat(messages=[{"role": "user", "content": "test"}])
+
+    @pytest.mark.asyncio
+    async def test_valid_response_returns_content(self):
+        """Normal response with valid content should succeed."""
+        router = LLMRouter()
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.raise_for_status = MagicMock()
+        mock_response.json.return_value = {"choices": [{"message": {"content": "Hello world"}}]}
+
+        mock_client = AsyncMock()
+        mock_client.is_closed = False
+        mock_client.post = AsyncMock(return_value=mock_response)
+        router._client = mock_client
+
+        with patch.object(router, '_resolve_endpoint', return_value=("https://api.example.com/v1", "test-key")):
+            result = await router.chat(messages=[{"role": "user", "content": "test"}])
+            assert result == "Hello world"
