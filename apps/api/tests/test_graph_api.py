@@ -1612,3 +1612,97 @@ def test_workers_opening_domain_neutral():
             f"Workers getOpening() contains domain-specific term '{term}'. "
             f"Opening messages must be domain-neutral for all 11 domains."
         )
+
+
+# ── Level Design Integration Tests (Phase 19.6) ─────────────────
+
+
+@pytest.mark.asyncio
+async def test_level_design_seed_graph_integrity():
+    """Level-design seed graph: 200 concepts, 213 edges, 10 subdomains, 28 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=level-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 200, f"Expected 200 concepts, got {len(nodes)}"
+        assert len(edges) == 213, f"Expected 213 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 10, f"Expected 10 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 28, f"Expected 28 milestones, got {len(milestones)}"
+
+
+@pytest.mark.asyncio
+async def test_level_design_subdomains():
+    """Level-design should have 10 subdomains with correct names."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=level-design")
+        assert resp.status_code == 200
+        subs = resp.json()
+        sub_ids = {s["id"] for s in subs}
+        expected = {
+            "spatial-narrative", "pacing-curve", "guidance-design", "blockout",
+            "metrics-design", "combat-space", "level-editor", "terrain-design",
+            "lighting-narrative", "ld-documentation",
+        }
+        assert sub_ids == expected, f"Subdomain mismatch: {sub_ids ^ expected}"
+
+
+@pytest.mark.asyncio
+async def test_rag_level_design_stats():
+    """Level-design RAG stats should reflect 200 documents."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=level-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 200
+        assert data["domain"] == "level-design"
+        assert len(data.get("by_subdomain", {})) == 10
+
+
+@pytest.mark.asyncio
+async def test_rag_level_design_concept():
+    """Should return RAG content for a level-design concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/ld-overview?domain=level-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "ld-overview"
+        assert data["domain"] == "level-design"
+        assert "核心内容" in data["content"]
+
+
+@pytest.mark.asyncio
+async def test_rag_level_design_404_wrong_domain():
+    """Level-design concept should 404 when queried against another domain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag/ld-overview?domain=mathematics")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_level_design_cross_sphere_links():
+    """Cross-sphere links for level-design should exist (game-design ↔ level-design)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=level-design")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 15, f"Expected >= 15 cross-links, got {len(links)}"
+        # Should have links involving game-design
+        partner_domains = set()
+        for lk in links:
+            partner_domains.add(lk.get("source_domain", ""))
+            partner_domains.add(lk.get("target_domain", ""))
+        assert "game-design" in partner_domains, "Expected cross-links with game-design"
+
+
+@pytest.mark.asyncio
+async def test_level_design_domain_supplements():
+    """Level-design should have domain supplements in BE evaluation system."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "level-design" in DOMAIN_SUPPLEMENTS, "level-design missing from DOMAIN_SUPPLEMENTS"
+    assert "level-design" in ASSESSMENT_SUPPLEMENTS, "level-design missing from ASSESSMENT_SUPPLEMENTS"
+    assert "关卡" in DOMAIN_SUPPLEMENTS["level-design"], "Level-design supplement should mention 关卡"
