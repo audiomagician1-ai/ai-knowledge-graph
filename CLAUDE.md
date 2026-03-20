@@ -1275,6 +1275,13 @@ data/seed/         — 种子图谱数据
    - VERIFY: 805 tests (596 BE + 209 FE) 全通过, tsc 0 errors
    - STATUS: Workers全量1197行深度审查, 修复1个Medium级CS特定开场白问题+1个Low级null安全问题, 添加3个三方同步回归测试
 
+ - ✅ **Issue #14 修复: LoginPage UI间距+推荐列表排序 (2026-03-20, 455131b)**:
+    - **FIX[Bug]**: LoginPage UI间距过紧 — 卡片内边距从40px 36px增加到44px 40px, 副标题与pills间距从18px→24px, 表单字段gap从20px→24px, 提交按钮marginTop从4px→8px, 模式切换链接padding从10px→12px+4px上间距, Logo+标题区域marginBottom 36px [#14-Issue1]
+    - **FIX[Bug]**: 新用户推荐列表排序不确定 — 推荐算法已有低难度优先打分(diff=1→50分), 但同分概念无确定性排序。修复: 添加三级排序(score降序→difficulty升序→concept_id字典序), BE learning.py + Workers learning.ts 同步修复 [#14-Issue2]
+    - **TEST**: +2新测试: `test_recommend_new_user_lowest_difficulty_first`(难度非递减验证) + `test_recommend_deterministic_ordering`(两次调用结果ID顺序完全一致)
+    - VERIFY: 811 tests (602 BE + 209 FE) 全通过, tsc 0 errors, build 3.78s
+    - STATUS: Issue #14 两个bug均已修复, 推荐排序BE/Workers一致
+
  - ✅ **第八十轮推荐端点域感知修复+LLM响应null安全加固 (2026-03-20, cf96177)**:
     - **FIX[Medium]**: BE `/learning/recommend` 端点始终使用默认`ai-engineering`种子数据, 无视用户当前查看的域 — 用户在数学/生物等非AI域点击"推荐"按钮, 返回的却是AI工程概念
       - BE learning.py: 添加`domain`查询参数(Query default="ai-engineering", max_length=100), 传递给`_load_seed(domain)`, 与Workers实现保持一致
@@ -1686,8 +1693,8 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 ### 测试命令
 ```bash
 cd packages/web && npx vitest run        # 前端测试 ✅ (209 tests)
-cd apps/api && python -m pytest          # 后端测试 ✅ (600 tests)
-# Total: 809 tests (2026-03-20)
+cd apps/api && python -m pytest          # 后端测试 ✅ (602 tests)
+# Total: 811 tests (2026-03-20)
 ```
 
 ### 提交规范
