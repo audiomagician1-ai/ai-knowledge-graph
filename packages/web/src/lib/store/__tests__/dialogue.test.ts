@@ -414,6 +414,47 @@ describe('useDialogueStore', () => {
   });
 
   // ------------------------------------------------------------------
+  // cancelStream + reset cleanup (ChatPanel unmount contract)
+  // ------------------------------------------------------------------
+  describe('cancelStream + reset cleanup', () => {
+    it('reset() should clear isStreaming (ChatPanel unmount contract)', () => {
+      useDialogueStore.setState({
+        conversationId: 'conv-1',
+        isStreaming: true,
+        isAssessing: false,
+        messages: [{ id: 'm1', role: 'user', content: 'hi', timestamp: Date.now() }],
+      });
+
+      useDialogueStore.getState().reset();
+      const s = useDialogueStore.getState();
+
+      expect(s.isStreaming).toBe(false);
+      expect(s.isAssessing).toBe(false);
+      expect(s.conversationId).toBeNull();
+    });
+
+    it('cancelStream() followed by reset() should fully clean up', () => {
+      useDialogueStore.setState({
+        conversationId: 'conv-2',
+        isStreaming: true,
+        isAssessing: true,
+        messages: [{ id: 'm1', role: 'assistant', content: 'partial...', timestamp: Date.now() }],
+        currentChoices: [{ id: 'c1', text: 'opt', type: 'explore' }],
+      });
+
+      useDialogueStore.getState().cancelStream();
+      expect(useDialogueStore.getState().isStreaming).toBe(false);
+
+      useDialogueStore.getState().reset();
+      const s = useDialogueStore.getState();
+      expect(s.conversationId).toBeNull();
+      expect(s.messages).toEqual([]);
+      expect(s.currentChoices).toBeNull();
+      expect(s.isAssessing).toBe(false);
+    });
+  });
+
+  // ------------------------------------------------------------------
   // Persistence (localStorage trim)
   // ------------------------------------------------------------------
   describe('persistence', () => {

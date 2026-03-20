@@ -29,7 +29,7 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
   const {
     conversationId, messages, isStreaming, isAssessing, isInitializing, suggestAssess, assessment, error,
     currentChoices,
-    startConversation, sendMessage, selectChoice, requestAssessment, reset,
+    startConversation, sendMessage, selectChoice, requestAssessment, cancelStream, reset,
     savedConversations, loadSavedConversation, deleteSavedConversation,
   } = useDialogueStore();
 
@@ -39,6 +39,13 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
   const [showCelebration, setShowCelebration] = useState(false);
   // C-01 fix: prevent duplicate recordAssessment calls (same guard as LearnPage)
   const recordedConvRef = useRef<string | null>(null);
+
+  // M-01: Cancel active stream on unmount to prevent stale callbacks writing to store
+  // (LearnPage has this via cleanup in [conceptId] effect, ChatPanel was missing it)
+  useEffect(() => {
+    return () => { cancelStream(); reset(); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- cleanup-only, stable refs
+  }, []);
 
   // When concept changes → reset to idle (show history + start button)
   useEffect(() => {
