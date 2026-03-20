@@ -1151,9 +1151,9 @@
       "source_domain": "writing",
       "source_id": "technical-writing",
       "target_domain": "ai-engineering",
-      "target_id": "api-design",
+      "target_id": "openapi-swagger",
       "relation": "applies_to",
-      "description": "技术文档写作直接应用于API文档编写，清晰的技术文档是优秀API设计的重要组成部分"
+      "description": "技术文档写作直接应用于API文档编写，OpenAPI/Swagger规范文档需要优秀的技术写作能力"
     },
     {
       "source_domain": "writing",
