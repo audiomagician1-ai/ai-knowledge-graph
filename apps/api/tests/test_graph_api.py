@@ -619,13 +619,13 @@ async def test_english_domain_subdomain_filter():
 
 @pytest.mark.asyncio
 async def test_three_domains_listed():
-    """Domain list should now include all 3 active domains."""
+    """Domain list should include all 8 active domains."""
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/domains")
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -1261,6 +1261,107 @@ async def test_rag_psychology_404_wrong_domain():
         assert resp.status_code == 404
 
 
+# ── Philosophy Domain Tests (Phase 14.1) ──────────────────────
+
+
+@pytest.mark.asyncio
+async def test_philosophy_graph_data():
+    """Philosophy domain should return graph data with correct structure."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=philosophy")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert "nodes" in data
+        assert "edges" in data
+        assert len(data["nodes"]) >= 165  # ~170 concepts
+
+
+@pytest.mark.asyncio
+async def test_philosophy_node_structure():
+    """Philosophy nodes should have required fields and domain_id."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=philosophy")
+        data = resp.json()
+        node = data["nodes"][0]
+        assert "id" in node
+        assert "label" in node
+        assert "subdomain_id" in node
+        assert node.get("domain_id") == "philosophy"
+
+
+@pytest.mark.asyncio
+async def test_philosophy_subdomain_count():
+    """Philosophy domain should have 8 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=philosophy")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 8
+
+
+@pytest.mark.asyncio
+async def test_philosophy_concept_detail():
+    """Should return details for a philosophy concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/socrates?domain=philosophy")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "socrates"
+        assert data["domain_id"] == "philosophy"
+        assert "苏格拉底" in data["name"]
+
+
+@pytest.mark.asyncio
+async def test_philosophy_concept_404():
+    """Non-existent philosophy concept should 404."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/nonexistent-phil?domain=philosophy")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_philosophy_neighbors():
+    """Should return neighbors for a philosophy concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/plato/neighbors?domain=philosophy&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["nodes"]) >= 2  # plato has multiple connections
+
+
+@pytest.mark.asyncio
+async def test_philosophy_stats():
+    """Philosophy stats should reflect ~170 concepts."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/stats?domain=philosophy")
+        assert resp.status_code == 200
+        data = resp.json()
+        # Stats endpoint returns meta with stats sub-object
+        stats = data.get("stats", data)
+        assert stats["total_concepts"] >= 165
+
+
+@pytest.mark.asyncio
+async def test_philosophy_subdomain_filter():
+    """Should filter philosophy concepts by subdomain."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=philosophy&subdomain_id=ethics")
+        assert resp.status_code == 200
+        data = resp.json()
+        for node in data["nodes"]:
+            assert node["subdomain_id"] == "ethics"
+        assert len(data["nodes"]) >= 20  # ~25 ethics concepts
+
+
+@pytest.mark.asyncio
+async def test_philosophy_in_domain_list():
+    """Philosophy should appear in the domain list."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        data = resp.json()
+        phil = [d for d in data if d["id"] == "philosophy"]
+        assert len(phil) == 1
+        assert phil[0]["name"] == "哲学"
 
 
 
