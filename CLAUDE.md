@@ -1203,6 +1203,23 @@ data/seed/         — 种子图谱数据
    - VERIFY: 793 tests (204 FE + 589 BE) 全通过, tsc 0 errors, build 3.74s
     - STATUS: 修复1个stale RAG索引(Phase 6遗留), 全量数据完整性验证通过
 
+- ✅ **第七十五轮FE全覆盖审查+OAuth重定向修复+全项目安全扫描 (2026-03-20, 4b5c324)**:
+   - **FIX[Low]**: auth.ts OAuth `signInWithOAuth` redirectTo为`/graph` — 但App.tsx路由表中无`/graph`路由(Phase 7路由重构时删除,现为`/domain/:domainId`), OAuth登录后被catch-all `*`重定向到`/`, 多一跳不必要的路由重定向。修复为`${origin}/`
+   - **TEST**: +1新测试: signInWithOAuth验证redirectTo指向`/`不含`/graph`
+   - REVIEW: 18个FE未审查模块全覆盖(dialogue-api.ts 46行 + graph-api.ts 34行 + learning-api.ts 110行 + supabase.ts 6行 + ChoiceButtons.tsx 67行 + MarkdownRenderer.tsx 146行 + DraggableModal.tsx 107行 + ErrorBoundary.tsx 64行 + ToastContainer.tsx 39行 + AppLayout.tsx 9行 + useCountUp.ts 37行 + useMediaQuery.ts 20行 + auth.ts 133行 + toast.ts 46行 + text.ts 15行 + LoginPage.tsx 358行 + App.tsx 45行 + main.tsx 10行):
+     - API Clients: dialogue-api.ts(sendDialogueMessage/requestAssessment/createConversation with AbortSignal — 正确但实际未被dialogue.ts使用, dialogue.ts直接fetch) + graph-api.ts(fetchGraphData/fetchConcept/fetchNeighbors/fetchDomains — 后两个unused但future-ready) + learning-api.ts(fire-and-forget writes + graceful failure reads — 正确) + supabase.ts(createClient with env fallback — 正确)
+     - Chat Components: ChoiceButtons(TYPE_CONFIG 4 types/dimmed opacity/disabled guard/hover style — 正确) + MarkdownRenderer(ReactMarkdown+remarkGfm+remarkMath+rehypeKatex/15个custom components包括h1-h3/p/ul/ol/li/code(inline vs block)/pre/strong/em/blockquote/hr/table/a(target=_blank noopener) — 全部正确, 无dangerouslySetInnerHTML)
+     - Common Components: DraggableModal(center on first open/drag with mousemove/clamp to viewport/backdrop click close — 正确) + ErrorBoundary(class component/getDerivedStateFromError/componentDidCatch console.error/reload button — 正确) + ToastContainer(STYLE_MAP 4 types/auto-remove — 正确) + AppLayout(Outlet wrapper — 9行最简)
+     - Hooks: useCountUp(rAF+ease-out cubic+delay+cleanup — 正确) + useMediaQuery(matchMedia+addEventListener change+SSR guard — 正确, 但R74移除最后一个消费者LearnPage后全项目unused)
+     - Stores: auth.ts(OAuth redirect已修复/HMR double-init guard via _authSubscription/onAuthLogin callback registry/displayName fallback chain — 全部正确) + toast.ts(FIFO+auto-remove setTimeout+counter — 正确)
+     - Pages: LoginPage(email+password form/OAuth buttons(Google+GitHub)/mode toggle login↔register/loading+error state/BackgroundDecoration blobs/FeaturePills/skip link — 全部正确) + App.tsx(ErrorBoundary wrap/Routes 6条/supabase-sync side-effect import/auth initialize — 正确) + main.tsx(StrictMode+createRoot — 最简)
+     - Utils: text.ts(stripChoicesBlock regex: complete ```choices...``` + incomplete trailing — 正确)
+   - DEAD CODE INVENTORY: dialogue-api.ts(整个文件未被import — dialogue.ts直接fetch), graph-api.ts fetchConcept+fetchNeighbors(未被消费), useMediaQuery.ts(R74移除最后消费者后全项目unused) — 均为future-ready代码, 无运行时影响
+   - SECURITY: 全项目0个eval/exec/innerHTML/dangerouslySetInnerHTML(production code), console.log无敏感数据, 所有链接target=_blank+noopener+noreferrer
+   - GITHUB: 0 open bugs, 1 open feature(#12 Multi-provider Auth)
+   - VERIFY: 802 tests (209 FE + 593 BE) 全通过, tsc 0 errors, build 4.00s
+   - STATUS: 修复1个Low级OAuth重定向路径错误, FE全项目源码18个模块100%审查完成, 安全扫描通过
+
 - ✅ **第七十四轮FE深度审查+ChatPanel流清理修复+死代码清除 (2026-03-20, e868d32)**:
    - **FIX[Medium]**: ChatPanel.tsx未在unmount时调用`cancelStream()+reset()` — LearnPage有此清理(M-01注释), 但ChatPanel完全缺失。用户在GraphPage中关闭聊天面板(点X按钮)时, 如果AI正在流式输出, 旧流继续写入dialogue store, 可能导致下次打开不同概念时出现陈旧消息或状态异常。添加`useEffect cleanup`调用`cancelStream(); reset();`
    - **REFACTOR**: 清除LearnPage.tsx 3个unused imports(ArrowRight/Zap未使用, useIsDesktop+isDesktop赋值后未读取) + ChatPanel.tsx 1个unused import(clearNewlyUnlocked从useLearningStore解构但未调用)
@@ -1580,9 +1597,9 @@ localStorage (权威源) → fire-and-forget 同步到 Supabase
 
 ### 测试命令
 ```bash
-cd packages/web && npx vitest run        # 前端测试 ✅ (208 tests)
+cd packages/web && npx vitest run        # 前端测试 ✅ (209 tests)
 cd apps/api && python -m pytest          # 后端测试 ✅ (593 tests)
-# Total: 801 tests
+# Total: 802 tests
 ```
 
 ### 提交规范
