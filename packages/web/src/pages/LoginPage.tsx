@@ -87,7 +87,13 @@ export function LoginPage() {
         }
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Operation failed');
+      const msg = err instanceof Error ? err.message : 'Operation failed';
+      // Network error: Supabase unreachable (common in China / corporate firewalls)
+      if (msg === 'Failed to fetch' || msg.includes('fetch')) {
+        setError('无法连接到认证服务器。请检查网络连接，或尝试使用 VPN。');
+      } else {
+        setError(msg);
+      }
     } finally {
       setLoading(false);
     }
@@ -141,7 +147,7 @@ export function LoginPage() {
         }}
       >
         {/* ── Logo + Title ── */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-10">
           <div
             className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
             style={{
@@ -151,13 +157,13 @@ export function LoginPage() {
           >
             <BookOpen size={28} style={{ color: '#fff' }} strokeWidth={1.8} />
           </div>
-          <h1
-            className="text-2xl font-bold mb-2"
+            <h1
+            className="text-2xl font-bold mb-3"
             style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-text-primary)' }}
           >
             AI Knowledge Graph
           </h1>
-          <p className="text-sm mb-4" style={{ color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
+          <p className="text-sm mb-5" style={{ color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
             Sign in to sync your learning progress across devices
           </p>
           <FeaturePills />
@@ -166,7 +172,7 @@ export function LoginPage() {
         {/* ── OAuth buttons ── */}
         {supabaseConfigured && (
           <>
-            <div className="space-y-3 mb-6 animate-fade-in stagger-1">
+            <div className="space-y-3 mb-7 animate-fade-in stagger-1">
               <button
                 onClick={() => handleOAuth('google')}
                 disabled={loading}
@@ -212,7 +218,7 @@ export function LoginPage() {
             </div>
 
             {/* ── Divider ── */}
-            <div className="flex items-center gap-4 mb-6 animate-fade-in stagger-2">
+            <div className="flex items-center gap-4 mb-7 animate-fade-in stagger-2">
               <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-border)' }} />
               <span className="text-xs font-medium tracking-wider uppercase" style={{ color: 'var(--color-text-tertiary)' }}>
                 or
@@ -223,10 +229,10 @@ export function LoginPage() {
         )}
 
         {/* ── Email form ── */}
-        <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in stagger-3">
+        <form onSubmit={handleSubmit} className="space-y-5 animate-fade-in stagger-3">
           {mode === 'register' && (
             <div>
-              <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--color-text-secondary)' }}>
+              <label className="block text-xs font-medium mb-2" style={{ color: 'var(--color-text-secondary)' }}>
                 Display Name
               </label>
               <input
@@ -240,7 +246,7 @@ export function LoginPage() {
             </div>
           )}
           <div>
-            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--color-text-secondary)' }}>
+            <label className="block text-xs font-medium mb-2" style={{ color: 'var(--color-text-secondary)' }}>
               Email
             </label>
             <input
@@ -254,7 +260,7 @@ export function LoginPage() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--color-text-secondary)' }}>
+            <label className="block text-xs font-medium mb-2" style={{ color: 'var(--color-text-secondary)' }}>
               Password
             </label>
             <input
@@ -285,7 +291,7 @@ export function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl py-3.5 text-sm font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full rounded-xl py-3.5 mt-2 text-sm font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
             style={{
               background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
               color: '#fff',
@@ -305,7 +311,7 @@ export function LoginPage() {
           <button
             type="button"
             onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError(''); setPassword(''); }}
-            className="w-full py-2 text-sm font-medium transition-colors"
+            className="w-full py-2.5 text-sm font-medium transition-colors"
             style={{ color: 'var(--color-accent-primary)' }}
             onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent-warm)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-accent-primary)'; }}
@@ -318,7 +324,7 @@ export function LoginPage() {
       {/* ── Skip link (outside the card) ── */}
       <button
         onClick={() => navigate('/')}
-        className="relative z-10 mt-6 inline-flex items-center gap-1.5 text-sm font-medium transition-all animate-fade-in stagger-4 group"
+        className="relative z-10 mt-8 inline-flex items-center gap-1.5 text-sm font-medium transition-all animate-fade-in stagger-4 group"
         style={{ color: 'var(--color-text-tertiary)' }}
         onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
         onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-tertiary)'; }}
