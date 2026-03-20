@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDomainStore } from '@/lib/store/domain';
+import { peekDomainProgress } from '@/lib/store/learning';
 import { Loader } from 'lucide-react';
 
 /* ─── Resolved CSS variable cache (canvas can't read CSS vars directly) ─── */
@@ -18,6 +19,12 @@ function getThemeColors(): { surface0: string; textPrimary: string; textTertiary
 }
 
 /* ─── Types ─── */
+interface DomainProgress {
+  mastered: number;
+  learning: number;
+  total: number; // from seed stats — total concepts in domain
+}
+
 interface Orb {
   x: number; y: number; z: number;
   vx: number; vy: number; vz: number;
@@ -27,18 +34,55 @@ interface Orb {
   domain: import('@akg/shared').Domain;
   hovered: boolean;
   stats?: import('@akg/shared').DomainStats;
+  progress?: DomainProgress;
+  /** Pre-generated mini-graph nodes inside this orb (sphere-surface distribution) */
+  miniNodes?: MiniNode[];
+  /** Pre-generated mini-graph edges (index pairs) */
+  miniEdges?: [number, number][];
 }
 
-interface BgNode { x: number; y: number; vx: number; vy: number; size: number; opacity: number }
+interface BgNode {
+  x: number; y: number; z: number;
+  vx: number; vy: number; vz: number;
+  size: number;
+  opacity: number;
+  /** Hub nodes are larger, colored, and more connected */
+  isHub: boolean;
+  /** Muted color tint — hue varies per node for visual richness */
+  hue: number;
+}
+
+/** A tiny node on the surface of a mini knowledge-graph sphere inside an orb */
+interface MiniNode {
+  /** Spherical coords — theta (azimuth), phi (polar) */
+  theta: number; phi: number;
+  size: number;
+  /** Brightness variation 0-1 */
+  brightness: number;
+}
+
+/* ─── Demo domains used when backend is not available (dev preview) ─── */
+const DEMO_DOMAINS: import('@akg/shared').Domain[] = [
+  { id: 'psychology', name: '心理学', description: '心理学知识领域', icon: '💜', color: '#9b59b6', is_active: true, stats: { total_concepts: 183, total_edges: 400, subdomains: 8 } },
+  { id: 'ai-engineering', name: 'AI工程', description: 'AI工程知识领域', icon: '🤖', color: '#8e44ad', is_active: true, stats: { total_concepts: 403, total_edges: 800, subdomains: 15 } },
+  { id: 'finance', name: '金融理财', description: '金融理财知识领域', icon: '💰', color: '#e67e22', is_active: true, stats: { total_concepts: 160, total_edges: 320, subdomains: 8 } },
+  { id: 'product-design', name: '产品设计', description: '产品设计知识领域', icon: '🎨', color: '#e74c3c', is_active: true, stats: { total_concepts: 182, total_edges: 350, subdomains: 9 } },
+  { id: 'mathematics', name: '数学', description: '数学知识领域', icon: '📐', color: '#3498db', is_active: true, stats: { total_concepts: 209, total_edges: 500, subdomains: 12 } },
+  { id: 'english', name: '英语', description: '英语知识领域', icon: '🌟', color: '#f1c40f', is_active: true, stats: { total_concepts: 200, total_edges: 400, subdomains: 10 } },
+  { id: 'physics', name: '物理', description: '物理知识领域', icon: '🔬', color: '#2ecc71', is_active: true, stats: { total_concepts: 194, total_edges: 380, subdomains: 10 } },
+];
 
 /* ─── Constants ─── */
-const BG_NODE_COUNT = 90;
-const CONNECTION_DIST = 180;
-const ORB_BASE_RADIUS = 38;
+const BG_NODE_COUNT = 200;
+const BG_HUB_COUNT = 18;
+const BG_CONNECTION_DIST = 260;
+const ORB_BASE_RADIUS = 57;
 const PERSPECTIVE = 600;
 const Z_RANGE = 200;
 const FLOAT_SPEED = 0.0004;
 const TRANSITION_MS = 900;
+const MINI_NODE_COUNT = 50;
+const MINI_EDGE_MAX = 40;
 
 /* ─── Helpers ─── */
 function hexToRgba(hex: string, a: number): string {
@@ -48,12 +92,57 @@ function hexToRgba(hex: string, a: number): string {
   return `rgba(${r},${g},${b},${a})`;
 }
 
+function hexToRgb(hex: string): [number, number, number] {
+  return [
+    parseInt(hex.slice(1, 3), 16),
+    parseInt(hex.slice(3, 5), 16),
+    parseInt(hex.slice(5, 7), 16),
+  ];
+}
+
 function project(x: number, y: number, z: number, cx: number, cy: number): { sx: number; sy: number; scale: number } {
   const scale = PERSPECTIVE / (PERSPECTIVE + z);
   return { sx: cx + x * scale, sy: cy + y * scale, scale };
 }
 
-/* ─── Background network canvas ─── */
+/** Pseudo-random seeded by index — deterministic mini-graph layout */
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+/** Generate mini-graph nodes distributed on a sphere surface (Fibonacci lattice) */
+function generateMiniGraph(): { nodes: MiniNode[]; edges: [number, number][] } {
+  const nodes: MiniNode[] = [];
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < MINI_NODE_COUNT; i++) {
+    const theta = goldenAngle * i;
+    const phi = Math.acos(1 - 2 * (i + 0.5) / MINI_NODE_COUNT);
+    nodes.push({
+      theta,
+      phi,
+      size: 0.8 + seededRandom(i * 7 + 3) * 1.8,
+      brightness: 0.5 + seededRandom(i * 13 + 5) * 0.5,
+    });
+  }
+  // Connect nearby nodes on the sphere
+  const edges: [number, number][] = [];
+  for (let i = 0; i < MINI_NODE_COUNT && edges.length < MINI_EDGE_MAX; i++) {
+    const xi = Math.sin(nodes[i].phi) * Math.cos(nodes[i].theta);
+    const yi = Math.sin(nodes[i].phi) * Math.sin(nodes[i].theta);
+    const zi = Math.cos(nodes[i].phi);
+    for (let j = i + 1; j < MINI_NODE_COUNT && edges.length < MINI_EDGE_MAX; j++) {
+      const xj = Math.sin(nodes[j].phi) * Math.cos(nodes[j].theta);
+      const yj = Math.sin(nodes[j].phi) * Math.sin(nodes[j].theta);
+      const zj = Math.cos(nodes[j].phi);
+      const dist = Math.sqrt((xi - xj) ** 2 + (yi - yj) ** 2 + (zi - zj) ** 2);
+      if (dist < 0.85) edges.push([i, j]);
+    }
+  }
+  return { nodes, edges };
+}
+
+/* ─── Background network canvas (graph-page style, dimmed) ─── */
 function drawBackground(
   ctx: CanvasRenderingContext2D,
   w: number, h: number,
@@ -70,45 +159,165 @@ function drawBackground(
 
   // Subtle radial vignette
   const vg = ctx.createRadialGradient(w / 2, h / 2, w * 0.15, w / 2, h / 2, w * 0.75);
-  vg.addColorStop(0, 'rgba(255,255,255,0.15)');
-  vg.addColorStop(1, 'rgba(0,0,0,0.04)');
+  vg.addColorStop(0, 'rgba(255,255,255,0.12)');
+  vg.addColorStop(1, 'rgba(0,0,0,0.05)');
   ctx.fillStyle = vg;
   ctx.fillRect(0, 0, w, h);
 
-  // Move nodes
+  // Move nodes (3D drift)
   for (const n of nodes) {
-    n.x += n.vx;
-    n.y += n.vy;
-    if (n.x < -20) n.x = w + 20;
-    if (n.x > w + 20) n.x = -20;
-    if (n.y < -20) n.y = h + 20;
-    if (n.y > h + 20) n.y = -20;
-    n.opacity = 0.12 + 0.08 * Math.sin(time * 0.001 + n.x * 0.01);
+    n.x += n.vx + Math.sin(time * 0.0003 + n.z * 0.01) * 0.04;
+    n.y += n.vy + Math.cos(time * 0.00025 + n.x * 0.005) * 0.03;
+    n.z += n.vz;
+    // Wrap around
+    if (n.x < -40) n.x = w + 40;
+    if (n.x > w + 40) n.x = -40;
+    if (n.y < -40) n.y = h + 40;
+    if (n.y > h + 40) n.y = -40;
+    if (n.z < -300) n.z = 300;
+    if (n.z > 300) n.z = -300;
+    // Depth-based opacity modulation (closer = slightly brighter)
+    const depthFactor = 0.3 + 0.7 * ((300 - n.z) / 600);
+    n.opacity = (0.25 + 0.12 * Math.sin(time * 0.0008 + n.hue * 3)) * depthFactor;
   }
 
-  // Draw connections
-  ctx.lineWidth = 0.5;
+  // Draw connections — graph-page style with varied thickness
   for (let i = 0; i < nodes.length; i++) {
+    const ni = nodes[i];
     for (let j = i + 1; j < nodes.length; j++) {
-      const dx = nodes[i].x - nodes[j].x;
-      const dy = nodes[i].y - nodes[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < CONNECTION_DIST) {
-        const alpha = (1 - dist / CONNECTION_DIST) * 0.08;
-        ctx.strokeStyle = `rgba(120,118,112,${alpha})`;
+      const nj = nodes[j];
+      const dx = ni.x - nj.x;
+      const dy = ni.y - nj.y;
+      const dist2d = Math.sqrt(dx * dx + dy * dy);
+      const dz = Math.abs(ni.z - nj.z);
+      // Only connect nodes that are close in 2D AND not too far in depth
+      if (dist2d < BG_CONNECTION_DIST && dz < 200) {
+        const distFactor = 1 - dist2d / BG_CONNECTION_DIST;
+        const depthAlpha = 1 - dz / 200;
+        // Hub-to-hub connections are slightly thicker
+        const isHubLink = ni.isHub || nj.isHub;
+        const alpha = distFactor * depthAlpha * (isHubLink ? 0.25 : 0.14);
+        if (alpha < 0.005) continue;
+        ctx.strokeStyle = `rgba(130,128,120,${alpha})`;
+        ctx.lineWidth = isHubLink ? 1.2 : 0.7;
         ctx.beginPath();
-        ctx.moveTo(nodes[i].x, nodes[i].y);
-        ctx.lineTo(nodes[j].x, nodes[j].y);
+        ctx.moveTo(ni.x, ni.y);
+        ctx.lineTo(nj.x, nj.y);
         ctx.stroke();
       }
     }
   }
 
-  // Draw nodes
+  // Draw nodes — varied sizes, muted color tints
   for (const n of nodes) {
-    ctx.fillStyle = `rgba(140,138,130,${n.opacity})`;
+    if (n.opacity < 0.01) continue;
+    if (n.isHub) {
+      // Hub nodes: larger with subtle color tint
+      const h = n.hue * 360;
+      ctx.fillStyle = `hsla(${h}, 25%, 45%, ${n.opacity * 2.5})`;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
+      ctx.fill();
+      // Tiny glow around hubs
+      const hubGlow = ctx.createRadialGradient(n.x, n.y, n.size * 0.5, n.x, n.y, n.size * 3);
+      hubGlow.addColorStop(0, `hsla(${h}, 30%, 50%, ${n.opacity * 1.2})`);
+      hubGlow.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = hubGlow;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.size * 3, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      // Regular nodes: tiny dots
+      ctx.fillStyle = `rgba(140,138,130,${n.opacity * 1.8})`;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+}
+
+/* ─── Draw mini knowledge-graph sphere inside an orb ─── */
+function drawMiniGraph(
+  ctx: CanvasRenderingContext2D,
+  sx: number, sy: number,
+  finalR: number,
+  miniNodes: MiniNode[],
+  miniEdges: [number, number][],
+  color: string,
+  time: number,
+  orbSeed: number,
+  hovered: boolean,
+) {
+  const [cr, cg, cb] = hexToRgb(color);
+  const sphereR = finalR * 0.82;
+  // Slow rotation
+  const rotY = time * 0.0003 + orbSeed;
+  const rotX = Math.sin(time * 0.0002 + orbSeed * 2) * 0.2;
+  const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+  const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+
+  // Project each mini-node to 2D
+  const projected: { x: number; y: number; z: number; size: number; brightness: number }[] = [];
+  for (const mn of miniNodes) {
+    // Sphere surface → 3D
+    let nx = Math.sin(mn.phi) * Math.cos(mn.theta) * sphereR;
+    let ny = Math.sin(mn.phi) * Math.sin(mn.theta) * sphereR;
+    let nz = Math.cos(mn.phi) * sphereR;
+    // Rotate Y
+    const tx = nx * cosY - nz * sinY;
+    const tz = nx * sinY + nz * cosY;
+    nx = tx; nz = tz;
+    // Rotate X
+    const ty = ny * cosX - nz * sinX;
+    const tz2 = ny * sinX + nz * cosX;
+    ny = ty; nz = tz2;
+    projected.push({ x: sx + nx, y: sy + ny, z: nz, size: mn.size, brightness: mn.brightness });
+  }
+
+  // Sort by z (back to front) for proper layering
+  const sortedIdx = projected.map((_, i) => i).sort((a, b) => projected[a].z - projected[b].z);
+
+  // Draw edges — back hemisphere dimmer, front brighter
+  const edgeAlphaBase = hovered ? 0.55 : 0.4;
+  for (const [i, j] of miniEdges) {
+    const a = projected[i], b = projected[j];
+    const avgZ = (a.z + b.z) / 2;
+    const frontness = (avgZ + sphereR) / (sphereR * 2); // 0=back, 1=front
+    const edgeAlpha = edgeAlphaBase * (0.1 + frontness * 0.9);
+    if (edgeAlpha < 0.02) continue;
+    ctx.strokeStyle = `rgba(${cr},${cg},${cb},${edgeAlpha})`;
+    ctx.lineWidth = hovered ? 1.0 : 0.7;
     ctx.beginPath();
-    ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+  }
+
+  // Draw nodes — back hemisphere dim, front hemisphere bright + glow
+  for (const idx of sortedIdx) {
+    const p = projected[idx];
+    const frontness = (p.z + sphereR) / (sphereR * 2); // 0=back, 1=front
+    const nodeAlpha = (hovered ? 0.85 : 0.65) * (0.1 + frontness * 0.9) * p.brightness;
+    if (nodeAlpha < 0.02) continue;
+    const dotR = p.size * (0.6 + frontness * 0.9) * (hovered ? 1.2 : 1);
+    // Brighter core color
+    const nr = Math.min(255, cr + 60);
+    const ng = Math.min(255, cg + 60);
+    const nb = Math.min(255, cb + 60);
+    // Subtle glow around front-facing nodes
+    if (frontness > 0.5 && dotR > 1.2) {
+      const glowAlpha = nodeAlpha * 0.35;
+      const nodeGlow = ctx.createRadialGradient(p.x, p.y, dotR * 0.3, p.x, p.y, dotR * 3);
+      nodeGlow.addColorStop(0, `rgba(${nr},${ng},${nb},${glowAlpha})`);
+      nodeGlow.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = nodeGlow;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, dotR * 3, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.fillStyle = `rgba(${nr},${ng},${nb},${nodeAlpha})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, dotR, 0, Math.PI * 2);
     ctx.fill();
   }
 }
@@ -125,81 +334,75 @@ function drawOrb(
   const hoverScale = orb.hovered ? 1.15 : 1;
   const finalR = r * hoverScale;
 
-  // Outer glow
-  const glowR = finalR * (orb.hovered ? 2.8 : 2.2);
-  const glow = ctx.createRadialGradient(sx, sy, finalR * 0.4, sx, sy, glowR);
-  glow.addColorStop(0, hexToRgba(orb.color, orb.hovered ? 0.25 : 0.12));
-  glow.addColorStop(0.6, hexToRgba(orb.color, orb.hovered ? 0.08 : 0.03));
+  // Outer glow — soft colored halo
+  const glowR = finalR * (orb.hovered ? 3.0 : 2.4);
+  const glow = ctx.createRadialGradient(sx, sy, finalR * 0.5, sx, sy, glowR);
+  glow.addColorStop(0, hexToRgba(orb.color, orb.hovered ? 0.20 : 0.10));
+  glow.addColorStop(0.5, hexToRgba(orb.color, orb.hovered ? 0.06 : 0.03));
   glow.addColorStop(1, 'rgba(0,0,0,0)');
   ctx.fillStyle = glow;
   ctx.beginPath();
   ctx.arc(sx, sy, glowR, 0, Math.PI * 2);
   ctx.fill();
 
-  // Sphere body — gradient for 3D look
-  const bodyGrad = ctx.createRadialGradient(
-    sx - finalR * 0.3, sy - finalR * 0.3, finalR * 0.1,
-    sx, sy, finalR,
-  );
-  bodyGrad.addColorStop(0, hexToRgba(orb.glowColor, 0.95));
-  bodyGrad.addColorStop(0.5, hexToRgba(orb.color, 0.9));
-  bodyGrad.addColorStop(1, hexToRgba(orb.color, 0.7));
+  // Sphere body — soft center, fading to transparent at edge (no hard boundary)
+  const bodyR = finalR * 1.15; // slightly larger so the fade happens outside the visual center
+  const bodyGrad = ctx.createRadialGradient(sx, sy, 0, sx, sy, bodyR);
+  bodyGrad.addColorStop(0, hexToRgba(orb.glowColor, 0.22));
+  bodyGrad.addColorStop(0.35, hexToRgba(orb.color, 0.15));
+  bodyGrad.addColorStop(0.65, hexToRgba(orb.color, 0.10));
+  bodyGrad.addColorStop(0.85, hexToRgba(orb.color, 0.04));
+  bodyGrad.addColorStop(1, 'rgba(0,0,0,0)');
   ctx.fillStyle = bodyGrad;
   ctx.beginPath();
-  ctx.arc(sx, sy, finalR, 0, Math.PI * 2);
+  ctx.arc(sx, sy, bodyR, 0, Math.PI * 2);
   ctx.fill();
 
-  // Specular highlight
+  // Draw mini knowledge-graph sphere inside the orb (main visual)
+  if (orb.miniNodes && orb.miniEdges) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(sx, sy, finalR * 0.96, 0, Math.PI * 2);
+    ctx.clip();
+    drawMiniGraph(ctx, sx, sy, finalR, orb.miniNodes, orb.miniEdges, orb.color, time, orb.x + orb.y, orb.hovered);
+    ctx.restore();
+  }
+
+  // Subtle specular — very light, small, no hard edge
   const specGrad = ctx.createRadialGradient(
-    sx - finalR * 0.25, sy - finalR * 0.3, 0,
-    sx - finalR * 0.25, sy - finalR * 0.3, finalR * 0.6,
+    sx - finalR * 0.2, sy - finalR * 0.25, 0,
+    sx - finalR * 0.2, sy - finalR * 0.25, finalR * 0.45,
   );
-  specGrad.addColorStop(0, 'rgba(255,255,255,0.55)');
-  specGrad.addColorStop(0.5, 'rgba(255,255,255,0.1)');
+  specGrad.addColorStop(0, 'rgba(255,255,255,0.18)');
+  specGrad.addColorStop(0.6, 'rgba(255,255,255,0.03)');
   specGrad.addColorStop(1, 'rgba(255,255,255,0)');
   ctx.fillStyle = specGrad;
   ctx.beginPath();
   ctx.arc(sx, sy, finalR, 0, Math.PI * 2);
   ctx.fill();
 
-  // Orbiting ring of dots (subtle)
-  const dotCount = 5;
-  const ringR = finalR * 1.3;
-  const ringPhase = time * 0.0006 + orb.x * 0.01;
-  for (let i = 0; i < dotCount; i++) {
-    const angle = ringPhase + (i / dotCount) * Math.PI * 2;
-    const dx = Math.cos(angle) * ringR;
-    const dy = Math.sin(angle) * ringR * 0.4; // flatten for perspective
-    const dotAlpha = 0.2 + 0.1 * Math.sin(time * 0.002 + i);
-    ctx.fillStyle = hexToRgba(orb.color, dotAlpha);
-    ctx.beginPath();
-    ctx.arc(sx + dx, sy + dy, 1.5 * scale, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  // Icon emoji
-  ctx.font = `${Math.round(finalR * 0.65)}px "Segoe UI Emoji", "Apple Color Emoji", sans-serif`;
+  // Domain name — centered inside the orb
+  const tc = getThemeColors();
+  const fontSize = Math.round(finalR * 0.32);
+  ctx.font = `600 ${fontSize}px "Noto Serif SC", "Source Serif 4", Georgia, serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(orb.domain.icon, sx, sy);
+  // Subtle text shadow for readability over the mini-graph
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.fillText(orb.domain.name, sx + 0.5, sy + 0.5);
+  ctx.fillStyle = orb.hovered ? tc.textPrimary : 'rgba(26,26,26,0.85)';
+  ctx.fillText(orb.domain.name, sx, sy);
 
-  // Label below orb
-  const labelY = sy + finalR + 14 * scale;
-  ctx.font = `600 ${Math.round(13 * scale)}px "Noto Serif SC", "Source Serif 4", Georgia, serif`;
-  ctx.textAlign = 'center';
-  const tc = getThemeColors();
-  ctx.fillStyle = orb.hovered ? tc.textPrimary : 'rgba(26,26,26,0.75)';
-  ctx.fillText(orb.domain.name, sx, labelY);
-
-  // Stats line
+  // Stats line — below the name, still inside the orb
   if (orb.stats) {
-    const statsY = labelY + 14 * scale;
-    ctx.font = `400 ${Math.round(10 * scale)}px "Inter", sans-serif`;
-    ctx.fillStyle = 'rgba(100,100,100,0.6)';
+    const statsY = sy + fontSize * 0.75;
+    const statsFontSize = Math.round(finalR * 0.18);
+    ctx.font = `400 ${statsFontSize}px "Inter", sans-serif`;
+    ctx.fillStyle = `rgba(60,60,60,${orb.hovered ? 0.7 : 0.5})`;
     const parts: string[] = [];
     if (orb.stats.total_concepts != null) parts.push(`${orb.stats.total_concepts} 知识点`);
     if (orb.stats.subdomains != null) parts.push(`${orb.stats.subdomains} 子领域`);
-    if (parts.length) ctx.fillText(parts.join('  ·  '), sx, statsY);
+    if (parts.length) ctx.fillText(parts.join(' · '), sx, statsY);
   }
 
   return { sx, sy, finalR, scale };
@@ -256,7 +459,15 @@ export function HomePage() {
   const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const mountedRef = useRef(true);
 
-  useEffect(() => { fetchDomains(); }, [fetchDomains]);
+  useEffect(() => {
+    fetchDomains().then(() => {
+      // If no domains loaded (backend unavailable), use demo data
+      const state = useDomainStore.getState();
+      if (state.domains.length === 0) {
+        useDomainStore.setState({ domains: DEMO_DOMAINS, loading: false, error: null });
+      }
+    });
+  }, [fetchDomains]);
 
   // Cleanup on unmount — cancel pending transition timeout
   useEffect(() => {
@@ -267,30 +478,50 @@ export function HomePage() {
     };
   }, []);
 
-  // Init background nodes
+  // Init background nodes — graph-page style with hub/spoke structure
   const initBgNodes = useCallback((w: number, h: number) => {
     const nodes: BgNode[] = [];
-    for (let i = 0; i < BG_NODE_COUNT; i++) {
+    // Hub nodes — larger, colored, scattered
+    for (let i = 0; i < BG_HUB_COUNT; i++) {
       nodes.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: 1 + Math.random() * 2,
-        opacity: 0.1 + Math.random() * 0.1,
+        z: (Math.random() - 0.5) * 400,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
+        vz: (Math.random() - 0.5) * 0.05,
+        size: 3.5 + Math.random() * 3.5,
+        opacity: 0.08,
+        isHub: true,
+        hue: Math.random(),
+      });
+    }
+    // Regular nodes — tiny, more numerous
+    for (let i = 0; i < BG_NODE_COUNT - BG_HUB_COUNT; i++) {
+      nodes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        z: (Math.random() - 0.5) * 400,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        vz: (Math.random() - 0.5) * 0.06,
+        size: 1.2 + Math.random() * 2.0,
+        opacity: 0.06,
+        isHub: false,
+        hue: Math.random(),
       });
     }
     bgNodesRef.current = nodes;
   }, []);
 
-  // Init orbs from domains — arrange in a loose ellipse
+  // Init orbs from domains — arrange in a loose ellipse + generate mini-graphs
   useEffect(() => {
     if (activeDomains.length === 0) return;
     const count = activeDomains.length;
     const orbs: Orb[] = activeDomains.map((domain, i) => {
       const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
-      const rx = Math.min(320, 120 + count * 18);
-      const ry = Math.min(220, 80 + count * 13);
+      const rx = Math.min(420, 160 + count * 24);
+      const ry = Math.min(300, 110 + count * 18);
       const jitterX = (Math.random() - 0.5) * 40;
       const jitterY = (Math.random() - 0.5) * 30;
       const stats = domain.stats;
@@ -300,6 +531,9 @@ export function HomePage() {
       const g = parseInt(domain.color.slice(3, 5), 16);
       const b = parseInt(domain.color.slice(5, 7), 16);
       const glowColor = `#${Math.min(255, r + 60).toString(16).padStart(2, '0')}${Math.min(255, g + 60).toString(16).padStart(2, '0')}${Math.min(255, b + 60).toString(16).padStart(2, '0')}`;
+
+      // Generate unique mini-graph for this orb
+      const { nodes: miniNodes, edges: miniEdges } = generateMiniGraph();
 
       return {
         x: Math.cos(angle) * rx + jitterX,
@@ -314,6 +548,8 @@ export function HomePage() {
         domain,
         hovered: false,
         stats,
+        miniNodes,
+        miniEdges,
       };
     });
     orbsRef.current = orbs;

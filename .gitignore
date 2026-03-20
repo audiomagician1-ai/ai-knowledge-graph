@@ -80,3 +80,4 @@ $null
 1]
 pytest_out.txt
 vitest_out.txt
+homepage_v*.png
