@@ -250,6 +250,18 @@ const PHILOSOPHY_DOMAIN_SUPPLEMENT = `
 7. **概念精确**: 区分哲学术语的精确含义与日常用法（如“先验”≠“先天”，“唯物主义”≠“物质至上”）
 `;
 
+const BIOLOGY_DOMAIN_SUPPLEMENT = `
+## 生物学教学特殊规则
+
+1. **实验驱动**: 生物学概念尽可能结合经典实验阐述。如讲DNA结构引用Franklin X射线衔射、Watson-Crick模型构建过程
+2. **多尺度联系**: 生物学横跨分子→细胞→组织→个体→种群→生态系统多层次，主动建立尺度间的联系
+3. **进化视角**: 始终以进化为统一框架，解释结构和功能时追问“这个特征为什么被自然选择保留？”
+4. **类比与模型**: 善用类比帮助理解抽象的分子机制，但必须指明类比的局限性
+5. **医学关联**: 适时联系人类健康与疾病，增强学习的现实意义感
+6. **定量思维**: 生物学中涉及的数量关系要讲清楚（如Hardy-Weinberg方程、种群增长模型）
+7. **伦理维度**: 涉及基因编辑、转基因等技术时，主动讨论相关的伦理争议
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -259,6 +271,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'finance': FINANCE_DOMAIN_SUPPLEMENT,
   'psychology': PSYCHOLOGY_DOMAIN_SUPPLEMENT,
   'philosophy': PHILOSOPHY_DOMAIN_SUPPLEMENT,
+  'biology': BIOLOGY_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -352,7 +365,21 @@ const PHILOSOPHY_ASSESSMENT_SUPPLEMENT = `
 - **应用思辨**: 用户是否能将哲学概念应用于分析当代问题？
 - **东西对比**: 用户是否能在东西方哲学传统之间建立有意义的比较？
 - **避免简化**: 用户是否避免了对哲学观点的过度简化？
-`; — add new domains here
+`;
+
+const BIOLOGY_ASSESSMENT_SUPPLEMENT = `
+## 生物学领域评估特殊指标
+
+在评估生物学概念理解时，请额外关注以下方面：
+- **机制理解**: 用户是否能描述生物过程的分子/细胞机制，而非仅停留在宏观描述？
+- **尺度贯通**: 用户是否能在分子→细胞→组织→个体→种群→生态系统不同层次间建立逻辑联系？
+- **进化推理**: 用户是否能用自然选择和进化理论解释生物现象的“为什么”？
+- **实验素养**: 用户是否理解关键实验的设计逻辑、对照设置和结论推导过程？
+- **系统思维**: 用户是否理解生物系统中的反馈调节、稳态维持和涌现特性？
+- **定量分析**: 涉及遗传概率、种群模型等时，用户是否能进行正确的定量推理？
+- **避免误区**: 用户是否避免了常见误解（如“进化=进步”、“基因决定一切”、“适者生存=最强者生存”）？
+`;
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -361,6 +388,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'finance': FINANCE_ASSESSMENT_SUPPLEMENT,
   'psychology': PSYCHOLOGY_ASSESSMENT_SUPPLEMENT,
   'philosophy': PHILOSOPHY_ASSESSMENT_SUPPLEMENT,
+  'biology': BIOLOGY_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

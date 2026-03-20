@@ -419,6 +419,31 @@ PHILOSOPHY_ASSESSMENT_SUPPLEMENT = """
 - **避免简化**: 用户是否避免了对哲学观点的过度简化（如将功利主义简化为"只看结果"、将存在主义简化为"虚无主义"）？
 """
 
+BIOLOGY_DOMAIN_SUPPLEMENT = """
+## 生物学教学特殊规则
+
+1. **实验驱动**: 生物学概念尽可能结合经典实验阐述。如讲DNA结构引用Franklin X射线衍射、Watson-Crick模型构建过程；讲遗传引用孟德尔豌豆实验。让学生理解"知识是怎么被发现的"
+2. **多尺度联系**: 生物学横跨分子→细胞→组织→个体→种群→生态系统多层次。讲解时主动建立尺度间的联系，如基因突变→蛋白质功能→疾病表型→种群适应
+3. **进化视角**: 始终以进化为统一框架。解释结构和功能时追问"这个特征为什么被自然选择保留？"将Dobzhansky名言"Nothing in biology makes sense except in the light of evolution"贯穿教学
+4. **类比与模型**: 善用类比帮助理解抽象的分子机制。如将细胞膜比作安检系统、DNA复制比作拉链打开复制。但必须指明类比的局限性
+5. **医学关联**: 适时联系人类健康与疾病。如讲细胞凋亡时联系癌症、讲免疫系统时联系疫苗与自身免疫病。增强学习的现实意义感
+6. **定量思维**: 生物学中涉及的数量关系要讲清楚。如Hardy-Weinberg平衡方程、种群增长模型、酶动力学参数。避免将生物学简化为纯描述性学科
+7. **伦理维度**: 涉及基因编辑、转基因、克隆等技术时，主动讨论相关的伦理争议与社会影响，培养科学公民意识
+"""
+
+BIOLOGY_ASSESSMENT_SUPPLEMENT = """
+## 生物学领域评估特殊指标
+
+在评估生物学概念理解时，请额外关注以下方面：
+- **机制理解**: 用户是否能描述生物过程的分子/细胞机制，而非仅停留在宏观描述？（如能否解释ATP合成的化学渗透机制，而非只说"线粒体产生ATP"）
+- **尺度贯通**: 用户是否能在分子→细胞→组织→个体→种群→生态系统不同层次间建立逻辑联系？
+- **进化推理**: 用户是否能用自然选择和进化理论解释生物现象的"为什么"？
+- **实验素养**: 用户是否理解关键实验的设计逻辑、对照设置和结论推导过程？
+- **系统思维**: 用户是否理解生物系统中的反馈调节、稳态维持和涌现特性？
+- **定量分析**: 涉及遗传概率、种群模型等数量关系时，用户是否能进行正确的定量推理？
+- **避免误区**: 用户是否避免了常见的生物学误解（如"进化=进步"、"基因决定一切"、"适者生存=最强者生存"、"所有细菌都有害"）？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -431,6 +456,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "finance": FINANCE_DOMAIN_SUPPLEMENT,
     "psychology": PSYCHOLOGY_DOMAIN_SUPPLEMENT,
     "philosophy": PHILOSOPHY_DOMAIN_SUPPLEMENT,
+    "biology": BIOLOGY_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -441,6 +467,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "finance": FINANCE_ASSESSMENT_SUPPLEMENT,
     "psychology": PSYCHOLOGY_ASSESSMENT_SUPPLEMENT,
     "philosophy": PHILOSOPHY_ASSESSMENT_SUPPLEMENT,
+    "biology": BIOLOGY_ASSESSMENT_SUPPLEMENT,
 }
 
 
