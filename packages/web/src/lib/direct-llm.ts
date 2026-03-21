@@ -871,9 +871,23 @@ export function directChatStream(
   const { baseUrl, apiKey, model } = resolveEndpoint();
   // Apply sliding window to prevent token overflow
   const windowedMsgs = windowMessages(conv.messages);
+
+  // V2: After 2+ exchanges, inject a format reminder to reinforce choices output.
+  // Stored assistant messages have choices stripped (clean content), so the LLM
+  // loses the pattern after several turns without this reminder.
+  const CHOICES_REMINDER = '\n\n(记住：回复末尾必须附带 ```choices JSON 代码块，包含 2-4 个选项。)';
+  const needReminder = windowedMsgs.length >= 4;
+  const messagesWithReminder = needReminder
+    ? windowedMsgs.map((m, i) =>
+        (i === windowedMsgs.length - 1 && m.role === 'user')
+          ? { ...m, content: m.content + CHOICES_REMINDER }
+          : m
+      )
+    : windowedMsgs;
+
   const allMessages = [
     { role: 'system', content: conv.systemPrompt },
-    ...windowedMsgs,
+    ...messagesWithReminder,
   ];
 
   return new ReadableStream({

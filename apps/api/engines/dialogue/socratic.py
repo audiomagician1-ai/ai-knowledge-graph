@@ -159,6 +159,10 @@ class SocraticEngine:
             ]
             return fallback_text, fallback_choices
 
+    # V2: Inject choices format reminder after several turns to prevent LLM from
+    # "forgetting" the ```choices block instruction (stored messages have choices stripped).
+    _CHOICES_REMINDER = "\n\n(记住：回复末尾必须附带 ```choices JSON 代码块，包含 2-4 个选项。)"
+
     async def chat_stream(
         self,
         system_prompt: str,
@@ -167,10 +171,15 @@ class SocraticEngine:
         user_config: dict | None = None,
     ) -> AsyncIterator[str]:
         """流式对话 — 返回 AI 回复的文本 chunk"""
+        # After 2+ exchanges (4+ messages), append a format reminder to user message
+        effective_user_msg = user_message
+        if len(messages) >= 4:
+            effective_user_msg = user_message + self._CHOICES_REMINDER
+
         full_messages = [
             {"role": "system", "content": system_prompt},
             *messages,
-            {"role": "user", "content": user_message},
+            {"role": "user", "content": effective_user_msg},
         ]
 
         async for chunk in llm_router.chat_stream(
@@ -190,10 +199,14 @@ class SocraticEngine:
         user_config: dict | None = None,
     ) -> str:
         """非流式对话 — 返回完整回复"""
+        effective_user_msg = user_message
+        if len(messages) >= 4:
+            effective_user_msg = user_message + self._CHOICES_REMINDER
+
         full_messages = [
             {"role": "system", "content": system_prompt},
             *messages,
-            {"role": "user", "content": user_message},
+            {"role": "user", "content": effective_user_msg},
         ]
 
         return await llm_router.chat(

@@ -241,16 +241,30 @@ app.post('/chat', async (c) => {
   const { results: dbMessages } = await db.prepare('SELECT role, content FROM messages WHERE conversation_id = ? ORDER BY created_at').bind(conversation_id).all();
   const msgList = (dbMessages || []).map((m: any) => ({ role: m.role, content: m.content }));
   const windowedMessages = msgList.length > MAX_MESSAGES ? msgList.slice(-MAX_MESSAGES) : msgList;
+  // V2: Inject a format reminder before the last user message to reinforce choices output.
+  // After several turns, LLM tends to "forget" the system prompt instruction about ```choices blocks
+  // because the stored assistant messages have choices stripped (clean content).
+  const CHOICES_REMINDER = '(记住：回复末尾必须附带 ```choices JSON 代码块，包含 2-4 个选项。)';
+  const needReminder = windowedMessages.length >= 4; // After 2+ exchanges
+  const messagesWithReminder = needReminder
+    ? windowedMessages.map((m, i) =>
+        // Append reminder to the LAST user message
+        (i === windowedMessages.length - 1 && m.role === 'user')
+          ? { ...m, content: m.content + '\n\n' + CHOICES_REMINDER }
+          : m
+      )
+    : windowedMessages;
+
   const allMessages = [
     { role: 'system', content: conv.system_prompt },
-    ...windowedMessages,
+    ...messagesWithReminder,
   ];
 
   // Count user turns for suggest_assess
   const userTurns = (dbMessages || []).filter((m: any) => m.role === 'user').length;
 
-  // Stream LLM response
-  const stream = llmChatStream(c.env, { messages: allMessages, temperature: 0.75, max_tokens: 512 }, userConfig, 'dialogue');
+  // Stream LLM response (max_tokens 512→800 to prevent choices block truncation)
+  const stream = llmChatStream(c.env, { messages: allMessages, temperature: 0.75, max_tokens: 800 }, userConfig, 'dialogue');
 
   // We need to intercept the stream to save the full response
   const encoder = new TextEncoder();
