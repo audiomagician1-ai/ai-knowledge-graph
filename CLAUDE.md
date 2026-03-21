@@ -39,9 +39,9 @@
 
 ---
 
-**当前阶段**: ✅ **Sprint 3 完成** | RAG质量进化: 全量6,156概念AI精写, 均分86.2, S率99.9%
+**当前阶段**: ✅ **Sprint 3.1 完成** | RAG质量进化: 全量6,156概念100% Tier-S, 均分86.2
 **📊 RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
-> 6,156篇RAG文档质量审计: S=6,150 A=6 B=0 C=0 (均分86.2)
+> 6,156篇RAG文档质量审计: S=6,156 A=0 B=0 C=0 (均分86.2, **100% Tier-S**)
 > Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
 > Sprint 1 ✅: 物理域26里程碑精写(均分34.7→45.5, S=7/A=19)
 > Sprint 1.5 ✅: **research-rewrite-v2** — WebResearch增强精写验证: cell-membrane 13.8→93.3, accessibility-audit 17.9→82.6
@@ -49,7 +49,10 @@
 > Sprint 3 ✅: **ai-rewrite-v1** — 全部非里程碑概念批量AI精写(30域全覆盖) #33
 >   脚本: `scripts/batch_ai_rewrite.py --all` | 均分46.6→86.2 | S: 1,115→6,150(99.9%) | C: 2,754→0(0%)
 >   Sprint 3 收尾: 43残余template-v1/ai-batch-v1文件(9域)补写+全量rescore
->   下一步: research-rewrite-v2批量执行(需WebSearch)对剩余6 Tier-A概念提升至S; 或长期用户反馈驱动进化
+> Sprint 3.1 ✅: **Tier-A enhancement** — 最后10篇research-rewrite-v2文档增强至S级
+>   策略: 不替换已有高质量内容,仅追加教学增强(思考题+案例研究+教科书引用)
+>   增强: 10概念特异案例(LTCM危机/Knight Capital/WTI负油价/C4植物光合等)
+>   结果: S=6,156(100.0%) A=0 B=0 C=0 | **RAG质量进化目标达成**
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
@@ -61,9 +64,12 @@
 > **脚本**: `scripts/batch_ai_rewrite.py --all` — 基于seed图谱元数据生成概念特异教学内容
 > **已完成**: 5,005文档精写(7+段落结构, 概念特异内容, 思考题, Wikipedia引用, 先修/后续衔接), 1,108已精写文档跳过
 > **质量提升**: 均分46.6→85.9 | S: 1,115→6,104(99.2%) | A: 132→14(0.2%) | B: 2,155→23(0.4%) | C: 2,754→15(0.2%)
-> **测试**: 969测试全过(756 BE + 213 FE), tsc 0 errors, build 3.71s
+> **Sprint 3.1**: 最后10篇Tier-A research-rewrite-v2文档增强 — 追加思考题/案例研究/教科书引用, 不替换已有内容
+>   增强案例: LTCM危机(统计套利), Knight Capital故障(高频交易), WTI负油价(期货), C4植物光合(生物), ARIMA GDP建模(时间序列)等
+>   最终结果: **S=6,156(100.0%) A=0 B=0 C=0** 均分86.2 — RAG质量进化目标完全达成
+> **测试**: 969测试全过(756 BE + 213 FE), tsc 0 errors
 > **Issue**: #33 (已关闭)
-> **下一步**: research-rewrite-v2批量执行对剩余15 Tier-C概念; 或长期用户反馈驱动进化
+> **下一步**: RAG质量进化已达成100% S-tier, 可进入平台功能增强/新球体开发/用户反馈驱动的长期进化
 
 **Sprint 2 完成摘要** (AI-Rewrite-v1 里程碑批量精写):
 > **目标**: 1,091里程碑概念AI精写, 全30域覆盖, 从Tier-C模板提升到Tier-B/S
@@ -74,7 +80,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-21 | **Scope**: Sprint 3 completion + 43 residual files cleanup + full rescore (S=6150 A=6 B=0 C=0 avg=86.2) | **Result**: passed
+**Date**: 2026-03-21 | **Scope**: Sprint 3.1 — Tier-A enhancement to 100% S-tier (10 docs, case studies + thought questions) | **Result**: passed
 
 **Phase 37 完成摘要** (跨球体总验证+首页适配):
 > **目标**: 游戏开发全领域(20球体)跨球体关联审计 + 首页30球布局适配 (收尾阶段)
