@@ -1,0 +1,1327 @@
+{
+  "version": "1.0",
+  "domain": "game-qa",
+  "domain_name": "QA测试",
+  "generated_at": "2026-03-21T03:08:29.889855+00:00",
+  "total_concepts": 160,
+  "stats": {
+    "total_docs": 160,
+    "total_chars": 227037,
+    "by_subdomain": {
+      "functional-testing": {
+        "docs": 20,
+        "name": "功能测试"
+      },
+      "automation-testing": {
+        "docs": 20,
+        "name": "自动化测试"
+      },
+      "performance-testing": {
+        "docs": 20,
+        "name": "性能测试(Profiling)"
+      },
+      "compatibility-testing": {
+        "docs": 20,
+        "name": "兼容性测试"
+      },
+      "localization-testing": {
+        "docs": 20,
+        "name": "本地化测试"
+      },
+      "regression-testing": {
+        "docs": 20,
+        "name": "回归测试"
+      },
+      "bug-lifecycle": {
+        "docs": 20,
+        "name": "Bug生命周期"
+      },
+      "test-toolchain": {
+        "docs": 20,
+        "name": "测试工具链"
+      }
+    }
+  },
+  "documents": [
+    {
+      "id": "qa-ft-basics",
+      "title": "功能测试基础",
+      "file": "qa-ft-basics.md",
+      "subdomain": "functional-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-test-case-design",
+      "title": "测试用例设计",
+      "file": "qa-ft-test-case-design.md",
+      "subdomain": "functional-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-equivalence-partition",
+      "title": "等价类划分",
+      "file": "qa-ft-equivalence-partition.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ft-boundary-value",
+      "title": "边界值分析",
+      "file": "qa-ft-boundary-value.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-state-transition",
+      "title": "状态转换测试",
+      "file": "qa-ft-state-transition.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-combinatorial",
+      "title": "组合测试",
+      "file": "qa-ft-combinatorial.md",
+      "subdomain": "functional-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-gameplay-testing",
+      "title": "玩法测试",
+      "file": "qa-ft-gameplay-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-ui-testing",
+      "title": "UI功能测试",
+      "file": "qa-ft-ui-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-multiplayer-testing",
+      "title": "多人游戏测试",
+      "file": "qa-ft-multiplayer-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ft-save-load-testing",
+      "title": "存档/加载测试",
+      "file": "qa-ft-save-load-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-input-testing",
+      "title": "输入设备测试",
+      "file": "qa-ft-input-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-audio-testing",
+      "title": "音频功能测试",
+      "file": "qa-ft-audio-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-achievement-testing",
+      "title": "成就/奖杯测试",
+      "file": "qa-ft-achievement-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-economy-testing",
+      "title": "经济系统测试",
+      "file": "qa-ft-economy-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-tutorial-testing",
+      "title": "新手引导测试",
+      "file": "qa-ft-tutorial-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-negative-testing",
+      "title": "负面测试",
+      "file": "qa-ft-negative-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-smoke-testing",
+      "title": "冒烟测试",
+      "file": "qa-ft-smoke-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-exploratory-testing",
+      "title": "探索性测试",
+      "file": "qa-ft-exploratory-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ft-acceptance-testing",
+      "title": "验收测试",
+      "file": "qa-ft-acceptance-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-compliance-testing",
+      "title": "合规性测试",
+      "file": "qa-ft-compliance-testing.md",
+      "subdomain": "functional-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-at-automation-overview",
+      "title": "自动化测试概述",
+      "file": "qa-at-automation-overview.md",
+      "subdomain": "automation-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-test-pyramid",
+      "title": "测试金字塔",
+      "file": "qa-at-test-pyramid.md",
+      "subdomain": "automation-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-unit-testing",
+      "title": "单元测试",
+      "file": "qa-at-unit-testing.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-at-integration-testing",
+      "title": "集成测试",
+      "file": "qa-at-integration-testing.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-e2e-testing",
+      "title": "端到端测试",
+      "file": "qa-at-e2e-testing.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-visual-testing",
+      "title": "视觉回归测试",
+      "file": "qa-at-visual-testing.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-api-testing",
+      "title": "API测试",
+      "file": "qa-at-api-testing.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-script-language",
+      "title": "脚本语言选择",
+      "file": "qa-at-script-language.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-framework-design",
+      "title": "测试框架设计",
+      "file": "qa-at-framework-design.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-at-ci-integration",
+      "title": "CI/CD集成",
+      "file": "qa-at-ci-integration.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-test-data-mgmt",
+      "title": "测试数据管理",
+      "file": "qa-at-test-data-mgmt.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-bot-testing",
+      "title": "Bot测试",
+      "file": "qa-at-bot-testing.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-record-replay",
+      "title": "录制回放",
+      "file": "qa-at-record-replay.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-flaky-tests",
+      "title": "不稳定测试治理",
+      "file": "qa-at-flaky-tests.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-parallel-execution",
+      "title": "并行执行",
+      "file": "qa-at-parallel-execution.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-test-reporting",
+      "title": "测试报告",
+      "file": "qa-at-test-reporting.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-mocking-stubbing",
+      "title": "Mock与Stub",
+      "file": "qa-at-mocking-stubbing.md",
+      "subdomain": "automation-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-tdd-bdd",
+      "title": "TDD/BDD实践",
+      "file": "qa-at-tdd-bdd.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-maintenance",
+      "title": "自动化维护",
+      "file": "qa-at-maintenance.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-roi-metrics",
+      "title": "自动化ROI",
+      "file": "qa-at-roi-metrics.md",
+      "subdomain": "automation-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-perf-overview",
+      "title": "性能测试概述",
+      "file": "qa-pt-perf-overview.md",
+      "subdomain": "performance-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-fps-analysis",
+      "title": "帧率分析",
+      "file": "qa-pt-fps-analysis.md",
+      "subdomain": "performance-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-cpu-profiling",
+      "title": "CPU Profiling",
+      "file": "qa-pt-cpu-profiling.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-gpu-profiling",
+      "title": "GPU Profiling",
+      "file": "qa-pt-gpu-profiling.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-memory-profiling",
+      "title": "内存检测",
+      "file": "qa-pt-memory-profiling.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-load-time",
+      "title": "加载时间测试",
+      "file": "qa-pt-load-time.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-network-perf",
+      "title": "网络性能测试",
+      "file": "qa-pt-network-perf.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-stress-testing",
+      "title": "压力测试",
+      "file": "qa-pt-stress-testing.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-soak-testing",
+      "title": "长时间运行测试",
+      "file": "qa-pt-soak-testing.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-thermal-testing",
+      "title": "热量测试",
+      "file": "qa-pt-thermal-testing.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-disk-io",
+      "title": "磁盘IO测试",
+      "file": "qa-pt-disk-io.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-render-pipeline",
+      "title": "渲染管线分析",
+      "file": "qa-pt-render-pipeline.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-scalability",
+      "title": "可扩展性测试",
+      "file": "qa-pt-scalability.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-benchmark-design",
+      "title": "基准测试设计",
+      "file": "qa-pt-benchmark-design.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-perf-budget",
+      "title": "性能预算",
+      "file": "qa-pt-perf-budget.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-profiling-tools",
+      "title": "Profiling工具",
+      "file": "qa-pt-profiling-tools.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-regression-perf",
+      "title": "性能回归检测",
+      "file": "qa-pt-regression-perf.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-mobile-perf",
+      "title": "移动端性能",
+      "file": "qa-pt-mobile-perf.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-server-perf",
+      "title": "服务器性能",
+      "file": "qa-pt-server-perf.md",
+      "subdomain": "performance-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-perf-report",
+      "title": "性能报告",
+      "file": "qa-pt-perf-report.md",
+      "subdomain": "performance-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-compat-overview",
+      "title": "兼容性测试概述",
+      "file": "qa-ct-compat-overview.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-device-matrix",
+      "title": "设备矩阵",
+      "file": "qa-ct-device-matrix.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-os-version",
+      "title": "操作系统版本",
+      "file": "qa-ct-os-version.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ct-gpu-driver",
+      "title": "GPU驱动兼容",
+      "file": "qa-ct-gpu-driver.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-resolution-aspect",
+      "title": "分辨率与宽高比",
+      "file": "qa-ct-resolution-aspect.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ct-controller-compat",
+      "title": "控制器兼容",
+      "file": "qa-ct-controller-compat.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-cloud-gaming",
+      "title": "云游戏兼容",
+      "file": "qa-ct-cloud-gaming.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-cross-platform",
+      "title": "跨平台一致性",
+      "file": "qa-ct-cross-platform.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-network-conditions",
+      "title": "网络环境模拟",
+      "file": "qa-ct-network-conditions.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-storage-space",
+      "title": "存储空间兼容",
+      "file": "qa-ct-storage-space.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-peripheral",
+      "title": "外设兼容",
+      "file": "qa-ct-peripheral.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-accessibility-hw",
+      "title": "辅助功能硬件",
+      "file": "qa-ct-accessibility-hw.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-minimum-spec",
+      "title": "最低配置验证",
+      "file": "qa-ct-minimum-spec.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ct-console-cert",
+      "title": "主机认证兼容",
+      "file": "qa-ct-console-cert.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-web-browser",
+      "title": "浏览器兼容",
+      "file": "qa-ct-web-browser.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-locale-compat",
+      "title": "区域设置兼容",
+      "file": "qa-ct-locale-compat.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-update-compat",
+      "title": "更新兼容",
+      "file": "qa-ct-update-compat.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ct-emulator-testing",
+      "title": "模拟器测试",
+      "file": "qa-ct-emulator-testing.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-hardware-debug",
+      "title": "硬件调试方法",
+      "file": "qa-ct-hardware-debug.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-compat-report",
+      "title": "兼容性报告",
+      "file": "qa-ct-compat-report.md",
+      "subdomain": "compatibility-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-loc-overview",
+      "title": "本地化测试概述",
+      "file": "qa-lt-loc-overview.md",
+      "subdomain": "localization-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-linguistic-qa",
+      "title": "语言质量测试",
+      "file": "qa-lt-linguistic-qa.md",
+      "subdomain": "localization-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-ui-overflow",
+      "title": "UI文本溢出",
+      "file": "qa-lt-ui-overflow.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-lt-font-rendering",
+      "title": "字体渲染",
+      "file": "qa-lt-font-rendering.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-rtl-support",
+      "title": "RTL语言支持",
+      "file": "qa-lt-rtl-support.md",
+      "subdomain": "localization-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-lt-cultural-adapt",
+      "title": "文化适配",
+      "file": "qa-lt-cultural-adapt.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-date-number-format",
+      "title": "日期/数字格式",
+      "file": "qa-lt-date-number-format.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-audio-loc",
+      "title": "音频本地化",
+      "file": "qa-lt-audio-loc.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-image-loc",
+      "title": "图片本地化",
+      "file": "qa-lt-image-loc.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-pseudoloc",
+      "title": "伪本地化",
+      "file": "qa-lt-pseudoloc.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-string-extraction",
+      "title": "字符串提取验证",
+      "file": "qa-lt-string-extraction.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-context-testing",
+      "title": "上下文测试",
+      "file": "qa-lt-context-testing.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-legal-compliance",
+      "title": "法律合规",
+      "file": "qa-lt-legal-compliance.md",
+      "subdomain": "localization-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-input-method",
+      "title": "输入法兼容",
+      "file": "qa-lt-input-method.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-plurals-gender",
+      "title": "复数/性别变化",
+      "file": "qa-lt-plurals-gender.md",
+      "subdomain": "localization-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-lt-loc-automation",
+      "title": "本地化自动化",
+      "file": "qa-lt-loc-automation.md",
+      "subdomain": "localization-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-vendor-mgmt",
+      "title": "外包翻译管理",
+      "file": "qa-lt-vendor-mgmt.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-hot-text-update",
+      "title": "热更新文本",
+      "file": "qa-lt-hot-text-update.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-loc-regression",
+      "title": "本地化回归",
+      "file": "qa-lt-loc-regression.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-loc-metrics",
+      "title": "本地化质量指标",
+      "file": "qa-lt-loc-metrics.md",
+      "subdomain": "localization-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-regression-overview",
+      "title": "回归测试概述",
+      "file": "qa-rt-regression-overview.md",
+      "subdomain": "regression-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-impact-analysis",
+      "title": "影响分析",
+      "file": "qa-rt-impact-analysis.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-test-selection",
+      "title": "测试选择策略",
+      "file": "qa-rt-test-selection.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-smoke-regression",
+      "title": "冒烟回归",
+      "file": "qa-rt-smoke-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-full-regression",
+      "title": "全量回归",
+      "file": "qa-rt-full-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-auto-regression",
+      "title": "自动化回归",
+      "file": "qa-rt-auto-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-visual-regression",
+      "title": "视觉回归",
+      "file": "qa-rt-visual-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-data-regression",
+      "title": "数据回归",
+      "file": "qa-rt-data-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-priority-ranking",
+      "title": "用例优先级排序",
+      "file": "qa-rt-priority-ranking.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-test-suite-mgmt",
+      "title": "测试套件管理",
+      "file": "qa-rt-test-suite-mgmt.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-change-log-review",
+      "title": "变更日志审查",
+      "file": "qa-rt-change-log-review.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-hotfix-regression",
+      "title": "热修复回归",
+      "file": "qa-rt-hotfix-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-platform-regression",
+      "title": "多平台回归",
+      "file": "qa-rt-platform-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-schedule-planning",
+      "title": "回归排期",
+      "file": "qa-rt-schedule-planning.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-build-verification",
+      "title": "构建验证测试",
+      "file": "qa-rt-build-verification.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-feature-toggle-reg",
+      "title": "功能开关回归",
+      "file": "qa-rt-feature-toggle-reg.md",
+      "subdomain": "regression-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-dlc-regression",
+      "title": "DLC/更新回归",
+      "file": "qa-rt-dlc-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-perf-regression",
+      "title": "性能回归",
+      "file": "qa-rt-perf-regression.md",
+      "subdomain": "regression-testing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-flaky-mgmt",
+      "title": "不稳定用例管理",
+      "file": "qa-rt-flaky-mgmt.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-regression-report",
+      "title": "回归报告",
+      "file": "qa-rt-regression-report.md",
+      "subdomain": "regression-testing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-bug-report-basics",
+      "title": "Bug报告基础",
+      "file": "qa-bl-bug-report-basics.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-severity-priority",
+      "title": "严重性与优先级",
+      "file": "qa-bl-severity-priority.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-classification",
+      "title": "Bug分类体系",
+      "file": "qa-bl-classification.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-lifecycle-states",
+      "title": "生命周期状态",
+      "file": "qa-bl-lifecycle-states.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-reproduction",
+      "title": "复现方法",
+      "file": "qa-bl-reproduction.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-bl-root-cause",
+      "title": "根因分析",
+      "file": "qa-bl-root-cause.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-triage-process",
+      "title": "Bug评审会",
+      "file": "qa-bl-triage-process.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-wont-fix",
+      "title": "Won't Fix决策",
+      "file": "qa-bl-wont-fix.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-duplicate-mgmt",
+      "title": "重复Bug管理",
+      "file": "qa-bl-duplicate-mgmt.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-crash-reporting",
+      "title": "崩溃报告系统",
+      "file": "qa-bl-crash-reporting.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-bl-issue-tracker",
+      "title": "Issue Tracker选型",
+      "file": "qa-bl-issue-tracker.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-automation-filing",
+      "title": "自动化Bug提报",
+      "file": "qa-bl-automation-filing.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-screenshot-video",
+      "title": "截图/录屏证据",
+      "file": "qa-bl-screenshot-video.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-environment-info",
+      "title": "环境信息",
+      "file": "qa-bl-environment-info.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-regression-bug",
+      "title": "回归Bug",
+      "file": "qa-bl-regression-bug.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-bl-statistics",
+      "title": "Bug统计分析",
+      "file": "qa-bl-statistics.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-release-criteria",
+      "title": "发布质量标准",
+      "file": "qa-bl-release-criteria.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-bl-communication",
+      "title": "Bug沟通技巧",
+      "file": "qa-bl-communication.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-known-issues",
+      "title": "已知问题列表",
+      "file": "qa-bl-known-issues.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-post-release-bugs",
+      "title": "上线后Bug处理",
+      "file": "qa-bl-post-release-bugs.md",
+      "subdomain": "bug-lifecycle",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-tool-overview",
+      "title": "测试工具概述",
+      "file": "qa-tc-tool-overview.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-test-mgmt-tools",
+      "title": "测试管理工具",
+      "file": "qa-tc-test-mgmt-tools.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-engine-profiler",
+      "title": "引擎Profiler",
+      "file": "qa-tc-engine-profiler.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-tc-gpu-tools",
+      "title": "GPU调试工具",
+      "file": "qa-tc-gpu-tools.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-crash-analytics",
+      "title": "崩溃分析平台",
+      "file": "qa-tc-crash-analytics.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-tc-device-farm",
+      "title": "云设备农场",
+      "file": "qa-tc-device-farm.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-network-simulator",
+      "title": "网络模拟器",
+      "file": "qa-tc-network-simulator.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-screenshot-comparison",
+      "title": "截图对比工具",
+      "file": "qa-tc-screenshot-comparison.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-log-analysis",
+      "title": "日志分析工具",
+      "file": "qa-tc-log-analysis.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-ci-tools",
+      "title": "CI/CD工具",
+      "file": "qa-tc-ci-tools.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-game-test-framework",
+      "title": "游戏测试框架",
+      "file": "qa-tc-game-test-framework.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-tc-performance-monitor",
+      "title": "性能监控工具",
+      "file": "qa-tc-performance-monitor.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-code-coverage",
+      "title": "代码覆盖率",
+      "file": "qa-tc-code-coverage.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-static-analysis",
+      "title": "静态分析",
+      "file": "qa-tc-static-analysis.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-remote-debugging",
+      "title": "远程调试",
+      "file": "qa-tc-remote-debugging.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-version-control",
+      "title": "版本控制协作",
+      "file": "qa-tc-version-control.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-test-env-mgmt",
+      "title": "测试环境管理",
+      "file": "qa-tc-test-env-mgmt.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "qa-tc-custom-tooling",
+      "title": "定制工具开发",
+      "file": "qa-tc-custom-tooling.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-metrics-dashboard",
+      "title": "质量仪表板",
+      "file": "qa-tc-metrics-dashboard.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-toolchain-evolution",
+      "title": "工具链演进",
+      "file": "qa-tc-toolchain-evolution.md",
+      "subdomain": "test-toolchain",
+      "difficulty": 3,
+      "is_milestone": false
+    }
+  ]
+}

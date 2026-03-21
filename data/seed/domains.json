@@ -307,6 +307,17 @@
       "rag_dir": "game-live-ops",
       "is_active": true,
       "sort_order": 28
+    },
+    {
+      "id": "game-qa",
+      "name": "QA测试",
+      "description": "游戏QA测试知识体系，覆盖功能测试、自动化测试、性能测试(Profiling)、兼容性测试、本地化测试、回归测试、Bug生命周期与测试工具链",
+      "icon": "🧪",
+      "color": "#10b981",
+      "seed_dir": "game-qa",
+      "rag_dir": "game-qa",
+      "is_active": true,
+      "sort_order": 29
     }
   ]
 }

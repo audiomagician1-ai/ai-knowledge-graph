@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2995,4 +2995,69 @@ async def test_game_live_ops_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "ops-da-data-collection"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Phase 35: Game QA Testing (game-qa) Tests ──────────────────
+
+@pytest.mark.asyncio
+async def test_game_qa_seed():
+    """Game QA seed graph: 160 concepts, 177 edges, 8 subdomains, 32 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=game-qa")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 160, f"Expected 160 concepts, got {len(nodes)}"
+        assert len(edges) == 177, f"Expected 177 edges, got {len(edges)}"
+        subdomains = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomains) == 8, f"Expected 8 subdomains, got {len(subdomains)}"
+        assert all(n["domain_id"] == "game-qa" for n in nodes)
+
+@pytest.mark.asyncio
+async def test_game_qa_rag():
+    """Game QA RAG: 160 documents across 8 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=game-qa")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 160
+        assert len(data.get("by_subdomain", {})) == 8
+
+@pytest.mark.asyncio
+async def test_game_qa_cross_links():
+    """Game QA cross-sphere links: 24 links to multiple domains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=game-qa")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["links"]) >= 20, f"Expected ≥20 cross links, got {len(data['links'])}"
+
+def test_game_qa_supplements():
+    """Game QA supplements registered in both registries."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "game-qa" in DOMAIN_SUPPLEMENTS, "game-qa missing from DOMAIN_SUPPLEMENTS"
+    assert "game-qa" in ASSESSMENT_SUPPLEMENTS, "game-qa missing from ASSESSMENT_SUPPLEMENTS"
+    assert "质量意识" in DOMAIN_SUPPLEMENTS["game-qa"], "QA supplement should mention 质量意识"
+    assert "测试设计能力" in ASSESSMENT_SUPPLEMENTS["game-qa"], "QA assessment should mention 测试设计能力"
+
+@pytest.mark.asyncio
+async def test_game_qa_concept_detail():
+    """Game QA concept detail: qa-ft-basics."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/qa-ft-basics?domain=game-qa")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "qa-ft-basics"
+        assert data["domain_id"] == "game-qa"
+
+@pytest.mark.asyncio
+async def test_game_qa_neighbors():
+    """Game QA neighbors: qa-ft-basics should have at least 1 neighbor."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/qa-ft-basics/neighbors?domain=game-qa&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "qa-ft-basics"
         assert len(data["nodes"]) >= 2

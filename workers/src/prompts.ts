@@ -841,6 +841,32 @@ export const GAME_LIVE_OPS_ASSESSMENT_SUPPLEMENT = `
 - **合规与伦理**: 用户是否了解付费系统相关法规(概率公示/未成年人保护)？是否理解道德变现原则？
 `;
 
+export const GAME_QA_DOMAIN_SUPPLEMENT = `
+## 游戏QA测试领域教学要点
+
+教授游戏QA测试概念时，请特别注意以下方面：
+- **质量意识**: QA不只是找Bug——而是从玩家角度保障整体游戏体验质量，包括功能、性能、兼容性和本地化。
+- **测试设计思维**: 好的测试设计比蛮力执行更重要——等价类划分、边界值分析、状态转换等方法能大幅提升测试效率。
+- **自动化策略**: 不是所有测试都适合自动化——理解测试金字塔，在单元/集成/E2E之间找到合理的投入比例。
+- **跨平台意识**: 游戏需要在多平台多设备上运行——兼容性测试矩阵的制定和优先级排序是必备技能。
+- **Bug管理**: Bug报告的质量直接影响修复效率——清晰的复现步骤、准确的严重性评估和有效的沟通是QA的核心能力。
+- **性能感知**: 游戏性能直接影响玩家体验——帧率、加载时间、内存占用等关键指标需要持续监控和回归验证。
+- **流程驱动**: QA是贯穿开发全周期的活动——从需求评审到上线监控，每个阶段都有QA的角色和价值。
+`;
+
+export const GAME_QA_ASSESSMENT_SUPPLEMENT = `
+## 游戏QA测试领域评估特殊指标
+
+在评估游戏QA测试概念理解时，请额外关注以下方面：
+- **测试设计能力**: 用户是否能运用等价类/边界值/状态转换等方法设计有效的测试用例？
+- **Bug分析能力**: 用户是否能准确描述Bug？是否理解严重性/优先级的区别？能否有效进行根因分析？
+- **自动化判断**: 用户是否理解何时该自动化、何时不该？是否了解测试框架设计模式(PO/数据驱动)？
+- **性能理解**: 用户是否理解帧率/CPU/GPU/内存等性能指标？能否识别性能瓶颈并提出验证方案？
+- **兼容性策略**: 用户是否能制定合理的设备/平台覆盖矩阵？是否理解最低配置验证的重要性？
+- **本地化意识**: 用户是否了解多语言测试的关键点(UI溢出/RTL/文化适配)？能否识别本地化常见陷阱？
+- **回归策略**: 用户是否能根据变更影响分析确定回归测试范围？是否理解自动化回归的价值？
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -870,6 +896,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'game-audio-sfx': GAME_AUDIO_SFX_DOMAIN_SUPPLEMENT,
   'game-publishing': GAME_PUBLISHING_DOMAIN_SUPPLEMENT,
   'game-live-ops': GAME_LIVE_OPS_DOMAIN_SUPPLEMENT,
+  'game-qa': GAME_QA_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -904,6 +931,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'game-audio-sfx': GAME_AUDIO_SFX_ASSESSMENT_SUPPLEMENT,
   'game-publishing': GAME_PUBLISHING_ASSESSMENT_SUPPLEMENT,
   'game-live-ops': GAME_LIVE_OPS_ASSESSMENT_SUPPLEMENT,
+  'game-qa': GAME_QA_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

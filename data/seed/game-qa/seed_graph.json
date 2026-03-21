@@ -1,0 +1,3073 @@
+{
+  "domain": "game-qa",
+  "subdomains": [
+    {
+      "id": "functional-testing",
+      "name": "功能测试",
+      "description": "游戏功能验证、测试用例设计、边界条件与异常路径测试",
+      "order": 1
+    },
+    {
+      "id": "automation-testing",
+      "name": "自动化测试",
+      "description": "测试自动化框架、脚本编写、CI集成与自动化策略",
+      "order": 2
+    },
+    {
+      "id": "performance-testing",
+      "name": "性能测试(Profiling)",
+      "description": "帧率分析、内存检测、CPU/GPU Profiling与性能优化验证",
+      "order": 3
+    },
+    {
+      "id": "compatibility-testing",
+      "name": "兼容性测试",
+      "description": "多平台/多设备/多分辨率/多系统版本的兼容性验证",
+      "order": 4
+    },
+    {
+      "id": "localization-testing",
+      "name": "本地化测试",
+      "description": "多语言翻译验证、文化适配、UI排版与地区合规测试",
+      "order": 5
+    },
+    {
+      "id": "regression-testing",
+      "name": "回归测试",
+      "description": "版本更新后的回归验证、影响分析与回归测试策略",
+      "order": 6
+    },
+    {
+      "id": "bug-lifecycle",
+      "name": "Bug生命周期",
+      "description": "Bug报告、分类、优先级、修复跟踪与关闭的全流程管理",
+      "order": 7
+    },
+    {
+      "id": "test-toolchain",
+      "name": "测试工具链",
+      "description": "测试管理工具、自动化平台、性能分析器与测试基础设施",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "qa-ft-basics",
+      "name": "功能测试基础",
+      "description": "游戏功能测试的定义、目标与在开发流程中的角色",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-test-case-design",
+      "name": "测试用例设计",
+      "description": "测试用例的结构(前置条件/步骤/预期结果)与设计原则",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-equivalence-partition",
+      "name": "等价类划分",
+      "description": "将输入数据划分为有效/无效等价类以减少用例数量",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ft-boundary-value",
+      "name": "边界值分析",
+      "description": "针对输入范围边界的极值测试方法",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-state-transition",
+      "name": "状态转换测试",
+      "description": "基于游戏状态机的状态转换路径覆盖测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-combinatorial",
+      "name": "组合测试",
+      "description": "多参数组合(正交表/Pairwise)降低用例爆炸",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-gameplay-testing",
+      "name": "玩法测试",
+      "description": "核心玩法循环、数值平衡与游戏性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-ui-testing",
+      "name": "UI功能测试",
+      "description": "菜单/HUD/弹窗/输入控件的功能与交互测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-multiplayer-testing",
+      "name": "多人游戏测试",
+      "description": "联机功能、同步一致性与网络异常场景测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ft-save-load-testing",
+      "name": "存档/加载测试",
+      "description": "存档完整性、跨版本兼容与损坏恢复测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-input-testing",
+      "name": "输入设备测试",
+      "description": "键鼠/手柄/触屏/体感等输入设备的兼容性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-audio-testing",
+      "name": "音频功能测试",
+      "description": "音效触发/音量控制/空间音频/音频切换测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-achievement-testing",
+      "name": "成就/奖杯测试",
+      "description": "成就解锁条件、进度追踪与平台认证测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-economy-testing",
+      "name": "经济系统测试",
+      "description": "虚拟货币/交易/商城/付费流程的功能验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-tutorial-testing",
+      "name": "新手引导测试",
+      "description": "教程流程完整性、跳过机制与异常中断恢复",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-negative-testing",
+      "name": "负面测试",
+      "description": "异常输入/非法操作/极端条件下的系统健壮性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-smoke-testing",
+      "name": "冒烟测试",
+      "description": "版本构建后的快速基本功能验证流程",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-exploratory-testing",
+      "name": "探索性测试",
+      "description": "基于经验与直觉的自由探索式测试方法",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ft-acceptance-testing",
+      "name": "验收测试",
+      "description": "基于需求文档的最终功能验收标准与流程",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ft-compliance-testing",
+      "name": "合规性测试",
+      "description": "平台TRC/Lotcheck/XR认证要求的合规验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "functional-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-at-automation-overview",
+      "name": "自动化测试概述",
+      "description": "游戏测试自动化的价值、挑战与适用场景",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-test-pyramid",
+      "name": "测试金字塔",
+      "description": "单元测试/集成测试/E2E测试的分层策略与投入比例",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-unit-testing",
+      "name": "单元测试",
+      "description": "游戏逻辑单元测试的框架选择与编写规范",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-at-integration-testing",
+      "name": "集成测试",
+      "description": "模块间接口与数据流的集成验证方法",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-e2e-testing",
+      "name": "端到端测试",
+      "description": "模拟真实用户操作的全流程自动化测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-visual-testing",
+      "name": "视觉回归测试",
+      "description": "截图对比/像素差异检测的自动化视觉验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-api-testing",
+      "name": "API测试",
+      "description": "后端接口/网络协议的自动化验证与Mock",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-script-language",
+      "name": "脚本语言选择",
+      "description": "Python/Lua/C#等自动化脚本语言的优劣对比",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-framework-design",
+      "name": "测试框架设计",
+      "description": "Page Object/关键字驱动/数据驱动等框架模式",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-at-ci-integration",
+      "name": "CI/CD集成",
+      "description": "自动化测试与持续集成管线的集成策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-test-data-mgmt",
+      "name": "测试数据管理",
+      "description": "测试数据的生成、维护、隔离与环境清理",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-bot-testing",
+      "name": "Bot测试",
+      "description": "AI机器人模拟玩家行为的自动化压力/功能测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-record-replay",
+      "name": "录制回放",
+      "description": "操作录制与回放技术在回归测试中的应用",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-flaky-tests",
+      "name": "不稳定测试治理",
+      "description": "Flaky Test的检测、隔离、修复与预防策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-parallel-execution",
+      "name": "并行执行",
+      "description": "测试用例的并行化策略与分布式执行架构",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-test-reporting",
+      "name": "测试报告",
+      "description": "自动化测试结果的可视化报告与趋势分析",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-mocking-stubbing",
+      "name": "Mock与Stub",
+      "description": "外部依赖模拟技术在游戏测试中的应用",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-tdd-bdd",
+      "name": "TDD/BDD实践",
+      "description": "测试驱动/行为驱动开发在游戏项目中的适用性",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-maintenance",
+      "name": "自动化维护",
+      "description": "测试脚本的版本管理、重构与维护成本控制",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-at-roi-metrics",
+      "name": "自动化ROI",
+      "description": "自动化投入产出比的度量与决策模型",
+      "domain_id": "game-qa",
+      "subdomain_id": "automation-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-perf-overview",
+      "name": "性能测试概述",
+      "description": "游戏性能测试的目标、指标与测试类型分类",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-fps-analysis",
+      "name": "帧率分析",
+      "description": "FPS测量、帧时间分布、卡顿检测与性能基准",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-cpu-profiling",
+      "name": "CPU Profiling",
+      "description": "CPU热点分析、调用栈追踪与瓶颈定位方法",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-gpu-profiling",
+      "name": "GPU Profiling",
+      "description": "Draw Call分析、Shader性能、带宽瓶颈与GPU时间轴",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-memory-profiling",
+      "name": "内存检测",
+      "description": "内存占用追踪、泄漏检测、碎片化分析与预算管理",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-load-time",
+      "name": "加载时间测试",
+      "description": "场景加载/资源流送/初始化的耗时测量与优化验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-network-perf",
+      "name": "网络性能测试",
+      "description": "延迟/带宽/丢包/抖动对游戏体验的影响测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-stress-testing",
+      "name": "压力测试",
+      "description": "高并发/大规模场景/极端条件下的系统稳定性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-soak-testing",
+      "name": "长时间运行测试",
+      "description": "长时间连续运行检测内存泄漏/性能衰退/崩溃",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-thermal-testing",
+      "name": "热量测试",
+      "description": "移动设备长时间游戏的发热/降频/续航测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-disk-io",
+      "name": "磁盘IO测试",
+      "description": "资源读写速度、流式加载与存储空间占用测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-render-pipeline",
+      "name": "渲染管线分析",
+      "description": "渲染各阶段(几何/光照/后处理)的性能拆解",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-scalability",
+      "name": "可扩展性测试",
+      "description": "不同画质/LOD/视距设置下的性能缩放验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-benchmark-design",
+      "name": "基准测试设计",
+      "description": "可复现的性能基准场景设计与自动化采集",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-perf-budget",
+      "name": "性能预算",
+      "description": "帧时间/内存/Draw Call等性能预算的制定与监控",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-profiling-tools",
+      "name": "Profiling工具",
+      "description": "引擎内置/第三方性能分析工具的使用方法",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-regression-perf",
+      "name": "性能回归检测",
+      "description": "版本间性能指标自动对比与退化告警",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-pt-mobile-perf",
+      "name": "移动端性能",
+      "description": "移动GPU特性/纹理压缩/DrawCall优化的验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-server-perf",
+      "name": "服务器性能",
+      "description": "游戏服务器TPS/QPS/响应时间/承载量测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-pt-perf-report",
+      "name": "性能报告",
+      "description": "性能测试结果的可视化报告与优化建议撰写",
+      "domain_id": "game-qa",
+      "subdomain_id": "performance-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-compat-overview",
+      "name": "兼容性测试概述",
+      "description": "多平台多设备游戏兼容性测试的范围与策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-device-matrix",
+      "name": "设备矩阵",
+      "description": "目标设备列表的制定、优先级排序与覆盖策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-os-version",
+      "name": "操作系统版本",
+      "description": "不同OS版本(Windows/macOS/Android/iOS)的兼容验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ct-gpu-driver",
+      "name": "GPU驱动兼容",
+      "description": "不同显卡厂商/驱动版本的渲染兼容性测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-resolution-aspect",
+      "name": "分辨率与宽高比",
+      "description": "多分辨率/宽高比/DPI缩放的UI适配验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ct-controller-compat",
+      "name": "控制器兼容",
+      "description": "不同品牌手柄/触控方案/键鼠布局的兼容验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-cloud-gaming",
+      "name": "云游戏兼容",
+      "description": "云游戏平台(GeForce Now/Xbox Cloud)的适配测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-cross-platform",
+      "name": "跨平台一致性",
+      "description": "PC/主机/移动端间的功能与体验一致性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-network-conditions",
+      "name": "网络环境模拟",
+      "description": "弱网/断网/切换网络等异常网络条件的兼容测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-storage-space",
+      "name": "存储空间兼容",
+      "description": "低存储空间/SD卡/外部存储的安装与运行测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-peripheral",
+      "name": "外设兼容",
+      "description": "耳机/VR头显/方向盘/飞行摇杆等外设兼容测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-accessibility-hw",
+      "name": "辅助功能硬件",
+      "description": "无障碍硬件(语音控制/开关控制)的兼容验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-minimum-spec",
+      "name": "最低配置验证",
+      "description": "官方最低/推荐配置设备上的性能与稳定性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ct-console-cert",
+      "name": "主机认证兼容",
+      "description": "PlayStation/Xbox/Switch平台认证要求的兼容验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-web-browser",
+      "name": "浏览器兼容",
+      "description": "Web游戏在不同浏览器/版本的功能与性能验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-locale-compat",
+      "name": "区域设置兼容",
+      "description": "不同系统语言/时区/日期格式的兼容验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-update-compat",
+      "name": "更新兼容",
+      "description": "新旧版本共存/增量更新/存档迁移的兼容验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-ct-emulator-testing",
+      "name": "模拟器测试",
+      "description": "使用模拟器/虚拟机扩展设备覆盖的方法与局限",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-hardware-debug",
+      "name": "硬件调试方法",
+      "description": "设备特定问题的远程调试与日志采集技术",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-ct-compat-report",
+      "name": "兼容性报告",
+      "description": "兼容性测试结果的设备覆盖矩阵报告",
+      "domain_id": "game-qa",
+      "subdomain_id": "compatibility-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-loc-overview",
+      "name": "本地化测试概述",
+      "description": "游戏本地化测试的范围、流程与最佳实践",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-linguistic-qa",
+      "name": "语言质量测试",
+      "description": "翻译准确性、术语一致性与语境适切性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-ui-overflow",
+      "name": "UI文本溢出",
+      "description": "长文本截断/换行/控件溢出的多语言排版验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-lt-font-rendering",
+      "name": "字体渲染",
+      "description": "多语言字体(CJK/阿拉伯/泰文)的渲染与排版测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-rtl-support",
+      "name": "RTL语言支持",
+      "description": "阿拉伯语/希伯来语等从右到左语言的界面镜像测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-lt-cultural-adapt",
+      "name": "文化适配",
+      "description": "色彩/图标/手势/符号在不同文化中的适当性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-date-number-format",
+      "name": "日期/数字格式",
+      "description": "不同地区日期、时间、数字、货币格式的正确性",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-audio-loc",
+      "name": "音频本地化",
+      "description": "配音/字幕同步/音频切换/语言选择的功能验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-image-loc",
+      "name": "图片本地化",
+      "description": "含文字图片/纹理/Logo的多语言替换验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-pseudoloc",
+      "name": "伪本地化",
+      "description": "Pseudo-localization技术快速发现本地化潜在问题",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-string-extraction",
+      "name": "字符串提取验证",
+      "description": "确认所有UI文本已外部化、无硬编码字符串",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-context-testing",
+      "name": "上下文测试",
+      "description": "翻译在实际游戏场景中的语境正确性验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-legal-compliance",
+      "name": "法律合规",
+      "description": "各地区法律法规(GDPR/年龄分级/敏感内容)的合规验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-input-method",
+      "name": "输入法兼容",
+      "description": "CJK输入法/虚拟键盘在游戏内的兼容性测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-plurals-gender",
+      "name": "复数/性别变化",
+      "description": "不同语言复数规则/语法性别的正确处理验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-lt-loc-automation",
+      "name": "本地化自动化",
+      "description": "自动化截图对比/文本长度检测等本地化测试工具",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-vendor-mgmt",
+      "name": "外包翻译管理",
+      "description": "本地化供应商质量管控、反馈流程与术语表管理",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-hot-text-update",
+      "name": "热更新文本",
+      "description": "运营期间文本热更新的验证与回滚测试",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-loc-regression",
+      "name": "本地化回归",
+      "description": "版本更新后新增/修改文本的本地化回归验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-lt-loc-metrics",
+      "name": "本地化质量指标",
+      "description": "翻译错误率/覆盖率/玩家反馈等质量度量",
+      "domain_id": "game-qa",
+      "subdomain_id": "localization-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-regression-overview",
+      "name": "回归测试概述",
+      "description": "回归测试的定义、价值与在敏捷开发中的角色",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-impact-analysis",
+      "name": "影响分析",
+      "description": "代码变更的影响范围评估与测试范围确定",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-test-selection",
+      "name": "测试选择策略",
+      "description": "全量/选择性/风险驱动回归测试策略的选择",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-smoke-regression",
+      "name": "冒烟回归",
+      "description": "每日构建后的快速核心路径回归验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-full-regression",
+      "name": "全量回归",
+      "description": "版本发布前的完整功能回归测试计划",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-auto-regression",
+      "name": "自动化回归",
+      "description": "利用自动化测试套件执行高频回归验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-visual-regression",
+      "name": "视觉回归",
+      "description": "UI/场景截图对比检测视觉变化与退化",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-data-regression",
+      "name": "数据回归",
+      "description": "游戏配置/数值表/存档格式变更的回归验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-priority-ranking",
+      "name": "用例优先级排序",
+      "description": "基于风险/频率/影响的回归用例优先级排序方法",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-test-suite-mgmt",
+      "name": "测试套件管理",
+      "description": "回归测试套件的版本化、分类与定期维护",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-change-log-review",
+      "name": "变更日志审查",
+      "description": "通过代码提交记录定向确定回归测试重点",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-hotfix-regression",
+      "name": "热修复回归",
+      "description": "紧急修复后的快速定向回归验证流程",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-platform-regression",
+      "name": "多平台回归",
+      "description": "跨平台构建的同步回归测试策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-schedule-planning",
+      "name": "回归排期",
+      "description": "回归测试在迭代/冲刺中的时间规划与执行窗口",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-build-verification",
+      "name": "构建验证测试",
+      "description": "新版本构建的自动化验证(BVT)流程与标准",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-feature-toggle-reg",
+      "name": "功能开关回归",
+      "description": "Feature Flag启/禁组合的回归测试覆盖",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-dlc-regression",
+      "name": "DLC/更新回归",
+      "description": "DLC/赛季更新对主游戏功能的回归影响验证",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-perf-regression",
+      "name": "性能回归",
+      "description": "版本间性能指标对比与性能退化检测",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-rt-flaky-mgmt",
+      "name": "不稳定用例管理",
+      "description": "回归测试中不稳定用例的标记、隔离与修复",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-rt-regression-report",
+      "name": "回归报告",
+      "description": "回归测试通过率/覆盖率/趋势的报告模板",
+      "domain_id": "game-qa",
+      "subdomain_id": "regression-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-bug-report-basics",
+      "name": "Bug报告基础",
+      "description": "一份合格Bug报告的要素:标题/步骤/预期/实际/环境/证据",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-severity-priority",
+      "name": "严重性与优先级",
+      "description": "Bug严重性(Blocker→Trivial)与优先级(P0-P4)的定义与区别",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-classification",
+      "name": "Bug分类体系",
+      "description": "功能/视觉/性能/崩溃/安全/本地化等Bug分类标准",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-lifecycle-states",
+      "name": "生命周期状态",
+      "description": "New→Open→Fixed→Verified→Closed/Reopened的状态流转",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-reproduction",
+      "name": "复现方法",
+      "description": "从概率性Bug到必现路径的复现技巧与策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-bl-root-cause",
+      "name": "根因分析",
+      "description": "Bug根本原因的分析方法(5-Why/鱼骨图/代码审查)",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-triage-process",
+      "name": "Bug评审会",
+      "description": "定期Bug评审的流程、参与者与决策标准",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-wont-fix",
+      "name": "Won't Fix决策",
+      "description": "判断Bug不修复的标准:成本/风险/影响/临近发布",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-duplicate-mgmt",
+      "name": "重复Bug管理",
+      "description": "重复Bug的检测、合并与追踪策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-crash-reporting",
+      "name": "崩溃报告系统",
+      "description": "崩溃日志自动采集、分组、符号化与优先排序",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-bl-issue-tracker",
+      "name": "Issue Tracker选型",
+      "description": "JIRA/Azure DevOps/Mantis/GitHub Issues等工具对比",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-automation-filing",
+      "name": "自动化Bug提报",
+      "description": "自动化测试失败自动创建Bug报告的工作流",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-screenshot-video",
+      "name": "截图/录屏证据",
+      "description": "Bug报告中截图、录屏与日志附件的规范",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-environment-info",
+      "name": "环境信息",
+      "description": "Bug报告中设备/系统/版本/网络环境信息的记录规范",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-regression-bug",
+      "name": "回归Bug",
+      "description": "已修复Bug再次出现的检测与预防策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-bl-statistics",
+      "name": "Bug统计分析",
+      "description": "Bug趋势图/修复率/密度/平均修复时间等质量指标",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-release-criteria",
+      "name": "发布质量标准",
+      "description": "基于Bug数量/严重性的版本发布Go/No-Go决策标准",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-bl-communication",
+      "name": "Bug沟通技巧",
+      "description": "与开发/策划团队有效沟通Bug的方法与技巧",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-known-issues",
+      "name": "已知问题列表",
+      "description": "版本已知问题的管理、公示与玩家沟通",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-bl-post-release-bugs",
+      "name": "上线后Bug处理",
+      "description": "线上Bug的快速响应、热修复决策与玩家安抚",
+      "domain_id": "game-qa",
+      "subdomain_id": "bug-lifecycle",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-tool-overview",
+      "name": "测试工具概述",
+      "description": "游戏QA测试工具生态与工具链搭建策略",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-test-mgmt-tools",
+      "name": "测试管理工具",
+      "description": "TestRail/qTest/Zephyr等测试用例与执行管理平台",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-engine-profiler",
+      "name": "引擎Profiler",
+      "description": "UE Insights/Unity Profiler/内置调试工具的使用",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-tc-gpu-tools",
+      "name": "GPU调试工具",
+      "description": "RenderDoc/PIX/Nsight/AGI等GPU分析器的使用方法",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-crash-analytics",
+      "name": "崩溃分析平台",
+      "description": "Crashlytics/Sentry/BugSplat等崩溃分析服务",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-tc-device-farm",
+      "name": "云设备农场",
+      "description": "AWS Device Farm/Firebase Test Lab/Sauce Labs使用",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-network-simulator",
+      "name": "网络模拟器",
+      "description": "Charles/Fiddler/Network Link Conditioner等网络调试工具",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-screenshot-comparison",
+      "name": "截图对比工具",
+      "description": "Applitools/Percy/BackstopJS等视觉回归工具",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-log-analysis",
+      "name": "日志分析工具",
+      "description": "ELK Stack/Splunk/Datadog在游戏日志分析中的应用",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-ci-tools",
+      "name": "CI/CD工具",
+      "description": "Jenkins/GitHub Actions/GitLab CI在游戏测试中的配置",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-game-test-framework",
+      "name": "游戏测试框架",
+      "description": "Gauntlet/Airtest/Poco等游戏专用自动化框架",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-tc-performance-monitor",
+      "name": "性能监控工具",
+      "description": "PerfDog/GameBench/FrameView等实时性能监控",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-code-coverage",
+      "name": "代码覆盖率",
+      "description": "代码覆盖率工具的集成与覆盖率指标的正确解读",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-static-analysis",
+      "name": "静态分析",
+      "description": "代码静态分析工具(SonarQube/PVS-Studio)在游戏中的应用",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-remote-debugging",
+      "name": "远程调试",
+      "description": "移动设备/主机的远程调试连接与实时日志查看",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-version-control",
+      "name": "版本控制协作",
+      "description": "Perforce/Git在测试资产与用例管理中的最佳实践",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-test-env-mgmt",
+      "name": "测试环境管理",
+      "description": "开发/测试/预发布/生产环境的配置与数据管理",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "qa-tc-custom-tooling",
+      "name": "定制工具开发",
+      "description": "根据项目需求开发QA辅助工具(作弊码/跳关/数据注入)",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-metrics-dashboard",
+      "name": "质量仪表板",
+      "description": "测试覆盖率/Bug趋势/通过率的实时监控看板",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "qa-tc-toolchain-evolution",
+      "name": "工具链演进",
+      "description": "随项目阶段演进的工具链选型与技术债务管理",
+      "domain_id": "game-qa",
+      "subdomain_id": "test-toolchain",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "qa-ft-basics",
+      "target_id": "qa-ft-test-case-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-test-case-design",
+      "target_id": "qa-ft-equivalence-partition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-equivalence-partition",
+      "target_id": "qa-ft-boundary-value",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-boundary-value",
+      "target_id": "qa-ft-state-transition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-state-transition",
+      "target_id": "qa-ft-combinatorial",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-combinatorial",
+      "target_id": "qa-ft-gameplay-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-gameplay-testing",
+      "target_id": "qa-ft-ui-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-ui-testing",
+      "target_id": "qa-ft-multiplayer-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-multiplayer-testing",
+      "target_id": "qa-ft-save-load-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-save-load-testing",
+      "target_id": "qa-ft-input-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-input-testing",
+      "target_id": "qa-ft-audio-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-audio-testing",
+      "target_id": "qa-ft-achievement-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-achievement-testing",
+      "target_id": "qa-ft-economy-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-economy-testing",
+      "target_id": "qa-ft-tutorial-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-tutorial-testing",
+      "target_id": "qa-ft-negative-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-negative-testing",
+      "target_id": "qa-ft-smoke-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-smoke-testing",
+      "target_id": "qa-ft-exploratory-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-exploratory-testing",
+      "target_id": "qa-ft-acceptance-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-acceptance-testing",
+      "target_id": "qa-ft-compliance-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-automation-overview",
+      "target_id": "qa-at-test-pyramid",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-test-pyramid",
+      "target_id": "qa-at-unit-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-unit-testing",
+      "target_id": "qa-at-integration-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-integration-testing",
+      "target_id": "qa-at-e2e-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-e2e-testing",
+      "target_id": "qa-at-visual-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-visual-testing",
+      "target_id": "qa-at-api-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-api-testing",
+      "target_id": "qa-at-script-language",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-script-language",
+      "target_id": "qa-at-framework-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-framework-design",
+      "target_id": "qa-at-ci-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-ci-integration",
+      "target_id": "qa-at-test-data-mgmt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-test-data-mgmt",
+      "target_id": "qa-at-bot-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-bot-testing",
+      "target_id": "qa-at-record-replay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-record-replay",
+      "target_id": "qa-at-flaky-tests",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-flaky-tests",
+      "target_id": "qa-at-parallel-execution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-parallel-execution",
+      "target_id": "qa-at-test-reporting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-test-reporting",
+      "target_id": "qa-at-mocking-stubbing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-mocking-stubbing",
+      "target_id": "qa-at-tdd-bdd",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-tdd-bdd",
+      "target_id": "qa-at-maintenance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-maintenance",
+      "target_id": "qa-at-roi-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-perf-overview",
+      "target_id": "qa-pt-fps-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-fps-analysis",
+      "target_id": "qa-pt-cpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-cpu-profiling",
+      "target_id": "qa-pt-gpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-gpu-profiling",
+      "target_id": "qa-pt-memory-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-memory-profiling",
+      "target_id": "qa-pt-load-time",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-load-time",
+      "target_id": "qa-pt-network-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-network-perf",
+      "target_id": "qa-pt-stress-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-stress-testing",
+      "target_id": "qa-pt-soak-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-soak-testing",
+      "target_id": "qa-pt-thermal-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-thermal-testing",
+      "target_id": "qa-pt-disk-io",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-disk-io",
+      "target_id": "qa-pt-render-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-render-pipeline",
+      "target_id": "qa-pt-scalability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-scalability",
+      "target_id": "qa-pt-benchmark-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-benchmark-design",
+      "target_id": "qa-pt-perf-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-perf-budget",
+      "target_id": "qa-pt-profiling-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-profiling-tools",
+      "target_id": "qa-pt-regression-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-regression-perf",
+      "target_id": "qa-pt-mobile-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-mobile-perf",
+      "target_id": "qa-pt-server-perf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-pt-server-perf",
+      "target_id": "qa-pt-perf-report",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-compat-overview",
+      "target_id": "qa-ct-device-matrix",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-device-matrix",
+      "target_id": "qa-ct-os-version",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-os-version",
+      "target_id": "qa-ct-gpu-driver",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-gpu-driver",
+      "target_id": "qa-ct-resolution-aspect",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-resolution-aspect",
+      "target_id": "qa-ct-controller-compat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-controller-compat",
+      "target_id": "qa-ct-cloud-gaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-cloud-gaming",
+      "target_id": "qa-ct-cross-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-cross-platform",
+      "target_id": "qa-ct-network-conditions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-network-conditions",
+      "target_id": "qa-ct-storage-space",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-storage-space",
+      "target_id": "qa-ct-peripheral",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-peripheral",
+      "target_id": "qa-ct-accessibility-hw",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-accessibility-hw",
+      "target_id": "qa-ct-minimum-spec",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-minimum-spec",
+      "target_id": "qa-ct-console-cert",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-console-cert",
+      "target_id": "qa-ct-web-browser",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-web-browser",
+      "target_id": "qa-ct-locale-compat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-locale-compat",
+      "target_id": "qa-ct-update-compat",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-update-compat",
+      "target_id": "qa-ct-emulator-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-emulator-testing",
+      "target_id": "qa-ct-hardware-debug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ct-hardware-debug",
+      "target_id": "qa-ct-compat-report",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-loc-overview",
+      "target_id": "qa-lt-linguistic-qa",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-linguistic-qa",
+      "target_id": "qa-lt-ui-overflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-ui-overflow",
+      "target_id": "qa-lt-font-rendering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-font-rendering",
+      "target_id": "qa-lt-rtl-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-rtl-support",
+      "target_id": "qa-lt-cultural-adapt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-cultural-adapt",
+      "target_id": "qa-lt-date-number-format",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-date-number-format",
+      "target_id": "qa-lt-audio-loc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-audio-loc",
+      "target_id": "qa-lt-image-loc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-image-loc",
+      "target_id": "qa-lt-pseudoloc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-pseudoloc",
+      "target_id": "qa-lt-string-extraction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-string-extraction",
+      "target_id": "qa-lt-context-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-context-testing",
+      "target_id": "qa-lt-legal-compliance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-legal-compliance",
+      "target_id": "qa-lt-input-method",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-input-method",
+      "target_id": "qa-lt-plurals-gender",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-plurals-gender",
+      "target_id": "qa-lt-loc-automation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-loc-automation",
+      "target_id": "qa-lt-vendor-mgmt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-vendor-mgmt",
+      "target_id": "qa-lt-hot-text-update",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-hot-text-update",
+      "target_id": "qa-lt-loc-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-lt-loc-regression",
+      "target_id": "qa-lt-loc-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-regression-overview",
+      "target_id": "qa-rt-impact-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-impact-analysis",
+      "target_id": "qa-rt-test-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-test-selection",
+      "target_id": "qa-rt-smoke-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-smoke-regression",
+      "target_id": "qa-rt-full-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-full-regression",
+      "target_id": "qa-rt-auto-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-auto-regression",
+      "target_id": "qa-rt-visual-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-visual-regression",
+      "target_id": "qa-rt-data-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-data-regression",
+      "target_id": "qa-rt-priority-ranking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-priority-ranking",
+      "target_id": "qa-rt-test-suite-mgmt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-test-suite-mgmt",
+      "target_id": "qa-rt-change-log-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-change-log-review",
+      "target_id": "qa-rt-hotfix-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-hotfix-regression",
+      "target_id": "qa-rt-platform-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-platform-regression",
+      "target_id": "qa-rt-schedule-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-schedule-planning",
+      "target_id": "qa-rt-build-verification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-build-verification",
+      "target_id": "qa-rt-feature-toggle-reg",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-feature-toggle-reg",
+      "target_id": "qa-rt-dlc-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-dlc-regression",
+      "target_id": "qa-rt-perf-regression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-perf-regression",
+      "target_id": "qa-rt-flaky-mgmt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-flaky-mgmt",
+      "target_id": "qa-rt-regression-report",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-bug-report-basics",
+      "target_id": "qa-bl-severity-priority",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-severity-priority",
+      "target_id": "qa-bl-classification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-classification",
+      "target_id": "qa-bl-lifecycle-states",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-lifecycle-states",
+      "target_id": "qa-bl-reproduction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-reproduction",
+      "target_id": "qa-bl-root-cause",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-root-cause",
+      "target_id": "qa-bl-triage-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-triage-process",
+      "target_id": "qa-bl-wont-fix",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-wont-fix",
+      "target_id": "qa-bl-duplicate-mgmt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-duplicate-mgmt",
+      "target_id": "qa-bl-crash-reporting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-crash-reporting",
+      "target_id": "qa-bl-issue-tracker",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-issue-tracker",
+      "target_id": "qa-bl-automation-filing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-automation-filing",
+      "target_id": "qa-bl-screenshot-video",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-screenshot-video",
+      "target_id": "qa-bl-environment-info",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-environment-info",
+      "target_id": "qa-bl-regression-bug",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-regression-bug",
+      "target_id": "qa-bl-statistics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-statistics",
+      "target_id": "qa-bl-release-criteria",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-release-criteria",
+      "target_id": "qa-bl-communication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-communication",
+      "target_id": "qa-bl-known-issues",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-known-issues",
+      "target_id": "qa-bl-post-release-bugs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-tool-overview",
+      "target_id": "qa-tc-test-mgmt-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-test-mgmt-tools",
+      "target_id": "qa-tc-engine-profiler",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-engine-profiler",
+      "target_id": "qa-tc-gpu-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-gpu-tools",
+      "target_id": "qa-tc-crash-analytics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-crash-analytics",
+      "target_id": "qa-tc-device-farm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-device-farm",
+      "target_id": "qa-tc-network-simulator",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-network-simulator",
+      "target_id": "qa-tc-screenshot-comparison",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-screenshot-comparison",
+      "target_id": "qa-tc-log-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-log-analysis",
+      "target_id": "qa-tc-ci-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-ci-tools",
+      "target_id": "qa-tc-game-test-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-game-test-framework",
+      "target_id": "qa-tc-performance-monitor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-performance-monitor",
+      "target_id": "qa-tc-code-coverage",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-code-coverage",
+      "target_id": "qa-tc-static-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-static-analysis",
+      "target_id": "qa-tc-remote-debugging",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-remote-debugging",
+      "target_id": "qa-tc-version-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-version-control",
+      "target_id": "qa-tc-test-env-mgmt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-test-env-mgmt",
+      "target_id": "qa-tc-custom-tooling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-custom-tooling",
+      "target_id": "qa-tc-metrics-dashboard",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-metrics-dashboard",
+      "target_id": "qa-tc-toolchain-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-smoke-testing",
+      "target_id": "qa-rt-smoke-regression",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "qa-ft-exploratory-testing",
+      "target_id": "qa-bl-reproduction",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "qa-ft-compliance-testing",
+      "target_id": "qa-ct-console-cert",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-multiplayer-testing",
+      "target_id": "qa-pt-network-perf",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-ft-economy-testing",
+      "target_id": "qa-bl-severity-priority",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "qa-at-unit-testing",
+      "target_id": "qa-rt-auto-regression",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-ci-integration",
+      "target_id": "qa-tc-ci-tools",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "qa-at-visual-testing",
+      "target_id": "qa-rt-visual-regression",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "qa-at-visual-testing",
+      "target_id": "qa-tc-screenshot-comparison",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-at-bot-testing",
+      "target_id": "qa-pt-stress-testing",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "qa-at-flaky-tests",
+      "target_id": "qa-rt-flaky-mgmt",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "qa-pt-regression-perf",
+      "target_id": "qa-rt-perf-regression",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "qa-pt-profiling-tools",
+      "target_id": "qa-tc-engine-profiler",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "qa-pt-gpu-profiling",
+      "target_id": "qa-tc-gpu-tools",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "qa-ct-os-version",
+      "target_id": "qa-ct-locale-compat",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "qa-lt-ui-overflow",
+      "target_id": "qa-ct-resolution-aspect",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "qa-lt-loc-automation",
+      "target_id": "qa-at-automation-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "qa-bl-crash-reporting",
+      "target_id": "qa-tc-crash-analytics",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "qa-bl-statistics",
+      "target_id": "qa-tc-metrics-dashboard",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-issue-tracker",
+      "target_id": "qa-tc-test-mgmt-tools",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "qa-rt-build-verification",
+      "target_id": "qa-at-ci-integration",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-rt-platform-regression",
+      "target_id": "qa-ct-cross-platform",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-bl-release-criteria",
+      "target_id": "qa-rt-regression-report",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-device-farm",
+      "target_id": "qa-ct-device-matrix",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "qa-tc-network-simulator",
+      "target_id": "qa-ct-network-conditions",
+      "relation_type": "related",
+      "strength": 0.9
+    }
+  ],
+  "milestones": [
+    "qa-ft-equivalence-partition",
+    "qa-ft-multiplayer-testing",
+    "qa-ft-exploratory-testing",
+    "qa-ft-compliance-testing",
+    "qa-at-unit-testing",
+    "qa-at-framework-design",
+    "qa-at-roi-metrics",
+    "qa-pt-cpu-profiling",
+    "qa-pt-gpu-profiling",
+    "qa-pt-scalability",
+    "qa-pt-regression-perf",
+    "qa-ct-os-version",
+    "qa-ct-resolution-aspect",
+    "qa-ct-minimum-spec",
+    "qa-ct-update-compat",
+    "qa-lt-ui-overflow",
+    "qa-lt-rtl-support",
+    "qa-lt-plurals-gender",
+    "qa-lt-loc-metrics",
+    "qa-rt-test-selection",
+    "qa-rt-auto-regression",
+    "qa-rt-priority-ranking",
+    "qa-rt-platform-regression",
+    "qa-rt-perf-regression",
+    "qa-bl-reproduction",
+    "qa-bl-crash-reporting",
+    "qa-bl-regression-bug",
+    "qa-bl-release-criteria",
+    "qa-tc-engine-profiler",
+    "qa-tc-crash-analytics",
+    "qa-tc-game-test-framework",
+    "qa-tc-test-env-mgmt"
+  ]
+}

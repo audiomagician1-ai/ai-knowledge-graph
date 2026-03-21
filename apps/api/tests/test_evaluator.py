@@ -271,13 +271,13 @@ class TestDomainSupplementRegistries:
     def test_domain_supplements_covers_all_domains(self):
         """Registry should have entries for all non-default domains."""
         from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS
-        expected = {"mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops"}
+        expected = {"mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa"}
         assert set(DOMAIN_SUPPLEMENTS.keys()) == expected
 
     def test_assessment_supplements_covers_all_domains(self):
         """Assessment registry should have entries for all non-default domains."""
         from engines.dialogue.prompts.feynman_system import ASSESSMENT_SUPPLEMENTS
-        expected = {"mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops"}
+        expected = {"mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa"}
         assert set(ASSESSMENT_SUPPLEMENTS.keys()) == expected
 
     def test_domain_supplements_values_non_empty(self):

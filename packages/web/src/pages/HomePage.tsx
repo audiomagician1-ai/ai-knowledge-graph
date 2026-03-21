@@ -561,30 +561,41 @@ export function HomePage() {
     bgNodesRef.current = nodes;
   }, []);
 
-  // Init orbs from domains — arrange in a loose ellipse + generate mini-graphs
+  // Init orbs from domains — Fibonacci sunflower distribution for even spread
   useEffect(() => {
     if (activeDomains.length === 0) return;
     const count = activeDomains.length;
+
+    // Sunflower / Fibonacci spiral: distributes points evenly across a disc
+    // Golden angle ≈ 137.508° ensures no two adjacent points overlap
+    const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // ≈ 2.399 rad
+    // Spread radius scales with count — larger count → bigger disc
+    // Use an ellipse (wider horizontally) to better fit widescreen layouts
+    const maxRx = Math.min(520, 180 + count * 18);
+    const maxRy = Math.min(380, 130 + count * 14);
+
     const orbs: Orb[] = activeDomains.map((domain, i) => {
-      const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
-      const rx = Math.min(420, 160 + count * 24);
-      const ry = Math.min(300, 110 + count * 18);
-      const jitterX = (Math.random() - 0.5) * 40;
-      const jitterY = (Math.random() - 0.5) * 30;
+      // Fibonacci sunflower position: radius grows with sqrt(i), angle increments by golden angle
+      // Offset by 0.5 to avoid placing first orb exactly at center
+      const frac = (i + 0.5) / count; // 0..1, how far from center
+      const r = Math.sqrt(frac); // square root for even area distribution
+      const angle = i * goldenAngle;
+
+      const bx = Math.cos(angle) * r * maxRx + (seededRandom(i * 31 + 7) - 0.5) * 30;
+      const by = Math.sin(angle) * r * maxRy + (seededRandom(i * 53 + 13) - 0.5) * 24;
+
       const stats = domain.stats;
 
       // Lighten color for glow
-      const r = parseInt(domain.color.slice(1, 3), 16);
-      const g = parseInt(domain.color.slice(3, 5), 16);
-      const b = parseInt(domain.color.slice(5, 7), 16);
-      const glowColor = `#${Math.min(255, r + 60).toString(16).padStart(2, '0')}${Math.min(255, g + 60).toString(16).padStart(2, '0')}${Math.min(255, b + 60).toString(16).padStart(2, '0')}`;
+      const cr = parseInt(domain.color.slice(1, 3), 16);
+      const cg = parseInt(domain.color.slice(3, 5), 16);
+      const cb = parseInt(domain.color.slice(5, 7), 16);
+      const glowColor = `#${Math.min(255, cr + 60).toString(16).padStart(2, '0')}${Math.min(255, cg + 60).toString(16).padStart(2, '0')}${Math.min(255, cb + 60).toString(16).padStart(2, '0')}`;
 
       // Generate unique mini-graph for this orb
       const { nodes: miniNodes, edges: miniEdges } = generateMiniGraph();
 
-      const bx = Math.cos(angle) * rx + jitterX;
-      const by = Math.sin(angle) * ry + jitterY;
-      const bz = (Math.random() - 0.5) * Z_RANGE;
+      const bz = (seededRandom(i * 97 + 23) - 0.5) * Z_RANGE;
       // Read learning progress from localStorage (no store subscription needed — snapshot)
       const progress = peekDomainProgress(domain.id);
       // Use seed total_concepts as the authoritative total if available
