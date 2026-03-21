@@ -39,7 +39,7 @@
 
 ---
 
-**当前阶段**: ✅ **Sprint 3.1 完成** | RAG质量进化: 全量6,156概念100% Tier-S, 均分86.2
+**当前阶段**: 🔧 **FSRS-5 间隔重复引擎已实现** | RAG 100% Tier-S ✅ | 学习引擎增强中
 **📊 RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
 > 6,156篇RAG文档质量审计: S=6,156 A=0 B=0 C=0 (均分86.2, **100% Tier-S**)
 > Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
@@ -80,7 +80,18 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-21 | **Scope**: Sprint 3.1 — Tier-A enhancement to 100% S-tier (10 docs, case studies + thought questions) | **Result**: passed
+**Date**: 2026-03-21 | **Scope**: FSRS-5 scheduler implementation + next_interval bugfix + 48 tests + DB v3 migration | **Result**: passed
+
+**FSRS-5 实现摘要** (间隔重复引擎):
+> **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
+> **已完成**: FSRSScheduler完整实现(Card状态机/遗忘曲线/stability-difficulty跟踪)
+>   + DB schema v3迁移(9个FSRS字段+fsrs_due索引+CRUD操作)
+>   + API端点: POST /review(提交评分) + GET /due(待复习概念)
+>   + /recommend集成(待复习概念获得优先级提升)
+> **Bug修复**: next_interval公式 `S*FACTOR` → `(S/FACTOR)*(R^(1/DECAY)-1)` (参考py-fsrs官方实现)
+> **测试**: 48新测试(算法28+DB 8+API 12)
+> **Issue**: #35 (已关闭)
+> **总测试数**: 1,017 (804 BE + 213 FE), tsc 0 errors
 
 **Phase 37 完成摘要** (跨球体总验证+首页适配):
 > **目标**: 游戏开发全领域(20球体)跨球体关联审计 + 首页30球布局适配 (收尾阶段)
