@@ -220,7 +220,7 @@ class FSRSScheduler:
         Reference: https://github.com/open-spaced-repetition/py-fsrs
         When desired_retention = 0.9, this simplifies to interval ≈ S (stability in days).
         """
-        interval = (stability / self.FACTOR) * (self.desired_retention ** (1 / self.DECAY) - 1)
+        interval = (stability / self._factor) * (self.desired_retention ** (1 / self._decay) - 1)
         return max(1, min(self.max_interval, round(interval)))
 
     def forgetting_curve(self, elapsed_days: int, stability: float) -> float:
@@ -230,7 +230,7 @@ class FSRSScheduler:
         """
         if stability <= 0:
             return 0.0
-        return (1.0 + self.FACTOR * elapsed_days / stability) ** self.DECAY
+        return (1.0 + self._factor * elapsed_days / stability) ** self._decay
 
     # ── Internal: process by state ─────────────────────
 
@@ -347,25 +347,29 @@ class FSRSScheduler:
 
     def _next_difficulty(self, d: float, rating: Rating) -> float:
         """Update difficulty after a review.
-        D'(D, G) = w6 * D0(3) + (1 - w6) * (D - w7 * (G - 3))
-        Mean-reversion toward D0(Good), with rating-based adjustment.
+        Uses linear damping + mean reversion toward D0(Easy).
+        Reference: py-fsrs Scheduler._next_difficulty
         """
-        d0_good = self.w[4]  # D0(Good) = w4 (since exp(w5*2) ≈ 0 is small, we use direct w4)
-        d0_good_exact = self.w[4] - math.exp(self.w[5] * (3 - 1)) + 1
-        delta_d = -self.w[6] * (int(rating) - 3)
-        new_d = d + delta_d
-        # Mean reversion
-        new_d = self.w[7] * d0_good_exact + (1 - self.w[7]) * new_d
+        d0_easy = self._init_difficulty(Rating.Easy)
+        delta_d = -(self.w[6] * (int(rating) - 3))
+        # Linear damping: (10 - D) * delta / 9
+        linear_damped = (10.0 - d) * delta_d / 9.0
+        new_d = d + linear_damped
+        # Mean reversion toward D0(Easy)
+        new_d = self.w[7] * d0_easy + (1 - self.w[7]) * new_d
         return self._clamp_difficulty(new_d)
 
     def _next_recall_stability(
         self, d: float, s: float, r: float, rating: Rating
     ) -> float:
         """Stability after successful recall.
-        S'_r(D, S, R, G) = S * (e^(w8) * (11-D) * S^(-w9) * (e^(w10*(1-R)) - 1) * hard_mult * easy_mult + 1)
+        S'_r(D, S, R, G) = S * (e^(w8) * (11-D) * S^(-w9) * (e^(w10*(1-R)) - 1) * hard_penalty * easy_bonus + 1)
+
+        hard_penalty = w[15] if Hard else 1.0 (< 1 reduces growth for Hard)
+        easy_bonus = w[16] if Easy else 1.0 (> 1 increases growth for Easy)
         """
-        hard_penalty = self.w[16] if rating == Rating.Hard else 1.0
-        easy_bonus = self.w[18] if rating == Rating.Easy else 1.0
+        hard_penalty = self.w[15] if rating == Rating.Hard else 1.0
+        easy_bonus = self.w[16] if rating == Rating.Easy else 1.0
 
         inner = (
             math.exp(self.w[8])
@@ -380,7 +384,10 @@ class FSRSScheduler:
 
     def _next_forget_stability(self, d: float, s: float, r: float) -> float:
         """Stability after a lapse (Again on Review card).
-        S'_f(D, S, R) = w11 * D^(-w12) * ((S+1)^w13 - 1) * e^(w14*(1-R))
+        S'_f(D, S, R) = w12 * D^(-w13) * ((S+1)^w14 - 1) * e^(w15*(1-R))
+        Note: py-fsrs doesn't use w[15] here; the forget formula uses w[11-14].
+        Adjusted to match py-fsrs: w[11] * D^(-w[12]) * ((S+1)^w[13] - 1) * e^(w[14]*(1-R))
+        Then clamp: S_forget <= S and good/easy can't decrease.
         """
         new_s = (
             self.w[11]
@@ -392,16 +399,16 @@ class FSRSScheduler:
 
     def _short_term_stability(self, s: float, rating: Rating) -> float:
         """Stability update for Learning/Relearning states.
-        S'_s(S, G) = S * e^(w[15+G-2])  for Hard/Good/Easy in learning.
-        For Again, just keep current stability.
+        S'_s(S, G) = S * e^(w17 * (G - 3 + w18)) * S^(-w19)
+
+        For Good/Easy: SInc is clamped to >= 1 (cannot decrease stability).
+        Reference: py-fsrs Scheduler._short_term_stability
         """
-        if rating == Rating.Again:
-            return max(0.1, s)
-        # w16 for Hard, w17 for Good, w18 for Easy
-        idx = 14 + int(rating)  # Hard(2)→16, Good(3)→17, Easy(4)→18
-        if idx < len(self.w):
-            return max(0.1, s * math.exp(self.w[idx]))
-        return max(0.1, s)
+        sinc = math.exp(self.w[17] * (int(rating) - 3 + self.w[18])) * s ** (-self.w[19])
+        if rating in (Rating.Good, Rating.Easy):
+            sinc = max(sinc, 1.0)
+        new_s = s * sinc
+        return max(0.1, new_s)
 
     def _clamp_difficulty(self, d: float) -> float:
         return max(self.MIN_DIFFICULTY, min(self.MAX_DIFFICULTY, d))

@@ -39,7 +39,7 @@
 
 ---
 
-**当前阶段**: 🔧 **FSRS-5 间隔重复引擎已实现** | RAG 100% Tier-S ✅ | 学习引擎增强中
+**当前阶段**: ✅ **V1.0 FSRS间隔重复引擎完成** | RAG 100% Tier-S ✅ | 1,017测试全通过
 **📊 RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
 > 6,156篇RAG文档质量审计: S=6,156 A=0 B=0 C=0 (均分86.2, **100% Tier-S**)
 > Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
@@ -58,6 +58,19 @@
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 11球体 + 🔥20游戏开发球(P0最高优先级)
 **📊 RAG进化**: `docs/RAG_EVOLUTION_PLAN.md` — 知识库质量迭代进化方案(Schema v2 + 评分 + 改写管线)
+
+**V1.0 FSRS间隔重复引擎完成摘要** (#34):
+> **目标**: 实现FSRS-5/6间隔重复调度器, 为学习平台添加智能复习调度
+> **FSRSScheduler**: 完整FSRS-6算法实现(21参数), 支持New/Learning/Review/Relearning四状态
+>   - 初始稳定性S0/难度D0计算, 成功回忆稳定性增长(hard_penalty/easy_bonus), 遗忘稳定性衰减
+>   - 短期稳定性(Learning/Relearning), 遗忘曲线R(t,S), 间隔计算(含desired_retention参数)
+>   - 参数兼容py-fsrs/Anki默认权重, 支持自定义desired_retention(0.7-0.99)
+> **数据层**: SQLite schema v3迁移(9个FSRS字段) + get_fsrs_card/update_fsrs_card/get_due_concepts
+> **API**: GET /learning/due (到期概念列表,支持domain过滤) + POST /learning/review (提交评分1-4,返回更新后的卡片状态+review_log)
+> **推荐集成**: /learning/recommend 新增Factor 6: FSRS到期复习优先(+20分基础+过期天数加成)
+> **测试**: 48新测试(算法/DB/API全覆盖), 总计1,017测试(804 BE + 213 FE), tsc 0 errors
+> **Issue**: #34
+> **下一步**: V1.0继续 — 成就系统 / BKT知识追踪器 / 前端FSRS复习UI集成
 
 **Sprint 3 完成摘要** (AI-Rewrite-v1 全量精写):
 > **目标**: 5,005非里程碑概念AI精写, 全30域覆盖, 从Tier-C模板提升到Tier-S
@@ -80,7 +93,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-21 | **Scope**: FSRS-5 scheduler implementation + next_interval bugfix + 48 tests + DB v3 migration | **Result**: passed
+**Date**: 2026-03-21 | **Scope**: V1.0 FSRS scheduler (#34) — FSRSScheduler algorithm (FSRS-6 compatible), DB v3 migration, /learning/due + /learning/review APIs, recommend integration, 48 new tests, 1017 total | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
