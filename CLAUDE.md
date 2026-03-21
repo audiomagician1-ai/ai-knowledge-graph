@@ -39,32 +39,41 @@
 
 ---
 
-**当前阶段**: 🔥 **Sprint 2 完成** | RAG质量进化: 1,091里程碑概念AI精写, 均分31→46.6
-**🔴🔴🔴 最高优先级**: **RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
-> 6,156篇RAG文档质量审计: S=1,115 A=132 B=2,155 C=2,754 (均分46.6)
+**当前阶段**: ✅ **Sprint 3 完成** | RAG质量进化: 全量6,156概念AI精写, 均分85.9, S率99.2%
+**📊 RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
+> 6,156篇RAG文档质量审计: S=6,104 A=14 B=23 C=15 (均分85.9)
 > Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
 > Sprint 1 ✅: 物理域26里程碑精写(均分34.7→45.5, S=7/A=19)
 > Sprint 1.5 ✅: **research-rewrite-v2** — WebResearch增强精写验证: cell-membrane 13.8→93.3, accessibility-audit 17.9→82.6
-> Sprint 2 ✅: **ai-rewrite-v1** — 1,091里程碑概念批量AI精写(30域全覆盖)
->   脚本: `scripts/batch_ai_rewrite.py` | 均分31.0→46.6 | S: 10→1,115 | B: 0→2,155
->   下一步: Sprint 3 — 对剩余2,754 Tier-C概念进行ai-rewrite-v1; 或research-rewrite-v2批量执行(需WebSearch)
+> Sprint 2 ✅: **ai-rewrite-v1** — 1,091里程碑概念批量AI精写(30域全覆盖), 均分31.0→46.6
+> Sprint 3 ✅: **ai-rewrite-v1** — 5,005非里程碑概念批量AI精写(30域全覆盖) #33
+>   脚本: `scripts/batch_ai_rewrite.py --all` | 均分46.6→85.9 | S: 1,115→6,104(99.2%) | C: 2,754→15(0.2%)
+>   下一步: research-rewrite-v2批量执行(需WebSearch)对剩余15 Tier-C概念提升; 或长期用户反馈驱动进化
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 11球体 + 🔥20游戏开发球(P0最高优先级)
 **📊 RAG进化**: `docs/RAG_EVOLUTION_PLAN.md` — 知识库质量迭代进化方案(Schema v2 + 评分 + 改写管线)
 
-**Sprint 2 完成摘要** (AI-Rewrite-v1 批量精写):
+**Sprint 3 完成摘要** (AI-Rewrite-v1 全量精写):
+> **目标**: 5,005非里程碑概念AI精写, 全30域覆盖, 从Tier-C模板提升到Tier-S
+> **脚本**: `scripts/batch_ai_rewrite.py --all` — 基于seed图谱元数据生成概念特异教学内容
+> **已完成**: 5,005文档精写(7+段落结构, 概念特异内容, 思考题, Wikipedia引用, 先修/后续衔接), 1,108已精写文档跳过
+> **质量提升**: 均分46.6→85.9 | S: 1,115→6,104(99.2%) | A: 132→14(0.2%) | B: 2,155→23(0.4%) | C: 2,754→15(0.2%)
+> **测试**: 969测试全过(756 BE + 213 FE), tsc 0 errors, build 3.71s
+> **Issue**: #33 (已关闭)
+> **下一步**: research-rewrite-v2批量执行对剩余15 Tier-C概念; 或长期用户反馈驱动进化
+
+**Sprint 2 完成摘要** (AI-Rewrite-v1 里程碑批量精写):
 > **目标**: 1,091里程碑概念AI精写, 全30域覆盖, 从Tier-C模板提升到Tier-B/S
 > **脚本**: `scripts/batch_ai_rewrite.py` — 基于seed图谱元数据生成概念特异教学内容
 > **已完成**: 1,091文档精写(7+段落结构, 概念特异内容, 思考题, Wikipedia引用, 先修/后续衔接)
 > **质量提升**: 均分31.0→46.6 | S: 10→1,115(18.1%) | A: 26→132(2.1%) | B: 0→2,155(35.0%) | C: 6,100→2,754(44.7%)
 > **测试**: 8个测试文件断言更新适配新内容格式, 969测试全过(756 BE + 213 FE)
 > **Issue**: #32 (已关闭)
-> **下一步**: Sprint 3 — 剩余2,754 Tier-C非里程碑概念的ai-rewrite-v1; 或配合WebSearch的research-rewrite-v2
 
 ## Last Review
-**Date**: 2026-03-21 | **Scope**: RAG quality evolution Sprint 2, test assertion updates | **Result**: passed
+**Date**: 2026-03-21 | **Scope**: Sprint 3 ai-rewrite-v1 全量5,005概念精写 + quality rescore | **Result**: passed (#33 closed)
 
 **Phase 37 完成摘要** (跨球体总验证+首页适配):
 > **目标**: 游戏开发全领域(20球体)跨球体关联审计 + 首页30球布局适配 (收尾阶段)
@@ -1524,7 +1533,7 @@ data/seed/         — 种子图谱数据
 
 ## Last Review
 
-**Date**: 2026-03-21 | **Scope**: Phase 36+37 项目管理球+跨球体审计 | **Result**: passed (#30 closed, #31 in-progress)
+**Date**: 2026-03-21 | **Scope**: Sprint 3 ai-rewrite-v1 全量5,005概念精写 + quality rescore | **Result**: passed (#33 closed)
 
  - ✅ **Phase 37 跨球体审计+首页适配 (2026-03-21)**:
     - **SCOPE**: 游戏开发全领域跨球体关联审计 + 首页30球布局适配
