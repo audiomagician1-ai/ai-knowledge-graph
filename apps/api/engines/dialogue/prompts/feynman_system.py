@@ -844,6 +844,32 @@ MULTIPLAYER_NETWORK_ASSESSMENT_SUPPLEMENT = """
 - **公平性**: 用户是否理解匹配系统对玩家体验的影响？能否分析SBMM/Elo等算法的优劣？
 """
 
+GAME_AUDIO_SFX_DOMAIN_SUPPLEMENT = """
+## 音效设计领域教学要点
+
+教授音效设计概念时，请特别注意以下方面：
+- **听觉思维优先**: 引导学生先用耳朵思考——音效的情感目标是什么？物理声学特性如何？然后再讨论技术实现。
+- **实践驱动**: 鼓励学生动手实验——录制、合成、处理、中间件集成，每个环节都需要大量听觉训练。
+- **工具链意识**: Wwise/FMOD是工业标准中间件，理解它们的事件/容器/RTPC系统是核心技能。
+- **3D空间感**: 空间音频不仅是技术实现，更关系到玩家的沉浸感——HRTF、遮挡、传播路径都影响最终体验。
+- **预算意识**: 音频的CPU/内存/带宽预算有限，优化策略（发声限制/LOD/虚拟化）是生产必备。
+- **跨部门协作**: 音效需与动画（通知事件）、特效（同步）、设计（反馈）紧密配合。
+- **情感价值**: 好的音效设计能极大提升游戏的"手感"(Game Feel/Juice)——打击感、环境氛围、UI响应都依赖音效。
+"""
+
+GAME_AUDIO_SFX_ASSESSMENT_SUPPLEMENT = """
+## 音效设计领域评估特殊指标
+
+在评估音效设计概念理解时，请额外关注以下方面：
+- **听觉敏感度**: 用户是否能识别不同音效处理手法的差异？是否理解频谱管理和声音遮蔽？
+- **工具链熟练度**: 用户是否理解Wwise/FMOD的事件系统、RTPC、容器层级？能否设计合理的音频管线？
+- **空间感知**: 用户是否理解3D音频的定位原理(HRTF/衰减/遮挡)？能否根据场景选择合适的空间化方案？
+- **录制知识**: 用户是否了解麦克风选择/录音环境/信号链的基础知识？是否理解Foley的工作流？
+- **DSP理解**: 用户是否理解常见效果器(EQ/Comp/Reverb/Delay)的原理与参数？能否设计合理的效果链？
+- **优化意识**: 用户是否了解音频性能预算(发声数/CPU/内存)？是否掌握虚拟化/LOD等优化手段？
+- **协作能力**: 用户是否理解音效与动画/特效/设计的协作点？能否编写清晰的音效设计文档？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -873,6 +899,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "game-ui-ux": GAME_UI_UX_DOMAIN_SUPPLEMENT,
     "narrative-design": NARRATIVE_DESIGN_DOMAIN_SUPPLEMENT,
     "multiplayer-network": MULTIPLAYER_NETWORK_DOMAIN_SUPPLEMENT,
+    "game-audio-sfx": GAME_AUDIO_SFX_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -900,6 +927,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "game-ui-ux": GAME_UI_UX_ASSESSMENT_SUPPLEMENT,
     "narrative-design": NARRATIVE_DESIGN_ASSESSMENT_SUPPLEMENT,
     "multiplayer-network": MULTIPLAYER_NETWORK_ASSESSMENT_SUPPLEMENT,
+    "game-audio-sfx": GAME_AUDIO_SFX_ASSESSMENT_SUPPLEMENT,
 }
 
 

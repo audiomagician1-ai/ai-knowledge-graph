@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2771,4 +2771,78 @@ async def test_multiplayer_network_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "mn-na-client-server"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Phase 32: Game Audio SFX (game-audio-sfx) Tests ──────────────────
+
+@pytest.mark.asyncio
+async def test_game_audio_sfx_seed():
+    """Game Audio SFX seed graph: 180 concepts, 190 edges, 9 subdomains, 27 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=game-audio-sfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 180, f"Expected 180 concepts, got {len(nodes)}"
+        assert len(edges) >= 180, f"Expected >= 180 edges, got {len(edges)}"
+        subdomain_ids = {n["subdomain_id"] for n in nodes}
+        assert len(subdomain_ids) == 9, f"Expected 9 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 27, f"Expected 27 milestones, got {len(milestones)}"
+        assert all(n["domain_id"] == "game-audio-sfx" for n in nodes)
+
+
+@pytest.mark.asyncio
+async def test_game_audio_sfx_rag():
+    """Game Audio SFX RAG stats should reflect 180 documents across 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=game-audio-sfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 180
+        assert len(data.get("by_subdomain", {})) == 9
+
+
+@pytest.mark.asyncio
+async def test_game_audio_sfx_cross_links():
+    """Game Audio SFX should have cross-sphere links."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=game-audio-sfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 20, f"Expected >= 20 cross-links, got {len(links)}"
+
+
+def test_game_audio_sfx_supplements():
+    """Game Audio SFX domain/assessment supplements should be registered."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "game-audio-sfx" in DOMAIN_SUPPLEMENTS, "game-audio-sfx missing from DOMAIN_SUPPLEMENTS"
+    assert "game-audio-sfx" in ASSESSMENT_SUPPLEMENTS, "game-audio-sfx missing from ASSESSMENT_SUPPLEMENTS"
+    assert "Wwise" in DOMAIN_SUPPLEMENTS["game-audio-sfx"], "SFX supplement should mention Wwise"
+    assert "HRTF" in ASSESSMENT_SUPPLEMENTS["game-audio-sfx"], "SFX assessment should mention HRTF"
+
+
+@pytest.mark.asyncio
+async def test_game_audio_sfx_concept_detail():
+    """Game Audio SFX concept detail should return valid data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/sfx-sdt-psychoacoustics?domain=game-audio-sfx")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "sfx-sdt-psychoacoustics"
+        assert data["name"] == "声音心理学"
+        assert data["domain_id"] == "game-audio-sfx"
+
+
+@pytest.mark.asyncio
+async def test_game_audio_sfx_neighbors():
+    """Game Audio SFX concept should have neighbors."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/sfx-am-wwise-overview/neighbors?domain=game-audio-sfx&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "sfx-am-wwise-overview"
         assert len(data["nodes"]) >= 2

@@ -274,6 +274,17 @@
       "rag_dir": "multiplayer-network",
       "is_active": true,
       "sort_order": 25
+    },
+    {
+      "id": "game-audio-sfx",
+      "name": "音效设计",
+      "description": "音效设计知识体系，覆盖音效设计理论、Foley录制、音频中间件(Wwise/FMOD)、空间音频、混响/DSP、声音资源管理、对白处理、环境声设计与音效优化",
+      "icon": "🔊",
+      "color": "#475569",
+      "seed_dir": "game-audio-sfx",
+      "rag_dir": "game-audio-sfx",
+      "is_active": true,
+      "sort_order": 26
     }
   ]
 }

@@ -1,0 +1,1104 @@
+{
+  "version": "1.0.0",
+  "domain": "game-audio-sfx",
+  "domain_name": "音效设计",
+  "generated_at": "2026-03-21T08:32:55.592391",
+  "total_concepts": 180,
+  "stats": {
+    "total_docs": 180,
+    "total_chars": 105070,
+    "by_subdomain": {
+      "ambient-sound": 20,
+      "audio-asset-management": 20,
+      "audio-middleware": 20,
+      "audio-optimization": 20,
+      "dialogue-processing": 20,
+      "dsp-effects": 20,
+      "foley-recording": 20,
+      "sound-design-theory": 20,
+      "spatial-audio": 20
+    }
+  },
+  "documents": [
+    {
+      "id": "sfx-sdt-psychoacoustics",
+      "file": "sfx-sdt-psychoacoustics.md",
+      "subdomain": "sound-design-theory",
+      "chars": 594
+    },
+    {
+      "id": "sfx-sdt-sound-taxonomy",
+      "file": "sfx-sdt-sound-taxonomy.md",
+      "subdomain": "sound-design-theory",
+      "chars": 610
+    },
+    {
+      "id": "sfx-sdt-emotional-design",
+      "file": "sfx-sdt-emotional-design.md",
+      "subdomain": "sound-design-theory",
+      "chars": 598
+    },
+    {
+      "id": "sfx-sdt-layering",
+      "file": "sfx-sdt-layering.md",
+      "subdomain": "sound-design-theory",
+      "chars": 586
+    },
+    {
+      "id": "sfx-sdt-sweetener",
+      "file": "sfx-sdt-sweetener.md",
+      "subdomain": "sound-design-theory",
+      "chars": 618
+    },
+    {
+      "id": "sfx-sdt-silence-design",
+      "file": "sfx-sdt-silence-design.md",
+      "subdomain": "sound-design-theory",
+      "chars": 585
+    },
+    {
+      "id": "sfx-sdt-diegetic-vs-nondiegetic",
+      "file": "sfx-sdt-diegetic-vs-nondiegetic.md",
+      "subdomain": "sound-design-theory",
+      "chars": 609
+    },
+    {
+      "id": "sfx-sdt-sound-metaphor",
+      "file": "sfx-sdt-sound-metaphor.md",
+      "subdomain": "sound-design-theory",
+      "chars": 585
+    },
+    {
+      "id": "sfx-sdt-frequency-spectrum",
+      "file": "sfx-sdt-frequency-spectrum.md",
+      "subdomain": "sound-design-theory",
+      "chars": 602
+    },
+    {
+      "id": "sfx-sdt-impact-design",
+      "file": "sfx-sdt-impact-design.md",
+      "subdomain": "sound-design-theory",
+      "chars": 595
+    },
+    {
+      "id": "sfx-sdt-ui-sound",
+      "file": "sfx-sdt-ui-sound.md",
+      "subdomain": "sound-design-theory",
+      "chars": 588
+    },
+    {
+      "id": "sfx-sdt-feedback-loop",
+      "file": "sfx-sdt-feedback-loop.md",
+      "subdomain": "sound-design-theory",
+      "chars": 590
+    },
+    {
+      "id": "sfx-sdt-audio-branding",
+      "file": "sfx-sdt-audio-branding.md",
+      "subdomain": "sound-design-theory",
+      "chars": 587
+    },
+    {
+      "id": "sfx-sdt-procedural-audio",
+      "file": "sfx-sdt-procedural-audio.md",
+      "subdomain": "sound-design-theory",
+      "chars": 587
+    },
+    {
+      "id": "sfx-sdt-synthesis-basics",
+      "file": "sfx-sdt-synthesis-basics.md",
+      "subdomain": "sound-design-theory",
+      "chars": 598
+    },
+    {
+      "id": "sfx-sdt-sampling-technique",
+      "file": "sfx-sdt-sampling-technique.md",
+      "subdomain": "sound-design-theory",
+      "chars": 600
+    },
+    {
+      "id": "sfx-sdt-transient-design",
+      "file": "sfx-sdt-transient-design.md",
+      "subdomain": "sound-design-theory",
+      "chars": 592
+    },
+    {
+      "id": "sfx-sdt-pitch-variation",
+      "file": "sfx-sdt-pitch-variation.md",
+      "subdomain": "sound-design-theory",
+      "chars": 595
+    },
+    {
+      "id": "sfx-sdt-sound-storytelling",
+      "file": "sfx-sdt-sound-storytelling.md",
+      "subdomain": "sound-design-theory",
+      "chars": 587
+    },
+    {
+      "id": "sfx-sdt-reference-library",
+      "file": "sfx-sdt-reference-library.md",
+      "subdomain": "sound-design-theory",
+      "chars": 589
+    },
+    {
+      "id": "sfx-fr-foley-basics",
+      "file": "sfx-fr-foley-basics.md",
+      "subdomain": "foley-recording",
+      "chars": 581
+    },
+    {
+      "id": "sfx-fr-footsteps",
+      "file": "sfx-fr-footsteps.md",
+      "subdomain": "foley-recording",
+      "chars": 579
+    },
+    {
+      "id": "sfx-fr-cloth-movement",
+      "file": "sfx-fr-cloth-movement.md",
+      "subdomain": "foley-recording",
+      "chars": 584
+    },
+    {
+      "id": "sfx-fr-prop-handling",
+      "file": "sfx-fr-prop-handling.md",
+      "subdomain": "foley-recording",
+      "chars": 584
+    },
+    {
+      "id": "sfx-fr-microphone-selection",
+      "file": "sfx-fr-microphone-selection.md",
+      "subdomain": "foley-recording",
+      "chars": 593
+    },
+    {
+      "id": "sfx-fr-recording-environment",
+      "file": "sfx-fr-recording-environment.md",
+      "subdomain": "foley-recording",
+      "chars": 587
+    },
+    {
+      "id": "sfx-fr-contact-mic",
+      "file": "sfx-fr-contact-mic.md",
+      "subdomain": "foley-recording",
+      "chars": 586
+    },
+    {
+      "id": "sfx-fr-field-recording",
+      "file": "sfx-fr-field-recording.md",
+      "subdomain": "foley-recording",
+      "chars": 581
+    },
+    {
+      "id": "sfx-fr-recording-chain",
+      "file": "sfx-fr-recording-chain.md",
+      "subdomain": "foley-recording",
+      "chars": 587
+    },
+    {
+      "id": "sfx-fr-editing-workflow",
+      "file": "sfx-fr-editing-workflow.md",
+      "subdomain": "foley-recording",
+      "chars": 595
+    },
+    {
+      "id": "sfx-fr-noise-reduction",
+      "file": "sfx-fr-noise-reduction.md",
+      "subdomain": "foley-recording",
+      "chars": 579
+    },
+    {
+      "id": "sfx-fr-sound-library-build",
+      "file": "sfx-fr-sound-library-build.md",
+      "subdomain": "foley-recording",
+      "chars": 592
+    },
+    {
+      "id": "sfx-fr-metadata-tagging",
+      "file": "sfx-fr-metadata-tagging.md",
+      "subdomain": "foley-recording",
+      "chars": 587
+    },
+    {
+      "id": "sfx-fr-destructive-recording",
+      "file": "sfx-fr-destructive-recording.md",
+      "subdomain": "foley-recording",
+      "chars": 595
+    },
+    {
+      "id": "sfx-fr-water-sounds",
+      "file": "sfx-fr-water-sounds.md",
+      "subdomain": "foley-recording",
+      "chars": 576
+    },
+    {
+      "id": "sfx-fr-vehicle-recording",
+      "file": "sfx-fr-vehicle-recording.md",
+      "subdomain": "foley-recording",
+      "chars": 584
+    },
+    {
+      "id": "sfx-fr-creature-voice",
+      "file": "sfx-fr-creature-voice.md",
+      "subdomain": "foley-recording",
+      "chars": 591
+    },
+    {
+      "id": "sfx-fr-impact-recording",
+      "file": "sfx-fr-impact-recording.md",
+      "subdomain": "foley-recording",
+      "chars": 585
+    },
+    {
+      "id": "sfx-fr-ambience-capture",
+      "file": "sfx-fr-ambience-capture.md",
+      "subdomain": "foley-recording",
+      "chars": 590
+    },
+    {
+      "id": "sfx-fr-session-management",
+      "file": "sfx-fr-session-management.md",
+      "subdomain": "foley-recording",
+      "chars": 596
+    },
+    {
+      "id": "sfx-am-wwise-overview",
+      "file": "sfx-am-wwise-overview.md",
+      "subdomain": "audio-middleware",
+      "chars": 605
+    },
+    {
+      "id": "sfx-am-fmod-overview",
+      "file": "sfx-am-fmod-overview.md",
+      "subdomain": "audio-middleware",
+      "chars": 592
+    },
+    {
+      "id": "sfx-am-event-system",
+      "file": "sfx-am-event-system.md",
+      "subdomain": "audio-middleware",
+      "chars": 573
+    },
+    {
+      "id": "sfx-am-rtpc",
+      "file": "sfx-am-rtpc.md",
+      "subdomain": "audio-middleware",
+      "chars": 582
+    },
+    {
+      "id": "sfx-am-switch-state",
+      "file": "sfx-am-switch-state.md",
+      "subdomain": "audio-middleware",
+      "chars": 614
+    },
+    {
+      "id": "sfx-am-soundbank",
+      "file": "sfx-am-soundbank.md",
+      "subdomain": "audio-middleware",
+      "chars": 607
+    },
+    {
+      "id": "sfx-am-bus-routing",
+      "file": "sfx-am-bus-routing.md",
+      "subdomain": "audio-middleware",
+      "chars": 573
+    },
+    {
+      "id": "sfx-am-profiler",
+      "file": "sfx-am-profiler.md",
+      "subdomain": "audio-middleware",
+      "chars": 604
+    },
+    {
+      "id": "sfx-am-game-integration",
+      "file": "sfx-am-game-integration.md",
+      "subdomain": "audio-middleware",
+      "chars": 597
+    },
+    {
+      "id": "sfx-am-interactive-music",
+      "file": "sfx-am-interactive-music.md",
+      "subdomain": "audio-middleware",
+      "chars": 587
+    },
+    {
+      "id": "sfx-am-random-container",
+      "file": "sfx-am-random-container.md",
+      "subdomain": "audio-middleware",
+      "chars": 577
+    },
+    {
+      "id": "sfx-am-sequence-container",
+      "file": "sfx-am-sequence-container.md",
+      "subdomain": "audio-middleware",
+      "chars": 577
+    },
+    {
+      "id": "sfx-am-blend-container",
+      "file": "sfx-am-blend-container.md",
+      "subdomain": "audio-middleware",
+      "chars": 573
+    },
+    {
+      "id": "sfx-am-attenuation",
+      "file": "sfx-am-attenuation.md",
+      "subdomain": "audio-middleware",
+      "chars": 572
+    },
+    {
+      "id": "sfx-am-obstruction-occlusion",
+      "file": "sfx-am-obstruction-occlusion.md",
+      "subdomain": "audio-middleware",
+      "chars": 608
+    },
+    {
+      "id": "sfx-am-aux-send",
+      "file": "sfx-am-aux-send.md",
+      "subdomain": "audio-middleware",
+      "chars": 574
+    },
+    {
+      "id": "sfx-am-dialogue-system",
+      "file": "sfx-am-dialogue-system.md",
+      "subdomain": "audio-middleware",
+      "chars": 578
+    },
+    {
+      "id": "sfx-am-plugin-development",
+      "file": "sfx-am-plugin-development.md",
+      "subdomain": "audio-middleware",
+      "chars": 585
+    },
+    {
+      "id": "sfx-am-source-control",
+      "file": "sfx-am-source-control.md",
+      "subdomain": "audio-middleware",
+      "chars": 591
+    },
+    {
+      "id": "sfx-am-batch-processing",
+      "file": "sfx-am-batch-processing.md",
+      "subdomain": "audio-middleware",
+      "chars": 580
+    },
+    {
+      "id": "sfx-sa-3d-audio-basics",
+      "file": "sfx-sa-3d-audio-basics.md",
+      "subdomain": "spatial-audio",
+      "chars": 579
+    },
+    {
+      "id": "sfx-sa-hrtf",
+      "file": "sfx-sa-hrtf.md",
+      "subdomain": "spatial-audio",
+      "chars": 591
+    },
+    {
+      "id": "sfx-sa-binaural-audio",
+      "file": "sfx-sa-binaural-audio.md",
+      "subdomain": "spatial-audio",
+      "chars": 569
+    },
+    {
+      "id": "sfx-sa-surround-sound",
+      "file": "sfx-sa-surround-sound.md",
+      "subdomain": "spatial-audio",
+      "chars": 582
+    },
+    {
+      "id": "sfx-sa-ambisonics",
+      "file": "sfx-sa-ambisonics.md",
+      "subdomain": "spatial-audio",
+      "chars": 597
+    },
+    {
+      "id": "sfx-sa-distance-model",
+      "file": "sfx-sa-distance-model.md",
+      "subdomain": "spatial-audio",
+      "chars": 570
+    },
+    {
+      "id": "sfx-sa-doppler-effect",
+      "file": "sfx-sa-doppler-effect.md",
+      "subdomain": "spatial-audio",
+      "chars": 570
+    },
+    {
+      "id": "sfx-sa-room-acoustics",
+      "file": "sfx-sa-room-acoustics.md",
+      "subdomain": "spatial-audio",
+      "chars": 569
+    },
+    {
+      "id": "sfx-sa-reverb-zone",
+      "file": "sfx-sa-reverb-zone.md",
+      "subdomain": "spatial-audio",
+      "chars": 565
+    },
+    {
+      "id": "sfx-sa-sound-propagation",
+      "file": "sfx-sa-sound-propagation.md",
+      "subdomain": "spatial-audio",
+      "chars": 572
+    },
+    {
+      "id": "sfx-sa-occlusion-geometry",
+      "file": "sfx-sa-occlusion-geometry.md",
+      "subdomain": "spatial-audio",
+      "chars": 571
+    },
+    {
+      "id": "sfx-sa-portal-system",
+      "file": "sfx-sa-portal-system.md",
+      "subdomain": "spatial-audio",
+      "chars": 597
+    },
+    {
+      "id": "sfx-sa-listener-position",
+      "file": "sfx-sa-listener-position.md",
+      "subdomain": "spatial-audio",
+      "chars": 570
+    },
+    {
+      "id": "sfx-sa-speaker-panning",
+      "file": "sfx-sa-speaker-panning.md",
+      "subdomain": "spatial-audio",
+      "chars": 567
+    },
+    {
+      "id": "sfx-sa-spatial-plugin",
+      "file": "sfx-sa-spatial-plugin.md",
+      "subdomain": "spatial-audio",
+      "chars": 596
+    },
+    {
+      "id": "sfx-sa-vr-audio",
+      "file": "sfx-sa-vr-audio.md",
+      "subdomain": "spatial-audio",
+      "chars": 565
+    },
+    {
+      "id": "sfx-sa-height-channel",
+      "file": "sfx-sa-height-channel.md",
+      "subdomain": "spatial-audio",
+      "chars": 577
+    },
+    {
+      "id": "sfx-sa-outdoor-acoustics",
+      "file": "sfx-sa-outdoor-acoustics.md",
+      "subdomain": "spatial-audio",
+      "chars": 571
+    },
+    {
+      "id": "sfx-sa-underwater-audio",
+      "file": "sfx-sa-underwater-audio.md",
+      "subdomain": "spatial-audio",
+      "chars": 570
+    },
+    {
+      "id": "sfx-sa-directivity-pattern",
+      "file": "sfx-sa-directivity-pattern.md",
+      "subdomain": "spatial-audio",
+      "chars": 578
+    },
+    {
+      "id": "sfx-dsp-reverb-types",
+      "file": "sfx-dsp-reverb-types.md",
+      "subdomain": "dsp-effects",
+      "chars": 574
+    },
+    {
+      "id": "sfx-dsp-convolution-reverb",
+      "file": "sfx-dsp-convolution-reverb.md",
+      "subdomain": "dsp-effects",
+      "chars": 579
+    },
+    {
+      "id": "sfx-dsp-eq-filtering",
+      "file": "sfx-dsp-eq-filtering.md",
+      "subdomain": "dsp-effects",
+      "chars": 590
+    },
+    {
+      "id": "sfx-dsp-compression",
+      "file": "sfx-dsp-compression.md",
+      "subdomain": "dsp-effects",
+      "chars": 574
+    },
+    {
+      "id": "sfx-dsp-distortion",
+      "file": "sfx-dsp-distortion.md",
+      "subdomain": "dsp-effects",
+      "chars": 584
+    },
+    {
+      "id": "sfx-dsp-delay-echo",
+      "file": "sfx-dsp-delay-echo.md",
+      "subdomain": "dsp-effects",
+      "chars": 580
+    },
+    {
+      "id": "sfx-dsp-chorus-flanger",
+      "file": "sfx-dsp-chorus-flanger.md",
+      "subdomain": "dsp-effects",
+      "chars": 589
+    },
+    {
+      "id": "sfx-dsp-pitch-shifting",
+      "file": "sfx-dsp-pitch-shifting.md",
+      "subdomain": "dsp-effects",
+      "chars": 570
+    },
+    {
+      "id": "sfx-dsp-granular-processing",
+      "file": "sfx-dsp-granular-processing.md",
+      "subdomain": "dsp-effects",
+      "chars": 577
+    },
+    {
+      "id": "sfx-dsp-sidechain",
+      "file": "sfx-dsp-sidechain.md",
+      "subdomain": "dsp-effects",
+      "chars": 575
+    },
+    {
+      "id": "sfx-dsp-noise-gate",
+      "file": "sfx-dsp-noise-gate.md",
+      "subdomain": "dsp-effects",
+      "chars": 564
+    },
+    {
+      "id": "sfx-dsp-vocoder",
+      "file": "sfx-dsp-vocoder.md",
+      "subdomain": "dsp-effects",
+      "chars": 565
+    },
+    {
+      "id": "sfx-dsp-spectral-processing",
+      "file": "sfx-dsp-spectral-processing.md",
+      "subdomain": "dsp-effects",
+      "chars": 578
+    },
+    {
+      "id": "sfx-dsp-transient-shaper",
+      "file": "sfx-dsp-transient-shaper.md",
+      "subdomain": "dsp-effects",
+      "chars": 587
+    },
+    {
+      "id": "sfx-dsp-multiband",
+      "file": "sfx-dsp-multiband.md",
+      "subdomain": "dsp-effects",
+      "chars": 569
+    },
+    {
+      "id": "sfx-dsp-limiter-maximizer",
+      "file": "sfx-dsp-limiter-maximizer.md",
+      "subdomain": "dsp-effects",
+      "chars": 583
+    },
+    {
+      "id": "sfx-dsp-effect-chain",
+      "file": "sfx-dsp-effect-chain.md",
+      "subdomain": "dsp-effects",
+      "chars": 577
+    },
+    {
+      "id": "sfx-dsp-parallel-processing",
+      "file": "sfx-dsp-parallel-processing.md",
+      "subdomain": "dsp-effects",
+      "chars": 577
+    },
+    {
+      "id": "sfx-dsp-automation",
+      "file": "sfx-dsp-automation.md",
+      "subdomain": "dsp-effects",
+      "chars": 577
+    },
+    {
+      "id": "sfx-dsp-custom-dsp",
+      "file": "sfx-dsp-custom-dsp.md",
+      "subdomain": "dsp-effects",
+      "chars": 596
+    },
+    {
+      "id": "sfx-aam-audio-formats",
+      "file": "sfx-aam-audio-formats.md",
+      "subdomain": "audio-asset-management",
+      "chars": 596
+    },
+    {
+      "id": "sfx-aam-compression-strategy",
+      "file": "sfx-aam-compression-strategy.md",
+      "subdomain": "audio-asset-management",
+      "chars": 591
+    },
+    {
+      "id": "sfx-aam-memory-budget",
+      "file": "sfx-aam-memory-budget.md",
+      "subdomain": "audio-asset-management",
+      "chars": 582
+    },
+    {
+      "id": "sfx-aam-streaming-audio",
+      "file": "sfx-aam-streaming-audio.md",
+      "subdomain": "audio-asset-management",
+      "chars": 587
+    },
+    {
+      "id": "sfx-aam-naming-convention",
+      "file": "sfx-aam-naming-convention.md",
+      "subdomain": "audio-asset-management",
+      "chars": 588
+    },
+    {
+      "id": "sfx-aam-asset-pipeline",
+      "file": "sfx-aam-asset-pipeline.md",
+      "subdomain": "audio-asset-management",
+      "chars": 596
+    },
+    {
+      "id": "sfx-aam-version-control",
+      "file": "sfx-aam-version-control.md",
+      "subdomain": "audio-asset-management",
+      "chars": 585
+    },
+    {
+      "id": "sfx-aam-sample-rate",
+      "file": "sfx-aam-sample-rate.md",
+      "subdomain": "audio-asset-management",
+      "chars": 593
+    },
+    {
+      "id": "sfx-aam-bit-depth",
+      "file": "sfx-aam-bit-depth.md",
+      "subdomain": "audio-asset-management",
+      "chars": 580
+    },
+    {
+      "id": "sfx-aam-batch-conversion",
+      "file": "sfx-aam-batch-conversion.md",
+      "subdomain": "audio-asset-management",
+      "chars": 586
+    },
+    {
+      "id": "sfx-aam-asset-database",
+      "file": "sfx-aam-asset-database.md",
+      "subdomain": "audio-asset-management",
+      "chars": 590
+    },
+    {
+      "id": "sfx-aam-localization-audio",
+      "file": "sfx-aam-localization-audio.md",
+      "subdomain": "audio-asset-management",
+      "chars": 594
+    },
+    {
+      "id": "sfx-aam-redundancy-check",
+      "file": "sfx-aam-redundancy-check.md",
+      "subdomain": "audio-asset-management",
+      "chars": 588
+    },
+    {
+      "id": "sfx-aam-quality-tiers",
+      "file": "sfx-aam-quality-tiers.md",
+      "subdomain": "audio-asset-management",
+      "chars": 584
+    },
+    {
+      "id": "sfx-aam-dynamic-loading",
+      "file": "sfx-aam-dynamic-loading.md",
+      "subdomain": "audio-asset-management",
+      "chars": 585
+    },
+    {
+      "id": "sfx-aam-soundbank-strategy",
+      "file": "sfx-aam-soundbank-strategy.md",
+      "subdomain": "audio-asset-management",
+      "chars": 625
+    },
+    {
+      "id": "sfx-aam-backup-archival",
+      "file": "sfx-aam-backup-archival.md",
+      "subdomain": "audio-asset-management",
+      "chars": 590
+    },
+    {
+      "id": "sfx-aam-delivery-spec",
+      "file": "sfx-aam-delivery-spec.md",
+      "subdomain": "audio-asset-management",
+      "chars": 584
+    },
+    {
+      "id": "sfx-aam-platform-specific",
+      "file": "sfx-aam-platform-specific.md",
+      "subdomain": "audio-asset-management",
+      "chars": 600
+    },
+    {
+      "id": "sfx-aam-documentation",
+      "file": "sfx-aam-documentation.md",
+      "subdomain": "audio-asset-management",
+      "chars": 601
+    },
+    {
+      "id": "sfx-dp-voice-recording",
+      "file": "sfx-dp-voice-recording.md",
+      "subdomain": "dialogue-processing",
+      "chars": 577
+    },
+    {
+      "id": "sfx-dp-dialogue-editing",
+      "file": "sfx-dp-dialogue-editing.md",
+      "subdomain": "dialogue-processing",
+      "chars": 577
+    },
+    {
+      "id": "sfx-dp-tts-synthesis",
+      "file": "sfx-dp-tts-synthesis.md",
+      "subdomain": "dialogue-processing",
+      "chars": 598
+    },
+    {
+      "id": "sfx-dp-lip-sync",
+      "file": "sfx-dp-lip-sync.md",
+      "subdomain": "dialogue-processing",
+      "chars": 568
+    },
+    {
+      "id": "sfx-dp-voice-direction",
+      "file": "sfx-dp-voice-direction.md",
+      "subdomain": "dialogue-processing",
+      "chars": 578
+    },
+    {
+      "id": "sfx-dp-casting",
+      "file": "sfx-dp-casting.md",
+      "subdomain": "dialogue-processing",
+      "chars": 567
+    },
+    {
+      "id": "sfx-dp-processing-chain",
+      "file": "sfx-dp-processing-chain.md",
+      "subdomain": "dialogue-processing",
+      "chars": 599
+    },
+    {
+      "id": "sfx-dp-emotion-variation",
+      "file": "sfx-dp-emotion-variation.md",
+      "subdomain": "dialogue-processing",
+      "chars": 579
+    },
+    {
+      "id": "sfx-dp-radio-comm",
+      "file": "sfx-dp-radio-comm.md",
+      "subdomain": "dialogue-processing",
+      "chars": 588
+    },
+    {
+      "id": "sfx-dp-crowd-walla",
+      "file": "sfx-dp-crowd-walla.md",
+      "subdomain": "dialogue-processing",
+      "chars": 575
+    },
+    {
+      "id": "sfx-dp-barks-efforts",
+      "file": "sfx-dp-barks-efforts.md",
+      "subdomain": "dialogue-processing",
+      "chars": 602
+    },
+    {
+      "id": "sfx-dp-localization-pipeline",
+      "file": "sfx-dp-localization-pipeline.md",
+      "subdomain": "dialogue-processing",
+      "chars": 586
+    },
+    {
+      "id": "sfx-dp-interactive-dialogue",
+      "file": "sfx-dp-interactive-dialogue.md",
+      "subdomain": "dialogue-processing",
+      "chars": 582
+    },
+    {
+      "id": "sfx-dp-subtitles-integration",
+      "file": "sfx-dp-subtitles-integration.md",
+      "subdomain": "dialogue-processing",
+      "chars": 580
+    },
+    {
+      "id": "sfx-dp-noise-floor",
+      "file": "sfx-dp-noise-floor.md",
+      "subdomain": "dialogue-processing",
+      "chars": 570
+    },
+    {
+      "id": "sfx-dp-de-esser",
+      "file": "sfx-dp-de-esser.md",
+      "subdomain": "dialogue-processing",
+      "chars": 572
+    },
+    {
+      "id": "sfx-dp-breath-control",
+      "file": "sfx-dp-breath-control.md",
+      "subdomain": "dialogue-processing",
+      "chars": 582
+    },
+    {
+      "id": "sfx-dp-voice-aging",
+      "file": "sfx-dp-voice-aging.md",
+      "subdomain": "dialogue-processing",
+      "chars": 582
+    },
+    {
+      "id": "sfx-dp-alien-voice",
+      "file": "sfx-dp-alien-voice.md",
+      "subdomain": "dialogue-processing",
+      "chars": 579
+    },
+    {
+      "id": "sfx-dp-dialogue-priority",
+      "file": "sfx-dp-dialogue-priority.md",
+      "subdomain": "dialogue-processing",
+      "chars": 584
+    },
+    {
+      "id": "sfx-as-ambience-layers",
+      "file": "sfx-as-ambience-layers.md",
+      "subdomain": "ambient-sound",
+      "chars": 582
+    },
+    {
+      "id": "sfx-as-weather-system",
+      "file": "sfx-as-weather-system.md",
+      "subdomain": "ambient-sound",
+      "chars": 583
+    },
+    {
+      "id": "sfx-as-biome-soundscape",
+      "file": "sfx-as-biome-soundscape.md",
+      "subdomain": "ambient-sound",
+      "chars": 580
+    },
+    {
+      "id": "sfx-as-day-night-cycle",
+      "file": "sfx-as-day-night-cycle.md",
+      "subdomain": "ambient-sound",
+      "chars": 572
+    },
+    {
+      "id": "sfx-as-crowd-system",
+      "file": "sfx-as-crowd-system.md",
+      "subdomain": "ambient-sound",
+      "chars": 581
+    },
+    {
+      "id": "sfx-as-random-emitter",
+      "file": "sfx-as-random-emitter.md",
+      "subdomain": "ambient-sound",
+      "chars": 579
+    },
+    {
+      "id": "sfx-as-dynamic-mix",
+      "file": "sfx-as-dynamic-mix.md",
+      "subdomain": "ambient-sound",
+      "chars": 570
+    },
+    {
+      "id": "sfx-as-music-ambient-blend",
+      "file": "sfx-as-music-ambient-blend.md",
+      "subdomain": "ambient-sound",
+      "chars": 590
+    },
+    {
+      "id": "sfx-as-interior-exterior",
+      "file": "sfx-as-interior-exterior.md",
+      "subdomain": "ambient-sound",
+      "chars": 580
+    },
+    {
+      "id": "sfx-as-zone-based",
+      "file": "sfx-as-zone-based.md",
+      "subdomain": "ambient-sound",
+      "chars": 568
+    },
+    {
+      "id": "sfx-as-interactive-ambient",
+      "file": "sfx-as-interactive-ambient.md",
+      "subdomain": "ambient-sound",
+      "chars": 585
+    },
+    {
+      "id": "sfx-as-wind-system",
+      "file": "sfx-as-wind-system.md",
+      "subdomain": "ambient-sound",
+      "chars": 568
+    },
+    {
+      "id": "sfx-as-water-ambient",
+      "file": "sfx-as-water-ambient.md",
+      "subdomain": "ambient-sound",
+      "chars": 576
+    },
+    {
+      "id": "sfx-as-wildlife-audio",
+      "file": "sfx-as-wildlife-audio.md",
+      "subdomain": "ambient-sound",
+      "chars": 582
+    },
+    {
+      "id": "sfx-as-industrial-ambient",
+      "file": "sfx-as-industrial-ambient.md",
+      "subdomain": "ambient-sound",
+      "chars": 582
+    },
+    {
+      "id": "sfx-as-horror-ambient",
+      "file": "sfx-as-horror-ambient.md",
+      "subdomain": "ambient-sound",
+      "chars": 577
+    },
+    {
+      "id": "sfx-as-sci-fi-ambient",
+      "file": "sfx-as-sci-fi-ambient.md",
+      "subdomain": "ambient-sound",
+      "chars": 578
+    },
+    {
+      "id": "sfx-as-silence-technique",
+      "file": "sfx-as-silence-technique.md",
+      "subdomain": "ambient-sound",
+      "chars": 576
+    },
+    {
+      "id": "sfx-as-procedural-ambient",
+      "file": "sfx-as-procedural-ambient.md",
+      "subdomain": "ambient-sound",
+      "chars": 584
+    },
+    {
+      "id": "sfx-as-lfe-rumble",
+      "file": "sfx-as-lfe-rumble.md",
+      "subdomain": "ambient-sound",
+      "chars": 569
+    },
+    {
+      "id": "sfx-ao-voice-limit",
+      "file": "sfx-ao-voice-limit.md",
+      "subdomain": "audio-optimization",
+      "chars": 582
+    },
+    {
+      "id": "sfx-ao-priority-system",
+      "file": "sfx-ao-priority-system.md",
+      "subdomain": "audio-optimization",
+      "chars": 581
+    },
+    {
+      "id": "sfx-ao-virtualization",
+      "file": "sfx-ao-virtualization.md",
+      "subdomain": "audio-optimization",
+      "chars": 579
+    },
+    {
+      "id": "sfx-ao-lod-audio",
+      "file": "sfx-ao-lod-audio.md",
+      "subdomain": "audio-optimization",
+      "chars": 577
+    },
+    {
+      "id": "sfx-ao-cpu-profiling",
+      "file": "sfx-ao-cpu-profiling.md",
+      "subdomain": "audio-optimization",
+      "chars": 588
+    },
+    {
+      "id": "sfx-ao-memory-profiling",
+      "file": "sfx-ao-memory-profiling.md",
+      "subdomain": "audio-optimization",
+      "chars": 575
+    },
+    {
+      "id": "sfx-ao-platform-budget",
+      "file": "sfx-ao-platform-budget.md",
+      "subdomain": "audio-optimization",
+      "chars": 581
+    },
+    {
+      "id": "sfx-ao-decode-cost",
+      "file": "sfx-ao-decode-cost.md",
+      "subdomain": "audio-optimization",
+      "chars": 572
+    },
+    {
+      "id": "sfx-ao-streaming-strategy",
+      "file": "sfx-ao-streaming-strategy.md",
+      "subdomain": "audio-optimization",
+      "chars": 579
+    },
+    {
+      "id": "sfx-ao-sample-pooling",
+      "file": "sfx-ao-sample-pooling.md",
+      "subdomain": "audio-optimization",
+      "chars": 573
+    },
+    {
+      "id": "sfx-ao-effect-budget",
+      "file": "sfx-ao-effect-budget.md",
+      "subdomain": "audio-optimization",
+      "chars": 579
+    },
+    {
+      "id": "sfx-ao-occlusion-cost",
+      "file": "sfx-ao-occlusion-cost.md",
+      "subdomain": "audio-optimization",
+      "chars": 582
+    },
+    {
+      "id": "sfx-ao-batch-operation",
+      "file": "sfx-ao-batch-operation.md",
+      "subdomain": "audio-optimization",
+      "chars": 584
+    },
+    {
+      "id": "sfx-ao-mobile-optimization",
+      "file": "sfx-ao-mobile-optimization.md",
+      "subdomain": "audio-optimization",
+      "chars": 583
+    },
+    {
+      "id": "sfx-ao-latency-reduction",
+      "file": "sfx-ao-latency-reduction.md",
+      "subdomain": "audio-optimization",
+      "chars": 576
+    },
+    {
+      "id": "sfx-ao-mix-snapshot",
+      "file": "sfx-ao-mix-snapshot.md",
+      "subdomain": "audio-optimization",
+      "chars": 578
+    },
+    {
+      "id": "sfx-ao-regression-testing",
+      "file": "sfx-ao-regression-testing.md",
+      "subdomain": "audio-optimization",
+      "chars": 576
+    },
+    {
+      "id": "sfx-ao-qa-checklist",
+      "file": "sfx-ao-qa-checklist.md",
+      "subdomain": "audio-optimization",
+      "chars": 575
+    },
+    {
+      "id": "sfx-ao-platform-certification",
+      "file": "sfx-ao-platform-certification.md",
+      "subdomain": "audio-optimization",
+      "chars": 596
+    },
+    {
+      "id": "sfx-ao-final-mix",
+      "file": "sfx-ao-final-mix.md",
+      "subdomain": "audio-optimization",
+      "chars": 575
+    }
+  ]
+}

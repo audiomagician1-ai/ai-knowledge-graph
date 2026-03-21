@@ -1,0 +1,3527 @@
+{
+  "domain": "game-audio-sfx",
+  "subdomains": [
+    {
+      "id": "sound-design-theory",
+      "name": "音效设计理论",
+      "description": "声音心理学、音效分类、音效设计方法论与美学原则",
+      "order": 1
+    },
+    {
+      "id": "foley-recording",
+      "name": "Foley录制",
+      "description": "拟音技术、录音设备、声音采集与后期处理",
+      "order": 2
+    },
+    {
+      "id": "audio-middleware",
+      "name": "音频中间件",
+      "description": "Wwise/FMOD集成、事件系统、RTPC参数与音频管线",
+      "order": 3
+    },
+    {
+      "id": "spatial-audio",
+      "name": "空间音频",
+      "description": "3D音频、HRTF、声源衰减、遮挡与声学传播模拟",
+      "order": 4
+    },
+    {
+      "id": "dsp-effects",
+      "name": "混响与DSP",
+      "description": "混响算法、EQ/压缩/失真等效果器链与音频DSP处理",
+      "order": 5
+    },
+    {
+      "id": "audio-asset-management",
+      "name": "声音资源管理",
+      "description": "音频格式、压缩策略、内存管理、流式加载与资源组织",
+      "order": 6
+    },
+    {
+      "id": "dialogue-processing",
+      "name": "对白处理",
+      "description": "语音录制、对白编辑、语音合成与本地化音频管线",
+      "order": 7
+    },
+    {
+      "id": "ambient-sound",
+      "name": "环境声设计",
+      "description": "环境氛围音、天气/生物音景、随机化与动态混音",
+      "order": 8
+    },
+    {
+      "id": "audio-optimization",
+      "name": "音效优化",
+      "description": "音频性能分析、预算管理、平台适配与质量保证",
+      "order": 9
+    }
+  ],
+  "concepts": [
+    {
+      "id": "sfx-sdt-psychoacoustics",
+      "name": "声音心理学",
+      "description": "研究人类对声音的感知、频率敏感度与听觉认知",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-sound-taxonomy",
+      "name": "音效分类体系",
+      "description": "按功能(UI/环境/反馈/特效)和来源(录制/合成/处理)分类音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-emotional-design",
+      "name": "声音情感设计",
+      "description": "利用音效触发情感反应，建立听觉情感映射",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-sdt-layering",
+      "name": "音效分层技术",
+      "description": "多层声音叠加构建丰富复杂的音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-sweetener",
+      "name": "Sweetener增强",
+      "description": "添加微妙的辅助声音增强主音效的冲击力与质感",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-silence-design",
+      "name": "静默设计",
+      "description": "有意识地使用静默和留白创造戏剧性效果",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-diegetic-vs-nondiegetic",
+      "name": "叙事内外音效",
+      "description": "区分故事世界内部音效和非叙事音效(UI/音乐)",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-sound-metaphor",
+      "name": "声音隐喻",
+      "description": "使用象征性声音传达抽象概念或游戏状态",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-frequency-spectrum",
+      "name": "频谱分析与管理",
+      "description": "管理音效的频率分布避免遮蔽和冲突",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-impact-design",
+      "name": "打击感音效设计",
+      "description": "设计具有物理冲击感的动作音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-sdt-ui-sound",
+      "name": "UI音效设计",
+      "description": "界面交互音效的设计原则与一致性策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-feedback-loop",
+      "name": "音频反馈循环",
+      "description": "通过音效提供即时游戏状态反馈",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-audio-branding",
+      "name": "音频品牌化",
+      "description": "创建可识别的声音标识与音效风格",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-procedural-audio",
+      "name": "程序化音频",
+      "description": "使用算法和参数实时生成音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-synthesis-basics",
+      "name": "声音合成基础",
+      "description": "减法/加法/FM/粒子合成的原理与应用",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-sampling-technique",
+      "name": "采样技术",
+      "description": "录音采样、Round-Robin与Velocity层的设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-transient-design",
+      "name": "瞬态设计",
+      "description": "塑造声音的起始阶段(Attack)以增强辨识度",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-pitch-variation",
+      "name": "音高变化技术",
+      "description": "通过音高随机化和调制增加音效多样性",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-sdt-sound-storytelling",
+      "name": "声音叙事",
+      "description": "利用音效推动故事发展和建立世界观",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sdt-reference-library",
+      "name": "参考音效库",
+      "description": "建立和组织音效参考库辅助创作",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-foley-basics",
+      "name": "拟音基础",
+      "description": "Foley录制的历史、原理与基本流程",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-footsteps",
+      "name": "脚步音录制",
+      "description": "不同地面材质的脚步声录制技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-cloth-movement",
+      "name": "布料运动音",
+      "description": "服装和布料运动产生的声音录制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-fr-prop-handling",
+      "name": "道具操作音",
+      "description": "武器、工具等道具的声音录制技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-microphone-selection",
+      "name": "麦克风选择",
+      "description": "不同类型麦克风的特性与录音场景适配",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-recording-environment",
+      "name": "录音环境",
+      "description": "录音棚设计、声学处理与外景录音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-contact-mic",
+      "name": "接触式麦克风",
+      "description": "通过振动传感录制物体内部声音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-field-recording",
+      "name": "外景录音",
+      "description": "户外环境声和特殊声源的现场采集",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-recording-chain",
+      "name": "录音信号链",
+      "description": "前置放大器、AD转换器与监听系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-editing-workflow",
+      "name": "音频编辑工作流",
+      "description": "录音素材的剪辑、降噪与整理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-fr-noise-reduction",
+      "name": "降噪技术",
+      "description": "录音中的噪音消除与修复技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-sound-library-build",
+      "name": "声音库建设",
+      "description": "系统化建立和维护个人/工作室声音库",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-metadata-tagging",
+      "name": "元数据标签",
+      "description": "音效文件的命名规范与元数据管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-destructive-recording",
+      "name": "破坏性录音",
+      "description": "不可重复的特殊音效(爆炸/碎裂)录制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-water-sounds",
+      "name": "水声录制",
+      "description": "各种水体效果声音的录制技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-vehicle-recording",
+      "name": "载具录音",
+      "description": "汽车、飞机等载具引擎与运动声录制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-creature-voice",
+      "name": "生物音效设计",
+      "description": "怪物/NPC声音的创意录制与处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-impact-recording",
+      "name": "撞击音录制",
+      "description": "各类材质碰撞声音的录制方法",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-fr-ambience-capture",
+      "name": "环境音捕捉",
+      "description": "自然和城市环境音的立体声/环绕声采集",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-fr-session-management",
+      "name": "录音会话管理",
+      "description": "大型录音项目的时间/资源/人员协调",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-wwise-overview",
+      "name": "Wwise概览",
+      "description": "Audiokinetic Wwise的架构、工作流与核心概念",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-fmod-overview",
+      "name": "FMOD概览",
+      "description": "FMOD Studio的架构、工作流与核心概念",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-event-system",
+      "name": "事件系统",
+      "description": "音频事件的创建、触发与参数控制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-am-rtpc",
+      "name": "RTPC参数",
+      "description": "实时参数控制(距离/速度/状态)驱动音效变化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-switch-state",
+      "name": "Switch与State",
+      "description": "基于游戏状态的音效切换与分组管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-soundbank",
+      "name": "SoundBank管理",
+      "description": "音频资源的打包、加载与内存管理策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-bus-routing",
+      "name": "总线路由",
+      "description": "音频信号流的总线层级、路由与混音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-profiler",
+      "name": "音频Profiler",
+      "description": "实时监控音频性能、CPU/内存消耗与调试",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-game-integration",
+      "name": "游戏引擎集成",
+      "description": "Wwise/FMOD与UE5/Unity的集成方法",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-interactive-music",
+      "name": "交互音乐集成",
+      "description": "在中间件中实现自适应音乐系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-am-random-container",
+      "name": "随机容器",
+      "description": "使用随机播放容器增加音效多样性",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-sequence-container",
+      "name": "序列容器",
+      "description": "按序列播放音效组的容器设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-blend-container",
+      "name": "混合容器",
+      "description": "多轨音效的参数化混合容器",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-attenuation",
+      "name": "衰减曲线",
+      "description": "声源距离衰减的自定义曲线与配置",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-obstruction-occlusion",
+      "name": "遮挡与阻隔",
+      "description": "基于几何的声音遮挡(Obstruction)与阻隔(Occlusion)",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-aux-send",
+      "name": "辅助发送",
+      "description": "使用Aux Bus实现环境混响与效果共享",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-dialogue-system",
+      "name": "对白系统",
+      "description": "中间件中的对白管理、优先级与本地化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-plugin-development",
+      "name": "插件开发",
+      "description": "为Wwise/FMOD开发自定义DSP插件",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-am-source-control",
+      "name": "版本控制集成",
+      "description": "音频项目的Git/Perforce版本管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-am-batch-processing",
+      "name": "批量处理",
+      "description": "大规模音效资产的批量导入、转换与处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-3d-audio-basics",
+      "name": "3D音频基础",
+      "description": "3D声音定位的原理与实现方法",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-hrtf",
+      "name": "HRTF头部传输函数",
+      "description": "基于头部传输函数的精确声音空间定位",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-binaural-audio",
+      "name": "双耳音频",
+      "description": "通过耳机实现逼真3D音频的技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-sa-surround-sound",
+      "name": "环绕声系统",
+      "description": "5.1/7.1/Atmos等多声道环绕声的实现",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-ambisonics",
+      "name": "Ambisonics",
+      "description": "全景声场捕捉与解码到各种扬声器配置",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-distance-model",
+      "name": "距离模型",
+      "description": "声源距离衰减的物理模型与游戏适配",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-doppler-effect",
+      "name": "多普勒效应",
+      "description": "运动声源的频率偏移模拟",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-room-acoustics",
+      "name": "房间声学",
+      "description": "封闭空间的声学特性模拟与早反射",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-reverb-zone",
+      "name": "混响区域",
+      "description": "空间触发的混响区域与过渡混合",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-sound-propagation",
+      "name": "声音传播",
+      "description": "声波在复杂环境中的传播路径计算",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-sa-occlusion-geometry",
+      "name": "几何遮挡",
+      "description": "基于场景几何的声音遮挡计算",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-portal-system",
+      "name": "Portal声学系统",
+      "description": "通过门窗等开口的声音传播模拟",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-listener-position",
+      "name": "听者位置",
+      "description": "虚拟听者的定位与多听者场景",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-speaker-panning",
+      "name": "声像摆位",
+      "description": "多声道输出的声像分配算法",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-spatial-plugin",
+      "name": "空间音频插件",
+      "description": "Project Acoustics/Steam Audio等插件",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-vr-audio",
+      "name": "VR音频",
+      "description": "虚拟现实中的360°音频与头部追踪",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-height-channel",
+      "name": "高度通道",
+      "description": "Dolby Atmos等包含高度信息的音频格式",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-outdoor-acoustics",
+      "name": "室外声学",
+      "description": "开放空间的声音衰减与环境效果",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-sa-underwater-audio",
+      "name": "水下音效",
+      "description": "水下环境的声学特性与效果模拟",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-sa-directivity-pattern",
+      "name": "声源指向性",
+      "description": "不同声源的辐射方向性模式设置",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-reverb-types",
+      "name": "混响类型",
+      "description": "算法混响、卷积混响与混合混响的对比",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-convolution-reverb",
+      "name": "卷积混响",
+      "description": "使用IR脉冲响应实现真实空间混响",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-eq-filtering",
+      "name": "EQ均衡与滤波",
+      "description": "参数EQ、图形EQ与滤波器的音效塑形",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-dsp-compression",
+      "name": "动态压缩",
+      "description": "压缩器/限制器/扩展器的动态范围控制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-distortion",
+      "name": "失真效果",
+      "description": "过载/Bitcrush/Wave Shaping等失真处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-delay-echo",
+      "name": "延迟与回声",
+      "description": "延迟线、Ping-Pong延迟与回声效果",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-chorus-flanger",
+      "name": "合唱与镶边",
+      "description": "Chorus/Flanger/Phaser调制效果",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-pitch-shifting",
+      "name": "变调处理",
+      "description": "实时变调与时间拉伸算法",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-granular-processing",
+      "name": "粒度处理",
+      "description": "粒子合成与粒度时间拉伸技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-sidechain",
+      "name": "侧链处理",
+      "description": "使用侧链信号控制效果器(Ducking等)",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-dsp-noise-gate",
+      "name": "噪声门",
+      "description": "基于阈值的噪声抑制与声音门控",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-vocoder",
+      "name": "声码器",
+      "description": "载波/调制信号的声码处理与机器人音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-spectral-processing",
+      "name": "频谱处理",
+      "description": "FFT频域音频处理与频谱重塑",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-transient-shaper",
+      "name": "瞬态塑形",
+      "description": "增强或抑制声音的瞬态(Attack/Sustain)",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-multiband",
+      "name": "多段处理",
+      "description": "分频段独立处理的多段压缩/效果",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-limiter-maximizer",
+      "name": "限幅与最大化",
+      "description": "响度最大化与真峰值限制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-effect-chain",
+      "name": "效果链设计",
+      "description": "音效处理效果链的顺序与组合策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-parallel-processing",
+      "name": "并行处理",
+      "description": "干湿信号并行混合的处理技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-dsp-automation",
+      "name": "参数自动化",
+      "description": "效果器参数的时间轴自动化与包络控制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dsp-custom-dsp",
+      "name": "自定义DSP开发",
+      "description": "使用C++/JUCE开发自定义音频处理插件",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-audio-formats",
+      "name": "音频格式",
+      "description": "WAV/OGG/ADPCM/Opus等格式的特性与选择",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-compression-strategy",
+      "name": "压缩策略",
+      "description": "不同平台和场景下的音频压缩方案",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-memory-budget",
+      "name": "内存预算",
+      "description": "音频内存分配与使用上限管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-aam-streaming-audio",
+      "name": "流式加载",
+      "description": "大文件音频的流式传输与预加载策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-naming-convention",
+      "name": "命名规范",
+      "description": "音效文件的标准化命名与目录结构",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-asset-pipeline",
+      "name": "音频资产管线",
+      "description": "从录制到引擎的完整音频资产工作流",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-version-control",
+      "name": "版本控制",
+      "description": "音频文件的版本管理与团队协作",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-sample-rate",
+      "name": "采样率选择",
+      "description": "44.1/48/96kHz采样率的场景选择",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-bit-depth",
+      "name": "位深度",
+      "description": "16/24/32bit音频精度与性能权衡",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-batch-conversion",
+      "name": "批量转换",
+      "description": "自动化批量格式转换与处理脚本",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-aam-asset-database",
+      "name": "资产数据库",
+      "description": "音效资产的数据库管理与快速检索",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-localization-audio",
+      "name": "本地化音频",
+      "description": "多语言音频资源的组织与切换策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-redundancy-check",
+      "name": "冗余检查",
+      "description": "检测和消除重复/未使用的音频资源",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-quality-tiers",
+      "name": "质量分级",
+      "description": "根据平台能力提供不同质量的音频",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-dynamic-loading",
+      "name": "动态加载",
+      "description": "运行时按需加载和卸载音频资源",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-soundbank-strategy",
+      "name": "SoundBank策略",
+      "description": "音频包的分组、加载顺序与依赖管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-backup-archival",
+      "name": "备份与归档",
+      "description": "音频项目的长期存储与灾备策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-delivery-spec",
+      "name": "交付规格",
+      "description": "音效资产的交付标准与验收检查表",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-aam-platform-specific",
+      "name": "平台特定处理",
+      "description": "PC/主机/移动端的音频格式与限制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-aam-documentation",
+      "name": "音效文档",
+      "description": "音效设计文档(Sound Design Document)的编写",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-voice-recording",
+      "name": "语音录制",
+      "description": "配音演员指导、录音流程与技术要求",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-dialogue-editing",
+      "name": "对白编辑",
+      "description": "语音剪辑、降噪、均衡与动态处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-tts-synthesis",
+      "name": "语音合成(TTS)",
+      "description": "文本转语音技术在游戏中的应用",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-dp-lip-sync",
+      "name": "口型同步",
+      "description": "语音与角色口型动画的时间对齐",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-voice-direction",
+      "name": "配音导演",
+      "description": "配音录制会话中的表演指导与质量控制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-casting",
+      "name": "演员选角",
+      "description": "配音演员的选角流程与试音评估",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-processing-chain",
+      "name": "对白处理链",
+      "description": "对白音频的标准处理流程(EQ→Comp→DeEss→Limit)",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-emotion-variation",
+      "name": "情感变体",
+      "description": "同一台词不同情感状态的录制与管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-radio-comm",
+      "name": "无线电通讯音效",
+      "description": "模拟无线电/通讯设备的对白效果处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-crowd-walla",
+      "name": "人群底噪",
+      "description": "背景人群声(Walla)的录制与混音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-dp-barks-efforts",
+      "name": "Barks与动作音",
+      "description": "短促反应音(受伤/惊讶/用力)的录制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-localization-pipeline",
+      "name": "本地化管线",
+      "description": "多语言配音的录制、管理与集成",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-interactive-dialogue",
+      "name": "交互式对白",
+      "description": "分支对话系统的音频管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-subtitles-integration",
+      "name": "字幕集成",
+      "description": "音频与字幕时间码的同步方案",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-noise-floor",
+      "name": "底噪标准",
+      "description": "录音室底噪标准与一致性控制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-de-esser",
+      "name": "齿音消除",
+      "description": "De-Esser处理消除过亮的齿擦音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-breath-control",
+      "name": "呼吸音处理",
+      "description": "对白中呼吸音的保留/减弱/移除决策",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-voice-aging",
+      "name": "声音老化处理",
+      "description": "模拟角色年龄变化的语音处理技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-dp-alien-voice",
+      "name": "非人类语音",
+      "description": "怪物/机器人/外星人语音的创意设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-dp-dialogue-priority",
+      "name": "对白优先级",
+      "description": "对白与其他音频的优先级调度与闪避",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-ambience-layers",
+      "name": "环境音分层",
+      "description": "基础底层+细节层+随机事件层的分层设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-weather-system",
+      "name": "天气音效系统",
+      "description": "风/雨/雷/雪等天气声的动态混合",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-biome-soundscape",
+      "name": "生态音景",
+      "description": "不同生态环境(森林/沙漠/城市)的声景设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-as-day-night-cycle",
+      "name": "昼夜音效",
+      "description": "随时间变化的环境声过渡与切换",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-crowd-system",
+      "name": "人群音效系统",
+      "description": "动态人群密度和活动类型的音效调度",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-random-emitter",
+      "name": "随机发射器",
+      "description": "带随机延迟/音高/位置的环境音事件",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-dynamic-mix",
+      "name": "动态混音",
+      "description": "基于游戏状态自适应调整环境声层级",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-music-ambient-blend",
+      "name": "音乐与环境融合",
+      "description": "环境音与背景音乐的无缝过渡",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-interior-exterior",
+      "name": "室内外过渡",
+      "description": "进入/离开建筑时的声学环境切换",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-zone-based",
+      "name": "区域音效",
+      "description": "基于游戏区域的环境声管理与过渡",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-as-interactive-ambient",
+      "name": "交互式环境音",
+      "description": "响应玩家行为变化的环境声音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-wind-system",
+      "name": "风声系统",
+      "description": "根据地形和高度变化的动态风声",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-water-ambient",
+      "name": "水体环境音",
+      "description": "河流/海浪/雨滴等水相关环境声",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-wildlife-audio",
+      "name": "野生动物音效",
+      "description": "鸟鸣/虫鸣等生物音效的时空分布",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-industrial-ambient",
+      "name": "工业环境音",
+      "description": "机械/工厂/城市机器的环境声设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-horror-ambient",
+      "name": "恐怖氛围音",
+      "description": "恐怖游戏特有的心理压迫音效设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-sci-fi-ambient",
+      "name": "科幻环境音",
+      "description": "太空站/飞船/未来城市的声景设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-silence-technique",
+      "name": "静默技巧",
+      "description": "利用突然的静默增强紧张感或戏剧性",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-as-procedural-ambient",
+      "name": "程序化环境音",
+      "description": "运行时参数驱动的环境声生成",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-as-lfe-rumble",
+      "name": "低频震动",
+      "description": "LFE声道的隆隆声与体感反馈音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-voice-limit",
+      "name": "同时发声限制",
+      "description": "最大同时发声数的管理与优先级策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-priority-system",
+      "name": "音效优先级",
+      "description": "基于重要性和距离的音效优先级系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-virtualization",
+      "name": "声音虚拟化",
+      "description": "超出发声限制时的声音虚拟化处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-ao-lod-audio",
+      "name": "音频LOD",
+      "description": "基于距离的音效细节层级(简化/完整)",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-cpu-profiling",
+      "name": "CPU性能分析",
+      "description": "音频线程的CPU占用分析与优化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-memory-profiling",
+      "name": "内存分析",
+      "description": "音频内存使用的监控与泄漏检测",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-platform-budget",
+      "name": "平台预算",
+      "description": "不同平台(PC/主机/移动)的音频预算分配",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-decode-cost",
+      "name": "解码成本",
+      "description": "不同编码格式的解码CPU开销对比",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-streaming-strategy",
+      "name": "流式策略",
+      "description": "音频流的预缓冲、优先级与带宽控制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-sample-pooling",
+      "name": "采样池化",
+      "description": "共享采样数据减少内存重复占用",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-ao-effect-budget",
+      "name": "效果器预算",
+      "description": "DSP效果的CPU消耗预算与分配",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-occlusion-cost",
+      "name": "遮挡计算成本",
+      "description": "空间音频遮挡计算的性能优化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-batch-operation",
+      "name": "批量操作优化",
+      "description": "音频操作的批处理减少系统调用",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-mobile-optimization",
+      "name": "移动端优化",
+      "description": "手机/平板设备的音频特殊优化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-latency-reduction",
+      "name": "延迟优化",
+      "description": "音频输出延迟的测量与减少方法",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-mix-snapshot",
+      "name": "快照混音",
+      "description": "预设混音快照的快速切换(战斗/对话/菜单)",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-regression-testing",
+      "name": "回归测试",
+      "description": "音频变更后的自动化回归测试",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-qa-checklist",
+      "name": "QA检查表",
+      "description": "音效质量保证的标准检查清单",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "sfx-ao-platform-certification",
+      "name": "平台认证",
+      "description": "Sony/Microsoft/Nintendo音频认证要求",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "sfx-ao-final-mix",
+      "name": "终混与母带",
+      "description": "游戏音频的最终混音平衡与响度标准",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "sfx-sdt-psychoacoustics",
+      "target_id": "sfx-sdt-sound-taxonomy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-sound-taxonomy",
+      "target_id": "sfx-sdt-emotional-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-emotional-design",
+      "target_id": "sfx-sdt-layering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-layering",
+      "target_id": "sfx-sdt-sweetener",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-sweetener",
+      "target_id": "sfx-sdt-silence-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-silence-design",
+      "target_id": "sfx-sdt-diegetic-vs-nondiegetic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-diegetic-vs-nondiegetic",
+      "target_id": "sfx-sdt-sound-metaphor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-sound-metaphor",
+      "target_id": "sfx-sdt-frequency-spectrum",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-frequency-spectrum",
+      "target_id": "sfx-sdt-impact-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-impact-design",
+      "target_id": "sfx-sdt-ui-sound",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-ui-sound",
+      "target_id": "sfx-sdt-feedback-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-feedback-loop",
+      "target_id": "sfx-sdt-audio-branding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-audio-branding",
+      "target_id": "sfx-sdt-procedural-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-procedural-audio",
+      "target_id": "sfx-sdt-synthesis-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-synthesis-basics",
+      "target_id": "sfx-sdt-sampling-technique",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-sampling-technique",
+      "target_id": "sfx-sdt-transient-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-transient-design",
+      "target_id": "sfx-sdt-pitch-variation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-pitch-variation",
+      "target_id": "sfx-sdt-sound-storytelling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-sound-storytelling",
+      "target_id": "sfx-sdt-reference-library",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-foley-basics",
+      "target_id": "sfx-fr-footsteps",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-footsteps",
+      "target_id": "sfx-fr-cloth-movement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-cloth-movement",
+      "target_id": "sfx-fr-prop-handling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-prop-handling",
+      "target_id": "sfx-fr-microphone-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-microphone-selection",
+      "target_id": "sfx-fr-recording-environment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-recording-environment",
+      "target_id": "sfx-fr-contact-mic",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-contact-mic",
+      "target_id": "sfx-fr-field-recording",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-field-recording",
+      "target_id": "sfx-fr-recording-chain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-recording-chain",
+      "target_id": "sfx-fr-editing-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-editing-workflow",
+      "target_id": "sfx-fr-noise-reduction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-noise-reduction",
+      "target_id": "sfx-fr-sound-library-build",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-sound-library-build",
+      "target_id": "sfx-fr-metadata-tagging",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-metadata-tagging",
+      "target_id": "sfx-fr-destructive-recording",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-destructive-recording",
+      "target_id": "sfx-fr-water-sounds",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-water-sounds",
+      "target_id": "sfx-fr-vehicle-recording",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-vehicle-recording",
+      "target_id": "sfx-fr-creature-voice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-creature-voice",
+      "target_id": "sfx-fr-impact-recording",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-impact-recording",
+      "target_id": "sfx-fr-ambience-capture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-fr-ambience-capture",
+      "target_id": "sfx-fr-session-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-wwise-overview",
+      "target_id": "sfx-am-fmod-overview",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-fmod-overview",
+      "target_id": "sfx-am-event-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-event-system",
+      "target_id": "sfx-am-rtpc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-rtpc",
+      "target_id": "sfx-am-switch-state",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-switch-state",
+      "target_id": "sfx-am-soundbank",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-soundbank",
+      "target_id": "sfx-am-bus-routing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-bus-routing",
+      "target_id": "sfx-am-profiler",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-profiler",
+      "target_id": "sfx-am-game-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-game-integration",
+      "target_id": "sfx-am-interactive-music",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-interactive-music",
+      "target_id": "sfx-am-random-container",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-random-container",
+      "target_id": "sfx-am-sequence-container",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-sequence-container",
+      "target_id": "sfx-am-blend-container",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-blend-container",
+      "target_id": "sfx-am-attenuation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-attenuation",
+      "target_id": "sfx-am-obstruction-occlusion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-obstruction-occlusion",
+      "target_id": "sfx-am-aux-send",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-aux-send",
+      "target_id": "sfx-am-dialogue-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-dialogue-system",
+      "target_id": "sfx-am-plugin-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-plugin-development",
+      "target_id": "sfx-am-source-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-am-source-control",
+      "target_id": "sfx-am-batch-processing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-3d-audio-basics",
+      "target_id": "sfx-sa-hrtf",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-hrtf",
+      "target_id": "sfx-sa-binaural-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-binaural-audio",
+      "target_id": "sfx-sa-surround-sound",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-surround-sound",
+      "target_id": "sfx-sa-ambisonics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-ambisonics",
+      "target_id": "sfx-sa-distance-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-distance-model",
+      "target_id": "sfx-sa-doppler-effect",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-doppler-effect",
+      "target_id": "sfx-sa-room-acoustics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-room-acoustics",
+      "target_id": "sfx-sa-reverb-zone",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-reverb-zone",
+      "target_id": "sfx-sa-sound-propagation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-sound-propagation",
+      "target_id": "sfx-sa-occlusion-geometry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-occlusion-geometry",
+      "target_id": "sfx-sa-portal-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-portal-system",
+      "target_id": "sfx-sa-listener-position",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-listener-position",
+      "target_id": "sfx-sa-speaker-panning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-speaker-panning",
+      "target_id": "sfx-sa-spatial-plugin",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-spatial-plugin",
+      "target_id": "sfx-sa-vr-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-vr-audio",
+      "target_id": "sfx-sa-height-channel",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-height-channel",
+      "target_id": "sfx-sa-outdoor-acoustics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-outdoor-acoustics",
+      "target_id": "sfx-sa-underwater-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sa-underwater-audio",
+      "target_id": "sfx-sa-directivity-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-reverb-types",
+      "target_id": "sfx-dsp-convolution-reverb",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-convolution-reverb",
+      "target_id": "sfx-dsp-eq-filtering",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-eq-filtering",
+      "target_id": "sfx-dsp-compression",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-compression",
+      "target_id": "sfx-dsp-distortion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-distortion",
+      "target_id": "sfx-dsp-delay-echo",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-delay-echo",
+      "target_id": "sfx-dsp-chorus-flanger",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-chorus-flanger",
+      "target_id": "sfx-dsp-pitch-shifting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-pitch-shifting",
+      "target_id": "sfx-dsp-granular-processing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-granular-processing",
+      "target_id": "sfx-dsp-sidechain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-sidechain",
+      "target_id": "sfx-dsp-noise-gate",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-noise-gate",
+      "target_id": "sfx-dsp-vocoder",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-vocoder",
+      "target_id": "sfx-dsp-spectral-processing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-spectral-processing",
+      "target_id": "sfx-dsp-transient-shaper",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-transient-shaper",
+      "target_id": "sfx-dsp-multiband",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-multiband",
+      "target_id": "sfx-dsp-limiter-maximizer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-limiter-maximizer",
+      "target_id": "sfx-dsp-effect-chain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-effect-chain",
+      "target_id": "sfx-dsp-parallel-processing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-parallel-processing",
+      "target_id": "sfx-dsp-automation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-automation",
+      "target_id": "sfx-dsp-custom-dsp",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-audio-formats",
+      "target_id": "sfx-aam-compression-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-compression-strategy",
+      "target_id": "sfx-aam-memory-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-memory-budget",
+      "target_id": "sfx-aam-streaming-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-streaming-audio",
+      "target_id": "sfx-aam-naming-convention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-naming-convention",
+      "target_id": "sfx-aam-asset-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-asset-pipeline",
+      "target_id": "sfx-aam-version-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-version-control",
+      "target_id": "sfx-aam-sample-rate",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-sample-rate",
+      "target_id": "sfx-aam-bit-depth",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-bit-depth",
+      "target_id": "sfx-aam-batch-conversion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-batch-conversion",
+      "target_id": "sfx-aam-asset-database",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-asset-database",
+      "target_id": "sfx-aam-localization-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-localization-audio",
+      "target_id": "sfx-aam-redundancy-check",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-redundancy-check",
+      "target_id": "sfx-aam-quality-tiers",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-quality-tiers",
+      "target_id": "sfx-aam-dynamic-loading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-dynamic-loading",
+      "target_id": "sfx-aam-soundbank-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-soundbank-strategy",
+      "target_id": "sfx-aam-backup-archival",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-backup-archival",
+      "target_id": "sfx-aam-delivery-spec",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-delivery-spec",
+      "target_id": "sfx-aam-platform-specific",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-platform-specific",
+      "target_id": "sfx-aam-documentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-voice-recording",
+      "target_id": "sfx-dp-dialogue-editing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-dialogue-editing",
+      "target_id": "sfx-dp-tts-synthesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-tts-synthesis",
+      "target_id": "sfx-dp-lip-sync",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-lip-sync",
+      "target_id": "sfx-dp-voice-direction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-voice-direction",
+      "target_id": "sfx-dp-casting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-casting",
+      "target_id": "sfx-dp-processing-chain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-processing-chain",
+      "target_id": "sfx-dp-emotion-variation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-emotion-variation",
+      "target_id": "sfx-dp-radio-comm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-radio-comm",
+      "target_id": "sfx-dp-crowd-walla",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-crowd-walla",
+      "target_id": "sfx-dp-barks-efforts",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-barks-efforts",
+      "target_id": "sfx-dp-localization-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-localization-pipeline",
+      "target_id": "sfx-dp-interactive-dialogue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-interactive-dialogue",
+      "target_id": "sfx-dp-subtitles-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-subtitles-integration",
+      "target_id": "sfx-dp-noise-floor",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-noise-floor",
+      "target_id": "sfx-dp-de-esser",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-de-esser",
+      "target_id": "sfx-dp-breath-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-breath-control",
+      "target_id": "sfx-dp-voice-aging",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-voice-aging",
+      "target_id": "sfx-dp-alien-voice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dp-alien-voice",
+      "target_id": "sfx-dp-dialogue-priority",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-ambience-layers",
+      "target_id": "sfx-as-weather-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-weather-system",
+      "target_id": "sfx-as-biome-soundscape",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-biome-soundscape",
+      "target_id": "sfx-as-day-night-cycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-day-night-cycle",
+      "target_id": "sfx-as-crowd-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-crowd-system",
+      "target_id": "sfx-as-random-emitter",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-random-emitter",
+      "target_id": "sfx-as-dynamic-mix",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-dynamic-mix",
+      "target_id": "sfx-as-music-ambient-blend",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-music-ambient-blend",
+      "target_id": "sfx-as-interior-exterior",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-interior-exterior",
+      "target_id": "sfx-as-zone-based",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-zone-based",
+      "target_id": "sfx-as-interactive-ambient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-interactive-ambient",
+      "target_id": "sfx-as-wind-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-wind-system",
+      "target_id": "sfx-as-water-ambient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-water-ambient",
+      "target_id": "sfx-as-wildlife-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-wildlife-audio",
+      "target_id": "sfx-as-industrial-ambient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-industrial-ambient",
+      "target_id": "sfx-as-horror-ambient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-horror-ambient",
+      "target_id": "sfx-as-sci-fi-ambient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-sci-fi-ambient",
+      "target_id": "sfx-as-silence-technique",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-silence-technique",
+      "target_id": "sfx-as-procedural-ambient",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-as-procedural-ambient",
+      "target_id": "sfx-as-lfe-rumble",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-voice-limit",
+      "target_id": "sfx-ao-priority-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-priority-system",
+      "target_id": "sfx-ao-virtualization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-virtualization",
+      "target_id": "sfx-ao-lod-audio",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-lod-audio",
+      "target_id": "sfx-ao-cpu-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-cpu-profiling",
+      "target_id": "sfx-ao-memory-profiling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-memory-profiling",
+      "target_id": "sfx-ao-platform-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-platform-budget",
+      "target_id": "sfx-ao-decode-cost",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-decode-cost",
+      "target_id": "sfx-ao-streaming-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-streaming-strategy",
+      "target_id": "sfx-ao-sample-pooling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-sample-pooling",
+      "target_id": "sfx-ao-effect-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-effect-budget",
+      "target_id": "sfx-ao-occlusion-cost",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-occlusion-cost",
+      "target_id": "sfx-ao-batch-operation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-batch-operation",
+      "target_id": "sfx-ao-mobile-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-mobile-optimization",
+      "target_id": "sfx-ao-latency-reduction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-latency-reduction",
+      "target_id": "sfx-ao-mix-snapshot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-mix-snapshot",
+      "target_id": "sfx-ao-regression-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-regression-testing",
+      "target_id": "sfx-ao-qa-checklist",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-qa-checklist",
+      "target_id": "sfx-ao-platform-certification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-ao-platform-certification",
+      "target_id": "sfx-ao-final-mix",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-sdt-layering",
+      "target_id": "sfx-fr-foley-basics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sfx-sdt-procedural-audio",
+      "target_id": "sfx-am-wwise-overview",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sfx-fr-microphone-selection",
+      "target_id": "sfx-fr-recording-chain",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sfx-am-event-system",
+      "target_id": "sfx-sa-3d-audio-basics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sfx-am-attenuation",
+      "target_id": "sfx-sa-distance-model",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sfx-am-obstruction-occlusion",
+      "target_id": "sfx-sa-occlusion-geometry",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-dsp-reverb-types",
+      "target_id": "sfx-sa-room-acoustics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sfx-dsp-convolution-reverb",
+      "target_id": "sfx-sa-reverb-zone",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sfx-dsp-eq-filtering",
+      "target_id": "sfx-dp-processing-chain",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sfx-aam-audio-formats",
+      "target_id": "sfx-aam-compression-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "sfx-aam-memory-budget",
+      "target_id": "sfx-ao-memory-profiling",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sfx-aam-streaming-audio",
+      "target_id": "sfx-ao-streaming-strategy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sfx-dp-voice-recording",
+      "target_id": "sfx-fr-microphone-selection",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sfx-dp-dialogue-editing",
+      "target_id": "sfx-dsp-eq-filtering",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "sfx-as-ambience-layers",
+      "target_id": "sfx-am-random-container",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sfx-as-weather-system",
+      "target_id": "sfx-as-random-emitter",
+      "relation_type": "prerequisite",
+      "strength": 0.7
+    },
+    {
+      "source_id": "sfx-ao-voice-limit",
+      "target_id": "sfx-am-profiler",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "sfx-ao-priority-system",
+      "target_id": "sfx-am-bus-routing",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "sfx-sdt-synthesis-basics",
+      "target_id": "sfx-dsp-granular-processing",
+      "relation_type": "related",
+      "strength": 0.6
+    }
+  ],
+  "milestones": [
+    {
+      "concept_id": "sfx-sdt-emotional-design",
+      "name": "声音情感设计",
+      "description": "掌握声音情感设计的核心理论与实践方法",
+      "order": 1
+    },
+    {
+      "concept_id": "sfx-sdt-impact-design",
+      "name": "打击感音效设计",
+      "description": "掌握打击感音效设计的核心理论与实践方法",
+      "order": 2
+    },
+    {
+      "concept_id": "sfx-sdt-pitch-variation",
+      "name": "音高变化技术",
+      "description": "掌握音高变化技术的核心理论与实践方法",
+      "order": 3
+    },
+    {
+      "concept_id": "sfx-fr-cloth-movement",
+      "name": "布料运动音",
+      "description": "掌握布料运动音的核心理论与实践方法",
+      "order": 4
+    },
+    {
+      "concept_id": "sfx-fr-editing-workflow",
+      "name": "音频编辑工作流",
+      "description": "掌握音频编辑工作流的核心理论与实践方法",
+      "order": 5
+    },
+    {
+      "concept_id": "sfx-fr-impact-recording",
+      "name": "撞击音录制",
+      "description": "掌握撞击音录制的核心理论与实践方法",
+      "order": 6
+    },
+    {
+      "concept_id": "sfx-am-event-system",
+      "name": "事件系统",
+      "description": "掌握事件系统的核心理论与实践方法",
+      "order": 7
+    },
+    {
+      "concept_id": "sfx-am-interactive-music",
+      "name": "交互音乐集成",
+      "description": "掌握交互音乐集成的核心理论与实践方法",
+      "order": 8
+    },
+    {
+      "concept_id": "sfx-am-plugin-development",
+      "name": "插件开发",
+      "description": "掌握插件开发的核心理论与实践方法",
+      "order": 9
+    },
+    {
+      "concept_id": "sfx-sa-binaural-audio",
+      "name": "双耳音频",
+      "description": "掌握双耳音频的核心理论与实践方法",
+      "order": 10
+    },
+    {
+      "concept_id": "sfx-sa-sound-propagation",
+      "name": "声音传播",
+      "description": "掌握声音传播的核心理论与实践方法",
+      "order": 11
+    },
+    {
+      "concept_id": "sfx-sa-outdoor-acoustics",
+      "name": "室外声学",
+      "description": "掌握室外声学的核心理论与实践方法",
+      "order": 12
+    },
+    {
+      "concept_id": "sfx-dsp-eq-filtering",
+      "name": "EQ均衡与滤波",
+      "description": "掌握EQ均衡与滤波的核心理论与实践方法",
+      "order": 13
+    },
+    {
+      "concept_id": "sfx-dsp-sidechain",
+      "name": "侧链处理",
+      "description": "掌握侧链处理的核心理论与实践方法",
+      "order": 14
+    },
+    {
+      "concept_id": "sfx-dsp-parallel-processing",
+      "name": "并行处理",
+      "description": "掌握并行处理的核心理论与实践方法",
+      "order": 15
+    },
+    {
+      "concept_id": "sfx-aam-memory-budget",
+      "name": "内存预算",
+      "description": "掌握内存预算的核心理论与实践方法",
+      "order": 16
+    },
+    {
+      "concept_id": "sfx-aam-batch-conversion",
+      "name": "批量转换",
+      "description": "掌握批量转换的核心理论与实践方法",
+      "order": 17
+    },
+    {
+      "concept_id": "sfx-aam-delivery-spec",
+      "name": "交付规格",
+      "description": "掌握交付规格的核心理论与实践方法",
+      "order": 18
+    },
+    {
+      "concept_id": "sfx-dp-tts-synthesis",
+      "name": "语音合成(TTS)",
+      "description": "掌握语音合成(TTS)的核心理论与实践方法",
+      "order": 19
+    },
+    {
+      "concept_id": "sfx-dp-crowd-walla",
+      "name": "人群底噪",
+      "description": "掌握人群底噪的核心理论与实践方法",
+      "order": 20
+    },
+    {
+      "concept_id": "sfx-dp-voice-aging",
+      "name": "声音老化处理",
+      "description": "掌握声音老化处理的核心理论与实践方法",
+      "order": 21
+    },
+    {
+      "concept_id": "sfx-as-biome-soundscape",
+      "name": "生态音景",
+      "description": "掌握生态音景的核心理论与实践方法",
+      "order": 22
+    },
+    {
+      "concept_id": "sfx-as-zone-based",
+      "name": "区域音效",
+      "description": "掌握区域音效的核心理论与实践方法",
+      "order": 23
+    },
+    {
+      "concept_id": "sfx-as-silence-technique",
+      "name": "静默技巧",
+      "description": "掌握静默技巧的核心理论与实践方法",
+      "order": 24
+    },
+    {
+      "concept_id": "sfx-ao-virtualization",
+      "name": "声音虚拟化",
+      "description": "掌握声音虚拟化的核心理论与实践方法",
+      "order": 25
+    },
+    {
+      "concept_id": "sfx-ao-sample-pooling",
+      "name": "采样池化",
+      "description": "掌握采样池化的核心理论与实践方法",
+      "order": 26
+    },
+    {
+      "concept_id": "sfx-ao-qa-checklist",
+      "name": "QA检查表",
+      "description": "掌握QA检查表的核心理论与实践方法",
+      "order": 27
+    }
+  ]
+}

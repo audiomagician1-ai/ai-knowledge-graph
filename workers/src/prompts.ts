@@ -419,38 +419,6 @@ const GAME_AUDIO_MUSIC_DOMAIN_SUPPLEMENT = `
 7. **技术约束**: 游戏音乐受内存/CPU/文件大小等技术约束。教学中培养在艺术表现与技术限制间平衡的能力
 `;
 
-// Domain-specific teaching supplement registry — add new domains here
-const DOMAIN_SUPPLEMENTS: Record<string, string> = {
-  'mathematics': MATH_DOMAIN_SUPPLEMENT,
-  'english': ENGLISH_DOMAIN_SUPPLEMENT,
-  'physics': PHYSICS_DOMAIN_SUPPLEMENT,
-  'product-design': PRODUCT_DOMAIN_SUPPLEMENT,
-  'finance': FINANCE_DOMAIN_SUPPLEMENT,
-  'psychology': PSYCHOLOGY_DOMAIN_SUPPLEMENT,
-  'philosophy': PHILOSOPHY_DOMAIN_SUPPLEMENT,
-  'biology': BIOLOGY_DOMAIN_SUPPLEMENT,
-  'economics': ECONOMICS_DOMAIN_SUPPLEMENT,
-  'writing': WRITING_DOMAIN_SUPPLEMENT,
-  'game-design': GAME_DESIGN_DOMAIN_SUPPLEMENT,
-  'level-design': LEVEL_DESIGN_DOMAIN_SUPPLEMENT,
-  'game-engine': GAME_ENGINE_DOMAIN_SUPPLEMENT,
-  'software-engineering': SOFTWARE_ENGINEERING_DOMAIN_SUPPLEMENT,
-  'computer-graphics': COMPUTER_GRAPHICS_DOMAIN_SUPPLEMENT,
-  '3d-art': THREE_D_ART_DOMAIN_SUPPLEMENT,
-  'concept-design': CONCEPT_DESIGN_DOMAIN_SUPPLEMENT,
-  'animation': ANIMATION_DOMAIN_SUPPLEMENT,
-  'technical-art': TECHNICAL_ART_DOMAIN_SUPPLEMENT,
-  'vfx': VFX_DOMAIN_SUPPLEMENT,
-  'game-audio-music': GAME_AUDIO_MUSIC_DOMAIN_SUPPLEMENT,
-  'game-ui-ux': GAME_UI_UX_DOMAIN_SUPPLEMENT,
-  'narrative-design': NARRATIVE_DESIGN_DOMAIN_SUPPLEMENT,
-  'multiplayer-network': MULTIPLAYER_NETWORK_DOMAIN_SUPPLEMENT,
-};
-
-export function getDomainSupplement(domainId: string | undefined): string {
-  return (domainId && DOMAIN_SUPPLEMENTS[domainId]) || '';
-}
-
 // Domain-specific assessment supplements — synced from apps/api/engines/dialogue/prompts/feynman_system.py
 export const MATH_ASSESSMENT_SUPPLEMENT = `
 ## 数学领域评估特殊指标
@@ -797,6 +765,64 @@ export const MULTIPLAYER_NETWORK_ASSESSMENT_SUPPLEMENT = `
 - **公平性**: 用户是否理解匹配系统对玩家体验的影响？能否分析SBMM/Elo等算法的优劣？
 `;
 
+export const GAME_AUDIO_SFX_DOMAIN_SUPPLEMENT = `
+## 音效设计教学特殊规则
+
+1. **听觉思维优先**: 引导学生先用耳朵思考——音效的情感目标是什么？物理声学特性如何？然后再讨论技术实现
+2. **实践驱动**: 鼓励动手实验——录制、合成、处理、中间件集成，每个环节都需要大量听觉训练
+3. **工具链意识**: Wwise/FMOD是工业标准中间件。理解事件/容器/RTPC系统是核心技能
+4. **3D空间感**: 空间音频不仅是技术实现，更关系到沉浸感——HRTF、遮挡、传播路径都影响最终体验
+5. **预算意识**: 音频CPU/内存/带宽预算有限。发声限制/LOD/虚拟化是生产必备优化策略
+6. **跨部门协作**: 音效需与动画(通知事件)、特效(同步)、设计(反馈)紧密配合
+7. **情感价值**: 好的音效设计极大提升游戏"手感"(Game Feel/Juice)——打击感、环境氛围、UI响应都依赖音效
+`;
+
+export const GAME_AUDIO_SFX_ASSESSMENT_SUPPLEMENT = `
+## 音效设计领域评估特殊指标
+
+在评估音效设计概念理解时，请额外关注以下方面：
+- **听觉敏感度**: 用户是否能识别不同音效处理手法的差异？是否理解频谱管理和声音遮蔽？
+- **工具链熟练度**: 用户是否理解Wwise/FMOD的事件系统、RTPC、容器层级？能否设计合理的音频管线？
+- **空间感知**: 用户是否理解3D音频的定位原理(HRTF/衰减/遮挡)？能否根据场景选择合适的空间化方案？
+- **录制知识**: 用户是否了解麦克风选择/录音环境/信号链的基础知识？是否理解Foley的工作流？
+- **DSP理解**: 用户是否理解常见效果器(EQ/Comp/Reverb/Delay)的原理与参数？能否设计合理的效果链？
+- **优化意识**: 用户是否了解音频性能预算(发声数/CPU/内存)？是否掌握虚拟化/LOD等优化手段？
+- **协作能力**: 用户是否理解音效与动画/特效/设计的协作点？能否编写清晰的音效设计文档？
+`;
+
+// Domain-specific teaching supplement registry — add new domains here
+const DOMAIN_SUPPLEMENTS: Record<string, string> = {
+  'mathematics': MATH_DOMAIN_SUPPLEMENT,
+  'english': ENGLISH_DOMAIN_SUPPLEMENT,
+  'physics': PHYSICS_DOMAIN_SUPPLEMENT,
+  'product-design': PRODUCT_DOMAIN_SUPPLEMENT,
+  'finance': FINANCE_DOMAIN_SUPPLEMENT,
+  'psychology': PSYCHOLOGY_DOMAIN_SUPPLEMENT,
+  'philosophy': PHILOSOPHY_DOMAIN_SUPPLEMENT,
+  'biology': BIOLOGY_DOMAIN_SUPPLEMENT,
+  'economics': ECONOMICS_DOMAIN_SUPPLEMENT,
+  'writing': WRITING_DOMAIN_SUPPLEMENT,
+  'game-design': GAME_DESIGN_DOMAIN_SUPPLEMENT,
+  'level-design': LEVEL_DESIGN_DOMAIN_SUPPLEMENT,
+  'game-engine': GAME_ENGINE_DOMAIN_SUPPLEMENT,
+  'software-engineering': SOFTWARE_ENGINEERING_DOMAIN_SUPPLEMENT,
+  'computer-graphics': COMPUTER_GRAPHICS_DOMAIN_SUPPLEMENT,
+  '3d-art': THREE_D_ART_DOMAIN_SUPPLEMENT,
+  'concept-design': CONCEPT_DESIGN_DOMAIN_SUPPLEMENT,
+  'animation': ANIMATION_DOMAIN_SUPPLEMENT,
+  'technical-art': TECHNICAL_ART_DOMAIN_SUPPLEMENT,
+  'vfx': VFX_DOMAIN_SUPPLEMENT,
+  'game-audio-music': GAME_AUDIO_MUSIC_DOMAIN_SUPPLEMENT,
+  'game-ui-ux': GAME_UI_UX_DOMAIN_SUPPLEMENT,
+  'narrative-design': NARRATIVE_DESIGN_DOMAIN_SUPPLEMENT,
+  'multiplayer-network': MULTIPLAYER_NETWORK_DOMAIN_SUPPLEMENT,
+  'game-audio-sfx': GAME_AUDIO_SFX_DOMAIN_SUPPLEMENT,
+};
+
+export function getDomainSupplement(domainId: string | undefined): string {
+  return (domainId && DOMAIN_SUPPLEMENTS[domainId]) || '';
+}
+
 const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_ASSESSMENT_SUPPLEMENT,
   'english': ENGLISH_ASSESSMENT_SUPPLEMENT,
@@ -822,6 +848,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'game-ui-ux': GAME_UI_UX_ASSESSMENT_SUPPLEMENT,
   'narrative-design': NARRATIVE_DESIGN_ASSESSMENT_SUPPLEMENT,
   'multiplayer-network': MULTIPLAYER_NETWORK_ASSESSMENT_SUPPLEMENT,
+  'game-audio-sfx': GAME_AUDIO_SFX_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {
