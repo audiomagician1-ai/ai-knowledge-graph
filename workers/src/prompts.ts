@@ -946,3 +946,37 @@ export function formatPrompt(template: string, vars: Record<string, string>): st
   }
   return result;
 }
+
+/** Parse ```choices JSON block from LLM response content.
+ *  Synced from packages/web/src/lib/direct-llm.ts parseChoicesFromContent */
+export function parseChoicesFromContent(text: string): {
+  content: string;
+  choices: Array<{ id: string; text: string; type: string }>;
+} {
+  if (!text) return { content: '', choices: [] };
+
+  const choicesPattern = /```choices\s*\n([\s\S]*?)```/;
+  const match = text.match(choicesPattern);
+
+  if (match) {
+    const choicesJson = match[1].trim();
+    const content = text.slice(0, match.index).trim();
+    try {
+      const parsed = JSON.parse(choicesJson);
+      if (Array.isArray(parsed) && parsed.length >= 2) {
+        const valid = parsed
+          .filter((c: any) => c && typeof c.text === 'string' && c.text.trim())
+          .slice(0, 4)
+          .map((c: any, i: number) => ({
+            id: c.id || `opt-${i + 1}`,
+            text: String(c.text).slice(0, 60),
+            type: ['explore', 'answer', 'action', 'level'].includes(c.type) ? c.type : 'explore',
+          }));
+        if (valid.length >= 2) return { content, choices: valid };
+      }
+    } catch { /* fallback to no choices */ }
+    return { content, choices: [] };
+  }
+
+  return { content: text.trim(), choices: [] };
+}

@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import type { Env, UserLLMConfig } from '../types';
 import { llmChat, llmChatStream } from '../llm';
-import { FEYNMAN_SYSTEM_PROMPT, GRAPH_CONTEXT_TEMPLATE, ASSESSMENT_SYSTEM_PROMPT, formatPrompt, getAssessmentSupplement, getDomainSupplement } from '../prompts';
+import { FEYNMAN_SYSTEM_PROMPT, GRAPH_CONTEXT_TEMPLATE, ASSESSMENT_SYSTEM_PROMPT, formatPrompt, getAssessmentSupplement, getDomainSupplement, parseChoicesFromContent } from '../prompts';
 // Multi-domain seed data imports
 import seedAI from '../../data/seed/ai-engineering/seed_graph.json';
 import seedMath from '../../data/seed/mathematics/seed_graph.json';
@@ -126,17 +126,21 @@ function buildSystemPrompt(concept: any): string {
   });
 }
 
-function getOpening(concept: any): string {
+/** Fallback opening when LLM is unavailable (matches FastAPI socratic.py and direct-llm.ts) */
+function getFallbackOpening(concept: any): { text: string; choices: Array<{ id: string; text: string; type: string }> } {
   const name = concept.name;
-  const diff = concept.difficulty || 5;
-  // Domain-neutral openings — matches BE (socratic.py) and FE (direct-llm.ts) fallback style.
-  // Round 78 fix: removed CS-specific wording from low-difficulty opening.
-  if (diff <= 3) return `嗨！👋 我听说${name}是很基础但很重要的概念。不过我还不太理解它到底是什么意思。你能用最简单的话给我解释一下吗？`;
-  if (diff <= 6) return `嗨！🤔 我最近在学习${name}，感觉挺有意思但又有点复杂。你对这个概念了解多少？能试着用最直白的方式给我讲讲吗？`;
-  return `嗨！🧐 ${name}这个话题看起来挺深的，我之前一直没搞明白。听说你对这方面有研究，能帮我从头捋一下吗？先从最核心的概念开始？`;
+  return {
+    text: `👋 今天我们一起来探索「${name}」！\n\n这是一个很有意思的概念，让我先简单介绍一下，然后我们一步步深入。\n\n你之前对 ${name} 有了解吗？`,
+    choices: [
+      { id: 'opt-1', text: '完全没听说过', type: 'level' },
+      { id: 'opt-2', text: '听过但说不太清楚', type: 'level' },
+      { id: 'opt-3', text: '有一些了解，想深入', type: 'level' },
+      { id: 'opt-4', text: '比较熟悉，直接进阶', type: 'level' },
+    ],
+  };
 }
 
-/** POST /dialogue/conversations — create new conversation */
+/** POST /dialogue/conversations — create new conversation (V2: LLM opening + choices) */
 app.post('/conversations', async (c) => {
   const { concept_id } = await c.req.json<{ concept_id: string }>();
   if (!concept_id || concept_id.length > 200) return c.json({ detail: 'Invalid concept_id' }, 422);
@@ -145,20 +149,52 @@ app.post('/conversations', async (c) => {
 
   const convId = crypto.randomUUID();
   const systemPrompt = buildSystemPrompt(concept);
-  const opening = getOpening(concept);
   const db = c.env.DB;
   const now = Date.now() / 1000;
+
+  // V2: Try LLM-generated opening with choices
+  let openingText = '';
+  let openingChoices: Array<{ id: string; text: string; type: string }> | null = null;
+  const userConfig = extractLLMConfig(c);
+  const hasServerKey = !!(c.env.OPENROUTER_API_KEY || c.env.OPENAI_API_KEY || c.env.DEEPSEEK_API_KEY);
+
+  if (userConfig || hasServerKey) {
+    try {
+      const raw = await llmChat(c.env, {
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: `开始学习「${concept.name}」` },
+        ],
+        temperature: 0.8,
+        max_tokens: 600,
+      }, userConfig, 'dialogue');
+
+      const parsed = parseChoicesFromContent(raw);
+      openingText = parsed.content;
+      openingChoices = parsed.choices.length >= 2 ? parsed.choices : null;
+    } catch {
+      // Fallback on LLM failure
+    }
+  }
+
+  // Fallback if LLM failed or no key
+  if (!openingText) {
+    const fallback = getFallbackOpening(concept);
+    openingText = fallback.text;
+    openingChoices = fallback.choices;
+  }
 
   await db.prepare('INSERT INTO conversations (id, concept_id, concept_name, system_prompt, is_milestone, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)')
     .bind(convId, concept_id, concept.name, systemPrompt, concept.is_milestone ? 1 : 0, now, now).run();
   await db.prepare('INSERT INTO messages (conversation_id, role, content, created_at) VALUES (?, ?, ?, ?)')
-    .bind(convId, 'assistant', opening, now).run();
+    .bind(convId, 'assistant', openingText, now).run();
 
   return c.json({
     conversation_id: convId,
     concept_id,
     concept_name: concept.name,
-    opening_message: opening,
+    opening_message: openingText,
+    opening_choices: openingChoices,
     is_milestone: concept.is_milestone || false,
   });
 });
@@ -219,6 +255,7 @@ app.post('/chat', async (c) => {
   // We need to intercept the stream to save the full response
   const encoder = new TextEncoder();
   let fullResponse = '';
+  let choicesSent = false;
   const transformedStream = new ReadableStream({
     async start(controller) {
       const reader = stream.getReader();
@@ -259,18 +296,42 @@ app.post('/chat', async (c) => {
                 } catch { /* pass */ }
               }
             }
+
+            // V2: Parse choices from full response before sending done
+            const parsed = parseChoicesFromContent(fullResponse);
+            if (parsed.choices.length >= 2) {
+              controller.enqueue(encoder.encode(
+                `data: ${JSON.stringify({ type: 'choices', choices: parsed.choices })}\n\n`
+              ));
+            }
+
             controller.enqueue(encoder.encode(
               `data: ${JSON.stringify({ type: 'done', suggest_assess: userTurns >= 4, turn: userTurns })}\n\n`
             ));
+            choicesSent = true;
           } else {
             controller.enqueue(value);
           }
         }
+
+        // V2: If choices weren't sent yet (no hasDoneEvent in any chunk), send them now
+        if (!choicesSent && fullResponse) {
+          const parsed = parseChoicesFromContent(fullResponse);
+          if (parsed.choices.length >= 2) {
+            controller.enqueue(encoder.encode(
+              `data: ${JSON.stringify({ type: 'choices', choices: parsed.choices })}\n\n`
+            ));
+          }
+          controller.enqueue(encoder.encode(
+            `data: ${JSON.stringify({ type: 'done', suggest_assess: userTurns >= 4, turn: userTurns })}\n\n`
+          ));
+        }
       } finally {
-        // Save assistant response to DB
+        // Save assistant response to DB — store clean content (without choices block)
         if (fullResponse) {
+          const cleanContent = parseChoicesFromContent(fullResponse).content || fullResponse;
           await db.prepare('INSERT INTO messages (conversation_id, role, content, created_at) VALUES (?, ?, ?, ?)')
-            .bind(conversation_id, 'assistant', fullResponse, Date.now() / 1000).run();
+            .bind(conversation_id, 'assistant', cleanContent, Date.now() / 1000).run();
         }
         controller.close();
       }
