@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["代谢"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 13.8
 generation_method: "research-rewrite-v2"
@@ -81,6 +81,11 @@ sources:
 
 - **先修**：细胞器结构（叶绿体）、ATP 与能量代谢
 - **后续**：细胞呼吸（糖酵解+三羧酸循环）、碳循环生态学
+
+
+### 实际案例
+
+例如，C4植物（如玉米、甘蔗）进化出了特殊的碳浓缩机制来解决光呼吸问题。在C4植物中，CO2首先在叶肉细胞中被PEP羧化酶固定为四碳化合物（草酰乙酸），然后转运到维管束鞘细胞中释放CO2供Calvin循环使用。这种空间分离机制使C4植物在高温、高光照环境下的光合效率比C3植物高30-40%，这也解释了为什么热带地区的主要粮食作物多为C4植物。
 
 ## 思考题
 

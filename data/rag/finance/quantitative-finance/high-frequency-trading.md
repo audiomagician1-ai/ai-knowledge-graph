@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["高级"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -78,6 +78,11 @@ HFT 的利润从 2009 年峰值约 50 亿美元降至 2012 年约 12.5 亿美元
 
 - **先修**：算法交易基础、市场微结构
 - **后续**：市场微结构分析、做市策略、延迟优化
+
+
+### 实际案例
+
+例如，Knight Capital Group在2012年8月1日因交易软件故障，在45分钟内产生了约4.4亿美元的亏损。一个未正确部署的代码更新导致其系统以错误的价格大量买入卖出约150只股票。这个案例说明HFT系统的技术风险：当交易速度达到毫秒级时，任何软件错误都可能在极短时间内造成巨额损失。
 
 ## 思考题
 

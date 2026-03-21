@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["工具"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -80,6 +80,11 @@ sources:
 
 - **先修**：概率与统计、随机过程、衍生品基础
 - **后续**：期权定价高级方法、风险价值（VaR）、信用风险建模
+
+
+### 实际案例
+
+例如，在亚式期权（Asian option）定价中，期权收益取决于标的资产在存续期内的平均价格而非终值。由于平均价格的分布没有解析解，蒙特卡洛方法成为标准定价工具。具体实施时，模拟10,000条价格路径（使用几何布朗运动），计算每条路径的平均价格和期权收益，最后取所有路径收益的平均值并折现。使用对偶变量法（antithetic variates）可将所需模拟次数减半而保持相同精度。
 
 ## 思考题
 

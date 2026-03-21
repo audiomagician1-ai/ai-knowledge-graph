@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["衍生品"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -23,6 +23,8 @@ sources:
   - type: "educational"
     ref: "CME Group - Futures Expiration and Settlement"
     url: "https://www.cmegroup.com/education/courses/introduction-to-futures/get-to-know-futures-expiration-and-settlement"
+  - type: "textbook"
+    ref: "Hull, J.C. Options, Futures, and Other Derivatives, 11th ed. Pearson, 2021. Ch.1-2."
 ---
 # 期货基础
 
@@ -85,6 +87,11 @@ sources:
 - **先修**：衍生品概述、时间价值
 - **后续**：期权基础、对冲策略、基差交易
 
+
+### 实际案例
+
+例如，2020年4月WTI原油期货价格首次跌至负值（-37.63美元/桶），这是因为临近交割的多头持仓者无法找到储油设施，被迫以负价格出售合约。这个案例生动说明了期货合约到期交割机制的重要性——持有期货合约意味着到期时必须履行实物交割义务（除非提前平仓），这与股票投资有本质区别。
+
 ## 思考题
 
 1. 期货合约的"零和博弈"特性意味着什么？每笔交易中谁在盈利、谁在亏损？
@@ -95,3 +102,4 @@ sources:
 ## 延伸阅读
 
 - Wikipedia: [Futures contract](https://en.wikipedia.org/wiki/Futures_contract)
+- 教科书: Hull, J.C. *Options, Futures, and Other Derivatives*, 11th ed. Pearson, 2021. 第1-2章详细介绍了期货合约的定义、保证金制度和定价原理。

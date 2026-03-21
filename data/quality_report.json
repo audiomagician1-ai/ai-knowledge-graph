@@ -1,11 +1,11 @@
 {
-  "_generated": "2026-03-21T23:50:55.220880",
+  "_generated": "2026-03-21T23:54:11.766776",
   "_version": "scorer-v1.0",
   "total_docs": 6156,
   "avg_score": 86.2,
   "tier_distribution": {
-    "S": 6150,
-    "A": 6,
+    "S": 6156,
+    "A": 0,
     "B": 0,
     "C": 0
   },
@@ -49,11 +49,11 @@
     "biology": {
       "count": 169,
       "avg_score": 85.4,
-      "min_score": 78.8,
+      "min_score": 80.5,
       "max_score": 93.3,
       "tiers": {
-        "S": 168,
-        "A": 1,
+        "S": 169,
+        "A": 0,
         "B": 0,
         "C": 0
       }
@@ -108,12 +108,12 @@
     },
     "finance": {
       "count": 161,
-      "avg_score": 85.7,
-      "min_score": 77.1,
+      "avg_score": 85.9,
+      "min_score": 80.8,
       "max_score": 90.6,
       "tiers": {
-        "S": 156,
-        "A": 5,
+        "S": 161,
+        "A": 0,
         "B": 0,
         "C": 0
       }
@@ -445,48 +445,6 @@
   ],
   "top20_worst": [
     {
-      "file": "finance\\risk-management\\futures-basics.md",
-      "concept": "期货基础",
-      "score": 77.1,
-      "tier": "A",
-      "domain": "finance"
-    },
-    {
-      "file": "finance\\quantitative-finance\\high-frequency-trading.md",
-      "concept": "高频交易",
-      "score": 78.3,
-      "tier": "A",
-      "domain": "finance"
-    },
-    {
-      "file": "finance\\quantitative-finance\\statistical-arbitrage.md",
-      "concept": "统计套利",
-      "score": 78.3,
-      "tier": "A",
-      "domain": "finance"
-    },
-    {
-      "file": "finance\\quantitative-finance\\time-series-analysis.md",
-      "concept": "时间序列分析",
-      "score": 78.3,
-      "tier": "A",
-      "domain": "finance"
-    },
-    {
-      "file": "biology\\cell-biology\\photosynthesis.md",
-      "concept": "光合作用",
-      "score": 78.8,
-      "tier": "A",
-      "domain": "biology"
-    },
-    {
-      "file": "finance\\quantitative-finance\\monte-carlo-simulation.md",
-      "concept": "蒙特卡洛模拟",
-      "score": 79.0,
-      "tier": "A",
-      "domain": "finance"
-    },
-    {
       "file": "biology\\cell-biology\\mitosis.md",
       "concept": "有丝分裂",
       "score": 80.5,
@@ -583,6 +541,48 @@
       "score": 81.6,
       "tier": "S",
       "domain": "concept-design"
+    },
+    {
+      "file": "game-design\\difficulty-curve\\casual-difficulty.md",
+      "concept": "休闲难度",
+      "score": 81.6,
+      "tier": "S",
+      "domain": "game-design"
+    },
+    {
+      "file": "game-design\\feedback-systems\\feedback-fatigue.md",
+      "concept": "反馈疲劳",
+      "score": 81.6,
+      "tier": "S",
+      "domain": "game-design"
+    },
+    {
+      "file": "game-design\\randomness-design\\weighted-random.md",
+      "concept": "加权随机",
+      "score": 81.6,
+      "tier": "S",
+      "domain": "game-design"
+    },
+    {
+      "file": "game-design\\social-systems\\mentor-system.md",
+      "concept": "师徒系统",
+      "score": 81.6,
+      "tier": "S",
+      "domain": "game-design"
+    },
+    {
+      "file": "game-engine\\input-system\\input-debug.md",
+      "concept": "输入调试",
+      "score": 81.6,
+      "tier": "S",
+      "domain": "game-engine"
+    },
+    {
+      "file": "game-engine\\input-system\\motion-input.md",
+      "concept": "运动输入",
+      "score": 81.6,
+      "tier": "S",
+      "domain": "game-engine"
     }
   ]
 }

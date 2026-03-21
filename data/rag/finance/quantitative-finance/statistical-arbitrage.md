@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["策略"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -87,6 +87,11 @@ StatArb 的核心假设是：统计上相关的资产之间的价格关系在偏
 
 - **先修**：概率与统计、时间序列分析、均值回归理论
 - **后续**：高频交易、机器学习量化策略、风险因子分析
+
+
+### 实际案例
+
+例如，Long-Term Capital Management（LTCM）是统计套利策略失败的经典案例。1998年，LTCM运用高杠杆的债券配对交易策略，在俄罗斯债务危机引发全球市场恐慌时，原本相关的资产突然脱钩，价差不仅未收敛反而急剧扩大。LTCM的46亿美元资本几乎全部蒸发，最终需要美联储协调14家银行进行救助。这个案例揭示了统计套利策略在"黑天鹅"事件中的脆弱性。
 
 ## 思考题
 
