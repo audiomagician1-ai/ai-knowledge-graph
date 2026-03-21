@@ -81,18 +81,18 @@ const BG = '#f0f0ec';          // slightly brighter warm grey
 const TRANSITION_MS = 900;
 const DPR = typeof window !== 'undefined' ? Math.min(window.devicePixelRatio || 1, 2) : 1;
 
-/* ─── Layout & Fisheye (Apple Watch lens model) ─── */
+/* ─── Layout & Fisheye (Circular 3-ring lens) ─── */
 const BASE_R = 32;             // base bubble radius at scale=1
-const HEX_SPACING = 76;       // tighter packing for more density
-const FISH_MAX = 2.0;         // scale at screen center (big!)
-const FISH_MIN = 0.22;        // scale at screen edge (tiny dots)
-const FISH_POWER = 1.8;       // curve: lower = more gradual falloff
-const FISH_PUSH = 0.75;       // center bubbles pushed apart more
+const HEX_SPACING = 76;       // hex grid spacing
+const FISH_MAX = 2.2;         // scale at center (large!)
+const FISH_MIN = 0.15;        // scale at outer edge (small color dots)
+const FISH_POWER = 2.4;       // steep curve: ring 1 big, ring 2 medium, ring 3 tiny
+const FISH_PUSH = 0.85;       // push center bubbles apart more
+const FISH_R_FACTOR = 0.52;   // fishR = min(W,H) * factor → circular, fits 3 rings
 const INITIAL_PAN_Y = 25;     // shift grid down for header
 const FRICTION = 0.93;
 const VEL_THRESHOLD = 0.3;
 const VEL_CAP = 35;
-const VIGNETTE_SIZE = 90;     // edge fade band in px
 
 /* ─── Helpers ─── */
 function completeness(c: number, e: number, s: number) { return c + e * 0.5 + s * 5; }
@@ -157,27 +157,33 @@ function drawBubble(
 ) {
   if (r < 3 || alpha < 0.02) return;
 
-  // Hover: enlarge + brighten + stronger shadow for "float up" feel
-  const hoverScale = hovered ? 1.18 : 1;
+  // Hover: enlarge + saturate + brighten + stronger shadow for "float up" feel
+  const hoverScale = hovered ? 1.22 : 1;
   const dr = r * hoverScale;
-  const drawAlpha = hovered ? Math.min(1, alpha * 1.3) : alpha;
+  const drawAlpha = hovered ? Math.min(1, alpha * 1.4) : alpha;
 
   ctx.save();
   ctx.globalAlpha = drawAlpha;
 
   // Drop shadow — larger on hover for lift effect
   if (dr > 16) {
-    ctx.shadowColor = hovered ? 'rgba(0,0,0,0.18)' : 'rgba(0,0,0,0.06)';
-    ctx.shadowBlur = hovered ? dr * 0.4 : dr * 0.15;
+    ctx.shadowColor = hovered ? 'rgba(0,0,0,0.22)' : 'rgba(0,0,0,0.06)';
+    ctx.shadowBlur = hovered ? dr * 0.5 : dr * 0.15;
     ctx.shadowOffsetX = 0;
-    ctx.shadowOffsetY = hovered ? dr * 0.12 : dr * 0.04;
+    ctx.shadowOffsetY = hovered ? dr * 0.15 : dr * 0.04;
   }
 
-  // Solid flat fill — slightly brighter on hover
+  // Solid flat fill — boost saturation + brightness on hover
   if (hovered) {
     const [cr, cg, cb] = hexToRgb(color);
-    const lift = 20; // brighten by 20 per channel
-    ctx.fillStyle = `rgb(${Math.min(255, cr + lift)},${Math.min(255, cg + lift)},${Math.min(255, cb + lift)})`;
+    // Boost saturation: push each channel away from grey average, then brighten
+    const avg = (cr + cg + cb) / 3;
+    const satBoost = 1.5; // 50% more saturation
+    const brighten = 25;
+    const nr = Math.min(255, Math.round((cr - avg) * satBoost + avg) + brighten);
+    const ng = Math.min(255, Math.round((cg - avg) * satBoost + avg) + brighten);
+    const nb = Math.min(255, Math.round((cb - avg) * satBoost + avg) + brighten);
+    ctx.fillStyle = `rgb(${nr},${ng},${nb})`;
   } else {
     ctx.fillStyle = color;
   }
@@ -354,8 +360,7 @@ export function HomePage() {
         // Click: hit-test bubbles (nearest to front = largest first)
         const W = cvs.width / DPR, H = cvs.height / DPR;
         const centerX = W / 2, centerY = H / 2;
-        const diag = Math.sqrt(W * W + H * H);
-        const fishR = diag * 0.30;
+        const fishR = Math.min(W, H) * FISH_R_FACTOR;
 
         // Build screen positions + radii using same fisheye as render
         const hits: { idx: number; sx: number; sy: number; sr: number }[] = [];
@@ -410,9 +415,8 @@ export function HomePage() {
       const W = cvs.width / DPR, H = cvs.height / DPR;
       const centerX = W / 2, centerY = H / 2;
 
-      /* ─── Fisheye radius ─── */
-      const diag = Math.sqrt(W * W + H * H);
-      const fishR = diag * 0.30;
+      /* ─── Fisheye radius: circular, based on shorter dimension ─── */
+      const fishR = Math.min(W, H) * FISH_R_FACTOR;
 
       /* Inertia (no limits — infinite scroll) */
       if (!s.dragging) {
@@ -471,8 +475,8 @@ export function HomePage() {
         const sx = centerX + bestDx * push;
         const sy = centerY + bestDy * push;
         const sr = BASE_R * scale;
-        // Smoother fade: gentle in center, gradual fade at edge
-        const alpha = t < 0.15 ? t / 0.15 * 0.3 : Math.pow(t, 0.9);
+        // Alpha: ring 1 bright, ring 2 moderate, ring 3 faint dots
+        const alpha = Math.pow(t, 2.0);
 
         if (sx + sr < -20 || sx - sr > W + 20 || sy + sr < -20 || sy - sr > H + 20) continue;
         if (alpha < 0.02) continue;
@@ -498,39 +502,18 @@ export function HomePage() {
         drawBubble(ctx, dd.name, dd.color, dd.concepts, dd.subs, d.sx, d.sy, d.sr, d.alpha, d.idx === hovIdx);
       }
 
-      /* ─── Strong elliptical vignette: matched to fisheye radius ─── */
-      // The vignette should start fading where fisheye starts shrinking,
-      // and reach full opacity slightly beyond fishR
-      const vigInner = fishR * 0.35;  // transparent zone (tight!)
-      const vigOuter = fishR * 1.05;  // fully opaque zone
+      /* ─── Circular vignette: tight to fisheye radius ─── */
+      const vigInner = fishR * 0.55;  // fully clear zone (center + ring 1)
+      const vigOuter = fishR * 1.15;  // fully opaque zone
       const vigGrad = ctx.createRadialGradient(centerX, centerY, vigInner, centerX, centerY, vigOuter);
       vigGrad.addColorStop(0, 'rgba(240,240,236,0)');
-      vigGrad.addColorStop(0.25, 'rgba(240,240,236,0)');
-      vigGrad.addColorStop(0.5, 'rgba(240,240,236,0.35)');
-      vigGrad.addColorStop(0.7, 'rgba(240,240,236,0.7)');
-      vigGrad.addColorStop(0.85, 'rgba(240,240,236,0.92)');
+      vigGrad.addColorStop(0.3, 'rgba(240,240,236,0)');
+      vigGrad.addColorStop(0.55, 'rgba(240,240,236,0.4)');
+      vigGrad.addColorStop(0.75, 'rgba(240,240,236,0.8)');
+      vigGrad.addColorStop(0.9, 'rgba(240,240,236,0.96)');
       vigGrad.addColorStop(1, BG);
       ctx.fillStyle = vigGrad;
       ctx.fillRect(0, 0, W, H);
-
-      // Layer 2: hard edge bands so corners are fully clean
-      const edgeFade = VIGNETTE_SIZE;
-      // Top (extra tall for header)
-      const topG = ctx.createLinearGradient(0, 0, 0, edgeFade * 1.8);
-      topG.addColorStop(0, BG); topG.addColorStop(1, 'rgba(240,240,236,0)');
-      ctx.fillStyle = topG; ctx.fillRect(0, 0, W, edgeFade * 1.8);
-      // Bottom
-      const botG = ctx.createLinearGradient(0, H - edgeFade, 0, H);
-      botG.addColorStop(0, 'rgba(240,240,236,0)'); botG.addColorStop(1, BG);
-      ctx.fillStyle = botG; ctx.fillRect(0, H - edgeFade, W, edgeFade);
-      // Left
-      const lftG = ctx.createLinearGradient(0, 0, edgeFade, 0);
-      lftG.addColorStop(0, BG); lftG.addColorStop(1, 'rgba(240,240,236,0)');
-      ctx.fillStyle = lftG; ctx.fillRect(0, 0, edgeFade, H);
-      // Right
-      const rgtG = ctx.createLinearGradient(W - edgeFade, 0, W, 0);
-      rgtG.addColorStop(0, 'rgba(240,240,236,0)'); rgtG.addColorStop(1, BG);
-      ctx.fillStyle = rgtG; ctx.fillRect(W - edgeFade, 0, edgeFade, H);
 
       /* ─── Hover tooltip removed — info already shown on bubble ─── */
 
