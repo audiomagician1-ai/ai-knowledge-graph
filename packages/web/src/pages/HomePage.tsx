@@ -149,7 +149,7 @@ function hexToRgb(hex: string): [number, number, number] {
   return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
 }
 
-/* ─── Flat bubble — pure solid color, no 3D gradients ─── */
+/* ─── Flat bubble — pure solid color, hover = scale up + lift ─── */
 function drawBubble(
   ctx: CanvasRenderingContext2D,
   name: string, color: string, concepts: number, subs: number,
@@ -157,35 +157,47 @@ function drawBubble(
 ) {
   if (r < 3 || alpha < 0.02) return;
 
-  ctx.save();
-  ctx.globalAlpha = alpha;
+  // Hover: enlarge + brighten + stronger shadow for "float up" feel
+  const hoverScale = hovered ? 1.18 : 1;
+  const dr = r * hoverScale;
+  const drawAlpha = hovered ? Math.min(1, alpha * 1.3) : alpha;
 
-  // Very subtle drop shadow (only for larger bubbles)
-  if (r > 16) {
-    ctx.shadowColor = 'rgba(0,0,0,0.06)';
-    ctx.shadowBlur = r * 0.15;
+  ctx.save();
+  ctx.globalAlpha = drawAlpha;
+
+  // Drop shadow — larger on hover for lift effect
+  if (dr > 16) {
+    ctx.shadowColor = hovered ? 'rgba(0,0,0,0.18)' : 'rgba(0,0,0,0.06)';
+    ctx.shadowBlur = hovered ? dr * 0.4 : dr * 0.15;
     ctx.shadowOffsetX = 0;
-    ctx.shadowOffsetY = r * 0.04;
+    ctx.shadowOffsetY = hovered ? dr * 0.12 : dr * 0.04;
   }
 
-  // Solid flat fill — no gradient
-  ctx.fillStyle = color;
+  // Solid flat fill — slightly brighter on hover
+  if (hovered) {
+    const [cr, cg, cb] = hexToRgb(color);
+    const lift = 20; // brighten by 20 per channel
+    ctx.fillStyle = `rgb(${Math.min(255, cr + lift)},${Math.min(255, cg + lift)},${Math.min(255, cb + lift)})`;
+  } else {
+    ctx.fillStyle = color;
+  }
   ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.arc(cx, cy, dr, 0, Math.PI * 2);
   ctx.fill();
 
   // Reset shadow
   ctx.shadowColor = 'transparent';
   ctx.shadowBlur = 0;
 
-  // Hover: subtle ring
+  // Hover: soft white glow ring
   if (hovered) {
-    ctx.globalAlpha = Math.min(1, alpha * 1.2);
-    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
-    ctx.lineWidth = 2;
+    ctx.globalAlpha = 0.35;
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2.5;
     ctx.beginPath();
-    ctx.arc(cx, cy, r + 2, 0, Math.PI * 2);
+    ctx.arc(cx, cy, dr + 3, 0, Math.PI * 2);
     ctx.stroke();
+    ctx.globalAlpha = drawAlpha;
   }
 
   // Text — progressive disclosure based on radius
@@ -193,28 +205,28 @@ function drawBubble(
   // 16 ≤ r < 28: no text (small colored ball)
   // 28 ≤ r < 40: name only
   // r ≥ 40: name + stats
-  if (r < 28) { ctx.restore(); return; }
+  if (dr < 28) { ctx.restore(); return; }
 
-  ctx.globalAlpha = alpha;
+  ctx.globalAlpha = drawAlpha;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  const nameFontSize = Math.max(9, Math.round(r * 0.30));
+  const nameFontSize = Math.max(9, Math.round(dr * 0.30));
   ctx.font = `600 ${nameFontSize}px -apple-system,"SF Pro Display","Helvetica Neue","PingFang SC","Noto Sans SC",sans-serif`;
   ctx.fillStyle = 'rgba(255,255,255,0.95)';
 
-  const showSub = r >= 40;
-  ctx.fillText(name, cx, showSub ? cy - nameFontSize * 0.35 : cy, r * 1.6);
+  const showSub = dr >= 40;
+  ctx.fillText(name, cx, showSub ? cy - nameFontSize * 0.35 : cy, dr * 1.6);
 
   if (showSub) {
-    const subSize = Math.max(7, Math.round(r * 0.18));
+    const subSize = Math.max(7, Math.round(dr * 0.18));
     const parts: string[] = [];
     if (concepts) parts.push(concepts + ' 知识点');
     if (subs) parts.push(subs + ' 子领域');
     if (parts.length) {
       ctx.font = `400 ${subSize}px -apple-system,"SF Pro Text","PingFang SC",sans-serif`;
       ctx.fillStyle = 'rgba(255,255,255,0.55)';
-      ctx.fillText(parts.join(' · '), cx, cy + nameFontSize * 0.55, r * 1.6);
+      ctx.fillText(parts.join(' · '), cx, cy + nameFontSize * 0.55, dr * 1.6);
     }
   }
   ctx.restore();
@@ -459,7 +471,8 @@ export function HomePage() {
         const sx = centerX + bestDx * push;
         const sy = centerY + bestDy * push;
         const sr = BASE_R * scale;
-        const alpha = Math.pow(t, 1.5);
+        // Smoother fade: gentle in center, gradual fade at edge
+        const alpha = t < 0.15 ? t / 0.15 * 0.3 : Math.pow(t, 0.9);
 
         if (sx + sr < -20 || sx - sr > W + 20 || sy + sr < -20 || sy - sr > H + 20) continue;
         if (alpha < 0.02) continue;
@@ -519,29 +532,7 @@ export function HomePage() {
       rgtG.addColorStop(0, 'rgba(240,240,236,0)'); rgtG.addColorStop(1, BG);
       ctx.fillStyle = rgtG; ctx.fillRect(W - edgeFade, 0, edgeFade, H);
 
-      /* ─── Hover info tooltip ─── */
-      if (hovIdx >= 0) {
-        const hd = sorted[hovIdx % N];
-        const hi = drawItems.find(d => d.idx === hovIdx)!;
-        const infoY = hi.sy + hi.sr + 16;
-
-        ctx.globalAlpha = 1;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'top';
-
-        ctx.font = `600 14px -apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif`;
-        ctx.fillStyle = '#333';
-        ctx.fillText(hd.name, hi.sx, infoY);
-
-        const parts: string[] = [];
-        if (hd.concepts) parts.push(hd.concepts + ' 知识点');
-        if (hd.subs) parts.push(hd.subs + ' 子领域');
-        if (parts.length) {
-          ctx.font = `400 11px -apple-system,"SF Pro Text","PingFang SC",sans-serif`;
-          ctx.fillStyle = '#aaa';
-          ctx.fillText(parts.join('  ·  '), hi.sx, infoY + 19);
-        }
-      }
+      /* ─── Hover tooltip removed — info already shown on bubble ─── */
 
       ctx.restore();
       raf = requestAnimationFrame(frame);
