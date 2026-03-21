@@ -33,7 +33,7 @@ else:
 _DB_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH = _DB_DIR / "akg_local.db"
 
-_SCHEMA_VERSION = 4
+_SCHEMA_VERSION = 5
 
 
 def _get_conn() -> sqlite3.Connection:
@@ -189,6 +189,20 @@ def init_db():
             conn.execute("INSERT OR REPLACE INTO schema_version (version) VALUES (4)")
             conn.commit()
             logger.info("SQLite schema migrated to v4 (BKT knowledge tracing fields)")
+
+        if version < 5:
+            # V5: Add user_achievements table for achievement system
+            conn.executescript("""
+                CREATE TABLE IF NOT EXISTS user_achievements (
+                    achievement_key TEXT PRIMARY KEY,
+                    unlocked_at REAL NOT NULL DEFAULT 0,
+                    progress REAL NOT NULL DEFAULT 0,
+                    seen INTEGER NOT NULL DEFAULT 0
+                );
+            """)
+            conn.execute("INSERT OR REPLACE INTO schema_version (version) VALUES (5)")
+            conn.commit()
+            logger.info("SQLite schema migrated to v5 (user_achievements table)")
 
 
     logger.info("SQLite DB initialized at %s", DB_PATH)
@@ -642,6 +656,81 @@ def get_all_bkt_states() -> list[dict]:
                FROM concept_progress
                WHERE bkt_observations > 0
                ORDER BY bkt_mastery DESC""",
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+# ════════════════════════════════════════════
+# Achievements
+# ════════════════════════════════════════════
+
+def get_all_achievements() -> list[dict]:
+    """Get all unlocked achievements."""
+    with get_db() as conn:
+        rows = conn.execute(
+            "SELECT achievement_key, unlocked_at, progress, seen FROM user_achievements"
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def get_unlocked_keys() -> set[str]:
+    """Get set of all unlocked achievement keys."""
+    with get_db() as conn:
+        rows = conn.execute("SELECT achievement_key FROM user_achievements").fetchall()
+        return {r[0] for r in rows}
+
+
+def get_unlocked_map() -> dict[str, dict]:
+    """Get map of unlocked achievements: {key: {unlocked_at, seen, progress}}."""
+    with get_db() as conn:
+        rows = conn.execute(
+            "SELECT achievement_key, unlocked_at, progress, seen FROM user_achievements"
+        ).fetchall()
+        return {
+            r['achievement_key']: {
+                'unlocked_at': r['unlocked_at'],
+                'progress': r['progress'],
+                'seen': bool(r['seen']),
+            }
+            for r in rows
+        }
+
+
+def unlock_achievement(key: str, progress: float = 100.0) -> bool:
+    """Unlock an achievement. Returns True if newly unlocked, False if already existed."""
+    import time as _time
+    now = _time.time()
+    with get_db() as conn:
+        existing = conn.execute(
+            "SELECT achievement_key FROM user_achievements WHERE achievement_key = ?", (key,)
+        ).fetchone()
+        if existing:
+            return False
+        conn.execute(
+            "INSERT INTO user_achievements (achievement_key, unlocked_at, progress, seen) VALUES (?, ?, ?, 0)",
+            (key, now, progress),
+        )
+        return True
+
+
+def mark_achievements_seen(keys: list[str]) -> int:
+    """Mark achievements as seen. Returns count of updated rows."""
+    if not keys:
+        return 0
+    with get_db() as conn:
+        placeholders = ','.join('?' for _ in keys)
+        cursor = conn.execute(
+            f"UPDATE user_achievements SET seen = 1 WHERE achievement_key IN ({placeholders}) AND seen = 0",
+            keys,
+        )
+        return cursor.rowcount
+
+
+def get_unseen_achievements() -> list[dict]:
+    """Get achievements that haven't been seen by the user yet."""
+    with get_db() as conn:
+        rows = conn.execute(
+            "SELECT achievement_key, unlocked_at, progress FROM user_achievements WHERE seen = 0 ORDER BY unlocked_at DESC"
         ).fetchall()
         return [dict(r) for r in rows]
 

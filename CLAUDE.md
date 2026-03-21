@@ -39,7 +39,7 @@
 
 ---
 
-**当前阶段**: ✅ **V1.0 BKT知识追踪引擎完成** | FSRS ✅ | RAG 100% Tier-S ✅ | 1,068测试全通过
+**当前阶段**: ✅ **V1.0 成就系统完成** | BKT ✅ | FSRS ✅ | RAG 100% Tier-S ✅ | 1,110测试全通过
 **📊 RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
 > 6,156篇RAG文档质量审计: S=6,156 A=0 B=0 C=0 (均分86.2, **100% Tier-S**)
 > Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
@@ -70,7 +70,7 @@
 > **推荐集成**: /learning/recommend 新增Factor 6: FSRS到期复习优先(+20分基础+过期天数加成)
 > **测试**: 48新测试(算法/DB/API全覆盖), 总计1,017测试(804 BE + 213 FE), tsc 0 errors
 > **Issue**: #34
-> **下一步**: V1.0继续 — 成就系统 / 前端FSRS复习UI集成
+> **下一步**: V1.0继续 — ✅BKT知识追踪器 / ✅成就系统 / 前端FSRS复习UI集成
 
 **V1.0 BKT知识追踪引擎完成摘要** (#36):
 > **目标**: 实现BKT(贝叶斯知识追踪)引擎, 替换空占位stub, 提供概率化掌握度估计
@@ -91,7 +91,31 @@
 >   - 推荐理由增加"🧠 学习关键期"/"🔥 即将掌握"
 > **测试**: 51新测试(参数9/状态7/算法19/DB 7/API 7/集成2), 总计1,068测试(855 BE + 213 FE), tsc 0 errors
 > **Issue**: #36
-> **下一步**: V1.0继续 — 成就系统 / 前端FSRS复习UI集成
+> **下一步**: V1.0继续 — ✅成就系统 / 前端FSRS复习UI集成
+
+**V1.0 成就系统完成摘要** (#37):
+> **目标**: 实现游戏化成就系统, 奖励学习里程碑/连续学习/领域深度/评估表现
+> **AchievementEngine**: 20个成就定义跨6个分类(learning/streak/domain/assessment/review/special)
+>   - 学习里程碑: 第一道光(1)/探索者(10)/学者(50)/大师(100)/智者(200)
+>   - 连续学习: 三日连燃(3)/一周不断(7)/两周坚持(14)/月度传奇(30)
+>   - 领域深度: 跨域探索者(3域)/深度研究者(5掌握)/领域专家(10掌握)
+>   - 评估表现: 初次挑战(1)/满分达人(100分)/高分射手(10次90+)
+>   - 间隔复习: 温故知新(1)/复习达人(10)/记忆大师(50)
+>   - 特殊: 里程碑征服者(5里程碑)/快速学习者(日掌握5)
+>   - 四级体系: bronze/silver/gold/platinum + 进度百分比追踪
+> **数据层**: SQLite schema v5(user_achievements表: achievement_key/unlocked_at/progress/seen)
+>   - get_unlocked_keys/get_unlocked_map/unlock_achievement/mark_achievements_seen/get_unseen_achievements
+> **API**:
+>   - GET /achievements — 全量成就目录(含解锁状态/进度/分类统计)
+>   - GET /achievements/recent — 未查看的新解锁成就(供前端toast通知)
+>   - POST /achievements/seen — 标记成就为已查看
+> **集成**: POST /assess 和 POST /review 自动触发成就检查, 响应包含achievements_unlocked列表
+> **统计收集**: collect_stats_from_db() — 从progress/history/streak/seed聚合全维度数据
+>   - 支持跨域统计: 读取domains.json + 各域seed_graph.json计算领域掌握度
+>   - 支持里程碑统计: 扫描seed数据中is_milestone标记
+> **测试**: 42新测试(定义8/引擎11/DB 11/API 6/集成6), 总计1,110测试(897 BE + 213 FE), tsc 0 errors
+> **Issue**: #37
+> **下一步**: V1.0继续 — 前端FSRS复习UI集成 / 前端成就UI展示
 
 **Sprint 3 完成摘要** (AI-Rewrite-v1 全量精写):
 > **目标**: 5,005非里程碑概念AI精写, 全30域覆盖, 从Tier-C模板提升到Tier-S

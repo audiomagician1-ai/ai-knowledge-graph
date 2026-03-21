@@ -11,6 +11,8 @@ from db.sqlite_client import (
     get_all_progress, get_progress, start_learning, record_assessment,
     get_history, get_streak, refresh_streak, update_streak,
     compute_stats, get_bkt_state, update_bkt_state,
+    get_unlocked_keys, get_unlocked_map, unlock_achievement,
+    mark_achievements_seen, get_unseen_achievements,
 )
 
 router = APIRouter()
@@ -126,6 +128,7 @@ async def record_assessment_result(req: RecordAssessmentRequest):
             "observations": state.observations,
             "is_mastered": state.is_mastered,
         },
+        "achievements_unlocked": _check_and_unlock_achievements(),
     }
 
 
@@ -618,5 +621,125 @@ async def submit_review(req: ReviewRequest):
             "previous_stability": round(result.review_log.stability, 3),
             "previous_difficulty": round(result.review_log.difficulty, 3),
         },
+        "achievements_unlocked": _check_and_unlock_achievements(),
     }
+
+
+# ════════════════════════════════════════════
+# Achievement System Endpoints
+# ════════════════════════════════════════════
+
+class MarkSeenRequest(BaseModel):
+    """Request to mark achievements as seen."""
+    keys: list[str] = Field(..., max_length=50)
+
+
+def _check_and_unlock_achievements() -> list[dict]:
+    """Check all achievement conditions and unlock any newly earned ones.
+
+    Called after learning events (assess, review, etc.).
+    Returns list of newly unlocked achievement dicts.
+    """
+    from engines.learning.achievements import AchievementEngine, ACHIEVEMENT_MAP
+
+    engine = AchievementEngine()
+    try:
+        stats = engine.collect_stats_from_db()
+    except Exception:
+        return []  # Graceful degradation if stats collection fails
+
+    already_unlocked = get_unlocked_keys()
+    newly = engine.check_all(stats, already_unlocked)
+
+    unlocked_list = []
+    for ach in newly:
+        was_new = unlock_achievement(ach['key'], progress=ach['progress'])
+        if was_new:
+            # Enrich with full definition
+            defn = ACHIEVEMENT_MAP.get(ach['key'])
+            if defn:
+                unlocked_list.append({
+                    'key': ach['key'],
+                    'name': defn.name,
+                    'description': defn.description,
+                    'icon': defn.icon,
+                    'tier': defn.tier,
+                })
+    return unlocked_list
+
+
+@router.get("/achievements")
+async def get_achievements():
+    """Get all achievements with current unlock status and progress.
+
+    Returns the complete achievement catalog with:
+    - Which achievements are unlocked
+    - Current progress towards locked achievements
+    - Total unlocked count and categorized breakdown
+    """
+    from engines.learning.achievements import AchievementEngine, ACHIEVEMENTS
+
+    engine = AchievementEngine()
+    try:
+        stats = engine.collect_stats_from_db()
+    except Exception:
+        stats = {
+            'mastered_count': 0, 'learning_count': 0, 'total_concepts': 0,
+            'current_streak': 0, 'longest_streak': 0, 'total_assessments': 0,
+            'highest_score': 0, 'high_scores_90': 0, 'perfect_scores': 0,
+            'total_reviews': 0, 'domains_started': 0, 'domains_mastered_5': 0,
+            'domains_mastered_10': 0, 'mastered_today': 0, 'mastered_milestones': 0,
+            'total_study_time_sec': 0,
+        }
+
+    unlocked_map = get_unlocked_map()
+    all_achievements = engine.get_all_with_status(stats, unlocked_map)
+
+    # Category breakdown
+    categories = {}
+    for ach in all_achievements:
+        cat = ach['category']
+        if cat not in categories:
+            categories[cat] = {'total': 0, 'unlocked': 0}
+        categories[cat]['total'] += 1
+        if ach['unlocked']:
+            categories[cat]['unlocked'] += 1
+
+    return {
+        "total": len(ACHIEVEMENTS),
+        "unlocked_count": len(unlocked_map),
+        "categories": categories,
+        "achievements": all_achievements,
+    }
+
+
+@router.get("/achievements/recent")
+async def get_recent_achievements():
+    """Get recently unlocked achievements that haven't been seen yet.
+
+    Designed for toast/popup notifications in the frontend.
+    """
+    from engines.learning.achievements import ACHIEVEMENT_MAP
+
+    unseen = get_unseen_achievements()
+    results = []
+    for row in unseen:
+        defn = ACHIEVEMENT_MAP.get(row['achievement_key'])
+        if defn:
+            results.append({
+                'key': row['achievement_key'],
+                'name': defn.name,
+                'description': defn.description,
+                'icon': defn.icon,
+                'tier': defn.tier,
+                'unlocked_at': row['unlocked_at'],
+            })
+    return {"unseen_count": len(results), "achievements": results}
+
+
+@router.post("/achievements/seen")
+async def mark_seen(req: MarkSeenRequest):
+    """Mark achievements as seen (dismiss notifications)."""
+    count = mark_achievements_seen(req.keys)
+    return {"success": True, "marked_count": count}
 
