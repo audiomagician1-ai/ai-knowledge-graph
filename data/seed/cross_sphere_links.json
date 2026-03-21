@@ -3946,6 +3946,222 @@
       "relation": "related",
       "strength": 0.6,
       "description": "声波传播物理特性"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-target-audience",
+      "target_domain": "game-design",
+      "target_id": "bartle-types",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "目标受众分析与玩家类型理论"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-monetization-model",
+      "target_domain": "game-design",
+      "target_id": "game-economy-intro",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "变现模式与游戏内虚拟经济设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-lifecycle-strategy",
+      "target_domain": "game-design",
+      "target_id": "meta-game",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "产品生命周期与元游戏系统设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-bb-store-page",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-icon-overview",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "商店页面优化与图标系统设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-bb-visual-identity",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-typo-hierarchy",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "视觉识别系统与视觉层级设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-bb-brand-story",
+      "target_domain": "narrative-design",
+      "target_id": "nd-wb-worldbuilding-scope",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "品牌叙事与世界观圣经"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ro-voice-localization",
+      "target_domain": "narrative-design",
+      "target_id": "nd-lo-voice-localization",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "配音本地化与叙事本地化管线"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pr-platform-features",
+      "target_domain": "software-engineering",
+      "target_id": "se-api-design",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "平台功能接入与API设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ua-attribution",
+      "target_domain": "software-engineering",
+      "target_id": "se-database-arch",
+      "relation": "related",
+      "strength": 0.4,
+      "description": "归因分析数据处理与数据库基础"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ro-server-deployment",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-na-dedicated-server",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "全球服务器部署与云托管"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pr-update-policy",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-ch-cdn-basics",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "更新政策与CDN热更新"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-pricing-strategy",
+      "target_domain": "economics",
+      "target_id": "supply-demand",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "游戏定价策略与价格理论"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-market-sizing",
+      "target_domain": "economics",
+      "target_id": "microeconomics-overview",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "市场规模估算与市场结构"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-co-toxicity-management",
+      "target_domain": "psychology",
+      "target_id": "group-dynamics",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "毒性管理与群体动力学"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ua-viral-mechanics",
+      "target_domain": "psychology",
+      "target_id": "persuasion",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "病毒传播机制与说服心理学"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pm-press-release",
+      "target_domain": "english",
+      "target_id": "academic-vocabulary",
+      "relation": "related",
+      "strength": 0.4,
+      "description": "新闻稿撰写与写作技巧"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ro-localization-basics",
+      "target_domain": "english",
+      "target_id": "intensive-reading",
+      "relation": "related",
+      "strength": 0.4,
+      "description": "本地化基础与阅读理解策略"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ua-content-marketing",
+      "target_domain": "writing",
+      "target_id": "content-marketing",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "内容营销与博客写作"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-co-player-feedback",
+      "target_domain": "product-design",
+      "target_id": "user-research-overview",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "玩家反馈收集与用户研究"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-bb-key-art",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-intro",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "Key Art创作与风格指南"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pc-revenue-split",
+      "target_domain": "finance",
+      "target_id": "risk-return-tradeoff",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "收入分成与风险收益关系"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-rc-tax-compliance",
+      "target_domain": "finance",
+      "target_id": "tax-basics",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "税务合规与所得税"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pr-cross-platform",
+      "target_domain": "game-engine",
+      "target_id": "console-development",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "跨平台发行与主机移植"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-co-beta-program",
+      "target_domain": "level-design",
+      "target_id": "playtest-report",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "测试计划与关卡测试"
     }
   ],
   "meta": {

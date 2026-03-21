@@ -1,0 +1,3533 @@
+{
+  "domain": "game-publishing",
+  "subdomains": [
+    {
+      "id": "market-strategy",
+      "name": "市场策略",
+      "description": "市场定位、目标受众分析、竞品研究、定价策略与上线时机",
+      "order": 1
+    },
+    {
+      "id": "user-acquisition",
+      "name": "用户获取(UA)",
+      "description": "广告投放、ASO/SEO、社交传播、网红营销与增长黑客",
+      "order": 2
+    },
+    {
+      "id": "brand-building",
+      "name": "品牌建设",
+      "description": "品牌定位、视觉识别、IP塑造、品牌叙事与口碑管理",
+      "order": 3
+    },
+    {
+      "id": "platform-rules",
+      "name": "平台规则",
+      "description": "Steam/iOS/Android/主机平台的上架规范、分成模式与政策合规",
+      "order": 4
+    },
+    {
+      "id": "community-ops",
+      "name": "社区运营",
+      "description": "社区搭建、玩家关系、UGC培育、Discord/论坛管理与反馈闭环",
+      "order": 5
+    },
+    {
+      "id": "pr-media",
+      "name": "PR/媒体关系",
+      "description": "媒体沟通、评测管理、展会参与、危机公关与KOL合作",
+      "order": 6
+    },
+    {
+      "id": "publisher-collab",
+      "name": "发行商合作",
+      "description": "发行商选择、合同条款、利润分成、独立发行与发行商对比",
+      "order": 7
+    },
+    {
+      "id": "regional-ops",
+      "name": "地区化运营",
+      "description": "全球化策略、区域市场适配、本地化运营与文化敏感性",
+      "order": 8
+    },
+    {
+      "id": "rating-compliance",
+      "name": "评级/合规",
+      "description": "年龄分级(ESRB/PEGI/CERO)、法规合规、隐私保护与版号政策",
+      "order": 9
+    }
+  ],
+  "concepts": [
+    {
+      "id": "pub-ms-market-research",
+      "name": "市场调研",
+      "description": "通过数据分析和用户访谈了解目标市场的规模、趋势与机会",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-target-audience",
+      "name": "目标受众分析",
+      "description": "定义核心玩家画像、人口统计特征与游戏偏好",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-competitive-analysis",
+      "name": "竞品分析",
+      "description": "系统评估同类产品的功能、定价、营销策略与市场份额",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ms-market-positioning",
+      "name": "市场定位",
+      "description": "确定产品在市场中的独特价值主张与差异化定位",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-pricing-strategy",
+      "name": "定价策略",
+      "description": "基于成本、市场和价值的定价模型(买断/F2P/订阅)",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-monetization-model",
+      "name": "变现模式",
+      "description": "内购/广告/DLC/Season Pass/Battle Pass等收入设计",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-launch-timing",
+      "name": "上线时机",
+      "description": "分析最佳发布窗口期、避开大作竞争与节日效应",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-release-calendar",
+      "name": "发行日历",
+      "description": "制定从预告到上线的完整营销时间线",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-swot-analysis",
+      "name": "SWOT分析",
+      "description": "评估产品的优势/劣势/机会/威胁做出战略决策",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-market-sizing",
+      "name": "市场规模估算",
+      "description": "TAM/SAM/SOM分层评估潜在市场规模",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ms-go-to-market",
+      "name": "GTM策略",
+      "description": "制定产品从开发到上市的完整商业化路线图",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-early-access",
+      "name": "Early Access策略",
+      "description": "利用抢先体验阶段验证市场、收集反馈与建立社区",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-platform-selection",
+      "name": "平台选择",
+      "description": "根据游戏类型和目标受众选择首发和跨平台策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-sales-forecast",
+      "name": "销量预测",
+      "description": "基于同类产品数据和市场指标预测销售表现",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-lifecycle-strategy",
+      "name": "产品生命周期",
+      "description": "规划游戏从上线到长线运营各阶段的策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-portfolio-strategy",
+      "name": "产品组合策略",
+      "description": "多产品线协同规划与资源分配",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-data-driven-decision",
+      "name": "数据驱动决策",
+      "description": "利用市场数据和用户行为指标指导战略调整",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-blue-ocean",
+      "name": "蓝海策略",
+      "description": "发现并创造未被满足的市场需求与新品类",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ms-post-launch-plan",
+      "name": "上线后规划",
+      "description": "制定DLC/更新/赛季内容的长线内容路线图",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ms-exit-strategy",
+      "name": "退出策略",
+      "description": "项目终止、IP授权或工作室收购的战略规划",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-ua-fundamentals",
+      "name": "UA基础",
+      "description": "用户获取的核心指标(CPI/CPA/ROAS)与基本流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-paid-advertising",
+      "name": "付费广告投放",
+      "description": "在Facebook/Google/TikTok等平台的广告购买与优化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-aso-basics",
+      "name": "ASO基础",
+      "description": "应用商店优化的关键词、图标、截图与描述优化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ua-seo-gaming",
+      "name": "游戏SEO",
+      "description": "搜索引擎优化提升游戏官网和内容的有机流量",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-social-media",
+      "name": "社交媒体推广",
+      "description": "利用Twitter/TikTok/Reddit/B站等平台推广游戏",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-influencer-marketing",
+      "name": "网红营销",
+      "description": "与游戏主播/YouTuber/UP主合作推广的策略与执行",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-content-marketing",
+      "name": "内容营销",
+      "description": "通过开发日志/幕后视频/博客等内容建立关注",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-viral-mechanics",
+      "name": "病毒传播机制",
+      "description": "设计分享/邀请/社交功能实现有机用户增长",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-wishlist-strategy",
+      "name": "心愿单策略",
+      "description": "Steam心愿单积累的最佳实践与转化优化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-ad-creative",
+      "name": "广告素材制作",
+      "description": "高转化率视频/图片广告的设计原则与A/B测试",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ua-attribution",
+      "name": "归因分析",
+      "description": "追踪用户来源渠道并评估各渠道获取效果",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-growth-hacking",
+      "name": "增长黑客",
+      "description": "低成本高效率的创意获客方法与实验思维",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-email-marketing",
+      "name": "邮件营销",
+      "description": "通过邮件列表维护潜在用户关注与发布通知",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-retargeting",
+      "name": "再营销",
+      "description": "对流失用户进行精准广告投放促进回流",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-cross-promotion",
+      "name": "交叉推广",
+      "description": "利用已有产品用户基础推广新产品",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-campaign-optimization",
+      "name": "投放优化",
+      "description": "通过数据分析持续优化广告ROI和用户质量",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-ltv-prediction",
+      "name": "LTV预测",
+      "description": "预测用户终身价值指导获客预算分配",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-cohort-analysis",
+      "name": "队列分析",
+      "description": "按获取时间分组分析用户行为和留存差异",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ua-ua-budget",
+      "name": "UA预算规划",
+      "description": "制定和管理用户获取总预算与渠道分配",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ua-organic-vs-paid",
+      "name": "有机与付费平衡",
+      "description": "优化有机增长和付费获客的最佳比例",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-identity",
+      "name": "品牌标识",
+      "description": "定义游戏品牌的视觉元素(Logo/色彩/字体)与调性",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-positioning",
+      "name": "品牌定位",
+      "description": "确立品牌在目标受众心中的独特认知位置",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-story",
+      "name": "品牌叙事",
+      "description": "构建引人入胜的品牌故事传递核心价值观",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-bb-visual-identity",
+      "name": "视觉识别系统",
+      "description": "统一的视觉风格指南(色板/字体/图标/排版)",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-tone-of-voice",
+      "name": "品牌调性",
+      "description": "定义品牌沟通的语言风格、态度与个性",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-key-art",
+      "name": "Key Art创作",
+      "description": "制作传达游戏核心体验的主视觉图",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-trailer-production",
+      "name": "宣传片制作",
+      "description": "游戏预告片的脚本、剪辑与发布策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-ip-development",
+      "name": "IP开发",
+      "description": "将游戏IP延展到动画/小说/周边等多媒体领域",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-store-page",
+      "name": "商店页面优化",
+      "description": "打造高转化率的Steam/App Store/Google Play页面",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-guidelines",
+      "name": "品牌规范手册",
+      "description": "编写品牌使用规范确保所有触点视觉一致",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-bb-reputation-management",
+      "name": "口碑管理",
+      "description": "监控和引导玩家评价、评分与社交舆论",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-merchandise",
+      "name": "周边商品",
+      "description": "设计和销售品牌周边(手办/服装/文具)增强粉丝粘性",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-collab",
+      "name": "品牌联动",
+      "description": "与其他品牌/IP进行跨界合作扩大影响力",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-ambassador",
+      "name": "品牌大使",
+      "description": "培养核心玩家和意见领袖成为品牌代言人",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-refresh",
+      "name": "品牌焕新",
+      "description": "在产品重大更新时刷新品牌形象与定位",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-measurement",
+      "name": "品牌效果度量",
+      "description": "量化品牌知名度、好感度与忠诚度指标",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-crisis",
+      "name": "品牌危机应对",
+      "description": "面对负面事件的品牌危机公关与修复策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-ecosystem",
+      "name": "品牌生态",
+      "description": "构建包含游戏/社区/内容/周边的完整品牌生态系统",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-bb-brand-valuation",
+      "name": "品牌价值评估",
+      "description": "评估游戏品牌的商业价值与资产化潜力",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-bb-brand-legacy",
+      "name": "品牌传承",
+      "description": "建立跨代际/跨作品的品牌传承与文化沉淀",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-steam-basics",
+      "name": "Steam发行基础",
+      "description": "Steamworks注册、商店页面创建与发行流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-ios-basics",
+      "name": "iOS发行基础",
+      "description": "App Store Connect配置、审核指南与上架流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-android-basics",
+      "name": "Android发行基础",
+      "description": "Google Play Console配置、政策合规与上架流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pr-revenue-share",
+      "name": "平台分成模式",
+      "description": "各平台的收入分成比例(70/30等)与特殊条款",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-steam-visibility",
+      "name": "Steam可见性",
+      "description": "Steam算法推荐机制、标签系统与Discovery Queue",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-steam-sales",
+      "name": "Steam打折活动",
+      "description": "季节性大促/周促/自定义折扣的参与策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-app-review",
+      "name": "应用审核应对",
+      "description": "Apple/Google审核被拒的常见原因与申诉策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-console-submission",
+      "name": "主机送审",
+      "description": "PlayStation/Xbox/Switch的TRC/TCR认证流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-iap-rules",
+      "name": "内购规则",
+      "description": "各平台内购实现规范、虚拟货币与反欺诈",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-cloud-gaming",
+      "name": "云游戏平台",
+      "description": "Xbox Cloud/GeForce Now等云游戏平台的接入",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pr-platform-features",
+      "name": "平台特性利用",
+      "description": "成就/排行榜/好友/云存档等平台功能的接入",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-update-policy",
+      "name": "更新政策",
+      "description": "各平台的补丁提交/审核周期与热更新限制",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-cross-platform",
+      "name": "跨平台发行",
+      "description": "多平台同步发行的技术要求与账号互通",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-platform-exclusive",
+      "name": "平台独占策略",
+      "description": "评估限时独占/永久独占的收益与风险",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-refund-policy",
+      "name": "退款政策",
+      "description": "各平台退款规则的理解与退款率管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-dlc-management",
+      "name": "DLC管理",
+      "description": "各平台DLC/扩展包的创建、定价与发布",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-platform-analytics",
+      "name": "平台数据分析",
+      "description": "利用平台提供的销售/用户数据优化运营决策",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-alt-platforms",
+      "name": "替代平台",
+      "description": "Epic/GOG/itch.io/TapTap等替代分发渠道的评估",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pr-platform-negotiation",
+      "name": "平台谈判",
+      "description": "与平台方协商推荐位/首发支持/特殊分成",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pr-multi-store",
+      "name": "多商店管理",
+      "description": "在多个数字商店同时发行的Key管理与库存同步",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-community-building",
+      "name": "社区搭建",
+      "description": "从零开始建立Discord/Reddit/论坛等玩家社区",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-community-management",
+      "name": "社区管理",
+      "description": "日常社区维护、版规制定与违规处理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-player-feedback",
+      "name": "玩家反馈收集",
+      "description": "系统化收集、分类和处理玩家反馈与建议",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-co-discord-ops",
+      "name": "Discord运营",
+      "description": "Discord服务器的频道设计、Bot配置与活动策划",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-ugc-cultivation",
+      "name": "UGC培育",
+      "description": "鼓励玩家创作内容(Mod/同人/攻略/视频)",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-community-events",
+      "name": "社区活动",
+      "description": "策划比赛/直播/Q&A/节日活动活跃社区氛围",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-beta-program",
+      "name": "测试计划",
+      "description": "组织封测/公测获取用户反馈并培养核心社区",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-moderation-tools",
+      "name": "管理工具",
+      "description": "使用自动化工具(Bot/Filter)辅助社区管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-community-metrics",
+      "name": "社区指标",
+      "description": "衡量社区健康度(DAU/MAU/留存/活跃度/情感)",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-devlog-communication",
+      "name": "开发日志",
+      "description": "透明化开发进度沟通维持社区信任与期待",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-co-toxicity-management",
+      "name": "毒性管理",
+      "description": "预防和处理社区中的骚扰/喷子/恶意行为",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-feedback-loop",
+      "name": "反馈闭环",
+      "description": "建立从收集反馈到产品改进再到回复用户的闭环",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-ambassador-program",
+      "name": "大使计划",
+      "description": "招募和管理社区志愿者/版主/大使团队",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-localized-community",
+      "name": "本地化社区",
+      "description": "建立多语言社区分区与本地化社区经理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-crisis-communication",
+      "name": "危机沟通",
+      "description": "面对Bug/服务器宕机/争议时的社区沟通策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-community-monetization",
+      "name": "社区变现",
+      "description": "通过社区渠道推动购买、DLC销售与口碑传播",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-player-council",
+      "name": "玩家委员会",
+      "description": "建立核心玩家顾问团参与游戏设计决策",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-community-analytics",
+      "name": "社区数据分析",
+      "description": "分析社区数据发现产品问题和机会",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-co-community-scaling",
+      "name": "社区扩展",
+      "description": "随用户量增长扩展社区架构与管理团队",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-co-community-culture",
+      "name": "社区文化",
+      "description": "塑造积极健康的社区文化与价值观",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-press-kit",
+      "name": "媒体资料包",
+      "description": "制作包含截图/视频/介绍/Logo的专业Presskit",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-media-list",
+      "name": "媒体名单",
+      "description": "建立和维护游戏媒体/记者/博主的联系列表",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-press-release",
+      "name": "新闻稿撰写",
+      "description": "撰写专业新闻稿的结构、要素与发布策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pm-pitch-email",
+      "name": "邮件推介",
+      "description": "向媒体/主播发送有效推介邮件的技巧",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-review-copies",
+      "name": "评测码管理",
+      "description": "评测码的分发策略、时间窗口与embargo管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-embargo-strategy",
+      "name": "解禁策略",
+      "description": "评测解禁时间的设定与媒体协调",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-kol-management",
+      "name": "KOL管理",
+      "description": "筛选、联系和管理关键意见领袖(KOL)合作",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-showcase-events",
+      "name": "展会参展",
+      "description": "GDC/E3/gamescom/TGS等展会的参展规划",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-media-monitoring",
+      "name": "媒体监测",
+      "description": "追踪游戏相关媒体报道和社交讨论",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-interview-prep",
+      "name": "采访准备",
+      "description": "媒体采访的问答准备与信息控制技巧",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pm-crisis-pr",
+      "name": "危机公关",
+      "description": "负面事件的公关应对、声明发布与舆论引导",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-awards-submission",
+      "name": "奖项申报",
+      "description": "TGA/IndieCade/IGF等游戏奖项的申报策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-streaming-events",
+      "name": "直播活动",
+      "description": "组织Twitch/YouTube/B站官方直播展示活动",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-media-partnership",
+      "name": "媒体合作",
+      "description": "与游戏媒体建立长期合作伙伴关系",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-pr-timeline",
+      "name": "PR时间线",
+      "description": "制定从公布到发售的完整PR节奏规划",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-pr-metrics",
+      "name": "PR效果度量",
+      "description": "量化PR活动的媒体覆盖/影响力/转化效果",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-online-events",
+      "name": "线上活动",
+      "description": "策划和执行虚拟发布会/展示会/Demo Day",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-narrative-pr",
+      "name": "叙事型PR",
+      "description": "围绕开发者故事/愿景构建媒体叙事",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pm-pr-agency",
+      "name": "PR代理选择",
+      "description": "评估和管理外包PR公司的合作",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pm-reputation-recovery",
+      "name": "口碑修复",
+      "description": "遭遇差评/争议后的口碑重建策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-self-vs-publisher",
+      "name": "独立发行 vs 发行商",
+      "description": "评估自主发行和签约发行商的优劣与适用场景",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-publisher-types",
+      "name": "发行商类型",
+      "description": "3A/独立/移动/区域发行商的特点与定位",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-publisher-pitch",
+      "name": "发行商提案",
+      "description": "准备Pitch Deck向发行商展示项目价值",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pc-publisher-selection",
+      "name": "发行商选择",
+      "description": "评估发行商的资金/渠道/品牌匹配度",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-contract-basics",
+      "name": "合同基础",
+      "description": "发行合同的核心条款(权利/期限/终止/知识产权)",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-revenue-split",
+      "name": "收入分成",
+      "description": "理解和谈判预付金/分成比例/回收机制",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-milestone-payment",
+      "name": "里程碑付款",
+      "description": "基于开发里程碑的分期付款结构设计",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-ip-ownership",
+      "name": "IP归属",
+      "description": "知识产权归属权的谈判要点与保护策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-dev-funding",
+      "name": "开发资金",
+      "description": "发行商预付金/投资/MG(最低保证金)的模式",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-marketing-support",
+      "name": "营销支持",
+      "description": "发行商提供的营销资源、渠道与预算分配",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pc-qa-support",
+      "name": "QA支持",
+      "description": "发行商提供的测试资源与质量保证流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-localization-support",
+      "name": "本地化支持",
+      "description": "发行商提供的翻译/配音/文化适配资源",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-legal-review",
+      "name": "法律审查",
+      "description": "合同法律审查的要点与律师选择",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-creative-control",
+      "name": "创意控制",
+      "description": "在发行合作中维护开发团队的创意自主权",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-reporting-obligations",
+      "name": "报告义务",
+      "description": "定期向发行商汇报进度/数据的义务与格式",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-contract-exit",
+      "name": "合同退出",
+      "description": "终止发行合同的条件、流程与后果",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-multi-publisher",
+      "name": "多区域发行",
+      "description": "不同地区签约不同发行商的策略与管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-co-development",
+      "name": "联合开发",
+      "description": "与发行商旗下工作室协同开发的模式",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-pc-first-look-deal",
+      "name": "优先查看权",
+      "description": "发行商First Look/Right of First Refusal条款",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-pc-recoup-mechanism",
+      "name": "回收机制",
+      "description": "理解预付金回收/净收入/毛收入的计算方式",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-globalization-basics",
+      "name": "全球化基础",
+      "description": "游戏全球化发行的基本概念与市场分级",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-localization-basics",
+      "name": "本地化基础",
+      "description": "文本翻译/UI适配/文化调整的基本流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-regional-markets",
+      "name": "区域市场特征",
+      "description": "北美/欧洲/日韩/中国/东南亚等市场的差异",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ro-cultural-sensitivity",
+      "name": "文化敏感性",
+      "description": "识别和避免文化禁忌/刻板印象/敏感内容",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-translation-management",
+      "name": "翻译管理",
+      "description": "翻译团队管理、本地化工具与质量控制",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-voice-localization",
+      "name": "配音本地化",
+      "description": "多语言配音的录制、配音演员管理与质量把控",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-china-market",
+      "name": "中国市场",
+      "description": "中国游戏市场的政策/渠道/合作伙伴/审批流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-japan-market",
+      "name": "日本市场",
+      "description": "日本游戏市场的用户习惯/渠道/营销特点",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-currency-pricing",
+      "name": "区域定价",
+      "description": "不同地区的购买力平价定价与货币策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-regional-marketing",
+      "name": "区域营销",
+      "description": "针对不同区域市场的差异化营销策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ro-legal-compliance",
+      "name": "法律合规",
+      "description": "不同国家的游戏法规/税务/数据保护要求",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-payment-integration",
+      "name": "支付集成",
+      "description": "各区域主流支付方式(PayPal/支付宝/Line Pay)的接入",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-customer-support",
+      "name": "多语言客服",
+      "description": "建立多语言客户支持体系与工单管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-server-deployment",
+      "name": "服务器部署",
+      "description": "全球服务器部署策略与延迟优化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-content-adaptation",
+      "name": "内容适配",
+      "description": "根据区域审核要求修改游戏内容(暴力/宗教等)",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-regional-events",
+      "name": "区域活动",
+      "description": "针对特定市场的节日活动/限定内容/合作",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-market-entry",
+      "name": "市场进入策略",
+      "description": "评估新市场进入的时机、方式与风险",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-local-publishing",
+      "name": "区域发行商",
+      "description": "与本地发行商合作进入特定市场",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-ro-global-live-ops",
+      "name": "全球运营协调",
+      "description": "协调全球多时区的运营活动与更新推送",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-ro-localization-testing",
+      "name": "本地化测试",
+      "description": "本地化质量保证(LQA)与区域测试流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-esrb-basics",
+      "name": "ESRB分级",
+      "description": "北美ESRB年龄分级系统的标准与申请流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-pegi-basics",
+      "name": "PEGI分级",
+      "description": "欧洲PEGI年龄分级系统的标准与申请流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-cero-basics",
+      "name": "CERO分级",
+      "description": "日本CERO年龄分级系统的标准与申请流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 1,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-rc-iarc-system",
+      "name": "IARC系统",
+      "description": "国际年龄分级联盟(IARC)统一分级流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 1,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-content-descriptors",
+      "name": "内容描述符",
+      "description": "暴力/性/语言/赌博等内容标签的使用规范",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-loot-box-regulation",
+      "name": "抽卡/开箱规制",
+      "description": "各国对随机付费机制(Loot Box)的法律监管",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-gdpr-compliance",
+      "name": "GDPR合规",
+      "description": "欧盟通用数据保护条例在游戏中的落地",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-coppa-compliance",
+      "name": "COPPA合规",
+      "description": "美国儿童在线隐私保护法的合规要求",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-china-isbn",
+      "name": "中国版号",
+      "description": "中国游戏版号(ISBN)的申请流程与政策变化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-privacy-policy",
+      "name": "隐私政策",
+      "description": "撰写符合各国法规的游戏隐私政策文档",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-rc-terms-of-service",
+      "name": "服务条款",
+      "description": "制定用户服务条款与最终用户许可协议(EULA)",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-age-verification",
+      "name": "年龄验证",
+      "description": "实名认证和年龄门禁系统的技术实现",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-advertising-rules",
+      "name": "广告合规",
+      "description": "游戏广告中的虚假宣传/误导/合规要求",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-ip-protection",
+      "name": "知识产权保护",
+      "description": "游戏版权/商标/专利的注册与侵权防范",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 4,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-accessibility-law",
+      "name": "无障碍法规",
+      "description": "各国对游戏无障碍功能的法律要求",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-gambling-regulation",
+      "name": "赌博法规",
+      "description": "游戏内赌博元素(赌场/竞猜)的法律边界",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-anti-addiction",
+      "name": "防沉迷系统",
+      "description": "各国未成年人防沉迷政策与技术实现",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-tax-compliance",
+      "name": "税务合规",
+      "description": "跨国游戏收入的税务处理与合规要求",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 5,
+      "estimated_minutes": 30,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "pub-rc-compliance-audit",
+      "name": "合规审计",
+      "description": "定期合规检查与风险评估流程",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 5,
+      "estimated_minutes": 35,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "pub-rc-regulatory-forecast",
+      "name": "监管预判",
+      "description": "追踪全球游戏监管趋势并提前应对",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "difficulty": 5,
+      "estimated_minutes": 40,
+      "content_type": "practical",
+      "tags": [],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "pub-ms-market-research",
+      "target_id": "pub-ms-target-audience",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-target-audience",
+      "target_id": "pub-ms-competitive-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-competitive-analysis",
+      "target_id": "pub-ms-market-positioning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-market-positioning",
+      "target_id": "pub-ms-pricing-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-pricing-strategy",
+      "target_id": "pub-ms-monetization-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-monetization-model",
+      "target_id": "pub-ms-launch-timing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-launch-timing",
+      "target_id": "pub-ms-release-calendar",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-release-calendar",
+      "target_id": "pub-ms-swot-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-swot-analysis",
+      "target_id": "pub-ms-market-sizing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-market-sizing",
+      "target_id": "pub-ms-go-to-market",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-go-to-market",
+      "target_id": "pub-ms-early-access",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-early-access",
+      "target_id": "pub-ms-platform-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-platform-selection",
+      "target_id": "pub-ms-sales-forecast",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-sales-forecast",
+      "target_id": "pub-ms-lifecycle-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-lifecycle-strategy",
+      "target_id": "pub-ms-portfolio-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-portfolio-strategy",
+      "target_id": "pub-ms-data-driven-decision",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-data-driven-decision",
+      "target_id": "pub-ms-blue-ocean",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-blue-ocean",
+      "target_id": "pub-ms-post-launch-plan",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-post-launch-plan",
+      "target_id": "pub-ms-exit-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-ua-fundamentals",
+      "target_id": "pub-ua-paid-advertising",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-paid-advertising",
+      "target_id": "pub-ua-aso-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-aso-basics",
+      "target_id": "pub-ua-seo-gaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-seo-gaming",
+      "target_id": "pub-ua-social-media",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-social-media",
+      "target_id": "pub-ua-influencer-marketing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-influencer-marketing",
+      "target_id": "pub-ua-content-marketing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-content-marketing",
+      "target_id": "pub-ua-viral-mechanics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-viral-mechanics",
+      "target_id": "pub-ua-wishlist-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-wishlist-strategy",
+      "target_id": "pub-ua-ad-creative",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-ad-creative",
+      "target_id": "pub-ua-attribution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-attribution",
+      "target_id": "pub-ua-growth-hacking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-growth-hacking",
+      "target_id": "pub-ua-email-marketing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-email-marketing",
+      "target_id": "pub-ua-retargeting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-retargeting",
+      "target_id": "pub-ua-cross-promotion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-cross-promotion",
+      "target_id": "pub-ua-campaign-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-campaign-optimization",
+      "target_id": "pub-ua-ltv-prediction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-ltv-prediction",
+      "target_id": "pub-ua-cohort-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-cohort-analysis",
+      "target_id": "pub-ua-ua-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ua-ua-budget",
+      "target_id": "pub-ua-organic-vs-paid",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-identity",
+      "target_id": "pub-bb-brand-positioning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-positioning",
+      "target_id": "pub-bb-brand-story",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-story",
+      "target_id": "pub-bb-visual-identity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-visual-identity",
+      "target_id": "pub-bb-tone-of-voice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-tone-of-voice",
+      "target_id": "pub-bb-key-art",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-key-art",
+      "target_id": "pub-bb-trailer-production",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-trailer-production",
+      "target_id": "pub-bb-ip-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-ip-development",
+      "target_id": "pub-bb-store-page",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-store-page",
+      "target_id": "pub-bb-brand-guidelines",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-guidelines",
+      "target_id": "pub-bb-reputation-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-reputation-management",
+      "target_id": "pub-bb-merchandise",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-merchandise",
+      "target_id": "pub-bb-brand-collab",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-collab",
+      "target_id": "pub-bb-brand-ambassador",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-ambassador",
+      "target_id": "pub-bb-brand-refresh",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-refresh",
+      "target_id": "pub-bb-brand-measurement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-measurement",
+      "target_id": "pub-bb-brand-crisis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-crisis",
+      "target_id": "pub-bb-brand-ecosystem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-ecosystem",
+      "target_id": "pub-bb-brand-valuation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-bb-brand-valuation",
+      "target_id": "pub-bb-brand-legacy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-steam-basics",
+      "target_id": "pub-pr-ios-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-ios-basics",
+      "target_id": "pub-pr-android-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-android-basics",
+      "target_id": "pub-pr-revenue-share",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-revenue-share",
+      "target_id": "pub-pr-steam-visibility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-steam-visibility",
+      "target_id": "pub-pr-steam-sales",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-steam-sales",
+      "target_id": "pub-pr-app-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-app-review",
+      "target_id": "pub-pr-console-submission",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-console-submission",
+      "target_id": "pub-pr-iap-rules",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-iap-rules",
+      "target_id": "pub-pr-cloud-gaming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-cloud-gaming",
+      "target_id": "pub-pr-platform-features",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-platform-features",
+      "target_id": "pub-pr-update-policy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-update-policy",
+      "target_id": "pub-pr-cross-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-cross-platform",
+      "target_id": "pub-pr-platform-exclusive",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-platform-exclusive",
+      "target_id": "pub-pr-refund-policy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-refund-policy",
+      "target_id": "pub-pr-dlc-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-dlc-management",
+      "target_id": "pub-pr-platform-analytics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-platform-analytics",
+      "target_id": "pub-pr-alt-platforms",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-alt-platforms",
+      "target_id": "pub-pr-platform-negotiation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pr-platform-negotiation",
+      "target_id": "pub-pr-multi-store",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-community-building",
+      "target_id": "pub-co-community-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-community-management",
+      "target_id": "pub-co-player-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-player-feedback",
+      "target_id": "pub-co-discord-ops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-discord-ops",
+      "target_id": "pub-co-ugc-cultivation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-ugc-cultivation",
+      "target_id": "pub-co-community-events",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-community-events",
+      "target_id": "pub-co-beta-program",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-beta-program",
+      "target_id": "pub-co-moderation-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-moderation-tools",
+      "target_id": "pub-co-community-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-community-metrics",
+      "target_id": "pub-co-devlog-communication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-devlog-communication",
+      "target_id": "pub-co-toxicity-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-toxicity-management",
+      "target_id": "pub-co-feedback-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-feedback-loop",
+      "target_id": "pub-co-ambassador-program",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-ambassador-program",
+      "target_id": "pub-co-localized-community",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-localized-community",
+      "target_id": "pub-co-crisis-communication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-crisis-communication",
+      "target_id": "pub-co-community-monetization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-community-monetization",
+      "target_id": "pub-co-player-council",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-player-council",
+      "target_id": "pub-co-community-analytics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-community-analytics",
+      "target_id": "pub-co-community-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-co-community-scaling",
+      "target_id": "pub-co-community-culture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-press-kit",
+      "target_id": "pub-pm-media-list",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-media-list",
+      "target_id": "pub-pm-press-release",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-press-release",
+      "target_id": "pub-pm-pitch-email",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-pitch-email",
+      "target_id": "pub-pm-review-copies",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-review-copies",
+      "target_id": "pub-pm-embargo-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-embargo-strategy",
+      "target_id": "pub-pm-kol-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-kol-management",
+      "target_id": "pub-pm-showcase-events",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-showcase-events",
+      "target_id": "pub-pm-media-monitoring",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-media-monitoring",
+      "target_id": "pub-pm-interview-prep",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-interview-prep",
+      "target_id": "pub-pm-crisis-pr",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-crisis-pr",
+      "target_id": "pub-pm-awards-submission",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-awards-submission",
+      "target_id": "pub-pm-streaming-events",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-streaming-events",
+      "target_id": "pub-pm-media-partnership",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-media-partnership",
+      "target_id": "pub-pm-pr-timeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-pr-timeline",
+      "target_id": "pub-pm-pr-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-pr-metrics",
+      "target_id": "pub-pm-online-events",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-online-events",
+      "target_id": "pub-pm-narrative-pr",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-narrative-pr",
+      "target_id": "pub-pm-pr-agency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pm-pr-agency",
+      "target_id": "pub-pm-reputation-recovery",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-self-vs-publisher",
+      "target_id": "pub-pc-publisher-types",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-publisher-types",
+      "target_id": "pub-pc-publisher-pitch",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-publisher-pitch",
+      "target_id": "pub-pc-publisher-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-publisher-selection",
+      "target_id": "pub-pc-contract-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-contract-basics",
+      "target_id": "pub-pc-revenue-split",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-revenue-split",
+      "target_id": "pub-pc-milestone-payment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-milestone-payment",
+      "target_id": "pub-pc-ip-ownership",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-ip-ownership",
+      "target_id": "pub-pc-dev-funding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-dev-funding",
+      "target_id": "pub-pc-marketing-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-marketing-support",
+      "target_id": "pub-pc-qa-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-qa-support",
+      "target_id": "pub-pc-localization-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-localization-support",
+      "target_id": "pub-pc-legal-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-legal-review",
+      "target_id": "pub-pc-creative-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-creative-control",
+      "target_id": "pub-pc-reporting-obligations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-reporting-obligations",
+      "target_id": "pub-pc-contract-exit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-contract-exit",
+      "target_id": "pub-pc-multi-publisher",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-multi-publisher",
+      "target_id": "pub-pc-co-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-co-development",
+      "target_id": "pub-pc-first-look-deal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-first-look-deal",
+      "target_id": "pub-pc-recoup-mechanism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-globalization-basics",
+      "target_id": "pub-ro-localization-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-localization-basics",
+      "target_id": "pub-ro-regional-markets",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-regional-markets",
+      "target_id": "pub-ro-cultural-sensitivity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-cultural-sensitivity",
+      "target_id": "pub-ro-translation-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-translation-management",
+      "target_id": "pub-ro-voice-localization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-voice-localization",
+      "target_id": "pub-ro-china-market",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-china-market",
+      "target_id": "pub-ro-japan-market",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-japan-market",
+      "target_id": "pub-ro-currency-pricing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-currency-pricing",
+      "target_id": "pub-ro-regional-marketing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-regional-marketing",
+      "target_id": "pub-ro-legal-compliance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-legal-compliance",
+      "target_id": "pub-ro-payment-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-payment-integration",
+      "target_id": "pub-ro-customer-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-customer-support",
+      "target_id": "pub-ro-server-deployment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-server-deployment",
+      "target_id": "pub-ro-content-adaptation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-content-adaptation",
+      "target_id": "pub-ro-regional-events",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-regional-events",
+      "target_id": "pub-ro-market-entry",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-market-entry",
+      "target_id": "pub-ro-local-publishing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-local-publishing",
+      "target_id": "pub-ro-global-live-ops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ro-global-live-ops",
+      "target_id": "pub-ro-localization-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-esrb-basics",
+      "target_id": "pub-rc-pegi-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-pegi-basics",
+      "target_id": "pub-rc-cero-basics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-cero-basics",
+      "target_id": "pub-rc-iarc-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-iarc-system",
+      "target_id": "pub-rc-content-descriptors",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-content-descriptors",
+      "target_id": "pub-rc-loot-box-regulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-loot-box-regulation",
+      "target_id": "pub-rc-gdpr-compliance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-gdpr-compliance",
+      "target_id": "pub-rc-coppa-compliance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-coppa-compliance",
+      "target_id": "pub-rc-china-isbn",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-china-isbn",
+      "target_id": "pub-rc-privacy-policy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-privacy-policy",
+      "target_id": "pub-rc-terms-of-service",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-terms-of-service",
+      "target_id": "pub-rc-age-verification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-age-verification",
+      "target_id": "pub-rc-advertising-rules",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-advertising-rules",
+      "target_id": "pub-rc-ip-protection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-ip-protection",
+      "target_id": "pub-rc-accessibility-law",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-accessibility-law",
+      "target_id": "pub-rc-gambling-regulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-gambling-regulation",
+      "target_id": "pub-rc-anti-addiction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-anti-addiction",
+      "target_id": "pub-rc-tax-compliance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-tax-compliance",
+      "target_id": "pub-rc-compliance-audit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-compliance-audit",
+      "target_id": "pub-rc-regulatory-forecast",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-ms-pricing-strategy",
+      "target_id": "pub-ua-ua-fundamentals",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pub-ms-go-to-market",
+      "target_id": "pub-ua-paid-advertising",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pub-ms-market-positioning",
+      "target_id": "pub-bb-brand-positioning",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pub-ms-lifecycle-strategy",
+      "target_id": "pub-bb-brand-refresh",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "pub-ua-social-media",
+      "target_id": "pub-bb-key-art",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "pub-ua-influencer-marketing",
+      "target_id": "pub-bb-brand-ambassador",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pub-pr-revenue-share",
+      "target_id": "pub-ms-pricing-strategy",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pub-pr-steam-basics",
+      "target_id": "pub-ms-platform-selection",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pub-co-ugc-cultivation",
+      "target_id": "pub-bb-brand-ecosystem",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "pub-co-community-culture",
+      "target_id": "pub-bb-brand-story",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "pub-pm-press-kit",
+      "target_id": "pub-bb-visual-identity",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pub-pm-crisis-pr",
+      "target_id": "pub-bb-brand-crisis",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-pc-marketing-support",
+      "target_id": "pub-ms-go-to-market",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pub-pc-self-vs-publisher",
+      "target_id": "pub-ms-market-positioning",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "pub-ro-legal-compliance",
+      "target_id": "pub-rc-gdpr-compliance",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pub-ro-china-market",
+      "target_id": "pub-rc-china-isbn",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pub-rc-iarc-system",
+      "target_id": "pub-pr-app-review",
+      "relation_type": "related",
+      "strength": 0.5
+    },
+    {
+      "source_id": "pub-rc-loot-box-regulation",
+      "target_id": "pub-pr-iap-rules",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pub-pm-streaming-events",
+      "target_id": "pub-co-community-events",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "pub-pm-crisis-pr",
+      "target_id": "pub-co-crisis-communication",
+      "relation_type": "related",
+      "strength": 0.7
+    }
+  ],
+  "milestones": [
+    {
+      "concept_id": "pub-ms-competitive-analysis",
+      "name": "竞品分析",
+      "description": "掌握竞品分析的核心理论与实践方法",
+      "order": 1
+    },
+    {
+      "concept_id": "pub-ms-market-sizing",
+      "name": "市场规模估算",
+      "description": "掌握市场规模估算的核心理论与实践方法",
+      "order": 2
+    },
+    {
+      "concept_id": "pub-ms-post-launch-plan",
+      "name": "上线后规划",
+      "description": "掌握上线后规划的核心理论与实践方法",
+      "order": 3
+    },
+    {
+      "concept_id": "pub-ua-aso-basics",
+      "name": "ASO基础",
+      "description": "掌握ASO基础的核心理论与实践方法",
+      "order": 4
+    },
+    {
+      "concept_id": "pub-ua-ad-creative",
+      "name": "广告素材制作",
+      "description": "掌握广告素材制作的核心理论与实践方法",
+      "order": 5
+    },
+    {
+      "concept_id": "pub-ua-ua-budget",
+      "name": "UA预算规划",
+      "description": "掌握UA预算规划的核心理论与实践方法",
+      "order": 6
+    },
+    {
+      "concept_id": "pub-bb-brand-story",
+      "name": "品牌叙事",
+      "description": "掌握品牌叙事的核心理论与实践方法",
+      "order": 7
+    },
+    {
+      "concept_id": "pub-bb-brand-guidelines",
+      "name": "品牌规范手册",
+      "description": "掌握品牌规范手册的核心理论与实践方法",
+      "order": 8
+    },
+    {
+      "concept_id": "pub-bb-brand-valuation",
+      "name": "品牌价值评估",
+      "description": "掌握品牌价值评估的核心理论与实践方法",
+      "order": 9
+    },
+    {
+      "concept_id": "pub-pr-android-basics",
+      "name": "Android发行基础",
+      "description": "掌握Android发行基础的核心理论与实践方法",
+      "order": 10
+    },
+    {
+      "concept_id": "pub-pr-cloud-gaming",
+      "name": "云游戏平台",
+      "description": "掌握云游戏平台的核心理论与实践方法",
+      "order": 11
+    },
+    {
+      "concept_id": "pub-pr-platform-negotiation",
+      "name": "平台谈判",
+      "description": "掌握平台谈判的核心理论与实践方法",
+      "order": 12
+    },
+    {
+      "concept_id": "pub-co-player-feedback",
+      "name": "玩家反馈收集",
+      "description": "掌握玩家反馈收集的核心理论与实践方法",
+      "order": 13
+    },
+    {
+      "concept_id": "pub-co-devlog-communication",
+      "name": "开发日志",
+      "description": "掌握开发日志的核心理论与实践方法",
+      "order": 14
+    },
+    {
+      "concept_id": "pub-co-community-scaling",
+      "name": "社区扩展",
+      "description": "掌握社区扩展的核心理论与实践方法",
+      "order": 15
+    },
+    {
+      "concept_id": "pub-pm-press-release",
+      "name": "新闻稿撰写",
+      "description": "掌握新闻稿撰写的核心理论与实践方法",
+      "order": 16
+    },
+    {
+      "concept_id": "pub-pm-interview-prep",
+      "name": "采访准备",
+      "description": "掌握采访准备的核心理论与实践方法",
+      "order": 17
+    },
+    {
+      "concept_id": "pub-pm-pr-agency",
+      "name": "PR代理选择",
+      "description": "掌握PR代理选择的核心理论与实践方法",
+      "order": 18
+    },
+    {
+      "concept_id": "pub-pc-publisher-pitch",
+      "name": "发行商提案",
+      "description": "掌握发行商提案的核心理论与实践方法",
+      "order": 19
+    },
+    {
+      "concept_id": "pub-pc-marketing-support",
+      "name": "营销支持",
+      "description": "掌握营销支持的核心理论与实践方法",
+      "order": 20
+    },
+    {
+      "concept_id": "pub-pc-first-look-deal",
+      "name": "优先查看权",
+      "description": "掌握优先查看权的核心理论与实践方法",
+      "order": 21
+    },
+    {
+      "concept_id": "pub-ro-regional-markets",
+      "name": "区域市场特征",
+      "description": "掌握区域市场特征的核心理论与实践方法",
+      "order": 22
+    },
+    {
+      "concept_id": "pub-ro-regional-marketing",
+      "name": "区域营销",
+      "description": "掌握区域营销的核心理论与实践方法",
+      "order": 23
+    },
+    {
+      "concept_id": "pub-ro-global-live-ops",
+      "name": "全球运营协调",
+      "description": "掌握全球运营协调的核心理论与实践方法",
+      "order": 24
+    },
+    {
+      "concept_id": "pub-rc-cero-basics",
+      "name": "CERO分级",
+      "description": "掌握CERO分级的核心理论与实践方法",
+      "order": 25
+    },
+    {
+      "concept_id": "pub-rc-privacy-policy",
+      "name": "隐私政策",
+      "description": "掌握隐私政策的核心理论与实践方法",
+      "order": 26
+    },
+    {
+      "concept_id": "pub-rc-compliance-audit",
+      "name": "合规审计",
+      "description": "掌握合规审计的核心理论与实践方法",
+      "order": 27
+    }
+  ]
+}

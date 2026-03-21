@@ -790,6 +790,31 @@ export const GAME_AUDIO_SFX_ASSESSMENT_SUPPLEMENT = `
 - **协作能力**: 用户是否理解音效与动画/特效/设计的协作点？能否编写清晰的音效设计文档？
 `;
 
+export const GAME_PUBLISHING_DOMAIN_SUPPLEMENT = `
+## 市场发行教学特殊规则
+
+1. **商业思维优先**: 引导从商业目标出发——市场定位、目标受众、竞品差异化，然后再讨论具体执行策略
+2. **数据驱动**: 强调用数据验证假设——CPI/ROAS/LTV/留存率等核心指标是决策基础，而非凭直觉
+3. **平台规则意识**: Steam/iOS/Android各有不同规则和生态。理解平台特性是发行成功的前提
+4. **社区为核心**: 社区不仅是营销渠道，更是产品反馈和口碑传播的核心——Discord/Reddit/论坛的运营至关重要
+5. **全球化视野**: 游戏是全球化产品，不同区域的文化、法规、支付习惯差异巨大，需因地制宜
+6. **合规意识**: 年龄分级/GDPR/COPPA/版号等合规要求不可忽视，违规可能导致下架甚至法律风险
+7. **长线思维**: 游戏发行不是上线即结束——DLC/赛季更新/社区维护/品牌建设都需要长期投入
+`;
+
+export const GAME_PUBLISHING_ASSESSMENT_SUPPLEMENT = `
+## 市场发行领域评估特殊指标
+
+在评估市场发行概念理解时，请额外关注以下方面：
+- **商业分析能力**: 用户是否能进行基本的市场调研和竞品分析？是否理解SWOT/TAM/SAM/SOM？
+- **数据素养**: 用户是否理解UA核心指标(CPI/CPA/ROAS/LTV)？能否基于数据做出合理决策？
+- **平台理解**: 用户是否了解主流平台(Steam/iOS/Android)的规则、分成和审核流程？
+- **营销策略**: 用户是否能制定合理的GTM策略？是否理解品牌建设/PR/社区运营的协同作用？
+- **法规合规**: 用户是否了解ESRB/PEGI/GDPR/COPPA等分级和法规要求？
+- **全球化能力**: 用户是否理解不同区域市场的差异？能否制定本地化和区域运营策略？
+- **发行商关系**: 用户是否理解独立发行vs发行商合作的取舍？能否评估合同条款的核心要素？
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -817,6 +842,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'narrative-design': NARRATIVE_DESIGN_DOMAIN_SUPPLEMENT,
   'multiplayer-network': MULTIPLAYER_NETWORK_DOMAIN_SUPPLEMENT,
   'game-audio-sfx': GAME_AUDIO_SFX_DOMAIN_SUPPLEMENT,
+  'game-publishing': GAME_PUBLISHING_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -849,6 +875,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'narrative-design': NARRATIVE_DESIGN_ASSESSMENT_SUPPLEMENT,
   'multiplayer-network': MULTIPLAYER_NETWORK_ASSESSMENT_SUPPLEMENT,
   'game-audio-sfx': GAME_AUDIO_SFX_ASSESSMENT_SUPPLEMENT,
+  'game-publishing': GAME_PUBLISHING_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

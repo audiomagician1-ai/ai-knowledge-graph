@@ -3530,6 +3530,638 @@
       "target_id": "cd-env-narrative-env",
       "relation": "related",
       "description": "视觉叙事与叙事性环境设计"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-na-client-server",
+      "target_domain": "game-engine",
+      "target_id": "ue5-networking",
+      "relation": "related",
+      "description": "网络架构是游戏引擎网络模块的核心设计模式"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ss-state-replication",
+      "target_domain": "game-engine",
+      "target_id": "ue5-networking",
+      "relation": "related",
+      "description": "状态复制是UE5引擎级网络同步的核心功能"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ls-deterministic-lockstep",
+      "target_domain": "game-engine",
+      "target_id": "unity-physics",
+      "relation": "related",
+      "description": "确定性帧同步要求引擎物理系统完全确定性"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ch-asset-bundle",
+      "target_domain": "game-engine",
+      "target_id": "ue5-data-asset",
+      "relation": "related",
+      "description": "热更新资源包依赖引擎的资产管理系统"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-sa-microservices",
+      "target_domain": "software-engineering",
+      "target_id": "se-microservices",
+      "relation": "related",
+      "description": "游戏后端微服务架构遵循软件工程微服务设计原则"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-sa-devops-gameserver",
+      "target_domain": "software-engineering",
+      "target_id": "se-cicd-intro",
+      "relation": "related",
+      "description": "游戏服务器DevOps依赖CI/CD管线"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-db-sql-vs-nosql",
+      "target_domain": "software-engineering",
+      "target_id": "se-database-arch",
+      "relation": "related",
+      "description": "游戏数据库选型遵循软件工程数据库设计原则"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-sa-message-queue",
+      "target_domain": "software-engineering",
+      "target_id": "se-event-queue",
+      "relation": "related",
+      "description": "游戏后端消息队列遵循分布式消息传递模式"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-mm-sbmm",
+      "target_domain": "game-design",
+      "target_id": "difficulty-overview",
+      "relation": "related",
+      "description": "技能匹配通过控制对手强度实现难度曲线"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ac-economy-protection",
+      "target_domain": "game-design",
+      "target_id": "currency-design",
+      "relation": "related",
+      "description": "经济保护防止虚拟货币系统被作弊破坏"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-chat-system",
+      "target_domain": "game-design",
+      "target_id": "social-design-intro",
+      "relation": "related",
+      "description": "聊天系统是游戏社交系统的技术实现"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lr-leaderboard-design",
+      "target_domain": "game-design",
+      "target_id": "hit-feedback",
+      "relation": "related",
+      "description": "排行榜是玩家进度反馈的重要呈现形式"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-room-browser",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-menu-system-overview",
+      "relation": "related",
+      "description": "房间列表UI是菜单系统的典型复杂页面"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-queue-status",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-hud-design-overview",
+      "relation": "related",
+      "description": "匹配队列状态通过HUD状态指示器展示"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lr-data-visualization",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-hud-minimap",
+      "relation": "related",
+      "description": "玩家统计数据可视化复用UI数据展示组件"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ss-interest-management",
+      "target_domain": "level-design",
+      "target_id": "spatial-storytelling",
+      "relation": "related",
+      "description": "AOI兴趣管理依赖关卡的空间分区策略"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-mm-map-selection",
+      "target_domain": "level-design",
+      "target_id": "layout-guidance",
+      "relation": "related",
+      "description": "地图选择机制需要考虑关卡设计的平衡性"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ss-animation-sync",
+      "target_domain": "animation",
+      "target_id": "anim-sub-state-machine",
+      "relation": "related",
+      "description": "网络动画同步需要同步动画状态机状态"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-chat-system",
+      "target_domain": "narrative-design",
+      "target_id": "nd-ds-dialogue-tree",
+      "relation": "related",
+      "description": "多人聊天系统与NPC对话系统共用部分技术"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-clan-guild",
+      "target_domain": "narrative-design",
+      "target_id": "nd-wb-faction-design",
+      "relation": "related",
+      "description": "公会系统与叙事阵营系统在社交结构上相关"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ch-asset-bundle",
+      "target_domain": "technical-art",
+      "target_id": "ta-gpu-pipeline",
+      "relation": "related",
+      "description": "资源包热更新依赖技术美术的构建管线"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ss-bandwidth-optimization",
+      "target_domain": "vfx",
+      "target_id": "vfx-particle-overview",
+      "relation": "related",
+      "description": "带宽优化限制网络同步的粒子特效数量"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-mm-eomm",
+      "target_domain": "psychology",
+      "target_id": "motivation-behavioral",
+      "relation": "related",
+      "description": "参与度优化匹配利用内在/外在动机理论"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-social-features",
+      "target_domain": "concept-design",
+      "target_id": "cd-char-expression-sheet",
+      "relation": "related",
+      "description": "玩家社交档案展示角色设计的视觉形象"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-sa-server-orchestration",
+      "target_domain": "game-engine",
+      "target_id": "network-profiling",
+      "relation": "related",
+      "description": "服务器编排监控依赖游戏引擎的网络性能分析工具"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-dsp-reverb-types",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-reverb-delay",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "混响技术在音乐和音效中的共享应用"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-am-wwise-overview",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-wwise-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "Wwise中间件同时管理音效和音乐"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-am-fmod-overview",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-fmod-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "FMOD中间件同时管理音效和音乐"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-as-dynamic-mix",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-dynamic-mixing",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "动态混音同时影响环境声和音乐"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-as-music-ambient-blend",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-adaptive-overview",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "环境音与自适应音乐的融合"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-am-game-integration",
+      "target_domain": "game-engine",
+      "target_id": "audio-system-intro",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "音频中间件与游戏引擎音频系统的集成"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sa-3d-audio-basics",
+      "target_domain": "game-engine",
+      "target_id": "audio-source-listener",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "3D音频基础与引擎Audio Source/Listener"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-fr-footsteps",
+      "target_domain": "animation",
+      "target_id": "anim-notify-event",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "脚步音与动画通知事件的同步"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-dp-lip-sync",
+      "target_domain": "animation",
+      "target_id": "anim-blend-basics",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "口型同步与动画混合技术"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sdt-impact-design",
+      "target_domain": "vfx",
+      "target_id": "vfx-niagara-emitter",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "打击感音效与粒子特效的协同"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sdt-layering",
+      "target_domain": "vfx",
+      "target_id": "vfx-particle-overview",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "音效分层与粒子特效的同步设计"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sdt-feedback-loop",
+      "target_domain": "game-design",
+      "target_id": "feedback-intro",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "音频反馈是游戏反馈系统的核心组成"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sdt-ui-sound",
+      "target_domain": "game-design",
+      "target_id": "juice-design",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "UI音效是游戏手感(Juice)的关键元素"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sdt-ui-sound",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-feedback-overview",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "UI音效与交互反馈的配合"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sdt-sound-storytelling",
+      "target_domain": "narrative-design",
+      "target_id": "nd-es-prop-storytelling",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "声音叙事与道具叙事的互补"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-dp-interactive-dialogue",
+      "target_domain": "narrative-design",
+      "target_id": "nd-ds-dialogue-tree",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "交互式对白与对话树系统的集成"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-am-plugin-development",
+      "target_domain": "technical-art",
+      "target_id": "ta-ue-python",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "音频插件开发与UE Python脚本"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-as-zone-based",
+      "target_domain": "level-design",
+      "target_id": "spatial-hierarchy",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "区域音效与关卡空间层级的对应"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-dp-voice-recording",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-lb-voice-chat",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "语音录制技术与多人语音聊天"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-am-source-control",
+      "target_domain": "software-engineering",
+      "target_id": "se-git-basics",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "音频项目的版本控制实践"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-ao-regression-testing",
+      "target_domain": "software-engineering",
+      "target_id": "se-unit-test",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "音效回归测试与单元测试方法论"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sdt-psychoacoustics",
+      "target_domain": "psychology",
+      "target_id": "perception",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "声音心理学与知觉心理学的交叉"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sdt-emotional-design",
+      "target_domain": "psychology",
+      "target_id": "emotional-intelligence",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "声音情感设计与情绪智力"
+    },
+    {
+      "source_domain": "game-audio-sfx",
+      "source_id": "sfx-sa-sound-propagation",
+      "target_domain": "physics",
+      "target_id": "sound-waves",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "声波传播物理特性"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-target-audience",
+      "target_domain": "game-design",
+      "target_id": "bartle-types",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "目标受众分析与玩家类型理论"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-monetization-model",
+      "target_domain": "game-design",
+      "target_id": "game-economy-intro",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "变现模式与游戏内虚拟经济设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-lifecycle-strategy",
+      "target_domain": "game-design",
+      "target_id": "meta-game",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "产品生命周期与元游戏系统设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-bb-store-page",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-icon-overview",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "商店页面优化与图标系统设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-bb-visual-identity",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-typo-hierarchy",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "视觉识别系统与视觉层级设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-bb-brand-story",
+      "target_domain": "narrative-design",
+      "target_id": "nd-wb-worldbuilding-scope",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "品牌叙事与世界观圣经"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ro-voice-localization",
+      "target_domain": "narrative-design",
+      "target_id": "nd-lo-voice-localization",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "配音本地化与叙事本地化管线"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pr-platform-features",
+      "target_domain": "software-engineering",
+      "target_id": "se-api-design",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "平台功能接入与API设计"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ua-attribution",
+      "target_domain": "software-engineering",
+      "target_id": "se-database-arch",
+      "relation": "related",
+      "strength": 0.4,
+      "description": "归因分析数据处理与数据库基础"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ro-server-deployment",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-na-dedicated-server",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "全球服务器部署与云托管"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pr-update-policy",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-ch-cdn-basics",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "更新政策与CDN热更新"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-pricing-strategy",
+      "target_domain": "economics",
+      "target_id": "supply-demand",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "游戏定价策略与价格理论"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ms-market-sizing",
+      "target_domain": "economics",
+      "target_id": "microeconomics-overview",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "市场规模估算与市场结构"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-co-toxicity-management",
+      "target_domain": "psychology",
+      "target_id": "group-dynamics",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "毒性管理与群体动力学"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ua-viral-mechanics",
+      "target_domain": "psychology",
+      "target_id": "persuasion",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "病毒传播机制与说服心理学"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pm-press-release",
+      "target_domain": "english",
+      "target_id": "academic-vocabulary",
+      "relation": "related",
+      "strength": 0.4,
+      "description": "新闻稿撰写与写作技巧"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ro-localization-basics",
+      "target_domain": "english",
+      "target_id": "intensive-reading",
+      "relation": "related",
+      "strength": 0.4,
+      "description": "本地化基础与阅读理解策略"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-ua-content-marketing",
+      "target_domain": "writing",
+      "target_id": "content-marketing",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "内容营销与博客写作"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-co-player-feedback",
+      "target_domain": "product-design",
+      "target_id": "user-research-overview",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "玩家反馈收集与用户研究"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-bb-key-art",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-intro",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "Key Art创作与风格指南"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pc-revenue-split",
+      "target_domain": "finance",
+      "target_id": "risk-return-tradeoff",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "收入分成与风险收益关系"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-rc-tax-compliance",
+      "target_domain": "finance",
+      "target_id": "tax-basics",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "税务合规与所得税"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-pr-cross-platform",
+      "target_domain": "game-engine",
+      "target_id": "console-development",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "跨平台发行与主机移植"
+    },
+    {
+      "source_domain": "game-publishing",
+      "source_id": "pub-co-beta-program",
+      "target_domain": "level-design",
+      "target_id": "playtest-report",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "测试计划与关卡测试"
     }
   ],
   "meta": {
@@ -3564,7 +4196,8 @@
       "game-engine_software-engineering": 5,
       "software-engineering_game-design": 6,
       "software-engineering_level-design": 4
-    }
+    },
+    "total": 487
   },
   "total": 298,
   "_stats": {

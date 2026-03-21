@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2845,4 +2845,79 @@ async def test_game_audio_sfx_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "sfx-am-wwise-overview"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Phase 33: Game Publishing (game-publishing) Tests ──────────────────
+
+
+@pytest.mark.asyncio
+async def test_game_publishing_seed():
+    """Game Publishing seed graph: 180 concepts, 191 edges, 9 subdomains, 27 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=game-publishing")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 180, f"Expected 180 concepts, got {len(nodes)}"
+        assert len(edges) >= 180, f"Expected >= 180 edges, got {len(edges)}"
+        subdomain_ids = {n["subdomain_id"] for n in nodes}
+        assert len(subdomain_ids) == 9, f"Expected 9 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 27, f"Expected 27 milestones, got {len(milestones)}"
+        assert all(n["domain_id"] == "game-publishing" for n in nodes)
+
+
+@pytest.mark.asyncio
+async def test_game_publishing_rag():
+    """Game Publishing RAG stats should reflect 180 documents across 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=game-publishing")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 180
+        assert len(data.get("by_subdomain", {})) == 9
+
+
+@pytest.mark.asyncio
+async def test_game_publishing_cross_links():
+    """Game Publishing should have cross-sphere links."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=game-publishing")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 20, f"Expected >= 20 cross-links, got {len(links)}"
+
+
+def test_game_publishing_supplements():
+    """Game Publishing domain/assessment supplements should be registered."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "game-publishing" in DOMAIN_SUPPLEMENTS, "game-publishing missing from DOMAIN_SUPPLEMENTS"
+    assert "game-publishing" in ASSESSMENT_SUPPLEMENTS, "game-publishing missing from ASSESSMENT_SUPPLEMENTS"
+    assert "商业思维" in DOMAIN_SUPPLEMENTS["game-publishing"], "Publishing supplement should mention 商业思维"
+    assert "ESRB" in ASSESSMENT_SUPPLEMENTS["game-publishing"], "Publishing assessment should mention ESRB"
+
+
+@pytest.mark.asyncio
+async def test_game_publishing_concept_detail():
+    """Game Publishing concept detail should return valid data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/pub-ms-market-research?domain=game-publishing")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "pub-ms-market-research"
+        assert data["name"] == "市场调研"
+        assert data["domain_id"] == "game-publishing"
+
+
+@pytest.mark.asyncio
+async def test_game_publishing_neighbors():
+    """Game Publishing concept should have neighbors."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/pub-ms-market-research/neighbors?domain=game-publishing&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "pub-ms-market-research"
         assert len(data["nodes"]) >= 2

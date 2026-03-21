@@ -285,6 +285,17 @@
       "rag_dir": "game-audio-sfx",
       "is_active": true,
       "sort_order": 26
+    },
+    {
+      "id": "game-publishing",
+      "name": "市场发行",
+      "description": "市场发行知识体系，覆盖市场策略、用户获取(UA)、品牌建设、平台规则(Steam/iOS/Android)、社区运营、PR/媒体关系、发行商合作、地区化运营与评级/合规",
+      "icon": "📢",
+      "color": "#be123c",
+      "seed_dir": "game-publishing",
+      "rag_dir": "game-publishing",
+      "is_active": true,
+      "sort_order": 27
     }
   ]
 }

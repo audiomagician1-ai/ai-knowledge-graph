@@ -1,0 +1,1104 @@
+{
+  "version": "1.0",
+  "domain": "game-publishing",
+  "domain_name": "市场发行",
+  "generated_at": "2026-03-21T01:50:52.847Z",
+  "total_concepts": 180,
+  "stats": {
+    "total_docs": 180,
+    "total_chars": 140013,
+    "by_subdomain": {
+      "market-strategy": 20,
+      "user-acquisition": 20,
+      "brand-building": 20,
+      "platform-rules": 20,
+      "community-ops": 20,
+      "pr-media": 20,
+      "publisher-collab": 20,
+      "regional-ops": 20,
+      "rating-compliance": 20
+    }
+  },
+  "documents": [
+    {
+      "id": "pub-ms-market-research",
+      "file": "pub-ms-market-research.md",
+      "subdomain": "market-strategy",
+      "chars": 775
+    },
+    {
+      "id": "pub-ms-target-audience",
+      "file": "pub-ms-target-audience.md",
+      "subdomain": "market-strategy",
+      "chars": 783
+    },
+    {
+      "id": "pub-ms-competitive-analysis",
+      "file": "pub-ms-competitive-analysis.md",
+      "subdomain": "market-strategy",
+      "chars": 778
+    },
+    {
+      "id": "pub-ms-market-positioning",
+      "file": "pub-ms-market-positioning.md",
+      "subdomain": "market-strategy",
+      "chars": 773
+    },
+    {
+      "id": "pub-ms-pricing-strategy",
+      "file": "pub-ms-pricing-strategy.md",
+      "subdomain": "market-strategy",
+      "chars": 776
+    },
+    {
+      "id": "pub-ms-monetization-model",
+      "file": "pub-ms-monetization-model.md",
+      "subdomain": "market-strategy",
+      "chars": 790
+    },
+    {
+      "id": "pub-ms-launch-timing",
+      "file": "pub-ms-launch-timing.md",
+      "subdomain": "market-strategy",
+      "chars": 768
+    },
+    {
+      "id": "pub-ms-release-calendar",
+      "file": "pub-ms-release-calendar.md",
+      "subdomain": "market-strategy",
+      "chars": 766
+    },
+    {
+      "id": "pub-ms-swot-analysis",
+      "file": "pub-ms-swot-analysis.md",
+      "subdomain": "market-strategy",
+      "chars": 783
+    },
+    {
+      "id": "pub-ms-market-sizing",
+      "file": "pub-ms-market-sizing.md",
+      "subdomain": "market-strategy",
+      "chars": 782
+    },
+    {
+      "id": "pub-ms-go-to-market",
+      "file": "pub-ms-go-to-market.md",
+      "subdomain": "market-strategy",
+      "chars": 772
+    },
+    {
+      "id": "pub-ms-early-access",
+      "file": "pub-ms-early-access.md",
+      "subdomain": "market-strategy",
+      "chars": 838
+    },
+    {
+      "id": "pub-ms-platform-selection",
+      "file": "pub-ms-platform-selection.md",
+      "subdomain": "market-strategy",
+      "chars": 773
+    },
+    {
+      "id": "pub-ms-sales-forecast",
+      "file": "pub-ms-sales-forecast.md",
+      "subdomain": "market-strategy",
+      "chars": 767
+    },
+    {
+      "id": "pub-ms-lifecycle-strategy",
+      "file": "pub-ms-lifecycle-strategy.md",
+      "subdomain": "market-strategy",
+      "chars": 784
+    },
+    {
+      "id": "pub-ms-portfolio-strategy",
+      "file": "pub-ms-portfolio-strategy.md",
+      "subdomain": "market-strategy",
+      "chars": 779
+    },
+    {
+      "id": "pub-ms-data-driven-decision",
+      "file": "pub-ms-data-driven-decision.md",
+      "subdomain": "market-strategy",
+      "chars": 787
+    },
+    {
+      "id": "pub-ms-blue-ocean",
+      "file": "pub-ms-blue-ocean.md",
+      "subdomain": "market-strategy",
+      "chars": 762
+    },
+    {
+      "id": "pub-ms-post-launch-plan",
+      "file": "pub-ms-post-launch-plan.md",
+      "subdomain": "market-strategy",
+      "chars": 778
+    },
+    {
+      "id": "pub-ms-exit-strategy",
+      "file": "pub-ms-exit-strategy.md",
+      "subdomain": "market-strategy",
+      "chars": 767
+    },
+    {
+      "id": "pub-ua-ua-fundamentals",
+      "file": "pub-ua-ua-fundamentals.md",
+      "subdomain": "user-acquisition",
+      "chars": 790
+    },
+    {
+      "id": "pub-ua-paid-advertising",
+      "file": "pub-ua-paid-advertising.md",
+      "subdomain": "user-acquisition",
+      "chars": 811
+    },
+    {
+      "id": "pub-ua-aso-basics",
+      "file": "pub-ua-aso-basics.md",
+      "subdomain": "user-acquisition",
+      "chars": 785
+    },
+    {
+      "id": "pub-ua-seo-gaming",
+      "file": "pub-ua-seo-gaming.md",
+      "subdomain": "user-acquisition",
+      "chars": 784
+    },
+    {
+      "id": "pub-ua-social-media",
+      "file": "pub-ua-social-media.md",
+      "subdomain": "user-acquisition",
+      "chars": 806
+    },
+    {
+      "id": "pub-ua-influencer-marketing",
+      "file": "pub-ua-influencer-marketing.md",
+      "subdomain": "user-acquisition",
+      "chars": 795
+    },
+    {
+      "id": "pub-ua-content-marketing",
+      "file": "pub-ua-content-marketing.md",
+      "subdomain": "user-acquisition",
+      "chars": 785
+    },
+    {
+      "id": "pub-ua-viral-mechanics",
+      "file": "pub-ua-viral-mechanics.md",
+      "subdomain": "user-acquisition",
+      "chars": 796
+    },
+    {
+      "id": "pub-ua-wishlist-strategy",
+      "file": "pub-ua-wishlist-strategy.md",
+      "subdomain": "user-acquisition",
+      "chars": 791
+    },
+    {
+      "id": "pub-ua-ad-creative",
+      "file": "pub-ua-ad-creative.md",
+      "subdomain": "user-acquisition",
+      "chars": 794
+    },
+    {
+      "id": "pub-ua-attribution",
+      "file": "pub-ua-attribution.md",
+      "subdomain": "user-acquisition",
+      "chars": 776
+    },
+    {
+      "id": "pub-ua-growth-hacking",
+      "file": "pub-ua-growth-hacking.md",
+      "subdomain": "user-acquisition",
+      "chars": 779
+    },
+    {
+      "id": "pub-ua-email-marketing",
+      "file": "pub-ua-email-marketing.md",
+      "subdomain": "user-acquisition",
+      "chars": 781
+    },
+    {
+      "id": "pub-ua-retargeting",
+      "file": "pub-ua-retargeting.md",
+      "subdomain": "user-acquisition",
+      "chars": 768
+    },
+    {
+      "id": "pub-ua-cross-promotion",
+      "file": "pub-ua-cross-promotion.md",
+      "subdomain": "user-acquisition",
+      "chars": 777
+    },
+    {
+      "id": "pub-ua-campaign-optimization",
+      "file": "pub-ua-campaign-optimization.md",
+      "subdomain": "user-acquisition",
+      "chars": 788
+    },
+    {
+      "id": "pub-ua-ltv-prediction",
+      "file": "pub-ua-ltv-prediction.md",
+      "subdomain": "user-acquisition",
+      "chars": 784
+    },
+    {
+      "id": "pub-ua-cohort-analysis",
+      "file": "pub-ua-cohort-analysis.md",
+      "subdomain": "user-acquisition",
+      "chars": 780
+    },
+    {
+      "id": "pub-ua-ua-budget",
+      "file": "pub-ua-ua-budget.md",
+      "subdomain": "user-acquisition",
+      "chars": 787
+    },
+    {
+      "id": "pub-ua-organic-vs-paid",
+      "file": "pub-ua-organic-vs-paid.md",
+      "subdomain": "user-acquisition",
+      "chars": 799
+    },
+    {
+      "id": "pub-bb-brand-identity",
+      "file": "pub-bb-brand-identity.md",
+      "subdomain": "brand-building",
+      "chars": 773
+    },
+    {
+      "id": "pub-bb-brand-positioning",
+      "file": "pub-bb-brand-positioning.md",
+      "subdomain": "brand-building",
+      "chars": 768
+    },
+    {
+      "id": "pub-bb-brand-story",
+      "file": "pub-bb-brand-story.md",
+      "subdomain": "brand-building",
+      "chars": 762
+    },
+    {
+      "id": "pub-bb-visual-identity",
+      "file": "pub-bb-visual-identity.md",
+      "subdomain": "brand-building",
+      "chars": 784
+    },
+    {
+      "id": "pub-bb-tone-of-voice",
+      "file": "pub-bb-tone-of-voice.md",
+      "subdomain": "brand-building",
+      "chars": 763
+    },
+    {
+      "id": "pub-bb-key-art",
+      "file": "pub-bb-key-art.md",
+      "subdomain": "brand-building",
+      "chars": 790
+    },
+    {
+      "id": "pub-bb-trailer-production",
+      "file": "pub-bb-trailer-production.md",
+      "subdomain": "brand-building",
+      "chars": 774
+    },
+    {
+      "id": "pub-bb-ip-development",
+      "file": "pub-bb-ip-development.md",
+      "subdomain": "brand-building",
+      "chars": 769
+    },
+    {
+      "id": "pub-bb-store-page",
+      "file": "pub-bb-store-page.md",
+      "subdomain": "brand-building",
+      "chars": 793
+    },
+    {
+      "id": "pub-bb-brand-guidelines",
+      "file": "pub-bb-brand-guidelines.md",
+      "subdomain": "brand-building",
+      "chars": 781
+    },
+    {
+      "id": "pub-bb-reputation-management",
+      "file": "pub-bb-reputation-management.md",
+      "subdomain": "brand-building",
+      "chars": 771
+    },
+    {
+      "id": "pub-bb-merchandise",
+      "file": "pub-bb-merchandise.md",
+      "subdomain": "brand-building",
+      "chars": 769
+    },
+    {
+      "id": "pub-bb-brand-collab",
+      "file": "pub-bb-brand-collab.md",
+      "subdomain": "brand-building",
+      "chars": 764
+    },
+    {
+      "id": "pub-bb-brand-ambassador",
+      "file": "pub-bb-brand-ambassador.md",
+      "subdomain": "brand-building",
+      "chars": 767
+    },
+    {
+      "id": "pub-bb-brand-refresh",
+      "file": "pub-bb-brand-refresh.md",
+      "subdomain": "brand-building",
+      "chars": 763
+    },
+    {
+      "id": "pub-bb-brand-measurement",
+      "file": "pub-bb-brand-measurement.md",
+      "subdomain": "brand-building",
+      "chars": 781
+    },
+    {
+      "id": "pub-bb-brand-crisis",
+      "file": "pub-bb-brand-crisis.md",
+      "subdomain": "brand-building",
+      "chars": 777
+    },
+    {
+      "id": "pub-bb-brand-ecosystem",
+      "file": "pub-bb-brand-ecosystem.md",
+      "subdomain": "brand-building",
+      "chars": 772
+    },
+    {
+      "id": "pub-bb-brand-valuation",
+      "file": "pub-bb-brand-valuation.md",
+      "subdomain": "brand-building",
+      "chars": 779
+    },
+    {
+      "id": "pub-bb-brand-legacy",
+      "file": "pub-bb-brand-legacy.md",
+      "subdomain": "brand-building",
+      "chars": 764
+    },
+    {
+      "id": "pub-pr-steam-basics",
+      "file": "pub-pr-steam-basics.md",
+      "subdomain": "platform-rules",
+      "chars": 804
+    },
+    {
+      "id": "pub-pr-ios-basics",
+      "file": "pub-pr-ios-basics.md",
+      "subdomain": "platform-rules",
+      "chars": 793
+    },
+    {
+      "id": "pub-pr-android-basics",
+      "file": "pub-pr-android-basics.md",
+      "subdomain": "platform-rules",
+      "chars": 827
+    },
+    {
+      "id": "pub-pr-revenue-share",
+      "file": "pub-pr-revenue-share.md",
+      "subdomain": "platform-rules",
+      "chars": 783
+    },
+    {
+      "id": "pub-pr-steam-visibility",
+      "file": "pub-pr-steam-visibility.md",
+      "subdomain": "platform-rules",
+      "chars": 809
+    },
+    {
+      "id": "pub-pr-steam-sales",
+      "file": "pub-pr-steam-sales.md",
+      "subdomain": "platform-rules",
+      "chars": 798
+    },
+    {
+      "id": "pub-pr-app-review",
+      "file": "pub-pr-app-review.md",
+      "subdomain": "platform-rules",
+      "chars": 783
+    },
+    {
+      "id": "pub-pr-console-submission",
+      "file": "pub-pr-console-submission.md",
+      "subdomain": "platform-rules",
+      "chars": 786
+    },
+    {
+      "id": "pub-pr-iap-rules",
+      "file": "pub-pr-iap-rules.md",
+      "subdomain": "platform-rules",
+      "chars": 760
+    },
+    {
+      "id": "pub-pr-cloud-gaming",
+      "file": "pub-pr-cloud-gaming.md",
+      "subdomain": "platform-rules",
+      "chars": 783
+    },
+    {
+      "id": "pub-pr-platform-features",
+      "file": "pub-pr-platform-features.md",
+      "subdomain": "platform-rules",
+      "chars": 785
+    },
+    {
+      "id": "pub-pr-update-policy",
+      "file": "pub-pr-update-policy.md",
+      "subdomain": "platform-rules",
+      "chars": 765
+    },
+    {
+      "id": "pub-pr-cross-platform",
+      "file": "pub-pr-cross-platform.md",
+      "subdomain": "platform-rules",
+      "chars": 771
+    },
+    {
+      "id": "pub-pr-platform-exclusive",
+      "file": "pub-pr-platform-exclusive.md",
+      "subdomain": "platform-rules",
+      "chars": 782
+    },
+    {
+      "id": "pub-pr-refund-policy",
+      "file": "pub-pr-refund-policy.md",
+      "subdomain": "platform-rules",
+      "chars": 762
+    },
+    {
+      "id": "pub-pr-dlc-management",
+      "file": "pub-pr-dlc-management.md",
+      "subdomain": "platform-rules",
+      "chars": 773
+    },
+    {
+      "id": "pub-pr-platform-analytics",
+      "file": "pub-pr-platform-analytics.md",
+      "subdomain": "platform-rules",
+      "chars": 785
+    },
+    {
+      "id": "pub-pr-alt-platforms",
+      "file": "pub-pr-alt-platforms.md",
+      "subdomain": "platform-rules",
+      "chars": 779
+    },
+    {
+      "id": "pub-pr-platform-negotiation",
+      "file": "pub-pr-platform-negotiation.md",
+      "subdomain": "platform-rules",
+      "chars": 772
+    },
+    {
+      "id": "pub-pr-multi-store",
+      "file": "pub-pr-multi-store.md",
+      "subdomain": "platform-rules",
+      "chars": 773
+    },
+    {
+      "id": "pub-co-community-building",
+      "file": "pub-co-community-building.md",
+      "subdomain": "community-ops",
+      "chars": 778
+    },
+    {
+      "id": "pub-co-community-management",
+      "file": "pub-co-community-management.md",
+      "subdomain": "community-ops",
+      "chars": 768
+    },
+    {
+      "id": "pub-co-player-feedback",
+      "file": "pub-co-player-feedback.md",
+      "subdomain": "community-ops",
+      "chars": 779
+    },
+    {
+      "id": "pub-co-discord-ops",
+      "file": "pub-co-discord-ops.md",
+      "subdomain": "community-ops",
+      "chars": 804
+    },
+    {
+      "id": "pub-co-ugc-cultivation",
+      "file": "pub-co-ugc-cultivation.md",
+      "subdomain": "community-ops",
+      "chars": 776
+    },
+    {
+      "id": "pub-co-community-events",
+      "file": "pub-co-community-events.md",
+      "subdomain": "community-ops",
+      "chars": 770
+    },
+    {
+      "id": "pub-co-beta-program",
+      "file": "pub-co-beta-program.md",
+      "subdomain": "community-ops",
+      "chars": 764
+    },
+    {
+      "id": "pub-co-moderation-tools",
+      "file": "pub-co-moderation-tools.md",
+      "subdomain": "community-ops",
+      "chars": 773
+    },
+    {
+      "id": "pub-co-community-metrics",
+      "file": "pub-co-community-metrics.md",
+      "subdomain": "community-ops",
+      "chars": 775
+    },
+    {
+      "id": "pub-co-devlog-communication",
+      "file": "pub-co-devlog-communication.md",
+      "subdomain": "community-ops",
+      "chars": 770
+    },
+    {
+      "id": "pub-co-toxicity-management",
+      "file": "pub-co-toxicity-management.md",
+      "subdomain": "community-ops",
+      "chars": 770
+    },
+    {
+      "id": "pub-co-feedback-loop",
+      "file": "pub-co-feedback-loop.md",
+      "subdomain": "community-ops",
+      "chars": 766
+    },
+    {
+      "id": "pub-co-ambassador-program",
+      "file": "pub-co-ambassador-program.md",
+      "subdomain": "community-ops",
+      "chars": 768
+    },
+    {
+      "id": "pub-co-localized-community",
+      "file": "pub-co-localized-community.md",
+      "subdomain": "community-ops",
+      "chars": 775
+    },
+    {
+      "id": "pub-co-crisis-communication",
+      "file": "pub-co-crisis-communication.md",
+      "subdomain": "community-ops",
+      "chars": 774
+    },
+    {
+      "id": "pub-co-community-monetization",
+      "file": "pub-co-community-monetization.md",
+      "subdomain": "community-ops",
+      "chars": 775
+    },
+    {
+      "id": "pub-co-player-council",
+      "file": "pub-co-player-council.md",
+      "subdomain": "community-ops",
+      "chars": 770
+    },
+    {
+      "id": "pub-co-community-analytics",
+      "file": "pub-co-community-analytics.md",
+      "subdomain": "community-ops",
+      "chars": 780
+    },
+    {
+      "id": "pub-co-community-scaling",
+      "file": "pub-co-community-scaling.md",
+      "subdomain": "community-ops",
+      "chars": 766
+    },
+    {
+      "id": "pub-co-community-culture",
+      "file": "pub-co-community-culture.md",
+      "subdomain": "community-ops",
+      "chars": 764
+    },
+    {
+      "id": "pub-pm-press-kit",
+      "file": "pub-pm-press-kit.md",
+      "subdomain": "pr-media",
+      "chars": 780
+    },
+    {
+      "id": "pub-pm-media-list",
+      "file": "pub-pm-media-list.md",
+      "subdomain": "pr-media",
+      "chars": 766
+    },
+    {
+      "id": "pub-pm-press-release",
+      "file": "pub-pm-press-release.md",
+      "subdomain": "pr-media",
+      "chars": 774
+    },
+    {
+      "id": "pub-pm-pitch-email",
+      "file": "pub-pm-pitch-email.md",
+      "subdomain": "pr-media",
+      "chars": 764
+    },
+    {
+      "id": "pub-pm-review-copies",
+      "file": "pub-pm-review-copies.md",
+      "subdomain": "pr-media",
+      "chars": 779
+    },
+    {
+      "id": "pub-pm-embargo-strategy",
+      "file": "pub-pm-embargo-strategy.md",
+      "subdomain": "pr-media",
+      "chars": 766
+    },
+    {
+      "id": "pub-pm-kol-management",
+      "file": "pub-pm-kol-management.md",
+      "subdomain": "pr-media",
+      "chars": 778
+    },
+    {
+      "id": "pub-pm-showcase-events",
+      "file": "pub-pm-showcase-events.md",
+      "subdomain": "pr-media",
+      "chars": 778
+    },
+    {
+      "id": "pub-pm-media-monitoring",
+      "file": "pub-pm-media-monitoring.md",
+      "subdomain": "pr-media",
+      "chars": 767
+    },
+    {
+      "id": "pub-pm-interview-prep",
+      "file": "pub-pm-interview-prep.md",
+      "subdomain": "pr-media",
+      "chars": 766
+    },
+    {
+      "id": "pub-pm-crisis-pr",
+      "file": "pub-pm-crisis-pr.md",
+      "subdomain": "pr-media",
+      "chars": 764
+    },
+    {
+      "id": "pub-pm-awards-submission",
+      "file": "pub-pm-awards-submission.md",
+      "subdomain": "pr-media",
+      "chars": 780
+    },
+    {
+      "id": "pub-pm-streaming-events",
+      "file": "pub-pm-streaming-events.md",
+      "subdomain": "pr-media",
+      "chars": 779
+    },
+    {
+      "id": "pub-pm-media-partnership",
+      "file": "pub-pm-media-partnership.md",
+      "subdomain": "pr-media",
+      "chars": 768
+    },
+    {
+      "id": "pub-pm-pr-timeline",
+      "file": "pub-pm-pr-timeline.md",
+      "subdomain": "pr-media",
+      "chars": 771
+    },
+    {
+      "id": "pub-pm-pr-metrics",
+      "file": "pub-pm-pr-metrics.md",
+      "subdomain": "pr-media",
+      "chars": 780
+    },
+    {
+      "id": "pub-pm-online-events",
+      "file": "pub-pm-online-events.md",
+      "subdomain": "pr-media",
+      "chars": 772
+    },
+    {
+      "id": "pub-pm-narrative-pr",
+      "file": "pub-pm-narrative-pr.md",
+      "subdomain": "pr-media",
+      "chars": 771
+    },
+    {
+      "id": "pub-pm-pr-agency",
+      "file": "pub-pm-pr-agency.md",
+      "subdomain": "pr-media",
+      "chars": 773
+    },
+    {
+      "id": "pub-pm-reputation-recovery",
+      "file": "pub-pm-reputation-recovery.md",
+      "subdomain": "pr-media",
+      "chars": 770
+    },
+    {
+      "id": "pub-pc-self-vs-publisher",
+      "file": "pub-pc-self-vs-publisher.md",
+      "subdomain": "publisher-collab",
+      "chars": 824
+    },
+    {
+      "id": "pub-pc-publisher-types",
+      "file": "pub-pc-publisher-types.md",
+      "subdomain": "publisher-collab",
+      "chars": 780
+    },
+    {
+      "id": "pub-pc-publisher-pitch",
+      "file": "pub-pc-publisher-pitch.md",
+      "subdomain": "publisher-collab",
+      "chars": 782
+    },
+    {
+      "id": "pub-pc-publisher-selection",
+      "file": "pub-pc-publisher-selection.md",
+      "subdomain": "publisher-collab",
+      "chars": 781
+    },
+    {
+      "id": "pub-pc-contract-basics",
+      "file": "pub-pc-contract-basics.md",
+      "subdomain": "publisher-collab",
+      "chars": 777
+    },
+    {
+      "id": "pub-pc-revenue-split",
+      "file": "pub-pc-revenue-split.md",
+      "subdomain": "publisher-collab",
+      "chars": 769
+    },
+    {
+      "id": "pub-pc-milestone-payment",
+      "file": "pub-pc-milestone-payment.md",
+      "subdomain": "publisher-collab",
+      "chars": 778
+    },
+    {
+      "id": "pub-pc-ip-ownership",
+      "file": "pub-pc-ip-ownership.md",
+      "subdomain": "publisher-collab",
+      "chars": 767
+    },
+    {
+      "id": "pub-pc-dev-funding",
+      "file": "pub-pc-dev-funding.md",
+      "subdomain": "publisher-collab",
+      "chars": 771
+    },
+    {
+      "id": "pub-pc-marketing-support",
+      "file": "pub-pc-marketing-support.md",
+      "subdomain": "publisher-collab",
+      "chars": 773
+    },
+    {
+      "id": "pub-pc-qa-support",
+      "file": "pub-pc-qa-support.md",
+      "subdomain": "publisher-collab",
+      "chars": 765
+    },
+    {
+      "id": "pub-pc-localization-support",
+      "file": "pub-pc-localization-support.md",
+      "subdomain": "publisher-collab",
+      "chars": 783
+    },
+    {
+      "id": "pub-pc-legal-review",
+      "file": "pub-pc-legal-review.md",
+      "subdomain": "publisher-collab",
+      "chars": 764
+    },
+    {
+      "id": "pub-pc-creative-control",
+      "file": "pub-pc-creative-control.md",
+      "subdomain": "publisher-collab",
+      "chars": 772
+    },
+    {
+      "id": "pub-pc-reporting-obligations",
+      "file": "pub-pc-reporting-obligations.md",
+      "subdomain": "publisher-collab",
+      "chars": 778
+    },
+    {
+      "id": "pub-pc-contract-exit",
+      "file": "pub-pc-contract-exit.md",
+      "subdomain": "publisher-collab",
+      "chars": 766
+    },
+    {
+      "id": "pub-pc-multi-publisher",
+      "file": "pub-pc-multi-publisher.md",
+      "subdomain": "publisher-collab",
+      "chars": 777
+    },
+    {
+      "id": "pub-pc-co-development",
+      "file": "pub-pc-co-development.md",
+      "subdomain": "publisher-collab",
+      "chars": 768
+    },
+    {
+      "id": "pub-pc-first-look-deal",
+      "file": "pub-pc-first-look-deal.md",
+      "subdomain": "publisher-collab",
+      "chars": 798
+    },
+    {
+      "id": "pub-pc-recoup-mechanism",
+      "file": "pub-pc-recoup-mechanism.md",
+      "subdomain": "publisher-collab",
+      "chars": 774
+    },
+    {
+      "id": "pub-ro-globalization-basics",
+      "file": "pub-ro-globalization-basics.md",
+      "subdomain": "regional-ops",
+      "chars": 778
+    },
+    {
+      "id": "pub-ro-localization-basics",
+      "file": "pub-ro-localization-basics.md",
+      "subdomain": "regional-ops",
+      "chars": 779
+    },
+    {
+      "id": "pub-ro-regional-markets",
+      "file": "pub-ro-regional-markets.md",
+      "subdomain": "regional-ops",
+      "chars": 785
+    },
+    {
+      "id": "pub-ro-cultural-sensitivity",
+      "file": "pub-ro-cultural-sensitivity.md",
+      "subdomain": "regional-ops",
+      "chars": 780
+    },
+    {
+      "id": "pub-ro-translation-management",
+      "file": "pub-ro-translation-management.md",
+      "subdomain": "regional-ops",
+      "chars": 773
+    },
+    {
+      "id": "pub-ro-voice-localization",
+      "file": "pub-ro-voice-localization.md",
+      "subdomain": "regional-ops",
+      "chars": 779
+    },
+    {
+      "id": "pub-ro-china-market",
+      "file": "pub-ro-china-market.md",
+      "subdomain": "regional-ops",
+      "chars": 768
+    },
+    {
+      "id": "pub-ro-japan-market",
+      "file": "pub-ro-japan-market.md",
+      "subdomain": "regional-ops",
+      "chars": 765
+    },
+    {
+      "id": "pub-ro-currency-pricing",
+      "file": "pub-ro-currency-pricing.md",
+      "subdomain": "regional-ops",
+      "chars": 767
+    },
+    {
+      "id": "pub-ro-regional-marketing",
+      "file": "pub-ro-regional-marketing.md",
+      "subdomain": "regional-ops",
+      "chars": 768
+    },
+    {
+      "id": "pub-ro-legal-compliance",
+      "file": "pub-ro-legal-compliance.md",
+      "subdomain": "regional-ops",
+      "chars": 769
+    },
+    {
+      "id": "pub-ro-payment-integration",
+      "file": "pub-ro-payment-integration.md",
+      "subdomain": "regional-ops",
+      "chars": 786
+    },
+    {
+      "id": "pub-ro-customer-support",
+      "file": "pub-ro-customer-support.md",
+      "subdomain": "regional-ops",
+      "chars": 773
+    },
+    {
+      "id": "pub-ro-server-deployment",
+      "file": "pub-ro-server-deployment.md",
+      "subdomain": "regional-ops",
+      "chars": 772
+    },
+    {
+      "id": "pub-ro-content-adaptation",
+      "file": "pub-ro-content-adaptation.md",
+      "subdomain": "regional-ops",
+      "chars": 774
+    },
+    {
+      "id": "pub-ro-regional-events",
+      "file": "pub-ro-regional-events.md",
+      "subdomain": "regional-ops",
+      "chars": 768
+    },
+    {
+      "id": "pub-ro-market-entry",
+      "file": "pub-ro-market-entry.md",
+      "subdomain": "regional-ops",
+      "chars": 776
+    },
+    {
+      "id": "pub-ro-local-publishing",
+      "file": "pub-ro-local-publishing.md",
+      "subdomain": "regional-ops",
+      "chars": 771
+    },
+    {
+      "id": "pub-ro-global-live-ops",
+      "file": "pub-ro-global-live-ops.md",
+      "subdomain": "regional-ops",
+      "chars": 780
+    },
+    {
+      "id": "pub-ro-localization-testing",
+      "file": "pub-ro-localization-testing.md",
+      "subdomain": "regional-ops",
+      "chars": 780
+    },
+    {
+      "id": "pub-rc-esrb-basics",
+      "file": "pub-rc-esrb-basics.md",
+      "subdomain": "rating-compliance",
+      "chars": 784
+    },
+    {
+      "id": "pub-rc-pegi-basics",
+      "file": "pub-rc-pegi-basics.md",
+      "subdomain": "rating-compliance",
+      "chars": 784
+    },
+    {
+      "id": "pub-rc-cero-basics",
+      "file": "pub-rc-cero-basics.md",
+      "subdomain": "rating-compliance",
+      "chars": 784
+    },
+    {
+      "id": "pub-rc-iarc-system",
+      "file": "pub-rc-iarc-system.md",
+      "subdomain": "rating-compliance",
+      "chars": 784
+    },
+    {
+      "id": "pub-rc-content-descriptors",
+      "file": "pub-rc-content-descriptors.md",
+      "subdomain": "rating-compliance",
+      "chars": 785
+    },
+    {
+      "id": "pub-rc-loot-box-regulation",
+      "file": "pub-rc-loot-box-regulation.md",
+      "subdomain": "rating-compliance",
+      "chars": 803
+    },
+    {
+      "id": "pub-rc-gdpr-compliance",
+      "file": "pub-rc-gdpr-compliance.md",
+      "subdomain": "rating-compliance",
+      "chars": 785
+    },
+    {
+      "id": "pub-rc-coppa-compliance",
+      "file": "pub-rc-coppa-compliance.md",
+      "subdomain": "rating-compliance",
+      "chars": 792
+    },
+    {
+      "id": "pub-rc-china-isbn",
+      "file": "pub-rc-china-isbn.md",
+      "subdomain": "rating-compliance",
+      "chars": 771
+    },
+    {
+      "id": "pub-rc-privacy-policy",
+      "file": "pub-rc-privacy-policy.md",
+      "subdomain": "rating-compliance",
+      "chars": 770
+    },
+    {
+      "id": "pub-rc-terms-of-service",
+      "file": "pub-rc-terms-of-service.md",
+      "subdomain": "rating-compliance",
+      "chars": 778
+    },
+    {
+      "id": "pub-rc-age-verification",
+      "file": "pub-rc-age-verification.md",
+      "subdomain": "rating-compliance",
+      "chars": 771
+    },
+    {
+      "id": "pub-rc-advertising-rules",
+      "file": "pub-rc-advertising-rules.md",
+      "subdomain": "rating-compliance",
+      "chars": 774
+    },
+    {
+      "id": "pub-rc-ip-protection",
+      "file": "pub-rc-ip-protection.md",
+      "subdomain": "rating-compliance",
+      "chars": 784
+    },
+    {
+      "id": "pub-rc-accessibility-law",
+      "file": "pub-rc-accessibility-law.md",
+      "subdomain": "rating-compliance",
+      "chars": 778
+    },
+    {
+      "id": "pub-rc-gambling-regulation",
+      "file": "pub-rc-gambling-regulation.md",
+      "subdomain": "rating-compliance",
+      "chars": 777
+    },
+    {
+      "id": "pub-rc-anti-addiction",
+      "file": "pub-rc-anti-addiction.md",
+      "subdomain": "rating-compliance",
+      "chars": 776
+    },
+    {
+      "id": "pub-rc-tax-compliance",
+      "file": "pub-rc-tax-compliance.md",
+      "subdomain": "rating-compliance",
+      "chars": 769
+    },
+    {
+      "id": "pub-rc-compliance-audit",
+      "file": "pub-rc-compliance-audit.md",
+      "subdomain": "rating-compliance",
+      "chars": 768
+    },
+    {
+      "id": "pub-rc-regulatory-forecast",
+      "file": "pub-rc-regulatory-forecast.md",
+      "subdomain": "rating-compliance",
+      "chars": 773
+    }
+  ]
+}
