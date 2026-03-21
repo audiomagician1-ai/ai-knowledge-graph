@@ -1,240 +1,252 @@
 {
-  "_generated": "2026-03-21T13:18:43.368398",
+  "_generated": "2026-03-21T14:37:56.705865",
   "_version": "scorer-v1.0",
-  "total_docs": 194,
-  "avg_score": 45.5,
+  "total_docs": 172,
+  "avg_score": 22.0,
   "tier_distribution": {
-    "S": 7,
-    "A": 19,
-    "B": 154,
-    "C": 14
+    "S": 4,
+    "A": 2,
+    "B": 0,
+    "C": 166
   },
   "domain_summary": {
-    "physics": {
-      "count": 194,
-      "avg_score": 45.5,
-      "min_score": 39.8,
-      "max_score": 96.6,
+    "biology": {
+      "count": 169,
+      "avg_score": 22.0,
+      "min_score": 18.5,
+      "max_score": 93.3,
       "tiers": {
-        "S": 7,
-        "A": 19,
-        "B": 154,
-        "C": 14
+        "S": 4,
+        "A": 2,
+        "B": 0,
+        "C": 163
+      }
+    },
+    "psychology": {
+      "count": 3,
+      "avg_score": 21.5,
+      "min_score": 19.2,
+      "max_score": 22.6,
+      "tiers": {
+        "S": 0,
+        "A": 0,
+        "B": 0,
+        "C": 3
       }
     }
   },
   "top10_best": [
     {
-      "file": "physics\\classical-mechanics\\energy-conservation.md",
-      "concept": "能量守恒",
-      "score": 96.6,
-      "tier": "S",
-      "domain": "physics"
-    },
-    {
-      "file": "physics\\classical-mechanics\\newtons-second-law.md",
-      "concept": "牛顿第二定律",
-      "score": 96.6,
-      "tier": "S",
-      "domain": "physics"
-    },
-    {
-      "file": "physics\\classical-mechanics\\momentum-conservation.md",
-      "concept": "动量守恒",
-      "score": 96.3,
-      "tier": "S",
-      "domain": "physics"
-    },
-    {
-      "file": "physics\\electromagnetism\\maxwells-equations.md",
-      "concept": "麦克斯韦方程组",
+      "file": "biology\\cell-biology\\cell-membrane.md",
+      "concept": "细胞膜",
       "score": 93.3,
       "tier": "S",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\modern-physics\\special-relativity-postulates.md",
-      "concept": "狭义相对论公设",
-      "score": 84.5,
+      "file": "biology\\molecular-biology\\dna-replication.md",
+      "concept": "DNA复制",
+      "score": 85.2,
       "tier": "S",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\quantum-mechanics\\schrodinger-equation.md",
-      "concept": "薛定谔方程",
-      "score": 82.6,
+      "file": "biology\\genetics\\mendelian-genetics.md",
+      "concept": "孟德尔遗传",
+      "score": 83.5,
       "tier": "S",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\thermodynamics\\second-law-thermo.md",
-      "concept": "热力学第二定律",
-      "score": 80.9,
+      "file": "biology\\cell-biology\\mitosis.md",
+      "concept": "有丝分裂",
+      "score": 80.5,
       "tier": "S",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\thermodynamics\\entropy.md",
-      "concept": "熵",
-      "score": 79.3,
+      "file": "biology\\evolution\\natural-selection.md",
+      "concept": "自然选择",
+      "score": 76.8,
       "tier": "A",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\thermodynamics\\first-law-thermo.md",
-      "concept": "热力学第一定律",
-      "score": 78.3,
+      "file": "biology\\cell-biology\\photosynthesis.md",
+      "concept": "光合作用",
+      "score": 74.0,
       "tier": "A",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\modern-physics\\photoelectric-effect.md",
-      "concept": "光电效应",
-      "score": 77.3,
-      "tier": "A",
-      "domain": "physics"
+      "file": "biology\\human-physiology\\antibody-response.md",
+      "concept": "抗体反应",
+      "score": 22.6,
+      "tier": "C",
+      "domain": "biology"
+    },
+    {
+      "file": "biology\\human-physiology\\autonomic-nervous-system.md",
+      "concept": "自主神经系统",
+      "score": 22.6,
+      "tier": "C",
+      "domain": "psychology"
+    },
+    {
+      "file": "biology\\human-physiology\\brain-function.md",
+      "concept": "脑的功能",
+      "score": 22.6,
+      "tier": "C",
+      "domain": "biology"
+    },
+    {
+      "file": "biology\\human-physiology\\cardiovascular-system.md",
+      "concept": "心血管系统",
+      "score": 22.6,
+      "tier": "C",
+      "domain": "biology"
     }
   ],
   "top20_worst": [
     {
-      "file": "physics\\astrophysics\\black-holes.md",
-      "concept": "黑洞",
-      "score": 39.8,
+      "file": "biology\\genetics\\extranuclear-inheritance.md",
+      "concept": "核外遗传",
+      "score": 18.5,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\astrophysics\\hr-diagram.md",
-      "concept": "赫罗图",
-      "score": 39.8,
+      "file": "biology\\genetics\\genetic-counseling.md",
+      "concept": "遗传咨询",
+      "score": 18.5,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\modern-physics\\lasers.md",
-      "concept": "激光",
-      "score": 39.8,
+      "file": "biology\\ecology\\behavioral-ecology.md",
+      "concept": "行为生态学",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\modern-physics\\length-contraction.md",
-      "concept": "长度收缩",
-      "score": 39.8,
+      "file": "biology\\ecology\\biomes.md",
+      "concept": "生物群落",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\modern-physics\\matter-waves.md",
-      "concept": "物质波",
-      "score": 39.8,
+      "file": "biology\\ecology\\community-ecology.md",
+      "concept": "群落生态学",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\nuclear-physics\\nuclear-models.md",
-      "concept": "核模型",
-      "score": 39.8,
+      "file": "biology\\ecology\\conservation-biology.md",
+      "concept": "保护生物学",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\nuclear-physics\\nuclear-reactions.md",
-      "concept": "核反应",
-      "score": 39.8,
+      "file": "biology\\ecology\\ecological-succession.md",
+      "concept": "生态演替",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\solid-state-physics\\amorphous-solids.md",
-      "concept": "非晶态固体",
-      "score": 39.8,
+      "file": "biology\\ecology\\ecology-overview.md",
+      "concept": "生态学概述",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\solid-state-physics\\crystal-structure.md",
-      "concept": "晶体结构",
-      "score": 39.8,
+      "file": "biology\\ecology\\ecosystem-ecology.md",
+      "concept": "生态系统生态学",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\solid-state-physics\\magnetic-order.md",
-      "concept": "磁有序",
-      "score": 39.8,
+      "file": "biology\\ecology\\ecosystem-services.md",
+      "concept": "生态系统服务",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\solid-state-physics\\phonons.md",
-      "concept": "声子",
-      "score": 39.8,
+      "file": "biology\\ecology\\food-web.md",
+      "concept": "食物网",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\solid-state-physics\\pn-junction.md",
-      "concept": "PN结",
-      "score": 39.8,
+      "file": "biology\\ecology\\freshwater-ecology.md",
+      "concept": "淡水生态学",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\solid-state-physics\\semiconductors.md",
-      "concept": "半导体",
-      "score": 39.8,
+      "file": "biology\\ecology\\landscape-ecology.md",
+      "concept": "景观生态学",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\solid-state-physics\\superconductivity-solid.md",
-      "concept": "超导",
-      "score": 39.8,
+      "file": "biology\\ecology\\marine-ecology.md",
+      "concept": "海洋生态学",
+      "score": 18.8,
       "tier": "C",
-      "domain": "physics"
+      "domain": "biology"
     },
     {
-      "file": "physics\\astrophysics\\cosmic-inflation.md",
-      "concept": "宇宙暴胀",
-      "score": 40.0,
-      "tier": "B",
-      "domain": "physics"
+      "file": "biology\\ecology\\niche-theory.md",
+      "concept": "生态位理论",
+      "score": 18.8,
+      "tier": "C",
+      "domain": "biology"
     },
     {
-      "file": "physics\\astrophysics\\exoplanets.md",
-      "concept": "系外行星",
-      "score": 40.0,
-      "tier": "B",
-      "domain": "physics"
+      "file": "biology\\ecology\\nutrient-cycling.md",
+      "concept": "物质循环",
+      "score": 18.8,
+      "tier": "C",
+      "domain": "biology"
     },
     {
-      "file": "physics\\astrophysics\\galactic-structure.md",
-      "concept": "星系结构",
-      "score": 40.0,
-      "tier": "B",
-      "domain": "physics"
+      "file": "biology\\ecology\\population-ecology.md",
+      "concept": "种群生态学",
+      "score": 18.8,
+      "tier": "C",
+      "domain": "biology"
     },
     {
-      "file": "physics\\astrophysics\\neutron-stars.md",
-      "concept": "中子星",
-      "score": 40.0,
-      "tier": "B",
-      "domain": "physics"
+      "file": "biology\\ecology\\restoration-ecology.md",
+      "concept": "恢复生态学",
+      "score": 18.8,
+      "tier": "C",
+      "domain": "biology"
     },
     {
-      "file": "physics\\astrophysics\\nucleosynthesis.md",
-      "concept": "核合成",
-      "score": 40.0,
-      "tier": "B",
-      "domain": "physics"
+      "file": "biology\\ecology\\species-interactions.md",
+      "concept": "种间关系",
+      "score": 18.8,
+      "tier": "C",
+      "domain": "biology"
     },
     {
-      "file": "physics\\astrophysics\\stellar-structure.md",
-      "concept": "恒星结构",
-      "score": 40.0,
-      "tier": "B",
-      "domain": "physics"
+      "file": "biology\\ecology\\urban-ecology.md",
+      "concept": "城市生态学",
+      "score": 18.8,
+      "tier": "C",
+      "domain": "biology"
     }
   ]
 }

@@ -1,0 +1,426 @@
+[
+  {
+    "concept_id": "backtesting",
+    "concept_name": "回测框架",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "策略回测方法论、过拟合陷阱与样本外验证",
+    "difficulty": 3,
+    "is_milestone": true,
+    "prerequisites": [
+      "algorithmic-trading",
+      "quant-programming"
+    ],
+    "next_concepts": [
+      "monte-carlo-simulation"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "Backtesting Wikipedia definition key concepts",
+      "Backtesting textbook explanation Khan Academy",
+      "回测框架 定义 原理 核心知识点",
+      "回测框架 策略回测方法论、过拟合陷阱与样本外验证 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "execution-cost",
+    "concept_name": "交易执行成本",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "滑点、市场冲击与最优执行理论",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [
+      "algorithmic-trading"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Execution Cost Wikipedia definition key concepts",
+      "Execution Cost textbook explanation Khan Academy",
+      "交易执行成本 定义 原理 核心知识点",
+      "交易执行成本 滑点、市场冲击与最优执行理论 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "high-frequency-trading",
+    "concept_name": "高频交易",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "HFT策略、市场微结构与技术基础设施",
+    "difficulty": 4,
+    "is_milestone": false,
+    "prerequisites": [
+      "algorithmic-trading"
+    ],
+    "next_concepts": [
+      "market-microstructure"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "High Frequency Trading Wikipedia definition key concepts",
+      "High Frequency Trading textbook explanation Khan Academy",
+      "高频交易 定义 原理 核心知识点",
+      "高频交易 HFT策略、市场微结构与技术基础设施 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "market-microstructure",
+    "concept_name": "市场微结构",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "限价订单簿、做市商与价格发现机制",
+    "difficulty": 4,
+    "is_milestone": false,
+    "prerequisites": [
+      "high-frequency-trading"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Market Microstructure Wikipedia definition key concepts",
+      "Market Microstructure textbook explanation Khan Academy",
+      "市场微结构 定义 原理 核心知识点",
+      "市场微结构 限价订单簿、做市商与价格发现机制 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "mean-reversion",
+    "concept_name": "均值回归",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "均值回归现象的统计检验与交易策略",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [
+      "statistical-arbitrage",
+      "time-series-analysis"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Mean Reversion Wikipedia definition key concepts",
+      "Mean Reversion textbook explanation Khan Academy",
+      "均值回归 定义 原理 核心知识点",
+      "均值回归 均值回归现象的统计检验与交易策略 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "momentum-strategy",
+    "concept_name": "动量策略",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "价格动量、盈利动量与动量崩溃风险",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [
+      "factor-models"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Momentum Strategy Wikipedia definition key concepts",
+      "Momentum Strategy textbook explanation Khan Academy",
+      "动量策略 定义 原理 核心知识点",
+      "动量策略 价格动量、盈利动量与动量崩溃风险 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "monte-carlo-simulation",
+    "concept_name": "蒙特卡洛模拟",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "随机模拟在期权定价与风险管理中的应用",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [
+      "backtesting"
+    ],
+    "next_concepts": [
+      "stochastic-calculus"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "Monte Carlo Simulation Wikipedia definition key concepts",
+      "Monte Carlo Simulation textbook explanation Khan Academy",
+      "蒙特卡洛模拟 定义 原理 核心知识点",
+      "蒙特卡洛模拟 随机模拟在期权定价与风险管理中的应用 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "quant-finance-overview",
+    "concept_name": "量化金融概述",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "量化金融的发展、主要领域与职业路径",
+    "difficulty": 1,
+    "is_milestone": true,
+    "prerequisites": [],
+    "next_concepts": [
+      "factor-models",
+      "statistical-arbitrage",
+      "algorithmic-trading"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "Quant Finance Overview Wikipedia definition key concepts",
+      "Quant Finance Overview textbook explanation Khan Academy",
+      "量化金融概述 定义 原理 核心知识点",
+      "量化金融概述 量化金融的发展、主要领域与职业路径 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "risk-factor-analysis",
+    "concept_name": "风险因子分析",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "系统性风险因子分解与风险归因",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [
+      "factor-models"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Risk Factor Analysis Wikipedia definition key concepts",
+      "Risk Factor Analysis textbook explanation Khan Academy",
+      "风险因子分析 定义 原理 核心知识点",
+      "风险因子分析 系统性风险因子分解与风险归因 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "sentiment-analysis-finance",
+    "concept_name": "金融情绪分析",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "新闻/社交媒体文本的情绪提取与交易信号",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [
+      "machine-learning-finance",
+      "market-sentiment"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Sentiment Analysis Finance Wikipedia definition key concepts",
+      "Sentiment Analysis Finance textbook explanation Khan Academy",
+      "金融情绪分析 定义 原理 核心知识点",
+      "金融情绪分析 新闻/社交媒体文本的情绪提取与交易信号 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "statistical-arbitrage",
+    "concept_name": "统计套利",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "配对交易、均值回归与协整关系",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [
+      "quant-finance-overview"
+    ],
+    "next_concepts": [
+      "mean-reversion"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "Statistical Arbitrage Wikipedia definition key concepts",
+      "Statistical Arbitrage textbook explanation Khan Academy",
+      "统计套利 定义 原理 核心知识点",
+      "统计套利 配对交易、均值回归与协整关系 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "stochastic-calculus",
+    "concept_name": "随机微积分",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "布朗运动、伊藤引理与SDE在金融中的应用",
+    "difficulty": 4,
+    "is_milestone": false,
+    "prerequisites": [
+      "black-scholes-model",
+      "monte-carlo-simulation"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Stochastic Calculus Wikipedia definition key concepts",
+      "Stochastic Calculus textbook explanation Khan Academy",
+      "随机微积分 定义 原理 核心知识点",
+      "随机微积分 布朗运动、伊藤引理与SDE在金融中的应用 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "time-series-analysis",
+    "concept_name": "时间序列分析",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "ARIMA、GARCH等金融时间序列模型",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [],
+    "next_concepts": [
+      "volatility-modeling",
+      "mean-reversion"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "Time Series Analysis Wikipedia definition key concepts",
+      "Time Series Analysis textbook explanation Khan Academy",
+      "时间序列分析 定义 原理 核心知识点",
+      "时间序列分析 ARIMA、GARCH等金融时间序列模型 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "volatility-modeling",
+    "concept_name": "波动率建模",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "隐含波动率、波动率微笑与GARCH族模型",
+    "difficulty": 4,
+    "is_milestone": false,
+    "prerequisites": [
+      "time-series-analysis"
+    ],
+    "next_concepts": [
+      "var-method"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "Volatility Modeling Wikipedia definition key concepts",
+      "Volatility Modeling textbook explanation Khan Academy",
+      "波动率建模 定义 原理 核心知识点",
+      "波动率建模 隐含波动率、波动率微笑与GARCH族模型 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "credit-risk",
+    "concept_name": "信用风险",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "违约概率、违约损失率与信用风险建模",
+    "difficulty": 2,
+    "is_milestone": false,
+    "prerequisites": [
+      "risk-management-overview"
+    ],
+    "next_concepts": [
+      "regulatory-framework",
+      "bond-rating"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "Credit Risk Wikipedia definition key concepts",
+      "Credit Risk textbook explanation Khan Academy",
+      "信用风险 定义 原理 核心知识点",
+      "信用风险 违约概率、违约损失率与信用风险建模 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "currency-risk",
+    "concept_name": "汇率风险",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "交易风险、折算风险与经济风险管理",
+    "difficulty": 2,
+    "is_milestone": false,
+    "prerequisites": [
+      "market-risk"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Currency Risk Wikipedia definition key concepts",
+      "Currency Risk textbook explanation Khan Academy",
+      "汇率风险 定义 原理 核心知识点",
+      "汇率风险 交易风险、折算风险与经济风险管理 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "derivatives-overview",
+    "concept_name": "衍生品概述",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "期货、期权、互换、远期合约基础",
+    "difficulty": 2,
+    "is_milestone": true,
+    "prerequisites": [
+      "risk-management-overview"
+    ],
+    "next_concepts": [
+      "options-basics",
+      "futures-basics",
+      "swap-contracts"
+    ],
+    "current_score": 17.2,
+    "search_queries": [
+      "Derivatives Overview Wikipedia definition key concepts",
+      "Derivatives Overview textbook explanation Khan Academy",
+      "衍生品概述 定义 原理 核心知识点",
+      "衍生品概述 期货、期权、互换、远期合约基础 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "futures-basics",
+    "concept_name": "期货基础",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "期货合约要素、保证金制度与交割机制",
+    "difficulty": 2,
+    "is_milestone": false,
+    "prerequisites": [
+      "derivatives-overview"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Futures Basics Wikipedia definition key concepts",
+      "Futures Basics textbook explanation Khan Academy",
+      "期货基础 定义 原理 核心知识点",
+      "期货基础 期货合约要素、保证金制度与交割机制 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "hedging-strategies",
+    "concept_name": "对冲策略",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "利用衍生品对冲市场风险的方法",
+    "difficulty": 3,
+    "is_milestone": false,
+    "prerequisites": [
+      "derivatives-overview"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Hedging Strategies Wikipedia definition key concepts",
+      "Hedging Strategies textbook explanation Khan Academy",
+      "对冲策略 定义 原理 核心知识点",
+      "对冲策略 利用衍生品对冲市场风险的方法 教学 要点"
+    ]
+  },
+  {
+    "concept_id": "insurance-products",
+    "concept_name": "保险产品",
+    "domain": "finance",
+    "subdomain": "",
+    "description": "金融保险产品：年金、万能险、投连险",
+    "difficulty": 2,
+    "is_milestone": false,
+    "prerequisites": [
+      "insurance-basics"
+    ],
+    "next_concepts": [],
+    "current_score": 17.2,
+    "search_queries": [
+      "Insurance Products Wikipedia definition key concepts",
+      "Insurance Products textbook explanation Khan Academy",
+      "保险产品 定义 原理 核心知识点",
+      "保险产品 金融保险产品：年金、万能险、投连险 教学 要点"
+    ]
+  }
+]

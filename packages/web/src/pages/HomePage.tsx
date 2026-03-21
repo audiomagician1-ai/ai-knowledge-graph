@@ -1,18 +1,17 @@
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDomainStore } from '@/lib/store/domain';
-import { peekDomainProgress } from '@/lib/store/learning';
 import { Loader } from 'lucide-react';
 
 /* ─── Demo fallback ─── */
 const DEMO_DOMAINS: import('@akg/shared').Domain[] = [
-  { id: 'ai-engineering', name: 'AI编程', description: '', icon: '', color: '#8b5cf6', is_active: true, stats: { total_concepts: 400, total_edges: 615, subdomains: 15 } },
-  { id: 'mathematics', name: '数学', description: '', icon: '', color: '#3b82f6', is_active: true, stats: { total_concepts: 269, total_edges: 366, subdomains: 12 } },
-  { id: 'game-engine', name: '游戏引擎', description: '', icon: '', color: '#059669', is_active: true, stats: { total_concepts: 300, total_edges: 319, subdomains: 15 } },
-  { id: 'game-design', name: '游戏设计', description: '', icon: '', color: '#dc2626', is_active: true, stats: { total_concepts: 250, total_edges: 274, subdomains: 12 } },
-  { id: 'psychology', name: '心理学', description: '', icon: '', color: '#a855f7', is_active: true, stats: { total_concepts: 183, total_edges: 203, subdomains: 8 } },
-  { id: 'physics', name: '物理', description: '', icon: '', color: '#22c55e', is_active: true, stats: { total_concepts: 194, total_edges: 232, subdomains: 10 } },
-  { id: 'english', name: '英语', description: '', icon: '', color: '#eab308', is_active: true, stats: { total_concepts: 200, total_edges: 229, subdomains: 10 } },
+  { id: 'ai-engineering', name: 'AI编程', description: '', color: '#8b5cf6', is_active: true, stats: { total_concepts: 400, total_edges: 615, subdomains: 15 } },
+  { id: 'mathematics', name: '数学', description: '', color: '#3b82f6', is_active: true, stats: { total_concepts: 269, total_edges: 366, subdomains: 12 } },
+  { id: 'game-engine', name: '游戏引擎', description: '', color: '#059669', is_active: true, stats: { total_concepts: 300, total_edges: 319, subdomains: 15 } },
+  { id: 'game-design', name: '游戏设计', description: '', color: '#dc2626', is_active: true, stats: { total_concepts: 250, total_edges: 274, subdomains: 12 } },
+  { id: 'psychology', name: '心理学', description: '', color: '#a855f7', is_active: true, stats: { total_concepts: 183, total_edges: 203, subdomains: 8 } },
+  { id: 'physics', name: '物理', description: '', color: '#22c55e', is_active: true, stats: { total_concepts: 194, total_edges: 232, subdomains: 10 } },
+  { id: 'english', name: '英语', description: '', color: '#eab308', is_active: true, stats: { total_concepts: 200, total_edges: 229, subdomains: 10 } },
 ];
 
 const NAME_MAP: Record<string, string> = { 'ai-engineering': 'AI编程' };
@@ -20,64 +19,47 @@ const NAME_MAP: Record<string, string> = { 'ai-engineering': 'AI编程' };
 /* ─── Constants ─── */
 const BG = '#e8e8e4';
 const TRANSITION_MS = 900;
-const BASE_R = 46;           // base bubble radius
-const GAP = 8;               // gap between bubbles
+const BASE_R = 44;
+const CELL = BASE_R * 2 + 10; // hex cell center-to-center distance
 const DPR = typeof window !== 'undefined' ? Math.min(window.devicePixelRatio || 1, 2) : 1;
 
-/* Fisheye lens — fixed at screen center */
-const FISH_R = 350;          // influence radius from screen center
-const FISH_SCALE = 1.9;      // max scale multiplier at dead center
-const FISH_PUSH = 0.55;      // how much positions are pushed outward by fisheye
+/* Fisheye — only scales size, does NOT move positions */
+const FISH_R = 320;
+const FISH_MAX = 1.65;
+const FISH_MIN = 0.55;
 
 /* ─── Types ─── */
 interface BubbleNode {
   id: string; name: string; color: string;
   concepts: number; subs: number;
-  completeness: number;
-  gx: number; gy: number;   // hex grid position (world coords, before fisheye)
-  baseR: number;             // base radius from completeness
+  gx: number; gy: number;
+  baseR: number;
 }
 
 /* ─── Helpers ─── */
-function completeness(c: number, e: number, s: number) {
-  return c + e * 0.5 + s * 5;
-}
-function baseRadius(comp: number): number {
-  const t = Math.max(0, Math.min(1, (comp - 300) / 500));
-  return BASE_R * (0.78 + t * 0.22);
-}
+function completeness(c: number, e: number, s: number) { return c + e * 0.5 + s * 5; }
 
 function hexRgb(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
   return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
 }
 
-/**
- * Hex spiral: ring 0 = 1, ring 1 = 6, ring 2 = 12, ring 3 = 18 ...
- * Returns world-space {x, y} for each slot.
- */
-function hexSpiralPositions(n: number, spacing: number): { x: number; y: number }[] {
+/** Axial hex spiral positions */
+function hexSpiral(n: number, spacing: number): { x: number; y: number }[] {
   const out: { x: number; y: number }[] = [];
   if (n <= 0) return out;
   out.push({ x: 0, y: 0 });
-
-  // Axial hex directions for pointy-top traversal
-  const axialDirs: [number, number][] = [
-    [1, 0], [1, -1], [0, -1], [-1, 0], [-1, 1], [0, 1],
-  ];
-
+  const dirs: [number, number][] = [[1,0],[1,-1],[0,-1],[-1,0],[-1,1],[0,1]];
   let ring = 1;
   while (out.length < n) {
-    // Start each ring at axial (ring, 0), then walk 6 sides
     let q = ring, r = 0;
     for (let side = 0; side < 6 && out.length < n; side++) {
       for (let step = 0; step < ring && out.length < n; step++) {
-        // Axial → pixel (pointy-top)
         const px = spacing * (Math.sqrt(3) * q + Math.sqrt(3) / 2 * r);
-        const py = spacing * (3 / 2 * r);
+        const py = spacing * (1.5 * r);
         out.push({ x: px, y: py });
-        q += axialDirs[(side + 2) % 6][0];
-        r += axialDirs[(side + 2) % 6][1];
+        q += dirs[(side + 2) % 6][0];
+        r += dirs[(side + 2) % 6][1];
       }
     }
     ring++;
@@ -85,101 +67,78 @@ function hexSpiralPositions(n: number, spacing: number): { x: number; y: number 
   return out;
 }
 
-/**
- * Apply fisheye distortion to a point.
- * Lens is at (lx, ly). Points near the lens get pushed outward AND scaled up.
- * Returns { x, y, scale }.
- */
-function fisheye(
-  wx: number, wy: number, lx: number, ly: number,
-): { x: number; y: number; scale: number } {
-  const dx = wx - lx;
-  const dy = wy - ly;
-  const dist = Math.sqrt(dx * dx + dy * dy);
-  if (dist < 0.5) return { x: wx, y: wy, scale: FISH_SCALE };
-  if (dist > FISH_R) return { x: wx, y: wy, scale: 1 };
-
-  // Normalized distance 0..1
+/** Fisheye scale factor based on distance from screen center. Only affects size. */
+function fishScale(dist: number): number {
+  if (dist >= FISH_R) return FISH_MIN;
   const nd = dist / FISH_R;
-  // Scale: smooth falloff from FISH_SCALE at center to 1 at edge
-  const scale = 1 + (FISH_SCALE - 1) * (1 - nd * nd);
-  // Position push: move point outward from lens center proportional to scale
-  const pushFactor = 1 + (scale - 1) * FISH_PUSH;
-  const nx = lx + dx * pushFactor;
-  const ny = ly + dy * pushFactor;
-  return { x: nx, y: ny, scale };
+  // Smooth: cubic ease-out from FISH_MAX at center to FISH_MIN at edge
+  const t = 1 - nd * nd;
+  return FISH_MIN + (FISH_MAX - FISH_MIN) * t;
 }
 
-/* ─── Draw a single bubble ─── */
+/* ─── Flat bubble drawing ─── */
 function drawBubble(
   ctx: CanvasRenderingContext2D,
   b: BubbleNode, cx: number, cy: number,
-  r: number, alpha: number, hovered: boolean,
+  r: number, scale: number, hovered: boolean,
 ) {
-  if (r < 3) return;
+  if (r < 2) return;
   const [cr, cg, cb] = hexRgb(b.color);
+  const alpha = Math.max(0.3, Math.min(1, (scale - FISH_MIN) / (FISH_MAX - FISH_MIN)));
 
-  // Soft outer glow
-  const glow = ctx.createRadialGradient(cx, cy, r * 0.5, cx, cy, r * 1.4);
-  glow.addColorStop(0, `rgba(${cr},${cg},${cb},${0.15 * alpha})`);
-  glow.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
-  ctx.fillStyle = glow;
-  ctx.beginPath(); ctx.arc(cx, cy, r * 1.4, 0, Math.PI * 2); ctx.fill();
+  // Drop shadow
+  ctx.save();
+  ctx.shadowColor = `rgba(${cr},${cg},${cb},${0.3 * alpha})`;
+  ctx.shadowBlur = r * 0.3;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = r * 0.08;
 
-  // Main sphere gradient
-  const grad = ctx.createRadialGradient(cx - r * 0.28, cy - r * 0.3, r * 0.08, cx, cy, r);
-  grad.addColorStop(0, `rgba(${Math.min(255, cr + 70)},${Math.min(255, cg + 70)},${Math.min(255, cb + 70)},${0.92 * alpha})`);
-  grad.addColorStop(0.65, `rgba(${cr},${cg},${cb},${0.88 * alpha})`);
-  grad.addColorStop(1, `rgba(${Math.max(0, cr - 40)},${Math.max(0, cg - 40)},${Math.max(0, cb - 40)},${0.85 * alpha})`);
+  // Flat filled circle with subtle gradient
+  const grad = ctx.createRadialGradient(cx - r * 0.2, cy - r * 0.2, 0, cx, cy, r);
+  grad.addColorStop(0, `rgba(${Math.min(255, cr + 40)},${Math.min(255, cg + 40)},${Math.min(255, cb + 40)},${alpha})`);
+  grad.addColorStop(1, `rgba(${cr},${cg},${cb},${alpha})`);
   ctx.fillStyle = grad;
-  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
-
-  // Specular highlight
-  const spec = ctx.createRadialGradient(cx - r * 0.22, cy - r * 0.3, 0, cx - r * 0.1, cy - r * 0.15, r * 0.52);
-  spec.addColorStop(0, `rgba(255,255,255,${0.5 * alpha})`);
-  spec.addColorStop(1, 'rgba(255,255,255,0)');
-  ctx.fillStyle = spec;
-  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
-
-  // Bottom rim light
-  const rim = ctx.createRadialGradient(cx + r * 0.15, cy + r * 0.35, 0, cx, cy, r);
-  rim.addColorStop(0, `rgba(255,255,255,${0.12 * alpha})`);
-  rim.addColorStop(1, 'rgba(255,255,255,0)');
-  ctx.fillStyle = rim;
-  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
 
   // Hover ring
   if (hovered) {
-    ctx.strokeStyle = `rgba(255,255,255,${0.55 * alpha})`;
+    ctx.strokeStyle = `rgba(${cr},${cg},${cb},0.8)`;
     ctx.lineWidth = 2.5;
-    ctx.beginPath(); ctx.arc(cx, cy, r + 3, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cx, cy, r + 2, 0, Math.PI * 2);
+    ctx.stroke();
   }
 
-  // Text
-  if (r < 16) return;
-  const fontSize = Math.max(9, Math.round(r * 0.3));
-  const subSize = Math.max(7, Math.round(r * 0.19));
-  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  // Text — only if big enough
+  if (r < 14) return;
+  const fontSize = Math.max(10, Math.round(r * 0.3));
+  const subSize = Math.max(8, Math.round(r * 0.2));
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
   ctx.font = `600 ${fontSize}px "Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,sans-serif`;
   ctx.fillStyle = `rgba(255,255,255,${0.95 * alpha})`;
-  const hasSubline = r > 28;
-  ctx.fillText(b.name, cx, hasSubline ? cy - subSize * 0.45 : cy, r * 1.7);
+  const showSub = r > 26;
+  ctx.fillText(b.name, cx, showSub ? cy - subSize * 0.5 : cy, r * 1.8);
 
-  if (hasSubline) {
-    const info: string[] = [];
-    if (b.concepts) info.push(b.concepts + ' \u77e5\u8bc6\u70b9');
-    if (b.subs) info.push(b.subs + ' \u5b50\u9886\u57df');
-    if (info.length) {
+  if (showSub) {
+    const parts: string[] = [];
+    if (b.concepts) parts.push(b.concepts + ' \u77e5\u8bc6\u70b9');
+    if (b.subs) parts.push(b.subs + ' \u5b50\u9886\u57df');
+    if (parts.length) {
       ctx.font = `400 ${subSize}px "Microsoft YaHei","PingFang SC",system-ui,sans-serif`;
       ctx.fillStyle = `rgba(255,255,255,${0.6 * alpha})`;
-      ctx.fillText(info.join(' \u00b7 '), cx, cy + fontSize * 0.55, r * 1.7);
+      ctx.fillText(parts.join(' \u00b7 '), cx, cy + fontSize * 0.6, r * 1.8);
     }
   }
 }
 
-/* ═══════════════════════════════════════════
-   HomePage — Apple Watch honeycomb + fisheye
-   ═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   HomePage — Honeycomb grid + center fisheye
+   Infinite drag wrapping, flat style
+   ═══════════════════════════════════════════════ */
 export function HomePage() {
   const nav = useNavigate();
   const { domains, loading, fetchDomains } = useDomainStore();
@@ -202,171 +161,173 @@ export function HomePage() {
     return () => { alive.current = false; if (timerRef.current) clearTimeout(timerRef.current); };
   }, []);
 
-  /* ─── Build hex grid bubble data ─── */
+  /* ─── Build hex bubble data ─── */
   const bubbles = useMemo<BubbleNode[]>(() => {
     if (!active.length) return [];
     const items = active.map(d => {
       const c = d.stats?.total_concepts ?? 0, e = d.stats?.total_edges ?? 0, s = d.stats?.subdomains ?? 0;
-      return { id: d.id, name: NAME_MAP[d.id] || d.name, color: d.color, concepts: c, subs: s, completeness: completeness(c, e, s) };
+      return { id: d.id, name: NAME_MAP[d.id] || d.name, color: d.color, concepts: c, subs: s, comp: completeness(c, e, s) };
     });
-    items.sort((a, b) => b.completeness - a.completeness);
-    const spacing = BASE_R + GAP;
-    const positions = hexSpiralPositions(items.length, spacing);
-    return items.map((it, i) => ({
-      ...it,
-      gx: positions[i].x,
-      gy: positions[i].y,
-      baseR: baseRadius(it.completeness),
-    }));
+    items.sort((a, b) => b.comp - a.comp);
+    const positions = hexSpiral(items.length, CELL);
+    return items.map((it, i) => {
+      const t = Math.max(0, Math.min(1, (it.comp - 300) / 500));
+      return { ...it, gx: positions[i].x, gy: positions[i].y, baseR: BASE_R * (0.8 + t * 0.2) };
+    });
   }, [active]);
 
-  /* ─── Interaction + render state ─── */
-  const stateRef = useRef({
-    offsetX: 0, offsetY: 0,
-    velX: 0, velY: 0,
-    dragStartX: 0, dragStartY: 0,
-    dragOffsetX: 0, dragOffsetY: 0,
-    lastMoveTime: 0,
-    lastMoveX: 0, lastMoveY: 0,
+  /* ─── Compute bounding box for wrap ─── */
+  const bbox = useMemo(() => {
+    if (!bubbles.length) return { w: 0, h: 0 };
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    for (const b of bubbles) {
+      if (b.gx - BASE_R < minX) minX = b.gx - BASE_R;
+      if (b.gx + BASE_R > maxX) maxX = b.gx + BASE_R;
+      if (b.gy - BASE_R < minY) minY = b.gy - BASE_R;
+      if (b.gy + BASE_R > maxY) maxY = b.gy + BASE_R;
+    }
+    return { w: maxX - minX + CELL, h: maxY - minY + CELL };
+  }, [bubbles]);
+
+  /* ─── State ref ─── */
+  const st = useRef({
+    ox: 0, oy: 0,
+    vx: 0, vy: 0,
+    dsx: 0, dsy: 0, dox: 0, doy: 0,
+    ltm: 0, lmx: 0, lmy: 0,
     dragging: false,
-    mouseX: -9999, mouseY: -9999,
+    mx: -9999, my: -9999,
   });
 
   /* ─── Canvas loop ─── */
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !bubbles.length) return;
-    const ctx = canvas.getContext('2d')!;
-    let raf = 0;
-    let dead = false;
-    const s = stateRef.current;
+    const cvs = canvasRef.current;
+    if (!cvs || !bubbles.length) return;
+    const ctx = cvs.getContext('2d')!;
+    let raf = 0, dead = false;
+    const s = st.current;
 
     const resize = () => {
-      const rect = canvas.parentElement!.getBoundingClientRect();
-      canvas.width = rect.width * DPR;
-      canvas.height = rect.height * DPR;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
+      const r = cvs.parentElement!.getBoundingClientRect();
+      cvs.width = r.width * DPR;
+      cvs.height = r.height * DPR;
+      cvs.style.width = r.width + 'px';
+      cvs.style.height = r.height + 'px';
     };
     resize();
     const ro = new ResizeObserver(resize);
-    ro.observe(canvas.parentElement!);
+    ro.observe(cvs.parentElement!);
 
-    /* ── Pointer events ── */
     const onDown = (e: PointerEvent) => {
-      s.dragging = true;
-      s.dragStartX = e.clientX; s.dragStartY = e.clientY;
-      s.dragOffsetX = s.offsetX; s.dragOffsetY = s.offsetY;
-      s.velX = 0; s.velY = 0;
-      s.lastMoveX = e.clientX; s.lastMoveY = e.clientY;
-      s.lastMoveTime = performance.now();
-      canvas.setPointerCapture(e.pointerId);
+      s.dragging = true; s.dsx = e.clientX; s.dsy = e.clientY;
+      s.dox = s.ox; s.doy = s.oy; s.vx = 0; s.vy = 0;
+      s.lmx = e.clientX; s.lmy = e.clientY; s.ltm = performance.now();
+      cvs.setPointerCapture(e.pointerId);
     };
     const onMove = (e: PointerEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      s.mouseX = e.clientX - rect.left;
-      s.mouseY = e.clientY - rect.top;
+      const r = cvs.getBoundingClientRect();
+      s.mx = e.clientX - r.left; s.my = e.clientY - r.top;
       if (s.dragging) {
-        s.offsetX = s.dragOffsetX + (e.clientX - s.dragStartX);
-        s.offsetY = s.dragOffsetY + (e.clientY - s.dragStartY);
-        const now = performance.now();
-        const dt = now - s.lastMoveTime;
-        if (dt > 0) {
-          s.velX = (e.clientX - s.lastMoveX) / dt * 16;
-          s.velY = (e.clientY - s.lastMoveY) / dt * 16;
-        }
-        s.lastMoveX = e.clientX; s.lastMoveY = e.clientY;
-        s.lastMoveTime = now;
+        s.ox = s.dox + (e.clientX - s.dsx);
+        s.oy = s.doy + (e.clientY - s.dsy);
+        const now = performance.now(), dt = now - s.ltm;
+        if (dt > 0) { s.vx = (e.clientX - s.lmx) / dt * 16; s.vy = (e.clientY - s.lmy) / dt * 16; }
+        s.lmx = e.clientX; s.lmy = e.clientY; s.ltm = now;
       }
     };
     const onUp = (e: PointerEvent) => {
-      const wasDrag = Math.abs(e.clientX - s.dragStartX) > 5 || Math.abs(e.clientY - s.dragStartY) > 5;
-      s.dragging = false;
-      canvas.releasePointerCapture(e.pointerId);
+      const wasDrag = Math.abs(e.clientX - s.dsx) > 5 || Math.abs(e.clientY - s.dsy) > 5;
+      s.dragging = false; cvs.releasePointerCapture(e.pointerId);
       if (!wasDrag) {
-        // Click — find hit bubble based on fisheye-transformed positions
-        const W = canvas.width / DPR, H = canvas.height / DPR;
-        const lx = W / 2, ly = H / 2;
+        const W = cvs.width / DPR, H = cvs.height / DPR;
+        const cx = W / 2, cy = H / 2;
+        // Reverse hit-test with wrapping
         for (let i = bubbles.length - 1; i >= 0; i--) {
           const b = bubbles[i];
-          const wx = lx + s.offsetX + b.gx;
-          const wy = ly + s.offsetY + b.gy;
-          const f = fisheye(wx, wy, lx, ly);
-          const r = b.baseR * f.scale;
-          const dx = s.mouseX - f.x, dy = s.mouseY - f.y;
+          let wx = cx + s.ox + b.gx, wy = cy + s.oy + b.gy;
+          if (bbox.w > 0) { wx = ((wx % bbox.w) + bbox.w) % bbox.w; if (wx > W + BASE_R * 2) wx -= bbox.w; }
+          if (bbox.h > 0) { wy = ((wy % bbox.h) + bbox.h) % bbox.h; if (wy > H + BASE_R * 2) wy -= bbox.h; }
+          const dist = Math.sqrt((wx - cx) * (wx - cx) + (wy - cy) * (wy - cy));
+          const sc = fishScale(dist);
+          const r = b.baseR * sc;
+          const dx = s.mx - wx, dy = s.my - wy;
           if (dx * dx + dy * dy <= r * r) {
-            const rect = canvas.getBoundingClientRect();
-            setTrans({ id: b.id, cx: rect.left + f.x, cy: rect.top + f.y, color: b.color });
-            timerRef.current = setTimeout(() => {
-              if (alive.current) navRef.current('/domain/' + b.id);
-            }, TRANSITION_MS);
+            const rect = cvs.getBoundingClientRect();
+            setTrans({ id: b.id, cx: rect.left + wx, cy: rect.top + wy, color: b.color });
+            timerRef.current = setTimeout(() => { if (alive.current) navRef.current('/domain/' + b.id); }, TRANSITION_MS);
             break;
           }
         }
       }
     };
-    const onLeave = () => { s.mouseX = -9999; s.mouseY = -9999; };
+    const onLeave = () => { s.mx = -9999; s.my = -9999; };
 
-    canvas.addEventListener('pointerdown', onDown);
-    canvas.addEventListener('pointermove', onMove);
-    canvas.addEventListener('pointerup', onUp);
-    canvas.addEventListener('pointerleave', onLeave);
+    cvs.addEventListener('pointerdown', onDown);
+    cvs.addEventListener('pointermove', onMove);
+    cvs.addEventListener('pointerup', onUp);
+    cvs.addEventListener('pointerleave', onLeave);
 
-    /* ── Render loop ── */
     const frame = () => {
       if (dead) return;
-      const W = canvas.width / DPR;
-      const H = canvas.height / DPR;
+      const W = cvs.width / DPR, H = cvs.height / DPR;
 
-      // Inertia when not dragging
+      // Inertia
       if (!s.dragging) {
-        s.offsetX += s.velX;
-        s.offsetY += s.velY;
-        s.velX *= 0.94;
-        s.velY *= 0.94;
-        if (Math.abs(s.velX) < 0.05) s.velX = 0;
-        if (Math.abs(s.velY) < 0.05) s.velY = 0;
+        s.ox += s.vx; s.oy += s.vy;
+        s.vx *= 0.94; s.vy *= 0.94;
+        if (Math.abs(s.vx) < 0.05) s.vx = 0;
+        if (Math.abs(s.vy) < 0.05) s.vy = 0;
       }
 
-      // Lens center = screen center
-      const lx = W / 2, ly = H / 2;
+      const cx = W / 2, cy = H / 2;
 
-      // Clear
       ctx.save();
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       ctx.fillStyle = BG;
       ctx.fillRect(0, 0, W, H);
 
-      // Hit test for hover cursor
-      let hoveredIdx = -1;
-      for (let i = bubbles.length - 1; i >= 0; i--) {
-        const b = bubbles[i];
-        const wx = lx + s.offsetX + b.gx;
-        const wy = ly + s.offsetY + b.gy;
-        const f = fisheye(wx, wy, lx, ly);
-        const r = b.baseR * f.scale;
-        const dx = s.mouseX - f.x, dy = s.mouseY - f.y;
-        if (dx * dx + dy * dy <= r * r) { hoveredIdx = i; break; }
-      }
-      canvas.style.cursor = s.dragging ? 'grabbing' : hoveredIdx >= 0 ? 'pointer' : 'grab';
+      // Build draw list with wrapping
+      type DI = { b: BubbleNode; x: number; y: number; r: number; sc: number; idx: number };
+      const drawList: DI[] = [];
 
-      // Collect draw data so we can sort back-to-front by scale (small first, big on top)
-      const drawList: { b: BubbleNode; fx: number; fy: number; r: number; scale: number; idx: number }[] = [];
       for (let i = 0; i < bubbles.length; i++) {
         const b = bubbles[i];
-        const wx = lx + s.offsetX + b.gx;
-        const wy = ly + s.offsetY + b.gy;
-        // Cull off-screen
-        if (wx < -150 || wx > W + 150 || wy < -150 || wy > H + 150) continue;
-        const f = fisheye(wx, wy, lx, ly);
-        drawList.push({ b, fx: f.x, fy: f.y, r: b.baseR * f.scale, scale: f.scale, idx: i });
+        let wx = cx + s.ox + b.gx;
+        let wy = cy + s.oy + b.gy;
+
+        // Wrap for infinite scrolling
+        if (bbox.w > 0) {
+          wx = ((wx % bbox.w) + bbox.w) % bbox.w;
+          if (wx > W + BASE_R * 2) wx -= bbox.w;
+        }
+        if (bbox.h > 0) {
+          wy = ((wy % bbox.h) + bbox.h) % bbox.h;
+          if (wy > H + BASE_R * 2) wy -= bbox.h;
+        }
+
+        // Cull
+        if (wx < -BASE_R * 2 || wx > W + BASE_R * 2 || wy < -BASE_R * 2 || wy > H + BASE_R * 2) continue;
+
+        const dist = Math.sqrt((wx - cx) * (wx - cx) + (wy - cy) * (wy - cy));
+        const sc = fishScale(dist);
+        drawList.push({ b, x: wx, y: wy, r: b.baseR * sc, sc, idx: i });
       }
-      drawList.sort((a, b) => a.scale - b.scale);
+
+      // Sort: small (far) first, big (near center) on top
+      drawList.sort((a, b) => a.sc - b.sc);
+
+      // Hover detect
+      let hovIdx = -1;
+      for (let i = drawList.length - 1; i >= 0; i--) {
+        const d = drawList[i];
+        const dx = s.mx - d.x, dy = s.my - d.y;
+        if (dx * dx + dy * dy <= d.r * d.r) { hovIdx = d.idx; break; }
+      }
+      cvs.style.cursor = s.dragging ? 'grabbing' : hovIdx >= 0 ? 'pointer' : 'grab';
 
       // Draw
       for (const d of drawList) {
-        const alpha = Math.max(0.35, Math.min(1, 0.35 + (d.scale - 1) * 0.72));
-        drawBubble(ctx, d.b, d.fx, d.fy, d.r, alpha, d.idx === hoveredIdx);
+        drawBubble(ctx, d.b, d.x, d.y, d.r, d.sc, d.idx === hovIdx);
       }
 
       ctx.restore();
@@ -375,15 +336,13 @@ export function HomePage() {
     raf = requestAnimationFrame(frame);
 
     return () => {
-      dead = true;
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      canvas.removeEventListener('pointerdown', onDown);
-      canvas.removeEventListener('pointermove', onMove);
-      canvas.removeEventListener('pointerup', onUp);
-      canvas.removeEventListener('pointerleave', onLeave);
+      dead = true; cancelAnimationFrame(raf); ro.disconnect();
+      cvs.removeEventListener('pointerdown', onDown);
+      cvs.removeEventListener('pointermove', onMove);
+      cvs.removeEventListener('pointerup', onUp);
+      cvs.removeEventListener('pointerleave', onLeave);
     };
-  }, [bubbles]);
+  }, [bubbles, bbox]);
 
   return (
     <div className="h-dvh w-full relative overflow-hidden" style={{ backgroundColor: BG }}>
@@ -394,16 +353,14 @@ export function HomePage() {
           选择你的知识领域
         </h1>
         <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6, textShadow: '0 1px 6px rgba(232,232,228,0.8)' }}>
-          拖拽平移 · 点击进入 3D 知识图谱
+          拖拽平移 \u00b7 点击进入 3D 知识图谱
         </p>
       </div>
-      {/* Loading */}
       {loading && active.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 20 }}>
           <Loader size={28} className="animate-spin" style={{ color: '#888' }} />
         </div>
       )}
-      {/* Transition */}
       {trans && (
         <div className="fixed inset-0" style={{ zIndex: 50, pointerEvents: 'none' }}>
           <div style={{ position: 'absolute', left: trans.cx, top: trans.cy, width: 0, height: 0, borderRadius: '50%', backgroundColor: trans.color, transform: 'translate(-50%,-50%)', animation: 'orb-expand ' + TRANSITION_MS + 'ms cubic-bezier(0.4,0,0.2,1) forwards', opacity: 0.85 }} />

@@ -1,0 +1,252 @@
+[
+  {
+    "concept_id": "linear-regression",
+    "concept_name": "线性回归",
+    "domain": "mathematics",
+    "description": "一元/多元线性回归、R²",
+    "difficulty": 6,
+    "is_milestone": false,
+    "search_queries": [
+      "Linear Regression Mathematics Wikipedia definition structure",
+      "Linear Regression Mathematics principles key concepts textbook",
+      "线性回归 一元/多元线性回归 R² 原理 定义",
+      "线性回归 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "maximum-likelihood",
+    "concept_name": "最大似然估计详解",
+    "domain": "mathematics",
+    "description": "似然函数、Fisher信息、渐近性质",
+    "difficulty": 8,
+    "is_milestone": false,
+    "search_queries": [
+      "Maximum Likelihood Mathematics Wikipedia definition structure",
+      "Maximum Likelihood Mathematics principles key concepts textbook",
+      "最大似然估计详解 似然函数 Fisher信息 渐近性质 原理 定义",
+      "最大似然估计详解 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "circles",
+    "concept_name": "圆",
+    "domain": "mathematics",
+    "description": "圆的基本元素、圆心角、弧",
+    "difficulty": 4,
+    "is_milestone": false,
+    "search_queries": [
+      "Circles Mathematics Wikipedia definition structure",
+      "Circles Mathematics principles key concepts textbook",
+      "圆 圆的基本元素 圆心角 弧 原理 定义",
+      "圆 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "exponents-basics",
+    "concept_name": "指数与幂运算",
+    "domain": "mathematics",
+    "description": "正整数指数幂及其运算法则",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Exponents Basics Mathematics Wikipedia definition structure",
+      "Exponents Basics Mathematics principles key concepts textbook",
+      "指数与幂运算 正整数指数幂及其运算法则 原理 定义",
+      "指数与幂运算 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "permutations",
+    "concept_name": "排列",
+    "domain": "mathematics",
+    "description": "排列数P(n,k)及其计算",
+    "difficulty": 4,
+    "is_milestone": false,
+    "search_queries": [
+      "Permutations Mathematics Wikipedia definition structure",
+      "Permutations Mathematics principles key concepts textbook",
+      "排列 排列数P(n,k)及其计算 原理 定义",
+      "排列 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "arithmetic-sequence",
+    "concept_name": "等差数列",
+    "domain": "mathematics",
+    "description": "通项公式、前n项和公式",
+    "difficulty": 5,
+    "is_milestone": false,
+    "search_queries": [
+      "Arithmetic Sequence Mathematics Wikipedia definition structure",
+      "Arithmetic Sequence Mathematics principles key concepts textbook",
+      "等差数列 通项公式 前n项 公式 原理 定义",
+      "等差数列 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "parametric-equations",
+    "concept_name": "参数方程",
+    "domain": "mathematics",
+    "description": "含参方程的讨论与消参",
+    "difficulty": 6,
+    "is_milestone": false,
+    "search_queries": [
+      "Parametric Equations Mathematics Wikipedia definition structure",
+      "Parametric Equations Mathematics principles key concepts textbook",
+      "参数方程 含参方程的讨论 消参 原理 定义",
+      "参数方程 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "ratio-proportion",
+    "concept_name": "比与比例",
+    "domain": "mathematics",
+    "description": "比的概念、正比例与反比例",
+    "difficulty": 2,
+    "is_milestone": false,
+    "search_queries": [
+      "Ratio Proportion Mathematics Wikipedia definition structure",
+      "Ratio Proportion Mathematics principles key concepts textbook",
+      "比与比例 比的概念 正比例 反比例 原理 定义",
+      "比与比例 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "integration-techniques",
+    "concept_name": "积分技巧",
+    "domain": "mathematics",
+    "description": "换元法、分部积分法",
+    "difficulty": 6,
+    "is_milestone": false,
+    "search_queries": [
+      "Integration Techniques Mathematics Wikipedia definition structure",
+      "Integration Techniques Mathematics principles key concepts textbook",
+      "积分技巧 换元法 分部积分法 原理 定义",
+      "积分技巧 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "optimization-calculus",
+    "concept_name": "最值问题",
+    "domain": "mathematics",
+    "description": "利用导数求最大值最小值",
+    "difficulty": 6,
+    "is_milestone": false,
+    "search_queries": [
+      "Optimization Calculus Mathematics Wikipedia definition structure",
+      "Optimization Calculus Mathematics principles key concepts textbook",
+      "最值问题 利用导数求最大值最小值 原理 定义",
+      "最值问题 数学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  }
+]

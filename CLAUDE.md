@@ -39,7 +39,7 @@
 
 ---
 
-**当前阶段**: 🔥 **Phase 36 完成** | 30知识球(6,156节点) + Phase 36 项目管理球已完成
+**当前阶段**: 🔥 **Phase 37 完成** | 30知识球(6,156节点) + 跨球体关联审计+首页30球适配
 **🔴🔴🔴 最高优先级**: **RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
 > 6,156篇RAG文档质量审计: Tier-S ~10篇, Tier-C ~6,100篇(同模板生成,概念特异性<1%)
 > Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
@@ -47,11 +47,20 @@
 > Sprint 1.5 🔥: **research-rewrite-v2** — WebResearch增强精写(每概念必须web搜索+来源验证)
 >   新脚本: `scripts/research_rewrite.py` | 验证: cell-membrane 13.8→93.3, accessibility-audit 17.9→82.6
 >   下一步: 按域批量执行research-rewrite-v2, milestone概念优先
-**🔥 下一阶段**: **Phase 37 游戏开发全领域跨球体总验证** | 详见 `docs/EXPANSION_PLAN.md` 第十章
+**✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 11球体 + 🔥20游戏开发球(P0最高优先级)
 **📊 RAG进化**: `docs/RAG_EVOLUTION_PLAN.md` — 知识库质量迭代进化方案(Schema v2 + 评分 + 改写管线)
+
+**Phase 37 完成摘要** (跨球体总验证+首页适配):
+> **目标**: 游戏开发全领域(20球体)跨球体关联审计 + 首页30球布局适配 (收尾阶段)
+> **前置**: Phase 36 ✅ 完成 (项目管理球=最后一个游戏开发球)
+> **已完成**: 37.1 全量链接验证(595链接0断引用) ✅ | 37.2 缺失关键关联补全(physics↔CG, ai-eng↔game-design, ai-eng↔tech-art, 共12新链接) ✅ | 37.3 首页30球响应式适配(移动端小屏+域数自适应) ✅ | 37.4 域数显示 ✅ | 37.5 集成测试(6新Phase 37测试) ✅ | 37.6 文档更新 ✅
+> **测试总数**: 969 (756 BE + 213 FE)
+> **数据完整性**: 30域 6,156概念 0重复ID, 6,795边 0断引用, 595跨球链接全部有效, 30域RAG 100%覆盖
+> **修复**: test_phase15_integration cell-membrane.md header检查适配research-rewrite-v2格式
+> **下一步**: RAG知识库质量迭代进化(research-rewrite-v2批量执行)
 
 **Phase 14 完成摘要**:
 > **目标**: 上线第八个知识球 — 哲学, 覆盖古代哲学到当代思潮 (P2第二球)
@@ -249,6 +258,8 @@
 | **Phase 33** | W94-96 | 市场发行知识球(180节点, 191边, 9子域, 商业思维+数据驱动+平台规则+全球化教学, 跨球体关联, 游戏开发P0-D第二球) | ✅ 完成 (33.1-33.7, 945 tests) |
 | **Phase 34** | W97-99 | 运营知识球(180节点, 205边, 9子域, 数据驱动+用户思维+实验文化+经济监控教学, 跨球体关联, 游戏开发P0-D第三球) | ✅ 完成 (34.1-34.7, 951 tests) |
 | **Phase 35** | W100-102 | QA测试知识球(160节点, 177边, 8子域, 测试设计+自动化+性能+兼容性+本地化+回归+Bug管理+工具链教学, 跨球体关联, 游戏开发P0-D第四球) | ✅ 完成 (35.1-35.7, 957 tests) |
+| **Phase 36** | W103-105 | 项目管理知识球(160节点, 172边, 8子域, 敏捷/预算/人员/风险/跨部门/外包/生产管线教学, 跨球体关联, 游戏开发P0-D第五球=最后一球) | ✅ 完成 (36.1-36.7, 935 tests) |
+| **Phase 37** | W106 | 跨球体关联审计+首页30球布局适配(12新跨域链接, 595链接0断引用, 响应式适配, 6新测试) | ✅ 完成 (37.1-37.6, 969 tests) |
 
 ---
 
@@ -1499,6 +1510,22 @@ data/seed/         — 种子图谱数据
     - STATUS: Phase 20 🔧游戏引擎知识球 **全部完成** (7/7步骤)
 
 ## Last Review
+
+**Date**: 2026-03-21 | **Scope**: Phase 36+37 项目管理球+跨球体审计 | **Result**: passed (#30 closed, #31 in-progress)
+
+ - ✅ **Phase 37 跨球体审计+首页适配 (2026-03-21)**:
+    - **SCOPE**: 游戏开发全领域跨球体关联审计 + 首页30球布局适配
+    - **DATA**: 12新跨球链接(physics↔CG 5条, ai-eng↔game-design 4条, ai-eng↔tech-art 3条) → 总计595链接, 0断引用
+    - **FRONTEND**: HomePage响应式适配(BASE_R_MOBILE=32, getBaseR()域数自适应) + 域数显示
+    - **TEST**: 6新Phase 37集成测试(link count/physics-CG/ai-gamedesign/ai-TA/30域数据/30域注册)
+    - **FIX**: test_phase15_integration cell-membrane.md header检查适配v2格式 / cross_sphere_links relation_type→relation
+    - **DATA INTEGRITY**: 30域 6,156概念 0重复ID, 6,795边 0断引用, 595跨球链接全部有效
+    - **VERIFY**: 969 tests (756 BE + 213 FE) 全通过, tsc 0 errors, build 3.73s, workers tsc 0 errors
+
+ - ✅ **Phase 36 项目管理知识球提交 (2026-03-21, 881b5786)**:
+    - **SCOPE**: 上线第三十个知识球 — 项目管理, 覆盖敏捷/预算/人员/风险/跨部门/外包/生产管线
+    - **DATA**: 160概念/172边/8子域/32里程碑 + 160 RAG文档 + 24跨球链接(583总)
+    - **GITHUB**: Issue #30 closed
 
 **Date**: 2026-03-21 | **Scope**: Phase 34 运营(game-live-ops)知识球完成 | **Result**: passed (#28 completed)
 

@@ -1,0 +1,252 @@
+[
+  {
+    "concept_id": "autocorrelation-econ",
+    "concept_name": "自相关",
+    "domain": "economics",
+    "description": "时间序列自相关的检测与修正方法",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Autocorrelation Econ Economics Wikipedia definition structure",
+      "Autocorrelation Econ Economics principles key concepts textbook",
+      "自相关 时间序列自相关的检测 修正方法 原理 定义",
+      "自相关 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "heteroskedasticity",
+    "concept_name": "异方差",
+    "domain": "economics",
+    "description": "异方差检验、后果与稳健标准误修正",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Heteroskedasticity Economics Wikipedia definition structure",
+      "Heteroskedasticity Economics principles key concepts textbook",
+      "异方差 异方差检验 后果 稳健标准误修正 原理 定义",
+      "异方差 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "hypothesis-testing-econ",
+    "concept_name": "假设检验",
+    "domain": "economics",
+    "description": "t检验、F检验与经济假说的统计检验",
+    "difficulty": 2,
+    "is_milestone": false,
+    "search_queries": [
+      "Hypothesis Testing Econ Economics Wikipedia definition structure",
+      "Hypothesis Testing Econ Economics principles key concepts textbook",
+      "假设检验 t检验 F检验 经济假说的统计检验 原理 定义",
+      "假设检验 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "regression-discontinuity",
+    "concept_name": "断点回归",
+    "domain": "economics",
+    "description": "RDD设计、局部随机化与带宽选择",
+    "difficulty": 4,
+    "is_milestone": false,
+    "search_queries": [
+      "Regression Discontinuity Economics Wikipedia definition structure",
+      "Regression Discontinuity Economics principles key concepts textbook",
+      "断点回归 RDD设计 局部随机化 带宽选择 原理 定义",
+      "断点回归 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "absolute-advantage",
+    "concept_name": "绝对优势",
+    "domain": "economics",
+    "description": "亚当·斯密的绝对优势理论与国际分工",
+    "difficulty": 1,
+    "is_milestone": false,
+    "search_queries": [
+      "Absolute Advantage Economics Wikipedia definition structure",
+      "Absolute Advantage Economics principles key concepts textbook",
+      "绝对优势 亚当·斯密的绝对优势理论 国际分工 原理 定义",
+      "绝对优势 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "balance-of-payments",
+    "concept_name": "国际收支",
+    "domain": "economics",
+    "description": "经常账户、资本与金融账户的结构与平衡",
+    "difficulty": 2,
+    "is_milestone": false,
+    "search_queries": [
+      "Balance Of Payments Economics Wikipedia definition structure",
+      "Balance Of Payments Economics principles key concepts textbook",
+      "国际收支 经常账户 资本 金融账户的结构 平衡 原理 定义",
+      "国际收支 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "comparative-advantage",
+    "concept_name": "比较优势",
+    "domain": "economics",
+    "description": "李嘉图比较优势理论与贸易互利的基本原理",
+    "difficulty": 2,
+    "is_milestone": false,
+    "search_queries": [
+      "Comparative Advantage Economics Wikipedia definition structure",
+      "Comparative Advantage Economics principles key concepts textbook",
+      "比较优势 李嘉图比较优势理论 贸易互利的基本原理 原理 定义",
+      "比较优势 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "currency-crisis",
+    "concept_name": "货币危机",
+    "domain": "economics",
+    "description": "投机攻击、三代货币危机模型与防范机制",
+    "difficulty": 4,
+    "is_milestone": false,
+    "search_queries": [
+      "Currency Crisis Economics Wikipedia definition structure",
+      "Currency Crisis Economics principles key concepts textbook",
+      "货币危机 投机攻击 三代货币危机模型 防范机制 原理 定义",
+      "货币危机 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "digital-trade",
+    "concept_name": "数字贸易",
+    "domain": "economics",
+    "description": "跨境数据流动、数字服务贸易与电子商务规则",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Digital Trade Economics Wikipedia definition structure",
+      "Digital Trade Economics principles key concepts textbook",
+      "数字贸易 跨境数据流动 数字服务贸易 电子商务规则 原理 定义",
+      "数字贸易 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "exchange-rate-systems",
+    "concept_name": "汇率制度",
+    "domain": "economics",
+    "description": "固定汇率、浮动汇率与管理浮动汇率制度比较",
+    "difficulty": 2,
+    "is_milestone": false,
+    "search_queries": [
+      "Exchange Rate Systems Economics Wikipedia definition structure",
+      "Exchange Rate Systems Economics principles key concepts textbook",
+      "汇率制度 固定汇率 浮动汇率 管理浮动汇率制度比较 原理 定义",
+      "汇率制度 经济学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  }
+]

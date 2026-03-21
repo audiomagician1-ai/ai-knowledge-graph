@@ -3131,3 +3131,78 @@ async def test_game_production_neighbors():
         data = resp.json()
         assert data["center"] == "gp-pp-overview"
         assert len(data["nodes"]) >= 2
+
+
+# ── Phase 37: Cross-Sphere Link Audit + 30-Sphere Validation ──────────────────
+
+
+@pytest.mark.asyncio
+async def test_phase37_cross_links_total():
+    """Phase 37: Total cross-sphere links should be >= 595 after audit."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links")
+        data = resp.json()
+        assert data["total"] >= 595, f"Expected >= 595 cross-sphere links, got {data['total']}"
+
+
+@pytest.mark.asyncio
+async def test_phase37_physics_computer_graphics_links():
+    """Phase 37: physics <-> computer-graphics cross-sphere links should exist."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=physics")
+        data = resp.json()
+        cg_links = [l for l in data["links"]
+                    if l["target_domain"] == "computer-graphics" or l["source_domain"] == "computer-graphics"]
+        assert len(cg_links) >= 5, f"Expected >= 5 physics<->CG links, got {len(cg_links)}"
+
+
+@pytest.mark.asyncio
+async def test_phase37_ai_game_design_links():
+    """Phase 37: ai-engineering <-> game-design cross-sphere links should exist."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=ai-engineering")
+        data = resp.json()
+        gd_links = [l for l in data["links"]
+                    if l["target_domain"] == "game-design" or l["source_domain"] == "game-design"]
+        assert len(gd_links) >= 4, f"Expected >= 4 ai-eng<->game-design links, got {len(gd_links)}"
+
+
+@pytest.mark.asyncio
+async def test_phase37_ai_technical_art_links():
+    """Phase 37: ai-engineering <-> technical-art cross-sphere links should exist."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=ai-engineering")
+        data = resp.json()
+        ta_links = [l for l in data["links"]
+                    if l["target_domain"] == "technical-art" or l["source_domain"] == "technical-art"]
+        assert len(ta_links) >= 3, f"Expected >= 3 ai-eng<->TA links, got {len(ta_links)}"
+
+
+@pytest.mark.asyncio
+async def test_phase37_all_30_domains_have_graph_data():
+    """Phase 37: All 30 domains should return valid graph data."""
+    all_domains = [
+        "ai-engineering", "mathematics", "english", "physics", "product-design",
+        "finance", "psychology", "philosophy", "biology", "economics", "writing",
+        "game-design", "level-design", "game-engine", "software-engineering",
+        "computer-graphics", "3d-art", "concept-design", "animation",
+        "technical-art", "vfx", "game-audio-music", "game-ui-ux",
+        "narrative-design", "multiplayer-network", "game-audio-sfx",
+        "game-publishing", "game-live-ops", "game-qa", "game-production"
+    ]
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        for domain_id in all_domains:
+            resp = await client.get(f"/api/graph/data?domain={domain_id}")
+            assert resp.status_code == 200, f"Domain {domain_id} failed"
+            data = resp.json()
+            assert len(data["nodes"]) >= 100, f"Domain {domain_id} has too few nodes: {len(data['nodes'])}"
+            assert len(data["edges"]) >= 50, f"Domain {domain_id} has too few edges: {len(data['edges'])}"
+
+
+@pytest.mark.asyncio
+async def test_phase37_30_domains_registered():
+    """Phase 37: domains.json should have exactly 30 active domains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/domains")
+        data = resp.json()
+        assert len(data) >= 30, f"Expected >= 30 domains, got {len(data)}"

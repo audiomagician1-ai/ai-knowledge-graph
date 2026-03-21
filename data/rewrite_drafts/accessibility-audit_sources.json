@@ -1,0 +1,42 @@
+[
+  {
+    "type": "industry-guideline",
+    "ref": "Game Accessibility Guidelines (gameaccessibilityguidelines.com)",
+    "url": "https://gameaccessibilityguidelines.com/full-list/",
+    "key_facts": [
+      "指南自 2012 年起持续维护，按 Basic/Intermediate/Advanced 三级分类",
+      "覆盖 Motor(操控/运动)、Cognitive(认知/记忆)、Vision(视觉)、Hearing(听觉)、Speech(语音) 五大障碍类别",
+      "Basic 级: 允许重映射按键、提供高对比度、避免闪烁画面、允许暂停等",
+      "Intermediate 级: 提供色盲模式、屏幕朗读兼容、可调字体大小",
+      "Advanced 级: 支持辅助技术设备(眼动追踪/开关控制)、提供音频GPS/声纳地图",
+      "具体条目如: 0.5秒输入冷却、避免快速时间事件(QTE)必需、支持横竖屏"
+    ]
+  },
+  {
+    "type": "industry-guideline",
+    "ref": "Xbox Accessibility Guidelines (XAGs) V3.2 - Microsoft Game Dev",
+    "url": "https://learn.microsoft.com/en-us/gaming/accessibility/guidelines",
+    "key_facts": [
+      "由微软与行业专家和残障玩家社区共同开发",
+      "V3.2 于 2023年6月8日发布，含 23 条指南(编号 XAG 101-123)",
+      "XAG 结构: Goal → Overview → Scoping Questions → Implementation Guidelines → Example Content → Potential Player Impact",
+      "覆盖: 文本显示(101)、对比度(102)、字幕(104)、输入(107)、难度选项(108)、光敏(118)、心理健康(123)等",
+      "不是合规性清单，而是确保用户体验'对所有人可玩可享'的最佳实践",
+      "配套: Gaming Accessibility Testing Service(微软测试服务)、Fundamentals Learning Path"
+    ]
+  },
+  {
+    "type": "industry-article",
+    "ref": "Keywords Studios - 什么是无障碍化QA (AQA)?",
+    "url": "https://www.keywordsstudios.com/zh-cn/news/什么是无障碍化qa-aqa/",
+    "key_facts": [
+      "AQA = 评估、追踪和处理电子游戏无障碍化设计的方法",
+      "两种方法: (1)审计(Audit) — 全面测试当前无障碍水平; (2)周期测试(Cycle Testing) — 按固定周期回归",
+      "审计流程: 1-2名QA + 1名无障碍负责人 → 详细测试计划 → 涵盖UI/操控/音频/剧情/内容警告",
+      "产出: 最终报告列出各障碍及严重程度",
+      "审计通常安排在游戏制作后期(内容较成型时)",
+      "周期测试可按每周/每两周/每两月执行，确保障碍被持续修复",
+      "配合残障顾问和真实残障玩家进行游戏测试"
+    ]
+  }
+]

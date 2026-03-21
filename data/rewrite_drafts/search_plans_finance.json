@@ -1,0 +1,252 @@
+[
+  {
+    "concept_id": "backtesting",
+    "concept_name": "回测框架",
+    "domain": "finance",
+    "description": "策略回测方法论、过拟合陷阱与样本外验证",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Backtesting Finance Wikipedia definition structure",
+      "Backtesting Finance principles key concepts textbook",
+      "回测框架 策略回测方法论 过拟合陷阱 样本外验证 原理 定义",
+      "回测框架 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "execution-cost",
+    "concept_name": "交易执行成本",
+    "domain": "finance",
+    "description": "滑点、市场冲击与最优执行理论",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Execution Cost Finance Wikipedia definition structure",
+      "Execution Cost Finance principles key concepts textbook",
+      "交易执行成本 滑点 市场冲击 最优执行理论 原理 定义",
+      "交易执行成本 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "high-frequency-trading",
+    "concept_name": "高频交易",
+    "domain": "finance",
+    "description": "HFT策略、市场微结构与技术基础设施",
+    "difficulty": 4,
+    "is_milestone": false,
+    "search_queries": [
+      "High Frequency Trading Finance Wikipedia definition structure",
+      "High Frequency Trading Finance principles key concepts textbook",
+      "高频交易 HFT策略 市场微结构 技术基础设施 原理 定义",
+      "高频交易 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "market-microstructure",
+    "concept_name": "市场微结构",
+    "domain": "finance",
+    "description": "限价订单簿、做市商与价格发现机制",
+    "difficulty": 4,
+    "is_milestone": false,
+    "search_queries": [
+      "Market Microstructure Finance Wikipedia definition structure",
+      "Market Microstructure Finance principles key concepts textbook",
+      "市场微结构 限价订单簿 做市商 价格发现机制 原理 定义",
+      "市场微结构 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "mean-reversion",
+    "concept_name": "均值回归",
+    "domain": "finance",
+    "description": "均值回归现象的统计检验与交易策略",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Mean Reversion Finance Wikipedia definition structure",
+      "Mean Reversion Finance principles key concepts textbook",
+      "均值回归 均值回归现象的统计检验 交易策略 原理 定义",
+      "均值回归 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "momentum-strategy",
+    "concept_name": "动量策略",
+    "domain": "finance",
+    "description": "价格动量、盈利动量与动量崩溃风险",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Momentum Strategy Finance Wikipedia definition structure",
+      "Momentum Strategy Finance principles key concepts textbook",
+      "动量策略 价格动量 盈利动量 动量崩溃风险 原理 定义",
+      "动量策略 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "monte-carlo-simulation",
+    "concept_name": "蒙特卡洛模拟",
+    "domain": "finance",
+    "description": "随机模拟在期权定价与风险管理中的应用",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Monte Carlo Simulation Finance Wikipedia definition structure",
+      "Monte Carlo Simulation Finance principles key concepts textbook",
+      "蒙特卡洛模拟 随机模拟在期权定价 风险管理中的应用 原理 定义",
+      "蒙特卡洛模拟 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "quant-finance-overview",
+    "concept_name": "量化金融概述",
+    "domain": "finance",
+    "description": "量化金融的发展、主要领域与职业路径",
+    "difficulty": 1,
+    "is_milestone": false,
+    "search_queries": [
+      "Quant Finance Overview Finance Wikipedia definition structure",
+      "Quant Finance Overview Finance principles key concepts textbook",
+      "量化金融概述 量化金融的发展 主要领域 职业路径 原理 定义",
+      "量化金融概述 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "risk-factor-analysis",
+    "concept_name": "风险因子分析",
+    "domain": "finance",
+    "description": "系统性风险因子分解与风险归因",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Risk Factor Analysis Finance Wikipedia definition structure",
+      "Risk Factor Analysis Finance principles key concepts textbook",
+      "风险因子分析 系统性风险因子分解 风险归因 原理 定义",
+      "风险因子分析 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "sentiment-analysis-finance",
+    "concept_name": "金融情绪分析",
+    "domain": "finance",
+    "description": "新闻/社交媒体文本的情绪提取与交易信号",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Sentiment Analysis Finance Finance Wikipedia definition structure",
+      "Sentiment Analysis Finance Finance principles key concepts textbook",
+      "金融情绪分析 新闻/社交媒体文本的情绪提取 交易信号 原理 定义",
+      "金融情绪分析 金融学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  }
+]

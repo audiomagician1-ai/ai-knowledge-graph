@@ -1,8 +1,9 @@
 # RAG 知识库迭代进化方案
 
-> **文档版本**: v1.0
+> **文档版本**: v2.0
 > **创建日期**: 2026-03-21
-> **状态**: 🔥 最高优先级 — Sprint 0 基础设施建设中
+> **最后更新**: 2026-03-21
+> **状态**: 🔥 最高优先级 — Sprint 0+1 完成, Sprint 1.5 (research-rewrite-v2) 进行中
 > **关联**: `CLAUDE.md` (项目状态) / `EXPANSION_PLAN.md` (多球体路线图) / `DEVELOPMENT_PLAN.md` (MVP定义)
 
 ---
@@ -234,21 +235,47 @@ freshness:
 
 ## 九、执行路线图
 
-### Sprint 0：基础设施（1-2 天）
-- [ ] 实现 RAG Doc Schema v2（新增元数据字段）
-- [ ] 实现 `quality_scorer.py` — 自动评分脚本
-- [ ] 对现有 5,996 篇文档执行首次全量评分 → `quality_report.json`
-- [ ] 编写 `rewrite_pipeline.py` 框架（Phase 1-4 骨架）
+### Sprint 0：基础设施（1-2 天） ✅ 完成
+- [x] 实现 RAG Doc Schema v2（新增元数据字段）→ `scripts/upgrade_schema.py`
+- [x] 实现 `quality_scorer.py` — 自动评分脚本（5维度100分制）
+- [x] 对现有 5,996 篇文档执行首次全量评分 → `data/quality_report.json`
+- [x] 编写 `rewrite_pipeline.py` 框架（Phase 1-4 骨架）
 
-### Sprint 1：里程碑节点改写（3-5 天）
-- [ ] 提取约 200 个里程碑节点列表
-- [ ] 对每个里程碑节点：WebSearch 知识获取 → AI 精写 → 验证
-- [ ] 目标：200 篇 Tier-C → Tier-A（quality_score ≥ 60）
+### Sprint 1：物理里程碑改写 ✅ 完成
+- [x] 26 个物理里程碑概念精写（纯 AI 记忆改写 v1）
+- [x] 物理域: avg 34.7→45.5, Tier-S 0→7, Tier-A 0→19, Tier-C 194→14
+- [x] 批量脚本: `batch_rewrite_physics.py` (6), `batch_rewrite_physics2.py` (4), `batch_rewrite_physics3.py` (12)
+
+### Sprint 1.5：研究增强改写 v2 🔥 进行中
+
+**核心升级：每个概念精写前必须通过 WebResearch 获取外部来源**
+
+新增工具: `scripts/research_rewrite.py`
+
+工作流:
+```
+seed_graph元数据 → 生成4条搜索查询(中英各2) → WebSearch
+→ 阅读3-5个优先来源(Wikipedia > 教科书在线版 > Khan Academy)
+→ 编译 external_knowledge + sources.json
+→ AI基于来源精写(v2 prompt: 禁止无来源编造)
+→ 验证 + 回写(generation_method: research-rewrite-v2)
+```
+
+已验证效果:
+- `cell-membrane` (biology): 13.8 → **93.3** (Tier-C → Tier-S)
+- `accessibility-audit` (game-design): 17.9 → **82.6** (Tier-C → Tier-S)
+
+批量执行计划:
+- [ ] biology 域 milestone 概念 (~15 篇)
+- [ ] game-design 域 milestone 概念 (~25 篇)
+- [ ] mathematics 域 milestone 概念 (~20 篇)
+- [ ] economics 域 milestone 概念 (~15 篇)
+- [ ] 剩余域 milestone 概念
 
 ### Sprint 2：精确科学入门层改写（3-5 天）
 - [ ] 物理/数学/生物/经济学 difficulty 1-3（约 300 篇）
-- [ ] 重点引入教科书级来源
-- [ ] 目标：300 篇 Tier-C → Tier-B+
+- [ ] 全部使用 research-rewrite-v2 流程
+- [ ] 目标：300 篇 Tier-C → Tier-A+
 
 ### Sprint 3：全域质量提升管线化（持续）
 - [ ] 批量改写调度器（按 priority 排序，每次 50 篇）
@@ -264,11 +291,11 @@ freshness:
 
 ## 十、预期效果
 
-| 指标 | 当前 | Sprint 0-1 后 | Sprint 2 后 | 6 个月后 |
-|:---|:---:|:---:|:---:|:---:|
-| Tier-S 文档数 | ~10 | ~50 | ~80 | ~500 |
-| Tier-A 文档数 | ~26 | ~200 | ~400 | ~2,000 |
-| Tier-C 文档数 | ~5,960 | ~5,746 | ~5,416 | ~2,000 |
-| 平均 quality_score | ~15 | ~25 | ~32 | ~55 |
-| 有来源标注 | 0% | 3% | 8% | 40% |
-| 概念特异性 | ~1% | ~5% | ~10% | ~50% |
+| 指标 | 初始状态 | Sprint 0+1 后(实际) | Sprint 1.5 预期 | Sprint 2 预期 | 6 个月预期 |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| Tier-S 文档数 | ~10 | 9 (+v1精写) | ~100 | ~300 | ~1,000 |
+| Tier-A 文档数 | ~26 | 19 (physics) | ~200 | ~500 | ~2,000 |
+| Tier-C 文档数 | ~5,960 | ~5,820 | ~5,500 | ~4,500 | ~2,000 |
+| 平均 quality_score | ~15 | 31.0 | ~35 | ~42 | ~60 |
+| 有外部来源 | 0% | <1% (physics) | ~5% | ~15% | ~50% |
+| generation_method: research-rewrite-v2 | 0 | 2 | ~100 | ~400 | ~2,000 |

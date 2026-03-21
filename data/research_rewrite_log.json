@@ -1,0 +1,240 @@
+[
+  {
+    "concept_id": "cell-membrane",
+    "domain": "biology",
+    "filepath": "data\\rag\\biology\\cell-biology\\cell-membrane.md",
+    "timestamp": "2026-03-21T13:45:06.705672",
+    "method": "research-rewrite-v2",
+    "sources_count": 4,
+    "body_chars": 3950,
+    "sources": [
+      {
+        "type": "encyclopedia",
+        "ref": "Wikipedia - Fluid mosaic model",
+        "url": "https://en.wikipedia.org/wiki/Fluid_mosaic_model",
+        "key_facts": [
+          "流动镶嵌模型由 Singer 和 Nicolson 于 1972 年提出",
+          "磷脂双分子层中蛋白质分子随机分布,膜为二维液体",
+          "Frye-Edidin 实验(1970): 人鼠细胞融合后蛋白质逐渐扩散混合,证明膜流动性",
+          "降低温度使磷脂从流体相转为凝胶相,减缓蛋白质扩散",
+          "脂质分子侧向扩散速率约 2μm/s (约一个细菌长度/秒)",
+          "翻转(flip-flop)运动罕见,需翻转酶(flippase)催化",
+          "胆固醇和特定蛋白质聚集形成脂筏(lipid rafts),用于信号转导"
+        ]
+      },
+      {
+        "type": "textbook-online",
+        "ref": "Alberts et al. Molecular Biology of the Cell, 4th ed. Ch.11 - NCBI Bookshelf",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK26815/",
+        "key_facts": [
+          "纯脂双层对离子的通透性比对水低 10^9 倍",
+          "小非极性分子(O2, CO2)可自由扩散通过脂双层",
+          "小不带电极性分子(水,尿素)缓慢扩散",
+          "带电分子(离子)几乎无法通过脂双层,无论大小",
+          "膜转运蛋白分两类: 载体蛋白(carrier)和通道蛋白(channel)",
+          "载体蛋白通过构象变化转运溶质; 通道蛋白形成水性孔道",
+          "通道蛋白转运速率远高于载体蛋白",
+          "被动运输(顺浓度梯度) vs 主动运输(需ATP或离子梯度驱动)"
+        ]
+      },
+      {
+        "type": "educational",
+        "ref": "Khan Academy (中文版) - 细胞膜的结构",
+        "url": "https://zh.khanacademy.org/science/biology/membranes-and-transport/the-plasma-membrane/a/structure-of-the-plasma-membrane",
+        "key_facts": [
+          "典型人类细胞膜组成: 蛋白质约50%, 脂质约40%, 碳水化合物约10%(质量比)",
+          "磷脂是两亲分子: 亲水磷酸头基 + 疏水脂肪酸尾部",
+          "磷脂在水中自发形成双分子层(大尾)或微团(小尾)",
+          "胆固醇扩大膜维持正常流动性的温度范围: 低温防凝固,高温防过流",
+          "饱和脂肪酸尾部直链可紧密堆叠(降低流动性); 不饱和脂肪酸有弯折(增加流动性)",
+          "碳水化合物链(2-60个单糖)只在膜外侧,形成糖蛋白和糖脂",
+          "膜蛋白分整合蛋白(跨膜,含20-25个氨基酸的α螺旋跨膜段)和外周蛋白",
+          "参考: Campbell Biology, 10th ed., Reece et al., Ch.5 pp.124-140"
+        ]
+      },
+      {
+        "type": "textbook-online",
+        "ref": "LibreTexts Biology - Fluid Mosaic Model (OpenStax/Boundless)",
+        "url": "https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_(Boundless)/05%3A_Structure_and_Function_of_Plasma_Membranes/5.02%3A_Components_and_Structure_-_Fluid_Mosaic_Model",
+        "key_facts": [
+          "质膜厚度 5-10 nm (人红细胞宽约8μm, 约膜厚的1000倍)",
+          "不同细胞类型膜组成差异大: 髓鞘含18%蛋白76%脂质; 线粒体内膜含76%蛋白24%脂质",
+          "整合蛋白可含多达12个跨膜段",
+          "糖蛋白和糖脂是免疫系统区分'自身'与'非自身'的关键标志",
+          "磷脂由甘油骨架+2个脂肪酸+1个含磷酸基团组成"
+        ]
+      }
+    ]
+  },
+  {
+    "concept_id": "accessibility-audit",
+    "domain": "game-design",
+    "filepath": "data\\rag\\game-design\\accessibility\\accessibility-audit.md",
+    "timestamp": "2026-03-21T13:49:37.703932",
+    "method": "research-rewrite-v2",
+    "sources_count": 3,
+    "body_chars": 3533,
+    "sources": [
+      {
+        "type": "industry-guideline",
+        "ref": "Game Accessibility Guidelines (gameaccessibilityguidelines.com)",
+        "url": "https://gameaccessibilityguidelines.com/full-list/",
+        "key_facts": [
+          "指南自 2012 年起持续维护，按 Basic/Intermediate/Advanced 三级分类",
+          "覆盖 Motor(操控/运动)、Cognitive(认知/记忆)、Vision(视觉)、Hearing(听觉)、Speech(语音) 五大障碍类别",
+          "Basic 级: 允许重映射按键、提供高对比度、避免闪烁画面、允许暂停等",
+          "Intermediate 级: 提供色盲模式、屏幕朗读兼容、可调字体大小",
+          "Advanced 级: 支持辅助技术设备(眼动追踪/开关控制)、提供音频GPS/声纳地图",
+          "具体条目如: 0.5秒输入冷却、避免快速时间事件(QTE)必需、支持横竖屏"
+        ]
+      },
+      {
+        "type": "industry-guideline",
+        "ref": "Xbox Accessibility Guidelines (XAGs) V3.2 - Microsoft Game Dev",
+        "url": "https://learn.microsoft.com/en-us/gaming/accessibility/guidelines",
+        "key_facts": [
+          "由微软与行业专家和残障玩家社区共同开发",
+          "V3.2 于 2023年6月8日发布，含 23 条指南(编号 XAG 101-123)",
+          "XAG 结构: Goal → Overview → Scoping Questions → Implementation Guidelines → Example Content → Potential Player Impact",
+          "覆盖: 文本显示(101)、对比度(102)、字幕(104)、输入(107)、难度选项(108)、光敏(118)、心理健康(123)等",
+          "不是合规性清单，而是确保用户体验'对所有人可玩可享'的最佳实践",
+          "配套: Gaming Accessibility Testing Service(微软测试服务)、Fundamentals Learning Path"
+        ]
+      },
+      {
+        "type": "industry-article",
+        "ref": "Keywords Studios - 什么是无障碍化QA (AQA)?",
+        "url": "https://www.keywordsstudios.com/zh-cn/news/什么是无障碍化qa-aqa/",
+        "key_facts": [
+          "AQA = 评估、追踪和处理电子游戏无障碍化设计的方法",
+          "两种方法: (1)审计(Audit) — 全面测试当前无障碍水平; (2)周期测试(Cycle Testing) — 按固定周期回归",
+          "审计流程: 1-2名QA + 1名无障碍负责人 → 详细测试计划 → 涵盖UI/操控/音频/剧情/内容警告",
+          "产出: 最终报告列出各障碍及严重程度",
+          "审计通常安排在游戏制作后期(内容较成型时)",
+          "周期测试可按每周/每两周/每两月执行，确保障碍被持续修复",
+          "配合残障顾问和真实残障玩家进行游戏测试"
+        ]
+      }
+    ]
+  },
+  {
+    "concept_id": "stochastic-calculus",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:30:31.070568",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-1"
+  },
+  {
+    "concept_id": "derivatives-overview",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:30:31.070568",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-1"
+  },
+  {
+    "concept_id": "credit-risk",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:30:31.070568",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-1"
+  },
+  {
+    "concept_id": "statistical-arbitrage",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:30:31.070568",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-1"
+  },
+  {
+    "concept_id": "mean-reversion",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:30:31.070568",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-1"
+  },
+  {
+    "concept_id": "volatility-modeling",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:34:00.390922",
+    "sources_count": 3,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-2"
+  },
+  {
+    "concept_id": "high-frequency-trading",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:34:00.390922",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-2"
+  },
+  {
+    "concept_id": "futures-basics",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:34:00.390922",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-2"
+  },
+  {
+    "concept_id": "time-series-analysis",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:34:00.390922",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-2"
+  },
+  {
+    "concept_id": "monte-carlo-simulation",
+    "domain": "finance",
+    "timestamp": "2026-03-21T14:34:00.390922",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "finance-batch-2"
+  },
+  {
+    "concept_id": "dna-replication",
+    "domain": "biology",
+    "timestamp": "2026-03-21T14:37:45.441477",
+    "sources_count": 3,
+    "generation_method": "research-rewrite-v2",
+    "batch": "biology-batch-1"
+  },
+  {
+    "concept_id": "photosynthesis",
+    "domain": "biology",
+    "timestamp": "2026-03-21T14:37:45.441477",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "biology-batch-1"
+  },
+  {
+    "concept_id": "mitosis",
+    "domain": "biology",
+    "timestamp": "2026-03-21T14:37:45.441477",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "biology-batch-1"
+  },
+  {
+    "concept_id": "mendelian-genetics",
+    "domain": "biology",
+    "timestamp": "2026-03-21T14:37:45.441477",
+    "sources_count": 3,
+    "generation_method": "research-rewrite-v2",
+    "batch": "biology-batch-1"
+  },
+  {
+    "concept_id": "natural-selection",
+    "domain": "biology",
+    "timestamp": "2026-03-21T14:37:45.441477",
+    "sources_count": 2,
+    "generation_method": "research-rewrite-v2",
+    "batch": "biology-batch-1"
+  }
+]

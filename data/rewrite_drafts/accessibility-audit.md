@@ -1,32 +1,3 @@
----
-id: "accessibility-audit"
-concept: "可达性审计"
-domain: "game-design"
-subdomain: "accessibility"
-subdomain_name: "可达性设计"
-difficulty: 3
-is_milestone: false
-tags: ["工具"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 17.9
-generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.0
-last_scored: "2026-03-21"
-
-sources:
-  - type: "industry-guideline"
-    ref: "Game Accessibility Guidelines (gameaccessibilityguidelines.com)"
-    url: "https://gameaccessibilityguidelines.com/full-list/"
-  - type: "industry-guideline"
-    ref: "Xbox Accessibility Guidelines (XAGs) V3.2 - Microsoft Game Dev"
-    url: "https://learn.microsoft.com/en-us/gaming/accessibility/guidelines"
-  - type: "industry-article"
-    ref: "Keywords Studios - 什么是无障碍化QA (AQA)?"
-    url: "https://www.keywordsstudios.com/zh-cn/news/什么是无障碍化qa-aqa/"
----
 # 可达性审计
 
 ## 概述

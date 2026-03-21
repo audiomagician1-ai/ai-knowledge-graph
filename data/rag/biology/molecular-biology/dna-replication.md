@@ -9,40 +9,77 @@ is_milestone: false
 tags: ["核酸"]
 
 # Quality Metadata (Schema v2)
-content_version: 1
-quality_tier: "C"
+content_version: 2
+quality_tier: "pending-rescore"
 quality_score: 14.0
-generation_method: "template-v1"
+generation_method: "research-rewrite-v2"
 unique_content_ratio: 0.091
 last_scored: "2026-03-21"
-sources: []
+
+sources:
+  - type: "encyclopedia"
+    ref: "Wikipedia - DNA replication"
+    url: "https://en.wikipedia.org/wiki/DNA_replication"
+  - type: "textbook-online"
+    ref: "NCBI Bookshelf - DNA Replication Mechanisms"
+    url: "https://www.ncbi.nlm.nih.gov/books/NBK26850/"
+  - type: "educational"
+    ref: "Khan Academy - Molecular mechanism of DNA replication"
+    url: "https://www.khanacademy.org/science/ap-biology/gene-expression-and-regulation/replication/a/molecular-mechanism-of-dna-replication"
 ---
 # DNA复制
 
-## 核心内容
+## 概述
 
-半保留复制、复制叉与DNA聚合酶
+DNA复制（DNA Replication）是细胞精确复制其DNA分子的过程，发生在细胞周期的**S期**（合成期）。这一过程对于生物遗传、细胞分裂和损伤组织修复至关重要——它确保每个新产生的子细胞都获得一份完整的DNA拷贝（Wikipedia: DNA replication）。
 
-分子生物学揭示了生命现象的分子机制。从DNA复制到蛋白质合成，从基因调控到信号转导，分子水平的理解是现代生物学和医学的基石。
+DNA复制是**半保留复制**（semiconservative replication）：双螺旋的两条链分别作为模板，各自合成一条新的互补链。因此每个子代DNA分子都包含一条来自亲代的原始链和一条新合成的链。这一机制由 Meselson 和 Stahl 在 1958 年通过同位素密度梯度离心实验证实（Khan Academy）。
+
+## 核心知识点
+
+### DNA结构基础
+
+DNA由两条反向平行的核苷酸链组成双螺旋结构。四种碱基通过氢键配对：**腺嘌呤(A)-胸腺嘧啶(T)**（2个氢键）、**鸟嘌呤(G)-胞嘧啶(C)**（3个氢键）。每条链有方向性：5'端和3'端，两条链反向平行排列（Wikipedia: DNA replication）。
+
+### 复制机器——关键酶和蛋白质
+
+**解旋酶（Helicase）**：在复制起始位点（origin of replication）解开双螺旋，形成**复制叉**（replication fork），复制叉向两个方向双向延伸。
+
+**DNA聚合酶（DNA Polymerase）**：核心复制酶，按5'→3'方向合成新链，具有**校对功能**（proofreading，3'→5'外切核酸酶活性）。原核生物中 DNA Pol III 是主要复制酶，真核生物中 DNA Pol ε（前导链）和 DNA Pol δ（滞后链）执行主要合成（NCBI Bookshelf）。
+
+**引物酶（Primase）**：合成短的RNA引物（约10个核苷酸），为DNA聚合酶提供3'-OH起始点——因为DNA聚合酶**不能从头合成**，只能延伸已有的链。
+
+**拓扑异构酶（Topoisomerase）**：缓解解旋产生的超螺旋张力。
+
+### 前导链 vs 滞后链
+
+由于DNA聚合酶只能5'→3'合成：
+- **前导链（Leading strand）**：朝向复制叉方向连续合成，仅需一个引物
+- **滞后链（Lagging strand）**：远离复制叉方向不连续合成，产生多个短片段——**冈崎片段**（Okazaki fragments），原核生物约1000-2000核苷酸/片段，真核生物约100-200核苷酸/片段
+- **DNA连接酶（Ligase）**：将冈崎片段连接成完整链
+
+### 复制保真性
+
+DNA复制的错误率极低：约 10⁻⁹ ~ 10⁻¹⁰ 每碱基对每次复制。保真机制包括：
+1. **碱基选择**：聚合酶活性位点的几何约束（错误率 ~10⁻⁴）
+2. **校对**：3'→5'外切核酸酶立即纠正错配（降低 ~100倍）
+3. **错配修复（MMR）**：复制后修复系统检测并纠正残余错误（再降低 ~100倍）
 
 ## 关键要点
 
-### 中心法则
-- **DNA→RNA→蛋白质**: 遗传信息的流动方向，但存在例外（逆转录、RNA复制）
-- **基因调控**: 并非所有基因同时表达，精确调控是细胞分化和发育的基础
-- **表观遗传**: 不改变DNA序列的可遗传变化，扩展了经典遗传学的范畴
-
-### 技术革命
-- PCR、基因克隆和测序技术革新了生物学研究
-- CRISPR基因编辑开启了精确改造基因组的新时代
-- 组学技术（基因组学、蛋白质组学）提供了系统生物学视角
+1. DNA复制是半保留的——每个子代分子含一条旧链和一条新链（Meselson-Stahl 1958）
+2. DNA聚合酶只能 5'→3' 合成，导致前导链连续合成、滞后链不连续合成（冈崎片段）
+3. 复制起始于特定位点（origin），双向进行形成复制叉
+4. 引物酶合成RNA引物是必须的——DNA聚合酶不能从头起始
+5. 三重保真机制使错误率达到约 10⁻⁹ ~ 10⁻¹⁰/碱基对/复制
 
 ## 常见误区
 
-1. **一个基因=一个蛋白质**: 选择性剪接使一个基因可以编码多种蛋白质
-2. **"垃圾DNA"无功能**: 非编码DNA中包含大量调控元件和功能性RNA
-3. **基因决定一切**: 表观遗传和环境因素在基因表达调控中发挥重要作用
+1. **"DNA聚合酶可以双向合成"**——聚合酶只能 5'→3' 方向添加核苷酸，这是滞后链必须不连续合成的根本原因
+2. **"复制从DNA任意位置开始"**——复制起始于特定的起始位点（大肠杆菌有1个，人类细胞有约30,000-50,000个）
+3. **"RNA引物会留在DNA中"**——引物在合成后被DNA聚合酶I（原核）或RNase H（真核）去除，空隙由DNA填补
 
-## 与相关概念的联系
+## 知识衔接
 
-DNA复制是分子生物学知识体系的重要组成部分。理解这一概念有助于把握生命活动的分子基础。
+- **先修**：DNA结构、碱基配对规则
+- **后续**：基因表达（转录和翻译）、DNA修复机制、PCR技术

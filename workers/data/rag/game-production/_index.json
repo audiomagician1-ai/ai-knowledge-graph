@@ -1,0 +1,1327 @@
+{
+  "version": "1.0",
+  "domain": "game-production",
+  "domain_name": "项目管理",
+  "generated_at": "2026-03-21T07:37:03.136Z",
+  "total_concepts": 160,
+  "stats": {
+    "total_docs": 160,
+    "total_chars": 166357,
+    "by_subdomain": {
+      "production-pipeline": {
+        "docs": 20,
+        "name": "制作管线"
+      },
+      "milestone-planning": {
+        "docs": 20,
+        "name": "里程碑规划"
+      },
+      "resource-management": {
+        "docs": 20,
+        "name": "资源调配"
+      },
+      "risk-management": {
+        "docs": 20,
+        "name": "风险管理"
+      },
+      "cross-department": {
+        "docs": 20,
+        "name": "跨部门协作"
+      },
+      "agile-scrum": {
+        "docs": 20,
+        "name": "敏捷/Scrum"
+      },
+      "outsourcing": {
+        "docs": 20,
+        "name": "外包管理"
+      },
+      "budget-control": {
+        "docs": 20,
+        "name": "预算控制"
+      }
+    }
+  },
+  "documents": [
+    {
+      "id": "gp-pp-overview",
+      "title": "制作管线概述",
+      "file": "gp-pp-overview.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-preproduction",
+      "title": "预生产阶段",
+      "file": "gp-pp-preproduction.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-prototype",
+      "title": "原型开发",
+      "file": "gp-pp-prototype.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-pp-vertical-slice",
+      "title": "垂直切片",
+      "file": "gp-pp-vertical-slice.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-full-production",
+      "title": "全面生产阶段",
+      "file": "gp-pp-full-production.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-alpha",
+      "title": "Alpha里程碑",
+      "file": "gp-pp-alpha.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-pp-beta",
+      "title": "Beta里程碑",
+      "file": "gp-pp-beta.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-gold-master",
+      "title": "Gold Master",
+      "file": "gp-pp-gold-master.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-post-launch",
+      "title": "上线后运维",
+      "file": "gp-pp-post-launch.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-gate-review",
+      "title": "阶段评审",
+      "file": "gp-pp-gate-review.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-pp-asset-pipeline",
+      "title": "资产管线",
+      "file": "gp-pp-asset-pipeline.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-build-pipeline",
+      "title": "构建管线",
+      "file": "gp-pp-build-pipeline.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-content-pipeline",
+      "title": "内容管线",
+      "file": "gp-pp-content-pipeline.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-localization-pipeline",
+      "title": "本地化管线",
+      "file": "gp-pp-localization-pipeline.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-version-control",
+      "title": "版本管理策略",
+      "file": "gp-pp-version-control.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-documentation",
+      "title": "项目文档管理",
+      "file": "gp-pp-documentation.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-approval-workflow",
+      "title": "审批流程",
+      "file": "gp-pp-approval-workflow.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-pipeline-optimization",
+      "title": "管线优化",
+      "file": "gp-pp-pipeline-optimization.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 4,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-pp-cross-platform",
+      "title": "多平台管线",
+      "file": "gp-pp-cross-platform.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-live-service",
+      "title": "持续运营管线",
+      "file": "gp-pp-live-service.md",
+      "subdomain": "production-pipeline",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-basics",
+      "title": "里程碑规划基础",
+      "file": "gp-mp-basics.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-wbs",
+      "title": "WBS工作分解",
+      "file": "gp-mp-wbs.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-mp-estimation",
+      "title": "工时估算",
+      "file": "gp-mp-estimation.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-critical-path",
+      "title": "关键路径法",
+      "file": "gp-mp-critical-path.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-mp-gantt",
+      "title": "甘特图与时间线",
+      "file": "gp-mp-gantt.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-dependency",
+      "title": "任务依赖管理",
+      "file": "gp-mp-dependency.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-tracking",
+      "title": "进度追踪",
+      "file": "gp-mp-tracking.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-buffer",
+      "title": "缓冲时间管理",
+      "file": "gp-mp-buffer.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-mp-scope",
+      "title": "范围管理",
+      "file": "gp-mp-scope.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-feature-cut",
+      "title": "功能裁剪",
+      "file": "gp-mp-feature-cut.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-roadmap",
+      "title": "产品路线图",
+      "file": "gp-mp-roadmap.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-deadline",
+      "title": "截止日期管理",
+      "file": "gp-mp-deadline.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-iteration",
+      "title": "迭代规划",
+      "file": "gp-mp-iteration.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-contingency",
+      "title": "应急计划",
+      "file": "gp-mp-contingency.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-reporting",
+      "title": "进度报告",
+      "file": "gp-mp-reporting.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-tools",
+      "title": "项目管理工具",
+      "file": "gp-mp-tools.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-kpi",
+      "title": "项目KPI",
+      "file": "gp-mp-kpi.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-mp-postmortem",
+      "title": "项目复盘",
+      "file": "gp-mp-postmortem.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-multi-project",
+      "title": "多项目管理",
+      "file": "gp-mp-multi-project.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-scenario-planning",
+      "title": "情景规划",
+      "file": "gp-mp-scenario-planning.md",
+      "subdomain": "milestone-planning",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-basics",
+      "title": "资源管理基础",
+      "file": "gp-rm-basics.md",
+      "subdomain": "resource-management",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-team-structure",
+      "title": "团队结构设计",
+      "file": "gp-rm-team-structure.md",
+      "subdomain": "resource-management",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rm-staffing",
+      "title": "人员招募与配置",
+      "file": "gp-rm-staffing.md",
+      "subdomain": "resource-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-skill-matrix",
+      "title": "技能矩阵",
+      "file": "gp-rm-skill-matrix.md",
+      "subdomain": "resource-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-workload",
+      "title": "工作量分配",
+      "file": "gp-rm-workload.md",
+      "subdomain": "resource-management",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rm-capacity",
+      "title": "产能规划",
+      "file": "gp-rm-capacity.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-onboarding",
+      "title": "新人入职",
+      "file": "gp-rm-onboarding.md",
+      "subdomain": "resource-management",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-retention",
+      "title": "人才保留",
+      "file": "gp-rm-retention.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-performance",
+      "title": "绩效管理",
+      "file": "gp-rm-performance.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rm-team-scaling",
+      "title": "团队扩缩",
+      "file": "gp-rm-team-scaling.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-remote-team",
+      "title": "远程团队管理",
+      "file": "gp-rm-remote-team.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-cross-functional",
+      "title": "跨职能团队",
+      "file": "gp-rm-cross-functional.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-leadership",
+      "title": "技术领导力",
+      "file": "gp-rm-leadership.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-motivation",
+      "title": "团队激励",
+      "file": "gp-rm-motivation.md",
+      "subdomain": "resource-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-conflict-resolution",
+      "title": "冲突解决",
+      "file": "gp-rm-conflict-resolution.md",
+      "subdomain": "resource-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-knowledge-sharing",
+      "title": "知识共享",
+      "file": "gp-rm-knowledge-sharing.md",
+      "subdomain": "resource-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-succession",
+      "title": "继任规划",
+      "file": "gp-rm-succession.md",
+      "subdomain": "resource-management",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-culture",
+      "title": "团队文化建设",
+      "file": "gp-rm-culture.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rm-burnout",
+      "title": "倦怠预防",
+      "file": "gp-rm-burnout.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-diversity",
+      "title": "多元化与包容",
+      "file": "gp-rm-diversity.md",
+      "subdomain": "resource-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-basics",
+      "title": "风险管理基础",
+      "file": "gp-rk-basics.md",
+      "subdomain": "risk-management",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-identification",
+      "title": "风险识别",
+      "file": "gp-rk-identification.md",
+      "subdomain": "risk-management",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rk-assessment",
+      "title": "风险评估",
+      "file": "gp-rk-assessment.md",
+      "subdomain": "risk-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-register",
+      "title": "风险登记册",
+      "file": "gp-rk-register.md",
+      "subdomain": "risk-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-mitigation",
+      "title": "风险缓解策略",
+      "file": "gp-rk-mitigation.md",
+      "subdomain": "risk-management",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rk-technical",
+      "title": "技术风险",
+      "file": "gp-rk-technical.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-schedule",
+      "title": "进度风险",
+      "file": "gp-rk-schedule.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-scope-creep",
+      "title": "范围蔓延风险",
+      "file": "gp-rk-scope-creep.md",
+      "subdomain": "risk-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-personnel",
+      "title": "人员风险",
+      "file": "gp-rk-personnel.md",
+      "subdomain": "risk-management",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-market",
+      "title": "市场风险",
+      "file": "gp-rk-market.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-dependency",
+      "title": "外部依赖风险",
+      "file": "gp-rk-dependency.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-contingency-plan",
+      "title": "应急预案",
+      "file": "gp-rk-contingency-plan.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rk-monitoring",
+      "title": "风险监控",
+      "file": "gp-rk-monitoring.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-early-warning",
+      "title": "早期预警系统",
+      "file": "gp-rk-early-warning.md",
+      "subdomain": "risk-management",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-crisis",
+      "title": "危机管理",
+      "file": "gp-rk-crisis.md",
+      "subdomain": "risk-management",
+      "difficulty": 4,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rk-retrospective",
+      "title": "风险复盘",
+      "file": "gp-rk-retrospective.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-insurance",
+      "title": "风险转移",
+      "file": "gp-rk-insurance.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-game-specific",
+      "title": "游戏特有风险",
+      "file": "gp-rk-game-specific.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-platform",
+      "title": "平台审核风险",
+      "file": "gp-rk-platform.md",
+      "subdomain": "risk-management",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-ip-legal",
+      "title": "知识产权风险",
+      "file": "gp-rk-ip-legal.md",
+      "subdomain": "risk-management",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-basics",
+      "title": "跨部门协作基础",
+      "file": "gp-cd-basics.md",
+      "subdomain": "cross-department",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-communication",
+      "title": "沟通机制设计",
+      "file": "gp-cd-communication.md",
+      "subdomain": "cross-department",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-cd-dependency-map",
+      "title": "依赖关系图",
+      "file": "gp-cd-dependency-map.md",
+      "subdomain": "cross-department",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-handoff",
+      "title": "交接流程",
+      "file": "gp-cd-handoff.md",
+      "subdomain": "cross-department",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-meeting",
+      "title": "会议管理",
+      "file": "gp-cd-meeting.md",
+      "subdomain": "cross-department",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-stakeholder",
+      "title": "利益相关者管理",
+      "file": "gp-cd-stakeholder.md",
+      "subdomain": "cross-department",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-cd-art-tech",
+      "title": "美术-技术协作",
+      "file": "gp-cd-art-tech.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-design-dev",
+      "title": "策划-开发协作",
+      "file": "gp-cd-design-dev.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-audio-integration",
+      "title": "音频集成协作",
+      "file": "gp-cd-audio-integration.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-qa-integration",
+      "title": "QA集成协作",
+      "file": "gp-cd-qa-integration.md",
+      "subdomain": "cross-department",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-transparency",
+      "title": "信息透明",
+      "file": "gp-cd-transparency.md",
+      "subdomain": "cross-department",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-conflict",
+      "title": "跨部门冲突解决",
+      "file": "gp-cd-conflict.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-cd-alignment",
+      "title": "目标对齐",
+      "file": "gp-cd-alignment.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-tools",
+      "title": "协作工具链",
+      "file": "gp-cd-tools.md",
+      "subdomain": "cross-department",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-remote-collab",
+      "title": "远程协作",
+      "file": "gp-cd-remote-collab.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-review-process",
+      "title": "评审流程",
+      "file": "gp-cd-review-process.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-integration-testing",
+      "title": "集成协调",
+      "file": "gp-cd-integration-testing.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-cd-change-management",
+      "title": "变更管理",
+      "file": "gp-cd-change-management.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-studio-culture",
+      "title": "工作室文化",
+      "file": "gp-cd-studio-culture.md",
+      "subdomain": "cross-department",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-external-partners",
+      "title": "外部合作伙伴",
+      "file": "gp-cd-external-partners.md",
+      "subdomain": "cross-department",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-basics",
+      "title": "敏捷基础",
+      "file": "gp-as-basics.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-scrum-framework",
+      "title": "Scrum框架",
+      "file": "gp-as-scrum-framework.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-as-sprint-planning",
+      "title": "Sprint计划",
+      "file": "gp-as-sprint-planning.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-daily-standup",
+      "title": "每日站会",
+      "file": "gp-as-daily-standup.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-sprint-review",
+      "title": "Sprint评审",
+      "file": "gp-as-sprint-review.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-retrospective",
+      "title": "Sprint回顾",
+      "file": "gp-as-retrospective.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-as-backlog",
+      "title": "产品待办列表",
+      "file": "gp-as-backlog.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-user-story",
+      "title": "用户故事",
+      "file": "gp-as-user-story.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-estimation",
+      "title": "敏捷估算",
+      "file": "gp-as-estimation.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-velocity",
+      "title": "速率与燃尽图",
+      "file": "gp-as-velocity.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-as-kanban",
+      "title": "Kanban方法",
+      "file": "gp-as-kanban.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-scrumban",
+      "title": "Scrumban",
+      "file": "gp-as-scrumban.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-game-adaptation",
+      "title": "游戏敏捷适配",
+      "file": "gp-as-game-adaptation.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-as-definition-done",
+      "title": "Definition of Done",
+      "file": "gp-as-definition-done.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-scaling",
+      "title": "规模化敏捷",
+      "file": "gp-as-scaling.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-metrics",
+      "title": "敏捷度量",
+      "file": "gp-as-metrics.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-technical-debt",
+      "title": "技术债务管理",
+      "file": "gp-as-technical-debt.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-continuous-improvement",
+      "title": "持续改进",
+      "file": "gp-as-continuous-improvement.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-product-owner",
+      "title": "产品负责人",
+      "file": "gp-as-product-owner.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-scrum-master",
+      "title": "Scrum Master",
+      "file": "gp-as-scrum-master.md",
+      "subdomain": "agile-scrum",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-basics",
+      "title": "外包管理基础",
+      "file": "gp-os-basics.md",
+      "subdomain": "outsourcing",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-strategy",
+      "title": "外包策略",
+      "file": "gp-os-strategy.md",
+      "subdomain": "outsourcing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-os-vendor-selection",
+      "title": "供应商筛选",
+      "file": "gp-os-vendor-selection.md",
+      "subdomain": "outsourcing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-contract",
+      "title": "合同管理",
+      "file": "gp-os-contract.md",
+      "subdomain": "outsourcing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-art-outsource",
+      "title": "美术外包",
+      "file": "gp-os-art-outsource.md",
+      "subdomain": "outsourcing",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-os-qa-outsource",
+      "title": "QA外包",
+      "file": "gp-os-qa-outsource.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-audio-outsource",
+      "title": "音频外包",
+      "file": "gp-os-audio-outsource.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-programming",
+      "title": "编程外包",
+      "file": "gp-os-programming.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-quality-control",
+      "title": "外包质量管控",
+      "file": "gp-os-quality-control.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-os-communication",
+      "title": "外包沟通",
+      "file": "gp-os-communication.md",
+      "subdomain": "outsourcing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-ip-protection",
+      "title": "知识产权保护",
+      "file": "gp-os-ip-protection.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-onsite-offsite",
+      "title": "驻场vs远程",
+      "file": "gp-os-onsite-offsite.md",
+      "subdomain": "outsourcing",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-cost-analysis",
+      "title": "外包成本分析",
+      "file": "gp-os-cost-analysis.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-transition",
+      "title": "外包过渡",
+      "file": "gp-os-transition.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-risk",
+      "title": "外包风险管理",
+      "file": "gp-os-risk.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-os-localization",
+      "title": "本地化外包",
+      "file": "gp-os-localization.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-co-development",
+      "title": "联合开发",
+      "file": "gp-os-co-development.md",
+      "subdomain": "outsourcing",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-evaluation",
+      "title": "供应商评估",
+      "file": "gp-os-evaluation.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-scaling",
+      "title": "外包规模化",
+      "file": "gp-os-scaling.md",
+      "subdomain": "outsourcing",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-tool-integration",
+      "title": "工具集成",
+      "file": "gp-os-tool-integration.md",
+      "subdomain": "outsourcing",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-basics",
+      "title": "预算管理基础",
+      "file": "gp-bc-basics.md",
+      "subdomain": "budget-control",
+      "difficulty": 1,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-estimation",
+      "title": "成本估算",
+      "file": "gp-bc-estimation.md",
+      "subdomain": "budget-control",
+      "difficulty": 2,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-bc-structure",
+      "title": "预算结构",
+      "file": "gp-bc-structure.md",
+      "subdomain": "budget-control",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-tracking",
+      "title": "成本追踪",
+      "file": "gp-bc-tracking.md",
+      "subdomain": "budget-control",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-evm",
+      "title": "挣值管理",
+      "file": "gp-bc-evm.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-bc-roi",
+      "title": "ROI分析",
+      "file": "gp-bc-roi.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-contingency-budget",
+      "title": "应急预算",
+      "file": "gp-bc-contingency-budget.md",
+      "subdomain": "budget-control",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-cash-flow",
+      "title": "现金流管理",
+      "file": "gp-bc-cash-flow.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-reporting",
+      "title": "财务报告",
+      "file": "gp-bc-reporting.md",
+      "subdomain": "budget-control",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-headcount",
+      "title": "人力成本管理",
+      "file": "gp-bc-headcount.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-bc-tool-cost",
+      "title": "工具与许可证",
+      "file": "gp-bc-tool-cost.md",
+      "subdomain": "budget-control",
+      "difficulty": 2,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-marketing-budget",
+      "title": "营销预算",
+      "file": "gp-bc-marketing-budget.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-cost-reduction",
+      "title": "成本优化",
+      "file": "gp-bc-cost-reduction.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-funding",
+      "title": "资金来源",
+      "file": "gp-bc-funding.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-f2p-economics",
+      "title": "F2P经济模型",
+      "file": "gp-bc-f2p-economics.md",
+      "subdomain": "budget-control",
+      "difficulty": 4,
+      "is_milestone": true
+    },
+    {
+      "id": "gp-bc-premium-economics",
+      "title": "买断制经济模型",
+      "file": "gp-bc-premium-economics.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-scope-budget",
+      "title": "范围-预算平衡",
+      "file": "gp-bc-scope-budget.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-audit",
+      "title": "预算审计",
+      "file": "gp-bc-audit.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-benchmark",
+      "title": "行业成本基准",
+      "file": "gp-bc-benchmark.md",
+      "subdomain": "budget-control",
+      "difficulty": 4,
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-greenlight",
+      "title": "绿灯评审",
+      "file": "gp-bc-greenlight.md",
+      "subdomain": "budget-control",
+      "difficulty": 3,
+      "is_milestone": false
+    }
+  ]
+}

@@ -450,7 +450,8 @@ def main():
 
         plans = []
         for doc in candidates:
-            cid = doc.get("file", "").split("/")[-1].replace(".md", "")
+            # Use Path to handle both / and \ separators on Windows
+            cid = Path(doc.get("file", "")).stem
             ci = concept_map.get(cid)
             if ci:
                 plans.append(generate_search_plan(ci))

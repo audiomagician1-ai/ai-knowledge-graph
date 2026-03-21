@@ -1,0 +1,252 @@
+[
+  {
+    "concept_id": "extranuclear-inheritance",
+    "concept_name": "核外遗传",
+    "domain": "biology",
+    "description": "线粒体遗传与叶绿体遗传",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Extranuclear Inheritance Biology Wikipedia definition structure",
+      "Extranuclear Inheritance Biology principles key concepts textbook",
+      "核外遗传 线粒体遗传 叶绿体遗传 原理 定义",
+      "核外遗传 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "genetic-counseling",
+    "concept_name": "遗传咨询",
+    "domain": "biology",
+    "description": "遗传风险评估与产前诊断",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Genetic Counseling Biology Wikipedia definition structure",
+      "Genetic Counseling Biology principles key concepts textbook",
+      "遗传咨询 遗传风险评估 产前诊断 原理 定义",
+      "遗传咨询 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "behavioral-ecology",
+    "concept_name": "行为生态学",
+    "domain": "biology",
+    "description": "觅食策略、领地行为与动物通讯",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Behavioral Ecology Biology Wikipedia definition structure",
+      "Behavioral Ecology Biology principles key concepts textbook",
+      "行为生态学 觅食策略 领地行为 动物通讯 原理 定义",
+      "行为生态学 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "biomes",
+    "concept_name": "生物群落",
+    "domain": "biology",
+    "description": "陆地与水生生物群落的分布与特征",
+    "difficulty": 2,
+    "is_milestone": false,
+    "search_queries": [
+      "Biomes Biology Wikipedia definition structure",
+      "Biomes Biology principles key concepts textbook",
+      "生物群落 陆地 水生生物群落的分布 特征 原理 定义",
+      "生物群落 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "community-ecology",
+    "concept_name": "群落生态学",
+    "domain": "biology",
+    "description": "群落结构、物种多样性与演替",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Community Ecology Biology Wikipedia definition structure",
+      "Community Ecology Biology principles key concepts textbook",
+      "群落生态学 群落结构 物种多样性 演替 原理 定义",
+      "群落生态学 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "conservation-biology",
+    "concept_name": "保护生物学",
+    "domain": "biology",
+    "description": "濒危物种保护策略与栖息地管理",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Conservation Biology Biology Wikipedia definition structure",
+      "Conservation Biology Biology principles key concepts textbook",
+      "保护生物学 濒危物种保护策略 栖息地管理 原理 定义",
+      "保护生物学 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "ecological-succession",
+    "concept_name": "生态演替",
+    "domain": "biology",
+    "description": "初生演替与次生演替的过程与机制",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Ecological Succession Biology Wikipedia definition structure",
+      "Ecological Succession Biology principles key concepts textbook",
+      "生态演替 初生演替 次生演替的过程 机制 原理 定义",
+      "生态演替 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "ecology-overview",
+    "concept_name": "生态学概述",
+    "domain": "biology",
+    "description": "生态学的层次、研究方法与基本概念",
+    "difficulty": 1,
+    "is_milestone": false,
+    "search_queries": [
+      "Ecology Overview Biology Wikipedia definition structure",
+      "Ecology Overview Biology principles key concepts textbook",
+      "生态学概述 生态学的层次 研究方法 基本概念 原理 定义",
+      "生态学概述 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "ecosystem-ecology",
+    "concept_name": "生态系统生态学",
+    "domain": "biology",
+    "description": "能量流动与物质循环的基本规律",
+    "difficulty": 3,
+    "is_milestone": false,
+    "search_queries": [
+      "Ecosystem Ecology Biology Wikipedia definition structure",
+      "Ecosystem Ecology Biology principles key concepts textbook",
+      "生态系统生态学 能量流动 物质循环的基本规律 原理 定义",
+      "生态系统生态学 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  },
+  {
+    "concept_id": "ecosystem-services",
+    "concept_name": "生态系统服务",
+    "domain": "biology",
+    "description": "供给、调节、文化与支持服务",
+    "difficulty": 2,
+    "is_milestone": false,
+    "search_queries": [
+      "Ecosystem Services Biology Wikipedia definition structure",
+      "Ecosystem Services Biology principles key concepts textbook",
+      "生态系统服务 供给 调节 文化 支持服务 原理 定义",
+      "生态系统服务 生物学 核心知识点 教学"
+    ],
+    "priority_sources": [
+      "Wikipedia (en/zh)",
+      "Khan Academy",
+      "LibreTexts / OpenStax",
+      "NCBI Bookshelf (Alberts, etc.)",
+      "知乎专栏 (高质量回答)",
+      "百度百科 (交叉验证)"
+    ],
+    "min_sources_to_read": 3,
+    "target_facts_per_source": 5,
+    "instructions": "1. 执行 4 条搜索查询\n2. 从结果中选择 3-5 个高质量来源页面阅读\n3. 优先选择: Wikipedia > 教科书在线版 > Khan Academy > 知乎\n4. 从每个来源提取 3-8 条关键事实\n5. 编译为 external_knowledge 格式\n6. 注入精写 prompt 并生成内容"
+  }
+]

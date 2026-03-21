@@ -1,0 +1,3043 @@
+{
+  "domain": "game-production",
+  "subdomains": [
+    {
+      "id": "production-pipeline",
+      "name": "制作管线",
+      "description": "游戏制作的全流程管线设计、阶段划分与交付物管理",
+      "order": 1
+    },
+    {
+      "id": "milestone-planning",
+      "name": "里程碑规划",
+      "description": "项目里程碑定义、任务分解、时间估算与进度追踪",
+      "order": 2
+    },
+    {
+      "id": "resource-management",
+      "name": "资源调配",
+      "description": "人力资源规划、团队搭建、技能矩阵与工作量分配",
+      "order": 3
+    },
+    {
+      "id": "risk-management",
+      "name": "风险管理",
+      "description": "项目风险识别、评估、应对策略与应急预案",
+      "order": 4
+    },
+    {
+      "id": "cross-department",
+      "name": "跨部门协作",
+      "description": "多团队协作流程、沟通机制、依赖管理与冲突解决",
+      "order": 5
+    },
+    {
+      "id": "agile-scrum",
+      "name": "敏捷/Scrum",
+      "description": "敏捷开发在游戏项目中的应用、Sprint规划与回顾",
+      "order": 6
+    },
+    {
+      "id": "outsourcing",
+      "name": "外包管理",
+      "description": "外包策略、供应商筛选、质量管控与知识产权保护",
+      "order": 7
+    },
+    {
+      "id": "budget-control",
+      "name": "预算控制",
+      "description": "项目预算编制、成本追踪、ROI分析与财务报告",
+      "order": 8
+    }
+  ],
+  "concepts": [
+    {
+      "id": "gp-pp-overview",
+      "name": "制作管线概述",
+      "description": "游戏制作管线的定义、核心阶段与各阶段交付物",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-preproduction",
+      "name": "预生产阶段",
+      "description": "概念验证、原型制作、设计文档与技术预研",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-prototype",
+      "name": "原型开发",
+      "description": "快速原型构建方法、验证标准与Go/No-Go决策",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-pp-vertical-slice",
+      "name": "垂直切片",
+      "description": "Vertical Slice的定义、范围界定与质量标准",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-full-production",
+      "name": "全面生产阶段",
+      "description": "内容批量制作的管理策略与产能规划",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-alpha",
+      "name": "Alpha里程碑",
+      "description": "Alpha版本定义、功能完整性标准与评审流程",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-pp-beta",
+      "name": "Beta里程碑",
+      "description": "Beta版本标准、内容锁定与Bug修复优先级",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-gold-master",
+      "name": "Gold Master",
+      "description": "GM版本标准、认证提交流程与发布检查清单",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-post-launch",
+      "name": "上线后运维",
+      "description": "发布后补丁策略、DLC规划与持续更新管线",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-gate-review",
+      "name": "阶段评审",
+      "description": "阶段门评审机制、通过标准与风险升级流程",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-pp-asset-pipeline",
+      "name": "资产管线",
+      "description": "美术/音频/动画资产的生产、审核与集成流程",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-build-pipeline",
+      "name": "构建管线",
+      "description": "自动构建、持续集成与版本发布流程设计",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-content-pipeline",
+      "name": "内容管线",
+      "description": "关卡/叙事/任务等内容资产的生产与审核流程",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-localization-pipeline",
+      "name": "本地化管线",
+      "description": "多语言翻译、文化适配与本地化集成流程",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-version-control",
+      "name": "版本管理策略",
+      "description": "Git/Perforce分支策略、合并规范与冲突解决",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-documentation",
+      "name": "项目文档管理",
+      "description": "设计文档(GDD/TDD)、Wiki维护与知识库建设",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-approval-workflow",
+      "name": "审批流程",
+      "description": "资产审批、功能审核与变更请求(CR)管理",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-pipeline-optimization",
+      "name": "管线优化",
+      "description": "瓶颈识别、自动化改进与管线效率提升方法",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-pp-cross-platform",
+      "name": "多平台管线",
+      "description": "PC/主机/移动端多平台同时开发的管线设计",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-pp-live-service",
+      "name": "持续运营管线",
+      "description": "Games-as-a-Service模式的持续内容交付管线",
+      "domain_id": "game-production",
+      "subdomain_id": "production-pipeline",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-basics",
+      "name": "里程碑规划基础",
+      "description": "项目里程碑的定义、类型与在游戏开发中的作用",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-wbs",
+      "name": "WBS工作分解",
+      "description": "工作分解结构(WBS)的创建方法与粒度控制",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-mp-estimation",
+      "name": "工时估算",
+      "description": "工时估算技术：类比、参数、三点估算与PERT",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-critical-path",
+      "name": "关键路径法",
+      "description": "CPM关键路径识别、浮动时间与进度压缩",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-mp-gantt",
+      "name": "甘特图与时间线",
+      "description": "甘特图制作、依赖关系可视化与进度追踪",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-dependency",
+      "name": "任务依赖管理",
+      "description": "任务间依赖类型(FS/SS/FF/SF)与依赖链优化",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-tracking",
+      "name": "进度追踪",
+      "description": "进度报告、燃尽图与挣值管理(EVM)方法",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-buffer",
+      "name": "缓冲时间管理",
+      "description": "项目缓冲、汇聚缓冲与关键链方法(CCPM)",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-mp-scope",
+      "name": "范围管理",
+      "description": "项目范围定义、范围蔓延(Scope Creep)控制",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-feature-cut",
+      "name": "功能裁剪",
+      "description": "功能优先级矩阵、裁剪标准与影响评估",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-roadmap",
+      "name": "产品路线图",
+      "description": "长期产品路线图规划、版本规划与发布节奏",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-deadline",
+      "name": "截止日期管理",
+      "description": "硬截止日期下的范围-质量-时间三角平衡策略",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-iteration",
+      "name": "迭代规划",
+      "description": "迭代周期设定、迭代目标与回顾改进机制",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-contingency",
+      "name": "应急计划",
+      "description": "进度延迟的应急措施、快速通道与资源增援",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-reporting",
+      "name": "进度报告",
+      "description": "项目状态报告、仪表盘设计与利益相关者沟通",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-tools",
+      "name": "项目管理工具",
+      "description": "Jira/Shotgrid/Notion/Hansoft等工具选型与配置",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-kpi",
+      "name": "项目KPI",
+      "description": "项目健康度指标(速率/缺陷密度/完成率)设定与监控",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-mp-postmortem",
+      "name": "项目复盘",
+      "description": "项目结束后的复盘方法论、经验提炼与知识传承",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-multi-project",
+      "name": "多项目管理",
+      "description": "项目组合管理、资源共享与优先级仲裁",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-mp-scenario-planning",
+      "name": "情景规划",
+      "description": "最佳/最差/最可能情景建模与决策准备",
+      "domain_id": "game-production",
+      "subdomain_id": "milestone-planning",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-basics",
+      "name": "资源管理基础",
+      "description": "项目资源类型(人力/设备/预算)与管理框架",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-team-structure",
+      "name": "团队结构设计",
+      "description": "游戏开发团队组织架构：职能制/项目制/矩阵制",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rm-staffing",
+      "name": "人员招募与配置",
+      "description": "人才需求规划、招聘策略与团队扩张时机",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-skill-matrix",
+      "name": "技能矩阵",
+      "description": "团队技能评估矩阵、技能差距分析与培养计划",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-workload",
+      "name": "工作量分配",
+      "description": "任务分配策略、负载均衡与过载预警机制",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rm-capacity",
+      "name": "产能规划",
+      "description": "团队产能评估、产能曲线与峰值管理",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-onboarding",
+      "name": "新人入职",
+      "description": "游戏团队新人入职流程、导师制与快速融入",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-retention",
+      "name": "人才保留",
+      "description": "核心人才保留策略、职业发展路径与团队稳定性",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-performance",
+      "name": "绩效管理",
+      "description": "绩效评估方法(OKR/KPI)、反馈周期与目标对齐",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rm-team-scaling",
+      "name": "团队扩缩",
+      "description": "项目阶段性的团队规模调整策略与平滑过渡",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-remote-team",
+      "name": "远程团队管理",
+      "description": "分布式团队协作工具、时区管理与文化融合",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-cross-functional",
+      "name": "跨职能团队",
+      "description": "跨职能小组(Strike Team)的组建与高效运作",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-leadership",
+      "name": "技术领导力",
+      "description": "技术负责人(Lead)的角色定位、授权与决策框架",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-motivation",
+      "name": "团队激励",
+      "description": "内在/外在激励因素、团队士气管理与crunch预防",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-conflict-resolution",
+      "name": "冲突解决",
+      "description": "团队内部冲突识别、调解方法与建设性对话",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-knowledge-sharing",
+      "name": "知识共享",
+      "description": "团队知识管理、技术分享会与文档化文化建设",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-succession",
+      "name": "继任规划",
+      "description": "关键岗位继任者培养、单点故障消除与知识冗余",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-culture",
+      "name": "团队文化建设",
+      "description": "团队价值观塑造、心理安全感与创新氛围营造",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rm-burnout",
+      "name": "倦怠预防",
+      "description": "工作节奏管理、crunch政策与可持续开发实践",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rm-diversity",
+      "name": "多元化与包容",
+      "description": "多元化团队优势、包容性招聘与公平职场环境",
+      "domain_id": "game-production",
+      "subdomain_id": "resource-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-basics",
+      "name": "风险管理基础",
+      "description": "项目风险的定义、分类与风险管理框架",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-identification",
+      "name": "风险识别",
+      "description": "风险识别技术：头脑风暴、检查表、SWOT分析",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rk-assessment",
+      "name": "风险评估",
+      "description": "风险概率-影响矩阵、定量与定性风险分析",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-register",
+      "name": "风险登记册",
+      "description": "风险登记册的创建、维护与定期评审机制",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-mitigation",
+      "name": "风险缓解策略",
+      "description": "风险应对策略：规避/转移/减轻/接受与行动计划",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rk-technical",
+      "name": "技术风险",
+      "description": "新技术引入、技术债务、引擎迁移等技术风险管理",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-schedule",
+      "name": "进度风险",
+      "description": "工期延误原因分析、预警信号与进度恢复策略",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-scope-creep",
+      "name": "范围蔓延风险",
+      "description": "范围蔓延的识别、预防与变更控制流程",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-personnel",
+      "name": "人员风险",
+      "description": "关键人员离职、团队冲突与技能缺口风险",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-market",
+      "name": "市场风险",
+      "description": "市场竞争变化、玩家偏好转移与发布窗口风险",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-dependency",
+      "name": "外部依赖风险",
+      "description": "第三方SDK/引擎更新/平台政策变化等外部风险",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-contingency-plan",
+      "name": "应急预案",
+      "description": "关键风险的应急响应计划与升级路径设计",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rk-monitoring",
+      "name": "风险监控",
+      "description": "风险指标仪表盘、预警阈值与定期审查机制",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-early-warning",
+      "name": "早期预警系统",
+      "description": "先行指标设计、自动化预警与快速响应流程",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-crisis",
+      "name": "危机管理",
+      "description": "项目危机的识别、升级与快速决策框架",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-rk-retrospective",
+      "name": "风险复盘",
+      "description": "风险事件事后分析、经验教训提炼与流程改进",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-insurance",
+      "name": "风险转移",
+      "description": "保险/合同条款/第三方保障等风险转移手段",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-game-specific",
+      "name": "游戏特有风险",
+      "description": "创意风险、Fun Factor不确定性与玩法验证策略",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-platform",
+      "name": "平台审核风险",
+      "description": "主机TRC/XR审核失败、App Store拒审等平台风险",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-rk-ip-legal",
+      "name": "知识产权风险",
+      "description": "IP授权纠纷、版权侵犯与法律合规风险管理",
+      "domain_id": "game-production",
+      "subdomain_id": "risk-management",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-basics",
+      "name": "跨部门协作基础",
+      "description": "游戏开发中多团队协作的必要性与常见挑战",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-communication",
+      "name": "沟通机制设计",
+      "description": "站会/周会/评审会等沟通机制的建立与优化",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-cd-dependency-map",
+      "name": "依赖关系图",
+      "description": "团队间依赖关系可视化与瓶颈识别",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-handoff",
+      "name": "交接流程",
+      "description": "跨团队工作交接规范、验收标准与反馈循环",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-meeting",
+      "name": "会议管理",
+      "description": "高效会议组织、议程设计与会后跟进机制",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-stakeholder",
+      "name": "利益相关者管理",
+      "description": "利益相关者识别、期望管理与沟通策略",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-cd-art-tech",
+      "name": "美术-技术协作",
+      "description": "美术与技术团队的协作规范、资产标准与管线约定",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-design-dev",
+      "name": "策划-开发协作",
+      "description": "设计意图传达、功能规格书与迭代反馈机制",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-audio-integration",
+      "name": "音频集成协作",
+      "description": "音频团队与程序/美术/设计的集成工作流",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-qa-integration",
+      "name": "QA集成协作",
+      "description": "QA团队在开发流程中的嵌入方式与反馈通道",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-transparency",
+      "name": "信息透明",
+      "description": "项目信息的透明化共享机制与权限控制",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-conflict",
+      "name": "跨部门冲突解决",
+      "description": "资源争夺、优先级分歧与技术方案冲突的调解",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-cd-alignment",
+      "name": "目标对齐",
+      "description": "团队OKR/目标层层分解与跨团队目标一致性",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-tools",
+      "name": "协作工具链",
+      "description": "Slack/Teams/Confluence/Miro等协作工具选型",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-remote-collab",
+      "name": "远程协作",
+      "description": "远程/混合办公下的跨团队协作策略与工具",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-review-process",
+      "name": "评审流程",
+      "description": "跨团队代码/资产/设计评审的组织与效率优化",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-integration-testing",
+      "name": "集成协调",
+      "description": "多团队代码/资产集成的协调策略与冲突解决",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-cd-change-management",
+      "name": "变更管理",
+      "description": "需求变更的评审流程、影响分析与沟通通知",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-studio-culture",
+      "name": "工作室文化",
+      "description": "跨团队协作文化的塑造、信任建立与共同价值观",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-cd-external-partners",
+      "name": "外部合作伙伴",
+      "description": "与发行商/平台方/IP持有者的沟通与协作管理",
+      "domain_id": "game-production",
+      "subdomain_id": "cross-department",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-basics",
+      "name": "敏捷基础",
+      "description": "敏捷宣言、核心价值观与在游戏开发中的适用性",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-scrum-framework",
+      "name": "Scrum框架",
+      "description": "Scrum角色(PO/SM/Team)、事件与工件总览",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-as-sprint-planning",
+      "name": "Sprint计划",
+      "description": "Sprint目标设定、待办事项精炼与承诺机制",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-daily-standup",
+      "name": "每日站会",
+      "description": "站会的三个问题、时间控制与常见反模式",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-sprint-review",
+      "name": "Sprint评审",
+      "description": "Sprint成果演示、利益相关者反馈与待办调整",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-retrospective",
+      "name": "Sprint回顾",
+      "description": "回顾会方法论(帆船/四象限)、行动项与持续改进",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-as-backlog",
+      "name": "产品待办列表",
+      "description": "Product Backlog管理、优先级排序与用户故事编写",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-user-story",
+      "name": "用户故事",
+      "description": "用户故事格式、验收标准(AC)与故事拆分技巧",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-estimation",
+      "name": "敏捷估算",
+      "description": "故事点/T恤尺码/计划扑克等敏捷估算方法",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-velocity",
+      "name": "速率与燃尽图",
+      "description": "团队速率追踪、燃尽图解读与预测完成日期",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-as-kanban",
+      "name": "Kanban方法",
+      "description": "Kanban看板、WIP限制、流动效率与累积流图",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-scrumban",
+      "name": "Scrumban",
+      "description": "Scrum与Kanban的混合模式在游戏开发中的实践",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-game-adaptation",
+      "name": "游戏敏捷适配",
+      "description": "标准Scrum在游戏开发中的调整（创意迭代/美术管线）",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-as-definition-done",
+      "name": "Definition of Done",
+      "description": "完成定义的制定、分层(任务/Sprint/发布)与遵守",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-scaling",
+      "name": "规模化敏捷",
+      "description": "SAFe/LeSS/Nexus等规模化敏捷框架在大型游戏中的应用",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-metrics",
+      "name": "敏捷度量",
+      "description": "Lead Time/Cycle Time/吞吐量等敏捷效能指标",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-technical-debt",
+      "name": "技术债务管理",
+      "description": "技术债务的识别、量化、优先级排序与偿还策略",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-continuous-improvement",
+      "name": "持续改进",
+      "description": "Kaizen理念、PDCA循环与团队效能持续提升",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-product-owner",
+      "name": "产品负责人",
+      "description": "PO在游戏项目中的角色(≈创意总监+制作人的桥梁)",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-as-scrum-master",
+      "name": "Scrum Master",
+      "description": "SM在游戏团队中的服务型领导、障碍消除与团队赋能",
+      "domain_id": "game-production",
+      "subdomain_id": "agile-scrum",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-basics",
+      "name": "外包管理基础",
+      "description": "游戏外包的类型、优缺点与适用场景",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-strategy",
+      "name": "外包策略",
+      "description": "自研vs外包决策框架、核心能力保护原则",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-os-vendor-selection",
+      "name": "供应商筛选",
+      "description": "外包供应商评估标准、试做测试与合作伙伴选择",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-contract",
+      "name": "合同管理",
+      "description": "外包合同条款设计、交付标准与付款条件",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-art-outsource",
+      "name": "美术外包",
+      "description": "2D/3D美术外包的工作流、风格指南与质量把控",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-os-qa-outsource",
+      "name": "QA外包",
+      "description": "QA测试外包的管理策略、测试覆盖与Bug分类",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-audio-outsource",
+      "name": "音频外包",
+      "description": "音乐/音效外包的需求文档、风格参考与验收",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-programming",
+      "name": "编程外包",
+      "description": "代码外包的风险、代码规范与集成策略",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-quality-control",
+      "name": "外包质量管控",
+      "description": "反馈循环、里程碑验收与质量提升迭代",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-os-communication",
+      "name": "外包沟通",
+      "description": "跨时区/跨文化沟通策略、定期同步与工具选择",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-ip-protection",
+      "name": "知识产权保护",
+      "description": "NDA/版权归属/源代码保护等IP安全措施",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-onsite-offsite",
+      "name": "驻场vs远程",
+      "description": "驻场外包与远程外包的优缺点对比与选择",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-cost-analysis",
+      "name": "外包成本分析",
+      "description": "外包总拥有成本(TCO)分析、隐性成本与性价比评估",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-transition",
+      "name": "外包过渡",
+      "description": "外包启动/移交/结束的过渡管理与知识转移",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-risk",
+      "name": "外包风险管理",
+      "description": "供应商锁定、质量下滑与沟通障碍的风险应对",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-os-localization",
+      "name": "本地化外包",
+      "description": "翻译/配音/文化适配外包的特殊管理需求",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-co-development",
+      "name": "联合开发",
+      "description": "多工作室联合开发的协调机制与责任边界",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-evaluation",
+      "name": "供应商评估",
+      "description": "合作完成后的供应商绩效评估与长期关系维护",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-scaling",
+      "name": "外包规模化",
+      "description": "大规模外包(50+人)的管理挑战与组织方案",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-os-tool-integration",
+      "name": "工具集成",
+      "description": "外包团队与内部工具链(版本控制/任务管理)的集成",
+      "domain_id": "game-production",
+      "subdomain_id": "outsourcing",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-basics",
+      "name": "预算管理基础",
+      "description": "游戏项目预算的组成、编制方法与审批流程",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-estimation",
+      "name": "成本估算",
+      "description": "开发成本估算方法：自上而下/自下而上/参数估算",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-bc-structure",
+      "name": "预算结构",
+      "description": "人力/工具/外包/营销/运维等预算科目设计",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-tracking",
+      "name": "成本追踪",
+      "description": "实际成本vs预算对比、偏差分析与预警机制",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-evm",
+      "name": "挣值管理",
+      "description": "EVM方法(PV/EV/AC)、CPI/SPI指标与趋势预测",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-bc-roi",
+      "name": "ROI分析",
+      "description": "投资回报率计算、回本周期与盈利预测模型",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-contingency-budget",
+      "name": "应急预算",
+      "description": "风险准备金设置、触发条件与使用审批",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-cash-flow",
+      "name": "现金流管理",
+      "description": "项目现金流规划、支出节奏与资金调度",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-reporting",
+      "name": "财务报告",
+      "description": "月度/季度财务报告、预算执行率与预测更新",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-headcount",
+      "name": "人力成本管理",
+      "description": "人力成本占比控制、效率指标与优化策略",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-bc-tool-cost",
+      "name": "工具与许可证",
+      "description": "开发工具/引擎/中间件许可证成本管理与优化",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-marketing-budget",
+      "name": "营销预算",
+      "description": "游戏营销预算规划、渠道分配与效果追踪",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-cost-reduction",
+      "name": "成本优化",
+      "description": "成本削减策略、效率提升与价值工程方法",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-funding",
+      "name": "资金来源",
+      "description": "自有资金/投资/发行商预付/众筹等融资渠道",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-f2p-economics",
+      "name": "F2P经济模型",
+      "description": "免费游戏的开发成本结构、LTV预测与回本模型",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "gp-bc-premium-economics",
+      "name": "买断制经济模型",
+      "description": "买断制游戏的成本-售价-销量盈利模型",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-scope-budget",
+      "name": "范围-预算平衡",
+      "description": "功能范围与预算约束的动态平衡策略",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-audit",
+      "name": "预算审计",
+      "description": "内部审计机制、费用合规性检查与异常处理",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-benchmark",
+      "name": "行业成本基准",
+      "description": "同类型游戏成本基准参考、人均产出对比",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 4,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "gp-bc-greenlight",
+      "name": "绿灯评审",
+      "description": "项目立项的财务可行性评估与绿灯审批流程",
+      "domain_id": "game-production",
+      "subdomain_id": "budget-control",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "gp-pp-overview",
+      "target_id": "gp-pp-preproduction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-preproduction",
+      "target_id": "gp-pp-prototype",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-prototype",
+      "target_id": "gp-pp-vertical-slice",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-vertical-slice",
+      "target_id": "gp-pp-full-production",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-full-production",
+      "target_id": "gp-pp-alpha",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-alpha",
+      "target_id": "gp-pp-beta",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-beta",
+      "target_id": "gp-pp-gold-master",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-gold-master",
+      "target_id": "gp-pp-post-launch",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-post-launch",
+      "target_id": "gp-pp-gate-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-gate-review",
+      "target_id": "gp-pp-asset-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-asset-pipeline",
+      "target_id": "gp-pp-build-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-build-pipeline",
+      "target_id": "gp-pp-content-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-content-pipeline",
+      "target_id": "gp-pp-localization-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-localization-pipeline",
+      "target_id": "gp-pp-version-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-version-control",
+      "target_id": "gp-pp-documentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-documentation",
+      "target_id": "gp-pp-approval-workflow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-approval-workflow",
+      "target_id": "gp-pp-pipeline-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-pipeline-optimization",
+      "target_id": "gp-pp-cross-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-cross-platform",
+      "target_id": "gp-pp-live-service",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-basics",
+      "target_id": "gp-mp-wbs",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-wbs",
+      "target_id": "gp-mp-estimation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-estimation",
+      "target_id": "gp-mp-critical-path",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-critical-path",
+      "target_id": "gp-mp-gantt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-gantt",
+      "target_id": "gp-mp-dependency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-dependency",
+      "target_id": "gp-mp-tracking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-tracking",
+      "target_id": "gp-mp-buffer",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-buffer",
+      "target_id": "gp-mp-scope",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-scope",
+      "target_id": "gp-mp-feature-cut",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-feature-cut",
+      "target_id": "gp-mp-roadmap",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-roadmap",
+      "target_id": "gp-mp-deadline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-deadline",
+      "target_id": "gp-mp-iteration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-iteration",
+      "target_id": "gp-mp-contingency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-contingency",
+      "target_id": "gp-mp-reporting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-reporting",
+      "target_id": "gp-mp-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-tools",
+      "target_id": "gp-mp-kpi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-kpi",
+      "target_id": "gp-mp-postmortem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-postmortem",
+      "target_id": "gp-mp-multi-project",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-mp-multi-project",
+      "target_id": "gp-mp-scenario-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-basics",
+      "target_id": "gp-rm-team-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-team-structure",
+      "target_id": "gp-rm-staffing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-staffing",
+      "target_id": "gp-rm-skill-matrix",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-skill-matrix",
+      "target_id": "gp-rm-workload",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-workload",
+      "target_id": "gp-rm-capacity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-capacity",
+      "target_id": "gp-rm-onboarding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-onboarding",
+      "target_id": "gp-rm-retention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-retention",
+      "target_id": "gp-rm-performance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-performance",
+      "target_id": "gp-rm-team-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-team-scaling",
+      "target_id": "gp-rm-remote-team",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-remote-team",
+      "target_id": "gp-rm-cross-functional",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-cross-functional",
+      "target_id": "gp-rm-leadership",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-leadership",
+      "target_id": "gp-rm-motivation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-motivation",
+      "target_id": "gp-rm-conflict-resolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-conflict-resolution",
+      "target_id": "gp-rm-knowledge-sharing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-knowledge-sharing",
+      "target_id": "gp-rm-succession",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-succession",
+      "target_id": "gp-rm-culture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-culture",
+      "target_id": "gp-rm-burnout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rm-burnout",
+      "target_id": "gp-rm-diversity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-basics",
+      "target_id": "gp-rk-identification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-identification",
+      "target_id": "gp-rk-assessment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-assessment",
+      "target_id": "gp-rk-register",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-register",
+      "target_id": "gp-rk-mitigation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-mitigation",
+      "target_id": "gp-rk-technical",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-technical",
+      "target_id": "gp-rk-schedule",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-schedule",
+      "target_id": "gp-rk-scope-creep",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-scope-creep",
+      "target_id": "gp-rk-personnel",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-personnel",
+      "target_id": "gp-rk-market",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-market",
+      "target_id": "gp-rk-dependency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-dependency",
+      "target_id": "gp-rk-contingency-plan",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-contingency-plan",
+      "target_id": "gp-rk-monitoring",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-monitoring",
+      "target_id": "gp-rk-early-warning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-early-warning",
+      "target_id": "gp-rk-crisis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-crisis",
+      "target_id": "gp-rk-retrospective",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-retrospective",
+      "target_id": "gp-rk-insurance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-insurance",
+      "target_id": "gp-rk-game-specific",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-game-specific",
+      "target_id": "gp-rk-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-platform",
+      "target_id": "gp-rk-ip-legal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-basics",
+      "target_id": "gp-cd-communication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-communication",
+      "target_id": "gp-cd-dependency-map",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-dependency-map",
+      "target_id": "gp-cd-handoff",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-handoff",
+      "target_id": "gp-cd-meeting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-meeting",
+      "target_id": "gp-cd-stakeholder",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-stakeholder",
+      "target_id": "gp-cd-art-tech",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-art-tech",
+      "target_id": "gp-cd-design-dev",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-design-dev",
+      "target_id": "gp-cd-audio-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-audio-integration",
+      "target_id": "gp-cd-qa-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-qa-integration",
+      "target_id": "gp-cd-transparency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-transparency",
+      "target_id": "gp-cd-conflict",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-conflict",
+      "target_id": "gp-cd-alignment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-alignment",
+      "target_id": "gp-cd-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-tools",
+      "target_id": "gp-cd-remote-collab",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-remote-collab",
+      "target_id": "gp-cd-review-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-review-process",
+      "target_id": "gp-cd-integration-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-integration-testing",
+      "target_id": "gp-cd-change-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-change-management",
+      "target_id": "gp-cd-studio-culture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-cd-studio-culture",
+      "target_id": "gp-cd-external-partners",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-basics",
+      "target_id": "gp-as-scrum-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-scrum-framework",
+      "target_id": "gp-as-sprint-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-sprint-planning",
+      "target_id": "gp-as-daily-standup",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-daily-standup",
+      "target_id": "gp-as-sprint-review",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-sprint-review",
+      "target_id": "gp-as-retrospective",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-retrospective",
+      "target_id": "gp-as-backlog",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-backlog",
+      "target_id": "gp-as-user-story",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-user-story",
+      "target_id": "gp-as-estimation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-estimation",
+      "target_id": "gp-as-velocity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-velocity",
+      "target_id": "gp-as-kanban",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-kanban",
+      "target_id": "gp-as-scrumban",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-scrumban",
+      "target_id": "gp-as-game-adaptation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-game-adaptation",
+      "target_id": "gp-as-definition-done",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-definition-done",
+      "target_id": "gp-as-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-scaling",
+      "target_id": "gp-as-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-metrics",
+      "target_id": "gp-as-technical-debt",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-technical-debt",
+      "target_id": "gp-as-continuous-improvement",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-continuous-improvement",
+      "target_id": "gp-as-product-owner",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-product-owner",
+      "target_id": "gp-as-scrum-master",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-basics",
+      "target_id": "gp-os-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-strategy",
+      "target_id": "gp-os-vendor-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-vendor-selection",
+      "target_id": "gp-os-contract",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-contract",
+      "target_id": "gp-os-art-outsource",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-art-outsource",
+      "target_id": "gp-os-qa-outsource",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-qa-outsource",
+      "target_id": "gp-os-audio-outsource",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-audio-outsource",
+      "target_id": "gp-os-programming",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-programming",
+      "target_id": "gp-os-quality-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-quality-control",
+      "target_id": "gp-os-communication",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-communication",
+      "target_id": "gp-os-ip-protection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-ip-protection",
+      "target_id": "gp-os-onsite-offsite",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-onsite-offsite",
+      "target_id": "gp-os-cost-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-cost-analysis",
+      "target_id": "gp-os-transition",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-transition",
+      "target_id": "gp-os-risk",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-risk",
+      "target_id": "gp-os-localization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-localization",
+      "target_id": "gp-os-co-development",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-co-development",
+      "target_id": "gp-os-evaluation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-evaluation",
+      "target_id": "gp-os-scaling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-os-scaling",
+      "target_id": "gp-os-tool-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-basics",
+      "target_id": "gp-bc-estimation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-estimation",
+      "target_id": "gp-bc-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-structure",
+      "target_id": "gp-bc-tracking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-tracking",
+      "target_id": "gp-bc-evm",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-evm",
+      "target_id": "gp-bc-roi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-roi",
+      "target_id": "gp-bc-contingency-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-contingency-budget",
+      "target_id": "gp-bc-cash-flow",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-cash-flow",
+      "target_id": "gp-bc-reporting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-reporting",
+      "target_id": "gp-bc-headcount",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-headcount",
+      "target_id": "gp-bc-tool-cost",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-tool-cost",
+      "target_id": "gp-bc-marketing-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-marketing-budget",
+      "target_id": "gp-bc-cost-reduction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-cost-reduction",
+      "target_id": "gp-bc-funding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-funding",
+      "target_id": "gp-bc-f2p-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-f2p-economics",
+      "target_id": "gp-bc-premium-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-premium-economics",
+      "target_id": "gp-bc-scope-budget",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-scope-budget",
+      "target_id": "gp-bc-audit",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-audit",
+      "target_id": "gp-bc-benchmark",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-bc-benchmark",
+      "target_id": "gp-bc-greenlight",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-pp-preproduction",
+      "target_id": "gp-mp-basics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-pp-gate-review",
+      "target_id": "gp-mp-kpi",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-pp-overview",
+      "target_id": "gp-rm-basics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gp-mp-wbs",
+      "target_id": "gp-rm-workload",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-mp-estimation",
+      "target_id": "gp-bc-estimation",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-rk-schedule",
+      "target_id": "gp-mp-buffer",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-rk-scope-creep",
+      "target_id": "gp-mp-scope",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-sprint-planning",
+      "target_id": "gp-mp-iteration",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "gp-as-velocity",
+      "target_id": "gp-mp-tracking",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-os-strategy",
+      "target_id": "gp-rm-capacity",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-os-cost-analysis",
+      "target_id": "gp-bc-basics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-cd-communication",
+      "target_id": "gp-as-daily-standup",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-cd-art-tech",
+      "target_id": "gp-os-art-outsource",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gp-bc-contingency-budget",
+      "target_id": "gp-rk-contingency-plan",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-bc-roi",
+      "target_id": "gp-rk-market",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gp-pp-build-pipeline",
+      "target_id": "gp-as-technical-debt",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gp-rm-team-structure",
+      "target_id": "gp-cd-basics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-rk-personnel",
+      "target_id": "gp-rm-retention",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "gp-as-game-adaptation",
+      "target_id": "gp-cd-alignment",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "gp-bc-greenlight",
+      "target_id": "gp-pp-preproduction",
+      "relation_type": "related",
+      "strength": 0.8
+    }
+  ],
+  "milestones": [
+    "gp-pp-prototype",
+    "gp-pp-alpha",
+    "gp-pp-gate-review",
+    "gp-pp-pipeline-optimization",
+    "gp-mp-wbs",
+    "gp-mp-critical-path",
+    "gp-mp-buffer",
+    "gp-mp-kpi",
+    "gp-rm-team-structure",
+    "gp-rm-workload",
+    "gp-rm-performance",
+    "gp-rm-culture",
+    "gp-rk-identification",
+    "gp-rk-mitigation",
+    "gp-rk-contingency-plan",
+    "gp-rk-crisis",
+    "gp-cd-communication",
+    "gp-cd-stakeholder",
+    "gp-cd-conflict",
+    "gp-cd-integration-testing",
+    "gp-as-scrum-framework",
+    "gp-as-retrospective",
+    "gp-as-velocity",
+    "gp-as-game-adaptation",
+    "gp-os-strategy",
+    "gp-os-art-outsource",
+    "gp-os-quality-control",
+    "gp-os-risk",
+    "gp-bc-estimation",
+    "gp-bc-evm",
+    "gp-bc-headcount",
+    "gp-bc-f2p-economics"
+  ]
+}

@@ -1,35 +1,3 @@
----
-id: "cell-membrane"
-concept: "细胞膜"
-domain: "biology"
-subdomain: "cell-biology"
-subdomain_name: "细胞生物学"
-difficulty: 2
-is_milestone: false
-tags: ["结构"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 13.8
-generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.1
-last_scored: "2026-03-21"
-
-sources:
-  - type: "encyclopedia"
-    ref: "Wikipedia - Fluid mosaic model"
-    url: "https://en.wikipedia.org/wiki/Fluid_mosaic_model"
-  - type: "textbook-online"
-    ref: "Alberts et al. Molecular Biology of the Cell, 4th ed. Ch.11 - NCBI Bookshelf"
-    url: "https://www.ncbi.nlm.nih.gov/books/NBK26815/"
-  - type: "educational"
-    ref: "Khan Academy (中文版) - 细胞膜的结构"
-    url: "https://zh.khanacademy.org/science/biology/membranes-and-transport/the-plasma-membrane/a/structure-of-the-plasma-membrane"
-  - type: "textbook-online"
-    ref: "LibreTexts Biology - Fluid Mosaic Model (OpenStax/Boundless)"
-    url: "https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_(Boundless)/05%3A_Structure_and_Function_of_Plasma_Membranes/5.02%3A_Components_and_Structure_-_Fluid_Mosaic_Model"
----
 # 细胞膜
 
 ## 概述
