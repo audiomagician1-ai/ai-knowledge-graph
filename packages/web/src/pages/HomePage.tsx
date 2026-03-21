@@ -4,80 +4,81 @@ import { useDomainStore } from '@/lib/store/domain';
 import { Loader } from 'lucide-react';
 
 /* ─── Demo fallback — 37 domains = 4 complete hex rings (1+6+12+18) ─── */
-/* Refined palette: low saturation (~25-35%), lightness ~65-75%, sophisticated muted tones */
+/* Vivid, saturated palette — clean modern tech aesthetic on dark background */
 const DEMO_DOMAINS: import('@akg/shared').Domain[] = [
   // Ring 0 (center)
-  { id: 'ai-engineering', name: 'AI编程', icon: '', description: '', color: '#8B7EC8', is_active: true, stats: { total_concepts: 400, total_edges: 615, subdomains: 15 } },
+  { id: 'ai-engineering', name: 'AI编程', icon: '', description: '', color: '#7C6CF0', is_active: true, stats: { total_concepts: 400, total_edges: 615, subdomains: 15 } },
   // Ring 1 (6)
-  { id: 'game-engine', name: '游戏引擎', icon: '', description: '', color: '#7BB5A3', is_active: true, stats: { total_concepts: 300, total_edges: 319, subdomains: 15 } },
-  { id: 'mathematics', name: '数学', icon: '', description: '', color: '#7FA4C9', is_active: true, stats: { total_concepts: 269, total_edges: 366, subdomains: 12 } },
-  { id: 'game-design', name: '游戏设计', icon: '', description: '', color: '#D4A882', is_active: true, stats: { total_concepts: 250, total_edges: 274, subdomains: 12 } },
-  { id: 'machine-learning', name: '机器学习', icon: '', description: '', color: '#9B93C4', is_active: true, stats: { total_concepts: 350, total_edges: 500, subdomains: 14 } },
-  { id: 'data-science', name: '数据科学', icon: '', description: '', color: '#6DA89B', is_active: true, stats: { total_concepts: 220, total_edges: 250, subdomains: 10 } },
-  { id: 'algorithms', name: '算法', icon: '', description: '', color: '#A89BC4', is_active: true, stats: { total_concepts: 280, total_edges: 300, subdomains: 12 } },
+  { id: 'game-engine', name: '游戏引擎', icon: '', description: '', color: '#34C88A', is_active: true, stats: { total_concepts: 300, total_edges: 319, subdomains: 15 } },
+  { id: 'mathematics', name: '数学', icon: '', description: '', color: '#4A9FF5', is_active: true, stats: { total_concepts: 269, total_edges: 366, subdomains: 12 } },
+  { id: 'game-design', name: '游戏设计', icon: '', description: '', color: '#F5A623', is_active: true, stats: { total_concepts: 250, total_edges: 274, subdomains: 12 } },
+  { id: 'machine-learning', name: '机器学习', icon: '', description: '', color: '#9B6CF0', is_active: true, stats: { total_concepts: 350, total_edges: 500, subdomains: 14 } },
+  { id: 'data-science', name: '数据科学', icon: '', description: '', color: '#2EC4B6', is_active: true, stats: { total_concepts: 220, total_edges: 250, subdomains: 10 } },
+  { id: 'algorithms', name: '算法', icon: '', description: '', color: '#A78BFA', is_active: true, stats: { total_concepts: 280, total_edges: 300, subdomains: 12 } },
   // Ring 2 (12)
-  { id: 'english', name: '英语', icon: '', description: '', color: '#C9B87A', is_active: true, stats: { total_concepts: 200, total_edges: 229, subdomains: 10 } },
-  { id: 'physics', name: '物理', icon: '', description: '', color: '#7AB5AD', is_active: true, stats: { total_concepts: 194, total_edges: 232, subdomains: 10 } },
-  { id: 'psychology', name: '心理学', icon: '', description: '', color: '#B89DBF', is_active: true, stats: { total_concepts: 183, total_edges: 203, subdomains: 8 } },
-  { id: 'economics', name: '经济学', icon: '', description: '', color: '#7DB5A0', is_active: true, stats: { total_concepts: 180, total_edges: 170, subdomains: 9 } },
-  { id: 'graphics', name: '图形学', icon: '', description: '', color: '#8E9DC0', is_active: true, stats: { total_concepts: 200, total_edges: 190, subdomains: 10 } },
-  { id: 'history', name: '历史', icon: '', description: '', color: '#C2AB8F', is_active: true, stats: { total_concepts: 170, total_edges: 160, subdomains: 9 } },
-  { id: 'statistics', name: '统计学', icon: '', description: '', color: '#85B8C5', is_active: true, stats: { total_concepts: 170, total_edges: 160, subdomains: 8 } },
-  { id: 'finance', name: '金融理财', icon: '', description: '', color: '#C4A3B5', is_active: true, stats: { total_concepts: 160, total_edges: 180, subdomains: 8 } },
-  { id: 'qa-testing', name: 'QA测试', icon: '', description: '', color: '#7AAEC5', is_active: true, stats: { total_concepts: 160, total_edges: 150, subdomains: 8 } },
-  { id: 'security', name: '信息安全', icon: '', description: '', color: '#C49A9A', is_active: true, stats: { total_concepts: 160, total_edges: 150, subdomains: 8 } },
-  { id: 'biology', name: '生物学', icon: '', description: '', color: '#7DB89A', is_active: true, stats: { total_concepts: 155, total_edges: 145, subdomains: 7 } },
-  { id: 'os', name: '操作系统', icon: '', description: '', color: '#8AAEBB', is_active: true, stats: { total_concepts: 150, total_edges: 140, subdomains: 7 } },
+  { id: 'english', name: '英语', icon: '', description: '', color: '#FBBF24', is_active: true, stats: { total_concepts: 200, total_edges: 229, subdomains: 10 } },
+  { id: 'physics', name: '物理', icon: '', description: '', color: '#06B6D4', is_active: true, stats: { total_concepts: 194, total_edges: 232, subdomains: 10 } },
+  { id: 'psychology', name: '心理学', icon: '', description: '', color: '#E879A8', is_active: true, stats: { total_concepts: 183, total_edges: 203, subdomains: 8 } },
+  { id: 'economics', name: '经济学', icon: '', description: '', color: '#10B981', is_active: true, stats: { total_concepts: 180, total_edges: 170, subdomains: 9 } },
+  { id: 'graphics', name: '图形学', icon: '', description: '', color: '#6366F1', is_active: true, stats: { total_concepts: 200, total_edges: 190, subdomains: 10 } },
+  { id: 'history', name: '历史', icon: '', description: '', color: '#D97706', is_active: true, stats: { total_concepts: 170, total_edges: 160, subdomains: 9 } },
+  { id: 'statistics', name: '统计学', icon: '', description: '', color: '#38BDF8', is_active: true, stats: { total_concepts: 170, total_edges: 160, subdomains: 8 } },
+  { id: 'finance', name: '金融理财', icon: '', description: '', color: '#F472B6', is_active: true, stats: { total_concepts: 160, total_edges: 180, subdomains: 8 } },
+  { id: 'qa-testing', name: 'QA测试', icon: '', description: '', color: '#22D3EE', is_active: true, stats: { total_concepts: 160, total_edges: 150, subdomains: 8 } },
+  { id: 'security', name: '信息安全', icon: '', description: '', color: '#F87171', is_active: true, stats: { total_concepts: 160, total_edges: 150, subdomains: 8 } },
+  { id: 'biology', name: '生物学', icon: '', description: '', color: '#4ADE80', is_active: true, stats: { total_concepts: 155, total_edges: 145, subdomains: 7 } },
+  { id: 'os', name: '操作系统', icon: '', description: '', color: '#60A5FA', is_active: true, stats: { total_concepts: 150, total_edges: 140, subdomains: 7 } },
   // Ring 3 (18)
-  { id: 'database', name: '数据库', icon: '', description: '', color: '#80BEC5', is_active: true, stats: { total_concepts: 145, total_edges: 135, subdomains: 7 } },
-  { id: 'project-mgmt', name: '项目管理', icon: '', description: '', color: '#9AA5B3', is_active: true, stats: { total_concepts: 140, total_edges: 135, subdomains: 8 } },
-  { id: 'chemistry', name: '化学', icon: '', description: '', color: '#72C0C5', is_active: true, stats: { total_concepts: 140, total_edges: 130, subdomains: 7 } },
-  { id: 'law', name: '法学', icon: '', description: '', color: '#97A3AF', is_active: true, stats: { total_concepts: 135, total_edges: 125, subdomains: 7 } },
-  { id: 'networking', name: '计算机网络', icon: '', description: '', color: '#7BBEA8', is_active: true, stats: { total_concepts: 130, total_edges: 120, subdomains: 6 } },
-  { id: 'narrative', name: '叙事设计', icon: '', description: '', color: '#D0A0AF', is_active: true, stats: { total_concepts: 130, total_edges: 120, subdomains: 6 } },
-  { id: 'literature', name: '文学', icon: '', description: '', color: '#B89CC0', is_active: true, stats: { total_concepts: 120, total_edges: 110, subdomains: 6 } },
-  { id: 'robotics', name: '机器人学', icon: '', description: '', color: '#78B5A3', is_active: true, stats: { total_concepts: 115, total_edges: 105, subdomains: 6 } },
-  { id: 'ux-design', name: 'UX设计', icon: '', description: '', color: '#CCA5A8', is_active: true, stats: { total_concepts: 110, total_edges: 100, subdomains: 6 } },
-  { id: 'philosophy', name: '哲学', icon: '', description: '', color: '#9BA5B0', is_active: true, stats: { total_concepts: 110, total_edges: 100, subdomains: 5 } },
-  { id: 'sociology', name: '社会学', icon: '', description: '', color: '#A299B2', is_active: true, stats: { total_concepts: 105, total_edges: 95, subdomains: 5 } },
-  { id: 'art', name: '美术', icon: '', description: '', color: '#D0B090', is_active: true, stats: { total_concepts: 100, total_edges: 90, subdomains: 5 } },
-  { id: 'education', name: '教育学', icon: '', description: '', color: '#95B5A0', is_active: true, stats: { total_concepts: 98, total_edges: 88, subdomains: 5 } },
-  { id: 'linguistics', name: '语言学', icon: '', description: '', color: '#89B8A5', is_active: true, stats: { total_concepts: 95, total_edges: 85, subdomains: 5 } },
-  { id: 'architecture', name: '建筑学', icon: '', description: '', color: '#C5AB9A', is_active: true, stats: { total_concepts: 92, total_edges: 82, subdomains: 4 } },
-  { id: 'music', name: '音乐', icon: '', description: '', color: '#A895B5', is_active: true, stats: { total_concepts: 90, total_edges: 80, subdomains: 5 } },
-  { id: 'astronomy', name: '天文学', icon: '', description: '', color: '#8A9AB5', is_active: true, stats: { total_concepts: 88, total_edges: 78, subdomains: 4 } },
-  { id: 'geography', name: '地理学', icon: '', description: '', color: '#85B8AE', is_active: true, stats: { total_concepts: 85, total_edges: 75, subdomains: 4 } },
+  { id: 'database', name: '数据库', icon: '', description: '', color: '#2DD4BF', is_active: true, stats: { total_concepts: 145, total_edges: 135, subdomains: 7 } },
+  { id: 'project-mgmt', name: '项目管理', icon: '', description: '', color: '#818CF8', is_active: true, stats: { total_concepts: 140, total_edges: 135, subdomains: 8 } },
+  { id: 'chemistry', name: '化学', icon: '', description: '', color: '#14B8A6', is_active: true, stats: { total_concepts: 140, total_edges: 130, subdomains: 7 } },
+  { id: 'law', name: '法学', icon: '', description: '', color: '#94A3B8', is_active: true, stats: { total_concepts: 135, total_edges: 125, subdomains: 7 } },
+  { id: 'networking', name: '计算机网络', icon: '', description: '', color: '#34D399', is_active: true, stats: { total_concepts: 130, total_edges: 120, subdomains: 6 } },
+  { id: 'narrative', name: '叙事设计', icon: '', description: '', color: '#FB7185', is_active: true, stats: { total_concepts: 130, total_edges: 120, subdomains: 6 } },
+  { id: 'literature', name: '文学', icon: '', description: '', color: '#C084FC', is_active: true, stats: { total_concepts: 120, total_edges: 110, subdomains: 6 } },
+  { id: 'robotics', name: '机器人学', icon: '', description: '', color: '#2DD4BF', is_active: true, stats: { total_concepts: 115, total_edges: 105, subdomains: 6 } },
+  { id: 'ux-design', name: 'UX设计', icon: '', description: '', color: '#FB923C', is_active: true, stats: { total_concepts: 110, total_edges: 100, subdomains: 6 } },
+  { id: 'philosophy', name: '哲学', icon: '', description: '', color: '#A3A3A3', is_active: true, stats: { total_concepts: 110, total_edges: 100, subdomains: 5 } },
+  { id: 'sociology', name: '社会学', icon: '', description: '', color: '#A78BFA', is_active: true, stats: { total_concepts: 105, total_edges: 95, subdomains: 5 } },
+  { id: 'art', name: '美术', icon: '', description: '', color: '#F59E0B', is_active: true, stats: { total_concepts: 100, total_edges: 90, subdomains: 5 } },
+  { id: 'education', name: '教育学', icon: '', description: '', color: '#34D399', is_active: true, stats: { total_concepts: 98, total_edges: 88, subdomains: 5 } },
+  { id: 'linguistics', name: '语言学', icon: '', description: '', color: '#5EEAD4', is_active: true, stats: { total_concepts: 95, total_edges: 85, subdomains: 5 } },
+  { id: 'architecture', name: '建筑学', icon: '', description: '', color: '#FBBF24', is_active: true, stats: { total_concepts: 92, total_edges: 82, subdomains: 4 } },
+  { id: 'music', name: '音乐', icon: '', description: '', color: '#C084FC', is_active: true, stats: { total_concepts: 90, total_edges: 80, subdomains: 5 } },
+  { id: 'astronomy', name: '天文学', icon: '', description: '', color: '#6366F1', is_active: true, stats: { total_concepts: 88, total_edges: 78, subdomains: 4 } },
+  { id: 'geography', name: '地理学', icon: '', description: '', color: '#2EC4B6', is_active: true, stats: { total_concepts: 85, total_edges: 75, subdomains: 4 } },
   // Ring 4 (24)
-  { id: 'compiler', name: '编译原理', icon: '', description: '', color: '#8AA3B5', is_active: true, stats: { total_concepts: 82, total_edges: 72, subdomains: 4 } },
-  { id: 'electronics', name: '电子工程', icon: '', description: '', color: '#7AB0B8', is_active: true, stats: { total_concepts: 80, total_edges: 70, subdomains: 4 } },
-  { id: 'marketing', name: '市场营销', icon: '', description: '', color: '#C0A5BB', is_active: true, stats: { total_concepts: 78, total_edges: 68, subdomains: 4 } },
-  { id: 'materials', name: '材料科学', icon: '', description: '', color: '#99B5A5', is_active: true, stats: { total_concepts: 76, total_edges: 66, subdomains: 4 } },
-  { id: 'film', name: '电影学', icon: '', description: '', color: '#B5A0AA', is_active: true, stats: { total_concepts: 75, total_edges: 65, subdomains: 4 } },
-  { id: 'nutrition', name: '营养学', icon: '', description: '', color: '#8DC0A0', is_active: true, stats: { total_concepts: 73, total_edges: 63, subdomains: 3 } },
-  { id: 'journalism', name: '新闻学', icon: '', description: '', color: '#A5A0B8', is_active: true, stats: { total_concepts: 72, total_edges: 62, subdomains: 3 } },
-  { id: 'anthropology', name: '人类学', icon: '', description: '', color: '#BBAA9E', is_active: true, stats: { total_concepts: 70, total_edges: 60, subdomains: 3 } },
-  { id: 'env-science', name: '环境科学', icon: '', description: '', color: '#80B8AC', is_active: true, stats: { total_concepts: 68, total_edges: 58, subdomains: 3 } },
-  { id: 'medicine', name: '医学', icon: '', description: '', color: '#CCA5A5', is_active: true, stats: { total_concepts: 150, total_edges: 140, subdomains: 8 } },
-  { id: 'crypto', name: '密码学', icon: '', description: '', color: '#869DB5', is_active: true, stats: { total_concepts: 65, total_edges: 55, subdomains: 3 } },
-  { id: 'aerospace', name: '航空航天', icon: '', description: '', color: '#7DA5C0', is_active: true, stats: { total_concepts: 63, total_edges: 53, subdomains: 3 } },
-  { id: 'agriculture', name: '农业科学', icon: '', description: '', color: '#95BD90', is_active: true, stats: { total_concepts: 60, total_edges: 50, subdomains: 3 } },
-  { id: 'theater', name: '戏剧', icon: '', description: '', color: '#BF9AAA', is_active: true, stats: { total_concepts: 58, total_edges: 48, subdomains: 3 } },
-  { id: 'archaeology', name: '考古学', icon: '', description: '', color: '#B5AA98', is_active: true, stats: { total_concepts: 56, total_edges: 46, subdomains: 3 } },
-  { id: 'political', name: '政治学', icon: '', description: '', color: '#9A9AB2', is_active: true, stats: { total_concepts: 55, total_edges: 45, subdomains: 3 } },
-  { id: 'sports', name: '体育科学', icon: '', description: '', color: '#82B0C0', is_active: true, stats: { total_concepts: 53, total_edges: 43, subdomains: 3 } },
-  { id: 'theology', name: '神学', icon: '', description: '', color: '#A5A0AC', is_active: true, stats: { total_concepts: 50, total_edges: 40, subdomains: 2 } },
-  { id: 'veterinary', name: '兽医学', icon: '', description: '', color: '#88B5A5', is_active: true, stats: { total_concepts: 48, total_edges: 38, subdomains: 2 } },
-  { id: 'dance', name: '舞蹈', icon: '', description: '', color: '#C5A3B2', is_active: true, stats: { total_concepts: 45, total_edges: 35, subdomains: 2 } },
-  { id: 'oceanography', name: '海洋学', icon: '', description: '', color: '#78ABBD', is_active: true, stats: { total_concepts: 43, total_edges: 33, subdomains: 2 } },
-  { id: 'library', name: '图书馆学', icon: '', description: '', color: '#9AA5B0', is_active: true, stats: { total_concepts: 40, total_edges: 30, subdomains: 2 } },
-  { id: 'forestry', name: '林学', icon: '', description: '', color: '#88B59A', is_active: true, stats: { total_concepts: 38, total_edges: 28, subdomains: 2 } },
-  { id: 'logistics', name: '物流学', icon: '', description: '', color: '#92A8BD', is_active: true, stats: { total_concepts: 36, total_edges: 26, subdomains: 2 } },
+  { id: 'compiler', name: '编译原理', icon: '', description: '', color: '#60A5FA', is_active: true, stats: { total_concepts: 82, total_edges: 72, subdomains: 4 } },
+  { id: 'electronics', name: '电子工程', icon: '', description: '', color: '#22D3EE', is_active: true, stats: { total_concepts: 80, total_edges: 70, subdomains: 4 } },
+  { id: 'marketing', name: '市场营销', icon: '', description: '', color: '#F472B6', is_active: true, stats: { total_concepts: 78, total_edges: 68, subdomains: 4 } },
+  { id: 'materials', name: '材料科学', icon: '', description: '', color: '#4ADE80', is_active: true, stats: { total_concepts: 76, total_edges: 66, subdomains: 4 } },
+  { id: 'film', name: '电影学', icon: '', description: '', color: '#E879A8', is_active: true, stats: { total_concepts: 75, total_edges: 65, subdomains: 4 } },
+  { id: 'nutrition', name: '营养学', icon: '', description: '', color: '#34D399', is_active: true, stats: { total_concepts: 73, total_edges: 63, subdomains: 3 } },
+  { id: 'journalism', name: '新闻学', icon: '', description: '', color: '#818CF8', is_active: true, stats: { total_concepts: 72, total_edges: 62, subdomains: 3 } },
+  { id: 'anthropology', name: '人类学', icon: '', description: '', color: '#FB923C', is_active: true, stats: { total_concepts: 70, total_edges: 60, subdomains: 3 } },
+  { id: 'env-science', name: '环境科学', icon: '', description: '', color: '#14B8A6', is_active: true, stats: { total_concepts: 68, total_edges: 58, subdomains: 3 } },
+  { id: 'medicine', name: '医学', icon: '', description: '', color: '#F87171', is_active: true, stats: { total_concepts: 150, total_edges: 140, subdomains: 8 } },
+  { id: 'crypto', name: '密码学', icon: '', description: '', color: '#6366F1', is_active: true, stats: { total_concepts: 65, total_edges: 55, subdomains: 3 } },
+  { id: 'aerospace', name: '航空航天', icon: '', description: '', color: '#38BDF8', is_active: true, stats: { total_concepts: 63, total_edges: 53, subdomains: 3 } },
+  { id: 'agriculture', name: '农业科学', icon: '', description: '', color: '#4ADE80', is_active: true, stats: { total_concepts: 60, total_edges: 50, subdomains: 3 } },
+  { id: 'theater', name: '戏剧', icon: '', description: '', color: '#FB7185', is_active: true, stats: { total_concepts: 58, total_edges: 48, subdomains: 3 } },
+  { id: 'archaeology', name: '考古学', icon: '', description: '', color: '#D97706', is_active: true, stats: { total_concepts: 56, total_edges: 46, subdomains: 3 } },
+  { id: 'political', name: '政治学', icon: '', description: '', color: '#94A3B8', is_active: true, stats: { total_concepts: 55, total_edges: 45, subdomains: 3 } },
+  { id: 'sports', name: '体育科学', icon: '', description: '', color: '#22D3EE', is_active: true, stats: { total_concepts: 53, total_edges: 43, subdomains: 3 } },
+  { id: 'theology', name: '神学', icon: '', description: '', color: '#A78BFA', is_active: true, stats: { total_concepts: 50, total_edges: 40, subdomains: 2 } },
+  { id: 'veterinary', name: '兽医学', icon: '', description: '', color: '#2DD4BF', is_active: true, stats: { total_concepts: 48, total_edges: 38, subdomains: 2 } },
+  { id: 'dance', name: '舞蹈', icon: '', description: '', color: '#F472B6', is_active: true, stats: { total_concepts: 45, total_edges: 35, subdomains: 2 } },
+  { id: 'oceanography', name: '海洋学', icon: '', description: '', color: '#06B6D4', is_active: true, stats: { total_concepts: 43, total_edges: 33, subdomains: 2 } },
+  { id: 'library', name: '图书馆学', icon: '', description: '', color: '#94A3B8', is_active: true, stats: { total_concepts: 40, total_edges: 30, subdomains: 2 } },
+  { id: 'forestry', name: '林学', icon: '', description: '', color: '#10B981', is_active: true, stats: { total_concepts: 38, total_edges: 28, subdomains: 2 } },
+  { id: 'logistics', name: '物流学', icon: '', description: '', color: '#60A5FA', is_active: true, stats: { total_concepts: 36, total_edges: 26, subdomains: 2 } },
 ];
 
 const NAME_MAP: Record<string, string> = { 'ai-engineering': 'AI编程' };
 
 /* ─── Constants ─── */
-const BG = '#f0f0ec';          // slightly brighter warm grey
+const BG = '#0A0E1A';          // deep dark navy — modern tech aesthetic
+const BG_R = 10, BG_G = 14, BG_B = 26;  // BG color components for vignette
 const TRANSITION_MS = 900;
 const DPR = typeof window !== 'undefined' ? Math.min(window.devicePixelRatio || 1, 2) : 1;
 
@@ -149,7 +150,7 @@ function hexToRgb(hex: string): [number, number, number] {
   return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
 }
 
-/* ─── Flat bubble — pure solid color, hover = scale up + lift ─── */
+/* ─── Glossy bubble — glass-like with subtle gradient, glow on dark bg ─── */
 function drawBubble(
   ctx: CanvasRenderingContext2D,
   name: string, color: string, concepts: number, subs: number,
@@ -157,67 +158,85 @@ function drawBubble(
 ) {
   if (r < 3 || alpha < 0.02) return;
 
-  // Hover: enlarge + saturate + brighten + stronger shadow for "float up" feel
-  const hoverScale = hovered ? 1.22 : 1;
+  const hoverScale = hovered ? 1.18 : 1;
   const dr = r * hoverScale;
-  const drawAlpha = hovered ? Math.min(1, alpha * 1.4) : alpha;
+  const drawAlpha = hovered ? Math.min(1, alpha * 1.3) : alpha;
+  const [cr, cg, cb] = hexToRgb(color);
 
   ctx.save();
   ctx.globalAlpha = drawAlpha;
 
-  // Drop shadow — larger on hover for lift effect
-  if (dr > 16) {
-    ctx.shadowColor = hovered ? 'rgba(0,0,0,0.22)' : 'rgba(0,0,0,0.06)';
-    ctx.shadowBlur = hovered ? dr * 0.5 : dr * 0.15;
-    ctx.shadowOffsetX = 0;
-    ctx.shadowOffsetY = hovered ? dr * 0.15 : dr * 0.04;
+  // Glow effect — colored ambient light on dark background
+  if (dr > 12) {
+    const glowR = dr * (hovered ? 2.2 : 1.5);
+    const glowA = hovered ? 0.35 : 0.15;
+    const glow = ctx.createRadialGradient(cx, cy, dr * 0.3, cx, cy, glowR);
+    glow.addColorStop(0, `rgba(${cr},${cg},${cb},${glowA})`);
+    glow.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(cx, cy, glowR, 0, Math.PI * 2);
+    ctx.fill();
   }
 
-  // Solid flat fill — boost saturation + brightness on hover
+  // Main circle with subtle radial gradient (lighter top, darker bottom) for depth
+  const grad = ctx.createRadialGradient(
+    cx - dr * 0.2, cy - dr * 0.25, dr * 0.1,
+    cx, cy + dr * 0.1, dr
+  );
   if (hovered) {
-    const [cr, cg, cb] = hexToRgb(color);
-    // Boost saturation: push each channel away from grey average, then brighten
-    const avg = (cr + cg + cb) / 3;
-    const satBoost = 1.5; // 50% more saturation
-    const brighten = 25;
-    const nr = Math.min(255, Math.round((cr - avg) * satBoost + avg) + brighten);
-    const ng = Math.min(255, Math.round((cg - avg) * satBoost + avg) + brighten);
-    const nb = Math.min(255, Math.round((cb - avg) * satBoost + avg) + brighten);
-    ctx.fillStyle = `rgb(${nr},${ng},${nb})`;
+    // Brighten on hover
+    const br = Math.min(255, cr + 40);
+    const bg = Math.min(255, cg + 40);
+    const bb = Math.min(255, cb + 40);
+    grad.addColorStop(0, `rgb(${br},${bg},${bb})`);
+    grad.addColorStop(1, `rgb(${Math.round(cr*0.75)},${Math.round(cg*0.75)},${Math.round(cb*0.75)})`);
   } else {
-    ctx.fillStyle = color;
+    // Subtle highlight at top-left
+    const hr = Math.min(255, cr + 25);
+    const hg = Math.min(255, cg + 25);
+    const hb = Math.min(255, cb + 25);
+    grad.addColorStop(0, `rgb(${hr},${hg},${hb})`);
+    grad.addColorStop(1, `rgb(${Math.round(cr*0.82)},${Math.round(cg*0.82)},${Math.round(cb*0.82)})`);
   }
+  ctx.fillStyle = grad;
   ctx.beginPath();
   ctx.arc(cx, cy, dr, 0, Math.PI * 2);
   ctx.fill();
 
-  // Reset shadow
-  ctx.shadowColor = 'transparent';
-  ctx.shadowBlur = 0;
-
-  // Hover: soft white glow ring
-  if (hovered) {
-    ctx.globalAlpha = 0.35;
-    ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2.5;
+  // Glass highlight — subtle white arc at top
+  if (dr > 20) {
+    const hlGrad = ctx.createRadialGradient(
+      cx - dr * 0.1, cy - dr * 0.35, dr * 0.05,
+      cx, cy - dr * 0.1, dr * 0.8
+    );
+    hlGrad.addColorStop(0, 'rgba(255,255,255,0.18)');
+    hlGrad.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = hlGrad;
     ctx.beginPath();
-    ctx.arc(cx, cy, dr + 3, 0, Math.PI * 2);
+    ctx.arc(cx, cy, dr, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Hover: bright ring border
+  if (hovered) {
+    ctx.globalAlpha = 0.6;
+    ctx.strokeStyle = `rgba(${Math.min(255,cr+60)},${Math.min(255,cg+60)},${Math.min(255,cb+60)},0.7)`;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, dr + 1.5, 0, Math.PI * 2);
     ctx.stroke();
     ctx.globalAlpha = drawAlpha;
   }
 
   // Text — progressive disclosure based on radius
-  // r < 16: no text (tiny dot)
-  // 16 ≤ r < 28: no text (small colored ball)
-  // 28 ≤ r < 40: name only
-  // r ≥ 40: name + stats
   if (dr < 28) { ctx.restore(); return; }
 
   ctx.globalAlpha = drawAlpha;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  const nameFontSize = Math.max(9, Math.round(dr * 0.30));
+  const nameFontSize = Math.max(9, Math.round(dr * 0.28));
   ctx.font = `600 ${nameFontSize}px -apple-system,"SF Pro Display","Helvetica Neue","PingFang SC","Noto Sans SC",sans-serif`;
   ctx.fillStyle = 'rgba(255,255,255,0.95)';
 
@@ -225,13 +244,13 @@ function drawBubble(
   ctx.fillText(name, cx, showSub ? cy - nameFontSize * 0.35 : cy, dr * 1.6);
 
   if (showSub) {
-    const subSize = Math.max(7, Math.round(dr * 0.18));
+    const subSize = Math.max(7, Math.round(dr * 0.17));
     const parts: string[] = [];
     if (concepts) parts.push(concepts + ' 知识点');
     if (subs) parts.push(subs + ' 子领域');
     if (parts.length) {
       ctx.font = `400 ${subSize}px -apple-system,"SF Pro Text","PingFang SC",sans-serif`;
-      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.fillStyle = 'rgba(255,255,255,0.50)';
       ctx.fillText(parts.join(' · '), cx, cy + nameFontSize * 0.55, dr * 1.6);
     }
   }
@@ -502,15 +521,15 @@ export function HomePage() {
         drawBubble(ctx, dd.name, dd.color, dd.concepts, dd.subs, d.sx, d.sy, d.sr, d.alpha, d.idx === hovIdx);
       }
 
-      /* ─── Circular vignette: tight to fisheye radius ─── */
-      const vigInner = fishR * 0.55;  // fully clear zone (center + ring 1)
-      const vigOuter = fishR * 1.15;  // fully opaque zone
+      /* ─── Circular vignette: dark fade to bg ─── */
+      const vigInner = fishR * 0.55;
+      const vigOuter = fishR * 1.15;
       const vigGrad = ctx.createRadialGradient(centerX, centerY, vigInner, centerX, centerY, vigOuter);
-      vigGrad.addColorStop(0, 'rgba(240,240,236,0)');
-      vigGrad.addColorStop(0.3, 'rgba(240,240,236,0)');
-      vigGrad.addColorStop(0.55, 'rgba(240,240,236,0.4)');
-      vigGrad.addColorStop(0.75, 'rgba(240,240,236,0.8)');
-      vigGrad.addColorStop(0.9, 'rgba(240,240,236,0.96)');
+      vigGrad.addColorStop(0, `rgba(${BG_R},${BG_G},${BG_B},0)`);
+      vigGrad.addColorStop(0.3, `rgba(${BG_R},${BG_G},${BG_B},0)`);
+      vigGrad.addColorStop(0.55, `rgba(${BG_R},${BG_G},${BG_B},0.5)`);
+      vigGrad.addColorStop(0.75, `rgba(${BG_R},${BG_G},${BG_B},0.85)`);
+      vigGrad.addColorStop(0.9, `rgba(${BG_R},${BG_G},${BG_B},0.97)`);
       vigGrad.addColorStop(1, BG);
       ctx.fillStyle = vigGrad;
       ctx.fillRect(0, 0, W, H);
@@ -536,10 +555,10 @@ export function HomePage() {
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ touchAction: 'none' }} />
       {/* Header */}
       <div className="absolute left-0 right-0 text-center pointer-events-none select-none" style={{ top: 32, zIndex: 10 }}>
-        <h1 style={{ fontSize: 20, fontWeight: 600, color: '#1a1a1a', letterSpacing: '0.04em', marginBottom: 6, fontFamily: '-apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif', textShadow: '0 1px 12px rgba(240,240,236,0.95)' }}>
+        <h1 style={{ fontSize: 20, fontWeight: 600, color: 'rgba(255,255,255,0.92)', letterSpacing: '0.06em', marginBottom: 6, fontFamily: '-apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif' }}>
           选择你的知识领域
         </h1>
-        <p style={{ fontSize: 12, color: '#999', letterSpacing: '0.06em', fontFamily: '-apple-system,"SF Pro Text","PingFang SC",sans-serif', textShadow: '0 1px 8px rgba(240,240,236,0.9)' }}>
+        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.08em', fontFamily: '-apple-system,"SF Pro Text","PingFang SC",sans-serif' }}>
           拖动浏览 · 点击进入 3D 知识图谱
         </p>
       </div>
