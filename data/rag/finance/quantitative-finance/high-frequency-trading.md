@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["高级"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -78,3 +78,14 @@ HFT 的利润从 2009 年峰值约 50 亿美元降至 2012 年约 12.5 亿美元
 
 - **先修**：算法交易基础、市场微结构
 - **后续**：市场微结构分析、做市策略、延迟优化
+
+## 思考题
+
+1. 高频交易如何影响市场流动性？它是增加还是减少了普通投资者的交易成本？
+2. 2010年闪崩事件（Flash Crash）中高频交易扮演了什么角色？这对监管有什么启示？
+3. 为什么高频交易公司愿意花费数百万美元将服务器放置在交易所附近（co-location）？
+
+
+## 延伸阅读
+
+- Wikipedia: [High-frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading)

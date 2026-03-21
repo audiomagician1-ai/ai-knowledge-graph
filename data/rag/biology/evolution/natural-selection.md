@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["核心"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 13.2
 generation_method: "research-rewrite-v2"
@@ -81,3 +81,14 @@ sources:
 
 - **先修**：孟德尔遗传学、种群概念
 - **后续**：群体遗传学、物种形成、分子进化
+
+## 思考题
+
+1. 自然选择作用于个体还是群体？"自私基因"理论如何改变了我们对自然选择单位的理解？
+2. 为什么有些看似不利于生存的特征（如孔雀的尾巴）会在自然选择中保留？性选择如何与自然选择互动？
+3. 人类医学的发展是否减弱了自然选择对人类种群的作用？这对人类未来的进化意味着什么？
+
+
+## 延伸阅读
+
+- Wikipedia: [Natural selection](https://en.wikipedia.org/wiki/Natural_selection)

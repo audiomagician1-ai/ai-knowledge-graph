@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["策略"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -87,3 +87,14 @@ $$Z = \frac{Price - Mean}{StandardDeviation}$$
 
 - **先修**：概率与统计基础、时间序列分析
 - **后续**：统计套利、配对交易实施、高频交易策略
+
+## 思考题
+
+1. 如果一只股票连续下跌50%，均值回归理论是否意味着它会反弹？为什么需要区分"统计均值回归"和"基本面变化"？
+2. 在不同时间框架（日内 vs 月度 vs 年度）中，均值回归的可靠性如何变化？什么因素导致了这种差异？
+3. 如何设计一个简单的均值回归策略回测？需要考虑哪些交易成本和滑点因素？
+
+
+## 延伸阅读
+
+- Wikipedia: [Mean reversion (finance)](https://en.wikipedia.org/wiki/Mean_reversion_(finance))

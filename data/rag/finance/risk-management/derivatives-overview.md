@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["工具"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -80,3 +80,14 @@ sources:
 
 - **先修**：金融市场基础、时间价值与折现
 - **后续**：期货基础、期权定价（Black-Scholes）、互换与利率衍生品、对冲策略
+
+## 思考题
+
+1. 衍生品的"零和博弈"特性是否意味着衍生品市场对社会没有价值？套期保值如何创造价值？
+2. 为什么Warren Buffett称衍生品为"大规模杀伤性金融武器"？衍生品的系统性风险体现在哪里？
+3. 场内衍生品（交易所交易）和场外衍生品（OTC）在风险管理上有什么本质差异？
+
+
+## 延伸阅读
+
+- Wikipedia: [Derivative (finance)](https://en.wikipedia.org/wiki/Derivative_(finance))

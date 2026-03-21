@@ -1,11 +1,11 @@
 {
-  "_generated": "2026-03-21T23:47:39.611796",
+  "_generated": "2026-03-21T23:50:55.220880",
   "_version": "scorer-v1.0",
   "total_docs": 6156,
   "avg_score": 86.2,
   "tier_distribution": {
-    "S": 6146,
-    "A": 10,
+    "S": 6150,
+    "A": 6,
     "B": 0,
     "C": 0
   },
@@ -48,12 +48,12 @@
     },
     "biology": {
       "count": 169,
-      "avg_score": 85.3,
-      "min_score": 74.0,
+      "avg_score": 85.4,
+      "min_score": 78.8,
       "max_score": 93.3,
       "tiers": {
-        "S": 167,
-        "A": 2,
+        "S": 168,
+        "A": 1,
         "B": 0,
         "C": 0
       }
@@ -108,12 +108,12 @@
     },
     "finance": {
       "count": 161,
-      "avg_score": 85.4,
-      "min_score": 71.5,
+      "avg_score": 85.7,
+      "min_score": 77.1,
       "max_score": 90.6,
       "tiers": {
-        "S": 153,
-        "A": 8,
+        "S": 156,
+        "A": 5,
         "B": 0,
         "C": 0
       }
@@ -445,72 +445,44 @@
   ],
   "top20_worst": [
     {
-      "file": "finance\\quantitative-finance\\mean-reversion.md",
-      "concept": "均值回归",
-      "score": 71.5,
-      "tier": "A",
-      "domain": "finance"
-    },
-    {
       "file": "finance\\risk-management\\futures-basics.md",
       "concept": "期货基础",
-      "score": 71.8,
+      "score": 77.1,
       "tier": "A",
       "domain": "finance"
     },
     {
       "file": "finance\\quantitative-finance\\high-frequency-trading.md",
       "concept": "高频交易",
-      "score": 73.2,
+      "score": 78.3,
       "tier": "A",
       "domain": "finance"
     },
     {
       "file": "finance\\quantitative-finance\\statistical-arbitrage.md",
       "concept": "统计套利",
-      "score": 73.2,
+      "score": 78.3,
       "tier": "A",
       "domain": "finance"
     },
     {
       "file": "finance\\quantitative-finance\\time-series-analysis.md",
       "concept": "时间序列分析",
-      "score": 73.2,
+      "score": 78.3,
       "tier": "A",
       "domain": "finance"
     },
     {
       "file": "biology\\cell-biology\\photosynthesis.md",
       "concept": "光合作用",
-      "score": 74.0,
+      "score": 78.8,
       "tier": "A",
       "domain": "biology"
     },
     {
       "file": "finance\\quantitative-finance\\monte-carlo-simulation.md",
       "concept": "蒙特卡洛模拟",
-      "score": 74.2,
-      "tier": "A",
-      "domain": "finance"
-    },
-    {
-      "file": "finance\\risk-management\\derivatives-overview.md",
-      "concept": "衍生品概述",
-      "score": 75.8,
-      "tier": "A",
-      "domain": "finance"
-    },
-    {
-      "file": "biology\\evolution\\natural-selection.md",
-      "concept": "自然选择",
-      "score": 76.8,
-      "tier": "A",
-      "domain": "biology"
-    },
-    {
-      "file": "finance\\quantitative-finance\\volatility-modeling.md",
-      "concept": "波动率建模",
-      "score": 79.3,
+      "score": 79.0,
       "tier": "A",
       "domain": "finance"
     },
@@ -522,11 +494,25 @@
       "domain": "biology"
     },
     {
+      "file": "finance\\quantitative-finance\\mean-reversion.md",
+      "concept": "均值回归",
+      "score": 80.8,
+      "tier": "S",
+      "domain": "finance"
+    },
+    {
       "file": "game-engine\\serialization\\cloud-save.md",
       "concept": "云存档",
       "score": 80.8,
       "tier": "S",
       "domain": "game-engine"
+    },
+    {
+      "file": "finance\\risk-management\\derivatives-overview.md",
+      "concept": "衍生品概述",
+      "score": 81.1,
+      "tier": "S",
+      "domain": "finance"
     },
     {
       "file": "mathematics\\calculus\\area-under-curve.md",
@@ -583,6 +569,20 @@
       "score": 81.3,
       "tier": "S",
       "domain": "mathematics"
+    },
+    {
+      "file": "computer-graphics\\volume-rendering\\cg-vol-decal.md",
+      "concept": "体积贴花",
+      "score": 81.6,
+      "tier": "S",
+      "domain": "computer-graphics"
+    },
+    {
+      "file": "concept-design\\cd-rim-light.md",
+      "concept": "轮廓光",
+      "score": 81.6,
+      "tier": "S",
+      "domain": "concept-design"
     }
   ]
 }

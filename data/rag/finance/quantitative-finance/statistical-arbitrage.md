@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["策略"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -87,3 +87,14 @@ StatArb 的核心假设是：统计上相关的资产之间的价格关系在偏
 
 - **先修**：概率与统计、时间序列分析、均值回归理论
 - **后续**：高频交易、机器学习量化策略、风险因子分析
+
+## 思考题
+
+1. 统计套利策略依赖历史相关性的持续性——当相关性结构发生变化时会发生什么？
+2. 如何区分一个统计套利信号是真正的均值回归机会，还是只是噪声？
+3. 为什么统计套利策略在2007-2008年金融危机期间普遍遭受重大损失？
+
+
+## 延伸阅读
+
+- Wikipedia: [Statistical arbitrage](https://en.wikipedia.org/wiki/Statistical_arbitrage)

@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["衍生品"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -84,3 +84,14 @@ sources:
 
 - **先修**：衍生品概述、时间价值
 - **后续**：期权基础、对冲策略、基差交易
+
+## 思考题
+
+1. 期货合约的"零和博弈"特性意味着什么？每笔交易中谁在盈利、谁在亏损？
+2. 为什么航空公司会使用燃油期货进行套期保值？这与投机交易有什么本质区别？
+3. 保证金制度如何放大了期货交易的风险和收益？杠杆率10倍意味着什么？
+
+
+## 延伸阅读
+
+- Wikipedia: [Futures contract](https://en.wikipedia.org/wiki/Futures_contract)

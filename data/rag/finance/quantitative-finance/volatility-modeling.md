@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["模型"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -81,3 +81,14 @@ $$\sigma_t^2 = \alpha_0 + \sum_{i=1}^{q} \alpha_i \epsilon_{t-i}^2 + \sum_{j=1}^
 
 - **先修**：时间序列分析、概率与统计
 - **后续**：期权定价（Black-Scholes）、波动率曲面、风险度量（VaR）
+
+## 思考题
+
+1. 为什么金融市场中波动率呈现聚类现象（volatility clustering）？GARCH模型如何捕捉这一特征？
+2. 隐含波动率和历史波动率之间的差异（波动率风险溢价）传达了什么市场信息？
+3. VIX指数（"恐慌指数"）是如何从期权价格中推导出来的？它真的能预测市场风险吗？
+
+
+## 延伸阅读
+
+- Wikipedia: [Volatility (finance)](https://en.wikipedia.org/wiki/Volatility_(finance))

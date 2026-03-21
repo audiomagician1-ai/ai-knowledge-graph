@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["代谢"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 13.8
 generation_method: "research-rewrite-v2"
@@ -81,3 +81,14 @@ sources:
 
 - **先修**：细胞器结构（叶绿体）、ATP 与能量代谢
 - **后续**：细胞呼吸（糖酵解+三羧酸循环）、碳循环生态学
+
+## 思考题
+
+1. 光合作用的光反应和暗反应（Calvin循环）之间如何相互依赖？如果其中一个被抑制会发生什么？
+2. C3、C4和CAM三种光合途径分别适应什么环境？为什么进化产生了这些不同策略？
+3. 全球变暖如何影响光合作用效率？CO₂浓度升高对不同类型植物的影响相同吗？
+
+
+## 延伸阅读
+
+- Wikipedia: [Photosynthesis](https://en.wikipedia.org/wiki/Photosynthesis)

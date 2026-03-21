@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["工具"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
 quality_score: 11.2
 generation_method: "research-rewrite-v2"
@@ -80,3 +80,14 @@ sources:
 
 - **先修**：概率与统计、随机过程、衍生品基础
 - **后续**：期权定价高级方法、风险价值（VaR）、信用风险建模
+
+## 思考题
+
+1. 蒙特卡洛模拟结果的准确性与模拟次数之间是什么关系？误差收敛速度是多少？
+2. 在期权定价中，为什么蒙特卡洛方法特别适合路径依赖型期权？
+3. 如何使用方差缩减技术（如对偶变量法、控制变量法）来提高蒙特卡洛模拟的效率？
+
+
+## 延伸阅读
+
+- Wikipedia: [Monte Carlo method](https://en.wikipedia.org/wiki/Monte_Carlo_method)
