@@ -867,6 +867,32 @@ export const GAME_QA_ASSESSMENT_SUPPLEMENT = `
 - **回归策略**: 用户是否能根据变更影响分析确定回归测试范围？是否理解自动化回归的价值？
 `;
 
+export const GAME_PRODUCTION_DOMAIN_SUPPLEMENT = `
+## 游戏项目管理领域教学要点
+
+教授游戏项目管理概念时，请特别注意以下方面：
+- **管线思维**: 游戏制作是高度协作的管线——从预生产到上线后运维，每个阶段的交付物和质量标准必须清晰定义。
+- **平衡三角**: 范围-时间-成本是永恒的三角约束。引导理解在这三者之间做出明智权衡的决策框架。
+- **人本管理**: 游戏是创意产业，人是最核心的资源。团队士气、工作节奏(crunch预防)、职业发展同样重要。
+- **敏捷适配**: 标准Scrum不能直接照搬到游戏开发——创意迭代、美术管线、长周期内容制作需要特殊适配。
+- **风险前置**: 游戏项目的最大风险往往是"Fun Factor不确定"——早期原型验证和快速失败文化至关重要。
+- **外包协调**: 现代游戏开发大量依赖外包——质量管控、沟通效率和IP保护是外包成功的三大支柱。
+- **数据驱动**: 项目健康度需要指标支撑——速率/缺陷密度/预算执行率等KPI帮助客观判断项目状态。
+`;
+
+export const GAME_PRODUCTION_ASSESSMENT_SUPPLEMENT = `
+## 游戏项目管理领域评估特殊指标
+
+在评估游戏项目管理概念理解时，请额外关注以下方面：
+- **管线设计能力**: 用户是否能设计合理的制作管线？是否理解各阶段的质量门和交付标准？
+- **规划能力**: 用户是否能进行WBS分解和工时估算？是否理解关键路径和缓冲管理？
+- **团队管理意识**: 用户是否理解团队结构设计和资源调配的原则？能否平衡效率与团队可持续性？
+- **风险判断**: 用户是否能识别项目关键风险？是否掌握风险评估和缓解策略？
+- **协作思维**: 用户是否理解跨部门协作的复杂性？能否设计有效的沟通和依赖管理机制？
+- **敏捷实践**: 用户是否理解敏捷在游戏开发中的适配需求？能否灵活运用Scrum/Kanban等框架？
+- **财务意识**: 用户是否理解项目预算管理？能否进行ROI分析和成本-范围权衡？
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -897,6 +923,7 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'game-publishing': GAME_PUBLISHING_DOMAIN_SUPPLEMENT,
   'game-live-ops': GAME_LIVE_OPS_DOMAIN_SUPPLEMENT,
   'game-qa': GAME_QA_DOMAIN_SUPPLEMENT,
+  'game-production': GAME_PRODUCTION_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -932,6 +959,7 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'game-publishing': GAME_PUBLISHING_ASSESSMENT_SUPPLEMENT,
   'game-live-ops': GAME_LIVE_OPS_ASSESSMENT_SUPPLEMENT,
   'game-qa': GAME_QA_ASSESSMENT_SUPPLEMENT,
+  'game-production': GAME_PRODUCTION_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {

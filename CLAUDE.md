@@ -39,13 +39,15 @@
 
 ---
 
-**当前阶段**: 🔥 **Phase 36 下一步** | 29知识球(5,996节点) + Phase 35 QA测试球已完成
+**当前阶段**: 🔥 **Phase 36 完成** | 30知识球(6,156节点) + Phase 36 项目管理球已完成
 **🔴🔴🔴 最高优先级**: **RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
-> 5,996篇RAG文档质量审计: Tier-S ~10篇, Tier-C ~5,960篇(同模板生成,概念特异性<1%)
-> Sprint 0: Schema v2 + quality_scorer.py + 全量评分 | Sprint 1: 200里程碑节点精写 → Tier-A
-> Sprint 2: 精确科学入门层300篇 | Sprint 3: 全域管线化
-> **当前进度**: Sprint 0 ✅ 完成 + Sprint 1 物理域 ✅ 完成(26里程碑精写, 均分34.7→45.5, S=7/A=19)。下一步: 数学域30里程碑精写
-**🔥 下一阶段**: **Phase 36-37 游戏开发全领域知识球** | 2个球 — 详见 `docs/EXPANSION_PLAN.md` 第十章
+> 6,156篇RAG文档质量审计: Tier-S ~10篇, Tier-C ~6,100篇(同模板生成,概念特异性<1%)
+> Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
+> Sprint 1 ✅: 物理域26里程碑精写(均分34.7→45.5, S=7/A=19)
+> Sprint 1.5 🔥: **research-rewrite-v2** — WebResearch增强精写(每概念必须web搜索+来源验证)
+>   新脚本: `scripts/research_rewrite.py` | 验证: cell-membrane 13.8→93.3, accessibility-audit 17.9→82.6
+>   下一步: 按域批量执行research-rewrite-v2, milestone概念优先
+**🔥 下一阶段**: **Phase 37 游戏开发全领域跨球体总验证** | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 11球体 + 🔥20游戏开发球(P0最高优先级)

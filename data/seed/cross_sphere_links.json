@@ -4594,6 +4594,222 @@
       "relation": "related",
       "strength": 0.5,
       "description": "文化适配测试参考视觉风格指南确保文化一致性"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-overview",
+      "target_domain": "game-design",
+      "target_id": "core-loop-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "制作管线需要围绕核心游戏玩法循环来组织"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-preproduction",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "预生产阶段的核心产出是游戏设计文档(GDD)"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-mp-scope",
+      "target_domain": "game-design",
+      "target_id": "gd-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "范围管理直接关系到游戏功能的取舍决策"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-build-pipeline",
+      "target_domain": "software-engineering",
+      "target_id": "se-cicd-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "构建管线是CI/CD在游戏开发中的具体应用"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-as-scrum-framework",
+      "target_domain": "software-engineering",
+      "target_id": "se-cr-game-specific",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "Scrum框架在游戏软件工程项目中的审查与适配"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-as-technical-debt",
+      "target_domain": "software-engineering",
+      "target_id": "se-tech-debt",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "技术债务管理是软件工程和项目管理的交叉领域"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-asset-pipeline",
+      "target_domain": "game-engine",
+      "target_id": "asset-registry",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "资产管线的后端由引擎资产管理系统支撑"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-version-control",
+      "target_domain": "game-engine",
+      "target_id": "source-control-editor",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "版本管理策略需要与引擎协作工具配合"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-os-art-outsource",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-naming",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "美术外包需要严格的资产命名和质量规范"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-asset-pipeline",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "资产管线设计需要理解3D美术工作流"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-qa-integration",
+      "target_domain": "game-qa",
+      "target_id": "qa-ft-basics",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "QA团队集成需要理解功能测试的基本流程"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-rk-technical",
+      "target_domain": "game-qa",
+      "target_id": "qa-pt-perf-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "技术风险管理需要性能测试的支撑"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-bc-marketing-budget",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ua-ua-budget",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "营销预算规划与市场发行策略紧密关联"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-rk-platform",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ms-platform-selection",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "平台审核风险需要熟悉各平台发行规则"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-live-service",
+      "target_domain": "game-live-ops",
+      "target_id": "ops-ep-event-analytics",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "持续运营管线为运营数据分析提供基础设施"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-bc-f2p-economics",
+      "target_domain": "game-live-ops",
+      "target_id": "ops-so-season-analytics",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "F2P经济模型与运营付费系统设计深度关联"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-audio-integration",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-wwise-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "音频集成协作需要了解Wwise等中间件工作流"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-content-pipeline",
+      "target_domain": "narrative-design",
+      "target_id": "nd-wb-world-history",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "内容管线需要覆盖叙事设计的世界观构建流程"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-design-dev",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-usability-playtest",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "策划-开发协作中的快速可用性验证方法"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-art-tech",
+      "target_domain": "technical-art",
+      "target_id": "ta-pipeline-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "美术-技术协作的核心是技术美术搭建的管线"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-os-art-outsource",
+      "target_domain": "animation",
+      "target_id": "anim-game-vs-film",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "动画外包需要了解游戏动画管线的标准流程"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-rk-technical",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-na-client-server",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "网络架构选型是重大技术风险决策点"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-content-pipeline",
+      "target_domain": "level-design",
+      "target_id": "blockout-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "内容管线包含关卡从Blockout到最终的全流程"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-audio-integration",
+      "target_domain": "game-audio-sfx",
+      "target_id": "sfx-am-wwise-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "音频集成需要理解音效中间件的集成方式"
     }
   ],
   "meta": {
@@ -4631,7 +4847,7 @@
     },
     "total": 487
   },
-  "total": 535,
+  "total": 583,
   "_stats": {
     "total_links": 535,
     "domains_involved": 28,
@@ -4664,6 +4880,39 @@
       "game-audio-sfx": 25,
       "game-publishing": 27,
       "game-live-ops": 24
+    },
+    "total": 583,
+    "by_source_domain": {
+      "ai-engineering": 20,
+      "mathematics": 17,
+      "english": 4,
+      "physics": 5,
+      "product-design": 12,
+      "finance": 15,
+      "psychology": 15,
+      "philosophy": 15,
+      "biology": 14,
+      "economics": 15,
+      "writing": 15,
+      "game-design": 31,
+      "level-design": 10,
+      "game-engine": 27,
+      "software-engineering": 20,
+      "computer-graphics": 22,
+      "3d-art": 17,
+      "concept-design": 24,
+      "animation": 19,
+      "technical-art": 25,
+      "vfx": 24,
+      "game-audio-music": 23,
+      "game-ui-ux": 24,
+      "narrative-design": 25,
+      "multiplayer-network": 25,
+      "game-audio-sfx": 24,
+      "game-publishing": 24,
+      "game-live-ops": 24,
+      "game-qa": 24,
+      "game-production": 24
     }
   }
 }

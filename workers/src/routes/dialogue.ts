@@ -32,6 +32,7 @@ import seedGameAudioSfx from '../../data/seed/game-audio-sfx/seed_graph.json';
 import seedGamePublishing from '../../data/seed/game-publishing/seed_graph.json';
 import seedGameLiveOps from '../../data/seed/game-live-ops/seed_graph.json';
 import seedGameQa from '../../data/seed/game-qa/seed_graph.json';
+import seedGameProduction from '../../data/seed/game-production/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -58,6 +59,7 @@ const seedMap: Record<string, any> = {
   'game-publishing': seedGamePublishing,
   'game-live-ops': seedGameLiveOps,
   'game-qa': seedGameQa,
+  'game-production': seedGameProduction,
 };
 
 function findConceptAcrossDomains(conceptId: string): { seed: any; domain: string } | null {

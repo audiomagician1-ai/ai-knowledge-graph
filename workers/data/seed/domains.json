@@ -318,6 +318,19 @@
       "rag_dir": "game-qa",
       "is_active": true,
       "sort_order": 29
+    },
+    {
+      "id": "game-production",
+      "name": "项目管理",
+      "description": "游戏项目管理全流程——制作管线、里程碑规划、资源调配、风险管理、跨部门协作、敏捷/Scrum、外包管理、预算控制",
+      "color": "#0f766e",
+      "icon": "clipboard-list",
+      "order": 30,
+      "status": "active",
+      "concept_count": 160,
+      "subdomain_count": 8,
+      "seed_dir": "game-production",
+      "rag_dir": "game-production"
     }
   ]
 }

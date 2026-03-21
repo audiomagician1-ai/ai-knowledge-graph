@@ -89,7 +89,7 @@ async def test_get_domains():
         assert len(data) >= 1
         domain = data[0]
         assert domain["id"] == "ai-engineering"
-        assert domain["name"] == "AI工程"
+        assert domain["name"] == "AI编程"
         # Domain list now includes stats
         assert "stats" in domain
         assert domain["stats"]["total_concepts"] == 400
@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa", "game-production"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa", "game-production"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -3065,4 +3065,69 @@ async def test_game_qa_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "qa-ft-basics"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Phase 36: Game Production (game-production) Tests ──────────────────
+
+@pytest.mark.asyncio
+async def test_game_production_seed():
+    """Game Production seed graph: 160 concepts, 172 edges, 8 subdomains, 32 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=game-production")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 160, f"Expected 160 concepts, got {len(nodes)}"
+        assert len(edges) == 172, f"Expected 172 edges, got {len(edges)}"
+        subdomains = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomains) == 8, f"Expected 8 subdomains, got {len(subdomains)}"
+        assert all(n["domain_id"] == "game-production" for n in nodes)
+
+@pytest.mark.asyncio
+async def test_game_production_rag():
+    """Game Production RAG: 160 documents across 8 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=game-production")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 160
+        assert len(data.get("by_subdomain", {})) == 8
+
+@pytest.mark.asyncio
+async def test_game_production_cross_links():
+    """Game Production cross-sphere links: 24 links to multiple domains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=game-production")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data["links"]) >= 20, f"Expected ≥20 cross links, got {len(data['links'])}"
+
+def test_game_production_supplements():
+    """Game Production supplements registered in both registries."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "game-production" in DOMAIN_SUPPLEMENTS, "game-production missing from DOMAIN_SUPPLEMENTS"
+    assert "game-production" in ASSESSMENT_SUPPLEMENTS, "game-production missing from ASSESSMENT_SUPPLEMENTS"
+    assert "管线思维" in DOMAIN_SUPPLEMENTS["game-production"], "Production supplement should mention 管线思维"
+    assert "管线设计能力" in ASSESSMENT_SUPPLEMENTS["game-production"], "Production assessment should mention 管线设计能力"
+
+@pytest.mark.asyncio
+async def test_game_production_concept_detail():
+    """Game Production concept detail: gp-pp-overview."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/gp-pp-overview?domain=game-production")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "gp-pp-overview"
+        assert data["domain_id"] == "game-production"
+
+@pytest.mark.asyncio
+async def test_game_production_neighbors():
+    """Game Production neighbors: gp-pp-overview should have at least 1 neighbor."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/gp-pp-overview/neighbors?domain=game-production&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "gp-pp-overview"
         assert len(data["nodes"]) >= 2
