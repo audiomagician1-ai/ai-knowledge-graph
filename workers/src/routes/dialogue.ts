@@ -30,6 +30,7 @@ import seedNarrativeDesign from '../../data/seed/narrative-design/seed_graph.jso
 import seedMultiplayerNetwork from '../../data/seed/multiplayer-network/seed_graph.json';
 import seedGameAudioSfx from '../../data/seed/game-audio-sfx/seed_graph.json';
 import seedGamePublishing from '../../data/seed/game-publishing/seed_graph.json';
+import seedGameLiveOps from '../../data/seed/game-live-ops/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -54,6 +55,7 @@ const seedMap: Record<string, any> = {
   'multiplayer-network': seedMultiplayerNetwork,
   'game-audio-sfx': seedGameAudioSfx,
   'game-publishing': seedGamePublishing,
+  'game-live-ops': seedGameLiveOps,
 };
 
 function findConceptAcrossDomains(conceptId: string): { seed: any; domain: string } | null {

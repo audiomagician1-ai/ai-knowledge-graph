@@ -4162,6 +4162,222 @@
       "relation": "related",
       "strength": 0.6,
       "description": "测试计划与关卡测试"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-da-kpi-framework",
+      "target_domain": "game-design",
+      "target_id": "game-economy-intro",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "运营KPI体系与游戏经济系统设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ur-daily-loop",
+      "target_domain": "game-design",
+      "target_id": "daily-loop",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "日常循环与核心玩法日常循环"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-gacha-system",
+      "target_domain": "game-design",
+      "target_id": "randomness-intro",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "抽卡系统与随机性设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-so-ranked-system",
+      "target_domain": "game-design",
+      "target_id": "matchmaking",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "排位系统与匹配系统"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-da-attribution",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ua-attribution",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "归因分析与用户获取归因"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-monetization-models",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ms-monetization-model",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "变现模式与发行策略"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ur-lifecycle-management",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ms-lifecycle-strategy",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "生命周期管理与产品生命周期策略"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-store-design",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-menu-shop",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "商城设计与商店界面设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ep-event-design",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-feedback-overview",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "活动玩法与交互反馈设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-server-update",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-sa-microservices",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "服务端更新与微服务架构"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-em-anti-fraud",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-ac-server-authority",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "反欺诈与服务器权威验证"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-feature-flag",
+      "target_domain": "software-engineering",
+      "target_id": "se-feature-flags",
+      "relation": "related",
+      "strength": 0.9,
+      "description": "功能开关与Feature Flags"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-hotfix-process",
+      "target_domain": "software-engineering",
+      "target_id": "se-deploy-strategies",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "热修复流程与部署策略"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-em-inflation-monitoring",
+      "target_domain": "economics",
+      "target_id": "inflation",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "虚拟通货膊涨与经济学通胀理论"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-em-supply-demand",
+      "target_domain": "economics",
+      "target_id": "supply-demand",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "虚拟物品供需与经济学供需理论"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ur-habit-formation",
+      "target_domain": "psychology",
+      "target_id": "operant-conditioning",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "习惯养成与操作性条件反射"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-price-psychology",
+      "target_domain": "psychology",
+      "target_id": "heuristics",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "定价心理学与启发式"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-so-season-theme",
+      "target_domain": "narrative-design",
+      "target_id": "nd-wb-timeline-management",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "赛季主题与时间线管理"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-revenue-forecasting",
+      "target_domain": "finance",
+      "target_id": "dcf-valuation",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "收入预测与现金流折现模型"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-patch-size",
+      "target_domain": "game-engine",
+      "target_id": "ue5-pak-system",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "包体管理与Pak文件系统"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ur-content-pacing",
+      "target_domain": "level-design",
+      "target_id": "pacing-intro",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "内容节奏与关卡节奏设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ab-experiment-basics",
+      "target_domain": "product-design",
+      "target_id": "ab-testing-design",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "A/B测试与产品A/B测试设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-release-notes",
+      "target_domain": "writing",
+      "target_id": "report-writing",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "版本公告与报告写作"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ep-festival-ops",
+      "target_domain": "game-audio-sfx",
+      "target_id": "sfx-as-interactive-ambient",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "节日运营与交互式环境音"
     }
   ],
   "meta": {
@@ -4199,12 +4415,39 @@
     },
     "total": 487
   },
-  "total": 298,
+  "total": 535,
   "_stats": {
-    "by_domain_pair": {
-      "concept-design_3d-art": 10,
-      "concept-design_game-design": 8,
-      "concept-design_level-design": 6
+    "total_links": 535,
+    "domains_involved": 28,
+    "links_per_domain": {
+      "ai-engineering": 50,
+      "mathematics": 57,
+      "english": 24,
+      "physics": 26,
+      "product-design": 31,
+      "finance": 25,
+      "psychology": 45,
+      "philosophy": 24,
+      "biology": 17,
+      "economics": 25,
+      "writing": 20,
+      "game-design": 95,
+      "level-design": 54,
+      "game-engine": 93,
+      "software-engineering": 49,
+      "computer-graphics": 52,
+      "3d-art": 44,
+      "concept-design": 37,
+      "animation": 33,
+      "technical-art": 34,
+      "vfx": 32,
+      "game-audio-music": 31,
+      "game-ui-ux": 34,
+      "narrative-design": 32,
+      "multiplayer-network": 30,
+      "game-audio-sfx": 25,
+      "game-publishing": 27,
+      "game-live-ops": 24
     }
   }
 }

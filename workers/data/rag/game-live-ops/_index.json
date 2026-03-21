@@ -1,0 +1,1104 @@
+{
+  "version": "1.0",
+  "domain": "game-live-ops",
+  "domain_name": "运营",
+  "generated_at": "2026-03-21T02:20:34.488377+00:00",
+  "total_concepts": 180,
+  "stats": {
+    "total_docs": 180,
+    "total_chars": 139545,
+    "by_subdomain": {
+      "data-analytics": 20,
+      "event-planning": 20,
+      "user-retention": 20,
+      "monetization": 20,
+      "update-cadence": 20,
+      "season-ops": 20,
+      "customer-service": 20,
+      "ab-testing": 20,
+      "economy-monitoring": 20
+    }
+  },
+  "documents": [
+    {
+      "id": "ops-da-data-collection",
+      "file": "ops-da-data-collection.md",
+      "subdomain": "data-analytics",
+      "chars": 790
+    },
+    {
+      "id": "ops-da-event-tracking",
+      "file": "ops-da-event-tracking.md",
+      "subdomain": "data-analytics",
+      "chars": 785
+    },
+    {
+      "id": "ops-da-data-pipeline",
+      "file": "ops-da-data-pipeline.md",
+      "subdomain": "data-analytics",
+      "chars": 777
+    },
+    {
+      "id": "ops-da-kpi-framework",
+      "file": "ops-da-kpi-framework.md",
+      "subdomain": "data-analytics",
+      "chars": 808
+    },
+    {
+      "id": "ops-da-retention-metrics",
+      "file": "ops-da-retention-metrics.md",
+      "subdomain": "data-analytics",
+      "chars": 780
+    },
+    {
+      "id": "ops-da-revenue-metrics",
+      "file": "ops-da-revenue-metrics.md",
+      "subdomain": "data-analytics",
+      "chars": 782
+    },
+    {
+      "id": "ops-da-cohort-analysis",
+      "file": "ops-da-cohort-analysis.md",
+      "subdomain": "data-analytics",
+      "chars": 779
+    },
+    {
+      "id": "ops-da-funnel-analysis",
+      "file": "ops-da-funnel-analysis.md",
+      "subdomain": "data-analytics",
+      "chars": 771
+    },
+    {
+      "id": "ops-da-user-segmentation",
+      "file": "ops-da-user-segmentation.md",
+      "subdomain": "data-analytics",
+      "chars": 778
+    },
+    {
+      "id": "ops-da-bi-tools",
+      "file": "ops-da-bi-tools.md",
+      "subdomain": "data-analytics",
+      "chars": 799
+    },
+    {
+      "id": "ops-da-dashboard-design",
+      "file": "ops-da-dashboard-design.md",
+      "subdomain": "data-analytics",
+      "chars": 788
+    },
+    {
+      "id": "ops-da-sql-for-ops",
+      "file": "ops-da-sql-for-ops.md",
+      "subdomain": "data-analytics",
+      "chars": 790
+    },
+    {
+      "id": "ops-da-behavioral-analytics",
+      "file": "ops-da-behavioral-analytics.md",
+      "subdomain": "data-analytics",
+      "chars": 778
+    },
+    {
+      "id": "ops-da-predictive-modeling",
+      "file": "ops-da-predictive-modeling.md",
+      "subdomain": "data-analytics",
+      "chars": 778
+    },
+    {
+      "id": "ops-da-attribution",
+      "file": "ops-da-attribution.md",
+      "subdomain": "data-analytics",
+      "chars": 768
+    },
+    {
+      "id": "ops-da-data-warehouse",
+      "file": "ops-da-data-warehouse.md",
+      "subdomain": "data-analytics",
+      "chars": 797
+    },
+    {
+      "id": "ops-da-realtime-monitoring",
+      "file": "ops-da-realtime-monitoring.md",
+      "subdomain": "data-analytics",
+      "chars": 776
+    },
+    {
+      "id": "ops-da-privacy-compliance",
+      "file": "ops-da-privacy-compliance.md",
+      "subdomain": "data-analytics",
+      "chars": 797
+    },
+    {
+      "id": "ops-da-data-driven-culture",
+      "file": "ops-da-data-driven-culture.md",
+      "subdomain": "data-analytics",
+      "chars": 791
+    },
+    {
+      "id": "ops-da-anomaly-detection",
+      "file": "ops-da-anomaly-detection.md",
+      "subdomain": "data-analytics",
+      "chars": 777
+    },
+    {
+      "id": "ops-ep-event-types",
+      "file": "ops-ep-event-types.md",
+      "subdomain": "event-planning",
+      "chars": 787
+    },
+    {
+      "id": "ops-ep-event-lifecycle",
+      "file": "ops-ep-event-lifecycle.md",
+      "subdomain": "event-planning",
+      "chars": 787
+    },
+    {
+      "id": "ops-ep-event-design",
+      "file": "ops-ep-event-design.md",
+      "subdomain": "event-planning",
+      "chars": 785
+    },
+    {
+      "id": "ops-ep-reward-design",
+      "file": "ops-ep-reward-design.md",
+      "subdomain": "event-planning",
+      "chars": 774
+    },
+    {
+      "id": "ops-ep-calendar-planning",
+      "file": "ops-ep-calendar-planning.md",
+      "subdomain": "event-planning",
+      "chars": 775
+    },
+    {
+      "id": "ops-ep-festival-ops",
+      "file": "ops-ep-festival-ops.md",
+      "subdomain": "event-planning",
+      "chars": 773
+    },
+    {
+      "id": "ops-ep-limited-time",
+      "file": "ops-ep-limited-time.md",
+      "subdomain": "event-planning",
+      "chars": 785
+    },
+    {
+      "id": "ops-ep-crossover",
+      "file": "ops-ep-crossover.md",
+      "subdomain": "event-planning",
+      "chars": 769
+    },
+    {
+      "id": "ops-ep-competitive-event",
+      "file": "ops-ep-competitive-event.md",
+      "subdomain": "event-planning",
+      "chars": 784
+    },
+    {
+      "id": "ops-ep-social-event",
+      "file": "ops-ep-social-event.md",
+      "subdomain": "event-planning",
+      "chars": 778
+    },
+    {
+      "id": "ops-ep-event-economy",
+      "file": "ops-ep-event-economy.md",
+      "subdomain": "event-planning",
+      "chars": 767
+    },
+    {
+      "id": "ops-ep-event-tech",
+      "file": "ops-ep-event-tech.md",
+      "subdomain": "event-planning",
+      "chars": 780
+    },
+    {
+      "id": "ops-ep-ab-in-events",
+      "file": "ops-ep-ab-in-events.md",
+      "subdomain": "event-planning",
+      "chars": 785
+    },
+    {
+      "id": "ops-ep-event-analytics",
+      "file": "ops-ep-event-analytics.md",
+      "subdomain": "event-planning",
+      "chars": 781
+    },
+    {
+      "id": "ops-ep-event-postmortem",
+      "file": "ops-ep-event-postmortem.md",
+      "subdomain": "event-planning",
+      "chars": 769
+    },
+    {
+      "id": "ops-ep-engagement-loop",
+      "file": "ops-ep-engagement-loop.md",
+      "subdomain": "event-planning",
+      "chars": 782
+    },
+    {
+      "id": "ops-ep-ugc-event",
+      "file": "ops-ep-ugc-event.md",
+      "subdomain": "event-planning",
+      "chars": 774
+    },
+    {
+      "id": "ops-ep-personalized-event",
+      "file": "ops-ep-personalized-event.md",
+      "subdomain": "event-planning",
+      "chars": 780
+    },
+    {
+      "id": "ops-ep-event-automation",
+      "file": "ops-ep-event-automation.md",
+      "subdomain": "event-planning",
+      "chars": 775
+    },
+    {
+      "id": "ops-ep-global-event",
+      "file": "ops-ep-global-event.md",
+      "subdomain": "event-planning",
+      "chars": 784
+    },
+    {
+      "id": "ops-ur-retention-basics",
+      "file": "ops-ur-retention-basics.md",
+      "subdomain": "user-retention",
+      "chars": 782
+    },
+    {
+      "id": "ops-ur-first-session",
+      "file": "ops-ur-first-session.md",
+      "subdomain": "user-retention",
+      "chars": 782
+    },
+    {
+      "id": "ops-ur-onboarding",
+      "file": "ops-ur-onboarding.md",
+      "subdomain": "user-retention",
+      "chars": 773
+    },
+    {
+      "id": "ops-ur-daily-loop",
+      "file": "ops-ur-daily-loop.md",
+      "subdomain": "user-retention",
+      "chars": 772
+    },
+    {
+      "id": "ops-ur-weekly-loop",
+      "file": "ops-ur-weekly-loop.md",
+      "subdomain": "user-retention",
+      "chars": 772
+    },
+    {
+      "id": "ops-ur-long-term-goals",
+      "file": "ops-ur-long-term-goals.md",
+      "subdomain": "user-retention",
+      "chars": 776
+    },
+    {
+      "id": "ops-ur-social-hooks",
+      "file": "ops-ur-social-hooks.md",
+      "subdomain": "user-retention",
+      "chars": 764
+    },
+    {
+      "id": "ops-ur-churn-prediction",
+      "file": "ops-ur-churn-prediction.md",
+      "subdomain": "user-retention",
+      "chars": 766
+    },
+    {
+      "id": "ops-ur-win-back",
+      "file": "ops-ur-win-back.md",
+      "subdomain": "user-retention",
+      "chars": 756
+    },
+    {
+      "id": "ops-ur-push-notification",
+      "file": "ops-ur-push-notification.md",
+      "subdomain": "user-retention",
+      "chars": 766
+    },
+    {
+      "id": "ops-ur-lifecycle-management",
+      "file": "ops-ur-lifecycle-management.md",
+      "subdomain": "user-retention",
+      "chars": 785
+    },
+    {
+      "id": "ops-ur-content-pacing",
+      "file": "ops-ur-content-pacing.md",
+      "subdomain": "user-retention",
+      "chars": 760
+    },
+    {
+      "id": "ops-ur-difficulty-curve",
+      "file": "ops-ur-difficulty-curve.md",
+      "subdomain": "user-retention",
+      "chars": 777
+    },
+    {
+      "id": "ops-ur-engagement-score",
+      "file": "ops-ur-engagement-score.md",
+      "subdomain": "user-retention",
+      "chars": 766
+    },
+    {
+      "id": "ops-ur-reengagement-tools",
+      "file": "ops-ur-reengagement-tools.md",
+      "subdomain": "user-retention",
+      "chars": 773
+    },
+    {
+      "id": "ops-ur-habit-formation",
+      "file": "ops-ur-habit-formation.md",
+      "subdomain": "user-retention",
+      "chars": 767
+    },
+    {
+      "id": "ops-ur-community-retention",
+      "file": "ops-ur-community-retention.md",
+      "subdomain": "user-retention",
+      "chars": 769
+    },
+    {
+      "id": "ops-ur-vip-retention",
+      "file": "ops-ur-vip-retention.md",
+      "subdomain": "user-retention",
+      "chars": 781
+    },
+    {
+      "id": "ops-ur-cross-platform",
+      "file": "ops-ur-cross-platform.md",
+      "subdomain": "user-retention",
+      "chars": 773
+    },
+    {
+      "id": "ops-ur-retention-benchmarks",
+      "file": "ops-ur-retention-benchmarks.md",
+      "subdomain": "user-retention",
+      "chars": 781
+    },
+    {
+      "id": "ops-mo-monetization-models",
+      "file": "ops-mo-monetization-models.md",
+      "subdomain": "monetization",
+      "chars": 786
+    },
+    {
+      "id": "ops-mo-iap-design",
+      "file": "ops-mo-iap-design.md",
+      "subdomain": "monetization",
+      "chars": 788
+    },
+    {
+      "id": "ops-mo-price-psychology",
+      "file": "ops-mo-price-psychology.md",
+      "subdomain": "monetization",
+      "chars": 775
+    },
+    {
+      "id": "ops-mo-battle-pass",
+      "file": "ops-mo-battle-pass.md",
+      "subdomain": "monetization",
+      "chars": 816
+    },
+    {
+      "id": "ops-mo-subscription",
+      "file": "ops-mo-subscription.md",
+      "subdomain": "monetization",
+      "chars": 767
+    },
+    {
+      "id": "ops-mo-gacha-system",
+      "file": "ops-mo-gacha-system.md",
+      "subdomain": "monetization",
+      "chars": 778
+    },
+    {
+      "id": "ops-mo-ad-monetization",
+      "file": "ops-mo-ad-monetization.md",
+      "subdomain": "monetization",
+      "chars": 772
+    },
+    {
+      "id": "ops-mo-store-design",
+      "file": "ops-mo-store-design.md",
+      "subdomain": "monetization",
+      "chars": 765
+    },
+    {
+      "id": "ops-mo-ltv-optimization",
+      "file": "ops-mo-ltv-optimization.md",
+      "subdomain": "monetization",
+      "chars": 768
+    },
+    {
+      "id": "ops-mo-paying-conversion",
+      "file": "ops-mo-paying-conversion.md",
+      "subdomain": "monetization",
+      "chars": 778
+    },
+    {
+      "id": "ops-mo-whale-management",
+      "file": "ops-mo-whale-management.md",
+      "subdomain": "monetization",
+      "chars": 764
+    },
+    {
+      "id": "ops-mo-offer-system",
+      "file": "ops-mo-offer-system.md",
+      "subdomain": "monetization",
+      "chars": 763
+    },
+    {
+      "id": "ops-mo-virtual-currency",
+      "file": "ops-mo-virtual-currency.md",
+      "subdomain": "monetization",
+      "chars": 779
+    },
+    {
+      "id": "ops-mo-ethical-monetization",
+      "file": "ops-mo-ethical-monetization.md",
+      "subdomain": "monetization",
+      "chars": 783
+    },
+    {
+      "id": "ops-mo-regional-pricing",
+      "file": "ops-mo-regional-pricing.md",
+      "subdomain": "monetization",
+      "chars": 766
+    },
+    {
+      "id": "ops-mo-payment-integration",
+      "file": "ops-mo-payment-integration.md",
+      "subdomain": "monetization",
+      "chars": 774
+    },
+    {
+      "id": "ops-mo-refund-policy",
+      "file": "ops-mo-refund-policy.md",
+      "subdomain": "monetization",
+      "chars": 762
+    },
+    {
+      "id": "ops-mo-revenue-forecasting",
+      "file": "ops-mo-revenue-forecasting.md",
+      "subdomain": "monetization",
+      "chars": 766
+    },
+    {
+      "id": "ops-mo-bundle-strategy",
+      "file": "ops-mo-bundle-strategy.md",
+      "subdomain": "monetization",
+      "chars": 778
+    },
+    {
+      "id": "ops-mo-monetization-metrics",
+      "file": "ops-mo-monetization-metrics.md",
+      "subdomain": "monetization",
+      "chars": 789
+    },
+    {
+      "id": "ops-uc-update-strategy",
+      "file": "ops-uc-update-strategy.md",
+      "subdomain": "update-cadence",
+      "chars": 784
+    },
+    {
+      "id": "ops-uc-roadmap-planning",
+      "file": "ops-uc-roadmap-planning.md",
+      "subdomain": "update-cadence",
+      "chars": 779
+    },
+    {
+      "id": "ops-uc-major-update",
+      "file": "ops-uc-major-update.md",
+      "subdomain": "update-cadence",
+      "chars": 779
+    },
+    {
+      "id": "ops-uc-minor-update",
+      "file": "ops-uc-minor-update.md",
+      "subdomain": "update-cadence",
+      "chars": 777
+    },
+    {
+      "id": "ops-uc-hotfix-process",
+      "file": "ops-uc-hotfix-process.md",
+      "subdomain": "update-cadence",
+      "chars": 776
+    },
+    {
+      "id": "ops-uc-feature-flag",
+      "file": "ops-uc-feature-flag.md",
+      "subdomain": "update-cadence",
+      "chars": 776
+    },
+    {
+      "id": "ops-uc-release-notes",
+      "file": "ops-uc-release-notes.md",
+      "subdomain": "update-cadence",
+      "chars": 770
+    },
+    {
+      "id": "ops-uc-downtime-management",
+      "file": "ops-uc-downtime-management.md",
+      "subdomain": "update-cadence",
+      "chars": 780
+    },
+    {
+      "id": "ops-uc-content-pipeline",
+      "file": "ops-uc-content-pipeline.md",
+      "subdomain": "update-cadence",
+      "chars": 773
+    },
+    {
+      "id": "ops-uc-platform-submission",
+      "file": "ops-uc-platform-submission.md",
+      "subdomain": "update-cadence",
+      "chars": 793
+    },
+    {
+      "id": "ops-uc-rollback-strategy",
+      "file": "ops-uc-rollback-strategy.md",
+      "subdomain": "update-cadence",
+      "chars": 774
+    },
+    {
+      "id": "ops-uc-compatibility",
+      "file": "ops-uc-compatibility.md",
+      "subdomain": "update-cadence",
+      "chars": 774
+    },
+    {
+      "id": "ops-uc-beta-testing",
+      "file": "ops-uc-beta-testing.md",
+      "subdomain": "update-cadence",
+      "chars": 783
+    },
+    {
+      "id": "ops-uc-patch-size",
+      "file": "ops-uc-patch-size.md",
+      "subdomain": "update-cadence",
+      "chars": 765
+    },
+    {
+      "id": "ops-uc-server-update",
+      "file": "ops-uc-server-update.md",
+      "subdomain": "update-cadence",
+      "chars": 776
+    },
+    {
+      "id": "ops-uc-changelog-culture",
+      "file": "ops-uc-changelog-culture.md",
+      "subdomain": "update-cadence",
+      "chars": 782
+    },
+    {
+      "id": "ops-uc-content-calendar",
+      "file": "ops-uc-content-calendar.md",
+      "subdomain": "update-cadence",
+      "chars": 781
+    },
+    {
+      "id": "ops-uc-staged-rollout",
+      "file": "ops-uc-staged-rollout.md",
+      "subdomain": "update-cadence",
+      "chars": 778
+    },
+    {
+      "id": "ops-uc-player-expectations",
+      "file": "ops-uc-player-expectations.md",
+      "subdomain": "update-cadence",
+      "chars": 794
+    },
+    {
+      "id": "ops-uc-post-launch-support",
+      "file": "ops-uc-post-launch-support.md",
+      "subdomain": "update-cadence",
+      "chars": 782
+    },
+    {
+      "id": "ops-so-season-basics",
+      "file": "ops-so-season-basics.md",
+      "subdomain": "season-ops",
+      "chars": 771
+    },
+    {
+      "id": "ops-so-season-structure",
+      "file": "ops-so-season-structure.md",
+      "subdomain": "season-ops",
+      "chars": 772
+    },
+    {
+      "id": "ops-so-ranked-system",
+      "file": "ops-so-ranked-system.md",
+      "subdomain": "season-ops",
+      "chars": 771
+    },
+    {
+      "id": "ops-so-season-pass",
+      "file": "ops-so-season-pass.md",
+      "subdomain": "season-ops",
+      "chars": 762
+    },
+    {
+      "id": "ops-so-season-theme",
+      "file": "ops-so-season-theme.md",
+      "subdomain": "season-ops",
+      "chars": 762
+    },
+    {
+      "id": "ops-so-reward-reset",
+      "file": "ops-so-reward-reset.md",
+      "subdomain": "season-ops",
+      "chars": 768
+    },
+    {
+      "id": "ops-so-meta-shift",
+      "file": "ops-so-meta-shift.md",
+      "subdomain": "season-ops",
+      "chars": 779
+    },
+    {
+      "id": "ops-so-fomo-vs-fairness",
+      "file": "ops-so-fomo-vs-fairness.md",
+      "subdomain": "season-ops",
+      "chars": 778
+    },
+    {
+      "id": "ops-so-progression-speed",
+      "file": "ops-so-progression-speed.md",
+      "subdomain": "season-ops",
+      "chars": 772
+    },
+    {
+      "id": "ops-so-season-analytics",
+      "file": "ops-so-season-analytics.md",
+      "subdomain": "season-ops",
+      "chars": 777
+    },
+    {
+      "id": "ops-so-inter-season",
+      "file": "ops-so-inter-season.md",
+      "subdomain": "season-ops",
+      "chars": 760
+    },
+    {
+      "id": "ops-so-competitive-integrity",
+      "file": "ops-so-competitive-integrity.md",
+      "subdomain": "season-ops",
+      "chars": 773
+    },
+    {
+      "id": "ops-so-leaderboard-ops",
+      "file": "ops-so-leaderboard-ops.md",
+      "subdomain": "season-ops",
+      "chars": 763
+    },
+    {
+      "id": "ops-so-esports-integration",
+      "file": "ops-so-esports-integration.md",
+      "subdomain": "season-ops",
+      "chars": 773
+    },
+    {
+      "id": "ops-so-season-cosmetics",
+      "file": "ops-so-season-cosmetics.md",
+      "subdomain": "season-ops",
+      "chars": 760
+    },
+    {
+      "id": "ops-so-catch-up-mechanics",
+      "file": "ops-so-catch-up-mechanics.md",
+      "subdomain": "season-ops",
+      "chars": 759
+    },
+    {
+      "id": "ops-so-multi-mode-season",
+      "file": "ops-so-multi-mode-season.md",
+      "subdomain": "season-ops",
+      "chars": 765
+    },
+    {
+      "id": "ops-so-season-fatigue",
+      "file": "ops-so-season-fatigue.md",
+      "subdomain": "season-ops",
+      "chars": 758
+    },
+    {
+      "id": "ops-so-community-feedback",
+      "file": "ops-so-community-feedback.md",
+      "subdomain": "season-ops",
+      "chars": 764
+    },
+    {
+      "id": "ops-so-season-kpi",
+      "file": "ops-so-season-kpi.md",
+      "subdomain": "season-ops",
+      "chars": 770
+    },
+    {
+      "id": "ops-cs-support-basics",
+      "file": "ops-cs-support-basics.md",
+      "subdomain": "customer-service",
+      "chars": 763
+    },
+    {
+      "id": "ops-cs-ticket-system",
+      "file": "ops-cs-ticket-system.md",
+      "subdomain": "customer-service",
+      "chars": 768
+    },
+    {
+      "id": "ops-cs-classification",
+      "file": "ops-cs-classification.md",
+      "subdomain": "customer-service",
+      "chars": 784
+    },
+    {
+      "id": "ops-cs-ai-chatbot",
+      "file": "ops-cs-ai-chatbot.md",
+      "subdomain": "customer-service",
+      "chars": 764
+    },
+    {
+      "id": "ops-cs-vip-service",
+      "file": "ops-cs-vip-service.md",
+      "subdomain": "customer-service",
+      "chars": 782
+    },
+    {
+      "id": "ops-cs-ban-appeal",
+      "file": "ops-cs-ban-appeal.md",
+      "subdomain": "customer-service",
+      "chars": 767
+    },
+    {
+      "id": "ops-cs-compensation",
+      "file": "ops-cs-compensation.md",
+      "subdomain": "customer-service",
+      "chars": 768
+    },
+    {
+      "id": "ops-cs-feedback-loop",
+      "file": "ops-cs-feedback-loop.md",
+      "subdomain": "customer-service",
+      "chars": 766
+    },
+    {
+      "id": "ops-cs-crisis-management",
+      "file": "ops-cs-crisis-management.md",
+      "subdomain": "customer-service",
+      "chars": 769
+    },
+    {
+      "id": "ops-cs-moderation",
+      "file": "ops-cs-moderation.md",
+      "subdomain": "customer-service",
+      "chars": 764
+    },
+    {
+      "id": "ops-cs-localized-support",
+      "file": "ops-cs-localized-support.md",
+      "subdomain": "customer-service",
+      "chars": 774
+    },
+    {
+      "id": "ops-cs-self-service",
+      "file": "ops-cs-self-service.md",
+      "subdomain": "customer-service",
+      "chars": 766
+    },
+    {
+      "id": "ops-cs-metrics",
+      "file": "ops-cs-metrics.md",
+      "subdomain": "customer-service",
+      "chars": 765
+    },
+    {
+      "id": "ops-cs-escalation",
+      "file": "ops-cs-escalation.md",
+      "subdomain": "customer-service",
+      "chars": 759
+    },
+    {
+      "id": "ops-cs-community-support",
+      "file": "ops-cs-community-support.md",
+      "subdomain": "customer-service",
+      "chars": 767
+    },
+    {
+      "id": "ops-cs-sentiment-analysis",
+      "file": "ops-cs-sentiment-analysis.md",
+      "subdomain": "customer-service",
+      "chars": 769
+    },
+    {
+      "id": "ops-cs-automation",
+      "file": "ops-cs-automation.md",
+      "subdomain": "customer-service",
+      "chars": 769
+    },
+    {
+      "id": "ops-cs-training",
+      "file": "ops-cs-training.md",
+      "subdomain": "customer-service",
+      "chars": 761
+    },
+    {
+      "id": "ops-cs-reporting",
+      "file": "ops-cs-reporting.md",
+      "subdomain": "customer-service",
+      "chars": 760
+    },
+    {
+      "id": "ops-cs-player-advocacy",
+      "file": "ops-cs-player-advocacy.md",
+      "subdomain": "customer-service",
+      "chars": 775
+    },
+    {
+      "id": "ops-ab-experiment-basics",
+      "file": "ops-ab-experiment-basics.md",
+      "subdomain": "ab-testing",
+      "chars": 767
+    },
+    {
+      "id": "ops-ab-hypothesis",
+      "file": "ops-ab-hypothesis.md",
+      "subdomain": "ab-testing",
+      "chars": 764
+    },
+    {
+      "id": "ops-ab-sample-size",
+      "file": "ops-ab-sample-size.md",
+      "subdomain": "ab-testing",
+      "chars": 767
+    },
+    {
+      "id": "ops-ab-randomization",
+      "file": "ops-ab-randomization.md",
+      "subdomain": "ab-testing",
+      "chars": 767
+    },
+    {
+      "id": "ops-ab-statistical-significance",
+      "file": "ops-ab-statistical-significance.md",
+      "subdomain": "ab-testing",
+      "chars": 778
+    },
+    {
+      "id": "ops-ab-metrics-selection",
+      "file": "ops-ab-metrics-selection.md",
+      "subdomain": "ab-testing",
+      "chars": 768
+    },
+    {
+      "id": "ops-ab-experiment-duration",
+      "file": "ops-ab-experiment-duration.md",
+      "subdomain": "ab-testing",
+      "chars": 769
+    },
+    {
+      "id": "ops-ab-multivariate",
+      "file": "ops-ab-multivariate.md",
+      "subdomain": "ab-testing",
+      "chars": 798
+    },
+    {
+      "id": "ops-ab-feature-experiment",
+      "file": "ops-ab-feature-experiment.md",
+      "subdomain": "ab-testing",
+      "chars": 771
+    },
+    {
+      "id": "ops-ab-pricing-experiment",
+      "file": "ops-ab-pricing-experiment.md",
+      "subdomain": "ab-testing",
+      "chars": 768
+    },
+    {
+      "id": "ops-ab-ui-experiment",
+      "file": "ops-ab-ui-experiment.md",
+      "subdomain": "ab-testing",
+      "chars": 780
+    },
+    {
+      "id": "ops-ab-platform",
+      "file": "ops-ab-platform.md",
+      "subdomain": "ab-testing",
+      "chars": 763
+    },
+    {
+      "id": "ops-ab-segmented-analysis",
+      "file": "ops-ab-segmented-analysis.md",
+      "subdomain": "ab-testing",
+      "chars": 771
+    },
+    {
+      "id": "ops-ab-long-term-effects",
+      "file": "ops-ab-long-term-effects.md",
+      "subdomain": "ab-testing",
+      "chars": 770
+    },
+    {
+      "id": "ops-ab-bayesian-testing",
+      "file": "ops-ab-bayesian-testing.md",
+      "subdomain": "ab-testing",
+      "chars": 775
+    },
+    {
+      "id": "ops-ab-bandits",
+      "file": "ops-ab-bandits.md",
+      "subdomain": "ab-testing",
+      "chars": 775
+    },
+    {
+      "id": "ops-ab-network-effects",
+      "file": "ops-ab-network-effects.md",
+      "subdomain": "ab-testing",
+      "chars": 765
+    },
+    {
+      "id": "ops-ab-experiment-culture",
+      "file": "ops-ab-experiment-culture.md",
+      "subdomain": "ab-testing",
+      "chars": 765
+    },
+    {
+      "id": "ops-ab-pitfalls",
+      "file": "ops-ab-pitfalls.md",
+      "subdomain": "ab-testing",
+      "chars": 764
+    },
+    {
+      "id": "ops-ab-documentation",
+      "file": "ops-ab-documentation.md",
+      "subdomain": "ab-testing",
+      "chars": 759
+    },
+    {
+      "id": "ops-em-economy-basics",
+      "file": "ops-em-economy-basics.md",
+      "subdomain": "economy-monitoring",
+      "chars": 787
+    },
+    {
+      "id": "ops-em-currency-system",
+      "file": "ops-em-currency-system.md",
+      "subdomain": "economy-monitoring",
+      "chars": 785
+    },
+    {
+      "id": "ops-em-source-sink",
+      "file": "ops-em-source-sink.md",
+      "subdomain": "economy-monitoring",
+      "chars": 778
+    },
+    {
+      "id": "ops-em-inflation-monitoring",
+      "file": "ops-em-inflation-monitoring.md",
+      "subdomain": "economy-monitoring",
+      "chars": 789
+    },
+    {
+      "id": "ops-em-deflation-risk",
+      "file": "ops-em-deflation-risk.md",
+      "subdomain": "economy-monitoring",
+      "chars": 785
+    },
+    {
+      "id": "ops-em-trade-system",
+      "file": "ops-em-trade-system.md",
+      "subdomain": "economy-monitoring",
+      "chars": 777
+    },
+    {
+      "id": "ops-em-anti-fraud",
+      "file": "ops-em-anti-fraud.md",
+      "subdomain": "economy-monitoring",
+      "chars": 780
+    },
+    {
+      "id": "ops-em-bot-detection",
+      "file": "ops-em-bot-detection.md",
+      "subdomain": "economy-monitoring",
+      "chars": 779
+    },
+    {
+      "id": "ops-em-economy-dashboard",
+      "file": "ops-em-economy-dashboard.md",
+      "subdomain": "economy-monitoring",
+      "chars": 788
+    },
+    {
+      "id": "ops-em-price-stability",
+      "file": "ops-em-price-stability.md",
+      "subdomain": "economy-monitoring",
+      "chars": 778
+    },
+    {
+      "id": "ops-em-supply-demand",
+      "file": "ops-em-supply-demand.md",
+      "subdomain": "economy-monitoring",
+      "chars": 774
+    },
+    {
+      "id": "ops-em-wealth-distribution",
+      "file": "ops-em-wealth-distribution.md",
+      "subdomain": "economy-monitoring",
+      "chars": 791
+    },
+    {
+      "id": "ops-em-economy-simulation",
+      "file": "ops-em-economy-simulation.md",
+      "subdomain": "economy-monitoring",
+      "chars": 776
+    },
+    {
+      "id": "ops-em-reward-balance",
+      "file": "ops-em-reward-balance.md",
+      "subdomain": "economy-monitoring",
+      "chars": 774
+    },
+    {
+      "id": "ops-em-economy-intervention",
+      "file": "ops-em-economy-intervention.md",
+      "subdomain": "economy-monitoring",
+      "chars": 780
+    },
+    {
+      "id": "ops-em-gacha-economy",
+      "file": "ops-em-gacha-economy.md",
+      "subdomain": "economy-monitoring",
+      "chars": 774
+    },
+    {
+      "id": "ops-em-seasonal-economy",
+      "file": "ops-em-seasonal-economy.md",
+      "subdomain": "economy-monitoring",
+      "chars": 786
+    },
+    {
+      "id": "ops-em-real-money-trading",
+      "file": "ops-em-real-money-trading.md",
+      "subdomain": "economy-monitoring",
+      "chars": 781
+    },
+    {
+      "id": "ops-em-economy-reporting",
+      "file": "ops-em-economy-reporting.md",
+      "subdomain": "economy-monitoring",
+      "chars": 774
+    },
+    {
+      "id": "ops-em-economy-design-collab",
+      "file": "ops-em-economy-design-collab.md",
+      "subdomain": "economy-monitoring",
+      "chars": 791
+    }
+  ]
+}

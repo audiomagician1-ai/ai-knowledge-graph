@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2920,4 +2920,79 @@ async def test_game_publishing_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "pub-ms-market-research"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Phase 34: Game Live Ops (game-live-ops) Tests ──────────────────
+
+
+@pytest.mark.asyncio
+async def test_game_live_ops_seed():
+    """Game Live Ops seed graph: 180 concepts, ~205 edges, 9 subdomains, 35 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=game-live-ops")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 180, f"Expected 180 concepts, got {len(nodes)}"
+        assert len(edges) >= 180, f"Expected >= 180 edges, got {len(edges)}"
+        subdomain_ids = {n["subdomain_id"] for n in nodes}
+        assert len(subdomain_ids) == 9, f"Expected 9 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 35, f"Expected 35 milestones, got {len(milestones)}"
+        assert all(n["domain_id"] == "game-live-ops" for n in nodes)
+
+
+@pytest.mark.asyncio
+async def test_game_live_ops_rag():
+    """Game Live Ops RAG stats should reflect 180 documents across 9 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=game-live-ops")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 180
+        assert len(data.get("by_subdomain", {})) == 9
+
+
+@pytest.mark.asyncio
+async def test_game_live_ops_cross_links():
+    """Game Live Ops should have cross-sphere links."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=game-live-ops")
+        assert resp.status_code == 200
+        data = resp.json()
+        links = data["links"]
+        assert len(links) >= 20, f"Expected >= 20 cross-links, got {len(links)}"
+
+
+def test_game_live_ops_supplements():
+    """Game Live Ops domain/assessment supplements should be registered."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "game-live-ops" in DOMAIN_SUPPLEMENTS, "game-live-ops missing from DOMAIN_SUPPLEMENTS"
+    assert "game-live-ops" in ASSESSMENT_SUPPLEMENTS, "game-live-ops missing from ASSESSMENT_SUPPLEMENTS"
+    assert "\u6570\u636e\u9a71\u52a8" in DOMAIN_SUPPLEMENTS["game-live-ops"], "Live Ops supplement should mention \u6570\u636e\u9a71\u52a8"
+    assert "A/B\u6d4b\u8bd5" in ASSESSMENT_SUPPLEMENTS["game-live-ops"], "Live Ops assessment should mention A/B\u6d4b\u8bd5"
+
+
+@pytest.mark.asyncio
+async def test_game_live_ops_concept_detail():
+    """Game Live Ops concept detail should return valid data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/ops-da-data-collection?domain=game-live-ops")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "ops-da-data-collection"
+        assert data["name"] == "\u6570\u636e\u91c7\u96c6\u57fa\u7840"
+        assert data["domain_id"] == "game-live-ops"
+
+
+@pytest.mark.asyncio
+async def test_game_live_ops_neighbors():
+    """Game Live Ops concept should have neighbors."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/ops-da-data-collection/neighbors?domain=game-live-ops&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "ops-da-data-collection"
         assert len(data["nodes"]) >= 2

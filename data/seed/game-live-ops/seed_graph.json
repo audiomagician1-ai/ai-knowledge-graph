@@ -1,0 +1,3665 @@
+{
+  "domain": "game-live-ops",
+  "subdomains": [
+    {
+      "id": "data-analytics",
+      "name": "数据分析",
+      "description": "游戏数据采集、指标体系、BI工具、数据驱动决策与用户行为分析",
+      "order": 1
+    },
+    {
+      "id": "event-planning",
+      "name": "活动策划",
+      "description": "游戏内活动设计、节日运营、限时活动框架与活动复盘",
+      "order": 2
+    },
+    {
+      "id": "user-retention",
+      "name": "用户留存",
+      "description": "留存机制设计、流失预警、回流策略与玩家生命周期管理",
+      "order": 3
+    },
+    {
+      "id": "monetization",
+      "name": "付费系统",
+      "description": "内购设计、Battle Pass、订阅制、广告变现与付费转化优化",
+      "order": 4
+    },
+    {
+      "id": "update-cadence",
+      "name": "版本更新节奏",
+      "description": "版本规划、热修复流程、功能节奏控制与更新时间窗口",
+      "order": 5
+    },
+    {
+      "id": "season-ops",
+      "name": "赛季运营",
+      "description": "赛季制度设计、排位系统、赛季通行证与赛季间衔接",
+      "order": 6
+    },
+    {
+      "id": "customer-service",
+      "name": "客服体系",
+      "description": "工单系统、AI客服、VIP服务、封禁申诉与玩家反馈管理",
+      "order": 7
+    },
+    {
+      "id": "ab-testing",
+      "name": "A/B测试",
+      "description": "实验设计、分组策略、统计显著性、多变量测试与实验平台",
+      "order": 8
+    },
+    {
+      "id": "economy-monitoring",
+      "name": "经济系统监控",
+      "description": "虚拟经济健康度、通货监控、交易反欺诈与经济调控手段",
+      "order": 9
+    }
+  ],
+  "concepts": [
+    {
+      "id": "ops-da-data-collection",
+      "name": "数据采集基础",
+      "description": "游戏客户端/服务端数据埋点、事件追踪与数据上报机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-event-tracking",
+      "name": "事件埋点设计",
+      "description": "关键用户行为事件的定义、命名规范与参数设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-data-pipeline",
+      "name": "数据管线",
+      "description": "从原始日志到数据仓库的ETL流程、实时/离线处理架构",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-da-kpi-framework",
+      "name": "KPI指标体系",
+      "description": "游戏运营核心KPI(DAU/MAU/ARPU/ARPPU/LTV)的定义与计算",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 1,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-retention-metrics",
+      "name": "留存指标",
+      "description": "次日/7日/30日留存率的计算、解读与行业基准对比",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-revenue-metrics",
+      "name": "收入指标",
+      "description": "ARPU/ARPPU/付费率/LTV等收入指标的计算与分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-da-cohort-analysis",
+      "name": "同期群分析",
+      "description": "按注册时间分组追踪用户行为变化的分析方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-funnel-analysis",
+      "name": "漏斗分析",
+      "description": "用户转化路径的各环节流失率分析与优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-user-segmentation",
+      "name": "用户分群",
+      "description": "基于行为/付费/活跃度等维度对玩家进行分层管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-bi-tools",
+      "name": "BI工具实践",
+      "description": "主流BI工具(Tableau/Metabase/Grafana)在游戏运营中的应用",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-dashboard-design",
+      "name": "数据看板设计",
+      "description": "运营数据看板的指标选择、可视化设计与更新策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-da-sql-for-ops",
+      "name": "运营SQL基础",
+      "description": "SQL在游戏运营数据查询中的核心语法与常用模式",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 2,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-behavioral-analytics",
+      "name": "行为分析",
+      "description": "玩家行为序列分析、路径分析与会话分析方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-predictive-modeling",
+      "name": "预测建模",
+      "description": "用机器学习预测流失/付费/LTV等关键指标",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 4,
+      "estimated_minutes": 45,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-attribution",
+      "name": "归因分析",
+      "description": "广告/渠道效果归因模型与多触点归因方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-data-warehouse",
+      "name": "数据仓库架构",
+      "description": "游戏数据仓库的分层设计(ODS/DWD/DWS/ADS)与技术选型",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-realtime-monitoring",
+      "name": "实时监控",
+      "description": "游戏服务器/业务指标的实时监控告警体系",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-privacy-compliance",
+      "name": "数据隐私合规",
+      "description": "GDPR/CCPA等数据隐私法规在游戏数据收集中的合规要求",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-da-data-driven-culture",
+      "name": "数据驱动文化",
+      "description": "在游戏团队中建立数据驱动决策的组织文化与流程",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-da-anomaly-detection",
+      "name": "异常检测",
+      "description": "数据异常自动发现、告警规则设计与根因分析方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-event-types",
+      "name": "活动类型概览",
+      "description": "游戏运营中常见活动类型(限时/节日/竞赛/联动/公益)分类",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-event-lifecycle",
+      "name": "活动生命周期",
+      "description": "活动策划→开发→测试→上线→运营→复盘的全流程管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-event-design",
+      "name": "活动玩法设计",
+      "description": "活动核心玩法的设计原则:参与门槛、奖励梯度、时间节奏",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ep-reward-design",
+      "name": "奖励设计",
+      "description": "活动奖励的类型选择、价值梯度、稀缺性控制与玩家满足感",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-calendar-planning",
+      "name": "运营日历",
+      "description": "年度/月度活动排期规划、节日节点与内容节奏控制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-festival-ops",
+      "name": "节日运营",
+      "description": "春节/圣诞/周年庆等重大节日活动的策划要点与执行流程",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-limited-time",
+      "name": "限时活动设计",
+      "description": "限时活动的紧迫感设计、FOMO心理运用与时间窗口优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ep-crossover",
+      "name": "联动活动",
+      "description": "IP联动/跨游戏联动的策划逻辑、合作模式与落地执行",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-competitive-event",
+      "name": "竞赛类活动",
+      "description": "排名赛/锦标赛/公会战等竞争性活动的规则设计与公平性",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-social-event",
+      "name": "社交类活动",
+      "description": "组队任务/好友互助/全服协作等社交性活动的设计方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-event-economy",
+      "name": "活动经济",
+      "description": "活动对游戏经济系统的影响评估与产出控制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-event-tech",
+      "name": "活动技术方案",
+      "description": "活动配置化/模板化的技术架构与快速上线能力建设",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-ab-in-events",
+      "name": "活动A/B测试",
+      "description": "在活动中嵌入A/B测试验证设计假设的方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-event-analytics",
+      "name": "活动数据分析",
+      "description": "活动效果的核心衡量指标与数据复盘方法论",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ep-event-postmortem",
+      "name": "活动复盘",
+      "description": "活动结束后的系统化复盘流程与经验沉淀",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-engagement-loop",
+      "name": "参与循环设计",
+      "description": "活动内的每日/每周任务循环与玩家粘性设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-ugc-event",
+      "name": "UGC活动",
+      "description": "用户生成内容(UGC)活动的策划、审核与社区运营",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-personalized-event",
+      "name": "个性化活动",
+      "description": "基于用户分群的差异化活动推送与千人千面运营",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-event-automation",
+      "name": "活动自动化",
+      "description": "活动配置/投放/监控的自动化系统建设",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ep-global-event",
+      "name": "全球化活动策划",
+      "description": "面向多地区多语言的活动策划与本地化适配",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ur-retention-basics",
+      "name": "留存基础理论",
+      "description": "用户留存的定义、分类(新增留存/活跃留存)与行业基准",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-first-session",
+      "name": "首次体验优化",
+      "description": "新手引导、首日体验流与关键时刻(Aha Moment)设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-onboarding",
+      "name": "新手引导设计",
+      "description": "渐进式教学、任务引导、成就感节奏与首日留存优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ur-daily-loop",
+      "name": "日常循环设计",
+      "description": "每日登录/任务/奖励循环的设计与玩家习惯养成",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-weekly-loop",
+      "name": "周常循环设计",
+      "description": "周目标/周报酬/进度重置节奏与中期留存提升",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-long-term-goals",
+      "name": "长期目标设计",
+      "description": "赛季目标/终极追求/收藏系统等长期激励机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-social-hooks",
+      "name": "社交钩子",
+      "description": "好友系统/公会/排行榜等社交关系对留存的促进作用",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-churn-prediction",
+      "name": "流失预警",
+      "description": "基于用户行为数据的流失风险预测模型与预警机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ur-win-back",
+      "name": "回流策略",
+      "description": "流失用户召回的渠道、时机、内容与激励设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-push-notification",
+      "name": "推送策略",
+      "description": "游戏推送通知的内容、时机、频率与个性化策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-lifecycle-management",
+      "name": "生命周期管理",
+      "description": "玩家从新增到活跃到付费到流失到回流的全生命周期运营",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ur-content-pacing",
+      "name": "内容节奏",
+      "description": "游戏内容消耗速度与供给节奏的平衡策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-difficulty-curve",
+      "name": "难度留存曲线",
+      "description": "游戏难度与玩家留存之间的关系分析与动态调整",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-engagement-score",
+      "name": "参与度评分",
+      "description": "玩家参与度的量化模型与健康度评估",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-reengagement-tools",
+      "name": "再参与工具",
+      "description": "邮件/短信/社交媒体等渠道的再参与触达策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-habit-formation",
+      "name": "习惯养成",
+      "description": "行为心理学在游戏习惯设计中的应用(Hook模型)",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-community-retention",
+      "name": "社区留存",
+      "description": "通过社区内容/讨论/创作活动维系玩家长期连接",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-vip-retention",
+      "name": "VIP留存策略",
+      "description": "高价值/高活跃用户的专属留存策略与个性化服务",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-cross-platform",
+      "name": "跨平台留存",
+      "description": "多端游玩(PC/手机/主机)对留存的影响与同步策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ur-retention-benchmarks",
+      "name": "留存基准对比",
+      "description": "不同品类/平台/地区的留存率基准与对标分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-mo-monetization-models",
+      "name": "变现模式概览",
+      "description": "买断制/F2P/订阅/广告/混合模式的特点与适用场景",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-iap-design",
+      "name": "内购(IAP)设计",
+      "description": "游戏内购商品的分类、定价与购买流程设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-price-psychology",
+      "name": "定价心理学",
+      "description": "锚定效应/诱饵定价/价格区间/首充折扣等定价策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-mo-battle-pass",
+      "name": "Battle Pass设计",
+      "description": "通行证系统的层级设计、奖励分布与付费转化逻辑",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-subscription",
+      "name": "订阅制设计",
+      "description": "月卡/季卡/年度订阅的价值设计与续费优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-gacha-system",
+      "name": "抽卡/扭蛋系统",
+      "description": "概率公示、保底机制、卡池设计与合规要求",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-mo-ad-monetization",
+      "name": "广告变现",
+      "description": "激励视频/插屏/Banner广告的接入策略与eCPM优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-store-design",
+      "name": "商城设计",
+      "description": "游戏商城的UI布局、商品分类、推荐算法与限时展示",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-ltv-optimization",
+      "name": "LTV优化",
+      "description": "玩家终身价值的分层预测与最大化策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-paying-conversion",
+      "name": "付费转化漏斗",
+      "description": "从免费玩家到付费用户的转化路径分析与优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-mo-whale-management",
+      "name": "大R管理",
+      "description": "高付费玩家的识别、维护与可持续付费策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-offer-system",
+      "name": "促销系统",
+      "description": "限时折扣/礼包/首充/连续购买等促销机制设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-virtual-currency",
+      "name": "虚拟货币设计",
+      "description": "软/硬货币体系、兑换比率、货币沉淀与回收机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-ethical-monetization",
+      "name": "道德变现",
+      "description": "避免P2W(Pay-to-Win)、透明概率、保护未成年人等伦理原则",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-regional-pricing",
+      "name": "区域定价",
+      "description": "不同国家/地区的购买力差异与本地化定价策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-payment-integration",
+      "name": "支付集成",
+      "description": "苹果/Google/第三方支付的接入、分成与发票处理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-refund-policy",
+      "name": "退款策略",
+      "description": "退款政策制定、欺诈退款防护与平台规则合规",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-revenue-forecasting",
+      "name": "收入预测",
+      "description": "基于历史数据和用户行为的收入预测模型",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-bundle-strategy",
+      "name": "捆绑销售策略",
+      "description": "商品组合/套餐/季节礼包的价值设计与销售优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-mo-monetization-metrics",
+      "name": "变现指标体系",
+      "description": "ARPDAU/付费率/ARPPU/回收周期等变现核心指标",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-uc-update-strategy",
+      "name": "版本策略概论",
+      "description": "游戏版本更新的频率选择、内容分级与发布策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-roadmap-planning",
+      "name": "版本路线图",
+      "description": "季度/年度版本路线图的制定、沟通与灵活调整",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-major-update",
+      "name": "大版本更新",
+      "description": "大型内容更新(新角色/地图/系统)的规划与发布节奏",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-uc-minor-update",
+      "name": "小版本迭代",
+      "description": "平衡调整/Bug修复/QoL改进的快速发布流程",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-hotfix-process",
+      "name": "热修复流程",
+      "description": "紧急问题的快速响应、热修复发布与回滚机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-feature-flag",
+      "name": "功能开关",
+      "description": "通过Feature Flag控制新功能灰度发布与快速回滚",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-release-notes",
+      "name": "版本公告",
+      "description": "版本更新公告的撰写、发布渠道与社区沟通策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-downtime-management",
+      "name": "停服维护",
+      "description": "维护时间窗口选择、停服公告、补偿策略与玩家预期管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-content-pipeline",
+      "name": "内容管线",
+      "description": "从策划到开发到测试到发布的内容生产管线优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-uc-platform-submission",
+      "name": "平台提审",
+      "description": "App Store/Google Play/主机平台的审核流程与常见拒审原因",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-rollback-strategy",
+      "name": "版本回滚",
+      "description": "版本发布出问题后的回滚方案与数据兼容性处理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-compatibility",
+      "name": "版本兼容性",
+      "description": "新旧版本共存、强更/弱更策略与数据迁移",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-beta-testing",
+      "name": "公测/先行服",
+      "description": "公测服务器/先行体验的设置、反馈收集与版本打磨",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-patch-size",
+      "name": "包体管理",
+      "description": "增量更新/资源下载/安装包大小优化策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-server-update",
+      "name": "服务端更新",
+      "description": "不停服更新/灰度发布/数据库迁移的技术方案",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-changelog-culture",
+      "name": "变更日志文化",
+      "description": "透明化更新日志对社区信任的建设作用",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-content-calendar",
+      "name": "内容日历管理",
+      "description": "版本内容与运营活动的日历化协同排期",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-staged-rollout",
+      "name": "分阶段发布",
+      "description": "按地区/用户群/百分比逐步推送更新的灰度策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-uc-player-expectations",
+      "name": "玩家预期管理",
+      "description": "通过预告/Dev Log/社区互动管理玩家对更新的期望",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-uc-post-launch-support",
+      "name": "上线后支持",
+      "description": "游戏发布后持续数月/年的运营支持与内容规划",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-season-basics",
+      "name": "赛季制度基础",
+      "description": "赛季制运营的核心理念、周期设计与玩家心理基础",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-season-structure",
+      "name": "赛季结构设计",
+      "description": "赛季时长/阶段划分/里程碑设置与节奏把控",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-ranked-system",
+      "name": "排位系统设计",
+      "description": "段位/分数/匹配机制/段位保护与赛季重置策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-so-season-pass",
+      "name": "赛季通行证",
+      "description": "免费/付费轨道设计、等级经验曲线与奖励分布",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-season-theme",
+      "name": "赛季主题",
+      "description": "每赛季独特主题(故事/角色/地图)的设计与叙事连贯性",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-reward-reset",
+      "name": "赛季奖励重置",
+      "description": "赛季结束时的排名奖励、数据重置与历史保留",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-meta-shift",
+      "name": "赛季Meta变化",
+      "description": "通过平衡调整/新内容推动赛季间Meta演变",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-so-fomo-vs-fairness",
+      "name": "FOMO与公平",
+      "description": "限时赛季内容的稀缺性设计与回归获取的平衡",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-progression-speed",
+      "name": "进度速度控制",
+      "description": "赛季通行证等级/排位上分速度的数值调控",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-season-analytics",
+      "name": "赛季数据分析",
+      "description": "赛季关键指标(参与率/完成率/付费率)的监控与复盘",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-inter-season",
+      "name": "赛季间衔接",
+      "description": "赛季结束到新赛季开始之间的过渡期运营",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-competitive-integrity",
+      "name": "竞技公正性",
+      "description": "反作弊/匹配公平/代练打击在赛季中的保障措施",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-leaderboard-ops",
+      "name": "排行榜运营",
+      "description": "赛季排行榜的设计、刷新机制与防刷策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-so-esports-integration",
+      "name": "电竞赛事联动",
+      "description": "赛季与电竞赛事/官方锦标赛的联动设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-season-cosmetics",
+      "name": "赛季外观",
+      "description": "赛季限定皮肤/装饰品的设计策略与收藏价值",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-catch-up-mechanics",
+      "name": "追赶机制",
+      "description": "迟到玩家快速追赶赛季进度的补偿设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-multi-mode-season",
+      "name": "多模式赛季",
+      "description": "不同游戏模式共享/独立赛季的设计方案",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-season-fatigue",
+      "name": "赛季疲劳",
+      "description": "连续赛季导致玩家倦怠的原因分析与应对策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-community-feedback",
+      "name": "赛季反馈",
+      "description": "赛季中期/结束时收集社区反馈并快速迭代的流程",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-so-season-kpi",
+      "name": "赛季KPI体系",
+      "description": "赛季运营效果的核心衡量指标与目标设定",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-cs-support-basics",
+      "name": "客服基础",
+      "description": "游戏客服的职能定位、服务标准与团队组建",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 1,
+      "estimated_minutes": 20,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-ticket-system",
+      "name": "工单系统",
+      "description": "工单分类/优先级/分配/SLA与工单全生命周期管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-classification",
+      "name": "问题分类体系",
+      "description": "玩家常见问题(账号/付费/Bug/举报)的分类与处理流程",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-cs-ai-chatbot",
+      "name": "AI客服",
+      "description": "智能客服机器人的搭建、FAQ知识库与人工转接策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-vip-service",
+      "name": "VIP专属服务",
+      "description": "高价值玩家的专属客服通道、优先响应与个性化服务",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-ban-appeal",
+      "name": "封禁与申诉",
+      "description": "违规检测/封禁等级/申诉流程与误封处理机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-cs-compensation",
+      "name": "补偿策略",
+      "description": "服务器故障/Bug/维护导致的玩家补偿标准与发放流程",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-feedback-loop",
+      "name": "反馈闭环",
+      "description": "玩家反馈收集到分类到转发到跟进到回复的完整闭环",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-crisis-management",
+      "name": "危机处理",
+      "description": "重大Bug/数据泄露/舆情危机的应急响应流程",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-moderation",
+      "name": "内容审核",
+      "description": "聊天/昵称/头像/UGC内容的自动加人工审核体系",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-localized-support",
+      "name": "多语言客服",
+      "description": "面向全球市场的多语言客服团队组建与工具支持",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-self-service",
+      "name": "自助服务",
+      "description": "帮助中心/FAQ/社区Wiki等玩家自助解决方案",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-metrics",
+      "name": "客服指标",
+      "description": "首响时间/解决率/满意度(CSAT)/NPS等客服KPI",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-cs-escalation",
+      "name": "升级处理",
+      "description": "复杂问题的逐级升级流程与跨部门协调机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-community-support",
+      "name": "社区互助",
+      "description": "培养核心玩家担任社区版主/志愿者协助客服",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-sentiment-analysis",
+      "name": "舆情分析",
+      "description": "社交媒体/论坛/评论区的玩家情绪监控与预警",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-automation",
+      "name": "客服自动化",
+      "description": "自动回复/批量处理/智能路由等客服效率提升工具",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-training",
+      "name": "客服培训",
+      "description": "客服人员的产品知识/沟通技巧/情绪管理培训体系",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-reporting",
+      "name": "客服报告",
+      "description": "客服数据的定期汇总、趋势分析与决策建议报告",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-cs-player-advocacy",
+      "name": "玩家权益保护",
+      "description": "玩家权益政策制定、透明沟通与信任建设",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ab-experiment-basics",
+      "name": "实验基础",
+      "description": "A/B测试的基本原理、假设检验与实验设计基础",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-hypothesis",
+      "name": "假设制定",
+      "description": "可测试假设的撰写方法:变量/指标/预期效果的明确定义",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-sample-size",
+      "name": "样本量计算",
+      "description": "统计功效/效应量/置信水平对最小样本量的要求",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ab-randomization",
+      "name": "随机分组",
+      "description": "玩家分组策略:完全随机/分层随机/聚类随机与偏差控制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-statistical-significance",
+      "name": "统计显著性",
+      "description": "P值/置信区间/假阳性率的理解与正确解读",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-metrics-selection",
+      "name": "指标选择",
+      "description": "北极星指标/防护指标/辅助指标的选择与层级设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ab-experiment-duration",
+      "name": "实验时长",
+      "description": "最短运行时间的确定与新奇效应/季节效应的处理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-multivariate",
+      "name": "多变量测试(MVT)",
+      "description": "多因素同时测试的设计方法、交互效应与结果解读",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-feature-experiment",
+      "name": "功能实验",
+      "description": "新功能灰度测试的设计:对照组/实验组/全量发布决策",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-pricing-experiment",
+      "name": "定价实验",
+      "description": "内购定价/促销方案的A/B测试设计与伦理考量",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-ui-experiment",
+      "name": "UI/UX实验",
+      "description": "界面布局/文案/颜色/流程的A/B测试方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-platform",
+      "name": "实验平台",
+      "description": "游戏A/B测试平台的架构:分流/曝光/指标/分析一体化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ab-segmented-analysis",
+      "name": "分群分析",
+      "description": "实验结果按用户群细分分析:新老用户/付费/地区差异",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-long-term-effects",
+      "name": "长期效应",
+      "description": "实验效果的长期跟踪与holdout group方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-bayesian-testing",
+      "name": "贝叶斯测试",
+      "description": "贝叶斯A/B测试方法与频率学派方法的对比与适用场景",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-bandits",
+      "name": "多臂老虎机",
+      "description": "MAB(Multi-Armed Bandit)算法在动态优化中的应用",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-network-effects",
+      "name": "网络效应",
+      "description": "社交游戏中A/B测试的溢出效应与集群分组方法",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 4,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-experiment-culture",
+      "name": "实验文化",
+      "description": "在游戏团队中建立实验驱动决策的组织文化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-ab-pitfalls",
+      "name": "实验陷阱",
+      "description": "常见实验错误:窥探效应/辛普森悖论/多重比较/幸存者偏差",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-ab-documentation",
+      "name": "实验记录",
+      "description": "实验报告模板、结果归档与组织知识沉淀",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-economy-basics",
+      "name": "虚拟经济基础",
+      "description": "游戏虚拟经济的核心要素:生产/消耗/交易/存储",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-currency-system",
+      "name": "货币体系设计",
+      "description": "软/硬货币、代币的层级关系与兑换比率设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-source-sink",
+      "name": "产出与消耗",
+      "description": "资源产出(水龙头)与消耗(水槽)的平衡设计原则",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-em-inflation-monitoring",
+      "name": "通货膨胀监控",
+      "description": "虚拟经济中通货膨胀的检测指标与预警阈值",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-deflation-risk",
+      "name": "通货紧缩风险",
+      "description": "过度消耗/稀缺导致的经济紧缩问题与应对策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-trade-system",
+      "name": "交易系统",
+      "description": "玩家间交易(拍卖行/直接交易)的设计与税收/手续费机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 2,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-anti-fraud",
+      "name": "交易反欺诈",
+      "description": "刷金/工作室/RMT(真实货币交易)的检测与打击策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-em-bot-detection",
+      "name": "机器人检测",
+      "description": "游戏中自动脚本/刷子的行为特征识别与封禁策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-economy-dashboard",
+      "name": "经济监控看板",
+      "description": "虚拟经济健康度的核心指标看板设计与自动告警",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    },
+    {
+      "id": "ops-em-price-stability",
+      "name": "物价稳定性",
+      "description": "关键物品价格波动的监控、分析与调控手段",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-supply-demand",
+      "name": "供需调控",
+      "description": "通过限量/概率/绑定等机制调节虚拟物品供需关系",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-wealth-distribution",
+      "name": "财富分布分析",
+      "description": "玩家间财富差距(基尼系数)的监控与公平性维护",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-economy-simulation",
+      "name": "经济模拟",
+      "description": "上线前通过蒙特卡洛模拟等方法预测经济走势",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 4,
+      "estimated_minutes": 45,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-reward-balance",
+      "name": "奖励平衡",
+      "description": "活动/任务/抽卡等不同渠道的资源产出总量控制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-economy-intervention",
+      "name": "经济干预",
+      "description": "当经济失衡时的紧急调控手段:回收/限购/重置",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-gacha-economy",
+      "name": "抽卡经济",
+      "description": "概率型商品对经济系统的影响与保底机制的经济分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 40,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-seasonal-economy",
+      "name": "赛季经济重置",
+      "description": "赛季间经济数据的重置/保留策略与通胀控制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-real-money-trading",
+      "name": "RMT打击",
+      "description": "真实货币交易的危害、检测手段与法律合规",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-economy-reporting",
+      "name": "经济报告",
+      "description": "定期经济健康度报告的内容框架与决策建议",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 3,
+      "estimated_minutes": 35,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": false
+    },
+    {
+      "id": "ops-em-economy-design-collab",
+      "name": "经济设计协作",
+      "description": "运营与策划团队在经济系统设计中的协作机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "difficulty": 2,
+      "estimated_minutes": 30,
+      "content_type": "conceptual",
+      "tags": [],
+      "is_milestone": true
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "ops-da-data-collection",
+      "target_id": "ops-da-event-tracking",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-event-tracking",
+      "target_id": "ops-da-data-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-data-pipeline",
+      "target_id": "ops-da-kpi-framework",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-kpi-framework",
+      "target_id": "ops-da-retention-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-retention-metrics",
+      "target_id": "ops-da-revenue-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-revenue-metrics",
+      "target_id": "ops-da-cohort-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-cohort-analysis",
+      "target_id": "ops-da-funnel-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-funnel-analysis",
+      "target_id": "ops-da-user-segmentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-user-segmentation",
+      "target_id": "ops-da-bi-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-bi-tools",
+      "target_id": "ops-da-dashboard-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-dashboard-design",
+      "target_id": "ops-da-sql-for-ops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-sql-for-ops",
+      "target_id": "ops-da-behavioral-analytics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-behavioral-analytics",
+      "target_id": "ops-da-predictive-modeling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-predictive-modeling",
+      "target_id": "ops-da-attribution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-attribution",
+      "target_id": "ops-da-data-warehouse",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-data-warehouse",
+      "target_id": "ops-da-realtime-monitoring",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-realtime-monitoring",
+      "target_id": "ops-da-privacy-compliance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-privacy-compliance",
+      "target_id": "ops-da-data-driven-culture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-data-driven-culture",
+      "target_id": "ops-da-anomaly-detection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-types",
+      "target_id": "ops-ep-event-lifecycle",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-lifecycle",
+      "target_id": "ops-ep-event-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-design",
+      "target_id": "ops-ep-reward-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-reward-design",
+      "target_id": "ops-ep-calendar-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-calendar-planning",
+      "target_id": "ops-ep-festival-ops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-festival-ops",
+      "target_id": "ops-ep-limited-time",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-limited-time",
+      "target_id": "ops-ep-crossover",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-crossover",
+      "target_id": "ops-ep-competitive-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-competitive-event",
+      "target_id": "ops-ep-social-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-social-event",
+      "target_id": "ops-ep-event-economy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-economy",
+      "target_id": "ops-ep-event-tech",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-tech",
+      "target_id": "ops-ep-ab-in-events",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-ab-in-events",
+      "target_id": "ops-ep-event-analytics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-analytics",
+      "target_id": "ops-ep-event-postmortem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-postmortem",
+      "target_id": "ops-ep-engagement-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-engagement-loop",
+      "target_id": "ops-ep-ugc-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-ugc-event",
+      "target_id": "ops-ep-personalized-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-personalized-event",
+      "target_id": "ops-ep-event-automation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-automation",
+      "target_id": "ops-ep-global-event",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-retention-basics",
+      "target_id": "ops-ur-first-session",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-first-session",
+      "target_id": "ops-ur-onboarding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-onboarding",
+      "target_id": "ops-ur-daily-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-daily-loop",
+      "target_id": "ops-ur-weekly-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-weekly-loop",
+      "target_id": "ops-ur-long-term-goals",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-long-term-goals",
+      "target_id": "ops-ur-social-hooks",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-social-hooks",
+      "target_id": "ops-ur-churn-prediction",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-churn-prediction",
+      "target_id": "ops-ur-win-back",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-win-back",
+      "target_id": "ops-ur-push-notification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-push-notification",
+      "target_id": "ops-ur-lifecycle-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-lifecycle-management",
+      "target_id": "ops-ur-content-pacing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-content-pacing",
+      "target_id": "ops-ur-difficulty-curve",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-difficulty-curve",
+      "target_id": "ops-ur-engagement-score",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-engagement-score",
+      "target_id": "ops-ur-reengagement-tools",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-reengagement-tools",
+      "target_id": "ops-ur-habit-formation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-habit-formation",
+      "target_id": "ops-ur-community-retention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-community-retention",
+      "target_id": "ops-ur-vip-retention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-vip-retention",
+      "target_id": "ops-ur-cross-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-cross-platform",
+      "target_id": "ops-ur-retention-benchmarks",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-monetization-models",
+      "target_id": "ops-mo-iap-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-iap-design",
+      "target_id": "ops-mo-price-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-price-psychology",
+      "target_id": "ops-mo-battle-pass",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-battle-pass",
+      "target_id": "ops-mo-subscription",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-subscription",
+      "target_id": "ops-mo-gacha-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-gacha-system",
+      "target_id": "ops-mo-ad-monetization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-ad-monetization",
+      "target_id": "ops-mo-store-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-store-design",
+      "target_id": "ops-mo-ltv-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-ltv-optimization",
+      "target_id": "ops-mo-paying-conversion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-paying-conversion",
+      "target_id": "ops-mo-whale-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-whale-management",
+      "target_id": "ops-mo-offer-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-offer-system",
+      "target_id": "ops-mo-virtual-currency",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-virtual-currency",
+      "target_id": "ops-mo-ethical-monetization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-ethical-monetization",
+      "target_id": "ops-mo-regional-pricing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-regional-pricing",
+      "target_id": "ops-mo-payment-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-payment-integration",
+      "target_id": "ops-mo-refund-policy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-refund-policy",
+      "target_id": "ops-mo-revenue-forecasting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-revenue-forecasting",
+      "target_id": "ops-mo-bundle-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-bundle-strategy",
+      "target_id": "ops-mo-monetization-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-update-strategy",
+      "target_id": "ops-uc-roadmap-planning",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-roadmap-planning",
+      "target_id": "ops-uc-major-update",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-major-update",
+      "target_id": "ops-uc-minor-update",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-minor-update",
+      "target_id": "ops-uc-hotfix-process",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-hotfix-process",
+      "target_id": "ops-uc-feature-flag",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-feature-flag",
+      "target_id": "ops-uc-release-notes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-release-notes",
+      "target_id": "ops-uc-downtime-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-downtime-management",
+      "target_id": "ops-uc-content-pipeline",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-content-pipeline",
+      "target_id": "ops-uc-platform-submission",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-platform-submission",
+      "target_id": "ops-uc-rollback-strategy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-rollback-strategy",
+      "target_id": "ops-uc-compatibility",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-compatibility",
+      "target_id": "ops-uc-beta-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-beta-testing",
+      "target_id": "ops-uc-patch-size",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-patch-size",
+      "target_id": "ops-uc-server-update",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-server-update",
+      "target_id": "ops-uc-changelog-culture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-changelog-culture",
+      "target_id": "ops-uc-content-calendar",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-content-calendar",
+      "target_id": "ops-uc-staged-rollout",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-staged-rollout",
+      "target_id": "ops-uc-player-expectations",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-uc-player-expectations",
+      "target_id": "ops-uc-post-launch-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-season-basics",
+      "target_id": "ops-so-season-structure",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-season-structure",
+      "target_id": "ops-so-ranked-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-ranked-system",
+      "target_id": "ops-so-season-pass",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-season-pass",
+      "target_id": "ops-so-season-theme",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-season-theme",
+      "target_id": "ops-so-reward-reset",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-reward-reset",
+      "target_id": "ops-so-meta-shift",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-meta-shift",
+      "target_id": "ops-so-fomo-vs-fairness",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-fomo-vs-fairness",
+      "target_id": "ops-so-progression-speed",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-progression-speed",
+      "target_id": "ops-so-season-analytics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-season-analytics",
+      "target_id": "ops-so-inter-season",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-inter-season",
+      "target_id": "ops-so-competitive-integrity",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-competitive-integrity",
+      "target_id": "ops-so-leaderboard-ops",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-leaderboard-ops",
+      "target_id": "ops-so-esports-integration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-esports-integration",
+      "target_id": "ops-so-season-cosmetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-season-cosmetics",
+      "target_id": "ops-so-catch-up-mechanics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-catch-up-mechanics",
+      "target_id": "ops-so-multi-mode-season",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-multi-mode-season",
+      "target_id": "ops-so-season-fatigue",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-season-fatigue",
+      "target_id": "ops-so-community-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-so-community-feedback",
+      "target_id": "ops-so-season-kpi",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-support-basics",
+      "target_id": "ops-cs-ticket-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-ticket-system",
+      "target_id": "ops-cs-classification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-classification",
+      "target_id": "ops-cs-ai-chatbot",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-ai-chatbot",
+      "target_id": "ops-cs-vip-service",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-vip-service",
+      "target_id": "ops-cs-ban-appeal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-ban-appeal",
+      "target_id": "ops-cs-compensation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-compensation",
+      "target_id": "ops-cs-feedback-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-feedback-loop",
+      "target_id": "ops-cs-crisis-management",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-crisis-management",
+      "target_id": "ops-cs-moderation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-moderation",
+      "target_id": "ops-cs-localized-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-localized-support",
+      "target_id": "ops-cs-self-service",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-self-service",
+      "target_id": "ops-cs-metrics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-metrics",
+      "target_id": "ops-cs-escalation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-escalation",
+      "target_id": "ops-cs-community-support",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-community-support",
+      "target_id": "ops-cs-sentiment-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-sentiment-analysis",
+      "target_id": "ops-cs-automation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-automation",
+      "target_id": "ops-cs-training",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-training",
+      "target_id": "ops-cs-reporting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-reporting",
+      "target_id": "ops-cs-player-advocacy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-experiment-basics",
+      "target_id": "ops-ab-hypothesis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-hypothesis",
+      "target_id": "ops-ab-sample-size",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-sample-size",
+      "target_id": "ops-ab-randomization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-randomization",
+      "target_id": "ops-ab-statistical-significance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-statistical-significance",
+      "target_id": "ops-ab-metrics-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-metrics-selection",
+      "target_id": "ops-ab-experiment-duration",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-experiment-duration",
+      "target_id": "ops-ab-multivariate",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-multivariate",
+      "target_id": "ops-ab-feature-experiment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-feature-experiment",
+      "target_id": "ops-ab-pricing-experiment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-pricing-experiment",
+      "target_id": "ops-ab-ui-experiment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-ui-experiment",
+      "target_id": "ops-ab-platform",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-platform",
+      "target_id": "ops-ab-segmented-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-segmented-analysis",
+      "target_id": "ops-ab-long-term-effects",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-long-term-effects",
+      "target_id": "ops-ab-bayesian-testing",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-bayesian-testing",
+      "target_id": "ops-ab-bandits",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-bandits",
+      "target_id": "ops-ab-network-effects",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-network-effects",
+      "target_id": "ops-ab-experiment-culture",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-experiment-culture",
+      "target_id": "ops-ab-pitfalls",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-pitfalls",
+      "target_id": "ops-ab-documentation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-economy-basics",
+      "target_id": "ops-em-currency-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-currency-system",
+      "target_id": "ops-em-source-sink",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-source-sink",
+      "target_id": "ops-em-inflation-monitoring",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-inflation-monitoring",
+      "target_id": "ops-em-deflation-risk",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-deflation-risk",
+      "target_id": "ops-em-trade-system",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-trade-system",
+      "target_id": "ops-em-anti-fraud",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-anti-fraud",
+      "target_id": "ops-em-bot-detection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-bot-detection",
+      "target_id": "ops-em-economy-dashboard",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-economy-dashboard",
+      "target_id": "ops-em-price-stability",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-price-stability",
+      "target_id": "ops-em-supply-demand",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-supply-demand",
+      "target_id": "ops-em-wealth-distribution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-wealth-distribution",
+      "target_id": "ops-em-economy-simulation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-economy-simulation",
+      "target_id": "ops-em-reward-balance",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-reward-balance",
+      "target_id": "ops-em-economy-intervention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-economy-intervention",
+      "target_id": "ops-em-gacha-economy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-gacha-economy",
+      "target_id": "ops-em-seasonal-economy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-seasonal-economy",
+      "target_id": "ops-em-real-money-trading",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-real-money-trading",
+      "target_id": "ops-em-economy-reporting",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-economy-reporting",
+      "target_id": "ops-em-economy-design-collab",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-retention-metrics",
+      "target_id": "ops-ur-retention-basics",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "ops-da-revenue-metrics",
+      "target_id": "ops-mo-monetization-metrics",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "ops-da-cohort-analysis",
+      "target_id": "ops-ur-churn-prediction",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-da-funnel-analysis",
+      "target_id": "ops-mo-paying-conversion",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-user-segmentation",
+      "target_id": "ops-ep-personalized-event",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-da-dashboard-design",
+      "target_id": "ops-em-economy-dashboard",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-da-anomaly-detection",
+      "target_id": "ops-em-anti-fraud",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-da-predictive-modeling",
+      "target_id": "ops-ur-churn-prediction",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-event-analytics",
+      "target_id": "ops-da-kpi-framework",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-ep-event-economy",
+      "target_id": "ops-em-reward-balance",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-ab-in-events",
+      "target_id": "ops-ab-feature-experiment",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ep-limited-time",
+      "target_id": "ops-so-fomo-vs-fairness",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-ur-daily-loop",
+      "target_id": "ops-so-season-pass",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-ur-push-notification",
+      "target_id": "ops-cs-feedback-loop",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ops-ur-lifecycle-management",
+      "target_id": "ops-mo-ltv-optimization",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ur-habit-formation",
+      "target_id": "ops-ep-engagement-loop",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-mo-battle-pass",
+      "target_id": "ops-so-season-pass",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "ops-mo-virtual-currency",
+      "target_id": "ops-em-currency-system",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "ops-mo-gacha-system",
+      "target_id": "ops-em-gacha-economy",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-mo-ad-monetization",
+      "target_id": "ops-ab-pricing-experiment",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ops-uc-content-calendar",
+      "target_id": "ops-ep-calendar-planning",
+      "relation_type": "related",
+      "strength": 0.9
+    },
+    {
+      "source_id": "ops-uc-hotfix-process",
+      "target_id": "ops-cs-crisis-management",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-uc-beta-testing",
+      "target_id": "ops-ab-feature-experiment",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-uc-staged-rollout",
+      "target_id": "ops-ab-experiment-basics",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ops-so-ranked-system",
+      "target_id": "ops-cs-ban-appeal",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "ops-so-meta-shift",
+      "target_id": "ops-uc-major-update",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-so-season-analytics",
+      "target_id": "ops-da-cohort-analysis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-so-season-kpi",
+      "target_id": "ops-da-kpi-framework",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-cs-sentiment-analysis",
+      "target_id": "ops-da-behavioral-analytics",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-cs-ban-appeal",
+      "target_id": "ops-em-anti-fraud",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-ab-metrics-selection",
+      "target_id": "ops-da-kpi-framework",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-ab-platform",
+      "target_id": "ops-uc-feature-flag",
+      "relation_type": "related",
+      "strength": 0.8
+    },
+    {
+      "source_id": "ops-em-seasonal-economy",
+      "target_id": "ops-so-reward-reset",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "ops-em-economy-intervention",
+      "target_id": "ops-cs-compensation",
+      "relation_type": "related",
+      "strength": 0.6
+    }
+  ],
+  "milestones": [
+    {
+      "concept_id": "ops-da-data-pipeline",
+      "name": "数据管线",
+      "description": "掌握数据管线的核心理论与实践方法",
+      "order": 1
+    },
+    {
+      "concept_id": "ops-da-revenue-metrics",
+      "name": "收入指标",
+      "description": "掌握收入指标的核心理论与实践方法",
+      "order": 2
+    },
+    {
+      "concept_id": "ops-da-dashboard-design",
+      "name": "数据看板设计",
+      "description": "掌握数据看板设计的核心理论与实践方法",
+      "order": 3
+    },
+    {
+      "concept_id": "ops-da-data-driven-culture",
+      "name": "数据驱动文化",
+      "description": "掌握数据驱动文化的核心理论与实践方法",
+      "order": 4
+    },
+    {
+      "concept_id": "ops-ep-event-design",
+      "name": "活动玩法设计",
+      "description": "掌握活动玩法设计的核心理论与实践方法",
+      "order": 5
+    },
+    {
+      "concept_id": "ops-ep-limited-time",
+      "name": "限时活动设计",
+      "description": "掌握限时活动设计的核心理论与实践方法",
+      "order": 6
+    },
+    {
+      "concept_id": "ops-ep-event-analytics",
+      "name": "活动数据分析",
+      "description": "掌握活动数据分析的核心理论与实践方法",
+      "order": 7
+    },
+    {
+      "concept_id": "ops-ep-global-event",
+      "name": "全球化活动策划",
+      "description": "掌握全球化活动策划的核心理论与实践方法",
+      "order": 8
+    },
+    {
+      "concept_id": "ops-ur-onboarding",
+      "name": "新手引导设计",
+      "description": "掌握新手引导设计的核心理论与实践方法",
+      "order": 9
+    },
+    {
+      "concept_id": "ops-ur-churn-prediction",
+      "name": "流失预警",
+      "description": "掌握流失预警的核心理论与实践方法",
+      "order": 10
+    },
+    {
+      "concept_id": "ops-ur-lifecycle-management",
+      "name": "生命周期管理",
+      "description": "掌握生命周期管理的核心理论与实践方法",
+      "order": 11
+    },
+    {
+      "concept_id": "ops-ur-retention-benchmarks",
+      "name": "留存基准对比",
+      "description": "掌握留存基准对比的核心理论与实践方法",
+      "order": 12
+    },
+    {
+      "concept_id": "ops-mo-price-psychology",
+      "name": "定价心理学",
+      "description": "掌握定价心理学的核心理论与实践方法",
+      "order": 13
+    },
+    {
+      "concept_id": "ops-mo-gacha-system",
+      "name": "抽卡/扭蛋系统",
+      "description": "掌握抽卡/扭蛋系统的核心理论与实践方法",
+      "order": 14
+    },
+    {
+      "concept_id": "ops-mo-paying-conversion",
+      "name": "付费转化漏斗",
+      "description": "掌握付费转化漏斗的核心理论与实践方法",
+      "order": 15
+    },
+    {
+      "concept_id": "ops-mo-monetization-metrics",
+      "name": "变现指标体系",
+      "description": "掌握变现指标体系的核心理论与实践方法",
+      "order": 16
+    },
+    {
+      "concept_id": "ops-uc-major-update",
+      "name": "大版本更新",
+      "description": "掌握大版本更新的核心理论与实践方法",
+      "order": 17
+    },
+    {
+      "concept_id": "ops-uc-content-pipeline",
+      "name": "内容管线",
+      "description": "掌握内容管线的核心理论与实践方法",
+      "order": 18
+    },
+    {
+      "concept_id": "ops-uc-staged-rollout",
+      "name": "分阶段发布",
+      "description": "掌握分阶段发布的核心理论与实践方法",
+      "order": 19
+    },
+    {
+      "concept_id": "ops-so-ranked-system",
+      "name": "排位系统设计",
+      "description": "掌握排位系统设计的核心理论与实践方法",
+      "order": 20
+    },
+    {
+      "concept_id": "ops-so-meta-shift",
+      "name": "赛季Meta变化",
+      "description": "掌握赛季Meta变化的核心理论与实践方法",
+      "order": 21
+    },
+    {
+      "concept_id": "ops-so-leaderboard-ops",
+      "name": "排行榜运营",
+      "description": "掌握排行榜运营的核心理论与实践方法",
+      "order": 22
+    },
+    {
+      "concept_id": "ops-so-season-kpi",
+      "name": "赛季KPI体系",
+      "description": "掌握赛季KPI体系的核心理论与实践方法",
+      "order": 23
+    },
+    {
+      "concept_id": "ops-cs-classification",
+      "name": "问题分类体系",
+      "description": "掌握问题分类体系的核心理论与实践方法",
+      "order": 24
+    },
+    {
+      "concept_id": "ops-cs-ban-appeal",
+      "name": "封禁与申诉",
+      "description": "掌握封禁与申诉的核心理论与实践方法",
+      "order": 25
+    },
+    {
+      "concept_id": "ops-cs-metrics",
+      "name": "客服指标",
+      "description": "掌握客服指标的核心理论与实践方法",
+      "order": 26
+    },
+    {
+      "concept_id": "ops-cs-player-advocacy",
+      "name": "玩家权益保护",
+      "description": "掌握玩家权益保护的核心理论与实践方法",
+      "order": 27
+    },
+    {
+      "concept_id": "ops-ab-sample-size",
+      "name": "样本量计算",
+      "description": "掌握样本量计算的核心理论与实践方法",
+      "order": 28
+    },
+    {
+      "concept_id": "ops-ab-metrics-selection",
+      "name": "指标选择",
+      "description": "掌握指标选择的核心理论与实践方法",
+      "order": 29
+    },
+    {
+      "concept_id": "ops-ab-platform",
+      "name": "实验平台",
+      "description": "掌握实验平台的核心理论与实践方法",
+      "order": 30
+    },
+    {
+      "concept_id": "ops-ab-pitfalls",
+      "name": "实验陷阱",
+      "description": "掌握实验陷阱的核心理论与实践方法",
+      "order": 31
+    },
+    {
+      "concept_id": "ops-em-source-sink",
+      "name": "产出与消耗",
+      "description": "掌握产出与消耗的核心理论与实践方法",
+      "order": 32
+    },
+    {
+      "concept_id": "ops-em-anti-fraud",
+      "name": "交易反欺诈",
+      "description": "掌握交易反欺诈的核心理论与实践方法",
+      "order": 33
+    },
+    {
+      "concept_id": "ops-em-economy-dashboard",
+      "name": "经济监控看板",
+      "description": "掌握经济监控看板的核心理论与实践方法",
+      "order": 34
+    },
+    {
+      "concept_id": "ops-em-economy-design-collab",
+      "name": "经济设计协作",
+      "description": "掌握经济设计协作的核心理论与实践方法",
+      "order": 35
+    }
+  ]
+}

@@ -296,6 +296,17 @@
       "rag_dir": "game-publishing",
       "is_active": true,
       "sort_order": 27
+    },
+    {
+      "id": "game-live-ops",
+      "name": "运营",
+      "description": "游戏运营知识体系，覆盖数据分析、活动策划、用户留存、付费系统(内购/Battle Pass)、版本更新节奏、赛季运营、客服体系、A/B测试与经济系统监控",
+      "icon": "📊",
+      "color": "#ca8a04",
+      "seed_dir": "game-live-ops",
+      "rag_dir": "game-live-ops",
+      "is_active": true,
+      "sort_order": 28
     }
   ]
 }

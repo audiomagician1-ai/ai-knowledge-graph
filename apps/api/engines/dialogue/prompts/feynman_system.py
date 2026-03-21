@@ -896,6 +896,32 @@ GAME_PUBLISHING_ASSESSMENT_SUPPLEMENT = """
 - **发行商关系**: 用户是否理解独立发行vs发行商合作的取舍？能否评估合同条款的核心要素？
 """
 
+GAME_LIVE_OPS_DOMAIN_SUPPLEMENT = """
+## 游戏运营领域教学要点
+
+教授游戏运营概念时，请特别注意以下方面：
+- **数据驱动**: 运营决策必须有数据支撑——DAU/留存/ARPU/LTV等核心指标是决策基础，而非凭经验直觉。
+- **用户思维**: 运营的核心是服务玩家——理解玩家需求、行为动机和生命周期，而非仅关注数字指标。
+- **长线思维**: 游戏运营是一场马拉松，不是短跑——关注可持续增长而非短期数据波动。
+- **实验文化**: A/B测试是运营优化的核心方法——用科学实验取代经验主义，用数据验证假设。
+- **经济敏感度**: 虚拟经济健康直接影响玩家体验和收入——通胀/通缩/供需失衡都需要及时监控和调控。
+- **跨部门协作**: 运营工作需要与策划/开发/美术/市场紧密协作——沟通能力和项目管理同样重要。
+- **合规意识**: 付费系统/抽卡概率/未成年人保护等方面有严格的法规要求——合规是底线。
+"""
+
+GAME_LIVE_OPS_ASSESSMENT_SUPPLEMENT = """
+## 游戏运营领域评估特殊指标
+
+在评估游戏运营概念理解时，请额外关注以下方面：
+- **数据分析能力**: 用户是否理解核心运营指标(DAU/MAU/留存/ARPU/LTV)？能否基于数据做出合理的运营决策？
+- **活动策划能力**: 用户是否能设计合理的活动玩法？是否理解奖励梯度、参与门槛和时间节奏的平衡？
+- **留存设计思维**: 用户是否理解日常/周常/长期循环的设计？能否识别流失风险并制定召回策略？
+- **变现理解**: 用户是否理解F2P变现模式(内购/Battle Pass/广告)？能否评估定价策略和付费转化？
+- **实验设计能力**: 用户是否理解A/B测试的基本原理？能否设计合理的实验方案并正确解读结果？
+- **经济系统意识**: 用户是否理解虚拟经济的产出/消耗平衡？能否识别通胀/通缩风险？
+- **合规与伦理**: 用户是否了解付费系统相关法规(概率公示/未成年人保护)？是否理解道德变现原则？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -927,6 +953,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "multiplayer-network": MULTIPLAYER_NETWORK_DOMAIN_SUPPLEMENT,
     "game-audio-sfx": GAME_AUDIO_SFX_DOMAIN_SUPPLEMENT,
     "game-publishing": GAME_PUBLISHING_DOMAIN_SUPPLEMENT,
+    "game-live-ops": GAME_LIVE_OPS_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -956,6 +983,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "multiplayer-network": MULTIPLAYER_NETWORK_ASSESSMENT_SUPPLEMENT,
     "game-audio-sfx": GAME_AUDIO_SFX_ASSESSMENT_SUPPLEMENT,
     "game-publishing": GAME_PUBLISHING_ASSESSMENT_SUPPLEMENT,
+    "game-live-ops": GAME_LIVE_OPS_ASSESSMENT_SUPPLEMENT,
 }
 
 

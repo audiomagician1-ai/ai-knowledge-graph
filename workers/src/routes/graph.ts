@@ -32,6 +32,7 @@ import seedNarrativeDesign from '../../data/seed/narrative-design/seed_graph.jso
 import seedMultiplayerNetwork from '../../data/seed/multiplayer-network/seed_graph.json';
 import seedGameAudioSfx from '../../data/seed/game-audio-sfx/seed_graph.json';
 import seedGamePublishing from '../../data/seed/game-publishing/seed_graph.json';
+import seedGameLiveOps from '../../data/seed/game-live-ops/seed_graph.json';
 // Multi-domain RAG index imports
 import ragAI from '../../data/rag/_index.json';
 import ragMath from '../../data/rag/mathematics/_index.json';
@@ -60,6 +61,7 @@ import ragNarrativeDesign from '../../data/rag/narrative-design/_index.json';
 import ragMultiplayerNetwork from '../../data/rag/multiplayer-network/_index.json';
 import ragGameAudioSfx from '../../data/rag/game-audio-sfx/_index.json';
 import ragGamePublishing from '../../data/rag/game-publishing/_index.json';
+import ragGameLiveOps from '../../data/rag/game-live-ops/_index.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -86,6 +88,7 @@ const seedMap: Record<string, any> = {
   'multiplayer-network': seedMultiplayerNetwork,
   'game-audio-sfx': seedGameAudioSfx,
   'game-publishing': seedGamePublishing,
+  'game-live-ops': seedGameLiveOps,
 };
 const ragMap: Record<string, any> = {
   'ai-engineering': ragAI, 'mathematics': ragMath, 'english': ragEnglish,
@@ -108,6 +111,7 @@ const ragMap: Record<string, any> = {
   'multiplayer-network': ragMultiplayerNetwork,
   'game-audio-sfx': ragGameAudioSfx,
   'game-publishing': ragGamePublishing,
+  'game-live-ops': ragGameLiveOps,
 };
 function getSeed(domain: string): any { return seedMap[domain] || null; }
 function getRagIndex(domain: string): any { return ragMap[domain] || { documents: [], stats: {} }; }
