@@ -806,6 +806,18 @@ NARRATIVE_DESIGN_DOMAIN_SUPPLEMENT = """
 7. **文化敏感**: 全球化发行要求叙事内容具备文化包容性。教学中培养本地化意识和多元文化视角
 """
 
+MULTIPLAYER_NETWORK_DOMAIN_SUPPLEMENT = """
+## 网络多人教学特殊规则
+
+1. **延迟为王**: 网络多人游戏的核心挑战是延迟。教学中始终围绕"如何在不可靠的网络下提供流畅体验"展开
+2. **权威服务器思维**: 任何客户端都不可信——关键逻辑必须在服务器执行。培养"服务器说了算"的安全意识
+3. **同步方案对比**: 状态同步vs帧同步是两大范式。教学中通过具体游戏类型分析选型依据,避免教条化
+4. **实战调试**: 网络问题极难复现。教学中强调网络模拟(clumsy/netem)和日志分析的调试方法
+5. **扩展性设计**: 从2人对战到万人MMO,架构设计截然不同。培养根据规模选择合适方案的判断力
+6. **安全对抗**: 反作弊是持续的攻防战。教学中培养安全纵深防御思维,而非依赖单一方案
+7. **成本意识**: 服务器费用是多人游戏的核心运营成本。培养在体验和成本间权衡的工程师视角
+"""
+
 NARRATIVE_DESIGN_ASSESSMENT_SUPPLEMENT = """
 ## 叙事设计领域评估特殊指标
 
@@ -817,6 +829,19 @@ NARRATIVE_DESIGN_ASSESSMENT_SUPPLEMENT = """
 - **任务设计**: 用户是否能设计有叙事深度的主线/支线任务？能否避免常见的重复性任务陷阱？
 - **环境叙事**: 用户是否能通过场景/道具/光影等非对话方式讲述故事？
 - **本地化意识**: 用户是否了解叙事本地化的技术和文化挑战？能否在设计阶段就考虑多语言适配？
+"""
+
+MULTIPLAYER_NETWORK_ASSESSMENT_SUPPLEMENT = """
+## 网络多人领域评估特殊指标
+
+在评估网络多人概念理解时，请额外关注以下方面：
+- **延迟理解**: 用户是否理解网络延迟对游戏体验的影响？能否区分客户端预测/服务器调和/实体插值等补偿技术的适用场景？
+- **同步选型**: 用户是否理解状态同步与帧同步的根本区别？能否根据游戏类型选择合适的同步方案？
+- **安全意识**: 用户是否理解"不信任客户端"原则？能否设计多层次的反作弊策略？
+- **扩展思维**: 用户是否理解从小规模到大规模多人的架构变化？能否设计可扩展的服务端架构？
+- **数据设计**: 用户是否理解多人游戏的数据存储挑战？能否设计合理的玩家数据模型和缓存策略？
+- **运维意识**: 用户是否了解多人游戏的运维挑战？热更新/版本管理/灾难恢复等是否有合理认知？
+- **公平性**: 用户是否理解匹配系统对玩家体验的影响？能否分析SBMM/Elo等算法的优劣？
 """
 
 # ---------------------------------------------------------------------------
@@ -847,6 +872,7 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "game-audio-music": GAME_AUDIO_MUSIC_DOMAIN_SUPPLEMENT,
     "game-ui-ux": GAME_UI_UX_DOMAIN_SUPPLEMENT,
     "narrative-design": NARRATIVE_DESIGN_DOMAIN_SUPPLEMENT,
+    "multiplayer-network": MULTIPLAYER_NETWORK_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -873,6 +899,7 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "game-audio-music": GAME_AUDIO_MUSIC_ASSESSMENT_SUPPLEMENT,
     "game-ui-ux": GAME_UI_UX_ASSESSMENT_SUPPLEMENT,
     "narrative-design": NARRATIVE_DESIGN_ASSESSMENT_SUPPLEMENT,
+    "multiplayer-network": MULTIPLAYER_NETWORK_ASSESSMENT_SUPPLEMENT,
 }
 
 

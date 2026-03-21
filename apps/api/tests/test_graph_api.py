@@ -625,7 +625,7 @@ async def test_three_domains_listed():
         assert resp.status_code == 200
         data = resp.json()
         domain_ids = {d["id"] for d in data}
-        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design"}
+        assert domain_ids == {"ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network"}
 
 
 # ── English RAG Tests ───────────────────────────
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}
@@ -2693,4 +2693,82 @@ async def test_narrative_design_neighbors():
         assert resp.status_code == 200
         data = resp.json()
         assert data["center"] == "nd-wb-setting-bible"
+        assert len(data["nodes"]) >= 2
+
+
+# ── Multiplayer Network Knowledge Sphere Tests (Phase 31) ──────────────
+
+@pytest.mark.asyncio
+async def test_multiplayer_network_data():
+    """Multiplayer Network seed graph: 200 concepts, 189 edges, 10 subdomains, 37 milestones."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/data?domain=multiplayer-network")
+        assert resp.status_code == 200
+        data = resp.json()
+        nodes = data["nodes"]
+        edges = data["edges"]
+        assert len(nodes) == 200, f"Expected 200 concepts, got {len(nodes)}"
+        assert len(edges) == 189, f"Expected 189 edges, got {len(edges)}"
+        subdomain_ids = set(n["subdomain_id"] for n in nodes)
+        assert len(subdomain_ids) == 10, f"Expected 10 subdomains, got {len(subdomain_ids)}"
+        milestones = [n for n in nodes if n.get("is_milestone")]
+        assert len(milestones) == 37, f"Expected 37 milestones, got {len(milestones)}"
+
+@pytest.mark.asyncio
+async def test_multiplayer_network_rag():
+    """Multiplayer Network RAG stats should reflect 200 documents."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/rag?domain=multiplayer-network")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total_docs"] == 200
+
+@pytest.mark.asyncio
+async def test_multiplayer_network_concept_detail():
+    """Should retrieve a specific Multiplayer Network concept."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/mn-na-client-server?domain=multiplayer-network")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["id"] == "mn-na-client-server"
+        assert data["domain_id"] == "multiplayer-network"
+
+@pytest.mark.asyncio
+async def test_multiplayer_network_subdomains():
+    """Multiplayer Network should have 10 subdomains."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/subdomains?domain=multiplayer-network")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert len(data) == 10
+        names = [s["name"] for s in data]
+        assert "网络架构" in names
+        assert "状态同步" in names
+        assert "排行榜与统计" in names
+
+@pytest.mark.asyncio
+async def test_multiplayer_network_cross_links():
+    """Cross-sphere links for multiplayer-network should exist (↔ game-engine/software-engineering/etc)."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/cross-links?domain=multiplayer-network")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] >= 20
+
+@pytest.mark.asyncio
+async def test_multiplayer_network_supplements():
+    """Multiplayer Network should have domain & assessment supplements."""
+    from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS, ASSESSMENT_SUPPLEMENTS
+    assert "multiplayer-network" in DOMAIN_SUPPLEMENTS, "multiplayer-network missing from DOMAIN_SUPPLEMENTS"
+    assert "multiplayer-network" in ASSESSMENT_SUPPLEMENTS, "multiplayer-network missing from ASSESSMENT_SUPPLEMENTS"
+    assert "延迟" in DOMAIN_SUPPLEMENTS["multiplayer-network"], "Multiplayer Network supplement should mention 延迟"
+
+@pytest.mark.asyncio
+async def test_multiplayer_network_neighbors():
+    """Multiplayer Network concept should have neighbors."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/mn-na-client-server/neighbors?domain=multiplayer-network&depth=1")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["center"] == "mn-na-client-server"
         assert len(data["nodes"]) >= 2

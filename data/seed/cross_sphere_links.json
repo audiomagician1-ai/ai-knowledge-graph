@@ -3530,6 +3530,206 @@
       "target_id": "cd-env-narrative-env",
       "relation": "related",
       "description": "视觉叙事与叙事性环境设计"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-na-client-server",
+      "target_domain": "game-engine",
+      "target_id": "ue5-networking",
+      "relation": "related",
+      "description": "网络架构是游戏引擎网络模块的核心设计模式"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ss-state-replication",
+      "target_domain": "game-engine",
+      "target_id": "ue5-networking",
+      "relation": "related",
+      "description": "状态复制是UE5引擎级网络同步的核心功能"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ls-deterministic-lockstep",
+      "target_domain": "game-engine",
+      "target_id": "unity-physics",
+      "relation": "related",
+      "description": "确定性帧同步要求引擎物理系统完全确定性"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ch-asset-bundle",
+      "target_domain": "game-engine",
+      "target_id": "ue5-data-asset",
+      "relation": "related",
+      "description": "热更新资源包依赖引擎的资产管理系统"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-sa-microservices",
+      "target_domain": "software-engineering",
+      "target_id": "se-microservices",
+      "relation": "related",
+      "description": "游戏后端微服务架构遵循软件工程微服务设计原则"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-sa-devops-gameserver",
+      "target_domain": "software-engineering",
+      "target_id": "se-cicd-intro",
+      "relation": "related",
+      "description": "游戏服务器DevOps依赖CI/CD管线"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-db-sql-vs-nosql",
+      "target_domain": "software-engineering",
+      "target_id": "se-database-arch",
+      "relation": "related",
+      "description": "游戏数据库选型遵循软件工程数据库设计原则"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-sa-message-queue",
+      "target_domain": "software-engineering",
+      "target_id": "se-event-queue",
+      "relation": "related",
+      "description": "游戏后端消息队列遵循分布式消息传递模式"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-mm-sbmm",
+      "target_domain": "game-design",
+      "target_id": "difficulty-overview",
+      "relation": "related",
+      "description": "技能匹配通过控制对手强度实现难度曲线"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ac-economy-protection",
+      "target_domain": "game-design",
+      "target_id": "currency-design",
+      "relation": "related",
+      "description": "经济保护防止虚拟货币系统被作弊破坏"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-chat-system",
+      "target_domain": "game-design",
+      "target_id": "social-design-intro",
+      "relation": "related",
+      "description": "聊天系统是游戏社交系统的技术实现"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lr-leaderboard-design",
+      "target_domain": "game-design",
+      "target_id": "hit-feedback",
+      "relation": "related",
+      "description": "排行榜是玩家进度反馈的重要呈现形式"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-room-browser",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-menu-system-overview",
+      "relation": "related",
+      "description": "房间列表UI是菜单系统的典型复杂页面"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-queue-status",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-hud-design-overview",
+      "relation": "related",
+      "description": "匹配队列状态通过HUD状态指示器展示"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lr-data-visualization",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-hud-minimap",
+      "relation": "related",
+      "description": "玩家统计数据可视化复用UI数据展示组件"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ss-interest-management",
+      "target_domain": "level-design",
+      "target_id": "spatial-storytelling",
+      "relation": "related",
+      "description": "AOI兴趣管理依赖关卡的空间分区策略"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-mm-map-selection",
+      "target_domain": "level-design",
+      "target_id": "layout-guidance",
+      "relation": "related",
+      "description": "地图选择机制需要考虑关卡设计的平衡性"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ss-animation-sync",
+      "target_domain": "animation",
+      "target_id": "anim-sub-state-machine",
+      "relation": "related",
+      "description": "网络动画同步需要同步动画状态机状态"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-chat-system",
+      "target_domain": "narrative-design",
+      "target_id": "nd-ds-dialogue-tree",
+      "relation": "related",
+      "description": "多人聊天系统与NPC对话系统共用部分技术"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-clan-guild",
+      "target_domain": "narrative-design",
+      "target_id": "nd-wb-faction-design",
+      "relation": "related",
+      "description": "公会系统与叙事阵营系统在社交结构上相关"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ch-asset-bundle",
+      "target_domain": "technical-art",
+      "target_id": "ta-gpu-pipeline",
+      "relation": "related",
+      "description": "资源包热更新依赖技术美术的构建管线"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-ss-bandwidth-optimization",
+      "target_domain": "vfx",
+      "target_id": "vfx-particle-overview",
+      "relation": "related",
+      "description": "带宽优化限制网络同步的粒子特效数量"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-mm-eomm",
+      "target_domain": "psychology",
+      "target_id": "motivation-behavioral",
+      "relation": "related",
+      "description": "参与度优化匹配利用内在/外在动机理论"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-lb-social-features",
+      "target_domain": "concept-design",
+      "target_id": "cd-char-expression-sheet",
+      "relation": "related",
+      "description": "玩家社交档案展示角色设计的视觉形象"
+    },
+    {
+      "source_domain": "multiplayer-network",
+      "source_id": "mn-sa-server-orchestration",
+      "target_domain": "game-engine",
+      "target_id": "network-profiling",
+      "relation": "related",
+      "description": "服务器编排监控依赖游戏引擎的网络性能分析工具"
     }
   ],
   "meta": {

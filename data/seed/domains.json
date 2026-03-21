@@ -263,6 +263,17 @@
       "rag_dir": "narrative-design",
       "is_active": true,
       "sort_order": 24
+    },
+    {
+      "id": "multiplayer-network",
+      "name": "网络多人",
+      "description": "网络多人游戏知识体系，覆盖网络架构、状态同步、帧同步、匹配系统、反作弊、服务端架构、数据库设计、CDN与热更新、大厅系统与排行榜",
+      "icon": "🌐",
+      "color": "#0369a1",
+      "seed_dir": "multiplayer-network",
+      "rag_dir": "multiplayer-network",
+      "is_active": true,
+      "sort_order": 25
     }
   ]
 }
