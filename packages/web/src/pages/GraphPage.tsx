@@ -411,11 +411,16 @@ export function GraphPage() {
 
 
       {/* ===== MODALS ===== */}
-      <DraggableModal open={showDashboard} onClose={() => setShowDashboard(false)} title="学习进度" width={560} height={720}>
-        <DashboardContent onNavigate={(conceptId) => {
-          setShowDashboard(false);
-          navigate(`/domain/${urlDomainId}/${conceptId}`, { replace: true });
-        }} />
+      <DraggableModal open={showDashboard} onClose={() => setShowDashboard(false)} title="学习进度" width={820} height={680}>
+        <DashboardContent
+          onNavigate={(conceptId) => {
+            setShowDashboard(false);
+            navigate(`/domain/${urlDomainId}/${conceptId}`, { replace: true });
+          }}
+          onDomainSwitch={() => {
+            setShowDashboard(false);
+          }}
+        />
       </DraggableModal>
       <DraggableModal open={showSettings} onClose={() => setShowSettings(false)} title="设置" width={520} height={760}>
         <SettingsContent />
