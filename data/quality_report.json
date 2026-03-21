@@ -1,588 +1,588 @@
 {
-  "_generated": "2026-03-21T16:44:46.332185",
+  "_generated": "2026-03-21T23:41:18.145605",
   "_version": "scorer-v1.0",
   "total_docs": 6156,
-  "avg_score": 46.6,
+  "avg_score": 85.9,
   "tier_distribution": {
-    "S": 1115,
-    "A": 132,
-    "B": 2155,
-    "C": 2754
+    "S": 6104,
+    "A": 14,
+    "B": 23,
+    "C": 15
   },
   "domain_summary": {
     "3d-art": {
       "count": 226,
-      "avg_score": 64.6,
-      "min_score": 42.2,
+      "avg_score": 86.8,
+      "min_score": 82.1,
       "max_score": 94.2,
       "tiers": {
-        "S": 104,
+        "S": 226,
         "A": 0,
-        "B": 122,
+        "B": 0,
         "C": 0
       }
     },
     "ai-engineering": {
       "count": 394,
-      "avg_score": 60.3,
-      "min_score": 40.9,
-      "max_score": 99.9,
+      "avg_score": 87.2,
+      "min_score": 82.1,
+      "max_score": 93.3,
       "tiers": {
-        "S": 46,
-        "A": 58,
-        "B": 290,
+        "S": 394,
+        "A": 0,
+        "B": 0,
         "C": 0
       }
     },
     "animation": {
       "count": 180,
-      "avg_score": 54.8,
-      "min_score": 41.8,
+      "avg_score": 86.2,
+      "min_score": 82.9,
       "max_score": 92.7,
       "tiers": {
-        "S": 36,
+        "S": 180,
         "A": 0,
-        "B": 144,
+        "B": 0,
         "C": 0
       }
     },
     "biology": {
       "count": 169,
-      "avg_score": 35.1,
-      "min_score": 18.5,
+      "avg_score": 85.3,
+      "min_score": 74.0,
       "max_score": 93.3,
       "tiers": {
-        "S": 36,
+        "S": 167,
         "A": 2,
         "B": 0,
-        "C": 131
+        "C": 0
       }
     },
     "computer-graphics": {
       "count": 250,
-      "avg_score": 46.5,
-      "min_score": 29.2,
-      "max_score": 93.3,
+      "avg_score": 85.4,
+      "min_score": 81.6,
+      "max_score": 90.7,
       "tiers": {
-        "S": 56,
+        "S": 250,
         "A": 0,
         "B": 0,
-        "C": 194
+        "C": 0
       }
     },
     "concept-design": {
       "count": 220,
-      "avg_score": 52.6,
-      "min_score": 36.1,
-      "max_score": 89.6,
+      "avg_score": 85.6,
+      "min_score": 81.6,
+      "max_score": 89.1,
       "tiers": {
-        "S": 39,
+        "S": 220,
         "A": 0,
-        "B": 98,
-        "C": 83
+        "B": 0,
+        "C": 0
       }
     },
     "economics": {
       "count": 166,
-      "avg_score": 32.3,
-      "min_score": 18.8,
-      "max_score": 94.3,
+      "avg_score": 86.3,
+      "min_score": 82.1,
+      "max_score": 91.9,
       "tiers": {
-        "S": 29,
+        "S": 166,
         "A": 0,
         "B": 0,
-        "C": 137
+        "C": 0
       }
     },
     "english": {
       "count": 188,
-      "avg_score": 43.7,
-      "min_score": 27.2,
-      "max_score": 91.1,
+      "avg_score": 84.6,
+      "min_score": 81.3,
+      "max_score": 88.6,
       "tiers": {
-        "S": 26,
+        "S": 188,
         "A": 0,
-        "B": 27,
-        "C": 135
+        "B": 0,
+        "C": 0
       }
     },
     "finance": {
       "count": 161,
-      "avg_score": 35.8,
-      "min_score": 17.2,
-      "max_score": 92.6,
+      "avg_score": 85.0,
+      "min_score": 19.5,
+      "max_score": 90.6,
       "tiers": {
-        "S": 33,
+        "S": 152,
         "A": 8,
         "B": 0,
-        "C": 120
+        "C": 1
       }
     },
     "game-audio-music": {
       "count": 180,
-      "avg_score": 53.9,
-      "min_score": 38.4,
-      "max_score": 95.4,
+      "avg_score": 88.9,
+      "min_score": 84.9,
+      "max_score": 94.2,
       "tiers": {
-        "S": 43,
+        "S": 180,
         "A": 0,
-        "B": 127,
-        "C": 10
+        "B": 0,
+        "C": 0
       }
     },
     "game-audio-sfx": {
       "count": 180,
-      "avg_score": 50.7,
-      "min_score": 42.7,
-      "max_score": 91.3,
+      "avg_score": 87.3,
+      "min_score": 85.1,
+      "max_score": 91.1,
       "tiers": {
-        "S": 27,
+        "S": 180,
         "A": 0,
-        "B": 153,
+        "B": 0,
         "C": 0
       }
     },
     "game-design": {
       "count": 243,
-      "avg_score": 30.1,
+      "avg_score": 84.1,
       "min_score": 19.5,
-      "max_score": 91.8,
+      "max_score": 89.9,
       "tiers": {
-        "S": 33,
+        "S": 242,
         "A": 0,
         "B": 0,
-        "C": 210
+        "C": 1
       }
     },
     "game-engine": {
       "count": 304,
-      "avg_score": 37.6,
+      "avg_score": 83.9,
       "min_score": 20.6,
-      "max_score": 94.2,
+      "max_score": 93.0,
       "tiers": {
-        "S": 44,
+        "S": 300,
         "A": 0,
         "B": 1,
-        "C": 259
+        "C": 3
       }
     },
     "game-live-ops": {
       "count": 180,
-      "avg_score": 48.3,
-      "min_score": 35.1,
-      "max_score": 93.8,
+      "avg_score": 88.1,
+      "min_score": 85.1,
+      "max_score": 91.2,
       "tiers": {
-        "S": 35,
+        "S": 180,
         "A": 0,
         "B": 0,
-        "C": 145
+        "C": 0
       }
     },
     "game-production": {
       "count": 160,
-      "avg_score": 59.7,
-      "min_score": 48.8,
-      "max_score": 93.6,
+      "avg_score": 88.5,
+      "min_score": 84.9,
+      "max_score": 91.9,
       "tiers": {
-        "S": 32,
+        "S": 160,
         "A": 0,
-        "B": 128,
+        "B": 0,
         "C": 0
       }
     },
     "game-publishing": {
       "count": 180,
-      "avg_score": 52.3,
-      "min_score": 44.8,
+      "avg_score": 88.0,
+      "min_score": 84.4,
       "max_score": 93.1,
       "tiers": {
-        "S": 27,
+        "S": 180,
         "A": 0,
-        "B": 153,
+        "B": 0,
         "C": 0
       }
     },
     "game-qa": {
       "count": 160,
-      "avg_score": 59.5,
-      "min_score": 42.4,
-      "max_score": 96.6,
+      "avg_score": 87.6,
+      "min_score": 84.4,
+      "max_score": 94.2,
       "tiers": {
-        "S": 32,
+        "S": 160,
         "A": 0,
-        "B": 128,
+        "B": 0,
         "C": 0
       }
     },
     "game-ui-ux": {
       "count": 200,
-      "avg_score": 58.3,
-      "min_score": 32.5,
+      "avg_score": 88.8,
+      "min_score": 84.6,
       "max_score": 94.4,
       "tiers": {
-        "S": 25,
-        "A": 17,
-        "B": 141,
-        "C": 17
+        "S": 200,
+        "A": 0,
+        "B": 0,
+        "C": 0
       }
     },
     "level-design": {
       "count": 199,
-      "avg_score": 34.4,
-      "min_score": 25.0,
-      "max_score": 92.1,
+      "avg_score": 84.4,
+      "min_score": 81.3,
+      "max_score": 89.2,
       "tiers": {
-        "S": 28,
+        "S": 199,
         "A": 0,
         "B": 0,
-        "C": 171
+        "C": 0
       }
     },
     "mathematics": {
       "count": 269,
-      "avg_score": 50.6,
-      "min_score": 18.8,
-      "max_score": 92.1,
+      "avg_score": 84.7,
+      "min_score": 48.8,
+      "max_score": 89.1,
       "tiers": {
-        "S": 29,
-        "A": 0,
-        "B": 238,
-        "C": 2
+        "S": 263,
+        "A": 4,
+        "B": 2,
+        "C": 0
       }
     },
     "multiplayer-network": {
       "count": 200,
-      "avg_score": 42.5,
-      "min_score": 29.6,
-      "max_score": 92.6,
+      "avg_score": 86.9,
+      "min_score": 83.2,
+      "max_score": 91.4,
       "tiers": {
-        "S": 37,
+        "S": 200,
         "A": 0,
         "B": 0,
-        "C": 163
+        "C": 0
       }
     },
     "narrative-design": {
       "count": 180,
-      "avg_score": 59.9,
-      "min_score": 30.1,
-      "max_score": 91.3,
+      "avg_score": 87.5,
+      "min_score": 82.6,
+      "max_score": 92.4,
       "tiers": {
-        "S": 25,
-        "A": 31,
-        "B": 108,
-        "C": 16
+        "S": 180,
+        "A": 0,
+        "B": 0,
+        "C": 0
       }
     },
     "philosophy": {
       "count": 171,
-      "avg_score": 35.0,
-      "min_score": 19.5,
-      "max_score": 90.6,
+      "avg_score": 84.6,
+      "min_score": 55.0,
+      "max_score": 90.2,
       "tiers": {
-        "S": 31,
+        "S": 169,
         "A": 0,
         "B": 2,
-        "C": 138
+        "C": 0
       }
     },
     "physics": {
       "count": 194,
-      "avg_score": 47.3,
-      "min_score": 39.8,
-      "max_score": 91.8,
+      "avg_score": 85.9,
+      "min_score": 82.1,
+      "max_score": 89.4,
       "tiers": {
-        "S": 26,
+        "S": 194,
         "A": 0,
-        "B": 154,
-        "C": 14
+        "B": 0,
+        "C": 0
       }
     },
     "product-design": {
       "count": 186,
-      "avg_score": 29.1,
-      "min_score": 17.2,
-      "max_score": 93.6,
+      "avg_score": 84.2,
+      "min_score": 20.6,
+      "max_score": 91.2,
       "tiers": {
-        "S": 25,
+        "S": 180,
         "A": 0,
-        "B": 2,
-        "C": 159
+        "B": 3,
+        "C": 3
       }
     },
     "psychology": {
       "count": 191,
-      "avg_score": 35.9,
-      "min_score": 18.0,
-      "max_score": 92.1,
+      "avg_score": 84.4,
+      "min_score": 33.4,
+      "max_score": 90.9,
       "tiers": {
-        "S": 42,
+        "S": 184,
         "A": 0,
-        "B": 3,
-        "C": 146
+        "B": 6,
+        "C": 1
       }
     },
     "software-engineering": {
       "count": 280,
-      "avg_score": 38.2,
-      "min_score": 26.9,
-      "max_score": 93.8,
+      "avg_score": 84.6,
+      "min_score": 81.6,
+      "max_score": 89.9,
       "tiers": {
-        "S": 47,
+        "S": 280,
         "A": 0,
         "B": 0,
-        "C": 233
+        "C": 0
       }
     },
     "technical-art": {
       "count": 180,
-      "avg_score": 43.0,
-      "min_score": 24.6,
-      "max_score": 92.8,
+      "avg_score": 86.2,
+      "min_score": 82.9,
+      "max_score": 93.6,
       "tiers": {
-        "S": 36,
+        "S": 180,
         "A": 0,
-        "B": 14,
-        "C": 130
+        "B": 0,
+        "C": 0
       }
     },
     "vfx": {
       "count": 180,
-      "avg_score": 61.8,
-      "min_score": 42.2,
-      "max_score": 93.3,
+      "avg_score": 87.8,
+      "min_score": 83.9,
+      "max_score": 93.1,
       "tiers": {
-        "S": 44,
-        "A": 16,
-        "B": 120,
+        "S": 180,
+        "A": 0,
+        "B": 0,
         "C": 0
       }
     },
     "writing": {
       "count": 185,
-      "avg_score": 38.8,
-      "min_score": 17.2,
-      "max_score": 91.1,
+      "avg_score": 82.0,
+      "min_score": 32.4,
+      "max_score": 90.0,
       "tiers": {
-        "S": 42,
+        "S": 170,
         "A": 0,
-        "B": 2,
-        "C": 141
+        "B": 9,
+        "C": 6
       }
     }
   },
   "top10_best": [
     {
-      "file": "llm-core\\attention-mechanism.md",
-      "concept": "注意力机制",
-      "score": 99.9,
+      "file": "game-ui-ux\\guiux-tech-performance.md",
+      "concept": "UI性能优化",
+      "score": 94.4,
       "tier": "S",
-      "domain": "ai-engineering"
+      "domain": "game-ui-ux"
     },
     {
-      "file": "rag-knowledge\\graph-rag.md",
-      "concept": "Graph RAG",
-      "score": 99.9,
+      "file": "3d-art\\3da-tex-substance-painter.md",
+      "concept": "Substance Painter",
+      "score": 94.2,
       "tier": "S",
-      "domain": "ai-engineering"
-    },
-    {
-      "file": "llm-core\\llm-distillation.md",
-      "concept": "Model Distillation",
-      "score": 99.0,
-      "tier": "S",
-      "domain": "ai-engineering"
-    },
-    {
-      "file": "llm-core\\kv-cache.md",
-      "concept": "KV Cache",
-      "score": 97.9,
-      "tier": "S",
-      "domain": "ai-engineering"
-    },
-    {
-      "file": "agent-systems\\tool-use.md",
-      "concept": "工具调用(Function Calling)",
-      "score": 96.6,
-      "tier": "S",
-      "domain": "ai-engineering"
-    },
-    {
-      "file": "game-qa\\qa-pt-gpu-profiling.md",
-      "concept": "GPU Profiling",
-      "score": 96.6,
-      "tier": "S",
-      "domain": "game-qa"
-    },
-    {
-      "file": "llm-core\\llm-safety-alignment.md",
-      "concept": "LLM Safety and Alignment",
-      "score": 96.6,
-      "tier": "S",
-      "domain": "ai-engineering"
-    },
-    {
-      "file": "llm-core\\flash-attention.md",
-      "concept": "FlashAttention",
-      "score": 95.7,
-      "tier": "S",
-      "domain": "ai-engineering"
+      "domain": "3d-art"
     },
     {
       "file": "game-audio-music\\game-audio-music-wwise-music-segment.md",
       "concept": "Music Segment",
-      "score": 95.4,
+      "score": 94.2,
+      "tier": "S",
+      "domain": "game-audio-music"
+    },
+    {
+      "file": "game-qa\\qa-pt-gpu-profiling.md",
+      "concept": "GPU Profiling",
+      "score": 94.2,
+      "tier": "S",
+      "domain": "game-qa"
+    },
+    {
+      "file": "game-audio-music\\game-audio-music-fmod-transition-region.md",
+      "concept": "Transition Region",
+      "score": 93.7,
       "tier": "S",
       "domain": "game-audio-music"
     },
     {
       "file": "game-audio-music\\game-audio-music-case-study-leitmotif.md",
       "concept": "案例分析:主题动机",
-      "score": 94.8,
+      "score": 93.6,
       "tier": "S",
       "domain": "game-audio-music"
+    },
+    {
+      "file": "technical-art\\ta-shader-overview.md",
+      "concept": "Shader开发概述",
+      "score": 93.6,
+      "tier": "S",
+      "domain": "technical-art"
+    },
+    {
+      "file": "agent-systems\\tool-use.md",
+      "concept": "工具调用(Function Calling)",
+      "score": 93.3,
+      "tier": "S",
+      "domain": "ai-engineering"
+    },
+    {
+      "file": "biology\\cell-biology\\cell-membrane.md",
+      "concept": "细胞膜",
+      "score": 93.3,
+      "tier": "S",
+      "domain": "biology"
+    },
+    {
+      "file": "llm-core\\llm-safety-alignment.md",
+      "concept": "LLM Safety and Alignment",
+      "score": 93.3,
+      "tier": "S",
+      "domain": "ai-engineering"
     }
   ],
   "top20_worst": [
     {
-      "file": "finance\\quantitative-finance\\execution-cost.md",
-      "concept": "交易执行成本",
-      "score": 17.2,
+      "file": "economics\\behavioral-econ\\behavioral-finance.md",
+      "concept": "行为金融学",
+      "score": 19.5,
       "tier": "C",
       "domain": "finance"
     },
     {
-      "file": "finance\\quantitative-finance\\market-microstructure.md",
-      "concept": "市场微结构",
-      "score": 17.2,
+      "file": "economics\\behavioral-econ\\endowment-effect.md",
+      "concept": "禀赋效应",
+      "score": 19.5,
       "tier": "C",
-      "domain": "finance"
+      "domain": "game-design"
     },
     {
-      "file": "finance\\quantitative-finance\\momentum-strategy.md",
-      "concept": "动量策略",
-      "score": 17.2,
+      "file": "game-design\\systems-design\\mvp-design.md",
+      "concept": "MVP设计",
+      "score": 20.6,
       "tier": "C",
-      "domain": "finance"
+      "domain": "product-design"
     },
     {
-      "file": "finance\\quantitative-finance\\risk-factor-analysis.md",
-      "concept": "风险因子分析",
-      "score": 17.2,
+      "file": "game-design\\systems-design\\weather-system.md",
+      "concept": "天气系统",
+      "score": 20.6,
       "tier": "C",
-      "domain": "finance"
+      "domain": "game-engine"
     },
     {
-      "file": "finance\\quantitative-finance\\sentiment-analysis-finance.md",
-      "concept": "金融情绪分析",
-      "score": 17.2,
+      "file": "game-design\\systems-design\\systems-thinking.md",
+      "concept": "系统思维",
+      "score": 25.1,
       "tier": "C",
-      "domain": "finance"
+      "domain": "product-design"
     },
     {
-      "file": "finance\\risk-management\\currency-risk.md",
-      "concept": "汇率风险",
-      "score": 17.2,
+      "file": "english\\writing-en\\report-writing.md",
+      "concept": "报告写作",
+      "score": 32.4,
       "tier": "C",
-      "domain": "finance"
+      "domain": "writing"
     },
     {
-      "file": "finance\\risk-management\\hedging-strategies.md",
-      "concept": "对冲策略",
-      "score": 17.2,
+      "file": "english\\writing-en\\writing-process.md",
+      "concept": "写作过程",
+      "score": 32.6,
       "tier": "C",
-      "domain": "finance"
+      "domain": "writing"
     },
     {
-      "file": "finance\\risk-management\\insurance-products.md",
-      "concept": "保险产品",
-      "score": 17.2,
+      "file": "game-design\\design-docs\\competitive-analysis.md",
+      "concept": "竞品分析",
+      "score": 33.4,
       "tier": "C",
-      "domain": "finance"
+      "domain": "product-design"
     },
     {
-      "file": "finance\\risk-management\\liquidity-risk.md",
-      "concept": "流动性风险",
-      "score": 17.2,
+      "file": "game-design\\player-psychology\\cognitive-load.md",
+      "concept": "认知负荷",
+      "score": 33.4,
       "tier": "C",
-      "domain": "finance"
+      "domain": "psychology"
     },
     {
-      "file": "finance\\risk-management\\market-risk.md",
-      "concept": "市场风险",
-      "score": 17.2,
+      "file": "game-design\\social-systems\\replay-system.md",
+      "concept": "回放系统",
+      "score": 33.4,
       "tier": "C",
-      "domain": "finance"
+      "domain": "game-engine"
     },
     {
-      "file": "finance\\risk-management\\operational-risk.md",
-      "concept": "操作风险",
-      "score": 17.2,
+      "file": "game-design\\systems-design\\achievement-system.md",
+      "concept": "成就系统",
+      "score": 33.4,
       "tier": "C",
-      "domain": "finance"
+      "domain": "game-engine"
     },
     {
-      "file": "finance\\risk-management\\options-strategies.md",
-      "concept": "期权策略",
-      "score": 17.2,
+      "file": "english\\writing-en\\word-choice.md",
+      "concept": "词语选择",
+      "score": 33.9,
       "tier": "C",
-      "domain": "finance"
+      "domain": "writing"
     },
     {
-      "file": "finance\\risk-management\\regulatory-framework.md",
-      "concept": "金融监管",
-      "score": 17.2,
+      "file": "english\\writing-en\\summary-writing.md",
+      "concept": "摘要写作",
+      "score": 34.4,
       "tier": "C",
-      "domain": "finance"
+      "domain": "writing"
     },
     {
-      "file": "finance\\risk-management\\risk-budgeting.md",
-      "concept": "风险预算",
-      "score": 17.2,
+      "file": "english\\writing-en\\sentence-variety.md",
+      "concept": "句式变化",
+      "score": 36.1,
       "tier": "C",
-      "domain": "finance"
+      "domain": "writing"
     },
     {
-      "file": "finance\\risk-management\\stress-testing.md",
-      "concept": "压力测试",
-      "score": 17.2,
+      "file": "english\\writing-en\\paragraph-structure.md",
+      "concept": "段落结构",
+      "score": 36.4,
       "tier": "C",
-      "domain": "finance"
+      "domain": "writing"
     },
     {
-      "file": "finance\\risk-management\\swap-contracts.md",
-      "concept": "互换合约",
-      "score": 17.2,
-      "tier": "C",
-      "domain": "finance"
-    },
-    {
-      "file": "finance\\risk-management\\systemic-risk.md",
-      "concept": "系统性风险",
-      "score": 17.2,
-      "tier": "C",
-      "domain": "finance"
-    },
-    {
-      "file": "product-design\\growth\\community-building.md",
-      "concept": "社区建设",
-      "score": 17.2,
-      "tier": "C",
+      "file": "game-design\\core-loop\\onboarding-design.md",
+      "concept": "新手引导设计",
+      "score": 40.6,
+      "tier": "B",
       "domain": "product-design"
     },
     {
       "file": "product-design\\growth\\content-marketing.md",
       "concept": "内容营销写作",
-      "score": 17.2,
-      "tier": "C",
+      "score": 47.2,
+      "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "product-design\\growth\\email-marketing.md",
-      "concept": "邮件营销",
-      "score": 17.2,
-      "tier": "C",
-      "domain": "product-design"
+      "file": "level-design\\guidance-design\\show-dont-tell.md",
+      "concept": "展示而非告知",
+      "score": 47.8,
+      "tier": "B",
+      "domain": "writing"
+    },
+    {
+      "file": "english\\writing-en\\review-writing.md",
+      "concept": "评论写作",
+      "score": 47.9,
+      "tier": "B",
+      "domain": "writing"
+    },
+    {
+      "file": "economics\\econometrics\\linear-regression.md",
+      "concept": "线性回归",
+      "score": 48.8,
+      "tier": "B",
+      "domain": "mathematics"
     }
   ]
 }

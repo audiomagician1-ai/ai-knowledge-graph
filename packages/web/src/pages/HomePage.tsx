@@ -81,14 +81,14 @@ const BG = '#f0f0ec';          // slightly brighter warm grey
 const TRANSITION_MS = 900;
 const DPR = typeof window !== 'undefined' ? Math.min(window.devicePixelRatio || 1, 2) : 1;
 
-/* ─── Layout & Fisheye (Circular 3-ring lens) ─── */
-const BASE_R = 32;             // base bubble radius at scale=1
-const HEX_SPACING = 76;       // hex grid spacing
-const FISH_MAX = 2.2;         // scale at center (large!)
-const FISH_MIN = 0.15;        // scale at outer edge (small color dots)
-const FISH_POWER = 2.4;       // steep curve: ring 1 big, ring 2 medium, ring 3 tiny
-const FISH_PUSH = 0.85;       // push center bubbles apart more
-const FISH_R_FACTOR = 0.52;   // fishR = min(W,H) * factor → circular, fits 3 rings
+/* ─── Layout & Fisheye (Tight circular 3-ring lens, 150% scale) ─── */
+const BASE_R = 48;             // base bubble radius at scale=1 (was 32, +50%)
+const HEX_SPACING = 114;      // hex grid spacing (was 76, +50%)
+const FISH_MAX = 2.4;         // scale at center (large!)
+const FISH_MIN = 0.05;        // scale at outer edge (tiny dots, no text)
+const FISH_POWER = 3.2;       // very steep curve: huge center → tiny edge
+const FISH_PUSH = 0.9;        // push center bubbles apart more
+const FISH_R_FACTOR = 0.58;   // fishR = min(W,H) * factor → 150% bigger circle
 const INITIAL_PAN_Y = 25;     // shift grid down for header
 const FRICTION = 0.93;
 const VEL_THRESHOLD = 0.3;
@@ -441,6 +441,12 @@ export function HomePage() {
       ctx.fillStyle = BG;
       ctx.fillRect(0, 0, W, H);
 
+      /* Clip to perfect circle — enforces round shape on widescreen */
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, fishR * 1.05, 0, Math.PI * 2);
+      ctx.clip();
+
       /* Build draw list with SCREEN-CENTERED fisheye */
       interface DrawItem {
         idx: number; sx: number; sy: number; sr: number;
@@ -475,8 +481,8 @@ export function HomePage() {
         const sx = centerX + bestDx * push;
         const sy = centerY + bestDy * push;
         const sr = BASE_R * scale;
-        // Alpha: ring 1 bright, ring 2 moderate, ring 3 faint dots
-        const alpha = Math.pow(t, 2.0);
+        // Alpha: steep falloff — center bright, edge nearly invisible
+        const alpha = Math.pow(t, 3.0);
 
         if (sx + sr < -20 || sx - sr > W + 20 || sy + sr < -20 || sy - sr > H + 20) continue;
         if (alpha < 0.02) continue;
@@ -502,15 +508,18 @@ export function HomePage() {
         drawBubble(ctx, dd.name, dd.color, dd.concepts, dd.subs, d.sx, d.sy, d.sr, d.alpha, d.idx === hovIdx);
       }
 
-      /* ─── Circular vignette: tight to fisheye radius ─── */
-      const vigInner = fishR * 0.55;  // fully clear zone (center + ring 1)
-      const vigOuter = fishR * 1.15;  // fully opaque zone
+      /* End clip */
+      ctx.restore();
+
+      /* ─── Circular vignette: smooth fade inside the clipped circle ─── */
+      const vigInner = fishR * 0.40;
+      const vigOuter = fishR * 1.05;
       const vigGrad = ctx.createRadialGradient(centerX, centerY, vigInner, centerX, centerY, vigOuter);
       vigGrad.addColorStop(0, 'rgba(240,240,236,0)');
-      vigGrad.addColorStop(0.3, 'rgba(240,240,236,0)');
-      vigGrad.addColorStop(0.55, 'rgba(240,240,236,0.4)');
-      vigGrad.addColorStop(0.75, 'rgba(240,240,236,0.8)');
-      vigGrad.addColorStop(0.9, 'rgba(240,240,236,0.96)');
+      vigGrad.addColorStop(0.25, 'rgba(240,240,236,0)');
+      vigGrad.addColorStop(0.5, 'rgba(240,240,236,0.25)');
+      vigGrad.addColorStop(0.7, 'rgba(240,240,236,0.65)');
+      vigGrad.addColorStop(0.85, 'rgba(240,240,236,0.92)');
       vigGrad.addColorStop(1, BG);
       ctx.fillStyle = vigGrad;
       ctx.fillRect(0, 0, W, H);
