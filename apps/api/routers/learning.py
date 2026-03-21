@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field, field_validator
 from db.sqlite_client import (
     get_all_progress, get_progress, start_learning, record_assessment,
     get_history, get_streak, refresh_streak, update_streak,
-    compute_stats,
+    compute_stats, get_bkt_state, update_bkt_state,
 )
 
 router = APIRouter()
@@ -83,9 +83,50 @@ async def start_learning_session(req: StartLearningRequest):
 
 @router.post("/assess")
 async def record_assessment_result(req: RecordAssessmentRequest):
-    """记录评估结果 — 可能标记为 mastered"""
+    """记录评估结果 — 更新学习进度 + BKT知识追踪"""
+    import json as _json
+    from engines.learning.tracker import KnowledgeTracker, BKTState, BKTParams
+
     progress = record_assessment(req.concept_id, req.concept_name, req.score, req.mastered)
-    return {"success": True, "progress": progress, "mastered": req.mastered}
+
+    # ── BKT Update ──
+    tracker = KnowledgeTracker()
+
+    # Load existing BKT state or initialize
+    bkt_data = get_bkt_state(req.concept_id)
+    if bkt_data:
+        state = BKTState.from_db(
+            p_mastery=bkt_data['p_mastery'],
+            observations=bkt_data['observations'],
+            correct_count=bkt_data['correct_count'],
+            params_json=bkt_data['params_json'],
+        )
+    else:
+        state = tracker.init_state()  # default params
+
+    # Update with observation (score >= 70 = correct)
+    state = tracker.update_from_score(state, req.score, threshold=70.0)
+
+    # Persist updated BKT state
+    update_bkt_state(
+        req.concept_id,
+        p_mastery=state.p_mastery,
+        observations=state.observations,
+        correct_count=state.correct_count,
+        params_json=_json.dumps(state.params.to_dict()),
+    )
+
+    return {
+        "success": True,
+        "progress": progress,
+        "mastered": req.mastered,
+        "bkt": {
+            "p_mastery": round(state.p_mastery, 4),
+            "classification": state.classification,
+            "observations": state.observations,
+            "is_mastered": state.is_mastered,
+        },
+    }
 
 
 @router.get("/history")
@@ -98,6 +139,79 @@ async def get_learning_history(limit: int = Query(100, ge=1, le=1000)):
 async def get_learning_streak():
     """获取连续学习天数"""
     return refresh_streak()
+
+
+@router.get("/mastery/{concept_id}")
+async def get_concept_mastery(concept_id: str):
+    """Get BKT mastery analysis for a concept.
+
+    Returns probabilistic mastery estimate based on Bayesian Knowledge Tracing,
+    including P(L), observation history, mastery classification, and predicted
+    performance on next attempt.
+    """
+    from engines.learning.tracker import KnowledgeTracker, BKTState
+
+    bkt_data = get_bkt_state(concept_id)
+    if not bkt_data:
+        return {
+            "concept_id": concept_id,
+            "has_bkt_data": False,
+            "p_mastery": 0.0,
+            "classification": "novice",
+            "observations": 0,
+            "is_mastered": False,
+            "message": "No BKT data — concept has not been assessed yet",
+        }
+
+    state = BKTState.from_db(
+        p_mastery=bkt_data['p_mastery'],
+        observations=bkt_data['observations'],
+        correct_count=bkt_data['correct_count'],
+        params_json=bkt_data['params_json'],
+    )
+
+    tracker = KnowledgeTracker()
+    predicted_correct = tracker.predict_correct(state)
+    est_attempts = tracker.expected_attempts_to_mastery(state)
+
+    return {
+        "concept_id": concept_id,
+        "has_bkt_data": True,
+        **state.to_dict(),
+        "predicted_correct_probability": round(predicted_correct, 4),
+        "estimated_attempts_to_mastery": est_attempts if not state.is_mastered else 0,
+    }
+
+
+@router.get("/mastery")
+async def get_all_mastery():
+    """Get BKT mastery data for all tracked concepts."""
+    from db.sqlite_client import get_all_bkt_states
+    from engines.learning.tracker import BKTState
+
+    all_bkt = get_all_bkt_states()
+    results = []
+    for row in all_bkt:
+        state = BKTState.from_db(
+            p_mastery=row['bkt_mastery'],
+            observations=row['bkt_observations'],
+            correct_count=row['bkt_correct_count'],
+            params_json=row['bkt_params_json'],
+        )
+        results.append({
+            "concept_id": row['concept_id'],
+            "p_mastery": round(state.p_mastery, 4),
+            "classification": state.classification,
+            "observations": state.observations,
+            "is_mastered": state.is_mastered,
+        })
+
+    mastered_count = sum(1 for r in results if r['is_mastered'])
+    return {
+        "total_tracked": len(results),
+        "mastered_count": mastered_count,
+        "items": results,
+    }
 
 
 @router.post("/sync")
@@ -228,6 +342,10 @@ async def recommend_next(
     due_items = get_due_concepts(before=now, limit=200)
     due_concept_ids = {d["concept_id"]: d for d in due_items}
 
+    # Collect BKT mastery data for smarter prioritization
+    from db.sqlite_client import get_all_bkt_states
+    bkt_states = {r["concept_id"]: r for r in get_all_bkt_states()}
+
     # Score each candidate
     scored = []
     for c in candidates:
@@ -284,6 +402,22 @@ async def recommend_next(
                 # Strong boost for due reviews: 20 base + overdue bonus
                 score += 20.0 + min(overdue_days * 2.0, 10.0)
 
+            # Factor 7: BKT mastery-aware prioritization
+            # Concepts with partial mastery (0.3-0.7) are "in the zone of proximal development"
+            # — ideal for learning. Very low P(L) may need prerequisites; very high may be close to mastered.
+            if cid in bkt_states:
+                bkt = bkt_states[cid]
+                p_l = bkt["bkt_mastery"]
+                if 0.30 <= p_l < 0.70:
+                    # Zone of proximal development — high learning potential
+                    score += 8.0
+                elif 0.70 <= p_l < 0.90:
+                    # Close to mastery — one more push
+                    score += 5.0
+                elif p_l < 0.30 and bkt["bkt_observations"] >= 2:
+                    # Struggling — slight deprioritize (may need prerequisites)
+                    score -= 3.0
+
         scored.append({"concept": c, "score": score})
 
     # Sort by score descending, then difficulty ascending (tiebreaker for same score)
@@ -294,7 +428,8 @@ async def recommend_next(
     for item in scored[:top_k]:
         c = item["concept"]
         prog = progress_map.get(c["id"])
-        recommendations.append({
+        bkt = bkt_states.get(c["id"])
+        rec = {
             "concept_id": c["id"],
             "name": c["name"],
             "subdomain_id": c["subdomain_id"],
@@ -302,9 +437,12 @@ async def recommend_next(
             "estimated_minutes": c["estimated_minutes"],
             "is_milestone": c.get("is_milestone", False),
             "score": round(item["score"], 1),
-            "reason": _recommend_reason(c, prog, current_level, dependents_map, due_concept_ids),
+            "reason": _recommend_reason(c, prog, current_level, dependents_map, due_concept_ids, bkt_states),
             "status": prog["status"] if prog else "not_started",
-        })
+        }
+        if bkt:
+            rec["bkt_mastery"] = round(bkt["bkt_mastery"], 4)
+        recommendations.append(rec)
 
     return {
         "recommendations": recommendations,
@@ -315,7 +453,9 @@ async def recommend_next(
     }
 
 
-def _recommend_reason(concept: dict, progress: dict | None, current_level: float, deps_map: dict, due_map: dict | None = None) -> str:
+def _recommend_reason(concept: dict, progress: dict | None, current_level: float,
+                      deps_map: dict, due_map: dict | None = None,
+                      bkt_map: dict | None = None) -> str:
     """Generate a human-readable reason for the recommendation."""
     reasons = []
     if due_map and concept["id"] in due_map:
@@ -327,6 +467,13 @@ def _recommend_reason(concept: dict, progress: dict | None, current_level: float
     downstream = len(deps_map.get(concept["id"], []))
     if downstream >= 3:
         reasons.append(f"解锁 {downstream} 个后续知识点")
+    # BKT mastery-aware reason
+    if bkt_map and concept["id"] in bkt_map:
+        p_l = bkt_map[concept["id"]]["bkt_mastery"]
+        if 0.30 <= p_l < 0.70:
+            reasons.append("🧠 学习关键期")
+        elif 0.70 <= p_l < 0.90:
+            reasons.append("🔥 即将掌握")
     if not reasons:
         diff = concept["difficulty"]
         if diff <= current_level:

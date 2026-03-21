@@ -39,7 +39,7 @@
 
 ---
 
-**当前阶段**: ✅ **V1.0 FSRS间隔重复引擎完成** | RAG 100% Tier-S ✅ | 1,017测试全通过
+**当前阶段**: ✅ **V1.0 BKT知识追踪引擎完成** | FSRS ✅ | RAG 100% Tier-S ✅ | 1,068测试全通过
 **📊 RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
 > 6,156篇RAG文档质量审计: S=6,156 A=0 B=0 C=0 (均分86.2, **100% Tier-S**)
 > Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
@@ -70,7 +70,28 @@
 > **推荐集成**: /learning/recommend 新增Factor 6: FSRS到期复习优先(+20分基础+过期天数加成)
 > **测试**: 48新测试(算法/DB/API全覆盖), 总计1,017测试(804 BE + 213 FE), tsc 0 errors
 > **Issue**: #34
-> **下一步**: V1.0继续 — 成就系统 / BKT知识追踪器 / 前端FSRS复习UI集成
+> **下一步**: V1.0继续 — 成就系统 / 前端FSRS复习UI集成
+
+**V1.0 BKT知识追踪引擎完成摘要** (#36):
+> **目标**: 实现BKT(贝叶斯知识追踪)引擎, 替换空占位stub, 提供概率化掌握度估计
+> **KnowledgeTracker**: 完整BKT隐马尔可夫模型实现
+>   - 四参数模型: P(L0)先验/P(T)学习转换/P(G)猜测/P(S)失误
+>   - 贝叶斯后验更新: correct→P(L|obs)=(P(L)*(1-P(S)))/P(obs), incorrect→P(L|obs)=(P(L)*P(S))/P(obs)
+>   - 学习转换: P(L')=P(L|obs)+(1-P(L|obs))*P(T)
+>   - 难度自适应参数: BKTParams.for_difficulty(1-5) — 高难度→低P(L0)/低P(T)/高P(G)
+>   - 预测/模拟: predict_correct(下次答对概率), expected_attempts_to_mastery(到掌握还需几次)
+>   - 六级分类: novice/beginner/developing/proficient/mastered/expert
+> **数据层**: SQLite schema v4迁移(4个BKT字段: bkt_mastery/bkt_observations/bkt_correct_count/bkt_params_json)
+>   - get_bkt_state/update_bkt_state/get_all_bkt_states
+> **API**: 
+>   - POST /assess 集成BKT自动更新(score>=70=correct), 响应包含bkt{p_mastery,classification,observations,is_mastered}
+>   - GET /mastery/{concept_id} 完整BKT分析(P(L)/分类/预测/到掌握估计)
+>   - GET /mastery 全量BKT追踪概览
+> **推荐集成**: /recommend Factor 7: BKT掌握度感知(ZPD 0.3-0.7 +8分/接近掌握 0.7-0.9 +5分/挣扎中 -3分)
+>   - 推荐理由增加"🧠 学习关键期"/"🔥 即将掌握"
+> **测试**: 51新测试(参数9/状态7/算法19/DB 7/API 7/集成2), 总计1,068测试(855 BE + 213 FE), tsc 0 errors
+> **Issue**: #36
+> **下一步**: V1.0继续 — 成就系统 / 前端FSRS复习UI集成
 
 **Sprint 3 完成摘要** (AI-Rewrite-v1 全量精写):
 > **目标**: 5,005非里程碑概念AI精写, 全30域覆盖, 从Tier-C模板提升到Tier-S
@@ -93,7 +114,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-21 | **Scope**: V1.0 FSRS scheduler (#34) — FSRSScheduler algorithm (FSRS-6 compatible), DB v3 migration, /learning/due + /learning/review APIs, recommend integration, 48 new tests, 1017 total | **Result**: passed
+**Date**: 2026-03-22 | **Scope**: V1.0 BKT Knowledge Tracing (#36) — KnowledgeTracker BKT engine (4-param HMM), BKTParams/BKTState, DB v4 migration, /mastery endpoints, /assess+/recommend integration, 51 new tests, 1068 total | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub

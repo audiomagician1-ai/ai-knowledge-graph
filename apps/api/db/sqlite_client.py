@@ -33,7 +33,7 @@ else:
 _DB_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH = _DB_DIR / "akg_local.db"
 
-_SCHEMA_VERSION = 3
+_SCHEMA_VERSION = 4
 
 
 def _get_conn() -> sqlite3.Connection:
@@ -172,6 +172,23 @@ def init_db():
             conn.execute("INSERT OR REPLACE INTO schema_version (version) VALUES (3)")
             conn.commit()
             logger.info("SQLite schema migrated to v3 (FSRS spaced repetition fields)")
+
+        if version < 4:
+            # V4: Add BKT (Bayesian Knowledge Tracing) columns to concept_progress
+            _bkt_columns = [
+                ("bkt_mastery", "REAL NOT NULL DEFAULT 0"),        # Current P(L) — mastery probability
+                ("bkt_observations", "INTEGER NOT NULL DEFAULT 0"), # Total observation count
+                ("bkt_correct_count", "INTEGER NOT NULL DEFAULT 0"), # Correct observation count
+                ("bkt_params_json", "TEXT NOT NULL DEFAULT ''"),    # JSON-encoded BKT params (per-concept)
+            ]
+            for col_name, col_def in _bkt_columns:
+                try:
+                    conn.execute(f"ALTER TABLE concept_progress ADD COLUMN {col_name} {col_def}")
+                except Exception:
+                    pass  # Column already exists (re-run safe)
+            conn.execute("INSERT OR REPLACE INTO schema_version (version) VALUES (4)")
+            conn.commit()
+            logger.info("SQLite schema migrated to v4 (BKT knowledge tracing fields)")
 
 
     logger.info("SQLite DB initialized at %s", DB_PATH)
@@ -556,6 +573,75 @@ def get_due_concepts(before: float | None = None, limit: int = 50) -> list[dict]
                ORDER BY fsrs_due ASC
                LIMIT ?""",
             (before, limit),
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+# ════════════════════════════════════════════
+# BKT Knowledge Tracing
+# ════════════════════════════════════════════
+
+def get_bkt_state(concept_id: str) -> Optional[dict]:
+    """Get BKT state for a concept, or None if no record exists."""
+    with get_db() as conn:
+        row = conn.execute(
+            """SELECT concept_id, bkt_mastery, bkt_observations, bkt_correct_count, bkt_params_json
+               FROM concept_progress WHERE concept_id = ?""",
+            (concept_id,)
+        ).fetchone()
+        if not row:
+            return None
+        d = dict(row)
+        # Skip concepts that have never had BKT update (default zeros)
+        if d['bkt_observations'] == 0 and d['bkt_mastery'] == 0:
+            return None
+        return {
+            'concept_id': d['concept_id'],
+            'p_mastery': d['bkt_mastery'],
+            'observations': d['bkt_observations'],
+            'correct_count': d['bkt_correct_count'],
+            'params_json': d['bkt_params_json'],
+        }
+
+
+def update_bkt_state(concept_id: str, p_mastery: float, observations: int,
+                     correct_count: int, params_json: str = '') -> None:
+    """Update BKT fields for a concept. Creates concept_progress row if needed."""
+    now = time.time()
+    with get_db() as conn:
+        existing = conn.execute(
+            "SELECT concept_id FROM concept_progress WHERE concept_id = ?",
+            (concept_id,)
+        ).fetchone()
+        if not existing:
+            conn.execute(
+                """INSERT INTO concept_progress
+                   (concept_id, status, mastery_score, sessions, total_time_sec,
+                    created_at, updated_at, bkt_mastery, bkt_observations, bkt_correct_count, bkt_params_json)
+                   VALUES (?, 'not_started', 0, 0, 0, ?, ?, ?, ?, ?, ?)""",
+                (concept_id, now, now, p_mastery, observations, correct_count, params_json),
+            )
+        else:
+            conn.execute(
+                """UPDATE concept_progress SET
+                    bkt_mastery = ?,
+                    bkt_observations = ?,
+                    bkt_correct_count = ?,
+                    bkt_params_json = ?,
+                    updated_at = ?
+                WHERE concept_id = ?""",
+                (p_mastery, observations, correct_count, params_json, now, concept_id),
+            )
+
+
+def get_all_bkt_states() -> list[dict]:
+    """Get all concepts that have BKT tracking data (observations > 0)."""
+    with get_db() as conn:
+        rows = conn.execute(
+            """SELECT concept_id, bkt_mastery, bkt_observations, bkt_correct_count, bkt_params_json
+               FROM concept_progress
+               WHERE bkt_observations > 0
+               ORDER BY bkt_mastery DESC""",
         ).fetchall()
         return [dict(r) for r in rows]
 
