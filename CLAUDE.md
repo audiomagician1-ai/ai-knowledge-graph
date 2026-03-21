@@ -39,8 +39,8 @@
 
 ---
 
-**当前阶段**: 🔥 **Phase 33 下一步** | 26知识球(5,476节点) + Phase 32 音效设计球已完成
-**🔥 下一阶段**: **Phase 33-37 游戏开发全领域知识球** | 5个新球 — 详见 `docs/EXPANSION_PLAN.md` 第十章
+**当前阶段**: 🔥 **Phase 34 下一步** | 27知识球(5,656节点) + Phase 33 市场发行球已完成
+**🔥 下一阶段**: **Phase 34-37 游戏开发全领域知识球** | 4个新球 — 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 11球体 + 🔥20游戏开发球(P0最高优先级)
@@ -160,6 +160,16 @@
 > **子域**: 网络架构/状态同步/帧同步/匹配系统/反作弊/服务端架构/数据库设计/CDN与热更新/大厅系统/排行榜
 > **下一步**: Phase 32 音效设计知识球
 
+**Phase 33 完成摘要** (市场发行知识球):
+> **目标**: 上线第二十七个知识球 — 市场发行, 覆盖市场策略到评级合规 (游戏开发P0-D第二球)
+> **前置**: Phase 32 ✅ 完成 (音效设计球)
+> **已完成**: 33.1 种子图谱(180概念,191边,9子域,27里程碑) ✅ | 33.2 RAG文档(180篇) ✅ | 33.3 对话引擎适配 ✅ | 33.4 评估器适配 ✅ | 33.5 跨球体关联(24链接→14域) ✅ | 33.6 集成测试 ✅ | 33.7 Workers同步 ✅
+> **测试总数**: 945 (732 BE + 213 FE)
+> **数据完整性**: 5,656概念 0重复ID, 6,241边 0断引用, 511跨球链接全部有效, 27域RAG 100%覆盖
+> **修复**: 跨球体关联 — 24个game-publishing链接目标ID全部修正(原始生成的ID不匹配实际域内概念ID)
+> **子域**: 市场策略/用户获取(UA)/品牌建设/平台规则/社区运营/PR媒体关系/发行商合作/地区化运营/评级合规
+> **下一步**: Phase 34 运营知识球
+
 **Phase 32 完成摘要** (音效设计知识球):
 > **目标**: 上线第二十六个知识球 — 音效设计, 覆盖音效理论到音效优化 (游戏开发P0-D第一球)
 > **前置**: Phase 31 ✅ 完成 (网络多人球)
@@ -210,6 +220,7 @@
 | **Phase 30** | W85-87 | 叙事设计知识球(180节点, 157边, 9子域, 世界观+角色+对话+分支叙事+环境叙事教学, 跨球体关联, 游戏开发P0-C第四球) | ✅ 完成 (30.1-30.7, 926 tests) |
 | **Phase 31** | W88-90 | 网络多人知识球(200节点, 189边, 10子域, 网络架构+状态同步+帧同步+匹配+反作弊教学, 跨球体关联, 游戏开发P0-C第五球) | ✅ 完成 (31.1-31.7, 933 tests) |
 | **Phase 32** | W91-93 | 音效设计知识球(180节点, 190边, 9子域, 音效理论+Foley+中间件+空间音频+DSP教学, 跨球体关联, 游戏开发P0-D第一球) | ✅ 完成 (32.1-32.7, 939 tests) |
+| **Phase 33** | W94-96 | 市场发行知识球(180节点, 191边, 9子域, 商业思维+数据驱动+平台规则+全球化教学, 跨球体关联, 游戏开发P0-D第二球) | ✅ 完成 (33.1-33.7, 945 tests) |
 
 ---
 
@@ -1461,7 +1472,22 @@ data/seed/         — 种子图谱数据
 
 ## Last Review
 
-**Date**: 2026-03-21 | **Scope**: Phase 31+32 网络多人(multiplayer-network)+音效设计(game-audio-sfx)知识球完成 | **Result**: passed (#25+#26 completed)
+**Date**: 2026-03-21 | **Scope**: Phase 33 市场发行(game-publishing)知识球完成 | **Result**: passed (#27 completed)
+
+ - ✅ **Phase 33 市场发行知识球完成+提交 (2026-03-21, 5aeaecd)**:
+    - **SCOPE**: 上线第二十七个知识球 — 市场发行, 覆盖市场策略到评级合规 (游戏开发P0-D第二球)
+    - **DATA**: 种子图谱 180概念/191边/9子域/27里程碑 + RAG文档 180篇(100%覆盖) + 跨球体关联 24链接(↔ game-design/game-ui-ux/narrative-design/software-engineering/multiplayer-network/economics/psychology/english/writing/product-design/concept-design/finance/game-engine/level-design)
+    - **FIX**: 跨球体关联24个目标ID全部修正(原始生成的ID不匹配实际域内概念ID)
+    - **FIX**: RAG _index.json补全stats段(total_docs/total_chars/by_subdomain)
+    - **BACKEND**: feynman_system.py GAME_PUBLISHING_DOMAIN_SUPPLEMENT + GAME_PUBLISHING_ASSESSMENT_SUPPLEMENT 注册
+    - **FRONTEND**: direct-llm.ts DOMAIN_SUPPLEMENTS + ASSESSMENT_SUPPLEMENTS 注册
+    - **WORKERS**: seed/RAG数据同步 + routes/graph.ts+dialogue.ts+learning.ts 注册 + prompts.ts 注册
+    - **TEST**: domain list test更新(26→27域) + evaluator supplements test更新 + cross-links domain list更新 + 7个新Phase 33集成测试
+    - **DATA INTEGRITY**: 27域 5,656概念 0重复ID(域内), 6,241边 0断引用, 511跨球链接全部有效, 27域RAG 100%覆盖
+    - **DOCS**: EXPANSION_PLAN.md Phase 34标记完成(done as Phase 33), CLAUDE.md Phase 33摘要
+    - **GITHUB**: Issue #27 closed, 0 other open issues
+    - **VERIFY**: 945 tests (732 BE + 213 FE) 全通过, tsc 0 errors, build 3.55s, workers tsc 0 errors
+    - **STATUS**: Phase 33完成, 下一步Phase 34 运营知识球
 
  - ✅ **Phase 28 游戏音乐知识球完成+提交 (2026-03-21, a59adb0)**:
     - **SCOPE**: 上线第二十二个知识球 — 游戏音乐, 覆盖作曲编曲到自适应音乐系统 (游戏开发P0-C第二球)
