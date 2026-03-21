@@ -1,13 +1,13 @@
 {
-  "_generated": "2026-03-21T23:43:57.019667",
+  "_generated": "2026-03-21T23:47:39.611796",
   "_version": "scorer-v1.0",
   "total_docs": 6156,
-  "avg_score": 85.9,
+  "avg_score": 86.2,
   "tier_distribution": {
-    "S": 6104,
-    "A": 14,
-    "B": 23,
-    "C": 15
+    "S": 6146,
+    "A": 10,
+    "B": 0,
+    "C": 0
   },
   "domain_summary": {
     "3d-art": {
@@ -84,7 +84,7 @@
     },
     "economics": {
       "count": 166,
-      "avg_score": 86.3,
+      "avg_score": 86.2,
       "min_score": 82.1,
       "max_score": 91.9,
       "tiers": {
@@ -108,14 +108,14 @@
     },
     "finance": {
       "count": 161,
-      "avg_score": 85.0,
-      "min_score": 19.5,
+      "avg_score": 85.4,
+      "min_score": 71.5,
       "max_score": 90.6,
       "tiers": {
-        "S": 152,
+        "S": 153,
         "A": 8,
         "B": 0,
-        "C": 1
+        "C": 0
       }
     },
     "game-audio-music": {
@@ -144,26 +144,26 @@
     },
     "game-design": {
       "count": 243,
-      "avg_score": 84.1,
-      "min_score": 19.5,
+      "avg_score": 84.4,
+      "min_score": 81.3,
       "max_score": 89.9,
       "tiers": {
-        "S": 242,
+        "S": 243,
         "A": 0,
         "B": 0,
-        "C": 1
+        "C": 0
       }
     },
     "game-engine": {
       "count": 304,
-      "avg_score": 83.9,
-      "min_score": 20.6,
+      "avg_score": 84.5,
+      "min_score": 80.8,
       "max_score": 93.0,
       "tiers": {
-        "S": 300,
+        "S": 304,
         "A": 0,
-        "B": 1,
-        "C": 3
+        "B": 0,
+        "C": 0
       }
     },
     "game-live-ops": {
@@ -240,13 +240,13 @@
     },
     "mathematics": {
       "count": 269,
-      "avg_score": 84.7,
-      "min_score": 48.8,
+      "avg_score": 85.3,
+      "min_score": 81.1,
       "max_score": 89.1,
       "tiers": {
-        "S": 263,
-        "A": 4,
-        "B": 2,
+        "S": 269,
+        "A": 0,
+        "B": 0,
         "C": 0
       }
     },
@@ -276,13 +276,13 @@
     },
     "philosophy": {
       "count": 171,
-      "avg_score": 84.6,
-      "min_score": 55.0,
+      "avg_score": 85.0,
+      "min_score": 81.6,
       "max_score": 90.2,
       "tiers": {
-        "S": 169,
+        "S": 171,
         "A": 0,
-        "B": 2,
+        "B": 0,
         "C": 0
       }
     },
@@ -300,26 +300,26 @@
     },
     "product-design": {
       "count": 186,
-      "avg_score": 84.2,
-      "min_score": 20.6,
+      "avg_score": 85.7,
+      "min_score": 81.6,
       "max_score": 91.2,
       "tiers": {
-        "S": 180,
+        "S": 186,
         "A": 0,
-        "B": 3,
-        "C": 3
+        "B": 0,
+        "C": 0
       }
     },
     "psychology": {
       "count": 191,
-      "avg_score": 84.4,
-      "min_score": 33.4,
+      "avg_score": 85.7,
+      "min_score": 81.6,
       "max_score": 90.9,
       "tiers": {
-        "S": 184,
+        "S": 191,
         "A": 0,
-        "B": 6,
-        "C": 1
+        "B": 0,
+        "C": 0
       }
     },
     "software-engineering": {
@@ -360,14 +360,14 @@
     },
     "writing": {
       "count": 185,
-      "avg_score": 82.0,
-      "min_score": 32.4,
+      "avg_score": 85.2,
+      "min_score": 82.1,
       "max_score": 90.0,
       "tiers": {
-        "S": 170,
+        "S": 185,
         "A": 0,
-        "B": 9,
-        "C": 6
+        "B": 0,
+        "C": 0
       }
     }
   },
@@ -445,143 +445,143 @@
   ],
   "top20_worst": [
     {
-      "file": "economics\\behavioral-econ\\behavioral-finance.md",
-      "concept": "行为金融学",
-      "score": 19.5,
-      "tier": "C",
+      "file": "finance\\quantitative-finance\\mean-reversion.md",
+      "concept": "均值回归",
+      "score": 71.5,
+      "tier": "A",
       "domain": "finance"
     },
     {
-      "file": "economics\\behavioral-econ\\endowment-effect.md",
-      "concept": "禀赋效应",
-      "score": 19.5,
-      "tier": "C",
+      "file": "finance\\risk-management\\futures-basics.md",
+      "concept": "期货基础",
+      "score": 71.8,
+      "tier": "A",
+      "domain": "finance"
+    },
+    {
+      "file": "finance\\quantitative-finance\\high-frequency-trading.md",
+      "concept": "高频交易",
+      "score": 73.2,
+      "tier": "A",
+      "domain": "finance"
+    },
+    {
+      "file": "finance\\quantitative-finance\\statistical-arbitrage.md",
+      "concept": "统计套利",
+      "score": 73.2,
+      "tier": "A",
+      "domain": "finance"
+    },
+    {
+      "file": "finance\\quantitative-finance\\time-series-analysis.md",
+      "concept": "时间序列分析",
+      "score": 73.2,
+      "tier": "A",
+      "domain": "finance"
+    },
+    {
+      "file": "biology\\cell-biology\\photosynthesis.md",
+      "concept": "光合作用",
+      "score": 74.0,
+      "tier": "A",
+      "domain": "biology"
+    },
+    {
+      "file": "finance\\quantitative-finance\\monte-carlo-simulation.md",
+      "concept": "蒙特卡洛模拟",
+      "score": 74.2,
+      "tier": "A",
+      "domain": "finance"
+    },
+    {
+      "file": "finance\\risk-management\\derivatives-overview.md",
+      "concept": "衍生品概述",
+      "score": 75.8,
+      "tier": "A",
+      "domain": "finance"
+    },
+    {
+      "file": "biology\\evolution\\natural-selection.md",
+      "concept": "自然选择",
+      "score": 76.8,
+      "tier": "A",
+      "domain": "biology"
+    },
+    {
+      "file": "finance\\quantitative-finance\\volatility-modeling.md",
+      "concept": "波动率建模",
+      "score": 79.3,
+      "tier": "A",
+      "domain": "finance"
+    },
+    {
+      "file": "biology\\cell-biology\\mitosis.md",
+      "concept": "有丝分裂",
+      "score": 80.5,
+      "tier": "S",
+      "domain": "biology"
+    },
+    {
+      "file": "game-engine\\serialization\\cloud-save.md",
+      "concept": "云存档",
+      "score": 80.8,
+      "tier": "S",
+      "domain": "game-engine"
+    },
+    {
+      "file": "mathematics\\calculus\\area-under-curve.md",
+      "concept": "曲线围面积",
+      "score": 81.1,
+      "tier": "S",
+      "domain": "mathematics"
+    },
+    {
+      "file": "mathematics\\discrete-math\\inclusion-exclusion.md",
+      "concept": "容斥原理",
+      "score": 81.1,
+      "tier": "S",
+      "domain": "mathematics"
+    },
+    {
+      "file": "english\\advanced-grammar\\reduced-clauses.md",
+      "concept": "从句简化",
+      "score": 81.3,
+      "tier": "S",
+      "domain": "english"
+    },
+    {
+      "file": "game-design\\design-docs\\user-story.md",
+      "concept": "用户故事",
+      "score": 81.3,
+      "tier": "S",
       "domain": "game-design"
     },
     {
-      "file": "game-design\\systems-design\\mvp-design.md",
-      "concept": "MVP设计",
-      "score": 20.6,
-      "tier": "C",
-      "domain": "product-design"
-    },
-    {
-      "file": "game-design\\systems-design\\weather-system.md",
-      "concept": "天气系统",
-      "score": 20.6,
-      "tier": "C",
+      "file": "game-engine\\physics-engine\\vehicle-physics.md",
+      "concept": "载具物理",
+      "score": 81.3,
+      "tier": "S",
       "domain": "game-engine"
     },
     {
-      "file": "game-design\\systems-design\\systems-thinking.md",
-      "concept": "系统思维",
-      "score": 25.1,
-      "tier": "C",
-      "domain": "product-design"
-    },
-    {
-      "file": "english\\writing-en\\report-writing.md",
-      "concept": "报告写作",
-      "score": 32.4,
-      "tier": "C",
-      "domain": "writing"
-    },
-    {
-      "file": "english\\writing-en\\writing-process.md",
-      "concept": "写作过程",
-      "score": 32.6,
-      "tier": "C",
-      "domain": "writing"
-    },
-    {
-      "file": "game-design\\design-docs\\competitive-analysis.md",
-      "concept": "竞品分析",
-      "score": 33.4,
-      "tier": "C",
-      "domain": "product-design"
-    },
-    {
-      "file": "game-design\\player-psychology\\cognitive-load.md",
-      "concept": "认知负荷",
-      "score": 33.4,
-      "tier": "C",
-      "domain": "psychology"
-    },
-    {
-      "file": "game-design\\social-systems\\replay-system.md",
-      "concept": "回放系统",
-      "score": 33.4,
-      "tier": "C",
+      "file": "game-engine\\resource-management\\object-pool.md",
+      "concept": "对象池",
+      "score": 81.3,
+      "tier": "S",
       "domain": "game-engine"
     },
     {
-      "file": "game-design\\systems-design\\achievement-system.md",
-      "concept": "成就系统",
-      "score": 33.4,
-      "tier": "C",
-      "domain": "game-engine"
+      "file": "level-design\\lighting-narrative\\color-temperature.md",
+      "concept": "色温控制",
+      "score": 81.3,
+      "tier": "S",
+      "domain": "level-design"
     },
     {
-      "file": "english\\writing-en\\word-choice.md",
-      "concept": "词语选择",
-      "score": 33.9,
-      "tier": "C",
-      "domain": "writing"
-    },
-    {
-      "file": "english\\writing-en\\summary-writing.md",
-      "concept": "摘要写作",
-      "score": 34.4,
-      "tier": "C",
-      "domain": "writing"
-    },
-    {
-      "file": "english\\writing-en\\sentence-variety.md",
-      "concept": "句式变化",
-      "score": 36.1,
-      "tier": "C",
-      "domain": "writing"
-    },
-    {
-      "file": "english\\writing-en\\paragraph-structure.md",
-      "concept": "段落结构",
-      "score": 36.4,
-      "tier": "C",
-      "domain": "writing"
-    },
-    {
-      "file": "game-design\\core-loop\\onboarding-design.md",
-      "concept": "新手引导设计",
-      "score": 40.6,
-      "tier": "B",
-      "domain": "product-design"
-    },
-    {
-      "file": "product-design\\growth\\content-marketing.md",
-      "concept": "内容营销写作",
-      "score": 47.2,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "level-design\\guidance-design\\show-dont-tell.md",
-      "concept": "展示而非告知",
-      "score": 47.8,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "english\\writing-en\\review-writing.md",
-      "concept": "评论写作",
-      "score": 47.9,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "economics\\econometrics\\linear-regression.md",
-      "concept": "线性回归",
-      "score": 48.8,
-      "tier": "B",
+      "file": "mathematics\\analytic-geometry\\locus-problems.md",
+      "concept": "轨迹问题",
+      "score": 81.3,
+      "tier": "S",
       "domain": "mathematics"
     }
   ]

@@ -9,13 +9,16 @@ is_milestone: false
 tags: ["生理"]
 
 # Quality Metadata (Schema v2)
-content_version: 1
+content_version: 2
 quality_tier: "pending-rescore"
 quality_score: 16.6
-generation_method: "template-v1"
+generation_method: "ai-rewrite-v1"
 unique_content_ratio: 0.1
 last_scored: "2026-03-21"
-sources: []
+sources:
+  - type: "ai-generated"
+    model: "claude-sonnet-4-20250514"
+    prompt_version: "ai-rewrite-v1"
 ---
 # 内分泌系统
 

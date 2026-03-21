@@ -61618,5 +61618,435 @@
     "old_size": 821,
     "new_size": 2251,
     "old_score": 12.0
+  },
+  {
+    "concept_id": "endocrine-system",
+    "domain": "biology",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\biology\\human-physiology\\endocrine-system.md",
+    "timestamp": "2026-03-21T23:45:34.586500",
+    "method": "ai-rewrite-v1",
+    "old_size": 2102,
+    "new_size": 2200,
+    "old_score": 16.6
+  },
+  {
+    "concept_id": "extinction",
+    "domain": "biology",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\biology\\evolution\\extinction.md",
+    "timestamp": "2026-03-21T23:45:34.586500",
+    "method": "ai-rewrite-v1",
+    "old_size": 845,
+    "new_size": 2109,
+    "old_score": 13.2
+  },
+  {
+    "concept_id": "autonomic-nervous-system",
+    "domain": "biology",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\biology\\human-physiology\\autonomic-nervous-system.md",
+    "timestamp": "2026-03-21T23:45:34.586500",
+    "method": "ai-rewrite-v1",
+    "old_size": 860,
+    "new_size": 2104,
+    "old_score": 16.6
+  },
+  {
+    "concept_id": "linear-regression",
+    "domain": "economics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\economics\\econometrics\\linear-regression.md",
+    "timestamp": "2026-03-21T23:45:42.173656",
+    "method": "ai-rewrite-v1",
+    "old_size": 831,
+    "new_size": 2262,
+    "old_score": 12.8
+  },
+  {
+    "concept_id": "endowment-effect",
+    "domain": "economics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\economics\\behavioral-econ\\endowment-effect.md",
+    "timestamp": "2026-03-21T23:45:42.173656",
+    "method": "ai-rewrite-v1",
+    "old_size": 875,
+    "new_size": 2083,
+    "old_score": 13.5
+  },
+  {
+    "concept_id": "behavioral-finance",
+    "domain": "economics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\economics\\behavioral-econ\\behavioral-finance.md",
+    "timestamp": "2026-03-21T23:45:42.173656",
+    "method": "ai-rewrite-v1",
+    "old_size": 873,
+    "new_size": 2219,
+    "old_score": 13.5
+  },
+  {
+    "concept_id": "maximum-likelihood",
+    "domain": "economics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\economics\\econometrics\\maximum-likelihood.md",
+    "timestamp": "2026-03-21T23:45:42.173656",
+    "method": "ai-rewrite-v1",
+    "old_size": 840,
+    "new_size": 2216,
+    "old_score": 13.0
+  },
+  {
+    "concept_id": "paragraph-structure",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\writing-en\\paragraph-structure.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 1043,
+    "new_size": 1978,
+    "old_score": 28.0
+  },
+  {
+    "concept_id": "writing-process",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\writing-en\\writing-process.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 1003,
+    "new_size": 1901,
+    "old_score": 26.6
+  },
+  {
+    "concept_id": "parallel-structure",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\sentence-patterns\\parallel-structure.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 895,
+    "new_size": 1971,
+    "old_score": 28.6
+  },
+  {
+    "concept_id": "summary-writing",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\writing-en\\summary-writing.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 1027,
+    "new_size": 1842,
+    "old_score": 23.0
+  },
+  {
+    "concept_id": "sentence-variety",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\writing-en\\sentence-variety.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 1036,
+    "new_size": 2004,
+    "old_score": 25.1
+  },
+  {
+    "concept_id": "word-choice",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\writing-en\\word-choice.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 994,
+    "new_size": 2031,
+    "old_score": 25.2
+  },
+  {
+    "concept_id": "storytelling-oral",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\speaking\\storytelling-oral.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 938,
+    "new_size": 1987,
+    "old_score": 21.2
+  },
+  {
+    "concept_id": "report-writing",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\writing-en\\report-writing.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 990,
+    "new_size": 1938,
+    "old_score": 23.4
+  },
+  {
+    "concept_id": "review-writing",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\writing-en\\review-writing.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 998,
+    "new_size": 1970,
+    "old_score": 45.2
+  },
+  {
+    "concept_id": "figurative-language",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\idioms-culture\\figurative-language.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 991,
+    "new_size": 1970,
+    "old_score": 30.6
+  },
+  {
+    "concept_id": "hedging-language",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\advanced-grammar\\hedging-language.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 942,
+    "new_size": 2020,
+    "old_score": 32.9
+  },
+  {
+    "concept_id": "citation-referencing",
+    "domain": "english",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\english\\writing-en\\citation-referencing.md",
+    "timestamp": "2026-03-21T23:45:42.344000",
+    "method": "ai-rewrite-v1",
+    "old_size": 1016,
+    "new_size": 1962,
+    "old_score": 23.6
+  },
+  {
+    "concept_id": "systems-thinking",
+    "domain": "game-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\game-design\\systems-design\\systems-thinking.md",
+    "timestamp": "2026-03-21T23:45:42.529755",
+    "method": "ai-rewrite-v1",
+    "old_size": 807,
+    "new_size": 2045,
+    "old_score": 19.1
+  },
+  {
+    "concept_id": "onboarding-design",
+    "domain": "game-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\game-design\\core-loop\\onboarding-design.md",
+    "timestamp": "2026-03-21T23:45:42.529755",
+    "method": "ai-rewrite-v1",
+    "old_size": 815,
+    "new_size": 2139,
+    "old_score": 19.3
+  },
+  {
+    "concept_id": "achievement-system",
+    "domain": "game-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\game-design\\systems-design\\achievement-system.md",
+    "timestamp": "2026-03-21T23:45:42.529755",
+    "method": "ai-rewrite-v1",
+    "old_size": 747,
+    "new_size": 2134,
+    "old_score": 14.6
+  },
+  {
+    "concept_id": "mvp-design",
+    "domain": "game-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\game-design\\systems-design\\mvp-design.md",
+    "timestamp": "2026-03-21T23:45:42.529755",
+    "method": "ai-rewrite-v1",
+    "old_size": 742,
+    "new_size": 1918,
+    "old_score": 14.6
+  },
+  {
+    "concept_id": "cognitive-load",
+    "domain": "game-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\game-design\\player-psychology\\cognitive-load.md",
+    "timestamp": "2026-03-21T23:45:42.529755",
+    "method": "ai-rewrite-v1",
+    "old_size": 741,
+    "new_size": 1977,
+    "old_score": 14.6
+  },
+  {
+    "concept_id": "competitive-analysis",
+    "domain": "game-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\game-design\\design-docs\\competitive-analysis.md",
+    "timestamp": "2026-03-21T23:45:42.529755",
+    "method": "ai-rewrite-v1",
+    "old_size": 743,
+    "new_size": 2029,
+    "old_score": 14.6
+  },
+  {
+    "concept_id": "weather-system",
+    "domain": "game-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\game-design\\systems-design\\weather-system.md",
+    "timestamp": "2026-03-21T23:45:42.529755",
+    "method": "ai-rewrite-v1",
+    "old_size": 738,
+    "new_size": 1986,
+    "old_score": 14.6
+  },
+  {
+    "concept_id": "replay-system",
+    "domain": "game-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\game-design\\social-systems\\replay-system.md",
+    "timestamp": "2026-03-21T23:45:42.529755",
+    "method": "ai-rewrite-v1",
+    "old_size": 734,
+    "new_size": 2091,
+    "old_score": 14.6
+  },
+  {
+    "concept_id": "show-dont-tell",
+    "domain": "level-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\level-design\\guidance-design\\show-dont-tell.md",
+    "timestamp": "2026-03-21T23:45:42.713142",
+    "method": "ai-rewrite-v1",
+    "old_size": 778,
+    "new_size": 1933,
+    "old_score": 19.2
+  },
+  {
+    "concept_id": "descriptive-statistics",
+    "domain": "mathematics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\mathematics\\statistics\\descriptive-statistics.md",
+    "timestamp": "2026-03-21T23:45:42.913191",
+    "method": "ai-rewrite-v1",
+    "old_size": 1026,
+    "new_size": 2321,
+    "old_score": 41.5
+  },
+  {
+    "concept_id": "data-visualization",
+    "domain": "mathematics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\mathematics\\statistics\\data-visualization.md",
+    "timestamp": "2026-03-21T23:45:42.913191",
+    "method": "ai-rewrite-v1",
+    "old_size": 974,
+    "new_size": 2162,
+    "old_score": 42.3
+  },
+  {
+    "concept_id": "sampling-methods",
+    "domain": "mathematics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\mathematics\\statistics\\sampling-methods.md",
+    "timestamp": "2026-03-21T23:45:42.913191",
+    "method": "ai-rewrite-v1",
+    "old_size": 993,
+    "new_size": 2208,
+    "old_score": 40.1
+  },
+  {
+    "concept_id": "propositional-logic",
+    "domain": "mathematics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\mathematics\\discrete-math\\propositional-logic.md",
+    "timestamp": "2026-03-21T23:45:42.913191",
+    "method": "ai-rewrite-v1",
+    "old_size": 997,
+    "new_size": 2275,
+    "old_score": 41.0
+  },
+  {
+    "concept_id": "predicate-logic",
+    "domain": "mathematics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\mathematics\\discrete-math\\predicate-logic.md",
+    "timestamp": "2026-03-21T23:45:42.913191",
+    "method": "ai-rewrite-v1",
+    "old_size": 954,
+    "new_size": 2195,
+    "old_score": 38.5
+  },
+  {
+    "concept_id": "experimental-design",
+    "domain": "mathematics",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\mathematics\\statistics\\experimental-design.md",
+    "timestamp": "2026-03-21T23:45:42.913191",
+    "method": "ai-rewrite-v1",
+    "old_size": 953,
+    "new_size": 2224,
+    "old_score": 38.2
+  },
+  {
+    "concept_id": "argument-structure",
+    "domain": "philosophy",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\philosophy\\logic-reasoning\\argument-structure.md",
+    "timestamp": "2026-03-21T23:45:43.061779",
+    "method": "ai-rewrite-v1",
+    "old_size": 856,
+    "new_size": 2034,
+    "old_score": 13.5
+  },
+  {
+    "concept_id": "content-marketing",
+    "domain": "product-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\product-design\\growth\\content-marketing.md",
+    "timestamp": "2026-03-21T23:45:43.234205",
+    "method": "ai-rewrite-v1",
+    "old_size": 754,
+    "new_size": 2167,
+    "old_score": 11.2
+  },
+  {
+    "concept_id": "behavioral-economics",
+    "domain": "product-design",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\product-design\\product-thinking\\behavioral-economics.md",
+    "timestamp": "2026-03-21T23:45:43.234205",
+    "method": "ai-rewrite-v1",
+    "old_size": 786,
+    "new_size": 2151,
+    "old_score": 15.4
+  },
+  {
+    "concept_id": "command-pattern",
+    "domain": "ai-engineering",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\oop\\command-pattern.md",
+    "timestamp": "2026-03-21T23:45:50.789403",
+    "method": "ai-rewrite-v1",
+    "old_size": 902,
+    "new_size": 2340,
+    "old_score": 39.1
+  },
+  {
+    "concept_id": "design-system",
+    "domain": "ai-engineering",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\web-frontend\\design-system.md",
+    "timestamp": "2026-03-21T23:45:50.789403",
+    "method": "ai-rewrite-v1",
+    "old_size": 951,
+    "new_size": 2294,
+    "old_score": 40.1
+  },
+  {
+    "concept_id": "linear-regression",
+    "domain": "ai-engineering",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\ai-foundations\\linear-regression.md",
+    "timestamp": "2026-03-21T23:45:50.789403",
+    "method": "ai-rewrite-v1",
+    "old_size": 1587,
+    "new_size": 2014,
+    "old_score": 51.8
+  },
+  {
+    "concept_id": "logistic-regression",
+    "domain": "ai-engineering",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\ai-foundations\\logistic-regression.md",
+    "timestamp": "2026-03-21T23:45:50.789403",
+    "method": "ai-rewrite-v1",
+    "old_size": 1578,
+    "new_size": 2027,
+    "old_score": 50.8
+  },
+  {
+    "concept_id": "gradient-descent",
+    "domain": "ai-engineering",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\ai-foundations\\gradient-descent.md",
+    "timestamp": "2026-03-21T23:45:50.789403",
+    "method": "ai-rewrite-v1",
+    "old_size": 1662,
+    "new_size": 2244,
+    "old_score": 52.8
+  },
+  {
+    "concept_id": "graph-coloring",
+    "domain": "ai-engineering",
+    "filepath": "D:\\EchoAgent\\projects\\ai-knowledge-graph\\data\\rag\\algorithms\\graph-coloring.md",
+    "timestamp": "2026-03-21T23:45:50.789403",
+    "method": "ai-rewrite-v1",
+    "old_size": 1552,
+    "new_size": 1960,
+    "old_score": 50.6
   }
 ]
