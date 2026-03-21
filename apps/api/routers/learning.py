@@ -222,6 +222,12 @@ async def recommend_next(
         if all(p in mastered_ids for p in prereqs):
             candidates.append(c)
 
+    # Collect FSRS due concepts for priority boosting
+    from db.sqlite_client import get_due_concepts
+    now = time.time()
+    due_items = get_due_concepts(before=now, limit=200)
+    due_concept_ids = {d["concept_id"]: d for d in due_items}
+
     # Score each candidate
     scored = []
     for c in candidates:
@@ -271,6 +277,13 @@ async def recommend_next(
             elif est_min <= 25:
                 score += 1.0
 
+            # Factor 6: FSRS due-review priority boost
+            if cid in due_concept_ids:
+                due_data = due_concept_ids[cid]
+                overdue_days = max(0, (now - due_data["fsrs_due"]) / 86400)
+                # Strong boost for due reviews: 20 base + overdue bonus
+                score += 20.0 + min(overdue_days * 2.0, 10.0)
+
         scored.append({"concept": c, "score": score})
 
     # Sort by score descending, then difficulty ascending (tiebreaker for same score)
@@ -289,7 +302,7 @@ async def recommend_next(
             "estimated_minutes": c["estimated_minutes"],
             "is_milestone": c.get("is_milestone", False),
             "score": round(item["score"], 1),
-            "reason": _recommend_reason(c, prog, current_level, dependents_map),
+            "reason": _recommend_reason(c, prog, current_level, dependents_map, due_concept_ids),
             "status": prog["status"] if prog else "not_started",
         })
 
@@ -298,12 +311,15 @@ async def recommend_next(
         "current_level": round(current_level, 1),
         "mastered_count": len(mastered_ids),
         "total_concepts": len(concepts),
+        "due_review_count": len(due_concept_ids),
     }
 
 
-def _recommend_reason(concept: dict, progress: dict | None, current_level: float, deps_map: dict) -> str:
+def _recommend_reason(concept: dict, progress: dict | None, current_level: float, deps_map: dict, due_map: dict | None = None) -> str:
     """Generate a human-readable reason for the recommendation."""
     reasons = []
+    if due_map and concept["id"] in due_map:
+        reasons.append("📅 复习到期")
     if progress and progress["status"] == "learning":
         reasons.append("继续上次的学习")
     if concept.get("is_milestone"):
@@ -318,4 +334,142 @@ def _recommend_reason(concept: dict, progress: dict | None, current_level: float
         else:
             reasons.append("适当挑战，提升水平")
     return " · ".join(reasons)
+
+
+# ════════════════════════════════════════════
+# FSRS Spaced Repetition Endpoints
+# ════════════════════════════════════════════
+
+class ReviewRequest(BaseModel):
+    """Submit a review rating for a concept."""
+    concept_id: str = Field(..., max_length=200)
+    rating: int = Field(..., ge=1, le=4, description="1=Again, 2=Hard, 3=Good, 4=Easy")
+
+
+@router.get("/due")
+async def get_due_reviews(
+    limit: int = Query(20, ge=1, le=100),
+    domain: str = Query("", max_length=100),
+):
+    """Get concepts due for spaced repetition review.
+
+    Returns concepts that have been reviewed at least once and are past their
+    scheduled review date. Sorted by most overdue first.
+    """
+    from db.sqlite_client import get_due_concepts
+
+    now = time.time()
+    due_items = get_due_concepts(before=now, limit=limit)
+
+    # Optionally filter by domain
+    if domain:
+        from routers.graph import _load_seed
+        try:
+            seed = _load_seed(domain)
+            domain_concept_ids = {c["id"] for c in seed["concepts"]}
+            due_items = [d for d in due_items if d["concept_id"] in domain_concept_ids]
+        except Exception:
+            pass  # If domain not found, return all due items
+
+    results = []
+    for item in due_items:
+        overdue_days = max(0, (now - item["fsrs_due"]) / 86400) if item["fsrs_due"] > 0 else 0
+        results.append({
+            "concept_id": item["concept_id"],
+            "status": item["status"],
+            "mastery_score": item["mastery_score"],
+            "fsrs_state": item["fsrs_state"],
+            "fsrs_stability": round(item["fsrs_stability"], 2),
+            "fsrs_difficulty": round(item["fsrs_difficulty"], 2),
+            "fsrs_due": item["fsrs_due"],
+            "fsrs_reps": item["fsrs_reps"],
+            "fsrs_lapses": item["fsrs_lapses"],
+            "overdue_days": round(overdue_days, 1),
+        })
+
+    return {
+        "due_count": len(results),
+        "items": results,
+    }
+
+
+@router.post("/review")
+async def submit_review(req: ReviewRequest):
+    """Submit a review rating and update FSRS scheduling state.
+
+    Rating scale:
+    - 1 (Again): Complete failure to recall
+    - 2 (Hard): Recalled with significant difficulty
+    - 3 (Good): Recalled correctly with some effort
+    - 4 (Easy): Recalled effortlessly
+
+    Returns the updated card state including next review date.
+    """
+    from engines.learning.fsrs_scheduler import FSRSScheduler, Card, Rating
+    from db.sqlite_client import get_fsrs_card, update_fsrs_card
+
+    scheduler = FSRSScheduler()
+    now = time.time()
+
+    # Load existing card state or create new
+    card_data = get_fsrs_card(req.concept_id)
+    if card_data:
+        card = Card(
+            due=card_data['due'],
+            stability=card_data['stability'],
+            difficulty=card_data['difficulty'],
+            elapsed_days=card_data['elapsed_days'],
+            scheduled_days=card_data['scheduled_days'],
+            reps=card_data['reps'],
+            lapses=card_data['lapses'],
+            state=card_data['state'],
+            last_review=card_data['last_review'],
+        )
+    else:
+        card = Card()
+
+    # Process the review
+    result = scheduler.review(card, Rating(req.rating), now=now)
+    updated = result.card
+
+    # Persist updated card state
+    update_fsrs_card(req.concept_id, {
+        'stability': updated.stability,
+        'difficulty': updated.difficulty,
+        'due': updated.due,
+        'elapsed_days': updated.elapsed_days,
+        'scheduled_days': updated.scheduled_days,
+        'reps': updated.reps,
+        'lapses': updated.lapses,
+        'state': updated.state,
+        'last_review': updated.last_review,
+    })
+
+    # Also update streak (learning activity)
+    update_streak()
+
+    # Calculate retrievability for response
+    retrievability = scheduler.forgetting_curve(updated.elapsed_days, updated.stability)
+
+    return {
+        "success": True,
+        "concept_id": req.concept_id,
+        "rating": req.rating,
+        "card": {
+            "state": updated.state,
+            "stability": round(updated.stability, 3),
+            "difficulty": round(updated.difficulty, 3),
+            "due": updated.due,
+            "scheduled_days": updated.scheduled_days,
+            "reps": updated.reps,
+            "lapses": updated.lapses,
+            "retrievability": round(retrievability, 4),
+        },
+        "review_log": {
+            "rating": result.review_log.rating,
+            "previous_state": result.review_log.state,
+            "previous_stability": round(result.review_log.stability, 3),
+            "previous_difficulty": round(result.review_log.difficulty, 3),
+        },
+    }
 

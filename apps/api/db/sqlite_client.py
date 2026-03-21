@@ -33,7 +33,7 @@ else:
 _DB_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH = _DB_DIR / "akg_local.db"
 
-_SCHEMA_VERSION = 2
+_SCHEMA_VERSION = 3
 
 
 def _get_conn() -> sqlite3.Connection:
@@ -145,6 +145,33 @@ def init_db():
             conn.execute("INSERT OR REPLACE INTO schema_version (version) VALUES (2)")
             conn.commit()
             logger.info("SQLite schema migrated to v2 (conversations.domain_id)")
+
+        if version < 3:
+            # V3: Add FSRS spaced repetition fields to concept_progress
+            _fsrs_columns = [
+                ("fsrs_stability", "REAL NOT NULL DEFAULT 0"),
+                ("fsrs_difficulty", "REAL NOT NULL DEFAULT 0"),
+                ("fsrs_due", "REAL NOT NULL DEFAULT 0"),
+                ("fsrs_elapsed_days", "INTEGER NOT NULL DEFAULT 0"),
+                ("fsrs_scheduled_days", "INTEGER NOT NULL DEFAULT 0"),
+                ("fsrs_reps", "INTEGER NOT NULL DEFAULT 0"),
+                ("fsrs_lapses", "INTEGER NOT NULL DEFAULT 0"),
+                ("fsrs_state", "INTEGER NOT NULL DEFAULT 0"),
+                ("fsrs_last_review", "REAL NOT NULL DEFAULT 0"),
+            ]
+            for col_name, col_def in _fsrs_columns:
+                try:
+                    conn.execute(f"ALTER TABLE concept_progress ADD COLUMN {col_name} {col_def}")
+                except Exception:
+                    pass  # Column already exists (re-run safe)
+            # Index for efficient due-date queries
+            try:
+                conn.execute("CREATE INDEX IF NOT EXISTS idx_progress_fsrs_due ON concept_progress(fsrs_due)")
+            except Exception:
+                pass
+            conn.execute("INSERT OR REPLACE INTO schema_version (version) VALUES (3)")
+            conn.commit()
+            logger.info("SQLite schema migrated to v3 (FSRS spaced repetition fields)")
 
 
     logger.info("SQLite DB initialized at %s", DB_PATH)
@@ -430,6 +457,107 @@ def cleanup_old_conversations(max_age_sec: int = 86400 * 30):
     cutoff = time.time() - max_age_sec
     with get_db() as conn:
         conn.execute("DELETE FROM conversations WHERE last_active < ?", (cutoff,))
+
+
+# ════════════════════════════════════════════
+# FSRS Spaced Repetition
+# ════════════════════════════════════════════
+
+def get_fsrs_card(concept_id: str) -> Optional[dict]:
+    """Get FSRS card state for a concept, or None if not found."""
+    with get_db() as conn:
+        row = conn.execute(
+            """SELECT concept_id, fsrs_stability, fsrs_difficulty, fsrs_due,
+                      fsrs_elapsed_days, fsrs_scheduled_days, fsrs_reps,
+                      fsrs_lapses, fsrs_state, fsrs_last_review
+               FROM concept_progress WHERE concept_id = ?""",
+            (concept_id,)
+        ).fetchone()
+        if not row:
+            return None
+        d = dict(row)
+        return {
+            'concept_id': d['concept_id'],
+            'stability': d['fsrs_stability'],
+            'difficulty': d['fsrs_difficulty'],
+            'due': d['fsrs_due'],
+            'elapsed_days': d['fsrs_elapsed_days'],
+            'scheduled_days': d['fsrs_scheduled_days'],
+            'reps': d['fsrs_reps'],
+            'lapses': d['fsrs_lapses'],
+            'state': d['fsrs_state'],
+            'last_review': d['fsrs_last_review'],
+        }
+
+
+def update_fsrs_card(concept_id: str, card_data: dict) -> None:
+    """Update FSRS fields for a concept. Creates concept_progress row if needed."""
+    now = time.time()
+    with get_db() as conn:
+        # Ensure the row exists
+        existing = conn.execute(
+            "SELECT concept_id FROM concept_progress WHERE concept_id = ?",
+            (concept_id,)
+        ).fetchone()
+        if not existing:
+            conn.execute(
+                """INSERT INTO concept_progress
+                   (concept_id, status, mastery_score, sessions, total_time_sec,
+                    created_at, updated_at)
+                   VALUES (?, 'not_started', 0, 0, 0, ?, ?)""",
+                (concept_id, now, now),
+            )
+        conn.execute(
+            """UPDATE concept_progress SET
+                fsrs_stability = ?,
+                fsrs_difficulty = ?,
+                fsrs_due = ?,
+                fsrs_elapsed_days = ?,
+                fsrs_scheduled_days = ?,
+                fsrs_reps = ?,
+                fsrs_lapses = ?,
+                fsrs_state = ?,
+                fsrs_last_review = ?,
+                updated_at = ?
+            WHERE concept_id = ?""",
+            (
+                card_data.get('stability', 0),
+                card_data.get('difficulty', 0),
+                card_data.get('due', 0),
+                card_data.get('elapsed_days', 0),
+                card_data.get('scheduled_days', 0),
+                card_data.get('reps', 0),
+                card_data.get('lapses', 0),
+                card_data.get('state', 0),
+                card_data.get('last_review', 0),
+                now,
+                concept_id,
+            ),
+        )
+
+
+def get_due_concepts(before: float | None = None, limit: int = 50) -> list[dict]:
+    """Get concepts due for review.
+
+    Returns concepts where:
+    - fsrs_state > 0 (not New — has been reviewed at least once)
+    - fsrs_due <= before (due time has passed)
+
+    Sorted by due date ascending (most overdue first).
+    """
+    before = before or time.time()
+    with get_db() as conn:
+        rows = conn.execute(
+            """SELECT concept_id, status, mastery_score, fsrs_stability, fsrs_difficulty,
+                      fsrs_due, fsrs_elapsed_days, fsrs_scheduled_days, fsrs_reps,
+                      fsrs_lapses, fsrs_state, fsrs_last_review
+               FROM concept_progress
+               WHERE fsrs_state > 0 AND fsrs_due > 0 AND fsrs_due <= ?
+               ORDER BY fsrs_due ASC
+               LIMIT ?""",
+            (before, limit),
+        ).fetchall()
+        return [dict(r) for r in rows]
 
 
 # ════════════════════════════════════════════
