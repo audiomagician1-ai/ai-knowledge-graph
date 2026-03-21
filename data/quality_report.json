@@ -1,252 +1,588 @@
 {
-  "_generated": "2026-03-21T14:37:56.705865",
+  "_generated": "2026-03-21T16:44:46.332185",
   "_version": "scorer-v1.0",
-  "total_docs": 172,
-  "avg_score": 22.0,
+  "total_docs": 6156,
+  "avg_score": 46.6,
   "tier_distribution": {
-    "S": 4,
-    "A": 2,
-    "B": 0,
-    "C": 166
+    "S": 1115,
+    "A": 132,
+    "B": 2155,
+    "C": 2754
   },
   "domain_summary": {
+    "3d-art": {
+      "count": 226,
+      "avg_score": 64.6,
+      "min_score": 42.2,
+      "max_score": 94.2,
+      "tiers": {
+        "S": 104,
+        "A": 0,
+        "B": 122,
+        "C": 0
+      }
+    },
+    "ai-engineering": {
+      "count": 394,
+      "avg_score": 60.3,
+      "min_score": 40.9,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 46,
+        "A": 58,
+        "B": 290,
+        "C": 0
+      }
+    },
+    "animation": {
+      "count": 180,
+      "avg_score": 54.8,
+      "min_score": 41.8,
+      "max_score": 92.7,
+      "tiers": {
+        "S": 36,
+        "A": 0,
+        "B": 144,
+        "C": 0
+      }
+    },
     "biology": {
       "count": 169,
-      "avg_score": 22.0,
+      "avg_score": 35.1,
       "min_score": 18.5,
       "max_score": 93.3,
       "tiers": {
-        "S": 4,
+        "S": 36,
         "A": 2,
+        "B": 0,
+        "C": 131
+      }
+    },
+    "computer-graphics": {
+      "count": 250,
+      "avg_score": 46.5,
+      "min_score": 29.2,
+      "max_score": 93.3,
+      "tiers": {
+        "S": 56,
+        "A": 0,
+        "B": 0,
+        "C": 194
+      }
+    },
+    "concept-design": {
+      "count": 220,
+      "avg_score": 52.6,
+      "min_score": 36.1,
+      "max_score": 89.6,
+      "tiers": {
+        "S": 39,
+        "A": 0,
+        "B": 98,
+        "C": 83
+      }
+    },
+    "economics": {
+      "count": 166,
+      "avg_score": 32.3,
+      "min_score": 18.8,
+      "max_score": 94.3,
+      "tiers": {
+        "S": 29,
+        "A": 0,
+        "B": 0,
+        "C": 137
+      }
+    },
+    "english": {
+      "count": 188,
+      "avg_score": 43.7,
+      "min_score": 27.2,
+      "max_score": 91.1,
+      "tiers": {
+        "S": 26,
+        "A": 0,
+        "B": 27,
+        "C": 135
+      }
+    },
+    "finance": {
+      "count": 161,
+      "avg_score": 35.8,
+      "min_score": 17.2,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 33,
+        "A": 8,
+        "B": 0,
+        "C": 120
+      }
+    },
+    "game-audio-music": {
+      "count": 180,
+      "avg_score": 53.9,
+      "min_score": 38.4,
+      "max_score": 95.4,
+      "tiers": {
+        "S": 43,
+        "A": 0,
+        "B": 127,
+        "C": 10
+      }
+    },
+    "game-audio-sfx": {
+      "count": 180,
+      "avg_score": 50.7,
+      "min_score": 42.7,
+      "max_score": 91.3,
+      "tiers": {
+        "S": 27,
+        "A": 0,
+        "B": 153,
+        "C": 0
+      }
+    },
+    "game-design": {
+      "count": 243,
+      "avg_score": 30.1,
+      "min_score": 19.5,
+      "max_score": 91.8,
+      "tiers": {
+        "S": 33,
+        "A": 0,
+        "B": 0,
+        "C": 210
+      }
+    },
+    "game-engine": {
+      "count": 304,
+      "avg_score": 37.6,
+      "min_score": 20.6,
+      "max_score": 94.2,
+      "tiers": {
+        "S": 44,
+        "A": 0,
+        "B": 1,
+        "C": 259
+      }
+    },
+    "game-live-ops": {
+      "count": 180,
+      "avg_score": 48.3,
+      "min_score": 35.1,
+      "max_score": 93.8,
+      "tiers": {
+        "S": 35,
+        "A": 0,
+        "B": 0,
+        "C": 145
+      }
+    },
+    "game-production": {
+      "count": 160,
+      "avg_score": 59.7,
+      "min_score": 48.8,
+      "max_score": 93.6,
+      "tiers": {
+        "S": 32,
+        "A": 0,
+        "B": 128,
+        "C": 0
+      }
+    },
+    "game-publishing": {
+      "count": 180,
+      "avg_score": 52.3,
+      "min_score": 44.8,
+      "max_score": 93.1,
+      "tiers": {
+        "S": 27,
+        "A": 0,
+        "B": 153,
+        "C": 0
+      }
+    },
+    "game-qa": {
+      "count": 160,
+      "avg_score": 59.5,
+      "min_score": 42.4,
+      "max_score": 96.6,
+      "tiers": {
+        "S": 32,
+        "A": 0,
+        "B": 128,
+        "C": 0
+      }
+    },
+    "game-ui-ux": {
+      "count": 200,
+      "avg_score": 58.3,
+      "min_score": 32.5,
+      "max_score": 94.4,
+      "tiers": {
+        "S": 25,
+        "A": 17,
+        "B": 141,
+        "C": 17
+      }
+    },
+    "level-design": {
+      "count": 199,
+      "avg_score": 34.4,
+      "min_score": 25.0,
+      "max_score": 92.1,
+      "tiers": {
+        "S": 28,
+        "A": 0,
+        "B": 0,
+        "C": 171
+      }
+    },
+    "mathematics": {
+      "count": 269,
+      "avg_score": 50.6,
+      "min_score": 18.8,
+      "max_score": 92.1,
+      "tiers": {
+        "S": 29,
+        "A": 0,
+        "B": 238,
+        "C": 2
+      }
+    },
+    "multiplayer-network": {
+      "count": 200,
+      "avg_score": 42.5,
+      "min_score": 29.6,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 37,
+        "A": 0,
         "B": 0,
         "C": 163
       }
     },
-    "psychology": {
-      "count": 3,
-      "avg_score": 21.5,
-      "min_score": 19.2,
-      "max_score": 22.6,
+    "narrative-design": {
+      "count": 180,
+      "avg_score": 59.9,
+      "min_score": 30.1,
+      "max_score": 91.3,
       "tiers": {
-        "S": 0,
+        "S": 25,
+        "A": 31,
+        "B": 108,
+        "C": 16
+      }
+    },
+    "philosophy": {
+      "count": 171,
+      "avg_score": 35.0,
+      "min_score": 19.5,
+      "max_score": 90.6,
+      "tiers": {
+        "S": 31,
+        "A": 0,
+        "B": 2,
+        "C": 138
+      }
+    },
+    "physics": {
+      "count": 194,
+      "avg_score": 47.3,
+      "min_score": 39.8,
+      "max_score": 91.8,
+      "tiers": {
+        "S": 26,
+        "A": 0,
+        "B": 154,
+        "C": 14
+      }
+    },
+    "product-design": {
+      "count": 186,
+      "avg_score": 29.1,
+      "min_score": 17.2,
+      "max_score": 93.6,
+      "tiers": {
+        "S": 25,
+        "A": 0,
+        "B": 2,
+        "C": 159
+      }
+    },
+    "psychology": {
+      "count": 191,
+      "avg_score": 35.9,
+      "min_score": 18.0,
+      "max_score": 92.1,
+      "tiers": {
+        "S": 42,
+        "A": 0,
+        "B": 3,
+        "C": 146
+      }
+    },
+    "software-engineering": {
+      "count": 280,
+      "avg_score": 38.2,
+      "min_score": 26.9,
+      "max_score": 93.8,
+      "tiers": {
+        "S": 47,
         "A": 0,
         "B": 0,
-        "C": 3
+        "C": 233
+      }
+    },
+    "technical-art": {
+      "count": 180,
+      "avg_score": 43.0,
+      "min_score": 24.6,
+      "max_score": 92.8,
+      "tiers": {
+        "S": 36,
+        "A": 0,
+        "B": 14,
+        "C": 130
+      }
+    },
+    "vfx": {
+      "count": 180,
+      "avg_score": 61.8,
+      "min_score": 42.2,
+      "max_score": 93.3,
+      "tiers": {
+        "S": 44,
+        "A": 16,
+        "B": 120,
+        "C": 0
+      }
+    },
+    "writing": {
+      "count": 185,
+      "avg_score": 38.8,
+      "min_score": 17.2,
+      "max_score": 91.1,
+      "tiers": {
+        "S": 42,
+        "A": 0,
+        "B": 2,
+        "C": 141
       }
     }
   },
   "top10_best": [
     {
-      "file": "biology\\cell-biology\\cell-membrane.md",
-      "concept": "细胞膜",
-      "score": 93.3,
+      "file": "llm-core\\attention-mechanism.md",
+      "concept": "注意力机制",
+      "score": 99.9,
       "tier": "S",
-      "domain": "biology"
+      "domain": "ai-engineering"
     },
     {
-      "file": "biology\\molecular-biology\\dna-replication.md",
-      "concept": "DNA复制",
-      "score": 85.2,
+      "file": "rag-knowledge\\graph-rag.md",
+      "concept": "Graph RAG",
+      "score": 99.9,
       "tier": "S",
-      "domain": "biology"
+      "domain": "ai-engineering"
     },
     {
-      "file": "biology\\genetics\\mendelian-genetics.md",
-      "concept": "孟德尔遗传",
-      "score": 83.5,
+      "file": "llm-core\\llm-distillation.md",
+      "concept": "Model Distillation",
+      "score": 99.0,
       "tier": "S",
-      "domain": "biology"
+      "domain": "ai-engineering"
     },
     {
-      "file": "biology\\cell-biology\\mitosis.md",
-      "concept": "有丝分裂",
-      "score": 80.5,
+      "file": "llm-core\\kv-cache.md",
+      "concept": "KV Cache",
+      "score": 97.9,
       "tier": "S",
-      "domain": "biology"
+      "domain": "ai-engineering"
     },
     {
-      "file": "biology\\evolution\\natural-selection.md",
-      "concept": "自然选择",
-      "score": 76.8,
-      "tier": "A",
-      "domain": "biology"
+      "file": "agent-systems\\tool-use.md",
+      "concept": "工具调用(Function Calling)",
+      "score": 96.6,
+      "tier": "S",
+      "domain": "ai-engineering"
     },
     {
-      "file": "biology\\cell-biology\\photosynthesis.md",
-      "concept": "光合作用",
-      "score": 74.0,
-      "tier": "A",
-      "domain": "biology"
+      "file": "game-qa\\qa-pt-gpu-profiling.md",
+      "concept": "GPU Profiling",
+      "score": 96.6,
+      "tier": "S",
+      "domain": "game-qa"
     },
     {
-      "file": "biology\\human-physiology\\antibody-response.md",
-      "concept": "抗体反应",
-      "score": 22.6,
-      "tier": "C",
-      "domain": "biology"
+      "file": "llm-core\\llm-safety-alignment.md",
+      "concept": "LLM Safety and Alignment",
+      "score": 96.6,
+      "tier": "S",
+      "domain": "ai-engineering"
     },
     {
-      "file": "biology\\human-physiology\\autonomic-nervous-system.md",
-      "concept": "自主神经系统",
-      "score": 22.6,
-      "tier": "C",
-      "domain": "psychology"
+      "file": "llm-core\\flash-attention.md",
+      "concept": "FlashAttention",
+      "score": 95.7,
+      "tier": "S",
+      "domain": "ai-engineering"
     },
     {
-      "file": "biology\\human-physiology\\brain-function.md",
-      "concept": "脑的功能",
-      "score": 22.6,
-      "tier": "C",
-      "domain": "biology"
+      "file": "game-audio-music\\game-audio-music-wwise-music-segment.md",
+      "concept": "Music Segment",
+      "score": 95.4,
+      "tier": "S",
+      "domain": "game-audio-music"
     },
     {
-      "file": "biology\\human-physiology\\cardiovascular-system.md",
-      "concept": "心血管系统",
-      "score": 22.6,
-      "tier": "C",
-      "domain": "biology"
+      "file": "game-audio-music\\game-audio-music-case-study-leitmotif.md",
+      "concept": "案例分析:主题动机",
+      "score": 94.8,
+      "tier": "S",
+      "domain": "game-audio-music"
     }
   ],
   "top20_worst": [
     {
-      "file": "biology\\genetics\\extranuclear-inheritance.md",
-      "concept": "核外遗传",
-      "score": 18.5,
+      "file": "finance\\quantitative-finance\\execution-cost.md",
+      "concept": "交易执行成本",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\genetics\\genetic-counseling.md",
-      "concept": "遗传咨询",
-      "score": 18.5,
+      "file": "finance\\quantitative-finance\\market-microstructure.md",
+      "concept": "市场微结构",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\behavioral-ecology.md",
-      "concept": "行为生态学",
-      "score": 18.8,
+      "file": "finance\\quantitative-finance\\momentum-strategy.md",
+      "concept": "动量策略",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\biomes.md",
-      "concept": "生物群落",
-      "score": 18.8,
+      "file": "finance\\quantitative-finance\\risk-factor-analysis.md",
+      "concept": "风险因子分析",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\community-ecology.md",
-      "concept": "群落生态学",
-      "score": 18.8,
+      "file": "finance\\quantitative-finance\\sentiment-analysis-finance.md",
+      "concept": "金融情绪分析",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\conservation-biology.md",
-      "concept": "保护生物学",
-      "score": 18.8,
+      "file": "finance\\risk-management\\currency-risk.md",
+      "concept": "汇率风险",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\ecological-succession.md",
-      "concept": "生态演替",
-      "score": 18.8,
+      "file": "finance\\risk-management\\hedging-strategies.md",
+      "concept": "对冲策略",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\ecology-overview.md",
-      "concept": "生态学概述",
-      "score": 18.8,
+      "file": "finance\\risk-management\\insurance-products.md",
+      "concept": "保险产品",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\ecosystem-ecology.md",
-      "concept": "生态系统生态学",
-      "score": 18.8,
+      "file": "finance\\risk-management\\liquidity-risk.md",
+      "concept": "流动性风险",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\ecosystem-services.md",
-      "concept": "生态系统服务",
-      "score": 18.8,
+      "file": "finance\\risk-management\\market-risk.md",
+      "concept": "市场风险",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\food-web.md",
-      "concept": "食物网",
-      "score": 18.8,
+      "file": "finance\\risk-management\\operational-risk.md",
+      "concept": "操作风险",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\freshwater-ecology.md",
-      "concept": "淡水生态学",
-      "score": 18.8,
+      "file": "finance\\risk-management\\options-strategies.md",
+      "concept": "期权策略",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\landscape-ecology.md",
-      "concept": "景观生态学",
-      "score": 18.8,
+      "file": "finance\\risk-management\\regulatory-framework.md",
+      "concept": "金融监管",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\marine-ecology.md",
-      "concept": "海洋生态学",
-      "score": 18.8,
+      "file": "finance\\risk-management\\risk-budgeting.md",
+      "concept": "风险预算",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\niche-theory.md",
-      "concept": "生态位理论",
-      "score": 18.8,
+      "file": "finance\\risk-management\\stress-testing.md",
+      "concept": "压力测试",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\nutrient-cycling.md",
-      "concept": "物质循环",
-      "score": 18.8,
+      "file": "finance\\risk-management\\swap-contracts.md",
+      "concept": "互换合约",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\population-ecology.md",
-      "concept": "种群生态学",
-      "score": 18.8,
+      "file": "finance\\risk-management\\systemic-risk.md",
+      "concept": "系统性风险",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "finance"
     },
     {
-      "file": "biology\\ecology\\restoration-ecology.md",
-      "concept": "恢复生态学",
-      "score": 18.8,
+      "file": "product-design\\growth\\community-building.md",
+      "concept": "社区建设",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "product-design"
     },
     {
-      "file": "biology\\ecology\\species-interactions.md",
-      "concept": "种间关系",
-      "score": 18.8,
+      "file": "product-design\\growth\\content-marketing.md",
+      "concept": "内容营销写作",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "writing"
     },
     {
-      "file": "biology\\ecology\\urban-ecology.md",
-      "concept": "城市生态学",
-      "score": 18.8,
+      "file": "product-design\\growth\\email-marketing.md",
+      "concept": "邮件营销",
+      "score": 17.2,
       "tier": "C",
-      "domain": "biology"
+      "domain": "product-design"
     }
   ]
 }

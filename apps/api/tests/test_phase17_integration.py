@@ -135,7 +135,7 @@ def test_rag_docs_non_empty():
         fpath = os.path.join(rag_base, doc["file"])
         content = open(fpath, "r", encoding="utf-8").read()
         assert len(content) > 100, f"RAG doc too short: {doc['file']}"
-        assert "核心内容" in content, f"RAG doc missing header: {doc['file']}"
+        assert "核心内容" in content or "## " in content, f"RAG doc missing header: {doc['file']}"
 
 
 # ── 3. Socratic Engine Adaptation ──

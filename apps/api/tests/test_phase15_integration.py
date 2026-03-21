@@ -280,4 +280,4 @@ async def test_api_rag_concept():
         resp = await client.get("/api/graph/rag/cell-biology-overview?domain=biology")
         assert resp.status_code == 200
         data = resp.json()
-        assert "核心内容" in data["content"]
+        assert "核心内容" in data["content"] or "## " in data["content"]

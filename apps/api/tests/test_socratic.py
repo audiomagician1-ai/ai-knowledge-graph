@@ -254,7 +254,7 @@ class TestMathDomainPrompt:
     async def test_math_prompt_loads_math_rag_content(self, engine, math_concept):
         """Math domain should load RAG content from mathematics subdirectory."""
         prompt = await engine.build_system_prompt(math_concept)
-        # The derivative-concept has a templated RAG doc with LaTeX
+        # The derivative-concept has a RAG doc with math content
         assert "导数" in prompt
         assert "参考知识文档" in prompt
 

@@ -1,150 +1,71 @@
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useMemo, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDomainStore } from '@/lib/store/domain';
-import { Loader } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Loader, Sparkles, BookOpen, GitBranch } from 'lucide-react';
 
 /* ─── Demo fallback ─── */
 const DEMO_DOMAINS: import('@akg/shared').Domain[] = [
-  { id: 'ai-engineering', name: 'AI编程', description: '', color: '#8b5cf6', is_active: true, stats: { total_concepts: 400, total_edges: 615, subdomains: 15 } },
-  { id: 'mathematics', name: '数学', description: '', color: '#3b82f6', is_active: true, stats: { total_concepts: 269, total_edges: 366, subdomains: 12 } },
-  { id: 'game-engine', name: '游戏引擎', description: '', color: '#059669', is_active: true, stats: { total_concepts: 300, total_edges: 319, subdomains: 15 } },
-  { id: 'game-design', name: '游戏设计', description: '', color: '#dc2626', is_active: true, stats: { total_concepts: 250, total_edges: 274, subdomains: 12 } },
-  { id: 'psychology', name: '心理学', description: '', color: '#a855f7', is_active: true, stats: { total_concepts: 183, total_edges: 203, subdomains: 8 } },
-  { id: 'physics', name: '物理', description: '', color: '#22c55e', is_active: true, stats: { total_concepts: 194, total_edges: 232, subdomains: 10 } },
-  { id: 'english', name: '英语', description: '', color: '#eab308', is_active: true, stats: { total_concepts: 200, total_edges: 229, subdomains: 10 } },
+  { id: 'ai-engineering', name: 'AI编程', icon: '', description: '', color: '#8b5cf6', is_active: true, stats: { total_concepts: 400, total_edges: 615, subdomains: 15 } },
+  { id: 'mathematics', name: '数学', icon: '', description: '', color: '#3b82f6', is_active: true, stats: { total_concepts: 269, total_edges: 366, subdomains: 12 } },
+  { id: 'game-engine', name: '游戏引擎', icon: '', description: '', color: '#059669', is_active: true, stats: { total_concepts: 300, total_edges: 319, subdomains: 15 } },
+  { id: 'game-design', name: '游戏设计', icon: '', description: '', color: '#dc2626', is_active: true, stats: { total_concepts: 250, total_edges: 274, subdomains: 12 } },
+  { id: 'psychology', name: '心理学', icon: '', description: '', color: '#a855f7', is_active: true, stats: { total_concepts: 183, total_edges: 203, subdomains: 8 } },
+  { id: 'physics', name: '物理', icon: '', description: '', color: '#22c55e', is_active: true, stats: { total_concepts: 194, total_edges: 232, subdomains: 10 } },
+  { id: 'english', name: '英语', icon: '', description: '', color: '#eab308', is_active: true, stats: { total_concepts: 200, total_edges: 229, subdomains: 10 } },
 ];
 
 const NAME_MAP: Record<string, string> = { 'ai-engineering': 'AI编程' };
 
-/* ─── Constants ─── */
-const BG = '#e8e8e4';
-const TRANSITION_MS = 900;
-const BASE_R = 44;
-const CELL = BASE_R * 2 + 10; // hex cell center-to-center distance
-const DPR = typeof window !== 'undefined' ? Math.min(window.devicePixelRatio || 1, 2) : 1;
-
-/* Fisheye — only scales size, does NOT move positions */
-const FISH_R = 320;
-const FISH_MAX = 1.65;
-const FISH_MIN = 0.55;
-
-/* ─── Types ─── */
-interface BubbleNode {
-  id: string; name: string; color: string;
-  concepts: number; subs: number;
-  gx: number; gy: number;
-  baseR: number;
-}
+/* ─── Icon map for domains ─── */
+const ICON_MAP: Record<string, string> = {
+  'ai-engineering': '🤖', mathematics: '📐', 'game-engine': '🎮',
+  'game-design': '🎲', psychology: '🧠', physics: '⚛️', english: '📖',
+  'qa-testing': '🧪', 'project-management': '📋', 'financial': '💰',
+  'narrative-design': '✍️',
+};
 
 /* ─── Helpers ─── */
 function completeness(c: number, e: number, s: number) { return c + e * 0.5 + s * 5; }
 
-function hexRgb(hex: string): [number, number, number] {
-  const h = hex.replace('#', '');
-  return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
-}
+const TRANSITION_MS = 800;
 
-/** Axial hex spiral positions */
-function hexSpiral(n: number, spacing: number): { x: number; y: number }[] {
-  const out: { x: number; y: number }[] = [];
-  if (n <= 0) return out;
-  out.push({ x: 0, y: 0 });
-  const dirs: [number, number][] = [[1,0],[1,-1],[0,-1],[-1,0],[-1,1],[0,1]];
+/* ─── Honeycomb positions ─── */
+// Generate positions in expanding hex-ring order, centered at origin
+function hexPositions(count: number): { col: number; row: number }[] {
+  const positions: { col: number; row: number }[] = [{ col: 0, row: 0 }];
+  if (count <= 1) return positions.slice(0, count);
+
+  // Ring directions for hex grid (offset coordinates)
+  const dirs = [
+    [1, 0], [0, 1], [-1, 1], [-1, 0], [0, -1], [1, -1],
+  ];
+
   let ring = 1;
-  while (out.length < n) {
-    let q = ring, r = 0;
-    for (let side = 0; side < 6 && out.length < n; side++) {
-      for (let step = 0; step < ring && out.length < n; step++) {
-        const px = spacing * (Math.sqrt(3) * q + Math.sqrt(3) / 2 * r);
-        const py = spacing * (1.5 * r);
-        out.push({ x: px, y: py });
-        q += dirs[(side + 2) % 6][0];
-        r += dirs[(side + 2) % 6][1];
+  while (positions.length < count) {
+    let col = ring, row = 0;
+    for (let d = 0; d < 6 && positions.length < count; d++) {
+      for (let s = 0; s < ring && positions.length < count; s++) {
+        positions.push({ col, row });
+        col += dirs[d][0];
+        row += dirs[d][1];
       }
     }
     ring++;
   }
-  return out;
+  return positions.slice(0, count);
 }
 
-/** Fisheye scale factor based on distance from screen center. Only affects size. */
-function fishScale(dist: number): number {
-  if (dist >= FISH_R) return FISH_MIN;
-  const nd = dist / FISH_R;
-  // Smooth: cubic ease-out from FISH_MAX at center to FISH_MIN at edge
-  const t = 1 - nd * nd;
-  return FISH_MIN + (FISH_MAX - FISH_MIN) * t;
-}
-
-/* ─── Flat bubble drawing ─── */
-function drawBubble(
-  ctx: CanvasRenderingContext2D,
-  b: BubbleNode, cx: number, cy: number,
-  r: number, scale: number, hovered: boolean,
-) {
-  if (r < 2) return;
-  const [cr, cg, cb] = hexRgb(b.color);
-  const alpha = Math.max(0.3, Math.min(1, (scale - FISH_MIN) / (FISH_MAX - FISH_MIN)));
-
-  // Drop shadow
-  ctx.save();
-  ctx.shadowColor = `rgba(${cr},${cg},${cb},${0.3 * alpha})`;
-  ctx.shadowBlur = r * 0.3;
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = r * 0.08;
-
-  // Flat filled circle with subtle gradient
-  const grad = ctx.createRadialGradient(cx - r * 0.2, cy - r * 0.2, 0, cx, cy, r);
-  grad.addColorStop(0, `rgba(${Math.min(255, cr + 40)},${Math.min(255, cg + 40)},${Math.min(255, cb + 40)},${alpha})`);
-  grad.addColorStop(1, `rgba(${cr},${cg},${cb},${alpha})`);
-  ctx.fillStyle = grad;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.restore();
-
-  // Hover ring
-  if (hovered) {
-    ctx.strokeStyle = `rgba(${cr},${cg},${cb},0.8)`;
-    ctx.lineWidth = 2.5;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r + 2, 0, Math.PI * 2);
-    ctx.stroke();
-  }
-
-  // Text — only if big enough
-  if (r < 14) return;
-  const fontSize = Math.max(10, Math.round(r * 0.3));
-  const subSize = Math.max(8, Math.round(r * 0.2));
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.font = `600 ${fontSize}px "Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,sans-serif`;
-  ctx.fillStyle = `rgba(255,255,255,${0.95 * alpha})`;
-  const showSub = r > 26;
-  ctx.fillText(b.name, cx, showSub ? cy - subSize * 0.5 : cy, r * 1.8);
-
-  if (showSub) {
-    const parts: string[] = [];
-    if (b.concepts) parts.push(b.concepts + ' \u77e5\u8bc6\u70b9');
-    if (b.subs) parts.push(b.subs + ' \u5b50\u9886\u57df');
-    if (parts.length) {
-      ctx.font = `400 ${subSize}px "Microsoft YaHei","PingFang SC",system-ui,sans-serif`;
-      ctx.fillStyle = `rgba(255,255,255,${0.6 * alpha})`;
-      ctx.fillText(parts.join(' \u00b7 '), cx, cy + fontSize * 0.6, r * 1.8);
-    }
-  }
-}
-
-/* ═══════════════════════════════════════════════
-   HomePage — Honeycomb grid + center fisheye
-   Infinite drag wrapping, flat style
-   ═══════════════════════════════════════════════ */
+/* ═════════════════════════════════════════════════════
+   HomePage — Honeycomb Grid with Dark Tech Aesthetic
+   Inspired by Apple Watch icon layout
+   ═════════════════════════════════════════════════════ */
 export function HomePage() {
   const nav = useNavigate();
   const { domains, loading, fetchDomains } = useDomainStore();
   const active = domains.filter(d => d.is_active !== false);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [trans, setTrans] = useState<{ id: string; cx: number; cy: number; color: string } | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [trans, setTrans] = useState<{ id: string; color: string } | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const alive = useRef(true);
   const navRef = useRef(nav); navRef.current = nav;
@@ -161,212 +82,415 @@ export function HomePage() {
     return () => { alive.current = false; if (timerRef.current) clearTimeout(timerRef.current); };
   }, []);
 
-  /* ─── Build hex bubble data ─── */
-  const bubbles = useMemo<BubbleNode[]>(() => {
+  /* ─── Sorted domain list ─── */
+  interface DomainItem {
+    id: string; name: string; color: string; icon: string;
+    concepts: number; edges: number; subs: number; comp: number;
+  }
+  const sorted = useMemo<DomainItem[]>(() => {
     if (!active.length) return [];
     const items = active.map(d => {
       const c = d.stats?.total_concepts ?? 0, e = d.stats?.total_edges ?? 0, s = d.stats?.subdomains ?? 0;
-      return { id: d.id, name: NAME_MAP[d.id] || d.name, color: d.color, concepts: c, subs: s, comp: completeness(c, e, s) };
+      return {
+        id: d.id, name: NAME_MAP[d.id] || d.name, color: d.color,
+        icon: ICON_MAP[d.id] || '📚',
+        concepts: c, edges: e, subs: s, comp: completeness(c, e, s),
+      };
     });
     items.sort((a, b) => b.comp - a.comp);
-    const positions = hexSpiral(items.length, CELL);
-    return items.map((it, i) => {
-      const t = Math.max(0, Math.min(1, (it.comp - 300) / 500));
-      return { ...it, gx: positions[i].x, gy: positions[i].y, baseR: BASE_R * (0.8 + t * 0.2) };
-    });
+    return items;
   }, [active]);
 
-  /* ─── Compute bounding box for wrap ─── */
-  const bbox = useMemo(() => {
-    if (!bubbles.length) return { w: 0, h: 0 };
-    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-    for (const b of bubbles) {
-      if (b.gx - BASE_R < minX) minX = b.gx - BASE_R;
-      if (b.gx + BASE_R > maxX) maxX = b.gx + BASE_R;
-      if (b.gy - BASE_R < minY) minY = b.gy - BASE_R;
-      if (b.gy + BASE_R > maxY) maxY = b.gy + BASE_R;
-    }
-    return { w: maxX - minX + CELL, h: maxY - minY + CELL };
-  }, [bubbles]);
+  const hexPos = useMemo(() => hexPositions(sorted.length), [sorted.length]);
 
-  /* ─── State ref ─── */
-  const st = useRef({
-    ox: 0, oy: 0,
-    vx: 0, vy: 0,
-    dsx: 0, dsy: 0, dox: 0, doy: 0,
-    ltm: 0, lmx: 0, lmy: 0,
-    dragging: false,
-    mx: -9999, my: -9999,
-  });
+  const handleClick = useCallback((d: DomainItem) => {
+    setTrans({ id: d.id, color: d.color });
+    timerRef.current = setTimeout(() => {
+      if (alive.current) navRef.current('/domain/' + d.id);
+    }, TRANSITION_MS);
+  }, []);
 
-  /* ─── Canvas loop ─── */
-  useEffect(() => {
-    const cvs = canvasRef.current;
-    if (!cvs || !bubbles.length) return;
-    const ctx = cvs.getContext('2d')!;
-    let raf = 0, dead = false;
-    const s = st.current;
+  const hoveredDomain = sorted.find(d => d.id === hoveredId);
 
-    const resize = () => {
-      const r = cvs.parentElement!.getBoundingClientRect();
-      cvs.width = r.width * DPR;
-      cvs.height = r.height * DPR;
-      cvs.style.width = r.width + 'px';
-      cvs.style.height = r.height + 'px';
-    };
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(cvs.parentElement!);
-
-    const onDown = (e: PointerEvent) => {
-      s.dragging = true; s.dsx = e.clientX; s.dsy = e.clientY;
-      s.dox = s.ox; s.doy = s.oy; s.vx = 0; s.vy = 0;
-      s.lmx = e.clientX; s.lmy = e.clientY; s.ltm = performance.now();
-      cvs.setPointerCapture(e.pointerId);
-    };
-    const onMove = (e: PointerEvent) => {
-      const r = cvs.getBoundingClientRect();
-      s.mx = e.clientX - r.left; s.my = e.clientY - r.top;
-      if (s.dragging) {
-        s.ox = s.dox + (e.clientX - s.dsx);
-        s.oy = s.doy + (e.clientY - s.dsy);
-        const now = performance.now(), dt = now - s.ltm;
-        if (dt > 0) { s.vx = (e.clientX - s.lmx) / dt * 16; s.vy = (e.clientY - s.lmy) / dt * 16; }
-        s.lmx = e.clientX; s.lmy = e.clientY; s.ltm = now;
-      }
-    };
-    const onUp = (e: PointerEvent) => {
-      const wasDrag = Math.abs(e.clientX - s.dsx) > 5 || Math.abs(e.clientY - s.dsy) > 5;
-      s.dragging = false; cvs.releasePointerCapture(e.pointerId);
-      if (!wasDrag) {
-        const W = cvs.width / DPR, H = cvs.height / DPR;
-        const cx = W / 2, cy = H / 2;
-        // Reverse hit-test with wrapping
-        for (let i = bubbles.length - 1; i >= 0; i--) {
-          const b = bubbles[i];
-          let wx = cx + s.ox + b.gx, wy = cy + s.oy + b.gy;
-          if (bbox.w > 0) { wx = ((wx % bbox.w) + bbox.w) % bbox.w; if (wx > W + BASE_R * 2) wx -= bbox.w; }
-          if (bbox.h > 0) { wy = ((wy % bbox.h) + bbox.h) % bbox.h; if (wy > H + BASE_R * 2) wy -= bbox.h; }
-          const dist = Math.sqrt((wx - cx) * (wx - cx) + (wy - cy) * (wy - cy));
-          const sc = fishScale(dist);
-          const r = b.baseR * sc;
-          const dx = s.mx - wx, dy = s.my - wy;
-          if (dx * dx + dy * dy <= r * r) {
-            const rect = cvs.getBoundingClientRect();
-            setTrans({ id: b.id, cx: rect.left + wx, cy: rect.top + wy, color: b.color });
-            timerRef.current = setTimeout(() => { if (alive.current) navRef.current('/domain/' + b.id); }, TRANSITION_MS);
-            break;
-          }
-        }
-      }
-    };
-    const onLeave = () => { s.mx = -9999; s.my = -9999; };
-
-    cvs.addEventListener('pointerdown', onDown);
-    cvs.addEventListener('pointermove', onMove);
-    cvs.addEventListener('pointerup', onUp);
-    cvs.addEventListener('pointerleave', onLeave);
-
-    const frame = () => {
-      if (dead) return;
-      const W = cvs.width / DPR, H = cvs.height / DPR;
-
-      // Inertia
-      if (!s.dragging) {
-        s.ox += s.vx; s.oy += s.vy;
-        s.vx *= 0.94; s.vy *= 0.94;
-        if (Math.abs(s.vx) < 0.05) s.vx = 0;
-        if (Math.abs(s.vy) < 0.05) s.vy = 0;
-      }
-
-      const cx = W / 2, cy = H / 2;
-
-      ctx.save();
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      ctx.fillStyle = BG;
-      ctx.fillRect(0, 0, W, H);
-
-      // Build draw list with wrapping
-      type DI = { b: BubbleNode; x: number; y: number; r: number; sc: number; idx: number };
-      const drawList: DI[] = [];
-
-      for (let i = 0; i < bubbles.length; i++) {
-        const b = bubbles[i];
-        let wx = cx + s.ox + b.gx;
-        let wy = cy + s.oy + b.gy;
-
-        // Wrap for infinite scrolling
-        if (bbox.w > 0) {
-          wx = ((wx % bbox.w) + bbox.w) % bbox.w;
-          if (wx > W + BASE_R * 2) wx -= bbox.w;
-        }
-        if (bbox.h > 0) {
-          wy = ((wy % bbox.h) + bbox.h) % bbox.h;
-          if (wy > H + BASE_R * 2) wy -= bbox.h;
-        }
-
-        // Cull
-        if (wx < -BASE_R * 2 || wx > W + BASE_R * 2 || wy < -BASE_R * 2 || wy > H + BASE_R * 2) continue;
-
-        const dist = Math.sqrt((wx - cx) * (wx - cx) + (wy - cy) * (wy - cy));
-        const sc = fishScale(dist);
-        drawList.push({ b, x: wx, y: wy, r: b.baseR * sc, sc, idx: i });
-      }
-
-      // Sort: small (far) first, big (near center) on top
-      drawList.sort((a, b) => a.sc - b.sc);
-
-      // Hover detect
-      let hovIdx = -1;
-      for (let i = drawList.length - 1; i >= 0; i--) {
-        const d = drawList[i];
-        const dx = s.mx - d.x, dy = s.my - d.y;
-        if (dx * dx + dy * dy <= d.r * d.r) { hovIdx = d.idx; break; }
-      }
-      cvs.style.cursor = s.dragging ? 'grabbing' : hovIdx >= 0 ? 'pointer' : 'grab';
-
-      // Draw
-      for (const d of drawList) {
-        drawBubble(ctx, d.b, d.x, d.y, d.r, d.sc, d.idx === hovIdx);
-      }
-
-      ctx.restore();
-      raf = requestAnimationFrame(frame);
-    };
-    raf = requestAnimationFrame(frame);
-
-    return () => {
-      dead = true; cancelAnimationFrame(raf); ro.disconnect();
-      cvs.removeEventListener('pointerdown', onDown);
-      cvs.removeEventListener('pointermove', onMove);
-      cvs.removeEventListener('pointerup', onUp);
-      cvs.removeEventListener('pointerleave', onLeave);
-    };
-  }, [bubbles, bbox]);
+  /* ─── Responsive cell sizing ─── */
+  const CELL_SIZE = typeof window !== 'undefined' && window.innerWidth < 640 ? 96 : 128;
+  const GAP = typeof window !== 'undefined' && window.innerWidth < 640 ? 8 : 12;
 
   return (
-    <div className="h-dvh w-full relative overflow-hidden" style={{ backgroundColor: BG }}>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ touchAction: 'none' }} />
+    <div className="homepage-root">
+      {/* Ambient background effects */}
+      <div className="homepage-bg-glow" />
+      <div className="homepage-bg-grid" />
+
       {/* Header */}
-      <div className="absolute left-0 right-0 text-center pointer-events-none select-none" style={{ top: 28, zIndex: 10 }}>
-        <h1 style={{ fontSize: 26, fontWeight: 500, color: '#2a2a2a', letterSpacing: '-0.02em', marginBottom: 6, fontFamily: '"Noto Serif SC","Source Serif 4",Georgia,serif', textShadow: '0 1px 8px rgba(232,232,228,0.9)' }}>
-          选择你的知识领域
-        </h1>
-        <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6, textShadow: '0 1px 6px rgba(232,232,228,0.8)' }}>
-          拖拽平移 \u00b7 点击进入 3D 知识图谱
+      <motion.header
+        className="homepage-header"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="homepage-logo">
+          <Sparkles size={18} strokeWidth={1.5} />
+          <span>AKG</span>
+        </div>
+        <h1 className="homepage-title">知识图谱</h1>
+        <p className="homepage-subtitle">
+          选择一个领域，探索知识的连接
         </p>
+      </motion.header>
+
+      {/* Honeycomb Grid */}
+      <div className="homepage-grid-wrap">
+        <div className="homepage-grid" style={{ '--cell': `${CELL_SIZE}px`, '--gap': `${GAP}px` } as React.CSSProperties}>
+          {sorted.map((d, i) => {
+            const pos = hexPos[i];
+            const isOddRow = ((pos.row % 2) + 2) % 2 === 1;
+            const xOffset = pos.col * (CELL_SIZE + GAP) + (isOddRow ? (CELL_SIZE + GAP) / 2 : 0);
+            const yOffset = pos.row * ((CELL_SIZE + GAP) * 0.866);
+            const isHovered = hoveredId === d.id;
+            const isTransitioning = trans?.id === d.id;
+
+            return (
+              <motion.button
+                key={d.id}
+                className="homepage-cell"
+                style={{
+                  '--accent': d.color,
+                  transform: `translate(${xOffset}px, ${yOffset}px)`,
+                  width: CELL_SIZE,
+                  height: CELL_SIZE,
+                } as React.CSSProperties}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{
+                  opacity: isTransitioning ? 0 : 1,
+                  scale: isTransitioning ? 1.5 : 1,
+                }}
+                transition={{
+                  delay: i * 0.06,
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{ scale: 1.12, zIndex: 10 }}
+                whileTap={{ scale: 0.95 }}
+                onHoverStart={() => setHoveredId(d.id)}
+                onHoverEnd={() => setHoveredId(null)}
+                onClick={() => handleClick(d)}
+              >
+                {/* Glow ring */}
+                <div className="cell-glow" style={{ opacity: isHovered ? 1 : 0 }} />
+                {/* Inner content */}
+                <div className="cell-inner">
+                  <span className="cell-icon">{d.icon}</span>
+                  <span className="cell-name">{d.name}</span>
+                </div>
+                {/* Subtle border */}
+                <div className="cell-border" />
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
+
+      {/* Bottom info panel — shows hovered domain stats */}
+      <AnimatePresence mode="wait">
+        {hoveredDomain ? (
+          <motion.div
+            key={hoveredDomain.id}
+            className="homepage-info"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="info-name" style={{ color: hoveredDomain.color }}>
+              <span className="info-icon">{hoveredDomain.icon}</span>
+              {hoveredDomain.name}
+            </div>
+            <div className="info-stats">
+              <span><BookOpen size={13} strokeWidth={1.5} /> {hoveredDomain.concepts} 知识点</span>
+              <span className="info-dot" />
+              <span><GitBranch size={13} strokeWidth={1.5} /> {hoveredDomain.subs} 子领域</span>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="hint"
+            className="homepage-hint"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            点击领域进入 3D 知识图谱
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Loading */}
       {loading && active.length === 0 && (
-        <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 20 }}>
-          <Loader size={28} className="animate-spin" style={{ color: '#888' }} />
+        <div className="homepage-loading">
+          <Loader size={24} className="animate-spin" />
         </div>
       )}
-      {trans && (
-        <div className="fixed inset-0" style={{ zIndex: 50, pointerEvents: 'none' }}>
-          <div style={{ position: 'absolute', left: trans.cx, top: trans.cy, width: 0, height: 0, borderRadius: '50%', backgroundColor: trans.color, transform: 'translate(-50%,-50%)', animation: 'orb-expand ' + TRANSITION_MS + 'ms cubic-bezier(0.4,0,0.2,1) forwards', opacity: 0.85 }} />
-        </div>
-      )}
-      <style>{`@keyframes orb-expand { 0% { width:0;height:0;opacity:0.9 } 100% { width:300vmax;height:300vmax;opacity:0.4 } }`}</style>
+
+      {/* Transition overlay */}
+      <AnimatePresence>
+        {trans && (
+          <motion.div
+            className="homepage-transition"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: TRANSITION_MS / 1000, ease: 'easeInOut' }}
+            style={{ backgroundColor: trans.color }}
+          />
+        )}
+      </AnimatePresence>
+
+      <style>{`
+        .homepage-root {
+          position: relative;
+          width: 100%;
+          height: 100dvh;
+          overflow: hidden;
+          background: #0a0a0f;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        /* ── Ambient background ── */
+        .homepage-bg-glow {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse 80% 60% at 50% 40%, rgba(99,102,241,0.08) 0%, transparent 70%),
+            radial-gradient(ellipse 60% 50% at 30% 60%, rgba(16,185,129,0.05) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 40% at 75% 30%, rgba(139,92,246,0.06) 0%, transparent 50%);
+          pointer-events: none;
+        }
+        .homepage-bg-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+          background-size: 48px 48px;
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 30%, transparent 70%);
+          pointer-events: none;
+        }
+
+        /* ── Header ── */
+        .homepage-header {
+          position: relative;
+          z-index: 10;
+          text-align: center;
+          padding: 48px 24px 24px;
+          flex-shrink: 0;
+        }
+        .homepage-logo {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 4px 14px 4px 10px;
+          border-radius: 100px;
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.08);
+          color: rgba(255,255,255,0.5);
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          margin-bottom: 20px;
+          backdrop-filter: blur(8px);
+        }
+        .homepage-title {
+          font-family: "Inter", "Noto Sans SC", -apple-system, system-ui, sans-serif;
+          font-size: clamp(28px, 4vw, 40px);
+          font-weight: 200;
+          letter-spacing: -0.03em;
+          color: rgba(255,255,255,0.92);
+          margin: 0 0 8px;
+          line-height: 1.2;
+        }
+        .homepage-subtitle {
+          font-size: 14px;
+          color: rgba(255,255,255,0.35);
+          font-weight: 400;
+          letter-spacing: 0.02em;
+        }
+
+        /* ── Grid wrapper ── */
+        .homepage-grid-wrap {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          z-index: 5;
+          padding: 16px;
+        }
+        .homepage-grid {
+          position: relative;
+          /* Center the grid: offset by half the bounding box */
+        }
+
+        /* ── Cell ── */
+        .homepage-cell {
+          position: absolute;
+          border-radius: 50%;
+          cursor: pointer;
+          border: none;
+          background: none;
+          padding: 0;
+          outline: none;
+          /* Center-anchor the grid */
+          margin-left: calc(var(--cell) / -2);
+          margin-top: calc(var(--cell) / -2);
+          -webkit-tap-highlight-color: transparent;
+        }
+        .cell-inner {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          background: radial-gradient(circle at 35% 30%,
+            rgba(255,255,255,0.08) 0%,
+            rgba(255,255,255,0.02) 50%,
+            rgba(0,0,0,0.1) 100%
+          );
+          backdrop-filter: blur(12px);
+          transition: background 0.3s ease;
+        }
+        .homepage-cell:hover .cell-inner {
+          background: radial-gradient(circle at 35% 30%,
+            color-mix(in srgb, var(--accent) 20%, transparent) 0%,
+            color-mix(in srgb, var(--accent) 8%, transparent) 50%,
+            rgba(0,0,0,0.05) 100%
+          );
+        }
+        .cell-border {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          border: 1px solid rgba(255,255,255,0.08);
+          pointer-events: none;
+          transition: border-color 0.3s ease;
+        }
+        .homepage-cell:hover .cell-border {
+          border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+        }
+        .cell-glow {
+          position: absolute;
+          inset: -20%;
+          border-radius: 50%;
+          background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+          opacity: 0;
+          filter: blur(24px);
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+          z-index: 0;
+        }
+        .cell-icon {
+          font-size: clamp(24px, 3vw, 36px);
+          line-height: 1;
+          filter: saturate(0.9);
+        }
+        .cell-name {
+          font-family: "Inter", "Noto Sans SC", -apple-system, system-ui, sans-serif;
+          font-size: clamp(11px, 1.2vw, 13px);
+          font-weight: 500;
+          color: rgba(255,255,255,0.7);
+          letter-spacing: 0.01em;
+          white-space: nowrap;
+          transition: color 0.3s ease;
+        }
+        .homepage-cell:hover .cell-name {
+          color: rgba(255,255,255,0.95);
+        }
+
+        /* ── Bottom info ── */
+        .homepage-info {
+          position: absolute;
+          bottom: 48px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 10;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 6px;
+        }
+        .info-name {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+          font-size: 18px;
+          font-weight: 500;
+          letter-spacing: -0.01em;
+        }
+        .info-icon { font-size: 20px; }
+        .info-stats {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 13px;
+          color: rgba(255,255,255,0.4);
+        }
+        .info-stats span {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+        .info-dot {
+          width: 3px; height: 3px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.2);
+        }
+        .homepage-hint {
+          position: absolute;
+          bottom: 52px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 10;
+          font-size: 13px;
+          color: rgba(255,255,255,0.25);
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+        }
+
+        /* ── Loading ── */
+        .homepage-loading {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 20;
+          color: rgba(255,255,255,0.4);
+        }
+
+        /* ── Transition overlay ── */
+        .homepage-transition {
+          position: fixed;
+          inset: 0;
+          z-index: 50;
+          opacity: 0;
+        }
+
+        /* ── Mobile adjustments ── */
+        @media (max-width: 640px) {
+          .homepage-header { padding: 32px 20px 16px; }
+          .homepage-title { font-weight: 300; }
+          .homepage-info { bottom: 36px; }
+        }
+      `}</style>
     </div>
   );
 }
