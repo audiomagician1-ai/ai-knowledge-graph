@@ -1,13 +1,22 @@
 ---
 id: "qa-ct-device-matrix"
-title: "设备矩阵"
+concept: "设备矩阵"
 domain: "game-qa"
 subdomain: "compatibility-testing"
+subdomain_name: "兼容性测试"
 difficulty: 1
-estimated_minutes: 25
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 设备矩阵
 
 > **子领域**: 兼容性测试 | **难度**: 入门 | **预计学习时间**: 25分钟

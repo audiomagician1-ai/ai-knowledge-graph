@@ -1,3 +1,22 @@
+---
+id: "cd-gamut-mapping"
+concept: "色域映射"
+domain: "concept-design"
+subdomain: "color-theory"
+subdomain_name: "色彩理论"
+difficulty: 3
+is_milestone: false
+tags: ["技巧"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.4
+generation_method: "template-v1"
+unique_content_ratio: 0.545
+last_scored: "2026-03-21"
+sources: []
+---
 # 色域映射
 
 ## 概述

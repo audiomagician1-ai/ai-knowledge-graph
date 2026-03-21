@@ -1,14 +1,22 @@
 ---
 id: "caching-strategies"
-name: "缓存策略"
+concept: "缓存策略"
+domain: "ai-engineering"
 subdomain: "web-backend"
 subdomain_name: "Web后端"
 difficulty: 6
 is_milestone: false
 tags: ["性能"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # 缓存策略
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 情境调查
-subdomain: 用户研究
-domain: product-design
+id: "contextual-inquiry"
+concept: "情境调查"
+domain: "product-design"
+subdomain: "user-research"
+subdomain_name: "用户研究"
 difficulty: 2
----
+is_milestone: false
+tags: ["定性"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.3
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 情境调查
 
 ## 核心概念

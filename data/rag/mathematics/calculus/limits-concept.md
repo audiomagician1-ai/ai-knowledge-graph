@@ -1,14 +1,22 @@
 ---
 id: "limits-concept"
-name: "极限概念"
+concept: "极限概念"
+domain: "mathematics"
 subdomain: "calculus"
 subdomain_name: "微积分"
 difficulty: 5
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.7
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 极限概念
 
 ## 概述

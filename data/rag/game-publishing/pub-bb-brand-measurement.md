@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: brand-building
-concept_id: pub-bb-brand-measurement
+id: "pub-bb-brand-measurement"
+concept: "品牌效果度量"
+domain: "game-publishing"
+subdomain: "brand-building"
+subdomain_name: "品牌建设"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 品牌效果度量
 
 ## 概述

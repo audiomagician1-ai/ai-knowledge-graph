@@ -1,10 +1,22 @@
 ---
-concept: 遗传漂变
-subdomain: 遗传学
-domain: biology
+id: "genetic-drift"
+concept: "遗传漂变"
+domain: "biology"
+subdomain: "genetics"
+subdomain_name: "遗传学"
 difficulty: 3
----
+is_milestone: false
+tags: ["群体"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 遗传漂变
 
 ## 核心内容

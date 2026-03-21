@@ -1,13 +1,22 @@
 ---
 id: "qa-lt-plurals-gender"
-title: "复数/性别变化"
+concept: "复数/性别变化"
 domain: "game-qa"
 subdomain: "localization-testing"
+subdomain_name: "本地化测试"
 difficulty: 3
-estimated_minutes: 35
 is_milestone: true
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 复数/性别变化
 
 > **子领域**: 本地化测试 | **难度**: 进阶 | **预计学习时间**: 35分钟

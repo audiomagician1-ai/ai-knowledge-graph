@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: user-retention
-concept_id: ops-ur-lifecycle-management
+id: "ops-ur-lifecycle-management"
+concept: "生命周期管理"
+domain: "game-live-ops"
+subdomain: "user-retention"
+subdomain_name: "用户留存"
 difficulty: 3
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 生命周期管理
 
 ## 概述

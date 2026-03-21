@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-tension-resolution"
+concept: "紧张与解决"
+domain: "game-audio-music"
+subdomain: "music-theory"
+subdomain_name: "音乐理论"
+difficulty: 2
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.1
+generation_method: "template-v1"
+unique_content_ratio: 0.588
+last_scored: "2026-03-21"
+sources: []
+---
 # 紧张与解决
 
 > **领域**: 游戏音乐 | **子领域**: 音乐理论 | **难度**: 基础

@@ -1,3 +1,22 @@
+---
+id: "3da-bake-curvature"
+concept: "曲率烘焙"
+domain: "3d-art"
+subdomain: "baking"
+subdomain_name: "烘焙"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.5
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 曲率烘焙
 
 ## 概述

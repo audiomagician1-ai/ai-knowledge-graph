@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: accessibility
-concept_id: guiux-a11y-deaf-hoh
-title: 聋人/听障适配
+id: "guiux-a11y-deaf-hoh"
+concept: "聋人/听障适配"
+domain: "game-ui-ux"
+subdomain: "accessibility"
+subdomain_name: "无障碍设计"
 difficulty: 3
 is_milestone: false
 tags: ["accessibility", "聋人/听障适配"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.1
+generation_method: "template-v1"
+unique_content_ratio: 0.056
+last_scored: "2026-03-21"
+sources: []
+---
 # 聋人/听障适配
 
 > **领域**: 游戏UI/UX > 无障碍设计 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

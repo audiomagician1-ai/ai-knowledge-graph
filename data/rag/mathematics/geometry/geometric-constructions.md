@@ -1,14 +1,22 @@
 ---
 id: "geometric-constructions"
-name: "尺规作图"
+concept: "尺规作图"
+domain: "mathematics"
 subdomain: "geometry"
 subdomain_name: "几何"
 difficulty: 4
 is_milestone: false
 tags: ["经典"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.2
+generation_method: "template-v1"
+unique_content_ratio: 0.727
+last_scored: "2026-03-21"
+sources: []
+---
 # 尺规作图
 
 ## 概述

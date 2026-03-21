@@ -1,14 +1,22 @@
 ---
 id: "asking-directions"
-name: "问路与指路"
+concept: "问路与指路"
+domain: "english"
 subdomain: "speaking"
 subdomain_name: "口语表达"
 difficulty: 2
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 问路与指路
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 伤害公式
-subdomain: 平衡性设计
-domain: game-design
+id: "damage-formula"
+concept: "伤害公式"
+domain: "game-design"
+subdomain: "balance-design"
+subdomain_name: "平衡性设计"
 difficulty: 3
----
+is_milestone: false
+tags: ["数值"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.9
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 伤害公式
 
 ## 核心内容

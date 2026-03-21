@@ -1,10 +1,22 @@
 ---
-concept: 调试可视化
-subdomain: 关卡编辑器
-domain: level-design
+id: "debug-visualization"
+concept: "调试可视化"
+domain: "level-design"
+subdomain: "level-editor"
+subdomain_name: "关卡编辑器"
 difficulty: 2
----
+is_milestone: false
+tags: ["调试"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.3
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 调试可视化
 
 ## 核心内容

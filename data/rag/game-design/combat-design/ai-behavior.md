@@ -1,10 +1,22 @@
 ---
-concept: 战斗AI行为
-subdomain: 战斗设计
-domain: game-design
+id: "ai-behavior"
+concept: "战斗AI行为"
+domain: "game-design"
+subdomain: "combat-design"
+subdomain_name: "战斗设计"
 difficulty: 3
----
+is_milestone: false
+tags: ["AI"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 战斗AI行为
 
 ## 核心内容

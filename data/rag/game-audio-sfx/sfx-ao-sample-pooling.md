@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: audio-optimization
-concept_id: sfx-ao-sample-pooling
+id: "sfx-ao-sample-pooling"
+concept: "采样池化"
+domain: "game-audio-sfx"
+subdomain: "audio-optimization"
+subdomain_name: "音效优化"
 difficulty: 3
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 采样池化
 
 ## 概述

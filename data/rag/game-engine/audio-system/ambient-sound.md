@@ -1,10 +1,22 @@
 ---
-concept: 环境音设计
-subdomain: 音频系统
-domain: game-engine
+id: "ambient-sound"
+concept: "环境音设计"
+domain: "game-engine"
+subdomain: "audio-system"
+subdomain_name: "音频系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["环境"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.8
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 环境音设计
 
 ## 核心内容

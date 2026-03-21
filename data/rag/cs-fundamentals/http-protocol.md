@@ -1,14 +1,22 @@
 ---
 id: "http-protocol"
-name: "HTTP协议"
+concept: "HTTP协议"
+domain: "ai-engineering"
 subdomain: "cs-fundamentals"
 subdomain_name: "计算机基础"
 difficulty: 3
 is_milestone: false
 tags: ["网络", "Web"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # HTTP协议
 
 ## 概述

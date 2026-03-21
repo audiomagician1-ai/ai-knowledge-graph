@@ -1,10 +1,22 @@
 ---
-concept: 启动性能优化
-subdomain: 性能分析
-domain: software-engineering
+id: "se-startup-perf"
+concept: "启动性能优化"
+domain: "software-engineering"
+subdomain: "performance-analysis"
+subdomain_name: "性能分析"
 difficulty: 2
----
+is_milestone: false
+tags: ["启动"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 20.9
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # 启动性能优化
 
 ## 核心内容

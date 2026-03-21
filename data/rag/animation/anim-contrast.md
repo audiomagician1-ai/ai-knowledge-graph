@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: animation-principles
-concept_id: anim-contrast
+id: "anim-contrast"
+concept: "对比原则"
+domain: "animation"
+subdomain: "animation-principles"
+subdomain_name: "动画原理"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 对比原则
 
 ## 概述

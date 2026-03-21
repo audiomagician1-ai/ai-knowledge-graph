@@ -1,10 +1,22 @@
 ---
-concept: 辐照度贴图
-subdomain: 全局光照
-domain: computer-graphics
+id: "cg-irradiance-map"
+concept: "辐照度贴图"
+domain: "computer-graphics"
+subdomain: "global-illumination"
+subdomain_name: "全局光照"
 difficulty: 3
----
+is_milestone: false
+tags: ["技术"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 辐照度贴图
 
 ## 核心内容

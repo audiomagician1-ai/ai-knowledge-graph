@@ -1,3 +1,22 @@
+---
+id: "back-of-envelope"
+concept: "粗略估算"
+domain: "ai-engineering"
+subdomain: "system-design"
+subdomain_name: "系统设计"
+difficulty: 3
+is_milestone: false
+tags: ["estimation", "capacity-planning", "qps"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 粗略估算
 
 > **难度**: (3/5) | **预计学习时间**: 20分钟

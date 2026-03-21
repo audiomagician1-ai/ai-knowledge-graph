@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: ab-testing
-concept_id: ops-ab-statistical-significance
+id: "ops-ab-statistical-significance"
+concept: "统计显著性"
+domain: "game-live-ops"
+subdomain: "ab-testing"
+subdomain_name: "A/B测试"
 difficulty: 2
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.4
+generation_method: "template-v1"
+unique_content_ratio: 0.429
+last_scored: "2026-03-21"
+sources: []
+---
 # 统计显著性
 
 ## 概述

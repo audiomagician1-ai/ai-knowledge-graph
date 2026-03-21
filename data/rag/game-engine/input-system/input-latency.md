@@ -1,10 +1,22 @@
 ---
-concept: 输入延迟优化
-subdomain: 输入系统
-domain: game-engine
+id: "input-latency"
+concept: "输入延迟优化"
+domain: "game-engine"
+subdomain: "input-system"
+subdomain_name: "输入系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["性能"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 输入延迟优化
 
 ## 核心内容

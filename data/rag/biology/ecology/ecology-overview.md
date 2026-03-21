@@ -1,10 +1,22 @@
 ---
-concept: 生态学概述
-subdomain: 生态学
-domain: biology
+id: "ecology-overview"
+concept: "生态学概述"
+domain: "biology"
+subdomain: "ecology"
+subdomain_name: "生态学"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 生态学概述
 
 ## 核心内容

@@ -1,3 +1,22 @@
+---
+id: "cd-env-scale-storytelling"
+concept: "尺度叙事"
+domain: "concept-design"
+subdomain: "environment-design"
+subdomain_name: "环境设计"
+difficulty: 2
+is_milestone: false
+tags: ["技巧"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 尺度叙事
 
 ## 概述

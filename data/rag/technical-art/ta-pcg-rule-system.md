@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pcg
-concept_id: ta-pcg-rule-system
+id: "ta-pcg-rule-system"
+concept: "规则系统设计"
+domain: "technical-art"
+subdomain: "pcg"
+subdomain_name: "程序化生成"
 difficulty: 3
-content_type: theory
-tags: [架构]
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 18.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 规则系统设计
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "nd-nt-spreadsheet-pipeline"
+concept: "表格管线"
+domain: "narrative-design"
+subdomain: "narrative-tools"
+subdomain_name: "叙事工具"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 56.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.913
+last_scored: "2026-03-21"
+sources: []
+---
 # 表格管线
 
 > 领域: 叙事设计 > 叙事工具

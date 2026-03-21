@@ -1,3 +1,22 @@
+---
+id: "3da-uv-organic-uv"
+concept: "有机体UV"
+domain: "3d-art"
+subdomain: "uv-unwrapping"
+subdomain_name: "UV展开"
+difficulty: 3
+is_milestone: true
+tags: ["实战"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 有机体UV
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "cd-color-contrast"
+concept: "色彩对比"
+domain: "concept-design"
+subdomain: "color-theory"
+subdomain_name: "色彩理论"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.875
+last_scored: "2026-03-21"
+sources: []
+---
 # 色彩对比
 
 ## 概述

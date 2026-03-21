@@ -1,3 +1,22 @@
+---
+id: "container-registry"
+concept: "容器镜像仓库"
+domain: "ai-engineering"
+subdomain: "devops"
+subdomain_name: "开发运维"
+difficulty: 3
+is_milestone: false
+tags: ["registry", "docker-hub", "image-management"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 容器镜像仓库
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 20分钟

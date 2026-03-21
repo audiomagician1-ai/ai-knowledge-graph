@@ -1,10 +1,22 @@
 ---
-concept: 微观进化
-subdomain: 进化生物学
-domain: biology
+id: "microevolution"
+concept: "微观进化"
+domain: "biology"
+subdomain: "evolution"
+subdomain_name: "进化生物学"
 difficulty: 2
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.0
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 微观进化
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 进食障碍
-subdomain: 临床心理学
-domain: psychology
+id: "eating-disorders"
+concept: "进食障碍"
+domain: "psychology"
+subdomain: "clinical-psychology"
+subdomain_name: "临床心理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["障碍"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.0
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 进食障碍
 
 ## 核心内容

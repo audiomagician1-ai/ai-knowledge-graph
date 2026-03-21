@@ -1,10 +1,22 @@
 ---
-concept: 优先级排序框架
-subdomain: 产品思维
-domain: product-design
+id: "prioritization-frameworks"
+concept: "优先级排序框架"
+domain: "product-design"
+subdomain: "product-thinking"
+subdomain_name: "产品思维"
 difficulty: 3
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.4
+generation_method: "template-v1"
+unique_content_ratio: 0.222
+last_scored: "2026-03-21"
+sources: []
+---
 # 优先级排序框架
 
 ## 核心概念

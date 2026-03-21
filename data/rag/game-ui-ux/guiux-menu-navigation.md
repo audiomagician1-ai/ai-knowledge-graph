@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: menu-system
-concept_id: guiux-menu-navigation
-title: 菜单导航架构
+id: "guiux-menu-navigation"
+concept: "菜单导航架构"
+domain: "game-ui-ux"
+subdomain: "menu-system"
+subdomain_name: "菜单系统"
 difficulty: 2
 is_milestone: false
 tags: ["menu-system", "菜单导航架构"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 菜单导航架构
 
 > **领域**: 游戏UI/UX > 菜单系统 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

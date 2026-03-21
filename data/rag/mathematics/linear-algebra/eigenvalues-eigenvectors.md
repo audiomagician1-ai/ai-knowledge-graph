@@ -1,14 +1,22 @@
 ---
 id: "eigenvalues-eigenvectors"
-name: "特征值与特征向量"
+concept: "特征值与特征向量"
+domain: "mathematics"
 subdomain: "linear-algebra"
 subdomain_name: "线性代数"
 difficulty: 7
-is_milestone: true
+is_milestone: false
 tags: ["里程碑"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 43.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 特征值与特征向量
 
 ## 概述

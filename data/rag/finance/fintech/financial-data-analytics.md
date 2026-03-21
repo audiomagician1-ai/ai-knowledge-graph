@@ -1,10 +1,22 @@
 ---
-concept: 金融数据分析
-subdomain: 金融科技
-domain: finance
+id: "financial-data-analytics"
+concept: "金融数据分析"
+domain: "finance"
+subdomain: "fintech"
+subdomain_name: "金融科技"
 difficulty: 2
----
+is_milestone: false
+tags: ["数据"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.0
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 金融数据分析
 
 ## 核心概念

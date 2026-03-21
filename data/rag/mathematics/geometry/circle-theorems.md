@@ -1,14 +1,22 @@
 ---
 id: "circle-theorems"
-name: "圆的定理"
+concept: "圆的定理"
+domain: "mathematics"
 subdomain: "geometry"
 subdomain_name: "几何"
 difficulty: 6
 is_milestone: false
 tags: ["进阶"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 圆的定理
 
 ## 概述

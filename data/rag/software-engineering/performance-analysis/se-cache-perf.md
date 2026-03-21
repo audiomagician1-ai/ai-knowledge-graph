@@ -1,10 +1,22 @@
 ---
-concept: 缓存性能
-subdomain: 性能分析
-domain: software-engineering
+id: "se-cache-perf"
+concept: "缓存性能"
+domain: "software-engineering"
+subdomain: "performance-analysis"
+subdomain_name: "性能分析"
 difficulty: 3
----
+is_milestone: true
+tags: ["硬件"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 缓存性能
 
 ## 核心内容

@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: shader-dev
-concept_id: ta-shader-cross-platform
+id: "ta-shader-cross-platform"
+concept: "跨平台Shader"
+domain: "technical-art"
+subdomain: "shader-dev"
+subdomain_name: "Shader开发"
 difficulty: 3
-content_type: practice
-tags: [管线]
----
+is_milestone: false
+tags: ["管线"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 跨平台Shader
 
 ## 概述

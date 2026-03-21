@@ -1,3 +1,22 @@
+---
+id: "3da-prop-quality-checklist"
+concept: "道具质量检查表"
+domain: "3d-art"
+subdomain: "prop-art"
+subdomain_name: "道具美术"
+difficulty: 2
+is_milestone: true
+tags: ["规范"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 道具质量检查表
 
 ## 概述

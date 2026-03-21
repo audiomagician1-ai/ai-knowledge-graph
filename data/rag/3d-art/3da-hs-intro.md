@@ -1,3 +1,22 @@
+---
+id: "3da-hs-intro"
+concept: "硬表面建模概述"
+domain: "3d-art"
+subdomain: "hard-surface"
+subdomain_name: "硬表面建模"
+difficulty: 1
+is_milestone: true
+tags: ["基础"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 硬表面建模概述
 
 ## 概述

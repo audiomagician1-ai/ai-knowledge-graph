@@ -1,10 +1,22 @@
 ---
-concept: 产品经理SQL
-subdomain: 数据驱动
-domain: product-design
+id: "sql-for-pm"
+concept: "产品经理SQL"
+domain: "product-design"
+subdomain: "data-driven"
+subdomain_name: "数据驱动"
 difficulty: 3
----
+is_milestone: false
+tags: ["技能"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 产品经理SQL
 
 ## 核心概念

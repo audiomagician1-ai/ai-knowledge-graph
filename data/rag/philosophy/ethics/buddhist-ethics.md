@@ -1,10 +1,22 @@
 ---
-concept: 佛教伦理
-subdomain: 伦理学
-domain: philosophy
+id: "buddhist-ethics"
+concept: "佛教伦理"
+domain: "philosophy"
+subdomain: "ethics"
+subdomain_name: "伦理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["东方"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 佛教伦理
 
 ## 核心内容

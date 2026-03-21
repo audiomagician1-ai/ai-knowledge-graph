@@ -1,10 +1,22 @@
 ---
-concept: 性心理发展阶段
-subdomain: 人格心理学
-domain: psychology
+id: "psychosexual-stages"
+concept: "性心理发展阶段"
+domain: "psychology"
+subdomain: "personality-psychology"
+subdomain_name: "人格心理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["精神分析"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 性心理发展阶段
 
 ## 核心内容

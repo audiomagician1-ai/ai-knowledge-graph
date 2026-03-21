@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: accessibility
-concept_id: guiux-a11y-subtitle-options
-title: 字幕选项
+id: "guiux-a11y-subtitle-options"
+concept: "字幕选项"
+domain: "game-ui-ux"
+subdomain: "accessibility"
+subdomain_name: "无障碍设计"
 difficulty: 2
 is_milestone: false
 tags: ["accessibility", "字幕选项"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.8
+generation_method: "template-v1"
+unique_content_ratio: 0.105
+last_scored: "2026-03-21"
+sources: []
+---
 # 字幕选项
 
 > **领域**: 游戏UI/UX > 无障碍设计 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

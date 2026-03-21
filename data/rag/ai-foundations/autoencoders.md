@@ -1,10 +1,22 @@
 ---
-concept: autoencoders
-subdomain: ai-foundations
+id: "autoencoders"
+concept: "自编码器"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
 difficulty: 6
-prereqs: [neural-network-basics, unsupervised-learning]
----
+is_milestone: false
+tags: ["AI", "无监督"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 61.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 自编码器（Autoencoder）
 
 ## 核心概念

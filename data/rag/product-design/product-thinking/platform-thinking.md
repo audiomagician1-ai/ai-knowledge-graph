@@ -1,10 +1,22 @@
 ---
-concept: 平台思维
-subdomain: 产品思维
-domain: product-design
+id: "platform-thinking"
+concept: "平台思维"
+domain: "product-design"
+subdomain: "product-thinking"
+subdomain_name: "产品思维"
 difficulty: 4
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 平台思维
 
 ## 核心概念

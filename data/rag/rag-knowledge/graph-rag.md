@@ -1,13 +1,22 @@
 ---
 id: "graph-rag"
-name: "Graph RAG"
+concept: "Graph RAG"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 7
-tags: ["RAG", "Knowledge Graph", "Community Summarization"]
-generated_at: "2026-03-19T12:00:00"
----
+is_milestone: false
+tags: ["RAG"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "S"
+quality_score: 99.9
+generation_method: "hand-crafted"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # Graph RAG
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 学术报告
-subdomain: 学术写作
-domain: writing
+id: "academic-presentation"
+concept: "学术报告"
+domain: "writing"
+subdomain: "academic-writing"
+subdomain_name: "学术写作"
 difficulty: 2
----
+is_milestone: false
+tags: ["展示"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.8
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 学术报告
 
 ## 核心内容

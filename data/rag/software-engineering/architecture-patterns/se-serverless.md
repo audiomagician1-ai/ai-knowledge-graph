@@ -1,10 +1,22 @@
 ---
-concept: Serverless架构
-subdomain: 架构模式
-domain: software-engineering
+id: "se-serverless"
+concept: "Serverless架构"
+domain: "software-engineering"
+subdomain: "architecture-patterns"
+subdomain_name: "架构模式"
 difficulty: 3
----
+is_milestone: false
+tags: ["云原生"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.4
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # Serverless架构
 
 ## 核心内容

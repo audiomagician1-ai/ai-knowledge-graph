@@ -1,10 +1,22 @@
 ---
-concept: 代码生成
-subdomain: 构建系统
-domain: software-engineering
+id: "se-code-generation"
+concept: "代码生成"
+domain: "software-engineering"
+subdomain: "build-systems"
+subdomain_name: "构建系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["生成"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 代码生成
 
 ## 核心内容

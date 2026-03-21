@@ -236,11 +236,19 @@ app.post('/chat', async (c) => {
     });
   }
 
-  // Build message history (sliding window: keep last 40 messages, matching FastAPI backend)
+  // Build message history (sliding window: keep first message + truncation notice + last N)
   const MAX_MESSAGES = 40;
   const { results: dbMessages } = await db.prepare('SELECT role, content FROM messages WHERE conversation_id = ? ORDER BY created_at').bind(conversation_id).all();
   const msgList = (dbMessages || []).map((m: any) => ({ role: m.role, content: m.content }));
-  const windowedMessages = msgList.length > MAX_MESSAGES ? msgList.slice(-MAX_MESSAGES) : msgList;
+  let windowedMessages: typeof msgList;
+  if (msgList.length > MAX_MESSAGES) {
+    // Keep the first message (opening context) + truncation notice + last (N-2) messages
+    const firstMsg = msgList.slice(0, 1);
+    const recent = msgList.slice(-(MAX_MESSAGES - 2));
+    windowedMessages = [...firstMsg, { role: 'system', content: '[对话历史已截断，以下为最近的对话记录]' }, ...recent];
+  } else {
+    windowedMessages = msgList;
+  }
   // V2: Inject a format reminder before the last user message to reinforce choices output.
   // After several turns, LLM tends to "forget" the system prompt instruction about ```choices blocks
   // because the stored assistant messages have choices stripped (clean content).
@@ -263,8 +271,8 @@ app.post('/chat', async (c) => {
   // Count user turns for suggest_assess
   const userTurns = (dbMessages || []).filter((m: any) => m.role === 'user').length;
 
-  // Stream LLM response (max_tokens 512→800 to prevent choices block truncation)
-  const stream = llmChatStream(c.env, { messages: allMessages, temperature: 0.75, max_tokens: 800 }, userConfig, 'dialogue');
+  // Stream LLM response (max_tokens raised to 2048 for long conversations + choices block)
+  const stream = llmChatStream(c.env, { messages: allMessages, temperature: 0.75, max_tokens: 2048 }, userConfig, 'dialogue');
 
   // We need to intercept the stream to save the full response
   const encoder = new TextEncoder();

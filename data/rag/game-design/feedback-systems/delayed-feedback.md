@@ -1,10 +1,22 @@
 ---
-concept: 延迟反馈
-subdomain: 反馈系统
-domain: game-design
+id: "delayed-feedback"
+concept: "延迟反馈"
+domain: "game-design"
+subdomain: "feedback-systems"
+subdomain_name: "反馈系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["策略"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 延迟反馈
 
 ## 核心内容

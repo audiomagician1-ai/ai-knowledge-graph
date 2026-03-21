@@ -1,14 +1,22 @@
 ---
 id: "error-handling"
-name: "错误处理(try/catch)"
+concept: "错误处理(try/catch)"
+domain: "ai-engineering"
 subdomain: "programming-basics"
 subdomain_name: "编程基础"
 difficulty: 3
 is_milestone: false
 tags: ["鲁棒性"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.808
+last_scored: "2026-03-21"
+sources: []
+---
 # 错误处理(try/catch)
 
 ## 概述

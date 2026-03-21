@@ -1,10 +1,22 @@
 ---
-concept: 基础主义
-subdomain: 认识论
-domain: philosophy
+id: "foundationalism"
+concept: "基础主义"
+domain: "philosophy"
+subdomain: "epistemology"
+subdomain_name: "认识论"
 difficulty: 3
----
+is_milestone: false
+tags: ["结构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.1
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 基础主义
 
 ## 核心内容

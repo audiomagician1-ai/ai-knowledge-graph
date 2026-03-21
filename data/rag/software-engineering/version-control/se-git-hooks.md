@@ -1,10 +1,22 @@
 ---
-concept: Git Hooks
-subdomain: 版本控制
-domain: software-engineering
+id: "se-git-hooks"
+concept: "Git Hooks"
+domain: "software-engineering"
+subdomain: "version-control"
+subdomain_name: "版本控制"
 difficulty: 2
----
+is_milestone: false
+tags: ["自动化"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 20.9
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # Git Hooks
 
 ## 核心内容

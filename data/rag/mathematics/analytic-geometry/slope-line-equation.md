@@ -1,14 +1,22 @@
 ---
 id: "slope-line-equation"
-name: "直线的斜率与方程"
+concept: "直线的斜率与方程"
+domain: "mathematics"
 subdomain: "analytic-geometry"
 subdomain_name: "解析几何"
 difficulty: 4
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 直线的斜率与方程
 
 ## 概述

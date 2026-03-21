@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-adaptive-testing"
+concept: "自适应测试方法"
+domain: "game-audio-music"
+subdomain: "adaptive-music"
+subdomain_name: "自适应音乐"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 35.2
+generation_method: "template-v1"
+unique_content_ratio: 0.562
+last_scored: "2026-03-21"
+sources: []
+---
 # 自适应测试方法
 
 > **领域**: 游戏音乐 | **子领域**: 自适应音乐 | **难度**: 进阶

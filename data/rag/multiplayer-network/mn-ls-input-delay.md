@@ -1,3 +1,22 @@
+---
+id: "mn-ls-input-delay"
+concept: "输入延迟(Input Delay)"
+domain: "multiplayer-network"
+subdomain: "lockstep-sync"
+subdomain_name: "帧同步"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.0
+generation_method: "template-v1"
+unique_content_ratio: 0.438
+last_scored: "2026-03-21"
+sources: []
+---
 # 输入延迟(Input Delay)
 
 > 领域: 网络多人 > 帧同步

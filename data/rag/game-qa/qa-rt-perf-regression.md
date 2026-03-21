@@ -1,13 +1,22 @@
 ---
 id: "qa-rt-perf-regression"
-title: "性能回归"
+concept: "性能回归"
 domain: "game-qa"
 subdomain: "regression-testing"
+subdomain_name: "回归测试"
 difficulty: 3
-estimated_minutes: 35
 is_milestone: true
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 性能回归
 
 > **子领域**: 回归测试 | **难度**: 进阶 | **预计学习时间**: 35分钟

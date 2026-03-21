@@ -1,3 +1,22 @@
+---
+id: "mn-mm-placement-matches"
+concept: "定位赛"
+domain: "multiplayer-network"
+subdomain: "matchmaking"
+subdomain_name: "匹配系统"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.2
+generation_method: "template-v1"
+unique_content_ratio: 0.357
+last_scored: "2026-03-21"
+sources: []
+---
 # 定位赛
 
 > 领域: 网络多人 > 匹配系统

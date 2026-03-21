@@ -163,6 +163,24 @@ app.get('/data', (c) => {
 /** GET /graph/domains */
 app.get('/domains', (c) => { const result = domainsList.filter((d: any) => d.is_active !== false).map((d: any) => { const s = getSeed(d.id); const stats = s ? { total_concepts: s.concepts?.length ?? 0, total_edges: s.edges?.length ?? 0, subdomains: s.subdomains?.length ?? 0 } : { total_concepts: 0, total_edges: 0, subdomains: 0 }; return { ...d, stats }; }); return c.json(result); });
 
+/** GET /graph/domain-links — aggregated cross-sphere links between domains */
+app.get('/domain-links', (c) => {
+  const links = (crossSphereLinks as any).links || [];
+  const pairMap: Record<string, { source: string; target: string; count: number; relations: string[] }> = {};
+  for (const l of links) {
+    const key = [l.source_domain, l.target_domain].sort().join('|');
+    if (!pairMap[key]) {
+      const [a, b] = key.split('|');
+      pairMap[key] = { source: a, target: b, count: 0, relations: [] };
+    }
+    pairMap[key].count++;
+    if (!pairMap[key].relations.includes(l.relation)) {
+      pairMap[key].relations.push(l.relation);
+    }
+  }
+  return c.json(Object.values(pairMap));
+});
+
 /** GET /graph/subdomains */
 app.get('/subdomains', (c) => {
   const domain = c.req.query('domain') || DEFAULT_DOMAIN;

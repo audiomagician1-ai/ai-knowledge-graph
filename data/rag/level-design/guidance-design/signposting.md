@@ -1,10 +1,22 @@
 ---
-concept: 标识指引
-subdomain: 引导设计
-domain: level-design
+id: "signposting"
+concept: "标识指引"
+domain: "level-design"
+subdomain: "guidance-design"
+subdomain_name: "引导设计"
 difficulty: 1
----
+is_milestone: false
+tags: ["显式"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 标识指引
 
 ## 核心内容

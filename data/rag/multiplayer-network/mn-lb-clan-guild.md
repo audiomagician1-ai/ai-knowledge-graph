@@ -1,3 +1,22 @@
+---
+id: "mn-lb-clan-guild"
+concept: "公会/战队系统"
+domain: "multiplayer-network"
+subdomain: "lobby-system"
+subdomain_name: "大厅系统"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.9
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 公会/战队系统
 
 > 领域: 网络多人 > 大厅系统

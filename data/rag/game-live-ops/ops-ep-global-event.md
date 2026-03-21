@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: event-planning
-concept_id: ops-ep-global-event
+id: "ops-ep-global-event"
+concept: "全球化活动策划"
+domain: "game-live-ops"
+subdomain: "event-planning"
+subdomain_name: "活动策划"
 difficulty: 4
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 全球化活动策划
 
 ## 概述

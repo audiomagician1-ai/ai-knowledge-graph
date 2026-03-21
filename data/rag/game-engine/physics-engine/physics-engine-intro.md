@@ -1,10 +1,22 @@
 ---
-concept: 物理引擎概述
-subdomain: 物理引擎
-domain: game-engine
+id: "physics-engine-intro"
+concept: "物理引擎概述"
+domain: "game-engine"
+subdomain: "physics-engine"
+subdomain_name: "物理引擎"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.9
+generation_method: "template-v1"
+unique_content_ratio: 0.417
+last_scored: "2026-03-21"
+sources: []
+---
 # 物理引擎概述
 
 ## 核心内容

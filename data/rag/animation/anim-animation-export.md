@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: keyframe-animation
-concept_id: anim-animation-export
+id: "anim-animation-export"
+concept: "动画导出"
+domain: "animation"
+subdomain: "keyframe-animation"
+subdomain_name: "关键帧动画"
 difficulty: 2
-content_type: practice
-tags: [流程]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["流程"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 动画导出
 
 ## 概述

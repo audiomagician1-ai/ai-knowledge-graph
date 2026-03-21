@@ -1,14 +1,22 @@
 ---
 id: "cpu-execution"
-name: "CPU执行原理"
+concept: "CPU执行原理"
+domain: "ai-engineering"
 subdomain: "cs-fundamentals"
 subdomain_name: "计算机基础"
 difficulty: 2
 is_milestone: false
 tags: ["基础", "硬件"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.741
+last_scored: "2026-03-21"
+sources: []
+---
 # CPU执行原理
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "cd-char-archetype"
+concept: "角色原型"
+domain: "concept-design"
+subdomain: "character-design"
+subdomain_name: "角色设计"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 角色原型
 
 ## 概述

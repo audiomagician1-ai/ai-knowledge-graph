@@ -1,14 +1,22 @@
 ---
 id: "binary-system"
-name: "二进制与数制"
+concept: "二进制与数制"
+domain: "ai-engineering"
 subdomain: "cs-fundamentals"
 subdomain_name: "计算机基础"
 difficulty: 1
 is_milestone: false
 tags: ["基础", "数学"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 二进制与数制
 
 ## 概述

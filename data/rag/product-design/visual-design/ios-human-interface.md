@@ -1,10 +1,22 @@
 ---
-concept: iOS Human Interface
-subdomain: 视觉设计
-domain: product-design
+id: "ios-human-interface"
+concept: "iOS Human Interface"
+domain: "product-design"
+subdomain: "visual-design"
+subdomain_name: "视觉设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["规范"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.2
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # iOS Human Interface
 
 ## 核心概念

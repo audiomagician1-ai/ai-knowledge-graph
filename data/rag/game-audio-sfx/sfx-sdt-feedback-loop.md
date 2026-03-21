@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: sound-design-theory
-concept_id: sfx-sdt-feedback-loop
+id: "sfx-sdt-feedback-loop"
+concept: "音频反馈循环"
+domain: "game-audio-sfx"
+subdomain: "sound-design-theory"
+subdomain_name: "音效设计理论"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 音频反馈循环
 
 ## 概述

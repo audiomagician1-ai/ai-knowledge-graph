@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: community-ops
-concept_id: pub-co-player-feedback
+id: "pub-co-player-feedback"
+concept: "玩家反馈收集"
+domain: "game-publishing"
+subdomain: "community-ops"
+subdomain_name: "社区运营"
 difficulty: 1
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 玩家反馈收集
 
 ## 概述

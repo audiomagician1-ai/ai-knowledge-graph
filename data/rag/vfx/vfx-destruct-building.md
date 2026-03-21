@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: destruction
-concept_id: vfx-destruct-building
+id: "vfx-destruct-building"
+concept: "建筑破碎"
+domain: "vfx"
+subdomain: "destruction"
+subdomain_name: "破碎与销毁"
 difficulty: 4
-content_type: applied
-tags: [高级]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.2
+generation_method: "template-v1"
+unique_content_ratio: 0.3
+last_scored: "2026-03-21"
+sources: []
+---
 # 建筑破碎
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: Montage系统
-subdomain: 动画系统
-domain: game-engine
+id: "montage-system"
+concept: "Montage系统"
+domain: "game-engine"
+subdomain: "animation-system"
+subdomain_name: "动画系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["UE5"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Montage系统
 
 ## 核心内容

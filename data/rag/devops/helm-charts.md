@@ -1,3 +1,22 @@
+---
+id: "helm-charts"
+concept: "Helm Charts"
+domain: "ai-engineering"
+subdomain: "devops"
+subdomain_name: "开发运维"
+difficulty: 4
+is_milestone: false
+tags: ["helm", "kubernetes", "package-management"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # Helm Charts
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

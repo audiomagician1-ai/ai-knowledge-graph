@@ -1,14 +1,22 @@
 ---
 id: "cross-cultural-comm"
-name: "跨文化交际"
+concept: "跨文化交际"
+domain: "english"
 subdomain: "speaking"
 subdomain_name: "口语表达"
 difficulty: 5
 is_milestone: false
 tags: ["文化"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.1
+generation_method: "template-v1"
+unique_content_ratio: 0.417
+last_scored: "2026-03-21"
+sources: []
+---
 # 跨文化交际
 
 ## 概述

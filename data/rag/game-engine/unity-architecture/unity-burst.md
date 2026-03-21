@@ -1,10 +1,22 @@
 ---
-concept: Burst编译器
-subdomain: Unity架构
-domain: game-engine
+id: "unity-burst"
+concept: "Burst编译器"
+domain: "game-engine"
+subdomain: "unity-architecture"
+subdomain_name: "Unity架构"
 difficulty: 3
----
+is_milestone: false
+tags: ["性能"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.3
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # Burst编译器
 
 ## 核心内容

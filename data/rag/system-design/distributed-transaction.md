@@ -1,3 +1,22 @@
+---
+id: "distributed-transaction"
+concept: "分布式事务"
+domain: "ai-engineering"
+subdomain: "system-design"
+subdomain_name: "系统设计"
+difficulty: 5
+is_milestone: false
+tags: ["2pc", "saga", "consistency"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 分布式事务
 
 > **难度**: ⭐⭐⭐⭐⭐ (5/5) | **预计学习时间**: 35分钟

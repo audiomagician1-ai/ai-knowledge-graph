@@ -1,10 +1,22 @@
 ---
-concept: 关卡时长控制
-subdomain: 节奏曲线
-domain: level-design
+id: "level-length"
+concept: "关卡时长控制"
+domain: "level-design"
+subdomain: "pacing-curve"
+subdomain_name: "节奏曲线"
 difficulty: 2
----
+is_milestone: false
+tags: ["时间"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 关卡时长控制
 
 ## 核心内容

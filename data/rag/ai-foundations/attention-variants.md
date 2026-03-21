@@ -1,3 +1,22 @@
+---
+id: "attention-variants"
+concept: "注意力机制变体"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
+difficulty: 5
+is_milestone: false
+tags: ["attention", "multi-head", "flash-attention"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 注意力机制变体
 
 > **难度**: (5/5) | **预计学习时间**: 30分钟

@@ -1,10 +1,22 @@
 ---
-concept: 数据校验工具
-subdomain: 编辑器扩展
-domain: game-engine
+id: "data-validation"
+concept: "数据校验工具"
+domain: "game-engine"
+subdomain: "editor-extension"
+subdomain_name: "编辑器扩展"
 difficulty: 2
----
+is_milestone: false
+tags: ["QA"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据校验工具
 
 ## 核心内容

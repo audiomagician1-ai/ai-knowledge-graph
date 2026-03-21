@@ -1,3 +1,22 @@
+---
+id: "full-text-search"
+concept: "全文搜索"
+domain: "ai-engineering"
+subdomain: "database"
+subdomain_name: "数据库"
+difficulty: 4
+is_milestone: false
+tags: ["inverted-index", "elasticsearch", "tsvector"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 全文搜索
 
 > **难度**: (4/5) | **预计学习时间**: 30分钟

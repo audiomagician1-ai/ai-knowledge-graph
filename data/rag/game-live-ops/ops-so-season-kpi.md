@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: season-ops
-concept_id: ops-so-season-kpi
+id: "ops-so-season-kpi"
+concept: "赛季KPI体系"
+domain: "game-live-ops"
+subdomain: "season-ops"
+subdomain_name: "赛季运营"
 difficulty: 3
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 赛季KPI体系
 
 ## 概述

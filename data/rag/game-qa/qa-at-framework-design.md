@@ -1,13 +1,22 @@
 ---
 id: "qa-at-framework-design"
-title: "测试框架设计"
+concept: "测试框架设计"
 domain: "game-qa"
 subdomain: "automation-testing"
+subdomain_name: "自动化测试"
 difficulty: 3
-estimated_minutes: 35
 is_milestone: true
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 测试框架设计
 
 > **子领域**: 自动化测试 | **难度**: 进阶 | **预计学习时间**: 35分钟

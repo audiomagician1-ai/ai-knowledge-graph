@@ -1,10 +1,22 @@
 ---
-concept: 财务自由
-subdomain: 个人理财
-domain: finance
+id: "financial-independence"
+concept: "财务自由"
+domain: "finance"
+subdomain: "personal-finance"
+subdomain_name: "个人理财"
 difficulty: 3
----
+is_milestone: false
+tags: ["目标"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.5
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 财务自由
 
 ## 核心概念

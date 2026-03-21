@@ -1,10 +1,22 @@
 ---
-concept: 氛围光照
-subdomain: 光照叙事
-domain: level-design
+id: "mood-lighting"
+concept: "氛围光照"
+domain: "level-design"
+subdomain: "lighting-narrative"
+subdomain_name: "光照叙事"
 difficulty: 2
----
+is_milestone: false
+tags: ["情感"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 氛围光照
 
 ## 核心内容

@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: motion-design
-concept_id: guiux-motion-state-change
-title: 状态变化动画
+id: "guiux-motion-state-change"
+concept: "状态变化动画"
+domain: "game-ui-ux"
+subdomain: "motion-design"
+subdomain_name: "动效设计"
 difficulty: 2
 is_milestone: false
 tags: ["motion-design", "状态变化动画"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 状态变化动画
 
 > **领域**: 游戏UI/UX > 动效设计 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

@@ -1,10 +1,22 @@
 ---
-concept: 原型制作
-subdomain: 设计文档
-domain: game-design
+id: "prototyping"
+concept: "原型制作"
+domain: "game-design"
+subdomain: "design-docs"
+subdomain_name: "设计文档"
 difficulty: 2
----
+is_milestone: false
+tags: ["方法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.6
+generation_method: "template-v1"
+unique_content_ratio: 0.143
+last_scored: "2026-03-21"
+sources: []
+---
 # 原型制作
 
 ## 核心内容

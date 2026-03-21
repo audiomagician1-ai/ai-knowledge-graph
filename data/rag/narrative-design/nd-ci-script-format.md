@@ -1,3 +1,22 @@
+---
+id: "nd-ci-script-format"
+concept: "过场脚本格式"
+domain: "narrative-design"
+subdomain: "cinematics"
+subdomain_name: "过场动画"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.909
+last_scored: "2026-03-21"
+sources: []
+---
 # 过场脚本格式
 
 > 领域: 叙事设计 > 过场动画

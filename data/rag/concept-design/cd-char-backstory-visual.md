@@ -1,3 +1,22 @@
+---
+id: "cd-char-backstory-visual"
+concept: "视觉叙事细节"
+domain: "concept-design"
+subdomain: "character-design"
+subdomain_name: "角色设计"
+difficulty: 2
+is_milestone: false
+tags: ["设计"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 视觉叙事细节
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 技术债务管理
-subdomain: 代码审查
-domain: software-engineering
+id: "se-tech-debt"
+concept: "技术债务管理"
+domain: "software-engineering"
+subdomain: "code-review"
+subdomain_name: "代码审查"
 difficulty: 2
----
+is_milestone: false
+tags: ["管理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 20.9
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # 技术债务管理
 
 ## 核心内容

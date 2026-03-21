@@ -1,14 +1,22 @@
 ---
 id: "few-shot"
-name: "少样本提示"
+concept: "少样本提示"
+domain: "ai-engineering"
 subdomain: "prompt-engineering"
 subdomain_name: "Prompt工程"
 difficulty: 4
 is_milestone: false
 tags: ["Prompt"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 少样本提示
 
 ## 概述

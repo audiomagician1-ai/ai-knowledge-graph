@@ -1,3 +1,22 @@
+---
+id: "nd-cw-archetype-usage"
+concept: "原型运用"
+domain: "narrative-design"
+subdomain: "character-writing"
+subdomain_name: "角色塑造"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.882
+last_scored: "2026-03-21"
+sources: []
+---
 # 原型运用
 
 > 领域: 叙事设计 > 角色塑造

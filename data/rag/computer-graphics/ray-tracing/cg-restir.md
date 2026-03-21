@@ -1,10 +1,22 @@
 ---
-concept: ReSTIR
-subdomain: 光线追踪
-domain: computer-graphics
+id: "cg-restir"
+concept: "ReSTIR"
+domain: "computer-graphics"
+subdomain: "ray-tracing"
+subdomain_name: "光线追踪"
 difficulty: 5
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # ReSTIR
 
 ## 核心内容

@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: facial-animation
-concept_id: anim-crowd-face
+id: "anim-crowd-face"
+concept: "群演面部"
+domain: "animation"
+subdomain: "facial-animation"
+subdomain_name: "面部动画"
 difficulty: 2
-content_type: theory
-tags: [优化]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["优化"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.6
+generation_method: "template-v1"
+unique_content_ratio: 0.412
+last_scored: "2026-03-21"
+sources: []
+---
 # 群演面部
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: Shader概述
-subdomain: Shader编程
-domain: computer-graphics
+id: "cg-shader-intro"
+concept: "Shader概述"
+domain: "computer-graphics"
+subdomain: "shader-programming"
+subdomain_name: "Shader编程"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Shader概述
 
 ## 核心内容

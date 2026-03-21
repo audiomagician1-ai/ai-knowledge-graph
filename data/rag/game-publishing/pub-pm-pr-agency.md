@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: pr-media
-concept_id: pub-pm-pr-agency
+id: "pub-pm-pr-agency"
+concept: "PR代理选择"
+domain: "game-publishing"
+subdomain: "pr-media"
+subdomain_name: "PR/媒体关系"
 difficulty: 5
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # PR代理选择
 
 ## 概述

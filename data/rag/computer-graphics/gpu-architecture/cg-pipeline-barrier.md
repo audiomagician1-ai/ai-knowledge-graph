@@ -1,10 +1,22 @@
 ---
-concept: 管线屏障
-subdomain: GPU架构
-domain: computer-graphics
+id: "cg-pipeline-barrier"
+concept: "管线屏障"
+domain: "computer-graphics"
+subdomain: "gpu-architecture"
+subdomain_name: "GPU架构"
 difficulty: 4
----
+is_milestone: false
+tags: ["API"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 管线屏障
 
 ## 核心内容

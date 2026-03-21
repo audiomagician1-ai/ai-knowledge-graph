@@ -1,14 +1,22 @@
 ---
 id: "abstraction"
-name: "抽象"
+concept: "抽象"
+domain: "ai-engineering"
 subdomain: "oop"
 subdomain_name: "面向对象编程"
 difficulty: 4
 is_milestone: false
 tags: ["OOP"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.8
+last_scored: "2026-03-21"
+sources: []
+---
 # 抽象
 
 ## 概述

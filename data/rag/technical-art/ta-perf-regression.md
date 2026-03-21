@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: perf-optimization
-concept_id: ta-perf-regression
+id: "ta-perf-regression"
+concept: "性能回归检测"
+domain: "technical-art"
+subdomain: "perf-optimization"
+subdomain_name: "性能优化"
 difficulty: 3
-content_type: practice
-tags: [质量]
----
+is_milestone: false
+tags: ["质量"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 性能回归检测
 
 ## 概述

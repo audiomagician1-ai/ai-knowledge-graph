@@ -1,14 +1,22 @@
 ---
 id: "inequality-techniques"
-name: "不等式技巧"
+concept: "不等式技巧"
+domain: "mathematics"
 subdomain: "algebra"
 subdomain_name: "代数"
 difficulty: 7
 is_milestone: false
 tags: ["竞赛"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.818
+last_scored: "2026-03-21"
+sources: []
+---
 # 不等式技巧
 
 ## 概述

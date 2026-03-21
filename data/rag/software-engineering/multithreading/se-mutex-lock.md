@@ -1,10 +1,22 @@
 ---
-concept: 互斥锁
-subdomain: 多线程
-domain: software-engineering
+id: "se-mutex-lock"
+concept: "互斥锁"
+domain: "software-engineering"
+subdomain: "multithreading"
+subdomain_name: "多线程"
 difficulty: 2
----
+is_milestone: true
+tags: ["同步"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.7
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 互斥锁
 
 ## 核心内容

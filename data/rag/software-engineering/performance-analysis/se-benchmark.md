@@ -1,10 +1,22 @@
 ---
-concept: 基准测试
-subdomain: 性能分析
-domain: software-engineering
+id: "se-benchmark"
+concept: "基准测试"
+domain: "software-engineering"
+subdomain: "performance-analysis"
+subdomain_name: "性能分析"
 difficulty: 2
----
+is_milestone: false
+tags: ["测试"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 基准测试
 
 ## 核心内容

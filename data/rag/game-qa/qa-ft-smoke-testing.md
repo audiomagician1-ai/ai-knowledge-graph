@@ -1,13 +1,22 @@
 ---
 id: "qa-ft-smoke-testing"
-title: "冒烟测试"
+concept: "冒烟测试"
 domain: "game-qa"
 subdomain: "functional-testing"
+subdomain_name: "功能测试"
 difficulty: 1
-estimated_minutes: 20
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 冒烟测试
 
 > **子领域**: 功能测试 | **难度**: 入门 | **预计学习时间**: 20分钟

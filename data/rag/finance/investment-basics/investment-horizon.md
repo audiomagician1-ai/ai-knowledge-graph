@@ -1,10 +1,22 @@
 ---
-concept: 投资期限
-subdomain: 投资基础
-domain: finance
+id: "investment-horizon"
+concept: "投资期限"
+domain: "finance"
+subdomain: "investment-basics"
+subdomain_name: "投资基础"
 difficulty: 2
----
+is_milestone: false
+tags: ["策略"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.3
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 投资期限
 
 ## 核心概念

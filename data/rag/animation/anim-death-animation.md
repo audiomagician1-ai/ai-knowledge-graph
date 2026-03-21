@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: keyframe-animation
-concept_id: anim-death-animation
+id: "anim-death-animation"
+concept: "死亡动画"
+domain: "animation"
+subdomain: "keyframe-animation"
+subdomain_name: "关键帧动画"
 difficulty: 2
-content_type: practice
-tags: [实战]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["实战"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 死亡动画
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "mn-ls-rollback-netcode"
+concept: "Rollback网络代码"
+domain: "multiplayer-network"
+subdomain: "lockstep-sync"
+subdomain_name: "帧同步"
+difficulty: 4
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.9
+generation_method: "template-v1"
+unique_content_ratio: 0.471
+last_scored: "2026-03-21"
+sources: []
+---
 # Rollback网络代码
 
 > 领域: 网络多人 > 帧同步

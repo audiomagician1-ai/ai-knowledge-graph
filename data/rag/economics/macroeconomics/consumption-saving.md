@@ -1,10 +1,22 @@
 ---
-concept: 消费与储蓄
-subdomain: 宏观经济学
-domain: economics
+id: "consumption-saving"
+concept: "消费与储蓄"
+domain: "economics"
+subdomain: "macroeconomics"
+subdomain_name: "宏观经济学"
 difficulty: 3
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.8
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 消费与储蓄
 
 ## 核心内容

@@ -1,14 +1,22 @@
 ---
 id: "system-prompt-design"
-name: "System Prompt设计"
+concept: "System Prompt设计"
+domain: "ai-engineering"
 subdomain: "prompt-engineering"
 subdomain_name: "Prompt工程"
 difficulty: 5
 is_milestone: false
 tags: ["Prompt"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # System Prompt设计
 
 ## 概述

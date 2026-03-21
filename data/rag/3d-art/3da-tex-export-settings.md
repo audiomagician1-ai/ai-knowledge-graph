@@ -1,3 +1,22 @@
+---
+id: "3da-tex-export-settings"
+concept: "纹理导出设置"
+domain: "3d-art"
+subdomain: "texturing"
+subdomain_name: "纹理绘制"
+difficulty: 2
+is_milestone: false
+tags: ["流程"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 纹理导出设置
 
 ## 概述

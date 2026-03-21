@@ -1,3 +1,22 @@
+---
+id: "web-security"
+concept: "Web安全基础"
+domain: "ai-engineering"
+subdomain: "web-backend"
+subdomain_name: "Web后端"
+difficulty: 4
+is_milestone: false
+tags: ["security", "xss", "csrf", "injection"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # Web安全基础
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

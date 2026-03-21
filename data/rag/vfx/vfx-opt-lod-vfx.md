@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: vfx-optimization
-concept_id: vfx-opt-lod-vfx
+id: "vfx-opt-lod-vfx"
+concept: "特效LOD"
+domain: "vfx"
+subdomain: "vfx-optimization"
+subdomain_name: "特效优化"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 特效LOD
 
 ## 概述

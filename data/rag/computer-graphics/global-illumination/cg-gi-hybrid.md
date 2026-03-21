@@ -1,10 +1,22 @@
 ---
-concept: 混合GI方案
-subdomain: 全局光照
-domain: computer-graphics
+id: "cg-gi-hybrid"
+concept: "混合GI方案"
+domain: "computer-graphics"
+subdomain: "global-illumination"
+subdomain_name: "全局光照"
 difficulty: 4
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 33.7
+generation_method: "template-v1"
+unique_content_ratio: 0.545
+last_scored: "2026-03-21"
+sources: []
+---
 # 混合GI方案
 
 ## 核心内容

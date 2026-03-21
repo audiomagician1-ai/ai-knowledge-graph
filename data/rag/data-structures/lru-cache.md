@@ -1,10 +1,22 @@
 ---
-concept: lru-cache
-subdomain: data-structures
+id: "lru-cache"
+concept: "LRU缓存"
+domain: "ai-engineering"
+subdomain: "data-structures"
+subdomain_name: "数据结构"
 difficulty: 5
-prereqs: [hash-table, linked-list]
----
+is_milestone: false
+tags: ["设计", "缓存"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 72.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # LRU缓存
 
 ## 核心概念

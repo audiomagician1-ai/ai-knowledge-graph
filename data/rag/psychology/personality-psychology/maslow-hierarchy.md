@@ -1,10 +1,22 @@
 ---
-concept: 马斯洛需求层次
-subdomain: 人格心理学
-domain: psychology
+id: "maslow-hierarchy"
+concept: "马斯洛需求层次"
+domain: "psychology"
+subdomain: "personality-psychology"
+subdomain_name: "人格心理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["动机"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.0
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 马斯洛需求层次
 
 ## 核心内容

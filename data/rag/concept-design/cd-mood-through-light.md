@@ -1,3 +1,22 @@
+---
+id: "cd-mood-through-light"
+concept: "光影情绪"
+domain: "concept-design"
+subdomain: "light-shadow"
+subdomain_name: "光影"
+difficulty: 3
+is_milestone: false
+tags: ["设计"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 光影情绪
 
 ## 概述

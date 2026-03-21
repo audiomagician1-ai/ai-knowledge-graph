@@ -1,10 +1,22 @@
 ---
-concept: Clean Architecture
-subdomain: 架构模式
-domain: software-engineering
+id: "se-clean-arch"
+concept: "Clean Architecture"
+domain: "software-engineering"
+subdomain: "architecture-patterns"
+subdomain_name: "架构模式"
 difficulty: 3
----
+is_milestone: false
+tags: ["原则"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # Clean Architecture
 
 ## 核心内容

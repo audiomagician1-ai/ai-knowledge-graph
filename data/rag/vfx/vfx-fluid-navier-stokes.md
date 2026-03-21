@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: fluid-sim
-concept_id: vfx-fluid-navier-stokes
+id: "vfx-fluid-navier-stokes"
+concept: "Navier-Stokes简化"
+domain: "vfx"
+subdomain: "fluid-sim"
+subdomain_name: "流体模拟"
 difficulty: 4
-content_type: applied
-tags: [高级]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.565
+last_scored: "2026-03-21"
+sources: []
+---
 # Navier-Stokes简化
 
 ## 概述

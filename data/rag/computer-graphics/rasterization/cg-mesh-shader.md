@@ -1,10 +1,22 @@
 ---
-concept: Mesh Shader
-subdomain: 光栅化
-domain: computer-graphics
+id: "cg-mesh-shader"
+concept: "Mesh Shader"
+domain: "computer-graphics"
+subdomain: "rasterization"
+subdomain_name: "光栅化"
 difficulty: 4
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.2
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # Mesh Shader
 
 ## 核心内容

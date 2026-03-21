@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: menu-system
-concept_id: guiux-menu-radial
-title: 环形/辐射菜单
+id: "guiux-menu-radial"
+concept: "环形/辐射菜单"
+domain: "game-ui-ux"
+subdomain: "menu-system"
+subdomain_name: "菜单系统"
 difficulty: 3
 is_milestone: false
 tags: ["menu-system", "环形/辐射菜单"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 环形/辐射菜单
 
 > **领域**: 游戏UI/UX > 菜单系统 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

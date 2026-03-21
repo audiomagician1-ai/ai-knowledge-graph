@@ -1,10 +1,22 @@
 ---
-concept: 巴图玩家类型
-subdomain: 玩家心理
-domain: game-design
+id: "bartle-types"
+concept: "巴图玩家类型"
+domain: "game-design"
+subdomain: "player-psychology"
+subdomain_name: "玩家心理"
 difficulty: 2
----
+is_milestone: false
+tags: ["模型"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 巴图玩家类型
 
 ## 核心内容

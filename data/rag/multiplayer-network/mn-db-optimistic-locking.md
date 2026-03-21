@@ -1,3 +1,22 @@
+---
+id: "mn-db-optimistic-locking"
+concept: "乐观锁机制"
+domain: "multiplayer-network"
+subdomain: "database-design"
+subdomain_name: "数据库设计"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.5
+generation_method: "template-v1"
+unique_content_ratio: 0.357
+last_scored: "2026-03-21"
+sources: []
+---
 # 乐观锁机制
 
 > 领域: 网络多人 > 数据库设计

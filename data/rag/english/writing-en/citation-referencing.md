@@ -1,14 +1,22 @@
 ---
 id: "citation-referencing"
-name: "引用与参考文献"
-subdomain: "writing-en"
-subdomain_name: "写作"
-difficulty: 6
+concept: "引用与参考文献"
+domain: "writing"
+subdomain: "academic-writing"
+subdomain_name: "学术写作"
+difficulty: 2
 is_milestone: false
-tags: ["学术"]
-generated_at: "2026-03-19T08:40:17"
----
+tags: ["规范"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.308
+last_scored: "2026-03-21"
+sources: []
+---
 # 引用与参考文献
 
 ## 概述

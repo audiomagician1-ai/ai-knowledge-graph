@@ -1,10 +1,22 @@
 ---
-concept: 插件设置
-subdomain: 插件开发
-domain: game-engine
+id: "plugin-settings"
+concept: "插件设置"
+domain: "game-engine"
+subdomain: "plugin-development"
+subdomain_name: "插件开发"
 difficulty: 2
----
+is_milestone: false
+tags: ["配置"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 插件设置
 
 ## 核心内容

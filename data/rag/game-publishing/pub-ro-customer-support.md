@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: regional-ops
-concept_id: pub-ro-customer-support
+id: "pub-ro-customer-support"
+concept: "多语言客服"
+domain: "game-publishing"
+subdomain: "regional-ops"
+subdomain_name: "地区化运营"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 多语言客服
 
 ## 概述

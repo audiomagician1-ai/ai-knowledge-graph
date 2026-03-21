@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: art-standards
-concept_id: ta-std-overview
+id: "ta-std-overview"
+concept: "美术标准概述"
+domain: "technical-art"
+subdomain: "art-standards"
+subdomain_name: "美术标准制定"
 difficulty: 1
-content_type: theory
-tags: [基础]
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.5
+generation_method: "template-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 美术标准概述
 
 ## 概述

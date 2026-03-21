@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: motion-design
-concept_id: guiux-motion-attention-grab
-title: 注意力引导动效
+id: "guiux-motion-attention-grab"
+concept: "注意力引导动效"
+domain: "game-ui-ux"
+subdomain: "motion-design"
+subdomain_name: "动效设计"
 difficulty: 2
 is_milestone: false
 tags: ["motion-design", "注意力引导动效"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 注意力引导动效
 
 > **领域**: 游戏UI/UX > 动效设计 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

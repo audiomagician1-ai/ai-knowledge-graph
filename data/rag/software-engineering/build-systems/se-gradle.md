@@ -1,10 +1,22 @@
 ---
-concept: Gradle
-subdomain: 构建系统
-domain: software-engineering
+id: "se-gradle"
+concept: "Gradle"
+domain: "software-engineering"
+subdomain: "build-systems"
+subdomain_name: "构建系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["JVM"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # Gradle
 
 ## 核心内容

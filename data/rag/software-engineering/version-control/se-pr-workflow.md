@@ -1,10 +1,22 @@
 ---
-concept: Pull Request工作流
-subdomain: 版本控制
-domain: software-engineering
+id: "se-pr-workflow"
+concept: "Pull Request工作流"
+domain: "software-engineering"
+subdomain: "version-control"
+subdomain_name: "版本控制"
 difficulty: 2
----
+is_milestone: true
+tags: ["协作"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # Pull Request工作流
 
 ## 核心内容

@@ -1,13 +1,22 @@
 ---
 id: "flash-attention"
-name: "FlashAttention"
+concept: "FlashAttention"
+domain: "ai-engineering"
 subdomain: "llm-core"
 subdomain_name: "大模型核心"
 difficulty: 8
-tags: ["LLM", "Attention", "GPU Optimization"]
-generated_at: "2026-03-19T12:00:00"
----
+is_milestone: false
+tags: ["LLM"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "S"
+quality_score: 95.7
+generation_method: "hand-crafted"
+unique_content_ratio: 0.978
+last_scored: "2026-03-21"
+sources: []
+---
 # FlashAttention
 
 ## 概述

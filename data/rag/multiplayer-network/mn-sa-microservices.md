@@ -1,3 +1,22 @@
+---
+id: "mn-sa-microservices"
+concept: "微服务架构"
+domain: "multiplayer-network"
+subdomain: "server-architecture"
+subdomain_name: "服务端架构"
+difficulty: 3
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # 微服务架构
 
 > 领域: 网络多人 > 服务端架构

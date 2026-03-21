@@ -1,10 +1,22 @@
 ---
-concept: 系统发育
-subdomain: 进化生物学
-domain: biology
+id: "phylogenetics"
+concept: "系统发育"
+domain: "biology"
+subdomain: "evolution"
+subdomain_name: "进化生物学"
 difficulty: 4
----
+is_milestone: false
+tags: ["方法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.2
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 系统发育
 
 ## 核心内容

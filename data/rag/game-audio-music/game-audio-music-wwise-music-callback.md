@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-wwise-music-callback"
+concept: "Music Callback"
+domain: "game-audio-music"
+subdomain: "wwise-music"
+subdomain_name: "Wwise音乐系统"
+difficulty: 4
+is_milestone: false
+tags: ["高级"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.647
+last_scored: "2026-03-21"
+sources: []
+---
 # Music Callback
 
 > **领域**: 游戏音乐 | **子领域**: Wwise音乐系统 | **难度**: 高级

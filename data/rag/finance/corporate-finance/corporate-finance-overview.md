@@ -1,10 +1,22 @@
 ---
-concept: 公司金融概述
-subdomain: 公司金融
-domain: finance
+id: "corporate-finance-overview"
+concept: "公司金融概述"
+domain: "finance"
+subdomain: "corporate-finance"
+subdomain_name: "公司金融"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.1
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 公司金融概述
 
 ## 核心概念

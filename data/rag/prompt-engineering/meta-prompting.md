@@ -1,10 +1,22 @@
 ---
-concept: meta-prompting
-subdomain: prompt-engineering
+id: "meta-prompting"
+concept: "元提示工程"
+domain: "ai-engineering"
+subdomain: "prompt-engineering"
+subdomain_name: "Prompt工程"
 difficulty: 7
-prereqs: [chain-of-thought]
----
+is_milestone: false
+tags: ["Prompt", "高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 66.7
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 元提示工程
 
 ## 核心概念

@@ -1,14 +1,22 @@
 ---
 id: "redis-basics"
-name: "Redis基础"
+concept: "Redis基础"
+domain: "ai-engineering"
 subdomain: "database"
 subdomain_name: "数据库"
 difficulty: 4
 is_milestone: false
 tags: ["缓存"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # Redis基础
 
 ## 概述

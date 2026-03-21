@@ -1,10 +1,22 @@
 ---
-concept: 元素系统
-subdomain: 战斗设计
-domain: game-design
+id: "elemental-system"
+concept: "元素系统"
+domain: "game-design"
+subdomain: "combat-design"
+subdomain_name: "战斗设计"
 difficulty: 3
----
+is_milestone: false
+tags: ["系统"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.1
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 元素系统
 
 ## 核心内容

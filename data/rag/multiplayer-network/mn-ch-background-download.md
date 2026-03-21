@@ -1,3 +1,22 @@
+---
+id: "mn-ch-background-download"
+concept: "后台下载"
+domain: "multiplayer-network"
+subdomain: "cdn-hotpatch"
+subdomain_name: "CDN与热更新"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.2
+generation_method: "template-v1"
+unique_content_ratio: 0.357
+last_scored: "2026-03-21"
+sources: []
+---
 # 后台下载
 
 > 领域: 网络多人 > CDN与热更新

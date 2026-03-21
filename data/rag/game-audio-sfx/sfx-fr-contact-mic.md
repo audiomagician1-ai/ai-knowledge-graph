@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: foley-recording
-concept_id: sfx-fr-contact-mic
+id: "sfx-fr-contact-mic"
+concept: "接触式麦克风"
+domain: "game-audio-sfx"
+subdomain: "foley-recording"
+subdomain_name: "Foley录制"
 difficulty: 2
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 接触式麦克风
 
 ## 概述

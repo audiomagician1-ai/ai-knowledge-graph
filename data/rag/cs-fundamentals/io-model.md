@@ -1,3 +1,22 @@
+---
+id: "io-model"
+concept: "I/O模型"
+domain: "ai-engineering"
+subdomain: "cs-fundamentals"
+subdomain_name: "计算机基础"
+difficulty: 4
+is_milestone: false
+tags: ["io", "epoll", "select", "async-io"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.6
+generation_method: "template-v1"
+unique_content_ratio: 0.615
+last_scored: "2026-03-21"
+sources: []
+---
 # I/O模型
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

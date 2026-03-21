@@ -1,3 +1,22 @@
+---
+id: "frontend-testing"
+concept: "前端测试"
+domain: "ai-engineering"
+subdomain: "web-frontend"
+subdomain_name: "Web前端"
+difficulty: 4
+is_milestone: false
+tags: ["vitest", "playwright", "testing-library"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 前端测试
 
 > **难度**: (4/5) | **预计学习时间**: 30分钟

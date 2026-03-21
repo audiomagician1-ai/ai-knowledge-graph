@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: multiplatform
-concept_id: guiux-platform-mobile-gesture
-title: 移动端手势设计
+id: "guiux-platform-mobile-gesture"
+concept: "移动端手势设计"
+domain: "game-ui-ux"
+subdomain: "multiplatform"
+subdomain_name: "多平台适配"
 difficulty: 3
 is_milestone: false
 tags: ["multiplatform", "移动端手势设计"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 移动端手势设计
 
 > **领域**: 游戏UI/UX > 多平台适配 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

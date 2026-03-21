@@ -1,10 +1,22 @@
 ---
-concept: 产品路线图
-subdomain: 产品管理
-domain: product-design
+id: "product-roadmap"
+concept: "产品路线图"
+domain: "product-design"
+subdomain: "product-management"
+subdomain_name: "产品管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["规划"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 产品路线图
 
 ## 核心概念

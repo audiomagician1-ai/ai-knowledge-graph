@@ -1,3 +1,22 @@
+---
+id: "cd-visdev-concept-package"
+concept: "概念设计包"
+domain: "concept-design"
+subdomain: "visual-development"
+subdomain_name: "视觉开发"
+difficulty: 3
+is_milestone: false
+tags: ["流程"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.9
+generation_method: "template-v1"
+unique_content_ratio: 0.545
+last_scored: "2026-03-21"
+sources: []
+---
 # 概念设计包
 
 ## 概述

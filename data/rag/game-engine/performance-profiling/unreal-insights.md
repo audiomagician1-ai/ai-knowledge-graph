@@ -1,10 +1,22 @@
 ---
-concept: Unreal Insights
-subdomain: 性能剖析
-domain: game-engine
+id: "unreal-insights"
+concept: "Unreal Insights"
+domain: "game-engine"
+subdomain: "performance-profiling"
+subdomain_name: "性能剖析"
 difficulty: 2
----
+is_milestone: false
+tags: ["UE5"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Unreal Insights
 
 ## 核心内容

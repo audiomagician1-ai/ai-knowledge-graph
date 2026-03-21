@@ -1,3 +1,22 @@
+---
+id: "cd-composition-intro"
+concept: "构图概述"
+domain: "concept-design"
+subdomain: "composition"
+subdomain_name: "构图"
+difficulty: 1
+is_milestone: false
+tags: ["基础"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 构图概述
 
 ## 概述

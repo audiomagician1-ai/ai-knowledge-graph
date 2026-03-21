@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: pr-media
-concept_id: pub-pm-media-monitoring
+id: "pub-pm-media-monitoring"
+concept: "媒体监测"
+domain: "game-publishing"
+subdomain: "pr-media"
+subdomain_name: "PR/媒体关系"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 媒体监测
 
 ## 概述

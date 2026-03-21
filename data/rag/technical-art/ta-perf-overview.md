@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: perf-optimization
-concept_id: ta-perf-overview
+id: "ta-perf-overview"
+concept: "性能优化概述"
+domain: "technical-art"
+subdomain: "perf-optimization"
+subdomain_name: "性能优化"
 difficulty: 1
-content_type: theory
-tags: [基础]
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.5
+generation_method: "template-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 性能优化概述
 
 ## 概述

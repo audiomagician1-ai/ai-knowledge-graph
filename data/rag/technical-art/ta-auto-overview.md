@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: automation
-concept_id: ta-auto-overview
+id: "ta-auto-overview"
+concept: "自动化工作流概述"
+domain: "technical-art"
+subdomain: "automation"
+subdomain_name: "自动化工作流"
 difficulty: 1
-content_type: theory
-tags: [基础]
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.5
+generation_method: "template-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 自动化工作流概述
 
 ## 概述

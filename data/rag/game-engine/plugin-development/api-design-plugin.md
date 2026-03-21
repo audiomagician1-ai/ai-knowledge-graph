@@ -1,10 +1,22 @@
 ---
-concept: 插件API设计
-subdomain: 插件开发
-domain: game-engine
+id: "api-design-plugin"
+concept: "插件API设计"
+domain: "game-engine"
+subdomain: "plugin-development"
+subdomain_name: "插件开发"
 difficulty: 2
----
+is_milestone: false
+tags: ["设计"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 插件API设计
 
 ## 核心内容

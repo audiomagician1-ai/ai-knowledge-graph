@@ -1,3 +1,22 @@
+---
+id: "database-orm-advanced"
+concept: "ORM高级用法"
+domain: "ai-engineering"
+subdomain: "web-backend"
+subdomain_name: "Web后端"
+difficulty: 4
+is_milestone: false
+tags: ["orm", "n+1", "eager-loading", "transaction"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # ORM高级用法
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

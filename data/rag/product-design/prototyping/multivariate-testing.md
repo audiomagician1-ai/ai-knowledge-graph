@@ -1,10 +1,22 @@
 ---
-concept: 多变量测试
-subdomain: 原型与测试
-domain: product-design
+id: "multivariate-testing"
+concept: "多变量测试"
+domain: "product-design"
+subdomain: "prototyping"
+subdomain_name: "原型与测试"
 difficulty: 4
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 多变量测试
 
 ## 核心概念

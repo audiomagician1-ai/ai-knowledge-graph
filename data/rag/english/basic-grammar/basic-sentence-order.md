@@ -1,14 +1,22 @@
 ---
 id: "basic-sentence-order"
-name: "基本语序"
+concept: "基本语序"
+domain: "english"
 subdomain: "basic-grammar"
 subdomain_name: "基础语法"
 difficulty: 1
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 基本语序
 
 ## 概述

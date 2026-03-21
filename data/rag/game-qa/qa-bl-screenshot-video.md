@@ -1,13 +1,22 @@
 ---
 id: "qa-bl-screenshot-video"
-title: "截图/录屏证据"
+concept: "截图/录屏证据"
 domain: "game-qa"
 subdomain: "bug-lifecycle"
+subdomain_name: "Bug生命周期"
 difficulty: 1
-estimated_minutes: 20
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 截图/录屏证据
 
 > **子领域**: Bug生命周期 | **难度**: 入门 | **预计学习时间**: 20分钟

@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: facial-animation
-concept_id: anim-face-pipeline
+id: "anim-face-pipeline"
+concept: "面部动画管线"
+domain: "animation"
+subdomain: "facial-animation"
+subdomain_name: "面部动画"
 difficulty: 3
-content_type: practice
-tags: [流程]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["流程"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 面部动画管线
 
 ## 概述

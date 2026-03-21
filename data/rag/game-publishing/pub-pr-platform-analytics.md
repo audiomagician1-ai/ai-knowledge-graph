@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: platform-rules
-concept_id: pub-pr-platform-analytics
+id: "pub-pr-platform-analytics"
+concept: "平台数据分析"
+domain: "game-publishing"
+subdomain: "platform-rules"
+subdomain_name: "平台规则"
 difficulty: 5
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 平台数据分析
 
 ## 概述

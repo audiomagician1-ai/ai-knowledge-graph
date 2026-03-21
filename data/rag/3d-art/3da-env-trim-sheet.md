@@ -1,3 +1,22 @@
+---
+id: "3da-env-trim-sheet"
+concept: "环境Trim Sheet"
+domain: "3d-art"
+subdomain: "environment-art"
+subdomain_name: "环境美术"
+difficulty: 3
+is_milestone: true
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 环境Trim Sheet
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 虚拟纹理
-subdomain: 纹理技术
-domain: computer-graphics
+id: "cg-virtual-texture"
+concept: "虚拟纹理"
+domain: "computer-graphics"
+subdomain: "texture-techniques"
+subdomain_name: "纹理技术"
 difficulty: 4
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 虚拟纹理
 
 ## 核心内容

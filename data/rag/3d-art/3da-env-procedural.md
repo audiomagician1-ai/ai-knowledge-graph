@@ -1,3 +1,22 @@
+---
+id: "3da-env-procedural"
+concept: "程序化环境"
+domain: "3d-art"
+subdomain: "environment-art"
+subdomain_name: "环境美术"
+difficulty: 4
+is_milestone: true
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 程序化环境
 
 ## 概述

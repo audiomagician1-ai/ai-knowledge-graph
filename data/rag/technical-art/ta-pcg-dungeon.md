@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pcg
-concept_id: ta-pcg-dungeon
+id: "ta-pcg-dungeon"
+concept: "程序化关卡"
+domain: "technical-art"
+subdomain: "pcg"
+subdomain_name: "程序化生成"
 difficulty: 3
-content_type: theory
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 程序化关卡
 
 ## 概述

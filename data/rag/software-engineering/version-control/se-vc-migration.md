@@ -1,10 +1,22 @@
 ---
-concept: 版本控制迁移
-subdomain: 版本控制
-domain: software-engineering
+id: "se-vc-migration"
+concept: "版本控制迁移"
+domain: "software-engineering"
+subdomain: "version-control"
+subdomain_name: "版本控制"
 difficulty: 3
----
+is_milestone: false
+tags: ["迁移"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 版本控制迁移
 
 ## 核心内容

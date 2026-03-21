@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: animation-blueprint
-concept_id: anim-abp-best-practices
+id: "anim-abp-best-practices"
+concept: "动画蓝图最佳实践"
+domain: "animation"
+subdomain: "animation-blueprint"
+subdomain_name: "动画蓝图"
 difficulty: 3
-content_type: theory
-tags: [流程]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["流程"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.474
+last_scored: "2026-03-21"
+sources: []
+---
 # 动画蓝图最佳实践
 
 ## 概述

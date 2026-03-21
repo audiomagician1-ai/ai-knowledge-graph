@@ -1,0 +1,246 @@
+{
+  "generated": "2026-03-21T12:47:05.376467",
+  "count": 30,
+  "prompts": [
+    {
+      "concept_id": "newtons-second-law",
+      "name": "牛顿第二定律",
+      "domain": "physics",
+      "score": 33.3,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\newtons-second-law.json"
+    },
+    {
+      "concept_id": "special-relativity-postulates",
+      "name": "狭义相对论公设",
+      "domain": "physics",
+      "score": 33.3,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\special-relativity-postulates.json"
+    },
+    {
+      "concept_id": "entropy",
+      "name": "熵",
+      "domain": "physics",
+      "score": 33.3,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\entropy.json"
+    },
+    {
+      "concept_id": "energy-conservation",
+      "name": "能量守恒",
+      "domain": "physics",
+      "score": 33.5,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\energy-conservation.json"
+    },
+    {
+      "concept_id": "band-theory",
+      "name": "能带理论",
+      "domain": "physics",
+      "score": 33.8,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\band-theory.json"
+    },
+    {
+      "concept_id": "binding-energy",
+      "name": "结合能",
+      "domain": "physics",
+      "score": 34.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\binding-energy.json"
+    },
+    {
+      "concept_id": "schrodinger-equation",
+      "name": "薛定谔方程",
+      "domain": "physics",
+      "score": 34.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\schrodinger-equation.json"
+    },
+    {
+      "concept_id": "stellar-evolution",
+      "name": "恒星演化",
+      "domain": "physics",
+      "score": 34.2,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\stellar-evolution.json"
+    },
+    {
+      "concept_id": "momentum-conservation",
+      "name": "动量守恒",
+      "domain": "physics",
+      "score": 34.2,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\momentum-conservation.json"
+    },
+    {
+      "concept_id": "bohr-model",
+      "name": "玻尔模型",
+      "domain": "physics",
+      "score": 34.2,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\bohr-model.json"
+    },
+    {
+      "concept_id": "photoelectric-effect",
+      "name": "光电效应",
+      "domain": "physics",
+      "score": 34.2,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\photoelectric-effect.json"
+    },
+    {
+      "concept_id": "uncertainty-principle",
+      "name": "不确定性原理",
+      "domain": "physics",
+      "score": 34.5,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\uncertainty-principle.json"
+    },
+    {
+      "concept_id": "gravitation",
+      "name": "万有引力",
+      "domain": "physics",
+      "score": 34.8,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\gravitation.json"
+    },
+    {
+      "concept_id": "rotational-dynamics",
+      "name": "转动动力学",
+      "domain": "physics",
+      "score": 34.8,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\rotational-dynamics.json"
+    },
+    {
+      "concept_id": "first-law-thermo",
+      "name": "热力学第一定律",
+      "domain": "physics",
+      "score": 35.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\first-law-thermo.json"
+    },
+    {
+      "concept_id": "second-law-thermo",
+      "name": "热力学第二定律",
+      "domain": "physics",
+      "score": 35.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\second-law-thermo.json"
+    },
+    {
+      "concept_id": "geometric-optics",
+      "name": "几何光学",
+      "domain": "physics",
+      "score": 35.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\geometric-optics.json"
+    },
+    {
+      "concept_id": "interference",
+      "name": "光的干涉",
+      "domain": "physics",
+      "score": 35.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\interference.json"
+    },
+    {
+      "concept_id": "amperes-law",
+      "name": "安培定律",
+      "domain": "physics",
+      "score": 35.2,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\amperes-law.json"
+    },
+    {
+      "concept_id": "wave-particle-duality",
+      "name": "波粒二象性",
+      "domain": "physics",
+      "score": 35.2,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\wave-particle-duality.json"
+    },
+    {
+      "concept_id": "gauss-law",
+      "name": "高斯定律",
+      "domain": "physics",
+      "score": 35.5,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\gauss-law.json"
+    },
+    {
+      "concept_id": "bernoullis-equation",
+      "name": "伯努利方程",
+      "domain": "physics",
+      "score": 35.5,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\bernoullis-equation.json"
+    },
+    {
+      "concept_id": "relativistic-momentum-energy",
+      "name": "相对论性动量与能量",
+      "domain": "physics",
+      "score": 35.9,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\relativistic-momentum-energy.json"
+    },
+    {
+      "concept_id": "faradays-law",
+      "name": "法拉第电磁感应",
+      "domain": "physics",
+      "score": 36.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\faradays-law.json"
+    },
+    {
+      "concept_id": "maxwells-equations",
+      "name": "麦克斯韦方程组",
+      "domain": "physics",
+      "score": 36.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\maxwells-equations.json"
+    },
+    {
+      "concept_id": "spin",
+      "name": "自旋",
+      "domain": "physics",
+      "score": 36.2,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\spin.json"
+    },
+    {
+      "concept_id": "lagrange-multipliers",
+      "name": "拉格朗日乘数法",
+      "domain": "mathematics",
+      "score": 37.4,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\lagrange-multipliers.json"
+    },
+    {
+      "concept_id": "chinese-remainder",
+      "name": "中国剩余定理",
+      "domain": "mathematics",
+      "score": 38.0,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\chinese-remainder.json"
+    },
+    {
+      "concept_id": "vector-spaces",
+      "name": "向量空间",
+      "domain": "mathematics",
+      "score": 38.3,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\vector-spaces.json"
+    },
+    {
+      "concept_id": "congruences",
+      "name": "同余理论",
+      "domain": "mathematics",
+      "score": 38.3,
+      "is_milestone": false,
+      "prompt_file": "data\\rewrite_prompts\\congruences.json"
+    }
+  ]
+}

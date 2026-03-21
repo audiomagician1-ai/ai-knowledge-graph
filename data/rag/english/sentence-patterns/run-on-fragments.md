@@ -1,14 +1,22 @@
 ---
 id: "run-on-fragments"
-name: "句子错误"
+concept: "句子错误"
+domain: "english"
 subdomain: "sentence-patterns"
 subdomain_name: "句型结构"
 difficulty: 4
 is_milestone: false
 tags: ["易错"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.0
+generation_method: "template-v1"
+unique_content_ratio: 0.571
+last_scored: "2026-03-21"
+sources: []
+---
 # 句子错误
 
 ## 概述

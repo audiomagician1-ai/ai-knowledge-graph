@@ -1,10 +1,22 @@
 ---
-concept: 埋点设计
-subdomain: 数据驱动
-domain: product-design
+id: "event-tracking"
+concept: "埋点设计"
+domain: "product-design"
+subdomain: "data-driven"
+subdomain_name: "数据驱动"
 difficulty: 2
----
+is_milestone: false
+tags: ["采集"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 埋点设计
 
 ## 核心概念

@@ -1,3 +1,22 @@
+---
+id: "word2vec"
+concept: "Word2Vec"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
+difficulty: 4
+is_milestone: false
+tags: ["embedding", "skip-gram", "cbow", "nlp"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # Word2Vec
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 25分钟

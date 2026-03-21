@@ -1,10 +1,22 @@
 ---
-concept: 现象学方法
-subdomain: 认识论
-domain: philosophy
+id: "phenomenology-method"
+concept: "现象学方法"
+domain: "philosophy"
+subdomain: "epistemology"
+subdomain_name: "认识论"
 difficulty: 4
----
+is_milestone: false
+tags: ["方法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.3
+generation_method: "template-v1"
+unique_content_ratio: 0.2
+last_scored: "2026-03-21"
+sources: []
+---
 # 现象学方法
 
 ## 核心内容

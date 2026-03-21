@@ -1,10 +1,22 @@
 ---
-concept: 说服伦理
-subdomain: 论说文写作
-domain: writing
+id: "persuasive-ethics"
+concept: "说服伦理"
+domain: "writing"
+subdomain: "persuasive-writing"
+subdomain_name: "论说文写作"
 difficulty: 2
----
+is_milestone: false
+tags: ["伦理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.5
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 说服伦理
 
 ## 核心内容

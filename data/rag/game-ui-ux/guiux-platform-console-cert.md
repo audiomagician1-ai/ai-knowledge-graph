@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: multiplatform
-concept_id: guiux-platform-console-cert
-title: 主机认证要求
+id: "guiux-platform-console-cert"
+concept: "主机认证要求"
+domain: "game-ui-ux"
+subdomain: "multiplatform"
+subdomain_name: "多平台适配"
 difficulty: 4
 is_milestone: false
 tags: ["multiplatform", "主机认证要求"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.842
+last_scored: "2026-03-21"
+sources: []
+---
 # 主机认证要求
 
 > **领域**: 游戏UI/UX > 多平台适配 | **难度**: ⭐⭐⭐⭐ | **预计学习时间**: 37分钟

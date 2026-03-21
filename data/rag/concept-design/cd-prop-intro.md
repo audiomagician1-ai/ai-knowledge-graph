@@ -1,3 +1,22 @@
+---
+id: "cd-prop-intro"
+concept: "道具设计概述"
+domain: "concept-design"
+subdomain: "prop-design"
+subdomain_name: "道具设计"
+difficulty: 1
+is_milestone: false
+tags: ["基础"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.875
+last_scored: "2026-03-21"
+sources: []
+---
 # 道具设计概述
 
 ## 概述

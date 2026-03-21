@@ -1,10 +1,22 @@
 ---
-concept: 股票市场概述
-subdomain: 股票市场
-domain: finance
+id: "stock-market-overview"
+concept: "股票市场概述"
+domain: "finance"
+subdomain: "stock-market"
+subdomain_name: "股票市场"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.5
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 股票市场概述
 
 ## 核心概念

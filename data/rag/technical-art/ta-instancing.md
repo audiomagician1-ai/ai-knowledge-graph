@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: perf-optimization
-concept_id: ta-instancing
+id: "ta-instancing"
+concept: "GPU实例化"
+domain: "technical-art"
+subdomain: "perf-optimization"
+subdomain_name: "性能优化"
 difficulty: 2
-content_type: theory
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # GPU实例化
 
 ## 概述

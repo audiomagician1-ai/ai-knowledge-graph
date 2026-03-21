@@ -1,10 +1,22 @@
 ---
-concept: 布料模拟
-subdomain: 物理引擎
-domain: game-engine
+id: "cloth-simulation"
+concept: "布料模拟"
+domain: "game-engine"
+subdomain: "physics-engine"
+subdomain_name: "物理引擎"
 difficulty: 3
----
+is_milestone: false
+tags: ["软体"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.5
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 布料模拟
 
 ## 核心内容

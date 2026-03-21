@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: usability-testing
-concept_id: guiux-usability-benchmark
-title: 基准测试
+id: "guiux-usability-benchmark"
+concept: "基准测试"
+domain: "game-ui-ux"
+subdomain: "usability-testing"
+subdomain_name: "可用性测试"
 difficulty: 3
 is_milestone: false
 tags: ["usability-testing", "基准测试"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.812
+last_scored: "2026-03-21"
+sources: []
+---
 # 基准测试
 
 > **领域**: 游戏UI/UX > 可用性测试 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

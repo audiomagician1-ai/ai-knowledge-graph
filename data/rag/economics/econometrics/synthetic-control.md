@@ -1,10 +1,22 @@
 ---
-concept: 合成控制法
-subdomain: 计量经济学
-domain: economics
+id: "synthetic-control"
+concept: "合成控制法"
+domain: "economics"
+subdomain: "econometrics"
+subdomain_name: "计量经济学"
 difficulty: 4
----
+is_milestone: false
+tags: ["因果"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.3
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 合成控制法
 
 ## 核心内容

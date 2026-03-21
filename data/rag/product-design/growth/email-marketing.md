@@ -1,10 +1,22 @@
 ---
-concept: 邮件营销
-subdomain: 增长运营
-domain: product-design
+id: "email-marketing"
+concept: "邮件营销"
+domain: "product-design"
+subdomain: "growth"
+subdomain_name: "增长运营"
 difficulty: 2
----
+is_milestone: false
+tags: ["获客"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 邮件营销
 
 ## 核心概念

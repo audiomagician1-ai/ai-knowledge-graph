@@ -1,3 +1,22 @@
+---
+id: "persistent-data-structure"
+concept: "持久化数据结构"
+domain: "ai-engineering"
+subdomain: "data-structures"
+subdomain_name: "数据结构"
+difficulty: 5
+is_milestone: false
+tags: ["immutable", "versioning", "functional"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 持久化数据结构
 
 > **难度**: (5/5) | **预计学习时间**: 30分钟

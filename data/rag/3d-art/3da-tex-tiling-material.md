@@ -1,3 +1,22 @@
+---
+id: "3da-tex-tiling-material"
+concept: "可平铺材质"
+domain: "3d-art"
+subdomain: "texturing"
+subdomain_name: "纹理绘制"
+difficulty: 3
+is_milestone: true
+tags: ["技巧"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.0
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 可平铺材质
 
 ## 概述

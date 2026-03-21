@@ -1,10 +1,22 @@
 ---
-concept: 引擎光线追踪
-subdomain: 渲染管线
-domain: game-engine
+id: "ray-tracing-engine"
+concept: "引擎光线追踪"
+domain: "game-engine"
+subdomain: "rendering-pipeline"
+subdomain_name: "渲染管线"
 difficulty: 3
----
+is_milestone: false
+tags: ["光追"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 引擎光线追踪
 
 ## 核心内容

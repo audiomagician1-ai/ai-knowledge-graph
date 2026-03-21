@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: season-ops
-concept_id: ops-so-reward-reset
+id: "ops-so-reward-reset"
+concept: "赛季奖励重置"
+domain: "game-live-ops"
+subdomain: "season-ops"
+subdomain_name: "赛季运营"
 difficulty: 2
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 赛季奖励重置
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: user-acquisition
-concept_id: pub-ua-ltv-prediction
+id: "pub-ua-ltv-prediction"
+concept: "LTV预测"
+domain: "game-publishing"
+subdomain: "user-acquisition"
+subdomain_name: "用户获取(UA)"
 difficulty: 5
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # LTV预测
 
 ## 概述

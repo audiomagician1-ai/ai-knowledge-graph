@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-jazz-style"
+concept: "爵士风格"
+domain: "game-audio-music"
+subdomain: "style-study"
+subdomain_name: "风格研究"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 33.8
+generation_method: "template-v1"
+unique_content_ratio: 0.529
+last_scored: "2026-03-21"
+sources: []
+---
 # 爵士风格
 
 > **领域**: 游戏音乐 | **子领域**: 风格研究 | **难度**: 进阶

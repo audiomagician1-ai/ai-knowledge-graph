@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: shader-dev
-concept_id: ta-shader-variants
+id: "ta-shader-variants"
+concept: "Shader变体管理"
+domain: "technical-art"
+subdomain: "shader-dev"
+subdomain_name: "Shader开发"
 difficulty: 3
-content_type: practice
-tags: [优化]
----
+is_milestone: false
+tags: ["优化"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # Shader变体管理
 
 ## 概述

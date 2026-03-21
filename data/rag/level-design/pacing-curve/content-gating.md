@@ -1,10 +1,22 @@
 ---
-concept: 内容门控
-subdomain: 节奏曲线
-domain: level-design
+id: "content-gating"
+concept: "内容门控"
+domain: "level-design"
+subdomain: "pacing-curve"
+subdomain_name: "节奏曲线"
 difficulty: 2
----
+is_milestone: false
+tags: ["门控"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 内容门控
 
 ## 核心内容

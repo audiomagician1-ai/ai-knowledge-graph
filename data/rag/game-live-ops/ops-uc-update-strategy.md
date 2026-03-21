@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: update-cadence
-concept_id: ops-uc-update-strategy
+id: "ops-uc-update-strategy"
+concept: "版本策略概论"
+domain: "game-live-ops"
+subdomain: "update-cadence"
+subdomain_name: "版本更新节奏"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 版本策略概论
 
 ## 概述

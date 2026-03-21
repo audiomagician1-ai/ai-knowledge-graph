@@ -1,3 +1,22 @@
+---
+id: "nd-es-progression-change"
+concept: "场景变化叙事"
+domain: "narrative-design"
+subdomain: "environmental-storytelling"
+subdomain_name: "环境叙事"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 场景变化叙事
 
 > 领域: 叙事设计 > 环境叙事

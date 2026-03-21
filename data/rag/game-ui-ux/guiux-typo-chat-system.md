@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: typography
-concept_id: guiux-typo-chat-system
-title: 聊天文本系统
+id: "guiux-typo-chat-system"
+concept: "聊天文本系统"
+domain: "game-ui-ux"
+subdomain: "typography"
+subdomain_name: "字体排版"
 difficulty: 3
 is_milestone: false
 tags: ["typography", "聊天文本系统"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.842
+last_scored: "2026-03-21"
+sources: []
+---
 # 聊天文本系统
 
 > **领域**: 游戏UI/UX > 字体排版 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

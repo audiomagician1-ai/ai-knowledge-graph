@@ -1,10 +1,22 @@
 ---
-concept: 用户生成内容
-subdomain: 社交系统
-domain: game-design
+id: "ugc-system"
+concept: "用户生成内容"
+domain: "game-design"
+subdomain: "social-systems"
+subdomain_name: "社交系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["创意"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 用户生成内容
 
 ## 核心内容

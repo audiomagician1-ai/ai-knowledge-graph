@@ -1,14 +1,22 @@
 ---
 id: "selection-rules"
-name: "选择定则"
+concept: "选择定则"
+domain: "physics"
 subdomain: "quantum-mechanics"
 subdomain_name: "量子力学"
 difficulty: 7
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.5
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 选择定则
 
 ## 概述

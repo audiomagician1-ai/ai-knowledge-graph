@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: market-strategy
-concept_id: pub-ms-early-access
+id: "pub-ms-early-access"
+concept: "Early Access策略"
+domain: "game-publishing"
+subdomain: "market-strategy"
+subdomain_name: "市场策略"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # Early Access策略
 
 ## 概述

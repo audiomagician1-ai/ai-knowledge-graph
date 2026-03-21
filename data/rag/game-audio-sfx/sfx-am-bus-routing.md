@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: audio-middleware
-concept_id: sfx-am-bus-routing
+id: "sfx-am-bus-routing"
+concept: "总线路由"
+domain: "game-audio-sfx"
+subdomain: "audio-middleware"
+subdomain_name: "音频中间件"
 difficulty: 2
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 总线路由
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 渲染图(RDG)
-subdomain: 渲染管线
-domain: game-engine
+id: "render-graph"
+concept: "渲染图(RDG)"
+domain: "game-engine"
+subdomain: "rendering-pipeline"
+subdomain_name: "渲染管线"
 difficulty: 3
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.9
+generation_method: "template-v1"
+unique_content_ratio: 0.417
+last_scored: "2026-03-21"
+sources: []
+---
 # 渲染图(RDG)
 
 ## 核心内容

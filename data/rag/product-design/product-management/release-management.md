@@ -1,10 +1,22 @@
 ---
-concept: 发布管理
-subdomain: 产品管理
-domain: product-design
+id: "release-management"
+concept: "发布管理"
+domain: "product-design"
+subdomain: "product-management"
+subdomain_name: "产品管理"
 difficulty: 3
----
+is_milestone: false
+tags: ["工程"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 发布管理
 
 ## 核心概念

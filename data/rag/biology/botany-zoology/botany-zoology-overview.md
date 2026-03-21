@@ -1,10 +1,22 @@
 ---
-concept: 植物与动物学概述
-subdomain: 植物与动物学
-domain: biology
+id: "botany-zoology-overview"
+concept: "植物与动物学概述"
+domain: "biology"
+subdomain: "botany-zoology"
+subdomain_name: "植物与动物学"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 植物与动物学概述
 
 ## 核心内容

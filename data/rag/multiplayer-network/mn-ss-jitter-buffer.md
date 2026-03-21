@@ -1,3 +1,22 @@
+---
+id: "mn-ss-jitter-buffer"
+concept: "抖动缓冲"
+domain: "multiplayer-network"
+subdomain: "state-synchronization"
+subdomain_name: "状态同步"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # 抖动缓冲
 
 > 领域: 网络多人 > 状态同步

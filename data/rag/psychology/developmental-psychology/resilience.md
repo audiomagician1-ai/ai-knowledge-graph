@@ -1,10 +1,22 @@
 ---
-concept: 心理韧性
-subdomain: 发展心理学
-domain: psychology
+id: "resilience"
+concept: "心理韧性"
+domain: "psychology"
+subdomain: "developmental-psychology"
+subdomain_name: "发展心理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["积极"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 心理韧性
 
 ## 核心内容

@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: motion-capture
-concept_id: anim-mocap-cleanup
+id: "anim-mocap-cleanup"
+concept: "动捕数据清理"
+domain: "animation"
+subdomain: "motion-capture"
+subdomain_name: "动作捕捉"
 difficulty: 3
-content_type: practice
-tags: [核心]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 动捕数据清理
 
 ## 概述

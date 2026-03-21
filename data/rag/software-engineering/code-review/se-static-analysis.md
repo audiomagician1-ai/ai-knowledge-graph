@@ -1,10 +1,22 @@
 ---
-concept: 静态分析
-subdomain: 代码审查
-domain: software-engineering
+id: "se-static-analysis"
+concept: "静态分析"
+domain: "software-engineering"
+subdomain: "code-review"
+subdomain_name: "代码审查"
 difficulty: 2
----
+is_milestone: true
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 静态分析
 
 ## 核心内容

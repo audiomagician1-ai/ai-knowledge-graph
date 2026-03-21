@@ -1,14 +1,22 @@
 ---
 id: "css-basics"
-name: "CSS基础"
+concept: "CSS基础"
+domain: "ai-engineering"
 subdomain: "web-frontend"
 subdomain_name: "Web前端"
 difficulty: 2
 is_milestone: false
 tags: ["Web", "样式"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # CSS基础
 
 ## 概述

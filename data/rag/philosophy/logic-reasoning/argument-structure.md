@@ -1,10 +1,22 @@
 ---
-concept: 论证结构
-subdomain: 逻辑与推理
-domain: philosophy
+id: "argument-structure"
+concept: "论证结构"
+domain: "writing"
+subdomain: "persuasive-writing"
+subdomain_name: "论说文写作"
 difficulty: 2
----
+is_milestone: false
+tags: ["结构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 论证结构
 
 ## 核心内容

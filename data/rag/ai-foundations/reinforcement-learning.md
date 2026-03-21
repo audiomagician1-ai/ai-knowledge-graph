@@ -1,10 +1,22 @@
 ---
-concept: reinforcement-learning
-subdomain: ai-foundations
+id: "reinforcement-learning"
+concept: "强化学习基础"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
 difficulty: 7
-prereqs: [ml-basics, neural-network-basics]
----
+is_milestone: false
+tags: ["AI", "强化学习"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 64.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 强化学习基础
 
 ## 核心概念

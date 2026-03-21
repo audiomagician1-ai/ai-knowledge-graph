@@ -1,10 +1,22 @@
 ---
-concept: 唯物主义与物理主义
-subdomain: 形而上学
-domain: philosophy
+id: "materialism-physicalism"
+concept: "唯物主义与物理主义"
+domain: "philosophy"
+subdomain: "metaphysics"
+subdomain_name: "形而上学"
 difficulty: 3
----
+is_milestone: false
+tags: ["流派"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.1
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 唯物主义与物理主义
 
 ## 核心内容

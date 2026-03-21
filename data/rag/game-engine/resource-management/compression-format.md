@@ -1,10 +1,22 @@
 ---
-concept: 压缩格式
-subdomain: 资源管理
-domain: game-engine
+id: "compression-format"
+concept: "压缩格式"
+domain: "game-engine"
+subdomain: "resource-management"
+subdomain_name: "资源管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["压缩"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 压缩格式
 
 ## 核心内容

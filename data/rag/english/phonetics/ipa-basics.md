@@ -1,14 +1,22 @@
 ---
 id: "ipa-basics"
-name: "国际音标基础"
+concept: "国际音标基础"
+domain: "english"
 subdomain: "phonetics"
 subdomain_name: "语音"
 difficulty: 3
-is_milestone: true
+is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 33.2
+generation_method: "template-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 国际音标基础
 
 ## 概述

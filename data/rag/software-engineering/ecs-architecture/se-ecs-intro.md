@@ -1,10 +1,22 @@
 ---
-concept: ECS架构概述
-subdomain: ECS架构
-domain: software-engineering
+id: "se-ecs-intro"
+concept: "ECS架构概述"
+domain: "software-engineering"
+subdomain: "ecs-architecture"
+subdomain_name: "ECS架构"
 difficulty: 1
----
+is_milestone: true
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # ECS架构概述
 
 ## 核心内容

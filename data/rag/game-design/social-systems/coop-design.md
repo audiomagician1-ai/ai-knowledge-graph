@@ -1,10 +1,22 @@
 ---
-concept: 合作玩法设计
-subdomain: 社交系统
-domain: game-design
+id: "coop-design"
+concept: "合作玩法设计"
+domain: "game-design"
+subdomain: "social-systems"
+subdomain_name: "社交系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["合作"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 合作玩法设计
 
 ## 核心内容

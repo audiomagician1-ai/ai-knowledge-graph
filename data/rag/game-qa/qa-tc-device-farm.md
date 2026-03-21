@@ -1,13 +1,22 @@
 ---
 id: "qa-tc-device-farm"
-title: "云设备农场"
+concept: "云设备农场"
 domain: "game-qa"
 subdomain: "test-toolchain"
+subdomain_name: "测试工具链"
 difficulty: 3
-estimated_minutes: 35
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 云设备农场
 
 > **子领域**: 测试工具链 | **难度**: 进阶 | **预计学习时间**: 35分钟

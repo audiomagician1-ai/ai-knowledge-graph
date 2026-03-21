@@ -1,10 +1,22 @@
 ---
-concept: 罗尔斯正义论
-subdomain: 政治哲学
-domain: philosophy
+id: "rawls-justice"
+concept: "罗尔斯正义论"
+domain: "philosophy"
+subdomain: "political-philosophy"
+subdomain_name: "政治哲学"
 difficulty: 4
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.3
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 罗尔斯正义论
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: audio-middleware
-concept_id: sfx-am-interactive-music
+id: "sfx-am-interactive-music"
+concept: "交互音乐集成"
+domain: "game-audio-sfx"
+subdomain: "audio-middleware"
+subdomain_name: "音频中间件"
 difficulty: 3
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 交互音乐集成
 
 ## 概述

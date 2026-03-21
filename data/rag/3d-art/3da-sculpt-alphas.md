@@ -1,3 +1,22 @@
+---
+id: "3da-sculpt-alphas"
+concept: "Alpha与笔触纹理"
+domain: "3d-art"
+subdomain: "sculpting"
+subdomain_name: "数字雕刻"
+difficulty: 2
+is_milestone: false
+tags: ["工具"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # Alpha与笔触纹理
 
 ## 概述

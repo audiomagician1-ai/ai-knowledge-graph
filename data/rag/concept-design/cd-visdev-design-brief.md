@@ -1,3 +1,22 @@
+---
+id: "cd-visdev-design-brief"
+concept: "设计简报解读"
+domain: "concept-design"
+subdomain: "visual-development"
+subdomain_name: "视觉开发"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.875
+last_scored: "2026-03-21"
+sources: []
+---
 # 设计简报解读
 
 ## 概述

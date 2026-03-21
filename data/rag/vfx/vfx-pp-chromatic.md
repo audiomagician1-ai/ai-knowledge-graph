@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: post-process
-concept_id: vfx-pp-chromatic
+id: "vfx-pp-chromatic"
+concept: "色散"
+domain: "vfx"
+subdomain: "post-process"
+subdomain_name: "后处理特效"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 色散
 
 ## 概述

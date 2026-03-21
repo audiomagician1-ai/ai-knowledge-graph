@@ -1,10 +1,22 @@
 ---
-concept: 创造力
-subdomain: 认知心理学
-domain: psychology
+id: "creativity"
+concept: "创造力"
+domain: "psychology"
+subdomain: "cognitive-psychology"
+subdomain_name: "认知心理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 创造力
 
 ## 核心内容

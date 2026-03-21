@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: motion-capture
-concept_id: anim-mocap-library
+id: "anim-mocap-library"
+concept: "动捕数据库"
+domain: "animation"
+subdomain: "motion-capture"
+subdomain_name: "动作捕捉"
 difficulty: 1
-content_type: practice
-tags: [资源]
-estimated_minutes: 20
----
+is_milestone: false
+tags: ["资源"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 动捕数据库
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "future-perfect"
-name: "将来完成时"
+concept: "将来完成时"
+domain: "english"
 subdomain: "tenses"
 subdomain_name: "时态系统"
 difficulty: 5
 is_milestone: false
 tags: ["进阶"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 将来完成时
 
 ## 概述

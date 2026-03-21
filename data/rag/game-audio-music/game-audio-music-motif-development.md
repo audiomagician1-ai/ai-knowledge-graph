@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-motif-development"
+concept: "动机发展"
+domain: "game-audio-music"
+subdomain: "composition"
+subdomain_name: "作曲编曲"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.5
+generation_method: "template-v1"
+unique_content_ratio: 0.562
+last_scored: "2026-03-21"
+sources: []
+---
 # 动机发展
 
 > **领域**: 游戏音乐 | **子领域**: 作曲编曲 | **难度**: 进阶

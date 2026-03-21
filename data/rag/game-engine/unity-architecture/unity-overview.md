@@ -1,10 +1,22 @@
 ---
-concept: Unity引擎概述
-subdomain: Unity架构
-domain: game-engine
+id: "unity-overview"
+concept: "Unity引擎概述"
+domain: "game-engine"
+subdomain: "unity-architecture"
+subdomain_name: "Unity架构"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Unity引擎概述
 
 ## 核心内容

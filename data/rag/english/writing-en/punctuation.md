@@ -1,14 +1,22 @@
 ---
 id: "punctuation"
-name: "标点符号"
+concept: "标点符号"
+domain: "english"
 subdomain: "writing-en"
 subdomain_name: "写作"
 difficulty: 3
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.6
+generation_method: "template-v1"
+unique_content_ratio: 0.385
+last_scored: "2026-03-21"
+sources: []
+---
 # 标点符号
 
 ## 概述

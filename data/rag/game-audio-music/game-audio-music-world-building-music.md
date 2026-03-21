@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-world-building-music"
+concept: "音乐世界构建"
+domain: "game-audio-music"
+subdomain: "leitmotif"
+subdomain_name: "主题动机"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.1
+generation_method: "template-v1"
+unique_content_ratio: 0.588
+last_scored: "2026-03-21"
+sources: []
+---
 # 音乐世界构建
 
 > **领域**: 游戏音乐 | **子领域**: 主题动机 | **难度**: 进阶

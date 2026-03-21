@@ -1,3 +1,22 @@
+---
+id: "3da-rig-weight-painting"
+concept: "权重绘制技巧"
+domain: "3d-art"
+subdomain: "rigging"
+subdomain_name: "绑定"
+difficulty: 3
+is_milestone: true
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 权重绘制技巧
 
 ## 概述

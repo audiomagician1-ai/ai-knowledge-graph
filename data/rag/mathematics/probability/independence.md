@@ -1,14 +1,22 @@
 ---
 id: "independence"
-name: "事件的独立性"
+concept: "事件的独立性"
+domain: "mathematics"
 subdomain: "probability"
 subdomain_name: "概率论"
 difficulty: 5
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.818
+last_scored: "2026-03-21"
+sources: []
+---
 # 事件的独立性
 
 ## 概述

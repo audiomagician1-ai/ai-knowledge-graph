@@ -1,10 +1,22 @@
 ---
-concept: 经济调平
-subdomain: 经济系统
-domain: game-design
+id: "economy-balancing"
+concept: "经济调平"
+domain: "game-design"
+subdomain: "economy-design"
+subdomain_name: "经济系统"
 difficulty: 4
----
+is_milestone: false
+tags: ["运营"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.1
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 经济调平
 
 ## 核心内容

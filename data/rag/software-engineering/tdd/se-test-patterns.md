@@ -1,10 +1,22 @@
 ---
-concept: 测试模式
-subdomain: 测试驱动开发
-domain: software-engineering
+id: "se-test-patterns"
+concept: "测试模式"
+domain: "software-engineering"
+subdomain: "tdd"
+subdomain_name: "测试驱动开发"
 difficulty: 2
----
+is_milestone: false
+tags: ["模式"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 测试模式
 
 ## 核心内容

@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: memory-budget
-concept_id: ta-memory-report
+id: "ta-memory-report"
+concept: "内存报告"
+domain: "technical-art"
+subdomain: "memory-budget"
+subdomain_name: "内存与预算"
 difficulty: 2
-content_type: practice
-tags: [监控]
----
+is_milestone: false
+tags: ["监控"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 内存报告
 
 ## 概述

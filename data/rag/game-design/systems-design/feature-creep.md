@@ -1,10 +1,22 @@
 ---
-concept: 功能蔓延
-subdomain: 系统设计
-domain: game-design
+id: "feature-creep"
+concept: "功能蔓延"
+domain: "game-design"
+subdomain: "systems-design"
+subdomain_name: "系统设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["管理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 功能蔓延
 
 ## 核心内容

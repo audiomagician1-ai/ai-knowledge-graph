@@ -1,10 +1,22 @@
 ---
-concept: Python编辑器脚本
-subdomain: 编辑器扩展
-domain: game-engine
+id: "editor-scripting-py"
+concept: "Python编辑器脚本"
+domain: "game-engine"
+subdomain: "editor-extension"
+subdomain_name: "编辑器扩展"
 difficulty: 2
----
+is_milestone: false
+tags: ["脚本"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Python编辑器脚本
 
 ## 核心内容

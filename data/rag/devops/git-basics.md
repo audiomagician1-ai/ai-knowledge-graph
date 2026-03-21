@@ -1,14 +1,22 @@
 ---
 id: "git-basics"
-name: "Git基础"
+concept: "Git基础"
+domain: "ai-engineering"
 subdomain: "devops"
 subdomain_name: "开发运维"
 difficulty: 2
 is_milestone: false
 tags: ["版本控制"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.808
+last_scored: "2026-03-21"
+sources: []
+---
 # Git基础
 
 ## 概述

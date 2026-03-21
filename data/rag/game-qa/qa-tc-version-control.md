@@ -1,13 +1,22 @@
 ---
 id: "qa-tc-version-control"
-title: "版本控制协作"
+concept: "版本控制协作"
 domain: "game-qa"
 subdomain: "test-toolchain"
+subdomain_name: "测试工具链"
 difficulty: 2
-estimated_minutes: 25
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 版本控制协作
 
 > **子领域**: 测试工具链 | **难度**: 基础 | **预计学习时间**: 25分钟

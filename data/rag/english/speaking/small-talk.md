@@ -1,14 +1,22 @@
 ---
 id: "small-talk"
-name: "闲聊"
+concept: "闲聊"
+domain: "english"
 subdomain: "speaking"
 subdomain_name: "口语表达"
 difficulty: 3
 is_milestone: false
 tags: ["社交"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.5
+generation_method: "template-v1"
+unique_content_ratio: 0.364
+last_scored: "2026-03-21"
+sources: []
+---
 # 闲聊
 
 ## 概述

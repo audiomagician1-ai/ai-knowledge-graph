@@ -1,3 +1,22 @@
+---
+id: "dns-basics"
+concept: "DNS原理"
+domain: "ai-engineering"
+subdomain: "cs-fundamentals"
+subdomain_name: "计算机基础"
+difficulty: 3
+is_milestone: false
+tags: ["dns", "domain", "resolution"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # DNS原理
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 20分钟

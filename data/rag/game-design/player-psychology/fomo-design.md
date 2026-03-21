@@ -1,10 +1,22 @@
 ---
-concept: FOMO设计
-subdomain: 玩家心理
-domain: game-design
+id: "fomo-design"
+concept: "FOMO设计"
+domain: "game-design"
+subdomain: "player-psychology"
+subdomain_name: "玩家心理"
 difficulty: 3
----
+is_milestone: false
+tags: ["行为"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # FOMO设计
 
 ## 核心内容

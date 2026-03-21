@@ -1,10 +1,22 @@
 ---
-concept: 干细胞
-subdomain: 细胞生物学
-domain: biology
+id: "stem-cells"
+concept: "干细胞"
+domain: "biology"
+subdomain: "cell-biology"
+subdomain_name: "细胞生物学"
 difficulty: 3
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 干细胞
 
 ## 核心内容

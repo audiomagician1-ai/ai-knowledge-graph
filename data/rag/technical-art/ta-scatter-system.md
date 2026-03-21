@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pcg
-concept_id: ta-scatter-system
+id: "ta-scatter-system"
+concept: "散布系统"
+domain: "technical-art"
+subdomain: "pcg"
+subdomain_name: "程序化生成"
 difficulty: 2
-content_type: practice
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 18.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 散布系统
 
 ## 概述

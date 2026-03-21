@@ -1,3 +1,22 @@
+---
+id: "continual-pretraining"
+concept: "持续预训练"
+domain: "ai-engineering"
+subdomain: "llm-core"
+subdomain_name: "大模型核心"
+difficulty: 8
+is_milestone: false
+tags: ["LLM", "训练"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 73.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 ﻿# 持续预训练
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 女性主义经济学
-subdomain: 经济思想史
-domain: economics
+id: "feminist-economics"
+concept: "女性主义经济学"
+domain: "economics"
+subdomain: "economic-thought"
+subdomain_name: "经济思想史"
 difficulty: 3
----
+is_milestone: false
+tags: ["批判"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 女性主义经济学
 
 ## 核心内容

@@ -1,3 +1,22 @@
+---
+id: "cd-shadow-shapes"
+concept: "阴影造型"
+domain: "concept-design"
+subdomain: "light-shadow"
+subdomain_name: "光影"
+difficulty: 2
+is_milestone: false
+tags: ["技巧"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 阴影造型
 
 ## 概述

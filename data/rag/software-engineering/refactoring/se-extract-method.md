@@ -1,10 +1,22 @@
 ---
-concept: 提取方法
-subdomain: 重构
-domain: software-engineering
+id: "se-extract-method"
+concept: "提取方法"
+domain: "software-engineering"
+subdomain: "refactoring"
+subdomain_name: "重构"
 difficulty: 2
----
+is_milestone: true
+tags: ["方法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 提取方法
 
 ## 核心内容

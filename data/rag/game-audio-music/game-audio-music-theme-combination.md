@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-theme-combination"
+concept: "主题组合"
+domain: "game-audio-music"
+subdomain: "leitmotif"
+subdomain_name: "主题动机"
+difficulty: 4
+is_milestone: false
+tags: ["高级"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.1
+generation_method: "template-v1"
+unique_content_ratio: 0.625
+last_scored: "2026-03-21"
+sources: []
+---
 # 主题组合
 
 > **领域**: 游戏音乐 | **子领域**: 主题动机 | **难度**: 高级

@@ -1,10 +1,22 @@
 ---
-concept: 纹理图集
-subdomain: 纹理技术
-domain: computer-graphics
+id: "cg-texture-atlas"
+concept: "纹理图集"
+domain: "computer-graphics"
+subdomain: "texture-techniques"
+subdomain_name: "纹理技术"
 difficulty: 2
----
+is_milestone: false
+tags: ["实践"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 纹理图集
 
 ## 核心内容

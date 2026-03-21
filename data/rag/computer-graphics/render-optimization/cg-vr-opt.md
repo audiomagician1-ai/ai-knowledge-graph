@@ -1,10 +1,22 @@
 ---
-concept: VR渲染优化
-subdomain: 渲染优化
-domain: computer-graphics
+id: "cg-vr-opt"
+concept: "VR渲染优化"
+domain: "computer-graphics"
+subdomain: "render-optimization"
+subdomain_name: "渲染优化"
 difficulty: 3
----
+is_milestone: false
+tags: ["XR"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # VR渲染优化
 
 ## 核心内容

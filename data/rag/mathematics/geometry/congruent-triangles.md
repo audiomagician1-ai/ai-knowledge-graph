@@ -1,14 +1,22 @@
 ---
 id: "congruent-triangles"
-name: "全等三角形"
+concept: "全等三角形"
+domain: "mathematics"
 subdomain: "geometry"
 subdomain_name: "几何"
 difficulty: 4
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 40.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 全等三角形
 
 ## 概述

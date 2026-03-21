@@ -1,14 +1,22 @@
 ---
 id: "text-embedding"
-name: "文本嵌入(Embedding)"
+concept: "文本嵌入(Embedding)"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 6
 is_milestone: false
 tags: ["NLP", "RAG"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.786
+last_scored: "2026-03-21"
+sources: []
+---
 # 文本嵌入(Embedding)
 
 ## 概述

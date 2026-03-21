@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pcg
-concept_id: ta-pcg-validation
+id: "ta-pcg-validation"
+concept: "PCG质量验证"
+domain: "technical-art"
+subdomain: "pcg"
+subdomain_name: "程序化生成"
 difficulty: 3
-content_type: practice
-tags: [质量]
----
+is_milestone: false
+tags: ["质量"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # PCG质量验证
 
 ## 概述

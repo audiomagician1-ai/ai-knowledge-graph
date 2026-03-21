@@ -1,10 +1,22 @@
 ---
-concept: 属性面板定制
-subdomain: 编辑器扩展
-domain: game-engine
+id: "property-customization"
+concept: "属性面板定制"
+domain: "game-engine"
+subdomain: "editor-extension"
+subdomain_name: "编辑器扩展"
 difficulty: 2
----
+is_milestone: false
+tags: ["UI"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 属性面板定制
 
 ## 核心内容

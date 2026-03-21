@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: community-ops
-concept_id: pub-co-ambassador-program
+id: "pub-co-ambassador-program"
+concept: "大使计划"
+domain: "game-publishing"
+subdomain: "community-ops"
+subdomain_name: "社区运营"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 大使计划
 
 ## 概述

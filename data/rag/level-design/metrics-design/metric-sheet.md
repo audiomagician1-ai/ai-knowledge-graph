@@ -1,10 +1,22 @@
 ---
-concept: 度量表制作
-subdomain: Metric设计
-domain: level-design
+id: "metric-sheet"
+concept: "度量表制作"
+domain: "level-design"
+subdomain: "metrics-design"
+subdomain_name: "Metric设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["文档"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 度量表制作
 
 ## 核心内容

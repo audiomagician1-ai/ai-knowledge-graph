@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: dsp-effects
-concept_id: sfx-dsp-custom-dsp
+id: "sfx-dsp-custom-dsp"
+concept: "自定义DSP开发"
+domain: "game-audio-sfx"
+subdomain: "dsp-effects"
+subdomain_name: "混响与DSP"
 difficulty: 5
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.2
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 自定义DSP开发
 
 ## 概述

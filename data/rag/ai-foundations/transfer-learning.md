@@ -1,10 +1,22 @@
 ---
-concept: transfer-learning
-subdomain: ai-foundations
+id: "transfer-learning"
+concept: "迁移学习"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
 difficulty: 5
-prereqs: [deep-learning-intro]
----
+is_milestone: false
+tags: ["AI", "实践"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 64.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 迁移学习
 
 ## 核心概念

@@ -1,14 +1,22 @@
 ---
 id: "trie"
-name: "字典树(Trie)"
+concept: "字典树(Trie)"
+domain: "ai-engineering"
 subdomain: "data-structures"
 subdomain_name: "数据结构"
 difficulty: 6
 is_milestone: false
 tags: ["树", "字符串"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 字典树(Trie)
 
 ## 概述

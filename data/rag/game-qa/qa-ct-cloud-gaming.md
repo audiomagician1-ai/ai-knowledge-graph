@@ -1,13 +1,22 @@
 ---
 id: "qa-ct-cloud-gaming"
-title: "云游戏兼容"
+concept: "云游戏兼容"
 domain: "game-qa"
 subdomain: "compatibility-testing"
+subdomain_name: "兼容性测试"
 difficulty: 3
-estimated_minutes: 35
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 云游戏兼容
 
 > **子领域**: 兼容性测试 | **难度**: 进阶 | **预计学习时间**: 35分钟

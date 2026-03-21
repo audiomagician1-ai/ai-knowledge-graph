@@ -1,10 +1,22 @@
 ---
-concept: Schema版本控制
-subdomain: 序列化
-domain: game-engine
+id: "schema-versioning"
+concept: "Schema版本控制"
+domain: "game-engine"
+subdomain: "serialization"
+subdomain_name: "序列化"
 difficulty: 2
----
+is_milestone: false
+tags: ["版本"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.3
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # Schema版本控制
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 突变类型
-subdomain: 遗传学
-domain: biology
+id: "mutation-types"
+concept: "突变类型"
+domain: "biology"
+subdomain: "genetics"
+subdomain_name: "遗传学"
 difficulty: 2
----
+is_milestone: false
+tags: ["变异"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 突变类型
 
 ## 核心内容

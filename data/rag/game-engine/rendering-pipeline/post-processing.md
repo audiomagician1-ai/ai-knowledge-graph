@@ -1,10 +1,22 @@
 ---
-concept: 后处理效果
-subdomain: 渲染管线
-domain: game-engine
+id: "post-processing"
+concept: "后处理效果"
+domain: "game-engine"
+subdomain: "rendering-pipeline"
+subdomain_name: "渲染管线"
 difficulty: 2
----
+is_milestone: false
+tags: ["后处理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 后处理效果
 
 ## 核心内容

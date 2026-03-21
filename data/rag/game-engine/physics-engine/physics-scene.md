@@ -1,10 +1,22 @@
 ---
-concept: 物理场景管理
-subdomain: 物理引擎
-domain: game-engine
+id: "physics-scene"
+concept: "物理场景管理"
+domain: "game-engine"
+subdomain: "physics-engine"
+subdomain_name: "物理引擎"
 difficulty: 2
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 物理场景管理
 
 ## 核心内容

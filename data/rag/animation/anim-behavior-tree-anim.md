@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: state-machine
-concept_id: anim-behavior-tree-anim
+id: "anim-behavior-tree-anim"
+concept: "行为树与动画"
+domain: "animation"
+subdomain: "state-machine"
+subdomain_name: "状态机"
 difficulty: 3
-content_type: theory
-tags: [AI]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["AI"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 行为树与动画
 
 ## 概述

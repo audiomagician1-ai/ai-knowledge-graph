@@ -1,14 +1,22 @@
 ---
 id: "propositional-logic"
-name: "命题逻辑"
-subdomain: "discrete-math"
-subdomain_name: "离散数学"
-difficulty: 4
+concept: "命题逻辑"
+domain: "philosophy"
+subdomain: "logic-reasoning"
+subdomain_name: "逻辑与推理"
+difficulty: 2
 is_milestone: false
-tags: ["基础"]
-generated_at: "2026-03-19T08:00:26"
----
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 命题逻辑
 
 ## 概述

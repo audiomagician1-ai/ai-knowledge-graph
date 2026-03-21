@@ -1,3 +1,22 @@
+---
+id: "mn-ls-turn-based-sync"
+concept: "回合制同步"
+domain: "multiplayer-network"
+subdomain: "lockstep-sync"
+subdomain_name: "帧同步"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.2
+generation_method: "template-v1"
+unique_content_ratio: 0.357
+last_scored: "2026-03-21"
+sources: []
+---
 # 回合制同步
 
 > 领域: 网络多人 > 帧同步

@@ -1,14 +1,22 @@
 ---
 id: "linear-programming"
-name: "线性规划"
+concept: "线性规划"
+domain: "mathematics"
 subdomain: "optimization"
 subdomain_name: "最优化"
 difficulty: 5
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.786
+last_scored: "2026-03-21"
+sources: []
+---
 # 线性规划
 
 ## 概述

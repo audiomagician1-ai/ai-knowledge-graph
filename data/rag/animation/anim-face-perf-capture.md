@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: facial-animation
-concept_id: anim-face-perf-capture
+id: "anim-face-perf-capture"
+concept: "面部性能捕捉"
+domain: "animation"
+subdomain: "facial-animation"
+subdomain_name: "面部动画"
 difficulty: 3
-content_type: theory
-tags: [技术]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["技术"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.474
+last_scored: "2026-03-21"
+sources: []
+---
 # 面部性能捕捉
 
 ## 概述

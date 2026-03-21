@@ -1,14 +1,22 @@
 ---
 id: "kirchhoffs-laws"
-name: "基尔霍夫定律"
+concept: "基尔霍夫定律"
+domain: "physics"
 subdomain: "electromagnetism"
 subdomain_name: "电磁学"
 difficulty: 3
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 基尔霍夫定律
 
 ## 概述

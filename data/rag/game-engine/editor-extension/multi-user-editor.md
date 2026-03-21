@@ -1,10 +1,22 @@
 ---
-concept: 多人协同编辑
-subdomain: 编辑器扩展
-domain: game-engine
+id: "multi-user-editor"
+concept: "多人协同编辑"
+domain: "game-engine"
+subdomain: "editor-extension"
+subdomain_name: "编辑器扩展"
 difficulty: 3
----
+is_milestone: false
+tags: ["协作"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 多人协同编辑
 
 ## 核心内容

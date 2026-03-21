@@ -1,10 +1,22 @@
 ---
-concept: 问题解决
-subdomain: 认知心理学
-domain: psychology
+id: "problem-solving"
+concept: "问题解决"
+domain: "psychology"
+subdomain: "cognitive-psychology"
+subdomain_name: "认知心理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["思维"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 问题解决
 
 ## 核心内容

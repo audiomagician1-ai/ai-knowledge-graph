@@ -1,10 +1,22 @@
 ---
-concept: 平台认证
-subdomain: 平台抽象
-domain: game-engine
+id: "certification"
+concept: "平台认证"
+domain: "game-engine"
+subdomain: "platform-abstraction"
+subdomain_name: "平台抽象"
 difficulty: 2
----
+is_milestone: false
+tags: ["发行"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 平台认证
 
 ## 核心内容

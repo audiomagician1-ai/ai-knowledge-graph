@@ -1,14 +1,22 @@
 ---
 id: "descriptive-statistics"
-name: "描述性统计"
-subdomain: "statistics"
-subdomain_name: "数理统计"
-difficulty: 3
+concept: "描述统计"
+domain: "psychology"
+subdomain: "research-methods"
+subdomain_name: "研究方法"
+difficulty: 2
 is_milestone: false
-tags: ["基础"]
-generated_at: "2026-03-19T08:00:26"
----
+tags: ["统计"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 描述性统计
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "surface-tension"
-name: "表面张力"
+concept: "表面张力"
+domain: "physics"
 subdomain: "fluid-mechanics"
 subdomain_name: "流体力学"
 difficulty: 4
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 表面张力
 
 ## 概述

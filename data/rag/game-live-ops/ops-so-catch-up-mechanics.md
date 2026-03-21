@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: season-ops
-concept_id: ops-so-catch-up-mechanics
+id: "ops-so-catch-up-mechanics"
+concept: "追赶机制"
+domain: "game-live-ops"
+subdomain: "season-ops"
+subdomain_name: "赛季运营"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 追赶机制
 
 ## 概述

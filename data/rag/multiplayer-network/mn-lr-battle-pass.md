@@ -1,3 +1,22 @@
+---
+id: "mn-lr-battle-pass"
+concept: "战令/通行证"
+domain: "multiplayer-network"
+subdomain: "leaderboard"
+subdomain_name: "排行榜与统计"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.9
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 战令/通行证
 
 > 领域: 网络多人 > 排行榜与统计

@@ -1,10 +1,22 @@
 ---
-concept: 自动化性能测试
-subdomain: 性能剖析
-domain: game-engine
+id: "automation-benchmark"
+concept: "自动化性能测试"
+domain: "game-engine"
+subdomain: "performance-profiling"
+subdomain_name: "性能剖析"
 difficulty: 3
----
+is_milestone: false
+tags: ["自动化"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.6
+generation_method: "template-v1"
+unique_content_ratio: 0.462
+last_scored: "2026-03-21"
+sources: []
+---
 # 自动化性能测试
 
 ## 核心内容

@@ -1,14 +1,22 @@
 ---
 id: "figurative-language"
-name: "修辞手法"
-subdomain: "idioms-culture"
-subdomain_name: "习语与文化"
-difficulty: 5
+concept: "修辞手法"
+domain: "writing"
+subdomain: "writing-fundamentals"
+subdomain_name: "写作基础"
+difficulty: 2
 is_milestone: false
-tags: ["文学"]
-generated_at: "2026-03-19T08:40:17"
----
+tags: ["修辞"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 修辞手法
 
 ## 概述

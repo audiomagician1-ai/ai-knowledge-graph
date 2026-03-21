@@ -1,13 +1,22 @@
 ---
 id: "llm-distillation"
-name: "Model Distillation"
+concept: "Model Distillation"
+domain: "ai-engineering"
 subdomain: "llm-core"
 subdomain_name: "大模型核心"
 difficulty: 7
-tags: ["LLM", "Distillation", "Compression"]
-generated_at: "2026-03-19T18:00:00"
----
+is_milestone: false
+tags: ["LLM"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "S"
+quality_score: 99.0
+generation_method: "hand-crafted"
+unique_content_ratio: 0.981
+last_scored: "2026-03-21"
+sources: []
+---
 # Model Distillation
 
 ## 概述

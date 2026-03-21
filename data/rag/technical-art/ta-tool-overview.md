@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: tool-dev
-concept_id: ta-tool-overview
+id: "ta-tool-overview"
+concept: "技美工具开发概述"
+domain: "technical-art"
+subdomain: "tool-dev"
+subdomain_name: "工具开发"
 difficulty: 1
-content_type: theory
-tags: [基础]
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.5
+generation_method: "template-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 技美工具开发概述
 
 ## 概述

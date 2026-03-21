@@ -1,10 +1,22 @@
 ---
-concept: 广告变现
-subdomain: 经济系统
-domain: game-design
+id: "ad-monetization"
+concept: "广告变现"
+domain: "game-design"
+subdomain: "economy-design"
+subdomain_name: "经济系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["商业"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 广告变现
 
 ## 核心内容

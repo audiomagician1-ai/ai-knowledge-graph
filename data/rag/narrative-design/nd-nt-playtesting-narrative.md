@@ -1,3 +1,22 @@
+---
+id: "nd-nt-playtesting-narrative"
+concept: "叙事玩测"
+domain: "narrative-design"
+subdomain: "narrative-tools"
+subdomain_name: "叙事工具"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.909
+last_scored: "2026-03-21"
+sources: []
+---
 # 叙事玩测
 
 > 领域: 叙事设计 > 叙事工具

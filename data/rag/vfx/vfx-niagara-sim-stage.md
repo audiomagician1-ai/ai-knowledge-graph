@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: niagara
-concept_id: vfx-niagara-sim-stage
+id: "vfx-niagara-sim-stage"
+concept: "Simulation Stage"
+domain: "vfx"
+subdomain: "niagara"
+subdomain_name: "Niagara系统"
 difficulty: 4
-content_type: applied
-tags: [高级]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.545
+last_scored: "2026-03-21"
+sources: []
+---
 # Simulation Stage
 
 ## 概述

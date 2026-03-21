@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: platform-rules
-concept_id: pub-pr-refund-policy
+id: "pub-pr-refund-policy"
+concept: "退款政策"
+domain: "game-publishing"
+subdomain: "platform-rules"
+subdomain_name: "平台规则"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 退款政策
 
 ## 概述

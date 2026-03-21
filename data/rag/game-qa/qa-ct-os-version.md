@@ -1,13 +1,22 @@
 ---
 id: "qa-ct-os-version"
-title: "操作系统版本"
+concept: "操作系统版本"
 domain: "game-qa"
 subdomain: "compatibility-testing"
+subdomain_name: "兼容性测试"
 difficulty: 2
-estimated_minutes: 30
 is_milestone: true
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 操作系统版本
 
 > **子领域**: 兼容性测试 | **难度**: 基础 | **预计学习时间**: 30分钟

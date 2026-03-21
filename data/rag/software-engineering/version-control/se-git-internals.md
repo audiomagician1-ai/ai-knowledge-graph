@@ -1,10 +1,22 @@
 ---
-concept: Git内部原理
-subdomain: 版本控制
-domain: software-engineering
+id: "se-git-internals"
+concept: "Git内部原理"
+domain: "software-engineering"
+subdomain: "version-control"
+subdomain_name: "版本控制"
 difficulty: 3
----
+is_milestone: false
+tags: ["原理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # Git内部原理
 
 ## 核心内容

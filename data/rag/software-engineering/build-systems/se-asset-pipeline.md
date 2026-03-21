@@ -1,10 +1,22 @@
 ---
-concept: 资产处理管线
-subdomain: 构建系统
-domain: software-engineering
+id: "se-asset-pipeline"
+concept: "资产处理管线"
+domain: "software-engineering"
+subdomain: "build-systems"
+subdomain_name: "构建系统"
 difficulty: 3
----
+is_milestone: true
+tags: ["游戏"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.6
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 资产处理管线
 
 ## 核心内容

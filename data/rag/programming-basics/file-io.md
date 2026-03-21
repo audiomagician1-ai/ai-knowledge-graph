@@ -1,3 +1,22 @@
+---
+id: "file-io"
+concept: "文件I/O"
+domain: "ai-engineering"
+subdomain: "programming-basics"
+subdomain_name: "编程基础"
+difficulty: 2
+is_milestone: false
+tags: ["file", "read", "write", "stream"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 文件I/O
 
 > **难度**: ⭐⭐ (2/5) | **预计学习时间**: 20分钟

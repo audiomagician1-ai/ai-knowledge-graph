@@ -1,14 +1,22 @@
 ---
 id: "sampling-methods"
-name: "抽样方法"
-subdomain: "statistics"
-subdomain_name: "数理统计"
-difficulty: 4
+concept: "抽样方法"
+domain: "psychology"
+subdomain: "research-methods"
+subdomain_name: "研究方法"
+difficulty: 2
 is_milestone: false
-tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
+tags: ["方法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 抽样方法
 
 ## 概述

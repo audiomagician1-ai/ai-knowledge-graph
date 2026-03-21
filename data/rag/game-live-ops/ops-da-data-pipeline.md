@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: data-analytics
-concept_id: ops-da-data-pipeline
+id: "ops-da-data-pipeline"
+concept: "数据管线"
+domain: "game-live-ops"
+subdomain: "data-analytics"
+subdomain_name: "数据分析"
 difficulty: 2
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据管线
 
 ## 概述

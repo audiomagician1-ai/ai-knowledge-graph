@@ -1,10 +1,22 @@
 ---
-concept: 流水线设计
-subdomain: CI/CD
-domain: software-engineering
+id: "se-pipeline-design"
+concept: "流水线设计"
+domain: "software-engineering"
+subdomain: "ci-cd"
+subdomain_name: "CI/CD"
 difficulty: 2
----
+is_milestone: false
+tags: ["设计"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 流水线设计
 
 ## 核心内容

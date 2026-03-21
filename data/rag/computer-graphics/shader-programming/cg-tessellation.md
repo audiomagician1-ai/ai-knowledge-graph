@@ -1,10 +1,22 @@
 ---
-concept: 细分着色器
-subdomain: Shader编程
-domain: computer-graphics
+id: "cg-tessellation"
+concept: "细分着色器"
+domain: "computer-graphics"
+subdomain: "shader-programming"
+subdomain_name: "Shader编程"
 difficulty: 3
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 33.9
+generation_method: "template-v1"
+unique_content_ratio: 0.545
+last_scored: "2026-03-21"
+sources: []
+---
 # 细分着色器
 
 ## 核心内容

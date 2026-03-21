@@ -1,10 +1,22 @@
 ---
-concept: 水龙头与排水口
-subdomain: 经济系统
-domain: game-design
+id: "sink-source"
+concept: "水龙头与排水口"
+domain: "game-design"
+subdomain: "economy-design"
+subdomain_name: "经济系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["平衡"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 水龙头与排水口
 
 ## 核心内容

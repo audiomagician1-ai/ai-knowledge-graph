@@ -1,3 +1,22 @@
+---
+id: "cd-style-mixing"
+concept: "风格混搭"
+domain: "concept-design"
+subdomain: "style-guide"
+subdomain_name: "风格指南"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 风格混搭
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-puzzle-music"
+concept: "解谜音乐设计"
+domain: "game-audio-music"
+subdomain: "interactive-score"
+subdomain_name: "交互式配乐"
+difficulty: 2
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.4
+generation_method: "template-v1"
+unique_content_ratio: 0.588
+last_scored: "2026-03-21"
+sources: []
+---
 # 解谜音乐设计
 
 > **领域**: 游戏音乐 | **子领域**: 交互式配乐 | **难度**: 基础

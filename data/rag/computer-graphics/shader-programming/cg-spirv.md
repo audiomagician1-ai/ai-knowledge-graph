@@ -1,10 +1,22 @@
 ---
-concept: SPIR-V
-subdomain: Shader编程
-domain: computer-graphics
+id: "cg-spirv"
+concept: "SPIR-V"
+domain: "computer-graphics"
+subdomain: "shader-programming"
+subdomain_name: "Shader编程"
 difficulty: 3
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.8
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # SPIR-V
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 3D纹理
-subdomain: 体积渲染
-domain: computer-graphics
+id: "cg-vol-texture"
+concept: "3D纹理"
+domain: "computer-graphics"
+subdomain: "volume-rendering"
+subdomain_name: "体积渲染"
 difficulty: 2
----
+is_milestone: false
+tags: ["技术"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.2
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 3D纹理
 
 ## 核心内容

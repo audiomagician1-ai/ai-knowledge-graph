@@ -1,10 +1,22 @@
 ---
-concept: 避免抄袭
-subdomain: 学术写作
-domain: writing
+id: "plagiarism-avoidance"
+concept: "避免抄袭"
+domain: "writing"
+subdomain: "academic-writing"
+subdomain_name: "学术写作"
 difficulty: 2
----
+is_milestone: false
+tags: ["伦理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.8
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 避免抄袭
 
 ## 核心内容

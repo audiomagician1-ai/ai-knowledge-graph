@@ -1,3 +1,22 @@
+---
+id: "db-connection-tuning"
+concept: "数据库连接调优"
+domain: "ai-engineering"
+subdomain: "database"
+subdomain_name: "数据库"
+difficulty: 4
+is_milestone: false
+tags: ["pool-size", "slow-query", "explain"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.4
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据库连接调优
 
 > **难度**: (4/5) | **预计学习时间**: 25分钟

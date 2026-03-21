@@ -1,10 +1,22 @@
 ---
-concept: 引擎事件系统
-subdomain: 脚本系统
-domain: game-engine
+id: "event-system-engine"
+concept: "引擎事件系统"
+domain: "game-engine"
+subdomain: "scripting-system"
+subdomain_name: "脚本系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["通信"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 引擎事件系统
 
 ## 核心内容

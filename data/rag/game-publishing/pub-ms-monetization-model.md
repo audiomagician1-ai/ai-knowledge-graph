@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: market-strategy
-concept_id: pub-ms-monetization-model
+id: "pub-ms-monetization-model"
+concept: "变现模式"
+domain: "game-publishing"
+subdomain: "market-strategy"
+subdomain_name: "市场策略"
 difficulty: 2
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 变现模式
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "autonomous-agents"
-name: "自主Agent前沿"
+concept: "自主Agent前沿"
+domain: "ai-engineering"
 subdomain: "agent-systems"
 subdomain_name: "Agent系统"
 difficulty: 9
-is_milestone: true
+is_milestone: false
 tags: ["Agent", "前沿"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.793
+last_scored: "2026-03-21"
+sources: []
+---
 # 自主Agent前沿
 
 ## 概述

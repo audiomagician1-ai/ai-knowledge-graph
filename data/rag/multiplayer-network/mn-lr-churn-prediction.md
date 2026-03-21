@@ -1,3 +1,22 @@
+---
+id: "mn-lr-churn-prediction"
+concept: "流失预测"
+domain: "multiplayer-network"
+subdomain: "leaderboard"
+subdomain_name: "排行榜与统计"
+difficulty: 4
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # 流失预测
 
 > 领域: 网络多人 > 排行榜与统计

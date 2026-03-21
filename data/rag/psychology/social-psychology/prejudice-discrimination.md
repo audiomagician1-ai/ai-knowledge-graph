@@ -1,10 +1,22 @@
 ---
-concept: 偏见与歧视
-subdomain: 社会心理学
-domain: psychology
+id: "prejudice-discrimination"
+concept: "偏见与歧视"
+domain: "psychology"
+subdomain: "social-psychology"
+subdomain_name: "社会心理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["群际"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.1
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 偏见与歧视
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 政治哲学概述
-subdomain: 政治哲学
-domain: philosophy
+id: "political-philosophy-overview"
+concept: "政治哲学概述"
+domain: "philosophy"
+subdomain: "political-philosophy"
+subdomain_name: "政治哲学"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.6
+generation_method: "template-v1"
+unique_content_ratio: 0.2
+last_scored: "2026-03-21"
+sources: []
+---
 # 政治哲学概述
 
 ## 核心内容

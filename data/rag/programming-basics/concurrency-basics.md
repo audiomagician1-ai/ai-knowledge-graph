@@ -1,3 +1,22 @@
+---
+id: "concurrency-basics"
+concept: "并发编程基础"
+domain: "ai-engineering"
+subdomain: "programming-basics"
+subdomain_name: "编程基础"
+difficulty: 4
+is_milestone: false
+tags: ["concurrency", "parallelism", "lock", "atomic"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 并发编程基础
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

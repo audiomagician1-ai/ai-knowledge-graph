@@ -1,3 +1,22 @@
+---
+id: "3da-hs-trim-sheet"
+concept: "Trim Sheet"
+domain: "3d-art"
+subdomain: "hard-surface"
+subdomain_name: "硬表面建模"
+difficulty: 3
+is_milestone: true
+tags: ["工作流"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # Trim Sheet
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "reading-speed"
-name: "阅读速度"
+concept: "阅读速度"
+domain: "english"
 subdomain: "reading"
 subdomain_name: "阅读理解"
 difficulty: 3
 is_milestone: false
 tags: ["策略"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 阅读速度
 
 ## 概述

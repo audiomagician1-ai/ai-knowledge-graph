@@ -1,10 +1,22 @@
 ---
-concept: 信用风险
-subdomain: 风险管理
-domain: finance
+id: "credit-risk"
+concept: "信用风险"
+domain: "finance"
+subdomain: "risk-management"
+subdomain_name: "风险管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["类别"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 信用风险
 
 ## 核心概念

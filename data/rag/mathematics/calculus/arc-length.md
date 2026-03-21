@@ -1,14 +1,22 @@
 ---
 id: "arc-length"
-name: "弧长公式"
+concept: "弧长公式"
+domain: "mathematics"
 subdomain: "calculus"
 subdomain_name: "微积分"
 difficulty: 7
 is_milestone: false
 tags: ["应用"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.818
+last_scored: "2026-03-21"
+sources: []
+---
 # 弧长公式
 
 ## 概述

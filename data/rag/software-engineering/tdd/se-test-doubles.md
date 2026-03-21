@@ -1,10 +1,22 @@
 ---
-concept: 测试替身
-subdomain: 测试驱动开发
-domain: software-engineering
+id: "se-test-doubles"
+concept: "测试替身"
+domain: "software-engineering"
+subdomain: "tdd"
+subdomain_name: "测试驱动开发"
 difficulty: 2
----
+is_milestone: true
+tags: ["技巧"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.7
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 测试替身
 
 ## 核心内容

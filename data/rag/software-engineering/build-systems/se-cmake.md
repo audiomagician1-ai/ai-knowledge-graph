@@ -1,10 +1,22 @@
 ---
-concept: CMake
-subdomain: 构建系统
-domain: software-engineering
+id: "se-cmake"
+concept: "CMake"
+domain: "software-engineering"
+subdomain: "build-systems"
+subdomain_name: "构建系统"
 difficulty: 2
----
+is_milestone: true
+tags: ["C++"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.3
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # CMake
 
 ## 核心内容

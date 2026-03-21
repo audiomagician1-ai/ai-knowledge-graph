@@ -1,10 +1,22 @@
 ---
-concept: 输入系统概述
-subdomain: 输入系统
-domain: game-engine
+id: "input-system-intro"
+concept: "输入系统概述"
+domain: "game-engine"
+subdomain: "input-system"
+subdomain_name: "输入系统"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 输入系统概述
 
 ## 核心内容

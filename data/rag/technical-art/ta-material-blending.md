@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: material-system
-concept_id: ta-material-blending
+id: "ta-material-blending"
+concept: "材质混合技术"
+domain: "technical-art"
+subdomain: "material-system"
+subdomain_name: "材质系统"
 difficulty: 3
-content_type: practice
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 18.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 材质混合技术
 
 ## 概述

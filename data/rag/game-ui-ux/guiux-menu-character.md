@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: menu-system
-concept_id: guiux-menu-character
-title: 角色/属性界面
+id: "guiux-menu-character"
+concept: "角色/属性界面"
+domain: "game-ui-ux"
+subdomain: "menu-system"
+subdomain_name: "菜单系统"
 difficulty: 3
 is_milestone: false
 tags: ["menu-system", "角色/属性界面"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 角色/属性界面
 
 > **领域**: 游戏UI/UX > 菜单系统 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

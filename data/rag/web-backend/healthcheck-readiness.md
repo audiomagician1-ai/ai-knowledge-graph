@@ -1,3 +1,22 @@
+---
+id: "healthcheck-readiness"
+concept: "健康检查与就绪探针"
+domain: "ai-engineering"
+subdomain: "web-backend"
+subdomain_name: "Web后端"
+difficulty: 3
+is_milestone: false
+tags: ["healthcheck", "kubernetes", "probe"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.6
+generation_method: "template-v1"
+unique_content_ratio: 0.615
+last_scored: "2026-03-21"
+sources: []
+---
 # 健康检查与就绪探针
 
 > **难度**: (3/5) | **预计学习时间**: 20分钟

@@ -1,10 +1,22 @@
 ---
-concept: Git子模块与子树
-subdomain: 版本控制
-domain: software-engineering
+id: "se-git-submodule"
+concept: "Git子模块与子树"
+domain: "software-engineering"
+subdomain: "version-control"
+subdomain_name: "版本控制"
 difficulty: 3
----
+is_milestone: false
+tags: ["依赖"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # Git子模块与子树
 
 ## 核心内容

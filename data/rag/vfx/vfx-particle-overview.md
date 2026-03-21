@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: particle-physics
-concept_id: vfx-particle-overview
+id: "vfx-particle-overview"
+concept: "粒子物理概述"
+domain: "vfx"
+subdomain: "particle-physics"
+subdomain_name: "粒子物理"
 difficulty: 1
-content_type: theory
-tags: [基础]
-estimated_minutes: 20
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 65.7
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.579
+last_scored: "2026-03-21"
+sources: []
+---
 # 粒子物理概述
 
 ## 概述

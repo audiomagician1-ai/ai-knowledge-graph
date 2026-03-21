@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: publisher-collab
-concept_id: pub-pc-creative-control
+id: "pub-pc-creative-control"
+concept: "创意控制"
+domain: "game-publishing"
+subdomain: "publisher-collab"
+subdomain_name: "发行商合作"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 创意控制
 
 ## 概述

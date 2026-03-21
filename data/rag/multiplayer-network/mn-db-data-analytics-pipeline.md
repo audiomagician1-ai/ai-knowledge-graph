@@ -1,3 +1,22 @@
+---
+id: "mn-db-data-analytics-pipeline"
+concept: "数据分析管线"
+domain: "multiplayer-network"
+subdomain: "database-design"
+subdomain_name: "数据库设计"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.9
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据分析管线
 
 > 领域: 网络多人 > 数据库设计

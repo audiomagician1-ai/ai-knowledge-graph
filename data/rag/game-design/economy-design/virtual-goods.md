@@ -1,10 +1,22 @@
 ---
-concept: 虚拟商品设计
-subdomain: 经济系统
-domain: game-design
+id: "virtual-goods"
+concept: "虚拟商品设计"
+domain: "game-design"
+subdomain: "economy-design"
+subdomain_name: "经济系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["设计"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 虚拟商品设计
 
 ## 核心内容

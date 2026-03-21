@@ -1,3 +1,22 @@
+---
+id: "query-transformation"
+concept: "查询转换"
+domain: "ai-engineering"
+subdomain: "rag-knowledge"
+subdomain_name: "RAG与知识库"
+difficulty: 4
+is_milestone: false
+tags: ["query-rewrite", "decomposition", "step-back"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 查询转换
 
 > **难度**: (4/5) | **预计学习时间**: 25分钟

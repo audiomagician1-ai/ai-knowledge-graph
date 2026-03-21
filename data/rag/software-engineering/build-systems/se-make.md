@@ -1,10 +1,22 @@
 ---
-concept: Make/Makefile
-subdomain: 构建系统
-domain: software-engineering
+id: "se-make"
+concept: "Make/Makefile"
+domain: "software-engineering"
+subdomain: "build-systems"
+subdomain_name: "构建系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["经典"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.1
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # Make/Makefile
 
 ## 核心内容

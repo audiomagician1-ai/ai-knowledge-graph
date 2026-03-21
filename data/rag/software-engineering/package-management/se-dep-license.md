@@ -1,10 +1,22 @@
 ---
-concept: 许可证合规
-subdomain: 包管理
-domain: software-engineering
+id: "se-dep-license"
+concept: "许可证合规"
+domain: "software-engineering"
+subdomain: "package-management"
+subdomain_name: "包管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["法务"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 许可证合规
 
 ## 核心内容

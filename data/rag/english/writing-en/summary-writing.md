@@ -1,14 +1,22 @@
 ---
 id: "summary-writing"
-name: "摘要写作"
-subdomain: "writing-en"
-subdomain_name: "写作"
-difficulty: 4
+concept: "摘要写作"
+domain: "writing"
+subdomain: "expository-writing"
+subdomain_name: "说明文写作"
+difficulty: 2
 is_milestone: false
-tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
+tags: ["技法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.0
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # 摘要写作
 
 ## 概述

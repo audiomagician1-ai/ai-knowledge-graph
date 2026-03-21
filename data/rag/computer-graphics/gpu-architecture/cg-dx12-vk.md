@@ -1,10 +1,22 @@
 ---
-concept: DX12/Vulkan基础
-subdomain: GPU架构
-domain: computer-graphics
+id: "cg-dx12-vk"
+concept: "DX12/Vulkan基础"
+domain: "computer-graphics"
+subdomain: "gpu-architecture"
+subdomain_name: "GPU架构"
 difficulty: 3
----
+is_milestone: false
+tags: ["API"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.6
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # DX12/Vulkan基础
 
 ## 核心内容

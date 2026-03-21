@@ -1,10 +1,22 @@
 ---
-concept: 屏幕阅读器
-subdomain: 可达性设计
-domain: game-design
+id: "screen-reader"
+concept: "屏幕阅读器"
+domain: "game-design"
+subdomain: "accessibility"
+subdomain_name: "可达性设计"
 difficulty: 3
----
+is_milestone: false
+tags: ["技术"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 屏幕阅读器
 
 ## 核心内容

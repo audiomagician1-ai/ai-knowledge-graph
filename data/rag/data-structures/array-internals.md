@@ -1,14 +1,22 @@
 ---
 id: "array-internals"
-name: "数组内部原理"
+concept: "数组内部原理"
+domain: "ai-engineering"
 subdomain: "data-structures"
 subdomain_name: "数据结构"
 difficulty: 3
 is_milestone: false
 tags: ["线性"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 数组内部原理
 
 ## 概述

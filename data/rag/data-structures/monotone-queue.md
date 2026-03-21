@@ -1,3 +1,22 @@
+---
+id: "monotone-queue"
+concept: "单调队列"
+domain: "ai-engineering"
+subdomain: "data-structures"
+subdomain_name: "数据结构"
+difficulty: 4
+is_milestone: false
+tags: ["monotone", "sliding-window", "deque"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 单调队列
 
 > **难度**: (4/5) | **预计学习时间**: 25分钟

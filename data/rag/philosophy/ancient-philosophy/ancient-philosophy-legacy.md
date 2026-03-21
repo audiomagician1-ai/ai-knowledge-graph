@@ -1,10 +1,22 @@
 ---
-concept: 古代哲学遗产
-subdomain: 古代哲学
-domain: philosophy
+id: "ancient-philosophy-legacy"
+concept: "古代哲学遗产"
+domain: "philosophy"
+subdomain: "ancient-philosophy"
+subdomain_name: "古代哲学"
 difficulty: 2
----
+is_milestone: false
+tags: ["总结"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.8
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 古代哲学遗产
 
 ## 核心内容

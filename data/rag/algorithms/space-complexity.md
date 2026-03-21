@@ -1,14 +1,22 @@
 ---
 id: "space-complexity"
-name: "空间复杂度"
+concept: "空间复杂度"
+domain: "ai-engineering"
 subdomain: "algorithms"
 subdomain_name: "算法"
 difficulty: 3
 is_milestone: false
 tags: ["分析"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 空间复杂度
 
 ## 概述

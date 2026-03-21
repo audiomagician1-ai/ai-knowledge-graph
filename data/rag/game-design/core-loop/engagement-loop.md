@@ -1,10 +1,22 @@
 ---
-concept: 参与循环
-subdomain: 核心循环
-domain: game-design
+id: "engagement-loop"
+concept: "参与循环"
+domain: "game-design"
+subdomain: "core-loop"
+subdomain_name: "核心循环"
 difficulty: 2
----
+is_milestone: false
+tags: ["循环"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 参与循环
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 心理账户
-subdomain: 行为经济学
-domain: economics
+id: "mental-accounting"
+concept: "心理账户"
+domain: "economics"
+subdomain: "behavioral-econ"
+subdomain_name: "行为经济学"
 difficulty: 2
----
+is_milestone: false
+tags: ["消费"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 心理账户
 
 ## 核心内容

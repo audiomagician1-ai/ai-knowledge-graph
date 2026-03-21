@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: rating-compliance
-concept_id: pub-rc-pegi-basics
+id: "pub-rc-pegi-basics"
+concept: "PEGI分级"
+domain: "game-publishing"
+subdomain: "rating-compliance"
+subdomain_name: "评级/合规"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # PEGI分级
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: AA方案对比
-subdomain: 抗锯齿
-domain: computer-graphics
+id: "cg-aa-comparison"
+concept: "AA方案对比"
+domain: "computer-graphics"
+subdomain: "anti-aliasing"
+subdomain_name: "抗锯齿"
 difficulty: 2
----
+is_milestone: false
+tags: ["总结"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.8
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # AA方案对比
 
 ## 核心内容

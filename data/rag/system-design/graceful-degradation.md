@@ -1,3 +1,22 @@
+---
+id: "graceful-degradation"
+concept: "优雅降级"
+domain: "ai-engineering"
+subdomain: "system-design"
+subdomain_name: "系统设计"
+difficulty: 4
+is_milestone: false
+tags: ["fallback", "resilience", "degradation"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.2
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 优雅降级
 
 > **难度**: (4/5) | **预计学习时间**: 25分钟

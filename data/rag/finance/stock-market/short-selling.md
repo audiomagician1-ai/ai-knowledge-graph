@@ -1,10 +1,22 @@
 ---
-concept: 做空机制
-subdomain: 股票市场
-domain: finance
+id: "short-selling"
+concept: "做空机制"
+domain: "finance"
+subdomain: "stock-market"
+subdomain_name: "股票市场"
 difficulty: 3
----
+is_milestone: false
+tags: ["机制"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.5
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 做空机制
 
 ## 核心概念

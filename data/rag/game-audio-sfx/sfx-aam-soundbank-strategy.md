@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: audio-asset-management
-concept_id: sfx-aam-soundbank-strategy
+id: "sfx-aam-soundbank-strategy"
+concept: "SoundBank策略"
+domain: "game-audio-sfx"
+subdomain: "audio-asset-management"
+subdomain_name: "声音资源管理"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # SoundBank策略
 
 ## 概述

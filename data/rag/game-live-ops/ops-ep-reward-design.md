@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: event-planning
-concept_id: ops-ep-reward-design
+id: "ops-ep-reward-design"
+concept: "奖励设计"
+domain: "game-live-ops"
+subdomain: "event-planning"
+subdomain_name: "活动策划"
 difficulty: 2
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 奖励设计
 
 ## 概述

@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: animation-blueprint
-concept_id: anim-anim-sharing
+id: "anim-anim-sharing"
+concept: "动画共享"
+domain: "animation"
+subdomain: "animation-blueprint"
+subdomain_name: "动画蓝图"
 difficulty: 2
-content_type: theory
-tags: [架构]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 动画共享
 
 ## 概述

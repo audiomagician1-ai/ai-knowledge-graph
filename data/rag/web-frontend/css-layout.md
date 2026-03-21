@@ -1,14 +1,22 @@
 ---
 id: "css-layout"
-name: "CSS布局(Flex/Grid)"
+concept: "CSS布局(Flex/Grid)"
+domain: "ai-engineering"
 subdomain: "web-frontend"
 subdomain_name: "Web前端"
 difficulty: 3
 is_milestone: false
 tags: ["布局"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.808
+last_scored: "2026-03-21"
+sources: []
+---
 # CSS布局(Flex/Grid)
 
 ## 概述

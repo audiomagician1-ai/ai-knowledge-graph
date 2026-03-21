@@ -1,3 +1,22 @@
+---
+id: "3da-org-anatomy-basics"
+concept: "解剖学基础"
+domain: "3d-art"
+subdomain: "organic-modeling"
+subdomain_name: "有机建模"
+difficulty: 2
+is_milestone: true
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 解剖学基础
 
 ## 概述

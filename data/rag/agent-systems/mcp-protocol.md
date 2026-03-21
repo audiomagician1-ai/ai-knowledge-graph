@@ -1,14 +1,22 @@
 ---
 id: "mcp-protocol"
-name: "MCP模型上下文协议"
+concept: "MCP模型上下文协议"
+domain: "ai-engineering"
 subdomain: "agent-systems"
 subdomain_name: "Agent系统"
 difficulty: 7
-is_milestone: true
+is_milestone: false
 tags: ["Agent", "协议"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.759
+last_scored: "2026-03-21"
+sources: []
+---
 # MCP模型上下文协议
 
 ## 概述

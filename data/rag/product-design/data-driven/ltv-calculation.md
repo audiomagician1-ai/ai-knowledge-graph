@@ -1,10 +1,22 @@
 ---
-concept: LTV计算
-subdomain: 数据驱动
-domain: product-design
+id: "ltv-calculation"
+concept: "LTV计算"
+domain: "product-design"
+subdomain: "data-driven"
+subdomain_name: "数据驱动"
 difficulty: 3
----
+is_milestone: false
+tags: ["指标"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.5
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # LTV计算
 
 ## 核心概念

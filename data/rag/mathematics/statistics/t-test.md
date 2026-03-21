@@ -1,14 +1,22 @@
 ---
 id: "t-test"
-name: "t检验"
+concept: "t检验"
+domain: "mathematics"
 subdomain: "statistics"
 subdomain_name: "数理统计"
 difficulty: 7
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # t检验
 
 ## 概述

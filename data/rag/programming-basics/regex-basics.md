@@ -1,3 +1,22 @@
+---
+id: "regex-basics"
+concept: "正则表达式"
+domain: "ai-engineering"
+subdomain: "programming-basics"
+subdomain_name: "编程基础"
+difficulty: 3
+is_milestone: false
+tags: ["regex", "pattern-matching", "text-processing"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.8
+generation_method: "template-v1"
+unique_content_ratio: 0.615
+last_scored: "2026-03-21"
+sources: []
+---
 # 正则表达式
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 25分钟

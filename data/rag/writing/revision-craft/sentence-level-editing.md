@@ -1,10 +1,22 @@
 ---
-concept: 句子层修改
-subdomain: 修改与文体
-domain: writing
+id: "sentence-level-editing"
+concept: "句子层修改"
+domain: "writing"
+subdomain: "revision-craft"
+subdomain_name: "修改与文体"
 difficulty: 2
----
+is_milestone: false
+tags: ["层次"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.2
+generation_method: "template-v1"
+unique_content_ratio: 0.083
+last_scored: "2026-03-21"
+sources: []
+---
 # 句子层修改
 
 ## 核心内容

@@ -1,3 +1,22 @@
+---
+id: "3da-hs-boolean-workflow"
+concept: "布尔硬表面工作流"
+domain: "3d-art"
+subdomain: "hard-surface"
+subdomain_name: "硬表面建模"
+difficulty: 3
+is_milestone: true
+tags: ["工作流"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 布尔硬表面工作流
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: b-tree
-subdomain: data-structures
+id: "b-tree"
+concept: "B树与B+树"
+domain: "ai-engineering"
+subdomain: "data-structures"
+subdomain_name: "数据结构"
 difficulty: 7
-prereqs: [bst]
----
+is_milestone: false
+tags: ["树", "数据库"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 60.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # B树与B+树
 
 ## 核心概念

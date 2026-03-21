@@ -1,14 +1,22 @@
 ---
 id: "p-adic-intro"
-name: "p进数初步"
+concept: "p进数初步"
+domain: "mathematics"
 subdomain: "number-theory"
 subdomain_name: "数论"
 difficulty: 9
 is_milestone: false
 tags: ["拓展"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.818
+last_scored: "2026-03-21"
+sources: []
+---
 # p进数初步
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "backpropagation"
-name: "反向传播"
+concept: "反向传播"
+domain: "ai-engineering"
 subdomain: "ai-foundations"
 subdomain_name: "AI基础"
 difficulty: 7
 is_milestone: false
 tags: ["DL"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # 反向传播
 
 ## 概述

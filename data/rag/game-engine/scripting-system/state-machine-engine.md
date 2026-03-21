@@ -1,10 +1,22 @@
 ---
-concept: 通用状态机
-subdomain: 脚本系统
-domain: game-engine
+id: "state-machine-engine"
+concept: "通用状态机"
+domain: "game-engine"
+subdomain: "scripting-system"
+subdomain_name: "脚本系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["模式"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 通用状态机
 
 ## 核心内容

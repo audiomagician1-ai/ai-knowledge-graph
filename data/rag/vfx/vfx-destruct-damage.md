@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: destruction
-concept_id: vfx-destruct-damage
+id: "vfx-destruct-damage"
+concept: "伤害模型"
+domain: "vfx"
+subdomain: "destruction"
+subdomain_name: "破碎与销毁"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 伤害模型
 
 ## 概述

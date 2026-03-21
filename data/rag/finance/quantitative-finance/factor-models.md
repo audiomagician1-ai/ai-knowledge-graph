@@ -1,10 +1,22 @@
 ---
-concept: 因子模型
-subdomain: 量化金融
-domain: finance
+id: "factor-models"
+concept: "因子模型"
+domain: "finance"
+subdomain: "quantitative-finance"
+subdomain_name: "量化金融"
 difficulty: 3
----
+is_milestone: false
+tags: ["模型"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.222
+last_scored: "2026-03-21"
+sources: []
+---
 # 因子模型
 
 ## 核心概念

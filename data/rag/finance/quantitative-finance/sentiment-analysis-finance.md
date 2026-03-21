@@ -1,10 +1,22 @@
 ---
-concept: 金融情绪分析
-subdomain: 量化金融
-domain: finance
+id: "sentiment-analysis-finance"
+concept: "金融情绪分析"
+domain: "finance"
+subdomain: "quantitative-finance"
+subdomain_name: "量化金融"
 difficulty: 3
----
+is_milestone: false
+tags: ["AI"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 金融情绪分析
 
 ## 核心概念

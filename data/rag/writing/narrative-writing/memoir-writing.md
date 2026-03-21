@@ -1,10 +1,22 @@
 ---
-concept: 回忆录写作
-subdomain: 叙事写作
-domain: writing
+id: "memoir-writing"
+concept: "回忆录写作"
+domain: "writing"
+subdomain: "narrative-writing"
+subdomain_name: "叙事写作"
 difficulty: 3
----
+is_milestone: false
+tags: ["应用"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 回忆录写作
 
 ## 核心内容

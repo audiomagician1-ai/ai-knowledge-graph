@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-location-theme"
+concept: "场景主题"
+domain: "game-audio-music"
+subdomain: "leitmotif"
+subdomain_name: "主题动机"
+difficulty: 2
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.1
+generation_method: "template-v1"
+unique_content_ratio: 0.588
+last_scored: "2026-03-21"
+sources: []
+---
 # 场景主题
 
 > **领域**: 游戏音乐 | **子领域**: 主题动机 | **难度**: 基础

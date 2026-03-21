@@ -1,14 +1,22 @@
 ---
 id: "narrative-writing"
-name: "记叙文写作"
+concept: "记叙文写作"
+domain: "english"
 subdomain: "writing-en"
 subdomain_name: "写作"
 difficulty: 4
 is_milestone: false
 tags: ["文体"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.4
+generation_method: "template-v1"
+unique_content_ratio: 0.357
+last_scored: "2026-03-21"
+sources: []
+---
 # 记叙文写作
 
 ## 概述

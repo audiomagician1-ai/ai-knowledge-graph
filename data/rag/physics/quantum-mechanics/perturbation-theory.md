@@ -1,14 +1,22 @@
 ---
 id: "perturbation-theory"
-name: "微扰理论"
+concept: "微扰理论"
+domain: "physics"
 subdomain: "quantum-mechanics"
 subdomain_name: "量子力学"
 difficulty: 8
 is_milestone: false
 tags: ["进阶"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.5
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 微扰理论
 
 ## 概述

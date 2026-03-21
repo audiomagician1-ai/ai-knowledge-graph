@@ -1,14 +1,22 @@
 ---
 id: "academic-writing"
-name: "学术写作"
+concept: "学术写作"
+domain: "english"
 subdomain: "writing-en"
 subdomain_name: "写作"
 difficulty: 6
 is_milestone: false
 tags: ["学术"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 学术写作
 
 ## 概述

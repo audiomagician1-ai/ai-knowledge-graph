@@ -1,14 +1,22 @@
 ---
 id: "writing-process"
-name: "写作流程"
-subdomain: "writing-en"
-subdomain_name: "写作"
-difficulty: 3
+concept: "写作过程"
+domain: "writing"
+subdomain: "writing-fundamentals"
+subdomain_name: "写作基础"
+difficulty: 1
 is_milestone: false
-tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
+tags: ["流程"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.6
+generation_method: "template-v1"
+unique_content_ratio: 0.385
+last_scored: "2026-03-21"
+sources: []
+---
 # 写作流程
 
 ## 概述

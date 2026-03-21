@@ -1,3 +1,22 @@
+---
+id: "llm-hallucination"
+concept: "LLM幻觉与事实性"
+domain: "ai-engineering"
+subdomain: "llm-core"
+subdomain_name: "大模型核心"
+difficulty: 6
+is_milestone: false
+tags: ["LLM", "安全"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 ﻿# LLM幻觉与事实性
 
 ## 概述

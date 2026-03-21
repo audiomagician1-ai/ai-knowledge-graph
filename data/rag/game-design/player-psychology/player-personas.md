@@ -1,10 +1,22 @@
 ---
-concept: 玩家画像
-subdomain: 玩家心理
-domain: game-design
+id: "player-personas"
+concept: "玩家画像"
+domain: "game-design"
+subdomain: "player-psychology"
+subdomain_name: "玩家心理"
 difficulty: 2
----
+is_milestone: false
+tags: ["研究"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 玩家画像
 
 ## 核心内容

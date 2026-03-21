@@ -1,3 +1,22 @@
+---
+id: "mn-lr-leaderboard-design"
+concept: "排行榜设计"
+domain: "multiplayer-network"
+subdomain: "leaderboard"
+subdomain_name: "排行榜与统计"
+difficulty: 2
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.4
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 排行榜设计
 
 > 领域: 网络多人 > 排行榜与统计

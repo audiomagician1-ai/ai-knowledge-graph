@@ -1,10 +1,22 @@
 ---
-concept: 极大似然估计
-subdomain: 计量经济学
-domain: economics
-difficulty: 3
----
+id: "maximum-likelihood"
+concept: "最大似然估计详解"
+domain: "mathematics"
+subdomain: "statistics"
+subdomain_name: "数理统计"
+difficulty: 8
+is_milestone: false
+tags: ["理论"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.0
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 极大似然估计
 
 ## 核心内容

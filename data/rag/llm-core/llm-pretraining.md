@@ -1,14 +1,22 @@
 ---
 id: "llm-pretraining"
-name: "LLM预训练"
+concept: "LLM预训练"
+domain: "ai-engineering"
 subdomain: "llm-core"
 subdomain_name: "大模型核心"
 difficulty: 8
 is_milestone: false
 tags: ["LLM"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # LLM预训练
 
 ## 概述

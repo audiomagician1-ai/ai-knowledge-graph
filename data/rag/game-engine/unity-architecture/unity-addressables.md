@@ -1,10 +1,22 @@
 ---
-concept: Addressables
-subdomain: Unity架构
-domain: game-engine
+id: "unity-addressables"
+concept: "Addressables"
+domain: "game-engine"
+subdomain: "unity-architecture"
+subdomain_name: "Unity架构"
 difficulty: 2
----
+is_milestone: false
+tags: ["资源"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.5
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # Addressables
 
 ## 核心内容

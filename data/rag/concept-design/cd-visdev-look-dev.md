@@ -1,3 +1,22 @@
+---
+id: "cd-visdev-look-dev"
+concept: "Look Development"
+domain: "concept-design"
+subdomain: "visual-development"
+subdomain_name: "视觉开发"
+difficulty: 3
+is_milestone: false
+tags: ["技术"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Look Development
 
 ## 概述

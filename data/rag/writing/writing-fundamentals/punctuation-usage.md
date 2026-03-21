@@ -1,10 +1,22 @@
 ---
-concept: 标点符号运用
-subdomain: 写作基础
-domain: writing
+id: "punctuation-usage"
+concept: "标点符号运用"
+domain: "writing"
+subdomain: "writing-fundamentals"
+subdomain_name: "写作基础"
 difficulty: 1
----
+is_milestone: false
+tags: ["语法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 标点符号运用
 
 ## 核心内容

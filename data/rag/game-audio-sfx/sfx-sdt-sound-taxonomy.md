@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: sound-design-theory
-concept_id: sfx-sdt-sound-taxonomy
+id: "sfx-sdt-sound-taxonomy"
+concept: "音效分类体系"
+domain: "game-audio-sfx"
+subdomain: "sound-design-theory"
+subdomain_name: "音效设计理论"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 音效分类体系
 
 ## 概述

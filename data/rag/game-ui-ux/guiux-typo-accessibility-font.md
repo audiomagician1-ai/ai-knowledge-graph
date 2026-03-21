@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: typography
-concept_id: guiux-typo-accessibility-font
-title: 无障碍字体
+id: "guiux-typo-accessibility-font"
+concept: "无障碍字体"
+domain: "game-ui-ux"
+subdomain: "typography"
+subdomain_name: "字体排版"
 difficulty: 3
 is_milestone: false
 tags: ["typography", "无障碍字体"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.85
+last_scored: "2026-03-21"
+sources: []
+---
 # 无障碍字体
 
 > **领域**: 游戏UI/UX > 字体排版 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

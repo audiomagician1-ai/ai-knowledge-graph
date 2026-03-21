@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: motion-capture
-concept_id: anim-mocap-studio
+id: "anim-mocap-studio"
+concept: "动捕工作室设置"
+domain: "animation"
+subdomain: "motion-capture"
+subdomain_name: "动作捕捉"
 difficulty: 2
-content_type: theory
-tags: [流程]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["流程"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 动捕工作室设置
 
 ## 概述

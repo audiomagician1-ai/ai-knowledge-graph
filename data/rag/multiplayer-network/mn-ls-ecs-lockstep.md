@@ -1,3 +1,22 @@
+---
+id: "mn-ls-ecs-lockstep"
+concept: "ECS帧同步"
+domain: "multiplayer-network"
+subdomain: "lockstep-sync"
+subdomain_name: "帧同步"
+difficulty: 4
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.6
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # ECS帧同步
 
 > 领域: 网络多人 > 帧同步

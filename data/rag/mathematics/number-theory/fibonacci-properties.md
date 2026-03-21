@@ -1,14 +1,22 @@
 ---
 id: "fibonacci-properties"
-name: "Fibonacci数的性质"
+concept: "Fibonacci数的性质"
+domain: "mathematics"
 subdomain: "number-theory"
 subdomain_name: "数论"
 difficulty: 5
 is_milestone: false
 tags: ["趣味"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # Fibonacci数的性质
 
 ## 概述

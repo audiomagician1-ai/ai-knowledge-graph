@@ -1,10 +1,22 @@
 ---
-concept: 植被渲染
-subdomain: 几何处理
-domain: computer-graphics
+id: "cg-vegetation"
+concept: "植被渲染"
+domain: "computer-graphics"
+subdomain: "geometry-processing"
+subdomain_name: "几何处理"
 difficulty: 3
----
+is_milestone: false
+tags: ["实践"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 植被渲染
 
 ## 核心内容

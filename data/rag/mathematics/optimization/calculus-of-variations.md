@@ -1,14 +1,22 @@
 ---
 id: "calculus-of-variations"
-name: "变分法"
+concept: "变分法"
+domain: "mathematics"
 subdomain: "optimization"
 subdomain_name: "最优化"
 difficulty: 9
 is_milestone: false
 tags: ["拓展"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 43.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 变分法
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: audio-middleware
-concept_id: sfx-am-plugin-development
+id: "sfx-am-plugin-development"
+concept: "插件开发"
+domain: "game-audio-sfx"
+subdomain: "audio-middleware"
+subdomain_name: "音频中间件"
 difficulty: 5
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.2
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 插件开发
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "singleton"
-name: "单例模式"
+concept: "单例模式"
+domain: "ai-engineering"
 subdomain: "oop"
 subdomain_name: "面向对象编程"
 difficulty: 5
 is_milestone: false
 tags: ["设计模式"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # 单例模式
 
 ## 概述

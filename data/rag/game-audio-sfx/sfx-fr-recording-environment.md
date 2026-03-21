@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: foley-recording
-concept_id: sfx-fr-recording-environment
+id: "sfx-fr-recording-environment"
+concept: "录音环境"
+domain: "game-audio-sfx"
+subdomain: "foley-recording"
+subdomain_name: "Foley录制"
 difficulty: 2
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.2
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 录音环境
 
 ## 概述

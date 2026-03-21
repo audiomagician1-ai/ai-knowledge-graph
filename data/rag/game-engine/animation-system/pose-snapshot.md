@@ -1,10 +1,22 @@
 ---
-concept: Pose快照
-subdomain: 动画系统
-domain: game-engine
+id: "pose-snapshot"
+concept: "Pose快照"
+domain: "game-engine"
+subdomain: "animation-system"
+subdomain_name: "动画系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # Pose快照
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 比较优势
-subdomain: 国际经济学
-domain: economics
+id: "comparative-advantage"
+concept: "比较优势"
+domain: "economics"
+subdomain: "international-econ"
+subdomain_name: "国际经济学"
 difficulty: 2
----
+is_milestone: false
+tags: ["贸易"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 比较优势
 
 ## 核心内容

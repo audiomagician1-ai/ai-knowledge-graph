@@ -1,3 +1,22 @@
+---
+id: "openapi-swagger"
+concept: "OpenAPI/Swagger"
+domain: "ai-engineering"
+subdomain: "web-backend"
+subdomain_name: "Web后端"
+difficulty: 3
+is_milestone: false
+tags: ["api-design", "documentation", "swagger"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # OpenAPI/Swagger
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 25分钟

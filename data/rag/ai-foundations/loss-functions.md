@@ -1,14 +1,22 @@
 ---
 id: "loss-functions"
-name: "损失函数"
+concept: "损失函数"
+domain: "ai-engineering"
 subdomain: "ai-foundations"
 subdomain_name: "AI基础"
 difficulty: 5
 is_milestone: false
 tags: ["DL"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.808
+last_scored: "2026-03-21"
+sources: []
+---
 # 损失函数
 
 ## 概述

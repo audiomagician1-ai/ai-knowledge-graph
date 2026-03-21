@@ -1,14 +1,22 @@
 ---
 id: "congruences"
-name: "同余理论"
+concept: "同余理论"
+domain: "mathematics"
 subdomain: "number-theory"
 subdomain_name: "数论"
 difficulty: 5
-is_milestone: true
+is_milestone: false
 tags: ["里程碑"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.3
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 同余理论
 
 ## 概述

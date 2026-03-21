@@ -1,10 +1,22 @@
 ---
-concept: 性能分析概述
-subdomain: 性能分析
-domain: software-engineering
+id: "se-perf-intro"
+concept: "性能分析概述"
+domain: "software-engineering"
+subdomain: "performance-analysis"
+subdomain_name: "性能分析"
 difficulty: 1
----
+is_milestone: true
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 性能分析概述
 
 ## 核心内容

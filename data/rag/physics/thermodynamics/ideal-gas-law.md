@@ -1,14 +1,22 @@
 ---
 id: "ideal-gas-law"
-name: "理想气体定律"
+concept: "理想气体定律"
+domain: "physics"
 subdomain: "thermodynamics"
 subdomain_name: "热力学"
 difficulty: 3
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.2
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 理想气体定律
 
 ## 概述

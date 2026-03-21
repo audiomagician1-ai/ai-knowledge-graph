@@ -1,10 +1,22 @@
 ---
-concept: 高度差战术
-subdomain: 战斗空间
-domain: level-design
+id: "elevation-tactics"
+concept: "高度差战术"
+domain: "level-design"
+subdomain: "combat-space"
+subdomain_name: "战斗空间"
 difficulty: 2
----
+is_milestone: false
+tags: ["地形"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 高度差战术
 
 ## 核心内容

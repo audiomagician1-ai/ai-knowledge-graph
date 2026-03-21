@@ -1,3 +1,22 @@
+---
+id: "3da-prop-medieval"
+concept: "中世纪道具"
+domain: "3d-art"
+subdomain: "prop-art"
+subdomain_name: "道具美术"
+difficulty: 3
+is_milestone: false
+tags: ["风格"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 中世纪道具
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 信息不对称
-subdomain: 微观经济学
-domain: economics
+id: "information-asymmetry"
+concept: "信息不对称"
+domain: "economics"
+subdomain: "microeconomics"
+subdomain_name: "微观经济学"
 difficulty: 3
----
+is_milestone: false
+tags: ["信息"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 信息不对称
 
 ## 核心内容

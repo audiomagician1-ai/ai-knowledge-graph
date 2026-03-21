@@ -1,10 +1,22 @@
 ---
-concept: PBR材质概述
-subdomain: PBR材质
-domain: computer-graphics
+id: "cg-pbr-intro"
+concept: "PBR材质概述"
+domain: "computer-graphics"
+subdomain: "pbr-materials"
+subdomain_name: "PBR材质"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.2
+generation_method: "template-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # PBR材质概述
 
 ## 核心内容

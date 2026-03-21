@@ -1,10 +1,22 @@
 ---
-concept: 预测分析
-subdomain: 数据驱动
-domain: product-design
+id: "predictive-analytics"
+concept: "预测分析"
+domain: "product-design"
+subdomain: "data-driven"
+subdomain_name: "数据驱动"
 difficulty: 4
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.5
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 预测分析
 
 ## 核心概念

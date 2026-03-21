@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: icon-system
-concept_id: guiux-icon-color-meaning
-title: 图标色彩语义
+id: "guiux-icon-color-meaning"
+concept: "图标色彩语义"
+domain: "game-ui-ux"
+subdomain: "icon-system"
+subdomain_name: "图标系统"
 difficulty: 2
 is_milestone: false
 tags: ["icon-system", "图标色彩语义"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 图标色彩语义
 
 > **领域**: 游戏UI/UX > 图标系统 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

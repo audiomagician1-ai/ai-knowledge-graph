@@ -1,3 +1,22 @@
+---
+id: "oauth-oidc"
+concept: "OAuth与OIDC"
+domain: "ai-engineering"
+subdomain: "web-backend"
+subdomain_name: "Web后端"
+difficulty: 4
+is_milestone: false
+tags: ["auth", "oauth", "oidc", "sso"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # OAuth与OIDC
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

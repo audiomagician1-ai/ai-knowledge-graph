@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: icon-system
-concept_id: guiux-icon-pixel-art
-title: 像素图标设计
+id: "guiux-icon-pixel-art"
+concept: "像素图标设计"
+domain: "game-ui-ux"
+subdomain: "icon-system"
+subdomain_name: "图标系统"
 difficulty: 3
 is_milestone: false
 tags: ["icon-system", "像素图标设计"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 像素图标设计
 
 > **领域**: 游戏UI/UX > 图标系统 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

@@ -1,14 +1,22 @@
 ---
 id: "synonyms-antonyms"
-name: "同义词与反义词"
+concept: "同义词与反义词"
+domain: "english"
 subdomain: "vocabulary"
 subdomain_name: "核心词汇"
 difficulty: 3
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 同义词与反义词
 
 ## 概述

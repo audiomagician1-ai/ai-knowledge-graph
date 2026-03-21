@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: vfx-graph
-concept_id: vfx-vfxgraph-force
+id: "vfx-vfxgraph-force"
+concept: "力与运动"
+domain: "vfx"
+subdomain: "vfx-graph"
+subdomain_name: "VFX Graph"
 difficulty: 3
-content_type: applied
-tags: [进阶]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 44.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 力与运动
 
 ## 概述

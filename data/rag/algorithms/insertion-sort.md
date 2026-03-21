@@ -1,14 +1,22 @@
 ---
 id: "insertion-sort"
-name: "插入排序"
+concept: "插入排序"
+domain: "ai-engineering"
 subdomain: "algorithms"
 subdomain_name: "算法"
 difficulty: 3
 is_milestone: false
 tags: ["排序"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.741
+last_scored: "2026-03-21"
+sources: []
+---
 # 插入排序
 
 ## 概述

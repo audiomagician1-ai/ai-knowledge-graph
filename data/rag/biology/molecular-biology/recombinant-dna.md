@@ -1,10 +1,22 @@
 ---
-concept: 重组DNA技术
-subdomain: 分子生物学
-domain: biology
+id: "recombinant-dna"
+concept: "重组DNA技术"
+domain: "biology"
+subdomain: "molecular-biology"
+subdomain_name: "分子生物学"
 difficulty: 3
----
+is_milestone: false
+tags: ["技术"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.0
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 重组DNA技术
 
 ## 核心内容

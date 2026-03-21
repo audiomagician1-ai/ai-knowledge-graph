@@ -1,10 +1,22 @@
 ---
-concept: 渲染图
-subdomain: 渲染优化
-domain: computer-graphics
+id: "cg-render-graph"
+concept: "渲染图"
+domain: "computer-graphics"
+subdomain: "render-optimization"
+subdomain_name: "渲染优化"
 difficulty: 4
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 渲染图
 
 ## 核心内容

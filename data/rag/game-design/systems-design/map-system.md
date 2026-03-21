@@ -1,10 +1,22 @@
 ---
-concept: 地图系统
-subdomain: 系统设计
-domain: game-design
+id: "map-system"
+concept: "地图系统"
+domain: "game-design"
+subdomain: "systems-design"
+subdomain_name: "系统设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["UI"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 地图系统
 
 ## 核心内容

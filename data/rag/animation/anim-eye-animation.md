@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: facial-animation
-concept_id: anim-eye-animation
+id: "anim-eye-animation"
+concept: "眼部动画"
+domain: "animation"
+subdomain: "facial-animation"
+subdomain_name: "面部动画"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 眼部动画
 
 ## 概述

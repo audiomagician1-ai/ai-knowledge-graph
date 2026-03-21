@@ -1,10 +1,22 @@
 ---
-concept: 神经网络几何
-subdomain: 几何处理
-domain: computer-graphics
+id: "cg-neural-geometry"
+concept: "神经网络几何"
+domain: "computer-graphics"
+subdomain: "geometry-processing"
+subdomain_name: "几何处理"
 difficulty: 5
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 神经网络几何
 
 ## 核心内容

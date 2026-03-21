@@ -1,10 +1,22 @@
 ---
-concept: 着色器优化
-subdomain: Shader编程
-domain: computer-graphics
+id: "cg-shader-optimization"
+concept: "着色器优化"
+domain: "computer-graphics"
+subdomain: "shader-programming"
+subdomain_name: "Shader编程"
 difficulty: 3
----
+is_milestone: false
+tags: ["优化"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 33.7
+generation_method: "template-v1"
+unique_content_ratio: 0.545
+last_scored: "2026-03-21"
+sources: []
+---
 # 着色器优化
 
 ## 核心内容

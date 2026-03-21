@@ -1,10 +1,22 @@
 ---
-concept: 可见性缓冲
-subdomain: 光栅化
-domain: computer-graphics
+id: "cg-visibility-buffer"
+concept: "可见性缓冲"
+domain: "computer-graphics"
+subdomain: "rasterization"
+subdomain_name: "光栅化"
 difficulty: 4
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 可见性缓冲
 
 ## 核心内容

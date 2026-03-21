@@ -1,10 +1,22 @@
 ---
-concept: Unity DOTS ECS
-subdomain: ECS架构
-domain: software-engineering
+id: "se-unity-dots-ecs"
+concept: "Unity DOTS ECS"
+domain: "software-engineering"
+subdomain: "ecs-architecture"
+subdomain_name: "ECS架构"
 difficulty: 3
----
+is_milestone: false
+tags: ["Unity"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.6
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # Unity DOTS ECS
 
 ## 核心内容

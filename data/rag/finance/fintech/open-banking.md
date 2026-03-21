@@ -1,10 +1,22 @@
 ---
-concept: 开放银行
-subdomain: 金融科技
-domain: finance
+id: "open-banking"
+concept: "开放银行"
+domain: "finance"
+subdomain: "fintech"
+subdomain_name: "金融科技"
 difficulty: 3
----
+is_milestone: false
+tags: ["银行"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 开放银行
 
 ## 核心概念

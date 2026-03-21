@@ -1,3 +1,22 @@
+---
+id: "nd-nt-narrative-debug"
+concept: "叙事调试"
+domain: "narrative-design"
+subdomain: "narrative-tools"
+subdomain_name: "叙事工具"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.7
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.87
+last_scored: "2026-03-21"
+sources: []
+---
 # 叙事调试
 
 > 领域: 叙事设计 > 叙事工具

@@ -1,10 +1,22 @@
 ---
-concept: 食物网
-subdomain: 生态学
-domain: biology
+id: "food-web"
+concept: "食物网"
+domain: "biology"
+subdomain: "ecology"
+subdomain_name: "生态学"
 difficulty: 2
----
+is_milestone: false
+tags: ["生态系统"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 食物网
 
 ## 核心内容

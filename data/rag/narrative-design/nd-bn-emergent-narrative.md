@@ -1,3 +1,22 @@
+---
+id: "nd-bn-emergent-narrative"
+concept: "涌现叙事"
+domain: "narrative-design"
+subdomain: "branching-narrative"
+subdomain_name: "分支叙事"
+difficulty: 5
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.4
+generation_method: "template-v1"
+unique_content_ratio: 0.211
+last_scored: "2026-03-21"
+sources: []
+---
 # 涌现叙事
 
 > 领域: 叙事设计 > 分支叙事

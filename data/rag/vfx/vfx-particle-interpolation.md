@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: particle-physics
-concept_id: vfx-particle-interpolation
+id: "vfx-particle-interpolation"
+concept: "插值与缓动"
+domain: "vfx"
+subdomain: "particle-physics"
+subdomain_name: "粒子物理"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 64.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 插值与缓动
 
 ## 概述

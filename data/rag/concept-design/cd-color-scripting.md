@@ -1,3 +1,22 @@
+---
+id: "cd-color-scripting"
+concept: "色彩脚本"
+domain: "concept-design"
+subdomain: "color-theory"
+subdomain_name: "色彩理论"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 色彩脚本
 
 ## 概述

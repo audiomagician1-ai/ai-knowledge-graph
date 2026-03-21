@@ -1,3 +1,22 @@
+---
+id: "cd-mood-cultural-ref"
+concept: "文化参考"
+domain: "concept-design"
+subdomain: "moodboard-ref"
+subdomain_name: "Moodboard与参考"
+difficulty: 2
+is_milestone: false
+tags: ["研究"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 文化参考
 
 ## 概述

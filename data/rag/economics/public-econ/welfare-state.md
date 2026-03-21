@@ -1,10 +1,22 @@
 ---
-concept: 福利国家
-subdomain: 公共经济学
-domain: economics
+id: "welfare-state"
+concept: "福利国家"
+domain: "economics"
+subdomain: "public-econ"
+subdomain_name: "公共经济学"
 difficulty: 3
----
+is_milestone: false
+tags: ["福利"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.2
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 福利国家
 
 ## 核心内容

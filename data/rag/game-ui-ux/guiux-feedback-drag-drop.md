@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: interaction-feedback
-concept_id: guiux-feedback-drag-drop
-title: 拖放交互
+id: "guiux-feedback-drag-drop"
+concept: "拖放交互"
+domain: "game-ui-ux"
+subdomain: "interaction-feedback"
+subdomain_name: "交互反馈"
 difficulty: 3
 is_milestone: false
 tags: ["interaction-feedback", "拖放交互"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 拖放交互
 
 > **领域**: 游戏UI/UX > 交互反馈 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

@@ -2,7 +2,7 @@
   "domains": [
     {
       "id": "ai-engineering",
-      "name": "AI工程",
+      "name": "AI编程",
       "description": "从编程基础到AI系统设计的完整知识体系",
       "icon": "🟣",
       "color": "#8b5cf6",

@@ -1,3 +1,22 @@
+---
+id: "cd-construction-drawing"
+concept: "结构素描"
+domain: "concept-design"
+subdomain: "anatomy-sketching"
+subdomain_name: "人体解剖速写"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 结构素描
 
 ## 概述

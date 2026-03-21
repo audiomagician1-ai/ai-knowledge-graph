@@ -1,10 +1,22 @@
 ---
-concept: 评论写作
-subdomain: 说明文写作
-domain: writing
+id: "review-writing"
+concept: "评论写作"
+domain: "writing"
+subdomain: "expository-writing"
+subdomain_name: "说明文写作"
 difficulty: 3
----
+is_milestone: false
+tags: ["应用"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.8
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 评论写作
 
 ## 核心内容

@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: typography
-concept_id: guiux-typo-overview
-title: 游戏字体排版概述
+id: "guiux-typo-overview"
+concept: "游戏字体排版概述"
+domain: "game-ui-ux"
+subdomain: "typography"
+subdomain_name: "字体排版"
 difficulty: 1
 is_milestone: true
 tags: ["typography", "游戏字体排版概述"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.842
+last_scored: "2026-03-21"
+sources: []
+---
 # 游戏字体排版概述
 
 > **领域**: 游戏UI/UX > 字体排版 | **难度**: ⭐ | **预计学习时间**: 13分钟

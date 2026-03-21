@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: physics-animation
-concept_id: anim-physics-blend
+id: "anim-physics-blend"
+concept: "物理-动画混合"
+domain: "animation"
+subdomain: "physics-animation"
+subdomain_name: "物理动画"
 difficulty: 3
-content_type: theory
-tags: [核心]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 物理-动画混合
 
 ## 概述

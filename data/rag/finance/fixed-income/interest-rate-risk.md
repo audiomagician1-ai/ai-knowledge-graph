@@ -1,10 +1,22 @@
 ---
-concept: 利率风险
-subdomain: 固定收益
-domain: finance
+id: "interest-rate-risk"
+concept: "利率风险"
+domain: "finance"
+subdomain: "fixed-income"
+subdomain_name: "固定收益"
 difficulty: 2
----
+is_milestone: false
+tags: ["风险"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 利率风险
 
 ## 核心概念

@@ -1,3 +1,22 @@
+---
+id: "3da-pipe-lod-pipeline"
+concept: "LOD管线"
+domain: "3d-art"
+subdomain: "asset-pipeline"
+subdomain_name: "资产管线"
+difficulty: 3
+is_milestone: false
+tags: ["优化"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # LOD管线
 
 ## 概述

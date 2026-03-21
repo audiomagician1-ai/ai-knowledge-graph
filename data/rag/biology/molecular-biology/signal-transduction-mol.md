@@ -1,10 +1,22 @@
 ---
-concept: 分子信号通路
-subdomain: 分子生物学
-domain: biology
+id: "signal-transduction-mol"
+concept: "分子信号通路"
+domain: "biology"
+subdomain: "molecular-biology"
+subdomain_name: "分子生物学"
 difficulty: 4
----
+is_milestone: false
+tags: ["信号"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.2
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 分子信号通路
 
 ## 核心内容

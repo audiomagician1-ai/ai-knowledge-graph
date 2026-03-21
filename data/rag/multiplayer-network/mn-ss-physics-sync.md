@@ -1,3 +1,22 @@
+---
+id: "mn-ss-physics-sync"
+concept: "物理同步"
+domain: "multiplayer-network"
+subdomain: "state-synchronization"
+subdomain_name: "状态同步"
+difficulty: 4
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.5
+generation_method: "template-v1"
+unique_content_ratio: 0.357
+last_scored: "2026-03-21"
+sources: []
+---
 # 物理同步
 
 > 领域: 网络多人 > 状态同步

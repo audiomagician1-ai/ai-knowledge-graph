@@ -1,14 +1,22 @@
 ---
 id: "proof-techniques"
-name: "证明方法"
+concept: "证明方法"
+domain: "mathematics"
 subdomain: "discrete-math"
 subdomain_name: "离散数学"
 difficulty: 5
-is_milestone: true
+is_milestone: false
 tags: ["里程碑"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.733
+last_scored: "2026-03-21"
+sources: []
+---
 # 证明方法
 
 ## 概述

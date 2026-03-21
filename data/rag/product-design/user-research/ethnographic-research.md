@@ -1,10 +1,22 @@
 ---
-concept: 民族志研究
-subdomain: 用户研究
-domain: product-design
+id: "ethnographic-research"
+concept: "民族志研究"
+domain: "product-design"
+subdomain: "user-research"
+subdomain_name: "用户研究"
 difficulty: 4
----
+is_milestone: false
+tags: ["定性"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.3
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 民族志研究
 
 ## 核心概念

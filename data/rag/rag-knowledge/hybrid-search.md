@@ -1,14 +1,22 @@
 ---
 id: "hybrid-search"
-name: "混合检索(向量+关键词)"
+concept: "混合检索(向量+关键词)"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 6
 is_milestone: false
 tags: ["RAG"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 混合检索(向量+关键词)
 
 ## 概述

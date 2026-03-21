@@ -1,10 +1,22 @@
 ---
-concept: 破坏物理
-subdomain: 物理引擎
-domain: game-engine
+id: "destruction-physics"
+concept: "破坏物理"
+domain: "game-engine"
+subdomain: "physics-engine"
+subdomain_name: "物理引擎"
 difficulty: 3
----
+is_milestone: false
+tags: ["破坏"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.8
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 破坏物理
 
 ## 核心内容

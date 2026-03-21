@@ -1,3 +1,22 @@
+---
+id: "agent-eval-framework"
+concept: "Agent评估框架"
+domain: "ai-engineering"
+subdomain: "agent-systems"
+subdomain_name: "Agent系统"
+difficulty: 5
+is_milestone: false
+tags: ["eval", "benchmark", "metrics"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # Agent评估框架
 
 > **难度**: (5/5) | **预计学习时间**: 30分钟

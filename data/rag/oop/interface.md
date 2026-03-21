@@ -1,14 +1,22 @@
 ---
 id: "interface"
-name: "接口"
+concept: "接口"
+domain: "ai-engineering"
 subdomain: "oop"
 subdomain_name: "面向对象编程"
 difficulty: 4
 is_milestone: false
 tags: ["OOP"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.76
+last_scored: "2026-03-21"
+sources: []
+---
 # 接口
 
 ## 概述

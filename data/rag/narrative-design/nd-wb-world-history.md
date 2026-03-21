@@ -1,3 +1,22 @@
+---
+id: "nd-wb-world-history"
+concept: "世界历史"
+domain: "narrative-design"
+subdomain: "worldbuilding"
+subdomain_name: "世界观构建"
+difficulty: 2
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.882
+last_scored: "2026-03-21"
+sources: []
+---
 # 世界历史
 
 > 领域: 叙事设计 > 世界观构建

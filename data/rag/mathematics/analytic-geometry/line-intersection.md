@@ -1,14 +1,22 @@
 ---
 id: "line-intersection"
-name: "直线的交点与位置关系"
+concept: "直线的交点与位置关系"
+domain: "mathematics"
 subdomain: "analytic-geometry"
 subdomain_name: "解析几何"
 difficulty: 4
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 44.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 直线的交点与位置关系
 
 ## 概述

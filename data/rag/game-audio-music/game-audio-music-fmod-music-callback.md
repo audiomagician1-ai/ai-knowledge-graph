@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-fmod-music-callback"
+concept: "Music Callback"
+domain: "game-audio-music"
+subdomain: "fmod-music"
+subdomain_name: "FMOD音乐"
+difficulty: 4
+is_milestone: false
+tags: ["高级"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.1
+generation_method: "template-v1"
+unique_content_ratio: 0.625
+last_scored: "2026-03-21"
+sources: []
+---
 # Music Callback
 
 > **领域**: 游戏音乐 | **子领域**: FMOD音乐 | **难度**: 高级

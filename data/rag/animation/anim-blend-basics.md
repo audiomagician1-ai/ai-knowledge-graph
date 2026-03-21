@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: blend-space
-concept_id: anim-blend-basics
+id: "anim-blend-basics"
+concept: "混合基础"
+domain: "animation"
+subdomain: "blend-space"
+subdomain_name: "BlendSpace"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.1
+generation_method: "template-v1"
+unique_content_ratio: 0.412
+last_scored: "2026-03-21"
+sources: []
+---
 # 混合基础
 
 ## 概述

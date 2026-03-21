@@ -1,10 +1,22 @@
 ---
-concept: AARRR漏斗模型
-subdomain: 增长运营
-domain: product-design
+id: "aarrr-model"
+concept: "AARRR漏斗模型"
+domain: "product-design"
+subdomain: "growth"
+subdomain_name: "增长运营"
 difficulty: 2
----
+is_milestone: false
+tags: ["框架"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # AARRR漏斗模型
 
 ## 核心概念

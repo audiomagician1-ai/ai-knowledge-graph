@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: user-acquisition
-concept_id: pub-ua-ua-budget
+id: "pub-ua-ua-budget"
+concept: "UA预算规划"
+domain: "game-publishing"
+subdomain: "user-acquisition"
+subdomain_name: "用户获取(UA)"
 difficulty: 5
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # UA预算规划
 
 ## 概述

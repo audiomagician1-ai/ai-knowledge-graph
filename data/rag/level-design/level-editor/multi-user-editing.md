@@ -1,10 +1,22 @@
 ---
-concept: 多人协同编辑
-subdomain: 关卡编辑器
-domain: level-design
+id: "multi-user-editing"
+concept: "多人协同编辑"
+domain: "level-design"
+subdomain: "level-editor"
+subdomain_name: "关卡编辑器"
 difficulty: 3
----
+is_milestone: false
+tags: ["协作"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.5
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 多人协同编辑
 
 ## 核心内容

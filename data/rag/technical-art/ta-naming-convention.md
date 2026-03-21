@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pipeline-build
-concept_id: ta-naming-convention
+id: "ta-naming-convention"
+concept: "命名规范"
+domain: "technical-art"
+subdomain: "pipeline-build"
+subdomain_name: "管线搭建"
 difficulty: 1
-content_type: theory
-tags: [规范]
----
+is_milestone: false
+tags: ["规范"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.5
+generation_method: "template-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 命名规范
 
 ## 概述

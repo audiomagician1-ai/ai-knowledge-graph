@@ -1,3 +1,22 @@
+---
+id: "nd-qd-quest-pacing"
+concept: "任务节奏控制"
+domain: "narrative-design"
+subdomain: "quest-design"
+subdomain_name: "任务设计"
+difficulty: 3
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.7
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.9
+last_scored: "2026-03-21"
+sources: []
+---
 # 任务节奏控制
 
 > 领域: 叙事设计 > 任务设计

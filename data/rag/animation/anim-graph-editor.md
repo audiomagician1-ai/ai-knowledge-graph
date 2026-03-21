@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: keyframe-animation
-concept_id: anim-graph-editor
+id: "anim-graph-editor"
+concept: "曲线编辑器"
+domain: "animation"
+subdomain: "keyframe-animation"
+subdomain_name: "关键帧动画"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 曲线编辑器
 
 ## 概述

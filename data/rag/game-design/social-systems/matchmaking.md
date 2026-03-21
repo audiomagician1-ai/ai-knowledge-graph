@@ -1,10 +1,22 @@
 ---
-concept: 匹配系统
-subdomain: 社交系统
-domain: game-design
+id: "matchmaking"
+concept: "匹配系统"
+domain: "game-design"
+subdomain: "social-systems"
+subdomain_name: "社交系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["竞技"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.3
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 匹配系统
 
 ## 核心内容

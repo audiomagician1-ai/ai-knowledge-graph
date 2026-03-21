@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: animation-principles
-concept_id: anim-straight-ahead-pose
+id: "anim-straight-ahead-pose"
+concept: "逐帧与关键帧法"
+domain: "animation"
+subdomain: "animation-principles"
+subdomain_name: "动画原理"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.474
+last_scored: "2026-03-21"
+sources: []
+---
 # 逐帧与关键帧法
 
 ## 概述

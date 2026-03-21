@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: interaction-feedback
-concept_id: guiux-feedback-haptic
-title: 触觉反馈设计
+id: "guiux-feedback-haptic"
+concept: "触觉反馈设计"
+domain: "game-ui-ux"
+subdomain: "interaction-feedback"
+subdomain_name: "交互反馈"
 difficulty: 3
 is_milestone: false
 tags: ["interaction-feedback", "触觉反馈设计"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 触觉反馈设计
 
 > **领域**: 游戏UI/UX > 交互反馈 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

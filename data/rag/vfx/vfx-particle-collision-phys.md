@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: particle-physics
-concept_id: vfx-particle-collision-phys
+id: "vfx-particle-collision-phys"
+concept: "碰撞物理"
+domain: "vfx"
+subdomain: "particle-physics"
+subdomain_name: "粒子物理"
 difficulty: 3
-content_type: applied
-tags: [进阶]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 60.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 碰撞物理
 
 ## 概述

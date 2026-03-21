@@ -1,10 +1,22 @@
 ---
-concept: 数据迁移
-subdomain: 序列化
-domain: game-engine
+id: "data-migration"
+concept: "数据迁移"
+domain: "game-engine"
+subdomain: "serialization"
+subdomain_name: "序列化"
 difficulty: 3
----
+is_milestone: false
+tags: ["升级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.5
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据迁移
 
 ## 核心内容

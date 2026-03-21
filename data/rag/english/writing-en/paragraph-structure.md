@@ -1,14 +1,22 @@
 ---
 id: "paragraph-structure"
-name: "段落结构"
-subdomain: "writing-en"
-subdomain_name: "写作"
-difficulty: 3
-is_milestone: true
-tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
+concept: "段落结构"
+domain: "writing"
+subdomain: "writing-fundamentals"
+subdomain_name: "写作基础"
+difficulty: 1
+is_milestone: false
+tags: ["结构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.0
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 段落结构
 
 ## 概述

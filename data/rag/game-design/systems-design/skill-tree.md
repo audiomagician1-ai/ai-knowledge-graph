@@ -1,10 +1,22 @@
 ---
-concept: 技能树设计
-subdomain: 系统设计
-domain: game-design
+id: "skill-tree"
+concept: "技能树设计"
+domain: "game-design"
+subdomain: "systems-design"
+subdomain_name: "系统设计"
 difficulty: 3
----
+is_milestone: false
+tags: ["成长"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.3
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 技能树设计
 
 ## 核心内容

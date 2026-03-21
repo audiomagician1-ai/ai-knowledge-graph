@@ -1,10 +1,22 @@
 ---
-concept: 胶片颗粒
-subdomain: 后处理
-domain: computer-graphics
+id: "cg-film-grain"
+concept: "胶片颗粒"
+domain: "computer-graphics"
+subdomain: "post-processing"
+subdomain_name: "后处理"
 difficulty: 2
----
+is_milestone: false
+tags: ["效果"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 胶片颗粒
 
 ## 核心内容

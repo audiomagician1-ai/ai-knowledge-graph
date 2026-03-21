@@ -1,14 +1,22 @@
 ---
 id: "academic-reading"
-name: "学术文章阅读"
+concept: "学术文章阅读"
+domain: "english"
 subdomain: "reading"
 subdomain_name: "阅读理解"
 difficulty: 6
 is_milestone: false
 tags: ["学术"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 学术文章阅读
 
 ## 概述

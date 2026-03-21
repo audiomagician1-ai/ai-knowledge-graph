@@ -1,10 +1,22 @@
 ---
-concept: MVC/MVVM模式
-subdomain: 架构模式
-domain: software-engineering
+id: "se-mvc-mvvm"
+concept: "MVC/MVVM模式"
+domain: "software-engineering"
+subdomain: "architecture-patterns"
+subdomain_name: "架构模式"
 difficulty: 2
----
+is_milestone: false
+tags: ["UI架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # MVC/MVVM模式
 
 ## 核心内容

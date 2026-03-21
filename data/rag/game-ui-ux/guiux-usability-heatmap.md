@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: usability-testing
-concept_id: guiux-usability-heatmap
-title: 热力图分析
+id: "guiux-usability-heatmap"
+concept: "热力图分析"
+domain: "game-ui-ux"
+subdomain: "usability-testing"
+subdomain_name: "可用性测试"
 difficulty: 3
 is_milestone: false
 tags: ["usability-testing", "热力图分析"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 热力图分析
 
 > **领域**: 游戏UI/UX > 可用性测试 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

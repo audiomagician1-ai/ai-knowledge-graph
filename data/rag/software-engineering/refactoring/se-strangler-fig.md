@@ -1,10 +1,22 @@
 ---
-concept: 绞杀者模式
-subdomain: 重构
-domain: software-engineering
+id: "se-strangler-fig"
+concept: "绞杀者模式"
+domain: "software-engineering"
+subdomain: "refactoring"
+subdomain_name: "重构"
 difficulty: 3
----
+is_milestone: false
+tags: ["迁移"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 20.9
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # 绞杀者模式
 
 ## 核心内容

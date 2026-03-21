@@ -1,13 +1,22 @@
 ---
 id: "qa-ft-gameplay-testing"
-title: "玩法测试"
+concept: "玩法测试"
 domain: "game-qa"
 subdomain: "functional-testing"
+subdomain_name: "功能测试"
 difficulty: 2
-estimated_minutes: 35
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 玩法测试
 
 > **子领域**: 功能测试 | **难度**: 基础 | **预计学习时间**: 35分钟

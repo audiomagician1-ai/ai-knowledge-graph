@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: shader-dev
-concept_id: ta-shader-overview
+id: "ta-shader-overview"
+concept: "Shader开发概述"
+domain: "technical-art"
+subdomain: "shader-dev"
+subdomain_name: "Shader开发"
 difficulty: 1
-content_type: theory
-tags: [基础]
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.5
+generation_method: "template-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # Shader开发概述
 
 ## 概述

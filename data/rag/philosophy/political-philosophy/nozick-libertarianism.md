@@ -1,10 +1,22 @@
 ---
-concept: 诺齐克自由至上主义
-subdomain: 政治哲学
-domain: philosophy
+id: "nozick-libertarianism"
+concept: "诺齐克自由至上主义"
+domain: "philosophy"
+subdomain: "political-philosophy"
+subdomain_name: "政治哲学"
 difficulty: 4
----
+is_milestone: false
+tags: ["当代"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 诺齐克自由至上主义
 
 ## 核心内容

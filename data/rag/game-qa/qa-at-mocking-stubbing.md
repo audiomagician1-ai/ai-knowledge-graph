@@ -1,13 +1,22 @@
 ---
 id: "qa-at-mocking-stubbing"
-title: "Mock与Stub"
+concept: "Mock与Stub"
 domain: "game-qa"
 subdomain: "automation-testing"
+subdomain_name: "自动化测试"
 difficulty: 2
-estimated_minutes: 30
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # Mock与Stub
 
 > **子领域**: 自动化测试 | **难度**: 基础 | **预计学习时间**: 30分钟

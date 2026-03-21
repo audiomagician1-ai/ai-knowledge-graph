@@ -1,10 +1,22 @@
 ---
-concept: 度量例外
-subdomain: Metric设计
-domain: level-design
+id: "metric-exception"
+concept: "度量例外"
+domain: "level-design"
+subdomain: "metrics-design"
+subdomain_name: "Metric设计"
 difficulty: 3
----
+is_milestone: false
+tags: ["设计"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.0
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 度量例外
 
 ## 核心内容

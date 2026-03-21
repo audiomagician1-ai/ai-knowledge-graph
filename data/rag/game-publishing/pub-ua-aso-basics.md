@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: user-acquisition
-concept_id: pub-ua-aso-basics
+id: "pub-ua-aso-basics"
+concept: "ASO基础"
+domain: "game-publishing"
+subdomain: "user-acquisition"
+subdomain_name: "用户获取(UA)"
 difficulty: 1
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # ASO基础
 
 ## 概述

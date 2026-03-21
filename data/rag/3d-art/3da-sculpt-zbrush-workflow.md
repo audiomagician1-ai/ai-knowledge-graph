@@ -1,3 +1,22 @@
+---
+id: "3da-sculpt-zbrush-workflow"
+concept: "ZBrush工作流"
+domain: "3d-art"
+subdomain: "sculpting"
+subdomain_name: "数字雕刻"
+difficulty: 2
+is_milestone: true
+tags: ["工作流"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # ZBrush工作流
 
 ## 概述

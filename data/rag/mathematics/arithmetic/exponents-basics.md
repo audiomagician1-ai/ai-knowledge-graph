@@ -1,14 +1,22 @@
 ---
 id: "exponents-basics"
-name: "指数与幂运算"
+concept: "指数与幂运算"
+domain: "mathematics"
 subdomain: "arithmetic"
 subdomain_name: "算术基础"
 difficulty: 3
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.3
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 指数与幂运算
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 系统思维
-subdomain: 系统设计
-domain: game-design
-difficulty: 1
----
+id: "systems-thinking"
+concept: "系统思维"
+domain: "product-design"
+subdomain: "product-thinking"
+subdomain_name: "产品思维"
+difficulty: 3
+is_milestone: false
+tags: ["思维"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.1
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 系统思维
 
 ## 核心内容

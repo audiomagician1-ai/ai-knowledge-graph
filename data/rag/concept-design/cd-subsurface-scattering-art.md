@@ -1,3 +1,22 @@
+---
+id: "cd-subsurface-scattering-art"
+concept: "次表面散射(美术)"
+domain: "concept-design"
+subdomain: "light-shadow"
+subdomain_name: "光影"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 次表面散射(美术)
 
 ## 概述

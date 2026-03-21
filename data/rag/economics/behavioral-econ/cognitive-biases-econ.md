@@ -1,10 +1,22 @@
 ---
-concept: 认知偏差
-subdomain: 行为经济学
-domain: economics
+id: "cognitive-biases-econ"
+concept: "认知偏差"
+domain: "economics"
+subdomain: "behavioral-econ"
+subdomain_name: "行为经济学"
 difficulty: 2
----
+is_milestone: false
+tags: ["偏差"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.8
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 认知偏差
 
 ## 核心内容

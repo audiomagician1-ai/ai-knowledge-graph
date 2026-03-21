@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: art-standards
-concept_id: ta-std-template
+id: "ta-std-template"
+concept: "标准模板资产"
+domain: "technical-art"
+subdomain: "art-standards"
+subdomain_name: "美术标准制定"
 difficulty: 2
-content_type: practice
-tags: [规范]
----
+is_milestone: false
+tags: ["规范"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 18.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 标准模板资产
 
 ## 概述

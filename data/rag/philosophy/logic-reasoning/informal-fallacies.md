@@ -1,10 +1,22 @@
 ---
-concept: 非形式谬误
-subdomain: 逻辑与推理
-domain: philosophy
+id: "informal-fallacies"
+concept: "非形式谬误"
+domain: "philosophy"
+subdomain: "logic-reasoning"
+subdomain_name: "逻辑与推理"
 difficulty: 2
----
+is_milestone: false
+tags: ["谬误"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.2
+last_scored: "2026-03-21"
+sources: []
+---
 # 非形式谬误
 
 ## 核心内容

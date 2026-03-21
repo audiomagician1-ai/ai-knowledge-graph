@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: blend-space
-concept_id: anim-crossfade
+id: "anim-crossfade"
+concept: "交叉淡入淡出"
+domain: "animation"
+subdomain: "blend-space"
+subdomain_name: "BlendSpace"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 交叉淡入淡出
 
 ## 概述

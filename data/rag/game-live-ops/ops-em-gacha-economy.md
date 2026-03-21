@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: economy-monitoring
-concept_id: ops-em-gacha-economy
+id: "ops-em-gacha-economy"
+concept: "抽卡经济"
+domain: "game-live-ops"
+subdomain: "economy-monitoring"
+subdomain_name: "经济系统监控"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 抽卡经济
 
 ## 概述

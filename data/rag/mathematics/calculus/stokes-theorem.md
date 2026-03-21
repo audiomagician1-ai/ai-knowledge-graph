@@ -1,14 +1,22 @@
 ---
 id: "stokes-theorem"
-name: "斯托克斯定理"
+concept: "斯托克斯定理"
+domain: "mathematics"
 subdomain: "calculus"
 subdomain_name: "微积分"
 difficulty: 9
 is_milestone: false
 tags: ["拓展"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 43.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 斯托克斯定理
 
 ## 概述

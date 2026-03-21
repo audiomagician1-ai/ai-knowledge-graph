@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: state-machine
-concept_id: anim-transition-rules
+id: "anim-transition-rules"
+concept: "转换规则"
+domain: "animation"
+subdomain: "state-machine"
+subdomain_name: "状态机"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.8
+generation_method: "template-v1"
+unique_content_ratio: 0.412
+last_scored: "2026-03-21"
+sources: []
+---
 # 转换规则
 
 ## 概述

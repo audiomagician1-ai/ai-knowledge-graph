@@ -1,3 +1,22 @@
+---
+id: "mn-mm-match-quality-metrics"
+concept: "匹配质量指标"
+domain: "multiplayer-network"
+subdomain: "matchmaking"
+subdomain_name: "匹配系统"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.6
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 匹配质量指标
 
 > 领域: 网络多人 > 匹配系统

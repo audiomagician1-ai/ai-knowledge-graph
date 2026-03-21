@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: data-analytics
-concept_id: ops-da-event-tracking
+id: "ops-da-event-tracking"
+concept: "事件埋点设计"
+domain: "game-live-ops"
+subdomain: "data-analytics"
+subdomain_name: "数据分析"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 事件埋点设计
 
 ## 概述

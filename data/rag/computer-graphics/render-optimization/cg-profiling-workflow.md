@@ -1,10 +1,22 @@
 ---
-concept: 性能调优工作流
-subdomain: 渲染优化
-domain: computer-graphics
+id: "cg-profiling-workflow"
+concept: "性能调优工作流"
+domain: "computer-graphics"
+subdomain: "render-optimization"
+subdomain_name: "渲染优化"
 difficulty: 2
----
+is_milestone: false
+tags: ["方法论"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.2
+generation_method: "template-v1"
+unique_content_ratio: 0.545
+last_scored: "2026-03-21"
+sources: []
+---
 # 性能调优工作流
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: customer-service
-concept_id: ops-cs-vip-service
+id: "ops-cs-vip-service"
+concept: "VIP专属服务"
+domain: "game-live-ops"
+subdomain: "customer-service"
+subdomain_name: "客服体系"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # VIP专属服务
 
 ## 概述

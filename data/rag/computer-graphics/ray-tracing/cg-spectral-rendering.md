@@ -1,10 +1,22 @@
 ---
-concept: 光谱渲染
-subdomain: 光线追踪
-domain: computer-graphics
+id: "cg-spectral-rendering"
+concept: "光谱渲染"
+domain: "computer-graphics"
+subdomain: "ray-tracing"
+subdomain_name: "光线追踪"
 difficulty: 5
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.2
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 光谱渲染
 
 ## 核心内容

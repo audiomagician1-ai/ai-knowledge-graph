@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: shader-vfx
-concept_id: vfx-shader-panning
+id: "vfx-shader-panning"
+concept: "纹理流动"
+domain: "vfx"
+subdomain: "shader-vfx"
+subdomain_name: "Shader特效"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.7
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.619
+last_scored: "2026-03-21"
+sources: []
+---
 # 纹理流动
 
 ## 概述

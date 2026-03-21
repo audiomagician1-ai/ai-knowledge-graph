@@ -1,13 +1,22 @@
 ---
 id: "qa-ct-hardware-debug"
-title: "硬件调试方法"
+concept: "硬件调试方法"
 domain: "game-qa"
 subdomain: "compatibility-testing"
+subdomain_name: "兼容性测试"
 difficulty: 3
-estimated_minutes: 35
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 硬件调试方法
 
 > **子领域**: 兼容性测试 | **难度**: 进阶 | **预计学习时间**: 35分钟

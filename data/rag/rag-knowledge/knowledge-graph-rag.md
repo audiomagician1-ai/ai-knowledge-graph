@@ -1,14 +1,22 @@
 ---
 id: "knowledge-graph-rag"
-name: "知识图谱+RAG"
+concept: "知识图谱+RAG"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 8
-is_milestone: true
+is_milestone: false
 tags: ["RAG", "图"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.7
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.793
+last_scored: "2026-03-21"
+sources: []
+---
 # 知识图谱+RAG
 
 ## 概述

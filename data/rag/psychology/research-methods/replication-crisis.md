@@ -1,10 +1,22 @@
 ---
-concept: 可重复性危机
-subdomain: 研究方法
-domain: psychology
+id: "replication-crisis"
+concept: "可重复性危机"
+domain: "psychology"
+subdomain: "research-methods"
+subdomain_name: "研究方法"
 difficulty: 3
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.2
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 可重复性危机
 
 ## 核心内容

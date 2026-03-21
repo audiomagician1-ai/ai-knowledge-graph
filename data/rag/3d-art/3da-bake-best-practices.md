@@ -1,3 +1,22 @@
+---
+id: "3da-bake-best-practices"
+concept: "烘焙最佳实践"
+domain: "3d-art"
+subdomain: "baking"
+subdomain_name: "烘焙"
+difficulty: 3
+is_milestone: true
+tags: ["规范"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 烘焙最佳实践
 
 ## 概述

@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: motion-design
-concept_id: guiux-motion-overview
-title: UI动效设计概述
+id: "guiux-motion-overview"
+concept: "UI动效设计概述"
+domain: "game-ui-ux"
+subdomain: "motion-design"
+subdomain_name: "动效设计"
 difficulty: 1
 is_milestone: true
 tags: ["motion-design", "UI动效设计概述"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # UI动效设计概述
 
 > **领域**: 游戏UI/UX > 动效设计 | **难度**: ⭐ | **预计学习时间**: 13分钟

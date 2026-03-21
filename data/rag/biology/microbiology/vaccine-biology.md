@@ -1,10 +1,22 @@
 ---
-concept: 疫苗生物学
-subdomain: 微生物学
-domain: biology
+id: "vaccine-biology"
+concept: "疫苗生物学"
+domain: "biology"
+subdomain: "microbiology"
+subdomain_name: "微生物学"
 difficulty: 3
----
+is_milestone: false
+tags: ["医学"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 疫苗生物学
 
 ## 核心内容

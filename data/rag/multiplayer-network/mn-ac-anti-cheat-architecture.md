@@ -1,3 +1,22 @@
+---
+id: "mn-ac-anti-cheat-architecture"
+concept: "反作弊架构"
+domain: "multiplayer-network"
+subdomain: "anti-cheat"
+subdomain_name: "反作弊"
+difficulty: 3
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.5
+generation_method: "template-v1"
+unique_content_ratio: 0.357
+last_scored: "2026-03-21"
+sources: []
+---
 # 反作弊架构
 
 > 领域: 网络多人 > 反作弊

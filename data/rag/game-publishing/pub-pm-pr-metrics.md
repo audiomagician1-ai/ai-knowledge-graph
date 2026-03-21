@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: pr-media
-concept_id: pub-pm-pr-metrics
+id: "pub-pm-pr-metrics"
+concept: "PR效果度量"
+domain: "game-publishing"
+subdomain: "pr-media"
+subdomain_name: "PR/媒体关系"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # PR效果度量
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "euphemisms"
-name: "委婉语"
+concept: "委婉语"
+domain: "english"
 subdomain: "idioms-culture"
 subdomain_name: "习语与文化"
 difficulty: 4
 is_milestone: false
 tags: ["文化"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.5
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 委婉语
 
 ## 概述

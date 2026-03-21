@@ -1,10 +1,22 @@
 ---
-concept: 蒙特卡洛模拟
-subdomain: 量化金融
-domain: finance
+id: "monte-carlo-simulation"
+concept: "蒙特卡洛模拟"
+domain: "finance"
+subdomain: "quantitative-finance"
+subdomain_name: "量化金融"
 difficulty: 3
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 蒙特卡洛模拟
 
 ## 核心概念

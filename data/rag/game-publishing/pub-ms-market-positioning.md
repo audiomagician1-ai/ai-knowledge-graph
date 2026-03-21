@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: market-strategy
-concept_id: pub-ms-market-positioning
+id: "pub-ms-market-positioning"
+concept: "市场定位"
+domain: "game-publishing"
+subdomain: "market-strategy"
+subdomain_name: "市场策略"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 市场定位
 
 ## 概述

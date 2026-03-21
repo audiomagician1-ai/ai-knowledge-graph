@@ -1,10 +1,22 @@
 ---
-concept: 辅助瞄准
-subdomain: 可达性设计
-domain: game-design
+id: "aim-assist"
+concept: "辅助瞄准"
+domain: "game-design"
+subdomain: "accessibility"
+subdomain_name: "可达性设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["操作"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 辅助瞄准
 
 ## 核心内容

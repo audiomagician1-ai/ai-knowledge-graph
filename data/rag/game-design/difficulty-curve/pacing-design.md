@@ -1,10 +1,22 @@
 ---
-concept: 节奏设计
-subdomain: 难度曲线
-domain: game-design
+id: "pacing-design"
+concept: "节奏设计"
+domain: "game-design"
+subdomain: "difficulty-curve"
+subdomain_name: "难度曲线"
 difficulty: 2
----
+is_milestone: false
+tags: ["节奏"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 节奏设计
 
 ## 核心内容

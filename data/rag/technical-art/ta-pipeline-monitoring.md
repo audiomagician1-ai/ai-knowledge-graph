@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pipeline-build
-concept_id: ta-pipeline-monitoring
+id: "ta-pipeline-monitoring"
+concept: "管线监控"
+domain: "technical-art"
+subdomain: "pipeline-build"
+subdomain_name: "管线搭建"
 difficulty: 3
-content_type: theory
-tags: [管理]
----
+is_milestone: false
+tags: ["管理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 18.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 管线监控
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: monotone-stack
-subdomain: algorithms
+id: "monotone-stack"
+concept: "单调栈"
+domain: "ai-engineering"
+subdomain: "algorithms"
+subdomain_name: "算法"
 difficulty: 6
-prereqs: [stack]
----
+is_milestone: false
+tags: ["算法技巧"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 61.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 单调栈
 
 ## 核心概念

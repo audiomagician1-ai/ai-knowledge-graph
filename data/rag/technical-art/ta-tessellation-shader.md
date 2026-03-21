@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: shader-dev
-concept_id: ta-tessellation-shader
+id: "ta-tessellation-shader"
+concept: "曲面细分着色器"
+domain: "technical-art"
+subdomain: "shader-dev"
+subdomain_name: "Shader开发"
 difficulty: 3
-content_type: theory
-tags: [进阶]
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 曲面细分着色器
 
 ## 概述

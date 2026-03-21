@@ -1,10 +1,22 @@
 ---
-concept: 参数曲面
-subdomain: 几何处理
-domain: computer-graphics
+id: "cg-parametric-surface"
+concept: "参数曲面"
+domain: "computer-graphics"
+subdomain: "geometry-processing"
+subdomain_name: "几何处理"
 difficulty: 3
----
+is_milestone: false
+tags: ["数学"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.8
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 参数曲面
 
 ## 核心内容

@@ -1,13 +1,22 @@
 ---
 id: "qa-lt-loc-metrics"
-title: "本地化质量指标"
+concept: "本地化质量指标"
 domain: "game-qa"
 subdomain: "localization-testing"
+subdomain_name: "本地化测试"
 difficulty: 2
-estimated_minutes: 30
 is_milestone: true
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 本地化质量指标
 
 > **子领域**: 本地化测试 | **难度**: 基础 | **预计学习时间**: 30分钟

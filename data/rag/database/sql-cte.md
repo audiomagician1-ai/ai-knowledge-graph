@@ -1,3 +1,22 @@
+---
+id: "sql-cte"
+concept: "CTE公共表表达式"
+domain: "ai-engineering"
+subdomain: "database"
+subdomain_name: "数据库"
+difficulty: 4
+is_milestone: false
+tags: ["cte", "recursive", "sql"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # CTE公共表表达式
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 25分钟

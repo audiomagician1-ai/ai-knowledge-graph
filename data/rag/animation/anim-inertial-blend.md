@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: blend-space
-concept_id: anim-inertial-blend
+id: "anim-inertial-blend"
+concept: "惯性混合"
+domain: "animation"
+subdomain: "blend-space"
+subdomain_name: "BlendSpace"
 difficulty: 3
-content_type: theory
-tags: [进阶]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 惯性混合
 
 ## 概述

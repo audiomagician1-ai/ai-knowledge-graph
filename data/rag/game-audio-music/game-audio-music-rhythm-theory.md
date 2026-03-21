@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-rhythm-theory"
+concept: "节奏理论"
+domain: "game-audio-music"
+subdomain: "music-theory"
+subdomain_name: "音乐理论"
+difficulty: 1
+is_milestone: false
+tags: ["基础"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 35.9
+generation_method: "template-v1"
+unique_content_ratio: 0.588
+last_scored: "2026-03-21"
+sources: []
+---
 # 节奏理论
 
 > **领域**: 游戏音乐 | **子领域**: 音乐理论 | **难度**: 入门

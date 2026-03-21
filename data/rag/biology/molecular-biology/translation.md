@@ -1,10 +1,22 @@
 ---
-concept: 翻译
-subdomain: 分子生物学
-domain: biology
+id: "translation"
+concept: "翻译"
+domain: "biology"
+subdomain: "molecular-biology"
+subdomain_name: "分子生物学"
 difficulty: 3
----
+is_milestone: false
+tags: ["基因表达"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 翻译
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: ECS序列化
-subdomain: ECS架构
-domain: software-engineering
+id: "se-ecs-serialization"
+concept: "ECS序列化"
+domain: "software-engineering"
+subdomain: "ecs-architecture"
+subdomain_name: "ECS架构"
 difficulty: 3
----
+is_milestone: false
+tags: ["持久化"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # ECS序列化
 
 ## 核心内容

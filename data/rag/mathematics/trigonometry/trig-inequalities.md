@@ -1,14 +1,22 @@
 ---
 id: "trig-inequalities"
-name: "三角不等式"
+concept: "三角不等式"
+domain: "mathematics"
 subdomain: "trigonometry"
 subdomain_name: "三角学"
 difficulty: 6
 is_milestone: false
 tags: ["进阶"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.2
+generation_method: "template-v1"
+unique_content_ratio: 0.727
+last_scored: "2026-03-21"
+sources: []
+---
 # 三角不等式
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: GameObject-Component
-subdomain: Unity架构
-domain: game-engine
+id: "unity-gameobject"
+concept: "GameObject-Component"
+domain: "game-engine"
+subdomain: "unity-architecture"
+subdomain_name: "Unity架构"
 difficulty: 2
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.4
+generation_method: "template-v1"
+unique_content_ratio: 0.538
+last_scored: "2026-03-21"
+sources: []
+---
 # GameObject-Component
 
 ## 核心内容

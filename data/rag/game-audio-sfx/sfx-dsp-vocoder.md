@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: dsp-effects
-concept_id: sfx-dsp-vocoder
+id: "sfx-dsp-vocoder"
+concept: "声码器"
+domain: "game-audio-sfx"
+subdomain: "dsp-effects"
+subdomain_name: "混响与DSP"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 声码器
 
 ## 概述

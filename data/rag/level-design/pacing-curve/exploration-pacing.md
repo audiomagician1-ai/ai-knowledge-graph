@@ -1,10 +1,22 @@
 ---
-concept: 探索节奏
-subdomain: 节奏曲线
-domain: level-design
+id: "exploration-pacing"
+concept: "探索节奏"
+domain: "level-design"
+subdomain: "pacing-curve"
+subdomain_name: "节奏曲线"
 difficulty: 2
----
+is_milestone: false
+tags: ["探索"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 探索节奏
 
 ## 核心内容

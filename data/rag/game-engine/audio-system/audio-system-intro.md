@@ -1,10 +1,22 @@
 ---
-concept: 音频系统概述
-subdomain: 音频系统
-domain: game-engine
+id: "audio-system-intro"
+concept: "音频系统概述"
+domain: "game-engine"
+subdomain: "audio-system"
+subdomain_name: "音频系统"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 音频系统概述
 
 ## 核心内容

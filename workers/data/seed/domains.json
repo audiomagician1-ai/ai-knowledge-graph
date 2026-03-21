@@ -2,7 +2,7 @@
   "domains": [
     {
       "id": "ai-engineering",
-      "name": "AI工程",
+      "name": "AI编程",
       "description": "从编程基础到AI系统设计的完整知识体系",
       "icon": "🟣",
       "color": "#8b5cf6",
@@ -263,6 +263,61 @@
       "rag_dir": "narrative-design",
       "is_active": true,
       "sort_order": 24
+    },
+    {
+      "id": "multiplayer-network",
+      "name": "网络多人",
+      "description": "网络多人游戏知识体系，覆盖网络架构、状态同步、帧同步、匹配系统、反作弊、服务端架构、数据库设计、CDN与热更新、大厅系统与排行榜",
+      "icon": "🌐",
+      "color": "#0369a1",
+      "seed_dir": "multiplayer-network",
+      "rag_dir": "multiplayer-network",
+      "is_active": true,
+      "sort_order": 25
+    },
+    {
+      "id": "game-audio-sfx",
+      "name": "音效设计",
+      "description": "音效设计知识体系，覆盖音效设计理论、Foley录制、音频中间件(Wwise/FMOD)、空间音频、混响/DSP、声音资源管理、对白处理、环境声设计与音效优化",
+      "icon": "🔊",
+      "color": "#475569",
+      "seed_dir": "game-audio-sfx",
+      "rag_dir": "game-audio-sfx",
+      "is_active": true,
+      "sort_order": 26
+    },
+    {
+      "id": "game-publishing",
+      "name": "市场发行",
+      "description": "市场发行知识体系，覆盖市场策略、用户获取(UA)、品牌建设、平台规则(Steam/iOS/Android)、社区运营、PR/媒体关系、发行商合作、地区化运营与评级/合规",
+      "icon": "📢",
+      "color": "#be123c",
+      "seed_dir": "game-publishing",
+      "rag_dir": "game-publishing",
+      "is_active": true,
+      "sort_order": 27
+    },
+    {
+      "id": "game-live-ops",
+      "name": "运营",
+      "description": "游戏运营知识体系，覆盖数据分析、活动策划、用户留存、付费系统(内购/Battle Pass)、版本更新节奏、赛季运营、客服体系、A/B测试与经济系统监控",
+      "icon": "📊",
+      "color": "#ca8a04",
+      "seed_dir": "game-live-ops",
+      "rag_dir": "game-live-ops",
+      "is_active": true,
+      "sort_order": 28
+    },
+    {
+      "id": "game-qa",
+      "name": "QA测试",
+      "description": "游戏QA测试知识体系，覆盖功能测试、自动化测试、性能测试(Profiling)、兼容性测试、本地化测试、回归测试、Bug生命周期与测试工具链",
+      "icon": "🧪",
+      "color": "#10b981",
+      "seed_dir": "game-qa",
+      "rag_dir": "game-qa",
+      "is_active": true,
+      "sort_order": 29
     }
   ]
 }

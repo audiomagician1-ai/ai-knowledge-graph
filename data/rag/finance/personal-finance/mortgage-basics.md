@@ -1,10 +1,22 @@
 ---
-concept: 房贷基础
-subdomain: 个人理财
-domain: finance
+id: "mortgage-basics"
+concept: "房贷基础"
+domain: "finance"
+subdomain: "personal-finance"
+subdomain_name: "个人理财"
 difficulty: 2
----
+is_milestone: false
+tags: ["贷款"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.1
+generation_method: "template-v1"
+unique_content_ratio: 0.222
+last_scored: "2026-03-21"
+sources: []
+---
 # 房贷基础
 
 ## 核心概念

@@ -1,3 +1,22 @@
+---
+id: "api-versioning"
+concept: "API版本管理"
+domain: "ai-engineering"
+subdomain: "web-backend"
+subdomain_name: "Web后端"
+difficulty: 3
+is_milestone: false
+tags: ["versioning", "backward-compatible", "api"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # API版本管理
 
 > **难度**: (3/5) | **预计学习时间**: 20分钟

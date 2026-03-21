@@ -1,14 +1,22 @@
 ---
 id: "review-writing"
-name: "书评/影评"
-subdomain: "writing-en"
-subdomain_name: "写作"
-difficulty: 5
+concept: "评论写作"
+domain: "writing"
+subdomain: "expository-writing"
+subdomain_name: "说明文写作"
+difficulty: 3
 is_milestone: false
 tags: ["应用"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.357
+last_scored: "2026-03-21"
+sources: []
+---
 # 书评/影评
 
 ## 概述

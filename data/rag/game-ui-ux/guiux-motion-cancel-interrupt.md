@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: motion-design
-concept_id: guiux-motion-cancel-interrupt
-title: 动画取消与中断
+id: "guiux-motion-cancel-interrupt"
+concept: "动画取消与中断"
+domain: "game-ui-ux"
+subdomain: "motion-design"
+subdomain_name: "动效设计"
 difficulty: 3
 is_milestone: false
 tags: ["motion-design", "动画取消与中断"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 动画取消与中断
 
 > **领域**: 游戏UI/UX > 动效设计 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

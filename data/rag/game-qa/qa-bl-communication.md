@@ -1,13 +1,22 @@
 ---
 id: "qa-bl-communication"
-title: "Bug沟通技巧"
+concept: "Bug沟通技巧"
 domain: "game-qa"
 subdomain: "bug-lifecycle"
+subdomain_name: "Bug生命周期"
 difficulty: 2
-estimated_minutes: 25
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # Bug沟通技巧
 
 > **子领域**: Bug生命周期 | **难度**: 基础 | **预计学习时间**: 25分钟

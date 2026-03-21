@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: brand-building
-concept_id: pub-bb-visual-identity
+id: "pub-bb-visual-identity"
+concept: "视觉识别系统"
+domain: "game-publishing"
+subdomain: "brand-building"
+subdomain_name: "品牌建设"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 视觉识别系统
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 负反馈循环
-subdomain: 反馈系统
-domain: game-design
+id: "negative-feedback-loop"
+concept: "负反馈循环"
+domain: "game-design"
+subdomain: "feedback-systems"
+subdomain_name: "反馈系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["循环"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 负反馈循环
 
 ## 核心内容

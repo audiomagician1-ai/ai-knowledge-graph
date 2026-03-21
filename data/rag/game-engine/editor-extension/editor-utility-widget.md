@@ -1,10 +1,22 @@
 ---
-concept: 编辑器工具Widget
-subdomain: 编辑器扩展
-domain: game-engine
+id: "editor-utility-widget"
+concept: "编辑器工具Widget"
+domain: "game-engine"
+subdomain: "editor-extension"
+subdomain_name: "编辑器扩展"
 difficulty: 2
----
+is_milestone: false
+tags: ["UE5"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 编辑器工具Widget
 
 ## 核心内容

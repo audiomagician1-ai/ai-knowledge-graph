@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: publisher-collab
-concept_id: pub-pc-legal-review
+id: "pub-pc-legal-review"
+concept: "法律审查"
+domain: "game-publishing"
+subdomain: "publisher-collab"
+subdomain_name: "发行商合作"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 法律审查
 
 ## 概述

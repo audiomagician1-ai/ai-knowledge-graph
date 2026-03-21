@@ -1,10 +1,22 @@
 ---
-concept: 事实核查
-subdomain: 说明文写作
-domain: writing
+id: "fact-checking"
+concept: "事实核查"
+domain: "writing"
+subdomain: "expository-writing"
+subdomain_name: "说明文写作"
 difficulty: 2
----
+is_milestone: false
+tags: ["规范"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.8
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 事实核查
 
 ## 核心内容

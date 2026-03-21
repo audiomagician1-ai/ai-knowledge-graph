@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-fmod-command-instrument"
+concept: "Command Instrument"
+domain: "game-audio-music"
+subdomain: "fmod-music"
+subdomain_name: "FMOD音乐"
+difficulty: 4
+is_milestone: false
+tags: ["高级"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.647
+last_scored: "2026-03-21"
+sources: []
+---
 # Command Instrument
 
 > **领域**: 游戏音乐 | **子领域**: FMOD音乐 | **难度**: 高级

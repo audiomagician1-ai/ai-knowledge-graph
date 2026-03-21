@@ -1,14 +1,22 @@
 ---
 id: "variables-expressions"
-name: "变量与代数式"
+concept: "变量与代数式"
+domain: "mathematics"
 subdomain: "algebra"
 subdomain_name: "代数"
 difficulty: 2
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.786
+last_scored: "2026-03-21"
+sources: []
+---
 # 变量与代数式
 
 ## 概述

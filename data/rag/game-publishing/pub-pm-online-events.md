@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: pr-media
-concept_id: pub-pm-online-events
+id: "pub-pm-online-events"
+concept: "线上活动"
+domain: "game-publishing"
+subdomain: "pr-media"
+subdomain_name: "PR/媒体关系"
 difficulty: 5
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 线上活动
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "nd-lo-locale-specific-content"
+concept: "地区专属内容"
+domain: "narrative-design"
+subdomain: "localization"
+subdomain_name: "本地化"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.909
+last_scored: "2026-03-21"
+sources: []
+---
 # 地区专属内容
 
 > 领域: 叙事设计 > 本地化

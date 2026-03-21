@@ -1,14 +1,22 @@
 ---
 id: "environment-variables"
-name: "环境变量管理"
+concept: "环境变量管理"
+domain: "ai-engineering"
 subdomain: "devops"
 subdomain_name: "开发运维"
 difficulty: 3
 is_milestone: false
 tags: ["配置"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 环境变量管理
 
 ## 概述

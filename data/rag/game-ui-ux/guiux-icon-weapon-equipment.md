@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: icon-system
-concept_id: guiux-icon-weapon-equipment
-title: 武器/装备图标
+id: "guiux-icon-weapon-equipment"
+concept: "武器/装备图标"
+domain: "game-ui-ux"
+subdomain: "icon-system"
+subdomain_name: "图标系统"
 difficulty: 2
 is_milestone: false
 tags: ["icon-system", "武器/装备图标"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 武器/装备图标
 
 > **领域**: 游戏UI/UX > 图标系统 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

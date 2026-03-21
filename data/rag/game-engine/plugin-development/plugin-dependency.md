@@ -1,10 +1,22 @@
 ---
-concept: 插件依赖管理
-subdomain: 插件开发
-domain: game-engine
+id: "plugin-dependency"
+concept: "插件依赖管理"
+domain: "game-engine"
+subdomain: "plugin-development"
+subdomain_name: "插件开发"
 difficulty: 2
----
+is_milestone: false
+tags: ["依赖"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 插件依赖管理
 
 ## 核心内容

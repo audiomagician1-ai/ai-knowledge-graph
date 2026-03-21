@@ -1,10 +1,22 @@
 ---
-concept: 小地图引导
-subdomain: 引导设计
-domain: level-design
+id: "minimap-guidance"
+concept: "小地图引导"
+domain: "level-design"
+subdomain: "guidance-design"
+subdomain_name: "引导设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["UI"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 小地图引导
 
 ## 核心内容

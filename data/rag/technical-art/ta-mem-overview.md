@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: memory-budget
-concept_id: ta-mem-overview
+id: "ta-mem-overview"
+concept: "内存管理概述"
+domain: "technical-art"
+subdomain: "memory-budget"
+subdomain_name: "内存与预算"
 difficulty: 1
-content_type: theory
-tags: [基础]
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.5
+generation_method: "template-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 内存管理概述
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "cli-programming"
+concept: "命令行程序开发"
+domain: "ai-engineering"
+subdomain: "programming-basics"
+subdomain_name: "编程基础"
+difficulty: 3
+is_milestone: false
+tags: ["argparse", "cli", "terminal"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 命令行程序开发
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 25分钟

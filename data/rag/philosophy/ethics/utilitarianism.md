@@ -1,10 +1,22 @@
 ---
-concept: 功利主义
-subdomain: 伦理学
-domain: philosophy
+id: "utilitarianism"
+concept: "功利主义"
+domain: "philosophy"
+subdomain: "ethics"
+subdomain_name: "伦理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.1
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 功利主义
 
 ## 核心内容

@@ -1,14 +1,22 @@
 ---
 id: "dictionaries-maps"
-name: "字典/映射"
+concept: "字典/映射"
+domain: "ai-engineering"
 subdomain: "programming-basics"
 subdomain_name: "编程基础"
 difficulty: 2
 is_milestone: false
 tags: ["数据类型"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 字典/映射
 
 ## 概述

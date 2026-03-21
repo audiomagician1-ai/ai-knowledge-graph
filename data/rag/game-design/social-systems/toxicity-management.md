@@ -1,10 +1,22 @@
 ---
-concept: 毒性管理
-subdomain: 社交系统
-domain: game-design
+id: "toxicity-management"
+concept: "毒性管理"
+domain: "game-design"
+subdomain: "social-systems"
+subdomain_name: "社交系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["安全"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 毒性管理
 
 ## 核心内容

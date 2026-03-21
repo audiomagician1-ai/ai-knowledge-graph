@@ -1,3 +1,22 @@
+---
+id: "secret-management"
+concept: "密钥管理"
+domain: "ai-engineering"
+subdomain: "devops"
+subdomain_name: "开发运维"
+difficulty: 4
+is_milestone: false
+tags: ["vault", "secrets", "rotation"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.3
+generation_method: "template-v1"
+unique_content_ratio: 0.615
+last_scored: "2026-03-21"
+sources: []
+---
 # 密钥管理
 
 > **难度**: (4/5) | **预计学习时间**: 25分钟

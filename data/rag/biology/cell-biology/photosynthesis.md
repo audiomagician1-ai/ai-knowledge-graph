@@ -1,10 +1,22 @@
 ---
-concept: 光合作用
-subdomain: 细胞生物学
-domain: biology
+id: "photosynthesis"
+concept: "光合作用"
+domain: "biology"
+subdomain: "cell-biology"
+subdomain_name: "细胞生物学"
 difficulty: 3
----
+is_milestone: false
+tags: ["代谢"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.8
+generation_method: "template-v1"
+unique_content_ratio: 0.182
+last_scored: "2026-03-21"
+sources: []
+---
 # 光合作用
 
 ## 核心内容

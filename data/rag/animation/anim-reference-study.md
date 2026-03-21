@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: animation-principles
-concept_id: anim-reference-study
+id: "anim-reference-study"
+concept: "动画参考研究"
+domain: "animation"
+subdomain: "animation-principles"
+subdomain_name: "动画原理"
 difficulty: 1
-content_type: practice
-tags: [实践]
-estimated_minutes: 20
----
+is_milestone: false
+tags: ["实践"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 动画参考研究
 
 ## 概述

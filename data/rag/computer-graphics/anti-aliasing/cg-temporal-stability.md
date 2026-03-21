@@ -1,10 +1,22 @@
 ---
-concept: 时间稳定性
-subdomain: 抗锯齿
-domain: computer-graphics
+id: "cg-temporal-stability"
+concept: "时间稳定性"
+domain: "computer-graphics"
+subdomain: "anti-aliasing"
+subdomain_name: "抗锯齿"
 difficulty: 3
----
+is_milestone: false
+tags: ["质量"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 时间稳定性
 
 ## 核心内容

@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-case-study-leitmotif"
+concept: "案例分析:主题动机"
+domain: "game-audio-music"
+subdomain: "leitmotif"
+subdomain_name: "主题动机"
+difficulty: 2
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.588
+last_scored: "2026-03-21"
+sources: []
+---
 # 案例分析:主题动机
 
 > **领域**: 游戏音乐 | **子领域**: 主题动机 | **难度**: 基础

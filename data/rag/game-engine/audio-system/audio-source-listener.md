@@ -1,10 +1,22 @@
 ---
-concept: Audio Source与Listener
-subdomain: 音频系统
-domain: game-engine
+id: "audio-source-listener"
+concept: "Audio Source与Listener"
+domain: "game-engine"
+subdomain: "audio-system"
+subdomain_name: "音频系统"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Audio Source与Listener
 
 ## 核心内容

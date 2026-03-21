@@ -1,3 +1,22 @@
+---
+id: "observability"
+concept: "可观测性"
+domain: "ai-engineering"
+subdomain: "system-design"
+subdomain_name: "系统设计"
+difficulty: 4
+is_milestone: false
+tags: ["logging", "metrics", "tracing", "opentelemetry"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 可观测性
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: post-process
-concept_id: vfx-pp-ssr
+id: "vfx-pp-ssr"
+concept: "屏幕空间反射"
+domain: "vfx"
+subdomain: "post-process"
+subdomain_name: "后处理特效"
 difficulty: 4
-content_type: applied
-tags: [高级]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.524
+last_scored: "2026-03-21"
+sources: []
+---
 # 屏幕空间反射
 
 ## 概述

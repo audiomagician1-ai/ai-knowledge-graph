@@ -1,3 +1,22 @@
+---
+id: "mn-na-network-protocol-design"
+concept: "网络协议设计"
+domain: "multiplayer-network"
+subdomain: "network-architecture"
+subdomain_name: "网络架构"
+difficulty: 3
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.1
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 网络协议设计
 
 > 领域: 网络多人 > 网络架构

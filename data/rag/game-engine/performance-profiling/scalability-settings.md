@@ -1,10 +1,22 @@
 ---
-concept: 可扩展画质设置
-subdomain: 性能剖析
-domain: game-engine
+id: "scalability-settings"
+concept: "可扩展画质设置"
+domain: "game-engine"
+subdomain: "performance-profiling"
+subdomain_name: "性能剖析"
 difficulty: 2
----
+is_milestone: false
+tags: ["配置"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 可扩展画质设置
 
 ## 核心内容

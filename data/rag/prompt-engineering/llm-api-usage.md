@@ -1,14 +1,22 @@
 ---
 id: "llm-api-usage"
-name: "LLM API调用(OpenAI/Claude)"
+concept: "LLM API调用(OpenAI/Claude)"
+domain: "ai-engineering"
 subdomain: "prompt-engineering"
 subdomain_name: "Prompt工程"
 difficulty: 4
 is_milestone: false
 tags: ["API"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 56.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.786
+last_scored: "2026-03-21"
+sources: []
+---
 # LLM API调用(OpenAI/Claude)
 
 ## 概述

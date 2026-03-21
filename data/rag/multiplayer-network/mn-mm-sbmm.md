@@ -1,3 +1,22 @@
+---
+id: "mn-mm-sbmm"
+concept: "技能匹配(SBMM)"
+domain: "multiplayer-network"
+subdomain: "matchmaking"
+subdomain_name: "匹配系统"
+difficulty: 3
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.1
+generation_method: "template-v1"
+unique_content_ratio: 0.412
+last_scored: "2026-03-21"
+sources: []
+---
 # 技能匹配(SBMM)
 
 > 领域: 网络多人 > 匹配系统

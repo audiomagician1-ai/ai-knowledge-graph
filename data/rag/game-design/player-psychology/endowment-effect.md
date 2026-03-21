@@ -1,10 +1,22 @@
 ---
-concept: 禀赋效应
-subdomain: 玩家心理
-domain: game-design
+id: "endowment-effect"
+concept: "禀赋效应"
+domain: "game-design"
+subdomain: "player-psychology"
+subdomain_name: "玩家心理"
 difficulty: 2
----
+is_milestone: false
+tags: ["行为"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 禀赋效应
 
 ## 核心内容

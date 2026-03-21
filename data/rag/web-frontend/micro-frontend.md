@@ -1,3 +1,22 @@
+---
+id: "micro-frontend"
+concept: "微前端架构"
+domain: "ai-engineering"
+subdomain: "web-frontend"
+subdomain_name: "Web前端"
+difficulty: 5
+is_milestone: false
+tags: ["architecture", "module-federation", "isolation"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 微前端架构
 
 > **难度**: ⭐⭐⭐⭐⭐ (5/5) | **预计学习时间**: 35分钟

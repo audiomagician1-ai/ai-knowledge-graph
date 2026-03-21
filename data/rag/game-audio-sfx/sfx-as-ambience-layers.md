@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: ambient-sound
-concept_id: sfx-as-ambience-layers
+id: "sfx-as-ambience-layers"
+concept: "环境音分层"
+domain: "game-audio-sfx"
+subdomain: "ambient-sound"
+subdomain_name: "环境声设计"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 环境音分层
 
 ## 概述

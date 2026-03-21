@@ -1,10 +1,22 @@
 ---
-concept: 音频性能分析
-subdomain: 音频系统
-domain: game-engine
+id: "audio-profiling"
+concept: "音频性能分析"
+domain: "game-engine"
+subdomain: "audio-system"
+subdomain_name: "音频系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["性能"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 音频性能分析
 
 ## 核心内容

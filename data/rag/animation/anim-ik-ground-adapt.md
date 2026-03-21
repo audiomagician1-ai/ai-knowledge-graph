@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: ik-fk
-concept_id: anim-ik-ground-adapt
+id: "anim-ik-ground-adapt"
+concept: "地形适配IK"
+domain: "animation"
+subdomain: "ik-fk"
+subdomain_name: "IK/FK"
 difficulty: 3
-content_type: practice
-tags: [实战]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["实战"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 地形适配IK
 
 ## 概述

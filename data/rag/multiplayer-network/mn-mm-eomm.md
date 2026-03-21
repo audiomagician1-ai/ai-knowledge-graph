@@ -1,3 +1,22 @@
+---
+id: "mn-mm-eomm"
+concept: "参与度优化匹配"
+domain: "multiplayer-network"
+subdomain: "matchmaking"
+subdomain_name: "匹配系统"
+difficulty: 4
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.8
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 参与度优化匹配
 
 > 领域: 网络多人 > 匹配系统

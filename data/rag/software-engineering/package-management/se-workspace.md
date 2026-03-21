@@ -1,10 +1,22 @@
 ---
-concept: Workspace管理
-subdomain: 包管理
-domain: software-engineering
+id: "se-workspace"
+concept: "Workspace管理"
+domain: "software-engineering"
+subdomain: "package-management"
+subdomain_name: "包管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["Monorepo"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # Workspace管理
 
 ## 核心内容

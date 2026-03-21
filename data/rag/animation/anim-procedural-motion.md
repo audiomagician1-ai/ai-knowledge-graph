@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: physics-animation
-concept_id: anim-procedural-motion
+id: "anim-procedural-motion"
+concept: "程序化运动"
+domain: "animation"
+subdomain: "physics-animation"
+subdomain_name: "物理动画"
 difficulty: 3
-content_type: practice
-tags: [进阶]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 程序化运动
 
 ## 概述

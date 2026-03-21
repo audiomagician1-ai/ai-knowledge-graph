@@ -1,10 +1,22 @@
 ---
-concept: 通胀挂钩债券
-subdomain: 固定收益
-domain: finance
+id: "inflation-linked-bonds"
+concept: "通胀挂钩债券"
+domain: "finance"
+subdomain: "fixed-income"
+subdomain_name: "固定收益"
 difficulty: 3
----
+is_milestone: false
+tags: ["品种"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 通胀挂钩债券
 
 ## 核心概念

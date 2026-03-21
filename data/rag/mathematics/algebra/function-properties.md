@@ -1,14 +1,22 @@
 ---
 id: "function-properties"
-name: "函数的性质"
+concept: "函数的性质"
+domain: "mathematics"
 subdomain: "algebra"
 subdomain_name: "代数"
 difficulty: 5
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.5
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 函数的性质
 
 ## 概述

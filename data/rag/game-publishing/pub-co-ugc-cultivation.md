@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: community-ops
-concept_id: pub-co-ugc-cultivation
+id: "pub-co-ugc-cultivation"
+concept: "UGC培育"
+domain: "game-publishing"
+subdomain: "community-ops"
+subdomain_name: "社区运营"
 difficulty: 2
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # UGC培育
 
 ## 概述

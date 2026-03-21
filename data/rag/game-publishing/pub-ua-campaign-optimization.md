@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: user-acquisition
-concept_id: pub-ua-campaign-optimization
+id: "pub-ua-campaign-optimization"
+concept: "投放优化"
+domain: "game-publishing"
+subdomain: "user-acquisition"
+subdomain_name: "用户获取(UA)"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 投放优化
 
 ## 概述

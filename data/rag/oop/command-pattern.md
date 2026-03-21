@@ -1,3 +1,22 @@
+---
+id: "command-pattern"
+concept: "命令模式"
+domain: "game-engine"
+subdomain: "scripting-system"
+subdomain_name: "脚本系统"
+difficulty: 2
+is_milestone: false
+tags: ["模式"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.1
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 命令模式
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 25分钟

@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: material-system
-concept_id: ta-parallax-mapping
+id: "ta-parallax-mapping"
+concept: "视差贴图"
+domain: "technical-art"
+subdomain: "material-system"
+subdomain_name: "材质系统"
 difficulty: 3
-content_type: theory
-tags: [进阶]
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 视差贴图
 
 ## 概述

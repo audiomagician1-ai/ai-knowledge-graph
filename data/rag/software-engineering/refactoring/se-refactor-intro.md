@@ -1,10 +1,22 @@
 ---
-concept: 重构概述
-subdomain: 重构
-domain: software-engineering
+id: "se-refactor-intro"
+concept: "重构概述"
+domain: "software-engineering"
+subdomain: "refactoring"
+subdomain_name: "重构"
 difficulty: 1
----
+is_milestone: true
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 重构概述
 
 ## 核心内容

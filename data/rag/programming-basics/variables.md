@@ -1,14 +1,22 @@
 ---
 id: "variables"
-name: "变量与数据类型"
+concept: "变量与数据类型"
+domain: "ai-engineering"
 subdomain: "programming-basics"
 subdomain_name: "编程基础"
 difficulty: 1
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 变量与数据类型
 
 ## 概述

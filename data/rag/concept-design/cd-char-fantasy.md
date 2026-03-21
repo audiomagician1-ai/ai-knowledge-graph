@@ -1,3 +1,22 @@
+---
+id: "cd-char-fantasy"
+concept: "奇幻角色设计"
+domain: "concept-design"
+subdomain: "character-design"
+subdomain_name: "角色设计"
+difficulty: 3
+is_milestone: false
+tags: ["风格"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 奇幻角色设计
 
 ## 概述

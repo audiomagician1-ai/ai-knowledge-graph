@@ -1,3 +1,22 @@
+---
+id: "prompt-template-patterns"
+concept: "Prompt模板设计模式"
+domain: "ai-engineering"
+subdomain: "prompt-engineering"
+subdomain_name: "Prompt工程"
+difficulty: 3
+is_milestone: false
+tags: ["template", "pattern", "role-play"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # Prompt模板设计模式
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 25分钟

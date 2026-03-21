@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pcg
-concept_id: ta-houdini-engine
+id: "ta-houdini-engine"
+concept: "Houdini Engine"
+domain: "technical-art"
+subdomain: "pcg"
+subdomain_name: "程序化生成"
 difficulty: 3
-content_type: practice
-tags: [工具]
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # Houdini Engine
 
 ## 概述

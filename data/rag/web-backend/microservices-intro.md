@@ -1,14 +1,22 @@
 ---
 id: "microservices-intro"
-name: "微服务入门"
+concept: "微服务入门"
+domain: "ai-engineering"
 subdomain: "web-backend"
 subdomain_name: "Web后端"
 difficulty: 7
 is_milestone: false
 tags: ["架构"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.786
+last_scored: "2026-03-21"
+sources: []
+---
 # 微服务入门
 
 ## 概述

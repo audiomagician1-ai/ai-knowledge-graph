@@ -1,3 +1,22 @@
+---
+id: "mn-ls-replay-system"
+concept: "回放系统"
+domain: "multiplayer-network"
+subdomain: "lockstep-sync"
+subdomain_name: "帧同步"
+difficulty: 2
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # 回放系统
 
 > 领域: 网络多人 > 帧同步

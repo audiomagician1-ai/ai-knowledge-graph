@@ -1,10 +1,22 @@
 ---
-concept: UE5网络架构
-subdomain: UE5架构
-domain: game-engine
+id: "ue5-networking"
+concept: "UE5网络架构"
+domain: "game-engine"
+subdomain: "ue5-architecture"
+subdomain_name: "UE5架构"
 difficulty: 3
----
+is_milestone: false
+tags: ["网络"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # UE5网络架构
 
 ## 核心内容

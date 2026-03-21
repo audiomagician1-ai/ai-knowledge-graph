@@ -1,10 +1,22 @@
 ---
-concept: 引擎垃圾回收
-subdomain: 资源管理
-domain: game-engine
+id: "garbage-collection-engine"
+concept: "引擎垃圾回收"
+domain: "game-engine"
+subdomain: "resource-management"
+subdomain_name: "资源管理"
 difficulty: 3
----
+is_milestone: false
+tags: ["内存"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 引擎垃圾回收
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 工作量估算
-subdomain: 产品管理
-domain: product-design
+id: "estimation-techniques"
+concept: "工作量估算"
+domain: "product-design"
+subdomain: "product-management"
+subdomain_name: "产品管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["敏捷"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.8
+generation_method: "template-v1"
+unique_content_ratio: 0.2
+last_scored: "2026-03-21"
+sources: []
+---
 # 工作量估算
 
 ## 核心概念

@@ -1,10 +1,22 @@
 ---
-concept: 旁观者效应
-subdomain: 社会心理学
-domain: psychology
+id: "bystander-effect"
+concept: "旁观者效应"
+domain: "psychology"
+subdomain: "social-psychology"
+subdomain_name: "社会心理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["经典"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.4
+generation_method: "template-v1"
+unique_content_ratio: 0.182
+last_scored: "2026-03-21"
+sources: []
+---
 # 旁观者效应
 
 ## 核心内容

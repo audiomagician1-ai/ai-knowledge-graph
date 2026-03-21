@@ -1,14 +1,22 @@
 ---
 id: "trig-applications"
-name: "三角函数应用"
+concept: "三角函数应用"
+domain: "mathematics"
 subdomain: "trigonometry"
 subdomain_name: "三角学"
 difficulty: 5
 is_milestone: false
 tags: ["应用"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 43.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 三角函数应用
 
 ## 概述

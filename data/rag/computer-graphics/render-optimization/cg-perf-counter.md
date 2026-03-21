@@ -1,10 +1,22 @@
 ---
-concept: 性能计数器
-subdomain: 渲染优化
-domain: computer-graphics
+id: "cg-perf-counter"
+concept: "性能计数器"
+domain: "computer-graphics"
+subdomain: "render-optimization"
+subdomain_name: "渲染优化"
 difficulty: 3
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 性能计数器
 
 ## 核心内容

@@ -1,14 +1,22 @@
 ---
 id: "design-rate-limiter"
-name: "设计限流器"
+concept: "设计限流器"
+domain: "ai-engineering"
 subdomain: "system-design"
 subdomain_name: "系统设计"
 difficulty: 7
 is_milestone: false
 tags: ["实战"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 设计限流器
 
 ## 概述

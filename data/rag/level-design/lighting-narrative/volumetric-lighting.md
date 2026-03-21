@@ -1,10 +1,22 @@
 ---
-concept: 体积光效
-subdomain: 光照叙事
-domain: level-design
+id: "volumetric-lighting"
+concept: "体积光效"
+domain: "level-design"
+subdomain: "lighting-narrative"
+subdomain_name: "光照叙事"
 difficulty: 3
----
+is_milestone: false
+tags: ["特效"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 体积光效
 
 ## 核心内容

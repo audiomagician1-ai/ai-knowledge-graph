@@ -1,3 +1,22 @@
+---
+id: "nd-ci-branching-cutscene"
+concept: "分支过场"
+domain: "narrative-design"
+subdomain: "cinematics"
+subdomain_name: "过场动画"
+difficulty: 4
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 分支过场
 
 > 领域: 叙事设计 > 过场动画

@@ -1,10 +1,22 @@
 ---
-concept: 摄像机输入控制
-subdomain: 输入系统
-domain: game-engine
+id: "camera-input"
+concept: "摄像机输入控制"
+domain: "game-engine"
+subdomain: "input-system"
+subdomain_name: "输入系统"
 difficulty: 2
----
+is_milestone: false
+tags: ["摄像机"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 摄像机输入控制
 
 ## 核心内容

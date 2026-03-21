@@ -1,3 +1,22 @@
+---
+id: "browser-storage"
+concept: "浏览器存储机制"
+domain: "ai-engineering"
+subdomain: "web-frontend"
+subdomain_name: "Web前端"
+difficulty: 3
+is_milestone: false
+tags: ["storage", "indexeddb", "persistence"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 浏览器存储机制
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 25分钟

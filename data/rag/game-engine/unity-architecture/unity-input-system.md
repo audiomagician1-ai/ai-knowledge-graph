@@ -1,10 +1,22 @@
 ---
-concept: Unity Input System
-subdomain: Unity架构
-domain: game-engine
+id: "unity-input-system"
+concept: "Unity Input System"
+domain: "game-engine"
+subdomain: "unity-architecture"
+subdomain_name: "Unity架构"
 difficulty: 2
----
+is_milestone: false
+tags: ["输入"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Unity Input System
 
 ## 核心内容

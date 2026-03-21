@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: ik-fk
-concept_id: anim-two-bone-ik
+id: "anim-two-bone-ik"
+concept: "双骨骼IK"
+domain: "animation"
+subdomain: "ik-fk"
+subdomain_name: "IK/FK"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 双骨骼IK
 
 ## 概述

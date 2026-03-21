@@ -1,10 +1,22 @@
 ---
-concept: 希腊字母
-subdomain: 风险管理
-domain: finance
+id: "greeks"
+concept: "希腊字母"
+domain: "finance"
+subdomain: "risk-management"
+subdomain_name: "风险管理"
 difficulty: 3
----
+is_milestone: false
+tags: ["衍生品"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.1
+generation_method: "template-v1"
+unique_content_ratio: 0.222
+last_scored: "2026-03-21"
+sources: []
+---
 # 希腊字母
 
 ## 核心概念

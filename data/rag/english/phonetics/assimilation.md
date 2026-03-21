@@ -1,14 +1,22 @@
 ---
 id: "assimilation"
-name: "语音同化"
+concept: "语音同化"
+domain: "english"
 subdomain: "phonetics"
 subdomain_name: "语音"
 difficulty: 5
 is_milestone: false
 tags: ["进阶"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.9
+generation_method: "template-v1"
+unique_content_ratio: 0.625
+last_scored: "2026-03-21"
+sources: []
+---
 # 语音同化
 
 ## 概述

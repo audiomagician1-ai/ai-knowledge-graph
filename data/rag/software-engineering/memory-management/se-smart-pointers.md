@@ -1,10 +1,22 @@
 ---
-concept: 智能指针
-subdomain: 内存管理
-domain: software-engineering
+id: "se-smart-pointers"
+concept: "智能指针"
+domain: "software-engineering"
+subdomain: "memory-management"
+subdomain_name: "内存管理"
 difficulty: 2
----
+is_milestone: true
+tags: ["C++"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 智能指针
 
 ## 核心内容

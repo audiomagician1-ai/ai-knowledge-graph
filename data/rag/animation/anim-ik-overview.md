@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: ik-fk
-concept_id: anim-ik-overview
+id: "anim-ik-overview"
+concept: "IK/FK概述"
+domain: "animation"
+subdomain: "ik-fk"
+subdomain_name: "IK/FK"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.474
+last_scored: "2026-03-21"
+sources: []
+---
 # IK/FK概述
 
 ## 概述

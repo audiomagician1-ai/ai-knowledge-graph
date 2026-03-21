@@ -1,14 +1,22 @@
 ---
 id: "rag-evaluation"
-name: "RAG评估(Ragas)"
+concept: "RAG评估(Ragas)"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 7
 is_milestone: false
 tags: ["RAG"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # RAG评估(Ragas)
 
 ## 概述

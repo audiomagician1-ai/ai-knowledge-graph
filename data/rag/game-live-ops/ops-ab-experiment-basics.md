@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: ab-testing
-concept_id: ops-ab-experiment-basics
+id: "ops-ab-experiment-basics"
+concept: "实验基础"
+domain: "game-live-ops"
+subdomain: "ab-testing"
+subdomain_name: "A/B测试"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.4
+generation_method: "template-v1"
+unique_content_ratio: 0.429
+last_scored: "2026-03-21"
+sources: []
+---
 # 实验基础
 
 ## 概述

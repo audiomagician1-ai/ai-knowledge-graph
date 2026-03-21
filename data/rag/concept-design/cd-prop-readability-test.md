@@ -1,3 +1,22 @@
+---
+id: "cd-prop-readability-test"
+concept: "可读性测试"
+domain: "concept-design"
+subdomain: "prop-design"
+subdomain_name: "道具设计"
+difficulty: 2
+is_milestone: false
+tags: ["质量"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 可读性测试
 
 ## 概述

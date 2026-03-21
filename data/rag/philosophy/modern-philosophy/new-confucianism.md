@@ -1,10 +1,22 @@
 ---
-concept: 新儒学
-subdomain: 近现代哲学
-domain: philosophy
+id: "new-confucianism"
+concept: "新儒学"
+domain: "philosophy"
+subdomain: "modern-philosophy"
+subdomain_name: "近现代哲学"
 difficulty: 4
----
+is_milestone: false
+tags: ["东方"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.1
+generation_method: "template-v1"
+unique_content_ratio: 0.182
+last_scored: "2026-03-21"
+sources: []
+---
 # 新儒学
 
 ## 核心内容

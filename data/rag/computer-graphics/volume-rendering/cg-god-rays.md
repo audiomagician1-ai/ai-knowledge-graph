@@ -1,10 +1,22 @@
 ---
-concept: 体积光
-subdomain: 体积渲染
-domain: computer-graphics
+id: "cg-god-rays"
+concept: "体积光"
+domain: "computer-graphics"
+subdomain: "volume-rendering"
+subdomain_name: "体积渲染"
 difficulty: 2
----
+is_milestone: false
+tags: ["效果"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 体积光
 
 ## 核心内容

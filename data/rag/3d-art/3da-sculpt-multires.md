@@ -1,3 +1,22 @@
+---
+id: "3da-sculpt-multires"
+concept: "多分辨率雕刻"
+domain: "3d-art"
+subdomain: "sculpting"
+subdomain_name: "数字雕刻"
+difficulty: 2
+is_milestone: true
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 多分辨率雕刻
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "cd-style-intro"
+concept: "风格指南概述"
+domain: "concept-design"
+subdomain: "style-guide"
+subdomain_name: "风格指南"
+difficulty: 1
+is_milestone: false
+tags: ["基础"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.875
+last_scored: "2026-03-21"
+sources: []
+---
 # 风格指南概述
 
 ## 概述

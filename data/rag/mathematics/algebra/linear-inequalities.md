@@ -1,14 +1,22 @@
 ---
 id: "linear-inequalities"
-name: "一元一次不等式"
+concept: "一元一次不等式"
+domain: "mathematics"
 subdomain: "algebra"
 subdomain_name: "代数"
 difficulty: 3
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 一元一次不等式
 
 ## 概述

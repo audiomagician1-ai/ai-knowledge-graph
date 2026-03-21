@@ -1,10 +1,22 @@
 ---
-concept: 内部收益率
-subdomain: 公司金融
-domain: finance
+id: "irr-method"
+concept: "内部收益率"
+domain: "finance"
+subdomain: "corporate-finance"
+subdomain_name: "公司金融"
 difficulty: 3
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.1
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 内部收益率
 
 ## 核心概念

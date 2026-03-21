@@ -1,14 +1,22 @@
 ---
 id: "unit-circle"
-name: "单位圆"
+concept: "单位圆"
+domain: "mathematics"
 subdomain: "trigonometry"
 subdomain_name: "三角学"
 difficulty: 5
-is_milestone: true
+is_milestone: false
 tags: ["里程碑"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 单位圆
 
 ## 概述

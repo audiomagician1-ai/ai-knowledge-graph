@@ -1,10 +1,22 @@
 ---
-concept: 收益率曲线
-subdomain: 固定收益
-domain: finance
+id: "yield-curve"
+concept: "收益率曲线"
+domain: "finance"
+subdomain: "fixed-income"
+subdomain_name: "固定收益"
 difficulty: 2
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.0
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 收益率曲线
 
 ## 核心概念

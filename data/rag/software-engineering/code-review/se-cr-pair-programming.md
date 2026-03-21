@@ -1,10 +1,22 @@
 ---
-concept: 结对编程
-subdomain: 代码审查
-domain: software-engineering
+id: "se-cr-pair-programming"
+concept: "结对编程"
+domain: "software-engineering"
+subdomain: "code-review"
+subdomain_name: "代码审查"
 difficulty: 2
----
+is_milestone: false
+tags: ["协作"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 结对编程
 
 ## 核心内容

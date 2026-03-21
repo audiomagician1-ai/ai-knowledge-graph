@@ -1,10 +1,22 @@
 ---
-concept: 教育金规划
-subdomain: 个人理财
-domain: finance
+id: "education-funding"
+concept: "教育金规划"
+domain: "finance"
+subdomain: "personal-finance"
+subdomain_name: "个人理财"
 difficulty: 3
----
+is_milestone: false
+tags: ["规划"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.5
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 教育金规划
 
 ## 核心概念

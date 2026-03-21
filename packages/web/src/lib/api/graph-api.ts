@@ -26,6 +26,21 @@ export async function fetchDomains(): Promise<Domain[]> {
   return res.json();
 }
 
+/** 领域间连接 */
+export interface DomainLink {
+  source: string;
+  target: string;
+  count: number;
+  relations: string[];
+}
+
+/** 获取领域间连接（聚合的跨领域知识关联） */
+export async function fetchDomainLinks(): Promise<DomainLink[]> {
+  const res = await fetch(`${API_BASE}/graph/domain-links`);
+  if (!res.ok) throw new Error(`获取领域连接失败: ${res.statusText}`);
+  return res.json();
+}
+
 /** 获取概念的邻居节点 */
 export async function fetchNeighbors(conceptId: string, depth: number = 1): Promise<GraphData> {
   const res = await fetch(`${API_BASE}/graph/concepts/${encodeURIComponent(conceptId)}/neighbors?depth=${depth}`);

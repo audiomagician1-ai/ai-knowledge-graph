@@ -1,14 +1,22 @@
 ---
 id: "trig-ratios"
-name: "三角比"
+concept: "三角比"
+domain: "mathematics"
 subdomain: "trigonometry"
 subdomain_name: "三角学"
 difficulty: 4
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 三角比
 
 ## 概述

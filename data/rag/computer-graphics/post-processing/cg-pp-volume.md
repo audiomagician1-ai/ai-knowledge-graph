@@ -1,10 +1,22 @@
 ---
-concept: 后处理体积
-subdomain: 后处理
-domain: computer-graphics
+id: "cg-pp-volume"
+concept: "后处理体积"
+domain: "computer-graphics"
+subdomain: "post-processing"
+subdomain_name: "后处理"
 difficulty: 3
----
+is_milestone: false
+tags: ["引擎"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 后处理体积
 
 ## 核心内容

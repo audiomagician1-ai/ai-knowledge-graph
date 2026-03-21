@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: dialogue-processing
-concept_id: sfx-dp-crowd-walla
+id: "sfx-dp-crowd-walla"
+concept: "人群底噪"
+domain: "game-audio-sfx"
+subdomain: "dialogue-processing"
+subdomain_name: "对白处理"
 difficulty: 3
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 人群底噪
 
 ## 概述

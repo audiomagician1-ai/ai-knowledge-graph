@@ -1,10 +1,22 @@
 ---
-concept: 凯恩斯革命
-subdomain: 经济思想史
-domain: economics
+id: "keynesian-revolution"
+concept: "凯恩斯革命"
+domain: "economics"
+subdomain: "economic-thought"
+subdomain_name: "经济思想史"
 difficulty: 2
----
+is_milestone: false
+tags: ["凯恩斯"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 凯恩斯革命
 
 ## 核心内容

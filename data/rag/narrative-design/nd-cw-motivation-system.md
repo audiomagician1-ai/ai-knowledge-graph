@@ -1,3 +1,22 @@
+---
+id: "nd-cw-motivation-system"
+concept: "动机系统"
+domain: "narrative-design"
+subdomain: "character-writing"
+subdomain_name: "角色塑造"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.875
+last_scored: "2026-03-21"
+sources: []
+---
 # 动机系统
 
 > 领域: 叙事设计 > 角色塑造

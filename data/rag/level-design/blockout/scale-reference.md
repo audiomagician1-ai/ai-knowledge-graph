@@ -1,10 +1,22 @@
 ---
-concept: 尺度参考
-subdomain: Blockout
-domain: level-design
+id: "scale-reference"
+concept: "尺度参考"
+domain: "level-design"
+subdomain: "blockout"
+subdomain_name: "Blockout"
 difficulty: 1
----
+is_milestone: false
+tags: ["度量"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 尺度参考
 
 ## 核心内容

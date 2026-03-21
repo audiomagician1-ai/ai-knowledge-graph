@@ -1,10 +1,22 @@
 ---
-concept: 相容论
-subdomain: 形而上学
-domain: philosophy
+id: "compatibilism"
+concept: "相容论"
+domain: "philosophy"
+subdomain: "metaphysics"
+subdomain_name: "形而上学"
 difficulty: 4
----
+is_milestone: false
+tags: ["争论"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 相容论
 
 ## 核心内容

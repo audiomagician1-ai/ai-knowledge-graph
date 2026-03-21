@@ -1,3 +1,22 @@
+---
+id: "cd-color-key"
+concept: "Color Key"
+domain: "concept-design"
+subdomain: "color-theory"
+subdomain_name: "色彩理论"
+difficulty: 2
+is_milestone: false
+tags: ["流程"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Color Key
 
 ## 概述

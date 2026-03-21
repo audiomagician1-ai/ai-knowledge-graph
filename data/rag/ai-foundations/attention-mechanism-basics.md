@@ -1,10 +1,22 @@
 ---
-concept: attention-mechanism-basics
-subdomain: ai-foundations
+id: "attention-mechanism-basics"
+concept: "注意力机制基础"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
 difficulty: 6
-prereqs: [rnn-basics]
----
+is_milestone: false
+tags: ["AI", "NLP"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 70.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 注意力机制基础
 
 ## 核心概念

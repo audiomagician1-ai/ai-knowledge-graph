@@ -1,10 +1,22 @@
 ---
-concept: fenwick-tree
-subdomain: data-structures
+id: "fenwick-tree"
+concept: "树状数组"
+domain: "ai-engineering"
+subdomain: "data-structures"
+subdomain_name: "数据结构"
 difficulty: 7
-prereqs: [binary-tree, prefix-sum]
----
+is_milestone: false
+tags: ["高级数据结构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 66.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 树状数组（Fenwick Tree）
 
 ## 核心概念

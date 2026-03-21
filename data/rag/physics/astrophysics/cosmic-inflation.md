@@ -1,14 +1,22 @@
 ---
 id: "cosmic-inflation"
-name: "宇宙暴胀"
+concept: "宇宙暴胀"
+domain: "physics"
 subdomain: "astrophysics"
 subdomain_name: "天体物理"
 difficulty: 7
 is_milestone: false
 tags: ["拓展"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 宇宙暴胀
 
 ## 概述

@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pipeline-build
-concept_id: ta-vcs-workflow
+id: "ta-vcs-workflow"
+concept: "版本控制工作流"
+domain: "technical-art"
+subdomain: "pipeline-build"
+subdomain_name: "管线搭建"
 difficulty: 2
-content_type: practice
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 版本控制工作流
 
 ## 概述

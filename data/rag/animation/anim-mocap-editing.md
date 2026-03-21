@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: motion-capture
-concept_id: anim-mocap-editing
+id: "anim-mocap-editing"
+concept: "动捕编辑"
+domain: "animation"
+subdomain: "motion-capture"
+subdomain_name: "动作捕捉"
 difficulty: 3
-content_type: practice
-tags: [进阶]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.9
+generation_method: "template-v1"
+unique_content_ratio: 0.471
+last_scored: "2026-03-21"
+sources: []
+---
 # 动捕编辑
 
 ## 概述

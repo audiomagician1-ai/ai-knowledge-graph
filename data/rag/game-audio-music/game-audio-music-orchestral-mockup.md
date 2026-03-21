@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-orchestral-mockup"
+concept: "管弦乐模拟"
+domain: "game-audio-music"
+subdomain: "daw"
+subdomain_name: "编曲软件(DAW)"
+difficulty: 4
+is_milestone: false
+tags: ["高级"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.647
+last_scored: "2026-03-21"
+sources: []
+---
 # 管弦乐模拟
 
 > **领域**: 游戏音乐 | **子领域**: 编曲软件(DAW) | **难度**: 高级

@@ -1,3 +1,22 @@
+---
+id: "cd-env-paintover"
+concept: "照片涂绘"
+domain: "concept-design"
+subdomain: "environment-design"
+subdomain_name: "环境设计"
+difficulty: 3
+is_milestone: false
+tags: ["技法"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 照片涂绘
 
 ## 概述

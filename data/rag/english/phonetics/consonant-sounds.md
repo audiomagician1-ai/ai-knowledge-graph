@@ -1,14 +1,22 @@
 ---
 id: "consonant-sounds"
-name: "辅音音素"
+concept: "辅音音素"
+domain: "english"
 subdomain: "phonetics"
 subdomain_name: "语音"
 difficulty: 2
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.5
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 辅音音素
 
 ## 概述

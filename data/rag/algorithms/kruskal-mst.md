@@ -1,14 +1,22 @@
 ---
 id: "kruskal-mst"
-name: "Kruskal最小生成树"
+concept: "Kruskal最小生成树"
+domain: "ai-engineering"
 subdomain: "algorithms"
 subdomain_name: "算法"
 difficulty: 6
 is_milestone: false
 tags: ["图"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.741
+last_scored: "2026-03-21"
+sources: []
+---
 # Kruskal最小生成树
 
 ## 概述

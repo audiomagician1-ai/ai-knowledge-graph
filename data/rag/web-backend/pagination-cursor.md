@@ -1,3 +1,22 @@
+---
+id: "pagination-cursor"
+concept: "游标分页"
+domain: "ai-engineering"
+subdomain: "web-backend"
+subdomain_name: "Web后端"
+difficulty: 3
+is_milestone: false
+tags: ["cursor", "pagination", "offset"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 游标分页
 
 > **难度**: (3/5) | **预计学习时间**: 25分钟

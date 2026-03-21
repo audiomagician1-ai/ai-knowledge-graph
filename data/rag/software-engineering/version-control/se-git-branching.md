@@ -1,10 +1,22 @@
 ---
-concept: Git分支策略
-subdomain: 版本控制
-domain: software-engineering
+id: "se-git-branching"
+concept: "Git分支策略"
+domain: "software-engineering"
+subdomain: "version-control"
+subdomain_name: "版本控制"
 difficulty: 2
----
+is_milestone: true
+tags: ["分支"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.2
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Git分支策略
 
 ## 核心内容

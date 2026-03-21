@@ -1,10 +1,22 @@
 ---
-concept: 热重载
-subdomain: 资源管理
-domain: game-engine
+id: "hot-reload"
+concept: "热重载"
+domain: "game-engine"
+subdomain: "resource-management"
+subdomain_name: "资源管理"
 difficulty: 3
----
+is_milestone: false
+tags: ["开发"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.5
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 热重载
 
 ## 核心内容

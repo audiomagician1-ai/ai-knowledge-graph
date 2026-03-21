@@ -1,10 +1,22 @@
 ---
-concept: 产品文档体系
-subdomain: 产品管理
-domain: product-design
+id: "product-doc-system"
+concept: "产品文档体系"
+domain: "product-design"
+subdomain: "product-management"
+subdomain_name: "产品管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["文档"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 产品文档体系
 
 ## 核心概念

@@ -1,10 +1,22 @@
 ---
-concept: Unity Package
-subdomain: 插件开发
-domain: game-engine
+id: "unity-package"
+concept: "Unity Package"
+domain: "game-engine"
+subdomain: "plugin-development"
+subdomain_name: "插件开发"
 difficulty: 2
----
+is_milestone: false
+tags: ["Unity"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Unity Package
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 平台抽象概述
-subdomain: 平台抽象
-domain: game-engine
+id: "platform-intro"
+concept: "平台抽象概述"
+domain: "game-engine"
+subdomain: "platform-abstraction"
+subdomain_name: "平台抽象"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 平台抽象概述
 
 ## 核心内容

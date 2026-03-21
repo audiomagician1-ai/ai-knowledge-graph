@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: rating-compliance
-concept_id: pub-rc-china-isbn
+id: "pub-rc-china-isbn"
+concept: "中国版号"
+domain: "game-publishing"
+subdomain: "rating-compliance"
+subdomain_name: "评级/合规"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 59.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 中国版号
 
 ## 概述

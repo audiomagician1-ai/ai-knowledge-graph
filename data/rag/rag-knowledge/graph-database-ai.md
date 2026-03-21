@@ -1,14 +1,22 @@
 ---
 id: "graph-database-ai"
-name: "图数据库在AI中的应用"
+concept: "图数据库在AI中的应用"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 7
 is_milestone: false
 tags: ["图", "RAG"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # 图数据库在AI中的应用
 
 ## 概述

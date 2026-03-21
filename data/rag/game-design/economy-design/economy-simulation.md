@@ -1,10 +1,22 @@
 ---
-concept: 经济模拟
-subdomain: 经济系统
-domain: game-design
+id: "economy-simulation"
+concept: "经济模拟"
+domain: "game-design"
+subdomain: "economy-design"
+subdomain_name: "经济系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.9
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 经济模拟
 
 ## 核心内容

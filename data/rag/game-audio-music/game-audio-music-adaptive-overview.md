@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-adaptive-overview"
+concept: "自适应音乐概述"
+domain: "game-audio-music"
+subdomain: "adaptive-music"
+subdomain_name: "自适应音乐"
+difficulty: 1
+is_milestone: false
+tags: ["基础"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.5
+generation_method: "template-v1"
+unique_content_ratio: 0.647
+last_scored: "2026-03-21"
+sources: []
+---
 # 自适应音乐概述
 
 > **领域**: 游戏音乐 | **子领域**: 自适应音乐 | **难度**: 入门

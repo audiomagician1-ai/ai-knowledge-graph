@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: icon-system
-concept_id: guiux-icon-animation
-title: 动态图标设计
+id: "guiux-icon-animation"
+concept: "动态图标设计"
+domain: "game-ui-ux"
+subdomain: "icon-system"
+subdomain_name: "图标系统"
 difficulty: 3
 is_milestone: false
 tags: ["icon-system", "动态图标设计"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.842
+last_scored: "2026-03-21"
+sources: []
+---
 # 动态图标设计
 
 > **领域**: 游戏UI/UX > 图标系统 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

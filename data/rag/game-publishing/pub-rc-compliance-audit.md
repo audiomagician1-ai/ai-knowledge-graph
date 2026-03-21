@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: rating-compliance
-concept_id: pub-rc-compliance-audit
+id: "pub-rc-compliance-audit"
+concept: "合规审计"
+domain: "game-publishing"
+subdomain: "rating-compliance"
+subdomain_name: "评级/合规"
 difficulty: 5
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 合规审计
 
 ## 概述

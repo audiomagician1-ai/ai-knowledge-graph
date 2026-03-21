@@ -1,3 +1,22 @@
+---
+id: "design-notification-system"
+concept: "设计通知系统"
+domain: "ai-engineering"
+subdomain: "system-design"
+subdomain_name: "系统设计"
+difficulty: 5
+is_milestone: false
+tags: ["notification", "push", "priority-queue"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 设计通知系统
 
 > **难度**: (5/5) | **预计学习时间**: 35分钟

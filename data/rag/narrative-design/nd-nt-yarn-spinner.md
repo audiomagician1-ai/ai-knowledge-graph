@@ -1,3 +1,22 @@
+---
+id: "nd-nt-yarn-spinner"
+concept: "Yarn Spinner"
+domain: "narrative-design"
+subdomain: "narrative-tools"
+subdomain_name: "叙事工具"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 56.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.917
+last_scored: "2026-03-21"
+sources: []
+---
 # Yarn Spinner
 
 > 领域: 叙事设计 > 叙事工具

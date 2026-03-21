@@ -1,10 +1,22 @@
 ---
-concept: 智力理论
-subdomain: 认知心理学
-domain: psychology
+id: "intelligence-theories"
+concept: "智力理论"
+domain: "psychology"
+subdomain: "cognitive-psychology"
+subdomain_name: "认知心理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["智力"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.8
+generation_method: "template-v1"
+unique_content_ratio: 0.2
+last_scored: "2026-03-21"
+sources: []
+---
 # 智力理论
 
 ## 核心内容

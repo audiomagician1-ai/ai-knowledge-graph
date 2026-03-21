@@ -213,7 +213,7 @@ class SocraticEngine:
             messages=full_messages,
             tier="dialogue",
             temperature=0.75,
-            max_tokens=800,
+            max_tokens=2048,
             user_config=user_config,
         )
 

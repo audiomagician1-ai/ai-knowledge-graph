@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: skeletal-rigging
-concept_id: anim-skin-binding
+id: "anim-skin-binding"
+concept: "蒙皮绑定"
+domain: "animation"
+subdomain: "skeletal-rigging"
+subdomain_name: "骨骼绑定"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 蒙皮绑定
 
 ## 概述

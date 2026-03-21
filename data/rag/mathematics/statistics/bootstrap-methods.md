@@ -1,14 +1,22 @@
 ---
 id: "bootstrap-methods"
-name: "Bootstrap方法"
+concept: "Bootstrap方法"
+domain: "mathematics"
 subdomain: "statistics"
 subdomain_name: "数理统计"
 difficulty: 7
 is_milestone: false
 tags: ["现代"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.727
+last_scored: "2026-03-21"
+sources: []
+---
 # Bootstrap方法
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "nd-lo-pseudolocalization"
+concept: "伪本地化"
+domain: "narrative-design"
+subdomain: "localization"
+subdomain_name: "本地化"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.7
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.905
+last_scored: "2026-03-21"
+sources: []
+---
 # 伪本地化
 
 > 领域: 叙事设计 > 本地化

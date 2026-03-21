@@ -1,3 +1,22 @@
+---
+id: "db-locking"
+concept: "数据库锁机制"
+domain: "ai-engineering"
+subdomain: "database"
+subdomain_name: "数据库"
+difficulty: 4
+is_milestone: false
+tags: ["lock", "pessimistic", "optimistic"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据库锁机制
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

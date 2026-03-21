@@ -1,10 +1,22 @@
 ---
-concept: 地形工具
-subdomain: 关卡编辑器
-domain: level-design
+id: "landscape-tool"
+concept: "地形工具"
+domain: "level-design"
+subdomain: "level-editor"
+subdomain_name: "关卡编辑器"
 difficulty: 2
----
+is_milestone: false
+tags: ["地形"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.0
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 地形工具
 
 ## 核心内容

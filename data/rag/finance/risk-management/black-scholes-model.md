@@ -1,10 +1,22 @@
 ---
-concept: Black-Scholes模型
-subdomain: 风险管理
-domain: finance
+id: "black-scholes-model"
+concept: "Black-Scholes模型"
+domain: "finance"
+subdomain: "risk-management"
+subdomain_name: "风险管理"
 difficulty: 4
----
+is_milestone: false
+tags: ["模型"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.5
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # Black-Scholes模型
 
 ## 核心概念

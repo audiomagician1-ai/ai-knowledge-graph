@@ -1,13 +1,22 @@
 ---
 id: "qa-bl-severity-priority"
-title: "严重性与优先级"
+concept: "严重性与优先级"
 domain: "game-qa"
 subdomain: "bug-lifecycle"
+subdomain_name: "Bug生命周期"
 difficulty: 1
-estimated_minutes: 25
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 严重性与优先级
 
 > **子领域**: Bug生命周期 | **难度**: 入门 | **预计学习时间**: 25分钟

@@ -1,10 +1,22 @@
 ---
-concept: generative-adversarial-networks
-subdomain: ai-foundations
+id: "generative-adversarial-networks"
+concept: "生成对抗网络"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
 difficulty: 7
-prereqs: [neural-network-basics, deep-learning-intro]
----
+is_milestone: false
+tags: ["AI", "生成模型"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 62.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 生成对抗网络（GAN）
 
 ## 核心概念

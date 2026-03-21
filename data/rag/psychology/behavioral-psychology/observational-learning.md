@@ -1,10 +1,22 @@
 ---
-concept: 观察学习
-subdomain: 行为心理学
-domain: psychology
+id: "observational-learning"
+concept: "观察学习"
+domain: "psychology"
+subdomain: "behavioral-psychology"
+subdomain_name: "行为心理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.3
+generation_method: "template-v1"
+unique_content_ratio: 0.2
+last_scored: "2026-03-21"
+sources: []
+---
 # 观察学习
 
 ## 核心内容

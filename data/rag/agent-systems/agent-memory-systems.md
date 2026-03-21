@@ -1,3 +1,22 @@
+---
+id: "agent-memory-systems"
+concept: "Agent记忆系统"
+domain: "ai-engineering"
+subdomain: "agent-systems"
+subdomain_name: "Agent系统"
+difficulty: 5
+is_milestone: false
+tags: ["memory", "retrieval", "working-memory"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.1
+generation_method: "template-v1"
+unique_content_ratio: 0.615
+last_scored: "2026-03-21"
+sources: []
+---
 # Agent记忆系统
 
 > **难度**: (5/5) | **预计学习时间**: 30分钟

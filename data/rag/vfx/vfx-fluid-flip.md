@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: fluid-sim
-concept_id: vfx-fluid-flip
+id: "vfx-fluid-flip"
+concept: "FLIP/APIC方法"
+domain: "vfx"
+subdomain: "fluid-sim"
+subdomain_name: "流体模拟"
 difficulty: 5
-content_type: applied
-tags: [高级]
-estimated_minutes: 40
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.571
+last_scored: "2026-03-21"
+sources: []
+---
 # FLIP/APIC方法
 
 ## 概述

@@ -1,3 +1,22 @@
+---
+id: "nd-es-npc-routine"
+concept: "NPC日常行为叙事"
+domain: "narrative-design"
+subdomain: "environmental-storytelling"
+subdomain_name: "环境叙事"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.905
+last_scored: "2026-03-21"
+sources: []
+---
 # NPC日常行为叙事
 
 > 领域: 叙事设计 > 环境叙事

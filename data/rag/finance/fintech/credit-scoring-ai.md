@@ -1,10 +1,22 @@
 ---
-concept: AI信用评分
-subdomain: 金融科技
-domain: finance
+id: "credit-scoring-ai"
+concept: "AI信用评分"
+domain: "finance"
+subdomain: "fintech"
+subdomain_name: "金融科技"
 difficulty: 3
----
+is_milestone: false
+tags: ["AI"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # AI信用评分
 
 ## 核心概念

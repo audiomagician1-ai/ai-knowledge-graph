@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: usability-testing
-concept_id: guiux-usability-error-rate
-title: 错误率统计
+id: "guiux-usability-error-rate"
+concept: "错误率统计"
+domain: "game-ui-ux"
+subdomain: "usability-testing"
+subdomain_name: "可用性测试"
 difficulty: 2
 is_milestone: false
 tags: ["usability-testing", "错误率统计"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.812
+last_scored: "2026-03-21"
+sources: []
+---
 # 错误率统计
 
 > **领域**: 游戏UI/UX > 可用性测试 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

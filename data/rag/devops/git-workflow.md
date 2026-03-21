@@ -1,14 +1,22 @@
 ---
 id: "git-workflow"
-name: "Git工作流(GitFlow)"
+concept: "Git工作流(GitFlow)"
+domain: "ai-engineering"
 subdomain: "devops"
 subdomain_name: "开发运维"
 difficulty: 4
 is_milestone: false
 tags: ["协作"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # Git工作流(GitFlow)
 
 ## 概述

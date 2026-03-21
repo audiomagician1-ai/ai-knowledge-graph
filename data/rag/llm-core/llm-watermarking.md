@@ -1,3 +1,22 @@
+---
+id: "llm-watermarking"
+concept: "LLM水印技术"
+domain: "ai-engineering"
+subdomain: "llm-core"
+subdomain_name: "大模型核心"
+difficulty: 7
+is_milestone: false
+tags: ["LLM", "安全"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 70.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 ﻿# LLM水印技术
 
 ## 概述

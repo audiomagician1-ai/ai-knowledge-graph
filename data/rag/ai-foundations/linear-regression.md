@@ -1,14 +1,22 @@
 ---
 id: "linear-regression"
-name: "线性回归"
-subdomain: "ai-foundations"
-subdomain_name: "AI基础"
-difficulty: 5
+concept: "线性回归"
+domain: "mathematics"
+subdomain: "statistics"
+subdomain_name: "数理统计"
+difficulty: 6
 is_milestone: false
-tags: ["ML"]
-generated_at: "2026-03-13T20:52:22"
----
+tags: ["里程碑"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.808
+last_scored: "2026-03-21"
+sources: []
+---
 # 线性回归
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "llamaindex-basics"
-name: "LlamaIndex基础"
+concept: "LlamaIndex基础"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 5
 is_milestone: false
 tags: ["工具"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # LlamaIndex基础
 
 ## 概述

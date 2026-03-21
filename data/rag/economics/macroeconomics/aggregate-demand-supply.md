@@ -1,10 +1,22 @@
 ---
-concept: 总供给与总需求
-subdomain: 宏观经济学
-domain: economics
+id: "aggregate-demand-supply"
+concept: "总供给与总需求"
+domain: "economics"
+subdomain: "macroeconomics"
+subdomain_name: "宏观经济学"
 difficulty: 2
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 总供给与总需求
 
 ## 核心内容

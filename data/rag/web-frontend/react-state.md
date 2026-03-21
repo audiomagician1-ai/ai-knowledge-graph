@@ -1,14 +1,22 @@
 ---
 id: "react-state"
-name: "React状态管理"
+concept: "React状态管理"
+domain: "ai-engineering"
 subdomain: "web-frontend"
 subdomain_name: "Web前端"
 difficulty: 5
 is_milestone: false
 tags: ["React"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # React状态管理
 
 ## 概述

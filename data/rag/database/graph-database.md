@@ -1,14 +1,22 @@
 ---
 id: "graph-database"
-name: "图数据库(Neo4j)"
+concept: "图数据库(Neo4j)"
+domain: "ai-engineering"
 subdomain: "database"
 subdomain_name: "数据库"
 difficulty: 6
 is_milestone: false
 tags: ["图"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 图数据库(Neo4j)
 
 ## 概述

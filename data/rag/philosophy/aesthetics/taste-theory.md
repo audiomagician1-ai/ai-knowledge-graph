@@ -1,10 +1,22 @@
 ---
-concept: 趣味理论
-subdomain: 美学
-domain: philosophy
+id: "taste-theory"
+concept: "趣味理论"
+domain: "philosophy"
+subdomain: "aesthetics"
+subdomain_name: "美学"
 difficulty: 3
----
+is_milestone: false
+tags: ["概念"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.1
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 趣味理论
 
 ## 核心内容

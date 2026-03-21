@@ -1,14 +1,22 @@
 ---
 id: "lora-peft"
-name: "LoRA与参数高效微调"
+concept: "LoRA与参数高效微调"
+domain: "ai-engineering"
 subdomain: "llm-core"
 subdomain_name: "大模型核心"
 difficulty: 7
-is_milestone: true
+is_milestone: false
 tags: ["LLM", "微调"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.759
+last_scored: "2026-03-21"
+sources: []
+---
 # LoRA与参数高效微调
 
 ## 概述

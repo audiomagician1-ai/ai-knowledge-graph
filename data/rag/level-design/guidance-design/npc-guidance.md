@@ -1,10 +1,22 @@
 ---
-concept: NPC引导行为
-subdomain: 引导设计
-domain: level-design
+id: "npc-guidance"
+concept: "NPC引导行为"
+domain: "level-design"
+subdomain: "guidance-design"
+subdomain_name: "引导设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["AI"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.5
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # NPC引导行为
 
 ## 核心内容

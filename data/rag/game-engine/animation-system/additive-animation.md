@@ -1,10 +1,22 @@
 ---
-concept: 叠加动画
-subdomain: 动画系统
-domain: game-engine
+id: "additive-animation"
+concept: "叠加动画"
+domain: "game-engine"
+subdomain: "animation-system"
+subdomain_name: "动画系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["混合"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.5
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 叠加动画
 
 ## 核心内容

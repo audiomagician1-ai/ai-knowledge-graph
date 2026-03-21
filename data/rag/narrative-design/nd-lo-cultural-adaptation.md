@@ -1,3 +1,22 @@
+---
+id: "nd-lo-cultural-adaptation"
+concept: "文化适配"
+domain: "narrative-design"
+subdomain: "localization"
+subdomain_name: "本地化"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 文化适配
 
 > 领域: 叙事设计 > 本地化

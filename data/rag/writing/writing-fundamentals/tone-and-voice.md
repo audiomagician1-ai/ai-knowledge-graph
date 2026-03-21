@@ -1,10 +1,22 @@
 ---
-concept: 语气与声音
-subdomain: 写作基础
-domain: writing
+id: "tone-and-voice"
+concept: "语气与声音"
+domain: "writing"
+subdomain: "writing-fundamentals"
+subdomain_name: "写作基础"
 difficulty: 2
----
+is_milestone: false
+tags: ["风格"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.0
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 语气与声音
 
 ## 核心内容

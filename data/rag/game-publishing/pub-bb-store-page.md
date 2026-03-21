@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: brand-building
-concept_id: pub-bb-store-page
+id: "pub-bb-store-page"
+concept: "商店页面优化"
+domain: "game-publishing"
+subdomain: "brand-building"
+subdomain_name: "品牌建设"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 商店页面优化
 
 ## 概述

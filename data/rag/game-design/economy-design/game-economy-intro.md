@@ -1,10 +1,22 @@
 ---
-concept: 游戏经济系统概述
-subdomain: 经济系统
-domain: game-design
+id: "game-economy-intro"
+concept: "游戏经济系统概述"
+domain: "game-design"
+subdomain: "economy-design"
+subdomain_name: "经济系统"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.3
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 游戏经济系统概述
 
 ## 核心内容

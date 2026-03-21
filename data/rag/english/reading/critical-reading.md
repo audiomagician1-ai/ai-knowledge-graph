@@ -1,14 +1,22 @@
 ---
 id: "critical-reading"
-name: "批判性阅读"
+concept: "批判性阅读"
+domain: "english"
 subdomain: "reading"
 subdomain_name: "阅读理解"
 difficulty: 6
-is_milestone: true
+is_milestone: false
 tags: ["进阶"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 批判性阅读
 
 ## 概述

@@ -1,13 +1,22 @@
 ---
 id: "qa-pt-network-perf"
-title: "网络性能测试"
+concept: "网络性能测试"
 domain: "game-qa"
 subdomain: "performance-testing"
+subdomain_name: "性能测试(Profiling)"
 difficulty: 3
-estimated_minutes: 35
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 网络性能测试
 
 > **子领域**: 性能测试(Profiling) | **难度**: 进阶 | **预计学习时间**: 35分钟

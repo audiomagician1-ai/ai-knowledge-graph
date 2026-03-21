@@ -1,10 +1,22 @@
 ---
-concept: 编辑器配置
-subdomain: 编辑器扩展
-domain: game-engine
+id: "editor-config"
+concept: "编辑器配置"
+domain: "game-engine"
+subdomain: "editor-extension"
+subdomain_name: "编辑器扩展"
 difficulty: 2
----
+is_milestone: false
+tags: ["配置"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 编辑器配置
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: prompt-chaining
-subdomain: prompt-engineering
+id: "prompt-chaining"
+concept: "提示链"
+domain: "ai-engineering"
+subdomain: "prompt-engineering"
+subdomain_name: "Prompt工程"
 difficulty: 6
-prereqs: [chain-of-thought]
----
+is_milestone: false
+tags: ["Prompt"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 67.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.966
+last_scored: "2026-03-21"
+sources: []
+---
 # 提示链
 
 ## 核心概念

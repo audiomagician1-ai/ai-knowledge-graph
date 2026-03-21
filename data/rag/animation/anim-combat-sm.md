@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: state-machine
-concept_id: anim-combat-sm
+id: "anim-combat-sm"
+concept: "战斗状态机"
+domain: "animation"
+subdomain: "state-machine"
+subdomain_name: "状态机"
 difficulty: 3
-content_type: practice
-tags: [实战]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["实战"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 战斗状态机
 
 ## 概述

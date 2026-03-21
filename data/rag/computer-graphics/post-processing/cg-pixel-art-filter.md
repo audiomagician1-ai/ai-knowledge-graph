@@ -1,10 +1,22 @@
 ---
-concept: 像素化滤镜
-subdomain: 后处理
-domain: computer-graphics
+id: "cg-pixel-art-filter"
+concept: "像素化滤镜"
+domain: "computer-graphics"
+subdomain: "post-processing"
+subdomain_name: "后处理"
 difficulty: 2
----
+is_milestone: false
+tags: ["风格化"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 像素化滤镜
 
 ## 核心内容

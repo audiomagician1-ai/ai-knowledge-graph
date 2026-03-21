@@ -1,14 +1,22 @@
 ---
 id: "unconstrained-opt"
-name: "无约束优化"
+concept: "无约束优化"
+domain: "mathematics"
 subdomain: "optimization"
 subdomain_name: "最优化"
 difficulty: 6
-is_milestone: true
+is_milestone: false
 tags: ["里程碑"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 无约束优化
 
 ## 概述

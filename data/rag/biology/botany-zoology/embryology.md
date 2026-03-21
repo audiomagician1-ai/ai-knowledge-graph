@@ -1,10 +1,22 @@
 ---
-concept: 胚胎学
-subdomain: 植物与动物学
-domain: biology
+id: "embryology"
+concept: "胚胎学"
+domain: "biology"
+subdomain: "botany-zoology"
+subdomain_name: "植物与动物学"
 difficulty: 3
----
+is_milestone: false
+tags: ["发育"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 胚胎学
 
 ## 核心内容

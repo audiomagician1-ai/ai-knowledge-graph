@@ -1,3 +1,22 @@
+---
+id: "3da-uv-udim"
+concept: "UDIM多Tile"
+domain: "3d-art"
+subdomain: "uv-unwrapping"
+subdomain_name: "UV展开"
+difficulty: 3
+is_milestone: true
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # UDIM多Tile
 
 ## 概述

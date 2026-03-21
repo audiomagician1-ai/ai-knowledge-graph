@@ -1,3 +1,22 @@
+---
+id: "sparse-attention"
+concept: "稀疏注意力"
+domain: "ai-engineering"
+subdomain: "llm-core"
+subdomain_name: "大模型核心"
+difficulty: 8
+is_milestone: false
+tags: ["LLM", "架构"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 57.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 ﻿# 稀疏注意力
 
 ## 概述

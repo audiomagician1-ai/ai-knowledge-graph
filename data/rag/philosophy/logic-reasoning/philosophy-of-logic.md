@@ -1,10 +1,22 @@
 ---
-concept: 逻辑哲学
-subdomain: 逻辑与推理
-domain: philosophy
+id: "philosophy-of-logic"
+concept: "逻辑哲学"
+domain: "philosophy"
+subdomain: "logic-reasoning"
+subdomain_name: "逻辑与推理"
 difficulty: 4
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.8
+generation_method: "template-v1"
+unique_content_ratio: 0.2
+last_scored: "2026-03-21"
+sources: []
+---
 # 逻辑哲学
 
 ## 核心内容

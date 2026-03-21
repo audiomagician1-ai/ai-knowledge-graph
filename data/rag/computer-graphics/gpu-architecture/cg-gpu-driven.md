@@ -1,10 +1,22 @@
 ---
-concept: GPU Driven Pipeline
-subdomain: GPU架构
-domain: computer-graphics
+id: "cg-gpu-driven"
+concept: "GPU Driven Pipeline"
+domain: "computer-graphics"
+subdomain: "gpu-architecture"
+subdomain_name: "GPU架构"
 difficulty: 4
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.9
+generation_method: "template-v1"
+unique_content_ratio: 0.583
+last_scored: "2026-03-21"
+sources: []
+---
 # GPU Driven Pipeline
 
 ## 核心内容

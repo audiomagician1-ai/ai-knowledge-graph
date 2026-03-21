@@ -1,14 +1,22 @@
 ---
 id: "db-basics"
-name: "数据库基本概念"
+concept: "数据库基本概念"
+domain: "ai-engineering"
 subdomain: "database"
 subdomain_name: "数据库"
 difficulty: 3
 is_milestone: false
 tags: ["数据库"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据库基本概念
 
 ## 概述

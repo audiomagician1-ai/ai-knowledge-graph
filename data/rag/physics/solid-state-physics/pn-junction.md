@@ -1,14 +1,22 @@
 ---
 id: "pn-junction"
-name: "PN结"
+concept: "PN结"
+domain: "physics"
 subdomain: "solid-state-physics"
 subdomain_name: "固态物理"
 difficulty: 5
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 33.8
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # PN结
 
 ## 概述

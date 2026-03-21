@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: user-retention
-concept_id: ops-ur-long-term-goals
+id: "ops-ur-long-term-goals"
+concept: "长期目标设计"
+domain: "game-live-ops"
+subdomain: "user-retention"
+subdomain_name: "用户留存"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 长期目标设计
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 股权融资
-subdomain: 公司金融
-domain: finance
+id: "equity-financing"
+concept: "股权融资"
+domain: "finance"
+subdomain: "corporate-finance"
+subdomain_name: "公司金融"
 difficulty: 2
----
+is_milestone: false
+tags: ["融资"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 股权融资
 
 ## 核心概念

@@ -1,10 +1,22 @@
 ---
-concept: 观察者模式
-subdomain: 设计模式
-domain: software-engineering
+id: "se-dp-observer"
+concept: "观察者模式"
+domain: "software-engineering"
+subdomain: "design-patterns"
+subdomain_name: "设计模式"
 difficulty: 2
----
+is_milestone: true
+tags: ["行为型"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.3
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 观察者模式
 
 ## 核心内容

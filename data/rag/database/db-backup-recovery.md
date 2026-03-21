@@ -1,3 +1,22 @@
+---
+id: "db-backup-recovery"
+concept: "数据库备份恢复"
+domain: "ai-engineering"
+subdomain: "database"
+subdomain_name: "数据库"
+difficulty: 3
+is_milestone: false
+tags: ["backup", "wal", "recovery", "disaster-recovery"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据库备份恢复
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 25分钟

@@ -1,10 +1,22 @@
 ---
-concept: 交易系统
-subdomain: 经济系统
-domain: game-design
+id: "trading-system"
+concept: "交易系统"
+domain: "game-design"
+subdomain: "economy-design"
+subdomain_name: "经济系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["社交"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 交易系统
 
 ## 核心内容

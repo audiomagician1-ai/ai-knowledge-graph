@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: ui-tech
-concept_id: guiux-tech-rich-text-impl
-title: 富文本实现
+id: "guiux-tech-rich-text-impl"
+concept: "富文本实现"
+domain: "game-ui-ux"
+subdomain: "ui-tech"
+subdomain_name: "UI技术实现"
 difficulty: 4
 is_milestone: false
 tags: ["ui-tech", "富文本实现"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 富文本实现
 
 > **领域**: 游戏UI/UX > UI技术实现 | **难度**: ⭐⭐⭐⭐ | **预计学习时间**: 37分钟

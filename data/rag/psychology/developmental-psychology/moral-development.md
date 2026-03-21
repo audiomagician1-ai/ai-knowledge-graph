@@ -1,10 +1,22 @@
 ---
-concept: 道德发展
-subdomain: 发展心理学
-domain: psychology
+id: "moral-development"
+concept: "道德发展"
+domain: "psychology"
+subdomain: "developmental-psychology"
+subdomain_name: "发展心理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["道德"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.0
+generation_method: "template-v1"
+unique_content_ratio: 0.182
+last_scored: "2026-03-21"
+sources: []
+---
 # 道德发展
 
 ## 核心内容

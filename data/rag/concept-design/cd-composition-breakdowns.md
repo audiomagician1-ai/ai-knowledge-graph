@@ -1,3 +1,22 @@
+---
+id: "cd-composition-breakdowns"
+concept: "经典构图分析"
+domain: "concept-design"
+subdomain: "composition"
+subdomain_name: "构图"
+difficulty: 2
+is_milestone: false
+tags: ["分析"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 经典构图分析
 
 ## 概述

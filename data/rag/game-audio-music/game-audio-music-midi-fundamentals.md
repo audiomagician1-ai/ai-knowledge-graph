@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-midi-fundamentals"
+concept: "MIDI基础"
+domain: "game-audio-music"
+subdomain: "daw"
+subdomain_name: "编曲软件(DAW)"
+difficulty: 1
+is_milestone: false
+tags: ["基础"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.1
+generation_method: "template-v1"
+unique_content_ratio: 0.588
+last_scored: "2026-03-21"
+sources: []
+---
 # MIDI基础
 
 > **领域**: 游戏音乐 | **子领域**: 编曲软件(DAW) | **难度**: 入门

@@ -1,14 +1,22 @@
 ---
 id: "concession-contrast"
-name: "让步与对比"
+concept: "让步与对比"
+domain: "english"
 subdomain: "advanced-grammar"
 subdomain_name: "高级语法"
 difficulty: 5
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.4
+generation_method: "template-v1"
+unique_content_ratio: 0.583
+last_scored: "2026-03-21"
+sources: []
+---
 # 让步与对比
 
 ## 概述

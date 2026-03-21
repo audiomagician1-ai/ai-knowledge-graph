@@ -1,10 +1,22 @@
 ---
-concept: Data Asset与DataTable
-subdomain: UE5架构
-domain: game-engine
+id: "ue5-data-asset"
+concept: "Data Asset与DataTable"
+domain: "game-engine"
+subdomain: "ue5-architecture"
+subdomain_name: "UE5架构"
 difficulty: 2
----
+is_milestone: false
+tags: ["数据"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Data Asset与DataTable
 
 ## 核心内容

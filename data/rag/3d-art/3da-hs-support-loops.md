@@ -1,3 +1,22 @@
+---
+id: "3da-hs-support-loops"
+concept: "支撑环"
+domain: "3d-art"
+subdomain: "hard-surface"
+subdomain_name: "硬表面建模"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 支撑环
 
 ## 概述

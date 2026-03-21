@@ -1,13 +1,22 @@
 ---
 id: "speculative-decoding"
-name: "Speculative Decoding"
+concept: "Speculative Decoding"
+domain: "ai-engineering"
 subdomain: "llm-core"
 subdomain_name: "大模型核心"
 difficulty: 8
-tags: ["LLM", "Inference", "Optimization"]
-generated_at: "2026-03-19T12:00:00"
----
+is_milestone: false
+tags: ["LLM"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "S"
+quality_score: 93.8
+generation_method: "hand-crafted"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # Speculative Decoding（推测解码）
 
 ## 概述

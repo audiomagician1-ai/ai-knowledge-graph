@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: niagara
-concept_id: vfx-niagara-overview
+id: "vfx-niagara-overview"
+concept: "Niagara系统概述"
+domain: "vfx"
+subdomain: "niagara"
+subdomain_name: "Niagara系统"
 difficulty: 1
-content_type: theory
-tags: [基础]
-estimated_minutes: 20
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # Niagara系统概述
 
 ## 概述

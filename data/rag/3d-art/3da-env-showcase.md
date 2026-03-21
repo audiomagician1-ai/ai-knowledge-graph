@@ -1,3 +1,22 @@
+---
+id: "3da-env-showcase"
+concept: "环境展示"
+domain: "3d-art"
+subdomain: "environment-art"
+subdomain_name: "环境美术"
+difficulty: 2
+is_milestone: false
+tags: ["展示"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 环境展示
 
 ## 概述

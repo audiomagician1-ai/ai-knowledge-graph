@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: user-acquisition
-concept_id: pub-ua-paid-advertising
+id: "pub-ua-paid-advertising"
+concept: "付费广告投放"
+domain: "game-publishing"
+subdomain: "user-acquisition"
+subdomain_name: "用户获取(UA)"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 付费广告投放
 
 ## 概述

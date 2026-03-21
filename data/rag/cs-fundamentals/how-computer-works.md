@@ -1,14 +1,22 @@
 ---
 id: "how-computer-works"
-name: "计算机如何工作"
+concept: "计算机如何工作"
+domain: "ai-engineering"
 subdomain: "cs-fundamentals"
 subdomain_name: "计算机基础"
 difficulty: 1
 is_milestone: false
 tags: ["基础", "硬件"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 计算机如何工作
 
 ## 概述

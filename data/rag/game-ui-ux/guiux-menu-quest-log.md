@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: menu-system
-concept_id: guiux-menu-quest-log
-title: 任务日志
+id: "guiux-menu-quest-log"
+concept: "任务日志"
+domain: "game-ui-ux"
+subdomain: "menu-system"
+subdomain_name: "菜单系统"
 difficulty: 3
 is_milestone: false
 tags: ["menu-system", "任务日志"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 任务日志
 
 > **领域**: 游戏UI/UX > 菜单系统 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

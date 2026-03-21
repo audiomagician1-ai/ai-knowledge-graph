@@ -1,13 +1,22 @@
 ---
 id: "qa-ft-compliance-testing"
-title: "合规性测试"
+concept: "合规性测试"
 domain: "game-qa"
 subdomain: "functional-testing"
+subdomain_name: "功能测试"
 difficulty: 3
-estimated_minutes: 40
 is_milestone: true
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 合规性测试
 
 > **子领域**: 功能测试 | **难度**: 进阶 | **预计学习时间**: 40分钟

@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: interaction-feedback
-concept_id: guiux-feedback-screen-shake
-title: 屏幕震动反馈
+id: "guiux-feedback-screen-shake"
+concept: "屏幕震动反馈"
+domain: "game-ui-ux"
+subdomain: "interaction-feedback"
+subdomain_name: "交互反馈"
 difficulty: 3
 is_milestone: false
 tags: ["interaction-feedback", "屏幕震动反馈"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 屏幕震动反馈
 
 > **领域**: 游戏UI/UX > 交互反馈 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

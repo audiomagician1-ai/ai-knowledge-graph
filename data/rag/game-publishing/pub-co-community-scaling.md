@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: community-ops
-concept_id: pub-co-community-scaling
+id: "pub-co-community-scaling"
+concept: "社区扩展"
+domain: "game-publishing"
+subdomain: "community-ops"
+subdomain_name: "社区运营"
 difficulty: 5
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 社区扩展
 
 ## 概述

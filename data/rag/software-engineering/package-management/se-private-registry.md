@@ -1,10 +1,22 @@
 ---
-concept: 私有注册表
-subdomain: 包管理
-domain: software-engineering
+id: "se-private-registry"
+concept: "私有注册表"
+domain: "software-engineering"
+subdomain: "package-management"
+subdomain_name: "包管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["企业"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 私有注册表
 
 ## 核心内容

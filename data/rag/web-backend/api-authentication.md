@@ -1,14 +1,22 @@
 ---
 id: "api-authentication"
-name: "API认证(JWT/OAuth)"
+concept: "API认证(JWT/OAuth)"
+domain: "ai-engineering"
 subdomain: "web-backend"
 subdomain_name: "Web后端"
 difficulty: 5
 is_milestone: false
 tags: ["安全"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # API认证(JWT/OAuth)
 
 ## 概述

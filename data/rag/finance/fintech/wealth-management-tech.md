@@ -1,10 +1,22 @@
 ---
-concept: 财富管理科技
-subdomain: 金融科技
-domain: finance
+id: "wealth-management-tech"
+concept: "财富管理科技"
+domain: "finance"
+subdomain: "fintech"
+subdomain_name: "金融科技"
 difficulty: 3
----
+is_milestone: false
+tags: ["投资"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.0
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 财富管理科技
 
 ## 核心概念

@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: fluid-sim
-concept_id: vfx-fluid-overview
+id: "vfx-fluid-overview"
+concept: "流体模拟概述"
+domain: "vfx"
+subdomain: "fluid-sim"
+subdomain_name: "流体模拟"
 difficulty: 1
-content_type: theory
-tags: [基础]
-estimated_minutes: 20
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.619
+last_scored: "2026-03-21"
+sources: []
+---
 # 流体模拟概述
 
 ## 概述

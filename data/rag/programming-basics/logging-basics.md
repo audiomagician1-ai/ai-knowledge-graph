@@ -1,3 +1,22 @@
+---
+id: "logging-basics"
+concept: "日志基础"
+domain: "ai-engineering"
+subdomain: "programming-basics"
+subdomain_name: "编程基础"
+difficulty: 2
+is_milestone: false
+tags: ["logging", "debug", "structured-log"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.6
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 日志基础
 
 > **难度**: (2/5) | **预计学习时间**: 20分钟

@@ -597,8 +597,10 @@ export function parseChoicesFromContent(text: string): { content: string; choice
 /** Apply sliding window to messages array — keep system prompt separate */
 export function windowMessages(messages: Array<{ role: string; content: string }>): Array<{ role: string; content: string }> {
   if (messages.length <= MAX_CONTEXT_MESSAGES) return messages;
-  // Always keep the first message (assistant opening) + last N messages
-  return [messages[0], ...messages.slice(-MAX_CONTEXT_MESSAGES + 1)];
+  // Keep the first message (opening context) + truncation notice + last (N-2) messages
+  const firstMsg = messages[0];
+  const recent = messages.slice(-(MAX_CONTEXT_MESSAGES - 2));
+  return [firstMsg, { role: 'system', content: '[对话历史已截断，以下为最近的对话记录]' }, ...recent];
 }
 
 function fmt(template: string, vars: Record<string, string>): string {
@@ -903,7 +905,7 @@ export function directChatStream(
             model,
             messages: allMessages,
             temperature: 0.75,
-            ...tokenLimitParam(model, 800),
+            ...tokenLimitParam(model, 2048),
             stream: true,
           }),
           signal,

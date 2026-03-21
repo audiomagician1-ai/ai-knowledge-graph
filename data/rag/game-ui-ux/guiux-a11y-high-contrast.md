@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: accessibility
-concept_id: guiux-a11y-high-contrast
-title: 高对比度模式
+id: "guiux-a11y-high-contrast"
+concept: "高对比度模式"
+domain: "game-ui-ux"
+subdomain: "accessibility"
+subdomain_name: "无障碍设计"
 difficulty: 2
 is_milestone: false
 tags: ["accessibility", "高对比度模式"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.6
+generation_method: "template-v1"
+unique_content_ratio: 0.056
+last_scored: "2026-03-21"
+sources: []
+---
 # 高对比度模式
 
 > **领域**: 游戏UI/UX > 无障碍设计 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

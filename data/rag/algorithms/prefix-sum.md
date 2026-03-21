@@ -1,10 +1,22 @@
 ---
-concept: prefix-sum
-subdomain: algorithms
+id: "prefix-sum"
+concept: "前缀和"
+domain: "ai-engineering"
+subdomain: "algorithms"
+subdomain_name: "算法"
 difficulty: 4
-prereqs: [array-internals, time-complexity]
----
+is_milestone: false
+tags: ["算法技巧"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 62.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 前缀和
 
 ## 核心概念

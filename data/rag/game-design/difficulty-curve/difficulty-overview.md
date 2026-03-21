@@ -1,10 +1,22 @@
 ---
-concept: 难度设计概述
-subdomain: 难度曲线
-domain: game-design
+id: "difficulty-overview"
+concept: "难度设计概述"
+domain: "game-design"
+subdomain: "difficulty-curve"
+subdomain_name: "难度曲线"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.1
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 难度设计概述
 
 ## 核心内容

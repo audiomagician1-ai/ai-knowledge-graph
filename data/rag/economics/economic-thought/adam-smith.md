@@ -1,10 +1,22 @@
 ---
-concept: 亚当·斯密
-subdomain: 经济思想史
-domain: economics
+id: "adam-smith"
+concept: "亚当·斯密"
+domain: "economics"
+subdomain: "economic-thought"
+subdomain_name: "经济思想史"
 difficulty: 1
----
+is_milestone: false
+tags: ["古典"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.8
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 亚当·斯密
 
 ## 核心内容

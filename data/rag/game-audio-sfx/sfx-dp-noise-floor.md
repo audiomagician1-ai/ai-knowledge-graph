@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: dialogue-processing
-concept_id: sfx-dp-noise-floor
+id: "sfx-dp-noise-floor"
+concept: "底噪标准"
+domain: "game-audio-sfx"
+subdomain: "dialogue-processing"
+subdomain_name: "对白处理"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.7
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 底噪标准
 
 ## 概述

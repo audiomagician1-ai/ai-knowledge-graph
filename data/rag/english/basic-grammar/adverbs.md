@@ -1,14 +1,22 @@
 ---
 id: "adverbs"
-name: "副词"
+concept: "副词"
+domain: "english"
 subdomain: "basic-grammar"
 subdomain_name: "基础语法"
 difficulty: 3
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.8
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 副词
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: audio-asset-management
-concept_id: sfx-aam-documentation
+id: "sfx-aam-documentation"
+concept: "音效文档"
+domain: "game-audio-sfx"
+subdomain: "audio-asset-management"
+subdomain_name: "声音资源管理"
 difficulty: 5
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.4
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 音效文档
 
 ## 概述

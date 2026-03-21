@@ -1,14 +1,22 @@
 ---
 id: "network-flows"
-name: "网络流"
+concept: "网络流"
+domain: "mathematics"
 subdomain: "optimization"
 subdomain_name: "最优化"
 difficulty: 7
 is_milestone: false
 tags: ["应用"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 网络流
 
 ## 概述

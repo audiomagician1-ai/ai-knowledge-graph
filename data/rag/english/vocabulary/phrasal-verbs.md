@@ -1,14 +1,22 @@
 ---
 id: "phrasal-verbs"
-name: "短语动词"
+concept: "短语动词"
+domain: "english"
 subdomain: "vocabulary"
 subdomain_name: "核心词汇"
 difficulty: 4
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.0
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 短语动词
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 掩体系统(LD)
-subdomain: 战斗空间
-domain: level-design
+id: "cover-system-ld"
+concept: "掩体系统(LD)"
+domain: "level-design"
+subdomain: "combat-space"
+subdomain_name: "战斗空间"
 difficulty: 2
----
+is_milestone: false
+tags: ["掩体"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.0
+generation_method: "template-v1"
+unique_content_ratio: 0.364
+last_scored: "2026-03-21"
+sources: []
+---
 # 掩体系统(LD)
 
 ## 核心内容

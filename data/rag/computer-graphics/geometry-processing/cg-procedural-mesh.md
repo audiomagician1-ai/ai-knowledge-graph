@@ -1,10 +1,22 @@
 ---
-concept: 程序化网格
-subdomain: 几何处理
-domain: computer-graphics
+id: "cg-procedural-mesh"
+concept: "程序化网格"
+domain: "computer-graphics"
+subdomain: "geometry-processing"
+subdomain_name: "几何处理"
 difficulty: 3
----
+is_milestone: false
+tags: ["技术"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 程序化网格
 
 ## 核心内容

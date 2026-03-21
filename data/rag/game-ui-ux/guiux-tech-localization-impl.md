@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: ui-tech
-concept_id: guiux-tech-localization-impl
-title: 本地化技术实现
+id: "guiux-tech-localization-impl"
+concept: "本地化技术实现"
+domain: "game-ui-ux"
+subdomain: "ui-tech"
+subdomain_name: "UI技术实现"
 difficulty: 3
 is_milestone: false
 tags: ["ui-tech", "本地化技术实现"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.864
+last_scored: "2026-03-21"
+sources: []
+---
 # 本地化技术实现
 
 > **领域**: 游戏UI/UX > UI技术实现 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

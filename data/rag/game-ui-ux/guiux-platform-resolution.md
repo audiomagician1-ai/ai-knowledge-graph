@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: multiplatform
-concept_id: guiux-platform-resolution
-title: 分辨率适配
+id: "guiux-platform-resolution"
+concept: "分辨率适配"
+domain: "game-ui-ux"
+subdomain: "multiplatform"
+subdomain_name: "多平台适配"
 difficulty: 2
 is_milestone: false
 tags: ["multiplatform", "分辨率适配"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.842
+last_scored: "2026-03-21"
+sources: []
+---
 # 分辨率适配
 
 > **领域**: 游戏UI/UX > 多平台适配 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

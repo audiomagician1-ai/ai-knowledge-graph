@@ -1,3 +1,22 @@
+---
+id: "data-augmentation"
+concept: "数据增强"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
+difficulty: 3
+is_milestone: false
+tags: ["augmentation", "overfitting", "generalization"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据增强
 
 > **难度**: (3/5) | **预计学习时间**: 25分钟

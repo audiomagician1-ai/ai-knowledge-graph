@@ -1,3 +1,22 @@
+---
+id: "mn-ls-save-state"
+concept: "状态保存与加载"
+domain: "multiplayer-network"
+subdomain: "lockstep-sync"
+subdomain_name: "帧同步"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.1
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 状态保存与加载
 
 > 领域: 网络多人 > 帧同步

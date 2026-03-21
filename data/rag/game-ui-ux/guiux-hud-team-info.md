@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: hud-design
-concept_id: guiux-hud-team-info
-title: 队伍信息显示
+id: "guiux-hud-team-info"
+concept: "队伍信息显示"
+domain: "game-ui-ux"
+subdomain: "hud-design"
+subdomain_name: "HUD设计"
 difficulty: 3
 is_milestone: false
 tags: ["hud-design", "队伍信息显示"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.786
+last_scored: "2026-03-21"
+sources: []
+---
 # 队伍信息显示
 
 > **领域**: 游戏UI/UX > HUD设计 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

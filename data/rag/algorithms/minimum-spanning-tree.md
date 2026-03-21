@@ -1,10 +1,22 @@
 ---
-concept: minimum-spanning-tree
-subdomain: algorithms
+id: "minimum-spanning-tree"
+concept: "最小生成树"
+domain: "ai-engineering"
+subdomain: "algorithms"
+subdomain_name: "算法"
 difficulty: 6
-prereqs: [graph-ds]
----
+is_milestone: false
+tags: ["图算法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 69.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.973
+last_scored: "2026-03-21"
+sources: []
+---
 # 最小生成树
 
 ## 核心概念

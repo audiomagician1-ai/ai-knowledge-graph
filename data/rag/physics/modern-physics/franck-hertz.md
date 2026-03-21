@@ -1,14 +1,22 @@
 ---
 id: "franck-hertz"
-name: "弗兰克-赫兹实验"
+concept: "弗兰克-赫兹实验"
+domain: "physics"
 subdomain: "modern-physics"
 subdomain_name: "近代物理"
 difficulty: 4
 is_milestone: false
 tags: ["实验"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.5
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 弗兰克-赫兹实验
 
 ## 概述

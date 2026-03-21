@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: automation
-concept_id: ta-auto-test
+id: "ta-auto-test"
+concept: "自动化测试"
+domain: "technical-art"
+subdomain: "automation"
+subdomain_name: "自动化工作流"
 difficulty: 2
-content_type: practice
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 自动化测试
 
 ## 概述

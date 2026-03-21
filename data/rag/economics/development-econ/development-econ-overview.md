@@ -1,10 +1,22 @@
 ---
-concept: 发展经济学概述
-subdomain: 发展经济学
-domain: economics
+id: "development-econ-overview"
+concept: "发展经济学概述"
+domain: "economics"
+subdomain: "development-econ"
+subdomain_name: "发展经济学"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.6
+generation_method: "template-v1"
+unique_content_ratio: 0.182
+last_scored: "2026-03-21"
+sources: []
+---
 # 发展经济学概述
 
 ## 核心内容

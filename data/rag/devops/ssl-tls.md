@@ -1,14 +1,22 @@
 ---
 id: "ssl-tls"
-name: "SSL/TLS与HTTPS"
+concept: "SSL/TLS与HTTPS"
+domain: "ai-engineering"
 subdomain: "devops"
 subdomain_name: "开发运维"
 difficulty: 4
 is_milestone: false
 tags: ["安全"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.741
+last_scored: "2026-03-21"
+sources: []
+---
 # SSL/TLS与HTTPS
 
 ## 概述

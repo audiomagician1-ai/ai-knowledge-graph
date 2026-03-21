@@ -1,10 +1,22 @@
 ---
-concept: 免费增值模式
-subdomain: 增长运营
-domain: product-design
+id: "freemium-model"
+concept: "免费增值模式"
+domain: "product-design"
+subdomain: "growth"
+subdomain_name: "增长运营"
 difficulty: 3
----
+is_milestone: false
+tags: ["模式"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 免费增值模式
 
 ## 核心概念

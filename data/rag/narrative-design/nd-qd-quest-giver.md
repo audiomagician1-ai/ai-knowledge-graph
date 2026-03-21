@@ -1,3 +1,22 @@
+---
+id: "nd-qd-quest-giver"
+concept: "任务发布者设计"
+domain: "narrative-design"
+subdomain: "quest-design"
+subdomain_name: "任务设计"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.9
+last_scored: "2026-03-21"
+sources: []
+---
 # 任务发布者设计
 
 > 领域: 叙事设计 > 任务设计

@@ -1,10 +1,22 @@
 ---
-concept: 辐射度量学
-subdomain: 全局光照
-domain: computer-graphics
+id: "cg-radiometry"
+concept: "辐射度量学"
+domain: "computer-graphics"
+subdomain: "global-illumination"
+subdomain_name: "全局光照"
 difficulty: 2
----
+is_milestone: false
+tags: ["物理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 辐射度量学
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 修改策略
-subdomain: 修改与文体
-domain: writing
+id: "revision-strategies"
+concept: "修改策略"
+domain: "writing"
+subdomain: "revision-craft"
+subdomain_name: "修改与文体"
 difficulty: 2
----
+is_milestone: false
+tags: ["方法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.2
+generation_method: "template-v1"
+unique_content_ratio: 0.083
+last_scored: "2026-03-21"
+sources: []
+---
 # 修改策略
 
 ## 核心内容

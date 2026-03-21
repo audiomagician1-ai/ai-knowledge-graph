@@ -1,3 +1,22 @@
+---
+id: "mn-ss-network-relevance"
+concept: "网络可见性过滤"
+domain: "multiplayer-network"
+subdomain: "state-synchronization"
+subdomain_name: "状态同步"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.6
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 网络可见性过滤
 
 > 领域: 网络多人 > 状态同步

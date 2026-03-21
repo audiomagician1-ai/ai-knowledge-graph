@@ -1,10 +1,22 @@
 ---
-concept: Shader Model
-subdomain: Shader编程
-domain: computer-graphics
+id: "cg-shader-model"
+concept: "Shader Model"
+domain: "computer-graphics"
+subdomain: "shader-programming"
+subdomain_name: "Shader编程"
 difficulty: 3
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.3
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # Shader Model
 
 ## 核心内容

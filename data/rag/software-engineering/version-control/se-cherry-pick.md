@@ -1,10 +1,22 @@
 ---
-concept: Cherry-pick与补丁
-subdomain: 版本控制
-domain: software-engineering
+id: "se-cherry-pick"
+concept: "Cherry-pick与补丁"
+domain: "software-engineering"
+subdomain: "version-control"
+subdomain_name: "版本控制"
 difficulty: 2
----
+is_milestone: false
+tags: ["Git"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.4
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # Cherry-pick与补丁
 
 ## 核心内容

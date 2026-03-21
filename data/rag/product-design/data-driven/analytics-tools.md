@@ -1,10 +1,22 @@
 ---
-concept: 分析工具
-subdomain: 数据驱动
-domain: product-design
+id: "analytics-tools"
+concept: "分析工具"
+domain: "product-design"
+subdomain: "data-driven"
+subdomain_name: "数据驱动"
 difficulty: 2
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.6
+generation_method: "template-v1"
+unique_content_ratio: 0.222
+last_scored: "2026-03-21"
+sources: []
+---
 # 分析工具
 
 ## 核心概念

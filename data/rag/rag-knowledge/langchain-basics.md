@@ -1,14 +1,22 @@
 ---
 id: "langchain-basics"
-name: "LangChain基础"
+concept: "LangChain基础"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 5
 is_milestone: false
 tags: ["工具"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # LangChain基础
 
 ## 概述

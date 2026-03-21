@@ -1,14 +1,22 @@
 ---
 id: "lagrange-multipliers"
-name: "拉格朗日乘数法"
+concept: "拉格朗日乘数法"
+domain: "mathematics"
 subdomain: "optimization"
 subdomain_name: "最优化"
 difficulty: 7
-is_milestone: true
+is_milestone: false
 tags: ["里程碑"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.4
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 拉格朗日乘数法
 
 ## 概述

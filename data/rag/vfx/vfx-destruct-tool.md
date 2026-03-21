@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: destruction
-concept_id: vfx-destruct-tool
+id: "vfx-destruct-tool"
+concept: "破碎工具链"
+domain: "vfx"
+subdomain: "destruction"
+subdomain_name: "破碎与销毁"
 difficulty: 3
-content_type: applied
-tags: [进阶]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.6
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 破碎工具链
 
 ## 概述

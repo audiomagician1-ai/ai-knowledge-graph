@@ -1,10 +1,22 @@
 ---
-concept: 柏拉图
-subdomain: 古代哲学
-domain: philosophy
+id: "plato"
+concept: "柏拉图"
+domain: "philosophy"
+subdomain: "ancient-philosophy"
+subdomain_name: "古代哲学"
 difficulty: 3
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.6
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 柏拉图
 
 ## 核心内容

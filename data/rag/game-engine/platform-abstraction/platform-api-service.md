@@ -1,10 +1,22 @@
 ---
-concept: 平台服务API
-subdomain: 平台抽象
-domain: game-engine
+id: "platform-api-service"
+concept: "平台服务API"
+domain: "game-engine"
+subdomain: "platform-abstraction"
+subdomain_name: "平台抽象"
 difficulty: 2
----
+is_milestone: false
+tags: ["服务"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 平台服务API
 
 ## 核心内容

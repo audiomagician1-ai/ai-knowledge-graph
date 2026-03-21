@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: regional-ops
-concept_id: pub-ro-regional-markets
+id: "pub-ro-regional-markets"
+concept: "区域市场特征"
+domain: "game-publishing"
+subdomain: "regional-ops"
+subdomain_name: "地区化运营"
 difficulty: 1
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 区域市场特征
 
 ## 概述

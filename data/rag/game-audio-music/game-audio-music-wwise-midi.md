@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-wwise-midi"
+concept: "Wwise MIDI"
+domain: "game-audio-music"
+subdomain: "wwise-music"
+subdomain_name: "Wwise音乐系统"
+difficulty: 4
+is_milestone: false
+tags: ["高级"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.5
+generation_method: "template-v1"
+unique_content_ratio: 0.647
+last_scored: "2026-03-21"
+sources: []
+---
 # Wwise MIDI
 
 > **领域**: 游戏音乐 | **子领域**: Wwise音乐系统 | **难度**: 高级

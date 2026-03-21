@@ -1,3 +1,22 @@
+---
+id: "nd-wb-timeline-management"
+concept: "时间线管理"
+domain: "narrative-design"
+subdomain: "worldbuilding"
+subdomain_name: "世界观构建"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.812
+last_scored: "2026-03-21"
+sources: []
+---
 # 时间线管理
 
 > 领域: 叙事设计 > 世界观构建

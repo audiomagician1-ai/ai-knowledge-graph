@@ -1,14 +1,22 @@
 ---
 id: "dependency-injection"
-name: "依赖注入"
+concept: "依赖注入"
+domain: "ai-engineering"
 subdomain: "oop"
 subdomain_name: "面向对象编程"
 difficulty: 6
 is_milestone: false
 tags: ["设计"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # 依赖注入
 
 ## 概述

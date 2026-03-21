@@ -1,10 +1,22 @@
 ---
-concept: pip/Poetry/conda
-subdomain: 包管理
-domain: software-engineering
+id: "se-pip"
+concept: "pip/Poetry/conda"
+domain: "software-engineering"
+subdomain: "package-management"
+subdomain_name: "包管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["Python"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.6
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # pip/Poetry/conda
 
 ## 核心内容

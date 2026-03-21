@@ -1,14 +1,22 @@
 ---
 id: "cnn-basics"
-name: "卷积神经网络(CNN)"
+concept: "卷积神经网络(CNN)"
+domain: "ai-engineering"
 subdomain: "ai-foundations"
 subdomain_name: "AI基础"
 difficulty: 7
 is_milestone: false
 tags: ["DL", "视觉"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 卷积神经网络(CNN)
 
 ## 概述

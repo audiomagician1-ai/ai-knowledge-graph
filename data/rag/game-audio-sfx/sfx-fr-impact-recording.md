@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: foley-recording
-concept_id: sfx-fr-impact-recording
+id: "sfx-fr-impact-recording"
+concept: "撞击音录制"
+domain: "game-audio-sfx"
+subdomain: "foley-recording"
+subdomain_name: "Foley录制"
 difficulty: 5
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 撞击音录制
 
 ## 概述

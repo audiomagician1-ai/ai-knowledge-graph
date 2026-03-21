@@ -1,3 +1,22 @@
+---
+id: "cd-torso-rib-pelvis"
+concept: "躯干:胸廓与骨盆"
+domain: "concept-design"
+subdomain: "anatomy-sketching"
+subdomain_name: "人体解剖速写"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 躯干:胸廓与骨盆
 
 ## 概述

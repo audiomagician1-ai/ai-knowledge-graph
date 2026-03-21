@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-dynamic-mixing"
+concept: "动态混音"
+domain: "game-audio-music"
+subdomain: "adaptive-music"
+subdomain_name: "自适应音乐"
+difficulty: 4
+is_milestone: false
+tags: ["高级"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.2
+generation_method: "template-v1"
+unique_content_ratio: 0.647
+last_scored: "2026-03-21"
+sources: []
+---
 # 动态混音
 
 > **领域**: 游戏音乐 | **子领域**: 自适应音乐 | **难度**: 高级

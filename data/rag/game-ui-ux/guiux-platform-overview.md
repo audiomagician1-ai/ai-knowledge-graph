@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: multiplatform
-concept_id: guiux-platform-overview
-title: 多平台适配概述
+id: "guiux-platform-overview"
+concept: "多平台适配概述"
+domain: "game-ui-ux"
+subdomain: "multiplatform"
+subdomain_name: "多平台适配"
 difficulty: 1
 is_milestone: true
 tags: ["multiplatform", "多平台适配概述"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.842
+last_scored: "2026-03-21"
+sources: []
+---
 # 多平台适配概述
 
 > **领域**: 游戏UI/UX > 多平台适配 | **难度**: ⭐ | **预计学习时间**: 13分钟

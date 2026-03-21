@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: multiplatform
-concept_id: guiux-platform-split-screen
-title: 分屏多人UI
+id: "guiux-platform-split-screen"
+concept: "分屏多人UI"
+domain: "game-ui-ux"
+subdomain: "multiplatform"
+subdomain_name: "多平台适配"
 difficulty: 4
 is_milestone: false
 tags: ["multiplatform", "分屏多人UI"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 分屏多人UI
 
 > **领域**: 游戏UI/UX > 多平台适配 | **难度**: ⭐⭐⭐⭐ | **预计学习时间**: 37分钟

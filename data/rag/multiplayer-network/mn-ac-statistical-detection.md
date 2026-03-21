@@ -1,3 +1,22 @@
+---
+id: "mn-ac-statistical-detection"
+concept: "统计检测"
+domain: "multiplayer-network"
+subdomain: "anti-cheat"
+subdomain_name: "反作弊"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # 统计检测
 
 > 领域: 网络多人 > 反作弊

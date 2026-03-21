@@ -1,10 +1,22 @@
 ---
-concept: Alpha测试抗锯齿
-subdomain: 抗锯齿
-domain: computer-graphics
+id: "cg-alpha-testing-aa"
+concept: "Alpha测试抗锯齿"
+domain: "computer-graphics"
+subdomain: "anti-aliasing"
+subdomain_name: "抗锯齿"
 difficulty: 3
----
+is_milestone: false
+tags: ["实践"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.3
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # Alpha测试抗锯齿
 
 ## 核心内容

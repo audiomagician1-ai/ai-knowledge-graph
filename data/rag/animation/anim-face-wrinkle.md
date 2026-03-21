@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: facial-animation
-concept_id: anim-face-wrinkle
+id: "anim-face-wrinkle"
+concept: "皱纹贴图"
+domain: "animation"
+subdomain: "facial-animation"
+subdomain_name: "面部动画"
 difficulty: 3
-content_type: theory
-tags: [技术]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["技术"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.6
+generation_method: "template-v1"
+unique_content_ratio: 0.412
+last_scored: "2026-03-21"
+sources: []
+---
 # 皱纹贴图
 
 ## 概述

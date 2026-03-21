@@ -1,10 +1,22 @@
 ---
-concept: 代码审查概述
-subdomain: 代码审查
-domain: software-engineering
+id: "se-cr-intro"
+concept: "代码审查概述"
+domain: "software-engineering"
+subdomain: "code-review"
+subdomain_name: "代码审查"
 difficulty: 1
----
+is_milestone: true
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 代码审查概述
 
 ## 核心内容

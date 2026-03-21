@@ -1,14 +1,22 @@
 ---
 id: "encapsulation"
-name: "封装"
+concept: "封装"
+domain: "ai-engineering"
 subdomain: "oop"
 subdomain_name: "面向对象编程"
 difficulty: 3
 is_milestone: false
 tags: ["OOP"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 封装
 
 ## 概述

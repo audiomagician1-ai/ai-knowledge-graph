@@ -1,14 +1,22 @@
 ---
 id: "agent-safety"
-name: "Agent安全与对齐"
+concept: "Agent安全与对齐"
+domain: "ai-engineering"
 subdomain: "agent-systems"
 subdomain_name: "Agent系统"
 difficulty: 8
 is_milestone: false
 tags: ["Agent", "安全"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.786
+last_scored: "2026-03-21"
+sources: []
+---
 # Agent安全与对齐
 
 ## 概述

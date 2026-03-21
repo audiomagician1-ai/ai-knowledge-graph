@@ -1,14 +1,22 @@
 ---
 id: "code-generation"
-name: "代码生成Agent"
+concept: "代码生成Agent"
+domain: "ai-engineering"
 subdomain: "agent-systems"
 subdomain_name: "Agent系统"
 difficulty: 7
 is_milestone: false
 tags: ["Agent", "编程"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 代码生成Agent
 
 ## 概述

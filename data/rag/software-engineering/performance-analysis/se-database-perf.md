@@ -1,10 +1,22 @@
 ---
-concept: 数据库性能
-subdomain: 性能分析
-domain: software-engineering
+id: "se-database-perf"
+concept: "数据库性能"
+domain: "software-engineering"
+subdomain: "performance-analysis"
+subdomain_name: "性能分析"
 difficulty: 3
----
+is_milestone: false
+tags: ["数据库"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 20.9
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据库性能
 
 ## 核心内容

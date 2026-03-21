@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: ui-tech
-concept_id: guiux-tech-retained-mode
-title: Retained Mode GUI
+id: "guiux-tech-retained-mode"
+concept: "Retained Mode GUI"
+domain: "game-ui-ux"
+subdomain: "ui-tech"
+subdomain_name: "UI技术实现"
 difficulty: 3
 is_milestone: false
 tags: ["ui-tech", "Retained Mode GUI"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # Retained Mode GUI
 
 > **领域**: 游戏UI/UX > UI技术实现 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

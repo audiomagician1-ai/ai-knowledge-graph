@@ -1,10 +1,22 @@
 ---
-concept: 心理神经免疫学
-subdomain: 生物心理学
-domain: psychology
+id: "psychoneuroimmunology"
+concept: "心理神经免疫学"
+domain: "psychology"
+subdomain: "biological-psychology"
+subdomain_name: "生物心理学"
 difficulty: 4
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.6
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 心理神经免疫学
 
 ## 核心内容

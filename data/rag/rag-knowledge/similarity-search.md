@@ -1,14 +1,22 @@
 ---
 id: "similarity-search"
-name: "相似度搜索与重排"
+concept: "相似度搜索与重排"
+domain: "ai-engineering"
 subdomain: "rag-knowledge"
 subdomain_name: "RAG与知识库"
 difficulty: 6
 is_milestone: false
 tags: ["RAG"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.821
+last_scored: "2026-03-21"
+sources: []
+---
 # 相似度搜索与重排
 
 ## 概述

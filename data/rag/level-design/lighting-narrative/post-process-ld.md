@@ -1,10 +1,22 @@
 ---
-concept: 后处理(LD)
-subdomain: 光照叙事
-domain: level-design
+id: "post-process-ld"
+concept: "后处理(LD)"
+domain: "level-design"
+subdomain: "lighting-narrative"
+subdomain_name: "光照叙事"
 difficulty: 2
----
+is_milestone: false
+tags: ["后处理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.5
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 后处理(LD)
 
 ## 核心内容

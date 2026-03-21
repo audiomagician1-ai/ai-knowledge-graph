@@ -1,10 +1,22 @@
 ---
-concept: 理性主义
-subdomain: 认识论
-domain: philosophy
+id: "rationalism"
+concept: "理性主义"
+domain: "philosophy"
+subdomain: "epistemology"
+subdomain_name: "认识论"
 difficulty: 3
----
+is_milestone: false
+tags: ["流派"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.3
+generation_method: "template-v1"
+unique_content_ratio: 0.2
+last_scored: "2026-03-21"
+sources: []
+---
 # 理性主义
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 细胞核
-subdomain: 细胞生物学
-domain: biology
+id: "nucleus"
+concept: "细胞核"
+domain: "biology"
+subdomain: "cell-biology"
+subdomain_name: "细胞生物学"
 difficulty: 2
----
+is_milestone: false
+tags: ["结构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 细胞核
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 线性回归
-subdomain: 计量经济学
-domain: economics
-difficulty: 2
----
+id: "linear-regression"
+concept: "线性回归"
+domain: "mathematics"
+subdomain: "statistics"
+subdomain_name: "数理统计"
+difficulty: 6
+is_milestone: false
+tags: ["里程碑"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 线性回归
 
 ## 核心内容

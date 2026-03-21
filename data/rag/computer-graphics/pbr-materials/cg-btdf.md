@@ -1,10 +1,22 @@
 ---
-concept: 透射BRDF
-subdomain: PBR材质
-domain: computer-graphics
+id: "cg-btdf"
+concept: "透射BRDF"
+domain: "computer-graphics"
+subdomain: "pbr-materials"
+subdomain_name: "PBR材质"
 difficulty: 4
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 透射BRDF
 
 ## 核心内容

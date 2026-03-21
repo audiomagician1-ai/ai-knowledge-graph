@@ -1,3 +1,22 @@
+---
+id: "design-feed-system"
+concept: "设计Feed流系统"
+domain: "ai-engineering"
+subdomain: "system-design"
+subdomain_name: "系统设计"
+difficulty: 5
+is_milestone: false
+tags: ["feed", "timeline", "push-pull"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 设计Feed流系统
 
 > **难度**: ⭐⭐⭐⭐⭐ (5/5) | **预计学习时间**: 40分钟

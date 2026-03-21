@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: lod-strategy
-concept_id: ta-nanite-limitations
+id: "ta-nanite-limitations"
+concept: "Nanite限制"
+domain: "technical-art"
+subdomain: "lod-strategy"
+subdomain_name: "LOD策略"
 difficulty: 2
-content_type: theory
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # Nanite限制
 
 ## 概述

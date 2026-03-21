@@ -1,10 +1,22 @@
 ---
-concept: 认识论概述
-subdomain: 认识论
-domain: philosophy
+id: "epistemology-overview"
+concept: "认识论概述"
+domain: "philosophy"
+subdomain: "epistemology"
+subdomain_name: "认识论"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.3
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 认识论概述
 
 ## 核心内容

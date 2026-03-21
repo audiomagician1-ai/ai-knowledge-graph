@@ -1,10 +1,22 @@
 ---
-concept: LD文档概述
-subdomain: LD文档
-domain: level-design
+id: "ld-doc-intro"
+concept: "LD文档概述"
+domain: "level-design"
+subdomain: "ld-documentation"
+subdomain_name: "LD文档"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # LD文档概述
 
 ## 核心内容

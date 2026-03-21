@@ -1,10 +1,22 @@
 ---
-concept: 前景理论
-subdomain: 行为经济学
-domain: economics
+id: "prospect-theory"
+concept: "前景理论"
+domain: "economics"
+subdomain: "behavioral-econ"
+subdomain_name: "行为经济学"
 difficulty: 2
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 前景理论
 
 ## 核心内容

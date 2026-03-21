@@ -1,10 +1,22 @@
 ---
-concept: agent-reflection
-subdomain: agent-systems
+id: "agent-reflection"
+concept: "Agent反思机制"
+domain: "ai-engineering"
+subdomain: "agent-systems"
+subdomain_name: "Agent系统"
 difficulty: 7
-prereqs: [agent-loop]
----
+is_milestone: false
+tags: ["Agent", "推理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 60.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # Agent反思机制
 
 ## 核心概念

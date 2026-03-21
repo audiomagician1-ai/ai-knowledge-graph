@@ -1,14 +1,22 @@
 ---
 id: "browser-rendering"
-name: "浏览器渲染原理"
+concept: "浏览器渲染原理"
+domain: "ai-engineering"
 subdomain: "web-frontend"
 subdomain_name: "Web前端"
 difficulty: 6
 is_milestone: false
 tags: ["浏览器"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.808
+last_scored: "2026-03-21"
+sources: []
+---
 # 浏览器渲染原理
 
 ## 概述

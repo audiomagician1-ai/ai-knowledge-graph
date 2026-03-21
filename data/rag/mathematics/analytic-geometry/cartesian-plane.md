@@ -1,14 +1,22 @@
 ---
 id: "cartesian-plane"
-name: "直角坐标系"
+concept: "直角坐标系"
+domain: "mathematics"
 subdomain: "analytic-geometry"
 subdomain_name: "解析几何"
 difficulty: 3
 is_milestone: false
 tags: ["基础"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.5
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 直角坐标系
 
 ## 概述

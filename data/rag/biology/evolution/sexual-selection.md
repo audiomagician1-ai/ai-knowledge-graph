@@ -1,10 +1,22 @@
 ---
-concept: 性选择
-subdomain: 进化生物学
-domain: biology
+id: "sexual-selection"
+concept: "性选择"
+domain: "biology"
+subdomain: "evolution"
+subdomain_name: "进化生物学"
 difficulty: 3
----
+is_milestone: false
+tags: ["机制"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.2
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 性选择
 
 ## 核心内容

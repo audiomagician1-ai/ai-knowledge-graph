@@ -1,14 +1,22 @@
 ---
 id: "radiation-protection"
-name: "辐射防护"
+concept: "辐射防护"
+domain: "physics"
 subdomain: "nuclear-physics"
 subdomain_name: "核物理"
 difficulty: 3
 is_milestone: false
 tags: ["应用"]
-generated_at: "2026-03-19T09:45:51"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 辐射防护
 
 ## 概述

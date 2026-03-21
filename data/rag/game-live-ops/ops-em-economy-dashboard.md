@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: economy-monitoring
-concept_id: ops-em-economy-dashboard
+id: "ops-em-economy-dashboard"
+concept: "经济监控看板"
+domain: "game-live-ops"
+subdomain: "economy-monitoring"
+subdomain_name: "经济系统监控"
 difficulty: 3
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 经济监控看板
 
 ## 概述

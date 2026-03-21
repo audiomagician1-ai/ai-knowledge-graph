@@ -1,10 +1,22 @@
 ---
-concept: 统计功效分析
-subdomain: 研究方法
-domain: psychology
+id: "power-analysis"
+concept: "统计功效分析"
+domain: "psychology"
+subdomain: "research-methods"
+subdomain_name: "研究方法"
 difficulty: 3
----
+is_milestone: false
+tags: ["统计"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.5
+generation_method: "template-v1"
+unique_content_ratio: 0.182
+last_scored: "2026-03-21"
+sources: []
+---
 # 统计功效分析
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: rag-query-routing
-subdomain: rag-knowledge
+id: "rag-query-routing"
+concept: "RAG查询路由"
+domain: "ai-engineering"
+subdomain: "rag-knowledge"
+subdomain_name: "RAG与知识库"
 difficulty: 6
-prereqs: [rag-pipeline]
----
+is_milestone: false
+tags: ["RAG", "架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 55.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # RAG查询路由
 
 ## 核心概念

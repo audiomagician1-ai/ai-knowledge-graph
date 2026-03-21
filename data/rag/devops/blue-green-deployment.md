@@ -1,3 +1,22 @@
+---
+id: "blue-green-deployment"
+concept: "蓝绿部署"
+domain: "ai-engineering"
+subdomain: "devops"
+subdomain_name: "开发运维"
+difficulty: 4
+is_milestone: false
+tags: ["blue-green", "canary", "zero-downtime"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 蓝绿部署
 
 > **难度**: (4/5) | **预计学习时间**: 25分钟

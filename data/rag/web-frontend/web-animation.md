@@ -1,3 +1,22 @@
+---
+id: "web-animation"
+concept: "Web动画"
+domain: "ai-engineering"
+subdomain: "web-frontend"
+subdomain_name: "Web前端"
+difficulty: 3
+is_milestone: false
+tags: ["animation", "css", "framer-motion"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # Web动画
 
 > **难度**: (3/5) | **预计学习时间**: 25分钟

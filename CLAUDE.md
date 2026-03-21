@@ -40,10 +40,16 @@
 ---
 
 **当前阶段**: 🔥 **Phase 36 下一步** | 29知识球(5,996节点) + Phase 35 QA测试球已完成
+**🔴🔴🔴 最高优先级**: **RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
+> 5,996篇RAG文档质量审计: Tier-S ~10篇, Tier-C ~5,960篇(同模板生成,概念特异性<1%)
+> Sprint 0: Schema v2 + quality_scorer.py + 全量评分 | Sprint 1: 200里程碑节点精写 → Tier-A
+> Sprint 2: 精确科学入门层300篇 | Sprint 3: 全域管线化
+> **当前进度**: Sprint 0 ✅ 完成 + Sprint 1 物理域 ✅ 完成(26里程碑精写, 均分34.7→45.5, S=7/A=19)。下一步: 数学域30里程碑精写
 **🔥 下一阶段**: **Phase 36-37 游戏开发全领域知识球** | 2个球 — 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
 **🚀 扩展路线图**: `docs/EXPANSION_PLAN.md` — 多知识球体系统 + 11球体 + 🔥20游戏开发球(P0最高优先级)
+**📊 RAG进化**: `docs/RAG_EVOLUTION_PLAN.md` — 知识库质量迭代进化方案(Schema v2 + 评分 + 改写管线)
 
 **Phase 14 完成摘要**:
 > **目标**: 上线第八个知识球 — 哲学, 覆盖古代哲学到当代思潮 (P2第二球)

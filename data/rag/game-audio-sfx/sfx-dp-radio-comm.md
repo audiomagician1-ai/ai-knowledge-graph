@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: dialogue-processing
-concept_id: sfx-dp-radio-comm
+id: "sfx-dp-radio-comm"
+concept: "无线电通讯音效"
+domain: "game-audio-sfx"
+subdomain: "dialogue-processing"
+subdomain_name: "对白处理"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 无线电通讯音效
 
 ## 概述

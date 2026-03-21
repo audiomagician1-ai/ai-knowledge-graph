@@ -1,3 +1,22 @@
+---
+id: "3da-rig-export"
+concept: "绑定导出"
+domain: "3d-art"
+subdomain: "rigging"
+subdomain_name: "绑定"
+difficulty: 2
+is_milestone: false
+tags: ["流程"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 绑定导出
 
 ## 概述

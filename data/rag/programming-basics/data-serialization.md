@@ -1,3 +1,22 @@
+---
+id: "data-serialization"
+concept: "数据序列化"
+domain: "ai-engineering"
+subdomain: "programming-basics"
+subdomain_name: "编程基础"
+difficulty: 3
+is_milestone: false
+tags: ["json", "xml", "yaml", "serialization"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据序列化
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 20分钟

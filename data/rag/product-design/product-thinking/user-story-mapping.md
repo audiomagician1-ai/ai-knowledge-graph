@@ -1,10 +1,22 @@
 ---
-concept: 用户故事地图
-subdomain: 产品思维
-domain: product-design
+id: "user-story-mapping"
+concept: "用户故事地图"
+domain: "product-design"
+subdomain: "product-thinking"
+subdomain_name: "产品思维"
 difficulty: 2
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 用户故事地图
 
 ## 核心概念

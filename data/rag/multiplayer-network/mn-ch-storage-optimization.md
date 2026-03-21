@@ -1,3 +1,22 @@
+---
+id: "mn-ch-storage-optimization"
+concept: "存储优化"
+domain: "multiplayer-network"
+subdomain: "cdn-hotpatch"
+subdomain_name: "CDN与热更新"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # 存储优化
 
 > 领域: 网络多人 > CDN与热更新

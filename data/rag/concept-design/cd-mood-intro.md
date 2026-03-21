@@ -1,3 +1,22 @@
+---
+id: "cd-mood-intro"
+concept: "Moodboard概述"
+domain: "concept-design"
+subdomain: "moodboard-ref"
+subdomain_name: "Moodboard与参考"
+difficulty: 1
+is_milestone: false
+tags: ["基础"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.875
+last_scored: "2026-03-21"
+sources: []
+---
 # Moodboard概述
 
 ## 概述

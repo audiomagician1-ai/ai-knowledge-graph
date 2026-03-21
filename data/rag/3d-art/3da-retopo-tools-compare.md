@@ -1,3 +1,22 @@
+---
+id: "3da-retopo-tools-compare"
+concept: "重拓扑工具对比"
+domain: "3d-art"
+subdomain: "retopology"
+subdomain_name: "拓扑重构"
+difficulty: 2
+is_milestone: false
+tags: ["对比"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 重拓扑工具对比
 
 ## 概述

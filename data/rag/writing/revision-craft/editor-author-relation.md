@@ -1,10 +1,22 @@
 ---
-concept: 编辑与作者关系
-subdomain: 修改与文体
-domain: writing
+id: "editor-author-relation"
+concept: "编辑与作者关系"
+domain: "writing"
+subdomain: "revision-craft"
+subdomain_name: "修改与文体"
 difficulty: 3
----
+is_milestone: false
+tags: ["专业"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.2
+generation_method: "template-v1"
+unique_content_ratio: 0.083
+last_scored: "2026-03-21"
+sources: []
+---
 # 编辑与作者关系
 
 ## 核心内容

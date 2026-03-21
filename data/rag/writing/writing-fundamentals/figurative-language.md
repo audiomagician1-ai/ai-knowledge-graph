@@ -1,10 +1,22 @@
 ---
-concept: 修辞手法
-subdomain: 写作基础
-domain: writing
+id: "figurative-language"
+concept: "修辞手法"
+domain: "writing"
+subdomain: "writing-fundamentals"
+subdomain_name: "写作基础"
 difficulty: 2
----
+is_milestone: false
+tags: ["修辞"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 修辞手法
 
 ## 核心内容

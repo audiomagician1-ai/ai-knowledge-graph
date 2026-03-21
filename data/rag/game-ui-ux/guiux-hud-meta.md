@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: hud-design
-concept_id: guiux-hud-meta
-title: 元叙事HUD
+id: "guiux-hud-meta"
+concept: "元叙事HUD"
+domain: "game-ui-ux"
+subdomain: "hud-design"
+subdomain_name: "HUD设计"
 difficulty: 4
 is_milestone: false
 tags: ["hud-design", "元叙事HUD"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.8
+last_scored: "2026-03-21"
+sources: []
+---
 # 元叙事HUD
 
 > **领域**: 游戏UI/UX > HUD设计 | **难度**: ⭐⭐⭐⭐ | **预计学习时间**: 37分钟

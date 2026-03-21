@@ -1,10 +1,22 @@
 ---
-concept: 光追硬件单元
-subdomain: GPU架构
-domain: computer-graphics
+id: "cg-ray-tracing-hw"
+concept: "光追硬件单元"
+domain: "computer-graphics"
+subdomain: "gpu-architecture"
+subdomain_name: "GPU架构"
 difficulty: 4
----
+is_milestone: false
+tags: ["硬件"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 光追硬件单元
 
 ## 核心内容

@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: automation
-concept_id: ta-ci-art
+id: "ta-ci-art"
+concept: "美术CI/CD"
+domain: "technical-art"
+subdomain: "automation"
+subdomain_name: "自动化工作流"
 difficulty: 2
-content_type: theory
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 美术CI/CD
 
 ## 概述

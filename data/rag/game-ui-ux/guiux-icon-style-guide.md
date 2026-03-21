@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: icon-system
-concept_id: guiux-icon-style-guide
-title: 图标风格指南
+id: "guiux-icon-style-guide"
+concept: "图标风格指南"
+domain: "game-ui-ux"
+subdomain: "icon-system"
+subdomain_name: "图标系统"
 difficulty: 2
 is_milestone: false
 tags: ["icon-system", "图标风格指南"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 图标风格指南
 
 > **领域**: 游戏UI/UX > 图标系统 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

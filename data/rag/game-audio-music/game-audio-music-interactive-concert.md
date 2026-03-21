@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-interactive-concert"
+concept: "互动式音乐会"
+domain: "game-audio-music"
+subdomain: "interactive-score"
+subdomain_name: "交互式配乐"
+difficulty: 4
+is_milestone: false
+tags: ["高级"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.6
+generation_method: "template-v1"
+unique_content_ratio: 0.625
+last_scored: "2026-03-21"
+sources: []
+---
 # 互动式音乐会
 
 > **领域**: 游戏音乐 | **子领域**: 交互式配乐 | **难度**: 高级

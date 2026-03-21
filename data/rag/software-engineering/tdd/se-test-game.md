@@ -1,10 +1,22 @@
 ---
-concept: 游戏测试策略
-subdomain: 测试驱动开发
-domain: software-engineering
+id: "se-test-game"
+concept: "游戏测试策略"
+domain: "software-engineering"
+subdomain: "tdd"
+subdomain_name: "测试驱动开发"
 difficulty: 3
----
+is_milestone: true
+tags: ["游戏"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 游戏测试策略
 
 ## 核心内容

@@ -1,3 +1,22 @@
+---
+id: "state-pattern"
+concept: "状态模式"
+domain: "ai-engineering"
+subdomain: "oop"
+subdomain_name: "面向对象编程"
+difficulty: 4
+is_milestone: false
+tags: ["state", "fsm", "design-pattern"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.1
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 状态模式
 
 > **难度**: (4/5) | **预计学习时间**: 25分钟

@@ -1,10 +1,22 @@
 ---
-concept: 收益递减
-subdomain: 平衡性设计
-domain: game-design
+id: "diminishing-returns"
+concept: "收益递减"
+domain: "game-design"
+subdomain: "balance-design"
+subdomain_name: "平衡性设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["机制"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 收益递减
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 宏观劳动市场
-subdomain: 宏观经济学
-domain: economics
+id: "labor-market-macro"
+concept: "宏观劳动市场"
+domain: "economics"
+subdomain: "macroeconomics"
+subdomain_name: "宏观经济学"
 difficulty: 3
----
+is_milestone: false
+tags: ["劳动"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 宏观劳动市场
 
 ## 核心内容

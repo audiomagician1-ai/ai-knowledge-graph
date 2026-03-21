@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: destruction
-concept_id: vfx-destruct-hierarchy
+id: "vfx-destruct-hierarchy"
+concept: "层级破碎"
+domain: "vfx"
+subdomain: "destruction"
+subdomain_name: "破碎与销毁"
 difficulty: 3
-content_type: applied
-tags: [进阶]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.9
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 层级破碎
 
 ## 概述

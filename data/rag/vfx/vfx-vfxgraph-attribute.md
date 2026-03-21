@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: vfx-graph
-concept_id: vfx-vfxgraph-attribute
+id: "vfx-vfxgraph-attribute"
+concept: "属性系统"
+domain: "vfx"
+subdomain: "vfx-graph"
+subdomain_name: "VFX Graph"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 属性系统
 
 ## 概述

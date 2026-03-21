@@ -1,14 +1,22 @@
 ---
 id: "hash-table"
-name: "哈希表"
+concept: "哈希表"
+domain: "ai-engineering"
 subdomain: "data-structures"
 subdomain_name: "数据结构"
 difficulty: 4
-is_milestone: true
+is_milestone: false
 tags: ["映射"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # 哈希表
 
 ## 概述

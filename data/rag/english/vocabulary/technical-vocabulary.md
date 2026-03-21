@@ -1,14 +1,22 @@
 ---
 id: "technical-vocabulary"
-name: "科技词汇"
+concept: "科技词汇"
+domain: "english"
 subdomain: "vocabulary"
 subdomain_name: "核心词汇"
 difficulty: 5
 is_milestone: false
 tags: ["专业"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.5
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 科技词汇
 
 ## 概述

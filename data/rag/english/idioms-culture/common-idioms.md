@@ -1,14 +1,22 @@
 ---
 id: "common-idioms"
-name: "常见习语"
+concept: "常见习语"
+domain: "english"
 subdomain: "idioms-culture"
 subdomain_name: "习语与文化"
 difficulty: 3
-is_milestone: true
+is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.6
+generation_method: "template-v1"
+unique_content_ratio: 0.583
+last_scored: "2026-03-21"
+sources: []
+---
 # 常见习语
 
 ## 概述

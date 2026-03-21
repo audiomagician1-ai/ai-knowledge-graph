@@ -1,10 +1,22 @@
 ---
-concept: Blockout概述
-subdomain: Blockout
-domain: level-design
+id: "blockout-intro"
+concept: "Blockout概述"
+domain: "level-design"
+subdomain: "blockout"
+subdomain_name: "Blockout"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.2
+generation_method: "template-v1"
+unique_content_ratio: 0.364
+last_scored: "2026-03-21"
+sources: []
+---
 # Blockout概述
 
 ## 核心内容

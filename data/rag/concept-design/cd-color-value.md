@@ -1,3 +1,22 @@
+---
+id: "cd-color-value"
+concept: "色彩明度关系"
+domain: "concept-design"
+subdomain: "color-theory"
+subdomain_name: "色彩理论"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 色彩明度关系
 
 ## 概述

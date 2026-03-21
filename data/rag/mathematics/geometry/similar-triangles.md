@@ -1,14 +1,22 @@
 ---
 id: "similar-triangles"
-name: "相似三角形"
+concept: "相似三角形"
+domain: "mathematics"
 subdomain: "geometry"
 subdomain_name: "几何"
 difficulty: 5
-is_milestone: true
+is_milestone: false
 tags: ["里程碑"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 相似三角形
 
 ## 概述

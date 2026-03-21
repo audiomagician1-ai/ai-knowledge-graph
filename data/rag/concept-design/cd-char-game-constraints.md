@@ -1,3 +1,22 @@
+---
+id: "cd-char-game-constraints"
+concept: "游戏角色约束"
+domain: "concept-design"
+subdomain: "character-design"
+subdomain_name: "角色设计"
+difficulty: 3
+is_milestone: false
+tags: ["规范"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 游戏角色约束
 
 ## 概述

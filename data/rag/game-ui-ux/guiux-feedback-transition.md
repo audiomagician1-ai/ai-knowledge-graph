@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: interaction-feedback
-concept_id: guiux-feedback-transition
-title: 界面过渡动画
+id: "guiux-feedback-transition"
+concept: "界面过渡动画"
+domain: "game-ui-ux"
+subdomain: "interaction-feedback"
+subdomain_name: "交互反馈"
 difficulty: 3
 is_milestone: false
 tags: ["interaction-feedback", "界面过渡动画"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 界面过渡动画
 
 > **领域**: 游戏UI/UX > 交互反馈 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

@@ -1,10 +1,22 @@
 ---
-concept: 合规测试
-subdomain: 平台抽象
-domain: game-engine
+id: "compliance-testing"
+concept: "合规测试"
+domain: "game-engine"
+subdomain: "platform-abstraction"
+subdomain_name: "平台抽象"
 difficulty: 2
----
+is_milestone: false
+tags: ["QA"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.5
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 合规测试
 
 ## 核心内容

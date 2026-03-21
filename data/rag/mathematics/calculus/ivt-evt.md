@@ -1,14 +1,22 @@
 ---
 id: "ivt-evt"
-name: "介值定理与极值定理"
+concept: "介值定理与极值定理"
+domain: "mathematics"
 subdomain: "calculus"
 subdomain_name: "微积分"
 difficulty: 6
 is_milestone: false
 tags: ["定理"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.727
+last_scored: "2026-03-21"
+sources: []
+---
 # 介值定理与极值定理
 
 ## 概述

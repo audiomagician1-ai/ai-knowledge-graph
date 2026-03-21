@@ -1,10 +1,22 @@
 ---
-concept: 交互距离
-subdomain: Metric设计
-domain: level-design
+id: "interaction-range"
+concept: "交互距离"
+domain: "level-design"
+subdomain: "metrics-design"
+subdomain_name: "Metric设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["交互"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.0
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 交互距离
 
 ## 核心内容

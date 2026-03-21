@@ -1,3 +1,22 @@
+---
+id: "mvcc"
+concept: "MVCC多版本并发控制"
+domain: "ai-engineering"
+subdomain: "database"
+subdomain_name: "数据库"
+difficulty: 5
+is_milestone: false
+tags: ["mvcc", "snapshot", "isolation"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # MVCC多版本并发控制
 
 > **难度**: ⭐⭐⭐⭐⭐ (5/5) | **预计学习时间**: 30分钟

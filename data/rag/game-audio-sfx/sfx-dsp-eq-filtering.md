@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: dsp-effects
-concept_id: sfx-dsp-eq-filtering
+id: "sfx-dsp-eq-filtering"
+concept: "EQ均衡与滤波"
+domain: "game-audio-sfx"
+subdomain: "dsp-effects"
+subdomain_name: "混响与DSP"
 difficulty: 1
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.2
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # EQ均衡与滤波
 
 ## 概述

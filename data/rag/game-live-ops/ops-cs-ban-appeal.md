@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: customer-service
-concept_id: ops-cs-ban-appeal
+id: "ops-cs-ban-appeal"
+concept: "封禁与申诉"
+domain: "game-live-ops"
+subdomain: "customer-service"
+subdomain_name: "客服体系"
 difficulty: 2
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 封禁与申诉
 
 ## 概述

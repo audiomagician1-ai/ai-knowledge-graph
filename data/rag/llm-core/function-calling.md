@@ -1,13 +1,22 @@
 ---
 id: "function-calling"
-name: "Function Calling"
+concept: "Function Calling"
+domain: "ai-engineering"
 subdomain: "llm-core"
 subdomain_name: "大模型核心"
 difficulty: 6
-tags: ["LLM", "Tool Use", "API"]
-generated_at: "2026-03-19T18:00:00"
----
+is_milestone: false
+tags: ["LLM"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 76.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # Function Calling
 
 ## 概述

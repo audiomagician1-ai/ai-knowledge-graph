@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: event-planning
-concept_id: ops-ep-event-automation
+id: "ops-ep-event-automation"
+concept: "活动自动化"
+domain: "game-live-ops"
+subdomain: "event-planning"
+subdomain_name: "活动策划"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 32.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 活动自动化
 
 ## 概述

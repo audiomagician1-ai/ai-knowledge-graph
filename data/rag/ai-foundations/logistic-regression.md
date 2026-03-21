@@ -1,14 +1,22 @@
 ---
 id: "logistic-regression"
-name: "逻辑回归"
-subdomain: "ai-foundations"
-subdomain_name: "AI基础"
-difficulty: 5
+concept: "逻辑回归"
+domain: "mathematics"
+subdomain: "statistics"
+subdomain_name: "数理统计"
+difficulty: 7
 is_milestone: false
-tags: ["ML"]
-generated_at: "2026-03-13T20:52:22"
----
+tags: ["应用"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 逻辑回归
 
 ## 概述

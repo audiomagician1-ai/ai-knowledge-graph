@@ -1,3 +1,22 @@
+---
+id: "process-thread"
+concept: "进程与线程"
+domain: "ai-engineering"
+subdomain: "cs-fundamentals"
+subdomain_name: "计算机基础"
+difficulty: 3
+is_milestone: false
+tags: ["process", "thread", "concurrency"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 进程与线程
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 25分钟

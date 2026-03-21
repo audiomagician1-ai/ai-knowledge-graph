@@ -1,10 +1,22 @@
 ---
-concept: 衰老生理学
-subdomain: 人体生理学
-domain: biology
+id: "aging-physiology"
+concept: "衰老生理学"
+domain: "biology"
+subdomain: "human-physiology"
+subdomain_name: "人体生理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["特殊"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.3
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 衰老生理学
 
 ## 核心内容

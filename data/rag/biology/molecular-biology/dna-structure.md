@@ -1,10 +1,22 @@
 ---
-concept: DNA结构
-subdomain: 分子生物学
-domain: biology
+id: "dna-structure"
+concept: "DNA结构"
+domain: "biology"
+subdomain: "molecular-biology"
+subdomain_name: "分子生物学"
 difficulty: 2
----
+is_milestone: false
+tags: ["核酸"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.0
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # DNA结构
 
 ## 核心内容

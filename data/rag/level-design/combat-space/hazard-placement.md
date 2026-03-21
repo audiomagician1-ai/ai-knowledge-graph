@@ -1,10 +1,22 @@
 ---
-concept: 危险物放置
-subdomain: 战斗空间
-domain: level-design
+id: "hazard-placement"
+concept: "危险物放置"
+domain: "level-design"
+subdomain: "combat-space"
+subdomain_name: "战斗空间"
 difficulty: 2
----
+is_milestone: false
+tags: ["危害"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 危险物放置
 
 ## 核心内容

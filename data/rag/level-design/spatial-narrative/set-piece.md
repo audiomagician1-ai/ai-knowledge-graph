@@ -1,10 +1,22 @@
 ---
-concept: 定制场景(Set-piece)
-subdomain: 空间叙事
-domain: level-design
+id: "set-piece"
+concept: "定制场景(Set-piece)"
+domain: "level-design"
+subdomain: "spatial-narrative"
+subdomain_name: "空间叙事"
 difficulty: 3
----
+is_milestone: false
+tags: ["叙事"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 定制场景(Set-piece)
 
 ## 核心内容

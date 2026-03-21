@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: skeletal-rigging
-concept_id: anim-corrective-shapes
+id: "anim-corrective-shapes"
+concept: "修正形状"
+domain: "animation"
+subdomain: "skeletal-rigging"
+subdomain_name: "骨骼绑定"
 difficulty: 3
-content_type: practice
-tags: [进阶]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 修正形状
 
 ## 概述

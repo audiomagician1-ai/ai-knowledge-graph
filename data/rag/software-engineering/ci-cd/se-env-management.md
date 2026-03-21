@@ -1,10 +1,22 @@
 ---
-concept: 环境管理
-subdomain: CI/CD
-domain: software-engineering
+id: "se-env-management"
+concept: "环境管理"
+domain: "software-engineering"
+subdomain: "ci-cd"
+subdomain_name: "CI/CD"
 difficulty: 2
----
+is_milestone: false
+tags: ["环境"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 环境管理
 
 ## 核心内容

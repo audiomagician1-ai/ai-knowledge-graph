@@ -1,10 +1,22 @@
 ---
-concept: UE5 Subsystem
-subdomain: UE5架构
-domain: game-engine
+id: "ue5-subsystem"
+concept: "UE5 Subsystem"
+domain: "game-engine"
+subdomain: "ue5-architecture"
+subdomain_name: "UE5架构"
 difficulty: 3
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.1
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # UE5 Subsystem
 
 ## 核心内容

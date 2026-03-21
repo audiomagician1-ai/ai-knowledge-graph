@@ -1,10 +1,22 @@
 ---
-concept: 空间叙事原理
-subdomain: 空间叙事
-domain: level-design
+id: "spatial-storytelling"
+concept: "空间叙事原理"
+domain: "level-design"
+subdomain: "spatial-narrative"
+subdomain_name: "空间叙事"
 difficulty: 1
----
+is_milestone: false
+tags: ["叙事"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.3
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 空间叙事原理
 
 ## 核心内容

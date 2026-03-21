@@ -1,14 +1,22 @@
 ---
 id: "iteration-vs-recursion"
-name: "迭代vs递归"
+concept: "迭代vs递归"
+domain: "ai-engineering"
 subdomain: "programming-basics"
 subdomain_name: "编程基础"
 difficulty: 3
 is_milestone: false
 tags: ["算法思维"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.1
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 迭代vs递归
 
 ## 概述

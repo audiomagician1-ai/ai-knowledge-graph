@@ -1,3 +1,22 @@
+---
+id: "3da-env-storytelling"
+concept: "环境叙事"
+domain: "3d-art"
+subdomain: "environment-art"
+subdomain_name: "环境美术"
+difficulty: 2
+is_milestone: false
+tags: ["设计"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.5
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 环境叙事
 
 ## 概述

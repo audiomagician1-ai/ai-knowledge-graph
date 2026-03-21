@@ -1,14 +1,22 @@
 ---
 id: "fermats-little-theorem"
-name: "费马小定理"
+concept: "费马小定理"
+domain: "mathematics"
 subdomain: "number-theory"
 subdomain_name: "数论"
 difficulty: 6
 is_milestone: false
 tags: ["定理"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 费马小定理
 
 ## 概述

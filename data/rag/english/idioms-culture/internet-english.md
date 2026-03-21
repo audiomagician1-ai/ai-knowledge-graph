@@ -1,14 +1,22 @@
 ---
 id: "internet-english"
-name: "网络英语"
+concept: "网络英语"
+domain: "english"
 subdomain: "idioms-culture"
 subdomain_name: "习语与文化"
 difficulty: 3
 is_milestone: false
 tags: ["现代"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.0
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 网络英语
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "scalability"
-name: "可扩展性"
+concept: "可扩展性"
+domain: "ai-engineering"
 subdomain: "system-design"
 subdomain_name: "系统设计"
 difficulty: 7
 is_milestone: false
 tags: ["架构"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 50.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.769
+last_scored: "2026-03-21"
+sources: []
+---
 # 可扩展性
 
 ## 概述

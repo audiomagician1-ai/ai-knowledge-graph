@@ -1,10 +1,22 @@
 ---
-concept: 财务报表分析
-subdomain: 股票市场
-domain: finance
+id: "financial-statement-analysis"
+concept: "财务报表分析"
+domain: "finance"
+subdomain: "stock-market"
+subdomain_name: "股票市场"
 difficulty: 2
----
+is_milestone: false
+tags: ["分析"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.1
+generation_method: "template-v1"
+unique_content_ratio: 0.222
+last_scored: "2026-03-21"
+sources: []
+---
 # 财务报表分析
 
 ## 核心概念

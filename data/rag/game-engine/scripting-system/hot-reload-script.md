@@ -1,10 +1,22 @@
 ---
-concept: 脚本热重载
-subdomain: 脚本系统
-domain: game-engine
+id: "hot-reload-script"
+concept: "脚本热重载"
+domain: "game-engine"
+subdomain: "scripting-system"
+subdomain_name: "脚本系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["开发"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.8
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 脚本热重载
 
 ## 核心内容

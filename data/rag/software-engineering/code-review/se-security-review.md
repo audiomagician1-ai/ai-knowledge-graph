@@ -1,10 +1,22 @@
 ---
-concept: 安全审查
-subdomain: 代码审查
-domain: software-engineering
+id: "se-security-review"
+concept: "安全审查"
+domain: "software-engineering"
+subdomain: "code-review"
+subdomain_name: "代码审查"
 difficulty: 3
----
+is_milestone: false
+tags: ["安全"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 安全审查
 
 ## 核心内容

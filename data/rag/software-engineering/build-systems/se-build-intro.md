@@ -1,10 +1,22 @@
 ---
-concept: 构建系统概述
-subdomain: 构建系统
-domain: software-engineering
+id: "se-build-intro"
+concept: "构建系统概述"
+domain: "software-engineering"
+subdomain: "build-systems"
+subdomain_name: "构建系统"
 difficulty: 1
----
+is_milestone: true
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.333
+last_scored: "2026-03-21"
+sources: []
+---
 # 构建系统概述
 
 ## 核心内容

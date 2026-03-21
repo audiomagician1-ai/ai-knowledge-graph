@@ -1,10 +1,22 @@
 ---
-concept: Overdraw分析
-subdomain: 渲染优化
-domain: computer-graphics
+id: "cg-overdraw"
+concept: "Overdraw分析"
+domain: "computer-graphics"
+subdomain: "render-optimization"
+subdomain_name: "渲染优化"
 difficulty: 2
----
+is_milestone: false
+tags: ["实践"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.3
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # Overdraw分析
 
 ## 核心内容

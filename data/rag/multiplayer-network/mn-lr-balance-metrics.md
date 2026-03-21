@@ -1,3 +1,22 @@
+---
+id: "mn-lr-balance-metrics"
+concept: "平衡性指标"
+domain: "multiplayer-network"
+subdomain: "leaderboard"
+subdomain_name: "排行榜与统计"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 24.1
+generation_method: "template-v1"
+unique_content_ratio: 0.286
+last_scored: "2026-03-21"
+sources: []
+---
 # 平衡性指标
 
 > 领域: 网络多人 > 排行榜与统计

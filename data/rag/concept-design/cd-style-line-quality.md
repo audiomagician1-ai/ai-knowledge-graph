@@ -1,3 +1,22 @@
+---
+id: "cd-style-line-quality"
+concept: "线条风格"
+domain: "concept-design"
+subdomain: "style-guide"
+subdomain_name: "风格指南"
+difficulty: 2
+is_milestone: false
+tags: ["核心"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 线条风格
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 皮肤渲染
-subdomain: PBR材质
-domain: computer-graphics
+id: "cg-skin-rendering"
+concept: "皮肤渲染"
+domain: "computer-graphics"
+subdomain: "pbr-materials"
+subdomain_name: "PBR材质"
 difficulty: 4
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 26.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 皮肤渲染
 
 ## 核心内容

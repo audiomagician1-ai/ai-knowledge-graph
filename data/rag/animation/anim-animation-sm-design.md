@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: state-machine
-concept_id: anim-animation-sm-design
+id: "anim-animation-sm-design"
+concept: "状态机架构设计"
+domain: "animation"
+subdomain: "state-machine"
+subdomain_name: "状态机"
 difficulty: 3
-content_type: theory
-tags: [进阶]
-estimated_minutes: 35
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 状态机架构设计
 
 ## 概述

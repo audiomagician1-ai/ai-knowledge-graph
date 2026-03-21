@@ -1,13 +1,22 @@
 ---
 id: "kv-cache"
-name: "KV Cache"
+concept: "KV Cache"
+domain: "ai-engineering"
 subdomain: "llm-core"
 subdomain_name: "大模型核心"
 difficulty: 7
-tags: ["LLM", "Inference", "Memory"]
-generated_at: "2026-03-19T12:00:00"
----
+is_milestone: false
+tags: ["LLM"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "S"
+quality_score: 97.9
+generation_method: "hand-crafted"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # KV Cache（键值缓存）
 
 ## 概述

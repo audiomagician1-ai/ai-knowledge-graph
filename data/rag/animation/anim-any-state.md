@@ -1,13 +1,22 @@
 ---
-domain: animation
-subdomain: state-machine
-concept_id: anim-any-state
+id: "anim-any-state"
+concept: "Any State转换"
+domain: "animation"
+subdomain: "state-machine"
+subdomain_name: "状态机"
 difficulty: 2
-content_type: theory
-tags: [核心]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Any State转换
 
 ## 概述

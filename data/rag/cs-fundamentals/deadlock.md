@@ -1,3 +1,22 @@
+---
+id: "deadlock"
+concept: "死锁"
+domain: "ai-engineering"
+subdomain: "cs-fundamentals"
+subdomain_name: "计算机基础"
+difficulty: 4
+is_milestone: false
+tags: ["deadlock", "mutex", "resource-allocation"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 死锁
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 25分钟

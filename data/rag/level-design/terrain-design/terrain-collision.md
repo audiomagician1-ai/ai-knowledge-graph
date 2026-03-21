@@ -1,10 +1,22 @@
 ---
-concept: 地形碰撞
-subdomain: 地形设计
-domain: level-design
+id: "terrain-collision"
+concept: "地形碰撞"
+domain: "level-design"
+subdomain: "terrain-design"
+subdomain_name: "地形设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["物理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.0
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 地形碰撞
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 法线分布函数
-subdomain: PBR材质
-domain: computer-graphics
+id: "cg-ndf"
+concept: "法线分布函数"
+domain: "computer-graphics"
+subdomain: "pbr-materials"
+subdomain_name: "PBR材质"
 difficulty: 3
----
+is_milestone: false
+tags: ["数学"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.8
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 法线分布函数
 
 ## 核心内容

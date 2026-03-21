@@ -1,10 +1,22 @@
 ---
-concept: 应急基金
-subdomain: 个人理财
-domain: finance
+id: "emergency-fund"
+concept: "应急基金"
+domain: "finance"
+subdomain: "personal-finance"
+subdomain_name: "个人理财"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 应急基金
 
 ## 核心概念

@@ -1,10 +1,22 @@
 ---
-concept: Protobuf/FlatBuffers
-subdomain: 序列化
-domain: game-engine
+id: "protobuf-flatbuf"
+concept: "Protobuf/FlatBuffers"
+domain: "game-engine"
+subdomain: "serialization"
+subdomain_name: "序列化"
 difficulty: 2
----
+is_milestone: false
+tags: ["库"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 25.4
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # Protobuf/FlatBuffers
 
 ## 核心内容

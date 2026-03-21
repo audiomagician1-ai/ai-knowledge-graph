@@ -1,10 +1,22 @@
 ---
-concept: Online Subsystem
-subdomain: 插件开发
-domain: game-engine
+id: "online-subsystem"
+concept: "Online Subsystem"
+domain: "game-engine"
+subdomain: "plugin-development"
+subdomain_name: "插件开发"
 difficulty: 3
----
+is_milestone: false
+tags: ["网络"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # Online Subsystem
 
 ## 核心内容

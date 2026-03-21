@@ -1,3 +1,22 @@
+---
+id: "nd-nt-ink-scripting"
+concept: "Ink脚本语言"
+domain: "narrative-design"
+subdomain: "narrative-tools"
+subdomain_name: "叙事工具"
+difficulty: 3
+is_milestone: true
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.875
+last_scored: "2026-03-21"
+sources: []
+---
 # Ink脚本语言
 
 > 领域: 叙事设计 > 叙事工具

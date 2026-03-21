@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: material-system
-concept_id: ta-substance-workflow
+id: "ta-substance-workflow"
+concept: "Substance工作流"
+domain: "technical-art"
+subdomain: "material-system"
+subdomain_name: "材质系统"
 difficulty: 2
-content_type: practice
-tags: [工具]
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # Substance工作流
 
 ## 概述

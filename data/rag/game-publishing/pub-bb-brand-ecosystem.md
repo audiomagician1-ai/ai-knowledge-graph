@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: brand-building
-concept_id: pub-bb-brand-ecosystem
+id: "pub-bb-brand-ecosystem"
+concept: "品牌生态"
+domain: "game-publishing"
+subdomain: "brand-building"
+subdomain_name: "品牌建设"
 difficulty: 5
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 品牌生态
 
 ## 概述

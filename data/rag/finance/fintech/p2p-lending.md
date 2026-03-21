@@ -1,10 +1,22 @@
 ---
-concept: P2P借贷
-subdomain: 金融科技
-domain: finance
+id: "p2p-lending"
+concept: "P2P借贷"
+domain: "finance"
+subdomain: "fintech"
+subdomain_name: "金融科技"
 difficulty: 2
----
+is_milestone: false
+tags: ["借贷"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.8
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # P2P借贷
 
 ## 核心概念

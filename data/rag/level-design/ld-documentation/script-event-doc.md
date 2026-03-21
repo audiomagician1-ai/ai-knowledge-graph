@@ -1,10 +1,22 @@
 ---
-concept: 脚本事件文档
-subdomain: LD文档
-domain: level-design
+id: "script-event-doc"
+concept: "脚本事件文档"
+domain: "level-design"
+subdomain: "ld-documentation"
+subdomain_name: "LD文档"
 difficulty: 2
----
+is_milestone: false
+tags: ["脚本"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.2
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 脚本事件文档
 
 ## 核心内容

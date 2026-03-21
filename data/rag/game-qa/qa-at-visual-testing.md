@@ -1,13 +1,22 @@
 ---
 id: "qa-at-visual-testing"
-title: "视觉回归测试"
+concept: "视觉回归测试"
 domain: "game-qa"
 subdomain: "automation-testing"
+subdomain_name: "自动化测试"
 difficulty: 3
-estimated_minutes: 40
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.6
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 视觉回归测试
 
 > **子领域**: 自动化测试 | **难度**: 进阶 | **预计学习时间**: 40分钟

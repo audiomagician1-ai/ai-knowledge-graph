@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: memory-budget
-concept_id: ta-mipmap-strategy
+id: "ta-mipmap-strategy"
+concept: "Mipmap策略"
+domain: "technical-art"
+subdomain: "memory-budget"
+subdomain_name: "内存与预算"
 difficulty: 2
-content_type: theory
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # Mipmap策略
 
 ## 概述

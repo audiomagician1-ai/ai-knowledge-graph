@@ -1,10 +1,22 @@
 ---
-concept: 重要性采样
-subdomain: 光线追踪
-domain: computer-graphics
+id: "cg-importance-sampling"
+concept: "重要性采样"
+domain: "computer-graphics"
+subdomain: "ray-tracing"
+subdomain_name: "光线追踪"
 difficulty: 4
----
+is_milestone: false
+tags: ["数学"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.5
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 重要性采样
 
 ## 核心内容

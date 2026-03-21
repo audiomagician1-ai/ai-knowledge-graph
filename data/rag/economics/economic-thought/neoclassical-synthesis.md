@@ -1,10 +1,22 @@
 ---
-concept: 新古典综合
-subdomain: 经济思想史
-domain: economics
+id: "neoclassical-synthesis"
+concept: "新古典综合"
+domain: "economics"
+subdomain: "economic-thought"
+subdomain_name: "经济思想史"
 difficulty: 3
----
+is_milestone: false
+tags: ["综合"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.0
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 新古典综合
 
 ## 核心内容

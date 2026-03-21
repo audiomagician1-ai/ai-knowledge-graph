@@ -1,14 +1,22 @@
 ---
 id: "supervised-learning"
-name: "监督学习"
+concept: "监督学习"
+domain: "ai-engineering"
 subdomain: "ai-foundations"
 subdomain_name: "AI基础"
 difficulty: 5
 is_milestone: false
 tags: ["ML"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.815
+last_scored: "2026-03-21"
+sources: []
+---
 # 监督学习
 
 ## 概述

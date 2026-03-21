@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: motion-design
-concept_id: guiux-motion-number-roll
-title: 数字滚动动画
+id: "guiux-motion-number-roll"
+concept: "数字滚动动画"
+domain: "game-ui-ux"
+subdomain: "motion-design"
+subdomain_name: "动效设计"
 difficulty: 2
 is_milestone: false
 tags: ["motion-design", "数字滚动动画"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.824
+last_scored: "2026-03-21"
+sources: []
+---
 # 数字滚动动画
 
 > **领域**: 游戏UI/UX > 动效设计 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

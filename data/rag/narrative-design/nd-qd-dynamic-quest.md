@@ -1,3 +1,22 @@
+---
+id: "nd-qd-dynamic-quest"
+concept: "动态任务生成"
+domain: "narrative-design"
+subdomain: "quest-design"
+subdomain_name: "任务设计"
+difficulty: 4
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 53.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.85
+last_scored: "2026-03-21"
+sources: []
+---
 # 动态任务生成
 
 > 领域: 叙事设计 > 任务设计

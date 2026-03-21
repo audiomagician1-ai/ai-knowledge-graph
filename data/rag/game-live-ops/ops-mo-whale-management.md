@@ -1,10 +1,22 @@
 ---
-domain: game-live-ops
-subdomain: monetization
-concept_id: ops-mo-whale-management
+id: "ops-mo-whale-management"
+concept: "大R管理"
+domain: "game-live-ops"
+subdomain: "monetization"
+subdomain_name: "付费系统"
 difficulty: 3
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 31.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 大R管理
 
 ## 概述

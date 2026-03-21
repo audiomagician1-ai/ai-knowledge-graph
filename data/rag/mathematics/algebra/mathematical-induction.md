@@ -1,14 +1,22 @@
 ---
 id: "mathematical-induction"
-name: "数学归纳法"
+concept: "数学归纳法"
+domain: "mathematics"
 subdomain: "algebra"
 subdomain_name: "代数"
 difficulty: 6
-is_milestone: true
+is_milestone: false
 tags: ["里程碑"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.3
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 数学归纳法
 
 ## 概述

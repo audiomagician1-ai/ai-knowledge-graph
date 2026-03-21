@@ -1,10 +1,22 @@
 ---
-concept: 数据竞争检测
-subdomain: 多线程
-domain: software-engineering
+id: "se-data-race"
+concept: "数据竞争检测"
+domain: "software-engineering"
+subdomain: "multithreading"
+subdomain_name: "多线程"
 difficulty: 2
----
+is_milestone: false
+tags: ["调试"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据竞争检测
 
 ## 核心内容

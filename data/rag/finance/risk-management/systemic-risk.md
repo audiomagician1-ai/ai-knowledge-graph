@@ -1,10 +1,22 @@
 ---
-concept: 系统性风险
-subdomain: 风险管理
-domain: finance
+id: "systemic-risk"
+concept: "系统性风险"
+domain: "finance"
+subdomain: "risk-management"
+subdomain_name: "风险管理"
 difficulty: 4
----
+is_milestone: false
+tags: ["宏观"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 系统性风险
 
 ## 核心概念

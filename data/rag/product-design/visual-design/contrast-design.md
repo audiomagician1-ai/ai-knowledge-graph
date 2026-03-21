@@ -1,10 +1,22 @@
 ---
-concept: 对比设计
-subdomain: 视觉设计
-domain: product-design
+id: "contrast-design"
+concept: "对比设计"
+domain: "product-design"
+subdomain: "visual-design"
+subdomain_name: "视觉设计"
 difficulty: 2
----
+is_milestone: false
+tags: ["原则"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 对比设计
 
 ## 核心概念

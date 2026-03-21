@@ -1,10 +1,22 @@
 ---
-concept: a-star-search
-subdomain: algorithms
+id: "a-star-search"
+concept: "A*搜索算法"
+domain: "ai-engineering"
+subdomain: "algorithms"
+subdomain_name: "算法"
 difficulty: 7
-prereqs: [bfs, dijkstra]
----
+is_milestone: false
+tags: ["图算法", "搜索"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 62.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # A*搜索算法
 
 ## 核心概念

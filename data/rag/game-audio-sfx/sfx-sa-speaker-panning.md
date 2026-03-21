@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: spatial-audio
-concept_id: sfx-sa-speaker-panning
+id: "sfx-sa-speaker-panning"
+concept: "声像摆位"
+domain: "game-audio-sfx"
+subdomain: "spatial-audio"
+subdomain_name: "空间音频"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.7
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 声像摆位
 
 ## 概述

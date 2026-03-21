@@ -1,10 +1,22 @@
 ---
-concept: 动画重定向
-subdomain: 动画系统
-domain: game-engine
+id: "animation-retargeting"
+concept: "动画重定向"
+domain: "game-engine"
+subdomain: "animation-system"
+subdomain_name: "动画系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.8
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 动画重定向
 
 ## 核心内容

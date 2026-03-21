@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: sound-design-theory
-concept_id: sfx-sdt-sound-storytelling
+id: "sfx-sdt-sound-storytelling"
+concept: "声音叙事"
+domain: "game-audio-sfx"
+subdomain: "sound-design-theory"
+subdomain_name: "音效设计理论"
 difficulty: 5
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.9
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 声音叙事
 
 ## 概述

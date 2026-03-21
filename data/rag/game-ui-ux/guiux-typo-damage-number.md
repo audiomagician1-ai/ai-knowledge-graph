@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: typography
-concept_id: guiux-typo-damage-number
-title: 伤害数字设计
+id: "guiux-typo-damage-number"
+concept: "伤害数字设计"
+domain: "game-ui-ux"
+subdomain: "typography"
+subdomain_name: "字体排版"
 difficulty: 3
 is_milestone: false
 tags: ["typography", "伤害数字设计"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 51.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.85
+last_scored: "2026-03-21"
+sources: []
+---
 # 伤害数字设计
 
 > **领域**: 游戏UI/UX > 字体排版 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

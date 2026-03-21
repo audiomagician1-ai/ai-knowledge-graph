@@ -1,14 +1,22 @@
 ---
 id: "semidefinite-programming"
-name: "半定规划"
+concept: "半定规划"
+domain: "mathematics"
 subdomain: "optimization"
 subdomain_name: "最优化"
 difficulty: 9
 is_milestone: false
 tags: ["拓展"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.0
+generation_method: "template-v1"
+unique_content_ratio: 0.727
+last_scored: "2026-03-21"
+sources: []
+---
 # 半定规划
 
 ## 概述

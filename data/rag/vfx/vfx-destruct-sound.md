@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: destruction
-concept_id: vfx-destruct-sound
+id: "vfx-destruct-sound"
+concept: "破碎音效"
+domain: "vfx"
+subdomain: "destruction"
+subdomain_name: "破碎与销毁"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.9
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 破碎音效
 
 ## 概述

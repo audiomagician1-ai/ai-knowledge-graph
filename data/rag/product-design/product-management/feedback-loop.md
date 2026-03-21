@@ -1,10 +1,22 @@
 ---
-concept: 反馈循环
-subdomain: 产品管理
-domain: product-design
+id: "feedback-loop"
+concept: "反馈循环"
+domain: "product-design"
+subdomain: "product-management"
+subdomain_name: "产品管理"
 difficulty: 2
----
+is_milestone: false
+tags: ["运营"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.6
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 反馈循环
 
 ## 核心概念

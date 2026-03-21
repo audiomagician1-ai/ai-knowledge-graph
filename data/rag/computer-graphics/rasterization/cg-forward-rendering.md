@@ -1,10 +1,22 @@
 ---
-concept: 前向渲染
-subdomain: 光栅化
-domain: computer-graphics
+id: "cg-forward-rendering"
+concept: "前向渲染"
+domain: "computer-graphics"
+subdomain: "rasterization"
+subdomain_name: "光栅化"
 difficulty: 2
----
+is_milestone: false
+tags: ["架构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 前向渲染
 
 ## 核心内容

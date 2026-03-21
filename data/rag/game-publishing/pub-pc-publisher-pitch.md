@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: publisher-collab
-concept_id: pub-pc-publisher-pitch
+id: "pub-pc-publisher-pitch"
+concept: "发行商提案"
+domain: "game-publishing"
+subdomain: "publisher-collab"
+subdomain_name: "发行商合作"
 difficulty: 1
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 发行商提案
 
 ## 概述

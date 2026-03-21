@@ -1,10 +1,22 @@
 ---
-concept: 世界构建
-subdomain: 创意写作
-domain: writing
+id: "world-building"
+concept: "世界构建"
+domain: "writing"
+subdomain: "creative-writing"
+subdomain_name: "创意写作"
 difficulty: 3
----
+is_milestone: false
+tags: ["虚构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.0
+generation_method: "template-v1"
+unique_content_ratio: 0.091
+last_scored: "2026-03-21"
+sources: []
+---
 # 世界构建
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 增长飞轮
-subdomain: 增长运营
-domain: product-design
+id: "growth-loops"
+concept: "增长飞轮"
+domain: "product-design"
+subdomain: "growth"
+subdomain_name: "增长运营"
 difficulty: 4
----
+is_milestone: false
+tags: ["高级"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 11.2
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 增长飞轮
 
 ## 核心概念

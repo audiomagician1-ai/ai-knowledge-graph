@@ -1,10 +1,22 @@
 ---
-concept: 自主神经系统
-subdomain: 人体生理学
-domain: biology
-difficulty: 3
----
+id: "autonomic-nervous-system"
+concept: "自主神经系统"
+domain: "psychology"
+subdomain: "biological-psychology"
+subdomain_name: "生物心理学"
+difficulty: 2
+is_milestone: false
+tags: ["生理"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.6
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 自主神经系统
 
 ## 核心内容

@@ -1,14 +1,22 @@
 ---
 id: "set-data-structure"
-name: "集合"
+concept: "集合"
+domain: "ai-engineering"
 subdomain: "data-structures"
 subdomain_name: "数据结构"
 difficulty: 3
 is_milestone: false
 tags: ["集合论"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.731
+last_scored: "2026-03-21"
+sources: []
+---
 # 集合
 
 ## 概述

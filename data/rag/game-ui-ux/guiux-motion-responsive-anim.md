@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: motion-design
-concept_id: guiux-motion-responsive-anim
-title: 响应式动效
+id: "guiux-motion-responsive-anim"
+concept: "响应式动效"
+domain: "game-ui-ux"
+subdomain: "motion-design"
+subdomain_name: "动效设计"
 difficulty: 3
 is_milestone: false
 tags: ["motion-design", "响应式动效"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 49.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.833
+last_scored: "2026-03-21"
+sources: []
+---
 # 响应式动效
 
 > **领域**: 游戏UI/UX > 动效设计 | **难度**: ⭐⭐⭐ | **预计学习时间**: 29分钟

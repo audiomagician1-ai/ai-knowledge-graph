@@ -1,10 +1,22 @@
 ---
-concept: agent-benchmarks
-subdomain: agent-systems
+id: "agent-benchmarks"
+concept: "Agent评测基准"
+domain: "ai-engineering"
+subdomain: "agent-systems"
+subdomain_name: "Agent系统"
 difficulty: 6
-prereqs: [agent-evaluation]
----
+is_milestone: false
+tags: ["Agent", "评测"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # Agent评测基准
 
 ## 核心概念

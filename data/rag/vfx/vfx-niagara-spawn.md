@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: niagara
-concept_id: vfx-niagara-spawn
+id: "vfx-niagara-spawn"
+concept: "生成模式"
+domain: "vfx"
+subdomain: "niagara"
+subdomain_name: "Niagara系统"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 48.7
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.619
+last_scored: "2026-03-21"
+sources: []
+---
 # 生成模式
 
 ## 概述

@@ -1,14 +1,22 @@
 ---
 id: "inverse-matrix"
-name: "逆矩阵"
+concept: "逆矩阵"
+domain: "mathematics"
 subdomain: "linear-algebra"
 subdomain_name: "线性代数"
 difficulty: 6
 is_milestone: false
 tags: ["核心"]
-generated_at: "2026-03-19T08:00:26"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.4
+generation_method: "template-v1"
+unique_content_ratio: 0.667
+last_scored: "2026-03-21"
+sources: []
+---
 # 逆矩阵
 
 ## 概述

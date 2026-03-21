@@ -1,14 +1,22 @@
 ---
 id: "storytelling-oral"
-name: "口头叙事"
-subdomain: "speaking"
-subdomain_name: "口语表达"
-difficulty: 4
+concept: "口头叙事"
+domain: "writing"
+subdomain: "narrative-writing"
+subdomain_name: "叙事写作"
+difficulty: 2
 is_milestone: false
-tags: ["核心"]
-generated_at: "2026-03-19T08:40:17"
----
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 21.2
+generation_method: "template-v1"
+unique_content_ratio: 0.273
+last_scored: "2026-03-21"
+sources: []
+---
 # 口头叙事
 
 ## 概述

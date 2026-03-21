@@ -1,13 +1,22 @@
 ---
 id: "qa-at-parallel-execution"
-title: "并行执行"
+concept: "并行执行"
 domain: "game-qa"
 subdomain: "automation-testing"
+subdomain_name: "自动化测试"
 difficulty: 3
-estimated_minutes: 35
 is_milestone: false
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 36.4
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # 并行执行
 
 > **子领域**: 自动化测试 | **难度**: 进阶 | **预计学习时间**: 35分钟

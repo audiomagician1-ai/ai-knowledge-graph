@@ -1,10 +1,22 @@
 ---
-concept: 测试方法论
-subdomain: 设计文档
-domain: game-design
+id: "playtesting-method"
+concept: "测试方法论"
+domain: "game-design"
+subdomain: "design-docs"
+subdomain_name: "设计文档"
 difficulty: 2
----
+is_milestone: false
+tags: ["测试"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.9
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 测试方法论
 
 ## 核心内容

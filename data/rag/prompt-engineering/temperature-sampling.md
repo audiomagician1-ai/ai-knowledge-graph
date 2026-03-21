@@ -1,14 +1,22 @@
 ---
 id: "temperature-sampling"
-name: "Temperature与采样策略"
+concept: "Temperature与采样策略"
+domain: "ai-engineering"
 subdomain: "prompt-engineering"
 subdomain_name: "Prompt工程"
 difficulty: 5
 is_milestone: false
 tags: ["LLM"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 54.4
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.786
+last_scored: "2026-03-21"
+sources: []
+---
 # Temperature与采样策略
 
 ## 概述

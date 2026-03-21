@@ -1,3 +1,22 @@
+---
+id: "template-method"
+concept: "模板方法模式"
+domain: "ai-engineering"
+subdomain: "oop"
+subdomain_name: "面向对象编程"
+difficulty: 4
+is_milestone: false
+tags: ["template", "hook", "design-pattern"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 34.9
+generation_method: "template-v1"
+unique_content_ratio: 0.583
+last_scored: "2026-03-21"
+sources: []
+---
 # 模板方法模式
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 25分钟

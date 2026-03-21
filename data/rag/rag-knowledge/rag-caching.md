@@ -1,10 +1,22 @@
 ---
-concept: rag-caching
-subdomain: rag-knowledge
+id: "rag-caching"
+concept: "RAG缓存策略"
+domain: "ai-engineering"
+subdomain: "rag-knowledge"
+subdomain_name: "RAG与知识库"
 difficulty: 6
-prereqs: [similarity-search]
----
+is_milestone: false
+tags: ["RAG", "性能"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 56.5
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # RAG缓存策略
 
 ## 核心概念

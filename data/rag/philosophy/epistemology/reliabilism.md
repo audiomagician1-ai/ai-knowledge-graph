@@ -1,10 +1,22 @@
 ---
-concept: 可靠主义
-subdomain: 认识论
-domain: philosophy
+id: "reliabilism"
+concept: "可靠主义"
+domain: "philosophy"
+subdomain: "epistemology"
+subdomain_name: "认识论"
 difficulty: 4
----
+is_milestone: false
+tags: ["当代"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.1
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 可靠主义
 
 ## 核心内容

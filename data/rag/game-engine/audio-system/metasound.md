@@ -1,10 +1,22 @@
 ---
-concept: MetaSound(UE5)
-subdomain: 音频系统
-domain: game-engine
+id: "metasound"
+concept: "MetaSound(UE5)"
+domain: "game-engine"
+subdomain: "audio-system"
+subdomain_name: "音频系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["UE5"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.9
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # MetaSound(UE5)
 
 ## 核心内容

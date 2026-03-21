@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: vfx-optimization
-concept_id: vfx-opt-particle-count
+id: "vfx-opt-particle-count"
+concept: "粒子数量控制"
+domain: "vfx"
+subdomain: "vfx-optimization"
+subdomain_name: "特效优化"
 difficulty: 2
-content_type: theory
-tags: [基础]
-estimated_minutes: 25
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 46.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.579
+last_scored: "2026-03-21"
+sources: []
+---
 # 粒子数量控制
 
 ## 概述

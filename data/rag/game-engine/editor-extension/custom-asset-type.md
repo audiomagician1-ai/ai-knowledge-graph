@@ -1,10 +1,22 @@
 ---
-concept: 自定义资产类型
-subdomain: 编辑器扩展
-domain: game-engine
+id: "custom-asset-type"
+concept: "自定义资产类型"
+domain: "game-engine"
+subdomain: "editor-extension"
+subdomain_name: "编辑器扩展"
 difficulty: 3
----
+is_milestone: false
+tags: ["资产"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.6
+generation_method: "template-v1"
+unique_content_ratio: 0.462
+last_scored: "2026-03-21"
+sources: []
+---
 # 自定义资产类型
 
 ## 核心内容

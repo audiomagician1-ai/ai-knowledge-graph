@@ -1,10 +1,22 @@
 ---
-concept: 刺激辨别
-subdomain: 行为心理学
-domain: psychology
+id: "stimulus-discrimination"
+concept: "刺激辨别"
+domain: "psychology"
+subdomain: "behavioral-psychology"
+subdomain_name: "行为心理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["学习"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.1
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 刺激辨别
 
 ## 核心内容

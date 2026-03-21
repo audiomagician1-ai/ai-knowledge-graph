@@ -1,10 +1,22 @@
 ---
-concept: 职业写作概述
-subdomain: 职业写作
-domain: writing
+id: "professional-overview"
+concept: "职业写作概述"
+domain: "writing"
+subdomain: "professional-writing"
+subdomain_name: "职业写作"
 difficulty: 1
----
+is_milestone: false
+tags: ["基础"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.0
+generation_method: "template-v1"
+unique_content_ratio: 0.083
+last_scored: "2026-03-21"
+sources: []
+---
 # 职业写作概述
 
 ## 核心内容

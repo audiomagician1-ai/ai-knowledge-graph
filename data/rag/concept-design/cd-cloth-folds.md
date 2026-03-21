@@ -1,3 +1,22 @@
+---
+id: "cd-cloth-folds"
+concept: "衣褶与布料"
+domain: "concept-design"
+subdomain: "anatomy-sketching"
+subdomain_name: "人体解剖速写"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 45.9
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.857
+last_scored: "2026-03-21"
+sources: []
+---
 # 衣褶与布料
 
 ## 概述

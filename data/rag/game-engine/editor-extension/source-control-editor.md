@@ -1,10 +1,22 @@
 ---
-concept: 版本控制集成
-subdomain: 编辑器扩展
-domain: game-engine
+id: "source-control-editor"
+concept: "版本控制集成"
+domain: "game-engine"
+subdomain: "editor-extension"
+subdomain_name: "编辑器扩展"
 difficulty: 2
----
+is_milestone: false
+tags: ["协作"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 22.0
+generation_method: "template-v1"
+unique_content_ratio: 0.455
+last_scored: "2026-03-21"
+sources: []
+---
 # 版本控制集成
 
 ## 核心内容

@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: pipeline-build
-concept_id: ta-asset-review
+id: "ta-asset-review"
+concept: "资产审查流程"
+domain: "technical-art"
+subdomain: "pipeline-build"
+subdomain_name: "管线搭建"
 difficulty: 2
-content_type: theory
-tags: [质量]
----
+is_milestone: false
+tags: ["质量"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 18.6
+generation_method: "template-v1"
+unique_content_ratio: 0.5
+last_scored: "2026-03-21"
+sources: []
+---
 # 资产审查流程
 
 ## 概述

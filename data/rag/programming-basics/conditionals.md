@@ -1,14 +1,22 @@
 ---
 id: "conditionals"
-name: "条件判断(if/else)"
+concept: "条件判断(if/else)"
+domain: "ai-engineering"
 subdomain: "programming-basics"
 subdomain_name: "编程基础"
 difficulty: 1
 is_milestone: false
 tags: ["控制流"]
-generated_at: "2026-03-13T20:52:22"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 52.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.778
+last_scored: "2026-03-21"
+sources: []
+---
 # 条件判断(if/else)
 
 ## 概述

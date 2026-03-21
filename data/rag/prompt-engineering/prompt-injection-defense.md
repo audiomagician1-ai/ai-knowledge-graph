@@ -1,3 +1,22 @@
+---
+id: "prompt-injection-defense"
+concept: "Prompt注入防御"
+domain: "ai-engineering"
+subdomain: "prompt-engineering"
+subdomain_name: "Prompt工程"
+difficulty: 4
+is_milestone: false
+tags: ["injection", "security", "guardrails"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.8
+generation_method: "template-v1"
+unique_content_ratio: 0.615
+last_scored: "2026-03-21"
+sources: []
+---
 # Prompt注入防御
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 25分钟

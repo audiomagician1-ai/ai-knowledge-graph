@@ -1,3 +1,22 @@
+---
+id: "mn-ls-fighting-game-netcode"
+concept: "格斗游戏网络"
+domain: "multiplayer-network"
+subdomain: "lockstep-sync"
+subdomain_name: "帧同步"
+difficulty: 3
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.375
+last_scored: "2026-03-21"
+sources: []
+---
 # 格斗游戏网络
 
 > 领域: 网络多人 > 帧同步

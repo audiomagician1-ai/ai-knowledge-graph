@@ -1,10 +1,22 @@
 ---
-concept: 调查法
-subdomain: 研究方法
-domain: psychology
+id: "survey-methods"
+concept: "调查法"
+domain: "psychology"
+subdomain: "research-methods"
+subdomain_name: "研究方法"
 difficulty: 2
----
+is_milestone: false
+tags: ["方法"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.2
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 调查法
 
 ## 核心内容

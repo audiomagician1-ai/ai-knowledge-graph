@@ -1,13 +1,22 @@
 ---
-domain: game-ui-ux
-subdomain: accessibility
-concept_id: guiux-a11y-difficulty-ui
-title: 难度相关UI
+id: "guiux-a11y-difficulty-ui"
+concept: "难度相关UI"
+domain: "game-ui-ux"
+subdomain: "accessibility"
+subdomain_name: "无障碍设计"
 difficulty: 2
 is_milestone: false
 tags: ["accessibility", "难度相关UI"]
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.1
+generation_method: "template-v1"
+unique_content_ratio: 0.105
+last_scored: "2026-03-21"
+sources: []
+---
 # 难度相关UI
 
 > **领域**: 游戏UI/UX > 无障碍设计 | **难度**: ⭐⭐ | **预计学习时间**: 21分钟

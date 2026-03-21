@@ -1,10 +1,22 @@
 ---
-concept: 个人同一性
-subdomain: 形而上学
-domain: philosophy
+id: "personal-identity"
+concept: "个人同一性"
+domain: "philosophy"
+subdomain: "metaphysics"
+subdomain_name: "形而上学"
 difficulty: 3
----
+is_milestone: false
+tags: ["概念"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 17.3
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 个人同一性
 
 ## 核心内容

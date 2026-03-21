@@ -1,10 +1,22 @@
 ---
-concept: 校对
-subdomain: 修改与文体
-domain: writing
+id: "proofreading"
+concept: "校对"
+domain: "writing"
+subdomain: "revision-craft"
+subdomain_name: "修改与文体"
 difficulty: 1
----
+is_milestone: false
+tags: ["流程"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.0
+generation_method: "template-v1"
+unique_content_ratio: 0.083
+last_scored: "2026-03-21"
+sources: []
+---
 # 校对
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 神经经济学
-subdomain: 行为经济学
-domain: economics
+id: "neuroeconomics"
+concept: "神经经济学"
+domain: "economics"
+subdomain: "behavioral-econ"
+subdomain_name: "行为经济学"
 difficulty: 4
----
+is_milestone: false
+tags: ["前沿"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.5
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 神经经济学
 
 ## 核心内容

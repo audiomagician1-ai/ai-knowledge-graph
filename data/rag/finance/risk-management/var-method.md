@@ -1,10 +1,22 @@
 ---
-concept: VaR方法
-subdomain: 风险管理
-domain: finance
+id: "var-method"
+concept: "VaR方法"
+domain: "finance"
+subdomain: "risk-management"
+subdomain_name: "风险管理"
 difficulty: 3
----
+is_milestone: false
+tags: ["工具"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.1
+generation_method: "template-v1"
+unique_content_ratio: 0.222
+last_scored: "2026-03-21"
+sources: []
+---
 # VaR方法
 
 ## 核心概念

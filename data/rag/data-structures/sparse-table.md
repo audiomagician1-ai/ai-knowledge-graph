@@ -1,10 +1,22 @@
 ---
-concept: sparse-table
-subdomain: data-structures
+id: "sparse-table"
+concept: "稀疏表"
+domain: "ai-engineering"
+subdomain: "data-structures"
+subdomain_name: "数据结构"
 difficulty: 7
-prereqs: [dynamic-programming]
----
+is_milestone: false
+tags: ["高级数据结构"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "A"
+quality_score: 73.6
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 稀疏表（Sparse Table）
 
 ## 核心概念

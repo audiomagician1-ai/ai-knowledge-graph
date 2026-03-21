@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: regional-ops
-concept_id: pub-ro-regional-events
+id: "pub-ro-regional-events"
+concept: "区域活动"
+domain: "game-publishing"
+subdomain: "regional-ops"
+subdomain_name: "地区化运营"
 difficulty: 4
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.0
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 区域活动
 
 ## 概述

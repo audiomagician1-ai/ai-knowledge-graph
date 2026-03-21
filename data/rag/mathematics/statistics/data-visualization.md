@@ -1,14 +1,22 @@
 ---
 id: "data-visualization"
-name: "数据可视化基础"
-subdomain: "statistics"
-subdomain_name: "数理统计"
+concept: "数据可视化"
+domain: "product-design"
+subdomain: "visual-design"
+subdomain_name: "视觉设计"
 difficulty: 3
 is_milestone: false
-tags: ["基础"]
-generated_at: "2026-03-19T08:00:26"
----
+tags: ["数据"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 42.3
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.818
+last_scored: "2026-03-21"
+sources: []
+---
 # 数据可视化基础
 
 ## 概述

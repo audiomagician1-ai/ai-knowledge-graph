@@ -1,13 +1,22 @@
 ---
-domain: vfx
-subdomain: shader-vfx
-concept_id: vfx-shader-trail
+id: "vfx-shader-trail"
+concept: "拖尾Shader"
+domain: "vfx"
+subdomain: "shader-vfx"
+subdomain_name: "Shader特效"
 difficulty: 3
-content_type: applied
-tags: [进阶]
-estimated_minutes: 30
----
+is_milestone: false
+tags: ["进阶"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.0
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.545
+last_scored: "2026-03-21"
+sources: []
+---
 # 拖尾Shader
 
 ## 概述

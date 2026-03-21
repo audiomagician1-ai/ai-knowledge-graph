@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: publisher-collab
-concept_id: pub-pc-self-vs-publisher
+id: "pub-pc-self-vs-publisher"
+concept: "独立发行 vs 发行商"
+domain: "game-publishing"
+subdomain: "publisher-collab"
+subdomain_name: "发行商合作"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 41.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 独立发行 vs 发行商
 
 ## 概述

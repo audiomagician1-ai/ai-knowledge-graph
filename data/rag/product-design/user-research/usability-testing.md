@@ -1,10 +1,22 @@
 ---
-concept: 可用性测试
-subdomain: 用户研究
-domain: product-design
+id: "usability-testing"
+concept: "可用性测试"
+domain: "product-design"
+subdomain: "user-research"
+subdomain_name: "用户研究"
 difficulty: 3
----
+is_milestone: false
+tags: ["测试"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.3
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 可用性测试
 
 ## 核心概念

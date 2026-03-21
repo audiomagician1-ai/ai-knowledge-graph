@@ -1,10 +1,22 @@
 ---
-domain: game-publishing
-subdomain: publisher-collab
-concept_id: pub-pc-first-look-deal
+id: "pub-pc-first-look-deal"
+concept: "优先查看权"
+domain: "game-publishing"
+subdomain: "publisher-collab"
+subdomain_name: "发行商合作"
 difficulty: 5
----
+is_milestone: true
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 40.8
+generation_method: "ai-batch-v1"
+unique_content_ratio: 0.636
+last_scored: "2026-03-21"
+sources: []
+---
 # 优先查看权
 
 ## 概述

@@ -1,12 +1,22 @@
 ---
-domain: technical-art
-subdomain: shader-dev
-concept_id: ta-shader-math
+id: "ta-shader-math"
+concept: "Shader数学基础"
+domain: "technical-art"
+subdomain: "shader-dev"
+subdomain_name: "Shader开发"
 difficulty: 2
-content_type: theory
-tags: [核心]
----
+is_milestone: false
+tags: ["核心"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.9
+generation_method: "template-v1"
+unique_content_ratio: 0.75
+last_scored: "2026-03-21"
+sources: []
+---
 # Shader数学基础
 
 ## 概述

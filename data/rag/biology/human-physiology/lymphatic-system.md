@@ -1,10 +1,22 @@
 ---
-concept: 淋巴系统
-subdomain: 人体生理学
-domain: biology
+id: "lymphatic-system"
+concept: "淋巴系统"
+domain: "biology"
+subdomain: "human-physiology"
+subdomain_name: "人体生理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["系统"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.3
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 淋巴系统
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 成年期发展
-subdomain: 发展心理学
-domain: psychology
+id: "adult-development"
+concept: "成年期发展"
+domain: "psychology"
+subdomain: "developmental-psychology"
+subdomain_name: "发展心理学"
 difficulty: 2
----
+is_milestone: false
+tags: ["成年"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 12.8
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 成年期发展
 
 ## 核心内容

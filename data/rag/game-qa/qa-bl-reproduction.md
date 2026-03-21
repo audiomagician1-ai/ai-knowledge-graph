@@ -1,13 +1,22 @@
 ---
 id: "qa-bl-reproduction"
-title: "复现方法"
+concept: "复现方法"
 domain: "game-qa"
 subdomain: "bug-lifecycle"
+subdomain_name: "Bug生命周期"
 difficulty: 2
-estimated_minutes: 30
 is_milestone: true
----
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "B"
+quality_score: 47.2
+generation_method: "ai-batch-v1"
+unique_content_ratio: 1.0
+last_scored: "2026-03-21"
+sources: []
+---
 # 复现方法
 
 > **子领域**: Bug生命周期 | **难度**: 基础 | **预计学习时间**: 30分钟

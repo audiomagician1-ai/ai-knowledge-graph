@@ -1,10 +1,22 @@
 ---
-concept: 图形API抽象
-subdomain: 平台抽象
-domain: game-engine
+id: "graphics-api-abstraction"
+concept: "图形API抽象"
+domain: "game-engine"
+subdomain: "platform-abstraction"
+subdomain_name: "平台抽象"
 difficulty: 3
----
+is_milestone: false
+tags: ["渲染"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.538
+last_scored: "2026-03-21"
+sources: []
+---
 # 图形API抽象
 
 ## 核心内容

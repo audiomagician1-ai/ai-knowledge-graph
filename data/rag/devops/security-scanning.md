@@ -1,3 +1,22 @@
+---
+id: "security-scanning"
+concept: "安全扫描"
+domain: "ai-engineering"
+subdomain: "devops"
+subdomain_name: "开发运维"
+difficulty: 4
+is_milestone: false
+tags: ["sast", "dast", "vulnerability", "devsecops"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 39.8
+generation_method: "template-v1"
+unique_content_ratio: 0.692
+last_scored: "2026-03-21"
+sources: []
+---
 # 安全扫描
 
 > **难度**: ⭐⭐⭐⭐ (4/5) | **预计学习时间**: 30分钟

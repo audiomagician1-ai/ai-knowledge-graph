@@ -1,10 +1,22 @@
 ---
-concept: 启发式评估
-subdomain: 用户研究
-domain: product-design
+id: "heuristic-evaluation"
+concept: "启发式评估"
+domain: "product-design"
+subdomain: "user-research"
+subdomain_name: "用户研究"
 difficulty: 3
----
+is_milestone: false
+tags: ["评估"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 15.3
+generation_method: "template-v1"
+unique_content_ratio: 0.125
+last_scored: "2026-03-21"
+sources: []
+---
 # 启发式评估
 
 ## 核心概念

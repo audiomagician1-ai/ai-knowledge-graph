@@ -1,10 +1,22 @@
 ---
-concept: 远程构建
-subdomain: 构建系统
-domain: software-engineering
+id: "se-remote-build"
+concept: "远程构建"
+domain: "software-engineering"
+subdomain: "build-systems"
+subdomain_name: "构建系统"
 difficulty: 3
----
+is_milestone: false
+tags: ["分布式"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.6
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # 远程构建
 
 ## 核心内容

@@ -1,10 +1,22 @@
 ---
-concept: 情感设计
-subdomain: 玩家心理
-domain: game-design
+id: "emotion-design"
+concept: "情感设计"
+domain: "game-design"
+subdomain: "player-psychology"
+subdomain_name: "玩家心理"
 difficulty: 3
----
+is_milestone: false
+tags: ["情感"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 19.3
+generation_method: "template-v1"
+unique_content_ratio: 0.111
+last_scored: "2026-03-21"
+sources: []
+---
 # 情感设计
 
 ## 核心内容

@@ -1,3 +1,22 @@
+---
+id: "mn-lb-queue-status"
+concept: "队列状态显示"
+domain: "multiplayer-network"
+subdomain: "lobby-system"
+subdomain_name: "大厅系统"
+difficulty: 2
+is_milestone: false
+tags: []
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 28.3
+generation_method: "template-v1"
+unique_content_ratio: 0.4
+last_scored: "2026-03-21"
+sources: []
+---
 # 队列状态显示
 
 > 领域: 网络多人 > 大厅系统

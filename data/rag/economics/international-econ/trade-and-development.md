@@ -1,10 +1,22 @@
 ---
-concept: 贸易与发展
-subdomain: 国际经济学
-domain: economics
+id: "trade-and-development"
+concept: "贸易与发展"
+domain: "economics"
+subdomain: "international-econ"
+subdomain_name: "国际经济学"
 difficulty: 3
----
+is_milestone: false
+tags: ["发展"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 13.0
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 贸易与发展
 
 ## 核心内容

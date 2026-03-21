@@ -1,14 +1,22 @@
 ---
 id: "rhythm-timing"
-name: "节奏与语速"
+concept: "节奏与语速"
+domain: "english"
 subdomain: "phonetics"
 subdomain_name: "语音"
 difficulty: 5
 is_milestone: false
 tags: ["进阶"]
-generated_at: "2026-03-19T08:40:17"
----
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 29.2
+generation_method: "template-v1"
+unique_content_ratio: 0.556
+last_scored: "2026-03-21"
+sources: []
+---
 # 节奏与语速
 
 ## 概述

@@ -1,10 +1,22 @@
 ---
-concept: 光照图烘焙
-subdomain: 全局光照
-domain: computer-graphics
+id: "cg-lightmap-baking"
+concept: "光照图烘焙"
+domain: "computer-graphics"
+subdomain: "global-illumination"
+subdomain_name: "全局光照"
 difficulty: 2
----
+is_milestone: false
+tags: ["实践"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # 光照图烘焙
 
 ## 核心内容

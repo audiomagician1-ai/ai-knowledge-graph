@@ -1,10 +1,22 @@
 ---
-domain: game-audio-sfx
-subdomain: audio-optimization
-concept_id: sfx-ao-lod-audio
+id: "sfx-ao-lod-audio"
+concept: "音频LOD"
+domain: "game-audio-sfx"
+subdomain: "audio-optimization"
+subdomain_name: "音效优化"
 difficulty: 1
----
+is_milestone: false
+tags: []
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.8
+generation_method: "template-v1"
+unique_content_ratio: 0.714
+last_scored: "2026-03-21"
+sources: []
+---
 # 音频LOD
 
 ## 概述

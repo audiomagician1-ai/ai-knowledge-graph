@@ -1,3 +1,22 @@
+---
+id: "game-audio-music-fmod-snapshot"
+concept: "FMOD Snapshot"
+domain: "game-audio-music"
+subdomain: "fmod-music"
+subdomain_name: "FMOD音乐"
+difficulty: 3
+is_milestone: false
+tags: ["进阶"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 37.9
+generation_method: "template-v1"
+unique_content_ratio: 0.588
+last_scored: "2026-03-21"
+sources: []
+---
 # FMOD Snapshot
 
 > **领域**: 游戏音乐 | **子领域**: FMOD音乐 | **难度**: 进阶

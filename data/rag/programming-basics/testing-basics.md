@@ -1,3 +1,22 @@
+---
+id: "testing-basics"
+concept: "测试基础"
+domain: "ai-engineering"
+subdomain: "programming-basics"
+subdomain_name: "编程基础"
+difficulty: 3
+is_milestone: false
+tags: ["unittest", "tdd", "assertion"]
+
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 38.0
+generation_method: "template-v1"
+unique_content_ratio: 0.643
+last_scored: "2026-03-21"
+sources: []
+---
 # 测试基础
 
 > **难度**: ⭐⭐⭐ (3/5) | **预计学习时间**: 25分钟

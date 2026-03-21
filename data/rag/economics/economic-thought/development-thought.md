@@ -1,10 +1,22 @@
 ---
-concept: 发展思想演变
-subdomain: 经济思想史
-domain: economics
+id: "development-thought"
+concept: "发展思想演变"
+domain: "economics"
+subdomain: "economic-thought"
+subdomain_name: "经济思想史"
 difficulty: 3
----
+is_milestone: false
+tags: ["发展"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 14.8
+generation_method: "template-v1"
+unique_content_ratio: 0.167
+last_scored: "2026-03-21"
+sources: []
+---
 # 发展思想演变
 
 ## 核心内容

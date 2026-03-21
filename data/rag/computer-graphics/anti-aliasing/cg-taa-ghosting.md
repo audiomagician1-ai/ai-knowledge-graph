@@ -1,10 +1,22 @@
 ---
-concept: TAA鬼影
-subdomain: 抗锯齿
-domain: computer-graphics
+id: "cg-taa-ghosting"
+concept: "TAA鬼影"
+domain: "computer-graphics"
+subdomain: "anti-aliasing"
+subdomain_name: "抗锯齿"
 difficulty: 3
----
+is_milestone: false
+tags: ["问题"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 30.6
+generation_method: "template-v1"
+unique_content_ratio: 0.6
+last_scored: "2026-03-21"
+sources: []
+---
 # TAA鬼影
 
 ## 核心内容

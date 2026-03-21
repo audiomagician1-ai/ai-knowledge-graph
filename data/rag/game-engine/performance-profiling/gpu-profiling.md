@@ -1,10 +1,22 @@
 ---
-concept: GPU性能分析
-subdomain: 性能剖析
-domain: game-engine
+id: "gpu-profiling"
+concept: "GPU性能分析"
+domain: "game-engine"
+subdomain: "performance-profiling"
+subdomain_name: "性能剖析"
 difficulty: 2
----
+is_milestone: false
+tags: ["GPU"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 27.6
+generation_method: "template-v1"
+unique_content_ratio: 0.462
+last_scored: "2026-03-21"
+sources: []
+---
 # GPU性能分析
 
 ## 核心内容

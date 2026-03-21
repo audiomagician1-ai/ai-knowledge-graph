@@ -1,10 +1,22 @@
 ---
-concept: 社会认同
-subdomain: 社会心理学
-domain: psychology
+id: "social-identity"
+concept: "社会认同"
+domain: "psychology"
+subdomain: "social-psychology"
+subdomain_name: "社会心理学"
 difficulty: 3
----
+is_milestone: false
+tags: ["自我"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 16.1
+generation_method: "template-v1"
+unique_content_ratio: 0.1
+last_scored: "2026-03-21"
+sources: []
+---
 # 社会认同
 
 ## 核心内容

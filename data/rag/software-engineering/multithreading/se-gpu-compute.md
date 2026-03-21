@@ -1,10 +1,22 @@
 ---
-concept: GPU计算
-subdomain: 多线程
-domain: software-engineering
+id: "se-gpu-compute"
+concept: "GPU计算"
+domain: "software-engineering"
+subdomain: "multithreading"
+subdomain_name: "多线程"
 difficulty: 3
----
+is_milestone: false
+tags: ["GPU"]
 
+# Quality Metadata (Schema v2)
+content_version: 1
+quality_tier: "C"
+quality_score: 23.8
+generation_method: "template-v1"
+unique_content_ratio: 0.444
+last_scored: "2026-03-21"
+sources: []
+---
 # GPU计算
 
 ## 核心内容
