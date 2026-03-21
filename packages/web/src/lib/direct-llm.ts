@@ -797,7 +797,7 @@ export async function directCreateConversation(conceptId: string): Promise<{
           { role: 'user', content: userMsg },
         ],
         temperature: 0.8,
-        ...tokenLimitParam(model, 600),
+        ...tokenLimitParam(model, 2048),
       }),
       signal: AbortSignal.timeout(15000), // 15s timeout
     });

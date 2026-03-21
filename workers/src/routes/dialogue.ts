@@ -166,7 +166,7 @@ app.post('/conversations', async (c) => {
           { role: 'user', content: `开始学习「${concept.name}」` },
         ],
         temperature: 0.8,
-        max_tokens: 600,
+        max_tokens: 2048,
       }, userConfig, 'dialogue');
 
       const parsed = parseChoicesFromContent(raw);
