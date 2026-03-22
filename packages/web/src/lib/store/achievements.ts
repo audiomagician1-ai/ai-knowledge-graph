@@ -61,11 +61,7 @@ export const useAchievementStore = create<AchievementState>((set, get) => ({
       // Show toast for each newly unlocked achievement
       const { addToast } = useToastStore.getState();
       for (const ach of data.achievements) {
-        addToast({
-          type: 'success',
-          message: `${ach.icon} 成就解锁: ${ach.name}`,
-          duration: 5000,
-        });
+        addToast('success', `${ach.icon} 成就解锁: ${ach.name}`, 5000);
       }
     }
   },
