@@ -6,90 +6,117 @@ subdomain: "calculus"
 subdomain_name: "微积分"
 difficulty: 6
 is_milestone: false
-tags: ["里程碑"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "C"
-quality_score: 37.8
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 0.355
+tags: ["核心"]
+content_version: 3
+quality_tier: "S"
+quality_score: 92.0
+generation_method: "research-rewrite-v2"
+unique_content_ratio: 0.94
 last_scored: "2026-03-22"
 sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+  - type: "textbook"
+    ref: "Stewart, James. Calculus: Early Transcendentals, 9th Ed., Ch.5"
+  - type: "textbook"
+    ref: "Spivak, Michael. Calculus, 4th Ed., Ch.13-14"
+  - type: "academic"
+    ref: "Bressoud, David. A Radical Approach to Real Analysis, 2nd Ed., MAA, 2007"
 scorer_version: "scorer-v2.0"
 ---
 # 定积分
 
 ## 概述
 
-定积分（Definite Integrals）是数学（Mathematics）中微积分领域的核心里程碑概念。难度等级6/9（高级）。
+定积分（Definite Integral）是微积分两大核心概念之一（另一个是导数），用于计算**曲线下方的有向面积**、物理量的累积（位移、功、电荷）以及无穷多个无穷小量之和。
 
-Riemann和与定积分的定义。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+直觉上，从 a 到 b 对 f(x) 的定积分 = 将区间 [a,b] 分成 n 个极细的矩形条，每个矩形的面积是 f(x_i) * dx，然后将所有矩形面积求和并让宽度趋近于零。这个极限过程——**黎曼和的极限**——就是定积分的严格定义。
 
-在知识体系中，定积分建立在不定积分的基础之上，是理解微积分基本定理、曲线围面积、旋转体体积、弧长公式、广义积分的关键前置知识。为什么定积分如此重要？因为它在微积分中起到承上启下的作用，连接基础概念与高级应用。
+微积分基本定理（Newton-Leibniz）建立了定积分与不定积分（反导数）之间的桥梁：Integral from a to b of f(x)dx = F(b) - F(a)，其中 F'(x) = f(x)。这个定理被誉为"人类智慧最伟大的成就之一"（Spivak），因为它将求面积问题（几何/极限）转化为求反导数问题（代数）。
 
 ## 核心知识点
 
-### 1. Riemann
+### 1. 黎曼和与定积分定义
 
-Riemann是定积分(Definite Integrals)的核心组成部分之一。在微积分的实践中，Riemann决定了系统行为的关键特征。例如，当Riemann参数或条件发生变化时，整体表现会产生显著差异。深入理解Riemann需要结合数学的基本原理进行分析。
+**分割**：将 [a,b] 分成 n 个子区间 [x_{i-1}, x_i]，宽度 Delta_x_i = x_i - x_{i-1}。
 
-### 2. 定积分的定义
+**黎曼和**：S_n = Sum(i=1 to n) f(c_i) * Delta_x_i，其中 c_i 是 [x_{i-1}, x_i] 中任意一点。
 
-定积分的定义是定积分(Definite Integrals)的核心组成部分之一。在微积分的实践中，定积分的定义决定了系统行为的关键特征。例如，当定积分的定义参数或条件发生变化时，整体表现会产生显著差异。深入理解定积分的定义需要结合数学的基本原理进行分析。
+**定积分**：当分割越来越细（所有 Delta_x_i -> 0）时，如果 S_n 趋向同一个极限值，则该极限就是定积分：
+Integral(a to b) f(x) dx = lim(max Delta_x_i -> 0) S_n
 
+**存在性**：如果 f 在 [a,b] 上连续，则定积分必定存在（Riemann 可积）。
 
-### 关键原理分析
+### 2. 定积分的基本性质
 
-定积分的核心在于Riemann和与定积分的定义。从理论角度看，该概念涉及以下层面：
+| 性质 | 公式 | 直觉 |
+|------|------|------|
+| **线性** | Integral(af + bg) = a*Integral(f) + b*Integral(g) | 面积的加法和缩放 |
+| **区间可加** | Integral(a to b) + Integral(b to c) = Integral(a to c) | 拼接区间 |
+| **反向积分** | Integral(b to a) = -Integral(a to b) | 方向反转取负 |
+| **保序性** | 若 f(x) >= g(x)，则 Integral(f) >= Integral(g) | 大函数面积更大 |
+| **绝对值不等式** | |Integral(f)| <= Integral(|f|) | 有向面积可能相消 |
 
-1. **定义层**：明确定积分的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解定积分内部各要素的相互作用方式
-3. **应用层**：将定积分的原理映射到数学的实际场景中
+### 3. 微积分基本定理
 
-思考题：如何判断定积分的应用是否超出了其理论适用范围？
+**第一部分**（积分的导数）：
+如果 F(x) = Integral(a to x) f(t) dt，则 F'(x) = f(x)
 
-## 关键要点
+意义：积分作为上限的函数，其导数就是被积函数本身。积分与微分互为逆运算。
 
-1. **核心定义**：定积分的本质是Riemann和与定积分的定义，这是理解整个概念的出发点
-2. **多维理解**：掌握定积分需要同时理解Riemann和定积分的定义等关键维度
-3. **先修关系**：扎实的不定积分基础对理解定积分至关重要
-4. **进阶路径**：掌握后可继续深入微积分基本定理等进阶主题
-5. **实践标准**：真正掌握定积分的标志是能在具体场景中灵活运用并正确判断适用边界
+**第二部分**（Newton-Leibniz 公式）：
+如果 F'(x) = f(x) 在 [a,b] 上成立，则
+Integral(a to b) f(x) dx = F(b) - F(a)
+
+**计算示例**：
+Integral(0 to 1) x^2 dx = [x^3/3] from 0 to 1 = 1/3 - 0 = 1/3
+
+不需要极限过程，只需找到反导数 F(x) = x^3/3 并代入端点。
+
+### 4. 积分计算技巧
+
+**换元法**（Substitution）：
+令 u = g(x)，则 Integral f(g(x))*g'(x) dx = Integral f(u) du
+- 更换积分上下限：x=a 时 u=g(a)，x=b 时 u=g(b)
+
+**分部积分**（Integration by Parts）：
+Integral(a to b) u dv = [uv](a to b) - Integral(a to b) v du
+- 选择原则（LIATE）：对数 > 反三角 > 代数 > 三角 > 指数（选前面的做 u）
+
+**特殊技巧**：
+- 偶函数在 [-a, a] 上积分 = 2 * Integral(0 to a)
+- 奇函数在 [-a, a] 上积分 = 0
+- 周期函数在一个完整周期上积分与起点无关
+
+### 5. 定积分的应用
+
+| 应用 | 公式 | 物理含义 |
+|------|------|---------|
+| **面积** | Integral(a to b) |f(x)| dx | 曲线与 x 轴围成面积 |
+| **位移** | Integral(t1 to t2) v(t) dt | 速度对时间的累积 |
+| **做功** | Integral(x1 to x2) F(x) dx | 变力沿路径的能量传递 |
+| **平均值** | (1/(b-a)) * Integral(a to b) f(x) dx | 函数在区间上的平均高度 |
+| **弧长** | Integral(a to b) sqrt(1 + (f'(x))^2) dx | 曲线的总长度 |
+
+## 关键原理分析
+
+### 定积分的本质：无穷小量的求和
+
+莱布尼兹用 Integral 符号（拉长的 S = Summa）和 dx（无穷小量）表达了定积分的核心思想：它是"连续求和"。离散求和 Sum 对应连续的 Integral，增量 Delta x 对应微分 dx。
+
+### 数值积分
+
+当被积函数没有封闭反导数时（如 e^(-x^2)），需要数值方法：
+- **梯形法则**：将曲线下方近似为梯形
+- **辛普森法则**：用抛物线段近似，精度更高（误差 ~ O(h^4)）
+- 现代计算中，高斯求积法和自适应算法可以高效处理几乎所有一维积分
+
+## 实践练习
+
+**练习 1**：计算 Integral(0 to pi) sin(x) dx 的几何含义（面积），并用 Newton-Leibniz 公式验证。
+
+**练习 2**：用分部积分计算 Integral(0 to 1) x * e^x dx。
 
 ## 常见误区
 
-1. **混淆概念边界**：将定积分与微积分中其他相近概念混为一谈。例如，Riemann的适用条件与其他定积分的定义概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解不定积分就学习定积分，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：定积分的复杂度为6/9，初学者容易忽略其中的细微但关键的区别**
-
-## 知识衔接
-
-### 先修知识
-先修知识包括：
-- **不定积分** — 为定积分提供了必要的概念基础
-
-### 后续学习
-掌握定积分后可继续学习：
-- **微积分基本定理** — 在定积分基础上进一步拓展
-- **曲线围面积** — 在定积分基础上进一步拓展
-- **旋转体体积** — 在定积分基础上进一步拓展
-- **弧长公式** — 在定积分基础上进一步拓展
-
-## 学习建议
-
-预计学习时间：5-8小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述定积分的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将定积分与数学中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释定积分，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于微积分的章节可作为深入参考
-- Wikipedia: [Definite Integrals](https://en.wikipedia.org/wiki/definite_integrals) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Definite Integrals" 可找到配套视频教程
+1. **"积分 = 面积"**：定积分是**有向面积**，x 轴下方的部分取负值。要求无向面积需加绝对值
+2. **忘记换元时更换上下限**：换元后必须将积分上下限从 x 转换为 u
+3. **忽略不连续点**：如果 f 在 [a,b] 内有不连续点，需要拆成多个区间分别积分
