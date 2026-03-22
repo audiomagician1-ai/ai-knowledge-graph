@@ -39,20 +39,23 @@
 
 ---
 
-**当前阶段**: ✅ **V1.0 成就系统完成** | BKT ✅ | FSRS ✅ | RAG 100% Tier-S ✅ | 1,110测试全通过
+**当前阶段**: ✅ **V1.0 成就系统完成** | BKT ✅ | FSRS ✅ | 成就UI ✅ | RAG 质量 v2 进行中 | 1,126测试全通过
 **📊 RAG知识库质量迭代进化** — 详见 `docs/RAG_EVOLUTION_PLAN.md`
-> 6,156篇RAG文档质量审计: S=6,156 A=0 B=0 C=0 (均分86.2, **100% Tier-S**)
+> ⚠️ **Scorer v2.0 重评发现**: ai-rewrite-v1 生成的文档被 Scorer v2.0 判定为模板化低质量
+> 原始评分(Scorer v1): S=6,156(100%) 均分86.2 — 实际过于宽松
+> **Scorer v2.0 重评**: S=80 A=48 B=5,370 C=658 均分44.9 — 87%为Tier-B, 11%为Tier-C
 > Sprint 0 ✅: Schema v2 + quality_scorer.py + 全量评分
 > Sprint 1 ✅: 物理域26里程碑精写(均分34.7→45.5, S=7/A=19)
 > Sprint 1.5 ✅: **research-rewrite-v2** — WebResearch增强精写验证: cell-membrane 13.8→93.3, accessibility-audit 17.9→82.6
 > Sprint 2 ✅: **ai-rewrite-v1** — 1,091里程碑概念批量AI精写(30域全覆盖), 均分31.0→46.6
 > Sprint 3 ✅: **ai-rewrite-v1** — 全部非里程碑概念批量AI精写(30域全覆盖) #33
->   脚本: `scripts/batch_ai_rewrite.py --all` | 均分46.6→86.2 | S: 1,115→6,150(99.9%) | C: 2,754→0(0%)
->   Sprint 3 收尾: 43残余template-v1/ai-batch-v1文件(9域)补写+全量rescore
-> Sprint 3.1 ✅: **Tier-A enhancement** — 最后10篇research-rewrite-v2文档增强至S级
->   策略: 不替换已有高质量内容,仅追加教学增强(思考题+案例研究+教科书引用)
->   增强: 10概念特异案例(LTCM危机/Knight Capital/WTI负油价/C4植物光合等)
->   结果: S=6,156(100.0%) A=0 B=0 C=0 | **RAG质量进化目标达成**
+> Sprint 4 ✅: **intranet-llm-rewrite-v1** — Tier-C 批量消除(mihoyo.claude-4-6-sonnet 内网API)
+>   脚本: `scripts/_batch_intranet_rewrite.py` | 658篇Tier-C文档全部改写
+>   API: mihoyo.claude-4-6-sonnet via https://llm-open-ai.mihoyo.com/v1
+>   结果: **S=145(2.4%) A=639(10.4%) B=5,368(87.2%) C=0(0.0%)** 均分49.5
+>   Tier-C: 658→0 (-100%) | Tier-A: 48→639 (+1231%) | Tier-S: 80→145 (+81%)
+>   Top域: Physics 均分64.9 | Mathematics 均分63.0 | Biology 均分56.1
+>   下一步: Tier-B 批量提升(5,368篇, 目标均分60+)
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
@@ -115,7 +118,15 @@
 >   - 支持里程碑统计: 扫描seed数据中is_milestone标记
 > **测试**: 42新测试(定义8/引擎11/DB 11/API 6/集成6), 总计1,110测试(897 BE + 213 FE), tsc 0 errors
 > **Issue**: #37
-> **下一步**: V1.0继续 — 前端FSRS复习UI集成 / 前端成就UI展示
+> **下一步**: V1.0继续 — 前端FSRS复习UI集成
+
+**V1.0 成就UI前端完成摘要** (#38):
+> **目标**: 前端成就系统UI展示 — API客户端/Store/面板/Toast通知/Hub导航集成
+> **已完成**: AchievementPanel(20成就/6分类/进度条/等级徽章/解锁日期) + achievements store(Zustand) + learning-api(3端点) + GraphPage Hub入口(Trophy图标+未读badge) + DraggableModal集成 + LearnPage/ChatPanel评估后自动检查新成就
+> **Bug修复**: achievements.ts addToast调用签名错误(对象参数→位置参数), 导致解锁Toast消息显示undefined
+> **测试**: 16新FE测试(初始状态1+fetchAchievements 5+checkNewAchievements 3+markAllSeen 5+unseenCount 2), 总计1,126测试(897 BE + 229 FE), tsc 0 errors
+> **Issue**: #38 (已关闭)
+> **下一步**: V1.0继续 — 前端FSRS复习UI集成
 
 **Sprint 3 完成摘要** (AI-Rewrite-v1 全量精写):
 > **目标**: 5,005非里程碑概念AI精写, 全30域覆盖, 从Tier-C模板提升到Tier-S
