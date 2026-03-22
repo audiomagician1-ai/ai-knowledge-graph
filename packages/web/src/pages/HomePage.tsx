@@ -252,6 +252,12 @@ export function HomePage() {
   const alive = useRef(true);
   const navRef = useRef(nav); navRef.current = nav;
 
+  /* ─── Responsive: shrink grid on mobile ─── */
+  const isMobile = useMemo(() => typeof window !== 'undefined' && window.innerWidth < 768, []);
+  const mScale = isMobile ? 0.55 : 1;
+  const baseR = BASE_R * mScale;
+  const hexSpacing = HEX_SPACING * mScale;
+
   useEffect(() => {
     fetchDomains().then(() => {
       if (useDomainStore.getState().domains.length === 0)
@@ -282,7 +288,7 @@ export function HomePage() {
   const N = sorted.length;
 
   /* ─── Precompute rectangular hex grid for seamless tiling ─── */
-  const gridData = useMemo(() => buildRectHexGrid(N, HEX_SPACING), [N]);
+  const gridData = useMemo(() => buildRectHexGrid(N, hexSpacing), [N, hexSpacing]);
   const hexGrid = gridData.positions;
   const totalSlots = gridData.totalSlots;
   const wrapW = gridData.wrapW;
@@ -306,6 +312,7 @@ export function HomePage() {
     const ctx = cvs.getContext('2d')!;
     let raf = 0, dead = false;
     const s = st.current;
+    const _baseR = baseR; // captured from responsive hook
 
     const resize = () => {
       const r = cvs.parentElement!.getBoundingClientRect();
@@ -328,6 +335,10 @@ export function HomePage() {
       s.dragStartPanY = s.panY;
       s.lastX = e.clientX; s.lastY = e.clientY;
       s.lastT = performance.now();
+      /* Set mx/my so touch tap has valid coords for hover & hit-test */
+      const rect = cvs.getBoundingClientRect();
+      s.mx = e.clientX - rect.left;
+      s.my = e.clientY - rect.top;
       cvs.setPointerCapture(e.pointerId);
     };
 
@@ -357,6 +368,11 @@ export function HomePage() {
       if (vLen > VEL_CAP) { const sc = VEL_CAP / vLen; s.velX *= sc; s.velY *= sc; }
 
       if (!wasDrag) {
+        /* Use event coords directly — on touch, pointerleave may reset s.mx/my before onUp */
+        const rect = cvs.getBoundingClientRect();
+        const tapX = e.clientX - rect.left;
+        const tapY = e.clientY - rect.top;
+
         // Click: hit-test bubbles (nearest to front = largest first)
         const W = cvs.width / DPR, H = cvs.height / DPR;
         const centerX = W / 2, centerY = H / 2;
@@ -384,16 +400,15 @@ export function HomePage() {
           const push = 1 + curve * FISH_PUSH;
           const sx = centerX + ddx * push;
           const sy = centerY + ddy * push;
-          const sr = BASE_R * scale;
+          const sr = _baseR * scale;
           hits.push({ idx: i, sx, sy, sr });
         }
         hits.sort((a, b) => b.sr - a.sr); // biggest first
 
         for (const h of hits) {
-          const dx = s.mx - h.sx, dy = s.my - h.sy;
+          const dx = tapX - h.sx, dy = tapY - h.sy;
           if (dx * dx + dy * dy <= h.sr * h.sr) {
             const d = sorted[h.idx % N];
-            const rect = cvs.getBoundingClientRect();
             setTrans({ id: d.id, cx: rect.left + h.sx, cy: rect.top + h.sy, color: d.color });
             timerRef.current = setTimeout(() => { if (alive.current) navRef.current('/domain/' + d.id); }, TRANSITION_MS);
             return;
@@ -402,7 +417,11 @@ export function HomePage() {
       }
     };
 
-    const onLeave = () => { s.mx = -9999; s.my = -9999; };
+    const onLeave = (e: PointerEvent) => {
+      /* On touch, pointerleave fires when finger lifts — don't kill coords */
+      if (e.pointerType === 'touch') return;
+      s.mx = -9999; s.my = -9999;
+    };
 
     cvs.addEventListener('pointerdown', onDown);
     cvs.addEventListener('pointermove', onMove);
@@ -480,7 +499,7 @@ export function HomePage() {
         const push = 1 + curve * FISH_PUSH;
         const sx = centerX + bestDx * push;
         const sy = centerY + bestDy * push;
-        const sr = BASE_R * scale;
+        const sr = _baseR * scale;
         // Alpha: steep falloff — center bright, edge nearly invisible
         const alpha = Math.pow(t, 3.0);
 
@@ -538,7 +557,7 @@ export function HomePage() {
       cvs.removeEventListener('pointerup', onUp);
       cvs.removeEventListener('pointerleave', onLeave);
     };
-  }, [sorted, N, hexGrid, totalSlots, wrapW, wrapH, gridData]);
+  }, [sorted, N, hexGrid, totalSlots, wrapW, wrapH, gridData, baseR]);
 
   return (
     <div className="h-dvh w-full relative overflow-hidden" style={{ backgroundColor: BG }}>

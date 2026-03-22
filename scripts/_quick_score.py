@@ -7,8 +7,11 @@ from quality_scorer import score_doc
 
 BASE = Path(r'D:\EchoAgent\projects\ai-knowledge-graph')
 files = [
-    'data/rag/game-engine/rendering-pipeline/render-pipeline-intro.md',
-    'data/rag/writing/creative-writing/creative-overview.md',
+    'data/rag/game-engine/plugin-development/plugin-intro.md',
+    'data/rag/writing/professional-writing/professional-overview.md',
+    'data/rag/writing/expository-writing/expository-overview.md',
+    'data/rag/game-engine/performance-profiling/profiling-intro.md',
+    'data/rag/level-design/ld-documentation/ld-doc-intro.md',
 ]
 
 for f in files:
