@@ -1,588 +1,588 @@
 {
-  "_generated": "2026-03-21T23:54:11.766776",
-  "_version": "scorer-v1.0",
+  "_generated": "2026-03-22T11:58:11.399252",
+  "_version": "scorer-v2.0",
   "total_docs": 6156,
-  "avg_score": 86.2,
+  "avg_score": 44.2,
   "tier_distribution": {
-    "S": 6156,
-    "A": 0,
-    "B": 0,
-    "C": 0
+    "S": 11,
+    "A": 16,
+    "B": 5377,
+    "C": 752
   },
   "domain_summary": {
     "3d-art": {
       "count": 226,
-      "avg_score": 86.8,
-      "min_score": 82.1,
-      "max_score": 94.2,
+      "avg_score": 43.9,
+      "min_score": 34.0,
+      "max_score": 52.0,
       "tiers": {
-        "S": 226,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 207,
+        "C": 19
       }
     },
     "ai-engineering": {
       "count": 394,
-      "avg_score": 87.2,
-      "min_score": 82.1,
-      "max_score": 93.3,
+      "avg_score": 45.8,
+      "min_score": 35.1,
+      "max_score": 72.9,
       "tiers": {
-        "S": 394,
-        "A": 0,
-        "B": 0,
-        "C": 0
+        "S": 0,
+        "A": 10,
+        "B": 373,
+        "C": 11
       }
     },
     "animation": {
       "count": 180,
-      "avg_score": 86.2,
-      "min_score": 82.9,
-      "max_score": 92.7,
+      "avg_score": 44.3,
+      "min_score": 39.8,
+      "max_score": 53.8,
       "tiers": {
-        "S": 180,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 179,
+        "C": 1
       }
     },
     "biology": {
       "count": 169,
-      "avg_score": 85.4,
-      "min_score": 80.5,
-      "max_score": 93.3,
+      "avg_score": 41.9,
+      "min_score": 32.9,
+      "max_score": 89.3,
       "tiers": {
-        "S": 169,
-        "A": 0,
-        "B": 0,
-        "C": 0
+        "S": 3,
+        "A": 3,
+        "B": 106,
+        "C": 57
       }
     },
     "computer-graphics": {
       "count": 250,
-      "avg_score": 85.4,
-      "min_score": 81.6,
-      "max_score": 90.7,
+      "avg_score": 44.5,
+      "min_score": 34.3,
+      "max_score": 52.5,
       "tiers": {
-        "S": 250,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 241,
+        "C": 9
       }
     },
     "concept-design": {
       "count": 220,
-      "avg_score": 85.6,
-      "min_score": 81.6,
-      "max_score": 89.1,
+      "avg_score": 43.7,
+      "min_score": 35.0,
+      "max_score": 51.0,
       "tiers": {
-        "S": 220,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 213,
+        "C": 7
       }
     },
     "economics": {
       "count": 166,
-      "avg_score": 86.2,
-      "min_score": 82.1,
-      "max_score": 91.9,
+      "avg_score": 43.5,
+      "min_score": 32.6,
+      "max_score": 52.6,
       "tiers": {
-        "S": 166,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 144,
+        "C": 22
       }
     },
     "english": {
       "count": 188,
-      "avg_score": 84.6,
-      "min_score": 81.3,
-      "max_score": 88.6,
+      "avg_score": 41.1,
+      "min_score": 32.6,
+      "max_score": 50.2,
       "tiers": {
-        "S": 188,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 134,
+        "C": 54
       }
     },
     "finance": {
       "count": 161,
-      "avg_score": 85.9,
-      "min_score": 80.8,
-      "max_score": 90.6,
+      "avg_score": 44.2,
+      "min_score": 32.6,
+      "max_score": 84.6,
       "tiers": {
-        "S": 161,
-        "A": 0,
-        "B": 0,
-        "C": 0
+        "S": 8,
+        "A": 2,
+        "B": 108,
+        "C": 43
       }
     },
     "game-audio-music": {
       "count": 180,
-      "avg_score": 88.9,
-      "min_score": 84.9,
-      "max_score": 94.2,
+      "avg_score": 48.5,
+      "min_score": 41.9,
+      "max_score": 55.7,
       "tiers": {
-        "S": 180,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 180,
         "C": 0
       }
     },
     "game-audio-sfx": {
       "count": 180,
-      "avg_score": 87.3,
-      "min_score": 85.1,
-      "max_score": 91.1,
+      "avg_score": 46.2,
+      "min_score": 40.1,
+      "max_score": 53.7,
       "tiers": {
-        "S": 180,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 180,
         "C": 0
       }
     },
     "game-design": {
       "count": 243,
-      "avg_score": 84.4,
-      "min_score": 81.3,
-      "max_score": 89.9,
+      "avg_score": 41.1,
+      "min_score": 32.1,
+      "max_score": 79.6,
       "tiers": {
-        "S": 243,
-        "A": 0,
-        "B": 0,
-        "C": 0
+        "S": 0,
+        "A": 1,
+        "B": 179,
+        "C": 63
       }
     },
     "game-engine": {
       "count": 304,
-      "avg_score": 84.5,
-      "min_score": 80.8,
-      "max_score": 93.0,
+      "avg_score": 43.8,
+      "min_score": 34.1,
+      "max_score": 55.1,
       "tiers": {
-        "S": 304,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 283,
+        "C": 21
       }
     },
     "game-live-ops": {
       "count": 180,
-      "avg_score": 88.1,
-      "min_score": 85.1,
-      "max_score": 91.2,
+      "avg_score": 47.6,
+      "min_score": 42.1,
+      "max_score": 54.6,
       "tiers": {
-        "S": 180,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 180,
         "C": 0
       }
     },
     "game-production": {
       "count": 160,
-      "avg_score": 88.5,
-      "min_score": 84.9,
-      "max_score": 91.9,
+      "avg_score": 47.6,
+      "min_score": 40.5,
+      "max_score": 54.5,
       "tiers": {
-        "S": 160,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 160,
         "C": 0
       }
     },
     "game-publishing": {
       "count": 180,
-      "avg_score": 88.0,
-      "min_score": 84.4,
-      "max_score": 93.1,
+      "avg_score": 46.9,
+      "min_score": 40.8,
+      "max_score": 54.7,
       "tiers": {
-        "S": 180,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 180,
         "C": 0
       }
     },
     "game-qa": {
       "count": 160,
-      "avg_score": 87.6,
-      "min_score": 84.4,
-      "max_score": 94.2,
+      "avg_score": 46.2,
+      "min_score": 41.4,
+      "max_score": 54.4,
       "tiers": {
-        "S": 160,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 160,
         "C": 0
       }
     },
     "game-ui-ux": {
       "count": 200,
-      "avg_score": 88.8,
-      "min_score": 84.6,
-      "max_score": 94.4,
+      "avg_score": 48.0,
+      "min_score": 41.9,
+      "max_score": 55.4,
       "tiers": {
-        "S": 200,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 200,
         "C": 0
       }
     },
     "level-design": {
       "count": 199,
-      "avg_score": 84.4,
-      "min_score": 81.3,
-      "max_score": 89.2,
+      "avg_score": 42.0,
+      "min_score": 33.9,
+      "max_score": 51.9,
       "tiers": {
-        "S": 199,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 179,
+        "C": 20
       }
     },
     "mathematics": {
       "count": 269,
-      "avg_score": 85.3,
-      "min_score": 81.1,
-      "max_score": 89.1,
+      "avg_score": 39.0,
+      "min_score": 32.0,
+      "max_score": 55.3,
       "tiers": {
-        "S": 269,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 124,
+        "C": 145
       }
     },
     "multiplayer-network": {
       "count": 200,
-      "avg_score": 86.9,
-      "min_score": 83.2,
-      "max_score": 91.4,
+      "avg_score": 45.4,
+      "min_score": 40.1,
+      "max_score": 54.2,
       "tiers": {
-        "S": 200,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 200,
         "C": 0
       }
     },
     "narrative-design": {
       "count": 180,
-      "avg_score": 87.5,
-      "min_score": 82.6,
-      "max_score": 92.4,
+      "avg_score": 46.6,
+      "min_score": 39.8,
+      "max_score": 54.9,
       "tiers": {
-        "S": 180,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 179,
+        "C": 1
       }
     },
     "philosophy": {
       "count": 171,
-      "avg_score": 85.0,
-      "min_score": 81.6,
-      "max_score": 90.2,
+      "avg_score": 42.6,
+      "min_score": 32.5,
+      "max_score": 50.4,
       "tiers": {
-        "S": 171,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 138,
+        "C": 33
       }
     },
     "physics": {
       "count": 194,
-      "avg_score": 85.9,
-      "min_score": 82.1,
-      "max_score": 89.4,
+      "avg_score": 39.2,
+      "min_score": 32.6,
+      "max_score": 53.2,
       "tiers": {
-        "S": 194,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 80,
+        "C": 114
       }
     },
     "product-design": {
       "count": 186,
-      "avg_score": 85.7,
-      "min_score": 81.6,
-      "max_score": 91.2,
+      "avg_score": 43.4,
+      "min_score": 33.3,
+      "max_score": 53.2,
       "tiers": {
-        "S": 186,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 160,
+        "C": 26
       }
     },
     "psychology": {
       "count": 191,
-      "avg_score": 85.7,
-      "min_score": 81.6,
-      "max_score": 90.9,
+      "avg_score": 42.5,
+      "min_score": 33.4,
+      "max_score": 51.5,
       "tiers": {
-        "S": 191,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 147,
+        "C": 44
       }
     },
     "software-engineering": {
       "count": 280,
-      "avg_score": 84.6,
-      "min_score": 81.6,
-      "max_score": 89.9,
+      "avg_score": 45.4,
+      "min_score": 33.2,
+      "max_score": 54.4,
       "tiers": {
-        "S": 280,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 264,
+        "C": 16
       }
     },
     "technical-art": {
       "count": 180,
-      "avg_score": 86.2,
-      "min_score": 82.9,
-      "max_score": 93.6,
+      "avg_score": 45.1,
+      "min_score": 40.9,
+      "max_score": 54.9,
       "tiers": {
-        "S": 180,
+        "S": 0,
         "A": 0,
-        "B": 0,
+        "B": 180,
         "C": 0
       }
     },
     "vfx": {
       "count": 180,
-      "avg_score": 87.8,
-      "min_score": 83.9,
-      "max_score": 93.1,
+      "avg_score": 45.4,
+      "min_score": 34.9,
+      "max_score": 54.9,
       "tiers": {
-        "S": 180,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 179,
+        "C": 1
       }
     },
     "writing": {
       "count": 185,
-      "avg_score": 85.2,
-      "min_score": 82.1,
-      "max_score": 90.0,
+      "avg_score": 41.6,
+      "min_score": 33.2,
+      "max_score": 48.9,
       "tiers": {
-        "S": 185,
+        "S": 0,
         "A": 0,
-        "B": 0,
-        "C": 0
+        "B": 140,
+        "C": 45
       }
     }
   },
   "top10_best": [
     {
-      "file": "game-ui-ux\\guiux-tech-performance.md",
-      "concept": "UI性能优化",
-      "score": 94.4,
-      "tier": "S",
-      "domain": "game-ui-ux"
-    },
-    {
-      "file": "3d-art\\3da-tex-substance-painter.md",
-      "concept": "Substance Painter",
-      "score": 94.2,
-      "tier": "S",
-      "domain": "3d-art"
-    },
-    {
-      "file": "game-audio-music\\game-audio-music-wwise-music-segment.md",
-      "concept": "Music Segment",
-      "score": 94.2,
-      "tier": "S",
-      "domain": "game-audio-music"
-    },
-    {
-      "file": "game-qa\\qa-pt-gpu-profiling.md",
-      "concept": "GPU Profiling",
-      "score": 94.2,
-      "tier": "S",
-      "domain": "game-qa"
-    },
-    {
-      "file": "game-audio-music\\game-audio-music-fmod-transition-region.md",
-      "concept": "Transition Region",
-      "score": 93.7,
-      "tier": "S",
-      "domain": "game-audio-music"
-    },
-    {
-      "file": "game-audio-music\\game-audio-music-case-study-leitmotif.md",
-      "concept": "案例分析:主题动机",
-      "score": 93.6,
-      "tier": "S",
-      "domain": "game-audio-music"
-    },
-    {
-      "file": "technical-art\\ta-shader-overview.md",
-      "concept": "Shader开发概述",
-      "score": 93.6,
-      "tier": "S",
-      "domain": "technical-art"
-    },
-    {
-      "file": "agent-systems\\tool-use.md",
-      "concept": "工具调用(Function Calling)",
-      "score": 93.3,
-      "tier": "S",
-      "domain": "ai-engineering"
-    },
-    {
       "file": "biology\\cell-biology\\cell-membrane.md",
       "concept": "细胞膜",
-      "score": 93.3,
+      "score": 89.3,
       "tier": "S",
       "domain": "biology"
     },
     {
-      "file": "llm-core\\llm-safety-alignment.md",
-      "concept": "LLM Safety and Alignment",
-      "score": 93.3,
-      "tier": "S",
-      "domain": "ai-engineering"
-    }
-  ],
-  "top20_worst": [
-    {
-      "file": "biology\\cell-biology\\mitosis.md",
-      "concept": "有丝分裂",
-      "score": 80.5,
+      "file": "biology\\cell-biology\\photosynthesis.md",
+      "concept": "光合作用",
+      "score": 84.6,
       "tier": "S",
       "domain": "biology"
+    },
+    {
+      "file": "biology\\evolution\\natural-selection.md",
+      "concept": "自然选择",
+      "score": 84.6,
+      "tier": "S",
+      "domain": "biology"
+    },
+    {
+      "file": "finance\\quantitative-finance\\high-frequency-trading.md",
+      "concept": "高频交易",
+      "score": 84.6,
+      "tier": "S",
+      "domain": "finance"
+    },
+    {
+      "file": "finance\\quantitative-finance\\monte-carlo-simulation.md",
+      "concept": "蒙特卡洛模拟",
+      "score": 84.6,
+      "tier": "S",
+      "domain": "finance"
+    },
+    {
+      "file": "finance\\quantitative-finance\\statistical-arbitrage.md",
+      "concept": "统计套利",
+      "score": 84.6,
+      "tier": "S",
+      "domain": "finance"
+    },
+    {
+      "file": "finance\\quantitative-finance\\time-series-analysis.md",
+      "concept": "时间序列分析",
+      "score": 84.6,
+      "tier": "S",
+      "domain": "finance"
+    },
+    {
+      "file": "finance\\quantitative-finance\\volatility-modeling.md",
+      "concept": "波动率建模",
+      "score": 84.6,
+      "tier": "S",
+      "domain": "finance"
     },
     {
       "file": "finance\\quantitative-finance\\mean-reversion.md",
       "concept": "均值回归",
-      "score": 80.8,
+      "score": 83.8,
       "tier": "S",
       "domain": "finance"
-    },
-    {
-      "file": "game-engine\\serialization\\cloud-save.md",
-      "concept": "云存档",
-      "score": 80.8,
-      "tier": "S",
-      "domain": "game-engine"
     },
     {
       "file": "finance\\risk-management\\derivatives-overview.md",
       "concept": "衍生品概述",
-      "score": 81.1,
+      "score": 81.9,
       "tier": "S",
       "domain": "finance"
-    },
+    }
+  ],
+  "top20_worst": [
     {
-      "file": "mathematics\\calculus\\area-under-curve.md",
-      "concept": "曲线围面积",
-      "score": 81.1,
-      "tier": "S",
+      "file": "mathematics\\number-theory\\congruences.md",
+      "concept": "同余理论",
+      "score": 32.0,
+      "tier": "C",
       "domain": "mathematics"
     },
     {
-      "file": "mathematics\\discrete-math\\inclusion-exclusion.md",
-      "concept": "容斥原理",
-      "score": 81.1,
-      "tier": "S",
+      "file": "game-design\\balance-design\\number-tuning.md",
+      "concept": "数值调优",
+      "score": 32.1,
+      "tier": "C",
+      "domain": "game-design"
+    },
+    {
+      "file": "mathematics\\arithmetic\\fractions.md",
+      "concept": "分数",
+      "score": 32.2,
+      "tier": "C",
       "domain": "mathematics"
     },
     {
-      "file": "english\\advanced-grammar\\reduced-clauses.md",
-      "concept": "从句简化",
-      "score": 81.3,
-      "tier": "S",
+      "file": "mathematics\\geometry\\triangles.md",
+      "concept": "三角形",
+      "score": 32.2,
+      "tier": "C",
+      "domain": "mathematics"
+    },
+    {
+      "file": "mathematics\\probability\\combinations.md",
+      "concept": "组合",
+      "score": 32.2,
+      "tier": "C",
+      "domain": "mathematics"
+    },
+    {
+      "file": "philosophy\\ancient-philosophy\\confucius.md",
+      "concept": "孔子",
+      "score": 32.5,
+      "tier": "C",
+      "domain": "philosophy"
+    },
+    {
+      "file": "economics\\macroeconomics\\fiscal-policy.md",
+      "concept": "财政政策",
+      "score": 32.6,
+      "tier": "C",
+      "domain": "economics"
+    },
+    {
+      "file": "english\\basic-grammar\\nouns.md",
+      "concept": "名词",
+      "score": 32.6,
+      "tier": "C",
       "domain": "english"
     },
     {
-      "file": "game-design\\design-docs\\user-story.md",
-      "concept": "用户故事",
-      "score": 81.3,
-      "tier": "S",
-      "domain": "game-design"
+      "file": "finance\\investment-basics\\investment-overview.md",
+      "concept": "投资概述",
+      "score": 32.6,
+      "tier": "C",
+      "domain": "finance"
     },
     {
-      "file": "game-engine\\physics-engine\\vehicle-physics.md",
-      "concept": "载具物理",
-      "score": 81.3,
-      "tier": "S",
-      "domain": "game-engine"
-    },
-    {
-      "file": "game-engine\\resource-management\\object-pool.md",
-      "concept": "对象池",
-      "score": 81.3,
-      "tier": "S",
-      "domain": "game-engine"
-    },
-    {
-      "file": "level-design\\lighting-narrative\\color-temperature.md",
-      "concept": "色温控制",
-      "score": 81.3,
-      "tier": "S",
-      "domain": "level-design"
-    },
-    {
-      "file": "mathematics\\analytic-geometry\\locus-problems.md",
-      "concept": "轨迹问题",
-      "score": 81.3,
-      "tier": "S",
+      "file": "mathematics\\arithmetic\\number-sets.md",
+      "concept": "数集分类",
+      "score": 32.6,
+      "tier": "C",
       "domain": "mathematics"
     },
     {
-      "file": "computer-graphics\\volume-rendering\\cg-vol-decal.md",
-      "concept": "体积贴花",
-      "score": 81.6,
-      "tier": "S",
-      "domain": "computer-graphics"
+      "file": "mathematics\\number-theory\\primes.md",
+      "concept": "素数",
+      "score": 32.6,
+      "tier": "C",
+      "domain": "mathematics"
     },
     {
-      "file": "concept-design\\cd-rim-light.md",
-      "concept": "轮廓光",
-      "score": 81.6,
-      "tier": "S",
-      "domain": "concept-design"
+      "file": "mathematics\\optimization\\gradient-descent.md",
+      "concept": "梯度下降",
+      "score": 32.6,
+      "tier": "C",
+      "domain": "mathematics"
     },
     {
-      "file": "game-design\\difficulty-curve\\casual-difficulty.md",
-      "concept": "休闲难度",
-      "score": 81.6,
-      "tier": "S",
-      "domain": "game-design"
+      "file": "philosophy\\ancient-philosophy\\plato.md",
+      "concept": "柏拉图",
+      "score": 32.6,
+      "tier": "C",
+      "domain": "philosophy"
     },
     {
-      "file": "game-design\\feedback-systems\\feedback-fatigue.md",
-      "concept": "反馈疲劳",
-      "score": 81.6,
-      "tier": "S",
-      "domain": "game-design"
+      "file": "physics\\classical-mechanics\\gravitation.md",
+      "concept": "万有引力",
+      "score": 32.6,
+      "tier": "C",
+      "domain": "physics"
     },
     {
-      "file": "game-design\\randomness-design\\weighted-random.md",
-      "concept": "加权随机",
-      "score": 81.6,
-      "tier": "S",
-      "domain": "game-design"
+      "file": "mathematics\\linear-algebra\\vectors-intro.md",
+      "concept": "向量基础",
+      "score": 32.7,
+      "tier": "C",
+      "domain": "mathematics"
     },
     {
-      "file": "game-design\\social-systems\\mentor-system.md",
-      "concept": "师徒系统",
-      "score": 81.6,
-      "tier": "S",
-      "domain": "game-design"
+      "file": "biology\\molecular-biology\\gene-regulation.md",
+      "concept": "基因调控",
+      "score": 32.9,
+      "tier": "C",
+      "domain": "biology"
     },
     {
-      "file": "game-engine\\input-system\\input-debug.md",
-      "concept": "输入调试",
-      "score": 81.6,
-      "tier": "S",
-      "domain": "game-engine"
+      "file": "mathematics\\linear-algebra\\vector-spaces.md",
+      "concept": "向量空间",
+      "score": 33.0,
+      "tier": "C",
+      "domain": "mathematics"
     },
     {
-      "file": "game-engine\\input-system\\motion-input.md",
-      "concept": "运动输入",
-      "score": 81.6,
-      "tier": "S",
-      "domain": "game-engine"
+      "file": "physics\\modern-physics\\bohr-model.md",
+      "concept": "玻尔模型",
+      "score": 33.0,
+      "tier": "C",
+      "domain": "physics"
+    },
+    {
+      "file": "mathematics\\algebra\\quadratic-equations.md",
+      "concept": "一元二次方程",
+      "score": 33.1,
+      "tier": "C",
+      "domain": "mathematics"
+    },
+    {
+      "file": "mathematics\\algebra\\sequences-intro.md",
+      "concept": "数列基础",
+      "score": 33.1,
+      "tier": "C",
+      "domain": "mathematics"
     }
   ]
 }

@@ -9,20 +9,92 @@ is_milestone: false
 tags: ["基础"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
+content_version: 3
 quality_tier: "pending-rescore"
-quality_score: 41.5
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 0.714
-last_scored: "2026-03-21"
+quality_score: 32.2
+generation_method: "llm-rewrite-v2"
+unique_content_ratio: 0.344
+last_scored: "2026-03-22"
 sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+  - type: "encyclopedia"
+    ref: "Wikipedia - Fraction"
+    url: "https://en.wikipedia.org/wiki/Fraction"
+  - type: "textbook-reference"
+    ref: "Stewart, J. Calculus: Early Transcendentals, 8th ed. Appendix A"
+scorer_version: "scorer-v2.0"
 ---
 # 分数
 
 ## 概述
+
+分数（Fraction）是表示整体中部分的数学概念，形式为 $\frac{a}{b}$，其中 $a$ 称为分子（numerator），$b$ 称为分母（denominator），且 $b \neq 0$。分数最早的使用可以追溯到古埃及，莱因德纸草书（Rhind Papyrus，约公元前1650年）中已出现以单位分数 $\frac{1}{n}$ 表示所有分数的方法。古巴比伦人则使用六十进制分数。
+
+现代分数记号（横线分隔分子分母）源自12世纪的阿拉伯数学家，后由意大利数学家斐波那契（Fibonacci）于1202年在《计算之书》（*Liber Abaci*）中传入欧洲。
+
+从集合论角度看，分数是有理数 $\mathbb{Q}$ 的具体表示形式：$\mathbb{Q} = \left\{ \frac{a}{b} \mid a, b \in \mathbb{Z}, b \neq 0 \right\}$。两个分数 $\frac{a}{b}$ 和 $\frac{c}{d}$ 相等当且仅当 $ad = bc$。
+
+## 核心原理
+
+### 分数的分类
+
+| 类型 | 定义 | 示例 |
+|------|------|------|
+| 真分数（proper fraction） | 分子绝对值 < 分母绝对值 | $\frac{3}{7}$, $\frac{2}{5}$ |
+| 假分数（improper fraction） | 分子绝对值 ≥ 分母绝对值 | $\frac{7}{3}$, $\frac{5}{5}$ |
+| 带分数（mixed number） | 整数部分 + 真分数部分 | $2\frac{1}{3}$ = $\frac{7}{3}$ |
+| 单位分数（unit fraction） | 分子为1 | $\frac{1}{2}$, $\frac{1}{7}$ |
+
+### 四则运算规则
+
+**加减法**需要通分——找到最小公分母（LCD）：
+
+$$\frac{a}{b} \pm \frac{c}{d} = \frac{ad \pm bc}{bd}$$
+
+例如：$\frac{2}{3} + \frac{3}{4} = \frac{8}{12} + \frac{9}{12} = \frac{17}{12} = 1\frac{5}{12}$
+
+**乘法**直接分子乘分子、分母乘分母：
+
+$$\frac{a}{b} \times \frac{c}{d} = \frac{ac}{bd}$$
+
+**除法**等于乘以倒数：
+
+$$\frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c} = \frac{ad}{bc} \quad (c \neq 0)$$
+
+### 约分与最简分数
+
+分数 $\frac{a}{b}$ 的最简形式是将分子分母同除以它们的最大公约数（GCD）。例如 $\frac{12}{18}$ 中，$\gcd(12, 18) = 6$，所以 $\frac{12}{18} = \frac{2}{3}$。欧几里得算法（辗转相除法，约公元前300年提出）是计算 GCD 的经典方法：$\gcd(18, 12) = \gcd(12, 6) = \gcd(6, 0) = 6$。
+
+### 分数与小数的转换
+
+任何分数都可以转换为小数，方法是执行除法 $a \div b$。结果要么是有限小数（如 $\frac{1}{4} = 0.25$），要么是无限循环小数（如 $\frac{1}{3} = 0.\overline{3}$）。判断规则：当分母的质因数**仅包含2和5**时，结果为有限小数；否则为循环小数。例如 $\frac{1}{8}$（$8 = 2^3$）= 0.125（有限），而 $\frac{1}{7}$（7是质数，≠2,5）= $0.\overline{142857}$（循环节长度为6）。
+
+## 实际应用
+
+1. **烹饪中的比例缩放**：一份食谱要求 $\frac{3}{4}$ 杯面粉做4人份。做6人份需要 $\frac{3}{4} \times \frac{6}{4} = \frac{18}{16} = \frac{9}{8} = 1\frac{1}{8}$ 杯。
+
+2. **金融中的利率计算**：年利率4.5%的季度复利，每季度利率为 $\frac{4.5\%}{4} = \frac{9}{800}$。
+
+3. **音乐中的频率比**：纯律音程中，纯五度音程的频率比恰好是 $\frac{3}{2}$（如440 Hz的A音对应660 Hz的E音）。十二平均律中五度的频率比为 $2^{7/12} \approx 1.4983$，略小于 $\frac{3}{2} = 1.5$。
+
+## 常见误区
+
+1. **"分子分母可以分别相加"**：$\frac{1}{2} + \frac{1}{3} \neq \frac{2}{5}$。正确做法是通分：$\frac{1}{2} + \frac{1}{3} = \frac{3}{6} + \frac{2}{6} = \frac{5}{6}$。这个错误极其常见，研究表明约有40%的小学生会犯此错误（Siegler et al., 2011）。
+
+2. **"分母越大分数越大"**：$\frac{1}{3} > \frac{1}{5}$，分母越大单位分数反而越小。直觉上，将一个蛋糕分成3份时每份比分成5份时大。
+
+3. **"0不能做分子"**：$\frac{0}{b} = 0$（$b \neq 0$）是完全合法的。真正不允许的是 $b = 0$，因为除以零无定义。
+
+## 知识关联
+
+**先修概念**：自然数的加减乘除运算、整除概念、最大公约数和最小公倍数。
+
+**后续发展**：分数是理解有理数（含负分数）、比例与比率、百分数的基础。在代数中，分数运算直接推广为分式（rational expression）的运算，如 $\frac{x+1}{x-2} + \frac{3}{x+1}$。在实分析中，有理数集 $\mathbb{Q}$ 的稠密性和不完备性是理解实数构造（Dedekind分割）的关键。
+
+## 参考来源
+
+- [Fraction - Wikipedia](https://en.wikipedia.org/wiki/Fraction)
+- Siegler, R.S., et al. (2011). "An integrated theory of whole number and fractions development." *Cognitive Psychology*, 62(4), 273-296.
+- Stewart, J. *Calculus: Early Transcendentals*, 8th ed., Appendix A.## 概述
 
 分数（Fractions）是数学（Mathematics）中算术基础领域的重要概念。难度等级2/9（基础级）。
 
