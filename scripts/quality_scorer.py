@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-RAG 知识库质量评分器 v1.0
+RAG 知识库质量评分器 v2.0
 
 对 data/rag/ 下所有 .md 文档自动评分 (0-100)，输出 quality_report.json。
 
@@ -32,8 +32,10 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 RAG_ROOT = PROJECT_ROOT / "data" / "rag"
 
-# ─── 已知模板固定段落指纹（用于计算特异性）───
-# 这些是 generate_rag.py 和对话批量生成中反复出现的文本
+# ─── 模板检测系统 v2.0 ───
+# 两层检测：精确字符串 + 正则模式
+
+# 第一层：精确字符串指纹（出现即判定为模板行）
 TEMPLATE_FINGERPRINTS = [
     # game-dev Tier-C 通用段落
     "服务于核心体验：每个设计决策都应强化而非分散核心乐趣",
@@ -69,6 +71,44 @@ TEMPLATE_FINGERPRINTS = [
     "才能高效地完成高质量资产制作",
     "环节的核心组成部分",
     "需要深入理解其原理",
+    # ai-rewrite-v1 通用尾段
+    "在第1天、第3天、第7天分别回顾关键内容",
+    "学完后不看笔记复述",
+    "将所学应用于实际项目或探索",
+    "预计学习时间",
+]
+
+# 第二层：正则模式指纹（ai-rewrite-v1 高频模板句式，100%命中率）
+# 这些正则覆盖 ai-rewrite-v1 的骨架句型，具体概念名被通配
+import re as _re
+TEMPLATE_REGEX_PATTERNS = [
+    # 核心知识点段落的万能句型
+    _re.compile(r"是.{2,30}的核心组成部分之一"),
+    _re.compile(r"在.{2,30}的实践中.{2,50}决定了系统行为的关键特征"),
+    _re.compile(r"当.{2,50}参数或条件发生变化时.{2,50}整体表现会产生显著差异"),
+    _re.compile(r"深入理解.{2,30}需要结合.{2,30}的基本原理进行分析"),
+    # 关键原理分析段落
+    _re.compile(r"的核心在于.{2,80}从理论角度看"),
+    _re.compile(r"明确.{2,30}的边界和适用条件.{2,30}区分它与相近概念的差异"),
+    _re.compile(r"理解.{2,30}内部各要素的相互作用方式"),
+    _re.compile(r"将.{2,30}的原理映射到.{2,30}的实际场景中"),
+    _re.compile(r"如何判断.{2,30}的应用是否超出了其理论适用范围"),
+    # 关键要点段落
+    _re.compile(r"的本质是.{2,80}这是理解整个概念的出发点"),
+    _re.compile(r"真正掌握.{2,30}的标志是能在具体场景中灵活运用并正确判断适用边界"),
+    # 常见误区段落
+    _re.compile(r"与.{2,30}中其他相近概念混为一谈"),
+    _re.compile(r"未充分理解.{2,30}就学习.{2,30}导致基础不牢"),
+    _re.compile(r"虽然入门门槛较低.{2,50}但深入掌握需要理解其设计哲学和内在逻辑"),
+    # 知识衔接段落
+    _re.compile(r"提供了必要的概念基础"),
+    _re.compile(r"在.{2,30}基础上进一步拓展"),
+    # 概述段落
+    _re.compile(r"起到承上启下的作用.{2,30}连接基础概念与高级应用"),
+    _re.compile(r"标志着学习者在该领域达到了重要的能力节点"),
+    _re.compile(r"难度等级\d+/9"),
+    # 学习建议段落
+    _re.compile(r"学完后不看笔记复述.{2,30}的核心要点"),
 ]
 
 
@@ -137,10 +177,20 @@ def score_doc(filepath: Path, subdomain_docs: list[str] = None) -> dict:
     total_lines = max(len(lines), 1)
     template_lines = 0
     for line in lines:
+        is_template = False
+        # 第一层：精确字符串匹配
         for fp in TEMPLATE_FINGERPRINTS:
             if fp in line:
-                template_lines += 1
+                is_template = True
                 break
+        # 第二层：正则模式匹配（仅在第一层未命中时检查）
+        if not is_template:
+            for rx in TEMPLATE_REGEX_PATTERNS:
+                if rx.search(line):
+                    is_template = True
+                    break
+        if is_template:
+            template_lines += 1
     
     # 同子域相似度补充检测
     if subdomain_docs and len(subdomain_docs) > 0:
@@ -177,48 +227,90 @@ def score_doc(filepath: Path, subdomain_docs: list[str] = None) -> dict:
     result["dim1_specificity"] = min(specificity_score, 100)
 
     # ── 维度2: 信息密度 (25%) ──
-    plain_len = len(plain)
-    if plain_len < 300:
+    # v2.0: 信息密度 = 非模板纯文本字符数
+    # 模板行约占 template_lines * avg_chars_per_line，需要扣除
+    avg_line_chars = len(plain) / max(total_lines, 1)
+    effective_chars = max(0, len(plain) - int(template_lines * avg_line_chars))
+    plain_len = effective_chars
+    if plain_len < 200:
         density_score = 0
-    elif plain_len < 800:
-        density_score = int(50 * (plain_len - 300) / 500)
-    elif plain_len < 2000:
-        density_score = int(50 + 50 * (plain_len - 800) / 1200)
+    elif plain_len < 600:
+        density_score = int(40 * (plain_len - 200) / 400)
+    elif plain_len < 1500:
+        density_score = int(40 + 60 * (plain_len - 600) / 900)
     else:
         density_score = 100
     
     result["dim2_density"] = density_score
 
     # ── 维度3: 来源可信度 (20%) ──
+    # v2.0: 只在正文中检测（排除YAML frontmatter），且排除假引用模板句
     has_sources = "sources:" in content.lower() or "source:" in content.lower()
-    has_textbook = bool(re.search(r"(教科书|textbook|et al\.|edition|ISBN)", content, re.I))
-    has_wiki = bool(re.search(r"(wikipedia|维基|百科)", content, re.I))
-    has_paper = bool(re.search(r"(arXiv|论文|paper|doi:|IEEE|ACM)", content, re.I))
+    # 假引用模板句（ai-rewrite-v1常见）
+    FAKE_SOURCE_PATTERNS = [
+        re.compile(r"相关教科书中关于.+的章节可作为.+参考"),
+        re.compile(r"建议参考.+相关教材"),
+        re.compile(r"可参考.+领域的权威教材"),
+    ]
+    # 在正文中查找真实引用
+    has_textbook = bool(re.search(r"(et al\.|(\d{4}|\d+th)\s*ed[\.\w]|ISBN[\s:-]*\d|《.+》.*出版)", body, re.I))
+    has_wiki = bool(re.search(r"(wikipedia\.org|维基百科)", body, re.I))
+    has_paper = bool(re.search(r"(arXiv[:\s]\d|doi:\s*10\.|IEEE\s+Trans|ACM\s+\w+|ICML|NeurIPS|ICLR)", body, re.I))
+    # 检测是否有具体引用格式 [Author, Year] 或 (Author et al., Year)
+    has_citation_format = bool(re.search(r"(\[\w+,?\s*\d{4}\]|\(\w+\s+et al\.,?\s*\d{4}\))", body))
     
     source_score = 0
-    if has_textbook or has_paper:
+    if has_paper or has_citation_format:
         source_score = 100
+    elif has_textbook:
+        source_score = 80
     elif has_wiki:
-        source_score = 50
+        source_score = 40
     elif has_sources:
-        source_score = 30
+        source_score = 15
     # 纯AI无来源 = 0
     
     result["dim3_sources"] = source_score
     result["has_sources"] = has_sources
     result["has_textbook"] = has_textbook
+    result["has_paper"] = has_paper
+    result["has_citation"] = has_citation_format
 
     # ── 维度4: 结构完整度 (15%) ──
+    # v2.0: 检查章节数 + 章节下的实际内容量（排除空壳标题）
     sections = re.findall(r"^##\s+.+", body, re.MULTILINE)
     subsections = re.findall(r"^###\s+.+", body, re.MULTILINE)
     total_sections = len(sections) + len(subsections)
     
-    if total_sections <= 2:
+    # 计算有实质内容的章节数（标题下至少有100字非模板内容）
+    section_splits = re.split(r"^(#{2,3}\s+.+)$", body, flags=re.MULTILINE)
+    substantive_sections = 0
+    for i in range(1, len(section_splits) - 1, 2):
+        section_body = section_splits[i + 1] if i + 1 < len(section_splits) else ""
+        section_plain = strip_markdown_formatting(section_body)
+        # 排除模板行
+        sec_lines = [l.strip() for l in section_body.split("\n") if len(l.strip()) > 15]
+        sec_template = 0
+        for sl in sec_lines:
+            for fp in TEMPLATE_FINGERPRINTS:
+                if fp in sl:
+                    sec_template += 1
+                    break
+            else:
+                for rx in TEMPLATE_REGEX_PATTERNS:
+                    if rx.search(sl):
+                        sec_template += 1
+                        break
+        non_template_chars = len(section_plain) - sec_template * 30  # rough estimate
+        if non_template_chars > 100:
+            substantive_sections += 1
+    
+    if substantive_sections <= 1:
         structure_score = 0
-    elif total_sections <= 4:
-        structure_score = 50
-    elif total_sections <= 6:
-        structure_score = 75
+    elif substantive_sections <= 3:
+        structure_score = 40
+    elif substantive_sections <= 5:
+        structure_score = 70
     else:
         structure_score = 100
     
@@ -373,7 +465,7 @@ def generate_report(results: list) -> dict:
     
     report = {
         "_generated": datetime.now().isoformat(),
-        "_version": "scorer-v1.0",
+        "_version": "scorer-v2.0",
         "total_docs": len(results),
         "avg_score": round(total_score / len(results), 1),
         "tier_distribution": tier_counts,
@@ -426,7 +518,7 @@ def main():
     parser.add_argument("--output", type=str, default=None, help="Output JSON path")
     args = parser.parse_args()
     
-    print(f"RAG Quality Scorer v1.0")
+    print(f"RAG Quality Scorer v2.0")
     print(f"RAG Root: {RAG_ROOT}")
     print(f"Target: {'all domains' if not args.domain else args.domain}")
     print()
