@@ -5,14 +5,16 @@ from pathlib import Path
 
 ROOT = Path(r'D:\EchoAgent\projects\ai-knowledge-graph')
 files = [
-    'data/rag/game-design/feedback-systems/feedback-intro.md',
-    'data/rag/level-design/lighting-narrative/lighting-intro.md',
-    'data/rag/game-design/social-systems/social-design-intro.md',
-    'data/rag/writing/revision-craft/revision-overview.md',
-    'data/rag/level-design/terrain-design/terrain-intro.md',
-    'data/rag/game-design/design-docs/design-doc-intro.md',
-    'data/rag/writing/academic-writing/academic-overview.md',
-    'data/rag/game-engine/resource-management/resource-mgmt-intro.md',
+    'data/rag/programming-basics/recursion.md',
+    'data/rag/game-design/player-psychology/player-motivation.md',
+    'data/rag/level-design/guidance-design/guidance-intro.md',
+    'data/rag/game-design/difficulty-curve/difficulty-overview.md',
+    'data/rag/game-engine/physics-engine/physics-engine-intro.md',
+    'data/rag/game-engine/animation-system/skeleton-system.md',
+    'data/rag/3d-art/3da-prop-intro.md',
+    'data/rag/english/writing-en/essay-structure.md',
+    'data/rag/computer-graphics/anti-aliasing/cg-taa.md',
+    'data/rag/mathematics/statistics/linear-regression.md',
 ]
 
 for f in files:
