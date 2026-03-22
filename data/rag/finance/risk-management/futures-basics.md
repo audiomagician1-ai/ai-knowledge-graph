@@ -10,11 +10,11 @@ tags: ["衍生品"]
 
 # Quality Metadata (Schema v2)
 content_version: 4
-quality_tier: "pending-rescore"
-quality_score: 11.2
+quality_tier: "S"
+quality_score: 81.9
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.125
-last_scored: "2026-03-21"
+unique_content_ratio: 0.933
+last_scored: "2026-03-22"
 
 sources:
   - type: "encyclopedia"
@@ -25,6 +25,7 @@ sources:
     url: "https://www.cmegroup.com/education/courses/introduction-to-futures/get-to-know-futures-expiration-and-settlement"
   - type: "textbook"
     ref: "Hull, J.C. Options, Futures, and Other Derivatives, 11th ed. Pearson, 2021. Ch.1-2."
+scorer_version: "scorer-v2.0"
 ---
 # 期货基础
 

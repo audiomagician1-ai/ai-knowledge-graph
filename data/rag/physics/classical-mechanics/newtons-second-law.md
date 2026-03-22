@@ -10,16 +10,17 @@ tags: ["里程碑"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 33.3
+quality_tier: "C"
+quality_score: 38.5
 generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-03-21"
+unique_content_ratio: 0.344
+last_scored: "2026-03-22"
 sources:
   - type: "textbook"
     ref: "Halliday, Resnick & Walker. Fundamentals of Physics, 12th ed. Ch.5"
   - type: "textbook"
     ref: "Kleppner & Kolenkow. An Introduction to Mechanics, 2nd ed. Ch.2-3"
+scorer_version: "scorer-v2.0"
 ---
 # 牛顿第二定律
 

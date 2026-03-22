@@ -10,15 +10,16 @@ tags: ["interaction-feedback", "选择状态反馈"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 47.9
+quality_tier: "B"
+quality_score: 49.4
 generation_method: "ai-rewrite-v1"
-unique_content_ratio: 0.824
-last_scored: "2026-03-21"
+unique_content_ratio: 0.448
+last_scored: "2026-03-22"
 sources:
   - type: "ai-generated"
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
+scorer_version: "scorer-v2.0"
 ---
 # 选择状态反馈
 

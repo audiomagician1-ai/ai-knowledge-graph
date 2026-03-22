@@ -10,11 +10,11 @@ tags: ["统计"]
 
 # Quality Metadata (Schema v2)
 content_version: 4
-quality_tier: "pending-rescore"
-quality_score: 11.2
+quality_tier: "S"
+quality_score: 84.6
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.125
-last_scored: "2026-03-21"
+unique_content_ratio: 1.0
+last_scored: "2026-03-22"
 
 sources:
   - type: "encyclopedia"
@@ -23,6 +23,7 @@ sources:
   - type: "encyclopedia"
     ref: "Wikipedia - Autocorrelation"
     url: "https://en.wikipedia.org/wiki/Autocorrelation"
+scorer_version: "scorer-v2.0"
 ---
 # 时间序列分析
 

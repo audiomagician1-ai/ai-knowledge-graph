@@ -10,15 +10,16 @@ tags: ["LLM", "对齐"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 55.3
+quality_tier: "B"
+quality_score: 43.6
 generation_method: "ai-rewrite-v1"
-unique_content_ratio: 0.821
-last_scored: "2026-03-21"
+unique_content_ratio: 0.394
+last_scored: "2026-03-22"
 sources:
   - type: "ai-generated"
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
+scorer_version: "scorer-v2.0"
 ---
 # RLHF人类反馈强化学习
 

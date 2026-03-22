@@ -10,11 +10,11 @@ tags: ["核心"]
 
 # Quality Metadata (Schema v2)
 content_version: 3
-quality_tier: "pending-rescore"
-quality_score: 13.2
+quality_tier: "S"
+quality_score: 84.6
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.111
-last_scored: "2026-03-21"
+unique_content_ratio: 1.0
+last_scored: "2026-03-22"
 
 sources:
   - type: "encyclopedia"
@@ -23,6 +23,7 @@ sources:
   - type: "encyclopedia"
     ref: "Wikipedia - On the Origin of Species"
     url: "https://en.wikipedia.org/wiki/On_the_Origin_of_Species"
+scorer_version: "scorer-v2.0"
 ---
 # 自然选择
 

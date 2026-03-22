@@ -10,11 +10,11 @@ tags: ["核酸"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 14.0
+quality_tier: "A"
+quality_score: 73.0
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.091
-last_scored: "2026-03-21"
+unique_content_ratio: 1.0
+last_scored: "2026-03-22"
 
 sources:
   - type: "encyclopedia"
@@ -26,6 +26,7 @@ sources:
   - type: "educational"
     ref: "Khan Academy - Molecular mechanism of DNA replication"
     url: "https://www.khanacademy.org/science/ap-biology/gene-expression-and-regulation/replication/a/molecular-mechanism-of-dna-replication"
+scorer_version: "scorer-v2.0"
 ---
 # DNA复制
 

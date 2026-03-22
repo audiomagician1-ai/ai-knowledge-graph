@@ -10,11 +10,11 @@ tags: ["工具"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 17.9
+quality_tier: "A"
+quality_score: 79.6
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.0
-last_scored: "2026-03-21"
+unique_content_ratio: 1.0
+last_scored: "2026-03-22"
 
 sources:
   - type: "industry-guideline"
@@ -26,6 +26,7 @@ sources:
   - type: "industry-article"
     ref: "Keywords Studios - 什么是无障碍化QA (AQA)?"
     url: "https://www.keywordsstudios.com/zh-cn/news/什么是无障碍化qa-aqa/"
+scorer_version: "scorer-v2.0"
 ---
 # 可达性审计
 

@@ -10,16 +10,17 @@ tags: ["里程碑"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 34.2
+quality_tier: "C"
+quality_score: 39.8
 generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-03-21"
+unique_content_ratio: 0.393
+last_scored: "2026-03-22"
 sources:
   - type: "textbook"
     ref: "Halliday, Resnick & Walker. Fundamentals of Physics, 12th ed. Ch.9"
   - type: "textbook"
     ref: "Kleppner & Kolenkow. An Introduction to Mechanics, 2nd ed. Ch.4"
+scorer_version: "scorer-v2.0"
 ---
 # 动量守恒
 

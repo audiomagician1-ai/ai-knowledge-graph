@@ -10,15 +10,16 @@ tags: ["认知"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 12.8
+quality_tier: "B"
+quality_score: 41.9
 generation_method: "ai-rewrite-v1"
-unique_content_ratio: 0.1
-last_scored: "2026-03-21"
+unique_content_ratio: 0.444
+last_scored: "2026-03-22"
 sources:
   - type: "ai-generated"
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
+scorer_version: "scorer-v2.0"
 ---
 # 心理理论
 

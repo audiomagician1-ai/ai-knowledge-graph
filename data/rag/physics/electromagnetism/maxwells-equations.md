@@ -10,16 +10,17 @@ tags: ["里程碑"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 36.0
+quality_tier: "B"
+quality_score: 41.0
 generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-03-21"
+unique_content_ratio: 0.382
+last_scored: "2026-03-22"
 sources:
   - type: "textbook"
     ref: "Griffiths. Introduction to Electrodynamics, 4th ed. Ch.7-9"
   - type: "textbook"
     ref: "Feynman Lectures on Physics, Vol.2 Ch.18"
+scorer_version: "scorer-v2.0"
 ---
 # 麦克斯韦方程组
 

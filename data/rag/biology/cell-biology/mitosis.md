@@ -10,11 +10,11 @@ tags: ["增殖"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 13.5
+quality_tier: "A"
+quality_score: 61.8
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.1
-last_scored: "2026-03-21"
+unique_content_ratio: 1.0
+last_scored: "2026-03-22"
 
 sources:
   - type: "encyclopedia"
@@ -23,6 +23,7 @@ sources:
   - type: "educational"
     ref: "Khan Academy - Phases of mitosis"
     url: "https://www.khanacademy.org/science/biology/cellular-molecular-biology/mitosis/a/phases-of-mitosis"
+scorer_version: "scorer-v2.0"
 ---
 # 有丝分裂
 

@@ -10,11 +10,11 @@ tags: ["经典"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 12.8
+quality_tier: "A"
+quality_score: 70.8
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.111
-last_scored: "2026-03-21"
+unique_content_ratio: 1.0
+last_scored: "2026-03-22"
 
 sources:
   - type: "encyclopedia"
@@ -26,6 +26,7 @@ sources:
   - type: "reference"
     ref: "NHGRI - Mendelian Inheritance"
     url: "https://www.genome.gov/genetics-glossary/Mendelian-Inheritance"
+scorer_version: "scorer-v2.0"
 ---
 # 孟德尔遗传学
 

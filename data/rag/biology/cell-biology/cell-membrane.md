@@ -10,11 +10,11 @@ tags: ["结构"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "pending-rescore"
-quality_score: 13.8
+quality_tier: "S"
+quality_score: 89.3
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.1
-last_scored: "2026-03-21"
+unique_content_ratio: 1.0
+last_scored: "2026-03-22"
 
 sources:
   - type: "encyclopedia"
@@ -29,6 +29,7 @@ sources:
   - type: "textbook-online"
     ref: "LibreTexts Biology - Fluid Mosaic Model (OpenStax/Boundless)"
     url: "https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_(Boundless)/05%3A_Structure_and_Function_of_Plasma_Membranes/5.02%3A_Components_and_Structure_-_Fluid_Mosaic_Model"
+scorer_version: "scorer-v2.0"
 ---
 # 细胞膜
 
