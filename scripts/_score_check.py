@@ -4,10 +4,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 from quality_scorer import score_doc
 
 files = [
-    'data/rag/physics/classical-mechanics/gravitation.md',
-    'data/rag/physics/modern-physics/bohr-model.md',
-    'data/rag/physics/classical-mechanics/energy-conservation.md',
-    'data/rag/biology/cell-biology/mitochondria.md',
+    'data/rag/physics/classical-mechanics/newtons-second-law.md',
+    'data/rag/programming-basics/functions.md',
+    'data/rag/biology/cell-biology/cellular-respiration.md',
 ]
 
 base = Path(r'D:\EchoAgent\projects\ai-knowledge-graph')
