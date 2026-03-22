@@ -9,11 +9,14 @@ import { ChatPanel } from '@/components/chat/ChatPanel';
 import { DraggableModal } from '@/components/common/DraggableModal';
 import { DashboardContent } from '@/components/panels/DashboardContent';
 import { SettingsContent } from '@/components/panels/SettingsContent';
+import { AchievementPanel } from '@/components/panels/AchievementPanel';
+import { useAchievementStore } from '@/lib/store/achievements';
 import {
   Search, X, Star, ChevronRight, Clock, BookOpen, Zap,
   Trophy, Loader, Compass, BarChart3, Settings, Network,
-  Globe, Check, LogIn, User, Home,
+  Globe, Check, LogIn, User, Home, MessageCircle, AlertTriangle,
 } from 'lucide-react';
+import { useSettingsStore } from '@/lib/store/settings';
 import { useAuthStore } from '@/lib/store/auth';
 
 
@@ -36,6 +39,8 @@ export function GraphPage() {
 
   const [showDashboard, setShowDashboard] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showAchievements, setShowAchievements] = useState(false);
+  const { unseenCount: achievementBadge } = useAchievementStore();
   const [recommendations, setRecommendations] = useState<Array<{
     concept_id: string; name: string; difficulty: number;
     estimated_minutes: number; is_milestone: boolean; score: number; reason: string; status: string;
@@ -47,6 +52,9 @@ export function GraphPage() {
   // Auth
   const { user, supabaseConfigured, signOut } = useAuthStore();
   const isLoggedIn = !!user;
+
+  // Settings — detect free API mode
+  const isUsingFreeAPI = useSettingsStore((s) => !s.llmConfig.apiKey?.trim());
 
   // Domain
   const { domains } = useDomainStore();
@@ -290,7 +298,22 @@ export function GraphPage() {
           <HubButton icon={Globe} label="知域" active={showDomainPicker} onClick={() => { setShowDomainPicker(!showDomainPicker); setShowRecommend(false); }} />
 
           {/* Dashboard — icon + 2 chars */}
-          <HubButton icon={BarChart3} label="进度" active={showDashboard} onClick={() => { setShowDashboard(!showDashboard); setShowSettings(false); }} />
+          <HubButton icon={BarChart3} label="进度" active={showDashboard} onClick={() => { setShowDashboard(!showDashboard); setShowSettings(false); setShowAchievements(false); }} />
+
+          {/* Achievements — icon + badge */}
+          <div style={{ position: 'relative' }}>
+            <HubButton icon={Trophy} label="成就" active={showAchievements} onClick={() => { setShowAchievements(!showAchievements); setShowDashboard(false); setShowSettings(false); }} />
+            {achievementBadge > 0 && (
+              <span style={{
+                position: 'absolute', top: 2, right: 4,
+                width: 16, height: 16, borderRadius: '50%',
+                backgroundColor: 'var(--color-accent-rose)',
+                color: '#fff', fontSize: 10, fontWeight: 700,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                lineHeight: 1,
+              }}>{achievementBadge > 9 ? '9+' : achievementBadge}</span>
+            )}
+          </div>
 
           {/* Recommend — center, prominent */}
           <button onClick={() => {
@@ -305,7 +328,7 @@ export function GraphPage() {
           </button>
 
           {/* Settings — icon + 2 chars */}
-          <HubButton icon={Settings} label="设置" active={showSettings} onClick={() => { setShowSettings(!showSettings); setShowDashboard(false); }} />
+          <HubButton icon={Settings} label="设置" active={showSettings} onClick={() => { setShowSettings(!showSettings); setShowDashboard(false); setShowAchievements(false); }} />
 
           {/* User / Login — icon + 2 chars */}
           {supabaseConfigured && isLoggedIn ? (
@@ -313,7 +336,38 @@ export function GraphPage() {
           ) : (
             <HubButton icon={LogIn} label="登录" active={false} onClick={() => navigate('/login')} />
           )}
+
+          {/* Social / Community — placeholder for future social module */}
+          <HubButton icon={MessageCircle} label="交流" active={false} onClick={() => {
+            // TODO: Open social/community panel when implemented
+          }} />
         </div>
+
+        {/* Free API warning banner */}
+        {isUsingFreeAPI && (
+          <div
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap flex items-center gap-2 rounded-full animate-fade-in"
+            style={{
+              padding: '6px 16px',
+              background: 'rgba(245, 158, 11, 0.12)',
+              backdropFilter: 'blur(12px)',
+              border: '1px solid rgba(245, 158, 11, 0.25)',
+              fontSize: 12,
+              color: 'var(--color-accent-amber)',
+              fontWeight: 500,
+            }}
+          >
+            <AlertTriangle size={13} />
+            <span>正在使用免费 API，质量和稳定性可能不佳</span>
+            <button
+              onClick={() => { setShowSettings(true); setShowDashboard(false); setShowAchievements(false); }}
+              className="underline font-semibold"
+              style={{ color: 'var(--color-accent-amber)', textUnderlineOffset: 2 }}
+            >
+              去设置
+            </button>
+          </div>
+        )}
 
         {/* ===== DOMAIN PICKER PANEL (above hub) ===== */}
         {showDomainPicker && (
@@ -424,6 +478,9 @@ export function GraphPage() {
       </DraggableModal>
       <DraggableModal open={showSettings} onClose={() => setShowSettings(false)} title="设置" width={520} height={760}>
         <SettingsContent />
+      </DraggableModal>
+      <DraggableModal open={showAchievements} onClose={() => setShowAchievements(false)} title="🏆 成就" width={520} height={680}>
+        <AchievementPanel />
       </DraggableModal>
     </div>
   );

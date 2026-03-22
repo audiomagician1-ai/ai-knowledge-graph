@@ -2,6 +2,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDialogueStore } from '@/lib/store/dialogue';
 import { useLearningStore } from '@/lib/store/learning';
+import { useAchievementStore } from '@/lib/store/achievements';
 import type { AssessmentResult } from '@/lib/store/dialogue';
 import {
   ArrowLeft, Star, Send, BarChart3, Brain, Lightbulb,
@@ -27,6 +28,7 @@ export function LearnPage() {
 
   const isBusy = isStreaming || isAssessing;
   const { startLearning, recordAssessment } = useLearningStore();
+  const { checkNewAchievements } = useAchievementStore();
   const recordedRef = useRef(false);
 
   useEffect(() => {
@@ -43,6 +45,8 @@ export function LearnPage() {
     if (assessment && conceptId && !recordedRef.current) {
       recordedRef.current = true;
       recordAssessment(conceptId, conceptName || conceptId, assessment.overall_score, assessment.mastered);
+      // Check for newly unlocked achievements after assessment
+      checkNewAchievements();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [assessment, conceptId]);

@@ -1,6 +1,7 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 import { useDialogueStore } from '@/lib/store/dialogue';
 import { useLearningStore } from '@/lib/store/learning';
+import { useAchievementStore } from '@/lib/store/achievements';
 import type { AssessmentResult, SavedConversation } from '@/lib/store/dialogue';
 import type { ConceptProgress } from '@/lib/store/learning';
 import { MarkdownRenderer } from './MarkdownRenderer';
@@ -36,6 +37,7 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
   const isBusy = isStreaming || isAssessing;
   const isUserTyping = input.length > 0;
   const { progress, startLearning, recordAssessment, newlyUnlockedIds } = useLearningStore();
+  const { checkNewAchievements } = useAchievementStore();
   const [showCelebration, setShowCelebration] = useState(false);
   // C-01 fix: prevent duplicate recordAssessment calls (same guard as LearnPage)
   const recordedConvRef = useRef<string | null>(null);
@@ -64,6 +66,8 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
     if (assessment && conceptId && conversationId && recordedConvRef.current !== conversationId) {
       recordedConvRef.current = conversationId;
       recordAssessment(conceptId, conceptName || conceptId, assessment.overall_score, assessment.mastered);
+      // Check for newly unlocked achievements after assessment
+      checkNewAchievements();
       if (assessment.mastered) {
         setShowCelebration(true);
         const timer = setTimeout(() => setShowCelebration(false), 4000);

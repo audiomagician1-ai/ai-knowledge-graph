@@ -95,6 +95,72 @@ export async function apiFetchRecommendations(topK = 5, domain?: string): Promis
     return await res.json();
   } catch { return null; }
 }
+// ═══════════════════════════════════════════════
+// Achievement API
+// ═══════════════════════════════════════════════
+
+export interface Achievement {
+  key: string;
+  category: string;
+  name: string;
+  description: string;
+  icon: string;
+  tier: 'bronze' | 'silver' | 'gold' | 'platinum';
+  unlocked: boolean;
+  progress: number;      // 0-100
+  unlocked_at?: number;  // unix timestamp
+  seen?: boolean;
+}
+
+export interface AchievementsResponse {
+  summary: {
+    total: number;
+    unlocked: number;
+    categories: Record<string, { total: number; unlocked: number }>;
+  };
+  achievements: Achievement[];
+}
+
+export interface RecentAchievementsResponse {
+  unseen_count: number;
+  achievements: Array<{
+    key: string;
+    name: string;
+    icon: string;
+    tier: string;
+    unlocked_at: number;
+  }>;
+}
+
+/** GET /api/learning/achievements — full achievement catalog with status */
+export async function apiFetchAchievements(): Promise<AchievementsResponse | null> {
+  try {
+    const res = await fetch(`${API_BASE}/learning/achievements`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+/** GET /api/learning/achievements/recent — unseen newly unlocked achievements */
+export async function apiFetchRecentAchievements(): Promise<RecentAchievementsResponse | null> {
+  try {
+    const res = await fetch(`${API_BASE}/learning/achievements/recent`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+/** POST /api/learning/achievements/seen — mark achievements as seen */
+export async function apiMarkAchievementsSeen(keys: string[]): Promise<void> {
+  try {
+    await fetch(`${API_BASE}/learning/achievements/seen`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keys }),
+    });
+  } catch { /* fire-and-forget */ }
+}
+
 export async function apiSyncToBackend(data: {
   progress: Record<string, any>;
   history: any[];

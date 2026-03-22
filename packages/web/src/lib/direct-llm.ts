@@ -603,7 +603,47 @@ export function parseChoicesFromContent(text: string): { content: string; choice
     return { content, choices: [] };
   }
 
+  // Fallback: detect trailing bullet-point options when LLM doesn't use ```choices block
+  // Patterns: "你想了解：\n- option1？\n- option2？" or similar
+  const fallbackChoices = parseBulletChoices(text);
+  if (fallbackChoices) return fallbackChoices;
+
   return { content: text.trim(), choices: [] };
+}
+
+/** Fallback parser: extract choices from trailing bullet-point lists.
+ *  Detects patterns like:
+ *  - "你想了解：\n- xxx？\n- yyy？\n- zzz？"
+ *  - "你可以选择：\n· xxx\n· yyy"
+ *  - End-of-message bullet list with question marks
+ */
+function parseBulletChoices(text: string): { content: string; choices: Array<{ id: string; text: string; type: string }> } | null {
+  // Match trailing section with bullet points (-, ·, •, *, 1. 2. etc.)
+  // The trigger line is optional ("你想了解：" etc.)
+  const trailingBulletPattern = /(?:^|\n)((?:你想(?:了解|知道)|接下来|你(?:可以)?选择|你(?:更)?想)[^\n]{0,20}[：:]\s*\n)?((?:\s*[-·•*]\s+.+(?:\n|$)){2,5})\s*$/;
+  const match = text.match(trailingBulletPattern);
+  if (!match) return null;
+
+  const bulletSection = match[2];
+  const triggerLine = match[1] || '';
+  const bullets = bulletSection
+    .split('\n')
+    .map(l => l.replace(/^\s*[-·•*]\s+/, '').trim())
+    .filter(l => l.length >= 2 && l.length <= 60);
+
+  if (bullets.length < 2) return null;
+
+  // Remove the bullet section (and trigger line) from visible content
+  const endIdx = text.lastIndexOf(triggerLine + bulletSection);
+  const content = (endIdx > 0 ? text.slice(0, endIdx) : text.replace(triggerLine + bulletSection, '')).trim();
+
+  const choices = bullets.slice(0, 4).map((b, i) => ({
+    id: `opt-${i + 1}`,
+    text: b.replace(/[？?]$/, ''),
+    type: b.includes('了解') || b.includes('什么') || b.includes('如何') || b.includes('为什么') ? 'explore' as const : 'answer' as const,
+  }));
+
+  return { content, choices };
 }
 
 /** Apply sliding window to messages array — keep system prompt separate */
