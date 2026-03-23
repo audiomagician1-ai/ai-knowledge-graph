@@ -9,85 +9,99 @@ is_milestone: false
 tags: ["核心"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "C"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 39.5
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v1"
 unique_content_ratio: 0.379
 last_scored: "2026-03-22"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
 ---
 # 主谓一致
 
 ## 概述
 
-主谓一致（Subject Verb Agreement）是英语（English Language）中基础语法领域的核心里程碑概念。难度等级3/9（初级）。
+主谓一致（Subject-Verb Agreement）是指句子中的谓语动词必须在人称和数上与主语保持一致的语法规则。最基本的表现形式是：单数主语搭配单数动词形式，复数主语搭配复数动词形式。例如，"She **runs** every morning"中第三人称单数主语"she"要求动词加"-s"，而"They **run** every morning"中复数主语"they"则使用动词原形。
 
-单数/复数主语与动词的一致规则。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+这一规则在英语语法史上可追溯至古英语时期，彼时动词屈折变化极为丰富，不同人称对应不同词尾。现代英语简化后，主谓一致最显眼的标志只剩下一般现在时第三人称单数动词加"-s/-es"，以及"be"动词的多种形态（am/is/are/was/were）。
 
-在知识体系中，主谓一致建立在名词、be动词的基础之上，是理解时态一致性的关键前置知识。为什么主谓一致如此重要？因为它在基础语法中起到承上启下的作用，连接基础概念与高级应用。
+主谓一致之所以重要，是因为违反该规则会被英语母语者立刻察觉为语法错误。中文没有动词随主语变形的机制，因此中国学生极容易在"He go to school"这类句子中犯错，必须通过专项训练来建立正确的语感。
 
-## 核心知识点
+---
 
-### 1. 单数/复数主语
+## 核心原理
 
-单数/复数主语是主谓一致(Subject Verb Agreement)的核心组成部分之一。在基础语法的实践中，单数/复数主语决定了系统行为的关键特征。例如，当单数/复数主语参数或条件发生变化时，整体表现会产生显著差异。深入理解单数/复数主语需要结合英语的基本原理进行分析。
+### 一般现在时的"-s/-es"规则
 
-### 2. 动词的一致规则
+当主语为第三人称单数（he, she, it，或可替换为这三者的名词）时，一般现在时动词需加"-s"或"-es"：
+- 一般情况加"-s"：runs, plays, eats
+- 以-o, -ch, -sh, -x, -s结尾的动词加"-es"：goes, watches, washes, fixes, passes
+- 辅音字母+y结尾，变y为i再加"-es"：studies, flies
 
-动词的一致规则是主谓一致(Subject Verb Agreement)的核心组成部分之一。在基础语法的实践中，动词的一致规则决定了系统行为的关键特征。例如，当动词的一致规则参数或条件发生变化时，整体表现会产生显著差异。深入理解动词的一致规则需要结合英语的基本原理进行分析。
+"be"动词是主谓一致规则中变化最复杂的动词，共有8种形态，其中现在时：I am / He·She·It **is** / You·We·They **are**；过去时：I·He·She·It **was** / You·We·They **were**。记住这张表是掌握主谓一致的基础。
 
+### 就近原则与就远原则
 
-### 关键原理分析
+英语中有两套相互竞争的规则，需要分场合使用：
 
-主谓一致的核心在于单数/复数主语与动词的一致规则。从理论角度看，该概念涉及以下层面：
+**就近原则**适用于"either...or..."、"neither...nor..."、"not only...but also..."等并列连词连接两个不同数的主语时，动词与**最近的主语**保持一致：
+> Neither the students nor the teacher **is** in the classroom.
+> Neither the teacher nor the students **are** in the classroom.
 
-1. **定义层**：明确主谓一致的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解主谓一致内部各要素的相互作用方式
-3. **应用层**：将主谓一致的原理映射到英语的实际场景中
+**就远原则**适用于"as well as""together with""along with"等短语插入时，动词与**原主语**（最远的名词）一致，这类短语在语法上不是并列而是附加：
+> The president, as well as his advisers, **is** attending the meeting.
 
-思考题：如何判断主谓一致的应用是否超出了其理论适用范围？
+混淆这两种原则是中国学生最常见的失分点之一。
 
-## 关键要点
+### 特殊主语的数判断
 
-1. **核心定义**：主谓一致的本质是单数/复数主语与动词的一致规则，这是理解整个概念的出发点
-2. **多维理解**：掌握主谓一致需要同时理解单数/复数主语和动词的一致规则等关键维度
-3. **先修关系**：扎实的名词基础对理解主谓一致至关重要
-4. **进阶路径**：掌握后可继续深入时态一致性等进阶主题
-5. **实践标准**：真正掌握主谓一致的标志是能在具体场景中灵活运用并正确判断适用边界
+以下几类主语需要特别记忆：
+
+**集合名词**：family, team, class, committee等既可接单数动词（强调整体）也可接复数动词（强调成员），但美式英语更倾向单数：
+> The team **is** ready.（美式）/ The team **are** ready.（英式）
+
+**不定代词**：everyone, somebody, each, either, neither永远接**单数**动词，尽管语义上可能指多人：
+> Everyone in the two classes **has** submitted the assignment.
+
+**以"-s"结尾但含义为单数的名词**：news, mathematics, physics, economics接**单数**动词：
+> The news **is** shocking.
+
+**"a number of" vs "the number of"**：前者表示"许多"接**复数**，后者表示"数目"接**单数**：
+> A number of students **were** absent. / The number of students **is** increasing.
+
+---
+
+## 实际应用
+
+**考试填空题**：主谓一致是中国高考英语和英语四六级中单项填空的高频考点。例如典型题型："The committee \_\_\_ (has/have) reached a decision"，需判断集合名词的数。
+
+**写作中的长距离主谓一致**：当主语和动词之间插入较长修饰语时，学生容易被就近的名词干扰。如：
+> The quality of the products in our three overseas factories **needs** improvement.
+此处谓语应与主语"quality"一致，而非与最近的复数名词"factories"一致。
+
+**口语纠错**：在英语口语中，"There is/are"句型是主谓一致的高频错误区。正确用法：There **is** a book and two pens（就近原则，与最近的"a book"一致）；There **are** two pens and a book（同理）。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将主谓一致与基础语法中其他相近概念混为一谈。例如，单数/复数主语的适用条件与其他动词的一致规则概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解名词就学习主谓一致，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：主谓一致虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：把"-s"结尾的名词一律当复数**
+学生看到"news""physics""economics"等词尾有"-s"便误用复数动词。实际上这些词是不可数名词或学科名称，始终接单数动词。同类陷阱还包括"a pair of trousers **is**..."——逻辑主语是"a pair"而非"trousers"。
 
-## 知识衔接
+**误区二：each/every修饰的名词接复数动词**
+"Each student and each teacher **has** a badge"——尽管涉及多人，but "each"强调逐一，因此不论后面有多少名词被"each/every"修饰，谓语一律用单数。许多学生因语义直觉误用"have"。
 
-### 先修知识
-先修知识包括：
-- **名词** — 为主谓一致提供了必要的概念基础
-- **be动词** — 为主谓一致提供了必要的概念基础
+**误区三：关系从句中的主谓一致混乱**
+在"one of those students who **are** always late"中，定语从句修饰的先行词是复数"students"，故用"are"；但"the only one of those students who **is** always late"中，先行词实际是单数"the only one"，故用"is"。这两个结构仅一词之差，却导致截然不同的谓语形式。
 
-### 后续学习
-掌握主谓一致后可继续学习：
-- **时态一致性** — 在主谓一致基础上进一步拓展
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：1-2小时。建议采用以下策略：
+**前置知识——名词的数与be动词**：判断主谓一致的第一步是准确识别名词是可数还是不可数、单数还是复数。只有在对名词分类熟练的基础上，才能快速判断谓语形式。"be"动词的am/is/are/was/were变化表本身就是主谓一致规则的直接体现，它是学习主谓一致的最初切入点。
 
-- **主动回忆**：学完后不看笔记复述主谓一致的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将主谓一致与英语中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释主谓一致，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于基础语法的章节可作为深入参考
-- Wikipedia: [Subject Verb Agreement](https://en.wikipedia.org/wiki/subject_verb_agreement) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Subject Verb Agreement" 可找到配套视频教程
+**后续知识——时态一致性（Sequence of Tenses）**：主谓一致解决了"动词形态与主语数和人称的匹配"问题，而时态一致性进一步要求在复合句或语篇中，主从句的时态之间要保持逻辑上的协调关系（如主句用过去时则从句通常也用过去时）。掌握主谓一致是学习时态一致性的直接前提，因为学生必须先能在单句层面正确写出动词形式，才能在多句层面处理时态的呼应关系。

@@ -1,0 +1,1253 @@
+[
+  {
+    "concept": "supervised-learning",
+    "domain": "ai-engineering",
+    "name": "监督学习",
+    "status": "ok",
+    "body_chars": 3304,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T22:46:13.694740"
+  },
+  {
+    "concept": "structural-transformation",
+    "domain": "economics",
+    "name": "结构转型",
+    "status": "ok",
+    "body_chars": 3833,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T22:47:26.617658"
+  },
+  {
+    "concept": "hash-table",
+    "domain": "ai-engineering",
+    "name": "哈希表",
+    "status": "ok",
+    "body_chars": 4273,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T22:48:23.386681"
+  },
+  {
+    "concept": "deep-learning-intro",
+    "domain": "ai-engineering",
+    "name": "深度学习入门",
+    "status": "ok",
+    "body_chars": 4409,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:07:29.797390"
+  },
+  {
+    "concept": "loss-functions",
+    "domain": "ai-engineering",
+    "name": "损失函数",
+    "status": "ok",
+    "body_chars": 3971,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:08:27.348333"
+  },
+  {
+    "concept": "decision-tree",
+    "domain": "ai-engineering",
+    "name": "决策树",
+    "status": "ok",
+    "body_chars": 4011,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:09:54.974584"
+  },
+  {
+    "concept": "ml-basics",
+    "domain": "ai-engineering",
+    "name": "机器学习基础",
+    "status": "ok",
+    "body_chars": 5146,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:11:24.022271"
+  },
+  {
+    "concept": "backpropagation",
+    "domain": "ai-engineering",
+    "name": "反向传播",
+    "status": "ok",
+    "body_chars": 3984,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:12:20.363073"
+  },
+  {
+    "concept": "feature-engineering",
+    "domain": "ai-engineering",
+    "name": "特征工程",
+    "status": "ok",
+    "body_chars": 3758,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:13:27.788643"
+  },
+  {
+    "concept": "3da-org-anatomy-basics",
+    "domain": "3d-art",
+    "name": "解剖学基础",
+    "status": "ok",
+    "body_chars": 3597,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:31:45.336921"
+  },
+  {
+    "concept": "quick-sort",
+    "domain": "ai-engineering",
+    "name": "快速排序",
+    "status": "ok",
+    "body_chars": 3628,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:32:39.354746"
+  },
+  {
+    "concept": "interface",
+    "domain": "ai-engineering",
+    "name": "接口",
+    "status": "ok",
+    "body_chars": 4815,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:33:42.750943"
+  },
+  {
+    "concept": "db-indexing",
+    "domain": "ai-engineering",
+    "name": "索引原理与优化",
+    "status": "ok",
+    "body_chars": 5104,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:34:55.891946"
+  },
+  {
+    "concept": "system-design-basics",
+    "domain": "ai-engineering",
+    "name": "系统设计入门",
+    "status": "ok",
+    "body_chars": 4648,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:36:05.224282"
+  },
+  {
+    "concept": "3da-org-anatomy-basics",
+    "domain": "3d-art",
+    "name": "解剖学基础",
+    "status": "ok",
+    "body_chars": 3390,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:37:48.765521"
+  },
+  {
+    "concept": "quick-sort",
+    "domain": "ai-engineering",
+    "name": "快速排序",
+    "status": "ok",
+    "body_chars": 4061,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:38:49.945527"
+  },
+  {
+    "concept": "interface",
+    "domain": "ai-engineering",
+    "name": "接口",
+    "status": "ok",
+    "body_chars": 4053,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:39:45.101272"
+  },
+  {
+    "concept": "db-indexing",
+    "domain": "ai-engineering",
+    "name": "索引原理与优化",
+    "status": "ok",
+    "body_chars": 4448,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:40:46.867940"
+  },
+  {
+    "concept": "system-design-basics",
+    "domain": "ai-engineering",
+    "name": "系统设计入门",
+    "status": "ok",
+    "body_chars": 4389,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:41:53.013531"
+  },
+  {
+    "concept": "input-mapping",
+    "domain": "game-engine",
+    "name": "输入映射",
+    "status": "ok",
+    "body_chars": 3929,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:47:35.816651"
+  },
+  {
+    "concept": "show-dont-tell",
+    "domain": "writing",
+    "name": "展示而非告知",
+    "status": "ok",
+    "body_chars": 3052,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:48:49.011150"
+  },
+  {
+    "concept": "flow-testing",
+    "domain": "level-design",
+    "name": "流程测试",
+    "status": "ok",
+    "body_chars": 3109,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:50:24.319935"
+  },
+  {
+    "concept": "combat-space-intro",
+    "domain": "level-design",
+    "name": "战斗空间概述",
+    "status": "ok",
+    "body_chars": 3789,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:52:06.873655"
+  },
+  {
+    "concept": "arena-layout",
+    "domain": "level-design",
+    "name": "竞技场布局",
+    "status": "ok",
+    "body_chars": 3692,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:53:25.616718"
+  },
+  {
+    "concept": "terrain-optimization",
+    "domain": "level-design",
+    "name": "地形优化",
+    "status": "ok",
+    "body_chars": 4906,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:55:08.975166"
+  },
+  {
+    "concept": "light-probe",
+    "domain": "level-design",
+    "name": "光照探针",
+    "status": "ok",
+    "body_chars": 3897,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:56:18.561872"
+  },
+  {
+    "concept": "systems-of-equations",
+    "domain": "mathematics",
+    "name": "方程组",
+    "status": "ok",
+    "body_chars": 3633,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:57:08.437339"
+  },
+  {
+    "concept": "mathematical-induction",
+    "domain": "mathematics",
+    "name": "数学归纳法",
+    "status": "ok",
+    "body_chars": 4046,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:58:07.637490"
+  },
+  {
+    "concept": "non-euclidean-intro",
+    "domain": "mathematics",
+    "name": "非欧几何初步",
+    "status": "ok",
+    "body_chars": 3276,
+    "validation_issues": [],
+    "timestamp": "2026-03-23T23:59:09.400137"
+  },
+  {
+    "concept": "linear-independence",
+    "domain": "mathematics",
+    "name": "线性无关",
+    "status": "ok",
+    "body_chars": 4542,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:00:45.329497"
+  },
+  {
+    "concept": "random-variables",
+    "domain": "mathematics",
+    "name": "随机变量",
+    "status": "ok",
+    "body_chars": 3887,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:01:34.691446"
+  },
+  {
+    "concept": "conditional-expectation",
+    "domain": "mathematics",
+    "name": "条件期望",
+    "status": "ok",
+    "body_chars": 4597,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:02:29.946074"
+  },
+  {
+    "concept": "sampling-distributions",
+    "domain": "mathematics",
+    "name": "抽样分布",
+    "status": "ok",
+    "body_chars": 4779,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:03:29.093050"
+  },
+  {
+    "concept": "bayesian-statistics",
+    "domain": "mathematics",
+    "name": "贝叶斯统计",
+    "status": "ok",
+    "body_chars": 4403,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:04:35.222056"
+  },
+  {
+    "concept": "mn-lb-room-creation",
+    "domain": "multiplayer-network",
+    "name": "房间创建",
+    "status": "ok",
+    "body_chars": 4610,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:05:51.421611"
+  },
+  {
+    "concept": "mental-models",
+    "domain": "psychology",
+    "name": "心理模型",
+    "status": "ok",
+    "body_chars": 3177,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:06:51.225759"
+  },
+  {
+    "concept": "infant-development",
+    "domain": "psychology",
+    "name": "婴儿期发展",
+    "status": "ok",
+    "body_chars": 3610,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:08:03.060724"
+  },
+  {
+    "concept": "token-economy",
+    "domain": "psychology",
+    "name": "代币经济",
+    "status": "ok",
+    "body_chars": 3074,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:09:06.660154"
+  },
+  {
+    "concept": "reliability-validity",
+    "domain": "psychology",
+    "name": "信度与效度",
+    "status": "ok",
+    "body_chars": 3808,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:10:07.650596"
+  },
+  {
+    "concept": "vfx-fluid-foam",
+    "domain": "vfx",
+    "name": "泡沫与飞溅",
+    "status": "ok",
+    "body_chars": 3711,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:11:25.825272"
+  },
+  {
+    "concept": "vfx-pp-film-grain",
+    "domain": "vfx",
+    "name": "胶片颗粒",
+    "status": "ok",
+    "body_chars": 3775,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:12:28.608918"
+  },
+  {
+    "concept": "anim-joint-hierarchy",
+    "domain": "animation",
+    "name": "关节层级",
+    "status": "ok",
+    "body_chars": 3484,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:13:29.335647"
+  },
+  {
+    "concept": "anim-walk-cycle",
+    "domain": "animation",
+    "name": "行走循环",
+    "status": "ok",
+    "body_chars": 3537,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:14:36.623929"
+  },
+  {
+    "concept": "cardiovascular-system",
+    "domain": "biology",
+    "name": "心血管系统",
+    "status": "ok",
+    "body_chars": 3117,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:15:33.467771"
+  },
+  {
+    "concept": "tense-timeline",
+    "domain": "english",
+    "name": "时态时间线",
+    "status": "ok",
+    "body_chars": 4630,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:17:32.432102"
+  },
+  {
+    "concept": "conditional-sentences",
+    "domain": "english",
+    "name": "条件句",
+    "status": "ok",
+    "body_chars": 3898,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:18:24.992493"
+  },
+  {
+    "concept": "animation-system-intro",
+    "domain": "game-engine",
+    "name": "动画系统概述",
+    "status": "ok",
+    "body_chars": 4027,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:20:23.704043"
+  },
+  {
+    "concept": "audio-middleware",
+    "domain": "game-engine",
+    "name": "音频中间件",
+    "status": "ok",
+    "body_chars": 5131,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:21:42.936989"
+  },
+  {
+    "concept": "spatial-storytelling",
+    "domain": "level-design",
+    "name": "空间叙事原理",
+    "status": "ok",
+    "body_chars": 3422,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:22:49.234819"
+  },
+  {
+    "concept": "anova",
+    "domain": "mathematics",
+    "name": "方差分析",
+    "status": "ok",
+    "body_chars": 4582,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:24:08.788724"
+  },
+  {
+    "concept": "nd-lo-loc-pipeline",
+    "domain": "narrative-design",
+    "name": "本地化管线",
+    "status": "ok",
+    "body_chars": 3665,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:25:15.479506"
+  },
+  {
+    "concept": "definition-of-art",
+    "domain": "philosophy",
+    "name": "艺术的定义",
+    "status": "ok",
+    "body_chars": 3706,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:26:26.239460"
+  },
+  {
+    "concept": "journey-map",
+    "domain": "product-design",
+    "name": "用户旅程图",
+    "status": "ok",
+    "body_chars": 4189,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:27:39.765887"
+  },
+  {
+    "concept": "prototype-testing",
+    "domain": "product-design",
+    "name": "原型测试",
+    "status": "ok",
+    "body_chars": 3162,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:28:44.059094"
+  },
+  {
+    "concept": "conservation-biology",
+    "domain": "biology",
+    "name": "保护生物学",
+    "status": "ok",
+    "body_chars": 3240,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:30:03.038967"
+  },
+  {
+    "concept": "cg-adaptive-quality",
+    "domain": "computer-graphics",
+    "name": "自适应质量",
+    "status": "ok",
+    "body_chars": 3208,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:31:00.145920"
+  },
+  {
+    "concept": "procedural-animation",
+    "domain": "game-engine",
+    "name": "程序化动画",
+    "status": "ok",
+    "body_chars": 3972,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:32:10.577320"
+  },
+  {
+    "concept": "procedural-terrain",
+    "domain": "level-design",
+    "name": "程序化地形",
+    "status": "ok",
+    "body_chars": 4407,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:33:22.835104"
+  },
+  {
+    "concept": "euler-hamilton",
+    "domain": "mathematics",
+    "name": "欧拉路与哈密顿路",
+    "status": "ok",
+    "body_chars": 3592,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:34:14.658690"
+  },
+  {
+    "concept": "spacetime-diagrams",
+    "domain": "physics",
+    "name": "时空图",
+    "status": "ok",
+    "body_chars": 3918,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:36:12.475585"
+  },
+  {
+    "concept": "prejudice-discrimination",
+    "domain": "psychology",
+    "name": "偏见与歧视",
+    "status": "ok",
+    "body_chars": 3159,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:37:10.816248"
+  },
+  {
+    "concept": "social-influence",
+    "domain": "psychology",
+    "name": "社会影响",
+    "status": "ok",
+    "body_chars": 3054,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:38:13.336794"
+  },
+  {
+    "concept": "merge-sort",
+    "domain": "ai-engineering",
+    "name": "归并排序",
+    "status": "ok",
+    "body_chars": 3680,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:39:08.074917"
+  },
+  {
+    "concept": "two-pointers",
+    "domain": "ai-engineering",
+    "name": "双指针",
+    "status": "ok",
+    "body_chars": 4261,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:40:06.357595"
+  },
+  {
+    "concept": "testing-basics",
+    "domain": "ai-engineering",
+    "name": "测试基础",
+    "status": "ok",
+    "body_chars": 4718,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:41:40.064481"
+  },
+  {
+    "concept": "molecular-cloning",
+    "domain": "biology",
+    "name": "分子克隆",
+    "status": "ok",
+    "body_chars": 3219,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:42:40.162112"
+  },
+  {
+    "concept": "extranuclear-inheritance",
+    "domain": "biology",
+    "name": "核外遗传",
+    "status": "ok",
+    "body_chars": 2982,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:43:39.664686"
+  },
+  {
+    "concept": "pharmacogenomics",
+    "domain": "biology",
+    "name": "药物基因组学",
+    "status": "ok",
+    "body_chars": 3752,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:44:52.202404"
+  },
+  {
+    "concept": "microevolution",
+    "domain": "biology",
+    "name": "微观进化",
+    "status": "ok",
+    "body_chars": 3341,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:45:54.104214"
+  },
+  {
+    "concept": "aging-physiology",
+    "domain": "biology",
+    "name": "衰老生理学",
+    "status": "ok",
+    "body_chars": 2934,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:46:58.123541"
+  },
+  {
+    "concept": "niche-theory",
+    "domain": "biology",
+    "name": "生态位理论",
+    "status": "ok",
+    "body_chars": 3295,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:47:55.495062"
+  },
+  {
+    "concept": "plant-anatomy",
+    "domain": "biology",
+    "name": "植物解剖学",
+    "status": "ok",
+    "body_chars": 3223,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:49:02.075713"
+  },
+  {
+    "concept": "cg-scanline",
+    "domain": "computer-graphics",
+    "name": "扫描线转换",
+    "status": "ok",
+    "body_chars": 3438,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:50:02.824573"
+  },
+  {
+    "concept": "cg-ray-generation",
+    "domain": "computer-graphics",
+    "name": "光线生成",
+    "status": "ok",
+    "body_chars": 4350,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:50:54.696741"
+  },
+  {
+    "concept": "cg-photon-mapping",
+    "domain": "computer-graphics",
+    "name": "光子映射",
+    "status": "ok",
+    "body_chars": 3535,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:52:03.559281"
+  },
+  {
+    "concept": "cg-iridescence",
+    "domain": "computer-graphics",
+    "name": "薄膜干涉",
+    "status": "ok",
+    "body_chars": 3718,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:53:11.333034"
+  },
+  {
+    "concept": "cg-dlss",
+    "domain": "computer-graphics",
+    "name": "DLSS",
+    "status": "ok",
+    "body_chars": 3741,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:54:18.328864"
+  },
+  {
+    "concept": "cd-leading-lines",
+    "domain": "concept-design",
+    "name": "引导线",
+    "status": "ok",
+    "body_chars": 3227,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:55:23.681947"
+  },
+  {
+    "concept": "cd-char-turnaround",
+    "domain": "concept-design",
+    "name": "角色三视图",
+    "status": "ok",
+    "body_chars": 3067,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:56:21.974288"
+  },
+  {
+    "concept": "keynesian-revolution",
+    "domain": "economics",
+    "name": "凯恩斯革命",
+    "status": "ok",
+    "body_chars": 3349,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:57:37.468620"
+  },
+  {
+    "concept": "word-stress",
+    "domain": "english",
+    "name": "单词重音",
+    "status": "ok",
+    "body_chars": 4341,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:58:44.777287"
+  },
+  {
+    "concept": "argumentative-writing",
+    "domain": "english",
+    "name": "议论文写作",
+    "status": "ok",
+    "body_chars": 4871,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T00:59:59.657086"
+  },
+  {
+    "concept": "expressing-opinions",
+    "domain": "english",
+    "name": "表达观点",
+    "status": "ok",
+    "body_chars": 4900,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:01:03.355002"
+  },
+  {
+    "concept": "apt-model",
+    "domain": "finance",
+    "name": "套利定价理论",
+    "status": "ok",
+    "body_chars": 3580,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:02:03.925731"
+  },
+  {
+    "concept": "input-prediction",
+    "domain": "game-engine",
+    "name": "输入预测",
+    "status": "ok",
+    "body_chars": 3428,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:03:32.771759"
+  },
+  {
+    "concept": "scripting-intro",
+    "domain": "game-engine",
+    "name": "脚本系统概述",
+    "status": "ok",
+    "body_chars": 3923,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:04:35.790923"
+  },
+  {
+    "concept": "plugin-architecture",
+    "domain": "game-engine",
+    "name": "插件架构",
+    "status": "ok",
+    "body_chars": 4127,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:05:34.943480"
+  },
+  {
+    "concept": "reward-pacing",
+    "domain": "level-design",
+    "name": "奖励节奏",
+    "status": "ok",
+    "body_chars": 3587,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:06:41.927323"
+  },
+  {
+    "concept": "prototype-test",
+    "domain": "level-design",
+    "name": "原型测试",
+    "status": "ok",
+    "body_chars": 3087,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:07:43.343425"
+  },
+  {
+    "concept": "escape-route",
+    "domain": "level-design",
+    "name": "逃生路线",
+    "status": "ok",
+    "body_chars": 3278,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:08:58.850845"
+  },
+  {
+    "concept": "foliage-tool",
+    "domain": "level-design",
+    "name": "植被工具",
+    "status": "ok",
+    "body_chars": 3540,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:09:59.210397"
+  },
+  {
+    "concept": "terrain-collision",
+    "domain": "level-design",
+    "name": "地形碰撞",
+    "status": "ok",
+    "body_chars": 3783,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:11:13.412874"
+  },
+  {
+    "concept": "light-as-guide",
+    "domain": "level-design",
+    "name": "光照引导",
+    "status": "ok",
+    "body_chars": 3283,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:12:22.700320"
+  },
+  {
+    "concept": "mood-lighting",
+    "domain": "level-design",
+    "name": "氛围光照",
+    "status": "ok",
+    "body_chars": 4022,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:13:29.353617"
+  },
+  {
+    "concept": "horror-lighting",
+    "domain": "level-design",
+    "name": "恐怖光照",
+    "status": "ok",
+    "body_chars": 3007,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:15:22.504920"
+  },
+  {
+    "concept": "playtest-report",
+    "domain": "level-design",
+    "name": "测试报告",
+    "status": "ok",
+    "body_chars": 3326,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:16:26.958541"
+  },
+  {
+    "concept": "absolute-value-func",
+    "domain": "mathematics",
+    "name": "绝对值函数",
+    "status": "ok",
+    "body_chars": 3156,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:17:17.601913"
+  },
+  {
+    "concept": "curve-families",
+    "domain": "mathematics",
+    "name": "曲线族与包络线",
+    "status": "ok",
+    "body_chars": 3631,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:18:17.610228"
+  },
+  {
+    "concept": "sufficient-statistics",
+    "domain": "mathematics",
+    "name": "充分统计量",
+    "status": "ok",
+    "body_chars": 4532,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:19:36.977555"
+  },
+  {
+    "concept": "liberalism",
+    "domain": "philosophy",
+    "name": "自由主义",
+    "status": "ok",
+    "body_chars": 3737,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:21:03.322049"
+  },
+  {
+    "concept": "product-metrics",
+    "domain": "product-design",
+    "name": "产品核心指标",
+    "status": "ok",
+    "body_chars": 3933,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:22:11.770694"
+  },
+  {
+    "concept": "nature-nurture",
+    "domain": "psychology",
+    "name": "先天与后天",
+    "status": "ok",
+    "body_chars": 3325,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:23:29.239364"
+  },
+  {
+    "concept": "clinical-overview",
+    "domain": "psychology",
+    "name": "临床心理学概述",
+    "status": "ok",
+    "body_chars": 3582,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:24:34.920085"
+  },
+  {
+    "concept": "neurotransmitters",
+    "domain": "psychology",
+    "name": "神经递质",
+    "status": "ok",
+    "body_chars": 3966,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:26:02.429042"
+  },
+  {
+    "concept": "se-git-basics",
+    "domain": "software-engineering",
+    "name": "Git基础",
+    "status": "ok",
+    "body_chars": 4635,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:27:17.732175"
+  },
+  {
+    "concept": "se-code-smells",
+    "domain": "software-engineering",
+    "name": "代码异味",
+    "status": "ok",
+    "body_chars": 4613,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:28:19.597604"
+  },
+  {
+    "concept": "se-inline-refactor",
+    "domain": "software-engineering",
+    "name": "内联重构",
+    "status": "ok",
+    "body_chars": 3641,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:29:20.363587"
+  },
+  {
+    "concept": "se-update-method",
+    "domain": "software-engineering",
+    "name": "更新方法",
+    "status": "ok",
+    "body_chars": 4318,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:30:42.466794"
+  },
+  {
+    "concept": "se-cmake",
+    "domain": "software-engineering",
+    "name": "CMake",
+    "status": "ok",
+    "body_chars": 5996,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:31:47.137358"
+  },
+  {
+    "concept": "3da-org-body-modeling",
+    "domain": "3d-art",
+    "name": "躯干建模",
+    "status": "ok",
+    "body_chars": 3345,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:33:19.941811"
+  },
+  {
+    "concept": "3da-uv-intro",
+    "domain": "3d-art",
+    "name": "UV展开概述",
+    "status": "ok",
+    "body_chars": 3501,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:34:32.928374"
+  },
+  {
+    "concept": "3da-prop-hero-asset",
+    "domain": "3d-art",
+    "name": "Hero资产",
+    "status": "ok",
+    "body_chars": 4373,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:35:45.956362"
+  },
+  {
+    "concept": "3da-pipe-naming",
+    "domain": "3d-art",
+    "name": "命名规范",
+    "status": "ok",
+    "body_chars": 4232,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:36:48.204294"
+  },
+  {
+    "concept": "anim-anim-graph",
+    "domain": "animation",
+    "name": "动画图",
+    "status": "ok",
+    "body_chars": 4389,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:37:51.994831"
+  },
+  {
+    "concept": "cd-muscle-groups",
+    "domain": "concept-design",
+    "name": "主要肌群",
+    "status": "ok",
+    "body_chars": 3410,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:39:22.148578"
+  },
+  {
+    "concept": "word-families",
+    "domain": "english",
+    "name": "词族",
+    "status": "ok",
+    "body_chars": 4117,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:40:26.406160"
+  },
+  {
+    "concept": "summary-writing",
+    "domain": "writing",
+    "name": "摘要写作",
+    "status": "ok",
+    "body_chars": 2958,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:41:24.615442"
+  },
+  {
+    "concept": "gp-rk-crisis",
+    "domain": "game-production",
+    "name": "危机管理",
+    "status": "ok",
+    "body_chars": 3662,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:42:30.306293"
+  },
+  {
+    "concept": "spherical-trig",
+    "domain": "mathematics",
+    "name": "球面三角",
+    "status": "ok",
+    "body_chars": 4006,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:43:35.061547"
+  },
+  {
+    "concept": "doppler-effect-light",
+    "domain": "physics",
+    "name": "光的多普勒效应",
+    "status": "ok",
+    "body_chars": 3898,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:45:22.294166"
+  },
+  {
+    "concept": "working-memory",
+    "domain": "psychology",
+    "name": "工作记忆",
+    "status": "ok",
+    "body_chars": 3423,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:46:23.222968"
+  },
+  {
+    "concept": "neuroplasticity",
+    "domain": "psychology",
+    "name": "神经可塑性",
+    "status": "ok",
+    "body_chars": 3331,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:48:17.440696"
+  },
+  {
+    "concept": "se-cr-feedback",
+    "domain": "software-engineering",
+    "name": "建设性反馈",
+    "status": "ok",
+    "body_chars": 3772,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:49:23.584016"
+  },
+  {
+    "concept": "imagery-symbolism",
+    "domain": "writing",
+    "name": "意象与象征",
+    "status": "ok",
+    "body_chars": 3395,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:50:38.720135"
+  },
+  {
+    "concept": "clarity-conciseness",
+    "domain": "writing",
+    "name": "清晰与简洁",
+    "status": "ok",
+    "body_chars": 3390,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:51:57.661765"
+  },
+  {
+    "concept": "3da-org-head-modeling",
+    "domain": "3d-art",
+    "name": "头部建模",
+    "status": "ok",
+    "body_chars": 3912,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:53:18.817294"
+  },
+  {
+    "concept": "3da-sculpt-form",
+    "domain": "3d-art",
+    "name": "形体把控",
+    "status": "ok",
+    "body_chars": 3176,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:54:27.723915"
+  },
+  {
+    "concept": "3da-pipe-validation",
+    "domain": "3d-art",
+    "name": "资产验证",
+    "status": "ok",
+    "body_chars": 4176,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:55:43.967946"
+  },
+  {
+    "concept": "binary-search",
+    "domain": "ai-engineering",
+    "name": "二分查找",
+    "status": "ok",
+    "body_chars": 4064,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:56:40.432749"
+  },
+  {
+    "concept": "process-thread",
+    "domain": "ai-engineering",
+    "name": "进程与线程",
+    "status": "ok",
+    "body_chars": 3941,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:58:04.862018"
+  },
+  {
+    "concept": "command-pattern",
+    "domain": "game-engine",
+    "name": "命令模式",
+    "status": "ok",
+    "body_chars": 4443,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T01:59:15.402661"
+  },
+  {
+    "concept": "anim-skin-binding",
+    "domain": "animation",
+    "name": "蒙皮绑定",
+    "status": "ok",
+    "body_chars": 3353,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T02:00:23.833344"
+  },
+  {
+    "concept": "anim-mocap-pipeline",
+    "domain": "animation",
+    "name": "动捕管线",
+    "status": "ok",
+    "body_chars": 3421,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T02:01:31.118573"
+  },
+  {
+    "concept": "anim-lip-sync",
+    "domain": "animation",
+    "name": "口型同步",
+    "status": "ok",
+    "body_chars": 4658,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T02:02:59.253662"
+  },
+  {
+    "concept": "reproductive-system",
+    "domain": "biology",
+    "name": "生殖系统",
+    "status": "ok",
+    "body_chars": 3201,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T02:05:43.146980"
+  },
+  {
+    "concept": "cg-kd-tree",
+    "domain": "computer-graphics",
+    "name": "KD-Tree",
+    "status": "ok",
+    "body_chars": 4447,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T02:06:47.106233"
+  },
+  {
+    "concept": "cg-spectral-rendering",
+    "domain": "computer-graphics",
+    "name": "光谱渲染",
+    "status": "ok",
+    "body_chars": 3961,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T02:07:58.434111"
+  },
+  {
+    "concept": "cd-birds-eye-worms-eye",
+    "domain": "concept-design",
+    "name": "鸟瞰与虫视",
+    "status": "ok",
+    "body_chars": 3018,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T02:09:08.949259"
+  },
+  {
+    "concept": "cd-thumbnail-sketch",
+    "domain": "concept-design",
+    "name": "缩略图构图",
+    "status": "ok",
+    "body_chars": 3066,
+    "validation_issues": [],
+    "timestamp": "2026-03-24T02:10:16.945371"
+  }
+]

@@ -9,86 +9,133 @@ is_milestone: false
 tags: ["OOP"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "C"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 39.9
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v1"
 unique_content_ratio: 0.4
 last_scored: "2026-03-22"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
 ---
 # 继承
 
 ## 概述
 
-继承（Inheritance）是AI工程（AI Engineering）中面向对象编程领域的重要概念。难度等级4/9（中级）。
+继承（Inheritance）是面向对象编程中子类自动获得父类属性和方法的机制，通过 `class Child(Parent)` 这样的语法建立"是一种"（is-a）关系。继承创建的是类层次结构：子类不仅拥有父类的全部非私有成员，还可以新增自己独特的属性和方法，或者覆盖父类已有的方法。
 
-掌握继承的核心概念和应用。
+继承概念由 Ole-Johan Dahl 和 Kristen Nygaard 在1967年设计 Simula 67 语言时首次正式引入，这也是世界上第一个面向对象语言。Python 3 中所有类默认隐式继承自 `object` 基类，这意味着即使你写 `class Dog:` 也等价于 `class Dog(object):`，所有类天然拥有 `__str__`、`__repr__`、`__eq__` 等魔术方法。
 
-在知识体系中，继承建立在类与对象的基础之上，是理解多态、组合优于继承、模板方法模式的关键前置知识。为什么继承如此重要？因为它在面向对象编程中起到承上启下的作用，连接基础概念与高级应用。
+继承在AI工程中具有直接的实用价值：PyTorch 所有神经网络模块都必须继承 `nn.Module`，TensorFlow 的自定义层必须继承 `tf.keras.Layer`。这种强制继承保证子类能被框架的训练循环、参数管理、序列化等基础设施自动识别和处理，而不是依赖鸭子类型的约定。
 
-## 核心知识点
+---
 
-### 1. 掌握继承的核心概念
+## 核心原理
 
-掌握继承的核心概念是继承(Inheritance)的核心组成部分之一。在面向对象编程的实践中，掌握继承的核心概念决定了系统行为的关键特征。例如，当掌握继承的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握继承的核心概念需要结合AI工程的基本原理进行分析。
+### 方法解析顺序（MRO）
 
-### 2. 应用
+Python 使用 **C3线性化算法**决定多继承时的方法查找顺序。给定 `class D(B, C):`，Python 调用 `D.__mro__` 可以查看完整的解析链。C3算法保证两个规则：子类永远在父类之前，同级父类按声明顺序排列。
 
-应用是继承(Inheritance)的核心组成部分之一。在面向对象编程的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+例如：
+```python
+class A: pass
+class B(A): pass
+class C(A): pass
+class D(B, C): pass
+# D.__mro__ = (D, B, C, A, object)
+```
 
+在PyTorch自定义层中，如果同时继承 `nn.Module` 和一个自定义 `Mixin` 类，MRO顺序直接决定 `__init__` 和 `forward` 哪个版本被调用，错误的顺序会导致模型参数无法注册。
 
-### 关键原理分析
+### `super()` 与协作式多继承
 
-继承的核心在于掌握继承的核心概念和应用。从理论角度看，该概念涉及以下层面：
+`super()` 不是"调用父类方法"，而是"按MRO顺序调用下一个类的方法"。这一区别在多继承时至关重要。
 
-1. **定义层**：明确继承的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解继承内部各要素的相互作用方式
-3. **应用层**：将继承的原理映射到AI工程的实际场景中
+```python
+class ModelBase(nn.Module):
+    def __init__(self, device):
+        super().__init__()   # 沿MRO传递调用，最终到达 nn.Module.__init__
+        self.device = device
+```
 
-思考题：如何判断继承的应用是否超出了其理论适用范围？
+如果子类 `__init__` 忘记调用 `super().__init__()`，PyTorch的 `nn.Module` 内部的 `_parameters`、`_modules` 字典将不会被创建，后续调用 `.parameters()` 或 `.to(device)` 时会抛出 `AttributeError`。
 
-## 关键要点
+### 方法覆盖（Override）与 `super()` 扩展
 
-1. **核心定义**：继承的本质是掌握继承的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握继承需要同时理解掌握继承的核心概念和应用等关键维度
-3. **先修关系**：扎实的类与对象基础对理解继承至关重要
-4. **进阶路径**：掌握后可继续深入多态等进阶主题
-5. **实践标准**：真正掌握继承的标志是能在具体场景中灵活运用并正确判断适用边界
+子类可以完全覆盖父类方法，也可以先调用 `super()` 再扩展。两种策略有本质区别：
+
+| 策略 | 适用场景 | 代码模式 |
+|------|---------|---------|
+| 完全覆盖 | 父类逻辑完全不适用 | 直接定义同名方法 |
+| 扩展覆盖 | 在父类基础上增加行为 | `super().method()` + 新逻辑 |
+
+在AI工程中，自定义 `Dataset` 类必须覆盖 `__len__` 和 `__getitem__` 两个抽象方法，PyTorch 的 `DataLoader` 内部依赖这两个方法来分批和打乱数据。如果只覆盖其中一个，运行时会抛出 `TypeError: Can't instantiate abstract class`。
+
+### 访问控制：名称修饰（Name Mangling）
+
+Python 没有真正的 `private` 关键字，但双下划线前缀（`__attr`）会触发名称修饰机制，将属性重命名为 `_ClassName__attr`。这实际上阻止了子类直接访问该属性。
+
+```python
+class Trainer:
+    def __init__(self):
+        self.__learning_rate = 0.001   # 存储为 _Trainer__learning_rate
+
+class CustomTrainer(Trainer):
+    def show_lr(self):
+        print(self.__learning_rate)    # AttributeError！
+        print(self._Trainer__learning_rate)  # 可以访问
+```
+
+单下划线 `_attr` 只是约定（"请勿外部访问"），并不触发名称修饰，子类可以直接访问。
+
+---
+
+## 实际应用
+
+**构建神经网络层的标准模式**是继承在AI工程中最典型的用法。自定义注意力层必须：
+
+```python
+class MultiHeadAttention(nn.Module):
+    def __init__(self, d_model, num_heads):
+        super().__init__()                    # 必须调用，注册参数字典
+        self.num_heads = num_heads
+        self.d_k = d_model // num_heads
+        self.W_q = nn.Linear(d_model, d_model)
+        self.W_k = nn.Linear(d_model, d_model)
+        self.W_v = nn.Linear(d_model, d_model)
+
+    def forward(self, query, key, value):
+        # 具体实现
+        pass
+```
+
+`nn.Module` 父类的 `__setattr__` 被重写，能自动检测到 `self.W_q = nn.Linear(...)` 这样的赋值，将其注册进 `_modules` 字典——这是继承父类行为后获得的"隐式能力"。
+
+**scikit-learn 自定义变换器**也依赖继承 `BaseEstimator` 和 `TransformerMixin`：继承 `TransformerMixin` 后只需实现 `fit` 和 `transform`，就自动获得 `fit_transform` 方法（父类用这两个方法组合实现的），可直接插入 `Pipeline`。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将继承与面向对象编程中其他相近概念混为一谈。例如，掌握继承的核心概念的适用条件与其他应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解类与对象就学习继承，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：继承虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区1：继承等于代码复用，复用就该用继承**
 
-## 知识衔接
+继承建立的是强耦合的"是一种"关系，修改父类可能意外破坏所有子类。如果目的只是复用某几个方法，而子类和父类之间没有真正的分类关系，应使用组合（将对象作为属性持有）而非继承。例如，`DataLoader` 不继承 `Dataset`，因为加载器不"是一种"数据集，而是"持有"数据集。
 
-### 先修知识
-先修知识包括：
-- **类与对象** — 为继承提供了必要的概念基础
+**误区2：`super()` 只调用直接父类**
 
-### 后续学习
-掌握继承后可继续学习：
-- **多态** — 在继承基础上进一步拓展
-- **组合优于继承** — 在继承基础上进一步拓展
-- **模板方法模式** — 在继承基础上进一步拓展
+很多人认为 `super().__init__()` 只调用直接父类的 `__init__`，但实际上在菱形继承结构中，`super()` 按MRO顺序传递调用，每个中间类也会被执行一次。如果某个中间类没有调用 `super().__init__()`，就会打断这条调用链，导致某些祖先类的初始化被跳过——这是多继承中最难调试的bug之一。
 
-## 学习建议
+**误区3：子类会继承私有方法（双下划线）**
 
-预计学习时间：2-3小时。建议采用以下策略：
+双下划线方法（如 `__compute`）因名称修饰机制，在子类中以 `_ParentClass__compute` 的形式存在，无法通过 `self.__compute()` 直接调用。这不同于Java的 `private`：Python的双下划线不阻止子类覆盖，只阻止子类用原名访问。
 
-- **主动回忆**：学完后不看笔记复述继承的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将继承与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释继承，检验理解深度
+---
 
-## 延伸阅读
+## 知识关联
 
-- 相关教科书中关于面向对象编程的章节可作为深入参考
-- Wikipedia: [Inheritance](https://en.wikipedia.org/wiki/inheritance) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Inheritance" 可找到配套视频教程
+**前置概念**：理解继承需要先掌握类与对象——特别是 `__init__` 方法和实例属性的初始化机制，因为继承中最容易出错的正是子类 `__init__` 与父类 `__init__` 的协调调用。
+
+**后续概念**：继承自然引出**多态**——子类覆盖父类方法后，父类引用调用同名方法时执行子类版本，这正是PyTorch `forward` 分发机制的工作方式。**模板方法模式**将继承的方法覆盖系统化：父类定义算法骨架（如 `fit` 的步骤顺序），子类覆盖具体步骤，整体流程由父类控制。**组合优于继承**原则则是对继承滥用的矫正——当你能明确说出两个类之间"是一种"关系时才使用继承，否则用对象组合来获得更松散的耦合。
