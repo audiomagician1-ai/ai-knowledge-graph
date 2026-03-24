@@ -661,7 +661,7 @@
       "tags": [],
       "file": "narrative-design/nd-ci-shot-composition.md",
       "exists": true,
-      "char_count": 1403
+      "char_count": 2334
     },
     {
       "id": "nd-ci-pacing-rhythm",
@@ -674,7 +674,7 @@
       "tags": [],
       "file": "narrative-design/nd-ci-pacing-rhythm.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2209
     },
     {
       "id": "nd-ci-first-person-cutscene",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 281708,
-    "avg_chars": 1565,
+    "total_chars": 283359,
+    "avg_chars": 1574,
     "domain": "narrative-design"
   }
 }

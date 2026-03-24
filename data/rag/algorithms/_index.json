@@ -37,7 +37,7 @@
       "tags": [],
       "file": "algorithms/dp-tabulation.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2561
     },
     {
       "id": "dijkstra",
@@ -458,8 +458,8 @@
   ],
   "stats": {
     "total": 35,
-    "total_chars": 72823,
-    "avg_chars": 2080,
+    "total_chars": 74058,
+    "avg_chars": 2115,
     "domain": "algorithms"
   }
 }

@@ -102,7 +102,7 @@
       "tags": [],
       "file": "system-design/graceful-degradation.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2685
     },
     {
       "id": "distributed-transaction",
@@ -128,7 +128,7 @@
       "tags": [],
       "file": "system-design/distributed-cache.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2914
     },
     {
       "id": "scalability",
@@ -310,7 +310,7 @@
       "tags": [],
       "file": "system-design/design-rate-limiter.md",
       "exists": true,
-      "char_count": 1403
+      "char_count": 2869
     },
     {
       "id": "load-balancing",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 52478,
-    "avg_chars": 2099,
+    "total_chars": 56820,
+    "avg_chars": 2272,
     "domain": "system-design"
   }
 }

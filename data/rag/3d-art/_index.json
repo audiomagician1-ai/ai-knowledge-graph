@@ -688,7 +688,7 @@
       ],
       "file": "3d-art/3da-env-water.md",
       "exists": true,
-      "char_count": 1316
+      "char_count": 2572
     },
     {
       "id": "3da-env-trim-sheet",
@@ -1888,7 +1888,7 @@
       ],
       "file": "3d-art/3da-prop-pivot-setup.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2525
     },
     {
       "id": "3da-prop-variation",
@@ -2293,7 +2293,7 @@
       ],
       "file": "3d-art/3da-rig-deformation.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2743
     },
     {
       "id": "3da-rig-naming-convention",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 434149,
-    "avg_chars": 1921,
+    "total_chars": 438006,
+    "avg_chars": 1938,
     "domain": "3d-art"
   }
 }

@@ -268,7 +268,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-upscaling.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2798
     },
     {
       "id": "cg-velocity-buffer",
@@ -1723,7 +1723,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-film-grain.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2184
     },
     {
       "id": "cg-exposure",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 470614,
-    "avg_chars": 1882,
+    "total_chars": 472891,
+    "avg_chars": 1891,
     "domain": "computer-graphics"
   }
 }

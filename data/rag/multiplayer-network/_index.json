@@ -986,7 +986,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-economy-analytics.md",
       "exists": true,
-      "char_count": 1439
+      "char_count": 2474
     },
     {
       "id": "mn-lr-scoring-system",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 334933,
-    "avg_chars": 1674,
+    "total_chars": 335968,
+    "avg_chars": 1679,
     "domain": "multiplayer-network"
   }
 }

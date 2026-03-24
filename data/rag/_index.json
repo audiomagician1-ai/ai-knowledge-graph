@@ -688,7 +688,7 @@
       ],
       "file": "3d-art/3da-env-water.md",
       "exists": true,
-      "char_count": 1316
+      "char_count": 2572
     },
     {
       "id": "3da-env-trim-sheet",
@@ -1888,7 +1888,7 @@
       ],
       "file": "3d-art/3da-prop-pivot-setup.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2525
     },
     {
       "id": "3da-prop-variation",
@@ -2293,7 +2293,7 @@
       ],
       "file": "3d-art/3da-rig-deformation.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2743
     },
     {
       "id": "3da-rig-naming-convention",
@@ -3661,7 +3661,7 @@
       "tags": [],
       "file": "agent-systems/mcp-protocol.md",
       "exists": true,
-      "char_count": 1672
+      "char_count": 3177
     },
     {
       "id": "human-in-the-loop",
@@ -4168,7 +4168,7 @@
       "tags": [],
       "file": "algorithms/dp-tabulation.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2561
     },
     {
       "id": "dijkstra",
@@ -5004,7 +5004,7 @@
       ],
       "file": "animation/anim-appeal.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2123
     },
     {
       "id": "anim-exaggeration",
@@ -5259,7 +5259,7 @@
       ],
       "file": "animation/anim-2d-blend.md",
       "exists": true,
-      "char_count": 1634
+      "char_count": 2943
     },
     {
       "id": "anim-aim-offset",
@@ -5574,7 +5574,7 @@
       ],
       "file": "animation/anim-emotion-expression.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 2401
     },
     {
       "id": "anim-face-wrinkle",
@@ -7059,7 +7059,7 @@
       ],
       "file": "animation/anim-skeleton-basics.md",
       "exists": true,
-      "char_count": 1314
+      "char_count": 2721
     },
     {
       "id": "anim-any-state",
@@ -10134,7 +10134,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-upscaling.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2798
     },
     {
       "id": "cg-velocity-buffer",
@@ -11589,7 +11589,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-film-grain.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2184
     },
     {
       "id": "cg-exposure",
@@ -14124,7 +14124,7 @@
       ],
       "file": "concept-design/cd-char-archetype.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2578
     },
     {
       "id": "cd-char-presentation",
@@ -17603,7 +17603,7 @@
       "tags": [],
       "file": "database/sql-subquery.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2941
     },
     {
       "id": "sql-aggregation",
@@ -46331,7 +46331,7 @@
       "tags": [],
       "file": "game-qa/qa-at-visual-testing.md",
       "exists": true,
-      "char_count": 1396
+      "char_count": 2401
     },
     {
       "id": "qa-at-integration-testing",
@@ -47475,7 +47475,7 @@
       "tags": [],
       "file": "game-qa/qa-pt-scalability.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2636
     },
     {
       "id": "qa-pt-benchmark-design",
@@ -59855,7 +59855,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-economy-analytics.md",
       "exists": true,
-      "char_count": 1439
+      "char_count": 2474
     },
     {
       "id": "mn-lr-scoring-system",
@@ -62130,7 +62130,7 @@
       "tags": [],
       "file": "narrative-design/nd-ci-shot-composition.md",
       "exists": true,
-      "char_count": 1403
+      "char_count": 2334
     },
     {
       "id": "nd-ci-pacing-rhythm",
@@ -62143,7 +62143,7 @@
       "tags": [],
       "file": "narrative-design/nd-ci-pacing-rhythm.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2209
     },
     {
       "id": "nd-ci-first-person-cutscene",
@@ -64080,7 +64080,7 @@
       "tags": [],
       "file": "oop/observer-pattern.md",
       "exists": true,
-      "char_count": 1413
+      "char_count": 3824
     },
     {
       "id": "design-patterns-intro",
@@ -64106,7 +64106,7 @@
       "tags": [],
       "file": "oop/adapter-pattern.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2980
     },
     {
       "id": "command-pattern",
@@ -72413,7 +72413,7 @@
       "tags": [],
       "file": "programming-basics/variables.md",
       "exists": true,
-      "char_count": 1583
+      "char_count": 2965
     },
     {
       "id": "cli-programming",
@@ -76153,7 +76153,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-layered-arch.md",
       "exists": true,
-      "char_count": 1400
+      "char_count": 2524
     },
     {
       "id": "se-microservices",
@@ -76528,7 +76528,7 @@
       ],
       "file": "software-engineering/build-systems/se-build-intro.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 2768
     },
     {
       "id": "se-build-automation",
@@ -78163,7 +78163,7 @@
       ],
       "file": "software-engineering/memory-management/se-memory-allocator.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 2637
     },
     {
       "id": "se-alignment",
@@ -78553,7 +78553,7 @@
       ],
       "file": "software-engineering/multithreading/se-mt-intro.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2634
     },
     {
       "id": "se-mt-patterns",
@@ -78928,7 +78928,7 @@
       ],
       "file": "software-engineering/package-management/se-publish-flow.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2746
     },
     {
       "id": "se-pkg-intro",
@@ -80307,7 +80307,7 @@
       "tags": [],
       "file": "system-design/graceful-degradation.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2685
     },
     {
       "id": "distributed-transaction",
@@ -80333,7 +80333,7 @@
       "tags": [],
       "file": "system-design/distributed-cache.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2914
     },
     {
       "id": "scalability",
@@ -80515,7 +80515,7 @@
       "tags": [],
       "file": "system-design/design-rate-limiter.md",
       "exists": true,
-      "char_count": 1403
+      "char_count": 2869
     },
     {
       "id": "load-balancing",
@@ -80753,7 +80753,7 @@
       ],
       "file": "technical-art/ta-ci-art.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2744
     },
     {
       "id": "ta-auto-lod",
@@ -80933,7 +80933,7 @@
       ],
       "file": "technical-art/ta-lod-overview.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 2618
     },
     {
       "id": "ta-lod-generation",
@@ -81398,7 +81398,7 @@
       ],
       "file": "technical-art/ta-virtual-texturing.md",
       "exists": true,
-      "char_count": 1439
+      "char_count": 2850
     },
     {
       "id": "ta-parallax-mapping",
@@ -83213,7 +83213,7 @@
       ],
       "file": "technical-art/ta-asset-processor.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 3360
     },
     {
       "id": "ta-validation-tool",
@@ -83423,7 +83423,7 @@
       ],
       "file": "vfx/vfx-destruct-debris.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2684
     },
     {
       "id": "vfx-destruct-cleanup",
@@ -83978,7 +83978,7 @@
       ],
       "file": "vfx/vfx-fluid-interaction.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2889
     },
     {
       "id": "vfx-fluid-overview",
@@ -84128,7 +84128,7 @@
       ],
       "file": "vfx/vfx-fluid-rain.md",
       "exists": true,
-      "char_count": 1401
+      "char_count": 2594
     },
     {
       "id": "vfx-niagara-emitter",
@@ -84773,7 +84773,7 @@
       ],
       "file": "vfx/vfx-pp-fog.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 3046
     },
     {
       "id": "vfx-pp-volume",
@@ -86435,7 +86435,7 @@
       "tags": [],
       "file": "web-frontend/react-basics.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 3082
     },
     {
       "id": "react-state",

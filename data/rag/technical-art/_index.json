@@ -223,7 +223,7 @@
       ],
       "file": "technical-art/ta-ci-art.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2744
     },
     {
       "id": "ta-auto-lod",
@@ -403,7 +403,7 @@
       ],
       "file": "technical-art/ta-lod-overview.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 2618
     },
     {
       "id": "ta-lod-generation",
@@ -868,7 +868,7 @@
       ],
       "file": "technical-art/ta-virtual-texturing.md",
       "exists": true,
-      "char_count": 1439
+      "char_count": 2850
     },
     {
       "id": "ta-parallax-mapping",
@@ -2683,7 +2683,7 @@
       ],
       "file": "technical-art/ta-asset-processor.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 3360
     },
     {
       "id": "ta-validation-tool",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 297351,
-    "avg_chars": 1651,
+    "total_chars": 303192,
+    "avg_chars": 1684,
     "domain": "technical-art"
   }
 }

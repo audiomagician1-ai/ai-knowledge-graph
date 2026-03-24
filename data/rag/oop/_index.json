@@ -271,7 +271,7 @@
       "tags": [],
       "file": "oop/observer-pattern.md",
       "exists": true,
-      "char_count": 1413
+      "char_count": 3824
     },
     {
       "id": "design-patterns-intro",
@@ -297,7 +297,7 @@
       "tags": [],
       "file": "oop/adapter-pattern.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2980
     },
     {
       "id": "command-pattern",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 57763,
-    "avg_chars": 2406,
+    "total_chars": 61828,
+    "avg_chars": 2576,
     "domain": "oop"
   }
 }

@@ -154,7 +154,7 @@
       "tags": [],
       "file": "web-frontend/react-basics.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 3082
     },
     {
       "id": "react-state",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 59942,
-    "avg_chars": 1816,
+    "total_chars": 61453,
+    "avg_chars": 1862,
     "domain": "web-frontend"
   }
 }

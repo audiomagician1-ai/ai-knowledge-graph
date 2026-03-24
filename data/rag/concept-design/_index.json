@@ -508,7 +508,7 @@
       ],
       "file": "concept-design/cd-char-archetype.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2578
     },
     {
       "id": "cd-char-presentation",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 389250,
-    "avg_chars": 1769,
+    "total_chars": 390437,
+    "avg_chars": 1774,
     "domain": "concept-design"
   }
 }

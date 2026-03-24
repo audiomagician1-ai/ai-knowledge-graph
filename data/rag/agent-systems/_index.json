@@ -271,7 +271,7 @@
       "tags": [],
       "file": "agent-systems/mcp-protocol.md",
       "exists": true,
-      "char_count": 1672
+      "char_count": 3177
     },
     {
       "id": "human-in-the-loop",
@@ -354,8 +354,8 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 52519,
-    "avg_chars": 1945,
+    "total_chars": 54024,
+    "avg_chars": 2000,
     "domain": "agent-systems"
   }
 }

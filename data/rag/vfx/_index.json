@@ -193,7 +193,7 @@
       ],
       "file": "vfx/vfx-destruct-debris.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2684
     },
     {
       "id": "vfx-destruct-cleanup",
@@ -748,7 +748,7 @@
       ],
       "file": "vfx/vfx-fluid-interaction.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2889
     },
     {
       "id": "vfx-fluid-overview",
@@ -898,7 +898,7 @@
       ],
       "file": "vfx/vfx-fluid-rain.md",
       "exists": true,
-      "char_count": 1401
+      "char_count": 2594
     },
     {
       "id": "vfx-niagara-emitter",
@@ -1543,7 +1543,7 @@
       ],
       "file": "vfx/vfx-pp-fog.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 3046
     },
     {
       "id": "vfx-pp-volume",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 303834,
-    "avg_chars": 1687,
+    "total_chars": 309266,
+    "avg_chars": 1718,
     "domain": "vfx"
   }
 }

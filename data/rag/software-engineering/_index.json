@@ -148,7 +148,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-layered-arch.md",
       "exists": true,
-      "char_count": 1400
+      "char_count": 2524
     },
     {
       "id": "se-microservices",
@@ -523,7 +523,7 @@
       ],
       "file": "software-engineering/build-systems/se-build-intro.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 2768
     },
     {
       "id": "se-build-automation",
@@ -2158,7 +2158,7 @@
       ],
       "file": "software-engineering/memory-management/se-memory-allocator.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 2637
     },
     {
       "id": "se-alignment",
@@ -2548,7 +2548,7 @@
       ],
       "file": "software-engineering/multithreading/se-mt-intro.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2634
     },
     {
       "id": "se-mt-patterns",
@@ -2923,7 +2923,7 @@
       ],
       "file": "software-engineering/package-management/se-publish-flow.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2746
     },
     {
       "id": "se-pkg-intro",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 494860,
-    "avg_chars": 1767,
+    "total_chars": 500924,
+    "avg_chars": 1789,
     "domain": "software-engineering"
   }
 }

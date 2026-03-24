@@ -418,7 +418,7 @@
       ],
       "file": "animation/anim-appeal.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2123
     },
     {
       "id": "anim-exaggeration",
@@ -673,7 +673,7 @@
       ],
       "file": "animation/anim-2d-blend.md",
       "exists": true,
-      "char_count": 1634
+      "char_count": 2943
     },
     {
       "id": "anim-aim-offset",
@@ -988,7 +988,7 @@
       ],
       "file": "animation/anim-emotion-expression.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 2401
     },
     {
       "id": "anim-face-wrinkle",
@@ -2473,7 +2473,7 @@
       ],
       "file": "animation/anim-skeleton-basics.md",
       "exists": true,
-      "char_count": 1314
+      "char_count": 2721
     },
     {
       "id": "anim-any-state",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 298629,
-    "avg_chars": 1659,
+    "total_chars": 303156,
+    "avg_chars": 1684,
     "domain": "animation"
   }
 }

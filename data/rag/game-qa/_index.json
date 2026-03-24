@@ -245,7 +245,7 @@
       "tags": [],
       "file": "game-qa/qa-at-visual-testing.md",
       "exists": true,
-      "char_count": 1396
+      "char_count": 2401
     },
     {
       "id": "qa-at-integration-testing",
@@ -1389,7 +1389,7 @@
       "tags": [],
       "file": "game-qa/qa-pt-scalability.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2636
     },
     {
       "id": "qa-pt-benchmark-design",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 254516,
-    "avg_chars": 1590,
+    "total_chars": 256707,
+    "avg_chars": 1604,
     "domain": "game-qa"
   }
 }

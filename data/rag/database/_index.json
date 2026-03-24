@@ -115,7 +115,7 @@
       "tags": [],
       "file": "database/sql-subquery.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2941
     },
     {
       "id": "sql-aggregation",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 42832,
-    "avg_chars": 1784,
+    "total_chars": 44371,
+    "avg_chars": 1848,
     "domain": "database"
   }
 }
