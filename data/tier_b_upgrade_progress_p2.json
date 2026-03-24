@@ -79,10 +79,20 @@
     "cg-terrain-geometry",
     "cg-participating-media",
     "cg-vol-gi",
-    "cg-neural-radiance"
+    "cg-neural-radiance",
+    "cd-foreshortening",
+    "cd-measured-perspective",
+    "cd-monochrome-study",
+    "cd-static-composition",
+    "cd-single-light-setup",
+    "cd-style-mixing",
+    "sfx-sa-outdoor-acoustics",
+    "sfx-as-zone-based",
+    "ragdoll-physics",
+    "animation-compression"
   ],
   "errors": [],
-  "total_upgraded": 80,
+  "total_upgraded": 90,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T21:43:42.097181"
+  "last_updated": "2026-03-24T21:55:01.915788"
 }

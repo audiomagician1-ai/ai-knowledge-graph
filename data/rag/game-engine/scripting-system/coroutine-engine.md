@@ -9,79 +9,92 @@ is_milestone: false
 tags: ["异步"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 42.1
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.444
-last_scored: "2026-03-22"
+last_scored: "2026-03-24"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # 协程系统
 
 ## 概述
 
-协程系统（Coroutine Engine）是游戏引擎（Game Engine）中脚本系统领域的重要概念。难度等级2/9（基础级）。
+协程系统（Coroutine System）是游戏引擎脚本层提供的一种**协作式多任务机制**，允许函数在执行过程中主动暂停（yield）并在稍后恢复，而不阻塞主线程的帧循环。与操作系统线程的抢占式调度不同，协程的切换时机完全由程序员通过 `yield` 指令控制，因此不存在数据竞争的风险，非常适合游戏逻辑中常见的"等待某个条件成立后继续执行"的场景。
 
-引擎协程/异步任务/定时器。
+协程的概念最早由 Melvin Conway 于 1963 年提出，用于描述可以互相调用、彼此协作的子程序。游戏引擎领域对协程的大规模普及主要归功于 Unity，其在 Unity 3.x 版本中将 C# 迭代器（`IEnumerator`）作为协程的底层实现机制对外暴露，使得游戏开发者无需编写复杂的状态机，便能以线性风格描述跨越多帧的行为逻辑。
 
-在知识体系中，协程系统建立在脚本系统概述的基础之上，是理解可进入更高级主题的关键前置知识。为什么协程系统如此重要？因为它在脚本系统中起到承上启下的作用，连接基础概念与高级应用。
+协程系统在游戏开发中解决的核心痛点是：过场动画序列、UI 渐变效果、AI 行为等逻辑往往需要跨越数十乃至数百帧才能完成。如果用普通函数实现，开发者必须手动将逻辑拆分成"本帧执行什么、下帧执行什么"的状态机，代码量倍增且难以维护。协程系统让这类时序逻辑的表达回归自然的顺序书写方式。
 
-## 核心知识点
+---
 
-### 1. 引擎协程/异步任务/定时器
+## 核心原理
 
-引擎协程/异步任务/定时器是协程系统(Coroutine Engine)的核心组成部分之一。在脚本系统的实践中，引擎协程/异步任务/定时器决定了系统行为的关键特征。例如，当引擎协程/异步任务/定时器参数或条件发生变化时，整体表现会产生显著差异。深入理解引擎协程/异步任务/定时器需要结合游戏引擎的基本原理进行分析。
+### yield 指令与帧循环的集成
 
+协程的暂停点由 `yield` 语句标记。在 Unity 的实现中，引擎在每帧 `Update` 结束后统一检查所有已注册协程的恢复条件，满足条件的协程在当帧（或指定时机）被唤醒继续执行。常见的 yield 类型包括：
 
-### 关键原理分析
+- **`yield return null`**：暂停当前帧，在**下一帧 Update 之后**恢复。
+- **`yield return new WaitForSeconds(t)`**：等待 `t` 秒（受 `Time.timeScale` 影响）后恢复，适合淡入淡出等时间相关效果。
+- **`yield return new WaitForFixedUpdate()`**：在下一次 **FixedUpdate**（默认 0.02 秒/次）之后恢复，用于物理相关的延迟操作。
+- **`yield return new WaitUntil(predicate)`**：每帧轮询 `predicate` 委托，条件为 `true` 时恢复，适合等待异步加载或玩家输入。
 
-协程系统的核心在于引擎协程/异步任务/定时器。从理论角度看，该概念涉及以下层面：
+### C# 迭代器状态机的底层实现
 
-1. **定义层**：明确协程系统的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解协程系统内部各要素的相互作用方式
-3. **应用层**：将协程系统的原理映射到游戏引擎的实际场景中
+Unity 的协程本质上是编译器将含有 `yield return` 的方法自动转换为实现 `IEnumerator` 接口的**有限状态机类**。每次调用 `MoveNext()` 时，状态机从上次暂停的位置继续执行，直到遇到下一个 `yield return` 或方法结束。引擎持有一个协程列表，每帧对列表内所有协程调用 `MoveNext()` 并检查返回的 `YieldInstruction` 对象是否满足恢复条件。这意味着协程的调度开销主要来自**每帧遍历列表**和**虚函数调用**，当同时运行数千个协程时，这一开销不可忽视（Unity 官方建议对高频协程改用 ECS Job System 或手写状态机）。
 
-思考题：如何判断协程系统的应用是否超出了其理论适用范围？
+### 定时器与时间缩放
 
-## 关键要点
+`WaitForSeconds` 内部使用 `Time.time`（受 `timeScale` 影响），而 `WaitForSecondsRealtime` 则使用 `Time.realtimeSinceStartup`（不受暂停影响）。在实现"游戏暂停但 UI 动画继续播放"的需求时，必须选择正确的 yield 类型。例如，暂停菜单的弹出动画需使用 `WaitForSecondsRealtime`，否则当 `timeScale = 0` 时动画将永远无法完成。
 
-1. **核心定义**：协程系统的本质是引擎协程/异步任务/定时器，这是理解整个概念的出发点
-2. **多维理解**：掌握协程系统需要同时理解引擎协程/异步任务/定时器等关键维度
-3. **先修关系**：扎实的脚本系统概述基础对理解协程系统至关重要
-4. **进阶路径**：可广泛应用于游戏引擎各方面
-5. **实践标准**：真正掌握协程系统的标志是能在具体场景中灵活运用并正确判断适用边界
+### 协程的生命周期管理
+
+协程与启动它的 MonoBehaviour 实例绑定：当该对象被禁用（`SetActive(false)`）或销毁时，其上的所有协程自动停止。通过 `StartCoroutine()` 返回的 `Coroutine` 句柄可传入 `StopCoroutine()` 手动停止。若需要协程脱离对象生命周期独立运行，需将其挂载在一个常驻场景的单例对象上（常见的 `CoroutineRunner` 模式）。
+
+---
+
+## 实际应用
+
+**过场对话序列**：角色对话系统中，每句台词需要等待玩家点击或等待 2 秒自动推进。用协程表达如下：
+
+```csharp
+IEnumerator PlayDialogue(string[] lines) {
+    foreach (var line in lines) {
+        dialogueBox.text = line;
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null; // 跳过同帧的重复点击
+    }
+}
+```
+
+这段逻辑用状态机实现需要额外维护 `currentLine` 索引、`waitingForClick` 布尔值等多个字段，而协程版本完整逻辑仅需 6 行。
+
+**渐变效果**：UI 透明度从 1 渐变到 0 需要持续约 0.5 秒，协程可用 `while (alpha > 0)` 配合 `yield return null` 逐帧递减，精确控制效果时长而不占用额外线程资源。
+
+**异步资源加载等待**：`yield return SceneManager.LoadSceneAsync("Level2")` 可等待场景加载完毕后再执行后续逻辑，是 Unity 异步 API 与协程结合的典型模式。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将协程系统与脚本系统中其他相近概念混为一谈。例如，引擎协程/异步任务/定时器的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解脚本系统概述就学习协程系统，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：协程系统虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：协程等同于多线程**
+协程始终运行在**主线程**上，任意时刻只有一个协程的代码在执行，不存在并行计算。`WaitForSeconds(1)` 并不会让 CPU 在后台睡眠 1 秒，而是每帧都被检查是否已过去 1 秒。因此协程无法加速 CPU 密集型计算，试图用协程并行化大量数学运算会导致帧率下降而不是提升。
 
-## 知识衔接
+**误区二：yield return new WaitForSeconds() 的 new 开销可忽略不计**
+在每帧反复执行的循环中写 `yield return new WaitForSeconds(0.1f)` 会在托管堆上**每次分配一个新对象**，产生 GC 压力。正确做法是将 `WaitForSeconds` 实例缓存为成员变量，或使用 `WaitForSecondsRealtime` 的缓存版本，从而避免高频 GC Alloc。
 
-### 先修知识
-先修知识包括：
-- **脚本系统概述** — 为协程系统提供了必要的概念基础
+**误区三：协程在对象禁用后仍会自动恢复**
+许多初学者认为 `yield return new WaitForSeconds(5)` 会像定时器一样在 5 秒后必然触发。实际上，若挂载协程的 GameObject 在等待期间被 `SetActive(false)`，协程将被**立即终止**而不是暂停，恢复后也不会继续运行，需手动重新启动。
 
-### 后续学习
-掌握协程系统后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索游戏引擎其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：30-60分钟。建议采用以下策略：
+协程系统建立在**脚本系统概述**所描述的 MonoBehaviour 生命周期（Awake → Start → Update → LateUpdate）之上，其调度时机嵌入在这一帧循环的特定插槽中——理解 Update 与 FixedUpdate 的调用顺序，才能正确选择 `WaitForFixedUpdate` 还是 `yield return null`。
 
-- **主动回忆**：学完后不看笔记复述协程系统的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将协程系统与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释协程系统，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于脚本系统的章节可作为深入参考
-- Wikipedia: [Coroutine Engine](https://en.wikipedia.org/wiki/coroutine_engine) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Coroutine Engine" 可找到配套视频教程
+对于更复杂的异步需求，协程系统是理解 Unity **Async/Await（UniTask）** 和 **Job System** 的前置基础：UniTask 将 C# 原生 `async/await` 语法适配到 Unity 的帧循环调度中，本质上是对协程调度模型的扩展与性能优化；而 Job System 则走向了另一个方向——真正利用多核并行，弥补协程无法并行计算的短板。理解协程的单线程本质和 yield 驱动模型，有助于清晰判断何时应选用协程，何时必须升级到 Job System。
