@@ -1348,7 +1348,7 @@
       ],
       "file": "3d-art/3da-modeling-modes.md",
       "exists": true,
-      "char_count": 1513
+      "char_count": 2566
     },
     {
       "id": "3da-mesh-topology",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 433096,
-    "avg_chars": 1916,
+    "total_chars": 434149,
+    "avg_chars": 1921,
     "domain": "3d-art"
   }
 }

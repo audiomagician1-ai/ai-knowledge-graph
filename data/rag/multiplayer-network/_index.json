@@ -63,7 +63,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-speed-hack-detection.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2345
     },
     {
       "id": "mn-ac-anti-cheat-architecture",
@@ -648,7 +648,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-sharding.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2895
     },
     {
       "id": "mn-db-data-backup",
@@ -2117,7 +2117,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-session-management.md",
       "exists": true,
-      "char_count": 1625
+      "char_count": 2498
     },
     {
       "id": "mn-sa-regional-deployment",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 331441,
-    "avg_chars": 1657,
+    "total_chars": 334933,
+    "avg_chars": 1674,
     "domain": "multiplayer-network"
   }
 }

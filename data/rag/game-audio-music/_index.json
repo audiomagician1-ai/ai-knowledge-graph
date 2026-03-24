@@ -463,7 +463,7 @@
       ],
       "file": "game-audio-music/game-audio-music-hybrid-orchestral.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 2355
     },
     {
       "id": "game-audio-music-electronic-elements",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 296492,
-    "avg_chars": 1647,
+    "total_chars": 297406,
+    "avg_chars": 1652,
     "domain": "game-audio-music"
   }
 }

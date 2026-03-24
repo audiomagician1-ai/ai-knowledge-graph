@@ -1406,7 +1406,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-skill-tree.md",
       "exists": true,
-      "char_count": 1639
+      "char_count": 2653
     },
     {
       "id": "guiux-menu-leaderboard",
@@ -3203,8 +3203,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 320623,
-    "avg_chars": 1603,
+    "total_chars": 321637,
+    "avg_chars": 1608,
     "domain": "game-ui-ux"
   }
 }

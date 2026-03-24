@@ -1348,7 +1348,7 @@
       ],
       "file": "3d-art/3da-modeling-modes.md",
       "exists": true,
-      "char_count": 1513
+      "char_count": 2566
     },
     {
       "id": "3da-mesh-topology",
@@ -5949,7 +5949,7 @@
       ],
       "file": "animation/anim-ik-basics.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2706
     },
     {
       "id": "anim-hit-pause",
@@ -6609,7 +6609,7 @@
       ],
       "file": "animation/anim-physics-blend.md",
       "exists": true,
-      "char_count": 1475
+      "char_count": 2449
     },
     {
       "id": "anim-physics-perf",
@@ -13419,7 +13419,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-vol-intro.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2603
     },
     {
       "id": "cg-vol-decal",
@@ -14649,7 +14649,7 @@
       ],
       "file": "concept-design/cd-depth-layers.md",
       "exists": true,
-      "char_count": 1208
+      "char_count": 2127
     },
     {
       "id": "cd-composition-workflow",
@@ -14694,7 +14694,7 @@
       ],
       "file": "concept-design/cd-framing.md",
       "exists": true,
-      "char_count": 1202
+      "char_count": 2216
     },
     {
       "id": "cd-focal-point",
@@ -26499,7 +26499,7 @@
       ],
       "file": "game-audio-music/game-audio-music-hybrid-orchestral.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 2355
     },
     {
       "id": "game-audio-music-electronic-elements",
@@ -29696,7 +29696,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-mobile-optimization.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2435
     },
     {
       "id": "sfx-ao-final-mix",
@@ -29735,7 +29735,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-occlusion-cost.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2631
     },
     {
       "id": "sfx-ao-sample-pooling",
@@ -35394,7 +35394,7 @@
       ],
       "file": "game-engine/audio-system/audio-attenuation.md",
       "exists": true,
-      "char_count": 1433
+      "char_count": 2654
     },
     {
       "id": "audio-debug",
@@ -36084,7 +36084,7 @@
       ],
       "file": "game-engine/performance-profiling/pix-nsa.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 3022
     },
     {
       "id": "renderdoc",
@@ -37389,7 +37389,7 @@
       ],
       "file": "game-engine/rendering-pipeline/deferred-rendering.md",
       "exists": true,
-      "char_count": 1422
+      "char_count": 2800
     },
     {
       "id": "ray-tracing-engine",
@@ -38244,7 +38244,7 @@
       ],
       "file": "game-engine/scripting-system/visual-scripting-engine.md",
       "exists": true,
-      "char_count": 1324
+      "char_count": 3173
     },
     {
       "id": "command-pattern",
@@ -38979,7 +38979,7 @@
       ],
       "file": "game-engine/ue5-architecture/ue5-uobject.md",
       "exists": true,
-      "char_count": 1686
+      "char_count": 3348
     },
     {
       "id": "ue5-world-partition",
@@ -39024,7 +39024,7 @@
       ],
       "file": "game-engine/ue5-architecture/ge-overview.md",
       "exists": true,
-      "char_count": 1618
+      "char_count": 2958
     },
     {
       "id": "unity-addressables",
@@ -40754,7 +40754,7 @@
       "tags": [],
       "file": "game-live-ops/ops-mo-whale-management.md",
       "exists": true,
-      "char_count": 1544
+      "char_count": 2698
     },
     {
       "id": "ops-mo-price-psychology",
@@ -44420,7 +44420,7 @@
       "tags": [],
       "file": "game-publishing/pub-ms-market-sizing.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2138
     },
     {
       "id": "pub-ms-market-research",
@@ -45109,7 +45109,7 @@
       "tags": [],
       "file": "game-publishing/pub-pc-publisher-pitch.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2522
     },
     {
       "id": "pub-pc-publisher-types",
@@ -45629,7 +45629,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-local-publishing.md",
       "exists": true,
-      "char_count": 1314
+      "char_count": 2187
     },
     {
       "id": "pub-ro-currency-pricing",
@@ -45655,7 +45655,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-regional-markets.md",
       "exists": true,
-      "char_count": 1455
+      "char_count": 2402
     },
     {
       "id": "pub-ro-regional-events",
@@ -46890,7 +46890,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-smoke-testing.md",
       "exists": true,
-      "char_count": 1278
+      "char_count": 2341
     },
     {
       "id": "qa-ft-basics",
@@ -46916,7 +46916,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-compliance-testing.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2632
     },
     {
       "id": "qa-ft-multiplayer-testing",
@@ -47982,7 +47982,7 @@
       "tags": [],
       "file": "game-qa/qa-tc-crash-analytics.md",
       "exists": true,
-      "char_count": 1581
+      "char_count": 2328
     },
     {
       "id": "qa-tc-toolchain-evolution",
@@ -49572,7 +49572,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-skill-tree.md",
       "exists": true,
-      "char_count": 1639
+      "char_count": 2653
     },
     {
       "id": "guiux-menu-leaderboard",
@@ -58932,7 +58932,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-speed-hack-detection.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2345
     },
     {
       "id": "mn-ac-anti-cheat-architecture",
@@ -59517,7 +59517,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-sharding.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2895
     },
     {
       "id": "mn-db-data-backup",
@@ -60986,7 +60986,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-session-management.md",
       "exists": true,
-      "char_count": 1625
+      "char_count": 2498
     },
     {
       "id": "mn-sa-regional-deployment",
@@ -72543,7 +72543,7 @@
       "tags": [],
       "file": "programming-basics/logging-basics.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 3347
     },
     {
       "id": "conditionals",
@@ -72920,7 +72920,7 @@
       "tags": [],
       "file": "prompt-engineering/prompt-chaining.md",
       "exists": true,
-      "char_count": 1508
+      "char_count": 2943
     },
     {
       "id": "structured-output",
@@ -76063,7 +76063,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-monorepo.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2866
     },
     {
       "id": "se-solid",
@@ -76288,7 +76288,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-arch-intro.md",
       "exists": true,
-      "char_count": 1599
+      "char_count": 2787
     },
     {
       "id": "se-ddd",
@@ -77773,7 +77773,7 @@
       ],
       "file": "software-engineering/ecs-architecture/se-ecs-scheduling.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2743
     },
     {
       "id": "se-ue5-mass",
@@ -78103,7 +78103,7 @@
       ],
       "file": "software-engineering/game-programming-patterns/se-observer-game.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2598
     },
     {
       "id": "se-arena-allocator",
@@ -78493,7 +78493,7 @@
       ],
       "file": "software-engineering/multithreading/se-task-system.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2840
     },
     {
       "id": "se-memory-model",
@@ -78658,7 +78658,7 @@
       ],
       "file": "software-engineering/multithreading/se-game-threading.md",
       "exists": true,
-      "char_count": 1389
+      "char_count": 2545
     },
     {
       "id": "se-thread-basics",
@@ -80359,7 +80359,7 @@
       "tags": [],
       "file": "system-design/observability.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 3224
     },
     {
       "id": "idempotency",
@@ -84863,7 +84863,7 @@
       ],
       "file": "vfx/vfx-pp-dof.md",
       "exists": true,
-      "char_count": 1541
+      "char_count": 2349
     },
     {
       "id": "vfx-pp-vignette",

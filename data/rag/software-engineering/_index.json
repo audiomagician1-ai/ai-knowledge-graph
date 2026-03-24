@@ -58,7 +58,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-monorepo.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2866
     },
     {
       "id": "se-solid",
@@ -283,7 +283,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-arch-intro.md",
       "exists": true,
-      "char_count": 1599
+      "char_count": 2787
     },
     {
       "id": "se-ddd",
@@ -1768,7 +1768,7 @@
       ],
       "file": "software-engineering/ecs-architecture/se-ecs-scheduling.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2743
     },
     {
       "id": "se-ue5-mass",
@@ -2098,7 +2098,7 @@
       ],
       "file": "software-engineering/game-programming-patterns/se-observer-game.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2598
     },
     {
       "id": "se-arena-allocator",
@@ -2488,7 +2488,7 @@
       ],
       "file": "software-engineering/multithreading/se-task-system.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2840
     },
     {
       "id": "se-memory-model",
@@ -2653,7 +2653,7 @@
       ],
       "file": "software-engineering/multithreading/se-game-threading.md",
       "exists": true,
-      "char_count": 1389
+      "char_count": 2545
     },
     {
       "id": "se-thread-basics",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 486995,
-    "avg_chars": 1739,
+    "total_chars": 494860,
+    "avg_chars": 1767,
     "domain": "software-engineering"
   }
 }

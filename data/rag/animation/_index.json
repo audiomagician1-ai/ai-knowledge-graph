@@ -1363,7 +1363,7 @@
       ],
       "file": "animation/anim-ik-basics.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2706
     },
     {
       "id": "anim-hit-pause",
@@ -2023,7 +2023,7 @@
       ],
       "file": "animation/anim-physics-blend.md",
       "exists": true,
-      "char_count": 1475
+      "char_count": 2449
     },
     {
       "id": "anim-physics-perf",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 296435,
-    "avg_chars": 1646,
+    "total_chars": 298629,
+    "avg_chars": 1659,
     "domain": "animation"
   }
 }

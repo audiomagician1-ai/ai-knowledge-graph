@@ -1033,7 +1033,7 @@
       ],
       "file": "concept-design/cd-depth-layers.md",
       "exists": true,
-      "char_count": 1208
+      "char_count": 2127
     },
     {
       "id": "cd-composition-workflow",
@@ -1078,7 +1078,7 @@
       ],
       "file": "concept-design/cd-framing.md",
       "exists": true,
-      "char_count": 1202
+      "char_count": 2216
     },
     {
       "id": "cd-focal-point",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 387317,
-    "avg_chars": 1760,
+    "total_chars": 389250,
+    "avg_chars": 1769,
     "domain": "concept-design"
   }
 }

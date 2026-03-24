@@ -568,7 +568,7 @@
       ],
       "file": "game-engine/audio-system/audio-attenuation.md",
       "exists": true,
-      "char_count": 1433
+      "char_count": 2654
     },
     {
       "id": "audio-debug",
@@ -1258,7 +1258,7 @@
       ],
       "file": "game-engine/performance-profiling/pix-nsa.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 3022
     },
     {
       "id": "renderdoc",
@@ -2563,7 +2563,7 @@
       ],
       "file": "game-engine/rendering-pipeline/deferred-rendering.md",
       "exists": true,
-      "char_count": 1422
+      "char_count": 2800
     },
     {
       "id": "ray-tracing-engine",
@@ -3418,7 +3418,7 @@
       ],
       "file": "game-engine/scripting-system/visual-scripting-engine.md",
       "exists": true,
-      "char_count": 1324
+      "char_count": 3173
     },
     {
       "id": "command-pattern",
@@ -4153,7 +4153,7 @@
       ],
       "file": "game-engine/ue5-architecture/ue5-uobject.md",
       "exists": true,
-      "char_count": 1686
+      "char_count": 3348
     },
     {
       "id": "ue5-world-partition",
@@ -4198,7 +4198,7 @@
       ],
       "file": "game-engine/ue5-architecture/ge-overview.md",
       "exists": true,
-      "char_count": 1618
+      "char_count": 2958
     },
     {
       "id": "unity-addressables",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 593483,
-    "avg_chars": 1978,
+    "total_chars": 602626,
+    "avg_chars": 2008,
     "domain": "game-engine"
   }
 }

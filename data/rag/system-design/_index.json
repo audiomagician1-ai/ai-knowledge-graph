@@ -154,7 +154,7 @@
       "tags": [],
       "file": "system-design/observability.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 3224
     },
     {
       "id": "idempotency",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 50748,
-    "avg_chars": 2029,
+    "total_chars": 52478,
+    "avg_chars": 2099,
     "domain": "system-design"
   }
 }

@@ -960,7 +960,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-mobile-optimization.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2435
     },
     {
       "id": "sfx-ao-final-mix",
@@ -999,7 +999,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-occlusion-cost.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2631
     },
     {
       "id": "sfx-ao-sample-pooling",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 299762,
-    "avg_chars": 1665,
+    "total_chars": 302194,
+    "avg_chars": 1678,
     "domain": "game-audio-sfx"
   }
 }

@@ -3553,7 +3553,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-vol-intro.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2603
     },
     {
       "id": "cg-vol-decal",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 469494,
-    "avg_chars": 1877,
+    "total_chars": 470614,
+    "avg_chars": 1882,
     "domain": "computer-graphics"
   }
 }

@@ -232,7 +232,7 @@
       "tags": [],
       "file": "programming-basics/logging-basics.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 3347
     },
     {
       "id": "conditionals",
@@ -393,8 +393,8 @@
   ],
   "stats": {
     "total": 30,
-    "total_chars": 68744,
-    "avg_chars": 2291,
+    "total_chars": 70572,
+    "avg_chars": 2352,
     "domain": "programming-basics"
   }
 }

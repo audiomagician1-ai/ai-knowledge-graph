@@ -1428,7 +1428,7 @@
       "tags": [],
       "file": "game-live-ops/ops-mo-whale-management.md",
       "exists": true,
-      "char_count": 1544
+      "char_count": 2698
     },
     {
       "id": "ops-mo-price-psychology",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 282261,
-    "avg_chars": 1568,
+    "total_chars": 283415,
+    "avg_chars": 1574,
     "domain": "game-live-ops"
   }
 }

@@ -804,7 +804,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-smoke-testing.md",
       "exists": true,
-      "char_count": 1278
+      "char_count": 2341
     },
     {
       "id": "qa-ft-basics",
@@ -830,7 +830,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-compliance-testing.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2632
     },
     {
       "id": "qa-ft-multiplayer-testing",
@@ -1896,7 +1896,7 @@
       "tags": [],
       "file": "game-qa/qa-tc-crash-analytics.md",
       "exists": true,
-      "char_count": 1581
+      "char_count": 2328
     },
     {
       "id": "qa-tc-toolchain-evolution",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 251519,
-    "avg_chars": 1571,
+    "total_chars": 254516,
+    "avg_chars": 1590,
     "domain": "game-qa"
   }
 }

@@ -674,7 +674,7 @@
       "tags": [],
       "file": "game-publishing/pub-ms-market-sizing.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2138
     },
     {
       "id": "pub-ms-market-research",
@@ -1363,7 +1363,7 @@
       "tags": [],
       "file": "game-publishing/pub-pc-publisher-pitch.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2522
     },
     {
       "id": "pub-pc-publisher-types",
@@ -1883,7 +1883,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-local-publishing.md",
       "exists": true,
-      "char_count": 1314
+      "char_count": 2187
     },
     {
       "id": "pub-ro-currency-pricing",
@@ -1909,7 +1909,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-regional-markets.md",
       "exists": true,
-      "char_count": 1455
+      "char_count": 2402
     },
     {
       "id": "pub-ro-regional-events",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 274796,
-    "avg_chars": 1526,
+    "total_chars": 278413,
+    "avg_chars": 1546,
     "domain": "game-publishing"
   }
 }

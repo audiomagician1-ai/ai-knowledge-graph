@@ -1633,7 +1633,7 @@
       ],
       "file": "vfx/vfx-pp-dof.md",
       "exists": true,
-      "char_count": 1541
+      "char_count": 2349
     },
     {
       "id": "vfx-pp-vignette",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 303026,
-    "avg_chars": 1683,
+    "total_chars": 303834,
+    "avg_chars": 1687,
     "domain": "vfx"
   }
 }

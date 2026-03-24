@@ -219,7 +219,7 @@
       "tags": [],
       "file": "prompt-engineering/prompt-chaining.md",
       "exists": true,
-      "char_count": 1508
+      "char_count": 2943
     },
     {
       "id": "structured-output",
@@ -263,8 +263,8 @@
   ],
   "stats": {
     "total": 20,
-    "total_chars": 37006,
-    "avg_chars": 1850,
+    "total_chars": 38441,
+    "avg_chars": 1922,
     "domain": "prompt-engineering"
   }
 }
