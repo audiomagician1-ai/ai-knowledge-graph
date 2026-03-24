@@ -339,10 +339,30 @@
     "ta-lod-crowd",
     "vfx-destruct-prefracture",
     "vfx-opt-precompute",
-    "3da-normals-smoothing"
+    "3da-normals-smoothing",
+    "3da-modeling-workflow",
+    "connection-pool",
+    "monotone-queue",
+    "anim-slow-in-out",
+    "anim-graph-editor",
+    "anim-face-wrinkle",
+    "cg-bvh",
+    "cg-caustics",
+    "cg-vignette",
+    "cg-gpu-memory",
+    "cd-prop-color-coding",
+    "cd-mood-color-extraction",
+    "cd-mood-presentation",
+    "sfx-fr-footsteps",
+    "sfx-dp-interactive-dialogue",
+    "footstep-system",
+    "ops-da-revenue-metrics",
+    "ops-ur-lifecycle-management",
+    "gp-cd-meeting",
+    "qa-bl-release-criteria"
   ],
   "errors": [],
-  "total_upgraded": 340,
+  "total_upgraded": 360,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T01:54:46.667371"
+  "last_updated": "2026-03-25T02:13:34.907490"
 }

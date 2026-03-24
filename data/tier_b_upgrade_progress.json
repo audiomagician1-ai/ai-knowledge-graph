@@ -1074,10 +1074,30 @@
     "3da-tex-hand-painted",
     "3da-tex-tiling-material",
     "3da-prop-lod-creation",
-    "3da-prop-quality-checklist"
+    "3da-prop-quality-checklist",
+    "web-performance",
+    "attention-mechanism",
+    "positional-encoding",
+    "prompt-basics",
+    "file-io",
+    "anim-mocap-overview",
+    "anim-facs",
+    "anim-physics-overview",
+    "quantitative-genetics",
+    "migration-hibernation",
+    "cg-skin-rendering",
+    "cg-btdf",
+    "cg-command-buffer",
+    "cg-cube-mapping",
+    "cg-scientific-vis",
+    "cd-color-temperature-shift",
+    "cd-char-age-variation",
+    "cd-char-presentation",
+    "auction-theory",
+    "income-distribution"
   ],
   "errors": [],
-  "total_upgraded": 1075,
+  "total_upgraded": 1095,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T01:53:36.307806"
+  "last_updated": "2026-03-25T02:12:27.470133"
 }
