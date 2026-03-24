@@ -179,10 +179,30 @@
     "cd-char-presentation",
     "ue5-pak-system",
     "state-machine-anim",
-    "world-origin-shifting"
+    "world-origin-shifting",
+    "cook-automation",
+    "save-system-platform",
+    "perf-budget",
+    "plugin-lifecycle",
+    "api-design-plugin",
+    "analytics-plugin",
+    "localization-plugin",
+    "ops-uc-staged-rollout",
+    "gp-mp-kpi",
+    "gp-rk-schedule",
+    "pub-pm-pr-agency",
+    "qa-at-roi-metrics",
+    "guiux-hud-diegetic",
+    "mn-ss-jitter-buffer",
+    "mn-lr-scoring-system",
+    "nd-cw-protagonist-design",
+    "nd-cw-antagonist-design",
+    "nd-lo-subtitle-system",
+    "se-strangler-fig",
+    "se-atomic"
   ],
   "errors": [],
-  "total_upgraded": 180,
+  "total_upgraded": 200,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T23:22:24.375499"
+  "last_updated": "2026-03-24T23:41:38.382349"
 }
