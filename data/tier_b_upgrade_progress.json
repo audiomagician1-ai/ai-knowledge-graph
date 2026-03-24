@@ -1094,10 +1094,20 @@
     "cd-char-age-variation",
     "cd-char-presentation",
     "auction-theory",
-    "income-distribution"
+    "income-distribution",
+    "business-cycle",
+    "investment-theory",
+    "new-keynesian",
+    "labor-market-macro",
+    "foreign-exchange-market",
+    "global-value-chains",
+    "urbanization-econ",
+    "technology-transfer",
+    "david-ricardo",
+    "karl-marx-econ"
   ],
   "errors": [],
-  "total_upgraded": 1095,
+  "total_upgraded": 1105,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T02:12:27.470133"
+  "last_updated": "2026-03-25T02:21:57.515513"
 }

@@ -359,10 +359,20 @@
     "ops-da-revenue-metrics",
     "ops-ur-lifecycle-management",
     "gp-cd-meeting",
-    "qa-bl-release-criteria"
+    "qa-bl-release-criteria",
+    "qa-tc-test-env-mgmt",
+    "guiux-motion-easing",
+    "mn-ls-turn-based-sync",
+    "mn-db-optimistic-locking",
+    "mn-db-cqrs-pattern",
+    "mn-ch-background-download",
+    "mn-lb-party-management",
+    "mn-lb-clan-guild",
+    "se-pipeline-design",
+    "se-cr-checklist"
   ],
   "errors": [],
-  "total_upgraded": 360,
+  "total_upgraded": 370,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T02:13:34.907490"
+  "last_updated": "2026-03-25T02:22:45.969491"
 }
