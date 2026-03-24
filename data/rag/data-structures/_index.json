@@ -284,7 +284,7 @@
       "tags": [],
       "file": "data-structures/adjacency-matrix.md",
       "exists": true,
-      "char_count": 1336
+      "char_count": 2478
     },
     {
       "id": "adjacency-list",
@@ -341,8 +341,8 @@
   ],
   "stats": {
     "total": 26,
-    "total_chars": 51790,
-    "avg_chars": 1991,
+    "total_chars": 52932,
+    "avg_chars": 2035,
     "domain": "data-structures"
   }
 }

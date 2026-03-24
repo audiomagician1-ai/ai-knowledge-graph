@@ -141,7 +141,7 @@
       "tags": [],
       "file": "cs-fundamentals/boolean-logic.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2463
     },
     {
       "id": "os-basics",
@@ -237,8 +237,8 @@
   ],
   "stats": {
     "total": 18,
-    "total_chars": 35696,
-    "avg_chars": 1983,
+    "total_chars": 36839,
+    "avg_chars": 2046,
     "domain": "cs-fundamentals"
   }
 }

@@ -328,7 +328,7 @@
       ],
       "file": "level-design/combat-space/flanking-route.md",
       "exists": true,
-      "char_count": 1204
+      "char_count": 2302
     },
     {
       "id": "hazard-placement",
@@ -508,7 +508,7 @@
       ],
       "file": "level-design/combat-space/choke-point.md",
       "exists": true,
-      "char_count": 1211
+      "char_count": 2322
     },
     {
       "id": "arena-layout",
@@ -718,7 +718,7 @@
       ],
       "file": "level-design/guidance-design/tutorial-level.md",
       "exists": true,
-      "char_count": 1425
+      "char_count": 2508
     },
     {
       "id": "onboarding-sequence",
@@ -748,7 +748,7 @@
       ],
       "file": "level-design/guidance-design/signposting.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 2504
     },
     {
       "id": "player-expectation",
@@ -1363,7 +1363,7 @@
       ],
       "file": "level-design/level-editor/level-editor-intro.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2720
     },
     {
       "id": "landscape-tool",
@@ -1378,7 +1378,7 @@
       ],
       "file": "level-design/level-editor/landscape-tool.md",
       "exists": true,
-      "char_count": 1221
+      "char_count": 2756
     },
     {
       "id": "multi-user-editing",
@@ -1798,7 +1798,7 @@
       ],
       "file": "level-design/metrics-design/ai-patrol-range.md",
       "exists": true,
-      "char_count": 1426
+      "char_count": 2277
     },
     {
       "id": "metrics-intro",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 367023,
-    "avg_chars": 1835,
+    "total_chars": 375000,
+    "avg_chars": 1875,
     "domain": "level-design"
   }
 }

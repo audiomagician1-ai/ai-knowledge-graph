@@ -19,10 +19,20 @@
     "qa-bl-reproduction",
     "guiux-a11y-colorblind",
     "mn-lb-room-browser",
-    "nd-wb-mythology"
+    "nd-wb-mythology",
+    "se-dp-iterator",
+    "se-system-ecs",
+    "se-dep-security",
+    "ta-validation-tool",
+    "vfx-fluid-ocean",
+    "3da-retopo-face-loops",
+    "3da-rig-spine",
+    "boolean-logic",
+    "adjacency-matrix",
+    "factory-pattern"
   ],
   "errors": [],
-  "total_upgraded": 20,
+  "total_upgraded": 30,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T20:45:50.299717"
+  "last_updated": "2026-03-24T20:55:13.314243"
 }

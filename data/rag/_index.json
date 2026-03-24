@@ -2218,7 +2218,7 @@
       ],
       "file": "3d-art/3da-retopo-face-loops.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2664
     },
     {
       "id": "3da-rig-blendshape",
@@ -2443,7 +2443,7 @@
       ],
       "file": "3d-art/3da-rig-spine.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2773
     },
     {
       "id": "3da-rig-skinning",
@@ -17057,7 +17057,7 @@
       "tags": [],
       "file": "cs-fundamentals/boolean-logic.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2463
     },
     {
       "id": "os-basics",
@@ -17434,7 +17434,7 @@
       "tags": [],
       "file": "data-structures/adjacency-matrix.md",
       "exists": true,
-      "char_count": 1336
+      "char_count": 2478
     },
     {
       "id": "adjacency-list",
@@ -51694,7 +51694,7 @@
       ],
       "file": "level-design/combat-space/flanking-route.md",
       "exists": true,
-      "char_count": 1204
+      "char_count": 2302
     },
     {
       "id": "hazard-placement",
@@ -51874,7 +51874,7 @@
       ],
       "file": "level-design/combat-space/choke-point.md",
       "exists": true,
-      "char_count": 1211
+      "char_count": 2322
     },
     {
       "id": "arena-layout",
@@ -52084,7 +52084,7 @@
       ],
       "file": "level-design/guidance-design/tutorial-level.md",
       "exists": true,
-      "char_count": 1425
+      "char_count": 2508
     },
     {
       "id": "onboarding-sequence",
@@ -52114,7 +52114,7 @@
       ],
       "file": "level-design/guidance-design/signposting.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 2504
     },
     {
       "id": "player-expectation",
@@ -52729,7 +52729,7 @@
       ],
       "file": "level-design/level-editor/level-editor-intro.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2720
     },
     {
       "id": "landscape-tool",
@@ -52744,7 +52744,7 @@
       ],
       "file": "level-design/level-editor/landscape-tool.md",
       "exists": true,
-      "char_count": 1221
+      "char_count": 2756
     },
     {
       "id": "multi-user-editing",
@@ -53164,7 +53164,7 @@
       ],
       "file": "level-design/metrics-design/ai-patrol-range.md",
       "exists": true,
-      "char_count": 1426
+      "char_count": 2277
     },
     {
       "id": "metrics-intro",
@@ -78898,7 +78898,7 @@
       ],
       "file": "software-engineering/package-management/se-dep-security.md",
       "exists": true,
-      "char_count": 1425
+      "char_count": 3281
     },
     {
       "id": "se-dep-resolution",
@@ -83228,7 +83228,7 @@
       ],
       "file": "technical-art/ta-validation-tool.md",
       "exists": true,
-      "char_count": 1417
+      "char_count": 2928
     },
     {
       "id": "vfx-destruct-chaos",
@@ -84038,7 +84038,7 @@
       ],
       "file": "vfx/vfx-fluid-ocean.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 3011
     },
     {
       "id": "vfx-fluid-waterfall",

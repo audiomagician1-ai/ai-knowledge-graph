@@ -9,84 +9,114 @@ is_milestone: false
 tags: ["设计模式"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 42.0
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.429
-last_scored: "2026-03-22"
+last_scored: "2026-03-24"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # 工厂模式
 
 ## 概述
 
-工厂模式（Factory Pattern）是AI工程（AI Engineering）中面向对象编程领域的重要概念。难度等级5/9（中高级）。
+工厂模式（Factory Pattern）是一种创建型设计模式，其核心目的是将对象的**创建逻辑**与**使用逻辑**解耦。调用方无需知道具体类的名称，只需向工厂请求所需类型的对象，工厂负责实例化并返回。这一模式最早由GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式归类，在该书中被拆分为"简单工厂"、"工厂方法"和"抽象工厂"三个相关变体。
 
-掌握工厂模式的核心概念和应用。
+工厂模式在AI工程领域尤为重要，因为深度学习框架中存在大量需要根据配置动态创建的对象——例如根据字符串名称动态创建不同的优化器（Adam、SGD、RMSProp）、损失函数或数据增强策略。如果直接在业务代码中写 `if optimizer == "adam": return Adam(lr)` 这样的分支，当新增优化器类型时必须修改已有代码，违反了开放-封闭原则（OCP）。工厂模式通过将这些分支逻辑集中到工厂类中，使系统对扩展开放、对修改封闭。
 
-在知识体系中，工厂模式建立在设计模式概述的基础之上，是理解建造者模式的关键前置知识。为什么工厂模式如此重要？因为它在面向对象编程中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### 三种变体及其结构差异
 
-### 1. 掌握工厂模式的核心概念
+**简单工厂（Simple Factory）**并非GoF正式模式，而是一个静态方法根据传入参数决定返回哪个子类实例。其结构仅有一个工厂类，包含一个静态方法 `create(type: str) -> Product`。优点是实现简单，缺点是每新增一种产品都必须修改工厂类本身。
 
-掌握工厂模式的核心概念是工厂模式(Factory Pattern)的核心组成部分之一。在面向对象编程的实践中，掌握工厂模式的核心概念决定了系统行为的关键特征。例如，当掌握工厂模式的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握工厂模式的核心概念需要结合AI工程的基本原理进行分析。
+**工厂方法（Factory Method）**是GoF正式收录的模式，其核心结构包含四个角色：
+- `Creator`（抽象创建者）：声明抽象方法 `factory_method() -> Product`
+- `ConcreteCreator`（具体创建者）：重写 `factory_method()` 返回特定子类
+- `Product`（抽象产品）：定义产品接口
+- `ConcreteProduct`（具体产品）：实现产品接口
 
-### 2. 应用
+工厂方法将"选择实例化哪个子类"的决策延迟到子类，调用方只依赖 `Creator` 抽象类，从而彻底隔离了对具体产品类的直接依赖。
 
-应用是工厂模式(Factory Pattern)的核心组成部分之一。在面向对象编程的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+**抽象工厂（Abstract Factory）**处理"产品族"问题。当系统需要同时创建多个相互关联的对象时使用——例如同时创建 `PyTorchOptimizer` + `PyTorchScheduler`，或 `TensorFlowOptimizer` + `TensorFlowScheduler`，保证同族产品之间的兼容性。抽象工厂接口声明多个 `create_X()` 方法，每个具体工厂实现整个产品族的创建。
 
+### 注册表工厂（Registry Pattern）
 
-### 关键原理分析
+在AI工程中，更常见的实现是"注册表工厂"，它结合了工厂模式与装饰器语法：
 
-工厂模式的核心在于掌握工厂模式的核心概念和应用。从理论角度看，该概念涉及以下层面：
+```python
+_registry = {}
 
-1. **定义层**：明确工厂模式的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解工厂模式内部各要素的相互作用方式
-3. **应用层**：将工厂模式的原理映射到AI工程的实际场景中
+def register(name):
+    def decorator(cls):
+        _registry[name] = cls
+        return cls
+    return decorator
 
-思考题：如何判断工厂模式的应用是否超出了其理论适用范围？
+def create(name, **kwargs):
+    return _registry[name](**kwargs)
 
-## 关键要点
+@register("adam")
+class AdamOptimizer:
+    def __init__(self, lr=0.001): ...
+```
 
-1. **核心定义**：工厂模式的本质是掌握工厂模式的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握工厂模式需要同时理解掌握工厂模式的核心概念和应用等关键维度
-3. **先修关系**：扎实的设计模式概述基础对理解工厂模式至关重要
-4. **进阶路径**：掌握后可继续深入建造者模式等进阶主题
-5. **实践标准**：真正掌握工厂模式的标志是能在具体场景中灵活运用并正确判断适用边界
+使用 `@register("adam")` 装饰器时，新增优化器无需修改工厂函数，完全符合OCP。PyTorch的 `torch.optim` 模块以及Hugging Face的 `AutoModel.from_pretrained()` 背后均使用了类似的注册机制。
+
+### 工厂模式与直接实例化的对比
+
+直接调用 `Adam(lr=0.001)` 在调用方产生了对 `Adam` 类的硬依赖，单元测试时无法注入Mock对象。工厂模式使依赖方向反转：调用方依赖抽象工厂接口，具体产品类可随时替换。这在AI实验管理中极为关键——通过修改配置文件中的 `"optimizer": "sgd"` 即可切换训练策略，无需改动训练循环代码。
+
+## 实际应用
+
+**场景1：AI模型组件动态加载**
+
+```python
+# 基于配置文件创建不同的激活函数
+class ActivationFactory:
+    _map = {
+        "relu": nn.ReLU,
+        "gelu": nn.GELU,
+        "silu": nn.SiLU,
+    }
+    @classmethod
+    def create(cls, name: str) -> nn.Module:
+        if name not in cls._map:
+            raise ValueError(f"Unknown activation: {name}")
+        return cls._map[name]()
+```
+
+这种写法让模型架构配置文件中的 `"activation": "gelu"` 可以直接驱动模型构建，LLM研究中切换激活函数（如从ReLU到SwiGLU）只需修改配置，不动模型代码。
+
+**场景2：数据加载器工厂**
+
+不同数据集（ImageNet、COCO、自定义CSV）的加载逻辑完全不同，但训练脚本只需调用 `DataLoaderFactory.create(config.dataset_type, **config.dataset_args)` 获得统一接口的 `DataLoader` 对象，训练主循环对数据集类型一无所知。
+
+**场景3：Scikit-learn的`make_pipeline`与`clone`**
+
+Scikit-learn的 `sklearn.base.clone(estimator)` 函数本质上是一个工厂方法，它通过读取 `estimator.get_params()` 重新构造相同类型和参数的新对象，避免了在交叉验证中复用同一实例导致的数据泄漏问题。
 
 ## 常见误区
 
-1. **混淆概念边界**：将工厂模式与面向对象编程中其他相近概念混为一谈。例如，掌握工厂模式的核心概念的适用条件与其他应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解设计模式概述就学习工厂模式，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：工厂模式的复杂度为5/9，初学者容易忽略其中的细微但关键的区别**
+**误区1：将简单工厂误认为等同于工厂方法**
 
-## 知识衔接
+简单工厂中的静态 `create()` 方法每次新增产品都必须修改工厂类，违反OCP；工厂方法通过新增 `ConcreteCreator` 子类扩展，不修改已有代码。两者的区别不是名称问题，而是扩展方式的根本不同。很多教程将简单工厂称为"工厂模式"，导致初学者误以为工厂模式必然存在大量 `if-elif` 分支。
 
-### 先修知识
-先修知识包括：
-- **设计模式概述** — 为工厂模式提供了必要的概念基础
+**误区2：抽象工厂适用于所有多产品场景**
 
-### 后续学习
-掌握工厂模式后可继续学习：
-- **建造者模式** — 在工厂模式基础上进一步拓展
+抽象工厂的价值在于保证**同族产品的约束关系**，而不是"只要有多种产品就用抽象工厂"。如果 `OptimizerFactory` 和 `SchedulerFactory` 之间没有必须配对的约束，独立的工厂方法更合适，强行引入抽象工厂只会增加4-6个额外类，造成过度设计。
 
-## 学习建议
+**误区3：工厂模式会隐藏对象创建细节导致调试困难**
 
-预计学习时间：3-5小时。建议采用以下策略：
+工厂模式确实将实例化集中到工厂类，但这反而使调试更方便——所有对象创建的日志、监控、参数校验逻辑都可以统一在工厂入口处添加，而不是散落在数十个调用点。在AI实验中，工厂可在 `create()` 时自动记录所有超参数，实现实验可复现性。
 
-- **主动回忆**：学完后不看笔记复述工厂模式的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将工厂模式与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释工厂模式，检验理解深度
+## 知识关联
 
-## 延伸阅读
+工厂模式建立在**设计模式概述**中介绍的创建型模式分类和开放-封闭原则之上，掌握UML类图中的继承、聚合关系是读懂工厂方法四角色结构的前提。工厂模式处理的是**单步创建**问题——一次调用返回完整可用对象。
 
-- 相关教科书中关于面向对象编程的章节可作为深入参考
-- Wikipedia: [Factory Pattern](https://en.wikipedia.org/wiki/factory_pattern) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Factory Pattern" 可找到配套视频教程
+后续的**建造者模式（Builder Pattern）**解决的是**多步骤创建**问题：当对象的构造需要经历多个有序步骤、且中间状态有意义时（如逐层添加神经网络层构建模型），建造者模式通过 `Builder.add_layer().set_optimizer().build()` 的链式调用分离构造过程与表示。两者的关键区别在于：工厂模式的 `create()` 是原子操作，建造者模式的 `build()` 是多步骤过程的终点。在复杂AI系统中，常见的组合是**建造者模式内部调用工厂模式**——`ModelBuilder` 在每一步中使用 `LayerFactory.create(config)` 创建具体层对象。

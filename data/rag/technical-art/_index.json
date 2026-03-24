@@ -2698,13 +2698,13 @@
       ],
       "file": "technical-art/ta-validation-tool.md",
       "exists": true,
-      "char_count": 1417
+      "char_count": 2928
     }
   ],
   "stats": {
     "total": 180,
-    "total_chars": 264324,
-    "avg_chars": 1468,
+    "total_chars": 265835,
+    "avg_chars": 1476,
     "domain": "technical-art"
   }
 }

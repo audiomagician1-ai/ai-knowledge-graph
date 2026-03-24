@@ -808,7 +808,7 @@
       ],
       "file": "vfx/vfx-fluid-ocean.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 3011
     },
     {
       "id": "vfx-fluid-waterfall",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 276251,
-    "avg_chars": 1534,
+    "total_chars": 277835,
+    "avg_chars": 1543,
     "domain": "vfx"
   }
 }
