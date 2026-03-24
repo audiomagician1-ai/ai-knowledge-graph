@@ -448,7 +448,7 @@
       ],
       "file": "mathematics/analytic-geometry/tangent-normal-lines.md",
       "exists": true,
-      "char_count": 1215
+      "char_count": 2412
     },
     {
       "id": "parametric-curves",
@@ -1033,7 +1033,7 @@
       ],
       "file": "mathematics/calculus/ivt-evt.md",
       "exists": true,
-      "char_count": 1217
+      "char_count": 2796
     },
     {
       "id": "partial-derivatives",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 660774,
-    "avg_chars": 2456,
+    "total_chars": 663550,
+    "avg_chars": 2466,
     "domain": "mathematics"
   }
 }

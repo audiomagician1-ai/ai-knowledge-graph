@@ -1588,7 +1588,7 @@
       ],
       "file": "level-design/lighting-narrative/light-puzzle.md",
       "exists": true,
-      "char_count": 1205
+      "char_count": 2255
     },
     {
       "id": "dynamic-lighting",
@@ -1708,7 +1708,7 @@
       ],
       "file": "level-design/lighting-narrative/day-night-cycle.md",
       "exists": true,
-      "char_count": 1218
+      "char_count": 2433
     },
     {
       "id": "mood-lighting",
@@ -1738,7 +1738,7 @@
       ],
       "file": "level-design/lighting-narrative/baked-vs-realtime.md",
       "exists": true,
-      "char_count": 1415
+      "char_count": 2387
     },
     {
       "id": "emissive-material",
@@ -2908,7 +2908,7 @@
       ],
       "file": "level-design/terrain-design/cliff-cave.md",
       "exists": true,
-      "char_count": 1217
+      "char_count": 2759
     },
     {
       "id": "vegetation-placement",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 375000,
-    "avg_chars": 1875,
+    "total_chars": 379779,
+    "avg_chars": 1898,
     "domain": "level-design"
   }
 }

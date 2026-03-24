@@ -1063,7 +1063,7 @@
       ],
       "file": "psychology/cognitive-psychology/embodied-cognition.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2601
     },
     {
       "id": "decision-making",
@@ -1528,7 +1528,7 @@
       ],
       "file": "psychology/developmental-psychology/theory-of-mind.md",
       "exists": true,
-      "char_count": 1201
+      "char_count": 2550
     },
     {
       "id": "resilience",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 344413,
-    "avg_chars": 1882,
+    "total_chars": 347136,
+    "avg_chars": 1896,
     "domain": "psychology"
   }
 }

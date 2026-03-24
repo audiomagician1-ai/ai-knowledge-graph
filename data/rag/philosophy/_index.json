@@ -628,7 +628,7 @@
       ],
       "file": "philosophy/ancient-philosophy/heraclitus.md",
       "exists": true,
-      "char_count": 1411
+      "char_count": 2611
     },
     {
       "id": "yinyang-school",
@@ -868,7 +868,7 @@
       ],
       "file": "philosophy/epistemology/scientific-method-phil.md",
       "exists": true,
-      "char_count": 1503
+      "char_count": 2644
     },
     {
       "id": "empiricism",
@@ -1108,7 +1108,7 @@
       ],
       "file": "philosophy/ethics/business-ethics.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2475
     },
     {
       "id": "problem-of-evil",
@@ -1273,7 +1273,7 @@
       ],
       "file": "philosophy/ethics/virtue-ethics.md",
       "exists": true,
-      "char_count": 1439
+      "char_count": 2661
     },
     {
       "id": "act-rule-utilitarianism",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 292753,
-    "avg_chars": 1722,
+    "total_chars": 297355,
+    "avg_chars": 1749,
     "domain": "philosophy"
   }
 }

@@ -4116,7 +4116,7 @@
       "tags": [],
       "file": "ai-foundations/linear-regression.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2548
     },
     {
       "id": "logistic-regression",
@@ -4129,7 +4129,7 @@
       "tags": [],
       "file": "ai-foundations/logistic-regression.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2572
     },
     {
       "id": "a-star-search",
@@ -6834,7 +6834,7 @@
       ],
       "file": "animation/anim-retargeting.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2633
     },
     {
       "id": "anim-deformation",
@@ -10734,7 +10734,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-radiosity.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2630
     },
     {
       "id": "cg-radiometry",
@@ -11529,7 +11529,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-eye-adaptation.md",
       "exists": true,
-      "char_count": 1318
+      "char_count": 2476
     },
     {
       "id": "cg-dof",
@@ -12249,7 +12249,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-reflection.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2360
     },
     {
       "id": "cg-rt-refraction",
@@ -13239,7 +13239,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-detail-mapping.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2738
     },
     {
       "id": "cg-displacement-map",
@@ -15804,7 +15804,7 @@
       ],
       "file": "concept-design/cd-atmospheric-perspective.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 1979
     },
     {
       "id": "cd-scale-depth-cues",
@@ -16134,7 +16134,7 @@
       ],
       "file": "concept-design/cd-prop-weapon-design.md",
       "exists": true,
-      "char_count": 1324
+      "char_count": 2330
     },
     {
       "id": "cd-prop-exploded-view",
@@ -16509,7 +16509,7 @@
       ],
       "file": "concept-design/cd-style-art-direction.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2388
     },
     {
       "id": "cd-style-color-identity",
@@ -17759,7 +17759,7 @@
       "tags": [],
       "file": "database/db-locking.md",
       "exists": true,
-      "char_count": 1607
+      "char_count": 3101
     },
     {
       "id": "timeseries-db",
@@ -29540,7 +29540,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-qa-checklist.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2735
     },
     {
       "id": "sfx-ao-memory-profiling",
@@ -29748,7 +29748,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-sample-pooling.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2725
     },
     {
       "id": "sfx-ao-priority-system",
@@ -30892,7 +30892,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-occlusion-geometry.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2675
     },
     {
       "id": "sfx-sa-binaural-audio",
@@ -38349,7 +38349,7 @@
       ],
       "file": "game-engine/scripting-system/data-driven-design.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 3007
     },
     {
       "id": "hot-reload-script",
@@ -39069,7 +39069,7 @@
       ],
       "file": "game-engine/unity-architecture/unity-cinemachine.md",
       "exists": true,
-      "char_count": 1363
+      "char_count": 3482
     },
     {
       "id": "unity-dots",
@@ -52954,7 +52954,7 @@
       ],
       "file": "level-design/lighting-narrative/light-puzzle.md",
       "exists": true,
-      "char_count": 1205
+      "char_count": 2255
     },
     {
       "id": "dynamic-lighting",
@@ -53074,7 +53074,7 @@
       ],
       "file": "level-design/lighting-narrative/day-night-cycle.md",
       "exists": true,
-      "char_count": 1218
+      "char_count": 2433
     },
     {
       "id": "mood-lighting",
@@ -53104,7 +53104,7 @@
       ],
       "file": "level-design/lighting-narrative/baked-vs-realtime.md",
       "exists": true,
-      "char_count": 1415
+      "char_count": 2387
     },
     {
       "id": "emissive-material",
@@ -54274,7 +54274,7 @@
       ],
       "file": "level-design/terrain-design/cliff-cave.md",
       "exists": true,
-      "char_count": 1217
+      "char_count": 2759
     },
     {
       "id": "vegetation-placement",
@@ -55282,7 +55282,7 @@
       ],
       "file": "mathematics/analytic-geometry/tangent-normal-lines.md",
       "exists": true,
-      "char_count": 1215
+      "char_count": 2412
     },
     {
       "id": "parametric-curves",
@@ -55867,7 +55867,7 @@
       ],
       "file": "mathematics/calculus/ivt-evt.md",
       "exists": true,
-      "char_count": 1217
+      "char_count": 2796
     },
     {
       "id": "partial-derivatives",
@@ -60037,7 +60037,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-room-browser.md",
       "exists": true,
-      "char_count": 2696
+      "char_count": 2737
     },
     {
       "id": "mn-lb-room-creation",
@@ -63716,7 +63716,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-mythology.md",
       "exists": true,
-      "char_count": 2669
+      "char_count": 2278
     },
     {
       "id": "nd-wb-tech-level",
@@ -63911,7 +63911,7 @@
       "tags": [],
       "file": "oop/factory-pattern.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 3004
     },
     {
       "id": "builder-pattern",
@@ -64749,7 +64749,7 @@
       ],
       "file": "philosophy/ancient-philosophy/heraclitus.md",
       "exists": true,
-      "char_count": 1411
+      "char_count": 2611
     },
     {
       "id": "yinyang-school",
@@ -64989,7 +64989,7 @@
       ],
       "file": "philosophy/epistemology/scientific-method-phil.md",
       "exists": true,
-      "char_count": 1503
+      "char_count": 2644
     },
     {
       "id": "empiricism",
@@ -65229,7 +65229,7 @@
       ],
       "file": "philosophy/ethics/business-ethics.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2475
     },
     {
       "id": "problem-of-evil",
@@ -65394,7 +65394,7 @@
       ],
       "file": "philosophy/ethics/virtue-ethics.md",
       "exists": true,
-      "char_count": 1439
+      "char_count": 2661
     },
     {
       "id": "act-rule-utilitarianism",
@@ -67959,7 +67959,7 @@
       ],
       "file": "physics/fluid-mechanics/dimensional-analysis.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2793
     },
     {
       "id": "drag-force",
@@ -68994,7 +68994,7 @@
       ],
       "file": "physics/thermodynamics/heat-transfer.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2605
     },
     {
       "id": "carnot-theorem",
@@ -69054,7 +69054,7 @@
       ],
       "file": "physics/thermodynamics/kinetic-theory.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2592
     },
     {
       "id": "temperature-heat",
@@ -71484,7 +71484,7 @@
       ],
       "file": "product-design/prototyping/concept-testing.md",
       "exists": true,
-      "char_count": 1221
+      "char_count": 2576
     },
     {
       "id": "wireframe",
@@ -74024,7 +74024,7 @@
       ],
       "file": "psychology/cognitive-psychology/embodied-cognition.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2601
     },
     {
       "id": "decision-making",
@@ -74489,7 +74489,7 @@
       ],
       "file": "psychology/developmental-psychology/theory-of-mind.md",
       "exists": true,
-      "char_count": 1201
+      "char_count": 2550
     },
     {
       "id": "resilience",
@@ -80398,7 +80398,7 @@
       "tags": [],
       "file": "system-design/service-discovery.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 3432
     },
     {
       "id": "circuit-breaker",

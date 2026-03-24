@@ -2248,7 +2248,7 @@
       ],
       "file": "animation/anim-retargeting.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2633
     },
     {
       "id": "anim-deformation",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 273515,
-    "avg_chars": 1519,
+    "total_chars": 274823,
+    "avg_chars": 1526,
     "domain": "animation"
   }
 }

@@ -375,7 +375,7 @@
       "tags": [],
       "file": "ai-foundations/linear-regression.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2548
     },
     {
       "id": "logistic-regression",
@@ -388,13 +388,13 @@
       "tags": [],
       "file": "ai-foundations/logistic-regression.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2572
     }
   ],
   "stats": {
     "total": 30,
-    "total_chars": 80116,
-    "avg_chars": 2670,
+    "total_chars": 82573,
+    "avg_chars": 2752,
     "domain": "ai-foundations"
   }
 }

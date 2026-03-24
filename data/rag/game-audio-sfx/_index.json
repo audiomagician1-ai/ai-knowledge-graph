@@ -804,7 +804,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-qa-checklist.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2735
     },
     {
       "id": "sfx-ao-memory-profiling",
@@ -1012,7 +1012,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-sample-pooling.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2725
     },
     {
       "id": "sfx-ao-priority-system",
@@ -2156,7 +2156,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-occlusion-geometry.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2675
     },
     {
       "id": "sfx-sa-binaural-audio",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 259961,
-    "avg_chars": 1444,
+    "total_chars": 264156,
+    "avg_chars": 1467,
     "domain": "game-audio-sfx"
   }
 }

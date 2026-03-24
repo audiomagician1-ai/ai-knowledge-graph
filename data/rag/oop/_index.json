@@ -102,7 +102,7 @@
       "tags": [],
       "file": "oop/factory-pattern.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 3004
     },
     {
       "id": "builder-pattern",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 50899,
-    "avg_chars": 2120,
+    "total_chars": 52577,
+    "avg_chars": 2190,
     "domain": "oop"
   }
 }

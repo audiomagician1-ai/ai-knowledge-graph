@@ -1288,7 +1288,7 @@
       ],
       "file": "physics/fluid-mechanics/dimensional-analysis.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2793
     },
     {
       "id": "drag-force",
@@ -2323,7 +2323,7 @@
       ],
       "file": "physics/thermodynamics/heat-transfer.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2605
     },
     {
       "id": "carnot-theorem",
@@ -2383,7 +2383,7 @@
       ],
       "file": "physics/thermodynamics/kinetic-theory.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2592
     },
     {
       "id": "temperature-heat",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 436493,
-    "avg_chars": 2249,
+    "total_chars": 440063,
+    "avg_chars": 2268,
     "domain": "physics"
   }
 }

@@ -1903,7 +1903,7 @@
       ],
       "file": "product-design/prototyping/concept-testing.md",
       "exists": true,
-      "char_count": 1221
+      "char_count": 2576
     },
     {
       "id": "wireframe",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 315944,
-    "avg_chars": 1735,
+    "total_chars": 317299,
+    "avg_chars": 1743,
     "domain": "product-design"
   }
 }

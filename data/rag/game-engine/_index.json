@@ -3523,7 +3523,7 @@
       ],
       "file": "game-engine/scripting-system/data-driven-design.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 3007
     },
     {
       "id": "hot-reload-script",
@@ -4243,7 +4243,7 @@
       ],
       "file": "game-engine/unity-architecture/unity-cinemachine.md",
       "exists": true,
-      "char_count": 1363
+      "char_count": 3482
     },
     {
       "id": "unity-dots",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 518483,
-    "avg_chars": 1728,
+    "total_chars": 522280,
+    "avg_chars": 1740,
     "domain": "game-engine"
   }
 }

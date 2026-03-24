@@ -868,7 +868,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-radiosity.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2630
     },
     {
       "id": "cg-radiometry",
@@ -1663,7 +1663,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-eye-adaptation.md",
       "exists": true,
-      "char_count": 1318
+      "char_count": 2476
     },
     {
       "id": "cg-dof",
@@ -2383,7 +2383,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-reflection.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2360
     },
     {
       "id": "cg-rt-refraction",
@@ -3373,7 +3373,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-detail-mapping.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2738
     },
     {
       "id": "cg-displacement-map",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 412661,
-    "avg_chars": 1650,
+    "total_chars": 417572,
+    "avg_chars": 1670,
     "domain": "computer-graphics"
   }
 }

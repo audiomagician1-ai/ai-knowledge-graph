@@ -2188,7 +2188,7 @@
       ],
       "file": "concept-design/cd-atmospheric-perspective.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 1979
     },
     {
       "id": "cd-scale-depth-cues",
@@ -2518,7 +2518,7 @@
       ],
       "file": "concept-design/cd-prop-weapon-design.md",
       "exists": true,
-      "char_count": 1324
+      "char_count": 2330
     },
     {
       "id": "cd-prop-exploded-view",
@@ -2893,7 +2893,7 @@
       ],
       "file": "concept-design/cd-style-art-direction.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2388
     },
     {
       "id": "cd-style-color-identity",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 344758,
-    "avg_chars": 1567,
+    "total_chars": 347456,
+    "avg_chars": 1579,
     "domain": "concept-design"
   }
 }

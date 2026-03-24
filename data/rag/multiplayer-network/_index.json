@@ -1168,7 +1168,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-room-browser.md",
       "exists": true,
-      "char_count": 2696
+      "char_count": 2737
     },
     {
       "id": "mn-lb-room-creation",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 306594,
-    "avg_chars": 1532,
+    "total_chars": 306635,
+    "avg_chars": 1533,
     "domain": "multiplayer-network"
   }
 }
