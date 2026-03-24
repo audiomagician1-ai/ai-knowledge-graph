@@ -1064,7 +1064,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-interactive-dialogue.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2803
     },
     {
       "id": "sfx-dp-crowd-walla",
@@ -1753,7 +1753,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-fr-footsteps.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2161
     },
     {
       "id": "sfx-fr-vehicle-recording",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 293993,
-    "avg_chars": 1633,
+    "total_chars": 296375,
+    "avg_chars": 1646,
     "domain": "game-audio-sfx"
   }
 }

@@ -622,7 +622,7 @@
       "tags": [],
       "file": "game-live-ops/ops-da-revenue-metrics.md",
       "exists": true,
-      "char_count": 1603
+      "char_count": 2800
     },
     {
       "id": "ops-da-data-warehouse",
@@ -2234,7 +2234,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ur-lifecycle-management.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 2778
     },
     {
       "id": "ops-ur-retention-benchmarks",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 276967,
-    "avg_chars": 1538,
+    "total_chars": 279423,
+    "avg_chars": 1552,
     "domain": "game-live-ops"
   }
 }

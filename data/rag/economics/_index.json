@@ -1603,7 +1603,7 @@
       ],
       "file": "economics/macroeconomics/investment-theory.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2514
     },
     {
       "id": "new-keynesian",
@@ -1678,7 +1678,7 @@
       ],
       "file": "economics/macroeconomics/business-cycle.md",
       "exists": true,
-      "char_count": 1535
+      "char_count": 2390
     },
     {
       "id": "economic-growth",
@@ -2053,7 +2053,7 @@
       ],
       "file": "economics/microeconomics/auction-theory.md",
       "exists": true,
-      "char_count": 1540
+      "char_count": 2776
     },
     {
       "id": "income-distribution",
@@ -2068,7 +2068,7 @@
       ],
       "file": "economics/microeconomics/income-distribution.md",
       "exists": true,
-      "char_count": 1467
+      "char_count": 2536
     },
     {
       "id": "utility-maximization",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 310546,
-    "avg_chars": 1826,
+    "total_chars": 314750,
+    "avg_chars": 1851,
     "domain": "economics"
   }
 }

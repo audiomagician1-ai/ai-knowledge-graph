@@ -823,7 +823,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-caustics.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2772
     },
     {
       "id": "cg-ambient-occlusion",
@@ -1003,7 +1003,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-gpu-memory.md",
       "exists": true,
-      "char_count": 1542
+      "char_count": 2625
     },
     {
       "id": "cg-gpu-profiling",
@@ -1138,7 +1138,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-command-buffer.md",
       "exists": true,
-      "char_count": 2830
+      "char_count": 2745
     },
     {
       "id": "cg-async-compute",
@@ -1438,7 +1438,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-skin-rendering.md",
       "exists": true,
-      "char_count": 2590
+      "char_count": 2863
     },
     {
       "id": "cg-eye-rendering",
@@ -1513,7 +1513,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-btdf.md",
       "exists": true,
-      "char_count": 3323
+      "char_count": 3000
     },
     {
       "id": "cg-metallic-workflow",
@@ -1693,7 +1693,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-vignette.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2254
     },
     {
       "id": "cg-bloom",
@@ -2203,7 +2203,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-bvh.md",
       "exists": true,
-      "char_count": 1577
+      "char_count": 2884
     },
     {
       "id": "cg-kd-tree",
@@ -3253,7 +3253,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-cube-mapping.md",
       "exists": true,
-      "char_count": 2790
+      "char_count": 2424
     },
     {
       "id": "cg-texture-compression",
@@ -3748,13 +3748,13 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-scientific-vis.md",
       "exists": true,
-      "char_count": 2848
+      "char_count": 2576
     }
   ],
   "stats": {
     "total": 250,
-    "total_chars": 459415,
-    "avg_chars": 1837,
+    "total_chars": 463523,
+    "avg_chars": 1854,
     "domain": "computer-graphics"
   }
 }

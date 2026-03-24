@@ -463,7 +463,7 @@
       ],
       "file": "game-engine/audio-system/footstep-system.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2676
     },
     {
       "id": "adaptive-music",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 592526,
-    "avg_chars": 1975,
+    "total_chars": 593902,
+    "avg_chars": 1979,
     "domain": "game-engine"
   }
 }

@@ -358,7 +358,7 @@
       ],
       "file": "concept-design/cd-char-age-variation.md",
       "exists": true,
-      "char_count": 2387
+      "char_count": 2462
     },
     {
       "id": "cd-char-costume",
@@ -523,7 +523,7 @@
       ],
       "file": "concept-design/cd-char-presentation.md",
       "exists": true,
-      "char_count": 2107
+      "char_count": 2431
     },
     {
       "id": "cd-char-shape-language",
@@ -853,7 +853,7 @@
       ],
       "file": "concept-design/cd-color-temperature-shift.md",
       "exists": true,
-      "char_count": 2248
+      "char_count": 2139
     },
     {
       "id": "cd-hue-sat-val",
@@ -1903,7 +1903,7 @@
       ],
       "file": "concept-design/cd-mood-presentation.md",
       "exists": true,
-      "char_count": 1316
+      "char_count": 2410
     },
     {
       "id": "cd-mood-purpose",
@@ -2083,7 +2083,7 @@
       ],
       "file": "concept-design/cd-mood-color-extraction.md",
       "exists": true,
-      "char_count": 1301
+      "char_count": 2343
     },
     {
       "id": "cd-mood-cross-discipline",
@@ -2638,7 +2638,7 @@
       ],
       "file": "concept-design/cd-prop-color-coding.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2372
     },
     {
       "id": "cd-prop-intro",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 378366,
-    "avg_chars": 1719,
+    "total_chars": 381868,
+    "avg_chars": 1735,
     "domain": "concept-design"
   }
 }

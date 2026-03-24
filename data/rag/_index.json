@@ -5484,7 +5484,7 @@
       ],
       "file": "animation/anim-facs.md",
       "exists": true,
-      "char_count": 2302
+      "char_count": 2788
     },
     {
       "id": "anim-metahuman-face",
@@ -5589,7 +5589,7 @@
       ],
       "file": "animation/anim-face-wrinkle.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2706
     },
     {
       "id": "anim-eye-animation",
@@ -6159,7 +6159,7 @@
       ],
       "file": "animation/anim-graph-editor.md",
       "exists": true,
-      "char_count": 1534
+      "char_count": 2399
     },
     {
       "id": "anim-root-motion",
@@ -6279,7 +6279,7 @@
       ],
       "file": "animation/anim-mocap-overview.md",
       "exists": true,
-      "char_count": 2637
+      "char_count": 2518
     },
     {
       "id": "anim-mocap-vs-keyframe",
@@ -6639,7 +6639,7 @@
       ],
       "file": "animation/anim-physics-overview.md",
       "exists": true,
-      "char_count": 2779
+      "char_count": 2220
     },
     {
       "id": "anim-physics-material",
@@ -7629,7 +7629,7 @@
       ],
       "file": "biology/botany-zoology/migration-hibernation.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2329
     },
     {
       "id": "photosynthesis",
@@ -8709,7 +8709,7 @@
       ],
       "file": "biology/genetics/quantitative-genetics.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2890
     },
     {
       "id": "chromosomal-abnormalities",
@@ -10689,7 +10689,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-caustics.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2772
     },
     {
       "id": "cg-ambient-occlusion",
@@ -10869,7 +10869,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-gpu-memory.md",
       "exists": true,
-      "char_count": 1542
+      "char_count": 2625
     },
     {
       "id": "cg-gpu-profiling",
@@ -11004,7 +11004,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-command-buffer.md",
       "exists": true,
-      "char_count": 2830
+      "char_count": 2745
     },
     {
       "id": "cg-async-compute",
@@ -11304,7 +11304,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-skin-rendering.md",
       "exists": true,
-      "char_count": 2590
+      "char_count": 2863
     },
     {
       "id": "cg-eye-rendering",
@@ -11379,7 +11379,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-btdf.md",
       "exists": true,
-      "char_count": 3323
+      "char_count": 3000
     },
     {
       "id": "cg-metallic-workflow",
@@ -11559,7 +11559,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-vignette.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2254
     },
     {
       "id": "cg-bloom",
@@ -12069,7 +12069,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-bvh.md",
       "exists": true,
-      "char_count": 1577
+      "char_count": 2884
     },
     {
       "id": "cg-kd-tree",
@@ -13119,7 +13119,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-cube-mapping.md",
       "exists": true,
-      "char_count": 2790
+      "char_count": 2424
     },
     {
       "id": "cg-texture-compression",
@@ -13614,7 +13614,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-scientific-vis.md",
       "exists": true,
-      "char_count": 2848
+      "char_count": 2576
     },
     {
       "id": "cd-muscle-groups",
@@ -13974,7 +13974,7 @@
       ],
       "file": "concept-design/cd-char-age-variation.md",
       "exists": true,
-      "char_count": 2387
+      "char_count": 2462
     },
     {
       "id": "cd-char-costume",
@@ -14139,7 +14139,7 @@
       ],
       "file": "concept-design/cd-char-presentation.md",
       "exists": true,
-      "char_count": 2107
+      "char_count": 2431
     },
     {
       "id": "cd-char-shape-language",
@@ -14469,7 +14469,7 @@
       ],
       "file": "concept-design/cd-color-temperature-shift.md",
       "exists": true,
-      "char_count": 2248
+      "char_count": 2139
     },
     {
       "id": "cd-hue-sat-val",
@@ -15519,7 +15519,7 @@
       ],
       "file": "concept-design/cd-mood-presentation.md",
       "exists": true,
-      "char_count": 1316
+      "char_count": 2410
     },
     {
       "id": "cd-mood-purpose",
@@ -15699,7 +15699,7 @@
       ],
       "file": "concept-design/cd-mood-color-extraction.md",
       "exists": true,
-      "char_count": 1301
+      "char_count": 2343
     },
     {
       "id": "cd-mood-cross-discipline",
@@ -16254,7 +16254,7 @@
       ],
       "file": "concept-design/cd-prop-color-coding.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2372
     },
     {
       "id": "cd-prop-intro",
@@ -19689,7 +19689,7 @@
       ],
       "file": "economics/macroeconomics/investment-theory.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2514
     },
     {
       "id": "new-keynesian",
@@ -19764,7 +19764,7 @@
       ],
       "file": "economics/macroeconomics/business-cycle.md",
       "exists": true,
-      "char_count": 1535
+      "char_count": 2390
     },
     {
       "id": "economic-growth",
@@ -20139,7 +20139,7 @@
       ],
       "file": "economics/microeconomics/auction-theory.md",
       "exists": true,
-      "char_count": 1540
+      "char_count": 2776
     },
     {
       "id": "income-distribution",
@@ -20154,7 +20154,7 @@
       ],
       "file": "economics/microeconomics/income-distribution.md",
       "exists": true,
-      "char_count": 1467
+      "char_count": 2536
     },
     {
       "id": "utility-maximization",
@@ -29800,7 +29800,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-interactive-dialogue.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2803
     },
     {
       "id": "sfx-dp-crowd-walla",
@@ -30489,7 +30489,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-fr-footsteps.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2161
     },
     {
       "id": "sfx-fr-vehicle-recording",
@@ -35289,7 +35289,7 @@
       ],
       "file": "game-engine/audio-system/footstep-system.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2676
     },
     {
       "id": "adaptive-music",
@@ -39948,7 +39948,7 @@
       "tags": [],
       "file": "game-live-ops/ops-da-revenue-metrics.md",
       "exists": true,
-      "char_count": 1603
+      "char_count": 2800
     },
     {
       "id": "ops-da-data-warehouse",
@@ -41560,7 +41560,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ur-lifecycle-management.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 2778
     },
     {
       "id": "ops-ur-retention-benchmarks",
@@ -42223,7 +42223,7 @@
       "tags": [],
       "file": "game-production/gp-cd-meeting.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2280
     },
     {
       "id": "gp-cd-dependency-map",
@@ -46474,7 +46474,7 @@
       "tags": [],
       "file": "game-qa/qa-bl-release-criteria.md",
       "exists": true,
-      "char_count": 1523
+      "char_count": 2405
     },
     {
       "id": "qa-bl-regression-bug",
@@ -48073,7 +48073,7 @@
       "tags": [],
       "file": "game-qa/qa-tc-test-env-mgmt.md",
       "exists": true,
-      "char_count": 1518
+      "char_count": 2801
     },
     {
       "id": "qa-tc-test-mgmt-tools",

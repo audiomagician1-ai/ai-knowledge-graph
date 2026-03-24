@@ -388,7 +388,7 @@
       "tags": [],
       "file": "game-qa/qa-bl-release-criteria.md",
       "exists": true,
-      "char_count": 1523
+      "char_count": 2405
     },
     {
       "id": "qa-bl-regression-bug",
@@ -1987,7 +1987,7 @@
       "tags": [],
       "file": "game-qa/qa-tc-test-env-mgmt.md",
       "exists": true,
-      "char_count": 1518
+      "char_count": 2801
     },
     {
       "id": "qa-tc-test-mgmt-tools",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 246958,
-    "avg_chars": 1543,
+    "total_chars": 249123,
+    "avg_chars": 1557,
     "domain": "game-qa"
   }
 }

@@ -343,7 +343,7 @@
       ],
       "file": "biology/botany-zoology/migration-hibernation.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2329
     },
     {
       "id": "photosynthesis",
@@ -1423,7 +1423,7 @@
       ],
       "file": "biology/genetics/quantitative-genetics.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2890
     },
     {
       "id": "chromosomal-abnormalities",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 376329,
-    "avg_chars": 2187,
+    "total_chars": 378822,
+    "avg_chars": 2202,
     "domain": "biology"
   }
 }
