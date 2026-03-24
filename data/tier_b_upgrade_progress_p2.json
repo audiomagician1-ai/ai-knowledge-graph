@@ -149,10 +149,20 @@
     "nd-bn-multiple-endings",
     "ta-frame-analysis",
     "ta-mem-budget-doc",
-    "ta-std-overview"
+    "ta-std-overview",
+    "ta-poly-standard",
+    "vfx-destruct-hierarchy",
+    "vfx-opt-pooling",
+    "cd-vanishing-point",
+    "cd-warm-cool",
+    "gpu-profiling",
+    "3da-extrude-inset",
+    "3da-tex-hand-painted",
+    "3da-tex-tiling-material",
+    "3da-prop-lod-creation"
   ],
   "errors": [],
-  "total_upgraded": 150,
+  "total_upgraded": 160,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T22:53:26.405161"
+  "last_updated": "2026-03-24T23:03:22.121617"
 }
