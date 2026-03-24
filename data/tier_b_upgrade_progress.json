@@ -774,10 +774,30 @@
     "mn-lb-room-browser",
     "nd-wb-mythology",
     "heraclitus",
-    "scientific-method-phil"
+    "scientific-method-phil",
+    "virtue-ethics",
+    "business-ethics",
+    "kinetic-theory",
+    "heat-transfer",
+    "dimensional-analysis",
+    "concept-testing",
+    "embodied-cognition",
+    "theory-of-mind",
+    "cognitive-dissonance",
+    "group-dynamics",
+    "schizophrenia",
+    "biofeedback",
+    "se-dp-iterator",
+    "se-system-ecs",
+    "se-dep-security",
+    "ta-validation-tool",
+    "vfx-fluid-ocean",
+    "debate-writing",
+    "pathos-techniques",
+    "classical-poetry-forms"
   ],
   "errors": [],
-  "total_upgraded": 775,
+  "total_upgraded": 795,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-24T21:04:24.441491"
+  "last_updated": "2026-03-24T21:23:54.089016"
 }

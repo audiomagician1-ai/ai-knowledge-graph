@@ -9,7 +9,7 @@ is_milestone: true
 tags: ["核心"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 41.9
 generation_method: "intranet-llm-rewrite-v2"
@@ -25,61 +25,71 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-在ECS架构中，System（系统）是唯一负责执行游戏逻辑的处理单元。Entity只是一个ID，Component只是纯数据，所有的行为和计算都集中在System中完成。一个System的典型职责是：每帧遍历所有满足特定Component组合条件的Entity，读取或修改其Component数据。这种"数据与逻辑分离"的设计使得逻辑代码高度集中且易于测试。
+在ECS架构中，System（系统）是唯一负责执行游戏逻辑和业务规则的代码单元。Entity只是一个ID，Component只存储数据，而所有的"行为"——碰撞检测、AI决策、物理模拟、渲染指令提交——都由System实现。这种设计将数据与行为彻底分离，使得System可以独立测试、替换或禁用，而不影响数据本身的完整性。
 
-System的概念随着ECS架构的成熟而演化。2007年前后，Adam Martin在其博客系列文章中明确将System定义为ECS三要素之一，强调System本身不应持有任何游戏状态数据。2019年Unity正式发布DOTS（Data-Oriented Technology Stack）中的ECS实现时，将System进一步细化为`SystemBase`和`ISystem`两种基类，前者托管于C#对象，后者为非托管结构体，每帧调用`OnUpdate()`方法执行逻辑。
+System的概念由Adam Martin在2007年发表的"Entity Systems are the future of MMOG development"系列文章中首次系统化阐述。他明确提出：System是ECS三要素中唯一包含函数逻辑的部分，一个System应当只关心它所查询的Component类型，对其他数据保持无知（ignorant）。Unity DOTS（Data-Oriented Technology Stack）在2019年正式发布时，将这一原则落地为`ISystem`和`SystemBase`两个接口，强制要求开发者声明System所需的Component访问权限。
 
-System的价值在于其极致的关注点分离：一个`MovementSystem`只处理位移计算，一个`DamageSystem`只处理伤害结算，它们之间不直接调用，而是通过Component数据间接协作。这种架构使得在一个拥有10万个Entity的场景中，新增或移除某个逻辑模块只需添加或禁用对应System，无需修改Entity或Component的定义。
+System的重要性在于它决定了ECS架构的性能上限。由于System通过查询（Query）批量处理同类Component数据，CPU缓存可以连续读取内存中紧密排列的Component数组，相比面向对象中分散在堆内存的对象引用，缓存命中率提升显著。在Unity DOTS的官方基准测试中，处理10万个移动实体时，基于System的批量处理比传统MonoBehaviour快约40倍。
 
 ## 核心原理
 
-### 查询遍历：System的执行方式
+### System的查询机制（Query）
 
-System通过**查询（Query）**来获取目标Entity集合。查询条件本质上是一组Component类型的组合，例如"同时拥有`Position`和`Velocity`这两个Component的所有Entity"。在Unity ECS中，这通过`EntityQuery`对象表达：
+System通过声明**Component类型过滤条件**来获取它需要处理的Entity集合，这个过滤条件称为EntityQuery。一个典型的移动System会声明：需要同时拥有`Position`和`Velocity`两个Component的所有Entity。框架在每帧执行前，根据此查询在Archetype表中检索匹配的Chunk（内存块），将它们打包成一个迭代集合传给System。
 
-```
+在Unity DOTS的`IJobChunk`模式中，查询写法如下：
+
+```csharp
+// 声明查询：必须有Position(读写)和Velocity(只读)
 EntityQuery query = GetEntityQuery(
-    ComponentType.ReadOnly<Velocity>(),
-    ComponentType.ReadWrite<Position>()
+    ComponentType.ReadWrite<Position>(),
+    ComponentType.ReadOnly<Velocity>()
 );
 ```
 
-System每帧在`OnUpdate()`中对查询结果进行遍历，批量读写匹配Entity的Component数据。这与传统OOP中逐对象调用`Update()`方法不同——ECS的遍历是线性内存访问，因为同类型Component在内存中连续排列（Archetype Chunk机制），CPU缓存命中率极高。对于10万个Entity，ECS的遍历性能可比OOP方式快5到20倍。
+`ReadOnly`和`ReadWrite`的区分不是语法糖，而是并行调度的关键依据——两个System如果对同一Component类型都声明`ReadOnly`，调度器可以安全地让它们并行运行；只要有一方声明`ReadWrite`，调度器就会强制串行执行。
 
-### System的生命周期
+### System的生命周期方法
 
-一个System通常包含三个生命周期方法：
-- `OnCreate()`：System首次创建时调用一次，用于初始化查询对象和资源。
-- `OnUpdate()`：每帧调用，执行核心逻辑遍历。
-- `OnDestroy()`：System销毁时调用，释放Native容器等非托管资源。
+Unity DOTS中`SystemBase`提供三个核心生命周期回调：`OnCreate()`在System首次创建时调用一次，用于初始化EntityQuery和缓存ComponentTypeHandle；`OnUpdate()`每帧调用，是实际逻辑所在；`OnDestroy()`在System被销毁时调用，用于释放NativeArray等非托管内存。
 
-System本身不存储Entity数据，`OnUpdate()`内所有数据均来自对Component的读写操作。这意味着同一System在不同帧之间唯一合法的持久状态是算法参数（如重力加速度`9.8f`），而非任何Entity的状态快照。
+一个最小化的移动System示例：
 
-### System的读写权限声明
+```csharp
+public partial class MovementSystem : SystemBase {
+    protected override void OnUpdate() {
+        float dt = SystemAPI.Time.DeltaTime;
+        Entities
+            .ForEach((ref Position pos, in Velocity vel) => {
+                pos.Value += vel.Value * dt;
+            })
+            .ScheduleParallel(); // 并行调度到Job线程
+    }
+}
+```
 
-System必须显式声明对每个Component的访问权限（ReadOnly或ReadWrite）。这个声明不只是文档注释，而是调度器进行并行安全检验的依据。若`MovementSystem`将`Velocity`声明为`ReadOnly`，而`PhysicsSystem`将`Velocity`声明为`ReadWrite`，调度器可以据此判断这两个System存在写依赖，必须串行执行；反之，两个都只读`Velocity`的System可以安全并行。Unity ECS的`ComponentSystemGroup`调度器正是基于此原理在多线程环境下自动排布System执行顺序。
+注意`ref`表示读写访问，`in`表示只读访问，这直接映射到底层的`ReadWrite`/`ReadOnly`查询声明，编译器会自动生成对应的EntityQuery代码。
+
+### System的执行顺序控制
+
+多个System之间的执行顺序通过`[UpdateBefore]`、`[UpdateAfter]`和`[UpdateInGroup]`三个Attribute控制。ECS框架默认提供三个执行组：`InitializationSystemGroup`（帧初始化阶段）、`SimulationSystemGroup`（逻辑更新阶段）、`PresentationSystemGroup`（渲染提交阶段）。物理System通常注册在`FixedStepSimulationSystemGroup`中，以固定时间步长（默认60Hz，即约0.01667秒）运行，独立于渲染帧率。
 
 ## 实际应用
 
-**移动系统示例**：一个`TranslationSystem`的完整逻辑是：查询所有同时拥有`LocalTransform`和`Velocity`的Entity，在`OnUpdate()`中用`SystemAPI.Query<RefRW<LocalTransform>, RefRO<Velocity>>()`遍历，将每帧`deltaTime × velocity`累加到`position`上。整个System的代码量通常在20行以内，且不需要引用任何具体GameObject。
+**弹幕游戏中的子弹移动System**：一个弹幕游戏可能同屏存在5000颗子弹，每颗子弹是一个拥有`BulletPosition`、`BulletVelocity`、`BulletLifetime`三个Component的Entity。`BulletMovementSystem`查询所有同时拥有这三个Component的Entity，在`OnUpdate`中用`ScheduleParallel`将位置更新分发到多个Job线程并行计算。`BulletLifetimeSystem`则在同一帧的稍后阶段（通过`[UpdateAfter(typeof(BulletMovementSystem))]`保证顺序）遍历所有子弹，将`Lifetime`递减，对归零的Entity调用`EntityCommandBuffer.DestroyEntity`标记销毁。
 
-**AI决策系统**：`EnemyAISystem`查询拥有`EnemyTag`、`PatrolData`和`Translation`三个Component的Entity，每帧计算每个敌人的下一步路径节点，并将结果写入`MoveTarget` Component。`MovementSystem`随后在同帧内读取`MoveTarget`执行实际移动。两个System通过`MoveTarget`这一Component传递数据，完全解耦，任一System可以独立替换。
-
-**条件禁用**：通过`Enabled = false`可以在运行时禁用某个System，使其`OnUpdate()`停止被调用。这在实现游戏暂停、分阶段加载逻辑时非常实用，无需删除任何Entity或Component数据。
+**状态机的System化实现**：敌人AI状态机可以拆分为`EnemyPatrolSystem`、`EnemyChaseSystem`、`EnemyAttackSystem`三个System，每个System通过查询特定的Tag Component（如`PatrolTag`、`ChaseTag`）来筛选当前处于对应状态的敌人。状态切换时只需在Entity上添加或移除对应Tag Component，即可自动改变下一帧哪个System会处理该Entity，无需在单个System内写大量`if/else`分支。
 
 ## 常见误区
 
-**误区一：在System中缓存Entity引用**
-部分初学者习惯在System字段中存储特定Entity的引用，如`Entity playerEntity`，以便在`OnUpdate()`中直接访问。这违反了System无状态的设计原则。正确做法是使用`Singleton Component`模式：将玩家数据存入唯一的单例Component，通过`SystemAPI.GetSingleton<PlayerData>()`在每帧查询时获取，而非缓存引用。
+**误区一：在System中存储可变状态**。有些开发者习惯在System类中定义成员变量来缓存计算中间结果，例如用一个`List<Entity>`成员收集本帧需要销毁的Entity。这破坏了ECS的无状态设计原则，导致System无法安全地并行运行，也使单元测试变得困难。正确做法是使用`EntityCommandBuffer`（一种线程安全的延迟命令队列）或将中间状态显式地存储为Singleton Component（即挂载在单一Entity上的Component）。
 
-**误区二：System负责创建和销毁Entity**
-System的核心职责是读写Component数据，而不是管理Entity的生命周期。在`OnUpdate()`中直接调用`EntityManager.CreateEntity()`或`DestroyEntity()`会导致结构性变更（Structural Change），强制中断当前正在进行的Chunk遍历并触发同步点（Sync Point），严重影响性能。正确做法是使用`EntityCommandBuffer`收集这些操作，在帧末统一回放执行。
+**误区二：一个System处理过多的Component类型**。初学者常常写出查询10种以上Component的"上帝System"，试图在一个`OnUpdate`中完成物理、AI、动画的所有逻辑。这不仅降低了代码可维护性，更重要的是，查询中包含的`ReadWrite` Component越多，与其他System产生调度冲突的概率越高，最终迫使调度器将大量System串行化，抵消了ECS并行化的优势。建议单个System的查询声明不超过5种Component类型。
 
-**误区三：一个System处理多种不相关逻辑**
-受传统`Update()`方法的影响，开发者容易将移动、动画、碰撞检测全部写入同一个System。这会导致查询条件过于复杂（需要Entity同时具备过多Component），使得原本不需要某个逻辑的Entity被错误地排除在外。ECS的最佳实践是单一职责：一个System只处理一种逻辑，通过细粒度的Component组合精确筛选目标Entity。
+**误区三：混淆System的查询过滤与运行时条件判断**。有开发者在`OnUpdate`内部用`if (HasComponent<DisabledTag>(entity))`逐个跳过不需要处理的Entity，而不是在EntityQuery层面用`.WithNone<DisabledTag>()`排除它们。前者仍然会把不需要处理的Entity纳入迭代循环，浪费CPU时间；后者让框架在构建迭代集合时直接跳过这些Archetype的Chunk，完全避免了无效遍历。
 
 ## 知识关联
 
-学习System之前需要理解ECS架构概述中的Archetype和Chunk概念，因为System的查询遍历性能优势直接建立在Chunk线性内存布局之上——若不理解内存布局，则无法解释为何ECS的批量遍历比OOP快。
+学习System之前需要理解ECS架构的三元结构——特别是Component作为纯数据容器、Entity作为ID的角色定位，因为System的查询机制正是建立在"根据Entity所拥有的Component类型进行分组"这一基础之上的。
 
-掌握System的基础后，下一步是学习**ECS查询系统**，深入了解如何构造带有`None`、`Any`等过滤条件的复杂EntityQuery，以及`IJobChunk`如何将System的遍历逻辑分发到Worker线程。随后的**System调度**主题将展示`ComponentSystemGroup`如何根据System的读写声明和显式`[UpdateBefore]`/`[UpdateAfter]`特性属性，在帧内构建有向无环图（DAG）来排定所有System的执行顺序。
+掌握System的基本工作方式后，下一步是学习**ECS查询系统**，深入了解EntityQuery的过滤选项（`WithAll`、`WithAny`、`WithNone`、`WithChangeFilter`），以及如何利用ChangeFilter避免对未发生变化的Component进行重复处理。另一个后续主题是**System调度**，涉及`SystemGroup`的自定义、依赖链（JobHandle dependency chain）的管理，以及如何诊断和解决多个System之间的调度冲突，这些是将ECS性能优势真正发挥出来的关键技术。
