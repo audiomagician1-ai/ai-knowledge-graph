@@ -600,9 +600,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     const today = todayStr();
     if (streak.lastDate && streak.lastDate !== today) {
       if (streak.lastDate !== yesterdayStr()) {
-        const newStreak = { ...streak, current: 0 };
-        saveStreak(newStreak);
-        set({ streak: newStreak });
+        // Streak broken: reset current to 0 and update lastDate to prevent repeated resets
+        if (streak.current !== 0) {
+          const newStreak = { ...streak, current: 0, lastDate: today };
+          saveStreak(newStreak);
+          set({ streak: newStreak });
+        }
       }
     }
   },

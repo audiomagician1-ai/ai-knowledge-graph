@@ -21,8 +21,18 @@ interface DashboardContentProps {
 export function DashboardContent({ onNavigate, onDomainSwitch }: DashboardContentProps) {
   const { stats, progress, streak, computeStats, refreshStreak } = useLearningStore();
   const { graphData } = useGraphStore();
-  const domainInfo = useDomainStore((s) => s.getActiveDomainInfo());
-  const otherDomains = useDomainStore((s) => s.getOtherDomainsByRecency());
+  const activeDomainId = useDomainStore((s) => s.activeDomain);
+  const allDomains = useDomainStore((s) => s.domains);
+  const domainInfo = useMemo(() => allDomains.find(d => d.id === activeDomainId), [allDomains, activeDomainId]);
+  const otherDomains = useMemo(
+    () => allDomains
+      .filter(d => d.id !== activeDomainId && d.is_active !== false)
+      .sort((a, b) => {
+        const h = useDomainStore.getState().accessHistory;
+        return (h[b.id] || 0) - (h[a.id] || 0);
+      }),
+    [allDomains, activeDomainId],
+  );
   const { switchDomain } = useDomainStore();
   const { loadGraphData } = useGraphStore();
 
