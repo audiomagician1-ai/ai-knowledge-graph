@@ -844,10 +844,30 @@
     "platform-gap",
     "combat-range",
     "road-river",
-    "lighting-review"
+    "lighting-review",
+    "ld-portfolio",
+    "positive-definite",
+    "nd-qd-side-quest",
+    "uncertainty-principle",
+    "retrospective",
+    "seo-basics",
+    "onboarding-optimization",
+    "observational-methods",
+    "se-rollback",
+    "ta-skin-material",
+    "ta-culling",
+    "ta-nightly-build",
+    "vfx-particle-sub-emitter",
+    "vfx-destruct-terrain",
+    "vfx-pp-ao",
+    "methodology-section",
+    "3da-hs-game-ready",
+    "3da-org-muscle-deform",
+    "3da-org-game-ready-char",
+    "3da-sculpt-detailing"
   ],
   "errors": [],
-  "total_upgraded": 845,
+  "total_upgraded": 865,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-24T22:14:25.484324"
+  "last_updated": "2026-03-24T22:33:56.378163"
 }

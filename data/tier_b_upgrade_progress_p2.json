@@ -109,10 +109,30 @@
     "mn-ac-input-validation",
     "mn-ac-anti-cheat-architecture",
     "mn-lb-quick-match",
-    "nd-wb-geography"
+    "nd-wb-geography",
+    "nd-ds-lip-sync",
+    "se-modular-arch",
+    "se-dp-singleton",
+    "se-dp-factory",
+    "se-test-doubles",
+    "se-mutation-test",
+    "se-rename-refactor",
+    "ta-texture-budget",
+    "vfx-fb-explosion",
+    "3da-org-hair-modeling",
+    "3da-retopo-clothing",
+    "3da-tex-weathering",
+    "3da-rig-facial",
+    "3da-pipe-material-library",
+    "dictionaries-maps",
+    "topological-sort",
+    "rate-limiting",
+    "autonomous-agents",
+    "anim-procedural-ik",
+    "cg-msaa"
   ],
   "errors": [],
-  "total_upgraded": 110,
+  "total_upgraded": 130,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T22:15:59.888991"
+  "last_updated": "2026-03-24T22:34:30.975700"
 }
