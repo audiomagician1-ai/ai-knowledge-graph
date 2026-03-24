@@ -9,84 +9,77 @@ is_milestone: false
 tags: ["版本控制"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 43.6
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.448
-last_scored: "2026-03-22"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # Git基础
 
 ## 概述
 
-Git基础（Git Basics）是AI工程（AI Engineering）中开发运维领域的重要概念。难度等级2/9（基础级）。
+Git是由Linus Torvalds于2005年创建的分布式版本控制系统，最初为Linux内核开发而生。与SVN等集中式系统不同，Git的每个本地仓库都包含完整的项目历史记录，这意味着即使在断网状态下也能执行提交、查看历史、创建分支等绝大多数操作。
 
-掌握Git基础的核心概念和应用。
+Git使用有向无环图（DAG）来存储提交历史，每个提交对象包含指向父提交的指针、作者信息、时间戳以及指向文件树快照的SHA-1哈希值（40位十六进制字符串）。这种基于内容寻址的存储方式使得数据极难被篡改，任何一个字节的变更都会导致哈希值完全不同。
 
-在知识体系中，Git基础建立在命令行基础的基础之上，是理解Git分支策略的关键前置知识。为什么Git基础如此重要？因为它在开发运维中起到承上启下的作用，连接基础概念与高级应用。
+在AI工程实践中，Git不仅管理模型训练代码，还负责追踪`requirements.txt`、Docker配置、CI/CD脚本等基础设施文件的演变。一个规范的Git提交历史能让团队准确还原任意历史版本的训练环境，这对实验可复现性至关重要。
 
-## 核心知识点
+## 核心原理
 
-### 1. 掌握Git基础的核心概念
+### 三个工作区域
 
-掌握Git基础的核心概念是Git基础(Git Basics)的核心组成部分之一。在开发运维的实践中，掌握Git基础的核心概念决定了系统行为的关键特征。例如，当掌握Git基础的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握Git基础的核心概念需要结合AI工程的基本原理进行分析。
+Git将本地环境分为三个区域：**工作目录**（Working Directory）、**暂存区**（Staging Area / Index）和**本地仓库**（Local Repository）。工作目录是实际编辑文件的地方；暂存区是一个中间层，通过`git add`将变更放入其中；`git commit`则将暂存区的快照永久写入仓库。这三区分离的设计使开发者可以将一次大改动拆分成多个逻辑清晰的提交。
 
-### 2. 应用
+### 对象模型与SHA-1
 
-应用是Git基础(Git Basics)的核心组成部分之一。在开发运维的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+Git仓库的`.git/objects`目录存储四种对象：**blob**（文件内容）、**tree**（目录结构）、**commit**（提交元数据）和**tag**（标签）。每次执行`git commit`，Git会计算所有变更文件的SHA-1哈希，生成新的blob和tree对象，最终创建指向该tree的commit对象。由于SHA-1具有雪崩效应，即使修改训练脚本中的一个超参数，提交哈希也会完全改变，从而实现精确的版本追踪。
 
+### 常用核心命令
 
-### 关键原理分析
+以下是AI工程中最高频的Git操作及其语义：
 
-Git基础的核心在于掌握Git基础的核心概念和应用。从理论角度看，该概念涉及以下层面：
+- `git init` / `git clone <url>`：初始化或克隆仓库，克隆会自动配置名为`origin`的远程引用
+- `git status`：显示工作目录与暂存区的差异状态，用`M`标记已修改、`?`标记未追踪文件
+- `git add -p`：交互式暂存，逐块（hunk）选择变更，适合从大型调试改动中提取核心修复
+- `git commit -m "feat: 调整学习率从0.001到0.0005"`：提交时建议遵循Conventional Commits规范，用`feat`/`fix`/`chore`等前缀分类
+- `git log --oneline --graph`：以ASCII图形展示分支合并历史，快速定位实验节点
+- `git diff HEAD~1 HEAD -- train.py`：对比最近两次提交中`train.py`文件的具体差异
 
-1. **定义层**：明确Git基础的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Git基础内部各要素的相互作用方式
-3. **应用层**：将Git基础的原理映射到AI工程的实际场景中
+### 远程仓库与同步
 
-思考题：如何判断Git基础的应用是否超出了其理论适用范围？
+Git通过`git remote`管理远程仓库引用。`git fetch`只下载远程对象而不修改本地工作目录；`git pull`等价于`git fetch`后执行`git merge`，可能引入合并提交；`git push origin main`将本地`main`分支推送至`origin`。在多人协作的AI项目中，推荐使用`git fetch`配合`git rebase`而非`git pull`，以保持线性提交历史。
 
-## 关键要点
+## 实际应用
 
-1. **核心定义**：Git基础的本质是掌握Git基础的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握Git基础需要同时理解掌握Git基础的核心概念和应用等关键维度
-3. **先修关系**：扎实的命令行基础基础对理解Git基础至关重要
-4. **进阶路径**：掌握后可继续深入Git分支策略等进阶主题
-5. **实践标准**：真正掌握Git基础的标志是能在具体场景中灵活运用并正确判断适用边界
+**场景一：追踪超参数实验**  
+在深度学习项目中，每次调整`config.yaml`中的`batch_size`或`learning_rate`后，执行`git add config.yaml && git commit -m "exp: batch_size=64, lr=1e-4, val_acc=0.87"`，将实验结果直接写入提交信息。配合`git log --grep="exp:"` 可快速过滤所有实验提交，无需额外的实验追踪工具。
+
+**场景二：快速回滚错误依赖**  
+发现升级`torch`版本后模型精度下降，使用`git log -- requirements.txt`找到修改该文件的历史提交，然后执行`git checkout <commit-hash> -- requirements.txt`将该文件还原至指定版本，而不影响其他文件的最新状态。
+
+**场景三：`.gitignore`保护大文件**  
+AI项目的模型权重文件（`.pt`、`.ckpt`）、数据集目录和`__pycache__`不应进入Git仓库。在项目根目录创建`.gitignore`并添加`*.pt`、`data/`等规则。一旦文件已被追踪，需用`git rm --cached model.pt`将其从索引中移除。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Git基础与开发运维中其他相近概念混为一谈。例如，掌握Git基础的核心概念的适用条件与其他应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解命令行基础就学习Git基础，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Git基础虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：`git commit -m`中的信息可以随意书写**  
+很多初学者习惯写`fix bug`或`update`等无意义的提交信息。在AI工程中，一条含糊的提交信息会导致数周后无法判断某次模型精度下降是因为代码逻辑变更还是数据预处理调整。规范的提交信息应包含**变更类型、文件范围和具体行为**，例如`fix(dataloader): 修复CIFAR-10标签偏移1的索引错误`。
 
-## 知识衔接
+**误区二：`git pull`和`git fetch`效果相同**  
+`git fetch`仅更新`.git/refs/remotes/origin/`下的远程追踪引用，不修改当前工作目录；而`git pull`在fetch之后立即执行merge，可能在当前有未提交变更时产生冲突或意外的合并提交，打断正在进行的实验调试。
 
-### 先修知识
-先修知识包括：
-- **命令行基础** — 为Git基础提供了必要的概念基础
+**误区三：删除文件后历史记录也消失了**  
+Git永久保存每一次提交的完整快照。即使执行了`git rm large_dataset.csv`并提交，该文件仍存在于历史提交的blob对象中，`git clone`依然会下载包含该文件的完整历史，导致仓库体积虚高。正确做法是在文件进入仓库之前就配置好`.gitignore`，或使用`git filter-repo`工具彻底重写历史。
 
-### 后续学习
-掌握Git基础后可继续学习：
-- **Git分支策略** — 在Git基础基础上进一步拓展
+## 知识关联
 
-## 学习建议
+**前置知识**：Git的所有操作均通过命令行执行，需要熟悉`cd`、`ls`、路径概念以及Shell的标准输入输出重定向。`git log | grep "feat"`这类管道操作要求具备命令行基础才能灵活使用。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Git基础的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Git基础与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Git基础，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于开发运维的章节可作为深入参考
-- Wikipedia: [Git Basics](https://en.wikipedia.org/wiki/git_basics) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Git Basics" 可找到配套视频教程
+**后续概念**：掌握Git基础的提交、暂存和远程同步操作之后，下一个关键主题是**Git分支策略**。分支策略在Git对象模型之上构建工作流规范，例如`main`分支对应生产环境、`develop`对应集成测试、`feature/*`对应单项实验。理解SHA-1哈希和提交指针的工作方式是理解分支合并（merge）与变基（rebase）区别的必要前提：`git merge`会创建新的merge commit节点，而`git rebase`会重新计算提交哈希以生成线性历史。
