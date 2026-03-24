@@ -1024,10 +1024,30 @@
     "cg-texture-synthesis",
     "cd-anatomy-stylization",
     "cd-style-evolution",
-    "cd-mood-photo-study"
+    "cd-mood-photo-study",
+    "cd-mood-master-study",
+    "word-usage-practice",
+    "technical-analysis-basics",
+    "game-audio-music-character-theme",
+    "sfx-sa-binaural-audio",
+    "sfx-sa-sound-propagation",
+    "sfx-dsp-parallel-processing",
+    "rubber-banding",
+    "perception-fairness",
+    "checkpoint-design",
+    "puzzle-difficulty",
+    "input-device-abstraction",
+    "pub-ro-regional-marketing",
+    "pub-rc-privacy-policy",
+    "qa-ct-update-compat",
+    "exploration-pacing",
+    "camera-control-ld",
+    "minimap-guidance",
+    "terrain-material",
+    "level-flowchart"
   ],
   "errors": [],
-  "total_upgraded": 1025,
+  "total_upgraded": 1045,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T01:05:26.581440"
+  "last_updated": "2026-03-25T01:24:33.483831"
 }

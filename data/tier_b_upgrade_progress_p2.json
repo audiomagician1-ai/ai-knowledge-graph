@@ -289,10 +289,20 @@
     "mn-lr-battle-pass",
     "mn-lr-replay-highlight",
     "nd-cw-companion-system",
-    "nd-ds-dialogue-writing"
+    "nd-ds-dialogue-writing",
+    "nd-qd-objective-design",
+    "se-event-driven",
+    "se-code-quality",
+    "se-cr-culture",
+    "se-memory-profiling",
+    "se-game-loop",
+    "se-memory-fragmentation",
+    "se-conan-vcpkg",
+    "ta-gpu-pipeline",
+    "ta-auto-pipeline"
   ],
   "errors": [],
-  "total_upgraded": 290,
+  "total_upgraded": 300,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T01:08:08.027303"
+  "last_updated": "2026-03-25T01:17:05.963438"
 }
