@@ -2353,7 +2353,7 @@
       ],
       "file": "psychology/research-methods/observational-methods.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2343
     },
     {
       "id": "survey-methods",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 351135,
-    "avg_chars": 1918,
+    "total_chars": 352143,
+    "avg_chars": 1924,
     "domain": "psychology"
   }
 }

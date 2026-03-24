@@ -284,7 +284,7 @@
       "tags": [],
       "file": "oop/design-patterns-intro.md",
       "exists": true,
-      "char_count": 2594
+      "char_count": 2679
     },
     {
       "id": "adapter-pattern",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 53756,
-    "avg_chars": 2239,
+    "total_chars": 53841,
+    "avg_chars": 2243,
     "domain": "oop"
   }
 }

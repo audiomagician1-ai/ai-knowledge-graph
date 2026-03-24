@@ -148,7 +148,7 @@
       ],
       "file": "3d-art/3da-pipe-material-library.md",
       "exists": true,
-      "char_count": 1343
+      "char_count": 3022
     },
     {
       "id": "3da-pipe-version-control",
@@ -508,7 +508,7 @@
       ],
       "file": "3d-art/3da-bake-exploded.md",
       "exists": true,
-      "char_count": 2476
+      "char_count": 2650
     },
     {
       "id": "3da-env-worldbuilding",
@@ -733,7 +733,7 @@
       ],
       "file": "3d-art/3da-env-lighting-art.md",
       "exists": true,
-      "char_count": 2580
+      "char_count": 2678
     },
     {
       "id": "3da-env-storytelling",
@@ -1048,7 +1048,7 @@
       ],
       "file": "3d-art/3da-hs-game-ready.md",
       "exists": true,
-      "char_count": 3013
+      "char_count": 2843
     },
     {
       "id": "3da-hs-intro",
@@ -1558,7 +1558,7 @@
       ],
       "file": "3d-art/3da-org-hair-modeling.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2580
     },
     {
       "id": "3da-org-game-ready-char",
@@ -1573,7 +1573,7 @@
       ],
       "file": "3d-art/3da-org-game-ready-char.md",
       "exists": true,
-      "char_count": 2873
+      "char_count": 3031
     },
     {
       "id": "3da-org-creature",
@@ -1618,7 +1618,7 @@
       ],
       "file": "3d-art/3da-org-muscle-deform.md",
       "exists": true,
-      "char_count": 2575
+      "char_count": 2853
     },
     {
       "id": "3da-org-cloth-sim",
@@ -2143,7 +2143,7 @@
       ],
       "file": "3d-art/3da-retopo-clothing.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2676
     },
     {
       "id": "3da-retopo-body-flow",
@@ -2473,7 +2473,7 @@
       ],
       "file": "3d-art/3da-rig-facial.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2923
     },
     {
       "id": "3da-rig-skeleton",
@@ -2668,7 +2668,7 @@
       ],
       "file": "3d-art/3da-sculpt-detailing.md",
       "exists": true,
-      "char_count": 2481
+      "char_count": 2578
     },
     {
       "id": "3da-sculpt-anatomy-app",
@@ -2923,7 +2923,7 @@
       ],
       "file": "3d-art/3da-tex-weathering.md",
       "exists": true,
-      "char_count": 1658
+      "char_count": 2547
     },
     {
       "id": "3da-tex-tiling-material",
@@ -3739,7 +3739,7 @@
       "tags": [],
       "file": "agent-systems/autonomous-agents.md",
       "exists": true,
-      "char_count": 1664
+      "char_count": 3378
     },
     {
       "id": "pytorch-basics",
@@ -4441,7 +4441,7 @@
       "tags": [],
       "file": "algorithms/topological-sort.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2426
     },
     {
       "id": "insertion-sort",
@@ -5904,7 +5904,7 @@
       ],
       "file": "animation/anim-procedural-ik.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2746
     },
     {
       "id": "anim-foot-ik",
@@ -11289,7 +11289,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-clear-coat.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2636
     },
     {
       "id": "cg-skin-rendering",
@@ -11424,7 +11424,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-hdr-pipeline.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2820
     },
     {
       "id": "cg-pixel-art-filter",
@@ -11889,7 +11889,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-msaa.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2688
     },
     {
       "id": "cg-interpolation",
@@ -13149,7 +13149,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-texture-synthesis.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2688
     },
     {
       "id": "cg-texture-atlas",
@@ -64093,7 +64093,7 @@
       "tags": [],
       "file": "oop/design-patterns-intro.md",
       "exists": true,
-      "char_count": 2594
+      "char_count": 2679
     },
     {
       "id": "adapter-pattern",
@@ -72452,7 +72452,7 @@
       "tags": [],
       "file": "programming-basics/dictionaries-maps.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2706
     },
     {
       "id": "strings",
@@ -75314,7 +75314,7 @@
       ],
       "file": "psychology/research-methods/observational-methods.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2343
     },
     {
       "id": "survey-methods",
@@ -76783,7 +76783,7 @@
       ],
       "file": "software-engineering/ci-cd/se-rollback.md",
       "exists": true,
-      "char_count": 2717
+      "char_count": 2834
     },
     {
       "id": "se-infra-as-code",
@@ -79558,7 +79558,7 @@
       ],
       "file": "software-engineering/refactoring/se-rename-refactor.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2935
     },
     {
       "id": "se-test-before-refactor",
@@ -80708,7 +80708,7 @@
       ],
       "file": "technical-art/ta-nightly-build.md",
       "exists": true,
-      "char_count": 2745
+      "char_count": 2721
     },
     {
       "id": "ta-report-gen",
@@ -81323,7 +81323,7 @@
       ],
       "file": "technical-art/ta-skin-material.md",
       "exists": true,
-      "char_count": 3043
+      "char_count": 2928
     },
     {
       "id": "ta-procedural-material",
@@ -81668,7 +81668,7 @@
       ],
       "file": "technical-art/ta-texture-budget.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 2668
     },
     {
       "id": "ta-texture-streaming",
@@ -82298,7 +82298,7 @@
       ],
       "file": "technical-art/ta-culling.md",
       "exists": true,
-      "char_count": 2521
+      "char_count": 2669
     },
     {
       "id": "ta-streaming",
@@ -83303,7 +83303,7 @@
       ],
       "file": "vfx/vfx-destruct-terrain.md",
       "exists": true,
-      "char_count": 2832
+      "char_count": 2676
     },
     {
       "id": "vfx-destruct-hierarchy",
@@ -83783,7 +83783,7 @@
       ],
       "file": "vfx/vfx-fb-explosion.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2437
     },
     {
       "id": "vfx-fb-emissive",
@@ -84488,7 +84488,7 @@
       ],
       "file": "vfx/vfx-particle-sub-emitter.md",
       "exists": true,
-      "char_count": 2687
+      "char_count": 2727
     },
     {
       "id": "vfx-particle-size",
@@ -84908,7 +84908,7 @@
       ],
       "file": "vfx/vfx-pp-ao.md",
       "exists": true,
-      "char_count": 2475
+      "char_count": 2620
     },
     {
       "id": "vfx-pp-distortion",
@@ -86279,7 +86279,7 @@
       "tags": [],
       "file": "web-backend/rate-limiting.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2791
     },
     {
       "id": "design-system",
@@ -86357,7 +86357,7 @@
       "tags": [],
       "file": "web-frontend/dom-manipulation.md",
       "exists": true,
-      "char_count": 3784
+      "char_count": 3026
     },
     {
       "id": "fetch-api",
@@ -86933,7 +86933,7 @@
       ],
       "file": "writing/academic-writing/methodology-section.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 2666
     },
     {
       "id": "hedging-language",

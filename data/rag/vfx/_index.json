@@ -73,7 +73,7 @@
       ],
       "file": "vfx/vfx-destruct-terrain.md",
       "exists": true,
-      "char_count": 2832
+      "char_count": 2676
     },
     {
       "id": "vfx-destruct-hierarchy",
@@ -553,7 +553,7 @@
       ],
       "file": "vfx/vfx-fb-explosion.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2437
     },
     {
       "id": "vfx-fb-emissive",
@@ -1258,7 +1258,7 @@
       ],
       "file": "vfx/vfx-particle-sub-emitter.md",
       "exists": true,
-      "char_count": 2687
+      "char_count": 2727
     },
     {
       "id": "vfx-particle-size",
@@ -1678,7 +1678,7 @@
       ],
       "file": "vfx/vfx-pp-ao.md",
       "exists": true,
-      "char_count": 2475
+      "char_count": 2620
     },
     {
       "id": "vfx-pp-distortion",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 281582,
-    "avg_chars": 1564,
+    "total_chars": 282616,
+    "avg_chars": 1570,
     "domain": "vfx"
   }
 }

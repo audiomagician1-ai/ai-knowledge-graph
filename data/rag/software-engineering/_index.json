@@ -778,7 +778,7 @@
       ],
       "file": "software-engineering/ci-cd/se-rollback.md",
       "exists": true,
-      "char_count": 2717
+      "char_count": 2834
     },
     {
       "id": "se-infra-as-code",
@@ -3553,7 +3553,7 @@
       ],
       "file": "software-engineering/refactoring/se-rename-refactor.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2935
     },
     {
       "id": "se-test-before-refactor",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 464063,
-    "avg_chars": 1657,
+    "total_chars": 465869,
+    "avg_chars": 1663,
     "domain": "software-engineering"
   }
 }

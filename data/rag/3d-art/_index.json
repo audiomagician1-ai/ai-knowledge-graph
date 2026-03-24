@@ -148,7 +148,7 @@
       ],
       "file": "3d-art/3da-pipe-material-library.md",
       "exists": true,
-      "char_count": 1343
+      "char_count": 3022
     },
     {
       "id": "3da-pipe-version-control",
@@ -508,7 +508,7 @@
       ],
       "file": "3d-art/3da-bake-exploded.md",
       "exists": true,
-      "char_count": 2476
+      "char_count": 2650
     },
     {
       "id": "3da-env-worldbuilding",
@@ -733,7 +733,7 @@
       ],
       "file": "3d-art/3da-env-lighting-art.md",
       "exists": true,
-      "char_count": 2580
+      "char_count": 2678
     },
     {
       "id": "3da-env-storytelling",
@@ -1048,7 +1048,7 @@
       ],
       "file": "3d-art/3da-hs-game-ready.md",
       "exists": true,
-      "char_count": 3013
+      "char_count": 2843
     },
     {
       "id": "3da-hs-intro",
@@ -1558,7 +1558,7 @@
       ],
       "file": "3d-art/3da-org-hair-modeling.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2580
     },
     {
       "id": "3da-org-game-ready-char",
@@ -1573,7 +1573,7 @@
       ],
       "file": "3d-art/3da-org-game-ready-char.md",
       "exists": true,
-      "char_count": 2873
+      "char_count": 3031
     },
     {
       "id": "3da-org-creature",
@@ -1618,7 +1618,7 @@
       ],
       "file": "3d-art/3da-org-muscle-deform.md",
       "exists": true,
-      "char_count": 2575
+      "char_count": 2853
     },
     {
       "id": "3da-org-cloth-sim",
@@ -2143,7 +2143,7 @@
       ],
       "file": "3d-art/3da-retopo-clothing.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2676
     },
     {
       "id": "3da-retopo-body-flow",
@@ -2473,7 +2473,7 @@
       ],
       "file": "3d-art/3da-rig-facial.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2923
     },
     {
       "id": "3da-rig-skeleton",
@@ -2668,7 +2668,7 @@
       ],
       "file": "3d-art/3da-sculpt-detailing.md",
       "exists": true,
-      "char_count": 2481
+      "char_count": 2578
     },
     {
       "id": "3da-sculpt-anatomy-app",
@@ -2923,7 +2923,7 @@
       ],
       "file": "3d-art/3da-tex-weathering.md",
       "exists": true,
-      "char_count": 1658
+      "char_count": 2547
     },
     {
       "id": "3da-tex-tiling-material",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 401956,
-    "avg_chars": 1778,
+    "total_chars": 409308,
+    "avg_chars": 1811,
     "domain": "3d-art"
   }
 }

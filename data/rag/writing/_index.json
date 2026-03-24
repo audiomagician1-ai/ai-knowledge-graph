@@ -223,7 +223,7 @@
       ],
       "file": "writing/academic-writing/methodology-section.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 2666
     },
     {
       "id": "hedging-language",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 316747,
-    "avg_chars": 1863,
+    "total_chars": 318084,
+    "avg_chars": 1871,
     "domain": "writing"
   }
 }

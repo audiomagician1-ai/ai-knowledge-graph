@@ -76,7 +76,7 @@
       "tags": [],
       "file": "web-frontend/dom-manipulation.md",
       "exists": true,
-      "char_count": 3784
+      "char_count": 3026
     },
     {
       "id": "fetch-api",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 55176,
-    "avg_chars": 1672,
+    "total_chars": 54418,
+    "avg_chars": 1649,
     "domain": "web-frontend"
   }
 }

@@ -349,13 +349,13 @@
       "tags": [],
       "file": "agent-systems/autonomous-agents.md",
       "exists": true,
-      "char_count": 1664
+      "char_count": 3378
     }
   ],
   "stats": {
     "total": 27,
-    "total_chars": 49178,
-    "avg_chars": 1821,
+    "total_chars": 50892,
+    "avg_chars": 1884,
     "domain": "agent-systems"
   }
 }

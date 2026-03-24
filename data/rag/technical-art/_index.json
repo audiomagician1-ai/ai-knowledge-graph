@@ -178,7 +178,7 @@
       ],
       "file": "technical-art/ta-nightly-build.md",
       "exists": true,
-      "char_count": 2745
+      "char_count": 2721
     },
     {
       "id": "ta-report-gen",
@@ -793,7 +793,7 @@
       ],
       "file": "technical-art/ta-skin-material.md",
       "exists": true,
-      "char_count": 3043
+      "char_count": 2928
     },
     {
       "id": "ta-procedural-material",
@@ -1138,7 +1138,7 @@
       ],
       "file": "technical-art/ta-texture-budget.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 2668
     },
     {
       "id": "ta-texture-streaming",
@@ -1768,7 +1768,7 @@
       ],
       "file": "technical-art/ta-culling.md",
       "exists": true,
-      "char_count": 2521
+      "char_count": 2669
     },
     {
       "id": "ta-streaming",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 270101,
-    "avg_chars": 1500,
+    "total_chars": 271329,
+    "avg_chars": 1507,
     "domain": "technical-art"
   }
 }
