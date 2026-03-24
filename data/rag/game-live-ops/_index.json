@@ -115,7 +115,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ab-platform.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 3232
     },
     {
       "id": "ops-ab-experiment-culture",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 273278,
-    "avg_chars": 1518,
+    "total_chars": 275060,
+    "avg_chars": 1528,
     "domain": "game-live-ops"
   }
 }

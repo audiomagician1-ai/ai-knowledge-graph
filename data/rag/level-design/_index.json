@@ -913,7 +913,7 @@
       ],
       "file": "level-design/ld-documentation/ld-portfolio.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 2597
     },
     {
       "id": "ld-doc-intro",
@@ -1573,7 +1573,7 @@
       ],
       "file": "level-design/lighting-narrative/lighting-review.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2360
     },
     {
       "id": "light-puzzle",
@@ -1888,7 +1888,7 @@
       ],
       "file": "level-design/metrics-design/platform-gap.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2155
     },
     {
       "id": "metric-exception",
@@ -1948,7 +1948,7 @@
       ],
       "file": "level-design/metrics-design/combat-range.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2323
     },
     {
       "id": "cover-height",
@@ -2278,7 +2278,7 @@
       ],
       "file": "level-design/pacing-curve/surprise-moment.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2465
     },
     {
       "id": "exploration-pacing",
@@ -2983,7 +2983,7 @@
       ],
       "file": "level-design/terrain-design/road-river.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2855
     },
     {
       "id": "heightmap",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 379779,
-    "avg_chars": 1898,
+    "total_chars": 386588,
+    "avg_chars": 1932,
     "domain": "level-design"
   }
 }

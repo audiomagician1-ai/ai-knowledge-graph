@@ -373,7 +373,7 @@
       ],
       "file": "product-design/growth/seo-basics.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2995
     },
     {
       "id": "paywall-design",
@@ -553,7 +553,7 @@
       ],
       "file": "product-design/growth/onboarding-optimization.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2548
     },
     {
       "id": "user-activation",
@@ -1363,7 +1363,7 @@
       ],
       "file": "product-design/product-management/retrospective.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 2317
     },
     {
       "id": "backlog-management",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 317299,
-    "avg_chars": 1743,
+    "total_chars": 321182,
+    "avg_chars": 1764,
     "domain": "product-design"
   }
 }

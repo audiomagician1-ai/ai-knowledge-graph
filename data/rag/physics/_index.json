@@ -1333,7 +1333,7 @@
       ],
       "file": "physics/modern-physics/uncertainty-principle.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2715
     },
     {
       "id": "photoelectric-effect",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 440063,
-    "avg_chars": 2268,
+    "total_chars": 441445,
+    "avg_chars": 2275,
     "domain": "physics"
   }
 }

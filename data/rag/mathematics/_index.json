@@ -2368,7 +2368,7 @@
       ],
       "file": "mathematics/linear-algebra/positive-definite.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 3016
     },
     {
       "id": "eigenvalues-eigenvectors",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 663550,
-    "avg_chars": 2466,
+    "total_chars": 665189,
+    "avg_chars": 2472,
     "domain": "mathematics"
   }
 }

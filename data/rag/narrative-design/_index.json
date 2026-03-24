@@ -856,7 +856,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-lip-sync.md",
       "exists": true,
-      "char_count": 1469
+      "char_count": 2585
     },
     {
       "id": "nd-ds-dialogue-writing",
@@ -2026,7 +2026,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-side-quest.md",
       "exists": true,
-      "char_count": 2513
+      "char_count": 2594
     },
     {
       "id": "nd-qd-fetch-quest-alternatives",
@@ -2104,7 +2104,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-geography.md",
       "exists": true,
-      "char_count": 1447
+      "char_count": 2401
     },
     {
       "id": "nd-wb-ecology",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 271501,
-    "avg_chars": 1508,
+    "total_chars": 273652,
+    "avg_chars": 1520,
     "domain": "narrative-design"
   }
 }

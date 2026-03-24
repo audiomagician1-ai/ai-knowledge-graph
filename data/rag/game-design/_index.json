@@ -1393,7 +1393,7 @@
       ],
       "file": "game-design/design-docs/balance-doc.md",
       "exists": true,
-      "char_count": 1331
+      "char_count": 2538
     },
     {
       "id": "version-control-docs",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 503596,
-    "avg_chars": 2014,
+    "total_chars": 504803,
+    "avg_chars": 2019,
     "domain": "game-design"
   }
 }

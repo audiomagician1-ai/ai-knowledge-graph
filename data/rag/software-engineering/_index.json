@@ -238,7 +238,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-modular-arch.md",
       "exists": true,
-      "char_count": 1238
+      "char_count": 2617
     },
     {
       "id": "se-pipe-filter",
@@ -1258,7 +1258,7 @@
       ],
       "file": "software-engineering/design-patterns/se-dp-singleton.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2936
     },
     {
       "id": "se-dp-prototype",
@@ -1318,7 +1318,7 @@
       ],
       "file": "software-engineering/design-patterns/se-dp-factory.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2753
     },
     {
       "id": "se-dp-builder",
@@ -3658,7 +3658,7 @@
       ],
       "file": "software-engineering/tdd/se-mutation-test.md",
       "exists": true,
-      "char_count": 1235
+      "char_count": 2389
     },
     {
       "id": "se-contract-test",
@@ -3778,7 +3778,7 @@
       ],
       "file": "software-engineering/tdd/se-test-doubles.md",
       "exists": true,
-      "char_count": 1454
+      "char_count": 2622
     },
     {
       "id": "se-test-patterns",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 457350,
-    "avg_chars": 1633,
+    "total_chars": 464063,
+    "avg_chars": 1657,
     "domain": "software-engineering"
   }
 }

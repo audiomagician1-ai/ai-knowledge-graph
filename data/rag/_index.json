@@ -32469,7 +32469,7 @@
       ],
       "file": "game-design/design-docs/balance-doc.md",
       "exists": true,
-      "char_count": 1331
+      "char_count": 2538
     },
     {
       "id": "version-control-docs",
@@ -36159,7 +36159,7 @@
       ],
       "file": "game-engine/performance-profiling/loading-time.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2746
     },
     {
       "id": "hitching-analysis",
@@ -36204,7 +36204,7 @@
       ],
       "file": "game-engine/performance-profiling/bandwidth-analysis.md",
       "exists": true,
-      "char_count": 1228
+      "char_count": 3175
     },
     {
       "id": "frame-time-analysis",
@@ -36639,7 +36639,7 @@
       ],
       "file": "game-engine/platform-abstraction/pc-optimization.md",
       "exists": true,
-      "char_count": 1232
+      "char_count": 2772
     },
     {
       "id": "vr-adaptation",
@@ -37224,7 +37224,7 @@
       ],
       "file": "game-engine/plugin-development/thirdparty-integration.md",
       "exists": true,
-      "char_count": 3355
+      "char_count": 3604
     },
     {
       "id": "draw-call-optimization",
@@ -38349,7 +38349,7 @@
       ],
       "file": "game-engine/scripting-system/data-driven-design.md",
       "exists": true,
-      "char_count": 3007
+      "char_count": 2471
     },
     {
       "id": "hot-reload-script",
@@ -38589,7 +38589,7 @@
       ],
       "file": "game-engine/serialization/property-serialization.md",
       "exists": true,
-      "char_count": 1238
+      "char_count": 3155
     },
     {
       "id": "serialization-perf",
@@ -38634,7 +38634,7 @@
       ],
       "file": "game-engine/serialization/data-table-engine.md",
       "exists": true,
-      "char_count": 2365
+      "char_count": 2571
     },
     {
       "id": "data-migration",
@@ -38664,7 +38664,7 @@
       ],
       "file": "game-engine/serialization/checkpoint-save.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2588
     },
     {
       "id": "network-serialization",
@@ -39069,7 +39069,7 @@
       ],
       "file": "game-engine/unity-architecture/unity-cinemachine.md",
       "exists": true,
-      "char_count": 3482
+      "char_count": 3172
     },
     {
       "id": "unity-dots",
@@ -39441,7 +39441,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ab-platform.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 3232
     },
     {
       "id": "ops-ab-experiment-culture",
@@ -43237,7 +43237,7 @@
       "tags": [],
       "file": "game-production/gp-rm-capacity.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 2384
     },
     {
       "id": "gp-rm-staffing",
@@ -52279,7 +52279,7 @@
       ],
       "file": "level-design/ld-documentation/ld-portfolio.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 2597
     },
     {
       "id": "ld-doc-intro",
@@ -52939,7 +52939,7 @@
       ],
       "file": "level-design/lighting-narrative/lighting-review.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2360
     },
     {
       "id": "light-puzzle",
@@ -53254,7 +53254,7 @@
       ],
       "file": "level-design/metrics-design/platform-gap.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2155
     },
     {
       "id": "metric-exception",
@@ -53314,7 +53314,7 @@
       ],
       "file": "level-design/metrics-design/combat-range.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2323
     },
     {
       "id": "cover-height",
@@ -53644,7 +53644,7 @@
       ],
       "file": "level-design/pacing-curve/surprise-moment.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2465
     },
     {
       "id": "exploration-pacing",
@@ -54349,7 +54349,7 @@
       ],
       "file": "level-design/terrain-design/road-river.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2855
     },
     {
       "id": "heightmap",
@@ -57202,7 +57202,7 @@
       ],
       "file": "mathematics/linear-algebra/positive-definite.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 3016
     },
     {
       "id": "eigenvalues-eigenvectors",
@@ -58945,7 +58945,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-anti-cheat-architecture.md",
       "exists": true,
-      "char_count": 1518
+      "char_count": 2323
     },
     {
       "id": "mn-ac-trusted-computing",
@@ -59023,7 +59023,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-server-authority.md",
       "exists": true,
-      "char_count": 1497
+      "char_count": 2611
     },
     {
       "id": "mn-ac-bot-detection",
@@ -59114,7 +59114,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-input-validation.md",
       "exists": true,
-      "char_count": 1453
+      "char_count": 2240
     },
     {
       "id": "mn-ac-wallhack-prevention",
@@ -60024,7 +60024,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-quick-match.md",
       "exists": true,
-      "char_count": 1226
+      "char_count": 2200
     },
     {
       "id": "mn-lb-room-browser",
@@ -62325,7 +62325,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-lip-sync.md",
       "exists": true,
-      "char_count": 1469
+      "char_count": 2585
     },
     {
       "id": "nd-ds-dialogue-writing",
@@ -63495,7 +63495,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-side-quest.md",
       "exists": true,
-      "char_count": 2513
+      "char_count": 2594
     },
     {
       "id": "nd-qd-fetch-quest-alternatives",
@@ -63573,7 +63573,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-geography.md",
       "exists": true,
-      "char_count": 1447
+      "char_count": 2401
     },
     {
       "id": "nd-wb-ecology",
@@ -68004,7 +68004,7 @@
       ],
       "file": "physics/modern-physics/uncertainty-principle.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2715
     },
     {
       "id": "photoelectric-effect",
@@ -69954,7 +69954,7 @@
       ],
       "file": "product-design/growth/seo-basics.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2995
     },
     {
       "id": "paywall-design",
@@ -70134,7 +70134,7 @@
       ],
       "file": "product-design/growth/onboarding-optimization.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2548
     },
     {
       "id": "user-activation",
@@ -70944,7 +70944,7 @@
       ],
       "file": "product-design/product-management/retrospective.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 2317
     },
     {
       "id": "backlog-management",
@@ -76243,7 +76243,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-modular-arch.md",
       "exists": true,
-      "char_count": 1238
+      "char_count": 2617
     },
     {
       "id": "se-pipe-filter",
@@ -77263,7 +77263,7 @@
       ],
       "file": "software-engineering/design-patterns/se-dp-singleton.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2936
     },
     {
       "id": "se-dp-prototype",
@@ -77323,7 +77323,7 @@
       ],
       "file": "software-engineering/design-patterns/se-dp-factory.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2753
     },
     {
       "id": "se-dp-builder",
@@ -79663,7 +79663,7 @@
       ],
       "file": "software-engineering/tdd/se-mutation-test.md",
       "exists": true,
-      "char_count": 1235
+      "char_count": 2389
     },
     {
       "id": "se-contract-test",
@@ -79783,7 +79783,7 @@
       ],
       "file": "software-engineering/tdd/se-test-doubles.md",
       "exists": true,
-      "char_count": 1454
+      "char_count": 2622
     },
     {
       "id": "se-test-patterns",

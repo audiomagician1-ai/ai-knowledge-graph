@@ -1333,7 +1333,7 @@
       ],
       "file": "game-engine/performance-profiling/loading-time.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2746
     },
     {
       "id": "hitching-analysis",
@@ -1378,7 +1378,7 @@
       ],
       "file": "game-engine/performance-profiling/bandwidth-analysis.md",
       "exists": true,
-      "char_count": 1228
+      "char_count": 3175
     },
     {
       "id": "frame-time-analysis",
@@ -1813,7 +1813,7 @@
       ],
       "file": "game-engine/platform-abstraction/pc-optimization.md",
       "exists": true,
-      "char_count": 1232
+      "char_count": 2772
     },
     {
       "id": "vr-adaptation",
@@ -2398,7 +2398,7 @@
       ],
       "file": "game-engine/plugin-development/thirdparty-integration.md",
       "exists": true,
-      "char_count": 3355
+      "char_count": 3604
     },
     {
       "id": "draw-call-optimization",
@@ -3523,7 +3523,7 @@
       ],
       "file": "game-engine/scripting-system/data-driven-design.md",
       "exists": true,
-      "char_count": 3007
+      "char_count": 2471
     },
     {
       "id": "hot-reload-script",
@@ -3763,7 +3763,7 @@
       ],
       "file": "game-engine/serialization/property-serialization.md",
       "exists": true,
-      "char_count": 1238
+      "char_count": 3155
     },
     {
       "id": "serialization-perf",
@@ -3808,7 +3808,7 @@
       ],
       "file": "game-engine/serialization/data-table-engine.md",
       "exists": true,
-      "char_count": 2365
+      "char_count": 2571
     },
     {
       "id": "data-migration",
@@ -3838,7 +3838,7 @@
       ],
       "file": "game-engine/serialization/checkpoint-save.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2588
     },
     {
       "id": "network-serialization",
@@ -4243,7 +4243,7 @@
       ],
       "file": "game-engine/unity-architecture/unity-cinemachine.md",
       "exists": true,
-      "char_count": 3482
+      "char_count": 3172
     },
     {
       "id": "unity-dots",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 542221,
-    "avg_chars": 1807,
+    "total_chars": 550086,
+    "avg_chars": 1833,
     "domain": "game-engine"
   }
 }
