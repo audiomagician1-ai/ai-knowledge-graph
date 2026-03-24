@@ -988,7 +988,7 @@
       ],
       "file": "economics/economic-thought/chicago-school.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2964
     },
     {
       "id": "behavioral-thought",
@@ -2353,7 +2353,7 @@
       ],
       "file": "economics/public-econ/government-failure.md",
       "exists": true,
-      "char_count": 1451
+      "char_count": 2379
     },
     {
       "id": "education-policy-econ",
@@ -2443,7 +2443,7 @@
       ],
       "file": "economics/public-econ/welfare-state.md",
       "exists": true,
-      "char_count": 1459
+      "char_count": 2878
     },
     {
       "id": "taxation-principles",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 306685,
-    "avg_chars": 1804,
+    "total_chars": 310546,
+    "avg_chars": 1826,
     "domain": "economics"
   }
 }

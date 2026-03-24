@@ -1138,7 +1138,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-command-buffer.md",
       "exists": true,
-      "char_count": 1453
+      "char_count": 2830
     },
     {
       "id": "cg-async-compute",
@@ -1438,7 +1438,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-skin-rendering.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 2590
     },
     {
       "id": "cg-eye-rendering",
@@ -1513,7 +1513,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-btdf.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 3323
     },
     {
       "id": "cg-metallic-workflow",
@@ -3253,7 +3253,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-cube-mapping.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2790
     },
     {
       "id": "cg-texture-compression",
@@ -3748,13 +3748,13 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-scientific-vis.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2848
     }
   ],
   "stats": {
     "total": 250,
-    "total_chars": 439521,
-    "avg_chars": 1758,
+    "total_chars": 446801,
+    "avg_chars": 1787,
     "domain": "computer-graphics"
   }
 }

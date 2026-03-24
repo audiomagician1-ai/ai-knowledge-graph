@@ -358,7 +358,7 @@
       ],
       "file": "concept-design/cd-char-age-variation.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2387
     },
     {
       "id": "cd-char-costume",
@@ -523,7 +523,7 @@
       ],
       "file": "concept-design/cd-char-presentation.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2107
     },
     {
       "id": "cd-char-shape-language",
@@ -853,7 +853,7 @@
       ],
       "file": "concept-design/cd-color-temperature-shift.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2248
     },
     {
       "id": "cd-hue-sat-val",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 360935,
-    "avg_chars": 1640,
+    "total_chars": 363910,
+    "avg_chars": 1654,
     "domain": "concept-design"
   }
 }

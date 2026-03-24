@@ -643,7 +643,7 @@
       ],
       "file": "finance/fixed-income/bond-etf.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2362
     },
     {
       "id": "bond-basics",
@@ -733,7 +733,7 @@
       ],
       "file": "finance/fixed-income/interest-rate-risk.md",
       "exists": true,
-      "char_count": 1224
+      "char_count": 2172
     },
     {
       "id": "convertible-bonds",
@@ -1003,7 +1003,7 @@
       ],
       "file": "finance/investment-basics/investment-vehicles.md",
       "exists": true,
-      "char_count": 1555
+      "char_count": 2658
     },
     {
       "id": "investment-psychology",
@@ -1183,7 +1183,7 @@
       ],
       "file": "finance/investment-basics/asset-allocation.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2751
     },
     {
       "id": "risk-return-tradeoff",
@@ -2113,7 +2113,7 @@
       ],
       "file": "finance/stock-market/ipo-analysis.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2250
     },
     {
       "id": "macd-indicator",
@@ -2233,7 +2233,7 @@
       ],
       "file": "finance/stock-market/growth-investing.md",
       "exists": true,
-      "char_count": 1451
+      "char_count": 2474
     },
     {
       "id": "technical-analysis-basics",
@@ -2323,7 +2323,7 @@
       ],
       "file": "finance/stock-market/dividend-investing.md",
       "exists": true,
-      "char_count": 1437
+      "char_count": 2205
     },
     {
       "id": "stock-valuation",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 309921,
-    "avg_chars": 1937,
+    "total_chars": 316759,
+    "avg_chars": 1979,
     "domain": "finance"
   }
 }

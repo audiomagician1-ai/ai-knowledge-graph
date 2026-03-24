@@ -2053,7 +2053,7 @@
       ],
       "file": "animation/anim-physics-overview.md",
       "exists": true,
-      "char_count": 1523
+      "char_count": 2779
     },
     {
       "id": "anim-physics-material",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 279269,
-    "avg_chars": 1551,
+    "total_chars": 280525,
+    "avg_chars": 1558,
     "domain": "animation"
   }
 }

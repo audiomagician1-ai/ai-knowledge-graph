@@ -178,7 +178,7 @@
       ],
       "file": "english/advanced-grammar/dangling-modifiers.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 3049
     },
     {
       "id": "advanced-modals",
@@ -388,7 +388,7 @@
       ],
       "file": "english/basic-grammar/prepositions.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2799
     },
     {
       "id": "pronouns",
@@ -523,7 +523,7 @@
       ],
       "file": "english/basic-grammar/modal-verbs.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2976
     },
     {
       "id": "exclamatory",
@@ -1108,7 +1108,7 @@
       ],
       "file": "english/phonetics/am-vs-br-pronunciation.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2865
     },
     {
       "id": "phonics-rules",
@@ -1228,7 +1228,7 @@
       ],
       "file": "english/phonetics/phonemic-transcription.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2653
     },
     {
       "id": "syllable-structure",
@@ -1543,7 +1543,7 @@
       ],
       "file": "english/reading/expository-reading.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 3015
     },
     {
       "id": "reading-speed",
@@ -2668,7 +2668,7 @@
       ],
       "file": "english/vocabulary/vocabulary-strategies.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 2587
     },
     {
       "id": "word-usage-practice",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 448906,
-    "avg_chars": 2244,
+    "total_chars": 459426,
+    "avg_chars": 2297,
     "domain": "english"
   }
 }

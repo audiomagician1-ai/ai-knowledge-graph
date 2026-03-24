@@ -6639,7 +6639,7 @@
       ],
       "file": "animation/anim-physics-overview.md",
       "exists": true,
-      "char_count": 1523
+      "char_count": 2779
     },
     {
       "id": "anim-physics-material",
@@ -11004,7 +11004,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-command-buffer.md",
       "exists": true,
-      "char_count": 1453
+      "char_count": 2830
     },
     {
       "id": "cg-async-compute",
@@ -11304,7 +11304,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-skin-rendering.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 2590
     },
     {
       "id": "cg-eye-rendering",
@@ -11379,7 +11379,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-btdf.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 3323
     },
     {
       "id": "cg-metallic-workflow",
@@ -13119,7 +13119,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-cube-mapping.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2790
     },
     {
       "id": "cg-texture-compression",
@@ -13614,7 +13614,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-scientific-vis.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2848
     },
     {
       "id": "cd-muscle-groups",
@@ -13974,7 +13974,7 @@
       ],
       "file": "concept-design/cd-char-age-variation.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2387
     },
     {
       "id": "cd-char-costume",
@@ -14139,7 +14139,7 @@
       ],
       "file": "concept-design/cd-char-presentation.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2107
     },
     {
       "id": "cd-char-shape-language",
@@ -14469,7 +14469,7 @@
       ],
       "file": "concept-design/cd-color-temperature-shift.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2248
     },
     {
       "id": "cd-hue-sat-val",
@@ -19074,7 +19074,7 @@
       ],
       "file": "economics/economic-thought/chicago-school.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2964
     },
     {
       "id": "behavioral-thought",
@@ -20439,7 +20439,7 @@
       ],
       "file": "economics/public-econ/government-failure.md",
       "exists": true,
-      "char_count": 1451
+      "char_count": 2379
     },
     {
       "id": "education-policy-econ",
@@ -20529,7 +20529,7 @@
       ],
       "file": "economics/public-econ/welfare-state.md",
       "exists": true,
-      "char_count": 1459
+      "char_count": 2878
     },
     {
       "id": "taxation-principles",
@@ -20814,7 +20814,7 @@
       ],
       "file": "english/advanced-grammar/dangling-modifiers.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 3049
     },
     {
       "id": "advanced-modals",
@@ -21024,7 +21024,7 @@
       ],
       "file": "english/basic-grammar/prepositions.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2799
     },
     {
       "id": "pronouns",
@@ -21159,7 +21159,7 @@
       ],
       "file": "english/basic-grammar/modal-verbs.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2976
     },
     {
       "id": "exclamatory",
@@ -21744,7 +21744,7 @@
       ],
       "file": "english/phonetics/am-vs-br-pronunciation.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2865
     },
     {
       "id": "phonics-rules",
@@ -21864,7 +21864,7 @@
       ],
       "file": "english/phonetics/phonemic-transcription.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2653
     },
     {
       "id": "syllable-structure",
@@ -22179,7 +22179,7 @@
       ],
       "file": "english/reading/expository-reading.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 3015
     },
     {
       "id": "reading-speed",
@@ -23304,7 +23304,7 @@
       ],
       "file": "english/vocabulary/vocabulary-strategies.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 2587
     },
     {
       "id": "word-usage-practice",
@@ -24279,7 +24279,7 @@
       ],
       "file": "finance/fixed-income/bond-etf.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2362
     },
     {
       "id": "bond-basics",
@@ -24369,7 +24369,7 @@
       ],
       "file": "finance/fixed-income/interest-rate-risk.md",
       "exists": true,
-      "char_count": 1224
+      "char_count": 2172
     },
     {
       "id": "convertible-bonds",
@@ -24639,7 +24639,7 @@
       ],
       "file": "finance/investment-basics/investment-vehicles.md",
       "exists": true,
-      "char_count": 1555
+      "char_count": 2658
     },
     {
       "id": "investment-psychology",
@@ -24819,7 +24819,7 @@
       ],
       "file": "finance/investment-basics/asset-allocation.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2751
     },
     {
       "id": "risk-return-tradeoff",
@@ -25749,7 +25749,7 @@
       ],
       "file": "finance/stock-market/ipo-analysis.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2250
     },
     {
       "id": "macd-indicator",
@@ -25869,7 +25869,7 @@
       ],
       "file": "finance/stock-market/growth-investing.md",
       "exists": true,
-      "char_count": 1451
+      "char_count": 2474
     },
     {
       "id": "technical-analysis-basics",
@@ -25959,7 +25959,7 @@
       ],
       "file": "finance/stock-market/dividend-investing.md",
       "exists": true,
-      "char_count": 1437
+      "char_count": 2205
     },
     {
       "id": "stock-valuation",
@@ -34989,7 +34989,7 @@
       ],
       "file": "game-engine/animation-system/state-machine-anim.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2906
     },
     {
       "id": "animation-system-intro",
@@ -35544,7 +35544,7 @@
       ],
       "file": "game-engine/editor-extension/cook-automation.md",
       "exists": true,
-      "char_count": 1252
+      "char_count": 2943
     },
     {
       "id": "source-control-editor",
@@ -36264,7 +36264,7 @@
       ],
       "file": "game-engine/performance-profiling/perf-budget.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2497
     },
     {
       "id": "mobile-profiling",
@@ -36909,7 +36909,7 @@
       ],
       "file": "game-engine/platform-abstraction/save-system-platform.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 3289
     },
     {
       "id": "cross-play",
@@ -37059,7 +37059,7 @@
       ],
       "file": "game-engine/plugin-development/api-design-plugin.md",
       "exists": true,
-      "char_count": 1266
+      "char_count": 3011
     },
     {
       "id": "plugin-dependency",
@@ -37164,7 +37164,7 @@
       ],
       "file": "game-engine/plugin-development/plugin-lifecycle.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2537
     },
     {
       "id": "plugin-settings",
@@ -37194,7 +37194,7 @@
       ],
       "file": "game-engine/plugin-development/analytics-plugin.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2714
     },
     {
       "id": "localization-plugin",
@@ -37209,7 +37209,7 @@
       ],
       "file": "game-engine/plugin-development/localization-plugin.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 3082
     },
     {
       "id": "thirdparty-integration",
@@ -37854,7 +37854,7 @@
       ],
       "file": "game-engine/scene-management/world-origin-shifting.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2646
     },
     {
       "id": "world-composition",
@@ -38859,7 +38859,7 @@
       ],
       "file": "game-engine/ue5-architecture/ue5-pak-system.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2845
     },
     {
       "id": "ue5-slate-umg",
