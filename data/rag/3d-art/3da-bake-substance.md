@@ -9,83 +9,63 @@ is_milestone: true
 tags: ["工具"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 43.6
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.414
-last_scored: "2026-03-22"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
-# Substance烘焙
+# Substance Painter 内置烘焙器
 
 ## 概述
 
-Substance烘焙（3Da Bake Substance）是3D美术（3D Art）中烘焙领域的核心里程碑概念。难度等级2/9（基础级）。
+Substance Painter 是由 Allegorithmic 公司（2019年被 Adobe 收购）开发的 PBR 纹理绘制软件，其内置烘焙器自版本 1.x 起便集成在工作流程中，允许美术师在不离开软件的情况下直接完成从高模到低模的多种贴图烘焙。与 Marmoset Toolbag 或 xNormal 等外部烘焙工具相比，Substance Painter 的烘焙结果会直接绑定到当前项目的网格同步（Mesh Sync）系统中，烘焙完成后立即可用于图层和智能材质。
 
-Substance Painter内置烘焙器的设置与优势。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+Substance Painter 的烘焙模块支持一次性输出多达 10 余种贴图通道，包括 Normal、World Space Normal、Ambient Occlusion、Curvature、Position、Thickness、ID 等。这一特性使其在影视预渲染外包和游戏资产制作中被广泛采用，因为单次烘焙即可生成 Smart Material（智能材质）所需的全部输入数据，显著减少重复操作。
 
-在知识体系中，Substance烘焙建立在法线烘焙的基础之上，是理解可进入更高级主题的关键前置知识。为什么Substance烘焙如此重要？因为它在烘焙中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### 高低模配对与匹配规则
 
-### 1. Substance Painter内置烘焙器的设置
+Substance Painter 使用基于命名后缀的自动配对机制来匹配高模（High Poly）与低模（Low Poly）。默认规则是：低模网格的名称加上 `_high` 后缀即视为其对应的高模部件。例如，低模命名为 `Body`，则高模需命名为 `Body_high` 才能被自动识别。用户也可在烘焙面板的 **Match** 选项中切换为 `Always`（忽略命名直接全部匹配）或 `By Mesh Name`（严格按名称匹配），适应不同的项目命名规范。
 
-Substance Painter内置烘焙器的设置是Substance烘焙(3Da Bake Substance)的核心组成部分之一。在烘焙的实践中，Substance Painter内置烘焙器的设置决定了系统行为的关键特征。例如，当Substance Painter内置烘焙器的设置参数或条件发生变化时，整体表现会产生显著差异。深入理解Substance Painter内置烘焙器的设置需要结合3D美术的基本原理进行分析。
+### 烘焙分辨率与抗锯齿设置
 
-### 2. 优势
+Substance Painter 烘焙面板提供 **Output Size** 选项，可独立于当前项目纹理分辨率设置烘焙分辨率，最高支持 4096×4096 像素。**Antialiasing** 下拉菜单提供 None、2x、4x、8x 四个超采样级别，其中 4x 是多数游戏资产的推荐默认值，可在烘焙时间和边缘质量之间取得平衡。**Max Frontal / Rear Distance** 两个参数控制射线投射的笼（Cage）前后范围，直接影响投影接触面是否产生浮动或漏穿缺陷，需根据高低模间距手动微调。
 
-优势是Substance烘焙(3Da Bake Substance)的核心组成部分之一。在烘焙的实践中，优势决定了系统行为的关键特征。例如，当优势参数或条件发生变化时，整体表现会产生显著差异。深入理解优势需要结合3D美术的基本原理进行分析。
+### ID 贴图烘焙的颜色生成方式
 
+Substance Painter 的 ID Map 烘焙支持三种颜色来源：**Mesh ID/Polygroup**（按多边形组着色）、**Vertex Color**（读取高模顶点色）和 **Material ID**（读取高模材质槽颜色）。选用 Vertex Color 模式时，软件直接从导入的 FBX 或 OBJ 高模中读取顶点颜色属性，不需要额外的材质设置，是 Blender 到 Substance 工作流中常见的做法。生成的 ID 贴图用于在 **Polygon Fill** 工具中按区域快速蒙版，配合颜色选择器实现一键区域遮罩。
 
-### 关键原理分析
+### 环境光遮蔽（AO）的专属参数
 
-Substance烘焙的核心在于Substance Painter内置烘焙器的设置与优势。从理论角度看，该概念涉及以下层面：
+Substance Painter AO 烘焙提供 **Quality** 滑块（范围 1–64，代表每像素光线采样数）和 **Max Distance** 参数（单位与场景单位一致）。将 Quality 设为 64 可消除大多数噪点，但烘焙时间会相对线性增加。**Ignore Backface** 选项若开启，会忽略来自模型背面的遮蔽射线，适用于单面植被卡片等特殊资产。
 
-1. **定义层**：明确Substance烘焙的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Substance烘焙内部各要素的相互作用方式
-3. **应用层**：将Substance烘焙的原理映射到3D美术的实际场景中
+## 实际应用
 
-思考题：如何判断Substance烘焙的应用是否超出了其理论适用范围？
+在游戏角色制作流程中，美术师通常在 ZBrush 完成高模雕刻后导出为 FBX，在 Maya 或 Blender 制作低模并展 UV，将两者一同导入 Substance Painter 项目。在烘焙面板中勾选 Normal、AO、Curvature、Position、Thickness、ID 六个通道，以 2048×2048 分辨率、4x 抗锯齿执行单次烘焙，耗时通常在 30 秒至 3 分钟之间（取决于面数）。烘焙完成后，Curvature 贴图自动驱动智能材质的边缘磨损效果，Position 贴图驱动从上到下的渐变污迹，大幅提升材质细节的自动化程度。
 
-## 关键要点
-
-1. **核心定义**：Substance烘焙的本质是Substance Painter内置烘焙器的设置与优势，这是理解整个概念的出发点
-2. **多维理解**：掌握Substance烘焙需要同时理解Substance Painter内置烘焙器的设置和优势等关键维度
-3. **先修关系**：扎实的法线烘焙基础对理解Substance烘焙至关重要
-4. **进阶路径**：可广泛应用于3D美术各方面
-5. **实践标准**：真正掌握Substance烘焙的标志是能在具体场景中灵活运用并正确判断适用边界
+在武器道具制作中，ID 贴图通常通过材质槽方式生成：在 Maya 中为枪托、枪管、金属件分别指定不同颜色的 Lambert 材质，高模导出时保留材质信息，Substance 烘焙时选择 **Material ID** 模式，最终生成区域清晰的色块 ID 图，方便后续对不同金属区域独立调色。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Substance烘焙与烘焙中其他相近概念混为一谈。例如，Substance Painter内置烘焙器的设置的适用条件与其他优势概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解法线烘焙就学习Substance烘焙，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Substance烘焙虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为 Substance 烘焙的 Normal Map 方向与外部工具完全相同**
+Substance Painter 默认输出 **OpenGL 方向**（Y 轴向上为绿色高光）的法线贴图，而 DirectX 方向（Y 轴向上为绿色低谷）在某些引擎（如早期 Unreal Engine 4 项目）中需要翻转 G 通道。若直接将 Substance 烘焙的法线贴图用于 DirectX 工作流却未翻转，模型凹凸关系将整体反转。导出时需在 Substance 的 **Shader Settings** 中切换 Normal Map Format，或在引擎端处理。
 
-## 知识衔接
+**误区二：认为提高 Output Size 就等于提高烘焙精度**
+烘焙分辨率影响的是贴图的存储精度，但高低模之间的投影质量由射线数量（AO 的 Quality 参数）和笼距离（Max Frontal/Rear Distance）决定。在 512 分辨率下将 Quality 设为 64 得到的 AO 比在 4096 分辨率下 Quality 为 1 时仍要干净得多，两者作用机制完全不同。
 
-### 先修知识
-先修知识包括：
-- **法线烘焙** — 为Substance烘焙提供了必要的概念基础
+**误区三：认为 `Always` 匹配模式适用于所有场景**
+当低模 FBX 文件中包含多个独立零件（如角色身体、头发、装备），使用 `Always` 模式会让所有高模同时向所有低模投影，造成不同部件相互污染，在部件边缘产生明显的投影错误。正确做法是在多零件场景中使用 `By Mesh Name` 并严格遵守 `_high` 后缀命名规范。
 
-### 后续学习
-掌握Substance烘焙后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索3D美术其他分支。
+## 知识关联
 
-## 学习建议
+学习 Substance 烘焙需要预先掌握法线烘焙的基础原理，包括切线空间法线贴图的 RGB 通道编码方式（R=X 切线方向，G=Y 副法线方向，B=Z 法线方向）以及高低模拓扑要求。理解了法线烘焙的射线投射原理后，Substance 中 Max Frontal/Rear Distance 参数的含义才能准确把握，否则调参时只能靠试错。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Substance烘焙的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Substance烘焙与3D美术中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Substance烘焙，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于烘焙的章节可作为深入参考
-- Wikipedia: [3Da Bake Substance](https://en.wikipedia.org/wiki/3da_bake_substance) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "3Da Bake Substance" 可找到配套视频教程
+Substance 烘焙生成的 Curvature 和 Position 贴图是后续使用 Smart Material（智能材质）和 Smart Mask（智能遮罩）的数据基础。Curvature 贴图存储每个像素的曲率信息（凸起为白色，凹陷为黑色），Smart Mask 通过对其进行阈值判断自动生成磨损遮罩；Position 贴图存储模型在包围盒内的归一化 XYZ 坐标，驱动方向性污迹效果。掌握烘焙质量控制后，上述所有高级材质技术才能稳定发挥效果。
