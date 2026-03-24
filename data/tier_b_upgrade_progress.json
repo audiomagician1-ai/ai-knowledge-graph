@@ -754,10 +754,20 @@
     "data-migration",
     "gp-bc-estimation",
     "qa-lt-ui-overflow",
-    "qa-bl-reproduction"
+    "qa-bl-reproduction",
+    "guiux-a11y-colorblind",
+    "difficulty-ramp",
+    "downtime-design",
+    "tutorial-level",
+    "signposting",
+    "ai-patrol-range",
+    "flanking-route",
+    "choke-point",
+    "level-editor-intro",
+    "landscape-tool"
   ],
   "errors": [],
-  "total_upgraded": 755,
+  "total_upgraded": 765,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-24T20:44:16.873178"
+  "last_updated": "2026-03-24T20:54:21.889388"
 }
