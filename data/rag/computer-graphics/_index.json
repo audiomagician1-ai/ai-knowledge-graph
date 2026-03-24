@@ -178,7 +178,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-xess.md",
       "exists": true,
-      "char_count": 1222
+      "char_count": 2998
     },
     {
       "id": "cg-geometric-aa",
@@ -1078,7 +1078,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-rop.md",
       "exists": true,
-      "char_count": 1214
+      "char_count": 2560
     },
     {
       "id": "cg-warp-wavefront",
@@ -1648,7 +1648,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-outline.md",
       "exists": true,
-      "char_count": 1228
+      "char_count": 2381
     },
     {
       "id": "cg-eye-adaptation",
@@ -2683,7 +2683,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-optim-intro.md",
       "exists": true,
-      "char_count": 1507
+      "char_count": 2270
     },
     {
       "id": "cg-render-graph",
@@ -3403,7 +3403,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-virtual-texture.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2794
     },
     {
       "id": "cg-parallax-mapping",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 474434,
-    "avg_chars": 1897,
+    "total_chars": 480782,
+    "avg_chars": 1923,
     "domain": "computer-graphics"
   }
 }

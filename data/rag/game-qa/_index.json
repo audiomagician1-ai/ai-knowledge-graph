@@ -154,7 +154,7 @@
       "tags": [],
       "file": "game-qa/qa-at-framework-design.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 2873
     },
     {
       "id": "qa-at-test-pyramid",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 259190,
-    "avg_chars": 1619,
+    "total_chars": 260589,
+    "avg_chars": 1628,
     "domain": "game-qa"
   }
 }

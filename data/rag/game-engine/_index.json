@@ -898,7 +898,7 @@
       ],
       "file": "game-engine/editor-extension/custom-asset-type.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 3339
     },
     {
       "id": "steamworks-input",
@@ -1273,7 +1273,7 @@
       ],
       "file": "game-engine/performance-profiling/renderdoc.md",
       "exists": true,
-      "char_count": 1473
+      "char_count": 3396
     },
     {
       "id": "shader-complexity",
@@ -1828,7 +1828,7 @@
       ],
       "file": "game-engine/platform-abstraction/vr-adaptation.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 3207
     },
     {
       "id": "console-development",
@@ -1903,7 +1903,7 @@
       ],
       "file": "game-engine/platform-abstraction/graphics-api-abstraction.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 3538
     },
     {
       "id": "crash-reporting",
@@ -2308,7 +2308,7 @@
       ],
       "file": "game-engine/plugin-development/plugin-testing.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2498
     },
     {
       "id": "plugin-versioning",
@@ -2758,7 +2758,7 @@
       ],
       "file": "game-engine/resource-management/content-bundle.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2945
     },
     {
       "id": "content-validation",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 604296,
-    "avg_chars": 2014,
+    "total_chars": 615087,
+    "avg_chars": 2050,
     "domain": "game-engine"
   }
 }

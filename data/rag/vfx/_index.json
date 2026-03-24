@@ -178,7 +178,7 @@
       ],
       "file": "vfx/vfx-destruct-sound.md",
       "exists": true,
-      "char_count": 1230
+      "char_count": 2363
     },
     {
       "id": "vfx-destruct-debris",
@@ -523,7 +523,7 @@
       ],
       "file": "vfx/vfx-fb-normal.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2355
     },
     {
       "id": "vfx-fb-fire",
@@ -1813,7 +1813,7 @@
       ],
       "file": "vfx/vfx-shader-pbr-vfx.md",
       "exists": true,
-      "char_count": 1467
+      "char_count": 2866
     },
     {
       "id": "vfx-shader-overview",
@@ -1873,7 +1873,7 @@
       ],
       "file": "vfx/vfx-shader-noise-gen.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2774
     },
     {
       "id": "vfx-shader-distortion-sh",
@@ -2188,7 +2188,7 @@
       ],
       "file": "vfx/vfx-vfxgraph-sdf.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2999
     },
     {
       "id": "vfx-vfxgraph-shader-graph",
@@ -2383,7 +2383,7 @@
       ],
       "file": "vfx/vfx-vfxgraph-skinned-mesh.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2515
     },
     {
       "id": "vfx-vfxgraph-output",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 310470,
-    "avg_chars": 1724,
+    "total_chars": 317981,
+    "avg_chars": 1766,
     "domain": "vfx"
   }
 }

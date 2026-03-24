@@ -103,7 +103,7 @@
       ],
       "file": "animation/anim-sequencer.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2839
     },
     {
       "id": "anim-slot-node",
@@ -193,7 +193,7 @@
       ],
       "file": "animation/anim-notify-event.md",
       "exists": true,
-      "char_count": 1487
+      "char_count": 2940
     },
     {
       "id": "anim-thread-safety",
@@ -328,7 +328,7 @@
       ],
       "file": "animation/anim-silhouette.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2587
     },
     {
       "id": "anim-overlap-delay",
@@ -523,7 +523,7 @@
       ],
       "file": "animation/anim-game-vs-film.md",
       "exists": true,
-      "char_count": 1552
+      "char_count": 2411
     },
     {
       "id": "anim-staging",
@@ -2128,7 +2128,7 @@
       ],
       "file": "animation/anim-soft-body.md",
       "exists": true,
-      "char_count": 1229
+      "char_count": 2443
     },
     {
       "id": "anim-vehicle-physics-anim",
@@ -2158,7 +2158,7 @@
       ],
       "file": "animation/anim-chain-physics.md",
       "exists": true,
-      "char_count": 1229
+      "char_count": 2538
     },
     {
       "id": "anim-wind-interaction",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 305383,
-    "avg_chars": 1696,
+    "total_chars": 312913,
+    "avg_chars": 1738,
     "domain": "animation"
   }
 }

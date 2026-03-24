@@ -343,7 +343,7 @@
       ],
       "file": "3d-art/3da-bake-substance.md",
       "exists": true,
-      "char_count": 1650
+      "char_count": 2634
     },
     {
       "id": "3da-bake-xnormal",
@@ -1018,7 +1018,7 @@
       ],
       "file": "3d-art/3da-hs-weapon.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 2262
     },
     {
       "id": "3da-hs-floating-geo",
@@ -2158,7 +2158,7 @@
       ],
       "file": "3d-art/3da-retopo-body-flow.md",
       "exists": true,
-      "char_count": 1414
+      "char_count": 2640
     },
     {
       "id": "3da-retopo-edge-density",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 444844,
-    "avg_chars": 1968,
+    "total_chars": 447986,
+    "avg_chars": 1982,
     "domain": "3d-art"
   }
 }

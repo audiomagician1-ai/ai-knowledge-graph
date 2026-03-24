@@ -1198,7 +1198,7 @@
       ],
       "file": "concept-design/cd-golden-ratio.md",
       "exists": true,
-      "char_count": 1223
+      "char_count": 2283
     },
     {
       "id": "cd-env-worldbuilding",
@@ -1573,7 +1573,7 @@
       ],
       "file": "concept-design/cd-light-logic.md",
       "exists": true,
-      "char_count": 1238
+      "char_count": 2292
     },
     {
       "id": "cd-single-light-setup",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 395224,
-    "avg_chars": 1796,
+    "total_chars": 397338,
+    "avg_chars": 1806,
     "domain": "concept-design"
   }
 }

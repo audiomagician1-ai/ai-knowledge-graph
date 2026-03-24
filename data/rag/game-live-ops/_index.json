@@ -1441,7 +1441,7 @@
       "tags": [],
       "file": "game-live-ops/ops-mo-price-psychology.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2673
     },
     {
       "id": "ops-mo-ad-monetization",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 284502,
-    "avg_chars": 1580,
+    "total_chars": 285689,
+    "avg_chars": 1587,
     "domain": "game-live-ops"
   }
 }

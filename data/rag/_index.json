@@ -343,7 +343,7 @@
       ],
       "file": "3d-art/3da-bake-substance.md",
       "exists": true,
-      "char_count": 1650
+      "char_count": 2634
     },
     {
       "id": "3da-bake-xnormal",
@@ -1018,7 +1018,7 @@
       ],
       "file": "3d-art/3da-hs-weapon.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 2262
     },
     {
       "id": "3da-hs-floating-geo",
@@ -2158,7 +2158,7 @@
       ],
       "file": "3d-art/3da-retopo-body-flow.md",
       "exists": true,
-      "char_count": 1414
+      "char_count": 2640
     },
     {
       "id": "3da-retopo-edge-density",
@@ -4689,7 +4689,7 @@
       ],
       "file": "animation/anim-sequencer.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2839
     },
     {
       "id": "anim-slot-node",
@@ -4779,7 +4779,7 @@
       ],
       "file": "animation/anim-notify-event.md",
       "exists": true,
-      "char_count": 1487
+      "char_count": 2940
     },
     {
       "id": "anim-thread-safety",
@@ -4914,7 +4914,7 @@
       ],
       "file": "animation/anim-silhouette.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2587
     },
     {
       "id": "anim-overlap-delay",
@@ -5109,7 +5109,7 @@
       ],
       "file": "animation/anim-game-vs-film.md",
       "exists": true,
-      "char_count": 1552
+      "char_count": 2411
     },
     {
       "id": "anim-staging",
@@ -6714,7 +6714,7 @@
       ],
       "file": "animation/anim-soft-body.md",
       "exists": true,
-      "char_count": 1229
+      "char_count": 2443
     },
     {
       "id": "anim-vehicle-physics-anim",
@@ -6744,7 +6744,7 @@
       ],
       "file": "animation/anim-chain-physics.md",
       "exists": true,
-      "char_count": 1229
+      "char_count": 2538
     },
     {
       "id": "anim-wind-interaction",
@@ -10044,7 +10044,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-xess.md",
       "exists": true,
-      "char_count": 1222
+      "char_count": 2998
     },
     {
       "id": "cg-geometric-aa",
@@ -10944,7 +10944,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-rop.md",
       "exists": true,
-      "char_count": 1214
+      "char_count": 2560
     },
     {
       "id": "cg-warp-wavefront",
@@ -11514,7 +11514,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-outline.md",
       "exists": true,
-      "char_count": 1228
+      "char_count": 2381
     },
     {
       "id": "cg-eye-adaptation",
@@ -12549,7 +12549,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-optim-intro.md",
       "exists": true,
-      "char_count": 1507
+      "char_count": 2270
     },
     {
       "id": "cg-render-graph",
@@ -13269,7 +13269,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-virtual-texture.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2794
     },
     {
       "id": "cg-parallax-mapping",
@@ -14814,7 +14814,7 @@
       ],
       "file": "concept-design/cd-golden-ratio.md",
       "exists": true,
-      "char_count": 1223
+      "char_count": 2283
     },
     {
       "id": "cd-env-worldbuilding",
@@ -15189,7 +15189,7 @@
       ],
       "file": "concept-design/cd-light-logic.md",
       "exists": true,
-      "char_count": 1238
+      "char_count": 2292
     },
     {
       "id": "cd-single-light-setup",
@@ -26154,7 +26154,7 @@
       ],
       "file": "game-audio-music/game-audio-music-horizontal-resequencing.md",
       "exists": true,
-      "char_count": 1480
+      "char_count": 2607
     },
     {
       "id": "game-audio-music-stealth-music",
@@ -27594,7 +27594,7 @@
       ],
       "file": "game-audio-music/game-audio-music-theme-variation.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2647
     },
     {
       "id": "game-audio-music-title-theme",
@@ -35724,7 +35724,7 @@
       ],
       "file": "game-engine/editor-extension/custom-asset-type.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 3339
     },
     {
       "id": "steamworks-input",
@@ -36099,7 +36099,7 @@
       ],
       "file": "game-engine/performance-profiling/renderdoc.md",
       "exists": true,
-      "char_count": 1473
+      "char_count": 3396
     },
     {
       "id": "shader-complexity",
@@ -36654,7 +36654,7 @@
       ],
       "file": "game-engine/platform-abstraction/vr-adaptation.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 3207
     },
     {
       "id": "console-development",
@@ -36729,7 +36729,7 @@
       ],
       "file": "game-engine/platform-abstraction/graphics-api-abstraction.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 3538
     },
     {
       "id": "crash-reporting",
@@ -37134,7 +37134,7 @@
       ],
       "file": "game-engine/plugin-development/plugin-testing.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2498
     },
     {
       "id": "plugin-versioning",
@@ -37584,7 +37584,7 @@
       ],
       "file": "game-engine/resource-management/content-bundle.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2945
     },
     {
       "id": "content-validation",
@@ -40767,7 +40767,7 @@
       "tags": [],
       "file": "game-live-ops/ops-mo-price-psychology.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2673
     },
     {
       "id": "ops-mo-ad-monetization",
@@ -46240,7 +46240,7 @@
       "tags": [],
       "file": "game-qa/qa-at-framework-design.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 2873
     },
     {
       "id": "qa-at-test-pyramid",
@@ -62676,7 +62676,7 @@
       "tags": [],
       "file": "narrative-design/nd-es-architecture-story.md",
       "exists": true,
-      "char_count": 1538
+      "char_count": 2588
     },
     {
       "id": "nd-es-player-exploration-reward",
@@ -72673,7 +72673,7 @@
       "tags": [],
       "file": "programming-basics/iteration-vs-recursion.md",
       "exists": true,
-      "char_count": 1434
+      "char_count": 2385
     },
     {
       "id": "recursion",
@@ -76378,7 +76378,7 @@
       ],
       "file": "software-engineering/build-systems/se-make.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 2385
     },
     {
       "id": "se-ninja",
@@ -77203,7 +77203,7 @@
       ],
       "file": "software-engineering/code-review/se-static-analysis.md",
       "exists": true,
-      "char_count": 1471
+      "char_count": 3211
     },
     {
       "id": "se-dp-mediator",
@@ -82163,7 +82163,7 @@
       ],
       "file": "technical-art/ta-perf-overview.md",
       "exists": true,
-      "char_count": 1526
+      "char_count": 2852
     },
     {
       "id": "ta-perf-regression",
@@ -83408,7 +83408,7 @@
       ],
       "file": "vfx/vfx-destruct-sound.md",
       "exists": true,
-      "char_count": 1230
+      "char_count": 2363
     },
     {
       "id": "vfx-destruct-debris",
@@ -83753,7 +83753,7 @@
       ],
       "file": "vfx/vfx-fb-normal.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2355
     },
     {
       "id": "vfx-fb-fire",
@@ -85043,7 +85043,7 @@
       ],
       "file": "vfx/vfx-shader-pbr-vfx.md",
       "exists": true,
-      "char_count": 1467
+      "char_count": 2866
     },
     {
       "id": "vfx-shader-overview",
@@ -85103,7 +85103,7 @@
       ],
       "file": "vfx/vfx-shader-noise-gen.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2774
     },
     {
       "id": "vfx-shader-distortion-sh",
@@ -85418,7 +85418,7 @@
       ],
       "file": "vfx/vfx-vfxgraph-sdf.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2999
     },
     {
       "id": "vfx-vfxgraph-shader-graph",
@@ -85613,7 +85613,7 @@
       ],
       "file": "vfx/vfx-vfxgraph-skinned-mesh.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2515
     },
     {
       "id": "vfx-vfxgraph-output",

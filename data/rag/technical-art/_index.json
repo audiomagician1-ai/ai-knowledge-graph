@@ -1633,7 +1633,7 @@
       ],
       "file": "technical-art/ta-perf-overview.md",
       "exists": true,
-      "char_count": 1526
+      "char_count": 2852
     },
     {
       "id": "ta-perf-regression",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 306286,
-    "avg_chars": 1701,
+    "total_chars": 307612,
+    "avg_chars": 1708,
     "domain": "technical-art"
   }
 }

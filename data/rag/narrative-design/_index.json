@@ -1207,7 +1207,7 @@
       "tags": [],
       "file": "narrative-design/nd-es-architecture-story.md",
       "exists": true,
-      "char_count": 1538
+      "char_count": 2588
     },
     {
       "id": "nd-es-player-exploration-reward",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 285532,
-    "avg_chars": 1586,
+    "total_chars": 286582,
+    "avg_chars": 1592,
     "domain": "narrative-design"
   }
 }

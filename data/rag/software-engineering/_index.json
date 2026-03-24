@@ -373,7 +373,7 @@
       ],
       "file": "software-engineering/build-systems/se-make.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 2385
     },
     {
       "id": "se-ninja",
@@ -1198,7 +1198,7 @@
       ],
       "file": "software-engineering/code-review/se-static-analysis.md",
       "exists": true,
-      "char_count": 1471
+      "char_count": 3211
     },
     {
       "id": "se-dp-mediator",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 503224,
-    "avg_chars": 1797,
+    "total_chars": 505872,
+    "avg_chars": 1806,
     "domain": "software-engineering"
   }
 }

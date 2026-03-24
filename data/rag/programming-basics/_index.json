@@ -362,7 +362,7 @@
       "tags": [],
       "file": "programming-basics/iteration-vs-recursion.md",
       "exists": true,
-      "char_count": 1434
+      "char_count": 2385
     },
     {
       "id": "recursion",
@@ -393,8 +393,8 @@
   ],
   "stats": {
     "total": 30,
-    "total_chars": 73238,
-    "avg_chars": 2441,
+    "total_chars": 74189,
+    "avg_chars": 2472,
     "domain": "programming-basics"
   }
 }

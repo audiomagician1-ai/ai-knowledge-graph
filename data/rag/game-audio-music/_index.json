@@ -118,7 +118,7 @@
       ],
       "file": "game-audio-music/game-audio-music-horizontal-resequencing.md",
       "exists": true,
-      "char_count": 1480
+      "char_count": 2607
     },
     {
       "id": "game-audio-music-stealth-music",
@@ -1558,7 +1558,7 @@
       ],
       "file": "game-audio-music/game-audio-music-theme-variation.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2647
     },
     {
       "id": "game-audio-music-title-theme",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 298394,
-    "avg_chars": 1657,
+    "total_chars": 300706,
+    "avg_chars": 1670,
     "domain": "game-audio-music"
   }
 }
