@@ -1078,7 +1078,7 @@
       ],
       "file": "product-design/product-management/sprint-planning.md",
       "exists": true,
-      "char_count": 1537
+      "char_count": 2601
     },
     {
       "id": "product-launch",
@@ -2158,7 +2158,7 @@
       ],
       "file": "product-design/user-research/heuristic-evaluation.md",
       "exists": true,
-      "char_count": 1275
+      "char_count": 2224
     },
     {
       "id": "jobs-to-be-done",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 334766,
-    "avg_chars": 1839,
+    "total_chars": 336779,
+    "avg_chars": 1850,
     "domain": "product-design"
   }
 }

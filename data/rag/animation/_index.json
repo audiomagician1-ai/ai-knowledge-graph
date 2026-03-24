@@ -1978,7 +1978,7 @@
       ],
       "file": "animation/anim-spring-bone.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2505
     },
     {
       "id": "anim-hair-sim",
@@ -2173,7 +2173,7 @@
       ],
       "file": "animation/anim-wind-interaction.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2511
     },
     {
       "id": "anim-humanoid-rig",
@@ -2548,7 +2548,7 @@
       ],
       "file": "animation/anim-hfsm.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2505
     },
     {
       "id": "anim-combat-sm",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 292887,
-    "avg_chars": 1627,
+    "total_chars": 296435,
+    "avg_chars": 1646,
     "domain": "animation"
   }
 }

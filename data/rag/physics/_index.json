@@ -763,7 +763,7 @@
       ],
       "file": "physics/electromagnetism/kirchhoffs-laws.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2264
     },
     {
       "id": "amperes-law",
@@ -1663,7 +1663,7 @@
       ],
       "file": "physics/nuclear-physics/antimatter.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2524
     },
     {
       "id": "radioactive-decay",
@@ -2008,7 +2008,7 @@
       ],
       "file": "physics/quantum-mechanics/quantum-entanglement.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2912
     },
     {
       "id": "bose-einstein-fermi-dirac",
@@ -2533,7 +2533,7 @@
       ],
       "file": "physics/thermodynamics/boltzmann-distribution.md",
       "exists": true,
-      "char_count": 1548
+      "char_count": 2905
     },
     {
       "id": "ideal-gas-law",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 445943,
-    "avg_chars": 2298,
+    "total_chars": 450530,
+    "avg_chars": 2322,
     "domain": "physics"
   }
 }

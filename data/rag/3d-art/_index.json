@@ -223,7 +223,7 @@
       ],
       "file": "3d-art/3da-pipe-texture-pipeline.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2943
     },
     {
       "id": "3da-pipe-optimization",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 431453,
-    "avg_chars": 1909,
+    "total_chars": 433096,
+    "avg_chars": 1916,
     "domain": "3d-art"
   }
 }

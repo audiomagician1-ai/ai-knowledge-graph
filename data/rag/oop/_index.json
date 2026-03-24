@@ -37,7 +37,7 @@
       "tags": [],
       "file": "oop/proxy-pattern.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 3213
     },
     {
       "id": "dependency-injection",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 55849,
-    "avg_chars": 2327,
+    "total_chars": 57763,
+    "avg_chars": 2406,
     "domain": "oop"
   }
 }

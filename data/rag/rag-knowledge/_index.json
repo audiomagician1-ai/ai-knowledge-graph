@@ -297,13 +297,13 @@
       "tags": [],
       "file": "rag-knowledge/knowledge-graph-rag.md",
       "exists": true,
-      "char_count": 1636
+      "char_count": 2927
     }
   ],
   "stats": {
     "total": 23,
-    "total_chars": 41434,
-    "avg_chars": 1801,
+    "total_chars": 42725,
+    "avg_chars": 1857,
     "domain": "rag-knowledge"
   }
 }

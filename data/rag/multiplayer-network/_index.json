@@ -999,7 +999,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-scoring-system.md",
       "exists": true,
-      "char_count": 2215
+      "char_count": 2422
     },
     {
       "id": "mn-lr-season-reset",
@@ -2481,7 +2481,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-jitter-buffer.md",
       "exists": true,
-      "char_count": 2505
+      "char_count": 2640
     },
     {
       "id": "mn-ss-clock-synchronization",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 331099,
-    "avg_chars": 1655,
+    "total_chars": 331441,
+    "avg_chars": 1657,
     "domain": "multiplayer-network"
   }
 }

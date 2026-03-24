@@ -118,7 +118,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-ssaa.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2442
     },
     {
       "id": "cg-taa",
@@ -733,7 +733,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-gi-intro.md",
       "exists": true,
-      "char_count": 1702
+      "char_count": 2579
     },
     {
       "id": "cg-reflection-probes",
@@ -2698,7 +2698,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-render-graph.md",
       "exists": true,
-      "char_count": 1559
+      "char_count": 3204
     },
     {
       "id": "cg-render-budget",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 465803,
-    "avg_chars": 1863,
+    "total_chars": 469494,
+    "avg_chars": 1877,
     "domain": "computer-graphics"
   }
 }

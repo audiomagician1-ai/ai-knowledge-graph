@@ -388,7 +388,7 @@
       ],
       "file": "psychology/biological-psychology/stress-physiology.md",
       "exists": true,
-      "char_count": 1471
+      "char_count": 2603
     },
     {
       "id": "psychoneuroimmunology",
@@ -898,7 +898,7 @@
       ],
       "file": "psychology/clinical-psychology/therapeutic-relationship.md",
       "exists": true,
-      "char_count": 1490
+      "char_count": 2783
     },
     {
       "id": "anxiety-disorders",
@@ -1333,7 +1333,7 @@
       ],
       "file": "psychology/cognitive-psychology/selective-attention.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2811
     },
     {
       "id": "forgetting",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 365612,
-    "avg_chars": 1997,
+    "total_chars": 369365,
+    "avg_chars": 2018,
     "domain": "psychology"
   }
 }

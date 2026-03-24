@@ -193,7 +193,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-procedural-ambient.md",
       "exists": true,
-      "char_count": 1324
+      "char_count": 2777
     },
     {
       "id": "sfx-as-wildlife-audio",
@@ -1675,7 +1675,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-fr-contact-mic.md",
       "exists": true,
-      "char_count": 1315
+      "char_count": 2190
     },
     {
       "id": "sfx-fr-impact-recording",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 297434,
-    "avg_chars": 1652,
+    "total_chars": 299762,
+    "avg_chars": 1665,
     "domain": "game-audio-sfx"
   }
 }

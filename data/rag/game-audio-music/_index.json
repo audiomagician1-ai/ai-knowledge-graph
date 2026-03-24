@@ -73,7 +73,7 @@
       ],
       "file": "game-audio-music/game-audio-music-combat-music-system.md",
       "exists": true,
-      "char_count": 1556
+      "char_count": 2555
     },
     {
       "id": "game-audio-music-exploration-music",
@@ -1168,7 +1168,7 @@
       ],
       "file": "game-audio-music/game-audio-music-fmod-parameter-music.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 2896
     },
     {
       "id": "game-audio-music-fmod-bank-music",
@@ -1573,7 +1573,7 @@
       ],
       "file": "game-audio-music/game-audio-music-title-theme.md",
       "exists": true,
-      "char_count": 1557
+      "char_count": 2446
     },
     {
       "id": "game-audio-music-theme-fragmentation",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 293279,
-    "avg_chars": 1629,
+    "total_chars": 296492,
+    "avg_chars": 1647,
     "domain": "game-audio-music"
   }
 }

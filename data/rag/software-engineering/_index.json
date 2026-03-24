@@ -3523,7 +3523,7 @@
       ],
       "file": "software-engineering/refactoring/se-strangler-fig.md",
       "exists": true,
-      "char_count": 2629
+      "char_count": 2593
     },
     {
       "id": "se-legacy-refactor",
@@ -4203,7 +4203,7 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 487031,
+    "total_chars": 486995,
     "avg_chars": 1739,
     "domain": "software-engineering"
   }

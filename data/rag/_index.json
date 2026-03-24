@@ -223,7 +223,7 @@
       ],
       "file": "3d-art/3da-pipe-texture-pipeline.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2943
     },
     {
       "id": "3da-pipe-optimization",
@@ -6564,7 +6564,7 @@
       ],
       "file": "animation/anim-spring-bone.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2505
     },
     {
       "id": "anim-hair-sim",
@@ -6759,7 +6759,7 @@
       ],
       "file": "animation/anim-wind-interaction.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2511
     },
     {
       "id": "anim-humanoid-rig",
@@ -7134,7 +7134,7 @@
       ],
       "file": "animation/anim-hfsm.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2505
     },
     {
       "id": "anim-combat-sm",
@@ -9984,7 +9984,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-ssaa.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2442
     },
     {
       "id": "cg-taa",
@@ -10599,7 +10599,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-gi-intro.md",
       "exists": true,
-      "char_count": 1702
+      "char_count": 2579
     },
     {
       "id": "cg-reflection-probes",
@@ -12564,7 +12564,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-render-graph.md",
       "exists": true,
-      "char_count": 1559
+      "char_count": 3204
     },
     {
       "id": "cg-render-budget",
@@ -13989,7 +13989,7 @@
       ],
       "file": "concept-design/cd-char-costume.md",
       "exists": true,
-      "char_count": 1301
+      "char_count": 2545
     },
     {
       "id": "cd-char-game-constraints",
@@ -15114,7 +15114,7 @@
       ],
       "file": "concept-design/cd-env-birds-eye-map.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2445
     },
     {
       "id": "cd-lighting-study",
@@ -15384,7 +15384,7 @@
       ],
       "file": "concept-design/cd-ambient-occlusion-art.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2272
     },
     {
       "id": "cd-rim-light",
@@ -16239,7 +16239,7 @@
       ],
       "file": "concept-design/cd-prop-orthographic.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2480
     },
     {
       "id": "cd-prop-color-coding",
@@ -17109,7 +17109,7 @@
       "tags": [],
       "file": "cs-fundamentals/compiler-basics.md",
       "exists": true,
-      "char_count": 1644
+      "char_count": 2577
     },
     {
       "id": "network-basics",
@@ -17707,7 +17707,7 @@
       "tags": [],
       "file": "database/db-replication.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 3058
     },
     {
       "id": "db-normalization",
@@ -26109,7 +26109,7 @@
       ],
       "file": "game-audio-music/game-audio-music-combat-music-system.md",
       "exists": true,
-      "char_count": 1556
+      "char_count": 2555
     },
     {
       "id": "game-audio-music-exploration-music",
@@ -27204,7 +27204,7 @@
       ],
       "file": "game-audio-music/game-audio-music-fmod-parameter-music.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 2896
     },
     {
       "id": "game-audio-music-fmod-bank-music",
@@ -27609,7 +27609,7 @@
       ],
       "file": "game-audio-music/game-audio-music-title-theme.md",
       "exists": true,
-      "char_count": 1557
+      "char_count": 2446
     },
     {
       "id": "game-audio-music-theme-fragmentation",
@@ -28929,7 +28929,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-procedural-ambient.md",
       "exists": true,
-      "char_count": 1324
+      "char_count": 2777
     },
     {
       "id": "sfx-as-wildlife-audio",
@@ -30411,7 +30411,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-fr-contact-mic.md",
       "exists": true,
-      "char_count": 1315
+      "char_count": 2190
     },
     {
       "id": "sfx-fr-impact-recording",
@@ -51499,7 +51499,7 @@
       ],
       "file": "level-design/blockout/spawn-point.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2465
     },
     {
       "id": "prototype-test",
@@ -51574,7 +51574,7 @@
       ],
       "file": "level-design/blockout/cover-placement.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2224
     },
     {
       "id": "modular-kit",
@@ -51739,7 +51739,7 @@
       ],
       "file": "level-design/combat-space/multi-level-combat.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2417
     },
     {
       "id": "combat-flow",
@@ -51904,7 +51904,7 @@
       ],
       "file": "level-design/combat-space/ammo-health-placement.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2196
     },
     {
       "id": "corridor-combat",
@@ -51919,7 +51919,7 @@
       ],
       "file": "level-design/combat-space/corridor-combat.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2275
     },
     {
       "id": "vehicle-combat-space",
@@ -51934,7 +51934,7 @@
       ],
       "file": "level-design/combat-space/vehicle-combat-space.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2216
     },
     {
       "id": "escape-route",
@@ -57787,7 +57787,7 @@
       ],
       "file": "mathematics/optimization/multi-objective-opt.md",
       "exists": true,
-      "char_count": 1459
+      "char_count": 2851
     },
     {
       "id": "duality-lp",
@@ -58852,7 +58852,7 @@
       ],
       "file": "mathematics/trigonometry/product-sum-formulas.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2449
     },
     {
       "id": "data-visualization",
@@ -59868,7 +59868,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-scoring-system.md",
       "exists": true,
-      "char_count": 2215
+      "char_count": 2422
     },
     {
       "id": "mn-lr-season-reset",
@@ -61350,7 +61350,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-jitter-buffer.md",
       "exists": true,
-      "char_count": 2505
+      "char_count": 2640
     },
     {
       "id": "mn-ss-clock-synchronization",
@@ -61753,7 +61753,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-protagonist-design.md",
       "exists": true,
-      "char_count": 2579
+      "char_count": 2471
     },
     {
       "id": "nd-cw-dynamic-personality",
@@ -61805,7 +61805,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-antagonist-design.md",
       "exists": true,
-      "char_count": 2607
+      "char_count": 2296
     },
     {
       "id": "nd-cw-companion-system",
@@ -62884,7 +62884,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-subtitle-system.md",
       "exists": true,
-      "char_count": 2587
+      "char_count": 2601
     },
     {
       "id": "nd-lo-string-table",
@@ -63846,7 +63846,7 @@
       "tags": [],
       "file": "oop/proxy-pattern.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 3213
     },
     {
       "id": "dependency-injection",
@@ -67434,7 +67434,7 @@
       ],
       "file": "physics/electromagnetism/kirchhoffs-laws.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2264
     },
     {
       "id": "amperes-law",
@@ -68334,7 +68334,7 @@
       ],
       "file": "physics/nuclear-physics/antimatter.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2524
     },
     {
       "id": "radioactive-decay",
@@ -68679,7 +68679,7 @@
       ],
       "file": "physics/quantum-mechanics/quantum-entanglement.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2912
     },
     {
       "id": "bose-einstein-fermi-dirac",
@@ -69204,7 +69204,7 @@
       ],
       "file": "physics/thermodynamics/boltzmann-distribution.md",
       "exists": true,
-      "char_count": 1548
+      "char_count": 2905
     },
     {
       "id": "ideal-gas-law",
@@ -70659,7 +70659,7 @@
       ],
       "file": "product-design/product-management/sprint-planning.md",
       "exists": true,
-      "char_count": 1537
+      "char_count": 2601
     },
     {
       "id": "product-launch",
@@ -71739,7 +71739,7 @@
       ],
       "file": "product-design/user-research/heuristic-evaluation.md",
       "exists": true,
-      "char_count": 1275
+      "char_count": 2224
     },
     {
       "id": "jobs-to-be-done",
@@ -72842,7 +72842,7 @@
       "tags": [],
       "file": "prompt-engineering/few-shot.md",
       "exists": true,
-      "char_count": 1378
+      "char_count": 2479
     },
     {
       "id": "tree-of-thought",
@@ -73349,7 +73349,7 @@
       ],
       "file": "psychology/biological-psychology/stress-physiology.md",
       "exists": true,
-      "char_count": 1471
+      "char_count": 2603
     },
     {
       "id": "psychoneuroimmunology",
@@ -73859,7 +73859,7 @@
       ],
       "file": "psychology/clinical-psychology/therapeutic-relationship.md",
       "exists": true,
-      "char_count": 1490
+      "char_count": 2783
     },
     {
       "id": "anxiety-disorders",
@@ -74294,7 +74294,7 @@
       ],
       "file": "psychology/cognitive-psychology/selective-attention.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2811
     },
     {
       "id": "forgetting",
@@ -76003,7 +76003,7 @@
       "tags": [],
       "file": "rag-knowledge/knowledge-graph-rag.md",
       "exists": true,
-      "char_count": 1636
+      "char_count": 2927
     },
     {
       "id": "se-api-design",
@@ -79528,7 +79528,7 @@
       ],
       "file": "software-engineering/refactoring/se-strangler-fig.md",
       "exists": true,
-      "char_count": 2629
+      "char_count": 2593
     },
     {
       "id": "se-legacy-refactor",
@@ -84968,7 +84968,7 @@
       ],
       "file": "vfx/vfx-pp-chromatic.md",
       "exists": true,
-      "char_count": 1174
+      "char_count": 2500
     },
     {
       "id": "vfx-pp-tonemap",
@@ -86201,7 +86201,7 @@
       "tags": [],
       "file": "web-backend/server-basics.md",
       "exists": true,
-      "char_count": 1553
+      "char_count": 3086
     },
     {
       "id": "server-side-rendering",

@@ -1738,7 +1738,7 @@
       ],
       "file": "vfx/vfx-pp-chromatic.md",
       "exists": true,
-      "char_count": 1174
+      "char_count": 2500
     },
     {
       "id": "vfx-pp-tonemap",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 301700,
-    "avg_chars": 1676,
+    "total_chars": 303026,
+    "avg_chars": 1683,
     "domain": "vfx"
   }
 }

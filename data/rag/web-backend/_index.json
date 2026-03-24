@@ -271,7 +271,7 @@
       "tags": [],
       "file": "web-backend/server-basics.md",
       "exists": true,
-      "char_count": 1553
+      "char_count": 3086
     },
     {
       "id": "server-side-rendering",
@@ -354,8 +354,8 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 52720,
-    "avg_chars": 1952,
+    "total_chars": 54253,
+    "avg_chars": 2009,
     "domain": "web-backend"
   }
 }

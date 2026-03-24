@@ -141,7 +141,7 @@
       "tags": [],
       "file": "prompt-engineering/few-shot.md",
       "exists": true,
-      "char_count": 1378
+      "char_count": 2479
     },
     {
       "id": "tree-of-thought",
@@ -263,8 +263,8 @@
   ],
   "stats": {
     "total": 20,
-    "total_chars": 35905,
-    "avg_chars": 1795,
+    "total_chars": 37006,
+    "avg_chars": 1850,
     "domain": "prompt-engineering"
   }
 }

@@ -2953,7 +2953,7 @@
       ],
       "file": "mathematics/optimization/multi-objective-opt.md",
       "exists": true,
-      "char_count": 1459
+      "char_count": 2851
     },
     {
       "id": "duality-lp",
@@ -4018,7 +4018,7 @@
       ],
       "file": "mathematics/trigonometry/product-sum-formulas.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2449
     },
     {
       "id": "data-visualization",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 669008,
-    "avg_chars": 2487,
+    "total_chars": 671585,
+    "avg_chars": 2496,
     "domain": "mathematics"
   }
 }

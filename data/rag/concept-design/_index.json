@@ -373,7 +373,7 @@
       ],
       "file": "concept-design/cd-char-costume.md",
       "exists": true,
-      "char_count": 1301
+      "char_count": 2545
     },
     {
       "id": "cd-char-game-constraints",
@@ -1498,7 +1498,7 @@
       ],
       "file": "concept-design/cd-env-birds-eye-map.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2445
     },
     {
       "id": "cd-lighting-study",
@@ -1768,7 +1768,7 @@
       ],
       "file": "concept-design/cd-ambient-occlusion-art.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2272
     },
     {
       "id": "cd-rim-light",
@@ -2623,7 +2623,7 @@
       ],
       "file": "concept-design/cd-prop-orthographic.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2480
     },
     {
       "id": "cd-prop-color-coding",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 382778,
-    "avg_chars": 1739,
+    "total_chars": 387317,
+    "avg_chars": 1760,
     "domain": "concept-design"
   }
 }

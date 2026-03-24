@@ -219,7 +219,7 @@
       "tags": [],
       "file": "database/db-replication.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 3058
     },
     {
       "id": "db-normalization",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 41144,
-    "avg_chars": 1714,
+    "total_chars": 42832,
+    "avg_chars": 1784,
     "domain": "database"
   }
 }

@@ -133,7 +133,7 @@
       ],
       "file": "level-design/blockout/spawn-point.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2465
     },
     {
       "id": "prototype-test",
@@ -208,7 +208,7 @@
       ],
       "file": "level-design/blockout/cover-placement.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2224
     },
     {
       "id": "modular-kit",
@@ -373,7 +373,7 @@
       ],
       "file": "level-design/combat-space/multi-level-combat.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2417
     },
     {
       "id": "combat-flow",
@@ -538,7 +538,7 @@
       ],
       "file": "level-design/combat-space/ammo-health-placement.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2196
     },
     {
       "id": "corridor-combat",
@@ -553,7 +553,7 @@
       ],
       "file": "level-design/combat-space/corridor-combat.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2275
     },
     {
       "id": "vehicle-combat-space",
@@ -568,7 +568,7 @@
       ],
       "file": "level-design/combat-space/vehicle-combat-space.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2216
     },
     {
       "id": "escape-route",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 404546,
-    "avg_chars": 2022,
+    "total_chars": 410782,
+    "avg_chars": 2053,
     "domain": "level-design"
   }
 }
