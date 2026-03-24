@@ -3,7 +3,7 @@
 > **文档版本**: v2.0
 > **创建日期**: 2026-03-21
 > **最后更新**: 2026-03-21
-> **状态**: 🔥 最高优先级 — Sprint 0+1 完成, Sprint 1.5 (research-rewrite-v2) 进行中
+> **状态**: 🔥 最高优先级 — Sprint 0~4 完成, Sprint 5 Tier-B批量提升进行中(均分53.8, S=243/A=1241/B=4672/C=0)
 > **关联**: `CLAUDE.md` (项目状态) / `EXPANSION_PLAN.md` (多球体路线图) / `DEVELOPMENT_PLAN.md` (MVP定义)
 
 ---
@@ -272,30 +272,47 @@ seed_graph元数据 → 生成4条搜索查询(中英各2) → WebSearch
 - [ ] economics 域 milestone 概念 (~15 篇)
 - [ ] 剩余域 milestone 概念
 
-### Sprint 2：精确科学入门层改写（3-5 天）
-- [ ] 物理/数学/生物/经济学 difficulty 1-3（约 300 篇）
-- [ ] 全部使用 research-rewrite-v2 流程
-- [ ] 目标：300 篇 Tier-C → Tier-A+
+### Sprint 2：AI-Rewrite-v1 里程碑批量精写 ✅ 完成
+- [x] 1,091 里程碑概念 AI 精写(全30域覆盖)
+- [x] 均分 31.0→46.6 | S: 10→1,115 | A: 26→132 | B: 0→2,155 | C: 6,100→2,754
+- [x] 脚本: `scripts/batch_ai_rewrite.py`
 
-### Sprint 3：全域质量提升管线化（持续）
-- [ ] 批量改写调度器（按 priority 排序，每次 50 篇）
-- [ ] 集成到项目 CI
-- [ ] quality dashboard 可视化
+### Sprint 3：AI-Rewrite-v1 全量精写 ✅ 完成
+- [x] 5,005 非里程碑概念 AI 精写(全30域覆盖)
+- [x] 均分 46.6→85.9 (Scorer v1) | S: 6,104→6,156 (100%)
+- [x] 脚本: `scripts/batch_ai_rewrite.py --all`
+- [x] Scorer v2.0 重评发现: ai-rewrite-v1 模板化严重 → S=80/A=48/B=5,370/C=658 均分44.9
 
-### 长期：用户反馈驱动进化
-- [ ] 学习对话纠正自动收集
+### Sprint 4：Tier-C 批量消除 ✅ 完成
+- [x] 658 篇 Tier-C 文档通过 mihoyo.claude-4-6-sonnet 内网API改写
+- [x] 脚本: `scripts/_batch_intranet_rewrite.py`
+- [x] Tier-C: 658→0 (-100%) | Tier-A: 48→639 (+1231%) | Tier-S: 80→145 (+81%) | 均分49.5
+
+### Sprint 5：Tier-B 批量提升 🔥 进行中
+- [x] Batch 1: 210 篇最低分 Tier-B 改写 (0 errors, 63/hr)
+- [x] Batch 2: 655 篇 Tier-B 改写, commit 9dd35deb (0 errors)
+- [ ] Batch 3: 500 篇 Tier-B 改写, 后台运行中 (~60/hr, ETA ~8hr)
+- [ ] 累计: S=243(3.9%) A=1,241(20.2%) B=4,672(75.9%) C=0 均分53.8
+- [ ] 目标: 全部4,672篇Tier-B提升到A或S, 均分达到60+
+- [x] 脚本: `scripts/_batch_tier_b_upgrade.py` (resume/progress/retry)
+- [x] research-rewrite-v2 精写: Sprint 5/6/7 共升级60+高依赖度文档到Tier-S
+
+### Sprint 6+：持续质量提升（规划中）
+- [ ] 继续Tier-B批量提升(~4172篇剩余)
+- [ ] 高价值概念research-rewrite-v2精写(WebSearch增强)
+- [ ] 用户反馈驱动进化
 - [ ] 季度全量质量复扫
-- [ ] 技术域年度刷新
 
 ---
 
 ## 十、预期效果
 
-| 指标 | 初始状态 | Sprint 0+1 后(实际) | Sprint 1.5 预期 | Sprint 2 预期 | 6 个月预期 |
+| 指标 | 初始状态 | Sprint 1 后 | Sprint 4 后(实际) | Sprint 5 当前(实际) | 目标 |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| Tier-S 文档数 | ~10 | 9 (+v1精写) | ~100 | ~300 | ~1,000 |
-| Tier-A 文档数 | ~26 | 19 (physics) | ~200 | ~500 | ~2,000 |
-| Tier-C 文档数 | ~5,960 | ~5,820 | ~5,500 | ~4,500 | ~2,000 |
-| 平均 quality_score | ~15 | 31.0 | ~35 | ~42 | ~60 |
-| 有外部来源 | 0% | <1% (physics) | ~5% | ~15% | ~50% |
+| Tier-S 文档数 | ~10 | 9 | 145 | **243** (3.9%) | ~1,500 |
+| Tier-A 文档数 | ~26 | 19 | 639 | **1,241** (20.2%) | ~3,000 |
+| Tier-B 文档数 | ~5,960 | ~5,820 | 5,368 | **4,672** (75.9%) | ~1,500 |
+| Tier-C 文档数 | ~5,960 | ~5,820 | **0** | **0** | 0 |
+| 平均 quality_score | ~15 | 31.0 | 49.5 | **53.8** | 65+ |
+| 有外部来源 | 0% | <1% | ~1% | ~1% | ~30% |
 | generation_method: research-rewrite-v2 | 0 | 2 | ~100 | ~400 | ~2,000 |
