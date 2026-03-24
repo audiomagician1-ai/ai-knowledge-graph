@@ -1818,7 +1818,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-visual-regression.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2342
     },
     {
       "id": "qa-tc-ci-tools",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 260589,
-    "avg_chars": 1628,
+    "total_chars": 261504,
+    "avg_chars": 1634,
     "domain": "game-qa"
   }
 }

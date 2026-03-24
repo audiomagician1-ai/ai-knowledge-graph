@@ -1012,7 +1012,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-season-reset.md",
       "exists": true,
-      "char_count": 1415
+      "char_count": 2314
     },
     {
       "id": "mn-lr-progression-system",
@@ -1571,7 +1571,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-elo-rating.md",
       "exists": true,
-      "char_count": 1709
+      "char_count": 2234
     },
     {
       "id": "mn-mm-trueskill",
@@ -2468,7 +2468,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-snapshot-system.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2658
     },
     {
       "id": "mn-ss-jitter-buffer",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 338509,
-    "avg_chars": 1692,
+    "total_chars": 341247,
+    "avg_chars": 1706,
     "domain": "multiplayer-network"
   }
 }

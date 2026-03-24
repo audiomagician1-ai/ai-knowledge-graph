@@ -37,7 +37,7 @@
       "tags": [],
       "file": "data-structures/b-tree.md",
       "exists": true,
-      "char_count": 1560
+      "char_count": 2564
     },
     {
       "id": "lru-cache",
@@ -341,8 +341,8 @@
   ],
   "stats": {
     "total": 26,
-    "total_chars": 57090,
-    "avg_chars": 2195,
+    "total_chars": 58094,
+    "avg_chars": 2234,
     "domain": "data-structures"
   }
 }

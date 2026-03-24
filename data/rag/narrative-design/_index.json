@@ -635,7 +635,7 @@
       "tags": [],
       "file": "narrative-design/nd-ci-in-engine-cutscene.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2887
     },
     {
       "id": "nd-ci-emotional-beats",
@@ -1064,7 +1064,7 @@
       "tags": [],
       "file": "narrative-design/nd-es-world-reaction.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2574
     },
     {
       "id": "nd-es-lighting-narrative",
@@ -1402,7 +1402,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-font-localization.md",
       "exists": true,
-      "char_count": 1433
+      "char_count": 2974
     },
     {
       "id": "nd-lo-subtitle-system",
@@ -1519,7 +1519,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-loc-budget.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2431
     },
     {
       "id": "nd-lo-community-translation",
@@ -1597,7 +1597,7 @@
       "tags": [],
       "file": "narrative-design/nd-nt-ink-scripting.md",
       "exists": true,
-      "char_count": 1577
+      "char_count": 2526
     },
     {
       "id": "nd-nt-llm-narrative",
@@ -1935,7 +1935,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-structure.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 2555
     },
     {
       "id": "nd-qd-quest-pacing",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 286582,
-    "avg_chars": 1592,
+    "total_chars": 293848,
+    "avg_chars": 1632,
     "domain": "narrative-design"
   }
 }

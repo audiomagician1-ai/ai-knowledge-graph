@@ -648,7 +648,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-bus-routing.md",
       "exists": true,
-      "char_count": 1563
+      "char_count": 3125
     },
     {
       "id": "sfx-am-batch-processing",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 309416,
-    "avg_chars": 1718,
+    "total_chars": 310978,
+    "avg_chars": 1727,
     "domain": "game-audio-sfx"
   }
 }

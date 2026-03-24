@@ -245,7 +245,7 @@
       "tags": [],
       "file": "devops/log-aggregation.md",
       "exists": true,
-      "char_count": 1582
+      "char_count": 3378
     },
     {
       "id": "environment-variables",
@@ -289,8 +289,8 @@
   ],
   "stats": {
     "total": 22,
-    "total_chars": 39154,
-    "avg_chars": 1779,
+    "total_chars": 40950,
+    "avg_chars": 1861,
     "domain": "devops"
   }
 }

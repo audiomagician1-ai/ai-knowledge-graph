@@ -193,7 +193,7 @@
       "tags": [],
       "file": "web-frontend/ssg-isr.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 3049
     },
     {
       "id": "typescript-basics",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 69040,
-    "avg_chars": 2092,
+    "total_chars": 70519,
+    "avg_chars": 2136,
     "domain": "web-frontend"
   }
 }

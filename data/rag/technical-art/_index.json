@@ -268,7 +268,7 @@
       ],
       "file": "technical-art/ta-auto-test.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2840
     },
     {
       "id": "ta-auto-import",
@@ -973,7 +973,7 @@
       ],
       "file": "technical-art/ta-memory-report.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2882
     },
     {
       "id": "ta-memory-pool",
@@ -1183,7 +1183,7 @@
       ],
       "file": "technical-art/ta-asset-size.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2679
     },
     {
       "id": "ta-audio-memory",
@@ -1543,7 +1543,7 @@
       ],
       "file": "technical-art/ta-gpu-profiling.md",
       "exists": true,
-      "char_count": 1722
+      "char_count": 3327
     },
     {
       "id": "ta-overdraw",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 307612,
-    "avg_chars": 1708,
+    "total_chars": 313634,
+    "avg_chars": 1742,
     "domain": "technical-art"
   }
 }

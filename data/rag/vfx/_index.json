@@ -118,7 +118,7 @@
       ],
       "file": "vfx/vfx-destruct-decal.md",
       "exists": true,
-      "char_count": 1416
+      "char_count": 2357
     },
     {
       "id": "vfx-destruct-lod",
@@ -403,7 +403,7 @@
       ],
       "file": "vfx/vfx-fb-shader.md",
       "exists": true,
-      "char_count": 1697
+      "char_count": 3076
     },
     {
       "id": "vfx-fb-comparison",
@@ -508,7 +508,7 @@
       ],
       "file": "vfx/vfx-fb-water.md",
       "exists": true,
-      "char_count": 1418
+      "char_count": 2505
     },
     {
       "id": "vfx-fb-normal",
@@ -538,7 +538,7 @@
       ],
       "file": "vfx/vfx-fb-fire.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2365
     },
     {
       "id": "vfx-fb-explosion",
@@ -868,7 +868,7 @@
       ],
       "file": "vfx/vfx-fluid-viscosity.md",
       "exists": true,
-      "char_count": 1339
+      "char_count": 2717
     },
     {
       "id": "vfx-fluid-blood",
@@ -1273,7 +1273,7 @@
       ],
       "file": "vfx/vfx-particle-size.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2608
     },
     {
       "id": "vfx-particle-spring",
@@ -1408,7 +1408,7 @@
       ],
       "file": "vfx/vfx-particle-orbit.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2617
     },
     {
       "id": "vfx-particle-velocity",
@@ -1498,7 +1498,7 @@
       ],
       "file": "vfx/vfx-particle-wind.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 2424
     },
     {
       "id": "vfx-pp-bloom",
@@ -2533,7 +2533,7 @@
       ],
       "file": "vfx/vfx-opt-benchmark.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2461
     },
     {
       "id": "vfx-opt-platform",
@@ -2638,7 +2638,7 @@
       ],
       "file": "vfx/vfx-opt-mobile.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 2724
     },
     {
       "id": "vfx-opt-particle-count",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 317981,
-    "avg_chars": 1766,
+    "total_chars": 329976,
+    "avg_chars": 1833,
     "domain": "vfx"
   }
 }

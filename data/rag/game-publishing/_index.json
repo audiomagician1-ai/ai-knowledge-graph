@@ -544,7 +544,7 @@
       "tags": [],
       "file": "game-publishing/pub-ms-go-to-market.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2715
     },
     {
       "id": "pub-ms-swot-analysis",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 278413,
-    "avg_chars": 1546,
+    "total_chars": 279708,
+    "avg_chars": 1553,
     "domain": "game-publishing"
   }
 }

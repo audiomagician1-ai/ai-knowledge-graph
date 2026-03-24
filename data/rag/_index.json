@@ -1378,7 +1378,7 @@
       ],
       "file": "3d-art/3da-mesh-cleanup.md",
       "exists": true,
-      "char_count": 1461
+      "char_count": 2700
     },
     {
       "id": "3da-pivot-origin",
@@ -17187,7 +17187,7 @@
       "tags": [],
       "file": "data-structures/b-tree.md",
       "exists": true,
-      "char_count": 1560
+      "char_count": 2564
     },
     {
       "id": "lru-cache",
@@ -18045,7 +18045,7 @@
       "tags": [],
       "file": "devops/log-aggregation.md",
       "exists": true,
-      "char_count": 1582
+      "char_count": 3378
     },
     {
       "id": "environment-variables",
@@ -29384,7 +29384,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-bus-routing.md",
       "exists": true,
-      "char_count": 1563
+      "char_count": 3125
     },
     {
       "id": "sfx-am-batch-processing",
@@ -42457,7 +42457,7 @@
       "tags": [],
       "file": "game-production/gp-mp-wbs.md",
       "exists": true,
-      "char_count": 1549
+      "char_count": 2406
     },
     {
       "id": "gp-mp-roadmap",
@@ -42639,7 +42639,7 @@
       "tags": [],
       "file": "game-production/gp-mp-tracking.md",
       "exists": true,
-      "char_count": 1548
+      "char_count": 2394
     },
     {
       "id": "gp-mp-iteration",
@@ -44290,7 +44290,7 @@
       "tags": [],
       "file": "game-publishing/pub-ms-go-to-market.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2715
     },
     {
       "id": "pub-ms-swot-analysis",
@@ -47904,7 +47904,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-visual-regression.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2342
     },
     {
       "id": "qa-tc-ci-tools",
@@ -51012,7 +51012,7 @@
       ],
       "file": "game-ui-ux/guiux-tech-layout-engine.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 3000
     },
     {
       "id": "guiux-tech-data-binding",
@@ -59881,7 +59881,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-season-reset.md",
       "exists": true,
-      "char_count": 1415
+      "char_count": 2314
     },
     {
       "id": "mn-lr-progression-system",
@@ -60440,7 +60440,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-elo-rating.md",
       "exists": true,
-      "char_count": 1709
+      "char_count": 2234
     },
     {
       "id": "mn-mm-trueskill",
@@ -61337,7 +61337,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-snapshot-system.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2658
     },
     {
       "id": "mn-ss-jitter-buffer",
@@ -62104,7 +62104,7 @@
       "tags": [],
       "file": "narrative-design/nd-ci-in-engine-cutscene.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2887
     },
     {
       "id": "nd-ci-emotional-beats",
@@ -62533,7 +62533,7 @@
       "tags": [],
       "file": "narrative-design/nd-es-world-reaction.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2574
     },
     {
       "id": "nd-es-lighting-narrative",
@@ -62871,7 +62871,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-font-localization.md",
       "exists": true,
-      "char_count": 1433
+      "char_count": 2974
     },
     {
       "id": "nd-lo-subtitle-system",
@@ -62988,7 +62988,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-loc-budget.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2431
     },
     {
       "id": "nd-lo-community-translation",
@@ -63066,7 +63066,7 @@
       "tags": [],
       "file": "narrative-design/nd-nt-ink-scripting.md",
       "exists": true,
-      "char_count": 1577
+      "char_count": 2526
     },
     {
       "id": "nd-nt-llm-narrative",
@@ -63404,7 +63404,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-structure.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 2555
     },
     {
       "id": "nd-qd-quest-pacing",
@@ -63924,7 +63924,7 @@
       "tags": [],
       "file": "oop/builder-pattern.md",
       "exists": true,
-      "char_count": 1575
+      "char_count": 3003
     },
     {
       "id": "abstraction",
@@ -76648,7 +76648,7 @@
       ],
       "file": "software-engineering/ci-cd/se-ci-security.md",
       "exists": true,
-      "char_count": 1347
+      "char_count": 3112
     },
     {
       "id": "se-docker-ci",
@@ -77383,7 +77383,7 @@
       ],
       "file": "software-engineering/design-patterns/se-dp-strategy.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2872
     },
     {
       "id": "se-dp-composite",
@@ -79033,7 +79033,7 @@
       ],
       "file": "software-engineering/performance-analysis/se-cpu-profiling.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 2909
     },
     {
       "id": "se-gpu-profiling",
@@ -80143,7 +80143,7 @@
       ],
       "file": "software-engineering/version-control/se-gitignore.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2408
     },
     {
       "id": "se-vc-intro",
@@ -80798,7 +80798,7 @@
       ],
       "file": "technical-art/ta-auto-test.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2840
     },
     {
       "id": "ta-auto-import",
@@ -81503,7 +81503,7 @@
       ],
       "file": "technical-art/ta-memory-report.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2882
     },
     {
       "id": "ta-memory-pool",
@@ -81713,7 +81713,7 @@
       ],
       "file": "technical-art/ta-asset-size.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2679
     },
     {
       "id": "ta-audio-memory",
@@ -82073,7 +82073,7 @@
       ],
       "file": "technical-art/ta-gpu-profiling.md",
       "exists": true,
-      "char_count": 1722
+      "char_count": 3327
     },
     {
       "id": "ta-overdraw",
@@ -83348,7 +83348,7 @@
       ],
       "file": "vfx/vfx-destruct-decal.md",
       "exists": true,
-      "char_count": 1416
+      "char_count": 2357
     },
     {
       "id": "vfx-destruct-lod",
@@ -83633,7 +83633,7 @@
       ],
       "file": "vfx/vfx-fb-shader.md",
       "exists": true,
-      "char_count": 1697
+      "char_count": 3076
     },
     {
       "id": "vfx-fb-comparison",
@@ -83738,7 +83738,7 @@
       ],
       "file": "vfx/vfx-fb-water.md",
       "exists": true,
-      "char_count": 1418
+      "char_count": 2505
     },
     {
       "id": "vfx-fb-normal",
@@ -83768,7 +83768,7 @@
       ],
       "file": "vfx/vfx-fb-fire.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2365
     },
     {
       "id": "vfx-fb-explosion",
@@ -84098,7 +84098,7 @@
       ],
       "file": "vfx/vfx-fluid-viscosity.md",
       "exists": true,
-      "char_count": 1339
+      "char_count": 2717
     },
     {
       "id": "vfx-fluid-blood",
@@ -84503,7 +84503,7 @@
       ],
       "file": "vfx/vfx-particle-size.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2608
     },
     {
       "id": "vfx-particle-spring",
@@ -84638,7 +84638,7 @@
       ],
       "file": "vfx/vfx-particle-orbit.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2617
     },
     {
       "id": "vfx-particle-velocity",
@@ -84728,7 +84728,7 @@
       ],
       "file": "vfx/vfx-particle-wind.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 2424
     },
     {
       "id": "vfx-pp-bloom",
@@ -85763,7 +85763,7 @@
       ],
       "file": "vfx/vfx-opt-benchmark.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2461
     },
     {
       "id": "vfx-opt-platform",
@@ -85868,7 +85868,7 @@
       ],
       "file": "vfx/vfx-opt-mobile.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 2724
     },
     {
       "id": "vfx-opt-particle-count",
@@ -86474,7 +86474,7 @@
       "tags": [],
       "file": "web-frontend/ssg-isr.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 3049
     },
     {
       "id": "typescript-basics",

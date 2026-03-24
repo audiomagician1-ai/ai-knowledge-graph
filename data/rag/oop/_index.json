@@ -115,7 +115,7 @@
       "tags": [],
       "file": "oop/builder-pattern.md",
       "exists": true,
-      "char_count": 1575
+      "char_count": 3003
     },
     {
       "id": "abstraction",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 61828,
-    "avg_chars": 2576,
+    "total_chars": 63256,
+    "avg_chars": 2635,
     "domain": "oop"
   }
 }

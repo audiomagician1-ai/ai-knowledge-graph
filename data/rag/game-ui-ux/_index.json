@@ -2846,7 +2846,7 @@
       ],
       "file": "game-ui-ux/guiux-tech-layout-engine.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 3000
     },
     {
       "id": "guiux-tech-data-binding",
@@ -3203,8 +3203,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 321637,
-    "avg_chars": 1608,
+    "total_chars": 323201,
+    "avg_chars": 1616,
     "domain": "game-ui-ux"
   }
 }

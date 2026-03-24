@@ -1378,7 +1378,7 @@
       ],
       "file": "3d-art/3da-mesh-cleanup.md",
       "exists": true,
-      "char_count": 1461
+      "char_count": 2700
     },
     {
       "id": "3da-pivot-origin",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 447986,
-    "avg_chars": 1982,
+    "total_chars": 449225,
+    "avg_chars": 1987,
     "domain": "3d-art"
   }
 }

@@ -791,7 +791,7 @@
       "tags": [],
       "file": "game-production/gp-mp-wbs.md",
       "exists": true,
-      "char_count": 1549
+      "char_count": 2406
     },
     {
       "id": "gp-mp-roadmap",
@@ -973,7 +973,7 @@
       "tags": [],
       "file": "game-production/gp-mp-tracking.md",
       "exists": true,
-      "char_count": 1548
+      "char_count": 2394
     },
     {
       "id": "gp-mp-iteration",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 257420,
-    "avg_chars": 1608,
+    "total_chars": 259123,
+    "avg_chars": 1619,
     "domain": "game-production"
   }
 }
