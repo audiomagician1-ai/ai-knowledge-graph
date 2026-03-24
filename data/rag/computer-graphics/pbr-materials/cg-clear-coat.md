@@ -9,12 +9,12 @@ is_milestone: false
 tags: ["进阶"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.2
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.429
-last_scored: "2026-03-24"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"
@@ -25,73 +25,74 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-清漆层（Clear Coat Layer）是PBR材质中用于模拟汽车漆面、木器清漆、上光蜡等表面的多层材质模型。其物理原型是在有色底漆或粗糙基底之上喷涂的一层透明保护涂层，该涂层本身光滑且折射率约为1.5（接近聚氨酯和聚酯类涂料的真实折射率），导致表面呈现出底层粗糙纹理与顶层镜面高光共存的复合外观。
+清漆层（Clear Coat Layer）是PBR材质系统中用于模拟汽车喷漆、木质清漆、指甲油等具有半透明保护涂层材质的双层BRDF模型。其物理原理来源于真实世界中的涂层结构：底层为带颜色的漫反射基底（base layer），顶层为一层薄薄的透明高光涂料（clear coat layer），两层之间存在能量守恒关系。Unreal Engine 4在2013年前后将清漆层作为独立着色模型引入其材质系统，随后Filament渲染引擎（Google，2018年）将其数学框架完整公开，成为实时渲染领域的标准参考实现。
 
-这一模型的形式化描述最早在 Burley 2012 年发表的迪士尼 PBR 论文《Physically-Based Shading at Disney》中被系统提出，并以独立参数 `clearCoat` 和 `clearCoatRoughness` 的形式纳入 Disney Principled BRDF。Filament（Google 的移动端 PBR 渲染器）也在其材质系统中完整实现了清漆层，并在官方文档中给出了详细的推导与近似公式。
-
-清漆层之所以在实时渲染中有重要价值，是因为仅靠单层 Cook-Torrance 模型无法同时表达两个不同粗糙度的镜面反射叶。汽车车身的外观之所以在强光下兼具底漆的颜色/金属纹理和清晰的天空倒影，正是因为物理上存在两层具有不同粗糙度的介质界面，若将其强行合并为一层则会失去这种分层高光特征。
+清漆层之所以重要，在于用单层Cook-Torrance模型无法同时描述两个不同粗糙度的镜面反射峰。例如汽车车漆往往底层金属粉为中等粗糙度（roughness≈0.4–0.6），而顶层清漆极为光滑（roughness≈0.0–0.1），两者叠加形成一个宽底高峰的双峰高光分布，这是单层模型物理上无法重现的现象。
 
 ---
 
 ## 核心原理
 
-### 双层 BRDF 叠加结构
+### 双层BRDF叠加公式
 
-清漆层模型的总 BRDF 由底层 BRDF 与清漆层 BRDF 加权叠加而成：
+清漆层的完整BRDF为顶层与底层贡献之和，并对底层施加能量衰减：
 
-$$f_{\text{total}} = f_{\text{base}} \cdot (1 - F_c) + f_{\text{coat}}$$
+$$f_r = f_{base}(1 - F_c)^2 + f_{coat}$$
 
 其中：
-- $f_{\text{base}}$ 为底层材质的完整 Cook-Torrance BRDF（可以是金属或非金属）
-- $f_{\text{coat}}$ 为清漆层自身的镜面 BRDF，通常固定为各向同性、无颜色偏移（白色 Fresnel）
-- $F_c$ 为清漆层在当前视角下的 Fresnel 反射率，用于对底层贡献进行能量遮蔽
+- $f_{base}$ 为底层Cook-Torrance BRDF（包含漫反射与镜面项）
+- $f_{coat}$ 为顶层清漆Cook-Torrance镜面BRDF
+- $F_c$ 为清漆层在入射方向上的菲涅尔反射率（Fresnel reflectance of the coat）
+- $(1 - F_c)^2$ 表示光线进入和离开清漆层时各损失一次能量，因此平方
 
-注意 $(1 - F_c)$ 这一乘法因子代表从清漆层透射进入底层并反射出来的能量比例，保证了能量守恒。如果缺少这一衰减，当清漆层反射率很高时，叠加后的出射亮度将超过入射亮度。
+这个$(1 - F_c)^2$衰减系数是清漆层公式区别于简单BRDF叠加的关键所在，它保证了整个双层系统满足能量守恒。
 
-### 清漆层自身的 BRDF 参数化
+### 清漆层的菲涅尔近似
 
-在 Disney BRDF 的实现中，清漆层使用了一个简化的镜面叶：
+顶层清漆通常被建模为折射率约为**1.5**的无色电介质，其对应的F0（法线方向基础反射率）计算为：
 
-- **法线分布函数（NDF）**：采用 GTR1（Generalized Trowbridge-Reitz，γ=1）而非底层使用的 GTR2（GGX），GTR1 产生更窄、更尖锐的高光过渡，符合清漆层光滑涂层的特性
-- **Fresnel 项**：固定为折射率 $n=1.5$ 对应的 $F_0 = \left(\frac{1.5-1}{1.5+1}\right)^2 = 0.04$，即 4% 的垂直入射反射率，不受底层颜色影响
-- **强度参数 `clearCoat`**：范围 \[0, 1\]，在 Filament 中实际将 $F_0$ 缩放到 \[0, 0.04\] 区间，取值 1 代表全强度清漆
-- **粗糙度参数 `clearCoatRoughness`**：独立于底层粗糙度，允许在同一材质上定义底层模糊金属光泽 + 顶层高光滑镜面的组合
+$$F_0^{coat} = \left(\frac{n-1}{n+1}\right)^2 = \left(\frac{1.5-1}{1.5+1}\right)^2 \approx 0.04$$
 
-### 几何遮蔽与折射偏移
+因此清漆层在法线方向只反射约4%的入射光，而在掠射角（grazing angle）趋近于1。实践中使用Schlick近似来计算任意角度的$F_c$：
 
-严格的清漆层实现还需处理折射率差异带来的折射偏移：光线穿过清漆层折射后打到底层，若清漆层有一定厚度则采样位置会产生横向偏移。在实时渲染中这一效果通常被忽略（厚度视为零），但在离线渲染或路径追踪中，可通过 BTDF 和清漆层厚度参数精确模拟底层细节的横向位移模糊。
+$$F_c = F_0^{coat} + (1 - F_0^{coat})(1 - \cos\theta_i)^5$$
 
-清漆层的 Smith 遮蔽函数通常单独计算，不与底层共享，因为两者的粗糙度独立。Filament 文档给出清漆层遮蔽项使用 $\alpha_c = (0.089 + \text{clearCoatRoughness})^2 / 2$ 的近似，与 GGX 遮蔽的 $\alpha^2 = \text{roughness}^4$ 公式有所不同。
+顶层清漆的NDF通常使用GGX分布，且其粗糙度参数`clearCoatRoughness`独立于底层`roughness`，在Filament中默认值固定为0.089（对应感知粗糙度perceptualRoughness=0.3）。
+
+### 法线处理与双法线贴图
+
+清漆层引入了一个重要的技术挑战：顶层与底层可以拥有**不同的法线**。例如碳纤维材质，底层显示编织纹理的各向异性法线，顶层则是光滑清漆的宏观法线。在实现上，着色器维护两套法线向量：`baseNormal`（底层）和`clearCoatNormal`（顶层），分别用于各自BRDF的几何遮蔽（G term）和法线分布（D term）的计算。Unreal Engine将顶层法线贴图单独暴露为`ClearCoatBottomNormal`插槽，Google Filament则通过`clearCoatNormalMap`参数实现。
 
 ---
 
 ## 实际应用
 
-**汽车漆面**：这是清漆层最典型的应用场景。底层设置为带金属片的铝粉漆（metallic≈0.8，roughness≈0.4），顶层清漆设置 clearCoat=1.0、clearCoatRoughness≈0.05。渲染结果可以观察到底层弥散的金属光泽与顶层锐利的 IBL（基于图像的光照）反射同时存在，而单层 Cook-Torrance 模型无法复现这种分离的双高光。
+**汽车车漆（Automotive Paint）**：这是清漆层最典型的用例。美术资产通常设置底层为含金属粉的漫反射（metallicness≈0.0，带金属片状高光），顶层clearCoatStrength=1.0，clearCoatRoughness接近0（光亮如镜）。底层通过AlbedoColor呈现车身颜色，顶层只提供无色的镜面峰值，最终渲染出汽车引擎盖上那种"流光溢彩"的效果。
 
-**木器清漆与地板**：木纹底层粗糙度约 0.6，清漆层粗糙度约 0.1。在掠射角观察时，清漆层 Fresnel 效应显著，出现强烈的镜面条纹，同时底层木纹颜色仍清晰可见，这与物理测量结果吻合。
+**木质家具清漆**：实木桌面会将底层设为木纹漫反射贴图（高粗糙度，roughness≈0.7），顶层清漆为中等光滑（clearCoatRoughness≈0.2–0.3），clearCoatStrength≈0.5–0.8，产生木纹可见而表面又略有镜面反射的效果，物理上对应了几道薄薄的清漆喷涂。
 
-**湿润表面模拟**：将 clearCoat=0.5、clearCoatRoughness=0 应用于原本粗糙的地面材质，可以快速近似模拟雨水在地面形成的薄水膜效果，因为水膜的 $n=1.33$ 与清漆层默认 $n=1.5$ 虽有差异，但在视觉效果上已足够接近。
+**指甲油与湿润表面**：湿润岩石、潮湿皮肤等材质，利用clearCoatStrength在0.3–0.6范围内模拟表面水膜的额外高光层，同时水膜（顶层）折射率约1.33，其F0约为0.02，比标准清漆更低，需要修改$F_0^{coat}$参数才能获得准确的物理结果。
 
 ---
 
 ## 常见误区
 
-**误区一：认为清漆层会叠加亮度而不衰减底层**  
-初学者常直接将 $f_{\text{coat}}$ 相加而遗漏 $(1-F_c)$ 的衰减因子，导致掠射角时材质亮度远超 1.0。正确实现必须用清漆层的 Fresnel 透射率乘以底层贡献，能量才能守恒。在 WebGL/GLSL 实现中这个乘法极易被遗漏。
+**误区一：认为清漆层等同于直接叠加两个独立BRDF**
 
-**误区二：认为清漆层 NDF 与底层相同**  
-一些简化实现复用底层的 GGX（GTR2）NDF 来计算清漆层高光，而 Disney 规范明确指出清漆层应使用 GTR1。GTR1 相比 GTR2 高光尾部更短、中心更集中，两者在低粗糙度时差异明显。错误使用 GTR2 会让清漆高光显得过于扩散，失去真实涂层的"尖锐小光点"特征。
+初学者常写出$f_r = f_{base} + f_{coat}$，忽略了$(1-F_c)^2$的能量损耗系数。这导致在掠射角时材质过亮，底层高光比物理正确值强出约20–30%。正确做法必须对底层整体（包括其漫反射项）乘以$(1-F_c)^2$衰减。
 
-**误区三：清漆层粗糙度与底层粗糙度联动**  
-某些引擎（如早期 Unity HDRP 版本）将 clearCoatRoughness 直接锁定为底层 roughness 的某个固定比例。这是错误的简化——汽车漆面底漆可以非常粗糙而清漆可以极其光滑，两者没有物理关联，必须作为独立参数暴露给美术人员。
+**误区二：认为清漆层只影响镜面高光，不影响漫反射**
+
+实际上底层的漫反射同样被顶层清漆吸收了两次（进出各一次）。在Filament的实现中，底层Lambertian漫反射也需乘以$(1-F_c)^2$，否则会出现漫反射颜色在掠射角偏亮、与真实涂层材质不匹配的问题。
+
+**误区三：清漆层强度clearCoatStrength可以用底层metallic=1.0替代**
+
+金属度为1时底层无漫反射、F0接近反照率颜色，行为与清漆层（无色、F0≈0.04的电介质层）完全不同。用metallic=1不能产生双峰高光分布，也无法在低roughness时重现清漆那种窄锐高光叠加在宽底高光上的层次感。
 
 ---
 
 ## 知识关联
 
-**前置依赖：Cook-Torrance 模型**  
-清漆层的每一个子层本质上都是一个独立的 Cook-Torrance 镜面叶，包含 NDF、Fresnel 和几何遮蔽三项。理解清漆层必须已知 $F_0$、GTR 系列 NDF 的公式形式以及 Smith 遮蔽函数的推导，否则无法理解为何清漆层固定 $F_0=0.04$，也无法区分 GTR1 与 GTR2 的高光形状差异。
+清漆层以**Cook-Torrance模型**为直接基础：顶层$f_{coat}$本身就是一个标准的Cook-Torrance镜面BRDF，使用GGX-NDF、Smith几何遮蔽函数和Schlick菲涅尔，只是其粗糙度和F0参数被固定为对应清漆折射率的特定值。理解Cook-Torrance中D、G、F三项的物理含义是推导清漆层能量守恒衰减系数$(1-F_c)^2$的先决条件。
 
-**延伸方向**  
-清漆层是多层材质系统（Multi-Layer Materials）的最简二层特例。更通用的多层框架如 Adobe Substance 的 Stacked Materials 或 NVIDIA 的 MaterialX 标准支持任意层数的 BSDF 叠加，并考虑层间多次散射。掌握清漆层的双层叠加与能量守恒机制，是理解这类通用多层系统的直接基础。
+在材质系统的横向扩展上，清漆层与**各向异性材质（Anisotropy）**可以组合使用——底层使用各向异性GGX（拉丝金属、碳纤维），顶层清漆保持各向同性，两套法线分别控制，这是Filament 1.4版本后支持的组合。此外，清漆层的双法线机制与**法线贴图叠加（Normal Map Blending）**技术直接相关，顶层法线与底层法线的混合方式（Reoriented Normal Mapping，RNM）影响层间过渡区域的正确性。对于需要更复杂光学现象（如干涉色、衍射）的薄膜材质，则需要进一步扩展为**薄膜干涉（Thin Film Interference）**模型，那是比清漆层更高一层的物理抽象。

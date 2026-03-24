@@ -269,10 +269,30 @@
     "adaptive-music",
     "input-replay",
     "local-multiplayer-input",
-    "camera-input"
+    "camera-input",
+    "asset-cooking",
+    "lua-scripting",
+    "gizmo-custom",
+    "data-validation",
+    "uasset-format",
+    "replay-system",
+    "plugin-dependency",
+    "crash-reporter-plugin",
+    "gp-rm-team-structure",
+    "gp-cd-communication",
+    "gp-os-contract",
+    "qa-ft-gameplay-testing",
+    "guiux-menu-map",
+    "mn-ss-authoritative-server",
+    "mn-ls-spectator-mode",
+    "mn-ch-streaming-install",
+    "mn-lr-battle-pass",
+    "mn-lr-replay-highlight",
+    "nd-cw-companion-system",
+    "nd-ds-dialogue-writing"
   ],
   "errors": [],
-  "total_upgraded": 270,
+  "total_upgraded": 290,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T00:49:25.899808"
+  "last_updated": "2026-03-25T01:08:08.027303"
 }

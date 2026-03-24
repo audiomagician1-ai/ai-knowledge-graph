@@ -1004,10 +1004,30 @@
     "se-rename-refactor",
     "ta-texture-budget",
     "vfx-fb-explosion",
-    "outline-planning"
+    "outline-planning",
+    "peer-review-process",
+    "plagiarism-avoidance",
+    "3da-org-hair-modeling",
+    "3da-retopo-clothing",
+    "3da-tex-weathering",
+    "3da-rig-facial",
+    "3da-pipe-material-library",
+    "dictionaries-maps",
+    "topological-sort",
+    "rate-limiting",
+    "autonomous-agents",
+    "anim-procedural-ik",
+    "restoration-ecology",
+    "cg-msaa",
+    "cg-clear-coat",
+    "cg-hdr-pipeline",
+    "cg-texture-synthesis",
+    "cd-anatomy-stylization",
+    "cd-style-evolution",
+    "cd-mood-photo-study"
   ],
   "errors": [],
-  "total_upgraded": 1005,
+  "total_upgraded": 1025,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T00:46:30.126690"
+  "last_updated": "2026-03-25T01:05:26.581440"
 }

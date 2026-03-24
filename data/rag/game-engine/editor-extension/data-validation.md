@@ -9,79 +9,83 @@ is_milestone: false
 tags: ["QA"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 42.6
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.444
-last_scored: "2026-03-22"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # 数据校验工具
 
 ## 概述
 
-数据校验工具（Data Validation）是游戏引擎（Game Engine）中编辑器扩展领域的重要概念。难度等级2/9（基础级）。
+数据校验工具（Data Validation Tool）是游戏编辑器扩展中用于自动检查资产是否符合项目规范的实用程序，涵盖资产命名规则验证、文件引用完整性检查、资源格式合规性检验三大核心功能。在中大型项目中，一个包含500+贴图、200+预制体的工程如果缺乏校验机制，"断链引用"（Missing Reference）和命名不一致问题会在版本合并时成倍增加，数据校验工具正是解决这类问题的定向工具。
 
-资产规范检查/命名/引用校验。
+该类工具最早以批处理脚本形式存在，在Unity 5.x时代开始通过`AssetPostprocessor`和`AssetDatabase` API实现编辑器集成化。Unreal Engine则通过`UObject`验证机制和`DataValidation`插件（4.24版本正式引入）提供了更系统的框架支持。相比手动检查，自动校验工具的核心价值在于：将原本需要人工逐一排查数小时的资产问题，压缩到每次提交前的秒级扫描完成。
 
-在知识体系中，数据校验工具建立在自动化工具的基础之上，是理解可进入更高级主题的关键前置知识。为什么数据校验工具如此重要？因为它在编辑器扩展中起到承上启下的作用，连接基础概念与高级应用。
+数据校验工具的意义不止于"找错误"——它将项目的资产规范从口头约定转化为可执行的代码规则，让新成员加入项目时通过工具反馈即可理解团队规范，而无需依赖口口相传的文档。
 
-## 核心知识点
+---
 
-### 1. 资产规范检查/命名/引用校验
+## 核心原理
 
-资产规范检查/命名/引用校验是数据校验工具(Data Validation)的核心组成部分之一。在编辑器扩展的实践中，资产规范检查/命名/引用校验决定了系统行为的关键特征。例如，当资产规范检查/命名/引用校验参数或条件发生变化时，整体表现会产生显著差异。深入理解资产规范检查/命名/引用校验需要结合游戏引擎的基本原理进行分析。
+### 命名规则校验
 
+命名校验的核心是**正则表达式（Regular Expression）匹配**。以Unity项目为例，团队常见规范如贴图必须以 `T_` 开头、网格以 `SM_` 开头、材质以 `M_` 开头，可将其编码为正则 `^T_[A-Z][a-zA-Z0-9_]+$`。校验工具遍历 `AssetDatabase.FindAssets("t:Texture2D")` 返回的所有资产路径，对每个文件名执行 `Regex.IsMatch(assetName, pattern)` 判断，不符合规范的资产记录到校验报告中。
 
-### 关键原理分析
+命名校验还应包含**路径层级检查**，例如所有角色贴图必须位于 `Assets/Characters/Textures/` 目录而非散落在根目录。这种路径约束通过 `assetPath.StartsWith("Assets/Characters/")` 即可实现，逻辑简单但对维护项目目录结构作用显著。
 
-数据校验工具的核心在于资产规范检查/命名/引用校验。从理论角度看，该概念涉及以下层面：
+### 引用完整性校验
 
-1. **定义层**：明确数据校验工具的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解数据校验工具内部各要素的相互作用方式
-3. **应用层**：将数据校验工具的原理映射到游戏引擎的实际场景中
+Unity中"丢失引用"表现为序列化字段值为 `null` 而组件本身存在，通过 `SerializedObject` + `SerializedProperty` 迭代可逐字段检测。具体步骤：对目标预制体调用 `new SerializedObject(asset)`，然后递归遍历所有 `propertyType == SerializedPropertyType.ObjectReference` 的字段，检查 `objectReferenceValue == null && objectReferenceInstanceIDValue != 0` 这一特征条件——后者非零说明曾经有引用但资产已被删除，这正是真正的"断链引用"。
 
-思考题：如何判断数据校验工具的应用是否超出了其理论适用范围？
+在Unreal Engine中，`IDataValidationInterface` 提供了 `ValidateData()` 虚函数接口，开发者继承该接口后在编辑器菜单 **Edit > Validate All Assets** 触发全局验证，返回值为 `EDataValidationResult::Valid / Invalid / NotValidated` 三态枚举，无效资产会汇总到输出日志。
 
-## 关键要点
+### 资产格式与规格校验
 
-1. **核心定义**：数据校验工具的本质是资产规范检查/命名/引用校验，这是理解整个概念的出发点
-2. **多维理解**：掌握数据校验工具需要同时理解资产规范检查/命名/引用校验等关键维度
-3. **先修关系**：扎实的自动化工具基础对理解数据校验工具至关重要
-4. **进阶路径**：可广泛应用于游戏引擎各方面
-5. **实践标准**：真正掌握数据校验工具的标志是能在具体场景中灵活运用并正确判断适用边界
+格式校验针对的是资产的技术参数是否符合项目设定的技术指标，例如：
+- 贴图分辨率必须是2的幂次（512、1024、2048），否则某些移动平台GPU无法正常压缩；
+- 音效文件采样率须为44100Hz或22050Hz，比特深度限制为16-bit；
+- 网格面数不超过某个预设阈值（如LOD0不超过15000个三角面）。
+
+Unity中获取贴图规格使用 `TextureImporter ti = AssetImporter.GetAtPath(path) as TextureImporter`，读取 `ti.maxTextureSize`、`ti.textureCompression` 等属性进行比对。这类硬性指标校验不依赖人工判断，全部转化为 `if` 条件判断后即可完全自动化。
+
+---
+
+## 实际应用
+
+**场景一：提交前自动触发校验**
+将数据校验工具挂接到版本控制系统的pre-commit钩子（Git Hook），在美术提交资产前自动执行 `ValidationRunner.RunAll()`，若发现任意一处命名不合规则打断提交流程并输出报告。这一机制确保不合规资产无法进入主干分支。
+
+**场景二：编辑器菜单一键扫描**
+在Unity中通过 `[MenuItem("Tools/Validate Assets")]` 注册菜单项，配合 `EditorUtility.DisplayProgressBar()` 展示扫描进度，最终将所有错误以 `EditorGUILayout` 绘制在独立的 `EditorWindow` 中，每条错误记录支持点击自动 Ping 到 Project 面板的对应资产，大幅提升修复效率。
+
+**场景三：CI/CD流水线中的批量验证**
+在无界面的持续集成环境（如Jenkins）中，通过Unity命令行参数 `-executeMethod ValidationRunner.RunBatchMode` 执行无头模式校验，将结果输出为XML或JSON格式的校验报告，由流水线解析后决定构建是否通过。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将数据校验工具与编辑器扩展中其他相近概念混为一谈。例如，资产规范检查/命名/引用校验的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解自动化工具就学习数据校验工具，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：数据校验工具虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：将"引用为null"等同于"断链引用"**
+许多开发者编写校验逻辑时将所有 `objectReferenceValue == null` 的字段都标记为错误，但实际上可选字段（Optional Reference）在设计上允许为空。正确做法是结合字段是否标注了自定义的 `[Required]` Attribute，或者在校验配置文件中指定哪些类的哪些字段属于必填引用，避免误报导致开发者对校验工具失去信任。
 
-## 知识衔接
+**误区二：校验规则硬编码在脚本中无法调整**
+若将正则表达式、面数上限等参数直接 `const` 硬编码在C#代码中，每次调整规则都需要修改并重新编译脚本。推荐做法是将所有校验规则存储在一个 `ScriptableObject` 配置资产中，由项目主管通过编辑器界面填写，开发者提交配置文件而非修改代码，使规则变更与代码变更解耦。
 
-### 先修知识
-先修知识包括：
-- **自动化工具** — 为数据校验工具提供了必要的概念基础
+**误区三：校验工具只在出问题时才使用**
+将数据校验工具作为"灭火工具"而非"防火工具"使用，是效益最低的使用方式。只有将校验集成到资产导入流程（`AssetPostprocessor.OnPostprocessAllAssets`）中，在资产被创建的瞬间立即给出警告，才能将问题消灭在产生的第一时刻，而非在数百个资产积累后再集中处理。
 
-### 后续学习
-掌握数据校验工具后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索游戏引擎其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：30-60分钟。建议采用以下策略：
+数据校验工具建立在**自动化工具**基础之上，前者提供了编辑器脚本编写、菜单注册、批处理执行等基础能力，数据校验工具将这些能力定向应用于资产质量保障场景。掌握 `AssetDatabase`、`SerializedObject`、`AssetPostprocessor` 这三个Unity API是实现数据校验工具的前提性技术积累。
 
-- **主动回忆**：学完后不看笔记复述数据校验工具的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将数据校验工具与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释数据校验工具，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于编辑器扩展的章节可作为深入参考
-- Wikipedia: [Data Validation](https://en.wikipedia.org/wiki/data_validation) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Data Validation" 可找到配套视频教程
+在团队协作视角下，数据校验工具与项目的资产规范文档形成互补关系：规范文档描述"应该怎样"，校验工具执行"实际是否符合"，两者缺一不可。已掌握数据校验工具的开发者，下一步可探索将校验结果与项目管理系统（如JIRA）打通，实现错误的自动派发与追踪，但这属于更复杂的工程集成范畴。
