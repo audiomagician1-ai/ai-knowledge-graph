@@ -299,10 +299,30 @@
     "se-memory-fragmentation",
     "se-conan-vcpkg",
     "ta-gpu-pipeline",
-    "ta-auto-pipeline"
+    "ta-auto-pipeline",
+    "vfx-niagara-camera",
+    "vfx-particle-velocity",
+    "vfx-particle-collision-phys",
+    "strings",
+    "multi-agent",
+    "cd-mood-source-finding",
+    "unity-overview",
+    "vfx-pp-distortion",
+    "vfx-fb-atlas",
+    "3da-sculpt-cleanup",
+    "3da-uv-udim",
+    "3da-pipe-version-control",
+    "dp-memoization",
+    "cap-theorem",
+    "circuit-breaker",
+    "chain-of-thought",
+    "anim-keyframe-basics",
+    "anim-inertial-mocap",
+    "anim-blend-basics",
+    "anim-two-bone-ik"
   ],
   "errors": [],
-  "total_upgraded": 300,
+  "total_upgraded": 320,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T01:17:05.963438"
+  "last_updated": "2026-03-25T01:35:28.823946"
 }

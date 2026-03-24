@@ -1044,10 +1044,20 @@
     "camera-control-ld",
     "minimap-guidance",
     "terrain-material",
-    "level-flowchart"
+    "level-flowchart",
+    "encounter-doc",
+    "distance-midpoint",
+    "epsilon-delta",
+    "mn-lr-live-analytics",
+    "nd-bn-multiple-endings",
+    "illustration-design",
+    "sketch-to-code",
+    "monetization-strategy",
+    "freemium-model",
+    "case-study-method"
   ],
   "errors": [],
-  "total_upgraded": 1045,
+  "total_upgraded": 1055,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T01:24:33.483831"
+  "last_updated": "2026-03-25T01:33:53.042728"
 }
