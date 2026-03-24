@@ -508,7 +508,7 @@
       ],
       "file": "3d-art/3da-bake-exploded.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2476
     },
     {
       "id": "3da-env-worldbuilding",
@@ -1048,7 +1048,7 @@
       ],
       "file": "3d-art/3da-hs-game-ready.md",
       "exists": true,
-      "char_count": 1442
+      "char_count": 3013
     },
     {
       "id": "3da-hs-intro",
@@ -1573,7 +1573,7 @@
       ],
       "file": "3d-art/3da-org-game-ready-char.md",
       "exists": true,
-      "char_count": 1434
+      "char_count": 2873
     },
     {
       "id": "3da-org-creature",
@@ -1618,7 +1618,7 @@
       ],
       "file": "3d-art/3da-org-muscle-deform.md",
       "exists": true,
-      "char_count": 1242
+      "char_count": 2575
     },
     {
       "id": "3da-org-cloth-sim",
@@ -2668,7 +2668,7 @@
       ],
       "file": "3d-art/3da-sculpt-detailing.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 2481
     },
     {
       "id": "3da-sculpt-anatomy-app",
@@ -37224,7 +37224,7 @@
       ],
       "file": "game-engine/plugin-development/thirdparty-integration.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 3355
     },
     {
       "id": "draw-call-optimization",
@@ -38634,7 +38634,7 @@
       ],
       "file": "game-engine/serialization/data-table-engine.md",
       "exists": true,
-      "char_count": 1331
+      "char_count": 2365
     },
     {
       "id": "data-migration",
@@ -63495,7 +63495,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-side-quest.md",
       "exists": true,
-      "char_count": 1315
+      "char_count": 2513
     },
     {
       "id": "nd-qd-fetch-quest-alternatives",
@@ -73154,7 +73154,7 @@
       ],
       "file": "psychology/behavioral-psychology/biofeedback.md",
       "exists": true,
-      "char_count": 1216
+      "char_count": 2201
     },
     {
       "id": "systematic-desensitization",
@@ -73919,7 +73919,7 @@
       ],
       "file": "psychology/clinical-psychology/schizophrenia.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2803
     },
     {
       "id": "psychopathology",
@@ -75629,7 +75629,7 @@
       ],
       "file": "psychology/social-psychology/group-dynamics.md",
       "exists": true,
-      "char_count": 1479
+      "char_count": 2240
     },
     {
       "id": "self-serving-bias",
@@ -75674,7 +75674,7 @@
       ],
       "file": "psychology/social-psychology/cognitive-dissonance.md",
       "exists": true,
-      "char_count": 1444
+      "char_count": 2330
     },
     {
       "id": "persuasion",
@@ -76783,7 +76783,7 @@
       ],
       "file": "software-engineering/ci-cd/se-rollback.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2717
     },
     {
       "id": "se-infra-as-code",
@@ -77488,7 +77488,7 @@
       ],
       "file": "software-engineering/design-patterns/se-dp-iterator.md",
       "exists": true,
-      "char_count": 2880
+      "char_count": 3113
     },
     {
       "id": "se-dp-adapter",
@@ -77758,7 +77758,7 @@
       ],
       "file": "software-engineering/ecs-architecture/se-system-ecs.md",
       "exists": true,
-      "char_count": 3084
+      "char_count": 3574
     },
     {
       "id": "se-ecs-scheduling",
@@ -78898,7 +78898,7 @@
       ],
       "file": "software-engineering/package-management/se-dep-security.md",
       "exists": true,
-      "char_count": 3281
+      "char_count": 3200
     },
     {
       "id": "se-dep-resolution",
@@ -80708,7 +80708,7 @@
       ],
       "file": "technical-art/ta-nightly-build.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2745
     },
     {
       "id": "ta-report-gen",
@@ -81323,7 +81323,7 @@
       ],
       "file": "technical-art/ta-skin-material.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 3043
     },
     {
       "id": "ta-procedural-material",
@@ -82298,7 +82298,7 @@
       ],
       "file": "technical-art/ta-culling.md",
       "exists": true,
-      "char_count": 1316
+      "char_count": 2521
     },
     {
       "id": "ta-streaming",
@@ -83228,7 +83228,7 @@
       ],
       "file": "technical-art/ta-validation-tool.md",
       "exists": true,
-      "char_count": 2928
+      "char_count": 2854
     },
     {
       "id": "vfx-destruct-chaos",
@@ -83303,7 +83303,7 @@
       ],
       "file": "vfx/vfx-destruct-terrain.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 2832
     },
     {
       "id": "vfx-destruct-hierarchy",
@@ -84038,7 +84038,7 @@
       ],
       "file": "vfx/vfx-fluid-ocean.md",
       "exists": true,
-      "char_count": 3011
+      "char_count": 2744
     },
     {
       "id": "vfx-fluid-waterfall",
@@ -84488,7 +84488,7 @@
       ],
       "file": "vfx/vfx-particle-sub-emitter.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2687
     },
     {
       "id": "vfx-particle-size",
@@ -84908,7 +84908,7 @@
       ],
       "file": "vfx/vfx-pp-ao.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2475
     },
     {
       "id": "vfx-pp-distortion",
@@ -86768,7 +86768,7 @@
       ],
       "file": "writing/academic-writing/thesis-writing.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2706
     },
     {
       "id": "academic-book-review",
@@ -87128,7 +87128,7 @@
       ],
       "file": "writing/creative-writing/creative-process.md",
       "exists": true,
-      "char_count": 1434
+      "char_count": 2299
     },
     {
       "id": "creative-overview",
@@ -87188,7 +87188,7 @@
       ],
       "file": "writing/creative-writing/classical-poetry-forms.md",
       "exists": true,
-      "char_count": 1506
+      "char_count": 2355
     },
     {
       "id": "experimental-writing",
@@ -88088,7 +88088,7 @@
       ],
       "file": "writing/persuasive-writing/pathos-techniques.md",
       "exists": true,
-      "char_count": 1503
+      "char_count": 2578
     },
     {
       "id": "critical-analysis-essay",
@@ -88283,7 +88283,7 @@
       ],
       "file": "writing/persuasive-writing/debate-writing.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2138
     },
     {
       "id": "logical-reasoning-writing",
@@ -88448,7 +88448,7 @@
       ],
       "file": "writing/professional-writing/memo-writing.md",
       "exists": true,
-      "char_count": 1425
+      "char_count": 2183
     },
     {
       "id": "technical-writing",

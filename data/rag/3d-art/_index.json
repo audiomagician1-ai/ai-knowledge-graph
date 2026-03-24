@@ -508,7 +508,7 @@
       ],
       "file": "3d-art/3da-bake-exploded.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2476
     },
     {
       "id": "3da-env-worldbuilding",
@@ -1048,7 +1048,7 @@
       ],
       "file": "3d-art/3da-hs-game-ready.md",
       "exists": true,
-      "char_count": 1442
+      "char_count": 3013
     },
     {
       "id": "3da-hs-intro",
@@ -1573,7 +1573,7 @@
       ],
       "file": "3d-art/3da-org-game-ready-char.md",
       "exists": true,
-      "char_count": 1434
+      "char_count": 2873
     },
     {
       "id": "3da-org-creature",
@@ -1618,7 +1618,7 @@
       ],
       "file": "3d-art/3da-org-muscle-deform.md",
       "exists": true,
-      "char_count": 1242
+      "char_count": 2575
     },
     {
       "id": "3da-org-cloth-sim",
@@ -2668,7 +2668,7 @@
       ],
       "file": "3d-art/3da-sculpt-detailing.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 2481
     },
     {
       "id": "3da-sculpt-anatomy-app",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 394519,
-    "avg_chars": 1745,
+    "total_chars": 401065,
+    "avg_chars": 1774,
     "domain": "3d-art"
   }
 }

@@ -193,7 +193,7 @@
       ],
       "file": "psychology/behavioral-psychology/biofeedback.md",
       "exists": true,
-      "char_count": 1216
+      "char_count": 2201
     },
     {
       "id": "systematic-desensitization",
@@ -958,7 +958,7 @@
       ],
       "file": "psychology/clinical-psychology/schizophrenia.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2803
     },
     {
       "id": "psychopathology",
@@ -2668,7 +2668,7 @@
       ],
       "file": "psychology/social-psychology/group-dynamics.md",
       "exists": true,
-      "char_count": 1479
+      "char_count": 2240
     },
     {
       "id": "self-serving-bias",
@@ -2713,7 +2713,7 @@
       ],
       "file": "psychology/social-psychology/cognitive-dissonance.md",
       "exists": true,
-      "char_count": 1444
+      "char_count": 2330
     },
     {
       "id": "persuasion",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 347136,
-    "avg_chars": 1896,
+    "total_chars": 351135,
+    "avg_chars": 1918,
     "domain": "psychology"
   }
 }

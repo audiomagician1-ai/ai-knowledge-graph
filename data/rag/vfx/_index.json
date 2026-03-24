@@ -73,7 +73,7 @@
       ],
       "file": "vfx/vfx-destruct-terrain.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 2832
     },
     {
       "id": "vfx-destruct-hierarchy",
@@ -808,7 +808,7 @@
       ],
       "file": "vfx/vfx-fluid-ocean.md",
       "exists": true,
-      "char_count": 3011
+      "char_count": 2744
     },
     {
       "id": "vfx-fluid-waterfall",
@@ -1258,7 +1258,7 @@
       ],
       "file": "vfx/vfx-particle-sub-emitter.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2687
     },
     {
       "id": "vfx-particle-size",
@@ -1678,7 +1678,7 @@
       ],
       "file": "vfx/vfx-pp-ao.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2475
     },
     {
       "id": "vfx-pp-distortion",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 277835,
-    "avg_chars": 1543,
+    "total_chars": 281582,
+    "avg_chars": 1564,
     "domain": "vfx"
   }
 }

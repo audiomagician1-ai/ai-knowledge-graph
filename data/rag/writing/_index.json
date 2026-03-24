@@ -58,7 +58,7 @@
       ],
       "file": "writing/academic-writing/thesis-writing.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2706
     },
     {
       "id": "academic-book-review",
@@ -418,7 +418,7 @@
       ],
       "file": "writing/creative-writing/creative-process.md",
       "exists": true,
-      "char_count": 1434
+      "char_count": 2299
     },
     {
       "id": "creative-overview",
@@ -478,7 +478,7 @@
       ],
       "file": "writing/creative-writing/classical-poetry-forms.md",
       "exists": true,
-      "char_count": 1506
+      "char_count": 2355
     },
     {
       "id": "experimental-writing",
@@ -1378,7 +1378,7 @@
       ],
       "file": "writing/persuasive-writing/pathos-techniques.md",
       "exists": true,
-      "char_count": 1503
+      "char_count": 2578
     },
     {
       "id": "critical-analysis-essay",
@@ -1573,7 +1573,7 @@
       ],
       "file": "writing/persuasive-writing/debate-writing.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2138
     },
     {
       "id": "logical-reasoning-writing",
@@ -1738,7 +1738,7 @@
       ],
       "file": "writing/professional-writing/memo-writing.md",
       "exists": true,
-      "char_count": 1425
+      "char_count": 2183
     },
     {
       "id": "technical-writing",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 310378,
-    "avg_chars": 1825,
+    "total_chars": 315927,
+    "avg_chars": 1858,
     "domain": "writing"
   }
 }

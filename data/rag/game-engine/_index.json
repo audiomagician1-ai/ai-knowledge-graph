@@ -2398,7 +2398,7 @@
       ],
       "file": "game-engine/plugin-development/thirdparty-integration.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 3355
     },
     {
       "id": "draw-call-optimization",
@@ -3808,7 +3808,7 @@
       ],
       "file": "game-engine/serialization/data-table-engine.md",
       "exists": true,
-      "char_count": 1331
+      "char_count": 2365
     },
     {
       "id": "data-migration",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 522280,
-    "avg_chars": 1740,
+    "total_chars": 525337,
+    "avg_chars": 1751,
     "domain": "game-engine"
   }
 }

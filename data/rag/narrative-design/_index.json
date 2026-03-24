@@ -2026,7 +2026,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-side-quest.md",
       "exists": true,
-      "char_count": 1315
+      "char_count": 2513
     },
     {
       "id": "nd-qd-fetch-quest-alternatives",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 270303,
-    "avg_chars": 1501,
+    "total_chars": 271501,
+    "avg_chars": 1508,
     "domain": "narrative-design"
   }
 }
