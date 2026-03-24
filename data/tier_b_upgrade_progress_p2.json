@@ -129,10 +129,30 @@
     "rate-limiting",
     "autonomous-agents",
     "anim-procedural-ik",
-    "cg-msaa"
+    "cg-msaa",
+    "cg-clear-coat",
+    "cg-hdr-pipeline",
+    "cg-texture-synthesis",
+    "cd-anatomy-stylization",
+    "cd-style-evolution",
+    "cd-mood-photo-study",
+    "cd-mood-master-study",
+    "game-audio-music-character-theme",
+    "sfx-sa-binaural-audio",
+    "sfx-sa-sound-propagation",
+    "sfx-dsp-parallel-processing",
+    "input-device-abstraction",
+    "pub-ro-regional-marketing",
+    "pub-rc-privacy-policy",
+    "qa-ct-update-compat",
+    "mn-lr-live-analytics",
+    "nd-bn-multiple-endings",
+    "ta-frame-analysis",
+    "ta-mem-budget-doc",
+    "ta-std-overview"
   ],
   "errors": [],
-  "total_upgraded": 130,
+  "total_upgraded": 150,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T22:34:30.975700"
+  "last_updated": "2026-03-24T22:53:26.405161"
 }

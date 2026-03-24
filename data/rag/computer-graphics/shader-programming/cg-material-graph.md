@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["工具"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.1
 generation_method: "intranet-llm-rewrite-v2"
@@ -25,69 +25,73 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-材质图编辑器（Material Graph Editor）是一种基于节点连线（Node-Based）范式的可视化工具，允许美术师和技术美术在不直接编写GLSL/HLSL代码的前提下，通过拖拽节点、连接引脚来定义物体表面的光照响应方式。每个节点封装一段特定的着色器逻辑，节点之间的连线描述数据流向，整张图最终被编译为一段完整的片元着色器代码。
+材质图编辑器（Material Graph Editor）是一种基于节点连接（Node-based）的可视化工具，允许美术师和技术美术在不直接编写GLSL/HLSL代码的情况下构建片元着色器逻辑。用户通过将代表不同运算的节点（如纹理采样、向量运算、数学函数）拖放到画布上，并用"连线"描述数据流向，系统后台自动将节点图翻译为可在GPU执行的着色器代码。
 
-材质图的概念最早在商业引擎中普及：Unreal Engine 3于2007年随虚幻引擎3发布了其Material Editor，将基于物理的节点图引入工业管线；Unity的Shader Graph则在2018年随HDRP渲染管线正式推出，采用YAML格式序列化图数据。这两套系统共同确立了"节点图→代码生成"的标准工作流，极大地降低了技术门槛，使一个不懂HLSL的美术师也能制作出包含法线贴图、视差遮蔽（Parallax Occlusion Mapping）等复杂效果的材质。
+材质图编辑器的思想最早在2004年左右随Unreal Engine 3的材质编辑器商业化普及，随后Unity的ShaderGraph（2018年正式发布）、Blender的Shader Nodes以及Godot的VisualShader系统相继推出。在此之前，编写一个支持法线贴图、镜面反射和环境光遮蔽的PBR材质需要数百行GLSL代码；有了材质图编辑器，同等逻辑可以在数十分钟内通过拖拉节点完成。
 
-材质图编辑器之所以重要，不仅在于可视化，更在于它实现了**着色器逻辑的模块化复用**：将重复使用的子图打包成材质函数，在多个材质中引用同一套逻辑，修改一处即全局生效——这是手写着色器文件难以做到的。
+材质图编辑器的价值不仅在于降低门槛，还在于它将着色器逻辑**具象化为有向无环图（DAG）**，使代码重用、参数曝光和跨平台编译成为系统级特性，而非手工维护的工程任务。
 
 ---
 
 ## 核心原理
 
-### 节点类型与数据类型系统
+### 节点类型与引脚系统
 
-材质图中的节点分为几类：**输入节点**（纹理采样、常量、顶点属性）、**运算节点**（数学运算、向量操作）、**输出节点**（最终材质属性，如BaseColor、Roughness、Normal）。每条连线携带特定数据类型：`float`、`float2`、`float3`、`float4`，引擎会在连线类型不匹配时自动插入转换节点或报错。
+材质图中的每个节点对应着色器中的一段操作。节点分为三大类：
+- **输入节点**：提供原始数据，例如`Texture2D Sample`节点读取一张贴图并输出`float4`颜色，`Time`节点输出`float`类型的全局时间值。
+- **运算节点**：对数据进行变换，例如`Multiply`节点执行逐分量乘法，`Lerp`节点执行线性插值 `A*(1-t) + B*t`，其中A、B、t均为可连接的引脚。
+- **输出节点**：代表最终材质属性，Unreal Engine的主材质节点（Master Material Node）拥有`Base Color`、`Metallic`、`Roughness`、`Normal`等固定输入引脚，每个引脚对应PBR光照模型中的一个参数。
 
-Unreal Engine的材质图中，输出节点对应G-Buffer的各个通道：BaseColor绑定到反照率缓冲、Metallic和Roughness绑定到PBR参数缓冲，Emissive直接加法混合到HDR输出缓冲。这意味着美术师在节点图上的每一步操作都有精确对应的GPU寄存器写入目标。
+引脚有严格的数据类型：`float`、`float2`、`float3`、`float4`，不同类型直接连接会触发编辑器的隐式类型提升或报错。例如将`float`连接到`float3`引脚时，Unity ShaderGraph会自动将标量扩展为`(v, v, v)`形式。
 
-### 图的拓扑排序与代码生成
+### 从节点图到HLSL的代码生成流程
 
-材质图本质上是一张**有向无环图（DAG）**。代码生成器在编译时首先对图执行拓扑排序（Topological Sort），从输出节点出发反向遍历依赖节点，确保每个节点的输入在其执行前已被计算完毕。以下是最简单的两节点图生成代码的示例逻辑：
+编辑器在保存或编译时执行**图遍历（Graph Traversal）**，从输出节点出发，以深度优先的顺序递归访问所有上游节点，并为每个节点生成一段HLSL代码片段。以下是一个简化示意：
 
 ```
-节点A: Texture2DSample(UV)  → 输出 float3 color_A
-节点B: Multiply(color_A, 0.5) → 输出 float3 color_B
-输出节点: BaseColor = color_B
+// Texture Sample 节点生成：
+float4 node_texSample = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
 
-生成的HLSL片段:
-float3 color_A = tex2D(_MainTex, i.uv).rgb;
-float3 color_B = color_A * 0.5;
-o.BaseColor = color_B;
+// Multiply 节点生成：
+float4 node_multiply = node_texSample * _Color;
+
+// 输出节点写入：
+o.Albedo = node_multiply.rgb;
 ```
 
-代码生成器为每个节点生成唯一的临时变量名（通常以节点GUID的前8位命名），避免多路分支中的变量名冲突。Unity Shader Graph在生成代码时还会对未连接的分支进行**死代码消除（Dead Code Elimination）**，以减少最终着色器的指令数。
+最终所有节点代码片段被按拓扑排序拼接进片元着色器的`void frag()`函数体内。每个节点在代码生成时负责声明自己的局部变量（变量名通常含有节点唯一ID以防冲突），并将输出引脚的值存入该变量供下游节点引用。
 
-### 条件分支与动态参数暴露
+### 参数曝光与材质实例
 
-材质图支持通过**静态开关节点（Static Switch）**实现编译期分支：两条路径在编译时生成不同的着色器变体（Shader Variant），运行时开销为零，但每增加一个开关会使变体数量翻倍。与之不同，**动态参数**通过Uniform变量暴露给CPU端，允许在运行时通过脚本修改，代价是额外的寄存器占用（通常1个float4消耗1个常量缓冲区槽）。
-
-Unreal Engine的材质实例（Material Instance）系统正是基于此：父材质图定义结构，子实例只覆盖暴露的参数值，而不重新编译着色器。Unity Shader Graph中对应的机制是将节点标记为`Exposed Property`，其值会出现在Material Inspector中。
+节点图中标记为"属性（Property）"的节点会被提升为着色器的`uniform`变量，从而允许在运行时通过材质实例（Material Instance）修改数值而无需重新编译着色器。例如将一个`Float Parameter`节点命名为`_Roughness`，编辑器会在生成的HLSL头部插入`uniform float _Roughness;`，并在Unity的Inspector或Unreal的参数面板中自动创建对应的UI控件。这一机制的本质是将节点图中的常量节点（Constant Node）与Uniform变量节点（Parameter Node）在代码生成阶段区别对待。
 
 ---
 
 ## 实际应用
 
-**溶解效果（Dissolve Effect）** 是材质图教学中最具代表性的案例。实现步骤：①采样一张噪声纹理得到`float dissolveNoise`；②用`Step(dissolveNoise, _Threshold)`节点生成0/1遮罩；③通过`Clip`节点丢弃像素；④在边界处额外叠加自发光颜色。整个效果在Unreal Material Editor中只需约8个节点，若手写HLSL需约15行代码，但节点图使参数调整可实时预览。
+**溶解效果（Dissolve Effect）**是材质图编辑器最典型的教学案例。具体做法：用一张噪声纹理的R通道输出与一个`Float Parameter`（命名`_Threshold`，范围0到1）进行`Step`节点比较，`Step(threshold, noiseValue)`返回0或1，再将结果连接至输出节点的`Opacity Mask`引脚（材质混合模式须设置为Masked）。整个逻辑在节点图中仅需5个节点，若手写对应HLSL约需15行代码，且调试可见性极低。
 
-**地形混合材质** 是另一个典型场景：基于顶点色（VertexColor）的R/G/B通道分别混合草地、泥土、石头三种子材质。材质图中使用`Lerp`节点将三种纹理做两次线性插值，权重来自顶点色通道。这种做法的关键在于材质图天然支持多路输入的可视化比对，美术师可以直接看到混合权重的来源，而无需阅读代码。
+**UV动画水面**是另一个典型场景：将`Time`节点乘以速度参数后加到UV坐标上，再输入`Texture2D Sample`节点，即可实现纹理流动效果。在Unity ShaderGraph中，这条路径为：`UV节点 → Add → Texture2D Sample`，Time值通过`Multiply`节点缩放后连接至Add的第二个输入。
 
-**水面折射** 需要在材质图中访问场景深度缓冲和场景颜色缓冲，Unreal通过`SceneDepth`节点和`SceneTexture:SceneColor`节点暴露这两个系统资源，生成的HLSL代码会自动绑定对应的`Texture2D`采样器，美术师无需了解Render Target的绑定细节。
+在Unreal Engine中，材质图编辑器还支持**材质层（Material Layers）**工作流，允许将多个子节点图叠加组合，底层系统会将多张节点图合并编译为一个着色器，避免多Pass渲染的性能损耗。
 
 ---
 
 ## 常见误区
 
-**误区一：认为节点数量越少，着色器性能越好**。实际上，性能瓶颈在于生成的HLSL指令数和纹理采样次数，而非节点数量。一个`CustomExpression`节点可以内嵌10行HLSL，其性能开销远超10个简单运算节点。因此评估材质性能应查看引擎提供的指令数统计（Unreal中的"Shader Complexity"视图，数值超过300即属于高消耗材质），而不是数节点个数。
+**误区一：节点数量越多越消耗性能。**
+实际上，材质图的性能取决于生成的HLSL指令数，而非节点数本身。一个包含30个节点但全部是简单加减法的材质，其GPU开销可能远低于仅有5个节点但其中包含`tex2D`循环采样的材质。编辑器工具栏中的"着色器统计（Shader Stats）"面板显示的是编译后的ALU指令数和纹理采样次数，这才是性能评估的正确指标。Unreal Engine中可通过`stat shadercomplexity`命令可视化屏幕上各材质的实际指令消耗。
 
-**误区二：Static Switch与动态参数等效，可随意替换**。Static Switch在编译期确定分支，会生成多个PSO（Pipeline State Object），在移动端每新增一个变体都意味着额外的内存占用和加载时间。Unity文档明确指出，当Shader Keyword总数超过256时会产生关键字溢出错误。应根据是否需要运行时切换来选择Static Switch还是动态Lerp混合。
+**误区二：节点图可以表达任意着色器逻辑。**
+材质图编辑器本质上只能生成片元着色器中的**无状态、无循环**逻辑。标准节点图不支持`for`循环、条件分支（虽然有`If`节点，但底层是`lerp`近似而非真正的GPU分支）、顶点着色器深度定制，以及跨帧状态读写（如渲染目标反馈）。这些需求仍须通过自定义代码节点（Unreal的`Custom`节点或Unity ShaderGraph的`Custom Function`节点）手动插入HLSL片段来实现。
 
-**误区三：材质图生成的代码与手写代码性能等同**。自动代码生成器为保证通用性会引入冗余的中间变量和类型转换，在某些复杂图中会产生额外的`mov`指令。有经验的技术美术会在材质图中嵌入`Custom Node`（自定义HLSL块），对性能敏感的路径手动优化，同时保留其余部分的节点图可读性。
+**误区三：材质图与代码之间是单向转换。**
+部分引擎（如Godot）支持将VisualShader导出为等价的GDShader文本代码，并允许继续在代码层面修改。但Unreal Engine的材质图不支持反向导出为HLSL进行外部编辑——其内部AST格式是私有的，这意味着一旦选择节点图工作流，就必须在编辑器内完成所有修改。
 
 ---
 
 ## 知识关联
 
-材质图编辑器直接构建于**片元着色器**的概念之上：节点图的每一条执行路径最终对应片元着色器中对单个像素的计算逻辑，理解`in/out`语义、纹理采样函数`texture2D()`的返回类型，是正确理解节点连线类型系统的前提。若不理解片元着色器中UV坐标是每像素插值得到的，就无法理解材质图中`TexCoord`节点为何能驱动纹理平铺。
+**前置概念——片元着色器**：理解材质图编辑器的代码生成结果，需要知道最终产物是插入`void frag()`函数体内的HLSL语句序列。若不清楚`SV_Target`输出语义、`SAMPLE_TEXTURE2D`宏的参数含义，就无法判断节点连接是否正确，也无法使用Custom节点扩展节点图。
 
-向后延伸，**材质函数（Material Function）**是材质图的模块化封装机制：将一组节点打包为可复用的黑盒，定义输入输出引脚，在多张材质图中作为单一节点引用。理解材质图的DAG结构和代码生成逻辑，是进一步学习如何设计高内聚、低耦合的材质函数接口的基础——特别是如何合理划分引脚的数据类型，使函数既足够通用又不引入不必要的类型转换开销。
+**后续概念——材质函数（Material Functions）**：材质图编辑器支持将一组节点封装为可复用的材质函数（Unreal）或子图（Unity ShaderGraph中的Sub Graph）。材质函数本质上是带有命名输入输出引脚的节点子图，在代码生成时被内联（inline）展开为等价的HLSL代码段。掌握材质图编辑器的节点数据流模型后，材质函数的封装与参数设计会顺理成章地成为下一步的工程化工具。
