@@ -24,7 +24,7 @@
       "tags": [],
       "file": "oop/solid-principles.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 3102
     },
     {
       "id": "proxy-pattern",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 63256,
-    "avg_chars": 2635,
+    "total_chars": 64902,
+    "avg_chars": 2704,
     "domain": "oop"
   }
 }

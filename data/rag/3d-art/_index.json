@@ -193,7 +193,7 @@
       ],
       "file": "3d-art/3da-pipe-documentation.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2806
     },
     {
       "id": "3da-pipe-automation",
@@ -523,7 +523,7 @@
       ],
       "file": "3d-art/3da-env-worldbuilding.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2712
     },
     {
       "id": "3da-env-tileable",
@@ -988,7 +988,7 @@
       ],
       "file": "3d-art/3da-hs-curved-surface.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2864
     },
     {
       "id": "3da-hs-mechanical",
@@ -1843,7 +1843,7 @@
       ],
       "file": "3d-art/3da-prop-sci-fi.md",
       "exists": true,
-      "char_count": 1236
+      "char_count": 2842
     },
     {
       "id": "3da-prop-background",
@@ -3193,7 +3193,7 @@
       ],
       "file": "3d-art/3da-uv-overlap.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2341
     },
     {
       "id": "3da-uv-intro",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 449225,
-    "avg_chars": 1987,
+    "total_chars": 456299,
+    "avg_chars": 2019,
     "domain": "3d-art"
   }
 }

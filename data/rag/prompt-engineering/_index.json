@@ -180,7 +180,7 @@
       "tags": [],
       "file": "prompt-engineering/prompt-injection.md",
       "exists": true,
-      "char_count": 1459
+      "char_count": 2589
     },
     {
       "id": "prompt-basics",
@@ -263,8 +263,8 @@
   ],
   "stats": {
     "total": 20,
-    "total_chars": 39876,
-    "avg_chars": 1993,
+    "total_chars": 41006,
+    "avg_chars": 2050,
     "domain": "prompt-engineering"
   }
 }

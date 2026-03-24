@@ -358,7 +358,7 @@
       ],
       "file": "animation/anim-line-of-action.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2289
     },
     {
       "id": "anim-principles-overview",
@@ -583,7 +583,7 @@
       ],
       "file": "animation/anim-arcs.md",
       "exists": true,
-      "char_count": 1245
+      "char_count": 2063
     },
     {
       "id": "anim-straight-ahead-pose",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 312913,
-    "avg_chars": 1738,
+    "total_chars": 314779,
+    "avg_chars": 1748,
     "domain": "animation"
   }
 }

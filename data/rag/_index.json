@@ -193,7 +193,7 @@
       ],
       "file": "3d-art/3da-pipe-documentation.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2806
     },
     {
       "id": "3da-pipe-automation",
@@ -523,7 +523,7 @@
       ],
       "file": "3d-art/3da-env-worldbuilding.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2712
     },
     {
       "id": "3da-env-tileable",
@@ -988,7 +988,7 @@
       ],
       "file": "3d-art/3da-hs-curved-surface.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2864
     },
     {
       "id": "3da-hs-mechanical",
@@ -1843,7 +1843,7 @@
       ],
       "file": "3d-art/3da-prop-sci-fi.md",
       "exists": true,
-      "char_count": 1236
+      "char_count": 2842
     },
     {
       "id": "3da-prop-background",
@@ -3193,7 +3193,7 @@
       ],
       "file": "3d-art/3da-uv-overlap.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2341
     },
     {
       "id": "3da-uv-intro",
@@ -4944,7 +4944,7 @@
       ],
       "file": "animation/anim-line-of-action.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2289
     },
     {
       "id": "anim-principles-overview",
@@ -5169,7 +5169,7 @@
       ],
       "file": "animation/anim-arcs.md",
       "exists": true,
-      "char_count": 1245
+      "char_count": 2063
     },
     {
       "id": "anim-straight-ahead-pose",
@@ -17538,7 +17538,7 @@
       "tags": [],
       "file": "database/nosql-intro.md",
       "exists": true,
-      "char_count": 1520
+      "char_count": 3308
     },
     {
       "id": "orm-basics",
@@ -17681,7 +17681,7 @@
       "tags": [],
       "file": "database/db-basics.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 2852
     },
     {
       "id": "db-backup-recovery",
@@ -54728,7 +54728,7 @@
       "tags": [],
       "file": "llm-core/multimodal-models.md",
       "exists": true,
-      "char_count": 1455
+      "char_count": 3265
     },
     {
       "id": "open-source-llm",
@@ -63833,7 +63833,7 @@
       "tags": [],
       "file": "oop/solid-principles.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 3102
     },
     {
       "id": "proxy-pattern",
@@ -72881,7 +72881,7 @@
       "tags": [],
       "file": "prompt-engineering/prompt-injection.md",
       "exists": true,
-      "char_count": 1459
+      "char_count": 2589
     },
     {
       "id": "prompt-basics",
@@ -80489,7 +80489,7 @@
       "tags": [],
       "file": "system-design/design-chat-system.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 3539
     },
     {
       "id": "design-notification-system",
@@ -86123,7 +86123,7 @@
       "tags": [],
       "file": "web-backend/task-queue.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 3176
     },
     {
       "id": "healthcheck-readiness",
@@ -86604,7 +86604,7 @@
       "tags": [],
       "file": "web-frontend/state-machine-ui.md",
       "exists": true,
-      "char_count": 1451
+      "char_count": 3096
     },
     {
       "id": "css-responsive",

@@ -323,7 +323,7 @@
       "tags": [],
       "file": "web-frontend/state-machine-ui.md",
       "exists": true,
-      "char_count": 1451
+      "char_count": 3096
     },
     {
       "id": "css-responsive",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 70519,
-    "avg_chars": 2136,
+    "total_chars": 72164,
+    "avg_chars": 2186,
     "domain": "web-frontend"
   }
 }

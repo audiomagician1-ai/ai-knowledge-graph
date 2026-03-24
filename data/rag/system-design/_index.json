@@ -284,7 +284,7 @@
       "tags": [],
       "file": "system-design/design-chat-system.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 3539
     },
     {
       "id": "design-notification-system",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 59875,
-    "avg_chars": 2395,
+    "total_chars": 61965,
+    "avg_chars": 2478,
     "domain": "system-design"
   }
 }

@@ -362,7 +362,7 @@
       "tags": [],
       "file": "llm-core/multimodal-models.md",
       "exists": true,
-      "char_count": 1455
+      "char_count": 3265
     },
     {
       "id": "open-source-llm",
@@ -471,8 +471,8 @@
   ],
   "stats": {
     "total": 36,
-    "total_chars": 72183,
-    "avg_chars": 2005,
+    "total_chars": 73993,
+    "avg_chars": 2055,
     "domain": "llm-core"
   }
 }

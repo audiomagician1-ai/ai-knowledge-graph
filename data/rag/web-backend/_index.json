@@ -193,7 +193,7 @@
       "tags": [],
       "file": "web-backend/task-queue.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 3176
     },
     {
       "id": "healthcheck-readiness",
@@ -354,8 +354,8 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 58289,
-    "avg_chars": 2158,
+    "total_chars": 59995,
+    "avg_chars": 2222,
     "domain": "web-backend"
   }
 }

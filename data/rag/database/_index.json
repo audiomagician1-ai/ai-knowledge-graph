@@ -50,7 +50,7 @@
       "tags": [],
       "file": "database/nosql-intro.md",
       "exists": true,
-      "char_count": 1520
+      "char_count": 3308
     },
     {
       "id": "orm-basics",
@@ -193,7 +193,7 @@
       "tags": [],
       "file": "database/db-basics.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 2852
     },
     {
       "id": "db-backup-recovery",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 46728,
-    "avg_chars": 1947,
+    "total_chars": 49867,
+    "avg_chars": 2077,
     "domain": "database"
   }
 }
