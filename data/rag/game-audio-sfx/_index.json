@@ -11,7 +11,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-interactive-ambient.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2756
     },
     {
       "id": "sfx-as-crowd-system",
@@ -921,7 +921,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-batch-operation.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2752
     },
     {
       "id": "sfx-ao-effect-budget",
@@ -2039,7 +2039,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sdt-feedback-loop.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2405
     },
     {
       "id": "sfx-sdt-audio-branding",
@@ -2208,7 +2208,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-directivity-pattern.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2479
     },
     {
       "id": "sfx-sa-sound-propagation",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 302194,
-    "avg_chars": 1678,
+    "total_chars": 307252,
+    "avg_chars": 1706,
     "domain": "game-audio-sfx"
   }
 }

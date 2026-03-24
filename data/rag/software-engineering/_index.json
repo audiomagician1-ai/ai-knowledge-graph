@@ -3433,7 +3433,7 @@
       ],
       "file": "software-engineering/refactoring/se-extract-class.md",
       "exists": true,
-      "char_count": 1306
+      "char_count": 2705
     },
     {
       "id": "se-database-refactor",
@@ -3823,7 +3823,7 @@
       ],
       "file": "software-engineering/tdd/se-test-pyramid.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2210
     },
     {
       "id": "se-chaos-engineering",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 500924,
-    "avg_chars": 1789,
+    "total_chars": 503224,
+    "avg_chars": 1797,
     "domain": "software-engineering"
   }
 }

@@ -219,7 +219,7 @@
       "tags": [],
       "file": "game-production/gp-as-game-adaptation.md",
       "exists": true,
-      "char_count": 1587
+      "char_count": 2944
     },
     {
       "id": "gp-as-user-story",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 256063,
-    "avg_chars": 1600,
+    "total_chars": 257420,
+    "avg_chars": 1608,
     "domain": "game-production"
   }
 }

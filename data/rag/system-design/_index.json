@@ -167,7 +167,7 @@
       "tags": [],
       "file": "system-design/idempotency.md",
       "exists": true,
-      "char_count": 1542
+      "char_count": 3003
     },
     {
       "id": "data-partitioning",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 56820,
-    "avg_chars": 2272,
+    "total_chars": 58281,
+    "avg_chars": 2331,
     "domain": "system-design"
   }
 }

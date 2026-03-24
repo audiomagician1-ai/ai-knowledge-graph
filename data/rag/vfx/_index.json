@@ -928,7 +928,7 @@
       ],
       "file": "vfx/vfx-niagara-gpu.md",
       "exists": true,
-      "char_count": 1574
+      "char_count": 2778
     },
     {
       "id": "vfx-niagara-mesh",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 309266,
-    "avg_chars": 1718,
+    "total_chars": 310470,
+    "avg_chars": 1724,
     "domain": "vfx"
   }
 }

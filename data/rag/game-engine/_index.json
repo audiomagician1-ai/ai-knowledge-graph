@@ -373,7 +373,7 @@
       ],
       "file": "game-engine/audio-system/sound-bank.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 3007
     },
     {
       "id": "sound-cue",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 602626,
-    "avg_chars": 2008,
+    "total_chars": 604296,
+    "avg_chars": 2014,
     "domain": "game-engine"
   }
 }

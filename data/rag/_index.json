@@ -793,7 +793,7 @@
       ],
       "file": "3d-art/3da-env-decals.md",
       "exists": true,
-      "char_count": 1230
+      "char_count": 2727
     },
     {
       "id": "3da-env-procedural",
@@ -1198,7 +1198,7 @@
       ],
       "file": "3d-art/3da-polygon-basics.md",
       "exists": true,
-      "char_count": 1523
+      "char_count": 2896
     },
     {
       "id": "3da-boolean-ops",
@@ -1213,7 +1213,7 @@
       ],
       "file": "3d-art/3da-boolean-ops.md",
       "exists": true,
-      "char_count": 1527
+      "char_count": 2459
     },
     {
       "id": "3da-edge-flow",
@@ -1858,7 +1858,7 @@
       ],
       "file": "3d-art/3da-prop-background.md",
       "exists": true,
-      "char_count": 1238
+      "char_count": 2328
     },
     {
       "id": "3da-prop-lod-creation",
@@ -2128,7 +2128,7 @@
       ],
       "file": "3d-art/3da-retopo-auto.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 2307
     },
     {
       "id": "3da-retopo-clothing",
@@ -2338,7 +2338,7 @@
       ],
       "file": "3d-art/3da-rig-twist-bones.md",
       "exists": true,
-      "char_count": 1228
+      "char_count": 2344
     },
     {
       "id": "3da-rig-controllers",
@@ -5019,7 +5019,7 @@
       ],
       "file": "animation/anim-exaggeration.md",
       "exists": true,
-      "char_count": 1222
+      "char_count": 2449
     },
     {
       "id": "anim-contrast",
@@ -5124,7 +5124,7 @@
       ],
       "file": "animation/anim-staging.md",
       "exists": true,
-      "char_count": 1233
+      "char_count": 2233
     },
     {
       "id": "anim-slow-in-out",
@@ -13029,7 +13029,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-udim.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2842
     },
     {
       "id": "cg-triplanar",
@@ -14514,7 +14514,7 @@
       ],
       "file": "concept-design/cd-limited-palette.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2578
     },
     {
       "id": "cd-rule-of-thirds",
@@ -14844,7 +14844,7 @@
       ],
       "file": "concept-design/cd-env-narrative-env.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 2521
     },
     {
       "id": "cd-env-landmark",
@@ -15309,7 +15309,7 @@
       ],
       "file": "concept-design/cd-cast-shadow.md",
       "exists": true,
-      "char_count": 1306
+      "char_count": 2531
     },
     {
       "id": "cd-value-scale",
@@ -16734,7 +16734,7 @@
       ],
       "file": "concept-design/cd-visdev-research-phase.md",
       "exists": true,
-      "char_count": 1315
+      "char_count": 2403
     },
     {
       "id": "cd-visdev-presentation-to-director",
@@ -28389,7 +28389,7 @@
       ],
       "file": "game-audio-music/game-audio-music-orchestral-style.md",
       "exists": true,
-      "char_count": 1601
+      "char_count": 2589
     },
     {
       "id": "game-audio-music-music-reference",
@@ -28747,7 +28747,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-interactive-ambient.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2756
     },
     {
       "id": "sfx-as-crowd-system",
@@ -29657,7 +29657,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-batch-operation.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2752
     },
     {
       "id": "sfx-ao-effect-budget",
@@ -30775,7 +30775,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sdt-feedback-loop.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2405
     },
     {
       "id": "sfx-sdt-audio-branding",
@@ -30944,7 +30944,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-directivity-pattern.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2479
     },
     {
       "id": "sfx-sa-sound-propagation",
@@ -35199,7 +35199,7 @@
       ],
       "file": "game-engine/audio-system/sound-bank.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 3007
     },
     {
       "id": "sound-cue",
@@ -40715,7 +40715,7 @@
       "tags": [],
       "file": "game-live-ops/ops-mo-monetization-metrics.md",
       "exists": true,
-      "char_count": 1587
+      "char_count": 2674
     },
     {
       "id": "ops-mo-monetization-models",
@@ -41885,7 +41885,7 @@
       "tags": [],
       "file": "game-production/gp-as-game-adaptation.md",
       "exists": true,
-      "char_count": 1587
+      "char_count": 2944
     },
     {
       "id": "gp-as-user-story",
@@ -46747,7 +46747,7 @@
       "tags": [],
       "file": "game-qa/qa-ct-os-version.md",
       "exists": true,
-      "char_count": 1588
+      "char_count": 2746
     },
     {
       "id": "qa-ct-update-compat",
@@ -47696,7 +47696,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-smoke-regression.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2625
     },
     {
       "id": "qa-rt-feature-toggle-reg",
@@ -59075,7 +59075,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-statistical-detection.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2726
     },
     {
       "id": "mn-ac-aimbot-detection",
@@ -61168,7 +61168,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-auto-scaling.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 2427
     },
     {
       "id": "mn-sa-load-balancing",
@@ -61610,7 +61610,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-emergent-narrative.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2622
     },
     {
       "id": "nd-bn-state-tracking",
@@ -63794,7 +63794,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-faction-design.md",
       "exists": true,
-      "char_count": 1644
+      "char_count": 2506
     },
     {
       "id": "nd-wb-magic-system",
@@ -72582,7 +72582,7 @@
       "tags": [],
       "file": "programming-basics/regex-basics.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 2806
     },
     {
       "id": "comments",
@@ -79438,7 +79438,7 @@
       ],
       "file": "software-engineering/refactoring/se-extract-class.md",
       "exists": true,
-      "char_count": 1306
+      "char_count": 2705
     },
     {
       "id": "se-database-refactor",
@@ -79828,7 +79828,7 @@
       ],
       "file": "software-engineering/tdd/se-test-pyramid.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2210
     },
     {
       "id": "se-chaos-engineering",
@@ -80372,7 +80372,7 @@
       "tags": [],
       "file": "system-design/idempotency.md",
       "exists": true,
-      "char_count": 1542
+      "char_count": 3003
     },
     {
       "id": "data-partitioning",
@@ -80633,7 +80633,7 @@
       ],
       "file": "technical-art/ta-texture-standard.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2843
     },
     {
       "id": "ta-std-overview",
@@ -81908,7 +81908,7 @@
       ],
       "file": "technical-art/ta-pcg-building.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2886
     },
     {
       "id": "ta-pcg-vegetation",
@@ -84158,7 +84158,7 @@
       ],
       "file": "vfx/vfx-niagara-gpu.md",
       "exists": true,
-      "char_count": 1574
+      "char_count": 2778
     },
     {
       "id": "vfx-niagara-mesh",
@@ -86591,7 +86591,7 @@
       "tags": [],
       "file": "web-frontend/frontend-testing.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 3252
     },
     {
       "id": "state-machine-ui",
@@ -86643,7 +86643,7 @@
       "tags": [],
       "file": "web-frontend/micro-frontend.md",
       "exists": true,
-      "char_count": 1550
+      "char_count": 3173
     },
     {
       "id": "bundler-basics",

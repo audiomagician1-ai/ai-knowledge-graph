@@ -271,7 +271,7 @@
       "tags": [],
       "file": "programming-basics/regex-basics.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 2806
     },
     {
       "id": "comments",
@@ -393,8 +393,8 @@
   ],
   "stats": {
     "total": 30,
-    "total_chars": 71954,
-    "avg_chars": 2398,
+    "total_chars": 73238,
+    "avg_chars": 2441,
     "domain": "programming-basics"
   }
 }

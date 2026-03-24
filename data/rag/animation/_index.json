@@ -433,7 +433,7 @@
       ],
       "file": "animation/anim-exaggeration.md",
       "exists": true,
-      "char_count": 1222
+      "char_count": 2449
     },
     {
       "id": "anim-contrast",
@@ -538,7 +538,7 @@
       ],
       "file": "animation/anim-staging.md",
       "exists": true,
-      "char_count": 1233
+      "char_count": 2233
     },
     {
       "id": "anim-slow-in-out",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 303156,
-    "avg_chars": 1684,
+    "total_chars": 305383,
+    "avg_chars": 1696,
     "domain": "animation"
   }
 }

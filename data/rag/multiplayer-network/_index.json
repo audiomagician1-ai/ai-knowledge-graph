@@ -206,7 +206,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-statistical-detection.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2726
     },
     {
       "id": "mn-ac-aimbot-detection",
@@ -2299,7 +2299,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-auto-scaling.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 2427
     },
     {
       "id": "mn-sa-load-balancing",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 335968,
-    "avg_chars": 1679,
+    "total_chars": 338509,
+    "avg_chars": 1692,
     "domain": "multiplayer-network"
   }
 }

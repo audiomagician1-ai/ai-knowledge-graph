@@ -661,7 +661,7 @@
       "tags": [],
       "file": "game-qa/qa-ct-os-version.md",
       "exists": true,
-      "char_count": 1588
+      "char_count": 2746
     },
     {
       "id": "qa-ct-update-compat",
@@ -1610,7 +1610,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-smoke-regression.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2625
     },
     {
       "id": "qa-rt-feature-toggle-reg",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 256707,
-    "avg_chars": 1604,
+    "total_chars": 259190,
+    "avg_chars": 1619,
     "domain": "game-qa"
   }
 }

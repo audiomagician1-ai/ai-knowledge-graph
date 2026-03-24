@@ -2353,7 +2353,7 @@
       ],
       "file": "game-audio-music/game-audio-music-orchestral-style.md",
       "exists": true,
-      "char_count": 1601
+      "char_count": 2589
     },
     {
       "id": "game-audio-music-music-reference",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 297406,
-    "avg_chars": 1652,
+    "total_chars": 298394,
+    "avg_chars": 1657,
     "domain": "game-audio-music"
   }
 }

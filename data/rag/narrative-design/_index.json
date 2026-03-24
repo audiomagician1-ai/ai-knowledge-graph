@@ -141,7 +141,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-emergent-narrative.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2622
     },
     {
       "id": "nd-bn-state-tracking",
@@ -2325,7 +2325,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-faction-design.md",
       "exists": true,
-      "char_count": 1644
+      "char_count": 2506
     },
     {
       "id": "nd-wb-magic-system",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 283359,
-    "avg_chars": 1574,
+    "total_chars": 285532,
+    "avg_chars": 1586,
     "domain": "narrative-design"
   }
 }

@@ -898,7 +898,7 @@
       ],
       "file": "concept-design/cd-limited-palette.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2578
     },
     {
       "id": "cd-rule-of-thirds",
@@ -1228,7 +1228,7 @@
       ],
       "file": "concept-design/cd-env-narrative-env.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 2521
     },
     {
       "id": "cd-env-landmark",
@@ -1693,7 +1693,7 @@
       ],
       "file": "concept-design/cd-cast-shadow.md",
       "exists": true,
-      "char_count": 1306
+      "char_count": 2531
     },
     {
       "id": "cd-value-scale",
@@ -3118,7 +3118,7 @@
       ],
       "file": "concept-design/cd-visdev-research-phase.md",
       "exists": true,
-      "char_count": 1315
+      "char_count": 2403
     },
     {
       "id": "cd-visdev-presentation-to-director",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 390437,
-    "avg_chars": 1774,
+    "total_chars": 395224,
+    "avg_chars": 1796,
     "domain": "concept-design"
   }
 }

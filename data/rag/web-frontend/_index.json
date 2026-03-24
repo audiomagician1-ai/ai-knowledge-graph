@@ -310,7 +310,7 @@
       "tags": [],
       "file": "web-frontend/frontend-testing.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 3252
     },
     {
       "id": "state-machine-ui",
@@ -362,7 +362,7 @@
       "tags": [],
       "file": "web-frontend/micro-frontend.md",
       "exists": true,
-      "char_count": 1550
+      "char_count": 3173
     },
     {
       "id": "bundler-basics",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 61453,
-    "avg_chars": 1862,
+    "total_chars": 64792,
+    "avg_chars": 1963,
     "domain": "web-frontend"
   }
 }

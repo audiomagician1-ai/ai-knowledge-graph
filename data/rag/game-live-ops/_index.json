@@ -1389,7 +1389,7 @@
       "tags": [],
       "file": "game-live-ops/ops-mo-monetization-metrics.md",
       "exists": true,
-      "char_count": 1587
+      "char_count": 2674
     },
     {
       "id": "ops-mo-monetization-models",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 283415,
-    "avg_chars": 1574,
+    "total_chars": 284502,
+    "avg_chars": 1580,
     "domain": "game-live-ops"
   }
 }

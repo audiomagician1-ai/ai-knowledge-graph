@@ -3163,7 +3163,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-udim.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2842
     },
     {
       "id": "cg-triplanar",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 472891,
-    "avg_chars": 1891,
+    "total_chars": 474434,
+    "avg_chars": 1897,
     "domain": "computer-graphics"
   }
 }

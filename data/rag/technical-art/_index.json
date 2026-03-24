@@ -103,7 +103,7 @@
       ],
       "file": "technical-art/ta-texture-standard.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2843
     },
     {
       "id": "ta-std-overview",
@@ -1378,7 +1378,7 @@
       ],
       "file": "technical-art/ta-pcg-building.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2886
     },
     {
       "id": "ta-pcg-vegetation",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 303192,
-    "avg_chars": 1684,
+    "total_chars": 306286,
+    "avg_chars": 1701,
     "domain": "technical-art"
   }
 }
