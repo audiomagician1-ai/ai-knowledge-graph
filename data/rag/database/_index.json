@@ -271,7 +271,7 @@
       "tags": [],
       "file": "database/db-locking.md",
       "exists": true,
-      "char_count": 3101
+      "char_count": 2892
     },
     {
       "id": "timeseries-db",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 41353,
-    "avg_chars": 1723,
+    "total_chars": 41144,
+    "avg_chars": 1714,
     "domain": "database"
   }
 }

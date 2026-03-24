@@ -193,7 +193,7 @@
       "tags": [],
       "file": "system-design/service-discovery.md",
       "exists": true,
-      "char_count": 3432
+      "char_count": 3186
     },
     {
       "id": "circuit-breaker",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 45936,
-    "avg_chars": 1837,
+    "total_chars": 45690,
+    "avg_chars": 1827,
     "domain": "system-design"
   }
 }

@@ -733,7 +733,7 @@
       ],
       "file": "3d-art/3da-env-lighting-art.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2580
     },
     {
       "id": "3da-env-storytelling",
@@ -2218,7 +2218,7 @@
       ],
       "file": "3d-art/3da-retopo-face-loops.md",
       "exists": true,
-      "char_count": 2664
+      "char_count": 2603
     },
     {
       "id": "3da-rig-blendshape",
@@ -2443,7 +2443,7 @@
       ],
       "file": "3d-art/3da-rig-spine.md",
       "exists": true,
-      "char_count": 2773
+      "char_count": 2591
     },
     {
       "id": "3da-rig-skinning",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 401065,
-    "avg_chars": 1774,
+    "total_chars": 401956,
+    "avg_chars": 1778,
     "domain": "3d-art"
   }
 }

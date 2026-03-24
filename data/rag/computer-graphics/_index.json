@@ -388,7 +388,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-terrain-geometry.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 2760
     },
     {
       "id": "cg-instancing",
@@ -853,7 +853,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-spherical-harmonics.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2530
     },
     {
       "id": "cg-radiosity",
@@ -868,7 +868,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-radiosity.md",
       "exists": true,
-      "char_count": 2630
+      "char_count": 2780
     },
     {
       "id": "cg-radiometry",
@@ -883,7 +883,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-radiometry.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2798
     },
     {
       "id": "cg-irradiance-volume",
@@ -1663,7 +1663,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-eye-adaptation.md",
       "exists": true,
-      "char_count": 2476
+      "char_count": 2321
     },
     {
       "id": "cg-dof",
@@ -1678,7 +1678,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-dof.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2655
     },
     {
       "id": "cg-vignette",
@@ -2113,7 +2113,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-depth-buffer.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2533
     },
     {
       "id": "cg-clustered-rendering",
@@ -2263,7 +2263,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-restir.md",
       "exists": true,
-      "char_count": 1236
+      "char_count": 2600
     },
     {
       "id": "cg-sdf-tracing",
@@ -2383,7 +2383,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-reflection.md",
       "exists": true,
-      "char_count": 2360
+      "char_count": 2542
     },
     {
       "id": "cg-rt-refraction",
@@ -2428,7 +2428,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-denoising.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 3114
     },
     {
       "id": "cg-bidirectional-pt",
@@ -2968,7 +2968,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-material-graph.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 2922
     },
     {
       "id": "cg-fragment-shader",
@@ -3373,7 +3373,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-detail-mapping.md",
       "exists": true,
-      "char_count": 2738
+      "char_count": 2603
     },
     {
       "id": "cg-displacement-map",
@@ -3538,7 +3538,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-vol-gi.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 3211
     },
     {
       "id": "cg-vol-intro",
@@ -3628,7 +3628,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-participating-media.md",
       "exists": true,
-      "char_count": 1550
+      "char_count": 3244
     },
     {
       "id": "cg-atmosphere-scatter",
@@ -3733,7 +3733,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-neural-radiance.md",
       "exists": true,
-      "char_count": 1440
+      "char_count": 3068
     },
     {
       "id": "cg-scientific-vis",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 417572,
-    "avg_chars": 1670,
+    "total_chars": 433511,
+    "avg_chars": 1734,
     "domain": "computer-graphics"
   }
 }

@@ -733,7 +733,7 @@
       ],
       "file": "3d-art/3da-env-lighting-art.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2580
     },
     {
       "id": "3da-env-storytelling",
@@ -2218,7 +2218,7 @@
       ],
       "file": "3d-art/3da-retopo-face-loops.md",
       "exists": true,
-      "char_count": 2664
+      "char_count": 2603
     },
     {
       "id": "3da-rig-blendshape",
@@ -2443,7 +2443,7 @@
       ],
       "file": "3d-art/3da-rig-spine.md",
       "exists": true,
-      "char_count": 2773
+      "char_count": 2591
     },
     {
       "id": "3da-rig-skinning",
@@ -6834,7 +6834,7 @@
       ],
       "file": "animation/anim-retargeting.md",
       "exists": true,
-      "char_count": 2633
+      "char_count": 2582
     },
     {
       "id": "anim-deformation",
@@ -6924,7 +6924,7 @@
       ],
       "file": "animation/anim-modular-rig.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2415
     },
     {
       "id": "anim-space-switching",
@@ -7704,7 +7704,7 @@
       ],
       "file": "biology/cell-biology/prokaryotic-cells.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2561
     },
     {
       "id": "chloroplast",
@@ -8064,7 +8064,7 @@
       ],
       "file": "biology/ecology/marine-ecology.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2606
     },
     {
       "id": "freshwater-ecology",
@@ -9429,7 +9429,7 @@
       ],
       "file": "biology/microbiology/viral-replication.md",
       "exists": true,
-      "char_count": 1324
+      "char_count": 2780
     },
     {
       "id": "virus-biology",
@@ -9594,7 +9594,7 @@
       ],
       "file": "biology/molecular-biology/pcr-technology.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2137
     },
     {
       "id": "rna-interference",
@@ -10254,7 +10254,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-terrain-geometry.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 2760
     },
     {
       "id": "cg-instancing",
@@ -10719,7 +10719,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-spherical-harmonics.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2530
     },
     {
       "id": "cg-radiosity",
@@ -10734,7 +10734,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-radiosity.md",
       "exists": true,
-      "char_count": 2630
+      "char_count": 2780
     },
     {
       "id": "cg-radiometry",
@@ -10749,7 +10749,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-radiometry.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2798
     },
     {
       "id": "cg-irradiance-volume",
@@ -11529,7 +11529,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-eye-adaptation.md",
       "exists": true,
-      "char_count": 2476
+      "char_count": 2321
     },
     {
       "id": "cg-dof",
@@ -11544,7 +11544,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-dof.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2655
     },
     {
       "id": "cg-vignette",
@@ -11979,7 +11979,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-depth-buffer.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2533
     },
     {
       "id": "cg-clustered-rendering",
@@ -12129,7 +12129,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-restir.md",
       "exists": true,
-      "char_count": 1236
+      "char_count": 2600
     },
     {
       "id": "cg-sdf-tracing",
@@ -12249,7 +12249,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-reflection.md",
       "exists": true,
-      "char_count": 2360
+      "char_count": 2542
     },
     {
       "id": "cg-rt-refraction",
@@ -12294,7 +12294,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-denoising.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 3114
     },
     {
       "id": "cg-bidirectional-pt",
@@ -12834,7 +12834,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-material-graph.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 2922
     },
     {
       "id": "cg-fragment-shader",
@@ -13239,7 +13239,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-detail-mapping.md",
       "exists": true,
-      "char_count": 2738
+      "char_count": 2603
     },
     {
       "id": "cg-displacement-map",
@@ -13404,7 +13404,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-vol-gi.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 3211
     },
     {
       "id": "cg-vol-intro",
@@ -13494,7 +13494,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-participating-media.md",
       "exists": true,
-      "char_count": 1550
+      "char_count": 3244
     },
     {
       "id": "cg-atmosphere-scatter",
@@ -13599,7 +13599,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-neural-radiance.md",
       "exists": true,
-      "char_count": 1440
+      "char_count": 3068
     },
     {
       "id": "cg-scientific-vis",
@@ -13884,7 +13884,7 @@
       ],
       "file": "concept-design/cd-foreshortening.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2174
     },
     {
       "id": "cd-weight-balance",
@@ -15804,7 +15804,7 @@
       ],
       "file": "concept-design/cd-atmospheric-perspective.md",
       "exists": true,
-      "char_count": 1979
+      "char_count": 2075
     },
     {
       "id": "cd-scale-depth-cues",
@@ -16134,7 +16134,7 @@
       ],
       "file": "concept-design/cd-prop-weapon-design.md",
       "exists": true,
-      "char_count": 2330
+      "char_count": 2486
     },
     {
       "id": "cd-prop-exploded-view",
@@ -17057,7 +17057,7 @@
       "tags": [],
       "file": "cs-fundamentals/boolean-logic.md",
       "exists": true,
-      "char_count": 2463
+      "char_count": 2397
     },
     {
       "id": "os-basics",
@@ -17434,7 +17434,7 @@
       "tags": [],
       "file": "data-structures/adjacency-matrix.md",
       "exists": true,
-      "char_count": 2478
+      "char_count": 2439
     },
     {
       "id": "adjacency-list",
@@ -17759,7 +17759,7 @@
       "tags": [],
       "file": "database/db-locking.md",
       "exists": true,
-      "char_count": 3101
+      "char_count": 2892
     },
     {
       "id": "timeseries-db",
@@ -18071,7 +18071,7 @@
       "tags": [],
       "file": "devops/monitoring-alerting.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2977
     },
     {
       "id": "blue-green-deployment",
@@ -54442,7 +54442,7 @@
       "tags": [],
       "file": "llm-core/gpt-model.md",
       "exists": true,
-      "char_count": 1806
+      "char_count": 2849
     },
     {
       "id": "kv-cache",
@@ -63911,7 +63911,7 @@
       "tags": [],
       "file": "oop/factory-pattern.md",
       "exists": true,
-      "char_count": 3004
+      "char_count": 3086
     },
     {
       "id": "builder-pattern",
@@ -64093,7 +64093,7 @@
       "tags": [],
       "file": "oop/design-patterns-intro.md",
       "exists": true,
-      "char_count": 1497
+      "char_count": 2594
     },
     {
       "id": "adapter-pattern",
@@ -80398,7 +80398,7 @@
       "tags": [],
       "file": "system-design/service-discovery.md",
       "exists": true,
-      "char_count": 3432
+      "char_count": 3186
     },
     {
       "id": "circuit-breaker",
@@ -86162,7 +86162,7 @@
       "tags": [],
       "file": "web-backend/microservices-intro.md",
       "exists": true,
-      "char_count": 1485
+      "char_count": 2801
     },
     {
       "id": "file-upload",
@@ -86357,7 +86357,7 @@
       "tags": [],
       "file": "web-frontend/dom-manipulation.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 3784
     },
     {
       "id": "fetch-api",
@@ -88808,7 +88808,7 @@
       ],
       "file": "writing/revision-craft/copyediting.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 2316
     },
     {
       "id": "proofreading",

@@ -2098,7 +2098,7 @@
       ],
       "file": "writing/revision-craft/copyediting.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 2316
     },
     {
       "id": "proofreading",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 315927,
-    "avg_chars": 1858,
+    "total_chars": 316747,
+    "avg_chars": 1863,
     "domain": "writing"
   }
 }

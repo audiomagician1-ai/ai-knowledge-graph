@@ -2248,7 +2248,7 @@
       ],
       "file": "animation/anim-retargeting.md",
       "exists": true,
-      "char_count": 2633
+      "char_count": 2582
     },
     {
       "id": "anim-deformation",
@@ -2338,7 +2338,7 @@
       ],
       "file": "animation/anim-modular-rig.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2415
     },
     {
       "id": "anim-space-switching",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 274823,
-    "avg_chars": 1526,
+    "total_chars": 275956,
+    "avg_chars": 1533,
     "domain": "animation"
   }
 }

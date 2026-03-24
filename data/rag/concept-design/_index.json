@@ -268,7 +268,7 @@
       ],
       "file": "concept-design/cd-foreshortening.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2174
     },
     {
       "id": "cd-weight-balance",
@@ -2188,7 +2188,7 @@
       ],
       "file": "concept-design/cd-atmospheric-perspective.md",
       "exists": true,
-      "char_count": 1979
+      "char_count": 2075
     },
     {
       "id": "cd-scale-depth-cues",
@@ -2518,7 +2518,7 @@
       ],
       "file": "concept-design/cd-prop-weapon-design.md",
       "exists": true,
-      "char_count": 2330
+      "char_count": 2486
     },
     {
       "id": "cd-prop-exploded-view",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 347456,
-    "avg_chars": 1579,
+    "total_chars": 348638,
+    "avg_chars": 1584,
     "domain": "concept-design"
   }
 }

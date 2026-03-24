@@ -232,7 +232,7 @@
       "tags": [],
       "file": "web-backend/microservices-intro.md",
       "exists": true,
-      "char_count": 1485
+      "char_count": 2801
     },
     {
       "id": "file-upload",
@@ -354,8 +354,8 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 48446,
-    "avg_chars": 1794,
+    "total_chars": 49762,
+    "avg_chars": 1843,
     "domain": "web-backend"
   }
 }
