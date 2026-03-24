@@ -76,7 +76,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-anti-cheat-architecture.md",
       "exists": true,
-      "char_count": 2323
+      "char_count": 2459
     },
     {
       "id": "mn-ac-trusted-computing",
@@ -154,7 +154,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-server-authority.md",
       "exists": true,
-      "char_count": 2611
+      "char_count": 2436
     },
     {
       "id": "mn-ac-bot-detection",
@@ -245,7 +245,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-input-validation.md",
       "exists": true,
-      "char_count": 2240
+      "char_count": 2841
     },
     {
       "id": "mn-ac-wallhack-prevention",
@@ -1155,7 +1155,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-quick-match.md",
       "exists": true,
-      "char_count": 2200
+      "char_count": 2131
     },
     {
       "id": "mn-lb-room-browser",
@@ -1246,7 +1246,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-spectator-lobby.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 2300
     },
     {
       "id": "mn-lb-voice-chat",
@@ -2286,7 +2286,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-gateway-server.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2901
     },
     {
       "id": "mn-sa-auto-scaling",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 313395,
-    "avg_chars": 1566,
+    "total_chars": 316335,
+    "avg_chars": 1581,
     "domain": "multiplayer-network"
   }
 }

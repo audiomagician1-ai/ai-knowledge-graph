@@ -115,7 +115,7 @@
       "tags": [],
       "file": "data-structures/graph-ds.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2428
     },
     {
       "id": "heap",
@@ -341,8 +341,8 @@
   ],
   "stats": {
     "total": 26,
-    "total_chars": 52893,
-    "avg_chars": 2034,
+    "total_chars": 53830,
+    "avg_chars": 2070,
     "domain": "data-structures"
   }
 }

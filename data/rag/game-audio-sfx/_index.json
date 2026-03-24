@@ -856,7 +856,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-virtualization.md",
       "exists": true,
-      "char_count": 1355
+      "char_count": 2581
     },
     {
       "id": "sfx-ao-platform-certification",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 277948,
-    "avg_chars": 1544,
+    "total_chars": 279174,
+    "avg_chars": 1550,
     "domain": "game-audio-sfx"
   }
 }

@@ -2023,7 +2023,7 @@
       ],
       "file": "software-engineering/game-programming-patterns/se-state-pattern-game.md",
       "exists": true,
-      "char_count": 1378
+      "char_count": 2828
     },
     {
       "id": "se-spatial-partition",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 468930,
-    "avg_chars": 1674,
+    "total_chars": 470380,
+    "avg_chars": 1679,
     "domain": "software-engineering"
   }
 }

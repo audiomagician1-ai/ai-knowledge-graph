@@ -268,7 +268,7 @@
       ],
       "file": "vfx/vfx-destruct-runtime.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2690
     },
     {
       "id": "vfx-destruct-anchor",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 287789,
-    "avg_chars": 1598,
+    "total_chars": 289111,
+    "avg_chars": 1606,
     "domain": "vfx"
   }
 }

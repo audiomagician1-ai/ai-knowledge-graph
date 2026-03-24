@@ -118,7 +118,7 @@
       ],
       "file": "3d-art/3da-pipe-engine-import.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 3054
     },
     {
       "id": "3da-pipe-batch-processing",
@@ -1168,7 +1168,7 @@
       ],
       "file": "3d-art/3da-transform-tools.md",
       "exists": true,
-      "char_count": 1614
+      "char_count": 2731
     },
     {
       "id": "3da-snapping",
@@ -4311,7 +4311,7 @@
       "tags": [],
       "file": "algorithms/prefix-sum.md",
       "exists": true,
-      "char_count": 1555
+      "char_count": 2537
     },
     {
       "id": "dynamic-programming",
@@ -16953,7 +16953,7 @@
       "tags": [],
       "file": "cs-fundamentals/http-protocol.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 3310
     },
     {
       "id": "io-model",
@@ -17265,7 +17265,7 @@
       "tags": [],
       "file": "data-structures/graph-ds.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2428
     },
     {
       "id": "heap",
@@ -29592,7 +29592,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-virtualization.md",
       "exists": true,
-      "char_count": 1355
+      "char_count": 2581
     },
     {
       "id": "sfx-ao-platform-certification",
@@ -36759,7 +36759,7 @@
       ],
       "file": "game-engine/platform-abstraction/platform-scalability.md",
       "exists": true,
-      "char_count": 1393
+      "char_count": 2908
     },
     {
       "id": "platform-defines",
@@ -37989,7 +37989,7 @@
       ],
       "file": "game-engine/scene-management/scene-mgmt-intro.md",
       "exists": true,
-      "char_count": 1533
+      "char_count": 2943
     },
     {
       "id": "scene-debug",
@@ -39441,7 +39441,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ab-platform.md",
       "exists": true,
-      "char_count": 3232
+      "char_count": 2695
     },
     {
       "id": "ops-ab-experiment-culture",
@@ -43237,7 +43237,7 @@
       "tags": [],
       "file": "game-production/gp-rm-capacity.md",
       "exists": true,
-      "char_count": 2384
+      "char_count": 2258
     },
     {
       "id": "gp-rm-staffing",
@@ -51724,7 +51724,7 @@
       ],
       "file": "level-design/combat-space/destructible-env.md",
       "exists": true,
-      "char_count": 1233
+      "char_count": 2460
     },
     {
       "id": "multi-level-combat",
@@ -51964,7 +51964,7 @@
       ],
       "file": "level-design/combat-space/elevation-tactics.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2247
     },
     {
       "id": "npc-guidance",
@@ -52999,7 +52999,7 @@
       ],
       "file": "level-design/lighting-narrative/practical-light.md",
       "exists": true,
-      "char_count": 1233
+      "char_count": 2350
     },
     {
       "id": "indoor-lighting",
@@ -53044,7 +53044,7 @@
       ],
       "file": "level-design/lighting-narrative/contrast-lighting.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2286
     },
     {
       "id": "horror-lighting",
@@ -53269,7 +53269,7 @@
       ],
       "file": "level-design/metrics-design/metric-exception.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2331
     },
     {
       "id": "metric-sheet",
@@ -53569,7 +53569,7 @@
       ],
       "file": "level-design/pacing-curve/backtracking-design.md",
       "exists": true,
-      "char_count": 1236
+      "char_count": 2261
     },
     {
       "id": "reward-pacing",
@@ -53944,7 +53944,7 @@
       ],
       "file": "level-design/spatial-narrative/immersion-design.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2834
     },
     {
       "id": "player-path-analysis",
@@ -54019,7 +54019,7 @@
       ],
       "file": "level-design/spatial-narrative/spatial-hierarchy.md",
       "exists": true,
-      "char_count": 1551
+      "char_count": 2571
     },
     {
       "id": "linear-vs-open",
@@ -54572,7 +54572,7 @@
       "tags": [],
       "file": "llm-core/llm-pretraining.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 2969
     },
     {
       "id": "lora-peft",
@@ -57022,7 +57022,7 @@
       ],
       "file": "mathematics/linear-algebra/inner-product-spaces.md",
       "exists": true,
-      "char_count": 1562
+      "char_count": 3537
     },
     {
       "id": "vectors-intro",
@@ -58945,7 +58945,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-anti-cheat-architecture.md",
       "exists": true,
-      "char_count": 2323
+      "char_count": 2459
     },
     {
       "id": "mn-ac-trusted-computing",
@@ -59023,7 +59023,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-server-authority.md",
       "exists": true,
-      "char_count": 2611
+      "char_count": 2436
     },
     {
       "id": "mn-ac-bot-detection",
@@ -59114,7 +59114,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-input-validation.md",
       "exists": true,
-      "char_count": 2240
+      "char_count": 2841
     },
     {
       "id": "mn-ac-wallhack-prevention",
@@ -60024,7 +60024,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-quick-match.md",
       "exists": true,
-      "char_count": 2200
+      "char_count": 2131
     },
     {
       "id": "mn-lb-room-browser",
@@ -60115,7 +60115,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-spectator-lobby.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 2300
     },
     {
       "id": "mn-lb-voice-chat",
@@ -61155,7 +61155,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-gateway-server.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2901
     },
     {
       "id": "mn-sa-auto-scaling",
@@ -62325,7 +62325,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-lip-sync.md",
       "exists": true,
-      "char_count": 2585
+      "char_count": 2314
     },
     {
       "id": "nd-ds-dialogue-writing",
@@ -63573,7 +63573,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-geography.md",
       "exists": true,
-      "char_count": 2401
+      "char_count": 2691
     },
     {
       "id": "nd-wb-ecology",
@@ -64644,7 +64644,7 @@
       ],
       "file": "philosophy/ancient-philosophy/neoplatonism.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2329
     },
     {
       "id": "sophists",
@@ -78028,7 +78028,7 @@
       ],
       "file": "software-engineering/game-programming-patterns/se-state-pattern-game.md",
       "exists": true,
-      "char_count": 1378
+      "char_count": 2828
     },
     {
       "id": "se-spatial-partition",
@@ -81533,7 +81533,7 @@
       ],
       "file": "technical-art/ta-mem-leak-detect.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 3239
     },
     {
       "id": "ta-mem-overview",
@@ -82238,7 +82238,7 @@
       ],
       "file": "technical-art/ta-mobile-perf.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 3474
     },
     {
       "id": "ta-particle-perf",
@@ -82403,7 +82403,7 @@
       ],
       "file": "technical-art/ta-import-pipeline.md",
       "exists": true,
-      "char_count": 1429
+      "char_count": 3150
     },
     {
       "id": "ta-export-pipeline",
@@ -82613,7 +82613,7 @@
       ],
       "file": "technical-art/ta-pipeline-overview.md",
       "exists": true,
-      "char_count": 1422
+      "char_count": 2652
     },
     {
       "id": "ta-iteration-speed",
@@ -83123,7 +83123,7 @@
       ],
       "file": "technical-art/ta-tool-pipeline.md",
       "exists": true,
-      "char_count": 1389
+      "char_count": 2854
     },
     {
       "id": "ta-tool-documentation",
@@ -83498,7 +83498,7 @@
       ],
       "file": "vfx/vfx-destruct-runtime.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2690
     },
     {
       "id": "vfx-destruct-anchor",

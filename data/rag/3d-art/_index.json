@@ -118,7 +118,7 @@
       ],
       "file": "3d-art/3da-pipe-engine-import.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 3054
     },
     {
       "id": "3da-pipe-batch-processing",
@@ -1168,7 +1168,7 @@
       ],
       "file": "3d-art/3da-transform-tools.md",
       "exists": true,
-      "char_count": 1614
+      "char_count": 2731
     },
     {
       "id": "3da-snapping",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 418157,
-    "avg_chars": 1850,
+    "total_chars": 420828,
+    "avg_chars": 1862,
     "domain": "3d-art"
   }
 }

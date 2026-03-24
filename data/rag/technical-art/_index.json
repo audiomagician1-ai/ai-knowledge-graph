@@ -1003,7 +1003,7 @@
       ],
       "file": "technical-art/ta-mem-leak-detect.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 3239
     },
     {
       "id": "ta-mem-overview",
@@ -1708,7 +1708,7 @@
       ],
       "file": "technical-art/ta-mobile-perf.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 3474
     },
     {
       "id": "ta-particle-perf",
@@ -1873,7 +1873,7 @@
       ],
       "file": "technical-art/ta-import-pipeline.md",
       "exists": true,
-      "char_count": 1429
+      "char_count": 3150
     },
     {
       "id": "ta-export-pipeline",
@@ -2083,7 +2083,7 @@
       ],
       "file": "technical-art/ta-pipeline-overview.md",
       "exists": true,
-      "char_count": 1422
+      "char_count": 2652
     },
     {
       "id": "ta-iteration-speed",
@@ -2593,7 +2593,7 @@
       ],
       "file": "technical-art/ta-tool-pipeline.md",
       "exists": true,
-      "char_count": 1389
+      "char_count": 2854
     },
     {
       "id": "ta-tool-documentation",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 280306,
-    "avg_chars": 1557,
+    "total_chars": 288681,
+    "avg_chars": 1603,
     "domain": "technical-art"
   }
 }

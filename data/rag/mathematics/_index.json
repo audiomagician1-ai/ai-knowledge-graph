@@ -2188,7 +2188,7 @@
       ],
       "file": "mathematics/linear-algebra/inner-product-spaces.md",
       "exists": true,
-      "char_count": 1562
+      "char_count": 3537
     },
     {
       "id": "vectors-intro",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 665189,
-    "avg_chars": 2472,
+    "total_chars": 667164,
+    "avg_chars": 2480,
     "domain": "mathematics"
   }
 }

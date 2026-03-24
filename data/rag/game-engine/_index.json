@@ -1933,7 +1933,7 @@
       ],
       "file": "game-engine/platform-abstraction/platform-scalability.md",
       "exists": true,
-      "char_count": 1393
+      "char_count": 2908
     },
     {
       "id": "platform-defines",
@@ -3163,7 +3163,7 @@
       ],
       "file": "game-engine/scene-management/scene-mgmt-intro.md",
       "exists": true,
-      "char_count": 1533
+      "char_count": 2943
     },
     {
       "id": "scene-debug",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 566002,
-    "avg_chars": 1886,
+    "total_chars": 568927,
+    "avg_chars": 1896,
     "domain": "game-engine"
   }
 }

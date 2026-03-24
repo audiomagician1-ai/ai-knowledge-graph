@@ -206,7 +206,7 @@
       "tags": [],
       "file": "llm-core/llm-pretraining.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 2969
     },
     {
       "id": "lora-peft",
@@ -471,8 +471,8 @@
   ],
   "stats": {
     "total": 36,
-    "total_chars": 69783,
-    "avg_chars": 1938,
+    "total_chars": 71222,
+    "avg_chars": 1978,
     "domain": "llm-core"
   }
 }

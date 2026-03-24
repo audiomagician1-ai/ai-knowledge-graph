@@ -358,7 +358,7 @@
       ],
       "file": "level-design/combat-space/destructible-env.md",
       "exists": true,
-      "char_count": 1233
+      "char_count": 2460
     },
     {
       "id": "multi-level-combat",
@@ -598,7 +598,7 @@
       ],
       "file": "level-design/combat-space/elevation-tactics.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2247
     },
     {
       "id": "npc-guidance",
@@ -1633,7 +1633,7 @@
       ],
       "file": "level-design/lighting-narrative/practical-light.md",
       "exists": true,
-      "char_count": 1233
+      "char_count": 2350
     },
     {
       "id": "indoor-lighting",
@@ -1678,7 +1678,7 @@
       ],
       "file": "level-design/lighting-narrative/contrast-lighting.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2286
     },
     {
       "id": "horror-lighting",
@@ -1903,7 +1903,7 @@
       ],
       "file": "level-design/metrics-design/metric-exception.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2331
     },
     {
       "id": "metric-sheet",
@@ -2203,7 +2203,7 @@
       ],
       "file": "level-design/pacing-curve/backtracking-design.md",
       "exists": true,
-      "char_count": 1236
+      "char_count": 2261
     },
     {
       "id": "reward-pacing",
@@ -2578,7 +2578,7 @@
       ],
       "file": "level-design/spatial-narrative/immersion-design.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2834
     },
     {
       "id": "player-path-analysis",
@@ -2653,7 +2653,7 @@
       ],
       "file": "level-design/spatial-narrative/spatial-hierarchy.md",
       "exists": true,
-      "char_count": 1551
+      "char_count": 2571
     },
     {
       "id": "linear-vs-open",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 386588,
-    "avg_chars": 1932,
+    "total_chars": 395737,
+    "avg_chars": 1978,
     "domain": "level-design"
   }
 }

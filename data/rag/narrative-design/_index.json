@@ -856,7 +856,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-lip-sync.md",
       "exists": true,
-      "char_count": 2585
+      "char_count": 2314
     },
     {
       "id": "nd-ds-dialogue-writing",
@@ -2104,7 +2104,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-geography.md",
       "exists": true,
-      "char_count": 2401
+      "char_count": 2691
     },
     {
       "id": "nd-wb-ecology",
@@ -2343,7 +2343,7 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 277717,
+    "total_chars": 277736,
     "avg_chars": 1542,
     "domain": "narrative-design"
   }

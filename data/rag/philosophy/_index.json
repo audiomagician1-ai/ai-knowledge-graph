@@ -523,7 +523,7 @@
       ],
       "file": "philosophy/ancient-philosophy/neoplatonism.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2329
     },
     {
       "id": "sophists",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 297355,
-    "avg_chars": 1749,
+    "total_chars": 298224,
+    "avg_chars": 1754,
     "domain": "philosophy"
   }
 }

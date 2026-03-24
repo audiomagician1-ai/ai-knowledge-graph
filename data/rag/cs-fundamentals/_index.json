@@ -37,7 +37,7 @@
       "tags": [],
       "file": "cs-fundamentals/http-protocol.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 3310
     },
     {
       "id": "io-model",
@@ -237,8 +237,8 @@
   ],
   "stats": {
     "total": 18,
-    "total_chars": 36773,
-    "avg_chars": 2042,
+    "total_chars": 38553,
+    "avg_chars": 2141,
     "domain": "cs-fundamentals"
   }
 }

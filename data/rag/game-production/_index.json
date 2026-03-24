@@ -1571,7 +1571,7 @@
       "tags": [],
       "file": "game-production/gp-rm-capacity.md",
       "exists": true,
-      "char_count": 2384
+      "char_count": 2258
     },
     {
       "id": "gp-rm-staffing",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 253291,
-    "avg_chars": 1583,
+    "total_chars": 253165,
+    "avg_chars": 1582,
     "domain": "game-production"
   }
 }
