@@ -193,7 +193,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-geometric-aa.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2897
     },
     {
       "id": "cg-frame-generation",
@@ -343,7 +343,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-sdf-modeling.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 3185
     },
     {
       "id": "cg-geo-intro",
@@ -538,7 +538,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-mesh-compression.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2867
     },
     {
       "id": "cg-mesh-deformation",
@@ -913,7 +913,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-irradiance-map.md",
       "exists": true,
-      "char_count": 1455
+      "char_count": 2463
     },
     {
       "id": "cg-indirect-specular",
@@ -1453,7 +1453,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-eye-rendering.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2615
     },
     {
       "id": "cg-energy-conservation",
@@ -3178,7 +3178,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-triplanar.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2593
     },
     {
       "id": "cg-aniso-filtering",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 490316,
-    "avg_chars": 1961,
+    "total_chars": 498809,
+    "avg_chars": 1995,
     "domain": "computer-graphics"
   }
 }

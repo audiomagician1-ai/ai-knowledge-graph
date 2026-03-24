@@ -5034,7 +5034,7 @@
       ],
       "file": "animation/anim-contrast.md",
       "exists": true,
-      "char_count": 1253
+      "char_count": 2508
     },
     {
       "id": "anim-solid-drawing",
@@ -5544,7 +5544,7 @@
       ],
       "file": "animation/anim-dialogue-scene.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2371
     },
     {
       "id": "anim-micro-expression",
@@ -5844,7 +5844,7 @@
       ],
       "file": "animation/anim-pole-vector.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2655
     },
     {
       "id": "anim-spline-ik",
@@ -5859,7 +5859,7 @@
       ],
       "file": "animation/anim-spline-ik.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2528
     },
     {
       "id": "anim-fk-basics",
@@ -6099,7 +6099,7 @@
       ],
       "file": "animation/anim-pose-library.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2321
     },
     {
       "id": "anim-idle-animation",
@@ -6474,7 +6474,7 @@
       ],
       "file": "animation/anim-mocap-face.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2662
     },
     {
       "id": "anim-active-ragdoll",
@@ -6684,7 +6684,7 @@
       ],
       "file": "animation/anim-destruction-anim.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2712
     },
     {
       "id": "anim-procedural-motion",
@@ -6954,7 +6954,7 @@
       ],
       "file": "animation/anim-rig-testing.md",
       "exists": true,
-      "char_count": 1252
+      "char_count": 2424
     },
     {
       "id": "anim-rig-pipeline",
@@ -10059,7 +10059,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-geometric-aa.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2897
     },
     {
       "id": "cg-frame-generation",
@@ -10209,7 +10209,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-sdf-modeling.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 3185
     },
     {
       "id": "cg-geo-intro",
@@ -10404,7 +10404,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-mesh-compression.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2867
     },
     {
       "id": "cg-mesh-deformation",
@@ -10779,7 +10779,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-irradiance-map.md",
       "exists": true,
-      "char_count": 1455
+      "char_count": 2463
     },
     {
       "id": "cg-indirect-specular",
@@ -11319,7 +11319,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-eye-rendering.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2615
     },
     {
       "id": "cg-energy-conservation",
@@ -13044,7 +13044,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-triplanar.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2593
     },
     {
       "id": "cg-aniso-filtering",
@@ -14214,7 +14214,7 @@
       ],
       "file": "concept-design/cd-char-iteration.md",
       "exists": true,
-      "char_count": 1263
+      "char_count": 2355
     },
     {
       "id": "cd-color-key",
@@ -14544,7 +14544,7 @@
       ],
       "file": "concept-design/cd-tangent-avoidance.md",
       "exists": true,
-      "char_count": 1254
+      "char_count": 2100
     },
     {
       "id": "cd-dynamic-composition",
@@ -14559,7 +14559,7 @@
       ],
       "file": "concept-design/cd-dynamic-composition.md",
       "exists": true,
-      "char_count": 1242
+      "char_count": 2421
     },
     {
       "id": "cd-readability",
@@ -14574,7 +14574,7 @@
       ],
       "file": "concept-design/cd-readability.md",
       "exists": true,
-      "char_count": 1254
+      "char_count": 2191
     },
     {
       "id": "cd-big-medium-small",
@@ -15009,7 +15009,7 @@
       ],
       "file": "concept-design/cd-env-paintover.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2634
     },
     {
       "id": "cd-env-color-script-env",
@@ -15219,7 +15219,7 @@
       ],
       "file": "concept-design/cd-two-light-setup.md",
       "exists": true,
-      "char_count": 1249
+      "char_count": 2212
     },
     {
       "id": "cd-reflected-light",
@@ -15249,7 +15249,7 @@
       ],
       "file": "concept-design/cd-indoor-lighting.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2332
     },
     {
       "id": "cd-outdoor-lighting",
@@ -15324,7 +15324,7 @@
       ],
       "file": "concept-design/cd-value-scale.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2446
     },
     {
       "id": "cd-core-shadow",
@@ -15999,7 +15999,7 @@
       ],
       "file": "concept-design/cd-camera-lens.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2307
     },
     {
       "id": "cd-birds-eye-worms-eye",
@@ -26739,7 +26739,7 @@
       ],
       "file": "game-audio-music/game-audio-music-stem-export.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 2805
     },
     {
       "id": "game-audio-music-synth-programming",
@@ -26874,7 +26874,7 @@
       ],
       "file": "game-audio-music/game-audio-music-orchestral-mockup.md",
       "exists": true,
-      "char_count": 1506
+      "char_count": 2942
     },
     {
       "id": "game-audio-music-automation-daw",

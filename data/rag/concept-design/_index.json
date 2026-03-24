@@ -598,7 +598,7 @@
       ],
       "file": "concept-design/cd-char-iteration.md",
       "exists": true,
-      "char_count": 1263
+      "char_count": 2355
     },
     {
       "id": "cd-color-key",
@@ -928,7 +928,7 @@
       ],
       "file": "concept-design/cd-tangent-avoidance.md",
       "exists": true,
-      "char_count": 1254
+      "char_count": 2100
     },
     {
       "id": "cd-dynamic-composition",
@@ -943,7 +943,7 @@
       ],
       "file": "concept-design/cd-dynamic-composition.md",
       "exists": true,
-      "char_count": 1242
+      "char_count": 2421
     },
     {
       "id": "cd-readability",
@@ -958,7 +958,7 @@
       ],
       "file": "concept-design/cd-readability.md",
       "exists": true,
-      "char_count": 1254
+      "char_count": 2191
     },
     {
       "id": "cd-big-medium-small",
@@ -1393,7 +1393,7 @@
       ],
       "file": "concept-design/cd-env-paintover.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2634
     },
     {
       "id": "cd-env-color-script-env",
@@ -1603,7 +1603,7 @@
       ],
       "file": "concept-design/cd-two-light-setup.md",
       "exists": true,
-      "char_count": 1249
+      "char_count": 2212
     },
     {
       "id": "cd-reflected-light",
@@ -1633,7 +1633,7 @@
       ],
       "file": "concept-design/cd-indoor-lighting.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2332
     },
     {
       "id": "cd-outdoor-lighting",
@@ -1708,7 +1708,7 @@
       ],
       "file": "concept-design/cd-value-scale.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2446
     },
     {
       "id": "cd-core-shadow",
@@ -2383,7 +2383,7 @@
       ],
       "file": "concept-design/cd-camera-lens.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2307
     },
     {
       "id": "cd-birds-eye-worms-eye",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 406309,
-    "avg_chars": 1846,
+    "total_chars": 416027,
+    "avg_chars": 1891,
     "domain": "concept-design"
   }
 }
