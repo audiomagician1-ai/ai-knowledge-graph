@@ -1063,7 +1063,7 @@
       ],
       "file": "animation/anim-face-overview.md",
       "exists": true,
-      "char_count": 1540
+      "char_count": 2762
     },
     {
       "id": "anim-face-pipeline",
@@ -1243,7 +1243,7 @@
       ],
       "file": "animation/anim-hand-ik.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2476
     },
     {
       "id": "anim-pole-vector",
@@ -1348,7 +1348,7 @@
       ],
       "file": "animation/anim-ik-vehicle-mount.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2262
     },
     {
       "id": "anim-ik-basics",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 281566,
-    "avg_chars": 1564,
+    "total_chars": 284997,
+    "avg_chars": 1583,
     "domain": "animation"
   }
 }

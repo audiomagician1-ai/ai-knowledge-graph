@@ -5649,7 +5649,7 @@
       ],
       "file": "animation/anim-face-overview.md",
       "exists": true,
-      "char_count": 1540
+      "char_count": 2762
     },
     {
       "id": "anim-face-pipeline",
@@ -5829,7 +5829,7 @@
       ],
       "file": "animation/anim-hand-ik.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2476
     },
     {
       "id": "anim-pole-vector",
@@ -5934,7 +5934,7 @@
       ],
       "file": "animation/anim-ik-vehicle-mount.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2262
     },
     {
       "id": "anim-ik-basics",
@@ -10194,7 +10194,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-nanite.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2638
     },
     {
       "id": "cg-sdf-modeling",
@@ -10704,7 +10704,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-ambient-occlusion.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2838
     },
     {
       "id": "cg-spherical-harmonics",
@@ -11484,7 +11484,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-pp-intro.md",
       "exists": true,
-      "char_count": 1540
+      "char_count": 2555
     },
     {
       "id": "cg-ssr",
@@ -11964,7 +11964,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-stencil-buffer.md",
       "exists": true,
-      "char_count": 1569
+      "char_count": 2663
     },
     {
       "id": "cg-depth-buffer",
@@ -13344,7 +13344,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-openvdb.md",
       "exists": true,
-      "char_count": 1270
+      "char_count": 2695
     },
     {
       "id": "cg-ray-marching",
@@ -13359,7 +13359,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-ray-marching.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 2471
     },
     {
       "id": "cg-vol-cloud",
@@ -13509,7 +13509,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-atmosphere-scatter.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 3166
     },
     {
       "id": "cg-heterogeneous",
@@ -13689,7 +13689,7 @@
       ],
       "file": "concept-design/cd-dynamic-pose.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2220
     },
     {
       "id": "cd-line-of-action",
@@ -13704,7 +13704,7 @@
       ],
       "file": "concept-design/cd-line-of-action.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2078
     },
     {
       "id": "cd-animal-anatomy",
@@ -14739,7 +14739,7 @@
       ],
       "file": "concept-design/cd-composition-breakdowns.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2483
     },
     {
       "id": "cd-thumbnail-sketch",
@@ -14874,7 +14874,7 @@
       ],
       "file": "concept-design/cd-env-fantasy-world.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2597
     },
     {
       "id": "cd-env-establishing-shot",
@@ -15849,7 +15849,7 @@
       ],
       "file": "concept-design/cd-box-in-perspective.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2362
     },
     {
       "id": "cd-curvilinear-perspective",
@@ -16029,7 +16029,7 @@
       ],
       "file": "concept-design/cd-prop-function-form.md",
       "exists": true,
-      "char_count": 1278
+      "char_count": 2179
     },
     {
       "id": "cd-prop-variation-exploration",
@@ -16209,7 +16209,7 @@
       ],
       "file": "concept-design/cd-prop-presentation-sheet.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2034
     },
     {
       "id": "cd-prop-shape-language",
@@ -16374,7 +16374,7 @@
       ],
       "file": "concept-design/cd-style-semi-realistic.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2242
     },
     {
       "id": "cd-style-shape-consistency",
@@ -64974,7 +64974,7 @@
       ],
       "file": "philosophy/epistemology/social-epistemology.md",
       "exists": true,
-      "char_count": 1453
+      "char_count": 2966
     },
     {
       "id": "scientific-method-phil",
@@ -67734,7 +67734,7 @@
       ],
       "file": "physics/electromagnetism/superconductivity-intro.md",
       "exists": true,
-      "char_count": 1454
+      "char_count": 2737
     },
     {
       "id": "gauss-law",
@@ -69039,7 +69039,7 @@
       ],
       "file": "physics/thermodynamics/specific-heat.md",
       "exists": true,
-      "char_count": 1444
+      "char_count": 2306
     },
     {
       "id": "kinetic-theory",
@@ -69384,7 +69384,7 @@
       ],
       "file": "physics/waves-and-optics/fiber-optics.md",
       "exists": true,
-      "char_count": 1447
+      "char_count": 2722
     },
     {
       "id": "holography",
@@ -69474,7 +69474,7 @@
       ],
       "file": "physics/waves-and-optics/huygens-principle.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2528
     },
     {
       "id": "wave-equation",
@@ -69624,7 +69624,7 @@
       ],
       "file": "product-design/data-driven/ltv-calculation.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2329
     },
     {
       "id": "product-metrics",
@@ -69939,7 +69939,7 @@
       ],
       "file": "product-design/growth/aarrr-model.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2338
     },
     {
       "id": "seo-basics",
@@ -70614,7 +70614,7 @@
       ],
       "file": "product-design/product-management/okr-method.md",
       "exists": true,
-      "char_count": 1512
+      "char_count": 2221
     },
     {
       "id": "prd-writing",
@@ -70629,7 +70629,7 @@
       ],
       "file": "product-design/product-management/prd-writing.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2518
     },
     {
       "id": "scrum-framework",
@@ -70884,7 +70884,7 @@
       ],
       "file": "product-design/product-management/kanban-method.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 2541
     },
     {
       "id": "competitive-moat",
@@ -72084,7 +72084,7 @@
       ],
       "file": "product-design/visual-design/typography.md",
       "exists": true,
-      "char_count": 1518
+      "char_count": 2569
     },
     {
       "id": "contrast-design",
@@ -72099,7 +72099,7 @@
       ],
       "file": "product-design/visual-design/contrast-design.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 2477
     },
     {
       "id": "layout-grid",
@@ -73019,7 +73019,7 @@
       ],
       "file": "psychology/behavioral-psychology/stimulus-generalization.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2492
     },
     {
       "id": "stimulus-discrimination",
@@ -73694,7 +73694,7 @@
       ],
       "file": "psychology/clinical-psychology/ptsd.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2589
     },
     {
       "id": "crisis-intervention",
@@ -73724,7 +73724,7 @@
       ],
       "file": "psychology/clinical-psychology/bipolar-disorder.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2559
     },
     {
       "id": "group-therapy",
@@ -73814,7 +73814,7 @@
       ],
       "file": "psychology/clinical-psychology/psychological-assessment.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 2442
     },
     {
       "id": "depressive-disorders",
@@ -74264,7 +74264,7 @@
       ],
       "file": "psychology/cognitive-psychology/memory-encoding.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2859
     },
     {
       "id": "language-cognition",
@@ -74519,7 +74519,7 @@
       ],
       "file": "psychology/developmental-psychology/gender-development.md",
       "exists": true,
-      "char_count": 1461
+      "char_count": 2415
     },
     {
       "id": "adult-development",
@@ -74624,7 +74624,7 @@
       ],
       "file": "psychology/developmental-psychology/aging-psychology.md",
       "exists": true,
-      "char_count": 1439
+      "char_count": 2849
     },
     {
       "id": "cognitive-aging",

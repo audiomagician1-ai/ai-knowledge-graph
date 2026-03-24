@@ -58,7 +58,7 @@
       ],
       "file": "psychology/behavioral-psychology/stimulus-generalization.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2492
     },
     {
       "id": "stimulus-discrimination",
@@ -733,7 +733,7 @@
       ],
       "file": "psychology/clinical-psychology/ptsd.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2589
     },
     {
       "id": "crisis-intervention",
@@ -763,7 +763,7 @@
       ],
       "file": "psychology/clinical-psychology/bipolar-disorder.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2559
     },
     {
       "id": "group-therapy",
@@ -853,7 +853,7 @@
       ],
       "file": "psychology/clinical-psychology/psychological-assessment.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 2442
     },
     {
       "id": "depressive-disorders",
@@ -1303,7 +1303,7 @@
       ],
       "file": "psychology/cognitive-psychology/memory-encoding.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2859
     },
     {
       "id": "language-cognition",
@@ -1558,7 +1558,7 @@
       ],
       "file": "psychology/developmental-psychology/gender-development.md",
       "exists": true,
-      "char_count": 1461
+      "char_count": 2415
     },
     {
       "id": "adult-development",
@@ -1663,7 +1663,7 @@
       ],
       "file": "psychology/developmental-psychology/aging-psychology.md",
       "exists": true,
-      "char_count": 1439
+      "char_count": 2849
     },
     {
       "id": "cognitive-aging",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 352143,
-    "avg_chars": 1924,
+    "total_chars": 360303,
+    "avg_chars": 1968,
     "domain": "psychology"
   }
 }

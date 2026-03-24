@@ -1063,7 +1063,7 @@
       ],
       "file": "physics/electromagnetism/superconductivity-intro.md",
       "exists": true,
-      "char_count": 1454
+      "char_count": 2737
     },
     {
       "id": "gauss-law",
@@ -2368,7 +2368,7 @@
       ],
       "file": "physics/thermodynamics/specific-heat.md",
       "exists": true,
-      "char_count": 1444
+      "char_count": 2306
     },
     {
       "id": "kinetic-theory",
@@ -2713,7 +2713,7 @@
       ],
       "file": "physics/waves-and-optics/fiber-optics.md",
       "exists": true,
-      "char_count": 1447
+      "char_count": 2722
     },
     {
       "id": "holography",
@@ -2803,7 +2803,7 @@
       ],
       "file": "physics/waves-and-optics/huygens-principle.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2528
     },
     {
       "id": "wave-equation",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 441445,
-    "avg_chars": 2275,
+    "total_chars": 445943,
+    "avg_chars": 2298,
     "domain": "physics"
   }
 }

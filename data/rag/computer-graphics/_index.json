@@ -328,7 +328,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-nanite.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2638
     },
     {
       "id": "cg-sdf-modeling",
@@ -838,7 +838,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-ambient-occlusion.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2838
     },
     {
       "id": "cg-spherical-harmonics",
@@ -1618,7 +1618,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-pp-intro.md",
       "exists": true,
-      "char_count": 1540
+      "char_count": 2555
     },
     {
       "id": "cg-ssr",
@@ -2098,7 +2098,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-stencil-buffer.md",
       "exists": true,
-      "char_count": 1569
+      "char_count": 2663
     },
     {
       "id": "cg-depth-buffer",
@@ -3478,7 +3478,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-openvdb.md",
       "exists": true,
-      "char_count": 1270
+      "char_count": 2695
     },
     {
       "id": "cg-ray-marching",
@@ -3493,7 +3493,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-ray-marching.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 2471
     },
     {
       "id": "cg-vol-cloud",
@@ -3643,7 +3643,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-atmosphere-scatter.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 3166
     },
     {
       "id": "cg-heterogeneous",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 450482,
-    "avg_chars": 1801,
+    "total_chars": 459334,
+    "avg_chars": 1837,
     "domain": "computer-graphics"
   }
 }

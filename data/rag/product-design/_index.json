@@ -43,7 +43,7 @@
       ],
       "file": "product-design/data-driven/ltv-calculation.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2329
     },
     {
       "id": "product-metrics",
@@ -358,7 +358,7 @@
       ],
       "file": "product-design/growth/aarrr-model.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2338
     },
     {
       "id": "seo-basics",
@@ -1033,7 +1033,7 @@
       ],
       "file": "product-design/product-management/okr-method.md",
       "exists": true,
-      "char_count": 1512
+      "char_count": 2221
     },
     {
       "id": "prd-writing",
@@ -1048,7 +1048,7 @@
       ],
       "file": "product-design/product-management/prd-writing.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2518
     },
     {
       "id": "scrum-framework",
@@ -1303,7 +1303,7 @@
       ],
       "file": "product-design/product-management/kanban-method.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 2541
     },
     {
       "id": "competitive-moat",
@@ -2503,7 +2503,7 @@
       ],
       "file": "product-design/visual-design/typography.md",
       "exists": true,
-      "char_count": 1518
+      "char_count": 2569
     },
     {
       "id": "contrast-design",
@@ -2518,7 +2518,7 @@
       ],
       "file": "product-design/visual-design/contrast-design.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 2477
     },
     {
       "id": "layout-grid",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 321182,
-    "avg_chars": 1764,
+    "total_chars": 328052,
+    "avg_chars": 1802,
     "domain": "product-design"
   }
 }

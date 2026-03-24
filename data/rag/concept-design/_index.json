@@ -73,7 +73,7 @@
       ],
       "file": "concept-design/cd-dynamic-pose.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2220
     },
     {
       "id": "cd-line-of-action",
@@ -88,7 +88,7 @@
       ],
       "file": "concept-design/cd-line-of-action.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2078
     },
     {
       "id": "cd-animal-anatomy",
@@ -1123,7 +1123,7 @@
       ],
       "file": "concept-design/cd-composition-breakdowns.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2483
     },
     {
       "id": "cd-thumbnail-sketch",
@@ -1258,7 +1258,7 @@
       ],
       "file": "concept-design/cd-env-fantasy-world.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2597
     },
     {
       "id": "cd-env-establishing-shot",
@@ -2233,7 +2233,7 @@
       ],
       "file": "concept-design/cd-box-in-perspective.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2362
     },
     {
       "id": "cd-curvilinear-perspective",
@@ -2413,7 +2413,7 @@
       ],
       "file": "concept-design/cd-prop-function-form.md",
       "exists": true,
-      "char_count": 1278
+      "char_count": 2179
     },
     {
       "id": "cd-prop-variation-exploration",
@@ -2593,7 +2593,7 @@
       ],
       "file": "concept-design/cd-prop-presentation-sheet.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2034
     },
     {
       "id": "cd-prop-shape-language",
@@ -2758,7 +2758,7 @@
       ],
       "file": "concept-design/cd-style-semi-realistic.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2242
     },
     {
       "id": "cd-style-shape-consistency",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 365959,
-    "avg_chars": 1663,
+    "total_chars": 373734,
+    "avg_chars": 1698,
     "domain": "concept-design"
   }
 }
