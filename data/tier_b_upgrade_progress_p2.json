@@ -159,10 +159,30 @@
     "3da-extrude-inset",
     "3da-tex-hand-painted",
     "3da-tex-tiling-material",
-    "3da-prop-lod-creation"
+    "3da-prop-lod-creation",
+    "3da-prop-quality-checklist",
+    "web-performance",
+    "attention-mechanism",
+    "positional-encoding",
+    "prompt-basics",
+    "file-io",
+    "anim-mocap-overview",
+    "anim-facs",
+    "anim-physics-overview",
+    "cg-skin-rendering",
+    "cg-btdf",
+    "cg-command-buffer",
+    "cg-cube-mapping",
+    "cg-scientific-vis",
+    "cd-color-temperature-shift",
+    "cd-char-age-variation",
+    "cd-char-presentation",
+    "ue5-pak-system",
+    "state-machine-anim",
+    "world-origin-shifting"
   ],
   "errors": [],
-  "total_upgraded": 160,
+  "total_upgraded": 180,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T23:03:22.121617"
+  "last_updated": "2026-03-24T23:22:24.375499"
 }

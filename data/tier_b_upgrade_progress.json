@@ -894,10 +894,30 @@
     "cd-measured-perspective",
     "cd-monochrome-study",
     "cd-static-composition",
-    "cd-single-light-setup"
+    "cd-single-light-setup",
+    "cd-style-mixing",
+    "supply-demand",
+    "consumer-theory",
+    "overconfidence-econ",
+    "new-trade-theory",
+    "digital-trade",
+    "microfinance",
+    "rct-development",
+    "causal-inference",
+    "government-failure",
+    "welfare-state",
+    "chicago-school",
+    "am-vs-br-pronunciation",
+    "phonemic-transcription",
+    "prepositions",
+    "modal-verbs",
+    "vocabulary-strategies",
+    "dangling-modifiers",
+    "expository-reading",
+    "asset-allocation"
   ],
   "errors": [],
-  "total_upgraded": 895,
+  "total_upgraded": 915,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-24T23:02:18.909305"
+  "last_updated": "2026-03-24T23:23:47.507981"
 }
