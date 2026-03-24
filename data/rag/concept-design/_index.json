@@ -313,7 +313,7 @@
       ],
       "file": "concept-design/cd-char-npc-lineup.md",
       "exists": true,
-      "char_count": 1398
+      "char_count": 2455
     },
     {
       "id": "cd-char-villain",
@@ -2263,7 +2263,7 @@
       ],
       "file": "concept-design/cd-vanishing-point.md",
       "exists": true,
-      "char_count": 2281
+      "char_count": 2559
     },
     {
       "id": "cd-perspective-for-env",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 377005,
-    "avg_chars": 1713,
+    "total_chars": 378340,
+    "avg_chars": 1719,
     "domain": "concept-design"
   }
 }

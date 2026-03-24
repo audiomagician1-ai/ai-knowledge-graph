@@ -88,7 +88,7 @@
       ],
       "file": "vfx/vfx-destruct-hierarchy.md",
       "exists": true,
-      "char_count": 2854
+      "char_count": 2594
     },
     {
       "id": "vfx-destruct-building",
@@ -358,7 +358,7 @@
       ],
       "file": "vfx/vfx-fb-atlas.md",
       "exists": true,
-      "char_count": 1438
+      "char_count": 2628
     },
     {
       "id": "vfx-fb-realtime-capture",
@@ -2608,7 +2608,7 @@
       ],
       "file": "vfx/vfx-opt-pooling.md",
       "exists": true,
-      "char_count": 2939
+      "char_count": 3097
     },
     {
       "id": "vfx-opt-collision-cost",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 293988,
-    "avg_chars": 1633,
+    "total_chars": 295076,
+    "avg_chars": 1639,
     "domain": "vfx"
   }
 }

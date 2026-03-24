@@ -2083,7 +2083,7 @@
       ],
       "file": "psychology/research-methods/case-study-method.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2422
     },
     {
       "id": "reliability-validity",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 363601,
-    "avg_chars": 1986,
+    "total_chars": 364681,
+    "avg_chars": 1992,
     "domain": "psychology"
   }
 }

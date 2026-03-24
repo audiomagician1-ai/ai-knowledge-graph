@@ -403,7 +403,7 @@
       ],
       "file": "product-design/growth/freemium-model.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2473
     },
     {
       "id": "marketplace-growth",
@@ -433,7 +433,7 @@
       ],
       "file": "product-design/growth/monetization-strategy.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2877
     },
     {
       "id": "growth-experiment",
@@ -1963,7 +1963,7 @@
       ],
       "file": "product-design/prototyping/sketch-to-code.md",
       "exists": true,
-      "char_count": 1339
+      "char_count": 3006
     },
     {
       "id": "design-spec",
@@ -2578,7 +2578,7 @@
       ],
       "file": "product-design/visual-design/illustration-design.md",
       "exists": true,
-      "char_count": 1345
+      "char_count": 2571
     },
     {
       "id": "data-visualization",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 328052,
-    "avg_chars": 1802,
+    "total_chars": 333540,
+    "avg_chars": 1832,
     "domain": "product-design"
   }
 }

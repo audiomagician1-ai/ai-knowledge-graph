@@ -609,7 +609,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-interactive-music.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2666
     },
     {
       "id": "sfx-am-dialogue-system",
@@ -674,7 +674,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-plugin-development.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 3174
     },
     {
       "id": "sfx-am-blend-container",
@@ -1090,7 +1090,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-lip-sync.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2542
     },
     {
       "id": "sfx-dp-breath-control",
@@ -2273,7 +2273,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-underwater-audio.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2554
     },
     {
       "id": "sfx-sa-reverb-zone",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 287676,
-    "avg_chars": 1598,
+    "total_chars": 293075,
+    "avg_chars": 1628,
     "domain": "game-audio-sfx"
   }
 }

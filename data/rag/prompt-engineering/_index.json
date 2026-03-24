@@ -167,7 +167,7 @@
       "tags": [],
       "file": "prompt-engineering/chain-of-thought.md",
       "exists": true,
-      "char_count": 1646
+      "char_count": 2798
     },
     {
       "id": "prompt-injection",
@@ -263,8 +263,8 @@
   ],
   "stats": {
     "total": 20,
-    "total_chars": 34392,
-    "avg_chars": 1719,
+    "total_chars": 35544,
+    "avg_chars": 1777,
     "domain": "prompt-engineering"
   }
 }

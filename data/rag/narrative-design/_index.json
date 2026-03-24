@@ -89,7 +89,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-multiple-endings.md",
       "exists": true,
-      "char_count": 2132
+      "char_count": 2390
     },
     {
       "id": "nd-bn-relationship-system",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 280637,
-    "avg_chars": 1559,
+    "total_chars": 280895,
+    "avg_chars": 1560,
     "domain": "narrative-design"
   }
 }

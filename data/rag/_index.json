@@ -163,7 +163,7 @@
       ],
       "file": "3d-art/3da-pipe-version-control.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 3104
     },
     {
       "id": "3da-pipe-folder-structure",
@@ -2758,7 +2758,7 @@
       ],
       "file": "3d-art/3da-sculpt-cleanup.md",
       "exists": true,
-      "char_count": 1351
+      "char_count": 2634
     },
     {
       "id": "3da-sculpt-brushes",
@@ -3163,7 +3163,7 @@
       ],
       "file": "3d-art/3da-uv-udim.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2568
     },
     {
       "id": "3da-uv-atlas-layout",
@@ -4545,7 +4545,7 @@
       "tags": [],
       "file": "algorithms/dp-memoization.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2441
     },
     {
       "id": "greedy",
@@ -5379,7 +5379,7 @@
       ],
       "file": "animation/anim-blend-basics.md",
       "exists": true,
-      "char_count": 1360
+      "char_count": 2131
     },
     {
       "id": "anim-blend-profiles",
@@ -5799,7 +5799,7 @@
       ],
       "file": "animation/anim-two-bone-ik.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2246
     },
     {
       "id": "anim-ik-ground-adapt",
@@ -5994,7 +5994,7 @@
       ],
       "file": "animation/anim-keyframe-basics.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2462
     },
     {
       "id": "anim-tangent-types",
@@ -6444,7 +6444,7 @@
       ],
       "file": "animation/anim-inertial-mocap.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2479
     },
     {
       "id": "anim-markerless-mocap",
@@ -7194,7 +7194,7 @@
       ],
       "file": "animation/anim-animation-sm-design.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2579
     },
     {
       "id": "anim-state-debugging",
@@ -13929,7 +13929,7 @@
       ],
       "file": "concept-design/cd-char-npc-lineup.md",
       "exists": true,
-      "char_count": 1398
+      "char_count": 2455
     },
     {
       "id": "cd-char-villain",
@@ -15879,7 +15879,7 @@
       ],
       "file": "concept-design/cd-vanishing-point.md",
       "exists": true,
-      "char_count": 2281
+      "char_count": 2559
     },
     {
       "id": "cd-perspective-for-env",
@@ -29345,7 +29345,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-interactive-music.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2666
     },
     {
       "id": "sfx-am-dialogue-system",
@@ -29410,7 +29410,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-plugin-development.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 3174
     },
     {
       "id": "sfx-am-blend-container",
@@ -29826,7 +29826,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-lip-sync.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2542
     },
     {
       "id": "sfx-dp-breath-control",
@@ -31009,7 +31009,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-underwater-audio.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2554
     },
     {
       "id": "sfx-sa-reverb-zone",
@@ -52534,7 +52534,7 @@
       ],
       "file": "level-design/ld-documentation/encounter-doc.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2299
     },
     {
       "id": "milestone-criteria",
@@ -55507,7 +55507,7 @@
       ],
       "file": "mathematics/analytic-geometry/distance-midpoint.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2439
     },
     {
       "id": "locus-problems",
@@ -55807,7 +55807,7 @@
       ],
       "file": "mathematics/calculus/epsilon-delta.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2076
     },
     {
       "id": "indefinite-integrals",
@@ -59673,7 +59673,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-live-analytics.md",
       "exists": true,
-      "char_count": 2491
+      "char_count": 2812
     },
     {
       "id": "mn-lr-real-time-ranking",
@@ -61558,7 +61558,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-multiple-endings.md",
       "exists": true,
-      "char_count": 2132
+      "char_count": 2390
     },
     {
       "id": "nd-bn-relationship-system",
@@ -69984,7 +69984,7 @@
       ],
       "file": "product-design/growth/freemium-model.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2473
     },
     {
       "id": "marketplace-growth",
@@ -70014,7 +70014,7 @@
       ],
       "file": "product-design/growth/monetization-strategy.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2877
     },
     {
       "id": "growth-experiment",
@@ -71544,7 +71544,7 @@
       ],
       "file": "product-design/prototyping/sketch-to-code.md",
       "exists": true,
-      "char_count": 1339
+      "char_count": 3006
     },
     {
       "id": "design-spec",
@@ -72159,7 +72159,7 @@
       ],
       "file": "product-design/visual-design/illustration-design.md",
       "exists": true,
-      "char_count": 1345
+      "char_count": 2571
     },
     {
       "id": "data-visualization",
@@ -72868,7 +72868,7 @@
       "tags": [],
       "file": "prompt-engineering/chain-of-thought.md",
       "exists": true,
-      "char_count": 1646
+      "char_count": 2798
     },
     {
       "id": "prompt-injection",
@@ -75044,7 +75044,7 @@
       ],
       "file": "psychology/research-methods/case-study-method.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2422
     },
     {
       "id": "reliability-validity",
@@ -80242,7 +80242,7 @@
       "tags": [],
       "file": "system-design/cap-theorem.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 3081
     },
     {
       "id": "cdn",
@@ -80411,7 +80411,7 @@
       "tags": [],
       "file": "system-design/circuit-breaker.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2898
     },
     {
       "id": "back-of-envelope",
@@ -80648,7 +80648,7 @@
       ],
       "file": "technical-art/ta-std-overview.md",
       "exists": true,
-      "char_count": 2806
+      "char_count": 2607
     },
     {
       "id": "ta-std-training",
@@ -80678,7 +80678,7 @@
       ],
       "file": "technical-art/ta-poly-standard.md",
       "exists": true,
-      "char_count": 2548
+      "char_count": 2569
     },
     {
       "id": "ta-webhook",
@@ -81563,7 +81563,7 @@
       ],
       "file": "technical-art/ta-mem-budget-doc.md",
       "exists": true,
-      "char_count": 2492
+      "char_count": 2360
     },
     {
       "id": "ta-loading-screen",
@@ -82133,7 +82133,7 @@
       ],
       "file": "technical-art/ta-frame-analysis.md",
       "exists": true,
-      "char_count": 2942
+      "char_count": 3439
     },
     {
       "id": "ta-async-compute",
@@ -83318,7 +83318,7 @@
       ],
       "file": "vfx/vfx-destruct-hierarchy.md",
       "exists": true,
-      "char_count": 2854
+      "char_count": 2594
     },
     {
       "id": "vfx-destruct-building",
@@ -83588,7 +83588,7 @@
       ],
       "file": "vfx/vfx-fb-atlas.md",
       "exists": true,
-      "char_count": 1438
+      "char_count": 2628
     },
     {
       "id": "vfx-fb-realtime-capture",
@@ -85838,7 +85838,7 @@
       ],
       "file": "vfx/vfx-opt-pooling.md",
       "exists": true,
-      "char_count": 2939
+      "char_count": 3097
     },
     {
       "id": "vfx-opt-collision-cost",
@@ -89228,7 +89228,7 @@
       ],
       "file": "writing/writing-fundamentals/audience-awareness.md",
       "exists": true,
-      "char_count": 1398
+      "char_count": 2513
     },
     {
       "id": "coherence-cohesion",

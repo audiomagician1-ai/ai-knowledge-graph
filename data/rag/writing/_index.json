@@ -2518,7 +2518,7 @@
       ],
       "file": "writing/writing-fundamentals/audience-awareness.md",
       "exists": true,
-      "char_count": 1398
+      "char_count": 2513
     },
     {
       "id": "coherence-cohesion",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 320811,
-    "avg_chars": 1887,
+    "total_chars": 321926,
+    "avg_chars": 1893,
     "domain": "writing"
   }
 }

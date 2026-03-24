@@ -673,7 +673,7 @@
       ],
       "file": "mathematics/analytic-geometry/distance-midpoint.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2439
     },
     {
       "id": "locus-problems",
@@ -973,7 +973,7 @@
       ],
       "file": "mathematics/calculus/epsilon-delta.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2076
     },
     {
       "id": "indefinite-integrals",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 667164,
-    "avg_chars": 2480,
+    "total_chars": 669008,
+    "avg_chars": 2487,
     "domain": "mathematics"
   }
 }

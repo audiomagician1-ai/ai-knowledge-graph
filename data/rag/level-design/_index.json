@@ -1168,7 +1168,7 @@
       ],
       "file": "level-design/ld-documentation/encounter-doc.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2299
     },
     {
       "id": "milestone-criteria",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 401147,
-    "avg_chars": 2005,
+    "total_chars": 402105,
+    "avg_chars": 2010,
     "domain": "level-design"
   }
 }

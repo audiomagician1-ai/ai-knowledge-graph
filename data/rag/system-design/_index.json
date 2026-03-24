@@ -37,7 +37,7 @@
       "tags": [],
       "file": "system-design/cap-theorem.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 3081
     },
     {
       "id": "cdn",
@@ -206,7 +206,7 @@
       "tags": [],
       "file": "system-design/circuit-breaker.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2898
     },
     {
       "id": "back-of-envelope",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 45690,
-    "avg_chars": 1827,
+    "total_chars": 48948,
+    "avg_chars": 1957,
     "domain": "system-design"
   }
 }

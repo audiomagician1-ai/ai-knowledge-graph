@@ -804,7 +804,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-live-analytics.md",
       "exists": true,
-      "char_count": 2491
+      "char_count": 2812
     },
     {
       "id": "mn-lr-real-time-ranking",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 321623,
-    "avg_chars": 1608,
+    "total_chars": 321944,
+    "avg_chars": 1609,
     "domain": "multiplayer-network"
   }
 }

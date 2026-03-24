@@ -163,7 +163,7 @@
       ],
       "file": "3d-art/3da-pipe-version-control.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 3104
     },
     {
       "id": "3da-pipe-folder-structure",
@@ -2758,7 +2758,7 @@
       ],
       "file": "3d-art/3da-sculpt-cleanup.md",
       "exists": true,
-      "char_count": 1351
+      "char_count": 2634
     },
     {
       "id": "3da-sculpt-brushes",
@@ -3163,7 +3163,7 @@
       ],
       "file": "3d-art/3da-uv-udim.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2568
     },
     {
       "id": "3da-uv-atlas-layout",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 419952,
-    "avg_chars": 1858,
+    "total_chars": 424107,
+    "avg_chars": 1876,
     "domain": "3d-art"
   }
 }

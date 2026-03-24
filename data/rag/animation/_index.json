@@ -793,7 +793,7 @@
       ],
       "file": "animation/anim-blend-basics.md",
       "exists": true,
-      "char_count": 1360
+      "char_count": 2131
     },
     {
       "id": "anim-blend-profiles",
@@ -1213,7 +1213,7 @@
       ],
       "file": "animation/anim-two-bone-ik.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2246
     },
     {
       "id": "anim-ik-ground-adapt",
@@ -1408,7 +1408,7 @@
       ],
       "file": "animation/anim-keyframe-basics.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2462
     },
     {
       "id": "anim-tangent-types",
@@ -1858,7 +1858,7 @@
       ],
       "file": "animation/anim-inertial-mocap.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2479
     },
     {
       "id": "anim-markerless-mocap",
@@ -2608,7 +2608,7 @@
       ],
       "file": "animation/anim-animation-sm-design.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2579
     },
     {
       "id": "anim-state-debugging",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 284685,
-    "avg_chars": 1581,
+    "total_chars": 289689,
+    "avg_chars": 1609,
     "domain": "animation"
   }
 }
