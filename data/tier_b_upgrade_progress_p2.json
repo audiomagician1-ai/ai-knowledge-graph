@@ -679,10 +679,30 @@
     "cd-value-scale",
     "cd-two-light-setup",
     "cd-indoor-lighting",
-    "cd-char-iteration"
+    "cd-char-iteration",
+    "cd-env-paintover",
+    "game-audio-music-stem-export",
+    "game-audio-music-orchestral-mockup",
+    "game-audio-music-fmod-interactive-demo",
+    "physics-material",
+    "fluid-simulation",
+    "sound-cue",
+    "audio-snapshot",
+    "input-context",
+    "texture-budget",
+    "mesh-budget",
+    "scene-debug",
+    "blueprint-system",
+    "native-binding",
+    "hitching-analysis",
+    "asset-metadata",
+    "ops-da-funnel-analysis",
+    "pub-bb-brand-refresh",
+    "pub-pr-cloud-gaming",
+    "mn-mm-backfill"
   ],
   "errors": [],
-  "total_upgraded": 680,
+  "total_upgraded": 700,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T07:14:36.763923"
+  "last_updated": "2026-03-25T07:33:20.551129"
 }
