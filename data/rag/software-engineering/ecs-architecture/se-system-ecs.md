@@ -9,85 +9,77 @@ is_milestone: true
 tags: ["核心"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 41.9
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.4
-last_scored: "2026-03-22"
+last_scored: "2026-03-24"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # System系统
 
 ## 概述
 
-System系统（Se System Ecs）是软件工程（Software Engineering）中ECS架构领域的核心里程碑概念。难度等级2/9（基础级）。
+在ECS架构中，System（系统）是唯一负责执行游戏逻辑的处理单元。Entity只是一个ID，Component只是纯数据，所有的行为和计算都集中在System中完成。一个System的典型职责是：每帧遍历所有满足特定Component组合条件的Entity，读取或修改其Component数据。这种"数据与逻辑分离"的设计使得逻辑代码高度集中且易于测试。
 
-逻辑处理单元与查询遍历。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+System的概念随着ECS架构的成熟而演化。2007年前后，Adam Martin在其博客系列文章中明确将System定义为ECS三要素之一，强调System本身不应持有任何游戏状态数据。2019年Unity正式发布DOTS（Data-Oriented Technology Stack）中的ECS实现时，将System进一步细化为`SystemBase`和`ISystem`两种基类，前者托管于C#对象，后者为非托管结构体，每帧调用`OnUpdate()`方法执行逻辑。
 
-在知识体系中，System系统建立在ECS架构概述的基础之上，是理解ECS查询系统、System调度的关键前置知识。为什么System系统如此重要？因为它在ECS架构中起到承上启下的作用，连接基础概念与高级应用。
+System的价值在于其极致的关注点分离：一个`MovementSystem`只处理位移计算，一个`DamageSystem`只处理伤害结算，它们之间不直接调用，而是通过Component数据间接协作。这种架构使得在一个拥有10万个Entity的场景中，新增或移除某个逻辑模块只需添加或禁用对应System，无需修改Entity或Component的定义。
 
-## 核心知识点
+## 核心原理
 
-### 1. 逻辑处理单元
+### 查询遍历：System的执行方式
 
-逻辑处理单元是System系统(Se System Ecs)的核心组成部分之一。在ECS架构的实践中，逻辑处理单元决定了系统行为的关键特征。例如，当逻辑处理单元参数或条件发生变化时，整体表现会产生显著差异。深入理解逻辑处理单元需要结合软件工程的基本原理进行分析。
+System通过**查询（Query）**来获取目标Entity集合。查询条件本质上是一组Component类型的组合，例如"同时拥有`Position`和`Velocity`这两个Component的所有Entity"。在Unity ECS中，这通过`EntityQuery`对象表达：
 
-### 2. 查询遍历
+```
+EntityQuery query = GetEntityQuery(
+    ComponentType.ReadOnly<Velocity>(),
+    ComponentType.ReadWrite<Position>()
+);
+```
 
-查询遍历是System系统(Se System Ecs)的核心组成部分之一。在ECS架构的实践中，查询遍历决定了系统行为的关键特征。例如，当查询遍历参数或条件发生变化时，整体表现会产生显著差异。深入理解查询遍历需要结合软件工程的基本原理进行分析。
+System每帧在`OnUpdate()`中对查询结果进行遍历，批量读写匹配Entity的Component数据。这与传统OOP中逐对象调用`Update()`方法不同——ECS的遍历是线性内存访问，因为同类型Component在内存中连续排列（Archetype Chunk机制），CPU缓存命中率极高。对于10万个Entity，ECS的遍历性能可比OOP方式快5到20倍。
 
+### System的生命周期
 
-### 关键原理分析
+一个System通常包含三个生命周期方法：
+- `OnCreate()`：System首次创建时调用一次，用于初始化查询对象和资源。
+- `OnUpdate()`：每帧调用，执行核心逻辑遍历。
+- `OnDestroy()`：System销毁时调用，释放Native容器等非托管资源。
 
-System系统的核心在于逻辑处理单元与查询遍历。从理论角度看，该概念涉及以下层面：
+System本身不存储Entity数据，`OnUpdate()`内所有数据均来自对Component的读写操作。这意味着同一System在不同帧之间唯一合法的持久状态是算法参数（如重力加速度`9.8f`），而非任何Entity的状态快照。
 
-1. **定义层**：明确System系统的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解System系统内部各要素的相互作用方式
-3. **应用层**：将System系统的原理映射到软件工程的实际场景中
+### System的读写权限声明
 
-思考题：如何判断System系统的应用是否超出了其理论适用范围？
+System必须显式声明对每个Component的访问权限（ReadOnly或ReadWrite）。这个声明不只是文档注释，而是调度器进行并行安全检验的依据。若`MovementSystem`将`Velocity`声明为`ReadOnly`，而`PhysicsSystem`将`Velocity`声明为`ReadWrite`，调度器可以据此判断这两个System存在写依赖，必须串行执行；反之，两个都只读`Velocity`的System可以安全并行。Unity ECS的`ComponentSystemGroup`调度器正是基于此原理在多线程环境下自动排布System执行顺序。
 
-## 关键要点
+## 实际应用
 
-1. **核心定义**：System系统的本质是逻辑处理单元与查询遍历，这是理解整个概念的出发点
-2. **多维理解**：掌握System系统需要同时理解逻辑处理单元和查询遍历等关键维度
-3. **先修关系**：扎实的ECS架构概述基础对理解System系统至关重要
-4. **进阶路径**：掌握后可继续深入ECS查询系统等进阶主题
-5. **实践标准**：真正掌握System系统的标志是能在具体场景中灵活运用并正确判断适用边界
+**移动系统示例**：一个`TranslationSystem`的完整逻辑是：查询所有同时拥有`LocalTransform`和`Velocity`的Entity，在`OnUpdate()`中用`SystemAPI.Query<RefRW<LocalTransform>, RefRO<Velocity>>()`遍历，将每帧`deltaTime × velocity`累加到`position`上。整个System的代码量通常在20行以内，且不需要引用任何具体GameObject。
+
+**AI决策系统**：`EnemyAISystem`查询拥有`EnemyTag`、`PatrolData`和`Translation`三个Component的Entity，每帧计算每个敌人的下一步路径节点，并将结果写入`MoveTarget` Component。`MovementSystem`随后在同帧内读取`MoveTarget`执行实际移动。两个System通过`MoveTarget`这一Component传递数据，完全解耦，任一System可以独立替换。
+
+**条件禁用**：通过`Enabled = false`可以在运行时禁用某个System，使其`OnUpdate()`停止被调用。这在实现游戏暂停、分阶段加载逻辑时非常实用，无需删除任何Entity或Component数据。
 
 ## 常见误区
 
-1. **混淆概念边界**：将System系统与ECS架构中其他相近概念混为一谈。例如，逻辑处理单元的适用条件与其他查询遍历概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解ECS架构概述就学习System系统，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：System系统虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：在System中缓存Entity引用**
+部分初学者习惯在System字段中存储特定Entity的引用，如`Entity playerEntity`，以便在`OnUpdate()`中直接访问。这违反了System无状态的设计原则。正确做法是使用`Singleton Component`模式：将玩家数据存入唯一的单例Component，通过`SystemAPI.GetSingleton<PlayerData>()`在每帧查询时获取，而非缓存引用。
 
-## 知识衔接
+**误区二：System负责创建和销毁Entity**
+System的核心职责是读写Component数据，而不是管理Entity的生命周期。在`OnUpdate()`中直接调用`EntityManager.CreateEntity()`或`DestroyEntity()`会导致结构性变更（Structural Change），强制中断当前正在进行的Chunk遍历并触发同步点（Sync Point），严重影响性能。正确做法是使用`EntityCommandBuffer`收集这些操作，在帧末统一回放执行。
 
-### 先修知识
-先修知识包括：
-- **ECS架构概述** — 为System系统提供了必要的概念基础
+**误区三：一个System处理多种不相关逻辑**
+受传统`Update()`方法的影响，开发者容易将移动、动画、碰撞检测全部写入同一个System。这会导致查询条件过于复杂（需要Entity同时具备过多Component），使得原本不需要某个逻辑的Entity被错误地排除在外。ECS的最佳实践是单一职责：一个System只处理一种逻辑，通过细粒度的Component组合精确筛选目标Entity。
 
-### 后续学习
-掌握System系统后可继续学习：
-- **ECS查询系统** — 在System系统基础上进一步拓展
-- **System调度** — 在System系统基础上进一步拓展
+## 知识关联
 
-## 学习建议
+学习System之前需要理解ECS架构概述中的Archetype和Chunk概念，因为System的查询遍历性能优势直接建立在Chunk线性内存布局之上——若不理解内存布局，则无法解释为何ECS的批量遍历比OOP快。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述System系统的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将System系统与软件工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释System系统，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于ECS架构的章节可作为深入参考
-- Wikipedia: [Se System Ecs](https://en.wikipedia.org/wiki/se_system_ecs) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Se System Ecs" 可找到配套视频教程
+掌握System的基础后，下一步是学习**ECS查询系统**，深入了解如何构造带有`None`、`Any`等过滤条件的复杂EntityQuery，以及`IJobChunk`如何将System的遍历逻辑分发到Worker线程。随后的**System调度**主题将展示`ComponentSystemGroup`如何根据System的读写声明和显式`[UpdateBefore]`/`[UpdateAfter]`特性属性，在帧内构建有向无环图（DAG）来排定所有System的执行顺序。

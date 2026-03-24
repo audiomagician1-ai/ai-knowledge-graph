@@ -1,1495 +1,2710 @@
 {
-  "version": "1.0",
-  "domain": "animation",
-  "domain_name": "动画",
-  "generated_at": "2026-03-21T00:00:00",
-  "total_concepts": 180,
-  "stats": {
-    "total_docs": 180,
-    "total_chars": 437910,
-    "by_subdomain": {
-      "animation-principles": {
-        "count": 25,
-        "chars": 61252
-      },
-      "skeletal-rigging": {
-        "count": 20,
-        "chars": 48498
-      },
-      "keyframe-animation": {
-        "count": 20,
-        "chars": 48539
-      },
-      "motion-capture": {
-        "count": 15,
-        "chars": 36530
-      },
-      "state-machine": {
-        "count": 15,
-        "chars": 36614
-      },
-      "blend-space": {
-        "count": 15,
-        "chars": 36303
-      },
-      "ik-fk": {
-        "count": 15,
-        "chars": 35576
-      },
-      "facial-animation": {
-        "count": 18,
-        "chars": 43965
-      },
-      "animation-blueprint": {
-        "count": 18,
-        "chars": 44199
-      },
-      "physics-animation": {
-        "count": 19,
-        "chars": 46434
-      }
-    }
-  },
   "documents": [
     {
-      "id": "anim-principles-overview",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-principles-overview.md",
-      "title": "动画原理概述",
-      "chars": 2506
-    },
-    {
-      "id": "anim-squash-stretch",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-squash-stretch.md",
-      "title": "挤压与拉伸",
-      "chars": 2462
-    },
-    {
-      "id": "anim-anticipation",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-anticipation.md",
-      "title": "预备动作",
-      "chars": 2487
-    },
-    {
-      "id": "anim-staging",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-staging.md",
-      "title": "演出布局",
-      "chars": 2401
-    },
-    {
-      "id": "anim-straight-ahead-pose",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-straight-ahead-pose.md",
-      "title": "逐帧与关键帧法",
-      "chars": 2524
-    },
-    {
-      "id": "anim-follow-through",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-follow-through.md",
-      "title": "跟随与重叠动作",
-      "chars": 2579
-    },
-    {
-      "id": "anim-slow-in-out",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-slow-in-out.md",
-      "title": "缓入缓出",
-      "chars": 2408
-    },
-    {
-      "id": "anim-arcs",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-arcs.md",
-      "title": "运动弧线",
-      "chars": 2437
-    },
-    {
-      "id": "anim-secondary-action",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-secondary-action.md",
-      "title": "次要动作",
-      "chars": 2449
-    },
-    {
-      "id": "anim-timing",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-timing.md",
-      "title": "时间节奏",
-      "chars": 2394
-    },
-    {
-      "id": "anim-exaggeration",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-exaggeration.md",
-      "title": "夸张",
-      "chars": 2361
-    },
-    {
-      "id": "anim-solid-drawing",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-solid-drawing.md",
-      "title": "扎实绘画",
-      "chars": 2461
-    },
-    {
-      "id": "anim-appeal",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-appeal.md",
-      "title": "吸引力",
-      "chars": 2379
-    },
-    {
-      "id": "anim-weight-balance",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-weight-balance.md",
-      "title": "重量感与平衡",
-      "chars": 2492
-    },
-    {
-      "id": "anim-line-of-action",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-line-of-action.md",
-      "title": "动态线",
-      "chars": 2387
-    },
-    {
-      "id": "anim-spacing",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-spacing.md",
-      "title": "间距控制",
-      "chars": 2464
-    },
-    {
-      "id": "anim-game-vs-film",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-game-vs-film.md",
-      "title": "游戏动画vs影视动画",
-      "chars": 2614
-    },
-    {
-      "id": "anim-reference-study",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-reference-study.md",
-      "title": "动画参考研究",
-      "chars": 2459
-    },
-    {
-      "id": "anim-blocking",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-blocking.md",
-      "title": "Blocking阶段",
-      "chars": 2405
-    },
-    {
-      "id": "anim-polish",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-polish.md",
-      "title": "动画精修",
-      "chars": 2420
-    },
-    {
-      "id": "anim-skeleton-basics",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-skeleton-basics.md",
-      "title": "骨骼系统基础",
-      "chars": 2444
-    },
-    {
-      "id": "anim-joint-hierarchy",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-joint-hierarchy.md",
-      "title": "关节层级",
-      "chars": 2453
-    },
-    {
-      "id": "anim-joint-orient",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-joint-orient.md",
-      "title": "关节朝向",
-      "chars": 2432
-    },
-    {
-      "id": "anim-skin-binding",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-skin-binding.md",
-      "title": "蒙皮绑定",
-      "chars": 2432
-    },
-    {
-      "id": "anim-weight-painting",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-weight-painting.md",
-      "title": "权重绘制",
-      "chars": 2389
-    },
-    {
-      "id": "anim-control-rig",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-control-rig.md",
-      "title": "控制绑定",
-      "chars": 2434
-    },
-    {
-      "id": "anim-deformation",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-deformation.md",
-      "title": "变形技术",
-      "chars": 2389
-    },
-    {
-      "id": "anim-rig-constraints",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-rig-constraints.md",
-      "title": "绑定约束",
-      "chars": 2408
-    },
-    {
-      "id": "anim-humanoid-rig",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-humanoid-rig.md",
-      "title": "人形骨骼标准",
-      "chars": 2489
-    },
-    {
-      "id": "anim-nonhuman-rig",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-nonhuman-rig.md",
-      "title": "非人形绑定",
-      "chars": 2437
-    },
-    {
-      "id": "anim-rig-testing",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-rig-testing.md",
-      "title": "绑定测试",
-      "chars": 2388
-    },
-    {
-      "id": "anim-retargeting",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-retargeting.md",
-      "title": "动画重定向",
-      "chars": 2458
-    },
-    {
-      "id": "anim-modular-rig",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-modular-rig.md",
-      "title": "模块化绑定",
-      "chars": 2394
-    },
-    {
-      "id": "anim-rig-pipeline",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-rig-pipeline.md",
-      "title": "绑定管线",
-      "chars": 2407
-    },
-    {
-      "id": "anim-keyframe-basics",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-keyframe-basics.md",
-      "title": "关键帧基础",
-      "chars": 2464
-    },
-    {
-      "id": "anim-graph-editor",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-graph-editor.md",
-      "title": "曲线编辑器",
-      "chars": 2473
-    },
-    {
-      "id": "anim-tangent-types",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-tangent-types.md",
-      "title": "切线类型",
-      "chars": 2444
-    },
-    {
-      "id": "anim-walk-cycle",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-walk-cycle.md",
-      "title": "行走循环",
-      "chars": 2440
-    },
-    {
-      "id": "anim-run-cycle",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-run-cycle.md",
-      "title": "奔跑循环",
-      "chars": 2427
-    },
-    {
-      "id": "anim-idle-animation",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-idle-animation.md",
-      "title": "待机动画",
-      "chars": 2414
-    },
-    {
-      "id": "anim-attack-animation",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-attack-animation.md",
-      "title": "攻击动画",
-      "chars": 2413
-    },
-    {
-      "id": "anim-jump-animation",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-jump-animation.md",
-      "title": "跳跃动画",
-      "chars": 2402
-    },
-    {
-      "id": "anim-root-motion",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-root-motion.md",
-      "title": "根运动",
-      "chars": 2412
-    },
-    {
-      "id": "anim-looping",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-looping.md",
-      "title": "循环动画技巧",
-      "chars": 2464
-    },
-    {
-      "id": "anim-additive-anim",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-additive-anim.md",
-      "title": "叠加动画",
-      "chars": 2456
-    },
-    {
-      "id": "anim-layer-system",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-layer-system.md",
-      "title": "动画层系统",
-      "chars": 2461
-    },
-    {
-      "id": "anim-animation-clip",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-animation-clip.md",
-      "title": "动画片段管理",
-      "chars": 2456
-    },
-    {
-      "id": "anim-pose-library",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-pose-library.md",
-      "title": "姿势库",
-      "chars": 2355
-    },
-    {
-      "id": "anim-animation-export",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-animation-export.md",
-      "title": "动画导出",
-      "chars": 2407
-    },
-    {
-      "id": "anim-mocap-overview",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-overview.md",
-      "title": "动作捕捉概述",
-      "chars": 2477
-    },
-    {
-      "id": "anim-optical-mocap",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-optical-mocap.md",
-      "title": "光学动捕",
-      "chars": 2440
-    },
-    {
-      "id": "anim-inertial-mocap",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-inertial-mocap.md",
-      "title": "惯性动捕",
-      "chars": 2414
-    },
-    {
-      "id": "anim-markerless-mocap",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-markerless-mocap.md",
-      "title": "无标记动捕",
-      "chars": 2437
-    },
-    {
-      "id": "anim-mocap-cleanup",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-cleanup.md",
-      "title": "动捕数据清理",
-      "chars": 2451
-    },
-    {
-      "id": "anim-mocap-retarget",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-retarget.md",
-      "title": "动捕重定向",
-      "chars": 2428
-    },
-    {
-      "id": "anim-mocap-studio",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-studio.md",
-      "title": "动捕工作室设置",
-      "chars": 2493
-    },
-    {
-      "id": "anim-mocap-acting",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-acting.md",
-      "title": "动捕表演指导",
-      "chars": 2495
-    },
-    {
-      "id": "anim-mocap-editing",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-editing.md",
-      "title": "动捕编辑",
-      "chars": 2403
-    },
-    {
-      "id": "anim-mocap-face",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-face.md",
-      "title": "面部动捕",
-      "chars": 2407
-    },
-    {
-      "id": "anim-mocap-pipeline",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-pipeline.md",
-      "title": "动捕管线",
-      "chars": 2377
-    },
-    {
-      "id": "anim-fsm-basics",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-fsm-basics.md",
-      "title": "状态机基础",
-      "chars": 2442
-    },
-    {
-      "id": "anim-state-transitions",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-state-transitions.md",
-      "title": "状态转换",
-      "chars": 2401
-    },
-    {
-      "id": "anim-transition-rules",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-transition-rules.md",
-      "title": "转换规则",
-      "chars": 2409
-    },
-    {
-      "id": "anim-locomotion-sm",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-locomotion-sm.md",
-      "title": "移动状态机",
-      "chars": 2417
-    },
-    {
-      "id": "anim-combat-sm",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-combat-sm.md",
-      "title": "战斗状态机",
-      "chars": 2434
-    },
-    {
-      "id": "anim-sub-state-machine",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-sub-state-machine.md",
-      "title": "子状态机",
-      "chars": 2434
-    },
-    {
-      "id": "anim-any-state",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-any-state.md",
-      "title": "Any State转换",
-      "chars": 2459
-    },
-    {
-      "id": "anim-state-notifies",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-state-notifies.md",
-      "title": "状态通知",
-      "chars": 2416
-    },
-    {
-      "id": "anim-state-debugging",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-state-debugging.md",
-      "title": "状态机调试",
-      "chars": 2419
-    },
-    {
-      "id": "anim-hfsm",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-hfsm.md",
-      "title": "层级状态机",
-      "chars": 2439
-    },
-    {
-      "id": "anim-blend-basics",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-blend-basics.md",
-      "title": "混合基础",
-      "chars": 2416
-    },
-    {
-      "id": "anim-1d-blend",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-1d-blend.md",
-      "title": "1D BlendSpace",
-      "chars": 2390
-    },
-    {
-      "id": "anim-2d-blend",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-2d-blend.md",
-      "title": "2D BlendSpace",
-      "chars": 2408
-    },
-    {
-      "id": "anim-blend-tree",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-blend-tree.md",
-      "title": "混合树",
-      "chars": 2396
-    },
-    {
-      "id": "anim-aim-offset",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-aim-offset.md",
-      "title": "Aim Offset",
-      "chars": 2373
-    },
-    {
-      "id": "anim-crossfade",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-crossfade.md",
-      "title": "交叉淡入淡出",
-      "chars": 2464
-    },
-    {
-      "id": "anim-sync-groups",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-sync-groups.md",
-      "title": "同步组",
-      "chars": 2397
-    },
-    {
-      "id": "anim-blend-mask",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-blend-mask.md",
-      "title": "混合遮罩",
-      "chars": 2429
-    },
-    {
-      "id": "anim-blend-profiles",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-blend-profiles.md",
-      "title": "混合曲线",
-      "chars": 2385
-    },
-    {
-      "id": "anim-montage",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-montage.md",
-      "title": "动画蒙太奇",
-      "chars": 2431
-    },
-    {
-      "id": "anim-ik-overview",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-ik-overview.md",
-      "title": "IK/FK概述",
-      "chars": 2399
-    },
-    {
-      "id": "anim-fk-basics",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-fk-basics.md",
-      "title": "正向动力学(FK)",
-      "chars": 2482
-    },
-    {
-      "id": "anim-ik-basics",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-ik-basics.md",
-      "title": "逆向动力学(IK)",
-      "chars": 2482
-    },
-    {
-      "id": "anim-two-bone-ik",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-two-bone-ik.md",
-      "title": "双骨骼IK",
-      "chars": 2384
-    },
-    {
-      "id": "anim-full-body-ik",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-full-body-ik.md",
-      "title": "全身IK",
-      "chars": 2301
-    },
-    {
-      "id": "anim-foot-ik",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-foot-ik.md",
-      "title": "脚部IK",
-      "chars": 2361
-    },
-    {
-      "id": "anim-hand-ik",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-hand-ik.md",
-      "title": "手部IK",
-      "chars": 2304
-    },
-    {
-      "id": "anim-look-at",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-look-at.md",
-      "title": "Look At",
-      "chars": 2336
-    },
-    {
-      "id": "anim-ik-fk-switch",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-ik-fk-switch.md",
-      "title": "IK/FK切换",
-      "chars": 2324
-    },
-    {
-      "id": "anim-pole-vector",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-pole-vector.md",
-      "title": "极向量",
-      "chars": 2344
-    },
-    {
-      "id": "anim-spline-ik",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-spline-ik.md",
-      "title": "样条IK",
-      "chars": 2358
-    },
-    {
-      "id": "anim-procedural-ik",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-procedural-ik.md",
-      "title": "程序化IK",
-      "chars": 2388
-    },
-    {
-      "id": "anim-face-overview",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-face-overview.md",
-      "title": "面部动画概述",
-      "chars": 2490
-    },
-    {
-      "id": "anim-facs",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-facs.md",
-      "title": "FACS系统",
-      "chars": 2414
-    },
-    {
-      "id": "anim-blend-shapes",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-blend-shapes.md",
-      "title": "Blend Shape/Morph Target",
-      "chars": 2555
-    },
-    {
-      "id": "anim-bone-face",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-bone-face.md",
-      "title": "骨骼驱动面部",
-      "chars": 2489
-    },
-    {
-      "id": "anim-lip-sync",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-lip-sync.md",
-      "title": "口型同步",
-      "chars": 2416
-    },
-    {
-      "id": "anim-eye-animation",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-eye-animation.md",
-      "title": "眼部动画",
-      "chars": 2418
-    },
-    {
-      "id": "anim-emotion-expression",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-emotion-expression.md",
-      "title": "情绪表达",
-      "chars": 2411
-    },
-    {
-      "id": "anim-face-rig",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-face-rig.md",
-      "title": "面部绑定",
-      "chars": 2400
-    },
-    {
-      "id": "anim-dialogue-scene",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-dialogue-scene.md",
-      "title": "对话场景",
-      "chars": 2382
-    },
-    {
-      "id": "anim-metahuman-face",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-metahuman-face.md",
-      "title": "MetaHuman面部系统",
-      "chars": 2500
-    },
-    {
-      "id": "anim-stylized-face",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-stylized-face.md",
-      "title": "风格化面部动画",
-      "chars": 2519
-    },
-    {
-      "id": "anim-face-perf-capture",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-face-perf-capture.md",
-      "title": "面部性能捕捉",
-      "chars": 2503
-    },
-    {
-      "id": "anim-face-pipeline",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-face-pipeline.md",
-      "title": "面部动画管线",
-      "chars": 2459
-    },
-    {
-      "id": "anim-abp-overview",
+      "id": "anim-control-rig-bp",
+      "name": "Control Rig节点",
       "domain_id": "animation",
       "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-abp-overview.md",
-      "title": "动画蓝图概述",
-      "chars": 2498
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-control-rig-bp.md",
+      "exists": true,
+      "char_count": 1572
     },
     {
       "id": "anim-event-graph",
+      "name": "事件图",
       "domain_id": "animation",
       "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
       "file": "animation/anim-event-graph.md",
-      "title": "事件图",
-      "chars": 2401
-    },
-    {
-      "id": "anim-anim-graph",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-anim-graph.md",
-      "title": "动画图",
-      "chars": 2412
-    },
-    {
-      "id": "anim-abp-variables",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-abp-variables.md",
-      "title": "动画变量",
-      "chars": 2415
-    },
-    {
-      "id": "anim-abp-caching",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-abp-caching.md",
-      "title": "姿势缓存",
-      "chars": 2425
-    },
-    {
-      "id": "anim-notify-event",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-notify-event.md",
-      "title": "动画通知",
-      "chars": 2428
-    },
-    {
-      "id": "anim-slot-node",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-slot-node.md",
-      "title": "动画槽",
-      "chars": 2393
-    },
-    {
-      "id": "anim-linked-anim",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-linked-anim.md",
-      "title": "链接动画蓝图",
-      "chars": 2512
-    },
-    {
-      "id": "anim-control-rig-bp",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-control-rig-bp.md",
-      "title": "Control Rig节点",
-      "chars": 2479
-    },
-    {
-      "id": "anim-thread-safety",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-thread-safety.md",
-      "title": "多线程动画",
-      "chars": 2466
-    },
-    {
-      "id": "anim-abp-debugging",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-abp-debugging.md",
-      "title": "动画蓝图调试",
-      "chars": 2477
-    },
-    {
-      "id": "anim-abp-optimization",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-abp-optimization.md",
-      "title": "动画蓝图优化",
-      "chars": 2508
-    },
-    {
-      "id": "anim-abp-best-practices",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-abp-best-practices.md",
-      "title": "动画蓝图最佳实践",
-      "chars": 2555
-    },
-    {
-      "id": "anim-physics-overview",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-physics-overview.md",
-      "title": "物理动画概述",
-      "chars": 2485
-    },
-    {
-      "id": "anim-ragdoll",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-ragdoll.md",
-      "title": "布娃娃系统",
-      "chars": 2476
-    },
-    {
-      "id": "anim-physics-blend",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-physics-blend.md",
-      "title": "物理-动画混合",
-      "chars": 2478
-    },
-    {
-      "id": "anim-cloth-sim",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-cloth-sim.md",
-      "title": "布料模拟",
-      "chars": 2376
-    },
-    {
-      "id": "anim-hair-sim",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-hair-sim.md",
-      "title": "毛发模拟",
-      "chars": 2423
-    },
-    {
-      "id": "anim-spring-bone",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-spring-bone.md",
-      "title": "弹簧骨骼",
-      "chars": 2420
-    },
-    {
-      "id": "anim-physical-anim-comp",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-physical-anim-comp.md",
-      "title": "Physical Animation组件",
-      "chars": 2528
-    },
-    {
-      "id": "anim-active-ragdoll",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-active-ragdoll.md",
-      "title": "Active Ragdoll",
-      "chars": 2454
-    },
-    {
-      "id": "anim-procedural-motion",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-procedural-motion.md",
-      "title": "程序化运动",
-      "chars": 2473
-    },
-    {
-      "id": "anim-hit-reaction",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-hit-reaction.md",
-      "title": "受击反应",
-      "chars": 2420
-    },
-    {
-      "id": "anim-physics-constraint",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-physics-constraint.md",
-      "title": "物理约束",
-      "chars": 2448
-    },
-    {
-      "id": "anim-physics-perf",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-physics-perf.md",
-      "title": "物理动画优化",
-      "chars": 2514
-    },
-    {
-      "id": "anim-wind-interaction",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-wind-interaction.md",
-      "title": "风力交互",
-      "chars": 2407
-    },
-    {
-      "id": "anim-destruction-anim",
-      "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-destruction-anim.md",
-      "title": "破坏动画",
-      "chars": 2401
-    },
-    {
-      "id": "anim-contrast",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-contrast.md",
-      "title": "对比原则",
-      "chars": 2420
-    },
-    {
-      "id": "anim-silhouette",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-silhouette.md",
-      "title": "动作剪影",
-      "chars": 2398
-    },
-    {
-      "id": "anim-hold-moving",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-hold-moving.md",
-      "title": "Moving Hold",
-      "chars": 2388
-    },
-    {
-      "id": "anim-overlap-delay",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-overlap-delay.md",
-      "title": "动作延迟层次",
-      "chars": 2524
-    },
-    {
-      "id": "anim-force-motion",
-      "domain_id": "animation",
-      "subdomain_id": "animation-principles",
-      "file": "animation/anim-force-motion.md",
-      "title": "力与运动",
-      "chars": 2433
-    },
-    {
-      "id": "anim-bone-naming",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-bone-naming.md",
-      "title": "骨骼命名规范",
-      "chars": 2466
-    },
-    {
-      "id": "anim-twist-bones",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-twist-bones.md",
-      "title": "扭转骨骼",
-      "chars": 2440
-    },
-    {
-      "id": "anim-corrective-shapes",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-corrective-shapes.md",
-      "title": "修正形状",
-      "chars": 2385
-    },
-    {
-      "id": "anim-space-switching",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-space-switching.md",
-      "title": "空间切换",
-      "chars": 2414
-    },
-    {
-      "id": "anim-ribbon-spine",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-ribbon-spine.md",
-      "title": "柔性脊柱",
-      "chars": 2402
-    },
-    {
-      "id": "anim-auto-rigging",
-      "domain_id": "animation",
-      "subdomain_id": "skeletal-rigging",
-      "file": "animation/anim-auto-rigging.md",
-      "title": "自动绑定工具",
-      "chars": 2437
-    },
-    {
-      "id": "anim-hit-pause",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-hit-pause.md",
-      "title": "Hit Pause",
-      "chars": 2389
-    },
-    {
-      "id": "anim-death-animation",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-death-animation.md",
-      "title": "死亡动画",
-      "chars": 2424
-    },
-    {
-      "id": "anim-interaction-anim",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-interaction-anim.md",
-      "title": "交互动画",
-      "chars": 2413
-    },
-    {
-      "id": "anim-emote-gesture",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-emote-gesture.md",
-      "title": "表情与手势",
-      "chars": 2419
-    },
-    {
-      "id": "anim-transition-anim",
-      "domain_id": "animation",
-      "subdomain_id": "keyframe-animation",
-      "file": "animation/anim-transition-anim.md",
-      "title": "过渡动画",
-      "chars": 2406
-    },
-    {
-      "id": "anim-mocap-workflow",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-workflow.md",
-      "title": "动捕工作流",
-      "chars": 2425
-    },
-    {
-      "id": "anim-mocap-budget",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-budget.md",
-      "title": "动捕预算规划",
-      "chars": 2469
-    },
-    {
-      "id": "anim-mocap-vs-keyframe",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-vs-keyframe.md",
-      "title": "动捕vs手K",
-      "chars": 2396
-    },
-    {
-      "id": "anim-mocap-library",
-      "domain_id": "animation",
-      "subdomain_id": "motion-capture",
-      "file": "animation/anim-mocap-library.md",
-      "title": "动捕数据库",
-      "chars": 2418
-    },
-    {
-      "id": "anim-animation-sm-design",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-animation-sm-design.md",
-      "title": "状态机架构设计",
-      "chars": 2520
-    },
-    {
-      "id": "anim-parametric-state",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-parametric-state.md",
-      "title": "参数化状态",
-      "chars": 2469
-    },
-    {
-      "id": "anim-interrupt-priority",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-interrupt-priority.md",
-      "title": "中断优先级",
-      "chars": 2465
-    },
-    {
-      "id": "anim-state-machine-perf",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-state-machine-perf.md",
-      "title": "状态机性能",
-      "chars": 2441
-    },
-    {
-      "id": "anim-behavior-tree-anim",
-      "domain_id": "animation",
-      "subdomain_id": "state-machine",
-      "file": "animation/anim-behavior-tree-anim.md",
-      "title": "行为树与动画",
-      "chars": 2449
-    },
-    {
-      "id": "anim-blend-per-bone",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-blend-per-bone.md",
-      "title": "逐骨骼混合",
-      "chars": 2463
-    },
-    {
-      "id": "anim-inertial-blend",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-inertial-blend.md",
-      "title": "惯性混合",
-      "chars": 2430
-    },
-    {
-      "id": "anim-distance-matching",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-distance-matching.md",
-      "title": "距离匹配",
-      "chars": 2439
-    },
-    {
-      "id": "anim-stride-warping",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-stride-warping.md",
-      "title": "步幅调整",
-      "chars": 2445
-    },
-    {
-      "id": "anim-motion-matching",
-      "domain_id": "animation",
-      "subdomain_id": "blend-space",
-      "file": "animation/anim-motion-matching.md",
-      "title": "Motion Matching",
-      "chars": 2437
-    },
-    {
-      "id": "anim-ik-ground-adapt",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-ik-ground-adapt.md",
-      "title": "地形适配IK",
-      "chars": 2387
-    },
-    {
-      "id": "anim-ik-weapon-hold",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-ik-weapon-hold.md",
-      "title": "武器持握IK",
-      "chars": 2368
-    },
-    {
-      "id": "anim-ik-vehicle-mount",
-      "domain_id": "animation",
-      "subdomain_id": "ik-fk",
-      "file": "animation/anim-ik-vehicle-mount.md",
-      "title": "载具乘坐IK",
-      "chars": 2358
-    },
-    {
-      "id": "anim-micro-expression",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-micro-expression.md",
-      "title": "微表情",
-      "chars": 2400
-    },
-    {
-      "id": "anim-corrective-bs",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-corrective-bs.md",
-      "title": "修正BlendShape",
-      "chars": 2458
-    },
-    {
-      "id": "anim-face-wrinkle",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-face-wrinkle.md",
-      "title": "皱纹贴图",
-      "chars": 2375
-    },
-    {
-      "id": "anim-speech-gesture",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-speech-gesture.md",
-      "title": "说话手势",
-      "chars": 2418
-    },
-    {
-      "id": "anim-crowd-face",
-      "domain_id": "animation",
-      "subdomain_id": "facial-animation",
-      "file": "animation/anim-crowd-face.md",
-      "title": "群演面部",
-      "chars": 2358
-    },
-    {
-      "id": "anim-property-access",
-      "domain_id": "animation",
-      "subdomain_id": "animation-blueprint",
-      "file": "animation/anim-property-access.md",
-      "title": "属性访问优化",
-      "chars": 2504
+      "exists": true,
+      "char_count": 1436
     },
     {
       "id": "anim-distance-lod",
+      "name": "动画LOD",
       "domain_id": "animation",
       "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
       "file": "animation/anim-distance-lod.md",
-      "title": "动画LOD",
-      "chars": 2396
+      "exists": true,
+      "char_count": 1307
     },
     {
       "id": "anim-anim-sharing",
+      "name": "动画共享",
       "domain_id": "animation",
       "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
       "file": "animation/anim-anim-sharing.md",
-      "title": "动画共享",
-      "chars": 2402
+      "exists": true,
+      "char_count": 1295
+    },
+    {
+      "id": "anim-abp-variables",
+      "name": "动画变量",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-abp-variables.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "anim-anim-graph",
+      "name": "动画图",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-anim-graph.md",
+      "exists": true,
+      "char_count": 2732
     },
     {
       "id": "anim-sequencer",
+      "name": "动画序列器",
       "domain_id": "animation",
       "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
       "file": "animation/anim-sequencer.md",
-      "title": "动画序列器",
-      "chars": 2431
+      "exists": true,
+      "char_count": 1500
+    },
+    {
+      "id": "anim-slot-node",
+      "name": "动画槽",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-slot-node.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "anim-abp-optimization",
+      "name": "动画蓝图优化",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "animation/anim-abp-optimization.md",
+      "exists": true,
+      "char_count": 3172
+    },
+    {
+      "id": "anim-abp-best-practices",
+      "name": "动画蓝图最佳实践",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-abp-best-practices.md",
+      "exists": true,
+      "char_count": 1385
+    },
+    {
+      "id": "anim-abp-overview",
+      "name": "动画蓝图概述",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-abp-overview.md",
+      "exists": true,
+      "char_count": 1635
+    },
+    {
+      "id": "anim-abp-debugging",
+      "name": "动画蓝图调试",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "调试"
+      ],
+      "file": "animation/anim-abp-debugging.md",
+      "exists": true,
+      "char_count": 1334
+    },
+    {
+      "id": "anim-notify-event",
+      "name": "动画通知",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-notify-event.md",
+      "exists": true,
+      "char_count": 1487
+    },
+    {
+      "id": "anim-thread-safety",
+      "name": "多线程动画",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "animation/anim-thread-safety.md",
+      "exists": true,
+      "char_count": 1437
+    },
+    {
+      "id": "anim-abp-caching",
+      "name": "姿势缓存",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "animation/anim-abp-caching.md",
+      "exists": true,
+      "char_count": 1360
+    },
+    {
+      "id": "anim-property-access",
+      "name": "属性访问优化",
+      "domain_id": "animation",
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "animation/anim-property-access.md",
+      "exists": true,
+      "char_count": 1461
     },
     {
       "id": "anim-data-driven",
+      "name": "数据驱动动画",
       "domain_id": "animation",
       "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
       "file": "animation/anim-data-driven.md",
-      "title": "数据驱动动画",
-      "chars": 2497
+      "exists": true,
+      "char_count": 1329
     },
     {
-      "id": "anim-soft-body",
+      "id": "anim-linked-anim",
+      "name": "链接动画蓝图",
       "domain_id": "animation",
-      "subdomain_id": "physics-animation",
-      "file": "animation/anim-soft-body.md",
-      "title": "软体模拟",
-      "chars": 2400
+      "subdomain_id": "animation-blueprint",
+      "subdomain_name": "动画蓝图",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-linked-anim.md",
+      "exists": true,
+      "char_count": 1410
     },
     {
-      "id": "anim-chain-physics",
+      "id": "anim-blocking",
+      "name": "Blocking阶段",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-blocking.md",
+      "exists": true,
+      "char_count": 1486
+    },
+    {
+      "id": "anim-hold-moving",
+      "name": "Moving Hold",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "animation/anim-hold-moving.md",
+      "exists": true,
+      "char_count": 1376
+    },
+    {
+      "id": "anim-force-motion",
+      "name": "力与运动",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-force-motion.md",
+      "exists": true,
+      "char_count": 1295
+    },
+    {
+      "id": "anim-silhouette",
+      "name": "动作剪影",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-silhouette.md",
+      "exists": true,
+      "char_count": 1231
+    },
+    {
+      "id": "anim-overlap-delay",
+      "name": "动作延迟层次",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-overlap-delay.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "anim-line-of-action",
+      "name": "动态线",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-line-of-action.md",
+      "exists": true,
+      "char_count": 1241
+    },
+    {
+      "id": "anim-principles-overview",
+      "name": "动画原理概述",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-principles-overview.md",
+      "exists": true,
+      "char_count": 1553
+    },
+    {
+      "id": "anim-reference-study",
+      "name": "动画参考研究",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "animation/anim-reference-study.md",
+      "exists": true,
+      "char_count": 1314
+    },
+    {
+      "id": "anim-polish",
+      "name": "动画精修",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-polish.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "anim-appeal",
+      "name": "吸引力",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-appeal.md",
+      "exists": true,
+      "char_count": 1307
+    },
+    {
+      "id": "anim-exaggeration",
+      "name": "夸张",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-exaggeration.md",
+      "exists": true,
+      "char_count": 1222
+    },
+    {
+      "id": "anim-contrast",
+      "name": "对比原则",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-contrast.md",
+      "exists": true,
+      "char_count": 1253
+    },
+    {
+      "id": "anim-solid-drawing",
+      "name": "扎实绘画",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-solid-drawing.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "anim-squash-stretch",
+      "name": "挤压与拉伸",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-squash-stretch.md",
+      "exists": true,
+      "char_count": 1447
+    },
+    {
+      "id": "anim-timing",
+      "name": "时间节奏",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-timing.md",
+      "exists": true,
+      "char_count": 2230
+    },
+    {
+      "id": "anim-secondary-action",
+      "name": "次要动作",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-secondary-action.md",
+      "exists": true,
+      "char_count": 1319
+    },
+    {
+      "id": "anim-game-vs-film",
+      "name": "游戏动画vs影视动画",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-game-vs-film.md",
+      "exists": true,
+      "char_count": 1552
+    },
+    {
+      "id": "anim-staging",
+      "name": "演出布局",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-staging.md",
+      "exists": true,
+      "char_count": 1233
+    },
+    {
+      "id": "anim-slow-in-out",
+      "name": "缓入缓出",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-slow-in-out.md",
+      "exists": true,
+      "char_count": 1258
+    },
+    {
+      "id": "anim-follow-through",
+      "name": "跟随与重叠动作",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-follow-through.md",
+      "exists": true,
+      "char_count": 1473
+    },
+    {
+      "id": "anim-arcs",
+      "name": "运动弧线",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-arcs.md",
+      "exists": true,
+      "char_count": 1245
+    },
+    {
+      "id": "anim-straight-ahead-pose",
+      "name": "逐帧与关键帧法",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-straight-ahead-pose.md",
+      "exists": true,
+      "char_count": 1588
+    },
+    {
+      "id": "anim-weight-balance",
+      "name": "重量感与平衡",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-weight-balance.md",
+      "exists": true,
+      "char_count": 1422
+    },
+    {
+      "id": "anim-spacing",
+      "name": "间距控制",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-spacing.md",
+      "exists": true,
+      "char_count": 1306
+    },
+    {
+      "id": "anim-anticipation",
+      "name": "预备动作",
+      "domain_id": "animation",
+      "subdomain_id": "animation-principles",
+      "subdomain_name": "动画原理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-anticipation.md",
+      "exists": true,
+      "char_count": 1357
+    },
+    {
+      "id": "anim-1d-blend",
+      "name": "1D BlendSpace",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-1d-blend.md",
+      "exists": true,
+      "char_count": 1586
+    },
+    {
+      "id": "anim-2d-blend",
+      "name": "2D BlendSpace",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-2d-blend.md",
+      "exists": true,
+      "char_count": 1634
+    },
+    {
+      "id": "anim-aim-offset",
+      "name": "Aim Offset",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-aim-offset.md",
+      "exists": true,
+      "char_count": 1416
+    },
+    {
+      "id": "anim-motion-matching",
+      "name": "Motion Matching",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "animation/anim-motion-matching.md",
+      "exists": true,
+      "char_count": 1583
+    },
+    {
+      "id": "anim-crossfade",
+      "name": "交叉淡入淡出",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-crossfade.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "anim-montage",
+      "name": "动画蒙太奇",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-montage.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "anim-sync-groups",
+      "name": "同步组",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-sync-groups.md",
+      "exists": true,
+      "char_count": 1459
+    },
+    {
+      "id": "anim-inertial-blend",
+      "name": "惯性混合",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-inertial-blend.md",
+      "exists": true,
+      "char_count": 1422
+    },
+    {
+      "id": "anim-stride-warping",
+      "name": "步幅调整",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-stride-warping.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "anim-blend-basics",
+      "name": "混合基础",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-blend-basics.md",
+      "exists": true,
+      "char_count": 1360
+    },
+    {
+      "id": "anim-blend-profiles",
+      "name": "混合曲线",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-blend-profiles.md",
+      "exists": true,
+      "char_count": 1397
+    },
+    {
+      "id": "anim-blend-tree",
+      "name": "混合树",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-blend-tree.md",
+      "exists": true,
+      "char_count": 1364
+    },
+    {
+      "id": "anim-blend-mask",
+      "name": "混合遮罩",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-blend-mask.md",
+      "exists": true,
+      "char_count": 2805
+    },
+    {
+      "id": "anim-distance-matching",
+      "name": "距离匹配",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-distance-matching.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "anim-blend-per-bone",
+      "name": "逐骨骼混合",
+      "domain_id": "animation",
+      "subdomain_id": "blend-space",
+      "subdomain_name": "BlendSpace",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-blend-per-bone.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "anim-blend-shapes",
+      "name": "Blend Shape/Morph Target",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-blend-shapes.md",
+      "exists": true,
+      "char_count": 1877
+    },
+    {
+      "id": "anim-facs",
+      "name": "FACS系统",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-facs.md",
+      "exists": true,
+      "char_count": 1532
+    },
+    {
+      "id": "anim-metahuman-face",
+      "name": "MetaHuman面部系统",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "animation/anim-metahuman-face.md",
+      "exists": true,
+      "char_count": 1691
+    },
+    {
+      "id": "anim-corrective-bs",
+      "name": "修正BlendShape",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-corrective-bs.md",
+      "exists": true,
+      "char_count": 1517
+    },
+    {
+      "id": "anim-lip-sync",
+      "name": "口型同步",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-lip-sync.md",
+      "exists": true,
+      "char_count": 2779
+    },
+    {
+      "id": "anim-dialogue-scene",
+      "name": "对话场景",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-dialogue-scene.md",
+      "exists": true,
+      "char_count": 1244
+    },
+    {
+      "id": "anim-micro-expression",
+      "name": "微表情",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-micro-expression.md",
+      "exists": true,
+      "char_count": 1272
+    },
+    {
+      "id": "anim-emotion-expression",
+      "name": "情绪表达",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-emotion-expression.md",
+      "exists": true,
+      "char_count": 1406
+    },
+    {
+      "id": "anim-face-wrinkle",
+      "name": "皱纹贴图",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "animation/anim-face-wrinkle.md",
+      "exists": true,
+      "char_count": 1286
+    },
+    {
+      "id": "anim-eye-animation",
+      "name": "眼部动画",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-eye-animation.md",
+      "exists": true,
+      "char_count": 1300
+    },
+    {
+      "id": "anim-crowd-face",
+      "name": "群演面部",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "animation/anim-crowd-face.md",
+      "exists": true,
+      "char_count": 2534
+    },
+    {
+      "id": "anim-speech-gesture",
+      "name": "说话手势",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-speech-gesture.md",
+      "exists": true,
+      "char_count": 1297
+    },
+    {
+      "id": "anim-face-overview",
+      "name": "面部动画概述",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-face-overview.md",
+      "exists": true,
+      "char_count": 1540
+    },
+    {
+      "id": "anim-face-pipeline",
+      "name": "面部动画管线",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-face-pipeline.md",
+      "exists": true,
+      "char_count": 2677
+    },
+    {
+      "id": "anim-face-perf-capture",
+      "name": "面部性能捕捉",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "animation/anim-face-perf-capture.md",
+      "exists": true,
+      "char_count": 1429
+    },
+    {
+      "id": "anim-face-rig",
+      "name": "面部绑定",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-face-rig.md",
+      "exists": true,
+      "char_count": 1381
+    },
+    {
+      "id": "anim-stylized-face",
+      "name": "风格化面部动画",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "animation/anim-stylized-face.md",
+      "exists": true,
+      "char_count": 1355
+    },
+    {
+      "id": "anim-bone-face",
+      "name": "骨骼驱动面部",
+      "domain_id": "animation",
+      "subdomain_id": "facial-animation",
+      "subdomain_name": "面部动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-bone-face.md",
+      "exists": true,
+      "char_count": 1301
+    },
+    {
+      "id": "anim-ik-fk-switch",
+      "name": "IK/FK切换",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-ik-fk-switch.md",
+      "exists": true,
+      "char_count": 1410
+    },
+    {
+      "id": "anim-ik-overview",
+      "name": "IK/FK概述",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-ik-overview.md",
+      "exists": true,
+      "char_count": 1621
+    },
+    {
+      "id": "anim-look-at",
+      "name": "Look At",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-look-at.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "anim-full-body-ik",
+      "name": "全身IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-full-body-ik.md",
+      "exists": true,
+      "char_count": 1268
+    },
+    {
+      "id": "anim-two-bone-ik",
+      "name": "双骨骼IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-two-bone-ik.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "anim-ik-ground-adapt",
+      "name": "地形适配IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-ik-ground-adapt.md",
+      "exists": true,
+      "char_count": 1294
+    },
+    {
+      "id": "anim-hand-ik",
+      "name": "手部IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-hand-ik.md",
+      "exists": true,
+      "char_count": 1250
+    },
+    {
+      "id": "anim-pole-vector",
+      "name": "极向量",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-pole-vector.md",
+      "exists": true,
+      "char_count": 1255
+    },
+    {
+      "id": "anim-spline-ik",
+      "name": "样条IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-spline-ik.md",
+      "exists": true,
+      "char_count": 1264
+    },
+    {
+      "id": "anim-fk-basics",
+      "name": "正向动力学(FK)",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-fk-basics.md",
+      "exists": true,
+      "char_count": 1392
+    },
+    {
+      "id": "anim-ik-weapon-hold",
+      "name": "武器持握IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-ik-weapon-hold.md",
+      "exists": true,
+      "char_count": 1289
+    },
+    {
+      "id": "anim-procedural-ik",
+      "name": "程序化IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-procedural-ik.md",
+      "exists": true,
+      "char_count": 1361
+    },
+    {
+      "id": "anim-foot-ik",
+      "name": "脚部IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-foot-ik.md",
+      "exists": true,
+      "char_count": 2540
+    },
+    {
+      "id": "anim-ik-vehicle-mount",
+      "name": "载具乘坐IK",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-ik-vehicle-mount.md",
+      "exists": true,
+      "char_count": 1279
+    },
+    {
+      "id": "anim-ik-basics",
+      "name": "逆向动力学(IK)",
+      "domain_id": "animation",
+      "subdomain_id": "ik-fk",
+      "subdomain_name": "IK/FK",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-ik-basics.md",
+      "exists": true,
+      "char_count": 1486
+    },
+    {
+      "id": "anim-hit-pause",
+      "name": "Hit Pause",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "游戏"
+      ],
+      "file": "animation/anim-hit-pause.md",
+      "exists": true,
+      "char_count": 1342
+    },
+    {
+      "id": "anim-interaction-anim",
+      "name": "交互动画",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-interaction-anim.md",
+      "exists": true,
+      "char_count": 1396
+    },
+    {
+      "id": "anim-keyframe-basics",
+      "name": "关键帧基础",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-keyframe-basics.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "anim-tangent-types",
+      "name": "切线类型",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-tangent-types.md",
+      "exists": true,
+      "char_count": 1511
+    },
+    {
+      "id": "anim-animation-export",
+      "name": "动画导出",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-animation-export.md",
+      "exists": true,
+      "char_count": 1360
+    },
+    {
+      "id": "anim-layer-system",
+      "name": "动画层系统",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-layer-system.md",
+      "exists": true,
+      "char_count": 1301
+    },
+    {
+      "id": "anim-animation-clip",
+      "name": "动画片段管理",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-animation-clip.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "anim-additive-anim",
+      "name": "叠加动画",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-additive-anim.md",
+      "exists": true,
+      "char_count": 1302
+    },
+    {
+      "id": "anim-run-cycle",
+      "name": "奔跑循环",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-run-cycle.md",
+      "exists": true,
+      "char_count": 1269
+    },
+    {
+      "id": "anim-pose-library",
+      "name": "姿势库",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-pose-library.md",
+      "exists": true,
+      "char_count": 1244
+    },
+    {
+      "id": "anim-idle-animation",
+      "name": "待机动画",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-idle-animation.md",
+      "exists": true,
+      "char_count": 1288
+    },
+    {
+      "id": "anim-looping",
+      "name": "循环动画技巧",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "animation/anim-looping.md",
+      "exists": true,
+      "char_count": 1295
+    },
+    {
+      "id": "anim-attack-animation",
+      "name": "攻击动画",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-attack-animation.md",
+      "exists": true,
+      "char_count": 1280
+    },
+    {
+      "id": "anim-graph-editor",
+      "name": "曲线编辑器",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-graph-editor.md",
+      "exists": true,
+      "char_count": 1534
+    },
+    {
+      "id": "anim-root-motion",
+      "name": "根运动",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-root-motion.md",
+      "exists": true,
+      "char_count": 2469
+    },
+    {
+      "id": "anim-death-animation",
+      "name": "死亡动画",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-death-animation.md",
+      "exists": true,
+      "char_count": 1307
+    },
+    {
+      "id": "anim-walk-cycle",
+      "name": "行走循环",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-walk-cycle.md",
+      "exists": true,
+      "char_count": 2181
+    },
+    {
+      "id": "anim-emote-gesture",
+      "name": "表情与手势",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社交"
+      ],
+      "file": "animation/anim-emote-gesture.md",
+      "exists": true,
+      "char_count": 1279
+    },
+    {
+      "id": "anim-jump-animation",
+      "name": "跳跃动画",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-jump-animation.md",
+      "exists": true,
+      "char_count": 1279
+    },
+    {
+      "id": "anim-transition-anim",
+      "name": "过渡动画",
+      "domain_id": "animation",
+      "subdomain_id": "keyframe-animation",
+      "subdomain_name": "关键帧动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-transition-anim.md",
+      "exists": true,
+      "char_count": 2410
+    },
+    {
+      "id": "anim-optical-mocap",
+      "name": "光学动捕",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-optical-mocap.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "anim-mocap-overview",
+      "name": "动作捕捉概述",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-mocap-overview.md",
+      "exists": true,
+      "char_count": 1524
+    },
+    {
+      "id": "anim-mocap-vs-keyframe",
+      "name": "动捕vs手K",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "对比"
+      ],
+      "file": "animation/anim-mocap-vs-keyframe.md",
+      "exists": true,
+      "char_count": 1320
+    },
+    {
+      "id": "anim-mocap-studio",
+      "name": "动捕工作室设置",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-mocap-studio.md",
+      "exists": true,
+      "char_count": 1357
+    },
+    {
+      "id": "anim-mocap-workflow",
+      "name": "动捕工作流",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-mocap-workflow.md",
+      "exists": true,
+      "char_count": 1390
+    },
+    {
+      "id": "anim-mocap-library",
+      "name": "动捕数据库",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "资源"
+      ],
+      "file": "animation/anim-mocap-library.md",
+      "exists": true,
+      "char_count": 1342
+    },
+    {
+      "id": "anim-mocap-cleanup",
+      "name": "动捕数据清理",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-mocap-cleanup.md",
+      "exists": true,
+      "char_count": 2624
+    },
+    {
+      "id": "anim-mocap-pipeline",
+      "name": "动捕管线",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-mocap-pipeline.md",
+      "exists": true,
+      "char_count": 2791
+    },
+    {
+      "id": "anim-mocap-editing",
+      "name": "动捕编辑",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-mocap-editing.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "anim-mocap-acting",
+      "name": "动捕表演指导",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-mocap-acting.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "anim-mocap-retarget",
+      "name": "动捕重定向",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-mocap-retarget.md",
+      "exists": true,
+      "char_count": 1274
+    },
+    {
+      "id": "anim-mocap-budget",
+      "name": "动捕预算规划",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "animation/anim-mocap-budget.md",
+      "exists": true,
+      "char_count": 1319
+    },
+    {
+      "id": "anim-inertial-mocap",
+      "name": "惯性动捕",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-inertial-mocap.md",
+      "exists": true,
+      "char_count": 1412
+    },
+    {
+      "id": "anim-markerless-mocap",
+      "name": "无标记动捕",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-markerless-mocap.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "anim-mocap-face",
+      "name": "面部动捕",
+      "domain_id": "animation",
+      "subdomain_id": "motion-capture",
+      "subdomain_name": "动作捕捉",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-mocap-face.md",
+      "exists": true,
+      "char_count": 1247
+    },
+    {
+      "id": "anim-active-ragdoll",
+      "name": "Active Ragdoll",
       "domain_id": "animation",
       "subdomain_id": "physics-animation",
-      "file": "animation/anim-chain-physics.md",
-      "title": "链条物理",
-      "chars": 2380
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-active-ragdoll.md",
+      "exists": true,
+      "char_count": 1490
+    },
+    {
+      "id": "anim-physical-anim-comp",
+      "name": "Physical Animation组件",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "引擎"
+      ],
+      "file": "animation/anim-physical-anim-comp.md",
+      "exists": true,
+      "char_count": 1890
+    },
+    {
+      "id": "anim-hit-reaction",
+      "name": "受击反应",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-hit-reaction.md",
+      "exists": true,
+      "char_count": 1288
+    },
+    {
+      "id": "anim-ragdoll",
+      "name": "布娃娃系统",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-ragdoll.md",
+      "exists": true,
+      "char_count": 2834
+    },
+    {
+      "id": "anim-cloth-sim",
+      "name": "布料模拟",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-cloth-sim.md",
+      "exists": true,
+      "char_count": 2526
+    },
+    {
+      "id": "anim-spring-bone",
+      "name": "弹簧骨骼",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-spring-bone.md",
+      "exists": true,
+      "char_count": 1292
+    },
+    {
+      "id": "anim-hair-sim",
+      "name": "毛发模拟",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-hair-sim.md",
+      "exists": true,
+      "char_count": 1304
     },
     {
       "id": "anim-water-interaction",
+      "name": "水面交互",
       "domain_id": "animation",
       "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
       "file": "animation/anim-water-interaction.md",
-      "title": "水面交互",
-      "chars": 2411
+      "exists": true,
+      "char_count": 1388
+    },
+    {
+      "id": "anim-physics-blend",
+      "name": "物理-动画混合",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-physics-blend.md",
+      "exists": true,
+      "char_count": 1475
+    },
+    {
+      "id": "anim-physics-perf",
+      "name": "物理动画优化",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "animation/anim-physics-perf.md",
+      "exists": true,
+      "char_count": 1485
+    },
+    {
+      "id": "anim-physics-overview",
+      "name": "物理动画概述",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-physics-overview.md",
+      "exists": true,
+      "char_count": 1523
     },
     {
       "id": "anim-physics-material",
+      "name": "物理材质属性",
       "domain_id": "animation",
       "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
       "file": "animation/anim-physics-material.md",
-      "title": "物理材质属性",
-      "chars": 2482
+      "exists": true,
+      "char_count": 1339
+    },
+    {
+      "id": "anim-physics-constraint",
+      "name": "物理约束",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-physics-constraint.md",
+      "exists": true,
+      "char_count": 1419
+    },
+    {
+      "id": "anim-destruction-anim",
+      "name": "破坏动画",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-destruction-anim.md",
+      "exists": true,
+      "char_count": 1264
+    },
+    {
+      "id": "anim-procedural-motion",
+      "name": "程序化运动",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-procedural-motion.md",
+      "exists": true,
+      "char_count": 1387
+    },
+    {
+      "id": "anim-soft-body",
+      "name": "软体模拟",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-soft-body.md",
+      "exists": true,
+      "char_count": 1229
     },
     {
       "id": "anim-vehicle-physics-anim",
+      "name": "载具物理动画",
       "domain_id": "animation",
       "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
       "file": "animation/anim-vehicle-physics-anim.md",
-      "title": "载具物理动画",
-      "chars": 2458
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "anim-chain-physics",
+      "name": "链条物理",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-chain-physics.md",
+      "exists": true,
+      "char_count": 1229
+    },
+    {
+      "id": "anim-wind-interaction",
+      "name": "风力交互",
+      "domain_id": "animation",
+      "subdomain_id": "physics-animation",
+      "subdomain_name": "物理动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "animation/anim-wind-interaction.md",
+      "exists": true,
+      "char_count": 1302
+    },
+    {
+      "id": "anim-humanoid-rig",
+      "name": "人形骨骼标准",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-humanoid-rig.md",
+      "exists": true,
+      "char_count": 1491
+    },
+    {
+      "id": "anim-corrective-shapes",
+      "name": "修正形状",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-corrective-shapes.md",
+      "exists": true,
+      "char_count": 1319
+    },
+    {
+      "id": "anim-joint-hierarchy",
+      "name": "关节层级",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-joint-hierarchy.md",
+      "exists": true,
+      "char_count": 2740
+    },
+    {
+      "id": "anim-joint-orient",
+      "name": "关节朝向",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-joint-orient.md",
+      "exists": true,
+      "char_count": 1277
+    },
+    {
+      "id": "anim-retargeting",
+      "name": "动画重定向",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-retargeting.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "anim-deformation",
+      "name": "变形技术",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-deformation.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "anim-twist-bones",
+      "name": "扭转骨骼",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-twist-bones.md",
+      "exists": true,
+      "char_count": 1359
+    },
+    {
+      "id": "anim-control-rig",
+      "name": "控制绑定",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-control-rig.md",
+      "exists": true,
+      "char_count": 2649
+    },
+    {
+      "id": "anim-weight-painting",
+      "name": "权重绘制",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-weight-painting.md",
+      "exists": true,
+      "char_count": 2326
+    },
+    {
+      "id": "anim-ribbon-spine",
+      "name": "柔性脊柱",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-ribbon-spine.md",
+      "exists": true,
+      "char_count": 1324
+    },
+    {
+      "id": "anim-modular-rig",
+      "name": "模块化绑定",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-modular-rig.md",
+      "exists": true,
+      "char_count": 1231
+    },
+    {
+      "id": "anim-space-switching",
+      "name": "空间切换",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-space-switching.md",
+      "exists": true,
+      "char_count": 1289
+    },
+    {
+      "id": "anim-rig-testing",
+      "name": "绑定测试",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "animation/anim-rig-testing.md",
+      "exists": true,
+      "char_count": 1252
+    },
+    {
+      "id": "anim-rig-pipeline",
+      "name": "绑定管线",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "animation/anim-rig-pipeline.md",
+      "exists": true,
+      "char_count": 1268
+    },
+    {
+      "id": "anim-rig-constraints",
+      "name": "绑定约束",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-rig-constraints.md",
+      "exists": true,
+      "char_count": 1497
+    },
+    {
+      "id": "anim-auto-rigging",
+      "name": "自动绑定工具",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "animation/anim-auto-rigging.md",
+      "exists": true,
+      "char_count": 1429
+    },
+    {
+      "id": "anim-skin-binding",
+      "name": "蒙皮绑定",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-skin-binding.md",
+      "exists": true,
+      "char_count": 2338
+    },
+    {
+      "id": "anim-nonhuman-rig",
+      "name": "非人形绑定",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-nonhuman-rig.md",
+      "exists": true,
+      "char_count": 1304
+    },
+    {
+      "id": "anim-bone-naming",
+      "name": "骨骼命名规范",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "animation/anim-bone-naming.md",
+      "exists": true,
+      "char_count": 1441
+    },
+    {
+      "id": "anim-skeleton-basics",
+      "name": "骨骼系统基础",
+      "domain_id": "animation",
+      "subdomain_id": "skeletal-rigging",
+      "subdomain_name": "骨骼绑定",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-skeleton-basics.md",
+      "exists": true,
+      "char_count": 1314
+    },
+    {
+      "id": "anim-any-state",
+      "name": "Any State转换",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-any-state.md",
+      "exists": true,
+      "char_count": 1401
+    },
+    {
+      "id": "anim-interrupt-priority",
+      "name": "中断优先级",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-interrupt-priority.md",
+      "exists": true,
+      "char_count": 1348
+    },
+    {
+      "id": "anim-parametric-state",
+      "name": "参数化状态",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-parametric-state.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "anim-sub-state-machine",
+      "name": "子状态机",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-sub-state-machine.md",
+      "exists": true,
+      "char_count": 1286
+    },
+    {
+      "id": "anim-hfsm",
+      "name": "层级状态机",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-hfsm.md",
+      "exists": true,
+      "char_count": 1379
+    },
+    {
+      "id": "anim-combat-sm",
+      "name": "战斗状态机",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "animation/anim-combat-sm.md",
+      "exists": true,
+      "char_count": 1416
+    },
+    {
+      "id": "anim-fsm-basics",
+      "name": "状态机基础",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "animation/anim-fsm-basics.md",
+      "exists": true,
+      "char_count": 1364
+    },
+    {
+      "id": "anim-state-machine-perf",
+      "name": "状态机性能",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "animation/anim-state-machine-perf.md",
+      "exists": true,
+      "char_count": 1392
+    },
+    {
+      "id": "anim-animation-sm-design",
+      "name": "状态机架构设计",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "animation/anim-animation-sm-design.md",
+      "exists": true,
+      "char_count": 1402
+    },
+    {
+      "id": "anim-state-debugging",
+      "name": "状态机调试",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "调试"
+      ],
+      "file": "animation/anim-state-debugging.md",
+      "exists": true,
+      "char_count": 1293
+    },
+    {
+      "id": "anim-state-transitions",
+      "name": "状态转换",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-state-transitions.md",
+      "exists": true,
+      "char_count": 2661
+    },
+    {
+      "id": "anim-state-notifies",
+      "name": "状态通知",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-state-notifies.md",
+      "exists": true,
+      "char_count": 1282
+    },
+    {
+      "id": "anim-locomotion-sm",
+      "name": "移动状态机",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-locomotion-sm.md",
+      "exists": true,
+      "char_count": 2608
+    },
+    {
+      "id": "anim-behavior-tree-anim",
+      "name": "行为树与动画",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "animation/anim-behavior-tree-anim.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "anim-transition-rules",
+      "name": "转换规则",
+      "domain_id": "animation",
+      "subdomain_id": "state-machine",
+      "subdomain_name": "状态机",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "animation/anim-transition-rules.md",
+      "exists": true,
+      "char_count": 1282
     }
-  ]
+  ],
+  "stats": {
+    "total": 180,
+    "total_chars": 273515,
+    "avg_chars": 1519,
+    "domain": "animation"
+  }
 }

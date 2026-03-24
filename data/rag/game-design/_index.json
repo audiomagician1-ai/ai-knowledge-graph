@@ -1,3333 +1,34 @@
 {
-  "version": "1.0.0",
-  "domain": "game-design",
-  "domain_name": "游戏设计",
-  "generated_at": "2026-03-20",
-  "total_concepts": 250,
-  "stats": {
-    "total_docs": 250,
-    "total_chars": 117381,
-    "by_subdomain": {
-      "core-loop": {
-        "count": 24,
-        "chars": 11282
-      },
-      "systems-design": {
-        "count": 24,
-        "chars": 11225
-      },
-      "player-psychology": {
-        "count": 20,
-        "chars": 9407
-      },
-      "economy-design": {
-        "count": 20,
-        "chars": 9444
-      },
-      "balance-design": {
-        "count": 20,
-        "chars": 9422
-      },
-      "combat-design": {
-        "count": 20,
-        "chars": 9388
-      },
-      "social-systems": {
-        "count": 18,
-        "chars": 8413
-      },
-      "randomness-design": {
-        "count": 18,
-        "chars": 8487
-      },
-      "feedback-systems": {
-        "count": 22,
-        "chars": 10257
-      },
-      "difficulty-curve": {
-        "count": 22,
-        "chars": 10236
-      },
-      "accessibility": {
-        "count": 20,
-        "chars": 9474
-      },
-      "design-docs": {
-        "count": 22,
-        "chars": 10346
-      }
-    }
-  },
   "documents": [
     {
-      "id": "gd-overview",
-      "name": "游戏设计概述",
+      "id": "photosensitivity",
+      "name": "光敏性考虑",
       "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/core-loop/gd-overview.md",
-      "exists": true,
-      "char_count": 527
-    },
-    {
-      "id": "what-is-fun",
-      "name": "什么是乐趣",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/core-loop/what-is-fun.md",
-      "exists": true,
-      "char_count": 466
-    },
-    {
-      "id": "game-mechanics",
-      "name": "游戏机制",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/core-loop/game-mechanics.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "core-loop-intro",
-      "name": "核心循环概述",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/core-loop/core-loop-intro.md",
-      "exists": true,
-      "char_count": 534
-    },
-    {
-      "id": "engagement-loop",
-      "name": "参与循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
       "difficulty": 2,
       "is_milestone": false,
       "tags": [
-        "循环"
+        "安全"
       ],
-      "file": "game-design/core-loop/engagement-loop.md",
+      "file": "game-design/accessibility/photosensitivity.md",
       "exists": true,
-      "char_count": 461
+      "char_count": 2621
     },
     {
-      "id": "progression-loop",
-      "name": "成长循环",
+      "id": "inclusive-design",
+      "name": "包容性设计",
       "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "循环"
-      ],
-      "file": "game-design/core-loop/progression-loop.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "reward-loop",
-      "name": "奖励循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "循环"
-      ],
-      "file": "game-design/core-loop/reward-loop.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "compulsion-loop",
-      "name": "强制循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "循环"
-      ],
-      "file": "game-design/core-loop/compulsion-loop.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "meta-loop",
-      "name": "元循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "game-design/core-loop/meta-loop.md",
-      "exists": true,
-      "char_count": 453
-    },
-    {
-      "id": "session-design",
-      "name": "单局设计",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "节奏"
-      ],
-      "file": "game-design/core-loop/session-design.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "onboarding-design",
-      "name": "新手引导设计",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "引导"
-      ],
-      "file": "game-design/core-loop/onboarding-design.md",
-      "exists": true,
-      "char_count": 527
-    },
-    {
-      "id": "retention-design",
-      "name": "留存设计",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "留存"
-      ],
-      "file": "game-design/core-loop/retention-design.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "endgame-design",
-      "name": "终局设计",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "留存"
-      ],
-      "file": "game-design/core-loop/endgame-design.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "daily-loop",
-      "name": "日常循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "循环"
-      ],
-      "file": "game-design/core-loop/daily-loop.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "weekly-loop",
-      "name": "周常循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "循环"
-      ],
-      "file": "game-design/core-loop/weekly-loop.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "genre-loops",
-      "name": "品类核心循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/core-loop/genre-loops.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "action-game-loop",
-      "name": "动作游戏循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/core-loop/action-game-loop.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "rpg-game-loop",
-      "name": "RPG游戏循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/core-loop/rpg-game-loop.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "strategy-game-loop",
-      "name": "策略游戏循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/core-loop/strategy-game-loop.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "idle-game-loop",
-      "name": "放置游戏循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/core-loop/idle-game-loop.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "mobile-f2p-loop",
-      "name": "手游F2P循环",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/core-loop/mobile-f2p-loop.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "loop-analysis",
-      "name": "循环分析方法",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "分析"
-      ],
-      "file": "game-design/core-loop/loop-analysis.md",
-      "exists": true,
-      "char_count": 527
-    },
-    {
-      "id": "loop-metrics",
-      "name": "循环指标",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数据"
-      ],
-      "file": "game-design/core-loop/loop-metrics.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "loop-iteration",
-      "name": "循环迭代",
-      "domain_id": "game-design",
-      "subdomain_id": "core-loop",
-      "subdomain_name": "核心循环",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "迭代"
-      ],
-      "file": "game-design/core-loop/loop-iteration.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "systems-thinking",
-      "name": "系统思维",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/systems-design/systems-thinking.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "emergent-gameplay",
-      "name": "涌现玩法",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "涌现"
-      ],
-      "file": "game-design/systems-design/emergent-gameplay.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "game-state",
-      "name": "游戏状态",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "状态"
-      ],
-      "file": "game-design/systems-design/game-state.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "resource-systems",
-      "name": "资源系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "资源"
-      ],
-      "file": "game-design/systems-design/resource-systems.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "inventory-system",
-      "name": "背包系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/inventory-system.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "crafting-system",
-      "name": "制造系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/crafting-system.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "upgrade-system",
-      "name": "升级系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "成长"
-      ],
-      "file": "game-design/systems-design/upgrade-system.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "skill-tree",
-      "name": "技能树设计",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "成长"
-      ],
-      "file": "game-design/systems-design/skill-tree.md",
-      "exists": true,
-      "char_count": 525
-    },
-    {
-      "id": "quest-system",
-      "name": "任务系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/quest-system.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "achievement-system",
-      "name": "成就系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/achievement-system.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "unlock-system",
-      "name": "解锁系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/unlock-system.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "scoring-system",
-      "name": "积分系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/scoring-system.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "save-system",
-      "name": "存档系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/save-system.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "time-systems",
-      "name": "时间系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/time-systems.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "weather-system",
-      "name": "天气系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "环境"
-      ],
-      "file": "game-design/systems-design/weather-system.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "faction-system",
-      "name": "阵营系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "社交"
-      ],
-      "file": "game-design/systems-design/faction-system.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "pet-companion",
-      "name": "宠物/伙伴系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/pet-companion.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "housing-system",
-      "name": "家园系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "社交"
-      ],
-      "file": "game-design/systems-design/housing-system.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "transportation",
-      "name": "移动/载具系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/systems-design/transportation.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "map-system",
-      "name": "地图系统",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "UI"
-      ],
-      "file": "game-design/systems-design/map-system.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "system-coupling",
-      "name": "系统耦合度",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "架构"
-      ],
-      "file": "game-design/systems-design/system-coupling.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "feature-creep",
-      "name": "功能蔓延",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "管理"
-      ],
-      "file": "game-design/systems-design/feature-creep.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "mvp-design",
-      "name": "最小可玩产品",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法论"
-      ],
-      "file": "game-design/systems-design/mvp-design.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "systems-integration",
-      "name": "系统集成",
-      "domain_id": "game-design",
-      "subdomain_id": "systems-design",
-      "subdomain_name": "系统设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "架构"
-      ],
-      "file": "game-design/systems-design/systems-integration.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "player-motivation",
-      "name": "玩家动机",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/player-psychology/player-motivation.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "flow-theory",
-      "name": "心流理论",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "理论"
-      ],
-      "file": "game-design/player-psychology/flow-theory.md",
-      "exists": true,
-      "char_count": 472
-    },
-    {
-      "id": "bartle-types",
-      "name": "巴图玩家类型",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "模型"
-      ],
-      "file": "game-design/player-psychology/bartle-types.md",
-      "exists": true,
-      "char_count": 489
-    },
-    {
-      "id": "player-personas",
-      "name": "玩家画像",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "研究"
-      ],
-      "file": "game-design/player-psychology/player-personas.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "mastery-curve",
-      "name": "掌握感曲线",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "学习"
-      ],
-      "file": "game-design/player-psychology/mastery-curve.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "autonomy-design",
-      "name": "自主感设计",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "心理"
-      ],
-      "file": "game-design/player-psychology/autonomy-design.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "competence-design",
-      "name": "胜任感设计",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "心理"
-      ],
-      "file": "game-design/player-psychology/competence-design.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "relatedness-design",
-      "name": "归属感设计",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "心理"
-      ],
-      "file": "game-design/player-psychology/relatedness-design.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "emotion-design",
-      "name": "情感设计",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "情感"
-      ],
-      "file": "game-design/player-psychology/emotion-design.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "surprise-delight",
-      "name": "惊喜与愉悦",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "情感"
-      ],
-      "file": "game-design/player-psychology/surprise-delight.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "loss-aversion",
-      "name": "损失厌恶",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "行为"
-      ],
-      "file": "game-design/player-psychology/loss-aversion.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "sunk-cost",
-      "name": "沉没成本",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "行为"
-      ],
-      "file": "game-design/player-psychology/sunk-cost.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "variable-reward",
-      "name": "变动奖励",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "行为"
-      ],
-      "file": "game-design/player-psychology/variable-reward.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "endowment-effect",
-      "name": "禀赋效应",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "行为"
-      ],
-      "file": "game-design/player-psychology/endowment-effect.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "fomo-design",
-      "name": "FOMO设计",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "行为"
-      ],
-      "file": "game-design/player-psychology/fomo-design.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "player-agency",
-      "name": "玩家代入感",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "沉浸"
-      ],
-      "file": "game-design/player-psychology/player-agency.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "cognitive-load",
-      "name": "认知负荷",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "认知"
-      ],
-      "file": "game-design/player-psychology/cognitive-load.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "decision-fatigue",
-      "name": "决策疲劳",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "认知"
-      ],
-      "file": "game-design/player-psychology/decision-fatigue.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "dark-patterns",
-      "name": "暗黑模式",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "伦理"
-      ],
-      "file": "game-design/player-psychology/dark-patterns.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "ethical-design",
-      "name": "道德设计",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "伦理"
-      ],
-      "file": "game-design/player-psychology/ethical-design.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "game-economy-intro",
-      "name": "游戏经济系统概述",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/economy-design/game-economy-intro.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "currency-design",
-      "name": "货币设计",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "货币"
-      ],
-      "file": "game-design/economy-design/currency-design.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "sink-source",
-      "name": "水龙头与排水口",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "平衡"
-      ],
-      "file": "game-design/economy-design/sink-source.md",
-      "exists": true,
-      "char_count": 475
-    },
-    {
-      "id": "inflation-control",
-      "name": "通胀控制",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "经济"
-      ],
-      "file": "game-design/economy-design/inflation-control.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "monetization-models",
-      "name": "商业化模型",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "商业"
-      ],
-      "file": "game-design/economy-design/monetization-models.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "iap-design",
-      "name": "内购设计",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "商业"
-      ],
-      "file": "game-design/economy-design/iap-design.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "gacha-design",
-      "name": "抽卡系统设计",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "商业"
-      ],
-      "file": "game-design/economy-design/gacha-design.md",
-      "exists": true,
-      "char_count": 524
-    },
-    {
-      "id": "battle-pass",
-      "name": "Battle Pass设计",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "商业"
-      ],
-      "file": "game-design/economy-design/battle-pass.md",
-      "exists": true,
-      "char_count": 479
-    },
-    {
-      "id": "shop-design",
-      "name": "商店设计",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "UI"
-      ],
-      "file": "game-design/economy-design/shop-design.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "trading-system",
-      "name": "交易系统",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "社交"
-      ],
-      "file": "game-design/economy-design/trading-system.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "loot-table",
-      "name": "掉落表设计",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "随机"
-      ],
-      "file": "game-design/economy-design/loot-table.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "economy-simulation",
-      "name": "经济模拟",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "game-design/economy-design/economy-simulation.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "pay-to-win",
-      "name": "付费平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "伦理"
-      ],
-      "file": "game-design/economy-design/pay-to-win.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "gift-system",
-      "name": "赠送系统",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "社交"
-      ],
-      "file": "game-design/economy-design/gift-system.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "subscription-model",
-      "name": "订阅模式",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "商业"
-      ],
-      "file": "game-design/economy-design/subscription-model.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "ad-monetization",
-      "name": "广告变现",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "商业"
-      ],
-      "file": "game-design/economy-design/ad-monetization.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "economy-metrics",
-      "name": "经济指标",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数据"
-      ],
-      "file": "game-design/economy-design/economy-metrics.md",
-      "exists": true,
-      "char_count": 468
-    },
-    {
-      "id": "pricing-psychology",
-      "name": "定价心理学",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "心理"
-      ],
-      "file": "game-design/economy-design/pricing-psychology.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "economy-balancing",
-      "name": "经济调平",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "运营"
-      ],
-      "file": "game-design/economy-design/economy-balancing.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "virtual-goods",
-      "name": "虚拟商品设计",
-      "domain_id": "game-design",
-      "subdomain_id": "economy-design",
-      "subdomain_name": "经济系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "设计"
-      ],
-      "file": "game-design/economy-design/virtual-goods.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "balance-intro",
-      "name": "游戏平衡概述",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/balance-design/balance-intro.md",
-      "exists": true,
-      "char_count": 525
-    },
-    {
-      "id": "symmetric-balance",
-      "name": "对称平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "类型"
-      ],
-      "file": "game-design/balance-design/symmetric-balance.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "asymmetric-balance",
-      "name": "非对称平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "类型"
-      ],
-      "file": "game-design/balance-design/asymmetric-balance.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "transitive-balance",
-      "name": "传递性平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "关系"
-      ],
-      "file": "game-design/balance-design/transitive-balance.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "intransitive-balance",
-      "name": "非传递性平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "关系"
-      ],
-      "file": "game-design/balance-design/intransitive-balance.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "number-tuning",
-      "name": "数值调优",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "数值"
-      ],
-      "file": "game-design/balance-design/number-tuning.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "damage-formula",
-      "name": "伤害公式",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数值"
-      ],
-      "file": "game-design/balance-design/damage-formula.md",
-      "exists": true,
-      "char_count": 466
-    },
-    {
-      "id": "level-scaling",
-      "name": "等级缩放",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数值"
-      ],
-      "file": "game-design/balance-design/level-scaling.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "meta-game",
-      "name": "Meta分析",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "竞技"
-      ],
-      "file": "game-design/balance-design/meta-game.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "tier-list",
-      "name": "梯队划分",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "竞技"
-      ],
-      "file": "game-design/balance-design/tier-list.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "nerf-buff",
-      "name": "削弱与增强",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "运营"
-      ],
-      "file": "game-design/balance-design/nerf-buff.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "playtesting-balance",
-      "name": "平衡测试",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "测试"
-      ],
-      "file": "game-design/balance-design/playtesting-balance.md",
-      "exists": true,
-      "char_count": 466
-    },
-    {
-      "id": "data-driven-balance",
-      "name": "数据驱动平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数据"
-      ],
-      "file": "game-design/balance-design/data-driven-balance.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "power-curve",
-      "name": "力量曲线",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数值"
-      ],
-      "file": "game-design/balance-design/power-curve.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "diminishing-returns",
-      "name": "收益递减",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "机制"
-      ],
-      "file": "game-design/balance-design/diminishing-returns.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "rubber-banding",
-      "name": "橡皮筋机制",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "机制"
-      ],
-      "file": "game-design/balance-design/rubber-banding.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "pve-balance",
-      "name": "PvE平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "PvE"
-      ],
-      "file": "game-design/balance-design/pve-balance.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "pvp-balance",
-      "name": "PvP平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "PvP"
-      ],
-      "file": "game-design/balance-design/pvp-balance.md",
-      "exists": true,
-      "char_count": 522
-    },
-    {
-      "id": "co-op-balance",
-      "name": "合作平衡",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "合作"
-      ],
-      "file": "game-design/balance-design/co-op-balance.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "balance-philosophy",
-      "name": "平衡哲学",
-      "domain_id": "game-design",
-      "subdomain_id": "balance-design",
-      "subdomain_name": "平衡性设计",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "理念"
       ],
-      "file": "game-design/balance-design/balance-philosophy.md",
+      "file": "game-design/accessibility/inclusive-design.md",
       "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "combat-overview",
-      "name": "战斗系统概述",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/combat-design/combat-overview.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "real-time-combat",
-      "name": "实时战斗",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "类型"
-      ],
-      "file": "game-design/combat-design/real-time-combat.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "turn-based-combat",
-      "name": "回合制战斗",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "类型"
-      ],
-      "file": "game-design/combat-design/turn-based-combat.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "hybrid-combat",
-      "name": "混合战斗",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "类型"
-      ],
-      "file": "game-design/combat-design/hybrid-combat.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "hit-feedback",
-      "name": "打击感",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "手感"
-      ],
-      "file": "game-design/combat-design/hit-feedback.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "combo-system",
-      "name": "连招系统",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "动作"
-      ],
-      "file": "game-design/combat-design/combo-system.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "dodge-parry",
-      "name": "闪避与格挡",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "动作"
-      ],
-      "file": "game-design/combat-design/dodge-parry.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "lock-on-system",
-      "name": "锁定系统",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "操作"
-      ],
-      "file": "game-design/combat-design/lock-on-system.md",
-      "exists": true,
-      "char_count": 455
-    },
-    {
-      "id": "status-effects",
-      "name": "状态效果",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/combat-design/status-effects.md",
-      "exists": true,
-      "char_count": 464
-    },
-    {
-      "id": "elemental-system",
-      "name": "元素系统",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/combat-design/elemental-system.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "class-design",
-      "name": "职业设计",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "角色"
-      ],
-      "file": "game-design/combat-design/class-design.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "boss-design",
-      "name": "Boss战设计",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "战斗"
-      ],
-      "file": "game-design/combat-design/boss-design.md",
-      "exists": true,
-      "char_count": 530
-    },
-    {
-      "id": "enemy-design",
-      "name": "敌人设计",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "AI"
-      ],
-      "file": "game-design/combat-design/enemy-design.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "weapon-design",
-      "name": "武器设计",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "装备"
-      ],
-      "file": "game-design/combat-design/weapon-design.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "armor-system",
-      "name": "防具系统",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "装备"
-      ],
-      "file": "game-design/combat-design/armor-system.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "skill-design",
-      "name": "技能设计",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技能"
-      ],
-      "file": "game-design/combat-design/skill-design.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "cooldown-design",
-      "name": "冷却设计",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "节奏"
-      ],
-      "file": "game-design/combat-design/cooldown-design.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "ai-behavior",
-      "name": "战斗AI行为",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "AI"
-      ],
-      "file": "game-design/combat-design/ai-behavior.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "encounter-design",
-      "name": "遭遇战设计",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "关卡"
-      ],
-      "file": "game-design/combat-design/encounter-design.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "combat-pacing",
-      "name": "战斗节奏",
-      "domain_id": "game-design",
-      "subdomain_id": "combat-design",
-      "subdomain_name": "战斗设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "节奏"
-      ],
-      "file": "game-design/combat-design/combat-pacing.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "social-design-intro",
-      "name": "社交系统概述",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/social-systems/social-design-intro.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "guild-system",
-      "name": "公会系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "组织"
-      ],
-      "file": "game-design/social-systems/guild-system.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "chat-system",
-      "name": "聊天系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "沟通"
-      ],
-      "file": "game-design/social-systems/chat-system.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "friend-system",
-      "name": "好友系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "关系"
-      ],
-      "file": "game-design/social-systems/friend-system.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "matchmaking",
-      "name": "匹配系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "竞技"
-      ],
-      "file": "game-design/social-systems/matchmaking.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "leaderboard",
-      "name": "排行榜设计",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "竞争"
-      ],
-      "file": "game-design/social-systems/leaderboard.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "coop-design",
-      "name": "合作玩法设计",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "合作"
-      ],
-      "file": "game-design/social-systems/coop-design.md",
-      "exists": true,
-      "char_count": 464
-    },
-    {
-      "id": "competitive-design",
-      "name": "竞技玩法设计",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "竞技"
-      ],
-      "file": "game-design/social-systems/competitive-design.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "elo-rating",
-      "name": "ELO评分系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "game-design/social-systems/elo-rating.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "ugc-system",
-      "name": "用户生成内容",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "创意"
-      ],
-      "file": "game-design/social-systems/ugc-system.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "spectator-mode",
-      "name": "观战系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "电竞"
-      ],
-      "file": "game-design/social-systems/spectator-mode.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "replay-system",
-      "name": "回放系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "分享"
-      ],
-      "file": "game-design/social-systems/replay-system.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "toxicity-management",
-      "name": "毒性管理",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "安全"
-      ],
-      "file": "game-design/social-systems/toxicity-management.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "mentor-system",
-      "name": "师徒系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "社交"
-      ],
-      "file": "game-design/social-systems/mentor-system.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "social-hooks",
-      "name": "社交钩子",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "增长"
-      ],
-      "file": "game-design/social-systems/social-hooks.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "clan-war",
-      "name": "公会战设计",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "竞技"
-      ],
-      "file": "game-design/social-systems/clan-war.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "social-space",
-      "name": "社交空间",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "空间"
-      ],
-      "file": "game-design/social-systems/social-space.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "emote-system",
-      "name": "表情动作系统",
-      "domain_id": "game-design",
-      "subdomain_id": "social-systems",
-      "subdomain_name": "社交系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "表达"
-      ],
-      "file": "game-design/social-systems/emote-system.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "randomness-intro",
-      "name": "随机性概述",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/randomness-design/randomness-intro.md",
-      "exists": true,
-      "char_count": 522
-    },
-    {
-      "id": "input-randomness",
-      "name": "输入随机性",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "类型"
-      ],
-      "file": "game-design/randomness-design/input-randomness.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "output-randomness",
-      "name": "输出随机性",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "类型"
-      ],
-      "file": "game-design/randomness-design/output-randomness.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "probability-design",
-      "name": "概率设计",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "game-design/randomness-design/probability-design.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "pseudo-random",
-      "name": "伪随机分布",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "game-design/randomness-design/pseudo-random.md",
-      "exists": true,
-      "char_count": 466
-    },
-    {
-      "id": "procedural-gen",
-      "name": "程序化生成",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "PCG"
-      ],
-      "file": "game-design/randomness-design/procedural-gen.md",
-      "exists": true,
-      "char_count": 525
-    },
-    {
-      "id": "roguelike-design",
-      "name": "Roguelike设计",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/randomness-design/roguelike-design.md",
-      "exists": true,
-      "char_count": 467
-    },
-    {
-      "id": "seed-system",
-      "name": "种子系统",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "game-design/randomness-design/seed-system.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "loot-randomness",
-      "name": "掉落随机性",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "掉落"
-      ],
-      "file": "game-design/randomness-design/loot-randomness.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "crit-system",
-      "name": "暴击系统",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "战斗"
-      ],
-      "file": "game-design/randomness-design/crit-system.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "miss-system",
-      "name": "命中/闪避系统",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "战斗"
-      ],
-      "file": "game-design/randomness-design/miss-system.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "card-draw",
-      "name": "卡牌抽取",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/randomness-design/card-draw.md",
-      "exists": true,
-      "char_count": 452
-    },
-    {
-      "id": "dice-mechanics",
-      "name": "骰子机制",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "机制"
-      ],
-      "file": "game-design/randomness-design/dice-mechanics.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "shuffle-algorithm",
-      "name": "洗牌算法",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "game-design/randomness-design/shuffle-algorithm.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "weighted-random",
-      "name": "加权随机",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "game-design/randomness-design/weighted-random.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "perception-fairness",
-      "name": "感知公平性",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "心理"
-      ],
-      "file": "game-design/randomness-design/perception-fairness.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "rng-transparency",
-      "name": "随机性透明度",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "UX"
-      ],
-      "file": "game-design/randomness-design/rng-transparency.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "controlled-chaos",
-      "name": "可控混沌",
-      "domain_id": "game-design",
-      "subdomain_id": "randomness-design",
-      "subdomain_name": "随机性设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "设计"
-      ],
-      "file": "game-design/randomness-design/controlled-chaos.md",
-      "exists": true,
-      "char_count": 522
-    },
-    {
-      "id": "feedback-intro",
-      "name": "反馈系统概述",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/feedback-systems/feedback-intro.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "visual-feedback",
-      "name": "视觉反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "视觉"
-      ],
-      "file": "game-design/feedback-systems/visual-feedback.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "audio-feedback",
-      "name": "音频反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "音频"
-      ],
-      "file": "game-design/feedback-systems/audio-feedback.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "haptic-feedback",
-      "name": "触觉反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "触觉"
-      ],
-      "file": "game-design/feedback-systems/haptic-feedback.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "ui-feedback",
-      "name": "UI反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "UI"
-      ],
-      "file": "game-design/feedback-systems/ui-feedback.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "camera-feedback",
-      "name": "摄像机反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "摄像机"
-      ],
-      "file": "game-design/feedback-systems/camera-feedback.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "juice-design",
-      "name": "Juice设计",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "手感"
-      ],
-      "file": "game-design/feedback-systems/juice-design.md",
-      "exists": true,
-      "char_count": 527
-    },
-    {
-      "id": "positive-feedback-loop",
-      "name": "正反馈循环",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "循环"
-      ],
-      "file": "game-design/feedback-systems/positive-feedback-loop.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "negative-feedback-loop",
-      "name": "负反馈循环",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "循环"
-      ],
-      "file": "game-design/feedback-systems/negative-feedback-loop.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "reward-feedback",
-      "name": "奖励反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "奖励"
-      ],
-      "file": "game-design/feedback-systems/reward-feedback.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "failure-feedback",
-      "name": "失败反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "失败"
-      ],
-      "file": "game-design/feedback-systems/failure-feedback.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "progress-feedback",
-      "name": "进度反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "进度"
-      ],
-      "file": "game-design/feedback-systems/progress-feedback.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "damage-numbers",
-      "name": "伤害数字",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "战斗"
-      ],
-      "file": "game-design/feedback-systems/damage-numbers.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "hit-stop",
-      "name": "顿帧(HitStop)",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "手感"
-      ],
-      "file": "game-design/feedback-systems/hit-stop.md",
-      "exists": true,
-      "char_count": 474
-    },
-    {
-      "id": "screen-shake",
-      "name": "屏幕震动",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "手感"
-      ],
-      "file": "game-design/feedback-systems/screen-shake.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "notification-system",
-      "name": "通知系统",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "UI"
-      ],
-      "file": "game-design/feedback-systems/notification-system.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "tutorial-feedback",
-      "name": "教学反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "引导"
-      ],
-      "file": "game-design/feedback-systems/tutorial-feedback.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "ambient-feedback",
-      "name": "环境反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "世界"
-      ],
-      "file": "game-design/feedback-systems/ambient-feedback.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "social-feedback",
-      "name": "社交反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "社交"
-      ],
-      "file": "game-design/feedback-systems/social-feedback.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "delayed-feedback",
-      "name": "延迟反馈",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "策略"
-      ],
-      "file": "game-design/feedback-systems/delayed-feedback.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "feedback-hierarchy",
-      "name": "反馈层级",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "架构"
-      ],
-      "file": "game-design/feedback-systems/feedback-hierarchy.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "feedback-fatigue",
-      "name": "反馈疲劳",
-      "domain_id": "game-design",
-      "subdomain_id": "feedback-systems",
-      "subdomain_name": "反馈系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "问题"
-      ],
-      "file": "game-design/feedback-systems/feedback-fatigue.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "difficulty-overview",
-      "name": "难度设计概述",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/difficulty-curve/difficulty-overview.md",
-      "exists": true,
-      "char_count": 524
-    },
-    {
-      "id": "difficulty-levels",
-      "name": "难度等级",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/difficulty-curve/difficulty-levels.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "adaptive-difficulty",
-      "name": "自适应难度",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "动态"
-      ],
-      "file": "game-design/difficulty-curve/adaptive-difficulty.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "skill-vs-challenge",
-      "name": "技能vs挑战",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "理论"
-      ],
-      "file": "game-design/difficulty-curve/skill-vs-challenge.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "pacing-design",
-      "name": "节奏设计",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "节奏"
-      ],
-      "file": "game-design/difficulty-curve/pacing-design.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "learning-curve",
-      "name": "学习曲线",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "教学"
-      ],
-      "file": "game-design/difficulty-curve/learning-curve.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "difficulty-spike",
-      "name": "难度尖刺",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "问题"
-      ],
-      "file": "game-design/difficulty-curve/difficulty-spike.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "fail-state",
-      "name": "失败状态",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "失败"
-      ],
-      "file": "game-design/difficulty-curve/fail-state.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "checkpoint-design",
-      "name": "检查点设计",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "进度"
-      ],
-      "file": "game-design/difficulty-curve/checkpoint-design.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "soulslike-difficulty",
-      "name": "魂系难度",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "品类"
-      ],
-      "file": "game-design/difficulty-curve/soulslike-difficulty.md",
-      "exists": true,
-      "char_count": 449
-    },
-    {
-      "id": "casual-difficulty",
-      "name": "休闲难度",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "受众"
-      ],
-      "file": "game-design/difficulty-curve/casual-difficulty.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "hardcore-difficulty",
-      "name": "硬核难度",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "受众"
-      ],
-      "file": "game-design/difficulty-curve/hardcore-difficulty.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "assist-mode",
-      "name": "辅助模式",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "可达"
-      ],
-      "file": "game-design/difficulty-curve/assist-mode.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "enemy-scaling",
-      "name": "敌人缩放",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "缩放"
-      ],
-      "file": "game-design/difficulty-curve/enemy-scaling.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "puzzle-difficulty",
-      "name": "谜题难度",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "解谜"
-      ],
-      "file": "game-design/difficulty-curve/puzzle-difficulty.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "tutorial-progression",
-      "name": "教学进度",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "教学"
-      ],
-      "file": "game-design/difficulty-curve/tutorial-progression.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "mastery-expression",
-      "name": "掌握度表达",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "表达"
-      ],
-      "file": "game-design/difficulty-curve/mastery-expression.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "optional-challenge",
-      "name": "可选挑战",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "内容"
-      ],
-      "file": "game-design/difficulty-curve/optional-challenge.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "difficulty-testing",
-      "name": "难度测试",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "测试"
-      ],
-      "file": "game-design/difficulty-curve/difficulty-testing.md",
-      "exists": true,
-      "char_count": 464
-    },
-    {
-      "id": "speed-run-design",
-      "name": "速通设计",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "社区"
-      ],
-      "file": "game-design/difficulty-curve/speed-run-design.md",
-      "exists": true,
-      "char_count": 449
-    },
-    {
-      "id": "new-game-plus",
-      "name": "二周目设计",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "内容"
-      ],
-      "file": "game-design/difficulty-curve/new-game-plus.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "rubber-band-difficulty",
-      "name": "橡皮筋难度",
-      "domain_id": "game-design",
-      "subdomain_id": "difficulty-curve",
-      "subdomain_name": "难度曲线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "竞技"
-      ],
-      "file": "game-design/difficulty-curve/rubber-band-difficulty.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "accessibility-intro",
-      "name": "可达性设计概述",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "game-design/accessibility/accessibility-intro.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "visual-accessibility",
-      "name": "视觉可达性",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "视觉"
-      ],
-      "file": "game-design/accessibility/visual-accessibility.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "colorblind-design",
-      "name": "色盲友好设计",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "视觉"
-      ],
-      "file": "game-design/accessibility/colorblind-design.md",
-      "exists": true,
-      "char_count": 486
-    },
-    {
-      "id": "audio-accessibility",
-      "name": "听觉可达性",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "听觉"
-      ],
-      "file": "game-design/accessibility/audio-accessibility.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "motor-accessibility",
-      "name": "运动可达性",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "操作"
-      ],
-      "file": "game-design/accessibility/motor-accessibility.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "cognitive-accessibility",
-      "name": "认知可达性",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "认知"
-      ],
-      "file": "game-design/accessibility/cognitive-accessibility.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "control-remapping",
-      "name": "控制重映射",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "操作"
-      ],
-      "file": "game-design/accessibility/control-remapping.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "subtitle-design",
-      "name": "字幕设计",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "UI"
-      ],
-      "file": "game-design/accessibility/subtitle-design.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "aim-assist",
-      "name": "辅助瞄准",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "操作"
-      ],
-      "file": "game-design/accessibility/aim-assist.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "text-to-speech",
-      "name": "文字转语音",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "game-design/accessibility/text-to-speech.md",
-      "exists": true,
-      "char_count": 462
+      "char_count": 2514
     },
     {
       "id": "one-hand-mode",
@@ -3342,127 +43,7 @@
       ],
       "file": "game-design/accessibility/one-hand-mode.md",
       "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "screen-reader",
-      "name": "屏幕阅读器",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "game-design/accessibility/screen-reader.md",
-      "exists": true,
-      "char_count": 471
-    },
-    {
-      "id": "photosensitivity",
-      "name": "光敏性考虑",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "安全"
-      ],
-      "file": "game-design/accessibility/photosensitivity.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "accessible-ui",
-      "name": "无障碍UI",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "UI"
-      ],
-      "file": "game-design/accessibility/accessible-ui.md",
-      "exists": true,
-      "char_count": 525
-    },
-    {
-      "id": "difficulty-accessibility",
-      "name": "难度可达性",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "难度"
-      ],
-      "file": "game-design/accessibility/difficulty-accessibility.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "localization-access",
-      "name": "本地化可达性",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "本地化"
-      ],
-      "file": "game-design/accessibility/localization-access.md",
-      "exists": true,
-      "char_count": 464
-    },
-    {
-      "id": "accessibility-testing",
-      "name": "可达性测试",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "测试"
-      ],
-      "file": "game-design/accessibility/accessibility-testing.md",
-      "exists": true,
-      "char_count": 467
-    },
-    {
-      "id": "accessibility-guidelines",
-      "name": "可达性标准",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "法规"
-      ],
-      "file": "game-design/accessibility/accessibility-guidelines.md",
-      "exists": true,
-      "char_count": 468
-    },
-    {
-      "id": "inclusive-design",
-      "name": "包容性设计",
-      "domain_id": "game-design",
-      "subdomain_id": "accessibility",
-      "subdomain_name": "可达性设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "理念"
-      ],
-      "file": "game-design/accessibility/inclusive-design.md",
-      "exists": true,
-      "char_count": 524
+      "char_count": 1314
     },
     {
       "id": "accessibility-audit",
@@ -3477,22 +58,1207 @@
       ],
       "file": "game-design/accessibility/accessibility-audit.md",
       "exists": true,
-      "char_count": 468
+      "char_count": 3048
     },
     {
-      "id": "design-doc-intro",
-      "name": "设计文档概述",
+      "id": "accessibility-guidelines",
+      "name": "可达性标准",
       "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "法规"
+      ],
+      "file": "game-design/accessibility/accessibility-guidelines.md",
+      "exists": true,
+      "char_count": 1346
+    },
+    {
+      "id": "accessibility-testing",
+      "name": "可达性测试",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "game-design/accessibility/accessibility-testing.md",
+      "exists": true,
+      "char_count": 1374
+    },
+    {
+      "id": "accessibility-intro",
+      "name": "可达性设计概述",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
       "difficulty": 1,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "基础"
       ],
-      "file": "game-design/design-docs/design-doc-intro.md",
+      "file": "game-design/accessibility/accessibility-intro.md",
       "exists": true,
-      "char_count": 523
+      "char_count": 2723
+    },
+    {
+      "id": "audio-accessibility",
+      "name": "听觉可达性",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "听觉"
+      ],
+      "file": "game-design/accessibility/audio-accessibility.md",
+      "exists": true,
+      "char_count": 2489
+    },
+    {
+      "id": "subtitle-design",
+      "name": "字幕设计",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UI"
+      ],
+      "file": "game-design/accessibility/subtitle-design.md",
+      "exists": true,
+      "char_count": 2424
+    },
+    {
+      "id": "screen-reader",
+      "name": "屏幕阅读器",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "game-design/accessibility/screen-reader.md",
+      "exists": true,
+      "char_count": 1419
+    },
+    {
+      "id": "control-remapping",
+      "name": "控制重映射",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "操作"
+      ],
+      "file": "game-design/accessibility/control-remapping.md",
+      "exists": true,
+      "char_count": 2329
+    },
+    {
+      "id": "text-to-speech",
+      "name": "文字转语音",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "game-design/accessibility/text-to-speech.md",
+      "exists": true,
+      "char_count": 1243
+    },
+    {
+      "id": "accessible-ui",
+      "name": "无障碍UI",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UI"
+      ],
+      "file": "game-design/accessibility/accessible-ui.md",
+      "exists": true,
+      "char_count": 2539
+    },
+    {
+      "id": "localization-access",
+      "name": "本地化可达性",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "本地化"
+      ],
+      "file": "game-design/accessibility/localization-access.md",
+      "exists": true,
+      "char_count": 2761
+    },
+    {
+      "id": "colorblind-design",
+      "name": "色盲友好设计",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "视觉"
+      ],
+      "file": "game-design/accessibility/colorblind-design.md",
+      "exists": true,
+      "char_count": 1507
+    },
+    {
+      "id": "visual-accessibility",
+      "name": "视觉可达性",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "视觉"
+      ],
+      "file": "game-design/accessibility/visual-accessibility.md",
+      "exists": true,
+      "char_count": 2610
+    },
+    {
+      "id": "cognitive-accessibility",
+      "name": "认知可达性",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "认知"
+      ],
+      "file": "game-design/accessibility/cognitive-accessibility.md",
+      "exists": true,
+      "char_count": 2589
+    },
+    {
+      "id": "aim-assist",
+      "name": "辅助瞄准",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "操作"
+      ],
+      "file": "game-design/accessibility/aim-assist.md",
+      "exists": true,
+      "char_count": 2655
+    },
+    {
+      "id": "motor-accessibility",
+      "name": "运动可达性",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "操作"
+      ],
+      "file": "game-design/accessibility/motor-accessibility.md",
+      "exists": true,
+      "char_count": 2702
+    },
+    {
+      "id": "difficulty-accessibility",
+      "name": "难度可达性",
+      "domain_id": "game-design",
+      "subdomain_id": "accessibility",
+      "subdomain_name": "可达性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "难度"
+      ],
+      "file": "game-design/accessibility/difficulty-accessibility.md",
+      "exists": true,
+      "char_count": 2439
+    },
+    {
+      "id": "meta-game",
+      "name": "Meta分析",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "竞技"
+      ],
+      "file": "game-design/balance-design/meta-game.md",
+      "exists": true,
+      "char_count": 2760
+    },
+    {
+      "id": "pve-balance",
+      "name": "PvE平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "PvE"
+      ],
+      "file": "game-design/balance-design/pve-balance.md",
+      "exists": true,
+      "char_count": 2333
+    },
+    {
+      "id": "pvp-balance",
+      "name": "PvP平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "PvP"
+      ],
+      "file": "game-design/balance-design/pvp-balance.md",
+      "exists": true,
+      "char_count": 2429
+    },
+    {
+      "id": "transitive-balance",
+      "name": "传递性平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "关系"
+      ],
+      "file": "game-design/balance-design/transitive-balance.md",
+      "exists": true,
+      "char_count": 1226
+    },
+    {
+      "id": "damage-formula",
+      "name": "伤害公式",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数值"
+      ],
+      "file": "game-design/balance-design/damage-formula.md",
+      "exists": true,
+      "char_count": 2277
+    },
+    {
+      "id": "nerf-buff",
+      "name": "削弱与增强",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "运营"
+      ],
+      "file": "game-design/balance-design/nerf-buff.md",
+      "exists": true,
+      "char_count": 2296
+    },
+    {
+      "id": "power-curve",
+      "name": "力量曲线",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数值"
+      ],
+      "file": "game-design/balance-design/power-curve.md",
+      "exists": true,
+      "char_count": 1236
+    },
+    {
+      "id": "co-op-balance",
+      "name": "合作平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "合作"
+      ],
+      "file": "game-design/balance-design/co-op-balance.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "symmetric-balance",
+      "name": "对称平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "game-design/balance-design/symmetric-balance.md",
+      "exists": true,
+      "char_count": 2158
+    },
+    {
+      "id": "balance-philosophy",
+      "name": "平衡哲学",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "理念"
+      ],
+      "file": "game-design/balance-design/balance-philosophy.md",
+      "exists": true,
+      "char_count": 1269
+    },
+    {
+      "id": "playtesting-balance",
+      "name": "平衡测试",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "game-design/balance-design/playtesting-balance.md",
+      "exists": true,
+      "char_count": 2280
+    },
+    {
+      "id": "diminishing-returns",
+      "name": "收益递减",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "机制"
+      ],
+      "file": "game-design/balance-design/diminishing-returns.md",
+      "exists": true,
+      "char_count": 1229
+    },
+    {
+      "id": "number-tuning",
+      "name": "数值调优",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数值"
+      ],
+      "file": "game-design/balance-design/number-tuning.md",
+      "exists": true,
+      "char_count": 2504
+    },
+    {
+      "id": "data-driven-balance",
+      "name": "数据驱动平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据"
+      ],
+      "file": "game-design/balance-design/data-driven-balance.md",
+      "exists": true,
+      "char_count": 1296
+    },
+    {
+      "id": "tier-list",
+      "name": "梯队划分",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "竞技"
+      ],
+      "file": "game-design/balance-design/tier-list.md",
+      "exists": true,
+      "char_count": 2049
+    },
+    {
+      "id": "rubber-banding",
+      "name": "橡皮筋机制",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "机制"
+      ],
+      "file": "game-design/balance-design/rubber-banding.md",
+      "exists": true,
+      "char_count": 1352
+    },
+    {
+      "id": "balance-intro",
+      "name": "游戏平衡概述",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/balance-design/balance-intro.md",
+      "exists": true,
+      "char_count": 1496
+    },
+    {
+      "id": "level-scaling",
+      "name": "等级缩放",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数值"
+      ],
+      "file": "game-design/balance-design/level-scaling.md",
+      "exists": true,
+      "char_count": 1322
+    },
+    {
+      "id": "intransitive-balance",
+      "name": "非传递性平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "关系"
+      ],
+      "file": "game-design/balance-design/intransitive-balance.md",
+      "exists": true,
+      "char_count": 1249
+    },
+    {
+      "id": "asymmetric-balance",
+      "name": "非对称平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "balance-design",
+      "subdomain_name": "平衡性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "game-design/balance-design/asymmetric-balance.md",
+      "exists": true,
+      "char_count": 2395
+    },
+    {
+      "id": "cognitive-load",
+      "name": "认知负荷",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "认知"
+      ],
+      "file": "game-design/player-psychology/cognitive-load.md",
+      "exists": true,
+      "char_count": 2409
+    },
+    {
+      "id": "boss-design",
+      "name": "Boss战设计",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "战斗"
+      ],
+      "file": "game-design/combat-design/boss-design.md",
+      "exists": true,
+      "char_count": 1615
+    },
+    {
+      "id": "elemental-system",
+      "name": "元素系统",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/combat-design/elemental-system.md",
+      "exists": true,
+      "char_count": 2230
+    },
+    {
+      "id": "cooldown-design",
+      "name": "冷却设计",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "game-design/combat-design/cooldown-design.md",
+      "exists": true,
+      "char_count": 2564
+    },
+    {
+      "id": "turn-based-combat",
+      "name": "回合制战斗",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "game-design/combat-design/turn-based-combat.md",
+      "exists": true,
+      "char_count": 2284
+    },
+    {
+      "id": "real-time-combat",
+      "name": "实时战斗",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "game-design/combat-design/real-time-combat.md",
+      "exists": true,
+      "char_count": 2345
+    },
+    {
+      "id": "ai-behavior",
+      "name": "战斗AI行为",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "game-design/combat-design/ai-behavior.md",
+      "exists": true,
+      "char_count": 2668
+    },
+    {
+      "id": "combat-overview",
+      "name": "战斗系统概述",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/combat-design/combat-overview.md",
+      "exists": true,
+      "char_count": 1762
+    },
+    {
+      "id": "combat-pacing",
+      "name": "战斗节奏",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "game-design/combat-design/combat-pacing.md",
+      "exists": true,
+      "char_count": 2311
+    },
+    {
+      "id": "hit-feedback",
+      "name": "打击感",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "手感"
+      ],
+      "file": "game-design/combat-design/hit-feedback.md",
+      "exists": true,
+      "char_count": 2332
+    },
+    {
+      "id": "skill-design",
+      "name": "技能设计",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技能"
+      ],
+      "file": "game-design/combat-design/skill-design.md",
+      "exists": true,
+      "char_count": 1298
+    },
+    {
+      "id": "enemy-design",
+      "name": "敌人设计",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "AI"
+      ],
+      "file": "game-design/combat-design/enemy-design.md",
+      "exists": true,
+      "char_count": 1387
+    },
+    {
+      "id": "weapon-design",
+      "name": "武器设计",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "装备"
+      ],
+      "file": "game-design/combat-design/weapon-design.md",
+      "exists": true,
+      "char_count": 2672
+    },
+    {
+      "id": "hybrid-combat",
+      "name": "混合战斗",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "game-design/combat-design/hybrid-combat.md",
+      "exists": true,
+      "char_count": 1248
+    },
+    {
+      "id": "status-effects",
+      "name": "状态效果",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/combat-design/status-effects.md",
+      "exists": true,
+      "char_count": 1262
+    },
+    {
+      "id": "class-design",
+      "name": "职业设计",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "角色"
+      ],
+      "file": "game-design/combat-design/class-design.md",
+      "exists": true,
+      "char_count": 2797
+    },
+    {
+      "id": "combo-system",
+      "name": "连招系统",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动作"
+      ],
+      "file": "game-design/combat-design/combo-system.md",
+      "exists": true,
+      "char_count": 2237
+    },
+    {
+      "id": "encounter-design",
+      "name": "遭遇战设计",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "关卡"
+      ],
+      "file": "game-design/combat-design/encounter-design.md",
+      "exists": true,
+      "char_count": 2492
+    },
+    {
+      "id": "lock-on-system",
+      "name": "锁定系统",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "操作"
+      ],
+      "file": "game-design/combat-design/lock-on-system.md",
+      "exists": true,
+      "char_count": 2250
+    },
+    {
+      "id": "dodge-parry",
+      "name": "闪避与格挡",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "动作"
+      ],
+      "file": "game-design/combat-design/dodge-parry.md",
+      "exists": true,
+      "char_count": 2308
+    },
+    {
+      "id": "armor-system",
+      "name": "防具系统",
+      "domain_id": "game-design",
+      "subdomain_id": "combat-design",
+      "subdomain_name": "战斗设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "装备"
+      ],
+      "file": "game-design/combat-design/armor-system.md",
+      "exists": true,
+      "char_count": 2694
+    },
+    {
+      "id": "rpg-game-loop",
+      "name": "RPG游戏循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/core-loop/rpg-game-loop.md",
+      "exists": true,
+      "char_count": 1314
+    },
+    {
+      "id": "what-is-fun",
+      "name": "什么是乐趣",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/core-loop/what-is-fun.md",
+      "exists": true,
+      "char_count": 1389
+    },
+    {
+      "id": "meta-loop",
+      "name": "元循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "game-design/core-loop/meta-loop.md",
+      "exists": true,
+      "char_count": 2689
+    },
+    {
+      "id": "action-game-loop",
+      "name": "动作游戏循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/core-loop/action-game-loop.md",
+      "exists": true,
+      "char_count": 1287
+    },
+    {
+      "id": "session-design",
+      "name": "单局设计",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "game-design/core-loop/session-design.md",
+      "exists": true,
+      "char_count": 1420
+    },
+    {
+      "id": "engagement-loop",
+      "name": "参与循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "循环"
+      ],
+      "file": "game-design/core-loop/engagement-loop.md",
+      "exists": true,
+      "char_count": 1378
+    },
+    {
+      "id": "weekly-loop",
+      "name": "周常循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "循环"
+      ],
+      "file": "game-design/core-loop/weekly-loop.md",
+      "exists": true,
+      "char_count": 2205
+    },
+    {
+      "id": "genre-loops",
+      "name": "品类核心循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/core-loop/genre-loops.md",
+      "exists": true,
+      "char_count": 1356
+    },
+    {
+      "id": "reward-loop",
+      "name": "奖励循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "循环"
+      ],
+      "file": "game-design/core-loop/reward-loop.md",
+      "exists": true,
+      "char_count": 2167
+    },
+    {
+      "id": "compulsion-loop",
+      "name": "强制循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "循环"
+      ],
+      "file": "game-design/core-loop/compulsion-loop.md",
+      "exists": true,
+      "char_count": 2291
+    },
+    {
+      "id": "loop-analysis",
+      "name": "循环分析方法",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "game-design/core-loop/loop-analysis.md",
+      "exists": true,
+      "char_count": 2253
+    },
+    {
+      "id": "loop-metrics",
+      "name": "循环指标",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据"
+      ],
+      "file": "game-design/core-loop/loop-metrics.md",
+      "exists": true,
+      "char_count": 1209
+    },
+    {
+      "id": "loop-iteration",
+      "name": "循环迭代",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "迭代"
+      ],
+      "file": "game-design/core-loop/loop-iteration.md",
+      "exists": true,
+      "char_count": 1261
+    },
+    {
+      "id": "progression-loop",
+      "name": "成长循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "循环"
+      ],
+      "file": "game-design/core-loop/progression-loop.md",
+      "exists": true,
+      "char_count": 2309
+    },
+    {
+      "id": "mobile-f2p-loop",
+      "name": "手游F2P循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/core-loop/mobile-f2p-loop.md",
+      "exists": true,
+      "char_count": 1391
+    },
+    {
+      "id": "idle-game-loop",
+      "name": "放置游戏循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/core-loop/idle-game-loop.md",
+      "exists": true,
+      "char_count": 1287
+    },
+    {
+      "id": "daily-loop",
+      "name": "日常循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "循环"
+      ],
+      "file": "game-design/core-loop/daily-loop.md",
+      "exists": true,
+      "char_count": 2346
+    },
+    {
+      "id": "core-loop-intro",
+      "name": "核心循环概述",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/core-loop/core-loop-intro.md",
+      "exists": true,
+      "char_count": 2528
+    },
+    {
+      "id": "game-mechanics",
+      "name": "游戏机制",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/core-loop/game-mechanics.md",
+      "exists": true,
+      "char_count": 2488
+    },
+    {
+      "id": "gd-overview",
+      "name": "游戏设计概述",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/core-loop/gd-overview.md",
+      "exists": true,
+      "char_count": 1582
+    },
+    {
+      "id": "retention-design",
+      "name": "留存设计",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "留存"
+      ],
+      "file": "game-design/core-loop/retention-design.md",
+      "exists": true,
+      "char_count": 2371
+    },
+    {
+      "id": "strategy-game-loop",
+      "name": "策略游戏循环",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/core-loop/strategy-game-loop.md",
+      "exists": true,
+      "char_count": 1297
+    },
+    {
+      "id": "endgame-design",
+      "name": "终局设计",
+      "domain_id": "game-design",
+      "subdomain_id": "core-loop",
+      "subdomain_name": "核心循环",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "留存"
+      ],
+      "file": "game-design/core-loop/endgame-design.md",
+      "exists": true,
+      "char_count": 2462
     },
     {
       "id": "gdd-structure",
@@ -3507,97 +1273,7 @@
       ],
       "file": "game-design/design-docs/gdd-structure.md",
       "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "one-pager",
-      "name": "一页纸概念",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "文档"
-      ],
-      "file": "game-design/design-docs/one-pager.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "pitch-deck",
-      "name": "游戏提案",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "商业"
-      ],
-      "file": "game-design/design-docs/pitch-deck.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "feature-spec",
-      "name": "功能规格书",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "文档"
-      ],
-      "file": "game-design/design-docs/feature-spec.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "tech-design-doc",
-      "name": "技术设计文档",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "game-design/design-docs/tech-design-doc.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "content-design-doc",
-      "name": "内容设计文档",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "文档"
-      ],
-      "file": "game-design/design-docs/content-design-doc.md",
-      "exists": true,
-      "char_count": 464
-    },
-    {
-      "id": "balance-doc",
-      "name": "数值设计文档",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数值"
-      ],
-      "file": "game-design/design-docs/balance-doc.md",
-      "exists": true,
-      "char_count": 463
+      "char_count": 1309
     },
     {
       "id": "ui-wireframe",
@@ -3612,37 +1288,52 @@
       ],
       "file": "game-design/design-docs/ui-wireframe.md",
       "exists": true,
-      "char_count": 465
+      "char_count": 2472
     },
     {
-      "id": "flowchart-design",
-      "name": "流程图设计",
+      "id": "one-pager",
+      "name": "一页纸概念",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "文档"
+      ],
+      "file": "game-design/design-docs/one-pager.md",
+      "exists": true,
+      "char_count": 1220
+    },
+    {
+      "id": "content-design-doc",
+      "name": "内容设计文档",
       "domain_id": "game-design",
       "subdomain_id": "design-docs",
       "subdomain_name": "设计文档",
       "difficulty": 2,
       "is_milestone": false,
       "tags": [
-        "工具"
+        "文档"
       ],
-      "file": "game-design/design-docs/flowchart-design.md",
+      "file": "game-design/design-docs/content-design-doc.md",
       "exists": true,
-      "char_count": 468
+      "char_count": 1293
     },
     {
-      "id": "user-story",
-      "name": "用户故事",
+      "id": "feature-spec",
+      "name": "功能规格书",
       "domain_id": "game-design",
       "subdomain_id": "design-docs",
       "subdomain_name": "设计文档",
       "difficulty": 2,
       "is_milestone": false,
       "tags": [
-        "敏捷"
+        "文档"
       ],
-      "file": "game-design/design-docs/user-story.md",
+      "file": "game-design/design-docs/feature-spec.md",
       "exists": true,
-      "char_count": 456
+      "char_count": 1322
     },
     {
       "id": "prototyping",
@@ -3651,133 +1342,13 @@
       "subdomain_id": "design-docs",
       "subdomain_name": "设计文档",
       "difficulty": 2,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "方法"
       ],
       "file": "game-design/design-docs/prototyping.md",
       "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "paper-prototype",
-      "name": "纸面原型",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "方法"
-      ],
-      "file": "game-design/design-docs/paper-prototype.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "playtesting-method",
-      "name": "测试方法论",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "测试"
-      ],
-      "file": "game-design/design-docs/playtesting-method.md",
-      "exists": true,
-      "char_count": 466
-    },
-    {
-      "id": "iteration-process",
-      "name": "迭代流程",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "流程"
-      ],
-      "file": "game-design/design-docs/iteration-process.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "design-pillars",
-      "name": "设计支柱",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法"
-      ],
-      "file": "game-design/design-docs/design-pillars.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "competitive-analysis",
-      "name": "竞品分析",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "研究"
-      ],
-      "file": "game-design/design-docs/competitive-analysis.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "design-review",
-      "name": "设计评审",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "game-design/design-docs/design-review.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "version-control-docs",
-      "name": "文档版本管理",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "管理"
-      ],
-      "file": "game-design/design-docs/version-control-docs.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "living-doc",
-      "name": "活文档",
-      "domain_id": "game-design",
-      "subdomain_id": "design-docs",
-      "subdomain_name": "设计文档",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "管理"
-      ],
-      "file": "game-design/design-docs/living-doc.md",
-      "exists": true,
-      "char_count": 459
+      "char_count": 2562
     },
     {
       "id": "post-mortem",
@@ -3792,7 +1363,52 @@
       ],
       "file": "game-design/design-docs/post-mortem.md",
       "exists": true,
-      "char_count": 459
+      "char_count": 2413
+    },
+    {
+      "id": "tech-design-doc",
+      "name": "技术设计文档",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "game-design/design-docs/tech-design-doc.md",
+      "exists": true,
+      "char_count": 1363
+    },
+    {
+      "id": "balance-doc",
+      "name": "数值设计文档",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数值"
+      ],
+      "file": "game-design/design-docs/balance-doc.md",
+      "exists": true,
+      "char_count": 1331
+    },
+    {
+      "id": "version-control-docs",
+      "name": "文档版本管理",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "game-design/design-docs/version-control-docs.md",
+      "exists": true,
+      "char_count": 1400
     },
     {
       "id": "case-study-writing",
@@ -3807,7 +1423,2338 @@
       ],
       "file": "game-design/design-docs/case-study-writing.md",
       "exists": true,
-      "char_count": 463
+      "char_count": 1276
+    },
+    {
+      "id": "living-doc",
+      "name": "活文档",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "game-design/design-docs/living-doc.md",
+      "exists": true,
+      "char_count": 1296
+    },
+    {
+      "id": "flowchart-design",
+      "name": "流程图设计",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "game-design/design-docs/flowchart-design.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "playtesting-method",
+      "name": "测试方法论",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "game-design/design-docs/playtesting-method.md",
+      "exists": true,
+      "char_count": 2161
+    },
+    {
+      "id": "pitch-deck",
+      "name": "游戏提案",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "game-design/design-docs/pitch-deck.md",
+      "exists": true,
+      "char_count": 1233
+    },
+    {
+      "id": "user-story",
+      "name": "用户故事",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "敏捷"
+      ],
+      "file": "game-design/design-docs/user-story.md",
+      "exists": true,
+      "char_count": 2389
+    },
+    {
+      "id": "paper-prototype",
+      "name": "纸面原型",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "game-design/design-docs/paper-prototype.md",
+      "exists": true,
+      "char_count": 2140
+    },
+    {
+      "id": "design-pillars",
+      "name": "设计支柱",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "game-design/design-docs/design-pillars.md",
+      "exists": true,
+      "char_count": 1237
+    },
+    {
+      "id": "design-doc-intro",
+      "name": "设计文档概述",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/design-docs/design-doc-intro.md",
+      "exists": true,
+      "char_count": 2612
+    },
+    {
+      "id": "design-review",
+      "name": "设计评审",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "game-design/design-docs/design-review.md",
+      "exists": true,
+      "char_count": 1304
+    },
+    {
+      "id": "iteration-process",
+      "name": "迭代流程",
+      "domain_id": "game-design",
+      "subdomain_id": "design-docs",
+      "subdomain_name": "设计文档",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "game-design/design-docs/iteration-process.md",
+      "exists": true,
+      "char_count": 2208
+    },
+    {
+      "id": "new-game-plus",
+      "name": "二周目设计",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "内容"
+      ],
+      "file": "game-design/difficulty-curve/new-game-plus.md",
+      "exists": true,
+      "char_count": 1357
+    },
+    {
+      "id": "casual-difficulty",
+      "name": "休闲难度",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "受众"
+      ],
+      "file": "game-design/difficulty-curve/casual-difficulty.md",
+      "exists": true,
+      "char_count": 2673
+    },
+    {
+      "id": "optional-challenge",
+      "name": "可选挑战",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "内容"
+      ],
+      "file": "game-design/difficulty-curve/optional-challenge.md",
+      "exists": true,
+      "char_count": 1257
+    },
+    {
+      "id": "fail-state",
+      "name": "失败状态",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "失败"
+      ],
+      "file": "game-design/difficulty-curve/fail-state.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "learning-curve",
+      "name": "学习曲线",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "教学"
+      ],
+      "file": "game-design/difficulty-curve/learning-curve.md",
+      "exists": true,
+      "char_count": 2424
+    },
+    {
+      "id": "skill-vs-challenge",
+      "name": "技能vs挑战",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "game-design/difficulty-curve/skill-vs-challenge.md",
+      "exists": true,
+      "char_count": 2776
+    },
+    {
+      "id": "mastery-expression",
+      "name": "掌握度表达",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "表达"
+      ],
+      "file": "game-design/difficulty-curve/mastery-expression.md",
+      "exists": true,
+      "char_count": 1272
+    },
+    {
+      "id": "enemy-scaling",
+      "name": "敌人缩放",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "缩放"
+      ],
+      "file": "game-design/difficulty-curve/enemy-scaling.md",
+      "exists": true,
+      "char_count": 2158
+    },
+    {
+      "id": "tutorial-progression",
+      "name": "教学进度",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "教学"
+      ],
+      "file": "game-design/difficulty-curve/tutorial-progression.md",
+      "exists": true,
+      "char_count": 2239
+    },
+    {
+      "id": "checkpoint-design",
+      "name": "检查点设计",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "进度"
+      ],
+      "file": "game-design/difficulty-curve/checkpoint-design.md",
+      "exists": true,
+      "char_count": 1356
+    },
+    {
+      "id": "rubber-band-difficulty",
+      "name": "橡皮筋难度",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "竞技"
+      ],
+      "file": "game-design/difficulty-curve/rubber-band-difficulty.md",
+      "exists": true,
+      "char_count": 1395
+    },
+    {
+      "id": "hardcore-difficulty",
+      "name": "硬核难度",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "受众"
+      ],
+      "file": "game-design/difficulty-curve/hardcore-difficulty.md",
+      "exists": true,
+      "char_count": 2508
+    },
+    {
+      "id": "adaptive-difficulty",
+      "name": "自适应难度",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动态"
+      ],
+      "file": "game-design/difficulty-curve/adaptive-difficulty.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "pacing-design",
+      "name": "节奏设计",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "节奏"
+      ],
+      "file": "game-design/difficulty-curve/pacing-design.md",
+      "exists": true,
+      "char_count": 1257
+    },
+    {
+      "id": "puzzle-difficulty",
+      "name": "谜题难度",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "解谜"
+      ],
+      "file": "game-design/difficulty-curve/puzzle-difficulty.md",
+      "exists": true,
+      "char_count": 1341
+    },
+    {
+      "id": "assist-mode",
+      "name": "辅助模式",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "可达"
+      ],
+      "file": "game-design/difficulty-curve/assist-mode.md",
+      "exists": true,
+      "char_count": 2159
+    },
+    {
+      "id": "speed-run-design",
+      "name": "速通设计",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "社区"
+      ],
+      "file": "game-design/difficulty-curve/speed-run-design.md",
+      "exists": true,
+      "char_count": 2584
+    },
+    {
+      "id": "difficulty-spike",
+      "name": "难度尖刺",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "问题"
+      ],
+      "file": "game-design/difficulty-curve/difficulty-spike.md",
+      "exists": true,
+      "char_count": 1327
+    },
+    {
+      "id": "difficulty-testing",
+      "name": "难度测试",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "game-design/difficulty-curve/difficulty-testing.md",
+      "exists": true,
+      "char_count": 1234
+    },
+    {
+      "id": "difficulty-levels",
+      "name": "难度等级",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/difficulty-curve/difficulty-levels.md",
+      "exists": true,
+      "char_count": 2237
+    },
+    {
+      "id": "difficulty-overview",
+      "name": "难度设计概述",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/difficulty-curve/difficulty-overview.md",
+      "exists": true,
+      "char_count": 2672
+    },
+    {
+      "id": "soulslike-difficulty",
+      "name": "魂系难度",
+      "domain_id": "game-design",
+      "subdomain_id": "difficulty-curve",
+      "subdomain_name": "难度曲线",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/difficulty-curve/soulslike-difficulty.md",
+      "exists": true,
+      "char_count": 2478
+    },
+    {
+      "id": "battle-pass",
+      "name": "Battle Pass设计",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "game-design/economy-design/battle-pass.md",
+      "exists": true,
+      "char_count": 1594
+    },
+    {
+      "id": "trading-system",
+      "name": "交易系统",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "社交"
+      ],
+      "file": "game-design/economy-design/trading-system.md",
+      "exists": true,
+      "char_count": 2205
+    },
+    {
+      "id": "pay-to-win",
+      "name": "付费平衡",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "伦理"
+      ],
+      "file": "game-design/economy-design/pay-to-win.md",
+      "exists": true,
+      "char_count": 2528
+    },
+    {
+      "id": "iap-design",
+      "name": "内购设计",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "game-design/economy-design/iap-design.md",
+      "exists": true,
+      "char_count": 1265
+    },
+    {
+      "id": "monetization-models",
+      "name": "商业化模型",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "game-design/economy-design/monetization-models.md",
+      "exists": true,
+      "char_count": 2438
+    },
+    {
+      "id": "shop-design",
+      "name": "商店设计",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UI"
+      ],
+      "file": "game-design/economy-design/shop-design.md",
+      "exists": true,
+      "char_count": 2389
+    },
+    {
+      "id": "pricing-psychology",
+      "name": "定价心理学",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "心理"
+      ],
+      "file": "game-design/economy-design/pricing-psychology.md",
+      "exists": true,
+      "char_count": 2833
+    },
+    {
+      "id": "ad-monetization",
+      "name": "广告变现",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "game-design/economy-design/ad-monetization.md",
+      "exists": true,
+      "char_count": 2331
+    },
+    {
+      "id": "gacha-design",
+      "name": "抽卡系统设计",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "game-design/economy-design/gacha-design.md",
+      "exists": true,
+      "char_count": 2210
+    },
+    {
+      "id": "loot-table",
+      "name": "掉落表设计",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "随机"
+      ],
+      "file": "game-design/economy-design/loot-table.md",
+      "exists": true,
+      "char_count": 2413
+    },
+    {
+      "id": "sink-source",
+      "name": "水龙头与排水口",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "平衡"
+      ],
+      "file": "game-design/economy-design/sink-source.md",
+      "exists": true,
+      "char_count": 1470
+    },
+    {
+      "id": "game-economy-intro",
+      "name": "游戏经济系统概述",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/economy-design/game-economy-intro.md",
+      "exists": true,
+      "char_count": 1551
+    },
+    {
+      "id": "economy-metrics",
+      "name": "经济指标",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据"
+      ],
+      "file": "game-design/economy-design/economy-metrics.md",
+      "exists": true,
+      "char_count": 1296
+    },
+    {
+      "id": "economy-simulation",
+      "name": "经济模拟",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "game-design/economy-design/economy-simulation.md",
+      "exists": true,
+      "char_count": 2276
+    },
+    {
+      "id": "economy-balancing",
+      "name": "经济调平",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "运营"
+      ],
+      "file": "game-design/economy-design/economy-balancing.md",
+      "exists": true,
+      "char_count": 2526
+    },
+    {
+      "id": "virtual-goods",
+      "name": "虚拟商品设计",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "game-design/economy-design/virtual-goods.md",
+      "exists": true,
+      "char_count": 1282
+    },
+    {
+      "id": "subscription-model",
+      "name": "订阅模式",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "game-design/economy-design/subscription-model.md",
+      "exists": true,
+      "char_count": 1370
+    },
+    {
+      "id": "currency-design",
+      "name": "货币设计",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "货币"
+      ],
+      "file": "game-design/economy-design/currency-design.md",
+      "exists": true,
+      "char_count": 2280
+    },
+    {
+      "id": "gift-system",
+      "name": "赠送系统",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社交"
+      ],
+      "file": "game-design/economy-design/gift-system.md",
+      "exists": true,
+      "char_count": 2243
+    },
+    {
+      "id": "inflation-control",
+      "name": "通胀控制",
+      "domain_id": "game-design",
+      "subdomain_id": "economy-design",
+      "subdomain_name": "经济系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经济"
+      ],
+      "file": "game-design/economy-design/inflation-control.md",
+      "exists": true,
+      "char_count": 2651
+    },
+    {
+      "id": "juice-design",
+      "name": "Juice设计",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "手感"
+      ],
+      "file": "game-design/feedback-systems/juice-design.md",
+      "exists": true,
+      "char_count": 2473
+    },
+    {
+      "id": "ui-feedback",
+      "name": "UI反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UI"
+      ],
+      "file": "game-design/feedback-systems/ui-feedback.md",
+      "exists": true,
+      "char_count": 1412
+    },
+    {
+      "id": "damage-numbers",
+      "name": "伤害数字",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战斗"
+      ],
+      "file": "game-design/feedback-systems/damage-numbers.md",
+      "exists": true,
+      "char_count": 2344
+    },
+    {
+      "id": "feedback-hierarchy",
+      "name": "反馈层级",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "game-design/feedback-systems/feedback-hierarchy.md",
+      "exists": true,
+      "char_count": 1253
+    },
+    {
+      "id": "feedback-fatigue",
+      "name": "反馈疲劳",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "问题"
+      ],
+      "file": "game-design/feedback-systems/feedback-fatigue.md",
+      "exists": true,
+      "char_count": 2403
+    },
+    {
+      "id": "feedback-intro",
+      "name": "反馈系统概述",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/feedback-systems/feedback-intro.md",
+      "exists": true,
+      "char_count": 2925
+    },
+    {
+      "id": "failure-feedback",
+      "name": "失败反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "失败"
+      ],
+      "file": "game-design/feedback-systems/failure-feedback.md",
+      "exists": true,
+      "char_count": 1335
+    },
+    {
+      "id": "reward-feedback",
+      "name": "奖励反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "奖励"
+      ],
+      "file": "game-design/feedback-systems/reward-feedback.md",
+      "exists": true,
+      "char_count": 2083
+    },
+    {
+      "id": "screen-shake",
+      "name": "屏幕震动",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "手感"
+      ],
+      "file": "game-design/feedback-systems/screen-shake.md",
+      "exists": true,
+      "char_count": 2459
+    },
+    {
+      "id": "delayed-feedback",
+      "name": "延迟反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "game-design/feedback-systems/delayed-feedback.md",
+      "exists": true,
+      "char_count": 1244
+    },
+    {
+      "id": "camera-feedback",
+      "name": "摄像机反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "摄像机"
+      ],
+      "file": "game-design/feedback-systems/camera-feedback.md",
+      "exists": true,
+      "char_count": 1440
+    },
+    {
+      "id": "tutorial-feedback",
+      "name": "教学反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "引导"
+      ],
+      "file": "game-design/feedback-systems/tutorial-feedback.md",
+      "exists": true,
+      "char_count": 1232
+    },
+    {
+      "id": "positive-feedback-loop",
+      "name": "正反馈循环",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "循环"
+      ],
+      "file": "game-design/feedback-systems/positive-feedback-loop.md",
+      "exists": true,
+      "char_count": 1255
+    },
+    {
+      "id": "ambient-feedback",
+      "name": "环境反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "世界"
+      ],
+      "file": "game-design/feedback-systems/ambient-feedback.md",
+      "exists": true,
+      "char_count": 1234
+    },
+    {
+      "id": "social-feedback",
+      "name": "社交反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社交"
+      ],
+      "file": "game-design/feedback-systems/social-feedback.md",
+      "exists": true,
+      "char_count": 1426
+    },
+    {
+      "id": "visual-feedback",
+      "name": "视觉反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "视觉"
+      ],
+      "file": "game-design/feedback-systems/visual-feedback.md",
+      "exists": true,
+      "char_count": 2129
+    },
+    {
+      "id": "haptic-feedback",
+      "name": "触觉反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "触觉"
+      ],
+      "file": "game-design/feedback-systems/haptic-feedback.md",
+      "exists": true,
+      "char_count": 2315
+    },
+    {
+      "id": "negative-feedback-loop",
+      "name": "负反馈循环",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "循环"
+      ],
+      "file": "game-design/feedback-systems/negative-feedback-loop.md",
+      "exists": true,
+      "char_count": 1244
+    },
+    {
+      "id": "progress-feedback",
+      "name": "进度反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "进度"
+      ],
+      "file": "game-design/feedback-systems/progress-feedback.md",
+      "exists": true,
+      "char_count": 2438
+    },
+    {
+      "id": "notification-system",
+      "name": "通知系统",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UI"
+      ],
+      "file": "game-design/feedback-systems/notification-system.md",
+      "exists": true,
+      "char_count": 1244
+    },
+    {
+      "id": "audio-feedback",
+      "name": "音频反馈",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "音频"
+      ],
+      "file": "game-design/feedback-systems/audio-feedback.md",
+      "exists": true,
+      "char_count": 2396
+    },
+    {
+      "id": "hit-stop",
+      "name": "顿帧(HitStop)",
+      "domain_id": "game-design",
+      "subdomain_id": "feedback-systems",
+      "subdomain_name": "反馈系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "手感"
+      ],
+      "file": "game-design/feedback-systems/hit-stop.md",
+      "exists": true,
+      "char_count": 1383
+    },
+    {
+      "id": "onboarding-design",
+      "name": "新手引导设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "引导"
+      ],
+      "file": "game-design/core-loop/onboarding-design.md",
+      "exists": true,
+      "char_count": 1436
+    },
+    {
+      "id": "achievement-system",
+      "name": "成就系统",
+      "domain_id": "game-engine",
+      "subdomain_id": "platform-abstraction",
+      "subdomain_name": "平台抽象",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/achievement-system.md",
+      "exists": true,
+      "char_count": 2452
+    },
+    {
+      "id": "fomo-design",
+      "name": "FOMO设计",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "game-design/player-psychology/fomo-design.md",
+      "exists": true,
+      "char_count": 2210
+    },
+    {
+      "id": "decision-fatigue",
+      "name": "决策疲劳",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "认知"
+      ],
+      "file": "game-design/player-psychology/decision-fatigue.md",
+      "exists": true,
+      "char_count": 1334
+    },
+    {
+      "id": "variable-reward",
+      "name": "变动奖励",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "game-design/player-psychology/variable-reward.md",
+      "exists": true,
+      "char_count": 1225
+    },
+    {
+      "id": "bartle-types",
+      "name": "巴图玩家类型",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "模型"
+      ],
+      "file": "game-design/player-psychology/bartle-types.md",
+      "exists": true,
+      "char_count": 1500
+    },
+    {
+      "id": "relatedness-design",
+      "name": "归属感设计",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "心理"
+      ],
+      "file": "game-design/player-psychology/relatedness-design.md",
+      "exists": true,
+      "char_count": 2345
+    },
+    {
+      "id": "flow-theory",
+      "name": "心流理论",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "game-design/player-psychology/flow-theory.md",
+      "exists": true,
+      "char_count": 1376
+    },
+    {
+      "id": "emotion-design",
+      "name": "情感设计",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "情感"
+      ],
+      "file": "game-design/player-psychology/emotion-design.md",
+      "exists": true,
+      "char_count": 2557
+    },
+    {
+      "id": "surprise-delight",
+      "name": "惊喜与愉悦",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "情感"
+      ],
+      "file": "game-design/player-psychology/surprise-delight.md",
+      "exists": true,
+      "char_count": 2407
+    },
+    {
+      "id": "loss-aversion",
+      "name": "损失厌恶",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "game-design/player-psychology/loss-aversion.md",
+      "exists": true,
+      "char_count": 2458
+    },
+    {
+      "id": "mastery-curve",
+      "name": "掌握感曲线",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "game-design/player-psychology/mastery-curve.md",
+      "exists": true,
+      "char_count": 2220
+    },
+    {
+      "id": "dark-patterns",
+      "name": "暗黑模式",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "伦理"
+      ],
+      "file": "game-design/player-psychology/dark-patterns.md",
+      "exists": true,
+      "char_count": 2299
+    },
+    {
+      "id": "sunk-cost",
+      "name": "沉没成本",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "game-design/player-psychology/sunk-cost.md",
+      "exists": true,
+      "char_count": 1204
+    },
+    {
+      "id": "player-agency",
+      "name": "玩家代入感",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "沉浸"
+      ],
+      "file": "game-design/player-psychology/player-agency.md",
+      "exists": true,
+      "char_count": 2328
+    },
+    {
+      "id": "player-motivation",
+      "name": "玩家动机",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/player-psychology/player-motivation.md",
+      "exists": true,
+      "char_count": 3591
+    },
+    {
+      "id": "player-personas",
+      "name": "玩家画像",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "研究"
+      ],
+      "file": "game-design/player-psychology/player-personas.md",
+      "exists": true,
+      "char_count": 2019
+    },
+    {
+      "id": "endowment-effect",
+      "name": "禀赋效应",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "game-design/player-psychology/endowment-effect.md",
+      "exists": true,
+      "char_count": 2094
+    },
+    {
+      "id": "competence-design",
+      "name": "胜任感设计",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "心理"
+      ],
+      "file": "game-design/player-psychology/competence-design.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "autonomy-design",
+      "name": "自主感设计",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "心理"
+      ],
+      "file": "game-design/player-psychology/autonomy-design.md",
+      "exists": true,
+      "char_count": 1330
+    },
+    {
+      "id": "ethical-design",
+      "name": "道德设计",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "伦理"
+      ],
+      "file": "game-design/player-psychology/ethical-design.md",
+      "exists": true,
+      "char_count": 2443
+    },
+    {
+      "id": "mvp-design",
+      "name": "MVP设计",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "game-design/systems-design/mvp-design.md",
+      "exists": true,
+      "char_count": 1243
+    },
+    {
+      "id": "systems-thinking",
+      "name": "系统思维",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/systems-design/systems-thinking.md",
+      "exists": true,
+      "char_count": 2433
+    },
+    {
+      "id": "roguelike-design",
+      "name": "Roguelike设计",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/randomness-design/roguelike-design.md",
+      "exists": true,
+      "char_count": 1603
+    },
+    {
+      "id": "pseudo-random",
+      "name": "伪随机分布",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "game-design/randomness-design/pseudo-random.md",
+      "exists": true,
+      "char_count": 1364
+    },
+    {
+      "id": "weighted-random",
+      "name": "加权随机",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "game-design/randomness-design/weighted-random.md",
+      "exists": true,
+      "char_count": 2308
+    },
+    {
+      "id": "card-draw",
+      "name": "卡牌抽取",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "品类"
+      ],
+      "file": "game-design/randomness-design/card-draw.md",
+      "exists": true,
+      "char_count": 2501
+    },
+    {
+      "id": "controlled-chaos",
+      "name": "可控混沌",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "game-design/randomness-design/controlled-chaos.md",
+      "exists": true,
+      "char_count": 2269
+    },
+    {
+      "id": "miss-system",
+      "name": "命中/闪避系统",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战斗"
+      ],
+      "file": "game-design/randomness-design/miss-system.md",
+      "exists": true,
+      "char_count": 2369
+    },
+    {
+      "id": "perception-fairness",
+      "name": "感知公平性",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "心理"
+      ],
+      "file": "game-design/randomness-design/perception-fairness.md",
+      "exists": true,
+      "char_count": 1361
+    },
+    {
+      "id": "loot-randomness",
+      "name": "掉落随机性",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "掉落"
+      ],
+      "file": "game-design/randomness-design/loot-randomness.md",
+      "exists": true,
+      "char_count": 2511
+    },
+    {
+      "id": "crit-system",
+      "name": "暴击系统",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战斗"
+      ],
+      "file": "game-design/randomness-design/crit-system.md",
+      "exists": true,
+      "char_count": 2257
+    },
+    {
+      "id": "probability-design",
+      "name": "概率设计",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "game-design/randomness-design/probability-design.md",
+      "exists": true,
+      "char_count": 2277
+    },
+    {
+      "id": "shuffle-algorithm",
+      "name": "洗牌算法",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "game-design/randomness-design/shuffle-algorithm.md",
+      "exists": true,
+      "char_count": 1279
+    },
+    {
+      "id": "seed-system",
+      "name": "种子系统",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/randomness-design/seed-system.md",
+      "exists": true,
+      "char_count": 2301
+    },
+    {
+      "id": "procedural-gen",
+      "name": "程序化生成",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "PCG"
+      ],
+      "file": "game-design/randomness-design/procedural-gen.md",
+      "exists": true,
+      "char_count": 2582
+    },
+    {
+      "id": "input-randomness",
+      "name": "输入随机性",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "game-design/randomness-design/input-randomness.md",
+      "exists": true,
+      "char_count": 1239
+    },
+    {
+      "id": "output-randomness",
+      "name": "输出随机性",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "类型"
+      ],
+      "file": "game-design/randomness-design/output-randomness.md",
+      "exists": true,
+      "char_count": 2138
+    },
+    {
+      "id": "randomness-intro",
+      "name": "随机性概述",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/randomness-design/randomness-intro.md",
+      "exists": true,
+      "char_count": 2174
+    },
+    {
+      "id": "rng-transparency",
+      "name": "随机性透明度",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UX"
+      ],
+      "file": "game-design/randomness-design/rng-transparency.md",
+      "exists": true,
+      "char_count": 1292
+    },
+    {
+      "id": "dice-mechanics",
+      "name": "骰子机制",
+      "domain_id": "game-design",
+      "subdomain_id": "randomness-design",
+      "subdomain_name": "随机性设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "机制"
+      ],
+      "file": "game-design/randomness-design/dice-mechanics.md",
+      "exists": true,
+      "char_count": 2229
+    },
+    {
+      "id": "weather-system",
+      "name": "天气系统",
+      "domain_id": "game-engine",
+      "subdomain_id": "scene-management",
+      "subdomain_name": "场景管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "game-design/systems-design/weather-system.md",
+      "exists": true,
+      "char_count": 1302
+    },
+    {
+      "id": "replay-system",
+      "name": "回放系统",
+      "domain_id": "game-engine",
+      "subdomain_id": "serialization",
+      "subdomain_name": "序列化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分享"
+      ],
+      "file": "game-design/social-systems/replay-system.md",
+      "exists": true,
+      "char_count": 2276
+    },
+    {
+      "id": "elo-rating",
+      "name": "ELO评分系统",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "game-design/social-systems/elo-rating.md",
+      "exists": true,
+      "char_count": 2442
+    },
+    {
+      "id": "clan-war",
+      "name": "公会战设计",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "竞技"
+      ],
+      "file": "game-design/social-systems/clan-war.md",
+      "exists": true,
+      "char_count": 2474
+    },
+    {
+      "id": "guild-system",
+      "name": "公会系统",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "组织"
+      ],
+      "file": "game-design/social-systems/guild-system.md",
+      "exists": true,
+      "char_count": 2529
+    },
+    {
+      "id": "matchmaking",
+      "name": "匹配系统",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "竞技"
+      ],
+      "file": "game-design/social-systems/matchmaking.md",
+      "exists": true,
+      "char_count": 2293
+    },
+    {
+      "id": "coop-design",
+      "name": "合作玩法设计",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "合作"
+      ],
+      "file": "game-design/social-systems/coop-design.md",
+      "exists": true,
+      "char_count": 1361
+    },
+    {
+      "id": "friend-system",
+      "name": "好友系统",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "关系"
+      ],
+      "file": "game-design/social-systems/friend-system.md",
+      "exists": true,
+      "char_count": 2376
+    },
+    {
+      "id": "mentor-system",
+      "name": "师徒系统",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "社交"
+      ],
+      "file": "game-design/social-systems/mentor-system.md",
+      "exists": true,
+      "char_count": 2119
+    },
+    {
+      "id": "leaderboard",
+      "name": "排行榜设计",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "竞争"
+      ],
+      "file": "game-design/social-systems/leaderboard.md",
+      "exists": true,
+      "char_count": 1248
+    },
+    {
+      "id": "toxicity-management",
+      "name": "毒性管理",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "安全"
+      ],
+      "file": "game-design/social-systems/toxicity-management.md",
+      "exists": true,
+      "char_count": 1461
+    },
+    {
+      "id": "ugc-system",
+      "name": "用户生成内容",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "创意"
+      ],
+      "file": "game-design/social-systems/ugc-system.md",
+      "exists": true,
+      "char_count": 1448
+    },
+    {
+      "id": "social-space",
+      "name": "社交空间",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "空间"
+      ],
+      "file": "game-design/social-systems/social-space.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "social-design-intro",
+      "name": "社交系统概述",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "game-design/social-systems/social-design-intro.md",
+      "exists": true,
+      "char_count": 3303
+    },
+    {
+      "id": "social-hooks",
+      "name": "社交钩子",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "增长"
+      ],
+      "file": "game-design/social-systems/social-hooks.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "competitive-design",
+      "name": "竞技玩法设计",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "竞技"
+      ],
+      "file": "game-design/social-systems/competitive-design.md",
+      "exists": true,
+      "char_count": 2926
+    },
+    {
+      "id": "chat-system",
+      "name": "聊天系统",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "沟通"
+      ],
+      "file": "game-design/social-systems/chat-system.md",
+      "exists": true,
+      "char_count": 2178
+    },
+    {
+      "id": "emote-system",
+      "name": "表情动作系统",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "表达"
+      ],
+      "file": "game-design/social-systems/emote-system.md",
+      "exists": true,
+      "char_count": 2465
+    },
+    {
+      "id": "spectator-mode",
+      "name": "观战系统",
+      "domain_id": "game-design",
+      "subdomain_id": "social-systems",
+      "subdomain_name": "社交系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "电竞"
+      ],
+      "file": "game-design/social-systems/spectator-mode.md",
+      "exists": true,
+      "char_count": 2105
+    },
+    {
+      "id": "quest-system",
+      "name": "任务系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/quest-system.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "crafting-system",
+      "name": "制造系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/crafting-system.md",
+      "exists": true,
+      "char_count": 2275
+    },
+    {
+      "id": "feature-creep",
+      "name": "功能蔓延",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "game-design/systems-design/feature-creep.md",
+      "exists": true,
+      "char_count": 2382
+    },
+    {
+      "id": "upgrade-system",
+      "name": "升级系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "成长"
+      ],
+      "file": "game-design/systems-design/upgrade-system.md",
+      "exists": true,
+      "char_count": 1433
+    },
+    {
+      "id": "map-system",
+      "name": "地图系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "UI"
+      ],
+      "file": "game-design/systems-design/map-system.md",
+      "exists": true,
+      "char_count": 2454
+    },
+    {
+      "id": "save-system",
+      "name": "存档系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/save-system.md",
+      "exists": true,
+      "char_count": 2236
+    },
+    {
+      "id": "pet-companion",
+      "name": "宠物/伙伴系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/pet-companion.md",
+      "exists": true,
+      "char_count": 2451
+    },
+    {
+      "id": "housing-system",
+      "name": "家园系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "社交"
+      ],
+      "file": "game-design/systems-design/housing-system.md",
+      "exists": true,
+      "char_count": 2415
+    },
+    {
+      "id": "skill-tree",
+      "name": "技能树设计",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "成长"
+      ],
+      "file": "game-design/systems-design/skill-tree.md",
+      "exists": true,
+      "char_count": 2755
+    },
+    {
+      "id": "time-systems",
+      "name": "时间系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/time-systems.md",
+      "exists": true,
+      "char_count": 2493
+    },
+    {
+      "id": "emergent-gameplay",
+      "name": "涌现玩法",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "涌现"
+      ],
+      "file": "game-design/systems-design/emergent-gameplay.md",
+      "exists": true,
+      "char_count": 1254
+    },
+    {
+      "id": "game-state",
+      "name": "游戏状态",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "状态"
+      ],
+      "file": "game-design/systems-design/game-state.md",
+      "exists": true,
+      "char_count": 2646
+    },
+    {
+      "id": "scoring-system",
+      "name": "积分系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/scoring-system.md",
+      "exists": true,
+      "char_count": 2197
+    },
+    {
+      "id": "transportation",
+      "name": "移动/载具系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/transportation.md",
+      "exists": true,
+      "char_count": 2190
+    },
+    {
+      "id": "system-coupling",
+      "name": "系统耦合度",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "game-design/systems-design/system-coupling.md",
+      "exists": true,
+      "char_count": 2509
+    },
+    {
+      "id": "systems-integration",
+      "name": "系统集成",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "game-design/systems-design/systems-integration.md",
+      "exists": true,
+      "char_count": 2756
+    },
+    {
+      "id": "inventory-system",
+      "name": "背包系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/inventory-system.md",
+      "exists": true,
+      "char_count": 2419
+    },
+    {
+      "id": "unlock-system",
+      "name": "解锁系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "game-design/systems-design/unlock-system.md",
+      "exists": true,
+      "char_count": 2289
+    },
+    {
+      "id": "resource-systems",
+      "name": "资源系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "资源"
+      ],
+      "file": "game-design/systems-design/resource-systems.md",
+      "exists": true,
+      "char_count": 2243
+    },
+    {
+      "id": "faction-system",
+      "name": "阵营系统",
+      "domain_id": "game-design",
+      "subdomain_id": "systems-design",
+      "subdomain_name": "系统设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "社交"
+      ],
+      "file": "game-design/systems-design/faction-system.md",
+      "exists": true,
+      "char_count": 2363
+    },
+    {
+      "id": "competitive-analysis",
+      "name": "竞品分析",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "研究"
+      ],
+      "file": "game-design/design-docs/competitive-analysis.md",
+      "exists": true,
+      "char_count": 1339
     }
-  ]
+  ],
+  "stats": {
+    "total": 250,
+    "total_chars": 494127,
+    "avg_chars": 1976,
+    "domain": "game-design"
+  }
 }

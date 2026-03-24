@@ -1,3393 +1,19 @@
 {
-  "version": "1.0",
-  "domain": "3d-art",
-  "domain_name": "3D美术",
-  "generated_at": "2026-03-21T00:00:00",
-  "total_concepts": 226,
-  "stats": {
-    "total_docs": 226,
-    "total_chars": 144935,
-    "by_subdomain": {
-      "modeling-fundamentals": {
-        "count": 20,
-        "chars": 12691
-      },
-      "hard-surface": {
-        "count": 20,
-        "chars": 13036
-      },
-      "organic-modeling": {
-        "count": 20,
-        "chars": 12681
-      },
-      "sculpting": {
-        "count": 20,
-        "chars": 12894
-      },
-      "retopology": {
-        "count": 18,
-        "chars": 11605
-      },
-      "uv-unwrapping": {
-        "count": 18,
-        "chars": 11741
-      },
-      "texturing": {
-        "count": 22,
-        "chars": 14612
-      },
-      "baking": {
-        "count": 16,
-        "chars": 10165
-      },
-      "rigging": {
-        "count": 18,
-        "chars": 11292
-      },
-      "environment-art": {
-        "count": 20,
-        "chars": 12585
-      },
-      "prop-art": {
-        "count": 16,
-        "chars": 10176
-      },
-      "asset-pipeline": {
-        "count": 18,
-        "chars": 11457
-      }
-    }
-  },
   "documents": [
     {
-      "id": "3da-modeling-intro",
-      "name": "3D建模概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-modeling-intro.md",
-      "exists": true,
-      "char_count": 645
-    },
-    {
-      "id": "3da-polygon-basics",
-      "name": "多边形基础",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-polygon-basics.md",
-      "exists": true,
-      "char_count": 638
-    },
-    {
-      "id": "3da-mesh-topology",
-      "name": "网格拓扑",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-mesh-topology.md",
-      "exists": true,
-      "char_count": 627
-    },
-    {
-      "id": "3da-edge-flow",
-      "name": "布线原则",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-edge-flow.md",
-      "exists": true,
-      "char_count": 621
-    },
-    {
-      "id": "3da-transform-tools",
-      "name": "变换工具",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-transform-tools.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "3da-modeling-modes",
-      "name": "编辑模式",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-modeling-modes.md",
-      "exists": true,
-      "char_count": 631
-    },
-    {
-      "id": "3da-extrude-inset",
-      "name": "挤出与内插",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-extrude-inset.md",
-      "exists": true,
-      "char_count": 656
-    },
-    {
-      "id": "3da-loop-cut",
-      "name": "环切与细分",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-loop-cut.md",
-      "exists": true,
-      "char_count": 642
-    },
-    {
-      "id": "3da-boolean-ops",
-      "name": "布尔运算",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-boolean-ops.md",
-      "exists": true,
-      "char_count": 621
-    },
-    {
-      "id": "3da-modifier-stack",
-      "name": "修改器栈",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-modifier-stack.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "3da-mirror-modifier",
-      "name": "镜像修改器",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-mirror-modifier.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "3da-subdivision-surface",
-      "name": "细分曲面修改器",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-subdivision-surface.md",
-      "exists": true,
-      "char_count": 668
-    },
-    {
-      "id": "3da-normals-smoothing",
-      "name": "法线与平滑",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-normals-smoothing.md",
-      "exists": true,
-      "char_count": 636
-    },
-    {
-      "id": "3da-reference-setup",
-      "name": "参考图设置",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-reference-setup.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "3da-scale-proportion",
-      "name": "比例与尺度",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-scale-proportion.md",
-      "exists": true,
-      "char_count": 636
-    },
-    {
-      "id": "3da-pivot-origin",
-      "name": "轴心与原点",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-pivot-origin.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "3da-snapping",
-      "name": "吸附与对齐",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-snapping.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "3da-mesh-cleanup",
-      "name": "网格清理",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-mesh-cleanup.md",
-      "exists": true,
-      "char_count": 625
-    },
-    {
-      "id": "3da-blockout",
-      "name": "白盒建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-blockout.md",
-      "exists": true,
-      "char_count": 625
-    },
-    {
-      "id": "3da-modeling-workflow",
-      "name": "建模工作流总览",
-      "domain_id": "3d-art",
-      "subdomain_id": "modeling-fundamentals",
-      "subdomain_name": "建模基础",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-modeling-workflow.md",
-      "exists": true,
-      "char_count": 652
-    },
-    {
-      "id": "3da-hs-intro",
-      "name": "硬表面建模概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-hs-intro.md",
-      "exists": true,
-      "char_count": 657
-    },
-    {
-      "id": "3da-hs-bevel-edges",
-      "name": "倒角边工作流",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-hs-bevel-edges.md",
-      "exists": true,
-      "char_count": 642
-    },
-    {
-      "id": "3da-hs-support-loops",
-      "name": "支撑环",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-hs-support-loops.md",
-      "exists": true,
-      "char_count": 637
-    },
-    {
-      "id": "3da-hs-crease",
-      "name": "褶皱权重",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-hs-crease.md",
-      "exists": true,
-      "char_count": 644
-    },
-    {
-      "id": "3da-hs-boolean-workflow",
-      "name": "布尔硬表面工作流",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "工作流"
-      ],
-      "file": "3d-art/3da-hs-boolean-workflow.md",
-      "exists": true,
-      "char_count": 665
-    },
-    {
-      "id": "3da-hs-panel-lines",
-      "name": "面板线与缝隙",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-hs-panel-lines.md",
-      "exists": true,
-      "char_count": 644
-    },
-    {
-      "id": "3da-hs-greeble",
-      "name": "Greeble细节",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-hs-greeble.md",
-      "exists": true,
-      "char_count": 669
-    },
-    {
-      "id": "3da-hs-mechanical",
-      "name": "机械零件建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-hs-mechanical.md",
-      "exists": true,
-      "char_count": 644
-    },
-    {
-      "id": "3da-hs-vehicle",
-      "name": "载具建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-hs-vehicle.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "3da-hs-weapon",
-      "name": "武器建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-hs-weapon.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "3da-hs-architecture",
-      "name": "建筑建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-hs-architecture.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-hs-kitbash",
-      "name": "KitBash技法",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工作流"
-      ],
-      "file": "3d-art/3da-hs-kitbash.md",
-      "exists": true,
-      "char_count": 668
-    },
-    {
-      "id": "3da-hs-curved-surface",
-      "name": "曲面控制",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-hs-curved-surface.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "3da-hs-ngon-management",
-      "name": "N-gon管理",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-hs-ngon-management.md",
-      "exists": true,
-      "char_count": 655
-    },
-    {
-      "id": "3da-hs-symmetry",
-      "name": "对称与阵列",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-hs-symmetry.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "3da-hs-decal-mesh",
-      "name": "Decal Mesh",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-hs-decal-mesh.md",
-      "exists": true,
-      "char_count": 676
-    },
-    {
-      "id": "3da-hs-trim-sheet",
-      "name": "Trim Sheet",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工作流"
-      ],
-      "file": "3d-art/3da-hs-trim-sheet.md",
-      "exists": true,
-      "char_count": 691
-    },
-    {
-      "id": "3da-hs-floating-geo",
-      "name": "浮动几何",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-hs-floating-geo.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "3da-hs-subd-vs-chamfer",
-      "name": "SubD vs Chamfer",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "对比"
-      ],
-      "file": "3d-art/3da-hs-subd-vs-chamfer.md",
-      "exists": true,
-      "char_count": 729
-    },
-    {
-      "id": "3da-hs-game-ready",
-      "name": "游戏级硬表面资产",
-      "domain_id": "3d-art",
-      "subdomain_id": "hard-surface",
-      "subdomain_name": "硬表面建模",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-hs-game-ready.md",
-      "exists": true,
-      "char_count": 664
-    },
-    {
-      "id": "3da-org-intro",
-      "name": "有机建模概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-org-intro.md",
-      "exists": true,
-      "char_count": 642
-    },
-    {
-      "id": "3da-org-face-topology",
-      "name": "面部拓扑",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-org-face-topology.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "3da-org-body-proportion",
-      "name": "人体比例",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-org-body-proportion.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "3da-org-anatomy-basics",
-      "name": "解剖学基础",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-org-anatomy-basics.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "3da-org-hand-foot",
-      "name": "手脚建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-org-hand-foot.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-org-head-modeling",
-      "name": "头部建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-org-head-modeling.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-org-body-modeling",
-      "name": "躯干建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-org-body-modeling.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "3da-org-creature",
-      "name": "生物建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-org-creature.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "3da-org-cloth-sim",
-      "name": "衣物建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-org-cloth-sim.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-org-hair-modeling",
-      "name": "毛发建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "3d-art/3da-org-hair-modeling.md",
-      "exists": true,
-      "char_count": 632
-    },
-    {
-      "id": "3da-org-muscle-deform",
-      "name": "肌肉变形",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "3d-art/3da-org-muscle-deform.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "3da-org-wrinkle-detail",
-      "name": "皱纹与细节",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "细节"
-      ],
-      "file": "3d-art/3da-org-wrinkle-detail.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "3da-org-stylized-char",
-      "name": "风格化角色",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "风格"
-      ],
-      "file": "3d-art/3da-org-stylized-char.md",
-      "exists": true,
-      "char_count": 639
-    },
-    {
-      "id": "3da-org-realistic-char",
-      "name": "写实角色",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-org-realistic-char.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "3da-org-expression",
-      "name": "表情制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "3d-art/3da-org-expression.md",
-      "exists": true,
-      "char_count": 650
-    },
-    {
-      "id": "3da-org-edge-loops-organic",
-      "name": "有机体布线环",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-org-edge-loops-organic.md",
-      "exists": true,
-      "char_count": 640
-    },
-    {
-      "id": "3da-org-symmetry-break",
-      "name": "对称打破",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-org-symmetry-break.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "3da-org-proportion-check",
-      "name": "比例检查",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-org-proportion-check.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-org-tpose-apose",
-      "name": "T-Pose与A-Pose",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-org-tpose-apose.md",
-      "exists": true,
-      "char_count": 705
-    },
-    {
-      "id": "3da-org-game-ready-char",
-      "name": "游戏级角色制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "organic-modeling",
-      "subdomain_name": "有机建模",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-org-game-ready-char.md",
-      "exists": true,
-      "char_count": 653
-    },
-    {
-      "id": "3da-sculpt-intro",
-      "name": "数字雕刻概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-sculpt-intro.md",
-      "exists": true,
-      "char_count": 646
-    },
-    {
-      "id": "3da-sculpt-brushes",
-      "name": "雕刻笔刷",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-sculpt-brushes.md",
-      "exists": true,
-      "char_count": 662
-    },
-    {
-      "id": "3da-sculpt-alphas",
-      "name": "Alpha与笔触纹理",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-sculpt-alphas.md",
-      "exists": true,
-      "char_count": 674
-    },
-    {
-      "id": "3da-sculpt-dynamesh",
-      "name": "DynaMesh",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-sculpt-dynamesh.md",
-      "exists": true,
-      "char_count": 650
-    },
-    {
-      "id": "3da-sculpt-multires",
-      "name": "多分辨率雕刻",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-sculpt-multires.md",
-      "exists": true,
-      "char_count": 632
-    },
-    {
-      "id": "3da-sculpt-layers",
-      "name": "雕刻层",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-sculpt-layers.md",
-      "exists": true,
-      "char_count": 603
-    },
-    {
-      "id": "3da-sculpt-form",
-      "name": "形体把控",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-sculpt-form.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "3da-sculpt-anatomy-app",
-      "name": "解剖学应用",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-sculpt-anatomy-app.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "3da-sculpt-hard-surface",
-      "name": "雕刻式硬表面",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "跨域"
-      ],
-      "file": "3d-art/3da-sculpt-hard-surface.md",
-      "exists": true,
-      "char_count": 672
-    },
-    {
-      "id": "3da-sculpt-detailing",
-      "name": "细节雕刻",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-sculpt-detailing.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "3da-sculpt-posing",
-      "name": "姿势调整",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-sculpt-posing.md",
-      "exists": true,
-      "char_count": 630
-    },
-    {
-      "id": "3da-sculpt-insert-mesh",
-      "name": "Insert Mesh笔刷",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-sculpt-insert-mesh.md",
-      "exists": true,
-      "char_count": 699
-    },
-    {
-      "id": "3da-sculpt-masks",
-      "name": "遮罩与分组",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-sculpt-masks.md",
-      "exists": true,
-      "char_count": 643
-    },
-    {
-      "id": "3da-sculpt-zbrush-workflow",
-      "name": "ZBrush工作流",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工作流"
-      ],
-      "file": "3d-art/3da-sculpt-zbrush-workflow.md",
-      "exists": true,
-      "char_count": 682
-    },
-    {
-      "id": "3da-sculpt-blender-sculpt",
-      "name": "Blender雕刻",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-sculpt-blender-sculpt.md",
-      "exists": true,
-      "char_count": 663
-    },
-    {
-      "id": "3da-sculpt-3dcoat",
-      "name": "3DCoat雕刻",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-sculpt-3dcoat.md",
-      "exists": true,
-      "char_count": 656
-    },
-    {
-      "id": "3da-sculpt-cleanup",
-      "name": "雕刻清理",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-sculpt-cleanup.md",
-      "exists": true,
-      "char_count": 614
-    },
-    {
-      "id": "3da-sculpt-projection",
-      "name": "细节投射",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "3d-art/3da-sculpt-projection.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "3da-sculpt-stylized",
-      "name": "风格化雕刻",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "风格"
-      ],
-      "file": "3d-art/3da-sculpt-stylized.md",
-      "exists": true,
-      "char_count": 631
-    },
-    {
-      "id": "3da-sculpt-presentation",
-      "name": "雕刻展示",
-      "domain_id": "3d-art",
-      "subdomain_id": "sculpting",
-      "subdomain_name": "数字雕刻",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "展示"
-      ],
-      "file": "3d-art/3da-sculpt-presentation.md",
-      "exists": true,
-      "char_count": 640
-    },
-    {
-      "id": "3da-retopo-intro",
-      "name": "拓扑重构概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-retopo-intro.md",
-      "exists": true,
-      "char_count": 661
-    },
-    {
-      "id": "3da-retopo-goals",
-      "name": "拓扑目标",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-retopo-goals.md",
-      "exists": true,
-      "char_count": 627
-    },
-    {
-      "id": "3da-retopo-manual",
-      "name": "手动拓扑重构",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-retopo-manual.md",
-      "exists": true,
-      "char_count": 667
-    },
-    {
-      "id": "3da-retopo-auto",
-      "name": "自动拓扑重构",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-retopo-auto.md",
-      "exists": true,
-      "char_count": 673
-    },
-    {
-      "id": "3da-retopo-quad-dominant",
-      "name": "四边面优先原则",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-retopo-quad-dominant.md",
-      "exists": true,
-      "char_count": 652
-    },
-    {
-      "id": "3da-retopo-poly-count",
-      "name": "面数规划",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-retopo-poly-count.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "3da-retopo-face-loops",
-      "name": "面部拓扑环",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-retopo-face-loops.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "3da-retopo-body-flow",
-      "name": "身体拓扑流",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-retopo-body-flow.md",
-      "exists": true,
-      "char_count": 630
-    },
-    {
-      "id": "3da-retopo-clothing",
-      "name": "衣物拓扑",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-retopo-clothing.md",
-      "exists": true,
-      "char_count": 617
-    },
-    {
-      "id": "3da-retopo-hard-surface",
-      "name": "硬表面拓扑",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-retopo-hard-surface.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "3da-retopo-symmetry",
-      "name": "对称拓扑",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-retopo-symmetry.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "3da-retopo-guidelines",
-      "name": "拓扑规范",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "规范"
-      ],
-      "file": "3d-art/3da-retopo-guidelines.md",
-      "exists": true,
-      "char_count": 619
-    },
-    {
-      "id": "3da-retopo-shrinkwrap",
-      "name": "ShrinkWrap投射",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-retopo-shrinkwrap.md",
-      "exists": true,
-      "char_count": 703
-    },
-    {
-      "id": "3da-retopo-edge-density",
-      "name": "边密度控制",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-retopo-edge-density.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "3da-retopo-lod-levels",
-      "name": "LOD层级拓扑",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "3d-art/3da-retopo-lod-levels.md",
-      "exists": true,
-      "char_count": 648
-    },
-    {
-      "id": "3da-retopo-tools-compare",
-      "name": "重拓扑工具对比",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "对比"
-      ],
-      "file": "3d-art/3da-retopo-tools-compare.md",
-      "exists": true,
-      "char_count": 688
-    },
-    {
-      "id": "3da-retopo-validation",
-      "name": "拓扑验证",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "质量"
-      ],
-      "file": "3d-art/3da-retopo-validation.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "3da-retopo-game-pipeline",
-      "name": "游戏拓扑管线",
-      "domain_id": "3d-art",
-      "subdomain_id": "retopology",
-      "subdomain_name": "拓扑重构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-retopo-game-pipeline.md",
-      "exists": true,
-      "char_count": 645
-    },
-    {
-      "id": "3da-uv-intro",
-      "name": "UV展开概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-uv-intro.md",
-      "exists": true,
-      "char_count": 655
-    },
-    {
-      "id": "3da-uv-seam-placement",
-      "name": "UV缝合线",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-uv-seam-placement.md",
-      "exists": true,
-      "char_count": 640
-    },
-    {
-      "id": "3da-uv-projection",
-      "name": "投影展开",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-uv-projection.md",
-      "exists": true,
-      "char_count": 631
-    },
-    {
-      "id": "3da-uv-unwrap-tools",
-      "name": "展开工具",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-uv-unwrap-tools.md",
-      "exists": true,
-      "char_count": 653
-    },
-    {
-      "id": "3da-uv-packing",
-      "name": "UV打包",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-uv-packing.md",
-      "exists": true,
-      "char_count": 645
-    },
-    {
-      "id": "3da-uv-texel-density",
-      "name": "纹素密度",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-uv-texel-density.md",
-      "exists": true,
-      "char_count": 639
-    },
-    {
-      "id": "3da-uv-overlap",
-      "name": "UV叠放",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-uv-overlap.md",
-      "exists": true,
-      "char_count": 627
-    },
-    {
-      "id": "3da-uv-straightening",
-      "name": "UV矫直",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-uv-straightening.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "3da-uv-udim",
-      "name": "UDIM多Tile",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "3d-art/3da-uv-udim.md",
-      "exists": true,
-      "char_count": 676
-    },
-    {
-      "id": "3da-uv-checker-map",
-      "name": "棋盘格检查",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-uv-checker-map.md",
-      "exists": true,
-      "char_count": 632
-    },
-    {
-      "id": "3da-uv-hard-surface-uv",
-      "name": "硬表面UV",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-uv-hard-surface-uv.md",
-      "exists": true,
-      "char_count": 640
-    },
-    {
-      "id": "3da-uv-organic-uv",
-      "name": "有机体UV",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-uv-organic-uv.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "3da-uv-padding-bleeding",
-      "name": "Padding与Bleeding",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-uv-padding-bleeding.md",
-      "exists": true,
-      "char_count": 739
-    },
-    {
-      "id": "3da-uv-channels",
-      "name": "UV通道",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-uv-channels.md",
-      "exists": true,
-      "char_count": 641
-    },
-    {
-      "id": "3da-uv-atlas-layout",
-      "name": "UV Atlas布局",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "3d-art/3da-uv-atlas-layout.md",
-      "exists": true,
-      "char_count": 683
-    },
-    {
-      "id": "3da-uv-rizom-workflow",
-      "name": "RizomUV工作流",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-uv-rizom-workflow.md",
-      "exists": true,
-      "char_count": 681
-    },
-    {
-      "id": "3da-uv-auto-uv",
-      "name": "自动UV展开",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-uv-auto-uv.md",
-      "exists": true,
-      "char_count": 647
-    },
-    {
-      "id": "3da-uv-best-practices",
-      "name": "UV最佳实践",
-      "domain_id": "3d-art",
-      "subdomain_id": "uv-unwrapping",
-      "subdomain_name": "UV展开",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "规范"
-      ],
-      "file": "3d-art/3da-uv-best-practices.md",
-      "exists": true,
-      "char_count": 645
-    },
-    {
-      "id": "3da-tex-intro",
-      "name": "纹理绘制概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-tex-intro.md",
-      "exists": true,
-      "char_count": 647
-    },
-    {
-      "id": "3da-tex-pbr-workflow",
-      "name": "PBR纹理工作流",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-tex-pbr-workflow.md",
-      "exists": true,
-      "char_count": 719
-    },
-    {
-      "id": "3da-tex-substance-painter",
-      "name": "Substance Painter",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-tex-substance-painter.md",
-      "exists": true,
-      "char_count": 746
-    },
-    {
-      "id": "3da-tex-substance-designer",
-      "name": "Substance Designer",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-tex-substance-designer.md",
-      "exists": true,
-      "char_count": 747
-    },
-    {
-      "id": "3da-tex-hand-painted",
-      "name": "手绘纹理",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "风格"
-      ],
-      "file": "3d-art/3da-tex-hand-painted.md",
-      "exists": true,
-      "char_count": 635
-    },
-    {
-      "id": "3da-tex-base-color",
-      "name": "BaseColor贴图",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-tex-base-color.md",
-      "exists": true,
-      "char_count": 700
-    },
-    {
-      "id": "3da-tex-roughness",
-      "name": "Roughness贴图",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-tex-roughness.md",
-      "exists": true,
-      "char_count": 690
-    },
-    {
-      "id": "3da-tex-metallic",
-      "name": "Metallic贴图",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-tex-metallic.md",
-      "exists": true,
-      "char_count": 683
-    },
-    {
-      "id": "3da-tex-normal-map",
-      "name": "法线贴图制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-tex-normal-map.md",
-      "exists": true,
-      "char_count": 651
-    },
-    {
-      "id": "3da-tex-ao-map",
-      "name": "AO贴图",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-tex-ao-map.md",
-      "exists": true,
-      "char_count": 627
-    },
-    {
-      "id": "3da-tex-height-map",
-      "name": "高度贴图",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "3d-art/3da-tex-height-map.md",
-      "exists": true,
-      "char_count": 635
-    },
-    {
-      "id": "3da-tex-emissive",
-      "name": "自发光贴图",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "3d-art/3da-tex-emissive.md",
-      "exists": true,
-      "char_count": 652
-    },
-    {
-      "id": "3da-tex-opacity-mask",
-      "name": "透明度与遮罩",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-tex-opacity-mask.md",
-      "exists": true,
-      "char_count": 663
-    },
-    {
-      "id": "3da-tex-tiling-material",
-      "name": "可平铺材质",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-tex-tiling-material.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "3da-tex-material-id",
-      "name": "Material ID",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-tex-material-id.md",
-      "exists": true,
-      "char_count": 700
-    },
-    {
-      "id": "3da-tex-curvature",
-      "name": "曲率贴图",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-tex-curvature.md",
-      "exists": true,
-      "char_count": 637
-    },
-    {
-      "id": "3da-tex-weathering",
-      "name": "做旧与风化",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-tex-weathering.md",
-      "exists": true,
-      "char_count": 636
-    },
-    {
-      "id": "3da-tex-decal-texturing",
-      "name": "贴花纹理",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-tex-decal-texturing.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "3da-tex-scan-data",
-      "name": "扫描数据纹理",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "3d-art/3da-tex-scan-data.md",
-      "exists": true,
-      "char_count": 641
-    },
-    {
-      "id": "3da-tex-color-theory",
-      "name": "色彩理论",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-tex-color-theory.md",
-      "exists": true,
-      "char_count": 631
-    },
-    {
-      "id": "3da-tex-export-settings",
-      "name": "纹理导出设置",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-tex-export-settings.md",
-      "exists": true,
-      "char_count": 661
-    },
-    {
-      "id": "3da-tex-resolution-guide",
-      "name": "纹理分辨率指南",
-      "domain_id": "3d-art",
-      "subdomain_id": "texturing",
-      "subdomain_name": "纹理绘制",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "规范"
-      ],
-      "file": "3d-art/3da-tex-resolution-guide.md",
-      "exists": true,
-      "char_count": 650
-    },
-    {
-      "id": "3da-bake-intro",
-      "name": "烘焙概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-bake-intro.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-bake-normal",
-      "name": "法线烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-bake-normal.md",
-      "exists": true,
-      "char_count": 614
-    },
-    {
-      "id": "3da-bake-ao",
-      "name": "AO烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-bake-ao.md",
-      "exists": true,
-      "char_count": 612
-    },
-    {
-      "id": "3da-bake-curvature",
-      "name": "曲率烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-bake-curvature.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "3da-bake-thickness",
-      "name": "厚度烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-bake-thickness.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-bake-cage",
-      "name": "Cage设置",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-bake-cage.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "3da-bake-ray-distance",
-      "name": "光线距离",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "参数"
-      ],
-      "file": "3d-art/3da-bake-ray-distance.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "3da-bake-artifacts",
-      "name": "烘焙瑕疵",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "问题"
-      ],
-      "file": "3d-art/3da-bake-artifacts.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "3da-bake-name-matching",
-      "name": "名称匹配",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-bake-name-matching.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "3da-bake-exploded",
-      "name": "爆炸式烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-bake-exploded.md",
-      "exists": true,
-      "char_count": 615
-    },
-    {
-      "id": "3da-bake-position-map",
-      "name": "位置贴图",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "3d-art/3da-bake-position-map.md",
-      "exists": true,
-      "char_count": 646
-    },
-    {
-      "id": "3da-bake-id-map",
-      "name": "ID贴图烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-bake-id-map.md",
-      "exists": true,
-      "char_count": 660
-    },
-    {
-      "id": "3da-bake-substance",
-      "name": "Substance烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-bake-substance.md",
-      "exists": true,
-      "char_count": 697
-    },
-    {
-      "id": "3da-bake-marmoset",
-      "name": "Marmoset烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-bake-marmoset.md",
-      "exists": true,
-      "char_count": 666
-    },
-    {
-      "id": "3da-bake-xnormal",
-      "name": "xNormal烘焙",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-bake-xnormal.md",
-      "exists": true,
-      "char_count": 657
-    },
-    {
-      "id": "3da-bake-best-practices",
-      "name": "烘焙最佳实践",
-      "domain_id": "3d-art",
-      "subdomain_id": "baking",
-      "subdomain_name": "烘焙",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "规范"
-      ],
-      "file": "3d-art/3da-bake-best-practices.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "3da-rig-intro",
-      "name": "绑定概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-rig-intro.md",
-      "exists": true,
-      "char_count": 617
-    },
-    {
-      "id": "3da-rig-skeleton",
-      "name": "骨骼系统",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-rig-skeleton.md",
-      "exists": true,
-      "char_count": 607
-    },
-    {
-      "id": "3da-rig-naming-convention",
-      "name": "命名规范",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "规范"
-      ],
-      "file": "3d-art/3da-rig-naming-convention.md",
-      "exists": true,
-      "char_count": 613
-    },
-    {
-      "id": "3da-rig-skinning",
-      "name": "蒙皮权重",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-rig-skinning.md",
-      "exists": true,
-      "char_count": 613
-    },
-    {
-      "id": "3da-rig-weight-painting",
-      "name": "权重绘制技巧",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-rig-weight-painting.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "3da-rig-ik-fk",
-      "name": "IK与FK",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-rig-ik-fk.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "3da-rig-constraints",
-      "name": "约束系统",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-rig-constraints.md",
-      "exists": true,
-      "char_count": 615
-    },
-    {
-      "id": "3da-rig-controllers",
-      "name": "控制器设计",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-rig-controllers.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "3da-rig-spine",
-      "name": "脊柱绑定",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-rig-spine.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "3da-rig-facial",
-      "name": "面部绑定",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-rig-facial.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "3da-rig-hand-setup",
-      "name": "手部绑定",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-rig-hand-setup.md",
-      "exists": true,
-      "char_count": 617
-    },
-    {
-      "id": "3da-rig-deformation",
-      "name": "变形质量",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-rig-deformation.md",
-      "exists": true,
-      "char_count": 609
-    },
-    {
-      "id": "3da-rig-game-skeleton",
-      "name": "游戏骨骼规范",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "规范"
-      ],
-      "file": "3d-art/3da-rig-game-skeleton.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "3da-rig-ue-mannequin",
-      "name": "UE骨骼系统",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "引擎"
-      ],
-      "file": "3d-art/3da-rig-ue-mannequin.md",
-      "exists": true,
-      "char_count": 655
-    },
-    {
-      "id": "3da-rig-mixamo",
-      "name": "Mixamo自动绑定",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "3d-art/3da-rig-mixamo.md",
-      "exists": true,
-      "char_count": 669
-    },
-    {
-      "id": "3da-rig-twist-bones",
-      "name": "扭转骨骼",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-rig-twist-bones.md",
-      "exists": true,
-      "char_count": 609
-    },
-    {
-      "id": "3da-rig-blendshape",
-      "name": "BlendShape/Morph",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-rig-blendshape.md",
-      "exists": true,
-      "char_count": 711
-    },
-    {
-      "id": "3da-rig-export",
-      "name": "绑定导出",
-      "domain_id": "3d-art",
-      "subdomain_id": "rigging",
-      "subdomain_name": "绑定",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-rig-export.md",
-      "exists": true,
-      "char_count": 607
-    },
-    {
-      "id": "3da-env-intro",
-      "name": "环境美术概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-env-intro.md",
-      "exists": true,
-      "char_count": 636
-    },
-    {
-      "id": "3da-env-modular",
-      "name": "模块化建模",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-env-modular.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "3da-env-tileable",
-      "name": "可平铺资产",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-env-tileable.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "3da-env-trim-sheet",
-      "name": "环境Trim Sheet",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-env-trim-sheet.md",
-      "exists": true,
-      "char_count": 706
-    },
-    {
-      "id": "3da-env-terrain",
-      "name": "地形制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-env-terrain.md",
-      "exists": true,
-      "char_count": 616
-    },
-    {
-      "id": "3da-env-vegetation",
-      "name": "植被制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-env-vegetation.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "3da-env-rock-creation",
-      "name": "岩石制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实战"
-      ],
-      "file": "3d-art/3da-env-rock-creation.md",
-      "exists": true,
-      "char_count": 616
-    },
-    {
-      "id": "3da-env-lighting-art",
-      "name": "环境光照美术",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "美术"
-      ],
-      "file": "3d-art/3da-env-lighting-art.md",
-      "exists": true,
-      "char_count": 638
-    },
-    {
-      "id": "3da-env-composition",
-      "name": "场景构图",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "美术"
-      ],
-      "file": "3d-art/3da-env-composition.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-env-storytelling",
-      "name": "环境叙事",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "设计"
-      ],
-      "file": "3d-art/3da-env-storytelling.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-env-worldbuilding",
-      "name": "世界构建",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "设计"
-      ],
-      "file": "3d-art/3da-env-worldbuilding.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "3da-env-set-dressing",
-      "name": "场景布置",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-env-set-dressing.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "3da-env-procedural",
-      "name": "程序化环境",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "3d-art/3da-env-procedural.md",
-      "exists": true,
-      "char_count": 639
-    },
-    {
-      "id": "3da-env-material-blend",
-      "name": "材质混合",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "3d-art/3da-env-material-blend.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "3da-env-decals",
-      "name": "环境贴花",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "3d-art/3da-env-decals.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "3da-env-water",
-      "name": "水体制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "3d-art/3da-env-water.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "3da-env-atmosphere",
-      "name": "大气效果",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "3d-art/3da-env-atmosphere.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "3da-env-scale-reference",
-      "name": "比例参照",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-env-scale-reference.md",
-      "exists": true,
-      "char_count": 616
-    },
-    {
-      "id": "3da-env-optimization",
-      "name": "环境优化",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "优化"
-      ],
-      "file": "3d-art/3da-env-optimization.md",
-      "exists": true,
-      "char_count": 638
-    },
-    {
-      "id": "3da-env-showcase",
-      "name": "环境展示",
-      "domain_id": "3d-art",
-      "subdomain_id": "environment-art",
-      "subdomain_name": "环境美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "展示"
-      ],
-      "file": "3d-art/3da-env-showcase.md",
-      "exists": true,
-      "char_count": 636
-    },
-    {
-      "id": "3da-prop-intro",
-      "name": "道具美术概述",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-prop-intro.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "3da-prop-hero-asset",
-      "name": "Hero资产",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-prop-hero-asset.md",
-      "exists": true,
-      "char_count": 648
-    },
-    {
-      "id": "3da-prop-background",
-      "name": "背景道具",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-prop-background.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "3da-prop-breakable",
-      "name": "可破坏道具",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "3d-art/3da-prop-breakable.md",
-      "exists": true,
-      "char_count": 627
-    },
-    {
-      "id": "3da-prop-interactable",
-      "name": "可交互道具",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "设计"
-      ],
-      "file": "3d-art/3da-prop-interactable.md",
-      "exists": true,
-      "char_count": 637
-    },
-    {
-      "id": "3da-prop-weapon-art",
-      "name": "武器美术管线",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-prop-weapon-art.md",
-      "exists": true,
-      "char_count": 646
-    },
-    {
-      "id": "3da-prop-food-organic",
-      "name": "食物/有机道具",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技巧"
-      ],
-      "file": "3d-art/3da-prop-food-organic.md",
-      "exists": true,
-      "char_count": 651
-    },
-    {
-      "id": "3da-prop-fabric",
-      "name": "布料道具",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "3d-art/3da-prop-fabric.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "3da-prop-sci-fi",
-      "name": "科幻道具",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "风格"
-      ],
-      "file": "3d-art/3da-prop-sci-fi.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "3da-prop-medieval",
-      "name": "中世纪道具",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "风格"
-      ],
-      "file": "3d-art/3da-prop-medieval.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "3da-prop-variation",
-      "name": "道具变体",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效率"
-      ],
-      "file": "3d-art/3da-prop-variation.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "3da-prop-collision",
-      "name": "碰撞体制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "引擎"
-      ],
-      "file": "3d-art/3da-prop-collision.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "3da-prop-pivot-setup",
-      "name": "道具Pivot设置",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "引擎"
-      ],
-      "file": "3d-art/3da-prop-pivot-setup.md",
-      "exists": true,
-      "char_count": 659
-    },
-    {
-      "id": "3da-prop-lod-creation",
-      "name": "道具LOD制作",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "3d-art/3da-prop-lod-creation.md",
-      "exists": true,
-      "char_count": 647
-    },
-    {
-      "id": "3da-prop-material-instance",
-      "name": "材质实例",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "引擎"
-      ],
-      "file": "3d-art/3da-prop-material-instance.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "3da-prop-quality-checklist",
-      "name": "道具质量检查表",
-      "domain_id": "3d-art",
-      "subdomain_id": "prop-art",
-      "subdomain_name": "道具美术",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "规范"
-      ],
-      "file": "3d-art/3da-prop-quality-checklist.md",
-      "exists": true,
-      "char_count": 655
-    },
-    {
-      "id": "3da-pipe-intro",
-      "name": "资产管线概述",
+      "id": "3da-pipe-alembic",
+      "name": "Alembic缓存",
       "domain_id": "3d-art",
       "subdomain_id": "asset-pipeline",
       "subdomain_name": "资产管线",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "3d-art/3da-pipe-intro.md",
-      "exists": true,
-      "char_count": 643
-    },
-    {
-      "id": "3da-pipe-naming",
-      "name": "命名规范",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-pipe-naming.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "3da-pipe-folder-structure",
-      "name": "目录结构",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-pipe-folder-structure.md",
-      "exists": true,
-      "char_count": 621
-    },
-    {
-      "id": "3da-pipe-version-control",
-      "name": "版本控制",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-pipe-version-control.md",
-      "exists": true,
-      "char_count": 639
-    },
-    {
-      "id": "3da-pipe-fbx-export",
-      "name": "FBX导出",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-pipe-fbx-export.md",
-      "exists": true,
-      "char_count": 648
-    },
-    {
-      "id": "3da-pipe-gltf",
-      "name": "glTF格式",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "格式"
       ],
-      "file": "3d-art/3da-pipe-gltf.md",
+      "file": "3d-art/3da-pipe-alembic.md",
       "exists": true,
-      "char_count": 653
-    },
-    {
-      "id": "3da-pipe-engine-import",
-      "name": "引擎导入设置",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "引擎"
-      ],
-      "file": "3d-art/3da-pipe-engine-import.md",
-      "exists": true,
-      "char_count": 647
-    },
-    {
-      "id": "3da-pipe-texture-pipeline",
-      "name": "纹理管线",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "3d-art/3da-pipe-texture-pipeline.md",
-      "exists": true,
-      "char_count": 621
-    },
-    {
-      "id": "3da-pipe-material-library",
-      "name": "材质库",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效率"
-      ],
-      "file": "3d-art/3da-pipe-material-library.md",
-      "exists": true,
-      "char_count": 608
-    },
-    {
-      "id": "3da-pipe-batch-processing",
-      "name": "批量处理",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "效率"
-      ],
-      "file": "3d-art/3da-pipe-batch-processing.md",
-      "exists": true,
-      "char_count": 621
-    },
-    {
-      "id": "3da-pipe-validation",
-      "name": "资产验证",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "质量"
-      ],
-      "file": "3d-art/3da-pipe-validation.md",
-      "exists": true,
-      "char_count": 627
-    },
-    {
-      "id": "3da-pipe-review-workflow",
-      "name": "审核工作流",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "3d-art/3da-pipe-review-workflow.md",
-      "exists": true,
-      "char_count": 630
-    },
-    {
-      "id": "3da-pipe-optimization",
-      "name": "资产优化",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "3d-art/3da-pipe-optimization.md",
-      "exists": true,
-      "char_count": 625
-    },
-    {
-      "id": "3da-pipe-lod-pipeline",
-      "name": "LOD管线",
-      "domain_id": "3d-art",
-      "subdomain_id": "asset-pipeline",
-      "subdomain_name": "资产管线",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "优化"
-      ],
-      "file": "3d-art/3da-pipe-lod-pipeline.md",
-      "exists": true,
-      "char_count": 632
+      "char_count": 1421
     },
     {
       "id": "3da-pipe-dcc-interop",
@@ -3402,37 +28,157 @@
       ],
       "file": "3d-art/3da-pipe-dcc-interop.md",
       "exists": true,
-      "char_count": 656
+      "char_count": 1412
     },
     {
-      "id": "3da-pipe-alembic",
-      "name": "Alembic缓存",
+      "id": "3da-pipe-fbx-export",
+      "name": "FBX导出",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-pipe-fbx-export.md",
+      "exists": true,
+      "char_count": 2765
+    },
+    {
+      "id": "3da-pipe-lod-pipeline",
+      "name": "LOD管线",
       "domain_id": "3d-art",
       "subdomain_id": "asset-pipeline",
       "subdomain_name": "资产管线",
       "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "3d-art/3da-pipe-lod-pipeline.md",
+      "exists": true,
+      "char_count": 1434
+    },
+    {
+      "id": "3da-pipe-gltf",
+      "name": "glTF格式",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
       "is_milestone": false,
       "tags": [
         "格式"
       ],
-      "file": "3d-art/3da-pipe-alembic.md",
+      "file": "3d-art/3da-pipe-gltf.md",
       "exists": true,
-      "char_count": 680
+      "char_count": 1439
     },
     {
-      "id": "3da-pipe-automation",
-      "name": "管线自动化",
+      "id": "3da-pipe-naming",
+      "name": "命名规范",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-pipe-naming.md",
+      "exists": true,
+      "char_count": 2950
+    },
+    {
+      "id": "3da-pipe-review-workflow",
+      "name": "审核工作流",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-pipe-review-workflow.md",
+      "exists": true,
+      "char_count": 1403
+    },
+    {
+      "id": "3da-pipe-engine-import",
+      "name": "引擎导入设置",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "引擎"
+      ],
+      "file": "3d-art/3da-pipe-engine-import.md",
+      "exists": true,
+      "char_count": 1500
+    },
+    {
+      "id": "3da-pipe-batch-processing",
+      "name": "批量处理",
       "domain_id": "3d-art",
       "subdomain_id": "asset-pipeline",
       "subdomain_name": "资产管线",
       "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "效率"
+      ],
+      "file": "3d-art/3da-pipe-batch-processing.md",
+      "exists": true,
+      "char_count": 2801
+    },
+    {
+      "id": "3da-pipe-material-library",
+      "name": "材质库",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
       "is_milestone": false,
       "tags": [
-        "进阶"
+        "效率"
       ],
-      "file": "3d-art/3da-pipe-automation.md",
+      "file": "3d-art/3da-pipe-material-library.md",
       "exists": true,
-      "char_count": 654
+      "char_count": 1343
+    },
+    {
+      "id": "3da-pipe-version-control",
+      "name": "版本控制",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-pipe-version-control.md",
+      "exists": true,
+      "char_count": 1406
+    },
+    {
+      "id": "3da-pipe-folder-structure",
+      "name": "目录结构",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-pipe-folder-structure.md",
+      "exists": true,
+      "char_count": 1386
     },
     {
       "id": "3da-pipe-documentation",
@@ -3447,7 +193,3208 @@
       ],
       "file": "3d-art/3da-pipe-documentation.md",
       "exists": true,
-      "char_count": 623
+      "char_count": 1476
+    },
+    {
+      "id": "3da-pipe-automation",
+      "name": "管线自动化",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "进阶"
+      ],
+      "file": "3d-art/3da-pipe-automation.md",
+      "exists": true,
+      "char_count": 1436
+    },
+    {
+      "id": "3da-pipe-texture-pipeline",
+      "name": "纹理管线",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-pipe-texture-pipeline.md",
+      "exists": true,
+      "char_count": 1300
+    },
+    {
+      "id": "3da-pipe-optimization",
+      "name": "资产优化",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "优化"
+      ],
+      "file": "3d-art/3da-pipe-optimization.md",
+      "exists": true,
+      "char_count": 2787
+    },
+    {
+      "id": "3da-pipe-intro",
+      "name": "资产管线概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-pipe-intro.md",
+      "exists": true,
+      "char_count": 1415
+    },
+    {
+      "id": "3da-pipe-validation",
+      "name": "资产验证",
+      "domain_id": "3d-art",
+      "subdomain_id": "asset-pipeline",
+      "subdomain_name": "资产管线",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "质量"
+      ],
+      "file": "3d-art/3da-pipe-validation.md",
+      "exists": true,
+      "char_count": 3724
+    },
+    {
+      "id": "3da-bake-ao",
+      "name": "AO烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-bake-ao.md",
+      "exists": true,
+      "char_count": 2409
+    },
+    {
+      "id": "3da-bake-cage",
+      "name": "Cage设置",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-bake-cage.md",
+      "exists": true,
+      "char_count": 2621
+    },
+    {
+      "id": "3da-bake-id-map",
+      "name": "ID贴图烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-bake-id-map.md",
+      "exists": true,
+      "char_count": 1500
+    },
+    {
+      "id": "3da-bake-marmoset",
+      "name": "Marmoset烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-bake-marmoset.md",
+      "exists": true,
+      "char_count": 1377
+    },
+    {
+      "id": "3da-bake-substance",
+      "name": "Substance烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-bake-substance.md",
+      "exists": true,
+      "char_count": 1650
+    },
+    {
+      "id": "3da-bake-xnormal",
+      "name": "xNormal烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-bake-xnormal.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "3da-bake-position-map",
+      "name": "位置贴图",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "3d-art/3da-bake-position-map.md",
+      "exists": true,
+      "char_count": 1507
+    },
+    {
+      "id": "3da-bake-ray-distance",
+      "name": "光线距离",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "参数"
+      ],
+      "file": "3d-art/3da-bake-ray-distance.md",
+      "exists": true,
+      "char_count": 1319
+    },
+    {
+      "id": "3da-bake-thickness",
+      "name": "厚度烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-bake-thickness.md",
+      "exists": true,
+      "char_count": 1290
+    },
+    {
+      "id": "3da-bake-name-matching",
+      "name": "名称匹配",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-bake-name-matching.md",
+      "exists": true,
+      "char_count": 1336
+    },
+    {
+      "id": "3da-bake-curvature",
+      "name": "曲率烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-bake-curvature.md",
+      "exists": true,
+      "char_count": 1397
+    },
+    {
+      "id": "3da-bake-normal",
+      "name": "法线烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-bake-normal.md",
+      "exists": true,
+      "char_count": 2681
+    },
+    {
+      "id": "3da-bake-best-practices",
+      "name": "烘焙最佳实践",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "规范"
+      ],
+      "file": "3d-art/3da-bake-best-practices.md",
+      "exists": true,
+      "char_count": 1470
+    },
+    {
+      "id": "3da-bake-intro",
+      "name": "烘焙概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-bake-intro.md",
+      "exists": true,
+      "char_count": 2073
+    },
+    {
+      "id": "3da-bake-artifacts",
+      "name": "烘焙瑕疵",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "问题"
+      ],
+      "file": "3d-art/3da-bake-artifacts.md",
+      "exists": true,
+      "char_count": 2841
+    },
+    {
+      "id": "3da-bake-exploded",
+      "name": "爆炸式烘焙",
+      "domain_id": "3d-art",
+      "subdomain_id": "baking",
+      "subdomain_name": "烘焙",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-bake-exploded.md",
+      "exists": true,
+      "char_count": 1237
+    },
+    {
+      "id": "3da-env-worldbuilding",
+      "name": "世界构建",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "3d-art/3da-env-worldbuilding.md",
+      "exists": true,
+      "char_count": 1262
+    },
+    {
+      "id": "3da-env-tileable",
+      "name": "可平铺资产",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-env-tileable.md",
+      "exists": true,
+      "char_count": 2874
+    },
+    {
+      "id": "3da-env-terrain",
+      "name": "地形制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-env-terrain.md",
+      "exists": true,
+      "char_count": 2850
+    },
+    {
+      "id": "3da-env-set-dressing",
+      "name": "场景布置",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-env-set-dressing.md",
+      "exists": true,
+      "char_count": 2326
+    },
+    {
+      "id": "3da-env-composition",
+      "name": "场景构图",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "美术"
+      ],
+      "file": "3d-art/3da-env-composition.md",
+      "exists": true,
+      "char_count": 2331
+    },
+    {
+      "id": "3da-env-atmosphere",
+      "name": "大气效果",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "3d-art/3da-env-atmosphere.md",
+      "exists": true,
+      "char_count": 1374
+    },
+    {
+      "id": "3da-env-rock-creation",
+      "name": "岩石制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-env-rock-creation.md",
+      "exists": true,
+      "char_count": 1349
+    },
+    {
+      "id": "3da-env-material-blend",
+      "name": "材质混合",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "3d-art/3da-env-material-blend.md",
+      "exists": true,
+      "char_count": 1297
+    },
+    {
+      "id": "3da-env-vegetation",
+      "name": "植被制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-env-vegetation.md",
+      "exists": true,
+      "char_count": 3119
+    },
+    {
+      "id": "3da-env-modular",
+      "name": "模块化建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-env-modular.md",
+      "exists": true,
+      "char_count": 2601
+    },
+    {
+      "id": "3da-env-scale-reference",
+      "name": "比例参照",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-env-scale-reference.md",
+      "exists": true,
+      "char_count": 1269
+    },
+    {
+      "id": "3da-env-water",
+      "name": "水体制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "3d-art/3da-env-water.md",
+      "exists": true,
+      "char_count": 1316
+    },
+    {
+      "id": "3da-env-trim-sheet",
+      "name": "环境Trim Sheet",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-env-trim-sheet.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "3da-env-optimization",
+      "name": "环境优化",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "优化"
+      ],
+      "file": "3d-art/3da-env-optimization.md",
+      "exists": true,
+      "char_count": 2839
+    },
+    {
+      "id": "3da-env-lighting-art",
+      "name": "环境光照美术",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "美术"
+      ],
+      "file": "3d-art/3da-env-lighting-art.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "3da-env-storytelling",
+      "name": "环境叙事",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "3d-art/3da-env-storytelling.md",
+      "exists": true,
+      "char_count": 1371
+    },
+    {
+      "id": "3da-env-showcase",
+      "name": "环境展示",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "展示"
+      ],
+      "file": "3d-art/3da-env-showcase.md",
+      "exists": true,
+      "char_count": 1330
+    },
+    {
+      "id": "3da-env-intro",
+      "name": "环境美术概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-env-intro.md",
+      "exists": true,
+      "char_count": 1492
+    },
+    {
+      "id": "3da-env-decals",
+      "name": "环境贴花",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "3d-art/3da-env-decals.md",
+      "exists": true,
+      "char_count": 1230
+    },
+    {
+      "id": "3da-env-procedural",
+      "name": "程序化环境",
+      "domain_id": "3d-art",
+      "subdomain_id": "environment-art",
+      "subdomain_name": "环境美术",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "进阶"
+      ],
+      "file": "3d-art/3da-env-procedural.md",
+      "exists": true,
+      "char_count": 1379
+    },
+    {
+      "id": "3da-hs-decal-mesh",
+      "name": "Decal Mesh",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-hs-decal-mesh.md",
+      "exists": true,
+      "char_count": 1369
+    },
+    {
+      "id": "3da-hs-greeble",
+      "name": "Greeble细节",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-hs-greeble.md",
+      "exists": true,
+      "char_count": 1461
+    },
+    {
+      "id": "3da-hs-kitbash",
+      "name": "KitBash技法",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工作流"
+      ],
+      "file": "3d-art/3da-hs-kitbash.md",
+      "exists": true,
+      "char_count": 1357
+    },
+    {
+      "id": "3da-hs-ngon-management",
+      "name": "N-gon管理",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-hs-ngon-management.md",
+      "exists": true,
+      "char_count": 1452
+    },
+    {
+      "id": "3da-hs-subd-vs-chamfer",
+      "name": "SubD vs Chamfer",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "对比"
+      ],
+      "file": "3d-art/3da-hs-subd-vs-chamfer.md",
+      "exists": true,
+      "char_count": 1710
+    },
+    {
+      "id": "3da-hs-trim-sheet",
+      "name": "Trim Sheet",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "工作流"
+      ],
+      "file": "3d-art/3da-hs-trim-sheet.md",
+      "exists": true,
+      "char_count": 1509
+    },
+    {
+      "id": "3da-hs-bevel-edges",
+      "name": "倒角边工作流",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-hs-bevel-edges.md",
+      "exists": true,
+      "char_count": 2614
+    },
+    {
+      "id": "3da-hs-symmetry",
+      "name": "对称与阵列",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-hs-symmetry.md",
+      "exists": true,
+      "char_count": 1382
+    },
+    {
+      "id": "3da-hs-boolean-workflow",
+      "name": "布尔硬表面工作流",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "工作流"
+      ],
+      "file": "3d-art/3da-hs-boolean-workflow.md",
+      "exists": true,
+      "char_count": 1477
+    },
+    {
+      "id": "3da-hs-architecture",
+      "name": "建筑建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-hs-architecture.md",
+      "exists": true,
+      "char_count": 1360
+    },
+    {
+      "id": "3da-hs-support-loops",
+      "name": "支撑环",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-hs-support-loops.md",
+      "exists": true,
+      "char_count": 2177
+    },
+    {
+      "id": "3da-hs-curved-surface",
+      "name": "曲面控制",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-hs-curved-surface.md",
+      "exists": true,
+      "char_count": 1259
+    },
+    {
+      "id": "3da-hs-mechanical",
+      "name": "机械零件建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-hs-mechanical.md",
+      "exists": true,
+      "char_count": 2704
+    },
+    {
+      "id": "3da-hs-weapon",
+      "name": "武器建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-hs-weapon.md",
+      "exists": true,
+      "char_count": 1330
+    },
+    {
+      "id": "3da-hs-floating-geo",
+      "name": "浮动几何",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-hs-floating-geo.md",
+      "exists": true,
+      "char_count": 1281
+    },
+    {
+      "id": "3da-hs-game-ready",
+      "name": "游戏级硬表面资产",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-hs-game-ready.md",
+      "exists": true,
+      "char_count": 1442
+    },
+    {
+      "id": "3da-hs-intro",
+      "name": "硬表面建模概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-hs-intro.md",
+      "exists": true,
+      "char_count": 2804
+    },
+    {
+      "id": "3da-hs-crease",
+      "name": "褶皱权重",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-hs-crease.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "3da-hs-vehicle",
+      "name": "载具建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-hs-vehicle.md",
+      "exists": true,
+      "char_count": 2812
+    },
+    {
+      "id": "3da-hs-panel-lines",
+      "name": "面板线与缝隙",
+      "domain_id": "3d-art",
+      "subdomain_id": "hard-surface",
+      "subdomain_name": "硬表面建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-hs-panel-lines.md",
+      "exists": true,
+      "char_count": 1466
+    },
+    {
+      "id": "3da-modeling-intro",
+      "name": "3D建模概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-modeling-intro.md",
+      "exists": true,
+      "char_count": 1656
+    },
+    {
+      "id": "3da-modifier-stack",
+      "name": "修改器栈",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-modifier-stack.md",
+      "exists": true,
+      "char_count": 2427
+    },
+    {
+      "id": "3da-reference-setup",
+      "name": "参考图设置",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-reference-setup.md",
+      "exists": true,
+      "char_count": 1504
+    },
+    {
+      "id": "3da-transform-tools",
+      "name": "变换工具",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-transform-tools.md",
+      "exists": true,
+      "char_count": 1614
+    },
+    {
+      "id": "3da-snapping",
+      "name": "吸附与对齐",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-snapping.md",
+      "exists": true,
+      "char_count": 2362
+    },
+    {
+      "id": "3da-polygon-basics",
+      "name": "多边形基础",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-polygon-basics.md",
+      "exists": true,
+      "char_count": 1523
+    },
+    {
+      "id": "3da-boolean-ops",
+      "name": "布尔运算",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-boolean-ops.md",
+      "exists": true,
+      "char_count": 1527
+    },
+    {
+      "id": "3da-edge-flow",
+      "name": "布线原则",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-edge-flow.md",
+      "exists": true,
+      "char_count": 2584
+    },
+    {
+      "id": "3da-modeling-workflow",
+      "name": "建模工作流总览",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-modeling-workflow.md",
+      "exists": true,
+      "char_count": 1573
+    },
+    {
+      "id": "3da-extrude-inset",
+      "name": "挤出与内插",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-extrude-inset.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "3da-scale-proportion",
+      "name": "比例与尺度",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-scale-proportion.md",
+      "exists": true,
+      "char_count": 1442
+    },
+    {
+      "id": "3da-normals-smoothing",
+      "name": "法线与平滑",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-normals-smoothing.md",
+      "exists": true,
+      "char_count": 1634
+    },
+    {
+      "id": "3da-loop-cut",
+      "name": "环切与细分",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-loop-cut.md",
+      "exists": true,
+      "char_count": 1491
+    },
+    {
+      "id": "3da-blockout",
+      "name": "白盒建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-blockout.md",
+      "exists": true,
+      "char_count": 2276
+    },
+    {
+      "id": "3da-subdivision-surface",
+      "name": "细分曲面修改器",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-subdivision-surface.md",
+      "exists": true,
+      "char_count": 1594
+    },
+    {
+      "id": "3da-modeling-modes",
+      "name": "编辑模式",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-modeling-modes.md",
+      "exists": true,
+      "char_count": 1513
+    },
+    {
+      "id": "3da-mesh-topology",
+      "name": "网格拓扑",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-mesh-topology.md",
+      "exists": true,
+      "char_count": 2804
+    },
+    {
+      "id": "3da-mesh-cleanup",
+      "name": "网格清理",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-mesh-cleanup.md",
+      "exists": true,
+      "char_count": 1461
+    },
+    {
+      "id": "3da-pivot-origin",
+      "name": "轴心与原点",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-pivot-origin.md",
+      "exists": true,
+      "char_count": 1490
+    },
+    {
+      "id": "3da-mirror-modifier",
+      "name": "镜像修改器",
+      "domain_id": "3d-art",
+      "subdomain_id": "modeling-fundamentals",
+      "subdomain_name": "建模基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-mirror-modifier.md",
+      "exists": true,
+      "char_count": 1388
+    },
+    {
+      "id": "3da-org-tpose-apose",
+      "name": "T-Pose与A-Pose",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-org-tpose-apose.md",
+      "exists": true,
+      "char_count": 1558
+    },
+    {
+      "id": "3da-org-body-proportion",
+      "name": "人体比例",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-org-body-proportion.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "3da-org-realistic-char",
+      "name": "写实角色",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-org-realistic-char.md",
+      "exists": true,
+      "char_count": 2535
+    },
+    {
+      "id": "3da-org-head-modeling",
+      "name": "头部建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-org-head-modeling.md",
+      "exists": true,
+      "char_count": 2514
+    },
+    {
+      "id": "3da-org-symmetry-break",
+      "name": "对称打破",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-org-symmetry-break.md",
+      "exists": true,
+      "char_count": 1286
+    },
+    {
+      "id": "3da-org-hand-foot",
+      "name": "手脚建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-org-hand-foot.md",
+      "exists": true,
+      "char_count": 2581
+    },
+    {
+      "id": "3da-org-edge-loops-organic",
+      "name": "有机体布线环",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-org-edge-loops-organic.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "3da-org-intro",
+      "name": "有机建模概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-org-intro.md",
+      "exists": true,
+      "char_count": 2921
+    },
+    {
+      "id": "3da-org-proportion-check",
+      "name": "比例检查",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-org-proportion-check.md",
+      "exists": true,
+      "char_count": 1370
+    },
+    {
+      "id": "3da-org-hair-modeling",
+      "name": "毛发建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "技术"
+      ],
+      "file": "3d-art/3da-org-hair-modeling.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "3da-org-game-ready-char",
+      "name": "游戏级角色制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-org-game-ready-char.md",
+      "exists": true,
+      "char_count": 1434
+    },
+    {
+      "id": "3da-org-creature",
+      "name": "生物建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-org-creature.md",
+      "exists": true,
+      "char_count": 2419
+    },
+    {
+      "id": "3da-org-wrinkle-detail",
+      "name": "皱纹与细节",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "细节"
+      ],
+      "file": "3d-art/3da-org-wrinkle-detail.md",
+      "exists": true,
+      "char_count": 1398
+    },
+    {
+      "id": "3da-org-muscle-deform",
+      "name": "肌肉变形",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "3d-art/3da-org-muscle-deform.md",
+      "exists": true,
+      "char_count": 1242
+    },
+    {
+      "id": "3da-org-cloth-sim",
+      "name": "衣物建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-org-cloth-sim.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "3da-org-expression",
+      "name": "表情制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "技术"
+      ],
+      "file": "3d-art/3da-org-expression.md",
+      "exists": true,
+      "char_count": 1419
+    },
+    {
+      "id": "3da-org-anatomy-basics",
+      "name": "解剖学基础",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-org-anatomy-basics.md",
+      "exists": true,
+      "char_count": 3103
+    },
+    {
+      "id": "3da-org-body-modeling",
+      "name": "躯干建模",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-org-body-modeling.md",
+      "exists": true,
+      "char_count": 2535
+    },
+    {
+      "id": "3da-org-face-topology",
+      "name": "面部拓扑",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-org-face-topology.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "3da-org-stylized-char",
+      "name": "风格化角色",
+      "domain_id": "3d-art",
+      "subdomain_id": "organic-modeling",
+      "subdomain_name": "有机建模",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "3d-art/3da-org-stylized-char.md",
+      "exists": true,
+      "char_count": 1433
+    },
+    {
+      "id": "3da-prop-hero-asset",
+      "name": "Hero资产",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-prop-hero-asset.md",
+      "exists": true,
+      "char_count": 2590
+    },
+    {
+      "id": "3da-prop-medieval",
+      "name": "中世纪道具",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "3d-art/3da-prop-medieval.md",
+      "exists": true,
+      "char_count": 1272
+    },
+    {
+      "id": "3da-prop-interactable",
+      "name": "可交互道具",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "设计"
+      ],
+      "file": "3d-art/3da-prop-interactable.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "3da-prop-breakable",
+      "name": "可破坏道具",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "3d-art/3da-prop-breakable.md",
+      "exists": true,
+      "char_count": 1367
+    },
+    {
+      "id": "3da-prop-fabric",
+      "name": "布料道具",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "3d-art/3da-prop-fabric.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "3da-prop-material-instance",
+      "name": "材质实例",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "引擎"
+      ],
+      "file": "3d-art/3da-prop-material-instance.md",
+      "exists": true,
+      "char_count": 1324
+    },
+    {
+      "id": "3da-prop-weapon-art",
+      "name": "武器美术管线",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-prop-weapon-art.md",
+      "exists": true,
+      "char_count": 3027
+    },
+    {
+      "id": "3da-prop-collision",
+      "name": "碰撞体制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "引擎"
+      ],
+      "file": "3d-art/3da-prop-collision.md",
+      "exists": true,
+      "char_count": 1422
+    },
+    {
+      "id": "3da-prop-sci-fi",
+      "name": "科幻道具",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "3d-art/3da-prop-sci-fi.md",
+      "exists": true,
+      "char_count": 1236
+    },
+    {
+      "id": "3da-prop-background",
+      "name": "背景道具",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-prop-background.md",
+      "exists": true,
+      "char_count": 1238
+    },
+    {
+      "id": "3da-prop-lod-creation",
+      "name": "道具LOD制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "优化"
+      ],
+      "file": "3d-art/3da-prop-lod-creation.md",
+      "exists": true,
+      "char_count": 1481
+    },
+    {
+      "id": "3da-prop-pivot-setup",
+      "name": "道具Pivot设置",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "引擎"
+      ],
+      "file": "3d-art/3da-prop-pivot-setup.md",
+      "exists": true,
+      "char_count": 1344
+    },
+    {
+      "id": "3da-prop-variation",
+      "name": "道具变体",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效率"
+      ],
+      "file": "3d-art/3da-prop-variation.md",
+      "exists": true,
+      "char_count": 1270
+    },
+    {
+      "id": "3da-prop-intro",
+      "name": "道具美术概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-prop-intro.md",
+      "exists": true,
+      "char_count": 2225
+    },
+    {
+      "id": "3da-prop-quality-checklist",
+      "name": "道具质量检查表",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "规范"
+      ],
+      "file": "3d-art/3da-prop-quality-checklist.md",
+      "exists": true,
+      "char_count": 1470
+    },
+    {
+      "id": "3da-prop-food-organic",
+      "name": "食物/有机道具",
+      "domain_id": "3d-art",
+      "subdomain_id": "prop-art",
+      "subdomain_name": "道具美术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-prop-food-organic.md",
+      "exists": true,
+      "char_count": 1355
+    },
+    {
+      "id": "3da-retopo-lod-levels",
+      "name": "LOD层级拓扑",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "3d-art/3da-retopo-lod-levels.md",
+      "exists": true,
+      "char_count": 1324
+    },
+    {
+      "id": "3da-retopo-shrinkwrap",
+      "name": "ShrinkWrap投射",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-retopo-shrinkwrap.md",
+      "exists": true,
+      "char_count": 1499
+    },
+    {
+      "id": "3da-retopo-quad-dominant",
+      "name": "四边面优先原则",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-retopo-quad-dominant.md",
+      "exists": true,
+      "char_count": 1511
+    },
+    {
+      "id": "3da-retopo-symmetry",
+      "name": "对称拓扑",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-retopo-symmetry.md",
+      "exists": true,
+      "char_count": 1273
+    },
+    {
+      "id": "3da-retopo-manual",
+      "name": "手动拓扑重构",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-retopo-manual.md",
+      "exists": true,
+      "char_count": 2622
+    },
+    {
+      "id": "3da-retopo-goals",
+      "name": "拓扑目标",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-retopo-goals.md",
+      "exists": true,
+      "char_count": 2738
+    },
+    {
+      "id": "3da-retopo-guidelines",
+      "name": "拓扑规范",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "规范"
+      ],
+      "file": "3d-art/3da-retopo-guidelines.md",
+      "exists": true,
+      "char_count": 2918
+    },
+    {
+      "id": "3da-retopo-intro",
+      "name": "拓扑重构概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-retopo-intro.md",
+      "exists": true,
+      "char_count": 1423
+    },
+    {
+      "id": "3da-retopo-validation",
+      "name": "拓扑验证",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "3d-art/3da-retopo-validation.md",
+      "exists": true,
+      "char_count": 1505
+    },
+    {
+      "id": "3da-retopo-game-pipeline",
+      "name": "游戏拓扑管线",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-retopo-game-pipeline.md",
+      "exists": true,
+      "char_count": 2500
+    },
+    {
+      "id": "3da-retopo-hard-surface",
+      "name": "硬表面拓扑",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-retopo-hard-surface.md",
+      "exists": true,
+      "char_count": 1288
+    },
+    {
+      "id": "3da-retopo-auto",
+      "name": "自动拓扑重构",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-retopo-auto.md",
+      "exists": true,
+      "char_count": 1477
+    },
+    {
+      "id": "3da-retopo-clothing",
+      "name": "衣物拓扑",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-retopo-clothing.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "3da-retopo-body-flow",
+      "name": "身体拓扑流",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-retopo-body-flow.md",
+      "exists": true,
+      "char_count": 1414
+    },
+    {
+      "id": "3da-retopo-edge-density",
+      "name": "边密度控制",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-retopo-edge-density.md",
+      "exists": true,
+      "char_count": 1313
+    },
+    {
+      "id": "3da-retopo-tools-compare",
+      "name": "重拓扑工具对比",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "对比"
+      ],
+      "file": "3d-art/3da-retopo-tools-compare.md",
+      "exists": true,
+      "char_count": 1550
+    },
+    {
+      "id": "3da-retopo-poly-count",
+      "name": "面数规划",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-retopo-poly-count.md",
+      "exists": true,
+      "char_count": 2593
+    },
+    {
+      "id": "3da-retopo-face-loops",
+      "name": "面部拓扑环",
+      "domain_id": "3d-art",
+      "subdomain_id": "retopology",
+      "subdomain_name": "拓扑重构",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-retopo-face-loops.md",
+      "exists": true,
+      "char_count": 1320
+    },
+    {
+      "id": "3da-rig-blendshape",
+      "name": "BlendShape/Morph",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-rig-blendshape.md",
+      "exists": true,
+      "char_count": 1615
+    },
+    {
+      "id": "3da-rig-ik-fk",
+      "name": "IK与FK",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-rig-ik-fk.md",
+      "exists": true,
+      "char_count": 2450
+    },
+    {
+      "id": "3da-rig-mixamo",
+      "name": "Mixamo自动绑定",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-rig-mixamo.md",
+      "exists": true,
+      "char_count": 1471
+    },
+    {
+      "id": "3da-rig-ue-mannequin",
+      "name": "UE骨骼系统",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "引擎"
+      ],
+      "file": "3d-art/3da-rig-ue-mannequin.md",
+      "exists": true,
+      "char_count": 1505
+    },
+    {
+      "id": "3da-rig-deformation",
+      "name": "变形质量",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-rig-deformation.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "3da-rig-naming-convention",
+      "name": "命名规范",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "3d-art/3da-rig-naming-convention.md",
+      "exists": true,
+      "char_count": 1384
+    },
+    {
+      "id": "3da-rig-hand-setup",
+      "name": "手部绑定",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-rig-hand-setup.md",
+      "exists": true,
+      "char_count": 1363
+    },
+    {
+      "id": "3da-rig-twist-bones",
+      "name": "扭转骨骼",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-rig-twist-bones.md",
+      "exists": true,
+      "char_count": 1228
+    },
+    {
+      "id": "3da-rig-controllers",
+      "name": "控制器设计",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-rig-controllers.md",
+      "exists": true,
+      "char_count": 1386
+    },
+    {
+      "id": "3da-rig-weight-painting",
+      "name": "权重绘制技巧",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-rig-weight-painting.md",
+      "exists": true,
+      "char_count": 2470
+    },
+    {
+      "id": "3da-rig-game-skeleton",
+      "name": "游戏骨骼规范",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "规范"
+      ],
+      "file": "3d-art/3da-rig-game-skeleton.md",
+      "exists": true,
+      "char_count": 2865
+    },
+    {
+      "id": "3da-rig-constraints",
+      "name": "约束系统",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-rig-constraints.md",
+      "exists": true,
+      "char_count": 3006
+    },
+    {
+      "id": "3da-rig-export",
+      "name": "绑定导出",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-rig-export.md",
+      "exists": true,
+      "char_count": 2961
+    },
+    {
+      "id": "3da-rig-intro",
+      "name": "绑定概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-rig-intro.md",
+      "exists": true,
+      "char_count": 1409
+    },
+    {
+      "id": "3da-rig-spine",
+      "name": "脊柱绑定",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-rig-spine.md",
+      "exists": true,
+      "char_count": 1308
+    },
+    {
+      "id": "3da-rig-skinning",
+      "name": "蒙皮权重",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-rig-skinning.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "3da-rig-facial",
+      "name": "面部绑定",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-rig-facial.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "3da-rig-skeleton",
+      "name": "骨骼系统",
+      "domain_id": "3d-art",
+      "subdomain_id": "rigging",
+      "subdomain_name": "绑定",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-rig-skeleton.md",
+      "exists": true,
+      "char_count": 2870
+    },
+    {
+      "id": "3da-sculpt-3dcoat",
+      "name": "3DCoat雕刻",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-sculpt-3dcoat.md",
+      "exists": true,
+      "char_count": 1463
+    },
+    {
+      "id": "3da-sculpt-alphas",
+      "name": "Alpha与笔触纹理",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-sculpt-alphas.md",
+      "exists": true,
+      "char_count": 1397
+    },
+    {
+      "id": "3da-sculpt-blender-sculpt",
+      "name": "Blender雕刻",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-sculpt-blender-sculpt.md",
+      "exists": true,
+      "char_count": 1519
+    },
+    {
+      "id": "3da-sculpt-dynamesh",
+      "name": "DynaMesh",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-sculpt-dynamesh.md",
+      "exists": true,
+      "char_count": 1383
+    },
+    {
+      "id": "3da-sculpt-insert-mesh",
+      "name": "Insert Mesh笔刷",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-sculpt-insert-mesh.md",
+      "exists": true,
+      "char_count": 1452
+    },
+    {
+      "id": "3da-sculpt-zbrush-workflow",
+      "name": "ZBrush工作流",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "工作流"
+      ],
+      "file": "3d-art/3da-sculpt-zbrush-workflow.md",
+      "exists": true,
+      "char_count": 1653
+    },
+    {
+      "id": "3da-sculpt-multires",
+      "name": "多分辨率雕刻",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-sculpt-multires.md",
+      "exists": true,
+      "char_count": 2515
+    },
+    {
+      "id": "3da-sculpt-posing",
+      "name": "姿势调整",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-sculpt-posing.md",
+      "exists": true,
+      "char_count": 1315
+    },
+    {
+      "id": "3da-sculpt-form",
+      "name": "形体把控",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-sculpt-form.md",
+      "exists": true,
+      "char_count": 2234
+    },
+    {
+      "id": "3da-sculpt-intro",
+      "name": "数字雕刻概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-sculpt-intro.md",
+      "exists": true,
+      "char_count": 1662
+    },
+    {
+      "id": "3da-sculpt-projection",
+      "name": "细节投射",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "3d-art/3da-sculpt-projection.md",
+      "exists": true,
+      "char_count": 1280
+    },
+    {
+      "id": "3da-sculpt-detailing",
+      "name": "细节雕刻",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-sculpt-detailing.md",
+      "exists": true,
+      "char_count": 1517
+    },
+    {
+      "id": "3da-sculpt-anatomy-app",
+      "name": "解剖学应用",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-sculpt-anatomy-app.md",
+      "exists": true,
+      "char_count": 1578
+    },
+    {
+      "id": "3da-sculpt-masks",
+      "name": "遮罩与分组",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-sculpt-masks.md",
+      "exists": true,
+      "char_count": 1459
+    },
+    {
+      "id": "3da-sculpt-layers",
+      "name": "雕刻层",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-sculpt-layers.md",
+      "exists": true,
+      "char_count": 2375
+    },
+    {
+      "id": "3da-sculpt-presentation",
+      "name": "雕刻展示",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "展示"
+      ],
+      "file": "3d-art/3da-sculpt-presentation.md",
+      "exists": true,
+      "char_count": 1499
+    },
+    {
+      "id": "3da-sculpt-hard-surface",
+      "name": "雕刻式硬表面",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "跨域"
+      ],
+      "file": "3d-art/3da-sculpt-hard-surface.md",
+      "exists": true,
+      "char_count": 1482
+    },
+    {
+      "id": "3da-sculpt-cleanup",
+      "name": "雕刻清理",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-sculpt-cleanup.md",
+      "exists": true,
+      "char_count": 1351
+    },
+    {
+      "id": "3da-sculpt-brushes",
+      "name": "雕刻笔刷",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-sculpt-brushes.md",
+      "exists": true,
+      "char_count": 2549
+    },
+    {
+      "id": "3da-sculpt-stylized",
+      "name": "风格化雕刻",
+      "domain_id": "3d-art",
+      "subdomain_id": "sculpting",
+      "subdomain_name": "数字雕刻",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "3d-art/3da-sculpt-stylized.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "3da-tex-ao-map",
+      "name": "AO贴图",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-tex-ao-map.md",
+      "exists": true,
+      "char_count": 1388
+    },
+    {
+      "id": "3da-tex-base-color",
+      "name": "BaseColor贴图",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-tex-base-color.md",
+      "exists": true,
+      "char_count": 1620
+    },
+    {
+      "id": "3da-tex-material-id",
+      "name": "Material ID",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-tex-material-id.md",
+      "exists": true,
+      "char_count": 1501
+    },
+    {
+      "id": "3da-tex-metallic",
+      "name": "Metallic贴图",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-tex-metallic.md",
+      "exists": true,
+      "char_count": 1521
+    },
+    {
+      "id": "3da-tex-pbr-workflow",
+      "name": "PBR纹理工作流",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-tex-pbr-workflow.md",
+      "exists": true,
+      "char_count": 1949
+    },
+    {
+      "id": "3da-tex-roughness",
+      "name": "Roughness贴图",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-tex-roughness.md",
+      "exists": true,
+      "char_count": 1540
+    },
+    {
+      "id": "3da-tex-substance-designer",
+      "name": "Substance Designer",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-tex-substance-designer.md",
+      "exists": true,
+      "char_count": 1618
+    },
+    {
+      "id": "3da-tex-substance-painter",
+      "name": "Substance Painter",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-tex-substance-painter.md",
+      "exists": true,
+      "char_count": 2026
+    },
+    {
+      "id": "3da-tex-weathering",
+      "name": "做旧与风化",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-tex-weathering.md",
+      "exists": true,
+      "char_count": 1658
+    },
+    {
+      "id": "3da-tex-tiling-material",
+      "name": "可平铺材质",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-tex-tiling-material.md",
+      "exists": true,
+      "char_count": 1468
+    },
+    {
+      "id": "3da-tex-hand-painted",
+      "name": "手绘纹理",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "风格"
+      ],
+      "file": "3d-art/3da-tex-hand-painted.md",
+      "exists": true,
+      "char_count": 1463
+    },
+    {
+      "id": "3da-tex-scan-data",
+      "name": "扫描数据纹理",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "3d-art/3da-tex-scan-data.md",
+      "exists": true,
+      "char_count": 1298
+    },
+    {
+      "id": "3da-tex-curvature",
+      "name": "曲率贴图",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-tex-curvature.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "3da-tex-normal-map",
+      "name": "法线贴图制作",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-tex-normal-map.md",
+      "exists": true,
+      "char_count": 1417
+    },
+    {
+      "id": "3da-tex-resolution-guide",
+      "name": "纹理分辨率指南",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "3d-art/3da-tex-resolution-guide.md",
+      "exists": true,
+      "char_count": 1358
+    },
+    {
+      "id": "3da-tex-export-settings",
+      "name": "纹理导出设置",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "3d-art/3da-tex-export-settings.md",
+      "exists": true,
+      "char_count": 1654
+    },
+    {
+      "id": "3da-tex-intro",
+      "name": "纹理绘制概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-tex-intro.md",
+      "exists": true,
+      "char_count": 1494
+    },
+    {
+      "id": "3da-tex-emissive",
+      "name": "自发光贴图",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "3d-art/3da-tex-emissive.md",
+      "exists": true,
+      "char_count": 1390
+    },
+    {
+      "id": "3da-tex-color-theory",
+      "name": "色彩理论",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-tex-color-theory.md",
+      "exists": true,
+      "char_count": 1304
+    },
+    {
+      "id": "3da-tex-decal-texturing",
+      "name": "贴花纹理",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-tex-decal-texturing.md",
+      "exists": true,
+      "char_count": 1369
+    },
+    {
+      "id": "3da-tex-opacity-mask",
+      "name": "透明度与遮罩",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-tex-opacity-mask.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "3da-tex-height-map",
+      "name": "高度贴图",
+      "domain_id": "3d-art",
+      "subdomain_id": "texturing",
+      "subdomain_name": "纹理绘制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "3d-art/3da-tex-height-map.md",
+      "exists": true,
+      "char_count": 1410
+    },
+    {
+      "id": "3da-uv-padding-bleeding",
+      "name": "Padding与Bleeding",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-uv-padding-bleeding.md",
+      "exists": true,
+      "char_count": 1690
+    },
+    {
+      "id": "3da-uv-rizom-workflow",
+      "name": "RizomUV工作流",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-uv-rizom-workflow.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "3da-uv-udim",
+      "name": "UDIM多Tile",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "进阶"
+      ],
+      "file": "3d-art/3da-uv-udim.md",
+      "exists": true,
+      "char_count": 1394
+    },
+    {
+      "id": "3da-uv-atlas-layout",
+      "name": "UV Atlas布局",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "3d-art/3da-uv-atlas-layout.md",
+      "exists": true,
+      "char_count": 1388
+    },
+    {
+      "id": "3da-uv-overlap",
+      "name": "UV叠放",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-uv-overlap.md",
+      "exists": true,
+      "char_count": 1258
+    },
+    {
+      "id": "3da-uv-intro",
+      "name": "UV展开概述",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "基础"
+      ],
+      "file": "3d-art/3da-uv-intro.md",
+      "exists": true,
+      "char_count": 2411
+    },
+    {
+      "id": "3da-uv-packing",
+      "name": "UV打包",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-uv-packing.md",
+      "exists": true,
+      "char_count": 1536
+    },
+    {
+      "id": "3da-uv-best-practices",
+      "name": "UV最佳实践",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "规范"
+      ],
+      "file": "3d-art/3da-uv-best-practices.md",
+      "exists": true,
+      "char_count": 1483
+    },
+    {
+      "id": "3da-uv-straightening",
+      "name": "UV矫直",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技巧"
+      ],
+      "file": "3d-art/3da-uv-straightening.md",
+      "exists": true,
+      "char_count": 1308
+    },
+    {
+      "id": "3da-uv-seam-placement",
+      "name": "UV缝合线",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-uv-seam-placement.md",
+      "exists": true,
+      "char_count": 1513
+    },
+    {
+      "id": "3da-uv-channels",
+      "name": "UV通道",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-uv-channels.md",
+      "exists": true,
+      "char_count": 1517
+    },
+    {
+      "id": "3da-uv-unwrap-tools",
+      "name": "展开工具",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-uv-unwrap-tools.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "3da-uv-projection",
+      "name": "投影展开",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-uv-projection.md",
+      "exists": true,
+      "char_count": 2529
+    },
+    {
+      "id": "3da-uv-organic-uv",
+      "name": "有机体UV",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-uv-organic-uv.md",
+      "exists": true,
+      "char_count": 2580
+    },
+    {
+      "id": "3da-uv-checker-map",
+      "name": "棋盘格检查",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-uv-checker-map.md",
+      "exists": true,
+      "char_count": 1375
+    },
+    {
+      "id": "3da-uv-hard-surface-uv",
+      "name": "硬表面UV",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "3d-art/3da-uv-hard-surface-uv.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "3da-uv-texel-density",
+      "name": "纹素密度",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "3d-art/3da-uv-texel-density.md",
+      "exists": true,
+      "char_count": 2774
+    },
+    {
+      "id": "3da-uv-auto-uv",
+      "name": "自动UV展开",
+      "domain_id": "3d-art",
+      "subdomain_id": "uv-unwrapping",
+      "subdomain_name": "UV展开",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "3d-art/3da-uv-auto-uv.md",
+      "exists": true,
+      "char_count": 1396
     }
-  ]
+  ],
+  "stats": {
+    "total": 226,
+    "total_chars": 391710,
+    "avg_chars": 1733,
+    "domain": "3d-art"
+  }
 }

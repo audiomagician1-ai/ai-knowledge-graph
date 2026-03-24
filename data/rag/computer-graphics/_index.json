@@ -1,3423 +1,19 @@
 {
-  "version": "1.0.0",
-  "domain": "computer-graphics",
-  "domain_name": "图形学",
-  "generated_at": "2026-03-21",
-  "total_concepts": 250,
-  "stats": {
-    "total_docs": 250,
-    "total_chars": 134597,
-    "by_subdomain": {
-      "rasterization": {
-        "count": 22,
-        "chars": 11744
-      },
-      "ray-tracing": {
-        "count": 21,
-        "chars": 11287
-      },
-      "pbr-materials": {
-        "count": 20,
-        "chars": 10782
-      },
-      "global-illumination": {
-        "count": 21,
-        "chars": 11239
-      },
-      "post-processing": {
-        "count": 21,
-        "chars": 11020
-      },
-      "gpu-architecture": {
-        "count": 21,
-        "chars": 11678
-      },
-      "shader-programming": {
-        "count": 21,
-        "chars": 11594
-      },
-      "texture-techniques": {
-        "count": 21,
-        "chars": 11170
-      },
-      "geometry-processing": {
-        "count": 21,
-        "chars": 11233
-      },
-      "volume-rendering": {
-        "count": 21,
-        "chars": 11187
-      },
-      "anti-aliasing": {
-        "count": 20,
-        "chars": 10705
-      },
-      "render-optimization": {
-        "count": 20,
-        "chars": 10958
-      }
-    }
-  },
   "documents": [
     {
-      "id": "cg-raster-intro",
-      "name": "光栅化概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/rasterization/cg-raster-intro.md",
-      "exists": true,
-      "char_count": 589
-    },
-    {
-      "id": "cg-raster-pipeline",
-      "name": "图形管线阶段",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/rasterization/cg-raster-pipeline.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "cg-vertex-transform",
-      "name": "顶点变换",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/rasterization/cg-vertex-transform.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "cg-projection",
-      "name": "投影变换",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/rasterization/cg-projection.md",
-      "exists": true,
-      "char_count": 509
-    },
-    {
-      "id": "cg-clipping",
-      "name": "裁剪",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/rasterization/cg-clipping.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-viewport-transform",
-      "name": "视口变换",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/rasterization/cg-viewport-transform.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-triangle-setup",
-      "name": "三角形装配",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/rasterization/cg-triangle-setup.md",
-      "exists": true,
-      "char_count": 511
-    },
-    {
-      "id": "cg-scanline",
-      "name": "扫描线转换",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/rasterization/cg-scanline.md",
-      "exists": true,
-      "char_count": 511
-    },
-    {
-      "id": "cg-interpolation",
-      "name": "属性插值",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/rasterization/cg-interpolation.md",
-      "exists": true,
-      "char_count": 577
-    },
-    {
-      "id": "cg-depth-buffer",
-      "name": "深度缓冲",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/rasterization/cg-depth-buffer.md",
-      "exists": true,
-      "char_count": 509
-    },
-    {
-      "id": "cg-stencil-buffer",
-      "name": "模板缓冲",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/rasterization/cg-stencil-buffer.md",
-      "exists": true,
-      "char_count": 511
-    },
-    {
-      "id": "cg-early-z",
-      "name": "Early-Z优化",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/rasterization/cg-early-z.md",
-      "exists": true,
-      "char_count": 546
-    },
-    {
-      "id": "cg-blending",
-      "name": "Alpha混合",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/rasterization/cg-blending.md",
-      "exists": true,
-      "char_count": 530
-    },
-    {
-      "id": "cg-msaa",
-      "name": "多重采样抗锯齿",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "抗锯齿"
-      ],
-      "file": "computer-graphics/rasterization/cg-msaa.md",
-      "exists": true,
-      "char_count": 525
-    },
-    {
-      "id": "cg-forward-rendering",
-      "name": "前向渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/rasterization/cg-forward-rendering.md",
-      "exists": true,
-      "char_count": 581
-    },
-    {
-      "id": "cg-deferred-rendering",
-      "name": "延迟渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/rasterization/cg-deferred-rendering.md",
-      "exists": true,
-      "char_count": 587
-    },
-    {
-      "id": "cg-forward-plus",
-      "name": "Forward+",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/rasterization/cg-forward-plus.md",
-      "exists": true,
-      "char_count": 537
-    },
-    {
-      "id": "cg-tiled-rendering",
-      "name": "分块渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "移动端"
-      ],
-      "file": "computer-graphics/rasterization/cg-tiled-rendering.md",
-      "exists": true,
-      "char_count": 525
-    },
-    {
-      "id": "cg-clustered-rendering",
-      "name": "簇式渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/rasterization/cg-clustered-rendering.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "cg-visibility-buffer",
-      "name": "可见性缓冲",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/rasterization/cg-visibility-buffer.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "cg-indirect-draw",
-      "name": "间接绘制",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/rasterization/cg-indirect-draw.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "cg-mesh-shader",
-      "name": "Mesh Shader",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "rasterization",
-      "subdomain_name": "光栅化",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/rasterization/cg-mesh-shader.md",
-      "exists": true,
-      "char_count": 553
-    },
-    {
-      "id": "cg-rt-intro",
-      "name": "光线追踪概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-rt-intro.md",
-      "exists": true,
-      "char_count": 601
-    },
-    {
-      "id": "cg-ray-generation",
-      "name": "光线生成",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-ray-generation.md",
-      "exists": true,
-      "char_count": 503
-    },
-    {
-      "id": "cg-ray-intersection",
-      "name": "光线求交",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-ray-intersection.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-bvh",
-      "name": "BVH加速结构",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-bvh.md",
-      "exists": true,
-      "char_count": 609
-    },
-    {
-      "id": "cg-kd-tree",
-      "name": "KD-Tree",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-kd-tree.md",
-      "exists": true,
-      "char_count": 524
-    },
-    {
-      "id": "cg-rt-shadows",
-      "name": "光追阴影",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "光照"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-rt-shadows.md",
-      "exists": true,
-      "char_count": 503
-    },
-    {
-      "id": "cg-rt-reflection",
-      "name": "光追反射",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "光照"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-rt-reflection.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-rt-refraction",
-      "name": "光追折射",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "光照"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-rt-refraction.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-path-tracing",
-      "name": "路径追踪",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-path-tracing.md",
-      "exists": true,
-      "char_count": 583
-    },
-    {
-      "id": "cg-importance-sampling",
-      "name": "重要性采样",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-importance-sampling.md",
-      "exists": true,
-      "char_count": 514
-    },
-    {
-      "id": "cg-mis",
-      "name": "多重重要性采样",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-mis.md",
-      "exists": true,
-      "char_count": 531
-    },
-    {
-      "id": "cg-bidirectional-pt",
-      "name": "双向路径追踪",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-bidirectional-pt.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "cg-mlt",
-      "name": "Metropolis光传输",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-mlt.md",
-      "exists": true,
-      "char_count": 567
-    },
-    {
-      "id": "cg-photon-mapping",
-      "name": "光子映射",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-photon-mapping.md",
-      "exists": true,
-      "char_count": 503
-    },
-    {
-      "id": "cg-rt-denoising",
-      "name": "光追降噪",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-rt-denoising.md",
-      "exists": true,
-      "char_count": 587
-    },
-    {
-      "id": "cg-rtx-hardware",
-      "name": "RTX硬件加速",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "硬件"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-rtx-hardware.md",
-      "exists": true,
-      "char_count": 539
-    },
-    {
-      "id": "cg-hybrid-rendering",
-      "name": "混合渲染管线",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-hybrid-rendering.md",
-      "exists": true,
-      "char_count": 594
-    },
-    {
-      "id": "cg-restir",
-      "name": "ReSTIR",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-restir.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "cg-sdf-tracing",
-      "name": "SDF光线步进",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-sdf-tracing.md",
-      "exists": true,
-      "char_count": 535
-    },
-    {
-      "id": "cg-rt-gi",
-      "name": "光追全局光照",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-rt-gi.md",
-      "exists": true,
-      "char_count": 530
-    },
-    {
-      "id": "cg-spectral-rendering",
-      "name": "光谱渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "ray-tracing",
-      "subdomain_name": "光线追踪",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/ray-tracing/cg-spectral-rendering.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-pbr-intro",
-      "name": "PBR材质概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-pbr-intro.md",
-      "exists": true,
-      "char_count": 608
-    },
-    {
-      "id": "cg-brdf",
-      "name": "BRDF基础",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-brdf.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "cg-cook-torrance",
-      "name": "Cook-Torrance模型",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-cook-torrance.md",
-      "exists": true,
-      "char_count": 662
-    },
-    {
-      "id": "cg-ndf",
-      "name": "法线分布函数",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-ndf.md",
-      "exists": true,
-      "char_count": 540
-    },
-    {
-      "id": "cg-fresnel",
-      "name": "菲涅尔效应",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "物理"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-fresnel.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-geometry-term",
-      "name": "几何遮蔽项",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-geometry-term.md",
-      "exists": true,
-      "char_count": 528
-    },
-    {
-      "id": "cg-metallic-workflow",
-      "name": "金属度工作流",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-metallic-workflow.md",
-      "exists": true,
-      "char_count": 537
-    },
-    {
-      "id": "cg-specular-workflow",
-      "name": "高光工作流",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-specular-workflow.md",
-      "exists": true,
-      "char_count": 530
-    },
-    {
-      "id": "cg-subsurface",
-      "name": "次表面散射",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-subsurface.md",
-      "exists": true,
-      "char_count": 592
-    },
-    {
-      "id": "cg-clear-coat",
-      "name": "清漆层",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-clear-coat.md",
-      "exists": true,
-      "char_count": 500
-    },
-    {
-      "id": "cg-anisotropy",
-      "name": "各向异性",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-anisotropy.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-cloth-shading",
-      "name": "布料着色",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-cloth-shading.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "cg-hair-shading",
-      "name": "毛发着色",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-hair-shading.md",
-      "exists": true,
-      "char_count": 511
-    },
-    {
-      "id": "cg-eye-rendering",
-      "name": "眼球渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-eye-rendering.md",
-      "exists": true,
-      "char_count": 509
-    },
-    {
-      "id": "cg-skin-rendering",
-      "name": "皮肤渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-skin-rendering.md",
-      "exists": true,
-      "char_count": 510
-    },
-    {
-      "id": "cg-iridescence",
-      "name": "薄膜干涉",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-iridescence.md",
-      "exists": true,
-      "char_count": 506
-    },
-    {
-      "id": "cg-energy-conservation",
-      "name": "能量守恒",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-energy-conservation.md",
-      "exists": true,
-      "char_count": 506
-    },
-    {
-      "id": "cg-material-layering",
-      "name": "材质分层",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-material-layering.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-disney-brdf",
-      "name": "Disney BRDF",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-disney-brdf.md",
-      "exists": true,
-      "char_count": 647
-    },
-    {
-      "id": "cg-btdf",
-      "name": "透射BRDF",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "pbr-materials",
-      "subdomain_name": "PBR材质",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/pbr-materials/cg-btdf.md",
-      "exists": true,
-      "char_count": 527
-    },
-    {
-      "id": "cg-gi-intro",
-      "name": "全局光照概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/global-illumination/cg-gi-intro.md",
-      "exists": true,
-      "char_count": 600
-    },
-    {
-      "id": "cg-rendering-equation",
-      "name": "渲染方程",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/global-illumination/cg-rendering-equation.md",
-      "exists": true,
-      "char_count": 585
-    },
-    {
-      "id": "cg-radiometry",
-      "name": "辐射度量学",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "物理"
-      ],
-      "file": "computer-graphics/global-illumination/cg-radiometry.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "cg-radiosity",
-      "name": "辐射度方法",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "computer-graphics/global-illumination/cg-radiosity.md",
-      "exists": true,
-      "char_count": 513
-    },
-    {
-      "id": "cg-ambient-occlusion",
-      "name": "环境光遮蔽",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/global-illumination/cg-ambient-occlusion.md",
-      "exists": true,
-      "char_count": 594
-    },
-    {
-      "id": "cg-irradiance-map",
-      "name": "辐照度贴图",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/global-illumination/cg-irradiance-map.md",
-      "exists": true,
-      "char_count": 522
-    },
-    {
-      "id": "cg-spherical-harmonics",
-      "name": "球谐函数",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/global-illumination/cg-spherical-harmonics.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-light-probes",
-      "name": "光探针",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/global-illumination/cg-light-probes.md",
-      "exists": true,
-      "char_count": 506
-    },
-    {
-      "id": "cg-reflection-probes",
-      "name": "反射探针",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/global-illumination/cg-reflection-probes.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "cg-screen-space-gi",
-      "name": "屏幕空间GI",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/global-illumination/cg-screen-space-gi.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "cg-lpv",
-      "name": "光传播体积",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/global-illumination/cg-lpv.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "cg-voxel-gi",
-      "name": "体素全局光照",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/global-illumination/cg-voxel-gi.md",
-      "exists": true,
-      "char_count": 597
-    },
-    {
-      "id": "cg-lumen",
-      "name": "Lumen系统",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "引擎"
-      ],
-      "file": "computer-graphics/global-illumination/cg-lumen.md",
-      "exists": true,
-      "char_count": 536
-    },
-    {
-      "id": "cg-ddgi",
-      "name": "DDGI",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/global-illumination/cg-ddgi.md",
-      "exists": true,
-      "char_count": 533
-    },
-    {
-      "id": "cg-lightmap-baking",
-      "name": "光照图烘焙",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/global-illumination/cg-lightmap-baking.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "cg-irradiance-volume",
-      "name": "辐照度体积",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/global-illumination/cg-irradiance-volume.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "cg-caustics",
-      "name": "焦散",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/global-illumination/cg-caustics.md",
-      "exists": true,
-      "char_count": 494
-    },
-    {
-      "id": "cg-sky-atmosphere",
-      "name": "天空与大气",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "环境"
-      ],
-      "file": "computer-graphics/global-illumination/cg-sky-atmosphere.md",
-      "exists": true,
-      "char_count": 524
-    },
-    {
-      "id": "cg-cloud-rendering",
-      "name": "云渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "环境"
-      ],
-      "file": "computer-graphics/global-illumination/cg-cloud-rendering.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-indirect-specular",
-      "name": "间接高光",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/global-illumination/cg-indirect-specular.md",
-      "exists": true,
-      "char_count": 507
-    },
-    {
-      "id": "cg-gi-hybrid",
-      "name": "混合GI方案",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "global-illumination",
-      "subdomain_name": "全局光照",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/global-illumination/cg-gi-hybrid.md",
-      "exists": true,
-      "char_count": 600
-    },
-    {
-      "id": "cg-pp-intro",
-      "name": "后处理概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/post-processing/cg-pp-intro.md",
-      "exists": true,
-      "char_count": 589
-    },
-    {
-      "id": "cg-tone-mapping",
-      "name": "色调映射",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/post-processing/cg-tone-mapping.md",
-      "exists": true,
-      "char_count": 596
-    },
-    {
-      "id": "cg-color-grading",
-      "name": "色彩分级",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "艺术"
-      ],
-      "file": "computer-graphics/post-processing/cg-color-grading.md",
-      "exists": true,
-      "char_count": 510
-    },
-    {
-      "id": "cg-bloom",
-      "name": "泛光",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-bloom.md",
-      "exists": true,
-      "char_count": 501
-    },
-    {
-      "id": "cg-dof",
-      "name": "景深",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-dof.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "cg-motion-blur",
-      "name": "运动模糊",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-motion-blur.md",
-      "exists": true,
-      "char_count": 537
-    },
-    {
-      "id": "cg-lens-flare",
-      "name": "镜头光晕",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-lens-flare.md",
-      "exists": true,
-      "char_count": 518
-    },
-    {
-      "id": "cg-chromatic-aberration",
-      "name": "色散",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-chromatic-aberration.md",
-      "exists": true,
-      "char_count": 488
-    },
-    {
-      "id": "cg-vignette",
-      "name": "暗角",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-vignette.md",
-      "exists": true,
-      "char_count": 491
-    },
-    {
-      "id": "cg-film-grain",
-      "name": "胶片颗粒",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-film-grain.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-sharpening",
-      "name": "锐化",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-sharpening.md",
-      "exists": true,
-      "char_count": 502
-    },
-    {
-      "id": "cg-exposure",
-      "name": "自动曝光",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/post-processing/cg-exposure.md",
-      "exists": true,
-      "char_count": 502
-    },
-    {
-      "id": "cg-fog-pp",
-      "name": "雾效",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/post-processing/cg-fog-pp.md",
-      "exists": true,
-      "char_count": 492
-    },
-    {
-      "id": "cg-ssr",
-      "name": "屏幕空间反射",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/post-processing/cg-ssr.md",
-      "exists": true,
-      "char_count": 544
-    },
-    {
-      "id": "cg-outline",
-      "name": "描边效果",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "风格化"
-      ],
-      "file": "computer-graphics/post-processing/cg-outline.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-cel-shading",
-      "name": "赛璐璐着色",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "风格化"
-      ],
-      "file": "computer-graphics/post-processing/cg-cel-shading.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "cg-pixel-art-filter",
-      "name": "像素化滤镜",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "风格化"
-      ],
-      "file": "computer-graphics/post-processing/cg-pixel-art-filter.md",
-      "exists": true,
-      "char_count": 513
-    },
-    {
-      "id": "cg-hdr-pipeline",
-      "name": "HDR管线",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/post-processing/cg-hdr-pipeline.md",
-      "exists": true,
-      "char_count": 512
-    },
-    {
-      "id": "cg-pp-volume",
-      "name": "后处理体积",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "引擎"
-      ],
-      "file": "computer-graphics/post-processing/cg-pp-volume.md",
-      "exists": true,
-      "char_count": 512
-    },
-    {
-      "id": "cg-eye-adaptation",
-      "name": "明暗适应",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/post-processing/cg-eye-adaptation.md",
-      "exists": true,
-      "char_count": 504
-    },
-    {
-      "id": "cg-pp-stack",
-      "name": "后处理栈设计",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "post-processing",
-      "subdomain_name": "后处理",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/post-processing/cg-pp-stack.md",
-      "exists": true,
-      "char_count": 595
-    },
-    {
-      "id": "cg-gpu-intro",
-      "name": "GPU架构概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-gpu-intro.md",
-      "exists": true,
-      "char_count": 608
-    },
-    {
-      "id": "cg-gpu-pipeline",
-      "name": "GPU硬件管线",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-gpu-pipeline.md",
-      "exists": true,
-      "char_count": 532
-    },
-    {
-      "id": "cg-gpu-memory",
-      "name": "GPU内存层级",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-gpu-memory.md",
-      "exists": true,
-      "char_count": 612
-    },
-    {
-      "id": "cg-warp-wavefront",
-      "name": "Warp/Wavefront",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-warp-wavefront.md",
-      "exists": true,
-      "char_count": 576
-    },
-    {
-      "id": "cg-occupancy",
-      "name": "占用率",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-occupancy.md",
-      "exists": true,
-      "char_count": 518
-    },
-    {
-      "id": "cg-gpu-scheduling",
-      "name": "GPU调度",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-gpu-scheduling.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-texture-unit",
-      "name": "纹理单元",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "硬件"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-texture-unit.md",
-      "exists": true,
-      "char_count": 509
-    },
-    {
-      "id": "cg-rop",
-      "name": "ROP",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "硬件"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-rop.md",
-      "exists": true,
-      "char_count": 503
-    },
-    {
-      "id": "cg-tmu-cache",
-      "name": "纹理缓存",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-tmu-cache.md",
-      "exists": true,
-      "char_count": 514
-    },
-    {
-      "id": "cg-compute-shader",
-      "name": "Compute Shader",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-compute-shader.md",
-      "exists": true,
-      "char_count": 654
-    },
-    {
-      "id": "cg-async-compute",
-      "name": "异步计算",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-async-compute.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "cg-gpu-driven",
-      "name": "GPU Driven Pipeline",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-gpu-driven.md",
-      "exists": true,
-      "char_count": 698
-    },
-    {
-      "id": "cg-bindless",
-      "name": "Bindless资源",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-bindless.md",
-      "exists": true,
-      "char_count": 563
-    },
-    {
-      "id": "cg-dx12-vk",
-      "name": "DX12/Vulkan基础",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "API"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-dx12-vk.md",
-      "exists": true,
-      "char_count": 579
-    },
-    {
-      "id": "cg-command-buffer",
-      "name": "命令缓冲",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "API"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-command-buffer.md",
-      "exists": true,
-      "char_count": 507
-    },
-    {
-      "id": "cg-render-pass",
-      "name": "渲染Pass",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "API"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-render-pass.md",
-      "exists": true,
-      "char_count": 542
-    },
-    {
-      "id": "cg-descriptor-set",
-      "name": "描述符集",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "API"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-descriptor-set.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "cg-pipeline-barrier",
-      "name": "管线屏障",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "API"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-pipeline-barrier.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-gpu-profiling",
-      "name": "GPU性能分析",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-gpu-profiling.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "cg-mobile-gpu",
-      "name": "移动端GPU",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "移动端"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-mobile-gpu.md",
-      "exists": true,
-      "char_count": 536
-    },
-    {
-      "id": "cg-ray-tracing-hw",
-      "name": "光追硬件单元",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "gpu-architecture",
-      "subdomain_name": "GPU架构",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "硬件"
-      ],
-      "file": "computer-graphics/gpu-architecture/cg-ray-tracing-hw.md",
-      "exists": true,
-      "char_count": 537
-    },
-    {
-      "id": "cg-shader-intro",
-      "name": "Shader概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/shader-programming/cg-shader-intro.md",
-      "exists": true,
-      "char_count": 615
-    },
-    {
-      "id": "cg-vertex-shader",
-      "name": "顶点着色器",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/shader-programming/cg-vertex-shader.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "cg-fragment-shader",
-      "name": "片元着色器",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/shader-programming/cg-fragment-shader.md",
-      "exists": true,
-      "char_count": 591
-    },
-    {
-      "id": "cg-geometry-shader",
-      "name": "几何着色器",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/shader-programming/cg-geometry-shader.md",
-      "exists": true,
-      "char_count": 517
-    },
-    {
-      "id": "cg-tessellation",
-      "name": "细分着色器",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/shader-programming/cg-tessellation.md",
-      "exists": true,
-      "char_count": 609
-    },
-    {
-      "id": "cg-hlsl",
-      "name": "HLSL",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "语言"
-      ],
-      "file": "computer-graphics/shader-programming/cg-hlsl.md",
-      "exists": true,
-      "char_count": 528
-    },
-    {
-      "id": "cg-glsl",
-      "name": "GLSL",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "语言"
-      ],
-      "file": "computer-graphics/shader-programming/cg-glsl.md",
-      "exists": true,
-      "char_count": 524
-    },
-    {
-      "id": "cg-spirv",
-      "name": "SPIR-V",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "computer-graphics/shader-programming/cg-spirv.md",
-      "exists": true,
-      "char_count": 525
-    },
-    {
-      "id": "cg-shader-model",
-      "name": "Shader Model",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/shader-programming/cg-shader-model.md",
-      "exists": true,
-      "char_count": 572
-    },
-    {
-      "id": "cg-uber-shader",
-      "name": "Uber Shader",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "架构"
-      ],
-      "file": "computer-graphics/shader-programming/cg-uber-shader.md",
-      "exists": true,
-      "char_count": 564
-    },
-    {
-      "id": "cg-shader-permutation",
-      "name": "着色器变体",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/shader-programming/cg-shader-permutation.md",
-      "exists": true,
-      "char_count": 517
-    },
-    {
-      "id": "cg-material-graph",
-      "name": "材质图编辑器",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "工具"
-      ],
-      "file": "computer-graphics/shader-programming/cg-material-graph.md",
-      "exists": true,
-      "char_count": 599
-    },
-    {
-      "id": "cg-surface-shader",
-      "name": "表面着色器",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "引擎"
-      ],
-      "file": "computer-graphics/shader-programming/cg-surface-shader.md",
-      "exists": true,
-      "char_count": 531
-    },
-    {
-      "id": "cg-material-function",
-      "name": "材质函数",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/shader-programming/cg-material-function.md",
-      "exists": true,
-      "char_count": 510
-    },
-    {
-      "id": "cg-shader-debug",
-      "name": "着色器调试",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/shader-programming/cg-shader-debug.md",
-      "exists": true,
-      "char_count": 531
-    },
-    {
-      "id": "cg-custom-lighting",
-      "name": "自定义光照模型",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "风格化"
-      ],
-      "file": "computer-graphics/shader-programming/cg-custom-lighting.md",
-      "exists": true,
-      "char_count": 538
-    },
-    {
-      "id": "cg-procedural-shader",
-      "name": "程序化着色器",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/shader-programming/cg-procedural-shader.md",
-      "exists": true,
-      "char_count": 541
-    },
-    {
-      "id": "cg-shader-optimization",
-      "name": "着色器优化",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/shader-programming/cg-shader-optimization.md",
-      "exists": true,
-      "char_count": 599
-    },
-    {
-      "id": "cg-wave-intrinsics",
-      "name": "Wave Intrinsics",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/shader-programming/cg-wave-intrinsics.md",
-      "exists": true,
-      "char_count": 594
-    },
-    {
-      "id": "cg-shader-interop",
-      "name": "着色器互操作",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/shader-programming/cg-shader-interop.md",
-      "exists": true,
-      "char_count": 533
-    },
-    {
-      "id": "cg-slang",
-      "name": "Slang语言",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "shader-programming",
-      "subdomain_name": "Shader编程",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/shader-programming/cg-slang.md",
-      "exists": true,
-      "char_count": 536
-    },
-    {
-      "id": "cg-tex-intro",
-      "name": "纹理映射概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-tex-intro.md",
-      "exists": true,
-      "char_count": 597
-    },
-    {
-      "id": "cg-mipmap",
-      "name": "Mipmap",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-mipmap.md",
-      "exists": true,
-      "char_count": 596
-    },
-    {
-      "id": "cg-aniso-filtering",
-      "name": "各向异性过滤",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-aniso-filtering.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "cg-normal-mapping",
-      "name": "法线贴图",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-normal-mapping.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "cg-parallax-mapping",
-      "name": "视差贴图",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-parallax-mapping.md",
-      "exists": true,
-      "char_count": 534
-    },
-    {
-      "id": "cg-displacement-map",
-      "name": "置换贴图",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-displacement-map.md",
-      "exists": true,
-      "char_count": 512
-    },
-    {
-      "id": "cg-cube-mapping",
-      "name": "立方体贴图",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-cube-mapping.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "cg-texture-compression",
-      "name": "纹理压缩",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-texture-compression.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-virtual-texture",
-      "name": "虚拟纹理",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-virtual-texture.md",
-      "exists": true,
-      "char_count": 602
-    },
-    {
-      "id": "cg-texture-atlas",
-      "name": "纹理图集",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-texture-atlas.md",
-      "exists": true,
-      "char_count": 507
-    },
-    {
-      "id": "cg-texture-streaming",
-      "name": "纹理流式加载",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-texture-streaming.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "cg-procedural-texture",
-      "name": "程序纹理",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-procedural-texture.md",
-      "exists": true,
-      "char_count": 513
-    },
-    {
-      "id": "cg-detail-mapping",
-      "name": "细节贴图",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-detail-mapping.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-texture-projection",
-      "name": "纹理投影",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-texture-projection.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-decal-system",
-      "name": "贴花系统",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-decal-system.md",
-      "exists": true,
-      "char_count": 527
-    },
-    {
-      "id": "cg-triplanar",
-      "name": "三平面映射",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-triplanar.md",
-      "exists": true,
-      "char_count": 514
-    },
-    {
-      "id": "cg-texture-synthesis",
-      "name": "纹理合成",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-texture-synthesis.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-sdf-texture",
-      "name": "SDF纹理",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-sdf-texture.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-material-textures",
-      "name": "材质纹理集",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-material-textures.md",
-      "exists": true,
-      "char_count": 538
-    },
-    {
-      "id": "cg-texture-baking",
-      "name": "纹理烘焙",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-texture-baking.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-udim",
-      "name": "UDIM",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "texture-techniques",
-      "subdomain_name": "纹理技术",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "流程"
-      ],
-      "file": "computer-graphics/texture-techniques/cg-udim.md",
-      "exists": true,
-      "char_count": 509
-    },
-    {
-      "id": "cg-geo-intro",
-      "name": "几何处理概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-geo-intro.md",
-      "exists": true,
-      "char_count": 592
-    },
-    {
-      "id": "cg-mesh-representation",
-      "name": "网格表示",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-mesh-representation.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-mesh-simplification",
-      "name": "网格简化",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-mesh-simplification.md",
-      "exists": true,
-      "char_count": 580
-    },
-    {
-      "id": "cg-subdivision",
-      "name": "细分曲面",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-subdivision.md",
-      "exists": true,
-      "char_count": 518
-    },
-    {
-      "id": "cg-lod",
-      "name": "LOD系统",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-lod.md",
-      "exists": true,
-      "char_count": 593
-    },
-    {
-      "id": "cg-nanite",
-      "name": "Nanite架构",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-nanite.md",
-      "exists": true,
-      "char_count": 615
-    },
-    {
-      "id": "cg-mesh-boolean",
-      "name": "网格布尔运算",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-mesh-boolean.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "cg-parametric-surface",
-      "name": "参数曲面",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-parametric-surface.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-point-cloud",
-      "name": "点云处理",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-point-cloud.md",
-      "exists": true,
-      "char_count": 504
-    },
-    {
-      "id": "cg-isosurface",
-      "name": "等值面提取",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "算法"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-isosurface.md",
-      "exists": true,
-      "char_count": 530
-    },
-    {
-      "id": "cg-sdf-modeling",
-      "name": "SDF建模",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-sdf-modeling.md",
-      "exists": true,
-      "char_count": 516
-    },
-    {
-      "id": "cg-mesh-repair",
-      "name": "网格修复",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-mesh-repair.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-mesh-deformation",
-      "name": "网格变形",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-mesh-deformation.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "cg-mesh-compression",
-      "name": "网格压缩",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-mesh-compression.md",
-      "exists": true,
-      "char_count": 507
-    },
-    {
-      "id": "cg-instancing",
-      "name": "实例化渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-instancing.md",
-      "exists": true,
-      "char_count": 611
-    },
-    {
-      "id": "cg-impostor",
-      "name": "替身技术",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "优化"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-impostor.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "cg-terrain-geometry",
-      "name": "地形几何",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-terrain-geometry.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-vegetation",
-      "name": "植被渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-vegetation.md",
-      "exists": true,
-      "char_count": 508
-    },
-    {
-      "id": "cg-procedural-mesh",
-      "name": "程序化网格",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-procedural-mesh.md",
-      "exists": true,
-      "char_count": 513
-    },
-    {
-      "id": "cg-mesh-streaming",
-      "name": "网格流式加载",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-mesh-streaming.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "cg-neural-geometry",
-      "name": "神经网络几何",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "geometry-processing",
-      "subdomain_name": "几何处理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/geometry-processing/cg-neural-geometry.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "cg-vol-intro",
-      "name": "体积渲染概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-vol-intro.md",
-      "exists": true,
-      "char_count": 592
-    },
-    {
-      "id": "cg-ray-marching",
-      "name": "Ray Marching",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-ray-marching.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "cg-beer-lambert",
-      "name": "Beer-Lambert定律",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "物理"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-beer-lambert.md",
-      "exists": true,
-      "char_count": 574
-    },
-    {
-      "id": "cg-participating-media",
-      "name": "参与介质",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-participating-media.md",
-      "exists": true,
-      "char_count": 506
-    },
-    {
-      "id": "cg-phase-function",
-      "name": "相函数",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "物理"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-phase-function.md",
-      "exists": true,
-      "char_count": 512
-    },
-    {
-      "id": "cg-vol-shadow",
-      "name": "体积阴影",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "光照"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-vol-shadow.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "cg-vol-cloud",
-      "name": "体积云实现",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-vol-cloud.md",
-      "exists": true,
-      "char_count": 588
-    },
-    {
-      "id": "cg-vol-fog",
-      "name": "体积雾",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-vol-fog.md",
-      "exists": true,
-      "char_count": 510
-    },
-    {
-      "id": "cg-god-rays",
-      "name": "体积光",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-god-rays.md",
-      "exists": true,
-      "char_count": 507
-    },
-    {
-      "id": "cg-vol-texture",
-      "name": "3D纹理",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-vol-texture.md",
-      "exists": true,
-      "char_count": 504
-    },
-    {
-      "id": "cg-fluid-rendering",
-      "name": "流体渲染",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "模拟"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-fluid-rendering.md",
-      "exists": true,
-      "char_count": 511
-    },
-    {
-      "id": "cg-fire-explosion",
-      "name": "火焰与爆炸",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "效果"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-fire-explosion.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "cg-smoke-sim",
-      "name": "烟雾模拟",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "模拟"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-smoke-sim.md",
-      "exists": true,
-      "char_count": 514
-    },
-    {
-      "id": "cg-heterogeneous",
-      "name": "异构体积",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-heterogeneous.md",
-      "exists": true,
-      "char_count": 513
-    },
-    {
-      "id": "cg-vol-gi",
-      "name": "体积全局光照",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-vol-gi.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "cg-openvdb",
-      "name": "OpenVDB",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-openvdb.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "cg-medical-vis",
-      "name": "医学可视化",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-medical-vis.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "cg-scientific-vis",
-      "name": "科学可视化",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-scientific-vis.md",
-      "exists": true,
-      "char_count": 511
-    },
-    {
-      "id": "cg-vol-decal",
-      "name": "体积贴花",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-vol-decal.md",
-      "exists": true,
-      "char_count": 504
-    },
-    {
-      "id": "cg-atmosphere-scatter",
-      "name": "大气散射实现",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "环境"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-atmosphere-scatter.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "cg-neural-radiance",
-      "name": "神经辐射场",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "volume-rendering",
-      "subdomain_name": "体积渲染",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "前沿"
-      ],
-      "file": "computer-graphics/volume-rendering/cg-neural-radiance.md",
-      "exists": true,
-      "char_count": 588
-    },
-    {
-      "id": "cg-aa-intro",
-      "name": "抗锯齿概述",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-aa-intro.md",
-      "exists": true,
-      "char_count": 594
-    },
-    {
-      "id": "cg-ssaa",
-      "name": "SSAA",
+      "id": "cg-aa-comparison",
+      "name": "AA方案对比",
       "domain_id": "computer-graphics",
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 2,
       "is_milestone": false,
       "tags": [
-        "基础"
+        "总结"
       ],
-      "file": "computer-graphics/anti-aliasing/cg-ssaa.md",
+      "file": "computer-graphics/anti-aliasing/cg-aa-comparison.md",
       "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "cg-msaa-detail",
-      "name": "MSAA详解",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-msaa-detail.md",
-      "exists": true,
-      "char_count": 592
-    },
-    {
-      "id": "cg-fxaa",
-      "name": "FXAA",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-fxaa.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "cg-smaa",
-      "name": "SMAA",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-smaa.md",
-      "exists": true,
-      "char_count": 577
-    },
-    {
-      "id": "cg-taa",
-      "name": "TAA",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-taa.md",
-      "exists": true,
-      "char_count": 574
-    },
-    {
-      "id": "cg-taa-ghosting",
-      "name": "TAA鬼影",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "问题"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-taa-ghosting.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "cg-taa-sharpness",
-      "name": "TAA锐度",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "问题"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-taa-sharpness.md",
-      "exists": true,
-      "char_count": 517
-    },
-    {
-      "id": "cg-velocity-buffer",
-      "name": "速度缓冲",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-velocity-buffer.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "cg-jitter-pattern",
-      "name": "抖动模式",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-jitter-pattern.md",
-      "exists": true,
-      "char_count": 514
-    },
-    {
-      "id": "cg-dlss",
-      "name": "DLSS",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "AI"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-dlss.md",
-      "exists": true,
-      "char_count": 580
-    },
-    {
-      "id": "cg-fsr",
-      "name": "FSR",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-fsr.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "cg-xess",
-      "name": "XeSS",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-xess.md",
-      "exists": true,
-      "char_count": 510
-    },
-    {
-      "id": "cg-upscaling",
-      "name": "超分辨率技术",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-upscaling.md",
-      "exists": true,
-      "char_count": 521
+      "char_count": 1318
     },
     {
       "id": "cg-alpha-testing-aa",
@@ -3432,22 +28,157 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-alpha-testing-aa.md",
       "exists": true,
-      "char_count": 562
+      "char_count": 1611
     },
     {
-      "id": "cg-specular-aa",
-      "name": "高光抗锯齿",
+      "id": "cg-dlss",
+      "name": "DLSS",
       "domain_id": "computer-graphics",
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "进阶"
+        "AI"
       ],
-      "file": "computer-graphics/anti-aliasing/cg-specular-aa.md",
+      "file": "computer-graphics/anti-aliasing/cg-dlss.md",
       "exists": true,
-      "char_count": 518
+      "char_count": 2563
+    },
+    {
+      "id": "cg-fsr",
+      "name": "FSR",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-fsr.md",
+      "exists": true,
+      "char_count": 1367
+    },
+    {
+      "id": "cg-fxaa",
+      "name": "FXAA",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-fxaa.md",
+      "exists": true,
+      "char_count": 1397
+    },
+    {
+      "id": "cg-msaa-detail",
+      "name": "MSAA详解",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-msaa-detail.md",
+      "exists": true,
+      "char_count": 2666
+    },
+    {
+      "id": "cg-smaa",
+      "name": "SMAA",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-smaa.md",
+      "exists": true,
+      "char_count": 2431
+    },
+    {
+      "id": "cg-ssaa",
+      "name": "SSAA",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-ssaa.md",
+      "exists": true,
+      "char_count": 1273
+    },
+    {
+      "id": "cg-taa",
+      "name": "TAA",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-taa.md",
+      "exists": true,
+      "char_count": 3117
+    },
+    {
+      "id": "cg-taa-sharpness",
+      "name": "TAA锐度",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "问题"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-taa-sharpness.md",
+      "exists": true,
+      "char_count": 1391
+    },
+    {
+      "id": "cg-taa-ghosting",
+      "name": "TAA鬼影",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "问题"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-taa-ghosting.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "cg-xess",
+      "name": "XeSS",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-xess.md",
+      "exists": true,
+      "char_count": 1222
     },
     {
       "id": "cg-geometric-aa",
@@ -3462,37 +193,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-geometric-aa.md",
       "exists": true,
-      "char_count": 512
-    },
-    {
-      "id": "cg-temporal-stability",
-      "name": "时间稳定性",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "质量"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-temporal-stability.md",
-      "exists": true,
-      "char_count": 512
-    },
-    {
-      "id": "cg-aa-comparison",
-      "name": "AA方案对比",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "anti-aliasing",
-      "subdomain_name": "抗锯齿",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "总结"
-      ],
-      "file": "computer-graphics/anti-aliasing/cg-aa-comparison.md",
-      "exists": true,
-      "char_count": 523
+      "char_count": 1248
     },
     {
       "id": "cg-frame-generation",
@@ -3507,217 +208,2302 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-frame-generation.md",
       "exists": true,
-      "char_count": 503
+      "char_count": 1250
     },
     {
-      "id": "cg-optim-intro",
-      "name": "渲染优化概述",
+      "id": "cg-jitter-pattern",
+      "name": "抖动模式",
       "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/anti-aliasing/cg-jitter-pattern.md",
+      "exists": true,
+      "char_count": 1318
+    },
+    {
+      "id": "cg-aa-intro",
+      "name": "抗锯齿概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
       "difficulty": 1,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "基础"
       ],
-      "file": "computer-graphics/render-optimization/cg-optim-intro.md",
+      "file": "computer-graphics/anti-aliasing/cg-aa-intro.md",
       "exists": true,
-      "char_count": 593
+      "char_count": 1516
     },
     {
-      "id": "cg-draw-call",
-      "name": "Draw Call优化",
+      "id": "cg-temporal-stability",
+      "name": "时间稳定性",
       "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 2,
-      "is_milestone": true,
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
+      "is_milestone": false,
       "tags": [
-        "核心"
+        "质量"
       ],
-      "file": "computer-graphics/render-optimization/cg-draw-call.md",
+      "file": "computer-graphics/anti-aliasing/cg-temporal-stability.md",
       "exists": true,
-      "char_count": 644
+      "char_count": 1371
     },
     {
-      "id": "cg-frustum-culling",
-      "name": "视锥剔除",
+      "id": "cg-upscaling",
+      "name": "超分辨率技术",
       "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 2,
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "computer-graphics/render-optimization/cg-frustum-culling.md",
+      "file": "computer-graphics/anti-aliasing/cg-upscaling.md",
       "exists": true,
-      "char_count": 514
+      "char_count": 1394
     },
     {
-      "id": "cg-occlusion-culling",
-      "name": "遮挡剔除",
+      "id": "cg-velocity-buffer",
+      "name": "速度缓冲",
       "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 3,
-      "is_milestone": true,
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
+      "difficulty": 2,
+      "is_milestone": false,
       "tags": [
-        "核心"
+        "技术"
       ],
-      "file": "computer-graphics/render-optimization/cg-occlusion-culling.md",
+      "file": "computer-graphics/anti-aliasing/cg-velocity-buffer.md",
       "exists": true,
-      "char_count": 595
+      "char_count": 1543
     },
     {
-      "id": "cg-gpu-culling",
-      "name": "GPU剔除",
+      "id": "cg-specular-aa",
+      "name": "高光抗锯齿",
       "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
+      "subdomain_id": "anti-aliasing",
+      "subdomain_name": "抗锯齿",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "进阶"
       ],
-      "file": "computer-graphics/render-optimization/cg-gpu-culling.md",
+      "file": "computer-graphics/anti-aliasing/cg-specular-aa.md",
       "exists": true,
-      "char_count": 527
+      "char_count": 1389
     },
     {
-      "id": "cg-bandwidth-opt",
-      "name": "带宽优化",
+      "id": "cg-lod",
+      "name": "LOD系统",
       "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-lod.md",
+      "exists": true,
+      "char_count": 3044
+    },
+    {
+      "id": "cg-nanite",
+      "name": "Nanite架构",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-nanite.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "cg-sdf-modeling",
+      "name": "SDF建模",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-sdf-modeling.md",
+      "exists": true,
+      "char_count": 1463
+    },
+    {
+      "id": "cg-geo-intro",
+      "name": "几何处理概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-geo-intro.md",
+      "exists": true,
+      "char_count": 1456
+    },
+    {
+      "id": "cg-parametric-surface",
+      "name": "参数曲面",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-parametric-surface.md",
+      "exists": true,
+      "char_count": 1355
+    },
+    {
+      "id": "cg-terrain-geometry",
+      "name": "地形几何",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-terrain-geometry.md",
+      "exists": true,
+      "char_count": 1449
+    },
+    {
+      "id": "cg-instancing",
+      "name": "实例化渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-instancing.md",
+      "exists": true,
+      "char_count": 1611
+    },
+    {
+      "id": "cg-impostor",
+      "name": "替身技术",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-impostor.md",
+      "exists": true,
+      "char_count": 1355
+    },
+    {
+      "id": "cg-vegetation",
+      "name": "植被渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-vegetation.md",
+      "exists": true,
+      "char_count": 3168
+    },
+    {
+      "id": "cg-point-cloud",
+      "name": "点云处理",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-point-cloud.md",
+      "exists": true,
+      "char_count": 2703
+    },
+    {
+      "id": "cg-neural-geometry",
+      "name": "神经网络几何",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-neural-geometry.md",
+      "exists": true,
+      "char_count": 1467
+    },
+    {
+      "id": "cg-procedural-mesh",
+      "name": "程序化网格",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-procedural-mesh.md",
+      "exists": true,
+      "char_count": 1371
+    },
+    {
+      "id": "cg-isosurface",
+      "name": "等值面提取",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-isosurface.md",
+      "exists": true,
+      "char_count": 1479
+    },
+    {
+      "id": "cg-subdivision",
+      "name": "细分曲面",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-subdivision.md",
+      "exists": true,
+      "char_count": 1515
+    },
+    {
+      "id": "cg-mesh-repair",
+      "name": "网格修复",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-mesh-repair.md",
+      "exists": true,
+      "char_count": 1339
+    },
+    {
+      "id": "cg-mesh-compression",
+      "name": "网格压缩",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-mesh-compression.md",
+      "exists": true,
+      "char_count": 1257
+    },
+    {
+      "id": "cg-mesh-deformation",
+      "name": "网格变形",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-mesh-deformation.md",
+      "exists": true,
+      "char_count": 1456
+    },
+    {
+      "id": "cg-mesh-boolean",
+      "name": "网格布尔运算",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-mesh-boolean.md",
+      "exists": true,
+      "char_count": 2617
+    },
+    {
+      "id": "cg-mesh-streaming",
+      "name": "网格流式加载",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-mesh-streaming.md",
+      "exists": true,
+      "char_count": 1394
+    },
+    {
+      "id": "cg-mesh-simplification",
+      "name": "网格简化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-mesh-simplification.md",
+      "exists": true,
+      "char_count": 1406
+    },
+    {
+      "id": "cg-mesh-representation",
+      "name": "网格表示",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "geometry-processing",
+      "subdomain_name": "几何处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/geometry-processing/cg-mesh-representation.md",
+      "exists": true,
+      "char_count": 2554
+    },
+    {
+      "id": "cg-ddgi",
+      "name": "DDGI",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/global-illumination/cg-ddgi.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "cg-lumen",
+      "name": "Lumen系统",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "引擎"
+      ],
+      "file": "computer-graphics/global-illumination/cg-lumen.md",
+      "exists": true,
+      "char_count": 1442
+    },
+    {
+      "id": "cg-cloud-rendering",
+      "name": "云渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "computer-graphics/global-illumination/cg-cloud-rendering.md",
+      "exists": true,
+      "char_count": 1371
+    },
+    {
+      "id": "cg-voxel-gi",
+      "name": "体素全局光照",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/global-illumination/cg-voxel-gi.md",
+      "exists": true,
+      "char_count": 2984
+    },
+    {
+      "id": "cg-lpv",
+      "name": "光传播体积",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/global-illumination/cg-lpv.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "cg-light-probes",
+      "name": "光探针",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/global-illumination/cg-light-probes.md",
+      "exists": true,
+      "char_count": 1352
+    },
+    {
+      "id": "cg-lightmap-baking",
+      "name": "光照图烘焙",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/global-illumination/cg-lightmap-baking.md",
+      "exists": true,
+      "char_count": 1546
+    },
+    {
+      "id": "cg-gi-intro",
+      "name": "全局光照概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/global-illumination/cg-gi-intro.md",
+      "exists": true,
+      "char_count": 1702
+    },
+    {
+      "id": "cg-reflection-probes",
+      "name": "反射探针",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/global-illumination/cg-reflection-probes.md",
+      "exists": true,
+      "char_count": 1443
+    },
+    {
+      "id": "cg-sky-atmosphere",
+      "name": "天空与大气",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "computer-graphics/global-illumination/cg-sky-atmosphere.md",
+      "exists": true,
+      "char_count": 1488
+    },
+    {
+      "id": "cg-screen-space-gi",
+      "name": "屏幕空间GI",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/global-illumination/cg-screen-space-gi.md",
+      "exists": true,
+      "char_count": 1500
+    },
+    {
+      "id": "cg-gi-hybrid",
+      "name": "混合GI方案",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/global-illumination/cg-gi-hybrid.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "cg-rendering-equation",
+      "name": "渲染方程",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/global-illumination/cg-rendering-equation.md",
+      "exists": true,
+      "char_count": 3034
+    },
+    {
+      "id": "cg-caustics",
+      "name": "焦散",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/global-illumination/cg-caustics.md",
+      "exists": true,
+      "char_count": 1277
+    },
+    {
+      "id": "cg-ambient-occlusion",
+      "name": "环境光遮蔽",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/global-illumination/cg-ambient-occlusion.md",
+      "exists": true,
+      "char_count": 1492
+    },
+    {
+      "id": "cg-spherical-harmonics",
+      "name": "球谐函数",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/global-illumination/cg-spherical-harmonics.md",
+      "exists": true,
+      "char_count": 1246
+    },
+    {
+      "id": "cg-radiosity",
+      "name": "辐射度方法",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "computer-graphics/global-illumination/cg-radiosity.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "cg-radiometry",
+      "name": "辐射度量学",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "物理"
+      ],
+      "file": "computer-graphics/global-illumination/cg-radiometry.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "cg-irradiance-volume",
+      "name": "辐照度体积",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/global-illumination/cg-irradiance-volume.md",
+      "exists": true,
+      "char_count": 1395
+    },
+    {
+      "id": "cg-irradiance-map",
+      "name": "辐照度贴图",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/global-illumination/cg-irradiance-map.md",
+      "exists": true,
+      "char_count": 1455
+    },
+    {
+      "id": "cg-indirect-specular",
+      "name": "间接高光",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "global-illumination",
+      "subdomain_name": "全局光照",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/global-illumination/cg-indirect-specular.md",
+      "exists": true,
+      "char_count": 1370
+    },
+    {
+      "id": "cg-bindless",
+      "name": "Bindless资源",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-bindless.md",
+      "exists": true,
+      "char_count": 1530
+    },
+    {
+      "id": "cg-compute-shader",
+      "name": "Compute Shader",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "computer-graphics/render-optimization/cg-bandwidth-opt.md",
+      "file": "computer-graphics/gpu-architecture/cg-compute-shader.md",
       "exists": true,
-      "char_count": 509
+      "char_count": 1721
     },
     {
-      "id": "cg-overdraw",
-      "name": "Overdraw分析",
+      "id": "cg-dx12-vk",
+      "name": "DX12/Vulkan基础",
       "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/render-optimization/cg-overdraw.md",
-      "exists": true,
-      "char_count": 563
-    },
-    {
-      "id": "cg-state-sorting",
-      "name": "状态排序",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/render-optimization/cg-state-sorting.md",
-      "exists": true,
-      "char_count": 509
-    },
-    {
-      "id": "cg-atlas-batching",
-      "name": "图集批处理",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/render-optimization/cg-atlas-batching.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "cg-shader-complexity",
-      "name": "着色器复杂度",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "分析"
+        "API"
       ],
-      "file": "computer-graphics/render-optimization/cg-shader-complexity.md",
+      "file": "computer-graphics/gpu-architecture/cg-dx12-vk.md",
       "exists": true,
-      "char_count": 525
+      "char_count": 1571
     },
     {
-      "id": "cg-render-budget",
-      "name": "渲染预算",
+      "id": "cg-gpu-driven",
+      "name": "GPU Driven Pipeline",
       "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "管理"
-      ],
-      "file": "computer-graphics/render-optimization/cg-render-budget.md",
-      "exists": true,
-      "char_count": 506
-    },
-    {
-      "id": "cg-adaptive-quality",
-      "name": "自适应质量",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "技术"
-      ],
-      "file": "computer-graphics/render-optimization/cg-adaptive-quality.md",
-      "exists": true,
-      "char_count": 584
-    },
-    {
-      "id": "cg-streaming-opt",
-      "name": "流式加载优化",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实践"
-      ],
-      "file": "computer-graphics/render-optimization/cg-streaming-opt.md",
-      "exists": true,
-      "char_count": 524
-    },
-    {
-      "id": "cg-render-graph",
-      "name": "渲染图",
-      "domain_id": "computer-graphics",
-      "subdomain_id": "render-optimization",
-      "subdomain_name": "渲染优化",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
       "difficulty": 4,
-      "is_milestone": true,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-gpu-driven.md",
+      "exists": true,
+      "char_count": 1724
+    },
+    {
+      "id": "cg-gpu-memory",
+      "name": "GPU内存层级",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-gpu-memory.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "cg-gpu-profiling",
+      "name": "GPU性能分析",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-gpu-profiling.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "cg-gpu-intro",
+      "name": "GPU架构概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-gpu-intro.md",
+      "exists": true,
+      "char_count": 1715
+    },
+    {
+      "id": "cg-gpu-pipeline",
+      "name": "GPU硬件管线",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-gpu-pipeline.md",
+      "exists": true,
+      "char_count": 1501
+    },
+    {
+      "id": "cg-gpu-scheduling",
+      "name": "GPU调度",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-gpu-scheduling.md",
+      "exists": true,
+      "char_count": 1379
+    },
+    {
+      "id": "cg-rop",
+      "name": "ROP",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "硬件"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-rop.md",
+      "exists": true,
+      "char_count": 1214
+    },
+    {
+      "id": "cg-warp-wavefront",
+      "name": "Warp/Wavefront",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-warp-wavefront.md",
+      "exists": true,
+      "char_count": 1619
+    },
+    {
+      "id": "cg-ray-tracing-hw",
+      "name": "光追硬件单元",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "硬件"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-ray-tracing-hw.md",
+      "exists": true,
+      "char_count": 1434
+    },
+    {
+      "id": "cg-occupancy",
+      "name": "占用率",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-occupancy.md",
+      "exists": true,
+      "char_count": 1567
+    },
+    {
+      "id": "cg-command-buffer",
+      "name": "命令缓冲",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "API"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-command-buffer.md",
+      "exists": true,
+      "char_count": 1453
+    },
+    {
+      "id": "cg-async-compute",
+      "name": "异步计算",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-async-compute.md",
+      "exists": true,
+      "char_count": 1403
+    },
+    {
+      "id": "cg-descriptor-set",
+      "name": "描述符集",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "API"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-descriptor-set.md",
+      "exists": true,
+      "char_count": 1448
+    },
+    {
+      "id": "cg-render-pass",
+      "name": "渲染Pass",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "API"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-render-pass.md",
+      "exists": true,
+      "char_count": 1594
+    },
+    {
+      "id": "cg-mobile-gpu",
+      "name": "移动端GPU",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "移动端"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-mobile-gpu.md",
+      "exists": true,
+      "char_count": 1418
+    },
+    {
+      "id": "cg-pipeline-barrier",
+      "name": "管线屏障",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "API"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-pipeline-barrier.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "cg-texture-unit",
+      "name": "纹理单元",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "硬件"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-texture-unit.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "cg-tmu-cache",
+      "name": "纹理缓存",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "gpu-architecture",
+      "subdomain_name": "GPU架构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/gpu-architecture/cg-tmu-cache.md",
+      "exists": true,
+      "char_count": 1380
+    },
+    {
+      "id": "cg-brdf",
+      "name": "BRDF基础",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-brdf.md",
+      "exists": true,
+      "char_count": 3062
+    },
+    {
+      "id": "cg-cook-torrance",
+      "name": "Cook-Torrance模型",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-cook-torrance.md",
+      "exists": true,
+      "char_count": 1659
+    },
+    {
+      "id": "cg-disney-brdf",
+      "name": "Disney BRDF",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-disney-brdf.md",
+      "exists": true,
+      "char_count": 1660
+    },
+    {
+      "id": "cg-pbr-intro",
+      "name": "PBR材质概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-pbr-intro.md",
+      "exists": true,
+      "char_count": 1519
+    },
+    {
+      "id": "cg-geometry-term",
+      "name": "几何遮蔽项",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-geometry-term.md",
+      "exists": true,
+      "char_count": 1527
+    },
+    {
+      "id": "cg-anisotropy",
+      "name": "各向异性",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-anisotropy.md",
+      "exists": true,
+      "char_count": 1371
+    },
+    {
+      "id": "cg-cloth-shading",
+      "name": "布料着色",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-cloth-shading.md",
+      "exists": true,
+      "char_count": 1472
+    },
+    {
+      "id": "cg-material-layering",
+      "name": "材质分层",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 4,
+      "is_milestone": false,
       "tags": [
         "架构"
       ],
-      "file": "computer-graphics/render-optimization/cg-render-graph.md",
+      "file": "computer-graphics/pbr-materials/cg-material-layering.md",
       "exists": true,
-      "char_count": 596
+      "char_count": 1338
+    },
+    {
+      "id": "cg-subsurface",
+      "name": "次表面散射",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-subsurface.md",
+      "exists": true,
+      "char_count": 1478
+    },
+    {
+      "id": "cg-hair-shading",
+      "name": "毛发着色",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-hair-shading.md",
+      "exists": true,
+      "char_count": 1376
+    },
+    {
+      "id": "cg-ndf",
+      "name": "法线分布函数",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-ndf.md",
+      "exists": true,
+      "char_count": 1535
+    },
+    {
+      "id": "cg-clear-coat",
+      "name": "清漆层",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-clear-coat.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "cg-skin-rendering",
+      "name": "皮肤渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-skin-rendering.md",
+      "exists": true,
+      "char_count": 1463
+    },
+    {
+      "id": "cg-eye-rendering",
+      "name": "眼球渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-eye-rendering.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "cg-energy-conservation",
+      "name": "能量守恒",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-energy-conservation.md",
+      "exists": true,
+      "char_count": 1387
+    },
+    {
+      "id": "cg-fresnel",
+      "name": "菲涅尔效应",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "物理"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-fresnel.md",
+      "exists": true,
+      "char_count": 1377
+    },
+    {
+      "id": "cg-iridescence",
+      "name": "薄膜干涉",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-iridescence.md",
+      "exists": true,
+      "char_count": 2734
+    },
+    {
+      "id": "cg-btdf",
+      "name": "透射BRDF",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-btdf.md",
+      "exists": true,
+      "char_count": 1476
+    },
+    {
+      "id": "cg-metallic-workflow",
+      "name": "金属度工作流",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-metallic-workflow.md",
+      "exists": true,
+      "char_count": 1561
+    },
+    {
+      "id": "cg-specular-workflow",
+      "name": "高光工作流",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "pbr-materials",
+      "subdomain_name": "PBR材质",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/pbr-materials/cg-specular-workflow.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "cg-hdr-pipeline",
+      "name": "HDR管线",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/post-processing/cg-hdr-pipeline.md",
+      "exists": true,
+      "char_count": 1342
+    },
+    {
+      "id": "cg-pixel-art-filter",
+      "name": "像素化滤镜",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格化"
+      ],
+      "file": "computer-graphics/post-processing/cg-pixel-art-filter.md",
+      "exists": true,
+      "char_count": 1277
+    },
+    {
+      "id": "cg-pp-volume",
+      "name": "后处理体积",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "引擎"
+      ],
+      "file": "computer-graphics/post-processing/cg-pp-volume.md",
+      "exists": true,
+      "char_count": 1319
+    },
+    {
+      "id": "cg-pp-stack",
+      "name": "后处理栈设计",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/post-processing/cg-pp-stack.md",
+      "exists": true,
+      "char_count": 2909
+    },
+    {
+      "id": "cg-pp-intro",
+      "name": "后处理概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/post-processing/cg-pp-intro.md",
+      "exists": true,
+      "char_count": 1540
+    },
+    {
+      "id": "cg-ssr",
+      "name": "屏幕空间反射",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/post-processing/cg-ssr.md",
+      "exists": true,
+      "char_count": 1425
+    },
+    {
+      "id": "cg-outline",
+      "name": "描边效果",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格化"
+      ],
+      "file": "computer-graphics/post-processing/cg-outline.md",
+      "exists": true,
+      "char_count": 1228
+    },
+    {
+      "id": "cg-eye-adaptation",
+      "name": "明暗适应",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/post-processing/cg-eye-adaptation.md",
+      "exists": true,
+      "char_count": 1318
+    },
+    {
+      "id": "cg-dof",
+      "name": "景深",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-dof.md",
+      "exists": true,
+      "char_count": 1491
+    },
+    {
+      "id": "cg-vignette",
+      "name": "暗角",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-vignette.md",
+      "exists": true,
+      "char_count": 1258
+    },
+    {
+      "id": "cg-bloom",
+      "name": "泛光",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-bloom.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "cg-film-grain",
+      "name": "胶片颗粒",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-film-grain.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "cg-exposure",
+      "name": "自动曝光",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/post-processing/cg-exposure.md",
+      "exists": true,
+      "char_count": 2229
+    },
+    {
+      "id": "cg-color-grading",
+      "name": "色彩分级",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "艺术"
+      ],
+      "file": "computer-graphics/post-processing/cg-color-grading.md",
+      "exists": true,
+      "char_count": 1365
+    },
+    {
+      "id": "cg-chromatic-aberration",
+      "name": "色散",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-chromatic-aberration.md",
+      "exists": true,
+      "char_count": 2730
+    },
+    {
+      "id": "cg-tone-mapping",
+      "name": "色调映射",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/post-processing/cg-tone-mapping.md",
+      "exists": true,
+      "char_count": 2853
+    },
+    {
+      "id": "cg-cel-shading",
+      "name": "赛璐璐着色",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格化"
+      ],
+      "file": "computer-graphics/post-processing/cg-cel-shading.md",
+      "exists": true,
+      "char_count": 1396
+    },
+    {
+      "id": "cg-motion-blur",
+      "name": "运动模糊",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-motion-blur.md",
+      "exists": true,
+      "char_count": 1594
+    },
+    {
+      "id": "cg-sharpening",
+      "name": "锐化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-sharpening.md",
+      "exists": true,
+      "char_count": 1370
+    },
+    {
+      "id": "cg-lens-flare",
+      "name": "镜头光晕",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-lens-flare.md",
+      "exists": true,
+      "char_count": 1392
+    },
+    {
+      "id": "cg-fog-pp",
+      "name": "雾效",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "post-processing",
+      "subdomain_name": "后处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/post-processing/cg-fog-pp.md",
+      "exists": true,
+      "char_count": 2550
+    },
+    {
+      "id": "cg-blending",
+      "name": "Alpha混合",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/rasterization/cg-blending.md",
+      "exists": true,
+      "char_count": 1490
+    },
+    {
+      "id": "cg-early-z",
+      "name": "Early-Z优化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/rasterization/cg-early-z.md",
+      "exists": true,
+      "char_count": 1418
+    },
+    {
+      "id": "cg-forward-plus",
+      "name": "Forward+",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/rasterization/cg-forward-plus.md",
+      "exists": true,
+      "char_count": 1439
+    },
+    {
+      "id": "cg-mesh-shader",
+      "name": "Mesh Shader",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/rasterization/cg-mesh-shader.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "cg-triangle-setup",
+      "name": "三角形装配",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/rasterization/cg-triangle-setup.md",
+      "exists": true,
+      "char_count": 2848
+    },
+    {
+      "id": "cg-raster-intro",
+      "name": "光栅化概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/rasterization/cg-raster-intro.md",
+      "exists": true,
+      "char_count": 1535
+    },
+    {
+      "id": "cg-tiled-rendering",
+      "name": "分块渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "移动端"
+      ],
+      "file": "computer-graphics/rasterization/cg-tiled-rendering.md",
+      "exists": true,
+      "char_count": 1504
+    },
+    {
+      "id": "cg-forward-rendering",
+      "name": "前向渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/rasterization/cg-forward-rendering.md",
+      "exists": true,
+      "char_count": 2480
+    },
+    {
+      "id": "cg-visibility-buffer",
+      "name": "可见性缓冲",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/rasterization/cg-visibility-buffer.md",
+      "exists": true,
+      "char_count": 1469
+    },
+    {
+      "id": "cg-raster-pipeline",
+      "name": "图形管线阶段",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/rasterization/cg-raster-pipeline.md",
+      "exists": true,
+      "char_count": 1423
+    },
+    {
+      "id": "cg-msaa",
+      "name": "多重采样抗锯齿",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "抗锯齿"
+      ],
+      "file": "computer-graphics/rasterization/cg-msaa.md",
+      "exists": true,
+      "char_count": 1344
+    },
+    {
+      "id": "cg-interpolation",
+      "name": "属性插值",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/rasterization/cg-interpolation.md",
+      "exists": true,
+      "char_count": 2839
+    },
+    {
+      "id": "cg-deferred-rendering",
+      "name": "延迟渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/rasterization/cg-deferred-rendering.md",
+      "exists": true,
+      "char_count": 1628
+    },
+    {
+      "id": "cg-scanline",
+      "name": "扫描线转换",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/rasterization/cg-scanline.md",
+      "exists": true,
+      "char_count": 2904
+    },
+    {
+      "id": "cg-projection",
+      "name": "投影变换",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/rasterization/cg-projection.md",
+      "exists": true,
+      "char_count": 1420
+    },
+    {
+      "id": "cg-stencil-buffer",
+      "name": "模板缓冲",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/rasterization/cg-stencil-buffer.md",
+      "exists": true,
+      "char_count": 1569
+    },
+    {
+      "id": "cg-depth-buffer",
+      "name": "深度缓冲",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/rasterization/cg-depth-buffer.md",
+      "exists": true,
+      "char_count": 1478
+    },
+    {
+      "id": "cg-clustered-rendering",
+      "name": "簇式渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/rasterization/cg-clustered-rendering.md",
+      "exists": true,
+      "char_count": 1544
+    },
+    {
+      "id": "cg-clipping",
+      "name": "裁剪",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/rasterization/cg-clipping.md",
+      "exists": true,
+      "char_count": 1492
+    },
+    {
+      "id": "cg-viewport-transform",
+      "name": "视口变换",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/rasterization/cg-viewport-transform.md",
+      "exists": true,
+      "char_count": 1375
+    },
+    {
+      "id": "cg-indirect-draw",
+      "name": "间接绘制",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/rasterization/cg-indirect-draw.md",
+      "exists": true,
+      "char_count": 1527
+    },
+    {
+      "id": "cg-vertex-transform",
+      "name": "顶点变换",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "rasterization",
+      "subdomain_name": "光栅化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/rasterization/cg-vertex-transform.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "cg-bvh",
+      "name": "BVH加速结构",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-bvh.md",
+      "exists": true,
+      "char_count": 1577
+    },
+    {
+      "id": "cg-kd-tree",
+      "name": "KD-Tree",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-kd-tree.md",
+      "exists": true,
+      "char_count": 2933
+    },
+    {
+      "id": "cg-mlt",
+      "name": "Metropolis光传输",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-mlt.md",
+      "exists": true,
+      "char_count": 1369
+    },
+    {
+      "id": "cg-rtx-hardware",
+      "name": "RTX硬件加速",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "硬件"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-rtx-hardware.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "cg-restir",
+      "name": "ReSTIR",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-restir.md",
+      "exists": true,
+      "char_count": 1236
+    },
+    {
+      "id": "cg-sdf-tracing",
+      "name": "SDF光线步进",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-sdf-tracing.md",
+      "exists": true,
+      "char_count": 1358
+    },
+    {
+      "id": "cg-photon-mapping",
+      "name": "光子映射",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "算法"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-photon-mapping.md",
+      "exists": true,
+      "char_count": 2375
+    },
+    {
+      "id": "cg-ray-intersection",
+      "name": "光线求交",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-ray-intersection.md",
+      "exists": true,
+      "char_count": 3195
+    },
+    {
+      "id": "cg-ray-generation",
+      "name": "光线生成",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-ray-generation.md",
+      "exists": true,
+      "char_count": 2728
+    },
+    {
+      "id": "cg-rt-intro",
+      "name": "光线追踪概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-rt-intro.md",
+      "exists": true,
+      "char_count": 1565
+    },
+    {
+      "id": "cg-spectral-rendering",
+      "name": "光谱渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-spectral-rendering.md",
+      "exists": true,
+      "char_count": 2959
+    },
+    {
+      "id": "cg-rt-gi",
+      "name": "光追全局光照",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-rt-gi.md",
+      "exists": true,
+      "char_count": 1426
+    },
+    {
+      "id": "cg-rt-reflection",
+      "name": "光追反射",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "光照"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-rt-reflection.md",
+      "exists": true,
+      "char_count": 1308
+    },
+    {
+      "id": "cg-rt-refraction",
+      "name": "光追折射",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "光照"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-rt-refraction.md",
+      "exists": true,
+      "char_count": 2587
+    },
+    {
+      "id": "cg-rt-shadows",
+      "name": "光追阴影",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "光照"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-rt-shadows.md",
+      "exists": true,
+      "char_count": 2815
+    },
+    {
+      "id": "cg-rt-denoising",
+      "name": "光追降噪",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-rt-denoising.md",
+      "exists": true,
+      "char_count": 1522
+    },
+    {
+      "id": "cg-bidirectional-pt",
+      "name": "双向路径追踪",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-bidirectional-pt.md",
+      "exists": true,
+      "char_count": 1398
+    },
+    {
+      "id": "cg-mis",
+      "name": "多重重要性采样",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-mis.md",
+      "exists": true,
+      "char_count": 1386
+    },
+    {
+      "id": "cg-hybrid-rendering",
+      "name": "混合渲染管线",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-hybrid-rendering.md",
+      "exists": true,
+      "char_count": 2943
+    },
+    {
+      "id": "cg-path-tracing",
+      "name": "路径追踪",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-path-tracing.md",
+      "exists": true,
+      "char_count": 1472
+    },
+    {
+      "id": "cg-importance-sampling",
+      "name": "重要性采样",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "ray-tracing",
+      "subdomain_name": "光线追踪",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "computer-graphics/ray-tracing/cg-importance-sampling.md",
+      "exists": true,
+      "char_count": 1422
     },
     {
       "id": "cg-cpu-gpu-sync",
@@ -3732,11 +2518,26 @@
       ],
       "file": "computer-graphics/render-optimization/cg-cpu-gpu-sync.md",
       "exists": true,
-      "char_count": 543
+      "char_count": 1524
     },
     {
-      "id": "cg-multithreaded-cmd",
-      "name": "多线程命令构建",
+      "id": "cg-draw-call",
+      "name": "Draw Call优化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/render-optimization/cg-draw-call.md",
+      "exists": true,
+      "char_count": 1743
+    },
+    {
+      "id": "cg-gpu-culling",
+      "name": "GPU剔除",
       "domain_id": "computer-graphics",
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
@@ -3745,24 +2546,24 @@
       "tags": [
         "进阶"
       ],
-      "file": "computer-graphics/render-optimization/cg-multithreaded-cmd.md",
+      "file": "computer-graphics/render-optimization/cg-gpu-culling.md",
       "exists": true,
-      "char_count": 525
+      "char_count": 1364
     },
     {
-      "id": "cg-mobile-opt",
-      "name": "移动端优化",
+      "id": "cg-overdraw",
+      "name": "Overdraw分析",
       "domain_id": "computer-graphics",
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
-      "difficulty": 3,
+      "difficulty": 2,
       "is_milestone": false,
       "tags": [
-        "移动端"
+        "实践"
       ],
-      "file": "computer-graphics/render-optimization/cg-mobile-opt.md",
+      "file": "computer-graphics/render-optimization/cg-overdraw.md",
       "exists": true,
-      "char_count": 517
+      "char_count": 1666
     },
     {
       "id": "cg-vr-opt",
@@ -3777,7 +2578,52 @@
       ],
       "file": "computer-graphics/render-optimization/cg-vr-opt.md",
       "exists": true,
-      "char_count": 532
+      "char_count": 1522
+    },
+    {
+      "id": "cg-atlas-batching",
+      "name": "图集批处理",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/render-optimization/cg-atlas-batching.md",
+      "exists": true,
+      "char_count": 1404
+    },
+    {
+      "id": "cg-multithreaded-cmd",
+      "name": "多线程命令构建",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/render-optimization/cg-multithreaded-cmd.md",
+      "exists": true,
+      "char_count": 3007
+    },
+    {
+      "id": "cg-bandwidth-opt",
+      "name": "带宽优化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/render-optimization/cg-bandwidth-opt.md",
+      "exists": true,
+      "char_count": 1366
     },
     {
       "id": "cg-perf-counter",
@@ -3792,7 +2638,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-perf-counter.md",
       "exists": true,
-      "char_count": 516
+      "char_count": 1387
     },
     {
       "id": "cg-profiling-workflow",
@@ -3801,13 +2647,1114 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 2,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "方法论"
       ],
       "file": "computer-graphics/render-optimization/cg-profiling-workflow.md",
       "exists": true,
-      "char_count": 621
+      "char_count": 1576
+    },
+    {
+      "id": "cg-streaming-opt",
+      "name": "流式加载优化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/render-optimization/cg-streaming-opt.md",
+      "exists": true,
+      "char_count": 1422
+    },
+    {
+      "id": "cg-optim-intro",
+      "name": "渲染优化概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/render-optimization/cg-optim-intro.md",
+      "exists": true,
+      "char_count": 1507
+    },
+    {
+      "id": "cg-render-graph",
+      "name": "渲染图",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/render-optimization/cg-render-graph.md",
+      "exists": true,
+      "char_count": 1559
+    },
+    {
+      "id": "cg-render-budget",
+      "name": "渲染预算",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "computer-graphics/render-optimization/cg-render-budget.md",
+      "exists": true,
+      "char_count": 1329
+    },
+    {
+      "id": "cg-state-sorting",
+      "name": "状态排序",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/render-optimization/cg-state-sorting.md",
+      "exists": true,
+      "char_count": 1289
+    },
+    {
+      "id": "cg-shader-complexity",
+      "name": "着色器复杂度",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "computer-graphics/render-optimization/cg-shader-complexity.md",
+      "exists": true,
+      "char_count": 1354
+    },
+    {
+      "id": "cg-mobile-opt",
+      "name": "移动端优化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "移动端"
+      ],
+      "file": "computer-graphics/render-optimization/cg-mobile-opt.md",
+      "exists": true,
+      "char_count": 1277
+    },
+    {
+      "id": "cg-adaptive-quality",
+      "name": "自适应质量",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/render-optimization/cg-adaptive-quality.md",
+      "exists": true,
+      "char_count": 2691
+    },
+    {
+      "id": "cg-frustum-culling",
+      "name": "视锥剔除",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/render-optimization/cg-frustum-culling.md",
+      "exists": true,
+      "char_count": 1320
+    },
+    {
+      "id": "cg-occlusion-culling",
+      "name": "遮挡剔除",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "render-optimization",
+      "subdomain_name": "渲染优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/render-optimization/cg-occlusion-culling.md",
+      "exists": true,
+      "char_count": 1424
+    },
+    {
+      "id": "cg-glsl",
+      "name": "GLSL",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "computer-graphics/shader-programming/cg-glsl.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "cg-hlsl",
+      "name": "HLSL",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "computer-graphics/shader-programming/cg-hlsl.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "cg-spirv",
+      "name": "SPIR-V",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "computer-graphics/shader-programming/cg-spirv.md",
+      "exists": true,
+      "char_count": 3358
+    },
+    {
+      "id": "cg-shader-model",
+      "name": "Shader Model",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/shader-programming/cg-shader-model.md",
+      "exists": true,
+      "char_count": 1573
+    },
+    {
+      "id": "cg-shader-intro",
+      "name": "Shader概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/shader-programming/cg-shader-intro.md",
+      "exists": true,
+      "char_count": 1711
+    },
+    {
+      "id": "cg-slang",
+      "name": "Slang语言",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/shader-programming/cg-slang.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "cg-uber-shader",
+      "name": "Uber Shader",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "computer-graphics/shader-programming/cg-uber-shader.md",
+      "exists": true,
+      "char_count": 1559
+    },
+    {
+      "id": "cg-wave-intrinsics",
+      "name": "Wave Intrinsics",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/shader-programming/cg-wave-intrinsics.md",
+      "exists": true,
+      "char_count": 1694
+    },
+    {
+      "id": "cg-geometry-shader",
+      "name": "几何着色器",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/shader-programming/cg-geometry-shader.md",
+      "exists": true,
+      "char_count": 1391
+    },
+    {
+      "id": "cg-material-function",
+      "name": "材质函数",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/shader-programming/cg-material-function.md",
+      "exists": true,
+      "char_count": 1283
+    },
+    {
+      "id": "cg-material-graph",
+      "name": "材质图编辑器",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "computer-graphics/shader-programming/cg-material-graph.md",
+      "exists": true,
+      "char_count": 1449
+    },
+    {
+      "id": "cg-fragment-shader",
+      "name": "片元着色器",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/shader-programming/cg-fragment-shader.md",
+      "exists": true,
+      "char_count": 2843
+    },
+    {
+      "id": "cg-shader-interop",
+      "name": "着色器互操作",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/shader-programming/cg-shader-interop.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "cg-shader-optimization",
+      "name": "着色器优化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/shader-programming/cg-shader-optimization.md",
+      "exists": true,
+      "char_count": 1653
+    },
+    {
+      "id": "cg-shader-permutation",
+      "name": "着色器变体",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/shader-programming/cg-shader-permutation.md",
+      "exists": true,
+      "char_count": 1429
+    },
+    {
+      "id": "cg-shader-debug",
+      "name": "着色器调试",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/shader-programming/cg-shader-debug.md",
+      "exists": true,
+      "char_count": 1428
+    },
+    {
+      "id": "cg-procedural-shader",
+      "name": "程序化着色器",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/shader-programming/cg-procedural-shader.md",
+      "exists": true,
+      "char_count": 1596
+    },
+    {
+      "id": "cg-tessellation",
+      "name": "细分着色器",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/shader-programming/cg-tessellation.md",
+      "exists": true,
+      "char_count": 1600
+    },
+    {
+      "id": "cg-custom-lighting",
+      "name": "自定义光照模型",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "风格化"
+      ],
+      "file": "computer-graphics/shader-programming/cg-custom-lighting.md",
+      "exists": true,
+      "char_count": 1402
+    },
+    {
+      "id": "cg-surface-shader",
+      "name": "表面着色器",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "引擎"
+      ],
+      "file": "computer-graphics/shader-programming/cg-surface-shader.md",
+      "exists": true,
+      "char_count": 1508
+    },
+    {
+      "id": "cg-vertex-shader",
+      "name": "顶点着色器",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "shader-programming",
+      "subdomain_name": "Shader编程",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/shader-programming/cg-vertex-shader.md",
+      "exists": true,
+      "char_count": 1415
+    },
+    {
+      "id": "cg-mipmap",
+      "name": "Mipmap",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-mipmap.md",
+      "exists": true,
+      "char_count": 2923
+    },
+    {
+      "id": "cg-sdf-texture",
+      "name": "SDF纹理",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-sdf-texture.md",
+      "exists": true,
+      "char_count": 1282
+    },
+    {
+      "id": "cg-udim",
+      "name": "UDIM",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "流程"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-udim.md",
+      "exists": true,
+      "char_count": 1299
+    },
+    {
+      "id": "cg-triplanar",
+      "name": "三平面映射",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-triplanar.md",
+      "exists": true,
+      "char_count": 1259
+    },
+    {
+      "id": "cg-aniso-filtering",
+      "name": "各向异性过滤",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-aniso-filtering.md",
+      "exists": true,
+      "char_count": 1407
+    },
+    {
+      "id": "cg-material-textures",
+      "name": "材质纹理集",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-material-textures.md",
+      "exists": true,
+      "char_count": 1523
+    },
+    {
+      "id": "cg-normal-mapping",
+      "name": "法线贴图",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-normal-mapping.md",
+      "exists": true,
+      "char_count": 2726
+    },
+    {
+      "id": "cg-procedural-texture",
+      "name": "程序纹理",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-procedural-texture.md",
+      "exists": true,
+      "char_count": 1413
+    },
+    {
+      "id": "cg-cube-mapping",
+      "name": "立方体贴图",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-cube-mapping.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "cg-texture-compression",
+      "name": "纹理压缩",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-texture-compression.md",
+      "exists": true,
+      "char_count": 1452
+    },
+    {
+      "id": "cg-texture-synthesis",
+      "name": "纹理合成",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-texture-synthesis.md",
+      "exists": true,
+      "char_count": 1342
+    },
+    {
+      "id": "cg-texture-atlas",
+      "name": "纹理图集",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-texture-atlas.md",
+      "exists": true,
+      "char_count": 1336
+    },
+    {
+      "id": "cg-texture-projection",
+      "name": "纹理投影",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-texture-projection.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "cg-tex-intro",
+      "name": "纹理映射概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-tex-intro.md",
+      "exists": true,
+      "char_count": 1599
+    },
+    {
+      "id": "cg-texture-streaming",
+      "name": "纹理流式加载",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-texture-streaming.md",
+      "exists": true,
+      "char_count": 1486
+    },
+    {
+      "id": "cg-texture-baking",
+      "name": "纹理烘焙",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-texture-baking.md",
+      "exists": true,
+      "char_count": 1344
+    },
+    {
+      "id": "cg-detail-mapping",
+      "name": "细节贴图",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-detail-mapping.md",
+      "exists": true,
+      "char_count": 1335
+    },
+    {
+      "id": "cg-displacement-map",
+      "name": "置换贴图",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-displacement-map.md",
+      "exists": true,
+      "char_count": 1406
+    },
+    {
+      "id": "cg-virtual-texture",
+      "name": "虚拟纹理",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-virtual-texture.md",
+      "exists": true,
+      "char_count": 1484
+    },
+    {
+      "id": "cg-parallax-mapping",
+      "name": "视差贴图",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-parallax-mapping.md",
+      "exists": true,
+      "char_count": 1583
+    },
+    {
+      "id": "cg-decal-system",
+      "name": "贴花系统",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "texture-techniques",
+      "subdomain_name": "纹理技术",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/texture-techniques/cg-decal-system.md",
+      "exists": true,
+      "char_count": 1502
+    },
+    {
+      "id": "cg-vol-texture",
+      "name": "3D纹理",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-vol-texture.md",
+      "exists": true,
+      "char_count": 2951
+    },
+    {
+      "id": "cg-beer-lambert",
+      "name": "Beer-Lambert定律",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "物理"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-beer-lambert.md",
+      "exists": true,
+      "char_count": 1536
+    },
+    {
+      "id": "cg-openvdb",
+      "name": "OpenVDB",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-openvdb.md",
+      "exists": true,
+      "char_count": 1270
+    },
+    {
+      "id": "cg-ray-marching",
+      "name": "Ray Marching",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-ray-marching.md",
+      "exists": true,
+      "char_count": 1519
+    },
+    {
+      "id": "cg-vol-cloud",
+      "name": "体积云实现",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-vol-cloud.md",
+      "exists": true,
+      "char_count": 2624
+    },
+    {
+      "id": "cg-god-rays",
+      "name": "体积光",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-god-rays.md",
+      "exists": true,
+      "char_count": 1286
+    },
+    {
+      "id": "cg-vol-gi",
+      "name": "体积全局光照",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-vol-gi.md",
+      "exists": true,
+      "char_count": 1231
+    },
+    {
+      "id": "cg-vol-intro",
+      "name": "体积渲染概述",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-vol-intro.md",
+      "exists": true,
+      "char_count": 1483
+    },
+    {
+      "id": "cg-vol-decal",
+      "name": "体积贴花",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-vol-decal.md",
+      "exists": true,
+      "char_count": 2774
+    },
+    {
+      "id": "cg-vol-shadow",
+      "name": "体积阴影",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "光照"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-vol-shadow.md",
+      "exists": true,
+      "char_count": 1490
+    },
+    {
+      "id": "cg-vol-fog",
+      "name": "体积雾",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实践"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-vol-fog.md",
+      "exists": true,
+      "char_count": 1308
+    },
+    {
+      "id": "cg-medical-vis",
+      "name": "医学可视化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-medical-vis.md",
+      "exists": true,
+      "char_count": 1367
+    },
+    {
+      "id": "cg-participating-media",
+      "name": "参与介质",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-participating-media.md",
+      "exists": true,
+      "char_count": 1550
+    },
+    {
+      "id": "cg-atmosphere-scatter",
+      "name": "大气散射实现",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-atmosphere-scatter.md",
+      "exists": true,
+      "char_count": 1295
+    },
+    {
+      "id": "cg-heterogeneous",
+      "name": "异构体积",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-heterogeneous.md",
+      "exists": true,
+      "char_count": 1296
+    },
+    {
+      "id": "cg-fluid-rendering",
+      "name": "流体渲染",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "模拟"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-fluid-rendering.md",
+      "exists": true,
+      "char_count": 1390
+    },
+    {
+      "id": "cg-fire-explosion",
+      "name": "火焰与爆炸",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "效果"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-fire-explosion.md",
+      "exists": true,
+      "char_count": 1395
+    },
+    {
+      "id": "cg-smoke-sim",
+      "name": "烟雾模拟",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "模拟"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-smoke-sim.md",
+      "exists": true,
+      "char_count": 1292
+    },
+    {
+      "id": "cg-phase-function",
+      "name": "相函数",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "物理"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-phase-function.md",
+      "exists": true,
+      "char_count": 1431
+    },
+    {
+      "id": "cg-neural-radiance",
+      "name": "神经辐射场",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-neural-radiance.md",
+      "exists": true,
+      "char_count": 1440
+    },
+    {
+      "id": "cg-scientific-vis",
+      "name": "科学可视化",
+      "domain_id": "computer-graphics",
+      "subdomain_id": "volume-rendering",
+      "subdomain_name": "体积渲染",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "computer-graphics/volume-rendering/cg-scientific-vis.md",
+      "exists": true,
+      "char_count": 1247
     }
-  ]
+  ],
+  "stats": {
+    "total": 250,
+    "total_chars": 412661,
+    "avg_chars": 1650,
+    "domain": "computer-graphics"
+  }
 }

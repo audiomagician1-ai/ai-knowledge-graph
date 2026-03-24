@@ -1,1104 +1,2350 @@
 {
-  "version": "1.0",
-  "domain": "game-publishing",
-  "domain_name": "市场发行",
-  "generated_at": "2026-03-21T01:50:52.847Z",
-  "total_concepts": 180,
-  "stats": {
-    "total_docs": 180,
-    "total_chars": 140013,
-    "by_subdomain": {
-      "market-strategy": 20,
-      "user-acquisition": 20,
-      "brand-building": 20,
-      "platform-rules": 20,
-      "community-ops": 20,
-      "pr-media": 20,
-      "publisher-collab": 20,
-      "regional-ops": 20,
-      "rating-compliance": 20
-    }
-  },
   "documents": [
     {
-      "id": "pub-ms-market-research",
-      "file": "pub-ms-market-research.md",
-      "subdomain": "market-strategy",
-      "chars": 775
-    },
-    {
-      "id": "pub-ms-target-audience",
-      "file": "pub-ms-target-audience.md",
-      "subdomain": "market-strategy",
-      "chars": 783
-    },
-    {
-      "id": "pub-ms-competitive-analysis",
-      "file": "pub-ms-competitive-analysis.md",
-      "subdomain": "market-strategy",
-      "chars": 778
-    },
-    {
-      "id": "pub-ms-market-positioning",
-      "file": "pub-ms-market-positioning.md",
-      "subdomain": "market-strategy",
-      "chars": 773
-    },
-    {
-      "id": "pub-ms-pricing-strategy",
-      "file": "pub-ms-pricing-strategy.md",
-      "subdomain": "market-strategy",
-      "chars": 776
-    },
-    {
-      "id": "pub-ms-monetization-model",
-      "file": "pub-ms-monetization-model.md",
-      "subdomain": "market-strategy",
-      "chars": 790
-    },
-    {
-      "id": "pub-ms-launch-timing",
-      "file": "pub-ms-launch-timing.md",
-      "subdomain": "market-strategy",
-      "chars": 768
-    },
-    {
-      "id": "pub-ms-release-calendar",
-      "file": "pub-ms-release-calendar.md",
-      "subdomain": "market-strategy",
-      "chars": 766
-    },
-    {
-      "id": "pub-ms-swot-analysis",
-      "file": "pub-ms-swot-analysis.md",
-      "subdomain": "market-strategy",
-      "chars": 783
-    },
-    {
-      "id": "pub-ms-market-sizing",
-      "file": "pub-ms-market-sizing.md",
-      "subdomain": "market-strategy",
-      "chars": 782
-    },
-    {
-      "id": "pub-ms-go-to-market",
-      "file": "pub-ms-go-to-market.md",
-      "subdomain": "market-strategy",
-      "chars": 772
-    },
-    {
-      "id": "pub-ms-early-access",
-      "file": "pub-ms-early-access.md",
-      "subdomain": "market-strategy",
-      "chars": 838
-    },
-    {
-      "id": "pub-ms-platform-selection",
-      "file": "pub-ms-platform-selection.md",
-      "subdomain": "market-strategy",
-      "chars": 773
-    },
-    {
-      "id": "pub-ms-sales-forecast",
-      "file": "pub-ms-sales-forecast.md",
-      "subdomain": "market-strategy",
-      "chars": 767
-    },
-    {
-      "id": "pub-ms-lifecycle-strategy",
-      "file": "pub-ms-lifecycle-strategy.md",
-      "subdomain": "market-strategy",
-      "chars": 784
-    },
-    {
-      "id": "pub-ms-portfolio-strategy",
-      "file": "pub-ms-portfolio-strategy.md",
-      "subdomain": "market-strategy",
-      "chars": 779
-    },
-    {
-      "id": "pub-ms-data-driven-decision",
-      "file": "pub-ms-data-driven-decision.md",
-      "subdomain": "market-strategy",
-      "chars": 787
-    },
-    {
-      "id": "pub-ms-blue-ocean",
-      "file": "pub-ms-blue-ocean.md",
-      "subdomain": "market-strategy",
-      "chars": 762
-    },
-    {
-      "id": "pub-ms-post-launch-plan",
-      "file": "pub-ms-post-launch-plan.md",
-      "subdomain": "market-strategy",
-      "chars": 778
-    },
-    {
-      "id": "pub-ms-exit-strategy",
-      "file": "pub-ms-exit-strategy.md",
-      "subdomain": "market-strategy",
-      "chars": 767
-    },
-    {
-      "id": "pub-ua-ua-fundamentals",
-      "file": "pub-ua-ua-fundamentals.md",
-      "subdomain": "user-acquisition",
-      "chars": 790
-    },
-    {
-      "id": "pub-ua-paid-advertising",
-      "file": "pub-ua-paid-advertising.md",
-      "subdomain": "user-acquisition",
-      "chars": 811
-    },
-    {
-      "id": "pub-ua-aso-basics",
-      "file": "pub-ua-aso-basics.md",
-      "subdomain": "user-acquisition",
-      "chars": 785
-    },
-    {
-      "id": "pub-ua-seo-gaming",
-      "file": "pub-ua-seo-gaming.md",
-      "subdomain": "user-acquisition",
-      "chars": 784
-    },
-    {
-      "id": "pub-ua-social-media",
-      "file": "pub-ua-social-media.md",
-      "subdomain": "user-acquisition",
-      "chars": 806
-    },
-    {
-      "id": "pub-ua-influencer-marketing",
-      "file": "pub-ua-influencer-marketing.md",
-      "subdomain": "user-acquisition",
-      "chars": 795
-    },
-    {
-      "id": "pub-ua-content-marketing",
-      "file": "pub-ua-content-marketing.md",
-      "subdomain": "user-acquisition",
-      "chars": 785
-    },
-    {
-      "id": "pub-ua-viral-mechanics",
-      "file": "pub-ua-viral-mechanics.md",
-      "subdomain": "user-acquisition",
-      "chars": 796
-    },
-    {
-      "id": "pub-ua-wishlist-strategy",
-      "file": "pub-ua-wishlist-strategy.md",
-      "subdomain": "user-acquisition",
-      "chars": 791
-    },
-    {
-      "id": "pub-ua-ad-creative",
-      "file": "pub-ua-ad-creative.md",
-      "subdomain": "user-acquisition",
-      "chars": 794
-    },
-    {
-      "id": "pub-ua-attribution",
-      "file": "pub-ua-attribution.md",
-      "subdomain": "user-acquisition",
-      "chars": 776
-    },
-    {
-      "id": "pub-ua-growth-hacking",
-      "file": "pub-ua-growth-hacking.md",
-      "subdomain": "user-acquisition",
-      "chars": 779
-    },
-    {
-      "id": "pub-ua-email-marketing",
-      "file": "pub-ua-email-marketing.md",
-      "subdomain": "user-acquisition",
-      "chars": 781
-    },
-    {
-      "id": "pub-ua-retargeting",
-      "file": "pub-ua-retargeting.md",
-      "subdomain": "user-acquisition",
-      "chars": 768
-    },
-    {
-      "id": "pub-ua-cross-promotion",
-      "file": "pub-ua-cross-promotion.md",
-      "subdomain": "user-acquisition",
-      "chars": 777
-    },
-    {
-      "id": "pub-ua-campaign-optimization",
-      "file": "pub-ua-campaign-optimization.md",
-      "subdomain": "user-acquisition",
-      "chars": 788
-    },
-    {
-      "id": "pub-ua-ltv-prediction",
-      "file": "pub-ua-ltv-prediction.md",
-      "subdomain": "user-acquisition",
-      "chars": 784
-    },
-    {
-      "id": "pub-ua-cohort-analysis",
-      "file": "pub-ua-cohort-analysis.md",
-      "subdomain": "user-acquisition",
-      "chars": 780
-    },
-    {
-      "id": "pub-ua-ua-budget",
-      "file": "pub-ua-ua-budget.md",
-      "subdomain": "user-acquisition",
-      "chars": 787
-    },
-    {
-      "id": "pub-ua-organic-vs-paid",
-      "file": "pub-ua-organic-vs-paid.md",
-      "subdomain": "user-acquisition",
-      "chars": 799
-    },
-    {
-      "id": "pub-bb-brand-identity",
-      "file": "pub-bb-brand-identity.md",
-      "subdomain": "brand-building",
-      "chars": 773
-    },
-    {
-      "id": "pub-bb-brand-positioning",
-      "file": "pub-bb-brand-positioning.md",
-      "subdomain": "brand-building",
-      "chars": 768
-    },
-    {
-      "id": "pub-bb-brand-story",
-      "file": "pub-bb-brand-story.md",
-      "subdomain": "brand-building",
-      "chars": 762
-    },
-    {
-      "id": "pub-bb-visual-identity",
-      "file": "pub-bb-visual-identity.md",
-      "subdomain": "brand-building",
-      "chars": 784
-    },
-    {
-      "id": "pub-bb-tone-of-voice",
-      "file": "pub-bb-tone-of-voice.md",
-      "subdomain": "brand-building",
-      "chars": 763
+      "id": "pub-bb-ip-development",
+      "name": "IP开发",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-ip-development.md",
+      "exists": true,
+      "char_count": 1365
     },
     {
       "id": "pub-bb-key-art",
-      "file": "pub-bb-key-art.md",
-      "subdomain": "brand-building",
-      "chars": 790
-    },
-    {
-      "id": "pub-bb-trailer-production",
-      "file": "pub-bb-trailer-production.md",
-      "subdomain": "brand-building",
-      "chars": 774
-    },
-    {
-      "id": "pub-bb-ip-development",
-      "file": "pub-bb-ip-development.md",
-      "subdomain": "brand-building",
-      "chars": 769
-    },
-    {
-      "id": "pub-bb-store-page",
-      "file": "pub-bb-store-page.md",
-      "subdomain": "brand-building",
-      "chars": 793
-    },
-    {
-      "id": "pub-bb-brand-guidelines",
-      "file": "pub-bb-brand-guidelines.md",
-      "subdomain": "brand-building",
-      "chars": 781
+      "name": "Key Art创作",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-key-art.md",
+      "exists": true,
+      "char_count": 1378
     },
     {
       "id": "pub-bb-reputation-management",
-      "file": "pub-bb-reputation-management.md",
-      "subdomain": "brand-building",
-      "chars": 771
+      "name": "口碑管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-reputation-management.md",
+      "exists": true,
+      "char_count": 1687
     },
     {
       "id": "pub-bb-merchandise",
-      "file": "pub-bb-merchandise.md",
-      "subdomain": "brand-building",
-      "chars": 769
-    },
-    {
-      "id": "pub-bb-brand-collab",
-      "file": "pub-bb-brand-collab.md",
-      "subdomain": "brand-building",
-      "chars": 764
-    },
-    {
-      "id": "pub-bb-brand-ambassador",
-      "file": "pub-bb-brand-ambassador.md",
-      "subdomain": "brand-building",
-      "chars": 767
-    },
-    {
-      "id": "pub-bb-brand-refresh",
-      "file": "pub-bb-brand-refresh.md",
-      "subdomain": "brand-building",
-      "chars": 763
-    },
-    {
-      "id": "pub-bb-brand-measurement",
-      "file": "pub-bb-brand-measurement.md",
-      "subdomain": "brand-building",
-      "chars": 781
-    },
-    {
-      "id": "pub-bb-brand-crisis",
-      "file": "pub-bb-brand-crisis.md",
-      "subdomain": "brand-building",
-      "chars": 777
-    },
-    {
-      "id": "pub-bb-brand-ecosystem",
-      "file": "pub-bb-brand-ecosystem.md",
-      "subdomain": "brand-building",
-      "chars": 772
+      "name": "周边商品",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-merchandise.md",
+      "exists": true,
+      "char_count": 1480
     },
     {
       "id": "pub-bb-brand-valuation",
-      "file": "pub-bb-brand-valuation.md",
-      "subdomain": "brand-building",
-      "chars": 779
+      "name": "品牌价值评估",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-valuation.md",
+      "exists": true,
+      "char_count": 1506
     },
     {
       "id": "pub-bb-brand-legacy",
-      "file": "pub-bb-brand-legacy.md",
-      "subdomain": "brand-building",
-      "chars": 764
+      "name": "品牌传承",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-legacy.md",
+      "exists": true,
+      "char_count": 1461
     },
     {
-      "id": "pub-pr-steam-basics",
-      "file": "pub-pr-steam-basics.md",
-      "subdomain": "platform-rules",
-      "chars": 804
+      "id": "pub-bb-brand-crisis",
+      "name": "品牌危机应对",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-crisis.md",
+      "exists": true,
+      "char_count": 1491
     },
     {
-      "id": "pub-pr-ios-basics",
-      "file": "pub-pr-ios-basics.md",
-      "subdomain": "platform-rules",
-      "chars": 793
+      "id": "pub-bb-brand-story",
+      "name": "品牌叙事",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-story.md",
+      "exists": true,
+      "char_count": 2558
     },
     {
-      "id": "pub-pr-android-basics",
-      "file": "pub-pr-android-basics.md",
-      "subdomain": "platform-rules",
-      "chars": 827
+      "id": "pub-bb-brand-ambassador",
+      "name": "品牌大使",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-ambassador.md",
+      "exists": true,
+      "char_count": 1460
     },
     {
-      "id": "pub-pr-revenue-share",
-      "file": "pub-pr-revenue-share.md",
-      "subdomain": "platform-rules",
-      "chars": 783
+      "id": "pub-bb-brand-positioning",
+      "name": "品牌定位",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-positioning.md",
+      "exists": true,
+      "char_count": 1355
     },
     {
-      "id": "pub-pr-steam-visibility",
-      "file": "pub-pr-steam-visibility.md",
-      "subdomain": "platform-rules",
-      "chars": 809
+      "id": "pub-bb-brand-measurement",
+      "name": "品牌效果度量",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-measurement.md",
+      "exists": true,
+      "char_count": 1594
     },
     {
-      "id": "pub-pr-steam-sales",
-      "file": "pub-pr-steam-sales.md",
-      "subdomain": "platform-rules",
-      "chars": 798
+      "id": "pub-bb-brand-identity",
+      "name": "品牌标识",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-identity.md",
+      "exists": true,
+      "char_count": 1526
     },
     {
-      "id": "pub-pr-app-review",
-      "file": "pub-pr-app-review.md",
-      "subdomain": "platform-rules",
-      "chars": 783
+      "id": "pub-bb-brand-refresh",
+      "name": "品牌焕新",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-refresh.md",
+      "exists": true,
+      "char_count": 1442
     },
     {
-      "id": "pub-pr-console-submission",
-      "file": "pub-pr-console-submission.md",
-      "subdomain": "platform-rules",
-      "chars": 786
+      "id": "pub-bb-brand-ecosystem",
+      "name": "品牌生态",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-ecosystem.md",
+      "exists": true,
+      "char_count": 1415
     },
     {
-      "id": "pub-pr-iap-rules",
-      "file": "pub-pr-iap-rules.md",
-      "subdomain": "platform-rules",
-      "chars": 760
+      "id": "pub-bb-brand-collab",
+      "name": "品牌联动",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-collab.md",
+      "exists": true,
+      "char_count": 1305
     },
     {
-      "id": "pub-pr-cloud-gaming",
-      "file": "pub-pr-cloud-gaming.md",
-      "subdomain": "platform-rules",
-      "chars": 783
+      "id": "pub-bb-brand-guidelines",
+      "name": "品牌规范手册",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-bb-brand-guidelines.md",
+      "exists": true,
+      "char_count": 1418
     },
     {
-      "id": "pub-pr-platform-features",
-      "file": "pub-pr-platform-features.md",
-      "subdomain": "platform-rules",
-      "chars": 785
+      "id": "pub-bb-tone-of-voice",
+      "name": "品牌调性",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-tone-of-voice.md",
+      "exists": true,
+      "char_count": 1531
     },
     {
-      "id": "pub-pr-update-policy",
-      "file": "pub-pr-update-policy.md",
-      "subdomain": "platform-rules",
-      "chars": 765
+      "id": "pub-bb-store-page",
+      "name": "商店页面优化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-store-page.md",
+      "exists": true,
+      "char_count": 1504
     },
     {
-      "id": "pub-pr-cross-platform",
-      "file": "pub-pr-cross-platform.md",
-      "subdomain": "platform-rules",
-      "chars": 771
+      "id": "pub-bb-trailer-production",
+      "name": "宣传片制作",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-trailer-production.md",
+      "exists": true,
+      "char_count": 1581
     },
     {
-      "id": "pub-pr-platform-exclusive",
-      "file": "pub-pr-platform-exclusive.md",
-      "subdomain": "platform-rules",
-      "chars": 782
-    },
-    {
-      "id": "pub-pr-refund-policy",
-      "file": "pub-pr-refund-policy.md",
-      "subdomain": "platform-rules",
-      "chars": 762
-    },
-    {
-      "id": "pub-pr-dlc-management",
-      "file": "pub-pr-dlc-management.md",
-      "subdomain": "platform-rules",
-      "chars": 773
-    },
-    {
-      "id": "pub-pr-platform-analytics",
-      "file": "pub-pr-platform-analytics.md",
-      "subdomain": "platform-rules",
-      "chars": 785
-    },
-    {
-      "id": "pub-pr-alt-platforms",
-      "file": "pub-pr-alt-platforms.md",
-      "subdomain": "platform-rules",
-      "chars": 779
-    },
-    {
-      "id": "pub-pr-platform-negotiation",
-      "file": "pub-pr-platform-negotiation.md",
-      "subdomain": "platform-rules",
-      "chars": 772
-    },
-    {
-      "id": "pub-pr-multi-store",
-      "file": "pub-pr-multi-store.md",
-      "subdomain": "platform-rules",
-      "chars": 773
-    },
-    {
-      "id": "pub-co-community-building",
-      "file": "pub-co-community-building.md",
-      "subdomain": "community-ops",
-      "chars": 778
-    },
-    {
-      "id": "pub-co-community-management",
-      "file": "pub-co-community-management.md",
-      "subdomain": "community-ops",
-      "chars": 768
-    },
-    {
-      "id": "pub-co-player-feedback",
-      "file": "pub-co-player-feedback.md",
-      "subdomain": "community-ops",
-      "chars": 779
+      "id": "pub-bb-visual-identity",
+      "name": "视觉识别系统",
+      "domain_id": "game-publishing",
+      "subdomain_id": "brand-building",
+      "subdomain_name": "品牌建设",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-bb-visual-identity.md",
+      "exists": true,
+      "char_count": 1435
     },
     {
       "id": "pub-co-discord-ops",
-      "file": "pub-co-discord-ops.md",
-      "subdomain": "community-ops",
-      "chars": 804
+      "name": "Discord运营",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-discord-ops.md",
+      "exists": true,
+      "char_count": 1724
     },
     {
       "id": "pub-co-ugc-cultivation",
-      "file": "pub-co-ugc-cultivation.md",
-      "subdomain": "community-ops",
-      "chars": 776
-    },
-    {
-      "id": "pub-co-community-events",
-      "file": "pub-co-community-events.md",
-      "subdomain": "community-ops",
-      "chars": 770
-    },
-    {
-      "id": "pub-co-beta-program",
-      "file": "pub-co-beta-program.md",
-      "subdomain": "community-ops",
-      "chars": 764
-    },
-    {
-      "id": "pub-co-moderation-tools",
-      "file": "pub-co-moderation-tools.md",
-      "subdomain": "community-ops",
-      "chars": 773
-    },
-    {
-      "id": "pub-co-community-metrics",
-      "file": "pub-co-community-metrics.md",
-      "subdomain": "community-ops",
-      "chars": 775
-    },
-    {
-      "id": "pub-co-devlog-communication",
-      "file": "pub-co-devlog-communication.md",
-      "subdomain": "community-ops",
-      "chars": 770
-    },
-    {
-      "id": "pub-co-toxicity-management",
-      "file": "pub-co-toxicity-management.md",
-      "subdomain": "community-ops",
-      "chars": 770
-    },
-    {
-      "id": "pub-co-feedback-loop",
-      "file": "pub-co-feedback-loop.md",
-      "subdomain": "community-ops",
-      "chars": 766
-    },
-    {
-      "id": "pub-co-ambassador-program",
-      "file": "pub-co-ambassador-program.md",
-      "subdomain": "community-ops",
-      "chars": 768
-    },
-    {
-      "id": "pub-co-localized-community",
-      "file": "pub-co-localized-community.md",
-      "subdomain": "community-ops",
-      "chars": 775
+      "name": "UGC培育",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-ugc-cultivation.md",
+      "exists": true,
+      "char_count": 1427
     },
     {
       "id": "pub-co-crisis-communication",
-      "file": "pub-co-crisis-communication.md",
-      "subdomain": "community-ops",
-      "chars": 774
+      "name": "危机沟通",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-crisis-communication.md",
+      "exists": true,
+      "char_count": 1411
     },
     {
-      "id": "pub-co-community-monetization",
-      "file": "pub-co-community-monetization.md",
-      "subdomain": "community-ops",
-      "chars": 775
+      "id": "pub-co-feedback-loop",
+      "name": "反馈闭环",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-feedback-loop.md",
+      "exists": true,
+      "char_count": 1337
+    },
+    {
+      "id": "pub-co-ambassador-program",
+      "name": "大使计划",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-ambassador-program.md",
+      "exists": true,
+      "char_count": 1450
+    },
+    {
+      "id": "pub-co-devlog-communication",
+      "name": "开发日志",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-co-devlog-communication.md",
+      "exists": true,
+      "char_count": 1501
+    },
+    {
+      "id": "pub-co-localized-community",
+      "name": "本地化社区",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-localized-community.md",
+      "exists": true,
+      "char_count": 1467
+    },
+    {
+      "id": "pub-co-toxicity-management",
+      "name": "毒性管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-toxicity-management.md",
+      "exists": true,
+      "char_count": 1463
+    },
+    {
+      "id": "pub-co-beta-program",
+      "name": "测试计划",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-beta-program.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "pub-co-player-feedback",
+      "name": "玩家反馈收集",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-co-player-feedback.md",
+      "exists": true,
+      "char_count": 1751
     },
     {
       "id": "pub-co-player-council",
-      "file": "pub-co-player-council.md",
-      "subdomain": "community-ops",
-      "chars": 770
+      "name": "玩家委员会",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-player-council.md",
+      "exists": true,
+      "char_count": 1440
     },
     {
-      "id": "pub-co-community-analytics",
-      "file": "pub-co-community-analytics.md",
-      "subdomain": "community-ops",
-      "chars": 780
+      "id": "pub-co-community-monetization",
+      "name": "社区变现",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-community-monetization.md",
+      "exists": true,
+      "char_count": 1615
     },
     {
       "id": "pub-co-community-scaling",
-      "file": "pub-co-community-scaling.md",
-      "subdomain": "community-ops",
-      "chars": 766
+      "name": "社区扩展",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-co-community-scaling.md",
+      "exists": true,
+      "char_count": 1478
+    },
+    {
+      "id": "pub-co-community-metrics",
+      "name": "社区指标",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-community-metrics.md",
+      "exists": true,
+      "char_count": 1407
+    },
+    {
+      "id": "pub-co-community-building",
+      "name": "社区搭建",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-community-building.md",
+      "exists": true,
+      "char_count": 1455
+    },
+    {
+      "id": "pub-co-community-analytics",
+      "name": "社区数据分析",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-community-analytics.md",
+      "exists": true,
+      "char_count": 1472
     },
     {
       "id": "pub-co-community-culture",
-      "file": "pub-co-community-culture.md",
-      "subdomain": "community-ops",
-      "chars": 764
+      "name": "社区文化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-community-culture.md",
+      "exists": true,
+      "char_count": 1408
     },
     {
-      "id": "pub-pm-press-kit",
-      "file": "pub-pm-press-kit.md",
-      "subdomain": "pr-media",
-      "chars": 780
+      "id": "pub-co-community-events",
+      "name": "社区活动",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-community-events.md",
+      "exists": true,
+      "char_count": 1394
     },
     {
-      "id": "pub-pm-media-list",
-      "file": "pub-pm-media-list.md",
-      "subdomain": "pr-media",
-      "chars": 766
+      "id": "pub-co-community-management",
+      "name": "社区管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-community-management.md",
+      "exists": true,
+      "char_count": 1558
     },
     {
-      "id": "pub-pm-press-release",
-      "file": "pub-pm-press-release.md",
-      "subdomain": "pr-media",
-      "chars": 774
+      "id": "pub-co-moderation-tools",
+      "name": "管理工具",
+      "domain_id": "game-publishing",
+      "subdomain_id": "community-ops",
+      "subdomain_name": "社区运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-co-moderation-tools.md",
+      "exists": true,
+      "char_count": 1395
     },
     {
-      "id": "pub-pm-pitch-email",
-      "file": "pub-pm-pitch-email.md",
-      "subdomain": "pr-media",
-      "chars": 764
+      "id": "pub-ms-early-access",
+      "name": "Early Access策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-early-access.md",
+      "exists": true,
+      "char_count": 1782
     },
     {
-      "id": "pub-pm-review-copies",
-      "file": "pub-pm-review-copies.md",
-      "subdomain": "pr-media",
-      "chars": 779
+      "id": "pub-ms-go-to-market",
+      "name": "GTM策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-go-to-market.md",
+      "exists": true,
+      "char_count": 1420
     },
     {
-      "id": "pub-pm-embargo-strategy",
-      "file": "pub-pm-embargo-strategy.md",
-      "subdomain": "pr-media",
-      "chars": 766
+      "id": "pub-ms-swot-analysis",
+      "name": "SWOT分析",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-swot-analysis.md",
+      "exists": true,
+      "char_count": 1399
+    },
+    {
+      "id": "pub-ms-post-launch-plan",
+      "name": "上线后规划",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ms-post-launch-plan.md",
+      "exists": true,
+      "char_count": 1410
+    },
+    {
+      "id": "pub-ms-launch-timing",
+      "name": "上线时机",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-launch-timing.md",
+      "exists": true,
+      "char_count": 1551
+    },
+    {
+      "id": "pub-ms-lifecycle-strategy",
+      "name": "产品生命周期",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-lifecycle-strategy.md",
+      "exists": true,
+      "char_count": 1409
+    },
+    {
+      "id": "pub-ms-portfolio-strategy",
+      "name": "产品组合策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-portfolio-strategy.md",
+      "exists": true,
+      "char_count": 1459
+    },
+    {
+      "id": "pub-ms-release-calendar",
+      "name": "发行日历",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-release-calendar.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "pub-ms-monetization-model",
+      "name": "变现模式",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-monetization-model.md",
+      "exists": true,
+      "char_count": 1515
+    },
+    {
+      "id": "pub-ms-pricing-strategy",
+      "name": "定价策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-pricing-strategy.md",
+      "exists": true,
+      "char_count": 1664
+    },
+    {
+      "id": "pub-ms-market-positioning",
+      "name": "市场定位",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-market-positioning.md",
+      "exists": true,
+      "char_count": 1538
+    },
+    {
+      "id": "pub-ms-market-sizing",
+      "name": "市场规模估算",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ms-market-sizing.md",
+      "exists": true,
+      "char_count": 1436
+    },
+    {
+      "id": "pub-ms-market-research",
+      "name": "市场调研",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-market-research.md",
+      "exists": true,
+      "char_count": 1745
+    },
+    {
+      "id": "pub-ms-platform-selection",
+      "name": "平台选择",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-platform-selection.md",
+      "exists": true,
+      "char_count": 1651
+    },
+    {
+      "id": "pub-ms-data-driven-decision",
+      "name": "数据驱动决策",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-data-driven-decision.md",
+      "exists": true,
+      "char_count": 1517
+    },
+    {
+      "id": "pub-ms-target-audience",
+      "name": "目标受众分析",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-target-audience.md",
+      "exists": true,
+      "char_count": 1605
+    },
+    {
+      "id": "pub-ms-competitive-analysis",
+      "name": "竞品分析",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ms-competitive-analysis.md",
+      "exists": true,
+      "char_count": 1794
+    },
+    {
+      "id": "pub-ms-blue-ocean",
+      "name": "蓝海策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-blue-ocean.md",
+      "exists": true,
+      "char_count": 1407
+    },
+    {
+      "id": "pub-ms-exit-strategy",
+      "name": "退出策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-exit-strategy.md",
+      "exists": true,
+      "char_count": 1473
+    },
+    {
+      "id": "pub-ms-sales-forecast",
+      "name": "销量预测",
+      "domain_id": "game-publishing",
+      "subdomain_id": "market-strategy",
+      "subdomain_name": "市场策略",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ms-sales-forecast.md",
+      "exists": true,
+      "char_count": 1439
+    },
+    {
+      "id": "pub-pr-android-basics",
+      "name": "Android发行基础",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pr-android-basics.md",
+      "exists": true,
+      "char_count": 1875
+    },
+    {
+      "id": "pub-pr-dlc-management",
+      "name": "DLC管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-dlc-management.md",
+      "exists": true,
+      "char_count": 1572
+    },
+    {
+      "id": "pub-pr-steam-basics",
+      "name": "Steam发行基础",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-steam-basics.md",
+      "exists": true,
+      "char_count": 1756
+    },
+    {
+      "id": "pub-pr-steam-visibility",
+      "name": "Steam可见性",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-steam-visibility.md",
+      "exists": true,
+      "char_count": 1787
+    },
+    {
+      "id": "pub-pr-steam-sales",
+      "name": "Steam打折活动",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-steam-sales.md",
+      "exists": true,
+      "char_count": 1560
+    },
+    {
+      "id": "pub-pr-ios-basics",
+      "name": "iOS发行基础",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-ios-basics.md",
+      "exists": true,
+      "char_count": 1708
+    },
+    {
+      "id": "pub-pr-console-submission",
+      "name": "主机送审",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-console-submission.md",
+      "exists": true,
+      "char_count": 1513
+    },
+    {
+      "id": "pub-pr-cloud-gaming",
+      "name": "云游戏平台",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pr-cloud-gaming.md",
+      "exists": true,
+      "char_count": 1483
+    },
+    {
+      "id": "pub-pr-iap-rules",
+      "name": "内购规则",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-iap-rules.md",
+      "exists": true,
+      "char_count": 1527
+    },
+    {
+      "id": "pub-pr-multi-store",
+      "name": "多商店管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-multi-store.md",
+      "exists": true,
+      "char_count": 1500
+    },
+    {
+      "id": "pub-pr-revenue-share",
+      "name": "平台分成模式",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-revenue-share.md",
+      "exists": true,
+      "char_count": 1583
+    },
+    {
+      "id": "pub-pr-platform-analytics",
+      "name": "平台数据分析",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-platform-analytics.md",
+      "exists": true,
+      "char_count": 1399
+    },
+    {
+      "id": "pub-pr-platform-features",
+      "name": "平台特性利用",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-platform-features.md",
+      "exists": true,
+      "char_count": 1407
+    },
+    {
+      "id": "pub-pr-platform-exclusive",
+      "name": "平台独占策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-platform-exclusive.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "pub-pr-platform-negotiation",
+      "name": "平台谈判",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pr-platform-negotiation.md",
+      "exists": true,
+      "char_count": 1387
+    },
+    {
+      "id": "pub-pr-app-review",
+      "name": "应用审核应对",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-app-review.md",
+      "exists": true,
+      "char_count": 1581
+    },
+    {
+      "id": "pub-pr-update-policy",
+      "name": "更新政策",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-update-policy.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "pub-pr-alt-platforms",
+      "name": "替代平台",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-alt-platforms.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "pub-pr-cross-platform",
+      "name": "跨平台发行",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-cross-platform.md",
+      "exists": true,
+      "char_count": 1443
+    },
+    {
+      "id": "pub-pr-refund-policy",
+      "name": "退款政策",
+      "domain_id": "game-publishing",
+      "subdomain_id": "platform-rules",
+      "subdomain_name": "平台规则",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pr-refund-policy.md",
+      "exists": true,
+      "char_count": 1408
     },
     {
       "id": "pub-pm-kol-management",
-      "file": "pub-pm-kol-management.md",
-      "subdomain": "pr-media",
-      "chars": 778
-    },
-    {
-      "id": "pub-pm-showcase-events",
-      "file": "pub-pm-showcase-events.md",
-      "subdomain": "pr-media",
-      "chars": 778
-    },
-    {
-      "id": "pub-pm-media-monitoring",
-      "file": "pub-pm-media-monitoring.md",
-      "subdomain": "pr-media",
-      "chars": 767
-    },
-    {
-      "id": "pub-pm-interview-prep",
-      "file": "pub-pm-interview-prep.md",
-      "subdomain": "pr-media",
-      "chars": 766
-    },
-    {
-      "id": "pub-pm-crisis-pr",
-      "file": "pub-pm-crisis-pr.md",
-      "subdomain": "pr-media",
-      "chars": 764
-    },
-    {
-      "id": "pub-pm-awards-submission",
-      "file": "pub-pm-awards-submission.md",
-      "subdomain": "pr-media",
-      "chars": 780
-    },
-    {
-      "id": "pub-pm-streaming-events",
-      "file": "pub-pm-streaming-events.md",
-      "subdomain": "pr-media",
-      "chars": 779
-    },
-    {
-      "id": "pub-pm-media-partnership",
-      "file": "pub-pm-media-partnership.md",
-      "subdomain": "pr-media",
-      "chars": 768
-    },
-    {
-      "id": "pub-pm-pr-timeline",
-      "file": "pub-pm-pr-timeline.md",
-      "subdomain": "pr-media",
-      "chars": 771
-    },
-    {
-      "id": "pub-pm-pr-metrics",
-      "file": "pub-pm-pr-metrics.md",
-      "subdomain": "pr-media",
-      "chars": 780
-    },
-    {
-      "id": "pub-pm-online-events",
-      "file": "pub-pm-online-events.md",
-      "subdomain": "pr-media",
-      "chars": 772
-    },
-    {
-      "id": "pub-pm-narrative-pr",
-      "file": "pub-pm-narrative-pr.md",
-      "subdomain": "pr-media",
-      "chars": 771
+      "name": "KOL管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-kol-management.md",
+      "exists": true,
+      "char_count": 1597
     },
     {
       "id": "pub-pm-pr-agency",
-      "file": "pub-pm-pr-agency.md",
-      "subdomain": "pr-media",
-      "chars": 773
+      "name": "PR代理选择",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pm-pr-agency.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "pub-pm-pr-metrics",
+      "name": "PR效果度量",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-pr-metrics.md",
+      "exists": true,
+      "char_count": 1377
+    },
+    {
+      "id": "pub-pm-pr-timeline",
+      "name": "PR时间线",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-pr-timeline.md",
+      "exists": true,
+      "char_count": 1331
+    },
+    {
+      "id": "pub-pm-crisis-pr",
+      "name": "危机公关",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-crisis-pr.md",
+      "exists": true,
+      "char_count": 1573
+    },
+    {
+      "id": "pub-pm-narrative-pr",
+      "name": "叙事型PR",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-narrative-pr.md",
+      "exists": true,
+      "char_count": 1323
     },
     {
       "id": "pub-pm-reputation-recovery",
-      "file": "pub-pm-reputation-recovery.md",
-      "subdomain": "pr-media",
-      "chars": 770
+      "name": "口碑修复",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-reputation-recovery.md",
+      "exists": true,
+      "char_count": 1362
     },
     {
-      "id": "pub-pc-self-vs-publisher",
-      "file": "pub-pc-self-vs-publisher.md",
-      "subdomain": "publisher-collab",
-      "chars": 824
+      "id": "pub-pm-awards-submission",
+      "name": "奖项申报",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-awards-submission.md",
+      "exists": true,
+      "char_count": 1432
     },
     {
-      "id": "pub-pc-publisher-types",
-      "file": "pub-pc-publisher-types.md",
-      "subdomain": "publisher-collab",
-      "chars": 780
+      "id": "pub-pm-media-partnership",
+      "name": "媒体合作",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-media-partnership.md",
+      "exists": true,
+      "char_count": 1308
     },
     {
-      "id": "pub-pc-publisher-pitch",
-      "file": "pub-pc-publisher-pitch.md",
-      "subdomain": "publisher-collab",
-      "chars": 782
+      "id": "pub-pm-media-list",
+      "name": "媒体名单",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-media-list.md",
+      "exists": true,
+      "char_count": 1447
     },
     {
-      "id": "pub-pc-publisher-selection",
-      "file": "pub-pc-publisher-selection.md",
-      "subdomain": "publisher-collab",
-      "chars": 781
+      "id": "pub-pm-media-monitoring",
+      "name": "媒体监测",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-media-monitoring.md",
+      "exists": true,
+      "char_count": 1423
     },
     {
-      "id": "pub-pc-contract-basics",
-      "file": "pub-pc-contract-basics.md",
-      "subdomain": "publisher-collab",
-      "chars": 777
+      "id": "pub-pm-press-kit",
+      "name": "媒体资料包",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-press-kit.md",
+      "exists": true,
+      "char_count": 1476
     },
     {
-      "id": "pub-pc-revenue-split",
-      "file": "pub-pc-revenue-split.md",
-      "subdomain": "publisher-collab",
-      "chars": 769
+      "id": "pub-pm-showcase-events",
+      "name": "展会参展",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-showcase-events.md",
+      "exists": true,
+      "char_count": 1429
     },
     {
-      "id": "pub-pc-milestone-payment",
-      "file": "pub-pc-milestone-payment.md",
-      "subdomain": "publisher-collab",
-      "chars": 778
+      "id": "pub-pm-press-release",
+      "name": "新闻稿撰写",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pm-press-release.md",
+      "exists": true,
+      "char_count": 1613
+    },
+    {
+      "id": "pub-pm-streaming-events",
+      "name": "直播活动",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-streaming-events.md",
+      "exists": true,
+      "char_count": 1450
+    },
+    {
+      "id": "pub-pm-online-events",
+      "name": "线上活动",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-online-events.md",
+      "exists": true,
+      "char_count": 1483
+    },
+    {
+      "id": "pub-pm-embargo-strategy",
+      "name": "解禁策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-embargo-strategy.md",
+      "exists": true,
+      "char_count": 1423
+    },
+    {
+      "id": "pub-pm-review-copies",
+      "name": "评测码管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-review-copies.md",
+      "exists": true,
+      "char_count": 1614
+    },
+    {
+      "id": "pub-pm-pitch-email",
+      "name": "邮件推介",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pm-pitch-email.md",
+      "exists": true,
+      "char_count": 1312
+    },
+    {
+      "id": "pub-pm-interview-prep",
+      "name": "采访准备",
+      "domain_id": "game-publishing",
+      "subdomain_id": "pr-media",
+      "subdomain_name": "PR/媒体关系",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pm-interview-prep.md",
+      "exists": true,
+      "char_count": 1463
     },
     {
       "id": "pub-pc-ip-ownership",
-      "file": "pub-pc-ip-ownership.md",
-      "subdomain": "publisher-collab",
-      "chars": 767
-    },
-    {
-      "id": "pub-pc-dev-funding",
-      "file": "pub-pc-dev-funding.md",
-      "subdomain": "publisher-collab",
-      "chars": 771
-    },
-    {
-      "id": "pub-pc-marketing-support",
-      "file": "pub-pc-marketing-support.md",
-      "subdomain": "publisher-collab",
-      "chars": 773
+      "name": "IP归属",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-ip-ownership.md",
+      "exists": true,
+      "char_count": 1414
     },
     {
       "id": "pub-pc-qa-support",
-      "file": "pub-pc-qa-support.md",
-      "subdomain": "publisher-collab",
-      "chars": 765
-    },
-    {
-      "id": "pub-pc-localization-support",
-      "file": "pub-pc-localization-support.md",
-      "subdomain": "publisher-collab",
-      "chars": 783
-    },
-    {
-      "id": "pub-pc-legal-review",
-      "file": "pub-pc-legal-review.md",
-      "subdomain": "publisher-collab",
-      "chars": 764
-    },
-    {
-      "id": "pub-pc-creative-control",
-      "file": "pub-pc-creative-control.md",
-      "subdomain": "publisher-collab",
-      "chars": 772
-    },
-    {
-      "id": "pub-pc-reporting-obligations",
-      "file": "pub-pc-reporting-obligations.md",
-      "subdomain": "publisher-collab",
-      "chars": 778
-    },
-    {
-      "id": "pub-pc-contract-exit",
-      "file": "pub-pc-contract-exit.md",
-      "subdomain": "publisher-collab",
-      "chars": 766
-    },
-    {
-      "id": "pub-pc-multi-publisher",
-      "file": "pub-pc-multi-publisher.md",
-      "subdomain": "publisher-collab",
-      "chars": 777
-    },
-    {
-      "id": "pub-pc-co-development",
-      "file": "pub-pc-co-development.md",
-      "subdomain": "publisher-collab",
-      "chars": 768
+      "name": "QA支持",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-qa-support.md",
+      "exists": true,
+      "char_count": 1398
     },
     {
       "id": "pub-pc-first-look-deal",
-      "file": "pub-pc-first-look-deal.md",
-      "subdomain": "publisher-collab",
-      "chars": 798
+      "name": "优先查看权",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pc-first-look-deal.md",
+      "exists": true,
+      "char_count": 1540
+    },
+    {
+      "id": "pub-pc-creative-control",
+      "name": "创意控制",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-creative-control.md",
+      "exists": true,
+      "char_count": 1327
+    },
+    {
+      "id": "pub-pc-publisher-pitch",
+      "name": "发行商提案",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pc-publisher-pitch.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "pub-pc-publisher-types",
+      "name": "发行商类型",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-publisher-types.md",
+      "exists": true,
+      "char_count": 1505
+    },
+    {
+      "id": "pub-pc-publisher-selection",
+      "name": "发行商选择",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-publisher-selection.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "pub-pc-contract-basics",
+      "name": "合同基础",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-contract-basics.md",
+      "exists": true,
+      "char_count": 1389
+    },
+    {
+      "id": "pub-pc-contract-exit",
+      "name": "合同退出",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-contract-exit.md",
+      "exists": true,
+      "char_count": 1504
     },
     {
       "id": "pub-pc-recoup-mechanism",
-      "file": "pub-pc-recoup-mechanism.md",
-      "subdomain": "publisher-collab",
-      "chars": 774
+      "name": "回收机制",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-recoup-mechanism.md",
+      "exists": true,
+      "char_count": 1383
     },
     {
-      "id": "pub-ro-globalization-basics",
-      "file": "pub-ro-globalization-basics.md",
-      "subdomain": "regional-ops",
-      "chars": 778
+      "id": "pub-pc-multi-publisher",
+      "name": "多区域发行",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-multi-publisher.md",
+      "exists": true,
+      "char_count": 1446
     },
     {
-      "id": "pub-ro-localization-basics",
-      "file": "pub-ro-localization-basics.md",
-      "subdomain": "regional-ops",
-      "chars": 779
+      "id": "pub-pc-dev-funding",
+      "name": "开发资金",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-dev-funding.md",
+      "exists": true,
+      "char_count": 1342
     },
     {
-      "id": "pub-ro-regional-markets",
-      "file": "pub-ro-regional-markets.md",
-      "subdomain": "regional-ops",
-      "chars": 785
+      "id": "pub-pc-reporting-obligations",
+      "name": "报告义务",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-reporting-obligations.md",
+      "exists": true,
+      "char_count": 1481
     },
     {
-      "id": "pub-ro-cultural-sensitivity",
-      "file": "pub-ro-cultural-sensitivity.md",
-      "subdomain": "regional-ops",
-      "chars": 780
+      "id": "pub-pc-revenue-split",
+      "name": "收入分成",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-revenue-split.md",
+      "exists": true,
+      "char_count": 1429
     },
     {
-      "id": "pub-ro-translation-management",
-      "file": "pub-ro-translation-management.md",
-      "subdomain": "regional-ops",
-      "chars": 773
+      "id": "pub-pc-localization-support",
+      "name": "本地化支持",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-localization-support.md",
+      "exists": true,
+      "char_count": 1370
     },
     {
-      "id": "pub-ro-voice-localization",
-      "file": "pub-ro-voice-localization.md",
-      "subdomain": "regional-ops",
-      "chars": 779
+      "id": "pub-pc-legal-review",
+      "name": "法律审查",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-legal-review.md",
+      "exists": true,
+      "char_count": 1381
     },
     {
-      "id": "pub-ro-china-market",
-      "file": "pub-ro-china-market.md",
-      "subdomain": "regional-ops",
-      "chars": 768
+      "id": "pub-pc-self-vs-publisher",
+      "name": "独立发行 vs 发行商",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-self-vs-publisher.md",
+      "exists": true,
+      "char_count": 1744
     },
     {
-      "id": "pub-ro-japan-market",
-      "file": "pub-ro-japan-market.md",
-      "subdomain": "regional-ops",
-      "chars": 765
+      "id": "pub-pc-co-development",
+      "name": "联合开发",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-co-development.md",
+      "exists": true,
+      "char_count": 1294
     },
     {
-      "id": "pub-ro-currency-pricing",
-      "file": "pub-ro-currency-pricing.md",
-      "subdomain": "regional-ops",
-      "chars": 767
+      "id": "pub-pc-marketing-support",
+      "name": "营销支持",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-pc-marketing-support.md",
+      "exists": true,
+      "char_count": 1624
     },
     {
-      "id": "pub-ro-regional-marketing",
-      "file": "pub-ro-regional-marketing.md",
-      "subdomain": "regional-ops",
-      "chars": 768
-    },
-    {
-      "id": "pub-ro-legal-compliance",
-      "file": "pub-ro-legal-compliance.md",
-      "subdomain": "regional-ops",
-      "chars": 769
-    },
-    {
-      "id": "pub-ro-payment-integration",
-      "file": "pub-ro-payment-integration.md",
-      "subdomain": "regional-ops",
-      "chars": 786
-    },
-    {
-      "id": "pub-ro-customer-support",
-      "file": "pub-ro-customer-support.md",
-      "subdomain": "regional-ops",
-      "chars": 773
-    },
-    {
-      "id": "pub-ro-server-deployment",
-      "file": "pub-ro-server-deployment.md",
-      "subdomain": "regional-ops",
-      "chars": 772
-    },
-    {
-      "id": "pub-ro-content-adaptation",
-      "file": "pub-ro-content-adaptation.md",
-      "subdomain": "regional-ops",
-      "chars": 774
-    },
-    {
-      "id": "pub-ro-regional-events",
-      "file": "pub-ro-regional-events.md",
-      "subdomain": "regional-ops",
-      "chars": 768
-    },
-    {
-      "id": "pub-ro-market-entry",
-      "file": "pub-ro-market-entry.md",
-      "subdomain": "regional-ops",
-      "chars": 776
-    },
-    {
-      "id": "pub-ro-local-publishing",
-      "file": "pub-ro-local-publishing.md",
-      "subdomain": "regional-ops",
-      "chars": 771
-    },
-    {
-      "id": "pub-ro-global-live-ops",
-      "file": "pub-ro-global-live-ops.md",
-      "subdomain": "regional-ops",
-      "chars": 780
-    },
-    {
-      "id": "pub-ro-localization-testing",
-      "file": "pub-ro-localization-testing.md",
-      "subdomain": "regional-ops",
-      "chars": 780
-    },
-    {
-      "id": "pub-rc-esrb-basics",
-      "file": "pub-rc-esrb-basics.md",
-      "subdomain": "rating-compliance",
-      "chars": 784
-    },
-    {
-      "id": "pub-rc-pegi-basics",
-      "file": "pub-rc-pegi-basics.md",
-      "subdomain": "rating-compliance",
-      "chars": 784
+      "id": "pub-pc-milestone-payment",
+      "name": "里程碑付款",
+      "domain_id": "game-publishing",
+      "subdomain_id": "publisher-collab",
+      "subdomain_name": "发行商合作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-pc-milestone-payment.md",
+      "exists": true,
+      "char_count": 1338
     },
     {
       "id": "pub-rc-cero-basics",
-      "file": "pub-rc-cero-basics.md",
-      "subdomain": "rating-compliance",
-      "chars": 784
-    },
-    {
-      "id": "pub-rc-iarc-system",
-      "file": "pub-rc-iarc-system.md",
-      "subdomain": "rating-compliance",
-      "chars": 784
-    },
-    {
-      "id": "pub-rc-content-descriptors",
-      "file": "pub-rc-content-descriptors.md",
-      "subdomain": "rating-compliance",
-      "chars": 785
-    },
-    {
-      "id": "pub-rc-loot-box-regulation",
-      "file": "pub-rc-loot-box-regulation.md",
-      "subdomain": "rating-compliance",
-      "chars": 803
-    },
-    {
-      "id": "pub-rc-gdpr-compliance",
-      "file": "pub-rc-gdpr-compliance.md",
-      "subdomain": "rating-compliance",
-      "chars": 785
+      "name": "CERO分级",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-rc-cero-basics.md",
+      "exists": true,
+      "char_count": 1538
     },
     {
       "id": "pub-rc-coppa-compliance",
-      "file": "pub-rc-coppa-compliance.md",
-      "subdomain": "rating-compliance",
-      "chars": 792
+      "name": "COPPA合规",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-coppa-compliance.md",
+      "exists": true,
+      "char_count": 1387
+    },
+    {
+      "id": "pub-rc-esrb-basics",
+      "name": "ESRB分级",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-esrb-basics.md",
+      "exists": true,
+      "char_count": 1508
+    },
+    {
+      "id": "pub-rc-gdpr-compliance",
+      "name": "GDPR合规",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-gdpr-compliance.md",
+      "exists": true,
+      "char_count": 1409
+    },
+    {
+      "id": "pub-rc-iarc-system",
+      "name": "IARC系统",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-iarc-system.md",
+      "exists": true,
+      "char_count": 1411
+    },
+    {
+      "id": "pub-rc-pegi-basics",
+      "name": "PEGI分级",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-pegi-basics.md",
+      "exists": true,
+      "char_count": 1496
     },
     {
       "id": "pub-rc-china-isbn",
-      "file": "pub-rc-china-isbn.md",
-      "subdomain": "rating-compliance",
-      "chars": 771
+      "name": "中国版号",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-china-isbn.md",
+      "exists": true,
+      "char_count": 1482
     },
     {
-      "id": "pub-rc-privacy-policy",
-      "file": "pub-rc-privacy-policy.md",
-      "subdomain": "rating-compliance",
-      "chars": 770
-    },
-    {
-      "id": "pub-rc-terms-of-service",
-      "file": "pub-rc-terms-of-service.md",
-      "subdomain": "rating-compliance",
-      "chars": 778
-    },
-    {
-      "id": "pub-rc-age-verification",
-      "file": "pub-rc-age-verification.md",
-      "subdomain": "rating-compliance",
-      "chars": 771
-    },
-    {
-      "id": "pub-rc-advertising-rules",
-      "file": "pub-rc-advertising-rules.md",
-      "subdomain": "rating-compliance",
-      "chars": 774
-    },
-    {
-      "id": "pub-rc-ip-protection",
-      "file": "pub-rc-ip-protection.md",
-      "subdomain": "rating-compliance",
-      "chars": 784
-    },
-    {
-      "id": "pub-rc-accessibility-law",
-      "file": "pub-rc-accessibility-law.md",
-      "subdomain": "rating-compliance",
-      "chars": 778
-    },
-    {
-      "id": "pub-rc-gambling-regulation",
-      "file": "pub-rc-gambling-regulation.md",
-      "subdomain": "rating-compliance",
-      "chars": 777
-    },
-    {
-      "id": "pub-rc-anti-addiction",
-      "file": "pub-rc-anti-addiction.md",
-      "subdomain": "rating-compliance",
-      "chars": 776
-    },
-    {
-      "id": "pub-rc-tax-compliance",
-      "file": "pub-rc-tax-compliance.md",
-      "subdomain": "rating-compliance",
-      "chars": 769
+      "id": "pub-rc-content-descriptors",
+      "name": "内容描述符",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-content-descriptors.md",
+      "exists": true,
+      "char_count": 1405
     },
     {
       "id": "pub-rc-compliance-audit",
-      "file": "pub-rc-compliance-audit.md",
-      "subdomain": "rating-compliance",
-      "chars": 768
+      "name": "合规审计",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-rc-compliance-audit.md",
+      "exists": true,
+      "char_count": 2240
+    },
+    {
+      "id": "pub-rc-age-verification",
+      "name": "年龄验证",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-age-verification.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "pub-rc-advertising-rules",
+      "name": "广告合规",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-advertising-rules.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "pub-rc-loot-box-regulation",
+      "name": "抽卡/开箱规制",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-loot-box-regulation.md",
+      "exists": true,
+      "char_count": 1496
+    },
+    {
+      "id": "pub-rc-accessibility-law",
+      "name": "无障碍法规",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-accessibility-law.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "pub-rc-terms-of-service",
+      "name": "服务条款",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-terms-of-service.md",
+      "exists": true,
+      "char_count": 1486
     },
     {
       "id": "pub-rc-regulatory-forecast",
-      "file": "pub-rc-regulatory-forecast.md",
-      "subdomain": "rating-compliance",
-      "chars": 773
+      "name": "监管预判",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-regulatory-forecast.md",
+      "exists": true,
+      "char_count": 1344
+    },
+    {
+      "id": "pub-rc-ip-protection",
+      "name": "知识产权保护",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-ip-protection.md",
+      "exists": true,
+      "char_count": 1474
+    },
+    {
+      "id": "pub-rc-tax-compliance",
+      "name": "税务合规",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-tax-compliance.md",
+      "exists": true,
+      "char_count": 1410
+    },
+    {
+      "id": "pub-rc-gambling-regulation",
+      "name": "赌博法规",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-gambling-regulation.md",
+      "exists": true,
+      "char_count": 1359
+    },
+    {
+      "id": "pub-rc-anti-addiction",
+      "name": "防沉迷系统",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-rc-anti-addiction.md",
+      "exists": true,
+      "char_count": 1430
+    },
+    {
+      "id": "pub-rc-privacy-policy",
+      "name": "隐私政策",
+      "domain_id": "game-publishing",
+      "subdomain_id": "rating-compliance",
+      "subdomain_name": "评级/合规",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-rc-privacy-policy.md",
+      "exists": true,
+      "char_count": 1349
+    },
+    {
+      "id": "pub-ro-china-market",
+      "name": "中国市场",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-china-market.md",
+      "exists": true,
+      "char_count": 1377
+    },
+    {
+      "id": "pub-ro-globalization-basics",
+      "name": "全球化基础",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-globalization-basics.md",
+      "exists": true,
+      "char_count": 1505
+    },
+    {
+      "id": "pub-ro-global-live-ops",
+      "name": "全球运营协调",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ro-global-live-ops.md",
+      "exists": true,
+      "char_count": 1514
+    },
+    {
+      "id": "pub-ro-content-adaptation",
+      "name": "内容适配",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-content-adaptation.md",
+      "exists": true,
+      "char_count": 1381
+    },
+    {
+      "id": "pub-ro-local-publishing",
+      "name": "区域发行商",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-local-publishing.md",
+      "exists": true,
+      "char_count": 1314
+    },
+    {
+      "id": "pub-ro-currency-pricing",
+      "name": "区域定价",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-currency-pricing.md",
+      "exists": true,
+      "char_count": 1431
+    },
+    {
+      "id": "pub-ro-regional-markets",
+      "name": "区域市场特征",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ro-regional-markets.md",
+      "exists": true,
+      "char_count": 1455
+    },
+    {
+      "id": "pub-ro-regional-events",
+      "name": "区域活动",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-regional-events.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "pub-ro-regional-marketing",
+      "name": "区域营销",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ro-regional-marketing.md",
+      "exists": true,
+      "char_count": 1359
+    },
+    {
+      "id": "pub-ro-customer-support",
+      "name": "多语言客服",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-customer-support.md",
+      "exists": true,
+      "char_count": 1448
+    },
+    {
+      "id": "pub-ro-market-entry",
+      "name": "市场进入策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-market-entry.md",
+      "exists": true,
+      "char_count": 1554
+    },
+    {
+      "id": "pub-ro-payment-integration",
+      "name": "支付集成",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-payment-integration.md",
+      "exists": true,
+      "char_count": 1485
+    },
+    {
+      "id": "pub-ro-cultural-sensitivity",
+      "name": "文化敏感性",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-cultural-sensitivity.md",
+      "exists": true,
+      "char_count": 1510
+    },
+    {
+      "id": "pub-ro-japan-market",
+      "name": "日本市场",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-japan-market.md",
+      "exists": true,
+      "char_count": 1320
+    },
+    {
+      "id": "pub-ro-server-deployment",
+      "name": "服务器部署",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-server-deployment.md",
+      "exists": true,
+      "char_count": 1435
+    },
+    {
+      "id": "pub-ro-localization-basics",
+      "name": "本地化基础",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-localization-basics.md",
+      "exists": true,
+      "char_count": 1388
+    },
+    {
+      "id": "pub-ro-localization-testing",
+      "name": "本地化测试",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-localization-testing.md",
+      "exists": true,
+      "char_count": 1538
+    },
+    {
+      "id": "pub-ro-legal-compliance",
+      "name": "法律合规",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-legal-compliance.md",
+      "exists": true,
+      "char_count": 1364
+    },
+    {
+      "id": "pub-ro-translation-management",
+      "name": "翻译管理",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-translation-management.md",
+      "exists": true,
+      "char_count": 1589
+    },
+    {
+      "id": "pub-ro-voice-localization",
+      "name": "配音本地化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "regional-ops",
+      "subdomain_name": "地区化运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ro-voice-localization.md",
+      "exists": true,
+      "char_count": 1608
+    },
+    {
+      "id": "pub-ua-aso-basics",
+      "name": "ASO基础",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ua-aso-basics.md",
+      "exists": true,
+      "char_count": 1749
+    },
+    {
+      "id": "pub-ua-ltv-prediction",
+      "name": "LTV预测",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-ltv-prediction.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "pub-ua-ua-fundamentals",
+      "name": "UA基础",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-ua-fundamentals.md",
+      "exists": true,
+      "char_count": 1562
+    },
+    {
+      "id": "pub-ua-ua-budget",
+      "name": "UA预算规划",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ua-ua-budget.md",
+      "exists": true,
+      "char_count": 1603
+    },
+    {
+      "id": "pub-ua-cross-promotion",
+      "name": "交叉推广",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-cross-promotion.md",
+      "exists": true,
+      "char_count": 1303
+    },
+    {
+      "id": "pub-ua-paid-advertising",
+      "name": "付费广告投放",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-paid-advertising.md",
+      "exists": true,
+      "char_count": 1702
+    },
+    {
+      "id": "pub-ua-content-marketing",
+      "name": "内容营销",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-content-marketing.md",
+      "exists": true,
+      "char_count": 1386
+    },
+    {
+      "id": "pub-ua-retargeting",
+      "name": "再营销",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-retargeting.md",
+      "exists": true,
+      "char_count": 1288
+    },
+    {
+      "id": "pub-ua-growth-hacking",
+      "name": "增长黑客",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-growth-hacking.md",
+      "exists": true,
+      "char_count": 1447
+    },
+    {
+      "id": "pub-ua-ad-creative",
+      "name": "广告素材制作",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-publishing/pub-ua-ad-creative.md",
+      "exists": true,
+      "char_count": 1563
+    },
+    {
+      "id": "pub-ua-attribution",
+      "name": "归因分析",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-attribution.md",
+      "exists": true,
+      "char_count": 1329
+    },
+    {
+      "id": "pub-ua-wishlist-strategy",
+      "name": "心愿单策略",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-wishlist-strategy.md",
+      "exists": true,
+      "char_count": 1523
+    },
+    {
+      "id": "pub-ua-campaign-optimization",
+      "name": "投放优化",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-campaign-optimization.md",
+      "exists": true,
+      "char_count": 1512
+    },
+    {
+      "id": "pub-ua-organic-vs-paid",
+      "name": "有机与付费平衡",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-organic-vs-paid.md",
+      "exists": true,
+      "char_count": 1537
+    },
+    {
+      "id": "pub-ua-seo-gaming",
+      "name": "游戏SEO",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-seo-gaming.md",
+      "exists": true,
+      "char_count": 1480
+    },
+    {
+      "id": "pub-ua-viral-mechanics",
+      "name": "病毒传播机制",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-viral-mechanics.md",
+      "exists": true,
+      "char_count": 1409
+    },
+    {
+      "id": "pub-ua-social-media",
+      "name": "社交媒体推广",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-social-media.md",
+      "exists": true,
+      "char_count": 1558
+    },
+    {
+      "id": "pub-ua-influencer-marketing",
+      "name": "网红营销",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-influencer-marketing.md",
+      "exists": true,
+      "char_count": 1610
+    },
+    {
+      "id": "pub-ua-email-marketing",
+      "name": "邮件营销",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-email-marketing.md",
+      "exists": true,
+      "char_count": 1460
+    },
+    {
+      "id": "pub-ua-cohort-analysis",
+      "name": "队列分析",
+      "domain_id": "game-publishing",
+      "subdomain_id": "user-acquisition",
+      "subdomain_name": "用户获取(UA)",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-publishing/pub-ua-cohort-analysis.md",
+      "exists": true,
+      "char_count": 1460
     }
-  ]
+  ],
+  "stats": {
+    "total": 180,
+    "total_chars": 267011,
+    "avg_chars": 1483,
+    "domain": "game-publishing"
+  }
 }

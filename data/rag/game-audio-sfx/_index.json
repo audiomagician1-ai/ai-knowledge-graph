@@ -1,1104 +1,2350 @@
 {
-  "version": "1.0.0",
-  "domain": "game-audio-sfx",
-  "domain_name": "音效设计",
-  "generated_at": "2026-03-21T08:32:55.592391",
-  "total_concepts": 180,
-  "stats": {
-    "total_docs": 180,
-    "total_chars": 105070,
-    "by_subdomain": {
-      "ambient-sound": 20,
-      "audio-asset-management": 20,
-      "audio-middleware": 20,
-      "audio-optimization": 20,
-      "dialogue-processing": 20,
-      "dsp-effects": 20,
-      "foley-recording": 20,
-      "sound-design-theory": 20,
-      "spatial-audio": 20
-    }
-  },
   "documents": [
     {
-      "id": "sfx-sdt-psychoacoustics",
-      "file": "sfx-sdt-psychoacoustics.md",
-      "subdomain": "sound-design-theory",
-      "chars": 594
-    },
-    {
-      "id": "sfx-sdt-sound-taxonomy",
-      "file": "sfx-sdt-sound-taxonomy.md",
-      "subdomain": "sound-design-theory",
-      "chars": 610
-    },
-    {
-      "id": "sfx-sdt-emotional-design",
-      "file": "sfx-sdt-emotional-design.md",
-      "subdomain": "sound-design-theory",
-      "chars": 598
-    },
-    {
-      "id": "sfx-sdt-layering",
-      "file": "sfx-sdt-layering.md",
-      "subdomain": "sound-design-theory",
-      "chars": 586
-    },
-    {
-      "id": "sfx-sdt-sweetener",
-      "file": "sfx-sdt-sweetener.md",
-      "subdomain": "sound-design-theory",
-      "chars": 618
-    },
-    {
-      "id": "sfx-sdt-silence-design",
-      "file": "sfx-sdt-silence-design.md",
-      "subdomain": "sound-design-theory",
-      "chars": 585
-    },
-    {
-      "id": "sfx-sdt-diegetic-vs-nondiegetic",
-      "file": "sfx-sdt-diegetic-vs-nondiegetic.md",
-      "subdomain": "sound-design-theory",
-      "chars": 609
-    },
-    {
-      "id": "sfx-sdt-sound-metaphor",
-      "file": "sfx-sdt-sound-metaphor.md",
-      "subdomain": "sound-design-theory",
-      "chars": 585
-    },
-    {
-      "id": "sfx-sdt-frequency-spectrum",
-      "file": "sfx-sdt-frequency-spectrum.md",
-      "subdomain": "sound-design-theory",
-      "chars": 602
-    },
-    {
-      "id": "sfx-sdt-impact-design",
-      "file": "sfx-sdt-impact-design.md",
-      "subdomain": "sound-design-theory",
-      "chars": 595
-    },
-    {
-      "id": "sfx-sdt-ui-sound",
-      "file": "sfx-sdt-ui-sound.md",
-      "subdomain": "sound-design-theory",
-      "chars": 588
-    },
-    {
-      "id": "sfx-sdt-feedback-loop",
-      "file": "sfx-sdt-feedback-loop.md",
-      "subdomain": "sound-design-theory",
-      "chars": 590
-    },
-    {
-      "id": "sfx-sdt-audio-branding",
-      "file": "sfx-sdt-audio-branding.md",
-      "subdomain": "sound-design-theory",
-      "chars": 587
-    },
-    {
-      "id": "sfx-sdt-procedural-audio",
-      "file": "sfx-sdt-procedural-audio.md",
-      "subdomain": "sound-design-theory",
-      "chars": 587
-    },
-    {
-      "id": "sfx-sdt-synthesis-basics",
-      "file": "sfx-sdt-synthesis-basics.md",
-      "subdomain": "sound-design-theory",
-      "chars": 598
-    },
-    {
-      "id": "sfx-sdt-sampling-technique",
-      "file": "sfx-sdt-sampling-technique.md",
-      "subdomain": "sound-design-theory",
-      "chars": 600
-    },
-    {
-      "id": "sfx-sdt-transient-design",
-      "file": "sfx-sdt-transient-design.md",
-      "subdomain": "sound-design-theory",
-      "chars": 592
-    },
-    {
-      "id": "sfx-sdt-pitch-variation",
-      "file": "sfx-sdt-pitch-variation.md",
-      "subdomain": "sound-design-theory",
-      "chars": 595
-    },
-    {
-      "id": "sfx-sdt-sound-storytelling",
-      "file": "sfx-sdt-sound-storytelling.md",
-      "subdomain": "sound-design-theory",
-      "chars": 587
-    },
-    {
-      "id": "sfx-sdt-reference-library",
-      "file": "sfx-sdt-reference-library.md",
-      "subdomain": "sound-design-theory",
-      "chars": 589
-    },
-    {
-      "id": "sfx-fr-foley-basics",
-      "file": "sfx-fr-foley-basics.md",
-      "subdomain": "foley-recording",
-      "chars": 581
-    },
-    {
-      "id": "sfx-fr-footsteps",
-      "file": "sfx-fr-footsteps.md",
-      "subdomain": "foley-recording",
-      "chars": 579
-    },
-    {
-      "id": "sfx-fr-cloth-movement",
-      "file": "sfx-fr-cloth-movement.md",
-      "subdomain": "foley-recording",
-      "chars": 584
-    },
-    {
-      "id": "sfx-fr-prop-handling",
-      "file": "sfx-fr-prop-handling.md",
-      "subdomain": "foley-recording",
-      "chars": 584
-    },
-    {
-      "id": "sfx-fr-microphone-selection",
-      "file": "sfx-fr-microphone-selection.md",
-      "subdomain": "foley-recording",
-      "chars": 593
-    },
-    {
-      "id": "sfx-fr-recording-environment",
-      "file": "sfx-fr-recording-environment.md",
-      "subdomain": "foley-recording",
-      "chars": 587
-    },
-    {
-      "id": "sfx-fr-contact-mic",
-      "file": "sfx-fr-contact-mic.md",
-      "subdomain": "foley-recording",
-      "chars": 586
-    },
-    {
-      "id": "sfx-fr-field-recording",
-      "file": "sfx-fr-field-recording.md",
-      "subdomain": "foley-recording",
-      "chars": 581
-    },
-    {
-      "id": "sfx-fr-recording-chain",
-      "file": "sfx-fr-recording-chain.md",
-      "subdomain": "foley-recording",
-      "chars": 587
-    },
-    {
-      "id": "sfx-fr-editing-workflow",
-      "file": "sfx-fr-editing-workflow.md",
-      "subdomain": "foley-recording",
-      "chars": 595
-    },
-    {
-      "id": "sfx-fr-noise-reduction",
-      "file": "sfx-fr-noise-reduction.md",
-      "subdomain": "foley-recording",
-      "chars": 579
-    },
-    {
-      "id": "sfx-fr-sound-library-build",
-      "file": "sfx-fr-sound-library-build.md",
-      "subdomain": "foley-recording",
-      "chars": 592
-    },
-    {
-      "id": "sfx-fr-metadata-tagging",
-      "file": "sfx-fr-metadata-tagging.md",
-      "subdomain": "foley-recording",
-      "chars": 587
-    },
-    {
-      "id": "sfx-fr-destructive-recording",
-      "file": "sfx-fr-destructive-recording.md",
-      "subdomain": "foley-recording",
-      "chars": 595
-    },
-    {
-      "id": "sfx-fr-water-sounds",
-      "file": "sfx-fr-water-sounds.md",
-      "subdomain": "foley-recording",
-      "chars": 576
-    },
-    {
-      "id": "sfx-fr-vehicle-recording",
-      "file": "sfx-fr-vehicle-recording.md",
-      "subdomain": "foley-recording",
-      "chars": 584
-    },
-    {
-      "id": "sfx-fr-creature-voice",
-      "file": "sfx-fr-creature-voice.md",
-      "subdomain": "foley-recording",
-      "chars": 591
-    },
-    {
-      "id": "sfx-fr-impact-recording",
-      "file": "sfx-fr-impact-recording.md",
-      "subdomain": "foley-recording",
-      "chars": 585
-    },
-    {
-      "id": "sfx-fr-ambience-capture",
-      "file": "sfx-fr-ambience-capture.md",
-      "subdomain": "foley-recording",
-      "chars": 590
-    },
-    {
-      "id": "sfx-fr-session-management",
-      "file": "sfx-fr-session-management.md",
-      "subdomain": "foley-recording",
-      "chars": 596
-    },
-    {
-      "id": "sfx-am-wwise-overview",
-      "file": "sfx-am-wwise-overview.md",
-      "subdomain": "audio-middleware",
-      "chars": 605
-    },
-    {
-      "id": "sfx-am-fmod-overview",
-      "file": "sfx-am-fmod-overview.md",
-      "subdomain": "audio-middleware",
-      "chars": 592
-    },
-    {
-      "id": "sfx-am-event-system",
-      "file": "sfx-am-event-system.md",
-      "subdomain": "audio-middleware",
-      "chars": 573
-    },
-    {
-      "id": "sfx-am-rtpc",
-      "file": "sfx-am-rtpc.md",
-      "subdomain": "audio-middleware",
-      "chars": 582
-    },
-    {
-      "id": "sfx-am-switch-state",
-      "file": "sfx-am-switch-state.md",
-      "subdomain": "audio-middleware",
-      "chars": 614
-    },
-    {
-      "id": "sfx-am-soundbank",
-      "file": "sfx-am-soundbank.md",
-      "subdomain": "audio-middleware",
-      "chars": 607
-    },
-    {
-      "id": "sfx-am-bus-routing",
-      "file": "sfx-am-bus-routing.md",
-      "subdomain": "audio-middleware",
-      "chars": 573
-    },
-    {
-      "id": "sfx-am-profiler",
-      "file": "sfx-am-profiler.md",
-      "subdomain": "audio-middleware",
-      "chars": 604
-    },
-    {
-      "id": "sfx-am-game-integration",
-      "file": "sfx-am-game-integration.md",
-      "subdomain": "audio-middleware",
-      "chars": 597
-    },
-    {
-      "id": "sfx-am-interactive-music",
-      "file": "sfx-am-interactive-music.md",
-      "subdomain": "audio-middleware",
-      "chars": 587
-    },
-    {
-      "id": "sfx-am-random-container",
-      "file": "sfx-am-random-container.md",
-      "subdomain": "audio-middleware",
-      "chars": 577
-    },
-    {
-      "id": "sfx-am-sequence-container",
-      "file": "sfx-am-sequence-container.md",
-      "subdomain": "audio-middleware",
-      "chars": 577
-    },
-    {
-      "id": "sfx-am-blend-container",
-      "file": "sfx-am-blend-container.md",
-      "subdomain": "audio-middleware",
-      "chars": 573
-    },
-    {
-      "id": "sfx-am-attenuation",
-      "file": "sfx-am-attenuation.md",
-      "subdomain": "audio-middleware",
-      "chars": 572
-    },
-    {
-      "id": "sfx-am-obstruction-occlusion",
-      "file": "sfx-am-obstruction-occlusion.md",
-      "subdomain": "audio-middleware",
-      "chars": 608
-    },
-    {
-      "id": "sfx-am-aux-send",
-      "file": "sfx-am-aux-send.md",
-      "subdomain": "audio-middleware",
-      "chars": 574
-    },
-    {
-      "id": "sfx-am-dialogue-system",
-      "file": "sfx-am-dialogue-system.md",
-      "subdomain": "audio-middleware",
-      "chars": 578
-    },
-    {
-      "id": "sfx-am-plugin-development",
-      "file": "sfx-am-plugin-development.md",
-      "subdomain": "audio-middleware",
-      "chars": 585
-    },
-    {
-      "id": "sfx-am-source-control",
-      "file": "sfx-am-source-control.md",
-      "subdomain": "audio-middleware",
-      "chars": 591
-    },
-    {
-      "id": "sfx-am-batch-processing",
-      "file": "sfx-am-batch-processing.md",
-      "subdomain": "audio-middleware",
-      "chars": 580
-    },
-    {
-      "id": "sfx-sa-3d-audio-basics",
-      "file": "sfx-sa-3d-audio-basics.md",
-      "subdomain": "spatial-audio",
-      "chars": 579
-    },
-    {
-      "id": "sfx-sa-hrtf",
-      "file": "sfx-sa-hrtf.md",
-      "subdomain": "spatial-audio",
-      "chars": 591
-    },
-    {
-      "id": "sfx-sa-binaural-audio",
-      "file": "sfx-sa-binaural-audio.md",
-      "subdomain": "spatial-audio",
-      "chars": 569
-    },
-    {
-      "id": "sfx-sa-surround-sound",
-      "file": "sfx-sa-surround-sound.md",
-      "subdomain": "spatial-audio",
-      "chars": 582
-    },
-    {
-      "id": "sfx-sa-ambisonics",
-      "file": "sfx-sa-ambisonics.md",
-      "subdomain": "spatial-audio",
-      "chars": 597
-    },
-    {
-      "id": "sfx-sa-distance-model",
-      "file": "sfx-sa-distance-model.md",
-      "subdomain": "spatial-audio",
-      "chars": 570
-    },
-    {
-      "id": "sfx-sa-doppler-effect",
-      "file": "sfx-sa-doppler-effect.md",
-      "subdomain": "spatial-audio",
-      "chars": 570
-    },
-    {
-      "id": "sfx-sa-room-acoustics",
-      "file": "sfx-sa-room-acoustics.md",
-      "subdomain": "spatial-audio",
-      "chars": 569
-    },
-    {
-      "id": "sfx-sa-reverb-zone",
-      "file": "sfx-sa-reverb-zone.md",
-      "subdomain": "spatial-audio",
-      "chars": 565
-    },
-    {
-      "id": "sfx-sa-sound-propagation",
-      "file": "sfx-sa-sound-propagation.md",
-      "subdomain": "spatial-audio",
-      "chars": 572
-    },
-    {
-      "id": "sfx-sa-occlusion-geometry",
-      "file": "sfx-sa-occlusion-geometry.md",
-      "subdomain": "spatial-audio",
-      "chars": 571
-    },
-    {
-      "id": "sfx-sa-portal-system",
-      "file": "sfx-sa-portal-system.md",
-      "subdomain": "spatial-audio",
-      "chars": 597
-    },
-    {
-      "id": "sfx-sa-listener-position",
-      "file": "sfx-sa-listener-position.md",
-      "subdomain": "spatial-audio",
-      "chars": 570
-    },
-    {
-      "id": "sfx-sa-speaker-panning",
-      "file": "sfx-sa-speaker-panning.md",
-      "subdomain": "spatial-audio",
-      "chars": 567
-    },
-    {
-      "id": "sfx-sa-spatial-plugin",
-      "file": "sfx-sa-spatial-plugin.md",
-      "subdomain": "spatial-audio",
-      "chars": 596
-    },
-    {
-      "id": "sfx-sa-vr-audio",
-      "file": "sfx-sa-vr-audio.md",
-      "subdomain": "spatial-audio",
-      "chars": 565
-    },
-    {
-      "id": "sfx-sa-height-channel",
-      "file": "sfx-sa-height-channel.md",
-      "subdomain": "spatial-audio",
-      "chars": 577
-    },
-    {
-      "id": "sfx-sa-outdoor-acoustics",
-      "file": "sfx-sa-outdoor-acoustics.md",
-      "subdomain": "spatial-audio",
-      "chars": 571
-    },
-    {
-      "id": "sfx-sa-underwater-audio",
-      "file": "sfx-sa-underwater-audio.md",
-      "subdomain": "spatial-audio",
-      "chars": 570
-    },
-    {
-      "id": "sfx-sa-directivity-pattern",
-      "file": "sfx-sa-directivity-pattern.md",
-      "subdomain": "spatial-audio",
-      "chars": 578
-    },
-    {
-      "id": "sfx-dsp-reverb-types",
-      "file": "sfx-dsp-reverb-types.md",
-      "subdomain": "dsp-effects",
-      "chars": 574
-    },
-    {
-      "id": "sfx-dsp-convolution-reverb",
-      "file": "sfx-dsp-convolution-reverb.md",
-      "subdomain": "dsp-effects",
-      "chars": 579
-    },
-    {
-      "id": "sfx-dsp-eq-filtering",
-      "file": "sfx-dsp-eq-filtering.md",
-      "subdomain": "dsp-effects",
-      "chars": 590
-    },
-    {
-      "id": "sfx-dsp-compression",
-      "file": "sfx-dsp-compression.md",
-      "subdomain": "dsp-effects",
-      "chars": 574
-    },
-    {
-      "id": "sfx-dsp-distortion",
-      "file": "sfx-dsp-distortion.md",
-      "subdomain": "dsp-effects",
-      "chars": 584
-    },
-    {
-      "id": "sfx-dsp-delay-echo",
-      "file": "sfx-dsp-delay-echo.md",
-      "subdomain": "dsp-effects",
-      "chars": 580
-    },
-    {
-      "id": "sfx-dsp-chorus-flanger",
-      "file": "sfx-dsp-chorus-flanger.md",
-      "subdomain": "dsp-effects",
-      "chars": 589
-    },
-    {
-      "id": "sfx-dsp-pitch-shifting",
-      "file": "sfx-dsp-pitch-shifting.md",
-      "subdomain": "dsp-effects",
-      "chars": 570
-    },
-    {
-      "id": "sfx-dsp-granular-processing",
-      "file": "sfx-dsp-granular-processing.md",
-      "subdomain": "dsp-effects",
-      "chars": 577
-    },
-    {
-      "id": "sfx-dsp-sidechain",
-      "file": "sfx-dsp-sidechain.md",
-      "subdomain": "dsp-effects",
-      "chars": 575
-    },
-    {
-      "id": "sfx-dsp-noise-gate",
-      "file": "sfx-dsp-noise-gate.md",
-      "subdomain": "dsp-effects",
-      "chars": 564
-    },
-    {
-      "id": "sfx-dsp-vocoder",
-      "file": "sfx-dsp-vocoder.md",
-      "subdomain": "dsp-effects",
-      "chars": 565
-    },
-    {
-      "id": "sfx-dsp-spectral-processing",
-      "file": "sfx-dsp-spectral-processing.md",
-      "subdomain": "dsp-effects",
-      "chars": 578
-    },
-    {
-      "id": "sfx-dsp-transient-shaper",
-      "file": "sfx-dsp-transient-shaper.md",
-      "subdomain": "dsp-effects",
-      "chars": 587
-    },
-    {
-      "id": "sfx-dsp-multiband",
-      "file": "sfx-dsp-multiband.md",
-      "subdomain": "dsp-effects",
-      "chars": 569
-    },
-    {
-      "id": "sfx-dsp-limiter-maximizer",
-      "file": "sfx-dsp-limiter-maximizer.md",
-      "subdomain": "dsp-effects",
-      "chars": 583
-    },
-    {
-      "id": "sfx-dsp-effect-chain",
-      "file": "sfx-dsp-effect-chain.md",
-      "subdomain": "dsp-effects",
-      "chars": 577
-    },
-    {
-      "id": "sfx-dsp-parallel-processing",
-      "file": "sfx-dsp-parallel-processing.md",
-      "subdomain": "dsp-effects",
-      "chars": 577
-    },
-    {
-      "id": "sfx-dsp-automation",
-      "file": "sfx-dsp-automation.md",
-      "subdomain": "dsp-effects",
-      "chars": 577
-    },
-    {
-      "id": "sfx-dsp-custom-dsp",
-      "file": "sfx-dsp-custom-dsp.md",
-      "subdomain": "dsp-effects",
-      "chars": 596
-    },
-    {
-      "id": "sfx-aam-audio-formats",
-      "file": "sfx-aam-audio-formats.md",
-      "subdomain": "audio-asset-management",
-      "chars": 596
-    },
-    {
-      "id": "sfx-aam-compression-strategy",
-      "file": "sfx-aam-compression-strategy.md",
-      "subdomain": "audio-asset-management",
-      "chars": 591
-    },
-    {
-      "id": "sfx-aam-memory-budget",
-      "file": "sfx-aam-memory-budget.md",
-      "subdomain": "audio-asset-management",
-      "chars": 582
-    },
-    {
-      "id": "sfx-aam-streaming-audio",
-      "file": "sfx-aam-streaming-audio.md",
-      "subdomain": "audio-asset-management",
-      "chars": 587
-    },
-    {
-      "id": "sfx-aam-naming-convention",
-      "file": "sfx-aam-naming-convention.md",
-      "subdomain": "audio-asset-management",
-      "chars": 588
-    },
-    {
-      "id": "sfx-aam-asset-pipeline",
-      "file": "sfx-aam-asset-pipeline.md",
-      "subdomain": "audio-asset-management",
-      "chars": 596
-    },
-    {
-      "id": "sfx-aam-version-control",
-      "file": "sfx-aam-version-control.md",
-      "subdomain": "audio-asset-management",
-      "chars": 585
-    },
-    {
-      "id": "sfx-aam-sample-rate",
-      "file": "sfx-aam-sample-rate.md",
-      "subdomain": "audio-asset-management",
-      "chars": 593
-    },
-    {
-      "id": "sfx-aam-bit-depth",
-      "file": "sfx-aam-bit-depth.md",
-      "subdomain": "audio-asset-management",
-      "chars": 580
-    },
-    {
-      "id": "sfx-aam-batch-conversion",
-      "file": "sfx-aam-batch-conversion.md",
-      "subdomain": "audio-asset-management",
-      "chars": 586
-    },
-    {
-      "id": "sfx-aam-asset-database",
-      "file": "sfx-aam-asset-database.md",
-      "subdomain": "audio-asset-management",
-      "chars": 590
-    },
-    {
-      "id": "sfx-aam-localization-audio",
-      "file": "sfx-aam-localization-audio.md",
-      "subdomain": "audio-asset-management",
-      "chars": 594
-    },
-    {
-      "id": "sfx-aam-redundancy-check",
-      "file": "sfx-aam-redundancy-check.md",
-      "subdomain": "audio-asset-management",
-      "chars": 588
-    },
-    {
-      "id": "sfx-aam-quality-tiers",
-      "file": "sfx-aam-quality-tiers.md",
-      "subdomain": "audio-asset-management",
-      "chars": 584
-    },
-    {
-      "id": "sfx-aam-dynamic-loading",
-      "file": "sfx-aam-dynamic-loading.md",
-      "subdomain": "audio-asset-management",
-      "chars": 585
-    },
-    {
-      "id": "sfx-aam-soundbank-strategy",
-      "file": "sfx-aam-soundbank-strategy.md",
-      "subdomain": "audio-asset-management",
-      "chars": 625
-    },
-    {
-      "id": "sfx-aam-backup-archival",
-      "file": "sfx-aam-backup-archival.md",
-      "subdomain": "audio-asset-management",
-      "chars": 590
-    },
-    {
-      "id": "sfx-aam-delivery-spec",
-      "file": "sfx-aam-delivery-spec.md",
-      "subdomain": "audio-asset-management",
-      "chars": 584
-    },
-    {
-      "id": "sfx-aam-platform-specific",
-      "file": "sfx-aam-platform-specific.md",
-      "subdomain": "audio-asset-management",
-      "chars": 600
-    },
-    {
-      "id": "sfx-aam-documentation",
-      "file": "sfx-aam-documentation.md",
-      "subdomain": "audio-asset-management",
-      "chars": 601
-    },
-    {
-      "id": "sfx-dp-voice-recording",
-      "file": "sfx-dp-voice-recording.md",
-      "subdomain": "dialogue-processing",
-      "chars": 577
-    },
-    {
-      "id": "sfx-dp-dialogue-editing",
-      "file": "sfx-dp-dialogue-editing.md",
-      "subdomain": "dialogue-processing",
-      "chars": 577
-    },
-    {
-      "id": "sfx-dp-tts-synthesis",
-      "file": "sfx-dp-tts-synthesis.md",
-      "subdomain": "dialogue-processing",
-      "chars": 598
-    },
-    {
-      "id": "sfx-dp-lip-sync",
-      "file": "sfx-dp-lip-sync.md",
-      "subdomain": "dialogue-processing",
-      "chars": 568
-    },
-    {
-      "id": "sfx-dp-voice-direction",
-      "file": "sfx-dp-voice-direction.md",
-      "subdomain": "dialogue-processing",
-      "chars": 578
-    },
-    {
-      "id": "sfx-dp-casting",
-      "file": "sfx-dp-casting.md",
-      "subdomain": "dialogue-processing",
-      "chars": 567
-    },
-    {
-      "id": "sfx-dp-processing-chain",
-      "file": "sfx-dp-processing-chain.md",
-      "subdomain": "dialogue-processing",
-      "chars": 599
-    },
-    {
-      "id": "sfx-dp-emotion-variation",
-      "file": "sfx-dp-emotion-variation.md",
-      "subdomain": "dialogue-processing",
-      "chars": 579
-    },
-    {
-      "id": "sfx-dp-radio-comm",
-      "file": "sfx-dp-radio-comm.md",
-      "subdomain": "dialogue-processing",
-      "chars": 588
-    },
-    {
-      "id": "sfx-dp-crowd-walla",
-      "file": "sfx-dp-crowd-walla.md",
-      "subdomain": "dialogue-processing",
-      "chars": 575
-    },
-    {
-      "id": "sfx-dp-barks-efforts",
-      "file": "sfx-dp-barks-efforts.md",
-      "subdomain": "dialogue-processing",
-      "chars": 602
-    },
-    {
-      "id": "sfx-dp-localization-pipeline",
-      "file": "sfx-dp-localization-pipeline.md",
-      "subdomain": "dialogue-processing",
-      "chars": 586
-    },
-    {
-      "id": "sfx-dp-interactive-dialogue",
-      "file": "sfx-dp-interactive-dialogue.md",
-      "subdomain": "dialogue-processing",
-      "chars": 582
-    },
-    {
-      "id": "sfx-dp-subtitles-integration",
-      "file": "sfx-dp-subtitles-integration.md",
-      "subdomain": "dialogue-processing",
-      "chars": 580
-    },
-    {
-      "id": "sfx-dp-noise-floor",
-      "file": "sfx-dp-noise-floor.md",
-      "subdomain": "dialogue-processing",
-      "chars": 570
-    },
-    {
-      "id": "sfx-dp-de-esser",
-      "file": "sfx-dp-de-esser.md",
-      "subdomain": "dialogue-processing",
-      "chars": 572
-    },
-    {
-      "id": "sfx-dp-breath-control",
-      "file": "sfx-dp-breath-control.md",
-      "subdomain": "dialogue-processing",
-      "chars": 582
-    },
-    {
-      "id": "sfx-dp-voice-aging",
-      "file": "sfx-dp-voice-aging.md",
-      "subdomain": "dialogue-processing",
-      "chars": 582
-    },
-    {
-      "id": "sfx-dp-alien-voice",
-      "file": "sfx-dp-alien-voice.md",
-      "subdomain": "dialogue-processing",
-      "chars": 579
-    },
-    {
-      "id": "sfx-dp-dialogue-priority",
-      "file": "sfx-dp-dialogue-priority.md",
-      "subdomain": "dialogue-processing",
-      "chars": 584
-    },
-    {
-      "id": "sfx-as-ambience-layers",
-      "file": "sfx-as-ambience-layers.md",
-      "subdomain": "ambient-sound",
-      "chars": 582
-    },
-    {
-      "id": "sfx-as-weather-system",
-      "file": "sfx-as-weather-system.md",
-      "subdomain": "ambient-sound",
-      "chars": 583
-    },
-    {
-      "id": "sfx-as-biome-soundscape",
-      "file": "sfx-as-biome-soundscape.md",
-      "subdomain": "ambient-sound",
-      "chars": 580
-    },
-    {
-      "id": "sfx-as-day-night-cycle",
-      "file": "sfx-as-day-night-cycle.md",
-      "subdomain": "ambient-sound",
-      "chars": 572
+      "id": "sfx-as-interactive-ambient",
+      "name": "交互式环境音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-interactive-ambient.md",
+      "exists": true,
+      "char_count": 1332
     },
     {
       "id": "sfx-as-crowd-system",
-      "file": "sfx-as-crowd-system.md",
-      "subdomain": "ambient-sound",
-      "chars": 581
-    },
-    {
-      "id": "sfx-as-random-emitter",
-      "file": "sfx-as-random-emitter.md",
-      "subdomain": "ambient-sound",
-      "chars": 579
-    },
-    {
-      "id": "sfx-as-dynamic-mix",
-      "file": "sfx-as-dynamic-mix.md",
-      "subdomain": "ambient-sound",
-      "chars": 570
-    },
-    {
-      "id": "sfx-as-music-ambient-blend",
-      "file": "sfx-as-music-ambient-blend.md",
-      "subdomain": "ambient-sound",
-      "chars": 590
-    },
-    {
-      "id": "sfx-as-interior-exterior",
-      "file": "sfx-as-interior-exterior.md",
-      "subdomain": "ambient-sound",
-      "chars": 580
-    },
-    {
-      "id": "sfx-as-zone-based",
-      "file": "sfx-as-zone-based.md",
-      "subdomain": "ambient-sound",
-      "chars": 568
-    },
-    {
-      "id": "sfx-as-interactive-ambient",
-      "file": "sfx-as-interactive-ambient.md",
-      "subdomain": "ambient-sound",
-      "chars": 585
-    },
-    {
-      "id": "sfx-as-wind-system",
-      "file": "sfx-as-wind-system.md",
-      "subdomain": "ambient-sound",
-      "chars": 568
-    },
-    {
-      "id": "sfx-as-water-ambient",
-      "file": "sfx-as-water-ambient.md",
-      "subdomain": "ambient-sound",
-      "chars": 576
-    },
-    {
-      "id": "sfx-as-wildlife-audio",
-      "file": "sfx-as-wildlife-audio.md",
-      "subdomain": "ambient-sound",
-      "chars": 582
-    },
-    {
-      "id": "sfx-as-industrial-ambient",
-      "file": "sfx-as-industrial-ambient.md",
-      "subdomain": "ambient-sound",
-      "chars": 582
-    },
-    {
-      "id": "sfx-as-horror-ambient",
-      "file": "sfx-as-horror-ambient.md",
-      "subdomain": "ambient-sound",
-      "chars": 577
-    },
-    {
-      "id": "sfx-as-sci-fi-ambient",
-      "file": "sfx-as-sci-fi-ambient.md",
-      "subdomain": "ambient-sound",
-      "chars": 578
-    },
-    {
-      "id": "sfx-as-silence-technique",
-      "file": "sfx-as-silence-technique.md",
-      "subdomain": "ambient-sound",
-      "chars": 576
-    },
-    {
-      "id": "sfx-as-procedural-ambient",
-      "file": "sfx-as-procedural-ambient.md",
-      "subdomain": "ambient-sound",
-      "chars": 584
+      "name": "人群音效系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-crowd-system.md",
+      "exists": true,
+      "char_count": 1443
     },
     {
       "id": "sfx-as-lfe-rumble",
-      "file": "sfx-as-lfe-rumble.md",
-      "subdomain": "ambient-sound",
-      "chars": 569
+      "name": "低频震动",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-lfe-rumble.md",
+      "exists": true,
+      "char_count": 1413
     },
     {
-      "id": "sfx-ao-voice-limit",
-      "file": "sfx-ao-voice-limit.md",
-      "subdomain": "audio-optimization",
-      "chars": 582
+      "id": "sfx-as-dynamic-mix",
+      "name": "动态混音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-dynamic-mix.md",
+      "exists": true,
+      "char_count": 1292
     },
     {
-      "id": "sfx-ao-priority-system",
-      "file": "sfx-ao-priority-system.md",
-      "subdomain": "audio-optimization",
-      "chars": 581
+      "id": "sfx-as-zone-based",
+      "name": "区域音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-zone-based.md",
+      "exists": true,
+      "char_count": 1419
     },
     {
-      "id": "sfx-ao-virtualization",
-      "file": "sfx-ao-virtualization.md",
-      "subdomain": "audio-optimization",
-      "chars": 579
+      "id": "sfx-as-weather-system",
+      "name": "天气音效系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-weather-system.md",
+      "exists": true,
+      "char_count": 1371
     },
     {
-      "id": "sfx-ao-lod-audio",
-      "file": "sfx-ao-lod-audio.md",
-      "subdomain": "audio-optimization",
-      "chars": 577
+      "id": "sfx-as-interior-exterior",
+      "name": "室内外过渡",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-interior-exterior.md",
+      "exists": true,
+      "char_count": 1331
+    },
+    {
+      "id": "sfx-as-industrial-ambient",
+      "name": "工业环境音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-industrial-ambient.md",
+      "exists": true,
+      "char_count": 1345
+    },
+    {
+      "id": "sfx-as-horror-ambient",
+      "name": "恐怖氛围音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-horror-ambient.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "sfx-as-day-night-cycle",
+      "name": "昼夜音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-day-night-cycle.md",
+      "exists": true,
+      "char_count": 1391
+    },
+    {
+      "id": "sfx-as-water-ambient",
+      "name": "水体环境音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-water-ambient.md",
+      "exists": true,
+      "char_count": 1305
+    },
+    {
+      "id": "sfx-as-ambience-layers",
+      "name": "环境音分层",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-ambience-layers.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "sfx-as-biome-soundscape",
+      "name": "生态音景",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-biome-soundscape.md",
+      "exists": true,
+      "char_count": 1404
+    },
+    {
+      "id": "sfx-as-sci-fi-ambient",
+      "name": "科幻环境音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-sci-fi-ambient.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "sfx-as-procedural-ambient",
+      "name": "程序化环境音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-procedural-ambient.md",
+      "exists": true,
+      "char_count": 1324
+    },
+    {
+      "id": "sfx-as-wildlife-audio",
+      "name": "野生动物音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-wildlife-audio.md",
+      "exists": true,
+      "char_count": 1334
+    },
+    {
+      "id": "sfx-as-random-emitter",
+      "name": "随机发射器",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-random-emitter.md",
+      "exists": true,
+      "char_count": 1365
+    },
+    {
+      "id": "sfx-as-silence-technique",
+      "name": "静默技巧",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-silence-technique.md",
+      "exists": true,
+      "char_count": 1355
+    },
+    {
+      "id": "sfx-as-music-ambient-blend",
+      "name": "音乐与环境融合",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-music-ambient-blend.md",
+      "exists": true,
+      "char_count": 1474
+    },
+    {
+      "id": "sfx-as-wind-system",
+      "name": "风声系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "ambient-sound",
+      "subdomain_name": "环境声设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-as-wind-system.md",
+      "exists": true,
+      "char_count": 1374
+    },
+    {
+      "id": "sfx-aam-soundbank-strategy",
+      "name": "SoundBank策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-soundbank-strategy.md",
+      "exists": true,
+      "char_count": 1724
+    },
+    {
+      "id": "sfx-aam-delivery-spec",
+      "name": "交付规格",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-delivery-spec.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "sfx-aam-bit-depth",
+      "name": "位深度",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-bit-depth.md",
+      "exists": true,
+      "char_count": 1403
+    },
+    {
+      "id": "sfx-aam-memory-budget",
+      "name": "内存预算",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-memory-budget.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "sfx-aam-redundancy-check",
+      "name": "冗余检查",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-redundancy-check.md",
+      "exists": true,
+      "char_count": 1429
+    },
+    {
+      "id": "sfx-aam-dynamic-loading",
+      "name": "动态加载",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-dynamic-loading.md",
+      "exists": true,
+      "char_count": 1420
+    },
+    {
+      "id": "sfx-aam-compression-strategy",
+      "name": "压缩策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-compression-strategy.md",
+      "exists": true,
+      "char_count": 1467
+    },
+    {
+      "id": "sfx-aam-naming-convention",
+      "name": "命名规范",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-naming-convention.md",
+      "exists": true,
+      "char_count": 1430
+    },
+    {
+      "id": "sfx-aam-backup-archival",
+      "name": "备份与归档",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-backup-archival.md",
+      "exists": true,
+      "char_count": 1448
+    },
+    {
+      "id": "sfx-aam-platform-specific",
+      "name": "平台特定处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-platform-specific.md",
+      "exists": true,
+      "char_count": 1486
+    },
+    {
+      "id": "sfx-aam-batch-conversion",
+      "name": "批量转换",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-batch-conversion.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "sfx-aam-localization-audio",
+      "name": "本地化音频",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-localization-audio.md",
+      "exists": true,
+      "char_count": 1455
+    },
+    {
+      "id": "sfx-aam-streaming-audio",
+      "name": "流式加载",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-streaming-audio.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "sfx-aam-version-control",
+      "name": "版本控制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-version-control.md",
+      "exists": true,
+      "char_count": 1413
+    },
+    {
+      "id": "sfx-aam-quality-tiers",
+      "name": "质量分级",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-quality-tiers.md",
+      "exists": true,
+      "char_count": 1286
+    },
+    {
+      "id": "sfx-aam-asset-database",
+      "name": "资产数据库",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-asset-database.md",
+      "exists": true,
+      "char_count": 1430
+    },
+    {
+      "id": "sfx-aam-sample-rate",
+      "name": "采样率选择",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-sample-rate.md",
+      "exists": true,
+      "char_count": 1359
+    },
+    {
+      "id": "sfx-aam-documentation",
+      "name": "音效文档",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-documentation.md",
+      "exists": true,
+      "char_count": 1476
+    },
+    {
+      "id": "sfx-aam-audio-formats",
+      "name": "音频格式",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-audio-formats.md",
+      "exists": true,
+      "char_count": 1561
+    },
+    {
+      "id": "sfx-aam-asset-pipeline",
+      "name": "音频资产管线",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-asset-management",
+      "subdomain_name": "声音资源管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-aam-asset-pipeline.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "sfx-am-fmod-overview",
+      "name": "FMOD概览",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-fmod-overview.md",
+      "exists": true,
+      "char_count": 1623
+    },
+    {
+      "id": "sfx-am-rtpc",
+      "name": "RTPC参数",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-rtpc.md",
+      "exists": true,
+      "char_count": 1378
+    },
+    {
+      "id": "sfx-am-soundbank",
+      "name": "SoundBank管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-soundbank.md",
+      "exists": true,
+      "char_count": 1695
+    },
+    {
+      "id": "sfx-am-switch-state",
+      "name": "Switch与State",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-switch-state.md",
+      "exists": true,
+      "char_count": 1613
+    },
+    {
+      "id": "sfx-am-wwise-overview",
+      "name": "Wwise概览",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-wwise-overview.md",
+      "exists": true,
+      "char_count": 1723
+    },
+    {
+      "id": "sfx-am-event-system",
+      "name": "事件系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-event-system.md",
+      "exists": true,
+      "char_count": 3060
+    },
+    {
+      "id": "sfx-am-interactive-music",
+      "name": "交互音乐集成",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-interactive-music.md",
+      "exists": true,
+      "char_count": 1382
+    },
+    {
+      "id": "sfx-am-dialogue-system",
+      "name": "对白系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-dialogue-system.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "sfx-am-sequence-container",
+      "name": "序列容器",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-sequence-container.md",
+      "exists": true,
+      "char_count": 1281
+    },
+    {
+      "id": "sfx-am-bus-routing",
+      "name": "总线路由",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-bus-routing.md",
+      "exists": true,
+      "char_count": 1563
+    },
+    {
+      "id": "sfx-am-batch-processing",
+      "name": "批量处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-batch-processing.md",
+      "exists": true,
+      "char_count": 1578
+    },
+    {
+      "id": "sfx-am-plugin-development",
+      "name": "插件开发",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-plugin-development.md",
+      "exists": true,
+      "char_count": 1406
+    },
+    {
+      "id": "sfx-am-blend-container",
+      "name": "混合容器",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-blend-container.md",
+      "exists": true,
+      "char_count": 1256
+    },
+    {
+      "id": "sfx-am-game-integration",
+      "name": "游戏引擎集成",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-game-integration.md",
+      "exists": true,
+      "char_count": 1581
+    },
+    {
+      "id": "sfx-am-source-control",
+      "name": "版本控制集成",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-source-control.md",
+      "exists": true,
+      "char_count": 1384
+    },
+    {
+      "id": "sfx-am-attenuation",
+      "name": "衰减曲线",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-attenuation.md",
+      "exists": true,
+      "char_count": 1404
+    },
+    {
+      "id": "sfx-am-aux-send",
+      "name": "辅助发送",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-aux-send.md",
+      "exists": true,
+      "char_count": 1399
+    },
+    {
+      "id": "sfx-am-obstruction-occlusion",
+      "name": "遮挡与阻隔",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-obstruction-occlusion.md",
+      "exists": true,
+      "char_count": 1691
+    },
+    {
+      "id": "sfx-am-random-container",
+      "name": "随机容器",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-random-container.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "sfx-am-profiler",
+      "name": "音频Profiler",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-middleware",
+      "subdomain_name": "音频中间件",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-am-profiler.md",
+      "exists": true,
+      "char_count": 1700
     },
     {
       "id": "sfx-ao-cpu-profiling",
-      "file": "sfx-ao-cpu-profiling.md",
-      "subdomain": "audio-optimization",
-      "chars": 588
-    },
-    {
-      "id": "sfx-ao-memory-profiling",
-      "file": "sfx-ao-memory-profiling.md",
-      "subdomain": "audio-optimization",
-      "chars": 575
-    },
-    {
-      "id": "sfx-ao-platform-budget",
-      "file": "sfx-ao-platform-budget.md",
-      "subdomain": "audio-optimization",
-      "chars": 581
-    },
-    {
-      "id": "sfx-ao-decode-cost",
-      "file": "sfx-ao-decode-cost.md",
-      "subdomain": "audio-optimization",
-      "chars": 572
-    },
-    {
-      "id": "sfx-ao-streaming-strategy",
-      "file": "sfx-ao-streaming-strategy.md",
-      "subdomain": "audio-optimization",
-      "chars": 579
-    },
-    {
-      "id": "sfx-ao-sample-pooling",
-      "file": "sfx-ao-sample-pooling.md",
-      "subdomain": "audio-optimization",
-      "chars": 573
-    },
-    {
-      "id": "sfx-ao-effect-budget",
-      "file": "sfx-ao-effect-budget.md",
-      "subdomain": "audio-optimization",
-      "chars": 579
-    },
-    {
-      "id": "sfx-ao-occlusion-cost",
-      "file": "sfx-ao-occlusion-cost.md",
-      "subdomain": "audio-optimization",
-      "chars": 582
-    },
-    {
-      "id": "sfx-ao-batch-operation",
-      "file": "sfx-ao-batch-operation.md",
-      "subdomain": "audio-optimization",
-      "chars": 584
-    },
-    {
-      "id": "sfx-ao-mobile-optimization",
-      "file": "sfx-ao-mobile-optimization.md",
-      "subdomain": "audio-optimization",
-      "chars": 583
-    },
-    {
-      "id": "sfx-ao-latency-reduction",
-      "file": "sfx-ao-latency-reduction.md",
-      "subdomain": "audio-optimization",
-      "chars": 576
-    },
-    {
-      "id": "sfx-ao-mix-snapshot",
-      "file": "sfx-ao-mix-snapshot.md",
-      "subdomain": "audio-optimization",
-      "chars": 578
-    },
-    {
-      "id": "sfx-ao-regression-testing",
-      "file": "sfx-ao-regression-testing.md",
-      "subdomain": "audio-optimization",
-      "chars": 576
+      "name": "CPU性能分析",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-cpu-profiling.md",
+      "exists": true,
+      "char_count": 1458
     },
     {
       "id": "sfx-ao-qa-checklist",
-      "file": "sfx-ao-qa-checklist.md",
-      "subdomain": "audio-optimization",
-      "chars": 575
+      "name": "QA检查表",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-qa-checklist.md",
+      "exists": true,
+      "char_count": 1308
+    },
+    {
+      "id": "sfx-ao-memory-profiling",
+      "name": "内存分析",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-memory-profiling.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "sfx-ao-voice-limit",
+      "name": "同时发声限制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-voice-limit.md",
+      "exists": true,
+      "char_count": 1486
+    },
+    {
+      "id": "sfx-ao-regression-testing",
+      "name": "回归测试",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-regression-testing.md",
+      "exists": true,
+      "char_count": 1276
+    },
+    {
+      "id": "sfx-ao-virtualization",
+      "name": "声音虚拟化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-virtualization.md",
+      "exists": true,
+      "char_count": 1355
     },
     {
       "id": "sfx-ao-platform-certification",
-      "file": "sfx-ao-platform-certification.md",
-      "subdomain": "audio-optimization",
-      "chars": 596
+      "name": "平台认证",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-platform-certification.md",
+      "exists": true,
+      "char_count": 1460
+    },
+    {
+      "id": "sfx-ao-platform-budget",
+      "name": "平台预算",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-platform-budget.md",
+      "exists": true,
+      "char_count": 1344
+    },
+    {
+      "id": "sfx-ao-latency-reduction",
+      "name": "延迟优化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-latency-reduction.md",
+      "exists": true,
+      "char_count": 1397
+    },
+    {
+      "id": "sfx-ao-mix-snapshot",
+      "name": "快照混音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-mix-snapshot.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "sfx-ao-batch-operation",
+      "name": "批量操作优化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-batch-operation.md",
+      "exists": true,
+      "char_count": 1328
+    },
+    {
+      "id": "sfx-ao-effect-budget",
+      "name": "效果器预算",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-effect-budget.md",
+      "exists": true,
+      "char_count": 1419
+    },
+    {
+      "id": "sfx-ao-streaming-strategy",
+      "name": "流式策略",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-streaming-strategy.md",
+      "exists": true,
+      "char_count": 1551
+    },
+    {
+      "id": "sfx-ao-mobile-optimization",
+      "name": "移动端优化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-mobile-optimization.md",
+      "exists": true,
+      "char_count": 1322
     },
     {
       "id": "sfx-ao-final-mix",
-      "file": "sfx-ao-final-mix.md",
-      "subdomain": "audio-optimization",
-      "chars": 575
+      "name": "终混与母带",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-final-mix.md",
+      "exists": true,
+      "char_count": 1416
+    },
+    {
+      "id": "sfx-ao-decode-cost",
+      "name": "解码成本",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-decode-cost.md",
+      "exists": true,
+      "char_count": 1274
+    },
+    {
+      "id": "sfx-ao-occlusion-cost",
+      "name": "遮挡计算成本",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-occlusion-cost.md",
+      "exists": true,
+      "char_count": 1312
+    },
+    {
+      "id": "sfx-ao-sample-pooling",
+      "name": "采样池化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-sample-pooling.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "sfx-ao-priority-system",
+      "name": "音效优先级",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-priority-system.md",
+      "exists": true,
+      "char_count": 1463
+    },
+    {
+      "id": "sfx-ao-lod-audio",
+      "name": "音频LOD",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "audio-optimization",
+      "subdomain_name": "音效优化",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-ao-lod-audio.md",
+      "exists": true,
+      "char_count": 1320
+    },
+    {
+      "id": "sfx-dp-barks-efforts",
+      "name": "Barks与动作音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-barks-efforts.md",
+      "exists": true,
+      "char_count": 1419
+    },
+    {
+      "id": "sfx-dp-interactive-dialogue",
+      "name": "交互式对白",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-interactive-dialogue.md",
+      "exists": true,
+      "char_count": 1293
+    },
+    {
+      "id": "sfx-dp-crowd-walla",
+      "name": "人群底噪",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-crowd-walla.md",
+      "exists": true,
+      "char_count": 1466
+    },
+    {
+      "id": "sfx-dp-lip-sync",
+      "name": "口型同步",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-lip-sync.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "sfx-dp-breath-control",
+      "name": "呼吸音处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-breath-control.md",
+      "exists": true,
+      "char_count": 1322
+    },
+    {
+      "id": "sfx-dp-voice-aging",
+      "name": "声音老化处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-voice-aging.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "sfx-dp-subtitles-integration",
+      "name": "字幕集成",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-subtitles-integration.md",
+      "exists": true,
+      "char_count": 1411
+    },
+    {
+      "id": "sfx-dp-dialogue-priority",
+      "name": "对白优先级",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-dialogue-priority.md",
+      "exists": true,
+      "char_count": 1570
+    },
+    {
+      "id": "sfx-dp-processing-chain",
+      "name": "对白处理链",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-processing-chain.md",
+      "exists": true,
+      "char_count": 1514
+    },
+    {
+      "id": "sfx-dp-dialogue-editing",
+      "name": "对白编辑",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-dialogue-editing.md",
+      "exists": true,
+      "char_count": 1658
+    },
+    {
+      "id": "sfx-dp-noise-floor",
+      "name": "底噪标准",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-noise-floor.md",
+      "exists": true,
+      "char_count": 2679
+    },
+    {
+      "id": "sfx-dp-emotion-variation",
+      "name": "情感变体",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-emotion-variation.md",
+      "exists": true,
+      "char_count": 1429
+    },
+    {
+      "id": "sfx-dp-radio-comm",
+      "name": "无线电通讯音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-radio-comm.md",
+      "exists": true,
+      "char_count": 1345
+    },
+    {
+      "id": "sfx-dp-localization-pipeline",
+      "name": "本地化管线",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-localization-pipeline.md",
+      "exists": true,
+      "char_count": 1578
+    },
+    {
+      "id": "sfx-dp-casting",
+      "name": "演员选角",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-casting.md",
+      "exists": true,
+      "char_count": 1344
+    },
+    {
+      "id": "sfx-dp-tts-synthesis",
+      "name": "语音合成(TTS)",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-tts-synthesis.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "sfx-dp-voice-recording",
+      "name": "语音录制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-voice-recording.md",
+      "exists": true,
+      "char_count": 1550
+    },
+    {
+      "id": "sfx-dp-voice-direction",
+      "name": "配音导演",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-voice-direction.md",
+      "exists": true,
+      "char_count": 1414
+    },
+    {
+      "id": "sfx-dp-alien-voice",
+      "name": "非人类语音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-alien-voice.md",
+      "exists": true,
+      "char_count": 1312
+    },
+    {
+      "id": "sfx-dp-de-esser",
+      "name": "齿音消除",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dialogue-processing",
+      "subdomain_name": "对白处理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dp-de-esser.md",
+      "exists": true,
+      "char_count": 1269
+    },
+    {
+      "id": "sfx-dsp-eq-filtering",
+      "name": "EQ均衡与滤波",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-eq-filtering.md",
+      "exists": true,
+      "char_count": 1696
+    },
+    {
+      "id": "sfx-dsp-sidechain",
+      "name": "侧链处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-sidechain.md",
+      "exists": true,
+      "char_count": 1369
+    },
+    {
+      "id": "sfx-dsp-compression",
+      "name": "动态压缩",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-compression.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "sfx-dsp-convolution-reverb",
+      "name": "卷积混响",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-convolution-reverb.md",
+      "exists": true,
+      "char_count": 1356
+    },
+    {
+      "id": "sfx-dsp-automation",
+      "name": "参数自动化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-automation.md",
+      "exists": true,
+      "char_count": 1437
+    },
+    {
+      "id": "sfx-dsp-pitch-shifting",
+      "name": "变调处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-pitch-shifting.md",
+      "exists": true,
+      "char_count": 1370
+    },
+    {
+      "id": "sfx-dsp-chorus-flanger",
+      "name": "合唱与镶边",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-chorus-flanger.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "sfx-dsp-noise-gate",
+      "name": "噪声门",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-noise-gate.md",
+      "exists": true,
+      "char_count": 1342
+    },
+    {
+      "id": "sfx-dsp-vocoder",
+      "name": "声码器",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-vocoder.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "sfx-dsp-multiband",
+      "name": "多段处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-multiband.md",
+      "exists": true,
+      "char_count": 1276
+    },
+    {
+      "id": "sfx-dsp-distortion",
+      "name": "失真效果",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-distortion.md",
+      "exists": true,
+      "char_count": 1411
+    },
+    {
+      "id": "sfx-dsp-parallel-processing",
+      "name": "并行处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-parallel-processing.md",
+      "exists": true,
+      "char_count": 1342
+    },
+    {
+      "id": "sfx-dsp-delay-echo",
+      "name": "延迟与回声",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-delay-echo.md",
+      "exists": true,
+      "char_count": 1545
+    },
+    {
+      "id": "sfx-dsp-effect-chain",
+      "name": "效果链设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-effect-chain.md",
+      "exists": true,
+      "char_count": 1420
+    },
+    {
+      "id": "sfx-dsp-reverb-types",
+      "name": "混响类型",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-reverb-types.md",
+      "exists": true,
+      "char_count": 1555
+    },
+    {
+      "id": "sfx-dsp-transient-shaper",
+      "name": "瞬态塑形",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-transient-shaper.md",
+      "exists": true,
+      "char_count": 1411
+    },
+    {
+      "id": "sfx-dsp-granular-processing",
+      "name": "粒度处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-granular-processing.md",
+      "exists": true,
+      "char_count": 1442
+    },
+    {
+      "id": "sfx-dsp-custom-dsp",
+      "name": "自定义DSP开发",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-custom-dsp.md",
+      "exists": true,
+      "char_count": 1451
+    },
+    {
+      "id": "sfx-dsp-limiter-maximizer",
+      "name": "限幅与最大化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-limiter-maximizer.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "sfx-dsp-spectral-processing",
+      "name": "频谱处理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "dsp-effects",
+      "subdomain_name": "混响与DSP",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-dsp-spectral-processing.md",
+      "exists": true,
+      "char_count": 1419
+    },
+    {
+      "id": "sfx-fr-metadata-tagging",
+      "name": "元数据标签",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-metadata-tagging.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "sfx-fr-sound-library-build",
+      "name": "声音库建设",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-sound-library-build.md",
+      "exists": true,
+      "char_count": 1475
+    },
+    {
+      "id": "sfx-fr-field-recording",
+      "name": "外景录音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-field-recording.md",
+      "exists": true,
+      "char_count": 1423
+    },
+    {
+      "id": "sfx-fr-cloth-movement",
+      "name": "布料运动音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-cloth-movement.md",
+      "exists": true,
+      "char_count": 1469
+    },
+    {
+      "id": "sfx-fr-session-management",
+      "name": "录音会话管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-session-management.md",
+      "exists": true,
+      "char_count": 1407
+    },
+    {
+      "id": "sfx-fr-recording-chain",
+      "name": "录音信号链",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-recording-chain.md",
+      "exists": true,
+      "char_count": 1586
+    },
+    {
+      "id": "sfx-fr-recording-environment",
+      "name": "录音环境",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-recording-environment.md",
+      "exists": true,
+      "char_count": 1570
+    },
+    {
+      "id": "sfx-fr-foley-basics",
+      "name": "拟音基础",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-foley-basics.md",
+      "exists": true,
+      "char_count": 1540
+    },
+    {
+      "id": "sfx-fr-contact-mic",
+      "name": "接触式麦克风",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-contact-mic.md",
+      "exists": true,
+      "char_count": 1315
+    },
+    {
+      "id": "sfx-fr-impact-recording",
+      "name": "撞击音录制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-impact-recording.md",
+      "exists": true,
+      "char_count": 1354
+    },
+    {
+      "id": "sfx-fr-water-sounds",
+      "name": "水声录制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-water-sounds.md",
+      "exists": true,
+      "char_count": 1265
+    },
+    {
+      "id": "sfx-fr-ambience-capture",
+      "name": "环境音捕捉",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-ambience-capture.md",
+      "exists": true,
+      "char_count": 1476
+    },
+    {
+      "id": "sfx-fr-creature-voice",
+      "name": "生物音效设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-creature-voice.md",
+      "exists": true,
+      "char_count": 1461
+    },
+    {
+      "id": "sfx-fr-destructive-recording",
+      "name": "破坏性录音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-destructive-recording.md",
+      "exists": true,
+      "char_count": 1383
+    },
+    {
+      "id": "sfx-fr-footsteps",
+      "name": "脚步音录制",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-footsteps.md",
+      "exists": true,
+      "char_count": 1289
+    },
+    {
+      "id": "sfx-fr-vehicle-recording",
+      "name": "载具录音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-vehicle-recording.md",
+      "exists": true,
+      "char_count": 1541
+    },
+    {
+      "id": "sfx-fr-prop-handling",
+      "name": "道具操作音",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-prop-handling.md",
+      "exists": true,
+      "char_count": 1431
+    },
+    {
+      "id": "sfx-fr-noise-reduction",
+      "name": "降噪技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-noise-reduction.md",
+      "exists": true,
+      "char_count": 1404
+    },
+    {
+      "id": "sfx-fr-editing-workflow",
+      "name": "音频编辑工作流",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-editing-workflow.md",
+      "exists": true,
+      "char_count": 1627
+    },
+    {
+      "id": "sfx-fr-microphone-selection",
+      "name": "麦克风选择",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "foley-recording",
+      "subdomain_name": "Foley录制",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-fr-microphone-selection.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "sfx-sdt-sweetener",
+      "name": "Sweetener增强",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-sweetener.md",
+      "exists": true,
+      "char_count": 1617
+    },
+    {
+      "id": "sfx-sdt-ui-sound",
+      "name": "UI音效设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-ui-sound.md",
+      "exists": true,
+      "char_count": 1453
+    },
+    {
+      "id": "sfx-sdt-reference-library",
+      "name": "参考音效库",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-reference-library.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "sfx-sdt-diegetic-vs-nondiegetic",
+      "name": "叙事内外音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-diegetic-vs-nondiegetic.md",
+      "exists": true,
+      "char_count": 1583
+    },
+    {
+      "id": "sfx-sdt-sound-storytelling",
+      "name": "声音叙事",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-sound-storytelling.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "sfx-sdt-synthesis-basics",
+      "name": "声音合成基础",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-synthesis-basics.md",
+      "exists": true,
+      "char_count": 1532
+    },
+    {
+      "id": "sfx-sdt-psychoacoustics",
+      "name": "声音心理学",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-psychoacoustics.md",
+      "exists": true,
+      "char_count": 1632
+    },
+    {
+      "id": "sfx-sdt-emotional-design",
+      "name": "声音情感设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-emotional-design.md",
+      "exists": true,
+      "char_count": 1562
+    },
+    {
+      "id": "sfx-sdt-sound-metaphor",
+      "name": "声音隐喻",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-sound-metaphor.md",
+      "exists": true,
+      "char_count": 1341
+    },
+    {
+      "id": "sfx-sdt-impact-design",
+      "name": "打击感音效设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-impact-design.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "sfx-sdt-transient-design",
+      "name": "瞬态设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-transient-design.md",
+      "exists": true,
+      "char_count": 1384
+    },
+    {
+      "id": "sfx-sdt-procedural-audio",
+      "name": "程序化音频",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-procedural-audio.md",
+      "exists": true,
+      "char_count": 1459
+    },
+    {
+      "id": "sfx-sdt-sampling-technique",
+      "name": "采样技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-sampling-technique.md",
+      "exists": true,
+      "char_count": 1660
+    },
+    {
+      "id": "sfx-sdt-silence-design",
+      "name": "静默设计",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-silence-design.md",
+      "exists": true,
+      "char_count": 1470
+    },
+    {
+      "id": "sfx-sdt-layering",
+      "name": "音效分层技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-layering.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "sfx-sdt-sound-taxonomy",
+      "name": "音效分类体系",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-sound-taxonomy.md",
+      "exists": true,
+      "char_count": 1644
+    },
+    {
+      "id": "sfx-sdt-feedback-loop",
+      "name": "音频反馈循环",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-feedback-loop.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "sfx-sdt-audio-branding",
+      "name": "音频品牌化",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-audio-branding.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "sfx-sdt-pitch-variation",
+      "name": "音高变化技术",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-pitch-variation.md",
+      "exists": true,
+      "char_count": 1516
+    },
+    {
+      "id": "sfx-sdt-frequency-spectrum",
+      "name": "频谱分析与管理",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "sound-design-theory",
+      "subdomain_name": "音效设计理论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sdt-frequency-spectrum.md",
+      "exists": true,
+      "char_count": 1518
+    },
+    {
+      "id": "sfx-sa-3d-audio-basics",
+      "name": "3D音频基础",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-3d-audio-basics.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "sfx-sa-ambisonics",
+      "name": "Ambisonics",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-ambisonics.md",
+      "exists": true,
+      "char_count": 1537
+    },
+    {
+      "id": "sfx-sa-hrtf",
+      "name": "HRTF头部传输函数",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-hrtf.md",
+      "exists": true,
+      "char_count": 1399
+    },
+    {
+      "id": "sfx-sa-portal-system",
+      "name": "Portal声学系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-portal-system.md",
+      "exists": true,
+      "char_count": 1399
+    },
+    {
+      "id": "sfx-sa-vr-audio",
+      "name": "VR音频",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-vr-audio.md",
+      "exists": true,
+      "char_count": 1377
+    },
+    {
+      "id": "sfx-sa-occlusion-geometry",
+      "name": "几何遮挡",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-occlusion-geometry.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "sfx-sa-binaural-audio",
+      "name": "双耳音频",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-binaural-audio.md",
+      "exists": true,
+      "char_count": 1348
+    },
+    {
+      "id": "sfx-sa-listener-position",
+      "name": "听者位置",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-listener-position.md",
+      "exists": true,
+      "char_count": 1407
+    },
+    {
+      "id": "sfx-sa-speaker-panning",
+      "name": "声像摆位",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-speaker-panning.md",
+      "exists": true,
+      "char_count": 1257
+    },
+    {
+      "id": "sfx-sa-directivity-pattern",
+      "name": "声源指向性",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-directivity-pattern.md",
+      "exists": true,
+      "char_count": 1341
+    },
+    {
+      "id": "sfx-sa-sound-propagation",
+      "name": "声音传播",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-sound-propagation.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "sfx-sa-doppler-effect",
+      "name": "多普勒效应",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-doppler-effect.md",
+      "exists": true,
+      "char_count": 1262
+    },
+    {
+      "id": "sfx-sa-outdoor-acoustics",
+      "name": "室外声学",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 5,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-outdoor-acoustics.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "sfx-sa-room-acoustics",
+      "name": "房间声学",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-room-acoustics.md",
+      "exists": true,
+      "char_count": 1417
+    },
+    {
+      "id": "sfx-sa-underwater-audio",
+      "name": "水下音效",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-underwater-audio.md",
+      "exists": true,
+      "char_count": 1387
+    },
+    {
+      "id": "sfx-sa-reverb-zone",
+      "name": "混响区域",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-reverb-zone.md",
+      "exists": true,
+      "char_count": 1382
+    },
+    {
+      "id": "sfx-sa-surround-sound",
+      "name": "环绕声系统",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-surround-sound.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "sfx-sa-spatial-plugin",
+      "name": "空间音频插件",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-spatial-plugin.md",
+      "exists": true,
+      "char_count": 1472
+    },
+    {
+      "id": "sfx-sa-distance-model",
+      "name": "距离模型",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-distance-model.md",
+      "exists": true,
+      "char_count": 1450
+    },
+    {
+      "id": "sfx-sa-height-channel",
+      "name": "高度通道",
+      "domain_id": "game-audio-sfx",
+      "subdomain_id": "spatial-audio",
+      "subdomain_name": "空间音频",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-audio-sfx/sfx-sa-height-channel.md",
+      "exists": true,
+      "char_count": 1343
     }
-  ]
+  ],
+  "stats": {
+    "total": 180,
+    "total_chars": 259961,
+    "avg_chars": 1444,
+    "domain": "game-audio-sfx"
+  }
 }

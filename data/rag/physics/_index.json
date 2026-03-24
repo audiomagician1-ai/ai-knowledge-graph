@@ -1,2348 +1,19 @@
 {
-  "version": "1.0.0",
-  "domain_id": "physics",
-  "generated_at": "2026-03-19T09:45:51",
-  "total_concepts": 194,
   "documents": [
     {
-      "id": "physical-quantities",
-      "name": "物理量与单位",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/classical-mechanics/physical-quantities.md",
-      "exists": true,
-      "char_count": 529
-    },
-    {
-      "id": "vectors-in-physics",
-      "name": "物理中的向量",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/classical-mechanics/vectors-in-physics.md",
-      "exists": true,
-      "char_count": 646
-    },
-    {
-      "id": "kinematics-1d",
-      "name": "一维运动学",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/classical-mechanics/kinematics-1d.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "kinematics-2d",
-      "name": "二维运动学",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/kinematics-2d.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "newtons-first-law",
-      "name": "牛顿第一定律",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/newtons-first-law.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "newtons-second-law",
-      "name": "牛顿第二定律",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/classical-mechanics/newtons-second-law.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "newtons-third-law",
-      "name": "牛顿第三定律",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/newtons-third-law.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "friction",
-      "name": "摩擦力",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/friction.md",
-      "exists": true,
-      "char_count": 595
-    },
-    {
-      "id": "circular-motion",
-      "name": "圆周运动",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/circular-motion.md",
-      "exists": true,
-      "char_count": 625
-    },
-    {
-      "id": "work-energy",
-      "name": "功与能",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/work-energy.md",
-      "exists": true,
-      "char_count": 598
-    },
-    {
-      "id": "potential-energy",
-      "name": "势能",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/potential-energy.md",
-      "exists": true,
-      "char_count": 608
-    },
-    {
-      "id": "energy-conservation",
-      "name": "能量守恒",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/classical-mechanics/energy-conservation.md",
-      "exists": true,
-      "char_count": 545
-    },
-    {
-      "id": "momentum",
-      "name": "动量与冲量",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/momentum.md",
-      "exists": true,
-      "char_count": 609
-    },
-    {
-      "id": "momentum-conservation",
-      "name": "动量守恒",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/classical-mechanics/momentum-conservation.md",
-      "exists": true,
-      "char_count": 616
-    },
-    {
-      "id": "collisions",
-      "name": "碰撞",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/collisions.md",
-      "exists": true,
-      "char_count": 600
-    },
-    {
-      "id": "rotational-kinematics",
-      "name": "转动运动学",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/rotational-kinematics.md",
-      "exists": true,
-      "char_count": 636
-    },
-    {
-      "id": "torque",
-      "name": "力矩",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/torque.md",
-      "exists": true,
-      "char_count": 586
-    },
-    {
-      "id": "rotational-dynamics",
-      "name": "转动动力学",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/classical-mechanics/rotational-dynamics.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "angular-momentum",
-      "name": "角动量",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/angular-momentum.md",
-      "exists": true,
-      "char_count": 605
-    },
-    {
-      "id": "static-equilibrium",
-      "name": "静力学平衡",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/static-equilibrium.md",
-      "exists": true,
-      "char_count": 621
-    },
-    {
-      "id": "gravitation",
-      "name": "万有引力",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/classical-mechanics/gravitation.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "orbital-mechanics",
-      "name": "轨道力学",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/classical-mechanics/orbital-mechanics.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "simple-harmonic-motion",
-      "name": "简谐运动",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/simple-harmonic-motion.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "damped-driven-oscillation",
-      "name": "阻尼与受迫振动",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/classical-mechanics/damped-driven-oscillation.md",
-      "exists": true,
-      "char_count": 644
-    },
-    {
-      "id": "non-inertial-frames",
-      "name": "非惯性系",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/classical-mechanics/non-inertial-frames.md",
-      "exists": true,
-      "char_count": 615
-    },
-    {
-      "id": "projectile-motion",
-      "name": "抛体运动",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/classical-mechanics/projectile-motion.md",
-      "exists": true,
-      "char_count": 615
-    },
-    {
-      "id": "elastic-force",
-      "name": "弹性力",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/elastic-force.md",
-      "exists": true,
-      "char_count": 604
-    },
-    {
-      "id": "center-of-mass",
-      "name": "质心",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/center-of-mass.md",
-      "exists": true,
-      "char_count": 602
-    },
-    {
-      "id": "rigid-body-motion",
-      "name": "刚体运动",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/classical-mechanics/rigid-body-motion.md",
-      "exists": true,
-      "char_count": 613
-    },
-    {
-      "id": "coupled-oscillations",
-      "name": "耦合振动",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/classical-mechanics/coupled-oscillations.md",
-      "exists": true,
-      "char_count": 612
-    },
-    {
-      "id": "mechanical-waves-medium",
-      "name": "介质中的机械波",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/mechanical-waves-medium.md",
-      "exists": true,
-      "char_count": 648
-    },
-    {
-      "id": "lagrangian-mechanics",
-      "name": "拉格朗日力学初步",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/classical-mechanics/lagrangian-mechanics.md",
-      "exists": true,
-      "char_count": 650
-    },
-    {
-      "id": "hamiltonian-mechanics",
-      "name": "哈密顿力学初步",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/classical-mechanics/hamiltonian-mechanics.md",
-      "exists": true,
-      "char_count": 638
-    },
-    {
-      "id": "keplers-laws",
-      "name": "开普勒定律",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/classical-mechanics/keplers-laws.md",
-      "exists": true,
-      "char_count": 617
-    },
-    {
-      "id": "tidal-forces",
-      "name": "潮汐力",
-      "domain_id": "physics",
-      "subdomain_id": "classical-mechanics",
-      "subdomain_name": "经典力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/classical-mechanics/tidal-forces.md",
-      "exists": true,
-      "char_count": 603
-    },
-    {
-      "id": "temperature-heat",
-      "name": "温度与热量",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/thermodynamics/temperature-heat.md",
-      "exists": true,
-      "char_count": 615
-    },
-    {
-      "id": "ideal-gas-law",
-      "name": "理想气体定律",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/ideal-gas-law.md",
-      "exists": true,
-      "char_count": 635
-    },
-    {
-      "id": "kinetic-theory",
-      "name": "气体动理论",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/kinetic-theory.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "heat-transfer",
-      "name": "传热方式",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/heat-transfer.md",
-      "exists": true,
-      "char_count": 609
-    },
-    {
-      "id": "specific-heat",
-      "name": "比热容与热容量",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/thermodynamics/specific-heat.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "first-law-thermo",
-      "name": "热力学第一定律",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/thermodynamics/first-law-thermo.md",
-      "exists": true,
-      "char_count": 632
-    },
-    {
-      "id": "thermodynamic-processes",
-      "name": "热力学过程",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/thermodynamic-processes.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "second-law-thermo",
-      "name": "热力学第二定律",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/thermodynamics/second-law-thermo.md",
-      "exists": true,
-      "char_count": 635
-    },
-    {
-      "id": "entropy",
-      "name": "熵",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/thermodynamics/entropy.md",
-      "exists": true,
-      "char_count": 506
-    },
-    {
-      "id": "heat-engines",
-      "name": "热机",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/thermodynamics/heat-engines.md",
-      "exists": true,
-      "char_count": 586
-    },
-    {
-      "id": "phase-transitions",
-      "name": "相变",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/phase-transitions.md",
-      "exists": true,
-      "char_count": 593
-    },
-    {
-      "id": "free-energy",
-      "name": "自由能",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/thermodynamics/free-energy.md",
-      "exists": true,
-      "char_count": 602
-    },
-    {
-      "id": "thermal-expansion",
-      "name": "热膨胀",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/thermodynamics/thermal-expansion.md",
-      "exists": true,
-      "char_count": 594
-    },
-    {
-      "id": "statistical-mechanics",
-      "name": "统计力学初步",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/thermodynamics/statistical-mechanics.md",
-      "exists": true,
-      "char_count": 631
-    },
-    {
-      "id": "third-law-thermo",
-      "name": "热力学第三定律",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/third-law-thermo.md",
-      "exists": true,
-      "char_count": 631
-    },
-    {
-      "id": "carnot-theorem",
-      "name": "卡诺定理",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/carnot-theorem.md",
-      "exists": true,
-      "char_count": 604
-    },
-    {
-      "id": "maxwell-relations",
-      "name": "麦克斯韦关系",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/thermodynamics/maxwell-relations.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "real-gases",
-      "name": "实际气体",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/thermodynamics/real-gases.md",
-      "exists": true,
-      "char_count": 606
-    },
-    {
-      "id": "boltzmann-distribution",
-      "name": "玻尔兹曼分布",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/thermodynamics/boltzmann-distribution.md",
-      "exists": true,
-      "char_count": 632
-    },
-    {
-      "id": "adiabatic-process",
-      "name": "绝热过程",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/adiabatic-process.md",
-      "exists": true,
-      "char_count": 609
-    },
-    {
-      "id": "enthalpy",
-      "name": "焓",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/enthalpy.md",
-      "exists": true,
-      "char_count": 583
-    },
-    {
-      "id": "irreversibility",
-      "name": "不可逆过程",
-      "domain_id": "physics",
-      "subdomain_id": "thermodynamics",
-      "subdomain_name": "热力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/thermodynamics/irreversibility.md",
-      "exists": true,
-      "char_count": 606
-    },
-    {
-      "id": "wave-basics",
-      "name": "波的基本概念",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/waves-and-optics/wave-basics.md",
-      "exists": true,
-      "char_count": 638
-    },
-    {
-      "id": "wave-equation",
-      "name": "波动方程",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/wave-equation.md",
-      "exists": true,
-      "char_count": 630
-    },
-    {
-      "id": "superposition",
-      "name": "波的叠加",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/superposition.md",
-      "exists": true,
-      "char_count": 618
-    },
-    {
-      "id": "sound-waves",
-      "name": "声波",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/sound-waves.md",
-      "exists": true,
-      "char_count": 604
-    },
-    {
-      "id": "resonance",
-      "name": "共振",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/resonance.md",
-      "exists": true,
-      "char_count": 612
-    },
-    {
-      "id": "reflection-refraction",
-      "name": "反射与折射",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/reflection-refraction.md",
-      "exists": true,
-      "char_count": 667
-    },
-    {
-      "id": "geometric-optics",
-      "name": "几何光学",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/waves-and-optics/geometric-optics.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "interference",
-      "name": "光的干涉",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/waves-and-optics/interference.md",
-      "exists": true,
-      "char_count": 632
-    },
-    {
-      "id": "diffraction",
-      "name": "光的衍射",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/diffraction.md",
-      "exists": true,
-      "char_count": 624
-    },
-    {
-      "id": "polarization",
-      "name": "光的偏振",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/polarization.md",
-      "exists": true,
-      "char_count": 627
-    },
-    {
-      "id": "dispersion",
-      "name": "色散",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/dispersion.md",
-      "exists": true,
-      "char_count": 613
-    },
-    {
-      "id": "optical-instruments",
-      "name": "光学仪器",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/waves-and-optics/optical-instruments.md",
-      "exists": true,
-      "char_count": 638
-    },
-    {
-      "id": "wave-particle-duality",
-      "name": "波粒二象性",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/waves-and-optics/wave-particle-duality.md",
-      "exists": true,
-      "char_count": 648
-    },
-    {
-      "id": "electromagnetic-waves",
-      "name": "电磁波",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/electromagnetic-waves.md",
-      "exists": true,
-      "char_count": 637
-    },
-    {
-      "id": "fiber-optics",
-      "name": "光纤与光通信",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/waves-and-optics/fiber-optics.md",
-      "exists": true,
-      "char_count": 643
-    },
-    {
-      "id": "huygens-principle",
-      "name": "惠更斯原理",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/huygens-principle.md",
-      "exists": true,
-      "char_count": 641
-    },
-    {
-      "id": "doppler-effect-light",
-      "name": "光的多普勒效应",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/waves-and-optics/doppler-effect-light.md",
-      "exists": true,
-      "char_count": 654
-    },
-    {
-      "id": "holography",
-      "name": "全息术",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/waves-and-optics/holography.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "nonlinear-optics-intro",
-      "name": "非线性光学简介",
-      "domain_id": "physics",
-      "subdomain_id": "waves-and-optics",
-      "subdomain_name": "波动与光学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/waves-and-optics/nonlinear-optics-intro.md",
-      "exists": true,
-      "char_count": 654
-    },
-    {
-      "id": "electric-charge",
-      "name": "电荷",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/electromagnetism/electric-charge.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "electric-field",
-      "name": "电场",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/electric-field.md",
-      "exists": true,
-      "char_count": 632
-    },
-    {
-      "id": "gauss-law",
-      "name": "高斯定律",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/electromagnetism/gauss-law.md",
-      "exists": true,
-      "char_count": 642
-    },
-    {
-      "id": "electric-potential",
-      "name": "电势",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/electric-potential.md",
-      "exists": true,
-      "char_count": 636
-    },
-    {
-      "id": "capacitance",
-      "name": "电容",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/capacitance.md",
-      "exists": true,
-      "char_count": 635
-    },
-    {
-      "id": "dc-circuits",
-      "name": "直流电路",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/dc-circuits.md",
-      "exists": true,
-      "char_count": 643
-    },
-    {
-      "id": "rc-circuits",
-      "name": "RC电路",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/electromagnetism/rc-circuits.md",
-      "exists": true,
-      "char_count": 643
-    },
-    {
-      "id": "magnetic-field",
-      "name": "磁场",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/magnetic-field.md",
-      "exists": true,
-      "char_count": 636
-    },
-    {
-      "id": "lorentz-force",
-      "name": "洛伦兹力",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/lorentz-force.md",
-      "exists": true,
-      "char_count": 651
-    },
-    {
-      "id": "biot-savart",
-      "name": "毕奥-萨伐尔定律",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/biot-savart.md",
-      "exists": true,
-      "char_count": 675
-    },
-    {
-      "id": "amperes-law",
-      "name": "安培定律",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/electromagnetism/amperes-law.md",
-      "exists": true,
-      "char_count": 640
-    },
-    {
-      "id": "faradays-law",
-      "name": "法拉第电磁感应",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/electromagnetism/faradays-law.md",
-      "exists": true,
-      "char_count": 670
-    },
-    {
-      "id": "inductance",
-      "name": "电感",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/inductance.md",
-      "exists": true,
-      "char_count": 628
-    },
-    {
-      "id": "ac-circuits",
-      "name": "交流电路",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/ac-circuits.md",
-      "exists": true,
-      "char_count": 647
-    },
-    {
-      "id": "maxwells-equations",
-      "name": "麦克斯韦方程组",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/electromagnetism/maxwells-equations.md",
-      "exists": true,
-      "char_count": 651
-    },
-    {
-      "id": "electromagnetic-radiation",
-      "name": "电磁辐射",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/electromagnetism/electromagnetic-radiation.md",
-      "exists": true,
-      "char_count": 667
-    },
-    {
-      "id": "em-energy-poynting",
-      "name": "电磁能与坡印廷矢量",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/electromagnetism/em-energy-poynting.md",
-      "exists": true,
-      "char_count": 683
-    },
-    {
-      "id": "dielectrics",
-      "name": "电介质",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/electromagnetism/dielectrics.md",
-      "exists": true,
-      "char_count": 632
-    },
-    {
-      "id": "magnetic-materials",
-      "name": "磁性材料",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/electromagnetism/magnetic-materials.md",
-      "exists": true,
-      "char_count": 652
-    },
-    {
-      "id": "superconductivity-intro",
-      "name": "超导简介",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/electromagnetism/superconductivity-intro.md",
-      "exists": true,
-      "char_count": 661
-    },
-    {
-      "id": "electric-dipole",
-      "name": "电偶极子",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/electric-dipole.md",
-      "exists": true,
-      "char_count": 641
-    },
-    {
-      "id": "magnetic-dipole",
-      "name": "磁偶极子",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/magnetic-dipole.md",
-      "exists": true,
-      "char_count": 651
-    },
-    {
-      "id": "kirchhoffs-laws",
-      "name": "基尔霍夫定律",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/electromagnetism/kirchhoffs-laws.md",
-      "exists": true,
-      "char_count": 671
-    },
-    {
-      "id": "power-transmission",
-      "name": "电能传输",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/electromagnetism/power-transmission.md",
-      "exists": true,
-      "char_count": 650
-    },
-    {
-      "id": "electromagnetic-induction-app",
-      "name": "电磁感应应用",
-      "domain_id": "physics",
-      "subdomain_id": "electromagnetism",
-      "subdomain_name": "电磁学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/electromagnetism/electromagnetic-induction-app.md",
-      "exists": true,
-      "char_count": 675
-    },
-    {
-      "id": "special-relativity-postulates",
-      "name": "狭义相对论公设",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/modern-physics/special-relativity-postulates.md",
-      "exists": true,
-      "char_count": 500
-    },
-    {
-      "id": "time-dilation",
-      "name": "时间膨胀",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/time-dilation.md",
-      "exists": true,
-      "char_count": 586
-    },
-    {
-      "id": "length-contraction",
-      "name": "长度收缩",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/length-contraction.md",
-      "exists": true,
-      "char_count": 585
-    },
-    {
-      "id": "lorentz-transformations",
-      "name": "洛伦兹变换",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/lorentz-transformations.md",
-      "exists": true,
-      "char_count": 607
-    },
-    {
-      "id": "relativistic-momentum-energy",
-      "name": "相对论性动量与能量",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/modern-physics/relativistic-momentum-energy.md",
-      "exists": true,
-      "char_count": 643
-    },
-    {
-      "id": "spacetime-diagrams",
-      "name": "时空图",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/spacetime-diagrams.md",
-      "exists": true,
-      "char_count": 586
-    },
-    {
-      "id": "general-relativity-intro",
-      "name": "广义相对论初步",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/modern-physics/general-relativity-intro.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "photoelectric-effect",
-      "name": "光电效应",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/modern-physics/photoelectric-effect.md",
-      "exists": true,
-      "char_count": 606
-    },
-    {
-      "id": "compton-scattering",
-      "name": "康普顿散射",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/compton-scattering.md",
-      "exists": true,
-      "char_count": 600
-    },
-    {
-      "id": "blackbody-radiation",
-      "name": "黑体辐射",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/blackbody-radiation.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "bohr-model",
-      "name": "玻尔模型",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/modern-physics/bohr-model.md",
-      "exists": true,
-      "char_count": 590
-    },
-    {
-      "id": "atomic-spectra",
-      "name": "原子光谱",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/atomic-spectra.md",
-      "exists": true,
-      "char_count": 593
-    },
-    {
-      "id": "matter-waves",
-      "name": "物质波",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/matter-waves.md",
-      "exists": true,
-      "char_count": 578
-    },
-    {
-      "id": "uncertainty-principle",
-      "name": "不确定性原理",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/modern-physics/uncertainty-principle.md",
-      "exists": true,
-      "char_count": 619
-    },
-    {
-      "id": "x-rays",
-      "name": "X射线",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/modern-physics/x-rays.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "lasers",
-      "name": "激光",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/modern-physics/lasers.md",
-      "exists": true,
-      "char_count": 571
-    },
-    {
-      "id": "pair-production",
-      "name": "正负电子对产生",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/pair-production.md",
-      "exists": true,
-      "char_count": 613
-    },
-    {
-      "id": "zeeman-effect",
-      "name": "塞曼效应",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/zeeman-effect.md",
-      "exists": true,
-      "char_count": 594
-    },
-    {
-      "id": "franck-hertz",
-      "name": "弗兰克-赫兹实验",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "实验"
-      ],
-      "file": "physics/modern-physics/franck-hertz.md",
-      "exists": true,
-      "char_count": 617
-    },
-    {
-      "id": "twin-paradox",
-      "name": "双生子佯谬",
-      "domain_id": "physics",
-      "subdomain_id": "modern-physics",
-      "subdomain_name": "近代物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/modern-physics/twin-paradox.md",
-      "exists": true,
-      "char_count": 596
-    },
-    {
-      "id": "wave-function",
-      "name": "波函数",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/wave-function.md",
-      "exists": true,
-      "char_count": 607
-    },
-    {
-      "id": "schrodinger-equation",
-      "name": "薛定谔方程",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/quantum-mechanics/schrodinger-equation.md",
-      "exists": true,
-      "char_count": 579
-    },
-    {
-      "id": "infinite-square-well",
-      "name": "无限深方势阱",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/infinite-square-well.md",
-      "exists": true,
-      "char_count": 637
-    },
-    {
-      "id": "quantum-harmonic-oscillator",
-      "name": "量子谐振子",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/quantum-harmonic-oscillator.md",
-      "exists": true,
-      "char_count": 639
-    },
-    {
-      "id": "hydrogen-atom-qm",
-      "name": "氢原子量子解",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/hydrogen-atom-qm.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "quantum-tunneling",
-      "name": "量子隧穿",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/quantum-tunneling.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "spin",
-      "name": "自旋",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/quantum-mechanics/spin.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "pauli-exclusion",
-      "name": "泡利不相容原理",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/pauli-exclusion.md",
-      "exists": true,
-      "char_count": 643
-    },
-    {
-      "id": "quantum-entanglement",
-      "name": "量子纠缠",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/quantum-entanglement.md",
-      "exists": true,
-      "char_count": 633
-    },
-    {
-      "id": "quantum-superposition",
-      "name": "量子叠加",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/quantum-superposition.md",
-      "exists": true,
-      "char_count": 622
-    },
-    {
-      "id": "operators-observables",
-      "name": "算符与可观测量",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/quantum-mechanics/operators-observables.md",
-      "exists": true,
-      "char_count": 641
-    },
-    {
-      "id": "angular-momentum-qm",
-      "name": "量子角动量",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/quantum-mechanics/angular-momentum-qm.md",
-      "exists": true,
-      "char_count": 627
-    },
-    {
-      "id": "perturbation-theory",
-      "name": "微扰理论",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/quantum-mechanics/perturbation-theory.md",
-      "exists": true,
-      "char_count": 620
-    },
-    {
-      "id": "quantum-computing-intro",
-      "name": "量子计算简介",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/quantum-mechanics/quantum-computing-intro.md",
-      "exists": true,
-      "char_count": 644
-    },
-    {
-      "id": "bose-einstein-fermi-dirac",
-      "name": "量子统计",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/quantum-mechanics/bose-einstein-fermi-dirac.md",
-      "exists": true,
-      "char_count": 634
-    },
-    {
-      "id": "finite-square-well",
-      "name": "有限深方势阱",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/finite-square-well.md",
-      "exists": true,
-      "char_count": 629
-    },
-    {
-      "id": "density-matrix",
-      "name": "密度矩阵",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/quantum-mechanics/density-matrix.md",
-      "exists": true,
-      "char_count": 619
-    },
-    {
-      "id": "path-integrals-intro",
-      "name": "路径积分简介",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/quantum-mechanics/path-integrals-intro.md",
-      "exists": true,
-      "char_count": 631
-    },
-    {
-      "id": "selection-rules",
-      "name": "选择定则",
-      "domain_id": "physics",
-      "subdomain_id": "quantum-mechanics",
-      "subdomain_name": "量子力学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/quantum-mechanics/selection-rules.md",
-      "exists": true,
-      "char_count": 612
-    },
-    {
-      "id": "nuclear-structure",
-      "name": "原子核结构",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/nuclear-physics/nuclear-structure.md",
-      "exists": true,
-      "char_count": 607
-    },
-    {
-      "id": "binding-energy",
-      "name": "结合能",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/nuclear-physics/binding-energy.md",
-      "exists": true,
-      "char_count": 589
-    },
-    {
-      "id": "radioactive-decay",
-      "name": "放射性衰变",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/nuclear-physics/radioactive-decay.md",
-      "exists": true,
-      "char_count": 605
-    },
-    {
-      "id": "half-life",
-      "name": "半衰期",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/nuclear-physics/half-life.md",
-      "exists": true,
-      "char_count": 585
-    },
-    {
-      "id": "nuclear-fission",
-      "name": "核裂变",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/nuclear-physics/nuclear-fission.md",
-      "exists": true,
-      "char_count": 589
-    },
-    {
-      "id": "nuclear-fusion",
-      "name": "核聚变",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/nuclear-physics/nuclear-fusion.md",
-      "exists": true,
-      "char_count": 588
-    },
-    {
-      "id": "particle-physics-intro",
-      "name": "粒子物理初步",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/nuclear-physics/particle-physics-intro.md",
-      "exists": true,
-      "char_count": 625
-    },
-    {
-      "id": "nuclear-reactions",
-      "name": "核反应",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/nuclear-physics/nuclear-reactions.md",
-      "exists": true,
-      "char_count": 581
-    },
-    {
-      "id": "radiation-protection",
-      "name": "辐射防护",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/nuclear-physics/radiation-protection.md",
-      "exists": true,
-      "char_count": 597
-    },
-    {
-      "id": "nuclear-applications",
-      "name": "核技术应用",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/nuclear-physics/nuclear-applications.md",
-      "exists": true,
-      "char_count": 616
-    },
-    {
-      "id": "nuclear-models",
-      "name": "核模型",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/nuclear-physics/nuclear-models.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "neutrinos",
-      "name": "中微子",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/nuclear-physics/neutrinos.md",
-      "exists": true,
-      "char_count": 585
-    },
-    {
-      "id": "antimatter",
-      "name": "反物质",
-      "domain_id": "physics",
-      "subdomain_id": "nuclear-physics",
-      "subdomain_name": "核物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/nuclear-physics/antimatter.md",
-      "exists": true,
-      "char_count": 596
-    },
-    {
-      "id": "stellar-structure",
-      "name": "恒星结构",
+      "id": "neutron-stars",
+      "name": "中子星",
       "domain_id": "physics",
       "subdomain_id": "astrophysics",
       "subdomain_name": "天体物理",
-      "difficulty": 5,
+      "difficulty": 6,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "physics/astrophysics/stellar-structure.md",
+      "file": "physics/astrophysics/neutron-stars.md",
       "exists": true,
-      "char_count": 593
-    },
-    {
-      "id": "stellar-evolution",
-      "name": "恒星演化",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "physics/astrophysics/stellar-evolution.md",
-      "exists": true,
-      "char_count": 602
-    },
-    {
-      "id": "hr-diagram",
-      "name": "赫罗图",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/astrophysics/hr-diagram.md",
-      "exists": true,
-      "char_count": 573
+      "char_count": 2512
     },
     {
       "id": "cosmology-basics",
@@ -2357,7 +28,7 @@
       ],
       "file": "physics/astrophysics/cosmology-basics.md",
       "exists": true,
-      "char_count": 599
+      "char_count": 2137
     },
     {
       "id": "cosmic-microwave-bg",
@@ -2372,112 +43,7 @@
       ],
       "file": "physics/astrophysics/cosmic-microwave-bg.md",
       "exists": true,
-      "char_count": 607
-    },
-    {
-      "id": "dark-matter-energy",
-      "name": "暗物质与暗能量",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/astrophysics/dark-matter-energy.md",
-      "exists": true,
-      "char_count": 615
-    },
-    {
-      "id": "gravitational-waves-astro",
-      "name": "引力波",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/astrophysics/gravitational-waves-astro.md",
-      "exists": true,
-      "char_count": 604
-    },
-    {
-      "id": "black-holes",
-      "name": "黑洞",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/astrophysics/black-holes.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "exoplanets",
-      "name": "系外行星",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/astrophysics/exoplanets.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "nucleosynthesis",
-      "name": "核合成",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/astrophysics/nucleosynthesis.md",
-      "exists": true,
-      "char_count": 588
-    },
-    {
-      "id": "neutron-stars",
-      "name": "中子星",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/astrophysics/neutron-stars.md",
-      "exists": true,
-      "char_count": 580
-    },
-    {
-      "id": "galactic-structure",
-      "name": "星系结构",
-      "domain_id": "physics",
-      "subdomain_id": "astrophysics",
-      "subdomain_name": "天体物理",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/astrophysics/galactic-structure.md",
-      "exists": true,
-      "char_count": 590
+      "char_count": 2866
     },
     {
       "id": "cosmic-inflation",
@@ -2492,52 +58,1042 @@
       ],
       "file": "physics/astrophysics/cosmic-inflation.md",
       "exists": true,
-      "char_count": 592
+      "char_count": 2778
     },
     {
-      "id": "fluid-statics",
-      "name": "流体静力学",
+      "id": "gravitational-waves-astro",
+      "name": "引力波",
       "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "physics/fluid-mechanics/fluid-statics.md",
-      "exists": true,
-      "char_count": 645
-    },
-    {
-      "id": "buoyancy",
-      "name": "浮力",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 3,
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
+      "difficulty": 6,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "physics/fluid-mechanics/buoyancy.md",
+      "file": "physics/astrophysics/gravitational-waves-astro.md",
       "exists": true,
-      "char_count": 617
+      "char_count": 1493
     },
     {
-      "id": "continuity-equation",
-      "name": "连续性方程",
+      "id": "stellar-evolution",
+      "name": "恒星演化",
       "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/astrophysics/stellar-evolution.md",
+      "exists": true,
+      "char_count": 2328
+    },
+    {
+      "id": "stellar-structure",
+      "name": "恒星结构",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/astrophysics/stellar-structure.md",
+      "exists": true,
+      "char_count": 2637
+    },
+    {
+      "id": "galactic-structure",
+      "name": "星系结构",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
       "difficulty": 4,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "physics/fluid-mechanics/continuity-equation.md",
+      "file": "physics/astrophysics/galactic-structure.md",
       "exists": true,
-      "char_count": 657
+      "char_count": 2426
+    },
+    {
+      "id": "dark-matter-energy",
+      "name": "暗物质与暗能量",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/astrophysics/dark-matter-energy.md",
+      "exists": true,
+      "char_count": 1393
+    },
+    {
+      "id": "nucleosynthesis",
+      "name": "核合成",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/astrophysics/nucleosynthesis.md",
+      "exists": true,
+      "char_count": 2289
+    },
+    {
+      "id": "exoplanets",
+      "name": "系外行星",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/astrophysics/exoplanets.md",
+      "exists": true,
+      "char_count": 2682
+    },
+    {
+      "id": "hr-diagram",
+      "name": "赫罗图",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/astrophysics/hr-diagram.md",
+      "exists": true,
+      "char_count": 2639
+    },
+    {
+      "id": "black-holes",
+      "name": "黑洞",
+      "domain_id": "physics",
+      "subdomain_id": "astrophysics",
+      "subdomain_name": "天体物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/astrophysics/black-holes.md",
+      "exists": true,
+      "char_count": 2639
+    },
+    {
+      "id": "kinematics-1d",
+      "name": "一维运动学",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/classical-mechanics/kinematics-1d.md",
+      "exists": true,
+      "char_count": 2698
+    },
+    {
+      "id": "gravitation",
+      "name": "万有引力",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/classical-mechanics/gravitation.md",
+      "exists": true,
+      "char_count": 2456
+    },
+    {
+      "id": "kinematics-2d",
+      "name": "二维运动学",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/kinematics-2d.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "mechanical-waves-medium",
+      "name": "介质中的机械波",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/mechanical-waves-medium.md",
+      "exists": true,
+      "char_count": 1570
+    },
+    {
+      "id": "rigid-body-motion",
+      "name": "刚体运动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/classical-mechanics/rigid-body-motion.md",
+      "exists": true,
+      "char_count": 2524
+    },
+    {
+      "id": "torque",
+      "name": "力矩",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/torque.md",
+      "exists": true,
+      "char_count": 1904
+    },
+    {
+      "id": "work-energy",
+      "name": "功与能",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/work-energy.md",
+      "exists": true,
+      "char_count": 2307
+    },
+    {
+      "id": "momentum",
+      "name": "动量与冲量",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/momentum.md",
+      "exists": true,
+      "char_count": 2066
+    },
+    {
+      "id": "momentum-conservation",
+      "name": "动量守恒",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/classical-mechanics/momentum-conservation.md",
+      "exists": true,
+      "char_count": 2582
+    },
+    {
+      "id": "potential-energy",
+      "name": "势能",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/potential-energy.md",
+      "exists": true,
+      "char_count": 2406
+    },
+    {
+      "id": "hamiltonian-mechanics",
+      "name": "哈密顿力学初步",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/classical-mechanics/hamiltonian-mechanics.md",
+      "exists": true,
+      "char_count": 3149
+    },
+    {
+      "id": "circular-motion",
+      "name": "圆周运动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/circular-motion.md",
+      "exists": true,
+      "char_count": 2804
+    },
+    {
+      "id": "keplers-laws",
+      "name": "开普勒定律",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/keplers-laws.md",
+      "exists": true,
+      "char_count": 2617
+    },
+    {
+      "id": "elastic-force",
+      "name": "弹性力",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/elastic-force.md",
+      "exists": true,
+      "char_count": 2224
+    },
+    {
+      "id": "projectile-motion",
+      "name": "抛体运动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/classical-mechanics/projectile-motion.md",
+      "exists": true,
+      "char_count": 2525
+    },
+    {
+      "id": "lagrangian-mechanics",
+      "name": "拉格朗日力学初步",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/classical-mechanics/lagrangian-mechanics.md",
+      "exists": true,
+      "char_count": 1569
+    },
+    {
+      "id": "friction",
+      "name": "摩擦力",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/friction.md",
+      "exists": true,
+      "char_count": 2560
+    },
+    {
+      "id": "tidal-forces",
+      "name": "潮汐力",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/classical-mechanics/tidal-forces.md",
+      "exists": true,
+      "char_count": 2660
+    },
+    {
+      "id": "newtons-first-law",
+      "name": "牛顿第一定律",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/newtons-first-law.md",
+      "exists": true,
+      "char_count": 2193
+    },
+    {
+      "id": "newtons-third-law",
+      "name": "牛顿第三定律",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/newtons-third-law.md",
+      "exists": true,
+      "char_count": 2169
+    },
+    {
+      "id": "newtons-second-law",
+      "name": "牛顿第二定律",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/classical-mechanics/newtons-second-law.md",
+      "exists": true,
+      "char_count": 3286
+    },
+    {
+      "id": "vectors-in-physics",
+      "name": "物理中的向量",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/classical-mechanics/vectors-in-physics.md",
+      "exists": true,
+      "char_count": 1627
+    },
+    {
+      "id": "physical-quantities",
+      "name": "物理量与单位",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/classical-mechanics/physical-quantities.md",
+      "exists": true,
+      "char_count": 1483
+    },
+    {
+      "id": "collisions",
+      "name": "碰撞",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/collisions.md",
+      "exists": true,
+      "char_count": 2469
+    },
+    {
+      "id": "simple-harmonic-motion",
+      "name": "简谐运动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/simple-harmonic-motion.md",
+      "exists": true,
+      "char_count": 2849
+    },
+    {
+      "id": "coupled-oscillations",
+      "name": "耦合振动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/classical-mechanics/coupled-oscillations.md",
+      "exists": true,
+      "char_count": 2637
+    },
+    {
+      "id": "energy-conservation",
+      "name": "能量守恒",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/classical-mechanics/energy-conservation.md",
+      "exists": true,
+      "char_count": 2610
+    },
+    {
+      "id": "angular-momentum",
+      "name": "角动量",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/angular-momentum.md",
+      "exists": true,
+      "char_count": 2919
+    },
+    {
+      "id": "center-of-mass",
+      "name": "质心",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/center-of-mass.md",
+      "exists": true,
+      "char_count": 2751
+    },
+    {
+      "id": "orbital-mechanics",
+      "name": "轨道力学",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/classical-mechanics/orbital-mechanics.md",
+      "exists": true,
+      "char_count": 2511
+    },
+    {
+      "id": "rotational-dynamics",
+      "name": "转动动力学",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/classical-mechanics/rotational-dynamics.md",
+      "exists": true,
+      "char_count": 2053
+    },
+    {
+      "id": "rotational-kinematics",
+      "name": "转动运动学",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/rotational-kinematics.md",
+      "exists": true,
+      "char_count": 1592
+    },
+    {
+      "id": "damped-driven-oscillation",
+      "name": "阻尼与受迫振动",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/classical-mechanics/damped-driven-oscillation.md",
+      "exists": true,
+      "char_count": 1508
+    },
+    {
+      "id": "static-equilibrium",
+      "name": "静力学平衡",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/classical-mechanics/static-equilibrium.md",
+      "exists": true,
+      "char_count": 2311
+    },
+    {
+      "id": "non-inertial-frames",
+      "name": "非惯性系",
+      "domain_id": "physics",
+      "subdomain_id": "classical-mechanics",
+      "subdomain_name": "经典力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/classical-mechanics/non-inertial-frames.md",
+      "exists": true,
+      "char_count": 2743
+    },
+    {
+      "id": "rc-circuits",
+      "name": "RC电路",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/electromagnetism/rc-circuits.md",
+      "exists": true,
+      "char_count": 2360
+    },
+    {
+      "id": "ac-circuits",
+      "name": "交流电路",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/ac-circuits.md",
+      "exists": true,
+      "char_count": 2790
+    },
+    {
+      "id": "kirchhoffs-laws",
+      "name": "基尔霍夫定律",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/kirchhoffs-laws.md",
+      "exists": true,
+      "char_count": 1486
+    },
+    {
+      "id": "amperes-law",
+      "name": "安培定律",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/electromagnetism/amperes-law.md",
+      "exists": true,
+      "char_count": 2235
+    },
+    {
+      "id": "biot-savart",
+      "name": "毕奥-萨伐尔定律",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/biot-savart.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "faradays-law",
+      "name": "法拉第电磁感应",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/electromagnetism/faradays-law.md",
+      "exists": true,
+      "char_count": 2578
+    },
+    {
+      "id": "lorentz-force",
+      "name": "洛伦兹力",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/lorentz-force.md",
+      "exists": true,
+      "char_count": 1304
+    },
+    {
+      "id": "dielectrics",
+      "name": "电介质",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/electromagnetism/dielectrics.md",
+      "exists": true,
+      "char_count": 2694
+    },
+    {
+      "id": "electric-dipole",
+      "name": "电偶极子",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/electric-dipole.md",
+      "exists": true,
+      "char_count": 2895
+    },
+    {
+      "id": "electric-potential",
+      "name": "电势",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/electric-potential.md",
+      "exists": true,
+      "char_count": 2534
+    },
+    {
+      "id": "electric-field",
+      "name": "电场",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/electric-field.md",
+      "exists": true,
+      "char_count": 2392
+    },
+    {
+      "id": "capacitance",
+      "name": "电容",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/capacitance.md",
+      "exists": true,
+      "char_count": 2422
+    },
+    {
+      "id": "inductance",
+      "name": "电感",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/inductance.md",
+      "exists": true,
+      "char_count": 2872
+    },
+    {
+      "id": "electromagnetic-induction-app",
+      "name": "电磁感应应用",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/electromagnetism/electromagnetic-induction-app.md",
+      "exists": true,
+      "char_count": 1651
+    },
+    {
+      "id": "em-energy-poynting",
+      "name": "电磁能与坡印廷矢量",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/electromagnetism/em-energy-poynting.md",
+      "exists": true,
+      "char_count": 3067
+    },
+    {
+      "id": "electromagnetic-radiation",
+      "name": "电磁辐射",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/electromagnetism/electromagnetic-radiation.md",
+      "exists": true,
+      "char_count": 1517
+    },
+    {
+      "id": "power-transmission",
+      "name": "电能传输",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/electromagnetism/power-transmission.md",
+      "exists": true,
+      "char_count": 2459
+    },
+    {
+      "id": "electric-charge",
+      "name": "电荷",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/electromagnetism/electric-charge.md",
+      "exists": true,
+      "char_count": 1373
+    },
+    {
+      "id": "dc-circuits",
+      "name": "直流电路",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/dc-circuits.md",
+      "exists": true,
+      "char_count": 2342
+    },
+    {
+      "id": "magnetic-dipole",
+      "name": "磁偶极子",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/magnetic-dipole.md",
+      "exists": true,
+      "char_count": 2934
+    },
+    {
+      "id": "magnetic-field",
+      "name": "磁场",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/electromagnetism/magnetic-field.md",
+      "exists": true,
+      "char_count": 2567
+    },
+    {
+      "id": "magnetic-materials",
+      "name": "磁性材料",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/electromagnetism/magnetic-materials.md",
+      "exists": true,
+      "char_count": 2484
+    },
+    {
+      "id": "superconductivity-intro",
+      "name": "超导简介",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/electromagnetism/superconductivity-intro.md",
+      "exists": true,
+      "char_count": 1454
+    },
+    {
+      "id": "gauss-law",
+      "name": "高斯定律",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/electromagnetism/gauss-law.md",
+      "exists": true,
+      "char_count": 2720
+    },
+    {
+      "id": "maxwells-equations",
+      "name": "麦克斯韦方程组",
+      "domain_id": "physics",
+      "subdomain_id": "electromagnetism",
+      "subdomain_name": "电磁学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/electromagnetism/maxwells-equations.md",
+      "exists": true,
+      "char_count": 3030
     },
     {
       "id": "bernoullis-equation",
@@ -2546,133 +1102,13 @@
       "subdomain_id": "fluid-mechanics",
       "subdomain_name": "流体力学",
       "difficulty": 4,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "里程碑"
       ],
       "file": "physics/fluid-mechanics/bernoullis-equation.md",
       "exists": true,
-      "char_count": 664
-    },
-    {
-      "id": "viscosity",
-      "name": "粘性",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/fluid-mechanics/viscosity.md",
-      "exists": true,
-      "char_count": 626
-    },
-    {
-      "id": "navier-stokes-intro",
-      "name": "纳维-斯托克斯方程简介",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/fluid-mechanics/navier-stokes-intro.md",
-      "exists": true,
-      "char_count": 695
-    },
-    {
-      "id": "surface-tension",
-      "name": "表面张力",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/fluid-mechanics/surface-tension.md",
-      "exists": true,
-      "char_count": 664
-    },
-    {
-      "id": "drag-force",
-      "name": "阻力",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/fluid-mechanics/drag-force.md",
-      "exists": true,
-      "char_count": 623
-    },
-    {
-      "id": "ideal-fluid-flow",
-      "name": "理想流体流动",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/fluid-mechanics/ideal-fluid-flow.md",
-      "exists": true,
-      "char_count": 657
-    },
-    {
-      "id": "vorticity",
-      "name": "涡量",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/fluid-mechanics/vorticity.md",
-      "exists": true,
-      "char_count": 630
-    },
-    {
-      "id": "dimensional-analysis",
-      "name": "量纲分析",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/fluid-mechanics/dimensional-analysis.md",
-      "exists": true,
-      "char_count": 649
-    },
-    {
-      "id": "boundary-layer",
-      "name": "边界层",
-      "domain_id": "physics",
-      "subdomain_id": "fluid-mechanics",
-      "subdomain_name": "流体力学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "physics/fluid-mechanics/boundary-layer.md",
-      "exists": true,
-      "char_count": 634
+      "char_count": 2341
     },
     {
       "id": "compressible-flow-intro",
@@ -2687,7 +1123,67 @@
       ],
       "file": "physics/fluid-mechanics/compressible-flow-intro.md",
       "exists": true,
-      "char_count": 656
+      "char_count": 2646
+    },
+    {
+      "id": "fluid-statics",
+      "name": "流体静力学",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/fluid-mechanics/fluid-statics.md",
+      "exists": true,
+      "char_count": 1430
+    },
+    {
+      "id": "buoyancy",
+      "name": "浮力",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/fluid-mechanics/buoyancy.md",
+      "exists": true,
+      "char_count": 2476
+    },
+    {
+      "id": "vorticity",
+      "name": "涡量",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/fluid-mechanics/vorticity.md",
+      "exists": true,
+      "char_count": 1345
+    },
+    {
+      "id": "ideal-fluid-flow",
+      "name": "理想流体流动",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/fluid-mechanics/ideal-fluid-flow.md",
+      "exists": true,
+      "char_count": 2389
     },
     {
       "id": "pipe-flow",
@@ -2702,97 +1198,892 @@
       ],
       "file": "physics/fluid-mechanics/pipe-flow.md",
       "exists": true,
-      "char_count": 660
+      "char_count": 1475
     },
     {
-      "id": "crystal-structure",
-      "name": "晶体结构",
+      "id": "viscosity",
+      "name": "粘性",
       "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
       "difficulty": 5,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "physics/solid-state-physics/crystal-structure.md",
+      "file": "physics/fluid-mechanics/viscosity.md",
       "exists": true,
-      "char_count": 587
+      "char_count": 2558
     },
     {
-      "id": "x-ray-diffraction-solid",
-      "name": "X射线衍射(固体)",
+      "id": "navier-stokes-intro",
+      "name": "纳维-斯托克斯方程简介",
       "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/fluid-mechanics/navier-stokes-intro.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "surface-tension",
+      "name": "表面张力",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/fluid-mechanics/surface-tension.md",
+      "exists": true,
+      "char_count": 1483
+    },
+    {
+      "id": "boundary-layer",
+      "name": "边界层",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/fluid-mechanics/boundary-layer.md",
+      "exists": true,
+      "char_count": 2275
+    },
+    {
+      "id": "continuity-equation",
+      "name": "连续性方程",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/fluid-mechanics/continuity-equation.md",
+      "exists": true,
+      "char_count": 1393
+    },
+    {
+      "id": "dimensional-analysis",
+      "name": "量纲分析",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/fluid-mechanics/dimensional-analysis.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "drag-force",
+      "name": "阻力",
+      "domain_id": "physics",
+      "subdomain_id": "fluid-mechanics",
+      "subdomain_name": "流体力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/fluid-mechanics/drag-force.md",
+      "exists": true,
+      "char_count": 2462
+    },
+    {
+      "id": "x-rays",
+      "name": "X射线",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/modern-physics/x-rays.md",
+      "exists": true,
+      "char_count": 2403
+    },
+    {
+      "id": "uncertainty-principle",
+      "name": "不确定性原理",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
       "difficulty": 5,
       "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/solid-state-physics/x-ray-diffraction-solid.md",
-      "exists": true,
-      "char_count": 630
-    },
-    {
-      "id": "phonons",
-      "name": "声子",
-      "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/solid-state-physics/phonons.md",
-      "exists": true,
-      "char_count": 575
-    },
-    {
-      "id": "free-electron-model",
-      "name": "自由电子模型",
-      "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/solid-state-physics/free-electron-model.md",
-      "exists": true,
-      "char_count": 625
-    },
-    {
-      "id": "band-theory",
-      "name": "能带理论",
-      "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
-      "difficulty": 6,
-      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
-      "file": "physics/solid-state-physics/band-theory.md",
+      "file": "physics/modern-physics/uncertainty-principle.md",
       "exists": true,
-      "char_count": 563
+      "char_count": 1333
     },
     {
-      "id": "semiconductors",
-      "name": "半导体",
+      "id": "photoelectric-effect",
+      "name": "光电效应",
       "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/modern-physics/photoelectric-effect.md",
+      "exists": true,
+      "char_count": 2878
+    },
+    {
+      "id": "atomic-spectra",
+      "name": "原子光谱",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
       "difficulty": 5,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "physics/solid-state-physics/semiconductors.md",
+      "file": "physics/modern-physics/atomic-spectra.md",
       "exists": true,
-      "char_count": 579
+      "char_count": 2744
+    },
+    {
+      "id": "twin-paradox",
+      "name": "双生子佯谬",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/twin-paradox.md",
+      "exists": true,
+      "char_count": 1313
+    },
+    {
+      "id": "zeeman-effect",
+      "name": "塞曼效应",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/zeeman-effect.md",
+      "exists": true,
+      "char_count": 2287
+    },
+    {
+      "id": "general-relativity-intro",
+      "name": "广义相对论初步",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/modern-physics/general-relativity-intro.md",
+      "exists": true,
+      "char_count": 1612
+    },
+    {
+      "id": "compton-scattering",
+      "name": "康普顿散射",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/compton-scattering.md",
+      "exists": true,
+      "char_count": 2877
+    },
+    {
+      "id": "franck-hertz",
+      "name": "弗兰克-赫兹实验",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "实验"
+      ],
+      "file": "physics/modern-physics/franck-hertz.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "spacetime-diagrams",
+      "name": "时空图",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/spacetime-diagrams.md",
+      "exists": true,
+      "char_count": 2469
+    },
+    {
+      "id": "time-dilation",
+      "name": "时间膨胀",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/time-dilation.md",
+      "exists": true,
+      "char_count": 2558
+    },
+    {
+      "id": "pair-production",
+      "name": "正负电子对产生",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/pair-production.md",
+      "exists": true,
+      "char_count": 1478
+    },
+    {
+      "id": "lorentz-transformations",
+      "name": "洛伦兹变换",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/lorentz-transformations.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "lasers",
+      "name": "激光",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/modern-physics/lasers.md",
+      "exists": true,
+      "char_count": 2871
+    },
+    {
+      "id": "matter-waves",
+      "name": "物质波",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/matter-waves.md",
+      "exists": true,
+      "char_count": 2380
+    },
+    {
+      "id": "special-relativity-postulates",
+      "name": "狭义相对论公设",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/modern-physics/special-relativity-postulates.md",
+      "exists": true,
+      "char_count": 1529
+    },
+    {
+      "id": "bohr-model",
+      "name": "玻尔模型",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/modern-physics/bohr-model.md",
+      "exists": true,
+      "char_count": 2910
+    },
+    {
+      "id": "relativistic-momentum-energy",
+      "name": "相对论性动量与能量",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/modern-physics/relativistic-momentum-energy.md",
+      "exists": true,
+      "char_count": 1710
+    },
+    {
+      "id": "length-contraction",
+      "name": "长度收缩",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/length-contraction.md",
+      "exists": true,
+      "char_count": 2504
+    },
+    {
+      "id": "blackbody-radiation",
+      "name": "黑体辐射",
+      "domain_id": "physics",
+      "subdomain_id": "modern-physics",
+      "subdomain_name": "近代物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/modern-physics/blackbody-radiation.md",
+      "exists": true,
+      "char_count": 1585
+    },
+    {
+      "id": "neutrinos",
+      "name": "中微子",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/nuclear-physics/neutrinos.md",
+      "exists": true,
+      "char_count": 2779
+    },
+    {
+      "id": "half-life",
+      "name": "半衰期",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/nuclear-physics/half-life.md",
+      "exists": true,
+      "char_count": 2615
+    },
+    {
+      "id": "nuclear-structure",
+      "name": "原子核结构",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/nuclear-physics/nuclear-structure.md",
+      "exists": true,
+      "char_count": 1592
+    },
+    {
+      "id": "antimatter",
+      "name": "反物质",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/nuclear-physics/antimatter.md",
+      "exists": true,
+      "char_count": 1514
+    },
+    {
+      "id": "radioactive-decay",
+      "name": "放射性衰变",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/nuclear-physics/radioactive-decay.md",
+      "exists": true,
+      "char_count": 2713
+    },
+    {
+      "id": "nuclear-reactions",
+      "name": "核反应",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/nuclear-physics/nuclear-reactions.md",
+      "exists": true,
+      "char_count": 2679
+    },
+    {
+      "id": "nuclear-applications",
+      "name": "核技术应用",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/nuclear-physics/nuclear-applications.md",
+      "exists": true,
+      "char_count": 1499
+    },
+    {
+      "id": "nuclear-models",
+      "name": "核模型",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/nuclear-physics/nuclear-models.md",
+      "exists": true,
+      "char_count": 2818
+    },
+    {
+      "id": "nuclear-fusion",
+      "name": "核聚变",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/nuclear-physics/nuclear-fusion.md",
+      "exists": true,
+      "char_count": 2512
+    },
+    {
+      "id": "nuclear-fission",
+      "name": "核裂变",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/nuclear-physics/nuclear-fission.md",
+      "exists": true,
+      "char_count": 2294
+    },
+    {
+      "id": "particle-physics-intro",
+      "name": "粒子物理初步",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/nuclear-physics/particle-physics-intro.md",
+      "exists": true,
+      "char_count": 1614
+    },
+    {
+      "id": "binding-energy",
+      "name": "结合能",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/nuclear-physics/binding-energy.md",
+      "exists": true,
+      "char_count": 2723
+    },
+    {
+      "id": "radiation-protection",
+      "name": "辐射防护",
+      "domain_id": "physics",
+      "subdomain_id": "nuclear-physics",
+      "subdomain_name": "核物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/nuclear-physics/radiation-protection.md",
+      "exists": true,
+      "char_count": 2690
+    },
+    {
+      "id": "density-matrix",
+      "name": "密度矩阵",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/quantum-mechanics/density-matrix.md",
+      "exists": true,
+      "char_count": 3054
+    },
+    {
+      "id": "perturbation-theory",
+      "name": "微扰理论",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/quantum-mechanics/perturbation-theory.md",
+      "exists": true,
+      "char_count": 3197
+    },
+    {
+      "id": "infinite-square-well",
+      "name": "无限深方势阱",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/infinite-square-well.md",
+      "exists": true,
+      "char_count": 1379
+    },
+    {
+      "id": "finite-square-well",
+      "name": "有限深方势阱",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/finite-square-well.md",
+      "exists": true,
+      "char_count": 2786
+    },
+    {
+      "id": "hydrogen-atom-qm",
+      "name": "氢原子量子解",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/hydrogen-atom-qm.md",
+      "exists": true,
+      "char_count": 3008
+    },
+    {
+      "id": "pauli-exclusion",
+      "name": "泡利不相容原理",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/pauli-exclusion.md",
+      "exists": true,
+      "char_count": 1410
+    },
+    {
+      "id": "wave-function",
+      "name": "波函数",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/wave-function.md",
+      "exists": true,
+      "char_count": 2442
+    },
+    {
+      "id": "operators-observables",
+      "name": "算符与可观测量",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/quantum-mechanics/operators-observables.md",
+      "exists": true,
+      "char_count": 3358
+    },
+    {
+      "id": "spin",
+      "name": "自旋",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/quantum-mechanics/spin.md",
+      "exists": true,
+      "char_count": 3085
+    },
+    {
+      "id": "schrodinger-equation",
+      "name": "薛定谔方程",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/quantum-mechanics/schrodinger-equation.md",
+      "exists": true,
+      "char_count": 3814
+    },
+    {
+      "id": "path-integrals-intro",
+      "name": "路径积分简介",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/quantum-mechanics/path-integrals-intro.md",
+      "exists": true,
+      "char_count": 2933
+    },
+    {
+      "id": "selection-rules",
+      "name": "选择定则",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/selection-rules.md",
+      "exists": true,
+      "char_count": 2913
+    },
+    {
+      "id": "quantum-superposition",
+      "name": "量子叠加",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/quantum-superposition.md",
+      "exists": true,
+      "char_count": 2491
+    },
+    {
+      "id": "quantum-entanglement",
+      "name": "量子纠缠",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/quantum-entanglement.md",
+      "exists": true,
+      "char_count": 1470
+    },
+    {
+      "id": "bose-einstein-fermi-dirac",
+      "name": "量子统计",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/quantum-mechanics/bose-einstein-fermi-dirac.md",
+      "exists": true,
+      "char_count": 1403
+    },
+    {
+      "id": "angular-momentum-qm",
+      "name": "量子角动量",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/quantum-mechanics/angular-momentum-qm.md",
+      "exists": true,
+      "char_count": 2827
+    },
+    {
+      "id": "quantum-computing-intro",
+      "name": "量子计算简介",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/quantum-mechanics/quantum-computing-intro.md",
+      "exists": true,
+      "char_count": 1510
+    },
+    {
+      "id": "quantum-harmonic-oscillator",
+      "name": "量子谐振子",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/quantum-harmonic-oscillator.md",
+      "exists": true,
+      "char_count": 1512
+    },
+    {
+      "id": "quantum-tunneling",
+      "name": "量子隧穿",
+      "domain_id": "physics",
+      "subdomain_id": "quantum-mechanics",
+      "subdomain_name": "量子力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/quantum-mechanics/quantum-tunneling.md",
+      "exists": true,
+      "char_count": 2643
     },
     {
       "id": "pn-junction",
@@ -2807,56 +2098,11 @@
       ],
       "file": "physics/solid-state-physics/pn-junction.md",
       "exists": true,
-      "char_count": 576
+      "char_count": 2579
     },
     {
-      "id": "transistors-intro",
-      "name": "晶体管简介",
-      "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "physics/solid-state-physics/transistors-intro.md",
-      "exists": true,
-      "char_count": 608
-    },
-    {
-      "id": "magnetic-order",
-      "name": "磁有序",
-      "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "physics/solid-state-physics/magnetic-order.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "superconductivity-solid",
-      "name": "超导",
-      "domain_id": "physics",
-      "subdomain_id": "solid-state-physics",
-      "subdomain_name": "固态物理",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "physics/solid-state-physics/superconductivity-solid.md",
-      "exists": true,
-      "char_count": 583
-    },
-    {
-      "id": "hall-effect",
-      "name": "霍尔效应",
+      "id": "x-ray-diffraction-solid",
+      "name": "X射线衍射(固体)",
       "domain_id": "physics",
       "subdomain_id": "solid-state-physics",
       "subdomain_name": "固态物理",
@@ -2865,9 +2111,24 @@
       "tags": [
         "核心"
       ],
-      "file": "physics/solid-state-physics/hall-effect.md",
+      "file": "physics/solid-state-physics/x-ray-diffraction-solid.md",
       "exists": true,
-      "char_count": 593
+      "char_count": 1579
+    },
+    {
+      "id": "semiconductors",
+      "name": "半导体",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/solid-state-physics/semiconductors.md",
+      "exists": true,
+      "char_count": 2235
     },
     {
       "id": "optical-properties-solid",
@@ -2882,11 +2143,41 @@
       ],
       "file": "physics/solid-state-physics/optical-properties-solid.md",
       "exists": true,
-      "char_count": 612
+      "char_count": 1602
     },
     {
-      "id": "amorphous-solids",
-      "name": "非晶态固体",
+      "id": "phonons",
+      "name": "声子",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/solid-state-physics/phonons.md",
+      "exists": true,
+      "char_count": 2453
+    },
+    {
+      "id": "transistors-intro",
+      "name": "晶体管简介",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/solid-state-physics/transistors-intro.md",
+      "exists": true,
+      "char_count": 1571
+    },
+    {
+      "id": "crystal-structure",
+      "name": "晶体结构",
       "domain_id": "physics",
       "subdomain_id": "solid-state-physics",
       "subdomain_name": "固态物理",
@@ -2895,9 +2186,24 @@
       "tags": [
         "核心"
       ],
-      "file": "physics/solid-state-physics/amorphous-solids.md",
+      "file": "physics/solid-state-physics/crystal-structure.md",
       "exists": true,
-      "char_count": 589
+      "char_count": 1448
+    },
+    {
+      "id": "magnetic-order",
+      "name": "磁有序",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/solid-state-physics/magnetic-order.md",
+      "exists": true,
+      "char_count": 2583
     },
     {
       "id": "nanomaterials-intro",
@@ -2912,22 +2218,703 @@
       ],
       "file": "physics/solid-state-physics/nanomaterials-intro.md",
       "exists": true,
-      "char_count": 601
+      "char_count": 2703
+    },
+    {
+      "id": "band-theory",
+      "name": "能带理论",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/solid-state-physics/band-theory.md",
+      "exists": true,
+      "char_count": 2904
+    },
+    {
+      "id": "free-electron-model",
+      "name": "自由电子模型",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/solid-state-physics/free-electron-model.md",
+      "exists": true,
+      "char_count": 1591
+    },
+    {
+      "id": "superconductivity-solid",
+      "name": "超导",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/solid-state-physics/superconductivity-solid.md",
+      "exists": true,
+      "char_count": 2688
+    },
+    {
+      "id": "hall-effect",
+      "name": "霍尔效应",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/solid-state-physics/hall-effect.md",
+      "exists": true,
+      "char_count": 2789
+    },
+    {
+      "id": "amorphous-solids",
+      "name": "非晶态固体",
+      "domain_id": "physics",
+      "subdomain_id": "solid-state-physics",
+      "subdomain_name": "固态物理",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/solid-state-physics/amorphous-solids.md",
+      "exists": true,
+      "char_count": 2515
+    },
+    {
+      "id": "irreversibility",
+      "name": "不可逆过程",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/irreversibility.md",
+      "exists": true,
+      "char_count": 2624
+    },
+    {
+      "id": "heat-transfer",
+      "name": "传热方式",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/heat-transfer.md",
+      "exists": true,
+      "char_count": 1499
+    },
+    {
+      "id": "carnot-theorem",
+      "name": "卡诺定理",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/carnot-theorem.md",
+      "exists": true,
+      "char_count": 2172
+    },
+    {
+      "id": "real-gases",
+      "name": "实际气体",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/thermodynamics/real-gases.md",
+      "exists": true,
+      "char_count": 2839
+    },
+    {
+      "id": "specific-heat",
+      "name": "比热容与热容量",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/thermodynamics/specific-heat.md",
+      "exists": true,
+      "char_count": 1444
+    },
+    {
+      "id": "kinetic-theory",
+      "name": "气体动理论",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/kinetic-theory.md",
+      "exists": true,
+      "char_count": 1494
+    },
+    {
+      "id": "temperature-heat",
+      "name": "温度与热量",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/thermodynamics/temperature-heat.md",
+      "exists": true,
+      "char_count": 1514
+    },
+    {
+      "id": "first-law-thermo",
+      "name": "热力学第一定律",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/thermodynamics/first-law-thermo.md",
+      "exists": true,
+      "char_count": 2502
+    },
+    {
+      "id": "third-law-thermo",
+      "name": "热力学第三定律",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/third-law-thermo.md",
+      "exists": true,
+      "char_count": 1380
+    },
+    {
+      "id": "second-law-thermo",
+      "name": "热力学第二定律",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/thermodynamics/second-law-thermo.md",
+      "exists": true,
+      "char_count": 2350
+    },
+    {
+      "id": "thermodynamic-processes",
+      "name": "热力学过程",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/thermodynamic-processes.md",
+      "exists": true,
+      "char_count": 1663
+    },
+    {
+      "id": "heat-engines",
+      "name": "热机",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/thermodynamics/heat-engines.md",
+      "exists": true,
+      "char_count": 2549
+    },
+    {
+      "id": "thermal-expansion",
+      "name": "热膨胀",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/thermodynamics/thermal-expansion.md",
+      "exists": true,
+      "char_count": 2366
+    },
+    {
+      "id": "enthalpy",
+      "name": "焓",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/enthalpy.md",
+      "exists": true,
+      "char_count": 1238
+    },
+    {
+      "id": "entropy",
+      "name": "熵",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/thermodynamics/entropy.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "boltzmann-distribution",
+      "name": "玻尔兹曼分布",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/thermodynamics/boltzmann-distribution.md",
+      "exists": true,
+      "char_count": 1548
+    },
+    {
+      "id": "ideal-gas-law",
+      "name": "理想气体定律",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/ideal-gas-law.md",
+      "exists": true,
+      "char_count": 1525
+    },
+    {
+      "id": "phase-transitions",
+      "name": "相变",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/phase-transitions.md",
+      "exists": true,
+      "char_count": 2724
+    },
+    {
+      "id": "adiabatic-process",
+      "name": "绝热过程",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/thermodynamics/adiabatic-process.md",
+      "exists": true,
+      "char_count": 2654
+    },
+    {
+      "id": "statistical-mechanics",
+      "name": "统计力学初步",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/thermodynamics/statistical-mechanics.md",
+      "exists": true,
+      "char_count": 2952
+    },
+    {
+      "id": "free-energy",
+      "name": "自由能",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/thermodynamics/free-energy.md",
+      "exists": true,
+      "char_count": 1356
+    },
+    {
+      "id": "maxwell-relations",
+      "name": "麦克斯韦关系",
+      "domain_id": "physics",
+      "subdomain_id": "thermodynamics",
+      "subdomain_name": "热力学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "physics/thermodynamics/maxwell-relations.md",
+      "exists": true,
+      "char_count": 1365
+    },
+    {
+      "id": "optical-instruments",
+      "name": "光学仪器",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/waves-and-optics/optical-instruments.md",
+      "exists": true,
+      "char_count": 1450
+    },
+    {
+      "id": "polarization",
+      "name": "光的偏振",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/polarization.md",
+      "exists": true,
+      "char_count": 2487
+    },
+    {
+      "id": "doppler-effect-light",
+      "name": "光的多普勒效应",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/doppler-effect-light.md",
+      "exists": true,
+      "char_count": 3091
+    },
+    {
+      "id": "interference",
+      "name": "光的干涉",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/waves-and-optics/interference.md",
+      "exists": true,
+      "char_count": 2827
+    },
+    {
+      "id": "diffraction",
+      "name": "光的衍射",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/diffraction.md",
+      "exists": true,
+      "char_count": 2911
+    },
+    {
+      "id": "fiber-optics",
+      "name": "光纤与光通信",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "physics/waves-and-optics/fiber-optics.md",
+      "exists": true,
+      "char_count": 1447
+    },
+    {
+      "id": "holography",
+      "name": "全息术",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/waves-and-optics/holography.md",
+      "exists": true,
+      "char_count": 2847
+    },
+    {
+      "id": "resonance",
+      "name": "共振",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/resonance.md",
+      "exists": true,
+      "char_count": 2912
+    },
+    {
+      "id": "geometric-optics",
+      "name": "几何光学",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/waves-and-optics/geometric-optics.md",
+      "exists": true,
+      "char_count": 2512
+    },
+    {
+      "id": "reflection-refraction",
+      "name": "反射与折射",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/reflection-refraction.md",
+      "exists": true,
+      "char_count": 1616
+    },
+    {
+      "id": "sound-waves",
+      "name": "声波",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/sound-waves.md",
+      "exists": true,
+      "char_count": 2679
+    },
+    {
+      "id": "huygens-principle",
+      "name": "惠更斯原理",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/huygens-principle.md",
+      "exists": true,
+      "char_count": 1450
+    },
+    {
+      "id": "wave-equation",
+      "name": "波动方程",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/wave-equation.md",
+      "exists": true,
+      "char_count": 2799
+    },
+    {
+      "id": "superposition",
+      "name": "波的叠加",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/superposition.md",
+      "exists": true,
+      "char_count": 2411
+    },
+    {
+      "id": "wave-basics",
+      "name": "波的基本概念",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "physics/waves-and-optics/wave-basics.md",
+      "exists": true,
+      "char_count": 1618
+    },
+    {
+      "id": "wave-particle-duality",
+      "name": "波粒二象性",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "physics/waves-and-optics/wave-particle-duality.md",
+      "exists": true,
+      "char_count": 2679
+    },
+    {
+      "id": "electromagnetic-waves",
+      "name": "电磁波",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/electromagnetic-waves.md",
+      "exists": true,
+      "char_count": 2857
+    },
+    {
+      "id": "dispersion",
+      "name": "色散",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "physics/waves-and-optics/dispersion.md",
+      "exists": true,
+      "char_count": 2349
+    },
+    {
+      "id": "nonlinear-optics-intro",
+      "name": "非线性光学简介",
+      "domain_id": "physics",
+      "subdomain_id": "waves-and-optics",
+      "subdomain_name": "波动与光学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "physics/waves-and-optics/nonlinear-optics-intro.md",
+      "exists": true,
+      "char_count": 2440
     }
   ],
   "stats": {
-    "total_docs": 194,
-    "by_subdomain": {
-      "classical-mechanics": 35,
-      "thermodynamics": 22,
-      "waves-and-optics": 19,
-      "electromagnetism": 25,
-      "modern-physics": 20,
-      "quantum-mechanics": 19,
-      "nuclear-physics": 13,
-      "astrophysics": 13,
-      "fluid-mechanics": 14,
-      "solid-state-physics": 14
-    }
+    "total": 194,
+    "total_chars": 436493,
+    "avg_chars": 2249,
+    "domain": "physics"
   }
 }

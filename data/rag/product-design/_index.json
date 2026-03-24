@@ -1,1789 +1,19 @@
 {
   "documents": [
     {
-      "id": "user-research-overview",
-      "name": "用户研究概述",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/user-research/user-research-overview.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "user-interview",
-      "name": "用户访谈",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "定性"
-      ],
-      "file": "product-design/user-research/user-interview.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "contextual-inquiry",
-      "name": "情境调查",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "定性"
-      ],
-      "file": "product-design/user-research/contextual-inquiry.md",
-      "exists": true,
-      "char_count": 519
-    },
-    {
-      "id": "survey-design",
-      "name": "问卷设计",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "定量"
-      ],
-      "file": "product-design/user-research/survey-design.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "user-persona",
-      "name": "用户画像",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "建模"
-      ],
-      "file": "product-design/user-research/user-persona.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "empathy-map",
-      "name": "同理心地图",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/user-research/empathy-map.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "journey-map",
-      "name": "用户旅程图",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/user-research/journey-map.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "jobs-to-be-done",
-      "name": "待完成工作理论",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "框架"
-      ],
-      "file": "product-design/user-research/jobs-to-be-done.md",
-      "exists": true,
-      "char_count": 532
-    },
-    {
-      "id": "usability-testing",
-      "name": "可用性测试",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "测试"
-      ],
-      "file": "product-design/user-research/usability-testing.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "card-sorting",
-      "name": "卡片分类法",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "IA"
-      ],
-      "file": "product-design/user-research/card-sorting.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "diary-study",
-      "name": "日记研究法",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "定性"
-      ],
-      "file": "product-design/user-research/diary-study.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "focus-group",
-      "name": "焦点小组",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "定性"
-      ],
-      "file": "product-design/user-research/focus-group.md",
-      "exists": true,
-      "char_count": 515
-    },
-    {
-      "id": "competitive-analysis",
-      "name": "竞品分析",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "分析"
-      ],
-      "file": "product-design/user-research/competitive-analysis.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "heuristic-evaluation",
-      "name": "启发式评估",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "评估"
-      ],
-      "file": "product-design/user-research/heuristic-evaluation.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "eye-tracking",
-      "name": "眼动追踪",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "量化"
-      ],
-      "file": "product-design/user-research/eye-tracking.md",
-      "exists": true,
-      "char_count": 521
-    },
-    {
-      "id": "think-aloud-protocol",
-      "name": "出声思考法",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "定性"
-      ],
-      "file": "product-design/user-research/think-aloud-protocol.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "ethnographic-research",
-      "name": "民族志研究",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "定性"
-      ],
-      "file": "product-design/user-research/ethnographic-research.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "quantitative-ux-metrics",
-      "name": "UX量化指标",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "量化"
-      ],
-      "file": "product-design/user-research/quantitative-ux-metrics.md",
-      "exists": true,
-      "char_count": 532
-    },
-    {
-      "id": "research-synthesis",
-      "name": "研究综合分析",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "分析"
-      ],
-      "file": "product-design/user-research/research-synthesis.md",
-      "exists": true,
-      "char_count": 525
-    },
-    {
-      "id": "affinity-diagram",
-      "name": "亲和图法",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/user-research/affinity-diagram.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "accessibility-research",
-      "name": "无障碍研究",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "包容性"
-      ],
-      "file": "product-design/user-research/accessibility-research.md",
-      "exists": true,
-      "char_count": 523
-    },
-    {
-      "id": "research-ethics",
-      "name": "研究伦理",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "伦理"
-      ],
-      "file": "product-design/user-research/research-ethics.md",
-      "exists": true,
-      "char_count": 520
-    },
-    {
-      "id": "stakeholder-interview",
-      "name": "利益相关者访谈",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "商业"
-      ],
-      "file": "product-design/user-research/stakeholder-interview.md",
-      "exists": true,
-      "char_count": 528
-    },
-    {
-      "id": "research-planning",
-      "name": "研究计划制定",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "规划"
-      ],
-      "file": "product-design/user-research/research-planning.md",
-      "exists": true,
-      "char_count": 526
-    },
-    {
-      "id": "product-thinking-overview",
-      "name": "产品思维概述",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/product-thinking/product-thinking-overview.md",
-      "exists": true,
-      "char_count": 493
-    },
-    {
-      "id": "design-thinking",
-      "name": "设计思维",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "方法论"
-      ],
-      "file": "product-design/product-thinking/design-thinking.md",
-      "exists": true,
-      "char_count": 496
-    },
-    {
-      "id": "lean-startup",
-      "name": "精益创业",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法论"
-      ],
-      "file": "product-design/product-thinking/lean-startup.md",
-      "exists": true,
-      "char_count": 492
-    },
-    {
-      "id": "product-market-fit",
-      "name": "产品市场契合",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "战略"
-      ],
-      "file": "product-design/product-thinking/product-market-fit.md",
-      "exists": true,
-      "char_count": 493
-    },
-    {
-      "id": "value-proposition",
-      "name": "价值主张",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "战略"
-      ],
-      "file": "product-design/product-thinking/value-proposition.md",
-      "exists": true,
-      "char_count": 490
-    },
-    {
-      "id": "business-model-canvas",
-      "name": "商业模式画布",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/product-thinking/business-model-canvas.md",
-      "exists": true,
-      "char_count": 493
-    },
-    {
-      "id": "product-vision",
-      "name": "产品愿景",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "战略"
-      ],
-      "file": "product-design/product-thinking/product-vision.md",
-      "exists": true,
-      "char_count": 483
-    },
-    {
-      "id": "product-strategy",
-      "name": "产品策略",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "战略"
-      ],
-      "file": "product-design/product-thinking/product-strategy.md",
-      "exists": true,
-      "char_count": 486
-    },
-    {
-      "id": "mvp-design",
-      "name": "MVP设计",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法论"
-      ],
-      "file": "product-design/product-thinking/mvp-design.md",
-      "exists": true,
-      "char_count": 490
-    },
-    {
-      "id": "user-story-mapping",
-      "name": "用户故事地图",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/product-thinking/user-story-mapping.md",
-      "exists": true,
-      "char_count": 494
-    },
-    {
-      "id": "prioritization-frameworks",
-      "name": "优先级排序框架",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/product-thinking/prioritization-frameworks.md",
-      "exists": true,
-      "char_count": 503
-    },
-    {
-      "id": "product-lifecycle",
-      "name": "产品生命周期",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "战略"
-      ],
-      "file": "product-design/product-thinking/product-lifecycle.md",
-      "exists": true,
-      "char_count": 497
-    },
-    {
-      "id": "platform-thinking",
-      "name": "平台思维",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "product-design/product-thinking/platform-thinking.md",
-      "exists": true,
-      "char_count": 487
-    },
-    {
-      "id": "systems-thinking",
-      "name": "系统思维",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "思维"
-      ],
-      "file": "product-design/product-thinking/systems-thinking.md",
-      "exists": true,
-      "char_count": 491
-    },
-    {
-      "id": "first-principles",
-      "name": "第一性原理",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "思维"
-      ],
-      "file": "product-design/product-thinking/first-principles.md",
-      "exists": true,
-      "char_count": 492
-    },
-    {
-      "id": "opportunity-assessment",
-      "name": "机会评估",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "分析"
-      ],
-      "file": "product-design/product-thinking/opportunity-assessment.md",
-      "exists": true,
-      "char_count": 491
-    },
-    {
-      "id": "product-positioning",
-      "name": "产品定位",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "战略"
-      ],
-      "file": "product-design/product-thinking/product-positioning.md",
-      "exists": true,
-      "char_count": 486
-    },
-    {
       "id": "behavioral-economics",
       "name": "行为经济学",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 4,
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "高级"
       ],
       "file": "product-design/product-thinking/behavioral-economics.md",
       "exists": true,
-      "char_count": 496
-    },
-    {
-      "id": "ecosystem-design",
-      "name": "生态系统设计",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "product-design/product-thinking/ecosystem-design.md",
-      "exists": true,
-      "char_count": 494
-    },
-    {
-      "id": "innovation-types",
-      "name": "创新类型",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "战略"
-      ],
-      "file": "product-design/product-thinking/innovation-types.md",
-      "exists": true,
-      "char_count": 488
-    },
-    {
-      "id": "blue-ocean-strategy",
-      "name": "蓝海战略",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "战略"
-      ],
-      "file": "product-design/product-thinking/blue-ocean-strategy.md",
-      "exists": true,
-      "char_count": 486
-    },
-    {
-      "id": "hypothesis-driven-dev",
-      "name": "假设驱动开发",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法论"
-      ],
-      "file": "product-design/product-thinking/hypothesis-driven-dev.md",
-      "exists": true,
-      "char_count": 493
-    },
-    {
-      "id": "user-centered-design",
-      "name": "以用户为中心的设计",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法论"
-      ],
-      "file": "product-design/product-thinking/user-centered-design.md",
-      "exists": true,
-      "char_count": 507
-    },
-    {
-      "id": "product-ethics",
-      "name": "产品伦理",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "伦理"
-      ],
-      "file": "product-design/product-thinking/product-ethics.md",
-      "exists": true,
-      "char_count": 491
-    },
-    {
-      "id": "interaction-design-overview",
-      "name": "交互设计概述",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/interaction-design/interaction-design-overview.md",
-      "exists": true,
-      "char_count": 468
-    },
-    {
-      "id": "information-architecture",
-      "name": "信息架构",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "IA"
-      ],
-      "file": "product-design/interaction-design/information-architecture.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "navigation-design",
-      "name": "导航设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "product-design/interaction-design/navigation-design.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "form-design",
-      "name": "表单设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "product-design/interaction-design/form-design.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "micro-interaction",
-      "name": "微交互设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "动效"
-      ],
-      "file": "product-design/interaction-design/micro-interaction.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "responsive-design",
-      "name": "响应式设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "布局"
-      ],
-      "file": "product-design/interaction-design/responsive-design.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "mobile-design-patterns",
-      "name": "移动端设计模式",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "移动"
-      ],
-      "file": "product-design/interaction-design/mobile-design-patterns.md",
-      "exists": true,
-      "char_count": 477
-    },
-    {
-      "id": "design-system",
-      "name": "设计系统",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "系统"
-      ],
-      "file": "product-design/interaction-design/design-system.md",
-      "exists": true,
-      "char_count": 466
-    },
-    {
-      "id": "gestalt-principles",
-      "name": "格式塔原则",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "心理学"
-      ],
-      "file": "product-design/interaction-design/gestalt-principles.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "fitts-law",
-      "name": "费茨定律",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "心理学"
-      ],
-      "file": "product-design/interaction-design/fitts-law.md",
-      "exists": true,
-      "char_count": 464
-    },
-    {
-      "id": "hicks-law",
-      "name": "希克定律",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "心理学"
-      ],
-      "file": "product-design/interaction-design/hicks-law.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "progressive-disclosure",
-      "name": "渐进式披露",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "原则"
-      ],
-      "file": "product-design/interaction-design/progressive-disclosure.md",
-      "exists": true,
-      "char_count": 467
-    },
-    {
-      "id": "error-handling-ux",
-      "name": "错误处理设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "product-design/interaction-design/error-handling-ux.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "onboarding-design",
-      "name": "新手引导设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "product-design/interaction-design/onboarding-design.md",
-      "exists": true,
-      "char_count": 468
-    },
-    {
-      "id": "search-design",
-      "name": "搜索设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "product-design/interaction-design/search-design.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "notification-design",
-      "name": "通知设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "product-design/interaction-design/notification-design.md",
-      "exists": true,
-      "char_count": 464
-    },
-    {
-      "id": "empty-state-design",
-      "name": "空状态设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "product-design/interaction-design/empty-state-design.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "dark-mode-design",
-      "name": "深色模式设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "主题"
-      ],
-      "file": "product-design/interaction-design/dark-mode-design.md",
-      "exists": true,
-      "char_count": 468
-    },
-    {
-      "id": "animation-principles",
-      "name": "动效设计原则",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "动效"
-      ],
-      "file": "product-design/interaction-design/animation-principles.md",
-      "exists": true,
-      "char_count": 477
-    },
-    {
-      "id": "accessibility-design",
-      "name": "无障碍设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "包容性"
-      ],
-      "file": "product-design/interaction-design/accessibility-design.md",
-      "exists": true,
-      "char_count": 470
-    },
-    {
-      "id": "multi-platform-design",
-      "name": "多平台设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "跨平台"
-      ],
-      "file": "product-design/interaction-design/multi-platform-design.md",
-      "exists": true,
-      "char_count": 470
-    },
-    {
-      "id": "voice-ui-design",
-      "name": "语音界面设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "新兴"
-      ],
-      "file": "product-design/interaction-design/voice-ui-design.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "gamification",
-      "name": "游戏化设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "激励"
-      ],
-      "file": "product-design/interaction-design/gamification.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "content-strategy",
-      "name": "内容策略",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "内容"
-      ],
-      "file": "product-design/interaction-design/content-strategy.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "visual-design-overview",
-      "name": "视觉设计概述",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/visual-design/visual-design-overview.md",
-      "exists": true,
-      "char_count": 461
-    },
-    {
-      "id": "color-theory",
-      "name": "色彩理论",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/visual-design/color-theory.md",
-      "exists": true,
-      "char_count": 453
-    },
-    {
-      "id": "typography",
-      "name": "字体排印学",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/visual-design/typography.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "layout-grid",
-      "name": "布局与栅格",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "布局"
-      ],
-      "file": "product-design/visual-design/layout-grid.md",
-      "exists": true,
-      "char_count": 455
-    },
-    {
-      "id": "iconography",
-      "name": "图标设计",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "元素"
-      ],
-      "file": "product-design/visual-design/iconography.md",
-      "exists": true,
-      "char_count": 453
-    },
-    {
-      "id": "illustration-design",
-      "name": "插画设计",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "元素"
-      ],
-      "file": "product-design/visual-design/illustration-design.md",
-      "exists": true,
-      "char_count": 452
-    },
-    {
-      "id": "visual-hierarchy",
-      "name": "视觉层级",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "原则"
-      ],
-      "file": "product-design/visual-design/visual-hierarchy.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "brand-design",
-      "name": "品牌设计",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "品牌"
-      ],
-      "file": "product-design/visual-design/brand-design.md",
-      "exists": true,
-      "char_count": 453
-    },
-    {
-      "id": "design-token",
-      "name": "设计令牌",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "product-design/visual-design/design-token.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "data-visualization",
-      "name": "数据可视化",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数据"
-      ],
-      "file": "product-design/visual-design/data-visualization.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "emotional-design",
-      "name": "情感化设计",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "心理学"
-      ],
-      "file": "product-design/visual-design/emotional-design.md",
-      "exists": true,
-      "char_count": 463
-    },
-    {
-      "id": "material-design",
-      "name": "Material Design",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "规范"
-      ],
-      "file": "product-design/visual-design/material-design.md",
-      "exists": true,
-      "char_count": 493
-    },
-    {
-      "id": "ios-human-interface",
-      "name": "iOS Human Interface",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "规范"
-      ],
-      "file": "product-design/visual-design/ios-human-interface.md",
-      "exists": true,
-      "char_count": 501
-    },
-    {
-      "id": "whitespace-design",
-      "name": "留白设计",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "原则"
-      ],
-      "file": "product-design/visual-design/whitespace-design.md",
-      "exists": true,
-      "char_count": 450
-    },
-    {
-      "id": "contrast-design",
-      "name": "对比设计",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "原则"
-      ],
-      "file": "product-design/visual-design/contrast-design.md",
-      "exists": true,
-      "char_count": 455
-    },
-    {
-      "id": "design-consistency",
-      "name": "设计一致性",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "原则"
-      ],
-      "file": "product-design/visual-design/design-consistency.md",
-      "exists": true,
-      "char_count": 460
-    },
-    {
-      "id": "responsive-imagery",
-      "name": "响应式图片",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "product-design/visual-design/responsive-imagery.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "dark-light-theme",
-      "name": "明暗主题设计",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "主题"
-      ],
-      "file": "product-design/visual-design/dark-light-theme.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "3d-in-ui",
-      "name": "3D与UI融合",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "新兴"
-      ],
-      "file": "product-design/visual-design/3d-in-ui.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "motion-design",
-      "name": "运动设计",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "动效"
-      ],
-      "file": "product-design/visual-design/motion-design.md",
-      "exists": true,
-      "char_count": 455
-    },
-    {
-      "id": "skeuomorphism-vs-flat",
-      "name": "拟物与扁平",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "历史"
-      ],
-      "file": "product-design/visual-design/skeuomorphism-vs-flat.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "design-handoff",
-      "name": "设计交付",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "协作"
-      ],
-      "file": "product-design/visual-design/design-handoff.md",
-      "exists": true,
-      "char_count": 450
-    },
-    {
-      "id": "prototyping-overview",
-      "name": "原型设计概述",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/prototyping/prototyping-overview.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "wireframe",
-      "name": "线框图",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "低保真"
-      ],
-      "file": "product-design/prototyping/wireframe.md",
-      "exists": true,
-      "char_count": 450
-    },
-    {
-      "id": "low-fi-prototype",
-      "name": "低保真原型",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "低保真"
-      ],
-      "file": "product-design/prototyping/low-fi-prototype.md",
-      "exists": true,
-      "char_count": 455
-    },
-    {
-      "id": "high-fi-prototype",
-      "name": "高保真原型",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "高保真"
-      ],
-      "file": "product-design/prototyping/high-fi-prototype.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "figma-basics",
-      "name": "Figma基础",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/prototyping/figma-basics.md",
-      "exists": true,
-      "char_count": 465
-    },
-    {
-      "id": "figma-advanced",
-      "name": "Figma高级",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/prototyping/figma-advanced.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "sketch-to-code",
-      "name": "设计到代码",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "工程"
-      ],
-      "file": "product-design/prototyping/sketch-to-code.md",
-      "exists": true,
-      "char_count": 455
-    },
-    {
-      "id": "interactive-prototype",
-      "name": "交互原型",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "高保真"
-      ],
-      "file": "product-design/prototyping/interactive-prototype.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "prototype-testing",
-      "name": "原型测试",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "测试"
-      ],
-      "file": "product-design/prototyping/prototype-testing.md",
-      "exists": true,
-      "char_count": 452
-    },
-    {
-      "id": "rapid-prototyping",
-      "name": "快速原型",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法论"
-      ],
-      "file": "product-design/prototyping/rapid-prototyping.md",
-      "exists": true,
-      "char_count": 454
-    },
-    {
-      "id": "component-library",
-      "name": "组件库建设",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "product-design/prototyping/component-library.md",
-      "exists": true,
-      "char_count": 459
-    },
-    {
-      "id": "design-spec",
-      "name": "设计规格说明",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "协作"
-      ],
-      "file": "product-design/prototyping/design-spec.md",
-      "exists": true,
-      "char_count": 458
-    },
-    {
-      "id": "storyboard",
-      "name": "故事板",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/prototyping/storyboard.md",
-      "exists": true,
-      "char_count": 450
-    },
-    {
-      "id": "wizard-of-oz",
-      "name": "绿野仙踪法",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "测试"
-      ],
-      "file": "product-design/prototyping/wizard-of-oz.md",
-      "exists": true,
-      "char_count": 456
-    },
-    {
-      "id": "concept-testing",
-      "name": "概念测试",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "测试"
-      ],
-      "file": "product-design/prototyping/concept-testing.md",
-      "exists": true,
-      "char_count": 452
-    },
-    {
-      "id": "design-critique",
-      "name": "设计评审",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "协作"
-      ],
-      "file": "product-design/prototyping/design-critique.md",
-      "exists": true,
-      "char_count": 453
-    },
-    {
-      "id": "design-iteration",
-      "name": "设计迭代",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法论"
-      ],
-      "file": "product-design/prototyping/design-iteration.md",
-      "exists": true,
-      "char_count": 449
-    },
-    {
-      "id": "ab-testing-design",
-      "name": "A/B测试设计",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "测试"
-      ],
-      "file": "product-design/prototyping/ab-testing-design.md",
-      "exists": true,
-      "char_count": 462
-    },
-    {
-      "id": "multivariate-testing",
-      "name": "多变量测试",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "product-design/prototyping/multivariate-testing.md",
-      "exists": true,
-      "char_count": 455
-    },
-    {
-      "id": "design-review-checklist",
-      "name": "设计走查清单",
-      "domain_id": "product-design",
-      "subdomain_id": "prototyping",
-      "subdomain_name": "原型与测试",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "质量"
-      ],
-      "file": "product-design/prototyping/design-review-checklist.md",
-      "exists": true,
-      "char_count": 457
-    },
-    {
-      "id": "data-driven-overview",
-      "name": "数据驱动概述",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/data-driven/data-driven-overview.md",
-      "exists": true,
-      "char_count": 509
-    },
-    {
-      "id": "product-metrics",
-      "name": "产品核心指标",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "指标"
-      ],
-      "file": "product-design/data-driven/product-metrics.md",
-      "exists": true,
-      "char_count": 514
-    },
-    {
-      "id": "funnel-analysis",
-      "name": "漏斗分析",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "分析"
-      ],
-      "file": "product-design/data-driven/funnel-analysis.md",
-      "exists": true,
-      "char_count": 501
-    },
-    {
-      "id": "cohort-analysis",
-      "name": "群组分析",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "分析"
-      ],
-      "file": "product-design/data-driven/cohort-analysis.md",
-      "exists": true,
-      "char_count": 504
-    },
-    {
-      "id": "retention-analysis",
-      "name": "留存分析",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "分析"
-      ],
-      "file": "product-design/data-driven/retention-analysis.md",
-      "exists": true,
-      "char_count": 507
+      "char_count": 1453
     },
     {
       "id": "ab-testing-analysis",
@@ -1798,187 +28,7 @@
       ],
       "file": "product-design/data-driven/ab-testing-analysis.md",
       "exists": true,
-      "char_count": 513
-    },
-    {
-      "id": "event-tracking",
-      "name": "埋点设计",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "采集"
-      ],
-      "file": "product-design/data-driven/event-tracking.md",
-      "exists": true,
-      "char_count": 506
-    },
-    {
-      "id": "user-segmentation",
-      "name": "用户分群",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "分析"
-      ],
-      "file": "product-design/data-driven/user-segmentation.md",
-      "exists": true,
-      "char_count": 505
-    },
-    {
-      "id": "analytics-tools",
-      "name": "分析工具",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "工具"
-      ],
-      "file": "product-design/data-driven/analytics-tools.md",
-      "exists": true,
-      "char_count": 517
-    },
-    {
-      "id": "sql-for-pm",
-      "name": "产品经理SQL",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技能"
-      ],
-      "file": "product-design/data-driven/sql-for-pm.md",
-      "exists": true,
-      "char_count": 513
-    },
-    {
-      "id": "data-storytelling",
-      "name": "数据叙事",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "沟通"
-      ],
-      "file": "product-design/data-driven/data-storytelling.md",
-      "exists": true,
-      "char_count": 503
-    },
-    {
-      "id": "attribution-model",
-      "name": "归因模型",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "product-design/data-driven/attribution-model.md",
-      "exists": true,
-      "char_count": 506
-    },
-    {
-      "id": "predictive-analytics",
-      "name": "预测分析",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "product-design/data-driven/predictive-analytics.md",
-      "exists": true,
-      "char_count": 501
-    },
-    {
-      "id": "data-privacy-compliance",
-      "name": "数据隐私合规",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "合规"
-      ],
-      "file": "product-design/data-driven/data-privacy-compliance.md",
-      "exists": true,
-      "char_count": 512
-    },
-    {
-      "id": "dashboard-design",
-      "name": "数据看板设计",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "可视化"
-      ],
-      "file": "product-design/data-driven/dashboard-design.md",
-      "exists": true,
-      "char_count": 511
-    },
-    {
-      "id": "experiment-design",
-      "name": "实验设计方法",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实验"
-      ],
-      "file": "product-design/data-driven/experiment-design.md",
-      "exists": true,
-      "char_count": 510
-    },
-    {
-      "id": "statistical-significance",
-      "name": "统计显著性",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "统计"
-      ],
-      "file": "product-design/data-driven/statistical-significance.md",
-      "exists": true,
-      "char_count": 503
-    },
-    {
-      "id": "behavioral-analytics",
-      "name": "行为分析",
-      "domain_id": "product-design",
-      "subdomain_id": "data-driven",
-      "subdomain_name": "数据驱动",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "分析"
-      ],
-      "file": "product-design/data-driven/behavioral-analytics.md",
-      "exists": true,
-      "char_count": 502
+      "char_count": 1557
     },
     {
       "id": "ltv-calculation",
@@ -1993,22 +43,52 @@
       ],
       "file": "product-design/data-driven/ltv-calculation.md",
       "exists": true,
-      "char_count": 504
+      "char_count": 1244
     },
     {
-      "id": "churn-analysis",
-      "name": "流失分析",
+      "id": "product-metrics",
+      "name": "产品核心指标",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "指标"
+      ],
+      "file": "product-design/data-driven/product-metrics.md",
+      "exists": true,
+      "char_count": 2463
+    },
+    {
+      "id": "sql-for-pm",
+      "name": "产品经理SQL",
       "domain_id": "product-design",
       "subdomain_id": "data-driven",
       "subdomain_name": "数据驱动",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "分析"
+        "技能"
       ],
-      "file": "product-design/data-driven/churn-analysis.md",
+      "file": "product-design/data-driven/sql-for-pm.md",
       "exists": true,
-      "char_count": 505
+      "char_count": 1375
+    },
+    {
+      "id": "analytics-tools",
+      "name": "分析工具",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/data-driven/analytics-tools.md",
+      "exists": true,
+      "char_count": 1542
     },
     {
       "id": "feature-flag",
@@ -2023,7 +103,82 @@
       ],
       "file": "product-design/data-driven/feature-flag.md",
       "exists": true,
-      "char_count": 503
+      "char_count": 1423
+    },
+    {
+      "id": "event-tracking",
+      "name": "埋点设计",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "采集"
+      ],
+      "file": "product-design/data-driven/event-tracking.md",
+      "exists": true,
+      "char_count": 2756
+    },
+    {
+      "id": "experiment-design",
+      "name": "实验设计方法",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实验"
+      ],
+      "file": "product-design/data-driven/experiment-design.md",
+      "exists": true,
+      "char_count": 1602
+    },
+    {
+      "id": "attribution-model",
+      "name": "归因模型",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "product-design/data-driven/attribution-model.md",
+      "exists": true,
+      "char_count": 1269
+    },
+    {
+      "id": "data-storytelling",
+      "name": "数据叙事",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "沟通"
+      ],
+      "file": "product-design/data-driven/data-storytelling.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "dashboard-design",
+      "name": "数据看板设计",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "可视化"
+      ],
+      "file": "product-design/data-driven/dashboard-design.md",
+      "exists": true,
+      "char_count": 1529
     },
     {
       "id": "data-quality",
@@ -2038,382 +193,157 @@
       ],
       "file": "product-design/data-driven/data-quality.md",
       "exists": true,
-      "char_count": 510
+      "char_count": 1453
     },
     {
-      "id": "product-management-overview",
-      "name": "产品管理概述",
+      "id": "data-privacy-compliance",
+      "name": "数据隐私合规",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "合规"
+      ],
+      "file": "product-design/data-driven/data-privacy-compliance.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "data-driven-overview",
+      "name": "数据驱动概述",
+      "domain_id": "product-design",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
       "difficulty": 1,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "基础"
       ],
-      "file": "product-design/product-management/product-management-overview.md",
+      "file": "product-design/data-driven/data-driven-overview.md",
       "exists": true,
-      "char_count": 493
+      "char_count": 1475
     },
     {
-      "id": "product-roadmap",
-      "name": "产品路线图",
+      "id": "churn-analysis",
+      "name": "流失分析",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "规划"
-      ],
-      "file": "product-design/product-management/product-roadmap.md",
-      "exists": true,
-      "char_count": 487
-    },
-    {
-      "id": "prd-writing",
-      "name": "PRD编写",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "文档"
-      ],
-      "file": "product-design/product-management/prd-writing.md",
-      "exists": true,
-      "char_count": 488
-    },
-    {
-      "id": "sprint-planning",
-      "name": "Sprint规划",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "敏捷"
-      ],
-      "file": "product-design/product-management/sprint-planning.md",
-      "exists": true,
-      "char_count": 495
-    },
-    {
-      "id": "scrum-framework",
-      "name": "Scrum框架",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "敏捷"
-      ],
-      "file": "product-design/product-management/scrum-framework.md",
-      "exists": true,
-      "char_count": 497
-    },
-    {
-      "id": "kanban-method",
-      "name": "看板方法",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "敏捷"
-      ],
-      "file": "product-design/product-management/kanban-method.md",
-      "exists": true,
-      "char_count": 487
-    },
-    {
-      "id": "stakeholder-management",
-      "name": "利益相关者管理",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "沟通"
+        "分析"
       ],
-      "file": "product-design/product-management/stakeholder-management.md",
+      "file": "product-design/data-driven/churn-analysis.md",
       "exists": true,
-      "char_count": 495
+      "char_count": 2804
     },
     {
-      "id": "cross-functional-collab",
-      "name": "跨职能协作",
+      "id": "funnel-analysis",
+      "name": "漏斗分析",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "协作"
+        "分析"
       ],
-      "file": "product-design/product-management/cross-functional-collab.md",
+      "file": "product-design/data-driven/funnel-analysis.md",
       "exists": true,
-      "char_count": 492
+      "char_count": 1634
     },
     {
-      "id": "backlog-management",
-      "name": "需求池管理",
+      "id": "user-segmentation",
+      "name": "用户分群",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "管理"
-      ],
-      "file": "product-design/product-management/backlog-management.md",
-      "exists": true,
-      "char_count": 491
-    },
-    {
-      "id": "release-management",
-      "name": "发布管理",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "工程"
+        "分析"
       ],
-      "file": "product-design/product-management/release-management.md",
+      "file": "product-design/data-driven/user-segmentation.md",
       "exists": true,
-      "char_count": 484
+      "char_count": 1259
     },
     {
-      "id": "okr-method",
-      "name": "OKR方法",
+      "id": "retention-analysis",
+      "name": "留存分析",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "目标"
-      ],
-      "file": "product-design/product-management/okr-method.md",
-      "exists": true,
-      "char_count": 489
-    },
-    {
-      "id": "technical-debt",
-      "name": "技术债务管理",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "工程"
+        "分析"
       ],
-      "file": "product-design/product-management/technical-debt.md",
+      "file": "product-design/data-driven/retention-analysis.md",
       "exists": true,
-      "char_count": 489
+      "char_count": 2425
     },
     {
-      "id": "product-launch",
-      "name": "产品发布策略",
+      "id": "statistical-significance",
+      "name": "统计显著性",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "发布"
-      ],
-      "file": "product-design/product-management/product-launch.md",
-      "exists": true,
-      "char_count": 501
-    },
-    {
-      "id": "feedback-loop",
-      "name": "反馈循环",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "运营"
-      ],
-      "file": "product-design/product-management/feedback-loop.md",
-      "exists": true,
-      "char_count": 484
-    },
-    {
-      "id": "competitive-moat",
-      "name": "竞争壁垒",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
       "difficulty": 4,
       "is_milestone": false,
       "tags": [
-        "战略"
+        "统计"
       ],
-      "file": "product-design/product-management/competitive-moat.md",
+      "file": "product-design/data-driven/statistical-significance.md",
       "exists": true,
-      "char_count": 487
+      "char_count": 2809
     },
     {
-      "id": "product-analytics-review",
-      "name": "产品数据复盘",
+      "id": "cohort-analysis",
+      "name": "群组分析",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "数据"
+        "分析"
       ],
-      "file": "product-design/product-management/product-analytics-review.md",
+      "file": "product-design/data-driven/cohort-analysis.md",
       "exists": true,
-      "char_count": 496
+      "char_count": 1269
     },
     {
-      "id": "team-building",
-      "name": "产品团队建设",
+      "id": "behavioral-analytics",
+      "name": "行为分析",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "管理"
+        "分析"
       ],
-      "file": "product-design/product-management/team-building.md",
+      "file": "product-design/data-driven/behavioral-analytics.md",
       "exists": true,
-      "char_count": 493
+      "char_count": 2436
     },
     {
-      "id": "remote-collaboration",
-      "name": "远程协作",
+      "id": "predictive-analytics",
+      "name": "预测分析",
       "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
+      "subdomain_id": "data-driven",
+      "subdomain_name": "数据驱动",
+      "difficulty": 4,
       "is_milestone": false,
       "tags": [
-        "协作"
+        "高级"
       ],
-      "file": "product-design/product-management/remote-collaboration.md",
+      "file": "product-design/data-driven/predictive-analytics.md",
       "exists": true,
-      "char_count": 484
-    },
-    {
-      "id": "product-doc-system",
-      "name": "产品文档体系",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "文档"
-      ],
-      "file": "product-design/product-management/product-doc-system.md",
-      "exists": true,
-      "char_count": 496
-    },
-    {
-      "id": "estimation-techniques",
-      "name": "工作量估算",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "敏捷"
-      ],
-      "file": "product-design/product-management/estimation-techniques.md",
-      "exists": true,
-      "char_count": 497
-    },
-    {
-      "id": "retrospective",
-      "name": "迭代回顾",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "敏捷"
-      ],
-      "file": "product-design/product-management/retrospective.md",
-      "exists": true,
-      "char_count": 484
-    },
-    {
-      "id": "feature-specification",
-      "name": "功能规格说明",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "文档"
-      ],
-      "file": "product-design/product-management/feature-specification.md",
-      "exists": true,
-      "char_count": 491
-    },
-    {
-      "id": "product-communication",
-      "name": "产品沟通技巧",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "沟通"
-      ],
-      "file": "product-design/product-management/product-communication.md",
-      "exists": true,
-      "char_count": 491
-    },
-    {
-      "id": "product-metrics-review",
-      "name": "指标异动排查",
-      "domain_id": "product-design",
-      "subdomain_id": "product-management",
-      "subdomain_name": "产品管理",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "数据"
-      ],
-      "file": "product-design/product-management/product-metrics-review.md",
-      "exists": true,
-      "char_count": 490
-    },
-    {
-      "id": "growth-overview",
-      "name": "增长概述",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "product-design/growth/growth-overview.md",
-      "exists": true,
-      "char_count": 471
+      "char_count": 1336
     },
     {
       "id": "aarrr-model",
@@ -2422,118 +352,13 @@
       "subdomain_id": "growth",
       "subdomain_name": "增长运营",
       "difficulty": 2,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "框架"
       ],
       "file": "product-design/growth/aarrr-model.md",
       "exists": true,
-      "char_count": 489
-    },
-    {
-      "id": "growth-hacking",
-      "name": "增长黑客",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "策略"
-      ],
-      "file": "product-design/growth/growth-hacking.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "viral-loop",
-      "name": "病毒循环",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "获客"
-      ],
-      "file": "product-design/growth/viral-loop.md",
-      "exists": true,
-      "char_count": 470
-    },
-    {
-      "id": "user-activation",
-      "name": "用户激活",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "激活"
-      ],
-      "file": "product-design/growth/user-activation.md",
-      "exists": true,
-      "char_count": 475
-    },
-    {
-      "id": "retention-strategy",
-      "name": "留存策略",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "留存"
-      ],
-      "file": "product-design/growth/retention-strategy.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "monetization-strategy",
-      "name": "变现策略",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "变现"
-      ],
-      "file": "product-design/growth/monetization-strategy.md",
-      "exists": true,
-      "char_count": 475
-    },
-    {
-      "id": "pricing-strategy",
-      "name": "定价策略",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "变现"
-      ],
-      "file": "product-design/growth/pricing-strategy.md",
-      "exists": true,
-      "char_count": 471
-    },
-    {
-      "id": "content-marketing",
-      "name": "内容营销",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "获客"
-      ],
-      "file": "product-design/growth/content-marketing.md",
-      "exists": true,
-      "char_count": 470
+      "char_count": 1483
     },
     {
       "id": "seo-basics",
@@ -2548,112 +373,7 @@
       ],
       "file": "product-design/growth/seo-basics.md",
       "exists": true,
-      "char_count": 472
-    },
-    {
-      "id": "push-notification-strategy",
-      "name": "推送策略",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "留存"
-      ],
-      "file": "product-design/growth/push-notification-strategy.md",
-      "exists": true,
-      "char_count": 468
-    },
-    {
-      "id": "email-marketing",
-      "name": "邮件营销",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "获客"
-      ],
-      "file": "product-design/growth/email-marketing.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "referral-program",
-      "name": "推荐计划",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "获客"
-      ],
-      "file": "product-design/growth/referral-program.md",
-      "exists": true,
-      "char_count": 466
-    },
-    {
-      "id": "onboarding-optimization",
-      "name": "新手引导优化",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "激活"
-      ],
-      "file": "product-design/growth/onboarding-optimization.md",
-      "exists": true,
-      "char_count": 473
-    },
-    {
-      "id": "growth-experiment",
-      "name": "增长实验",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "实验"
-      ],
-      "file": "product-design/growth/growth-experiment.md",
-      "exists": true,
-      "char_count": 473
-    },
-    {
-      "id": "user-lifecycle",
-      "name": "用户生命周期管理",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "运营"
-      ],
-      "file": "product-design/growth/user-lifecycle.md",
-      "exists": true,
-      "char_count": 488
-    },
-    {
-      "id": "community-building",
-      "name": "社区建设",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "运营"
-      ],
-      "file": "product-design/growth/community-building.md",
-      "exists": true,
-      "char_count": 471
+      "char_count": 1325
     },
     {
       "id": "paywall-design",
@@ -2668,7 +388,7 @@
       ],
       "file": "product-design/growth/paywall-design.md",
       "exists": true,
-      "char_count": 473
+      "char_count": 1348
     },
     {
       "id": "freemium-model",
@@ -2683,37 +403,7 @@
       ],
       "file": "product-design/growth/freemium-model.md",
       "exists": true,
-      "char_count": 475
-    },
-    {
-      "id": "network-effects",
-      "name": "网络效应",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "product-design/growth/network-effects.md",
-      "exists": true,
-      "char_count": 469
-    },
-    {
-      "id": "growth-loops",
-      "name": "增长飞轮",
-      "domain_id": "product-design",
-      "subdomain_id": "growth",
-      "subdomain_name": "增长运营",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "product-design/growth/growth-loops.md",
-      "exists": true,
-      "char_count": 468
+      "char_count": 1361
     },
     {
       "id": "marketplace-growth",
@@ -2728,21 +418,2323 @@
       ],
       "file": "product-design/growth/marketplace-growth.md",
       "exists": true,
-      "char_count": 477
+      "char_count": 1497
+    },
+    {
+      "id": "monetization-strategy",
+      "name": "变现策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "变现"
+      ],
+      "file": "product-design/growth/monetization-strategy.md",
+      "exists": true,
+      "char_count": 1394
+    },
+    {
+      "id": "growth-experiment",
+      "name": "增长实验",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实验"
+      ],
+      "file": "product-design/growth/growth-experiment.md",
+      "exists": true,
+      "char_count": 1301
+    },
+    {
+      "id": "growth-overview",
+      "name": "增长概述",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/growth/growth-overview.md",
+      "exists": true,
+      "char_count": 2497
+    },
+    {
+      "id": "growth-loops",
+      "name": "增长飞轮",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "product-design/growth/growth-loops.md",
+      "exists": true,
+      "char_count": 2660
+    },
+    {
+      "id": "growth-hacking",
+      "name": "增长黑客",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "product-design/growth/growth-hacking.md",
+      "exists": true,
+      "char_count": 2780
+    },
+    {
+      "id": "pricing-strategy",
+      "name": "定价策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "变现"
+      ],
+      "file": "product-design/growth/pricing-strategy.md",
+      "exists": true,
+      "char_count": 2789
+    },
+    {
+      "id": "referral-program",
+      "name": "推荐计划",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "获客"
+      ],
+      "file": "product-design/growth/referral-program.md",
+      "exists": true,
+      "char_count": 2583
+    },
+    {
+      "id": "push-notification-strategy",
+      "name": "推送策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "留存"
+      ],
+      "file": "product-design/growth/push-notification-strategy.md",
+      "exists": true,
+      "char_count": 2543
+    },
+    {
+      "id": "onboarding-optimization",
+      "name": "新手引导优化",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "激活"
+      ],
+      "file": "product-design/growth/onboarding-optimization.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "user-activation",
+      "name": "用户激活",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "激活"
+      ],
+      "file": "product-design/growth/user-activation.md",
+      "exists": true,
+      "char_count": 1449
+    },
+    {
+      "id": "user-lifecycle",
+      "name": "用户生命周期管理",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "运营"
+      ],
+      "file": "product-design/growth/user-lifecycle.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "retention-strategy",
+      "name": "留存策略",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "留存"
+      ],
+      "file": "product-design/growth/retention-strategy.md",
+      "exists": true,
+      "char_count": 2529
+    },
+    {
+      "id": "viral-loop",
+      "name": "病毒循环",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "获客"
+      ],
+      "file": "product-design/growth/viral-loop.md",
+      "exists": true,
+      "char_count": 2718
+    },
+    {
+      "id": "community-building",
+      "name": "社区建设",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "运营"
+      ],
+      "file": "product-design/growth/community-building.md",
+      "exists": true,
+      "char_count": 1448
+    },
+    {
+      "id": "network-effects",
+      "name": "网络效应",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "product-design/growth/network-effects.md",
+      "exists": true,
+      "char_count": 2546
+    },
+    {
+      "id": "email-marketing",
+      "name": "邮件营销",
+      "domain_id": "product-design",
+      "subdomain_id": "growth",
+      "subdomain_name": "增长运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "获客"
+      ],
+      "file": "product-design/growth/email-marketing.md",
+      "exists": true,
+      "char_count": 2752
+    },
+    {
+      "id": "interaction-design-overview",
+      "name": "交互设计概述",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/interaction-design/interaction-design-overview.md",
+      "exists": true,
+      "char_count": 1677
+    },
+    {
+      "id": "information-architecture",
+      "name": "信息架构",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "IA"
+      ],
+      "file": "product-design/interaction-design/information-architecture.md",
+      "exists": true,
+      "char_count": 2610
+    },
+    {
+      "id": "content-strategy",
+      "name": "内容策略",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "内容"
+      ],
+      "file": "product-design/interaction-design/content-strategy.md",
+      "exists": true,
+      "char_count": 1416
+    },
+    {
+      "id": "animation-principles",
+      "name": "动效设计原则",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动效"
+      ],
+      "file": "product-design/interaction-design/animation-principles.md",
+      "exists": true,
+      "char_count": 1615
+    },
+    {
+      "id": "responsive-design",
+      "name": "响应式设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "布局"
+      ],
+      "file": "product-design/interaction-design/responsive-design.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "multi-platform-design",
+      "name": "多平台设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "跨平台"
+      ],
+      "file": "product-design/interaction-design/multi-platform-design.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "navigation-design",
+      "name": "导航设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "product-design/interaction-design/navigation-design.md",
+      "exists": true,
+      "char_count": 2790
+    },
+    {
+      "id": "hicks-law",
+      "name": "希克定律",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "心理学"
+      ],
+      "file": "product-design/interaction-design/hicks-law.md",
+      "exists": true,
+      "char_count": 1305
+    },
+    {
+      "id": "micro-interaction",
+      "name": "微交互设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动效"
+      ],
+      "file": "product-design/interaction-design/micro-interaction.md",
+      "exists": true,
+      "char_count": 1302
+    },
+    {
+      "id": "search-design",
+      "name": "搜索设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "product-design/interaction-design/search-design.md",
+      "exists": true,
+      "char_count": 2549
+    },
+    {
+      "id": "onboarding-design",
+      "name": "新手引导设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "product-design/interaction-design/onboarding-design.md",
+      "exists": true,
+      "char_count": 2521
+    },
+    {
+      "id": "accessibility-design",
+      "name": "无障碍设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "包容性"
+      ],
+      "file": "product-design/interaction-design/accessibility-design.md",
+      "exists": true,
+      "char_count": 1525
+    },
+    {
+      "id": "gestalt-principles",
+      "name": "格式塔原则",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "心理学"
+      ],
+      "file": "product-design/interaction-design/gestalt-principles.md",
+      "exists": true,
+      "char_count": 1597
+    },
+    {
+      "id": "dark-mode-design",
+      "name": "深色模式设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "主题"
+      ],
+      "file": "product-design/interaction-design/dark-mode-design.md",
+      "exists": true,
+      "char_count": 1384
+    },
+    {
+      "id": "progressive-disclosure",
+      "name": "渐进式披露",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "原则"
+      ],
+      "file": "product-design/interaction-design/progressive-disclosure.md",
+      "exists": true,
+      "char_count": 1348
+    },
+    {
+      "id": "gamification",
+      "name": "游戏化设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "激励"
+      ],
+      "file": "product-design/interaction-design/gamification.md",
+      "exists": true,
+      "char_count": 1551
+    },
+    {
+      "id": "mobile-design-patterns",
+      "name": "移动端设计模式",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "移动"
+      ],
+      "file": "product-design/interaction-design/mobile-design-patterns.md",
+      "exists": true,
+      "char_count": 1593
+    },
+    {
+      "id": "empty-state-design",
+      "name": "空状态设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "product-design/interaction-design/empty-state-design.md",
+      "exists": true,
+      "char_count": 1378
+    },
+    {
+      "id": "form-design",
+      "name": "表单设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "product-design/interaction-design/form-design.md",
+      "exists": true,
+      "char_count": 2639
+    },
+    {
+      "id": "design-system",
+      "name": "设计系统",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "product-design/interaction-design/design-system.md",
+      "exists": true,
+      "char_count": 2920
+    },
+    {
+      "id": "voice-ui-design",
+      "name": "语音界面设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "新兴"
+      ],
+      "file": "product-design/interaction-design/voice-ui-design.md",
+      "exists": true,
+      "char_count": 1472
+    },
+    {
+      "id": "fitts-law",
+      "name": "费茨定律",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "心理学"
+      ],
+      "file": "product-design/interaction-design/fitts-law.md",
+      "exists": true,
+      "char_count": 1310
+    },
+    {
+      "id": "notification-design",
+      "name": "通知设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "product-design/interaction-design/notification-design.md",
+      "exists": true,
+      "char_count": 1555
+    },
+    {
+      "id": "error-handling-ux",
+      "name": "错误处理设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "product-design/interaction-design/error-handling-ux.md",
+      "exists": true,
+      "char_count": 1488
+    },
+    {
+      "id": "okr-method",
+      "name": "OKR方法",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "目标"
+      ],
+      "file": "product-design/product-management/okr-method.md",
+      "exists": true,
+      "char_count": 1512
+    },
+    {
+      "id": "prd-writing",
+      "name": "PRD编写",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "文档"
+      ],
+      "file": "product-design/product-management/prd-writing.md",
+      "exists": true,
+      "char_count": 1484
+    },
+    {
+      "id": "scrum-framework",
+      "name": "Scrum框架",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "敏捷"
+      ],
+      "file": "product-design/product-management/scrum-framework.md",
+      "exists": true,
+      "char_count": 1550
+    },
+    {
+      "id": "sprint-planning",
+      "name": "Sprint规划",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "敏捷"
+      ],
+      "file": "product-design/product-management/sprint-planning.md",
+      "exists": true,
+      "char_count": 1537
+    },
+    {
+      "id": "product-launch",
+      "name": "产品发布策略",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "发布"
+      ],
+      "file": "product-design/product-management/product-launch.md",
+      "exists": true,
+      "char_count": 1570
+    },
+    {
+      "id": "team-building",
+      "name": "产品团队建设",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "product-design/product-management/team-building.md",
+      "exists": true,
+      "char_count": 1472
+    },
+    {
+      "id": "product-analytics-review",
+      "name": "产品数据复盘",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据"
+      ],
+      "file": "product-design/product-management/product-analytics-review.md",
+      "exists": true,
+      "char_count": 1504
+    },
+    {
+      "id": "product-doc-system",
+      "name": "产品文档体系",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "文档"
+      ],
+      "file": "product-design/product-management/product-doc-system.md",
+      "exists": true,
+      "char_count": 1627
+    },
+    {
+      "id": "product-communication",
+      "name": "产品沟通技巧",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "沟通"
+      ],
+      "file": "product-design/product-management/product-communication.md",
+      "exists": true,
+      "char_count": 1522
+    },
+    {
+      "id": "product-management-overview",
+      "name": "产品管理概述",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/product-management/product-management-overview.md",
+      "exists": true,
+      "char_count": 1666
+    },
+    {
+      "id": "product-roadmap",
+      "name": "产品路线图",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规划"
+      ],
+      "file": "product-design/product-management/product-roadmap.md",
+      "exists": true,
+      "char_count": 2215
+    },
+    {
+      "id": "stakeholder-management",
+      "name": "利益相关者管理",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "沟通"
+      ],
+      "file": "product-design/product-management/stakeholder-management.md",
+      "exists": true,
+      "char_count": 1473
+    },
+    {
+      "id": "feature-specification",
+      "name": "功能规格说明",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "文档"
+      ],
+      "file": "product-design/product-management/feature-specification.md",
+      "exists": true,
+      "char_count": 1315
+    },
+    {
+      "id": "feedback-loop",
+      "name": "反馈循环",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "运营"
+      ],
+      "file": "product-design/product-management/feedback-loop.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "release-management",
+      "name": "发布管理",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工程"
+      ],
+      "file": "product-design/product-management/release-management.md",
+      "exists": true,
+      "char_count": 2644
+    },
+    {
+      "id": "estimation-techniques",
+      "name": "工作量估算",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "敏捷"
+      ],
+      "file": "product-design/product-management/estimation-techniques.md",
+      "exists": true,
+      "char_count": 1559
+    },
+    {
+      "id": "technical-debt",
+      "name": "技术债务管理",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工程"
+      ],
+      "file": "product-design/product-management/technical-debt.md",
+      "exists": true,
+      "char_count": 1444
+    },
+    {
+      "id": "product-metrics-review",
+      "name": "指标异动排查",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据"
+      ],
+      "file": "product-design/product-management/product-metrics-review.md",
+      "exists": true,
+      "char_count": 1412
+    },
+    {
+      "id": "kanban-method",
+      "name": "看板方法",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "敏捷"
+      ],
+      "file": "product-design/product-management/kanban-method.md",
+      "exists": true,
+      "char_count": 1441
+    },
+    {
+      "id": "competitive-moat",
+      "name": "竞争壁垒",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-management/competitive-moat.md",
+      "exists": true,
+      "char_count": 1538
+    },
+    {
+      "id": "cross-functional-collab",
+      "name": "跨职能协作",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "product-design/product-management/cross-functional-collab.md",
+      "exists": true,
+      "char_count": 1634
+    },
+    {
+      "id": "remote-collaboration",
+      "name": "远程协作",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "product-design/product-management/remote-collaboration.md",
+      "exists": true,
+      "char_count": 2266
+    },
+    {
+      "id": "retrospective",
+      "name": "迭代回顾",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "敏捷"
+      ],
+      "file": "product-design/product-management/retrospective.md",
+      "exists": true,
+      "char_count": 1329
+    },
+    {
+      "id": "backlog-management",
+      "name": "需求池管理",
+      "domain_id": "product-design",
+      "subdomain_id": "product-management",
+      "subdomain_name": "产品管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "product-design/product-management/backlog-management.md",
+      "exists": true,
+      "char_count": 2474
+    },
+    {
+      "id": "mvp-design",
+      "name": "MVP设计",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "product-design/product-thinking/mvp-design.md",
+      "exists": true,
+      "char_count": 2170
+    },
+    {
+      "id": "product-ethics",
+      "name": "产品伦理",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "伦理"
+      ],
+      "file": "product-design/product-thinking/product-ethics.md",
+      "exists": true,
+      "char_count": 1453
+    },
+    {
+      "id": "product-positioning",
+      "name": "产品定位",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-thinking/product-positioning.md",
+      "exists": true,
+      "char_count": 1304
+    },
+    {
+      "id": "product-market-fit",
+      "name": "产品市场契合",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-thinking/product-market-fit.md",
+      "exists": true,
+      "char_count": 2532
+    },
+    {
+      "id": "product-thinking-overview",
+      "name": "产品思维概述",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/product-thinking/product-thinking-overview.md",
+      "exists": true,
+      "char_count": 1536
+    },
+    {
+      "id": "product-vision",
+      "name": "产品愿景",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-thinking/product-vision.md",
+      "exists": true,
+      "char_count": 1293
+    },
+    {
+      "id": "product-lifecycle",
+      "name": "产品生命周期",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-thinking/product-lifecycle.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "product-strategy",
+      "name": "产品策略",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-thinking/product-strategy.md",
+      "exists": true,
+      "char_count": 2724
+    },
+    {
+      "id": "user-centered-design",
+      "name": "以用户为中心的设计",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "product-design/product-thinking/user-centered-design.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "value-proposition",
+      "name": "价值主张",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-thinking/value-proposition.md",
+      "exists": true,
+      "char_count": 1408
+    },
+    {
+      "id": "prioritization-frameworks",
+      "name": "优先级排序框架",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/product-thinking/prioritization-frameworks.md",
+      "exists": true,
+      "char_count": 1702
+    },
+    {
+      "id": "hypothesis-driven-dev",
+      "name": "假设驱动开发",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "product-design/product-thinking/hypothesis-driven-dev.md",
+      "exists": true,
+      "char_count": 1317
+    },
+    {
+      "id": "innovation-types",
+      "name": "创新类型",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-thinking/innovation-types.md",
+      "exists": true,
+      "char_count": 1254
+    },
+    {
+      "id": "business-model-canvas",
+      "name": "商业模式画布",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/product-thinking/business-model-canvas.md",
+      "exists": true,
+      "char_count": 1336
+    },
+    {
+      "id": "platform-thinking",
+      "name": "平台思维",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "product-design/product-thinking/platform-thinking.md",
+      "exists": true,
+      "char_count": 2897
+    },
+    {
+      "id": "opportunity-assessment",
+      "name": "机会评估",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "product-design/product-thinking/opportunity-assessment.md",
+      "exists": true,
+      "char_count": 1505
+    },
+    {
+      "id": "ecosystem-design",
+      "name": "生态系统设计",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "product-design/product-thinking/ecosystem-design.md",
+      "exists": true,
+      "char_count": 1403
+    },
+    {
+      "id": "user-story-mapping",
+      "name": "用户故事地图",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/product-thinking/user-story-mapping.md",
+      "exists": true,
+      "char_count": 1318
+    },
+    {
+      "id": "first-principles",
+      "name": "第一性原理",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "思维"
+      ],
+      "file": "product-design/product-thinking/first-principles.md",
+      "exists": true,
+      "char_count": 1299
+    },
+    {
+      "id": "lean-startup",
+      "name": "精益创业",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "product-design/product-thinking/lean-startup.md",
+      "exists": true,
+      "char_count": 1297
+    },
+    {
+      "id": "systems-thinking",
+      "name": "系统思维",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "思维"
+      ],
+      "file": "product-design/product-thinking/systems-thinking.md",
+      "exists": true,
+      "char_count": 2326
+    },
+    {
+      "id": "blue-ocean-strategy",
+      "name": "蓝海战略",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "战略"
+      ],
+      "file": "product-design/product-thinking/blue-ocean-strategy.md",
+      "exists": true,
+      "char_count": 1250
+    },
+    {
+      "id": "design-thinking",
+      "name": "设计思维",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "product-design/product-thinking/design-thinking.md",
+      "exists": true,
+      "char_count": 2586
+    },
+    {
+      "id": "content-marketing",
+      "name": "内容营销写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "获客"
+      ],
+      "file": "product-design/growth/content-marketing.md",
+      "exists": true,
+      "char_count": 1457
+    },
+    {
+      "id": "ab-testing-design",
+      "name": "A/B测试设计",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "product-design/prototyping/ab-testing-design.md",
+      "exists": true,
+      "char_count": 1466
+    },
+    {
+      "id": "figma-basics",
+      "name": "Figma基础",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/prototyping/figma-basics.md",
+      "exists": true,
+      "char_count": 1543
+    },
+    {
+      "id": "figma-advanced",
+      "name": "Figma高级",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/prototyping/figma-advanced.md",
+      "exists": true,
+      "char_count": 1493
+    },
+    {
+      "id": "interactive-prototype",
+      "name": "交互原型",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高保真"
+      ],
+      "file": "product-design/prototyping/interactive-prototype.md",
+      "exists": true,
+      "char_count": 1484
+    },
+    {
+      "id": "low-fi-prototype",
+      "name": "低保真原型",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "低保真"
+      ],
+      "file": "product-design/prototyping/low-fi-prototype.md",
+      "exists": true,
+      "char_count": 2319
+    },
+    {
+      "id": "prototype-testing",
+      "name": "原型测试",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "product-design/prototyping/prototype-testing.md",
+      "exists": true,
+      "char_count": 2498
+    },
+    {
+      "id": "prototyping-overview",
+      "name": "原型设计概述",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/prototyping/prototyping-overview.md",
+      "exists": true,
+      "char_count": 2172
+    },
+    {
+      "id": "multivariate-testing",
+      "name": "多变量测试",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "product-design/prototyping/multivariate-testing.md",
+      "exists": true,
+      "char_count": 1288
+    },
+    {
+      "id": "rapid-prototyping",
+      "name": "快速原型",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "product-design/prototyping/rapid-prototyping.md",
+      "exists": true,
+      "char_count": 1354
+    },
+    {
+      "id": "storyboard",
+      "name": "故事板",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/prototyping/storyboard.md",
+      "exists": true,
+      "char_count": 1203
+    },
+    {
+      "id": "concept-testing",
+      "name": "概念测试",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "product-design/prototyping/concept-testing.md",
+      "exists": true,
+      "char_count": 1221
+    },
+    {
+      "id": "wireframe",
+      "name": "线框图",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "低保真"
+      ],
+      "file": "product-design/prototyping/wireframe.md",
+      "exists": true,
+      "char_count": 2367
+    },
+    {
+      "id": "component-library",
+      "name": "组件库建设",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "product-design/prototyping/component-library.md",
+      "exists": true,
+      "char_count": 1530
+    },
+    {
+      "id": "wizard-of-oz",
+      "name": "绿野仙踪法",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "product-design/prototyping/wizard-of-oz.md",
+      "exists": true,
+      "char_count": 1238
+    },
+    {
+      "id": "sketch-to-code",
+      "name": "设计到代码",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工程"
+      ],
+      "file": "product-design/prototyping/sketch-to-code.md",
+      "exists": true,
+      "char_count": 1339
+    },
+    {
+      "id": "design-spec",
+      "name": "设计规格说明",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "product-design/prototyping/design-spec.md",
+      "exists": true,
+      "char_count": 2513
+    },
+    {
+      "id": "design-critique",
+      "name": "设计评审",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "product-design/prototyping/design-critique.md",
+      "exists": true,
+      "char_count": 1335
+    },
+    {
+      "id": "design-review-checklist",
+      "name": "设计走查清单",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "product-design/prototyping/design-review-checklist.md",
+      "exists": true,
+      "char_count": 1297
+    },
+    {
+      "id": "design-iteration",
+      "name": "设计迭代",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "product-design/prototyping/design-iteration.md",
+      "exists": true,
+      "char_count": 2169
+    },
+    {
+      "id": "high-fi-prototype",
+      "name": "高保真原型",
+      "domain_id": "product-design",
+      "subdomain_id": "prototyping",
+      "subdomain_name": "原型与测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高保真"
+      ],
+      "file": "product-design/prototyping/high-fi-prototype.md",
+      "exists": true,
+      "char_count": 2476
+    },
+    {
+      "id": "quantitative-ux-metrics",
+      "name": "UX量化指标",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "量化"
+      ],
+      "file": "product-design/user-research/quantitative-ux-metrics.md",
+      "exists": true,
+      "char_count": 1567
+    },
+    {
+      "id": "affinity-diagram",
+      "name": "亲和图法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/user-research/affinity-diagram.md",
+      "exists": true,
+      "char_count": 1260
+    },
+    {
+      "id": "think-aloud-protocol",
+      "name": "出声思考法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "定性"
+      ],
+      "file": "product-design/user-research/think-aloud-protocol.md",
+      "exists": true,
+      "char_count": 1318
+    },
+    {
+      "id": "stakeholder-interview",
+      "name": "利益相关者访谈",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "商业"
+      ],
+      "file": "product-design/user-research/stakeholder-interview.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "card-sorting",
+      "name": "卡片分类法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "IA"
+      ],
+      "file": "product-design/user-research/card-sorting.md",
+      "exists": true,
+      "char_count": 1345
+    },
+    {
+      "id": "usability-testing",
+      "name": "可用性测试",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "测试"
+      ],
+      "file": "product-design/user-research/usability-testing.md",
+      "exists": true,
+      "char_count": 2231
+    },
+    {
+      "id": "empathy-map",
+      "name": "同理心地图",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/user-research/empathy-map.md",
+      "exists": true,
+      "char_count": 2213
+    },
+    {
+      "id": "heuristic-evaluation",
+      "name": "启发式评估",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "评估"
+      ],
+      "file": "product-design/user-research/heuristic-evaluation.md",
+      "exists": true,
+      "char_count": 1275
+    },
+    {
+      "id": "jobs-to-be-done",
+      "name": "待完成工作理论",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "框架"
+      ],
+      "file": "product-design/user-research/jobs-to-be-done.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "contextual-inquiry",
+      "name": "情境调查",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "定性"
+      ],
+      "file": "product-design/user-research/contextual-inquiry.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "accessibility-research",
+      "name": "无障碍研究",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "包容性"
+      ],
+      "file": "product-design/user-research/accessibility-research.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "diary-study",
+      "name": "日记研究法",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "定性"
+      ],
+      "file": "product-design/user-research/diary-study.md",
+      "exists": true,
+      "char_count": 1245
+    },
+    {
+      "id": "ethnographic-research",
+      "name": "民族志研究",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "定性"
+      ],
+      "file": "product-design/user-research/ethnographic-research.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "focus-group",
+      "name": "焦点小组",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "定性"
+      ],
+      "file": "product-design/user-research/focus-group.md",
+      "exists": true,
+      "char_count": 2365
+    },
+    {
+      "id": "journey-map",
+      "name": "用户旅程图",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "product-design/user-research/journey-map.md",
+      "exists": true,
+      "char_count": 2542
+    },
+    {
+      "id": "user-persona",
+      "name": "用户画像",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "建模"
+      ],
+      "file": "product-design/user-research/user-persona.md",
+      "exists": true,
+      "char_count": 2337
+    },
+    {
+      "id": "user-research-overview",
+      "name": "用户研究概述",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/user-research/user-research-overview.md",
+      "exists": true,
+      "char_count": 1644
+    },
+    {
+      "id": "user-interview",
+      "name": "用户访谈",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "定性"
+      ],
+      "file": "product-design/user-research/user-interview.md",
+      "exists": true,
+      "char_count": 2193
+    },
+    {
+      "id": "eye-tracking",
+      "name": "眼动追踪",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "量化"
+      ],
+      "file": "product-design/user-research/eye-tracking.md",
+      "exists": true,
+      "char_count": 1247
+    },
+    {
+      "id": "research-ethics",
+      "name": "研究伦理",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "伦理"
+      ],
+      "file": "product-design/user-research/research-ethics.md",
+      "exists": true,
+      "char_count": 2670
+    },
+    {
+      "id": "research-synthesis",
+      "name": "研究综合分析",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "product-design/user-research/research-synthesis.md",
+      "exists": true,
+      "char_count": 1417
+    },
+    {
+      "id": "research-planning",
+      "name": "研究计划制定",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规划"
+      ],
+      "file": "product-design/user-research/research-planning.md",
+      "exists": true,
+      "char_count": 1495
+    },
+    {
+      "id": "competitive-analysis",
+      "name": "竞品分析",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "分析"
+      ],
+      "file": "product-design/user-research/competitive-analysis.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "survey-design",
+      "name": "问卷设计",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "定量"
+      ],
+      "file": "product-design/user-research/survey-design.md",
+      "exists": true,
+      "char_count": 1472
+    },
+    {
+      "id": "3d-in-ui",
+      "name": "3D与UI融合",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "新兴"
+      ],
+      "file": "product-design/visual-design/3d-in-ui.md",
+      "exists": true,
+      "char_count": 1381
+    },
+    {
+      "id": "material-design",
+      "name": "Material Design",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "product-design/visual-design/material-design.md",
+      "exists": true,
+      "char_count": 1807
+    },
+    {
+      "id": "ios-human-interface",
+      "name": "iOS Human Interface",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "product-design/visual-design/ios-human-interface.md",
+      "exists": true,
+      "char_count": 1722
+    },
+    {
+      "id": "brand-design",
+      "name": "品牌设计",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "品牌"
+      ],
+      "file": "product-design/visual-design/brand-design.md",
+      "exists": true,
+      "char_count": 2765
+    },
+    {
+      "id": "responsive-imagery",
+      "name": "响应式图片",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "product-design/visual-design/responsive-imagery.md",
+      "exists": true,
+      "char_count": 1379
+    },
+    {
+      "id": "iconography",
+      "name": "图标设计",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "元素"
+      ],
+      "file": "product-design/visual-design/iconography.md",
+      "exists": true,
+      "char_count": 1396
+    },
+    {
+      "id": "typography",
+      "name": "字体排印学",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/visual-design/typography.md",
+      "exists": true,
+      "char_count": 1518
+    },
+    {
+      "id": "contrast-design",
+      "name": "对比设计",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "原则"
+      ],
+      "file": "product-design/visual-design/contrast-design.md",
+      "exists": true,
+      "char_count": 1441
+    },
+    {
+      "id": "layout-grid",
+      "name": "布局与栅格",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "布局"
+      ],
+      "file": "product-design/visual-design/layout-grid.md",
+      "exists": true,
+      "char_count": 2330
+    },
+    {
+      "id": "emotional-design",
+      "name": "情感化设计",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "心理学"
+      ],
+      "file": "product-design/visual-design/emotional-design.md",
+      "exists": true,
+      "char_count": 1327
+    },
+    {
+      "id": "skeuomorphism-vs-flat",
+      "name": "拟物与扁平",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "历史"
+      ],
+      "file": "product-design/visual-design/skeuomorphism-vs-flat.md",
+      "exists": true,
+      "char_count": 1331
+    },
+    {
+      "id": "illustration-design",
+      "name": "插画设计",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "元素"
+      ],
+      "file": "product-design/visual-design/illustration-design.md",
+      "exists": true,
+      "char_count": 1345
+    },
+    {
+      "id": "data-visualization",
+      "name": "数据可视化",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "数据"
+      ],
+      "file": "product-design/visual-design/data-visualization.md",
+      "exists": true,
+      "char_count": 1519
+    },
+    {
+      "id": "dark-light-theme",
+      "name": "明暗主题设计",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "主题"
+      ],
+      "file": "product-design/visual-design/dark-light-theme.md",
+      "exists": true,
+      "char_count": 1440
+    },
+    {
+      "id": "whitespace-design",
+      "name": "留白设计",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "原则"
+      ],
+      "file": "product-design/visual-design/whitespace-design.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "color-theory",
+      "name": "色彩理论",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/visual-design/color-theory.md",
+      "exists": true,
+      "char_count": 2605
+    },
+    {
+      "id": "visual-hierarchy",
+      "name": "视觉层级",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "原则"
+      ],
+      "file": "product-design/visual-design/visual-hierarchy.md",
+      "exists": true,
+      "char_count": 2652
+    },
+    {
+      "id": "visual-design-overview",
+      "name": "视觉设计概述",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "product-design/visual-design/visual-design-overview.md",
+      "exists": true,
+      "char_count": 1553
+    },
+    {
+      "id": "design-consistency",
+      "name": "设计一致性",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "原则"
+      ],
+      "file": "product-design/visual-design/design-consistency.md",
+      "exists": true,
+      "char_count": 1505
+    },
+    {
+      "id": "design-handoff",
+      "name": "设计交付",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "协作"
+      ],
+      "file": "product-design/visual-design/design-handoff.md",
+      "exists": true,
+      "char_count": 2898
+    },
+    {
+      "id": "design-token",
+      "name": "设计令牌",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "product-design/visual-design/design-token.md",
+      "exists": true,
+      "char_count": 1334
+    },
+    {
+      "id": "motion-design",
+      "name": "运动设计",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动效"
+      ],
+      "file": "product-design/visual-design/motion-design.md",
+      "exists": true,
+      "char_count": 1361
     }
   ],
   "stats": {
-    "total_docs": 182,
-    "total_chars": 88153,
-    "by_subdomain": {
-      "user-research": 24,
-      "product-thinking": 24,
-      "interaction-design": 24,
-      "visual-design": 22,
-      "prototyping": 20,
-      "data-driven": 22,
-      "product-management": 24,
-      "growth": 22
-    }
+    "total": 182,
+    "total_chars": 315944,
+    "avg_chars": 1735,
+    "domain": "product-design"
   }
 }

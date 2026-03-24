@@ -1,1104 +1,2350 @@
 {
-  "version": "1.0",
-  "domain": "game-live-ops",
-  "domain_name": "运营",
-  "generated_at": "2026-03-21T02:20:34.488377+00:00",
-  "total_concepts": 180,
-  "stats": {
-    "total_docs": 180,
-    "total_chars": 139545,
-    "by_subdomain": {
-      "data-analytics": 20,
-      "event-planning": 20,
-      "user-retention": 20,
-      "monetization": 20,
-      "update-cadence": 20,
-      "season-ops": 20,
-      "customer-service": 20,
-      "ab-testing": 20,
-      "economy-monitoring": 20
-    }
-  },
   "documents": [
     {
-      "id": "ops-da-data-collection",
-      "file": "ops-da-data-collection.md",
-      "subdomain": "data-analytics",
-      "chars": 790
-    },
-    {
-      "id": "ops-da-event-tracking",
-      "file": "ops-da-event-tracking.md",
-      "subdomain": "data-analytics",
-      "chars": 785
-    },
-    {
-      "id": "ops-da-data-pipeline",
-      "file": "ops-da-data-pipeline.md",
-      "subdomain": "data-analytics",
-      "chars": 777
-    },
-    {
-      "id": "ops-da-kpi-framework",
-      "file": "ops-da-kpi-framework.md",
-      "subdomain": "data-analytics",
-      "chars": 808
-    },
-    {
-      "id": "ops-da-retention-metrics",
-      "file": "ops-da-retention-metrics.md",
-      "subdomain": "data-analytics",
-      "chars": 780
-    },
-    {
-      "id": "ops-da-revenue-metrics",
-      "file": "ops-da-revenue-metrics.md",
-      "subdomain": "data-analytics",
-      "chars": 782
-    },
-    {
-      "id": "ops-da-cohort-analysis",
-      "file": "ops-da-cohort-analysis.md",
-      "subdomain": "data-analytics",
-      "chars": 779
-    },
-    {
-      "id": "ops-da-funnel-analysis",
-      "file": "ops-da-funnel-analysis.md",
-      "subdomain": "data-analytics",
-      "chars": 771
-    },
-    {
-      "id": "ops-da-user-segmentation",
-      "file": "ops-da-user-segmentation.md",
-      "subdomain": "data-analytics",
-      "chars": 778
-    },
-    {
-      "id": "ops-da-bi-tools",
-      "file": "ops-da-bi-tools.md",
-      "subdomain": "data-analytics",
-      "chars": 799
-    },
-    {
-      "id": "ops-da-dashboard-design",
-      "file": "ops-da-dashboard-design.md",
-      "subdomain": "data-analytics",
-      "chars": 788
-    },
-    {
-      "id": "ops-da-sql-for-ops",
-      "file": "ops-da-sql-for-ops.md",
-      "subdomain": "data-analytics",
-      "chars": 790
-    },
-    {
-      "id": "ops-da-behavioral-analytics",
-      "file": "ops-da-behavioral-analytics.md",
-      "subdomain": "data-analytics",
-      "chars": 778
-    },
-    {
-      "id": "ops-da-predictive-modeling",
-      "file": "ops-da-predictive-modeling.md",
-      "subdomain": "data-analytics",
-      "chars": 778
-    },
-    {
-      "id": "ops-da-attribution",
-      "file": "ops-da-attribution.md",
-      "subdomain": "data-analytics",
-      "chars": 768
-    },
-    {
-      "id": "ops-da-data-warehouse",
-      "file": "ops-da-data-warehouse.md",
-      "subdomain": "data-analytics",
-      "chars": 797
-    },
-    {
-      "id": "ops-da-realtime-monitoring",
-      "file": "ops-da-realtime-monitoring.md",
-      "subdomain": "data-analytics",
-      "chars": 776
-    },
-    {
-      "id": "ops-da-privacy-compliance",
-      "file": "ops-da-privacy-compliance.md",
-      "subdomain": "data-analytics",
-      "chars": 797
-    },
-    {
-      "id": "ops-da-data-driven-culture",
-      "file": "ops-da-data-driven-culture.md",
-      "subdomain": "data-analytics",
-      "chars": 791
-    },
-    {
-      "id": "ops-da-anomaly-detection",
-      "file": "ops-da-anomaly-detection.md",
-      "subdomain": "data-analytics",
-      "chars": 777
-    },
-    {
-      "id": "ops-ep-event-types",
-      "file": "ops-ep-event-types.md",
-      "subdomain": "event-planning",
-      "chars": 787
-    },
-    {
-      "id": "ops-ep-event-lifecycle",
-      "file": "ops-ep-event-lifecycle.md",
-      "subdomain": "event-planning",
-      "chars": 787
-    },
-    {
-      "id": "ops-ep-event-design",
-      "file": "ops-ep-event-design.md",
-      "subdomain": "event-planning",
-      "chars": 785
-    },
-    {
-      "id": "ops-ep-reward-design",
-      "file": "ops-ep-reward-design.md",
-      "subdomain": "event-planning",
-      "chars": 774
-    },
-    {
-      "id": "ops-ep-calendar-planning",
-      "file": "ops-ep-calendar-planning.md",
-      "subdomain": "event-planning",
-      "chars": 775
-    },
-    {
-      "id": "ops-ep-festival-ops",
-      "file": "ops-ep-festival-ops.md",
-      "subdomain": "event-planning",
-      "chars": 773
-    },
-    {
-      "id": "ops-ep-limited-time",
-      "file": "ops-ep-limited-time.md",
-      "subdomain": "event-planning",
-      "chars": 785
-    },
-    {
-      "id": "ops-ep-crossover",
-      "file": "ops-ep-crossover.md",
-      "subdomain": "event-planning",
-      "chars": 769
-    },
-    {
-      "id": "ops-ep-competitive-event",
-      "file": "ops-ep-competitive-event.md",
-      "subdomain": "event-planning",
-      "chars": 784
-    },
-    {
-      "id": "ops-ep-social-event",
-      "file": "ops-ep-social-event.md",
-      "subdomain": "event-planning",
-      "chars": 778
-    },
-    {
-      "id": "ops-ep-event-economy",
-      "file": "ops-ep-event-economy.md",
-      "subdomain": "event-planning",
-      "chars": 767
-    },
-    {
-      "id": "ops-ep-event-tech",
-      "file": "ops-ep-event-tech.md",
-      "subdomain": "event-planning",
-      "chars": 780
-    },
-    {
-      "id": "ops-ep-ab-in-events",
-      "file": "ops-ep-ab-in-events.md",
-      "subdomain": "event-planning",
-      "chars": 785
-    },
-    {
-      "id": "ops-ep-event-analytics",
-      "file": "ops-ep-event-analytics.md",
-      "subdomain": "event-planning",
-      "chars": 781
-    },
-    {
-      "id": "ops-ep-event-postmortem",
-      "file": "ops-ep-event-postmortem.md",
-      "subdomain": "event-planning",
-      "chars": 769
-    },
-    {
-      "id": "ops-ep-engagement-loop",
-      "file": "ops-ep-engagement-loop.md",
-      "subdomain": "event-planning",
-      "chars": 782
-    },
-    {
-      "id": "ops-ep-ugc-event",
-      "file": "ops-ep-ugc-event.md",
-      "subdomain": "event-planning",
-      "chars": 774
-    },
-    {
-      "id": "ops-ep-personalized-event",
-      "file": "ops-ep-personalized-event.md",
-      "subdomain": "event-planning",
-      "chars": 780
-    },
-    {
-      "id": "ops-ep-event-automation",
-      "file": "ops-ep-event-automation.md",
-      "subdomain": "event-planning",
-      "chars": 775
-    },
-    {
-      "id": "ops-ep-global-event",
-      "file": "ops-ep-global-event.md",
-      "subdomain": "event-planning",
-      "chars": 784
-    },
-    {
-      "id": "ops-ur-retention-basics",
-      "file": "ops-ur-retention-basics.md",
-      "subdomain": "user-retention",
-      "chars": 782
-    },
-    {
-      "id": "ops-ur-first-session",
-      "file": "ops-ur-first-session.md",
-      "subdomain": "user-retention",
-      "chars": 782
-    },
-    {
-      "id": "ops-ur-onboarding",
-      "file": "ops-ur-onboarding.md",
-      "subdomain": "user-retention",
-      "chars": 773
-    },
-    {
-      "id": "ops-ur-daily-loop",
-      "file": "ops-ur-daily-loop.md",
-      "subdomain": "user-retention",
-      "chars": 772
-    },
-    {
-      "id": "ops-ur-weekly-loop",
-      "file": "ops-ur-weekly-loop.md",
-      "subdomain": "user-retention",
-      "chars": 772
-    },
-    {
-      "id": "ops-ur-long-term-goals",
-      "file": "ops-ur-long-term-goals.md",
-      "subdomain": "user-retention",
-      "chars": 776
-    },
-    {
-      "id": "ops-ur-social-hooks",
-      "file": "ops-ur-social-hooks.md",
-      "subdomain": "user-retention",
-      "chars": 764
-    },
-    {
-      "id": "ops-ur-churn-prediction",
-      "file": "ops-ur-churn-prediction.md",
-      "subdomain": "user-retention",
-      "chars": 766
-    },
-    {
-      "id": "ops-ur-win-back",
-      "file": "ops-ur-win-back.md",
-      "subdomain": "user-retention",
-      "chars": 756
-    },
-    {
-      "id": "ops-ur-push-notification",
-      "file": "ops-ur-push-notification.md",
-      "subdomain": "user-retention",
-      "chars": 766
-    },
-    {
-      "id": "ops-ur-lifecycle-management",
-      "file": "ops-ur-lifecycle-management.md",
-      "subdomain": "user-retention",
-      "chars": 785
-    },
-    {
-      "id": "ops-ur-content-pacing",
-      "file": "ops-ur-content-pacing.md",
-      "subdomain": "user-retention",
-      "chars": 760
-    },
-    {
-      "id": "ops-ur-difficulty-curve",
-      "file": "ops-ur-difficulty-curve.md",
-      "subdomain": "user-retention",
-      "chars": 777
-    },
-    {
-      "id": "ops-ur-engagement-score",
-      "file": "ops-ur-engagement-score.md",
-      "subdomain": "user-retention",
-      "chars": 766
-    },
-    {
-      "id": "ops-ur-reengagement-tools",
-      "file": "ops-ur-reengagement-tools.md",
-      "subdomain": "user-retention",
-      "chars": 773
-    },
-    {
-      "id": "ops-ur-habit-formation",
-      "file": "ops-ur-habit-formation.md",
-      "subdomain": "user-retention",
-      "chars": 767
-    },
-    {
-      "id": "ops-ur-community-retention",
-      "file": "ops-ur-community-retention.md",
-      "subdomain": "user-retention",
-      "chars": 769
-    },
-    {
-      "id": "ops-ur-vip-retention",
-      "file": "ops-ur-vip-retention.md",
-      "subdomain": "user-retention",
-      "chars": 781
-    },
-    {
-      "id": "ops-ur-cross-platform",
-      "file": "ops-ur-cross-platform.md",
-      "subdomain": "user-retention",
-      "chars": 773
-    },
-    {
-      "id": "ops-ur-retention-benchmarks",
-      "file": "ops-ur-retention-benchmarks.md",
-      "subdomain": "user-retention",
-      "chars": 781
-    },
-    {
-      "id": "ops-mo-monetization-models",
-      "file": "ops-mo-monetization-models.md",
-      "subdomain": "monetization",
-      "chars": 786
-    },
-    {
-      "id": "ops-mo-iap-design",
-      "file": "ops-mo-iap-design.md",
-      "subdomain": "monetization",
-      "chars": 788
-    },
-    {
-      "id": "ops-mo-price-psychology",
-      "file": "ops-mo-price-psychology.md",
-      "subdomain": "monetization",
-      "chars": 775
-    },
-    {
-      "id": "ops-mo-battle-pass",
-      "file": "ops-mo-battle-pass.md",
-      "subdomain": "monetization",
-      "chars": 816
-    },
-    {
-      "id": "ops-mo-subscription",
-      "file": "ops-mo-subscription.md",
-      "subdomain": "monetization",
-      "chars": 767
-    },
-    {
-      "id": "ops-mo-gacha-system",
-      "file": "ops-mo-gacha-system.md",
-      "subdomain": "monetization",
-      "chars": 778
-    },
-    {
-      "id": "ops-mo-ad-monetization",
-      "file": "ops-mo-ad-monetization.md",
-      "subdomain": "monetization",
-      "chars": 772
-    },
-    {
-      "id": "ops-mo-store-design",
-      "file": "ops-mo-store-design.md",
-      "subdomain": "monetization",
-      "chars": 765
-    },
-    {
-      "id": "ops-mo-ltv-optimization",
-      "file": "ops-mo-ltv-optimization.md",
-      "subdomain": "monetization",
-      "chars": 768
-    },
-    {
-      "id": "ops-mo-paying-conversion",
-      "file": "ops-mo-paying-conversion.md",
-      "subdomain": "monetization",
-      "chars": 778
-    },
-    {
-      "id": "ops-mo-whale-management",
-      "file": "ops-mo-whale-management.md",
-      "subdomain": "monetization",
-      "chars": 764
-    },
-    {
-      "id": "ops-mo-offer-system",
-      "file": "ops-mo-offer-system.md",
-      "subdomain": "monetization",
-      "chars": 763
-    },
-    {
-      "id": "ops-mo-virtual-currency",
-      "file": "ops-mo-virtual-currency.md",
-      "subdomain": "monetization",
-      "chars": 779
-    },
-    {
-      "id": "ops-mo-ethical-monetization",
-      "file": "ops-mo-ethical-monetization.md",
-      "subdomain": "monetization",
-      "chars": 783
-    },
-    {
-      "id": "ops-mo-regional-pricing",
-      "file": "ops-mo-regional-pricing.md",
-      "subdomain": "monetization",
-      "chars": 766
-    },
-    {
-      "id": "ops-mo-payment-integration",
-      "file": "ops-mo-payment-integration.md",
-      "subdomain": "monetization",
-      "chars": 774
-    },
-    {
-      "id": "ops-mo-refund-policy",
-      "file": "ops-mo-refund-policy.md",
-      "subdomain": "monetization",
-      "chars": 762
-    },
-    {
-      "id": "ops-mo-revenue-forecasting",
-      "file": "ops-mo-revenue-forecasting.md",
-      "subdomain": "monetization",
-      "chars": 766
-    },
-    {
-      "id": "ops-mo-bundle-strategy",
-      "file": "ops-mo-bundle-strategy.md",
-      "subdomain": "monetization",
-      "chars": 778
-    },
-    {
-      "id": "ops-mo-monetization-metrics",
-      "file": "ops-mo-monetization-metrics.md",
-      "subdomain": "monetization",
-      "chars": 789
-    },
-    {
-      "id": "ops-uc-update-strategy",
-      "file": "ops-uc-update-strategy.md",
-      "subdomain": "update-cadence",
-      "chars": 784
-    },
-    {
-      "id": "ops-uc-roadmap-planning",
-      "file": "ops-uc-roadmap-planning.md",
-      "subdomain": "update-cadence",
-      "chars": 779
-    },
-    {
-      "id": "ops-uc-major-update",
-      "file": "ops-uc-major-update.md",
-      "subdomain": "update-cadence",
-      "chars": 779
-    },
-    {
-      "id": "ops-uc-minor-update",
-      "file": "ops-uc-minor-update.md",
-      "subdomain": "update-cadence",
-      "chars": 777
-    },
-    {
-      "id": "ops-uc-hotfix-process",
-      "file": "ops-uc-hotfix-process.md",
-      "subdomain": "update-cadence",
-      "chars": 776
-    },
-    {
-      "id": "ops-uc-feature-flag",
-      "file": "ops-uc-feature-flag.md",
-      "subdomain": "update-cadence",
-      "chars": 776
-    },
-    {
-      "id": "ops-uc-release-notes",
-      "file": "ops-uc-release-notes.md",
-      "subdomain": "update-cadence",
-      "chars": 770
-    },
-    {
-      "id": "ops-uc-downtime-management",
-      "file": "ops-uc-downtime-management.md",
-      "subdomain": "update-cadence",
-      "chars": 780
-    },
-    {
-      "id": "ops-uc-content-pipeline",
-      "file": "ops-uc-content-pipeline.md",
-      "subdomain": "update-cadence",
-      "chars": 773
-    },
-    {
-      "id": "ops-uc-platform-submission",
-      "file": "ops-uc-platform-submission.md",
-      "subdomain": "update-cadence",
-      "chars": 793
-    },
-    {
-      "id": "ops-uc-rollback-strategy",
-      "file": "ops-uc-rollback-strategy.md",
-      "subdomain": "update-cadence",
-      "chars": 774
-    },
-    {
-      "id": "ops-uc-compatibility",
-      "file": "ops-uc-compatibility.md",
-      "subdomain": "update-cadence",
-      "chars": 774
-    },
-    {
-      "id": "ops-uc-beta-testing",
-      "file": "ops-uc-beta-testing.md",
-      "subdomain": "update-cadence",
-      "chars": 783
-    },
-    {
-      "id": "ops-uc-patch-size",
-      "file": "ops-uc-patch-size.md",
-      "subdomain": "update-cadence",
-      "chars": 765
-    },
-    {
-      "id": "ops-uc-server-update",
-      "file": "ops-uc-server-update.md",
-      "subdomain": "update-cadence",
-      "chars": 776
-    },
-    {
-      "id": "ops-uc-changelog-culture",
-      "file": "ops-uc-changelog-culture.md",
-      "subdomain": "update-cadence",
-      "chars": 782
-    },
-    {
-      "id": "ops-uc-content-calendar",
-      "file": "ops-uc-content-calendar.md",
-      "subdomain": "update-cadence",
-      "chars": 781
-    },
-    {
-      "id": "ops-uc-staged-rollout",
-      "file": "ops-uc-staged-rollout.md",
-      "subdomain": "update-cadence",
-      "chars": 778
-    },
-    {
-      "id": "ops-uc-player-expectations",
-      "file": "ops-uc-player-expectations.md",
-      "subdomain": "update-cadence",
-      "chars": 794
-    },
-    {
-      "id": "ops-uc-post-launch-support",
-      "file": "ops-uc-post-launch-support.md",
-      "subdomain": "update-cadence",
-      "chars": 782
-    },
-    {
-      "id": "ops-so-season-basics",
-      "file": "ops-so-season-basics.md",
-      "subdomain": "season-ops",
-      "chars": 771
-    },
-    {
-      "id": "ops-so-season-structure",
-      "file": "ops-so-season-structure.md",
-      "subdomain": "season-ops",
-      "chars": 772
-    },
-    {
-      "id": "ops-so-ranked-system",
-      "file": "ops-so-ranked-system.md",
-      "subdomain": "season-ops",
-      "chars": 771
-    },
-    {
-      "id": "ops-so-season-pass",
-      "file": "ops-so-season-pass.md",
-      "subdomain": "season-ops",
-      "chars": 762
-    },
-    {
-      "id": "ops-so-season-theme",
-      "file": "ops-so-season-theme.md",
-      "subdomain": "season-ops",
-      "chars": 762
-    },
-    {
-      "id": "ops-so-reward-reset",
-      "file": "ops-so-reward-reset.md",
-      "subdomain": "season-ops",
-      "chars": 768
-    },
-    {
-      "id": "ops-so-meta-shift",
-      "file": "ops-so-meta-shift.md",
-      "subdomain": "season-ops",
-      "chars": 779
-    },
-    {
-      "id": "ops-so-fomo-vs-fairness",
-      "file": "ops-so-fomo-vs-fairness.md",
-      "subdomain": "season-ops",
-      "chars": 778
-    },
-    {
-      "id": "ops-so-progression-speed",
-      "file": "ops-so-progression-speed.md",
-      "subdomain": "season-ops",
-      "chars": 772
-    },
-    {
-      "id": "ops-so-season-analytics",
-      "file": "ops-so-season-analytics.md",
-      "subdomain": "season-ops",
-      "chars": 777
-    },
-    {
-      "id": "ops-so-inter-season",
-      "file": "ops-so-inter-season.md",
-      "subdomain": "season-ops",
-      "chars": 760
-    },
-    {
-      "id": "ops-so-competitive-integrity",
-      "file": "ops-so-competitive-integrity.md",
-      "subdomain": "season-ops",
-      "chars": 773
-    },
-    {
-      "id": "ops-so-leaderboard-ops",
-      "file": "ops-so-leaderboard-ops.md",
-      "subdomain": "season-ops",
-      "chars": 763
-    },
-    {
-      "id": "ops-so-esports-integration",
-      "file": "ops-so-esports-integration.md",
-      "subdomain": "season-ops",
-      "chars": 773
-    },
-    {
-      "id": "ops-so-season-cosmetics",
-      "file": "ops-so-season-cosmetics.md",
-      "subdomain": "season-ops",
-      "chars": 760
-    },
-    {
-      "id": "ops-so-catch-up-mechanics",
-      "file": "ops-so-catch-up-mechanics.md",
-      "subdomain": "season-ops",
-      "chars": 759
-    },
-    {
-      "id": "ops-so-multi-mode-season",
-      "file": "ops-so-multi-mode-season.md",
-      "subdomain": "season-ops",
-      "chars": 765
-    },
-    {
-      "id": "ops-so-season-fatigue",
-      "file": "ops-so-season-fatigue.md",
-      "subdomain": "season-ops",
-      "chars": 758
-    },
-    {
-      "id": "ops-so-community-feedback",
-      "file": "ops-so-community-feedback.md",
-      "subdomain": "season-ops",
-      "chars": 764
-    },
-    {
-      "id": "ops-so-season-kpi",
-      "file": "ops-so-season-kpi.md",
-      "subdomain": "season-ops",
-      "chars": 770
-    },
-    {
-      "id": "ops-cs-support-basics",
-      "file": "ops-cs-support-basics.md",
-      "subdomain": "customer-service",
-      "chars": 763
-    },
-    {
-      "id": "ops-cs-ticket-system",
-      "file": "ops-cs-ticket-system.md",
-      "subdomain": "customer-service",
-      "chars": 768
-    },
-    {
-      "id": "ops-cs-classification",
-      "file": "ops-cs-classification.md",
-      "subdomain": "customer-service",
-      "chars": 784
-    },
-    {
-      "id": "ops-cs-ai-chatbot",
-      "file": "ops-cs-ai-chatbot.md",
-      "subdomain": "customer-service",
-      "chars": 764
-    },
-    {
-      "id": "ops-cs-vip-service",
-      "file": "ops-cs-vip-service.md",
-      "subdomain": "customer-service",
-      "chars": 782
-    },
-    {
-      "id": "ops-cs-ban-appeal",
-      "file": "ops-cs-ban-appeal.md",
-      "subdomain": "customer-service",
-      "chars": 767
-    },
-    {
-      "id": "ops-cs-compensation",
-      "file": "ops-cs-compensation.md",
-      "subdomain": "customer-service",
-      "chars": 768
-    },
-    {
-      "id": "ops-cs-feedback-loop",
-      "file": "ops-cs-feedback-loop.md",
-      "subdomain": "customer-service",
-      "chars": 766
-    },
-    {
-      "id": "ops-cs-crisis-management",
-      "file": "ops-cs-crisis-management.md",
-      "subdomain": "customer-service",
-      "chars": 769
-    },
-    {
-      "id": "ops-cs-moderation",
-      "file": "ops-cs-moderation.md",
-      "subdomain": "customer-service",
-      "chars": 764
-    },
-    {
-      "id": "ops-cs-localized-support",
-      "file": "ops-cs-localized-support.md",
-      "subdomain": "customer-service",
-      "chars": 774
-    },
-    {
-      "id": "ops-cs-self-service",
-      "file": "ops-cs-self-service.md",
-      "subdomain": "customer-service",
-      "chars": 766
-    },
-    {
-      "id": "ops-cs-metrics",
-      "file": "ops-cs-metrics.md",
-      "subdomain": "customer-service",
-      "chars": 765
-    },
-    {
-      "id": "ops-cs-escalation",
-      "file": "ops-cs-escalation.md",
-      "subdomain": "customer-service",
-      "chars": 759
-    },
-    {
-      "id": "ops-cs-community-support",
-      "file": "ops-cs-community-support.md",
-      "subdomain": "customer-service",
-      "chars": 767
-    },
-    {
-      "id": "ops-cs-sentiment-analysis",
-      "file": "ops-cs-sentiment-analysis.md",
-      "subdomain": "customer-service",
-      "chars": 769
-    },
-    {
-      "id": "ops-cs-automation",
-      "file": "ops-cs-automation.md",
-      "subdomain": "customer-service",
-      "chars": 769
-    },
-    {
-      "id": "ops-cs-training",
-      "file": "ops-cs-training.md",
-      "subdomain": "customer-service",
-      "chars": 761
-    },
-    {
-      "id": "ops-cs-reporting",
-      "file": "ops-cs-reporting.md",
-      "subdomain": "customer-service",
-      "chars": 760
-    },
-    {
-      "id": "ops-cs-player-advocacy",
-      "file": "ops-cs-player-advocacy.md",
-      "subdomain": "customer-service",
-      "chars": 775
-    },
-    {
-      "id": "ops-ab-experiment-basics",
-      "file": "ops-ab-experiment-basics.md",
-      "subdomain": "ab-testing",
-      "chars": 767
+      "id": "ops-ab-ui-experiment",
+      "name": "UI/UX实验",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-ui-experiment.md",
+      "exists": true,
+      "char_count": 1406
     },
     {
       "id": "ops-ab-hypothesis",
-      "file": "ops-ab-hypothesis.md",
-      "subdomain": "ab-testing",
-      "chars": 764
-    },
-    {
-      "id": "ops-ab-sample-size",
-      "file": "ops-ab-sample-size.md",
-      "subdomain": "ab-testing",
-      "chars": 767
-    },
-    {
-      "id": "ops-ab-randomization",
-      "file": "ops-ab-randomization.md",
-      "subdomain": "ab-testing",
-      "chars": 767
-    },
-    {
-      "id": "ops-ab-statistical-significance",
-      "file": "ops-ab-statistical-significance.md",
-      "subdomain": "ab-testing",
-      "chars": 778
-    },
-    {
-      "id": "ops-ab-metrics-selection",
-      "file": "ops-ab-metrics-selection.md",
-      "subdomain": "ab-testing",
-      "chars": 768
-    },
-    {
-      "id": "ops-ab-experiment-duration",
-      "file": "ops-ab-experiment-duration.md",
-      "subdomain": "ab-testing",
-      "chars": 769
-    },
-    {
-      "id": "ops-ab-multivariate",
-      "file": "ops-ab-multivariate.md",
-      "subdomain": "ab-testing",
-      "chars": 798
-    },
-    {
-      "id": "ops-ab-feature-experiment",
-      "file": "ops-ab-feature-experiment.md",
-      "subdomain": "ab-testing",
-      "chars": 771
-    },
-    {
-      "id": "ops-ab-pricing-experiment",
-      "file": "ops-ab-pricing-experiment.md",
-      "subdomain": "ab-testing",
-      "chars": 768
-    },
-    {
-      "id": "ops-ab-ui-experiment",
-      "file": "ops-ab-ui-experiment.md",
-      "subdomain": "ab-testing",
-      "chars": 780
-    },
-    {
-      "id": "ops-ab-platform",
-      "file": "ops-ab-platform.md",
-      "subdomain": "ab-testing",
-      "chars": 763
+      "name": "假设制定",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-hypothesis.md",
+      "exists": true,
+      "char_count": 1379
     },
     {
       "id": "ops-ab-segmented-analysis",
-      "file": "ops-ab-segmented-analysis.md",
-      "subdomain": "ab-testing",
-      "chars": 771
+      "name": "分群分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-segmented-analysis.md",
+      "exists": true,
+      "char_count": 1399
     },
     {
-      "id": "ops-ab-long-term-effects",
-      "file": "ops-ab-long-term-effects.md",
-      "subdomain": "ab-testing",
-      "chars": 770
+      "id": "ops-ab-feature-experiment",
+      "name": "功能实验",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-feature-experiment.md",
+      "exists": true,
+      "char_count": 1486
     },
     {
-      "id": "ops-ab-bayesian-testing",
-      "file": "ops-ab-bayesian-testing.md",
-      "subdomain": "ab-testing",
-      "chars": 775
+      "id": "ops-ab-multivariate",
+      "name": "多变量测试(MVT)",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-multivariate.md",
+      "exists": true,
+      "char_count": 1702
     },
     {
       "id": "ops-ab-bandits",
-      "file": "ops-ab-bandits.md",
-      "subdomain": "ab-testing",
-      "chars": 775
+      "name": "多臂老虎机",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-bandits.md",
+      "exists": true,
+      "char_count": 1445
     },
     {
-      "id": "ops-ab-network-effects",
-      "file": "ops-ab-network-effects.md",
-      "subdomain": "ab-testing",
-      "chars": 765
+      "id": "ops-ab-pricing-experiment",
+      "name": "定价实验",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-pricing-experiment.md",
+      "exists": true,
+      "char_count": 1516
+    },
+    {
+      "id": "ops-ab-experiment-basics",
+      "name": "实验基础",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-experiment-basics.md",
+      "exists": true,
+      "char_count": 1586
+    },
+    {
+      "id": "ops-ab-platform",
+      "name": "实验平台",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-platform.md",
+      "exists": true,
+      "char_count": 1450
     },
     {
       "id": "ops-ab-experiment-culture",
-      "file": "ops-ab-experiment-culture.md",
-      "subdomain": "ab-testing",
-      "chars": 765
+      "name": "实验文化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-experiment-culture.md",
+      "exists": true,
+      "char_count": 1339
     },
     {
-      "id": "ops-ab-pitfalls",
-      "file": "ops-ab-pitfalls.md",
-      "subdomain": "ab-testing",
-      "chars": 764
+      "id": "ops-ab-experiment-duration",
+      "name": "实验时长",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-experiment-duration.md",
+      "exists": true,
+      "char_count": 1509
     },
     {
       "id": "ops-ab-documentation",
-      "file": "ops-ab-documentation.md",
-      "subdomain": "ab-testing",
-      "chars": 759
+      "name": "实验记录",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-documentation.md",
+      "exists": true,
+      "char_count": 1549
     },
     {
-      "id": "ops-em-economy-basics",
-      "file": "ops-em-economy-basics.md",
-      "subdomain": "economy-monitoring",
-      "chars": 787
+      "id": "ops-ab-pitfalls",
+      "name": "实验陷阱",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-pitfalls.md",
+      "exists": true,
+      "char_count": 1425
     },
     {
-      "id": "ops-em-currency-system",
-      "file": "ops-em-currency-system.md",
-      "subdomain": "economy-monitoring",
-      "chars": 785
+      "id": "ops-ab-metrics-selection",
+      "name": "指标选择",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-metrics-selection.md",
+      "exists": true,
+      "char_count": 1564
     },
     {
-      "id": "ops-em-source-sink",
-      "file": "ops-em-source-sink.md",
-      "subdomain": "economy-monitoring",
-      "chars": 778
+      "id": "ops-ab-sample-size",
+      "name": "样本量计算",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-sample-size.md",
+      "exists": true,
+      "char_count": 1402
     },
     {
-      "id": "ops-em-inflation-monitoring",
-      "file": "ops-em-inflation-monitoring.md",
-      "subdomain": "economy-monitoring",
-      "chars": 789
+      "id": "ops-ab-statistical-significance",
+      "name": "统计显著性",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-statistical-significance.md",
+      "exists": true,
+      "char_count": 1525
     },
     {
-      "id": "ops-em-deflation-risk",
-      "file": "ops-em-deflation-risk.md",
-      "subdomain": "economy-monitoring",
-      "chars": 785
+      "id": "ops-ab-network-effects",
+      "name": "网络效应",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-network-effects.md",
+      "exists": true,
+      "char_count": 1468
     },
     {
-      "id": "ops-em-trade-system",
-      "file": "ops-em-trade-system.md",
-      "subdomain": "economy-monitoring",
-      "chars": 777
+      "id": "ops-ab-bayesian-testing",
+      "name": "贝叶斯测试",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-bayesian-testing.md",
+      "exists": true,
+      "char_count": 1627
     },
     {
-      "id": "ops-em-anti-fraud",
-      "file": "ops-em-anti-fraud.md",
-      "subdomain": "economy-monitoring",
-      "chars": 780
+      "id": "ops-ab-long-term-effects",
+      "name": "长期效应",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-long-term-effects.md",
+      "exists": true,
+      "char_count": 1494
     },
     {
-      "id": "ops-em-bot-detection",
-      "file": "ops-em-bot-detection.md",
-      "subdomain": "economy-monitoring",
-      "chars": 779
+      "id": "ops-ab-randomization",
+      "name": "随机分组",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "ab-testing",
+      "subdomain_name": "A/B测试",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ab-randomization.md",
+      "exists": true,
+      "char_count": 1507
     },
     {
-      "id": "ops-em-economy-dashboard",
-      "file": "ops-em-economy-dashboard.md",
-      "subdomain": "economy-monitoring",
-      "chars": 788
+      "id": "ops-cs-ai-chatbot",
+      "name": "AI客服",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-ai-chatbot.md",
+      "exists": true,
+      "char_count": 1558
     },
     {
-      "id": "ops-em-price-stability",
-      "file": "ops-em-price-stability.md",
-      "subdomain": "economy-monitoring",
-      "chars": 778
+      "id": "ops-cs-vip-service",
+      "name": "VIP专属服务",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-vip-service.md",
+      "exists": true,
+      "char_count": 1619
     },
     {
-      "id": "ops-em-supply-demand",
-      "file": "ops-em-supply-demand.md",
-      "subdomain": "economy-monitoring",
-      "chars": 774
+      "id": "ops-cs-moderation",
+      "name": "内容审核",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-moderation.md",
+      "exists": true,
+      "char_count": 1354
     },
     {
-      "id": "ops-em-wealth-distribution",
-      "file": "ops-em-wealth-distribution.md",
-      "subdomain": "economy-monitoring",
-      "chars": 791
+      "id": "ops-cs-escalation",
+      "name": "升级处理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-escalation.md",
+      "exists": true,
+      "char_count": 1403
     },
     {
-      "id": "ops-em-economy-simulation",
-      "file": "ops-em-economy-simulation.md",
-      "subdomain": "economy-monitoring",
-      "chars": 776
+      "id": "ops-cs-crisis-management",
+      "name": "危机处理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-crisis-management.md",
+      "exists": true,
+      "char_count": 1386
     },
     {
-      "id": "ops-em-reward-balance",
-      "file": "ops-em-reward-balance.md",
-      "subdomain": "economy-monitoring",
-      "chars": 774
+      "id": "ops-cs-feedback-loop",
+      "name": "反馈闭环",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-feedback-loop.md",
+      "exists": true,
+      "char_count": 1377
     },
     {
-      "id": "ops-em-economy-intervention",
-      "file": "ops-em-economy-intervention.md",
-      "subdomain": "economy-monitoring",
-      "chars": 780
+      "id": "ops-cs-localized-support",
+      "name": "多语言客服",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-localized-support.md",
+      "exists": true,
+      "char_count": 1484
     },
     {
-      "id": "ops-em-gacha-economy",
-      "file": "ops-em-gacha-economy.md",
-      "subdomain": "economy-monitoring",
-      "chars": 774
+      "id": "ops-cs-training",
+      "name": "客服培训",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-training.md",
+      "exists": true,
+      "char_count": 1335
     },
     {
-      "id": "ops-em-seasonal-economy",
-      "file": "ops-em-seasonal-economy.md",
-      "subdomain": "economy-monitoring",
-      "chars": 786
+      "id": "ops-cs-support-basics",
+      "name": "客服基础",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-support-basics.md",
+      "exists": true,
+      "char_count": 1543
+    },
+    {
+      "id": "ops-cs-reporting",
+      "name": "客服报告",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-reporting.md",
+      "exists": true,
+      "char_count": 1518
+    },
+    {
+      "id": "ops-cs-metrics",
+      "name": "客服指标",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-metrics.md",
+      "exists": true,
+      "char_count": 1418
+    },
+    {
+      "id": "ops-cs-automation",
+      "name": "客服自动化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-automation.md",
+      "exists": true,
+      "char_count": 1361
+    },
+    {
+      "id": "ops-cs-ban-appeal",
+      "name": "封禁与申诉",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-ban-appeal.md",
+      "exists": true,
+      "char_count": 1555
+    },
+    {
+      "id": "ops-cs-ticket-system",
+      "name": "工单系统",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-ticket-system.md",
+      "exists": true,
+      "char_count": 1485
+    },
+    {
+      "id": "ops-cs-player-advocacy",
+      "name": "玩家权益保护",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-player-advocacy.md",
+      "exists": true,
+      "char_count": 1642
+    },
+    {
+      "id": "ops-cs-community-support",
+      "name": "社区互助",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-community-support.md",
+      "exists": true,
+      "char_count": 1342
+    },
+    {
+      "id": "ops-cs-self-service",
+      "name": "自助服务",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-self-service.md",
+      "exists": true,
+      "char_count": 1361
+    },
+    {
+      "id": "ops-cs-sentiment-analysis",
+      "name": "舆情分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-sentiment-analysis.md",
+      "exists": true,
+      "char_count": 1492
+    },
+    {
+      "id": "ops-cs-compensation",
+      "name": "补偿策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-compensation.md",
+      "exists": true,
+      "char_count": 1517
+    },
+    {
+      "id": "ops-cs-classification",
+      "name": "问题分类体系",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "customer-service",
+      "subdomain_name": "客服体系",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-cs-classification.md",
+      "exists": true,
+      "char_count": 1610
+    },
+    {
+      "id": "ops-da-bi-tools",
+      "name": "BI工具实践",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-bi-tools.md",
+      "exists": true,
+      "char_count": 1559
+    },
+    {
+      "id": "ops-da-kpi-framework",
+      "name": "KPI指标体系",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-kpi-framework.md",
+      "exists": true,
+      "char_count": 1785
+    },
+    {
+      "id": "ops-da-event-tracking",
+      "name": "事件埋点设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-event-tracking.md",
+      "exists": true,
+      "char_count": 1604
+    },
+    {
+      "id": "ops-da-cohort-analysis",
+      "name": "同期群分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-cohort-analysis.md",
+      "exists": true,
+      "char_count": 1409
+    },
+    {
+      "id": "ops-da-realtime-monitoring",
+      "name": "实时监控",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-realtime-monitoring.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "ops-da-anomaly-detection",
+      "name": "异常检测",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-anomaly-detection.md",
+      "exists": true,
+      "char_count": 1581
+    },
+    {
+      "id": "ops-da-attribution",
+      "name": "归因分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-attribution.md",
+      "exists": true,
+      "char_count": 1415
+    },
+    {
+      "id": "ops-da-revenue-metrics",
+      "name": "收入指标",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-da-revenue-metrics.md",
+      "exists": true,
+      "char_count": 1603
+    },
+    {
+      "id": "ops-da-data-warehouse",
+      "name": "数据仓库架构",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-data-warehouse.md",
+      "exists": true,
+      "char_count": 1610
+    },
+    {
+      "id": "ops-da-dashboard-design",
+      "name": "数据看板设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-da-dashboard-design.md",
+      "exists": true,
+      "char_count": 1704
+    },
+    {
+      "id": "ops-da-data-pipeline",
+      "name": "数据管线",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-da-data-pipeline.md",
+      "exists": true,
+      "char_count": 1548
+    },
+    {
+      "id": "ops-da-data-collection",
+      "name": "数据采集基础",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-data-collection.md",
+      "exists": true,
+      "char_count": 1664
+    },
+    {
+      "id": "ops-da-privacy-compliance",
+      "name": "数据隐私合规",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-privacy-compliance.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "ops-da-data-driven-culture",
+      "name": "数据驱动文化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-da-data-driven-culture.md",
+      "exists": true,
+      "char_count": 1575
+    },
+    {
+      "id": "ops-da-funnel-analysis",
+      "name": "漏斗分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-funnel-analysis.md",
+      "exists": true,
+      "char_count": 1452
+    },
+    {
+      "id": "ops-da-user-segmentation",
+      "name": "用户分群",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-user-segmentation.md",
+      "exists": true,
+      "char_count": 1403
+    },
+    {
+      "id": "ops-da-retention-metrics",
+      "name": "留存指标",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-retention-metrics.md",
+      "exists": true,
+      "char_count": 1646
+    },
+    {
+      "id": "ops-da-behavioral-analytics",
+      "name": "行为分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-behavioral-analytics.md",
+      "exists": true,
+      "char_count": 1610
+    },
+    {
+      "id": "ops-da-sql-for-ops",
+      "name": "运营SQL基础",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-sql-for-ops.md",
+      "exists": true,
+      "char_count": 1522
+    },
+    {
+      "id": "ops-da-predictive-modeling",
+      "name": "预测建模",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "data-analytics",
+      "subdomain_name": "数据分析",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-da-predictive-modeling.md",
+      "exists": true,
+      "char_count": 1382
     },
     {
       "id": "ops-em-real-money-trading",
-      "file": "ops-em-real-money-trading.md",
-      "subdomain": "economy-monitoring",
-      "chars": 781
+      "name": "RMT打击",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-real-money-trading.md",
+      "exists": true,
+      "char_count": 1592
+    },
+    {
+      "id": "ops-em-anti-fraud",
+      "name": "交易反欺诈",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-em-anti-fraud.md",
+      "exists": true,
+      "char_count": 1603
+    },
+    {
+      "id": "ops-em-trade-system",
+      "name": "交易系统",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-trade-system.md",
+      "exists": true,
+      "char_count": 1516
+    },
+    {
+      "id": "ops-em-source-sink",
+      "name": "产出与消耗",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-em-source-sink.md",
+      "exists": true,
+      "char_count": 1539
+    },
+    {
+      "id": "ops-em-supply-demand",
+      "name": "供需调控",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-supply-demand.md",
+      "exists": true,
+      "char_count": 1369
+    },
+    {
+      "id": "ops-em-reward-balance",
+      "name": "奖励平衡",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-reward-balance.md",
+      "exists": true,
+      "char_count": 1382
+    },
+    {
+      "id": "ops-em-gacha-economy",
+      "name": "抽卡经济",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-gacha-economy.md",
+      "exists": true,
+      "char_count": 1505
+    },
+    {
+      "id": "ops-em-bot-detection",
+      "name": "机器人检测",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-bot-detection.md",
+      "exists": true,
+      "char_count": 1492
+    },
+    {
+      "id": "ops-em-price-stability",
+      "name": "物价稳定性",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-price-stability.md",
+      "exists": true,
+      "char_count": 1579
+    },
+    {
+      "id": "ops-em-economy-intervention",
+      "name": "经济干预",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-economy-intervention.md",
+      "exists": true,
+      "char_count": 1407
     },
     {
       "id": "ops-em-economy-reporting",
-      "file": "ops-em-economy-reporting.md",
-      "subdomain": "economy-monitoring",
-      "chars": 774
+      "name": "经济报告",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-economy-reporting.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "ops-em-economy-simulation",
+      "name": "经济模拟",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-economy-simulation.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "ops-em-economy-dashboard",
+      "name": "经济监控看板",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-em-economy-dashboard.md",
+      "exists": true,
+      "char_count": 1600
     },
     {
       "id": "ops-em-economy-design-collab",
-      "file": "ops-em-economy-design-collab.md",
-      "subdomain": "economy-monitoring",
-      "chars": 791
+      "name": "经济设计协作",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-em-economy-design-collab.md",
+      "exists": true,
+      "char_count": 1601
+    },
+    {
+      "id": "ops-em-economy-basics",
+      "name": "虚拟经济基础",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-economy-basics.md",
+      "exists": true,
+      "char_count": 1436
+    },
+    {
+      "id": "ops-em-wealth-distribution",
+      "name": "财富分布分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-wealth-distribution.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "ops-em-currency-system",
+      "name": "货币体系设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-currency-system.md",
+      "exists": true,
+      "char_count": 1644
+    },
+    {
+      "id": "ops-em-seasonal-economy",
+      "name": "赛季经济重置",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-seasonal-economy.md",
+      "exists": true,
+      "char_count": 1536
+    },
+    {
+      "id": "ops-em-deflation-risk",
+      "name": "通货紧缩风险",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-deflation-risk.md",
+      "exists": true,
+      "char_count": 1510
+    },
+    {
+      "id": "ops-em-inflation-monitoring",
+      "name": "通货膨胀监控",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "economy-monitoring",
+      "subdomain_name": "经济系统监控",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-em-inflation-monitoring.md",
+      "exists": true,
+      "char_count": 1528
+    },
+    {
+      "id": "ops-ep-ugc-event",
+      "name": "UGC活动",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-ugc-event.md",
+      "exists": true,
+      "char_count": 1576
+    },
+    {
+      "id": "ops-ep-personalized-event",
+      "name": "个性化活动",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-personalized-event.md",
+      "exists": true,
+      "char_count": 1523
+    },
+    {
+      "id": "ops-ep-global-event",
+      "name": "全球化活动策划",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-global-event.md",
+      "exists": true,
+      "char_count": 1554
+    },
+    {
+      "id": "ops-ep-engagement-loop",
+      "name": "参与循环设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-engagement-loop.md",
+      "exists": true,
+      "char_count": 1516
+    },
+    {
+      "id": "ops-ep-reward-design",
+      "name": "奖励设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-reward-design.md",
+      "exists": true,
+      "char_count": 1694
+    },
+    {
+      "id": "ops-ep-ab-in-events",
+      "name": "活动A/B测试",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-ab-in-events.md",
+      "exists": true,
+      "char_count": 1419
+    },
+    {
+      "id": "ops-ep-event-postmortem",
+      "name": "活动复盘",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-event-postmortem.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "ops-ep-event-tech",
+      "name": "活动技术方案",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-event-tech.md",
+      "exists": true,
+      "char_count": 1495
+    },
+    {
+      "id": "ops-ep-event-analytics",
+      "name": "活动数据分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-event-analytics.md",
+      "exists": true,
+      "char_count": 1564
+    },
+    {
+      "id": "ops-ep-event-design",
+      "name": "活动玩法设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-event-design.md",
+      "exists": true,
+      "char_count": 1785
+    },
+    {
+      "id": "ops-ep-event-lifecycle",
+      "name": "活动生命周期",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-event-lifecycle.md",
+      "exists": true,
+      "char_count": 1442
+    },
+    {
+      "id": "ops-ep-event-types",
+      "name": "活动类型概览",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-event-types.md",
+      "exists": true,
+      "char_count": 1471
+    },
+    {
+      "id": "ops-ep-event-economy",
+      "name": "活动经济",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-event-economy.md",
+      "exists": true,
+      "char_count": 1449
+    },
+    {
+      "id": "ops-ep-event-automation",
+      "name": "活动自动化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-event-automation.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "ops-ep-social-event",
+      "name": "社交类活动",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-social-event.md",
+      "exists": true,
+      "char_count": 1391
+    },
+    {
+      "id": "ops-ep-competitive-event",
+      "name": "竞赛类活动",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-competitive-event.md",
+      "exists": true,
+      "char_count": 1537
+    },
+    {
+      "id": "ops-ep-crossover",
+      "name": "联动活动",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-crossover.md",
+      "exists": true,
+      "char_count": 1565
+    },
+    {
+      "id": "ops-ep-festival-ops",
+      "name": "节日运营",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-festival-ops.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "ops-ep-calendar-planning",
+      "name": "运营日历",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-calendar-planning.md",
+      "exists": true,
+      "char_count": 1614
+    },
+    {
+      "id": "ops-ep-limited-time",
+      "name": "限时活动设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "event-planning",
+      "subdomain_name": "活动策划",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ep-limited-time.md",
+      "exists": true,
+      "char_count": 1696
+    },
+    {
+      "id": "ops-mo-battle-pass",
+      "name": "Battle Pass设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-battle-pass.md",
+      "exists": true,
+      "char_count": 1773
+    },
+    {
+      "id": "ops-mo-ltv-optimization",
+      "name": "LTV优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-ltv-optimization.md",
+      "exists": true,
+      "char_count": 1474
+    },
+    {
+      "id": "ops-mo-paying-conversion",
+      "name": "付费转化漏斗",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-paying-conversion.md",
+      "exists": true,
+      "char_count": 1571
+    },
+    {
+      "id": "ops-mo-offer-system",
+      "name": "促销系统",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-offer-system.md",
+      "exists": true,
+      "char_count": 1343
+    },
+    {
+      "id": "ops-mo-iap-design",
+      "name": "内购(IAP)设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-iap-design.md",
+      "exists": true,
+      "char_count": 1634
+    },
+    {
+      "id": "ops-mo-regional-pricing",
+      "name": "区域定价",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-regional-pricing.md",
+      "exists": true,
+      "char_count": 1454
+    },
+    {
+      "id": "ops-mo-monetization-metrics",
+      "name": "变现指标体系",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-monetization-metrics.md",
+      "exists": true,
+      "char_count": 1587
+    },
+    {
+      "id": "ops-mo-monetization-models",
+      "name": "变现模式概览",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-monetization-models.md",
+      "exists": true,
+      "char_count": 1605
+    },
+    {
+      "id": "ops-mo-store-design",
+      "name": "商城设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-store-design.md",
+      "exists": true,
+      "char_count": 1664
+    },
+    {
+      "id": "ops-mo-whale-management",
+      "name": "大R管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-whale-management.md",
+      "exists": true,
+      "char_count": 1544
+    },
+    {
+      "id": "ops-mo-price-psychology",
+      "name": "定价心理学",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-price-psychology.md",
+      "exists": true,
+      "char_count": 1486
+    },
+    {
+      "id": "ops-mo-ad-monetization",
+      "name": "广告变现",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-ad-monetization.md",
+      "exists": true,
+      "char_count": 1556
+    },
+    {
+      "id": "ops-mo-gacha-system",
+      "name": "抽卡/扭蛋系统",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-gacha-system.md",
+      "exists": true,
+      "char_count": 1758
+    },
+    {
+      "id": "ops-mo-bundle-strategy",
+      "name": "捆绑销售策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-bundle-strategy.md",
+      "exists": true,
+      "char_count": 1512
+    },
+    {
+      "id": "ops-mo-payment-integration",
+      "name": "支付集成",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-payment-integration.md",
+      "exists": true,
+      "char_count": 1633
+    },
+    {
+      "id": "ops-mo-revenue-forecasting",
+      "name": "收入预测",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-revenue-forecasting.md",
+      "exists": true,
+      "char_count": 1448
+    },
+    {
+      "id": "ops-mo-virtual-currency",
+      "name": "虚拟货币设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-virtual-currency.md",
+      "exists": true,
+      "char_count": 1754
+    },
+    {
+      "id": "ops-mo-subscription",
+      "name": "订阅制设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-subscription.md",
+      "exists": true,
+      "char_count": 1493
+    },
+    {
+      "id": "ops-mo-refund-policy",
+      "name": "退款策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-refund-policy.md",
+      "exists": true,
+      "char_count": 1525
+    },
+    {
+      "id": "ops-mo-ethical-monetization",
+      "name": "道德变现",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "monetization",
+      "subdomain_name": "付费系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-mo-ethical-monetization.md",
+      "exists": true,
+      "char_count": 1699
+    },
+    {
+      "id": "ops-so-fomo-vs-fairness",
+      "name": "FOMO与公平",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-fomo-vs-fairness.md",
+      "exists": true,
+      "char_count": 1565
+    },
+    {
+      "id": "ops-so-multi-mode-season",
+      "name": "多模式赛季",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-multi-mode-season.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "ops-so-ranked-system",
+      "name": "排位系统设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-so-ranked-system.md",
+      "exists": true,
+      "char_count": 1577
+    },
+    {
+      "id": "ops-so-leaderboard-ops",
+      "name": "排行榜运营",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-so-leaderboard-ops.md",
+      "exists": true,
+      "char_count": 1600
+    },
+    {
+      "id": "ops-so-esports-integration",
+      "name": "电竞赛事联动",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-esports-integration.md",
+      "exists": true,
+      "char_count": 1494
+    },
+    {
+      "id": "ops-so-competitive-integrity",
+      "name": "竞技公正性",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-competitive-integrity.md",
+      "exists": true,
+      "char_count": 1409
+    },
+    {
+      "id": "ops-so-season-kpi",
+      "name": "赛季KPI体系",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-so-season-kpi.md",
+      "exists": true,
+      "char_count": 1511
+    },
+    {
+      "id": "ops-so-meta-shift",
+      "name": "赛季Meta变化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-so-meta-shift.md",
+      "exists": true,
+      "char_count": 1494
+    },
+    {
+      "id": "ops-so-season-theme",
+      "name": "赛季主题",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-season-theme.md",
+      "exists": true,
+      "char_count": 1493
+    },
+    {
+      "id": "ops-so-season-basics",
+      "name": "赛季制度基础",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-season-basics.md",
+      "exists": true,
+      "char_count": 1620
+    },
+    {
+      "id": "ops-so-community-feedback",
+      "name": "赛季反馈",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-community-feedback.md",
+      "exists": true,
+      "char_count": 1376
+    },
+    {
+      "id": "ops-so-season-cosmetics",
+      "name": "赛季外观",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-season-cosmetics.md",
+      "exists": true,
+      "char_count": 1455
+    },
+    {
+      "id": "ops-so-reward-reset",
+      "name": "赛季奖励重置",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-reward-reset.md",
+      "exists": true,
+      "char_count": 1615
+    },
+    {
+      "id": "ops-so-season-analytics",
+      "name": "赛季数据分析",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-season-analytics.md",
+      "exists": true,
+      "char_count": 1678
+    },
+    {
+      "id": "ops-so-season-fatigue",
+      "name": "赛季疲劳",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-season-fatigue.md",
+      "exists": true,
+      "char_count": 1436
+    },
+    {
+      "id": "ops-so-season-structure",
+      "name": "赛季结构设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-season-structure.md",
+      "exists": true,
+      "char_count": 1509
+    },
+    {
+      "id": "ops-so-season-pass",
+      "name": "赛季通行证",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-season-pass.md",
+      "exists": true,
+      "char_count": 1628
+    },
+    {
+      "id": "ops-so-inter-season",
+      "name": "赛季间衔接",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-inter-season.md",
+      "exists": true,
+      "char_count": 1331
+    },
+    {
+      "id": "ops-so-progression-speed",
+      "name": "进度速度控制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-progression-speed.md",
+      "exists": true,
+      "char_count": 1393
+    },
+    {
+      "id": "ops-so-catch-up-mechanics",
+      "name": "追赶机制",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "season-ops",
+      "subdomain_name": "赛季运营",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-so-catch-up-mechanics.md",
+      "exists": true,
+      "char_count": 1313
+    },
+    {
+      "id": "ops-uc-post-launch-support",
+      "name": "上线后支持",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-post-launch-support.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "ops-uc-downtime-management",
+      "name": "停服维护",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-downtime-management.md",
+      "exists": true,
+      "char_count": 1741
+    },
+    {
+      "id": "ops-uc-beta-testing",
+      "name": "公测/先行服",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-beta-testing.md",
+      "exists": true,
+      "char_count": 1645
+    },
+    {
+      "id": "ops-uc-content-calendar",
+      "name": "内容日历管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-content-calendar.md",
+      "exists": true,
+      "char_count": 1513
+    },
+    {
+      "id": "ops-uc-content-pipeline",
+      "name": "内容管线",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-content-pipeline.md",
+      "exists": true,
+      "char_count": 1396
+    },
+    {
+      "id": "ops-uc-staged-rollout",
+      "name": "分阶段发布",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-staged-rollout.md",
+      "exists": true,
+      "char_count": 1457
+    },
+    {
+      "id": "ops-uc-feature-flag",
+      "name": "功能开关",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-feature-flag.md",
+      "exists": true,
+      "char_count": 1531
+    },
+    {
+      "id": "ops-uc-patch-size",
+      "name": "包体管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-patch-size.md",
+      "exists": true,
+      "char_count": 1315
+    },
+    {
+      "id": "ops-uc-changelog-culture",
+      "name": "变更日志文化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-changelog-culture.md",
+      "exists": true,
+      "char_count": 1378
+    },
+    {
+      "id": "ops-uc-major-update",
+      "name": "大版本更新",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-major-update.md",
+      "exists": true,
+      "char_count": 1592
+    },
+    {
+      "id": "ops-uc-minor-update",
+      "name": "小版本迭代",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-minor-update.md",
+      "exists": true,
+      "char_count": 1387
+    },
+    {
+      "id": "ops-uc-platform-submission",
+      "name": "平台提审",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-platform-submission.md",
+      "exists": true,
+      "char_count": 1637
+    },
+    {
+      "id": "ops-uc-server-update",
+      "name": "服务端更新",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-server-update.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "ops-uc-hotfix-process",
+      "name": "热修复流程",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-hotfix-process.md",
+      "exists": true,
+      "char_count": 1602
+    },
+    {
+      "id": "ops-uc-release-notes",
+      "name": "版本公告",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-release-notes.md",
+      "exists": true,
+      "char_count": 1551
+    },
+    {
+      "id": "ops-uc-compatibility",
+      "name": "版本兼容性",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-compatibility.md",
+      "exists": true,
+      "char_count": 1564
+    },
+    {
+      "id": "ops-uc-rollback-strategy",
+      "name": "版本回滚",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-rollback-strategy.md",
+      "exists": true,
+      "char_count": 1475
+    },
+    {
+      "id": "ops-uc-update-strategy",
+      "name": "版本策略概论",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-update-strategy.md",
+      "exists": true,
+      "char_count": 1637
+    },
+    {
+      "id": "ops-uc-roadmap-planning",
+      "name": "版本路线图",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-roadmap-planning.md",
+      "exists": true,
+      "char_count": 1612
+    },
+    {
+      "id": "ops-uc-player-expectations",
+      "name": "玩家预期管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "update-cadence",
+      "subdomain_name": "版本更新节奏",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-uc-player-expectations.md",
+      "exists": true,
+      "char_count": 1472
+    },
+    {
+      "id": "ops-ur-vip-retention",
+      "name": "VIP留存策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-vip-retention.md",
+      "exists": true,
+      "char_count": 1521
+    },
+    {
+      "id": "ops-ur-habit-formation",
+      "name": "习惯养成",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-habit-formation.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "ops-ur-content-pacing",
+      "name": "内容节奏",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-content-pacing.md",
+      "exists": true,
+      "char_count": 1426
+    },
+    {
+      "id": "ops-ur-reengagement-tools",
+      "name": "再参与工具",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-reengagement-tools.md",
+      "exists": true,
+      "char_count": 1497
+    },
+    {
+      "id": "ops-ur-engagement-score",
+      "name": "参与度评分",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-engagement-score.md",
+      "exists": true,
+      "char_count": 1540
+    },
+    {
+      "id": "ops-ur-weekly-loop",
+      "name": "周常循环设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-weekly-loop.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "ops-ur-win-back",
+      "name": "回流策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-win-back.md",
+      "exists": true,
+      "char_count": 1592
+    },
+    {
+      "id": "ops-ur-push-notification",
+      "name": "推送策略",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-push-notification.md",
+      "exists": true,
+      "char_count": 1705
+    },
+    {
+      "id": "ops-ur-onboarding",
+      "name": "新手引导设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-onboarding.md",
+      "exists": true,
+      "char_count": 1746
+    },
+    {
+      "id": "ops-ur-daily-loop",
+      "name": "日常循环设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-daily-loop.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "ops-ur-churn-prediction",
+      "name": "流失预警",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-churn-prediction.md",
+      "exists": true,
+      "char_count": 1558
+    },
+    {
+      "id": "ops-ur-lifecycle-management",
+      "name": "生命周期管理",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-lifecycle-management.md",
+      "exists": true,
+      "char_count": 1519
+    },
+    {
+      "id": "ops-ur-retention-benchmarks",
+      "name": "留存基准对比",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-retention-benchmarks.md",
+      "exists": true,
+      "char_count": 1602
+    },
+    {
+      "id": "ops-ur-retention-basics",
+      "name": "留存基础理论",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-retention-basics.md",
+      "exists": true,
+      "char_count": 1657
+    },
+    {
+      "id": "ops-ur-social-hooks",
+      "name": "社交钩子",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-social-hooks.md",
+      "exists": true,
+      "char_count": 1365
+    },
+    {
+      "id": "ops-ur-community-retention",
+      "name": "社区留存",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-community-retention.md",
+      "exists": true,
+      "char_count": 1378
+    },
+    {
+      "id": "ops-ur-cross-platform",
+      "name": "跨平台留存",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-cross-platform.md",
+      "exists": true,
+      "char_count": 1524
+    },
+    {
+      "id": "ops-ur-long-term-goals",
+      "name": "长期目标设计",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-long-term-goals.md",
+      "exists": true,
+      "char_count": 1389
+    },
+    {
+      "id": "ops-ur-difficulty-curve",
+      "name": "难度留存曲线",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-difficulty-curve.md",
+      "exists": true,
+      "char_count": 1603
+    },
+    {
+      "id": "ops-ur-first-session",
+      "name": "首次体验优化",
+      "domain_id": "game-live-ops",
+      "subdomain_id": "user-retention",
+      "subdomain_name": "用户留存",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "game-live-ops/ops-ur-first-session.md",
+      "exists": true,
+      "char_count": 1659
     }
-  ]
+  ],
+  "stats": {
+    "total": 180,
+    "total_chars": 273278,
+    "avg_chars": 1518,
+    "domain": "game-live-ops"
+  }
 }

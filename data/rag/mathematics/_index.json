@@ -1,293 +1,19 @@
 {
-  "version": "1.0",
-  "domain_id": "mathematics",
-  "generated_at": "2026-03-19T08:00:26",
-  "total_concepts": 269,
   "documents": [
     {
-      "id": "natural-numbers",
-      "name": "自然数与整数",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/natural-numbers.md",
-      "exists": true,
-      "char_count": 835
-    },
-    {
-      "id": "four-operations",
-      "name": "四则运算",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/four-operations.md",
-      "exists": true,
-      "char_count": 882
-    },
-    {
-      "id": "fractions",
-      "name": "分数",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/fractions.md",
-      "exists": true,
-      "char_count": 904
-    },
-    {
-      "id": "decimals",
-      "name": "小数与百分数",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/decimals.md",
-      "exists": true,
-      "char_count": 819
-    },
-    {
-      "id": "ratio-proportion",
-      "name": "比与比例",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/ratio-proportion.md",
-      "exists": true,
-      "char_count": 797
-    },
-    {
-      "id": "exponents-basics",
-      "name": "指数与幂运算",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/exponents-basics.md",
-      "exists": true,
-      "char_count": 742
-    },
-    {
-      "id": "roots-basics",
-      "name": "根号与开方",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/roots-basics.md",
-      "exists": true,
-      "char_count": 813
-    },
-    {
-      "id": "scientific-notation",
-      "name": "科学记数法",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/scientific-notation.md",
-      "exists": true,
-      "char_count": 791
-    },
-    {
-      "id": "number-line",
-      "name": "数轴与绝对值",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/number-line.md",
-      "exists": true,
-      "char_count": 831
-    },
-    {
-      "id": "divisibility",
-      "name": "整除与因数分解",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/divisibility.md",
-      "exists": true,
-      "char_count": 845
-    },
-    {
-      "id": "gcd-lcm",
-      "name": "最大公因数与最小公倍数",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/gcd-lcm.md",
-      "exists": true,
-      "char_count": 885
-    },
-    {
-      "id": "order-of-operations",
-      "name": "运算优先级",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/order-of-operations.md",
-      "exists": true,
-      "char_count": 789
-    },
-    {
-      "id": "estimation-rounding",
-      "name": "估算与近似",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/estimation-rounding.md",
-      "exists": true,
-      "char_count": 785
-    },
-    {
-      "id": "negative-numbers",
-      "name": "负数",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/negative-numbers.md",
-      "exists": true,
-      "char_count": 782
-    },
-    {
-      "id": "number-sets",
-      "name": "数集分类",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/arithmetic/number-sets.md",
-      "exists": true,
-      "char_count": 982
-    },
-    {
-      "id": "arithmetic-word-problems",
-      "name": "算术应用题",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/arithmetic/arithmetic-word-problems.md",
-      "exists": true,
-      "char_count": 798
-    },
-    {
-      "id": "rational-operations",
-      "name": "有理数运算",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/arithmetic/rational-operations.md",
-      "exists": true,
-      "char_count": 818
-    },
-    {
-      "id": "irrational-numbers",
-      "name": "无理数",
-      "domain_id": "mathematics",
-      "subdomain_id": "arithmetic",
-      "subdomain_name": "算术基础",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/arithmetic/irrational-numbers.md",
-      "exists": true,
-      "char_count": 816
-    },
-    {
-      "id": "variables-expressions",
-      "name": "变量与代数式",
+      "id": "linear-inequalities",
+      "name": "一元一次不等式",
       "domain_id": "mathematics",
       "subdomain_id": "algebra",
       "subdomain_name": "代数",
-      "difficulty": 2,
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "基础"
       ],
-      "file": "mathematics/algebra/variables-expressions.md",
+      "file": "mathematics/algebra/linear-inequalities.md",
       "exists": true,
-      "char_count": 853
+      "char_count": 2309
     },
     {
       "id": "linear-equations",
@@ -302,37 +28,7 @@
       ],
       "file": "mathematics/algebra/linear-equations.md",
       "exists": true,
-      "char_count": 835
-    },
-    {
-      "id": "linear-inequalities",
-      "name": "一元一次不等式",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/algebra/linear-inequalities.md",
-      "exists": true,
-      "char_count": 829
-    },
-    {
-      "id": "systems-of-equations",
-      "name": "方程组",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/algebra/systems-of-equations.md",
-      "exists": true,
-      "char_count": 804
+      "char_count": 2320
     },
     {
       "id": "quadratic-equations",
@@ -341,313 +37,13 @@
       "subdomain_id": "algebra",
       "subdomain_name": "代数",
       "difficulty": 5,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "里程碑"
       ],
       "file": "mathematics/algebra/quadratic-equations.md",
       "exists": true,
-      "char_count": 958
-    },
-    {
-      "id": "quadratic-functions",
-      "name": "二次函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/quadratic-functions.md",
-      "exists": true,
-      "char_count": 840
-    },
-    {
-      "id": "polynomials",
-      "name": "多项式",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/polynomials.md",
-      "exists": true,
-      "char_count": 777
-    },
-    {
-      "id": "factoring",
-      "name": "因式分解",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/factoring.md",
-      "exists": true,
-      "char_count": 795
-    },
-    {
-      "id": "rational-expressions",
-      "name": "分式",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/algebra/rational-expressions.md",
-      "exists": true,
-      "char_count": 737
-    },
-    {
-      "id": "radical-expressions",
-      "name": "根式运算",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/algebra/radical-expressions.md",
-      "exists": true,
-      "char_count": 764
-    },
-    {
-      "id": "function-concept",
-      "name": "函数概念",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/algebra/function-concept.md",
-      "exists": true,
-      "char_count": 794
-    },
-    {
-      "id": "function-properties",
-      "name": "函数的性质",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/function-properties.md",
-      "exists": true,
-      "char_count": 836
-    },
-    {
-      "id": "inverse-functions",
-      "name": "反函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/algebra/inverse-functions.md",
-      "exists": true,
-      "char_count": 743
-    },
-    {
-      "id": "composite-functions",
-      "name": "复合函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/algebra/composite-functions.md",
-      "exists": true,
-      "char_count": 755
-    },
-    {
-      "id": "exponential-functions",
-      "name": "指数函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/exponential-functions.md",
-      "exists": true,
-      "char_count": 822
-    },
-    {
-      "id": "logarithmic-functions",
-      "name": "对数函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/logarithmic-functions.md",
-      "exists": true,
-      "char_count": 806
-    },
-    {
-      "id": "power-functions",
-      "name": "幂函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/power-functions.md",
-      "exists": true,
-      "char_count": 733
-    },
-    {
-      "id": "absolute-value-func",
-      "name": "绝对值函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/algebra/absolute-value-func.md",
-      "exists": true,
-      "char_count": 767
-    },
-    {
-      "id": "piecewise-functions",
-      "name": "分段函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/algebra/piecewise-functions.md",
-      "exists": true,
-      "char_count": 750
-    },
-    {
-      "id": "sequences-intro",
-      "name": "数列基础",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/sequences-intro.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "arithmetic-sequence",
-      "name": "等差数列",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/arithmetic-sequence.md",
-      "exists": true,
-      "char_count": 796
-    },
-    {
-      "id": "geometric-sequence",
-      "name": "等比数列",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/algebra/geometric-sequence.md",
-      "exists": true,
-      "char_count": 841
-    },
-    {
-      "id": "series-summation",
-      "name": "级数与求和",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/algebra/series-summation.md",
-      "exists": true,
-      "char_count": 838
-    },
-    {
-      "id": "mathematical-induction",
-      "name": "数学归纳法",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/algebra/mathematical-induction.md",
-      "exists": true,
-      "char_count": 876
-    },
-    {
-      "id": "binomial-theorem",
-      "name": "二项式定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "algebra",
-      "subdomain_name": "代数",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/algebra/binomial-theorem.md",
-      "exists": true,
-      "char_count": 808
+      "char_count": 2679
     },
     {
       "id": "inequality-techniques",
@@ -662,7 +58,97 @@
       ],
       "file": "mathematics/algebra/inequality-techniques.md",
       "exists": true,
-      "char_count": 783
+      "char_count": 2891
+    },
+    {
+      "id": "quadratic-functions",
+      "name": "二次函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/quadratic-functions.md",
+      "exists": true,
+      "char_count": 1488
+    },
+    {
+      "id": "binomial-theorem",
+      "name": "二项式定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/algebra/binomial-theorem.md",
+      "exists": true,
+      "char_count": 2906
+    },
+    {
+      "id": "function-concept",
+      "name": "函数概念",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/algebra/function-concept.md",
+      "exists": true,
+      "char_count": 1795
+    },
+    {
+      "id": "function-properties",
+      "name": "函数的性质",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/function-properties.md",
+      "exists": true,
+      "char_count": 2736
+    },
+    {
+      "id": "rational-expressions",
+      "name": "分式",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/algebra/rational-expressions.md",
+      "exists": true,
+      "char_count": 2326
+    },
+    {
+      "id": "piecewise-functions",
+      "name": "分段函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/algebra/piecewise-functions.md",
+      "exists": true,
+      "char_count": 2330
     },
     {
       "id": "parametric-equations",
@@ -677,7 +163,67 @@
       ],
       "file": "mathematics/algebra/parametric-equations.md",
       "exists": true,
-      "char_count": 795
+      "char_count": 2872
+    },
+    {
+      "id": "inverse-functions",
+      "name": "反函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/algebra/inverse-functions.md",
+      "exists": true,
+      "char_count": 2946
+    },
+    {
+      "id": "variables-expressions",
+      "name": "变量与代数式",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/algebra/variables-expressions.md",
+      "exists": true,
+      "char_count": 1460
+    },
+    {
+      "id": "factoring",
+      "name": "因式分解",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/factoring.md",
+      "exists": true,
+      "char_count": 2364
+    },
+    {
+      "id": "composite-functions",
+      "name": "复合函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/algebra/composite-functions.md",
+      "exists": true,
+      "char_count": 2639
     },
     {
       "id": "complex-numbers-intro",
@@ -692,877 +238,187 @@
       ],
       "file": "mathematics/algebra/complex-numbers-intro.md",
       "exists": true,
-      "char_count": 823
+      "char_count": 1976
     },
     {
-      "id": "points-lines-planes",
-      "name": "点线面基础",
+      "id": "polynomials",
+      "name": "多项式",
       "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/geometry/points-lines-planes.md",
-      "exists": true,
-      "char_count": 791
-    },
-    {
-      "id": "angles",
-      "name": "角与角度",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/geometry/angles.md",
-      "exists": true,
-      "char_count": 794
-    },
-    {
-      "id": "parallel-perpendicular",
-      "name": "平行与垂直",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/geometry/parallel-perpendicular.md",
-      "exists": true,
-      "char_count": 824
-    },
-    {
-      "id": "triangles",
-      "name": "三角形",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/geometry/triangles.md",
-      "exists": true,
-      "char_count": 820
-    },
-    {
-      "id": "congruent-triangles",
-      "name": "全等三角形",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
       "difficulty": 4,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "mathematics/geometry/congruent-triangles.md",
+      "file": "mathematics/algebra/polynomials.md",
       "exists": true,
-      "char_count": 857
+      "char_count": 2413
     },
     {
-      "id": "similar-triangles",
-      "name": "相似三角形",
+      "id": "logarithmic-functions",
+      "name": "对数函数",
       "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
       "difficulty": 5,
-      "is_milestone": true,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/logarithmic-functions.md",
+      "exists": true,
+      "char_count": 2654
+    },
+    {
+      "id": "power-functions",
+      "name": "幂函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/power-functions.md",
+      "exists": true,
+      "char_count": 2274
+    },
+    {
+      "id": "exponential-functions",
+      "name": "指数函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/exponential-functions.md",
+      "exists": true,
+      "char_count": 2391
+    },
+    {
+      "id": "sequences-intro",
+      "name": "数列基础",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/sequences-intro.md",
+      "exists": true,
+      "char_count": 2779
+    },
+    {
+      "id": "mathematical-induction",
+      "name": "数学归纳法",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 6,
+      "is_milestone": false,
       "tags": [
         "里程碑"
       ],
-      "file": "mathematics/geometry/similar-triangles.md",
+      "file": "mathematics/algebra/mathematical-induction.md",
       "exists": true,
-      "char_count": 819
+      "char_count": 2703
     },
     {
-      "id": "pythagorean-theorem",
-      "name": "勾股定理",
+      "id": "systems-of-equations",
+      "name": "方程组",
       "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/geometry/pythagorean-theorem.md",
-      "exists": true,
-      "char_count": 896
-    },
-    {
-      "id": "circles",
-      "name": "圆",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/geometry/circles.md",
-      "exists": true,
-      "char_count": 705
-    },
-    {
-      "id": "circle-theorems",
-      "name": "圆的定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/geometry/circle-theorems.md",
-      "exists": true,
-      "char_count": 803
-    },
-    {
-      "id": "quadrilaterals",
-      "name": "四边形",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/geometry/quadrilaterals.md",
-      "exists": true,
-      "char_count": 790
-    },
-    {
-      "id": "area-perimeter",
-      "name": "面积与周长",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/geometry/area-perimeter.md",
-      "exists": true,
-      "char_count": 817
-    },
-    {
-      "id": "volume-surface-area",
-      "name": "体积与表面积",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/geometry/volume-surface-area.md",
-      "exists": true,
-      "char_count": 834
-    },
-    {
-      "id": "symmetry-transformations",
-      "name": "对称与变换",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/geometry/symmetry-transformations.md",
-      "exists": true,
-      "char_count": 826
-    },
-    {
-      "id": "coordinate-geometry-intro",
-      "name": "坐标几何初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/geometry/coordinate-geometry-intro.md",
-      "exists": true,
-      "char_count": 856
-    },
-    {
-      "id": "geometric-proofs",
-      "name": "几何证明",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/geometry/geometric-proofs.md",
-      "exists": true,
-      "char_count": 801
-    },
-    {
-      "id": "solid-geometry",
-      "name": "立体几何",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/geometry/solid-geometry.md",
-      "exists": true,
-      "char_count": 808
-    },
-    {
-      "id": "space-angles-distances",
-      "name": "空间角与距离",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/geometry/space-angles-distances.md",
-      "exists": true,
-      "char_count": 782
-    },
-    {
-      "id": "euler-formula-polyhedra",
-      "name": "欧拉公式",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/geometry/euler-formula-polyhedra.md",
-      "exists": true,
-      "char_count": 821
-    },
-    {
-      "id": "geometric-constructions",
-      "name": "尺规作图",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "mathematics/geometry/geometric-constructions.md",
-      "exists": true,
-      "char_count": 769
-    },
-    {
-      "id": "tessellations",
-      "name": "密铺与镶嵌",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "趣味"
-      ],
-      "file": "mathematics/geometry/tessellations.md",
-      "exists": true,
-      "char_count": 758
-    },
-    {
-      "id": "projective-geometry-intro",
-      "name": "射影几何初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/geometry/projective-geometry-intro.md",
-      "exists": true,
-      "char_count": 787
-    },
-    {
-      "id": "non-euclidean-intro",
-      "name": "非欧几何初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "geometry",
-      "subdomain_name": "几何",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/geometry/non-euclidean-intro.md",
-      "exists": true,
-      "char_count": 793
-    },
-    {
-      "id": "trig-ratios",
-      "name": "三角比",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
       "difficulty": 4,
       "is_milestone": false,
       "tags": [
         "基础"
       ],
-      "file": "mathematics/trigonometry/trig-ratios.md",
+      "file": "mathematics/algebra/systems-of-equations.md",
       "exists": true,
-      "char_count": 826
+      "char_count": 2546
     },
     {
-      "id": "unit-circle",
-      "name": "单位圆",
+      "id": "radical-expressions",
+      "name": "根式运算",
       "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
       "difficulty": 5,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
-        "里程碑"
+        "进阶"
       ],
-      "file": "mathematics/trigonometry/unit-circle.md",
+      "file": "mathematics/algebra/radical-expressions.md",
       "exists": true,
-      "char_count": 1240
+      "char_count": 3158
     },
     {
-      "id": "radian-measure",
-      "name": "弧度制",
+      "id": "arithmetic-sequence",
+      "name": "等差数列",
       "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/arithmetic-sequence.md",
+      "exists": true,
+      "char_count": 2526
+    },
+    {
+      "id": "geometric-sequence",
+      "name": "等比数列",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/algebra/geometric-sequence.md",
+      "exists": true,
+      "char_count": 2703
+    },
+    {
+      "id": "series-summation",
+      "name": "级数与求和",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/algebra/series-summation.md",
+      "exists": true,
+      "char_count": 3077
+    },
+    {
+      "id": "absolute-value-func",
+      "name": "绝对值函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "algebra",
+      "subdomain_name": "代数",
       "difficulty": 4,
       "is_milestone": false,
       "tags": [
-        "基础"
-      ],
-      "file": "mathematics/trigonometry/radian-measure.md",
-      "exists": true,
-      "char_count": 759
-    },
-    {
-      "id": "trig-identities",
-      "name": "三角恒等式",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/trigonometry/trig-identities.md",
-      "exists": true,
-      "char_count": 831
-    },
-    {
-      "id": "sum-difference-formulas",
-      "name": "和差化积公式",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/trigonometry/sum-difference-formulas.md",
-      "exists": true,
-      "char_count": 899
-    },
-    {
-      "id": "double-half-angle",
-      "name": "倍角与半角公式",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/trigonometry/double-half-angle.md",
-      "exists": true,
-      "char_count": 815
-    },
-    {
-      "id": "trig-equations",
-      "name": "三角方程",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
         "进阶"
       ],
-      "file": "mathematics/trigonometry/trig-equations.md",
+      "file": "mathematics/algebra/absolute-value-func.md",
       "exists": true,
-      "char_count": 807
-    },
-    {
-      "id": "trig-graphs",
-      "name": "三角函数图像",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/trigonometry/trig-graphs.md",
-      "exists": true,
-      "char_count": 831
-    },
-    {
-      "id": "inverse-trig",
-      "name": "反三角函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/trigonometry/inverse-trig.md",
-      "exists": true,
-      "char_count": 873
-    },
-    {
-      "id": "law-of-sines",
-      "name": "正弦定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/trigonometry/law-of-sines.md",
-      "exists": true,
-      "char_count": 831
-    },
-    {
-      "id": "law-of-cosines",
-      "name": "余弦定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/trigonometry/law-of-cosines.md",
-      "exists": true,
-      "char_count": 836
-    },
-    {
-      "id": "trig-applications",
-      "name": "三角函数应用",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/trigonometry/trig-applications.md",
-      "exists": true,
-      "char_count": 803
-    },
-    {
-      "id": "polar-coordinates",
-      "name": "极坐标",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/trigonometry/polar-coordinates.md",
-      "exists": true,
-      "char_count": 803
-    },
-    {
-      "id": "complex-trig",
-      "name": "复数的三角形式",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/trigonometry/complex-trig.md",
-      "exists": true,
-      "char_count": 801
-    },
-    {
-      "id": "hyperbolic-functions",
-      "name": "双曲函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/trigonometry/hyperbolic-functions.md",
-      "exists": true,
-      "char_count": 808
-    },
-    {
-      "id": "trig-inequalities",
-      "name": "三角不等式",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/trigonometry/trig-inequalities.md",
-      "exists": true,
-      "char_count": 769
-    },
-    {
-      "id": "product-sum-formulas",
-      "name": "积化和差公式",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/trigonometry/product-sum-formulas.md",
-      "exists": true,
-      "char_count": 795
-    },
-    {
-      "id": "parametric-trig",
-      "name": "三角参数化",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/trigonometry/parametric-trig.md",
-      "exists": true,
-      "char_count": 771
-    },
-    {
-      "id": "fourier-intro",
-      "name": "傅里叶级数初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/trigonometry/fourier-intro.md",
-      "exists": true,
-      "char_count": 812
-    },
-    {
-      "id": "spherical-trig",
-      "name": "球面三角",
-      "domain_id": "mathematics",
-      "subdomain_id": "trigonometry",
-      "subdomain_name": "三角学",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/trigonometry/spherical-trig.md",
-      "exists": true,
-      "char_count": 758
-    },
-    {
-      "id": "cartesian-plane",
-      "name": "直角坐标系",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/analytic-geometry/cartesian-plane.md",
-      "exists": true,
-      "char_count": 843
-    },
-    {
-      "id": "distance-midpoint",
-      "name": "距离与中点公式",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/analytic-geometry/distance-midpoint.md",
-      "exists": true,
-      "char_count": 841
-    },
-    {
-      "id": "slope-line-equation",
-      "name": "直线的斜率与方程",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/analytic-geometry/slope-line-equation.md",
-      "exists": true,
-      "char_count": 876
-    },
-    {
-      "id": "parallel-perp-lines",
-      "name": "平行与垂直的坐标条件",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/analytic-geometry/parallel-perp-lines.md",
-      "exists": true,
-      "char_count": 840
-    },
-    {
-      "id": "line-intersection",
-      "name": "直线的交点与位置关系",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/analytic-geometry/line-intersection.md",
-      "exists": true,
-      "char_count": 850
-    },
-    {
-      "id": "circle-equation",
-      "name": "圆的方程",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/analytic-geometry/circle-equation.md",
-      "exists": true,
-      "char_count": 825
-    },
-    {
-      "id": "ellipse",
-      "name": "椭圆",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/analytic-geometry/ellipse.md",
-      "exists": true,
-      "char_count": 867
-    },
-    {
-      "id": "hyperbola",
-      "name": "双曲线",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/analytic-geometry/hyperbola.md",
-      "exists": true,
-      "char_count": 795
-    },
-    {
-      "id": "parabola",
-      "name": "抛物线",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/analytic-geometry/parabola.md",
-      "exists": true,
-      "char_count": 786
-    },
-    {
-      "id": "conic-sections-unified",
-      "name": "圆锥曲线统一定义",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 7,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/analytic-geometry/conic-sections-unified.md",
-      "exists": true,
-      "char_count": 812
-    },
-    {
-      "id": "tangent-normal-lines",
-      "name": "切线与法线",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/analytic-geometry/tangent-normal-lines.md",
-      "exists": true,
-      "char_count": 824
-    },
-    {
-      "id": "parametric-curves",
-      "name": "参数曲线",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/analytic-geometry/parametric-curves.md",
-      "exists": true,
-      "char_count": 805
-    },
-    {
-      "id": "polar-curves",
-      "name": "极坐标曲线",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/analytic-geometry/polar-curves.md",
-      "exists": true,
-      "char_count": 764
-    },
-    {
-      "id": "rotation-translation",
-      "name": "坐标变换",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/analytic-geometry/rotation-translation.md",
-      "exists": true,
-      "char_count": 803
-    },
-    {
-      "id": "locus-problems",
-      "name": "轨迹问题",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "综合"
-      ],
-      "file": "mathematics/analytic-geometry/locus-problems.md",
-      "exists": true,
-      "char_count": 761
-    },
-    {
-      "id": "line-conic-intersection",
-      "name": "直线与圆锥曲线",
-      "domain_id": "mathematics",
-      "subdomain_id": "analytic-geometry",
-      "subdomain_name": "解析几何",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "综合"
-      ],
-      "file": "mathematics/analytic-geometry/line-conic-intersection.md",
-      "exists": true,
-      "char_count": 825
+      "char_count": 2506
     },
     {
       "id": "affine-transformations",
@@ -1577,7 +433,127 @@
       ],
       "file": "mathematics/analytic-geometry/affine-transformations.md",
       "exists": true,
-      "char_count": 765
+      "char_count": 2902
+    },
+    {
+      "id": "tangent-normal-lines",
+      "name": "切线与法线",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/analytic-geometry/tangent-normal-lines.md",
+      "exists": true,
+      "char_count": 1215
+    },
+    {
+      "id": "parametric-curves",
+      "name": "参数曲线",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/analytic-geometry/parametric-curves.md",
+      "exists": true,
+      "char_count": 2839
+    },
+    {
+      "id": "hyperbola",
+      "name": "双曲线",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/analytic-geometry/hyperbola.md",
+      "exists": true,
+      "char_count": 2429
+    },
+    {
+      "id": "circle-equation",
+      "name": "圆的方程",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/analytic-geometry/circle-equation.md",
+      "exists": true,
+      "char_count": 2382
+    },
+    {
+      "id": "conic-sections-unified",
+      "name": "圆锥曲线统一定义",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/analytic-geometry/conic-sections-unified.md",
+      "exists": true,
+      "char_count": 1524
+    },
+    {
+      "id": "rotation-translation",
+      "name": "坐标变换",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/analytic-geometry/rotation-translation.md",
+      "exists": true,
+      "char_count": 2755
+    },
+    {
+      "id": "parallel-perp-lines",
+      "name": "平行与垂直的坐标条件",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/analytic-geometry/parallel-perp-lines.md",
+      "exists": true,
+      "char_count": 2469
+    },
+    {
+      "id": "parabola",
+      "name": "抛物线",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/analytic-geometry/parabola.md",
+      "exists": true,
+      "char_count": 2302
     },
     {
       "id": "curve-families",
@@ -1592,517 +568,397 @@
       ],
       "file": "mathematics/analytic-geometry/curve-families.md",
       "exists": true,
-      "char_count": 788
+      "char_count": 3223
     },
     {
-      "id": "limits-concept",
-      "name": "极限概念",
+      "id": "polar-curves",
+      "name": "极坐标曲线",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 5,
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 7,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "进阶"
       ],
-      "file": "mathematics/calculus/limits-concept.md",
+      "file": "mathematics/analytic-geometry/polar-curves.md",
       "exists": true,
-      "char_count": 845
+      "char_count": 3016
     },
     {
-      "id": "limit-laws",
-      "name": "极限运算法则",
+      "id": "ellipse",
+      "name": "椭圆",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/calculus/limit-laws.md",
-      "exists": true,
-      "char_count": 820
-    },
-    {
-      "id": "continuity",
-      "name": "连续性",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/calculus/continuity.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "ivt-evt",
-      "name": "介值定理与极值定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
       "difficulty": 6,
       "is_milestone": false,
-      "tags": [
-        "定理"
-      ],
-      "file": "mathematics/calculus/ivt-evt.md",
-      "exists": true,
-      "char_count": 789
-    },
-    {
-      "id": "derivative-concept",
-      "name": "导数概念",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 5,
-      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
-      "file": "mathematics/calculus/derivative-concept.md",
+      "file": "mathematics/analytic-geometry/ellipse.md",
       "exists": true,
-      "char_count": 975
+      "char_count": 2617
     },
     {
-      "id": "differentiation-rules",
-      "name": "求导法则",
+      "id": "line-conic-intersection",
+      "name": "直线与圆锥曲线",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 5,
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "综合"
+      ],
+      "file": "mathematics/analytic-geometry/line-conic-intersection.md",
+      "exists": true,
+      "char_count": 2693
+    },
+    {
+      "id": "line-intersection",
+      "name": "直线的交点与位置关系",
+      "domain_id": "mathematics",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 4,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "mathematics/calculus/differentiation-rules.md",
+      "file": "mathematics/analytic-geometry/line-intersection.md",
       "exists": true,
-      "char_count": 818
+      "char_count": 2420
     },
     {
-      "id": "higher-derivatives",
-      "name": "高阶导数",
+      "id": "slope-line-equation",
+      "name": "直线的斜率与方程",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 4,
       "is_milestone": false,
       "tags": [
-        "进阶"
+        "核心"
       ],
-      "file": "mathematics/calculus/higher-derivatives.md",
+      "file": "mathematics/analytic-geometry/slope-line-equation.md",
       "exists": true,
-      "char_count": 835
+      "char_count": 2665
     },
     {
-      "id": "implicit-differentiation",
-      "name": "隐函数求导",
+      "id": "cartesian-plane",
+      "name": "直角坐标系",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "进阶"
+        "基础"
       ],
-      "file": "mathematics/calculus/implicit-differentiation.md",
+      "file": "mathematics/analytic-geometry/cartesian-plane.md",
       "exists": true,
-      "char_count": 760
+      "char_count": 2161
     },
     {
-      "id": "related-rates",
-      "name": "相关变化率",
+      "id": "distance-midpoint",
+      "name": "距离与中点公式",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "应用"
+        "基础"
       ],
-      "file": "mathematics/calculus/related-rates.md",
+      "file": "mathematics/analytic-geometry/distance-midpoint.md",
       "exists": true,
-      "char_count": 765
+      "char_count": 1352
     },
     {
-      "id": "mean-value-theorems",
-      "name": "中值定理",
+      "id": "locus-problems",
+      "name": "轨迹问题",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
+      "subdomain_id": "analytic-geometry",
+      "subdomain_name": "解析几何",
       "difficulty": 7,
-      "is_milestone": true,
+      "is_milestone": false,
+      "tags": [
+        "综合"
+      ],
+      "file": "mathematics/analytic-geometry/locus-problems.md",
+      "exists": true,
+      "char_count": 2747
+    },
+    {
+      "id": "estimation-rounding",
+      "name": "估算与近似",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/estimation-rounding.md",
+      "exists": true,
+      "char_count": 2480
+    },
+    {
+      "id": "fractions",
+      "name": "分数",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/fractions.md",
+      "exists": true,
+      "char_count": 2589
+    },
+    {
+      "id": "four-operations",
+      "name": "四则运算",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/four-operations.md",
+      "exists": true,
+      "char_count": 2241
+    },
+    {
+      "id": "decimals",
+      "name": "小数与百分数",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/decimals.md",
+      "exists": true,
+      "char_count": 2242
+    },
+    {
+      "id": "exponents-basics",
+      "name": "指数与幂运算",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/exponents-basics.md",
+      "exists": true,
+      "char_count": 1391
+    },
+    {
+      "id": "number-line",
+      "name": "数轴与绝对值",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/number-line.md",
+      "exists": true,
+      "char_count": 1856
+    },
+    {
+      "id": "number-sets",
+      "name": "数集分类",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 3,
+      "is_milestone": false,
       "tags": [
         "里程碑"
       ],
-      "file": "mathematics/calculus/mean-value-theorems.md",
+      "file": "mathematics/arithmetic/number-sets.md",
       "exists": true,
-      "char_count": 937
+      "char_count": 2280
     },
     {
-      "id": "lhopitals-rule",
-      "name": "洛必达法则",
+      "id": "divisibility",
+      "name": "整除与因数分解",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "基础"
       ],
-      "file": "mathematics/calculus/lhopitals-rule.md",
+      "file": "mathematics/arithmetic/divisibility.md",
       "exists": true,
-      "char_count": 788
+      "char_count": 2592
     },
     {
-      "id": "taylor-series",
-      "name": "泰勒展开",
+      "id": "irrational-numbers",
+      "name": "无理数",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 4,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "进阶"
       ],
-      "file": "mathematics/calculus/taylor-series.md",
+      "file": "mathematics/arithmetic/irrational-numbers.md",
       "exists": true,
-      "char_count": 826
+      "char_count": 2301
     },
     {
-      "id": "curve-sketching",
-      "name": "函数图像分析",
+      "id": "gcd-lcm",
+      "name": "最大公因数与最小公倍数",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/gcd-lcm.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "rational-operations",
+      "name": "有理数运算",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/rational-operations.md",
+      "exists": true,
+      "char_count": 2752
+    },
+    {
+      "id": "roots-basics",
+      "name": "根号与开方",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/roots-basics.md",
+      "exists": true,
+      "char_count": 2599
+    },
+    {
+      "id": "ratio-proportion",
+      "name": "比与比例",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/ratio-proportion.md",
+      "exists": true,
+      "char_count": 2138
+    },
+    {
+      "id": "scientific-notation",
+      "name": "科学记数法",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/arithmetic/scientific-notation.md",
+      "exists": true,
+      "char_count": 2361
+    },
+    {
+      "id": "arithmetic-word-problems",
+      "name": "算术应用题",
+      "domain_id": "mathematics",
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "应用"
       ],
-      "file": "mathematics/calculus/curve-sketching.md",
+      "file": "mathematics/arithmetic/arithmetic-word-problems.md",
       "exists": true,
-      "char_count": 816
+      "char_count": 2477
     },
     {
-      "id": "optimization-calculus",
-      "name": "最值问题",
+      "id": "natural-numbers",
+      "name": "自然数与整数",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 1,
       "is_milestone": false,
       "tags": [
-        "应用"
+        "基础"
       ],
-      "file": "mathematics/calculus/optimization-calculus.md",
+      "file": "mathematics/arithmetic/natural-numbers.md",
       "exists": true,
-      "char_count": 803
+      "char_count": 1523
     },
     {
-      "id": "indefinite-integrals",
-      "name": "不定积分",
+      "id": "negative-numbers",
+      "name": "负数",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 5,
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 2,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "基础"
       ],
-      "file": "mathematics/calculus/indefinite-integrals.md",
+      "file": "mathematics/arithmetic/negative-numbers.md",
       "exists": true,
-      "char_count": 819
+      "char_count": 2038
     },
     {
-      "id": "integration-techniques",
-      "name": "积分技巧",
+      "id": "order-of-operations",
+      "name": "运算优先级",
       "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
+      "subdomain_id": "arithmetic",
+      "subdomain_name": "算术基础",
+      "difficulty": 1,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "基础"
       ],
-      "file": "mathematics/calculus/integration-techniques.md",
+      "file": "mathematics/arithmetic/order-of-operations.md",
       "exists": true,
-      "char_count": 795
-    },
-    {
-      "id": "definite-integrals",
-      "name": "定积分",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/calculus/definite-integrals.md",
-      "exists": true,
-      "char_count": 988
-    },
-    {
-      "id": "ftc",
-      "name": "微积分基本定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/calculus/ftc.md",
-      "exists": true,
-      "char_count": 871
-    },
-    {
-      "id": "area-under-curve",
-      "name": "曲线围面积",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/calculus/area-under-curve.md",
-      "exists": true,
-      "char_count": 750
-    },
-    {
-      "id": "volume-of-revolution",
-      "name": "旋转体体积",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/calculus/volume-of-revolution.md",
-      "exists": true,
-      "char_count": 745
-    },
-    {
-      "id": "arc-length",
-      "name": "弧长公式",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/calculus/arc-length.md",
-      "exists": true,
-      "char_count": 748
-    },
-    {
-      "id": "improper-integrals",
-      "name": "广义积分",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/calculus/improper-integrals.md",
-      "exists": true,
-      "char_count": 805
-    },
-    {
-      "id": "sequences-series-calc",
-      "name": "级数与收敛",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/calculus/sequences-series-calc.md",
-      "exists": true,
-      "char_count": 830
-    },
-    {
-      "id": "power-series",
-      "name": "幂级数",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/calculus/power-series.md",
-      "exists": true,
-      "char_count": 818
-    },
-    {
-      "id": "partial-derivatives",
-      "name": "偏导数",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/calculus/partial-derivatives.md",
-      "exists": true,
-      "char_count": 798
-    },
-    {
-      "id": "gradient-directional",
-      "name": "梯度与方向导数",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/calculus/gradient-directional.md",
-      "exists": true,
-      "char_count": 845
-    },
-    {
-      "id": "multiple-integrals",
-      "name": "重积分",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/calculus/multiple-integrals.md",
-      "exists": true,
-      "char_count": 788
-    },
-    {
-      "id": "line-integrals",
-      "name": "曲线积分",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/calculus/line-integrals.md",
-      "exists": true,
-      "char_count": 796
-    },
-    {
-      "id": "surface-integrals",
-      "name": "曲面积分",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 9,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/calculus/surface-integrals.md",
-      "exists": true,
-      "char_count": 809
-    },
-    {
-      "id": "greens-theorem",
-      "name": "格林公式",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/calculus/greens-theorem.md",
-      "exists": true,
-      "char_count": 811
-    },
-    {
-      "id": "stokes-theorem",
-      "name": "斯托克斯定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 9,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/calculus/stokes-theorem.md",
-      "exists": true,
-      "char_count": 787
-    },
-    {
-      "id": "differential-equations-intro",
-      "name": "常微分方程初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/calculus/differential-equations-intro.md",
-      "exists": true,
-      "char_count": 883
-    },
-    {
-      "id": "second-order-ode",
-      "name": "二阶常微分方程",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/calculus/second-order-ode.md",
-      "exists": true,
-      "char_count": 842
-    },
-    {
-      "id": "laplace-transform-intro",
-      "name": "拉普拉斯变换初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "calculus",
-      "subdomain_name": "微积分",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/calculus/laplace-transform-intro.md",
-      "exists": true,
-      "char_count": 821
+      "char_count": 1557
     },
     {
       "id": "epsilon-delta",
@@ -2117,1117 +973,517 @@
       ],
       "file": "mathematics/calculus/epsilon-delta.md",
       "exists": true,
-      "char_count": 790
+      "char_count": 1319
     },
     {
-      "id": "vectors-intro",
-      "name": "向量基础",
+      "id": "indefinite-integrals",
+      "name": "不定积分",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/linear-algebra/vectors-intro.md",
-      "exists": true,
-      "char_count": 833
-    },
-    {
-      "id": "dot-product",
-      "name": "内积(点乘)",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 5,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "mathematics/linear-algebra/dot-product.md",
+      "file": "mathematics/calculus/indefinite-integrals.md",
       "exists": true,
-      "char_count": 816
+      "char_count": 2547
     },
     {
-      "id": "cross-product",
-      "name": "外积(叉乘)",
+      "id": "mean-value-theorems",
+      "name": "中值定理",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 5,
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 7,
       "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/cross-product.md",
-      "exists": true,
-      "char_count": 789
-    },
-    {
-      "id": "matrices-intro",
-      "name": "矩阵基础",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/matrices-intro.md",
-      "exists": true,
-      "char_count": 824
-    },
-    {
-      "id": "matrix-multiplication",
-      "name": "矩阵乘法",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/matrix-multiplication.md",
-      "exists": true,
-      "char_count": 834
-    },
-    {
-      "id": "determinants",
-      "name": "行列式",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 6,
-      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
-      "file": "mathematics/linear-algebra/determinants.md",
+      "file": "mathematics/calculus/mean-value-theorems.md",
       "exists": true,
-      "char_count": 849
+      "char_count": 1625
     },
     {
-      "id": "inverse-matrix",
-      "name": "逆矩阵",
+      "id": "second-order-ode",
+      "name": "二阶常微分方程",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/inverse-matrix.md",
-      "exists": true,
-      "char_count": 826
-    },
-    {
-      "id": "linear-systems",
-      "name": "线性方程组",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/linear-systems.md",
-      "exists": true,
-      "char_count": 818
-    },
-    {
-      "id": "row-echelon-form",
-      "name": "行阶梯形与秩",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/row-echelon-form.md",
-      "exists": true,
-      "char_count": 834
-    },
-    {
-      "id": "vector-spaces",
-      "name": "向量空间",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 7,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/linear-algebra/vector-spaces.md",
-      "exists": true,
-      "char_count": 827
-    },
-    {
-      "id": "linear-independence",
-      "name": "线性无关",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/linear-independence.md",
-      "exists": true,
-      "char_count": 809
-    },
-    {
-      "id": "basis-dimension",
-      "name": "基与维数",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/basis-dimension.md",
-      "exists": true,
-      "char_count": 809
-    },
-    {
-      "id": "linear-transformations",
-      "name": "线性变换",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/linear-transformations.md",
-      "exists": true,
-      "char_count": 809
-    },
-    {
-      "id": "eigenvalues-eigenvectors",
-      "name": "特征值与特征向量",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 7,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/linear-algebra/eigenvalues-eigenvectors.md",
-      "exists": true,
-      "char_count": 1021
-    },
-    {
-      "id": "diagonalization",
-      "name": "对角化",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/linear-algebra/diagonalization.md",
-      "exists": true,
-      "char_count": 811
-    },
-    {
-      "id": "inner-product-spaces",
-      "name": "内积空间",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 8,
       "is_milestone": false,
       "tags": [
         "进阶"
       ],
-      "file": "mathematics/linear-algebra/inner-product-spaces.md",
+      "file": "mathematics/calculus/second-order-ode.md",
       "exists": true,
-      "char_count": 880
+      "char_count": 1361
     },
     {
-      "id": "orthogonal-matrices",
-      "name": "正交矩阵",
+      "id": "ivt-evt",
+      "name": "介值定理与极值定理",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 8,
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
       "is_milestone": false,
       "tags": [
-        "进阶"
+        "定理"
       ],
-      "file": "mathematics/linear-algebra/orthogonal-matrices.md",
+      "file": "mathematics/calculus/ivt-evt.md",
       "exists": true,
-      "char_count": 799
+      "char_count": 1217
     },
     {
-      "id": "svd",
-      "name": "奇异值分解",
+      "id": "partial-derivatives",
+      "name": "偏导数",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 8,
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/calculus/partial-derivatives.md",
+      "exists": true,
+      "char_count": 3242
+    },
+    {
+      "id": "curve-sketching",
+      "name": "函数图像分析",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
       "is_milestone": false,
       "tags": [
         "应用"
       ],
-      "file": "mathematics/linear-algebra/svd.md",
+      "file": "mathematics/calculus/curve-sketching.md",
       "exists": true,
-      "char_count": 790
+      "char_count": 1602
     },
     {
-      "id": "quadratic-forms",
-      "name": "二次型",
+      "id": "definite-integrals",
+      "name": "定积分",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/calculus/definite-integrals.md",
+      "exists": true,
+      "char_count": 1982
+    },
+    {
+      "id": "derivative-concept",
+      "name": "导数概念",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/calculus/derivative-concept.md",
+      "exists": true,
+      "char_count": 2968
+    },
+    {
+      "id": "differential-equations-intro",
+      "name": "常微分方程初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/calculus/differential-equations-intro.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "power-series",
+      "name": "幂级数",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 7,
       "is_milestone": false,
       "tags": [
         "进阶"
       ],
-      "file": "mathematics/linear-algebra/quadratic-forms.md",
+      "file": "mathematics/calculus/power-series.md",
       "exists": true,
-      "char_count": 811
+      "char_count": 2860
     },
     {
-      "id": "jordan-form",
-      "name": "Jordan标准形",
+      "id": "improper-integrals",
+      "name": "广义积分",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/calculus/improper-integrals.md",
+      "exists": true,
+      "char_count": 3131
+    },
+    {
+      "id": "arc-length",
+      "name": "弧长公式",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/calculus/arc-length.md",
+      "exists": true,
+      "char_count": 2590
+    },
+    {
+      "id": "ftc",
+      "name": "微积分基本定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/calculus/ftc.md",
+      "exists": true,
+      "char_count": 1526
+    },
+    {
+      "id": "laplace-transform-intro",
+      "name": "拉普拉斯变换初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/calculus/laplace-transform-intro.md",
+      "exists": true,
+      "char_count": 3063
+    },
+    {
+      "id": "stokes-theorem",
+      "name": "斯托克斯定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 9,
       "is_milestone": false,
       "tags": [
         "拓展"
       ],
-      "file": "mathematics/linear-algebra/jordan-form.md",
+      "file": "mathematics/calculus/stokes-theorem.md",
       "exists": true,
-      "char_count": 825
+      "char_count": 3300
     },
     {
-      "id": "null-column-row-spaces",
-      "name": "四个基本子空间",
+      "id": "volume-of-revolution",
+      "name": "旋转体体积",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/linear-algebra/null-column-row-spaces.md",
-      "exists": true,
-      "char_count": 875
-    },
-    {
-      "id": "least-squares",
-      "name": "最小二乘法",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 7,
       "is_milestone": false,
       "tags": [
         "应用"
       ],
-      "file": "mathematics/linear-algebra/least-squares.md",
+      "file": "mathematics/calculus/volume-of-revolution.md",
       "exists": true,
-      "char_count": 841
+      "char_count": 2825
     },
     {
-      "id": "matrix-norms",
-      "name": "矩阵范数",
+      "id": "area-under-curve",
+      "name": "曲线围面积",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/calculus/area-under-curve.md",
+      "exists": true,
+      "char_count": 3014
+    },
+    {
+      "id": "line-integrals",
+      "name": "曲线积分",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 8,
       "is_milestone": false,
       "tags": [
         "进阶"
       ],
-      "file": "mathematics/linear-algebra/matrix-norms.md",
+      "file": "mathematics/calculus/line-integrals.md",
       "exists": true,
-      "char_count": 774
+      "char_count": 3225
     },
     {
-      "id": "positive-definite",
-      "name": "正定矩阵",
+      "id": "surface-integrals",
+      "name": "曲面积分",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/linear-algebra/positive-definite.md",
-      "exists": true,
-      "char_count": 846
-    },
-    {
-      "id": "tensor-intro",
-      "name": "张量初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 8,
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 9,
       "is_milestone": false,
       "tags": [
         "拓展"
       ],
-      "file": "mathematics/linear-algebra/tensor-intro.md",
+      "file": "mathematics/calculus/surface-integrals.md",
       "exists": true,
-      "char_count": 754
+      "char_count": 3168
     },
     {
-      "id": "cramers-rule",
-      "name": "克莱姆法则",
+      "id": "optimization-calculus",
+      "name": "最值问题",
       "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "mathematics/linear-algebra/cramers-rule.md",
-      "exists": true,
-      "char_count": 758
-    },
-    {
-      "id": "matrix-exponential",
-      "name": "矩阵指数",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/linear-algebra/matrix-exponential.md",
-      "exists": true,
-      "char_count": 784
-    },
-    {
-      "id": "abstract-vector-spaces",
-      "name": "抽象向量空间",
-      "domain_id": "mathematics",
-      "subdomain_id": "linear-algebra",
-      "subdomain_name": "线性代数",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "理论"
-      ],
-      "file": "mathematics/linear-algebra/abstract-vector-spaces.md",
-      "exists": true,
-      "char_count": 798
-    },
-    {
-      "id": "counting-principles",
-      "name": "计数原理",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/probability/counting-principles.md",
-      "exists": true,
-      "char_count": 793
-    },
-    {
-      "id": "permutations",
-      "name": "排列",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/probability/permutations.md",
-      "exists": true,
-      "char_count": 776
-    },
-    {
-      "id": "combinations",
-      "name": "组合",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/probability/combinations.md",
-      "exists": true,
-      "char_count": 806
-    },
-    {
-      "id": "probability-basics",
-      "name": "概率基础",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/probability/probability-basics.md",
-      "exists": true,
-      "char_count": 808
-    },
-    {
-      "id": "conditional-probability",
-      "name": "条件概率",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/probability/conditional-probability.md",
-      "exists": true,
-      "char_count": 907
-    },
-    {
-      "id": "bayes-theorem",
-      "name": "贝叶斯定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/probability/bayes-theorem.md",
-      "exists": true,
-      "char_count": 893
-    },
-    {
-      "id": "independence",
-      "name": "事件的独立性",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/probability/independence.md",
-      "exists": true,
-      "char_count": 771
-    },
-    {
-      "id": "random-variables",
-      "name": "随机变量",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/probability/random-variables.md",
-      "exists": true,
-      "char_count": 812
-    },
-    {
-      "id": "discrete-distributions",
-      "name": "离散分布",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/probability/discrete-distributions.md",
-      "exists": true,
-      "char_count": 809
-    },
-    {
-      "id": "continuous-distributions",
-      "name": "连续分布",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/probability/continuous-distributions.md",
-      "exists": true,
-      "char_count": 815
-    },
-    {
-      "id": "expectation-variance",
-      "name": "期望与方差",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/probability/expectation-variance.md",
-      "exists": true,
-      "char_count": 923
-    },
-    {
-      "id": "normal-distribution",
-      "name": "正态分布",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/probability/normal-distribution.md",
-      "exists": true,
-      "char_count": 870
-    },
-    {
-      "id": "joint-distributions",
-      "name": "联合分布",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/probability/joint-distributions.md",
-      "exists": true,
-      "char_count": 817
-    },
-    {
-      "id": "law-of-large-numbers",
-      "name": "大数定律",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "定理"
-      ],
-      "file": "mathematics/probability/law-of-large-numbers.md",
-      "exists": true,
-      "char_count": 804
-    },
-    {
-      "id": "central-limit-theorem",
-      "name": "中心极限定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 7,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/probability/central-limit-theorem.md",
-      "exists": true,
-      "char_count": 949
-    },
-    {
-      "id": "moment-generating",
-      "name": "矩母函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/probability/moment-generating.md",
-      "exists": true,
-      "char_count": 760
-    },
-    {
-      "id": "markov-chains-intro",
-      "name": "马尔可夫链初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 8,
       "is_milestone": false,
       "tags": [
         "应用"
       ],
-      "file": "mathematics/probability/markov-chains-intro.md",
+      "file": "mathematics/calculus/optimization-calculus.md",
       "exists": true,
-      "char_count": 793
+      "char_count": 2449
     },
     {
-      "id": "poisson-process",
-      "name": "泊松过程",
+      "id": "limits-concept",
+      "name": "极限概念",
       "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/probability/poisson-process.md",
-      "exists": true,
-      "char_count": 768
-    },
-    {
-      "id": "chebyshev-inequality",
-      "name": "切比雪夫不等式",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "定理"
-      ],
-      "file": "mathematics/probability/chebyshev-inequality.md",
-      "exists": true,
-      "char_count": 815
-    },
-    {
-      "id": "generating-functions",
-      "name": "生成函数",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/probability/generating-functions.md",
-      "exists": true,
-      "char_count": 816
-    },
-    {
-      "id": "multivariate-normal",
-      "name": "多元正态分布",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/probability/multivariate-normal.md",
-      "exists": true,
-      "char_count": 788
-    },
-    {
-      "id": "conditional-expectation",
-      "name": "条件期望",
-      "domain_id": "mathematics",
-      "subdomain_id": "probability",
-      "subdomain_name": "概率论",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/probability/conditional-expectation.md",
-      "exists": true,
-      "char_count": 782
-    },
-    {
-      "id": "descriptive-statistics",
-      "name": "描述性统计",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/statistics/descriptive-statistics.md",
-      "exists": true,
-      "char_count": 846
-    },
-    {
-      "id": "data-visualization",
-      "name": "数据可视化基础",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/statistics/data-visualization.md",
-      "exists": true,
-      "char_count": 794
-    },
-    {
-      "id": "sampling-methods",
-      "name": "抽样方法",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/statistics/sampling-methods.md",
-      "exists": true,
-      "char_count": 813
-    },
-    {
-      "id": "sampling-distributions",
-      "name": "抽样分布",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/statistics/sampling-distributions.md",
-      "exists": true,
-      "char_count": 874
-    },
-    {
-      "id": "point-estimation",
-      "name": "点估计",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/statistics/point-estimation.md",
-      "exists": true,
-      "char_count": 874
-    },
-    {
-      "id": "confidence-intervals",
-      "name": "置信区间",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/statistics/confidence-intervals.md",
-      "exists": true,
-      "char_count": 806
-    },
-    {
-      "id": "hypothesis-testing",
-      "name": "假设检验",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 7,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/statistics/hypothesis-testing.md",
-      "exists": true,
-      "char_count": 930
-    },
-    {
-      "id": "t-test",
-      "name": "t检验",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/statistics/t-test.md",
-      "exists": true,
-      "char_count": 782
-    },
-    {
-      "id": "chi-square-test",
-      "name": "卡方检验",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/statistics/chi-square-test.md",
-      "exists": true,
-      "char_count": 759
-    },
-    {
-      "id": "anova",
-      "name": "方差分析",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/statistics/anova.md",
-      "exists": true,
-      "char_count": 757
-    },
-    {
-      "id": "linear-regression",
-      "name": "线性回归",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/statistics/linear-regression.md",
-      "exists": true,
-      "char_count": 1030
-    },
-    {
-      "id": "correlation",
-      "name": "相关性分析",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 5,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "mathematics/statistics/correlation.md",
+      "file": "mathematics/calculus/limits-concept.md",
       "exists": true,
-      "char_count": 843
+      "char_count": 2807
     },
     {
-      "id": "nonparametric-tests",
-      "name": "非参数检验",
+      "id": "limit-laws",
+      "name": "极限运算法则",
       "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 7,
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 5,
       "is_milestone": false,
       "tags": [
-        "进阶"
+        "核心"
       ],
-      "file": "mathematics/statistics/nonparametric-tests.md",
+      "file": "mathematics/calculus/limit-laws.md",
       "exists": true,
-      "char_count": 786
+      "char_count": 3105
     },
     {
-      "id": "bayesian-statistics",
-      "name": "贝叶斯统计",
+      "id": "greens-theorem",
+      "name": "格林公式",
       "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 8,
       "is_milestone": false,
       "tags": [
         "进阶"
       ],
-      "file": "mathematics/statistics/bayesian-statistics.md",
+      "file": "mathematics/calculus/greens-theorem.md",
       "exists": true,
-      "char_count": 786
+      "char_count": 1201
     },
     {
-      "id": "experimental-design",
-      "name": "实验设计",
+      "id": "gradient-directional",
+      "name": "梯度与方向导数",
       "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/calculus/gradient-directional.md",
+      "exists": true,
+      "char_count": 1408
+    },
+    {
+      "id": "differentiation-rules",
+      "name": "求导法则",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/calculus/differentiation-rules.md",
+      "exists": true,
+      "char_count": 2764
+    },
+    {
+      "id": "taylor-series",
+      "name": "泰勒展开",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/calculus/taylor-series.md",
+      "exists": true,
+      "char_count": 2917
+    },
+    {
+      "id": "lhopitals-rule",
+      "name": "洛必达法则",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 6,
       "is_milestone": false,
       "tags": [
-        "方法"
+        "核心"
       ],
-      "file": "mathematics/statistics/experimental-design.md",
+      "file": "mathematics/calculus/lhopitals-rule.md",
       "exists": true,
-      "char_count": 772
+      "char_count": 2942
     },
     {
-      "id": "logistic-regression",
-      "name": "逻辑回归",
+      "id": "related-rates",
+      "name": "相关变化率",
       "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 7,
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
       "is_milestone": false,
       "tags": [
         "应用"
       ],
-      "file": "mathematics/statistics/logistic-regression.md",
+      "file": "mathematics/calculus/related-rates.md",
       "exists": true,
-      "char_count": 838
+      "char_count": 2467
     },
     {
-      "id": "bootstrap-methods",
-      "name": "Bootstrap方法",
+      "id": "integration-techniques",
+      "name": "积分技巧",
       "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/calculus/integration-techniques.md",
+      "exists": true,
+      "char_count": 2889
+    },
+    {
+      "id": "sequences-series-calc",
+      "name": "级数与收敛",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 7,
       "is_milestone": false,
       "tags": [
-        "现代"
+        "核心"
       ],
-      "file": "mathematics/statistics/bootstrap-methods.md",
+      "file": "mathematics/calculus/sequences-series-calc.md",
       "exists": true,
-      "char_count": 834
+      "char_count": 2835
     },
     {
-      "id": "sufficient-statistics",
-      "name": "充分统计量",
+      "id": "continuity",
+      "name": "连续性",
       "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "理论"
-      ],
-      "file": "mathematics/statistics/sufficient-statistics.md",
-      "exists": true,
-      "char_count": 768
-    },
-    {
-      "id": "maximum-likelihood",
-      "name": "最大似然估计详解",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "理论"
-      ],
-      "file": "mathematics/statistics/maximum-likelihood.md",
-      "exists": true,
-      "char_count": 830
-    },
-    {
-      "id": "survival-analysis-intro",
-      "name": "生存分析初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/statistics/survival-analysis-intro.md",
-      "exists": true,
-      "char_count": 823
-    },
-    {
-      "id": "propositional-logic",
-      "name": "命题逻辑",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/discrete-math/propositional-logic.md",
-      "exists": true,
-      "char_count": 819
-    },
-    {
-      "id": "predicate-logic",
-      "name": "谓词逻辑",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
       "difficulty": 5,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "mathematics/discrete-math/predicate-logic.md",
+      "file": "mathematics/calculus/continuity.md",
       "exists": true,
-      "char_count": 776
+      "char_count": 2653
     },
     {
-      "id": "proof-techniques",
-      "name": "证明方法",
+      "id": "multiple-integrals",
+      "name": "重积分",
       "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/discrete-math/proof-techniques.md",
-      "exists": true,
-      "char_count": 869
-    },
-    {
-      "id": "set-theory",
-      "name": "集合论",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 4,
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 8,
       "is_milestone": false,
       "tags": [
-        "基础"
+        "进阶"
       ],
-      "file": "mathematics/discrete-math/set-theory.md",
+      "file": "mathematics/calculus/multiple-integrals.md",
       "exists": true,
-      "char_count": 809
+      "char_count": 3095
+    },
+    {
+      "id": "implicit-differentiation",
+      "name": "隐函数求导",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/calculus/implicit-differentiation.md",
+      "exists": true,
+      "char_count": 2757
+    },
+    {
+      "id": "higher-derivatives",
+      "name": "高阶导数",
+      "domain_id": "mathematics",
+      "subdomain_id": "calculus",
+      "subdomain_name": "微积分",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/calculus/higher-derivatives.md",
+      "exists": true,
+      "char_count": 1464
     },
     {
       "id": "relations",
@@ -3242,7 +1498,7 @@
       ],
       "file": "mathematics/discrete-math/relations.md",
       "exists": true,
-      "char_count": 782
+      "char_count": 2974
     },
     {
       "id": "functions-discrete",
@@ -3257,232 +1513,7 @@
       ],
       "file": "mathematics/discrete-math/functions-discrete.md",
       "exists": true,
-      "char_count": 832
-    },
-    {
-      "id": "graph-theory-basics",
-      "name": "图论基础",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/discrete-math/graph-theory-basics.md",
-      "exists": true,
-      "char_count": 833
-    },
-    {
-      "id": "trees",
-      "name": "树",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/discrete-math/trees.md",
-      "exists": true,
-      "char_count": 765
-    },
-    {
-      "id": "euler-hamilton",
-      "name": "欧拉路与哈密顿路",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "mathematics/discrete-math/euler-hamilton.md",
-      "exists": true,
-      "char_count": 814
-    },
-    {
-      "id": "graph-coloring",
-      "name": "图着色",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "mathematics/discrete-math/graph-coloring.md",
-      "exists": true,
-      "char_count": 750
-    },
-    {
-      "id": "planar-graphs",
-      "name": "平面图",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/discrete-math/planar-graphs.md",
-      "exists": true,
-      "char_count": 823
-    },
-    {
-      "id": "boolean-algebra",
-      "name": "布尔代数",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/discrete-math/boolean-algebra.md",
-      "exists": true,
-      "char_count": 805
-    },
-    {
-      "id": "combinatorial-identities",
-      "name": "组合恒等式",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/discrete-math/combinatorial-identities.md",
-      "exists": true,
-      "char_count": 851
-    },
-    {
-      "id": "inclusion-exclusion",
-      "name": "容斥原理",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/discrete-math/inclusion-exclusion.md",
-      "exists": true,
-      "char_count": 751
-    },
-    {
-      "id": "recurrence-relations",
-      "name": "递推关系",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/discrete-math/recurrence-relations.md",
-      "exists": true,
-      "char_count": 833
-    },
-    {
-      "id": "generating-func-disc",
-      "name": "生成函数(离散)",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/discrete-math/generating-func-disc.md",
-      "exists": true,
-      "char_count": 817
-    },
-    {
-      "id": "modular-arithmetic",
-      "name": "模运算",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/discrete-math/modular-arithmetic.md",
-      "exists": true,
-      "char_count": 832
-    },
-    {
-      "id": "group-theory-intro",
-      "name": "群论初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 8,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/discrete-math/group-theory-intro.md",
-      "exists": true,
-      "char_count": 828
-    },
-    {
-      "id": "lattice-order",
-      "name": "格与偏序",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/discrete-math/lattice-order.md",
-      "exists": true,
-      "char_count": 778
-    },
-    {
-      "id": "automata-intro",
-      "name": "自动机初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/discrete-math/automata-intro.md",
-      "exists": true,
-      "char_count": 816
-    },
-    {
-      "id": "computational-complexity-intro",
-      "name": "计算复杂性初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/discrete-math/computational-complexity-intro.md",
-      "exists": true,
-      "char_count": 824
+      "char_count": 2836
     },
     {
       "id": "catalan-numbers",
@@ -3497,262 +1528,1042 @@
       ],
       "file": "mathematics/discrete-math/catalan-numbers.md",
       "exists": true,
-      "char_count": 768
+      "char_count": 2282
     },
     {
-      "id": "primes",
-      "name": "素数",
+      "id": "graph-coloring",
+      "name": "图着色",
       "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 3,
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 7,
       "is_milestone": false,
       "tags": [
-        "基础"
+        "经典"
       ],
-      "file": "mathematics/number-theory/primes.md",
+      "file": "mathematics/discrete-math/graph-coloring.md",
       "exists": true,
-      "char_count": 797
+      "char_count": 2362
     },
     {
-      "id": "euclidean-algorithm",
-      "name": "欧几里得算法",
+      "id": "graph-theory-basics",
+      "name": "图论基础",
       "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/number-theory/euclidean-algorithm.md",
-      "exists": true,
-      "char_count": 831
-    },
-    {
-      "id": "bezout-identity",
-      "name": "裴蜀等式",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 5,
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 2,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "mathematics/number-theory/bezout-identity.md",
+      "file": "mathematics/discrete-math/graph-theory-basics.md",
       "exists": true,
-      "char_count": 858
+      "char_count": 2073
     },
     {
-      "id": "congruences",
-      "name": "同余理论",
+      "id": "inclusion-exclusion",
+      "name": "容斥原理",
       "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/number-theory/congruences.md",
-      "exists": true,
-      "char_count": 818
-    },
-    {
-      "id": "fermats-little-theorem",
-      "name": "费马小定理",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
       "difficulty": 6,
       "is_milestone": false,
       "tags": [
-        "定理"
+        "核心"
       ],
-      "file": "mathematics/number-theory/fermats-little-theorem.md",
+      "file": "mathematics/discrete-math/inclusion-exclusion.md",
       "exists": true,
-      "char_count": 834
+      "char_count": 2413
     },
     {
-      "id": "euler-theorem",
-      "name": "欧拉定理",
+      "id": "boolean-algebra",
+      "name": "布尔代数",
       "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/discrete-math/boolean-algebra.md",
+      "exists": true,
+      "char_count": 2909
+    },
+    {
+      "id": "planar-graphs",
+      "name": "平面图",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
       "difficulty": 7,
       "is_milestone": false,
       "tags": [
-        "定理"
+        "进阶"
       ],
-      "file": "mathematics/number-theory/euler-theorem.md",
+      "file": "mathematics/discrete-math/planar-graphs.md",
       "exists": true,
-      "char_count": 839
+      "char_count": 1410
     },
     {
-      "id": "chinese-remainder",
-      "name": "中国剩余定理",
+      "id": "trees",
+      "name": "树",
       "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/discrete-math/trees.md",
+      "exists": true,
+      "char_count": 1233
+    },
+    {
+      "id": "lattice-order",
+      "name": "格与偏序",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
       "difficulty": 7,
-      "is_milestone": true,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/discrete-math/lattice-order.md",
+      "exists": true,
+      "char_count": 2884
+    },
+    {
+      "id": "modular-arithmetic",
+      "name": "模运算",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/discrete-math/modular-arithmetic.md",
+      "exists": true,
+      "char_count": 3000
+    },
+    {
+      "id": "euler-hamilton",
+      "name": "欧拉路与哈密顿路",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "mathematics/discrete-math/euler-hamilton.md",
+      "exists": true,
+      "char_count": 2774
+    },
+    {
+      "id": "generating-func-disc",
+      "name": "生成函数(离散)",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/discrete-math/generating-func-disc.md",
+      "exists": true,
+      "char_count": 2902
+    },
+    {
+      "id": "combinatorial-identities",
+      "name": "组合恒等式",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/discrete-math/combinatorial-identities.md",
+      "exists": true,
+      "char_count": 1520
+    },
+    {
+      "id": "group-theory-intro",
+      "name": "群论初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 8,
+      "is_milestone": false,
       "tags": [
         "里程碑"
       ],
-      "file": "mathematics/number-theory/chinese-remainder.md",
+      "file": "mathematics/discrete-math/group-theory-intro.md",
       "exists": true,
-      "char_count": 767
+      "char_count": 2655
     },
     {
-      "id": "quadratic-residues",
-      "name": "二次剩余",
+      "id": "automata-intro",
+      "name": "自动机初步",
       "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/number-theory/quadratic-residues.md",
-      "exists": true,
-      "char_count": 779
-    },
-    {
-      "id": "diophantine-equations",
-      "name": "丢番图方程",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "mathematics/number-theory/diophantine-equations.md",
-      "exists": true,
-      "char_count": 763
-    },
-    {
-      "id": "pythagorean-triples",
-      "name": "勾股数组",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "mathematics/number-theory/pythagorean-triples.md",
-      "exists": true,
-      "char_count": 770
-    },
-    {
-      "id": "perfect-numbers",
-      "name": "完全数",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "趣味"
-      ],
-      "file": "mathematics/number-theory/perfect-numbers.md",
-      "exists": true,
-      "char_count": 741
-    },
-    {
-      "id": "prime-distribution",
-      "name": "素数分布",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/number-theory/prime-distribution.md",
-      "exists": true,
-      "char_count": 785
-    },
-    {
-      "id": "continued-fractions",
-      "name": "连分数",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "mathematics/number-theory/continued-fractions.md",
-      "exists": true,
-      "char_count": 767
-    },
-    {
-      "id": "p-adic-intro",
-      "name": "p进数初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
-      "difficulty": 9,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/number-theory/p-adic-intro.md",
-      "exists": true,
-      "char_count": 767
-    },
-    {
-      "id": "cryptography-number-theory",
-      "name": "密码学中的数论",
-      "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
       "difficulty": 7,
       "is_milestone": false,
       "tags": [
         "应用"
       ],
-      "file": "mathematics/number-theory/cryptography-number-theory.md",
+      "file": "mathematics/discrete-math/automata-intro.md",
       "exists": true,
-      "char_count": 800
+      "char_count": 2988
     },
     {
-      "id": "arithmetic-functions",
-      "name": "算术函数",
+      "id": "computational-complexity-intro",
+      "name": "计算复杂性初步",
       "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/discrete-math/computational-complexity-intro.md",
+      "exists": true,
+      "char_count": 2871
+    },
+    {
+      "id": "proof-techniques",
+      "name": "证明方法",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/discrete-math/proof-techniques.md",
+      "exists": true,
+      "char_count": 2526
+    },
+    {
+      "id": "recurrence-relations",
+      "name": "递推关系",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/discrete-math/recurrence-relations.md",
+      "exists": true,
+      "char_count": 2887
+    },
+    {
+      "id": "set-theory",
+      "name": "集合论",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/discrete-math/set-theory.md",
+      "exists": true,
+      "char_count": 3133
+    },
+    {
+      "id": "triangles",
+      "name": "三角形",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/geometry/triangles.md",
+      "exists": true,
+      "char_count": 2473
+    },
+    {
+      "id": "volume-surface-area",
+      "name": "体积与表面积",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/geometry/volume-surface-area.md",
+      "exists": true,
+      "char_count": 2440
+    },
+    {
+      "id": "congruent-triangles",
+      "name": "全等三角形",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/geometry/congruent-triangles.md",
+      "exists": true,
+      "char_count": 1443
+    },
+    {
+      "id": "geometric-proofs",
+      "name": "几何证明",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/geometry/geometric-proofs.md",
+      "exists": true,
+      "char_count": 2360
+    },
+    {
+      "id": "pythagorean-theorem",
+      "name": "勾股定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/geometry/pythagorean-theorem.md",
+      "exists": true,
+      "char_count": 2798
+    },
+    {
+      "id": "quadrilaterals",
+      "name": "四边形",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/geometry/quadrilaterals.md",
+      "exists": true,
+      "char_count": 2095
+    },
+    {
+      "id": "circles",
+      "name": "圆",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/geometry/circles.md",
+      "exists": true,
+      "char_count": 1163
+    },
+    {
+      "id": "circle-theorems",
+      "name": "圆的定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/geometry/circle-theorems.md",
+      "exists": true,
+      "char_count": 2823
+    },
+    {
+      "id": "coordinate-geometry-intro",
+      "name": "坐标几何初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/geometry/coordinate-geometry-intro.md",
+      "exists": true,
+      "char_count": 2687
+    },
+    {
+      "id": "tessellations",
+      "name": "密铺与镶嵌",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "趣味"
+      ],
+      "file": "mathematics/geometry/tessellations.md",
+      "exists": true,
+      "char_count": 2315
+    },
+    {
+      "id": "symmetry-transformations",
+      "name": "对称与变换",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/geometry/symmetry-transformations.md",
+      "exists": true,
+      "char_count": 2430
+    },
+    {
+      "id": "projective-geometry-intro",
+      "name": "射影几何初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/geometry/projective-geometry-intro.md",
+      "exists": true,
+      "char_count": 2936
+    },
+    {
+      "id": "geometric-constructions",
+      "name": "尺规作图",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "mathematics/geometry/geometric-constructions.md",
+      "exists": true,
+      "char_count": 2362
+    },
+    {
+      "id": "parallel-perpendicular",
+      "name": "平行与垂直",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/geometry/parallel-perpendicular.md",
+      "exists": true,
+      "char_count": 2663
+    },
+    {
+      "id": "euler-formula-polyhedra",
+      "name": "欧拉公式",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/geometry/euler-formula-polyhedra.md",
+      "exists": true,
+      "char_count": 2146
+    },
+    {
+      "id": "points-lines-planes",
+      "name": "点线面基础",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/geometry/points-lines-planes.md",
+      "exists": true,
+      "char_count": 1599
+    },
+    {
+      "id": "similar-triangles",
+      "name": "相似三角形",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/geometry/similar-triangles.md",
+      "exists": true,
+      "char_count": 2292
+    },
+    {
+      "id": "space-angles-distances",
+      "name": "空间角与距离",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
       "difficulty": 7,
       "is_milestone": false,
       "tags": [
         "进阶"
       ],
-      "file": "mathematics/number-theory/arithmetic-functions.md",
+      "file": "mathematics/geometry/space-angles-distances.md",
       "exists": true,
-      "char_count": 813
+      "char_count": 2902
     },
     {
-      "id": "sum-of-squares",
-      "name": "平方和定理",
+      "id": "solid-geometry",
+      "name": "立体几何",
       "domain_id": "mathematics",
-      "subdomain_id": "number-theory",
-      "subdomain_name": "数论",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/geometry/solid-geometry.md",
+      "exists": true,
+      "char_count": 2399
+    },
+    {
+      "id": "angles",
+      "name": "角与角度",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/geometry/angles.md",
+      "exists": true,
+      "char_count": 2514
+    },
+    {
+      "id": "non-euclidean-intro",
+      "name": "非欧几何初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/geometry/non-euclidean-intro.md",
+      "exists": true,
+      "char_count": 2568
+    },
+    {
+      "id": "area-perimeter",
+      "name": "面积与周长",
+      "domain_id": "mathematics",
+      "subdomain_id": "geometry",
+      "subdomain_name": "几何",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/geometry/area-perimeter.md",
+      "exists": true,
+      "char_count": 2448
+    },
+    {
+      "id": "jordan-form",
+      "name": "Jordan标准形",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 9,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/linear-algebra/jordan-form.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "quadratic-forms",
+      "name": "二次型",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
       "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/linear-algebra/quadratic-forms.md",
+      "exists": true,
+      "char_count": 3037
+    },
+    {
+      "id": "cramers-rule",
+      "name": "克莱姆法则",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 6,
       "is_milestone": false,
       "tags": [
         "经典"
       ],
-      "file": "mathematics/number-theory/sum-of-squares.md",
+      "file": "mathematics/linear-algebra/cramers-rule.md",
       "exists": true,
-      "char_count": 764
+      "char_count": 2856
+    },
+    {
+      "id": "dot-product",
+      "name": "内积(点乘)",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/dot-product.md",
+      "exists": true,
+      "char_count": 3396
+    },
+    {
+      "id": "inner-product-spaces",
+      "name": "内积空间",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/linear-algebra/inner-product-spaces.md",
+      "exists": true,
+      "char_count": 1562
+    },
+    {
+      "id": "vectors-intro",
+      "name": "向量基础",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/linear-algebra/vectors-intro.md",
+      "exists": true,
+      "char_count": 3305
+    },
+    {
+      "id": "vector-spaces",
+      "name": "向量空间",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/linear-algebra/vector-spaces.md",
+      "exists": true,
+      "char_count": 3053
+    },
+    {
+      "id": "null-column-row-spaces",
+      "name": "四个基本子空间",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/null-column-row-spaces.md",
+      "exists": true,
+      "char_count": 1648
+    },
+    {
+      "id": "basis-dimension",
+      "name": "基与维数",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/basis-dimension.md",
+      "exists": true,
+      "char_count": 2809
+    },
+    {
+      "id": "cross-product",
+      "name": "外积(叉乘)",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/cross-product.md",
+      "exists": true,
+      "char_count": 2208
+    },
+    {
+      "id": "svd",
+      "name": "奇异值分解",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/linear-algebra/svd.md",
+      "exists": true,
+      "char_count": 2815
+    },
+    {
+      "id": "diagonalization",
+      "name": "对角化",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/linear-algebra/diagonalization.md",
+      "exists": true,
+      "char_count": 3050
+    },
+    {
+      "id": "tensor-intro",
+      "name": "张量初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/linear-algebra/tensor-intro.md",
+      "exists": true,
+      "char_count": 3098
+    },
+    {
+      "id": "abstract-vector-spaces",
+      "name": "抽象向量空间",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "mathematics/linear-algebra/abstract-vector-spaces.md",
+      "exists": true,
+      "char_count": 2996
+    },
+    {
+      "id": "least-squares",
+      "name": "最小二乘法",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/linear-algebra/least-squares.md",
+      "exists": true,
+      "char_count": 3230
+    },
+    {
+      "id": "orthogonal-matrices",
+      "name": "正交矩阵",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/linear-algebra/orthogonal-matrices.md",
+      "exists": true,
+      "char_count": 2809
+    },
+    {
+      "id": "positive-definite",
+      "name": "正定矩阵",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/linear-algebra/positive-definite.md",
+      "exists": true,
+      "char_count": 1377
+    },
+    {
+      "id": "eigenvalues-eigenvectors",
+      "name": "特征值与特征向量",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/linear-algebra/eigenvalues-eigenvectors.md",
+      "exists": true,
+      "char_count": 1545
+    },
+    {
+      "id": "matrix-multiplication",
+      "name": "矩阵乘法",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/matrix-multiplication.md",
+      "exists": true,
+      "char_count": 2785
+    },
+    {
+      "id": "matrices-intro",
+      "name": "矩阵基础",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/matrices-intro.md",
+      "exists": true,
+      "char_count": 2907
+    },
+    {
+      "id": "matrix-exponential",
+      "name": "矩阵指数",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/linear-algebra/matrix-exponential.md",
+      "exists": true,
+      "char_count": 3172
+    },
+    {
+      "id": "matrix-norms",
+      "name": "矩阵范数",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/linear-algebra/matrix-norms.md",
+      "exists": true,
+      "char_count": 1293
+    },
+    {
+      "id": "linear-transformations",
+      "name": "线性变换",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/linear-transformations.md",
+      "exists": true,
+      "char_count": 3092
+    },
+    {
+      "id": "linear-systems",
+      "name": "线性方程组",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/linear-systems.md",
+      "exists": true,
+      "char_count": 2694
+    },
+    {
+      "id": "linear-independence",
+      "name": "线性无关",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/linear-independence.md",
+      "exists": true,
+      "char_count": 2980
+    },
+    {
+      "id": "determinants",
+      "name": "行列式",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/linear-algebra/determinants.md",
+      "exists": true,
+      "char_count": 2751
+    },
+    {
+      "id": "row-echelon-form",
+      "name": "行阶梯形与秩",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/row-echelon-form.md",
+      "exists": true,
+      "char_count": 2532
+    },
+    {
+      "id": "inverse-matrix",
+      "name": "逆矩阵",
+      "domain_id": "mathematics",
+      "subdomain_id": "linear-algebra",
+      "subdomain_name": "线性代数",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/linear-algebra/inverse-matrix.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "propositional-logic",
+      "name": "命题逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/discrete-math/propositional-logic.md",
+      "exists": true,
+      "char_count": 2877
+    },
+    {
+      "id": "predicate-logic",
+      "name": "谓词逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/discrete-math/predicate-logic.md",
+      "exists": true,
+      "char_count": 3351
     },
     {
       "id": "fibonacci-properties",
@@ -3767,127 +2578,262 @@
       ],
       "file": "mathematics/number-theory/fibonacci-properties.md",
       "exists": true,
-      "char_count": 898
+      "char_count": 1601
     },
     {
-      "id": "linear-programming",
-      "name": "线性规划",
+      "id": "p-adic-intro",
+      "name": "p进数初步",
       "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 5,
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 9,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "拓展"
       ],
-      "file": "mathematics/optimization/linear-programming.md",
+      "file": "mathematics/number-theory/p-adic-intro.md",
       "exists": true,
-      "char_count": 846
+      "char_count": 2976
     },
     {
-      "id": "simplex-method",
-      "name": "单纯形法",
+      "id": "diophantine-equations",
+      "name": "丢番图方程",
       "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
       "difficulty": 7,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "经典"
       ],
-      "file": "mathematics/optimization/simplex-method.md",
+      "file": "mathematics/number-theory/diophantine-equations.md",
       "exists": true,
-      "char_count": 803
+      "char_count": 2821
     },
     {
-      "id": "duality-lp",
-      "name": "对偶理论",
+      "id": "chinese-remainder",
+      "name": "中国剩余定理",
       "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/number-theory/chinese-remainder.md",
+      "exists": true,
+      "char_count": 2769
+    },
+    {
+      "id": "quadratic-residues",
+      "name": "二次剩余",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
       "difficulty": 8,
       "is_milestone": false,
       "tags": [
         "进阶"
       ],
-      "file": "mathematics/optimization/duality-lp.md",
+      "file": "mathematics/number-theory/quadratic-residues.md",
       "exists": true,
-      "char_count": 764
+      "char_count": 1327
     },
     {
-      "id": "unconstrained-opt",
-      "name": "无约束优化",
+      "id": "pythagorean-triples",
+      "name": "勾股数组",
       "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 6,
-      "is_milestone": true,
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "mathematics/number-theory/pythagorean-triples.md",
+      "exists": true,
+      "char_count": 2572
+    },
+    {
+      "id": "congruences",
+      "name": "同余理论",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 5,
+      "is_milestone": false,
       "tags": [
         "里程碑"
       ],
-      "file": "mathematics/optimization/unconstrained-opt.md",
+      "file": "mathematics/number-theory/congruences.md",
       "exists": true,
-      "char_count": 852
+      "char_count": 3126
     },
     {
-      "id": "gradient-descent",
-      "name": "梯度下降",
+      "id": "perfect-numbers",
+      "name": "完全数",
       "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "趣味"
+      ],
+      "file": "mathematics/number-theory/perfect-numbers.md",
+      "exists": true,
+      "char_count": 2346
+    },
+    {
+      "id": "cryptography-number-theory",
+      "name": "密码学中的数论",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/number-theory/cryptography-number-theory.md",
+      "exists": true,
+      "char_count": 2709
+    },
+    {
+      "id": "sum-of-squares",
+      "name": "平方和定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "mathematics/number-theory/sum-of-squares.md",
+      "exists": true,
+      "char_count": 2826
+    },
+    {
+      "id": "euclidean-algorithm",
+      "name": "欧几里得算法",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/number-theory/euclidean-algorithm.md",
+      "exists": true,
+      "char_count": 2425
+    },
+    {
+      "id": "euler-theorem",
+      "name": "欧拉定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "定理"
+      ],
+      "file": "mathematics/number-theory/euler-theorem.md",
+      "exists": true,
+      "char_count": 1352
+    },
+    {
+      "id": "arithmetic-functions",
+      "name": "算术函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/number-theory/arithmetic-functions.md",
+      "exists": true,
+      "char_count": 3186
+    },
+    {
+      "id": "primes",
+      "name": "素数",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/number-theory/primes.md",
+      "exists": true,
+      "char_count": 2037
+    },
+    {
+      "id": "prime-distribution",
+      "name": "素数分布",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/number-theory/prime-distribution.md",
+      "exists": true,
+      "char_count": 1248
+    },
+    {
+      "id": "bezout-identity",
+      "name": "裴蜀等式",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/number-theory/bezout-identity.md",
+      "exists": true,
+      "char_count": 1482
+    },
+    {
+      "id": "fermats-little-theorem",
+      "name": "费马小定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
       "difficulty": 6,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "定理"
       ],
-      "file": "mathematics/optimization/gradient-descent.md",
+      "file": "mathematics/number-theory/fermats-little-theorem.md",
       "exists": true,
-      "char_count": 836
+      "char_count": 1239
     },
     {
-      "id": "newtons-method-opt",
-      "name": "牛顿法(优化)",
+      "id": "continued-fractions",
+      "name": "连分数",
       "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
+      "subdomain_id": "number-theory",
+      "subdomain_name": "数论",
       "difficulty": 7,
       "is_milestone": false,
       "tags": [
-        "核心"
+        "经典"
       ],
-      "file": "mathematics/optimization/newtons-method-opt.md",
+      "file": "mathematics/number-theory/continued-fractions.md",
       "exists": true,
-      "char_count": 801
-    },
-    {
-      "id": "constrained-opt",
-      "name": "约束优化",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "mathematics/optimization/constrained-opt.md",
-      "exists": true,
-      "char_count": 811
-    },
-    {
-      "id": "lagrange-multipliers",
-      "name": "拉格朗日乘数法",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 7,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/optimization/lagrange-multipliers.md",
-      "exists": true,
-      "char_count": 840
+      "char_count": 3019
     },
     {
       "id": "kkt-conditions",
@@ -3902,7 +2848,7 @@
       ],
       "file": "mathematics/optimization/kkt-conditions.md",
       "exists": true,
-      "char_count": 817
+      "char_count": 2712
     },
     {
       "id": "convex-optimization",
@@ -3917,22 +2863,7 @@
       ],
       "file": "mathematics/optimization/convex-optimization.md",
       "exists": true,
-      "char_count": 802
-    },
-    {
-      "id": "integer-programming",
-      "name": "整数规划",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/optimization/integer-programming.md",
-      "exists": true,
-      "char_count": 757
+      "char_count": 2997
     },
     {
       "id": "dynamic-programming-math",
@@ -3947,82 +2878,7 @@
       ],
       "file": "mathematics/optimization/dynamic-programming-math.md",
       "exists": true,
-      "char_count": 834
-    },
-    {
-      "id": "calculus-of-variations",
-      "name": "变分法",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 9,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "mathematics/optimization/calculus-of-variations.md",
-      "exists": true,
-      "char_count": 798
-    },
-    {
-      "id": "game-theory-intro",
-      "name": "博弈论初步",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/optimization/game-theory-intro.md",
-      "exists": true,
-      "char_count": 790
-    },
-    {
-      "id": "network-flows",
-      "name": "网络流",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/optimization/network-flows.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "multi-objective-opt",
-      "name": "多目标优化",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "mathematics/optimization/multi-objective-opt.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "stochastic-optimization",
-      "name": "随机优化",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/optimization/stochastic-optimization.md",
-      "exists": true,
-      "char_count": 777
+      "char_count": 1475
     },
     {
       "id": "semidefinite-programming",
@@ -4037,25 +2893,1153 @@
       ],
       "file": "mathematics/optimization/semidefinite-programming.md",
       "exists": true,
-      "char_count": 765
+      "char_count": 3101
+    },
+    {
+      "id": "simplex-method",
+      "name": "单纯形法",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/optimization/simplex-method.md",
+      "exists": true,
+      "char_count": 2845
+    },
+    {
+      "id": "game-theory-intro",
+      "name": "博弈论初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/optimization/game-theory-intro.md",
+      "exists": true,
+      "char_count": 2761
+    },
+    {
+      "id": "calculus-of-variations",
+      "name": "变分法",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 9,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/optimization/calculus-of-variations.md",
+      "exists": true,
+      "char_count": 1383
+    },
+    {
+      "id": "multi-objective-opt",
+      "name": "多目标优化",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/optimization/multi-objective-opt.md",
+      "exists": true,
+      "char_count": 1459
+    },
+    {
+      "id": "duality-lp",
+      "name": "对偶理论",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/optimization/duality-lp.md",
+      "exists": true,
+      "char_count": 2769
+    },
+    {
+      "id": "lagrange-multipliers",
+      "name": "拉格朗日乘数法",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/optimization/lagrange-multipliers.md",
+      "exists": true,
+      "char_count": 1309
+    },
+    {
+      "id": "integer-programming",
+      "name": "整数规划",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/optimization/integer-programming.md",
+      "exists": true,
+      "char_count": 2733
+    },
+    {
+      "id": "unconstrained-opt",
+      "name": "无约束优化",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/optimization/unconstrained-opt.md",
+      "exists": true,
+      "char_count": 2558
+    },
+    {
+      "id": "gradient-descent",
+      "name": "梯度下降",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/optimization/gradient-descent.md",
+      "exists": true,
+      "char_count": 2591
+    },
+    {
+      "id": "newtons-method-opt",
+      "name": "牛顿法(优化)",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/optimization/newtons-method-opt.md",
+      "exists": true,
+      "char_count": 2639
+    },
+    {
+      "id": "constrained-opt",
+      "name": "约束优化",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/optimization/constrained-opt.md",
+      "exists": true,
+      "char_count": 2582
+    },
+    {
+      "id": "linear-programming",
+      "name": "线性规划",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/optimization/linear-programming.md",
+      "exists": true,
+      "char_count": 2952
+    },
+    {
+      "id": "network-flows",
+      "name": "网络流",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/optimization/network-flows.md",
+      "exists": true,
+      "char_count": 1364
+    },
+    {
+      "id": "stochastic-optimization",
+      "name": "随机优化",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/optimization/stochastic-optimization.md",
+      "exists": true,
+      "char_count": 2798
+    },
+    {
+      "id": "central-limit-theorem",
+      "name": "中心极限定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/probability/central-limit-theorem.md",
+      "exists": true,
+      "char_count": 2824
+    },
+    {
+      "id": "independence",
+      "name": "事件的独立性",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/probability/independence.md",
+      "exists": true,
+      "char_count": 2822
+    },
+    {
+      "id": "chebyshev-inequality",
+      "name": "切比雪夫不等式",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "定理"
+      ],
+      "file": "mathematics/probability/chebyshev-inequality.md",
+      "exists": true,
+      "char_count": 1286
+    },
+    {
+      "id": "multivariate-normal",
+      "name": "多元正态分布",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/probability/multivariate-normal.md",
+      "exists": true,
+      "char_count": 3710
+    },
+    {
+      "id": "law-of-large-numbers",
+      "name": "大数定律",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "定理"
+      ],
+      "file": "mathematics/probability/law-of-large-numbers.md",
+      "exists": true,
+      "char_count": 2917
+    },
+    {
+      "id": "permutations",
+      "name": "排列",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/probability/permutations.md",
+      "exists": true,
+      "char_count": 2296
+    },
+    {
+      "id": "expectation-variance",
+      "name": "期望与方差",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/probability/expectation-variance.md",
+      "exists": true,
+      "char_count": 2230
+    },
+    {
+      "id": "conditional-expectation",
+      "name": "条件期望",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/probability/conditional-expectation.md",
+      "exists": true,
+      "char_count": 2928
+    },
+    {
+      "id": "conditional-probability",
+      "name": "条件概率",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/probability/conditional-probability.md",
+      "exists": true,
+      "char_count": 2364
+    },
+    {
+      "id": "probability-basics",
+      "name": "概率基础",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/probability/probability-basics.md",
+      "exists": true,
+      "char_count": 2586
+    },
+    {
+      "id": "normal-distribution",
+      "name": "正态分布",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/probability/normal-distribution.md",
+      "exists": true,
+      "char_count": 1535
+    },
+    {
+      "id": "poisson-process",
+      "name": "泊松过程",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/probability/poisson-process.md",
+      "exists": true,
+      "char_count": 2731
+    },
+    {
+      "id": "generating-functions",
+      "name": "生成函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/probability/generating-functions.md",
+      "exists": true,
+      "char_count": 2934
+    },
+    {
+      "id": "moment-generating",
+      "name": "矩母函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/probability/moment-generating.md",
+      "exists": true,
+      "char_count": 2845
+    },
+    {
+      "id": "discrete-distributions",
+      "name": "离散分布",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/probability/discrete-distributions.md",
+      "exists": true,
+      "char_count": 2635
+    },
+    {
+      "id": "combinations",
+      "name": "组合",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/probability/combinations.md",
+      "exists": true,
+      "char_count": 2283
+    },
+    {
+      "id": "joint-distributions",
+      "name": "联合分布",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/probability/joint-distributions.md",
+      "exists": true,
+      "char_count": 3056
+    },
+    {
+      "id": "counting-principles",
+      "name": "计数原理",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/probability/counting-principles.md",
+      "exists": true,
+      "char_count": 2653
+    },
+    {
+      "id": "bayes-theorem",
+      "name": "贝叶斯定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/probability/bayes-theorem.md",
+      "exists": true,
+      "char_count": 2135
+    },
+    {
+      "id": "continuous-distributions",
+      "name": "连续分布",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/probability/continuous-distributions.md",
+      "exists": true,
+      "char_count": 2784
+    },
+    {
+      "id": "random-variables",
+      "name": "随机变量",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/probability/random-variables.md",
+      "exists": true,
+      "char_count": 2470
+    },
+    {
+      "id": "markov-chains-intro",
+      "name": "马尔可夫链初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "probability",
+      "subdomain_name": "概率论",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/probability/markov-chains-intro.md",
+      "exists": true,
+      "char_count": 2850
+    },
+    {
+      "id": "experimental-design",
+      "name": "实验设计",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "mathematics/statistics/experimental-design.md",
+      "exists": true,
+      "char_count": 2892
+    },
+    {
+      "id": "sampling-methods",
+      "name": "抽样方法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/statistics/sampling-methods.md",
+      "exists": true,
+      "char_count": 2791
+    },
+    {
+      "id": "descriptive-statistics",
+      "name": "描述统计",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/statistics/descriptive-statistics.md",
+      "exists": true,
+      "char_count": 2744
+    },
+    {
+      "id": "bootstrap-methods",
+      "name": "Bootstrap方法",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "现代"
+      ],
+      "file": "mathematics/statistics/bootstrap-methods.md",
+      "exists": true,
+      "char_count": 3568
+    },
+    {
+      "id": "t-test",
+      "name": "t检验",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/statistics/t-test.md",
+      "exists": true,
+      "char_count": 2824
+    },
+    {
+      "id": "hypothesis-testing",
+      "name": "假设检验",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "统计学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/statistics/hypothesis-testing.md",
+      "exists": true,
+      "char_count": 2555
+    },
+    {
+      "id": "sufficient-statistics",
+      "name": "充分统计量",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "mathematics/statistics/sufficient-statistics.md",
+      "exists": true,
+      "char_count": 4037
+    },
+    {
+      "id": "chi-square-test",
+      "name": "卡方检验",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/statistics/chi-square-test.md",
+      "exists": true,
+      "char_count": 2463
+    },
+    {
+      "id": "sampling-distributions",
+      "name": "抽样分布",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/statistics/sampling-distributions.md",
+      "exists": true,
+      "char_count": 2931
+    },
+    {
+      "id": "anova",
+      "name": "方差分析",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/statistics/anova.md",
+      "exists": true,
+      "char_count": 2593
+    },
+    {
+      "id": "maximum-likelihood",
+      "name": "最大似然估计详解",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "mathematics/statistics/maximum-likelihood.md",
+      "exists": true,
+      "char_count": 1571
+    },
+    {
+      "id": "point-estimation",
+      "name": "点估计",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/statistics/point-estimation.md",
+      "exists": true,
+      "char_count": 3333
+    },
+    {
+      "id": "survival-analysis-intro",
+      "name": "生存分析初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/statistics/survival-analysis-intro.md",
+      "exists": true,
+      "char_count": 1440
+    },
+    {
+      "id": "correlation",
+      "name": "相关性分析",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/statistics/correlation.md",
+      "exists": true,
+      "char_count": 1263
+    },
+    {
+      "id": "linear-regression",
+      "name": "线性回归",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/statistics/linear-regression.md",
+      "exists": true,
+      "char_count": 2904
+    },
+    {
+      "id": "confidence-intervals",
+      "name": "置信区间",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/statistics/confidence-intervals.md",
+      "exists": true,
+      "char_count": 2564
+    },
+    {
+      "id": "bayesian-statistics",
+      "name": "贝叶斯统计",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/statistics/bayesian-statistics.md",
+      "exists": true,
+      "char_count": 2879
+    },
+    {
+      "id": "logistic-regression",
+      "name": "逻辑回归",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/statistics/logistic-regression.md",
+      "exists": true,
+      "char_count": 1492
+    },
+    {
+      "id": "nonparametric-tests",
+      "name": "非参数检验",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/statistics/nonparametric-tests.md",
+      "exists": true,
+      "char_count": 2823
+    },
+    {
+      "id": "trig-inequalities",
+      "name": "三角不等式",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/trigonometry/trig-inequalities.md",
+      "exists": true,
+      "char_count": 3114
+    },
+    {
+      "id": "trig-graphs",
+      "name": "三角函数图像",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/trigonometry/trig-graphs.md",
+      "exists": true,
+      "char_count": 2398
+    },
+    {
+      "id": "trig-applications",
+      "name": "三角函数应用",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/trigonometry/trig-applications.md",
+      "exists": true,
+      "char_count": 2917
+    },
+    {
+      "id": "parametric-trig",
+      "name": "三角参数化",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/trigonometry/parametric-trig.md",
+      "exists": true,
+      "char_count": 3166
+    },
+    {
+      "id": "trig-identities",
+      "name": "三角恒等式",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/trigonometry/trig-identities.md",
+      "exists": true,
+      "char_count": 2967
+    },
+    {
+      "id": "trig-equations",
+      "name": "三角方程",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/trigonometry/trig-equations.md",
+      "exists": true,
+      "char_count": 2425
+    },
+    {
+      "id": "trig-ratios",
+      "name": "三角比",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/trigonometry/trig-ratios.md",
+      "exists": true,
+      "char_count": 2783
+    },
+    {
+      "id": "law-of-cosines",
+      "name": "余弦定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/trigonometry/law-of-cosines.md",
+      "exists": true,
+      "char_count": 2394
+    },
+    {
+      "id": "double-half-angle",
+      "name": "倍角与半角公式",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/trigonometry/double-half-angle.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "fourier-intro",
+      "name": "傅里叶级数初步",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/trigonometry/fourier-intro.md",
+      "exists": true,
+      "char_count": 3055
+    },
+    {
+      "id": "unit-circle",
+      "name": "单位圆",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/trigonometry/unit-circle.md",
+      "exists": true,
+      "char_count": 3127
+    },
+    {
+      "id": "hyperbolic-functions",
+      "name": "双曲函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/trigonometry/hyperbolic-functions.md",
+      "exists": true,
+      "char_count": 3036
+    },
+    {
+      "id": "inverse-trig",
+      "name": "反三角函数",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/trigonometry/inverse-trig.md",
+      "exists": true,
+      "char_count": 1586
+    },
+    {
+      "id": "sum-difference-formulas",
+      "name": "和差化积公式",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/trigonometry/sum-difference-formulas.md",
+      "exists": true,
+      "char_count": 1625
+    },
+    {
+      "id": "complex-trig",
+      "name": "复数的三角形式",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/trigonometry/complex-trig.md",
+      "exists": true,
+      "char_count": 3344
+    },
+    {
+      "id": "radian-measure",
+      "name": "弧度制",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/trigonometry/radian-measure.md",
+      "exists": true,
+      "char_count": 2722
+    },
+    {
+      "id": "polar-coordinates",
+      "name": "极坐标",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "mathematics/trigonometry/polar-coordinates.md",
+      "exists": true,
+      "char_count": 2610
+    },
+    {
+      "id": "law-of-sines",
+      "name": "正弦定理",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/trigonometry/law-of-sines.md",
+      "exists": true,
+      "char_count": 1194
+    },
+    {
+      "id": "spherical-trig",
+      "name": "球面三角",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "mathematics/trigonometry/spherical-trig.md",
+      "exists": true,
+      "char_count": 2844
+    },
+    {
+      "id": "product-sum-formulas",
+      "name": "积化和差公式",
+      "domain_id": "mathematics",
+      "subdomain_id": "trigonometry",
+      "subdomain_name": "三角学",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "mathematics/trigonometry/product-sum-formulas.md",
+      "exists": true,
+      "char_count": 1264
+    },
+    {
+      "id": "data-visualization",
+      "name": "数据可视化",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/statistics/data-visualization.md",
+      "exists": true,
+      "char_count": 1462
     }
   ],
   "stats": {
-    "by_subdomain": {
-      "arithmetic": 18,
-      "algebra": 28,
-      "geometry": 22,
-      "trigonometry": 20,
-      "analytic-geometry": 18,
-      "calculus": 35,
-      "linear-algebra": 28,
-      "probability": 22,
-      "statistics": 20,
-      "discrete-math": 22,
-      "number-theory": 18,
-      "optimization": 18
-    },
-    "total_docs": 269,
-    "total_chars": 219600
+    "total": 269,
+    "total_chars": 660774,
+    "avg_chars": 2456,
+    "domain": "mathematics"
   }
 }

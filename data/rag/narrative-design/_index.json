@@ -1,744 +1,2350 @@
 {
-  "version": "1.0.0",
-  "domain": "narrative-design",
-  "domain_name": "叙事设计",
-  "generated_at": "2026-03-21T06:04:33.807624",
-  "total_concepts": 180,
-  "stats": {
-    "total_docs": 180,
-    "total_chars": 137879,
-    "by_subdomain": {
-      "worldbuilding": 20,
-      "character-writing": 20,
-      "dialogue-system": 20,
-      "branching-narrative": 20,
-      "quest-design": 20,
-      "cinematics": 20,
-      "environmental-storytelling": 20,
-      "localization": 20,
-      "narrative-tools": 20
-    }
-  },
   "documents": [
     {
-      "id": "nd-wb-setting-bible",
-      "file": "narrative-design/nd-wb-setting-bible.md"
-    },
-    {
-      "id": "nd-wb-lore-hierarchy",
-      "file": "narrative-design/nd-wb-lore-hierarchy.md"
-    },
-    {
-      "id": "nd-wb-world-history",
-      "file": "narrative-design/nd-wb-world-history.md"
-    },
-    {
-      "id": "nd-wb-geography",
-      "file": "narrative-design/nd-wb-geography.md"
-    },
-    {
-      "id": "nd-wb-faction-design",
-      "file": "narrative-design/nd-wb-faction-design.md"
-    },
-    {
-      "id": "nd-wb-magic-system",
-      "file": "narrative-design/nd-wb-magic-system.md"
-    },
-    {
-      "id": "nd-wb-culture-creation",
-      "file": "narrative-design/nd-wb-culture-creation.md"
-    },
-    {
-      "id": "nd-wb-mythology",
-      "file": "narrative-design/nd-wb-mythology.md"
-    },
-    {
-      "id": "nd-wb-economy-politics",
-      "file": "narrative-design/nd-wb-economy-politics.md"
-    },
-    {
-      "id": "nd-wb-ecology",
-      "file": "narrative-design/nd-wb-ecology.md"
-    },
-    {
-      "id": "nd-wb-tech-level",
-      "file": "narrative-design/nd-wb-tech-level.md"
-    },
-    {
-      "id": "nd-wb-naming-convention",
-      "file": "narrative-design/nd-wb-naming-convention.md"
-    },
-    {
-      "id": "nd-wb-internal-consistency",
-      "file": "narrative-design/nd-wb-internal-consistency.md"
-    },
-    {
-      "id": "nd-wb-worldbuilding-scope",
-      "file": "narrative-design/nd-wb-worldbuilding-scope.md"
-    },
-    {
-      "id": "nd-wb-genre-convention",
-      "file": "narrative-design/nd-wb-genre-convention.md"
-    },
-    {
-      "id": "nd-wb-tone-mood",
-      "file": "narrative-design/nd-wb-tone-mood.md"
-    },
-    {
-      "id": "nd-wb-timeline-management",
-      "file": "narrative-design/nd-wb-timeline-management.md"
-    },
-    {
-      "id": "nd-wb-player-agency-world",
-      "file": "narrative-design/nd-wb-player-agency-world.md"
-    },
-    {
-      "id": "nd-wb-transmedia",
-      "file": "narrative-design/nd-wb-transmedia.md"
-    },
-    {
-      "id": "nd-wb-living-world",
-      "file": "narrative-design/nd-wb-living-world.md"
-    },
-    {
-      "id": "nd-cw-character-arc",
-      "file": "narrative-design/nd-cw-character-arc.md"
-    },
-    {
-      "id": "nd-cw-protagonist-design",
-      "file": "narrative-design/nd-cw-protagonist-design.md"
-    },
-    {
-      "id": "nd-cw-antagonist-design",
-      "file": "narrative-design/nd-cw-antagonist-design.md"
-    },
-    {
-      "id": "nd-cw-npc-personality",
-      "file": "narrative-design/nd-cw-npc-personality.md"
-    },
-    {
-      "id": "nd-cw-motivation-system",
-      "file": "narrative-design/nd-cw-motivation-system.md"
-    },
-    {
-      "id": "nd-cw-backstory",
-      "file": "narrative-design/nd-cw-backstory.md"
-    },
-    {
-      "id": "nd-cw-relationship-web",
-      "file": "narrative-design/nd-cw-relationship-web.md"
-    },
-    {
-      "id": "nd-cw-companion-system",
-      "file": "narrative-design/nd-cw-companion-system.md"
-    },
-    {
-      "id": "nd-cw-voice-tone",
-      "file": "narrative-design/nd-cw-voice-tone.md"
-    },
-    {
-      "id": "nd-cw-character-template",
-      "file": "narrative-design/nd-cw-character-template.md"
-    },
-    {
-      "id": "nd-cw-silent-protagonist",
-      "file": "narrative-design/nd-cw-silent-protagonist.md"
-    },
-    {
-      "id": "nd-cw-ensemble-cast",
-      "file": "narrative-design/nd-cw-ensemble-cast.md"
-    },
-    {
-      "id": "nd-cw-character-reveal",
-      "file": "narrative-design/nd-cw-character-reveal.md"
-    },
-    {
-      "id": "nd-cw-moral-complexity",
-      "file": "narrative-design/nd-cw-moral-complexity.md"
-    },
-    {
-      "id": "nd-cw-cultural-sensitivity",
-      "file": "narrative-design/nd-cw-cultural-sensitivity.md"
-    },
-    {
-      "id": "nd-cw-player-character-bond",
-      "file": "narrative-design/nd-cw-player-character-bond.md"
-    },
-    {
-      "id": "nd-cw-dynamic-personality",
-      "file": "narrative-design/nd-cw-dynamic-personality.md"
-    },
-    {
-      "id": "nd-cw-archetype-usage",
-      "file": "narrative-design/nd-cw-archetype-usage.md"
-    },
-    {
-      "id": "nd-cw-redemption-arc",
-      "file": "narrative-design/nd-cw-redemption-arc.md"
-    },
-    {
-      "id": "nd-cw-tragic-character",
-      "file": "narrative-design/nd-cw-tragic-character.md"
-    },
-    {
-      "id": "nd-ds-dialogue-tree",
-      "file": "narrative-design/nd-ds-dialogue-tree.md"
-    },
-    {
-      "id": "nd-ds-dialogue-wheel",
-      "file": "narrative-design/nd-ds-dialogue-wheel.md"
-    },
-    {
-      "id": "nd-ds-bark-system",
-      "file": "narrative-design/nd-ds-bark-system.md"
-    },
-    {
-      "id": "nd-ds-conditional-dialogue",
-      "file": "narrative-design/nd-ds-conditional-dialogue.md"
-    },
-    {
-      "id": "nd-ds-dialogue-writing",
-      "file": "narrative-design/nd-ds-dialogue-writing.md"
-    },
-    {
-      "id": "nd-ds-voice-acting-prep",
-      "file": "narrative-design/nd-ds-voice-acting-prep.md"
-    },
-    {
-      "id": "nd-ds-lip-sync",
-      "file": "narrative-design/nd-ds-lip-sync.md"
-    },
-    {
-      "id": "nd-ds-dialogue-camera",
-      "file": "narrative-design/nd-ds-dialogue-camera.md"
-    },
-    {
-      "id": "nd-ds-node-based-editor",
-      "file": "narrative-design/nd-ds-node-based-editor.md"
-    },
-    {
-      "id": "nd-ds-hub-spoke",
-      "file": "narrative-design/nd-ds-hub-spoke.md"
-    },
-    {
-      "id": "nd-ds-keyword-system",
-      "file": "narrative-design/nd-ds-keyword-system.md"
-    },
-    {
-      "id": "nd-ds-persuasion-system",
-      "file": "narrative-design/nd-ds-persuasion-system.md"
-    },
-    {
-      "id": "nd-ds-lore-dump-avoidance",
-      "file": "narrative-design/nd-ds-lore-dump-avoidance.md"
-    },
-    {
-      "id": "nd-ds-dialogue-state-machine",
-      "file": "narrative-design/nd-ds-dialogue-state-machine.md"
-    },
-    {
-      "id": "nd-ds-procedural-dialogue",
-      "file": "narrative-design/nd-ds-procedural-dialogue.md"
-    },
-    {
-      "id": "nd-ds-subtext",
-      "file": "narrative-design/nd-ds-subtext.md"
-    },
-    {
-      "id": "nd-ds-exposition-techniques",
-      "file": "narrative-design/nd-ds-exposition-techniques.md"
-    },
-    {
-      "id": "nd-ds-interrupt-system",
-      "file": "narrative-design/nd-ds-interrupt-system.md"
-    },
-    {
-      "id": "nd-ds-reactivity-feedback",
-      "file": "narrative-design/nd-ds-reactivity-feedback.md"
-    },
-    {
-      "id": "nd-ds-dialogue-database",
-      "file": "narrative-design/nd-ds-dialogue-database.md"
-    },
-    {
-      "id": "nd-bn-branch-merge",
-      "file": "narrative-design/nd-bn-branch-merge.md"
-    },
-    {
-      "id": "nd-bn-multiple-endings",
-      "file": "narrative-design/nd-bn-multiple-endings.md"
-    },
-    {
-      "id": "nd-bn-choice-consequence",
-      "file": "narrative-design/nd-bn-choice-consequence.md"
-    },
-    {
-      "id": "nd-bn-flag-system",
-      "file": "narrative-design/nd-bn-flag-system.md"
-    },
-    {
-      "id": "nd-bn-state-tracking",
-      "file": "narrative-design/nd-bn-state-tracking.md"
-    },
-    {
-      "id": "nd-bn-illusion-of-choice",
-      "file": "narrative-design/nd-bn-illusion-of-choice.md"
-    },
-    {
-      "id": "nd-bn-delayed-consequence",
-      "file": "narrative-design/nd-bn-delayed-consequence.md"
-    },
-    {
-      "id": "nd-bn-moral-dilemma",
-      "file": "narrative-design/nd-bn-moral-dilemma.md"
-    },
-    {
-      "id": "nd-bn-narrative-graph",
-      "file": "narrative-design/nd-bn-narrative-graph.md"
-    },
-    {
-      "id": "nd-bn-combinatorial-explosion",
-      "file": "narrative-design/nd-bn-combinatorial-explosion.md"
+      "id": "nd-bn-save-scumming",
+      "name": "S/L防护设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-save-scumming.md",
+      "exists": true,
+      "char_count": 1348
     },
     {
       "id": "nd-bn-point-of-no-return",
-      "file": "narrative-design/nd-bn-point-of-no-return.md"
+      "name": "不可逆节点",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-point-of-no-return.md",
+      "exists": true,
+      "char_count": 1432
     },
     {
-      "id": "nd-bn-narrative-variable",
-      "file": "narrative-design/nd-bn-narrative-variable.md"
-    },
-    {
-      "id": "nd-bn-butterfly-effect",
-      "file": "narrative-design/nd-bn-butterfly-effect.md"
-    },
-    {
-      "id": "nd-bn-emergent-narrative",
-      "file": "narrative-design/nd-bn-emergent-narrative.md"
-    },
-    {
-      "id": "nd-bn-player-driven-story",
-      "file": "narrative-design/nd-bn-player-driven-story.md"
-    },
-    {
-      "id": "nd-bn-relationship-system",
-      "file": "narrative-design/nd-bn-relationship-system.md"
-    },
-    {
-      "id": "nd-bn-faction-reputation",
-      "file": "narrative-design/nd-bn-faction-reputation.md"
+      "id": "nd-bn-branch-merge",
+      "name": "分支与合流",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-bn-branch-merge.md",
+      "exists": true,
+      "char_count": 2546
     },
     {
       "id": "nd-bn-narrative-testing",
-      "file": "narrative-design/nd-bn-narrative-testing.md"
+      "name": "分支叙事测试",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-narrative-testing.md",
+      "exists": true,
+      "char_count": 1460
     },
     {
-      "id": "nd-bn-save-scumming",
-      "file": "narrative-design/nd-bn-save-scumming.md"
+      "id": "nd-bn-narrative-variable",
+      "name": "叙事变量",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-narrative-variable.md",
+      "exists": true,
+      "char_count": 1457
+    },
+    {
+      "id": "nd-bn-narrative-graph",
+      "name": "叙事图结构",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-narrative-graph.md",
+      "exists": true,
+      "char_count": 1483
+    },
+    {
+      "id": "nd-bn-multiple-endings",
+      "name": "多结局设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-bn-multiple-endings.md",
+      "exists": true,
+      "char_count": 1360
+    },
+    {
+      "id": "nd-bn-relationship-system",
+      "name": "好感度系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-relationship-system.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "nd-bn-delayed-consequence",
+      "name": "延迟后果",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-delayed-consequence.md",
+      "exists": true,
+      "char_count": 1297
+    },
+    {
+      "id": "nd-bn-flag-system",
+      "name": "标志系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-flag-system.md",
+      "exists": true,
+      "char_count": 1413
+    },
+    {
+      "id": "nd-bn-emergent-narrative",
+      "name": "涌现叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-emergent-narrative.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "nd-bn-state-tracking",
+      "name": "状态追踪",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-state-tracking.md",
+      "exists": true,
+      "char_count": 1251
+    },
+    {
+      "id": "nd-bn-player-driven-story",
+      "name": "玩家驱动故事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-player-driven-story.md",
+      "exists": true,
+      "char_count": 1351
     },
     {
       "id": "nd-bn-procedural-story",
-      "file": "narrative-design/nd-bn-procedural-story.md"
+      "name": "程序化故事生成",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-procedural-story.md",
+      "exists": true,
+      "char_count": 1441
     },
     {
-      "id": "nd-qd-main-quest",
-      "file": "narrative-design/nd-qd-main-quest.md"
+      "id": "nd-bn-combinatorial-explosion",
+      "name": "组合爆炸控制",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-combinatorial-explosion.md",
+      "exists": true,
+      "char_count": 1387
     },
     {
-      "id": "nd-qd-side-quest",
-      "file": "narrative-design/nd-qd-side-quest.md"
+      "id": "nd-bn-butterfly-effect",
+      "name": "蝴蝶效应",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-butterfly-effect.md",
+      "exists": true,
+      "char_count": 1283
     },
     {
-      "id": "nd-qd-quest-structure",
-      "file": "narrative-design/nd-qd-quest-structure.md"
+      "id": "nd-bn-choice-consequence",
+      "name": "选择与后果",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-bn-choice-consequence.md",
+      "exists": true,
+      "char_count": 1518
     },
     {
-      "id": "nd-qd-objective-design",
-      "file": "narrative-design/nd-qd-objective-design.md"
+      "id": "nd-bn-illusion-of-choice",
+      "name": "选择幻觉",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-illusion-of-choice.md",
+      "exists": true,
+      "char_count": 1327
     },
     {
-      "id": "nd-qd-quest-reward",
-      "file": "narrative-design/nd-qd-quest-reward.md"
+      "id": "nd-bn-moral-dilemma",
+      "name": "道德困境",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-bn-moral-dilemma.md",
+      "exists": true,
+      "char_count": 2316
     },
     {
-      "id": "nd-qd-quest-giver",
-      "file": "narrative-design/nd-qd-quest-giver.md"
+      "id": "nd-bn-faction-reputation",
+      "name": "阵营声望",
+      "domain_id": "narrative-design",
+      "subdomain_id": "branching-narrative",
+      "subdomain_name": "分支叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-bn-faction-reputation.md",
+      "exists": true,
+      "char_count": 1442
     },
     {
-      "id": "nd-qd-fetch-quest-alternatives",
-      "file": "narrative-design/nd-qd-fetch-quest-alternatives.md"
+      "id": "nd-cw-npc-personality",
+      "name": "NPC性格系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-npc-personality.md",
+      "exists": true,
+      "char_count": 1581
     },
     {
-      "id": "nd-qd-quest-chain",
-      "file": "narrative-design/nd-qd-quest-chain.md"
+      "id": "nd-cw-protagonist-design",
+      "name": "主角设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-cw-protagonist-design.md",
+      "exists": true,
+      "char_count": 1532
     },
     {
-      "id": "nd-qd-dynamic-quest",
-      "file": "narrative-design/nd-qd-dynamic-quest.md"
+      "id": "nd-cw-dynamic-personality",
+      "name": "动态性格系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-dynamic-personality.md",
+      "exists": true,
+      "char_count": 1510
     },
     {
-      "id": "nd-qd-quest-journal",
-      "file": "narrative-design/nd-qd-quest-journal.md"
+      "id": "nd-cw-motivation-system",
+      "name": "动机系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-motivation-system.md",
+      "exists": true,
+      "char_count": 1386
     },
     {
-      "id": "nd-qd-parallel-quests",
-      "file": "narrative-design/nd-qd-parallel-quests.md"
+      "id": "nd-cw-archetype-usage",
+      "name": "原型运用",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-archetype-usage.md",
+      "exists": true,
+      "char_count": 1437
     },
     {
-      "id": "nd-qd-escort-quest",
-      "file": "narrative-design/nd-qd-escort-quest.md"
+      "id": "nd-cw-antagonist-design",
+      "name": "反派设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-antagonist-design.md",
+      "exists": true,
+      "char_count": 1475
     },
     {
-      "id": "nd-qd-investigation-quest",
-      "file": "narrative-design/nd-qd-investigation-quest.md"
+      "id": "nd-cw-companion-system",
+      "name": "同伴系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-companion-system.md",
+      "exists": true,
+      "char_count": 1494
     },
     {
-      "id": "nd-qd-timed-quest",
-      "file": "narrative-design/nd-qd-timed-quest.md"
+      "id": "nd-cw-tragic-character",
+      "name": "悲剧角色",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-tragic-character.md",
+      "exists": true,
+      "char_count": 1399
     },
     {
-      "id": "nd-qd-optional-objectives",
-      "file": "narrative-design/nd-qd-optional-objectives.md"
+      "id": "nd-cw-redemption-arc",
+      "name": "救赎弧光",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-redemption-arc.md",
+      "exists": true,
+      "char_count": 1277
     },
     {
-      "id": "nd-qd-quest-failure",
-      "file": "narrative-design/nd-qd-quest-failure.md"
+      "id": "nd-cw-cultural-sensitivity",
+      "name": "文化敏感性",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-cultural-sensitivity.md",
+      "exists": true,
+      "char_count": 1465
     },
     {
-      "id": "nd-qd-radiant-quest",
-      "file": "narrative-design/nd-qd-radiant-quest.md"
+      "id": "nd-cw-silent-protagonist",
+      "name": "沉默主角设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-silent-protagonist.md",
+      "exists": true,
+      "char_count": 1453
     },
     {
-      "id": "nd-qd-quest-dependency",
-      "file": "narrative-design/nd-qd-quest-dependency.md"
+      "id": "nd-cw-player-character-bond",
+      "name": "玩家角色纽带",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-player-character-bond.md",
+      "exists": true,
+      "char_count": 1469
     },
     {
-      "id": "nd-qd-world-quest",
-      "file": "narrative-design/nd-qd-world-quest.md"
+      "id": "nd-cw-ensemble-cast",
+      "name": "群像角色设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-ensemble-cast.md",
+      "exists": true,
+      "char_count": 1423
     },
     {
-      "id": "nd-qd-quest-pacing",
-      "file": "narrative-design/nd-qd-quest-pacing.md"
+      "id": "nd-cw-relationship-web",
+      "name": "角色关系网",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-cw-relationship-web.md",
+      "exists": true,
+      "char_count": 2715
     },
     {
-      "id": "nd-ci-cutscene-types",
-      "file": "narrative-design/nd-ci-cutscene-types.md"
+      "id": "nd-cw-character-arc",
+      "name": "角色弧光",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-cw-character-arc.md",
+      "exists": true,
+      "char_count": 2506
     },
     {
-      "id": "nd-ci-camera-language",
-      "file": "narrative-design/nd-ci-camera-language.md"
+      "id": "nd-cw-character-reveal",
+      "name": "角色揭示节奏",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-character-reveal.md",
+      "exists": true,
+      "char_count": 1419
     },
     {
-      "id": "nd-ci-storyboard",
-      "file": "narrative-design/nd-ci-storyboard.md"
+      "id": "nd-cw-character-template",
+      "name": "角色模板",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-character-template.md",
+      "exists": true,
+      "char_count": 1391
     },
     {
-      "id": "nd-ci-pacing-rhythm",
-      "file": "narrative-design/nd-ci-pacing-rhythm.md"
+      "id": "nd-cw-backstory",
+      "name": "角色背景故事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-backstory.md",
+      "exists": true,
+      "char_count": 1400
+    },
+    {
+      "id": "nd-cw-voice-tone",
+      "name": "角色语气与口吻",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-voice-tone.md",
+      "exists": true,
+      "char_count": 1568
+    },
+    {
+      "id": "nd-cw-moral-complexity",
+      "name": "道德复杂性",
+      "domain_id": "narrative-design",
+      "subdomain_id": "character-writing",
+      "subdomain_name": "角色塑造",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-cw-moral-complexity.md",
+      "exists": true,
+      "char_count": 1408
     },
     {
       "id": "nd-ci-interactive-cutscene",
-      "file": "narrative-design/nd-ci-interactive-cutscene.md"
-    },
-    {
-      "id": "nd-ci-in-engine-cutscene",
-      "file": "narrative-design/nd-ci-in-engine-cutscene.md"
-    },
-    {
-      "id": "nd-ci-sequencer-tools",
-      "file": "narrative-design/nd-ci-sequencer-tools.md"
-    },
-    {
-      "id": "nd-ci-transition-design",
-      "file": "narrative-design/nd-ci-transition-design.md"
-    },
-    {
-      "id": "nd-ci-cinematic-lighting",
-      "file": "narrative-design/nd-ci-cinematic-lighting.md"
-    },
-    {
-      "id": "nd-ci-motion-capture-story",
-      "file": "narrative-design/nd-ci-motion-capture-story.md"
-    },
-    {
-      "id": "nd-ci-shot-composition",
-      "file": "narrative-design/nd-ci-shot-composition.md"
-    },
-    {
-      "id": "nd-ci-script-format",
-      "file": "narrative-design/nd-ci-script-format.md"
-    },
-    {
-      "id": "nd-ci-non-skippable-debate",
-      "file": "narrative-design/nd-ci-non-skippable-debate.md"
-    },
-    {
-      "id": "nd-ci-parallel-action",
-      "file": "narrative-design/nd-ci-parallel-action.md"
-    },
-    {
-      "id": "nd-ci-emotional-beats",
-      "file": "narrative-design/nd-ci-emotional-beats.md"
-    },
-    {
-      "id": "nd-ci-first-person-cutscene",
-      "file": "narrative-design/nd-ci-first-person-cutscene.md"
-    },
-    {
-      "id": "nd-ci-vfx-in-cutscene",
-      "file": "narrative-design/nd-ci-vfx-in-cutscene.md"
-    },
-    {
-      "id": "nd-ci-audio-sync",
-      "file": "narrative-design/nd-ci-audio-sync.md"
+      "name": "交互式过场",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-interactive-cutscene.md",
+      "exists": true,
+      "char_count": 1582
     },
     {
       "id": "nd-ci-branching-cutscene",
-      "file": "narrative-design/nd-ci-branching-cutscene.md"
+      "name": "分支过场",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-branching-cutscene.md",
+      "exists": true,
+      "char_count": 1291
+    },
+    {
+      "id": "nd-ci-storyboard",
+      "name": "分镜设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-ci-storyboard.md",
+      "exists": true,
+      "char_count": 2201
+    },
+    {
+      "id": "nd-ci-motion-capture-story",
+      "name": "动捕叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-motion-capture-story.md",
+      "exists": true,
+      "char_count": 1435
+    },
+    {
+      "id": "nd-ci-non-skippable-debate",
+      "name": "可跳过性设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-non-skippable-debate.md",
+      "exists": true,
+      "char_count": 1483
     },
     {
       "id": "nd-ci-real-time-event",
-      "file": "narrative-design/nd-ci-real-time-event.md"
+      "name": "实时事件演出",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-real-time-event.md",
+      "exists": true,
+      "char_count": 1470
     },
     {
-      "id": "nd-es-visual-narrative",
-      "file": "narrative-design/nd-es-visual-narrative.md"
+      "id": "nd-ci-parallel-action",
+      "name": "平行动作",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-parallel-action.md",
+      "exists": true,
+      "char_count": 1273
     },
     {
-      "id": "nd-es-found-narrative",
-      "file": "narrative-design/nd-es-found-narrative.md"
+      "id": "nd-ci-sequencer-tools",
+      "name": "序列器工具",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-sequencer-tools.md",
+      "exists": true,
+      "char_count": 1464
     },
     {
-      "id": "nd-es-level-as-story",
-      "file": "narrative-design/nd-es-level-as-story.md"
+      "id": "nd-ci-in-engine-cutscene",
+      "name": "引擎内过场",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-in-engine-cutscene.md",
+      "exists": true,
+      "char_count": 1326
     },
     {
-      "id": "nd-es-prop-storytelling",
-      "file": "narrative-design/nd-es-prop-storytelling.md"
+      "id": "nd-ci-emotional-beats",
+      "name": "情感节拍",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-emotional-beats.md",
+      "exists": true,
+      "char_count": 1359
     },
     {
-      "id": "nd-es-architecture-story",
-      "file": "narrative-design/nd-es-architecture-story.md"
+      "id": "nd-ci-shot-composition",
+      "name": "构图法则",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-shot-composition.md",
+      "exists": true,
+      "char_count": 1403
     },
     {
-      "id": "nd-es-graffiti-signs",
-      "file": "narrative-design/nd-es-graffiti-signs.md"
+      "id": "nd-ci-pacing-rhythm",
+      "name": "演出节奏",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-pacing-rhythm.md",
+      "exists": true,
+      "char_count": 1489
     },
     {
-      "id": "nd-es-lighting-narrative",
-      "file": "narrative-design/nd-es-lighting-narrative.md"
+      "id": "nd-ci-first-person-cutscene",
+      "name": "第一人称过场",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-first-person-cutscene.md",
+      "exists": true,
+      "char_count": 1402
     },
     {
-      "id": "nd-es-audio-narrative",
-      "file": "narrative-design/nd-es-audio-narrative.md"
+      "id": "nd-ci-cinematic-lighting",
+      "name": "过场光照",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-cinematic-lighting.md",
+      "exists": true,
+      "char_count": 1362
     },
     {
-      "id": "nd-es-corpse-storytelling",
-      "file": "narrative-design/nd-es-corpse-storytelling.md"
+      "id": "nd-ci-vfx-in-cutscene",
+      "name": "过场特效",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-vfx-in-cutscene.md",
+      "exists": true,
+      "char_count": 1354
     },
     {
-      "id": "nd-es-progression-change",
-      "file": "narrative-design/nd-es-progression-change.md"
+      "id": "nd-ci-cutscene-types",
+      "name": "过场类型",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-ci-cutscene-types.md",
+      "exists": true,
+      "char_count": 2641
     },
     {
-      "id": "nd-es-show-dont-tell",
-      "file": "narrative-design/nd-es-show-dont-tell.md"
+      "id": "nd-ci-script-format",
+      "name": "过场脚本格式",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-script-format.md",
+      "exists": true,
+      "char_count": 1413
     },
     {
-      "id": "nd-es-collectible-lore",
-      "file": "narrative-design/nd-es-collectible-lore.md"
+      "id": "nd-ci-transition-design",
+      "name": "过渡设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-transition-design.md",
+      "exists": true,
+      "char_count": 1362
     },
     {
-      "id": "nd-es-ghost-echo",
-      "file": "narrative-design/nd-es-ghost-echo.md"
+      "id": "nd-ci-camera-language",
+      "name": "镜头语言",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-camera-language.md",
+      "exists": true,
+      "char_count": 1507
     },
     {
-      "id": "nd-es-ruins-decay",
-      "file": "narrative-design/nd-es-ruins-decay.md"
+      "id": "nd-ci-audio-sync",
+      "name": "音画同步",
+      "domain_id": "narrative-design",
+      "subdomain_id": "cinematics",
+      "subdomain_name": "过场动画",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ci-audio-sync.md",
+      "exists": true,
+      "char_count": 1422
+    },
+    {
+      "id": "nd-ds-bark-system",
+      "name": "Bark系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-ds-bark-system.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "nd-ds-hub-spoke",
+      "name": "Hub-and-Spoke模式",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-hub-spoke.md",
+      "exists": true,
+      "char_count": 1455
+    },
+    {
+      "id": "nd-ds-exposition-techniques",
+      "name": "信息交代技巧",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-exposition-techniques.md",
+      "exists": true,
+      "char_count": 1365
+    },
+    {
+      "id": "nd-ds-keyword-system",
+      "name": "关键词系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-keyword-system.md",
+      "exists": true,
+      "char_count": 1284
+    },
+    {
+      "id": "nd-ds-reactivity-feedback",
+      "name": "反馈与回应性",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-reactivity-feedback.md",
+      "exists": true,
+      "char_count": 1466
+    },
+    {
+      "id": "nd-ds-lip-sync",
+      "name": "口型同步",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-lip-sync.md",
+      "exists": true,
+      "char_count": 1469
+    },
+    {
+      "id": "nd-ds-dialogue-writing",
+      "name": "对话写作",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-dialogue-writing.md",
+      "exists": true,
+      "char_count": 1539
+    },
+    {
+      "id": "nd-ds-dialogue-database",
+      "name": "对话数据库",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-dialogue-database.md",
+      "exists": true,
+      "char_count": 1522
+    },
+    {
+      "id": "nd-ds-dialogue-tree",
+      "name": "对话树",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-ds-dialogue-tree.md",
+      "exists": true,
+      "char_count": 1467
+    },
+    {
+      "id": "nd-ds-dialogue-state-machine",
+      "name": "对话状态机",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-dialogue-state-machine.md",
+      "exists": true,
+      "char_count": 1478
+    },
+    {
+      "id": "nd-ds-dialogue-wheel",
+      "name": "对话轮盘",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-dialogue-wheel.md",
+      "exists": true,
+      "char_count": 1449
+    },
+    {
+      "id": "nd-ds-dialogue-camera",
+      "name": "对话镜头",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-dialogue-camera.md",
+      "exists": true,
+      "char_count": 1470
+    },
+    {
+      "id": "nd-ds-interrupt-system",
+      "name": "打断系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-interrupt-system.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "nd-ds-conditional-dialogue",
+      "name": "条件对话",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-conditional-dialogue.md",
+      "exists": true,
+      "char_count": 1485
+    },
+    {
+      "id": "nd-ds-subtext",
+      "name": "潜台词设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-subtext.md",
+      "exists": true,
+      "char_count": 1379
+    },
+    {
+      "id": "nd-ds-procedural-dialogue",
+      "name": "程序化对话",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-procedural-dialogue.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "nd-ds-node-based-editor",
+      "name": "节点式对话编辑器",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-node-based-editor.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "nd-ds-persuasion-system",
+      "name": "说服系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-persuasion-system.md",
+      "exists": true,
+      "char_count": 1490
+    },
+    {
+      "id": "nd-ds-lore-dump-avoidance",
+      "name": "避免信息灌输",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-lore-dump-avoidance.md",
+      "exists": true,
+      "char_count": 1381
+    },
+    {
+      "id": "nd-ds-voice-acting-prep",
+      "name": "配音准备",
+      "domain_id": "narrative-design",
+      "subdomain_id": "dialogue-system",
+      "subdomain_name": "对话系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-ds-voice-acting-prep.md",
+      "exists": true,
+      "char_count": 1529
     },
     {
       "id": "nd-es-npc-routine",
-      "file": "narrative-design/nd-es-npc-routine.md"
-    },
-    {
-      "id": "nd-es-contrast-juxtaposition",
-      "file": "narrative-design/nd-es-contrast-juxtaposition.md"
-    },
-    {
-      "id": "nd-es-discovery-pacing",
-      "file": "narrative-design/nd-es-discovery-pacing.md"
-    },
-    {
-      "id": "nd-es-subtle-clues",
-      "file": "narrative-design/nd-es-subtle-clues.md"
-    },
-    {
-      "id": "nd-es-player-exploration-reward",
-      "file": "narrative-design/nd-es-player-exploration-reward.md"
+      "name": "NPC日常行为叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-npc-routine.md",
+      "exists": true,
+      "char_count": 1478
     },
     {
       "id": "nd-es-world-reaction",
-      "file": "narrative-design/nd-es-world-reaction.md"
+      "name": "世界反应",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-world-reaction.md",
+      "exists": true,
+      "char_count": 1436
     },
     {
-      "id": "nd-lo-loc-pipeline",
-      "file": "narrative-design/nd-lo-loc-pipeline.md"
+      "id": "nd-es-lighting-narrative",
+      "name": "光照叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-lighting-narrative.md",
+      "exists": true,
+      "char_count": 1382
     },
     {
-      "id": "nd-lo-string-table",
-      "file": "narrative-design/nd-lo-string-table.md"
+      "id": "nd-es-level-as-story",
+      "name": "关卡即故事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-level-as-story.md",
+      "exists": true,
+      "char_count": 1285
     },
     {
-      "id": "nd-lo-cultural-adaptation",
-      "file": "narrative-design/nd-lo-cultural-adaptation.md"
+      "id": "nd-es-found-narrative",
+      "name": "发现式叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-es-found-narrative.md",
+      "exists": true,
+      "char_count": 1599
     },
     {
-      "id": "nd-lo-text-expansion",
-      "file": "narrative-design/nd-lo-text-expansion.md"
+      "id": "nd-es-discovery-pacing",
+      "name": "发现节奏",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-discovery-pacing.md",
+      "exists": true,
+      "char_count": 1424
     },
     {
-      "id": "nd-lo-voice-localization",
-      "file": "narrative-design/nd-lo-voice-localization.md"
+      "id": "nd-es-ghost-echo",
+      "name": "回声/幻影叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-ghost-echo.md",
+      "exists": true,
+      "char_count": 1429
     },
     {
-      "id": "nd-lo-subtitle-system",
-      "file": "narrative-design/nd-lo-subtitle-system.md"
+      "id": "nd-es-progression-change",
+      "name": "场景变化叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-progression-change.md",
+      "exists": true,
+      "char_count": 1371
     },
     {
-      "id": "nd-lo-gendered-language",
-      "file": "narrative-design/nd-lo-gendered-language.md"
+      "id": "nd-es-contrast-juxtaposition",
+      "name": "对比叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-contrast-juxtaposition.md",
+      "exists": true,
+      "char_count": 1303
     },
     {
-      "id": "nd-lo-loc-testing",
-      "file": "narrative-design/nd-lo-loc-testing.md"
+      "id": "nd-es-corpse-storytelling",
+      "name": "尸体叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-corpse-storytelling.md",
+      "exists": true,
+      "char_count": 1436
+    },
+    {
+      "id": "nd-es-show-dont-tell",
+      "name": "展示而非讲述",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-show-dont-tell.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "nd-es-ruins-decay",
+      "name": "废墟叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-ruins-decay.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "nd-es-architecture-story",
+      "name": "建筑叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-architecture-story.md",
+      "exists": true,
+      "char_count": 1538
+    },
+    {
+      "id": "nd-es-player-exploration-reward",
+      "name": "探索奖励叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-player-exploration-reward.md",
+      "exists": true,
+      "char_count": 1378
+    },
+    {
+      "id": "nd-es-collectible-lore",
+      "name": "收集品世界观",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-collectible-lore.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "nd-es-graffiti-signs",
+      "name": "涂鸦与标识",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-graffiti-signs.md",
+      "exists": true,
+      "char_count": 1497
+    },
+    {
+      "id": "nd-es-visual-narrative",
+      "name": "视觉叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-es-visual-narrative.md",
+      "exists": true,
+      "char_count": 2473
+    },
+    {
+      "id": "nd-es-prop-storytelling",
+      "name": "道具叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-prop-storytelling.md",
+      "exists": true,
+      "char_count": 1389
+    },
+    {
+      "id": "nd-es-subtle-clues",
+      "name": "隐性线索",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-subtle-clues.md",
+      "exists": true,
+      "char_count": 1278
+    },
+    {
+      "id": "nd-es-audio-narrative",
+      "name": "音频叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "environmental-storytelling",
+      "subdomain_name": "环境叙事",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-es-audio-narrative.md",
+      "exists": true,
+      "char_count": 1377
     },
     {
       "id": "nd-lo-cat-tools",
-      "file": "narrative-design/nd-lo-cat-tools.md"
-    },
-    {
-      "id": "nd-lo-internationalization",
-      "file": "narrative-design/nd-lo-internationalization.md"
-    },
-    {
-      "id": "nd-lo-locale-specific-content",
-      "file": "narrative-design/nd-lo-locale-specific-content.md"
+      "name": "CAT工具",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-cat-tools.md",
+      "exists": true,
+      "char_count": 1339
     },
     {
       "id": "nd-lo-right-to-left",
-      "file": "narrative-design/nd-lo-right-to-left.md"
-    },
-    {
-      "id": "nd-lo-font-localization",
-      "file": "narrative-design/nd-lo-font-localization.md"
-    },
-    {
-      "id": "nd-lo-dynamic-text",
-      "file": "narrative-design/nd-lo-dynamic-text.md"
-    },
-    {
-      "id": "nd-lo-context-notes",
-      "file": "narrative-design/nd-lo-context-notes.md"
+      "name": "RTL语言支持",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-right-to-left.md",
+      "exists": true,
+      "char_count": 1366
     },
     {
       "id": "nd-lo-pseudolocalization",
-      "file": "narrative-design/nd-lo-pseudolocalization.md"
+      "name": "伪本地化",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-pseudolocalization.md",
+      "exists": true,
+      "char_count": 1289
+    },
+    {
+      "id": "nd-lo-dynamic-text",
+      "name": "动态文本本地化",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-dynamic-text.md",
+      "exists": true,
+      "char_count": 1484
     },
     {
       "id": "nd-lo-regional-rating",
-      "file": "narrative-design/nd-lo-regional-rating.md"
+      "name": "区域分级适配",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-regional-rating.md",
+      "exists": true,
+      "char_count": 1415
     },
     {
-      "id": "nd-lo-community-translation",
-      "file": "narrative-design/nd-lo-community-translation.md"
+      "id": "nd-lo-internationalization",
+      "name": "国际化(i18n)",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-internationalization.md",
+      "exists": true,
+      "char_count": 1543
     },
     {
-      "id": "nd-lo-loc-budget",
-      "file": "narrative-design/nd-lo-loc-budget.md"
+      "id": "nd-lo-locale-specific-content",
+      "name": "地区专属内容",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-locale-specific-content.md",
+      "exists": true,
+      "char_count": 1483
+    },
+    {
+      "id": "nd-lo-font-localization",
+      "name": "字体本地化",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-font-localization.md",
+      "exists": true,
+      "char_count": 1433
+    },
+    {
+      "id": "nd-lo-subtitle-system",
+      "name": "字幕系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-subtitle-system.md",
+      "exists": true,
+      "char_count": 1473
+    },
+    {
+      "id": "nd-lo-string-table",
+      "name": "字符串表",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-lo-string-table.md",
+      "exists": true,
+      "char_count": 1499
+    },
+    {
+      "id": "nd-lo-gendered-language",
+      "name": "性别化语言",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-gendered-language.md",
+      "exists": true,
+      "char_count": 1280
     },
     {
       "id": "nd-lo-continuous-loc",
-      "file": "narrative-design/nd-lo-continuous-loc.md"
+      "name": "持续本地化",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-continuous-loc.md",
+      "exists": true,
+      "char_count": 1299
+    },
+    {
+      "id": "nd-lo-cultural-adaptation",
+      "name": "文化适配",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-cultural-adaptation.md",
+      "exists": true,
+      "char_count": 1390
+    },
+    {
+      "id": "nd-lo-text-expansion",
+      "name": "文本膨胀",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-text-expansion.md",
+      "exists": true,
+      "char_count": 1299
+    },
+    {
+      "id": "nd-lo-loc-testing",
+      "name": "本地化测试",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-loc-testing.md",
+      "exists": true,
+      "char_count": 1485
+    },
+    {
+      "id": "nd-lo-loc-pipeline",
+      "name": "本地化管线",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-lo-loc-pipeline.md",
+      "exists": true,
+      "char_count": 2717
+    },
+    {
+      "id": "nd-lo-loc-budget",
+      "name": "本地化预算",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-loc-budget.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "nd-lo-community-translation",
+      "name": "社区翻译",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-community-translation.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "nd-lo-context-notes",
+      "name": "翻译上下文备注",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-context-notes.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "nd-lo-voice-localization",
+      "name": "配音本地化",
+      "domain_id": "narrative-design",
+      "subdomain_id": "localization",
+      "subdomain_name": "本地化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-lo-voice-localization.md",
+      "exists": true,
+      "char_count": 1499
     },
     {
       "id": "nd-nt-articy-draft",
-      "file": "narrative-design/nd-nt-articy-draft.md"
-    },
-    {
-      "id": "nd-nt-ink-scripting",
-      "file": "narrative-design/nd-nt-ink-scripting.md"
-    },
-    {
-      "id": "nd-nt-twine",
-      "file": "narrative-design/nd-nt-twine.md"
-    },
-    {
-      "id": "nd-nt-yarn-spinner",
-      "file": "narrative-design/nd-nt-yarn-spinner.md"
-    },
-    {
-      "id": "nd-nt-dialogue-middleware",
-      "file": "narrative-design/nd-nt-dialogue-middleware.md"
-    },
-    {
-      "id": "nd-nt-version-control-narrative",
-      "file": "narrative-design/nd-nt-version-control-narrative.md"
-    },
-    {
-      "id": "nd-nt-spreadsheet-pipeline",
-      "file": "narrative-design/nd-nt-spreadsheet-pipeline.md"
-    },
-    {
-      "id": "nd-nt-graph-visualization",
-      "file": "narrative-design/nd-nt-graph-visualization.md"
-    },
-    {
-      "id": "nd-nt-writing-room",
-      "file": "narrative-design/nd-nt-writing-room.md"
-    },
-    {
-      "id": "nd-nt-narrative-review",
-      "file": "narrative-design/nd-nt-narrative-review.md"
-    },
-    {
-      "id": "nd-nt-playtesting-narrative",
-      "file": "narrative-design/nd-nt-playtesting-narrative.md"
-    },
-    {
-      "id": "nd-nt-text-analytics",
-      "file": "narrative-design/nd-nt-text-analytics.md"
+      "name": "Articy:Draft",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-nt-articy-draft.md",
+      "exists": true,
+      "char_count": 1722
     },
     {
       "id": "nd-nt-chatscript",
-      "file": "narrative-design/nd-nt-chatscript.md"
+      "name": "ChatScript",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-chatscript.md",
+      "exists": true,
+      "char_count": 1469
     },
     {
-      "id": "nd-nt-custom-tool-dev",
-      "file": "narrative-design/nd-nt-custom-tool-dev.md"
-    },
-    {
-      "id": "nd-nt-narrative-doc",
-      "file": "narrative-design/nd-nt-narrative-doc.md"
-    },
-    {
-      "id": "nd-nt-flowchart-methodology",
-      "file": "narrative-design/nd-nt-flowchart-methodology.md"
+      "id": "nd-nt-ink-scripting",
+      "name": "Ink脚本语言",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-nt-ink-scripting.md",
+      "exists": true,
+      "char_count": 1577
     },
     {
       "id": "nd-nt-llm-narrative",
-      "file": "narrative-design/nd-nt-llm-narrative.md"
+      "name": "LLM叙事辅助",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-llm-narrative.md",
+      "exists": true,
+      "char_count": 1491
     },
     {
-      "id": "nd-nt-loc-tool-integration",
-      "file": "narrative-design/nd-nt-loc-tool-integration.md"
+      "id": "nd-nt-twine",
+      "name": "Twine工具",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-twine.md",
+      "exists": true,
+      "char_count": 1443
     },
     {
-      "id": "nd-nt-narrative-debug",
-      "file": "narrative-design/nd-nt-narrative-debug.md"
+      "id": "nd-nt-yarn-spinner",
+      "name": "Yarn Spinner",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-yarn-spinner.md",
+      "exists": true,
+      "char_count": 1509
     },
     {
       "id": "nd-nt-content-management",
-      "file": "narrative-design/nd-nt-content-management.md"
+      "name": "内容管理系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-content-management.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "nd-nt-graph-visualization",
+      "name": "叙事图可视化",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-graph-visualization.md",
+      "exists": true,
+      "char_count": 1512
+    },
+    {
+      "id": "nd-nt-version-control-narrative",
+      "name": "叙事版本控制",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-version-control-narrative.md",
+      "exists": true,
+      "char_count": 1587
+    },
+    {
+      "id": "nd-nt-playtesting-narrative",
+      "name": "叙事玩测",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-playtesting-narrative.md",
+      "exists": true,
+      "char_count": 1423
+    },
+    {
+      "id": "nd-nt-narrative-doc",
+      "name": "叙事设计文档",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-nt-narrative-doc.md",
+      "exists": true,
+      "char_count": 1451
+    },
+    {
+      "id": "nd-nt-narrative-review",
+      "name": "叙事评审流程",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-narrative-review.md",
+      "exists": true,
+      "char_count": 1528
+    },
+    {
+      "id": "nd-nt-narrative-debug",
+      "name": "叙事调试",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-narrative-debug.md",
+      "exists": true,
+      "char_count": 1578
+    },
+    {
+      "id": "nd-nt-dialogue-middleware",
+      "name": "对话中间件",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-dialogue-middleware.md",
+      "exists": true,
+      "char_count": 1439
+    },
+    {
+      "id": "nd-nt-text-analytics",
+      "name": "文本分析工具",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-text-analytics.md",
+      "exists": true,
+      "char_count": 1416
+    },
+    {
+      "id": "nd-nt-loc-tool-integration",
+      "name": "本地化工具集成",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-loc-tool-integration.md",
+      "exists": true,
+      "char_count": 1451
+    },
+    {
+      "id": "nd-nt-flowchart-methodology",
+      "name": "流程图方法论",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-flowchart-methodology.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "nd-nt-writing-room",
+      "name": "编剧室工作法",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-writing-room.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "nd-nt-custom-tool-dev",
+      "name": "自定义工具开发",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-custom-tool-dev.md",
+      "exists": true,
+      "char_count": 1348
+    },
+    {
+      "id": "nd-nt-spreadsheet-pipeline",
+      "name": "表格管线",
+      "domain_id": "narrative-design",
+      "subdomain_id": "narrative-tools",
+      "subdomain_name": "叙事工具",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-nt-spreadsheet-pipeline.md",
+      "exists": true,
+      "char_count": 1434
+    },
+    {
+      "id": "nd-qd-radiant-quest",
+      "name": "Radiant Quest系统",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-radiant-quest.md",
+      "exists": true,
+      "char_count": 1645
+    },
+    {
+      "id": "nd-qd-world-quest",
+      "name": "世界事件任务",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-world-quest.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "nd-qd-main-quest",
+      "name": "主线任务设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-qd-main-quest.md",
+      "exists": true,
+      "char_count": 1507
+    },
+    {
+      "id": "nd-qd-quest-dependency",
+      "name": "任务依赖关系",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-quest-dependency.md",
+      "exists": true,
+      "char_count": 1561
+    },
+    {
+      "id": "nd-qd-quest-giver",
+      "name": "任务发布者设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-quest-giver.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "nd-qd-quest-failure",
+      "name": "任务失败处理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-quest-failure.md",
+      "exists": true,
+      "char_count": 1516
+    },
+    {
+      "id": "nd-qd-quest-reward",
+      "name": "任务奖励设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-quest-reward.md",
+      "exists": true,
+      "char_count": 1514
+    },
+    {
+      "id": "nd-qd-quest-journal",
+      "name": "任务日志设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-quest-journal.md",
+      "exists": true,
+      "char_count": 1514
+    },
+    {
+      "id": "nd-qd-quest-structure",
+      "name": "任务结构模型",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-quest-structure.md",
+      "exists": true,
+      "char_count": 1571
+    },
+    {
+      "id": "nd-qd-quest-pacing",
+      "name": "任务节奏控制",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-qd-quest-pacing.md",
+      "exists": true,
+      "char_count": 2671
+    },
+    {
+      "id": "nd-qd-quest-chain",
+      "name": "任务链设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-quest-chain.md",
+      "exists": true,
+      "char_count": 1481
+    },
+    {
+      "id": "nd-qd-dynamic-quest",
+      "name": "动态任务生成",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-dynamic-quest.md",
+      "exists": true,
+      "char_count": 1374
+    },
+    {
+      "id": "nd-qd-optional-objectives",
+      "name": "可选目标",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-optional-objectives.md",
+      "exists": true,
+      "char_count": 1407
+    },
+    {
+      "id": "nd-qd-parallel-quests",
+      "name": "并行任务管理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-parallel-quests.md",
+      "exists": true,
+      "char_count": 1554
+    },
+    {
+      "id": "nd-qd-escort-quest",
+      "name": "护送任务设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-escort-quest.md",
+      "exists": true,
+      "char_count": 1548
+    },
+    {
+      "id": "nd-qd-side-quest",
+      "name": "支线任务设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-qd-side-quest.md",
+      "exists": true,
+      "char_count": 1315
+    },
+    {
+      "id": "nd-qd-fetch-quest-alternatives",
+      "name": "收集任务替代方案",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-fetch-quest-alternatives.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "nd-qd-objective-design",
+      "name": "目标设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-objective-design.md",
+      "exists": true,
+      "char_count": 1492
+    },
+    {
+      "id": "nd-qd-investigation-quest",
+      "name": "调查类任务",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-investigation-quest.md",
+      "exists": true,
+      "char_count": 1554
+    },
+    {
+      "id": "nd-qd-timed-quest",
+      "name": "限时任务",
+      "domain_id": "narrative-design",
+      "subdomain_id": "quest-design",
+      "subdomain_name": "任务设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-qd-timed-quest.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "nd-wb-world-history",
+      "name": "世界历史",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-wb-world-history.md",
+      "exists": true,
+      "char_count": 1591
+    },
+    {
+      "id": "nd-wb-geography",
+      "name": "世界地理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-geography.md",
+      "exists": true,
+      "char_count": 1447
+    },
+    {
+      "id": "nd-wb-ecology",
+      "name": "世界生态",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-ecology.md",
+      "exists": true,
+      "char_count": 1458
+    },
+    {
+      "id": "nd-wb-worldbuilding-scope",
+      "name": "世界观范围控制",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-worldbuilding-scope.md",
+      "exists": true,
+      "char_count": 1509
+    },
+    {
+      "id": "nd-wb-lore-hierarchy",
+      "name": "传说层级",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-lore-hierarchy.md",
+      "exists": true,
+      "char_count": 1422
+    },
+    {
+      "id": "nd-wb-internal-consistency",
+      "name": "内部一致性",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-wb-internal-consistency.md",
+      "exists": true,
+      "char_count": 1371
+    },
+    {
+      "id": "nd-wb-naming-convention",
+      "name": "命名规范",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-naming-convention.md",
+      "exists": true,
+      "char_count": 1632
+    },
+    {
+      "id": "nd-wb-tone-mood",
+      "name": "基调与氛围",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-tone-mood.md",
+      "exists": true,
+      "char_count": 1471
+    },
+    {
+      "id": "nd-wb-culture-creation",
+      "name": "文化创造",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-culture-creation.md",
+      "exists": true,
+      "char_count": 1635
+    },
+    {
+      "id": "nd-wb-timeline-management",
+      "name": "时间线管理",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-timeline-management.md",
+      "exists": true,
+      "char_count": 1580
+    },
+    {
+      "id": "nd-wb-living-world",
+      "name": "活世界设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-living-world.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "nd-wb-player-agency-world",
+      "name": "玩家对世界的影响",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 4,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-wb-player-agency-world.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "nd-wb-mythology",
+      "name": "神话体系",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-mythology.md",
+      "exists": true,
+      "char_count": 2669
+    },
+    {
+      "id": "nd-wb-tech-level",
+      "name": "科技水平",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-tech-level.md",
+      "exists": true,
+      "char_count": 1489
+    },
+    {
+      "id": "nd-wb-genre-convention",
+      "name": "类型惯例",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-genre-convention.md",
+      "exists": true,
+      "char_count": 1389
+    },
+    {
+      "id": "nd-wb-economy-politics",
+      "name": "经济与政治",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-economy-politics.md",
+      "exists": true,
+      "char_count": 1531
+    },
+    {
+      "id": "nd-wb-setting-bible",
+      "name": "设定圣经",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-setting-bible.md",
+      "exists": true,
+      "char_count": 1766
+    },
+    {
+      "id": "nd-wb-transmedia",
+      "name": "跨媒体叙事",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-transmedia.md",
+      "exists": true,
+      "char_count": 1539
+    },
+    {
+      "id": "nd-wb-faction-design",
+      "name": "阵营设计",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [],
+      "file": "narrative-design/nd-wb-faction-design.md",
+      "exists": true,
+      "char_count": 1644
+    },
+    {
+      "id": "nd-wb-magic-system",
+      "name": "魔法/科技体系",
+      "domain_id": "narrative-design",
+      "subdomain_id": "worldbuilding",
+      "subdomain_name": "世界观构建",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [],
+      "file": "narrative-design/nd-wb-magic-system.md",
+      "exists": true,
+      "char_count": 1506
     }
-  ]
+  ],
+  "stats": {
+    "total": 180,
+    "total_chars": 270694,
+    "avg_chars": 1503,
+    "domain": "narrative-design"
+  }
 }

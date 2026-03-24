@@ -1,1286 +1,11 @@
 {
   "documents": [
     {
-      "id": "cell-biology-overview",
-      "name": "细胞生物学概述",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/cell-biology/cell-biology-overview.md",
-      "exists": true,
-      "char_count": 584
-    },
-    {
-      "id": "prokaryotic-cells",
-      "name": "原核细胞",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/cell-biology/prokaryotic-cells.md",
-      "exists": true,
-      "char_count": 572
-    },
-    {
-      "id": "eukaryotic-cells",
-      "name": "真核细胞",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/cell-biology/eukaryotic-cells.md",
-      "exists": true,
-      "char_count": 575
-    },
-    {
-      "id": "cell-membrane",
-      "name": "细胞膜",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "结构"
-      ],
-      "file": "biology/cell-biology/cell-membrane.md",
-      "exists": true,
-      "char_count": 577
-    },
-    {
-      "id": "membrane-transport",
-      "name": "膜转运",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "功能"
-      ],
-      "file": "biology/cell-biology/membrane-transport.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "endoplasmic-reticulum",
-      "name": "内质网",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "细胞器"
-      ],
-      "file": "biology/cell-biology/endoplasmic-reticulum.md",
-      "exists": true,
-      "char_count": 574
-    },
-    {
-      "id": "golgi-apparatus",
-      "name": "高尔基体",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "细胞器"
-      ],
-      "file": "biology/cell-biology/golgi-apparatus.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "mitochondria",
-      "name": "线粒体",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "细胞器"
-      ],
-      "file": "biology/cell-biology/mitochondria.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "chloroplast",
-      "name": "叶绿体",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "细胞器"
-      ],
-      "file": "biology/cell-biology/chloroplast.md",
-      "exists": true,
-      "char_count": 570
-    },
-    {
-      "id": "nucleus",
-      "name": "细胞核",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "结构"
-      ],
-      "file": "biology/cell-biology/nucleus.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "cytoskeleton",
-      "name": "细胞骨架",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "结构"
-      ],
-      "file": "biology/cell-biology/cytoskeleton.md",
-      "exists": true,
-      "char_count": 576
-    },
-    {
-      "id": "cell-cycle",
-      "name": "细胞周期",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "增殖"
-      ],
-      "file": "biology/cell-biology/cell-cycle.md",
-      "exists": true,
-      "char_count": 579
-    },
-    {
-      "id": "mitosis",
-      "name": "有丝分裂",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "增殖"
-      ],
-      "file": "biology/cell-biology/mitosis.md",
-      "exists": true,
-      "char_count": 578
-    },
-    {
-      "id": "meiosis",
-      "name": "减数分裂",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "增殖"
-      ],
-      "file": "biology/cell-biology/meiosis.md",
-      "exists": true,
-      "char_count": 577
-    },
-    {
-      "id": "apoptosis",
-      "name": "细胞凋亡",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "调控"
-      ],
-      "file": "biology/cell-biology/apoptosis.md",
-      "exists": true,
-      "char_count": 578
-    },
-    {
-      "id": "cell-signaling",
-      "name": "细胞信号转导",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "通讯"
-      ],
-      "file": "biology/cell-biology/cell-signaling.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "stem-cells",
-      "name": "干细胞",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "biology/cell-biology/stem-cells.md",
-      "exists": true,
-      "char_count": 574
-    },
-    {
-      "id": "cellular-respiration",
-      "name": "细胞呼吸",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "代谢"
-      ],
-      "file": "biology/cell-biology/cellular-respiration.md",
-      "exists": true,
-      "char_count": 575
-    },
-    {
-      "id": "photosynthesis",
-      "name": "光合作用",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "代谢"
-      ],
-      "file": "biology/cell-biology/photosynthesis.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "cell-differentiation",
-      "name": "细胞分化",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "发育"
-      ],
-      "file": "biology/cell-biology/cell-differentiation.md",
-      "exists": true,
-      "char_count": 574
-    },
-    {
-      "id": "lysosomes-peroxisomes",
-      "name": "溶酶体与过氧化物酶体",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "细胞器"
-      ],
-      "file": "biology/cell-biology/lysosomes-peroxisomes.md",
-      "exists": true,
-      "char_count": 588
-    },
-    {
-      "id": "endomembrane-system",
-      "name": "内膜系统",
-      "domain_id": "biology",
-      "subdomain_id": "cell-biology",
-      "subdomain_name": "细胞生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/cell-biology/endomembrane-system.md",
-      "exists": true,
-      "char_count": 579
-    },
-    {
-      "id": "molecular-biology-overview",
-      "name": "分子生物学概述",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/molecular-biology/molecular-biology-overview.md",
-      "exists": true,
-      "char_count": 597
-    },
-    {
-      "id": "dna-structure",
-      "name": "DNA结构",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核酸"
-      ],
-      "file": "biology/molecular-biology/dna-structure.md",
-      "exists": true,
-      "char_count": 595
-    },
-    {
-      "id": "rna-types",
-      "name": "RNA类型",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核酸"
-      ],
-      "file": "biology/molecular-biology/rna-types.md",
-      "exists": true,
-      "char_count": 600
-    },
-    {
-      "id": "dna-replication",
-      "name": "DNA复制",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核酸"
-      ],
-      "file": "biology/molecular-biology/dna-replication.md",
-      "exists": true,
-      "char_count": 592
-    },
-    {
-      "id": "transcription",
-      "name": "转录",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "基因表达"
-      ],
-      "file": "biology/molecular-biology/transcription.md",
-      "exists": true,
-      "char_count": 586
-    },
-    {
-      "id": "translation",
-      "name": "翻译",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基因表达"
-      ],
-      "file": "biology/molecular-biology/translation.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "gene-regulation",
-      "name": "基因调控",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "调控"
-      ],
-      "file": "biology/molecular-biology/gene-regulation.md",
-      "exists": true,
-      "char_count": 590
-    },
-    {
-      "id": "protein-structure",
-      "name": "蛋白质结构",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "蛋白质"
-      ],
-      "file": "biology/molecular-biology/protein-structure.md",
-      "exists": true,
-      "char_count": 589
-    },
-    {
-      "id": "enzyme-function",
-      "name": "酶的功能",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "蛋白质"
-      ],
-      "file": "biology/molecular-biology/enzyme-function.md",
-      "exists": true,
-      "char_count": 586
-    },
-    {
-      "id": "protein-modification",
-      "name": "蛋白质修饰",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "蛋白质"
-      ],
-      "file": "biology/molecular-biology/protein-modification.md",
-      "exists": true,
-      "char_count": 593
-    },
-    {
-      "id": "signal-transduction-mol",
-      "name": "分子信号通路",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "信号"
-      ],
-      "file": "biology/molecular-biology/signal-transduction-mol.md",
-      "exists": true,
-      "char_count": 603
-    },
-    {
-      "id": "epigenetics",
-      "name": "表观遗传学",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "biology/molecular-biology/epigenetics.md",
-      "exists": true,
-      "char_count": 594
-    },
-    {
-      "id": "recombinant-dna",
-      "name": "重组DNA技术",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "biology/molecular-biology/recombinant-dna.md",
-      "exists": true,
-      "char_count": 601
-    },
-    {
-      "id": "pcr-technology",
-      "name": "PCR技术",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "biology/molecular-biology/pcr-technology.md",
-      "exists": true,
-      "char_count": 589
-    },
-    {
-      "id": "gene-editing",
-      "name": "基因编辑",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "前沿"
-      ],
-      "file": "biology/molecular-biology/gene-editing.md",
-      "exists": true,
-      "char_count": 594
-    },
-    {
-      "id": "genomics",
-      "name": "基因组学",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "组学"
-      ],
-      "file": "biology/molecular-biology/genomics.md",
-      "exists": true,
-      "char_count": 593
-    },
-    {
-      "id": "proteomics",
-      "name": "蛋白质组学",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "组学"
-      ],
-      "file": "biology/molecular-biology/proteomics.md",
-      "exists": true,
-      "char_count": 589
-    },
-    {
-      "id": "bioinformatics",
-      "name": "生物信息学",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "biology/molecular-biology/bioinformatics.md",
-      "exists": true,
-      "char_count": 591
-    },
-    {
-      "id": "molecular-cloning",
-      "name": "分子克隆",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "biology/molecular-biology/molecular-cloning.md",
-      "exists": true,
-      "char_count": 585
-    },
-    {
-      "id": "rna-interference",
-      "name": "RNA干扰",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "调控"
-      ],
-      "file": "biology/molecular-biology/rna-interference.md",
-      "exists": true,
-      "char_count": 596
-    },
-    {
-      "id": "central-dogma",
-      "name": "中心法则",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "biology/molecular-biology/central-dogma.md",
-      "exists": true,
-      "char_count": 591
-    },
-    {
-      "id": "dna-repair",
-      "name": "DNA修复",
-      "domain_id": "biology",
-      "subdomain_id": "molecular-biology",
-      "subdomain_name": "分子生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核酸"
-      ],
-      "file": "biology/molecular-biology/dna-repair.md",
-      "exists": true,
-      "char_count": 595
-    },
-    {
-      "id": "genetics-overview",
-      "name": "遗传学概述",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/genetics/genetics-overview.md",
-      "exists": true,
-      "char_count": 543
-    },
-    {
-      "id": "mendelian-genetics",
-      "name": "孟德尔遗传",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "经典"
-      ],
-      "file": "biology/genetics/mendelian-genetics.md",
-      "exists": true,
-      "char_count": 538
-    },
-    {
-      "id": "gene-concept",
-      "name": "基因概念",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "biology/genetics/gene-concept.md",
-      "exists": true,
-      "char_count": 537
-    },
-    {
-      "id": "alleles-genotype",
-      "name": "等位基因与基因型",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "biology/genetics/alleles-genotype.md",
-      "exists": true,
-      "char_count": 554
-    },
-    {
-      "id": "chromosomal-inheritance",
-      "name": "染色体遗传",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "biology/genetics/chromosomal-inheritance.md",
-      "exists": true,
-      "char_count": 538
-    },
-    {
-      "id": "sex-linked-inheritance",
-      "name": "伴性遗传",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "biology/genetics/sex-linked-inheritance.md",
-      "exists": true,
-      "char_count": 537
-    },
-    {
-      "id": "polygenic-inheritance",
-      "name": "多基因遗传",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "复杂"
-      ],
-      "file": "biology/genetics/polygenic-inheritance.md",
-      "exists": true,
-      "char_count": 539
-    },
-    {
-      "id": "gene-interaction",
-      "name": "基因互作",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "复杂"
-      ],
-      "file": "biology/genetics/gene-interaction.md",
-      "exists": true,
-      "char_count": 538
-    },
-    {
-      "id": "mutation-types",
-      "name": "突变类型",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "变异"
-      ],
-      "file": "biology/genetics/mutation-types.md",
-      "exists": true,
-      "char_count": 539
-    },
-    {
-      "id": "chromosomal-abnormalities",
-      "name": "染色体异常",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "变异"
-      ],
-      "file": "biology/genetics/chromosomal-abnormalities.md",
-      "exists": true,
-      "char_count": 540
-    },
-    {
-      "id": "population-genetics",
-      "name": "群体遗传学",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "群体"
-      ],
-      "file": "biology/genetics/population-genetics.md",
-      "exists": true,
-      "char_count": 550
-    },
-    {
-      "id": "quantitative-genetics",
-      "name": "数量遗传学",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "群体"
-      ],
-      "file": "biology/genetics/quantitative-genetics.md",
-      "exists": true,
-      "char_count": 542
-    },
-    {
-      "id": "human-genetics",
-      "name": "人类遗传学",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "医学"
-      ],
-      "file": "biology/genetics/human-genetics.md",
-      "exists": true,
-      "char_count": 543
-    },
-    {
-      "id": "genetic-mapping",
-      "name": "遗传图谱",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "技术"
-      ],
-      "file": "biology/genetics/genetic-mapping.md",
-      "exists": true,
-      "char_count": 539
-    },
-    {
-      "id": "gene-expression-regulation",
-      "name": "基因表达调控",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "调控"
-      ],
-      "file": "biology/genetics/gene-expression-regulation.md",
-      "exists": true,
-      "char_count": 545
-    },
-    {
-      "id": "extranuclear-inheritance",
-      "name": "核外遗传",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "非经典"
-      ],
-      "file": "biology/genetics/extranuclear-inheritance.md",
-      "exists": true,
-      "char_count": 535
-    },
-    {
-      "id": "genetic-counseling",
-      "name": "遗传咨询",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "医学"
-      ],
-      "file": "biology/genetics/genetic-counseling.md",
-      "exists": true,
-      "char_count": 535
-    },
-    {
-      "id": "behavioral-genetics",
-      "name": "行为遗传学",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "交叉"
-      ],
-      "file": "biology/genetics/behavioral-genetics.md",
-      "exists": true,
-      "char_count": 542
-    },
-    {
-      "id": "pharmacogenomics",
-      "name": "药物基因组学",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "biology/genetics/pharmacogenomics.md",
-      "exists": true,
-      "char_count": 541
-    },
-    {
-      "id": "genetic-engineering",
-      "name": "遗传工程",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "biology/genetics/genetic-engineering.md",
-      "exists": true,
-      "char_count": 540
-    },
-    {
-      "id": "pedigree-analysis",
-      "name": "家系分析",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法"
-      ],
-      "file": "biology/genetics/pedigree-analysis.md",
-      "exists": true,
-      "char_count": 536
-    },
-    {
-      "id": "genetic-drift",
-      "name": "遗传漂变",
-      "domain_id": "biology",
-      "subdomain_id": "genetics",
-      "subdomain_name": "遗传学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "群体"
-      ],
-      "file": "biology/genetics/genetic-drift.md",
-      "exists": true,
-      "char_count": 541
-    },
-    {
-      "id": "evolution-overview",
-      "name": "进化生物学概述",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/evolution/evolution-overview.md",
-      "exists": true,
-      "char_count": 567
-    },
-    {
-      "id": "natural-selection",
-      "name": "自然选择",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "biology/evolution/natural-selection.md",
-      "exists": true,
-      "char_count": 559
-    },
-    {
-      "id": "evidence-evolution",
-      "name": "进化证据",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "证据"
-      ],
-      "file": "biology/evolution/evidence-evolution.md",
-      "exists": true,
-      "char_count": 560
-    },
-    {
-      "id": "speciation",
-      "name": "物种形成",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "宏观"
-      ],
-      "file": "biology/evolution/speciation.md",
-      "exists": true,
-      "char_count": 562
-    },
-    {
-      "id": "adaptive-radiation",
-      "name": "适应辐射",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "宏观"
-      ],
-      "file": "biology/evolution/adaptive-radiation.md",
-      "exists": true,
-      "char_count": 561
-    },
-    {
-      "id": "coevolution",
-      "name": "协同进化",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "宏观"
-      ],
-      "file": "biology/evolution/coevolution.md",
-      "exists": true,
-      "char_count": 557
-    },
-    {
-      "id": "sexual-selection",
-      "name": "性选择",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "机制"
-      ],
-      "file": "biology/evolution/sexual-selection.md",
-      "exists": true,
-      "char_count": 556
-    },
-    {
-      "id": "molecular-evolution",
-      "name": "分子进化",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "分子"
-      ],
-      "file": "biology/evolution/molecular-evolution.md",
-      "exists": true,
-      "char_count": 557
-    },
-    {
-      "id": "phylogenetics",
-      "name": "系统发育",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "方法"
-      ],
-      "file": "biology/evolution/phylogenetics.md",
-      "exists": true,
-      "char_count": 558
-    },
-    {
-      "id": "macroevolution",
-      "name": "宏观进化",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "宏观"
-      ],
-      "file": "biology/evolution/macroevolution.md",
-      "exists": true,
-      "char_count": 560
-    },
-    {
-      "id": "microevolution",
-      "name": "微观进化",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/evolution/microevolution.md",
-      "exists": true,
-      "char_count": 557
-    },
-    {
-      "id": "adaptation",
-      "name": "适应",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "biology/evolution/adaptation.md",
-      "exists": true,
-      "char_count": 554
-    },
-    {
-      "id": "origin-of-life",
-      "name": "生命起源",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "起源"
-      ],
-      "file": "biology/evolution/origin-of-life.md",
-      "exists": true,
-      "char_count": 562
-    },
-    {
-      "id": "human-evolution",
-      "name": "人类进化",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "人类"
-      ],
-      "file": "biology/evolution/human-evolution.md",
-      "exists": true,
-      "char_count": 558
-    },
-    {
-      "id": "kin-selection",
-      "name": "亲缘选择",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "行为"
-      ],
-      "file": "biology/evolution/kin-selection.md",
-      "exists": true,
-      "char_count": 565
-    },
-    {
-      "id": "evolutionary-development",
-      "name": "进化发育生物学",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "biology/evolution/evolutionary-development.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "convergent-evolution",
-      "name": "趋同进化",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "biology/evolution/convergent-evolution.md",
-      "exists": true,
-      "char_count": 559
-    },
-    {
-      "id": "divergent-evolution",
-      "name": "趋异进化",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "模式"
-      ],
-      "file": "biology/evolution/divergent-evolution.md",
-      "exists": true,
-      "char_count": 558
-    },
-    {
-      "id": "endosymbiosis",
-      "name": "内共生学说",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "起源"
-      ],
-      "file": "biology/evolution/endosymbiosis.md",
-      "exists": true,
-      "char_count": 561
-    },
-    {
       "id": "extinction",
-      "name": "灭绝",
-      "domain_id": "biology",
-      "subdomain_id": "evolution",
-      "subdomain_name": "进化生物学",
+      "name": "消退",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
       "difficulty": 2,
       "is_milestone": false,
       "tags": [
@@ -1288,1282 +13,37 @@
       ],
       "file": "biology/evolution/extinction.md",
       "exists": true,
-      "char_count": 559
-    },
-    {
-      "id": "physiology-overview",
-      "name": "人体生理学概述",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/human-physiology/physiology-overview.md",
-      "exists": true,
-      "char_count": 567
-    },
-    {
-      "id": "nervous-system",
-      "name": "神经系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/nervous-system.md",
-      "exists": true,
-      "char_count": 558
-    },
-    {
-      "id": "neuron-synapse",
-      "name": "神经元与突触",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "神经"
-      ],
-      "file": "biology/human-physiology/neuron-synapse.md",
-      "exists": true,
-      "char_count": 562
-    },
-    {
-      "id": "brain-function",
-      "name": "脑的功能",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "神经"
-      ],
-      "file": "biology/human-physiology/brain-function.md",
-      "exists": true,
-      "char_count": 560
+      "char_count": 2643
     },
     {
       "id": "endocrine-system",
       "name": "内分泌系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "系统"
       ],
       "file": "biology/human-physiology/endocrine-system.md",
       "exists": true,
-      "char_count": 561
-    },
-    {
-      "id": "cardiovascular-system",
-      "name": "心血管系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/cardiovascular-system.md",
-      "exists": true,
-      "char_count": 560
-    },
-    {
-      "id": "respiratory-system",
-      "name": "呼吸系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/respiratory-system.md",
-      "exists": true,
-      "char_count": 556
-    },
-    {
-      "id": "digestive-system",
-      "name": "消化系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/digestive-system.md",
-      "exists": true,
-      "char_count": 557
-    },
-    {
-      "id": "immune-system",
-      "name": "免疫系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/immune-system.md",
-      "exists": true,
-      "char_count": 558
-    },
-    {
-      "id": "immune-cells",
-      "name": "免疫细胞",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "免疫"
-      ],
-      "file": "biology/human-physiology/immune-cells.md",
-      "exists": true,
-      "char_count": 560
-    },
-    {
-      "id": "antibody-response",
-      "name": "抗体反应",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "免疫"
-      ],
-      "file": "biology/human-physiology/antibody-response.md",
-      "exists": true,
-      "char_count": 561
-    },
-    {
-      "id": "musculoskeletal-system",
-      "name": "运动系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/musculoskeletal-system.md",
-      "exists": true,
-      "char_count": 556
-    },
-    {
-      "id": "urinary-system",
-      "name": "泌尿系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/urinary-system.md",
-      "exists": true,
-      "char_count": 560
-    },
-    {
-      "id": "reproductive-system",
-      "name": "生殖系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/reproductive-system.md",
-      "exists": true,
-      "char_count": 556
-    },
-    {
-      "id": "homeostasis",
-      "name": "稳态",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "biology/human-physiology/homeostasis.md",
-      "exists": true,
-      "char_count": 551
-    },
-    {
-      "id": "blood-composition",
-      "name": "血液组成",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "血液"
-      ],
-      "file": "biology/human-physiology/blood-composition.md",
-      "exists": true,
-      "char_count": 557
-    },
-    {
-      "id": "lymphatic-system",
-      "name": "淋巴系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/lymphatic-system.md",
-      "exists": true,
-      "char_count": 557
-    },
-    {
-      "id": "sensory-system",
-      "name": "感觉系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "神经"
-      ],
-      "file": "biology/human-physiology/sensory-system.md",
-      "exists": true,
-      "char_count": 559
+      "char_count": 1490
     },
     {
       "id": "autonomic-nervous-system",
       "name": "自主神经系统",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
       "is_milestone": false,
       "tags": [
         "神经"
       ],
       "file": "biology/human-physiology/autonomic-nervous-system.md",
       "exists": true,
-      "char_count": 562
-    },
-    {
-      "id": "hormone-regulation",
-      "name": "激素调节",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "内分泌"
-      ],
-      "file": "biology/human-physiology/hormone-regulation.md",
-      "exists": true,
-      "char_count": 557
-    },
-    {
-      "id": "metabolism-overview",
-      "name": "代谢概览",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "代谢"
-      ],
-      "file": "biology/human-physiology/metabolism-overview.md",
-      "exists": true,
-      "char_count": 557
-    },
-    {
-      "id": "nutrition-physiology",
-      "name": "营养生理学",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "营养"
-      ],
-      "file": "biology/human-physiology/nutrition-physiology.md",
-      "exists": true,
-      "char_count": 560
-    },
-    {
-      "id": "aging-physiology",
-      "name": "衰老生理学",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "特殊"
-      ],
-      "file": "biology/human-physiology/aging-physiology.md",
-      "exists": true,
-      "char_count": 558
-    },
-    {
-      "id": "exercise-physiology",
-      "name": "运动生理学",
-      "domain_id": "biology",
-      "subdomain_id": "human-physiology",
-      "subdomain_name": "人体生理学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "biology/human-physiology/exercise-physiology.md",
-      "exists": true,
-      "char_count": 563
-    },
-    {
-      "id": "ecology-overview",
-      "name": "生态学概述",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/ecology/ecology-overview.md",
-      "exists": true,
-      "char_count": 547
-    },
-    {
-      "id": "population-ecology",
-      "name": "种群生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "种群"
-      ],
-      "file": "biology/ecology/population-ecology.md",
-      "exists": true,
-      "char_count": 546
-    },
-    {
-      "id": "community-ecology",
-      "name": "群落生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "群落"
-      ],
-      "file": "biology/ecology/community-ecology.md",
-      "exists": true,
-      "char_count": 544
-    },
-    {
-      "id": "ecosystem-ecology",
-      "name": "生态系统生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "生态系统"
-      ],
-      "file": "biology/ecology/ecosystem-ecology.md",
-      "exists": true,
-      "char_count": 551
-    },
-    {
-      "id": "food-web",
-      "name": "食物网",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "生态系统"
-      ],
-      "file": "biology/ecology/food-web.md",
-      "exists": true,
-      "char_count": 538
-    },
-    {
-      "id": "nutrient-cycling",
-      "name": "物质循环",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "生态系统"
-      ],
-      "file": "biology/ecology/nutrient-cycling.md",
-      "exists": true,
-      "char_count": 539
-    },
-    {
-      "id": "biomes",
-      "name": "生物群落",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "宏观"
-      ],
-      "file": "biology/ecology/biomes.md",
-      "exists": true,
-      "char_count": 543
-    },
-    {
-      "id": "species-interactions",
-      "name": "种间关系",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "群落"
-      ],
-      "file": "biology/ecology/species-interactions.md",
-      "exists": true,
-      "char_count": 541
-    },
-    {
-      "id": "biodiversity",
-      "name": "生物多样性",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "保护"
-      ],
-      "file": "biology/ecology/biodiversity.md",
-      "exists": true,
-      "char_count": 550
-    },
-    {
-      "id": "conservation-biology",
-      "name": "保护生物学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "保护"
-      ],
-      "file": "biology/ecology/conservation-biology.md",
-      "exists": true,
-      "char_count": 545
-    },
-    {
-      "id": "ecological-succession",
-      "name": "生态演替",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "动态"
-      ],
-      "file": "biology/ecology/ecological-succession.md",
-      "exists": true,
-      "char_count": 543
-    },
-    {
-      "id": "niche-theory",
-      "name": "生态位理论",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "biology/ecology/niche-theory.md",
-      "exists": true,
-      "char_count": 545
-    },
-    {
-      "id": "island-biogeography",
-      "name": "岛屿生物地理学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "理论"
-      ],
-      "file": "biology/ecology/island-biogeography.md",
-      "exists": true,
-      "char_count": 566
-    },
-    {
-      "id": "climate-change-ecology",
-      "name": "气候变化与生态",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "全球"
-      ],
-      "file": "biology/ecology/climate-change-ecology.md",
-      "exists": true,
-      "char_count": 553
-    },
-    {
-      "id": "ecosystem-services",
-      "name": "生态系统服务",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "biology/ecology/ecosystem-services.md",
-      "exists": true,
-      "char_count": 547
-    },
-    {
-      "id": "behavioral-ecology",
-      "name": "行为生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "行为"
-      ],
-      "file": "biology/ecology/behavioral-ecology.md",
-      "exists": true,
-      "char_count": 545
-    },
-    {
-      "id": "population-dynamics",
-      "name": "种群动态",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "数学"
-      ],
-      "file": "biology/ecology/population-dynamics.md",
-      "exists": true,
-      "char_count": 549
-    },
-    {
-      "id": "landscape-ecology",
-      "name": "景观生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "宏观"
-      ],
-      "file": "biology/ecology/landscape-ecology.md",
-      "exists": true,
-      "char_count": 546
-    },
-    {
-      "id": "marine-ecology",
-      "name": "海洋生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "水生"
-      ],
-      "file": "biology/ecology/marine-ecology.md",
-      "exists": true,
-      "char_count": 545
-    },
-    {
-      "id": "freshwater-ecology",
-      "name": "淡水生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "水生"
-      ],
-      "file": "biology/ecology/freshwater-ecology.md",
-      "exists": true,
-      "char_count": 546
-    },
-    {
-      "id": "restoration-ecology",
-      "name": "恢复生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "biology/ecology/restoration-ecology.md",
-      "exists": true,
-      "char_count": 545
-    },
-    {
-      "id": "urban-ecology",
-      "name": "城市生态学",
-      "domain_id": "biology",
-      "subdomain_id": "ecology",
-      "subdomain_name": "生态学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "biology/ecology/urban-ecology.md",
-      "exists": true,
-      "char_count": 547
-    },
-    {
-      "id": "microbiology-overview",
-      "name": "微生物学概述",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/microbiology/microbiology-overview.md",
-      "exists": true,
-      "char_count": 579
-    },
-    {
-      "id": "bacteria-structure",
-      "name": "细菌结构",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "细菌"
-      ],
-      "file": "biology/microbiology/bacteria-structure.md",
-      "exists": true,
-      "char_count": 572
-    },
-    {
-      "id": "bacterial-metabolism",
-      "name": "细菌代谢",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "细菌"
-      ],
-      "file": "biology/microbiology/bacterial-metabolism.md",
-      "exists": true,
-      "char_count": 572
-    },
-    {
-      "id": "bacterial-genetics",
-      "name": "细菌遗传",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "细菌"
-      ],
-      "file": "biology/microbiology/bacterial-genetics.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "virus-biology",
-      "name": "病毒生物学",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "病毒"
-      ],
-      "file": "biology/microbiology/virus-biology.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "viral-replication",
-      "name": "病毒复制",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "病毒"
-      ],
-      "file": "biology/microbiology/viral-replication.md",
-      "exists": true,
-      "char_count": 572
-    },
-    {
-      "id": "fungi-biology",
-      "name": "真菌生物学",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "真菌"
-      ],
-      "file": "biology/microbiology/fungi-biology.md",
-      "exists": true,
-      "char_count": 574
-    },
-    {
-      "id": "protists",
-      "name": "原生生物",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "多样性"
-      ],
-      "file": "biology/microbiology/protists.md",
-      "exists": true,
-      "char_count": 569
-    },
-    {
-      "id": "antibiotic-resistance",
-      "name": "抗生素耐药性",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "医学"
-      ],
-      "file": "biology/microbiology/antibiotic-resistance.md",
-      "exists": true,
-      "char_count": 578
-    },
-    {
-      "id": "microbiome",
-      "name": "微生物组",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "前沿"
-      ],
-      "file": "biology/microbiology/microbiome.md",
-      "exists": true,
-      "char_count": 572
-    },
-    {
-      "id": "pathogenic-mechanisms",
-      "name": "致病机制",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "医学"
-      ],
-      "file": "biology/microbiology/pathogenic-mechanisms.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "immune-evasion",
-      "name": "免疫逃逸",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "医学"
-      ],
-      "file": "biology/microbiology/immune-evasion.md",
-      "exists": true,
-      "char_count": 572
-    },
-    {
-      "id": "vaccine-biology",
-      "name": "疫苗生物学",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "医学"
-      ],
-      "file": "biology/microbiology/vaccine-biology.md",
-      "exists": true,
-      "char_count": 575
-    },
-    {
-      "id": "food-microbiology",
-      "name": "食品微生物学",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "biology/microbiology/food-microbiology.md",
-      "exists": true,
-      "char_count": 578
-    },
-    {
-      "id": "environmental-microbiology",
-      "name": "环境微生物学",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "环境"
-      ],
-      "file": "biology/microbiology/environmental-microbiology.md",
-      "exists": true,
-      "char_count": 580
-    },
-    {
-      "id": "industrial-microbiology",
-      "name": "工业微生物学",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "biology/microbiology/industrial-microbiology.md",
-      "exists": true,
-      "char_count": 579
-    },
-    {
-      "id": "archaea",
-      "name": "古菌",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "多样性"
-      ],
-      "file": "biology/microbiology/archaea.md",
-      "exists": true,
-      "char_count": 567
-    },
-    {
-      "id": "biofilm",
-      "name": "生物膜",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "生态"
-      ],
-      "file": "biology/microbiology/biofilm.md",
-      "exists": true,
-      "char_count": 571
-    },
-    {
-      "id": "prions",
-      "name": "朊病毒",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "特殊"
-      ],
-      "file": "biology/microbiology/prions.md",
-      "exists": true,
-      "char_count": 570
-    },
-    {
-      "id": "emerging-infectious",
-      "name": "新发传染病",
-      "domain_id": "biology",
-      "subdomain_id": "microbiology",
-      "subdomain_name": "微生物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "公卫"
-      ],
-      "file": "biology/microbiology/emerging-infectious.md",
-      "exists": true,
-      "char_count": 575
-    },
-    {
-      "id": "botany-zoology-overview",
-      "name": "植物与动物学概述",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "biology/botany-zoology/botany-zoology-overview.md",
-      "exists": true,
-      "char_count": 587
-    },
-    {
-      "id": "plant-anatomy",
-      "name": "植物解剖学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "植物"
-      ],
-      "file": "biology/botany-zoology/plant-anatomy.md",
-      "exists": true,
-      "char_count": 576
-    },
-    {
-      "id": "plant-physiology",
-      "name": "植物生理学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "植物"
-      ],
-      "file": "biology/botany-zoology/plant-physiology.md",
-      "exists": true,
-      "char_count": 577
-    },
-    {
-      "id": "plant-reproduction",
-      "name": "植物繁殖",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "植物"
-      ],
-      "file": "biology/botany-zoology/plant-reproduction.md",
-      "exists": true,
-      "char_count": 571
-    },
-    {
-      "id": "plant-hormones",
-      "name": "植物激素",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "植物"
-      ],
-      "file": "biology/botany-zoology/plant-hormones.md",
-      "exists": true,
-      "char_count": 577
-    },
-    {
-      "id": "plant-responses",
-      "name": "植物应答",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "植物"
-      ],
-      "file": "biology/botany-zoology/plant-responses.md",
-      "exists": true,
-      "char_count": 572
-    },
-    {
-      "id": "animal-diversity",
-      "name": "动物多样性",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "动物"
-      ],
-      "file": "biology/botany-zoology/animal-diversity.md",
-      "exists": true,
-      "char_count": 580
-    },
-    {
-      "id": "invertebrate-biology",
-      "name": "无脊椎动物生物学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "动物"
-      ],
-      "file": "biology/botany-zoology/invertebrate-biology.md",
-      "exists": true,
-      "char_count": 586
-    },
-    {
-      "id": "vertebrate-biology",
-      "name": "脊椎动物生物学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "动物"
-      ],
-      "file": "biology/botany-zoology/vertebrate-biology.md",
-      "exists": true,
-      "char_count": 585
-    },
-    {
-      "id": "animal-behavior",
-      "name": "动物行为学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "行为"
-      ],
-      "file": "biology/botany-zoology/animal-behavior.md",
-      "exists": true,
-      "char_count": 577
-    },
-    {
-      "id": "embryology",
-      "name": "胚胎学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "发育"
-      ],
-      "file": "biology/botany-zoology/embryology.md",
-      "exists": true,
-      "char_count": 573
-    },
-    {
-      "id": "comparative-anatomy",
-      "name": "比较解剖学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "比较"
-      ],
-      "file": "biology/botany-zoology/comparative-anatomy.md",
-      "exists": true,
-      "char_count": 577
-    },
-    {
-      "id": "plant-classification",
-      "name": "植物分类",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "分类"
-      ],
-      "file": "biology/botany-zoology/plant-classification.md",
-      "exists": true,
-      "char_count": 578
-    },
-    {
-      "id": "seed-biology",
-      "name": "种子生物学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "植物"
-      ],
-      "file": "biology/botany-zoology/seed-biology.md",
-      "exists": true,
-      "char_count": 575
-    },
-    {
-      "id": "animal-physiology-comp",
-      "name": "动物比较生理学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "比较"
-      ],
-      "file": "biology/botany-zoology/animal-physiology-comp.md",
-      "exists": true,
-      "char_count": 582
-    },
-    {
-      "id": "pollination-ecology",
-      "name": "传粉生态学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "生态"
-      ],
-      "file": "biology/botany-zoology/pollination-ecology.md",
-      "exists": true,
-      "char_count": 580
-    },
-    {
-      "id": "migration-hibernation",
-      "name": "迁徙与冬眠",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "行为"
-      ],
-      "file": "biology/botany-zoology/migration-hibernation.md",
-      "exists": true,
-      "char_count": 575
-    },
-    {
-      "id": "symbiosis",
-      "name": "共生关系",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "生态"
-      ],
-      "file": "biology/botany-zoology/symbiosis.md",
-      "exists": true,
-      "char_count": 576
-    },
-    {
-      "id": "developmental-biology",
-      "name": "发育生物学",
-      "domain_id": "biology",
-      "subdomain_id": "botany-zoology",
-      "subdomain_name": "植物与动物学",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "发育"
-      ],
-      "file": "biology/botany-zoology/developmental-biology.md",
-      "exists": true,
-      "char_count": 578
+      "char_count": 1399
     },
     {
       "id": "biomimetics",
@@ -2578,21 +58,2533 @@
       ],
       "file": "biology/botany-zoology/biomimetics.md",
       "exists": true,
-      "char_count": 572
+      "char_count": 1292
+    },
+    {
+      "id": "pollination-ecology",
+      "name": "传粉生态学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "生态"
+      ],
+      "file": "biology/botany-zoology/pollination-ecology.md",
+      "exists": true,
+      "char_count": 1413
+    },
+    {
+      "id": "symbiosis",
+      "name": "共生关系",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "生态"
+      ],
+      "file": "biology/botany-zoology/symbiosis.md",
+      "exists": true,
+      "char_count": 2190
+    },
+    {
+      "id": "animal-diversity",
+      "name": "动物多样性",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "动物"
+      ],
+      "file": "biology/botany-zoology/animal-diversity.md",
+      "exists": true,
+      "char_count": 2488
+    },
+    {
+      "id": "animal-physiology-comp",
+      "name": "动物比较生理学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "比较"
+      ],
+      "file": "biology/botany-zoology/animal-physiology-comp.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "animal-behavior",
+      "name": "动物行为学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "biology/botany-zoology/animal-behavior.md",
+      "exists": true,
+      "char_count": 2659
+    },
+    {
+      "id": "developmental-biology",
+      "name": "发育生物学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "发育"
+      ],
+      "file": "biology/botany-zoology/developmental-biology.md",
+      "exists": true,
+      "char_count": 1385
+    },
+    {
+      "id": "invertebrate-biology",
+      "name": "无脊椎动物生物学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "动物"
+      ],
+      "file": "biology/botany-zoology/invertebrate-biology.md",
+      "exists": true,
+      "char_count": 2442
+    },
+    {
+      "id": "botany-zoology-overview",
+      "name": "植物与动物学概述",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/botany-zoology/botany-zoology-overview.md",
+      "exists": true,
+      "char_count": 1602
+    },
+    {
+      "id": "plant-classification",
+      "name": "植物分类",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "分类"
+      ],
+      "file": "biology/botany-zoology/plant-classification.md",
+      "exists": true,
+      "char_count": 1602
+    },
+    {
+      "id": "plant-responses",
+      "name": "植物应答",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "植物"
+      ],
+      "file": "biology/botany-zoology/plant-responses.md",
+      "exists": true,
+      "char_count": 2467
+    },
+    {
+      "id": "plant-hormones",
+      "name": "植物激素",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "植物"
+      ],
+      "file": "biology/botany-zoology/plant-hormones.md",
+      "exists": true,
+      "char_count": 1444
+    },
+    {
+      "id": "plant-physiology",
+      "name": "植物生理学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "植物"
+      ],
+      "file": "biology/botany-zoology/plant-physiology.md",
+      "exists": true,
+      "char_count": 2403
+    },
+    {
+      "id": "plant-reproduction",
+      "name": "植物繁殖",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "植物"
+      ],
+      "file": "biology/botany-zoology/plant-reproduction.md",
+      "exists": true,
+      "char_count": 2337
+    },
+    {
+      "id": "plant-anatomy",
+      "name": "植物解剖学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "植物"
+      ],
+      "file": "biology/botany-zoology/plant-anatomy.md",
+      "exists": true,
+      "char_count": 2364
+    },
+    {
+      "id": "comparative-anatomy",
+      "name": "比较解剖学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "比较"
+      ],
+      "file": "biology/botany-zoology/comparative-anatomy.md",
+      "exists": true,
+      "char_count": 2388
+    },
+    {
+      "id": "seed-biology",
+      "name": "种子生物学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "植物"
+      ],
+      "file": "biology/botany-zoology/seed-biology.md",
+      "exists": true,
+      "char_count": 2437
+    },
+    {
+      "id": "embryology",
+      "name": "胚胎学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "发育"
+      ],
+      "file": "biology/botany-zoology/embryology.md",
+      "exists": true,
+      "char_count": 2826
+    },
+    {
+      "id": "vertebrate-biology",
+      "name": "脊椎动物生物学",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "动物"
+      ],
+      "file": "biology/botany-zoology/vertebrate-biology.md",
+      "exists": true,
+      "char_count": 1602
+    },
+    {
+      "id": "migration-hibernation",
+      "name": "迁徙与冬眠",
+      "domain_id": "biology",
+      "subdomain_id": "botany-zoology",
+      "subdomain_name": "植物与动物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "biology/botany-zoology/migration-hibernation.md",
+      "exists": true,
+      "char_count": 1258
+    },
+    {
+      "id": "photosynthesis",
+      "name": "光合作用",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "代谢"
+      ],
+      "file": "biology/cell-biology/photosynthesis.md",
+      "exists": true,
+      "char_count": 1711
+    },
+    {
+      "id": "endomembrane-system",
+      "name": "内膜系统",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/cell-biology/endomembrane-system.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "endoplasmic-reticulum",
+      "name": "内质网",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "细胞器"
+      ],
+      "file": "biology/cell-biology/endoplasmic-reticulum.md",
+      "exists": true,
+      "char_count": 2378
+    },
+    {
+      "id": "meiosis",
+      "name": "减数分裂",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "增殖"
+      ],
+      "file": "biology/cell-biology/meiosis.md",
+      "exists": true,
+      "char_count": 2584
+    },
+    {
+      "id": "prokaryotic-cells",
+      "name": "原核细胞",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/cell-biology/prokaryotic-cells.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "chloroplast",
+      "name": "叶绿体",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "细胞器"
+      ],
+      "file": "biology/cell-biology/chloroplast.md",
+      "exists": true,
+      "char_count": 2465
+    },
+    {
+      "id": "stem-cells",
+      "name": "干细胞",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "biology/cell-biology/stem-cells.md",
+      "exists": true,
+      "char_count": 2528
+    },
+    {
+      "id": "mitosis",
+      "name": "有丝分裂",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "增殖"
+      ],
+      "file": "biology/cell-biology/mitosis.md",
+      "exists": true,
+      "char_count": 1084
+    },
+    {
+      "id": "lysosomes-peroxisomes",
+      "name": "溶酶体与过氧化物酶体",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "细胞器"
+      ],
+      "file": "biology/cell-biology/lysosomes-peroxisomes.md",
+      "exists": true,
+      "char_count": 1444
+    },
+    {
+      "id": "eukaryotic-cells",
+      "name": "真核细胞",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/cell-biology/eukaryotic-cells.md",
+      "exists": true,
+      "char_count": 2357
+    },
+    {
+      "id": "mitochondria",
+      "name": "线粒体",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "细胞器"
+      ],
+      "file": "biology/cell-biology/mitochondria.md",
+      "exists": true,
+      "char_count": 3021
+    },
+    {
+      "id": "cell-signaling",
+      "name": "细胞信号转导",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "通讯"
+      ],
+      "file": "biology/cell-biology/cell-signaling.md",
+      "exists": true,
+      "char_count": 2622
+    },
+    {
+      "id": "apoptosis",
+      "name": "细胞凋亡",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "调控"
+      ],
+      "file": "biology/cell-biology/apoptosis.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "cell-differentiation",
+      "name": "细胞分化",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "发育"
+      ],
+      "file": "biology/cell-biology/cell-differentiation.md",
+      "exists": true,
+      "char_count": 1380
+    },
+    {
+      "id": "cell-cycle",
+      "name": "细胞周期",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "增殖"
+      ],
+      "file": "biology/cell-biology/cell-cycle.md",
+      "exists": true,
+      "char_count": 1444
+    },
+    {
+      "id": "cellular-respiration",
+      "name": "细胞呼吸",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "代谢"
+      ],
+      "file": "biology/cell-biology/cellular-respiration.md",
+      "exists": true,
+      "char_count": 3110
+    },
+    {
+      "id": "nucleus",
+      "name": "细胞核",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "biology/cell-biology/nucleus.md",
+      "exists": true,
+      "char_count": 2370
+    },
+    {
+      "id": "cell-biology-overview",
+      "name": "细胞生物学概述",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/cell-biology/cell-biology-overview.md",
+      "exists": true,
+      "char_count": 1647
+    },
+    {
+      "id": "cell-membrane",
+      "name": "细胞膜",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "biology/cell-biology/cell-membrane.md",
+      "exists": true,
+      "char_count": 3451
+    },
+    {
+      "id": "cytoskeleton",
+      "name": "细胞骨架",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "结构"
+      ],
+      "file": "biology/cell-biology/cytoskeleton.md",
+      "exists": true,
+      "char_count": 2492
+    },
+    {
+      "id": "membrane-transport",
+      "name": "膜转运",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "功能"
+      ],
+      "file": "biology/cell-biology/membrane-transport.md",
+      "exists": true,
+      "char_count": 2669
+    },
+    {
+      "id": "golgi-apparatus",
+      "name": "高尔基体",
+      "domain_id": "biology",
+      "subdomain_id": "cell-biology",
+      "subdomain_name": "细胞生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "细胞器"
+      ],
+      "file": "biology/cell-biology/golgi-apparatus.md",
+      "exists": true,
+      "char_count": 2353
+    },
+    {
+      "id": "conservation-biology",
+      "name": "保护生物学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "保护"
+      ],
+      "file": "biology/ecology/conservation-biology.md",
+      "exists": true,
+      "char_count": 2829
+    },
+    {
+      "id": "urban-ecology",
+      "name": "城市生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "biology/ecology/urban-ecology.md",
+      "exists": true,
+      "char_count": 1337
+    },
+    {
+      "id": "island-biogeography",
+      "name": "岛屿生物地理学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "理论"
+      ],
+      "file": "biology/ecology/island-biogeography.md",
+      "exists": true,
+      "char_count": 1529
+    },
+    {
+      "id": "restoration-ecology",
+      "name": "恢复生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "biology/ecology/restoration-ecology.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "landscape-ecology",
+      "name": "景观生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "宏观"
+      ],
+      "file": "biology/ecology/landscape-ecology.md",
+      "exists": true,
+      "char_count": 1331
+    },
+    {
+      "id": "climate-change-ecology",
+      "name": "气候变化与生态",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "全球"
+      ],
+      "file": "biology/ecology/climate-change-ecology.md",
+      "exists": true,
+      "char_count": 1433
+    },
+    {
+      "id": "marine-ecology",
+      "name": "海洋生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "水生"
+      ],
+      "file": "biology/ecology/marine-ecology.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "freshwater-ecology",
+      "name": "淡水生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "水生"
+      ],
+      "file": "biology/ecology/freshwater-ecology.md",
+      "exists": true,
+      "char_count": 1446
+    },
+    {
+      "id": "nutrient-cycling",
+      "name": "物质循环",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "生态系统"
+      ],
+      "file": "biology/ecology/nutrient-cycling.md",
+      "exists": true,
+      "char_count": 2698
+    },
+    {
+      "id": "niche-theory",
+      "name": "生态位理论",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "biology/ecology/niche-theory.md",
+      "exists": true,
+      "char_count": 2471
+    },
+    {
+      "id": "ecology-overview",
+      "name": "生态学概述",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/ecology/ecology-overview.md",
+      "exists": true,
+      "char_count": 1570
+    },
+    {
+      "id": "ecological-succession",
+      "name": "生态演替",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "动态"
+      ],
+      "file": "biology/ecology/ecological-succession.md",
+      "exists": true,
+      "char_count": 1445
+    },
+    {
+      "id": "ecosystem-services",
+      "name": "生态系统服务",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "biology/ecology/ecosystem-services.md",
+      "exists": true,
+      "char_count": 2357
+    },
+    {
+      "id": "ecosystem-ecology",
+      "name": "生态系统生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "生态系统"
+      ],
+      "file": "biology/ecology/ecosystem-ecology.md",
+      "exists": true,
+      "char_count": 2638
+    },
+    {
+      "id": "biodiversity",
+      "name": "生物多样性",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "保护"
+      ],
+      "file": "biology/ecology/biodiversity.md",
+      "exists": true,
+      "char_count": 2445
+    },
+    {
+      "id": "biomes",
+      "name": "生物群落",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "宏观"
+      ],
+      "file": "biology/ecology/biomes.md",
+      "exists": true,
+      "char_count": 2523
+    },
+    {
+      "id": "population-dynamics",
+      "name": "种群动态",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "数学"
+      ],
+      "file": "biology/ecology/population-dynamics.md",
+      "exists": true,
+      "char_count": 1390
+    },
+    {
+      "id": "population-ecology",
+      "name": "种群生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "种群"
+      ],
+      "file": "biology/ecology/population-ecology.md",
+      "exists": true,
+      "char_count": 2257
+    },
+    {
+      "id": "species-interactions",
+      "name": "种间关系",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "群落"
+      ],
+      "file": "biology/ecology/species-interactions.md",
+      "exists": true,
+      "char_count": 2424
+    },
+    {
+      "id": "community-ecology",
+      "name": "群落生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "群落"
+      ],
+      "file": "biology/ecology/community-ecology.md",
+      "exists": true,
+      "char_count": 2726
+    },
+    {
+      "id": "behavioral-ecology",
+      "name": "行为生态学",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "biology/ecology/behavioral-ecology.md",
+      "exists": true,
+      "char_count": 2619
+    },
+    {
+      "id": "food-web",
+      "name": "食物网",
+      "domain_id": "biology",
+      "subdomain_id": "ecology",
+      "subdomain_name": "生态学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "生态系统"
+      ],
+      "file": "biology/ecology/food-web.md",
+      "exists": true,
+      "char_count": 2701
+    },
+    {
+      "id": "kin-selection",
+      "name": "亲缘选择",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "行为"
+      ],
+      "file": "biology/evolution/kin-selection.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "human-evolution",
+      "name": "人类进化",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "人类"
+      ],
+      "file": "biology/evolution/human-evolution.md",
+      "exists": true,
+      "char_count": 2568
+    },
+    {
+      "id": "endosymbiosis",
+      "name": "内共生学说",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "起源"
+      ],
+      "file": "biology/evolution/endosymbiosis.md",
+      "exists": true,
+      "char_count": 2315
+    },
+    {
+      "id": "molecular-evolution",
+      "name": "分子进化",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "分子"
+      ],
+      "file": "biology/evolution/molecular-evolution.md",
+      "exists": true,
+      "char_count": 2932
+    },
+    {
+      "id": "coevolution",
+      "name": "协同进化",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "宏观"
+      ],
+      "file": "biology/evolution/coevolution.md",
+      "exists": true,
+      "char_count": 2721
+    },
+    {
+      "id": "macroevolution",
+      "name": "宏观进化",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "宏观"
+      ],
+      "file": "biology/evolution/macroevolution.md",
+      "exists": true,
+      "char_count": 2906
+    },
+    {
+      "id": "microevolution",
+      "name": "微观进化",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/evolution/microevolution.md",
+      "exists": true,
+      "char_count": 2590
+    },
+    {
+      "id": "sexual-selection",
+      "name": "性选择",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "机制"
+      ],
+      "file": "biology/evolution/sexual-selection.md",
+      "exists": true,
+      "char_count": 2650
+    },
+    {
+      "id": "speciation",
+      "name": "物种形成",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "宏观"
+      ],
+      "file": "biology/evolution/speciation.md",
+      "exists": true,
+      "char_count": 2498
+    },
+    {
+      "id": "origin-of-life",
+      "name": "生命起源",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "起源"
+      ],
+      "file": "biology/evolution/origin-of-life.md",
+      "exists": true,
+      "char_count": 2868
+    },
+    {
+      "id": "phylogenetics",
+      "name": "系统发育",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "biology/evolution/phylogenetics.md",
+      "exists": true,
+      "char_count": 2625
+    },
+    {
+      "id": "natural-selection",
+      "name": "自然选择",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "biology/evolution/natural-selection.md",
+      "exists": true,
+      "char_count": 1586
+    },
+    {
+      "id": "convergent-evolution",
+      "name": "趋同进化",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "biology/evolution/convergent-evolution.md",
+      "exists": true,
+      "char_count": 1234
+    },
+    {
+      "id": "divergent-evolution",
+      "name": "趋异进化",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "模式"
+      ],
+      "file": "biology/evolution/divergent-evolution.md",
+      "exists": true,
+      "char_count": 2302
+    },
+    {
+      "id": "evolutionary-development",
+      "name": "进化发育生物学",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "biology/evolution/evolutionary-development.md",
+      "exists": true,
+      "char_count": 1575
+    },
+    {
+      "id": "evolution-overview",
+      "name": "进化生物学概述",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/evolution/evolution-overview.md",
+      "exists": true,
+      "char_count": 1521
+    },
+    {
+      "id": "evidence-evolution",
+      "name": "进化证据",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "证据"
+      ],
+      "file": "biology/evolution/evidence-evolution.md",
+      "exists": true,
+      "char_count": 1449
+    },
+    {
+      "id": "adaptation",
+      "name": "适应",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "biology/evolution/adaptation.md",
+      "exists": true,
+      "char_count": 1322
+    },
+    {
+      "id": "adaptive-radiation",
+      "name": "适应辐射",
+      "domain_id": "biology",
+      "subdomain_id": "evolution",
+      "subdomain_name": "进化生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "宏观"
+      ],
+      "file": "biology/evolution/adaptive-radiation.md",
+      "exists": true,
+      "char_count": 1352
+    },
+    {
+      "id": "human-genetics",
+      "name": "人类遗传学",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "医学"
+      ],
+      "file": "biology/genetics/human-genetics.md",
+      "exists": true,
+      "char_count": 2521
+    },
+    {
+      "id": "sex-linked-inheritance",
+      "name": "伴性遗传",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "biology/genetics/sex-linked-inheritance.md",
+      "exists": true,
+      "char_count": 2565
+    },
+    {
+      "id": "gene-interaction",
+      "name": "基因互作",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "复杂"
+      ],
+      "file": "biology/genetics/gene-interaction.md",
+      "exists": true,
+      "char_count": 2568
+    },
+    {
+      "id": "gene-concept",
+      "name": "基因概念",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "biology/genetics/gene-concept.md",
+      "exists": true,
+      "char_count": 2643
+    },
+    {
+      "id": "gene-expression-regulation",
+      "name": "基因表达调控",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "调控"
+      ],
+      "file": "biology/genetics/gene-expression-regulation.md",
+      "exists": true,
+      "char_count": 1419
+    },
+    {
+      "id": "polygenic-inheritance",
+      "name": "多基因遗传",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "复杂"
+      ],
+      "file": "biology/genetics/polygenic-inheritance.md",
+      "exists": true,
+      "char_count": 2739
+    },
+    {
+      "id": "mendelian-genetics",
+      "name": "孟德尔遗传",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "biology/genetics/mendelian-genetics.md",
+      "exists": true,
+      "char_count": 1267
+    },
+    {
+      "id": "pedigree-analysis",
+      "name": "家系分析",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "biology/genetics/pedigree-analysis.md",
+      "exists": true,
+      "char_count": 2348
+    },
+    {
+      "id": "quantitative-genetics",
+      "name": "数量遗传学",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "群体"
+      ],
+      "file": "biology/genetics/quantitative-genetics.md",
+      "exists": true,
+      "char_count": 1468
+    },
+    {
+      "id": "chromosomal-abnormalities",
+      "name": "染色体异常",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "变异"
+      ],
+      "file": "biology/genetics/chromosomal-abnormalities.md",
+      "exists": true,
+      "char_count": 2740
+    },
+    {
+      "id": "chromosomal-inheritance",
+      "name": "染色体遗传",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "biology/genetics/chromosomal-inheritance.md",
+      "exists": true,
+      "char_count": 2502
+    },
+    {
+      "id": "extranuclear-inheritance",
+      "name": "核外遗传",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "非经典"
+      ],
+      "file": "biology/genetics/extranuclear-inheritance.md",
+      "exists": true,
+      "char_count": 2494
+    },
+    {
+      "id": "mutation-types",
+      "name": "突变类型",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "变异"
+      ],
+      "file": "biology/genetics/mutation-types.md",
+      "exists": true,
+      "char_count": 2663
+    },
+    {
+      "id": "alleles-genotype",
+      "name": "等位基因与基因型",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "biology/genetics/alleles-genotype.md",
+      "exists": true,
+      "char_count": 1593
+    },
+    {
+      "id": "population-genetics",
+      "name": "群体遗传学",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "群体"
+      ],
+      "file": "biology/genetics/population-genetics.md",
+      "exists": true,
+      "char_count": 1538
+    },
+    {
+      "id": "pharmacogenomics",
+      "name": "药物基因组学",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "biology/genetics/pharmacogenomics.md",
+      "exists": true,
+      "char_count": 2490
+    },
+    {
+      "id": "behavioral-genetics",
+      "name": "行为遗传学",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "交叉"
+      ],
+      "file": "biology/genetics/behavioral-genetics.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "genetic-counseling",
+      "name": "遗传咨询",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "医学"
+      ],
+      "file": "biology/genetics/genetic-counseling.md",
+      "exists": true,
+      "char_count": 2670
+    },
+    {
+      "id": "genetic-mapping",
+      "name": "遗传图谱",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "biology/genetics/genetic-mapping.md",
+      "exists": true,
+      "char_count": 2473
+    },
+    {
+      "id": "genetics-overview",
+      "name": "遗传学概述",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/genetics/genetics-overview.md",
+      "exists": true,
+      "char_count": 1575
+    },
+    {
+      "id": "genetic-engineering",
+      "name": "遗传工程",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "biology/genetics/genetic-engineering.md",
+      "exists": true,
+      "char_count": 2884
+    },
+    {
+      "id": "genetic-drift",
+      "name": "遗传漂变",
+      "domain_id": "biology",
+      "subdomain_id": "genetics",
+      "subdomain_name": "遗传学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "群体"
+      ],
+      "file": "biology/genetics/genetic-drift.md",
+      "exists": true,
+      "char_count": 2300
+    },
+    {
+      "id": "physiology-overview",
+      "name": "人体生理学概述",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/human-physiology/physiology-overview.md",
+      "exists": true,
+      "char_count": 1548
+    },
+    {
+      "id": "metabolism-overview",
+      "name": "代谢概览",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "代谢"
+      ],
+      "file": "biology/human-physiology/metabolism-overview.md",
+      "exists": true,
+      "char_count": 2337
+    },
+    {
+      "id": "immune-system",
+      "name": "免疫系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/immune-system.md",
+      "exists": true,
+      "char_count": 2676
+    },
+    {
+      "id": "immune-cells",
+      "name": "免疫细胞",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "免疫"
+      ],
+      "file": "biology/human-physiology/immune-cells.md",
+      "exists": true,
+      "char_count": 2650
+    },
+    {
+      "id": "respiratory-system",
+      "name": "呼吸系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/respiratory-system.md",
+      "exists": true,
+      "char_count": 2509
+    },
+    {
+      "id": "cardiovascular-system",
+      "name": "心血管系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/cardiovascular-system.md",
+      "exists": true,
+      "char_count": 2161
+    },
+    {
+      "id": "sensory-system",
+      "name": "感觉系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "神经"
+      ],
+      "file": "biology/human-physiology/sensory-system.md",
+      "exists": true,
+      "char_count": 2659
+    },
+    {
+      "id": "antibody-response",
+      "name": "抗体反应",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "免疫"
+      ],
+      "file": "biology/human-physiology/antibody-response.md",
+      "exists": true,
+      "char_count": 2819
+    },
+    {
+      "id": "urinary-system",
+      "name": "泌尿系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/urinary-system.md",
+      "exists": true,
+      "char_count": 1440
+    },
+    {
+      "id": "digestive-system",
+      "name": "消化系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/digestive-system.md",
+      "exists": true,
+      "char_count": 2445
+    },
+    {
+      "id": "lymphatic-system",
+      "name": "淋巴系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/lymphatic-system.md",
+      "exists": true,
+      "char_count": 2252
+    },
+    {
+      "id": "hormone-regulation",
+      "name": "激素调节",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "内分泌"
+      ],
+      "file": "biology/human-physiology/hormone-regulation.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "reproductive-system",
+      "name": "生殖系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/reproductive-system.md",
+      "exists": true,
+      "char_count": 2801
+    },
+    {
+      "id": "neuron-synapse",
+      "name": "神经元与突触",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "神经"
+      ],
+      "file": "biology/human-physiology/neuron-synapse.md",
+      "exists": true,
+      "char_count": 2523
+    },
+    {
+      "id": "nervous-system",
+      "name": "神经系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/nervous-system.md",
+      "exists": true,
+      "char_count": 2214
+    },
+    {
+      "id": "homeostasis",
+      "name": "稳态",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "biology/human-physiology/homeostasis.md",
+      "exists": true,
+      "char_count": 2371
+    },
+    {
+      "id": "brain-function",
+      "name": "脑的功能",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "神经"
+      ],
+      "file": "biology/human-physiology/brain-function.md",
+      "exists": true,
+      "char_count": 2676
+    },
+    {
+      "id": "nutrition-physiology",
+      "name": "营养生理学",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "营养"
+      ],
+      "file": "biology/human-physiology/nutrition-physiology.md",
+      "exists": true,
+      "char_count": 2370
+    },
+    {
+      "id": "blood-composition",
+      "name": "血液组成",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "血液"
+      ],
+      "file": "biology/human-physiology/blood-composition.md",
+      "exists": true,
+      "char_count": 2611
+    },
+    {
+      "id": "aging-physiology",
+      "name": "衰老生理学",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "特殊"
+      ],
+      "file": "biology/human-physiology/aging-physiology.md",
+      "exists": true,
+      "char_count": 2475
+    },
+    {
+      "id": "exercise-physiology",
+      "name": "运动生理学",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "biology/human-physiology/exercise-physiology.md",
+      "exists": true,
+      "char_count": 1515
+    },
+    {
+      "id": "musculoskeletal-system",
+      "name": "运动系统",
+      "domain_id": "biology",
+      "subdomain_id": "human-physiology",
+      "subdomain_name": "人体生理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/musculoskeletal-system.md",
+      "exists": true,
+      "char_count": 1361
+    },
+    {
+      "id": "immune-evasion",
+      "name": "免疫逃逸",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "医学"
+      ],
+      "file": "biology/microbiology/immune-evasion.md",
+      "exists": true,
+      "char_count": 2698
+    },
+    {
+      "id": "protists",
+      "name": "原生生物",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "多样性"
+      ],
+      "file": "biology/microbiology/protists.md",
+      "exists": true,
+      "char_count": 2395
+    },
+    {
+      "id": "archaea",
+      "name": "古菌",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "多样性"
+      ],
+      "file": "biology/microbiology/archaea.md",
+      "exists": true,
+      "char_count": 2278
+    },
+    {
+      "id": "industrial-microbiology",
+      "name": "工业微生物学",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "biology/microbiology/industrial-microbiology.md",
+      "exists": true,
+      "char_count": 1519
+    },
+    {
+      "id": "microbiology-overview",
+      "name": "微生物学概述",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/microbiology/microbiology-overview.md",
+      "exists": true,
+      "char_count": 1625
+    },
+    {
+      "id": "microbiome",
+      "name": "微生物组",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "biology/microbiology/microbiome.md",
+      "exists": true,
+      "char_count": 2461
+    },
+    {
+      "id": "antibiotic-resistance",
+      "name": "抗生素耐药性",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "医学"
+      ],
+      "file": "biology/microbiology/antibiotic-resistance.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "emerging-infectious",
+      "name": "新发传染病",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "公卫"
+      ],
+      "file": "biology/microbiology/emerging-infectious.md",
+      "exists": true,
+      "char_count": 2554
+    },
+    {
+      "id": "prions",
+      "name": "朊病毒",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "特殊"
+      ],
+      "file": "biology/microbiology/prions.md",
+      "exists": true,
+      "char_count": 1163
+    },
+    {
+      "id": "environmental-microbiology",
+      "name": "环境微生物学",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "biology/microbiology/environmental-microbiology.md",
+      "exists": true,
+      "char_count": 1339
+    },
+    {
+      "id": "biofilm",
+      "name": "生物膜",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "生态"
+      ],
+      "file": "biology/microbiology/biofilm.md",
+      "exists": true,
+      "char_count": 1262
+    },
+    {
+      "id": "vaccine-biology",
+      "name": "疫苗生物学",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "医学"
+      ],
+      "file": "biology/microbiology/vaccine-biology.md",
+      "exists": true,
+      "char_count": 2767
+    },
+    {
+      "id": "viral-replication",
+      "name": "病毒复制",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "病毒"
+      ],
+      "file": "biology/microbiology/viral-replication.md",
+      "exists": true,
+      "char_count": 1324
+    },
+    {
+      "id": "virus-biology",
+      "name": "病毒生物学",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "病毒"
+      ],
+      "file": "biology/microbiology/virus-biology.md",
+      "exists": true,
+      "char_count": 2367
+    },
+    {
+      "id": "fungi-biology",
+      "name": "真菌生物学",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "真菌"
+      ],
+      "file": "biology/microbiology/fungi-biology.md",
+      "exists": true,
+      "char_count": 2188
+    },
+    {
+      "id": "bacterial-metabolism",
+      "name": "细菌代谢",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "细菌"
+      ],
+      "file": "biology/microbiology/bacterial-metabolism.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "bacteria-structure",
+      "name": "细菌结构",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "细菌"
+      ],
+      "file": "biology/microbiology/bacteria-structure.md",
+      "exists": true,
+      "char_count": 2532
+    },
+    {
+      "id": "bacterial-genetics",
+      "name": "细菌遗传",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "细菌"
+      ],
+      "file": "biology/microbiology/bacterial-genetics.md",
+      "exists": true,
+      "char_count": 1418
+    },
+    {
+      "id": "pathogenic-mechanisms",
+      "name": "致病机制",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "医学"
+      ],
+      "file": "biology/microbiology/pathogenic-mechanisms.md",
+      "exists": true,
+      "char_count": 2450
+    },
+    {
+      "id": "food-microbiology",
+      "name": "食品微生物学",
+      "domain_id": "biology",
+      "subdomain_id": "microbiology",
+      "subdomain_name": "微生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "biology/microbiology/food-microbiology.md",
+      "exists": true,
+      "char_count": 2672
+    },
+    {
+      "id": "dna-repair",
+      "name": "DNA修复",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核酸"
+      ],
+      "file": "biology/molecular-biology/dna-repair.md",
+      "exists": true,
+      "char_count": 1442
+    },
+    {
+      "id": "dna-replication",
+      "name": "DNA复制",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核酸"
+      ],
+      "file": "biology/molecular-biology/dna-replication.md",
+      "exists": true,
+      "char_count": 1523
+    },
+    {
+      "id": "dna-structure",
+      "name": "DNA结构",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核酸"
+      ],
+      "file": "biology/molecular-biology/dna-structure.md",
+      "exists": true,
+      "char_count": 2741
+    },
+    {
+      "id": "pcr-technology",
+      "name": "PCR技术",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "biology/molecular-biology/pcr-technology.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "rna-interference",
+      "name": "RNA干扰",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "调控"
+      ],
+      "file": "biology/molecular-biology/rna-interference.md",
+      "exists": true,
+      "char_count": 1431
+    },
+    {
+      "id": "rna-types",
+      "name": "RNA类型",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核酸"
+      ],
+      "file": "biology/molecular-biology/rna-types.md",
+      "exists": true,
+      "char_count": 1564
+    },
+    {
+      "id": "central-dogma",
+      "name": "中心法则",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "biology/molecular-biology/central-dogma.md",
+      "exists": true,
+      "char_count": 1287
+    },
+    {
+      "id": "signal-transduction-mol",
+      "name": "分子信号通路",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "信号"
+      ],
+      "file": "biology/molecular-biology/signal-transduction-mol.md",
+      "exists": true,
+      "char_count": 1600
+    },
+    {
+      "id": "molecular-cloning",
+      "name": "分子克隆",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "biology/molecular-biology/molecular-cloning.md",
+      "exists": true,
+      "char_count": 2480
+    },
+    {
+      "id": "molecular-biology-overview",
+      "name": "分子生物学概述",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "biology/molecular-biology/molecular-biology-overview.md",
+      "exists": true,
+      "char_count": 1555
+    },
+    {
+      "id": "genomics",
+      "name": "基因组学",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "组学"
+      ],
+      "file": "biology/molecular-biology/genomics.md",
+      "exists": true,
+      "char_count": 2782
+    },
+    {
+      "id": "gene-editing",
+      "name": "基因编辑",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "biology/molecular-biology/gene-editing.md",
+      "exists": true,
+      "char_count": 2503
+    },
+    {
+      "id": "gene-regulation",
+      "name": "基因调控",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "调控"
+      ],
+      "file": "biology/molecular-biology/gene-regulation.md",
+      "exists": true,
+      "char_count": 2263
+    },
+    {
+      "id": "bioinformatics",
+      "name": "生物信息学",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "biology/molecular-biology/bioinformatics.md",
+      "exists": true,
+      "char_count": 3256
+    },
+    {
+      "id": "translation",
+      "name": "翻译",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基因表达"
+      ],
+      "file": "biology/molecular-biology/translation.md",
+      "exists": true,
+      "char_count": 2650
+    },
+    {
+      "id": "protein-modification",
+      "name": "蛋白质修饰",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "蛋白质"
+      ],
+      "file": "biology/molecular-biology/protein-modification.md",
+      "exists": true,
+      "char_count": 1481
+    },
+    {
+      "id": "proteomics",
+      "name": "蛋白质组学",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "组学"
+      ],
+      "file": "biology/molecular-biology/proteomics.md",
+      "exists": true,
+      "char_count": 3669
+    },
+    {
+      "id": "protein-structure",
+      "name": "蛋白质结构",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "蛋白质"
+      ],
+      "file": "biology/molecular-biology/protein-structure.md",
+      "exists": true,
+      "char_count": 2569
+    },
+    {
+      "id": "epigenetics",
+      "name": "表观遗传学",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "前沿"
+      ],
+      "file": "biology/molecular-biology/epigenetics.md",
+      "exists": true,
+      "char_count": 2652
+    },
+    {
+      "id": "transcription",
+      "name": "转录",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基因表达"
+      ],
+      "file": "biology/molecular-biology/transcription.md",
+      "exists": true,
+      "char_count": 2742
+    },
+    {
+      "id": "enzyme-function",
+      "name": "酶的功能",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "蛋白质"
+      ],
+      "file": "biology/molecular-biology/enzyme-function.md",
+      "exists": true,
+      "char_count": 2528
+    },
+    {
+      "id": "recombinant-dna",
+      "name": "重组DNA技术",
+      "domain_id": "biology",
+      "subdomain_id": "molecular-biology",
+      "subdomain_name": "分子生物学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "技术"
+      ],
+      "file": "biology/molecular-biology/recombinant-dna.md",
+      "exists": true,
+      "char_count": 1566
     }
   ],
   "stats": {
-    "total_docs": 172,
-    "total_chars": 97274,
-    "by_subdomain": {
-      "cell-biology": 22,
-      "molecular-biology": 22,
-      "genetics": 22,
-      "evolution": 20,
-      "human-physiology": 24,
-      "ecology": 22,
-      "microbiology": 20,
-      "botany-zoology": 20
-    }
+    "total": 172,
+    "total_chars": 363684,
+    "avg_chars": 2114,
+    "domain": "biology"
   }
 }

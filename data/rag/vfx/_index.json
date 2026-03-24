@@ -1,1491 +1,2710 @@
 {
-  "version": "1.0",
-  "domain": "vfx",
-  "domain_name": "特效",
-  "generated_at": "2026-03-21T04:52:07",
-  "total_concepts": 180,
-  "stats": {
-    "total_docs": 180,
-    "total_chars": 412866,
-    "by_subdomain": {
-      "niagara": {
-        "count": 20,
-        "chars": 45873
-      },
-      "vfx-graph": {
-        "count": 20,
-        "chars": 44996
-      },
-      "particle-physics": {
-        "count": 20,
-        "chars": 46228
-      },
-      "fluid-sim": {
-        "count": 20,
-        "chars": 46410
-      },
-      "destruction": {
-        "count": 20,
-        "chars": 45672
-      },
-      "post-process": {
-        "count": 20,
-        "chars": 46091
-      },
-      "flipbook": {
-        "count": 20,
-        "chars": 46042
-      },
-      "shader-vfx": {
-        "count": 20,
-        "chars": 45945
-      },
-      "vfx-optimization": {
-        "count": 20,
-        "chars": 45609
-      }
-    }
-  },
   "documents": [
     {
-      "id": "vfx-niagara-overview",
-      "file": "vfx/vfx-niagara-overview.md",
-      "concept_id": "vfx-niagara-overview",
-      "subdomain_id": "niagara",
-      "difficulty": 1,
-      "title": "Niagara系统概述"
-    },
-    {
-      "id": "vfx-niagara-emitter",
-      "file": "vfx/vfx-niagara-emitter.md",
-      "concept_id": "vfx-niagara-emitter",
-      "subdomain_id": "niagara",
-      "difficulty": 1,
-      "title": "Emitter与System"
-    },
-    {
-      "id": "vfx-niagara-module",
-      "file": "vfx/vfx-niagara-module.md",
-      "concept_id": "vfx-niagara-module",
-      "subdomain_id": "niagara",
-      "difficulty": 2,
-      "title": "Module脚本"
-    },
-    {
-      "id": "vfx-niagara-parameter",
-      "file": "vfx/vfx-niagara-parameter.md",
-      "concept_id": "vfx-niagara-parameter",
-      "subdomain_id": "niagara",
-      "difficulty": 2,
-      "title": "参数与属性"
-    },
-    {
-      "id": "vfx-niagara-spawn",
-      "file": "vfx/vfx-niagara-spawn.md",
-      "concept_id": "vfx-niagara-spawn",
-      "subdomain_id": "niagara",
-      "difficulty": 2,
-      "title": "生成模式"
-    },
-    {
-      "id": "vfx-niagara-lifecycle",
-      "file": "vfx/vfx-niagara-lifecycle.md",
-      "concept_id": "vfx-niagara-lifecycle",
-      "subdomain_id": "niagara",
-      "difficulty": 2,
-      "title": "粒子生命周期"
-    },
-    {
-      "id": "vfx-niagara-force",
-      "file": "vfx/vfx-niagara-force.md",
-      "concept_id": "vfx-niagara-force",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "力场与运动"
-    },
-    {
-      "id": "vfx-niagara-collision",
-      "file": "vfx/vfx-niagara-collision.md",
-      "concept_id": "vfx-niagara-collision",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "碰撞检测"
-    },
-    {
-      "id": "vfx-niagara-event",
-      "file": "vfx/vfx-niagara-event.md",
-      "concept_id": "vfx-niagara-event",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "事件系统"
-    },
-    {
-      "id": "vfx-niagara-data-interface",
-      "file": "vfx/vfx-niagara-data-interface.md",
-      "concept_id": "vfx-niagara-data-interface",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "数据接口"
-    },
-    {
-      "id": "vfx-niagara-renderer",
-      "file": "vfx/vfx-niagara-renderer.md",
-      "concept_id": "vfx-niagara-renderer",
-      "subdomain_id": "niagara",
-      "difficulty": 2,
-      "title": "渲染器类型"
-    },
-    {
-      "id": "vfx-niagara-ribbon",
-      "file": "vfx/vfx-niagara-ribbon.md",
-      "concept_id": "vfx-niagara-ribbon",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "Ribbon特效"
-    },
-    {
-      "id": "vfx-niagara-mesh",
-      "file": "vfx/vfx-niagara-mesh.md",
-      "concept_id": "vfx-niagara-mesh",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "Mesh粒子"
-    },
-    {
-      "id": "vfx-niagara-gpu",
-      "file": "vfx/vfx-niagara-gpu.md",
-      "concept_id": "vfx-niagara-gpu",
-      "subdomain_id": "niagara",
-      "difficulty": 4,
-      "title": "GPU模拟"
-    },
-    {
-      "id": "vfx-niagara-sim-stage",
-      "file": "vfx/vfx-niagara-sim-stage.md",
-      "concept_id": "vfx-niagara-sim-stage",
-      "subdomain_id": "niagara",
-      "difficulty": 4,
-      "title": "Simulation Stage"
-    },
-    {
-      "id": "vfx-niagara-neighbor-grid",
-      "file": "vfx/vfx-niagara-neighbor-grid.md",
-      "concept_id": "vfx-niagara-neighbor-grid",
-      "subdomain_id": "niagara",
-      "difficulty": 4,
-      "title": "邻域网格"
-    },
-    {
-      "id": "vfx-niagara-audio",
-      "file": "vfx/vfx-niagara-audio.md",
-      "concept_id": "vfx-niagara-audio",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "音频可视化"
-    },
-    {
-      "id": "vfx-niagara-camera",
-      "file": "vfx/vfx-niagara-camera.md",
-      "concept_id": "vfx-niagara-camera",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "相机交互"
-    },
-    {
-      "id": "vfx-niagara-debug",
-      "file": "vfx/vfx-niagara-debug.md",
-      "concept_id": "vfx-niagara-debug",
-      "subdomain_id": "niagara",
-      "difficulty": 2,
-      "title": "调试工具"
-    },
-    {
-      "id": "vfx-niagara-blueprint",
-      "file": "vfx/vfx-niagara-blueprint.md",
-      "concept_id": "vfx-niagara-blueprint",
-      "subdomain_id": "niagara",
-      "difficulty": 3,
-      "title": "蓝图集成"
-    },
-    {
-      "id": "vfx-vfxgraph-overview",
-      "file": "vfx/vfx-vfxgraph-overview.md",
-      "concept_id": "vfx-vfxgraph-overview",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 1,
-      "title": "VFX Graph概述"
-    },
-    {
-      "id": "vfx-vfxgraph-context",
-      "file": "vfx/vfx-vfxgraph-context.md",
-      "concept_id": "vfx-vfxgraph-context",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 2,
-      "title": "Context系统"
-    },
-    {
-      "id": "vfx-vfxgraph-block",
-      "file": "vfx/vfx-vfxgraph-block.md",
-      "concept_id": "vfx-vfxgraph-block",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 2,
-      "title": "Block与节点"
-    },
-    {
-      "id": "vfx-vfxgraph-spawn",
-      "file": "vfx/vfx-vfxgraph-spawn.md",
-      "concept_id": "vfx-vfxgraph-spawn",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 2,
-      "title": "生成系统"
-    },
-    {
-      "id": "vfx-vfxgraph-attribute",
-      "file": "vfx/vfx-vfxgraph-attribute.md",
-      "concept_id": "vfx-vfxgraph-attribute",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 2,
-      "title": "属性系统"
-    },
-    {
-      "id": "vfx-vfxgraph-force",
-      "file": "vfx/vfx-vfxgraph-force.md",
-      "concept_id": "vfx-vfxgraph-force",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "力与运动"
-    },
-    {
-      "id": "vfx-vfxgraph-collision",
-      "file": "vfx/vfx-vfxgraph-collision.md",
-      "concept_id": "vfx-vfxgraph-collision",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "碰撞与交互"
-    },
-    {
-      "id": "vfx-vfxgraph-output",
-      "file": "vfx/vfx-vfxgraph-output.md",
-      "concept_id": "vfx-vfxgraph-output",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 2,
-      "title": "输出模式"
-    },
-    {
-      "id": "vfx-vfxgraph-sdf",
-      "file": "vfx/vfx-vfxgraph-sdf.md",
-      "concept_id": "vfx-vfxgraph-sdf",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 4,
-      "title": "SDF交互"
-    },
-    {
-      "id": "vfx-vfxgraph-gpu-event",
-      "file": "vfx/vfx-vfxgraph-gpu-event.md",
-      "concept_id": "vfx-vfxgraph-gpu-event",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "GPU事件"
-    },
-    {
-      "id": "vfx-vfxgraph-subgraph",
-      "file": "vfx/vfx-vfxgraph-subgraph.md",
-      "concept_id": "vfx-vfxgraph-subgraph",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "SubGraph复用"
-    },
-    {
-      "id": "vfx-vfxgraph-texture",
-      "file": "vfx/vfx-vfxgraph-texture.md",
-      "concept_id": "vfx-vfxgraph-texture",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "纹理采样"
-    },
-    {
-      "id": "vfx-vfxgraph-noise",
-      "file": "vfx/vfx-vfxgraph-noise.md",
-      "concept_id": "vfx-vfxgraph-noise",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "噪声函数"
-    },
-    {
-      "id": "vfx-vfxgraph-strip",
-      "file": "vfx/vfx-vfxgraph-strip.md",
-      "concept_id": "vfx-vfxgraph-strip",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "Strip粒子"
-    },
-    {
-      "id": "vfx-vfxgraph-point-cache",
-      "file": "vfx/vfx-vfxgraph-point-cache.md",
-      "concept_id": "vfx-vfxgraph-point-cache",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "Point Cache"
-    },
-    {
-      "id": "vfx-vfxgraph-skinned-mesh",
-      "file": "vfx/vfx-vfxgraph-skinned-mesh.md",
-      "concept_id": "vfx-vfxgraph-skinned-mesh",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "蒙皮网格采样"
-    },
-    {
-      "id": "vfx-vfxgraph-shader-graph",
-      "file": "vfx/vfx-vfxgraph-shader-graph.md",
-      "concept_id": "vfx-vfxgraph-shader-graph",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 4,
-      "title": "Shader Graph集成"
-    },
-    {
-      "id": "vfx-vfxgraph-timeline",
-      "file": "vfx/vfx-vfxgraph-timeline.md",
-      "concept_id": "vfx-vfxgraph-timeline",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 3,
-      "title": "Timeline集成"
-    },
-    {
-      "id": "vfx-vfxgraph-property",
-      "file": "vfx/vfx-vfxgraph-property.md",
-      "concept_id": "vfx-vfxgraph-property",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 2,
-      "title": "Exposed Property"
-    },
-    {
-      "id": "vfx-vfxgraph-perf",
-      "file": "vfx/vfx-vfxgraph-perf.md",
-      "concept_id": "vfx-vfxgraph-perf",
-      "subdomain_id": "vfx-graph",
-      "difficulty": 4,
-      "title": "VFX Graph性能"
-    },
-    {
-      "id": "vfx-particle-overview",
-      "file": "vfx/vfx-particle-overview.md",
-      "concept_id": "vfx-particle-overview",
-      "subdomain_id": "particle-physics",
-      "difficulty": 1,
-      "title": "粒子物理概述"
-    },
-    {
-      "id": "vfx-particle-emission",
-      "file": "vfx/vfx-particle-emission.md",
-      "concept_id": "vfx-particle-emission",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "发射模型"
-    },
-    {
-      "id": "vfx-particle-velocity",
-      "file": "vfx/vfx-particle-velocity.md",
-      "concept_id": "vfx-particle-velocity",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "速度与加速度"
-    },
-    {
-      "id": "vfx-particle-gravity",
-      "file": "vfx/vfx-particle-gravity.md",
-      "concept_id": "vfx-particle-gravity",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "重力模拟"
-    },
-    {
-      "id": "vfx-particle-turbulence",
-      "file": "vfx/vfx-particle-turbulence.md",
-      "concept_id": "vfx-particle-turbulence",
-      "subdomain_id": "particle-physics",
-      "difficulty": 3,
-      "title": "湍流与噪声"
-    },
-    {
-      "id": "vfx-particle-drag",
-      "file": "vfx/vfx-particle-drag.md",
-      "concept_id": "vfx-particle-drag",
-      "subdomain_id": "particle-physics",
-      "difficulty": 3,
-      "title": "阻力模型"
-    },
-    {
-      "id": "vfx-particle-orbit",
-      "file": "vfx/vfx-particle-orbit.md",
-      "concept_id": "vfx-particle-orbit",
-      "subdomain_id": "particle-physics",
-      "difficulty": 3,
-      "title": "轨道运动"
-    },
-    {
-      "id": "vfx-particle-attract",
-      "file": "vfx/vfx-particle-attract.md",
-      "concept_id": "vfx-particle-attract",
-      "subdomain_id": "particle-physics",
-      "difficulty": 3,
-      "title": "吸引与排斥"
-    },
-    {
-      "id": "vfx-particle-collision-phys",
-      "file": "vfx/vfx-particle-collision-phys.md",
-      "concept_id": "vfx-particle-collision-phys",
-      "subdomain_id": "particle-physics",
-      "difficulty": 3,
-      "title": "碰撞物理"
-    },
-    {
-      "id": "vfx-particle-size",
-      "file": "vfx/vfx-particle-size.md",
-      "concept_id": "vfx-particle-size",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "尺寸变化"
-    },
-    {
-      "id": "vfx-particle-color",
-      "file": "vfx/vfx-particle-color.md",
-      "concept_id": "vfx-particle-color",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "颜色演变"
-    },
-    {
-      "id": "vfx-particle-rotation",
-      "file": "vfx/vfx-particle-rotation.md",
-      "concept_id": "vfx-particle-rotation",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "旋转控制"
-    },
-    {
-      "id": "vfx-particle-sub-emitter",
-      "file": "vfx/vfx-particle-sub-emitter.md",
-      "concept_id": "vfx-particle-sub-emitter",
-      "subdomain_id": "particle-physics",
-      "difficulty": 3,
-      "title": "子发射器"
-    },
-    {
-      "id": "vfx-particle-spring",
-      "file": "vfx/vfx-particle-spring.md",
-      "concept_id": "vfx-particle-spring",
-      "subdomain_id": "particle-physics",
-      "difficulty": 4,
-      "title": "弹簧系统"
-    },
-    {
-      "id": "vfx-particle-flocking",
-      "file": "vfx/vfx-particle-flocking.md",
-      "concept_id": "vfx-particle-flocking",
-      "subdomain_id": "particle-physics",
-      "difficulty": 4,
-      "title": "群集行为"
-    },
-    {
-      "id": "vfx-particle-curve",
-      "file": "vfx/vfx-particle-curve.md",
-      "concept_id": "vfx-particle-curve",
-      "subdomain_id": "particle-physics",
-      "difficulty": 3,
-      "title": "曲线驱动"
-    },
-    {
-      "id": "vfx-particle-random",
-      "file": "vfx/vfx-particle-random.md",
-      "concept_id": "vfx-particle-random",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "随机性控制"
-    },
-    {
-      "id": "vfx-particle-wind",
-      "file": "vfx/vfx-particle-wind.md",
-      "concept_id": "vfx-particle-wind",
-      "subdomain_id": "particle-physics",
-      "difficulty": 3,
-      "title": "风场系统"
-    },
-    {
-      "id": "vfx-particle-volume",
-      "file": "vfx/vfx-particle-volume.md",
-      "concept_id": "vfx-particle-volume",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "体积发射"
-    },
-    {
-      "id": "vfx-particle-interpolation",
-      "file": "vfx/vfx-particle-interpolation.md",
-      "concept_id": "vfx-particle-interpolation",
-      "subdomain_id": "particle-physics",
-      "difficulty": 2,
-      "title": "插值与缓动"
-    },
-    {
-      "id": "vfx-fluid-overview",
-      "file": "vfx/vfx-fluid-overview.md",
-      "concept_id": "vfx-fluid-overview",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 1,
-      "title": "流体模拟概述"
-    },
-    {
-      "id": "vfx-fluid-euler",
-      "file": "vfx/vfx-fluid-euler.md",
-      "concept_id": "vfx-fluid-euler",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 3,
-      "title": "欧拉法网格流体"
-    },
-    {
-      "id": "vfx-fluid-lagrange",
-      "file": "vfx/vfx-fluid-lagrange.md",
-      "concept_id": "vfx-fluid-lagrange",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 3,
-      "title": "拉格朗日粒子法"
-    },
-    {
-      "id": "vfx-fluid-navier-stokes",
-      "file": "vfx/vfx-fluid-navier-stokes.md",
-      "concept_id": "vfx-fluid-navier-stokes",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 4,
-      "title": "Navier-Stokes简化"
-    },
-    {
-      "id": "vfx-fluid-sph",
-      "file": "vfx/vfx-fluid-sph.md",
-      "concept_id": "vfx-fluid-sph",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 4,
-      "title": "SPH方法"
-    },
-    {
-      "id": "vfx-fluid-flip",
-      "file": "vfx/vfx-fluid-flip.md",
-      "concept_id": "vfx-fluid-flip",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 5,
-      "title": "FLIP/APIC方法"
-    },
-    {
-      "id": "vfx-fluid-surface",
-      "file": "vfx/vfx-fluid-surface.md",
-      "concept_id": "vfx-fluid-surface",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 4,
-      "title": "流体表面重建"
-    },
-    {
-      "id": "vfx-fluid-foam",
-      "file": "vfx/vfx-fluid-foam.md",
-      "concept_id": "vfx-fluid-foam",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 4,
-      "title": "泡沫与飞溅"
-    },
-    {
-      "id": "vfx-fluid-viscosity",
-      "file": "vfx/vfx-fluid-viscosity.md",
-      "concept_id": "vfx-fluid-viscosity",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 4,
-      "title": "粘性流体"
-    },
-    {
-      "id": "vfx-fluid-fire",
-      "file": "vfx/vfx-fluid-fire.md",
-      "concept_id": "vfx-fluid-fire",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 3,
-      "title": "火焰模拟"
-    },
-    {
-      "id": "vfx-fluid-smoke",
-      "file": "vfx/vfx-fluid-smoke.md",
-      "concept_id": "vfx-fluid-smoke",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 3,
-      "title": "烟雾模拟"
-    },
-    {
-      "id": "vfx-fluid-realtime",
-      "file": "vfx/vfx-fluid-realtime.md",
-      "concept_id": "vfx-fluid-realtime",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 4,
-      "title": "实时流体策略"
-    },
-    {
-      "id": "vfx-fluid-texture",
-      "file": "vfx/vfx-fluid-texture.md",
-      "concept_id": "vfx-fluid-texture",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 2,
-      "title": "流体纹理"
-    },
-    {
-      "id": "vfx-fluid-interaction",
-      "file": "vfx/vfx-fluid-interaction.md",
-      "concept_id": "vfx-fluid-interaction",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 3,
-      "title": "流体交互"
-    },
-    {
-      "id": "vfx-fluid-waterfall",
-      "file": "vfx/vfx-fluid-waterfall.md",
-      "concept_id": "vfx-fluid-waterfall",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 3,
-      "title": "瀑布与水流"
-    },
-    {
-      "id": "vfx-fluid-ocean",
-      "file": "vfx/vfx-fluid-ocean.md",
-      "concept_id": "vfx-fluid-ocean",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 4,
-      "title": "海洋模拟"
-    },
-    {
-      "id": "vfx-fluid-rain",
-      "file": "vfx/vfx-fluid-rain.md",
-      "concept_id": "vfx-fluid-rain",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 3,
-      "title": "雨滴模拟"
-    },
-    {
-      "id": "vfx-fluid-blood",
-      "file": "vfx/vfx-fluid-blood.md",
-      "concept_id": "vfx-fluid-blood",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 3,
-      "title": "血液与液体"
-    },
-    {
-      "id": "vfx-fluid-gpu",
-      "file": "vfx/vfx-fluid-gpu.md",
-      "concept_id": "vfx-fluid-gpu",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 5,
-      "title": "GPU流体计算"
-    },
-    {
-      "id": "vfx-fluid-houdini",
-      "file": "vfx/vfx-fluid-houdini.md",
-      "concept_id": "vfx-fluid-houdini",
-      "subdomain_id": "fluid-sim",
-      "difficulty": 4,
-      "title": "Houdini流体导出"
-    },
-    {
-      "id": "vfx-destruct-overview",
-      "file": "vfx/vfx-destruct-overview.md",
-      "concept_id": "vfx-destruct-overview",
+      "id": "vfx-destruct-chaos",
+      "name": "Chaos物理",
+      "domain_id": "vfx",
       "subdomain_id": "destruction",
-      "difficulty": 1,
-      "title": "破碎系统概述"
+      "subdomain_name": "破碎与销毁",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-destruct-chaos.md",
+      "exists": true,
+      "char_count": 1521
     },
     {
       "id": "vfx-destruct-voronoi",
+      "name": "Voronoi碎裂",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
       "file": "vfx/vfx-destruct-voronoi.md",
-      "concept_id": "vfx-destruct-voronoi",
-      "subdomain_id": "destruction",
-      "difficulty": 3,
-      "title": "Voronoi碎裂"
-    },
-    {
-      "id": "vfx-destruct-prefracture",
-      "file": "vfx/vfx-destruct-prefracture.md",
-      "concept_id": "vfx-destruct-prefracture",
-      "subdomain_id": "destruction",
-      "difficulty": 2,
-      "title": "预碎裂工作流"
-    },
-    {
-      "id": "vfx-destruct-runtime",
-      "file": "vfx/vfx-destruct-runtime.md",
-      "concept_id": "vfx-destruct-runtime",
-      "subdomain_id": "destruction",
-      "difficulty": 4,
-      "title": "运行时碎裂"
-    },
-    {
-      "id": "vfx-destruct-chaos",
-      "file": "vfx/vfx-destruct-chaos.md",
-      "concept_id": "vfx-destruct-chaos",
-      "subdomain_id": "destruction",
-      "difficulty": 3,
-      "title": "Chaos物理"
-    },
-    {
-      "id": "vfx-destruct-hierarchy",
-      "file": "vfx/vfx-destruct-hierarchy.md",
-      "concept_id": "vfx-destruct-hierarchy",
-      "subdomain_id": "destruction",
-      "difficulty": 3,
-      "title": "层级破碎"
+      "exists": true,
+      "char_count": 1396
     },
     {
       "id": "vfx-destruct-damage",
-      "file": "vfx/vfx-destruct-damage.md",
-      "concept_id": "vfx-destruct-damage",
+      "name": "伤害模型",
+      "domain_id": "vfx",
       "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 2,
-      "title": "伤害模型"
-    },
-    {
-      "id": "vfx-destruct-debris",
-      "file": "vfx/vfx-destruct-debris.md",
-      "concept_id": "vfx-destruct-debris",
-      "subdomain_id": "destruction",
-      "difficulty": 3,
-      "title": "碎片与残骸"
-    },
-    {
-      "id": "vfx-destruct-constraint",
-      "file": "vfx/vfx-destruct-constraint.md",
-      "concept_id": "vfx-destruct-constraint",
-      "subdomain_id": "destruction",
-      "difficulty": 3,
-      "title": "约束系统"
-    },
-    {
-      "id": "vfx-destruct-cluster",
-      "file": "vfx/vfx-destruct-cluster.md",
-      "concept_id": "vfx-destruct-cluster",
-      "subdomain_id": "destruction",
-      "difficulty": 4,
-      "title": "簇组管理"
-    },
-    {
-      "id": "vfx-destruct-anchor",
-      "file": "vfx/vfx-destruct-anchor.md",
-      "concept_id": "vfx-destruct-anchor",
-      "subdomain_id": "destruction",
-      "difficulty": 3,
-      "title": "锚点与支撑"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-destruct-damage.md",
+      "exists": true,
+      "char_count": 1268
     },
     {
       "id": "vfx-destruct-deform",
+      "name": "变形破坏",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
       "file": "vfx/vfx-destruct-deform.md",
-      "concept_id": "vfx-destruct-deform",
-      "subdomain_id": "destruction",
-      "difficulty": 4,
-      "title": "变形破坏"
-    },
-    {
-      "id": "vfx-destruct-decal",
-      "file": "vfx/vfx-destruct-decal.md",
-      "concept_id": "vfx-destruct-decal",
-      "subdomain_id": "destruction",
-      "difficulty": 2,
-      "title": "破坏痕迹"
-    },
-    {
-      "id": "vfx-destruct-sound",
-      "file": "vfx/vfx-destruct-sound.md",
-      "concept_id": "vfx-destruct-sound",
-      "subdomain_id": "destruction",
-      "difficulty": 2,
-      "title": "破碎音效"
-    },
-    {
-      "id": "vfx-destruct-building",
-      "file": "vfx/vfx-destruct-building.md",
-      "concept_id": "vfx-destruct-building",
-      "subdomain_id": "destruction",
-      "difficulty": 4,
-      "title": "建筑破碎"
+      "exists": true,
+      "char_count": 2487
     },
     {
       "id": "vfx-destruct-terrain",
+      "name": "地形破坏",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
       "file": "vfx/vfx-destruct-terrain.md",
-      "concept_id": "vfx-destruct-terrain",
-      "subdomain_id": "destruction",
-      "difficulty": 4,
-      "title": "地形破坏"
+      "exists": true,
+      "char_count": 1327
     },
     {
-      "id": "vfx-destruct-cleanup",
-      "file": "vfx/vfx-destruct-cleanup.md",
-      "concept_id": "vfx-destruct-cleanup",
+      "id": "vfx-destruct-hierarchy",
+      "name": "层级破碎",
+      "domain_id": "vfx",
       "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "title": "碎片清理"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-destruct-hierarchy.md",
+      "exists": true,
+      "char_count": 1361
     },
     {
-      "id": "vfx-destruct-network",
-      "file": "vfx/vfx-destruct-network.md",
-      "concept_id": "vfx-destruct-network",
+      "id": "vfx-destruct-building",
+      "name": "建筑破碎",
+      "domain_id": "vfx",
       "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 4,
-      "title": "网络同步"
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-destruct-building.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "vfx-destruct-decal",
+      "name": "破坏痕迹",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-destruct-decal.md",
+      "exists": true,
+      "char_count": 1416
     },
     {
       "id": "vfx-destruct-lod",
-      "file": "vfx/vfx-destruct-lod.md",
-      "concept_id": "vfx-destruct-lod",
+      "name": "破碎LOD",
+      "domain_id": "vfx",
       "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "title": "破碎LOD"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-destruct-lod.md",
+      "exists": true,
+      "char_count": 1370
     },
     {
       "id": "vfx-destruct-tool",
-      "file": "vfx/vfx-destruct-tool.md",
-      "concept_id": "vfx-destruct-tool",
+      "name": "破碎工具链",
+      "domain_id": "vfx",
       "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "title": "破碎工具链"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-destruct-tool.md",
+      "exists": true,
+      "char_count": 1431
     },
     {
-      "id": "vfx-pp-overview",
-      "file": "vfx/vfx-pp-overview.md",
-      "concept_id": "vfx-pp-overview",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-overview",
+      "name": "破碎系统概述",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 1,
-      "title": "后处理概述"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-destruct-overview.md",
+      "exists": true,
+      "char_count": 1471
     },
     {
-      "id": "vfx-pp-bloom",
-      "file": "vfx/vfx-pp-bloom.md",
-      "concept_id": "vfx-pp-bloom",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-sound",
+      "name": "破碎音效",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 2,
-      "title": "Bloom泛光"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-destruct-sound.md",
+      "exists": true,
+      "char_count": 1230
     },
     {
-      "id": "vfx-pp-dof",
-      "file": "vfx/vfx-pp-dof.md",
-      "concept_id": "vfx-pp-dof",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-debris",
+      "name": "碎片与残骸",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "title": "景深效果"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-destruct-debris.md",
+      "exists": true,
+      "char_count": 1489
     },
     {
-      "id": "vfx-pp-motion-blur",
-      "file": "vfx/vfx-pp-motion-blur.md",
-      "concept_id": "vfx-pp-motion-blur",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-cleanup",
+      "name": "碎片清理",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "title": "运动模糊"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-destruct-cleanup.md",
+      "exists": true,
+      "char_count": 1464
     },
     {
-      "id": "vfx-pp-tonemap",
-      "file": "vfx/vfx-pp-tonemap.md",
-      "concept_id": "vfx-pp-tonemap",
-      "subdomain_id": "post-process",
-      "difficulty": 2,
-      "title": "色调映射"
-    },
-    {
-      "id": "vfx-pp-color-grading",
-      "file": "vfx/vfx-pp-color-grading.md",
-      "concept_id": "vfx-pp-color-grading",
-      "subdomain_id": "post-process",
-      "difficulty": 2,
-      "title": "颜色分级"
-    },
-    {
-      "id": "vfx-pp-vignette",
-      "file": "vfx/vfx-pp-vignette.md",
-      "concept_id": "vfx-pp-vignette",
-      "subdomain_id": "post-process",
-      "difficulty": 1,
-      "title": "暗角效果"
-    },
-    {
-      "id": "vfx-pp-chromatic",
-      "file": "vfx/vfx-pp-chromatic.md",
-      "concept_id": "vfx-pp-chromatic",
-      "subdomain_id": "post-process",
-      "difficulty": 2,
-      "title": "色散"
-    },
-    {
-      "id": "vfx-pp-film-grain",
-      "file": "vfx/vfx-pp-film-grain.md",
-      "concept_id": "vfx-pp-film-grain",
-      "subdomain_id": "post-process",
-      "difficulty": 2,
-      "title": "胶片颗粒"
-    },
-    {
-      "id": "vfx-pp-ao",
-      "file": "vfx/vfx-pp-ao.md",
-      "concept_id": "vfx-pp-ao",
-      "subdomain_id": "post-process",
-      "difficulty": 3,
-      "title": "环境光遮蔽"
-    },
-    {
-      "id": "vfx-pp-ssr",
-      "file": "vfx/vfx-pp-ssr.md",
-      "concept_id": "vfx-pp-ssr",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-cluster",
+      "name": "簇组管理",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 4,
-      "title": "屏幕空间反射"
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-destruct-cluster.md",
+      "exists": true,
+      "char_count": 1340
     },
     {
-      "id": "vfx-pp-fog",
-      "file": "vfx/vfx-pp-fog.md",
-      "concept_id": "vfx-pp-fog",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-constraint",
+      "name": "约束系统",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "title": "体积雾"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-destruct-constraint.md",
+      "exists": true,
+      "char_count": 1477
     },
     {
-      "id": "vfx-pp-outline",
-      "file": "vfx/vfx-pp-outline.md",
-      "concept_id": "vfx-pp-outline",
-      "subdomain_id": "post-process",
-      "difficulty": 2,
-      "title": "描边效果"
-    },
-    {
-      "id": "vfx-pp-distortion",
-      "file": "vfx/vfx-pp-distortion.md",
-      "concept_id": "vfx-pp-distortion",
-      "subdomain_id": "post-process",
-      "difficulty": 3,
-      "title": "画面扭曲"
-    },
-    {
-      "id": "vfx-pp-lens-flare",
-      "file": "vfx/vfx-pp-lens-flare.md",
-      "concept_id": "vfx-pp-lens-flare",
-      "subdomain_id": "post-process",
-      "difficulty": 3,
-      "title": "镜头光晕"
-    },
-    {
-      "id": "vfx-pp-custom",
-      "file": "vfx/vfx-pp-custom.md",
-      "concept_id": "vfx-pp-custom",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-network",
+      "name": "网络同步",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 4,
-      "title": "自定义后处理"
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-destruct-network.md",
+      "exists": true,
+      "char_count": 1260
     },
     {
-      "id": "vfx-pp-stencil",
-      "file": "vfx/vfx-pp-stencil.md",
-      "concept_id": "vfx-pp-stencil",
-      "subdomain_id": "post-process",
-      "difficulty": 3,
-      "title": "模板缓冲应用"
-    },
-    {
-      "id": "vfx-pp-temporal",
-      "file": "vfx/vfx-pp-temporal.md",
-      "concept_id": "vfx-pp-temporal",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-runtime",
+      "name": "运行时碎裂",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 4,
-      "title": "TAA与时域滤波"
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-destruct-runtime.md",
+      "exists": true,
+      "char_count": 1368
     },
     {
-      "id": "vfx-pp-volume",
-      "file": "vfx/vfx-pp-volume.md",
-      "concept_id": "vfx-pp-volume",
-      "subdomain_id": "post-process",
-      "difficulty": 2,
-      "title": "后处理体积"
-    },
-    {
-      "id": "vfx-pp-pipeline",
-      "file": "vfx/vfx-pp-pipeline.md",
-      "concept_id": "vfx-pp-pipeline",
-      "subdomain_id": "post-process",
+      "id": "vfx-destruct-anchor",
+      "name": "锚点与支撑",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "title": "后处理管线"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-destruct-anchor.md",
+      "exists": true,
+      "char_count": 1285
     },
     {
-      "id": "vfx-fb-overview",
-      "file": "vfx/vfx-fb-overview.md",
-      "concept_id": "vfx-fb-overview",
-      "subdomain_id": "flipbook",
-      "difficulty": 1,
-      "title": "序列帧概述"
-    },
-    {
-      "id": "vfx-fb-atlas",
-      "file": "vfx/vfx-fb-atlas.md",
-      "concept_id": "vfx-fb-atlas",
-      "subdomain_id": "flipbook",
+      "id": "vfx-destruct-prefracture",
+      "name": "预碎裂工作流",
+      "domain_id": "vfx",
+      "subdomain_id": "destruction",
+      "subdomain_name": "破碎与销毁",
       "difficulty": 2,
-      "title": "图集制作"
-    },
-    {
-      "id": "vfx-fb-playback",
-      "file": "vfx/vfx-fb-playback.md",
-      "concept_id": "vfx-fb-playback",
-      "subdomain_id": "flipbook",
-      "difficulty": 2,
-      "title": "播放控制"
-    },
-    {
-      "id": "vfx-fb-blending",
-      "file": "vfx/vfx-fb-blending.md",
-      "concept_id": "vfx-fb-blending",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "帧间混合"
-    },
-    {
-      "id": "vfx-fb-motion-vector",
-      "file": "vfx/vfx-fb-motion-vector.md",
-      "concept_id": "vfx-fb-motion-vector",
-      "subdomain_id": "flipbook",
-      "difficulty": 4,
-      "title": "运动矢量"
-    },
-    {
-      "id": "vfx-fb-capture",
-      "file": "vfx/vfx-fb-capture.md",
-      "concept_id": "vfx-fb-capture",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "序列帧捕获"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-destruct-prefracture.md",
+      "exists": true,
+      "char_count": 1401
     },
     {
       "id": "vfx-fb-houdini",
+      "name": "Houdini烘焙",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
       "file": "vfx/vfx-fb-houdini.md",
-      "concept_id": "vfx-fb-houdini",
-      "subdomain_id": "flipbook",
-      "difficulty": 4,
-      "title": "Houdini烘焙"
-    },
-    {
-      "id": "vfx-fb-explosion",
-      "file": "vfx/vfx-fb-explosion.md",
-      "concept_id": "vfx-fb-explosion",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "爆炸序列帧"
-    },
-    {
-      "id": "vfx-fb-fire",
-      "file": "vfx/vfx-fb-fire.md",
-      "concept_id": "vfx-fb-fire",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "火焰序列帧"
-    },
-    {
-      "id": "vfx-fb-water",
-      "file": "vfx/vfx-fb-water.md",
-      "concept_id": "vfx-fb-water",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "水花序列帧"
-    },
-    {
-      "id": "vfx-fb-channel-pack",
-      "file": "vfx/vfx-fb-channel-pack.md",
-      "concept_id": "vfx-fb-channel-pack",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "通道打包"
-    },
-    {
-      "id": "vfx-fb-normal",
-      "file": "vfx/vfx-fb-normal.md",
-      "concept_id": "vfx-fb-normal",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "法线序列帧"
-    },
-    {
-      "id": "vfx-fb-emissive",
-      "file": "vfx/vfx-fb-emissive.md",
-      "concept_id": "vfx-fb-emissive",
-      "subdomain_id": "flipbook",
-      "difficulty": 2,
-      "title": "自发光序列帧"
-    },
-    {
-      "id": "vfx-fb-distortion-tex",
-      "file": "vfx/vfx-fb-distortion-tex.md",
-      "concept_id": "vfx-fb-distortion-tex",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "扭曲序列帧"
-    },
-    {
-      "id": "vfx-fb-shader",
-      "file": "vfx/vfx-fb-shader.md",
-      "concept_id": "vfx-fb-shader",
-      "subdomain_id": "flipbook",
-      "difficulty": 3,
-      "title": "序列帧Shader"
-    },
-    {
-      "id": "vfx-fb-optimization",
-      "file": "vfx/vfx-fb-optimization.md",
-      "concept_id": "vfx-fb-optimization",
-      "subdomain_id": "flipbook",
-      "difficulty": 2,
-      "title": "序列帧优化"
-    },
-    {
-      "id": "vfx-fb-vat",
-      "file": "vfx/vfx-fb-vat.md",
-      "concept_id": "vfx-fb-vat",
-      "subdomain_id": "flipbook",
-      "difficulty": 4,
-      "title": "VAT顶点动画"
-    },
-    {
-      "id": "vfx-fb-realtime-capture",
-      "file": "vfx/vfx-fb-realtime-capture.md",
-      "concept_id": "vfx-fb-realtime-capture",
-      "subdomain_id": "flipbook",
-      "difficulty": 4,
-      "title": "实时捕获"
+      "exists": true,
+      "char_count": 1463
     },
     {
       "id": "vfx-fb-sprite-sheet",
-      "file": "vfx/vfx-fb-sprite-sheet.md",
-      "concept_id": "vfx-fb-sprite-sheet",
+      "name": "Sprite Sheet工具",
+      "domain_id": "vfx",
       "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
       "difficulty": 2,
-      "title": "Sprite Sheet工具"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fb-sprite-sheet.md",
+      "exists": true,
+      "char_count": 1537
+    },
+    {
+      "id": "vfx-fb-vat",
+      "name": "VAT顶点动画",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fb-vat.md",
+      "exists": true,
+      "char_count": 1410
+    },
+    {
+      "id": "vfx-fb-atlas",
+      "name": "图集制作",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fb-atlas.md",
+      "exists": true,
+      "char_count": 1438
+    },
+    {
+      "id": "vfx-fb-realtime-capture",
+      "name": "实时捕获",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fb-realtime-capture.md",
+      "exists": true,
+      "char_count": 1377
+    },
+    {
+      "id": "vfx-fb-blending",
+      "name": "帧间混合",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-blending.md",
+      "exists": true,
+      "char_count": 2431
+    },
+    {
+      "id": "vfx-fb-shader",
+      "name": "序列帧Shader",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-shader.md",
+      "exists": true,
+      "char_count": 1697
     },
     {
       "id": "vfx-fb-comparison",
-      "file": "vfx/vfx-fb-comparison.md",
-      "concept_id": "vfx-fb-comparison",
+      "name": "序列帧vs粒子",
+      "domain_id": "vfx",
       "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
       "difficulty": 2,
-      "title": "序列帧vs粒子"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fb-comparison.md",
+      "exists": true,
+      "char_count": 1574
     },
     {
-      "id": "vfx-shader-overview",
-      "file": "vfx/vfx-shader-overview.md",
-      "concept_id": "vfx-shader-overview",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-fb-optimization",
+      "name": "序列帧优化",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fb-optimization.md",
+      "exists": true,
+      "char_count": 1618
+    },
+    {
+      "id": "vfx-fb-capture",
+      "name": "序列帧捕获",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-capture.md",
+      "exists": true,
+      "char_count": 1365
+    },
+    {
+      "id": "vfx-fb-overview",
+      "name": "序列帧概述",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
       "difficulty": 1,
-      "title": "Shader特效概述"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fb-overview.md",
+      "exists": true,
+      "char_count": 2392
     },
     {
-      "id": "vfx-shader-dissolve",
-      "file": "vfx/vfx-shader-dissolve.md",
-      "concept_id": "vfx-shader-dissolve",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-fb-distortion-tex",
+      "name": "扭曲序列帧",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-distortion-tex.md",
+      "exists": true,
+      "char_count": 1465
+    },
+    {
+      "id": "vfx-fb-playback",
+      "name": "播放控制",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
       "difficulty": 2,
-      "title": "溶解效果"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fb-playback.md",
+      "exists": true,
+      "char_count": 2251
     },
     {
-      "id": "vfx-shader-uv-scroll",
-      "file": "vfx/vfx-shader-uv-scroll.md",
-      "concept_id": "vfx-shader-uv-scroll",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-fb-water",
+      "name": "水花序列帧",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-water.md",
+      "exists": true,
+      "char_count": 1418
+    },
+    {
+      "id": "vfx-fb-normal",
+      "name": "法线序列帧",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-normal.md",
+      "exists": true,
+      "char_count": 1231
+    },
+    {
+      "id": "vfx-fb-fire",
+      "name": "火焰序列帧",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-fire.md",
+      "exists": true,
+      "char_count": 1334
+    },
+    {
+      "id": "vfx-fb-explosion",
+      "name": "爆炸序列帧",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-explosion.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "vfx-fb-emissive",
+      "name": "自发光序列帧",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
       "difficulty": 2,
-      "title": "UV滚动"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fb-emissive.md",
+      "exists": true,
+      "char_count": 1348
     },
     {
-      "id": "vfx-shader-distortion-sh",
-      "file": "vfx/vfx-shader-distortion-sh.md",
-      "concept_id": "vfx-shader-distortion-sh",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-fb-motion-vector",
+      "name": "运动矢量",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fb-motion-vector.md",
+      "exists": true,
+      "char_count": 2594
+    },
+    {
+      "id": "vfx-fb-channel-pack",
+      "name": "通道打包",
+      "domain_id": "vfx",
+      "subdomain_id": "flipbook",
+      "subdomain_name": "序列帧特效",
       "difficulty": 3,
-      "title": "折射扭曲"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fb-channel-pack.md",
+      "exists": true,
+      "char_count": 1295
     },
     {
-      "id": "vfx-shader-fresnel",
-      "file": "vfx/vfx-shader-fresnel.md",
-      "concept_id": "vfx-shader-fresnel",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-fluid-flip",
+      "name": "FLIP/APIC方法",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-flip.md",
+      "exists": true,
+      "char_count": 1390
+    },
+    {
+      "id": "vfx-fluid-gpu",
+      "name": "GPU流体计算",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-gpu.md",
+      "exists": true,
+      "char_count": 1378
+    },
+    {
+      "id": "vfx-fluid-houdini",
+      "name": "Houdini流体导出",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-houdini.md",
+      "exists": true,
+      "char_count": 1485
+    },
+    {
+      "id": "vfx-fluid-navier-stokes",
+      "name": "Navier-Stokes简化",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-navier-stokes.md",
+      "exists": true,
+      "char_count": 1741
+    },
+    {
+      "id": "vfx-fluid-sph",
+      "name": "SPH方法",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-sph.md",
+      "exists": true,
+      "char_count": 1311
+    },
+    {
+      "id": "vfx-fluid-realtime",
+      "name": "实时流体策略",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-realtime.md",
+      "exists": true,
+      "char_count": 1502
+    },
+    {
+      "id": "vfx-fluid-lagrange",
+      "name": "拉格朗日粒子法",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fluid-lagrange.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "vfx-fluid-euler",
+      "name": "欧拉法网格流体",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fluid-euler.md",
+      "exists": true,
+      "char_count": 1343
+    },
+    {
+      "id": "vfx-fluid-foam",
+      "name": "泡沫与飞溅",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-foam.md",
+      "exists": true,
+      "char_count": 2345
+    },
+    {
+      "id": "vfx-fluid-interaction",
+      "name": "流体交互",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fluid-interaction.md",
+      "exists": true,
+      "char_count": 1514
+    },
+    {
+      "id": "vfx-fluid-overview",
+      "name": "流体模拟概述",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fluid-overview.md",
+      "exists": true,
+      "char_count": 1465
+    },
+    {
+      "id": "vfx-fluid-texture",
+      "name": "流体纹理",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
       "difficulty": 2,
-      "title": "菲涅尔效果"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-fluid-texture.md",
+      "exists": true,
+      "char_count": 1414
     },
     {
-      "id": "vfx-shader-vertex-anim",
-      "file": "vfx/vfx-shader-vertex-anim.md",
-      "concept_id": "vfx-shader-vertex-anim",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-fluid-surface",
+      "name": "流体表面重建",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-surface.md",
+      "exists": true,
+      "char_count": 1414
+    },
+    {
+      "id": "vfx-fluid-ocean",
+      "name": "海洋模拟",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-ocean.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "vfx-fluid-waterfall",
+      "name": "瀑布与水流",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
       "difficulty": 3,
-      "title": "顶点动画"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fluid-waterfall.md",
+      "exists": true,
+      "char_count": 1369
     },
     {
-      "id": "vfx-shader-panning",
-      "file": "vfx/vfx-shader-panning.md",
-      "concept_id": "vfx-shader-panning",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-fluid-fire",
+      "name": "火焰模拟",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fluid-fire.md",
+      "exists": true,
+      "char_count": 1453
+    },
+    {
+      "id": "vfx-fluid-smoke",
+      "name": "烟雾模拟",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fluid-smoke.md",
+      "exists": true,
+      "char_count": 2723
+    },
+    {
+      "id": "vfx-fluid-viscosity",
+      "name": "粘性流体",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-fluid-viscosity.md",
+      "exists": true,
+      "char_count": 1339
+    },
+    {
+      "id": "vfx-fluid-blood",
+      "name": "血液与液体",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fluid-blood.md",
+      "exists": true,
+      "char_count": 1458
+    },
+    {
+      "id": "vfx-fluid-rain",
+      "name": "雨滴模拟",
+      "domain_id": "vfx",
+      "subdomain_id": "fluid-sim",
+      "subdomain_name": "流体模拟",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-fluid-rain.md",
+      "exists": true,
+      "char_count": 1401
+    },
+    {
+      "id": "vfx-niagara-emitter",
+      "name": "Emitter与System",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-niagara-emitter.md",
+      "exists": true,
+      "char_count": 1907
+    },
+    {
+      "id": "vfx-niagara-gpu",
+      "name": "GPU模拟",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-niagara-gpu.md",
+      "exists": true,
+      "char_count": 1574
+    },
+    {
+      "id": "vfx-niagara-mesh",
+      "name": "Mesh粒子",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-mesh.md",
+      "exists": true,
+      "char_count": 1568
+    },
+    {
+      "id": "vfx-niagara-module",
+      "name": "Module脚本",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
       "difficulty": 2,
-      "title": "纹理流动"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-niagara-module.md",
+      "exists": true,
+      "char_count": 1485
     },
     {
-      "id": "vfx-shader-soft-particle",
-      "file": "vfx/vfx-shader-soft-particle.md",
-      "concept_id": "vfx-shader-soft-particle",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-niagara-overview",
+      "name": "Niagara系统概述",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-niagara-overview.md",
+      "exists": true,
+      "char_count": 1702
+    },
+    {
+      "id": "vfx-niagara-ribbon",
+      "name": "Ribbon特效",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
       "difficulty": 3,
-      "title": "软粒子"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-ribbon.md",
+      "exists": true,
+      "char_count": 1643
     },
     {
-      "id": "vfx-shader-erosion",
-      "file": "vfx/vfx-shader-erosion.md",
-      "concept_id": "vfx-shader-erosion",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-niagara-sim-stage",
+      "name": "Simulation Stage",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-niagara-sim-stage.md",
+      "exists": true,
+      "char_count": 1545
+    },
+    {
+      "id": "vfx-niagara-event",
+      "name": "事件系统",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
       "difficulty": 3,
-      "title": "边缘侵蚀"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-event.md",
+      "exists": true,
+      "char_count": 1465
     },
     {
-      "id": "vfx-shader-mask",
-      "file": "vfx/vfx-shader-mask.md",
-      "concept_id": "vfx-shader-mask",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-niagara-force",
+      "name": "力场与运动",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-force.md",
+      "exists": true,
+      "char_count": 1580
+    },
+    {
+      "id": "vfx-niagara-parameter",
+      "name": "参数与属性",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
       "difficulty": 2,
-      "title": "遮罩技术"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-niagara-parameter.md",
+      "exists": true,
+      "char_count": 1609
     },
     {
-      "id": "vfx-shader-depth-fade",
-      "file": "vfx/vfx-shader-depth-fade.md",
-      "concept_id": "vfx-shader-depth-fade",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-niagara-data-interface",
+      "name": "数据接口",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
       "difficulty": 3,
-      "title": "深度渐变"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-data-interface.md",
+      "exists": true,
+      "char_count": 1730
     },
     {
-      "id": "vfx-shader-polar",
-      "file": "vfx/vfx-shader-polar.md",
-      "concept_id": "vfx-shader-polar",
-      "subdomain_id": "shader-vfx",
-      "difficulty": 3,
-      "title": "极坐标变换"
-    },
-    {
-      "id": "vfx-shader-noise-gen",
-      "file": "vfx/vfx-shader-noise-gen.md",
-      "concept_id": "vfx-shader-noise-gen",
-      "subdomain_id": "shader-vfx",
-      "difficulty": 3,
-      "title": "噪声生成"
-    },
-    {
-      "id": "vfx-shader-rim",
-      "file": "vfx/vfx-shader-rim.md",
-      "concept_id": "vfx-shader-rim",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-niagara-renderer",
+      "name": "渲染器类型",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
       "difficulty": 2,
-      "title": "边缘光"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-niagara-renderer.md",
+      "exists": true,
+      "char_count": 1567
     },
     {
-      "id": "vfx-shader-hologram",
-      "file": "vfx/vfx-shader-hologram.md",
-      "concept_id": "vfx-shader-hologram",
-      "subdomain_id": "shader-vfx",
-      "difficulty": 3,
-      "title": "全息效果"
-    },
-    {
-      "id": "vfx-shader-shield",
-      "file": "vfx/vfx-shader-shield.md",
-      "concept_id": "vfx-shader-shield",
-      "subdomain_id": "shader-vfx",
-      "difficulty": 3,
-      "title": "护盾Shader"
-    },
-    {
-      "id": "vfx-shader-trail",
-      "file": "vfx/vfx-shader-trail.md",
-      "concept_id": "vfx-shader-trail",
-      "subdomain_id": "shader-vfx",
-      "difficulty": 3,
-      "title": "拖尾Shader"
-    },
-    {
-      "id": "vfx-shader-custom-data",
-      "file": "vfx/vfx-shader-custom-data.md",
-      "concept_id": "vfx-shader-custom-data",
-      "subdomain_id": "shader-vfx",
-      "difficulty": 3,
-      "title": "自定义数据"
-    },
-    {
-      "id": "vfx-shader-blend-mode",
-      "file": "vfx/vfx-shader-blend-mode.md",
-      "concept_id": "vfx-shader-blend-mode",
-      "subdomain_id": "shader-vfx",
+      "id": "vfx-niagara-spawn",
+      "name": "生成模式",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
       "difficulty": 2,
-      "title": "混合模式"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-niagara-spawn.md",
+      "exists": true,
+      "char_count": 1604
+    },
+    {
+      "id": "vfx-niagara-camera",
+      "name": "相机交互",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-camera.md",
+      "exists": true,
+      "char_count": 1583
+    },
+    {
+      "id": "vfx-niagara-collision",
+      "name": "碰撞检测",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-collision.md",
+      "exists": true,
+      "char_count": 1541
+    },
+    {
+      "id": "vfx-niagara-lifecycle",
+      "name": "粒子生命周期",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-niagara-lifecycle.md",
+      "exists": true,
+      "char_count": 1334
+    },
+    {
+      "id": "vfx-niagara-blueprint",
+      "name": "蓝图集成",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-blueprint.md",
+      "exists": true,
+      "char_count": 1603
+    },
+    {
+      "id": "vfx-niagara-debug",
+      "name": "调试工具",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-niagara-debug.md",
+      "exists": true,
+      "char_count": 1509
+    },
+    {
+      "id": "vfx-niagara-neighbor-grid",
+      "name": "邻域网格",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-niagara-neighbor-grid.md",
+      "exists": true,
+      "char_count": 1543
+    },
+    {
+      "id": "vfx-niagara-audio",
+      "name": "音频可视化",
+      "domain_id": "vfx",
+      "subdomain_id": "niagara",
+      "subdomain_name": "Niagara系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-niagara-audio.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "vfx-particle-volume",
+      "name": "体积发射",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-volume.md",
+      "exists": true,
+      "char_count": 1363
+    },
+    {
+      "id": "vfx-particle-emission",
+      "name": "发射模型",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-emission.md",
+      "exists": true,
+      "char_count": 1414
+    },
+    {
+      "id": "vfx-particle-attract",
+      "name": "吸引与排斥",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-particle-attract.md",
+      "exists": true,
+      "char_count": 2556
+    },
+    {
+      "id": "vfx-particle-sub-emitter",
+      "name": "子发射器",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-particle-sub-emitter.md",
+      "exists": true,
+      "char_count": 1320
+    },
+    {
+      "id": "vfx-particle-size",
+      "name": "尺寸变化",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-size.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "vfx-particle-spring",
+      "name": "弹簧系统",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-particle-spring.md",
+      "exists": true,
+      "char_count": 1365
+    },
+    {
+      "id": "vfx-particle-interpolation",
+      "name": "插值与缓动",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-interpolation.md",
+      "exists": true,
+      "char_count": 1414
+    },
+    {
+      "id": "vfx-particle-rotation",
+      "name": "旋转控制",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-rotation.md",
+      "exists": true,
+      "char_count": 1468
+    },
+    {
+      "id": "vfx-particle-curve",
+      "name": "曲线驱动",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-particle-curve.md",
+      "exists": true,
+      "char_count": 1305
+    },
+    {
+      "id": "vfx-particle-turbulence",
+      "name": "湍流与噪声",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-particle-turbulence.md",
+      "exists": true,
+      "char_count": 1529
+    },
+    {
+      "id": "vfx-particle-collision-phys",
+      "name": "碰撞物理",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-particle-collision-phys.md",
+      "exists": true,
+      "char_count": 1553
+    },
+    {
+      "id": "vfx-particle-overview",
+      "name": "粒子物理概述",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-overview.md",
+      "exists": true,
+      "char_count": 1478
+    },
+    {
+      "id": "vfx-particle-flocking",
+      "name": "群集行为",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-particle-flocking.md",
+      "exists": true,
+      "char_count": 1397
+    },
+    {
+      "id": "vfx-particle-orbit",
+      "name": "轨道运动",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-particle-orbit.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "vfx-particle-velocity",
+      "name": "速度与加速度",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-velocity.md",
+      "exists": true,
+      "char_count": 1503
+    },
+    {
+      "id": "vfx-particle-gravity",
+      "name": "重力模拟",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-gravity.md",
+      "exists": true,
+      "char_count": 2293
+    },
+    {
+      "id": "vfx-particle-drag",
+      "name": "阻力模型",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-particle-drag.md",
+      "exists": true,
+      "char_count": 1367
+    },
+    {
+      "id": "vfx-particle-random",
+      "name": "随机性控制",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-random.md",
+      "exists": true,
+      "char_count": 1496
+    },
+    {
+      "id": "vfx-particle-color",
+      "name": "颜色演变",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-particle-color.md",
+      "exists": true,
+      "char_count": 1255
+    },
+    {
+      "id": "vfx-particle-wind",
+      "name": "风场系统",
+      "domain_id": "vfx",
+      "subdomain_id": "particle-physics",
+      "subdomain_name": "粒子物理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-particle-wind.md",
+      "exists": true,
+      "char_count": 1327
+    },
+    {
+      "id": "vfx-pp-bloom",
+      "name": "Bloom泛光",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-bloom.md",
+      "exists": true,
+      "char_count": 1567
+    },
+    {
+      "id": "vfx-pp-temporal",
+      "name": "TAA与时域滤波",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-pp-temporal.md",
+      "exists": true,
+      "char_count": 1544
+    },
+    {
+      "id": "vfx-pp-fog",
+      "name": "体积雾",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-pp-fog.md",
+      "exists": true,
+      "char_count": 1377
+    },
+    {
+      "id": "vfx-pp-volume",
+      "name": "后处理体积",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-volume.md",
+      "exists": true,
+      "char_count": 1411
+    },
+    {
+      "id": "vfx-pp-overview",
+      "name": "后处理概述",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-overview.md",
+      "exists": true,
+      "char_count": 1433
+    },
+    {
+      "id": "vfx-pp-pipeline",
+      "name": "后处理管线",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-pp-pipeline.md",
+      "exists": true,
+      "char_count": 1474
+    },
+    {
+      "id": "vfx-pp-ssr",
+      "name": "屏幕空间反射",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-pp-ssr.md",
+      "exists": true,
+      "char_count": 1502
+    },
+    {
+      "id": "vfx-pp-outline",
+      "name": "描边效果",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-outline.md",
+      "exists": true,
+      "char_count": 1296
+    },
+    {
+      "id": "vfx-pp-dof",
+      "name": "景深效果",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-pp-dof.md",
+      "exists": true,
+      "char_count": 1541
+    },
+    {
+      "id": "vfx-pp-vignette",
+      "name": "暗角效果",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-vignette.md",
+      "exists": true,
+      "char_count": 2402
+    },
+    {
+      "id": "vfx-pp-stencil",
+      "name": "模板缓冲应用",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-pp-stencil.md",
+      "exists": true,
+      "char_count": 1469
+    },
+    {
+      "id": "vfx-pp-ao",
+      "name": "环境光遮蔽",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-pp-ao.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "vfx-pp-distortion",
+      "name": "画面扭曲",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-pp-distortion.md",
+      "exists": true,
+      "char_count": 1442
+    },
+    {
+      "id": "vfx-pp-film-grain",
+      "name": "胶片颗粒",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-film-grain.md",
+      "exists": true,
+      "char_count": 2495
+    },
+    {
+      "id": "vfx-pp-custom",
+      "name": "自定义后处理",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-pp-custom.md",
+      "exists": true,
+      "char_count": 1461
+    },
+    {
+      "id": "vfx-pp-chromatic",
+      "name": "色散",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-chromatic.md",
+      "exists": true,
+      "char_count": 1174
+    },
+    {
+      "id": "vfx-pp-tonemap",
+      "name": "色调映射",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-tonemap.md",
+      "exists": true,
+      "char_count": 1420
+    },
+    {
+      "id": "vfx-pp-motion-blur",
+      "name": "运动模糊",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-pp-motion-blur.md",
+      "exists": true,
+      "char_count": 1430
+    },
+    {
+      "id": "vfx-pp-lens-flare",
+      "name": "镜头光晕",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-pp-lens-flare.md",
+      "exists": true,
+      "char_count": 2577
+    },
+    {
+      "id": "vfx-pp-color-grading",
+      "name": "颜色分级",
+      "domain_id": "vfx",
+      "subdomain_id": "post-process",
+      "subdomain_name": "后处理特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-pp-color-grading.md",
+      "exists": true,
+      "char_count": 1497
     },
     {
       "id": "vfx-shader-pbr-vfx",
-      "file": "vfx/vfx-shader-pbr-vfx.md",
-      "concept_id": "vfx-shader-pbr-vfx",
+      "name": "PBR特效材质",
+      "domain_id": "vfx",
       "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
       "difficulty": 4,
-      "title": "PBR特效材质"
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-shader-pbr-vfx.md",
+      "exists": true,
+      "char_count": 1467
     },
     {
-      "id": "vfx-opt-overview",
-      "file": "vfx/vfx-opt-overview.md",
-      "concept_id": "vfx-opt-overview",
-      "subdomain_id": "vfx-optimization",
+      "id": "vfx-shader-overview",
+      "name": "Shader特效概述",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
       "difficulty": 1,
-      "title": "特效优化概述"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-shader-overview.md",
+      "exists": true,
+      "char_count": 1596
     },
     {
-      "id": "vfx-opt-overdraw",
-      "file": "vfx/vfx-opt-overdraw.md",
-      "concept_id": "vfx-opt-overdraw",
-      "subdomain_id": "vfx-optimization",
+      "id": "vfx-shader-uv-scroll",
+      "name": "UV滚动",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
       "difficulty": 2,
-      "title": "Overdraw控制"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-shader-uv-scroll.md",
+      "exists": true,
+      "char_count": 1428
     },
     {
-      "id": "vfx-opt-particle-count",
-      "file": "vfx/vfx-opt-particle-count.md",
-      "concept_id": "vfx-opt-particle-count",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 2,
-      "title": "粒子数量控制"
-    },
-    {
-      "id": "vfx-opt-lod-vfx",
-      "file": "vfx/vfx-opt-lod-vfx.md",
-      "concept_id": "vfx-opt-lod-vfx",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 2,
-      "title": "特效LOD"
-    },
-    {
-      "id": "vfx-opt-texture-budget",
-      "file": "vfx/vfx-opt-texture-budget.md",
-      "concept_id": "vfx-opt-texture-budget",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 2,
-      "title": "纹理预算"
-    },
-    {
-      "id": "vfx-opt-draw-call",
-      "file": "vfx/vfx-opt-draw-call.md",
-      "concept_id": "vfx-opt-draw-call",
-      "subdomain_id": "vfx-optimization",
+      "id": "vfx-shader-hologram",
+      "name": "全息效果",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
       "difficulty": 3,
-      "title": "DrawCall优化"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-hologram.md",
+      "exists": true,
+      "char_count": 1315
     },
     {
-      "id": "vfx-opt-gpu-profiling",
-      "file": "vfx/vfx-opt-gpu-profiling.md",
-      "concept_id": "vfx-opt-gpu-profiling",
-      "subdomain_id": "vfx-optimization",
+      "id": "vfx-shader-noise-gen",
+      "name": "噪声生成",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
       "difficulty": 3,
-      "title": "GPU Profile"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-noise-gen.md",
+      "exists": true,
+      "char_count": 1491
+    },
+    {
+      "id": "vfx-shader-distortion-sh",
+      "name": "折射扭曲",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-distortion-sh.md",
+      "exists": true,
+      "char_count": 1552
+    },
+    {
+      "id": "vfx-shader-shield",
+      "name": "护盾Shader",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-shield.md",
+      "exists": true,
+      "char_count": 1381
+    },
+    {
+      "id": "vfx-shader-trail",
+      "name": "拖尾Shader",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-trail.md",
+      "exists": true,
+      "char_count": 1536
+    },
+    {
+      "id": "vfx-shader-polar",
+      "name": "极坐标变换",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-polar.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "vfx-shader-depth-fade",
+      "name": "深度渐变",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-depth-fade.md",
+      "exists": true,
+      "char_count": 1379
+    },
+    {
+      "id": "vfx-shader-blend-mode",
+      "name": "混合模式",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-shader-blend-mode.md",
+      "exists": true,
+      "char_count": 1637
+    },
+    {
+      "id": "vfx-shader-dissolve",
+      "name": "溶解效果",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-shader-dissolve.md",
+      "exists": true,
+      "char_count": 1536
+    },
+    {
+      "id": "vfx-shader-panning",
+      "name": "纹理流动",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-shader-panning.md",
+      "exists": true,
+      "char_count": 1413
+    },
+    {
+      "id": "vfx-shader-custom-data",
+      "name": "自定义数据",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-custom-data.md",
+      "exists": true,
+      "char_count": 1435
+    },
+    {
+      "id": "vfx-shader-fresnel",
+      "name": "菲涅尔效果",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-shader-fresnel.md",
+      "exists": true,
+      "char_count": 1629
+    },
+    {
+      "id": "vfx-shader-soft-particle",
+      "name": "软粒子",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-soft-particle.md",
+      "exists": true,
+      "char_count": 2286
+    },
+    {
+      "id": "vfx-shader-erosion",
+      "name": "边缘侵蚀",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-erosion.md",
+      "exists": true,
+      "char_count": 1439
+    },
+    {
+      "id": "vfx-shader-rim",
+      "name": "边缘光",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-shader-rim.md",
+      "exists": true,
+      "char_count": 1428
+    },
+    {
+      "id": "vfx-shader-mask",
+      "name": "遮罩技术",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-shader-mask.md",
+      "exists": true,
+      "char_count": 1408
+    },
+    {
+      "id": "vfx-shader-vertex-anim",
+      "name": "顶点动画",
+      "domain_id": "vfx",
+      "subdomain_id": "shader-vfx",
+      "subdomain_name": "Shader特效",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-shader-vertex-anim.md",
+      "exists": true,
+      "char_count": 1456
+    },
+    {
+      "id": "vfx-vfxgraph-block",
+      "name": "Block与节点",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-vfxgraph-block.md",
+      "exists": true,
+      "char_count": 1736
+    },
+    {
+      "id": "vfx-vfxgraph-context",
+      "name": "Context系统",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-vfxgraph-context.md",
+      "exists": true,
+      "char_count": 1676
+    },
+    {
+      "id": "vfx-vfxgraph-property",
+      "name": "Exposed Property",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-vfxgraph-property.md",
+      "exists": true,
+      "char_count": 1700
+    },
+    {
+      "id": "vfx-vfxgraph-gpu-event",
+      "name": "GPU事件",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-gpu-event.md",
+      "exists": true,
+      "char_count": 1363
+    },
+    {
+      "id": "vfx-vfxgraph-point-cache",
+      "name": "Point Cache",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-point-cache.md",
+      "exists": true,
+      "char_count": 1536
+    },
+    {
+      "id": "vfx-vfxgraph-sdf",
+      "name": "SDF交互",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-vfxgraph-sdf.md",
+      "exists": true,
+      "char_count": 1470
+    },
+    {
+      "id": "vfx-vfxgraph-shader-graph",
+      "name": "Shader Graph集成",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-vfxgraph-shader-graph.md",
+      "exists": true,
+      "char_count": 1722
+    },
+    {
+      "id": "vfx-vfxgraph-strip",
+      "name": "Strip粒子",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-strip.md",
+      "exists": true,
+      "char_count": 1553
+    },
+    {
+      "id": "vfx-vfxgraph-subgraph",
+      "name": "SubGraph复用",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-subgraph.md",
+      "exists": true,
+      "char_count": 1479
+    },
+    {
+      "id": "vfx-vfxgraph-timeline",
+      "name": "Timeline集成",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-timeline.md",
+      "exists": true,
+      "char_count": 1694
+    },
+    {
+      "id": "vfx-vfxgraph-perf",
+      "name": "VFX Graph性能",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-vfxgraph-perf.md",
+      "exists": true,
+      "char_count": 1550
+    },
+    {
+      "id": "vfx-vfxgraph-overview",
+      "name": "VFX Graph概述",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-vfxgraph-overview.md",
+      "exists": true,
+      "char_count": 1563
+    },
+    {
+      "id": "vfx-vfxgraph-force",
+      "name": "力与运动",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-force.md",
+      "exists": true,
+      "char_count": 1552
+    },
+    {
+      "id": "vfx-vfxgraph-noise",
+      "name": "噪声函数",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-noise.md",
+      "exists": true,
+      "char_count": 1441
+    },
+    {
+      "id": "vfx-vfxgraph-attribute",
+      "name": "属性系统",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-vfxgraph-attribute.md",
+      "exists": true,
+      "char_count": 1420
+    },
+    {
+      "id": "vfx-vfxgraph-spawn",
+      "name": "生成系统",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-vfxgraph-spawn.md",
+      "exists": true,
+      "char_count": 1668
+    },
+    {
+      "id": "vfx-vfxgraph-collision",
+      "name": "碰撞与交互",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-collision.md",
+      "exists": true,
+      "char_count": 1602
+    },
+    {
+      "id": "vfx-vfxgraph-texture",
+      "name": "纹理采样",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-texture.md",
+      "exists": true,
+      "char_count": 1632
+    },
+    {
+      "id": "vfx-vfxgraph-skinned-mesh",
+      "name": "蒙皮网格采样",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-vfxgraph-skinned-mesh.md",
+      "exists": true,
+      "char_count": 1472
+    },
+    {
+      "id": "vfx-vfxgraph-output",
+      "name": "输出模式",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-graph",
+      "subdomain_name": "VFX Graph",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-vfxgraph-output.md",
+      "exists": true,
+      "char_count": 1437
     },
     {
       "id": "vfx-opt-cpu-profiling",
+      "name": "CPU Profile",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
       "file": "vfx/vfx-opt-cpu-profiling.md",
-      "concept_id": "vfx-opt-cpu-profiling",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 3,
-      "title": "CPU Profile"
+      "exists": true,
+      "char_count": 1553
     },
     {
-      "id": "vfx-opt-bounds",
-      "file": "vfx/vfx-opt-bounds.md",
-      "concept_id": "vfx-opt-bounds",
+      "id": "vfx-opt-draw-call",
+      "name": "DrawCall优化",
+      "domain_id": "vfx",
       "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-draw-call.md",
+      "exists": true,
+      "char_count": 1740
+    },
+    {
+      "id": "vfx-opt-gpu-profiling",
+      "name": "GPU Profile",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-gpu-profiling.md",
+      "exists": true,
+      "char_count": 1656
+    },
+    {
+      "id": "vfx-opt-overdraw",
+      "name": "Overdraw控制",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
       "difficulty": 2,
-      "title": "包围盒优化"
-    },
-    {
-      "id": "vfx-opt-pooling",
-      "file": "vfx/vfx-opt-pooling.md",
-      "concept_id": "vfx-opt-pooling",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 3,
-      "title": "特效池化"
-    },
-    {
-      "id": "vfx-opt-scalability",
-      "file": "vfx/vfx-opt-scalability.md",
-      "concept_id": "vfx-opt-scalability",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 3,
-      "title": "可扩展性设置"
-    },
-    {
-      "id": "vfx-opt-mobile",
-      "file": "vfx/vfx-opt-mobile.md",
-      "concept_id": "vfx-opt-mobile",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 3,
-      "title": "移动端优化"
-    },
-    {
-      "id": "vfx-opt-atlas-share",
-      "file": "vfx/vfx-opt-atlas-share.md",
-      "concept_id": "vfx-opt-atlas-share",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 2,
-      "title": "图集共享"
-    },
-    {
-      "id": "vfx-opt-sim-space",
-      "file": "vfx/vfx-opt-sim-space.md",
-      "concept_id": "vfx-opt-sim-space",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 2,
-      "title": "模拟空间"
-    },
-    {
-      "id": "vfx-opt-collision-cost",
-      "file": "vfx/vfx-opt-collision-cost.md",
-      "concept_id": "vfx-opt-collision-cost",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 3,
-      "title": "碰撞开销"
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-opt-overdraw.md",
+      "exists": true,
+      "char_count": 1750
     },
     {
       "id": "vfx-opt-light-vfx",
+      "name": "光源特效开销",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
       "file": "vfx/vfx-opt-light-vfx.md",
-      "concept_id": "vfx-opt-light-vfx",
-      "subdomain_id": "vfx-optimization",
-      "difficulty": 3,
-      "title": "光源特效开销"
+      "exists": true,
+      "char_count": 1469
     },
     {
-      "id": "vfx-opt-precompute",
-      "file": "vfx/vfx-opt-precompute.md",
-      "concept_id": "vfx-opt-precompute",
+      "id": "vfx-opt-bounds",
+      "name": "包围盒优化",
+      "domain_id": "vfx",
       "subdomain_id": "vfx-optimization",
-      "difficulty": 3,
-      "title": "预计算策略"
+      "subdomain_name": "特效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-opt-bounds.md",
+      "exists": true,
+      "char_count": 1332
     },
     {
-      "id": "vfx-opt-budget-system",
-      "file": "vfx/vfx-opt-budget-system.md",
-      "concept_id": "vfx-opt-budget-system",
+      "id": "vfx-opt-scalability",
+      "name": "可扩展性设置",
+      "domain_id": "vfx",
       "subdomain_id": "vfx-optimization",
-      "difficulty": 4,
-      "title": "预算系统"
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-scalability.md",
+      "exists": true,
+      "char_count": 1406
+    },
+    {
+      "id": "vfx-opt-atlas-share",
+      "name": "图集共享",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-opt-atlas-share.md",
+      "exists": true,
+      "char_count": 1367
     },
     {
       "id": "vfx-opt-benchmark",
-      "file": "vfx/vfx-opt-benchmark.md",
-      "concept_id": "vfx-opt-benchmark",
+      "name": "基准测试",
+      "domain_id": "vfx",
       "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
       "difficulty": 3,
-      "title": "基准测试"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-benchmark.md",
+      "exists": true,
+      "char_count": 1333
     },
     {
       "id": "vfx-opt-platform",
-      "file": "vfx/vfx-opt-platform.md",
-      "concept_id": "vfx-opt-platform",
+      "name": "平台差异",
+      "domain_id": "vfx",
       "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
       "difficulty": 3,
-      "title": "平台差异"
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-platform.md",
+      "exists": true,
+      "char_count": 1353
+    },
+    {
+      "id": "vfx-opt-sim-space",
+      "name": "模拟空间",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-opt-sim-space.md",
+      "exists": true,
+      "char_count": 1411
+    },
+    {
+      "id": "vfx-opt-lod-vfx",
+      "name": "特效LOD",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-opt-lod-vfx.md",
+      "exists": true,
+      "char_count": 1371
+    },
+    {
+      "id": "vfx-opt-overview",
+      "name": "特效优化概述",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-opt-overview.md",
+      "exists": true,
+      "char_count": 1549
+    },
+    {
+      "id": "vfx-opt-pooling",
+      "name": "特效池化",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-pooling.md",
+      "exists": true,
+      "char_count": 1349
+    },
+    {
+      "id": "vfx-opt-collision-cost",
+      "name": "碰撞开销",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-collision-cost.md",
+      "exists": true,
+      "char_count": 1354
+    },
+    {
+      "id": "vfx-opt-mobile",
+      "name": "移动端优化",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-mobile.md",
+      "exists": true,
+      "char_count": 1337
+    },
+    {
+      "id": "vfx-opt-particle-count",
+      "name": "粒子数量控制",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-opt-particle-count.md",
+      "exists": true,
+      "char_count": 1529
+    },
+    {
+      "id": "vfx-opt-texture-budget",
+      "name": "纹理预算",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "vfx/vfx-opt-texture-budget.md",
+      "exists": true,
+      "char_count": 1595
+    },
+    {
+      "id": "vfx-opt-budget-system",
+      "name": "预算系统",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "vfx/vfx-opt-budget-system.md",
+      "exists": true,
+      "char_count": 1386
+    },
+    {
+      "id": "vfx-opt-precompute",
+      "name": "预计算策略",
+      "domain_id": "vfx",
+      "subdomain_id": "vfx-optimization",
+      "subdomain_name": "特效优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "vfx/vfx-opt-precompute.md",
+      "exists": true,
+      "char_count": 1395
     }
-  ]
+  ],
+  "stats": {
+    "total": 180,
+    "total_chars": 276251,
+    "avg_chars": 1534,
+    "domain": "vfx"
+  }
 }

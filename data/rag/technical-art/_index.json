@@ -1,1505 +1,2710 @@
 {
-  "version": "1.0",
-  "domain": "technical-art",
-  "domain_name": "技术美术",
-  "generated_at": "2026-03-21T00:00:00",
-  "total_concepts": 180,
-  "stats": {
-    "total_docs": 180,
-    "total_chars": 71367,
-    "by_subdomain": {
-      "memory-budget": {
-        "name": "内存与预算",
-        "count": 20,
-        "chars": 7893
-      },
-      "art-standards": {
-        "name": "美术标准制定",
-        "count": 10,
-        "chars": 3895
-      },
-      "tool-dev": {
-        "name": "工具开发",
-        "count": 20,
-        "chars": 7939
-      },
-      "pipeline-build": {
-        "name": "管线搭建",
-        "count": 20,
-        "chars": 7824
-      },
-      "perf-optimization": {
-        "name": "性能优化",
-        "count": 20,
-        "chars": 7980
-      },
-      "automation": {
-        "name": "自动化工作流",
-        "count": 10,
-        "chars": 3908
-      },
-      "shader-dev": {
-        "name": "Shader开发",
-        "count": 20,
-        "chars": 8247
-      },
-      "material-system": {
-        "name": "材质系统",
-        "count": 20,
-        "chars": 7932
-      },
-      "lod-strategy": {
-        "name": "LOD策略",
-        "count": 20,
-        "chars": 7938
-      },
-      "pcg": {
-        "name": "程序化生成",
-        "count": 20,
-        "chars": 7811
-      }
-    }
-  },
   "documents": [
     {
-      "id": "ta-anim-memory",
+      "id": "ta-lighting-standard",
+      "name": "光照标准",
       "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-anim-memory.md",
-      "title": "动画内存预算",
-      "chars": 391
+      "subdomain_id": "art-standards",
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-lighting-standard.md",
+      "exists": true,
+      "char_count": 1315
     },
     {
       "id": "ta-animation-standard",
+      "name": "动画标准",
       "domain_id": "technical-art",
       "subdomain_id": "art-standards",
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
       "file": "technical-art/ta-animation-standard.md",
-      "title": "动画标准",
-      "chars": 392
-    },
-    {
-      "id": "ta-api-integration",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-api-integration.md",
-      "title": "外部API集成",
-      "chars": 402
-    },
-    {
-      "id": "ta-asset-database",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-asset-database.md",
-      "title": "资产数据库",
-      "chars": 398
-    },
-    {
-      "id": "ta-asset-processor",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-asset-processor.md",
-      "title": "资产处理工具",
-      "chars": 388
-    },
-    {
-      "id": "ta-asset-review",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-asset-review.md",
-      "title": "资产审查流程",
-      "chars": 390
-    },
-    {
-      "id": "ta-asset-size",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-asset-size.md",
-      "title": "资产大小审计",
-      "chars": 389
-    },
-    {
-      "id": "ta-async-compute",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-async-compute.md",
-      "title": "异步计算",
-      "chars": 388
-    },
-    {
-      "id": "ta-audio-memory",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-audio-memory.md",
-      "title": "音频内存预算",
-      "chars": 393
-    },
-    {
-      "id": "ta-auto-import",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-auto-import.md",
-      "title": "自动导入",
-      "chars": 385
-    },
-    {
-      "id": "ta-auto-lod",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-auto-lod.md",
-      "title": "自动LOD生成",
-      "chars": 392
-    },
-    {
-      "id": "ta-auto-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-auto-overview.md",
-      "title": "自动化工作流概述",
-      "chars": 391
-    },
-    {
-      "id": "ta-auto-pipeline",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-auto-pipeline.md",
-      "title": "端到端自动化管线",
-      "chars": 401
-    },
-    {
-      "id": "ta-auto-test",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-auto-test.md",
-      "title": "自动化测试",
-      "chars": 387
-    },
-    {
-      "id": "ta-auto-texture",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-auto-texture.md",
-      "title": "自动纹理处理",
-      "chars": 391
-    },
-    {
-      "id": "ta-batch-merge",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-batch-merge.md",
-      "title": "网格合并",
-      "chars": 398
-    },
-    {
-      "id": "ta-batch-tool",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-batch-tool.md",
-      "title": "批量操作工具",
-      "chars": 386
-    },
-    {
-      "id": "ta-ci-art",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-ci-art.md",
-      "title": "美术CI/CD",
-      "chars": 387
-    },
-    {
-      "id": "ta-commandlet",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-commandlet.md",
-      "title": "命令行工具",
-      "chars": 392
-    },
-    {
-      "id": "ta-compute-shader",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-compute-shader.md",
-      "title": "Compute Shader",
-      "chars": 423
-    },
-    {
-      "id": "ta-console-budget",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-console-budget.md",
-      "title": "主机内存限制",
-      "chars": 400
-    },
-    {
-      "id": "ta-cook-pipeline",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-cook-pipeline.md",
-      "title": "资产烘焙管线",
-      "chars": 391
-    },
-    {
-      "id": "ta-csharp-tools",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-csharp-tools.md",
-      "title": "C#工具开发",
-      "chars": 388
-    },
-    {
-      "id": "ta-culling",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-culling.md",
-      "title": "裁剪技术",
-      "chars": 384
-    },
-    {
-      "id": "ta-custom-lighting",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-custom-lighting.md",
-      "title": "自定义光照模型",
-      "chars": 409
-    },
-    {
-      "id": "ta-data-validation",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-data-validation.md",
-      "title": "数据验证管线",
-      "chars": 391
-    },
-    {
-      "id": "ta-dcc-bridge",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-dcc-bridge.md",
-      "title": "DCC桥接工具",
-      "chars": 394
-    },
-    {
-      "id": "ta-decal-system",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-decal-system.md",
-      "title": "贴花系统",
-      "chars": 385
-    },
-    {
-      "id": "ta-detail-normal",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-detail-normal.md",
-      "title": "细节法线",
-      "chars": 384
-    },
-    {
-      "id": "ta-draw-call",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-draw-call.md",
-      "title": "Draw Call优化",
-      "chars": 412
-    },
-    {
-      "id": "ta-export-pipeline",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-export-pipeline.md",
-      "title": "导出管线",
-      "chars": 386
-    },
-    {
-      "id": "ta-folder-structure",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-folder-structure.md",
-      "title": "目录结构",
-      "chars": 384
-    },
-    {
-      "id": "ta-frame-analysis",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-frame-analysis.md",
-      "title": "帧分析实战",
-      "chars": 392
-    },
-    {
-      "id": "ta-geometry-shader",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-geometry-shader.md",
-      "title": "几何着色器",
-      "chars": 392
-    },
-    {
-      "id": "ta-glsl-basics",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-glsl-basics.md",
-      "title": "GLSL基础",
-      "chars": 408
-    },
-    {
-      "id": "ta-gpu-pipeline",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-gpu-pipeline.md",
-      "title": "GPU渲染管线",
-      "chars": 399
-    },
-    {
-      "id": "ta-gpu-profiling",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-gpu-profiling.md",
-      "title": "GPU性能分析",
-      "chars": 424
-    },
-    {
-      "id": "ta-gui-framework",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-gui-framework.md",
-      "title": "工具GUI框架",
-      "chars": 405
-    },
-    {
-      "id": "ta-hlod",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-hlod.md",
-      "title": "HLOD系统",
-      "chars": 392
-    },
-    {
-      "id": "ta-hlsl-basics",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-hlsl-basics.md",
-      "title": "HLSL基础",
-      "chars": 402
-    },
-    {
-      "id": "ta-houdini-basics",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-houdini-basics.md",
-      "title": "Houdini基础",
-      "chars": 399
-    },
-    {
-      "id": "ta-houdini-engine",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-houdini-engine.md",
-      "title": "Houdini Engine",
-      "chars": 416
-    },
-    {
-      "id": "ta-import-pipeline",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-import-pipeline.md",
-      "title": "导入管线",
-      "chars": 395
-    },
-    {
-      "id": "ta-impostor",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-impostor.md",
-      "title": "Impostor/Billboard",
-      "chars": 420
-    },
-    {
-      "id": "ta-instancing",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-instancing.md",
-      "title": "GPU实例化",
-      "chars": 411
-    },
-    {
-      "id": "ta-iteration-speed",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-iteration-speed.md",
-      "title": "迭代速度优化",
-      "chars": 395
-    },
-    {
-      "id": "ta-lighting-standard",
-      "domain_id": "technical-art",
-      "subdomain_id": "art-standards",
-      "file": "technical-art/ta-lighting-standard.md",
-      "title": "光照标准",
-      "chars": 391
-    },
-    {
-      "id": "ta-lightmap-opt",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-lightmap-opt.md",
-      "title": "光照贴图优化",
-      "chars": 409
-    },
-    {
-      "id": "ta-loading-screen",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-loading-screen.md",
-      "title": "加载优化",
-      "chars": 390
-    },
-    {
-      "id": "ta-lod-animation",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-animation.md",
-      "title": "LOD动画简化",
-      "chars": 392
-    },
-    {
-      "id": "ta-lod-budget",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-budget.md",
-      "title": "LOD预算管理",
-      "chars": 394
-    },
-    {
-      "id": "ta-lod-building",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-building.md",
-      "title": "建筑LOD",
-      "chars": 389
-    },
-    {
-      "id": "ta-lod-crowd",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-crowd.md",
-      "title": "人群LOD",
-      "chars": 389
-    },
-    {
-      "id": "ta-lod-foliage",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-foliage.md",
-      "title": "植被LOD",
-      "chars": 390
-    },
-    {
-      "id": "ta-lod-generation",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-generation.md",
-      "title": "LOD生成方法",
-      "chars": 404
-    },
-    {
-      "id": "ta-lod-material",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-material.md",
-      "title": "LOD材质切换",
-      "chars": 401
-    },
-    {
-      "id": "ta-lod-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-overview.md",
-      "title": "LOD概述",
-      "chars": 390
-    },
-    {
-      "id": "ta-lod-shadow",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-shadow.md",
-      "title": "LOD阴影优化",
-      "chars": 386
-    },
-    {
-      "id": "ta-lod-streaming",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-streaming.md",
-      "title": "LOD与流送",
-      "chars": 407
-    },
-    {
-      "id": "ta-lod-switching",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-switching.md",
-      "title": "LOD切换策略",
-      "chars": 397
-    },
-    {
-      "id": "ta-lod-testing",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-testing.md",
-      "title": "LOD质量测试",
-      "chars": 393
-    },
-    {
-      "id": "ta-lod-transition",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-transition.md",
-      "title": "LOD过渡效果",
-      "chars": 414
-    },
-    {
-      "id": "ta-lod-vfx",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-lod-vfx.md",
-      "title": "特效LOD",
-      "chars": 388
-    },
-    {
-      "id": "ta-material-atlas",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-material-atlas.md",
-      "title": "材质图集",
-      "chars": 394
-    },
-    {
-      "id": "ta-material-blending",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-material-blending.md",
-      "title": "材质混合技术",
-      "chars": 395
-    },
-    {
-      "id": "ta-material-complexity",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-material-complexity.md",
-      "title": "材质指令数",
-      "chars": 398
-    },
-    {
-      "id": "ta-material-function",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-material-function.md",
-      "title": "材质函数",
-      "chars": 393
-    },
-    {
-      "id": "ta-material-instance",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-material-instance.md",
-      "title": "材质实例",
-      "chars": 396
-    },
-    {
-      "id": "ta-material-layer",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-material-layer.md",
-      "title": "材质分层",
-      "chars": 389
-    },
-    {
-      "id": "ta-material-library",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-material-library.md",
-      "title": "材质库管理",
-      "chars": 392
-    },
-    {
-      "id": "ta-material-standard",
-      "domain_id": "technical-art",
-      "subdomain_id": "art-standards",
-      "file": "technical-art/ta-material-standard.md",
-      "title": "材质标准",
-      "chars": 395
-    },
-    {
-      "id": "ta-material-weather",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-material-weather.md",
-      "title": "天气效果材质",
-      "chars": 394
-    },
-    {
-      "id": "ta-mel-scripting",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-mel-scripting.md",
-      "title": "MEL脚本",
-      "chars": 398
-    },
-    {
-      "id": "ta-mem-budget-doc",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-mem-budget-doc.md",
-      "title": "内存预算文档",
-      "chars": 393
-    },
-    {
-      "id": "ta-mem-leak-detect",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-mem-leak-detect.md",
-      "title": "内存泄漏检测",
-      "chars": 387
-    },
-    {
-      "id": "ta-mem-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-mem-overview.md",
-      "title": "内存管理概述",
-      "chars": 390
-    },
-    {
-      "id": "ta-memory-pool",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-memory-pool.md",
-      "title": "内存池管理",
-      "chars": 380
-    },
-    {
-      "id": "ta-memory-report",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-memory-report.md",
-      "title": "内存报告",
-      "chars": 389
-    },
-    {
-      "id": "ta-mesh-budget",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-mesh-budget.md",
-      "title": "网格内存预算",
-      "chars": 388
-    },
-    {
-      "id": "ta-mesh-simplify",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-mesh-simplify.md",
-      "title": "网格简化",
-      "chars": 410
-    },
-    {
-      "id": "ta-migration-strategy",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-migration-strategy.md",
-      "title": "版本迁移策略",
-      "chars": 394
-    },
-    {
-      "id": "ta-mipmap-strategy",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-mipmap-strategy.md",
-      "title": "Mipmap策略",
-      "chars": 403
-    },
-    {
-      "id": "ta-mobile-memory",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-mobile-memory.md",
-      "title": "移动端内存",
-      "chars": 397
-    },
-    {
-      "id": "ta-mobile-perf",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-mobile-perf.md",
-      "title": "移动端性能",
-      "chars": 390
-    },
-    {
-      "id": "ta-modular-asset",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-modular-asset.md",
-      "title": "模块化资产系统",
-      "chars": 398
-    },
-    {
-      "id": "ta-multi-platform",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-multi-platform.md",
-      "title": "多平台管线",
-      "chars": 392
-    },
-    {
-      "id": "ta-naming-convention",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-naming-convention.md",
-      "title": "命名规范",
-      "chars": 383
-    },
-    {
-      "id": "ta-nanite-limitations",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-nanite-limitations.md",
-      "title": "Nanite限制",
-      "chars": 406
-    },
-    {
-      "id": "ta-nanite",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-nanite.md",
-      "title": "Nanite虚拟几何",
-      "chars": 406
-    },
-    {
-      "id": "ta-nightly-build",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-nightly-build.md",
-      "title": "夜间构建",
-      "chars": 383
-    },
-    {
-      "id": "ta-noise-functions",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-noise-functions.md",
-      "title": "噪声函数",
-      "chars": 406
-    },
-    {
-      "id": "ta-outsource-pipeline",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-outsource-pipeline.md",
-      "title": "外包管线",
-      "chars": 389
-    },
-    {
-      "id": "ta-overdraw",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-overdraw.md",
-      "title": "Overdraw控制",
-      "chars": 405
-    },
-    {
-      "id": "ta-pak-size",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-pak-size.md",
-      "title": "包体大小优化",
-      "chars": 393
-    },
-    {
-      "id": "ta-parallax-mapping",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-parallax-mapping.md",
-      "title": "视差贴图",
-      "chars": 402
-    },
-    {
-      "id": "ta-particle-perf",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-particle-perf.md",
-      "title": "粒子性能优化",
-      "chars": 395
-    },
-    {
-      "id": "ta-pbr-fundamentals",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-pbr-fundamentals.md",
-      "title": "PBR材质基础",
-      "chars": 397
-    },
-    {
-      "id": "ta-pcg-biome",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-biome.md",
-      "title": "生态群落系统",
-      "chars": 382
-    },
-    {
-      "id": "ta-pcg-building",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-building.md",
-      "title": "程序化建筑",
-      "chars": 375
-    },
-    {
-      "id": "ta-pcg-city",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-city.md",
-      "title": "程序化城市",
-      "chars": 373
-    },
-    {
-      "id": "ta-pcg-dungeon",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-dungeon.md",
-      "title": "程序化关卡",
-      "chars": 397
-    },
-    {
-      "id": "ta-pcg-mesh",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-mesh.md",
-      "title": "程序化网格",
-      "chars": 395
-    },
-    {
-      "id": "ta-pcg-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-overview.md",
-      "title": "程序化生成概述",
-      "chars": 380
-    },
-    {
-      "id": "ta-pcg-road",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-road.md",
-      "title": "程序化道路",
-      "chars": 376
-    },
-    {
-      "id": "ta-pcg-rule-system",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-rule-system.md",
-      "title": "规则系统设计",
-      "chars": 380
-    },
-    {
-      "id": "ta-pcg-runtime",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-runtime.md",
-      "title": "运行时PCG",
-      "chars": 380
-    },
-    {
-      "id": "ta-pcg-seed",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-seed.md",
-      "title": "随机种子与可控性",
-      "chars": 384
-    },
-    {
-      "id": "ta-pcg-terrain",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-terrain.md",
-      "title": "程序化地形",
-      "chars": 377
-    },
-    {
-      "id": "ta-pcg-texture",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-texture.md",
-      "title": "程序化纹理",
-      "chars": 388
-    },
-    {
-      "id": "ta-pcg-validation",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-validation.md",
-      "title": "PCG质量验证",
-      "chars": 390
-    },
-    {
-      "id": "ta-pcg-vegetation",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-vegetation.md",
-      "title": "程序化植被",
-      "chars": 390
-    },
-    {
-      "id": "ta-pcg-world-partition",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-pcg-world-partition.md",
-      "title": "世界分区与PCG",
-      "chars": 410
-    },
-    {
-      "id": "ta-perf-budget",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-perf-budget.md",
-      "title": "性能预算分配",
-      "chars": 395
-    },
-    {
-      "id": "ta-perf-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-perf-overview.md",
-      "title": "性能优化概述",
-      "chars": 395
-    },
-    {
-      "id": "ta-perf-regression",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-perf-regression.md",
-      "title": "性能回归检测",
-      "chars": 398
-    },
-    {
-      "id": "ta-pipeline-doc",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-pipeline-doc.md",
-      "title": "管线文档",
-      "chars": 392
-    },
-    {
-      "id": "ta-pipeline-monitoring",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-pipeline-monitoring.md",
-      "title": "管线监控",
-      "chars": 388
-    },
-    {
-      "id": "ta-pipeline-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-pipeline-overview.md",
-      "title": "资产管线概述",
-      "chars": 387
-    },
-    {
-      "id": "ta-pixel-shader",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-pixel-shader.md",
-      "title": "片元着色器编写",
-      "chars": 398
-    },
-    {
-      "id": "ta-poly-standard",
-      "domain_id": "technical-art",
-      "subdomain_id": "art-standards",
-      "file": "technical-art/ta-poly-standard.md",
-      "title": "面数标准",
-      "chars": 389
-    },
-    {
-      "id": "ta-procedural-material",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-procedural-material.md",
-      "title": "程序化材质",
-      "chars": 391
-    },
-    {
-      "id": "ta-proxy-mesh",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-proxy-mesh.md",
-      "title": "代理网格",
-      "chars": 387
-    },
-    {
-      "id": "ta-python-blender",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-python-blender.md",
-      "title": "Blender Python脚本",
-      "chars": 422
-    },
-    {
-      "id": "ta-python-maya",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-python-maya.md",
-      "title": "Maya Python脚本",
-      "chars": 422
-    },
-    {
-      "id": "ta-reference-library",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-reference-library.md",
-      "title": "参考资产库",
-      "chars": 394
-    },
-    {
-      "id": "ta-reference-viewer",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-reference-viewer.md",
-      "title": "引用查看器",
-      "chars": 394
-    },
-    {
-      "id": "ta-render-target",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-render-target.md",
-      "title": "渲染目标内存",
-      "chars": 409
-    },
-    {
-      "id": "ta-rendering-features",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-rendering-features.md",
-      "title": "渲染特性开关",
-      "chars": 404
-    },
-    {
-      "id": "ta-report-gen",
-      "domain_id": "technical-art",
-      "subdomain_id": "automation",
-      "file": "technical-art/ta-report-gen.md",
-      "title": "报告自动生成",
-      "chars": 388
-    },
-    {
-      "id": "ta-scalability",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-scalability.md",
-      "title": "画质可伸缩性",
-      "chars": 402
-    },
-    {
-      "id": "ta-scale-reference",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-scale-reference.md",
-      "title": "尺度与单位",
-      "chars": 385
-    },
-    {
-      "id": "ta-scatter-system",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-scatter-system.md",
-      "title": "散布系统",
-      "chars": 378
-    },
-    {
-      "id": "ta-screen-space-effects",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-screen-space-effects.md",
-      "title": "屏幕空间效果",
-      "chars": 409
-    },
-    {
-      "id": "ta-sdf-shader",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-sdf-shader.md",
-      "title": "SDF着色器",
-      "chars": 399
-    },
-    {
-      "id": "ta-shader-cross-platform",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-shader-cross-platform.md",
-      "title": "跨平台Shader",
-      "chars": 423
-    },
-    {
-      "id": "ta-shader-debugging",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-shader-debugging.md",
-      "title": "Shader调试技巧",
-      "chars": 432
-    },
-    {
-      "id": "ta-shader-math",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-shader-math.md",
-      "title": "Shader数学基础",
-      "chars": 411
-    },
-    {
-      "id": "ta-shader-memory",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-shader-memory.md",
-      "title": "Shader内存",
-      "chars": 401
-    },
-    {
-      "id": "ta-shader-optimization",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-shader-optimization.md",
-      "title": "Shader性能优化",
-      "chars": 411
-    },
-    {
-      "id": "ta-shader-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-shader-overview.md",
-      "title": "Shader开发概述",
-      "chars": 416
-    },
-    {
-      "id": "ta-shader-variants",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-shader-variants.md",
-      "title": "Shader变体管理",
-      "chars": 418
-    },
-    {
-      "id": "ta-shadow-perf",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-shadow-perf.md",
-      "title": "阴影性能",
-      "chars": 397
-    },
-    {
-      "id": "ta-skin-material",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-skin-material.md",
-      "title": "皮肤材质",
-      "chars": 385
+      "exists": true,
+      "char_count": 1320
     },
     {
       "id": "ta-std-checklist",
+      "name": "审查检查清单",
       "domain_id": "technical-art",
       "subdomain_id": "art-standards",
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
       "file": "technical-art/ta-std-checklist.md",
-      "title": "审查检查清单",
-      "chars": 391
+      "exists": true,
+      "char_count": 2296
     },
     {
-      "id": "ta-std-evolution",
+      "id": "ta-material-standard",
+      "name": "材质标准",
       "domain_id": "technical-art",
       "subdomain_id": "art-standards",
-      "file": "technical-art/ta-std-evolution.md",
-      "title": "标准迭代",
-      "chars": 388
-    },
-    {
-      "id": "ta-std-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "art-standards",
-      "file": "technical-art/ta-std-overview.md",
-      "title": "美术标准概述",
-      "chars": 385
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-material-standard.md",
+      "exists": true,
+      "char_count": 1347
     },
     {
       "id": "ta-std-template",
+      "name": "标准模板资产",
       "domain_id": "technical-art",
       "subdomain_id": "art-standards",
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
       "file": "technical-art/ta-std-template.md",
-      "title": "标准模板资产",
-      "chars": 391
+      "exists": true,
+      "char_count": 1291
     },
     {
-      "id": "ta-std-training",
+      "id": "ta-std-evolution",
+      "name": "标准迭代",
       "domain_id": "technical-art",
       "subdomain_id": "art-standards",
-      "file": "technical-art/ta-std-training.md",
-      "title": "规范培训",
-      "chars": 384
-    },
-    {
-      "id": "ta-streaming",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-streaming.md",
-      "title": "资源流送",
-      "chars": 383
-    },
-    {
-      "id": "ta-substance-workflow",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-substance-workflow.md",
-      "title": "Substance工作流",
-      "chars": 432
-    },
-    {
-      "id": "ta-tessellation-lod",
-      "domain_id": "technical-art",
-      "subdomain_id": "lod-strategy",
-      "file": "technical-art/ta-tessellation-lod.md",
-      "title": "曲面细分LOD",
-      "chars": 393
-    },
-    {
-      "id": "ta-tessellation-shader",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-tessellation-shader.md",
-      "title": "曲面细分着色器",
-      "chars": 412
-    },
-    {
-      "id": "ta-texture-budget",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-texture-budget.md",
-      "title": "纹理内存预算",
-      "chars": 396
-    },
-    {
-      "id": "ta-texture-compression",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-texture-compression.md",
-      "title": "纹理压缩",
-      "chars": 399
-    },
-    {
-      "id": "ta-texture-packing",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-texture-packing.md",
-      "title": "纹理通道打包",
-      "chars": 399
-    },
-    {
-      "id": "ta-texture-pipeline",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-texture-pipeline.md",
-      "title": "纹理管线",
-      "chars": 388
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "technical-art/ta-std-evolution.md",
+      "exists": true,
+      "char_count": 1297
     },
     {
       "id": "ta-texture-standard",
+      "name": "纹理标准",
       "domain_id": "technical-art",
       "subdomain_id": "art-standards",
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
       "file": "technical-art/ta-texture-standard.md",
-      "title": "纹理标准",
-      "chars": 389
+      "exists": true,
+      "char_count": 1312
     },
     {
-      "id": "ta-texture-streaming",
+      "id": "ta-std-overview",
+      "name": "美术标准概述",
       "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-texture-streaming.md",
-      "title": "纹理流送",
-      "chars": 403
+      "subdomain_id": "art-standards",
+      "subdomain_name": "美术标准制定",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-std-overview.md",
+      "exists": true,
+      "char_count": 1386
     },
     {
-      "id": "ta-tiling-textures",
+      "id": "ta-std-training",
+      "name": "规范培训",
       "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-tiling-textures.md",
-      "title": "无缝贴图制作",
-      "chars": 415
+      "subdomain_id": "art-standards",
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "technical-art/ta-std-training.md",
+      "exists": true,
+      "char_count": 1255
     },
     {
-      "id": "ta-tool-deploy",
+      "id": "ta-poly-standard",
+      "name": "面数标准",
       "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-tool-deploy.md",
-      "title": "工具分发部署",
-      "chars": 384
-    },
-    {
-      "id": "ta-tool-documentation",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-tool-documentation.md",
-      "title": "工具文档",
-      "chars": 384
-    },
-    {
-      "id": "ta-tool-overview",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-tool-overview.md",
-      "title": "技美工具开发概述",
-      "chars": 390
-    },
-    {
-      "id": "ta-tool-pipeline",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-tool-pipeline.md",
-      "title": "工具开发管线",
-      "chars": 385
-    },
-    {
-      "id": "ta-tool-testing",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-tool-testing.md",
-      "title": "工具测试",
-      "chars": 380
-    },
-    {
-      "id": "ta-tool-ux",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-tool-ux.md",
-      "title": "工具用户体验",
-      "chars": 381
-    },
-    {
-      "id": "ta-translucent-material",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-translucent-material.md",
-      "title": "半透明材质",
-      "chars": 393
-    },
-    {
-      "id": "ta-tri-budget",
-      "domain_id": "technical-art",
-      "subdomain_id": "perf-optimization",
-      "file": "technical-art/ta-tri-budget.md",
-      "title": "三角面预算",
-      "chars": 388
-    },
-    {
-      "id": "ta-ue-editor-utility",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-ue-editor-utility.md",
-      "title": "UE编辑器工具",
-      "chars": 415
-    },
-    {
-      "id": "ta-ue-material-editor",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-ue-material-editor.md",
-      "title": "UE材质编辑器",
-      "chars": 417
-    },
-    {
-      "id": "ta-ue-pcg-framework",
-      "domain_id": "technical-art",
-      "subdomain_id": "pcg",
-      "file": "technical-art/ta-ue-pcg-framework.md",
-      "title": "UE PCG Framework",
-      "chars": 421
-    },
-    {
-      "id": "ta-ue-python",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-ue-python.md",
-      "title": "UE Python脚本",
-      "chars": 409
-    },
-    {
-      "id": "ta-unity-editor",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-unity-editor.md",
-      "title": "Unity编辑器扩展",
-      "chars": 424
-    },
-    {
-      "id": "ta-unity-shadergraph",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-unity-shadergraph.md",
-      "title": "Unity Shader Graph",
-      "chars": 461
-    },
-    {
-      "id": "ta-validation-tool",
-      "domain_id": "technical-art",
-      "subdomain_id": "tool-dev",
-      "file": "technical-art/ta-validation-tool.md",
-      "title": "资产验证工具",
-      "chars": 390
-    },
-    {
-      "id": "ta-vcs-workflow",
-      "domain_id": "technical-art",
-      "subdomain_id": "pipeline-build",
-      "file": "technical-art/ta-vcs-workflow.md",
-      "title": "版本控制工作流",
-      "chars": 404
-    },
-    {
-      "id": "ta-vertex-shader",
-      "domain_id": "technical-art",
-      "subdomain_id": "shader-dev",
-      "file": "technical-art/ta-vertex-shader.md",
-      "title": "顶点着色器编写",
-      "chars": 401
-    },
-    {
-      "id": "ta-virtual-texturing",
-      "domain_id": "technical-art",
-      "subdomain_id": "material-system",
-      "file": "technical-art/ta-virtual-texturing.md",
-      "title": "虚拟纹理",
-      "chars": 399
-    },
-    {
-      "id": "ta-vram-profiling",
-      "domain_id": "technical-art",
-      "subdomain_id": "memory-budget",
-      "file": "technical-art/ta-vram-profiling.md",
-      "title": "VRAM分析",
-      "chars": 407
+      "subdomain_id": "art-standards",
+      "subdomain_name": "美术标准制定",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-poly-standard.md",
+      "exists": true,
+      "char_count": 1348
     },
     {
       "id": "ta-webhook",
+      "name": "Webhook集成",
       "domain_id": "technical-art",
       "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
       "file": "technical-art/ta-webhook.md",
-      "title": "Webhook集成",
-      "chars": 403
+      "exists": true,
+      "char_count": 1480
+    },
+    {
+      "id": "ta-nightly-build",
+      "name": "夜间构建",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-nightly-build.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "ta-report-gen",
+      "name": "报告自动生成",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "监控"
+      ],
+      "file": "technical-art/ta-report-gen.md",
+      "exists": true,
+      "char_count": 1310
+    },
+    {
+      "id": "ta-auto-pipeline",
+      "name": "端到端自动化管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "technical-art/ta-auto-pipeline.md",
+      "exists": true,
+      "char_count": 1515
+    },
+    {
+      "id": "ta-ci-art",
+      "name": "美术CI/CD",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-ci-art.md",
+      "exists": true,
+      "char_count": 1410
+    },
+    {
+      "id": "ta-auto-lod",
+      "name": "自动LOD生成",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-auto-lod.md",
+      "exists": true,
+      "char_count": 1348
+    },
+    {
+      "id": "ta-auto-overview",
+      "name": "自动化工作流概述",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-auto-overview.md",
+      "exists": true,
+      "char_count": 1418
+    },
+    {
+      "id": "ta-auto-test",
+      "name": "自动化测试",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-auto-test.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "ta-auto-import",
+      "name": "自动导入",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-auto-import.md",
+      "exists": true,
+      "char_count": 2587
+    },
+    {
+      "id": "ta-auto-texture",
+      "name": "自动纹理处理",
+      "domain_id": "technical-art",
+      "subdomain_id": "automation",
+      "subdomain_name": "自动化工作流",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-auto-texture.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "ta-hlod",
+      "name": "HLOD系统",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-hlod.md",
+      "exists": true,
+      "char_count": 1407
+    },
+    {
+      "id": "ta-impostor",
+      "name": "Impostor/Billboard",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-impostor.md",
+      "exists": true,
+      "char_count": 1571
+    },
+    {
+      "id": "ta-lod-streaming",
+      "name": "LOD与流送",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-lod-streaming.md",
+      "exists": true,
+      "char_count": 1511
+    },
+    {
+      "id": "ta-lod-switching",
+      "name": "LOD切换策略",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-lod-switching.md",
+      "exists": true,
+      "char_count": 1621
+    },
+    {
+      "id": "ta-lod-animation",
+      "name": "LOD动画简化",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-lod-animation.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "ta-lod-material",
+      "name": "LOD材质切换",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-lod-material.md",
+      "exists": true,
+      "char_count": 1425
+    },
+    {
+      "id": "ta-lod-overview",
+      "name": "LOD概述",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-lod-overview.md",
+      "exists": true,
+      "char_count": 1474
+    },
+    {
+      "id": "ta-lod-generation",
+      "name": "LOD生成方法",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-lod-generation.md",
+      "exists": true,
+      "char_count": 1666
+    },
+    {
+      "id": "ta-lod-testing",
+      "name": "LOD质量测试",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "technical-art/ta-lod-testing.md",
+      "exists": true,
+      "char_count": 1347
+    },
+    {
+      "id": "ta-lod-transition",
+      "name": "LOD过渡效果",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-lod-transition.md",
+      "exists": true,
+      "char_count": 1572
+    },
+    {
+      "id": "ta-lod-shadow",
+      "name": "LOD阴影优化",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "technical-art/ta-lod-shadow.md",
+      "exists": true,
+      "char_count": 1305
+    },
+    {
+      "id": "ta-lod-budget",
+      "name": "LOD预算管理",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "technical-art/ta-lod-budget.md",
+      "exists": true,
+      "char_count": 1385
+    },
+    {
+      "id": "ta-nanite",
+      "name": "Nanite虚拟几何",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-nanite.md",
+      "exists": true,
+      "char_count": 1532
+    },
+    {
+      "id": "ta-nanite-limitations",
+      "name": "Nanite限制",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-nanite-limitations.md",
+      "exists": true,
+      "char_count": 1469
+    },
+    {
+      "id": "ta-lod-crowd",
+      "name": "人群LOD",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-lod-crowd.md",
+      "exists": true,
+      "char_count": 1395
+    },
+    {
+      "id": "ta-proxy-mesh",
+      "name": "代理网格",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-proxy-mesh.md",
+      "exists": true,
+      "char_count": 1307
+    },
+    {
+      "id": "ta-lod-building",
+      "name": "建筑LOD",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-lod-building.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "ta-tessellation-lod",
+      "name": "曲面细分LOD",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-tessellation-lod.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "ta-lod-foliage",
+      "name": "植被LOD",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-lod-foliage.md",
+      "exists": true,
+      "char_count": 1336
+    },
+    {
+      "id": "ta-lod-vfx",
+      "name": "特效LOD",
+      "domain_id": "technical-art",
+      "subdomain_id": "lod-strategy",
+      "subdomain_name": "LOD策略",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-lod-vfx.md",
+      "exists": true,
+      "char_count": 1328
+    },
+    {
+      "id": "ta-pbr-fundamentals",
+      "name": "PBR材质基础",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-pbr-fundamentals.md",
+      "exists": true,
+      "char_count": 1517
+    },
+    {
+      "id": "ta-substance-workflow",
+      "name": "Substance工作流",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "technical-art/ta-substance-workflow.md",
+      "exists": true,
+      "char_count": 1640
+    },
+    {
+      "id": "ta-translucent-material",
+      "name": "半透明材质",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-translucent-material.md",
+      "exists": true,
+      "char_count": 1448
+    },
+    {
+      "id": "ta-material-weather",
+      "name": "天气效果材质",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-material-weather.md",
+      "exists": true,
+      "char_count": 1341
+    },
+    {
+      "id": "ta-tiling-textures",
+      "name": "无缝贴图制作",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-tiling-textures.md",
+      "exists": true,
+      "char_count": 1510
+    },
+    {
+      "id": "ta-material-function",
+      "name": "材质函数",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-material-function.md",
+      "exists": true,
+      "char_count": 1305
+    },
+    {
+      "id": "ta-material-layer",
+      "name": "材质分层",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-material-layer.md",
+      "exists": true,
+      "char_count": 2864
+    },
+    {
+      "id": "ta-material-atlas",
+      "name": "材质图集",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "technical-art/ta-material-atlas.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "ta-material-instance",
+      "name": "材质实例",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-material-instance.md",
+      "exists": true,
+      "char_count": 1369
+    },
+    {
+      "id": "ta-material-library",
+      "name": "材质库管理",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "technical-art/ta-material-library.md",
+      "exists": true,
+      "char_count": 1304
+    },
+    {
+      "id": "ta-material-complexity",
+      "name": "材质指令数",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "technical-art/ta-material-complexity.md",
+      "exists": true,
+      "char_count": 1369
+    },
+    {
+      "id": "ta-material-blending",
+      "name": "材质混合技术",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-material-blending.md",
+      "exists": true,
+      "char_count": 1331
+    },
+    {
+      "id": "ta-skin-material",
+      "name": "皮肤材质",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-skin-material.md",
+      "exists": true,
+      "char_count": 1328
+    },
+    {
+      "id": "ta-procedural-material",
+      "name": "程序化材质",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-procedural-material.md",
+      "exists": true,
+      "char_count": 1296
+    },
+    {
+      "id": "ta-texture-compression",
+      "name": "纹理压缩",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "technical-art/ta-texture-compression.md",
+      "exists": true,
+      "char_count": 1399
+    },
+    {
+      "id": "ta-texture-packing",
+      "name": "纹理通道打包",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "technical-art/ta-texture-packing.md",
+      "exists": true,
+      "char_count": 1370
+    },
+    {
+      "id": "ta-detail-normal",
+      "name": "细节法线",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-detail-normal.md",
+      "exists": true,
+      "char_count": 1259
+    },
+    {
+      "id": "ta-virtual-texturing",
+      "name": "虚拟纹理",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-virtual-texturing.md",
+      "exists": true,
+      "char_count": 1439
+    },
+    {
+      "id": "ta-parallax-mapping",
+      "name": "视差贴图",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-parallax-mapping.md",
+      "exists": true,
+      "char_count": 1441
+    },
+    {
+      "id": "ta-decal-system",
+      "name": "贴花系统",
+      "domain_id": "technical-art",
+      "subdomain_id": "material-system",
+      "subdomain_name": "材质系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-decal-system.md",
+      "exists": true,
+      "char_count": 1282
+    },
+    {
+      "id": "ta-mipmap-strategy",
+      "name": "Mipmap策略",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-mipmap-strategy.md",
+      "exists": true,
+      "char_count": 1563
+    },
+    {
+      "id": "ta-shader-memory",
+      "name": "Shader内存",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-shader-memory.md",
+      "exists": true,
+      "char_count": 1553
+    },
+    {
+      "id": "ta-vram-profiling",
+      "name": "VRAM分析",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-vram-profiling.md",
+      "exists": true,
+      "char_count": 1456
+    },
+    {
+      "id": "ta-console-budget",
+      "name": "主机内存限制",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-console-budget.md",
+      "exists": true,
+      "char_count": 1510
+    },
+    {
+      "id": "ta-memory-report",
+      "name": "内存报告",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "监控"
+      ],
+      "file": "technical-art/ta-memory-report.md",
+      "exists": true,
+      "char_count": 1328
+    },
+    {
+      "id": "ta-memory-pool",
+      "name": "内存池管理",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-memory-pool.md",
+      "exists": true,
+      "char_count": 1251
+    },
+    {
+      "id": "ta-mem-leak-detect",
+      "name": "内存泄漏检测",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "调试"
+      ],
+      "file": "technical-art/ta-mem-leak-detect.md",
+      "exists": true,
+      "char_count": 1374
+    },
+    {
+      "id": "ta-mem-overview",
+      "name": "内存管理概述",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-mem-overview.md",
+      "exists": true,
+      "char_count": 1474
+    },
+    {
+      "id": "ta-mem-budget-doc",
+      "name": "内存预算文档",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "technical-art/ta-mem-budget-doc.md",
+      "exists": true,
+      "char_count": 1359
+    },
+    {
+      "id": "ta-loading-screen",
+      "name": "加载优化",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-loading-screen.md",
+      "exists": true,
+      "char_count": 1307
+    },
+    {
+      "id": "ta-anim-memory",
+      "name": "动画内存预算",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-anim-memory.md",
+      "exists": true,
+      "char_count": 1344
+    },
+    {
+      "id": "ta-pak-size",
+      "name": "包体大小优化",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "发布"
+      ],
+      "file": "technical-art/ta-pak-size.md",
+      "exists": true,
+      "char_count": 1351
+    },
+    {
+      "id": "ta-reference-viewer",
+      "name": "引用查看器",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "technical-art/ta-reference-viewer.md",
+      "exists": true,
+      "char_count": 1337
+    },
+    {
+      "id": "ta-render-target",
+      "name": "渲染目标内存",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-render-target.md",
+      "exists": true,
+      "char_count": 1511
+    },
+    {
+      "id": "ta-mobile-memory",
+      "name": "移动端内存",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-mobile-memory.md",
+      "exists": true,
+      "char_count": 1402
+    },
+    {
+      "id": "ta-texture-budget",
+      "name": "纹理内存预算",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-texture-budget.md",
+      "exists": true,
+      "char_count": 1449
+    },
+    {
+      "id": "ta-texture-streaming",
+      "name": "纹理流送",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-texture-streaming.md",
+      "exists": true,
+      "char_count": 1440
+    },
+    {
+      "id": "ta-mesh-budget",
+      "name": "网格内存预算",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-mesh-budget.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "ta-asset-size",
+      "name": "资产大小审计",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "technical-art/ta-asset-size.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "ta-audio-memory",
+      "name": "音频内存预算",
+      "domain_id": "technical-art",
+      "subdomain_id": "memory-budget",
+      "subdomain_name": "内存与预算",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-audio-memory.md",
+      "exists": true,
+      "char_count": 1359
+    },
+    {
+      "id": "ta-houdini-engine",
+      "name": "Houdini Engine",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "technical-art/ta-houdini-engine.md",
+      "exists": true,
+      "char_count": 1602
+    },
+    {
+      "id": "ta-houdini-basics",
+      "name": "Houdini基础",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "technical-art/ta-houdini-basics.md",
+      "exists": true,
+      "char_count": 1528
+    },
+    {
+      "id": "ta-pcg-validation",
+      "name": "PCG质量验证",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "technical-art/ta-pcg-validation.md",
+      "exists": true,
+      "char_count": 1408
+    },
+    {
+      "id": "ta-ue-pcg-framework",
+      "name": "UE PCG Framework",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "technical-art/ta-ue-pcg-framework.md",
+      "exists": true,
+      "char_count": 1675
     },
     {
       "id": "ta-wfc",
+      "name": "Wave Function Collapse",
       "domain_id": "technical-art",
       "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
       "file": "technical-art/ta-wfc.md",
-      "title": "Wave Function Collapse",
-      "chars": 420
+      "exists": true,
+      "char_count": 1661
+    },
+    {
+      "id": "ta-pcg-world-partition",
+      "name": "世界分区与PCG",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-pcg-world-partition.md",
+      "exists": true,
+      "char_count": 1740
+    },
+    {
+      "id": "ta-scatter-system",
+      "name": "散布系统",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-scatter-system.md",
+      "exists": true,
+      "char_count": 1291
+    },
+    {
+      "id": "ta-pcg-biome",
+      "name": "生态群落系统",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-pcg-biome.md",
+      "exists": true,
+      "char_count": 1357
+    },
+    {
+      "id": "ta-pcg-dungeon",
+      "name": "程序化关卡",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-pcg-dungeon.md",
+      "exists": true,
+      "char_count": 1529
+    },
+    {
+      "id": "ta-pcg-terrain",
+      "name": "程序化地形",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-pcg-terrain.md",
+      "exists": true,
+      "char_count": 2724
+    },
+    {
+      "id": "ta-pcg-city",
+      "name": "程序化城市",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-pcg-city.md",
+      "exists": true,
+      "char_count": 1300
+    },
+    {
+      "id": "ta-pcg-building",
+      "name": "程序化建筑",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-pcg-building.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "ta-pcg-vegetation",
+      "name": "程序化植被",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-pcg-vegetation.md",
+      "exists": true,
+      "char_count": 1415
+    },
+    {
+      "id": "ta-pcg-overview",
+      "name": "程序化生成概述",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-pcg-overview.md",
+      "exists": true,
+      "char_count": 1595
+    },
+    {
+      "id": "ta-pcg-texture",
+      "name": "程序化纹理",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-pcg-texture.md",
+      "exists": true,
+      "char_count": 1396
+    },
+    {
+      "id": "ta-pcg-mesh",
+      "name": "程序化网格",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-pcg-mesh.md",
+      "exists": true,
+      "char_count": 1532
+    },
+    {
+      "id": "ta-pcg-road",
+      "name": "程序化道路",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-pcg-road.md",
+      "exists": true,
+      "char_count": 1404
+    },
+    {
+      "id": "ta-pcg-rule-system",
+      "name": "规则系统设计",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "架构"
+      ],
+      "file": "technical-art/ta-pcg-rule-system.md",
+      "exists": true,
+      "char_count": 1331
+    },
+    {
+      "id": "ta-pcg-runtime",
+      "name": "运行时PCG",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-pcg-runtime.md",
+      "exists": true,
+      "char_count": 1346
+    },
+    {
+      "id": "ta-pcg-seed",
+      "name": "随机种子与可控性",
+      "domain_id": "technical-art",
+      "subdomain_id": "pcg",
+      "subdomain_name": "程序化生成",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-pcg-seed.md",
+      "exists": true,
+      "char_count": 1372
+    },
+    {
+      "id": "ta-draw-call",
+      "name": "Draw Call优化",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-draw-call.md",
+      "exists": true,
+      "char_count": 1503
+    },
+    {
+      "id": "ta-instancing",
+      "name": "GPU实例化",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-instancing.md",
+      "exists": true,
+      "char_count": 1524
+    },
+    {
+      "id": "ta-gpu-profiling",
+      "name": "GPU性能分析",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-gpu-profiling.md",
+      "exists": true,
+      "char_count": 1722
+    },
+    {
+      "id": "ta-overdraw",
+      "name": "Overdraw控制",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-overdraw.md",
+      "exists": true,
+      "char_count": 1542
+    },
+    {
+      "id": "ta-tri-budget",
+      "name": "三角面预算",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-tri-budget.md",
+      "exists": true,
+      "char_count": 1383
+    },
+    {
+      "id": "ta-lightmap-opt",
+      "name": "光照贴图优化",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-lightmap-opt.md",
+      "exists": true,
+      "char_count": 1454
+    },
+    {
+      "id": "ta-frame-analysis",
+      "name": "帧分析实战",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "实战"
+      ],
+      "file": "technical-art/ta-frame-analysis.md",
+      "exists": true,
+      "char_count": 1365
+    },
+    {
+      "id": "ta-async-compute",
+      "name": "异步计算",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-async-compute.md",
+      "exists": true,
+      "char_count": 1340
+    },
+    {
+      "id": "ta-perf-overview",
+      "name": "性能优化概述",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-perf-overview.md",
+      "exists": true,
+      "char_count": 1526
+    },
+    {
+      "id": "ta-perf-regression",
+      "name": "性能回归检测",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "technical-art/ta-perf-regression.md",
+      "exists": true,
+      "char_count": 1370
+    },
+    {
+      "id": "ta-perf-budget",
+      "name": "性能预算分配",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-perf-budget.md",
+      "exists": true,
+      "char_count": 1352
+    },
+    {
+      "id": "ta-rendering-features",
+      "name": "渲染特性开关",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-rendering-features.md",
+      "exists": true,
+      "char_count": 1394
+    },
+    {
+      "id": "ta-scalability",
+      "name": "画质可伸缩性",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-scalability.md",
+      "exists": true,
+      "char_count": 1406
+    },
+    {
+      "id": "ta-mobile-perf",
+      "name": "移动端性能",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-mobile-perf.md",
+      "exists": true,
+      "char_count": 1380
+    },
+    {
+      "id": "ta-particle-perf",
+      "name": "粒子性能优化",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-particle-perf.md",
+      "exists": true,
+      "char_count": 1362
+    },
+    {
+      "id": "ta-batch-merge",
+      "name": "网格合并",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-batch-merge.md",
+      "exists": true,
+      "char_count": 1391
+    },
+    {
+      "id": "ta-mesh-simplify",
+      "name": "网格简化",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-mesh-simplify.md",
+      "exists": true,
+      "char_count": 1553
+    },
+    {
+      "id": "ta-culling",
+      "name": "裁剪技术",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-culling.md",
+      "exists": true,
+      "char_count": 1316
+    },
+    {
+      "id": "ta-streaming",
+      "name": "资源流送",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-streaming.md",
+      "exists": true,
+      "char_count": 1278
+    },
+    {
+      "id": "ta-shadow-perf",
+      "name": "阴影性能",
+      "domain_id": "technical-art",
+      "subdomain_id": "perf-optimization",
+      "subdomain_name": "性能优化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-shadow-perf.md",
+      "exists": true,
+      "char_count": 1384
+    },
+    {
+      "id": "ta-reference-library",
+      "name": "参考资产库",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-reference-library.md",
+      "exists": true,
+      "char_count": 1431
+    },
+    {
+      "id": "ta-naming-convention",
+      "name": "命名规范",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-naming-convention.md",
+      "exists": true,
+      "char_count": 2755
+    },
+    {
+      "id": "ta-outsource-pipeline",
+      "name": "外包管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "technical-art/ta-outsource-pipeline.md",
+      "exists": true,
+      "char_count": 1310
+    },
+    {
+      "id": "ta-multi-platform",
+      "name": "多平台管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-multi-platform.md",
+      "exists": true,
+      "char_count": 1403
+    },
+    {
+      "id": "ta-import-pipeline",
+      "name": "导入管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-import-pipeline.md",
+      "exists": true,
+      "char_count": 1429
+    },
+    {
+      "id": "ta-export-pipeline",
+      "name": "导出管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-export-pipeline.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "ta-scale-reference",
+      "name": "尺度与单位",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-scale-reference.md",
+      "exists": true,
+      "char_count": 1337
+    },
+    {
+      "id": "ta-data-validation",
+      "name": "数据验证管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "technical-art/ta-data-validation.md",
+      "exists": true,
+      "char_count": 1326
+    },
+    {
+      "id": "ta-modular-asset",
+      "name": "模块化资产系统",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-modular-asset.md",
+      "exists": true,
+      "char_count": 1393
+    },
+    {
+      "id": "ta-vcs-workflow",
+      "name": "版本控制工作流",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-vcs-workflow.md",
+      "exists": true,
+      "char_count": 1427
+    },
+    {
+      "id": "ta-migration-strategy",
+      "name": "版本迁移策略",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "technical-art/ta-migration-strategy.md",
+      "exists": true,
+      "char_count": 1461
+    },
+    {
+      "id": "ta-folder-structure",
+      "name": "目录结构",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-folder-structure.md",
+      "exists": true,
+      "char_count": 1310
+    },
+    {
+      "id": "ta-pipeline-doc",
+      "name": "管线文档",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-pipeline-doc.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "ta-pipeline-monitoring",
+      "name": "管线监控",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管理"
+      ],
+      "file": "technical-art/ta-pipeline-monitoring.md",
+      "exists": true,
+      "char_count": 1411
+    },
+    {
+      "id": "ta-texture-pipeline",
+      "name": "纹理管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-texture-pipeline.md",
+      "exists": true,
+      "char_count": 1282
+    },
+    {
+      "id": "ta-asset-review",
+      "name": "资产审查流程",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "technical-art/ta-asset-review.md",
+      "exists": true,
+      "char_count": 1313
+    },
+    {
+      "id": "ta-asset-database",
+      "name": "资产数据库",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "technical-art/ta-asset-database.md",
+      "exists": true,
+      "char_count": 1481
+    },
+    {
+      "id": "ta-cook-pipeline",
+      "name": "资产烘焙管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-cook-pipeline.md",
+      "exists": true,
+      "char_count": 1367
+    },
+    {
+      "id": "ta-pipeline-overview",
+      "name": "资产管线概述",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-pipeline-overview.md",
+      "exists": true,
+      "char_count": 1422
+    },
+    {
+      "id": "ta-iteration-speed",
+      "name": "迭代速度优化",
+      "domain_id": "technical-art",
+      "subdomain_id": "pipeline-build",
+      "subdomain_name": "管线搭建",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "technical-art/ta-iteration-speed.md",
+      "exists": true,
+      "char_count": 1366
+    },
+    {
+      "id": "ta-compute-shader",
+      "name": "Compute Shader",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-compute-shader.md",
+      "exists": true,
+      "char_count": 1636
+    },
+    {
+      "id": "ta-glsl-basics",
+      "name": "GLSL基础",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-glsl-basics.md",
+      "exists": true,
+      "char_count": 1604
+    },
+    {
+      "id": "ta-gpu-pipeline",
+      "name": "GPU渲染管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-gpu-pipeline.md",
+      "exists": true,
+      "char_count": 1560
+    },
+    {
+      "id": "ta-hlsl-basics",
+      "name": "HLSL基础",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-hlsl-basics.md",
+      "exists": true,
+      "char_count": 1555
+    },
+    {
+      "id": "ta-sdf-shader",
+      "name": "SDF着色器",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-sdf-shader.md",
+      "exists": true,
+      "char_count": 1423
+    },
+    {
+      "id": "ta-shader-variants",
+      "name": "Shader变体管理",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "technical-art/ta-shader-variants.md",
+      "exists": true,
+      "char_count": 1594
+    },
+    {
+      "id": "ta-shader-overview",
+      "name": "Shader开发概述",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-shader-overview.md",
+      "exists": true,
+      "char_count": 1906
+    },
+    {
+      "id": "ta-shader-optimization",
+      "name": "Shader性能优化",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "优化"
+      ],
+      "file": "technical-art/ta-shader-optimization.md",
+      "exists": true,
+      "char_count": 1664
+    },
+    {
+      "id": "ta-shader-math",
+      "name": "Shader数学基础",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-shader-math.md",
+      "exists": true,
+      "char_count": 1504
+    },
+    {
+      "id": "ta-shader-debugging",
+      "name": "Shader调试技巧",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "调试"
+      ],
+      "file": "technical-art/ta-shader-debugging.md",
+      "exists": true,
+      "char_count": 1656
+    },
+    {
+      "id": "ta-ue-material-editor",
+      "name": "UE材质编辑器",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "technical-art/ta-ue-material-editor.md",
+      "exists": true,
+      "char_count": 1558
+    },
+    {
+      "id": "ta-unity-shadergraph",
+      "name": "Unity Shader Graph",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "工具"
+      ],
+      "file": "technical-art/ta-unity-shadergraph.md",
+      "exists": true,
+      "char_count": 1833
+    },
+    {
+      "id": "ta-geometry-shader",
+      "name": "几何着色器",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-geometry-shader.md",
+      "exists": true,
+      "char_count": 1348
+    },
+    {
+      "id": "ta-noise-functions",
+      "name": "噪声函数",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-noise-functions.md",
+      "exists": true,
+      "char_count": 1627
+    },
+    {
+      "id": "ta-screen-space-effects",
+      "name": "屏幕空间效果",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-screen-space-effects.md",
+      "exists": true,
+      "char_count": 1481
+    },
+    {
+      "id": "ta-tessellation-shader",
+      "name": "曲面细分着色器",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-tessellation-shader.md",
+      "exists": true,
+      "char_count": 1609
+    },
+    {
+      "id": "ta-pixel-shader",
+      "name": "片元着色器编写",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-pixel-shader.md",
+      "exists": true,
+      "char_count": 1519
+    },
+    {
+      "id": "ta-custom-lighting",
+      "name": "自定义光照模型",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-custom-lighting.md",
+      "exists": true,
+      "char_count": 1512
+    },
+    {
+      "id": "ta-shader-cross-platform",
+      "name": "跨平台Shader",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "technical-art/ta-shader-cross-platform.md",
+      "exists": true,
+      "char_count": 1584
+    },
+    {
+      "id": "ta-vertex-shader",
+      "name": "顶点着色器编写",
+      "domain_id": "technical-art",
+      "subdomain_id": "shader-dev",
+      "subdomain_name": "Shader开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-vertex-shader.md",
+      "exists": true,
+      "char_count": 1416
+    },
+    {
+      "id": "ta-python-blender",
+      "name": "Blender Python脚本",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-python-blender.md",
+      "exists": true,
+      "char_count": 1699
+    },
+    {
+      "id": "ta-csharp-tools",
+      "name": "C#工具开发",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-csharp-tools.md",
+      "exists": true,
+      "char_count": 1435
+    },
+    {
+      "id": "ta-dcc-bridge",
+      "name": "DCC桥接工具",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "technical-art/ta-dcc-bridge.md",
+      "exists": true,
+      "char_count": 1430
+    },
+    {
+      "id": "ta-mel-scripting",
+      "name": "MEL脚本",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-mel-scripting.md",
+      "exists": true,
+      "char_count": 1461
+    },
+    {
+      "id": "ta-python-maya",
+      "name": "Maya Python脚本",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-python-maya.md",
+      "exists": true,
+      "char_count": 1704
+    },
+    {
+      "id": "ta-ue-python",
+      "name": "UE Python脚本",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-ue-python.md",
+      "exists": true,
+      "char_count": 1529
+    },
+    {
+      "id": "ta-ue-editor-utility",
+      "name": "UE编辑器工具",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-ue-editor-utility.md",
+      "exists": true,
+      "char_count": 1623
+    },
+    {
+      "id": "ta-unity-editor",
+      "name": "Unity编辑器扩展",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-unity-editor.md",
+      "exists": true,
+      "char_count": 1674
+    },
+    {
+      "id": "ta-commandlet",
+      "name": "命令行工具",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "technical-art/ta-commandlet.md",
+      "exists": true,
+      "char_count": 1429
+    },
+    {
+      "id": "ta-api-integration",
+      "name": "外部API集成",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "technical-art/ta-api-integration.md",
+      "exists": true,
+      "char_count": 1492
+    },
+    {
+      "id": "ta-gui-framework",
+      "name": "工具GUI框架",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-gui-framework.md",
+      "exists": true,
+      "char_count": 1559
+    },
+    {
+      "id": "ta-tool-deploy",
+      "name": "工具分发部署",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "technical-art/ta-tool-deploy.md",
+      "exists": true,
+      "char_count": 1323
+    },
+    {
+      "id": "ta-tool-pipeline",
+      "name": "工具开发管线",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "管线"
+      ],
+      "file": "technical-art/ta-tool-pipeline.md",
+      "exists": true,
+      "char_count": 1389
+    },
+    {
+      "id": "ta-tool-documentation",
+      "name": "工具文档",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "规范"
+      ],
+      "file": "technical-art/ta-tool-documentation.md",
+      "exists": true,
+      "char_count": 1368
+    },
+    {
+      "id": "ta-tool-testing",
+      "name": "工具测试",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "technical-art/ta-tool-testing.md",
+      "exists": true,
+      "char_count": 1281
+    },
+    {
+      "id": "ta-tool-ux",
+      "name": "工具用户体验",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-tool-ux.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "ta-batch-tool",
+      "name": "批量操作工具",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-batch-tool.md",
+      "exists": true,
+      "char_count": 1344
+    },
+    {
+      "id": "ta-tool-overview",
+      "name": "技美工具开发概述",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "technical-art/ta-tool-overview.md",
+      "exists": true,
+      "char_count": 1689
+    },
+    {
+      "id": "ta-asset-processor",
+      "name": "资产处理工具",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "technical-art/ta-asset-processor.md",
+      "exists": true,
+      "char_count": 1408
+    },
+    {
+      "id": "ta-validation-tool",
+      "name": "资产验证工具",
+      "domain_id": "technical-art",
+      "subdomain_id": "tool-dev",
+      "subdomain_name": "工具开发",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "质量"
+      ],
+      "file": "technical-art/ta-validation-tool.md",
+      "exists": true,
+      "char_count": 1417
     }
-  ]
+  ],
+  "stats": {
+    "total": 180,
+    "total_chars": 264324,
+    "avg_chars": 1468,
+    "domain": "technical-art"
+  }
 }

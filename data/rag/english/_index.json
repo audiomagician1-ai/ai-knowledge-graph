@@ -1,1673 +1,34 @@
 {
-  "version": "1.0",
-  "domain_id": "english",
-  "generated_at": "2026-03-19T08:40:17",
-  "total_concepts": 200,
   "documents": [
     {
-      "id": "vowel-sounds",
-      "name": "元音音素",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
+      "id": "citation-referencing",
+      "name": "引用与参考文献",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
       "difficulty": 2,
       "is_milestone": false,
       "tags": [
-        "基础"
+        "学术"
       ],
-      "file": "english/phonetics/vowel-sounds.md",
+      "file": "english/writing-en/citation-referencing.md",
       "exists": true,
-      "char_count": 821
-    },
-    {
-      "id": "consonant-sounds",
-      "name": "辅音音素",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/phonetics/consonant-sounds.md",
-      "exists": true,
-      "char_count": 829
-    },
-    {
-      "id": "ipa-basics",
-      "name": "国际音标基础",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/phonetics/ipa-basics.md",
-      "exists": true,
-      "char_count": 844
-    },
-    {
-      "id": "syllable-structure",
-      "name": "音节结构",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/phonetics/syllable-structure.md",
-      "exists": true,
-      "char_count": 825
-    },
-    {
-      "id": "word-stress",
-      "name": "单词重音",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/phonetics/word-stress.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "sentence-stress",
-      "name": "句子重音",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/phonetics/sentence-stress.md",
-      "exists": true,
-      "char_count": 810
-    },
-    {
-      "id": "intonation-patterns",
-      "name": "语调模式",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/phonetics/intonation-patterns.md",
-      "exists": true,
-      "char_count": 820
-    },
-    {
-      "id": "linking-sounds",
-      "name": "连读",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/phonetics/linking-sounds.md",
-      "exists": true,
-      "char_count": 790
-    },
-    {
-      "id": "reduction-elision",
-      "name": "弱化与省音",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/phonetics/reduction-elision.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "minimal-pairs",
-      "name": "最小对立体",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "练习"
-      ],
-      "file": "english/phonetics/minimal-pairs.md",
-      "exists": true,
-      "char_count": 768
-    },
-    {
-      "id": "phonics-rules",
-      "name": "自然拼读规则",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/phonetics/phonics-rules.md",
-      "exists": true,
-      "char_count": 757
-    },
-    {
-      "id": "schwa-sound",
-      "name": "中央元音schwa",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/phonetics/schwa-sound.md",
-      "exists": true,
-      "char_count": 796
-    },
-    {
-      "id": "consonant-clusters",
-      "name": "辅音丛",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/phonetics/consonant-clusters.md",
-      "exists": true,
-      "char_count": 744
-    },
-    {
-      "id": "rhythm-timing",
-      "name": "节奏与语速",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/phonetics/rhythm-timing.md",
-      "exists": true,
-      "char_count": 805
-    },
-    {
-      "id": "am-vs-br-pronunciation",
-      "name": "美音与英音差异",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "拓展"
-      ],
-      "file": "english/phonetics/am-vs-br-pronunciation.md",
-      "exists": true,
-      "char_count": 804
-    },
-    {
-      "id": "tongue-twisters",
-      "name": "绕口令练习",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "趣味"
-      ],
-      "file": "english/phonetics/tongue-twisters.md",
-      "exists": true,
-      "char_count": 766
-    },
-    {
-      "id": "assimilation",
-      "name": "语音同化",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/phonetics/assimilation.md",
-      "exists": true,
-      "char_count": 756
-    },
-    {
-      "id": "thought-groups",
-      "name": "意群划分",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/phonetics/thought-groups.md",
-      "exists": true,
-      "char_count": 794
-    },
-    {
-      "id": "pronunciation-practice",
-      "name": "发音综合练习",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "练习"
-      ],
-      "file": "english/phonetics/pronunciation-practice.md",
-      "exists": true,
-      "char_count": 837
-    },
-    {
-      "id": "phonemic-transcription",
-      "name": "音标转写",
-      "domain_id": "english",
-      "subdomain_id": "phonetics",
-      "subdomain_name": "语音",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "练习"
-      ],
-      "file": "english/phonetics/phonemic-transcription.md",
-      "exists": true,
-      "char_count": 774
-    },
-    {
-      "id": "parts-of-speech",
-      "name": "词性概述",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/parts-of-speech.md",
-      "exists": true,
-      "char_count": 843
-    },
-    {
-      "id": "nouns",
-      "name": "名词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/nouns.md",
-      "exists": true,
-      "char_count": 815
-    },
-    {
-      "id": "pronouns",
-      "name": "代词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/pronouns.md",
-      "exists": true,
-      "char_count": 805
-    },
-    {
-      "id": "articles",
-      "name": "冠词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/articles.md",
-      "exists": true,
-      "char_count": 811
-    },
-    {
-      "id": "adjectives",
-      "name": "形容词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/adjectives.md",
-      "exists": true,
-      "char_count": 815
-    },
-    {
-      "id": "adverbs",
-      "name": "副词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/adverbs.md",
-      "exists": true,
-      "char_count": 802
-    },
-    {
-      "id": "prepositions",
-      "name": "介词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/prepositions.md",
-      "exists": true,
-      "char_count": 821
-    },
-    {
-      "id": "conjunctions",
-      "name": "连词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/conjunctions.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "basic-sentence-order",
-      "name": "基本语序",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/basic-sentence-order.md",
-      "exists": true,
-      "char_count": 789
-    },
-    {
-      "id": "be-verb",
-      "name": "be动词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 1,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/be-verb.md",
-      "exists": true,
-      "char_count": 868
-    },
-    {
-      "id": "have-do-auxiliary",
-      "name": "助动词have/do",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/have-do-auxiliary.md",
-      "exists": true,
-      "char_count": 893
-    },
-    {
-      "id": "modal-verbs",
-      "name": "情态动词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/modal-verbs.md",
-      "exists": true,
-      "char_count": 901
-    },
-    {
-      "id": "questions",
-      "name": "疑问句",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/questions.md",
-      "exists": true,
-      "char_count": 781
-    },
-    {
-      "id": "negation",
-      "name": "否定句",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/negation.md",
-      "exists": true,
-      "char_count": 777
-    },
-    {
-      "id": "imperative",
-      "name": "祈使句",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/imperative.md",
-      "exists": true,
-      "char_count": 770
-    },
-    {
-      "id": "exclamatory",
-      "name": "感叹句",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/exclamatory.md",
-      "exists": true,
-      "char_count": 780
-    },
-    {
-      "id": "there-be",
-      "name": "there be句型",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/basic-grammar/there-be.md",
-      "exists": true,
-      "char_count": 825
-    },
-    {
-      "id": "it-usage",
-      "name": "it的用法",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/it-usage.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "possessives",
-      "name": "所有格",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/possessives.md",
-      "exists": true,
-      "char_count": 788
-    },
-    {
-      "id": "quantifiers",
-      "name": "数量词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/quantifiers.md",
-      "exists": true,
-      "char_count": 821
-    },
-    {
-      "id": "determiners",
-      "name": "限定词",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/determiners.md",
-      "exists": true,
-      "char_count": 830
-    },
-    {
-      "id": "subject-verb-agreement",
-      "name": "主谓一致",
-      "domain_id": "english",
-      "subdomain_id": "basic-grammar",
-      "subdomain_name": "基础语法",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/basic-grammar/subject-verb-agreement.md",
-      "exists": true,
-      "char_count": 848
-    },
-    {
-      "id": "word-formation",
-      "name": "构词法",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/vocabulary/word-formation.md",
-      "exists": true,
-      "char_count": 793
-    },
-    {
-      "id": "common-prefixes",
-      "name": "常见前缀",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/vocabulary/common-prefixes.md",
-      "exists": true,
-      "char_count": 849
-    },
-    {
-      "id": "common-suffixes",
-      "name": "常见后缀",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/vocabulary/common-suffixes.md",
-      "exists": true,
-      "char_count": 867
-    },
-    {
-      "id": "latin-greek-roots",
-      "name": "拉丁与希腊词根",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/vocabulary/latin-greek-roots.md",
-      "exists": true,
-      "char_count": 831
-    },
-    {
-      "id": "synonyms-antonyms",
-      "name": "同义词与反义词",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/vocabulary/synonyms-antonyms.md",
-      "exists": true,
-      "char_count": 772
-    },
-    {
-      "id": "collocations",
-      "name": "搭配",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/vocabulary/collocations.md",
-      "exists": true,
-      "char_count": 803
-    },
-    {
-      "id": "phrasal-verbs",
-      "name": "短语动词",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/vocabulary/phrasal-verbs.md",
-      "exists": true,
-      "char_count": 805
-    },
-    {
-      "id": "context-clues",
-      "name": "上下文猜词",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "策略"
-      ],
-      "file": "english/vocabulary/context-clues.md",
-      "exists": true,
-      "char_count": 754
-    },
-    {
-      "id": "word-families",
-      "name": "词族",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/vocabulary/word-families.md",
-      "exists": true,
-      "char_count": 745
-    },
-    {
-      "id": "academic-vocabulary",
-      "name": "学术词汇",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/vocabulary/academic-vocabulary.md",
-      "exists": true,
-      "char_count": 814
-    },
-    {
-      "id": "false-friends",
-      "name": "假朋友",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "易错"
-      ],
-      "file": "english/vocabulary/false-friends.md",
-      "exists": true,
-      "char_count": 746
-    },
-    {
-      "id": "register-formality",
-      "name": "语域与正式程度",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/vocabulary/register-formality.md",
-      "exists": true,
-      "char_count": 793
-    },
-    {
-      "id": "vocabulary-strategies",
-      "name": "词汇记忆策略",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "策略"
-      ],
-      "file": "english/vocabulary/vocabulary-strategies.md",
-      "exists": true,
-      "char_count": 796
-    },
-    {
-      "id": "confusing-words",
-      "name": "易混淆词",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "易错"
-      ],
-      "file": "english/vocabulary/confusing-words.md",
-      "exists": true,
-      "char_count": 847
-    },
-    {
-      "id": "business-vocabulary",
-      "name": "商务词汇",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "专业"
-      ],
-      "file": "english/vocabulary/business-vocabulary.md",
-      "exists": true,
-      "char_count": 807
-    },
-    {
-      "id": "technical-vocabulary",
-      "name": "科技词汇",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "专业"
-      ],
-      "file": "english/vocabulary/technical-vocabulary.md",
-      "exists": true,
-      "char_count": 759
-    },
-    {
-      "id": "connotation-denotation",
-      "name": "内涵与外延",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/vocabulary/connotation-denotation.md",
-      "exists": true,
-      "char_count": 772
-    },
-    {
-      "id": "word-usage-practice",
-      "name": "词汇运用练习",
-      "domain_id": "english",
-      "subdomain_id": "vocabulary",
-      "subdomain_name": "核心词汇",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "练习"
-      ],
-      "file": "english/vocabulary/word-usage-practice.md",
-      "exists": true,
-      "char_count": 773
-    },
-    {
-      "id": "simple-present",
-      "name": "一般现在时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/tenses/simple-present.md",
-      "exists": true,
-      "char_count": 836
-    },
-    {
-      "id": "present-continuous",
-      "name": "现在进行时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/tenses/present-continuous.md",
-      "exists": true,
-      "char_count": 833
-    },
-    {
-      "id": "simple-past",
-      "name": "一般过去时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/tenses/simple-past.md",
-      "exists": true,
-      "char_count": 828
-    },
-    {
-      "id": "past-continuous",
-      "name": "过去进行时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/tenses/past-continuous.md",
-      "exists": true,
-      "char_count": 820
-    },
-    {
-      "id": "simple-future",
-      "name": "一般将来时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/tenses/simple-future.md",
-      "exists": true,
-      "char_count": 843
-    },
-    {
-      "id": "present-perfect",
-      "name": "现在完成时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "english/tenses/present-perfect.md",
-      "exists": true,
-      "char_count": 888
-    },
-    {
-      "id": "present-perfect-cont",
-      "name": "现在完成进行时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/tenses/present-perfect-cont.md",
-      "exists": true,
-      "char_count": 870
-    },
-    {
-      "id": "past-perfect",
-      "name": "过去完成时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/tenses/past-perfect.md",
-      "exists": true,
-      "char_count": 832
-    },
-    {
-      "id": "past-perfect-cont",
-      "name": "过去完成进行时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/tenses/past-perfect-cont.md",
-      "exists": true,
-      "char_count": 833
-    },
-    {
-      "id": "future-continuous",
-      "name": "将来进行时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/tenses/future-continuous.md",
-      "exists": true,
-      "char_count": 800
-    },
-    {
-      "id": "future-perfect",
-      "name": "将来完成时",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/tenses/future-perfect.md",
-      "exists": true,
-      "char_count": 806
-    },
-    {
-      "id": "tense-timeline",
-      "name": "时态时间线",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "english/tenses/tense-timeline.md",
-      "exists": true,
-      "char_count": 841
-    },
-    {
-      "id": "irregular-verbs",
-      "name": "不规则动词",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/tenses/irregular-verbs.md",
-      "exists": true,
-      "char_count": 773
-    },
-    {
-      "id": "passive-voice",
-      "name": "被动语态",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/tenses/passive-voice.md",
-      "exists": true,
-      "char_count": 794
-    },
-    {
-      "id": "reported-speech",
-      "name": "间接引语",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/tenses/reported-speech.md",
-      "exists": true,
-      "char_count": 817
-    },
-    {
-      "id": "stative-verbs",
-      "name": "状态动词",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/tenses/stative-verbs.md",
-      "exists": true,
-      "char_count": 765
-    },
-    {
-      "id": "tense-consistency",
-      "name": "时态一致性",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/tenses/tense-consistency.md",
-      "exists": true,
-      "char_count": 786
-    },
-    {
-      "id": "used-to-would",
-      "name": "used to与would",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/tenses/used-to-would.md",
-      "exists": true,
-      "char_count": 841
-    },
-    {
-      "id": "present-for-future",
-      "name": "现在时表将来",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/tenses/present-for-future.md",
-      "exists": true,
-      "char_count": 798
-    },
-    {
-      "id": "tense-review-exercise",
-      "name": "时态综合练习",
-      "domain_id": "english",
-      "subdomain_id": "tenses",
-      "subdomain_name": "时态系统",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "练习"
-      ],
-      "file": "english/tenses/tense-review-exercise.md",
-      "exists": true,
-      "char_count": 795
-    },
-    {
-      "id": "five-basic-patterns",
-      "name": "五种基本句型",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/sentence-patterns/five-basic-patterns.md",
-      "exists": true,
-      "char_count": 778
-    },
-    {
-      "id": "compound-sentences",
-      "name": "并列句",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/compound-sentences.md",
-      "exists": true,
-      "char_count": 809
-    },
-    {
-      "id": "complex-sentences",
-      "name": "复合句",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/complex-sentences.md",
-      "exists": true,
-      "char_count": 776
-    },
-    {
-      "id": "noun-clauses",
-      "name": "名词性从句",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/noun-clauses.md",
-      "exists": true,
-      "char_count": 786
-    },
-    {
-      "id": "adjective-clauses",
-      "name": "定语从句",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "english/sentence-patterns/adjective-clauses.md",
-      "exists": true,
-      "char_count": 846
-    },
-    {
-      "id": "adverb-clauses",
-      "name": "状语从句",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/adverb-clauses.md",
-      "exists": true,
-      "char_count": 791
-    },
-    {
-      "id": "relative-pronouns",
-      "name": "关系代词与关系副词",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/relative-pronouns.md",
-      "exists": true,
-      "char_count": 854
-    },
-    {
-      "id": "restrictive-vs-non",
-      "name": "限制性与非限制性",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/sentence-patterns/restrictive-vs-non.md",
-      "exists": true,
-      "char_count": 770
-    },
-    {
-      "id": "infinitive-phrases",
-      "name": "不定式短语",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/infinitive-phrases.md",
-      "exists": true,
-      "char_count": 809
-    },
-    {
-      "id": "gerund-phrases",
-      "name": "动名词短语",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/gerund-phrases.md",
-      "exists": true,
-      "char_count": 790
-    },
-    {
-      "id": "participle-phrases",
-      "name": "分词短语",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/sentence-patterns/participle-phrases.md",
-      "exists": true,
-      "char_count": 803
-    },
-    {
-      "id": "conditional-sentences",
-      "name": "条件句",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/conditional-sentences.md",
-      "exists": true,
-      "char_count": 798
-    },
-    {
-      "id": "wish-subjunctive",
-      "name": "虚拟语气",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/sentence-patterns/wish-subjunctive.md",
-      "exists": true,
-      "char_count": 828
-    },
-    {
-      "id": "inversion",
-      "name": "倒装句",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/sentence-patterns/inversion.md",
-      "exists": true,
-      "char_count": 755
-    },
-    {
-      "id": "emphasis-cleft",
-      "name": "强调与分裂句",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/sentence-patterns/emphasis-cleft.md",
-      "exists": true,
-      "char_count": 789
-    },
-    {
-      "id": "parallel-structure",
-      "name": "平行结构",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/parallel-structure.md",
-      "exists": true,
-      "char_count": 722
-    },
-    {
-      "id": "sentence-combining",
-      "name": "句子合并",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "练习"
-      ],
-      "file": "english/sentence-patterns/sentence-combining.md",
-      "exists": true,
-      "char_count": 734
-    },
-    {
-      "id": "run-on-fragments",
-      "name": "句子错误",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "易错"
-      ],
-      "file": "english/sentence-patterns/run-on-fragments.md",
-      "exists": true,
-      "char_count": 747
-    },
-    {
-      "id": "appositive-phrases",
-      "name": "同位语",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/sentence-patterns/appositive-phrases.md",
-      "exists": true,
-      "char_count": 728
-    },
-    {
-      "id": "ellipsis-substitution",
-      "name": "省略与替代",
-      "domain_id": "english",
-      "subdomain_id": "sentence-patterns",
-      "subdomain_name": "句型结构",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/sentence-patterns/ellipsis-substitution.md",
-      "exists": true,
-      "char_count": 812
-    },
-    {
-      "id": "advanced-modals",
-      "name": "情态动词进阶",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/advanced-grammar/advanced-modals.md",
-      "exists": true,
-      "char_count": 775
-    },
-    {
-      "id": "causative-verbs",
-      "name": "使役动词",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/advanced-grammar/causative-verbs.md",
-      "exists": true,
-      "char_count": 785
-    },
-    {
-      "id": "subjunctive-mood",
-      "name": "虚拟语气详解",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/advanced-grammar/subjunctive-mood.md",
-      "exists": true,
-      "char_count": 783
-    },
-    {
-      "id": "discourse-markers",
-      "name": "话语标记词",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/advanced-grammar/discourse-markers.md",
-      "exists": true,
-      "char_count": 876
-    },
-    {
-      "id": "reported-speech-adv",
-      "name": "间接引语进阶",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/advanced-grammar/reported-speech-adv.md",
-      "exists": true,
-      "char_count": 773
-    },
-    {
-      "id": "articles-advanced",
-      "name": "冠词进阶",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/advanced-grammar/articles-advanced.md",
-      "exists": true,
-      "char_count": 761
-    },
-    {
-      "id": "noun-modifiers",
-      "name": "名词修饰语",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/advanced-grammar/noun-modifiers.md",
-      "exists": true,
-      "char_count": 763
-    },
-    {
-      "id": "adverb-placement",
-      "name": "副词位置",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/advanced-grammar/adverb-placement.md",
-      "exists": true,
-      "char_count": 751
-    },
-    {
-      "id": "dangling-modifiers",
-      "name": "悬垂修饰语",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "易错"
-      ],
-      "file": "english/advanced-grammar/dangling-modifiers.md",
-      "exists": true,
-      "char_count": 769
+      "char_count": 1281
     },
     {
       "id": "hedging-language",
-      "name": "模糊表达",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 6,
+      "name": "模糊限制语",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "学术"
       ],
       "file": "english/advanced-grammar/hedging-language.md",
       "exists": true,
-      "char_count": 769
-    },
-    {
-      "id": "ellipsis-advanced",
-      "name": "高级省略",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/advanced-grammar/ellipsis-advanced.md",
-      "exists": true,
-      "char_count": 763
+      "char_count": 3466
     },
     {
       "id": "fronting-theme",
@@ -1682,37 +43,7 @@
       ],
       "file": "english/advanced-grammar/fronting-theme.md",
       "exists": true,
-      "char_count": 744
-    },
-    {
-      "id": "mixed-conditionals",
-      "name": "混合条件句",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/advanced-grammar/mixed-conditionals.md",
-      "exists": true,
-      "char_count": 760
-    },
-    {
-      "id": "nominal-relative",
-      "name": "名词性关系从句",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/advanced-grammar/nominal-relative.md",
-      "exists": true,
-      "char_count": 822
+      "char_count": 3229
     },
     {
       "id": "reduced-clauses",
@@ -1727,37 +58,7 @@
       ],
       "file": "english/advanced-grammar/reduced-clauses.md",
       "exists": true,
-      "char_count": 748
-    },
-    {
-      "id": "concession-contrast",
-      "name": "让步与对比",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/advanced-grammar/concession-contrast.md",
-      "exists": true,
-      "char_count": 833
-    },
-    {
-      "id": "complex-prepositions",
-      "name": "复杂介词短语",
-      "domain_id": "english",
-      "subdomain_id": "advanced-grammar",
-      "subdomain_name": "高级语法",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "学术"
-      ],
-      "file": "english/advanced-grammar/complex-prepositions.md",
-      "exists": true,
-      "char_count": 851
+      "char_count": 3403
     },
     {
       "id": "aspect-nuances",
@@ -1772,7 +73,187 @@
       ],
       "file": "english/advanced-grammar/aspect-nuances.md",
       "exists": true,
-      "char_count": 785
+      "char_count": 1463
+    },
+    {
+      "id": "causative-verbs",
+      "name": "使役动词",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/advanced-grammar/causative-verbs.md",
+      "exists": true,
+      "char_count": 1312
+    },
+    {
+      "id": "articles-advanced",
+      "name": "冠词进阶",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/advanced-grammar/articles-advanced.md",
+      "exists": true,
+      "char_count": 1330
+    },
+    {
+      "id": "adverb-placement",
+      "name": "副词位置",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/advanced-grammar/adverb-placement.md",
+      "exists": true,
+      "char_count": 3000
+    },
+    {
+      "id": "noun-modifiers",
+      "name": "名词修饰语",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/advanced-grammar/noun-modifiers.md",
+      "exists": true,
+      "char_count": 1332
+    },
+    {
+      "id": "nominal-relative",
+      "name": "名词性关系从句",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/advanced-grammar/nominal-relative.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "complex-prepositions",
+      "name": "复杂介词短语",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "学术"
+      ],
+      "file": "english/advanced-grammar/complex-prepositions.md",
+      "exists": true,
+      "char_count": 1462
+    },
+    {
+      "id": "dangling-modifiers",
+      "name": "悬垂修饰语",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "易错"
+      ],
+      "file": "english/advanced-grammar/dangling-modifiers.md",
+      "exists": true,
+      "char_count": 1248
+    },
+    {
+      "id": "advanced-modals",
+      "name": "情态动词进阶",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/advanced-grammar/advanced-modals.md",
+      "exists": true,
+      "char_count": 1255
+    },
+    {
+      "id": "mixed-conditionals",
+      "name": "混合条件句",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/advanced-grammar/mixed-conditionals.md",
+      "exists": true,
+      "char_count": 1322
+    },
+    {
+      "id": "subjunctive-mood",
+      "name": "虚拟语气详解",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/advanced-grammar/subjunctive-mood.md",
+      "exists": true,
+      "char_count": 3107
+    },
+    {
+      "id": "concession-contrast",
+      "name": "让步与对比",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/advanced-grammar/concession-contrast.md",
+      "exists": true,
+      "char_count": 1463
+    },
+    {
+      "id": "discourse-markers",
+      "name": "话语标记词",
+      "domain_id": "english",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/advanced-grammar/discourse-markers.md",
+      "exists": true,
+      "char_count": 1478
     },
     {
       "id": "grammar-in-context",
@@ -1787,7 +268,7 @@
       ],
       "file": "english/advanced-grammar/grammar-in-context.md",
       "exists": true,
-      "char_count": 796
+      "char_count": 1303
     },
     {
       "id": "error-analysis",
@@ -1796,1183 +277,403 @@
       "subdomain_id": "advanced-grammar",
       "subdomain_name": "高级语法",
       "difficulty": 5,
-      "is_milestone": true,
+      "is_milestone": false,
       "tags": [
         "练习"
       ],
       "file": "english/advanced-grammar/error-analysis.md",
       "exists": true,
-      "char_count": 751
+      "char_count": 1266
     },
     {
-      "id": "skimming",
-      "name": "略读",
+      "id": "reported-speech-adv",
+      "name": "间接引语进阶",
       "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "策略"
-      ],
-      "file": "english/reading/skimming.md",
-      "exists": true,
-      "char_count": 733
-    },
-    {
-      "id": "scanning",
-      "name": "查读",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "策略"
-      ],
-      "file": "english/reading/scanning.md",
-      "exists": true,
-      "char_count": 725
-    },
-    {
-      "id": "intensive-reading",
-      "name": "精读",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "策略"
-      ],
-      "file": "english/reading/intensive-reading.md",
-      "exists": true,
-      "char_count": 738
-    },
-    {
-      "id": "main-idea",
-      "name": "主旨大意",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/reading/main-idea.md",
-      "exists": true,
-      "char_count": 760
-    },
-    {
-      "id": "supporting-details",
-      "name": "细节支撑",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/reading/supporting-details.md",
-      "exists": true,
-      "char_count": 801
-    },
-    {
-      "id": "inference",
-      "name": "推断",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/reading/inference.md",
-      "exists": true,
-      "char_count": 789
-    },
-    {
-      "id": "text-structure",
-      "name": "篇章结构",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/reading/text-structure.md",
-      "exists": true,
-      "char_count": 833
-    },
-    {
-      "id": "cohesion-coherence",
-      "name": "衔接与连贯",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
       "difficulty": 5,
       "is_milestone": false,
       "tags": [
         "进阶"
       ],
-      "file": "english/reading/cohesion-coherence.md",
+      "file": "english/advanced-grammar/reported-speech-adv.md",
       "exists": true,
-      "char_count": 822
+      "char_count": 3098
     },
     {
-      "id": "authors-purpose",
-      "name": "作者目的",
+      "id": "ellipsis-advanced",
+      "name": "高级省略",
       "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/reading/authors-purpose.md",
-      "exists": true,
-      "char_count": 792
-    },
-    {
-      "id": "tone-mood",
-      "name": "语气与情感",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/reading/tone-mood.md",
-      "exists": true,
-      "char_count": 803
-    },
-    {
-      "id": "fact-vs-opinion",
-      "name": "事实与观点",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/reading/fact-vs-opinion.md",
-      "exists": true,
-      "char_count": 763
-    },
-    {
-      "id": "critical-reading",
-      "name": "批判性阅读",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/reading/critical-reading.md",
-      "exists": true,
-      "char_count": 835
-    },
-    {
-      "id": "narrative-reading",
-      "name": "叙事文阅读",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "文学"
-      ],
-      "file": "english/reading/narrative-reading.md",
-      "exists": true,
-      "char_count": 775
-    },
-    {
-      "id": "expository-reading",
-      "name": "说明文阅读",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/reading/expository-reading.md",
-      "exists": true,
-      "char_count": 811
-    },
-    {
-      "id": "argumentative-reading",
-      "name": "议论文阅读",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/reading/argumentative-reading.md",
-      "exists": true,
-      "char_count": 778
-    },
-    {
-      "id": "news-media-reading",
-      "name": "新闻阅读",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "english/reading/news-media-reading.md",
-      "exists": true,
-      "char_count": 753
-    },
-    {
-      "id": "academic-reading",
-      "name": "学术文章阅读",
-      "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
+      "subdomain_id": "advanced-grammar",
+      "subdomain_name": "高级语法",
       "difficulty": 6,
       "is_milestone": false,
       "tags": [
-        "学术"
+        "进阶"
       ],
-      "file": "english/reading/academic-reading.md",
+      "file": "english/advanced-grammar/ellipsis-advanced.md",
       "exists": true,
-      "char_count": 792
+      "char_count": 1331
     },
     {
-      "id": "reading-speed",
-      "name": "阅读速度",
+      "id": "be-verb",
+      "name": "be动词",
       "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 3,
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 1,
       "is_milestone": false,
       "tags": [
-        "策略"
+        "基础"
       ],
-      "file": "english/reading/reading-speed.md",
+      "file": "english/basic-grammar/be-verb.md",
       "exists": true,
-      "char_count": 753
+      "char_count": 2149
     },
     {
-      "id": "summarizing",
-      "name": "概括总结",
+      "id": "it-usage",
+      "name": "it的用法",
       "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "english/reading/summarizing.md",
+      "file": "english/basic-grammar/it-usage.md",
       "exists": true,
-      "char_count": 794
+      "char_count": 3037
     },
     {
-      "id": "graphic-information",
-      "name": "图表信息",
+      "id": "there-be",
+      "name": "there be句型",
       "domain_id": "english",
-      "subdomain_id": "reading",
-      "subdomain_name": "阅读理解",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "english/reading/graphic-information.md",
-      "exists": true,
-      "char_count": 763
-    },
-    {
-      "id": "sentence-writing",
-      "name": "句子写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
       "difficulty": 2,
       "is_milestone": false,
       "tags": [
         "基础"
       ],
-      "file": "english/writing-en/sentence-writing.md",
+      "file": "english/basic-grammar/there-be.md",
       "exists": true,
-      "char_count": 861
+      "char_count": 2656
     },
     {
-      "id": "paragraph-structure",
-      "name": "段落结构",
+      "id": "subject-verb-agreement",
+      "name": "主谓一致",
       "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/writing-en/paragraph-structure.md",
-      "exists": true,
-      "char_count": 860
-    },
-    {
-      "id": "topic-sentences",
-      "name": "主题句",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
-      "file": "english/writing-en/topic-sentences.md",
+      "file": "english/basic-grammar/subject-verb-agreement.md",
       "exists": true,
-      "char_count": 798
+      "char_count": 2671
     },
     {
-      "id": "coherence-transitions",
-      "name": "连贯与过渡",
+      "id": "prepositions",
+      "name": "介词",
       "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/writing-en/coherence-transitions.md",
-      "exists": true,
-      "char_count": 883
-    },
-    {
-      "id": "essay-structure",
-      "name": "文章结构",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/writing-en/essay-structure.md",
-      "exists": true,
-      "char_count": 901
-    },
-    {
-      "id": "narrative-writing",
-      "name": "记叙文写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "文体"
-      ],
-      "file": "english/writing-en/narrative-writing.md",
-      "exists": true,
-      "char_count": 826
-    },
-    {
-      "id": "descriptive-writing",
-      "name": "描写文写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "文体"
-      ],
-      "file": "english/writing-en/descriptive-writing.md",
-      "exists": true,
-      "char_count": 854
-    },
-    {
-      "id": "expository-writing",
-      "name": "说明文写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "文体"
-      ],
-      "file": "english/writing-en/expository-writing.md",
-      "exists": true,
-      "char_count": 856
-    },
-    {
-      "id": "argumentative-writing",
-      "name": "议论文写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "文体"
-      ],
-      "file": "english/writing-en/argumentative-writing.md",
-      "exists": true,
-      "char_count": 874
-    },
-    {
-      "id": "email-writing",
-      "name": "邮件写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
       "difficulty": 3,
       "is_milestone": false,
       "tags": [
-        "应用"
+        "核心"
       ],
-      "file": "english/writing-en/email-writing.md",
+      "file": "english/basic-grammar/prepositions.md",
       "exists": true,
-      "char_count": 821
+      "char_count": 1276
+    },
+    {
+      "id": "pronouns",
+      "name": "代词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/pronouns.md",
+      "exists": true,
+      "char_count": 2825
+    },
+    {
+      "id": "articles",
+      "name": "冠词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/basic-grammar/articles.md",
+      "exists": true,
+      "char_count": 1235
+    },
+    {
+      "id": "adverbs",
+      "name": "副词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/basic-grammar/adverbs.md",
+      "exists": true,
+      "char_count": 2848
+    },
+    {
+      "id": "have-do-auxiliary",
+      "name": "助动词have/do",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/basic-grammar/have-do-auxiliary.md",
+      "exists": true,
+      "char_count": 1493
+    },
+    {
+      "id": "nouns",
+      "name": "名词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/nouns.md",
+      "exists": true,
+      "char_count": 2734
+    },
+    {
+      "id": "negation",
+      "name": "否定句",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/negation.md",
+      "exists": true,
+      "char_count": 2917
+    },
+    {
+      "id": "basic-sentence-order",
+      "name": "基本语序",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/basic-sentence-order.md",
+      "exists": true,
+      "char_count": 1381
+    },
+    {
+      "id": "adjectives",
+      "name": "形容词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/adjectives.md",
+      "exists": true,
+      "char_count": 2461
+    },
+    {
+      "id": "modal-verbs",
+      "name": "情态动词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/basic-grammar/modal-verbs.md",
+      "exists": true,
+      "char_count": 1460
+    },
+    {
+      "id": "exclamatory",
+      "name": "感叹句",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/exclamatory.md",
+      "exists": true,
+      "char_count": 1199
+    },
+    {
+      "id": "possessives",
+      "name": "所有格",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/basic-grammar/possessives.md",
+      "exists": true,
+      "char_count": 3254
+    },
+    {
+      "id": "quantifiers",
+      "name": "数量词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/basic-grammar/quantifiers.md",
+      "exists": true,
+      "char_count": 1328
+    },
+    {
+      "id": "questions",
+      "name": "疑问句",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/questions.md",
+      "exists": true,
+      "char_count": 2619
+    },
+    {
+      "id": "imperative",
+      "name": "祈使句",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/imperative.md",
+      "exists": true,
+      "char_count": 2535
+    },
+    {
+      "id": "parts-of-speech",
+      "name": "词性概述",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/basic-grammar/parts-of-speech.md",
+      "exists": true,
+      "char_count": 1995
+    },
+    {
+      "id": "conjunctions",
+      "name": "连词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/basic-grammar/conjunctions.md",
+      "exists": true,
+      "char_count": 2887
+    },
+    {
+      "id": "determiners",
+      "name": "限定词",
+      "domain_id": "english",
+      "subdomain_id": "basic-grammar",
+      "subdomain_name": "基础语法",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/basic-grammar/determiners.md",
+      "exists": true,
+      "char_count": 1358
     },
     {
       "id": "summary-writing",
       "name": "摘要写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 4,
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
       "is_milestone": false,
       "tags": [
         "核心"
       ],
       "file": "english/writing-en/summary-writing.md",
       "exists": true,
-      "char_count": 844
-    },
-    {
-      "id": "paraphrasing",
-      "name": "改写",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/writing-en/paraphrasing.md",
-      "exists": true,
-      "char_count": 788
-    },
-    {
-      "id": "punctuation",
-      "name": "标点符号",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/writing-en/punctuation.md",
-      "exists": true,
-      "char_count": 818
-    },
-    {
-      "id": "sentence-variety",
-      "name": "句式多样性",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/writing-en/sentence-variety.md",
-      "exists": true,
-      "char_count": 853
-    },
-    {
-      "id": "word-choice",
-      "name": "措辞",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/writing-en/word-choice.md",
-      "exists": true,
-      "char_count": 808
-    },
-    {
-      "id": "editing-proofreading",
-      "name": "编辑与校对",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/writing-en/editing-proofreading.md",
-      "exists": true,
-      "char_count": 823
-    },
-    {
-      "id": "academic-writing",
-      "name": "学术写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "学术"
-      ],
-      "file": "english/writing-en/academic-writing.md",
-      "exists": true,
-      "char_count": 861
-    },
-    {
-      "id": "citation-referencing",
-      "name": "引用与参考文献",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "学术"
-      ],
-      "file": "english/writing-en/citation-referencing.md",
-      "exists": true,
-      "char_count": 836
-    },
-    {
-      "id": "creative-writing",
-      "name": "创意写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "文学"
-      ],
-      "file": "english/writing-en/creative-writing.md",
-      "exists": true,
-      "char_count": 824
-    },
-    {
-      "id": "report-writing",
-      "name": "报告写作",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "english/writing-en/report-writing.md",
-      "exists": true,
-      "char_count": 806
+      "char_count": 1157
     },
     {
       "id": "review-writing",
-      "name": "书评/影评",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 5,
+      "name": "评论写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
       "is_milestone": false,
       "tags": [
         "应用"
       ],
       "file": "english/writing-en/review-writing.md",
       "exists": true,
-      "char_count": 816
-    },
-    {
-      "id": "writing-process",
-      "name": "写作流程",
-      "domain_id": "english",
-      "subdomain_id": "writing-en",
-      "subdomain_name": "写作",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/writing-en/writing-process.md",
-      "exists": true,
-      "char_count": 819
-    },
-    {
-      "id": "self-introduction",
-      "name": "自我介绍",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/speaking/self-introduction.md",
-      "exists": true,
-      "char_count": 741
-    },
-    {
-      "id": "daily-conversations",
-      "name": "日常对话",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/speaking/daily-conversations.md",
-      "exists": true,
-      "char_count": 840
-    },
-    {
-      "id": "asking-directions",
-      "name": "问路与指路",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "english/speaking/asking-directions.md",
-      "exists": true,
-      "char_count": 763
-    },
-    {
-      "id": "expressing-opinions",
-      "name": "表达观点",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/speaking/expressing-opinions.md",
-      "exists": true,
-      "char_count": 819
-    },
-    {
-      "id": "describing-things",
-      "name": "描述事物",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/speaking/describing-things.md",
-      "exists": true,
-      "char_count": 802
-    },
-    {
-      "id": "storytelling-oral",
-      "name": "口头叙事",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/speaking/storytelling-oral.md",
-      "exists": true,
-      "char_count": 757
-    },
-    {
-      "id": "discussion-skills",
-      "name": "讨论技巧",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/speaking/discussion-skills.md",
-      "exists": true,
-      "char_count": 801
-    },
-    {
-      "id": "presentation-skills",
-      "name": "演示技巧",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 5,
-      "is_milestone": true,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/speaking/presentation-skills.md",
-      "exists": true,
-      "char_count": 816
-    },
-    {
-      "id": "debate-skills",
-      "name": "辩论技巧",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/speaking/debate-skills.md",
-      "exists": true,
-      "char_count": 798
-    },
-    {
-      "id": "telephone-english",
-      "name": "电话英语",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "english/speaking/telephone-english.md",
-      "exists": true,
-      "char_count": 759
-    },
-    {
-      "id": "interview-english",
-      "name": "面试英语",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "english/speaking/interview-english.md",
-      "exists": true,
-      "char_count": 768
-    },
-    {
-      "id": "fillers-hesitation",
-      "name": "填充语与犹豫",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "口语"
-      ],
-      "file": "english/speaking/fillers-hesitation.md",
-      "exists": true,
-      "char_count": 789
-    },
-    {
-      "id": "turn-taking",
-      "name": "话轮转换",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "口语"
-      ],
-      "file": "english/speaking/turn-taking.md",
-      "exists": true,
-      "char_count": 746
-    },
-    {
-      "id": "pragmatic-competence",
-      "name": "语用能力",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "进阶"
-      ],
-      "file": "english/speaking/pragmatic-competence.md",
-      "exists": true,
-      "char_count": 820
-    },
-    {
-      "id": "negotiation-english",
-      "name": "谈判英语",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [
-        "商务"
-      ],
-      "file": "english/speaking/negotiation-english.md",
-      "exists": true,
-      "char_count": 769
-    },
-    {
-      "id": "fluency-strategies",
-      "name": "流利性策略",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "策略"
-      ],
-      "file": "english/speaking/fluency-strategies.md",
-      "exists": true,
-      "char_count": 803
-    },
-    {
-      "id": "accuracy-practice",
-      "name": "准确性练习",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "练习"
-      ],
-      "file": "english/speaking/accuracy-practice.md",
-      "exists": true,
-      "char_count": 764
-    },
-    {
-      "id": "shadowing-technique",
-      "name": "影子跟读",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "策略"
-      ],
-      "file": "english/speaking/shadowing-technique.md",
-      "exists": true,
-      "char_count": 763
-    },
-    {
-      "id": "small-talk",
-      "name": "闲聊",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "社交"
-      ],
-      "file": "english/speaking/small-talk.md",
-      "exists": true,
-      "char_count": 744
-    },
-    {
-      "id": "cross-cultural-comm",
-      "name": "跨文化交际",
-      "domain_id": "english",
-      "subdomain_id": "speaking",
-      "subdomain_name": "口语表达",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "文化"
-      ],
-      "file": "english/speaking/cross-cultural-comm.md",
-      "exists": true,
-      "char_count": 780
-    },
-    {
-      "id": "common-idioms",
-      "name": "常见习语",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/idioms-culture/common-idioms.md",
-      "exists": true,
-      "char_count": 834
-    },
-    {
-      "id": "proverbs",
-      "name": "谚语",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "核心"
-      ],
-      "file": "english/idioms-culture/proverbs.md",
-      "exists": true,
-      "char_count": 801
-    },
-    {
-      "id": "slang-informal",
-      "name": "俚语与非正式表达",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "口语"
-      ],
-      "file": "english/idioms-culture/slang-informal.md",
-      "exists": true,
-      "char_count": 837
-    },
-    {
-      "id": "body-language-idioms",
-      "name": "身体语言习语",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "趣味"
-      ],
-      "file": "english/idioms-culture/body-language-idioms.md",
-      "exists": true,
-      "char_count": 838
-    },
-    {
-      "id": "color-idioms",
-      "name": "颜色习语",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "趣味"
-      ],
-      "file": "english/idioms-culture/color-idioms.md",
-      "exists": true,
-      "char_count": 816
-    },
-    {
-      "id": "food-idioms",
-      "name": "食物习语",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "趣味"
-      ],
-      "file": "english/idioms-culture/food-idioms.md",
-      "exists": true,
-      "char_count": 821
-    },
-    {
-      "id": "british-vs-american",
-      "name": "英式与美式差异",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 4,
-      "is_milestone": true,
-      "tags": [
-        "文化"
-      ],
-      "file": "english/idioms-culture/british-vs-american.md",
-      "exists": true,
-      "char_count": 825
-    },
-    {
-      "id": "english-humor",
-      "name": "英语幽默",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "文化"
-      ],
-      "file": "english/idioms-culture/english-humor.md",
-      "exists": true,
-      "char_count": 769
-    },
-    {
-      "id": "politeness-norms",
-      "name": "礼貌规范",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "文化"
-      ],
-      "file": "english/idioms-culture/politeness-norms.md",
-      "exists": true,
-      "char_count": 742
-    },
-    {
-      "id": "holiday-culture",
-      "name": "节日文化",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "文化"
-      ],
-      "file": "english/idioms-culture/holiday-culture.md",
-      "exists": true,
-      "char_count": 815
-    },
-    {
-      "id": "english-literature",
-      "name": "英语文学简介",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "文学"
-      ],
-      "file": "english/idioms-culture/english-literature.md",
-      "exists": true,
-      "char_count": 761
-    },
-    {
-      "id": "media-entertainment",
-      "name": "影视与流行文化",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "趣味"
-      ],
-      "file": "english/idioms-culture/media-entertainment.md",
-      "exists": true,
-      "char_count": 766
-    },
-    {
-      "id": "figurative-language",
-      "name": "修辞手法",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "文学"
-      ],
-      "file": "english/idioms-culture/figurative-language.md",
-      "exists": true,
-      "char_count": 816
-    },
-    {
-      "id": "euphemisms",
-      "name": "委婉语",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [
-        "文化"
-      ],
-      "file": "english/idioms-culture/euphemisms.md",
-      "exists": true,
-      "char_count": 783
-    },
-    {
-      "id": "internet-english",
-      "name": "网络英语",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "现代"
-      ],
-      "file": "english/idioms-culture/internet-english.md",
-      "exists": true,
-      "char_count": 783
-    },
-    {
-      "id": "english-word-origins",
-      "name": "英语词源",
-      "domain_id": "english",
-      "subdomain_id": "idioms-culture",
-      "subdomain_name": "习语与文化",
-      "difficulty": 5,
-      "is_milestone": false,
-      "tags": [
-        "文化"
-      ],
-      "file": "english/idioms-culture/english-word-origins.md",
-      "exists": true,
-      "char_count": 777
+      "char_count": 3115
     },
     {
       "id": "global-english",
@@ -2987,7 +688,7 @@
       ],
       "file": "english/idioms-culture/global-english.md",
       "exists": true,
-      "char_count": 762
+      "char_count": 1318
     },
     {
       "id": "idiom-usage-practice",
@@ -3002,23 +703,2308 @@
       ],
       "file": "english/idioms-culture/idiom-usage-practice.md",
       "exists": true,
-      "char_count": 773
+      "char_count": 1376
+    },
+    {
+      "id": "slang-informal",
+      "name": "俚语与非正式表达",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "口语"
+      ],
+      "file": "english/idioms-culture/slang-informal.md",
+      "exists": true,
+      "char_count": 1337
+    },
+    {
+      "id": "euphemisms",
+      "name": "委婉语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "english/idioms-culture/euphemisms.md",
+      "exists": true,
+      "char_count": 2805
+    },
+    {
+      "id": "common-idioms",
+      "name": "常见习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/idioms-culture/common-idioms.md",
+      "exists": true,
+      "char_count": 1504
+    },
+    {
+      "id": "media-entertainment",
+      "name": "影视与流行文化",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "趣味"
+      ],
+      "file": "english/idioms-culture/media-entertainment.md",
+      "exists": true,
+      "char_count": 1287
+    },
+    {
+      "id": "politeness-norms",
+      "name": "礼貌规范",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "english/idioms-culture/politeness-norms.md",
+      "exists": true,
+      "char_count": 1324
+    },
+    {
+      "id": "internet-english",
+      "name": "网络英语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "现代"
+      ],
+      "file": "english/idioms-culture/internet-english.md",
+      "exists": true,
+      "char_count": 1397
+    },
+    {
+      "id": "holiday-culture",
+      "name": "节日文化",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "english/idioms-culture/holiday-culture.md",
+      "exists": true,
+      "char_count": 1455
+    },
+    {
+      "id": "british-vs-american",
+      "name": "英式与美式差异",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "english/idioms-culture/british-vs-american.md",
+      "exists": true,
+      "char_count": 2690
+    },
+    {
+      "id": "english-humor",
+      "name": "英语幽默",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "english/idioms-culture/english-humor.md",
+      "exists": true,
+      "char_count": 1420
+    },
+    {
+      "id": "english-literature",
+      "name": "英语文学简介",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "文学"
+      ],
+      "file": "english/idioms-culture/english-literature.md",
+      "exists": true,
+      "char_count": 1274
+    },
+    {
+      "id": "english-word-origins",
+      "name": "英语词源",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "english/idioms-culture/english-word-origins.md",
+      "exists": true,
+      "char_count": 1279
+    },
+    {
+      "id": "proverbs",
+      "name": "谚语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/idioms-culture/proverbs.md",
+      "exists": true,
+      "char_count": 1324
+    },
+    {
+      "id": "body-language-idioms",
+      "name": "身体语言习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "趣味"
+      ],
+      "file": "english/idioms-culture/body-language-idioms.md",
+      "exists": true,
+      "char_count": 1454
+    },
+    {
+      "id": "color-idioms",
+      "name": "颜色习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "趣味"
+      ],
+      "file": "english/idioms-culture/color-idioms.md",
+      "exists": true,
+      "char_count": 1384
+    },
+    {
+      "id": "food-idioms",
+      "name": "食物习语",
+      "domain_id": "english",
+      "subdomain_id": "idioms-culture",
+      "subdomain_name": "习语与文化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "趣味"
+      ],
+      "file": "english/idioms-culture/food-idioms.md",
+      "exists": true,
+      "char_count": 1389
+    },
+    {
+      "id": "storytelling-oral",
+      "name": "口头叙事",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/speaking/storytelling-oral.md",
+      "exists": true,
+      "char_count": 1301
+    },
+    {
+      "id": "schwa-sound",
+      "name": "中央元音schwa",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/phonetics/schwa-sound.md",
+      "exists": true,
+      "char_count": 1304
+    },
+    {
+      "id": "vowel-sounds",
+      "name": "元音音素",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/phonetics/vowel-sounds.md",
+      "exists": true,
+      "char_count": 2396
+    },
+    {
+      "id": "word-stress",
+      "name": "单词重音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/phonetics/word-stress.md",
+      "exists": true,
+      "char_count": 3758
+    },
+    {
+      "id": "pronunciation-practice",
+      "name": "发音综合练习",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "练习"
+      ],
+      "file": "english/phonetics/pronunciation-practice.md",
+      "exists": true,
+      "char_count": 2569
+    },
+    {
+      "id": "sentence-stress",
+      "name": "句子重音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/phonetics/sentence-stress.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "ipa-basics",
+      "name": "国际音标基础",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/phonetics/ipa-basics.md",
+      "exists": true,
+      "char_count": 3000
+    },
+    {
+      "id": "reduction-elision",
+      "name": "弱化与省音",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/phonetics/reduction-elision.md",
+      "exists": true,
+      "char_count": 2601
+    },
+    {
+      "id": "thought-groups",
+      "name": "意群划分",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/phonetics/thought-groups.md",
+      "exists": true,
+      "char_count": 2767
+    },
+    {
+      "id": "minimal-pairs",
+      "name": "最小对立体",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "练习"
+      ],
+      "file": "english/phonetics/minimal-pairs.md",
+      "exists": true,
+      "char_count": 2466
+    },
+    {
+      "id": "tongue-twisters",
+      "name": "绕口令练习",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "趣味"
+      ],
+      "file": "english/phonetics/tongue-twisters.md",
+      "exists": true,
+      "char_count": 2674
+    },
+    {
+      "id": "am-vs-br-pronunciation",
+      "name": "美音与英音差异",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "拓展"
+      ],
+      "file": "english/phonetics/am-vs-br-pronunciation.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "phonics-rules",
+      "name": "自然拼读规则",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/phonetics/phonics-rules.md",
+      "exists": true,
+      "char_count": 1338
+    },
+    {
+      "id": "rhythm-timing",
+      "name": "节奏与语速",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/phonetics/rhythm-timing.md",
+      "exists": true,
+      "char_count": 2511
+    },
+    {
+      "id": "intonation-patterns",
+      "name": "语调模式",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/phonetics/intonation-patterns.md",
+      "exists": true,
+      "char_count": 2358
+    },
+    {
+      "id": "assimilation",
+      "name": "语音同化",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/phonetics/assimilation.md",
+      "exists": true,
+      "char_count": 2659
+    },
+    {
+      "id": "consonant-clusters",
+      "name": "辅音丛",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/phonetics/consonant-clusters.md",
+      "exists": true,
+      "char_count": 2682
+    },
+    {
+      "id": "consonant-sounds",
+      "name": "辅音音素",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/phonetics/consonant-sounds.md",
+      "exists": true,
+      "char_count": 2781
+    },
+    {
+      "id": "linking-sounds",
+      "name": "连读",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/phonetics/linking-sounds.md",
+      "exists": true,
+      "char_count": 2367
+    },
+    {
+      "id": "phonemic-transcription",
+      "name": "音标转写",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "练习"
+      ],
+      "file": "english/phonetics/phonemic-transcription.md",
+      "exists": true,
+      "char_count": 1247
+    },
+    {
+      "id": "syllable-structure",
+      "name": "音节结构",
+      "domain_id": "english",
+      "subdomain_id": "phonetics",
+      "subdomain_name": "语音",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/phonetics/syllable-structure.md",
+      "exists": true,
+      "char_count": 1452
+    },
+    {
+      "id": "report-writing",
+      "name": "报告写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/writing-en/report-writing.md",
+      "exists": true,
+      "char_count": 3183
+    },
+    {
+      "id": "main-idea",
+      "name": "主旨大意",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/main-idea.md",
+      "exists": true,
+      "char_count": 1325
+    },
+    {
+      "id": "fact-vs-opinion",
+      "name": "事实与观点",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/fact-vs-opinion.md",
+      "exists": true,
+      "char_count": 2730
+    },
+    {
+      "id": "authors-purpose",
+      "name": "作者目的",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/authors-purpose.md",
+      "exists": true,
+      "char_count": 2323
+    },
+    {
+      "id": "narrative-reading",
+      "name": "叙事文阅读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "文学"
+      ],
+      "file": "english/reading/narrative-reading.md",
+      "exists": true,
+      "char_count": 1354
+    },
+    {
+      "id": "graphic-information",
+      "name": "图表信息",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/reading/graphic-information.md",
+      "exists": true,
+      "char_count": 2741
+    },
+    {
+      "id": "academic-reading",
+      "name": "学术文章阅读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "学术"
+      ],
+      "file": "english/reading/academic-reading.md",
+      "exists": true,
+      "char_count": 3086
+    },
+    {
+      "id": "critical-reading",
+      "name": "批判性阅读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/reading/critical-reading.md",
+      "exists": true,
+      "char_count": 2978
+    },
+    {
+      "id": "inference",
+      "name": "推断",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/inference.md",
+      "exists": true,
+      "char_count": 2709
+    },
+    {
+      "id": "news-media-reading",
+      "name": "新闻阅读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/reading/news-media-reading.md",
+      "exists": true,
+      "char_count": 2766
+    },
+    {
+      "id": "scanning",
+      "name": "查读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "english/reading/scanning.md",
+      "exists": true,
+      "char_count": 2313
+    },
+    {
+      "id": "summarizing",
+      "name": "概括总结",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/summarizing.md",
+      "exists": true,
+      "char_count": 2481
+    },
+    {
+      "id": "skimming",
+      "name": "略读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "english/reading/skimming.md",
+      "exists": true,
+      "char_count": 1147
+    },
+    {
+      "id": "text-structure",
+      "name": "篇章结构",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/text-structure.md",
+      "exists": true,
+      "char_count": 3183
+    },
+    {
+      "id": "intensive-reading",
+      "name": "精读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "english/reading/intensive-reading.md",
+      "exists": true,
+      "char_count": 2791
+    },
+    {
+      "id": "supporting-details",
+      "name": "细节支撑",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/supporting-details.md",
+      "exists": true,
+      "char_count": 2402
+    },
+    {
+      "id": "cohesion-coherence",
+      "name": "衔接与连贯",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/reading/cohesion-coherence.md",
+      "exists": true,
+      "char_count": 2673
+    },
+    {
+      "id": "argumentative-reading",
+      "name": "议论文阅读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/argumentative-reading.md",
+      "exists": true,
+      "char_count": 1257
+    },
+    {
+      "id": "tone-mood",
+      "name": "语气与情感",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/reading/tone-mood.md",
+      "exists": true,
+      "char_count": 3086
+    },
+    {
+      "id": "expository-reading",
+      "name": "说明文阅读",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/reading/expository-reading.md",
+      "exists": true,
+      "char_count": 1231
+    },
+    {
+      "id": "reading-speed",
+      "name": "阅读速度",
+      "domain_id": "english",
+      "subdomain_id": "reading",
+      "subdomain_name": "阅读理解",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "english/reading/reading-speed.md",
+      "exists": true,
+      "char_count": 2540
+    },
+    {
+      "id": "infinitive-phrases",
+      "name": "不定式短语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/infinitive-phrases.md",
+      "exists": true,
+      "char_count": 1321
+    },
+    {
+      "id": "five-basic-patterns",
+      "name": "五种基本句型",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/sentence-patterns/five-basic-patterns.md",
+      "exists": true,
+      "char_count": 1463
+    },
+    {
+      "id": "inversion",
+      "name": "倒装句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/sentence-patterns/inversion.md",
+      "exists": true,
+      "char_count": 3331
+    },
+    {
+      "id": "relative-pronouns",
+      "name": "关系代词与关系副词",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/relative-pronouns.md",
+      "exists": true,
+      "char_count": 1601
+    },
+    {
+      "id": "participle-phrases",
+      "name": "分词短语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/sentence-patterns/participle-phrases.md",
+      "exists": true,
+      "char_count": 1380
+    },
+    {
+      "id": "gerund-phrases",
+      "name": "动名词短语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/gerund-phrases.md",
+      "exists": true,
+      "char_count": 1239
+    },
+    {
+      "id": "sentence-combining",
+      "name": "句子合并",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "练习"
+      ],
+      "file": "english/sentence-patterns/sentence-combining.md",
+      "exists": true,
+      "char_count": 2981
+    },
+    {
+      "id": "run-on-fragments",
+      "name": "句子错误",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "易错"
+      ],
+      "file": "english/sentence-patterns/run-on-fragments.md",
+      "exists": true,
+      "char_count": 1432
+    },
+    {
+      "id": "appositive-phrases",
+      "name": "同位语",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/appositive-phrases.md",
+      "exists": true,
+      "char_count": 2768
+    },
+    {
+      "id": "noun-clauses",
+      "name": "名词性从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/noun-clauses.md",
+      "exists": true,
+      "char_count": 2919
+    },
+    {
+      "id": "complex-sentences",
+      "name": "复合句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/complex-sentences.md",
+      "exists": true,
+      "char_count": 2975
+    },
+    {
+      "id": "adjective-clauses",
+      "name": "定语从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "english/sentence-patterns/adjective-clauses.md",
+      "exists": true,
+      "char_count": 1474
+    },
+    {
+      "id": "compound-sentences",
+      "name": "并列句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/compound-sentences.md",
+      "exists": true,
+      "char_count": 2603
+    },
+    {
+      "id": "emphasis-cleft",
+      "name": "强调与分裂句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/sentence-patterns/emphasis-cleft.md",
+      "exists": true,
+      "char_count": 1464
+    },
+    {
+      "id": "conditional-sentences",
+      "name": "条件句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/conditional-sentences.md",
+      "exists": true,
+      "char_count": 2997
+    },
+    {
+      "id": "adverb-clauses",
+      "name": "状语从句",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/adverb-clauses.md",
+      "exists": true,
+      "char_count": 1253
+    },
+    {
+      "id": "ellipsis-substitution",
+      "name": "省略与替代",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/sentence-patterns/ellipsis-substitution.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "wish-subjunctive",
+      "name": "虚拟语气",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/sentence-patterns/wish-subjunctive.md",
+      "exists": true,
+      "char_count": 1356
+    },
+    {
+      "id": "restrictive-vs-non",
+      "name": "限制性与非限制性",
+      "domain_id": "english",
+      "subdomain_id": "sentence-patterns",
+      "subdomain_name": "句型结构",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/sentence-patterns/restrictive-vs-non.md",
+      "exists": true,
+      "char_count": 1421
+    },
+    {
+      "id": "accuracy-practice",
+      "name": "准确性练习",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "练习"
+      ],
+      "file": "english/speaking/accuracy-practice.md",
+      "exists": true,
+      "char_count": 2861
+    },
+    {
+      "id": "fillers-hesitation",
+      "name": "填充语与犹豫",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "口语"
+      ],
+      "file": "english/speaking/fillers-hesitation.md",
+      "exists": true,
+      "char_count": 1333
+    },
+    {
+      "id": "shadowing-technique",
+      "name": "影子跟读",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "english/speaking/shadowing-technique.md",
+      "exists": true,
+      "char_count": 2170
+    },
+    {
+      "id": "describing-things",
+      "name": "描述事物",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/speaking/describing-things.md",
+      "exists": true,
+      "char_count": 3116
+    },
+    {
+      "id": "daily-conversations",
+      "name": "日常对话",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/speaking/daily-conversations.md",
+      "exists": true,
+      "char_count": 2276
+    },
+    {
+      "id": "fluency-strategies",
+      "name": "流利性策略",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "english/speaking/fluency-strategies.md",
+      "exists": true,
+      "char_count": 2920
+    },
+    {
+      "id": "presentation-skills",
+      "name": "演示技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/speaking/presentation-skills.md",
+      "exists": true,
+      "char_count": 2700
+    },
+    {
+      "id": "telephone-english",
+      "name": "电话英语",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/speaking/telephone-english.md",
+      "exists": true,
+      "char_count": 3179
+    },
+    {
+      "id": "self-introduction",
+      "name": "自我介绍",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/speaking/self-introduction.md",
+      "exists": true,
+      "char_count": 1194
+    },
+    {
+      "id": "expressing-opinions",
+      "name": "表达观点",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/speaking/expressing-opinions.md",
+      "exists": true,
+      "char_count": 4266
+    },
+    {
+      "id": "discussion-skills",
+      "name": "讨论技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/speaking/discussion-skills.md",
+      "exists": true,
+      "char_count": 3456
+    },
+    {
+      "id": "turn-taking",
+      "name": "话轮转换",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "口语"
+      ],
+      "file": "english/speaking/turn-taking.md",
+      "exists": true,
+      "char_count": 2668
+    },
+    {
+      "id": "pragmatic-competence",
+      "name": "语用能力",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/speaking/pragmatic-competence.md",
+      "exists": true,
+      "char_count": 3313
+    },
+    {
+      "id": "negotiation-english",
+      "name": "谈判英语",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "商务"
+      ],
+      "file": "english/speaking/negotiation-english.md",
+      "exists": true,
+      "char_count": 3527
+    },
+    {
+      "id": "cross-cultural-comm",
+      "name": "跨文化交际",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "文化"
+      ],
+      "file": "english/speaking/cross-cultural-comm.md",
+      "exists": true,
+      "char_count": 2562
+    },
+    {
+      "id": "debate-skills",
+      "name": "辩论技巧",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/speaking/debate-skills.md",
+      "exists": true,
+      "char_count": 3014
+    },
+    {
+      "id": "asking-directions",
+      "name": "问路与指路",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/speaking/asking-directions.md",
+      "exists": true,
+      "char_count": 3243
+    },
+    {
+      "id": "small-talk",
+      "name": "闲聊",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "社交"
+      ],
+      "file": "english/speaking/small-talk.md",
+      "exists": true,
+      "char_count": 1155
+    },
+    {
+      "id": "interview-english",
+      "name": "面试英语",
+      "domain_id": "english",
+      "subdomain_id": "speaking",
+      "subdomain_name": "口语表达",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/speaking/interview-english.md",
+      "exists": true,
+      "char_count": 3547
+    },
+    {
+      "id": "used-to-would",
+      "name": "used to与would",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/tenses/used-to-would.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "simple-future",
+      "name": "一般将来时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/tenses/simple-future.md",
+      "exists": true,
+      "char_count": 1292
+    },
+    {
+      "id": "simple-present",
+      "name": "一般现在时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/tenses/simple-present.md",
+      "exists": true,
+      "char_count": 3168
+    },
+    {
+      "id": "simple-past",
+      "name": "一般过去时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/tenses/simple-past.md",
+      "exists": true,
+      "char_count": 2880
+    },
+    {
+      "id": "irregular-verbs",
+      "name": "不规则动词",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/tenses/irregular-verbs.md",
+      "exists": true,
+      "char_count": 2634
+    },
+    {
+      "id": "future-perfect",
+      "name": "将来完成时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/tenses/future-perfect.md",
+      "exists": true,
+      "char_count": 1397
+    },
+    {
+      "id": "future-continuous",
+      "name": "将来进行时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/tenses/future-continuous.md",
+      "exists": true,
+      "char_count": 1290
+    },
+    {
+      "id": "tense-consistency",
+      "name": "时态一致性",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/tenses/tense-consistency.md",
+      "exists": true,
+      "char_count": 2771
+    },
+    {
+      "id": "tense-timeline",
+      "name": "时态时间线",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "english/tenses/tense-timeline.md",
+      "exists": true,
+      "char_count": 3132
+    },
+    {
+      "id": "tense-review-exercise",
+      "name": "时态综合练习",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "练习"
+      ],
+      "file": "english/tenses/tense-review-exercise.md",
+      "exists": true,
+      "char_count": 3287
+    },
+    {
+      "id": "stative-verbs",
+      "name": "状态动词",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/tenses/stative-verbs.md",
+      "exists": true,
+      "char_count": 2983
+    },
+    {
+      "id": "present-perfect",
+      "name": "现在完成时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "english/tenses/present-perfect.md",
+      "exists": true,
+      "char_count": 2975
+    },
+    {
+      "id": "present-perfect-cont",
+      "name": "现在完成进行时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/tenses/present-perfect-cont.md",
+      "exists": true,
+      "char_count": 1350
+    },
+    {
+      "id": "present-for-future",
+      "name": "现在时表将来",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/tenses/present-for-future.md",
+      "exists": true,
+      "char_count": 1293
+    },
+    {
+      "id": "present-continuous",
+      "name": "现在进行时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/tenses/present-continuous.md",
+      "exists": true,
+      "char_count": 1271
+    },
+    {
+      "id": "passive-voice",
+      "name": "被动语态",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/tenses/passive-voice.md",
+      "exists": true,
+      "char_count": 3488
+    },
+    {
+      "id": "past-perfect",
+      "name": "过去完成时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/tenses/past-perfect.md",
+      "exists": true,
+      "char_count": 3021
+    },
+    {
+      "id": "past-perfect-cont",
+      "name": "过去完成进行时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/tenses/past-perfect-cont.md",
+      "exists": true,
+      "char_count": 1357
+    },
+    {
+      "id": "past-continuous",
+      "name": "过去进行时",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/tenses/past-continuous.md",
+      "exists": true,
+      "char_count": 2613
+    },
+    {
+      "id": "reported-speech",
+      "name": "间接引语",
+      "domain_id": "english",
+      "subdomain_id": "tenses",
+      "subdomain_name": "时态系统",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/tenses/reported-speech.md",
+      "exists": true,
+      "char_count": 3126
+    },
+    {
+      "id": "context-clues",
+      "name": "上下文猜词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "english/vocabulary/context-clues.md",
+      "exists": true,
+      "char_count": 1220
+    },
+    {
+      "id": "false-friends",
+      "name": "假朋友",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "易错"
+      ],
+      "file": "english/vocabulary/false-friends.md",
+      "exists": true,
+      "char_count": 2744
+    },
+    {
+      "id": "connotation-denotation",
+      "name": "内涵与外延",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/vocabulary/connotation-denotation.md",
+      "exists": true,
+      "char_count": 2303
+    },
+    {
+      "id": "synonyms-antonyms",
+      "name": "同义词与反义词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/vocabulary/synonyms-antonyms.md",
+      "exists": true,
+      "char_count": 1408
+    },
+    {
+      "id": "business-vocabulary",
+      "name": "商务词汇",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "专业"
+      ],
+      "file": "english/vocabulary/business-vocabulary.md",
+      "exists": true,
+      "char_count": 3376
+    },
+    {
+      "id": "academic-vocabulary",
+      "name": "学术词汇",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/vocabulary/academic-vocabulary.md",
+      "exists": true,
+      "char_count": 3571
+    },
+    {
+      "id": "common-prefixes",
+      "name": "常见前缀",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/vocabulary/common-prefixes.md",
+      "exists": true,
+      "char_count": 1318
+    },
+    {
+      "id": "common-suffixes",
+      "name": "常见后缀",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/vocabulary/common-suffixes.md",
+      "exists": true,
+      "char_count": 1378
+    },
+    {
+      "id": "latin-greek-roots",
+      "name": "拉丁与希腊词根",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/vocabulary/latin-greek-roots.md",
+      "exists": true,
+      "char_count": 1395
+    },
+    {
+      "id": "collocations",
+      "name": "搭配",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/vocabulary/collocations.md",
+      "exists": true,
+      "char_count": 3615
+    },
+    {
+      "id": "confusing-words",
+      "name": "易混淆词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "易错"
+      ],
+      "file": "english/vocabulary/confusing-words.md",
+      "exists": true,
+      "char_count": 1437
+    },
+    {
+      "id": "word-formation",
+      "name": "构词法",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/vocabulary/word-formation.md",
+      "exists": true,
+      "char_count": 2829
+    },
+    {
+      "id": "phrasal-verbs",
+      "name": "短语动词",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/vocabulary/phrasal-verbs.md",
+      "exists": true,
+      "char_count": 1220
+    },
+    {
+      "id": "technical-vocabulary",
+      "name": "科技词汇",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "专业"
+      ],
+      "file": "english/vocabulary/technical-vocabulary.md",
+      "exists": true,
+      "char_count": 2944
+    },
+    {
+      "id": "word-families",
+      "name": "词族",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/vocabulary/word-families.md",
+      "exists": true,
+      "char_count": 2924
+    },
+    {
+      "id": "vocabulary-strategies",
+      "name": "词汇记忆策略",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "策略"
+      ],
+      "file": "english/vocabulary/vocabulary-strategies.md",
+      "exists": true,
+      "char_count": 1530
+    },
+    {
+      "id": "word-usage-practice",
+      "name": "词汇运用练习",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "练习"
+      ],
+      "file": "english/vocabulary/word-usage-practice.md",
+      "exists": true,
+      "char_count": 1356
+    },
+    {
+      "id": "register-formality",
+      "name": "语域与正式程度",
+      "domain_id": "english",
+      "subdomain_id": "vocabulary",
+      "subdomain_name": "核心词汇",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "进阶"
+      ],
+      "file": "english/vocabulary/register-formality.md",
+      "exists": true,
+      "char_count": 1405
+    },
+    {
+      "id": "topic-sentences",
+      "name": "主题句",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/topic-sentences.md",
+      "exists": true,
+      "char_count": 3344
+    },
+    {
+      "id": "creative-writing",
+      "name": "创意写作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "文学"
+      ],
+      "file": "english/writing-en/creative-writing.md",
+      "exists": true,
+      "char_count": 3260
+    },
+    {
+      "id": "sentence-writing",
+      "name": "句子写作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/writing-en/sentence-writing.md",
+      "exists": true,
+      "char_count": 3080
+    },
+    {
+      "id": "academic-writing",
+      "name": "学术写作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [
+        "学术"
+      ],
+      "file": "english/writing-en/academic-writing.md",
+      "exists": true,
+      "char_count": 2929
+    },
+    {
+      "id": "descriptive-writing",
+      "name": "描写文写作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "文体"
+      ],
+      "file": "english/writing-en/descriptive-writing.md",
+      "exists": true,
+      "char_count": 2848
+    },
+    {
+      "id": "paraphrasing",
+      "name": "改写",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/paraphrasing.md",
+      "exists": true,
+      "char_count": 3198
+    },
+    {
+      "id": "essay-structure",
+      "name": "文章结构",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/essay-structure.md",
+      "exists": true,
+      "char_count": 2713
+    },
+    {
+      "id": "punctuation",
+      "name": "标点符号",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "english/writing-en/punctuation.md",
+      "exists": true,
+      "char_count": 1218
+    },
+    {
+      "id": "editing-proofreading",
+      "name": "编辑与校对",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/editing-proofreading.md",
+      "exists": true,
+      "char_count": 2415
+    },
+    {
+      "id": "argumentative-writing",
+      "name": "议论文写作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "文体"
+      ],
+      "file": "english/writing-en/argumentative-writing.md",
+      "exists": true,
+      "char_count": 4347
+    },
+    {
+      "id": "narrative-writing",
+      "name": "记叙文写作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "文体"
+      ],
+      "file": "english/writing-en/narrative-writing.md",
+      "exists": true,
+      "char_count": 1246
+    },
+    {
+      "id": "expository-writing",
+      "name": "说明文写作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 5,
+      "is_milestone": false,
+      "tags": [
+        "文体"
+      ],
+      "file": "english/writing-en/expository-writing.md",
+      "exists": true,
+      "char_count": 3270
+    },
+    {
+      "id": "coherence-transitions",
+      "name": "连贯与过渡",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/coherence-transitions.md",
+      "exists": true,
+      "char_count": 3499
+    },
+    {
+      "id": "email-writing",
+      "name": "邮件写作",
+      "domain_id": "english",
+      "subdomain_id": "writing-en",
+      "subdomain_name": "写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/writing-en/email-writing.md",
+      "exists": true,
+      "char_count": 2941
+    },
+    {
+      "id": "figurative-language",
+      "name": "修辞手法",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "文学"
+      ],
+      "file": "english/idioms-culture/figurative-language.md",
+      "exists": true,
+      "char_count": 1273
+    },
+    {
+      "id": "writing-process",
+      "name": "写作过程",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/writing-process.md",
+      "exists": true,
+      "char_count": 1224
+    },
+    {
+      "id": "sentence-variety",
+      "name": "句式变化",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/sentence-variety.md",
+      "exists": true,
+      "char_count": 3394
+    },
+    {
+      "id": "parallel-structure",
+      "name": "平行结构",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/parallel-structure.md",
+      "exists": true,
+      "char_count": 1283
+    },
+    {
+      "id": "paragraph-structure",
+      "name": "段落结构",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/paragraph-structure.md",
+      "exists": true,
+      "char_count": 3261
+    },
+    {
+      "id": "word-choice",
+      "name": "词语选择",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/word-choice.md",
+      "exists": true,
+      "char_count": 3467
     }
   ],
   "stats": {
-    "by_subdomain": {
-      "phonetics": 20,
-      "basic-grammar": 22,
-      "vocabulary": 18,
-      "tenses": 20,
-      "sentence-patterns": 20,
-      "advanced-grammar": 20,
-      "reading": 20,
-      "writing-en": 22,
-      "speaking": 20,
-      "idioms-culture": 18
-    },
-    "total_docs": 200,
-    "total_chars": 160035
+    "total": 200,
+    "total_chars": 444204,
+    "avg_chars": 2221,
+    "domain": "english"
   }
 }
