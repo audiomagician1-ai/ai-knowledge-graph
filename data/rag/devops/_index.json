@@ -271,7 +271,7 @@
       "tags": [],
       "file": "devops/monitoring-alerting.md",
       "exists": true,
-      "char_count": 2977
+      "char_count": 3455
     },
     {
       "id": "blue-green-deployment",
@@ -289,8 +289,8 @@
   ],
   "stats": {
     "total": 22,
-    "total_chars": 35832,
-    "avg_chars": 1628,
+    "total_chars": 36310,
+    "avg_chars": 1650,
     "domain": "devops"
   }
 }

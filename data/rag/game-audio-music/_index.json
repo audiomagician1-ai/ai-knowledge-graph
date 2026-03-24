@@ -1753,7 +1753,7 @@
       ],
       "file": "game-audio-music/game-audio-music-character-theme.md",
       "exists": true,
-      "char_count": 1655
+      "char_count": 2538
     },
     {
       "id": "game-audio-music-faction-theme",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 289149,
-    "avg_chars": 1606,
+    "total_chars": 290032,
+    "avg_chars": 1611,
     "domain": "game-audio-music"
   }
 }

@@ -1138,7 +1138,7 @@
       ],
       "file": "game-engine/input-system/input-device-abstraction.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2814
     },
     {
       "id": "input-debug",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 550086,
-    "avg_chars": 1833,
+    "total_chars": 551498,
+    "avg_chars": 1838,
     "domain": "game-engine"
   }
 }

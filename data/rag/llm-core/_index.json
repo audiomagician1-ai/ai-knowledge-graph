@@ -76,7 +76,7 @@
       "tags": [],
       "file": "llm-core/gpt-model.md",
       "exists": true,
-      "char_count": 2849
+      "char_count": 2955
     },
     {
       "id": "kv-cache",
@@ -471,8 +471,8 @@
   ],
   "stats": {
     "total": 36,
-    "total_chars": 66823,
-    "avg_chars": 1856,
+    "total_chars": 66929,
+    "avg_chars": 1859,
     "domain": "llm-core"
   }
 }

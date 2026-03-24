@@ -118,7 +118,7 @@
       ],
       "file": "technical-art/ta-std-overview.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2806
     },
     {
       "id": "ta-std-training",
@@ -148,7 +148,7 @@
       ],
       "file": "technical-art/ta-poly-standard.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2548
     },
     {
       "id": "ta-webhook",
@@ -1033,7 +1033,7 @@
       ],
       "file": "technical-art/ta-mem-budget-doc.md",
       "exists": true,
-      "char_count": 1359
+      "char_count": 2492
     },
     {
       "id": "ta-loading-screen",
@@ -1603,7 +1603,7 @@
       ],
       "file": "technical-art/ta-frame-analysis.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2942
     },
     {
       "id": "ta-async-compute",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 271329,
-    "avg_chars": 1507,
+    "total_chars": 276659,
+    "avg_chars": 1536,
     "domain": "technical-art"
   }
 }

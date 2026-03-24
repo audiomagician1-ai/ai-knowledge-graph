@@ -223,7 +223,7 @@
       ],
       "file": "concept-design/cd-anatomy-stylization.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2233
     },
     {
       "id": "cd-torso-rib-pelvis",
@@ -1963,7 +1963,7 @@
       ],
       "file": "concept-design/cd-mood-master-study.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2157
     },
     {
       "id": "cd-mood-field-research",
@@ -2038,7 +2038,7 @@
       ],
       "file": "concept-design/cd-mood-photo-study.md",
       "exists": true,
-      "char_count": 1336
+      "char_count": 1964
     },
     {
       "id": "cd-mood-film-analysis",
@@ -2998,7 +2998,7 @@
       ],
       "file": "concept-design/cd-style-evolution.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2415
     },
     {
       "id": "cd-visdev-3d-concept",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 355091,
-    "avg_chars": 1614,
+    "total_chars": 358464,
+    "avg_chars": 1629,
     "domain": "concept-design"
   }
 }

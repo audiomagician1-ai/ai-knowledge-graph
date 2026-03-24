@@ -388,7 +388,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-terrain-geometry.md",
       "exists": true,
-      "char_count": 2760
+      "char_count": 2769
     },
     {
       "id": "cg-instancing",
@@ -853,7 +853,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-spherical-harmonics.md",
       "exists": true,
-      "char_count": 2530
+      "char_count": 2459
     },
     {
       "id": "cg-radiosity",
@@ -883,7 +883,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-radiometry.md",
       "exists": true,
-      "char_count": 2798
+      "char_count": 2953
     },
     {
       "id": "cg-irradiance-volume",
@@ -1678,7 +1678,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-dof.md",
       "exists": true,
-      "char_count": 2655
+      "char_count": 2381
     },
     {
       "id": "cg-vignette",
@@ -2113,7 +2113,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-depth-buffer.md",
       "exists": true,
-      "char_count": 2533
+      "char_count": 2940
     },
     {
       "id": "cg-clustered-rendering",
@@ -2263,7 +2263,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-restir.md",
       "exists": true,
-      "char_count": 2600
+      "char_count": 2961
     },
     {
       "id": "cg-sdf-tracing",
@@ -2428,7 +2428,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-denoising.md",
       "exists": true,
-      "char_count": 3114
+      "char_count": 3019
     },
     {
       "id": "cg-bidirectional-pt",
@@ -2968,7 +2968,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-material-graph.md",
       "exists": true,
-      "char_count": 2922
+      "char_count": 2953
     },
     {
       "id": "cg-fragment-shader",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 438982,
-    "avg_chars": 1755,
+    "total_chars": 439505,
+    "avg_chars": 1758,
     "domain": "computer-graphics"
   }
 }

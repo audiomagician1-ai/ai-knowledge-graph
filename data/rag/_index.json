@@ -6924,7 +6924,7 @@
       ],
       "file": "animation/anim-modular-rig.md",
       "exists": true,
-      "char_count": 2415
+      "char_count": 2460
     },
     {
       "id": "anim-space-switching",
@@ -8139,7 +8139,7 @@
       ],
       "file": "biology/ecology/ecological-succession.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2376
     },
     {
       "id": "ecosystem-services",
@@ -8484,7 +8484,7 @@
       ],
       "file": "biology/evolution/convergent-evolution.md",
       "exists": true,
-      "char_count": 1234
+      "char_count": 2574
     },
     {
       "id": "divergent-evolution",
@@ -8544,7 +8544,7 @@
       ],
       "file": "biology/evolution/evidence-evolution.md",
       "exists": true,
-      "char_count": 1449
+      "char_count": 2631
     },
     {
       "id": "adaptation",
@@ -9039,7 +9039,7 @@
       ],
       "file": "biology/human-physiology/urinary-system.md",
       "exists": true,
-      "char_count": 1440
+      "char_count": 2190
     },
     {
       "id": "digestive-system",
@@ -9549,7 +9549,7 @@
       ],
       "file": "biology/molecular-biology/dna-repair.md",
       "exists": true,
-      "char_count": 1442
+      "char_count": 2810
     },
     {
       "id": "dna-replication",
@@ -9639,7 +9639,7 @@
       ],
       "file": "biology/molecular-biology/central-dogma.md",
       "exists": true,
-      "char_count": 1287
+      "char_count": 2204
     },
     {
       "id": "signal-transduction-mol",
@@ -10254,7 +10254,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-terrain-geometry.md",
       "exists": true,
-      "char_count": 2760
+      "char_count": 2769
     },
     {
       "id": "cg-instancing",
@@ -10719,7 +10719,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-spherical-harmonics.md",
       "exists": true,
-      "char_count": 2530
+      "char_count": 2459
     },
     {
       "id": "cg-radiosity",
@@ -10749,7 +10749,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-radiometry.md",
       "exists": true,
-      "char_count": 2798
+      "char_count": 2953
     },
     {
       "id": "cg-irradiance-volume",
@@ -11544,7 +11544,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-dof.md",
       "exists": true,
-      "char_count": 2655
+      "char_count": 2381
     },
     {
       "id": "cg-vignette",
@@ -11979,7 +11979,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-depth-buffer.md",
       "exists": true,
-      "char_count": 2533
+      "char_count": 2940
     },
     {
       "id": "cg-clustered-rendering",
@@ -12129,7 +12129,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-restir.md",
       "exists": true,
-      "char_count": 2600
+      "char_count": 2961
     },
     {
       "id": "cg-sdf-tracing",
@@ -12294,7 +12294,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-denoising.md",
       "exists": true,
-      "char_count": 3114
+      "char_count": 3019
     },
     {
       "id": "cg-bidirectional-pt",
@@ -12834,7 +12834,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-material-graph.md",
       "exists": true,
-      "char_count": 2922
+      "char_count": 2953
     },
     {
       "id": "cg-fragment-shader",
@@ -13839,7 +13839,7 @@
       ],
       "file": "concept-design/cd-anatomy-stylization.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2233
     },
     {
       "id": "cd-torso-rib-pelvis",
@@ -15579,7 +15579,7 @@
       ],
       "file": "concept-design/cd-mood-master-study.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2157
     },
     {
       "id": "cd-mood-field-research",
@@ -15654,7 +15654,7 @@
       ],
       "file": "concept-design/cd-mood-photo-study.md",
       "exists": true,
-      "char_count": 1336
+      "char_count": 1964
     },
     {
       "id": "cd-mood-film-analysis",
@@ -16614,7 +16614,7 @@
       ],
       "file": "concept-design/cd-style-evolution.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2415
     },
     {
       "id": "cd-visdev-3d-concept",
@@ -18071,7 +18071,7 @@
       "tags": [],
       "file": "devops/monitoring-alerting.md",
       "exists": true,
-      "char_count": 2977
+      "char_count": 3455
     },
     {
       "id": "blue-green-deployment",
@@ -27789,7 +27789,7 @@
       ],
       "file": "game-audio-music/game-audio-music-character-theme.md",
       "exists": true,
-      "char_count": 1655
+      "char_count": 2538
     },
     {
       "id": "game-audio-music-faction-theme",
@@ -30190,7 +30190,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-parallel-processing.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2596
     },
     {
       "id": "sfx-dsp-delay-echo",
@@ -30905,7 +30905,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-binaural-audio.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2341
     },
     {
       "id": "sfx-sa-listener-position",
@@ -30957,7 +30957,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-sound-propagation.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2381
     },
     {
       "id": "sfx-sa-doppler-effect",
@@ -35964,7 +35964,7 @@
       ],
       "file": "game-engine/input-system/input-device-abstraction.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2814
     },
     {
       "id": "input-debug",
@@ -45564,7 +45564,7 @@
       "tags": [],
       "file": "game-publishing/pub-rc-privacy-policy.md",
       "exists": true,
-      "char_count": 1349
+      "char_count": 2430
     },
     {
       "id": "pub-ro-china-market",
@@ -45681,7 +45681,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-regional-marketing.md",
       "exists": true,
-      "char_count": 1359
+      "char_count": 2723
     },
     {
       "id": "pub-ro-customer-support",
@@ -46760,7 +46760,7 @@
       "tags": [],
       "file": "game-qa/qa-ct-update-compat.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2488
     },
     {
       "id": "qa-ct-minimum-spec",
@@ -54442,7 +54442,7 @@
       "tags": [],
       "file": "llm-core/gpt-model.md",
       "exists": true,
-      "char_count": 2849
+      "char_count": 2955
     },
     {
       "id": "kv-cache",
@@ -59673,7 +59673,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-live-analytics.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2491
     },
     {
       "id": "mn-lr-real-time-ranking",
@@ -61558,7 +61558,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-multiple-endings.md",
       "exists": true,
-      "char_count": 1360
+      "char_count": 2132
     },
     {
       "id": "nd-bn-relationship-system",
@@ -80648,7 +80648,7 @@
       ],
       "file": "technical-art/ta-std-overview.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2806
     },
     {
       "id": "ta-std-training",
@@ -80678,7 +80678,7 @@
       ],
       "file": "technical-art/ta-poly-standard.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2548
     },
     {
       "id": "ta-webhook",
@@ -81563,7 +81563,7 @@
       ],
       "file": "technical-art/ta-mem-budget-doc.md",
       "exists": true,
-      "char_count": 1359
+      "char_count": 2492
     },
     {
       "id": "ta-loading-screen",
@@ -82133,7 +82133,7 @@
       ],
       "file": "technical-art/ta-frame-analysis.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2942
     },
     {
       "id": "ta-async-compute",
@@ -86162,7 +86162,7 @@
       "tags": [],
       "file": "web-backend/microservices-intro.md",
       "exists": true,
-      "char_count": 2801
+      "char_count": 2916
     },
     {
       "id": "file-upload",

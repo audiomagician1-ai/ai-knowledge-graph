@@ -2338,7 +2338,7 @@
       ],
       "file": "animation/anim-modular-rig.md",
       "exists": true,
-      "char_count": 2415
+      "char_count": 2460
     },
     {
       "id": "anim-space-switching",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 277341,
-    "avg_chars": 1540,
+    "total_chars": 277386,
+    "avg_chars": 1541,
     "domain": "animation"
   }
 }
