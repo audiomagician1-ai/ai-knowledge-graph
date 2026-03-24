@@ -1454,7 +1454,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-parallel-processing.md",
       "exists": true,
-      "char_count": 2596
+      "char_count": 2836
     },
     {
       "id": "sfx-dsp-delay-echo",
@@ -2169,7 +2169,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-binaural-audio.md",
       "exists": true,
-      "char_count": 2341
+      "char_count": 2546
     },
     {
       "id": "sfx-sa-listener-position",
@@ -2221,7 +2221,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-sound-propagation.md",
       "exists": true,
-      "char_count": 2381
+      "char_count": 2361
     },
     {
       "id": "sfx-sa-doppler-effect",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 287251,
-    "avg_chars": 1595,
+    "total_chars": 287676,
+    "avg_chars": 1598,
     "domain": "game-audio-sfx"
   }
 }

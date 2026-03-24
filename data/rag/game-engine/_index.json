@@ -1138,7 +1138,7 @@
       ],
       "file": "game-engine/input-system/input-device-abstraction.md",
       "exists": true,
-      "char_count": 2814
+      "char_count": 3064
     },
     {
       "id": "input-debug",
@@ -4453,7 +4453,7 @@
       ],
       "file": "game-engine/unity-architecture/unity-overview.md",
       "exists": true,
-      "char_count": 1788
+      "char_count": 3081
     },
     {
       "id": "unity-build-pipeline",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 590133,
-    "avg_chars": 1967,
+    "total_chars": 591676,
+    "avg_chars": 1972,
     "domain": "game-engine"
   }
 }

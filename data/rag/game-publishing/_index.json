@@ -1818,7 +1818,7 @@
       "tags": [],
       "file": "game-publishing/pub-rc-privacy-policy.md",
       "exists": true,
-      "char_count": 2430
+      "char_count": 2943
     },
     {
       "id": "pub-ro-china-market",
@@ -1935,7 +1935,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-regional-marketing.md",
       "exists": true,
-      "char_count": 2723
+      "char_count": 2520
     },
     {
       "id": "pub-ro-customer-support",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 270662,
-    "avg_chars": 1503,
+    "total_chars": 270972,
+    "avg_chars": 1505,
     "domain": "game-publishing"
   }
 }

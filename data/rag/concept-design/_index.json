@@ -1933,7 +1933,7 @@
       ],
       "file": "concept-design/cd-mood-source-finding.md",
       "exists": true,
-      "char_count": 1447
+      "char_count": 2426
     },
     {
       "id": "cd-mood-synthesis",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 376026,
-    "avg_chars": 1709,
+    "total_chars": 377005,
+    "avg_chars": 1713,
     "domain": "concept-design"
   }
 }

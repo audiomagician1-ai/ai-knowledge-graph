@@ -118,7 +118,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-event-driven.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2727
     },
     {
       "id": "se-hexagonal",
@@ -928,7 +928,7 @@
       ],
       "file": "software-engineering/code-review/se-code-quality.md",
       "exists": true,
-      "char_count": 1278
+      "char_count": 2441
     },
     {
       "id": "se-dependency-review",
@@ -1033,7 +1033,7 @@
       ],
       "file": "software-engineering/code-review/se-cr-culture.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2622
     },
     {
       "id": "se-cr-checklist",
@@ -1993,7 +1993,7 @@
       ],
       "file": "software-engineering/game-programming-patterns/se-game-loop.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2929
     },
     {
       "id": "se-gpp-intro",
@@ -2203,7 +2203,7 @@
       ],
       "file": "software-engineering/memory-management/se-memory-fragmentation.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2726
     },
     {
       "id": "se-mem-intro",
@@ -2728,7 +2728,7 @@
       ],
       "file": "software-engineering/package-management/se-conan-vcpkg.md",
       "exists": true,
-      "char_count": 1495
+      "char_count": 3013
     },
     {
       "id": "se-lockfile",
@@ -3088,7 +3088,7 @@
       ],
       "file": "software-engineering/performance-analysis/se-memory-profiling.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2985
     },
     {
       "id": "se-profiling-tools",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 470893,
-    "avg_chars": 1681,
+    "total_chars": 480770,
+    "avg_chars": 1717,
     "domain": "software-engineering"
   }
 }

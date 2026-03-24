@@ -674,7 +674,7 @@
       "tags": [],
       "file": "game-qa/qa-ct-update-compat.md",
       "exists": true,
-      "char_count": 2488
+      "char_count": 2543
     },
     {
       "id": "qa-ct-minimum-spec",
@@ -2083,7 +2083,7 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 245817,
+    "total_chars": 245872,
     "avg_chars": 1536,
     "domain": "game-qa"
   }

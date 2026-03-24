@@ -154,7 +154,7 @@
       "tags": [],
       "file": "programming-basics/strings.md",
       "exists": true,
-      "char_count": 1424
+      "char_count": 3046
     },
     {
       "id": "concurrency-basics",
@@ -393,8 +393,8 @@
   ],
   "stats": {
     "total": 30,
-    "total_chars": 67256,
-    "avg_chars": 2241,
+    "total_chars": 68878,
+    "avg_chars": 2295,
     "domain": "programming-basics"
   }
 }

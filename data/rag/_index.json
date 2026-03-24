@@ -3700,7 +3700,7 @@
       "tags": [],
       "file": "agent-systems/multi-agent.md",
       "exists": true,
-      "char_count": 1774
+      "char_count": 3274
     },
     {
       "id": "tool-use",
@@ -15549,7 +15549,7 @@
       ],
       "file": "concept-design/cd-mood-source-finding.md",
       "exists": true,
-      "char_count": 1447
+      "char_count": 2426
     },
     {
       "id": "cd-mood-synthesis",
@@ -27789,7 +27789,7 @@
       ],
       "file": "game-audio-music/game-audio-music-character-theme.md",
       "exists": true,
-      "char_count": 2538
+      "char_count": 2195
     },
     {
       "id": "game-audio-music-faction-theme",
@@ -30190,7 +30190,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-parallel-processing.md",
       "exists": true,
-      "char_count": 2596
+      "char_count": 2836
     },
     {
       "id": "sfx-dsp-delay-echo",
@@ -30905,7 +30905,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-binaural-audio.md",
       "exists": true,
-      "char_count": 2341
+      "char_count": 2546
     },
     {
       "id": "sfx-sa-listener-position",
@@ -30957,7 +30957,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-sound-propagation.md",
       "exists": true,
-      "char_count": 2381
+      "char_count": 2361
     },
     {
       "id": "sfx-sa-doppler-effect",
@@ -31614,7 +31614,7 @@
       ],
       "file": "game-design/balance-design/rubber-banding.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 1986
     },
     {
       "id": "balance-intro",
@@ -32799,7 +32799,7 @@
       ],
       "file": "game-design/difficulty-curve/checkpoint-design.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2164
     },
     {
       "id": "rubber-band-difficulty",
@@ -32874,7 +32874,7 @@
       ],
       "file": "game-design/difficulty-curve/puzzle-difficulty.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2639
     },
     {
       "id": "assist-mode",
@@ -34059,7 +34059,7 @@
       ],
       "file": "game-design/randomness-design/perception-fairness.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2464
     },
     {
       "id": "loot-randomness",
@@ -35964,7 +35964,7 @@
       ],
       "file": "game-engine/input-system/input-device-abstraction.md",
       "exists": true,
-      "char_count": 2814
+      "char_count": 3064
     },
     {
       "id": "input-debug",
@@ -39279,7 +39279,7 @@
       ],
       "file": "game-engine/unity-architecture/unity-overview.md",
       "exists": true,
-      "char_count": 1788
+      "char_count": 3081
     },
     {
       "id": "unity-build-pipeline",
@@ -45564,7 +45564,7 @@
       "tags": [],
       "file": "game-publishing/pub-rc-privacy-policy.md",
       "exists": true,
-      "char_count": 2430
+      "char_count": 2943
     },
     {
       "id": "pub-ro-china-market",
@@ -45681,7 +45681,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-regional-marketing.md",
       "exists": true,
-      "char_count": 2723
+      "char_count": 2520
     },
     {
       "id": "pub-ro-customer-support",
@@ -46760,7 +46760,7 @@
       "tags": [],
       "file": "game-qa/qa-ct-update-compat.md",
       "exists": true,
-      "char_count": 2488
+      "char_count": 2543
     },
     {
       "id": "qa-ct-minimum-spec",
@@ -52009,7 +52009,7 @@
       ],
       "file": "level-design/guidance-design/minimap-guidance.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2180
     },
     {
       "id": "layout-guidance",
@@ -52069,7 +52069,7 @@
       ],
       "file": "level-design/guidance-design/camera-control-ld.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2409
     },
     {
       "id": "tutorial-level",
@@ -52369,7 +52369,7 @@
       ],
       "file": "level-design/ld-documentation/level-flowchart.md",
       "exists": true,
-      "char_count": 1343
+      "char_count": 2458
     },
     {
       "id": "feedback-log",
@@ -53659,7 +53659,7 @@
       ],
       "file": "level-design/pacing-curve/exploration-pacing.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2521
     },
     {
       "id": "mechanic-introduction",
@@ -54169,7 +54169,7 @@
       ],
       "file": "level-design/terrain-design/terrain-material.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2568
     },
     {
       "id": "terrain-collision",
@@ -63521,7 +63521,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-objective-design.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2519
     },
     {
       "id": "nd-qd-investigation-quest",
@@ -72465,7 +72465,7 @@
       "tags": [],
       "file": "programming-basics/strings.md",
       "exists": true,
-      "char_count": 1424
+      "char_count": 3046
     },
     {
       "id": "concurrency-basics",
@@ -76123,7 +76123,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-event-driven.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2727
     },
     {
       "id": "se-hexagonal",
@@ -76933,7 +76933,7 @@
       ],
       "file": "software-engineering/code-review/se-code-quality.md",
       "exists": true,
-      "char_count": 1278
+      "char_count": 2441
     },
     {
       "id": "se-dependency-review",
@@ -77038,7 +77038,7 @@
       ],
       "file": "software-engineering/code-review/se-cr-culture.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2622
     },
     {
       "id": "se-cr-checklist",
@@ -77998,7 +77998,7 @@
       ],
       "file": "software-engineering/game-programming-patterns/se-game-loop.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2929
     },
     {
       "id": "se-gpp-intro",
@@ -78208,7 +78208,7 @@
       ],
       "file": "software-engineering/memory-management/se-memory-fragmentation.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2726
     },
     {
       "id": "se-mem-intro",
@@ -78733,7 +78733,7 @@
       ],
       "file": "software-engineering/package-management/se-conan-vcpkg.md",
       "exists": true,
-      "char_count": 1495
+      "char_count": 3013
     },
     {
       "id": "se-lockfile",
@@ -79093,7 +79093,7 @@
       ],
       "file": "software-engineering/performance-analysis/se-memory-profiling.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2985
     },
     {
       "id": "se-profiling-tools",
@@ -80738,7 +80738,7 @@
       ],
       "file": "technical-art/ta-auto-pipeline.md",
       "exists": true,
-      "char_count": 1515
+      "char_count": 3028
     },
     {
       "id": "ta-ci-art",
@@ -82673,7 +82673,7 @@
       ],
       "file": "technical-art/ta-gpu-pipeline.md",
       "exists": true,
-      "char_count": 1560
+      "char_count": 2816
     },
     {
       "id": "ta-hlsl-basics",
@@ -84338,7 +84338,7 @@
       ],
       "file": "vfx/vfx-niagara-camera.md",
       "exists": true,
-      "char_count": 1583
+      "char_count": 3401
     },
     {
       "id": "vfx-niagara-collision",
@@ -84593,7 +84593,7 @@
       ],
       "file": "vfx/vfx-particle-collision-phys.md",
       "exists": true,
-      "char_count": 1553
+      "char_count": 2252
     },
     {
       "id": "vfx-particle-overview",
@@ -84653,7 +84653,7 @@
       ],
       "file": "vfx/vfx-particle-velocity.md",
       "exists": true,
-      "char_count": 1503
+      "char_count": 2811
     },
     {
       "id": "vfx-particle-gravity",
@@ -84923,7 +84923,7 @@
       ],
       "file": "vfx/vfx-pp-distortion.md",
       "exists": true,
-      "char_count": 1442
+      "char_count": 2367
     },
     {
       "id": "vfx-pp-film-grain",

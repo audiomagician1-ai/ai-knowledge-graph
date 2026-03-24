@@ -538,7 +538,7 @@
       ],
       "file": "game-design/balance-design/rubber-banding.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 1986
     },
     {
       "id": "balance-intro",
@@ -1723,7 +1723,7 @@
       ],
       "file": "game-design/difficulty-curve/checkpoint-design.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2164
     },
     {
       "id": "rubber-band-difficulty",
@@ -1798,7 +1798,7 @@
       ],
       "file": "game-design/difficulty-curve/puzzle-difficulty.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2639
     },
     {
       "id": "assist-mode",
@@ -2983,7 +2983,7 @@
       ],
       "file": "game-design/randomness-design/perception-fairness.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2464
     },
     {
       "id": "loot-randomness",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 521949,
-    "avg_chars": 2087,
+    "total_chars": 525792,
+    "avg_chars": 2103,
     "domain": "game-design"
   }
 }

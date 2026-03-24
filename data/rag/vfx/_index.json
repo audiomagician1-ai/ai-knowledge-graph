@@ -1108,7 +1108,7 @@
       ],
       "file": "vfx/vfx-niagara-camera.md",
       "exists": true,
-      "char_count": 1583
+      "char_count": 3401
     },
     {
       "id": "vfx-niagara-collision",
@@ -1363,7 +1363,7 @@
       ],
       "file": "vfx/vfx-particle-collision-phys.md",
       "exists": true,
-      "char_count": 1553
+      "char_count": 2252
     },
     {
       "id": "vfx-particle-overview",
@@ -1423,7 +1423,7 @@
       ],
       "file": "vfx/vfx-particle-velocity.md",
       "exists": true,
-      "char_count": 1503
+      "char_count": 2811
     },
     {
       "id": "vfx-particle-gravity",
@@ -1693,7 +1693,7 @@
       ],
       "file": "vfx/vfx-pp-distortion.md",
       "exists": true,
-      "char_count": 1442
+      "char_count": 2367
     },
     {
       "id": "vfx-pp-film-grain",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 289238,
-    "avg_chars": 1606,
+    "total_chars": 293988,
+    "avg_chars": 1633,
     "domain": "vfx"
   }
 }

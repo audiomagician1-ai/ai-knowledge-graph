@@ -643,7 +643,7 @@
       ],
       "file": "level-design/guidance-design/minimap-guidance.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2180
     },
     {
       "id": "layout-guidance",
@@ -703,7 +703,7 @@
       ],
       "file": "level-design/guidance-design/camera-control-ld.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2409
     },
     {
       "id": "tutorial-level",
@@ -1003,7 +1003,7 @@
       ],
       "file": "level-design/ld-documentation/level-flowchart.md",
       "exists": true,
-      "char_count": 1343
+      "char_count": 2458
     },
     {
       "id": "feedback-log",
@@ -2293,7 +2293,7 @@
       ],
       "file": "level-design/pacing-curve/exploration-pacing.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2521
     },
     {
       "id": "mechanic-introduction",
@@ -2803,7 +2803,7 @@
       ],
       "file": "level-design/terrain-design/terrain-material.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2568
     },
     {
       "id": "terrain-collision",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 395737,
-    "avg_chars": 1978,
+    "total_chars": 401147,
+    "avg_chars": 2005,
     "domain": "level-design"
   }
 }

@@ -2052,7 +2052,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-objective-design.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2519
     },
     {
       "id": "nd-qd-investigation-quest",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 279610,
-    "avg_chars": 1553,
+    "total_chars": 280637,
+    "avg_chars": 1559,
     "domain": "narrative-design"
   }
 }

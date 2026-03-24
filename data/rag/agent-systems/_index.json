@@ -310,7 +310,7 @@
       "tags": [],
       "file": "agent-systems/multi-agent.md",
       "exists": true,
-      "char_count": 1774
+      "char_count": 3274
     },
     {
       "id": "tool-use",
@@ -354,8 +354,8 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 51019,
-    "avg_chars": 1889,
+    "total_chars": 52519,
+    "avg_chars": 1945,
     "domain": "agent-systems"
   }
 }
