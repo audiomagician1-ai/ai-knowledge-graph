@@ -9,12 +9,12 @@ is_milestone: false
 tags: ["基础"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.1
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.444
-last_scored: "2026-03-24"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"
@@ -25,100 +25,86 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-重命名重构（Rename Refactoring）是指在不改变程序行为的前提下，将代码中的变量、方法、类、参数或模块的名称更改为能更准确表达其语义含义的新名称。这是所有重构操作中最简单、使用频率最高的一种，Martin Fowler 在其1999年出版的《Refactoring: Improving the Design of Existing Code》中将其列为基础重构手法，编号为第一个单独介绍的重构技法。
+重命名重构（Rename Refactoring）是指在不改变代码行为的前提下，将变量、方法、类、参数或模块的名称替换为能够更准确表达其语义的新名称。这是软件重构技术体系中入门门槛最低、收益最直接的一种手法，由Martin Fowler在1999年出版的《重构：改善既有代码的设计》一书中系统归纳，书中明确将其列为基础重构操作之首（第一版Chapter 6，Rename Method一节）。
 
-重命名重构的价值在于消除"神秘名称"（Mysterious Name）这一代码异味。当代码中出现 `d`、`temp`、`data`、`foo` 这类无意义名称，或 `calc()`、`process()` 这类过于宽泛的名称时，读者必须通过阅读函数体才能理解其用途，阅读成本急剧上升。研究表明，程序员在日常工作中超过70%的时间用于阅读代码而非编写，因此名称的语义清晰度直接影响整体开发效率。
+该手法的核心价值在于：代码被阅读的次数远多于被编写的次数，一个语义模糊的名称会在每次阅读时给开发者带来认知负担。例如，将方法名 `getIt()` 改为 `getInvoiceTotalPrice()` 之后，调用方代码无需任何注释即可自我解释其意图。这种改进直接降低了新成员理解代码所需的时间，也减少了因误解名称含义而引入的Bug概率。
 
-重命名重构的核心约束是**行为保留原则**：改名后程序的所有外部可观测行为（输出、副作用、异常类型）必须与改名前完全一致。这也是它与简单"查找替换"最本质的区别——重命名重构必须处理作用域边界、重载解析、反射调用等复杂情况。
+现代主流IDE（如IntelliJ IDEA、Visual Studio、VS Code配合Language Server）均内置了重命名重构的自动化支持，能够在同一项目的所有引用位置同步更新名称，避免手工查找替换导致的遗漏。IntelliJ IDEA的快捷键为 `Shift+F6`，Visual Studio为 `Ctrl+R, Ctrl+R`，这使得重命名重构的执行成本接近于零。
 
 ---
 
 ## 核心原理
 
-### 语义化命名的三条标准
+### 命名的语义化标准
 
-一个合格的重命名结果需满足三条标准：**意图揭示性**（Intention-Revealing）、**无歧义性**（Non-Misleading）和**可搜索性**（Searchable）。
+重命名重构的目标不是让名称"看起来更长"，而是让名称准确揭示意图（Reveal Intent）。具体而言，变量名应体现"存储的是什么"而非"类型是什么"——`strName` 是典型的反例，因为前缀 `str` 描述的是数据类型而非业务含义，改名为 `customerFullName` 才是语义化命名。方法名应体现"做什么"而非"怎么做"，例如将 `calcByMultiplyingDays()` 改为 `calculateRentalCharge()`。类名应使用名词或名词短语，准确描述所代表的领域概念，如将 `DataManager` 改为 `CustomerRepository`，前者是万能词，毫无区分度。
 
-- **意图揭示性**：名称应表达"是什么"而非"怎么做"。例如将 `calcAge()` 改为 `getCustomerAgeInYears()` 后，调用者无需查看实现即可理解返回值含义。
-- **无歧义性**：避免使用与语言内置词或领域术语冲突的名称。例如在 Java 代码中将一个布尔变量命名为 `isNull` 但实际含义是"是否已初始化"，会造成严重误导。
-- **可搜索性**：单字母变量（如 `e`）在代码库中无法被有效搜索定位，应改为 `event` 或 `employee` 等完整词汇。循环计数器 `i`、`j` 是唯一被普遍接受的例外，因其作用域极短且含义已形成行业共识。
+### 触发重命名重构的典型代码异味
 
-### 重命名的作用域分析
+以下几类命名问题是触发重命名重构的直接信号，均来自"代码异味"目录：
 
-重命名重构必须在正确的作用域范围内完成所有引用的同步更新。以一个 Java 类的私有方法为例：
+- **单字母或无意义缩写**：`int d`、`String tmp`、`Object obj` 等，在超出3行的作用域内使用时必须重命名。循环变量 `i` 在嵌套超过两层时应改为 `rowIndex`、`columnIndex` 以避免混淆。
+- **误导性名称（Misleading Name）**：方法名为 `getUserList()` 但实际返回的是Set，此时应将其改为 `getUserSet()` 或更进一步改为 `findActiveUsers()`。
+- **以数字区分的系列名称**：`button1`、`button2`、`button3` 这类命名意味着开发者放弃了用名称传递信息，应改为 `submitButton`、`cancelButton`、`resetButton`。
+- **注释补偿型命名**：如果一个变量名旁边必须跟着注释才能理解，说明名称本身不够语义化，例如 `int d; // elapsed time in days` 应直接改名为 `int elapsedTimeInDays`。
 
-```
-// 重命名前
-private double calc(int x) { return x * 0.85; }
+### 重命名操作的安全执行步骤
 
-// 重命名后（仅需更新本类内部引用）
-private double applyDiscountRate(int originalPrice) { return originalPrice * 0.85; }
-```
+手动执行重命名重构（不依赖IDE自动化时）需遵循以下步骤以保证安全：
 
-对于公有方法或公有类，作用域扩展至整个代码库乃至外部 API 调用者。此时必须评估**破坏性变更**风险：如果该方法已发布在公共库中，直接重命名会破坏下游依赖，正确做法是先创建新名称方法，用 `@Deprecated` 标注旧方法，在下个主版本中再删除旧方法。
-
-### IDE 自动化重命名与手动查找替换的差异
-
-现代 IDE（如 IntelliJ IDEA、VS Code、Eclipse）提供的自动化重命名重构工具与简单的"查找-替换"有本质差异。IDE 重命名工具会：
-
-1. **解析静态类型**：只更新同一符号的引用，不会误改同名但不同作用域的变量。例如将局部变量 `name` 改为 `customerName` 时，不会影响另一个类中同名的字段。
-2. **处理字符串字面量**（可选）：提示开发者代码中是否存在包含旧名称的字符串，这在使用反射或序列化的场景下尤为重要。
-3. **更新注释和文档**：优质工具会同步更新 JavaDoc 或 docstring 中对该符号的引用。
-
-在 IntelliJ IDEA 中，执行重命名重构的快捷键为 `Shift+F6`，触发后会显示所有引用预览，开发者可逐一确认是否更新。
+1. 确认当前代码库有版本控制保护（Git commit或工作区干净）。
+2. 在整个代码库中搜索旧名称的所有引用，包括字符串字面量中的反射调用（如Java的 `Class.forName("OldClassName")`）、序列化存储的字段名、数据库列名映射、API文档或外部接口契约中出现的名称。
+3. 若该名称属于公开API（`public` 方法或对外暴露的类），需评估是否有外部消费者，此时应使用"保留旧名称+标记 `@Deprecated`+委托到新名称"的过渡策略，而不是直接删除旧名称。
+4. 执行替换后，运行完整测试套件验证行为未变化。
 
 ---
 
 ## 实际应用
 
-### 典型场景一：消除缩写变量名
+**场景一：电商系统订单计算**
 
-在遗留代码中常见以下模式：
+```java
+// 重命名前
+public double calc(double p, int n) {
+    return p * n * 0.9;
+}
 
-```python
-# 重命名前
-def proc(u, p, q):
-    if u.r == 'admin':
-        return u.bal - q * p
-
-# 重命名后
-def calculate_order_total(user, unit_price, quantity):
-    if user.role == 'admin':
-        return user.balance - quantity * unit_price
+// 重命名后
+public double calculateDiscountedSubtotal(double unitPrice, int quantity) {
+    return unitPrice * quantity * 0.9;
+}
 ```
 
-参数 `u`、`p`、`q` 改名后，函数体逻辑无需注释即可自我解释（self-documenting code）。
+重命名后，方法签名本身已揭示：这是一个计算打折后小计金额的方法，参数分别是单价和数量，魔法数字 `0.9` 的含义虽仍需进一步处理，但至少上下文已清晰。
 
-### 典型场景二：类名反映领域模型演进
+**场景二：用户认证模块**
 
-项目初期将处理订单的类命名为 `DataProcessor`，随着业务清晰化，应将其重命名为 `OrderFulfillmentService`。这种重命名同步对齐了**统一语言**（Ubiquitous Language）——即领域驱动设计（DDD）中要求代码名称与业务术语保持一致的原则。
+一个类原名 `Checker`，内部含有 `check()` 方法——这是典型的万能词命名。通过重命名重构，将类改为 `PasswordStrengthValidator`，方法改为 `validate(String rawPassword)`，其他开发者在自动补全列表中即可准确找到并正确使用该类，无需打开源文件查看注释。
 
-### 典型场景三：布尔值命名规范
+**场景三：数据库ORM字段映射**
 
-布尔变量和返回布尔值的方法应遵循 `is/has/can/should` 前缀约定。将 `checkLogin()` 重命名为 `isAuthenticated()`，将 `flag` 重命名为 `hasUnreadMessages`，能立即消除调用方对返回值含义的猜测。
+使用JPA/Hibernate时，若将Java字段 `String nm` 重命名为 `String productName`，需同时检查 `@Column(name="nm")` 注解中是否硬编码了旧列名，以防重命名破坏数据库映射关系。这是IDE自动重命名无法覆盖的隐患，需手工确认。
 
 ---
 
 ## 常见误区
 
-### 误区一：认为重命名只是风格偏好，非功能问题
+**误区一：重命名等同于全局文本替换**
 
-许多开发者误以为命名问题不影响程序运行，因此优先级极低。实际上，糟糕的命名会导致开发者对函数用途产生误判，从而在错误的地方调用正确的函数，或在正确的地方调用错误的函数。这类错误在 Code Review 中极难发现，因为代码结构看起来完全合理。命名混乱是引发逻辑 Bug 的间接成因，而非纯粹的美观问题。
+部分开发者使用编辑器的"全局查找替换"而非IDE的重构功能来重命名。这会导致两类问题：一是将注释、字符串字面量中的同名词语错误替换（例如把变量 `order` 改为 `purchaseOrder` 时，也把"In order to..."的注释错误修改）；二是无法识别同名但不同作用域的变量，导致非目标变量被错误改名。IDE的重命名重构基于AST（抽象语法树）而非文本匹配，能精确区分作用域。
 
-### 误区二：全局查找替换等同于重命名重构
+**误区二：只改一处声明，不更新文档和测试**
 
-直接使用文本编辑器的全局替换会将代码中所有字面上相同的字符串一并替换，包括：不同作用域中偶然同名的变量、注释中出现该词汇的位置、字符串常量中包含该名称的内容。例如将变量 `type` 全局替换为 `productType`，可能误改 `document.type`、`event.type` 等完全不相干的属性引用，引入难以追踪的运行时错误。
+重命名一个方法后，如果Javadoc、README、单元测试的描述字符串、以及基于名称的路由注解（如Spring的 `@RequestMapping("/old-endpoint-name")`）没有同步更新，会造成"代码说一件事、文档说另一件事"的分裂局面。完整的重命名重构需要将这些间接引用一并纳入。
 
-### 误区三：一次性重命名必须完美，否则不如不改
+**误区三：将缩短名称视为改进**
 
-部分开发者因担心改错名字反而增加混乱，选择维持现状。正确态度是：重命名是**可逆操作**，如果新名称在实践中被证明仍不够准确，可以再次执行重命名重构。软件系统的词汇表应随着团队对业务理解的加深而持续演进，从 `Manager` 到 `Coordinator` 到 `Orchestrator` 的多次重命名完全正常，每一次都使代码更接近真实的业务语义。
+将 `calculateMonthlyInterestRate()` 缩短为 `calcMIR()` 并不是重命名重构，而是引入了新的代码异味。重命名重构的方向始终是"提升语义清晰度"，名称的长短是结果而非目标——在领域术语明确的上下文中，`calcTax()` 完全可以比 `calculateTheTaxableAmountForTheCurrentFiscalYear()` 更准确，但前提是"tax"在当前上下文中无歧义。
 
 ---
 
 ## 知识关联
 
-重命名重构的前置知识是识别**代码异味中的"神秘名称"（Mysterious Name）**。当开发者能够从代码异味视角发现命名问题——例如看到 `getData()` 立刻意识到它没有表达返回数据的具体类型和业务含义——才能准确判断何时需要执行重命名重构。
+重命名重构是学习重构技术的起点，其前提知识是识别"代码异味"——只有能辨别出"命名晦涩（Obscure Name）"这一具体异味，开发者才知道何时应该触发重命名操作。Fowler在《重构》第二版中将"神秘命名（Mysterious Name）"列为六大最常见代码异味的第一位，足见命名问题的普遍性。
 
-重命名重构完成后，代码可读性的提升往往会暴露出更深层的结构问题：一旦方法名清晰化，开发者可能发现某个类承担了过多职责，或某个方法名中出现了"And"连接词（如 `validateAndSave()`），这正是**提取方法重构**（Extract Method）的触发信号。因此重命名重构通常是一系列重构操作的起点，它通过澄清语义为后续更复杂的结构性重构创造条件。
-
-在工具链层面，重命名重构是评估 IDE 重构能力的最基础指标。掌握本概念后，学习者可进一步了解 IDE 如何通过抽象语法树（AST）分析实现符号级别的精确替换，这是理解"提取变量"、"内联方法"等更复杂自动化重构的基础。
+掌握重命名重构之后，学习者通常会继续学习"提取方法（Extract Method）"和"提取变量（Extract Variable）"这两种重构手法——这两种手法执行后必然涉及为新提取的方法或变量命名，命名能力直接决定了这两种重构的质量。此外，重命名重构也是理解"意图导向编程（Programming by Intention）"风格的实践入口：先写出语义清晰的名称，再填充实现，而非先写实现再回头想名称。

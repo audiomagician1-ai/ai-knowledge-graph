@@ -9,12 +9,12 @@ is_milestone: true
 tags: ["技巧"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.1
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.414
-last_scored: "2026-03-24"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"
@@ -25,65 +25,72 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-测试替身（Test Double）是单元测试中用于替代真实依赖对象的虚假实现，由Gerard Meszaros在2007年出版的《xUnit Test Patterns》一书中系统化定义并命名。这一术语借鉴了电影行业中"替身演员"（Stunt Double）的概念：真正的演员（被测对象）不变，但场景中的危险部分由替身完成。在测试场景中，当被测代码依赖数据库连接、网络请求或第三方API时，测试替身接管这些依赖，使测试可以在不启动真实外部服务的情况下快速运行。
+测试替身（Test Double）是单元测试中用于替换真实依赖对象的仿制品，由Gerard Meszaros在2007年出版的《xUnit Test Patterns》一书中正式命名并分类。这个术语借鉴自电影行业的"替身演员"（stunt double）概念——当真实演员无法出场时，替身代为完成场景拍摄。在测试场景中，当真实依赖（数据库、外部API、文件系统等）难以控制或执行缓慢时，测试替身代替它们参与测试。
 
-测试替身之所以关键，在于单元测试的本质要求：每次执行必须快速、可重复且结果确定。一个真实的HTTP请求平均耗时100ms至数秒，而一个测试替身的调用耗时不超过1ms。通过替身隔离依赖，测试不再受网络波动、数据库状态或第三方服务可用性的干扰，从而实现真正的"单元"粒度隔离。
+测试替身解决的核心问题是**测试隔离**：单元测试的目标是只验证被测单元（SUT，System Under Test）本身的逻辑，而不是验证其依赖项的行为。若一个发送邮件的函数测试真的发送了邮件，既浪费资源又难以断言结果，还会污染生产环境。通过引入测试替身，测试可以在完全受控的条件下运行，做到快速、可重复、互不干扰。
 
 ## 核心原理
 
-### 五种测试替身及其区别
+### 五种测试替身的精确区分
 
-Meszaros明确区分了五种测试替身，理解它们的差异是正确使用的前提：
+Meszaros定义了五种测试替身，每种有不同的语义和用途：
 
-**Dummy（哑对象）**：仅用于填充参数列表，从不被实际调用。例如，某方法签名要求传入一个`Logger`对象，但测试逻辑不涉及日志记录，此时传入`new NullLogger()`或`null`即为Dummy。
+**Dummy（哑对象）**：仅用于填充参数列表，不会被实际调用。例如一个方法签名要求传入Logger对象，但测试逻辑根本不触发日志路径时，传入`null`或空实现即为Dummy。它不包含任何行为逻辑。
 
-**Stub（桩）**：提供预设的固定返回值，用于驱动被测代码走向特定分支。例如，`userRepository.findById(1)`返回一个预先构造的`User`对象，而不查询真实数据库。Stub只关注"给出什么"，不关注"是否被调用"。
+**Stub（桩对象）**：提供预设的固定返回值，用于控制间接输入。例如`stubUserRepo.findById(1)`始终返回一个特定User对象。Stub只关注"给SUT提供数据"，不验证自身是否被调用。典型公式：`when(stub.method()).thenReturn(value)`。
 
-**Spy（间谍）**：在真实对象基础上包裹一层记录层，记录方法被调用的次数、顺序和参数，同时仍执行真实逻辑（或部分真实逻辑）。测试结束后，通过Spy验证某方法是否被调用了恰好2次。
+**Fake（伪对象）**：拥有真实但简化的实现，例如用内存中的HashMap模拟数据库的完整CRUD操作。Fake与真实对象的区别在于它使用捷径实现，例如H2内存数据库就是对生产MySQL数据库的Fake替代。
 
-**Mock（模拟对象）**：在调用前预先设置期望（expectation），如果实际调用与期望不符，测试直接失败。Mock是"基于交互的测试"的核心工具，它将验证行为内置于替身本身，而非放在测试的断言阶段。
+**Spy（侦探对象）**：包装真实对象或手动记录调用信息，既执行部分真实逻辑，又记录被调用的次数和参数。测试结束后可断言"`sendEmail`方法被调用了恰好1次"。
 
-**Fake（伪对象）**：具有真实可用但简化的实现。最典型的例子是使用H2内存数据库替代PostgreSQL生产数据库，或使用内存中的`HashMap`替代Redis缓存。Fake有真实的业务逻辑，但不适合生产环境。
+**Mock（模拟对象）**：预先设定期望（expectation），测试结束时自动验证这些期望是否满足。Mock包含内置的断言机制，如果`mockEmailService.send()`从未被调用，测试会自动失败，无需手动断言。
 
-### Stub与Mock的核心差别
+### 状态验证 vs 行为验证
 
-这两者常被混淆，但存在本质区别。Stub属于**状态验证**：测试通过检查被测对象执行后的状态来判断正确性，Stub只负责提供数据。Mock属于**行为验证**：测试通过验证被测对象是否以正确方式调用了依赖来判断正确性，Mock内置了期望并负责验证。
+测试替身引入了两种不同的验证策略：
 
-以Java Mockito框架为例，Stub的写法为：
+- **状态验证（State Verification）**：调用SUT之后，检查SUT或相关对象的状态。Stub和Fake通常配合状态验证使用。例如调用`cart.addItem(item)`后，断言`cart.getTotal() == 29.99`。
+
+- **行为验证（Behavior Verification）**：验证SUT是否以正确的方式与依赖进行了交互。Mock和Spy配合行为验证使用。例如验证`paymentGateway.charge(userId, 29.99)`被调用了一次。
+
+过度使用行为验证会导致测试与实现细节耦合，重构时频繁破坏测试，这是选择替身类型时必须权衡的关键点。
+
+### 隔离框架的工作机制
+
+现代测试框架如Mockito（Java）、unittest.mock（Python）、Sinon.js（JavaScript）通过运行时代理或字节码操作生成替身对象。以Mockito为例：
+
 ```java
-when(emailService.send(anyString())).thenReturn(true);
-// 测试结束后不验证send是否被调用
-```
-Mock（行为验证）的写法为：
-```java
-verify(emailService, times(1)).send("user@example.com");
-// 若send未被恰好调用1次，测试失败
+UserRepository mockRepo = Mockito.mock(UserRepository.class);
+when(mockRepo.findById(42)).thenReturn(new User("Alice"));
+verify(mockRepo, times(1)).findById(42);
 ```
 
-### 隔离策略与依赖注入
-
-测试替身必须能够被注入到被测对象中，因此被测类的设计直接决定了替身的可用性。最常见的注入方式有三种：**构造函数注入**（最推荐）、**属性注入**和**方法参数注入**。如果一个类在内部直接通过`new DatabaseConnection()`创建依赖，则几乎无法引入测试替身，这种代码被称为"测试不友好"的设计。使用依赖倒置原则（DIP），让类依赖接口而非具体实现，是引入测试替身的必要前提。
+`mock()`创建了一个代理对象，`when...thenReturn`注册了Stub行为，`verify`执行了Mock期望验证。这三行代码同时体现了Stub（返回值控制）和Mock（调用验证）两种能力，这也是为什么日常开发中"mock"一词被混用来指代所有测试替身。
 
 ## 实际应用
 
-**场景一：支付服务隔离**。在测试订单创建逻辑时，真实的支付网关不能在测试中被调用（会产生真实扣款或需要沙箱账号）。此时使用Stub替代`PaymentGateway`接口，令`processPayment()`固定返回成功响应，测试只关注订单状态流转是否正确。
+**场景一：隔离第三方支付API**  
+测试订单服务时，使用Stub替代支付网关，令`stub.charge()`返回`PaymentResult.SUCCESS`，使测试无需真实网络连接即可验证订单状态流转逻辑。失败路径测试只需让Stub返回`PaymentResult.INSUFFICIENT_FUNDS`，即可覆盖难以在真实环境中复现的异常分支。
 
-**场景二：验证邮件发送行为**。用户注册成功后，系统应发送一封欢迎邮件。测试无法通过检查邮箱来验证邮件是否发出，此时使用Mock对象，在测试执行后通过`verify(mailService).sendWelcomeEmail("new@user.com")`验证邮件服务确实被调用，且参数为正确的邮箱地址。
+**场景二：验证事件发布行为**  
+用户注册完成后，系统应发布`UserRegisteredEvent`。使用Mock替代`EventBus`，测试结束后调用`verify(mockEventBus).publish(any(UserRegisteredEvent.class))`，精确验证事件类型和调用次数，而无需搭建完整的消息队列基础设施。
 
-**场景三：时间依赖的Fake**。测试"优惠券是否过期"的逻辑时，真实的`LocalDateTime.now()`会随时间变化导致测试不稳定。引入`Clock`接口的Fake实现，将当前时间固定为`2024-01-15 10:00:00`，使测试结果完全可预测。
-
-**场景四：Spy监控调用次数**。缓存失效策略测试中，需要验证当缓存命中时，下游数据库查询接口不应被调用。使用Spy包裹真实的缓存实现，测试结束后断言`dbRepository.query()`的调用次数为零。
+**场景三：用Fake简化集成测试**  
+使用`FakeEmailSender`替代真实SMTP服务，Fake内部用`List<Email>`存储所有"已发送"邮件。测试不仅验证邮件是否发送，还可断言邮件内容：`assertThat(fakeEmailSender.getSent().get(0).getSubject()).isEqualTo("欢迎注册")`。
 
 ## 常见误区
 
-**误区一：将Mock作为所有替身的统称**。许多开发者将所有测试替身都称为"Mock"，导致Stub、Fake、Spy的语义被压缩进一个词。实际上，`Mockito.mock()`返回的对象在未配置`verify`时仅是Stub，而非真正意义上的Mock。混用术语会导致测试意图不清晰，在代码评审中产生理解偏差。
+**误区一：将Mock等同于所有测试替身**  
+在Mockito等框架中，`mock()`方法返回的对象实际上既能充当Stub又能充当Mock，导致开发者将"mock"作为测试替身的通称。然而Meszaros的分类明确区分了五种替身，混淆概念会导致测试设计时目的不清晰——究竟是在控制输入（Stub的职责）还是验证交互（Mock的职责）。
 
-**误区二：过度使用Mock导致测试与实现耦合**。当测试通过`verify`检查了过多的内部方法调用细节时，任何代码重构（即使外部行为不变）都会导致大量测试失败。这种测试只验证了"如何做"而非"做了什么"，降低了测试的抗重构能力。正确做法是仅对与外部可观察行为直接相关的交互使用Mock验证，对纯粹的内部实现细节使用Stub提供数据即可。
+**误区二：对所有依赖都使用Mock**  
+对值对象、工具类（如`String.format`、`Math.abs`）和同一模块内的协作对象使用Mock，会导致测试代码量爆炸，且每次内部重构都要修改Mock期望。测试替身应只用于**跨越架构边界**的依赖：外部服务、I/O操作、时间/随机性来源。
 
-**误区三：用Fake替代真实集成测试**。H2内存数据库的SQL方言与PostgreSQL存在差异，某些在H2上通过的测试在生产数据库上会失败。Fake适合单元测试中的快速反馈，但不能完全替代针对真实依赖的集成测试，两者在测试金字塔中承担不同层次的职责。
+**误区三：Stub与Fake可以互换**  
+Stub返回硬编码值，无法正确响应不同的输入组合；Fake具有完整的简化逻辑，能对任意合法输入作出正确响应。当测试需要多次调用同一方法且每次输入不同时，Stub的局限性会暴露——例如`stubRepo.findById(1)`返回Alice、`findById(2)`返回Bob，需要为每种情况单独配置，而Fake的内存HashMap则自然支持任意键值查询。
 
 ## 知识关联
 
-测试替身建立在**单元测试**的核心需求之上：单元测试要求被测单元与外部依赖完全隔离，测试替身正是实现这一隔离的具体手段。没有单元测试的概念背景，测试替身的隔离价值便无从理解。
+**依赖单元测试基础**：理解测试替身需要先掌握单元测试中的AAA结构（Arrange-Act-Assert），测试替身主要在Arrange阶段配置，在Assert阶段（Mock验证）完成其使命。没有明确的"被测单元"边界，就无法判断哪些对象需要被替换。
 
-掌握测试替身之后，可以进入**测试模式**的学习。测试模式涵盖更高层次的测试组织策略，如测试夹具（Test Fixture）的构建方式、参数化测试（Parameterized Test）的设计，以及如何在一个测试套件中合理分配Stub、Mock和Fake的使用比例，形成可维护的测试代码库结构。测试替身是这些更复杂模式的技术基础。
+**引向测试模式**：掌握测试替身后，可以进一步学习更高层次的测试模式，例如"对象母亲模式"（Object Mother）用于构建复杂测试数据，"测试数据构建器模式"（Test Data Builder）用于流式创建Fake数据，以及"契约测试"（Contract Testing）——它在使用Stub的同时，通过Pact等工具验证Stub的行为是否与真实服务的契约一致，防止替身与现实脱节。

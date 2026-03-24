@@ -9,12 +9,12 @@ is_milestone: false
 tags: ["创建型"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.1
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.444
-last_scored: "2026-03-24"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"
@@ -25,22 +25,20 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-单例模式（Singleton Pattern）是一种创建型设计模式，其核心约束是：**一个类在整个程序运行期间只能存在一个实例**，并提供一个全局访问点来获取该实例。它由 GoF（Gang of Four）在 1994 年出版的《Design Patterns: Elements of Reusable Object-Oriented Software》中正式归纳，是书中 23 种设计模式里最简单也最容易被误用的一种。
+单例模式（Singleton Pattern）是一种创建型设计模式，其核心约束是：一个类在整个程序运行期间只能存在唯一一个实例，并提供一个全局访问点来获取该实例。这个"唯一性"保证意味着，无论程序中多少处代码调用 `getInstance()` 方法，返回的都是同一个对象引用，内存地址完全相同。
 
-单例模式的诞生源于对"共享资源管理"问题的抽象。典型场景包括：操作系统的打印队列管理器、数据库连接池、应用程序日志记录器。这些对象如果存在多份实例，要么造成资源浪费，要么引发数据不一致。单例模式通过将构造函数设为私有（`private`），强制外部代码只能通过统一的静态方法获取实例，从语言层面封堵了意外创建多个实例的可能。
+单例模式由 GoF（Gang of Four）在 1994 年出版的《设计模式：可复用面向对象软件的基础》中正式定义。GoF 将其列为 23 种经典设计模式中的创建型模式，书中给出的原始结构包含一个私有静态成员变量保存实例、一个私有构造函数防止外部实例化，以及一个公有静态方法 `getInstance()` 提供访问入口。
+
+单例模式在实践中常用于管理共享资源，例如数据库连接池、日志记录器、配置文件读取器等场景。这些组件若被反复创建，会带来内存浪费或状态不一致问题。以 Java 中的 `java.lang.Runtime` 类为例，JDK 将其设计为单例，保证每个 JVM 进程只有一个运行时环境对象可操作系统资源。
 
 ---
 
 ## 核心原理
 
-### 基础结构：三个必要条件
+### 基本结构与私有构造函数
 
-实现单例模式必须满足三点：
-1. **私有构造函数**：防止外部通过 `new` 创建实例
-2. **静态私有实例变量**：存储唯一实例
-3. **静态公有访问方法**（通常命名为 `getInstance()`）：返回该唯一实例
+单例模式的实现依赖三个关键要素。第一，将构造函数声明为 `private`，使外部代码无法通过 `new` 关键字创建实例。第二，在类内部声明一个 `private static` 类型的成员变量，用于持有唯一实例的引用。第三，提供 `public static getInstance()` 方法作为唯一入口。以下是最基础的"懒汉式"实现：
 
-以 Java 为例，最朴素的实现（懒汉式）如下：
 ```java
 public class Singleton {
     private static Singleton instance;
@@ -53,22 +51,21 @@ public class Singleton {
     }
 }
 ```
-然而这段代码**在多线程环境下是不安全的**——两个线程可能同时通过 `instance == null` 检查，各自创建一个实例。
 
----
+这段代码在单线程环境下正确，但在多线程环境下，两个线程同时通过 `if (instance == null)` 检查时，会各自创建一个实例，破坏唯一性。
 
-### 线程安全实现：双重检查锁定（DCL）
+### 线程安全的双重检查锁定（DCL）
 
-双重检查锁定（Double-Checked Locking，DCL）是解决单例多线程安全问题的经典方案：
+解决多线程问题最常用的方案是**双重检查锁定（Double-Checked Locking，DCL）**。DCL 在第一次 `null` 检查后加入 `synchronized` 同步块，同步块内再做第二次检查，避免每次调用都争抢锁带来的性能损耗：
 
 ```java
 public class Singleton {
-    private static volatile Singleton instance;
+    private volatile static Singleton instance;
     private Singleton() {}
     public static Singleton getInstance() {
-        if (instance == null) {                    // 第一次检查
+        if (instance == null) {
             synchronized (Singleton.class) {
-                if (instance == null) {            // 第二次检查
+                if (instance == null) {
                     instance = new Singleton();
                 }
             }
@@ -78,61 +75,73 @@ public class Singleton {
 }
 ```
 
-此处 `volatile` 关键字**不可省略**。原因在于 `instance = new Singleton()` 在字节码层面分为三步：①分配内存 ②初始化对象 ③将引用赋给 `instance`。JVM 指令重排可能使步骤③先于步骤②执行，导致另一个线程拿到一个**未完成初始化的实例**。`volatile` 通过禁止指令重排序解决了这一问题。DCL 方案在 Java 5 之后才完全可靠，因为 Java 5 才对 `volatile` 的内存语义做出了规范增强。
+`volatile` 关键字在此处不可缺少。`instance = new Singleton()` 在 JVM 层面分为三步：①分配内存 ②初始化对象 ③将引用赋给 `instance`。JVM 可能将步骤②③重排序，导致另一个线程拿到一个尚未初始化完毕的对象。`volatile` 禁止了这种指令重排序，保证可见性与有序性。这个问题在 Java 1.5 之前的内存模型中实际存在，Java 5 修订 JSR-133 后 `volatile` + DCL 才真正安全。
 
----
+### 饿汉式与静态内部类实现
 
-### 最优实现：静态内部类与枚举
+**饿汉式**在类加载时立即创建实例，利用 JVM 的类加载机制保证线程安全：
 
-**静态内部类方式**利用 JVM 类加载机制天然保证线程安全：
+```java
+public class Singleton {
+    private static final Singleton INSTANCE = new Singleton();
+    private Singleton() {}
+    public static Singleton getInstance() { return INSTANCE; }
+}
+```
+
+缺点是无论是否使用，实例在程序启动时就占用内存。
+
+**静态内部类（Initialization-on-demand Holder）** 是兼顾懒加载与线程安全的最优雅方案：
+
 ```java
 public class Singleton {
     private Singleton() {}
     private static class Holder {
-        static final Singleton INSTANCE = new Singleton();
+        private static final Singleton INSTANCE = new Singleton();
     }
-    public static Singleton getInstance() {
-        return Holder.INSTANCE;
-    }
+    public static Singleton getInstance() { return Holder.INSTANCE; }
 }
 ```
-`Holder` 类只在第一次调用 `getInstance()` 时才被加载，JVM 的类加载过程本身是线程安全的，因此无需任何同步代码。
 
-**枚举方式**由 Joshua Bloch 在《Effective Java》第二版（2008年）中推荐，是 Java 平台上**最简洁且防反射攻击**的单例实现：
+`Holder` 类只有在第一次调用 `getInstance()` 时才被 JVM 加载，JVM 的类初始化过程由类加载锁保证线程安全，且无需手动同步。这是 Joshua Bloch 在《Effective Java》第三版 Item 83 中推荐的实现方式。
+
+### 枚举单例
+
+Java 中最简洁且抵御反序列化攻击的单例实现是枚举：
+
 ```java
 public enum Singleton {
     INSTANCE;
-    public void doSomething() { ... }
+    public void doSomething() { /* ... */ }
 }
 ```
-枚举类型的反序列化不会创建新实例，且枚举构造函数天然对反射调用抛出 `IllegalArgumentException`，而普通单例如果不额外处理，可通过 `Constructor.setAccessible(true)` 被反射破坏。
+
+枚举由 JVM 保证每个枚举值只实例化一次，且天然防止通过反射或反序列化创建新实例——这两点是前几种实现方式难以同时满足的。《Effective Java》将此方法列为"实现单例的最佳方式"。
 
 ---
 
 ## 实际应用
 
-**Spring 框架的 Bean 默认作用域**就是单例。Spring 容器通过 `DefaultSingletonBeanRegistry` 内部维护一个 `Map<String, Object>` 存储所有单例 Bean，当你声明 `@Service` 或 `@Component` 时，默认即为单例作用域（`scope="singleton"`），整个 `ApplicationContext` 生命周期内只有一个实例。
+**日志系统**：Log4j 的 `LogManager` 采用单例管理所有 Logger 的注册表，确保同一个 Logger 名称全局只对应一个实例，避免日志配置被覆盖。
 
-**日志框架 Log4j/SLF4J** 中的 `LogManager` 使用单例模式管理全局日志配置。应用程序任意位置通过 `LogManager.getLogger(ClassName.class)` 获取的 `Logger` 工厂，均来自同一个管理器实例，确保日志配置的统一性。
+**线程池**：Android 系统中 `Looper.getMainLooper()` 返回主线程的唯一 Looper 对象，通过静态成员变量 `sMainLooper` 持有引用，保证 UI 线程消息队列的唯一性。
 
-**Android 开发**中，`Application` 类本身由系统保证全局唯一，但开发者通常额外为数据库访问对象（如 Room 的 `RoomDatabase`）实现单例，防止多个数据库连接对象同时存在引发 `SQLiteDatabaseLockedException`。
+**配置管理器**：Spring 框架中默认的 Bean 作用域（scope）就是 `singleton`，即每个 Spring 容器中一个 Bean 定义只对应一个实例。Spring 使用 `DefaultSingletonBeanRegistry` 中的 `ConcurrentHashMap<String, Object>` 作为单例注册表来缓存实例。
 
 ---
 
 ## 常见误区
 
-**误区一：认为单例模式"天生"线程安全**。懒汉式（延迟初始化）的单例在没有同步措施时完全不是线程安全的。饿汉式（类加载时直接初始化静态变量）是线程安全的，但如果初始化代价很高且未必用到，会造成资源浪费。不同实现方式的线程安全保证机制不同，不可混淆。
+**误区一：认为 synchronized 修饰 getInstance() 方法足够高效**。直接在方法签名上加 `synchronized` 确实线程安全，但每次调用都要竞争类锁，高并发场景下性能开销显著。DCL 或静态内部类方案只在首次初始化时有同步开销，后续调用无锁，性能差距可达数十倍。
 
-**误区二：单例模式是全局变量的"高级替代品"**。单例模式强调"唯一实例"语义，同时封装了实例的创建逻辑；全局变量只是全局可访问，没有任何创建控制。然而单例模式确实带来了全局状态，这使得依赖单例的类难以进行单元测试（无法轻易替换实例），这也是业界建议在可以使用依赖注入的场合**优先用 DI 容器管理单例**，而非手写单例类的原因。
+**误区二：忽视反序列化破坏单例**。实现了 `Serializable` 接口的单例类，在反序列化时会调用 `ObjectInputStream.readObject()` 创建新实例，绕过私有构造函数。解决办法是在单例类中添加 `readResolve()` 方法并返回 `INSTANCE`，或直接使用枚举单例。
 
-**误区三：序列化与反射不会破坏单例**。对于普通 Java 类实现的单例，执行反序列化会调用 `readResolve` 机制，若未重写 `readResolve()` 方法，将创建一个全新实例，破坏唯一性。使用枚举实现或在类中显式声明 `protected Object readResolve() { return INSTANCE; }` 才能防止此问题。
+**误区三：在多 ClassLoader 环境中误以为唯一性仍然成立**。单例的"唯一"是相对于同一个 ClassLoader 而言的。在 Tomcat 等容器中，每个 Web 应用拥有独立的 ClassLoader，同一个单例类会被加载多次，产生多个互相独立的"单例"实例。这在分布式系统中尤为值得注意。
 
 ---
 
 ## 知识关联
 
-单例模式建立在**设计模式概述**所介绍的"创建型模式"分类之上，是理解其他创建型模式（如工厂方法、抽象工厂）的对照基准——工厂模式解决"如何创建对象"，单例模式解决"限制创建对象的数量为一"。
+学习单例模式需要具备**设计模式概述**的背景知识，理解创建型模式与结构型、行为型模式的分类依据，以及 GoF 模式描述语言中"意图、适用性、结构"等标准元素的含义。
 
-在并发编程中，DCL 实现直接关联 Java 内存模型（JMM）中的 `happens-before` 规则和 `volatile` 语义，理解单例的线程安全实现有助于深入掌握 JMM 中可见性与有序性的保证机制。
-
-单例模式的滥用会导致代码紧耦合和测试困难，这推动了**依赖注入（Dependency Injection）**模式的广泛使用。Spring、Guice 等 DI 框架本质上将单例的生命周期管理从业务代码中剥离出来，由容器统一控制，既保留了"唯一实例"的语义，又保持了类的可测试性。
+单例模式是工厂模式、抽象工厂模式等创建型模式的对比参照：工厂方法每次调用可返回不同实例，而单例严格限定为一个。掌握单例后，可进一步学习**多例模式（Multiton Pattern）**——它将对象数量从严格的 1 扩展到由键值映射管理的有限集合，是单例的自然推广。同时，单例模式中的线程安全技巧（`volatile`、DCL、类加载锁）为学习 Java 并发编程中的**不可变对象**与**安全发布（Safe Publication）**概念奠定了实践基础。

@@ -984,10 +984,30 @@
     "ltv-calculation",
     "prd-writing",
     "kanban-method",
-    "okr-method"
+    "okr-method",
+    "aarrr-model",
+    "memory-encoding",
+    "aging-psychology",
+    "gender-development",
+    "bipolar-disorder",
+    "ptsd",
+    "psychological-assessment",
+    "stimulus-generalization",
+    "stimulus-discrimination",
+    "genetics-behavior",
+    "personality-assessment",
+    "se-modular-arch",
+    "se-dp-singleton",
+    "se-dp-factory",
+    "se-test-doubles",
+    "se-mutation-test",
+    "se-rename-refactor",
+    "ta-texture-budget",
+    "vfx-fb-explosion",
+    "outline-planning"
   ],
   "errors": [],
-  "total_upgraded": 985,
+  "total_upgraded": 1005,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T00:28:49.736004"
+  "last_updated": "2026-03-25T00:46:30.126690"
 }

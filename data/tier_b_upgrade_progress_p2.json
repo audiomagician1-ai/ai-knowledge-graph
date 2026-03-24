@@ -249,10 +249,30 @@
     "cg-openvdb",
     "cg-atmosphere-scatter",
     "cd-line-of-action",
-    "cd-dynamic-pose"
+    "cd-dynamic-pose",
+    "cd-box-in-perspective",
+    "cd-composition-breakdowns",
+    "cd-env-fantasy-world",
+    "cd-prop-function-form",
+    "cd-prop-presentation-sheet",
+    "cd-style-semi-realistic",
+    "cd-style-reference-board",
+    "game-audio-music-world-music",
+    "sfx-fr-water-sounds",
+    "sfx-am-sequence-container",
+    "sfx-am-blend-container",
+    "sfx-sa-doppler-effect",
+    "sfx-sa-speaker-panning",
+    "sfx-dp-crowd-walla",
+    "sfx-ao-regression-testing",
+    "ue5-module-system",
+    "adaptive-music",
+    "input-replay",
+    "local-multiplayer-input",
+    "camera-input"
   ],
   "errors": [],
-  "total_upgraded": 250,
+  "total_upgraded": 270,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T00:30:17.877328"
+  "last_updated": "2026-03-25T00:49:25.899808"
 }
