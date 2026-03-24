@@ -2507,7 +2507,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-server-reconciliation.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 2239
     },
     {
       "id": "mn-ss-authoritative-server",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 321944,
-    "avg_chars": 1609,
+    "total_chars": 322777,
+    "avg_chars": 1613,
     "domain": "multiplayer-network"
   }
 }

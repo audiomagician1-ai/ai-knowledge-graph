@@ -643,7 +643,7 @@
       ],
       "file": "concept-design/cd-warm-cool.md",
       "exists": true,
-      "char_count": 2490
+      "char_count": 2516
     },
     {
       "id": "cd-monochrome-study",
@@ -3303,7 +3303,7 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 378340,
+    "total_chars": 378366,
     "avg_chars": 1719,
     "domain": "concept-design"
   }

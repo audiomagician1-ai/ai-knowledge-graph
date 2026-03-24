@@ -336,7 +336,7 @@
       "tags": [],
       "file": "web-backend/connection-pool.md",
       "exists": true,
-      "char_count": 1599
+      "char_count": 3035
     },
     {
       "id": "rate-limiting",
@@ -354,8 +354,8 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 51284,
-    "avg_chars": 1899,
+    "total_chars": 52720,
+    "avg_chars": 1952,
     "domain": "web-backend"
   }
 }

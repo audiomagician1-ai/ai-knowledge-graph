@@ -76,7 +76,7 @@
       "tags": [],
       "file": "data-structures/monotone-queue.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2564
     },
     {
       "id": "deque",
@@ -341,8 +341,8 @@
   ],
   "stats": {
     "total": 26,
-    "total_chars": 53830,
-    "avg_chars": 2070,
+    "total_chars": 55120,
+    "avg_chars": 2120,
     "domain": "data-structures"
   }
 }

@@ -973,7 +973,7 @@
       "tags": [],
       "file": "game-publishing/pub-pr-platform-negotiation.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2756
     },
     {
       "id": "pub-pr-app-review",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 270972,
-    "avg_chars": 1505,
+    "total_chars": 272341,
+    "avg_chars": 1513,
     "domain": "game-publishing"
   }
 }

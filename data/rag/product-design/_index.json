@@ -1423,7 +1423,7 @@
       ],
       "file": "product-design/product-thinking/product-positioning.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2530
     },
     {
       "id": "product-market-fit",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 333540,
-    "avg_chars": 1832,
+    "total_chars": 334766,
+    "avg_chars": 1839,
     "domain": "product-design"
   }
 }

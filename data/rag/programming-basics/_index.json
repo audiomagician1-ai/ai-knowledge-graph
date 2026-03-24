@@ -219,7 +219,7 @@
       "tags": [],
       "file": "programming-basics/file-io.md",
       "exists": true,
-      "char_count": 3151
+      "char_count": 3017
     },
     {
       "id": "logging-basics",
@@ -393,8 +393,8 @@
   ],
   "stats": {
     "total": 30,
-    "total_chars": 68878,
-    "avg_chars": 2295,
+    "total_chars": 68744,
+    "avg_chars": 2291,
     "domain": "programming-basics"
   }
 }

@@ -986,7 +986,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-procedural-dialogue.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2584
     },
     {
       "id": "nd-ds-node-based-editor",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 280895,
-    "avg_chars": 1560,
+    "total_chars": 282113,
+    "avg_chars": 1567,
     "domain": "narrative-design"
   }
 }

@@ -2443,7 +2443,7 @@
       ],
       "file": "psychology/social-psychology/conformity.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2252
     },
     {
       "id": "prejudice-discrimination",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 364681,
-    "avg_chars": 1992,
+    "total_chars": 365612,
+    "avg_chars": 1997,
     "domain": "psychology"
   }
 }

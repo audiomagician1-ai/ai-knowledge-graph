@@ -553,7 +553,7 @@
       ],
       "file": "animation/anim-slow-in-out.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2363
     },
     {
       "id": "anim-follow-through",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 289689,
-    "avg_chars": 1609,
+    "total_chars": 290794,
+    "avg_chars": 1615,
     "domain": "animation"
   }
 }

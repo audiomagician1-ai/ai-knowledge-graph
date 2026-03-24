@@ -167,7 +167,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-biome-soundscape.md",
       "exists": true,
-      "char_count": 1404
+      "char_count": 2322
     },
     {
       "id": "sfx-as-sci-fi-ambient",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 293075,
-    "avg_chars": 1628,
+    "total_chars": 293993,
+    "avg_chars": 1633,
     "domain": "game-audio-sfx"
   }
 }

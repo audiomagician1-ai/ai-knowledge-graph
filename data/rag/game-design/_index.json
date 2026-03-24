@@ -1273,7 +1273,7 @@
       ],
       "file": "game-design/design-docs/gdd-structure.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2568
     },
     {
       "id": "ui-wireframe",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 525792,
-    "avg_chars": 2103,
+    "total_chars": 527051,
+    "avg_chars": 2108,
     "domain": "game-design"
   }
 }

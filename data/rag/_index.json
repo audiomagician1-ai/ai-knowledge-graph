@@ -1243,7 +1243,7 @@
       ],
       "file": "3d-art/3da-modeling-workflow.md",
       "exists": true,
-      "char_count": 1573
+      "char_count": 2408
     },
     {
       "id": "3da-extrude-inset",
@@ -1258,7 +1258,7 @@
       ],
       "file": "3d-art/3da-extrude-inset.md",
       "exists": true,
-      "char_count": 2589
+      "char_count": 2526
     },
     {
       "id": "3da-scale-proportion",
@@ -1288,7 +1288,7 @@
       ],
       "file": "3d-art/3da-normals-smoothing.md",
       "exists": true,
-      "char_count": 1634
+      "char_count": 2652
     },
     {
       "id": "3da-loop-cut",
@@ -1873,7 +1873,7 @@
       ],
       "file": "3d-art/3da-prop-lod-creation.md",
       "exists": true,
-      "char_count": 2702
+      "char_count": 2988
     },
     {
       "id": "3da-prop-pivot-setup",
@@ -1933,7 +1933,7 @@
       ],
       "file": "3d-art/3da-prop-quality-checklist.md",
       "exists": true,
-      "char_count": 2878
+      "char_count": 2778
     },
     {
       "id": "3da-prop-food-organic",
@@ -2938,7 +2938,7 @@
       ],
       "file": "3d-art/3da-tex-tiling-material.md",
       "exists": true,
-      "char_count": 2888
+      "char_count": 2787
     },
     {
       "id": "3da-tex-hand-painted",
@@ -2953,7 +2953,7 @@
       ],
       "file": "3d-art/3da-tex-hand-painted.md",
       "exists": true,
-      "char_count": 2540
+      "char_count": 2617
     },
     {
       "id": "3da-tex-scan-data",
@@ -5139,7 +5139,7 @@
       ],
       "file": "animation/anim-slow-in-out.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2363
     },
     {
       "id": "anim-follow-through",
@@ -14259,7 +14259,7 @@
       ],
       "file": "concept-design/cd-warm-cool.md",
       "exists": true,
-      "char_count": 2490
+      "char_count": 2516
     },
     {
       "id": "cd-monochrome-study",
@@ -17226,7 +17226,7 @@
       "tags": [],
       "file": "data-structures/monotone-queue.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2564
     },
     {
       "id": "deque",
@@ -28903,7 +28903,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-biome-soundscape.md",
       "exists": true,
-      "char_count": 1404
+      "char_count": 2322
     },
     {
       "id": "sfx-as-sci-fi-ambient",
@@ -32349,7 +32349,7 @@
       ],
       "file": "game-design/design-docs/gdd-structure.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2568
     },
     {
       "id": "ui-wireframe",
@@ -36069,7 +36069,7 @@
       ],
       "file": "game-engine/performance-profiling/gpu-profiling.md",
       "exists": true,
-      "char_count": 3340
+      "char_count": 2805
     },
     {
       "id": "pix-nsa",
@@ -38754,7 +38754,7 @@
       ],
       "file": "game-engine/ue5-architecture/ue5-chaos.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2776
     },
     {
       "id": "ue5-data-asset",
@@ -41209,7 +41209,7 @@
       "tags": [],
       "file": "game-live-ops/ops-uc-content-pipeline.md",
       "exists": true,
-      "char_count": 1396
+      "char_count": 2570
     },
     {
       "id": "ops-uc-staged-rollout",
@@ -44719,7 +44719,7 @@
       "tags": [],
       "file": "game-publishing/pub-pr-platform-negotiation.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2756
     },
     {
       "id": "pub-pr-app-review",
@@ -47852,7 +47852,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-test-selection.md",
       "exists": true,
-      "char_count": 1385
+      "char_count": 2471
     },
     {
       "id": "qa-rt-hotfix-regression",
@@ -54702,7 +54702,7 @@
       "tags": [],
       "file": "llm-core/positional-encoding.md",
       "exists": true,
-      "char_count": 3068
+      "char_count": 2961
     },
     {
       "id": "tokenization",
@@ -54806,7 +54806,7 @@
       "tags": [],
       "file": "llm-core/attention-mechanism.md",
       "exists": true,
-      "char_count": 2769
+      "char_count": 2706
     },
     {
       "id": "sparse-attention",
@@ -61376,7 +61376,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-server-reconciliation.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 2239
     },
     {
       "id": "mn-ss-authoritative-server",
@@ -62455,7 +62455,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-procedural-dialogue.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2584
     },
     {
       "id": "nd-ds-node-based-editor",
@@ -64239,7 +64239,7 @@
       ],
       "file": "philosophy/aesthetics/mimesis.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2623
     },
     {
       "id": "environmental-aesthetics",
@@ -71004,7 +71004,7 @@
       ],
       "file": "product-design/product-thinking/product-positioning.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2530
     },
     {
       "id": "product-market-fit",
@@ -72530,7 +72530,7 @@
       "tags": [],
       "file": "programming-basics/file-io.md",
       "exists": true,
-      "char_count": 3151
+      "char_count": 3017
     },
     {
       "id": "logging-basics",
@@ -72894,7 +72894,7 @@
       "tags": [],
       "file": "prompt-engineering/prompt-basics.md",
       "exists": true,
-      "char_count": 2619
+      "char_count": 2980
     },
     {
       "id": "prompt-optimization",
@@ -75404,7 +75404,7 @@
       ],
       "file": "psychology/social-psychology/conformity.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2252
     },
     {
       "id": "prejudice-discrimination",
@@ -78313,7 +78313,7 @@
       ],
       "file": "software-engineering/memory-management/se-smart-pointers.md",
       "exists": true,
-      "char_count": 1442
+      "char_count": 2791
     },
     {
       "id": "se-stack-heap",
@@ -80948,7 +80948,7 @@
       ],
       "file": "technical-art/ta-lod-generation.md",
       "exists": true,
-      "char_count": 1666
+      "char_count": 2729
     },
     {
       "id": "ta-lod-testing",
@@ -81053,7 +81053,7 @@
       ],
       "file": "technical-art/ta-lod-crowd.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2853
     },
     {
       "id": "ta-proxy-mesh",
@@ -82388,7 +82388,7 @@
       ],
       "file": "technical-art/ta-multi-platform.md",
       "exists": true,
-      "char_count": 1403
+      "char_count": 3396
     },
     {
       "id": "ta-import-pipeline",
@@ -83528,7 +83528,7 @@
       ],
       "file": "vfx/vfx-destruct-prefracture.md",
       "exists": true,
-      "char_count": 1401
+      "char_count": 2602
     },
     {
       "id": "vfx-fb-houdini",
@@ -85928,7 +85928,7 @@
       ],
       "file": "vfx/vfx-opt-precompute.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2600
     },
     {
       "id": "api-versioning",
@@ -86266,7 +86266,7 @@
       "tags": [],
       "file": "web-backend/connection-pool.md",
       "exists": true,
-      "char_count": 1599
+      "char_count": 3035
     },
     {
       "id": "rate-limiting",
@@ -86578,7 +86578,7 @@
       "tags": [],
       "file": "web-frontend/web-performance.md",
       "exists": true,
-      "char_count": 3322
+      "char_count": 3307
     },
     {
       "id": "frontend-testing",
@@ -88523,7 +88523,7 @@
       ],
       "file": "writing/professional-writing/press-release.md",
       "exists": true,
-      "char_count": 1305
+      "char_count": 2673
     },
     {
       "id": "localization-writing",

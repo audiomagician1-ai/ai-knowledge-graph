@@ -1883,7 +1883,7 @@
       "tags": [],
       "file": "game-live-ops/ops-uc-content-pipeline.md",
       "exists": true,
-      "char_count": 1396
+      "char_count": 2570
     },
     {
       "id": "ops-uc-staged-rollout",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 275793,
-    "avg_chars": 1532,
+    "total_chars": 276967,
+    "avg_chars": 1538,
     "domain": "game-live-ops"
   }
 }

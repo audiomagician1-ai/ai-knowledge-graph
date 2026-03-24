@@ -418,7 +418,7 @@
       ],
       "file": "technical-art/ta-lod-generation.md",
       "exists": true,
-      "char_count": 1666
+      "char_count": 2729
     },
     {
       "id": "ta-lod-testing",
@@ -523,7 +523,7 @@
       ],
       "file": "technical-art/ta-lod-crowd.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2853
     },
     {
       "id": "ta-proxy-mesh",
@@ -1858,7 +1858,7 @@
       ],
       "file": "technical-art/ta-multi-platform.md",
       "exists": true,
-      "char_count": 1403
+      "char_count": 3396
     },
     {
       "id": "ta-import-pipeline",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 291547,
-    "avg_chars": 1619,
+    "total_chars": 296061,
+    "avg_chars": 1644,
     "domain": "technical-art"
   }
 }

@@ -193,7 +193,7 @@
       "tags": [],
       "file": "prompt-engineering/prompt-basics.md",
       "exists": true,
-      "char_count": 2619
+      "char_count": 2980
     },
     {
       "id": "prompt-optimization",
@@ -263,8 +263,8 @@
   ],
   "stats": {
     "total": 20,
-    "total_chars": 35544,
-    "avg_chars": 1777,
+    "total_chars": 35905,
+    "avg_chars": 1795,
     "domain": "prompt-engineering"
   }
 }

@@ -298,7 +298,7 @@
       ],
       "file": "vfx/vfx-destruct-prefracture.md",
       "exists": true,
-      "char_count": 1401
+      "char_count": 2602
     },
     {
       "id": "vfx-fb-houdini",
@@ -2698,13 +2698,13 @@
       ],
       "file": "vfx/vfx-opt-precompute.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2600
     }
   ],
   "stats": {
     "total": 180,
-    "total_chars": 295076,
-    "avg_chars": 1639,
+    "total_chars": 297482,
+    "avg_chars": 1652,
     "domain": "vfx"
   }
 }

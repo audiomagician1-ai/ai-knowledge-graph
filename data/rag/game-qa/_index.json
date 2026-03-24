@@ -1766,7 +1766,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-test-selection.md",
       "exists": true,
-      "char_count": 1385
+      "char_count": 2471
     },
     {
       "id": "qa-rt-hotfix-regression",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 245872,
-    "avg_chars": 1536,
+    "total_chars": 246958,
+    "avg_chars": 1543,
     "domain": "game-qa"
   }
 }

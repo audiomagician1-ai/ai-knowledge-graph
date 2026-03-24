@@ -118,7 +118,7 @@
       ],
       "file": "philosophy/aesthetics/mimesis.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2623
     },
     {
       "id": "environmental-aesthetics",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 299737,
-    "avg_chars": 1763,
+    "total_chars": 301061,
+    "avg_chars": 1770,
     "domain": "philosophy"
   }
 }

@@ -336,7 +336,7 @@
       "tags": [],
       "file": "llm-core/positional-encoding.md",
       "exists": true,
-      "char_count": 3068
+      "char_count": 2961
     },
     {
       "id": "tokenization",
@@ -440,7 +440,7 @@
       "tags": [],
       "file": "llm-core/attention-mechanism.md",
       "exists": true,
-      "char_count": 2769
+      "char_count": 2706
     },
     {
       "id": "sparse-attention",
@@ -471,8 +471,8 @@
   ],
   "stats": {
     "total": 36,
-    "total_chars": 71222,
-    "avg_chars": 1978,
+    "total_chars": 71052,
+    "avg_chars": 1973,
     "domain": "llm-core"
   }
 }

@@ -1813,7 +1813,7 @@
       ],
       "file": "writing/professional-writing/press-release.md",
       "exists": true,
-      "char_count": 1305
+      "char_count": 2673
     },
     {
       "id": "localization-writing",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 321926,
-    "avg_chars": 1893,
+    "total_chars": 323294,
+    "avg_chars": 1901,
     "domain": "writing"
   }
 }

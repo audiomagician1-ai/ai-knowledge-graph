@@ -1243,7 +1243,7 @@
       ],
       "file": "game-engine/performance-profiling/gpu-profiling.md",
       "exists": true,
-      "char_count": 3340
+      "char_count": 2805
     },
     {
       "id": "pix-nsa",
@@ -3928,7 +3928,7 @@
       ],
       "file": "game-engine/ue5-architecture/ue5-chaos.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2776
     },
     {
       "id": "ue5-data-asset",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 591676,
-    "avg_chars": 1972,
+    "total_chars": 592526,
+    "avg_chars": 1975,
     "domain": "game-engine"
   }
 }
