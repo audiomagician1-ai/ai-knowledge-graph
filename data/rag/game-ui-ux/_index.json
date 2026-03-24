@@ -1854,7 +1854,7 @@
       ],
       "file": "game-ui-ux/guiux-motion-easing.md",
       "exists": true,
-      "char_count": 1607
+      "char_count": 2930
     },
     {
       "id": "guiux-motion-parallax",
@@ -3203,8 +3203,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 319077,
-    "avg_chars": 1595,
+    "total_chars": 320400,
+    "avg_chars": 1602,
     "domain": "game-ui-ux"
   }
 }

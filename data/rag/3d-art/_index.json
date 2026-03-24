@@ -208,7 +208,7 @@
       ],
       "file": "3d-art/3da-pipe-automation.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 3294
     },
     {
       "id": "3da-pipe-texture-pipeline",
@@ -1648,7 +1648,7 @@
       ],
       "file": "3d-art/3da-org-expression.md",
       "exists": true,
-      "char_count": 1419
+      "char_count": 2621
     },
     {
       "id": "3da-org-anatomy-basics",
@@ -2068,7 +2068,7 @@
       ],
       "file": "3d-art/3da-retopo-intro.md",
       "exists": true,
-      "char_count": 1423
+      "char_count": 2479
     },
     {
       "id": "3da-retopo-validation",
@@ -2998,7 +2998,7 @@
       ],
       "file": "3d-art/3da-tex-normal-map.md",
       "exists": true,
-      "char_count": 1417
+      "char_count": 2695
     },
     {
       "id": "3da-tex-resolution-guide",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 426059,
-    "avg_chars": 1885,
+    "total_chars": 431453,
+    "avg_chars": 1909,
     "domain": "3d-art"
   }
 }

@@ -37,7 +37,7 @@
       "tags": [],
       "file": "web-frontend/css-basics.md",
       "exists": true,
-      "char_count": 1443
+      "char_count": 3001
     },
     {
       "id": "css-layout",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 58384,
-    "avg_chars": 1769,
+    "total_chars": 59942,
+    "avg_chars": 1816,
     "domain": "web-frontend"
   }
 }

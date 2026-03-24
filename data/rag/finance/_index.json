@@ -1393,7 +1393,7 @@
       ],
       "file": "finance/personal-finance/consumer-psychology.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 2222
     },
     {
       "id": "tax-basics",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 321214,
-    "avg_chars": 2007,
+    "total_chars": 321959,
+    "avg_chars": 2012,
     "domain": "finance"
   }
 }

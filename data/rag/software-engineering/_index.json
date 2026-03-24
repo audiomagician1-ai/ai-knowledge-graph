@@ -838,7 +838,7 @@
       ],
       "file": "software-engineering/ci-cd/se-pipeline-design.md",
       "exists": true,
-      "char_count": 1561
+      "char_count": 2735
     },
     {
       "id": "se-game-ci",
@@ -1048,7 +1048,7 @@
       ],
       "file": "software-engineering/code-review/se-cr-checklist.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 2318
     },
     {
       "id": "se-cr-feedback",
@@ -1603,7 +1603,7 @@
       ],
       "file": "software-engineering/ecs-architecture/se-ecs-intro.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2962
     },
     {
       "id": "se-ecs-query",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 482119,
-    "avg_chars": 1721,
+    "total_chars": 485738,
+    "avg_chars": 1734,
     "domain": "software-engineering"
   }
 }

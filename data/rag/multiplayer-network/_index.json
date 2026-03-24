@@ -375,7 +375,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ch-background-download.md",
       "exists": true,
-      "char_count": 1298
+      "char_count": 2673
     },
     {
       "id": "mn-ch-storage-optimization",
@@ -544,7 +544,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-cqrs-pattern.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2690
     },
     {
       "id": "mn-db-orm-game",
@@ -596,7 +596,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-optimistic-locking.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2540
     },
     {
       "id": "mn-db-transaction-design",
@@ -1077,7 +1077,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-clan-guild.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2728
     },
     {
       "id": "mn-lb-ready-check",
@@ -1285,7 +1285,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-party-management.md",
       "exists": true,
-      "char_count": 1599
+      "char_count": 2439
     },
     {
       "id": "mn-lb-queue-status",
@@ -1415,7 +1415,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ls-turn-based-sync.md",
       "exists": true,
-      "char_count": 1290
+      "char_count": 2176
     },
     {
       "id": "mn-ls-replay-system",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 322777,
-    "avg_chars": 1613,
+    "total_chars": 329714,
+    "avg_chars": 1648,
     "domain": "multiplayer-network"
   }
 }

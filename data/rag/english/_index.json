@@ -73,7 +73,7 @@
       ],
       "file": "english/advanced-grammar/aspect-nuances.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 3446
     },
     {
       "id": "causative-verbs",
@@ -193,7 +193,7 @@
       ],
       "file": "english/advanced-grammar/advanced-modals.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 3387
     },
     {
       "id": "mixed-conditionals",
@@ -1513,7 +1513,7 @@
       ],
       "file": "english/reading/argumentative-reading.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 3185
     },
     {
       "id": "tone-mood",
@@ -1738,7 +1738,7 @@
       ],
       "file": "english/sentence-patterns/adjective-clauses.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 2844
     },
     {
       "id": "compound-sentences",
@@ -2623,7 +2623,7 @@
       ],
       "file": "english/vocabulary/phrasal-verbs.md",
       "exists": true,
-      "char_count": 1220
+      "char_count": 3001
     },
     {
       "id": "technical-vocabulary",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 461046,
-    "avg_chars": 2305,
+    "total_chars": 470240,
+    "avg_chars": 2351,
     "domain": "english"
   }
 }

@@ -208,7 +208,7 @@
       ],
       "file": "3d-art/3da-pipe-automation.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 3294
     },
     {
       "id": "3da-pipe-texture-pipeline",
@@ -1648,7 +1648,7 @@
       ],
       "file": "3d-art/3da-org-expression.md",
       "exists": true,
-      "char_count": 1419
+      "char_count": 2621
     },
     {
       "id": "3da-org-anatomy-basics",
@@ -2068,7 +2068,7 @@
       ],
       "file": "3d-art/3da-retopo-intro.md",
       "exists": true,
-      "char_count": 1423
+      "char_count": 2479
     },
     {
       "id": "3da-retopo-validation",
@@ -2998,7 +2998,7 @@
       ],
       "file": "3d-art/3da-tex-normal-map.md",
       "exists": true,
-      "char_count": 1417
+      "char_count": 2695
     },
     {
       "id": "3da-tex-resolution-guide",
@@ -18459,7 +18459,7 @@
       ],
       "file": "economics/development-econ/urbanization-econ.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2704
     },
     {
       "id": "foreign-aid",
@@ -18534,7 +18534,7 @@
       ],
       "file": "economics/development-econ/technology-transfer.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2781
     },
     {
       "id": "education-economics",
@@ -18969,7 +18969,7 @@
       ],
       "file": "economics/economic-thought/david-ricardo.md",
       "exists": true,
-      "char_count": 1469
+      "char_count": 2697
     },
     {
       "id": "austrian-school",
@@ -18984,7 +18984,7 @@
       ],
       "file": "economics/economic-thought/austrian-school.md",
       "exists": true,
-      "char_count": 1479
+      "char_count": 2670
     },
     {
       "id": "feminist-economics",
@@ -19149,7 +19149,7 @@
       ],
       "file": "economics/economic-thought/karl-marx-econ.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2279
     },
     {
       "id": "alfred-marshall",
@@ -19164,7 +19164,7 @@
       ],
       "file": "economics/economic-thought/alfred-marshall.md",
       "exists": true,
-      "char_count": 1531
+      "char_count": 2592
     },
     {
       "id": "global-value-chains",
@@ -19179,7 +19179,7 @@
       ],
       "file": "economics/international-econ/global-value-chains.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2714
     },
     {
       "id": "regional-integration",
@@ -19269,7 +19269,7 @@
       ],
       "file": "economics/international-econ/foreign-exchange-market.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2633
     },
     {
       "id": "digital-trade",
@@ -19614,7 +19614,7 @@
       ],
       "file": "economics/macroeconomics/labor-market-macro.md",
       "exists": true,
-      "char_count": 1467
+      "char_count": 2886
     },
     {
       "id": "macroprudential-policy",
@@ -19704,7 +19704,7 @@
       ],
       "file": "economics/macroeconomics/new-keynesian.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2874
     },
     {
       "id": "exchange-rate-macro",
@@ -20709,7 +20709,7 @@
       ],
       "file": "english/advanced-grammar/aspect-nuances.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 3446
     },
     {
       "id": "causative-verbs",
@@ -20829,7 +20829,7 @@
       ],
       "file": "english/advanced-grammar/advanced-modals.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 3387
     },
     {
       "id": "mixed-conditionals",
@@ -22149,7 +22149,7 @@
       ],
       "file": "english/reading/argumentative-reading.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 3185
     },
     {
       "id": "tone-mood",
@@ -22374,7 +22374,7 @@
       ],
       "file": "english/sentence-patterns/adjective-clauses.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 2844
     },
     {
       "id": "compound-sentences",
@@ -23259,7 +23259,7 @@
       ],
       "file": "english/vocabulary/phrasal-verbs.md",
       "exists": true,
-      "char_count": 1220
+      "char_count": 3001
     },
     {
       "id": "technical-vocabulary",
@@ -25029,7 +25029,7 @@
       ],
       "file": "finance/personal-finance/consumer-psychology.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 2222
     },
     {
       "id": "tax-basics",
@@ -33474,7 +33474,7 @@
       ],
       "file": "game-design/feedback-systems/positive-feedback-loop.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2391
     },
     {
       "id": "ambient-feedback",
@@ -50020,7 +50020,7 @@
       ],
       "file": "game-ui-ux/guiux-motion-easing.md",
       "exists": true,
-      "char_count": 1607
+      "char_count": 2930
     },
     {
       "id": "guiux-motion-parallax",
@@ -59244,7 +59244,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ch-background-download.md",
       "exists": true,
-      "char_count": 1298
+      "char_count": 2673
     },
     {
       "id": "mn-ch-storage-optimization",
@@ -59413,7 +59413,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-cqrs-pattern.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2690
     },
     {
       "id": "mn-db-orm-game",
@@ -59465,7 +59465,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-optimistic-locking.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2540
     },
     {
       "id": "mn-db-transaction-design",
@@ -59946,7 +59946,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-clan-guild.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2728
     },
     {
       "id": "mn-lb-ready-check",
@@ -60154,7 +60154,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-party-management.md",
       "exists": true,
-      "char_count": 1599
+      "char_count": 2439
     },
     {
       "id": "mn-lb-queue-status",
@@ -60284,7 +60284,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ls-turn-based-sync.md",
       "exists": true,
-      "char_count": 1290
+      "char_count": 2176
     },
     {
       "id": "mn-ls-replay-system",
@@ -76843,7 +76843,7 @@
       ],
       "file": "software-engineering/ci-cd/se-pipeline-design.md",
       "exists": true,
-      "char_count": 1561
+      "char_count": 2735
     },
     {
       "id": "se-game-ci",
@@ -77053,7 +77053,7 @@
       ],
       "file": "software-engineering/code-review/se-cr-checklist.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 2318
     },
     {
       "id": "se-cr-feedback",
@@ -77608,7 +77608,7 @@
       ],
       "file": "software-engineering/ecs-architecture/se-ecs-intro.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2962
     },
     {
       "id": "se-ecs-query",
@@ -83663,7 +83663,7 @@
       ],
       "file": "vfx/vfx-fb-optimization.md",
       "exists": true,
-      "char_count": 1618
+      "char_count": 2784
     },
     {
       "id": "vfx-fb-capture",
@@ -85898,7 +85898,7 @@
       ],
       "file": "vfx/vfx-opt-texture-budget.md",
       "exists": true,
-      "char_count": 1595
+      "char_count": 3044
     },
     {
       "id": "vfx-opt-budget-system",
@@ -86318,7 +86318,7 @@
       "tags": [],
       "file": "web-frontend/css-basics.md",
       "exists": true,
-      "char_count": 1443
+      "char_count": 3001
     },
     {
       "id": "css-layout",

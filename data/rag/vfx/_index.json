@@ -433,7 +433,7 @@
       ],
       "file": "vfx/vfx-fb-optimization.md",
       "exists": true,
-      "char_count": 1618
+      "char_count": 2784
     },
     {
       "id": "vfx-fb-capture",
@@ -2668,7 +2668,7 @@
       ],
       "file": "vfx/vfx-opt-texture-budget.md",
       "exists": true,
-      "char_count": 1595
+      "char_count": 3044
     },
     {
       "id": "vfx-opt-budget-system",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 297482,
-    "avg_chars": 1652,
+    "total_chars": 300097,
+    "avg_chars": 1667,
     "domain": "vfx"
   }
 }

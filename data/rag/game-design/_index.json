@@ -2398,7 +2398,7 @@
       ],
       "file": "game-design/feedback-systems/positive-feedback-loop.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2391
     },
     {
       "id": "ambient-feedback",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 527051,
-    "avg_chars": 2108,
+    "total_chars": 528187,
+    "avg_chars": 2112,
     "domain": "game-design"
   }
 }
