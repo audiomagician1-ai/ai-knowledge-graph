@@ -763,7 +763,7 @@
       ],
       "file": "vfx/vfx-fluid-overview.md",
       "exists": true,
-      "char_count": 1465
+      "char_count": 2457
     },
     {
       "id": "vfx-fluid-texture",
@@ -1018,7 +1018,7 @@
       ],
       "file": "vfx/vfx-niagara-event.md",
       "exists": true,
-      "char_count": 1465
+      "char_count": 2563
     },
     {
       "id": "vfx-niagara-force",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 285699,
-    "avg_chars": 1587,
+    "total_chars": 287789,
+    "avg_chars": 1598,
     "domain": "vfx"
   }
 }

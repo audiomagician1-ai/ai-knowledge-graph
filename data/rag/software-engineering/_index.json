@@ -2533,7 +2533,7 @@
       ],
       "file": "software-engineering/multithreading/se-atomic.md",
       "exists": true,
-      "char_count": 1219
+      "char_count": 2902
     },
     {
       "id": "se-mt-intro",
@@ -3523,7 +3523,7 @@
       ],
       "file": "software-engineering/refactoring/se-strangler-fig.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2629
     },
     {
       "id": "se-legacy-refactor",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 465869,
-    "avg_chars": 1663,
+    "total_chars": 468930,
+    "avg_chars": 1674,
     "domain": "software-engineering"
   }
 }

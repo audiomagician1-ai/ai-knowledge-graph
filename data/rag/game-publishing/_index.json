@@ -1064,7 +1064,7 @@
       "tags": [],
       "file": "game-publishing/pub-pm-pr-agency.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2668
     },
     {
       "id": "pub-pm-pr-metrics",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 269456,
-    "avg_chars": 1496,
+    "total_chars": 270662,
+    "avg_chars": 1503,
     "domain": "game-publishing"
   }
 }

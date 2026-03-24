@@ -358,7 +358,7 @@
       ],
       "file": "game-design/balance-design/transitive-balance.md",
       "exists": true,
-      "char_count": 1226
+      "char_count": 2240
     },
     {
       "id": "damage-formula",
@@ -478,7 +478,7 @@
       ],
       "file": "game-design/balance-design/diminishing-returns.md",
       "exists": true,
-      "char_count": 1229
+      "char_count": 2012
     },
     {
       "id": "number-tuning",
@@ -583,7 +583,7 @@
       ],
       "file": "game-design/balance-design/intransitive-balance.md",
       "exists": true,
-      "char_count": 1249
+      "char_count": 2550
     },
     {
       "id": "asymmetric-balance",
@@ -1963,7 +1963,7 @@
       ],
       "file": "game-design/economy-design/iap-design.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 2423
     },
     {
       "id": "monetization-models",
@@ -2083,7 +2083,7 @@
       ],
       "file": "game-design/economy-design/game-economy-intro.md",
       "exists": true,
-      "char_count": 1551
+      "char_count": 2562
     },
     {
       "id": "economy-metrics",
@@ -2368,7 +2368,7 @@
       ],
       "file": "game-design/feedback-systems/camera-feedback.md",
       "exists": true,
-      "char_count": 1440
+      "char_count": 2496
     },
     {
       "id": "tutorial-feedback",
@@ -2383,7 +2383,7 @@
       ],
       "file": "game-design/feedback-systems/tutorial-feedback.md",
       "exists": true,
-      "char_count": 1232
+      "char_count": 2519
     },
     {
       "id": "positive-feedback-loop",
@@ -2413,7 +2413,7 @@
       ],
       "file": "game-design/feedback-systems/ambient-feedback.md",
       "exists": true,
-      "char_count": 1234
+      "char_count": 2573
     },
     {
       "id": "social-feedback",
@@ -2473,7 +2473,7 @@
       ],
       "file": "game-design/feedback-systems/negative-feedback-loop.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2296
     },
     {
       "id": "progress-feedback",
@@ -2503,7 +2503,7 @@
       ],
       "file": "game-design/feedback-systems/notification-system.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2258
     },
     {
       "id": "audio-feedback",
@@ -3088,7 +3088,7 @@
       ],
       "file": "game-design/randomness-design/input-randomness.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 2374
     },
     {
       "id": "output-randomness",
@@ -3328,7 +3328,7 @@
       ],
       "file": "game-design/social-systems/ugc-system.md",
       "exists": true,
-      "char_count": 1448
+      "char_count": 2919
     },
     {
       "id": "social-space",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 504803,
-    "avg_chars": 2019,
+    "total_chars": 518424,
+    "avg_chars": 2073,
     "domain": "game-design"
   }
 }

@@ -63,7 +63,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-zone-based.md",
       "exists": true,
-      "char_count": 2735
+      "char_count": 2559
     },
     {
       "id": "sfx-as-weather-system",
@@ -2247,7 +2247,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-outdoor-acoustics.md",
       "exists": true,
-      "char_count": 2786
+      "char_count": 2586
     },
     {
       "id": "sfx-sa-room-acoustics",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 269534,
-    "avg_chars": 1497,
+    "total_chars": 269158,
+    "avg_chars": 1495,
     "domain": "game-audio-sfx"
   }
 }

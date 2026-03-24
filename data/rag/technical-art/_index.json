@@ -2158,7 +2158,7 @@
       ],
       "file": "technical-art/ta-hlsl-basics.md",
       "exists": true,
-      "char_count": 1555
+      "char_count": 3342
     },
     {
       "id": "ta-sdf-shader",
@@ -2353,7 +2353,7 @@
       ],
       "file": "technical-art/ta-pixel-shader.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 3379
     },
     {
       "id": "ta-custom-lighting",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 276659,
-    "avg_chars": 1536,
+    "total_chars": 280306,
+    "avg_chars": 1557,
     "domain": "technical-art"
   }
 }

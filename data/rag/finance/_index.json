@@ -103,7 +103,7 @@
       ],
       "file": "finance/corporate-finance/npv-analysis.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2343
     },
     {
       "id": "real-options",
@@ -358,7 +358,7 @@
       ],
       "file": "finance/fintech/cloud-banking.md",
       "exists": true,
-      "char_count": 1230
+      "char_count": 2765
     },
     {
       "id": "insurtech",
@@ -1903,7 +1903,7 @@
       ],
       "file": "finance/risk-management/hedging-strategies.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2161
     },
     {
       "id": "market-risk",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 316759,
-    "avg_chars": 1979,
+    "total_chars": 320125,
+    "avg_chars": 2000,
     "domain": "finance"
   }
 }

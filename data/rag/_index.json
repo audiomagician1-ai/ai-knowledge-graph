@@ -23739,7 +23739,7 @@
       ],
       "file": "finance/corporate-finance/npv-analysis.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2343
     },
     {
       "id": "real-options",
@@ -23994,7 +23994,7 @@
       ],
       "file": "finance/fintech/cloud-banking.md",
       "exists": true,
-      "char_count": 1230
+      "char_count": 2765
     },
     {
       "id": "insurtech",
@@ -25539,7 +25539,7 @@
       ],
       "file": "finance/risk-management/hedging-strategies.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2161
     },
     {
       "id": "market-risk",
@@ -28799,7 +28799,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-zone-based.md",
       "exists": true,
-      "char_count": 2735
+      "char_count": 2559
     },
     {
       "id": "sfx-as-weather-system",
@@ -30983,7 +30983,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-outdoor-acoustics.md",
       "exists": true,
-      "char_count": 2786
+      "char_count": 2586
     },
     {
       "id": "sfx-sa-room-acoustics",
@@ -31434,7 +31434,7 @@
       ],
       "file": "game-design/balance-design/transitive-balance.md",
       "exists": true,
-      "char_count": 1226
+      "char_count": 2240
     },
     {
       "id": "damage-formula",
@@ -31554,7 +31554,7 @@
       ],
       "file": "game-design/balance-design/diminishing-returns.md",
       "exists": true,
-      "char_count": 1229
+      "char_count": 2012
     },
     {
       "id": "number-tuning",
@@ -31659,7 +31659,7 @@
       ],
       "file": "game-design/balance-design/intransitive-balance.md",
       "exists": true,
-      "char_count": 1249
+      "char_count": 2550
     },
     {
       "id": "asymmetric-balance",
@@ -33039,7 +33039,7 @@
       ],
       "file": "game-design/economy-design/iap-design.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 2423
     },
     {
       "id": "monetization-models",
@@ -33159,7 +33159,7 @@
       ],
       "file": "game-design/economy-design/game-economy-intro.md",
       "exists": true,
-      "char_count": 1551
+      "char_count": 2562
     },
     {
       "id": "economy-metrics",
@@ -33444,7 +33444,7 @@
       ],
       "file": "game-design/feedback-systems/camera-feedback.md",
       "exists": true,
-      "char_count": 1440
+      "char_count": 2496
     },
     {
       "id": "tutorial-feedback",
@@ -33459,7 +33459,7 @@
       ],
       "file": "game-design/feedback-systems/tutorial-feedback.md",
       "exists": true,
-      "char_count": 1232
+      "char_count": 2519
     },
     {
       "id": "positive-feedback-loop",
@@ -33489,7 +33489,7 @@
       ],
       "file": "game-design/feedback-systems/ambient-feedback.md",
       "exists": true,
-      "char_count": 1234
+      "char_count": 2573
     },
     {
       "id": "social-feedback",
@@ -33549,7 +33549,7 @@
       ],
       "file": "game-design/feedback-systems/negative-feedback-loop.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2296
     },
     {
       "id": "progress-feedback",
@@ -33579,7 +33579,7 @@
       ],
       "file": "game-design/feedback-systems/notification-system.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2258
     },
     {
       "id": "audio-feedback",
@@ -34164,7 +34164,7 @@
       ],
       "file": "game-design/randomness-design/input-randomness.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 2374
     },
     {
       "id": "output-randomness",
@@ -34404,7 +34404,7 @@
       ],
       "file": "game-design/social-systems/ugc-system.md",
       "exists": true,
-      "char_count": 1448
+      "char_count": 2919
     },
     {
       "id": "social-space",
@@ -41222,7 +41222,7 @@
       "tags": [],
       "file": "game-live-ops/ops-uc-staged-rollout.md",
       "exists": true,
-      "char_count": 1457
+      "char_count": 2727
     },
     {
       "id": "ops-uc-feature-flag",
@@ -42678,7 +42678,7 @@
       "tags": [],
       "file": "game-production/gp-mp-kpi.md",
       "exists": true,
-      "char_count": 1532
+      "char_count": 2839
     },
     {
       "id": "gp-mp-postmortem",
@@ -43640,7 +43640,7 @@
       "tags": [],
       "file": "game-production/gp-rk-schedule.md",
       "exists": true,
-      "char_count": 1535
+      "char_count": 2870
     },
     {
       "id": "gp-rk-retrospective",
@@ -44810,7 +44810,7 @@
       "tags": [],
       "file": "game-publishing/pub-pm-pr-agency.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2668
     },
     {
       "id": "pub-pm-pr-metrics",
@@ -46292,7 +46292,7 @@
       "tags": [],
       "file": "game-qa/qa-at-roi-metrics.md",
       "exists": true,
-      "char_count": 1455
+      "char_count": 2627
     },
     {
       "id": "qa-at-automation-overview",
@@ -48612,7 +48612,7 @@
       ],
       "file": "game-ui-ux/guiux-hud-diegetic.md",
       "exists": true,
-      "char_count": 1487
+      "char_count": 2429
     },
     {
       "id": "guiux-hud-safe-zone",
@@ -59868,7 +59868,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-scoring-system.md",
       "exists": true,
-      "char_count": 1525
+      "char_count": 2215
     },
     {
       "id": "mn-lr-season-reset",
@@ -61350,7 +61350,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-jitter-buffer.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2505
     },
     {
       "id": "mn-ss-clock-synchronization",
@@ -61753,7 +61753,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-protagonist-design.md",
       "exists": true,
-      "char_count": 1532
+      "char_count": 2579
     },
     {
       "id": "nd-cw-dynamic-personality",
@@ -61805,7 +61805,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-antagonist-design.md",
       "exists": true,
-      "char_count": 1475
+      "char_count": 2607
     },
     {
       "id": "nd-cw-companion-system",
@@ -62884,7 +62884,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-subtitle-system.md",
       "exists": true,
-      "char_count": 1473
+      "char_count": 2587
     },
     {
       "id": "nd-lo-string-table",
@@ -78538,7 +78538,7 @@
       ],
       "file": "software-engineering/multithreading/se-atomic.md",
       "exists": true,
-      "char_count": 1219
+      "char_count": 2902
     },
     {
       "id": "se-mt-intro",
@@ -79528,7 +79528,7 @@
       ],
       "file": "software-engineering/refactoring/se-strangler-fig.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2629
     },
     {
       "id": "se-legacy-refactor",
@@ -82688,7 +82688,7 @@
       ],
       "file": "technical-art/ta-hlsl-basics.md",
       "exists": true,
-      "char_count": 1555
+      "char_count": 3342
     },
     {
       "id": "ta-sdf-shader",
@@ -82883,7 +82883,7 @@
       ],
       "file": "technical-art/ta-pixel-shader.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 3379
     },
     {
       "id": "ta-custom-lighting",
@@ -83993,7 +83993,7 @@
       ],
       "file": "vfx/vfx-fluid-overview.md",
       "exists": true,
-      "char_count": 1465
+      "char_count": 2457
     },
     {
       "id": "vfx-fluid-texture",
@@ -84248,7 +84248,7 @@
       ],
       "file": "vfx/vfx-niagara-event.md",
       "exists": true,
-      "char_count": 1465
+      "char_count": 2563
     },
     {
       "id": "vfx-niagara-force",

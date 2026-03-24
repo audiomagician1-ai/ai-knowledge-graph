@@ -206,7 +206,7 @@
       "tags": [],
       "file": "game-qa/qa-at-roi-metrics.md",
       "exists": true,
-      "char_count": 1455
+      "char_count": 2627
     },
     {
       "id": "qa-at-automation-overview",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 243811,
-    "avg_chars": 1523,
+    "total_chars": 244983,
+    "avg_chars": 1531,
     "domain": "game-qa"
   }
 }

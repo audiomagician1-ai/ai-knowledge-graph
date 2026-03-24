@@ -446,7 +446,7 @@
       ],
       "file": "game-ui-ux/guiux-hud-diegetic.md",
       "exists": true,
-      "char_count": 1487
+      "char_count": 2429
     },
     {
       "id": "guiux-hud-safe-zone",
@@ -3203,8 +3203,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 317004,
-    "avg_chars": 1585,
+    "total_chars": 317946,
+    "avg_chars": 1589,
     "domain": "game-ui-ux"
   }
 }

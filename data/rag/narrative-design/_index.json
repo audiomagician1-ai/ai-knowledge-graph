@@ -284,7 +284,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-protagonist-design.md",
       "exists": true,
-      "char_count": 1532
+      "char_count": 2579
     },
     {
       "id": "nd-cw-dynamic-personality",
@@ -336,7 +336,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-antagonist-design.md",
       "exists": true,
-      "char_count": 1475
+      "char_count": 2607
     },
     {
       "id": "nd-cw-companion-system",
@@ -1415,7 +1415,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-subtitle-system.md",
       "exists": true,
-      "char_count": 1473
+      "char_count": 2587
     },
     {
       "id": "nd-lo-string-table",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 274424,
-    "avg_chars": 1524,
+    "total_chars": 277717,
+    "avg_chars": 1542,
     "domain": "narrative-design"
   }
 }
