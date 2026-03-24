@@ -219,10 +219,20 @@
     "sfx-dp-dialogue-editing",
     "sfx-dp-casting",
     "sfx-dp-voice-aging",
-    "sfx-as-silence-technique"
+    "sfx-as-silence-technique",
+    "sfx-ao-virtualization",
+    "scene-mgmt-intro",
+    "platform-scalability",
+    "mn-sa-gateway-server",
+    "mn-lb-spectator-lobby",
+    "se-state-pattern-game",
+    "ta-mobile-perf",
+    "ta-tool-pipeline",
+    "ta-pipeline-overview",
+    "ta-import-pipeline"
   ],
   "errors": [],
-  "total_upgraded": 220,
+  "total_upgraded": 230,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T00:01:16.682125"
+  "last_updated": "2026-03-25T00:11:25.729844"
 }
