@@ -29,10 +29,20 @@
     "3da-rig-spine",
     "boolean-logic",
     "adjacency-matrix",
-    "factory-pattern"
+    "factory-pattern",
+    "service-discovery",
+    "linear-regression",
+    "logistic-regression",
+    "db-locking",
+    "anim-retargeting",
+    "cg-rt-reflection",
+    "cg-radiosity",
+    "cg-eye-adaptation",
+    "cg-detail-mapping",
+    "cd-atmospheric-perspective"
   ],
   "errors": [],
-  "total_upgraded": 30,
+  "total_upgraded": 40,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T20:55:13.314243"
+  "last_updated": "2026-03-24T21:05:04.303926"
 }
