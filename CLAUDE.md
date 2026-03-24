@@ -56,13 +56,16 @@
 >   Tier-C: 658→0 (-100%) | Tier-A: 48→639 (+1231%) | Tier-S: 80→145 (+81%)
 >   Top域: Physics 均分64.9 | Mathematics 均分63.0 | Biology 均分56.1
 > Sprint 5 🔥进行中: **intranet-llm-rewrite-v2** — Tier-B 批量提升(目标均分60+)
->   脚本: `scripts/_batch_tier_b_upgrade.py` | 带resume/progress跟踪/重试
+>   脚本: `scripts/_batch_tier_b_upgrade.py` + `scripts/_batch_tier_b_parallel.py` (并行)
 >   Batch 1 完成: 210篇最低分Tier-B文档改写, 0错误, 63篇/小时
 >   Batch 2 完成: 655篇Tier-B文档改写, 0错误 (2026-03-24 commit 9dd35deb)
->   Batch 3 进行中: 500篇Tier-B文档改写, 后台运行中(~60篇/hr, ETA ~8hr)
->   累计结果: **S=243(3.9%) A=1,241(20.2%) B=4,672(75.9%) C=0(0.0%)** 均分53.8
->   Sprint 5 total upgraded: 865+ (Batch1:210+Batch2:655+Batch3:500 in progress)
->   下一步: Batch3完成后提交push, 继续Tier-B批量提升(~4172篇剩余)
+>   Batch 3 进行中: 500篇Tier-B文档改写, 91/500完成 (~55/hr)
+>   Batch P2 并行进行中: 1000篇大域Tier-B改写, 10/1000完成 (~53/hr)
+>   效果验证: 已完成745篇改写均分78.9 (A=635/S=92), 改写成功率99%
+>   累计结果: **S=250(4.1%) A=1,302(21.2%) B=4,604(74.8%) C=0(0.0%)** 均分54.2
+>   综合吞吐: ~108/hr (两进程并行), 预计2天内处理完全部4,604篇Tier-B
+>   瓶颈分析: Specificity(30.4/100)和Density(40.6/100)是Tier-B两大短板
+>   下一步: 两个后台进程持续运行, 定期提交push
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
