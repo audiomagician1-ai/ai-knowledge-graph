@@ -118,7 +118,7 @@
       ],
       "file": "game-engine/animation-system/animation-compression.md",
       "exists": true,
-      "char_count": 2738
+      "char_count": 2581
     },
     {
       "id": "anim-multi-thread",
@@ -403,7 +403,7 @@
       ],
       "file": "game-engine/audio-system/dialogue-system-audio.md",
       "exists": true,
-      "char_count": 3132
+      "char_count": 2427
     },
     {
       "id": "reverb-zone",
@@ -433,7 +433,7 @@
       ],
       "file": "game-engine/audio-system/ambient-sound.md",
       "exists": true,
-      "char_count": 2790
+      "char_count": 2467
     },
     {
       "id": "spatial-audio",
@@ -688,7 +688,7 @@
       ],
       "file": "game-engine/editor-extension/toolbar-extension.md",
       "exists": true,
-      "char_count": 3342
+      "char_count": 2869
     },
     {
       "id": "data-validation",
@@ -748,7 +748,7 @@
       ],
       "file": "game-engine/editor-extension/editor-command.md",
       "exists": true,
-      "char_count": 2985
+      "char_count": 2620
     },
     {
       "id": "editor-utility-widget",
@@ -1333,7 +1333,7 @@
       ],
       "file": "game-engine/performance-profiling/loading-time.md",
       "exists": true,
-      "char_count": 2746
+      "char_count": 2450
     },
     {
       "id": "hitching-analysis",
@@ -1378,7 +1378,7 @@
       ],
       "file": "game-engine/performance-profiling/bandwidth-analysis.md",
       "exists": true,
-      "char_count": 3175
+      "char_count": 2893
     },
     {
       "id": "frame-time-analysis",
@@ -1543,7 +1543,7 @@
       ],
       "file": "game-engine/physics-engine/ragdoll-physics.md",
       "exists": true,
-      "char_count": 2745
+      "char_count": 2621
     },
     {
       "id": "cloth-simulation",
@@ -1813,7 +1813,7 @@
       ],
       "file": "game-engine/platform-abstraction/pc-optimization.md",
       "exists": true,
-      "char_count": 2772
+      "char_count": 3379
     },
     {
       "id": "vr-adaptation",
@@ -2773,7 +2773,7 @@
       ],
       "file": "game-engine/resource-management/content-validation.md",
       "exists": true,
-      "char_count": 2684
+      "char_count": 2337
     },
     {
       "id": "compression-format",
@@ -3388,7 +3388,7 @@
       ],
       "file": "game-engine/scripting-system/coroutine-engine.md",
       "exists": true,
-      "char_count": 2863
+      "char_count": 2879
     },
     {
       "id": "native-binding",
@@ -3463,7 +3463,7 @@
       ],
       "file": "game-engine/scripting-system/object-model.md",
       "exists": true,
-      "char_count": 3173
+      "char_count": 3015
     },
     {
       "id": "testing-framework",
@@ -3538,7 +3538,7 @@
       ],
       "file": "game-engine/scripting-system/hot-reload-script.md",
       "exists": true,
-      "char_count": 2800
+      "char_count": 2929
     },
     {
       "id": "scripting-intro",
@@ -3763,7 +3763,7 @@
       ],
       "file": "game-engine/serialization/property-serialization.md",
       "exists": true,
-      "char_count": 3155
+      "char_count": 2828
     },
     {
       "id": "serialization-perf",
@@ -3838,7 +3838,7 @@
       ],
       "file": "game-engine/serialization/checkpoint-save.md",
       "exists": true,
-      "char_count": 2588
+      "char_count": 2457
     },
     {
       "id": "network-serialization",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 568938,
-    "avg_chars": 1896,
+    "total_chars": 566002,
+    "avg_chars": 1886,
     "domain": "game-engine"
   }
 }

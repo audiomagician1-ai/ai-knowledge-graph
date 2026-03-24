@@ -808,7 +808,7 @@
       ],
       "file": "3d-art/3da-env-procedural.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2932
     },
     {
       "id": "3da-hs-decal-mesh",
@@ -2548,7 +2548,7 @@
       ],
       "file": "3d-art/3da-sculpt-dynamesh.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2426
     },
     {
       "id": "3da-sculpt-insert-mesh",
@@ -6699,7 +6699,7 @@
       ],
       "file": "animation/anim-procedural-motion.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2428
     },
     {
       "id": "anim-soft-body",
@@ -10659,7 +10659,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-gi-hybrid.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 3080
     },
     {
       "id": "cg-rendering-equation",
@@ -11199,7 +11199,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-anisotropy.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 3338
     },
     {
       "id": "cg-cloth-shading",
@@ -13914,7 +13914,7 @@
       ],
       "file": "concept-design/cd-skeleton-structure.md",
       "exists": true,
-      "char_count": 1435
+      "char_count": 2245
     },
     {
       "id": "cd-char-npc-lineup",
@@ -14394,7 +14394,7 @@
       ],
       "file": "concept-design/cd-color-psychology.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2613
     },
     {
       "id": "cd-color-value",
@@ -28968,7 +28968,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-silence-technique.md",
       "exists": true,
-      "char_count": 1355
+      "char_count": 2780
     },
     {
       "id": "sfx-as-music-ambient-blend",
@@ -29852,7 +29852,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-voice-aging.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2459
     },
     {
       "id": "sfx-dp-subtitles-integration",
@@ -29904,7 +29904,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-dialogue-editing.md",
       "exists": true,
-      "char_count": 1658
+      "char_count": 2862
     },
     {
       "id": "sfx-dp-noise-floor",
@@ -29969,7 +29969,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-casting.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2759
     },
     {
       "id": "sfx-dp-tts-synthesis",
@@ -30060,7 +30060,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-sidechain.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 2460
     },
     {
       "id": "sfx-dsp-compression",
@@ -30138,7 +30138,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-noise-gate.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2561
     },
     {
       "id": "sfx-dsp-vocoder",
@@ -30424,7 +30424,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-fr-impact-recording.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2684
     },
     {
       "id": "sfx-fr-water-sounds",
@@ -31254,7 +31254,7 @@
       ],
       "file": "game-design/accessibility/text-to-speech.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2864
     },
     {
       "id": "accessible-ui",
@@ -32844,7 +32844,7 @@
       ],
       "file": "game-design/difficulty-curve/adaptive-difficulty.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2473
     },
     {
       "id": "pacing-design",
@@ -32934,7 +32934,7 @@
       ],
       "file": "game-design/difficulty-curve/difficulty-testing.md",
       "exists": true,
-      "char_count": 1234
+      "char_count": 2110
     },
     {
       "id": "difficulty-levels",
@@ -34944,7 +34944,7 @@
       ],
       "file": "game-engine/animation-system/animation-compression.md",
       "exists": true,
-      "char_count": 2738
+      "char_count": 2581
     },
     {
       "id": "anim-multi-thread",
@@ -35229,7 +35229,7 @@
       ],
       "file": "game-engine/audio-system/dialogue-system-audio.md",
       "exists": true,
-      "char_count": 3132
+      "char_count": 2427
     },
     {
       "id": "reverb-zone",
@@ -35259,7 +35259,7 @@
       ],
       "file": "game-engine/audio-system/ambient-sound.md",
       "exists": true,
-      "char_count": 2790
+      "char_count": 2467
     },
     {
       "id": "spatial-audio",
@@ -35514,7 +35514,7 @@
       ],
       "file": "game-engine/editor-extension/toolbar-extension.md",
       "exists": true,
-      "char_count": 3342
+      "char_count": 2869
     },
     {
       "id": "data-validation",
@@ -35574,7 +35574,7 @@
       ],
       "file": "game-engine/editor-extension/editor-command.md",
       "exists": true,
-      "char_count": 2985
+      "char_count": 2620
     },
     {
       "id": "editor-utility-widget",
@@ -36159,7 +36159,7 @@
       ],
       "file": "game-engine/performance-profiling/loading-time.md",
       "exists": true,
-      "char_count": 2746
+      "char_count": 2450
     },
     {
       "id": "hitching-analysis",
@@ -36204,7 +36204,7 @@
       ],
       "file": "game-engine/performance-profiling/bandwidth-analysis.md",
       "exists": true,
-      "char_count": 3175
+      "char_count": 2893
     },
     {
       "id": "frame-time-analysis",
@@ -36369,7 +36369,7 @@
       ],
       "file": "game-engine/physics-engine/ragdoll-physics.md",
       "exists": true,
-      "char_count": 2745
+      "char_count": 2621
     },
     {
       "id": "cloth-simulation",
@@ -36639,7 +36639,7 @@
       ],
       "file": "game-engine/platform-abstraction/pc-optimization.md",
       "exists": true,
-      "char_count": 2772
+      "char_count": 3379
     },
     {
       "id": "vr-adaptation",
@@ -37599,7 +37599,7 @@
       ],
       "file": "game-engine/resource-management/content-validation.md",
       "exists": true,
-      "char_count": 2684
+      "char_count": 2337
     },
     {
       "id": "compression-format",
@@ -38214,7 +38214,7 @@
       ],
       "file": "game-engine/scripting-system/coroutine-engine.md",
       "exists": true,
-      "char_count": 2863
+      "char_count": 2879
     },
     {
       "id": "native-binding",
@@ -38289,7 +38289,7 @@
       ],
       "file": "game-engine/scripting-system/object-model.md",
       "exists": true,
-      "char_count": 3173
+      "char_count": 3015
     },
     {
       "id": "testing-framework",
@@ -38364,7 +38364,7 @@
       ],
       "file": "game-engine/scripting-system/hot-reload-script.md",
       "exists": true,
-      "char_count": 2800
+      "char_count": 2929
     },
     {
       "id": "scripting-intro",
@@ -38589,7 +38589,7 @@
       ],
       "file": "game-engine/serialization/property-serialization.md",
       "exists": true,
-      "char_count": 3155
+      "char_count": 2828
     },
     {
       "id": "serialization-perf",
@@ -38664,7 +38664,7 @@
       ],
       "file": "game-engine/serialization/checkpoint-save.md",
       "exists": true,
-      "char_count": 2588
+      "char_count": 2457
     },
     {
       "id": "network-serialization",
@@ -63859,7 +63859,7 @@
       "tags": [],
       "file": "oop/dependency-injection.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 3379
     },
     {
       "id": "singleton",
@@ -86565,7 +86565,7 @@
       "tags": [],
       "file": "web-frontend/event-handling.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 3539
     },
     {
       "id": "web-performance",

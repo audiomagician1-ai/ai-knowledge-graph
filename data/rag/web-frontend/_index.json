@@ -284,7 +284,7 @@
       "tags": [],
       "file": "web-frontend/event-handling.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 3539
     },
     {
       "id": "web-performance",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 56239,
-    "avg_chars": 1704,
+    "total_chars": 58399,
+    "avg_chars": 1769,
     "domain": "web-frontend"
   }
 }

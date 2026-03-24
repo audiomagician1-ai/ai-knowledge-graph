@@ -178,7 +178,7 @@
       ],
       "file": "game-design/accessibility/text-to-speech.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2864
     },
     {
       "id": "accessible-ui",
@@ -1768,7 +1768,7 @@
       ],
       "file": "game-design/difficulty-curve/adaptive-difficulty.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2473
     },
     {
       "id": "pacing-design",
@@ -1858,7 +1858,7 @@
       ],
       "file": "game-design/difficulty-curve/difficulty-testing.md",
       "exists": true,
-      "char_count": 1234
+      "char_count": 2110
     },
     {
       "id": "difficulty-levels",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 518424,
-    "avg_chars": 2073,
+    "total_chars": 521949,
+    "avg_chars": 2087,
     "domain": "game-design"
   }
 }

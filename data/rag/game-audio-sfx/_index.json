@@ -232,7 +232,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-silence-technique.md",
       "exists": true,
-      "char_count": 1355
+      "char_count": 2780
     },
     {
       "id": "sfx-as-music-ambient-blend",
@@ -1116,7 +1116,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-voice-aging.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2459
     },
     {
       "id": "sfx-dp-subtitles-integration",
@@ -1168,7 +1168,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-dialogue-editing.md",
       "exists": true,
-      "char_count": 1658
+      "char_count": 2862
     },
     {
       "id": "sfx-dp-noise-floor",
@@ -1233,7 +1233,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-casting.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2759
     },
     {
       "id": "sfx-dp-tts-synthesis",
@@ -1324,7 +1324,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-sidechain.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 2460
     },
     {
       "id": "sfx-dsp-compression",
@@ -1402,7 +1402,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-noise-gate.md",
       "exists": true,
-      "char_count": 1342
+      "char_count": 2561
     },
     {
       "id": "sfx-dsp-vocoder",
@@ -1688,7 +1688,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-fr-impact-recording.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2684
     },
     {
       "id": "sfx-fr-water-sounds",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 269158,
-    "avg_chars": 1495,
+    "total_chars": 277948,
+    "avg_chars": 1544,
     "domain": "game-audio-sfx"
   }
 }

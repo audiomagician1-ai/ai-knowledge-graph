@@ -298,7 +298,7 @@
       ],
       "file": "concept-design/cd-skeleton-structure.md",
       "exists": true,
-      "char_count": 1435
+      "char_count": 2245
     },
     {
       "id": "cd-char-npc-lineup",
@@ -778,7 +778,7 @@
       ],
       "file": "concept-design/cd-color-psychology.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2613
     },
     {
       "id": "cd-color-value",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 363910,
-    "avg_chars": 1654,
+    "total_chars": 365959,
+    "avg_chars": 1663,
     "domain": "concept-design"
   }
 }

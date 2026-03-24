@@ -50,7 +50,7 @@
       "tags": [],
       "file": "oop/dependency-injection.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 3379
     },
     {
       "id": "singleton",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 53841,
-    "avg_chars": 2243,
+    "total_chars": 55849,
+    "avg_chars": 2327,
     "domain": "oop"
   }
 }

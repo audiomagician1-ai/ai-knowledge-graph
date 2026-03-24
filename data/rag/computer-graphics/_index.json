@@ -793,7 +793,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-gi-hybrid.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 3080
     },
     {
       "id": "cg-rendering-equation",
@@ -1333,7 +1333,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-anisotropy.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 3338
     },
     {
       "id": "cg-cloth-shading",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 446801,
-    "avg_chars": 1787,
+    "total_chars": 450482,
+    "avg_chars": 1801,
     "domain": "computer-graphics"
   }
 }

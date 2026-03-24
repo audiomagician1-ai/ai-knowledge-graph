@@ -808,7 +808,7 @@
       ],
       "file": "3d-art/3da-env-procedural.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2932
     },
     {
       "id": "3da-hs-decal-mesh",
@@ -2548,7 +2548,7 @@
       ],
       "file": "3d-art/3da-sculpt-dynamesh.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2426
     },
     {
       "id": "3da-sculpt-insert-mesh",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 415561,
-    "avg_chars": 1838,
+    "total_chars": 418157,
+    "avg_chars": 1850,
     "domain": "3d-art"
   }
 }

@@ -2113,7 +2113,7 @@
       ],
       "file": "animation/anim-procedural-motion.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2428
     },
     {
       "id": "anim-soft-body",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 280525,
-    "avg_chars": 1558,
+    "total_chars": 281566,
+    "avg_chars": 1564,
     "domain": "animation"
   }
 }
