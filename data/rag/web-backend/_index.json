@@ -37,7 +37,7 @@
       "tags": [],
       "file": "web-backend/cors.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 3522
     },
     {
       "id": "graphql-basics",
@@ -102,7 +102,7 @@
       "tags": [],
       "file": "web-backend/restful-api.md",
       "exists": true,
-      "char_count": 1763
+      "char_count": 3617
     },
     {
       "id": "serverless",
@@ -354,8 +354,8 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 54253,
-    "avg_chars": 2009,
+    "total_chars": 58289,
+    "avg_chars": 2158,
     "domain": "web-backend"
   }
 }

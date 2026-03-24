@@ -523,7 +523,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-mesh-repair.md",
       "exists": true,
-      "char_count": 1339
+      "char_count": 2744
     },
     {
       "id": "cg-mesh-compression",
@@ -1588,7 +1588,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-pp-volume.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2401
     },
     {
       "id": "cg-pp-stack",
@@ -1708,7 +1708,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-bloom.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2411
     },
     {
       "id": "cg-film-grain",
@@ -2008,7 +2008,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-raster-pipeline.md",
       "exists": true,
-      "char_count": 1423
+      "char_count": 2531
     },
     {
       "id": "cg-msaa",
@@ -2083,7 +2083,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-projection.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2952
     },
     {
       "id": "cg-stencil-buffer",
@@ -2233,7 +2233,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-mlt.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 3084
     },
     {
       "id": "cg-rtx-hardware",
@@ -3298,7 +3298,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-texture-atlas.md",
       "exists": true,
-      "char_count": 1336
+      "char_count": 2957
     },
     {
       "id": "cg-texture-projection",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 480782,
-    "avg_chars": 1923,
+    "total_chars": 490316,
+    "avg_chars": 1961,
     "domain": "computer-graphics"
   }
 }

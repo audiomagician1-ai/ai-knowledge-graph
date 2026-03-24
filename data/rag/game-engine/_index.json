@@ -1588,7 +1588,7 @@
       ],
       "file": "game-engine/physics-engine/physics-scene.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 3237
     },
     {
       "id": "physics-multithreading",
@@ -1633,7 +1633,7 @@
       ],
       "file": "game-engine/physics-engine/physics-optimization.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2940
     },
     {
       "id": "physics-interpolation",
@@ -2038,7 +2038,7 @@
       ],
       "file": "game-engine/platform-abstraction/achievement-system.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2639
     },
     {
       "id": "hal-layer",
@@ -3358,7 +3358,7 @@
       ],
       "file": "game-engine/scripting-system/gameplay-tag.md",
       "exists": true,
-      "char_count": 1608
+      "char_count": 3103
     },
     {
       "id": "lua-scripting",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 615087,
-    "avg_chars": 2050,
+    "total_chars": 621375,
+    "avg_chars": 2071,
     "domain": "game-engine"
   }
 }

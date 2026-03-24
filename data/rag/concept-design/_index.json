@@ -583,7 +583,7 @@
       ],
       "file": "concept-design/cd-char-color-palette.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2512
     },
     {
       "id": "cd-char-iteration",
@@ -628,7 +628,7 @@
       ],
       "file": "concept-design/cd-color-in-light.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2265
     },
     {
       "id": "cd-warm-cool",
@@ -793,7 +793,7 @@
       ],
       "file": "concept-design/cd-color-value.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2573
     },
     {
       "id": "cd-color-mixing",
@@ -1333,7 +1333,7 @@
       ],
       "file": "concept-design/cd-env-architecture-style.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2488
     },
     {
       "id": "cd-env-vegetation-design",
@@ -1408,7 +1408,7 @@
       ],
       "file": "concept-design/cd-env-color-script-env.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2488
     },
     {
       "id": "cd-env-intro",
@@ -1528,7 +1528,7 @@
       ],
       "file": "concept-design/cd-mood-through-light.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 2374
     },
     {
       "id": "cd-light-intro",
@@ -2278,7 +2278,7 @@
       ],
       "file": "concept-design/cd-perspective-for-env.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2373
     },
     {
       "id": "cd-perspective-for-vehicle",
@@ -2578,7 +2578,7 @@
       ],
       "file": "concept-design/cd-prop-vehicle-design.md",
       "exists": true,
-      "char_count": 1421
+      "char_count": 2659
     },
     {
       "id": "cd-prop-presentation-sheet",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 397338,
-    "avg_chars": 1806,
+    "total_chars": 406309,
+    "avg_chars": 1846,
     "domain": "concept-design"
   }
 }

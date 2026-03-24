@@ -24,7 +24,7 @@
       "tags": [],
       "file": "system-design/api-gateway.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 2924
     },
     {
       "id": "cap-theorem",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 58281,
-    "avg_chars": 2331,
+    "total_chars": 59875,
+    "avg_chars": 2395,
     "domain": "system-design"
   }
 }

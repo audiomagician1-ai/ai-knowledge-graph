@@ -258,7 +258,7 @@
       "tags": [],
       "file": "llm-core/rlhf.md",
       "exists": true,
-      "char_count": 1767
+      "char_count": 2898
     },
     {
       "id": "rope-embedding",
@@ -471,8 +471,8 @@
   ],
   "stats": {
     "total": 36,
-    "total_chars": 71052,
-    "avg_chars": 1973,
+    "total_chars": 72183,
+    "avg_chars": 2005,
     "domain": "llm-core"
   }
 }

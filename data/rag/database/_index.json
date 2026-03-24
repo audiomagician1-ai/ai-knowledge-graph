@@ -63,7 +63,7 @@
       "tags": [],
       "file": "database/orm-basics.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 3698
     },
     {
       "id": "redis-basics",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 44371,
-    "avg_chars": 1848,
+    "total_chars": 46728,
+    "avg_chars": 1947,
     "domain": "database"
   }
 }

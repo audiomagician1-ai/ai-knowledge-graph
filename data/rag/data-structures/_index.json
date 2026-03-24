@@ -154,7 +154,7 @@
       "tags": [],
       "file": "data-structures/bloom-filter.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2285
     },
     {
       "id": "disjoint-set",
@@ -219,7 +219,7 @@
       "tags": [],
       "file": "data-structures/fenwick-tree.md",
       "exists": true,
-      "char_count": 1677
+      "char_count": 2690
     },
     {
       "id": "sparse-table",
@@ -341,8 +341,8 @@
   ],
   "stats": {
     "total": 26,
-    "total_chars": 55120,
-    "avg_chars": 2120,
+    "total_chars": 57090,
+    "avg_chars": 2195,
     "domain": "data-structures"
   }
 }

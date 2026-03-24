@@ -24,7 +24,7 @@
       "tags": [],
       "file": "cs-fundamentals/dns-basics.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 3061
     },
     {
       "id": "http-protocol",
@@ -237,8 +237,8 @@
   ],
   "stats": {
     "total": 18,
-    "total_chars": 39486,
-    "avg_chars": 2193,
+    "total_chars": 41127,
+    "avg_chars": 2284,
     "domain": "cs-fundamentals"
   }
 }

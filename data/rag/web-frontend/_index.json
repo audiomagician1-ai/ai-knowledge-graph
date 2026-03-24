@@ -128,7 +128,7 @@
       "tags": [],
       "file": "web-frontend/pwa-basics.md",
       "exists": true,
-      "char_count": 1331
+      "char_count": 3551
     },
     {
       "id": "react-hooks",
@@ -180,7 +180,7 @@
       "tags": [],
       "file": "web-frontend/spa-routing.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 3365
     },
     {
       "id": "ssg-isr",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 64792,
-    "avg_chars": 1963,
+    "total_chars": 69040,
+    "avg_chars": 2092,
     "domain": "web-frontend"
   }
 }

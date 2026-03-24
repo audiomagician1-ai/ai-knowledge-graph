@@ -10389,7 +10389,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-mesh-repair.md",
       "exists": true,
-      "char_count": 1339
+      "char_count": 2744
     },
     {
       "id": "cg-mesh-compression",
@@ -11454,7 +11454,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-pp-volume.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2401
     },
     {
       "id": "cg-pp-stack",
@@ -11574,7 +11574,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-bloom.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2411
     },
     {
       "id": "cg-film-grain",
@@ -11874,7 +11874,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-raster-pipeline.md",
       "exists": true,
-      "char_count": 1423
+      "char_count": 2531
     },
     {
       "id": "cg-msaa",
@@ -11949,7 +11949,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-projection.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2952
     },
     {
       "id": "cg-stencil-buffer",
@@ -12099,7 +12099,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-mlt.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 3084
     },
     {
       "id": "cg-rtx-hardware",
@@ -13164,7 +13164,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-texture-atlas.md",
       "exists": true,
-      "char_count": 1336
+      "char_count": 2957
     },
     {
       "id": "cg-texture-projection",
@@ -14199,7 +14199,7 @@
       ],
       "file": "concept-design/cd-char-color-palette.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2512
     },
     {
       "id": "cd-char-iteration",
@@ -14244,7 +14244,7 @@
       ],
       "file": "concept-design/cd-color-in-light.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2265
     },
     {
       "id": "cd-warm-cool",
@@ -14409,7 +14409,7 @@
       ],
       "file": "concept-design/cd-color-value.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2573
     },
     {
       "id": "cd-color-mixing",
@@ -14949,7 +14949,7 @@
       ],
       "file": "concept-design/cd-env-architecture-style.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2488
     },
     {
       "id": "cd-env-vegetation-design",
@@ -15024,7 +15024,7 @@
       ],
       "file": "concept-design/cd-env-color-script-env.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2488
     },
     {
       "id": "cd-env-intro",
@@ -15144,7 +15144,7 @@
       ],
       "file": "concept-design/cd-mood-through-light.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 2374
     },
     {
       "id": "cd-light-intro",
@@ -15894,7 +15894,7 @@
       ],
       "file": "concept-design/cd-perspective-for-env.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2373
     },
     {
       "id": "cd-perspective-for-vehicle",
@@ -16194,7 +16194,7 @@
       ],
       "file": "concept-design/cd-prop-vehicle-design.md",
       "exists": true,
-      "char_count": 1421
+      "char_count": 2659
     },
     {
       "id": "cd-prop-presentation-sheet",
@@ -16940,7 +16940,7 @@
       "tags": [],
       "file": "cs-fundamentals/dns-basics.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 3061
     },
     {
       "id": "http-protocol",
@@ -17304,7 +17304,7 @@
       "tags": [],
       "file": "data-structures/bloom-filter.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2285
     },
     {
       "id": "disjoint-set",
@@ -17369,7 +17369,7 @@
       "tags": [],
       "file": "data-structures/fenwick-tree.md",
       "exists": true,
-      "char_count": 1677
+      "char_count": 2690
     },
     {
       "id": "sparse-table",
@@ -17551,7 +17551,7 @@
       "tags": [],
       "file": "database/orm-basics.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 3698
     },
     {
       "id": "redis-basics",
@@ -17850,7 +17850,7 @@
       "tags": [],
       "file": "devops/gitops.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 3045
     },
     {
       "id": "git-branching",
@@ -17876,7 +17876,7 @@
       "tags": [],
       "file": "devops/git-basics.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2566
     },
     {
       "id": "git-workflow",
@@ -27924,7 +27924,7 @@
       ],
       "file": "game-audio-music/game-audio-music-chord-theory.md",
       "exists": true,
-      "char_count": 1431
+      "char_count": 2546
     },
     {
       "id": "game-audio-music-chord-progression-patterns",
@@ -28059,7 +28059,7 @@
       ],
       "file": "game-audio-music/game-audio-music-rhythm-theory.md",
       "exists": true,
-      "char_count": 1702
+      "char_count": 2576
     },
     {
       "id": "game-audio-music-modal-interchange",
@@ -29462,7 +29462,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-attenuation.md",
       "exists": true,
-      "char_count": 1404
+      "char_count": 2520
     },
     {
       "id": "sfx-am-aux-send",
@@ -29501,7 +29501,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-random-container.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2374
     },
     {
       "id": "sfx-am-profiler",
@@ -36414,7 +36414,7 @@
       ],
       "file": "game-engine/physics-engine/physics-scene.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 3237
     },
     {
       "id": "physics-multithreading",
@@ -36459,7 +36459,7 @@
       ],
       "file": "game-engine/physics-engine/physics-optimization.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2940
     },
     {
       "id": "physics-interpolation",
@@ -36864,7 +36864,7 @@
       ],
       "file": "game-engine/platform-abstraction/achievement-system.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2639
     },
     {
       "id": "hal-layer",
@@ -38184,7 +38184,7 @@
       ],
       "file": "game-engine/scripting-system/gameplay-tag.md",
       "exists": true,
-      "char_count": 1608
+      "char_count": 3103
     },
     {
       "id": "lua-scripting",
@@ -39896,7 +39896,7 @@
       "tags": [],
       "file": "game-live-ops/ops-da-cohort-analysis.md",
       "exists": true,
-      "char_count": 1409
+      "char_count": 2738
     },
     {
       "id": "ops-da-realtime-monitoring",
@@ -54624,7 +54624,7 @@
       "tags": [],
       "file": "llm-core/rlhf.md",
       "exists": true,
-      "char_count": 1767
+      "char_count": 2898
     },
     {
       "id": "rope-embedding",
@@ -72764,7 +72764,7 @@
       "tags": [],
       "file": "prompt-engineering/react-prompting.md",
       "exists": true,
-      "char_count": 1681
+      "char_count": 3116
     },
     {
       "id": "system-prompt-design",
@@ -75912,7 +75912,7 @@
       "tags": [],
       "file": "rag-knowledge/multimodal-rag.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2819
     },
     {
       "id": "text-embedding",
@@ -80229,7 +80229,7 @@
       "tags": [],
       "file": "system-design/api-gateway.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 2924
     },
     {
       "id": "cap-theorem",
@@ -85967,7 +85967,7 @@
       "tags": [],
       "file": "web-backend/cors.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 3522
     },
     {
       "id": "graphql-basics",
@@ -86032,7 +86032,7 @@
       "tags": [],
       "file": "web-backend/restful-api.md",
       "exists": true,
-      "char_count": 1763
+      "char_count": 3617
     },
     {
       "id": "serverless",
@@ -86409,7 +86409,7 @@
       "tags": [],
       "file": "web-frontend/pwa-basics.md",
       "exists": true,
-      "char_count": 1331
+      "char_count": 3551
     },
     {
       "id": "react-hooks",
@@ -86461,7 +86461,7 @@
       "tags": [],
       "file": "web-frontend/spa-routing.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 3365
     },
     {
       "id": "ssg-isr",

@@ -206,7 +206,7 @@
       "tags": [],
       "file": "rag-knowledge/multimodal-rag.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2819
     },
     {
       "id": "text-embedding",
@@ -302,8 +302,8 @@
   ],
   "stats": {
     "total": 23,
-    "total_chars": 42725,
-    "avg_chars": 1857,
+    "total_chars": 44108,
+    "avg_chars": 1917,
     "domain": "rag-knowledge"
   }
 }

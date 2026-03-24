@@ -1888,7 +1888,7 @@
       ],
       "file": "game-audio-music/game-audio-music-chord-theory.md",
       "exists": true,
-      "char_count": 1431
+      "char_count": 2546
     },
     {
       "id": "game-audio-music-chord-progression-patterns",
@@ -2023,7 +2023,7 @@
       ],
       "file": "game-audio-music/game-audio-music-rhythm-theory.md",
       "exists": true,
-      "char_count": 1702
+      "char_count": 2576
     },
     {
       "id": "game-audio-music-modal-interchange",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 300706,
-    "avg_chars": 1670,
+    "total_chars": 302695,
+    "avg_chars": 1681,
     "domain": "game-audio-music"
   }
 }

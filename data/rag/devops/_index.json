@@ -50,7 +50,7 @@
       "tags": [],
       "file": "devops/gitops.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 3045
     },
     {
       "id": "git-branching",
@@ -76,7 +76,7 @@
       "tags": [],
       "file": "devops/git-basics.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2566
     },
     {
       "id": "git-workflow",
@@ -289,8 +289,8 @@
   ],
   "stats": {
     "total": 22,
-    "total_chars": 36310,
-    "avg_chars": 1650,
+    "total_chars": 39154,
+    "avg_chars": 1779,
     "domain": "devops"
   }
 }

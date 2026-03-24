@@ -63,7 +63,7 @@
       "tags": [],
       "file": "prompt-engineering/react-prompting.md",
       "exists": true,
-      "char_count": 1681
+      "char_count": 3116
     },
     {
       "id": "system-prompt-design",
@@ -263,8 +263,8 @@
   ],
   "stats": {
     "total": 20,
-    "total_chars": 38441,
-    "avg_chars": 1922,
+    "total_chars": 39876,
+    "avg_chars": 1993,
     "domain": "prompt-engineering"
   }
 }

@@ -570,7 +570,7 @@
       "tags": [],
       "file": "game-live-ops/ops-da-cohort-analysis.md",
       "exists": true,
-      "char_count": 1409
+      "char_count": 2738
     },
     {
       "id": "ops-da-realtime-monitoring",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 285689,
-    "avg_chars": 1587,
+    "total_chars": 287018,
+    "avg_chars": 1594,
     "domain": "game-live-ops"
   }
 }
