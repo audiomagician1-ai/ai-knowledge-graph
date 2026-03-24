@@ -1318,7 +1318,7 @@
       ],
       "file": "finance/personal-finance/family-financial-planning.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2291
     },
     {
       "id": "emergency-fund",
@@ -1888,7 +1888,7 @@
       ],
       "file": "finance/risk-management/stress-testing.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2526
     },
     {
       "id": "hedging-strategies",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 307762,
-    "avg_chars": 1923,
+    "total_chars": 309921,
+    "avg_chars": 1937,
     "domain": "finance"
   }
 }

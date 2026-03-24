@@ -658,7 +658,7 @@
       ],
       "file": "concept-design/cd-monochrome-study.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2548
     },
     {
       "id": "cd-local-color-vs-light",
@@ -1183,7 +1183,7 @@
       ],
       "file": "concept-design/cd-static-composition.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2431
     },
     {
       "id": "cd-golden-ratio",
@@ -1588,7 +1588,7 @@
       ],
       "file": "concept-design/cd-single-light-setup.md",
       "exists": true,
-      "char_count": 1230
+      "char_count": 2431
     },
     {
       "id": "cd-two-light-setup",
@@ -2218,7 +2218,7 @@
       ],
       "file": "concept-design/cd-measured-perspective.md",
       "exists": true,
-      "char_count": 1249
+      "char_count": 2444
     },
     {
       "id": "cd-box-in-perspective",
@@ -2893,7 +2893,7 @@
       ],
       "file": "concept-design/cd-style-art-direction.md",
       "exists": true,
-      "char_count": 2388
+      "char_count": 2728
     },
     {
       "id": "cd-style-color-identity",
@@ -2983,7 +2983,7 @@
       ],
       "file": "concept-design/cd-style-mixing.md",
       "exists": true,
-      "char_count": 1228
+      "char_count": 2438
     },
     {
       "id": "cd-style-evolution",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 348638,
-    "avg_chars": 1584,
+    "total_chars": 355091,
+    "avg_chars": 1614,
     "domain": "concept-design"
   }
 }

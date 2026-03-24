@@ -43,7 +43,7 @@
       ],
       "file": "game-design/accessibility/one-hand-mode.md",
       "exists": true,
-      "char_count": 1314
+      "char_count": 2455
     },
     {
       "id": "accessibility-audit",
@@ -628,7 +628,7 @@
       ],
       "file": "game-design/combat-design/boss-design.md",
       "exists": true,
-      "char_count": 1615
+      "char_count": 2412
     },
     {
       "id": "elemental-system",
@@ -1003,7 +1003,7 @@
       ],
       "file": "game-design/core-loop/engagement-loop.md",
       "exists": true,
-      "char_count": 1378
+      "char_count": 2339
     },
     {
       "id": "weekly-loop",
@@ -1033,7 +1033,7 @@
       ],
       "file": "game-design/core-loop/genre-loops.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2287
     },
     {
       "id": "reward-loop",
@@ -1333,7 +1333,7 @@
       ],
       "file": "game-design/design-docs/feature-spec.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2374
     },
     {
       "id": "prototyping",
@@ -1843,7 +1843,7 @@
       ],
       "file": "game-design/difficulty-curve/difficulty-spike.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 2755
     },
     {
       "id": "difficulty-testing",
@@ -2308,7 +2308,7 @@
       ],
       "file": "game-design/feedback-systems/failure-feedback.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2378
     },
     {
       "id": "reward-feedback",
@@ -2818,7 +2818,7 @@
       ],
       "file": "game-design/player-psychology/competence-design.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 2384
     },
     {
       "id": "autonomy-design",
@@ -2833,7 +2833,7 @@
       ],
       "file": "game-design/player-psychology/autonomy-design.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 2394
     },
     {
       "id": "ethical-design",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 494127,
-    "avg_chars": 1976,
+    "total_chars": 503596,
+    "avg_chars": 2014,
     "domain": "game-design"
   }
 }

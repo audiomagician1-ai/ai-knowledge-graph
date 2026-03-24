@@ -208,7 +208,7 @@
       ],
       "file": "english/advanced-grammar/mixed-conditionals.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2527
     },
     {
       "id": "subjunctive-mood",
@@ -688,7 +688,7 @@
       ],
       "file": "english/idioms-culture/global-english.md",
       "exists": true,
-      "char_count": 1318
+      "char_count": 2738
     },
     {
       "id": "idiom-usage-practice",
@@ -1633,7 +1633,7 @@
       ],
       "file": "english/sentence-patterns/participle-phrases.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 3457
     },
     {
       "id": "gerund-phrases",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 444204,
-    "avg_chars": 2221,
+    "total_chars": 448906,
+    "avg_chars": 2244,
     "domain": "english"
   }
 }

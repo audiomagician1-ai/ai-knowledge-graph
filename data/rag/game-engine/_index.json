@@ -118,7 +118,7 @@
       ],
       "file": "game-engine/animation-system/animation-compression.md",
       "exists": true,
-      "char_count": 1231
+      "char_count": 2738
     },
     {
       "id": "anim-multi-thread",
@@ -403,7 +403,7 @@
       ],
       "file": "game-engine/audio-system/dialogue-system-audio.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 3132
     },
     {
       "id": "reverb-zone",
@@ -433,7 +433,7 @@
       ],
       "file": "game-engine/audio-system/ambient-sound.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2790
     },
     {
       "id": "spatial-audio",
@@ -688,7 +688,7 @@
       ],
       "file": "game-engine/editor-extension/toolbar-extension.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 3342
     },
     {
       "id": "data-validation",
@@ -748,7 +748,7 @@
       ],
       "file": "game-engine/editor-extension/editor-command.md",
       "exists": true,
-      "char_count": 1238
+      "char_count": 2985
     },
     {
       "id": "editor-utility-widget",
@@ -1543,7 +1543,7 @@
       ],
       "file": "game-engine/physics-engine/ragdoll-physics.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2745
     },
     {
       "id": "cloth-simulation",
@@ -2773,7 +2773,7 @@
       ],
       "file": "game-engine/resource-management/content-validation.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2684
     },
     {
       "id": "compression-format",
@@ -3388,7 +3388,7 @@
       ],
       "file": "game-engine/scripting-system/coroutine-engine.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2863
     },
     {
       "id": "native-binding",
@@ -3463,7 +3463,7 @@
       ],
       "file": "game-engine/scripting-system/object-model.md",
       "exists": true,
-      "char_count": 1240
+      "char_count": 3173
     },
     {
       "id": "testing-framework",
@@ -3538,7 +3538,7 @@
       ],
       "file": "game-engine/scripting-system/hot-reload-script.md",
       "exists": true,
-      "char_count": 1227
+      "char_count": 2800
     },
     {
       "id": "scripting-intro",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 525337,
-    "avg_chars": 1751,
+    "total_chars": 542221,
+    "avg_chars": 1807,
     "domain": "game-engine"
   }
 }
