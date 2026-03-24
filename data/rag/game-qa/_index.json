@@ -934,7 +934,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-gameplay-testing.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2317
     },
     {
       "id": "qa-ft-equivalence-partition",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 244983,
-    "avg_chars": 1531,
+    "total_chars": 245817,
+    "avg_chars": 1536,
     "domain": "game-qa"
   }
 }

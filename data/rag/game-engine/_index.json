@@ -703,7 +703,7 @@
       ],
       "file": "game-engine/editor-extension/data-validation.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2924
     },
     {
       "id": "cook-automation",
@@ -2218,7 +2218,7 @@
       ],
       "file": "game-engine/plugin-development/crash-reporter-plugin.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 3440
     },
     {
       "id": "api-design-plugin",
@@ -2248,7 +2248,7 @@
       ],
       "file": "game-engine/plugin-development/plugin-dependency.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 3348
     },
     {
       "id": "plugin-intro",
@@ -3658,7 +3658,7 @@
       ],
       "file": "game-engine/serialization/uasset-format.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2778
     },
     {
       "id": "undo-redo-serialization",
@@ -3718,7 +3718,7 @@
       ],
       "file": "game-engine/serialization/replay-system.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2479
     },
     {
       "id": "encryption-save",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 581542,
-    "avg_chars": 1938,
+    "total_chars": 590133,
+    "avg_chars": 1967,
     "domain": "game-engine"
   }
 }

@@ -2683,7 +2683,7 @@
       ],
       "file": "english/vocabulary/word-usage-practice.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2976
     },
     {
       "id": "register-formality",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 459426,
-    "avg_chars": 2297,
+    "total_chars": 461046,
+    "avg_chars": 2305,
     "domain": "english"
   }
 }

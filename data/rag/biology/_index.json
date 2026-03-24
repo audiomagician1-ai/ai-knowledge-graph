@@ -733,7 +733,7 @@
       ],
       "file": "biology/ecology/restoration-ecology.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2719
     },
     {
       "id": "landscape-ecology",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 374963,
-    "avg_chars": 2180,
+    "total_chars": 376329,
+    "avg_chars": 2187,
     "domain": "biology"
   }
 }

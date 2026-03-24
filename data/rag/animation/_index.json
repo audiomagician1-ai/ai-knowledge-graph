@@ -1318,7 +1318,7 @@
       ],
       "file": "animation/anim-procedural-ik.md",
       "exists": true,
-      "char_count": 2746
+      "char_count": 2434
     },
     {
       "id": "anim-foot-ik",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 284997,
-    "avg_chars": 1583,
+    "total_chars": 284685,
+    "avg_chars": 1581,
     "domain": "animation"
   }
 }

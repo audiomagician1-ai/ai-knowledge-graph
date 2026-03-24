@@ -148,7 +148,7 @@
       ],
       "file": "3d-art/3da-pipe-material-library.md",
       "exists": true,
-      "char_count": 3022
+      "char_count": 2471
     },
     {
       "id": "3da-pipe-version-control",
@@ -3739,7 +3739,7 @@
       "tags": [],
       "file": "agent-systems/autonomous-agents.md",
       "exists": true,
-      "char_count": 3378
+      "char_count": 3505
     },
     {
       "id": "pytorch-basics",
@@ -4441,7 +4441,7 @@
       "tags": [],
       "file": "algorithms/topological-sort.md",
       "exists": true,
-      "char_count": 2426
+      "char_count": 2524
     },
     {
       "id": "insertion-sort",
@@ -5904,7 +5904,7 @@
       ],
       "file": "animation/anim-procedural-ik.md",
       "exists": true,
-      "char_count": 2746
+      "char_count": 2434
     },
     {
       "id": "anim-foot-ik",
@@ -8019,7 +8019,7 @@
       ],
       "file": "biology/ecology/restoration-ecology.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2719
     },
     {
       "id": "landscape-ecology",
@@ -11289,7 +11289,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-clear-coat.md",
       "exists": true,
-      "char_count": 2636
+      "char_count": 2710
     },
     {
       "id": "cg-skin-rendering",
@@ -11424,7 +11424,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-hdr-pipeline.md",
       "exists": true,
-      "char_count": 2820
+      "char_count": 2884
     },
     {
       "id": "cg-pixel-art-filter",
@@ -11889,7 +11889,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-msaa.md",
       "exists": true,
-      "char_count": 2688
+      "char_count": 2769
     },
     {
       "id": "cg-interpolation",
@@ -13149,7 +13149,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-texture-synthesis.md",
       "exists": true,
-      "char_count": 2688
+      "char_count": 2550
     },
     {
       "id": "cg-texture-atlas",
@@ -13839,7 +13839,7 @@
       ],
       "file": "concept-design/cd-anatomy-stylization.md",
       "exists": true,
-      "char_count": 2233
+      "char_count": 2467
     },
     {
       "id": "cd-torso-rib-pelvis",
@@ -15579,7 +15579,7 @@
       ],
       "file": "concept-design/cd-mood-master-study.md",
       "exists": true,
-      "char_count": 2157
+      "char_count": 2473
     },
     {
       "id": "cd-mood-field-research",
@@ -15654,7 +15654,7 @@
       ],
       "file": "concept-design/cd-mood-photo-study.md",
       "exists": true,
-      "char_count": 1964
+      "char_count": 2694
     },
     {
       "id": "cd-mood-film-analysis",
@@ -16614,7 +16614,7 @@
       ],
       "file": "concept-design/cd-style-evolution.md",
       "exists": true,
-      "char_count": 2415
+      "char_count": 2466
     },
     {
       "id": "cd-visdev-3d-concept",
@@ -23319,7 +23319,7 @@
       ],
       "file": "english/vocabulary/word-usage-practice.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2976
     },
     {
       "id": "register-formality",
@@ -25884,7 +25884,7 @@
       ],
       "file": "finance/stock-market/technical-analysis-basics.md",
       "exists": true,
-      "char_count": 1657
+      "char_count": 2746
     },
     {
       "id": "ratio-analysis",
@@ -35529,7 +35529,7 @@
       ],
       "file": "game-engine/editor-extension/data-validation.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2924
     },
     {
       "id": "cook-automation",
@@ -37044,7 +37044,7 @@
       ],
       "file": "game-engine/plugin-development/crash-reporter-plugin.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 3440
     },
     {
       "id": "api-design-plugin",
@@ -37074,7 +37074,7 @@
       ],
       "file": "game-engine/plugin-development/plugin-dependency.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 3348
     },
     {
       "id": "plugin-intro",
@@ -38484,7 +38484,7 @@
       ],
       "file": "game-engine/serialization/uasset-format.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2778
     },
     {
       "id": "undo-redo-serialization",
@@ -38544,7 +38544,7 @@
       ],
       "file": "game-engine/serialization/replay-system.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2479
     },
     {
       "id": "encryption-save",
@@ -42327,7 +42327,7 @@
       "tags": [],
       "file": "game-production/gp-cd-communication.md",
       "exists": true,
-      "char_count": 1575
+      "char_count": 2738
     },
     {
       "id": "gp-cd-alignment",
@@ -42756,7 +42756,7 @@
       "tags": [],
       "file": "game-production/gp-os-contract.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2086
     },
     {
       "id": "gp-os-cost-analysis",
@@ -43341,7 +43341,7 @@
       "tags": [],
       "file": "game-production/gp-rm-team-structure.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2282
     },
     {
       "id": "gp-rm-diversity",
@@ -47020,7 +47020,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-gameplay-testing.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2317
     },
     {
       "id": "qa-ft-equivalence-partition",
@@ -49540,7 +49540,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-map.md",
       "exists": true,
-      "char_count": 1572
+      "char_count": 2703
     },
     {
       "id": "guiux-menu-popup-dialog",
@@ -59309,7 +59309,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ch-streaming-install.md",
       "exists": true,
-      "char_count": 1275
+      "char_count": 2589
     },
     {
       "id": "mn-ch-hotfix-system",
@@ -59725,7 +59725,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-battle-pass.md",
       "exists": true,
-      "char_count": 1561
+      "char_count": 2289
     },
     {
       "id": "mn-lr-match-history",
@@ -59842,7 +59842,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-replay-highlight.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2397
     },
     {
       "id": "mn-lr-economy-analytics",
@@ -60336,7 +60336,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ls-spectator-mode.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2382
     },
     {
       "id": "mn-ls-fighting-game-netcode",
@@ -61389,7 +61389,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-authoritative-server.md",
       "exists": true,
-      "char_count": 1545
+      "char_count": 2564
     },
     {
       "id": "mn-ss-physics-sync",
@@ -61818,7 +61818,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-companion-system.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2527
     },
     {
       "id": "nd-cw-tragic-character",
@@ -62338,7 +62338,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-dialogue-writing.md",
       "exists": true,
-      "char_count": 1539
+      "char_count": 2380
     },
     {
       "id": "nd-ds-dialogue-database",
@@ -72452,7 +72452,7 @@
       "tags": [],
       "file": "programming-basics/dictionaries-maps.md",
       "exists": true,
-      "char_count": 2706
+      "char_count": 2839
     },
     {
       "id": "strings",
@@ -86279,7 +86279,7 @@
       "tags": [],
       "file": "web-backend/rate-limiting.md",
       "exists": true,
-      "char_count": 2791
+      "char_count": 2755
     },
     {
       "id": "design-system",

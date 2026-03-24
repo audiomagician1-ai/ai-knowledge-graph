@@ -2248,7 +2248,7 @@
       ],
       "file": "finance/stock-market/technical-analysis-basics.md",
       "exists": true,
-      "char_count": 1657
+      "char_count": 2746
     },
     {
       "id": "ratio-analysis",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 320125,
-    "avg_chars": 2000,
+    "total_chars": 321214,
+    "avg_chars": 2007,
     "domain": "finance"
   }
 }

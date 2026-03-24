@@ -440,7 +440,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ch-streaming-install.md",
       "exists": true,
-      "char_count": 1275
+      "char_count": 2589
     },
     {
       "id": "mn-ch-hotfix-system",
@@ -856,7 +856,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-battle-pass.md",
       "exists": true,
-      "char_count": 1561
+      "char_count": 2289
     },
     {
       "id": "mn-lr-match-history",
@@ -973,7 +973,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-replay-highlight.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2397
     },
     {
       "id": "mn-lr-economy-analytics",
@@ -1467,7 +1467,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ls-spectator-mode.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2382
     },
     {
       "id": "mn-ls-fighting-game-netcode",
@@ -2520,7 +2520,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-authoritative-server.md",
       "exists": true,
-      "char_count": 1545
+      "char_count": 2564
     },
     {
       "id": "mn-ss-physics-sync",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 316335,
-    "avg_chars": 1581,
+    "total_chars": 321623,
+    "avg_chars": 1608,
     "domain": "multiplayer-network"
   }
 }

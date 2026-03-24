@@ -349,7 +349,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-companion-system.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2527
     },
     {
       "id": "nd-cw-tragic-character",
@@ -869,7 +869,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-dialogue-writing.md",
       "exists": true,
-      "char_count": 1539
+      "char_count": 2380
     },
     {
       "id": "nd-ds-dialogue-database",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 277736,
-    "avg_chars": 1542,
+    "total_chars": 279610,
+    "avg_chars": 1553,
     "domain": "narrative-design"
   }
 }

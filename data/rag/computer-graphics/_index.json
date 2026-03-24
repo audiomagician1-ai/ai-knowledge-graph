@@ -1423,7 +1423,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-clear-coat.md",
       "exists": true,
-      "char_count": 2636
+      "char_count": 2710
     },
     {
       "id": "cg-skin-rendering",
@@ -1558,7 +1558,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-hdr-pipeline.md",
       "exists": true,
-      "char_count": 2820
+      "char_count": 2884
     },
     {
       "id": "cg-pixel-art-filter",
@@ -2023,7 +2023,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-msaa.md",
       "exists": true,
-      "char_count": 2688
+      "char_count": 2769
     },
     {
       "id": "cg-interpolation",
@@ -3283,7 +3283,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-texture-synthesis.md",
       "exists": true,
-      "char_count": 2688
+      "char_count": 2550
     },
     {
       "id": "cg-texture-atlas",
@@ -3753,7 +3753,7 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 459334,
+    "total_chars": 459415,
     "avg_chars": 1837,
     "domain": "computer-graphics"
   }

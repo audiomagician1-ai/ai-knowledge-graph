@@ -349,13 +349,13 @@
       "tags": [],
       "file": "web-backend/rate-limiting.md",
       "exists": true,
-      "char_count": 2791
+      "char_count": 2755
     }
   ],
   "stats": {
     "total": 27,
-    "total_chars": 51320,
-    "avg_chars": 1900,
+    "total_chars": 51284,
+    "avg_chars": 1899,
     "domain": "web-backend"
   }
 }

@@ -310,7 +310,7 @@
       "tags": [],
       "file": "algorithms/topological-sort.md",
       "exists": true,
-      "char_count": 2426
+      "char_count": 2524
     },
     {
       "id": "insertion-sort",
@@ -458,8 +458,8 @@
   ],
   "stats": {
     "total": 35,
-    "total_chars": 71634,
-    "avg_chars": 2046,
+    "total_chars": 71732,
+    "avg_chars": 2049,
     "domain": "algorithms"
   }
 }

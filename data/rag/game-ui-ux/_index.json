@@ -1374,7 +1374,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-map.md",
       "exists": true,
-      "char_count": 1572
+      "char_count": 2703
     },
     {
       "id": "guiux-menu-popup-dialog",
@@ -3203,8 +3203,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 317946,
-    "avg_chars": 1589,
+    "total_chars": 319077,
+    "avg_chars": 1595,
     "domain": "game-ui-ux"
   }
 }

@@ -661,7 +661,7 @@
       "tags": [],
       "file": "game-production/gp-cd-communication.md",
       "exists": true,
-      "char_count": 1575
+      "char_count": 2738
     },
     {
       "id": "gp-cd-alignment",
@@ -1090,7 +1090,7 @@
       "tags": [],
       "file": "game-production/gp-os-contract.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2086
     },
     {
       "id": "gp-os-cost-analysis",
@@ -1675,7 +1675,7 @@
       "tags": [],
       "file": "game-production/gp-rm-team-structure.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2282
     },
     {
       "id": "gp-rm-diversity",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 253165,
-    "avg_chars": 1582,
+    "total_chars": 255719,
+    "avg_chars": 1598,
     "domain": "game-production"
   }
 }

@@ -141,7 +141,7 @@
       "tags": [],
       "file": "programming-basics/dictionaries-maps.md",
       "exists": true,
-      "char_count": 2706
+      "char_count": 2839
     },
     {
       "id": "strings",
@@ -393,8 +393,8 @@
   ],
   "stats": {
     "total": 30,
-    "total_chars": 67123,
-    "avg_chars": 2237,
+    "total_chars": 67256,
+    "avg_chars": 2241,
     "domain": "programming-basics"
   }
 }
