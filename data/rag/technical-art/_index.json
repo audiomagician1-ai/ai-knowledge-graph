@@ -1018,7 +1018,7 @@
       ],
       "file": "technical-art/ta-mem-overview.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 2764
     },
     {
       "id": "ta-mem-budget-doc",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 296061,
-    "avg_chars": 1644,
+    "total_chars": 297351,
+    "avg_chars": 1651,
     "domain": "technical-art"
   }
 }

@@ -167,7 +167,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ab-pitfalls.md",
       "exists": true,
-      "char_count": 1425
+      "char_count": 2428
     },
     {
       "id": "ops-ab-metrics-selection",
@@ -193,7 +193,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ab-sample-size.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2184
     },
     {
       "id": "ops-ab-statistical-significance",
@@ -401,7 +401,7 @@
       "tags": [],
       "file": "game-live-ops/ops-cs-metrics.md",
       "exists": true,
-      "char_count": 1418
+      "char_count": 2895
     },
     {
       "id": "ops-cs-automation",
@@ -1896,7 +1896,7 @@
       "tags": [],
       "file": "game-live-ops/ops-uc-staged-rollout.md",
       "exists": true,
-      "char_count": 2727
+      "char_count": 2303
     },
     {
       "id": "ops-uc-feature-flag",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 279423,
-    "avg_chars": 1552,
+    "total_chars": 282261,
+    "avg_chars": 1568,
     "domain": "game-live-ops"
   }
 }

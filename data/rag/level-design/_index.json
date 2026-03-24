@@ -193,7 +193,7 @@
       ],
       "file": "level-design/blockout/scale-reference.md",
       "exists": true,
-      "char_count": 1254
+      "char_count": 2395
     },
     {
       "id": "cover-placement",
@@ -853,7 +853,7 @@
       ],
       "file": "level-design/guidance-design/difficulty-communication.md",
       "exists": true,
-      "char_count": 1270
+      "char_count": 2570
     },
     {
       "id": "breadcrumb-trail",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 402105,
-    "avg_chars": 2010,
+    "total_chars": 404546,
+    "avg_chars": 2022,
     "domain": "level-design"
   }
 }

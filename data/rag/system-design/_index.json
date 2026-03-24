@@ -76,7 +76,7 @@
       "tags": [],
       "file": "system-design/consistency-patterns.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 3266
     },
     {
       "id": "event-driven-arch",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 48948,
-    "avg_chars": 1957,
+    "total_chars": 50748,
+    "avg_chars": 2029,
     "domain": "system-design"
   }
 }

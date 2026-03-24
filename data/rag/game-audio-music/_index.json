@@ -43,7 +43,7 @@
       ],
       "file": "game-audio-music/game-audio-music-vertical-layering.md",
       "exists": true,
-      "char_count": 1428
+      "char_count": 2457
     },
     {
       "id": "game-audio-music-intensity-system",
@@ -1993,7 +1993,7 @@
       ],
       "file": "game-audio-music/game-audio-music-theory-to-practice.md",
       "exists": true,
-      "char_count": 1431
+      "char_count": 2662
     },
     {
       "id": "game-audio-music-tension-resolution",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 291019,
-    "avg_chars": 1616,
+    "total_chars": 293279,
+    "avg_chars": 1629,
     "domain": "game-audio-music"
   }
 }

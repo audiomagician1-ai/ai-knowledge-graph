@@ -128,7 +128,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-day-night-cycle.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2450
     },
     {
       "id": "sfx-as-water-ambient",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 296375,
-    "avg_chars": 1646,
+    "total_chars": 297434,
+    "avg_chars": 1652,
     "domain": "game-audio-sfx"
   }
 }

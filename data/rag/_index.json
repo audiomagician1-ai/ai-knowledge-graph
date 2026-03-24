@@ -10224,7 +10224,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-geo-intro.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2358
     },
     {
       "id": "cg-parametric-surface",
@@ -12669,7 +12669,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-occlusion-culling.md",
       "exists": true,
-      "char_count": 1424
+      "char_count": 2802
     },
     {
       "id": "cg-glsl",
@@ -15399,7 +15399,7 @@
       ],
       "file": "concept-design/cd-rim-light.md",
       "exists": true,
-      "char_count": 1186
+      "char_count": 2096
     },
     {
       "id": "cd-shadow-shapes",
@@ -26079,7 +26079,7 @@
       ],
       "file": "game-audio-music/game-audio-music-vertical-layering.md",
       "exists": true,
-      "char_count": 1428
+      "char_count": 2457
     },
     {
       "id": "game-audio-music-intensity-system",
@@ -28029,7 +28029,7 @@
       ],
       "file": "game-audio-music/game-audio-music-theory-to-practice.md",
       "exists": true,
-      "char_count": 1431
+      "char_count": 2662
     },
     {
       "id": "game-audio-music-tension-resolution",
@@ -28864,7 +28864,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-day-night-cycle.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2450
     },
     {
       "id": "sfx-as-water-ambient",
@@ -34989,7 +34989,7 @@
       ],
       "file": "game-engine/animation-system/state-machine-anim.md",
       "exists": true,
-      "char_count": 2906
+      "char_count": 2919
     },
     {
       "id": "animation-system-intro",
@@ -35544,7 +35544,7 @@
       ],
       "file": "game-engine/editor-extension/cook-automation.md",
       "exists": true,
-      "char_count": 2943
+      "char_count": 3013
     },
     {
       "id": "source-control-editor",
@@ -36264,7 +36264,7 @@
       ],
       "file": "game-engine/performance-profiling/perf-budget.md",
       "exists": true,
-      "char_count": 2497
+      "char_count": 2379
     },
     {
       "id": "mobile-profiling",
@@ -36909,7 +36909,7 @@
       ],
       "file": "game-engine/platform-abstraction/save-system-platform.md",
       "exists": true,
-      "char_count": 3289
+      "char_count": 3127
     },
     {
       "id": "cross-play",
@@ -37059,7 +37059,7 @@
       ],
       "file": "game-engine/plugin-development/api-design-plugin.md",
       "exists": true,
-      "char_count": 3011
+      "char_count": 3023
     },
     {
       "id": "plugin-dependency",
@@ -37164,7 +37164,7 @@
       ],
       "file": "game-engine/plugin-development/plugin-lifecycle.md",
       "exists": true,
-      "char_count": 2537
+      "char_count": 2644
     },
     {
       "id": "plugin-settings",
@@ -37194,7 +37194,7 @@
       ],
       "file": "game-engine/plugin-development/analytics-plugin.md",
       "exists": true,
-      "char_count": 2714
+      "char_count": 2703
     },
     {
       "id": "localization-plugin",
@@ -37209,7 +37209,7 @@
       ],
       "file": "game-engine/plugin-development/localization-plugin.md",
       "exists": true,
-      "char_count": 3082
+      "char_count": 2888
     },
     {
       "id": "thirdparty-integration",
@@ -37854,7 +37854,7 @@
       ],
       "file": "game-engine/scene-management/world-origin-shifting.md",
       "exists": true,
-      "char_count": 2646
+      "char_count": 2733
     },
     {
       "id": "world-composition",
@@ -38859,7 +38859,7 @@
       ],
       "file": "game-engine/ue5-architecture/ue5-pak-system.md",
       "exists": true,
-      "char_count": 2845
+      "char_count": 2622
     },
     {
       "id": "ue5-slate-umg",
@@ -39493,7 +39493,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ab-pitfalls.md",
       "exists": true,
-      "char_count": 1425
+      "char_count": 2428
     },
     {
       "id": "ops-ab-metrics-selection",
@@ -39519,7 +39519,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ab-sample-size.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2184
     },
     {
       "id": "ops-ab-statistical-significance",
@@ -39727,7 +39727,7 @@
       "tags": [],
       "file": "game-live-ops/ops-cs-metrics.md",
       "exists": true,
-      "char_count": 1418
+      "char_count": 2895
     },
     {
       "id": "ops-cs-automation",
@@ -41222,7 +41222,7 @@
       "tags": [],
       "file": "game-live-ops/ops-uc-staged-rollout.md",
       "exists": true,
-      "char_count": 2727
+      "char_count": 2303
     },
     {
       "id": "ops-uc-feature-flag",
@@ -42678,7 +42678,7 @@
       "tags": [],
       "file": "game-production/gp-mp-kpi.md",
       "exists": true,
-      "char_count": 2839
+      "char_count": 2476
     },
     {
       "id": "gp-mp-postmortem",
@@ -43640,7 +43640,7 @@
       "tags": [],
       "file": "game-production/gp-rk-schedule.md",
       "exists": true,
-      "char_count": 2870
+      "char_count": 2791
     },
     {
       "id": "gp-rk-retrospective",
@@ -43952,7 +43952,7 @@
       "tags": [],
       "file": "game-publishing/pub-bb-brand-guidelines.md",
       "exists": true,
-      "char_count": 1418
+      "char_count": 2606
     },
     {
       "id": "pub-bb-tone-of-voice",
@@ -44316,7 +44316,7 @@
       "tags": [],
       "file": "game-publishing/pub-ms-post-launch-plan.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2665
     },
     {
       "id": "pub-ms-launch-timing",
@@ -44810,7 +44810,7 @@
       "tags": [],
       "file": "game-publishing/pub-pm-pr-agency.md",
       "exists": true,
-      "char_count": 2668
+      "char_count": 2680
     },
     {
       "id": "pub-pm-pr-metrics",
@@ -46292,7 +46292,7 @@
       "tags": [],
       "file": "game-qa/qa-at-roi-metrics.md",
       "exists": true,
-      "char_count": 2627
+      "char_count": 2752
     },
     {
       "id": "qa-at-automation-overview",
@@ -47033,7 +47033,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-equivalence-partition.md",
       "exists": true,
-      "char_count": 1438
+      "char_count": 2570
     },
     {
       "id": "qa-ft-combinatorial",
@@ -47319,7 +47319,7 @@
       "tags": [],
       "file": "game-qa/qa-lt-loc-metrics.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 2547
     },
     {
       "id": "qa-lt-legal-compliance",
@@ -48612,7 +48612,7 @@
       ],
       "file": "game-ui-ux/guiux-hud-diegetic.md",
       "exists": true,
-      "char_count": 2429
+      "char_count": 2652
     },
     {
       "id": "guiux-hud-safe-zone",
@@ -51559,7 +51559,7 @@
       ],
       "file": "level-design/blockout/scale-reference.md",
       "exists": true,
-      "char_count": 1254
+      "char_count": 2395
     },
     {
       "id": "cover-placement",
@@ -52219,7 +52219,7 @@
       ],
       "file": "level-design/guidance-design/difficulty-communication.md",
       "exists": true,
-      "char_count": 1270
+      "char_count": 2570
     },
     {
       "id": "breadcrumb-trail",
@@ -59647,7 +59647,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-connection-pooling.md",
       "exists": true,
-      "char_count": 1416
+      "char_count": 2801
     },
     {
       "id": "mn-lr-partitioned-leaderboard",
@@ -76633,7 +76633,7 @@
       ],
       "file": "software-engineering/ci-cd/se-ci-testing.md",
       "exists": true,
-      "char_count": 1407
+      "char_count": 2700
     },
     {
       "id": "se-ci-security",
@@ -80281,7 +80281,7 @@
       "tags": [],
       "file": "system-design/consistency-patterns.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 3266
     },
     {
       "id": "event-driven-arch",
@@ -81548,7 +81548,7 @@
       ],
       "file": "technical-art/ta-mem-overview.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 2764
     },
     {
       "id": "ta-mem-budget-doc",
@@ -83378,7 +83378,7 @@
       ],
       "file": "vfx/vfx-destruct-tool.md",
       "exists": true,
-      "char_count": 1431
+      "char_count": 3034
     },
     {
       "id": "vfx-destruct-overview",

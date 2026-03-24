@@ -778,7 +778,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-connection-pooling.md",
       "exists": true,
-      "char_count": 1416
+      "char_count": 2801
     },
     {
       "id": "mn-lr-partitioned-leaderboard",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 329714,
-    "avg_chars": 1648,
+    "total_chars": 331099,
+    "avg_chars": 1655,
     "domain": "multiplayer-network"
   }
 }

@@ -163,7 +163,7 @@
       ],
       "file": "game-engine/animation-system/state-machine-anim.md",
       "exists": true,
-      "char_count": 2906
+      "char_count": 2919
     },
     {
       "id": "animation-system-intro",
@@ -718,7 +718,7 @@
       ],
       "file": "game-engine/editor-extension/cook-automation.md",
       "exists": true,
-      "char_count": 2943
+      "char_count": 3013
     },
     {
       "id": "source-control-editor",
@@ -1438,7 +1438,7 @@
       ],
       "file": "game-engine/performance-profiling/perf-budget.md",
       "exists": true,
-      "char_count": 2497
+      "char_count": 2379
     },
     {
       "id": "mobile-profiling",
@@ -2083,7 +2083,7 @@
       ],
       "file": "game-engine/platform-abstraction/save-system-platform.md",
       "exists": true,
-      "char_count": 3289
+      "char_count": 3127
     },
     {
       "id": "cross-play",
@@ -2233,7 +2233,7 @@
       ],
       "file": "game-engine/plugin-development/api-design-plugin.md",
       "exists": true,
-      "char_count": 3011
+      "char_count": 3023
     },
     {
       "id": "plugin-dependency",
@@ -2338,7 +2338,7 @@
       ],
       "file": "game-engine/plugin-development/plugin-lifecycle.md",
       "exists": true,
-      "char_count": 2537
+      "char_count": 2644
     },
     {
       "id": "plugin-settings",
@@ -2368,7 +2368,7 @@
       ],
       "file": "game-engine/plugin-development/analytics-plugin.md",
       "exists": true,
-      "char_count": 2714
+      "char_count": 2703
     },
     {
       "id": "localization-plugin",
@@ -2383,7 +2383,7 @@
       ],
       "file": "game-engine/plugin-development/localization-plugin.md",
       "exists": true,
-      "char_count": 3082
+      "char_count": 2888
     },
     {
       "id": "thirdparty-integration",
@@ -3028,7 +3028,7 @@
       ],
       "file": "game-engine/scene-management/world-origin-shifting.md",
       "exists": true,
-      "char_count": 2646
+      "char_count": 2733
     },
     {
       "id": "world-composition",
@@ -4033,7 +4033,7 @@
       ],
       "file": "game-engine/ue5-architecture/ue5-pak-system.md",
       "exists": true,
-      "char_count": 2845
+      "char_count": 2622
     },
     {
       "id": "ue5-slate-umg",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 593902,
-    "avg_chars": 1979,
+    "total_chars": 593483,
+    "avg_chars": 1978,
     "domain": "game-engine"
   }
 }

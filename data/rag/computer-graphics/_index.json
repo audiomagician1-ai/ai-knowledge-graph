@@ -358,7 +358,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-geo-intro.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2358
     },
     {
       "id": "cg-parametric-surface",
@@ -2803,7 +2803,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-occlusion-culling.md",
       "exists": true,
-      "char_count": 1424
+      "char_count": 2802
     },
     {
       "id": "cg-glsl",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 463523,
-    "avg_chars": 1854,
+    "total_chars": 465803,
+    "avg_chars": 1863,
     "domain": "computer-graphics"
   }
 }

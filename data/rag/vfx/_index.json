@@ -148,7 +148,7 @@
       ],
       "file": "vfx/vfx-destruct-tool.md",
       "exists": true,
-      "char_count": 1431
+      "char_count": 3034
     },
     {
       "id": "vfx-destruct-overview",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 300097,
-    "avg_chars": 1667,
+    "total_chars": 301700,
+    "avg_chars": 1676,
     "domain": "vfx"
   }
 }

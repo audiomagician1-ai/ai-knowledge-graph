@@ -206,7 +206,7 @@
       "tags": [],
       "file": "game-publishing/pub-bb-brand-guidelines.md",
       "exists": true,
-      "char_count": 1418
+      "char_count": 2606
     },
     {
       "id": "pub-bb-tone-of-voice",
@@ -570,7 +570,7 @@
       "tags": [],
       "file": "game-publishing/pub-ms-post-launch-plan.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2665
     },
     {
       "id": "pub-ms-launch-timing",
@@ -1064,7 +1064,7 @@
       "tags": [],
       "file": "game-publishing/pub-pm-pr-agency.md",
       "exists": true,
-      "char_count": 2668
+      "char_count": 2680
     },
     {
       "id": "pub-pm-pr-metrics",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 272341,
-    "avg_chars": 1513,
+    "total_chars": 274796,
+    "avg_chars": 1526,
     "domain": "game-publishing"
   }
 }

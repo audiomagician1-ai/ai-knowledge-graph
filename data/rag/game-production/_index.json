@@ -1012,7 +1012,7 @@
       "tags": [],
       "file": "game-production/gp-mp-kpi.md",
       "exists": true,
-      "char_count": 2839
+      "char_count": 2476
     },
     {
       "id": "gp-mp-postmortem",
@@ -1974,7 +1974,7 @@
       "tags": [],
       "file": "game-production/gp-rk-schedule.md",
       "exists": true,
-      "char_count": 2870
+      "char_count": 2791
     },
     {
       "id": "gp-rk-retrospective",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 256505,
-    "avg_chars": 1603,
+    "total_chars": 256063,
+    "avg_chars": 1600,
     "domain": "game-production"
   }
 }

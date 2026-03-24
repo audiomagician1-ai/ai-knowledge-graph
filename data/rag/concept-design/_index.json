@@ -1783,7 +1783,7 @@
       ],
       "file": "concept-design/cd-rim-light.md",
       "exists": true,
-      "char_count": 1186
+      "char_count": 2096
     },
     {
       "id": "cd-shadow-shapes",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 381868,
-    "avg_chars": 1735,
+    "total_chars": 382778,
+    "avg_chars": 1739,
     "domain": "concept-design"
   }
 }

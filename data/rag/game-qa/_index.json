@@ -206,7 +206,7 @@
       "tags": [],
       "file": "game-qa/qa-at-roi-metrics.md",
       "exists": true,
-      "char_count": 2627
+      "char_count": 2752
     },
     {
       "id": "qa-at-automation-overview",
@@ -947,7 +947,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-equivalence-partition.md",
       "exists": true,
-      "char_count": 1438
+      "char_count": 2570
     },
     {
       "id": "qa-ft-combinatorial",
@@ -1233,7 +1233,7 @@
       "tags": [],
       "file": "game-qa/qa-lt-loc-metrics.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 2547
     },
     {
       "id": "qa-lt-legal-compliance",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 249123,
-    "avg_chars": 1557,
+    "total_chars": 251519,
+    "avg_chars": 1571,
     "domain": "game-qa"
   }
 }
