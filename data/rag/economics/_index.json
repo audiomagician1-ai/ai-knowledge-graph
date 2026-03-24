@@ -223,7 +223,7 @@
       ],
       "file": "economics/behavioral-econ/overconfidence-econ.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2373
     },
     {
       "id": "default-effects",
@@ -403,7 +403,7 @@
       ],
       "file": "economics/development-econ/microfinance.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2528
     },
     {
       "id": "industrialization",
@@ -523,7 +523,7 @@
       ],
       "file": "economics/development-econ/rct-development.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2813
     },
     {
       "id": "informal-economy",
@@ -628,7 +628,7 @@
       ],
       "file": "economics/econometrics/causal-inference.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 3037
     },
     {
       "id": "multiple-regression",
@@ -1198,7 +1198,7 @@
       ],
       "file": "economics/international-econ/digital-trade.md",
       "exists": true,
-      "char_count": 1452
+      "char_count": 2713
     },
     {
       "id": "new-trade-theory",
@@ -1213,7 +1213,7 @@
       ],
       "file": "economics/international-econ/new-trade-theory.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2752
     },
     {
       "id": "comparative-advantage",
@@ -1828,7 +1828,7 @@
       ],
       "file": "economics/microeconomics/supply-demand.md",
       "exists": true,
-      "char_count": 1548
+      "char_count": 2401
     },
     {
       "id": "information-asymmetry",
@@ -2098,7 +2098,7 @@
       ],
       "file": "economics/microeconomics/consumer-theory.md",
       "exists": true,
-      "char_count": 1573
+      "char_count": 2561
     },
     {
       "id": "producer-theory",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 297454,
-    "avg_chars": 1749,
+    "total_chars": 306685,
+    "avg_chars": 1804,
     "domain": "economics"
   }
 }

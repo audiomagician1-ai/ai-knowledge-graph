@@ -3538,7 +3538,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-vol-gi.md",
       "exists": true,
-      "char_count": 3211
+      "char_count": 3153
     },
     {
       "id": "cg-vol-intro",
@@ -3628,7 +3628,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-participating-media.md",
       "exists": true,
-      "char_count": 3244
+      "char_count": 3209
     },
     {
       "id": "cg-atmosphere-scatter",
@@ -3733,7 +3733,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-neural-radiance.md",
       "exists": true,
-      "char_count": 3068
+      "char_count": 3177
     },
     {
       "id": "cg-scientific-vis",
@@ -3753,7 +3753,7 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 439505,
+    "total_chars": 439521,
     "avg_chars": 1758,
     "domain": "computer-graphics"
   }

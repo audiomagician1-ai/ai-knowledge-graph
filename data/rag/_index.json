@@ -1258,7 +1258,7 @@
       ],
       "file": "3d-art/3da-extrude-inset.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2589
     },
     {
       "id": "3da-scale-proportion",
@@ -1873,7 +1873,7 @@
       ],
       "file": "3d-art/3da-prop-lod-creation.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2702
     },
     {
       "id": "3da-prop-pivot-setup",
@@ -1933,7 +1933,7 @@
       ],
       "file": "3d-art/3da-prop-quality-checklist.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2878
     },
     {
       "id": "3da-prop-food-organic",
@@ -2938,7 +2938,7 @@
       ],
       "file": "3d-art/3da-tex-tiling-material.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2888
     },
     {
       "id": "3da-tex-hand-painted",
@@ -2953,7 +2953,7 @@
       ],
       "file": "3d-art/3da-tex-hand-painted.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 2540
     },
     {
       "id": "3da-tex-scan-data",
@@ -5484,7 +5484,7 @@
       ],
       "file": "animation/anim-facs.md",
       "exists": true,
-      "char_count": 1532
+      "char_count": 2302
     },
     {
       "id": "anim-metahuman-face",
@@ -6279,7 +6279,7 @@
       ],
       "file": "animation/anim-mocap-overview.md",
       "exists": true,
-      "char_count": 1524
+      "char_count": 2637
     },
     {
       "id": "anim-mocap-vs-keyframe",
@@ -13404,7 +13404,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-vol-gi.md",
       "exists": true,
-      "char_count": 3211
+      "char_count": 3153
     },
     {
       "id": "cg-vol-intro",
@@ -13494,7 +13494,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-participating-media.md",
       "exists": true,
-      "char_count": 3244
+      "char_count": 3209
     },
     {
       "id": "cg-atmosphere-scatter",
@@ -13599,7 +13599,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-neural-radiance.md",
       "exists": true,
-      "char_count": 3068
+      "char_count": 3177
     },
     {
       "id": "cg-scientific-vis",
@@ -13884,7 +13884,7 @@
       ],
       "file": "concept-design/cd-foreshortening.md",
       "exists": true,
-      "char_count": 2174
+      "char_count": 2467
     },
     {
       "id": "cd-weight-balance",
@@ -14259,7 +14259,7 @@
       ],
       "file": "concept-design/cd-warm-cool.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2490
     },
     {
       "id": "cd-monochrome-study",
@@ -14274,7 +14274,7 @@
       ],
       "file": "concept-design/cd-monochrome-study.md",
       "exists": true,
-      "char_count": 2548
+      "char_count": 2529
     },
     {
       "id": "cd-local-color-vs-light",
@@ -14799,7 +14799,7 @@
       ],
       "file": "concept-design/cd-static-composition.md",
       "exists": true,
-      "char_count": 2431
+      "char_count": 2406
     },
     {
       "id": "cd-golden-ratio",
@@ -15204,7 +15204,7 @@
       ],
       "file": "concept-design/cd-single-light-setup.md",
       "exists": true,
-      "char_count": 2431
+      "char_count": 2417
     },
     {
       "id": "cd-two-light-setup",
@@ -15834,7 +15834,7 @@
       ],
       "file": "concept-design/cd-measured-perspective.md",
       "exists": true,
-      "char_count": 2444
+      "char_count": 2385
     },
     {
       "id": "cd-box-in-perspective",
@@ -15879,7 +15879,7 @@
       ],
       "file": "concept-design/cd-vanishing-point.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 2281
     },
     {
       "id": "cd-perspective-for-env",
@@ -16599,7 +16599,7 @@
       ],
       "file": "concept-design/cd-style-mixing.md",
       "exists": true,
-      "char_count": 2438
+      "char_count": 2570
     },
     {
       "id": "cd-style-evolution",
@@ -18309,7 +18309,7 @@
       ],
       "file": "economics/behavioral-econ/overconfidence-econ.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2373
     },
     {
       "id": "default-effects",
@@ -18489,7 +18489,7 @@
       ],
       "file": "economics/development-econ/microfinance.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2528
     },
     {
       "id": "industrialization",
@@ -18609,7 +18609,7 @@
       ],
       "file": "economics/development-econ/rct-development.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2813
     },
     {
       "id": "informal-economy",
@@ -18714,7 +18714,7 @@
       ],
       "file": "economics/econometrics/causal-inference.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 3037
     },
     {
       "id": "multiple-regression",
@@ -19284,7 +19284,7 @@
       ],
       "file": "economics/international-econ/digital-trade.md",
       "exists": true,
-      "char_count": 1452
+      "char_count": 2713
     },
     {
       "id": "new-trade-theory",
@@ -19299,7 +19299,7 @@
       ],
       "file": "economics/international-econ/new-trade-theory.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2752
     },
     {
       "id": "comparative-advantage",
@@ -19914,7 +19914,7 @@
       ],
       "file": "economics/microeconomics/supply-demand.md",
       "exists": true,
-      "char_count": 1548
+      "char_count": 2401
     },
     {
       "id": "information-asymmetry",
@@ -20184,7 +20184,7 @@
       ],
       "file": "economics/microeconomics/consumer-theory.md",
       "exists": true,
-      "char_count": 1573
+      "char_count": 2561
     },
     {
       "id": "producer-theory",
@@ -36069,7 +36069,7 @@
       ],
       "file": "game-engine/performance-profiling/gpu-profiling.md",
       "exists": true,
-      "char_count": 1581
+      "char_count": 3340
     },
     {
       "id": "pix-nsa",
@@ -54702,7 +54702,7 @@
       "tags": [],
       "file": "llm-core/positional-encoding.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 3068
     },
     {
       "id": "tokenization",
@@ -54806,7 +54806,7 @@
       "tags": [],
       "file": "llm-core/attention-mechanism.md",
       "exists": true,
-      "char_count": 1515
+      "char_count": 2769
     },
     {
       "id": "sparse-attention",
@@ -72530,7 +72530,7 @@
       "tags": [],
       "file": "programming-basics/file-io.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 3151
     },
     {
       "id": "logging-basics",
@@ -72894,7 +72894,7 @@
       "tags": [],
       "file": "prompt-engineering/prompt-basics.md",
       "exists": true,
-      "char_count": 1498
+      "char_count": 2619
     },
     {
       "id": "prompt-optimization",
@@ -83318,7 +83318,7 @@
       ],
       "file": "vfx/vfx-destruct-hierarchy.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2854
     },
     {
       "id": "vfx-destruct-building",
@@ -85838,7 +85838,7 @@
       ],
       "file": "vfx/vfx-opt-pooling.md",
       "exists": true,
-      "char_count": 1349
+      "char_count": 2939
     },
     {
       "id": "vfx-opt-collision-cost",
@@ -86578,7 +86578,7 @@
       "tags": [],
       "file": "web-frontend/web-performance.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 3322
     },
     {
       "id": "frontend-testing",

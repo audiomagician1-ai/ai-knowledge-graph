@@ -1243,7 +1243,7 @@
       ],
       "file": "game-engine/performance-profiling/gpu-profiling.md",
       "exists": true,
-      "char_count": 1581
+      "char_count": 3340
     },
     {
       "id": "pix-nsa",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 551498,
-    "avg_chars": 1838,
+    "total_chars": 553257,
+    "avg_chars": 1844,
     "domain": "game-engine"
   }
 }

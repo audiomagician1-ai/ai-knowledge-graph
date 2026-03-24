@@ -297,7 +297,7 @@
       "tags": [],
       "file": "web-frontend/web-performance.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 3322
     },
     {
       "id": "frontend-testing",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 54418,
-    "avg_chars": 1649,
+    "total_chars": 56239,
+    "avg_chars": 1704,
     "domain": "web-frontend"
   }
 }

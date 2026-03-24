@@ -898,7 +898,7 @@
       ],
       "file": "animation/anim-facs.md",
       "exists": true,
-      "char_count": 1532
+      "char_count": 2302
     },
     {
       "id": "anim-metahuman-face",
@@ -1693,7 +1693,7 @@
       ],
       "file": "animation/anim-mocap-overview.md",
       "exists": true,
-      "char_count": 1524
+      "char_count": 2637
     },
     {
       "id": "anim-mocap-vs-keyframe",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 277386,
-    "avg_chars": 1541,
+    "total_chars": 279269,
+    "avg_chars": 1551,
     "domain": "animation"
   }
 }

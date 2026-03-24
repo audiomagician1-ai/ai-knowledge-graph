@@ -1258,7 +1258,7 @@
       ],
       "file": "3d-art/3da-extrude-inset.md",
       "exists": true,
-      "char_count": 1462
+      "char_count": 2589
     },
     {
       "id": "3da-scale-proportion",
@@ -1873,7 +1873,7 @@
       ],
       "file": "3d-art/3da-prop-lod-creation.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2702
     },
     {
       "id": "3da-prop-pivot-setup",
@@ -1933,7 +1933,7 @@
       ],
       "file": "3d-art/3da-prop-quality-checklist.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2878
     },
     {
       "id": "3da-prop-food-organic",
@@ -2938,7 +2938,7 @@
       ],
       "file": "3d-art/3da-tex-tiling-material.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2888
     },
     {
       "id": "3da-tex-hand-painted",
@@ -2953,7 +2953,7 @@
       ],
       "file": "3d-art/3da-tex-hand-painted.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 2540
     },
     {
       "id": "3da-tex-scan-data",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 409308,
-    "avg_chars": 1811,
+    "total_chars": 415561,
+    "avg_chars": 1838,
     "domain": "3d-art"
   }
 }
