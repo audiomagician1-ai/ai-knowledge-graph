@@ -167,7 +167,7 @@
       "tags": [],
       "file": "game-publishing/pub-bb-brand-refresh.md",
       "exists": true,
-      "char_count": 1442
+      "char_count": 2622
     },
     {
       "id": "pub-bb-brand-ecosystem",
@@ -882,7 +882,7 @@
       "tags": [],
       "file": "game-publishing/pub-pr-cloud-gaming.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2967
     },
     {
       "id": "pub-pr-iap-rules",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 279708,
-    "avg_chars": 1553,
+    "total_chars": 282372,
+    "avg_chars": 1568,
     "domain": "game-publishing"
   }
 }

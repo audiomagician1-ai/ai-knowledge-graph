@@ -313,7 +313,7 @@
       ],
       "file": "game-engine/audio-system/audio-snapshot.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2735
     },
     {
       "id": "audio-source-listener",
@@ -388,7 +388,7 @@
       ],
       "file": "game-engine/audio-system/sound-cue.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2915
     },
     {
       "id": "dialogue-system-audio",
@@ -1018,7 +1018,7 @@
       ],
       "file": "game-engine/input-system/input-context.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2615
     },
     {
       "id": "input-modifier",
@@ -1348,7 +1348,7 @@
       ],
       "file": "game-engine/performance-profiling/hitching-analysis.md",
       "exists": true,
-      "char_count": 1245
+      "char_count": 2852
     },
     {
       "id": "scalability-settings",
@@ -1573,7 +1573,7 @@
       ],
       "file": "game-engine/physics-engine/fluid-simulation.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2980
     },
     {
       "id": "physics-scene",
@@ -1663,7 +1663,7 @@
       ],
       "file": "game-engine/physics-engine/physics-material.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2696
     },
     {
       "id": "physics-query",
@@ -2878,7 +2878,7 @@
       ],
       "file": "game-engine/resource-management/texture-budget.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2423
     },
     {
       "id": "mesh-budget",
@@ -2893,7 +2893,7 @@
       ],
       "file": "game-engine/resource-management/mesh-budget.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2852
     },
     {
       "id": "patching-system",
@@ -3178,7 +3178,7 @@
       ],
       "file": "game-engine/scene-management/scene-debug.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 3276
     },
     {
       "id": "weather-system",
@@ -3313,7 +3313,7 @@
       ],
       "file": "game-engine/scripting-system/blueprint-system.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2998
     },
     {
       "id": "csharp-unity",
@@ -3403,7 +3403,7 @@
       ],
       "file": "game-engine/scripting-system/native-binding.md",
       "exists": true,
-      "char_count": 1245
+      "char_count": 3204
     },
     {
       "id": "visual-scripting-engine",
@@ -3883,7 +3883,7 @@
       ],
       "file": "game-engine/serialization/asset-metadata.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 2713
     },
     {
       "id": "config-system",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 621375,
-    "avg_chars": 2071,
+    "total_chars": 639907,
+    "avg_chars": 2133,
     "domain": "game-engine"
   }
 }

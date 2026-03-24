@@ -553,7 +553,7 @@
       ],
       "file": "software-engineering/build-systems/se-asset-pipeline.md",
       "exists": true,
-      "char_count": 1506
+      "char_count": 3484
     },
     {
       "id": "se-remote-build",
@@ -1078,7 +1078,7 @@
       ],
       "file": "software-engineering/code-review/se-perf-review.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2771
     },
     {
       "id": "se-tech-debt",
@@ -2128,7 +2128,7 @@
       ],
       "file": "software-engineering/memory-management/se-gc-optimization.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2695
     },
     {
       "id": "se-raii",
@@ -2173,7 +2173,7 @@
       ],
       "file": "software-engineering/memory-management/se-alignment.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2648
     },
     {
       "id": "se-memory-leak",
@@ -2218,7 +2218,7 @@
       ],
       "file": "software-engineering/memory-management/se-mem-intro.md",
       "exists": true,
-      "char_count": 1453
+      "char_count": 2322
     },
     {
       "id": "se-mem-debug",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 511818,
-    "avg_chars": 1827,
+    "total_chars": 519019,
+    "avg_chars": 1853,
     "domain": "software-engineering"
   }
 }

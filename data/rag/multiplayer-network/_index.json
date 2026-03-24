@@ -609,7 +609,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-transaction-design.md",
       "exists": true,
-      "char_count": 1454
+      "char_count": 2779
     },
     {
       "id": "mn-db-graph-database",
@@ -1662,7 +1662,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-backfill.md",
       "exists": true,
-      "char_count": 1245
+      "char_count": 2347
     },
     {
       "id": "mn-mm-map-selection",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 341247,
-    "avg_chars": 1706,
+    "total_chars": 343674,
+    "avg_chars": 1718,
     "domain": "multiplayer-network"
   }
 }

@@ -713,7 +713,7 @@
       "tags": [],
       "file": "game-live-ops/ops-da-funnel-analysis.md",
       "exists": true,
-      "char_count": 1452
+      "char_count": 2850
     },
     {
       "id": "ops-da-user-segmentation",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 287018,
-    "avg_chars": 1594,
+    "total_chars": 288416,
+    "avg_chars": 1602,
     "domain": "game-live-ops"
   }
 }

@@ -154,7 +154,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-state-tracking.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2800
     },
     {
       "id": "nd-bn-player-driven-story",
@@ -2117,7 +2117,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-ecology.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 2499
     },
     {
       "id": "nd-wb-worldbuilding-scope",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 293848,
-    "avg_chars": 1632,
+    "total_chars": 296438,
+    "avg_chars": 1646,
     "domain": "narrative-design"
   }
 }

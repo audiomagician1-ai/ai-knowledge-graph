@@ -27189,7 +27189,7 @@
       ],
       "file": "game-audio-music/game-audio-music-fmod-interactive-demo.md",
       "exists": true,
-      "char_count": 1526
+      "char_count": 2858
     },
     {
       "id": "game-audio-music-fmod-parameter-music",
@@ -35139,7 +35139,7 @@
       ],
       "file": "game-engine/audio-system/audio-snapshot.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2735
     },
     {
       "id": "audio-source-listener",
@@ -35214,7 +35214,7 @@
       ],
       "file": "game-engine/audio-system/sound-cue.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2915
     },
     {
       "id": "dialogue-system-audio",
@@ -35844,7 +35844,7 @@
       ],
       "file": "game-engine/input-system/input-context.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2615
     },
     {
       "id": "input-modifier",
@@ -36174,7 +36174,7 @@
       ],
       "file": "game-engine/performance-profiling/hitching-analysis.md",
       "exists": true,
-      "char_count": 1245
+      "char_count": 2852
     },
     {
       "id": "scalability-settings",
@@ -36399,7 +36399,7 @@
       ],
       "file": "game-engine/physics-engine/fluid-simulation.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2980
     },
     {
       "id": "physics-scene",
@@ -36489,7 +36489,7 @@
       ],
       "file": "game-engine/physics-engine/physics-material.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2696
     },
     {
       "id": "physics-query",
@@ -37704,7 +37704,7 @@
       ],
       "file": "game-engine/resource-management/texture-budget.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2423
     },
     {
       "id": "mesh-budget",
@@ -37719,7 +37719,7 @@
       ],
       "file": "game-engine/resource-management/mesh-budget.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2852
     },
     {
       "id": "patching-system",
@@ -38004,7 +38004,7 @@
       ],
       "file": "game-engine/scene-management/scene-debug.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 3276
     },
     {
       "id": "weather-system",
@@ -38139,7 +38139,7 @@
       ],
       "file": "game-engine/scripting-system/blueprint-system.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2998
     },
     {
       "id": "csharp-unity",
@@ -38229,7 +38229,7 @@
       ],
       "file": "game-engine/scripting-system/native-binding.md",
       "exists": true,
-      "char_count": 1245
+      "char_count": 3204
     },
     {
       "id": "visual-scripting-engine",
@@ -38709,7 +38709,7 @@
       ],
       "file": "game-engine/serialization/asset-metadata.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 2713
     },
     {
       "id": "config-system",
@@ -40039,7 +40039,7 @@
       "tags": [],
       "file": "game-live-ops/ops-da-funnel-analysis.md",
       "exists": true,
-      "char_count": 1452
+      "char_count": 2850
     },
     {
       "id": "ops-da-user-segmentation",
@@ -43913,7 +43913,7 @@
       "tags": [],
       "file": "game-publishing/pub-bb-brand-refresh.md",
       "exists": true,
-      "char_count": 1442
+      "char_count": 2622
     },
     {
       "id": "pub-bb-brand-ecosystem",
@@ -44628,7 +44628,7 @@
       "tags": [],
       "file": "game-publishing/pub-pr-cloud-gaming.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2967
     },
     {
       "id": "pub-pr-iap-rules",
@@ -59478,7 +59478,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-db-transaction-design.md",
       "exists": true,
-      "char_count": 1454
+      "char_count": 2779
     },
     {
       "id": "mn-db-graph-database",
@@ -60531,7 +60531,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-backfill.md",
       "exists": true,
-      "char_count": 1245
+      "char_count": 2347
     },
     {
       "id": "mn-mm-map-selection",
@@ -61623,7 +61623,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-state-tracking.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2800
     },
     {
       "id": "nd-bn-player-driven-story",
@@ -63586,7 +63586,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-ecology.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 2499
     },
     {
       "id": "nd-wb-worldbuilding-scope",
@@ -76558,7 +76558,7 @@
       ],
       "file": "software-engineering/build-systems/se-asset-pipeline.md",
       "exists": true,
-      "char_count": 1506
+      "char_count": 3484
     },
     {
       "id": "se-remote-build",
@@ -77083,7 +77083,7 @@
       ],
       "file": "software-engineering/code-review/se-perf-review.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2771
     },
     {
       "id": "se-tech-debt",
@@ -78133,7 +78133,7 @@
       ],
       "file": "software-engineering/memory-management/se-gc-optimization.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2695
     },
     {
       "id": "se-raii",
@@ -78178,7 +78178,7 @@
       ],
       "file": "software-engineering/memory-management/se-alignment.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2648
     },
     {
       "id": "se-memory-leak",
@@ -78223,7 +78223,7 @@
       ],
       "file": "software-engineering/memory-management/se-mem-intro.md",
       "exists": true,
-      "char_count": 1453
+      "char_count": 2322
     },
     {
       "id": "se-mem-debug",
