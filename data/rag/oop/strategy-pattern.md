@@ -9,85 +9,104 @@ is_milestone: false
 tags: ["设计模式"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 4
+quality_tier: "pending-rescore"
 quality_score: 41.1
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.414
-last_scored: "2026-03-22"
+last_scored: "2026-03-24"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # 策略模式
 
 ## 概述
 
-策略模式（Strategy Pattern）是AI工程（AI Engineering）中面向对象编程领域的重要概念。难度等级5/9（中高级）。
+策略模式（Strategy Pattern）是一种行为型设计模式，其核心定义是：将一组可互换的算法分别封装成独立的类，使它们可以在运行时动态替换，而调用方无需修改自身代码。GoF（四人帮）在1994年出版的《设计模式：可复用面向对象软件的基础》中将策略模式列为23种经典模式之一，正式奠定了其理论地位。
 
-掌握策略模式的核心概念和应用。
+策略模式解决的根本问题是"算法爆炸"——当一个类需要支持多种行为变体时，若用条件分支（if-else/switch）直接堆砌，随着变体增加，代码的圈复杂度（Cyclomatic Complexity）会呈线性增长，维护成本急剧上升。策略模式通过将每种算法提取到独立的策略类中，使得新增算法只需添加新类，无需改动已有代码，严格遵守开闭原则（Open/Closed Principle）。
 
-在知识体系中，策略模式建立在设计模式概述的基础之上，是理解命令模式、状态模式的关键前置知识。为什么策略模式如此重要？因为它在面向对象编程中起到承上启下的作用，连接基础概念与高级应用。
+在AI工程领域，策略模式尤为重要：模型选择策略、提示词构造策略、结果后处理策略往往需要在同一系统中并存且可配置切换，策略模式为这类多算法共存场景提供了清晰的架构骨架。
 
-## 核心知识点
+## 核心原理
 
-### 1. 掌握策略模式的核心概念
+### 三角色结构
 
-掌握策略模式的核心概念是策略模式(Strategy Pattern)的核心组成部分之一。在面向对象编程的实践中，掌握策略模式的核心概念决定了系统行为的关键特征。例如，当掌握策略模式的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握策略模式的核心概念需要结合AI工程的基本原理进行分析。
+策略模式由三个核心角色构成，缺一不可：
 
-### 2. 应用
+- **Strategy（抽象策略接口）**：定义所有具体策略必须实现的统一方法签名，例如 `execute(context: Context) -> Result`。
+- **ConcreteStrategy（具体策略类）**：实现抽象接口，封装具体算法逻辑。例如 `GreedySearchStrategy`、`BeamSearchStrategy`、`SamplingStrategy` 分别封装不同的文本生成搜索算法。
+- **Context（上下文类）**：持有一个策略对象的引用，将客户端请求委托给当前策略执行，自身不含算法逻辑。
 
-应用是策略模式(Strategy Pattern)的核心组成部分之一。在面向对象编程的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+三者之间的关系是：Context 依赖 Strategy 接口而非具体类，这是策略模式实现解耦的关键所在——依赖倒置原则（DIP）的直接体现。
 
+### 运行时切换机制
 
-### 关键原理分析
+Context 通常暴露一个 `set_strategy(strategy: Strategy)` 方法，允许在对象生命周期内随时替换策略。以Python为例：
 
-策略模式的核心在于掌握策略模式的核心概念和应用。从理论角度看，该概念涉及以下层面：
+```python
+class InferenceContext:
+    def __init__(self, strategy: SearchStrategy):
+        self._strategy = strategy
 
-1. **定义层**：明确策略模式的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解策略模式内部各要素的相互作用方式
-3. **应用层**：将策略模式的原理映射到AI工程的实际场景中
+    def set_strategy(self, strategy: SearchStrategy):
+        self._strategy = strategy
 
-思考题：如何判断策略模式的应用是否超出了其理论适用范围？
+    def run(self, input_ids):
+        return self._strategy.search(input_ids)
+```
 
-## 关键要点
+调用方可在同一个 `InferenceContext` 实例上先用 `GreedySearchStrategy` 快速生成草稿，再切换为 `BeamSearchStrategy(beam_width=5)` 进行精细搜索，整个切换过程对 Context 内部逻辑零侵入。
 
-1. **核心定义**：策略模式的本质是掌握策略模式的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握策略模式需要同时理解掌握策略模式的核心概念和应用等关键维度
-3. **先修关系**：扎实的设计模式概述基础对理解策略模式至关重要
-4. **进阶路径**：掌握后可继续深入命令模式等进阶主题
-5. **实践标准**：真正掌握策略模式的标志是能在具体场景中灵活运用并正确判断适用边界
+### 策略与参数的边界
+
+策略模式将**算法逻辑**与**算法参数**都封装在具体策略类内部。`BeamSearchStrategy` 持有 `beam_width`、`length_penalty` 等字段，这些参数在构造时注入（构造器注入或工厂方法创建），而不是暴露给 Context。这一设计使得策略对象本身是自洽的——同一个 Context 调用同一个方法，行为完全由当前策略决定，无需 Context 了解参数细节。
+
+### UML结构与依赖方向
+
+```
+Client → Context ——(持有)——→ <<interface>> Strategy
+                                    ↑         ↑         ↑
+                          ConcreteStrategyA  B         C
+```
+
+依赖箭头严格单向：Context 知道 Strategy 接口，但不知道任何 ConcreteStrategy；ConcreteStrategy 知道 Strategy 接口契约，但彼此完全独立。这是策略模式能够支持无限扩展的结构保证。
+
+## 实际应用
+
+### AI推理引擎的解码策略
+
+Hugging Face Transformers 库的 `GenerationMixin` 本质上就是策略模式的工业实现。`generate()` 方法根据参数（`do_sample=True/False`、`num_beams`）在运行时选择 `GreedySearchLogitsProcessor`、`BeamSearchScorer` 等策略对象。用户可以通过继承 `LogitsProcessor` 接口注入自定义解码策略，无需修改 Transformers 核心代码。
+
+### 电商价格计算
+
+一个经典教学案例：购物车 `ShoppingCart` 作为 Context，持有 `DiscountStrategy` 接口引用。具体策略包括 `NoDiscountStrategy`（无折扣）、`PercentageDiscountStrategy(rate=0.8)`（八折）、`BuyTwoGetOneFreeStrategy`（买二赠一）。结算时调用 `cart.calculate()` 即可，促销活动切换只需替换策略对象，不改动 `ShoppingCart` 类。
+
+### RAG系统的检索策略
+
+在检索增强生成（RAG）系统中，`Retriever` 可持有一个 `RetrievalStrategy` 接口，具体策略包括 `BM25Strategy`（基于词频统计）、`DenseEmbeddingStrategy`（基于向量相似度）、`HybridStrategy(alpha=0.5)`（混合检索，权重可调）。系统可根据查询类型在运行时切换策略，事实性问题走 BM25，语义推理问题走向量检索。
 
 ## 常见误区
 
-1. **混淆概念边界**：将策略模式与面向对象编程中其他相近概念混为一谈。例如，掌握策略模式的核心概念的适用条件与其他应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解设计模式概述就学习策略模式，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：策略模式的复杂度为5/9，初学者容易忽略其中的细微但关键的区别**
+### 误区一：把策略模式当成简单的函数指针替换
 
-## 知识衔接
+初学者常认为"把函数作为参数传入"就等同于策略模式。实际上，策略模式要求策略是**对象**而非裸函数——策略对象可以持有状态（如 `BeamSearchStrategy` 维护 beam 候选列表）、可以实现多个相关方法（初始化、执行、收尾）、可以参与依赖注入容器管理。Python中用 `Callable` 传参只能处理无状态的简单算法替换，无法承载复杂策略的完整生命周期。
 
-### 先修知识
-先修知识包括：
-- **设计模式概述** — 为策略模式提供了必要的概念基础
+### 误区二：Context 直接持有所有策略实例
 
-### 后续学习
-掌握策略模式后可继续学习：
-- **命令模式** — 在策略模式基础上进一步拓展
-- **状态模式** — 在策略模式基础上进一步拓展
+错误做法是在 Context 构造时同时创建所有可能的策略对象备用。这违反了策略模式的意图——Context 应该只持有**当前活跃策略**的引用，策略的创建和选择应由工厂或客户端负责。若 Context 知晓全部 ConcreteStrategy 类型，则 Context 对具体策略产生了直接依赖，新增策略时仍需修改 Context，策略模式的扩展优势荡然无存。
 
-## 学习建议
+### 误区三：混淆策略模式与模板方法模式
 
-预计学习时间：3-5小时。建议采用以下策略：
+两者都处理算法变体问题，但策略模式用**组合**（Context 包含 Strategy 对象），模板方法模式用**继承**（子类重写父类中的抽象步骤）。策略模式在运行时可以动态切换算法，而模板方法的变体在编译时通过类继承确定，无法运行时替换。在AI工程中需要根据请求参数动态选择算法的场景，必须使用策略模式而非模板方法。
 
-- **主动回忆**：学完后不看笔记复述策略模式的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将策略模式与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释策略模式，检验理解深度
+## 知识关联
 
-## 延伸阅读
+**与设计模式概述的关系**：策略模式是理解"面向接口编程"和"组合优于继承"这两条设计原则的最直观载体。在学完设计模式基本原则后，策略模式是第一个将这两条原则同时落地的具体模式，代码结构最简洁，适合作为行为型模式的入门案例。
 
-- 相关教科书中关于面向对象编程的章节可作为深入参考
-- Wikipedia: [Strategy Pattern](https://en.wikipedia.org/wiki/strategy_pattern) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Strategy Pattern" 可找到配套视频教程
+**通向命令模式**：命令模式将"操作请求"封装为对象，与策略模式将"算法"封装为对象在结构上相似（都有 `execute()` 方法），但命令模式额外支持操作的撤销（`undo()`）、队列化和日志记录，而策略模式的策略对象通常是无副作用的纯算法。区分二者的关键问题是：封装的目的是**替换算法**（策略模式）还是**延迟执行与撤销**（命令模式）。
+
+**通向状态模式**：状态模式与策略模式的UML结构几乎完全相同——都有 Context 持有一个接口引用，都支持运行时替换。区别在于**谁来触发切换**：策略模式的切换由外部客户端主动调用 `set_strategy()` 完成，而状态模式的切换由状态对象自身或 Context 在特定条件下自动触发，代表对象生命周期中的状态流转逻辑。

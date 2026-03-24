@@ -9,85 +9,125 @@ is_milestone: true
 tags: []
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 4
+quality_tier: "pending-rescore"
 quality_score: 41.6
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.4
-last_scored: "2026-03-22"
+last_scored: "2026-03-24"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # 单元测试
 
 ## 概述
 
-单元测试（Qa At Unit Testing）是game-qa（Game QA Testing）中自动化测试领域的核心里程碑概念。难度等级2/9（基础级）。
+单元测试（Unit Testing）是对程序中最小可测试单元——通常是单个函数、方法或类——进行独立验证的测试方式。在游戏开发中，"单元"可以是一个伤害计算函数、一条寻路算法逻辑、或一个角色属性的状态机转换。单元测试的核心特征是**隔离性**：每个测试用例只针对一段逻辑，不依赖数据库、网络连接、渲染管线或其他外部系统。
 
-游戏逻辑单元测试的框架选择与编写规范。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+单元测试的概念由Kent Beck在1994年为Smalltalk语言开发SUnit框架时系统化，后来延伸为xUnit测试框架家族。在游戏领域，由于引擎的特殊性（如Unity的MonoBehaviour生命周期、Unreal的UObject系统），单元测试的落地比一般软件工程更有挑战性，但对于游戏逻辑层（战斗公式、经济系统、技能树计算）同样适用。
 
-在知识体系中，单元测试建立在测试金字塔的基础之上，是理解集成测试、自动化回归的关键前置知识。为什么单元测试如此重要？因为它在自动化测试中起到承上启下的作用，连接基础概念与高级应用。
+在测试金字塔模型中，单元测试位于底层，应当占总测试数量的约70%，执行时间通常要求在毫秒级别（单条测试 < 100ms）。单元测试能在代码提交阶段即时发现逻辑错误，大幅降低后期集成阶段的修复成本，这一成本比在系统测试阶段发现同样问题低10到100倍。
 
-## 核心知识点
+---
 
-### 1. 游戏逻辑单元测试的框架选择
+## 核心原理
 
-游戏逻辑单元测试的框架选择是单元测试(Qa At Unit Testing)的核心组成部分之一。在自动化测试的实践中，游戏逻辑单元测试的框架选择决定了系统行为的关键特征。例如，当游戏逻辑单元测试的框架选择参数或条件发生变化时，整体表现会产生显著差异。深入理解游戏逻辑单元测试的框架选择需要结合game-qa的基本原理进行分析。
+### 1. AAA 模式：单元测试的标准结构
 
-### 2. 编写规范
+游戏单元测试应严格遵循 **Arrange-Act-Assert（准备-执行-断言）** 三段式结构：
 
-编写规范是单元测试(Qa At Unit Testing)的核心组成部分之一。在自动化测试的实践中，编写规范决定了系统行为的关键特征。例如，当编写规范参数或条件发生变化时，整体表现会产生显著差异。深入理解编写规范需要结合game-qa的基本原理进行分析。
+- **Arrange（准备）**：创建测试所需的对象和输入数据，例如初始化一个角色的攻击力为100、防御穿透率为20%。
+- **Act（执行）**：调用被测函数，例如执行 `CalculateDamage(attacker, defender)`。
+- **Assert（断言）**：验证输出结果与预期是否一致，例如断言最终伤害值为80。
 
+每个测试方法应只包含**一个Assert逻辑目标**（Single Assertion Principle），如果一个函数有多个分支逻辑，应拆分为多条独立测试用例。
 
-### 关键原理分析
+### 2. 游戏常用测试框架选择
 
-单元测试的核心在于游戏逻辑单元测试的框架选择与编写规范。从理论角度看，该概念涉及以下层面：
+不同引擎生态对应不同的单元测试框架，选型直接影响编写效率：
 
-1. **定义层**：明确单元测试的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解单元测试内部各要素的相互作用方式
-3. **应用层**：将单元测试的原理映射到game-qa的实际场景中
+| 引擎/语言 | 推荐框架 | 特点 |
+|---|---|---|
+| Unity (C#) | NUnit + Unity Test Runner | 内置于Package Manager，支持Play Mode与Edit Mode双模式 |
+| Unreal (C++) | Automation Testing Framework | UE自带，通过`ADD_LATENT_AUTOMATION_COMMAND`支持异步 |
+| 纯C++游戏逻辑 | Google Test (GTest) | 提供`EXPECT_EQ`、`ASSERT_NEAR`等丰富断言宏 |
+| Python脚本逻辑 | pytest | 支持参数化测试，适合配置表数值验证 |
 
-思考题：如何判断单元测试的应用是否超出了其理论适用范围？
+Unity中，Edit Mode测试不启动场景，执行速度快，适合测试纯逻辑函数；Play Mode测试会运行完整引擎，适合含协程的逻辑但速度较慢，**优先使用Edit Mode**覆盖纯逻辑层。
 
-## 关键要点
+### 3. 依赖隔离：Mock 与 Stub 的使用
 
-1. **核心定义**：单元测试的本质是游戏逻辑单元测试的框架选择与编写规范，这是理解整个概念的出发点
-2. **多维理解**：掌握单元测试需要同时理解游戏逻辑单元测试的框架选择和编写规范等关键维度
-3. **先修关系**：扎实的测试金字塔基础对理解单元测试至关重要
-4. **进阶路径**：掌握后可继续深入集成测试等进阶主题
-5. **实践标准**：真正掌握单元测试的标志是能在具体场景中灵活运用并正确判断适用边界
+游戏逻辑中常有对外部系统的依赖，例如伤害计算函数可能调用`BuffManager.GetBuffMultiplier()`，而`BuffManager`依赖游戏运行时状态。单元测试要求将这些依赖替换为**测试替身（Test Double）**：
+
+- **Stub**：返回预设固定值，例如令`MockBuffManager.GetBuffMultiplier()`始终返回`1.5f`，不执行真实逻辑。
+- **Mock**：不仅返回预设值，还能验证某方法是否被调用了指定次数，例如验证伤害计算后`EventBus.OnDamageDealt`被调用恰好1次。
+
+在C#中可使用**Moq**库或NSubstitute实现Mock对象；在GTest中使用**Google Mock（GMock）**并通过`EXPECT_CALL`宏定义调用预期。依赖注入（Dependency Injection）是实现可Mock代码的前提——将`BuffManager`通过构造函数传入，而非在函数内部`GetInstance()`获取单例。
+
+### 4. 游戏数值测试的精度控制
+
+游戏中大量使用浮点数，断言时不能使用精确等值比较（`==`），而应使用**容差断言**：
+
+- GTest：`EXPECT_NEAR(actual, expected, 1e-5f)`
+- NUnit：`Assert.AreEqual(expected, actual, delta: 0.001f)`
+- pytest：`assert actual == pytest.approx(expected, rel=1e-4)`
+
+对于概率性逻辑（如暴击率30%），不应在单元测试中直接测试随机结果，而是注入一个**可控的随机数生成器Mock**，强制输入边界值0.0和1.0来分别测试暴击与未暴击两条分支。
+
+---
+
+## 实际应用
+
+**案例：测试RPG战斗伤害公式**
+
+假设伤害公式为：`伤害 = 攻击力 × (100 / (100 + 防御力))`，攻击力100、防御力50时，期望伤害为66.67。
+
+```csharp
+[Test]
+public void CalculateDamage_WithAtkAndDef_ReturnsCorrectValue()
+{
+    // Arrange
+    var attacker = new CharacterStats { Attack = 100 };
+    var defender = new CharacterStats { Defense = 50 };
+    var calculator = new DamageCalculator();
+
+    // Act
+    float result = calculator.Calculate(attacker, defender);
+
+    // Assert
+    Assert.AreEqual(66.67f, result, delta: 0.01f);
+}
+```
+
+**案例：使用参数化测试覆盖配置表边界值**
+
+游戏中技能配置表有数百条记录，pytest的`@pytest.mark.parametrize`可读取CSV配置表，自动生成数百条测试用例，验证所有技能冷却时间不为0、伤害系数不为负数，无需手动编写每条用例。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将单元测试与自动化测试中其他相近概念混为一谈。例如，游戏逻辑单元测试的框架选择的适用条件与其他编写规范概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解测试金字塔就学习单元测试，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：单元测试虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：测试MonoBehaviour内的逻辑而不拆分**
 
-## 知识衔接
+很多开发者把伤害计算直接写在`PlayerController : MonoBehaviour`的`Update`方法里，导致单元测试必须启动完整场景。正确做法是将纯逻辑抽离到无引擎依赖的普通C#类（Plain Old C# Object，POCO），MonoBehaviour只做调用转发，这样Edit Mode测试即可覆盖全部逻辑。
 
-### 先修知识
-先修知识包括：
-- **测试金字塔** — 为单元测试提供了必要的概念基础
+**误区二：一个测试方法验证多个行为**
 
-### 后续学习
-掌握单元测试后可继续学习：
-- **集成测试** — 在单元测试基础上进一步拓展
-- **自动化回归** — 在单元测试基础上进一步拓展
+例如一个测试方法同时验证伤害值计算正确、触发事件被调用、以及角色HP扣减正确——这违反单一职责原则。当测试失败时，无法直接定位是哪一个行为出问题，应拆分为三条独立测试方法，分别命名为 `CalculateDamage_Returns66_WhenAtk100Def50`、`CalculateDamage_FiresEvent_Once` 和 `TakeDamage_ReducesHP_Correctly`。
 
-## 学习建议
+**误区三：测试私有方法**
 
-预计学习时间：30-60分钟。建议采用以下策略：
+有开发者为了提高覆盖率，使用反射强行测试私有方法。单元测试应通过**公共接口**来验证行为，若私有逻辑需要被直接测试，说明该逻辑应被重构为独立的可测试类，而非通过反射绕过访问控制。
 
-- **主动回忆**：学完后不看笔记复述单元测试的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将单元测试与game-qa中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释单元测试，检验理解深度
+---
 
-## 延伸阅读
+## 知识关联
 
-- 相关教科书中关于自动化测试的章节可作为深入参考
-- Wikipedia: [Qa At Unit Testing](https://en.wikipedia.org/wiki/qa_at_unit_testing) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Qa At Unit Testing" 可找到配套视频教程
+**前置知识**：测试金字塔定义了单元测试在整体测试体系中的位置和数量占比（约70%），理解金字塔有助于判断哪些逻辑值得写单元测试、哪些应留给上层测试。
+
+**后续概念——集成测试**：单元测试只验证隔离逻辑，当多个通过单元测试的模块组合在一起时，它们的交互正确性需要集成测试来保证。例如`DamageCalculator`与`BuffManager`协同工作的正确性，不在单元测试覆盖范围内。
+
+**后续概念——自动化回归**：稳定的单元测试集合是自动化回归流水线的执行主体。在CI/CD流程（如Jenkins、GitHub Actions）中，每次代码提交触发单元测试全量执行，执行时间应控制在3分钟以内以确保快速反馈，这一时间目标的达成依赖于单元测试的高速度和低耦合特性。

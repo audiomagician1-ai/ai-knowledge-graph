@@ -9,83 +9,101 @@ is_milestone: false
 tags: ["基础"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 5
+quality_tier: "pending-rescore"
 quality_score: 41.7
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.419
-last_scored: "2026-03-22"
+last_scored: "2026-03-24"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # be动词
 
 ## 概述
 
-be动词（Be Verb）是英语（English Language）中基础语法领域的重要概念。难度等级1/9（入门级）。
+be动词是英语中唯一一组专门用于表示"存在状态"或"身份属性"的系动词，其现代英语形式共有8种：be、am、is、are、was、were、being、been。在所有英语动词中，be动词是变形最多、用法最特殊的一个，它的词根可追溯至古英语中三个不同的词根（beon、wesan、eom），这正是为什么am/is/are/was/were看起来毫无规律可循——它们其实来自不同的词族，经过千年演变才合并为一套系统。
 
-am/is/are/was/were的用法。
+be动词在句子中充当的角色与行为动词（如run、eat）完全不同：它不表达任何动作，而是在主语和表语之间建立等号关系，句型结构固定为**主语 + be动词 + 表语**。删除be动词后，"I happy"或"She teacher"在英语中是不合法的句子，但在中文里却完全可以表达同样意思——这正是中文母语学习者最容易漏掉be动词的根本原因。
 
-在知识体系中，be动词建立在基本语序的基础之上，是理解助动词have/do、there be句型、主谓一致、被动语态的关键前置知识。为什么be动词如此重要？因为它在基础语法中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### 人称与数的变化规则
 
-### 1. am/is/are/was/were的用法
+be动词的现在时有三种形式，分配规则如下：
 
-am/is/are/was/were的用法是be动词(Be Verb)的核心组成部分之一。在基础语法的实践中，am/is/are/was/were的用法决定了系统行为的关键特征。例如，当am/is/are/was/were的用法参数或条件发生变化时，整体表现会产生显著差异。深入理解am/is/are/was/were的用法需要结合英语的基本原理进行分析。
+| 主语 | 现在时 | 过去时 |
+|------|--------|--------|
+| I | am | was |
+| He / She / It（第三人称单数） | is | was |
+| You / We / They（复数或第二人称） | are | were |
 
+记忆口诀：**I用am，You用are，其余第三人称单数用is；过去时只有was和were两个，I/He/She/It用was，其余用were。**
 
-### 关键原理分析
+注意：第二人称"you"无论指一个人还是多人，都永远使用are/were，绝无例外。
 
-be动词的核心在于am/is/are/was/were的用法。从理论角度看，该概念涉及以下层面：
+### 否定句与疑问句的构成
 
-1. **定义层**：明确be动词的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解be动词内部各要素的相互作用方式
-3. **应用层**：将be动词的原理映射到英语的实际场景中
+be动词的否定句直接在be动词后加not，不需要借助助动词do：
+- 肯定：**She is a doctor.**
+- 否定：**She is not（isn't）a doctor.**（错误写法：~~She does not is a doctor.~~）
 
-思考题：如何判断be动词的应用是否超出了其理论适用范围？
+一般疑问句将be动词提到句首：
+- 陈述：**They are ready.**
+- 疑问：**Are they ready?**（错误写法：~~Do they are ready?~~）
 
-## 关键要点
+这与行为动词（用do/does提问）的规则截然不同，是初学者最常混淆的语法点。
 
-1. **核心定义**：be动词的本质是am/is/are/was/were的用法，这是理解整个概念的出发点
-2. **多维理解**：掌握be动词需要同时理解am/is/are/was/were的用法等关键维度
-3. **先修关系**：扎实的基本语序基础对理解be动词至关重要
-4. **进阶路径**：掌握后可继续深入助动词have/do等进阶主题
-5. **实践标准**：真正掌握be动词的标志是能在具体场景中灵活运用并正确判断适用边界
+### 缩写形式
+
+日常口语和非正式书写中，be动词常与主语或not缩写：
+- I am → **I'm**；She is → **She's**；They are → **They're**
+- is not → **isn't**；are not → **aren't**；was not → **wasn't**；were not → **weren't**
+
+唯一的例外：**am not** 没有标准缩写形式（"amn't"不被标准英语接受），疑问式中只能用 **aren't I?** 这一特殊形式。
+
+## 实际应用
+
+**描述身份与职业：**
+> My father **is** an engineer. （父亲是工程师）
+> We **are** students. （我们是学生）
+
+**描述状态与特征：**
+> The soup **is** hot. （汤是热的）
+> I **am** tired after the run. （跑步后我很累）
+
+**描述时间、地点、天气：**
+> It **is** Monday today. （今天是星期一）
+> The keys **are** on the table. （钥匙在桌上）
+> It **was** sunny yesterday. （昨天天气晴朗）
+
+**过去时表达过去状态：**
+> She **was** only 5 years old in 2010. （2010年她只有5岁）
+> The streets **were** empty at midnight. （午夜街道空无一人）
+
+**错误示例对比：**
+| 错误 | 正确 |
+|------|------|
+| He are my friend. | He **is** my friend. |
+| I am 12 years old yesterday. | I **was** 12 years old yesterday. |
+| Are you was there? | **Were** you there? |
 
 ## 常见误区
 
-1. **混淆概念边界**：将be动词与基础语法中其他相近概念混为一谈。例如，am/is/are/was/were的用法的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解基本语序就学习be动词，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：be动词虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：忘记写be动词**
+受中文语法影响，学生常写出"She very beautiful."或"I a teacher."。英语中形容词或名词作表语时，be动词不可省略，必须写成"She **is** very beautiful."和"I **am** a teacher."。
 
-## 知识衔接
+**误区二：am/is/are与was/were混用**
+be动词的时态切换是固定的。只要句子描述的是**现在**的状态，必须用am/is/are；描述的是**过去**的状态，必须换用was/were。常见错误："Yesterday I **am** sick."应改为"Yesterday I **was** sick."。记住：yesterday、last year等过去时间状语出现时，be动词必须变为过去式。
 
-### 先修知识
-先修知识包括：
-- **基本语序** — 为be动词提供了必要的概念基础
+**误区三：在be动词句中多加do/does**
+学生在造否定句或疑问句时，将行为动词规则套用到be动词上，写出"Does she is your sister?"或"She doesn't is happy."。be动词的句子绝对不需要do，否定加not、疑问提前移，规则完全独立于do助动词体系。
 
-### 后续学习
-掌握be动词后可继续学习：
-- **助动词have/do** — 在be动词基础上进一步拓展
-- **there be句型** — 在be动词基础上进一步拓展
-- **主谓一致** — 在be动词基础上进一步拓展
-- **被动语态** — 在be动词基础上进一步拓展
+## 知识关联
 
-## 学习建议
+学习be动词需要以**基本语序**（主谓宾结构）为基础——理解了主语和谓语的位置，才能准确判断be动词插入句子的位置以及提问时移到句首的操作。
 
-预计学习时间：15-30分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述be动词的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将be动词与英语中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释be动词，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于基础语法的章节可作为深入参考
-- Wikipedia: [Be Verb](https://en.wikipedia.org/wiki/be_verb) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Be Verb" 可找到配套视频教程
+be动词掌握后，直接为以下概念铺路：**助动词have/do**的学习会因对比be动词的否定/疑问规则而更清晰；**there be句型**（There is a cat. / There are two cats.）本质上是be动词的倒装变体，is/are的单复数选择取决于句中真正的主语；**主谓一致**规则中最核心的is/are选择训练，全部建立在对be动词人称变化的熟练程度上；而**被动语态**（am/is/are + 过去分词）则是be动词最重要的高级应用，被动语态的所有时态形式都必须以be动词的各种变形为骨架。

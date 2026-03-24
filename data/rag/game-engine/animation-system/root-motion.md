@@ -9,83 +9,76 @@ is_milestone: false
 tags: ["移动"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 41.4
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.407
-last_scored: "2026-03-22"
+last_scored: "2026-03-24"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
-# Root Motion
+# Root Motion（根骨骼驱动移动）
 
 ## 概述
 
-Root Motion（Root Motion）是游戏引擎（Game Engine）中动画系统领域的重要概念。难度等级2/9（基础级）。
+Root Motion 是动画系统中的一种技术，允许角色的世界空间位置和旋转直接由动画片段中根骨骼（Root Bone）的运动数据来驱动，而不是由游戏逻辑代码单独控制。例如在一段跑步动画中，角色的脚步与地面接触的相对位移被烘焙进骨骼数据，播放时引擎读取这段位移并真实更新角色的 Transform，使动画表现与物理世界严格同步。
 
-根骨骼驱动移动与旋转。
+这项技术最初在主机游戏开发中普及，Unity 在 2010 年发布的 Mecanim 动画系统（Unity 4.x）将 Root Motion 作为一等公民纳入引擎工作流，Unreal Engine 的 Root Motion From Montage 功能也在 UE4 时代得到完善。在此之前，开发者通常需要手动在代码中偏移角色位置，导致动画滑步（Foot Sliding）问题极为普遍。
 
-在知识体系中，Root Motion建立在动画片段的基础之上，是理解可进入更高级主题的关键前置知识。为什么Root Motion如此重要？因为它在动画系统中起到承上启下的作用，连接基础概念与高级应用。
+Root Motion 对于近身格斗、翻滚、攀爬等需要精确空间位移的动作至关重要。若一个格斗技能动画内置了向前冲刺 1.2 米的位移曲线，启用 Root Motion 后，角色在游戏中实际移动的距离和速度与动画师的设计完全一致，无需开发者猜测并硬编码速度值。
 
-## 核心知识点
+## 核心原理
 
-### 1. 根骨骼驱动移动
+### 根骨骼与位移提取
 
-根骨骼驱动移动是Root Motion(Root Motion)的核心组成部分之一。在动画系统的实践中，根骨骼驱动移动决定了系统行为的关键特征。例如，当根骨骼驱动移动参数或条件发生变化时，整体表现会产生显著差异。深入理解根骨骼驱动移动需要结合游戏引擎的基本原理进行分析。
+骨骼层级的最顶端节点称为根骨骼（通常命名为 `root` 或 `Hips`），所有其他骨骼都是其子节点。动画片段中每一帧都存储了根骨骼相对于上一帧的增量位移（Delta Position）和增量旋转（Delta Rotation）。引擎在每帧 Tick 时提取这个增量值：
 
-### 2. 旋转
+> **Delta Position = RootPos(frame N) − RootPos(frame N−1)**
 
-旋转是Root Motion(Root Motion)的核心组成部分之一。在动画系统的实践中，旋转决定了系统行为的关键特征。例如，当旋转参数或条件发生变化时，整体表现会产生显著差异。深入理解旋转需要结合游戏引擎的基本原理进行分析。
+引擎将此增量应用到角色的世界坐标，同时将根骨骼本身在骨骼空间内归零（保持在原点），确保动画循环时角色不会因骨骼积累偏移而产生视觉跳变。
 
+### In-Place 动画 vs Root Motion 动画
 
-### 关键原理分析
+In-Place（原地）动画的根骨骼在整个片段中 XZ 平面坐标不变，移动完全由代码中的 `CharacterController.Move()` 或 `Rigidbody.velocity` 驱动。Root Motion 动画则将这段位移烘焙在骨骼轨道上，二者不可混用——若对一段 Root Motion 动画同时叠加代码速度，角色会以两倍速移动。区分这两种类型是使用 Root Motion 的前提。
 
-Root Motion的核心在于根骨骼驱动移动与旋转。从理论角度看，该概念涉及以下层面：
+### 旋转轴的处理
 
-1. **定义层**：明确Root Motion的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Root Motion内部各要素的相互作用方式
-3. **应用层**：将Root Motion的原理映射到游戏引擎的实际场景中
+Root Motion 可以独立控制三个平移轴（X、Y、Z）和旋转轴（Y 轴偏航最常用）。Unity 的 Animator 组件提供了 `applyRootMotion` 布尔值，以及 `OnAnimatorMove()` 回调，开发者可在该回调中仅应用 Y 轴旋转（`animator.deltaRotation`）而忽略 Y 轴位移，满足平台游戏中角色跳跃时动画自带上升曲线但需物理引擎接管的需求。Unreal Engine 则通过 Root Motion Settings 面板的 **Force Root Lock** 与 **No Root Motion Extraction** 模式实现类似的细粒度控制。
 
-思考题：如何判断Root Motion的应用是否超出了其理论适用范围？
+### 循环动画的首尾对齐
 
-## 关键要点
+一段 60 帧的跑步循环，若首帧根骨骼位于 (0,0,0)，尾帧位于 (0,0,1.5m)，则循环播放时引擎每次循环累积 1.5m 的位移，角色持续前进。动画师必须保证循环片段的骨骼姿态首尾匹配，但根骨骼的位移不必归零——正是这段不归零的净位移构成了 Root Motion 的每循环步进量。
 
-1. **核心定义**：Root Motion的本质是根骨骼驱动移动与旋转，这是理解整个概念的出发点
-2. **多维理解**：掌握Root Motion需要同时理解根骨骼驱动移动和旋转等关键维度
-3. **先修关系**：扎实的动画片段基础对理解Root Motion至关重要
-4. **进阶路径**：可广泛应用于游戏引擎各方面
-5. **实践标准**：真正掌握Root Motion的标志是能在具体场景中灵活运用并正确判断适用边界
+## 实际应用
+
+**格斗技能位移**：一个下劈攻击动画包含向前 0.8m 的冲步位移，启用 Root Motion 后角色在碰撞到墙壁时可被物理层自动阻挡，而 In-Place 方案需要开发者额外射线检测并手动停止位移。
+
+**翻滚与闪避**：翻滚动画通常在第 12 帧到第 28 帧之间有剧烈的位移曲线，开发者可在 `OnAnimatorMove()` 中将该位移乘以一个 `dashMultiplier` 系数，在不修改动画源文件的情况下允许玩家升级获得更长的翻滚距离。
+
+**过场动画与布景交互**：角色爬梯子、翻越障碍物的动画依赖 Root Motion 与特定位置的环境对齐（Warping），Unreal Engine 5 的 **Motion Warping** 系统基于 Root Motion 提取，可将动画的根骨骼轨迹实时扭曲以对齐目标位置，无需为每个障碍高度单独制作动画。
+
+**网络多人游戏**：服务器端每帧同步 `deltaPosition` 而非绝对坐标，减少带宽；客户端对 Root Motion 进行预测，在延迟 100ms 以内的情况下动画与位置的一致性优于纯代码驱动方案。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Root Motion与动画系统中其他相近概念混为一谈。例如，根骨骼驱动移动的适用条件与其他旋转概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解动画片段就学习Root Motion，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Root Motion虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：Root Motion 会自动处理所有碰撞**
 
-## 知识衔接
+Root Motion 只负责将动画中的位移数据传递给角色控制器，碰撞检测仍需 `CharacterController` 或 `Rigidbody` 正常工作。若将角色的 `CharacterController` 禁用后启用 Root Motion，角色会穿透墙壁，因为位移被直接写入 Transform 而绕过物理层。
 
-### 先修知识
-先修知识包括：
-- **动画片段** — 为Root Motion提供了必要的概念基础
+**误区二：Root Motion 动画必须重新导出才能修改速度**
 
-### 后续学习
-掌握Root Motion后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索游戏引擎其他分支。
+可以在 Unity 的 Animator State 中勾选 **Multiply by Speed** 或在 Unreal 的蒙太奇中缩放播放速率，Root Motion 的提取量与播放速率成正比，1.5 倍速播放即产生 1.5 倍的每帧增量位移，无需返回 DCC 工具修改动画。
 
-## 学习建议
+**误区三：Root Motion 适用于所有移动类型**
 
-预计学习时间：30-60分钟。建议采用以下策略：
+对于需要响应即时输入的持续跑步、游泳等状态，In-Place + 代码速度控制通常更灵活，因为代码速度可以在任意帧被修改。Root Motion 最适合时长确定、位移固定的一次性动作（如技能、交互），而非每帧都需要速度可变的循环状态。
 
-- **主动回忆**：学完后不看笔记复述Root Motion的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Root Motion与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Root Motion，检验理解深度
+## 知识关联
 
-## 延伸阅读
+Root Motion 直接依赖**动画片段**（Animation Clip）的正确配置：片段必须在导入设置中标记根骨骼轨道为"Bake Into Pose"的对立选项——即不将位移烘焙到姿态，而是保留为可提取的 Root Motion 轨道。在 Unity 中，这对应 Animation Import Settings 里 **Root Transform Position (XZ)** 设为 "Original"。
 
-- 相关教科书中关于动画系统的章节可作为深入参考
-- Wikipedia: [Root Motion](https://en.wikipedia.org/wiki/root_motion) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Root Motion" 可找到配套视频教程
+在更高阶的动画系统中，Root Motion 是**动画状态机**过渡混合、**Inverse Kinematics（IK）** 地面对齐，以及 **Motion Matching** 技术的基础数据来源；Motion Matching 系统通过对比候选帧的根骨骼未来轨迹与角色期望轨迹来选帧，没有正确提取的 Root Motion 数据，该系统无法工作。
