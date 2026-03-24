@@ -639,10 +639,20 @@
     "builder-pattern",
     "sfx-am-bus-routing",
     "gp-mp-wbs",
-    "gp-mp-tracking"
+    "gp-mp-tracking",
+    "nd-qd-quest-structure",
+    "nd-nt-ink-scripting",
+    "3da-mesh-cleanup",
+    "3da-hs-curved-surface",
+    "3da-uv-overlap",
+    "3da-env-worldbuilding",
+    "3da-prop-sci-fi",
+    "3da-pipe-documentation",
+    "solid-principles",
+    "db-basics"
   ],
   "errors": [],
-  "total_upgraded": 640,
+  "total_upgraded": 650,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T06:36:32.194396"
+  "last_updated": "2026-03-25T06:46:20.962197"
 }
