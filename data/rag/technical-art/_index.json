@@ -1138,7 +1138,7 @@
       ],
       "file": "technical-art/ta-texture-budget.md",
       "exists": true,
-      "char_count": 2668
+      "char_count": 2578
     },
     {
       "id": "ta-texture-streaming",
@@ -2703,7 +2703,7 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 288681,
+    "total_chars": 288591,
     "avg_chars": 1603,
     "domain": "technical-art"
   }

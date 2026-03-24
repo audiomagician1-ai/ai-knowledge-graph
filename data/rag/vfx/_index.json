@@ -553,7 +553,7 @@
       ],
       "file": "vfx/vfx-fb-explosion.md",
       "exists": true,
-      "char_count": 2437
+      "char_count": 2564
     },
     {
       "id": "vfx-fb-emissive",
@@ -2703,7 +2703,7 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 289111,
+    "total_chars": 289238,
     "avg_chars": 1606,
     "domain": "vfx"
   }

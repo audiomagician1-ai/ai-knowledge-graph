@@ -1558,7 +1558,7 @@
       ],
       "file": "3d-art/3da-org-hair-modeling.md",
       "exists": true,
-      "char_count": 2580
+      "char_count": 2525
     },
     {
       "id": "3da-org-game-ready-char",
@@ -2143,7 +2143,7 @@
       ],
       "file": "3d-art/3da-retopo-clothing.md",
       "exists": true,
-      "char_count": 2676
+      "char_count": 2495
     },
     {
       "id": "3da-retopo-body-flow",
@@ -2473,7 +2473,7 @@
       ],
       "file": "3d-art/3da-rig-facial.md",
       "exists": true,
-      "char_count": 2923
+      "char_count": 2672
     },
     {
       "id": "3da-rig-skeleton",
@@ -2923,7 +2923,7 @@
       ],
       "file": "3d-art/3da-tex-weathering.md",
       "exists": true,
-      "char_count": 2547
+      "char_count": 2709
     },
     {
       "id": "3da-tex-tiling-material",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 420828,
-    "avg_chars": 1862,
+    "total_chars": 420503,
+    "avg_chars": 1860,
     "domain": "3d-art"
   }
 }

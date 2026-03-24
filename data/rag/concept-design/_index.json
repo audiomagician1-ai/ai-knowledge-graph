@@ -2938,7 +2938,7 @@
       ],
       "file": "concept-design/cd-style-reference-board.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2245
     },
     {
       "id": "cd-style-intro",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 373734,
-    "avg_chars": 1698,
+    "total_chars": 374695,
+    "avg_chars": 1703,
     "domain": "concept-design"
   }
 }

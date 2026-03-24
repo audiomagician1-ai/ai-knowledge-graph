@@ -73,7 +73,7 @@
       ],
       "file": "psychology/behavioral-psychology/stimulus-discrimination.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2370
     },
     {
       "id": "aversion-therapy",
@@ -643,7 +643,7 @@
       ],
       "file": "psychology/biological-psychology/genetics-behavior.md",
       "exists": true,
-      "char_count": 1515
+      "char_count": 2328
     },
     {
       "id": "hunger-eating",
@@ -1813,7 +1813,7 @@
       ],
       "file": "psychology/personality-psychology/personality-assessment.md",
       "exists": true,
-      "char_count": 1515
+      "char_count": 2871
     },
     {
       "id": "grit",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 360303,
-    "avg_chars": 1968,
+    "total_chars": 363601,
+    "avg_chars": 1986,
     "domain": "psychology"
   }
 }

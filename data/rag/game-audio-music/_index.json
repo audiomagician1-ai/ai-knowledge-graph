@@ -2113,7 +2113,7 @@
       ],
       "file": "game-audio-music/game-audio-music-world-music.md",
       "exists": true,
-      "char_count": 1503
+      "char_count": 2833
     },
     {
       "id": "game-audio-music-asian-game-music",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 290032,
-    "avg_chars": 1611,
+    "total_chars": 291362,
+    "avg_chars": 1618,
     "domain": "game-audio-music"
   }
 }

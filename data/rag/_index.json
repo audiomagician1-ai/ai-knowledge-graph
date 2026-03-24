@@ -1558,7 +1558,7 @@
       ],
       "file": "3d-art/3da-org-hair-modeling.md",
       "exists": true,
-      "char_count": 2580
+      "char_count": 2525
     },
     {
       "id": "3da-org-game-ready-char",
@@ -2143,7 +2143,7 @@
       ],
       "file": "3d-art/3da-retopo-clothing.md",
       "exists": true,
-      "char_count": 2676
+      "char_count": 2495
     },
     {
       "id": "3da-retopo-body-flow",
@@ -2473,7 +2473,7 @@
       ],
       "file": "3d-art/3da-rig-facial.md",
       "exists": true,
-      "char_count": 2923
+      "char_count": 2672
     },
     {
       "id": "3da-rig-skeleton",
@@ -2923,7 +2923,7 @@
       ],
       "file": "3d-art/3da-tex-weathering.md",
       "exists": true,
-      "char_count": 2547
+      "char_count": 2709
     },
     {
       "id": "3da-tex-tiling-material",
@@ -16554,7 +16554,7 @@
       ],
       "file": "concept-design/cd-style-reference-board.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2245
     },
     {
       "id": "cd-style-intro",
@@ -28149,7 +28149,7 @@
       ],
       "file": "game-audio-music/game-audio-music-world-music.md",
       "exists": true,
-      "char_count": 1503
+      "char_count": 2833
     },
     {
       "id": "game-audio-music-asian-game-music",
@@ -29371,7 +29371,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-sequence-container.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2271
     },
     {
       "id": "sfx-am-bus-routing",
@@ -29423,7 +29423,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-blend-container.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2584
     },
     {
       "id": "sfx-am-game-integration",
@@ -29579,7 +29579,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-regression-testing.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2681
     },
     {
       "id": "sfx-ao-virtualization",
@@ -29813,7 +29813,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-crowd-walla.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 2318
     },
     {
       "id": "sfx-dp-lip-sync",
@@ -30437,7 +30437,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-fr-water-sounds.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 2454
     },
     {
       "id": "sfx-fr-ambience-capture",
@@ -30931,7 +30931,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-speaker-panning.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2511
     },
     {
       "id": "sfx-sa-directivity-pattern",
@@ -30970,7 +30970,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-doppler-effect.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2321
     },
     {
       "id": "sfx-sa-outdoor-acoustics",
@@ -35304,7 +35304,7 @@
       ],
       "file": "game-engine/audio-system/adaptive-music.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 3112
     },
     {
       "id": "audio-middleware",
@@ -35694,7 +35694,7 @@
       ],
       "file": "game-engine/editor-extension/gizmo-custom.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 3039
     },
     {
       "id": "custom-editor-window",
@@ -35769,7 +35769,7 @@
       ],
       "file": "game-engine/input-system/camera-input.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2491
     },
     {
       "id": "accessibility-input",
@@ -35799,7 +35799,7 @@
       ],
       "file": "game-engine/input-system/local-multiplayer-input.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2754
     },
     {
       "id": "virtual-joystick",
@@ -35889,7 +35889,7 @@
       ],
       "file": "game-engine/input-system/input-replay.md",
       "exists": true,
-      "char_count": 1270
+      "char_count": 2628
     },
     {
       "id": "input-mapping",
@@ -37809,7 +37809,7 @@
       ],
       "file": "game-engine/resource-management/asset-cooking.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2788
     },
     {
       "id": "resource-mgmt-intro",
@@ -38199,7 +38199,7 @@
       ],
       "file": "game-engine/scripting-system/lua-scripting.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 3011
     },
     {
       "id": "coroutine-engine",
@@ -38949,7 +38949,7 @@
       ],
       "file": "game-engine/ue5-architecture/ue5-module-system.md",
       "exists": true,
-      "char_count": 1546
+      "char_count": 3261
     },
     {
       "id": "ue5-networking",
@@ -73034,7 +73034,7 @@
       ],
       "file": "psychology/behavioral-psychology/stimulus-discrimination.md",
       "exists": true,
-      "char_count": 1241
+      "char_count": 2370
     },
     {
       "id": "aversion-therapy",
@@ -73604,7 +73604,7 @@
       ],
       "file": "psychology/biological-psychology/genetics-behavior.md",
       "exists": true,
-      "char_count": 1515
+      "char_count": 2328
     },
     {
       "id": "hunger-eating",
@@ -74774,7 +74774,7 @@
       ],
       "file": "psychology/personality-psychology/personality-assessment.md",
       "exists": true,
-      "char_count": 1515
+      "char_count": 2871
     },
     {
       "id": "grit",
@@ -76243,7 +76243,7 @@
       ],
       "file": "software-engineering/architecture-patterns/se-modular-arch.md",
       "exists": true,
-      "char_count": 2617
+      "char_count": 2447
     },
     {
       "id": "se-pipe-filter",
@@ -77263,7 +77263,7 @@
       ],
       "file": "software-engineering/design-patterns/se-dp-singleton.md",
       "exists": true,
-      "char_count": 2936
+      "char_count": 3187
     },
     {
       "id": "se-dp-prototype",
@@ -77323,7 +77323,7 @@
       ],
       "file": "software-engineering/design-patterns/se-dp-factory.md",
       "exists": true,
-      "char_count": 2753
+      "char_count": 2787
     },
     {
       "id": "se-dp-builder",
@@ -79558,7 +79558,7 @@
       ],
       "file": "software-engineering/refactoring/se-rename-refactor.md",
       "exists": true,
-      "char_count": 2935
+      "char_count": 3052
     },
     {
       "id": "se-test-before-refactor",
@@ -79663,7 +79663,7 @@
       ],
       "file": "software-engineering/tdd/se-mutation-test.md",
       "exists": true,
-      "char_count": 2389
+      "char_count": 2361
     },
     {
       "id": "se-contract-test",
@@ -79783,7 +79783,7 @@
       ],
       "file": "software-engineering/tdd/se-test-doubles.md",
       "exists": true,
-      "char_count": 2622
+      "char_count": 2931
     },
     {
       "id": "se-test-patterns",
@@ -81668,7 +81668,7 @@
       ],
       "file": "technical-art/ta-texture-budget.md",
       "exists": true,
-      "char_count": 2668
+      "char_count": 2578
     },
     {
       "id": "ta-texture-streaming",
@@ -83783,7 +83783,7 @@
       ],
       "file": "vfx/vfx-fb-explosion.md",
       "exists": true,
-      "char_count": 2437
+      "char_count": 2564
     },
     {
       "id": "vfx-fb-emissive",
@@ -86753,7 +86753,7 @@
       ],
       "file": "writing/academic-writing/peer-review-process.md",
       "exists": true,
-      "char_count": 1448
+      "char_count": 2488
     },
     {
       "id": "thesis-writing",
@@ -87038,7 +87038,7 @@
       ],
       "file": "writing/academic-writing/plagiarism-avoidance.md",
       "exists": true,
-      "char_count": 1457
+      "char_count": 2485
     },
     {
       "id": "world-building",
@@ -89093,7 +89093,7 @@
       ],
       "file": "writing/writing-fundamentals/outline-planning.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2104
     },
     {
       "id": "punctuation-usage",

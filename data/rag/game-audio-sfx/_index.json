@@ -635,7 +635,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-sequence-container.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2271
     },
     {
       "id": "sfx-am-bus-routing",
@@ -687,7 +687,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-am-blend-container.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2584
     },
     {
       "id": "sfx-am-game-integration",
@@ -843,7 +843,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-regression-testing.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2681
     },
     {
       "id": "sfx-ao-virtualization",
@@ -1077,7 +1077,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-crowd-walla.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 2318
     },
     {
       "id": "sfx-dp-lip-sync",
@@ -1701,7 +1701,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-fr-water-sounds.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 2454
     },
     {
       "id": "sfx-fr-ambience-capture",
@@ -2195,7 +2195,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-speaker-panning.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2511
     },
     {
       "id": "sfx-sa-directivity-pattern",
@@ -2234,7 +2234,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sa-doppler-effect.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2321
     },
     {
       "id": "sfx-sa-outdoor-acoustics",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 279174,
-    "avg_chars": 1550,
+    "total_chars": 287251,
+    "avg_chars": 1595,
     "domain": "game-audio-sfx"
   }
 }

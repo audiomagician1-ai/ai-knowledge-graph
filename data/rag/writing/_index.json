@@ -43,7 +43,7 @@
       ],
       "file": "writing/academic-writing/peer-review-process.md",
       "exists": true,
-      "char_count": 1448
+      "char_count": 2488
     },
     {
       "id": "thesis-writing",
@@ -328,7 +328,7 @@
       ],
       "file": "writing/academic-writing/plagiarism-avoidance.md",
       "exists": true,
-      "char_count": 1457
+      "char_count": 2485
     },
     {
       "id": "world-building",
@@ -2383,7 +2383,7 @@
       ],
       "file": "writing/writing-fundamentals/outline-planning.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2104
     },
     {
       "id": "punctuation-usage",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 318084,
-    "avg_chars": 1871,
+    "total_chars": 320811,
+    "avg_chars": 1887,
     "domain": "writing"
   }
 }
