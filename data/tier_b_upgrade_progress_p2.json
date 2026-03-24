@@ -199,10 +199,30 @@
     "nd-cw-antagonist-design",
     "nd-lo-subtitle-system",
     "se-strangler-fig",
-    "se-atomic"
+    "se-atomic",
+    "ta-hlsl-basics",
+    "ta-pixel-shader",
+    "vfx-niagara-event",
+    "vfx-fluid-overview",
+    "3da-sculpt-dynamesh",
+    "3da-env-procedural",
+    "dependency-injection",
+    "event-handling",
+    "anim-procedural-motion",
+    "cg-anisotropy",
+    "cg-gi-hybrid",
+    "cd-skeleton-structure",
+    "cd-color-psychology",
+    "sfx-fr-impact-recording",
+    "sfx-dsp-sidechain",
+    "sfx-dsp-noise-gate",
+    "sfx-dp-dialogue-editing",
+    "sfx-dp-casting",
+    "sfx-dp-voice-aging",
+    "sfx-as-silence-technique"
   ],
   "errors": [],
-  "total_upgraded": 200,
+  "total_upgraded": 220,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T23:41:38.382349"
+  "last_updated": "2026-03-25T00:01:16.682125"
 }

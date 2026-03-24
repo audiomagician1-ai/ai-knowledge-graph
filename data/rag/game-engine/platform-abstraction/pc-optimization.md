@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["PC"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.1
 generation_method: "intranet-llm-rewrite-v2"
@@ -25,54 +25,73 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-PC优化是游戏引擎平台抽象层中专门针对个人电脑硬件多样性而设计的一套技术方案，核心任务是让同一份游戏代码在配备 GTX 960 的入门机器和配备 RTX 4090 的旗舰机器上都能流畅运行，并各自发挥出相应的画面质量。PC平台与主机平台最根本的区别在于硬件配置的不确定性：主机只有固定的一套GPU/CPU规格，而PC市场中仅显卡型号就超过数百种，内存从4GB到128GB不等，这使得静态调优策略完全失效。
+PC优化是游戏引擎平台抽象层中针对Windows、Linux、macOS等桌面平台的一套多配置、可扩展画质与帧率管理策略。与主机平台（如PS5、Xbox Series X）的固定硬件不同，PC拥有极其分散的硬件生态：截至2024年，Steam硬件调查显示玩家使用的GPU型号超过600种，显存容量从2GB到24GB不等，CPU核心数从2核到64核均有分布。这种碎片化特征迫使引擎的PC优化模块必须在运行时动态检测硬件能力并做出响应，而不能依赖静态的、针对单一规格的调优。
 
-PC优化的历史可以追溯到1990年代DOS游戏时代，开发者必须手动检测CPU型号并切换不同的代码路径。现代引擎（如Unreal Engine 5和Unity 6）则通过抽象层将这一逻辑系统化，形成了"画质等级（Quality Level）"、"可伸缩性组（Scalability Group）"和"帧率目标（Frame Rate Target）"三位一体的PC优化体系。这套体系让美术和程序员可以分别定义不同档位的资产与渲染配置，无需为每台PC单写代码。
+PC优化之所以是游戏引擎平台抽象的重要课题，在于它要解决"同一份代码服务于几乎无限硬件组合"的工程矛盾。引擎必须向上对接渲染、物理、音频等子系统，向下适配DirectX 11/12、Vulkan、Metal等图形API，同时还需向玩家暴露可调节的画质预设（低/中/高/极高），在不同硬件上都能达到可玩的帧率。Unreal Engine 5的Scalability系统和Unity的Quality Settings都是这一思路的工业实现。
 
-PC优化之所以在引擎架构中受到重视，是因为它直接影响游戏的市场覆盖率。根据Steam硬件调查2024年数据，仍有约22%的活跃用户使用VRAM低于4GB的显卡，若缺乏有效的可伸缩画质机制，这部分玩家将完全流失。
+---
 
 ## 核心原理
 
-### 多配置画质等级系统
+### 硬件能力枚举与分级
 
-现代引擎将PC画质划分为若干离散档位，Unreal Engine中称为 `Scalability Group`，内置从0（低）到3（高）共4个级别，Epic级别（4）作为额外超高档追加。每个档位对应一组 `CVar`（控制台变量）快照，例如 `r.Shadow.MaxResolution` 在低档设为512、高档设为2048、Epic档设为4096。开发者可在 `BaseScalability.ini` 中自定义这些映射关系，并为阴影、纹理、后处理、特效、植被密度等独立分组，使玩家能够混搭设置（如"高纹理+低阴影"）。
+PC优化的第一步是在游戏启动时对当前硬件进行枚举（Hardware Capability Query）。引擎通过调用DXGI（DirectX Graphics Infrastructure）的`IDXGIAdapter::GetDesc1()`或Vulkan的`vkGetPhysicalDeviceProperties()`，获取GPU的显存大小、最大纹理分辨率、计算着色器特性支持标志等参数。
 
-引擎在首次启动时会执行自动基准测试（Benchmark），通过测量GPU渲染一帧标准场景的耗时，与预设的性能阈值比对后自动推荐合适的档位。此机制的关键公式为：
+基于枚举结果，引擎将设备映射到内部分级标准，通常分为4个层级：
+- **Low（低配）**：GPU显存≤4GB，不支持异步计算，典型设备如GTX 1050
+- **Medium（中配）**：4–8GB显存，支持DirectX 12 Feature Level 12_0，典型设备如RTX 2060
+- **High（高配）**：8–12GB显存，支持硬件光线追踪（DXR Tier 1），典型设备如RTX 3070
+- **Ultra（极高配）**：12GB以上显存，支持Mesh Shader和Sampler Feedback，典型设备如RTX 4080
 
-> **推荐档位** = f(GPU分 × 权重GPU + CPU分 × 权重CPU)
+分级结果决定了引擎默认加载哪套画质预设文件（如`scalability_settings_high.ini`），并作为运行时可扩展系统的初始状态。
 
-其中权重通常为 GPU:CPU = 0.75:0.25，因为PC游戏渲染瓶颈多在GPU侧。
+### 可扩展画质系统（Scalability System）
 
-### 动态分辨率与帧率目标
+可扩展画质系统将渲染参数组织为多个独立的"画质组"（Quality Group），每个组单独分级，互不耦合。典型的画质组包括：
 
-PC优化不仅针对固定画质档位，还包括运行时的动态调节。动态分辨率缩放（Dynamic Resolution Scaling，DRS）允许引擎在每帧结束后检测GPU帧时间：若帧时间超过目标帧时间的105%，则将渲染分辨率下调5%（通常最低可缩至50%原生分辨率）；若连续10帧低于目标帧时间的90%，则上调分辨率。
+- **纹理流送（Texture Streaming）**：控制`r.Streaming.PoolSize`，低配设置为512MB，极高配可设置为4096MB
+- **阴影质量（Shadow Quality）**：控制级联阴影贴图分辨率，从512×512到4096×4096，以及级联数量（2级到4级）
+- **后处理（Post Processing）**：控制环境光遮蔽（SSAO/HBAO+）、景深、运动模糊的开关与采样数
+- **抗锯齿（Anti-Aliasing）**：从FXAA（单Pass，性能开销约0.2ms）到TAA（约0.8ms）再到DLSS/FSR等AI超分算法
 
-帧率目标（Frame Rate Target）在PC上与主机不同，不应硬编码为30fps或60fps，而应暴露给玩家选择，或通过`t.MaxFPS`变量配合显示器刷新率自动匹配。对于支持G-Sync / FreeSync的显示器，引擎还需通知驱动层启用可变刷新率，避免在帧率波动时产生撕裂。
+Unreal Engine 5的`UGameUserSettings`类提供`SetShadowQuality(int32 Value)`等API，允许游戏代码以0–3的整数档位独立控制每个画质组，玩家的选择持久化存储于`GameUserSettings.ini`文件。
 
-### 显存容量检测与LOD策略
+### 帧率目标与自适应性能调节
 
-PC优化的另一关键点是根据检测到的显存（VRAM）容量动态调整纹理资产的加载策略。引擎通过平台抽象层调用 `DXGI_ADAPTER_DESC1::DedicatedVideoMemory`（DirectX 12）获取显卡的专用显存大小，继而决定纹理流送（Texture Streaming）的驻留预算，例如4GB显存设上限为2.5GB，8GB显存设上限为6GB，16GB设为12GB。
+PC优化的帧率目标管理围绕两个核心机制展开：**帧率上限（Frame Rate Cap）** 与 **自适应画质（Adaptive Quality）**。
 
-LOD（Level of Detail）也与PC多配置直接挂钩：在画质档位0时，静态网格体的LOD偏移值（`r.StaticMesh.LODDistanceScale`）可设为0.5，使模型更早切换至低面数版本；在Epic档时设为2.0，使高精度模型在更远距离保持可见。
+帧率上限通过`t.MaxFPS`控制台变量设置，常见目标值为30fps、60fps、120fps、144fps。引擎在渲染线程末尾调用`FPlatformProcess::Sleep()`进行主动等待，将帧间隔对齐到目标时长（如60fps对应16.67ms/帧），避免GPU过度工作导致功耗飙升和风扇噪音。
+
+自适应画质（Adaptive Performance）更进一步：引擎在每帧结束后测量GPU帧时间，若连续3帧超过目标帧时间（如16.67ms），系统自动将某个画质组降低一档；若连续10帧低于目标帧时间的85%（即14.17ms），则尝试将某个画质组提升一档。这套反馈循环确保玩家在任何硬件上都能优先维持流畅帧率，而非追求固定画质。Unity的Adaptive Performance包（最初为三星Galaxy设备设计，后扩展至PC）将此机制标准化为`PerformanceLevelControl.cpuLevel`和`gpuLevel`两组独立控制变量。
+
+---
 
 ## 实际应用
 
-《赛博朋克2077》的PC版优化是可伸缩画质体系的典型案例：其设置界面将画质选项拆分为约20个独立项，并额外提供"光线追踪：超级"预设，该预设要求显卡至少具备12GB VRAM。游戏启动时会读取 `UserSettings.json` 恢复上次配置，而非每次重跑基准测试，减少启动时间。
+**Cyberpunk 2077的PC画质预设实现**是PC优化的典型案例。CD Projekt Red在引擎中为PC单独维护了一套"Crowd Density"（人群密度）画质参数，该参数在主机版本中被固定，但在PC版中作为独立画质选项暴露给玩家。游戏还针对NVIDIA RTX显卡实现了DLSS 3的帧生成（Frame Generation），当检测到`IDXGIAdapter`返回的NVIDIA架构版本≥0x190（Ada Lovelace架构）时，引擎自动启用该路径，在1080p输入下渲染帧率提升幅度最高达2倍。
 
-在Unity项目中实现PC多配置，通常借助 `QualitySettings.SetQualityLevel(int index, bool applyExpensiveChanges)` API。将 `applyExpensiveChanges` 设为 `false` 可避免在运行时切换画质时触发着色器重编译，保证画质档位切换在16ms内完成而不引发卡顿。
+**Unreal Engine 5的World Partition系统**在PC上通过LOD（细节层次）距离缩放实现多配置适配：低配PC将`r.SkeletalMeshLODDistanceScale`设为2.0（意味着远处角色更早切换到低精度LOD），极高配设为0.8，在相同场景中保持更多高精度几何体可见。这一参数在运行时可被玩家调整，无需重启游戏即时生效。
 
-独立游戏开发者常用的轻量方案是将分辨率缩放、阴影距离、粒子数量上限这三项打包为"低/中/高"三挡，研究表明这三项对帧率的综合影响超过所有画质参数总和的60%，是性价比最高的可伸缩化目标。
+---
 
 ## 常见误区
 
-**误区一：把PC优化等同于"把画质调低"。** PC优化的真正目标是让高端配置也能充分利用硬件，发挥出超越主机版的效果。若只做"最低配置能跑"而不做"最高配置充分发挥"，就浪费了PC平台的差异化优势。RTX 4090用户期望看到全局光照、高分辨率阴影和超采样叠加的效果，而不是与PS5相同的画面。
+**误区一：帧率上限等同于垂直同步（V-Sync）**
 
-**误区二：认为自动基准测试可以替代手动分档配置。** 自动基准测试只能给出初始推荐，无法感知玩家运行的后台程序（如OBS录制会消耗约15%GPU资源）或Laptop模式下的功耗限制（某些笔记本在插电与用电池时GPU性能差距可达40%）。因此引擎必须提供完整的手动覆盖入口，且玩家调整后的设置优先级高于自动检测结果。
+帧率上限（`t.MaxFPS = 60`）是CPU侧的主动限速，通过Sleep调用减少提交给GPU的工作量，允许帧时间有轻微抖动。垂直同步则是GPU与显示器刷新信号的硬件同步机制，强制帧时间对齐到显示器刷新周期（如16.67ms的倍数），消除画面撕裂但可能引入最多一帧的额外延迟。两者可同时开启，行为叠加而非等效替代。
 
-**误区三：将帧率目标设为固定值后不做验证。** 许多开发者设置`t.MaxFPS=60`后认为工作完成，但未考虑帧时间方差（Frame Time Variance）。即使平均帧率为60fps，若帧时间在8ms～25ms之间剧烈波动，玩家会明显感知到卡顿（Stutter）。PC优化需要同时监控第1百分位帧时间（1% Low），业界通行标准是1% Low不低于平均帧率的70%。
+**误区二：将主机画质预设直接移植到PC即为PC优化**
+
+主机版本的画质配置基于固定的8GB或16GB统一内存（CPU与GPU共享）和已知的GPU架构，不考虑纹理流送池大小的动态调整。PC的PC优化必须额外处理：①独立显存与系统内存的分离管理；②玩家可能在不同分辨率（1080p/1440p/4K）下运行，需要对应调整渲染分辨率缩放（`r.ScreenPercentage`从50到200）；③多显示器、HDR输出等PC专有功能路径。直接照搬主机参数会导致中端PC出现严重的显存溢出或低端PC帧率崩溃。
+
+**误区三：可扩展画质系统覆盖所有PC性能问题**
+
+可扩展画质系统主要针对GPU瓶颈设计，对CPU瓶颈（如Draw Call过多、物理模拟线程开销）的缓解能力有限。当游戏运行在12核心CPU上无法达到目标帧率时，降低Shadow Quality不会有显著效果，需要额外通过减少`MaxDrawCallsPerFrame`或降低`r.DynamicGlobalIlluminationMethod`从Lumen切换到屏幕空间GI来减轻CPU提交压力。PC优化需要分别分析CPU帧时间和GPU帧时间（在RenderDoc或Unreal Insights中以独立通道呈现），针对实际瓶颈进行调整。
+
+---
 
 ## 知识关联
 
-PC优化建立在**平台抽象概述**所描述的硬件检测与API选择机制之上：只有平台抽象层正确识别出当前运行环境是DirectX 12 / Vulkan的PC，PC优化模块才能获取VRAM大小、显示器刷新率等数据并据此调配画质策略。两者是依赖关系而非并列关系——平台抽象层负责"我运行在什么硬件上"，PC优化层负责"在这套硬件上该如何呈现画面"。
+PC优化建立在**平台抽象概述**所建立的能力检测接口之上：平台抽象层负责统一封装不同操作系统和图形API的差异（如Windows上的DirectX与Linux上的Vulkan），而PC优化则在此封装之上实现具体的多配置决策逻辑。没有可靠的硬件能力查询接口，PC优化的硬件分级系统无从建立；反过来，PC优化的可扩展画质系统是平台抽象层"条件能力路径"思想在渲染参数维度的具体实例化。
 
-PC优化中的可伸缩性组概念也与**渲染管线配置**和**着色器变体管理**有直接接口：不同画质档位通常对应不同的着色器变体（如低档禁用法线贴图计算），这意味着画质档位的切换必须与着色器预热（Shader Warm-up）协同，否则会在档位切换瞬间引发编译卡顿。掌握PC优化体系后，自然引出着色器变体数量控制和LOD资产管线等后续话题。
+学习了PC优化之后，开发者可以进一步深入研究**GPU驱动层优化**（针对特定厂商如NVIDIA/AMD的驱动特性进行调优）以及**多线程渲染架构**（PC多核心环境下的渲染线程、工作线程分配策略），这些话题都以PC优化中建立的帧率监控和自适应调节框架为前提。
