@@ -389,10 +389,30 @@
     "ops-ab-sample-size",
     "ops-ab-pitfalls",
     "pub-ms-post-launch-plan",
-    "pub-bb-brand-guidelines"
+    "pub-bb-brand-guidelines",
+    "qa-ft-equivalence-partition",
+    "qa-lt-loc-metrics",
+    "mn-db-connection-pooling",
+    "se-ci-testing",
+    "ta-mem-overview",
+    "vfx-destruct-tool",
+    "vfx-pp-chromatic",
+    "3da-pipe-texture-pipeline",
+    "server-basics",
+    "db-replication",
+    "few-shot",
+    "knowledge-graph-rag",
+    "compiler-basics",
+    "proxy-pattern",
+    "anim-hfsm",
+    "anim-spring-bone",
+    "anim-wind-interaction",
+    "cg-gi-intro",
+    "cg-ssaa",
+    "cg-render-graph"
   ],
   "errors": [],
-  "total_upgraded": 390,
+  "total_upgraded": 410,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T02:41:52.522241"
+  "last_updated": "2026-03-25T03:00:53.620870"
 }

@@ -9,83 +9,77 @@ is_milestone: false
 tags: ["架构"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 43.1
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.414
-last_scored: "2026-03-22"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
-# 渲染图
+# 渲染图（Render Graph / Frame Graph）
 
 ## 概述
 
-渲染图（Cg Render Graph）是图形学（Computer Graphics）中渲染优化领域的核心里程碑概念。难度等级4/9（中级）。
+渲染图（Render Graph，有时也称 Frame Graph）是一种将单帧渲染流程抽象为有向无环图（DAG）的资源管理与调度框架，由 Yuriy O'Donnell 在 2017 年 GDC 演讲《FrameGraph: Extensible Rendering Architecture in Frostbite》中系统性地提出并推广。在此框架中，图的每个节点（Node）对应一个渲染阶段（Pass），每条有向边则对应 Pass 之间的资源依赖关系，例如一个 Pass 写入的颜色缓冲恰好是下一个 Pass 读取的输入纹理。
 
-Frame Graph/Render Graph的自动资源管理与Pass排序。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+在 Frostbite 引擎引入渲染图之前，大型渲染管线的资源生命周期完全由程序员手工管理，当 Pass 数量超过数十个时，极易出现资源泄漏、无效同步屏障（Barrier）过多，以及无法在主机端并行提交命令包等问题。渲染图通过编译期（Compile Phase）的可达性分析，自动裁剪当前帧中不影响最终 Backbuffer 的"死亡 Pass"，并为剩余 Pass 自动推导所有 GPU 资源的最优生命周期与访问状态转换。
 
-在知识体系中，渲染图建立在渲染优化概述的基础之上，是理解可进入更高级主题的关键前置知识。为什么渲染图如此重要？因为它在渲染优化中起到承上启下的作用，连接基础概念与高级应用。
+渲染图之所以重要，在于它将"**逻辑描述**"与"**物理执行**"彻底解耦：开发者在声明 Pass 时只需说明"我需要读取哪些资源、写入哪些资源"，而不必关心底层 API（Vulkan / D3D12 / Metal）所要求的具体 Image Layout、Resource State 或 Memory Barrier 时机。这使得渲染管线的新增、删除和重排变得如同编辑图结构一样直观。
 
-## 核心知识点
+---
 
-### 1. Frame Graph/Render Graph的自动资源管理
+## 核心原理
 
-Frame Graph/Render Graph的自动资源管理是渲染图(Cg Render Graph)的核心组成部分之一。在渲染优化的实践中，Frame Graph/Render Graph的自动资源管理决定了系统行为的关键特征。例如，当Frame Graph/Render Graph的自动资源管理参数或条件发生变化时，整体表现会产生显著差异。深入理解Frame Graph/Render Graph的自动资源管理需要结合图形学的基本原理进行分析。
+### 1. 三阶段执行模型：Setup → Compile → Execute
 
-### 2. Pass排序
+渲染图的每一帧处理分为三个严格顺序的阶段：
 
-Pass排序是渲染图(Cg Render Graph)的核心组成部分之一。在渲染优化的实践中，Pass排序决定了系统行为的关键特征。例如，当Pass排序参数或条件发生变化时，整体表现会产生显著差异。深入理解Pass排序需要结合图形学的基本原理进行分析。
+- **Setup（注册阶段）**：所有 Pass 向渲染图声明自身的输入资源（`read`）和输出资源（`write`），并创建对应的虚拟资源句柄（Virtual Resource Handle）。此阶段仅填充图结构，不分配任何 GPU 内存，也不记录任何 GPU 命令。
+- **Compile（编译阶段）**：渲染图执行两项关键操作。第一，**剔除（Culling）**：从 Backbuffer 节点出发做逆向 DFS（深度优先搜索），将所有未被引用的 Pass 和资源标记为无效并丢弃，通常可裁剪 10%–30% 的无效工作。第二，**资源别名（Aliasing）**：对生命周期不重叠的虚拟资源分配同一块物理显存，Frostbite 内部数据显示此技术可节省约 **50% 的瞬态渲染目标（Transient Render Target）内存**。
+- **Execute（执行阶段）**：按拓扑排序顺序依次执行各 Pass 的回调函数，渲染图在每次 Pass 切换前自动插入精确的 Pipeline Barrier / Resource State Transition，并负责按需分配与释放物理资源。
 
+### 2. 虚拟资源与物理资源的映射
 
-### 关键原理分析
+渲染图引入"虚拟资源"概念，是实现自动内存别名的关键。每个虚拟资源由一个描述符（ResourceDesc）唯一标识，包含格式（Format）、分辨率、MipLevel 数、用途标志（Usage Flags）等信息。编译阶段会构建一张**资源生命周期区间表**，区间定义为 `[first_write_pass_index, last_read_pass_index]`，生命周期区间不重叠的资源可以安全共用同一显存地址。公式化描述如下：
 
-渲染图的核心在于Frame Graph/Render Graph的自动资源管理与Pass排序。从理论角度看，该概念涉及以下层面：
+> 若资源 A 的区间为 [a₁, a₂]，资源 B 的区间为 [b₁, b₂]，且 a₂ < b₁ 或 b₂ < a₁，则 A 与 B 可别名同一物理内存块。
 
-1. **定义层**：明确渲染图的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解渲染图内部各要素的相互作用方式
-3. **应用层**：将渲染图的原理映射到图形学的实际场景中
+### 3. 自动 Barrier 推导与异步计算调度
 
-思考题：如何判断渲染图的应用是否超出了其理论适用范围？
+渲染图在 Execute 阶段利用编译期收集到的每个 Pass 对每个资源的最后访问类型（读/写/格式），为 Vulkan 生成精确的 `VkImageMemoryBarrier`，或为 D3D12 生成 `ResourceBarrierTransition`，避免了手工 Barrier 中普遍存在的"过度同步"问题（例如将所有资源统一转换为 `COMMON` 状态）。此外，渲染图可识别哪些 Pass 仅依赖 Compute Queue 资源，将其自动调度到独立的异步计算队列（Async Compute Queue）并行执行，GPU 并行度提升最高可达 **20%–40%**（依硬件而异）。
 
-## 关键要点
+---
 
-1. **核心定义**：渲染图的本质是Frame Graph/Render Graph的自动资源管理与Pass排序，这是理解整个概念的出发点
-2. **多维理解**：掌握渲染图需要同时理解Frame Graph/Render Graph的自动资源管理和Pass排序等关键维度
-3. **先修关系**：扎实的渲染优化概述基础对理解渲染图至关重要
-4. **进阶路径**：可广泛应用于图形学各方面
-5. **实践标准**：真正掌握渲染图的标志是能在具体场景中灵活运用并正确判断适用边界
+## 实际应用
+
+**Unreal Engine 5 的 RDG（Rendering Dependency Graph）** 是目前应用最广泛的渲染图实现之一。UE5 中每个渲染 Pass 通过 `FRDGBuilder::AddPass()` 宏注册，资源通过 `FRDGTexture` / `FRDGBuffer` 等句柄引用，引擎在每帧 `FRDGBuilder::Execute()` 调用时完成编译与物理提交。Lumen 全局光照的多层 Pass（Screen Probe Gather → Radiance Cache Update → Denoiser）正是依赖 RDG 的拓扑排序确保正确执行顺序，同时将 Surface Cache 更新 Pass 自动卸载到 Async Compute。
+
+**Frostbite 引擎的原始实现**中，Frame Graph 使得寒霜 AAA 游戏（如《战地 1》）将瞬态 RT 内存占用从约 **1.2 GB** 降低到约 **600 MB**，同时彻底消除了手工内存管理导致的渲染顺序错误类 Bug。
+
+在 **Vulkan / D3D12 的移植场景**中，渲染图还被用于自动生成 Render Pass 的 `loadOp`/`storeOp` 配置：若某 RT 在当前帧的上一次写入在同一物理 Render Pass 内，则 `loadOp` 可设为 `DONT_CARE`，节省移动端 TBDR（Tile-Based Deferred Rendering）架构上的带宽开销。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将渲染图与渲染优化中其他相近概念混为一谈。例如，Frame Graph/Render Graph的自动资源管理的适用条件与其他Pass排序概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解渲染优化概述就学习渲染图，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：渲染图虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：渲染图等同于多线程渲染**  
+渲染图的拓扑排序和资源别名机制本身是单线程完成的（Setup 和 Compile 阶段通常在主线程执行），它并不直接提供多线程命令录制能力。多线程提交需要在 Execute 阶段额外将 Pass 分组到不同 CommandList 并分配给工作线程，这是在渲染图之上叠加的并行策略，而非渲染图自身功能。
 
-## 知识衔接
+**误区二：渲染图的 Compile 阶段发生在 CPU 上，因此可以忽略其开销**  
+编译阶段虽在 CPU 执行，但对于包含 200+ Pass 的复杂帧（例如带完整阴影级联、SSAO、TAA 的场景），DAG 遍历与生命周期计算可消耗 **0.3–1.0 ms** 的 CPU 时间。UE5 的 RDG 为此引入了 Pass 合并（Pass Merging）和渲染图缓存（Graph Caching）等优化以降低重复帧的编译成本。
 
-### 先修知识
-先修知识包括：
-- **渲染优化概述** — 为渲染图提供了必要的概念基础
+**误区三：资源别名对所有 GPU 资源都安全适用**  
+资源别名仅对生命周期严格不重叠的**瞬态资源**安全。跨帧持久化的资源（如 TAA 历史帧缓冲、Radiance Cache）绝对不能参与别名，否则会发生数据竞争。渲染图通常要求开发者在声明资源时显式标注 `Transient`（瞬态）或 `Imported`（外部导入/持久）标志，编译器据此决定是否允许该资源进入别名候选池。
 
-### 后续学习
-掌握渲染图后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索图形学其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：2-3小时。建议采用以下策略：
+**前置概念**：渲染优化概述中介绍的 GPU 管线阶段划分（Vertex → Rasterization → Fragment）和渲染目标（Render Target）概念，是理解渲染图中 Pass 输入/输出语义的直接基础。了解 D3D12 Resource State 或 Vulkan Image Layout 的状态机模型，有助于直观理解渲染图自动 Barrier 推导的工作内容。
 
-- **主动回忆**：学完后不看笔记复述渲染图的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将渲染图与图形学中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释渲染图，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于渲染优化的章节可作为深入参考
-- Wikipedia: [Cg Render Graph](https://en.wikipedia.org/wiki/cg_render_graph) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Cg Render Graph" 可找到配套视频教程
+**横向关联**：渲染图与**多线程命令录制**（Command Buffer Threading）、**GPU Work Graph**（D3D12 Agility SDK 1.710 引入的新特性，允许在 GPU 端动态派发节点工作负载）在设计思路上有共同的"图节点调度"哲学，但渲染图的调度在 CPU 完成，GPU Work Graph 的调度在 GPU 完成，两者解决的问题层次不同。渲染图编译产出的精确 Barrier 序列也是**GPU 帧调试工具**（如 RenderDoc、PIX）中 Resource State Timeline 视图的直接数据来源。
