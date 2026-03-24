@@ -1104,10 +1104,30 @@
     "urbanization-econ",
     "technology-transfer",
     "david-ricardo",
-    "karl-marx-econ"
+    "karl-marx-econ",
+    "alfred-marshall",
+    "austrian-school",
+    "phrasal-verbs",
+    "adjective-clauses",
+    "advanced-modals",
+    "aspect-nuances",
+    "argumentative-reading",
+    "consumer-psychology",
+    "positive-feedback-loop",
+    "ue5-pak-system",
+    "state-machine-anim",
+    "world-origin-shifting",
+    "cook-automation",
+    "save-system-platform",
+    "perf-budget",
+    "plugin-lifecycle",
+    "api-design-plugin",
+    "analytics-plugin",
+    "localization-plugin",
+    "ops-uc-staged-rollout"
   ],
   "errors": [],
-  "total_upgraded": 1105,
+  "total_upgraded": 1125,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T02:21:57.515513"
+  "last_updated": "2026-03-25T02:40:45.584244"
 }

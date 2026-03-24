@@ -9,12 +9,12 @@ is_milestone: false
 tags: ["资源"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.4
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.414
-last_scored: "2026-03-24"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"
@@ -25,52 +25,52 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-Pak文件系统是Unreal Engine用于将游戏资产打包成单一归档文件的存储与分发机制。一个`.pak`文件本质上是一种虚拟文件系统，它将原本散布于磁盘各处的`uasset`、`umap`、`ubulk`等资产文件压缩、加密后合并为一个二进制归档，运行时由`IPlatformFile`接口层挂载（Mount），引擎通过虚拟路径透明读取其中内容而无需解压到磁盘。
+Pak文件系统是Unreal Engine用于将游戏资产打包成单一归档文件的核心机制，其文件扩展名为`.pak`。本质上，一个`.pak`文件是一个只读的虚拟文件系统容器，它将数以千计的独立`.uasset`、`.umap`等资产文件压缩并整合为一个二进制包，游戏运行时通过挂载（Mount）操作将其映射到虚拟路径`/Game/`下，无需解压即可随机访问其中任意文件。
 
-Pak格式由Epic Games在UE4时代引入，目的是解决主机平台对文件数量和路径长度的严格限制问题。在UE5中，Pak系统与新引入的**Chunked IOStore**（`.ucas`/`.utoc`格式）并存，两者共同构成发行版的资产分发层。Pak仍是PC平台热更新（Patch）和DLC交付的主要载体，而主机发行包则更多迁移至IOStore以获得更低的IO延迟。
+Pak格式最早在UE3时代以类似形式出现，在UE4中被正式确立为标准发行打包方式，并延续至UE5。在UE5的项目中，使用`Project Launcher`或命令行工具`UnrealPak.exe`执行Cook + Package流程后，引擎会将所有Cooked资产生成一个或多个`.pak`文件，通常位于`Saved/StagedBuilds/[Platform]/[ProjectName]/Content/Paks/`目录下。
 
-理解Pak文件系统的意义在于：游戏的启动速度、热更新包大小、资产安全性（防止逆向工程）均直接受到Pak配置方式的影响。一个配置不当的打包策略可能导致运行时内存峰值上升或补丁包体积比实际差异大出数倍。
+Pak系统的意义不仅在于减少发行包中的文件数量（避免操作系统文件句柄耗尽问题），更在于它支撑了DLC分发和热更新两大关键功能。通过在基础包之外独立生成补丁Pak，开发团队可以只向用户推送变更内容，而无需重新下载整个游戏包体。
 
 ## 核心原理
 
 ### Pak文件的内部结构
 
-每个`.pak`文件由三部分组成：**文件数据区（File Data Block）**、**索引区（Index）**和**固定大小的尾部（Footer，44字节）**。Footer中存储了魔数`0x5A6F12E1`（用于快速校验文件完整性）、版本号、索引偏移量和索引大小。引擎启动时首先读取Footer，定位Index，再通过Index中的路径哈希表快速查找任意虚拟路径对应的数据块偏移与长度，整个过程无需将Index完整解析到内存——UE5引入了**主索引+二级索引（Secondary Index）**分离结构，主索引仅保留路径哈希，详细元数据延迟到实际访问时才加载，显著降低了挂载开销。
+一个`.pak`文件由三部分组成：**文件数据区**、**索引区**和**尾部信息（Footer）**。Footer固定占据文件末尾的53字节（在启用签名验证后会有所扩展），其中记录了魔数（Magic Number：`0x5A6F12E1`）、版本号、索引区的偏移量和SHA1哈希值。引擎在挂载Pak时首先读取这个Footer以定位索引区，再通过索引区找到每个资产在数据区中的精确字节偏移，从而实现O(1)时间复杂度的随机访问。
 
-### 压缩与加密
+索引区存储了每个文件的路径、压缩算法、压缩块信息、数据偏移量和大小等元数据。UE5默认使用Zlib或Oodle压缩算法，Oodle是Epic从UE4.23版本开始引入的高性能商业压缩库，在压缩率和解压速度上均优于Zlib，是主机和PC平台的推荐选项。
 
-Pak支持对每个文件块独立配置压缩算法，默认使用**Oodle（Kraken变体）**，在UE5的`BaseEngine.ini`中由`[PakFile]` Section的`CompressionFormats`字段控制。压缩以**64KB为一个块（Compression Block）**进行，这意味着若某资产仅需读取其中4KB数据，引擎仍必须解压整个64KB块——这是Pak随机访问性能劣于IOStore的根本原因之一。
+### 挂载优先级与覆盖机制
 
-加密方面，Pak支持AES-256对全部数据加密，密钥通过`FCoreDelegates::GetPakEncryptionKey`委托在运行时注入，密钥本身不存储在可执行文件的固定偏移处，防止静态分析提取。加密与压缩互不依赖，可单独启用。
+Pak系统通过挂载优先级（Mount Priority，一个整数值）来解决多个Pak之间的文件覆盖问题。当两个Pak包含路径相同的文件时，优先级数值**更高**的Pak中的版本生效。基础游戏Pak的默认优先级为`4`，DLC Pak通常设为`5`以上，热更新补丁Pak则设为更高值（如`10`），从而自动覆盖旧版本资产，无需卸载原始Pak。
 
-### 挂载机制与优先级
+在C++层，挂载操作通过`FPakPlatformFile::Mount()`函数完成，也可通过蓝图调用`Mount Pak File`节点实现。引擎启动时会自动扫描并挂载位于特定目录下的所有Pak文件，开发者也可以在运行时动态挂载从网络下载的补丁Pak。
 
-引擎通过`FPakPlatformFile::Mount()`函数挂载一个Pak文件，挂载时需指定**挂载点（Mount Point）**（即虚拟路径前缀，如`../../../ProjectName/Content/`）和**优先级（Priority）**整数值。当多个Pak包含同一虚拟路径的文件时，**优先级数值越高的Pak中的版本胜出**，这正是热更新补丁包能够覆盖基础包内容的技术基础——补丁Pak以更高Priority挂载，同名资产自动生效，无需修改基础包。
+### 加密与签名
 
-引擎在启动阶段会自动扫描并挂载`Content/Paks/`目录下符合命名规则`*_P.pak`（其中`_P`后缀表示Patch包）的文件，优先级由文件名中的数字部分决定。
-
-### Chunk分块与IOStore协同
-
-在UE5的**打包管线（Cook + Stage + Package）**中，资产可通过**Asset Manager的Primary Asset Label**机制划分至不同Chunk ID（Chunk 0为默认包，Chunk 1以上为DLC或按需下载内容）。每个Chunk最终生成独立的`.pak`文件（或IOStore对应的`.ucas`）。`UnrealPak.exe`工具负责最终的Pak生成，其命令行参数`-create=<ResponseFile>`接受一个列出所有待打包文件及其虚拟路径的响应文件。
+UE5的Pak系统内置了AES-256加密和RSA签名两项安全机制。在`Project Settings > Packaging`中配置加密密钥后，打包工具会用AES-256加密Pak文件的索引区或全部内容，并用2048位RSA私钥对数据块进行签名。游戏运行时，引擎用硬编码在可执行文件中的公钥验证签名，防止第三方修改Pak内容。注意加密密钥必须在打包前通过`crypto.json`正确配置，否则加密后的Pak将无法被引擎识别。
 
 ## 实际应用
 
-**热更新补丁发布**：游戏上线后修复一个材质Bug，只需重新Cook受影响的资产，用`UnrealPak.exe`打包成命名为`GameName-WindowsNoEditor_1_P.pak`的补丁包，将其下载到用户的`Content/Paks/`目录，引擎下次启动自动挂载并以高优先级覆盖旧版本，整个过程不需要替换主执行文件。
+**DLC分发流程**：开发者在内容目录中新建`DLC_Chapter2`文件夹，将DLC资产放入其中，然后使用`UnrealPak.exe`命令仅对该目录执行打包：
+```
+UnrealPak.exe DLC_Chapter2.pak -Create=filelist.txt -compress
+```
+生成的`DLC_Chapter2.pak`可上传至CDN，客户端下载后放置到Paks目录，重启游戏或通过代码动态挂载即可访问DLC内容，基础包完全不受影响。
 
-**DLC按需下载**：将DLC地图和角色资产标记为Chunk 2，打包后生成`GameName-WindowsNoEditor_2.pak`，玩家购买后下载此单文件即可解锁内容，主游戏包无需改动。
+**热更新补丁**：使用`UnrealPak.exe`的`-diff`参数对比新旧版本的Pak，提取差异文件生成增量补丁包。补丁包文件名通常遵循`ProjectName-WindowsNoEditor_P.pak`这一命名约定（末尾的`_P`是约定俗成的补丁标识），引擎会自动赋予其更高的挂载优先级。
 
-**资产安全保护**：启用AES-256加密后，即使玩家获取`.pak`文件，也无法用`UnrealPak.exe -extract`直接提取内容，有效保护美术资产不被二次分发。实际项目中密钥通常通过自定义`IEncryptionKeyManager`插件从服务器动态获取。
+**移动平台分包**：Android平台的Google Play要求APK大小不超过100MB，开发者通过将资产分散到多个Pak文件（如`Pak0.pak`存放基础资源，`Pak1.pak`存放高清贴图）来实现按需下载，首次安装只需下载基础Pak即可启动游戏。
 
 ## 常见误区
 
-**误区一：认为补丁包越小越好，因此只打包改动的单个资产**。事实上，UE的硬引用（Hard Reference）依赖链会导致修改一个蓝图后其引用的全部资产都需要重新Cook，若补丁包遗漏了这些依赖资产，运行时会出现`LogPakFile: Warning: Failed to find file`并加载失败。正确做法是通过`Asset Audit`工具分析完整依赖树，将所有受影响资产纳入补丁包。
+**误区一：认为Pak文件可以在运行时被修改**。`.pak`文件被设计为完全只读的归档格式，引擎不提供任何向已挂载Pak中写入数据的接口。游戏运行时产生的存档、配置等可写数据必须存储在`SavedDir`（对应`FPaths::ProjectSavedDir()`）下的普通文件系统中，而非Pak内。试图将Pak用作运行时数据库是架构设计错误。
 
-**误区二：认为Pak挂载后立即可以Spawn资产**。Pak挂载仅完成了虚拟文件系统层的注册，资产仍需经过`AssetRegistry`的扫描刷新（调用`IAssetRegistry::ScanPathsSynchronous`）才能被`UAssetManager`发现，再经异步加载后才真正可用。在运行时动态挂载Pak时跳过这一步是常见的运行时崩溃来源。
+**误区二：认为补丁Pak会替换原始Pak中的物理文件**。优先级覆盖机制是纯粹的虚拟文件系统层面的逻辑，原始Pak的字节内容从不被修改。两个Pak同时保留在磁盘上，引擎只是在内存索引中记录"此路径优先读取哪个Pak的哪个偏移"。这意味着若不清理旧Pak，磁盘上会同时存在新旧两个版本的资产数据，导致磁盘占用持续增长。
 
-**误区三：Pak和IOStore可以随意混用**。UE5中若项目启用了`bUsesIoStore=true`，Cook管线会输出`.ucas/.utoc`而非`.pak`作为主要分发格式，此时再用传统`UnrealPak.exe`生成的`.pak`热更新包可能因资产版本标记不一致导致加载异常。热更新方案选择时需与主包分发格式保持一致。
+**误区三：Editor模式下测试热更新行为**。在Editor中运行（PIE模式）时，引擎绕过Pak系统直接读取`Content/`目录下的原始`.uasset`文件，挂载逻辑完全不参与。只有在Standalone或打包后的Development/Shipping版本中，Pak系统才真正生效，因此热更新逻辑必须在实际打包版本中验证。
 
 ## 知识关联
 
-从前置概念来看，**UE5构建系统**中的Cook阶段负责将`uasset`序列化为平台特定的二进制格式，这些序列化产物正是Pak打包的原材料；构建系统的Staging步骤会自动调用`UnrealPak.exe`完成归档，理解构建流水线有助于定位打包错误的具体阶段。
+**前置知识**：理解UE5构建系统（特别是Cook流程）是掌握Pak文件系统的必要前提。Cook过程将平台无关的`.uasset`转换为目标平台的二进制格式，这些Cooked资产才是最终被打入Pak的内容，跳过Cook直接打Pak是无效操作。
 
-向后衔接**资源管理概述**时，Pak文件系统处于IO层，其上是`FPakPlatformFile`虚拟文件系统层，再上是`AssetRegistry`元数据层，最顶层才是`UAssetManager`的逻辑加载层。资源管理所讨论的异步加载、软引用（Soft Reference）解析、流送优先级等策略，都依赖Pak层正确挂载并向上暴露一致的虚拟路径空间。Pak的Chunk划分决策还直接影响资源管理中**Bundle**和**Primary Asset**的组织粒度。
+**后续知识**：Pak文件系统是UE5资源管理概述的物理层基础。理解了Pak的挂载机制和虚拟路径映射之后，才能进一步学习Asset Manager如何跨Pak追踪和异步加载资产、以及`Primary Asset`的注册与发现机制如何在多Pak环境下正确工作。此外，Chunk分配系统（在`Project Settings > Packaging`中配置Asset Chunk ID）直接决定了哪些资产被打入哪个Pak文件，是连接内容组织策略与物理Pak结构的桥梁。
