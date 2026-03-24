@@ -319,10 +319,30 @@
     "anim-keyframe-basics",
     "anim-inertial-mocap",
     "anim-blend-basics",
-    "anim-two-bone-ik"
+    "anim-two-bone-ik",
+    "anim-animation-sm-design",
+    "cd-char-npc-lineup",
+    "sfx-am-interactive-music",
+    "sfx-am-plugin-development",
+    "sfx-sa-underwater-audio",
+    "sfx-dp-lip-sync",
+    "sfx-as-biome-soundscape",
+    "ue5-chaos",
+    "ops-uc-content-pipeline",
+    "pub-pr-platform-negotiation",
+    "qa-rt-test-selection",
+    "mn-ss-server-reconciliation",
+    "nd-ds-procedural-dialogue",
+    "se-smart-pointers",
+    "ta-multi-platform",
+    "ta-lod-generation",
+    "ta-lod-crowd",
+    "vfx-destruct-prefracture",
+    "vfx-opt-precompute",
+    "3da-normals-smoothing"
   ],
   "errors": [],
-  "total_upgraded": 320,
+  "total_upgraded": 340,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T01:35:28.823946"
+  "last_updated": "2026-03-25T01:54:46.667371"
 }

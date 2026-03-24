@@ -1054,10 +1054,30 @@
     "sketch-to-code",
     "monetization-strategy",
     "freemium-model",
-    "case-study-method"
+    "case-study-method",
+    "ta-frame-analysis",
+    "ta-mem-budget-doc",
+    "ta-std-overview",
+    "ta-poly-standard",
+    "vfx-destruct-hierarchy",
+    "vfx-opt-pooling",
+    "audience-awareness",
+    "cd-vanishing-point",
+    "cd-warm-cool",
+    "gdd-structure",
+    "gpu-profiling",
+    "mimesis",
+    "product-positioning",
+    "conformity",
+    "press-release",
+    "3da-extrude-inset",
+    "3da-tex-hand-painted",
+    "3da-tex-tiling-material",
+    "3da-prop-lod-creation",
+    "3da-prop-quality-checklist"
   ],
   "errors": [],
-  "total_upgraded": 1055,
+  "total_upgraded": 1075,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T01:33:53.042728"
+  "last_updated": "2026-03-25T01:53:36.307806"
 }
