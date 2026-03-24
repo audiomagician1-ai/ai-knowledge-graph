@@ -229,10 +229,30 @@
     "ta-mobile-perf",
     "ta-tool-pipeline",
     "ta-pipeline-overview",
-    "ta-import-pipeline"
+    "ta-import-pipeline",
+    "ta-mem-leak-detect",
+    "vfx-destruct-runtime",
+    "3da-transform-tools",
+    "3da-pipe-engine-import",
+    "http-protocol",
+    "graph-ds",
+    "llm-pretraining",
+    "prefix-sum",
+    "anim-hand-ik",
+    "anim-face-overview",
+    "anim-ik-vehicle-mount",
+    "cg-stencil-buffer",
+    "cg-ambient-occlusion",
+    "cg-pp-intro",
+    "cg-nanite",
+    "cg-ray-marching",
+    "cg-openvdb",
+    "cg-atmosphere-scatter",
+    "cd-line-of-action",
+    "cd-dynamic-pose"
   ],
   "errors": [],
-  "total_upgraded": 230,
+  "total_upgraded": 250,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T00:11:25.729844"
+  "last_updated": "2026-03-25T00:30:17.877328"
 }

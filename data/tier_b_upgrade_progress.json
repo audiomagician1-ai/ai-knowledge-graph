@@ -964,10 +964,30 @@
     "metric-exception",
     "elevation-tactics",
     "destructible-env",
-    "contrast-lighting"
+    "contrast-lighting",
+    "practical-light",
+    "inner-product-spaces",
+    "mn-ac-server-authority",
+    "mn-ac-input-validation",
+    "mn-ac-anti-cheat-architecture",
+    "mn-lb-quick-match",
+    "nd-wb-geography",
+    "nd-ds-lip-sync",
+    "neoplatonism",
+    "social-epistemology",
+    "specific-heat",
+    "fiber-optics",
+    "huygens-principle",
+    "superconductivity-intro",
+    "typography",
+    "contrast-design",
+    "ltv-calculation",
+    "prd-writing",
+    "kanban-method",
+    "okr-method"
   ],
   "errors": [],
-  "total_upgraded": 965,
+  "total_upgraded": 985,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-25T00:10:33.511803"
+  "last_updated": "2026-03-25T00:28:49.736004"
 }

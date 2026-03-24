@@ -9,83 +9,84 @@ is_milestone: false
 tags: ["核心"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 42.6
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.406
-last_scored: "2026-03-22"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
-# Ray Marching
+# 光线步进（Ray Marching）
 
 ## 概述
 
-Ray Marching（Cg Ray Marching）是图形学（Computer Graphics）中体积渲染领域的核心里程碑概念。难度等级2/9（基础级）。
+光线步进是一种通过沿光线方向以固定或自适应步长离散采样来渲染体积介质的算法。与解析求交不同，Ray Marching 不要求场景几何具有闭合解析形式，因此能够处理云、烟、火焰、大气散射等无法用多边形网格精确描述的现象。
 
-步进式体积渲染的基本算法。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+该算法的思想最早可追溯到1984年 James Kajiya 和 Brian Von Herzen 在 SIGGRAPH 发表的论文《Ray Tracing Volume Densities》，文中首次系统地将光线追踪框架扩展到连续密度场。此后 Ken Perlin 在1989年将其与噪声函数结合，使体积云的实时渲染成为可能。
 
-在知识体系中，Ray Marching建立在体积渲染概述的基础之上，是理解Beer-Lambert定律、体积云实现、体积雾、体积光、火焰与爆炸的关键前置知识。为什么Ray Marching如此重要？因为它在体积渲染中起到承上启下的作用，连接基础概念与高级应用。
+Ray Marching 之所以重要，在于它将三维体积积分问题转化为一维数值积分问题：沿每条观察光线逐步累积透射率和辐射亮度，最终合成像素颜色。这一转化使得在 GPU 着色器中并行执行成为标准做法——现代游戏引擎（如虚幻引擎的体积雾系统）和离线渲染器均采用这一框架。
 
-## 核心知识点
+---
 
-### 1. 步进式体积渲染的基本算法
+## 核心原理
 
-步进式体积渲染的基本算法是Ray Marching(Cg Ray Marching)的核心组成部分之一。在体积渲染的实践中，步进式体积渲染的基本算法决定了系统行为的关键特征。例如，当步进式体积渲染的基本算法参数或条件发生变化时，整体表现会产生显著差异。深入理解步进式体积渲染的基本算法需要结合图形学的基本原理进行分析。
+### 基本迭代流程
 
+Ray Marching 的主循环非常直接：从相机出发，沿视线方向 $\mathbf{d}$（单位向量）以步长 $\Delta t$ 逐步前进，在每个采样点 $\mathbf{x}_i = \mathbf{o} + t_i \cdot \mathbf{d}$ 处查询密度场 $\sigma(\mathbf{x})$，并按以下递推式累积结果：
 
-### 关键原理分析
+$$t_{i+1} = t_i + \Delta t$$
 
-Ray Marching的核心在于步进式体积渲染的基本算法。从理论角度看，该概念涉及以下层面：
+$$T_i = \exp\!\left(-\sum_{j=0}^{i-1} \sigma(\mathbf{x}_j)\,\Delta t\right)$$
 
-1. **定义层**：明确Ray Marching的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Ray Marching内部各要素的相互作用方式
-3. **应用层**：将Ray Marching的原理映射到图形学的实际场景中
+$$C_{\text{out}} = \sum_{i} T_i \cdot \mathbf{L}(\mathbf{x}_i) \cdot \sigma(\mathbf{x}_i) \cdot \Delta t$$
 
-思考题：如何判断Ray Marching的应用是否超出了其理论适用范围？
+其中 $T_i$ 为当前点的透射率（Transmittance），$\mathbf{L}(\mathbf{x}_i)$ 为该点的辐射亮度（来自光源或散射），$\sigma$ 为消光系数。循环在 $T_i < \varepsilon$（常取 $10^{-3}$）或光线离开体积包围盒时终止。
 
-## 关键要点
+### 固定步长与自适应步长
 
-1. **核心定义**：Ray Marching的本质是步进式体积渲染的基本算法，这是理解整个概念的出发点
-2. **多维理解**：掌握Ray Marching需要同时理解步进式体积渲染的基本算法等关键维度
-3. **先修关系**：扎实的体积渲染概述基础对理解Ray Marching至关重要
-4. **进阶路径**：掌握后可继续深入Beer-Lambert定律等进阶主题
-5. **实践标准**：真正掌握Ray Marching的标志是能在具体场景中灵活运用并正确判断适用边界
+**固定步长**实现最为简单，适合均匀密度场。步长 $\Delta t$ 通常设置为体积包围盒尺寸除以采样数（典型值为 64～256 步）。步长过大会产生"阶梯状"伪影（Banding Artifact），步长过小则显著增加计算量。
+
+**自适应步长**（也称 Sphere Tracing 或 Distance-Aided Marching）利用有符号距离场（SDF）来动态调整步长：在空旷区域使用当前点到最近表面的距离作为步长，仅在接近边界时缩小步长。这一技术由 John C. Hart 在1996年正式提出，可将平均步进次数从数百次减少到20～40次，同时保持亚像素精度。
+
+### 抖动采样（Jittered Sampling）
+
+固定步长会使所有像素的采样位置呈规律性分布，放大时产生同相位的周期性噪声。标准做法是在第一步 $t_0$ 处加入均匀随机偏移 $\xi \in [0, \Delta t)$：
+
+$$t_0 = t_{\min} + \xi$$
+
+这将系统性误差转化为白噪声，之后可以用时间累积（TAA，Temporal Anti-Aliasing）或空间滤波消除。虚幻引擎的体积雾渲染默认启用此技术，仅用 8 步即可取得接近 64 步的视觉质量。
+
+---
+
+## 实际应用
+
+### GPU 着色器实现
+
+在 GLSL/HLSL 中，Ray Marching 通常作为全屏后处理 Pass 实现：顶点着色器输出四边形覆盖屏幕，片段着色器对每个像素重建世界空间光线方向，随后执行步进循环，查询三维纹理（3D Texture）或程序噪声（如 FBM Perlin Noise）作为密度场，最终将累积颜色与不透明度混合写入帧缓冲。在 RTX 3080 上，以 1920×1080 分辨率执行 64 步查询约耗时 2～3 毫秒，在实时游戏预算内可行。
+
+### 体积云渲染
+
+Guerrilla Games 在《地平线：零之黎明》（2017）中公开了其体积云方案：使用两层 3D 噪声纹理（低频 Perlin-Worley 定形 + 高频 Worley 侵蚀细节），结合 Ray Marching 在 $1/4$ 分辨率下渲染云层，步数约为 128，再通过重投影将结果升采样到全分辨率，整体帧消耗控制在 1.5 毫秒以内。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将Ray Marching与体积渲染中其他相近概念混为一谈。例如，步进式体积渲染的基本算法的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解体积渲染概述就学习Ray Marching，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Ray Marching虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：步长越小精度一定越高。** 对于程序噪声生成的密度场，极小步长会在高频噪声处过采样，同时放大浮点精度误差。实践中存在一个有效步长下限（通常为体素大小的 1/2 至 1 倍），低于此值时误差不再减小，计算量却线性增加。
 
-## 知识衔接
+**误区二：Ray Marching 只能渲染"软"体积，无法处理硬表面。** 实际上，当密度场为 SDF 时，Ray Marching（即 Sphere Tracing）可以精确渲染隐式曲面，包括曼德尔堡集、齿轮、融合球等几何。Inigo Quilez 维护的 Shadertoy 上有数千个此类示例，完全基于 Ray Marching 而无任何多边形几何。
 
-### 先修知识
-先修知识包括：
-- **体积渲染概述** — 为Ray Marching提供了必要的概念基础
+**误区三：透射率累积需要保存所有历史采样点。** 逐步递推公式 $T_{i+1} = T_i \cdot \exp(-\sigma_i \Delta t)$ 是单值递推，只需维护一个标量 $T_{\text{current}}$，无需存储沿线所有密度值，内存复杂度为 $O(1)$。
 
-### 后续学习
-掌握Ray Marching后可继续学习：
-- **Beer-Lambert定律** — 在Ray Marching基础上进一步拓展
-- **体积云实现** — 在Ray Marching基础上进一步拓展
-- **体积雾** — 在Ray Marching基础上进一步拓展
-- **体积光** — 在Ray Marching基础上进一步拓展
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：30-60分钟。建议采用以下策略：
+Ray Marching 依赖**体积渲染概述**中建立的辐射传输方程（RTE）作为物理基础，步进循环本质上是对 RTE 积分的黎曼和近似。
 
-- **主动回忆**：学完后不看笔记复述Ray Marching的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Ray Marching与图形学中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Ray Marching，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于体积渲染的章节可作为深入参考
-- Wikipedia: [Cg Ray Marching](https://en.wikipedia.org/wiki/cg_ray_marching) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Cg Ray Marching" 可找到配套视频教程
+掌握 Ray Marching 后，可直接进入以下专题：**Beer-Lambert 定律**给出了透射率指数衰减的解析推导，使 $T_i$ 的计算有了精确的物理诠释；**体积云实现**和**体积雾**在 Ray Marching 框架上叠加噪声建模与相位函数（Henyey-Greenstein）；**体积光**（Volumetric Lighting / God Rays）利用 Ray Marching 对阴影光线再次步进以计算透射遮蔽；**火焰与爆炸**则引入发射项 $\mathbf{e}(\mathbf{x})$，将 Ray Marching 的累积公式扩展为包含自发光的完整形式。
