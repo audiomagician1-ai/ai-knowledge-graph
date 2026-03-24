@@ -1,36 +1,36 @@
 {
-  "_generated": "2026-03-24T19:10:48.440188",
+  "_generated": "2026-03-24T20:10:22.887677",
   "_version": "scorer-v2.0",
   "total_docs": 6156,
-  "avg_score": 53.9,
+  "avg_score": 54.2,
   "tier_distribution": {
-    "S": 246,
-    "A": 1251,
-    "B": 4659,
+    "S": 250,
+    "A": 1302,
+    "B": 4604,
     "C": 0
   },
   "domain_summary": {
     "3d-art": {
       "count": 226,
-      "avg_score": 52.1,
-      "min_score": 41.9,
+      "avg_score": 53.2,
+      "min_score": 42.0,
       "max_score": 100.0,
       "tiers": {
         "S": 5,
-        "A": 44,
-        "B": 177,
+        "A": 51,
+        "B": 170,
         "C": 0
       }
     },
     "ai-engineering": {
       "count": 392,
-      "avg_score": 54.4,
-      "min_score": 41.9,
+      "avg_score": 54.5,
+      "min_score": 42.0,
       "max_score": 100.0,
       "tiers": {
         "S": 31,
-        "A": 60,
-        "B": 301,
+        "A": 61,
+        "B": 300,
         "C": 0
       }
     },
@@ -48,49 +48,49 @@
     },
     "animation": {
       "count": 180,
-      "avg_score": 48.4,
-      "min_score": 41.9,
+      "avg_score": 48.6,
+      "min_score": 42.0,
       "max_score": 82.9,
       "tiers": {
         "S": 2,
-        "A": 18,
-        "B": 160,
+        "A": 19,
+        "B": 159,
         "C": 0
       }
     },
     "biology": {
       "count": 169,
-      "avg_score": 64.6,
-      "min_score": 41.9,
+      "avg_score": 65.6,
+      "min_score": 42.0,
       "max_score": 99.9,
       "tiers": {
         "S": 15,
-        "A": 87,
-        "B": 67,
+        "A": 92,
+        "B": 62,
         "C": 0
       }
     },
     "computer-graphics": {
       "count": 250,
-      "avg_score": 49.9,
-      "min_score": 41.9,
+      "avg_score": 50.6,
+      "min_score": 42.0,
       "max_score": 96.6,
       "tiers": {
         "S": 5,
-        "A": 29,
-        "B": 216,
+        "A": 34,
+        "B": 211,
         "C": 0
       }
     },
     "concept-design": {
       "count": 220,
-      "avg_score": 50.4,
-      "min_score": 41.9,
+      "avg_score": 51.2,
+      "min_score": 42.0,
       "max_score": 79.6,
       "tiers": {
         "S": 0,
-        "A": 40,
-        "B": 180,
+        "A": 45,
+        "B": 175,
         "C": 0
       }
     },
@@ -108,49 +108,49 @@
     },
     "economics": {
       "count": 166,
-      "avg_score": 51.8,
-      "min_score": 41.9,
+      "avg_score": 52.9,
+      "min_score": 42.1,
       "max_score": 99.9,
       "tiers": {
-        "S": 10,
-        "A": 22,
-        "B": 134,
+        "S": 11,
+        "A": 26,
+        "B": 129,
         "C": 0
       }
     },
     "english": {
       "count": 188,
-      "avg_score": 61.4,
-      "min_score": 41.9,
+      "avg_score": 63.9,
+      "min_score": 42.0,
       "max_score": 100.0,
       "tiers": {
-        "S": 8,
-        "A": 84,
-        "B": 96,
+        "S": 9,
+        "A": 96,
+        "B": 83,
         "C": 0
       }
     },
     "finance": {
       "count": 161,
-      "avg_score": 60.1,
-      "min_score": 41.9,
+      "avg_score": 61.7,
+      "min_score": 42.0,
       "max_score": 99.9,
       "tiers": {
-        "S": 16,
-        "A": 57,
-        "B": 88,
+        "S": 17,
+        "A": 63,
+        "B": 81,
         "C": 0
       }
     },
     "game-audio-music": {
       "count": 180,
-      "avg_score": 48.5,
-      "min_score": 41.9,
-      "max_score": 55.7,
+      "avg_score": 48.7,
+      "min_score": 42.2,
+      "max_score": 79.6,
       "tiers": {
         "S": 0,
-        "A": 0,
-        "B": 180,
+        "A": 1,
+        "B": 179,
         "C": 0
       }
     },
@@ -168,13 +168,13 @@
     },
     "game-design": {
       "count": 243,
-      "avg_score": 61.8,
+      "avg_score": 62.6,
       "min_score": 41.9,
       "max_score": 99.9,
       "tiers": {
-        "S": 14,
-        "A": 113,
-        "B": 116,
+        "S": 15,
+        "A": 117,
+        "B": 111,
         "C": 0
       }
     },
@@ -518,95 +518,95 @@
       "domain": "game-engine"
     },
     {
-      "file": "3d-art\\3da-bake-cage.md",
-      "concept": "Cage设置",
+      "file": "game-design\\design-docs\\ui-wireframe.md",
+      "concept": "UI线框图",
       "score": 41.9,
       "tier": "B",
-      "domain": "3d-art"
+      "domain": "game-design"
     },
     {
-      "file": "3d-art\\3da-env-optimization.md",
-      "concept": "环境优化",
+      "file": "game-design\\difficulty-curve\\casual-difficulty.md",
+      "concept": "休闲难度",
       "score": 41.9,
       "tier": "B",
-      "domain": "3d-art"
+      "domain": "game-design"
     },
     {
-      "file": "3d-art\\3da-env-tileable.md",
-      "concept": "可平铺资产",
+      "file": "game-design\\difficulty-curve\\enemy-scaling.md",
+      "concept": "敌人缩放",
       "score": 41.9,
       "tier": "B",
-      "domain": "3d-art"
+      "domain": "game-design"
     },
     {
-      "file": "3d-art\\3da-env-vegetation.md",
-      "concept": "植被制作",
+      "file": "game-design\\difficulty-curve\\hardcore-difficulty.md",
+      "concept": "硬核难度",
       "score": 41.9,
       "tier": "B",
-      "domain": "3d-art"
+      "domain": "game-design"
     },
     {
-      "file": "3d-art\\3da-prop-weapon-art.md",
-      "concept": "武器美术管线",
+      "file": "game-design\\difficulty-curve\\skill-vs-challenge.md",
+      "concept": "技能vs挑战",
       "score": 41.9,
       "tier": "B",
-      "domain": "3d-art"
+      "domain": "game-design"
     },
     {
-      "file": "3d-art\\3da-uv-organic-uv.md",
-      "concept": "有机体UV",
+      "file": "game-design\\difficulty-curve\\soulslike-difficulty.md",
+      "concept": "魂系难度",
       "score": 41.9,
       "tier": "B",
-      "domain": "3d-art"
+      "domain": "game-design"
     },
     {
-      "file": "3d-art\\3da-uv-projection.md",
-      "concept": "投影展开",
+      "file": "game-design\\feedback-systems\\audio-feedback.md",
+      "concept": "音频反馈",
       "score": 41.9,
       "tier": "B",
-      "domain": "3d-art"
+      "domain": "game-design"
     },
     {
-      "file": "animation\\anim-crowd-face.md",
-      "concept": "群演面部",
+      "file": "game-design\\feedback-systems\\damage-numbers.md",
+      "concept": "伤害数字",
       "score": 41.9,
       "tier": "B",
-      "domain": "animation"
+      "domain": "game-design"
     },
     {
-      "file": "biology\\ecology\\ecosystem-ecology.md",
-      "concept": "生态系统生态学",
+      "file": "game-design\\feedback-systems\\feedback-fatigue.md",
+      "concept": "反馈疲劳",
       "score": 41.9,
       "tier": "B",
-      "domain": "biology"
+      "domain": "game-design"
     },
     {
-      "file": "biology\\evolution\\origin-of-life.md",
-      "concept": "生命起源",
+      "file": "game-design\\feedback-systems\\reward-feedback.md",
+      "concept": "奖励反馈",
       "score": 41.9,
       "tier": "B",
-      "domain": "biology"
+      "domain": "game-design"
     },
     {
-      "file": "biology\\human-physiology\\brain-function.md",
-      "concept": "脑的功能",
+      "file": "game-design\\randomness-design\\dice-mechanics.md",
+      "concept": "骰子机制",
       "score": 41.9,
       "tier": "B",
-      "domain": "biology"
+      "domain": "game-design"
     },
     {
-      "file": "biology\\microbiology\\immune-evasion.md",
-      "concept": "免疫逃逸",
+      "file": "game-design\\randomness-design\\weighted-random.md",
+      "concept": "加权随机",
       "score": 41.9,
       "tier": "B",
-      "domain": "biology"
+      "domain": "game-design"
     },
     {
-      "file": "biology\\molecular-biology\\epigenetics.md",
-      "concept": "表观遗传学",
+      "file": "game-design\\social-systems\\mentor-system.md",
+      "concept": "师徒系统",
       "score": 41.9,
       "tier": "B",
-      "domain": "biology"
+      "domain": "game-design"
     }
   ]
 }
