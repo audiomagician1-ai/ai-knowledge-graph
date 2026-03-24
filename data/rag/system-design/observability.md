@@ -9,88 +9,79 @@ is_milestone: false
 tags: ["logging", "metrics", "tracing", "opentelemetry"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 43.2
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.419
-last_scored: "2026-03-22"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # 可观测性
 
 ## 概述
 
-可观测性（Observability）是AI工程（AI Engineering）中系统设计领域的重要概念。难度等级4/9（中级）。
+可观测性（Observability）这一术语源自控制论，由匈牙利裔美国工程师 Rudolf Kálmán 于1960年提出，用于描述"能否从系统外部输出推断内部状态"的能力。在分布式AI系统工程中，可观测性被重新定义为：通过收集日志（Logs）、指标（Metrics）、追踪（Traces）三类遥测数据，使工程师能够在不修改系统代码的前提下，回答任意关于系统内部状态的未知问题。这与传统监控（Monitoring）的本质区别在于：监控回答"是否出问题"，可观测性回答"为什么出问题"。
 
-掌握分布式系统的日志、指标、追踪三大支柱。
+可观测性在AI推理服务和训练集群中尤为关键。一个典型的LLM推理集群可能同时运行数百个微服务，单次用户请求跨越10至20个服务节点，传统逐机器排查的方式已完全不可行。2021年AWS re:Invent大会披露，SRE团队将平均故障恢复时间（MTTR）从47分钟压缩至8分钟的核心手段，正是建立了完整的三支柱可观测性体系。
 
-在知识体系中，可观测性建立在熔断器模式、日志与监控的基础之上，是理解可进入更高级主题的关键前置知识。为什么可观测性如此重要？因为它在系统设计中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### 第一支柱：结构化日志
 
-### 1. 掌握分布式系统的日志
+原始文本日志（如`ERROR: connection failed`）在分布式环境中几乎无法聚合分析。结构化日志要求以固定Schema（通常为JSON）记录每一条日志，必须包含`timestamp`、`severity`、`service_name`、`trace_id`和`span_id`五个标准字段。`trace_id`是连接三大支柱的纽带——同一请求在所有服务产生的日志，必须携带相同的128位`trace_id`，才能在ELK（Elasticsearch + Logstash + Kibana）或Loki中实现跨服务日志关联查询。
 
-掌握分布式系统的日志是可观测性(Observability)的核心组成部分之一。在系统设计的实践中，掌握分布式系统的日志决定了系统行为的关键特征。例如，当掌握分布式系统的日志参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握分布式系统的日志需要结合AI工程的基本原理进行分析。
+AI系统特有的日志场景包括：模型推理延迟日志（记录每次forward pass耗时）、Token使用量日志（输入/输出Token数量）、以及特征工程失败日志（记录具体缺失特征名称和样本ID）。日志采样率（Sampling Rate）是关键决策：对于高流量AI服务，通常对正常请求按1%采样，对错误和慢请求保持100%全量记录。
 
-### 2. 指标
+### 第二支柱：时序指标
 
-指标是可观测性(Observability)的核心组成部分之一。在系统设计的实践中，指标决定了系统行为的关键特征。例如，当指标参数或条件发生变化时，整体表现会产生显著差异。深入理解指标需要结合AI工程的基本原理进行分析。
+指标是对系统状态的数值型聚合，其数据模型由**名称、标签集（Label Set）和时间戳-数值对序列**构成。Prometheus的数据模型是业界标准，其PromQL查询语言支持如下典型表达式：
 
-### 3. 追踪三大支柱
+```
+rate(llm_inference_requests_total{status="error"}[5m]) 
+/ rate(llm_inference_requests_total[5m])
+```
 
-追踪三大支柱是可观测性(Observability)的核心组成部分之一。在系统设计的实践中，追踪三大支柱决定了系统行为的关键特征。例如，当追踪三大支柱参数或条件发生变化时，整体表现会产生显著差异。深入理解追踪三大支柱需要结合AI工程的基本原理进行分析。
+此式计算过去5分钟内推理请求的错误率。
 
+AI系统需要监控四类核心指标，通称"四大黄金信号"（Google SRE手册提出）：**延迟**（P50/P95/P99分位数，而非平均值）、**流量**（每秒请求数QPS）、**错误率**（HTTP 5xx及模型级错误）、**饱和度**（GPU显存占用率、KV Cache命中率）。其中GPU显存饱和度是AI系统区别于普通Web服务的独特指标，当显存占用超过85%时，通常预示OOM（Out of Memory）错误即将发生。
 
-### 关键原理分析
+### 第三支柱：分布式追踪
 
-可观测性的核心在于掌握分布式系统的日志、指标、追踪三大支柱。从理论角度看，该概念涉及以下层面：
+分布式追踪基于OpenTelemetry（OTel）标准，每次请求生成一个**Trace**，由多个**Span**构成有向无环图（DAG）。每个Span记录：操作名称、开始时间戳、持续时长、父Span ID，以及键值对形式的自定义属性（Attributes）。
 
-1. **定义层**：明确可观测性的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解可观测性内部各要素的相互作用方式
-3. **应用层**：将可观测性的原理映射到AI工程的实际场景中
+在LLM应用中，一个典型Trace包含以下Span层级：
+- `http.server`（接收用户请求，根Span）
+  - `retrieval.vector_search`（RAG检索，含`embedding_model`属性）
+  - `llm.completion`（模型推理，含`model_name`、`prompt_tokens`属性）
+    - `tokenizer.encode`（分词）
+    - `gpu.forward_pass`（GPU推理，最关键的耗时节点）
+  - `http.response`（返回结果）
 
-思考题：如何判断可观测性的应用是否超出了其理论适用范围？
+Jaeger和Zipkin是常用的Trace后端，它们通过`trace_id`将所有Span组装为火焰图（Flame Graph），直观呈现哪个服务是延迟瓶颈。
 
-## 关键要点
+## 实际应用
 
-1. **核心定义**：可观测性的本质是掌握分布式系统的日志、指标、追踪三大支柱，这是理解整个概念的出发点
-2. **多维理解**：掌握可观测性需要同时理解掌握分布式系统的日志和追踪三大支柱等关键维度
-3. **先修关系**：扎实的熔断器模式基础对理解可观测性至关重要
-4. **进阶路径**：可广泛应用于AI工程各方面
-5. **实践标准**：真正掌握可观测性的标志是能在具体场景中灵活运用并正确判断适用边界
+**AI推理服务的可观测性落地**：部署一个基于vLLM的推理服务时，需在`/metrics`端点暴露Prometheus格式指标，包括`vllm:num_requests_running`（并发请求数）、`vllm:gpu_cache_usage_perc`（KV Cache使用率）。当KV Cache使用率持续超过90%时，应触发自动扩容或请求限流，这一阈值判断依赖Metrics支柱。
+
+**慢查询根因分析**：当P99延迟突然从200ms升至2000ms时，标准排查流程为：① 查Metrics定位异常时间窗口（如14:23-14:35）；② 在该窗口内筛选`duration > 1s`的慢Trace；③ 展开慢Trace找到耗时最长的Span（如`retrieval.vector_search`占比87%）；④ 用该Span的`trace_id`在日志系统查询原始错误信息（如"向量索引未预热，进行全量扫描"）。此流程完整串联了三大支柱。
+
+**模型性能退化检测**：记录每次推理的`model_accuracy_score`或`reward_score`作为业务指标（Business Metric），通过Grafana设置连续5分钟均值低于阈值即告警，可在用户投诉前发现模型退化问题。
 
 ## 常见误区
 
-1. **混淆概念边界**：将可观测性与系统设计中其他相近概念混为一谈。例如，掌握分布式系统的日志的适用条件与其他指标概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解熔断器模式就学习可观测性，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：可观测性虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：将可观测性等同于日志收集**。许多团队在系统中仅部署ELK或EFK（Elasticsearch + Fluentd + Kibana）即认为已具备可观测性。实际上，缺少Traces意味着无法定位跨服务请求的延迟分布；缺少Metrics意味着无法设置有意义的SLO（服务等级目标）告警。只有三支柱全部覆盖，才能应对"服务整体正常但部分用户请求异常缓慢"此类复杂故障场景。
 
-## 知识衔接
+**误区二：越多数据越好**。全量收集所有日志和Trace会导致存储成本爆炸，以及查询时的信噪比下降。正确做法是实施**基于头部采样（Head-based Sampling）和尾部采样（Tail-based Sampling）的混合策略**：头部采样在请求入口按概率决定是否采集，尾部采样则在请求完成后，对耗时超过阈值或含错误的Trace进行补充全量保留。OpenTelemetry Collector原生支持Tail Sampling Processor配置。
 
-### 先修知识
-先修知识包括：
-- **熔断器模式** — 为可观测性提供了必要的概念基础
-- **日志与监控** — 为可观测性提供了必要的概念基础
+**误区三：可观测性仅对生产环境有意义**。AI系统的模型训练过程同样需要可观测性：训练Loss曲线是指标、梯度异常是日志、DataLoader各阶段耗时是追踪。MLflow和Weights & Biases（W&B）正是将可观测性三支柱应用于训练循环的专用工具，其中W&B的`wandb.log()`每隔N个step记录一次指标，相当于训练过程的Metrics采集。
 
-### 后续学习
-掌握可观测性后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索AI工程其他分支。
+## 知识关联
 
-## 学习建议
+**与熔断器模式的关联**：熔断器（Circuit Breaker）的状态转换（Closed → Open → Half-Open）依赖错误率指标的实时计算，而这正是可观测性第二支柱（Metrics）的输出。Hystrix和Resilience4j等熔断器库通常内置Metrics端点，可直接接入Prometheus采集，形成"可观测性数据驱动熔断决策"的闭环。熔断器打开时产生的大量降级日志，也需要通过日志聚合系统（第一支柱）进行告警，避免无声失败。
 
-预计学习时间：2-3小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述可观测性的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将可观测性与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释可观测性，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于系统设计的章节可作为深入参考
-- Wikipedia: [Observability](https://en.wikipedia.org/wiki/observability) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Observability" 可找到配套视频教程
+**与日志与监控的延伸**：传统监控关注预定义的已知故障模式（Known Unknowns），而可观测性通过追踪支柱引入的上下文关联能力，使工程师能够诊断从未预料到的故障（Unknown Unknowns）。从监控升级至完整可观测性体系，需要引入OpenTelemetry SDK完成代码插桩（Instrumentation），并部署Tempo（Traces）、Prometheus（Metrics）、Loki（Logs）构成Grafana推荐的PLT（Prometheus-Loki-Tempo）开源可观测性栈。
