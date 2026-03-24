@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["设计模式"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.0
 generation_method: "intranet-llm-rewrite-v2"
@@ -25,98 +25,114 @@ scorer_version: "scorer-v2.0"
 
 ## 概述
 
-工厂模式（Factory Pattern）是一种创建型设计模式，其核心目的是将对象的**创建逻辑**与**使用逻辑**解耦。调用方无需知道具体类的名称，只需向工厂请求所需类型的对象，工厂负责实例化并返回。这一模式最早由GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式归类，在该书中被拆分为"简单工厂"、"工厂方法"和"抽象工厂"三个相关变体。
+工厂模式（Factory Pattern）是一种创建型设计模式，其核心思想是将对象的**创建逻辑**与**使用逻辑**分离，由一个专门的"工厂"负责实例化具体类。调用者只需指定所需对象的类型，无需了解该类型对象的具体构造方式。工厂模式在《设计模式：可复用面向对象软件的基础》（GoF，1994年）中被正式收录，并细分为简单工厂、工厂方法（Factory Method）和抽象工厂（Abstract Factory）三种变体。
 
-工厂模式在AI工程领域尤为重要，因为深度学习框架中存在大量需要根据配置动态创建的对象——例如根据字符串名称动态创建不同的优化器（Adam、SGD、RMSProp）、损失函数或数据增强策略。如果直接在业务代码中写 `if optimizer == "adam": return Adam(lr)` 这样的分支，当新增优化器类型时必须修改已有代码，违反了开放-封闭原则（OCP）。工厂模式通过将这些分支逻辑集中到工厂类中，使系统对扩展开放、对修改封闭。
+工厂模式解决的根本问题是**依赖倒置**：当代码直接使用 `new ClassName()` 创建对象时，调用方与具体类之间产生强耦合，一旦需要替换实现类，所有调用点均需修改。工厂模式通过引入创建接口，使调用方只依赖抽象类型而非具体类型，从而使系统更易于扩展和测试。
+
+在AI工程场景下，工厂模式尤其常见于**模型加载器**和**预处理管道**的构建——不同任务（文本分类、目标检测、语音识别）需要实例化不同的模型对象，通过工厂模式可以根据配置文件动态决定实例化哪种模型，而无需在业务代码中写满 `if/elif` 分支。
+
+---
 
 ## 核心原理
 
-### 三种变体及其结构差异
+### 简单工厂（Simple Factory）
 
-**简单工厂（Simple Factory）**并非GoF正式模式，而是一个静态方法根据传入参数决定返回哪个子类实例。其结构仅有一个工厂类，包含一个静态方法 `create(type: str) -> Product`。优点是实现简单，缺点是每新增一种产品都必须修改工厂类本身。
-
-**工厂方法（Factory Method）**是GoF正式收录的模式，其核心结构包含四个角色：
-- `Creator`（抽象创建者）：声明抽象方法 `factory_method() -> Product`
-- `ConcreteCreator`（具体创建者）：重写 `factory_method()` 返回特定子类
-- `Product`（抽象产品）：定义产品接口
-- `ConcreteProduct`（具体产品）：实现产品接口
-
-工厂方法将"选择实例化哪个子类"的决策延迟到子类，调用方只依赖 `Creator` 抽象类，从而彻底隔离了对具体产品类的直接依赖。
-
-**抽象工厂（Abstract Factory）**处理"产品族"问题。当系统需要同时创建多个相互关联的对象时使用——例如同时创建 `PyTorchOptimizer` + `PyTorchScheduler`，或 `TensorFlowOptimizer` + `TensorFlowScheduler`，保证同族产品之间的兼容性。抽象工厂接口声明多个 `create_X()` 方法，每个具体工厂实现整个产品族的创建。
-
-### 注册表工厂（Registry Pattern）
-
-在AI工程中，更常见的实现是"注册表工厂"，它结合了工厂模式与装饰器语法：
+简单工厂不属于GoF的23种正式模式，但最直观。其结构由一个静态方法 `create(type)` 构成，内部使用条件分支返回不同子类的实例：
 
 ```python
-_registry = {}
-
-def register(name):
-    def decorator(cls):
-        _registry[name] = cls
-        return cls
-    return decorator
-
-def create(name, **kwargs):
-    return _registry[name](**kwargs)
-
-@register("adam")
-class AdamOptimizer:
-    def __init__(self, lr=0.001): ...
+class ModelFactory:
+    @staticmethod
+    def create(model_type: str):
+        if model_type == "bert":
+            return BertModel()
+        elif model_type == "gpt":
+            return GPTModel()
+        else:
+            raise ValueError(f"Unknown model type: {model_type}")
 ```
 
-使用 `@register("adam")` 装饰器时，新增优化器无需修改工厂函数，完全符合OCP。PyTorch的 `torch.optim` 模块以及Hugging Face的 `AutoModel.from_pretrained()` 背后均使用了类似的注册机制。
+**缺点明确**：每新增一种模型类型，就必须修改 `ModelFactory` 的源码，违反了**开闭原则**（对扩展开放，对修改关闭）。
 
-### 工厂模式与直接实例化的对比
+### 工厂方法（Factory Method）
 
-直接调用 `Adam(lr=0.001)` 在调用方产生了对 `Adam` 类的硬依赖，单元测试时无法注入Mock对象。工厂模式使依赖方向反转：调用方依赖抽象工厂接口，具体产品类可随时替换。这在AI实验管理中极为关键——通过修改配置文件中的 `"optimizer": "sgd"` 即可切换训练策略，无需改动训练循环代码。
+工厂方法模式将创建逻辑推迟到子类实现，定义抽象工厂接口 `create_model()`，每种具体工厂子类覆写该方法：
+
+```python
+from abc import ABC, abstractmethod
+
+class BaseModelFactory(ABC):
+    @abstractmethod
+    def create_model(self):
+        pass
+
+class BertFactory(BaseModelFactory):
+    def create_model(self):
+        return BertModel(vocab_size=30522, hidden_size=768)
+
+class GPTFactory(BaseModelFactory):
+    def create_model(self):
+        return GPTModel(vocab_size=50257, n_layers=12)
+```
+
+此结构满足开闭原则：新增模型类型只需新增一对 `(ProductClass, FactoryClass)`，无需改动已有代码。其UML结构包含四个角色：**抽象产品**、**具体产品**、**抽象工厂**、**具体工厂**。
+
+### 抽象工厂（Abstract Factory）
+
+当系统需要创建**一族相关对象**时使用抽象工厂。例如，AI推理系统同时需要匹配的模型（Model）和对应的分词器（Tokenizer），两者必须来自同一"产品族"才能正常协作：
+
+```python
+class AbstractAIFactory(ABC):
+    @abstractmethod
+    def create_model(self): pass
+
+    @abstractmethod
+    def create_tokenizer(self): pass
+
+class BertSuite(AbstractAIFactory):
+    def create_model(self):
+        return BertModel()
+    def create_tokenizer(self):
+        return BertTokenizer(vocab_file="bert-base-uncased-vocab.txt")
+```
+
+抽象工厂保证了同族对象之间的**兼容性约束**，避免出现GPT模型配BertTokenizer的混用错误。代价是：新增一种产品类型（如新增 `create_embedder()`）需要修改所有具体工厂类。
+
+---
 
 ## 实际应用
 
-**场景1：AI模型组件动态加载**
+**场景1：多后端推理引擎切换**
 
-```python
-# 基于配置文件创建不同的激活函数
-class ActivationFactory:
-    _map = {
-        "relu": nn.ReLU,
-        "gelu": nn.GELU,
-        "silu": nn.SiLU,
-    }
-    @classmethod
-    def create(cls, name: str) -> nn.Module:
-        if name not in cls._map:
-            raise ValueError(f"Unknown activation: {name}")
-        return cls._map[name]()
-```
+PyTorch、ONNX Runtime、TensorRT是AI推理的三种常见后端，各自的初始化参数差异极大（TensorRT需指定 `max_workspace_size`，ONNX Runtime需指定 `execution_provider`）。用工厂方法模式，业务层只调用 `engine_factory.create_engine(config)`，底层自动根据 `config.backend` 字段实例化对应引擎，实现零代码侵入的后端切换。
 
-这种写法让模型架构配置文件中的 `"activation": "gelu"` 可以直接驱动模型构建，LLM研究中切换激活函数（如从ReLU到SwiGLU）只需修改配置，不动模型代码。
+**场景2：数据预处理管道**
 
-**场景2：数据加载器工厂**
+NLP任务中，中文文本需要 `JiebaTokenizer`，英文文本需要 `WhitespaceTokenizer`，代码扫描语言标签后交由 `TokenizerFactory.create(lang)` 返回对应实例。该模式在 Hugging Face `transformers` 库的 `AutoModel.from_pretrained()` 方法中有明确体现——`AutoModel` 本身就是一个工厂，通过读取 `config.json` 中的 `model_type` 字段决定实例化哪个具体模型类。
 
-不同数据集（ImageNet、COCO、自定义CSV）的加载逻辑完全不同，但训练脚本只需调用 `DataLoaderFactory.create(config.dataset_type, **config.dataset_args)` 获得统一接口的 `DataLoader` 对象，训练主循环对数据集类型一无所知。
+**场景3：单元测试中替换真实模型**
 
-**场景3：Scikit-learn的`make_pipeline`与`clone`**
+测试阶段不希望加载真实的大模型（耗时数分钟），可以创建 `MockModelFactory` 替换生产环境的 `RealModelFactory`，注入轻量级的 stub 对象，整个测试用例运行时间从分钟级压缩到毫秒级。
 
-Scikit-learn的 `sklearn.base.clone(estimator)` 函数本质上是一个工厂方法，它通过读取 `estimator.get_params()` 重新构造相同类型和参数的新对象，避免了在交叉验证中复用同一实例导致的数据泄漏问题。
+---
 
 ## 常见误区
 
-**误区1：将简单工厂误认为等同于工厂方法**
+**误区1：将简单工厂等同于工厂方法模式**
 
-简单工厂中的静态 `create()` 方法每次新增产品都必须修改工厂类，违反OCP；工厂方法通过新增 `ConcreteCreator` 子类扩展，不修改已有代码。两者的区别不是名称问题，而是扩展方式的根本不同。很多教程将简单工厂称为"工厂模式"，导致初学者误以为工厂模式必然存在大量 `if-elif` 分支。
+两者结构不同：简单工厂的"工厂"是一个静态方法，无需继承；工厂方法的"工厂"是一个抽象类，依赖多态。当需要通过依赖注入替换工厂实现时，简单工厂无法做到（静态方法不可被覆写），工厂方法可以。把简单工厂用于需要开闭原则的场景，是最典型的滥用。
 
-**误区2：抽象工厂适用于所有多产品场景**
+**误区2：认为抽象工厂适用于所有多类型创建场景**
 
-抽象工厂的价值在于保证**同族产品的约束关系**，而不是"只要有多种产品就用抽象工厂"。如果 `OptimizerFactory` 和 `SchedulerFactory` 之间没有必须配对的约束，独立的工厂方法更合适，强行引入抽象工厂只会增加4-6个额外类，造成过度设计。
+抽象工厂的适用条件非常具体：必须存在**多个产品维度**且产品之间有**族约束**。如果只有一个产品维度（只需创建模型，不涉及配套的tokenizer、optimizer等），强行使用抽象工厂反而引入不必要的类爆炸——每增加一种模型，就需要新增至少1个工厂类+1个产品类，而工厂方法只需新增1个工厂类。
 
-**误区3：工厂模式会隐藏对象创建细节导致调试困难**
+**误区3：工厂模式解决了所有对象创建问题**
 
-工厂模式确实将实例化集中到工厂类，但这反而使调试更方便——所有对象创建的日志、监控、参数校验逻辑都可以统一在工厂入口处添加，而不是散落在数十个调用点。在AI实验中，工厂可在 `create()` 时自动记录所有超参数，实现实验可复现性。
+工厂模式适合创建**同一类型体系**下的对象。若对象的构建步骤复杂且有顺序依赖（如先设置层数、再设置激活函数、最后编译），仅靠工厂无法优雅表达——此时需要转向**建造者模式**，通过链式调用 `builder.set_layers(12).set_activation("gelu").build()` 来分步构造。
+
+---
 
 ## 知识关联
 
-工厂模式建立在**设计模式概述**中介绍的创建型模式分类和开放-封闭原则之上，掌握UML类图中的继承、聚合关系是读懂工厂方法四角色结构的前提。工厂模式处理的是**单步创建**问题——一次调用返回完整可用对象。
+工厂模式建立在**设计模式概述**中介绍的"面向接口编程"和"开闭原则"之上——不理解为什么要避免 `new ConcreteClass()`，就无法体会工厂方法的价值。工厂方法的多态机制直接依赖抽象类与继承体系，因此对Python `ABC`（Abstract Base Class）或Java `interface` 的掌握是前提。
 
-后续的**建造者模式（Builder Pattern）**解决的是**多步骤创建**问题：当对象的构造需要经历多个有序步骤、且中间状态有意义时（如逐层添加神经网络层构建模型），建造者模式通过 `Builder.add_layer().set_optimizer().build()` 的链式调用分离构造过程与表示。两者的关键区别在于：工厂模式的 `create()` 是原子操作，建造者模式的 `build()` 是多步骤过程的终点。在复杂AI系统中，常见的组合是**建造者模式内部调用工厂模式**——`ModelBuilder` 在每一步中使用 `LayerFactory.create(config)` 创建具体层对象。
+工厂模式完成了"创建单一对象"的职责分离，但面对构建步骤复杂的对象时能力有限，这正是**建造者模式**的切入点：建造者模式将复杂对象的构建过程拆解为多个独立步骤，可以看作工厂模式在"构建复杂度"维度上的延伸。两者的边界在于：工厂关注**创建哪种类型**，建造者关注**如何一步步构建同一类型**。

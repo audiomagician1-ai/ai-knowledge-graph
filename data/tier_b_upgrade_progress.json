@@ -794,10 +794,30 @@
     "vfx-fluid-ocean",
     "debate-writing",
     "pathos-techniques",
-    "classical-poetry-forms"
+    "classical-poetry-forms",
+    "creative-process",
+    "thesis-writing",
+    "memo-writing",
+    "copyediting",
+    "3da-retopo-face-loops",
+    "3da-rig-spine",
+    "boolean-logic",
+    "adjacency-matrix",
+    "factory-pattern",
+    "service-discovery",
+    "db-locking",
+    "anim-retargeting",
+    "prokaryotic-cells",
+    "pcr-technology",
+    "marine-ecology",
+    "viral-replication",
+    "cg-rt-reflection",
+    "cg-radiosity",
+    "cg-eye-adaptation",
+    "cg-detail-mapping"
   ],
   "errors": [],
-  "total_upgraded": 795,
+  "total_upgraded": 815,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-24T21:23:54.089016"
+  "last_updated": "2026-03-24T21:42:18.809025"
 }

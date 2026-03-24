@@ -59,10 +59,30 @@
     "vfx-pp-ao",
     "3da-hs-game-ready",
     "3da-org-muscle-deform",
-    "3da-org-game-ready-char"
+    "3da-org-game-ready-char",
+    "3da-sculpt-detailing",
+    "3da-bake-exploded",
+    "3da-env-lighting-art",
+    "design-patterns-intro",
+    "dom-manipulation",
+    "microservices-intro",
+    "monitoring-alerting",
+    "gpt-model",
+    "anim-modular-rig",
+    "cg-depth-buffer",
+    "cg-rt-denoising",
+    "cg-restir",
+    "cg-radiometry",
+    "cg-spherical-harmonics",
+    "cg-dof",
+    "cg-material-graph",
+    "cg-terrain-geometry",
+    "cg-participating-media",
+    "cg-vol-gi",
+    "cg-neural-radiance"
   ],
   "errors": [],
-  "total_upgraded": 60,
+  "total_upgraded": 80,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-24T21:24:40.113423"
+  "last_updated": "2026-03-24T21:43:42.097181"
 }
