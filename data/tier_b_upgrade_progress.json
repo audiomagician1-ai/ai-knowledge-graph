@@ -834,10 +834,20 @@
     "failure-feedback",
     "difficulty-spike",
     "one-hand-mode",
-    "feature-spec"
+    "feature-spec",
+    "balance-doc",
+    "unity-cinemachine",
+    "data-driven-design",
+    "data-table-engine",
+    "thirdparty-integration",
+    "surprise-moment",
+    "platform-gap",
+    "combat-range",
+    "road-river",
+    "lighting-review"
   ],
   "errors": [],
-  "total_upgraded": 835,
+  "total_upgraded": 845,
   "started_at": "2026-03-23T22:49:53.477112",
-  "last_updated": "2026-03-24T22:02:34.971466"
+  "last_updated": "2026-03-24T22:14:25.484324"
 }

@@ -9,80 +9,94 @@ is_milestone: false
 tags: ["反射"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 42.1
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.444
-last_scored: "2026-03-22"
+last_scored: "2026-03-24"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # 属性序列化
 
 ## 概述
 
-属性序列化（Property Serialization）是游戏引擎（Game Engine）中序列化领域的重要概念。难度等级3/9（初级）。
+属性序列化（Property Serialization）是游戏引擎中通过反射系统自动完成对象数据读写的机制。引擎在运行时扫描对象的元数据，找到所有标记为"可序列化"的属性字段，并将其值转换为持久化格式（如二进制流、JSON 或 XML），无需开发者手动编写每个字段的读写代码。
 
-反射驱动的自动序列化。
+该机制最早在 Unreal Engine 3 的 UnrealScript 时代初具雏形，进入 UE4/UE5 后，`UPROPERTY()` 宏成为属性序列化的核心标注工具。Unity 则采用 `[SerializeField]` 特性（Attribute）配合 `SerializedObject` 系统实现类似功能。两套系统都依赖各自的反射层——UE5 的 `UProperty`/`FProperty` 体系，以及 Unity 的 `SerializedProperty` 树——来完成自动化读写。
 
-在知识体系中，属性序列化建立在序列化概述的基础之上，是理解自定义结构体序列化的关键前置知识。为什么属性序列化如此重要？因为它在序列化中起到承上启下的作用，连接基础概念与高级应用。
+属性序列化的意义在于将"哪些数据需要保存"与"数据如何保存"彻底解耦。关卡设计师在编辑器中调整的每一个 Actor 参数，之所以能在保存关卡后精确还原，正是因为这些参数字段在 C++ 或 C# 层被标注为可序列化属性，引擎序列化管线自动处理了剩余的一切。
 
-## 核心知识点
+---
 
-### 1. 反射驱动的自动序列化
+## 核心原理
 
-反射驱动的自动序列化是属性序列化(Property Serialization)的核心组成部分之一。在序列化的实践中，反射驱动的自动序列化决定了系统行为的关键特征。例如，当反射驱动的自动序列化参数或条件发生变化时，整体表现会产生显著差异。深入理解反射驱动的自动序列化需要结合游戏引擎的基本原理进行分析。
+### 反射元数据驱动的字段发现
 
+属性序列化的前提是反射系统已为目标类型生成了字段描述表。以 UE5 为例，编译时 Unreal Header Tool（UHT）解析所有带有 `UPROPERTY()` 宏的字段，并生成对应的 `FProperty` 描述对象，记录字段名称、类型、内存偏移量和序列化标志位。序列化时，引擎调用 `UObject::Serialize(FArchive& Ar)`，该函数遍历当前类的 `FProperty` 链表，对每个属性调用 `Property->SerializeItem(Ar, Data)`，完成值的实际读写。整个过程不依赖任何硬编码的字段名，新增属性只需加上宏即可自动纳入序列化。
 
-### 关键原理分析
+### 序列化标志位与选择性序列化
 
-属性序列化的核心在于反射驱动的自动序列化。从理论角度看，该概念涉及以下层面：
+并非所有 `UPROPERTY` 字段都参与全部序列化场景。UE5 提供多个控制标志：
 
-1. **定义层**：明确属性序列化的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解属性序列化内部各要素的相互作用方式
-3. **应用层**：将属性序列化的原理映射到游戏引擎的实际场景中
+- `SaveGame`：标注该属性参与存档系统（`UGameplayStatics::SaveGameToSlot`）
+- `Transient`：标注该属性**不**写入磁盘，仅存在于运行时内存
+- `EditDefaultsOnly` / `EditAnywhere`：控制编辑器可见性，不直接影响磁盘序列化但影响 CDO 差量写入
 
-思考题：如何判断属性序列化的应用是否超出了其理论适用范围？
+Unity 中等效的控制是 `[NonSerialized]`（阻止公有字段序列化）和 `[SerializeField]`（强制序列化私有字段）。标志位使引擎能针对不同目标（编辑器资产、网络复制、存档文件）选择不同的属性子集，避免冗余数据。
 
-## 关键要点
+### 差量序列化（Delta Serialization）
 
-1. **核心定义**：属性序列化的本质是反射驱动的自动序列化，这是理解整个概念的出发点
-2. **多维理解**：掌握属性序列化需要同时理解反射驱动的自动序列化等关键维度
-3. **先修关系**：扎实的序列化概述基础对理解属性序列化至关重要
-4. **进阶路径**：掌握后可继续深入自定义结构体序列化等进阶主题
-5. **实践标准**：真正掌握属性序列化的标志是能在具体场景中灵活运用并正确判断适用边界
+UE5 的资产序列化不会将对象的全部属性值都写入 `.uasset`，而是只记录与类默认对象（Class Default Object，CDO）不同的属性，这一机制称为差量序列化。其核心公式为：
+
+```
+写入集合 = { p ∈ Properties | p.value(instance) ≠ p.value(CDO) }
+```
+
+这意味着一个 Blueprint Actor 的 `.uasset` 文件只存储被设计师实际修改过的属性值。当类结构更新、新增属性并赋予合理默认值时，旧资产文件不需要重写，加载时自动从 CDO 获取缺失值。这也是 UE5 热重载不会丢失场景中实例数据的底层原因之一。
+
+### 版本兼容与属性重定向
+
+属性名称改变会导致旧数据无法映射到新字段，造成数据丢失。UE5 通过 `FArchive` 内嵌的版本号（`UE_ASSET_MAGIC` 头部记录引擎版本）和 `FCoreRedirects` 系统解决此问题。在 `DefaultEngine.ini` 中添加：
+
+```ini
+[CoreRedirects]
++PropertyRedirects=(OldName="/Script/MyGame.MyActor.OldSpeed",NewName="/Script/MyGame.MyActor.NewSpeed")
+```
+
+引擎加载资产时检测到属性名不匹配，便查询重定向表完成自动映射，而无需编写专用的版本迁移代码。
+
+---
+
+## 实际应用
+
+**关卡编辑器中的 Actor 参数保存**：设计师在编辑器中修改 `AEnemy` 的 `PatrolRadius`（浮点型）和 `bIsAggressive`（布尔型），点击保存后，引擎将这两个标注了 `UPROPERTY(EditAnywhere, SaveGame)` 的字段的当前值通过差量序列化写入关卡包。下次打开关卡时，反射系统根据字段名自动还原数值，无需任何额外代码。
+
+**存档系统中的玩家数据持久化**：在 UE5 中，创建继承自 `USaveGame` 的子类，将 `PlayerLevel`（整型）、`InventoryItems`（`TArray<FItemData>`）标注 `UPROPERTY(SaveGame)`，调用 `UGameplayStatics::SaveGameToSlot` 即可触发自动序列化，数据以二进制格式写入平台存储目录。读取时同样通过反射自动填充字段，整个流程无需手写 `fwrite`/`fread`。
+
+**Unity Prefab 覆写（Override）系统**：Unity 的 Prefab 变体（Prefab Variant）本质上也是差量序列化——只有相对于基础 Prefab 发生改变的 `SerializedProperty` 值才会被记录在变体资产中。当美术修改角色的 `MeshRenderer.material`，Inspector 中该字段会显示粗体标记，表示该属性值已被序列化为覆写数据。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将属性序列化与序列化中其他相近概念混为一谈。例如，反射驱动的自动序列化的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解序列化概述就学习属性序列化，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：属性序列化虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：只要字段是 public 就会被序列化**
+在 Unity 中，C# 的 `public` 字段默认参与序列化，但 `static`、`readonly`、实现了 `IEnumerable` 但不是 `List<T>` 的集合类型不会被序列化。更重要的是，属性（Property，即带 `get`/`set` 的成员）**默认不序列化**，必须显式添加 `[SerializeField]` 或使用 `[field: SerializeField]`。在 UE5 中，`UPROPERTY()` 括号内不写任何标志时该属性不会出现在编辑器中，但仍会参与对象序列化。混淆这两个维度（编辑器可见性 vs 磁盘序列化）是初学者的高频错误。
 
-## 知识衔接
+**误区二：属性序列化可以处理任意 C++ 类型**
+UE5 的属性序列化只支持已在反射系统注册的类型。原生 `std::vector<int>`、`std::string` 不被 `FProperty` 系统识别，必须替换为 `TArray<int32>`、`FString`。自定义结构体若未添加 `USTRUCT()` 宏，同样无法自动序列化，运行时会静默跳过或触发断言。这也是为什么游戏项目要求将所有需要持久化的结构体都接入 UE5 反射系统。
 
-### 先修知识
-先修知识包括：
-- **序列化概述** — 为属性序列化提供了必要的概念基础
+**误区三：差量序列化保证向后兼容**
+差量序列化只解决了"旧资产缺少新字段"的向前兼容问题（新字段从 CDO 取默认值）。若字段**类型**从 `float` 改为 `int32`，或结构体成员重新排列，旧二进制数据的字节布局与新类型不匹配，差量机制无法自动处理，必须结合版本号判断或自定义序列化函数（`Serialize` 虚函数重写）才能安全迁移。
 
-### 后续学习
-掌握属性序列化后可继续学习：
-- **自定义结构体序列化** — 在属性序列化基础上进一步拓展
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：1-2小时。建议采用以下策略：
+**依赖前置概念**：属性序列化建立在序列化概述所介绍的"数据→字节流→数据"基本转换流程之上，并进一步引入反射系统作为字段发现的自动化手段。理解 `FArchive` 的读写模式（`Ar.IsLoading()` / `Ar.IsSaving()`）和基本类型序列化操作符 `<<` 是理解属性序列化内部调用链的必要背景。
 
-- **主动回忆**：学完后不看笔记复述属性序列化的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将属性序列化与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释属性序列化，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于序列化的章节可作为深入参考
-- Wikipedia: [Property Serialization](https://en.wikipedia.org/wiki/property_serialization) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Property Serialization" 可找到配套视频教程
+**指向后续概念**：当对象包含自定义结构体（`USTRUCT`）时，属性序列化的自动机制触及边界——结构体内部的复杂逻辑（如指针修复、条件序列化某成员）无法通过简单标注实现，这正是下一个主题"自定义结构体序列化"需要解决的问题。掌握属性序列化的标志位系统和差量机制，是理解为何某些结构体必须手动重写 `Serialize` 函数的直接动机。

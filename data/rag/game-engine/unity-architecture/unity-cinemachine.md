@@ -9,7 +9,7 @@ is_milestone: false
 tags: ["摄像机"]
 
 # Quality Metadata (Schema v2)
-content_version: 3
+content_version: 4
 quality_tier: "pending-rescore"
 quality_score: 42.0
 generation_method: "intranet-llm-rewrite-v2"
@@ -21,71 +21,69 @@ sources:
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
-# Cinemachine
+# Cinemachine：Unity程序化摄像机系统
 
 ## 概述
 
-Cinemachine 是 Unity 官方开发的程序化摄像机控制系统，于 2017 年作为 Unity Package Manager 的官方包正式发布，并在 Unity 2018.1 版本后成为内置可安装包。它的核心理念是将"摄像机行为"从手动编码脚本中解放出来，通过可配置的组件和参数驱动摄像机运动，从而让开发者无需编写一行 C# 代码就能实现跟随、瞄准、过渡等复杂摄像机效果。
+Cinemachine 是 Unity 官方开发的程序化摄像机控制包，最初以插件形式在 Unity Asset Store 发布，自 Unity 2018.1 起正式成为 Unity 内置包（Package Manager 中的 `com.unity.cinemachine`）。它的核心设计思想是将"摄像机应该拍什么"与"Unity Camera 组件如何输出画面"分离开来，从而让开发者用数据驱动的方式描述摄像机行为，而无需手写复杂的跟随、平滑、碰撞等逻辑代码。
 
-Cinemachine 的设计灵感来源于电影摄影行业，将电影中的"虚拟摄影机"（Virtual Camera）概念引入游戏引擎。系统引入了"大脑（Brain）"与"虚拟摄像机（Virtual Camera）"的分离架构：场景中只有一个真实的 Unity Camera 组件挂载 CinemachineBrain，而多个 CinemachineVirtualCamera 负责描述不同的摄像机行为逻辑，由 Brain 根据优先级和混合规则决定最终输出。
+在 Cinemachine 出现之前，游戏开发者通常需要自行编写 `LateUpdate()` 脚本，手动计算插值、偏移和遮挡处理，容易出现抖动或穿墙等问题。Cinemachine 通过一套分层架构解决了这些痛点：一个真实的 Unity **Brain Camera**（挂载 `CinemachineBrain` 组件）负责最终输出，而一个或多个 **Virtual Camera（虚拟摄像机，`CinemachineVirtualCamera`）** 负责描述具体的拍摄意图。Brain Camera 根据优先级和混合设置在虚拟摄像机之间自动切换和过渡。
 
-在大型商业游戏中，摄像机行为往往需要根据玩家状态、场景区域、剧情触发等条件动态切换，手写状态机极易产生难以维护的代码。Cinemachine 通过声明式配置替代了这种命令式脚本，同时提供与 Unity Timeline 的深度集成，使过场动画的摄像机调度可在 Timeline 轨道上可视化编辑，大幅降低了动画师与程序员的协作成本。
+Cinemachine 对 2D 游戏（Confiner 边界限制）、3D 第三人称游戏（Freelook Camera）、过场动画（Timeline 集成）和 VR 项目均有专用支持，是 Unity 生态中摄像机开发的事实标准方案。
 
 ---
 
 ## 核心原理
 
-### Brain 与 Virtual Camera 的分离架构
+### 1. Brain-Virtual Camera 架构
 
-CinemachineBrain 挂载在场景中唯一的真实 Camera 对象上，它每帧读取当前激活的 Virtual Camera（即 CinemachineVirtualCamera 或其衍生类型）所计算出的位置、旋转和镜头参数，然后将这些数据写入真实 Camera。每个 Virtual Camera 拥有独立的 **Priority（优先级）** 属性，数值越高越优先被 Brain 采用。当多个 Virtual Camera 同时激活时，Brain 不会突然切换，而是按照设定的 **Blend** 规则（如 EaseInOut、Linear、Cut）在指定时间内平滑插值过渡，默认混合时长为 2 秒。
+场景中只需要**一个**挂载了 `CinemachineBrain` 的真实 Camera GameObject。`CinemachineBrain` 每帧扫描场景中所有激活的 `CinemachineVirtualCamera`，根据它们的 **Priority（优先级，整型数值，默认值为 10）** 决定哪个虚拟摄像机当前"生效"。优先级最高的虚拟摄像机会被选中，Brain 将其计算出的位置和旋转应用到真实 Camera 上。当两个虚拟摄像机发生切换时，Brain 会按照预设的 **Default Blend**（默认为 2 秒的 `EaseInOut` 曲线）在两者之间平滑过渡，开发者无需编写任何插值代码。
 
-### Body 与 Aim 的双轴解耦
+### 2. Body 与 Aim 的组件化设计
 
-每个 CinemachineVirtualCamera 内部分为 **Body** 和 **Aim** 两个独立算法层：
-- **Body** 控制摄像机位置，常用算法包括 `Transposer`（跟随偏移）、`OrbitalTransposer`（轨道跟随）、`FramingTransposer`（2D 框架跟随）、`HardLockToTarget`（硬锁定）。
-- **Aim** 控制摄像机朝向，常用算法包括 `Composer`（基于屏幕空间的目标构图）、`HardLookAt`（硬朝向）、`POV`（玩家视角旋转）。
+每个虚拟摄像机通过两个独立模块定义行为：
+- **Body（机位控制）**：决定摄像机"站在哪里"。常用算法包括 `Transposer`（跟随目标并保持固定偏移）、`OrbitalTransposer`（绕目标轨道运动）、`FramingTransposer`（2D/俯视图中保持目标在屏幕指定比例位置）。
+- **Aim（朝向控制）**：决定摄像机"看向哪里"。常用算法包括 `Composer`（把注视目标保持在屏幕的"Dead Zone + Soft Zone + Hard Limit"三层区域内）、`POV`（玩家鼠标/手柄输入控制旋转）。
 
-这种解耦意味着可以单独更换某一轴的算法而不影响另一轴。例如，Body 使用 `OrbitalTransposer` 绕角色公转，同时 Aim 使用 `Composer` 并设置 Dead Zone（死区）让目标在屏幕中心区域移动时摄像机不旋转，超出 Soft Zone 才开始追踪，超出 Hard Limit 则硬性对准——这三个区域的百分比参数均可在 Inspector 中精确调节。
+`Composer` 的死区（Dead Zone）宽度和高度可设置为 0~1 的归一化屏幕坐标，目标在死区内时摄像机完全不旋转，进入软区（Soft Zone）后以阻尼平滑追踪，超出硬边界（Hard Limit）则立刻夹紧，三层参数共同决定了镜头跟随的手感松紧。
 
-### Noise（摄像机抖动）与 Extensions
+### 3. Noise（摄像机震动）与 Impulse
 
-Cinemachine 提供内置 **Noise** 模块，基于 Perlin Noise 算法生成连续随机抖动，通过指定 `NoiseSettings` 资产（如内置的 `6D Shake` 或 `Handheld_tele_mild`）以及 Amplitude Gain 和 Frequency Gain 参数，可模拟手持摄像机、爆炸震动等效果，无需额外代码。
+Cinemachine 提供内置的 **Noise** 模块，通过 `CinemachineBasicMultiChannelPerlin` 算法在 Body 和 Aim 上叠加程序化噪波，实现手持摄感或角色行走的上下起伏。震动强度由 **Amplitude Gain** 和 **Frequency Gain** 两个浮点参数控制。
 
-除 Noise 外，Cinemachine 还支持 **Extensions**（扩展组件），常用扩展包括：
-- `CinemachineConfiner`：将摄像机限制在一个 2D 多边形碰撞器或 3D 碰撞体定义的范围内，防止穿墙或越界。
-- `CinemachineImpulseSource` + `CinemachineImpulseListener`：通过物理冲量信号系统触发瞬时抖动，例如子弹击中时发射一个 Impulse 信号，所有监听的摄像机自动响应震动。
+对于爆炸、碰撞等一次性冲击效果，Cinemachine 提供 `CinemachineImpulse` 系统：在触发源上调用 `CinemachineImpulseSource.GenerateImpulse(force)`，场景内所有订阅了 `CinemachineImpulseListener` 的虚拟摄像机会在物理上模拟冲击波衰减，距离越远震感越弱，无需手动管理多个摄像机的震动状态。
 
-### Timeline 集成与 CinemachineTrack
+### 4. CinemachineStateDrivenCamera 与 Timeline 集成
 
-在 Unity Timeline 中添加 **Cinemachine Track** 后，可以在轨道上放置多个 CinemachineShot Clip，每个 Clip 绑定一个 Virtual Camera，Timeline 播放到该 Clip 时摄像机即激活并渲染。相邻 Clip 之间可设置混合区域实现过场动画中的摄像机溶解过渡，整个过场动画的摄像机调度完全由 Timeline 时间线驱动，不依赖脚本触发。
+`CinemachineStateDrivenCamera` 可将 **Animator 状态机的状态名**映射到不同的子虚拟摄像机，实现角色切换动作时自动换镜（例如攀爬状态切换到仰视镜头）。在 Unity Timeline 中，Cinemachine 提供专用的 **Cinemachine Track**，可在时间轴上精确排列虚拟摄像机的激活片段和混合过渡，配合 Animation Track 制作电影级过场动画，所见即所得地预览最终效果。
 
 ---
 
 ## 实际应用
 
-**第三人称跟随摄像机**：为 Virtual Camera 的 Body 选择 `Transposer`，将 Follow Target 设为玩家角色，Binding Mode 设为 `Lock To Target With World Up`，X/Y/Z Damping 分别设为 0.5/0.2/0.5 秒，即可实现带惯性缓动的跟随摄像机；Aim 选择 `Composer` 并将 Look At Target 也设为玩家，Dead Zone Width 设为 0.1，这样玩家在屏幕中央小范围移动时画面不晃动。
+**第三人称跑酷游戏**：使用 `CinemachineFreeLook` 摄像机，该预设包含三条轨道（Top Rig、Middle Rig、Bottom Rig），分别对应摄像机在目标角色上方、平齐和下方的环绕轨道。玩家推拉摇杆时 Y 轴在三条轨道间混合，X 轴控制水平环绕角度，配合 `CinemachineCollider` 扩展组件自动检测并推开场景中的遮挡物，防止穿墙。
 
-**多区域摄像机切换**：在关卡中放置多个 Virtual Camera，分别设置不同的 Priority 默认值为 10，当玩家进入特定触发区域时通过脚本调用 `virtualCamera.Priority = 20` 将该区域摄像机提升优先级，Brain 自动触发 EaseInOut 过渡，切换完成后再恢复优先级。这只需两行代码，其余过渡逻辑全由 Cinemachine 处理。
+**2D 横板游戏**：在正交摄像机上使用 `FramingTransposer` + `CinemachineConfiner2D`，将 `Collider2D` 多边形设为关卡边界，摄像机在跟随玩家的同时不会越出关卡边缘，适合《超级马里奥》风格的卷轴关卡。
 
-**2D 横版关卡**：Body 选择 `FramingTransposer`，开启 `Dead Zone` 功能，设置 Screen X 为 0.3（玩家偏左三分之一位置）以实现前方视野更开阔的构图，同时配合 `CinemachineConfiner2D` 限制摄像机在关卡边界内移动，当关卡边缘靠近时摄像机自动停止而不会露出场景外的空白区域。
+**过场剧情**：在 Timeline 中创建 Cinemachine Track，将多个虚拟摄像机片段首尾拼接，每段之间设置 0.5 秒 `Cut` 或 1 秒 `EaseIn` 混合，导演式地编排景别切换，最终由同一个 Brain Camera 输出，无需在场景中放置多个真实 Camera。
 
 ---
 
 ## 常见误区
 
-**误区一：Virtual Camera 本身会渲染画面**
-初学者常误解 CinemachineVirtualCamera 是一个真正的摄像机，实际上它完全不渲染任何内容，场景中只有挂载 CinemachineBrain 的那一个 Unity Camera 才负责渲染。Virtual Camera 仅是一个"位置与朝向的描述者"，Brain 读取其输出并驱动真实 Camera。如果场景中没有 CinemachineBrain，所有 Virtual Camera 的设置都不会生效。
+**误区一：场景中放了多个真实 Camera 来模拟多机位**
+Cinemachine 的正确用法是全场景只有一个 Brain Camera，多机位通过多个虚拟摄像机实现。放置多个真实 Camera 会导致渲染冗余，且无法使用 Cinemachine 的混合过渡功能，切换时会直接闪切。
 
-**误区二：关闭 Virtual Camera GameObject 等同于降低 Priority**
-很多开发者通过 `gameObject.SetActive(false)` 来停用摄像机，这在功能上可行，但会触发 GameObject 完整的激活/停用流程，产生额外开销。Cinemachine 官方推荐的做法是保持 GameObject 激活，改为修改 `Priority` 属性或调用 `virtualCamera.enabled = false`（禁用组件而非对象），后者不会销毁 Virtual Camera 的运行状态，重新启用时过渡更平滑。
+**误区二：直接修改 Brain Camera 的 Transform 来移动镜头**
+`CinemachineBrain` 每帧都会用虚拟摄像机的计算结果**覆盖**真实 Camera 的 Transform，所以直接操作 Brain Camera 的位置和旋转是无效的。所有镜头控制必须通过修改虚拟摄像机的参数（Follow 目标、偏移量、Priority 等）来实现。
 
-**误区三：Noise 模块等于实时物理碰撞震动**
-Cinemachine 的 Noise 模块基于预设的 Perlin Noise 曲线循环播放，是持续性的随机抖动，适合模拟持续震动（如车辆行驶）；而 `CinemachineImpulse` 系统才是用于一次性冲击事件（如爆炸、落地）的正确工具。混用两者会导致持续抖动与冲击叠加，视觉效果失控。
+**误区三：混淆 Follow 和 LookAt 目标的作用**
+虚拟摄像机有两个目标槽：`Follow`（给 Body 模块使用，影响机位）和 `LookAt`（给 Aim 模块使用，影响朝向）。两者可以指向不同的 GameObject，例如机位跟随玩家角色，但镜头始终盯着某个 NPC，如果将两者混淆设置会导致摄像机位置正确但朝向错误的问题。
 
 ---
 
 ## 知识关联
 
-**前置知识**：理解 Cinemachine 需要熟悉 Unity 中 Camera 组件的基本属性，包括 Field of View、Near/Far Clip Plane 以及 Projection 模式（透视/正交），因为 Cinemachine 的 Lens 设置本质上是在覆写这些 Camera 属性。同时需要了解 Unity 的 Transform 层级和 Follow/LookAt 目标绑定机制，这是 Body 和 Aim 算法的数据来源。
+学习 Cinemachine 需要具备 Unity 场景结构的基础知识：理解 GameObject 与 Component 的关系，才能明白为什么 `CinemachineBrain` 挂载在真实 Camera 上而虚拟摄像机是独立的 GameObject。此外，`LateUpdate()` 的执行时机知识有助于理解为何 Cinemachine 在每帧物理模拟之后才更新摄像机位置，从而避免跟随抖动。
 
-**横向关联**：Cinemachine 与 Unity Timeline 深度集成，过场动画制作需要同时掌握 Timeline 的 Track 与 Clip 概念。在使用 `CinemachineConfiner` 时还涉及 Unity 物理系统中的 Collider 组件，尤其是 `PolygonCollider2D` 用于定义 2D 关卡边界。Cinemachine 3.x 版本（随 Unity 2023 推出）将架构重构为基于 `CinemachineCamera` 的新组件命名体系，与 2.x 版本 API 不完全兼容，升级项目时需注意迁移文档。
+Cinemachine 与 **Unity Timeline**（过场动画编排）、**Unity Input System**（POV 摄像机的输入绑定）以及 **Physics/Collider 系统**（`CinemachineCollider` 遮挡处理）均有直接的接口依赖。掌握 Cinemachine 后，可以进一步研究 **Cinemachine 3.x（2023 年随 Unity 6 更新的新版 API）**，该版本将 Body/Aim 重构为更模块化的 `CinemachineComponent` 管线，并提供了 `InputAxis` 系统替代旧版 `CinemachineInputProvider`。
