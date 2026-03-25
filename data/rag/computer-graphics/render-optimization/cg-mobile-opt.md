@@ -9,79 +9,60 @@ is_milestone: false
 tags: ["移动端"]
 
 # Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "B"
+content_version: 3
+quality_tier: "pending-rescore"
 quality_score: 44.2
-generation_method: "ai-rewrite-v1"
+generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.464
-last_scored: "2026-03-22"
+last_scored: "2026-03-25"
 sources:
   - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
+    model: "mihoyo.claude-4-6-sonnet"
+    prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
 ---
 # 移动端优化
 
 ## 概述
 
-移动端优化（Cg Mobile Opt）是图形学（Computer Graphics）中渲染优化领域的重要概念。难度等级3/9（初级）。
+移动端优化是针对移动GPU（如ARM Mali、Qualcomm Adreno、Apple GPU）所采用的**Tile-Based Deferred Rendering（TBDR）**架构而设计的一套渲染策略。与桌面GPU的立即模式渲染（Immediate Mode Rendering）不同，移动GPU将屏幕分割为若干16×16或32×32像素的瓦片（Tile），每个Tile的颜色、深度、模板数据在芯片内部的高速片上内存（On-Chip Memory）中完成读写，仅在Tile处理完毕后才将结果写回系统内存（DRAM）。这一架构的核心目的是大幅减少带宽消耗，因为移动设备上DRAM带宽极为有限且耗电量高。
 
-Tile-Based架构的特定优化策略。
+这种架构最早在20世纪90年代的Imagination Technologies PowerVR系列GPU中得到完整实现，后来被ARM Mali（Midgard架构起）和Apple自研GPU广泛采用。Qualcomm Adreno则采用了Tile-Based架构的变体。理解TBDR是移动端图形优化的前提——几乎所有移动端独有的优化技巧都源于"如何让Tile处于最高效的工作状态"这一核心问题。
 
-在知识体系中，移动端优化建立在渲染优化概述的基础之上，是理解可进入更高级主题的关键前置知识。为什么移动端优化如此重要？因为它在渲染优化中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### Tile-Based渲染流程与Early-Z剔除
 
-### 1. Tile-Based架构的特定优化策略
+TBDR的渲染分为两个阶段：**Binning Pass**（也称Tiling Pass）将所有图元按照其覆盖的Tile分类归档，写入一张Primitive List；**Rendering Pass**则逐Tile处理，将该Tile内所有图元的片元着色在片上内存中完成。由于整个Tile的深度缓冲常驻片上，GPU可以在执行片元着色器**之前**精确地完成深度测试（即HSR，Hidden Surface Removal，PowerVR的专有术语），从而完全跳过被遮挡的片元的着色计算，实现接近理想状态的Early-Z剔除，这与桌面GPU需要程序员主动排序不透明物体才能利用Early-Z的做法存在本质差异。
 
-Tile-Based架构的特定优化策略是移动端优化(Cg Mobile Opt)的核心组成部分之一。在渲染优化的实践中，Tile-Based架构的特定优化策略决定了系统行为的关键特征。例如，当Tile-Based架构的特定优化策略参数或条件发生变化时，整体表现会产生显著差异。深入理解Tile-Based架构的特定优化策略需要结合图形学的基本原理进行分析。
+### 避免Tile Flush与framebuffer加载开销
 
+移动端最昂贵的操作之一是**打断Tile的连续渲染流程**，强制GPU将片上数据写回DRAM，即"Tile Flush"。触发Tile Flush的常见原因包括：在一个Render Pass内部读取颜色缓冲（如屏幕空间折射）、使用`glCopyTexImage2D`截取当前帧缓冲、以及多个Render Pass之间未正确配置Load/Store Action。在Vulkan和Metal API中，开发者必须显式声明`loadOp`和`storeOp`：若当前Pass不需要保留上一Pass的内容，应设置`loadOp = DONT_CARE`（Metal中对应`MTLLoadActionDontCare`）；若渲染结果不需要写回系统内存（如中间的深度缓冲），应设置`storeOp = DONT_CARE`。错误配置这两个参数会导致每帧产生数十MB的无效DRAM读写。
 
-### 关键原理分析
+### 带宽优化：压缩格式与Render Target格式
 
-移动端优化的核心在于Tile-Based架构的特定优化策略。从理论角度看，该概念涉及以下层面：
+移动端对纹理和Render Target的格式选择极为敏感。使用**ASTC（Adaptive Scalable Texture Compression）**格式而非未压缩RGBA8可将纹理带宽降低75%以上；ASTC支持从4×4到12×12的多种块大小，其中ASTC 4×4的压缩率为8:1，ASTC 8×8约为32:1。对于Render Target，在移动端使用`R11G11B10F`（无Alpha）或`RGB565`（LDR场景）代替`RGBA16F`可节省约25%~50%的带宽。深度缓冲在不需要采样的情况下，应始终使用`D16`（16位深度）而非`D24S8`，可将深度Tile数据量减少33%。
 
-1. **定义层**：明确移动端优化的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解移动端优化内部各要素的相互作用方式
-3. **应用层**：将移动端优化的原理映射到图形学的实际场景中
+### 渲染Pass合并与Subpass机制
 
-思考题：如何判断移动端优化的应用是否超出了其理论适用范围？
+Vulkan提供了**Subpass**机制，允许在同一个Render Pass内依次完成G-Buffer写入和光照合并，其中光照Pass通过`InputAttachment`直接读取同一Tile内的G-Buffer数据，完全绕过DRAM读回。这使得延迟渲染（Deferred Rendering）在移动端也具有可行性——传统的多Pass延迟渲染会在TBDR架构上产生巨大带宽惩罚，但基于Subpass的实现可将G-Buffer带宽开销降至接近于零。Metal API中对应的机制称为**Tile Shading**（通过`MTLRenderCommandEncoder`的`setTileTexture`实现），在Apple GPU上可获得类似收益。
 
-## 关键要点
+## 实际应用
 
-1. **核心定义**：移动端优化的本质是Tile-Based架构的特定优化策略，这是理解整个概念的出发点
-2. **多维理解**：掌握移动端优化需要同时理解Tile-Based架构的特定优化策略等关键维度
-3. **先修关系**：扎实的渲染优化概述基础对理解移动端优化至关重要
-4. **进阶路径**：可广泛应用于图形学各方面
-5. **实践标准**：真正掌握移动端优化的标志是能在具体场景中灵活运用并正确判断适用边界
+**后处理链优化**：在移动端实现Bloom效果时，不应使用独立的多个Render Pass进行下采样和上采样，而应将相邻分辨率的处理合并为单个Pass，或使用`Compute Shader`搭配`imageStore`直接写入多个Mip层级，减少Pass切换引发的Tile Flush次数。
+
+**阴影贴图**：移动端Shadow Map的深度缓冲在完成阴影Pass后，若后续不需要作为纹理采样（如不做PCSS），应将其`storeOp`设为`DONT_CARE`，避免将整张2048×2048的深度图（约16MB，D16格式）写回DRAM。
+
+**粒子与半透明排序**：由于TBDR的HSR仅对不透明几何体有效，半透明物体仍需从后往前排序（或使用OIT），且半透明Pass应尽量与主不透明Pass放在同一Render Pass的不同Subpass中，而非拆分为独立Pass。
 
 ## 常见误区
 
-1. **混淆概念边界**：将移动端优化与渲染优化中其他相近概念混为一谈。例如，Tile-Based架构的特定优化策略的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解渲染优化概述就学习移动端优化，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：移动端优化虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为移动端不适合延迟渲染**。许多开发者因知道延迟渲染需要读取G-Buffer而认为其在TBDR架构上性能差。实际上，如果使用Vulkan Subpass或Metal Tile Shading将G-Buffer读取限制在片上，延迟渲染的光照累积步骤不产生DRAM访问，性能完全可以接受，Apple在其GPU最佳实践文档中明确推荐此方案。
 
-## 知识衔接
+**误区二：认为Alpha Test（`discard`）在移动端没有性能影响**。在桌面GPU上，`discard`仅影响Early-Z的有效性；而在TBDR架构上，`discard`会破坏HSR的完整性——GPU无法在Binning Pass时预知某个片元是否会被discard，因此不得不保守地绕过部分HSR优化，导致更多片元进入着色阶段。建议在移动端将Alpha Test替换为Alpha to Coverage（配合MSAA使用），或将小面积镂空改为Alpha Blend。
 
-### 先修知识
-先修知识包括：
-- **渲染优化概述** — 为移动端优化提供了必要的概念基础
+**误区三：盲目开启MSAA认为会增加带宽**。实际上，TBDR架构因为多重采样数据（每Tile 4x/8x samples）可以完整存储在片上内存中，MSAA的resolve操作在片上直接完成，写回DRAM的仍然是1x分辨率的结果。在Tile足够大、MSAA sample count不超过4x的情况下，移动端开启MSAA的实际带宽增量远低于桌面端，Mali和Adreno的官方文档均证实了这一点。
 
-### 后续学习
-掌握移动端优化后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索图形学其他分支。
+## 知识关联
 
-## 学习建议
-
-预计学习时间：1-2小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述移动端优化的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将移动端优化与图形学中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释移动端优化，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于渲染优化的章节可作为深入参考
-- Wikipedia: [Cg Mobile Opt](https://en.wikipedia.org/wiki/cg_mobile_opt) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Cg Mobile Opt" 可找到配套视频教程
+移动端优化以**渲染优化概述**中介绍的带宽、填充率、Draw Call三大性能瓶颈为分析框架，但其具体瓶颈的成因与桌面端完全不同：移动端的带宽瓶颈主要来自Tile Flush而非场景复杂度，填充率瓶颈被HSR大幅缓解，Draw Call的CPU开销则通过Vulkan/Metal的显式API得到控制。掌握移动端优化后，可自然延伸至**GPU驱动渲染（GPU-Driven Rendering）**在TBDR架构上的适配问题，以及**可变速率着色（VRS）**在Adreno和Apple GPU上的实现差异——这两个方向都依赖对TBDR Binning Pass机制的深入认识。
