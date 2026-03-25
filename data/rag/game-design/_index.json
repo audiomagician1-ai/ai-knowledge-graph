@@ -1453,7 +1453,7 @@
       ],
       "file": "game-design/design-docs/flowchart-design.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2437
     },
     {
       "id": "playtesting-method",
@@ -1588,7 +1588,7 @@
       ],
       "file": "game-design/difficulty-curve/new-game-plus.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2238
     },
     {
       "id": "casual-difficulty",
@@ -2158,7 +2158,7 @@
       ],
       "file": "game-design/economy-design/subscription-model.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 2277
     },
     {
       "id": "currency-design",
@@ -2908,7 +2908,7 @@
       ],
       "file": "game-design/randomness-design/pseudo-random.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2181
     },
     {
       "id": "weighted-random",
@@ -3253,7 +3253,7 @@
       ],
       "file": "game-design/social-systems/coop-design.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2517
     },
     {
       "id": "friend-system",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 570782,
-    "avg_chars": 2283,
+    "total_chars": 575612,
+    "avg_chars": 2302,
     "domain": "game-design"
   }
 }

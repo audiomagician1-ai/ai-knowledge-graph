@@ -583,7 +583,7 @@
       ],
       "file": "psychology/biological-psychology/brain-imaging.md",
       "exists": true,
-      "char_count": 1471
+      "char_count": 2355
     },
     {
       "id": "autonomic-nervous-system",
@@ -1228,7 +1228,7 @@
       ],
       "file": "psychology/cognitive-psychology/cognitive-development-piaget.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2483
     },
     {
       "id": "perception",
@@ -1498,7 +1498,7 @@
       ],
       "file": "psychology/developmental-psychology/identity-formation.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2512
     },
     {
       "id": "infant-development",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 389693,
-    "avg_chars": 2129,
+    "total_chars": 392654,
+    "avg_chars": 2145,
     "domain": "psychology"
   }
 }

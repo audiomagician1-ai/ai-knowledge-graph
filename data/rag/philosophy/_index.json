@@ -28,7 +28,7 @@
       ],
       "file": "philosophy/aesthetics/aesthetic-judgment.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 2509
     },
     {
       "id": "aesthetic-experience",
@@ -103,7 +103,7 @@
       ],
       "file": "philosophy/aesthetics/digital-aesthetics.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2761
     },
     {
       "id": "mimesis",
@@ -133,7 +133,7 @@
       ],
       "file": "philosophy/aesthetics/environmental-aesthetics.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2640
     },
     {
       "id": "aesthetics-overview",
@@ -658,7 +658,7 @@
       ],
       "file": "philosophy/epistemology/a-priori-knowledge.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2488
     },
     {
       "id": "reliabilism",
@@ -1123,7 +1123,7 @@
       ],
       "file": "philosophy/ethics/problem-of-evil.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2573
     },
     {
       "id": "categorical-imperative",
@@ -1168,7 +1168,7 @@
       ],
       "file": "philosophy/ethics/emotivism.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2589
     },
     {
       "id": "tech-ethics",
@@ -1468,7 +1468,7 @@
       ],
       "file": "philosophy/logic-reasoning/fuzzy-logic-phil.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2659
     },
     {
       "id": "abductive-reasoning",
@@ -1483,7 +1483,7 @@
       ],
       "file": "philosophy/logic-reasoning/abductive-reasoning.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2313
     },
     {
       "id": "deductive-reasoning",
@@ -1828,7 +1828,7 @@
       ],
       "file": "philosophy/metaphysics/abstract-objects.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 3159
     },
     {
       "id": "time-space",
@@ -2113,7 +2113,7 @@
       ],
       "file": "philosophy/modern-philosophy/structuralism.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2709
     },
     {
       "id": "wittgenstein",
@@ -2248,7 +2248,7 @@
       ],
       "file": "philosophy/political-philosophy/chinese-political-phil.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 2661
     },
     {
       "id": "conservatism",
@@ -2263,7 +2263,7 @@
       ],
       "file": "philosophy/political-philosophy/conservatism.md",
       "exists": true,
-      "char_count": 1266
+      "char_count": 2538
     },
     {
       "id": "global-justice",
@@ -2428,7 +2428,7 @@
       ],
       "file": "philosophy/political-philosophy/nationalism.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2897
     },
     {
       "id": "locke-political",
@@ -2548,13 +2548,13 @@
       ],
       "file": "philosophy/political-philosophy/marxism.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2565
     }
   ],
   "stats": {
     "total": 170,
-    "total_chars": 348091,
-    "avg_chars": 2047,
+    "total_chars": 366688,
+    "avg_chars": 2156,
     "domain": "philosophy"
   }
 }

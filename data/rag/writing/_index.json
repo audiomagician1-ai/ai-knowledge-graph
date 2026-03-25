@@ -28,7 +28,7 @@
       ],
       "file": "writing/academic-writing/collaborative-writing.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 2644
     },
     {
       "id": "peer-review-process",
@@ -778,7 +778,7 @@
       ],
       "file": "writing/expository-writing/technical-description.md",
       "exists": true,
-      "char_count": 1464
+      "char_count": 2122
     },
     {
       "id": "descriptive-essay",
@@ -1018,7 +1018,7 @@
       ],
       "file": "writing/narrative-writing/biographical-writing.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2734
     },
     {
       "id": "conflict-tension",
@@ -1243,7 +1243,7 @@
       ],
       "file": "writing/narrative-writing/short-story-craft.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2470
     },
     {
       "id": "pacing-rhythm",
@@ -1333,7 +1333,7 @@
       ],
       "file": "writing/persuasive-writing/counterargument.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2349
     },
     {
       "id": "propaganda-analysis",
@@ -1468,7 +1468,7 @@
       ],
       "file": "writing/persuasive-writing/opinion-essay.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 3243
     },
     {
       "id": "evidence-types",
@@ -1993,7 +1993,7 @@
       ],
       "file": "writing/revision-craft/revision-strategies.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 2344
     },
     {
       "id": "style-guide",
@@ -2488,7 +2488,7 @@
       ],
       "file": "writing/writing-fundamentals/grammar-essentials.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 3010
     },
     {
       "id": "reading-writing-connection",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 370711,
-    "avg_chars": 2180,
+    "total_chars": 380345,
+    "avg_chars": 2237,
     "domain": "writing"
   }
 }

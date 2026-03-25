@@ -793,7 +793,7 @@
       ],
       "file": "physics/electromagnetism/biot-savart.md",
       "exists": true,
-      "char_count": 1438
+      "char_count": 2109
     },
     {
       "id": "faradays-law",
@@ -2188,7 +2188,7 @@
       ],
       "file": "physics/solid-state-physics/crystal-structure.md",
       "exists": true,
-      "char_count": 1448
+      "char_count": 2999
     },
     {
       "id": "magnetic-order",
@@ -2638,7 +2638,7 @@
       ],
       "file": "physics/waves-and-optics/optical-instruments.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2624
     },
     {
       "id": "polarization",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 473235,
-    "avg_chars": 2439,
+    "total_chars": 476631,
+    "avg_chars": 2456,
     "domain": "physics"
   }
 }

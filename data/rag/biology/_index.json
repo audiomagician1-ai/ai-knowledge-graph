@@ -568,7 +568,7 @@
       ],
       "file": "biology/cell-biology/cell-cycle.md",
       "exists": true,
-      "char_count": 1444
+      "char_count": 2824
     },
     {
       "id": "cellular-respiration",
@@ -1543,7 +1543,7 @@
       ],
       "file": "biology/genetics/behavioral-genetics.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2464
     },
     {
       "id": "genetic-counseling",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 404499,
-    "avg_chars": 2351,
+    "total_chars": 406990,
+    "avg_chars": 2366,
     "domain": "biology"
   }
 }

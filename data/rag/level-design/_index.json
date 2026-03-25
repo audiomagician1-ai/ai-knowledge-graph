@@ -28,7 +28,7 @@
       ],
       "file": "level-design/blockout/blockout-annotation.md",
       "exists": true,
-      "char_count": 1411
+      "char_count": 2394
     },
     {
       "id": "blockout-checklist",
@@ -253,7 +253,7 @@
       ],
       "file": "level-design/blockout/greybox-workflow.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2304
     },
     {
       "id": "collision-volume",
@@ -2173,7 +2173,7 @@
       ],
       "file": "level-design/pacing-curve/content-gating.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 2201
     },
     {
       "id": "narrative-pacing",
@@ -2563,7 +2563,7 @@
       ],
       "file": "level-design/spatial-narrative/scale-proportion.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2329
     },
     {
       "id": "immersion-design",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 451065,
-    "avg_chars": 2255,
+    "total_chars": 454926,
+    "avg_chars": 2274,
     "domain": "level-design"
   }
 }

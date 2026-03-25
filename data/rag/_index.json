@@ -7854,7 +7854,7 @@
       ],
       "file": "biology/cell-biology/cell-cycle.md",
       "exists": true,
-      "char_count": 1444
+      "char_count": 2824
     },
     {
       "id": "cellular-respiration",
@@ -8829,7 +8829,7 @@
       ],
       "file": "biology/genetics/behavioral-genetics.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2464
     },
     {
       "id": "genetic-counseling",
@@ -18264,7 +18264,7 @@
       ],
       "file": "economics/behavioral-econ/herding-behavior.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2133
     },
     {
       "id": "behavioral-econ-overview",
@@ -19359,7 +19359,7 @@
       ],
       "file": "economics/international-econ/absolute-advantage.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2416
     },
     {
       "id": "free-trade-agreements",
@@ -21954,7 +21954,7 @@
       ],
       "file": "english/reading/narrative-reading.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2759
     },
     {
       "id": "graphic-information",
@@ -24534,7 +24534,7 @@
       ],
       "file": "finance/fixed-income/high-yield-bonds.md",
       "exists": true,
-      "char_count": 1349
+      "char_count": 2390
     },
     {
       "id": "capm-model",
@@ -25014,7 +25014,7 @@
       ],
       "file": "finance/personal-finance/education-funding.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2557
     },
     {
       "id": "consumer-psychology",
@@ -32529,7 +32529,7 @@
       ],
       "file": "game-design/design-docs/flowchart-design.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2437
     },
     {
       "id": "playtesting-method",
@@ -32664,7 +32664,7 @@
       ],
       "file": "game-design/difficulty-curve/new-game-plus.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2238
     },
     {
       "id": "casual-difficulty",
@@ -33234,7 +33234,7 @@
       ],
       "file": "game-design/economy-design/subscription-model.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 2277
     },
     {
       "id": "currency-design",
@@ -33984,7 +33984,7 @@
       ],
       "file": "game-design/randomness-design/pseudo-random.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2181
     },
     {
       "id": "weighted-random",
@@ -34329,7 +34329,7 @@
       ],
       "file": "game-design/social-systems/coop-design.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2517
     },
     {
       "id": "friend-system",
@@ -51394,7 +51394,7 @@
       ],
       "file": "level-design/blockout/blockout-annotation.md",
       "exists": true,
-      "char_count": 1411
+      "char_count": 2394
     },
     {
       "id": "blockout-checklist",
@@ -51619,7 +51619,7 @@
       ],
       "file": "level-design/blockout/greybox-workflow.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2304
     },
     {
       "id": "collision-volume",
@@ -53539,7 +53539,7 @@
       ],
       "file": "level-design/pacing-curve/content-gating.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 2201
     },
     {
       "id": "narrative-pacing",
@@ -53929,7 +53929,7 @@
       ],
       "file": "level-design/spatial-narrative/scale-proportion.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2329
     },
     {
       "id": "immersion-design",
@@ -57652,7 +57652,7 @@
       ],
       "file": "mathematics/number-theory/fermats-little-theorem.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 2755
     },
     {
       "id": "continued-fractions",
@@ -58477,7 +58477,7 @@
       ],
       "file": "mathematics/statistics/correlation.md",
       "exists": true,
-      "char_count": 1263
+      "char_count": 2258
     },
     {
       "id": "linear-regression",
@@ -64149,7 +64149,7 @@
       ],
       "file": "philosophy/aesthetics/aesthetic-judgment.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 2509
     },
     {
       "id": "aesthetic-experience",
@@ -64224,7 +64224,7 @@
       ],
       "file": "philosophy/aesthetics/digital-aesthetics.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2761
     },
     {
       "id": "mimesis",
@@ -64254,7 +64254,7 @@
       ],
       "file": "philosophy/aesthetics/environmental-aesthetics.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2640
     },
     {
       "id": "aesthetics-overview",
@@ -64779,7 +64779,7 @@
       ],
       "file": "philosophy/epistemology/a-priori-knowledge.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2488
     },
     {
       "id": "reliabilism",
@@ -65244,7 +65244,7 @@
       ],
       "file": "philosophy/ethics/problem-of-evil.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2573
     },
     {
       "id": "categorical-imperative",
@@ -65289,7 +65289,7 @@
       ],
       "file": "philosophy/ethics/emotivism.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2589
     },
     {
       "id": "tech-ethics",
@@ -65589,7 +65589,7 @@
       ],
       "file": "philosophy/logic-reasoning/fuzzy-logic-phil.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2659
     },
     {
       "id": "abductive-reasoning",
@@ -65604,7 +65604,7 @@
       ],
       "file": "philosophy/logic-reasoning/abductive-reasoning.md",
       "exists": true,
-      "char_count": 1258
+      "char_count": 2313
     },
     {
       "id": "deductive-reasoning",
@@ -65949,7 +65949,7 @@
       ],
       "file": "philosophy/metaphysics/abstract-objects.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 3159
     },
     {
       "id": "time-space",
@@ -66234,7 +66234,7 @@
       ],
       "file": "philosophy/modern-philosophy/structuralism.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2709
     },
     {
       "id": "wittgenstein",
@@ -66369,7 +66369,7 @@
       ],
       "file": "philosophy/political-philosophy/chinese-political-phil.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 2661
     },
     {
       "id": "conservatism",
@@ -66384,7 +66384,7 @@
       ],
       "file": "philosophy/political-philosophy/conservatism.md",
       "exists": true,
-      "char_count": 1266
+      "char_count": 2538
     },
     {
       "id": "global-justice",
@@ -66549,7 +66549,7 @@
       ],
       "file": "philosophy/political-philosophy/nationalism.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2897
     },
     {
       "id": "locke-political",
@@ -66669,7 +66669,7 @@
       ],
       "file": "philosophy/political-philosophy/marxism.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2565
     },
     {
       "id": "neutron-stars",
@@ -67464,7 +67464,7 @@
       ],
       "file": "physics/electromagnetism/biot-savart.md",
       "exists": true,
-      "char_count": 1438
+      "char_count": 2109
     },
     {
       "id": "faradays-law",
@@ -68859,7 +68859,7 @@
       ],
       "file": "physics/solid-state-physics/crystal-structure.md",
       "exists": true,
-      "char_count": 1448
+      "char_count": 2999
     },
     {
       "id": "magnetic-order",
@@ -69309,7 +69309,7 @@
       ],
       "file": "physics/waves-and-optics/optical-instruments.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2624
     },
     {
       "id": "polarization",
@@ -71289,7 +71289,7 @@
       ],
       "file": "product-design/product-thinking/blue-ocean-strategy.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2388
     },
     {
       "id": "design-thinking",
@@ -71649,7 +71649,7 @@
       ],
       "file": "product-design/user-research/affinity-diagram.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 1930
     },
     {
       "id": "think-aloud-protocol",
@@ -71904,7 +71904,7 @@
       ],
       "file": "product-design/user-research/eye-tracking.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2212
     },
     {
       "id": "research-ethics",
@@ -73544,7 +73544,7 @@
       ],
       "file": "psychology/biological-psychology/brain-imaging.md",
       "exists": true,
-      "char_count": 1471
+      "char_count": 2355
     },
     {
       "id": "autonomic-nervous-system",
@@ -74189,7 +74189,7 @@
       ],
       "file": "psychology/cognitive-psychology/cognitive-development-piaget.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2483
     },
     {
       "id": "perception",
@@ -74459,7 +74459,7 @@
       ],
       "file": "psychology/developmental-psychology/identity-formation.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2512
     },
     {
       "id": "infant-development",
@@ -86738,7 +86738,7 @@
       ],
       "file": "writing/academic-writing/collaborative-writing.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 2644
     },
     {
       "id": "peer-review-process",
@@ -87488,7 +87488,7 @@
       ],
       "file": "writing/expository-writing/technical-description.md",
       "exists": true,
-      "char_count": 1464
+      "char_count": 2122
     },
     {
       "id": "descriptive-essay",
@@ -87728,7 +87728,7 @@
       ],
       "file": "writing/narrative-writing/biographical-writing.md",
       "exists": true,
-      "char_count": 1456
+      "char_count": 2734
     },
     {
       "id": "conflict-tension",
@@ -87953,7 +87953,7 @@
       ],
       "file": "writing/narrative-writing/short-story-craft.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2470
     },
     {
       "id": "pacing-rhythm",
@@ -88043,7 +88043,7 @@
       ],
       "file": "writing/persuasive-writing/counterargument.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2349
     },
     {
       "id": "propaganda-analysis",
@@ -88178,7 +88178,7 @@
       ],
       "file": "writing/persuasive-writing/opinion-essay.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 3243
     },
     {
       "id": "evidence-types",
@@ -88703,7 +88703,7 @@
       ],
       "file": "writing/revision-craft/revision-strategies.md",
       "exists": true,
-      "char_count": 1463
+      "char_count": 2344
     },
     {
       "id": "style-guide",
@@ -89198,7 +89198,7 @@
       ],
       "file": "writing/writing-fundamentals/grammar-essentials.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 3010
     },
     {
       "id": "reading-writing-connection",

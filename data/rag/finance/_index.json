@@ -898,7 +898,7 @@
       ],
       "file": "finance/fixed-income/high-yield-bonds.md",
       "exists": true,
-      "char_count": 1349
+      "char_count": 2390
     },
     {
       "id": "capm-model",
@@ -1378,7 +1378,7 @@
       ],
       "file": "finance/personal-finance/education-funding.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2557
     },
     {
       "id": "consumer-psychology",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 362864,
-    "avg_chars": 2267,
+    "total_chars": 365096,
+    "avg_chars": 2281,
     "domain": "finance"
   }
 }

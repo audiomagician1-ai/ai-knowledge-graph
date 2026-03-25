@@ -178,7 +178,7 @@
       ],
       "file": "economics/behavioral-econ/herding-behavior.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2133
     },
     {
       "id": "behavioral-econ-overview",
@@ -1273,7 +1273,7 @@
       ],
       "file": "economics/international-econ/absolute-advantage.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2416
     },
     {
       "id": "free-trade-agreements",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 364031,
-    "avg_chars": 2141,
+    "total_chars": 365862,
+    "avg_chars": 2152,
     "domain": "economics"
   }
 }

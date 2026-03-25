@@ -1318,7 +1318,7 @@
       ],
       "file": "english/reading/narrative-reading.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2759
     },
     {
       "id": "graphic-information",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 510777,
-    "avg_chars": 2553,
+    "total_chars": 512182,
+    "avg_chars": 2560,
     "domain": "english"
   }
 }

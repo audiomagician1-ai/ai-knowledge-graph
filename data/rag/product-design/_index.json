@@ -1708,7 +1708,7 @@
       ],
       "file": "product-design/product-thinking/blue-ocean-strategy.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2388
     },
     {
       "id": "design-thinking",
@@ -2068,7 +2068,7 @@
       ],
       "file": "product-design/user-research/affinity-diagram.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 1930
     },
     {
       "id": "think-aloud-protocol",
@@ -2323,7 +2323,7 @@
       ],
       "file": "product-design/user-research/eye-tracking.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2212
     },
     {
       "id": "research-ethics",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 371291,
-    "avg_chars": 2040,
+    "total_chars": 374064,
+    "avg_chars": 2055,
     "domain": "product-design"
   }
 }

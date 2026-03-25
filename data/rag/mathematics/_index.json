@@ -2818,7 +2818,7 @@
       ],
       "file": "mathematics/number-theory/fermats-little-theorem.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 2755
     },
     {
       "id": "continued-fractions",
@@ -3643,7 +3643,7 @@
       ],
       "file": "mathematics/statistics/correlation.md",
       "exists": true,
-      "char_count": 1263
+      "char_count": 2258
     },
     {
       "id": "linear-regression",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 704540,
-    "avg_chars": 2619,
+    "total_chars": 707051,
+    "avg_chars": 2628,
     "domain": "mathematics"
   }
 }
