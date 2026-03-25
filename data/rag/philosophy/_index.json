@@ -673,7 +673,7 @@
       ],
       "file": "philosophy/epistemology/reliabilism.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2695
     },
     {
       "id": "foundationalism",
@@ -1378,7 +1378,7 @@
       ],
       "file": "philosophy/logic-reasoning/inductive-reasoning.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2275
     },
     {
       "id": "formal-fallacies",
@@ -1693,7 +1693,7 @@
       ],
       "file": "philosophy/metaphysics/possible-worlds.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2711
     },
     {
       "id": "idealism",
@@ -2023,7 +2023,7 @@
       ],
       "file": "philosophy/modern-philosophy/philosophy-of-mind.md",
       "exists": true,
-      "char_count": 1305
+      "char_count": 2921
     },
     {
       "id": "critical-theory",
@@ -2098,7 +2098,7 @@
       ],
       "file": "philosophy/modern-philosophy/philosophy-of-science.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 3108
     },
     {
       "id": "structuralism",
@@ -2458,7 +2458,7 @@
       ],
       "file": "philosophy/political-philosophy/socialism.md",
       "exists": true,
-      "char_count": 1306
+      "char_count": 2289
     },
     {
       "id": "social-contract",
@@ -2518,7 +2518,7 @@
       ],
       "file": "philosophy/political-philosophy/nozick-libertarianism.md",
       "exists": true,
-      "char_count": 1589
+      "char_count": 2611
     },
     {
       "id": "hobbes",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 319201,
-    "avg_chars": 1877,
+    "total_chars": 328341,
+    "avg_chars": 1931,
     "domain": "philosophy"
   }
 }

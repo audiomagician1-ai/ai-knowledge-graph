@@ -1453,7 +1453,7 @@
       ],
       "file": "level-design/level-editor/custom-editor-tool.md",
       "exists": true,
-      "char_count": 1318
+      "char_count": 3090
     },
     {
       "id": "blueprint-scripting",
@@ -2503,7 +2503,7 @@
       ],
       "file": "level-design/spatial-narrative/landmark-design.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2617
     },
     {
       "id": "verticality",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 435482,
-    "avg_chars": 2177,
+    "total_chars": 438505,
+    "avg_chars": 2192,
     "domain": "level-design"
   }
 }

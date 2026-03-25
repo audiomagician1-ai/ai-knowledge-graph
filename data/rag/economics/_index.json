@@ -1783,7 +1783,7 @@
       ],
       "file": "economics/macroeconomics/inflation.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 2622
     },
     {
       "id": "financial-crisis-macro",
@@ -2293,7 +2293,7 @@
       ],
       "file": "economics/public-econ/rent-seeking.md",
       "exists": true,
-      "char_count": 1280
+      "char_count": 2260
     },
     {
       "id": "pigouvian-tax",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 348950,
-    "avg_chars": 2052,
+    "total_chars": 351051,
+    "avg_chars": 2065,
     "domain": "economics"
   }
 }

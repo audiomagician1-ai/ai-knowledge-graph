@@ -838,7 +838,7 @@
       ],
       "file": "mathematics/arithmetic/gcd-lcm.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2321
     },
     {
       "id": "rational-operations",
@@ -1318,7 +1318,7 @@
       ],
       "file": "mathematics/calculus/greens-theorem.md",
       "exists": true,
-      "char_count": 1201
+      "char_count": 3007
     },
     {
       "id": "gradient-directional",
@@ -2443,7 +2443,7 @@
       ],
       "file": "mathematics/linear-algebra/matrix-norms.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2924
     },
     {
       "id": "linear-transformations",
@@ -2983,7 +2983,7 @@
       ],
       "file": "mathematics/optimization/lagrange-multipliers.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 3095
     },
     {
       "id": "integer-programming",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 687957,
-    "avg_chars": 2557,
+    "total_chars": 694133,
+    "avg_chars": 2580,
     "domain": "mathematics"
   }
 }

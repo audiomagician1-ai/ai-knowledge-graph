@@ -763,7 +763,7 @@
       ],
       "file": "game-design/combat-design/skill-design.md",
       "exists": true,
-      "char_count": 1298
+      "char_count": 2342
     },
     {
       "id": "enemy-design",
@@ -778,7 +778,7 @@
       ],
       "file": "game-design/combat-design/enemy-design.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2447
     },
     {
       "id": "weapon-design",
@@ -1093,7 +1093,7 @@
       ],
       "file": "game-design/core-loop/loop-metrics.md",
       "exists": true,
-      "char_count": 1209
+      "char_count": 2473
     },
     {
       "id": "loop-iteration",
@@ -1438,7 +1438,7 @@
       ],
       "file": "game-design/design-docs/living-doc.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2409
     },
     {
       "id": "flowchart-design",
@@ -2653,7 +2653,7 @@
       ],
       "file": "game-design/player-psychology/flow-theory.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2151
     },
     {
       "id": "emotion-design",
@@ -2743,7 +2743,7 @@
       ],
       "file": "game-design/player-psychology/sunk-cost.md",
       "exists": true,
-      "char_count": 1204
+      "char_count": 2339
     },
     {
       "id": "player-agency",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 539555,
-    "avg_chars": 2158,
+    "total_chars": 545946,
+    "avg_chars": 2183,
     "domain": "game-design"
   }
 }

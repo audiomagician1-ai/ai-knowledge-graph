@@ -823,7 +823,7 @@
       ],
       "file": "physics/electromagnetism/lorentz-force.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2301
     },
     {
       "id": "dielectrics",
@@ -928,7 +928,7 @@
       ],
       "file": "physics/electromagnetism/electromagnetic-induction-app.md",
       "exists": true,
-      "char_count": 1651
+      "char_count": 2692
     },
     {
       "id": "em-energy-poynting",
@@ -1273,7 +1273,7 @@
       ],
       "file": "physics/fluid-mechanics/continuity-equation.md",
       "exists": true,
-      "char_count": 1393
+      "char_count": 2921
     },
     {
       "id": "dimensional-analysis",
@@ -2773,7 +2773,7 @@
       ],
       "file": "physics/waves-and-optics/reflection-refraction.md",
       "exists": true,
-      "char_count": 1616
+      "char_count": 2412
     },
     {
       "id": "sound-waves",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 463073,
-    "avg_chars": 2386,
+    "total_chars": 467435,
+    "avg_chars": 2409,
     "domain": "physics"
   }
 }

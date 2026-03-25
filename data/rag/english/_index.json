@@ -268,7 +268,7 @@
       ],
       "file": "english/advanced-grammar/grammar-in-context.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 3187
     },
     {
       "id": "error-analysis",
@@ -493,7 +493,7 @@
       ],
       "file": "english/basic-grammar/basic-sentence-order.md",
       "exists": true,
-      "char_count": 1381
+      "char_count": 2619
     },
     {
       "id": "adjectives",
@@ -538,7 +538,7 @@
       ],
       "file": "english/basic-grammar/exclamatory.md",
       "exists": true,
-      "char_count": 1199
+      "char_count": 2482
     },
     {
       "id": "possessives",
@@ -2818,7 +2818,7 @@
       ],
       "file": "english/writing-en/punctuation.md",
       "exists": true,
-      "char_count": 1218
+      "char_count": 2931
     },
     {
       "id": "editing-proofreading",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 482578,
-    "avg_chars": 2412,
+    "total_chars": 488696,
+    "avg_chars": 2443,
     "domain": "english"
   }
 }

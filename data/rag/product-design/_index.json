@@ -1333,7 +1333,7 @@
       ],
       "file": "product-design/product-management/cross-functional-collab.md",
       "exists": true,
-      "char_count": 1634
+      "char_count": 2604
     },
     {
       "id": "remote-collaboration",
@@ -1678,7 +1678,7 @@
       ],
       "file": "product-design/product-thinking/lean-startup.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2884
     },
     {
       "id": "systems-thinking",
@@ -1888,7 +1888,7 @@
       ],
       "file": "product-design/prototyping/storyboard.md",
       "exists": true,
-      "char_count": 1203
+      "char_count": 2201
     },
     {
       "id": "concept-testing",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 353033,
-    "avg_chars": 1939,
+    "total_chars": 356588,
+    "avg_chars": 1959,
     "domain": "product-design"
   }
 }

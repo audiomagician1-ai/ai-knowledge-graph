@@ -7344,7 +7344,7 @@
       ],
       "file": "biology/botany-zoology/biomimetics.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2353
     },
     {
       "id": "pollination-ecology",
@@ -9309,7 +9309,7 @@
       ],
       "file": "biology/microbiology/microbiology-overview.md",
       "exists": true,
-      "char_count": 1625
+      "char_count": 2755
     },
     {
       "id": "microbiome",
@@ -19869,7 +19869,7 @@
       ],
       "file": "economics/macroeconomics/inflation.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 2622
     },
     {
       "id": "financial-crisis-macro",
@@ -20379,7 +20379,7 @@
       ],
       "file": "economics/public-econ/rent-seeking.md",
       "exists": true,
-      "char_count": 1280
+      "char_count": 2260
     },
     {
       "id": "pigouvian-tax",
@@ -20904,7 +20904,7 @@
       ],
       "file": "english/advanced-grammar/grammar-in-context.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 3187
     },
     {
       "id": "error-analysis",
@@ -21129,7 +21129,7 @@
       ],
       "file": "english/basic-grammar/basic-sentence-order.md",
       "exists": true,
-      "char_count": 1381
+      "char_count": 2619
     },
     {
       "id": "adjectives",
@@ -21174,7 +21174,7 @@
       ],
       "file": "english/basic-grammar/exclamatory.md",
       "exists": true,
-      "char_count": 1199
+      "char_count": 2482
     },
     {
       "id": "possessives",
@@ -23454,7 +23454,7 @@
       ],
       "file": "english/writing-en/punctuation.md",
       "exists": true,
-      "char_count": 1218
+      "char_count": 2931
     },
     {
       "id": "editing-proofreading",
@@ -23754,7 +23754,7 @@
       ],
       "file": "finance/corporate-finance/real-options.md",
       "exists": true,
-      "char_count": 1213
+      "char_count": 2842
     },
     {
       "id": "mergers-acquisitions",
@@ -23829,7 +23829,7 @@
       ],
       "file": "finance/corporate-finance/equity-financing.md",
       "exists": true,
-      "char_count": 1373
+      "char_count": 2564
     },
     {
       "id": "working-capital",
@@ -24414,7 +24414,7 @@
       ],
       "file": "finance/fixed-income/fixed-income-overview.md",
       "exists": true,
-      "char_count": 1497
+      "char_count": 2479
     },
     {
       "id": "fixed-income-portfolio",
@@ -24849,7 +24849,7 @@
       ],
       "file": "finance/personal-finance/personal-finance-overview.md",
       "exists": true,
-      "char_count": 1649
+      "char_count": 2537
     },
     {
       "id": "financial-statements-personal",
@@ -24984,7 +24984,7 @@
       ],
       "file": "finance/personal-finance/mortgage-basics.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2506
     },
     {
       "id": "income-management",
@@ -25719,7 +25719,7 @@
       ],
       "file": "finance/risk-management/risk-management-overview.md",
       "exists": true,
-      "char_count": 1639
+      "char_count": 2409
     },
     {
       "id": "risk-budgeting",
@@ -31839,7 +31839,7 @@
       ],
       "file": "game-design/combat-design/skill-design.md",
       "exists": true,
-      "char_count": 1298
+      "char_count": 2342
     },
     {
       "id": "enemy-design",
@@ -31854,7 +31854,7 @@
       ],
       "file": "game-design/combat-design/enemy-design.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2447
     },
     {
       "id": "weapon-design",
@@ -32169,7 +32169,7 @@
       ],
       "file": "game-design/core-loop/loop-metrics.md",
       "exists": true,
-      "char_count": 1209
+      "char_count": 2473
     },
     {
       "id": "loop-iteration",
@@ -32514,7 +32514,7 @@
       ],
       "file": "game-design/design-docs/living-doc.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2409
     },
     {
       "id": "flowchart-design",
@@ -33729,7 +33729,7 @@
       ],
       "file": "game-design/player-psychology/flow-theory.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2151
     },
     {
       "id": "emotion-design",
@@ -33819,7 +33819,7 @@
       ],
       "file": "game-design/player-psychology/sunk-cost.md",
       "exists": true,
-      "char_count": 1204
+      "char_count": 2339
     },
     {
       "id": "player-agency",
@@ -52819,7 +52819,7 @@
       ],
       "file": "level-design/level-editor/custom-editor-tool.md",
       "exists": true,
-      "char_count": 1318
+      "char_count": 3090
     },
     {
       "id": "blueprint-scripting",
@@ -53869,7 +53869,7 @@
       ],
       "file": "level-design/spatial-narrative/landmark-design.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2617
     },
     {
       "id": "verticality",
@@ -55672,7 +55672,7 @@
       ],
       "file": "mathematics/arithmetic/gcd-lcm.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2321
     },
     {
       "id": "rational-operations",
@@ -56152,7 +56152,7 @@
       ],
       "file": "mathematics/calculus/greens-theorem.md",
       "exists": true,
-      "char_count": 1201
+      "char_count": 3007
     },
     {
       "id": "gradient-directional",
@@ -57277,7 +57277,7 @@
       ],
       "file": "mathematics/linear-algebra/matrix-norms.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2924
     },
     {
       "id": "linear-transformations",
@@ -57817,7 +57817,7 @@
       ],
       "file": "mathematics/optimization/lagrange-multipliers.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 3095
     },
     {
       "id": "integer-programming",
@@ -64794,7 +64794,7 @@
       ],
       "file": "philosophy/epistemology/reliabilism.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2695
     },
     {
       "id": "foundationalism",
@@ -65499,7 +65499,7 @@
       ],
       "file": "philosophy/logic-reasoning/inductive-reasoning.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2275
     },
     {
       "id": "formal-fallacies",
@@ -65814,7 +65814,7 @@
       ],
       "file": "philosophy/metaphysics/possible-worlds.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2711
     },
     {
       "id": "idealism",
@@ -66144,7 +66144,7 @@
       ],
       "file": "philosophy/modern-philosophy/philosophy-of-mind.md",
       "exists": true,
-      "char_count": 1305
+      "char_count": 2921
     },
     {
       "id": "critical-theory",
@@ -66219,7 +66219,7 @@
       ],
       "file": "philosophy/modern-philosophy/philosophy-of-science.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 3108
     },
     {
       "id": "structuralism",
@@ -66579,7 +66579,7 @@
       ],
       "file": "philosophy/political-philosophy/socialism.md",
       "exists": true,
-      "char_count": 1306
+      "char_count": 2289
     },
     {
       "id": "social-contract",
@@ -66639,7 +66639,7 @@
       ],
       "file": "philosophy/political-philosophy/nozick-libertarianism.md",
       "exists": true,
-      "char_count": 1589
+      "char_count": 2611
     },
     {
       "id": "hobbes",
@@ -67494,7 +67494,7 @@
       ],
       "file": "physics/electromagnetism/lorentz-force.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2301
     },
     {
       "id": "dielectrics",
@@ -67599,7 +67599,7 @@
       ],
       "file": "physics/electromagnetism/electromagnetic-induction-app.md",
       "exists": true,
-      "char_count": 1651
+      "char_count": 2692
     },
     {
       "id": "em-energy-poynting",
@@ -67944,7 +67944,7 @@
       ],
       "file": "physics/fluid-mechanics/continuity-equation.md",
       "exists": true,
-      "char_count": 1393
+      "char_count": 2921
     },
     {
       "id": "dimensional-analysis",
@@ -69444,7 +69444,7 @@
       ],
       "file": "physics/waves-and-optics/reflection-refraction.md",
       "exists": true,
-      "char_count": 1616
+      "char_count": 2412
     },
     {
       "id": "sound-waves",
@@ -70914,7 +70914,7 @@
       ],
       "file": "product-design/product-management/cross-functional-collab.md",
       "exists": true,
-      "char_count": 1634
+      "char_count": 2604
     },
     {
       "id": "remote-collaboration",
@@ -71259,7 +71259,7 @@
       ],
       "file": "product-design/product-thinking/lean-startup.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2884
     },
     {
       "id": "systems-thinking",
@@ -71469,7 +71469,7 @@
       ],
       "file": "product-design/prototyping/storyboard.md",
       "exists": true,
-      "char_count": 1203
+      "char_count": 2201
     },
     {
       "id": "concept-testing",
@@ -73379,7 +73379,7 @@
       ],
       "file": "psychology/biological-psychology/sexual-behavior-biology.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2315
     },
     {
       "id": "emotion-neuroscience",
@@ -74354,7 +74354,7 @@
       ],
       "file": "psychology/developmental-psychology/erikson-stages.md",
       "exists": true,
-      "char_count": 1644
+      "char_count": 2203
     },
     {
       "id": "prenatal-development",
@@ -74789,7 +74789,7 @@
       ],
       "file": "psychology/personality-psychology/grit.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2228
     },
     {
       "id": "big-five",
@@ -86993,7 +86993,7 @@
       ],
       "file": "writing/academic-writing/grant-proposal.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2887
     },
     {
       "id": "results-discussion",
@@ -87158,7 +87158,7 @@
       ],
       "file": "writing/creative-writing/creative-nonfiction.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2469
     },
     {
       "id": "screenplay-basics",
@@ -87278,7 +87278,7 @@
       ],
       "file": "writing/creative-writing/voice-style.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2382
     },
     {
       "id": "literary-devices",
@@ -87323,7 +87323,7 @@
       ],
       "file": "writing/creative-writing/genre-fiction.md",
       "exists": true,
-      "char_count": 1513
+      "char_count": 2555
     },
     {
       "id": "free-verse",
@@ -87368,7 +87368,7 @@
       ],
       "file": "writing/creative-writing/flash-fiction.md",
       "exists": true,
-      "char_count": 1200
+      "char_count": 2163
     },
     {
       "id": "feature-writing",
@@ -87773,7 +87773,7 @@
       ],
       "file": "writing/narrative-writing/narrative-arc.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2424
     },
     {
       "id": "narrative-essay",
@@ -87833,7 +87833,7 @@
       ],
       "file": "writing/narrative-writing/memoir-writing.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2637
     },
     {
       "id": "setting-description",
@@ -88973,7 +88973,7 @@
       ],
       "file": "writing/writing-fundamentals/writing-genres-overview.md",
       "exists": true,
-      "char_count": 1646
+      "char_count": 2309
     },
     {
       "id": "writing-tools",

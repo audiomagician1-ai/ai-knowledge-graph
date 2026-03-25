@@ -283,7 +283,7 @@
       ],
       "file": "writing/academic-writing/grant-proposal.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2887
     },
     {
       "id": "results-discussion",
@@ -448,7 +448,7 @@
       ],
       "file": "writing/creative-writing/creative-nonfiction.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2469
     },
     {
       "id": "screenplay-basics",
@@ -568,7 +568,7 @@
       ],
       "file": "writing/creative-writing/voice-style.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2382
     },
     {
       "id": "literary-devices",
@@ -613,7 +613,7 @@
       ],
       "file": "writing/creative-writing/genre-fiction.md",
       "exists": true,
-      "char_count": 1513
+      "char_count": 2555
     },
     {
       "id": "free-verse",
@@ -658,7 +658,7 @@
       ],
       "file": "writing/creative-writing/flash-fiction.md",
       "exists": true,
-      "char_count": 1200
+      "char_count": 2163
     },
     {
       "id": "feature-writing",
@@ -1063,7 +1063,7 @@
       ],
       "file": "writing/narrative-writing/narrative-arc.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2424
     },
     {
       "id": "narrative-essay",
@@ -1123,7 +1123,7 @@
       ],
       "file": "writing/narrative-writing/memoir-writing.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2637
     },
     {
       "id": "setting-description",
@@ -2263,7 +2263,7 @@
       ],
       "file": "writing/writing-fundamentals/writing-genres-overview.md",
       "exists": true,
-      "char_count": 1646
+      "char_count": 2309
     },
     {
       "id": "writing-tools",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 341273,
-    "avg_chars": 2007,
+    "total_chars": 349805,
+    "avg_chars": 2057,
     "domain": "writing"
   }
 }

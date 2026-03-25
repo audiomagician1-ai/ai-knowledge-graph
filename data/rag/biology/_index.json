@@ -58,7 +58,7 @@
       ],
       "file": "biology/botany-zoology/biomimetics.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2353
     },
     {
       "id": "pollination-ecology",
@@ -2023,7 +2023,7 @@
       ],
       "file": "biology/microbiology/microbiology-overview.md",
       "exists": true,
-      "char_count": 1625
+      "char_count": 2755
     },
     {
       "id": "microbiome",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 390225,
-    "avg_chars": 2268,
+    "total_chars": 392416,
+    "avg_chars": 2281,
     "domain": "biology"
   }
 }

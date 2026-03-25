@@ -118,7 +118,7 @@
       ],
       "file": "finance/corporate-finance/real-options.md",
       "exists": true,
-      "char_count": 1213
+      "char_count": 2842
     },
     {
       "id": "mergers-acquisitions",
@@ -193,7 +193,7 @@
       ],
       "file": "finance/corporate-finance/equity-financing.md",
       "exists": true,
-      "char_count": 1373
+      "char_count": 2564
     },
     {
       "id": "working-capital",
@@ -778,7 +778,7 @@
       ],
       "file": "finance/fixed-income/fixed-income-overview.md",
       "exists": true,
-      "char_count": 1497
+      "char_count": 2479
     },
     {
       "id": "fixed-income-portfolio",
@@ -1213,7 +1213,7 @@
       ],
       "file": "finance/personal-finance/personal-finance-overview.md",
       "exists": true,
-      "char_count": 1649
+      "char_count": 2537
     },
     {
       "id": "financial-statements-personal",
@@ -1348,7 +1348,7 @@
       ],
       "file": "finance/personal-finance/mortgage-basics.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2506
     },
     {
       "id": "income-management",
@@ -2083,7 +2083,7 @@
       ],
       "file": "finance/risk-management/risk-management-overview.md",
       "exists": true,
-      "char_count": 1639
+      "char_count": 2409
     },
     {
       "id": "risk-budgeting",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 331803,
-    "avg_chars": 2073,
+    "total_chars": 338267,
+    "avg_chars": 2114,
     "domain": "finance"
   }
 }
